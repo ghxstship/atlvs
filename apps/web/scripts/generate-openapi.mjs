@@ -1,5 +1,6 @@
 import { writeFile } from 'node:fs/promises';
-import { OpenAPIRegistry, OpenAPIGenerator } from 'zod-to-openapi';
+import pkg from 'zod-to-openapi';
+const { OpenAPIRegistry, OpenAPIGenerator } = pkg;
 import { z } from 'zod';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
