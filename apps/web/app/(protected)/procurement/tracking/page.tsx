@@ -1,0 +1,50 @@
+import { redirect } from 'next/navigation';
+import { createServerClient } from '@ghxstship/auth';
+import { cookies } from 'next/headers';
+import { Card } from '@ghxstship/ui';
+import TrackingClient from './TrackingClient';
+import CreateTrackingClient from './CreateTrackingClient';
+
+export const metadata = {
+  title: 'Tracking - Procurement',
+};
+
+export default async function ProcurementTrackingPage() {
+  const cookieStore = cookies();
+  const sb = createServerClient(cookieStore);
+
+  // Check authentication
+  const { data: { user } } = await sb.auth.getUser();
+  if (!user) {
+    redirect('/auth/login');
+  }
+
+  // Get user's organization membership
+  const { data: membership } = await sb
+    .from('organization_members')
+    .select('organization_id, role')
+    .eq('user_id', user.id)
+    .single();
+
+  if (!membership?.organization_id) {
+    redirect('/onboarding');
+  }
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Tracking</h1>
+          <p className="text-foreground/70">
+            Track order status and delivery progress
+          </p>
+        </div>
+        <CreateTrackingClient orgId={membership.organization_id} />
+      </div>
+
+      <Card>
+        <TrackingClient orgId={membership.organization_id} />
+      </Card>
+    </div>
+  );
+}

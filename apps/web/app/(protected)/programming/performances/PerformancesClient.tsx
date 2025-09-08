@@ -1,0 +1,547 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { 
+  DataViewProvider, 
+  StateManagerProvider, 
+  DataGrid, 
+  KanbanBoard, 
+  CalendarView, 
+  ListView, 
+  ViewSwitcher, 
+  DataActions, 
+  UniversalDrawer,
+  type FieldConfig,
+  type DataViewConfig,
+  type DataRecord,
+  Button,
+  Card,
+  Badge
+} from '@ghxstship/ui';
+import { useTranslations } from 'next-intl';
+import { createBrowserClient } from '@ghxstship/auth';
+import { 
+  Plus, 
+  Calendar, 
+  Clock, 
+  Users, 
+  Music, 
+  Mic,
+  Star,
+  MapPin,
+  FileText
+} from 'lucide-react';
+
+export default function PerformancesClient({ orgId }: { orgId: string }) {
+  const t = useTranslations('programming');
+  const sb = createBrowserClient();
+  
+  const [data, setData] = useState<DataRecord[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [selectedRecord, setSelectedRecord] = useState<any>(null);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [drawerMode, setDrawerMode] = useState<'view' | 'edit' | 'create'>('view');
+
+  // Define field configuration for performances
+  const fields: FieldConfig[] = [
+    {
+      key: 'name',
+      label: 'Performance Name',
+      type: 'text',
+      required: true,
+      sortable: true,
+      filterable: true,
+      width: 200
+    },
+    {
+      key: 'project_name',
+      label: 'Project',
+      type: 'text',
+      sortable: true,
+      filterable: true,
+      width: 150
+    },
+    {
+      key: 'starts_at',
+      label: 'Performance Date',
+      type: 'datetime',
+      sortable: true,
+      filterable: true,
+      width: 180
+    },
+    {
+      key: 'duration_minutes',
+      label: 'Duration (min)',
+      type: 'number',
+      sortable: true,
+      filterable: true,
+      width: 120
+    },
+    {
+      key: 'venue',
+      label: 'Venue',
+      type: 'text',
+      sortable: true,
+      filterable: true,
+      width: 150
+    },
+    {
+      key: 'status',
+      label: 'Status',
+      type: 'select',
+      options: [
+        { value: 'planning', label: 'Planning' },
+        { value: 'rehearsal', label: 'Rehearsal' },
+        { value: 'ready', label: 'Ready' },
+        { value: 'live', label: 'Live' },
+        { value: 'completed', label: 'Completed' },
+        { value: 'cancelled', label: 'Cancelled' }
+      ],
+      sortable: true,
+      filterable: true,
+      groupable: true,
+      width: 120
+    },
+    {
+      key: 'lineup_count',
+      label: 'Performers',
+      type: 'number',
+      sortable: true,
+      width: 100
+    },
+    {
+      key: 'technical_requirements',
+      label: 'Tech Requirements',
+      type: 'text',
+      filterable: true,
+      width: 180
+    }
+  ];
+
+  useEffect(() => {
+    loadPerformances();
+  }, [orgId]);
+
+  const loadPerformances = async () => {
+    if (!orgId) return;
+    
+    try {
+      setLoading(true);
+      
+      const { data: performancesData, error } = await sb
+        .from('events')
+        .select(`
+          *,
+          projects!inner(
+            name,
+            organization_id
+          ),
+          lineups(
+            id,
+            performer,
+            stage,
+            start_time,
+            end_time
+          ),
+          riders(
+            id,
+            kind,
+            details
+          ),
+          call_sheets(
+            id,
+            call_date,
+            details
+          )
+        `)
+        .eq('kind', 'performance')
+        .eq('projects.organization_id', orgId)
+        .order('starts_at', { ascending: false });
+      
+      if (error) throw error;
+      
+      // Transform data to include computed fields
+      const transformedData = (performancesData || []).map(performance => {
+        const duration = performance.ends_at && performance.starts_at 
+          ? Math.round((new Date(performance.ends_at).getTime() - new Date(performance.starts_at).getTime()) / (1000 * 60))
+          : null;
+          
+        return {
+          ...performance,
+          project_name: performance.projects?.name || 'Unknown Project',
+          status: computePerformanceStatus(performance),
+          duration_minutes: duration,
+          lineup_count: performance.lineups?.length || 0,
+          riders_count: performance.riders?.length || 0,
+          call_sheets_count: performance.call_sheets?.length || 0,
+          venue: performance.location || 'TBD',
+          technical_requirements: performance.riders?.find((r: any) => r.kind === 'technical')?.details?.summary || 'None specified'
+        };
+      });
+      
+      setData(transformedData);
+    } catch (error) {
+      console.error('Error loading performances:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const computePerformanceStatus = (performance: any) => {
+    const now = new Date();
+    const startDate = performance.starts_at ? new Date(performance.starts_at) : null;
+    const endDate = performance.ends_at ? new Date(performance.ends_at) : null;
+
+    if (!startDate) return 'planning';
+    
+    // Check if performance is happening now
+    if (startDate <= now && (!endDate || endDate >= now)) return 'live';
+    
+    // Check if performance is completed
+    if (endDate && endDate < now) return 'completed';
+    
+    // Check if performance is soon (within 2 hours)
+    const twoHoursFromNow = new Date(now.getTime() + 2 * 60 * 60 * 1000);
+    if (startDate <= twoHoursFromNow && startDate > now) return 'ready';
+    
+    // Check if we have lineups (indicates rehearsal stage)
+    if (performance.lineups && performance.lineups.length > 0) return 'rehearsal';
+    
+    return 'planning';
+  };
+
+  const handleCreatePerformance = () => {
+    setSelectedRecord(null);
+    setDrawerMode('create');
+    setDrawerOpen(true);
+  };
+
+  const handleEditPerformance = (performance: any) => {
+    setSelectedRecord(performance);
+    setDrawerMode('edit');
+    setDrawerOpen(true);
+  };
+
+  const handleViewPerformance = (performance: any) => {
+    setSelectedRecord(performance);
+    setDrawerMode('view');
+    setDrawerOpen(true);
+  };
+
+  const handleSavePerformance = async (performanceData: any) => {
+    try {
+      const eventData = {
+        ...performanceData,
+        kind: 'performance'
+      };
+      
+      if (drawerMode === 'create') {
+        const { error } = await sb.from('events').insert(eventData);
+        if (error) throw error;
+      } else if (drawerMode === 'edit') {
+        const { error } = await sb
+          .from('events')
+          .update(eventData)
+          .eq('id', selectedRecord.id);
+        if (error) throw error;
+      }
+      
+      await loadPerformances();
+      setDrawerOpen(false);
+    } catch (error) {
+      console.error('Error saving performance:', error);
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'planning':
+        return 'text-gray-600 bg-gray-50';
+      case 'rehearsal':
+        return 'text-yellow-600 bg-yellow-50';
+      case 'ready':
+        return 'text-blue-600 bg-blue-50';
+      case 'live':
+        return 'text-green-600 bg-green-50';
+      case 'completed':
+        return 'text-purple-600 bg-purple-50';
+      case 'cancelled':
+        return 'text-red-600 bg-red-50';
+      default:
+        return 'text-gray-600 bg-gray-50';
+    }
+  };
+
+  // Configure DataView
+  const config: DataViewConfig = {
+    id: 'performances-management',
+    name: 'Performances Management',
+    viewType: 'grid',
+    defaultView: 'grid',
+    fields,
+    data,
+    
+    onSearch: (query: string) => {
+      console.log('Search performances:', query);
+    },
+    onFilter: (filters: any[]) => {
+      console.log('Filter performances:', filters);
+    },
+    onSort: (sorts: any[]) => {
+      console.log('Sort performances:', sorts);
+    },
+    onRefresh: loadPerformances,
+    onExport: (data: any[], format: string) => {
+      console.log('Export performances:', format, data);
+    },
+    onImport: (data: any[]) => {
+      console.log('Import performances:', data);
+    },
+    onRowClick: handleViewPerformance
+  };
+
+  return (
+    <div className="space-y-4">
+      <DataViewProvider config={config}>
+        <StateManagerProvider>
+          <div className="space-y-4">
+            {/* Header Actions */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-4">
+                <h2 className="text-lg font-semibold">Performance Management</h2>
+                <Button onClick={handleCreatePerformance} size="sm">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Create Performance
+                </Button>
+              </div>
+              <div className="flex items-center gap-2">
+                <ViewSwitcher />
+                <DataActions />
+              </div>
+            </div>
+
+            {/* Performance Stats */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-blue-50 rounded-lg">
+                    <Calendar className="h-5 w-5 text-blue-600" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">
+                      {data.filter(p => p.status === 'ready' || p.status === 'live').length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Upcoming</div>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-green-50 rounded-lg">
+                    <Music className="h-5 w-5 text-green-600" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">
+                      {data.filter(p => p.status === 'live').length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Live Now</div>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-purple-50 rounded-lg">
+                    <Users className="h-5 w-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">
+                      {data.reduce((sum, p) => sum + (p.lineup_count || 0), 0)}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Total Performers</div>
+                  </div>
+                </div>
+              </Card>
+              
+              <Card className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-yellow-50 rounded-lg">
+                    <Star className="h-5 w-5 text-yellow-600" />
+                  </div>
+                  <div>
+                    <div className="text-2xl font-bold">
+                      {data.filter(p => p.status === 'completed').length}
+                    </div>
+                    <div className="text-sm text-muted-foreground">Completed</div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Data Views */}
+            <DataGrid onRowClick={handleViewPerformance} />
+            
+            <KanbanBoard 
+              columns={[
+                { id: 'planning', title: 'Planning' },
+                { id: 'rehearsal', title: 'Rehearsal' },
+                { id: 'ready', title: 'Ready' },
+                { id: 'live', title: 'Live' },
+                { id: 'completed', title: 'Completed' }
+              ]}
+              statusField="status"
+              titleField="name"
+              onCardClick={handleViewPerformance}
+            />
+            
+            <CalendarView 
+              startDateField="starts_at"
+              endDateField="ends_at"
+              titleField="name"
+              onEventClick={handleViewPerformance}
+            />
+            
+            <ListView 
+              titleField="name"
+              subtitleField="project_name"
+              onItemClick={handleViewPerformance}
+            />
+            
+            {/* Performance Details Drawer */}
+            <UniversalDrawer
+              open={drawerOpen}
+              onClose={() => {
+                setDrawerOpen(false);
+                setSelectedRecord(null);
+              }}
+              record={selectedRecord}
+              fields={fields}
+              mode={drawerMode}
+              onModeChange={setDrawerMode}
+              title={
+                drawerMode === 'create' 
+                  ? 'Create Performance' 
+                  : selectedRecord?.name || 'Performance Details'
+              }
+              onSave={handleSavePerformance}
+              enableComments={true}
+              enableActivity={true}
+              enableFiles={true}
+            >
+              {/* Custom Performance Details */}
+              {selectedRecord && (
+                <div className="space-y-6 mt-6">
+                  {/* Performance Info */}
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2 text-sm">
+                      <Calendar className="h-4 w-4 text-muted-foreground" />
+                      <span className="font-medium">Date:</span>
+                      <span>
+                        {selectedRecord.starts_at 
+                          ? new Date(selectedRecord.starts_at).toLocaleDateString()
+                          : 'Not scheduled'
+                        }
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                      <span className="font-medium">Time:</span>
+                      <span>
+                        {selectedRecord.starts_at 
+                          ? new Date(selectedRecord.starts_at).toLocaleTimeString([], { 
+                              hour: '2-digit', 
+                              minute: '2-digit' 
+                            })
+                          : 'TBD'
+                        }
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <MapPin className="h-4 w-4 text-muted-foreground" />
+                      <span className="font-medium">Venue:</span>
+                      <span>{selectedRecord.venue || 'TBD'}</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-sm">
+                      <Clock className="h-4 w-4 text-muted-foreground" />
+                      <span className="font-medium">Duration:</span>
+                      <span>{selectedRecord.duration_minutes ? `${selectedRecord.duration_minutes} min` : 'TBD'}</span>
+                    </div>
+                  </div>
+
+                  {/* Status Badge */}
+                  <div className="flex items-center gap-2">
+                    <span className="font-medium text-sm">Status:</span>
+                    <Badge className={getStatusColor(selectedRecord.status)}>
+                      {selectedRecord.status?.replace('_', ' ') || 'Unknown'}
+                    </Badge>
+                  </div>
+                  
+                  {/* Performance Metrics */}
+                  <div className="grid grid-cols-3 gap-4 pt-4 border-t">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-blue-600">{selectedRecord.lineup_count || 0}</div>
+                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                        <Users className="h-3 w-3" />
+                        Performers
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-green-600">{selectedRecord.riders_count || 0}</div>
+                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                        <FileText className="h-3 w-3" />
+                        Riders
+                      </div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-purple-600">{selectedRecord.call_sheets_count || 0}</div>
+                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                        <Calendar className="h-3 w-3" />
+                        Call Sheets
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Technical Requirements */}
+                  {selectedRecord.technical_requirements && selectedRecord.technical_requirements !== 'None specified' && (
+                    <div className="pt-4 border-t">
+                      <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                        <Mic className="h-4 w-4" />
+                        Technical Requirements
+                      </h4>
+                      <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
+                        {selectedRecord.technical_requirements}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Quick Actions */}
+                  <div className="flex gap-2 pt-4 border-t">
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={`/programming/lineups?event_id=${selectedRecord.id}`}>
+                        <Users className="h-4 w-4 mr-2" />
+                        Manage Lineup
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={`/programming/riders?event_id=${selectedRecord.id}`}>
+                        <FileText className="h-4 w-4 mr-2" />
+                        Tech Riders
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="sm" asChild>
+                      <a href={`/programming/call-sheets?event_id=${selectedRecord.id}`}>
+                        <Calendar className="h-4 w-4 mr-2" />
+                        Call Sheets
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </UniversalDrawer>
+          </div>
+        </StateManagerProvider>
+      </DataViewProvider>
+    </div>
+  );
+}

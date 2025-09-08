@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/v1/webhooks/redrive/enqueue",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/v1/webhooks/redrive/process",
+      "schedule": "*/10 * * * *"
+    }
+  ]
+}

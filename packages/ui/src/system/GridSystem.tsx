@@ -1,0 +1,638 @@
+'use client';
+
+import React, { ReactNode } from 'react';
+import { cva, type VariantProps } from 'class-variance-authority';
+import { twMerge } from 'tailwind-merge';
+
+// 2026 Unified Grid & Spacing System
+// Global layout consistency with mathematical precision and responsive adaptability
+
+// =============================================================================
+// MATHEMATICAL SPACING FOUNDATION
+// =============================================================================
+
+// Base unit: 4px (0.25rem) - Perfect for 8px grid system
+export const SPACING_UNITS = {
+  0: '0',
+  0.5: '0.125rem', // 2px
+  1: '0.25rem',    // 4px
+  1.5: '0.375rem', // 6px
+  2: '0.5rem',     // 8px
+  2.5: '0.625rem', // 10px
+  3: '0.75rem',    // 12px
+  3.5: '0.875rem', // 14px
+  4: '1rem',       // 16px
+  5: '1.25rem',    // 20px
+  6: '1.5rem',     // 24px
+  7: '1.75rem',    // 28px
+  8: '2rem',       // 32px
+  9: '2.25rem',    // 36px
+  10: '2.5rem',    // 40px
+  11: '2.75rem',   // 44px
+  12: '3rem',      // 48px
+  14: '3.5rem',    // 56px
+  16: '4rem',      // 64px
+  20: '5rem',      // 80px
+  24: '6rem',      // 96px
+  28: '7rem',      // 112px
+  32: '8rem',      // 128px
+  36: '9rem',      // 144px
+  40: '10rem',     // 160px
+  44: '11rem',     // 176px
+  48: '12rem',     // 192px
+  52: '13rem',     // 208px
+  56: '14rem',     // 224px
+  60: '15rem',     // 240px
+  64: '16rem',     // 256px
+  72: '18rem',     // 288px
+  80: '20rem',     // 320px
+  96: '24rem',     // 384px
+} as const;
+
+// Semantic spacing scale for consistent component spacing
+export const SEMANTIC_SPACING = {
+  xs: SPACING_UNITS[1],    // 4px
+  sm: SPACING_UNITS[2],    // 8px
+  md: SPACING_UNITS[4],    // 16px
+  lg: SPACING_UNITS[6],    // 24px
+  xl: SPACING_UNITS[8],    // 32px
+  '2xl': SPACING_UNITS[12], // 48px
+  '3xl': SPACING_UNITS[16], // 64px
+  '4xl': SPACING_UNITS[24], // 96px
+  '5xl': SPACING_UNITS[32], // 128px
+} as const;
+
+// =============================================================================
+// GRID FOUNDATION SYSTEM
+// =============================================================================
+
+// Enhanced Grid Container
+const gridContainerVariants = cva(
+  'grid',
+  {
+    variants: {
+      // Column definitions
+      cols: {
+        1: 'grid-cols-1',
+        2: 'grid-cols-2',
+        3: 'grid-cols-3',
+        4: 'grid-cols-4',
+        5: 'grid-cols-5',
+        6: 'grid-cols-6',
+        7: 'grid-cols-7',
+        8: 'grid-cols-8',
+        9: 'grid-cols-9',
+        10: 'grid-cols-10',
+        11: 'grid-cols-11',
+        12: 'grid-cols-12',
+        none: 'grid-cols-none',
+        subgrid: 'grid-cols-subgrid',
+      },
+      
+      // Responsive column definitions
+      responsive: {
+        auto: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4',
+        cards: 'grid-cols-1 md:grid-cols-2 xl:grid-cols-3',
+        list: 'grid-cols-1 lg:grid-cols-2',
+        dashboard: 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5',
+        sidebar: 'grid-cols-1 lg:grid-cols-[240px_1fr]',
+        split: 'grid-cols-1 lg:grid-cols-2',
+        thirds: 'grid-cols-1 md:grid-cols-3',
+        quarters: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4',
+      },
+      
+      // Row definitions
+      rows: {
+        1: 'grid-rows-1',
+        2: 'grid-rows-2',
+        3: 'grid-rows-3',
+        4: 'grid-rows-4',
+        5: 'grid-rows-5',
+        6: 'grid-rows-6',
+        none: 'grid-rows-none',
+        subgrid: 'grid-rows-subgrid',
+      },
+      
+      // Gap spacing
+      gap: {
+        0: 'gap-0',
+        1: 'gap-1',
+        2: 'gap-2',
+        3: 'gap-3',
+        4: 'gap-4',
+        5: 'gap-5',
+        6: 'gap-6',
+        7: 'gap-7',
+        8: 'gap-8',
+        10: 'gap-10',
+        12: 'gap-12',
+        16: 'gap-16',
+        20: 'gap-20',
+        24: 'gap-24',
+      },
+      
+      // Responsive gap
+      responsiveGap: {
+        sm: 'gap-2 sm:gap-4',
+        md: 'gap-4 sm:gap-6',
+        lg: 'gap-6 sm:gap-8',
+        xl: 'gap-8 sm:gap-12',
+      },
+      
+      // Auto-fit and auto-fill
+      autoFit: {
+        xs: 'grid-cols-[repeat(auto-fit,minmax(200px,1fr))]',
+        sm: 'grid-cols-[repeat(auto-fit,minmax(250px,1fr))]',
+        md: 'grid-cols-[repeat(auto-fit,minmax(300px,1fr))]',
+        lg: 'grid-cols-[repeat(auto-fit,minmax(350px,1fr))]',
+        xl: 'grid-cols-[repeat(auto-fit,minmax(400px,1fr))]',
+      },
+      
+      // Dense packing
+      dense: {
+        true: 'grid-flow-dense',
+        false: '',
+      },
+      
+      // Flow direction
+      flow: {
+        row: 'grid-flow-row',
+        col: 'grid-flow-col',
+        'row-dense': 'grid-flow-row-dense',
+        'col-dense': 'grid-flow-col-dense',
+      },
+    },
+    defaultVariants: {
+      cols: 1,
+      gap: 4,
+      dense: false,
+      flow: 'row',
+    },
+  }
+);
+
+// Enhanced Grid Item
+const gridItemVariants = cva(
+  '',
+  {
+    variants: {
+      // Column span
+      colSpan: {
+        1: 'col-span-1',
+        2: 'col-span-2',
+        3: 'col-span-3',
+        4: 'col-span-4',
+        5: 'col-span-5',
+        6: 'col-span-6',
+        7: 'col-span-7',
+        8: 'col-span-8',
+        9: 'col-span-9',
+        10: 'col-span-10',
+        11: 'col-span-11',
+        12: 'col-span-12',
+        full: 'col-span-full',
+        auto: 'col-auto',
+      },
+      
+      // Row span
+      rowSpan: {
+        1: 'row-span-1',
+        2: 'row-span-2',
+        3: 'row-span-3',
+        4: 'row-span-4',
+        5: 'row-span-5',
+        6: 'row-span-6',
+        full: 'row-span-full',
+        auto: 'row-auto',
+      },
+      
+      // Column start
+      colStart: {
+        1: 'col-start-1',
+        2: 'col-start-2',
+        3: 'col-start-3',
+        4: 'col-start-4',
+        5: 'col-start-5',
+        6: 'col-start-6',
+        7: 'col-start-7',
+        8: 'col-start-8',
+        9: 'col-start-9',
+        10: 'col-start-10',
+        11: 'col-start-11',
+        12: 'col-start-12',
+        13: 'col-start-13',
+        auto: 'col-start-auto',
+      },
+      
+      // Column end
+      colEnd: {
+        1: 'col-end-1',
+        2: 'col-end-2',
+        3: 'col-end-3',
+        4: 'col-end-4',
+        5: 'col-end-5',
+        6: 'col-end-6',
+        7: 'col-end-7',
+        8: 'col-end-8',
+        9: 'col-end-9',
+        10: 'col-end-10',
+        11: 'col-end-11',
+        12: 'col-end-12',
+        13: 'col-end-13',
+        auto: 'col-end-auto',
+      },
+      
+      // Responsive column span
+      responsiveColSpan: {
+        'sm-2': 'col-span-1 sm:col-span-2',
+        'md-3': 'col-span-1 md:col-span-3',
+        'lg-4': 'col-span-1 lg:col-span-4',
+        'xl-6': 'col-span-1 xl:col-span-6',
+        'full-half': 'col-span-full lg:col-span-6',
+        'half-third': 'col-span-6 lg:col-span-4',
+      },
+    },
+    defaultVariants: {
+      colSpan: 'auto',
+      rowSpan: 'auto',
+    },
+  }
+);
+
+// =============================================================================
+// FLEXBOX SYSTEM
+// =============================================================================
+
+// Enhanced Flex Container
+const flexContainerVariants = cva(
+  'flex',
+  {
+    variants: {
+      direction: {
+        row: 'flex-row',
+        'row-reverse': 'flex-row-reverse',
+        col: 'flex-col',
+        'col-reverse': 'flex-col-reverse',
+      },
+      
+      wrap: {
+        nowrap: 'flex-nowrap',
+        wrap: 'flex-wrap',
+        'wrap-reverse': 'flex-wrap-reverse',
+      },
+      
+      justify: {
+        start: 'justify-start',
+        end: 'justify-end',
+        center: 'justify-center',
+        between: 'justify-between',
+        around: 'justify-around',
+        evenly: 'justify-evenly',
+        stretch: 'justify-stretch',
+      },
+      
+      align: {
+        start: 'items-start',
+        end: 'items-end',
+        center: 'items-center',
+        baseline: 'items-baseline',
+        stretch: 'items-stretch',
+      },
+      
+      alignContent: {
+        start: 'content-start',
+        end: 'content-end',
+        center: 'content-center',
+        between: 'content-between',
+        around: 'content-around',
+        evenly: 'content-evenly',
+        stretch: 'content-stretch',
+      },
+      
+      gap: {
+        0: 'gap-0',
+        1: 'gap-1',
+        2: 'gap-2',
+        3: 'gap-3',
+        4: 'gap-4',
+        5: 'gap-5',
+        6: 'gap-6',
+        8: 'gap-8',
+        10: 'gap-10',
+        12: 'gap-12',
+        16: 'gap-16',
+      },
+      
+      responsiveDirection: {
+        'col-row': 'flex-col sm:flex-row',
+        'row-col': 'flex-row sm:flex-col',
+        'col-row-lg': 'flex-col lg:flex-row',
+      },
+      
+      responsiveGap: {
+        sm: 'gap-2 sm:gap-4',
+        md: 'gap-4 sm:gap-6',
+        lg: 'gap-6 sm:gap-8',
+      },
+    },
+    defaultVariants: {
+      direction: 'row',
+      wrap: 'nowrap',
+      justify: 'start',
+      align: 'stretch',
+      gap: 0,
+    },
+  }
+);
+
+// Enhanced Flex Item
+const flexItemVariants = cva(
+  '',
+  {
+    variants: {
+      flex: {
+        1: 'flex-1',
+        auto: 'flex-auto',
+        initial: 'flex-initial',
+        none: 'flex-none',
+      },
+      
+      grow: {
+        0: 'flex-grow-0',
+        1: 'flex-grow',
+      },
+      
+      shrink: {
+        0: 'flex-shrink-0',
+        1: 'flex-shrink',
+      },
+      
+      basis: {
+        0: 'basis-0',
+        1: 'basis-1',
+        2: 'basis-2',
+        3: 'basis-3',
+        4: 'basis-4',
+        5: 'basis-5',
+        6: 'basis-6',
+        8: 'basis-8',
+        10: 'basis-10',
+        12: 'basis-12',
+        16: 'basis-16',
+        20: 'basis-20',
+        24: 'basis-24',
+        32: 'basis-32',
+        40: 'basis-40',
+        48: 'basis-48',
+        56: 'basis-56',
+        64: 'basis-64',
+        auto: 'basis-auto',
+        '1/2': 'basis-1/2',
+        '1/3': 'basis-1/3',
+        '2/3': 'basis-2/3',
+        '1/4': 'basis-1/4',
+        '3/4': 'basis-3/4',
+        full: 'basis-full',
+      },
+      
+      alignSelf: {
+        auto: 'self-auto',
+        start: 'self-start',
+        end: 'self-end',
+        center: 'self-center',
+        stretch: 'self-stretch',
+        baseline: 'self-baseline',
+      },
+      
+      order: {
+        1: 'order-1',
+        2: 'order-2',
+        3: 'order-3',
+        4: 'order-4',
+        5: 'order-5',
+        6: 'order-6',
+        7: 'order-7',
+        8: 'order-8',
+        9: 'order-9',
+        10: 'order-10',
+        11: 'order-11',
+        12: 'order-12',
+        first: 'order-first',
+        last: 'order-last',
+        none: 'order-none',
+      },
+    },
+    defaultVariants: {
+      flex: 'initial',
+      alignSelf: 'auto',
+    },
+  }
+);
+
+// =============================================================================
+// SPACING SYSTEM
+// =============================================================================
+
+// Enhanced Spacing Utilities
+const spacingVariants = cva('', {
+  variants: {
+    // Margin
+    m: {
+      0: 'm-0', 1: 'm-1', 2: 'm-2', 3: 'm-3', 4: 'm-4', 5: 'm-5', 6: 'm-6', 8: 'm-8', 10: 'm-10', 12: 'm-12', 16: 'm-16', 20: 'm-20', 24: 'm-24', 32: 'm-32',
+      auto: 'm-auto',
+    },
+    mx: {
+      0: 'mx-0', 1: 'mx-1', 2: 'mx-2', 3: 'mx-3', 4: 'mx-4', 5: 'mx-5', 6: 'mx-6', 8: 'mx-8', 10: 'mx-10', 12: 'mx-12', 16: 'mx-16', 20: 'mx-20', 24: 'mx-24', 32: 'mx-32',
+      auto: 'mx-auto',
+    },
+    my: {
+      0: 'my-0', 1: 'my-1', 2: 'my-2', 3: 'my-3', 4: 'my-4', 5: 'my-5', 6: 'my-6', 8: 'my-8', 10: 'my-10', 12: 'my-12', 16: 'my-16', 20: 'my-20', 24: 'my-24', 32: 'my-32',
+    },
+    mt: {
+      0: 'mt-0', 1: 'mt-1', 2: 'mt-2', 3: 'mt-3', 4: 'mt-4', 5: 'mt-5', 6: 'mt-6', 8: 'mt-8', 10: 'mt-10', 12: 'mt-12', 16: 'mt-16', 20: 'mt-20', 24: 'mt-24', 32: 'mt-32',
+      auto: 'mt-auto',
+    },
+    mr: {
+      0: 'mr-0', 1: 'mr-1', 2: 'mr-2', 3: 'mr-3', 4: 'mr-4', 5: 'mr-5', 6: 'mr-6', 8: 'mr-8', 10: 'mr-10', 12: 'mr-12', 16: 'mr-16', 20: 'mr-20', 24: 'mr-24', 32: 'mr-32',
+      auto: 'mr-auto',
+    },
+    mb: {
+      0: 'mb-0', 1: 'mb-1', 2: 'mb-2', 3: 'mb-3', 4: 'mb-4', 5: 'mb-5', 6: 'mb-6', 8: 'mb-8', 10: 'mb-10', 12: 'mb-12', 16: 'mb-16', 20: 'mb-20', 24: 'mb-24', 32: 'mb-32',
+      auto: 'mb-auto',
+    },
+    ml: {
+      0: 'ml-0', 1: 'ml-1', 2: 'ml-2', 3: 'ml-3', 4: 'ml-4', 5: 'ml-5', 6: 'ml-6', 8: 'ml-8', 10: 'ml-10', 12: 'ml-12', 16: 'ml-16', 20: 'ml-20', 24: 'ml-24', 32: 'ml-32',
+      auto: 'ml-auto',
+    },
+    
+    // Padding
+    p: {
+      0: 'p-0', 1: 'p-1', 2: 'p-2', 3: 'p-3', 4: 'p-4', 5: 'p-5', 6: 'p-6', 8: 'p-8', 10: 'p-10', 12: 'p-12', 16: 'p-16', 20: 'p-20', 24: 'p-24', 32: 'p-32',
+    },
+    px: {
+      0: 'px-0', 1: 'px-1', 2: 'px-2', 3: 'px-3', 4: 'px-4', 5: 'px-5', 6: 'px-6', 8: 'px-8', 10: 'px-10', 12: 'px-12', 16: 'px-16', 20: 'px-20', 24: 'px-24', 32: 'px-32',
+    },
+    py: {
+      0: 'py-0', 1: 'py-1', 2: 'py-2', 3: 'py-3', 4: 'py-4', 5: 'py-5', 6: 'py-6', 8: 'py-8', 10: 'py-10', 12: 'py-12', 16: 'py-16', 20: 'py-20', 24: 'py-24', 32: 'py-32',
+    },
+    pt: {
+      0: 'pt-0', 1: 'pt-1', 2: 'pt-2', 3: 'pt-3', 4: 'pt-4', 5: 'pt-5', 6: 'pt-6', 8: 'pt-8', 10: 'pt-10', 12: 'pt-12', 16: 'pt-16', 20: 'pt-20', 24: 'pt-24', 32: 'pt-32',
+    },
+    pr: {
+      0: 'pr-0', 1: 'pr-1', 2: 'pr-2', 3: 'pr-3', 4: 'pr-4', 5: 'pr-5', 6: 'pr-6', 8: 'pr-8', 10: 'pr-10', 12: 'pr-12', 16: 'pr-16', 20: 'pr-20', 24: 'pr-24', 32: 'pr-32',
+    },
+    pb: {
+      0: 'pb-0', 1: 'pb-1', 2: 'pb-2', 3: 'pb-3', 4: 'pb-4', 5: 'pb-5', 6: 'pb-6', 8: 'pb-8', 10: 'pb-10', 12: 'pb-12', 16: 'pb-16', 20: 'pb-20', 24: 'pb-24', 32: 'pb-32',
+    },
+    pl: {
+      0: 'pl-0', 1: 'pl-1', 2: 'pl-2', 3: 'pl-3', 4: 'pl-4', 5: 'pl-5', 6: 'pl-6', 8: 'pl-8', 10: 'pl-10', 12: 'pl-12', 16: 'pl-16', 20: 'pl-20', 24: 'pl-24', 32: 'pl-32',
+    },
+    
+    // Space between children
+    spaceX: {
+      0: 'space-x-0', 1: 'space-x-1', 2: 'space-x-2', 3: 'space-x-3', 4: 'space-x-4', 5: 'space-x-5', 6: 'space-x-6', 8: 'space-x-8', 10: 'space-x-10', 12: 'space-x-12', 16: 'space-x-16',
+    },
+    spaceY: {
+      0: 'space-y-0', 1: 'space-y-1', 2: 'space-y-2', 3: 'space-y-3', 4: 'space-y-4', 5: 'space-y-5', 6: 'space-y-6', 8: 'space-y-8', 10: 'space-y-10', 12: 'space-y-12', 16: 'space-y-16',
+    },
+  },
+});
+
+// =============================================================================
+// RESPONSIVE BREAKPOINT SYSTEM
+// =============================================================================
+
+export const BREAKPOINTS = {
+  sm: '640px',   // Small devices (landscape phones)
+  md: '768px',   // Medium devices (tablets)
+  lg: '1024px',  // Large devices (desktops)
+  xl: '1280px',  // Extra large devices (large desktops)
+  '2xl': '1536px', // 2X large devices (larger desktops)
+} as const;
+
+export const CONTAINER_SIZES = {
+  sm: '640px',
+  md: '768px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+} as const;
+
+// =============================================================================
+// LAYOUT COMPOSITION UTILITIES
+// =============================================================================
+
+export const createResponsiveGrid = (
+  breakpoints: Record<string, number>
+) => {
+  const classes = Object.entries(breakpoints)
+    .map(([bp, cols]) => {
+      if (bp === 'default') return `grid-cols-${cols}`;
+      return `${bp}:grid-cols-${cols}`;
+    })
+    .join(' ');
+  
+  return `grid ${classes}`;
+};
+
+export const createFlexLayout = (
+  direction: 'row' | 'col' = 'row',
+  justify: 'start' | 'center' | 'end' | 'between' | 'around' | 'evenly' = 'start',
+  align: 'start' | 'center' | 'end' | 'stretch' | 'baseline' = 'stretch',
+  gap: number = 4
+) => {
+  return `flex flex-${direction} justify-${justify} items-${align} gap-${gap}`;
+};
+
+export const createSpacing = (
+  type: 'margin' | 'padding',
+  sides: 'all' | 'x' | 'y' | 'top' | 'right' | 'bottom' | 'left',
+  size: number
+) => {
+  const prefix = type === 'margin' ? 'm' : 'p';
+  const sideMap = {
+    all: '',
+    x: 'x',
+    y: 'y',
+    top: 't',
+    right: 'r',
+    bottom: 'b',
+    left: 'l',
+  };
+  
+  return `${prefix}${sideMap[sides]}-${size}`;
+};
+
+// =============================================================================
+// COMPONENT EXPORTS
+// =============================================================================
+
+export const GridSystem = {
+  // Grid components
+  grid: gridContainerVariants,
+  gridItem: gridItemVariants,
+  
+  // Flex components
+  flex: flexContainerVariants,
+  flexItem: flexItemVariants,
+  
+  // Spacing utilities
+  spacing: spacingVariants,
+  
+  // Constants
+  spacingUnits: SPACING_UNITS,
+  semanticSpacing: SEMANTIC_SPACING,
+  breakpoints: BREAKPOINTS,
+  containerSizes: CONTAINER_SIZES,
+  
+  // Utilities
+  createResponsiveGrid,
+  createFlexLayout,
+  createSpacing,
+};
+
+// =============================================================================
+// GRID COMPOSITION COMPONENTS
+// =============================================================================
+
+export interface GridProps extends VariantProps<typeof gridContainerVariants> {
+  children: ReactNode;
+  className?: string;
+}
+
+export const Grid = React.forwardRef<HTMLDivElement, GridProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={twMerge(gridContainerVariants(props), className)}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+Grid.displayName = 'Grid';
+
+export interface FlexProps extends VariantProps<typeof flexContainerVariants> {
+  children: ReactNode;
+  className?: string;
+}
+
+export const Flex = React.forwardRef<HTMLDivElement, FlexProps>(
+  ({ children, className, ...props }, ref) => {
+    return (
+      <div
+        ref={ref}
+        className={twMerge(flexContainerVariants(props), className)}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+Flex.displayName = 'Flex';
+
+export default GridSystem;

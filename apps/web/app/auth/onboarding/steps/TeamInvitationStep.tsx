@@ -1,0 +1,311 @@
+"use client";
+
+import { useState } from 'react';
+import { Card, CardContent, Button } from '@ghxstship/ui';
+import { UserPlus, Mail, ArrowRight, ArrowLeft, X, Send } from 'lucide-react';
+import { Anton } from 'next/font/google';
+import { createBrowserClient } from '@ghxstship/auth';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+
+interface TeamInvitationStepProps {
+  user: any;
+  onNext: () => void;
+  onBack: () => void;
+  updateData: (data: any) => void;
+  data: any;
+}
+
+interface TeamMember {
+  email: string;
+  role: 'admin' | 'team_member' | 'viewer';
+  name?: string;
+}
+
+const roles = [
+  { value: 'admin', label: 'Admin', description: 'Full access to organization settings' },
+  { value: 'team_member', label: 'Team Member', description: 'Can create and manage projects' },
+  { value: 'viewer', label: 'Viewer', description: 'Read-only access to projects' },
+];
+
+export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: TeamInvitationStepProps) {
+  const [invites, setInvites] = useState<TeamMember[]>(data.teamInvites || []);
+  const [currentEmail, setCurrentEmail] = useState('');
+  const [currentRole, setCurrentRole] = useState<TeamMember['role']>('team_member');
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [skipInvites, setSkipInvites] = useState(false);
+  
+  const supabase = createBrowserClient();
+
+  const addInvite = () => {
+    if (!currentEmail.trim()) return;
+    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(currentEmail)) {
+      setError('Please enter a valid email address');
+      return;
+    }
+
+    if (invites.some(invite => invite.email === currentEmail)) {
+      setError('This email has already been added');
+      return;
+    }
+
+    setInvites([...invites, { email: currentEmail, role: currentRole }]);
+    setCurrentEmail('');
+    setError('');
+  };
+
+  const removeInvite = (index: number) => {
+    setInvites(invites.filter((_, i) => i !== index));
+  };
+
+  const updateInviteRole = (index: number, role: TeamMember['role']) => {
+    const updated = [...invites];
+    updated[index].role = role;
+    setInvites(updated);
+  };
+
+  const handleContinue = async () => {
+    setLoading(true);
+    setError('');
+
+    try {
+      if (!skipInvites && invites.length > 0) {
+        // Send invitations
+        const { error: inviteError } = await supabase
+          .from('organization_invites')
+          .insert(
+            invites.map(invite => ({
+              organization_id: data.organizationId,
+              email: invite.email,
+              role: invite.role,
+              invited_by: user.id,
+              status: 'pending',
+            }))
+          );
+
+        if (inviteError) throw inviteError;
+
+        // Send invitation emails (this would typically be handled by a background job)
+        for (const invite of invites) {
+          try {
+            await fetch('/api/v1/invitations/send', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                email: invite.email,
+                role: invite.role,
+                organizationName: data.orgName,
+                inviterName: user.user_metadata?.full_name || user.email,
+              }),
+            });
+          } catch (emailError) {
+            console.warn('Failed to send invitation email:', emailError);
+          }
+        }
+      }
+
+      updateData({
+        teamInvites: invites,
+        skipTeamInvites: skipInvites,
+      });
+
+      onNext();
+    } catch (err: any) {
+      setError(err.message || 'Failed to send invitations');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addInvite();
+    }
+  };
+
+  return (
+    <div className="space-y-8">
+      <div className="text-center">
+        <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+          INVITE YOUR TEAM
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          {data.userRole === 'owner' 
+            ? 'Invite team members to collaborate on your projects. You can always add more people later.'
+            : 'You can invite team members if you have admin permissions, or skip this step for now.'
+          }
+        </p>
+      </div>
+
+      <Card className="shadow-xl">
+        <CardContent className="p-8">
+          <div className="space-y-6">
+            {/* Add Team Member Form */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-2 mb-4">
+                <UserPlus className="h-5 w-5 text-primary" />
+                <h3 className={`${anton.className} uppercase text-lg font-bold`}>
+                  ADD TEAM MEMBERS
+                </h3>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-4">
+                <div className="md:col-span-2">
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Email Address
+                  </label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <input
+                      type="email"
+                      className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                      placeholder="colleague@company.com"
+                      value={currentEmail}
+                      onChange={(e) => setCurrentEmail(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-foreground mb-2">
+                    Role
+                  </label>
+                  <select
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                    value={currentRole}
+                    onChange={(e) => setCurrentRole(e.target.value as TeamMember['role'])}
+                  >
+                    {roles.map(role => (
+                      <option key={role.value} value={role.value}>
+                        {role.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <Button onClick={addInvite} disabled={!currentEmail.trim()}>
+                <UserPlus className="mr-2 h-4 w-4" />
+                Add Team Member
+              </Button>
+
+              {error && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
+                  <p className="text-sm text-red-600">{error}</p>
+                </div>
+              )}
+            </div>
+
+            {/* Invited Members List */}
+            {invites.length > 0 && (
+              <div className="space-y-4">
+                <h4 className={`${anton.className} uppercase text-md font-bold`}>
+                  PENDING INVITATIONS ({invites.length})
+                </h4>
+                
+                <div className="space-y-3">
+                  {invites.map((invite, index) => (
+                    <div key={index} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+                          <Mail className="h-4 w-4 text-primary" />
+                        </div>
+                        <div>
+                          <p className="font-medium text-foreground">{invite.email}</p>
+                          <p className="text-sm text-muted-foreground">
+                            {roles.find(r => r.value === invite.role)?.label}
+                          </p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center space-x-2">
+                        <select
+                          className="px-3 py-1 border border-border rounded text-sm bg-background"
+                          value={invite.role}
+                          onChange={(e) => updateInviteRole(index, e.target.value as TeamMember['role'])}
+                        >
+                          {roles.map(role => (
+                            <option key={role.value} value={role.value}>
+                              {role.label}
+                            </option>
+                          ))}
+                        </select>
+                        
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removeInvite(index)}
+                        >
+                          <X className="h-4 w-4" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Skip Option */}
+            <div className="pt-6 border-t border-border">
+              <div className="flex items-center space-x-3">
+                <input
+                  type="checkbox"
+                  id="skip-invites"
+                  checked={skipInvites}
+                  onChange={(e) => setSkipInvites(e.target.checked)}
+                  className="h-4 w-4 text-primary border-border rounded focus:ring-primary"
+                />
+                <label htmlFor="skip-invites" className="text-sm text-muted-foreground">
+                  Skip for now - I'll invite team members later
+                </label>
+              </div>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Role Descriptions */}
+      <Card>
+        <CardContent className="p-6">
+          <h4 className={`${anton.className} uppercase text-md font-bold mb-4`}>
+            ROLE PERMISSIONS
+          </h4>
+          <div className="grid md:grid-cols-3 gap-4">
+            {roles.map(role => (
+              <div key={role.value} className="space-y-2">
+                <h5 className="font-semibold text-foreground">{role.label}</h5>
+                <p className="text-sm text-muted-foreground">{role.description}</p>
+              </div>
+            ))}
+          </div>
+        </CardContent>
+      </Card>
+
+      {/* Action Buttons */}
+      <div className="flex justify-between pt-6">
+        <Button variant="outline" onClick={onBack}>
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          Back
+        </Button>
+        
+        <Button 
+          onClick={handleContinue} 
+          disabled={loading}
+          size="lg"
+        >
+          {loading ? 'Sending invites...' : invites.length > 0 && !skipInvites ? 'Send Invitations' : 'Continue'}
+          {invites.length > 0 && !skipInvites ? (
+            <Send className="ml-2 h-4 w-4" />
+          ) : (
+            <ArrowRight className="ml-2 h-4 w-4" />
+          )}
+        </Button>
+      </div>
+    </div>
+  );
+}

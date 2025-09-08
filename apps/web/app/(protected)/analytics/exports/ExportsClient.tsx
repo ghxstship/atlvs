@@ -1,0 +1,740 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Card, Badge, Button } from '@ghxstship/ui';
+import { createBrowserClient } from '@ghxstship/auth';
+import { 
+  Plus,
+  Download,
+  Calendar,
+  Clock,
+  FileText,
+  Database,
+  Filter,
+  Search,
+  Play,
+  Pause,
+  Trash2,
+  Edit3,
+  Eye,
+  Share2,
+  Settings,
+  CheckCircle,
+  XCircle,
+  AlertCircle,
+  FileSpreadsheet,
+  FileJson,
+  Files,
+  Archive,
+  RefreshCw
+} from 'lucide-react';
+
+interface ExportJob {
+  id: string;
+  organizationId: string;
+  name: string;
+  description?: string;
+  dataSource: 'projects' | 'people' | 'finance' | 'events' | 'custom_query';
+  format: 'csv' | 'xlsx' | 'json' | 'pdf';
+  filters: Record<string, any>;
+  schedule?: {
+    enabled: boolean;
+    frequency: 'daily' | 'weekly' | 'monthly' | 'quarterly';
+    time: string;
+    dayOfWeek?: number;
+    dayOfMonth?: number;
+  };
+  status: 'active' | 'paused' | 'failed' | 'completed';
+  lastRun?: string;
+  nextRun?: string;
+  fileUrl?: string;
+  fileSize?: number;
+  recordCount?: number;
+  createdAt: string;
+  updatedAt: string;
+  createdBy: string;
+}
+
+interface ExportHistory {
+  id: string;
+  exportJobId: string;
+  status: 'running' | 'completed' | 'failed';
+  startedAt: string;
+  completedAt?: string;
+  fileUrl?: string;
+  fileSize?: number;
+  recordCount?: number;
+  errorMessage?: string;
+}
+
+interface ExportsClientProps {
+  organizationId: string;
+  translations: Record<string, string>;
+}
+
+export default function ExportsClient({ organizationId, translations }: ExportsClientProps) {
+  const [exportJobs, setExportJobs] = useState<ExportJob[]>([]);
+  const [exportHistory, setExportHistory] = useState<ExportHistory[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  const [activeTab, setActiveTab] = useState<'jobs' | 'history'>('jobs');
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const supabase = createBrowserClient();
+
+  useEffect(() => {
+    loadExportData();
+  }, [organizationId]);
+
+  const loadExportData = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+
+      // Mock export jobs for demonstration
+      const mockJobs: ExportJob[] = [
+        {
+          id: '1',
+          organizationId,
+          name: 'Monthly Financial Report',
+          description: 'Complete financial transactions and revenue data',
+          dataSource: 'finance',
+          format: 'xlsx',
+          filters: {
+            dateRange: 'last_30_days',
+            transactionType: 'all'
+          },
+          schedule: {
+            enabled: true,
+            frequency: 'monthly',
+            time: '09:00',
+            dayOfMonth: 1
+          },
+          status: 'active',
+          lastRun: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+          nextRun: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30).toISOString(),
+          fileUrl: '/exports/financial-report-2024-01.xlsx',
+          fileSize: 2048576,
+          recordCount: 1250,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          createdBy: 'user-1'
+        },
+        {
+          id: '2',
+          organizationId,
+          name: 'Team Directory Export',
+          description: 'Complete team member contact information',
+          dataSource: 'people',
+          format: 'csv',
+          filters: {
+            status: 'active',
+            includeContacts: true
+          },
+          schedule: {
+            enabled: true,
+            frequency: 'weekly',
+            time: '08:00',
+            dayOfWeek: 1
+          },
+          status: 'active',
+          lastRun: new Date(Date.now() - 1000 * 60 * 60 * 24 * 7).toISOString(),
+          nextRun: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7).toISOString(),
+          fileUrl: '/exports/team-directory-2024-01-15.csv',
+          fileSize: 512000,
+          recordCount: 85,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          createdBy: 'user-2'
+        },
+        {
+          id: '3',
+          organizationId,
+          name: 'Project Status Report',
+          description: 'All active projects with current status and metrics',
+          dataSource: 'projects',
+          format: 'json',
+          filters: {
+            status: ['active', 'in_progress'],
+            includeMetrics: true
+          },
+          status: 'paused',
+          lastRun: new Date(Date.now() - 1000 * 60 * 60 * 24 * 14).toISOString(),
+          fileUrl: '/exports/project-status-2024-01-01.json',
+          fileSize: 1024000,
+          recordCount: 24,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          createdBy: 'user-1'
+        }
+      ];
+
+      // Mock export history
+      const mockHistory: ExportHistory[] = [
+        {
+          id: 'h1',
+          exportJobId: '1',
+          status: 'completed',
+          startedAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
+          completedAt: new Date(Date.now() - 1000 * 60 * 60 * 2 + 1000 * 60 * 5).toISOString(),
+          fileUrl: '/exports/financial-report-2024-01-15.xlsx',
+          fileSize: 2048576,
+          recordCount: 1250
+        },
+        {
+          id: 'h2',
+          exportJobId: '2',
+          status: 'completed',
+          startedAt: new Date(Date.now() - 1000 * 60 * 60 * 24).toISOString(),
+          completedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 + 1000 * 60 * 2).toISOString(),
+          fileUrl: '/exports/team-directory-2024-01-14.csv',
+          fileSize: 512000,
+          recordCount: 85
+        },
+        {
+          id: 'h3',
+          exportJobId: '1',
+          status: 'failed',
+          startedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2).toISOString(),
+          completedAt: new Date(Date.now() - 1000 * 60 * 60 * 24 * 2 + 1000 * 60 * 3).toISOString(),
+          errorMessage: 'Database connection timeout'
+        }
+      ];
+
+      setExportJobs(mockJobs);
+      setExportHistory(mockHistory);
+
+    } catch (err) {
+      console.error('Error loading export data:', err);
+      setError('Failed to load export data');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const createExportJob = async (jobData: Partial<ExportJob>) => {
+    try {
+      const newJob: ExportJob = {
+        id: crypto.randomUUID(),
+        organizationId,
+        name: jobData.name || '',
+        description: jobData.description,
+        dataSource: jobData.dataSource || 'projects',
+        format: jobData.format || 'csv',
+        filters: jobData.filters || {},
+        schedule: jobData.schedule,
+        status: 'active',
+        createdAt: new Date().toISOString(),
+        updatedAt: new Date().toISOString(),
+        createdBy: 'current-user'
+      };
+
+      setExportJobs(prev => [...prev, newJob]);
+      setShowCreateForm(false);
+    } catch (err) {
+      console.error('Error creating export job:', err);
+      setError('Failed to create export job');
+    }
+  };
+
+  const runExportJob = async (jobId: string) => {
+    try {
+      // Update job status and add to history
+      setExportJobs(prev => prev.map(job => 
+        job.id === jobId 
+          ? { ...job, lastRun: new Date().toISOString(), status: 'active' as const }
+          : job
+      ));
+
+      // Add running history entry
+      const historyEntry: ExportHistory = {
+        id: crypto.randomUUID(),
+        exportJobId: jobId,
+        status: 'running',
+        startedAt: new Date().toISOString()
+      };
+
+      setExportHistory(prev => [historyEntry, ...prev]);
+
+      // Simulate completion after 3 seconds
+      setTimeout(() => {
+        setExportHistory(prev => prev.map(entry => 
+          entry.id === historyEntry.id 
+            ? { 
+                ...entry, 
+                status: 'completed' as const,
+                completedAt: new Date().toISOString(),
+                fileUrl: `/exports/export-${jobId}-${Date.now()}.csv`,
+                fileSize: Math.floor(Math.random() * 2000000) + 100000,
+                recordCount: Math.floor(Math.random() * 1000) + 50
+              }
+            : entry
+        ));
+      }, 3000);
+
+    } catch (err) {
+      console.error('Error running export job:', err);
+      setError('Failed to run export job');
+    }
+  };
+
+  const toggleJobStatus = async (jobId: string) => {
+    try {
+      setExportJobs(prev => prev.map(job => 
+        job.id === jobId 
+          ? { ...job, status: job.status === 'active' ? 'paused' : 'active' }
+          : job
+      ));
+    } catch (err) {
+      console.error('Error updating job status:', err);
+      setError('Failed to update job status');
+    }
+  };
+
+  const deleteExportJob = async (jobId: string) => {
+    try {
+      setExportJobs(prev => prev.filter(job => job.id !== jobId));
+      setExportHistory(prev => prev.filter(entry => entry.exportJobId !== jobId));
+    } catch (err) {
+      console.error('Error deleting export job:', err);
+      setError('Failed to delete export job');
+    }
+  };
+
+  const downloadFile = (fileUrl: string, fileName: string) => {
+    // In a real implementation, this would handle the actual file download
+    console.log(`Downloading file: ${fileUrl}`);
+    alert(`Download started: ${fileName}`);
+  };
+
+  const getFormatIcon = (format: ExportJob['format']) => {
+    switch (format) {
+      case 'csv': return Files;
+      case 'xlsx': return FileSpreadsheet;
+      case 'json': return FileJson;
+      case 'pdf': return FileText;
+      default: return FileText;
+    }
+  };
+
+  const getStatusIcon = (status: ExportJob['status'] | ExportHistory['status']) => {
+    switch (status) {
+      case 'active':
+      case 'completed': return CheckCircle;
+      case 'failed': return XCircle;
+      case 'paused': return Pause;
+      case 'running': return RefreshCw;
+      default: return AlertCircle;
+    }
+  };
+
+  const getStatusColor = (status: ExportJob['status'] | ExportHistory['status']) => {
+    switch (status) {
+      case 'active': return 'text-green-600';
+      case 'completed': return 'text-green-600';
+      case 'failed': return 'text-red-600';
+      case 'paused': return 'text-yellow-600';
+      case 'running': return 'text-blue-600';
+      default: return 'text-gray-600';
+    }
+  };
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
+
+  const filteredJobs = exportJobs.filter(job =>
+    job.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    job.description?.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  if (loading) {
+    return (
+      <div className="space-y-6">
+        <div className="animate-pulse">
+          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="h-48 bg-gray-200 rounded"></div>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card title="Error">
+        <div className="text-sm text-red-600">{error}</div>
+        <Button onClick={loadExportData} className="mt-4">
+          Retry
+        </Button>
+      </Card>
+    );
+  }
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-900">Data Exports</h1>
+          <p className="text-sm text-gray-600">Schedule and manage data exports</p>
+        </div>
+        <Button onClick={() => setShowCreateForm(true)}>
+          <Plus className="h-4 w-4 mr-2" />
+          New Export Job
+        </Button>
+      </div>
+
+      {/* Tabs */}
+      <div className="border-b border-gray-200">
+        <nav className="-mb-px flex space-x-8">
+          <button
+            onClick={() => setActiveTab('jobs')}
+            className={`py-2 px-1 border-b-2 font-medium text-sm ${
+              activeTab === 'jobs'
+                ? 'border-blue-500 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Export Jobs ({exportJobs.length})
+          </button>
+          <button
+            onClick={() => setActiveTab('history')}
+            className={`py-2 px-1 border-b-2 font-medium text-sm ${
+              activeTab === 'history'
+                ? 'border-blue-500 text-blue-600'
+                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+            }`}
+          >
+            Export History ({exportHistory.length})
+          </button>
+        </nav>
+      </div>
+
+      {activeTab === 'jobs' && (
+        <>
+          {/* Search */}
+          <div className="relative">
+            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search export jobs..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          {/* Export Jobs Grid */}
+          {filteredJobs.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredJobs.map((job) => {
+                const FormatIcon = getFormatIcon(job.format);
+                const StatusIcon = getStatusIcon(job.status);
+                
+                return (
+                  <Card key={job.id} className="p-6">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="p-2 bg-blue-100 rounded-lg">
+                          <FormatIcon className="h-5 w-5 text-blue-600" />
+                        </div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900">{job.name}</h3>
+                          <div className="flex items-center space-x-2 mt-1">
+                            <StatusIcon className={`h-4 w-4 ${getStatusColor(job.status)}`} />
+                            <Badge className={`text-xs ${
+                              job.status === 'active' ? 'bg-green-100 text-green-800' :
+                              job.status === 'paused' ? 'bg-yellow-100 text-yellow-800' :
+                              'bg-gray-100 text-gray-800'
+                            }`}>
+                              {job.status}
+                            </Badge>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => runExportJob(job.id)}
+                        >
+                          <Play className="h-3 w-3" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => deleteExportJob(job.id)}
+                        >
+                          <Trash2 className="h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+
+                    {job.description && (
+                      <p className="text-sm text-gray-600 mb-4">{job.description}</p>
+                    )}
+
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-500">Data Source:</span>
+                        <Badge variant="outline" className="text-xs">
+                          {job.dataSource}
+                        </Badge>
+                      </div>
+                      
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-gray-500">Format:</span>
+                        <span className="font-medium uppercase">{job.format}</span>
+                      </div>
+
+                      {job.schedule?.enabled && (
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-500">Schedule:</span>
+                          <Badge variant="outline" className="text-xs">
+                            {job.schedule.frequency}
+                          </Badge>
+                        </div>
+                      )}
+
+                      {job.lastRun && (
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-500">Last run:</span>
+                          <span className="text-xs text-gray-600">
+                            {new Date(job.lastRun).toLocaleDateString()}
+                          </span>
+                        </div>
+                      )}
+
+                      {job.recordCount && (
+                        <div className="flex items-center justify-between text-sm">
+                          <span className="text-gray-500">Records:</span>
+                          <span className="font-medium">{job.recordCount.toLocaleString()}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between mt-4 pt-4 border-t">
+                      {job.fileUrl ? (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => downloadFile(job.fileUrl!, `${job.name}.${job.format}`)}
+                        >
+                          <Download className="h-3 w-3 mr-1" />
+                          Download
+                        </Button>
+                      ) : (
+                        <div></div>
+                      )}
+                      
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleJobStatus(job.id)}
+                      >
+                        {job.status === 'active' ? (
+                          <Pause className="h-3 w-3 mr-1" />
+                        ) : (
+                          <Play className="h-3 w-3 mr-1" />
+                        )}
+                        {job.status === 'active' ? 'Pause' : 'Activate'}
+                      </Button>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          ) : (
+            <Card className="p-8 text-center">
+              <Archive className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                No export jobs found
+              </h3>
+              <p className="text-sm text-gray-600 mb-4">
+                {searchTerm 
+                  ? 'Try adjusting your search terms'
+                  : 'Create your first export job to get started'
+                }
+              </p>
+              <Button onClick={() => setShowCreateForm(true)}>
+                <Plus className="h-4 w-4 mr-2" />
+                Create Export Job
+              </Button>
+            </Card>
+          )}
+        </>
+      )}
+
+      {activeTab === 'history' && (
+        <div className="space-y-4">
+          {exportHistory.length > 0 ? (
+            exportHistory.map((entry) => {
+              const job = exportJobs.find(j => j.id === entry.exportJobId);
+              const StatusIcon = getStatusIcon(entry.status);
+              
+              return (
+                <Card key={entry.id} className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4">
+                      <StatusIcon className={`h-5 w-5 ${getStatusColor(entry.status)}`} />
+                      <div>
+                        <h4 className="font-medium text-gray-900">
+                          {job?.name || 'Unknown Job'}
+                        </h4>
+                        <div className="flex items-center space-x-4 text-sm text-gray-500">
+                          <span>Started: {new Date(entry.startedAt).toLocaleString()}</span>
+                          {entry.completedAt && (
+                            <span>Completed: {new Date(entry.completedAt).toLocaleString()}</span>
+                          )}
+                          {entry.recordCount && (
+                            <span>{entry.recordCount.toLocaleString()} records</span>
+                          )}
+                          {entry.fileSize && (
+                            <span>{formatFileSize(entry.fileSize)}</span>
+                          )}
+                        </div>
+                        {entry.errorMessage && (
+                          <div className="text-sm text-red-600 mt-1">
+                            Error: {entry.errorMessage}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {entry.fileUrl && entry.status === 'completed' && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => downloadFile(entry.fileUrl!, `export-${entry.id}.${job?.format || 'csv'}`)}
+                      >
+                        <Download className="h-3 w-3 mr-1" />
+                        Download
+                      </Button>
+                    )}
+                  </div>
+                </Card>
+              );
+            })
+          ) : (
+            <Card className="p-8 text-center">
+              <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-gray-900 mb-2">
+                No export history
+              </h3>
+              <p className="text-sm text-gray-600">
+                Export history will appear here once you run some export jobs
+              </p>
+            </Card>
+          )}
+        </div>
+      )}
+
+      {/* Create Export Job Form */}
+      {showCreateForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <Card className="w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto">
+            <h3 className="text-lg font-semibold mb-4">Create Export Job</h3>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const jobData = {
+                  name: formData.get('name') as string,
+                  description: formData.get('description') as string,
+                  dataSource: formData.get('dataSource') as ExportJob['dataSource'],
+                  format: formData.get('format') as ExportJob['format'],
+                  filters: {}
+                };
+                createExportJob(jobData);
+              }}
+            >
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Export Name
+                  </label>
+                  <input
+                    name="name"
+                    type="text"
+                    required
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="e.g., Monthly Financial Export"
+                  />
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Description
+                  </label>
+                  <textarea
+                    name="description"
+                    rows={3}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Brief description of this export..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Data Source
+                    </label>
+                    <select
+                      name="dataSource"
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="projects">Projects</option>
+                      <option value="people">People</option>
+                      <option value="finance">Finance</option>
+                      <option value="events">Events</option>
+                      <option value="custom_query">Custom Query</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Export Format
+                    </label>
+                    <select
+                      name="format"
+                      required
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="csv">CSV</option>
+                      <option value="xlsx">Excel (XLSX)</option>
+                      <option value="json">JSON</option>
+                      <option value="pdf">PDF</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-end space-x-3 mt-6">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setShowCreateForm(false)}
+                >
+                  Cancel
+                </Button>
+                <Button type="submit">
+                  Create Export Job
+                </Button>
+              </div>
+            </form>
+          </Card>
+        </div>
+      )}
+    </div>
+  );
+}

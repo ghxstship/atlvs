@@ -1,0 +1,453 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
+import { ArrowRight, ShoppingBag, Briefcase, Globe, Zap, CheckCircle, Play, Users, Star, Award, Search, Filter } from 'lucide-react';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+
+export const metadata: Metadata = {
+  title: 'OPENDECK - Creative Marketplace | GHXSTSHIP',
+  description: 'OPENDECK is the world\'s largest marketplace for creative professionals. Connect with top talent, discover resources, and build your creative network.',
+  openGraph: {
+    title: 'OPENDECK - Creative Marketplace | GHXSTSHIP',
+    description: 'OPENDECK is the world\'s largest marketplace for creative professionals. Connect with top talent, discover resources, and build your creative network.',
+    url: 'https://ghxstship.com/products/opendeck',
+  },
+};
+
+const features = [
+  {
+    icon: ShoppingBag,
+    title: 'Talent Marketplace',
+    description: 'Connect with verified creative professionals across all disciplines including directors, designers, writers, and more.',
+    benefits: ['Verified professionals', 'Portfolio reviews', 'Skill assessments', 'Rating system'],
+  },
+  {
+    icon: Briefcase,
+    title: 'Resource Library',
+    description: 'Access templates, assets, tools, and educational content curated by industry experts.',
+    benefits: ['Premium templates', 'Stock assets', 'Educational content', 'Tool recommendations'],
+  },
+  {
+    icon: Globe,
+    title: 'Global Network',
+    description: 'Worldwide community of creators and enterprises spanning 50+ countries and all time zones.',
+    benefits: ['50+ countries', 'Multi-language support', 'Local expertise', 'Cultural diversity'],
+  },
+  {
+    icon: Zap,
+    title: 'Instant Matching',
+    description: 'AI-powered talent and project matching algorithms that connect you with the perfect collaborators.',
+    benefits: ['AI matching', 'Skill compatibility', 'Availability sync', 'Budget alignment'],
+  },
+  {
+    icon: Search,
+    title: 'Advanced Search',
+    description: 'Powerful search and filtering tools to find exactly what you need, when you need it.',
+    benefits: ['Smart filters', 'Saved searches', 'Real-time results', 'Custom criteria'],
+  },
+  {
+    icon: Star,
+    title: 'Quality Assurance',
+    description: 'Comprehensive vetting process ensures you work with top-tier professionals and resources.',
+    benefits: ['Background checks', 'Portfolio verification', 'Client reviews', 'Quality scores'],
+  },
+  {
+    icon: Award,
+    title: 'Recognition System',
+    description: 'Showcase achievements, build reputation, and get recognized for outstanding work.',
+    benefits: ['Achievement badges', 'Reputation scores', 'Featured profiles', 'Success stories'],
+  },
+  {
+    icon: Filter,
+    title: 'Smart Curation',
+    description: 'Personalized recommendations based on your preferences, history, and project needs.',
+    benefits: ['Personal recommendations', 'Trending content', 'Curated collections', 'Smart suggestions'],
+  },
+];
+
+const categories = [
+  {
+    title: 'Creative Professionals',
+    count: '25K+',
+    description: 'Directors, designers, writers, photographers, and more',
+    examples: ['Film Directors', 'Graphic Designers', 'Copywriters', 'Photographers', 'Animators'],
+  },
+  {
+    title: 'Resources & Assets',
+    count: '100K+',
+    description: 'Templates, stock media, tools, and educational content',
+    examples: ['Design Templates', 'Stock Photos', 'Video Assets', 'Audio Libraries', 'Tutorials'],
+  },
+  {
+    title: 'Active Projects',
+    count: '50K+',
+    description: 'Live opportunities across all creative disciplines',
+    examples: ['Film Projects', 'Brand Campaigns', 'Web Design', 'Content Creation', 'Events'],
+  },
+];
+
+const testimonials = [
+  {
+    quote: "OPENDECK has completely changed how we find talent. What used to take weeks now takes hours, and the quality is consistently excellent.",
+    author: "Marcus Rodriguez",
+    role: "Creative Director, Apex Advertising",
+    project: "Global Brand Campaign",
+    rating: 5,
+  },
+  {
+    quote: "The global network on OPENDECK is incredible. We've found amazing talent from around the world that we never would have discovered otherwise.",
+    author: "Lisa Thompson",
+    role: "Executive Producer, Pinnacle Media",
+    project: "Documentary Series",
+    rating: 5,
+  },
+];
+
+const successStories = [
+  {
+    title: 'Apex Advertising',
+    challenge: 'Finding specialized creative talent for global campaigns',
+    solution: 'Used OPENDECK to connect with verified professionals worldwide',
+    result: '90% reduction in hiring time, 300% ROI increase',
+    industry: 'Advertising',
+  },
+  {
+    title: 'Meridian Studios',
+    challenge: 'Scaling creative team for multiple concurrent projects',
+    solution: 'Leveraged OPENDECK marketplace for on-demand talent',
+    result: '50% faster project delivery, 40% cost savings',
+    industry: 'Film & TV',
+  },
+  {
+    title: 'Harmony Events',
+    challenge: 'Finding local creative talent for international events',
+    solution: 'Connected with local professionals through OPENDECK network',
+    result: '99.8% event success rate, 60% cost reduction',
+    industry: 'Events',
+  },
+];
+
+export default function OPENDECKPage() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="py-20 bg-gradient-to-br from-purple-500/5 via-background to-pink-500/5">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div>
+                <Badge variant="outline" className="mb-4">
+                  Creative Marketplace
+                </Badge>
+                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+                  <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                    OPENDECK
+                  </span>
+                  <br />
+                  THE CREATIVE
+                  <br />
+                  MARKETPLACE
+                </h1>
+                <p className="text-xl text-muted-foreground">
+                  Connect with top talent, discover resources, and access the world's largest 
+                  marketplace designed for creative professionals and enterprises.
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-6">
+                <div className="text-center lg:text-left">
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>25K+</div>
+                  <div className="text-sm text-muted-foreground">Active Creators</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50K+</div>
+                  <div className="text-sm text-muted-foreground">Projects Listed</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>94%</div>
+                  <div className="text-sm text-muted-foreground">Success Rate</div>
+                </div>
+                <div className="text-center lg:text-left">
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50+</div>
+                  <div className="text-sm text-muted-foreground">Countries</div>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link href="/auth/signup">
+                  <Button size="lg" className="w-full sm:w-auto group">
+                    Join OPENDECK
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </Link>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto group">
+                  <Play className="mr-2 h-4 w-4" />
+                  Explore Marketplace
+                </Button>
+              </div>
+            </div>
+
+            {/* Marketplace Preview */}
+            <div className="relative">
+              <Card className="bg-background border shadow-2xl overflow-hidden">
+                <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+                  <div className="flex gap-2">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="flex-1 text-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
+                      <div className="w-3 h-3 text-green-500">🔒</div>
+                      opendeck.ghxstship.com
+                    </div>
+                  </div>
+                </div>
+
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>FEATURED TALENT</h3>
+                    <Badge variant="outline" className="text-purple-600 border-purple-600">
+                      Trending
+                    </Badge>
+                  </div>
+
+                  <div className="space-y-3">
+                    {[
+                      { name: 'Captain Blackwater', role: 'Film Director', rating: 4.9, projects: 127, location: 'Los Angeles, CA' },
+                      { name: 'Maya Chen', role: 'Creative Director', rating: 4.8, projects: 89, location: 'New York, NY' },
+                      { name: 'Alex Rivera', role: 'Motion Designer', rating: 5.0, projects: 156, location: 'London, UK' },
+                    ].map((talent, i) => (
+                      <div key={i} className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+                        <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                          <span className="text-white font-semibold text-sm">
+                            {talent.name.split(' ').map(n => n[0]).join('')}
+                          </span>
+                        </div>
+                        <div className="flex-1">
+                          <div className="font-semibold text-sm">{talent.name}</div>
+                          <div className="text-xs text-muted-foreground">{talent.role}</div>
+                          <div className="text-xs text-muted-foreground">{talent.location}</div>
+                        </div>
+                        <div className="text-right">
+                          <div className="flex items-center gap-1 mb-1">
+                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                            <span className="text-xs font-semibold">{talent.rating}</span>
+                          </div>
+                          <div className="text-xs text-muted-foreground">{talent.projects} projects</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="pt-3 border-t">
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span>25,847 active creators</span>
+                      <span>Updated 2 min ago</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              DISCOVER EVERYTHING CREATIVE
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              From world-class talent to premium resources, OPENDECK connects you with 
+              everything you need to bring your creative vision to life.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {categories.map((category) => (
+              <Card key={category.title} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8 text-center">
+                  <div className={`${anton.className} text-4xl font-bold text-purple-500 mb-4 uppercase`}>
+                    {category.count}
+                  </div>
+                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{category.title}</h3>
+                  <p className="text-muted-foreground mb-6">{category.description}</p>
+                  
+                  <div className="space-y-2">
+                    {category.examples.map((example) => (
+                      <div key={example} className="flex items-center justify-center gap-2">
+                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <span className="text-sm text-muted-foreground">{example}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-20 bg-muted/20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              POWERFUL MARKETPLACE FEATURES
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Advanced tools and features designed to help you find, connect, and collaborate 
+              with the best creative talent and resources.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <Card key={feature.title} className="hover:shadow-lg transition-shadow">
+                  <CardContent className="p-6">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 mb-4">
+                      <Icon className="h-6 w-6 text-white" />
+                    </div>
+                    <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
+                    <p className="text-sm text-muted-foreground mb-4">{feature.description}</p>
+                    <div className="space-y-1">
+                      {feature.benefits.map((benefit) => (
+                        <div key={benefit} className="flex items-center gap-2">
+                          <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                          <span className="text-xs text-muted-foreground">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              SUCCESS STORIES
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              See how leading companies have transformed their creative workflows with OPENDECK.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-16">
+            {successStories.map((story) => (
+              <Card key={story.title} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <Badge variant="outline" className="mb-4">{story.industry}</Badge>
+                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{story.title}</h3>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">CHALLENGE</h4>
+                      <p className="text-sm text-foreground">{story.challenge}</p>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">SOLUTION</h4>
+                      <p className="text-sm text-foreground">{story.solution}</p>
+                    </div>
+                    
+                    <div className="pt-4 border-t">
+                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">RESULT</h4>
+                      <p className="font-semibold text-purple-500">{story.result}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Testimonials */}
+          <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {testimonials.map((testimonial, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardContent className="p-8">
+                  <div className="flex items-center gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+                  <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                      <span className="text-white font-semibold text-sm">
+                        {testimonial.author.split(' ').map(n => n[0]).join('')}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="font-semibold text-foreground">{testimonial.author}</div>
+                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="text-xs text-muted-foreground">Project: {testimonial.project}</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-purple-500/5 to-pink-500/5">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              JOIN THE CREATIVE REVOLUTION
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Connect with 25,000+ creative professionals and discover unlimited opportunities 
+              in the world's largest creative marketplace.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+              <Link href="/auth/signup">
+                <Button size="lg" className="w-full sm:w-auto group">
+                  Join OPENDECK
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+              <Link href="/pricing">
+                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                  View Pricing
+                </Button>
+              </Link>
+            </div>
+
+            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="h-4 w-4 text-green-500" />
+                <span>Free to join</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-purple-500" />
+                <span>25K+ professionals</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Globe className="h-4 w-4 text-pink-500" />
+                <span>Global network</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}

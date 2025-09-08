@@ -1,0 +1,118 @@
+import { Metadata } from 'next';
+import { Anton } from 'next/font/google';
+import { Button } from '@ghxstship/ui';
+import { MessageSquare, Users, TrendingUp, Clock } from 'lucide-react';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+
+export const metadata: Metadata = {
+  title: 'Community Forums | GHXSTSHIP',
+  description: 'Join the GHXSTSHIP community forums to connect with other users, share knowledge, and get support.',
+};
+
+export default function ForumsPage() {
+  const forumCategories = [
+    {
+      title: 'General Discussion',
+      description: 'General topics about GHXSTSHIP and the industry',
+      posts: 1247,
+      members: 892,
+      icon: MessageSquare,
+    },
+    {
+      title: 'Product Support',
+      description: 'Get help with ATLVS and OPENDECK',
+      posts: 2156,
+      members: 1340,
+      icon: Users,
+    },
+    {
+      title: 'Feature Requests',
+      description: 'Suggest new features and improvements',
+      posts: 543,
+      members: 678,
+      icon: TrendingUp,
+    },
+    {
+      title: 'Announcements',
+      description: 'Official updates and news from GHXSTSHIP',
+      posts: 89,
+      members: 2456,
+      icon: Clock,
+    },
+  ];
+
+  return (
+    <div className="container mx-auto px-4 py-16">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-16">
+          <h1 className={`${anton.className} uppercase text-4xl md:text-5xl font-bold mb-6`}>
+            COMMUNITY FORUMS
+          </h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            Connect with fellow creators, share knowledge, and get support from the GHXSTSHIP community.
+          </p>
+          <Button size="lg">
+            Join the Discussion
+          </Button>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {forumCategories.map((category) => {
+            const Icon = category.icon;
+            return (
+              <div key={category.title} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center">
+                    <div className="bg-primary/10 p-3 rounded-lg mr-4">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className={`${anton.className} uppercase text-lg font-bold mb-1`}>
+                        {category.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground">{category.description}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex justify-between text-sm text-muted-foreground">
+                  <span>{category.posts.toLocaleString()} posts</span>
+                  <span>{category.members.toLocaleString()} members</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="bg-muted/30 rounded-lg p-8 text-center">
+          <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            COMMUNITY GUIDELINES
+          </h2>
+          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+            Help us maintain a welcoming and productive community by following our guidelines.
+          </p>
+          <div className="grid md:grid-cols-3 gap-6 text-left">
+            <div>
+              <h3 className="font-semibold mb-2">Be Respectful</h3>
+              <p className="text-sm text-muted-foreground">
+                Treat all community members with respect and courtesy.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Stay On Topic</h3>
+              <p className="text-sm text-muted-foreground">
+                Keep discussions relevant to the forum category.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-semibold mb-2">Help Others</h3>
+              <p className="text-sm text-muted-foreground">
+                Share your knowledge and help fellow community members.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

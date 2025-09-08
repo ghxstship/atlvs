@@ -1,0 +1,372 @@
+'use client';
+
+import { useState, useEffect } from 'react';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Plus, BookOpen, Clock, CheckCircle, AlertTriangle, Calendar, User } from 'lucide-react';
+import { createBrowserClient } from '@ghxstship/auth';
+import { useTranslations } from 'next-intl';
+
+interface TrainingProgram {
+  id: string;
+  name: string;
+  description: string;
+  category: 'safety' | 'technical' | 'compliance' | 'leadership' | 'certification';
+  duration: number; // in hours
+  required: boolean;
+  expiryMonths?: number;
+  createdAt?: string;
+}
+
+interface TrainingSession {
+  id: string;
+  programId: string;
+  programName: string;
+  instructorId?: string;
+  instructorName?: string;
+  scheduledDate: string;
+  startTime: string;
+  endTime: string;
+  location: string;
+  maxParticipants: number;
+  enrolledCount: number;
+  status: 'scheduled' | 'in_progress' | 'completed' | 'cancelled';
+  createdAt?: string;
+}
+
+interface TrainingRecord {
+  id: string;
+  personId: string;
+  personName: string;
+  programId: string;
+  programName: string;
+  sessionId?: string;
+  completedDate?: string;
+  expiryDate?: string;
+  score?: number;
+  status: 'enrolled' | 'in_progress' | 'completed' | 'expired' | 'failed';
+  certificateUrl?: string;
+  notes?: string;
+}
+
+interface TrainingClientProps {
+  orgId: string;
+}
+
+const TRAINING_CATEGORIES = [
+  { id: 'safety', name: 'Safety', color: 'bg-red-500' },
+  { id: 'technical', name: 'Technical', color: 'bg-blue-500' },
+  { id: 'compliance', name: 'Compliance', color: 'bg-yellow-500' },
+  { id: 'leadership', name: 'Leadership', color: 'bg-purple-500' },
+  { id: 'certification', name: 'Certification', color: 'bg-green-500' }
+] as const;
+
+export default function TrainingClient({ orgId }: TrainingClientProps) {
+  const t = useTranslations('pipeline.training');
+  const supabase = createBrowserClient();
+  const [programs, setPrograms] = useState<TrainingProgram[]>([]);
+  const [sessions, setSessions] = useState<TrainingSession[]>([]);
+  const [records, setRecords] = useState<TrainingRecord[]>([]);
+  const [people, setPeople] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState<'programs' | 'sessions' | 'records'>('programs');
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    loadData();
+  }, [orgId]);
+
+  const loadData = async () => {
+    setLoading(true);
+    try {
+      // Load people
+      const { data: peopleData } = await supabase
+        .from('people')
+        .select('id, first_name, last_name, email')
+        .eq('organization_id', orgId);
+
+      setPeople(peopleData || []);
+
+      // Mock data for demonstration
+      const mockPrograms: TrainingProgram[] = [
+        {
+          id: '1',
+          name: 'Safety Orientation',
+          description: 'Basic safety protocols and emergency procedures',
+          category: 'safety',
+          duration: 4,
+          required: true,
+          expiryMonths: 12
+        },
+        {
+          id: '2',
+          name: 'Equipment Operation Certification',
+          description: 'Certification for operating heavy equipment',
+          category: 'certification',
+          duration: 8,
+          required: true,
+          expiryMonths: 24
+        },
+        {
+          id: '3',
+          name: 'Leadership Development',
+          description: 'Management and leadership skills training',
+          category: 'leadership',
+          duration: 16,
+          required: false
+        }
+      ];
+
+      const mockSessions: TrainingSession[] = [
+        {
+          id: '1',
+          programId: '1',
+          programName: 'Safety Orientation',
+          instructorName: 'Captain Barbossa',
+          scheduledDate: '2024-01-25',
+          startTime: '09:00',
+          endTime: '13:00',
+          location: 'Training Room A',
+          maxParticipants: 20,
+          enrolledCount: 15,
+          status: 'scheduled'
+        },
+        {
+          id: '2',
+          programId: '2',
+          programName: 'Equipment Operation Certification',
+          instructorName: 'Will Turner',
+          scheduledDate: '2024-01-28',
+          startTime: '08:00',
+          endTime: '16:00',
+          location: 'Equipment Yard',
+          maxParticipants: 10,
+          enrolledCount: 8,
+          status: 'scheduled'
+        }
+      ];
+
+      const mockRecords: TrainingRecord[] = [
+        {
+          id: '1',
+          personId: peopleData?.[0]?.id || 'mock-1',
+          personName: peopleData?.[0] ? `${peopleData[0].first_name} ${peopleData[0].last_name}` : 'Jack Sparrow',
+          programId: '1',
+          programName: 'Safety Orientation',
+          completedDate: '2024-01-15',
+          expiryDate: '2025-01-15',
+          score: 95,
+          status: 'completed'
+        },
+        {
+          id: '2',
+          personId: peopleData?.[1]?.id || 'mock-2',
+          personName: peopleData?.[1] ? `${peopleData[1].first_name} ${peopleData[1].last_name}` : 'Elizabeth Swann',
+          programId: '2',
+          programName: 'Equipment Operation Certification',
+          status: 'enrolled'
+        }
+      ];
+
+      setPrograms(mockPrograms);
+      setSessions(mockSessions);
+      setRecords(mockRecords);
+    } catch (error) {
+      console.error('Error loading training data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const getStatusBadge = (status: string) => {
+    switch (status) {
+      case 'completed':
+        return <Badge variant="success" className="flex items-center gap-1"><CheckCircle className="w-3 h-3" />Completed</Badge>;
+      case 'in_progress':
+        return <Badge variant="warning" className="flex items-center gap-1"><Clock className="w-3 h-3" />In Progress</Badge>;
+      case 'scheduled':
+        return <Badge variant="outline" className="flex items-center gap-1"><Calendar className="w-3 h-3" />Scheduled</Badge>;
+      case 'expired':
+        return <Badge variant="destructive" className="flex items-center gap-1"><AlertTriangle className="w-3 h-3" />Expired</Badge>;
+      case 'enrolled':
+        return <Badge variant="secondary" className="flex items-center gap-1"><User className="w-3 h-3" />Enrolled</Badge>;
+      default:
+        return <Badge variant="outline">{status}</Badge>;
+    }
+  };
+
+  const getCategoryColor = (category: TrainingProgram['category']) => {
+    const categoryInfo = TRAINING_CATEGORIES.find(cat => cat.id === category);
+    return categoryInfo?.color || 'bg-gray-500';
+  };
+
+  return (
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold font-anton uppercase">Training Pipeline</h1>
+          <p className="text-sm text-muted-foreground">Manage training programs, sessions, and completion records</p>
+        </div>
+        <Button onClick={() => setShowForm(true)} className="flex items-center gap-2">
+          <Plus className="w-4 h-4" />
+          Add Training
+        </Button>
+      </div>
+
+      {/* Tabs */}
+      <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+        {[
+          { id: 'programs', label: 'Programs', icon: BookOpen },
+          { id: 'sessions', label: 'Sessions', icon: Calendar },
+          { id: 'records', label: 'Records', icon: User }
+        ].map((tab) => {
+          const Icon = tab.icon;
+          return (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                activeTab === tab.id
+                  ? 'bg-background text-foreground shadow-sm'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              <Icon className="w-4 h-4" />
+              {tab.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {loading ? (
+        <Card>
+          <div className="p-8 text-center text-muted-foreground">Loading training data...</div>
+        </Card>
+      ) : (
+        <>
+          {/* Programs Tab */}
+          {activeTab === 'programs' && (
+            <div className="space-y-4">
+              {programs.map(program => (
+                <Card key={program.id}>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className={`w-3 h-3 rounded-full ${getCategoryColor(program.category)}`} />
+                          <h3 className="text-lg font-semibold">{program.name}</h3>
+                          {program.required && <Badge variant="destructive" className="text-xs">Required</Badge>}
+                        </div>
+                        <p className="text-sm text-muted-foreground mb-3">{program.description}</p>
+                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                          <span>Duration: {program.duration} hours</span>
+                          <span>Category: {TRAINING_CATEGORIES.find(cat => cat.id === program.category)?.name}</span>
+                          {program.expiryMonths && <span>Expires: {program.expiryMonths} months</span>}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* Sessions Tab */}
+          {activeTab === 'sessions' && (
+            <div className="space-y-4">
+              {sessions.map(session => (
+                <Card key={session.id}>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-1">{session.programName}</h3>
+                        <div className="text-sm text-muted-foreground mb-3">
+                          Instructor: {session.instructorName || 'TBD'}
+                        </div>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <span className="font-medium">Date:</span> {new Date(session.scheduledDate).toLocaleDateString()}
+                          </div>
+                          <div>
+                            <span className="font-medium">Time:</span> {session.startTime} - {session.endTime}
+                          </div>
+                          <div>
+                            <span className="font-medium">Location:</span> {session.location}
+                          </div>
+                          <div>
+                            <span className="font-medium">Capacity:</span> {session.enrolledCount}/{session.maxParticipants}
+                          </div>
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        {getStatusBadge(session.status)}
+                        <div className="text-right">
+                          <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                            <div 
+                              className="h-full bg-blue-500 transition-all"
+                              style={{ width: `${(session.enrolledCount / session.maxParticipants) * 100}%` }}
+                            />
+                          </div>
+                          <div className="text-xs text-muted-foreground mt-1">
+                            {Math.round((session.enrolledCount / session.maxParticipants) * 100)}% full
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+
+          {/* Records Tab */}
+          {activeTab === 'records' && (
+            <div className="space-y-4">
+              {records.map(record => (
+                <Card key={record.id}>
+                  <div className="p-4">
+                    <div className="flex items-start justify-between">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-semibold mb-1">{record.personName}</h3>
+                        <p className="text-sm text-muted-foreground mb-2">{record.programName}</p>
+                        <div className="grid grid-cols-2 gap-4 text-sm">
+                          {record.completedDate && (
+                            <div>
+                              <span className="font-medium">Completed:</span> {new Date(record.completedDate).toLocaleDateString()}
+                            </div>
+                          )}
+                          {record.expiryDate && (
+                            <div>
+                              <span className="font-medium">Expires:</span> {new Date(record.expiryDate).toLocaleDateString()}
+                            </div>
+                          )}
+                          {record.score && (
+                            <div>
+                              <span className="font-medium">Score:</span> {record.score}%
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col items-end gap-2">
+                        {getStatusBadge(record.status)}
+                        {record.score && (
+                          <div className="text-right">
+                            <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
+                              <div 
+                                className={`h-full transition-all ${record.score >= 80 ? 'bg-green-500' : record.score >= 60 ? 'bg-yellow-500' : 'bg-red-500'}`}
+                                style={{ width: `${record.score}%` }}
+                              />
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              ))}
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}

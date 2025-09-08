@@ -1,0 +1,22 @@
+name: Webhook Redrive
+
+on:
+  schedule:
+    - cron: '*/30 * * * *' # every 30 minutes
+  workflow_dispatch: {}
+
+jobs:
+  redrive:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call redrive endpoint
+        env:
+          REDRIVE_URL: ${{ secrets.REDRIVE_URL }}
+          REDRIVE_TOKEN: ${{ secrets.REDRIVE_TOKEN }}
+        run: |
+          if [ -z "$REDRIVE_URL" ]; then echo "REDRIVE_URL not set"; exit 1; fi
+          echo "POST $REDRIVE_URL"
+          curl -sS -X POST "$REDRIVE_URL?limit=100" \
+            -H "x-ci-bypass: $REDRIVE_TOKEN" \
+            -H 'content-length: 0' \
+            -o /dev/null -w '%{http_code}\n'

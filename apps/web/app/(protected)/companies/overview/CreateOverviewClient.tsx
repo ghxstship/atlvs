@@ -1,0 +1,380 @@
+'use client';
+
+import React, { useState, useEffect } from 'react';
+import { User } from '@supabase/supabase-js';
+import { createBrowserClient } from '@ghxstship/auth';
+import { 
+  UniversalDrawer,
+  Button,
+  Input,
+  Textarea,
+  Select,
+  Card
+} from '@ghxstship/ui';
+import { 
+  Building2,
+  Target,
+  Calendar,
+  Users,
+  Save,
+  X
+} from 'lucide-react';
+
+interface CreateOverviewClientProps {
+  user: User;
+  orgId: string;
+  isOpen: boolean;
+  onClose: () => void;
+  onSuccess?: (item: any) => void;
+}
+
+interface OverviewFormData {
+  type: string;
+  title: string;
+  description: string;
+  priority: string;
+  dueDate: string;
+  assignedTo: string;
+  companyId: string;
+  status: string;
+}
+
+const OVERVIEW_TYPES = [
+  { value: 'task', label: 'Company Task' },
+  { value: 'milestone', label: 'Company Milestone' },
+  { value: 'review', label: 'Performance Review' },
+  { value: 'audit', label: 'Compliance Audit' },
+  { value: 'meeting', label: 'Company Meeting' },
+  { value: 'renewal', label: 'Contract Renewal' },
+  { value: 'other', label: 'Other' }
+];
+
+const PRIORITIES = [
+  { value: 'low', label: 'Low Priority' },
+  { value: 'medium', label: 'Medium Priority' },
+  { value: 'high', label: 'High Priority' },
+  { value: 'urgent', label: 'Urgent' }
+];
+
+const STATUSES = [
+  { value: 'pending', label: 'Pending' },
+  { value: 'in_progress', label: 'In Progress' },
+  { value: 'completed', label: 'Completed' },
+  { value: 'cancelled', label: 'Cancelled' }
+];
+
+export default function CreateOverviewClient({ 
+  user, 
+  orgId, 
+  isOpen, 
+  onClose, 
+  onSuccess 
+}: CreateOverviewClientProps) {
+  const [loading, setLoading] = useState(false);
+  const [companies, setCompanies] = useState<any[]>([]);
+  const [teamMembers, setTeamMembers] = useState<any[]>([]);
+  const [formData, setFormData] = useState<OverviewFormData>({
+    type: 'task',
+    title: '',
+    description: '',
+    priority: 'medium',
+    dueDate: '',
+    assignedTo: '',
+    companyId: '',
+    status: 'pending'
+  });
+
+  const supabase = createBrowserClient();
+
+  useEffect(() => {
+    if (isOpen) {
+      loadCompanies();
+      loadTeamMembers();
+    }
+  }, [isOpen, orgId]);
+
+  const loadCompanies = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('companies')
+        .select('id, name')
+        .eq('organization_id', orgId)
+        .eq('status', 'active')
+        .order('name');
+
+      if (error) throw error;
+      setCompanies(data || []);
+    } catch (error) {
+      console.error('Error loading companies:', error);
+    }
+  };
+
+  const loadTeamMembers = async () => {
+    try {
+      const { data, error } = await supabase
+        .from('memberships')
+        .select(`
+          user_id,
+          user_profiles!inner(
+            id,
+            first_name,
+            last_name,
+            email
+          )
+        `)
+        .eq('organization_id', orgId)
+        .eq('status', 'active');
+
+      if (error) throw error;
+      setTeamMembers(data || []);
+    } catch (error) {
+      console.error('Error loading team members:', error);
+    }
+  };
+
+  const handleInputChange = (field: keyof OverviewFormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.title.trim()) return;
+
+    setLoading(true);
+    try {
+      const itemId = crypto.randomUUID();
+      
+      // Insert overview item record
+      const { data: item, error } = await supabase
+        .from('company_overview_items')
+        .insert({
+          id: itemId,
+          organization_id: orgId,
+          company_id: formData.companyId || null,
+          type: formData.type,
+          title: formData.title.trim(),
+          description: formData.description.trim() || null,
+          priority: formData.priority,
+          status: formData.status,
+          due_date: formData.dueDate || null,
+          assigned_to: formData.assignedTo || null,
+          created_by: user.id,
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        })
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      // Log activity
+      await supabase
+        .from('activity_logs')
+        .insert({
+          id: crypto.randomUUID(),
+          organization_id: orgId,
+          user_id: user.id,
+          action: 'create',
+          entity_type: 'company_overview_item',
+          entity_id: itemId,
+          metadata: {
+            item_title: formData.title,
+            item_type: formData.type,
+            priority: formData.priority,
+            company_id: formData.companyId
+          },
+          occurred_at: new Date().toISOString()
+        });
+
+      // Reset form
+      setFormData({
+        type: 'task',
+        title: '',
+        description: '',
+        priority: 'medium',
+        dueDate: '',
+        assignedTo: '',
+        companyId: '',
+        status: 'pending'
+      });
+
+      onSuccess?.(item);
+      onClose();
+    } catch (error) {
+      console.error('Error creating overview item:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <UniversalDrawer
+      isOpen={isOpen}
+      onClose={onClose}
+      title="Add Overview Item"
+      size="lg"
+    >
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Item Details */}
+        <Card className="p-4">
+          <div className="flex items-center gap-2 mb-4">
+            <Target className="h-5 w-5 text-blue-600" />
+            <h3 className="font-semibold">Item Details</h3>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Item Type *
+              </label>
+              <Select
+                value={formData.type}
+                onValueChange={(value) => handleInputChange('type', value)}
+              >
+                {OVERVIEW_TYPES.map(type => (
+                  <option key={type.value} value={type.value}>
+                    {type.label}
+                  </option>
+                ))}
+              </Select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Title *
+              </label>
+              <Input
+                value={formData.title}
+                onChange={(e) => handleInputChange('title', e.target.value)}
+                placeholder="Enter item title"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Description
+              </label>
+              <Textarea
+                value={formData.description}
+                onChange={(e) => handleInputChange('description', e.target.value)}
+                placeholder="Detailed description of the item"
+                rows={3}
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Priority
+                </label>
+                <Select
+                  value={formData.priority}
+                  onValueChange={(value) => handleInputChange('priority', value)}
+                >
+                  {PRIORITIES.map(priority => (
+                    <option key={priority.value} value={priority.value}>
+                      {priority.label}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium mb-1">
+                  Status
+                </label>
+                <Select
+                  value={formData.status}
+                  onValueChange={(value) => handleInputChange('status', value)}
+                >
+                  {STATUSES.map(status => (
+                    <option key={status.value} value={status.value}>
+                      {status.label}
+                    </option>
+                  ))}
+                </Select>
+              </div>
+            </div>
+          </div>
+        </Card>
+
+        {/* Assignment & Timeline */}
+        <Card className="p-4">
+          <div className="flex items-center gap-2 mb-4">
+            <Users className="h-5 w-5 text-green-600" />
+            <h3 className="font-semibold">Assignment & Timeline</h3>
+          </div>
+          
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Related Company (Optional)
+              </label>
+              <Select
+                value={formData.companyId}
+                onValueChange={(value) => handleInputChange('companyId', value)}
+              >
+                <option value="">No company association</option>
+                {companies.map(company => (
+                  <option key={company.id} value={company.id}>
+                    {company.name}
+                  </option>
+                ))}
+              </Select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                Assigned To (Optional)
+              </label>
+              <Select
+                value={formData.assignedTo}
+                onValueChange={(value) => handleInputChange('assignedTo', value)}
+              >
+                <option value="">Unassigned</option>
+                {teamMembers.map(member => (
+                  <option key={member.user_id} value={member.user_id}>
+                    {member.user_profiles.first_name} {member.user_profiles.last_name}
+                  </option>
+                ))}
+              </Select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium mb-1">
+                <Calendar className="h-4 w-4 inline mr-1" />
+                Due Date (Optional)
+              </label>
+              <Input
+                type="date"
+                value={formData.dueDate}
+                onChange={(e) => handleInputChange('dueDate', e.target.value)}
+              />
+            </div>
+          </div>
+        </Card>
+
+        {/* Form Actions */}
+        <div className="flex justify-end gap-3 pt-4 border-t">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onClose}
+            disabled={loading}
+          >
+            <X className="h-4 w-4 mr-2" />
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            disabled={loading || !formData.title.trim()}
+          >
+            <Save className="h-4 w-4 mr-2" />
+            {loading ? 'Creating...' : 'Create Item'}
+          </Button>
+        </div>
+      </form>
+    </UniversalDrawer>
+  );
+}

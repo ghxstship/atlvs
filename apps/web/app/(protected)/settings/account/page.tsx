@@ -1,0 +1,17 @@
+import { Card } from '@ghxstship/ui';
+
+export const metadata = {
+  title: 'Settings · Account',
+};
+
+export default function SettingsAccount() {
+  return (
+    <div className="space-y-4">
+      <Card title="Account Settings">
+        <div className="text-sm text-foreground/70">
+          Placeholder: Profile details, password, 2FA, sessions, API keys.
+        </div>
+      </Card>
+    </div>
+  );
+}

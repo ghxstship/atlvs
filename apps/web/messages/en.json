@@ -1,0 +1,286 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "people": "People",
+    "programming": "Programming",
+    "pipeline": "Pipeline",
+    "procurement": "Procurement",
+    "jobs": "Jobs",
+    "companies": "Companies",
+    "finance": "Finance",
+    "analytics": "Analytics",
+    "resources": "Resources",
+    "settings": "Settings",
+    "profile": "Profile"
+  },
+  "common": {
+    "overview": "Overview"
+  },
+  "programming": {
+    "title": "Programming",
+    "activations": {
+      "title": "Activations"
+    },
+    "callSheets": {
+      "title": "Call Sheets"
+    },
+    "riders": {
+      "title": "Riders"
+    },
+    "create": "Create New",
+    "name": "Name",
+    "description": "Description",
+    "status": "Status",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "eventDate": "Event Date",
+    "callTime": "Call Time",
+    "location": "Location",
+    "notes": "Notes",
+    "type": "Type",
+    "requirements": "Requirements",
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "Saved successfully",
+    "saveError": "Failed to save",
+    "loading": "Loading...",
+    "noComments": "No comments yet",
+    "record": "Record",
+    "statuses": {
+      "planning": "Planning",
+      "setup": "Setup",
+      "active": "Active",
+      "complete": "Complete"
+    },
+    "types": {
+      "technical": "Technical",
+      "hospitality": "Hospitality",
+      "security": "Security",
+      "other": "Other"
+    },
+    "empty": {
+      "title": "No records yet",
+      "description": "Create your first record to get started",
+      "cta": "Create New"
+    },
+    "drawer": {
+      "details": "Details",
+      "edit": "Edit",
+      "comments": "Comments",
+      "activity": "Activity"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "grid": {
+      "name": "Name",
+      "status": "Status",
+      "startsAt": "Start"
+    },
+    "drawer": {
+      "details": "Details",
+      "edit": "Edit",
+      "comments": "Comments",
+      "activity": "Activity",
+      "saving": "Saving…",
+      "allSaved": "All changes saved",
+      "unsaved": "Unsaved changes will autosave…",
+      "post": "Post",
+      "loading": "Loading…"
+    },
+    "create": {
+      "newTitle": "New Project",
+      "create": "Create",
+      "cancel": "Cancel",
+      "nameHelp": "Enter a descriptive project name",
+      "statusHelp": "Project lifecycle status",
+      "startsAtHelp": "Planned start date"
+    },
+    "empty": {
+      "title": "No projects yet",
+      "description": "Create your first project or load a themed demo to explore features.",
+      "cta": "Load Demo",
+      "loading": "Seeding demo…",
+      "seeded": "Demo data created",
+      "error": "Could not load demo"
+    }
+  },
+  "settingsOrg": {
+    "title": "Organization",
+    "description": "Manage your organization profile, brand, and data controls.",
+    "remove": {
+      "title": "Remove Demo Data",
+      "help": "Deletes any demo records seeded for this organization. This cannot be undone.",
+      "cta": "Remove Demo Data",
+      "loading": "Removing demo…",
+      "error": "Could not remove demo data",
+      "confirm": "Are you sure you want to remove all demo data? This cannot be undone."
+    }
+  },
+  "files": {
+    "title": "Files",
+    "name": "Name",
+    "size": "Size",
+    "type": "Type",
+    "uploaded": "Uploaded",
+    "noFiles": "No files uploaded yet",
+    "uploadFirst": "Upload your first file to get started",
+    "tags": {
+      "add": "Add tag",
+      "remove": "Remove tag",
+      "placeholder": "Enter tag name"
+    },
+    "filters": {
+      "title": "Filter by tags",
+      "add": "Add filter",
+      "remove": "Remove filter",
+      "clearAll": "Clear all"
+    },
+    "table": {
+      "name": "Name",
+      "type": "Type",
+      "size": "Size",
+      "created": "Created",
+      "save": "Save",
+      "delete": "Delete",
+      "confirmDelete": "Delete this file permanently? This will remove the stored object as well.",
+      "updated": "File updated",
+      "deleted": "File deleted"
+    },
+    "empty": {
+      "title": "No files yet",
+      "description": "Upload images or PDFs. Files are stored securely in Supabase Storage."
+    },
+    "upload": {
+      "title": "Upload Files",
+      "cta": "Upload File",
+      "uploading": "Uploading…",
+      "error": "Upload failed",
+      "tooLarge": "File is too large (max 25MB)",
+      "unsupported": "Unsupported file type"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "grid": {
+      "title": "Title",
+      "status": "Status",
+      "dueAt": "Due"
+    },
+    "drawer": {
+      "details": "Details",
+      "edit": "Edit",
+      "comments": "Comments",
+      "activity": "Activity",
+      "saving": "Saving…",
+      "allSaved": "All changes saved",
+      "unsaved": "Unsaved changes will autosave…",
+      "post": "Post",
+      "loading": "Loading…"
+    },
+    "create": {
+      "newTitle": "New Task",
+      "create": "Create",
+      "cancel": "Cancel",
+      "titleHelp": "Enter a short, action-oriented title",
+      "statusHelp": "Workflow status",
+      "dueAtHelp": "Due date"
+    },
+    "empty": {
+      "title": "No tasks yet",
+      "description": "Create your first task or load a themed demo to explore features."
+    }
+  }
+  ,
+  "procurement": {
+    "title": "Procurement",
+    "create": "Create New",
+    "save": "Save",
+    "saving": "Saving...",
+    "saved": "Saved successfully",
+    "saveError": "Failed to save",
+    "loadDemo": "Load Demo",
+    "record": "Record",
+    "name": "Name",
+    "description": "Description",
+    "orderNumber": "Order Number",
+    "vendor": "Vendor",
+    "amount": "Amount",
+    "totalAmount": "Total Amount",
+    "price": "Price",
+    "currency": "Currency",
+    "status": "Status",
+    "availability": "Availability",
+    "category": "Category",
+    "orderDate": "Order Date",
+    "expectedDelivery": "Expected Delivery",
+    "orders": {
+      "title": "Orders"
+    },
+    "products": {
+      "title": "Products"
+    },
+    "tracking": {
+      "title": "Tracking"
+    },
+    "catalog": {
+      "title": "Catalog"
+    },
+    "statuses": {
+      "pending": "Pending",
+      "approved": "Approved",
+      "ordered": "Ordered",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "availabilities": {
+      "available": "Available",
+      "limited": "Limited",
+      "unavailable": "Unavailable"
+    },
+    "categories": {
+      "audio_equipment": "Audio Equipment",
+      "lighting": "Lighting",
+      "staging": "Staging",
+      "catering": "Catering",
+      "other": "Other"
+    },
+    "empty": {
+      "title": "No records yet",
+      "description": "Create your first record to get started",
+      "cta": "Create New"
+    },
+    "drawer": {
+      "details": "Details",
+      "edit": "Edit"
+    }
+  },
+  "opendeck": {
+    "title": "OPENDECK Marketplace",
+    "unauthorized": "Sign in to view marketplace",
+    "loading": "Loading…",
+    "create": "New Listing",
+    "refresh": "Refresh",
+    "save": "Save",
+    "updated": "Listing updated",
+    "emptyComments": "No comments yet",
+    "grid": {
+      "title": "Title",
+      "price": "Price",
+      "status": "Status",
+      "description": "Description"
+    },
+    "drawer": {
+      "details": "Details",
+      "edit": "Edit",
+      "comments": "Comments",
+      "activity": "Activity",
+      "saving": "Saving…"
+    },
+    "demo": {
+      "title": "Phantom PA Stack — Rent",
+      "description": "High-output touring PA stack with subs. Vendor: Blackwater Audio Co."
+    }
+  }
+}
