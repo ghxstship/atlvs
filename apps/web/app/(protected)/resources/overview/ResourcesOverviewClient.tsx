@@ -1,9 +1,9 @@
 'use client';
 
 import React from 'react';
-import { Card } from '@ghxstship/ui/card';
-import { Button } from '@ghxstship/ui/button';
-import { Badge } from '@ghxstship/ui/badge';
+import { Card } from '@ghxstship/ui';
+import { Button } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
 import { 
   FileText, Download, Upload, Users, 
   TrendingUp, Clock, Star, FolderOpen,
