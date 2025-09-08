@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "next dev",
-    "build": "node ./scripts/generate-openapi.mjs && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint --no-error-on-unmatched-pattern 'app/**/*.{ts,tsx}' 'components/**/*.{ts,tsx}' 'lib/**/*.{ts,tsx}'",
     "typecheck": "tsc --noEmit",
