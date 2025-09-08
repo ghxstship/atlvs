@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { Button } from '@ghxstship/ui/button';
+import { Button } from '@ghxstship/ui';
 import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 
 export default function HeroSection() {

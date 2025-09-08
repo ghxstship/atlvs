@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation';
-import { createServerComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import ResourcesOverviewClient from './ResourcesOverviewClient';
 
@@ -9,7 +9,7 @@ export const metadata = {
 };
 
 export default async function ResourcesOverview() {
-  const supabase = createServerComponentClient({ cookies });
+  const supabase = await createClient();
   
   const {
     data: { session },

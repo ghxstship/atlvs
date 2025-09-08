@@ -5,7 +5,10 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
-import { Card, Badge, Button, Drawer } from '@atlvs/ui';
+import { Card } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
+import { Button } from '@ghxstship/ui';
+import { UniversalDrawer as Drawer } from '@ghxstship/ui';
 import { Plus, X, BarChart3, PieChart, LineChart, Activity } from 'lucide-react';
 
 const DashboardSchema = z.object({
