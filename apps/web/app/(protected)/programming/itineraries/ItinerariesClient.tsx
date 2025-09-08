@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { createClient } from '@ghxstship/auth/client';
+import { createClient } from '@/lib/supabase/client';
 import { 
   DataGrid, 
   KanbanBoard, 
