@@ -1,12 +1,7 @@
 {
-  "crons": [
-    {
-      "path": "/api/v1/webhooks/redrive/enqueue",
-      "schedule": "*/10 * * * *"
-    },
-    {
-      "path": "/api/v1/webhooks/redrive/process",
-      "schedule": "*/10 * * * *"
-    }
-  ]
+  "buildCommand": "cd ../.. && pnpm build",
+  "devCommand": "cd ../.. && pnpm dev",
+  "installCommand": "cd ../.. && pnpm install",
+  "outputDirectory": "apps/web/.next",
+  "framework": "nextjs"
 }
