@@ -19,12 +19,6 @@ import { GridSystem } from './GridSystem';
 import { EnhancementSystem } from './EnhancementSystem';
 
 export * from './GlobalUIOptimization';
-export * from './AccessibilityProvider';
-export * from './WorkflowOptimizer';
-export * from './FlowValidator';
-export * from './ProgressiveDisclosure';
-export * from './CacheManager';
-export * from './PerformanceMonitor';
 
 export { 
   DESIGN_TOKENS, 
