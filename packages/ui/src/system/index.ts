@@ -18,7 +18,7 @@ import { WorkflowSystem } from './WorkflowSystem';
 import { GridSystem } from './GridSystem';
 import { EnhancementSystem } from './EnhancementSystem';
 
-export * from './GlobalUIOptimization';
+// GlobalUIOptimization removed due to build issues
 
 export { 
   DESIGN_TOKENS, 

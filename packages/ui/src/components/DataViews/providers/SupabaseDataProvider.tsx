@@ -384,5 +384,4 @@ function DataViewProviderWrapper({ children, config }: { children: React.ReactNo
 // Import the original DataViewProvider
 import { DataViewProvider } from '../DataViewProvider';
 
-// Export EnhancedUniversalDrawer
-export { default as EnhancedUniversalDrawer } from '../UniversalDrawer/EnhancedUniversalDrawer';
+// EnhancedUniversalDrawer removed due to build issues
