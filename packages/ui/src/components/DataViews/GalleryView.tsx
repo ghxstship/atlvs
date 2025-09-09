@@ -6,7 +6,7 @@ import { Button } from '../Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
-  Grid3X3, 
+  Grid3x3, 
   List, 
   MoreHorizontal, 
   Eye, 
@@ -228,7 +228,7 @@ export function GalleryView({
               size="sm"
               onClick={() => setViewLayout('grid')}
             >
-              <Grid3X3 className="h-4 w-4" />
+              <Grid3x3 className="h-4 w-4" />
             </Button>
             <Button
               variant={viewLayout === 'list' ? 'primary' : 'ghost'}

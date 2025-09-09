@@ -234,12 +234,13 @@ export default function HealthInfoClient() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <Select
-              label="Blood Type"
-              value={formData.blood_type || ''}
-              onChange={(e) => setFormData({ ...formData, blood_type: e.target.value })}
-              disabled={!isEditing}
-            >
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Blood Type</label>
+              <Select
+                value={formData.blood_type || ''}
+                onValueChange={(value: string) => setFormData({ ...formData, blood_type: value })}
+                disabled={!isEditing}
+              >
               <option value="">Select...</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -250,6 +251,7 @@ export default function HealthInfoClient() {
               <option value="O+">O+</option>
               <option value="O-">O-</option>
             </Select>
+            </div>
             <Input
               label="Height"
               value={formData.height || ''}

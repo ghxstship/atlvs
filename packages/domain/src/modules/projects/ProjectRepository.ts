@@ -8,19 +8,23 @@ export type { ProjectRepository as ProjectRepositoryInterface };
 
 // Default implementation for compatibility
 export class ProjectRepositoryImpl implements ProjectRepository {
-  async findById(id: string): Promise<Project | null> {
+  async findById(id: string, tenant: { organizationId: string }): Promise<Project | null> {
     throw new Error('Method not implemented.');
   }
   
-  async findAll(): Promise<Project[]> {
+  async findMany(options: import('../../repositories/BaseRepository').QueryOptions, tenant: { organizationId: string }): Promise<Project[]> {
     throw new Error('Method not implemented.');
   }
   
-  async save(entity: Project): Promise<Project> {
+  async create(entity: Project, tenant: { organizationId: string }): Promise<Project> {
     throw new Error('Method not implemented.');
   }
   
-  async delete(id: string): Promise<void> {
+  async update(id: string, partial: Partial<Project>, tenant: { organizationId: string }): Promise<Project> {
+    throw new Error('Method not implemented.');
+  }
+  
+  async delete(id: string, tenant: { organizationId: string }): Promise<void> {
     throw new Error('Method not implemented.');
   }
 }

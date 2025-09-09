@@ -3,7 +3,23 @@
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { Button, Card, Input, Badge, Skeleton } from '@ghxstship/ui';
-import { PlusIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon, CurrencyDollarIcon, CalendarIcon, BuildingOfficeIcon, EyeIcon, ArrowDownTrayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import {
+  Plus,
+  Search,
+  Filter,
+  FileText,
+  Clock,
+  CheckCircle,
+  XCircle,
+  Calendar,
+  DollarSign,
+  Building,
+  AlertTriangle,
+  Eye,
+  Download,
+  Edit,
+  BarChart3
+} from 'lucide-react';
 
 // Domain interface for JobContract
 interface JobContract {
@@ -133,16 +149,26 @@ function ContractsClient({ user }: ContractsClientProps) {
     }).format(amount);
   };
 
+  const formatDate = (dateValue: string | Date | null | undefined): string => {
+    if (!dateValue) return 'N/A';
+    try {
+      const date = typeof dateValue === 'string' ? new Date(dateValue) : dateValue;
+      return date.toLocaleDateString();
+    } catch {
+      return 'Invalid Date';
+    }
+  };
+
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'draft': return DocumentTextIcon;
-      case 'pending_review': return ClockIcon;
-      case 'approved': return CheckCircleIcon;
-      case 'active': return CheckCircleIcon;
-      case 'completed': return CheckCircleIcon;
-      case 'terminated': return XCircleIcon;
-      case 'cancelled': return XCircleIcon;
-      default: return DocumentTextIcon;
+      case 'draft': return FileText;
+      case 'pending': return Clock;
+      case 'active': return CheckCircle;
+      case 'completed': return CheckCircle;
+      case 'terminated': return CheckCircle;
+      case 'cancelled': return XCircle;
+      case 'expired': return XCircle;
+      default: return FileText;
     }
   };
 
@@ -197,7 +223,7 @@ function ContractsClient({ user }: ContractsClientProps) {
           <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
-          <PlusIcon className="h-4 w-4 mr-2" />
+          <Plus className="h-4 w-4 mr-2" />
           Create Contract
         </Button>
       </div>
@@ -248,7 +274,7 @@ function ContractsClient({ user }: ContractsClientProps) {
               <p className="text-sm font-medium text-foreground/70">Total Contracts</p>
               <p className="text-2xl font-bold text-foreground">{contracts.length}</p>
             </div>
-            <DocumentTextIcon className="h-8 w-8 text-blue-500" />
+            <FileText className="h-8 w-8 text-blue-500" />
           </div>
         </Card>
         <Card className="p-4">
@@ -259,7 +285,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => c.status === 'active').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-green-500" />
+            <CheckCircle className="h-8 w-8 text-green-500" />
           </div>
         </Card>
         <Card className="p-4">
@@ -270,7 +296,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => c.status === 'completed').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-blue-500" />
+            <CheckCircle className="h-8 w-8 text-blue-500" />
           </div>
         </Card>
         <Card className="p-4">
@@ -281,7 +307,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => isExpiringSoon(c.end_date)).length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 text-orange-500" />
+            <AlertTriangle className="h-5 w-5 text-yellow-500" />
           </div>
         </Card>
         <Card className="p-4">
@@ -292,7 +318,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {formatAmount(contracts.reduce((sum, c) => sum + c.value, 0))}
               </p>
             </div>
-            <CurrencyDollarIcon className="h-8 w-8 text-purple-500" />
+            <DollarSign className="h-5 w-5 text-green-500" />
           </div>
         </Card>
       </div>
@@ -333,11 +359,11 @@ function ContractsClient({ user }: ContractsClientProps) {
                           <StatusIcon className="h-5 w-5 text-foreground/60" />
                           {contract.title}
                           {(isExpiring || hasExpired) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${hasExpired ? 'text-red-500' : 'text-yellow-500'}`} />
+                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'text-red-500' : 'text-yellow-500'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-foreground/70">
-                          <BuildingOfficeIcon className="h-4 w-4" />
+                          <Building className="h-4 w-4" />
                           <span>{contract.job_title || 'N/A'}</span>
                           <span>•</span>
                           <span>{contract.company_name || 'N/A'}</span>
@@ -359,19 +385,19 @@ function ContractsClient({ user }: ContractsClientProps) {
 
                     <div className="flex items-center gap-6 text-sm text-foreground/70 mb-3">
                       <div className="flex items-center gap-1">
-                        <CurrencyDollarIcon className="h-4 w-4" />
+                        <DollarSign className="h-4 w-4" />
                         <span className="font-medium">{formatAmount(contract.value, contract.currency)}</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <CalendarIcon className="h-4 w-4" />
+                        <Calendar className="h-4 w-4" />
                         <span>
-                          {new Date(contract.start_date || contract.startDate).toLocaleDateString()}
-                          {(contract.end_date || contract.endDate) && ` - ${new Date(contract.end_date || contract.endDate).toLocaleDateString()}`}
+                          {formatDate(contract.start_date || contract.startDate)}
+                          {(contract.end_date || contract.endDate) && ` - ${formatDate(contract.end_date || contract.endDate)}`}
                         </span>
                       </div>
                       {contract.paymentTerms && (
                         <div className="flex items-center gap-1">
-                          <ClockIcon className="h-4 w-4" />
+                          <Clock className="h-4 w-4" />
                           <span>{contract.paymentTerms}</span>
                         </div>
                       )}
@@ -412,29 +438,29 @@ function ContractsClient({ user }: ContractsClientProps) {
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
                   <div className="text-xs text-foreground/50">
-                    Created: {new Date(contract.created_at || contract.createdAt || '').toLocaleDateString()}
+                    Created: {formatDate(contract.created_at || contract.createdAt)}
                     {(contract.signed_at || contract.signedAt) && (
-                      <span> • Signed: {new Date(contract.signed_at || contract.signedAt).toLocaleDateString()}</span>
+                      <span> • Signed: {formatDate(contract.signed_at || contract.signedAt)}</span>
                     )}
                   </div>
                   <div className="flex gap-2">
                     <Button variant="ghost" size="sm">
-                      <EyeIcon className="h-4 w-4 mr-1" />
+                      <Eye className="h-4 w-4" /> 
                       View
                     </Button>
                     <Button variant="ghost" size="sm">
-                      <PencilIcon className="h-4 w-4 mr-1" />
+                      <Edit className="h-4 w-4" /> 
                       Edit
                     </Button>
                     {(contract.document_url || contract.documentUrl) && (
                       <Button variant="ghost" size="sm">
-                        <ArrowDownTrayIcon className="h-4 w-4 mr-1" />
+                        <Download className="h-4 w-4" /> 
                         Download
                       </Button>
                     )}
                     {contract.milestones && contract.milestones.length > 0 && (
                       <Button variant="ghost" size="sm">
-                        <ChartBarIcon className="h-4 w-4 mr-1" />
+                        <BarChart3 className="h-4 w-4" /> 
                         Milestones
                       </Button>
                     )}
@@ -445,7 +471,7 @@ function ContractsClient({ user }: ContractsClientProps) {
           })
         ) : (
           <Card className="p-12 text-center">
-            <DocumentTextIcon className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
+            <FileText className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-foreground mb-2">No contracts found</h3>
             <p className="text-sm text-foreground/70 mb-4">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
@@ -453,7 +479,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 : 'Get started by creating your first contract.'}
             </p>
             <Button onClick={() => setShowCreateDialog(true)}>
-              <PlusIcon className="h-4 w-4 mr-2" />
+              <Plus className="h-4 w-4 mr-2" />
               Create Contract
             </Button>
           </Card>

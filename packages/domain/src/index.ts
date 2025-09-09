@@ -9,7 +9,8 @@ export * from './audit/AuditLog';
 export * from './repositories/BaseRepository';
 
 export * from './modules/projects/Project';
-export { ProjectRepository, ProjectRepositoryImpl } from './modules/projects/ProjectRepository';
+export type { ProjectRepository } from './modules/projects/ProjectRepository';
+export { ProjectRepositoryImpl } from './modules/projects/ProjectRepository';
 export * from './modules/api-keys/ApiKey';
 export * from './modules/api-keys/ApiKeyRepository';
 export * from './webhooks/Webhook';

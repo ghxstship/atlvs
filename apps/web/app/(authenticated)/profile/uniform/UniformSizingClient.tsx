@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Input, Select, Card, CardHeader, CardContent } from '@ghxstship/ui';
 import { Shirt, Save, Edit2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface UniformSizing {
   id: string;
@@ -31,7 +31,7 @@ export default function UniformSizingClient() {
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState<Partial<UniformSizing>>({});
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   useEffect(() => {
@@ -62,10 +62,10 @@ export default function UniformSizingClient() {
       }
     } catch (error) {
       console.error('Error fetching uniform sizing:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to load uniform sizing',
-        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -98,7 +98,8 @@ export default function UniformSizingClient() {
         if (error) throw error;
       }
 
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
         description: 'Uniform sizing saved successfully',
       });
@@ -107,10 +108,10 @@ export default function UniformSizingClient() {
       fetchSizing();
     } catch (error) {
       console.error('Error saving uniform sizing:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to save uniform sizing',
-        variant: 'destructive',
       });
     }
   };
@@ -175,10 +176,10 @@ export default function UniformSizingClient() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <label className="text-sm font-medium">Shirt Size</label>
             <Select
-              label="Shirt Size"
               value={formData.shirt_size || ''}
-              onChange={(e) => setFormData({ ...formData, shirt_size: e.target.value })}
+              onValueChange={(value: string) => setFormData({ ...formData, shirt_size: value })}
               disabled={!isEditing}
             >
               <option value="">Select...</option>
@@ -198,10 +199,10 @@ export default function UniformSizingClient() {
               placeholder="e.g., 32x30"
               disabled={!isEditing}
             />
+            <label className="text-sm font-medium">Jacket Size</label>
             <Select
-              label="Jacket Size"
               value={formData.jacket_size || ''}
-              onChange={(e) => setFormData({ ...formData, jacket_size: e.target.value })}
+              onValueChange={(value: string) => setFormData({ ...formData, jacket_size: value })}
               disabled={!isEditing}
             >
               <option value="">Select...</option>
@@ -228,10 +229,10 @@ export default function UniformSizingClient() {
               placeholder="e.g., 7 1/4"
               disabled={!isEditing}
             />
+            <label className="text-sm font-medium">Glove Size</label>
             <Select
-              label="Glove Size"
               value={formData.glove_size || ''}
-              onChange={(e) => setFormData({ ...formData, glove_size: e.target.value })}
+              onValueChange={(value: string) => setFormData({ ...formData, glove_size: value })}
               disabled={!isEditing}
             >
               <option value="">Select...</option>
@@ -252,10 +253,10 @@ export default function UniformSizingClient() {
           <h3 className="font-semibold">Fit Preference</h3>
         </CardHeader>
         <CardContent>
+          <label className="text-sm font-medium">Gender Fit</label>
           <Select
-            label="Gender Fit"
             value={formData.gender_fit || ''}
-            onChange={(e) => setFormData({ ...formData, gender_fit: e.target.value })}
+            onValueChange={(value: string) => setFormData({ ...formData, gender_fit: value })}
             disabled={!isEditing}
           >
             <option value="">Select...</option>

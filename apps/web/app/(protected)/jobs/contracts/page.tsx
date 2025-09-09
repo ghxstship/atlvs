@@ -1,13 +1,13 @@
 import { createServerClient } from '@ghxstship/auth/server';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { ContractsClient } from './ContractsClient';
+import ContractsClient from './ContractsClient';
 import CreateContractClient from './CreateContractClient';
 
 export const metadata = { title: 'Jobs · Contracts' };
 
 export default async function JobsContractsPage() {
-  const supabase = createServerClient();
+  const supabase = await createServerClient();
   
   const {
     data: { user },
@@ -40,14 +40,7 @@ export default async function JobsContractsPage() {
         <CreateContractClient orgId={profile.organization_id} />
       </div>
       
-      <ContractsClient
-        user={user}
-        orgId={profile.organization_id}
-        translations={{
-          title: t('contracts.title'),
-          subtitle: t('contracts.subtitle'),
-        }}
-      />
+      <ContractsClient user={user} />
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { ThemeProvider } from '@ghxstship/ui';
 import { MarketingHeader } from '../(marketing)/components/MarketingHeader';
 import { MarketingFooter } from '../(marketing)/components/MarketingFooter';
 import { CookieConsent } from '../(marketing)/components/CookieConsent';
-import { Analytics } from '../(marketing)/components/Analytics';
+import Analytics from '../(marketing)/components/Analytics';
 import { PerformanceOptimizations } from '../(marketing)/components/PerformanceOptimizations';
 import { AccessibilityEnhancements } from '../(marketing)/components/AccessibilityEnhancements';
 

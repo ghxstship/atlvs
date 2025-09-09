@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Input, Select, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Plane, Hotel, Car, MapPin, Globe, Save, Plus, X } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface TravelPreferences {
   id: string;
@@ -45,7 +45,7 @@ export default function TravelPreferencesClient() {
     number: '',
     status: '',
   });
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   useEffect(() => {
@@ -79,10 +79,10 @@ export default function TravelPreferencesClient() {
       }
     } catch (error) {
       console.error('Error fetching travel preferences:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to load travel preferences',
-        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -115,7 +115,8 @@ export default function TravelPreferencesClient() {
         if (error) throw error;
       }
 
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
         description: 'Travel preferences saved successfully',
       });
@@ -124,10 +125,10 @@ export default function TravelPreferencesClient() {
       fetchPreferences();
     } catch (error) {
       console.error('Error saving travel preferences:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to save travel preferences',
-        variant: 'destructive',
       });
     }
   };
@@ -307,10 +308,10 @@ export default function TravelPreferencesClient() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <label className="text-sm font-medium">Seat Preference</label>
             <Select
-              label="Seat Preference"
               value={formData.seat_preference || ''}
-              onChange={(e) => setFormData({ ...formData, seat_preference: e.target.value })}
+              onValueChange={(value: string) => setFormData({ ...formData, seat_preference: value })}
               disabled={!isEditing}
             >
               <option value="">Select...</option>
@@ -320,10 +321,10 @@ export default function TravelPreferencesClient() {
               <option value="exit_row">Exit Row</option>
               <option value="bulkhead">Bulkhead</option>
             </Select>
+            <label className="text-sm font-medium">Meal Preference</label>
             <Select
-              label="Meal Preference"
               value={formData.meal_preference || ''}
-              onChange={(e) => setFormData({ ...formData, meal_preference: e.target.value })}
+              onValueChange={(value: string) => setFormData({ ...formData, meal_preference: value })}
               disabled={!isEditing}
             >
               <option value="">Select...</option>
@@ -474,11 +475,12 @@ export default function TravelPreferencesClient() {
             {isEditing && (
               <div className="space-y-2 p-3 border rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <label className="text-sm font-medium">Program Type</label>
                   <Select
                     value={newLoyaltyProgram.type}
-                    onChange={(e) => setNewLoyaltyProgram({ 
+                    onValueChange={(value: string) => setNewLoyaltyProgram({ 
                       ...newLoyaltyProgram, 
-                      type: e.target.value as LoyaltyProgram['type'] 
+                      type: value as LoyaltyProgram['type'] 
                     })}
                   >
                     <option value="airline">Airline</option>

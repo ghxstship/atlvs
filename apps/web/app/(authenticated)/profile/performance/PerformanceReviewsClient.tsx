@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Star, TrendingUp, Award, Calendar, ChevronRight, BarChart3 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface PerformanceReview {
   id: string;
@@ -40,7 +40,7 @@ export default function PerformanceReviewsClient() {
   const [reviews, setReviews] = useState<PerformanceReview[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedReview, setSelectedReview] = useState<PerformanceReview | null>(null);
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   useEffect(() => {
@@ -62,10 +62,10 @@ export default function PerformanceReviewsClient() {
       setReviews(data || []);
     } catch (error) {
       console.error('Error fetching performance reviews:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to load performance reviews',
-        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -85,17 +85,18 @@ export default function PerformanceReviewsClient() {
 
       if (error) throw error;
 
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
         description: 'Review acknowledged successfully',
       });
       fetchReviews();
     } catch (error) {
       console.error('Error acknowledging review:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to acknowledge review',
-        variant: 'destructive',
       });
     }
   };

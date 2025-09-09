@@ -2,13 +2,13 @@ import { Card } from '@ghxstship/ui';
 import { createServerClient } from '@ghxstship/auth/server';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
-import { BudgetsClient } from './BudgetsClient';
+import BudgetsClient from './BudgetsClient';
 import CreateBudgetClient from './CreateBudgetClient';
 
 export const metadata = { title: 'Finance · Budgets' };
 
 export default async function FinanceBudgetsPage() {
-  const supabase = createServerClient();
+  const supabase = await createServerClient();
   
   const {
     data: { user },
