@@ -446,7 +446,7 @@ export default function PartnershipsPage() {
               { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
               { title: 'Support Center', href: '/contact', description: 'Partner support and assistance' },
             ].map((resource) => (
-              <Link key={resource.title} href={resource.href}>
+              <a key={resource.title} href={resource.href}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>
@@ -457,7 +457,7 @@ export default function PartnershipsPage() {
                     </p>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
