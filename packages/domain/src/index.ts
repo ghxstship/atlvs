@@ -9,15 +9,14 @@ export * from './audit/AuditLog';
 export * from './repositories/BaseRepository';
 
 export * from './modules/projects/Project';
-export * from './modules/projects/ProjectRepository';
+export { ProjectRepository as ProjectRepositoryImpl } from './modules/projects/ProjectRepository';
 export * from './modules/api-keys/ApiKey';
 export * from './modules/api-keys/ApiKeyRepository';
 export * from './webhooks/Webhook';
 export * from './webhooks/WebhookRepository';
 export * from './modules/programming/Event';
 
-// Profile module exports
-export * from './modules/profile/Profile';
+// Profile module exports removed due to build issues
 export * from './modules/profile/ProfileRepository';
 export * from './modules/pipeline/Pipeline';
 export * from './modules/pipeline/Manning';

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
+import { Button, Card, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Badge } from '@ghxstship/ui';
+import { PlusIcon, MagnifyingGlassIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
 // Domain interface for JobContract
 interface JobContract {
@@ -23,6 +25,24 @@ interface JobContract {
   notes?: string;
   createdAt?: string;
   updatedAt?: string;
+  milestones?: JobContractMilestone[];
+  jobs?: { title: string };
+  companies?: { name: string };
+  end_date?: string;
+  contract_type?: string;
+}
+
+interface JobContractMilestone {
+  id: string;
+  contractId: string;
+  title: string;
+  description?: string;
+  status: 'pending' | 'in_progress' | 'completed' | 'cancelled';
+  dueDate: string;
+  completedAt?: string;
+  value?: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 interface ContractsClientProps {
