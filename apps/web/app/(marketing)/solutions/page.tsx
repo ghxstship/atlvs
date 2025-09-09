@@ -222,12 +222,12 @@ export default function SolutionsPage() {
                     </div>
                     <h3 className="font-title text-xl font-bold mb-2">{solution.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4">{solution.tagline}</p>
-                    <Link href={solution.href}>
+                    <a href={solution.href}>
                       <Button variant="outline" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         Learn More
                         <ArrowRight className="ml-2 h-3 w-3" />
                       </Button>
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
               );
@@ -286,12 +286,12 @@ export default function SolutionsPage() {
 
                       {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-4">
-                        <Link href={solution.href}>
+                        <a href={solution.href}>
                           <Button size="lg" className="w-full sm:w-auto group">
                             Explore {solution.title}
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Button>
-                        </Link>
+                        </a>
                         <Link href="/auth/signup">
                           <Button variant="outline" size="lg" className="w-full sm:w-auto">
                             Start Free Trial
@@ -420,11 +420,11 @@ export default function SolutionsPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/resources/integrations">
+                <a href="/resources/integrations">
                   <Button variant="outline">
                     View All Integrations
                   </Button>
-                </Link>
+                </a>
                 <Link href="/auth/signup">
                   <Button>
                     Start Free Trial

@@ -150,12 +150,12 @@ export default function ProductsPage() {
 
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <Link href={product.href}>
+                      <a href={product.href}>
                         <Button size="lg" className="w-full sm:w-auto group">
                           {product.ctaText}
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
-                      </Link>
+                      </a>
                       <Link href="/auth/signup">
                         <Button variant="outline" size="lg" className="w-full sm:w-auto">
                           Start Free Trial
