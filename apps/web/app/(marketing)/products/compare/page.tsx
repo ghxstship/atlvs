@@ -167,12 +167,12 @@ export default function ComparePage() {
                       <p className="text-sm text-foreground">{product.bestFor}</p>
                     </div>
 
-                    <Link href={product.href}>
+                    <a href={product.href}>
                       <Button className="w-full group">
                         Explore {product.name}
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
