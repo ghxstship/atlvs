@@ -89,3 +89,13 @@ export function hasPermission(userRole: string | undefined, requiredPermission: 
   // Check for wildcard or specific permission
   return permissions.includes('*') || permissions.includes(requiredPermission);
 }
+
+export async function extractTenantContext(): Promise<TenantContext> {
+  const context = await getTenantContext();
+  
+  if (!context) {
+    throw new Error('Unauthorized: No tenant context available');
+  }
+  
+  return context;
+}

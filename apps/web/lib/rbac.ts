@@ -78,3 +78,15 @@ export function hasRole(userRole: string | undefined, requiredRole: Role): boole
   
   return userLevel >= requiredLevel;
 }
+
+export async function enforceRBAC(
+  userId: string,
+  organizationId: string,
+  requiredPermission: Permission
+): Promise<void> {
+  const hasPermission = await checkPermission(userId, organizationId, requiredPermission);
+  
+  if (!hasPermission) {
+    throw new Error(`Access denied: Missing permission ${requiredPermission}`);
+  }
+}
