@@ -79,7 +79,7 @@ const translations = {
   subtitle: 'Manage job contracts and agreements'
 };
 
-export default function ContractsClient({ user }: ContractsClientProps) {
+function ContractsClient({ user }: ContractsClientProps) {
   const [contracts, setContracts] = useState<JobContract[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -462,3 +462,5 @@ export default function ContractsClient({ user }: ContractsClientProps) {
     </div>
   );
 }
+
+export default ContractsClient;

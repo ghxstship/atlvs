@@ -57,7 +57,7 @@ interface Budget {
   created_by: string;
 }
 
-export default function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
+function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
   const [loading, setLoading] = useState(true);
   const [budgets, setBudgets] = useState<Budget[]>([]);
   const [selectedBudget, setSelectedBudget] = useState<Budget | null>(null);
@@ -496,3 +496,5 @@ export default function BudgetsClient({ user, orgId, translations }: BudgetsClie
     </StateManagerProvider>
   );
 }
+
+export default BudgetsClient;

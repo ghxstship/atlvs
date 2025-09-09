@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Star, ThumbsUp, Award, MessageSquare, Plus, User } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface Endorsement {
   id: string;
@@ -32,7 +32,7 @@ export default function EndorsementsClient() {
     rating: 5,
     is_public: true,
   });
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   const availableSkills = [
@@ -61,10 +61,10 @@ export default function EndorsementsClient() {
       setEndorsements(data || []);
     } catch (error) {
       console.error('Error fetching endorsements:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
-        description: 'Failed to load endorsements',
-        variant: 'destructive',
+        description: 'Failed to load endorsements'
       });
     } finally {
       setLoading(false);
@@ -89,9 +89,10 @@ export default function EndorsementsClient() {
 
       if (error) throw error;
 
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
-        description: 'Endorsement request sent successfully',
+        description: 'Endorsement request sent successfully'
       });
 
       setShowAddForm(false);
@@ -105,10 +106,10 @@ export default function EndorsementsClient() {
       setSelectedSkills([]);
     } catch (error) {
       console.error('Error requesting endorsement:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
-        description: 'Failed to send endorsement request',
-        variant: 'destructive',
+        description: 'Failed to send endorsement request'
       });
     }
   };
