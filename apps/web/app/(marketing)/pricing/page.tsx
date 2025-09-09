@@ -218,13 +218,13 @@ export default function PricingPage() {
                       )}
                     </div>
 
-                    <Link href={plan.id === 'enterprise' ? '/company/contact' : '/auth/signup'}>
+                    <Link href={plan.id === 'enterprise' ? '/contact' : '/auth/signup'}>
                       <Button 
                         className={cn(
                           "w-full",
                           plan.popular ? "bg-primary hover:bg-primary/90" : ""
                         )}
-                        variant={plan.popular ? "default" : "outline"}
+                        variant={plan.popular ? "primary" : "outline"}
                       >
                         {plan.cta}
                         <ArrowRight className="ml-2 h-4 w-4" />
@@ -382,7 +382,7 @@ export default function PricingPage() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Link href="/company/contact">
+              <Link href="/contact">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   Contact Sales
                 </Button>
