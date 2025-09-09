@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Button, Card, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Badge, Skeleton } from '@ghxstship/ui';
-import { PlusIcon, MagnifyingGlassIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon, CurrencyDollarIcon, CalendarIcon, BuildingOfficeIcon, EyeIcon, ArrowDownTrayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
+import { Button, Card, Input, Badge, Skeleton } from '@ghxstship/ui';
+import { PlusIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon, CurrencyDollarIcon, CalendarIcon, BuildingOfficeIcon, EyeIcon, ArrowDownTrayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
 // Domain interface for JobContract
 interface JobContract {
@@ -30,6 +30,12 @@ interface JobContract {
   companies?: { name: string };
   end_date?: string;
   contract_type?: string;
+  job_title?: string;
+  company_name?: string;
+  start_date?: string;
+  signed_at?: string;
+  created_at?: string;
+  document_url?: string;
 }
 
 interface JobContractMilestone {
@@ -73,30 +79,6 @@ const translations = {
   subtitle: 'Manage job contracts and agreements'
 };
 
-// Utility functions for status and type badges
-const getStatusBadgeColor = (status: string) => {
-  switch (status) {
-    case 'draft': return 'bg-gray-100 text-gray-800';
-    case 'pending_review': return 'bg-yellow-100 text-yellow-800';
-    case 'approved': return 'bg-blue-100 text-blue-800';
-    case 'active': return 'bg-green-100 text-green-800';
-    case 'completed': return 'bg-green-100 text-green-800';
-    case 'terminated': return 'bg-red-100 text-red-800';
-    case 'cancelled': return 'bg-red-100 text-red-800';
-    default: return 'bg-gray-100 text-gray-800';
-  }
-};
-
-const getTypeBadgeColor = (type: string) => {
-  switch (type) {
-    case 'msa': return 'bg-purple-100 text-purple-800';
-    case 'sow': return 'bg-blue-100 text-blue-800';
-    case 'amendment': return 'bg-orange-100 text-orange-800';
-    case 'termination': return 'bg-red-100 text-red-800';
-    default: return 'bg-gray-100 text-gray-800';
-  }
-};
-
 export default function ContractsClient({ user }: ContractsClientProps) {
   const [contracts, setContracts] = useState<JobContract[]>([]);
   const [loading, setLoading] = useState(true);
@@ -104,18 +86,6 @@ export default function ContractsClient({ user }: ContractsClientProps) {
   const [statusFilter, setStatusFilter] = useState('all');
   const [typeFilter, setTypeFilter] = useState('all');
   const [showCreateDialog, setShowCreateDialog] = useState(false);
-  const [newContract, setNewContract] = useState({
-    title: '',
-    description: '',
-    contractType: 'msa' as const,
-    status: 'draft' as const,
-    startDate: '',
-    endDate: '',
-    value: 0,
-    currency: 'USD',
-    paymentTerms: '',
-    notes: ''
-  });
 
   // Fetch contracts from API
   useEffect(() => {
@@ -155,419 +125,51 @@ export default function ContractsClient({ user }: ContractsClientProps) {
     return matchesSearch && matchesStatus && matchesType;
   });
 
-  // Handle create contract
-  const handleCreateContract = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      const orgId = user.user_metadata?.organizationId;
-      if (!orgId) return;
-
-      const response = await fetch('/api/v1/jobs/contracts', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-org-id': orgId,
-        },
-        body: JSON.stringify({
-          ...newContract,
-          organizationId: orgId,
-          jobId: 'temp-job-id', // This would come from context in real implementation
-          companyId: 'temp-company-id', // This would come from form or context
-        }),
-      });
-
-      if (response.ok) {
-        const createdContract = await response.json();
-        setContracts(prev => [createdContract, ...prev]);
-        setShowCreateDialog(false);
-        setNewContract({
-          title: '',
-          description: '',
-          contractType: 'msa',
-          status: 'draft',
-          startDate: '',
-          endDate: '',
-          value: 0,
-          currency: 'USD',
-          paymentTerms: '',
-          notes: ''
-        });
-      }
-    } catch (error) {
-      console.error('Error creating contract:', error);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="space-y-4">
-        <div className="h-8 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-32 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-32 bg-gray-200 rounded animate-pulse"></div>
-        <div className="h-32 bg-gray-200 rounded animate-pulse"></div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold">Contracts</h1>
-        <button
-          onClick={() => setShowCreateDialog(true)}
-          className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-        >
-          Create Contract
-        </button>
-      </div>
-
-      {/* Filters */}
-      <div className="flex gap-4 items-center">
-        <input
-          type="text"
-          placeholder="Search contracts..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        
-        <select
-          value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          {STATUS_OPTIONS.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-
-        <select
-          value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          {TYPE_OPTIONS.map(option => (
-            <option key={option.value} value={option.value}>
-              {option.label}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Contracts List */}
-      <div className="space-y-4">
-        {filteredContracts.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            No contracts found matching your criteria.
-          </div>
-        ) : (
-          filteredContracts.map(contract => (
-            <div key={contract.id} className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow">
-              <div className="flex justify-between items-start mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold">{contract.title}</h3>
-                  {contract.description && (
-                    <p className="text-gray-600 mt-1">{contract.description}</p>
-                  )}
-                </div>
-                <div className="flex gap-2">
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusBadgeColor(contract.status)}`}>
-                    {contract.status.replace('_', ' ').toUpperCase()}
-                  </span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeBadgeColor(contract.contractType)}`}>
-                    {contract.contractType.toUpperCase()}
-                  </span>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-                <div>
-                  <span className="text-gray-500">Value:</span>
-                  <div className="font-medium">
-                    {new Intl.NumberFormat('en-US', {
-                      style: 'currency',
-                      currency: contract.currency
-                    }).format(contract.value)}
-                  </div>
-                </div>
-                <div>
-                  <span className="text-gray-500">Start Date:</span>
-                  <div className="font-medium">
-                    {new Date(contract.startDate).toLocaleDateString()}
-                  </div>
-                </div>
-                {contract.endDate && (
-                  <div>
-                    <span className="text-gray-500">End Date:</span>
-                    <div className="font-medium">
-                      {new Date(contract.endDate).toLocaleDateString()}
-                    </div>
-                  </div>
-                )}
-                {contract.paymentTerms && (
-                  <div>
-                    <span className="text-gray-500">Payment Terms:</span>
-                    <div className="font-medium">{contract.paymentTerms}</div>
-                  </div>
-                )}
-              </div>
-
-              <div className="flex justify-end gap-2 mt-4">
-                <button className="px-3 py-1 text-blue-600 hover:bg-blue-50 rounded">
-                  View
-                </button>
-                <button className="px-3 py-1 text-gray-600 hover:bg-gray-50 rounded">
-                  Edit
-                </button>
-              </div>
-            </div>
-          ))
-        )}
-      </div>
-
-      {/* Create Contract Dialog */}
-      {showCreateDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-            <h2 className="text-xl font-bold mb-4">Create New Contract</h2>
-            
-            <form onSubmit={handleCreateContract} className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Title
-                </label>
-                <input
-                  type="text"
-                  value={newContract.title}
-                  onChange={(e) => setNewContract(prev => ({ ...prev, title: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Description
-                </label>
-                <textarea
-                  value={newContract.description}
-                  onChange={(e) => setNewContract(prev => ({ ...prev, description: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows={3}
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Contract Type
-                </label>
-                <select
-                  value={newContract.contractType}
-                  onChange={(e) => setNewContract(prev => ({ ...prev, contractType: e.target.value as any }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="msa">MSA</option>
-                  <option value="sow">SOW</option>
-                  <option value="amendment">Amendment</option>
-                  <option value="termination">Termination</option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Value
-                  </label>
-                  <input
-                    type="number"
-                    value={newContract.value}
-                    onChange={(e) => setNewContract(prev => ({ ...prev, value: Number(e.target.value) }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    min="0"
-                    step="0.01"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Currency
-                  </label>
-                  <select
-                    value={newContract.currency}
-                    onChange={(e) => setNewContract(prev => ({ ...prev, currency: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  >
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Start Date
-                </label>
-                <input
-                  type="date"
-                  value={newContract.startDate}
-                  onChange={(e) => setNewContract(prev => ({ ...prev, startDate: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
-                />
-              </div>
-
-              <div className="flex justify-end gap-2">
-                <button
-                  type="button"
-                  onClick={() => setShowCreateDialog(false)}
-                  className="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
-                >
-                  Create Contract
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-    </div>
-  );
-}
-
-
-  useEffect(() => {
-    loadContracts();
-  }, [orgId]);
-
-  const loadContracts = async () => {
-    try {
-      setLoading(true);
-      
-      // Load contracts with related job and company data
-      const { data, error } = await supabase
-        .from('job_contracts')
-        .select(`
-          *,
-          jobs (
-            title
-          ),
-          companies (
-            name
-          )
-        `)
-        .eq('organization_id', orgId)
-        .order('created_at', { ascending: false });
-
-      if (error) throw error;
-
-      // Load milestones for each contract
-      const contractsWithMilestones = await Promise.all(
-        (data || []).map(async (contract: any) => {
-          const { data: milestones } = await supabase
-            .from('job_contract_milestones')
-            .select('*')
-            .eq('contract_id', contract.id)
-            .order('due_date', { ascending: true });
-
-          return {
-            ...contract,
-            job_title: contract.jobs?.title || 'Unknown Job',
-            company_name: contract.companies?.name || 'Unknown Company',
-            milestones: milestones || [],
-          };
-        })
-      );
-
-      setContracts(contractsWithMilestones);
-    } catch (error) {
-      console.error('Error loading contracts:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const filteredContracts = contracts.filter((contract) => {
-    const matchesSearch = contract.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         contract.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         (contract.job_title && contract.job_title.toLowerCase().includes(searchTerm.toLowerCase())) ||
-                         (contract.company_name && contract.company_name.toLowerCase().includes(searchTerm.toLowerCase()));
-    const matchesStatus = statusFilter === 'all' || contract.status === statusFilter;
-    const matchesType = typeFilter === 'all' || contract.contract_type === typeFilter;
-
-    return matchesSearch && matchesStatus && matchesType;
-  });
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'draft':
-        return 'bg-gray-100 text-gray-800';
-      case 'pending_review':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'active':
-        return 'bg-green-100 text-green-800';
-      case 'completed':
-        return 'bg-blue-100 text-blue-800';
-      case 'terminated':
-        return 'bg-red-100 text-red-800';
-      case 'expired':
-        return 'bg-orange-100 text-orange-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
-    }
+  // Helper functions for formatting and status
+  const formatAmount = (amount: number, currency: string = 'USD') => {
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: currency
+    }).format(amount);
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'draft':
-        return PencilIcon;
-      case 'pending_review':
-        return ClockIcon;
-      case 'active':
-        return CheckCircleIcon;
-      case 'completed':
-        return CheckCircleIcon;
-      case 'terminated':
-        return XCircleIcon;
-      case 'expired':
-        return ExclamationTriangleIcon;
-      default:
-        return DocumentTextIcon;
+      case 'draft': return DocumentTextIcon;
+      case 'pending_review': return ClockIcon;
+      case 'approved': return CheckCircleIcon;
+      case 'active': return CheckCircleIcon;
+      case 'completed': return CheckCircleIcon;
+      case 'terminated': return XCircleIcon;
+      case 'cancelled': return XCircleIcon;
+      default: return DocumentTextIcon;
+    }
+  };
+
+  const getStatusColor = (status: string) => {
+    switch (status) {
+      case 'draft': return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'pending_review': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'approved': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'active': return 'bg-green-100 text-green-800 border-green-200';
+      case 'completed': return 'bg-green-100 text-green-800 border-green-200';
+      case 'terminated': return 'bg-red-100 text-red-800 border-red-200';
+      case 'cancelled': return 'bg-red-100 text-red-800 border-red-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'msa':
-        return 'bg-purple-100 text-purple-800';
-      case 'sow':
-        return 'bg-blue-100 text-blue-800';
-      case 'consulting':
-        return 'bg-green-100 text-green-800';
-      case 'retainer':
-        return 'bg-orange-100 text-orange-800';
-      case 'project_based':
-        return 'bg-indigo-100 text-indigo-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
+      case 'msa': return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'sow': return 'bg-blue-100 text-blue-800 border-blue-200';
+      case 'amendment': return 'bg-orange-100 text-orange-800 border-orange-200';
+      case 'termination': return 'bg-red-100 text-red-800 border-red-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
 
-  const formatAmount = (amount: number, currency: string = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: currency,
-    }).format(amount);
-  };
-
-  const calculateProgress = (milestones: JobContractMilestone[]) => {
+  const calculateProgress = (milestones?: JobContractMilestone[]) => {
     if (!milestones || milestones.length === 0) return 0;
     const completed = milestones.filter(m => m.status === 'completed').length;
     return Math.round((completed / milestones.length) * 100);
@@ -736,17 +338,17 @@ export default function ContractsClient({ user }: ContractsClientProps) {
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-foreground/70">
                           <BuildingOfficeIcon className="h-4 w-4" />
-                          <span>{contract.job_title}</span>
+                          <span>{contract.job_title || 'N/A'}</span>
                           <span>•</span>
-                          <span>{contract.company_name}</span>
+                          <span>{contract.company_name || 'N/A'}</span>
                         </div>
                       </div>
                       <div className="flex gap-2">
                         <Badge className={getStatusColor(contract.status)}>
                           {contract.status.replace('_', ' ')}
                         </Badge>
-                        <Badge className={getTypeColor(contract.contract_type)}>
-                          {contract.contract_type.toUpperCase()}
+                        <Badge className={getTypeColor(contract.contract_type || contract.contractType)}>
+                          {(contract.contract_type || contract.contractType).toUpperCase()}
                         </Badge>
                       </div>
                     </div>
@@ -763,14 +365,14 @@ export default function ContractsClient({ user }: ContractsClientProps) {
                       <div className="flex items-center gap-1">
                         <CalendarIcon className="h-4 w-4" />
                         <span>
-                          {new Date(contract.start_date).toLocaleDateString()}
-                          {contract.end_date && ` - ${new Date(contract.end_date).toLocaleDateString()}`}
+                          {new Date(contract.start_date || contract.startDate).toLocaleDateString()}
+                          {(contract.end_date || contract.endDate) && ` - ${new Date(contract.end_date || contract.endDate).toLocaleDateString()}`}
                         </span>
                       </div>
-                      {contract.payment_terms && (
+                      {contract.paymentTerms && (
                         <div className="flex items-center gap-1">
                           <ClockIcon className="h-4 w-4" />
-                          <span>{contract.payment_terms}</span>
+                          <span>{contract.paymentTerms}</span>
                         </div>
                       )}
                     </div>
@@ -810,9 +412,9 @@ export default function ContractsClient({ user }: ContractsClientProps) {
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
                   <div className="text-xs text-foreground/50">
-                    Created: {new Date(contract.created_at).toLocaleDateString()}
-                    {contract.signed_at && (
-                      <span> • Signed: {new Date(contract.signed_at).toLocaleDateString()}</span>
+                    Created: {new Date(contract.created_at || contract.createdAt || '').toLocaleDateString()}
+                    {(contract.signed_at || contract.signedAt) && (
+                      <span> • Signed: {new Date(contract.signed_at || contract.signedAt).toLocaleDateString()}</span>
                     )}
                   </div>
                   <div className="flex gap-2">
@@ -824,7 +426,7 @@ export default function ContractsClient({ user }: ContractsClientProps) {
                       <PencilIcon className="h-4 w-4 mr-1" />
                       Edit
                     </Button>
-                    {contract.document_url && (
+                    {(contract.document_url || contract.documentUrl) && (
                       <Button variant="ghost" size="sm">
                         <ArrowDownTrayIcon className="h-4 w-4 mr-1" />
                         Download
