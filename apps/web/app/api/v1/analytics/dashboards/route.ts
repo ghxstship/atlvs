@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/nextjs';
 import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
+export const runtime = 'nodejs';
 
 const DashboardSchema = z.object({
   name: z.string().min(1, 'Name is required'),
