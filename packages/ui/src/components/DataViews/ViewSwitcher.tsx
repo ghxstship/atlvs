@@ -5,21 +5,23 @@ import { Button } from '../Button';
 import { useDataView } from './DataViewProvider';
 import { ViewType } from './types';
 import { 
-  Grid3X3, 
-  Kanban, 
-  Calendar, 
-  Timeline, 
-  Image, 
+  Grid3x3, 
   List, 
   BarChart3, 
-  FileText 
+  Calendar, 
+  Clock, 
+  Kanban,
+  Map,
+  Settings,
+  FileText,
+  Image
 } from 'lucide-react';
 
 const viewIcons: Record<ViewType, React.ComponentType<any>> = {
-  grid: Grid3X3,
+  grid: Grid3x3,
   kanban: Kanban,
   calendar: Calendar,
-  timeline: Timeline,
+  timeline: Clock,
   gallery: Image,
   list: List,
   dashboard: BarChart3,
@@ -73,7 +75,7 @@ export function ViewSwitcher({
             key={viewType}
             variant={isActive ? 'primary' : 'ghost'}
             size={buttonSize}
-            onClick={() => actions.setViewType(viewType)}
+            onClick={() => actions.setCurrentView(viewType)}
             className={`
               ${showLabels ? 'gap-2' : ''}
               ${orientation === 'vertical' ? 'justify-start' : ''}

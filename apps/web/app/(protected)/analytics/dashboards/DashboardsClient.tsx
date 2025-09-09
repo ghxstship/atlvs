@@ -20,7 +20,7 @@ import {
   Copy,
   Share2,
   Download,
-  Grid3X3,
+  Grid3x3,
   Layout
 } from 'lucide-react';
 import CreateDashboardClient from './CreateDashboardClient';
@@ -315,7 +315,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
     }
     switch (widget.type) {
       case 'metric': return TrendingUp;
-      case 'table': return Grid3X3;
+      case 'table': return Grid3x3;
       case 'gauge': return Activity;
       default: return BarChart3;
     }

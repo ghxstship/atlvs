@@ -253,7 +253,7 @@ export default function HealthInfoClient() {
               label="Height"
               value={formData.height || ''}
               onChange={(e) => setFormData({ ...formData, height: e.target.value })}
-              placeholder="e.g., 5'10\" or 178cm"
+              placeholder="e.g., 5'10&quot; or 178cm"
               disabled={!isEditing}
             />
             <Input

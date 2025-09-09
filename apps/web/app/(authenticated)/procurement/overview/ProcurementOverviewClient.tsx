@@ -218,7 +218,7 @@ export default function ProcurementOverviewClient() {
           {['week', 'month', 'quarter', 'year'].map((range) => (
             <Button
               key={range}
-              variant={timeRange === range ? 'default' : 'outline'}
+              variant={timeRange === range ? 'primary' : 'outline'}
               size="sm"
               onClick={() => setTimeRange(range as any)}
             >

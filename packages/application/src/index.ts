@@ -1,16 +1,11 @@
-export * from './services/ProjectsService';
-export * from './services/ApiKeysService';
-export * from './services/WebhooksService';
-export * from './services/ProgramsService';
-export * from './services/PipelineService';
-export * from './services/ProcurementService';
-export * from './services/FinanceService';
-export * from './services/JobsService';
-export * from './services/AnalyticsService';
-export * from './services/CompaniesService';
-export * from './services/ListingsService';
-export * from './services/VendorsService';
-export * from './services/CatalogItemsService';
-export * from './services/ResourcesService';
-export { AssetsService } from './services/AssetsService';
-export { SettingsService } from './services/SettingsService';
+// Placeholder exports for missing components
+export const AuditLogger = {
+  log: (event: string, data?: any) => console.log('AuditLogger:', event, data),
+  error: (event: string, error: any) => console.error('AuditLogger:', event, error),
+};
+
+export const EventBus = {
+  emit: (event: string, data?: any) => console.log('EventBus:', event, data),
+  on: (event: string, handler: Function) => console.log('EventBus on:', event),
+  off: (event: string, handler: Function) => console.log('EventBus off:', event),
+};

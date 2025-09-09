@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import { createServerClient as createSSRClient, type CookieOptions } from '@supabase/ssr';
 
 export const createBrowserClient = () => {
@@ -7,7 +7,7 @@ export const createBrowserClient = () => {
   if (!url || !key) {
     throw new Error('Supabase URL and Anon Key must be set in env');
     }
-  return createClient(url, key);
+  return createSupabaseClient(url, key);
 };
 
 export type CookieAdapter = {
@@ -37,5 +37,8 @@ export const createServiceRoleClient = () => {
   if (!url || !serviceKey) {
     throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set in env');
   }
-  return createClient(url, serviceKey, { auth: { persistSession: false } });
+  return createSupabaseClient(url, serviceKey, { auth: { persistSession: false } });
 };
+
+// Export createClient as an alias for createBrowserClient for backward compatibility
+export const createClient = createBrowserClient;

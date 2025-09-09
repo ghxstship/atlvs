@@ -1,10 +1,11 @@
-import { createServerClient } from '@supabase/ssr';
+import { createServerClient as createSupabaseServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 export async function createClient() {
   const cookieStore = await cookies();
 
-  return createServerClient(
+  return createSupabaseServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
@@ -43,8 +44,11 @@ export async function requireAuth() {
   const user = await getUser();
   
   if (!user) {
-    throw new Error('Unauthorized');
+    redirect('/login');
   }
   
   return user;
 }
+
+// Export both createClient and createServerClient for compatibility
+export const createServerClient = createClient;

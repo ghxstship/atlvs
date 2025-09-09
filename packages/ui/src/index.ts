@@ -2,7 +2,7 @@
 export { Button } from './components/Button';
 export { Input } from './components/Input';
 export { Textarea } from './components/Textarea';
-export { Select } from './components/Select';
+export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
 export { Badge } from './components/Badge';
 export { Skeleton } from './components/Skeleton';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
@@ -10,6 +10,9 @@ export { Drawer } from './components/Drawer';
 export { EmptyState } from './components/EmptyState';
 export { Card, CardHeader, CardContent, CardFooter, StatsCard, FeatureCard } from './components/Card';
 export { Breadcrumbs } from './components/Breadcrumbs';
+export { Sidebar } from './components/Sidebar';
+export { Avatar } from './components/Avatar';
+export { EnhancedUniversalDrawer } from './components/EnhancedUniversalDrawer';
 
 // Export new atomic components
 export { Tooltip } from './components/Tooltip';
@@ -25,8 +28,86 @@ export * from './components/DataViews';
 export * from './components/Sidebar/SidebarNavigation';
 export * from './components/Navigation';
 
-// Export all system components and utilities
-export * from './system'; 
+// Export all system components and utilities (with explicit re-export to resolve DashboardLayout conflict)
+export {
+  DESIGN_TOKENS, 
+  COMPONENT_SIZES, 
+  GRID_SYSTEM,
+  DesignSystemProvider,
+  useDesignSystem,
+  getSpacing,
+  getColor,
+  getFontSize,
+  getShadow,
+  getRadius,
+  createVariants,
+  responsive,
+  Container,
+  Stack,
+  Inline,
+  LayoutGrid,
+  Section,
+  Panel,
+  LayoutHeader,
+  PageLayout,
+  DashboardLayout as SystemDashboardLayout,
+  DetailLayout,
+  ShowOn,
+  HideOn,
+  useResponsive,
+  ComponentSystem,
+  buttonVariants,
+  inputVariants,
+  badgeVariants,
+  cardVariants,
+  avatarVariants,
+  skeletonVariants,
+  stateVariants,
+  animationVariants,
+  responsiveVariants,
+  a11yVariants,
+  cn,
+  getVariantClasses,
+  composeVariants,
+  withDefaults,
+  CompositePatterns,
+  createPattern,
+  extendPattern,
+  responsivePattern,
+  ContainerSystem,
+  createContainer,
+  withContainer,
+  layoutPatterns,
+  a11yContainerPatterns,
+  WorkflowSystem,
+  createWorkflow,
+  optimizeWorkflow,
+  GridSystem,
+  SPACING_UNITS,
+  SEMANTIC_SPACING,
+  GRID_BREAKPOINTS,
+  CONTAINER_SIZES,
+  Grid,
+  Flex,
+  createResponsiveGrid,
+  createFlexLayout,
+  createSpacing,
+  EnhancementSystem,
+  ANIMATION_TIMINGS,
+  ThemeProvider,
+  PersonalizationProvider,
+  useTheme,
+  usePersonalization,
+  a11yEnhancements,
+  performanceOptimizations,
+  GHXSTSHIP_DESIGN_SYSTEM,
+  systemUtils,
+  themePresets,
+  componentPresets,
+  validationSchemas,
+  performanceMonitor,
+  devTools
+} from './system'; 
 
 // Types
 export type { ButtonProps } from './components/Button';

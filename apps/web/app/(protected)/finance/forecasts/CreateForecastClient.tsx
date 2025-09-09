@@ -234,7 +234,7 @@ export default function CreateForecastClient({
                 >
                   <option value="high">High Confidence (90%+)</option>
                   <option value="medium">Medium Confidence (70-90%)</option>
-                  <option value="low">Low Confidence (<70%)</option>
+                  <option value="low">Low Confidence (&lt;70%)</option>
                 </Select>
               </div>
             </div>
