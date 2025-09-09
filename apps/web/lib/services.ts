@@ -6,8 +6,8 @@ export function getSupabaseAndServices() {
   const cookieStore = cookies();
   const adapter: CookieAdapter = {
     get: (name: string) => cookieStore.get(name),
-    set: () => {},
-    remove: () => {}
+    set: (name: string, value: string, options?: any) => cookieStore.set(name, value, options),
+    remove: (name: string) => cookieStore.delete(name)
   };
   const sb = createServerClient(adapter);
   const composed = composeSupabaseServices(sb);

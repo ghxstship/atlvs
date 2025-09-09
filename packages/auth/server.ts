@@ -1,25 +1,35 @@
 import { createServerClient as createSupabaseServerClient } from '@supabase/ssr';
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
-export async function createClient() {
-  const cookieStore = await cookies();
+export interface CookieAdapter {
+  get: (name: string) => { name: string; value: string } | undefined;
+  set: (name: string, value: string, options?: any) => void;
+  remove: (name: string) => void;
+}
 
+export function createServerClient(cookieAdapter: CookieAdapter) {
   return createSupabaseServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll() {
-          return cookieStore.getAll();
+        get(name: string) {
+          const cookie = cookieAdapter.get(name);
+          return cookie?.value;
         },
-        setAll(cookiesToSet: any) {
+        set(name: string, value: string, options: any) {
           try {
-            cookiesToSet.forEach(({ name, value, options }: any) => {
-              cookieStore.set(name, value, options);
-            });
+            cookieAdapter.set(name, value, options);
           } catch (error) {
             // The `set` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing
+            // user sessions.
+          }
+        },
+        remove(name: string, options: any) {
+          try {
+            cookieAdapter.set(name, '', { ...options, maxAge: 0 });
+          } catch (error) {
+            // The `remove` method was called from a Server Component.
             // This can be ignored if you have middleware refreshing
             // user sessions.
           }
@@ -29,26 +39,19 @@ export async function createClient() {
   );
 }
 
-export async function getUser() {
-  const supabase = await createClient();
-  const { data: { user }, error } = await supabase.auth.getUser();
-  
-  if (error || !user) {
-    return null;
-  }
-  
-  return user;
+export function createServiceRoleClient() {
+  return createSupabaseServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    {
+      cookies: {
+        getAll() {
+          return [];
+        },
+        setAll() {
+          // No-op for service role client
+        },
+      },
+    }
+  );
 }
-
-export async function requireAuth() {
-  const user = await getUser();
-  
-  if (!user) {
-    redirect('/login');
-  }
-  
-  return user;
-}
-
-// Export both createClient and createServerClient for compatibility
-export const createServerClient = createClient;
