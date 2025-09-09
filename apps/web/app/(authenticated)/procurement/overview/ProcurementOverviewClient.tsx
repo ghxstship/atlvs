@@ -82,17 +82,17 @@ export default function ProcurementOverviewClient() {
       const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
       const startOfWeek = new Date(now.setDate(now.getDate() - now.getDay()));
 
-      const monthlyOrders = orders?.filter(o => 
+      const monthlyOrders = orders?.filter((o: any) => 
         new Date(o.created_at) >= startOfMonth
       ) || [];
 
-      const weeklyOrders = orders?.filter(o => 
+      const weeklyOrders = orders?.filter((o: any) => 
         new Date(o.created_at) >= startOfWeek
       ) || [];
 
       // Calculate category breakdown
       const categorySpend: Record<string, number> = {};
-      orders?.forEach(order => {
+      orders?.forEach((order: any) => {
         const category = order.category || 'Uncategorized';
         categorySpend[category] = (categorySpend[category] || 0) + (order.total || 0);
       });
@@ -106,7 +106,7 @@ export default function ProcurementOverviewClient() {
 
       // Calculate supplier stats
       const supplierStats: Record<string, { spend: number; orders: number }> = {};
-      orders?.forEach(order => {
+      orders?.forEach((order: any) => {
         const vendor = order.vendor || 'Unknown';
         if (!supplierStats[vendor]) {
           supplierStats[vendor] = { spend: 0, orders: 0 };
@@ -122,14 +122,14 @@ export default function ProcurementOverviewClient() {
 
       setStats({
         totalOrders: orders?.length || 0,
-        pendingOrders: orders?.filter(o => o.status === 'pending' || o.status === 'processing').length || 0,
-        completedOrders: orders?.filter(o => o.status === 'delivered' || o.status === 'completed').length || 0,
-        totalSpend: orders?.reduce((sum, o) => sum + (o.total || 0), 0) || 0,
-        monthlySpend: monthlyOrders.reduce((sum, o) => sum + (o.total || 0), 0),
+        pendingOrders: orders?.filter((o: any) => o.status === 'pending' || o.status === 'processing').length || 0,
+        completedOrders: orders?.filter((o: any) => o.status === 'delivered' || o.status === 'completed').length || 0,
+        totalSpend: orders?.reduce((sum: number, o: any) => sum + (o.total || 0), 0) || 0,
+        monthlySpend: monthlyOrders.reduce((sum: number, o: any) => sum + (o.total || 0), 0),
         averageOrderValue: orders?.length ? 
-          (orders.reduce((sum, o) => sum + (o.total || 0), 0) / orders.length) : 0,
+          (orders.reduce((sum: number, o: any) => sum + (o.total || 0), 0) / orders.length) : 0,
         topSuppliers,
-        recentOrders: orders?.slice(0, 5).map(o => ({
+        recentOrders: orders?.slice(0, 5).map((o: any) => ({
           id: o.id,
           vendor: o.vendor || 'Unknown',
           total: o.total || 0,
@@ -137,9 +137,9 @@ export default function ProcurementOverviewClient() {
           created_at: o.created_at,
         })) || [],
         categoryBreakdown,
-        savingsThisMonth: monthlyOrders.reduce((sum, o) => sum + (o.savings || 0), 0),
+        savingsThisMonth: monthlyOrders.reduce((sum: number, o: any) => sum + (o.savings || 0), 0),
         ordersThisWeek: weeklyOrders.length,
-        pendingApprovals: orders?.filter(o => o.status === 'pending_approval').length || 0,
+        pendingApprovals: orders?.filter((o: any) => o.status === 'pending_approval').length || 0,
       });
     } catch (error) {
       console.error('Error fetching procurement stats:', error);

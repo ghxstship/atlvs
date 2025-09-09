@@ -10,7 +10,6 @@ import {
   Skeleton,
   UniversalDrawer,
   DataGrid,
-  ViewSwitcher,
   DataActions,
   StateManagerProvider,
   type FieldConfig,
@@ -21,6 +20,8 @@ import {
   DollarSign,
   Plus,
   Edit,
+  Grid3x3,
+  List,
   Trash2,
   AlertTriangle,
   CheckCircle,
@@ -247,15 +248,10 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
   ];
 
   const dataViewConfig: DataViewConfig = {
-    title: 'Budgets',
-    description: 'Manage your organization budgets',
-    fields: fieldConfigs,
-    actions: [
-      { type: 'create', label: 'Create' },
-      { type: 'edit', label: 'Edit' },
-      { type: 'delete', label: 'Delete' },
-      { type: 'view', label: 'View' }
-    ]
+    id: 'budgets',
+    name: 'Budgets',
+    viewType: 'grid',
+    fields: fieldConfigs
   };
 
   const budgetRecords: DataRecord[] = budgets.map(budget => ({
@@ -306,11 +302,26 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              view={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+              <Button
+                variant={currentView === 'grid' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('grid')}
+                className="gap-2"
+              >
+                <Grid3x3 className="h-4 w-4" />
+                <span className="hidden sm:inline">Grid</span>
+              </Button>
+              <Button
+                variant={currentView === 'list' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('list')}
+                className="gap-2"
+              >
+                <List className="h-4 w-4" />
+                <span className="hidden sm:inline">List</span>
+              </Button>
+            </div>
             <Button onClick={handleCreateBudget}>
               <Plus className="h-4 w-4 mr-2" />
               Create Budget
@@ -456,13 +467,53 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
           </div>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={budgetRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditBudget}
-              onDelete={handleDeleteBudget}
-              onView={handleViewBudget}
-            />
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b">
+                    <th className="text-left p-2">Name</th>
+                    <th className="text-left p-2">Category</th>
+                    <th className="text-left p-2">Amount</th>
+                    <th className="text-left p-2">Spent</th>
+                    <th className="text-left p-2">Status</th>
+                    <th className="text-left p-2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {budgets.map((budget) => (
+                    <tr key={budget.id} className="border-b hover:bg-gray-50">
+                      <td className="p-2">{budget.name}</td>
+                      <td className="p-2">{budget.category}</td>
+                      <td className="p-2">${budget.amount?.toLocaleString()}</td>
+                      <td className="p-2">${budget.spent?.toLocaleString()}</td>
+                      <td className="p-2">
+                        <Badge variant={budget.status === 'active' ? 'success' : 'secondary'}>
+                          {budget.status}
+                        </Badge>
+                      </td>
+                      <td className="p-2">
+                        <div className="flex space-x-2">
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleEditBudget(budget)}
+                          >
+                            <Edit className="h-3 w-3" />
+                          </Button>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleDeleteBudget(budget.id)}
+                          >
+                            <Trash2 className="h-3 w-3" />
+                          </Button>
+                        </div>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </Card>
         )}
 
