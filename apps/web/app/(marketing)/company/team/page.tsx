@@ -498,7 +498,7 @@ export default function TeamPage() {
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and coverage' },
             ].map((link) => (
-              <Link key={link.title} href={link.href}>
+              <a key={link.title} href={link.href}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>
@@ -509,7 +509,7 @@ export default function TeamPage() {
                     </p>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
