@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Input, Select, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Heart, Activity, Pill, AlertCircle, Save, Plus, X, Edit2, Trash2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface HealthInfo {
   id: string;
@@ -44,7 +44,7 @@ export default function HealthInfoClient() {
     frequency: '',
     reason: '',
   });
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   useEffect(() => {
@@ -78,10 +78,10 @@ export default function HealthInfoClient() {
       }
     } catch (error) {
       console.error('Error fetching health info:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to load health information',
-        variant: 'destructive',
       });
     } finally {
       setLoading(false);
@@ -115,7 +115,8 @@ export default function HealthInfoClient() {
         if (error) throw error;
       }
 
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
         description: 'Health information saved successfully',
       });
@@ -124,10 +125,10 @@ export default function HealthInfoClient() {
       fetchHealthInfo();
     } catch (error) {
       console.error('Error saving health info:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
         description: 'Failed to save health information',
-        variant: 'destructive',
       });
     }
   };

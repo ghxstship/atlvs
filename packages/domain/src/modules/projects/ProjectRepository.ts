@@ -3,6 +3,9 @@ import type { Project } from './Project';
 
 export interface ProjectRepository extends BaseRepository<Project> {}
 
+// Re-export the interface to ensure it's available
+export type { ProjectRepository as ProjectRepositoryInterface };
+
 // Default implementation for compatibility
 export class ProjectRepositoryImpl implements ProjectRepository {
   async findById(id: string): Promise<Project | null> {
