@@ -503,7 +503,7 @@ export default function PressPage() {
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             ].map((link) => (
-              <Link key={link.title} href={link.href}>
+              <a key={link.title} href={link.href}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>
@@ -514,7 +514,7 @@ export default function PressPage() {
                     </p>
                   </CardContent>
                 </Card>
-              </Link>
+              </a>
             ))}
           </div>
         </div>
