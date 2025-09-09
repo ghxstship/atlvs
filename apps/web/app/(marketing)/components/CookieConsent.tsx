@@ -111,7 +111,7 @@ export function CookieConsent() {
                     We use cookies and similar technologies to provide, protect, and improve our services. 
                     By clicking "Accept All", you consent to our use of cookies for analytics, marketing, and functionality.{' '}
                     <Button
-                      variant="link"
+                      variant="ghost"
                       size="sm"
                       className="p-0 h-auto text-sm underline"
                       onClick={() => setShowPreferences(true)}

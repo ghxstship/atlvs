@@ -116,12 +116,12 @@ export function ProductHighlights() {
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row gap-3">
-                  <Link href={product.href} className="flex-1">
+                  <a href={product.href} className="flex-1">
                     <Button className="w-full group">
                       Learn More
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
-                  </Link>
+                  </a>
                   <Link href="/auth/signup">
                     <Button variant="outline" className="w-full sm:w-auto">
                       Try Free
