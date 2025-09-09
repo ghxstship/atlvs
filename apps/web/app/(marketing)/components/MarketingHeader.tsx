@@ -129,7 +129,7 @@ export function MarketingHeader() {
                       )}
                     >
                       {item.children.map((child) => (
-                        <Link
+                        <a
                           key={child.href}
                           href={child.href}
                           className={cn(
@@ -138,12 +138,12 @@ export function MarketingHeader() {
                           )}
                         >
                           {child.label}
-                        </Link>
+                        </a>
                       ))}
                     </div>
                   </div>
                 ) : (
-                  <Link
+                  <a
                     href={item.href}
                     className={cn(
                       "text-sm font-medium transition-colors hover:text-primary",
@@ -151,7 +151,7 @@ export function MarketingHeader() {
                     )}
                   >
                     {item.label}
-                  </Link>
+                  </a>
                 )}
               </div>
             ))}
@@ -207,7 +207,7 @@ export function MarketingHeader() {
                       {activeDropdown === item.label && (
                         <div className="pl-4 space-y-1">
                           {item.children.map((child) => (
-                            <Link
+                            <a
                               key={child.href}
                               href={child.href}
                               className={cn(
@@ -216,13 +216,13 @@ export function MarketingHeader() {
                               )}
                             >
                               {child.label}
-                            </Link>
+                            </a>
                           ))}
                         </div>
                       )}
                     </div>
                   ) : (
-                    <Link
+                    <a
                       href={item.href}
                       className={cn(
                         "block px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground",
@@ -230,7 +230,7 @@ export function MarketingHeader() {
                       )}
                     >
                       {item.label}
-                    </Link>
+                    </a>
                   )}
                 </div>
               ))}

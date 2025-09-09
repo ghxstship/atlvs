@@ -33,8 +33,8 @@ export function CTASection() {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/sign-up">
-            <Button size="lg" variant="secondary" className="group">
+          <Link href="/auth/signup">
+            <Button size="lg" variant="primary" className="group">
               Start Your Free Trial
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
@@ -48,11 +48,11 @@ export function CTASection() {
 
         <p className="mt-8 text-sm text-white/70">
           Questions? Check out our{' '}
-          <Link href="/docs" className="underline hover:text-white">
+          <a href="/resources" className="underline hover:text-white">
             documentation
-          </Link>{' '}
+          </a>{' '}
           or{' '}
-          <Link href="/support" className="underline hover:text-white">
+          <Link href="/contact" className="underline hover:text-white">
             contact support
           </Link>
         </p>

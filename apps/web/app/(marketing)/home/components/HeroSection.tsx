@@ -55,13 +55,13 @@ export function HeroSection() {
 
         {/* CTA buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/sign-up">
+          <Link href="/auth/signup">
             <Button size="lg" className="group">
               Get Started Free
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
-          <Link href="/demo">
+          <Link href="/products">
             <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10">
               View Live Demo
             </Button>

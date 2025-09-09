@@ -114,12 +114,12 @@ export function CTASection() {
                 Our enterprise team can help you build a tailored solution that fits your specific needs and scale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href="/company/contact">
+                <Link href="/contact">
                   <Button variant="outline" size="lg" className="w-full sm:w-auto">
                     Contact Sales
                   </Button>
                 </Link>
-                <Link href="/resources/demo">
+                <Link href="/products">
                   <Button variant="ghost" size="lg" className="w-full sm:w-auto">
                     Schedule Demo
                   </Button>

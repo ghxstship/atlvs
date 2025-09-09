@@ -207,16 +207,16 @@ export default function RootPage() {
               <ul className="space-y-2">
                 <li><Link href="/products/atlvs" className="text-sm text-slate-600 hover:text-slate-900">ATLVS</Link></li>
                 <li><Link href="/products/opendeck" className="text-sm text-slate-600 hover:text-slate-900">OPENDECK</Link></li>
-                <li><Link href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Integrations</Link></li>
-                <li><Link href="/resources" className="text-sm text-slate-600 hover:text-slate-900">API</Link></li>
+                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Integrations</a></li>
+                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">API</a></li>
               </ul>
             </div>
             <div>
               <h3 className={`mb-4 text-sm font-semibold text-slate-900 ${anton.className} uppercase`}>RESOURCES</h3>
               <ul className="space-y-2">
-                <li><Link href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Documentation</Link></li>
-                <li><Link href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Help Center</Link></li>
-                <li><Link href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Blog</Link></li>
+                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Documentation</a></li>
+                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Help Center</a></li>
+                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Blog</a></li>
                 <li><Link href="/community" className="text-sm text-slate-600 hover:text-slate-900">Community</Link></li>
               </ul>
             </div>
