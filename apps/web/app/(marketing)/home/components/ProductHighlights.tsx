@@ -3,7 +3,7 @@
 import React from 'react';
 import { CheckCircle, Zap, Shield, Globe } from 'lucide-react';
 
-export default function ProductHighlights() {
+export function ProductHighlights() {
   const highlights = [
     {
       icon: Zap,

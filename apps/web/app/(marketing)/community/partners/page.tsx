@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Anton } from 'next/font/google';
 import { Button } from '@ghxstship/ui';
-import { Handshake, Star, Globe, Zap } from 'lucide-react';
+import { Users, Star, Globe, Zap } from 'lucide-react';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -98,7 +98,7 @@ export default function PartnersPage() {
 
         <div className="bg-muted/30 rounded-lg p-8">
           <div className="text-center mb-8">
-            <Handshake className="h-12 w-12 text-primary mx-auto mb-4" />
+            <Users className="h-12 w-12 text-primary mx-auto mb-4" />
             <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
               PARTNER WITH US
             </h2>

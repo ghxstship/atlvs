@@ -395,7 +395,7 @@ export default function ProcurementOverviewClient() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Link href="/procurement/orders/new">
+        <Link href="/procurement/orders" as="/procurement/orders/new">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardContent className="p-6 text-center">
               <Plus className="w-8 h-8 mx-auto mb-2 text-primary" />

@@ -7,7 +7,7 @@ import {
   FileText, Settings, User, Workflow, Package
 } from 'lucide-react';
 
-export default function FeatureGrid() {
+export function FeatureGrid() {
   const features = [
     { icon: LayoutDashboard, name: 'Dashboard', description: 'Customizable analytics and insights' },
     { icon: Briefcase, name: 'Projects', description: 'Complete project management suite' },

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@ghxstship/ui';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 
-export default function CTASection() {
+export function CTASection() {
   const benefits = [
     'No credit card required',
     '14-day free trial',

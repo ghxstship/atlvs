@@ -3,7 +3,7 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
 
-export default function SocialProof() {
+export function SocialProof() {
   const testimonials = [
     {
       name: 'Sarah Chen',

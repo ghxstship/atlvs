@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@ghxstship/ui';
 import { ArrowRight, Sparkles, Zap, Shield } from 'lucide-react';
 
-export default function HeroSection() {
+export function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
       {/* Background effects */}

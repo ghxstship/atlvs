@@ -3,7 +3,7 @@
 import React from 'react';
 import { Shield, Lock, Award, Users } from 'lucide-react';
 
-export default function TrustSignals() {
+export function TrustSignals() {
   const signals = [
     {
       icon: Shield,

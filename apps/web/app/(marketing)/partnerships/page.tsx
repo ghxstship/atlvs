@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Handshake, Users, Globe, Zap, CheckCircle, Star, Building, Target } from 'lucide-react';
+import { ArrowRight, Users, Globe, Zap, CheckCircle, Star, Building, Target } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
@@ -253,7 +253,7 @@ export default function PartnershipsPage() {
               <Card key={partner.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-lg mx-auto mb-4 flex items-center justify-center">
-                    <Handshake className="h-8 w-8 text-primary" />
+                    <Users className="h-8 w-8 text-primary" />
                   </div>
                   <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
                     {partner.name}

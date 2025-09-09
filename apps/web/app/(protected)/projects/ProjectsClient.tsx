@@ -11,9 +11,9 @@ import {
   ListView 
 } from '@ghxstship/ui/components/DataViews';
 import { 
-  EnhancedDataViewProvider, 
-  EnhancedUniversalDrawer 
+  EnhancedDataViewProvider
 } from '@ghxstship/ui/components/DataViews/providers/SupabaseDataProvider';
+import { EnhancedUniversalDrawer } from '@ghxstship/ui';
 import { useAuth } from '@ghxstship/application/lib/supabase/auth-service';
 import { 
   DataViewProvider, 
@@ -181,21 +181,23 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
             
             {/* Enhanced Universal Drawer for CRUD operations */}
             <EnhancedUniversalDrawer
-              open={drawerOpen}
+              isOpen={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
+                setDrawerMode('view');
               }}
-              record={selectedRecord}
-              fields={projectsConfig.fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
-              title={selectedRecord?.name || (drawerMode === 'create' ? 'Create Project' : 'Project Details')}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
-              enableVersioning={true}
-            />
+              title={selectedRecord ? `Project: ${selectedRecord.name}` : 'New Project'}
+            >
+              <div className="p-4">
+                <p>Project details would be displayed here.</p>
+                {selectedRecord && (
+                  <pre className="mt-4 text-sm bg-gray-100 p-2 rounded">
+                    {JSON.stringify(selectedRecord, null, 2)}
+                  </pre>
+                )}
+              </div>
+            </EnhancedUniversalDrawer>
             {/* Universal Drawer for record interactions */}
             <UniversalDrawer />
           </div>
