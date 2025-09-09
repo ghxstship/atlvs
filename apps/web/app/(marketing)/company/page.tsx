@@ -286,18 +286,18 @@ export default function CompanyPage() {
                   <p className="text-sm text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center gap-3">
                     {member.linkedin && (
-                      <Link href={member.linkedin} target="_blank">
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm">
                           LinkedIn
                         </Button>
-                      </Link>
+                      </a>
                     )}
                     {member.twitter && (
-                      <Link href={member.twitter} target="_blank">
+                      <a href={member.twitter} target="_blank" rel="noopener noreferrer">
                         <Button variant="outline" size="sm">
                           Twitter
                         </Button>
-                      </Link>
+                      </a>
                     )}
                   </div>
                 </CardContent>
@@ -404,12 +404,12 @@ export default function CompanyPage() {
                         <span>{press.date}</span>
                       </div>
                     </div>
-                    <Link href={press.href}>
+                    <a href={press.href}>
                       <Button variant="outline" size="sm">
                         Read More
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
-                    </Link>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -417,12 +417,12 @@ export default function CompanyPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/press">
+            <a href="/press">
               <Button variant="outline" size="lg">
                 View All Press Releases
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
