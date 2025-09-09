@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Button, Card, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Badge } from '@ghxstship/ui';
-import { PlusIcon, MagnifyingGlassIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { Button, Card, Input, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Badge, Skeleton } from '@ghxstship/ui';
+import { PlusIcon, MagnifyingGlassIcon, DocumentTextIcon, PencilIcon, ClockIcon, CheckCircleIcon, XCircleIcon, ExclamationTriangleIcon, CurrencyDollarIcon, CalendarIcon, BuildingOfficeIcon, EyeIcon, ArrowDownTrayIcon, ChartBarIcon } from '@heroicons/react/24/outline';
 
 // Domain interface for JobContract
 interface JobContract {
@@ -67,6 +67,11 @@ const TYPE_OPTIONS = [
   { value: 'amendment', label: 'Amendment' },
   { value: 'termination', label: 'Termination' },
 ];
+
+const translations = {
+  title: 'Contracts',
+  subtitle: 'Manage job contracts and agreements'
+};
 
 // Utility functions for status and type badges
 const getStatusBadgeColor = (status: string) => {
