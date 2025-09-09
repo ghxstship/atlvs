@@ -183,17 +183,17 @@ export default function CommunityPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://discord.gg/ghxstship" target="_blank">
+              <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full sm:w-auto group">
                   Join Discord
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
-              <Link href="/community/events">
+              </a>
+              <a href="/community/events">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   View Events
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -265,12 +265,21 @@ export default function CommunityPage() {
                       ))}
                     </div>
 
-                    <Link href={channel.href} target={channel.href.startsWith('http') ? '_blank' : undefined}>
-                      <Button className="w-full group">
-                        Join Community
-                        <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                      </Button>
-                    </Link>
+                    {channel.href.startsWith('http') ? (
+                      <a href={channel.href} target="_blank" rel="noopener noreferrer">
+                        <Button className="w-full group">
+                          Join Community
+                          <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </a>
+                    ) : (
+                      <a href={channel.href}>
+                        <Button className="w-full group">
+                          Join Community
+                          <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        </Button>
+                      </a>
+                    )}
                   </CardContent>
                 </Card>
               );
@@ -307,12 +316,12 @@ export default function CommunityPage() {
                       {social.followers} followers
                     </div>
                     <p className="text-xs text-muted-foreground mb-4">{social.description}</p>
-                    <Link href={social.href} target="_blank">
+                    <a href={social.href} target="_blank" rel="noopener noreferrer">
                       <Button variant="outline" size="sm" className="w-full">
                         Follow
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
-                    </Link>
+                    </a>
                   </CardContent>
                 </Card>
               );
@@ -363,12 +372,12 @@ export default function CommunityPage() {
           </div>
 
           <div className="text-center">
-            <Link href="/community/events">
+            <a href="/community/events">
               <Button variant="outline" size="lg">
                 View All Events
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -453,17 +462,17 @@ export default function CommunityPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="https://discord.gg/ghxstship" target="_blank">
+              <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
                 <Button size="lg" className="w-full sm:w-auto group">
                   Join Discord Community
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-              </Link>
-              <Link href="/auth/signup">
+              </a>
+              <a href="/auth/signup">
                 <Button variant="outline" size="lg" className="w-full sm:w-auto">
                   Create Account
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
         </div>

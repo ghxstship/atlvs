@@ -20,7 +20,7 @@ import {
   DollarSign,
   Plus,
   Edit,
-  Grid3x3,
+  LayoutGrid,
   List,
   Trash2,
   AlertTriangle,
@@ -309,7 +309,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 onClick={() => setCurrentView('grid')}
                 className="gap-2"
               >
-                <Grid3x3 className="h-4 w-4" />
+                <LayoutGrid className="h-4 w-4" />
                 <span className="hidden sm:inline">Grid</span>
               </Button>
               <Button
