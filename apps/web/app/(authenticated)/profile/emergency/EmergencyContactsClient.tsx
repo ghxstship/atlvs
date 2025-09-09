@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Input, Card, CardHeader, CardContent, Alert } from '@ghxstship/ui';
 import { Phone, Mail, User, AlertTriangle, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '@ghxstship/ui';
 
 interface EmergencyContact {
   id: string;
@@ -23,7 +23,7 @@ export default function EmergencyContactsClient() {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [isAdding, setIsAdding] = useState(false);
   const [formData, setFormData] = useState<Partial<EmergencyContact>>({});
-  const { toast } = useToast();
+  const { addToast } = useToast();
   const supabase = createClient();
 
   useEffect(() => {
@@ -46,10 +46,10 @@ export default function EmergencyContactsClient() {
       setContacts(data || []);
     } catch (error) {
       console.error('Error fetching emergency contacts:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
-        description: 'Failed to load emergency contacts',
-        variant: 'destructive',
+        description: 'Failed to load emergency contacts'
       });
     } finally {
       setLoading(false);
@@ -69,9 +69,10 @@ export default function EmergencyContactsClient() {
           .eq('user_id', user.id);
 
         if (error) throw error;
-        toast({
+        addToast({
+          type: 'success',
           title: 'Success',
-          description: 'Emergency contact updated successfully',
+          description: 'Emergency contact updated successfully'
         });
       } else {
         const { error } = await supabase
@@ -82,9 +83,10 @@ export default function EmergencyContactsClient() {
           });
 
         if (error) throw error;
-        toast({
+        addToast({
+          type: 'success',
           title: 'Success',
-          description: 'Emergency contact added successfully',
+          description: 'Emergency contact added successfully'
         });
       }
 
@@ -94,10 +96,10 @@ export default function EmergencyContactsClient() {
       fetchContacts();
     } catch (error) {
       console.error('Error saving emergency contact:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
-        description: 'Failed to save emergency contact',
-        variant: 'destructive',
+        description: 'Failed to save emergency contact'
       });
     }
   };
@@ -115,17 +117,18 @@ export default function EmergencyContactsClient() {
 
       if (error) throw error;
       
-      toast({
+      addToast({
+        type: 'success',
         title: 'Success',
-        description: 'Emergency contact deleted successfully',
+        description: 'Emergency contact deleted successfully'
       });
       fetchContacts();
     } catch (error) {
       console.error('Error deleting emergency contact:', error);
-      toast({
+      addToast({
+        type: 'error',
         title: 'Error',
-        description: 'Failed to delete emergency contact',
-        variant: 'destructive',
+        description: 'Failed to delete emergency contact'
       });
     }
   };
