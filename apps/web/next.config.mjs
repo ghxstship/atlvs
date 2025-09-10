@@ -4,7 +4,6 @@ import { withSentryConfig } from '@sentry/nextjs';
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  output: 'standalone',
   eslint: {
     // Temporarily ignore ESLint errors during builds (approved)
     ignoreDuringBuilds: true
