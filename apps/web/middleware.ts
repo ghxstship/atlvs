@@ -24,6 +24,10 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith('/terms') ||
     pathname.startsWith('/accessibility') ||
     pathname.startsWith('/home') ||
+    pathname.startsWith('/marketing') ||
+    pathname.startsWith('/contact') ||
+    pathname.startsWith('/cookies') ||
+    pathname.startsWith('/security') ||
     pathname.startsWith('/_next') ||
     /\.(?:.*)$/.test(pathname);
 
