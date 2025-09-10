@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { typography } from './lib/typography';
 
 export const metadata: Metadata = {
   title: 'GHXSTSHIP - Revolutionary Production Management Platform',
@@ -31,10 +29,10 @@ export default function RootPage() {
                 </span>
               </div>
             </div>
-            <h1 className={`mb-6 text-4xl font-bold tracking-tight text-slate-900 sm:text-6xl ${anton.className} uppercase`}>
+            <h1 className={`mb-6 text-slate-900 ${typography.heroTitle}`}>
               REVOLUTIONARY PRODUCTION MANAGEMENT PLATFORM
             </h1>
-            <p className="mx-auto mb-8 max-w-2xl text-lg leading-8 text-slate-600">
+            <p className={`mx-auto mb-8 max-w-2xl ${typography.heroSubtitle}`}>
               Transform your creative production workflow with ATLVS and OPENDECK. Enterprise-grade project management, 
               asset organization, and team collaboration tools designed for modern creative teams.
             </p>
@@ -73,10 +71,10 @@ export default function RootPage() {
               <span className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-700 mb-6">
                 Trusted by 10,000+ creative teams worldwide
               </span>
-              <h2 className={`mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl ${anton.className} uppercase`}>
+              <h2 className={`mb-4 text-slate-900 ${typography.sectionTitle}`}>
                 EVERYTHING YOU NEED TO MANAGE CREATIVE PRODUCTION
               </h2>
-              <p className="text-lg leading-8 text-slate-600">
+              <p className={typography.sectionSubtitle}>
                 From project planning to asset delivery, our integrated suite of tools streamlines every aspect of your creative workflow.
               </p>
             </div>
@@ -94,10 +92,10 @@ export default function RootPage() {
                       <div className="mb-4 h-12 w-12 rounded-lg bg-blue-600 flex items-center justify-center">
                         <span className="text-white text-xl">⚡</span>
                       </div>
-                      <h3 className={`mb-2 text-2xl font-bold text-slate-900 ${anton.className} uppercase`}>
+                      <h3 className={`mb-2 text-slate-900 ${typography.cardTitle}`}>
                         ENTERPRISE PROJECT MANAGEMENT
                       </h3>
-                      <p className="text-slate-600">
+                      <p className={typography.bodyMedium}>
                         Streamline your creative projects with intelligent task management, resource allocation, and real-time collaboration tools.
                       </p>
                     </div>
@@ -132,10 +130,10 @@ export default function RootPage() {
                       <div className="mb-4 h-12 w-12 rounded-lg bg-green-600 flex items-center justify-center">
                         <span className="text-white text-xl">🌐</span>
                       </div>
-                      <h3 className={`mb-2 text-2xl font-bold text-slate-900 ${anton.className} uppercase`}>
+                      <h3 className={`mb-2 text-slate-900 ${typography.cardTitle}`}>
                         GLOBAL ASSET MARKETPLACE
                       </h3>
-                      <p className="text-slate-600">
+                      <p className={typography.bodyMedium}>
                         Access a vast marketplace of creative assets, collaborate with talent worldwide, and monetize your own creative work.
                       </p>
                     </div>
@@ -167,10 +165,10 @@ export default function RootPage() {
         <section className="py-24">
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-12 text-center text-white shadow-xl">
-              <h2 className={`mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl ${anton.className} uppercase`}>
+              <h2 className={`mb-4 text-white ${typography.sectionTitle}`}>
                 READY TO TRANSFORM YOUR PRODUCTION WORKFLOW?
               </h2>
-              <p className="mb-8 text-xl opacity-90">
+              <p className={`mb-8 opacity-90 ${typography.heroSubtitle}`}>
                 Join thousands of creative teams who trust GHXSTSHIP to deliver exceptional results.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

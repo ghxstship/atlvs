@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Globe, Zap, Shield, CheckCircle } from 'lucide-react';
+import { typography } from '../lib/typography';
+import { Section, SectionHeader } from '../components/layout/Section';
 
 export const metadata: Metadata = {
   title: 'Products - ATLVS & OPENDECK | GHXSTSHIP',
@@ -84,14 +86,14 @@ export default function ProductsPage() {
             <Badge variant="outline" className="mb-4">
               Our Products
             </Badge>
-            <h1 className="font-title text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className={`mb-6 ${typography.heroTitle}`}>
               TWO PLATFORMS,
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 INFINITE POSSIBILITIES
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className={`max-w-3xl mx-auto ${typography.heroSubtitle}`}>
               ATLVS and OPENDECK work together to provide the most comprehensive solution for 
               creative production management and talent acquisition in the industry.
             </p>
@@ -110,11 +112,11 @@ export default function ProductsPage() {
                   <div className="space-y-6">
                     <div>
                       <div className="flex items-center gap-3 mb-3">
-                        <h2 className="font-title text-3xl lg:text-4xl font-bold">{product.name}</h2>
+                        <h2 className={typography.sectionTitle}>{product.name}</h2>
                         <Badge variant="secondary">Enterprise Ready</Badge>
                       </div>
-                      <p className="text-xl font-medium text-primary mb-4">{product.tagline}</p>
-                      <p className="text-lg text-muted-foreground">{product.longDescription}</p>
+                      <p className={`mb-4 text-primary ${typography.cardSubtitle}`}>{product.tagline}</p>
+                      <p className={typography.bodyLarge}>{product.longDescription}</p>
                     </div>
 
                     {/* Features */}

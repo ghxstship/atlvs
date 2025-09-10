@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Film, Megaphone, Music, Building, CheckCircle, Users, BarChart3, Zap, Globe } from 'lucide-react';
+import { typography } from '../lib/typography';
+import { Section, SectionHeader } from '../components/layout/Section';
 
 export const metadata: Metadata = {
   title: 'Solutions - Industry-Focused Production Management | GHXSTSHIP',
@@ -197,14 +199,14 @@ export default function SolutionsPage() {
             <Badge variant="outline" className="mb-4">
               Industry Solutions
             </Badge>
-            <h1 className="font-title text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className={`mb-6 ${typography.heroTitle}`}>
               TAILORED FOR
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 YOUR INDUSTRY
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className={`max-w-3xl mx-auto ${typography.heroSubtitle}`}>
               GHXSTSHIP adapts to your specific industry needs with customizable workflows, 
               specialized features, and deep integrations designed for your unique challenges.
             </p>

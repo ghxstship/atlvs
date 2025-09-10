@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Users, Target, Globe, Award, TrendingUp, Heart, Zap, Shield } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { typography } from '../../lib/typography';
+import { Section, SectionHeader } from '../../components/layout/Section';
 
 export const metadata: Metadata = {
   title: 'About Us | GHXSTSHIP',
@@ -111,7 +110,7 @@ export default function AboutPage() {
             <Badge variant="outline" className="mb-4">
               Our Story
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`mb-6 ${typography.heroTitle}`}>
               EMPOWERING
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
@@ -129,7 +128,7 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {stats.map((stat) => (
                 <div key={stat.metric} className="text-center">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>
+                  <div className={`mb-2 text-foreground ${typography.statValue}`}>
                     {stat.metric}
                   </div>
                   <div className="font-semibold text-foreground mb-1">{stat.label}</div>
@@ -146,7 +145,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 OUR MISSION
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
@@ -184,7 +183,7 @@ export default function AboutPage() {
             <div className="relative">
               <Card className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-0">
                 <CardContent className="p-8">
-                  <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>Our Vision</h3>
+                  <h3 className={`mb-4 ${typography.cardTitle}`}>Our Vision</h3>
                   <p className="text-muted-foreground mb-6">
                     A world where creativity knows no boundaries. Where the best ideas can come 
                     from anywhere and be brought to life through seamless global collaboration.
@@ -205,7 +204,7 @@ export default function AboutPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR VALUES
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -224,7 +223,7 @@ export default function AboutPage() {
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{value.title}</h3>
+                        <h3 className={`mb-3 ${typography.cardTitle}`}>{value.title}</h3>
                         <p className="text-muted-foreground">{value.description}</p>
                       </div>
                     </div>
@@ -240,7 +239,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR JOURNEY
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -257,10 +256,10 @@ export default function AboutPage() {
                   <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <Card className="hover:shadow-lg transition-shadow">
                       <CardContent className="p-6">
-                        <div className={`${anton.className} text-2xl font-bold text-primary mb-2 uppercase`}>
+                        <div className={`mb-2 text-primary ${typography.statValue}`}>
                           {milestone.year}
                         </div>
-                        <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                        <h3 className={`mb-2 ${typography.cardTitle}`}>
                           {milestone.title}
                         </h3>
                         <p className="text-muted-foreground">{milestone.description}</p>
@@ -284,7 +283,7 @@ export default function AboutPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               LEADERSHIP TEAM
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -299,7 +298,7 @@ export default function AboutPage() {
                   <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className={`${anton.className} text-lg font-bold mb-1 uppercase`}>
+                  <h3 className={`mb-1 ${typography.cardTitle}`}>
                     {leader.name}
                   </h3>
                   <p className="text-sm font-semibold text-primary mb-3">{leader.role}</p>
@@ -315,7 +314,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               AWARDS & RECOGNITION
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -361,7 +360,7 @@ export default function AboutPage() {
                   <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Award className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                  <h3 className={`mb-2 ${typography.cardTitle}`}>
                     {award.title}
                   </h3>
                   <p className="text-sm font-semibold text-primary mb-2">{award.organization}</p>
@@ -377,7 +376,7 @@ export default function AboutPage() {
       <section className="py-20 bg-gradient-to-r from-blue-500/5 to-purple-500/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               JOIN OUR MISSION
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -406,7 +405,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`mb-6 ${typography.sectionTitle}`}>
               LEARN MORE
             </h2>
           </div>
@@ -420,7 +419,7 @@ export default function AboutPage() {
               <a key={link.title} href={link.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
-                    <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>
+                    <h3 className={`mb-2 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
                       {link.title}
                     </h3>
                     <p className="text-sm text-muted-foreground">

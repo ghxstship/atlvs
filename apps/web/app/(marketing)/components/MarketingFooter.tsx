@@ -1,24 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import { Button } from '@ghxstship/ui';
-import { Github, Linkedin, Youtube, Mail, Check } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
-
-// Custom X (Twitter) icon component
-const XIcon = ({ className }: { className?: string }) => (
-  <svg
-    className={className}
-    viewBox="0 0 24 24"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-);
+import { typography, anton } from '../lib/typography';
+import { layouts } from '../lib/layouts';
+import { NewsletterSignup } from './ui/NewsletterSignup';
+import { FooterSection } from './footer/FooterSection';
+import { SocialLinks } from './footer/SocialLinks';
+import { TrustBadges } from './footer/TrustBadges';
 
 const footerSections = [
   {
@@ -87,108 +75,28 @@ const footerSections = [
   },
 ];
 
-const socialLinks = [
-  { icon: XIcon, href: 'https://x.com/ghxstship_xyz', label: 'X' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/ghxstship', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/ghxstship', label: 'GitHub' },
-  { icon: Youtube, href: 'https://youtube.com/@ghxstship', label: 'YouTube' },
-];
 
 export function MarketingFooter() {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleNewsletterSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email || isLoading) return;
-
-    setIsLoading(true);
-    
-    try {
-      // Simulate API call - replace with actual newsletter service
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setIsSubscribed(true);
-      setEmail('');
-      
-      // Reset success state after 3 seconds
-      setTimeout(() => setIsSubscribed(false), 3000);
-    } catch (error) {
-      console.error('Newsletter subscription failed:', error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
     <footer className="bg-muted/30 border-t">
-      <div className="container mx-auto px-4 py-12">
+      <div className={`${layouts.container} ${layouts.sectionPadding}`}>
         {/* Newsletter Signup */}
         <div className="mb-12 text-center">
-          <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>
+          <h3 className={`${typography.sectionTitle} mb-4`}>
             STAY UPDATED WITH GHXSTSHIP
           </h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Get the latest updates on new features, industry insights, and exclusive content delivered to your inbox.
           </p>
-          <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-              disabled={isLoading || isSubscribed}
-              className="flex-1 px-4 py-2 rounded-md border border-input bg-background text-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:opacity-50"
-            />
-            <Button 
-              type="submit" 
-              
-              className="sm:w-auto" 
-              disabled={isLoading || isSubscribed || !email}
-            >
-              {isLoading ? (
-                <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
-                  Subscribing...
-                </>
-              ) : isSubscribed ? (
-                <>
-                  <Check className="h-4 w-4 mr-2" />
-                  Subscribed!
-                </>
-              ) : (
-                <>
-                  <Mail className="h-4 w-4 mr-2" />
-                  Subscribe
-                </>
-              )}
-            </Button>
-          </form>
+          <NewsletterSignup variant="centered" />
         </div>
 
         {/* Footer Links */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {footerSections.map((section) => (
-            <div key={section.title}>
-              <h4 className={`${anton.className} font-semibold text-foreground mb-4 text-sm uppercase tracking-wide`}>
-                {section.title}
-              </h4>
-              <ul className="space-y-3">
-                {section.links.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href as any as any}
-                      {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterSection key={section.title} title={section.title} links={section.links} />
           ))}
         </div>
 
@@ -207,46 +115,11 @@ export function MarketingFooter() {
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center space-x-4">
-            {socialLinks.map((social) => {
-              const Icon = social.icon;
-              return (
-                <a
-                  key={social.href}
-                  href={social.href as any as any}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  aria-label={social.label}
-                >
-                  <Icon className="h-5 w-5" />
-                </a>
-              );
-            })}
-          </div>
+          <SocialLinks />
         </div>
 
         {/* Trust Badges */}
-        <div className="mt-8 pt-8 border-t text-center">
-          <div className="flex flex-wrap justify-center items-center gap-6 text-xs text-muted-foreground">
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              SOC 2 Type II Certified
-            </span>
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              GDPR Compliant
-            </span>
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              ISO 27001 Certified
-            </span>
-            <span className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-              99.9% Uptime SLA
-            </span>
-          </div>
-        </div>
+        <TrustBadges />
       </div>
     </footer>
   );
