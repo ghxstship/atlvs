@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, Shield, CheckCircle, Play, Zap, Clock, FileText, Settings, MessageSquare } from 'lucide-react';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'ATLVS - Production Management Platform | GHXSTSHIP',
@@ -109,7 +112,7 @@ export default function ATLVSPage() {
                 <Badge variant="outline" className="mb-4">
                   Production Management
                 </Badge>
-                <h1 className="font-title text-4xl lg:text-6xl font-bold mb-6">
+                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
                   <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
                     ATLVS
                   </span>
@@ -126,19 +129,19 @@ export default function ATLVSPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center lg:text-left">
-                  <div className="font-title text-3xl font-bold text-foreground mb-2">75K+</div>
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>75K+</div>
                   <div className="text-sm text-muted-foreground">Projects Managed</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="font-title text-3xl font-bold text-foreground mb-2">12K+</div>
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>12K+</div>
                   <div className="text-sm text-muted-foreground">Active Teams</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="font-title text-3xl font-bold text-foreground mb-2">40%</div>
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>40%</div>
                   <div className="text-sm text-muted-foreground">Time Saved</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className="font-title text-3xl font-bold text-foreground mb-2">98%</div>
+                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>98%</div>
                   <div className="text-sm text-muted-foreground">Satisfaction</div>
                 </div>
               </div>
@@ -177,7 +180,7 @@ export default function ATLVSPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-title text-lg font-bold">BLACKWATER REVERB</h3>
+                      <h3 className={`${anton.className} text-lg font-bold uppercase`}>BLACKWATER REVERB</h3>
                       <p className="text-sm text-muted-foreground">Main Deck Takeover</p>
                     </div>
                     <Badge variant="outline" className="text-green-600 border-green-600">
@@ -237,7 +240,7 @@ export default function ATLVSPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               COMPREHENSIVE FEATURES
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -277,7 +280,7 @@ export default function ATLVSPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               BUILT FOR YOUR INDUSTRY
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -290,20 +293,20 @@ export default function ATLVSPage() {
             {useCases.map((useCase) => (
               <Card key={useCase.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className="font-title text-xl font-bold mb-4">{useCase.title}</h3>
+                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{useCase.title}</h3>
                   <p className="text-muted-foreground mb-6">{useCase.description}</p>
                   
                   <div className="grid grid-cols-3 gap-4 pt-6 border-t">
                     <div className="text-center">
-                      <div className="font-title text-lg font-bold text-blue-500">{useCase.stats.projects}</div>
+                      <div className={`${anton.className} text-lg font-bold text-blue-500 uppercase`}>{useCase.stats.projects}</div>
                       <div className="text-xs text-muted-foreground">Projects</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-title text-lg font-bold text-green-500">{useCase.stats.savings}</div>
+                      <div className={`${anton.className} text-lg font-bold text-green-500 uppercase`}>{useCase.stats.savings}</div>
                       <div className="text-xs text-muted-foreground">Time Saved</div>
                     </div>
                     <div className="text-center">
-                      <div className="font-title text-lg font-bold text-purple-500">{useCase.stats.satisfaction}</div>
+                      <div className={`${anton.className} text-lg font-bold text-purple-500 uppercase`}>{useCase.stats.satisfaction}</div>
                       <div className="text-xs text-muted-foreground">Satisfaction</div>
                     </div>
                   </div>
@@ -318,7 +321,7 @@ export default function ATLVSPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               TRUSTED BY INDUSTRY LEADERS
             </h2>
           </div>
@@ -353,7 +356,7 @@ export default function ATLVSPage() {
       <section className="py-20 bg-gradient-to-r from-blue-500/5 to-cyan-500/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               READY TO TRANSFORM YOUR PRODUCTION?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

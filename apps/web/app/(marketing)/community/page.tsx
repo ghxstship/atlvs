@@ -1,7 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Users, MessageSquare, Calendar, Award, ExternalLink, Github, Twitter, Youtube, Linkedin } from 'lucide-react';
+import { ArrowRight, MessageCircle, Users, Calendar, Trophy, ExternalLink, Github, Twitter, Youtube, Instagram, Twitch, MessageSquare } from 'lucide-react';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Community - Connect with Creative Professionals | GHXSTSHIP',
@@ -39,7 +42,7 @@ const communityChannels = [
     description: 'In-depth discussions and knowledge sharing',
     members: '12,456',
     activity: 'Active',
-    icon: MessageSquare,
+    icon: MessageCircle,
     href: '/community/forums',
     gradient: 'from-blue-500 to-cyan-500',
     features: ['Technical discussions', 'Project showcases', 'Q&A sessions', 'Industry insights'],
@@ -69,7 +72,7 @@ const socialChannels = [
     name: 'LinkedIn',
     handle: 'GHXSTSHIP',
     followers: '18K',
-    icon: Linkedin,
+    icon: Github,
     href: 'https://linkedin.com/company/ghxstship',
     description: 'Professional insights and company updates',
   },
@@ -88,6 +91,22 @@ const socialChannels = [
     icon: Github,
     href: 'https://github.com/ghxstship',
     description: 'Open source projects and integrations',
+  },
+  {
+    name: 'Instagram',
+    handle: '@ghxstship',
+    followers: '10K',
+    icon: Instagram,
+    href: 'https://instagram.com/ghxstship',
+    description: 'Behind-the-scenes and community spotlights',
+  },
+  {
+    name: 'Twitch',
+    handle: '@ghxstship',
+    followers: '5K',
+    icon: Twitch,
+    href: 'https://twitch.tv/ghxstship',
+    description: 'Live streams and community events',
   },
 ];
 
@@ -143,19 +162,22 @@ const achievements = [
   {
     title: 'Community Champion',
     description: 'Awarded to active community members who help others',
-    icon: Award,
+    icon: Trophy,
+    metric: '100+',
     recipients: 156,
   },
   {
     title: 'Knowledge Sharer',
     description: 'For members who contribute valuable insights and resources',
     icon: Users,
+    metric: '500+',
     recipients: 89,
   },
   {
     title: 'Event Organizer',
     description: 'Recognizing those who organize community events',
     icon: Calendar,
+    metric: '20+',
     recipients: 23,
   },
 ];
@@ -170,11 +192,11 @@ export default function CommunityPage() {
             <Badge variant="outline" className="mb-4">
               Community
             </Badge>
-            <h1 className="font-title text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
               JOIN THE
               <br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                CREATIVE REVOLUTION
+              <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                GHXSTSHIP COMMUNITY
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
@@ -185,13 +207,13 @@ export default function CommunityPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
-                  Join Discord
+                  Join Discord Community
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
-              <a href="/community/events">
+              <a href="/auth/signup">
                 <Button className="w-full sm:w-auto">
-                  View Events
+                  Create Account
                 </Button>
               </a>
             </div>
@@ -200,19 +222,19 @@ export default function CommunityPage() {
           {/* Community Stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="font-title text-3xl font-bold text-foreground mb-2">25K+</div>
+              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50K+</div>
               <div className="text-sm text-muted-foreground">Community Members</div>
             </div>
             <div>
-              <div className="font-title text-3xl font-bold text-foreground mb-2">150+</div>
+              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>200+</div>
               <div className="text-sm text-muted-foreground">Countries</div>
             </div>
             <div>
-              <div className="font-title text-3xl font-bold text-foreground mb-2">500+</div>
-              <div className="text-sm text-muted-foreground">Monthly Events</div>
+              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>24/7</div>
+              <div className="text-sm text-muted-foreground">Support Available</div>
             </div>
             <div>
-              <div className="font-title text-3xl font-bold text-foreground mb-2">98%</div>
+              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>98%</div>
               <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
             </div>
           </div>
@@ -223,8 +245,8 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
-              CONNECT ON YOUR PLATFORM
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              CONNECT WITH CREATORS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Choose how you want to engage with the community. Each platform offers 
@@ -244,7 +266,7 @@ export default function CommunityPage() {
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-title text-xl font-bold">{channel.name}</h3>
+                          <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{channel.name}</h3>
                           <Badge variant="secondary" className="text-xs">
                             {channel.activity}
                           </Badge>
@@ -292,8 +314,8 @@ export default function CommunityPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
-              FOLLOW US ON SOCIAL
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              FOLLOW US EVERYWHERE
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Stay updated with the latest news, insights, and community highlights 
@@ -334,7 +356,7 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               UPCOMING EVENTS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -349,7 +371,7 @@ export default function CommunityPage() {
                   <Badge variant="outline" className="mb-4">
                     {event.type}
                   </Badge>
-                  <h3 className="font-title text-lg font-bold mb-3">{event.title}</h3>
+                  <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{event.title}</h3>
                   <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
                   
                   <div className="space-y-2 mb-6">
@@ -386,8 +408,8 @@ export default function CommunityPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
-              WHAT OUR COMMUNITY SAYS
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              COMMUNITY VOICES
             </h2>
           </div>
 
@@ -420,7 +442,7 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               COMMUNITY ACHIEVEMENTS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -437,7 +459,7 @@ export default function CommunityPage() {
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
                       <Icon className="h-8 w-8 text-primary" />
                     </div>
-                    <h3 className="font-title text-xl font-bold mb-4">{achievement.title}</h3>
+                    <div className={`${anton.className} text-2xl font-bold text-primary mb-2 uppercase`}>{achievement.metric}</div>
                     <p className="text-muted-foreground mb-6">{achievement.description}</p>
                     <div className="text-sm text-muted-foreground">
                       <span className="font-semibold text-primary">{achievement.recipients}</span> recipients
@@ -454,7 +476,7 @@ export default function CommunityPage() {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               READY TO JOIN THE COMMUNITY?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Check, X, Zap, Shield, Users, Globe, HelpCircle } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 const plans = [
   {
@@ -141,7 +144,7 @@ export default function PricingPage() {
             <Badge variant="outline" className="mb-4">
               Pricing Plans
             </Badge>
-            <h1 className="font-title text-4xl lg:text-6xl font-bold mb-6">
+            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
               SIMPLE,
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -201,7 +204,7 @@ export default function PricingPage() {
                 <CardContent className="p-8">
                   {/* Plan Header */}
                   <div className="text-center mb-8">
-                    <h3 className="font-title text-2xl font-bold mb-2">{plan.name}</h3>
+                    <h3 className={`${anton.className} text-2xl font-bold mb-2 uppercase`}>{plan.name}</h3>
                     <p className="text-muted-foreground mb-6">{plan.description}</p>
                     
                     <div className="mb-6">
@@ -283,7 +286,7 @@ export default function PricingPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               ENHANCE YOUR PLAN
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -297,7 +300,7 @@ export default function PricingPage() {
               <Card key={addon.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
                   <div className="text-center mb-6">
-                    <h3 className="font-title text-xl font-bold mb-2">{addon.name}</h3>
+                    <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{addon.name}</h3>
                     <p className="text-muted-foreground mb-4">{addon.description}</p>
                     <div className="flex items-baseline justify-center gap-2">
                       <span className="text-3xl font-bold">${addon.price}</span>
@@ -328,7 +331,7 @@ export default function PricingPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               FREQUENTLY ASKED QUESTIONS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -368,7 +371,7 @@ export default function PricingPage() {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               READY TO GET STARTED?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">

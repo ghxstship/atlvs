@@ -166,11 +166,11 @@ export default function CareersPage() {
             <Badge variant="outline" className="mb-4">
               Careers at GHXSTSHIP
             </Badge>
-            <h1 className={`${anton.className} uppercase text-4xl lg:text-6xl font-bold mb-6`}>
-              JOIN OUR MISSION TO
+            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+              BUILD YOUR CAREER
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                REVOLUTIONIZE CREATIVITY
+                WITH GHXSTSHIP
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
@@ -215,7 +215,7 @@ export default function CareersPage() {
       <section id="open-positions" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold mb-6`}>
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               OPEN POSITIONS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -314,7 +314,7 @@ export default function CareersPage() {
       <section id="culture" className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold mb-6`}>
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               OUR CULTURE & VALUES
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -358,7 +358,7 @@ export default function CareersPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold mb-6`}>
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               BENEFITS & PERKS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -377,7 +377,7 @@ export default function CareersPage() {
                         <Icon className="h-6 w-6 text-primary" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-foreground mb-2">{benefit.title}</h3>
+                        <h3 className={`${anton.className} uppercase text-lg font-bold mb-3`}>{benefit.title}</h3>
                         <p className="text-sm text-muted-foreground">{benefit.description}</p>
                       </div>
                     </div>
@@ -393,7 +393,7 @@ export default function CareersPage() {
       <section className="py-20 bg-muted/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold mb-6`}>
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               DEPARTMENTS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -424,7 +424,7 @@ export default function CareersPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold mb-6`}>
+            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
               APPLICATION PROCESS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -458,9 +458,9 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <h3 className={`${anton.className} uppercase text-3xl font-bold mb-6`}>
-                READY TO JOIN US?
-              </h3>
+              <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+                READY TO JOIN OUR TEAM?
+              </h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
                 Take the next step in your career and help us build the future of creative production management.
               </p>

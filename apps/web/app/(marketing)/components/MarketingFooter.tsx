@@ -4,6 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from '@ghxstship/ui';
 import { Github, Linkedin, Youtube, Mail, Check } from 'lucide-react';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 // Custom X (Twitter) icon component
 const XIcon = ({ className }: { className?: string }) => (
@@ -30,10 +33,17 @@ const footerSections = [
   {
     title: 'Solutions',
     links: [
+      { label: 'Brand Activations', href: '/solutions/brand-activations' },
+      { label: 'Community & Cultural Events', href: '/solutions/community-cultural-events' },
+      { label: 'Concerts, Festivals & Tours', href: '/solutions/concerts-festivals-tours' },
+      { label: 'Corporate & Private Events', href: '/solutions/corporate-community-events' },
       { label: 'Film & TV', href: '/solutions/film-tv' },
-      { label: 'Advertising', href: '/solutions/advertising' },
-      { label: 'Music & Events', href: '/solutions/music-events' },
-      { label: 'Corporate', href: '/solutions/corporate' },
+      { label: 'Health & Wellness Events', href: '/solutions/health-wellness-events' },
+      { label: 'Hospitality & Travel', href: '/solutions/hospitality-travel' },
+      { label: 'Immersive Experiences', href: '/solutions/immersive-experiences' },
+      { label: 'Sporting Events & Tournaments', href: '/solutions/sporting-events-tournaments' },
+      { label: 'Themed & Theatrical Entertainment', href: '/solutions/themed-theatrical-entertainment' },
+      { label: 'Trade Shows & Conferences', href: '/solutions/trade-shows-conferences' },
     ],
   },
   {
@@ -116,7 +126,7 @@ export function MarketingFooter() {
       <div className="container mx-auto px-4 py-12">
         {/* Newsletter Signup */}
         <div className="mb-12 text-center">
-          <h3 className="font-title text-2xl font-bold mb-4">
+          <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>
             STAY UPDATED WITH GHXSTSHIP
           </h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
@@ -162,7 +172,7 @@ export function MarketingFooter() {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-semibold text-foreground mb-4 font-title text-sm uppercase tracking-wide">
+              <h4 className={`${anton.className} font-semibold text-foreground mb-4 text-sm uppercase tracking-wide`}>
                 {section.title}
               </h4>
               <ul className="space-y-3">
@@ -187,7 +197,7 @@ export function MarketingFooter() {
           {/* Logo and Copyright */}
           <div className="flex items-center space-x-4 mb-4 md:mb-0">
             <Link href="/" className="flex items-center space-x-2">
-              <span className="font-title text-xl font-bold tracking-tight">
+              <span className={`${anton.className} text-xl font-bold tracking-tight uppercase`}>
                 GHXSTSHIP
               </span>
             </Link>

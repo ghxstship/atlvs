@@ -188,55 +188,6 @@ export default function RootPage() {
           </div>
         </section>
       </main>
-
-      {/* Footer */}
-      <footer className="border-t bg-slate-50">
-        <div className="container mx-auto px-4 py-12">
-          <div className="grid gap-8 lg:grid-cols-4">
-            <div>
-              <h3 className={`mb-4 text-sm font-semibold text-slate-900 ${anton.className} uppercase`}>COMPANY</h3>
-              <ul className="space-y-2">
-                <li><Link href="/company" className="text-sm text-slate-600 hover:text-slate-900">About</Link></li>
-                <li><Link href="/careers" className="text-sm text-slate-600 hover:text-slate-900">Careers</Link></li>
-                <li><Link href="/company" className="text-sm text-slate-600 hover:text-slate-900">Press</Link></li>
-                <li><Link href="/contact" className="text-sm text-slate-600 hover:text-slate-900">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className={`mb-4 text-sm font-semibold text-slate-900 ${anton.className} uppercase`}>PRODUCTS</h3>
-              <ul className="space-y-2">
-                <li><Link href="/products/atlvs" className="text-sm text-slate-600 hover:text-slate-900">ATLVS</Link></li>
-                <li><Link href="/products/opendeck" className="text-sm text-slate-600 hover:text-slate-900">OPENDECK</Link></li>
-                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Integrations</a></li>
-                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">API</a></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className={`mb-4 text-sm font-semibold text-slate-900 ${anton.className} uppercase`}>RESOURCES</h3>
-              <ul className="space-y-2">
-                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Documentation</a></li>
-                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Help Center</a></li>
-                <li><a href="/resources" className="text-sm text-slate-600 hover:text-slate-900">Blog</a></li>
-                <li><Link href="/community" className="text-sm text-slate-600 hover:text-slate-900">Community</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h3 className={`mb-4 text-sm font-semibold text-slate-900 ${anton.className} uppercase`}>LEGAL</h3>
-              <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-sm text-slate-600 hover:text-slate-900">Privacy</Link></li>
-                <li><Link href="/terms" className="text-sm text-slate-600 hover:text-slate-900">Terms</Link></li>
-                <li><Link href="/privacy" className="text-sm text-slate-600 hover:text-slate-900">Security</Link></li>
-                <li><Link href="/privacy" className="text-sm text-slate-600 hover:text-slate-900">Cookies</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-8 border-t pt-8 text-center">
-            <p className="text-sm text-slate-600">
-              © 2024 GHXSTSHIP. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
