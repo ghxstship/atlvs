@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { createServerClient } from '@ghxstship/auth';
+import { createClient } from '@/lib/supabase/server';
 import { authorize } from '@ghxstship/domain';
 
 const UpdateTaskSchema = z.object({
@@ -25,7 +25,7 @@ export async function GET(
   { params }: { params: { id: string; taskId: string } }
 ) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -101,7 +101,7 @@ export async function PUT(
   { params }: { params: { id: string; taskId: string } }
 ) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -194,7 +194,7 @@ export async function DELETE(
   { params }: { params: { id: string; taskId: string } }
 ) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
