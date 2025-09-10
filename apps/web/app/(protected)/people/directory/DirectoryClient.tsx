@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, ViewSwitcher, DataGrid, Avatar } from '@ghxstship/ui';
 import { createClient } from '@ghxstship/auth';
 import { Search, Filter, UserPlus, Mail, Phone, MapPin } from 'lucide-react';
 

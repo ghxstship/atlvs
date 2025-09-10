@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Users, Edit, Trash2, Copy, Calendar, MapPin } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -283,7 +283,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
   const getAssigneeTypeBadge = (type: AssetAssignment['assigneeType']) => {
     switch (type) {
       case 'project':
-        return <Badge variant="default">Project</Badge>;
+        return <Badge variant="primary">Project</Badge>;
       case 'crew_member':
         return <Badge variant="secondary">Crew</Badge>;
       case 'vendor':
@@ -475,11 +475,11 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       )}
 
       {/* Assignment Form Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedAssignment ? 'Edit Assignment' : 'New Asset Assignment'}
-        size="lg"
+        width="lg"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -551,7 +551,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

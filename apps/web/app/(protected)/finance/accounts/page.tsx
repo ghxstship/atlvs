@@ -10,18 +10,7 @@ export const metadata = {
 
 export default async function FinanceAccountsPage() {
   const cookieStore = cookies();
-  const supabase = createServerClient({
-    get: (name: string) => {
-      const c = cookieStore.get(name);
-      return c ? { name: c.name, value: c.value } : undefined;
-    },
-    set: (name: string, value: string, options: any) => {
-      cookieStore.set({ name, value, ...options });
-    },
-    remove: (name: string, options: any) => {
-      cookieStore.set({ name, value: '', ...options });
-    },
-  });
+  const supabase = createServerClient(cookieStore);
   
   const {
     data: { user },

@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
   Textarea,
@@ -206,11 +206,11 @@ export default function CreateRatingClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Rate Company Performance"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Rating Details */}
@@ -228,7 +228,6 @@ export default function CreateRatingClient({
               <Select
                 value={formData.companyId}
                 onValueChange={(value) => handleInputChange('companyId', value)}
-                required
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -348,6 +347,6 @@ export default function CreateRatingClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

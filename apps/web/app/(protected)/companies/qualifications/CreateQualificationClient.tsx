@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
   Textarea,
@@ -189,11 +189,11 @@ export default function CreateQualificationClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Add Company Qualification"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Qualification Details */}
@@ -211,7 +211,6 @@ export default function CreateQualificationClient({
               <Select
                 value={formData.companyId}
                 onValueChange={(value) => handleInputChange('companyId', value)}
-                required
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -384,6 +383,6 @@ export default function CreateQualificationClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

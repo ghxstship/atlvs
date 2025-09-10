@@ -45,7 +45,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
     const value = tagInput.trim();
     if (!value) return;
     const optimistic = { id: `tmp-${Date.now()}`, tag: value };
-    setTags((prev) => [optimistic, ...prev]);
+    setTags((prev: any) => [optimistic, ...prev]);
     setTagInput('');
     const { data, error } = await sb
       .from('tags')
@@ -54,9 +54,9 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
       .maybeSingle();
     if (error) {
       // rollback
-      setTags((prev) => prev.filter((t) => t.id !== optimistic.id));
+      setTags((prev: any) => prev.filter((t: any) => t.id !== optimistic.id));
     } else if (data) {
-      setTags((prev) => [data, ...prev.filter((t) => t.id !== optimistic.id)]);
+      setTags((prev: any) => [data, ...prev.filter((t: any) => t.id !== optimistic.id)]);
     }
   }
 
@@ -71,7 +71,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
       .eq('entity_type', 'file')
       .eq('entity_id', openId)
       .eq('organization_id', orgId);
-    if (error) setTags(prev); // rollback
+    if (error) setTags((prev: any) => prev); // rollback
   }
 
   async function onSave() {
@@ -186,7 +186,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
               />
-              <Button variant="ghost" size="sm" onClick={addTag}>{t('tags.add')}</Button>
+              <Button size="sm" onClick={addTag}>{t('tags.add')}</Button>
             </div>
           </div>
         </div>

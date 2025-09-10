@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { UniversalDrawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, BarChart3, Calendar, DollarSign, TrendingUp } from 'lucide-react';
 
 interface CreateForecastClientProps {
@@ -134,11 +134,11 @@ export default function CreateForecastClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Create Forecast"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Forecast Overview */}
@@ -230,7 +230,6 @@ export default function CreateForecastClient({
                 <Select
                   value={formData.confidenceLevel}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, confidenceLevel: value }))}
-                  className="pl-10"
                 >
                   <option value="high">High Confidence (90%+)</option>
                   <option value="medium">Medium Confidence (70-90%)</option>
@@ -358,6 +357,6 @@ export default function CreateForecastClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

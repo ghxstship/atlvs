@@ -9,7 +9,7 @@ import {
   ListView,
   ViewSwitcher, 
   DataActions,
-  UniversalDrawer,
+  Drawer,
   StateManagerProvider,
   type FieldConfig,
   type DataViewConfig,
@@ -211,13 +211,14 @@ export default function PeopleClient({ orgId }: { orgId: string }) {
               titleField="first_name"
             />
             
-            <UniversalDrawer 
+            <Drawer title="Details" 
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fields}
-              mode="view"
-            />
+            >
+              <div className="p-4">
+                <p>Person details will be implemented here.</p>
+              </div>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

@@ -49,7 +49,7 @@ export default function MarketingHomePage() {
                 </Button>
               </Link>
               <Link href="/products">
-                <Button variant="outline" size="lg" className="min-w-[200px]">
+                <Button size="lg" className="min-w-[200px]">
                   <Play className="mr-2 h-4 w-4" />
                   Watch Demo
                 </Button>
@@ -346,12 +346,12 @@ export default function MarketingHomePage() {
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button variant="outline" size="lg" className="min-w-[200px]">
+                  <Button size="lg" className="min-w-[200px]">
                     View Pricing
                   </Button>
                 </Link>
                 <Link href="/company">
-                  <Button variant="outline" size="lg" className="min-w-[200px]">
+                  <Button size="lg" className="min-w-[200px]">
                     Contact Sales
                   </Button>
                 </Link>

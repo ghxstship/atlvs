@@ -180,7 +180,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 id="title"
                 {...register('title')}
                 placeholder="Enter bid title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -205,7 +205,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                   id="opportunityId"
                   {...register('opportunityId')}
                   placeholder="Enter opportunity ID"
-                  error={errors.opportunityId?.message}
+                 
                 />
               </div>
 
@@ -225,7 +225,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
               <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">
                 Bid Type *
               </label>
-              <Select {...register('type')} error={errors.type?.message}>
+              <Select {...register('type')}>
                 <option value="fixed_price">Fixed Price</option>
                 <option value="hourly">Hourly</option>
                 <option value="milestone_based">Milestone Based</option>
@@ -239,12 +239,10 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                   Amount *
                 </label>
                 <Input
-                  id="amount"
                   type="number"
                   step="0.01"
                   {...register('amount', { valueAsNumber: true })}
                   placeholder="0.00"
-                  error={errors.amount?.message}
                 />
               </div>
 
@@ -267,7 +265,6 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                   Estimated Duration
                 </label>
                 <Input
-                  id="estimatedDuration"
                   {...register('estimatedDuration')}
                   placeholder="e.g., 2 weeks, 3 months"
                 />
@@ -278,7 +275,6 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                   Response Deadline
                 </label>
                 <Input
-                  id="responseDeadline"
                   type="datetime-local"
                   {...register('responseDeadline')}
                 />
@@ -290,7 +286,6 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes or terms for this bid"
                 rows={3}

@@ -1,4 +1,5 @@
-import { createServerClient } from '@ghxstship/auth/server';
+import { createServerClient } from '@ghxstship/auth';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { RFPsClient } from './RFPsClient';
@@ -7,7 +8,8 @@ import CreateRfpClient from './CreateRfpClient';
 export const metadata = { title: 'Jobs · RFPs' };
 
 export default async function JobsRFPsPage() {
-  const supabase = createServerClient();
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
   
   const {
     data: { user },

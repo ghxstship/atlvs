@@ -393,7 +393,7 @@ export default function AboutPage() {
                 </Button>
               </Link>
               <Link href="/careers">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Join Our Team
                 </Button>
               </Link>
@@ -417,7 +417,7 @@ export default function AboutPage() {
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and press coverage' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             ].map((link) => (
-              <a key={link.title} href={link.href}>
+              <a key={link.title} href={link.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>

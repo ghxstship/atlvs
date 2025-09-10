@@ -1,5 +1,6 @@
 import { Card } from '@ghxstship/ui';
-import { createServerClient } from '@ghxstship/auth/server';
+import { createServerClient } from '@ghxstship/auth';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import BudgetsClient from './BudgetsClient';
@@ -8,13 +9,15 @@ import CreateBudgetClient from './CreateBudgetClient';
 export const metadata = { title: 'Finance · Budgets' };
 
 export default async function FinanceBudgetsPage() {
-  const supabase = await createServerClient();
-  
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+
   const {
     data: { user },
+    error: authError,
   } = await supabase.auth.getUser();
 
-  if (!user) {
+  if (authError || !user) {
     redirect('/auth/login');
   }
 
@@ -27,7 +30,7 @@ export default async function FinanceBudgetsPage() {
 
   const translations = {
     title: 'Budgets',
-    subtitle: 'Manage your budgets and track spending'
+    subtitle: 'Manage project budgets and financial planning'
   };
 
   return (

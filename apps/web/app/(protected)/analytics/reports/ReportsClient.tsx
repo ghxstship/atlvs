@@ -460,11 +460,11 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t">
                   <div className="flex items-center space-x-2">
-                    <Button variant="outline" size="sm">
+                    <Button size="sm">
                       <Eye className="h-3 w-3 mr-1" />
                       View
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button size="sm">
                       <Download className="h-3 w-3 mr-1" />
                       Export
                     </Button>

@@ -160,7 +160,7 @@ export default function PartnershipsPage() {
                 Become a Partner
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="outline" size="lg">
+              <Button size="lg">
                 Partner Portal
               </Button>
             </div>
@@ -423,7 +423,7 @@ export default function PartnershipsPage() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
                 Download Partner Guide
               </Button>
             </div>
@@ -446,7 +446,7 @@ export default function PartnershipsPage() {
               { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
               { title: 'Support Center', href: '/contact', description: 'Partner support and assistance' },
             ].map((resource) => (
-              <a key={resource.title} href={resource.href}>
+              <a key={resource.title} href={resource.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>

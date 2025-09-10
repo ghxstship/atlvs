@@ -28,7 +28,7 @@ export async function GET(request: NextRequest) {
 
     const keys = await services.apiKeys.listByOrg(ctx.organizationId);
     // Do not return hashes
-    const safe = keys.map((k) => ({
+    const safe = keys.map((k: any) => ({
       id: k.id,
       organizationId: k.organizationId,
       name: k.name,

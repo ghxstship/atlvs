@@ -164,7 +164,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
           <p className="text-gray-600">Monitor and manage your organization's assets</p>
         </div>
         <div className="flex gap-3">
-          <Button variant="outline" size="sm">
+          <Button size="sm">
             <FileText className="h-4 w-4 mr-2" />
             Generate Report
           </Button>
@@ -299,7 +299,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Recent Activity</h3>
-          <Button variant="outline" size="sm">
+          <Button size="sm">
             <Activity className="h-4 w-4 mr-2" />
             View All
           </Button>
@@ -350,7 +350,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
                 {stats.pendingMaintenance} asset{stats.pendingMaintenance !== 1 ? 's' : ''} require{stats.pendingMaintenance === 1 ? 's' : ''} maintenance attention
               </p>
             </div>
-            <Button variant="outline" size="sm" className="ml-auto">
+            <Button size="sm" className="ml-auto">
               View Details
             </Button>
           </div>

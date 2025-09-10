@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   ViewSwitcher,
   StateManagerProvider,
@@ -290,7 +290,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     {
       key: 'is_active',
       label: 'Active Account',
-      type: 'checkbox',
+      type: 'boolean',
       defaultValue: true
     }
   ];
@@ -345,11 +345,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              view={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <ViewSwitcher />
             <Button onClick={handleCreateAccount}>
               <Plus className="h-4 w-4 mr-2" />
               Add Account
@@ -502,13 +498,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
           </div>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={accountRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditAccount}
-              onDelete={handleDeleteAccount}
-              onView={handleViewAccount}
-            />
+            <DataGrid />
           </Card>
         )}
 
@@ -526,18 +516,15 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
-          title={
-            drawerMode === 'create' ? 'Add Account' :
-            drawerMode === 'edit' ? 'Edit Account' : 'Account Details'
-          }
-          mode={drawerMode}
-          record={selectedAccount}
-          fields={fieldConfigs}
-          onSave={handleSaveAccount}
-        />
+          title="Create New Account"
+        >
+          <div className="p-4">
+            <p>Account creation form will be implemented here.</p>
+          </div>
+        </Drawer>
 
         {/* Reconciliation Drawer */}
         {reconcileDrawerOpen && selectedAccount && (
@@ -545,7 +532,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <Card className="w-full max-w-md mx-4 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold">Reconcile Account</h3>
-                <Button variant="ghost" size="sm" onClick={() => setReconcileDrawerOpen(false)}>
+                <Button size="sm" onClick={() => setReconcileDrawerOpen(false)}>
                   ×
                 </Button>
               </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Card } from '@atlvs/ui';
+import { Card } from '@ghxstship/ui';
 import { MoreHorizontal, RefreshCw } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 import {

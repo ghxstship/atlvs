@@ -190,7 +190,7 @@ export default function CommunityPage() {
                 </Button>
               </a>
               <a href="/community/events">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   View Events
                 </Button>
               </a>
@@ -266,14 +266,14 @@ export default function CommunityPage() {
                     </div>
 
                     {channel.href.startsWith('http') ? (
-                      <a href={channel.href} target="_blank" rel="noopener noreferrer">
+                      <a href={channel.href as any} target="_blank" rel="noopener noreferrer">
                         <Button className="w-full group">
                           Join Community
                           <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                     ) : (
-                      <a href={channel.href}>
+                      <a href={channel.href as any}>
                         <Button className="w-full group">
                           Join Community
                           <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -316,8 +316,8 @@ export default function CommunityPage() {
                       {social.followers} followers
                     </div>
                     <p className="text-xs text-muted-foreground mb-4">{social.description}</p>
-                    <a href={social.href} target="_blank" rel="noopener noreferrer">
-                      <Button variant="outline" size="sm" className="w-full">
+                    <a href={social.href as any} target="_blank" rel="noopener noreferrer">
+                      <Button size="sm" className="w-full">
                         Follow
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
@@ -373,7 +373,7 @@ export default function CommunityPage() {
 
           <div className="text-center">
             <a href="/community/events">
-              <Button variant="outline" size="lg">
+              <Button size="lg">
                 View All Events
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -469,7 +469,7 @@ export default function CommunityPage() {
                 </Button>
               </a>
               <a href="/auth/signup">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Create Account
                 </Button>
               </a>

@@ -1,4 +1,5 @@
-import { createServerClient } from '@ghxstship/auth/server';
+import { createServerClient } from '@ghxstship/auth';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { OverviewClient } from './OverviewClient';
@@ -8,7 +9,8 @@ export const metadata = {
 };
 
 export default async function JobsOverview() {
-  const supabase = createServerClient();
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
   
   const {
     data: { user },

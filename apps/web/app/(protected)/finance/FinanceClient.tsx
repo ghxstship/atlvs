@@ -9,7 +9,7 @@ import {
   ListView,
   ViewSwitcher, 
   DataActions,
-  UniversalDrawer,
+  Drawer,
   StateManagerProvider,
   type FieldConfig,
   type DataViewConfig,
@@ -223,15 +223,14 @@ export default function FinanceClient({ orgId }: { orgId: string }) {
             </div>
 
             {/* Universal Drawer for record details and editing */}
-            <UniversalDrawer 
+            <Drawer title="Details" 
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fields}
-              mode="view"
-              onSave={() => {}}
-              onDelete={() => {}}
-            />
+            >
+              <div className="p-4">
+                <p>Details will be shown here.</p>
+              </div>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

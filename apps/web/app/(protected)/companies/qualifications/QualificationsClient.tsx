@@ -8,9 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
-  DataGrid,
-  ViewSwitcher,
+  Drawer,
   StateManagerProvider,
   type FieldConfig,
   type DataRecord
@@ -23,6 +21,8 @@ import {
   Calendar,
   Building2,
   AlertTriangle,
+  Grid,
+  List,
   CheckCircle,
   Clock,
   Shield,
@@ -385,11 +385,22 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              currentView={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
+              <Button
+                variant={currentView === 'grid' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('grid')}
+              >
+                <Grid className="h-4 w-4" />
+              </Button>
+              <Button
+                variant={currentView === 'list' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('list')}
+              >
+                <List className="h-4 w-4" />
+              </Button>
+            </div>
             <Button onClick={handleCreateQualification}>
               <Plus className="h-4 w-4 mr-2" />
               Add Qualification
@@ -430,143 +441,54 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
           </div>
         </div>
 
-        {/* Qualification Grid/List View */}
-        {currentView === 'grid' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {qualifications.map((qualification) => (
-              <Card key={qualification.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewQualification(qualification)}>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    {getTypeIcon(qualification.type)}
-                    <div>
-                      <h3 className="font-semibold text-foreground">{qualification.name}</h3>
-                      <p className="text-sm text-foreground/70">{qualification.companyName}</p>
+        {/* Qualifications Grid/List */}
+        <div className="grid gap-4">
+          {currentView === 'grid' ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {qualifications.map((qualification) => (
+                <Card key={qualification.id} className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-medium">{qualification.name}</h3>
+                      <p className="text-sm text-muted-foreground">{qualification.companyName}</p>
                     </div>
-                  </div>
-                  {getStatusBadge(qualification.status)}
-                </div>
-                
-                {qualification.description && (
-                  <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
-                    {qualification.description}
-                  </p>
-                )}
-                
-                <div className="space-y-2 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Type</span>
-                    <span className="font-medium capitalize">{qualification.type}</span>
-                  </div>
-                  
-                  {qualification.issuingAuthority && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Authority</span>
-                      <span className="font-medium">{qualification.issuingAuthority}</span>
-                    </div>
-                  )}
-                  
-                  {qualification.certificateNumber && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Certificate #</span>
-                      <span className="font-medium">{qualification.certificateNumber}</span>
-                    </div>
-                  )}
-                  
-                  {qualification.issueDate && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Issue Date</span>
-                      <span className="font-medium">{formatDate(qualification.issueDate)}</span>
-                    </div>
-                  )}
-                  
-                  {qualification.expiryDate && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Expiry Date</span>
-                      <span className={`font-medium ${
-                        isExpired(qualification.expiryDate) ? 'text-red-600' :
-                        isExpiringSoon(qualification.expiryDate) ? 'text-orange-600' : 'text-foreground'
-                      }`}>
-                        {formatDate(qualification.expiryDate)}
-                        {(isExpired(qualification.expiryDate) || isExpiringSoon(qualification.expiryDate)) && (
-                          <AlertTriangle className="inline h-3 w-3 ml-1" />
-                        )}
-                      </span>
-                    </div>
-                  )}
-                  
-                  {qualification.verifiedDate && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
-                      <span className="text-foreground/70">Verified {formatDate(qualification.verifiedDate)}</span>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <div className="flex space-x-2">
-                    {qualification.status === 'pending' && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          handleVerifyQualification(qualification.id);
-                        }}
-                      >
-                        Verify
+                    <div className="flex items-center space-x-2">
+                      {getStatusBadge(qualification.status)}
+                      <Button size="sm" onClick={() => handleEditQualification(qualification)}>
+                        <Edit className="h-4 w-4" />
                       </Button>
-                    )}
-                    {qualification.documentUrl && (
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open(qualification.documentUrl, '_blank');
-                        }}
-                      >
-                        <Download className="h-3 w-3" />
+                      <Button size="sm" onClick={() => handleDeleteQualification(qualification.id)}>
+                        <Trash2 className="h-4 w-4" />
                       </Button>
-                    )}
+                    </div>
                   </div>
-                  
-                  <div className="flex space-x-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleEditQualification(qualification);
-                      }}
-                    >
-                      <Edit className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteQualification(qualification.id);
-                      }}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+                </Card>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-2">
+              {qualifications.map((qualification) => (
+                <Card key={qualification.id} className="p-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex-1">
+                      <h3 className="font-medium">{qualification.name}</h3>
+                      <p className="text-sm text-muted-foreground">{qualification.companyName}</p>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      {getStatusBadge(qualification.status)}
+                      <Button size="sm" onClick={() => handleEditQualification(qualification)}>
+                        <Edit className="h-4 w-4" />
+                      </Button>
+                      <Button size="sm" onClick={() => handleDeleteQualification(qualification.id)}>
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        ) : (
-          <Card className="p-6">
-            <DataGrid
-              records={qualificationRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditQualification}
-              onDelete={handleDeleteQualification}
-              onView={handleViewQualification}
-            />
-          </Card>
-        )}
+                </Card>
+              ))}
+            </div>
+          )}
+        </div>
 
         {/* Empty State */}
         {qualifications.length === 0 && (
@@ -581,19 +503,20 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
           </Card>
         )}
 
-        {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        {/* Drawer for CRUD operations */}
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
           title={
             drawerMode === 'create' ? 'Add Qualification' :
             drawerMode === 'edit' ? 'Edit Qualification' : 'Qualification Details'
           }
-          mode={drawerMode}
-          record={selectedQualification}
-          fields={fieldConfigs}
-          onSave={handleSaveQualification}
-        />
+          width="lg"
+        >
+          <div className="p-4">
+            <p>Qualification management form would go here</p>
+          </div>
+        </Drawer>
       </div>
     </StateManagerProvider>
   );

@@ -9,11 +9,8 @@ export const metadata = {
 };
 
 export default async function ResourcesPage() {
-  const supabase = createServerClient({ 
-    get: (name: string) => cookies().get(name),
-    set: (name: string, value: string, options: any) => cookies().set(name, value, options),
-    remove: (name: string, options: any) => cookies().delete(name)
-  });
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
   
   const {
     data: { session },

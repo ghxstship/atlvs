@@ -137,7 +137,7 @@ export function OnboardingFlow() {
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              data={onboardingData}
+              
             />
           )}
           {currentStep === 'organization-setup' && (
@@ -146,7 +146,7 @@ export function OnboardingFlow() {
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              data={onboardingData}
+              
             />
           )}
           {currentStep === 'team-invitation' && (
@@ -155,7 +155,7 @@ export function OnboardingFlow() {
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              data={onboardingData}
+              
             />
           )}
           {currentStep === 'profile-completion' && (
@@ -164,13 +164,13 @@ export function OnboardingFlow() {
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              data={onboardingData}
+              
             />
           )}
           {currentStep === 'final-confirmation' && (
             <FinalConfirmationStep
               user={user}
-              data={onboardingData}
+              
             />
           )}
         </div>

@@ -1,3 +1,4 @@
+import { Avatar } from "@ghxstship/ui";
 "use client";
 
 import { useState } from 'react';
@@ -325,7 +326,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
         <Button 
           onClick={handleContinue} 
           disabled={loading}
-          size="lg"
+          width="lg"
         >
           {loading ? 'Saving profile...' : 'Complete Setup'}
           <ArrowRight className="ml-2 h-4 w-4" />

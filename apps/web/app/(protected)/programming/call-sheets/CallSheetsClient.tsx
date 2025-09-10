@@ -9,7 +9,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -249,7 +249,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Call Sheets Management</h2>
-                <Button onClick={handleCreateCallSheet} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Call Sheet
                 </Button>
@@ -343,25 +343,17 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
             />
             
             {/* Call Sheet Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Create Call Sheet' 
                   : `${selectedRecord?.event_name} Call Sheet` || 'Call Sheet Details'
               }
-              onSave={handleSaveCallSheet}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Call Sheet Details */}
               {selectedRecord && (
@@ -406,7 +398,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                   )}
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
 
             {/* Empty State */}
             {!loading && data.length === 0 && (

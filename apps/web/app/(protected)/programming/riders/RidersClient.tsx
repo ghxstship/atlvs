@@ -9,7 +9,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -271,7 +271,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Riders Management</h2>
-                <Button onClick={handleCreateRider} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Rider
                 </Button>
@@ -370,25 +370,17 @@ export default function RidersClient({ orgId }: { orgId: string }) {
             />
             
             {/* Rider Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Create New Rider' 
                   : `${selectedRecord?.kind?.replace('_', ' ')} Rider` || 'Rider Details'
               }
-              onSave={handleSaveRider}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Rider Details */}
               {selectedRecord && (
@@ -430,7 +422,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                   )}
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
 
             {/* Empty State */}
             {!loading && data.length === 0 && (

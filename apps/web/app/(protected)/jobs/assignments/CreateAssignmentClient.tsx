@@ -186,7 +186,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 id="title"
                 {...register('title')}
                 placeholder="Enter assignment title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -211,7 +211,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
-                  error={errors.jobId?.message}
+                 
                 />
               </div>
 
@@ -232,7 +232,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="assigneeType" className="block text-sm font-medium text-foreground mb-2">
                   Assignee Type *
                 </label>
-                <Select {...register('assigneeType')} error={errors.assigneeType?.message}>
+                <Select {...register('assigneeType')}>
                   <option value="internal">Internal</option>
                   <option value="contractor">Contractor</option>
                   <option value="vendor">Vendor</option>
@@ -271,7 +271,6 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                   Start Date
                 </label>
                 <Input
-                  id="startDate"
                   type="date"
                   {...register('startDate')}
                 />
@@ -282,7 +281,6 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                   Due Date
                 </label>
                 <Input
-                  id="dueDate"
                   type="date"
                   {...register('dueDate')}
                 />
@@ -295,12 +293,10 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                   Estimated Hours
                 </label>
                 <Input
-                  id="estimatedHours"
                   type="number"
                   step="0.5"
                   {...register('estimatedHours', { valueAsNumber: true })}
                   placeholder="0"
-                  error={errors.estimatedHours?.message}
                 />
               </div>
 
@@ -309,12 +305,10 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                   Hourly Rate
                 </label>
                 <Input
-                  id="hourlyRate"
                   type="number"
                   step="0.01"
                   {...register('hourlyRate', { valueAsNumber: true })}
                   placeholder="0.00"
-                  error={errors.hourlyRate?.message}
                 />
               </div>
 
@@ -336,7 +330,6 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 Requirements
               </label>
               <Textarea
-                id="requirements"
                 {...register('requirements')}
                 placeholder="List specific requirements for this assignment"
                 rows={3}
@@ -348,7 +341,6 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 Deliverables
               </label>
               <Textarea
-                id="deliverables"
                 {...register('deliverables')}
                 placeholder="Describe expected deliverables"
                 rows={3}
@@ -360,7 +352,6 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes about this assignment"
                 rows={3}

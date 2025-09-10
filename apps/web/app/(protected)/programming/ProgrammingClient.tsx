@@ -10,7 +10,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord
@@ -221,13 +221,12 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
             
             <ListView titleField="name" />
             
-            <UniversalDrawer
+            <Drawer title="Details"
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fields}
-              mode="view"
-            />
+            >
+              <div>Details placeholder</div>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

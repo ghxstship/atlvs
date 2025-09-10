@@ -196,7 +196,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 id="title"
                 {...register('title')}
                 placeholder="Enter RFP title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -217,7 +217,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <label htmlFor="category" className="block text-sm font-medium text-foreground mb-2">
                   Category *
                 </label>
-                <Select {...register('category')} error={errors.category?.message}>
+                <Select {...register('category')}>
                   <option value="construction">Construction</option>
                   <option value="consulting">Consulting</option>
                   <option value="technology">Technology</option>
@@ -247,13 +247,12 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                   Budget
                 </label>
                 <Input
-                  id="budget"
                   type="number"
                   step="0.01"
                   min="0"
                   {...register('budget', { valueAsNumber: true })}
                   placeholder="0.00"
-                  error={errors.budget?.message}
+                 
                 />
               </div>
 
@@ -276,7 +275,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Associated Project ID
               </label>
               <Input
-                id="projectId"
                 {...register('projectId')}
                 placeholder="Enter project ID if applicable"
               />
@@ -288,7 +286,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                   Submission Deadline
                 </label>
                 <Input
-                  id="submissionDeadline"
                   type="datetime-local"
                   {...register('submissionDeadline')}
                 />
@@ -299,7 +296,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                   Questions Deadline
                 </label>
                 <Input
-                  id="questionsDeadline"
                   type="datetime-local"
                   {...register('questionsDeadline')}
                 />
@@ -312,7 +308,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                   Contact Name
                 </label>
                 <Input
-                  id="contactName"
                   {...register('contactName')}
                   placeholder="Enter contact person name"
                 />
@@ -323,11 +318,10 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                   Contact Email
                 </label>
                 <Input
-                  id="contactEmail"
                   type="email"
                   {...register('contactEmail')}
                   placeholder="contact@example.com"
-                  error={errors.contactEmail?.message}
+                 
                 />
               </div>
             </div>
@@ -337,7 +331,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Requirements
               </label>
               <Textarea
-                id="requirements"
                 {...register('requirements')}
                 placeholder="List specific requirements for vendors"
                 rows={4}
@@ -349,7 +342,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Deliverables
               </label>
               <Textarea
-                id="deliverables"
                 {...register('deliverables')}
                 placeholder="Describe expected deliverables"
                 rows={3}
@@ -361,7 +353,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Timeline
               </label>
               <Textarea
-                id="timeline"
                 {...register('timeline')}
                 placeholder="Describe project timeline and milestones"
                 rows={3}
@@ -373,7 +364,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Evaluation Criteria
               </label>
               <Textarea
-                id="evaluationCriteria"
                 {...register('evaluationCriteria')}
                 placeholder="Describe how proposals will be evaluated"
                 rows={3}
@@ -385,7 +375,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Minimum Qualifications
               </label>
               <Textarea
-                id="minimumQualifications"
                 {...register('minimumQualifications')}
                 placeholder="List minimum vendor qualifications"
                 rows={3}
@@ -397,7 +386,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Preferred Qualifications
               </label>
               <Textarea
-                id="preferredQualifications"
                 {...register('preferredQualifications')}
                 placeholder="List preferred vendor qualifications"
                 rows={3}
@@ -407,7 +395,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             <div className="grid grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
                 <input
-                  id="isPublic"
                   type="checkbox"
                   {...register('isPublic')}
                   className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
@@ -419,7 +406,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
 
               <div className="flex items-center space-x-2">
                 <input
-                  id="allowQuestions"
                   type="checkbox"
                   {...register('allowQuestions')}
                   className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
@@ -435,7 +421,6 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes about this RFP"
                 rows={3}

@@ -31,7 +31,7 @@ export function CTASection() {
                 </Button>
               </Link>
               <Link href="/products">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Explore Products
                 </Button>
               </Link>
@@ -115,12 +115,12 @@ export function CTASection() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
-                  <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto">
                     Contact Sales
                   </Button>
                 </Link>
                 <Link href="/products">
-                  <Button variant="ghost" size="lg" className="w-full sm:w-auto">
+                  <Button size="lg" className="w-full sm:w-auto">
                     Schedule Demo
                   </Button>
                 </Link>

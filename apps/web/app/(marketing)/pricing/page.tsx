@@ -218,7 +218,7 @@ export default function PricingPage() {
                       )}
                     </div>
 
-                    <Link href={plan.id === 'enterprise' ? '/contact' : '/auth/signup'}>
+                    <Link href={plan.id === 'enterprise' ? '/contact' : '/auth/signup' as any as any}>
                       <Button 
                         className={cn(
                           "w-full",
@@ -383,7 +383,7 @@ export default function PricingPage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Contact Sales
                 </Button>
               </Link>

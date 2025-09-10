@@ -372,7 +372,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       {/* Add/Edit Job Drawer */}
       <Drawer
         open={drawerOpen}
-        onOpenChange={setDrawerOpen}
+        onClose={() => setDrawerOpen(false)}
         title={editingJob ? 'Edit Job History' : 'Add Job History'}
         description="Add details about your work experience"
       >
@@ -382,7 +382,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               label="Company Name"
               placeholder="Enter company name"
               {...form.register('company_name')}
-              error={form.formState.errors.company_name?.message}
+             
               required
             />
 
@@ -390,7 +390,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               label="Job Title"
               placeholder="Enter job title"
               {...form.register('job_title')}
-              error={form.formState.errors.job_title?.message}
+             
               required
             />
 
@@ -399,14 +399,11 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 label="Department"
                 placeholder="Enter department (optional)"
                 {...form.register('department')}
-                error={form.formState.errors.department?.message}
+               
               />
 
               <Select
-                label="Employment Type"
                 {...form.register('employment_type')}
-                error={form.formState.errors.employment_type?.message}
-                required
               >
                 <option value="full-time">Full Time</option>
                 <option value="part-time">Part Time</option>
@@ -421,7 +418,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 label="Start Date"
                 type="date"
                 {...form.register('start_date')}
-                error={form.formState.errors.start_date?.message}
+               
                 required
               />
 
@@ -429,7 +426,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 label="End Date"
                 type="date"
                 {...form.register('end_date')}
-                error={form.formState.errors.end_date?.message}
+               
                 disabled={form.watch('is_current')}
               />
             </div>
@@ -450,14 +447,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               label="Location"
               placeholder="Enter location (optional)"
               {...form.register('location')}
-              error={form.formState.errors.location?.message}
+             
             />
 
             <Textarea
               label="Description"
               placeholder="Describe your role and responsibilities (optional)"
               {...form.register('description')}
-              error={form.formState.errors.description?.message}
+             
               rows={4}
             />
           </div>

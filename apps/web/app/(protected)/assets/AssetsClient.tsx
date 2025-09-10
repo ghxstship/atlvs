@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Badge, DataViews } from '@ghxstship/ui';
+import { Card, Button, Badge } from '@ghxstship/ui';
 import { Plus, Package, TrendingUp, AlertTriangle, Settings, BarChart3 } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';

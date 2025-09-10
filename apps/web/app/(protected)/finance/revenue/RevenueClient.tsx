@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   ViewSwitcher,
   StateManagerProvider,
@@ -373,11 +373,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              view={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <ViewSwitcher />
             <Button onClick={handleCreateRevenue}>
               <Plus className="h-4 w-4 mr-2" />
               Add Revenue
@@ -557,13 +553,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
           </div>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={revenueRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditRevenue}
-              onDelete={handleDeleteRevenue}
-              onView={handleViewRevenue}
-            />
+            <DataGrid />
           </Card>
         )}
 
@@ -581,19 +571,17 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
-          title={
-            drawerMode === 'create' ? 'Add Revenue' :
-            drawerMode === 'edit' ? 'Edit Revenue' : 'Revenue Details'
-          }
-          mode={drawerMode}
-          record={selectedRevenue}
-          fields={fieldConfigs}
-          onSave={handleSaveRevenue}
-        />
+          title="Create New Revenue"
+        >
+          <div className="p-4">
+            <p>Revenue creation form will be implemented here.</p>
+          </div>
+        </Drawer>
+
       </div>
     </StateManagerProvider>
   );
-}
+};

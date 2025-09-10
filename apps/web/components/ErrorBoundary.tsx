@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { sentry, withSentryErrorBoundary } from '@/lib/sentry';
 import { telemetry } from '@/lib/telemetry';
 

@@ -199,7 +199,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
                     </div>
                   </div>
                 </div>
-                <Button variant="ghost" size="sm">
+                <Button size="sm">
                   <Edit className="h-4 w-4" />
                 </Button>
               </div>

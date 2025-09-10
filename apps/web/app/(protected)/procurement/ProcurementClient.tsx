@@ -11,8 +11,8 @@ import {
   ListView,
   ViewSwitcher,
   DataActions,
-  UniversalDrawer
-} from '@ghxstship/ui/components/DataViews';
+  Drawer
+} from '@ghxstship/ui';
 import type {
   FieldConfig,
   DataViewConfig,
@@ -23,6 +23,7 @@ import type {
 
 interface ProcurementClientProps {
   className?: string;
+  orgId?: string;
 }
 
 export default function ProcurementClient({ className }: ProcurementClientProps) {
@@ -256,13 +257,14 @@ export default function ProcurementClient({ className }: ProcurementClientProps)
             />
             
             {/* Universal Drawer */}
-            <UniversalDrawer
+            <Drawer title="Details"
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fieldConfig}
-              mode="view"
-            />
+            >
+              <div className="p-4">
+                <p>Procurement details will be implemented here.</p>
+              </div>
+            </Drawer>
           </div>
         </DataViewProvider>
       </StateManagerProvider>

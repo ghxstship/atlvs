@@ -4,11 +4,11 @@ import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
-  Textarea,
   Select,
+  Textarea,
   Card
 } from '@ghxstship/ui';
 import { 
@@ -208,11 +208,11 @@ export default function CreateOverviewClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Add Overview Item"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Item Details */}
@@ -375,6 +375,6 @@ export default function CreateOverviewClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

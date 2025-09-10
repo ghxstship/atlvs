@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { UniversalDrawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, Building2, CreditCard, Banknote, Wallet } from 'lucide-react';
 
 interface CreateAccountClientProps {
@@ -119,11 +119,11 @@ export default function CreateAccountClient({
   const shouldShowBankFields = formData.kind === 'bank';
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Add Account"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Account Overview */}
@@ -177,7 +177,6 @@ export default function CreateAccountClient({
                 <Select
                   value={formData.kind}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, kind: value }))}
-                  className="pl-12"
                 >
                   <option value="bank">Bank Account</option>
                   <option value="card">Credit Card</option>
@@ -304,6 +303,6 @@ export default function CreateAccountClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

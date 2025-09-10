@@ -358,7 +358,7 @@ export default function TravelPreferencesClient() {
                   placeholder="Add airline..."
                   onKeyPress={(e) => e.key === 'Enter' && addAirline()}
                 />
-                <Button onClick={addAirline} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
@@ -397,7 +397,7 @@ export default function TravelPreferencesClient() {
                   placeholder="Add hotel chain..."
                   onKeyPress={(e) => e.key === 'Enter' && addHotel()}
                 />
-                <Button onClick={addHotel} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
@@ -436,7 +436,7 @@ export default function TravelPreferencesClient() {
                   placeholder="Add car rental company..."
                   onKeyPress={(e) => e.key === 'Enter' && addCarRental()}
                 />
-                <Button onClick={addCarRental} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
@@ -513,7 +513,7 @@ export default function TravelPreferencesClient() {
                     })}
                   />
                 </div>
-                <Button onClick={addLoyaltyProgram} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Loyalty Program
                 </Button>

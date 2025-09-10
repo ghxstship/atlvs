@@ -28,7 +28,7 @@ export function HeroSection() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentFeature((prev) => (prev + 1) % features.length);
+      setCurrentFeature((prev: any) => (prev + 1) % features.length);
     }, 3000);
     return () => clearInterval(interval);
   }, []);
@@ -109,7 +109,7 @@ export function HeroSection() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto group">
+              <Button size="lg" className="w-full sm:w-auto group">
                 <Play className="mr-2 h-4 w-4" />
                 Watch Demo
               </Button>

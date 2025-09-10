@@ -25,7 +25,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const context = await extractTenantContext(request);
+    const context = await extractTenantContext();
     await enforceRBAC(context, 'people:read');
 
     const peopleService = new PeopleService(

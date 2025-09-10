@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
-  Textarea,
   Select,
+  Textarea,
   Card
 } from '@ghxstship/ui';
 import { 
@@ -185,11 +185,11 @@ export default function CreateMaintenanceClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Schedule Maintenance"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Type */}
@@ -417,6 +417,6 @@ export default function CreateMaintenanceClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

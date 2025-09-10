@@ -9,7 +9,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -249,7 +249,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Spaces Management</h2>
-                <Button onClick={handleCreateSpace} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Space
                 </Button>
@@ -343,25 +343,17 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             />
             
             {/* Space Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Add New Space' 
                   : selectedRecord?.name || 'Space Details'
               }
-              onSave={handleSaveSpace}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Space Details */}
               {selectedRecord && (
@@ -395,7 +387,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
 
             {/* Empty State */}
             {!loading && data.length === 0 && (

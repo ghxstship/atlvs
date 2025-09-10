@@ -10,7 +10,7 @@ import {
   ListView,
   ViewSwitcher,
   DataActions,
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord
@@ -224,16 +224,17 @@ export default function AnalyticsClient({ orgId }: { orgId: string }) {
               <ListView titleField="name" />
             </div>
 
-            {/* Universal Drawer for record details and editing */}
-            <UniversalDrawer 
+            {/* Drawer for record details and editing */}
+            <Drawer 
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fields}
-              mode="view"
-              onSave={() => {}}
-              onDelete={() => {}}
-            />
+              title="Analytics Details"
+              width="md"
+            >
+              <div className="p-6">
+                <p className="text-muted-foreground">Analytics details will be displayed here.</p>
+              </div>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

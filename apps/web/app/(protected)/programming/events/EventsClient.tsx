@@ -10,7 +10,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -66,7 +66,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
     {
       key: 'starts_at',
       label: 'Start Date',
-      type: 'datetime',
+      type: 'date',
       sortable: true,
       filterable: true,
       width: 180
@@ -74,7 +74,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
     {
       key: 'ends_at',
       label: 'End Date',
-      type: 'datetime',
+      type: 'date',
       sortable: true,
       filterable: true,
       width: 180
@@ -218,7 +218,6 @@ export default function EventsClient({ orgId }: { orgId: string }) {
     onImport: (data: any[]) => {
       console.log('Import events:', data);
     },
-    onRowClick: handleViewEvent
   };
 
   return (
@@ -230,7 +229,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Events Management</h2>
-                <Button onClick={handleCreateEvent} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Event
                 </Button>
@@ -242,7 +241,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
             </div>
 
             {/* Data Views */}
-            <DataGrid onRowClick={handleViewEvent} />
+            <DataGrid />
             
             <KanbanBoard 
               columns={[
@@ -261,7 +260,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
               startDateField="starts_at"
               endDateField="ends_at"
               titleField="name"
-              onEventClick={handleViewEvent}
+              
             />
             
             <ListView 
@@ -271,25 +270,17 @@ export default function EventsClient({ orgId }: { orgId: string }) {
             />
             
             {/* Event Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Create Event' 
                   : selectedRecord?.name || 'Event Details'
               }
-              onSave={handleSaveEvent}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Event Details */}
               {selectedRecord && (
@@ -331,7 +322,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

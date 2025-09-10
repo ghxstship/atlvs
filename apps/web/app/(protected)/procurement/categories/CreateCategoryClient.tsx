@@ -144,7 +144,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         open={isOpen}
         onClose={handleClose}
         title="Add New Category"
-        width="500px"
+        width="md"
         footer={
           <div className="flex justify-end gap-3">
             <Button

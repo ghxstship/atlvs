@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
-import { Card, Badge, Button, Drawer } from '@atlvs/ui';
+import { Card, Badge, Button, Drawer } from '@ghxstship/ui';
 import { Plus, X, Download, Calendar, FileText, Database } from 'lucide-react';
 
 const ExportJobSchema = z.object({
@@ -250,14 +250,14 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
   };
 
   return (
-    <Drawer open={true} onClose={onCancel} size="lg">
+    <Drawer open={true} onClose={onCancel || (() => {})} title="Create Export" width="lg">
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-lg font-semibold">Create Export Job</h2>
             <p className="text-sm text-gray-600">Set up automated data exports</p>
           </div>
-          <Button variant="ghost" size="sm" onClick={onCancel}>
+          <Button size="sm" onClick={onCancel || (() => {})}>
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -581,7 +581,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
           </div>
 
           <div className="p-6 border-t bg-gray-50 flex justify-end space-x-3">
-            <Button type="button" variant="outline" onClick={onCancel}>
+            <Button type="button" variant="outline" onClick={onCancel || (() => {})}>
               Cancel
             </Button>
             <Button type="submit" disabled={isSubmitting}>

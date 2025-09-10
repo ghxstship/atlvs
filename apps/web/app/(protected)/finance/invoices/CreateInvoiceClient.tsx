@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { UniversalDrawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, FileText, Calendar, DollarSign, Building, Trash2 } from 'lucide-react';
 
 interface CreateInvoiceClientProps {
@@ -179,11 +179,11 @@ export default function CreateInvoiceClient({
   const totalAmount = subtotal + formData.taxAmount - formData.discountAmount;
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Create Invoice"
-      size="xl"
+      width="xl"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Invoice Overview */}
@@ -281,7 +281,7 @@ export default function CreateInvoiceClient({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h4 className="font-medium text-foreground">Line Items</h4>
-            <Button type="button" variant="ghost" size="sm" onClick={addLineItem}>
+            <Button size="sm" onClick={addLineItem}>
               <Plus className="h-4 w-4 mr-2" />
               Add Item
             </Button>
@@ -453,6 +453,6 @@ export default function CreateInvoiceClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@/lib/supabase/server';
+import { cookies } from 'next/headers';
+import { createServerClient } from '@ghxstship/auth';
 import { z } from 'zod';
 
 // Widget update schema
@@ -25,7 +26,15 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     
     // Check authentication
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -80,7 +89,15 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     
     // Check authentication
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -123,7 +140,7 @@ export async function PUT(
     }
 
     // Check permissions (dashboard owner or admin can edit widgets)
-    const canEdit = existingWidget.dashboard.created_by === user.id || 
+    const canEdit = existingWidget.dashboard?.[0]?.created_by === user.id || 
                    ['owner', 'admin'].includes(membership.role);
 
     if (!canEdit) {
@@ -186,7 +203,15 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const supabase = createClient();
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     
     // Check authentication
     const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -229,7 +254,7 @@ export async function DELETE(
     }
 
     // Check permissions (dashboard owner or admin can delete widgets)
-    const canDelete = existingWidget.dashboard.created_by === user.id || 
+    const canDelete = existingWidget.dashboard?.[0]?.created_by === user.id || 
                      ['owner', 'admin'].includes(membership.role);
 
     if (!canDelete) {

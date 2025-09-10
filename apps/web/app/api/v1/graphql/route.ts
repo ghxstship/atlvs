@@ -258,7 +258,7 @@ const resolvers = {
     },
     purchaseOrders: async (_: any, args: { limit?: number; offset?: number }, { ctx }: any) => {
       const { services } = getSupabaseAndServices();
-      return services.procurement.list(ctx, { limit: args.limit, offset: args.offset });
+      return services.procurement.listPurchaseOrders(ctx.organizationId);
     },
     invoices: async (_: any, args: { limit?: number; offset?: number }, { ctx }: any) => {
       const { services } = getSupabaseAndServices();
@@ -338,7 +338,7 @@ const resolvers = {
     createPurchaseOrder: async (_: any, { id, vendor, total, currency, status }: any, { ctx }: any) => {
       const { services } = getSupabaseAndServices();
       const input = { id, organizationId: ctx.organizationId, vendor, total, currency, status };
-      return services.procurement.create(ctx, input as any);
+      return services.procurement.createPurchaseOrder(ctx.organizationId, ctx.userId, input as any);
     },
     createInvoice: async (_: any, { id, amount, currency, status, dueDate, purchaseOrderId }: any, { ctx }: any) => {
       const { services } = getSupabaseAndServices();

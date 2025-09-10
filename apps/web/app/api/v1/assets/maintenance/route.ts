@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { z } from 'zod';
 import { AssetsService } from '@ghxstship/application';
-import { SupabaseAssetsRepository } from '@ghxstship/infrastructure';
 import { AuditLogger, EventBus } from '@ghxstship/application';
+import {
+  SupabaseAssetsRepository,
+  SupabaseAssetAdvancingRepository,
+  SupabaseAssetAssignmentRepository,
+  SupabaseAssetTrackingRepository,
+  SupabaseAssetMaintenanceRepository,
+  SupabaseAssetReportRepository
+} from '@ghxstship/infrastructure';
 
 const createMaintenanceSchema = z.object({
   assetId: z.string().min(1, 'Asset ID is required'),
@@ -25,7 +33,15 @@ const createMaintenanceSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -55,17 +71,24 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 });
     }
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const maintenanceRecords = await assetsService.listMaintenanceRecords(membership.organization_id);
+    const maintenanceRecords = await assetsService.getMaintenanceRecords(membership.organization_id);
 
-    await auditLogger.log({
+    await audit.log('assets.maintenance.list', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.maintenance.list',
       resourceType: 'maintenance_record',
       details: { count: maintenanceRecords.length }
     });
@@ -83,7 +106,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -116,21 +147,28 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = createMaintenanceSchema.parse(body);
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const maintenanceRecord = await assetsService.createMaintenanceRecord({
-      ...validatedData,
-      organizationId: membership.organization_id,
-      createdBy: user.id
-    });
+    const maintenanceRecord = await assetsService.scheduleMaintenace(
+      membership.organization_id,
+      user.id,
+      validatedData as any
+    );
 
-    await auditLogger.log({
+    await audit.log('assets.maintenance.create', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.maintenance.create',
       resourceType: 'maintenance_record',
       resourceId: maintenanceRecord.id,
       details: { 

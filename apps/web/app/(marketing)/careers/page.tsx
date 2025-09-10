@@ -184,7 +184,7 @@ export default function CareersPage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
+              <Button size="lg" asChild>
                 <a href="#culture">
                   Learn About Our Culture
                 </a>
@@ -303,7 +303,7 @@ export default function CareersPage() {
             <p className="text-muted-foreground mb-6">
               Don't see a role that fits? We're always looking for exceptional talent.
             </p>
-            <Button variant="outline" size="lg">
+            <Button size="lg">
               Send Us Your Resume
             </Button>
           </div>
@@ -471,7 +471,7 @@ export default function CareersPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button variant="outline" size="lg">
+                <Button size="lg">
                   Join Our Talent Network
                 </Button>
               </div>

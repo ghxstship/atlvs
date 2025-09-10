@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Wrench, Edit, Trash2, Copy, Calendar, Clock, AlertTriangle } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -543,11 +543,11 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
       )}
 
       {/* Maintenance Form Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedRecord ? 'Edit Maintenance Record' : 'Schedule Maintenance'}
-        size="lg"
+        width="lg"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -641,7 +641,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

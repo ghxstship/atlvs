@@ -90,11 +90,11 @@ interface Dashboard {
 }
 
 interface DashboardClientProps {
-  organizationId: string;
+  orgId: string;
 }
 
 // Cross-module data integration functions
-const fetchProjectsData = async (organizationId: string) => {
+const fetchProjectsData = async (orgId: string) => {
   // Mock integration with Projects module
   return {
     total: 24,
@@ -105,7 +105,7 @@ const fetchProjectsData = async (organizationId: string) => {
   };
 };
 
-const fetchPeopleData = async (organizationId: string) => {
+const fetchPeopleData = async (orgId: string) => {
   // Mock integration with People module
   return {
     total: 156,
@@ -116,7 +116,7 @@ const fetchPeopleData = async (organizationId: string) => {
   };
 };
 
-const fetchFinanceData = async (organizationId: string) => {
+const fetchFinanceData = async (orgId: string) => {
   // Mock integration with Finance module
   return {
     revenue_monthly: 125000,
@@ -127,7 +127,7 @@ const fetchFinanceData = async (organizationId: string) => {
   };
 };
 
-const fetchAnalyticsData = async (organizationId: string) => {
+const fetchAnalyticsData = async (orgId: string) => {
   // Mock integration with Analytics module
   return {
     page_views: 45230,
@@ -152,7 +152,7 @@ const mockDashboard: Dashboard = {
   updated_at: new Date().toISOString()
 };
 
-const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => {
+const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
   const [dashboard, setDashboard] = useState<Dashboard | null>(null);
   const [widgets, setWidgets] = useState<DashboardWidget[]>([]);
   const [loading, setLoading] = useState(true);
@@ -183,10 +183,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
     const loadCrossModuleData = async () => {
       try {
         const [projects, people, finance, analytics] = await Promise.all([
-          fetchProjectsData(organizationId),
-          fetchPeopleData(organizationId),
-          fetchFinanceData(organizationId),
-          fetchAnalyticsData(organizationId)
+          fetchProjectsData(orgId),
+          fetchPeopleData(orgId),
+          fetchFinanceData(orgId),
+          fetchAnalyticsData(orgId)
         ]);
 
         setCrossModuleData({
@@ -201,7 +201,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
     };
 
     loadCrossModuleData();
-  }, [organizationId]);
+  }, [orgId]);
 
   // Load dashboard and widgets with cross-module integration
   const loadDashboard = useCallback(async () => {
@@ -226,7 +226,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
             subtitle: `${crossModuleData.projects?.active || 18} active`
           },
           position: { x: 0, y: 0, w: 3, h: 2 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -242,7 +242,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
             subtitle: `${crossModuleData.people?.active || 142} active`
           },
           position: { x: 3, y: 0, w: 3, h: 2 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -259,7 +259,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
             format: 'currency'
           },
           position: { x: 6, y: 0, w: 3, h: 2 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -277,7 +277,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
             ]
           },
           position: { x: 9, y: 0, w: 3, h: 4 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -288,7 +288,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
           title: 'Revenue Trend',
           config: { chartType: 'line', data: [120, 135, 125, 140, 155, 145, 160] },
           position: { x: 0, y: 2, w: 6, h: 4 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         },
@@ -307,7 +307,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
             ]
           },
           position: { x: 6, y: 2, w: 6, h: 4 },
-          organization_id: organizationId,
+          organization_id: orgId,
           created_at: new Date().toISOString(),
           updated_at: new Date().toISOString()
         }
@@ -321,7 +321,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
     } finally {
       setLoading(false);
     }
-  }, [organizationId, crossModuleData]);
+  }, [orgId, crossModuleData]);
 
   useEffect(() => {
     if (Object.keys(crossModuleData).length > 0) {
@@ -342,7 +342,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
         position: widgetData.position || { x: 0, y: 0, w: 4, h: 3 },
         data_source: widgetData.data_source,
         refresh_interval: widgetData.refresh_interval || 300,
-        organization_id: organizationId,
+        organization_id: orgId,
         created_at: new Date().toISOString(),
         updated_at: new Date().toISOString()
       };
@@ -353,7 +353,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
       console.error('Error adding widget:', err);
       setError(err instanceof Error ? err.message : 'Failed to add widget');
     }
-  }, [dashboard, organizationId]);
+  }, [dashboard, orgId]);
 
   const handleUpdateWidget = useCallback(async (widgetId: string, updates: Partial<DashboardWidget>) => {
     try {
@@ -384,7 +384,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ organizationId }) => 
         setIsWidgetDrawerOpen(true);
       },
       onDelete: () => handleDeleteWidget(widget.id),
-      organizationId
+      orgId
     };
 
     switch (widget.type) {

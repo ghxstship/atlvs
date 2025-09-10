@@ -10,7 +10,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -316,7 +316,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Workshop Management</h2>
-                <Button onClick={handleCreateWorkshop} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Workshop
                 </Button>
@@ -406,7 +406,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               startDateField="starts_at"
               endDateField="ends_at"
               titleField="name"
-              onEventClick={handleViewWorkshop}
+              
             />
             
             <ListView 
@@ -416,25 +416,17 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             />
             
             {/* Workshop Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Create Workshop' 
                   : selectedRecord?.name || 'Workshop Details'
               }
-              onSave={handleSaveWorkshop}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Workshop Details */}
               {selectedRecord && (
@@ -529,22 +521,22 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
 
                   {/* Quick Actions */}
                   <div className="flex gap-2 pt-4 border-t">
-                    <Button variant="outline" size="sm">
+                    <Button size="sm">
                       <Users className="h-4 w-4 mr-2" />
                       Manage Participants
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button size="sm">
                       <BookOpen className="h-4 w-4 mr-2" />
                       Course Materials
                     </Button>
-                    <Button variant="outline" size="sm">
+                    <Button size="sm">
                       <MapPin className="h-4 w-4 mr-2" />
                       Room Assignment
                     </Button>
                   </div>
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
 
             {/* Empty State */}
             {!loading && data.length === 0 && (

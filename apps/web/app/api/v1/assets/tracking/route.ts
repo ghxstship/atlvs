@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { z } from 'zod';
 import { AssetsService } from '@ghxstship/application';
-import { SupabaseAssetsRepository } from '@ghxstship/infrastructure';
 import { AuditLogger, EventBus } from '@ghxstship/application';
+import {
+  SupabaseAssetsRepository,
+  SupabaseAssetAdvancingRepository,
+  SupabaseAssetAssignmentRepository,
+  SupabaseAssetTrackingRepository,
+  SupabaseAssetMaintenanceRepository,
+  SupabaseAssetReportRepository
+} from '@ghxstship/infrastructure';
 
 const updateTrackingSchema = z.object({
   assetId: z.string().min(1, 'Asset ID is required'),
@@ -25,7 +33,15 @@ const updateTrackingSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -55,17 +71,24 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 });
     }
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const trackingData = await assetsService.listTrackingData(membership.organization_id);
+    const trackingData = await assetsService.getTrackingData(membership.organization_id);
 
-    await auditLogger.log({
+    await audit.log('assets.tracking.list', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.tracking.list',
       resourceType: 'tracking_data',
       details: { count: trackingData.length }
     });
@@ -83,7 +106,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -116,27 +147,35 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = updateTrackingSchema.parse(body);
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const trackingRecord = await assetsService.updateTracking({
-      ...validatedData,
-      organizationId: membership.organization_id,
-      lastSeen: new Date().toISOString(),
-      updatedBy: user.id
-    });
+    const trackingRecord = await assetsService.updateAssetLocation(
+      validatedData.assetId,
+      membership.organization_id,
+      user.id,
+      validatedData.currentLocation,
+      validatedData.coordinates
+    );
 
-    await auditLogger.log({
+    await audit.log('assets.tracking.update', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.tracking.update',
       resourceType: 'tracking_data',
       resourceId: trackingRecord.id,
       details: { 
         assetId: trackingRecord.assetId,
-        currentLocation: trackingRecord.currentLocation,
+        location: trackingRecord.location,
         status: trackingRecord.status,
         trackingMethod: trackingRecord.trackingMethod
       }

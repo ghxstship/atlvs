@@ -11,11 +11,11 @@ import {
   ListView,
   ViewSwitcher,
   DataActions,
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord
-} from '@ghxstship/ui/components/DataViews';
+} from '@ghxstship/ui';
 
 // Mock Supabase client for now
 const sb = {
@@ -271,13 +271,14 @@ export default function JobsClient({ orgId }: { orgId: string }) {
             />
 
             {/* Universal Drawer for CRUD operations */}
-            <UniversalDrawer
+            <Drawer title="Details"
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fieldConfig}
-              mode="view"
-            />
+            >
+              <div className="p-4">
+                <p>Job details will be implemented here.</p>
+              </div>
+            </Drawer>
           </div>
         </DataViewProvider>
       </StateManagerProvider>

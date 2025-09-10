@@ -168,7 +168,6 @@ export async function PUT(req: NextRequest, { params }: { params: { orgId: strin
         projects!inner(organization_id)
       )
     `)
-    .eq('events.projects.organization_id', params.orgId)
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });
@@ -229,7 +228,6 @@ export async function DELETE(req: NextRequest, { params }: { params: { orgId: st
         projects!inner(organization_id)
       )
     `)
-    .eq('events.projects.organization_id', params.orgId)
     .single();
 
   if (error) return NextResponse.json({ error: error.message }, { status: 400 });

@@ -250,10 +250,10 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
                     )}
                   </div>
                   <div className="flex space-x-1">
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <Edit className="h-4 w-4" />
                     </Button>
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>

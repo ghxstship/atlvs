@@ -272,17 +272,17 @@ export default function TeamPage() {
                       
                       <div className="flex gap-2">
                         {leader.social.linkedin && (
-                          <Button variant="outline" size="sm" className="p-2">
+                          <Button size="sm" className="p-2">
                             <Linkedin className="h-3 w-3" />
                           </Button>
                         )}
                         {leader.social.twitter && (
-                          <Button variant="outline" size="sm" className="p-2">
+                          <Button size="sm" className="p-2">
                             <Twitter className="h-3 w-3" />
                           </Button>
                         )}
                         {leader.social.github && (
-                          <Button variant="outline" size="sm" className="p-2">
+                          <Button size="sm" className="p-2">
                             <Github className="h-3 w-3" />
                           </Button>
                         )}
@@ -474,7 +474,7 @@ export default function TeamPage() {
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+              <Button size="lg" className="w-full sm:w-auto">
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Us
               </Button>
@@ -498,7 +498,7 @@ export default function TeamPage() {
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and coverage' },
             ].map((link) => (
-              <a key={link.title} href={link.href}>
+              <a key={link.title} href={link.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>

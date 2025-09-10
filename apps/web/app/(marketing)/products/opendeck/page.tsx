@@ -182,7 +182,7 @@ export default function OPENDECKPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto group">
+                <Button size="lg" className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   Explore Marketplace
                 </Button>
@@ -425,7 +425,7 @@ export default function OPENDECKPage() {
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

@@ -135,7 +135,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
         open={isOpen}
         onClose={handleClose}
         title="Add New Vendor"
-        width="500px"
+        width="md"
         footer={
           <div className="flex justify-end gap-3">
             <Button

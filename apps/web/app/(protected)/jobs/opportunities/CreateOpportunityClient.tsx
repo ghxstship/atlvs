@@ -181,7 +181,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 id="title"
                 {...register('title')}
                 placeholder="Enter opportunity title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -202,7 +202,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">
                   Type *
                 </label>
-                <Select {...register('type')} error={errors.type?.message}>
+                <Select {...register('type')}>
                   <option value="construction">Construction</option>
                   <option value="technical">Technical</option>
                   <option value="creative">Creative</option>
@@ -233,12 +233,11 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                   Estimated Value
                 </label>
                 <Input
-                  id="estimatedValue"
                   type="number"
                   step="0.01"
                   {...register('estimatedValue', { valueAsNumber: true })}
                   placeholder="0.00"
-                  error={errors.estimatedValue?.message}
+                 
                 />
               </div>
 
@@ -261,13 +260,12 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                   Probability (%)
                 </label>
                 <Input
-                  id="probability"
                   type="number"
                   min="0"
                   max="100"
                   {...register('probability', { valueAsNumber: true })}
                   placeholder="50"
-                  error={errors.probability?.message}
+                 
                 />
               </div>
 
@@ -276,7 +274,6 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                   Expected Close Date
                 </label>
                 <Input
-                  id="expectedCloseDate"
                   type="date"
                   {...register('expectedCloseDate')}
                 />
@@ -289,7 +286,6 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                   Client Name
                 </label>
                 <Input
-                  id="clientName"
                   {...register('clientName')}
                   placeholder="Enter client name"
                 />
@@ -300,7 +296,6 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                   Client Contact
                 </label>
                 <Input
-                  id="clientContact"
                   {...register('clientContact')}
                   placeholder="Enter contact information"
                 />
@@ -312,7 +307,6 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 Source
               </label>
               <Input
-                id="source"
                 {...register('source')}
                 placeholder="How did you find this opportunity?"
               />
@@ -323,7 +317,6 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes about this opportunity"
                 rows={3}

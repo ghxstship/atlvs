@@ -539,9 +539,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <Select
-            label="Travel Type"
             {...form.register('travel_type')}
-            error={form.formState.errors.travel_type?.message}
           >
             <option value="business">Business</option>
             <option value="personal">Personal</option>
@@ -556,14 +554,14 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
               label="Destination"
               placeholder="City, location"
               {...form.register('destination')}
-              error={form.formState.errors.destination?.message}
+             
             />
 
             <Input
               label="Country"
               placeholder="Country name"
               {...form.register('country')}
-              error={form.formState.errors.country?.message}
+             
             />
           </div>
 
@@ -571,7 +569,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
             label="Purpose"
             placeholder="Purpose of travel"
             {...form.register('purpose')}
-            error={form.formState.errors.purpose?.message}
+           
           />
 
           <div className="grid grid-cols-3 gap-4">
@@ -579,21 +577,21 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
               label="Start Date"
               type="date"
               {...form.register('start_date')}
-              error={form.formState.errors.start_date?.message}
+             
             />
 
             <Input
               label="End Date"
               type="date"
               {...form.register('end_date')}
-              error={form.formState.errors.end_date?.message}
+             
             />
 
             <Input
               label="Duration (Days)"
               type="number"
               {...form.register('duration_days', { valueAsNumber: true })}
-              error={form.formState.errors.duration_days?.message}
+             
               disabled
             />
           </div>
@@ -603,14 +601,14 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
               label="Accommodation"
               placeholder="Hotel, residence, etc."
               {...form.register('accommodation')}
-              error={form.formState.errors.accommodation?.message}
+             
             />
 
             <Input
               label="Transportation"
               placeholder="Flight, car, ship, etc."
               {...form.register('transportation')}
-              error={form.formState.errors.transportation?.message}
+             
             />
           </div>
 
@@ -629,9 +627,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
 
             {form.watch('visa_required') && (
               <Select
-                label="Visa Status"
                 {...form.register('visa_status')}
-                error={form.formState.errors.visa_status?.message}
               >
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
@@ -645,7 +641,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
               label="Passport Used"
               placeholder="Passport number or type"
               {...form.register('passport_used')}
-              error={form.formState.errors.passport_used?.message}
+             
             />
 
             <Input
@@ -653,7 +649,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
               type="number"
               placeholder="0"
               {...form.register('expenses', { valueAsNumber: true })}
-              error={form.formState.errors.expenses?.message}
+             
             />
           </div>
 
@@ -661,7 +657,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
             label="Notes"
             placeholder="Additional notes about the trip"
             {...form.register('notes')}
-            error={form.formState.errors.notes?.message}
+           
             rows={3}
           />
 

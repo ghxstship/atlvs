@@ -131,7 +131,7 @@ export function MarketingHeader() {
                       {item.children.map((child) => (
                         <a
                           key={child.href}
-                          href={child.href}
+                          href={child.href as any as any}
                           className={cn(
                             "block px-3 py-2 text-sm rounded-sm transition-colors hover:bg-accent hover:text-accent-foreground",
                             pathname === child.href ? "bg-accent text-accent-foreground" : "text-popover-foreground"
@@ -144,7 +144,7 @@ export function MarketingHeader() {
                   </div>
                 ) : (
                   <a
-                    href={item.href}
+                    href={item.href as any as any}
                     className={cn(
                       "text-sm font-medium transition-colors hover:text-primary",
                       pathname === item.href ? "text-primary" : "text-muted-foreground"
@@ -160,7 +160,7 @@ export function MarketingHeader() {
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/login">
-              <Button variant="ghost" size="sm">
+              <Button size="sm">
                 Sign In
               </Button>
             </Link>
@@ -209,7 +209,7 @@ export function MarketingHeader() {
                           {item.children.map((child) => (
                             <a
                               key={child.href}
-                              href={child.href}
+                              href={child.href as any as any}
                               className={cn(
                                 "block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground",
                                 pathname === child.href ? "bg-accent text-accent-foreground" : "text-muted-foreground"
@@ -223,7 +223,7 @@ export function MarketingHeader() {
                     </div>
                   ) : (
                     <a
-                      href={item.href}
+                      href={item.href as any as any}
                       className={cn(
                         "block px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground",
                         pathname === item.href ? "bg-accent text-accent-foreground" : "text-foreground"
@@ -238,7 +238,7 @@ export function MarketingHeader() {
               {/* Mobile Auth Buttons */}
               <div className="pt-4 space-y-2">
                 <Link href="/login" className="block">
-                  <Button variant="ghost" size="sm" className="w-full justify-center">
+                  <Button size="sm" className="w-full justify-center">
                     Sign In
                   </Button>
                 </Link>

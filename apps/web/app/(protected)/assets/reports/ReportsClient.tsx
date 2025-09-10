@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, BarChart3, PieChart, TrendingUp, Calendar, DollarSign, Package } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -644,11 +644,11 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
       )}
 
       {/* Report Generation Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title="Generate New Report"
-        size="lg"
+        width="lg"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -694,7 +694,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

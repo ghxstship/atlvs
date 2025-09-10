@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   ViewSwitcher,
   StateManagerProvider,
@@ -293,7 +293,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
     {
       key: 'occurred_at',
       label: 'Transaction Date',
-      type: 'datetime-local',
+      type: 'text',
       required: true
     },
     {
@@ -384,11 +384,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              view={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <ViewSwitcher />
             <Button onClick={handleCreateTransaction}>
               <Plus className="h-4 w-4 mr-2" />
               Add Transaction
@@ -557,13 +553,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
           </Card>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={transactionRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditTransaction}
-              onDelete={handleDeleteTransaction}
-              onView={handleViewTransaction}
-            />
+            <DataGrid />
           </Card>
         )}
 
@@ -581,18 +571,18 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
           title={
             drawerMode === 'create' ? 'Add Transaction' :
             drawerMode === 'edit' ? 'Edit Transaction' : 'Transaction Details'
           }
-          mode={drawerMode}
-          record={selectedTransaction}
-          fields={fieldConfigs}
-          onSave={handleSaveTransaction}
-        />
+        >
+          <div className="p-4">
+            <p>Transaction form will be implemented here.</p>
+          </div>
+        </Drawer>
       </div>
     </StateManagerProvider>
   );

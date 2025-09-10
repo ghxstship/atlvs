@@ -108,7 +108,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
       if (!res.ok) throw new Error(data?.error || 'Failed to revoke');
     } catch (e: any) {
       setError(e?.message || 'Unknown error');
-      setInvites(prev);
+      setInvites((prev: any) => prev);
     } finally {
       setLoading(false);
     }
@@ -180,7 +180,6 @@ export default function InviteMemberClient({ orgId, role }: Props) {
             value={email}
             onChange={(e: any) => setEmail(e.target.value)}
             placeholder="teammate@company.com"
-            className="w-full h-10 rounded-md border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           />
           <select
             value={inviteRole}
@@ -210,7 +209,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
               <>
                 <span className="text-foreground/60">External domain — will count against seat limit if enforced.</span>
                 <Link
-                  href={{ pathname: '/settings/organization/domains', query: emailDomain ? { suggest: emailDomain } : {} }}
+                  href={{ pathname: '/settings/organization/domains', query: emailDomain ? { suggest: emailDomain  as any} : {} }}
                   title="Add your organization email domain(s). When seat policy is domain-unlimited, invites matching active domains do not consume seats."
                   className="inline-flex items-center rounded-md border px-2 py-1 text-[11px] hover:bg-zinc-50 dark:hover:bg-zinc-800"
                 >
@@ -277,10 +276,10 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                   </span>
                 </td>
                 <td className="px-3 py-2 text-right space-x-2">
-                  <Button variant="outline" size="sm" onClick={() => resendInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
+                  <Button size="sm" onClick={() => resendInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
                     Resend
                   </Button>
-                  <Button variant="outline" size="sm" onClick={() => revokeInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
+                  <Button size="sm" onClick={() => revokeInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
                     Revoke
                   </Button>
                 </td>

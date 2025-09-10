@@ -49,7 +49,7 @@ export default function NotificationsBell() {
         )}
       </button>
 
-      <Drawer open={open} onClose={() => setOpen(false)} title="Notifications" description="Your latest alerts" width="sm">
+      <Drawer open={open} onClose={() => setOpen(false)} title="Notifications" description="Your latest alerts" size="sm">
         <div className="space-y-2">
           {loading ? (
             <div className="text-sm opacity-80">Loading…</div>
@@ -74,7 +74,7 @@ export default function NotificationsBell() {
             </ul>
           )}
           <div className="pt-2 border-t">
-            <Button onClick={load} variant="outline" size="sm">Refresh</Button>
+            <Button size="sm">Refresh</Button>
           </div>
         </div>
       </Drawer>

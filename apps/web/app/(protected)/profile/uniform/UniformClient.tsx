@@ -566,9 +566,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <Select
-              label="Item Type"
               {...form.register('item_type')}
-              error={form.formState.errors.item_type?.message}
             >
               <option value="shirt">Shirt</option>
               <option value="pants">Pants</option>
@@ -581,9 +579,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             </Select>
 
             <Select
-              label="Condition"
               {...form.register('condition')}
-              error={form.formState.errors.condition?.message}
             >
               <option value="new">New</option>
               <option value="excellent">Excellent</option>
@@ -598,7 +594,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             label="Item Name"
             placeholder="Enter item name"
             {...form.register('item_name')}
-            error={form.formState.errors.item_name?.message}
+           
           />
 
           <div className="grid grid-cols-2 gap-4">
@@ -606,14 +602,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               label="Brand"
               placeholder="Brand or manufacturer"
               {...form.register('brand')}
-              error={form.formState.errors.brand?.message}
+             
             />
 
             <Input
               label="Size"
               placeholder="Size (e.g., L, 34W x 32L)"
               {...form.register('size')}
-              error={form.formState.errors.size?.message}
+             
             />
           </div>
 
@@ -622,14 +618,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               label="Color"
               placeholder="Color or pattern"
               {...form.register('color')}
-              error={form.formState.errors.color?.message}
+             
             />
 
             <Input
               label="Material"
               placeholder="Material composition"
               {...form.register('material')}
-              error={form.formState.errors.material?.message}
+             
             />
           </div>
 
@@ -638,7 +634,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               label="Purchase Date"
               type="date"
               {...form.register('purchase_date')}
-              error={form.formState.errors.purchase_date?.message}
+             
             />
 
             <Input
@@ -646,14 +642,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               type="number"
               placeholder="0"
               {...form.register('cost', { valueAsNumber: true })}
-              error={form.formState.errors.cost?.message}
+             
             />
 
             <Input
               label="Replacement Due"
               type="date"
               {...form.register('replacement_due')}
-              error={form.formState.errors.replacement_due?.message}
+             
             />
           </div>
 
@@ -661,14 +657,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             label="Supplier"
             placeholder="Supplier or vendor"
             {...form.register('supplier')}
-            error={form.formState.errors.supplier?.message}
+           
           />
 
           <Textarea
             label="Care Instructions"
             placeholder="How to clean and maintain this item"
             {...form.register('care_instructions')}
-            error={form.formState.errors.care_instructions?.message}
+           
             rows={2}
           />
 
@@ -676,7 +672,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             label="Notes"
             placeholder="Additional notes or specifications"
             {...form.register('notes')}
-            error={form.formState.errors.notes?.message}
+           
             rows={2}
           />
 

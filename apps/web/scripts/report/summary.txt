@@ -1,0 +1,19 @@
+[audit] Running Next.js build...
+\n[audit] Extracting TS errors from build log...
+  Failed to compile.
+  Type error: Argument of type 'SupabaseClient<any, "public", any, any, any>' is not assignable to parameter of type 'SupabaseClient<unknown, { PostgrestVersion: string; }, never, never, { PostgrestVersion: string; }>'.
+    Type 'any' is not assignable to type 'never'.
+ripgrep (rg) not found. Install for richer reports: brew install ripgrep
+\n[audit] Drawer with size= (should be width=)
+\n[audit] Self-closing Drawer (needs children)
+\n[audit] Drawer onOpenChange prop usage
+\n[audit] Drawer unsupported flags
+\n[audit] onRowClick prop usage (remove)
+\n[audit] Button variant default
+\n[audit] FieldConfig type 'time'
+\n[audit] FieldConfig type 'datetime'
+\n[audit] @supabase/auth-helpers-nextjs imports
+\n[audit] createClientComponentClient usages
+\n[audit] ViewSwitcher with props
+\n[audit] Report written to: /Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/scripts/report/summary.txt
+[audit] Build log: /Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/scripts/report/next-build.log

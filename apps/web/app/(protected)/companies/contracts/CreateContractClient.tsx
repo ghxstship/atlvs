@@ -4,13 +4,12 @@ import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
-  Textarea,
   Select,
-  Card,
-  Checkbox
+  Textarea,
+  Card
 } from '@ghxstship/ui';
 import { 
   FileText,
@@ -221,11 +220,11 @@ export default function CreateContractClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Create New Contract"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Contract Details */}
@@ -311,7 +310,6 @@ export default function CreateContractClient({
               <Select
                 value={formData.companyId}
                 onValueChange={(value) => handleInputChange('companyId', value)}
-                required
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -430,9 +428,11 @@ export default function CreateContractClient({
             </div>
 
             <div className="flex items-center gap-2">
-              <Checkbox
+              <input
+                type="checkbox"
                 checked={formData.autoRenewal}
-                onCheckedChange={(checked) => handleInputChange('autoRenewal', checked)}
+                onChange={(e) => handleInputChange('autoRenewal', e.target.checked)}
+                className="rounded border-gray-300"
               />
               <label className="text-sm font-medium">
                 Enable Auto-Renewal
@@ -461,6 +461,6 @@ export default function CreateContractClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

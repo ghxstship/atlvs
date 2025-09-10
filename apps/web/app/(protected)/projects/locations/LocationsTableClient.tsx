@@ -147,7 +147,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
       entity_id: openId, 
       body 
     }).select('id,body,created_at').maybeSingle();
-    if (!insErr && data) setComments((prev) => [data, ...prev]);
+    if (!insErr && data) setComments((prev: any) => [data, ...prev]);
   }
 
   const getTypeColor = (type: string) => {

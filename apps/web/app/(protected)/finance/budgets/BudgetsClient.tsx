@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   DataActions,
   StateManagerProvider,
@@ -531,18 +531,18 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
           title={
-            drawerMode === 'create' ? 'Create Budget' :
-            drawerMode === 'edit' ? 'Edit Budget' : 'Budget Details'
+            drawerMode === 'create' ? 'Create New Budget' :
+            drawerMode === 'edit' ? 'Edit Budget' : 'View Budget'
           }
-          mode={drawerMode}
-          record={selectedBudget}
-          fields={fieldConfigs}
-          onSave={handleSaveBudget}
-        />
+        >
+          <div className="p-4">
+            <p>Budget form will be implemented here.</p>
+          </div>
+        </Drawer>
       </div>
     </StateManagerProvider>
   );

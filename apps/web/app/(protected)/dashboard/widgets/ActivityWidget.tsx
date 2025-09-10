@@ -1,8 +1,9 @@
+import { Avatar } from "@ghxstship/ui";
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Card } from '@atlvs/ui';
-import { Badge } from '@atlvs/ui';
+import { Card } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
 import { MoreHorizontal, Clock, User, FileText, DollarSign, Users } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
 

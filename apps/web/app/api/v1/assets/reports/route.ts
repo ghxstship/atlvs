@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { z } from 'zod';
 import { AssetsService } from '@ghxstship/application';
-import { SupabaseAssetsRepository } from '@ghxstship/infrastructure';
 import { AuditLogger, EventBus } from '@ghxstship/application';
+import {
+  SupabaseAssetsRepository,
+  SupabaseAssetAdvancingRepository,
+  SupabaseAssetAssignmentRepository,
+  SupabaseAssetTrackingRepository,
+  SupabaseAssetMaintenanceRepository,
+  SupabaseAssetReportRepository
+} from '@ghxstship/infrastructure';
 
 const createReportSchema = z.object({
   title: z.string().min(1, 'Report title is required'),
@@ -22,7 +30,15 @@ const createReportSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -52,17 +68,24 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 });
     }
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const reports = await assetsService.listReports(membership.organization_id);
+    const reports = await assetsService.getReports(membership.organization_id);
 
-    await auditLogger.log({
+    await audit.log('assets.reports.list', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.reports.list',
       resourceType: 'report',
       details: { count: reports.length }
     });
@@ -80,7 +103,15 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient(request);
+    const cookieStore = cookies();
+    const supabase = createServerClient({
+      get: (name: string) => {
+        const c = cookieStore.get(name);
+        return c ? { name: c.name, value: c.value } : undefined;
+      },
+      set: (name: string, value: string, options) => cookieStore.set(name, value, options),
+      remove: (name: string) => cookieStore.delete(name)
+    });
     const { data: { user }, error: authError } = await supabase.auth.getUser();
     
     if (authError || !user) {
@@ -113,28 +144,34 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = createReportSchema.parse(body);
 
-    const assetsRepo = new SupabaseAssetsRepository(supabase);
-    const auditLogger = new AuditLogger(supabase);
-    const eventBus = new EventBus();
-    const assetsService = new AssetsService(assetsRepo, auditLogger, eventBus);
+    const baseClient = supabase as any;
+    const repos = {
+      assets: new SupabaseAssetsRepository(baseClient),
+      advancing: new SupabaseAssetAdvancingRepository(baseClient),
+      assignments: new SupabaseAssetAssignmentRepository(baseClient),
+      tracking: new SupabaseAssetTrackingRepository(baseClient),
+      maintenance: new SupabaseAssetMaintenanceRepository(baseClient),
+      reports: new SupabaseAssetReportRepository(baseClient)
+    };
+    const audit = AuditLogger as any;
+    const bus = EventBus as any;
+    const assetsService = new AssetsService(repos as any, audit, bus);
 
-    const report = await assetsService.createReport({
-      ...validatedData,
-      organizationId: membership.organization_id,
-      generatedBy: user.id,
-      status: validatedData.scheduledFor ? 'scheduled' : 'generating'
-    });
+    const report = await assetsService.generateReport(
+      membership.organization_id,
+      user.id,
+      validatedData as any
+    );
 
-    await auditLogger.log({
+    await audit.log('assets.reports.create', {
       userId: user.id,
       organizationId: membership.organization_id,
-      action: 'assets.reports.create',
       resourceType: 'report',
       resourceId: report.id,
       details: { 
-        title: report.title,
+        name: report.name,
         type: report.type,
-        dateRange: report.dateRange
+        generatedAt: report.generatedAt
       }
     });
 

@@ -8,7 +8,7 @@ import { createClient } from '@/lib/supabase/client';
 import { Card } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
-import { UniversalDrawer as Drawer } from '@ghxstship/ui';
+import { Drawer } from '@ghxstship/ui';
 import { Plus, X, BarChart3, PieChart, LineChart, Activity } from 'lucide-react';
 
 const DashboardSchema = z.object({
@@ -140,14 +140,14 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
   };
 
   return (
-    <Drawer open={true} onClose={onCancel} size="lg">
+    <Drawer open={true} onClose={onCancel || (() => {})} title="Create Dashboard" width="lg">
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-lg font-semibold">Create Dashboard</h2>
             <p className="text-sm text-gray-600">Build a custom analytics dashboard</p>
           </div>
-          <Button variant="ghost" size="sm" onClick={onCancel}>
+          <Button size="sm" onClick={onCancel || (() => {})}>
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -254,7 +254,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
           </div>
 
           <div className="p-6 border-t bg-gray-50 flex justify-end space-x-3">
-            <Button type="button" variant="outline" onClick={onCancel}>
+            <Button type="button" variant="outline" onClick={onCancel || (() => {})}>
               Cancel
             </Button>
             <Button type="submit" disabled={isSubmitting}>
@@ -267,8 +267,8 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
       {/* Widget Form Modal */}
       {showWidgetForm && (
         <WidgetForm
-          onSave={addWidget}
           onCancel={() => setShowWidgetForm(false)}
+          onSave={() => setShowWidgetForm(false)}
         />
       )}
     </Drawer>

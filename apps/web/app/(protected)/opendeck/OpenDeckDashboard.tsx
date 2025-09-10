@@ -93,7 +93,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           const avgRating = reviews?.length ? 
             reviews.reduce((sum, r) => sum + r.overall_rating, 0) / reviews.length : 0;
 
-          setStats(prev => ({
+          setStats((prev: any) => ({
             ...prev,
             vendor: {
               totalEarnings,
@@ -127,7 +127,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         const completedProjects = projects?.filter(p => p.status === 'completed') || [];
         const totalSpent = contracts?.reduce((sum, c) => sum + Number(c.total_amount), 0) || 0;
 
-        setStats(prev => ({
+        setStats((prev: any) => ({
           ...prev,
           client: {
             totalSpent,
@@ -465,7 +465,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 You have {notifications.length} new notifications
               </span>
             </div>
-            <Button variant="ghost" size="sm">View All</Button>
+            <Button size="sm">View All</Button>
           </div>
         </Card>
       )}

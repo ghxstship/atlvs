@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { 
-  Card, Button, Badge, Input, Textarea, UniversalDrawer 
+  Card, Button, Badge, Input, Textarea, Drawer 
 } from '@ghxstship/ui';
 import { 
   Send, DollarSign, Calendar, Clock, FileText, 
@@ -378,14 +378,14 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       )}
 
       {/* Proposal Form Drawer */}
-      <UniversalDrawer
+      <Drawer
         open={drawerOpen}
         onClose={() => {
           setDrawerOpen(false);
           reset();
         }}
         title="Submit Proposal"
-        size="lg"
+        width="lg"
       >
         <form onSubmit={handleSubmit(submitProposal)} className="p-6 space-y-4">
           <div>
@@ -487,7 +487,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             </Button>
           </div>
         </form>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

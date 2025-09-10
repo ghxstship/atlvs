@@ -490,9 +490,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <Select
-            label="Entry Type"
             {...form.register('entry_type')}
-            error={form.formState.errors.entry_type?.message}
           >
             <option value="employment">Employment</option>
             <option value="education">Education</option>
@@ -506,7 +504,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             label="Title"
             placeholder="Position title, degree, project name, etc."
             {...form.register('title')}
-            error={form.formState.errors.title?.message}
+           
           />
 
           <div className="grid grid-cols-2 gap-4">
@@ -514,14 +512,14 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
               label="Organization"
               placeholder="Company, school, or organization"
               {...form.register('organization')}
-              error={form.formState.errors.organization?.message}
+             
             />
 
             <Input
               label="Location"
               placeholder="City, state, country"
               {...form.register('location')}
-              error={form.formState.errors.location?.message}
+             
             />
           </div>
 
@@ -530,14 +528,14 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
               label="Start Date"
               type="date"
               {...form.register('start_date')}
-              error={form.formState.errors.start_date?.message}
+             
             />
 
             <Input
               label="End Date"
               type="date"
               {...form.register('end_date')}
-              error={form.formState.errors.end_date?.message}
+             
               disabled={form.watch('is_current')}
             />
           </div>
@@ -558,7 +556,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             label="Description"
             placeholder="Describe your role, responsibilities, or what you learned"
             {...form.register('description')}
-            error={form.formState.errors.description?.message}
+           
             rows={3}
           />
 
@@ -624,7 +622,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             label="References"
             placeholder="Contact information for references (optional)"
             {...form.register('references')}
-            error={form.formState.errors.references?.message}
+           
             rows={2}
           />
 

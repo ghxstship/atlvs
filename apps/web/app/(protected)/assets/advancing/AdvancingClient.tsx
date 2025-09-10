@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Package, Edit, Trash2, Copy, Calendar, DollarSign } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -326,7 +326,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
   const getTypeBadge = (type: AdvancingItem['type']) => {
     switch (type) {
       case 'purchase':
-        return <Badge variant="default">Purchase</Badge>;
+        return <Badge variant="primary">Purchase</Badge>;
       case 'rental':
         return <Badge variant="secondary">Rental</Badge>;
       case 'service':
@@ -540,11 +540,11 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
       )}
 
       {/* Request Form Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedItem ? 'Edit Advancing Request' : 'New Advancing Request'}
-        size="lg"
+        width="lg"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -651,7 +651,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

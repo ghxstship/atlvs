@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { UniversalDrawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, Receipt, Calendar, DollarSign, Upload } from 'lucide-react';
 
 interface CreateExpenseClientProps {
@@ -123,11 +123,11 @@ export default function CreateExpenseClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Create Expense"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Expense Overview */}
@@ -309,6 +309,6 @@ export default function CreateExpenseClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

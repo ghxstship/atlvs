@@ -183,7 +183,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 id="title"
                 {...register('title')}
                 placeholder="Enter contract title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -208,7 +208,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
-                  error={errors.jobId?.message}
+                 
                 />
               </div>
 
@@ -229,7 +229,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">
                   Contract Type *
                 </label>
-                <Select {...register('type')} error={errors.type?.message}>
+                <Select {...register('type')}>
                   <option value="employment">Employment</option>
                   <option value="freelance">Freelance</option>
                   <option value="nda">NDA</option>
@@ -259,12 +259,11 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                   Contract Value
                 </label>
                 <Input
-                  id="value"
                   type="number"
                   step="0.01"
                   {...register('value', { valueAsNumber: true })}
                   placeholder="0.00"
-                  error={errors.value?.message}
+                 
                 />
               </div>
 
@@ -287,7 +286,6 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                   Start Date
                 </label>
                 <Input
-                  id="startDate"
                   type="date"
                   {...register('startDate')}
                 />
@@ -298,7 +296,6 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                   End Date
                 </label>
                 <Input
-                  id="endDate"
                   type="date"
                   {...register('endDate')}
                 />
@@ -310,7 +307,6 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 Document URL
               </label>
               <Input
-                id="documentUrl"
                 type="url"
                 {...register('documentUrl')}
                 placeholder="https://example.com/contract.pdf"
@@ -322,7 +318,6 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 Terms & Conditions
               </label>
               <Textarea
-                id="terms"
                 {...register('terms')}
                 placeholder="Enter key terms and conditions"
                 rows={4}
@@ -334,7 +329,6 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes about this contract"
                 rows={3}

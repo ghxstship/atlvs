@@ -9,7 +9,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -62,7 +62,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
     {
       key: 'set_time',
       label: 'Set Time',
-      type: 'time',
+      type: 'text',
       sortable: true,
       filterable: true,
       width: 120
@@ -231,7 +231,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Lineups Management</h2>
-                <Button onClick={handleCreateLineup} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Add Performer
                 </Button>
@@ -292,17 +292,14 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             {/* Data Views */}
             <DataGrid />
             
-            <KanbanBoard 
-              columns={[
-                { id: 'confirmed', title: 'Confirmed' },
-                { id: 'tentative', title: 'Tentative' },
-                { id: 'cancelled', title: 'Cancelled' }
-              ]}
-              statusField="status"
-              titleField="performer"
-              subtitleField="stage"
-              onCardClick={handleViewLineup}
-            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+              {data.map((lineup) => (
+                <div key={lineup.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewLineup(lineup)}>
+                  <h3 className="font-medium">{lineup.performer}</h3>
+                  <p className="text-sm text-muted-foreground">{lineup.stage}</p>
+                </div>
+              ))}
+            </div>
             
             <ListView 
               titleField="performer"
@@ -311,25 +308,17 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             />
             
             {/* Lineup Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Add Performer to Lineup' 
                   : selectedRecord?.performer || 'Lineup Details'
               }
-              onSave={handleSaveLineup}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Lineup Details */}
               {selectedRecord && (
@@ -371,7 +360,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
 
             {/* Empty State */}
             {!loading && data.length === 0 && (

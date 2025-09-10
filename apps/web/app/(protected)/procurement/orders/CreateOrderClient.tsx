@@ -203,7 +203,6 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             <div className="space-y-2">
               <label htmlFor="currency" className="text-sm font-medium">Currency</label>
               <Select 
-                id="currency"
                 {...form.register('currency')}
                 defaultValue="USD"
               >
@@ -216,7 +215,6 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             <div className="space-y-2">
               <label htmlFor="status" className="text-sm font-medium">Status</label>
               <Select 
-                id="status"
                 {...form.register('status')}
                 defaultValue="draft"
               >

@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createClient } from '@/lib/supabase/client';
-import { Card, Badge, Button, Drawer } from '@atlvs/ui';
+import { Card, Badge, Button, Drawer } from '@ghxstship/ui';
 import { Plus, X, FileText, Calendar, Filter, Download } from 'lucide-react';
 
 const ReportSchema = z.object({
@@ -193,14 +193,14 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
   };
 
   return (
-    <Drawer open={true} onClose={onCancel} size="lg">
+    <Drawer open={true} onClose={onCancel || (() => {})} title="Create Report" width="lg">
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-lg font-semibold">Create Report</h2>
             <p className="text-sm text-gray-600">Build a custom analytics report</p>
           </div>
-          <Button variant="ghost" size="sm" onClick={onCancel}>
+          <Button size="sm" onClick={onCancel}>
             <X className="h-4 w-4" />
           </Button>
         </div>

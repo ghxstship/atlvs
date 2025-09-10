@@ -161,7 +161,7 @@ export default function FilmTVPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button variant="outline" size="lg" className="w-full sm:w-auto group">
+                <Button size="lg" className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   Watch Demo
                 </Button>
@@ -422,7 +422,7 @@ export default function FilmTVPage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   Schedule Demo
                 </Button>
               </Link>

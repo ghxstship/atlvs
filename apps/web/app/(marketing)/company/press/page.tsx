@@ -250,7 +250,7 @@ export default function PressPage() {
                         {release.excerpt}
                       </p>
                     </div>
-                    <Button variant="outline" size="sm" className="group">
+                    <Button size="sm" className="group">
                       Read More
                       <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -261,7 +261,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
+            <Button size="lg">
               View All Press Releases
             </Button>
           </div>
@@ -302,7 +302,7 @@ export default function PressPage() {
                     {article.excerpt}
                   </p>
                   
-                  <Button variant="outline" size="sm" className="group">
+                  <Button size="sm" className="group">
                     <ExternalLink className="mr-1 h-3 w-3" />
                     Read Article
                   </Button>
@@ -312,7 +312,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
+            <Button size="lg">
               View All Coverage
             </Button>
           </div>
@@ -503,7 +503,7 @@ export default function PressPage() {
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             ].map((link) => (
-              <a key={link.title} href={link.href}>
+              <a key={link.title} href={link.href as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
                     <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>

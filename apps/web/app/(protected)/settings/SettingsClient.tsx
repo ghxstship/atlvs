@@ -11,11 +11,11 @@ import {
   ListView,
   ViewSwitcher,
   DataActions,
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord
-} from '@ghxstship/ui/components/DataViews';
+} from '@ghxstship/ui';
 
 // Settings field configuration for ATLVS DataViews
 const fieldConfig: FieldConfig[] = [
@@ -259,13 +259,12 @@ export default function SettingsClient({ orgId, userId }: { orgId: string; userI
             />
 
             {/* Universal Drawer for CRUD operations */}
-            <UniversalDrawer
+            <Drawer title="Details"
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fieldConfig}
-              mode="view"
-            />
+            >
+              <div>Details placeholder</div>
+            </Drawer>
           </div>
         </DataViewProvider>
       </StateManagerProvider>

@@ -274,7 +274,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Job Title"
                 placeholder="Enter your job title"
                 {...form.register('job_title')}
-                error={form.formState.errors.job_title?.message}
+               
                 disabled={!editing}
               />
 
@@ -282,7 +282,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Department"
                 placeholder="Enter your department"
                 {...form.register('department')}
-                error={form.formState.errors.department?.message}
+               
                 disabled={!editing}
               />
 
@@ -290,7 +290,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Employee ID"
                 placeholder="Enter employee ID"
                 {...form.register('employee_id')}
-                error={form.formState.errors.employee_id?.message}
+               
                 disabled={!editing}
               />
 
@@ -298,14 +298,12 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Hire Date"
                 type="date"
                 {...form.register('hire_date')}
-                error={form.formState.errors.hire_date?.message}
+               
                 disabled={!editing}
               />
 
               <Select
-                label="Employment Type"
                 {...form.register('employment_type')}
-                error={form.formState.errors.employment_type?.message}
                 disabled={!editing}
               >
                 <option value="full-time">Full Time</option>
@@ -316,9 +314,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
               </Select>
 
               <Select
-                label="Performance Rating"
                 {...form.register('performance_rating')}
-                error={form.formState.errors.performance_rating?.message}
                 disabled={!editing}
               >
                 <option value="not-rated">Not Rated</option>
@@ -402,7 +398,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
               label="Bio"
               placeholder="Write a brief professional bio"
               {...form.register('bio')}
-              error={form.formState.errors.bio?.message}
+             
               disabled={!editing}
               rows={4}
             />
@@ -422,7 +418,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Career Goals"
                 placeholder="Describe your career goals and aspirations"
                 {...form.register('career_goals')}
-                error={form.formState.errors.career_goals?.message}
+               
                 disabled={!editing}
                 rows={3}
               />
@@ -479,7 +475,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="LinkedIn URL"
                 placeholder="https://linkedin.com/in/username"
                 {...form.register('linkedin_url')}
-                error={form.formState.errors.linkedin_url?.message}
+               
                 disabled={!editing}
               />
 
@@ -487,7 +483,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 label="Website URL"
                 placeholder="https://yourwebsite.com"
                 {...form.register('website_url')}
-                error={form.formState.errors.website_url?.message}
+               
                 disabled={!editing}
               />
             </div>

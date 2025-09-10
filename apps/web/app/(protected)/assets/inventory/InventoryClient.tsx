@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Package, Edit, Trash2, Copy } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -472,11 +472,11 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
       )}
 
       {/* Asset Form Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedAsset ? 'Edit Asset' : 'Create New Asset'}
-        size="lg"
+        width="lg"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -544,7 +544,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

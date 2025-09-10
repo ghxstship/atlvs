@@ -186,7 +186,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 id="title"
                 {...register('title')}
                 placeholder="Enter compliance requirement title"
-                error={errors.title?.message}
+               
               />
             </div>
 
@@ -211,7 +211,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
-                  error={errors.jobId?.message}
+                 
                 />
               </div>
 
@@ -219,7 +219,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <label htmlFor="kind" className="block text-sm font-medium text-foreground mb-2">
                   Compliance Type *
                 </label>
-                <Select {...register('kind')} error={errors.kind?.message}>
+                <Select {...register('kind')}>
                   <option value="safety">Safety</option>
                   <option value="legal">Legal</option>
                   <option value="regulatory">Regulatory</option>
@@ -264,7 +264,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                   Due Date
                 </label>
                 <Input
-                  id="dueAt"
                   type="datetime-local"
                   {...register('dueAt')}
                 />
@@ -275,7 +274,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                   Completed Date
                 </label>
                 <Input
-                  id="completedAt"
                   type="datetime-local"
                   {...register('completedAt')}
                 />
@@ -288,7 +286,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                   Reviewed By
                 </label>
                 <Input
-                  id="reviewedBy"
                   {...register('reviewedBy')}
                   placeholder="Enter reviewer name or ID"
                 />
@@ -296,7 +293,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
 
               <div className="flex items-center space-x-2 pt-8">
                 <input
-                  id="certificationRequired"
                   type="checkbox"
                   {...register('certificationRequired')}
                   className="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
@@ -312,7 +308,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 Documentation URL
               </label>
               <Input
-                id="documentationUrl"
                 type="url"
                 {...register('documentationUrl')}
                 placeholder="https://example.com/compliance-docs.pdf"
@@ -324,7 +319,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 Requirements
               </label>
               <Textarea
-                id="requirements"
                 {...register('requirements')}
                 placeholder="List specific compliance requirements"
                 rows={3}
@@ -336,7 +330,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 Findings
               </label>
               <Textarea
-                id="findings"
                 {...register('findings')}
                 placeholder="Document compliance findings or issues"
                 rows={3}
@@ -348,7 +341,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 Remediation Plan
               </label>
               <Textarea
-                id="remediation"
                 {...register('remediation')}
                 placeholder="Describe remediation steps if non-compliant"
                 rows={3}
@@ -360,7 +352,6 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 Notes
               </label>
               <Textarea
-                id="notes"
                 {...register('notes')}
                 placeholder="Additional notes about this compliance record"
                 rows={3}

@@ -73,7 +73,7 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
 
   return (
     <>
-      <Button variant="primary" size="sm" onClick={() => setOpen(true)} aria-label="Create Project" title="Create Project">
+      <Button size="sm" onClick={() => setOpen(true)} aria-label="Create Project" title="Create Project">
         <Plus className="mr-1 h-4 w-4" /> New Project
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="New Project" description={submitting ? 'Saving…' : undefined} width="lg">

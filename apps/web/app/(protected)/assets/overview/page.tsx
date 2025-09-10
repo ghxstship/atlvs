@@ -4,14 +4,7 @@ import { createServerClient } from '@ghxstship/auth';
 
 export default async function AssetsOverviewPage() {
   const cookieStore = cookies();
-  const supabase = createServerClient({
-    get: (name: string) => {
-      const c = cookieStore.get(name);
-      return c ? { name: c.name, value: c.value } : undefined;
-    },
-    set: (name: string, value: string, options) => cookieStore.set(name, value, options),
-    remove: (name: string) => cookieStore.delete(name)
-  });
+  const supabase = createServerClient(cookieStore);
 
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) {

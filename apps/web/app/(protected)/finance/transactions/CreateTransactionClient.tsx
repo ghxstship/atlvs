@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { UniversalDrawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
+import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, ArrowUpDown, Calendar, DollarSign, Building2 } from 'lucide-react';
 
 interface CreateTransactionClientProps {
@@ -52,7 +52,7 @@ export default function CreateTransactionClient({
   const supabase = createBrowserClient();
 
   // Load accounts on open
-  React.useEffect(() => {
+  useEffect(() => {
     if (isOpen) {
       loadAccounts();
     }
@@ -154,11 +154,11 @@ export default function CreateTransactionClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Add Transaction"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Transaction Overview */}
@@ -195,7 +195,7 @@ export default function CreateTransactionClient({
               </label>
               <Select
                 value={formData.kind}
-                onValueChange={(value: 'revenue' | 'expense') => setFormData(prev => ({ ...prev, kind: value }))}
+                onValueChange={(value: string) => setFormData(prev => ({ ...prev, kind: value as 'revenue' | 'expense' }))}
               >
                 <option value="revenue">Revenue (Money In)</option>
                 <option value="expense">Expense (Money Out)</option>
@@ -247,7 +247,6 @@ export default function CreateTransactionClient({
               <Select
                 value={formData.accountId}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, accountId: value }))}
-                required
               >
                 <option value="">Select an account...</option>
                 {accounts.map((account) => (
@@ -376,6 +375,6 @@ export default function CreateTransactionClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

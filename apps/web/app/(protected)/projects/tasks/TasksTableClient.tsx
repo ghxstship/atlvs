@@ -104,7 +104,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
     const body = String(formData.get('body') || '').trim();
     if (!body || !openId) return;
     const { data, error: insErr } = await sb.from('comments').insert({ organization_id: orgId, entity_type: 'task', entity_id: openId, body }).select('id,body,created_at').maybeSingle();
-    if (!insErr && data) setComments((prev) => [data, ...prev]);
+    if (!insErr && data) setComments((prev: any) => [data, ...prev]);
   }
 
   return (

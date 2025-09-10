@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { 
   Card, Button, Badge, Input, Textarea, Select, SelectContent, 
   SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, 
-  TabsList, TabsTrigger, UniversalDrawer 
+  TabsList, TabsTrigger, Drawer 
 } from '@ghxstship/ui';
 import { 
   User, Briefcase, Award, Globe, Mail, Phone, MapPin, Calendar,
@@ -368,7 +368,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <span>{profile?.years_experience || 0} years experience</span>
               </div>
               <div className="flex items-center">
-                <Users className="h-5 w-5 mr-3 text-muted-foreground" />
+                <User className="h-5 w-5 mr-3 text-muted-foreground" />
                 <span>Team of {profile?.team_size || 1}</span>
               </div>
               <div className="flex items-center">
@@ -407,7 +407,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               {profile?.website && (
                 <div className="flex items-center">
                   <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
-                  <a href={profile.website} target="_blank" rel="noopener noreferrer" 
+                  <a href={profile.website as any} target="_blank" rel="noopener noreferrer" 
                      className="text-sm text-blue-600 hover:underline">
                     Website
                   </a>
@@ -593,7 +593,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       </Tabs>
 
       {/* Drawer for creating/editing items */}
-      <UniversalDrawer
+      <Drawer
         open={drawerOpen}
         onClose={() => setDrawerOpen(false)}
         title={
@@ -601,14 +601,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
           drawerMode === 'service' ? 'Service Package' :
           'Certification'
         }
-        size="lg"
+        width="lg"
       >
         <div className="p-4">
           <p className="text-muted-foreground">
             Form for {drawerMode} will be implemented here...
           </p>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

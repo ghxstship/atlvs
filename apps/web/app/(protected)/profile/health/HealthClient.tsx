@@ -414,9 +414,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <Select
-              label="Record Type"
               {...form.register('record_type')}
-              error={form.formState.errors.record_type?.message}
             >
               <option value="medical">Medical</option>
               <option value="vaccination">Vaccination</option>
@@ -427,9 +425,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
             </Select>
 
             <Select
-              label="Severity"
               {...form.register('severity')}
-              error={form.formState.errors.severity?.message}
             >
               <option value="low">Low</option>
               <option value="medium">Medium</option>
@@ -442,14 +438,14 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
             label="Title"
             placeholder="Enter record title"
             {...form.register('title')}
-            error={form.formState.errors.title?.message}
+           
           />
 
           <Textarea
             label="Description"
             placeholder="Enter detailed description"
             {...form.register('description')}
-            error={form.formState.errors.description?.message}
+           
             rows={3}
           />
 
@@ -458,14 +454,14 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
               label="Date Recorded"
               type="date"
               {...form.register('date_recorded')}
-              error={form.formState.errors.date_recorded?.message}
+             
             />
 
             <Input
               label="Expiry Date (Optional)"
               type="date"
               {...form.register('expiry_date')}
-              error={form.formState.errors.expiry_date?.message}
+             
             />
           </div>
 
@@ -473,21 +469,21 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
             label="Healthcare Provider"
             placeholder="Doctor, clinic, or hospital name"
             {...form.register('provider')}
-            error={form.formState.errors.provider?.message}
+           
           />
 
           <Input
             label="Document URL (Optional)"
             placeholder="Link to medical document or report"
             {...form.register('document_url')}
-            error={form.formState.errors.document_url?.message}
+           
           />
 
           <Textarea
             label="Notes"
             placeholder="Additional notes or instructions"
             {...form.register('notes')}
-            error={form.formState.errors.notes?.message}
+           
             rows={3}
           />
 

@@ -313,7 +313,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
   };
 
   const calculateAverageRating = () => {
-    if (reviews.length === 0) return 0;
+    if (reviews.length === 0) return "0";
     const sum = reviews.reduce((acc, review) => acc + review.overall_rating, 0);
     return (sum / reviews.length).toFixed(1);
   };
@@ -558,7 +558,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
             label="Review Period"
             placeholder="e.g., Q4 2023 Annual Review"
             {...form.register('review_period')}
-            error={form.formState.errors.review_period?.message}
+           
           />
 
           <div className="grid grid-cols-2 gap-4">
@@ -566,22 +566,20 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               label="Reviewer Name"
               placeholder="Name of reviewer"
               {...form.register('reviewer_name')}
-              error={form.formState.errors.reviewer_name?.message}
+             
             />
 
             <Input
               label="Reviewer Title"
               placeholder="Reviewer's job title"
               {...form.register('reviewer_title')}
-              error={form.formState.errors.reviewer_title?.message}
+             
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <Select
-              label="Overall Rating"
               {...form.register('overall_rating', { valueAsNumber: true })}
-              error={form.formState.errors.overall_rating?.message}
             >
               <option value={5}>5 - Exceptional</option>
               <option value={4}>4 - Exceeds Expectations</option>
@@ -594,7 +592,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               label="Review Date"
               type="date"
               {...form.register('review_date')}
-              error={form.formState.errors.review_date?.message}
+             
             />
           </div>
 
@@ -602,7 +600,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
             label="Next Review Date (Optional)"
             type="date"
             {...form.register('next_review_date')}
-            error={form.formState.errors.next_review_date?.message}
+           
           />
 
           {/* Strengths */}
@@ -729,7 +727,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
             label="Additional Comments"
             placeholder="Any additional feedback or comments"
             {...form.register('additional_comments')}
-            error={form.formState.errors.additional_comments?.message}
+           
             rows={3}
           />
 

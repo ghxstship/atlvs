@@ -299,10 +299,10 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                       )}
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">
+                      <Button size="sm">
                         View
                       </Button>
-                      <Button variant="outline" size="sm">
+                      <Button size="sm">
                         Edit
                       </Button>
                     </div>

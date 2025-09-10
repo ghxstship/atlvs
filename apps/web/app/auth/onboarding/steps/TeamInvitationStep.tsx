@@ -296,7 +296,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
         <Button 
           onClick={handleContinue} 
           disabled={loading}
-          size="lg"
+          width="lg"
         >
           {loading ? 'Sending invites...' : invites.length > 0 && !skipInvites ? 'Send Invitations' : 'Continue'}
           {invites.length > 0 && !skipInvites ? (

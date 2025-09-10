@@ -498,15 +498,15 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <EyeIcon className="h-4 w-4 mr-1" />
                       View
                     </Button>
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <PencilIcon className="h-4 w-4 mr-1" />
                       Edit
                     </Button>
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <ChartBarIcon className="h-4 w-4 mr-1" />
                       Track Time
                     </Button>

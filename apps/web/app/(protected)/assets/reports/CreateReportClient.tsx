@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
-  Textarea,
   Select,
+  Textarea,
   Card
 } from '@ghxstship/ui';
 import { 
@@ -186,11 +186,11 @@ export default function CreateReportClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Create Asset Report"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information */}
@@ -394,6 +394,6 @@ export default function CreateReportClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   ViewSwitcher,
   StateManagerProvider,
@@ -424,11 +424,22 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              currentView={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <div className="flex border rounded-md">
+              <Button
+                variant={currentView === 'grid' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('grid')}
+              >
+                Grid
+              </Button>
+              <Button
+                variant={currentView === 'list' ? 'primary' : 'ghost'}
+                size="sm"
+                onClick={() => setCurrentView('list')}
+              >
+                List
+              </Button>
+            </div>
             <Button onClick={handleCreateContract}>
               <Plus className="h-4 w-4 mr-2" />
               New Contract
@@ -587,13 +598,26 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
           </div>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={contractRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditContract}
-              onDelete={handleDeleteContract}
-              onView={handleViewContract}
-            />
+            <div className="space-y-4">
+              {contracts.map((contract) => (
+                <div key={contract.id} className="border rounded-lg p-4">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h3 className="font-semibold">{contract.name}</h3>
+                      <p className="text-sm text-muted-foreground">{contract.type}</p>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant={contract.status === 'active' ? 'success' : 'outline'}>
+                        {contract.status}
+                      </Badge>
+                      <Button size="sm" onClick={() => handleEditContract(contract)}>
+                        Edit
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </Card>
         )}
 
@@ -611,18 +635,18 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
           title={
             drawerMode === 'create' ? 'New Contract' :
             drawerMode === 'edit' ? 'Edit Contract' : 'Contract Details'
           }
-          mode={drawerMode}
-          record={selectedContract}
-          fields={fieldConfigs}
-          onSave={handleSaveContract}
-        />
+        >
+          <div className="p-6">
+            <p className="text-muted-foreground">Contract details will be displayed here.</p>
+          </div>
+        </Drawer>
       </div>
     </StateManagerProvider>
   );

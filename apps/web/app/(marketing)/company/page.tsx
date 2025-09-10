@@ -192,7 +192,7 @@ export default function CompanyPage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button variant="outline" size="lg">
+                <Button size="lg">
                   Contact Us
                 </Button>
               </Link>
@@ -286,15 +286,15 @@ export default function CompanyPage() {
                   <p className="text-sm text-muted-foreground mb-6">{member.bio}</p>
                   <div className="flex justify-center gap-3">
                     {member.linkedin && (
-                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline" size="sm">
+                      <a href={member.linkedin as any as any} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm">
                           LinkedIn
                         </Button>
                       </a>
                     )}
                     {member.twitter && (
-                      <a href={member.twitter} target="_blank" rel="noopener noreferrer">
-                        <Button variant="outline" size="sm">
+                      <a href={member.twitter as any as any} target="_blank" rel="noopener noreferrer">
+                        <Button size="sm">
                           Twitter
                         </Button>
                       </a>
@@ -404,8 +404,8 @@ export default function CompanyPage() {
                         <span>{press.date}</span>
                       </div>
                     </div>
-                    <a href={press.href}>
-                      <Button variant="outline" size="sm">
+                    <a href={press.href as any as any}>
+                      <Button size="sm">
                         Read More
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
@@ -418,7 +418,7 @@ export default function CompanyPage() {
 
           <div className="text-center mt-12">
             <a href="/press">
-              <Button variant="outline" size="lg">
+              <Button size="lg">
                 View All Press Releases
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -483,13 +483,13 @@ export default function CompanyPage() {
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button variant="outline" size="lg">
+                  <Button size="lg">
                     <Mail className="mr-2 h-4 w-4" />
                     Get in Touch
                   </Button>
                 </Link>
                 <Link href="/partnerships">
-                  <Button variant="outline" size="lg">
+                  <Button size="lg">
                     Partner with Us
                   </Button>
                 </Link>

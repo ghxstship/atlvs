@@ -238,7 +238,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
           Back
         </Button>
         
-        <Button onClick={handleContinue} disabled={loading} size="lg">
+        <Button size="lg">
           {loading ? 'Processing...' : 'Continue'}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>

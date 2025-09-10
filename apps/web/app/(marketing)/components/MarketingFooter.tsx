@@ -157,7 +157,7 @@ export function MarketingFooter() {
                 {section.links.map((link) => (
                   <li key={link.href}>
                     <a
-                      href={link.href}
+                      href={link.href as any as any}
                       {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                       className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                     >
@@ -191,7 +191,7 @@ export function MarketingFooter() {
               return (
                 <a
                   key={social.href}
-                  href={social.href}
+                  href={social.href as any as any}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-foreground transition-colors"

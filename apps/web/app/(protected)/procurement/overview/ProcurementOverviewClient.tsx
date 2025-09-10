@@ -194,7 +194,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
               <span className="font-medium">Products</span>
             </div>
             <Link href="/procurement/products">
-              <Button variant="ghost" size="sm">
+              <Button size="sm">
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -210,7 +210,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
               <span className="font-medium">Services</span>
             </div>
             <Link href="/procurement/services">
-              <Button variant="ghost" size="sm">
+              <Button size="sm">
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -226,7 +226,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
               <span className="font-medium">Vendors</span>
             </div>
             <Link href="/procurement/vendors">
-              <Button variant="ghost" size="sm">
+              <Button size="sm">
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -242,7 +242,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
               <span className="font-medium">Categories</span>
             </div>
             <Link href="/procurement/categories">
-              <Button variant="ghost" size="sm">
+              <Button size="sm">
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
@@ -258,7 +258,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">Recent Orders</h3>
             <Link href="/procurement/orders">
-              <Button variant="outline" size="sm">
+              <Button size="sm">
                 View All
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>

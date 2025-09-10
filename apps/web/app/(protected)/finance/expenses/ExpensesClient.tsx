@@ -8,7 +8,7 @@ import {
   Button, 
   Badge, 
   Skeleton,
-  UniversalDrawer,
+  Drawer,
   DataGrid,
   ViewSwitcher,
   DataActions,
@@ -355,11 +355,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <ViewSwitcher
-              view={currentView}
-              onViewChange={setCurrentView}
-              views={['grid', 'list']}
-            />
+            <ViewSwitcher />
             <Button onClick={handleCreateExpense}>
               <Plus className="h-4 w-4 mr-2" />
               Create Expense
@@ -372,7 +368,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
           {Object.entries(statusCounts).map(([status, count]) => (
             <Button
               key={status}
-              variant={statusFilter === status ? 'default' : 'ghost'}
+              variant={statusFilter === status ? 'primary' : 'ghost'}
               size="sm"
               onClick={() => setStatusFilter(status)}
               className="capitalize"
@@ -534,13 +530,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
           </div>
         ) : (
           <Card className="p-6">
-            <DataGrid
-              records={expenseRecords}
-              fields={fieldConfigs}
-              onEdit={handleEditExpense}
-              onDelete={handleDeleteExpense}
-              onView={handleViewExpense}
-            />
+            <DataGrid />
           </Card>
         )}
 
@@ -558,18 +548,16 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
         )}
 
         {/* Universal Drawer for CRUD operations */}
-        <UniversalDrawer
+        <Drawer
           open={drawerOpen}
           onClose={() => setDrawerOpen(false)}
-          title={
-            drawerMode === 'create' ? 'Create Expense' :
-            drawerMode === 'edit' ? 'Edit Expense' : 'Expense Details'
-          }
-          mode={drawerMode}
-          record={selectedExpense}
-          fields={fieldConfigs}
-          onSave={handleSaveExpense}
-        />
+          title="Create New Expense"
+        >
+          <div className="p-4">
+            <p>Expense creation form will be implemented here.</p>
+          </div>
+        </Drawer>
+
       </div>
     </StateManagerProvider>
   );

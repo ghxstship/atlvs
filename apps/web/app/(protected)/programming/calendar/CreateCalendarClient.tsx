@@ -155,7 +155,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
 
       <Drawer
         open={isOpen}
-        onOpenChange={setIsOpen}
+        onClose={() => setIsOpen(false)}
         title="Create New Event"
         description="Add a new event to the programming calendar"
       >
@@ -165,7 +165,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
               label="Event Name"
               placeholder="Enter event name"
               {...form.register('name')}
-              error={form.formState.errors.name?.message}
+             
               required
             />
 
@@ -173,16 +173,13 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
               label="Description"
               placeholder="Enter event description (optional)"
               {...form.register('description')}
-              error={form.formState.errors.description?.message}
+             
               rows={3}
             />
 
             <div className="grid grid-cols-2 gap-4">
               <Select
-                label="Event Type"
                 {...form.register('kind')}
-                error={form.formState.errors.kind?.message}
-                required
               >
                 <option value="">Select type</option>
                 {eventKindOptions.map(option => (
@@ -193,10 +190,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
               </Select>
 
               <Select
-                label="Status"
                 {...form.register('status')}
-                error={form.formState.errors.status?.message}
-                required
               >
                 {statusOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -207,10 +201,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
             </div>
 
             <Select
-              label="Project"
               {...form.register('project_id')}
-              error={form.formState.errors.project_id?.message}
-              required
               disabled={loadingProjects}
             >
               <option value="">
@@ -228,7 +219,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
                 label="Start Time"
                 type="datetime-local"
                 {...form.register('start_at')}
-                error={form.formState.errors.start_at?.message}
+               
                 required
               />
 
@@ -236,7 +227,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
                 label="End Time"
                 type="datetime-local"
                 {...form.register('end_at')}
-                error={form.formState.errors.end_at?.message}
+               
                 required
               />
             </div>
@@ -246,7 +237,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
                 label="Location"
                 placeholder="Enter location (optional)"
                 {...form.register('location')}
-                error={form.formState.errors.location?.message}
+               
               />
 
               <Input
@@ -254,7 +245,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
                 type="number"
                 placeholder="Enter capacity (optional)"
                 {...form.register('capacity', { valueAsNumber: true })}
-                error={form.formState.errors.capacity?.message}
+               
                 min={0}
               />
             </div>

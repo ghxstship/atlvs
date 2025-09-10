@@ -180,14 +180,14 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               className="w-full"
             />
           </div>
-          <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+          <Select value={statusFilter} onValueChange={setStatusFilter}>
             {STATUS_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
             ))}
           </Select>
-          <Select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+          <Select value={typeFilter} onValueChange={setTypeFilter}>
             {TYPE_OPTIONS.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
@@ -241,14 +241,14 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
             className="w-full"
           />
         </div>
-        <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}>
+        <Select value={statusFilter} onValueChange={setStatusFilter}>
           {STATUS_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </Select>
-        <Select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+        <Select value={typeFilter} onValueChange={setTypeFilter}>
           {TYPE_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
               {option.label}
@@ -333,7 +333,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                       >
                         View
                       </Button>
-                      <Button variant="outline" size="sm">
+                      <Button size="sm">
                         Edit
                       </Button>
                     </div>
@@ -366,15 +366,15 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="space-y-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Title</label>
-                  <Input name="title" required />
+                  <Input />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Description</label>
-                  <textarea name="description" className="w-full p-2 border rounded" rows={3} />
+                  <textarea className="w-full p-2 border rounded" rows={3} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Type</label>
-                  <Select name="type" required>
+                  <Select>
                     {TYPE_OPTIONS.slice(1).map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
@@ -384,11 +384,11 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Client Name</label>
-                  <Input name="clientName" />
+                  <Input />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Estimated Value</label>
-                  <Input name="estimatedValue" type="number" />
+                  <Input type="number" />
                 </div>
               </div>
               <div className="flex gap-2 mt-6">

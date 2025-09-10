@@ -55,8 +55,8 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
         .select('id, name, description, category, rate as price, currency, supplier, status, created_at, updated_at')
         .eq('organization_id', orgId);
 
-      const products = (productsData || []).map(item => ({ ...item, type: 'product' as const }));
-      const services = (servicesData || []).map(item => ({ ...item, type: 'service' as const }));
+      const products = (productsData || []).map((item: any) => ({ ...item, type: 'product' as const }));
+      const services = (servicesData || []).map((item: any) => ({ ...item, type: 'service' as const }));
       
       const allItems = [...products, ...services].sort((a, b) => 
         new Date(b.created_at).getTime() - new Date(a.created_at).getTime()

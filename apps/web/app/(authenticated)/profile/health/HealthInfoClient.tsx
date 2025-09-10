@@ -303,7 +303,7 @@ export default function HealthInfoClient() {
                   placeholder="Add allergy..."
                   onKeyPress={(e) => e.key === 'Enter' && addAllergy()}
                 />
-                <Button onClick={addAllergy} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
@@ -370,7 +370,7 @@ export default function HealthInfoClient() {
                     onChange={(e) => setNewMedication({ ...newMedication, reason: e.target.value })}
                   />
                 </div>
-                <Button onClick={addMedication} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4 mr-2" />
                   Add Medication
                 </Button>
@@ -413,7 +413,7 @@ export default function HealthInfoClient() {
                   placeholder="Add medical condition..."
                   onKeyPress={(e) => e.key === 'Enter' && addCondition()}
                 />
-                <Button onClick={addCondition} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>
@@ -452,7 +452,7 @@ export default function HealthInfoClient() {
                   placeholder="Add dietary restriction..."
                   onKeyPress={(e) => e.key === 'Enter' && addRestriction()}
                 />
-                <Button onClick={addRestriction} size="sm">
+                <Button size="sm">
                   <Plus className="w-4 h-4" />
                 </Button>
               </div>

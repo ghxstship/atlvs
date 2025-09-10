@@ -446,22 +446,22 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <EyeIcon className="h-4 w-4 mr-1" />
                       View
                     </Button>
-                    <Button variant="ghost" size="sm">
+                    <Button size="sm">
                       <PencilIcon className="h-4 w-4 mr-1" />
                       Edit
                     </Button>
                     {rfp.document_url && (
-                      <Button variant="ghost" size="sm">
+                      <Button size="sm">
                         <ArrowDownTrayIcon className="h-4 w-4 mr-1" />
                         Download
                       </Button>
                     )}
                     {rfp.status === 'open' && (
-                      <Button variant="ghost" size="sm">
+                      <Button size="sm">
                         <PaperAirplaneIcon className="h-4 w-4 mr-1" />
                         Respond
                       </Button>

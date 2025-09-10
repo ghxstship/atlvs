@@ -9,15 +9,14 @@ import {
   KanbanBoard, 
   CalendarView, 
   ListView 
-} from '@ghxstship/ui/components/DataViews';
+} from '@ghxstship/ui';
 import { 
   EnhancedDataViewProvider
 } from '@ghxstship/ui/components/DataViews/providers/SupabaseDataProvider';
-import { EnhancedUniversalDrawer } from '@ghxstship/ui';
 import { useAuth } from '@ghxstship/application/lib/supabase/auth-service';
 import { 
   DataViewProvider, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord
@@ -175,31 +174,32 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
 
             {/* Data Views */}
             <DataGrid />
-            <KanbanBoard />
-            <CalendarView />
-            <ListView />
+            <KanbanBoard 
+              columns={[
+                { id: 'todo', title: 'To Do' },
+                { id: 'in-progress', title: 'In Progress' },
+                { id: 'done', title: 'Done' }
+              ]}
+              statusField="status"
+              titleField="name"
+            />
+            <CalendarView 
+              startDateField="startsAt"
+              titleField="name"
+            />
+            <ListView titleField="name" />
             
-            {/* Enhanced Universal Drawer for CRUD operations */}
-            <EnhancedUniversalDrawer
-              isOpen={drawerOpen}
-              onClose={() => {
-                setDrawerOpen(false);
-                setSelectedRecord(null);
-                setDrawerMode('view');
-              }}
-              title={selectedRecord ? `Project: ${selectedRecord.name}` : 'New Project'}
-            >
-              <div className="p-4">
-                <p>Project details would be displayed here.</p>
-                {selectedRecord && (
-                  <pre className="mt-4 text-sm bg-gray-100 p-2 rounded">
-                    {JSON.stringify(selectedRecord, null, 2)}
-                  </pre>
-                )}
-              </div>
-            </EnhancedUniversalDrawer>
             {/* Universal Drawer for record interactions */}
-            <UniversalDrawer />
+            <Drawer
+              open={false}
+              onClose={() => {}}
+              title="Project Details"
+              width="lg"
+            >
+              <div className="p-6">
+                <p className="text-muted-foreground">Project details will be displayed here.</p>
+              </div>
+            </Drawer>
           </div>
         </EnhancedDataViewProvider>
       </StateManagerProvider>

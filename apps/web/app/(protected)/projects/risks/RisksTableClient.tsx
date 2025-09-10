@@ -141,7 +141,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
       entity_id: openId, 
       body 
     }).select('id,body,created_at').maybeSingle();
-    if (!insErr && data) setComments((prev) => [data, ...prev]);
+    if (!insErr && data) setComments((prev: any) => [data, ...prev]);
   }
 
   const getImpactColor = (impact: string) => {

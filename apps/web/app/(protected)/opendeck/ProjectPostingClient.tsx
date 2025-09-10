@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { 
   Card, Button, Badge, Input, Textarea, Select, SelectContent, 
-  SelectItem, SelectTrigger, SelectValue, UniversalDrawer 
+  SelectItem, SelectTrigger, SelectValue, Drawer 
 } from '@ghxstship/ui';
 import { 
   Plus, Edit, Trash2, Eye, Send, Calendar, DollarSign, 
@@ -302,14 +302,14 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           <div className="flex gap-2">
             <Button
               size="sm"
-              variant={viewMode === 'grid' ? 'default' : 'outline'}
+              variant={viewMode === 'grid' ? 'primary' : 'outline'}
               onClick={() => setViewMode('grid')}
             >
               Grid
             </Button>
             <Button
               size="sm"
-              variant={viewMode === 'list' ? 'default' : 'outline'}
+              variant={viewMode === 'list' ? 'primary' : 'outline'}
               onClick={() => setViewMode('list')}
             >
               List
@@ -387,7 +387,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       )}
 
       {/* Project Form Drawer */}
-      <UniversalDrawer
+      <Drawer
         open={drawerOpen}
         onClose={() => {
           setDrawerOpen(false);
@@ -395,7 +395,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           reset();
         }}
         title={selectedProject ? 'Edit Project' : 'Post New Project'}
-        size="lg"
+        width="lg"
       >
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
           <div>
@@ -532,7 +532,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             </Button>
           </div>
         </form>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

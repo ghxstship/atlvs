@@ -29,7 +29,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
     if (!newDomain) return;
     setLoading(true); setError(null);
     const optimistic: OrgDomain = { id: `tmp-${Date.now()}`, domain: newDomain, status: 'pending', created_at: new Date().toISOString() };
-    setDomains((prev) => [optimistic, ...prev]);
+    setDomains((prev: any) => [optimistic, ...prev]);
     try {
       const res = await fetch(`/api/organizations/${orgId}/domains`, {
         method: 'POST',
@@ -46,7 +46,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
       }
     } catch (e: any) {
       setError(e?.message || 'Unknown error');
-      setDomains((prev) => prev.filter((d) => d.id !== optimistic.id));
+      setDomains((prev: OrgDomain[]) => prev.filter((d: OrgDomain) => d.id !== optimistic.id));
     } finally {
       setLoading(false);
     }
@@ -55,7 +55,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
   async function removeDomain(id: string) {
     setLoading(true); setError(null);
     const prev = domains;
-    setDomains((cur) => cur.filter((d) => d.id !== id));
+    setDomains((cur: OrgDomain[]) => cur.filter((d: OrgDomain) => d.id !== id));
     try {
       const res = await fetch(`/api/organizations/${orgId}/domains`, {
         method: 'DELETE',
@@ -67,7 +67,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
       // success: no-op, optimistic state already removed
     } catch (e: any) {
       setError(e?.message || 'Unknown error');
-      setDomains(prev);
+      setDomains((prev: any) => prev);
     } finally {
       setLoading(false);
     }
@@ -77,7 +77,6 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
     <div className="space-y-4">
       {canManage ? (
         <div className="flex gap-2">
-          <input value={newDomain} onChange={(e: any) => setNewDomain(e.target.value)} placeholder="company.com" autoFocus={Boolean(suggest)} className="w-full h-10 rounded-md border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" />
           <Button onClick={addDomain} disabled={loading || !newDomain}>Add</Button>
         </div>
       ) : (
@@ -108,7 +107,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
                   </span>
                 </td>
                 <td className="px-3 py-2 text-right">
-                  <Button variant="outline" size="sm" onClick={() => removeDomain(d.id)} disabled={loading || !canManage}>Remove</Button>
+                  <Button size="sm" onClick={() => removeDomain(d.id)} disabled={loading || !canManage}>Remove</Button>
                 </td>
               </tr>
             ))}

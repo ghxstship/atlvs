@@ -10,7 +10,7 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer,
+  Drawer,
   type FieldConfig,
   type DataViewConfig,
   type DataRecord,
@@ -64,7 +64,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
     {
       key: 'starts_at',
       label: 'Performance Date',
-      type: 'datetime',
+      type: 'date',
       sortable: true,
       filterable: true,
       width: 180
@@ -297,7 +297,6 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
     onImport: (data: any[]) => {
       console.log('Import performances:', data);
     },
-    onRowClick: handleViewPerformance
   };
 
   return (
@@ -309,7 +308,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Performance Management</h2>
-                <Button onClick={handleCreatePerformance} size="sm">
+                <Button size="sm">
                   <Plus className="h-4 w-4 mr-2" />
                   Create Performance
                 </Button>
@@ -380,7 +379,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             </div>
 
             {/* Data Views */}
-            <DataGrid onRowClick={handleViewPerformance} />
+            <DataGrid />
             
             <KanbanBoard 
               columns={[
@@ -399,7 +398,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               startDateField="starts_at"
               endDateField="ends_at"
               titleField="name"
-              onEventClick={handleViewPerformance}
+              
             />
             
             <ListView 
@@ -409,25 +408,17 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             />
             
             {/* Performance Details Drawer */}
-            <UniversalDrawer
+            <Drawer
               open={drawerOpen}
               onClose={() => {
                 setDrawerOpen(false);
                 setSelectedRecord(null);
               }}
-              record={selectedRecord}
-              fields={fields}
-              mode={drawerMode}
-              onModeChange={setDrawerMode}
               title={
                 drawerMode === 'create' 
                   ? 'Create Performance' 
                   : selectedRecord?.name || 'Performance Details'
               }
-              onSave={handleSavePerformance}
-              enableComments={true}
-              enableActivity={true}
-              enableFiles={true}
             >
               {/* Custom Performance Details */}
               {selectedRecord && (
@@ -517,19 +508,19 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
 
                   {/* Quick Actions */}
                   <div className="flex gap-2 pt-4 border-t">
-                    <Button variant="outline" size="sm" asChild>
+                    <Button size="sm" asChild>
                       <a href={`/programming/lineups?event_id=${selectedRecord.id}`}>
                         <Users className="h-4 w-4 mr-2" />
                         Manage Lineup
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" asChild>
+                    <Button size="sm" asChild>
                       <a href={`/programming/riders?event_id=${selectedRecord.id}`}>
                         <FileText className="h-4 w-4 mr-2" />
                         Tech Riders
                       </a>
                     </Button>
-                    <Button variant="outline" size="sm" asChild>
+                    <Button size="sm" asChild>
                       <a href={`/programming/call-sheets?event_id=${selectedRecord.id}`}>
                         <Calendar className="h-4 w-4 mr-2" />
                         Call Sheets
@@ -538,7 +529,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
               )}
-            </UniversalDrawer>
+            </Drawer>
           </div>
         </StateManagerProvider>
       </DataViewProvider>

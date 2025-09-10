@@ -357,7 +357,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
             label="Endorser Name"
             placeholder="Enter endorser's full name"
             {...form.register('endorser_name')}
-            error={form.formState.errors.endorser_name?.message}
+           
           />
 
           <div className="grid grid-cols-2 gap-4">
@@ -365,22 +365,20 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               label="Title"
               placeholder="Job title"
               {...form.register('endorser_title')}
-              error={form.formState.errors.endorser_title?.message}
+             
             />
 
             <Input
               label="Company"
               placeholder="Company name"
               {...form.register('endorser_company')}
-              error={form.formState.errors.endorser_company?.message}
+             
             />
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <Select
-              label="Relationship"
               {...form.register('relationship')}
-              error={form.formState.errors.relationship?.message}
             >
               <option value="colleague">Colleague</option>
               <option value="supervisor">Supervisor</option>
@@ -393,7 +391,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               label="Date Received"
               type="date"
               {...form.register('date_received')}
-              error={form.formState.errors.date_received?.message}
+             
             />
           </div>
 
@@ -401,7 +399,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
             label="Endorsement Text"
             placeholder="Enter the endorsement text"
             {...form.register('endorsement_text')}
-            error={form.formState.errors.endorsement_text?.message}
+           
             rows={4}
           />
 
@@ -443,9 +441,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
 
           <div className="grid grid-cols-2 gap-4">
             <Select
-              label="Rating"
-              {...form.register('rating', { valueAsNumber: true })}
-              error={form.formState.errors.rating?.message}
+              {...form.register('rating')}
             >
               <option value={5}>5 Stars - Excellent</option>
               <option value={4}>4 Stars - Very Good</option>

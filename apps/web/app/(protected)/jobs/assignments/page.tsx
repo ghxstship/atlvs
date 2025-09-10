@@ -1,4 +1,5 @@
-import { createServerClient } from '@ghxstship/auth/server';
+import { createServerClient } from '@ghxstship/auth';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import { AssignmentsClient } from './AssignmentsClient';
@@ -7,7 +8,8 @@ import CreateAssignmentClient from './CreateAssignmentClient';
 export const metadata = { title: 'Jobs · Assignments' };
 
 export default async function JobsAssignmentsPage() {
-  const supabase = createServerClient();
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
   
   const {
     data: { user },

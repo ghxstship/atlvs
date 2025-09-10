@@ -104,7 +104,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
 
         <div className="flex items-center gap-2">
           <Button
-            variant={view === 'timeline' ? 'default' : 'outline'}
+            variant={view === 'timeline' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setView('timeline')}
           >
@@ -112,7 +112,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
             Timeline
           </Button>
           <Button
-            variant={view === 'calendar' ? 'default' : 'outline'}
+            variant={view === 'calendar' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setView('calendar')}
           >
@@ -120,7 +120,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
             Calendar
           </Button>
           <Button
-            variant={view === 'list' ? 'default' : 'outline'}
+            variant={view === 'list' ? 'primary' : 'outline'}
             size="sm"
             onClick={() => setView('list')}
           >

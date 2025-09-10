@@ -448,15 +448,15 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               )}
             </div>
             <div className="flex items-center space-x-2">
-              <Button variant="outline" size="sm">
+              <Button size="sm">
                 <Share2 className="h-4 w-4 mr-2" />
                 Share
               </Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm">
                 <Download className="h-4 w-4 mr-2" />
                 Export
               </Button>
-              <Button variant="outline" size="sm">
+              <Button size="sm">
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
               </Button>

@@ -324,7 +324,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             {QUICK_ACTIONS.map((action) => {
               const Icon = action.icon;
               return (
-                <Link key={action.title} href={action.href}>
+                <Link key={action.title} href={action.href as any as any as any}>
                   <div className="flex items-center p-4 rounded-lg border border-border hover:bg-accent transition-colors cursor-pointer">
                     <div className={`p-2 rounded-lg ${action.color} text-white mr-3`}>
                       <Icon className="h-5 w-5" />
@@ -397,7 +397,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
           {recentActivity.length > 0 && (
             <div className="mt-4 pt-4 border-t border-border">
               <Link href="/jobs">
-                <Button variant="ghost" size="sm" className="w-full">
+                <Button size="sm" className="w-full">
                   View All Jobs
                   <ArrowRightIcon className="h-4 w-4 ml-2" />
                 </Button>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, DataViews, UniversalDrawer } from '@ghxstship/ui';
+import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, MapPin, Edit, Trash2, Copy, QrCode, Scan, Activity } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -256,7 +256,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       case 'qr_code':
         return <Badge variant="secondary">QR Code</Badge>;
       case 'rfid':
-        return <Badge variant="default">RFID</Badge>;
+        return <Badge variant="primary">RFID</Badge>;
       case 'gps':
         return <Badge variant="success">GPS</Badge>;
       default:
@@ -476,11 +476,11 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       )}
 
       {/* Update Location Drawer */}
-      <UniversalDrawer
-        isOpen={showDrawer}
+      <Drawer
+        open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title="Update Asset Location"
-        size="md"
+        width="md"
       >
         <div className="p-6 space-y-4">
           <div>
@@ -529,7 +529,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             </Button>
           </div>
         </div>
-      </UniversalDrawer>
+      </Drawer>
     </div>
   );
 }

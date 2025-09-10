@@ -100,7 +100,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
             <Button 
               onClick={checkVerification}
               className="w-full"
-              size="lg"
+              width="lg"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
               I've Verified My Email
@@ -129,7 +129,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
 
         {isVerified && (
           <div className="mt-6">
-            <Button onClick={onNext} size="lg" className="w-full">
+            <Button size="lg" className="w-full">
               Continue to Plan Selection
             </Button>
           </div>

@@ -279,7 +279,7 @@ export default function ContactPage() {
                     </label>
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full group">
+                  <Button size="lg" className="w-full group">
                     Send Message
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
@@ -367,7 +367,7 @@ export default function ContactPage() {
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">Still have questions?</p>
             <Link href="/resources">
-              <Button variant="outline" size="lg">
+              <Button size="lg">
                 Visit Help Center
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -395,7 +395,7 @@ export default function ContactPage() {
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

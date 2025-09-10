@@ -167,7 +167,7 @@ export default function ComparePage() {
                       <p className="text-sm text-foreground">{product.bestFor}</p>
                     </div>
 
-                    <a href={product.href}>
+                    <a href={product.href as any as any}>
                       <Button className="w-full group">
                         Explore {product.name}
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -377,7 +377,7 @@ export default function ComparePage() {
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                <Button size="lg" className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

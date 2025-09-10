@@ -4,11 +4,11 @@ import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
-  UniversalDrawer,
+  Drawer,
   Button,
   Input,
-  Textarea,
   Select,
+  Textarea,
   Card
 } from '@ghxstship/ui';
 import { 
@@ -167,11 +167,11 @@ export default function CreateTrackingClient({
   };
 
   return (
-    <UniversalDrawer
-      isOpen={isOpen}
+    <Drawer
+      open={isOpen}
       onClose={onClose}
       title="Add Tracking Record"
-      size="lg"
+      width="lg"
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Type */}
@@ -345,6 +345,6 @@ export default function CreateTrackingClient({
           </Button>
         </div>
       </form>
-    </UniversalDrawer>
+    </Drawer>
   );
 }

@@ -11,8 +11,8 @@ import {
   ListView, 
   ViewSwitcher, 
   DataActions, 
-  UniversalDrawer 
-} from '@ghxstship/ui/components/DataViews';
+  Drawer 
+} from '@ghxstship/ui';
 import type { 
   FieldConfig, 
   DataRecord, 
@@ -262,13 +262,14 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
             />
 
             {/* Universal Drawer for CRUD operations */}
-            <UniversalDrawer
+            <Drawer title="Details"
               open={false}
               onClose={() => {}}
-              record={null}
-              fields={fieldConfig}
-              mode="view"
-            />
+            >
+              <div className="p-6">
+                <p className="text-muted-foreground">Company details will be displayed here.</p>
+              </div>
+            </Drawer>
           </div>
         </DataViewProvider>
       </StateManagerProvider>
