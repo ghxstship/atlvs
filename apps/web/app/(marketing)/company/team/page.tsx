@@ -24,7 +24,7 @@ const leadership = [
   {
     name: 'Julian Clarkson',
     role: 'Founder, CXO',
-    bio: 'Julian founded GHXSTSHIP because he genuinely believed production management could be less painful. Wild concept, right? He\'s been building creative platforms and leading teams for over a decade, turning "that\'ll never work" into "okay, that actually works."',
+    bio: 'Julian\'s been navigating the entertainment seas across 52 countries and 6 continents, collecting production war stories like they\'re going out of style. He founded GHXSTSHIP because apparently someone had to fix this industry\'s chaos—and honestly, who else was gonna do it?',
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
@@ -34,7 +34,7 @@ const leadership = [
   {
     name: 'Sarah Fry',
     role: 'VP, Production',
-    bio: 'Sarah has this superpower where she can look at complete production chaos and somehow see the organized workflow hiding underneath. She\'s been wrangling creative projects for years, and honestly, she makes it look way too easy.',
+    bio: 'Sarah\'s the captain who can steer any production ship through the stormiest deadlines. She\'s got this uncanny ability to turn "we\'re totally screwed" into "actually, we\'re ahead of schedule"—which is basically witchcraft at this point.',
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
@@ -44,7 +44,7 @@ const leadership = [
   {
     name: 'John Macejak',
     role: 'VP, Operations',
-    bio: 'John is the person who actually reads the terms and conditions. He keeps our operations running so smoothly that things just... work. Which is honestly kind of suspicious, but we\'re not complaining.',
+    bio: 'John\'s the guy who keeps our operational ship sailing smooth while everyone else is running around like it\'s their first day. He makes complex logistics look easy, which is either impressive or mildly terrifying—jury\'s still out.',
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
@@ -54,11 +54,31 @@ const leadership = [
   {
     name: 'Vita Sotakoun',
     role: 'VP, Hospitality',
-    bio: 'Vita has mastered the art of making everyone feel welcome, even the clients who show up with "just a few small changes" to a project that\'s already live. She genuinely enjoys hospitality, which is both impressive and slightly concerning.',
+    bio: 'Vita\'s mastered the ancient art of making everyone feel like VIPs, even when they\'re being absolutely impossible. She can turn a disaster into a five-star experience faster than you can say "client emergency"—it\'s honestly kind of magical.',
     location: 'Global',
     image: '/api/placeholder/200/200',
     social: {
       linkedin: 'https://www.linkedin.com/in/vida-sotakoun/',
+    },
+  },
+  {
+    name: 'Kayla Harvy',
+    role: 'Director, Business Development',
+    bio: 'Kayla\'s got this talent for spotting opportunities that others miss entirely. She builds relationships like she\'s collecting rare trading cards—strategically, enthusiastically, and with an impressive success rate that makes the rest of us look bad.',
+    location: 'Global',
+    image: '/api/placeholder/200/200',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/kayla-harvey-731b8a34/',
+    },
+  },
+  {
+    name: 'Dallas D-Cal Calles',
+    role: 'Director, Talent & Entertainment',
+    bio: 'Dallas navigates the talent waters like a seasoned admiral, connecting the right people to the right opportunities. He\'s got an eye for talent that\'s honestly a little scary—in the best possible way, obviously.',
+    location: 'Global',
+    image: '/api/placeholder/200/200',
+    social: {
+      linkedin: 'https://www.linkedin.com/in/dallascalles/',
     },
   },
 ];
