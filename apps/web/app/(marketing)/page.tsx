@@ -39,10 +39,10 @@ export default function RootPage() {
               No more juggling 47 different apps or crying into spreadsheets at 2 AM.
             </p>
             <div className="flex items-center justify-center gap-x-6">
-              <Link href="/login" className="rounded-md bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+              <Link href="/login" className="rounded-md bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 whitespace-nowrap">
                 Get Started Free →
               </Link>
-              <Link href="/products" className="rounded-md border border-slate-300 px-6 py-3 text-base font-semibold text-slate-900 shadow-sm hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
+              <Link href="/products" className="rounded-md border border-slate-300 px-6 py-3 text-base font-semibold text-slate-900 shadow-sm hover:bg-slate-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900 whitespace-nowrap">
                 ▶ Watch Demo
               </Link>
             </div>
@@ -117,7 +117,7 @@ export default function RootPage() {
                         <span className="text-sm">Advanced reporting & analytics</span>
                       </li>
                     </ul>
-                    <Link href="/products/atlvs" className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500">
+                    <Link href="/products/atlvs" className="inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 whitespace-nowrap">
                       Explore ATLVS →
                     </Link>
                   </div>
@@ -156,7 +156,7 @@ export default function RootPage() {
                         <span className="text-sm">Secure licensing & payments</span>
                       </li>
                     </ul>
-                    <Link href="/products/opendeck" className="inline-flex w-full items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500">
+                    <Link href="/products/opendeck" className="inline-flex w-full items-center justify-center rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 whitespace-nowrap">
                       Explore OPENDECK →
                     </Link>
                   </div>
@@ -178,13 +178,13 @@ export default function RootPage() {
                 Your future self will thank you.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                <Link href="/login" className="rounded-md bg-white px-6 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-slate-50">
+                <Link href="/login" className="rounded-md bg-white px-6 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-slate-50 whitespace-nowrap">
                   Start Free Trial →
                 </Link>
-                <Link href="/contact" className="rounded-md border border-white px-6 py-3 text-base font-semibold text-white hover:bg-white/10">
+                <Link href="/contact" className="rounded-md border border-white px-6 py-3 text-base font-semibold text-white hover:bg-white/10 whitespace-nowrap">
                   Contact Sales
                 </Link>
-                <Link href="/pricing" className="rounded-md px-6 py-3 text-base font-semibold text-white hover:bg-white/10">
+                <Link href="/pricing" className="rounded-md border border-white/30 px-6 py-3 text-base font-semibold text-white hover:bg-white/10 whitespace-nowrap">
                   View Pricing
                 </Link>
               </div>

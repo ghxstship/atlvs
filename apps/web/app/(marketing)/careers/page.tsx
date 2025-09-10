@@ -421,7 +421,7 @@ export default function CareersPage() {
                       <Button variant="outline">
                         Learn More
                       </Button>
-                      <Button>
+                      <Button variant="primary">
                         Apply Now
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
@@ -436,7 +436,7 @@ export default function CareersPage() {
             <p className="text-muted-foreground mb-6">
               Don't see a role that fits? We're always looking for exceptional talent.
             </p>
-            <Button>
+            <Button variant="outline">
               Send Us Your Resume
             </Button>
           </div>
@@ -604,7 +604,7 @@ export default function CareersPage() {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button>
+                <Button variant="outline">
                   Join Our Talent Network
                 </Button>
               </div>

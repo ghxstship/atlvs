@@ -302,7 +302,7 @@ export default function PressPage() {
                     {article.excerpt}
                   </p>
                   
-                  <Button className="group">
+                  <Button variant="outline" className="group">
                     <ExternalLink className="mr-1 h-3 w-3" />
                     Read Article
                   </Button>
@@ -312,7 +312,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button>
+            <Button variant="primary">
               View All Coverage
             </Button>
           </div>
