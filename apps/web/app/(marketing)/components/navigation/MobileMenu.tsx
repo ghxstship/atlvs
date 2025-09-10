@@ -3,6 +3,8 @@
 import Link from 'next/link';
 import { Button } from '@ghxstship/ui/components/Button';
 import { NavigationDropdown } from './NavigationDropdown';
+import { anton } from '../../lib/typography';
+import { cn } from '@ghxstship/ui/system';
 
 interface NavigationItem {
   label: string;
@@ -32,7 +34,10 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
             ) : (
               <a
                 href={item.href}
-                className="block px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground text-foreground"
+                className={cn(
+                  "block px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground text-foreground uppercase",
+                  anton.className
+                )}
               >
                 {item.label}
               </a>

@@ -212,7 +212,7 @@ export default function CommunityPage() {
                 </Button>
               </a>
               <a href="/auth/signup">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   Create Account
                 </Button>
               </a>
@@ -491,7 +491,7 @@ export default function CommunityPage() {
                 </Button>
               </a>
               <a href="/auth/signup">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   Create Account
                 </Button>
               </a>

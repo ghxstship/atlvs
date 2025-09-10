@@ -162,7 +162,7 @@ export default function CorporatePage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button className="w-full sm:w-auto group">
+                <Button variant="outline" className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   View Portfolio
                 </Button>
@@ -430,7 +430,7 @@ export default function CorporatePage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   Schedule Consultation
                 </Button>
               </Link>

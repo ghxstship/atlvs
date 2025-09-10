@@ -425,7 +425,7 @@ export default function OPENDECKPage() {
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

@@ -23,7 +23,7 @@ export default function LoginPage() {
         {/* Header */}
         <div className={`text-center ${spacing.marginBottom.xlarge}`}>
           <Link href="/" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
-            <span className={typography.heroTitle}>
+            <span className={typography.sectionTitle}>
               GHXSTSHIP
             </span>
           </Link>

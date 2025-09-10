@@ -1,5 +1,6 @@
 import { cn } from '@ghxstship/ui/system';
 import { layouts, LayoutClasses } from '../../lib/layouts';
+import { typography } from '../../lib/typography';
 
 interface SectionProps {
   children: React.ReactNode;
@@ -70,7 +71,7 @@ export function SectionHeader({
           </span>
         </div>
       )}
-      <h2 className={cn('text-3xl lg:text-4xl font-bold mb-6 uppercase', titleClassName)}>
+      <h2 className={cn(typography.sectionTitle, titleClassName)}>
         {title}
       </h2>
       {subtitle && (

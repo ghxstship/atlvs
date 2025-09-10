@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Drama, Palette, Users, Zap, CheckCircle, Play, Star, Sparkles, Camera } from 'lucide-react';
+import { ArrowRight, Palette, Users, Zap, CheckCircle, Play, Star, Sparkles, Camera } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const challenges = [
   {
-    icon: Drama,
+    icon: Sparkles,
     title: 'Complex Production Coordination',
     description: 'Managing intricate theatrical productions with multiple departments, cast, and crew',
     solution: 'Integrated production management with role-specific workflows and real-time coordination',
@@ -162,7 +162,7 @@ export default function ThemedTheatricalPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button className="w-full sm:w-auto group">
+                <Button variant="outline" className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   Watch Demo
                 </Button>
@@ -180,7 +180,7 @@ export default function ThemedTheatricalPage() {
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                      <Drama className="w-3 h-3" />
+                      <Sparkles className="w-3 h-3" />
                       productions.ghxstship.com
                     </div>
                   </div>
@@ -256,7 +256,7 @@ export default function ThemedTheatricalPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             {challenges.map((challenge) => {
-              const Icon = challenge.icon;
+              const Icon = Sparkles;
               return (
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
@@ -421,7 +421,7 @@ export default function ThemedTheatricalPage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   Schedule Demo
                 </Button>
               </Link>

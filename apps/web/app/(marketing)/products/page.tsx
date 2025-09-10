@@ -159,7 +159,7 @@ export default function ProductsPage() {
                         </Button>
                       </a>
                       <Link href="/auth/signup">
-                        <Button className="w-full sm:w-auto">
+                        <Button variant="outline" className="w-full sm:w-auto">
                           Start Free Trial
                         </Button>
                       </Link>
@@ -251,7 +251,7 @@ export default function ProductsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/products/compare">
-                  <Button>
+                  <Button variant="outline">
                     Compare Products
                   </Button>
                 </Link>

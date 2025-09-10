@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
+import { anton } from '../../lib/typography';
 
 interface NavigationItem {
   label: string;
@@ -36,7 +37,8 @@ export function NavigationDropdown({
         <button
           onClick={handleToggle}
           className={cn(
-            "flex items-center justify-between w-full px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground",
+            "flex items-center justify-between w-full px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground uppercase",
+            anton.className,
             pathname.startsWith(item.href) ? "bg-accent text-accent-foreground" : "text-foreground"
           )}
         >
@@ -76,7 +78,8 @@ export function NavigationDropdown({
     >
       <button
         className={cn(
-          "flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary",
+          "flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary uppercase",
+          anton.className,
           pathname.startsWith(item.href) ? "text-primary" : "text-muted-foreground"
         )}
       >

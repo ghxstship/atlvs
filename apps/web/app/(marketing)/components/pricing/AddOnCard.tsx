@@ -22,7 +22,7 @@ export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
           <h3 className={`${typography.cardTitle} mb-2`}>{addon.name}</h3>
           <p className="text-muted-foreground mb-4">{addon.description}</p>
           <div className="flex items-baseline justify-center gap-2">
-            <span className="text-3xl font-bold">${addon.price}</span>
+            <span className={`${typography.statValue} text-3xl`}>${addon.price}</span>
             <span className="text-muted-foreground">/month</span>
           </div>
         </div>

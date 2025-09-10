@@ -24,7 +24,7 @@ export default function SignUpPage() {
         {/* Header */}
         <div className={`text-center ${spacing.marginBottom.xlarge}`}>
           <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
-            <span className={typography.heroTitle}>
+            <span className={typography.sectionTitle}>
               GHXSTSHIP
             </span>
           </Link>
@@ -33,7 +33,7 @@ export default function SignUpPage() {
             14-Day Free Trial
           </Badge>
           <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
-            GET STARTED
+            WELCOME ABOARD
           </h1>
           <p className={`${typography.sectionSubtitle} max-w-2xl mx-auto`}>
             Create your account and start building amazing creative projects.

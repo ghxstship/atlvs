@@ -36,7 +36,7 @@ export function PricingCard({
 }: PricingCardProps) {
   return (
     <Card className={cn(
-      'relative p-6 hover:shadow-lg transition-shadow',
+      'relative h-full flex flex-col hover:shadow-lg transition-shadow',
       popular && 'border-primary shadow-lg scale-105',
       className
     )}>
@@ -46,10 +46,13 @@ export function PricingCard({
         </Badge>
       )}
       
-      <CardHeader className="text-center pb-4">
+      {/* Fixed Header Section */}
+      <CardHeader className="text-center pb-4 flex-shrink-0">
         <h3 className={`${typography.cardTitle} mb-2`}>{title}</h3>
-        <p className="text-muted-foreground mb-4">{description}</p>
-        <div className="mb-4">
+        <div className="h-12 flex items-center justify-center">
+          <p className="text-muted-foreground text-sm leading-tight line-clamp-2">{description}</p>
+        </div>
+        <div className="mt-4">
           <span className={`${typography.statValue} text-4xl`}>${price}</span>
           <span className="text-muted-foreground ml-1">/{period}</span>
           {yearlyPrice && (
@@ -60,35 +63,43 @@ export function PricingCard({
         </div>
       </CardHeader>
 
-      <CardContent className="pt-0">
-        <ul className="space-y-3 mb-6">
-          {features.map((feature, index) => (
-            <li key={index} className="flex items-center gap-3">
-              <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
-              <span className="text-sm">{feature}</span>
-            </li>
-          ))}
-          {excludedFeatures.map((feature, index) => (
-            <li key={`excluded-${index}`} className="flex items-center gap-3">
-              <div className="h-4 w-4 rounded-full border border-muted-foreground flex-shrink-0" />
-              <span className="text-sm text-muted-foreground">{feature}</span>
-            </li>
-          ))}
-        </ul>
+      {/* Scrollable Features Section */}
+      <CardContent className="pt-0 flex-1 flex flex-col">
+        <div className="flex-1 min-h-0">
+          <div className="h-80 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+            <ul className="space-y-3 pr-2">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-start gap-3">
+                  <Check className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm leading-relaxed">{feature}</span>
+                </li>
+              ))}
+              {excludedFeatures.map((feature, index) => (
+                <li key={`excluded-${index}`} className="flex items-start gap-3">
+                  <div className="h-4 w-4 rounded-full border border-muted-foreground flex-shrink-0 mt-0.5" />
+                  <span className="text-sm text-muted-foreground leading-relaxed">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
 
-        {ctaHref ? (
-          <Button asChild className="w-full" variant={popular ? 'primary' : 'outline'}>
-            <a href={ctaHref}>
+        {/* Fixed CTA Button */}
+        <div className="mt-6 flex-shrink-0">
+          {ctaHref ? (
+            <Button asChild className="w-full" variant={popular ? 'primary' : 'outline'}>
+              <a href={ctaHref}>
+                {ctaText}
+                {Icon && <Icon className="ml-2 h-4 w-4" />}
+              </a>
+            </Button>
+          ) : (
+            <Button className="w-full" variant={popular ? 'primary' : 'outline'}>
               {ctaText}
               {Icon && <Icon className="ml-2 h-4 w-4" />}
-            </a>
-          </Button>
-        ) : (
-          <Button className="w-full" variant={popular ? 'primary' : 'outline'}>
-            {ctaText}
-            {Icon && <Icon className="ml-2 h-4 w-4" />}
-          </Button>
-        )}
+            </Button>
+          )}
+        </div>
       </CardContent>
     </Card>
   );

@@ -247,6 +247,7 @@ export default function WhitepapersPage() {
                   </div>
                   
                   <Button 
+                    variant={paper.isPremium ? "primary" : "outline"}
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >
                     {paper.isPremium ? 'Download Premium Report' : 'Download Free Report'}
