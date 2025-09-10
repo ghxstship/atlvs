@@ -17,7 +17,8 @@ export * from './webhooks/Webhook';
 export * from './webhooks/WebhookRepository';
 export * from './modules/programming/Event';
 
-// Profile module exports removed due to build issues
+// Profile module exports
+export * from './modules/profile/Profile';
 export * from './modules/profile/ProfileRepository';
 export * from './modules/pipeline/Pipeline';
 export * from './modules/pipeline/Manning';
