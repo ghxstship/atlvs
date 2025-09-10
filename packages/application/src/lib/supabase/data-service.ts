@@ -4,8 +4,9 @@
  */
 
 import { createBrowserClient } from '@supabase/ssr';
-import type { Database } from './types';
+import type { Database } from '../../../../../apps/web/types/database';
 import type { DataRecord, FilterConfig, SortConfig } from '@ghxstship/ui/components/DataViews/types';
+import { useState, useEffect } from 'react';
 
 export interface DataServiceConfig {
   table: string;
@@ -110,10 +111,10 @@ export class SupabaseDataService {
           case 'endsWith':
             query = query.ilike(filter.field, `%${filter.value}`);
             break;
-          case 'greaterThan':
+          case 'gt':
             query = query.gt(filter.field, filter.value);
             break;
-          case 'lessThan':
+          case 'lt':
             query = query.lt(filter.field, filter.value);
             break;
           case 'between':
@@ -150,7 +151,7 @@ export class SupabaseDataService {
       throw new Error(`Failed to fetch ${this.config.table}: ${error.message}`);
     }
 
-    return data || [];
+    return (data as any) || [];
   }
 
   async createRecord(record: Partial<DataRecord>, options: MutationOptions = {}): Promise<DataRecord> {

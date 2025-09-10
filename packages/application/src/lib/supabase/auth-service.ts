@@ -4,7 +4,7 @@
  */
 
 import { createBrowserClient } from '@supabase/ssr';
-import type { Database } from '@/types/database';
+import type { Database } from '../../../../../apps/web/types/database';
 import type { User, Session } from '@supabase/supabase-js';
 
 export interface UserProfile {
@@ -149,16 +149,16 @@ export class SupabaseAuthService {
       full_name: profile.full_name,
       avatar_url: profile.avatar_url,
       role: profile.role,
-      organizations: memberships?.map(m => ({
-        id: m.organizations.id,
-        name: m.organizations.name,
+      organizations: memberships?.map((m: any) => ({
+        id: (m.organizations as any).id,
+        name: (m.organizations as any).name,
         role: m.role,
         permissions: m.permissions || []
       })) || [],
       entitlements: {
-        feature_atlvs: profile.user_entitlements?.feature_atlvs || false,
-        feature_opendeck: profile.user_entitlements?.feature_opendeck || false,
-        feature_ghxstship: profile.user_entitlements?.feature_ghxstship || false
+        feature_atlvs: (profile.user_entitlements as any)?.feature_atlvs || false,
+        feature_opendeck: (profile.user_entitlements as any)?.feature_opendeck || false,
+        feature_ghxstship: (profile.user_entitlements as any)?.feature_ghxstship || false,
       }
     };
   }
@@ -211,7 +211,7 @@ export class SupabaseAuthService {
 
   async signInWithProvider(provider: 'google' | 'github' | 'microsoft') {
     const { data, error } = await this.supabase.auth.signInWithOAuth({
-      provider,
+      provider: provider as any,
       options: {
         redirectTo: `${window.location.origin}/auth/callback`
       }
@@ -406,7 +406,10 @@ export function useAuth() {
   const [authState, setAuthState] = React.useState<AuthState>(authService.getState());
 
   React.useEffect(() => {
-    return authService.subscribe(setAuthState);
+    const unsubscribe = authService.subscribe(setAuthState);
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   return {
