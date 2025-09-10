@@ -38,7 +38,7 @@ export class SupabaseAssetTrackingRepository implements AssetTrackingRepository 
   }
 
   async create(tracking: Omit<AssetTracking, 'id' | 'createdAt' | 'updatedAt'>): Promise<AssetTracking> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_tracking')
       .insert(this.mapFromAssetTracking(tracking))
       .select()
@@ -49,7 +49,7 @@ export class SupabaseAssetTrackingRepository implements AssetTrackingRepository 
   }
 
   async update(id: string, organizationId: string, updates: Partial<AssetTracking>): Promise<AssetTracking> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_tracking')
       .update(this.mapFromAssetTracking(updates))
       .eq('id', id)
@@ -127,7 +127,7 @@ export class SupabaseAssetTrackingRepository implements AssetTrackingRepository 
       updates.coordinates = coordinates;
     }
 
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_tracking')
       .update(updates)
       .eq('id', id)

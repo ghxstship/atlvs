@@ -43,7 +43,7 @@ export class SupabaseAssetReportRepository implements AssetReportRepository {
   }
 
   async create(report: Omit<AssetReport, 'id' | 'createdAt' | 'updatedAt'>): Promise<AssetReport> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_reports')
       .insert(this.mapFromAssetReport(report))
       .select()
@@ -54,7 +54,7 @@ export class SupabaseAssetReportRepository implements AssetReportRepository {
   }
 
   async update(id: string, organizationId: string, updates: Partial<AssetReport>): Promise<AssetReport> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_reports')
       .update(this.mapFromAssetReport(updates))
       .eq('id', id)
@@ -127,27 +127,31 @@ export class SupabaseAssetReportRepository implements AssetReportRepository {
       .select('*')
       .eq('organization_id', organizationId);
 
-    const totalAssets = assets?.length || 0;
-    const totalValue = assets?.reduce((sum, asset) => sum + (asset.current_value || 0), 0) || 0;
-    const activeAssignments = assignments?.filter(a => a.status === 'active').length || 0;
+    const assetsArr = (assets ?? []) as any[];
+    const assignmentsArr = (assignments ?? []) as any[];
+    const maintenanceArr = (maintenance ?? []) as any[];
+
+    const totalAssets = assetsArr.length || 0;
+    const totalValue = assetsArr.reduce((sum: number, asset: any) => sum + (asset.current_value || 0), 0) || 0;
+    const activeAssignments = assignmentsArr.filter((a: any) => a.status === 'active').length || 0;
     const utilizationRate = totalAssets > 0 ? (activeAssignments / totalAssets) * 100 : 0;
-    const maintenanceCosts = maintenance?.reduce((sum, m) => sum + (m.actual_cost || m.estimated_cost || 0), 0) || 0;
+    const maintenanceCosts = maintenanceArr.reduce((sum: number, m: any) => sum + (m.actual_cost || m.estimated_cost || 0), 0) || 0;
 
     // Category breakdown
     const categoryBreakdown: Record<string, number> = {};
-    assets?.forEach(asset => {
+    assetsArr.forEach((asset: any) => {
       categoryBreakdown[asset.category] = (categoryBreakdown[asset.category] || 0) + 1;
     });
 
     // Status breakdown
     const statusBreakdown: Record<string, number> = {};
-    assets?.forEach(asset => {
+    assetsArr.forEach((asset: any) => {
       statusBreakdown[asset.status] = (statusBreakdown[asset.status] || 0) + 1;
     });
 
     // Location breakdown
     const locationBreakdown: Record<string, number> = {};
-    assets?.forEach(asset => {
+    assetsArr.forEach((asset: any) => {
       if (asset.location) {
         locationBreakdown[asset.location] = (locationBreakdown[asset.location] || 0) + 1;
       }

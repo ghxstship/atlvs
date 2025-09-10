@@ -59,7 +59,7 @@ export class SupabaseAssetsRepository implements AssetRepository {
   }
 
   async create(asset: Omit<Asset, 'id' | 'createdAt' | 'updatedAt'>): Promise<Asset> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('assets')
       .insert(this.mapFromAsset(asset))
       .select()
@@ -70,7 +70,7 @@ export class SupabaseAssetsRepository implements AssetRepository {
   }
 
   async update(id: string, organizationId: string, updates: Partial<Asset>): Promise<Asset> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('assets')
       .update(this.mapFromAsset(updates))
       .eq('id', id)
@@ -229,7 +229,7 @@ export class SupabaseAssetAdvancingRepository implements AssetAdvancingRepositor
   }
 
   async create(advancing: Omit<AssetAdvancing, 'id' | 'createdAt' | 'updatedAt'>): Promise<AssetAdvancing> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_advancing')
       .insert(this.mapFromAssetAdvancing(advancing))
       .select()
@@ -240,7 +240,7 @@ export class SupabaseAssetAdvancingRepository implements AssetAdvancingRepositor
   }
 
   async update(id: string, organizationId: string, updates: Partial<AssetAdvancing>): Promise<AssetAdvancing> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_advancing')
       .update(this.mapFromAssetAdvancing(updates))
       .eq('id', id)
