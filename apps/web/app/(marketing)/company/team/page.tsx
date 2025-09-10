@@ -408,29 +408,38 @@ export default function TeamPage() {
               Meet the experienced leaders guiding GHXSTSHIP's vision and growth.
             </p>
           </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {leadership.map((leader) => (
-            <Card key={leader.name} className="group hover:shadow-lg transition-all duration-300">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center">
+            <Card key={leader.name} className="group hover:shadow-lg transition-all duration-300 h-[320px] flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Section - Fixed Height */}
+                <div className="flex items-center space-x-4 mb-4 h-12">
+                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-white" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className={`${typography.cardTitle} text-lg`}>{leader.name}</h3>
-                    <p className="text-sm text-muted-foreground">{leader.role}</p>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`${typography.cardTitle} text-lg truncate`}>{leader.name}</h3>
+                    <p className="text-sm text-muted-foreground truncate">{leader.role}</p>
                   </div>
                   {leader.social?.linkedin && (
-                    <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                    <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0">
                       <Linkedin className="w-5 h-5" />
                     </a>
                   )}
                 </div>
-                <div className="flex items-center text-sm text-muted-foreground mb-4">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  {leader.location}
+                
+                {/* Content Section - Flexible Height with Scroll */}
+                <div className="flex-1 mb-4 overflow-hidden">
+                  <div className="h-full overflow-y-auto">
+                    <p className="text-sm text-muted-foreground">{leader.bio}</p>
+                  </div>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">{leader.bio}</p>
+                
+                {/* Footer Section - Fixed Height */}
+                <div className="flex items-center text-sm text-muted-foreground h-4">
+                  <MapPin className="w-4 h-4 mr-1 flex-shrink-0" />
+                  <span className="truncate">{leader.location}</span>
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -451,34 +460,22 @@ export default function TeamPage() {
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {departments.map((dept) => (
-            <Card key={dept.name} className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div className={`w-12 h-12 bg-gradient-to-r ${dept.color} rounded-lg flex items-center justify-center mb-4`}>
-                  <Users className="h-6 w-6 text-white" />
-                </div>
-                
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="primary" className="text-xs font-mono">
-                    {dept.code}
-                  </Badge>
-                  <h3 className={`${typography.cardTitle} text-lg`}>
+            <Card key={dept.name} className="hover:shadow-lg transition-shadow h-[200px] flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Section - Fixed Height */}
+                <div className="flex items-center gap-4 mb-4 h-12">
+                  <div className={`w-12 h-12 bg-gradient-to-r ${dept.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <Users className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className={`${typography.cardTitle} text-lg flex-1 min-w-0`}>
                     {dept.name}
                   </h3>
                 </div>
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge variant="outline" className="text-xs">
-                    {dept.count} members
-                  </Badge>
-                </div>
                 
-                <p className="text-muted-foreground mb-4">{dept.description}</p>
-                
-                <div>
-                  <h4 className="text-sm font-semibold text-muted-foreground mb-2 uppercase">Team Leads</h4>
-                  <div className="space-y-1">
-                    {dept.leads.map((lead) => (
-                      <div key={lead} className="text-sm text-foreground">{lead}</div>
-                    ))}
+                {/* Content Section - Flexible Height with Scroll */}
+                <div className="flex-1 overflow-hidden">
+                  <div className="h-full overflow-y-auto">
+                    <p className="text-muted-foreground text-sm">{dept.description}</p>
                   </div>
                 </div>
               </CardContent>
@@ -501,40 +498,40 @@ export default function TeamPage() {
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="hover:shadow-lg transition-all duration-300 group">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4 mb-4">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
+            <Card key={member.name} className="hover:shadow-lg transition-all duration-300 group h-[400px] flex flex-col">
+              <CardContent className="p-6 flex flex-col h-full">
+                {/* Header Section - Fixed Height */}
+                <div className="flex items-center space-x-4 mb-4 h-16">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="h-6 w-6 text-primary" />
                   </div>
-                  <div className="flex-1">
-                    <h3 className={`${typography.cardTitle} text-lg mb-1`}>
+                  <div className="flex-1 min-w-0">
+                    <h3 className={`${typography.cardTitle} text-lg mb-1 truncate`}>
                       {member.name}
                     </h3>
-                    <p className="text-sm font-semibold text-primary mb-1">{member.role}</p>
-                    <div className="flex items-center gap-2">
-                      <Badge variant="outline" className="text-xs">
-                        {member.departmentCode}
-                      </Badge>
-                      <Badge variant="secondary" className="text-xs">
-                        {member.department}
-                      </Badge>
-                    </div>
+                    <p className="text-sm font-semibold text-primary mb-1 truncate">{member.role}</p>
+                    <Badge variant="outline" className="text-xs">
+                      {member.departmentCode}
+                    </Badge>
                   </div>
                 </div>
                 
-                <div className="mb-4">
-                  <p className="text-sm font-medium text-foreground mb-2 italic">
+                {/* Content Section - Flexible Height with Scroll */}
+                <div className="flex-1 mb-4 overflow-hidden">
+                  <p className="text-sm font-medium text-foreground mb-2 italic line-clamp-2">
                     "{member.tagline}"
                   </p>
-                  <p className="text-sm text-muted-foreground">
-                    {member.profile}
-                  </p>
+                  <div className="h-20 overflow-y-auto">
+                    <p className="text-sm text-muted-foreground">
+                      {member.profile}
+                    </p>
+                  </div>
                 </div>
                 
-                <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <MapPin className="h-3 w-3" />
-                  {member.location}
+                {/* Footer Section - Fixed Height */}
+                <div className="flex items-center gap-1 text-xs text-muted-foreground h-4">
+                  <MapPin className="h-3 w-3 flex-shrink-0" />
+                  <span className="truncate">{member.location}</span>
                 </div>
               </CardContent>
             </Card>
