@@ -403,7 +403,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                     <div className="flex items-center gap-1 ml-2">
                       {assignment.status === 'in_use' && (
                         <Button
-                          size="sm"
+                         
                           variant="outline"
                           onClick={() => handleReturnAsset(assignment.id)}
                         >
@@ -411,14 +411,14 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                         </Button>
                       )}
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleEditAssignment(assignment)}
                       >
                         <Edit className="w-3 h-3" />
                       </Button>
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleDeleteAssignment(assignment.id)}
                       >
@@ -479,7 +479,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
         open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedAssignment ? 'Edit Assignment' : 'New Asset Assignment'}
-        width="lg"
+       
       >
         <div className="p-6 space-y-4">
           <div>

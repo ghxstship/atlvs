@@ -109,7 +109,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Risk"
         description="Add a new risk to the risk register"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

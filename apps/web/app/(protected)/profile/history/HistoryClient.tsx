@@ -348,7 +348,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setFilterType(type)}
           >
             {type === 'all' ? 'All Entries' : formatEntryType(type)}
@@ -394,11 +394,11 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                           <p className="text-sm text-muted-foreground">{entry.organization}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge variant="outline" size="sm">
+                          <Badge variant="outline">
                             {formatEntryType(entry.entry_type)}
                           </Badge>
                           {entry.is_current && (
-                            <Badge variant="success" size="sm">Current</Badge>
+                            <Badge variant="success">Current</Badge>
                           )}
                         </div>
                       </div>
@@ -406,14 +406,14 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                     <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleEdit(entry)}
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleDelete(entry.id)}
                       >
                         <Trash2 className="h-4 w-4" />
@@ -455,7 +455,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                       <h4 className="text-sm font-medium mb-2">Skills Gained</h4>
                       <div className="flex flex-wrap gap-2">
                         {entry.skills_gained.map((skill, index) => (
-                          <Badge key={index} variant="secondary" size="sm">
+                          <Badge key={index} variant="secondary">
                             {skill}
                           </Badge>
                         ))}

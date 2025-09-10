@@ -272,17 +272,17 @@ export default function TeamPage() {
                       
                       <div className="flex gap-2">
                         {leader.social.linkedin && (
-                          <Button size="sm" className="p-2">
+                          <Button className="p-2">
                             <Linkedin className="h-3 w-3" />
                           </Button>
                         )}
                         {leader.social.twitter && (
-                          <Button size="sm" className="p-2">
+                          <Button className="p-2">
                             <Twitter className="h-3 w-3" />
                           </Button>
                         )}
                         {leader.social.github && (
-                          <Button size="sm" className="p-2">
+                          <Button className="p-2">
                             <Github className="h-3 w-3" />
                           </Button>
                         )}
@@ -469,12 +469,12 @@ export default function TeamPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   View Open Positions
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button size="lg" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto">
                 <Mail className="mr-2 h-4 w-4" />
                 Contact Us
               </Button>

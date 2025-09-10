@@ -181,7 +181,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
       <Button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2"
-        size="sm"
+       
       >
         <Plus className="h-4 w-4" />
         Add Shortlist
@@ -191,7 +191,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         open={isOpen}
         onClose={handleClose}
         title="Add Shortlist"
-        width="lg"
+       
         footer={
           <div className="flex justify-end gap-3">
             <Button

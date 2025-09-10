@@ -67,7 +67,7 @@ export default function ForgotPasswordPage() {
                 </div>
 
                 {/* Submit Button */}
-                <Button size="lg" className="w-full">
+                <Button className="w-full">
                   Send Reset Link
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>

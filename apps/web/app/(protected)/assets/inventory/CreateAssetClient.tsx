@@ -201,7 +201,7 @@ export default function CreateAssetClient({
       open={isOpen}
       onClose={onClose}
       title="Add New Asset"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information */}

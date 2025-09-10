@@ -112,7 +112,7 @@ export function CookieConsent() {
                     By clicking "Accept All", you consent to our use of cookies for analytics, marketing, and functionality.{' '}
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       className="p-0 h-auto text-sm underline"
                       onClick={() => setShowPreferences(true)}
                     >
@@ -129,7 +129,7 @@ export function CookieConsent() {
               <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={handleRejectAll}
                   className="w-full sm:w-auto"
                 >
@@ -137,7 +137,7 @@ export function CookieConsent() {
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => setShowPreferences(true)}
                   className="w-full sm:w-auto"
                 >
@@ -145,7 +145,7 @@ export function CookieConsent() {
                   Preferences
                 </Button>
                 <Button
-                  size="sm"
+                 
                   onClick={handleAcceptAll}
                   className="w-full sm:w-auto"
                 >
@@ -160,7 +160,7 @@ export function CookieConsent() {
                 <h3 className="font-title text-xl font-bold">Cookie Preferences</h3>
                 <Button
                   variant="ghost"
-                  size="sm"
+                 
                   onClick={() => setShowPreferences(false)}
                 >
                   <X className="h-4 w-4" />
@@ -267,14 +267,14 @@ export function CookieConsent() {
               <div className="flex flex-col sm:flex-row gap-3 mt-8">
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={handleRejectAll}
                   className="w-full sm:w-auto"
                 >
                   Reject All
                 </Button>
                 <Button
-                  size="sm"
+                 
                   onClick={handleSavePreferences}
                   className="w-full sm:w-auto"
                 >

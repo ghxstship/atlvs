@@ -441,7 +441,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                     <div className="flex items-center gap-1 ml-2">
                       {record.status === 'scheduled' && (
                         <Button
-                          size="sm"
+                         
                           variant="outline"
                           onClick={() => handleCompleteRecord(record.id)}
                         >
@@ -449,14 +449,14 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                         </Button>
                       )}
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleEditRecord(record)}
                       >
                         <Edit className="w-3 h-3" />
                       </Button>
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleDeleteRecord(record.id)}
                       >
@@ -547,7 +547,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
         open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedRecord ? 'Edit Maintenance Record' : 'Schedule Maintenance'}
-        width="lg"
+       
       >
         <div className="p-6 space-y-4">
           <div>

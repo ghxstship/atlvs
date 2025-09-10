@@ -460,7 +460,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
 
                 <div className="flex gap-2 mt-4">
                   <Button
-                    size="sm"
+                   
                     variant="outline"
                     onClick={() => handleUpdateLocation(tracking)}
                     className="flex-1"

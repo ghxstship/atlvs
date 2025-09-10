@@ -430,14 +430,14 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => handleEdit(review)}
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => handleDelete(review.id)}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -471,7 +471,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                     <h4 className="text-sm font-medium mb-2">Strengths</h4>
                     <div className="flex flex-wrap gap-2">
                       {review.strengths.map((strength, index) => (
-                        <Badge key={index} variant="success" size="sm">
+                        <Badge key={index} variant="success">
                           {strength}
                         </Badge>
                       ))}
@@ -485,7 +485,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                     <h4 className="text-sm font-medium mb-2">Areas for Improvement</h4>
                     <div className="flex flex-wrap gap-2">
                       {review.areas_for_improvement.map((area, index) => (
-                        <Badge key={index} variant="warning" size="sm">
+                        <Badge key={index} variant="warning">
                           {area}
                         </Badge>
                       ))}

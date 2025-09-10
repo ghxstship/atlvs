@@ -139,7 +139,7 @@ export default function ProgrammingOverviewClient({
                     <p className="text-sm text-muted-foreground mb-3">
                       {action.description}
                     </p>
-                    <Button size="sm" asChild>
+                    <Button asChild>
                       <a href={action.href}>Get Started</a>
                     </Button>
                   </div>
@@ -212,7 +212,7 @@ export default function ProgrammingOverviewClient({
             <p className="text-sm text-muted-foreground mb-3">
               View all events and schedules in calendar format
             </p>
-            <Button size="sm" asChild>
+            <Button asChild>
               <a href="/programming/calendar">Open Calendar</a>
             </Button>
           </Card>
@@ -222,7 +222,7 @@ export default function ProgrammingOverviewClient({
             <p className="text-sm text-muted-foreground mb-3">
               Manage technical, hospitality, and stage plot requirements
             </p>
-            <Button size="sm" asChild>
+            <Button asChild>
               <a href="/programming/riders">Manage Riders</a>
             </Button>
           </Card>
@@ -232,7 +232,7 @@ export default function ProgrammingOverviewClient({
             <p className="text-sm text-muted-foreground mb-3">
               Schedule and organize educational sessions
             </p>
-            <Button size="sm" asChild>
+            <Button asChild>
               <a href="/programming/workshops">View Workshops</a>
             </Button>
           </Card>

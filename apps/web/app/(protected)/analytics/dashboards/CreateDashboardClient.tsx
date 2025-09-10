@@ -140,14 +140,14 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
   };
 
   return (
-    <Drawer open={true} onClose={onCancel || (() => {})} title="Create Dashboard" width="lg">
+    <Drawer open={true} onClose={onCancel || (() => {})} title="Create Dashboard">
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-lg font-semibold">Create Dashboard</h2>
             <p className="text-sm text-gray-600">Build a custom analytics dashboard</p>
           </div>
-          <Button size="sm" onClick={onCancel || (() => {})}>
+          <Button onClick={onCancel || (() => {})}>
             <X className="h-4 w-4" />
           </Button>
         </div>
@@ -208,7 +208,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <Button
                   type="button"
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => setShowWidgetForm(true)}
                 >
                   <Plus className="h-4 w-4 mr-1" />
@@ -240,7 +240,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                         <Button
                           type="button"
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={() => removeWidget(index)}
                         >
                           <X className="h-4 w-4" />

@@ -79,7 +79,7 @@ export default function ResourcesOverviewClient() {
           <Card className="p-6">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-semibold text-gray-900">Recent Resources</h2>
-              <Button size="sm">View All</Button>
+              <Button>View All</Button>
             </div>
             <div className="space-y-4">
               {recentResources.map((resource) => (

@@ -464,14 +464,14 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       <div className="flex items-center space-x-1">
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={() => runExportJob(job.id)}
                         >
                           <Play className="h-3 w-3" />
                         </Button>
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={() => deleteExportJob(job.id)}
                         >
                           <Trash2 className="h-3 w-3" />
@@ -526,7 +526,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       {job.fileUrl ? (
                         <Button
                           variant="outline"
-                          size="sm"
+                         
                           onClick={() => downloadFile(job.fileUrl!, `${job.name}.${job.format}`)}
                         >
                           <Download className="h-3 w-3 mr-1" />
@@ -538,7 +538,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => toggleJobStatus(job.id)}
                       >
                         {job.status === 'active' ? (
@@ -613,7 +613,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     {entry.fileUrl && entry.status === 'completed' && (
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => downloadFile(entry.fileUrl!, `export-${entry.id}.${job?.format || 'csv'}`)}
                       >
                         <Download className="h-3 w-3 mr-1" />

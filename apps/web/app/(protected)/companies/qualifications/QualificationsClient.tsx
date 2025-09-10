@@ -388,14 +388,14 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
             <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('grid')}
               >
                 <Grid className="h-4 w-4" />
               </Button>
               <Button
                 variant={currentView === 'list' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('list')}
               >
                 <List className="h-4 w-4" />
@@ -416,7 +416,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
               <Button
                 key={type}
                 variant={typeFilter === type ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setTypeFilter(type)}
                 className="capitalize"
               >
@@ -431,7 +431,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
               <Button
                 key={status}
                 variant={statusFilter === status ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setStatusFilter(status)}
                 className="capitalize"
               >
@@ -454,10 +454,10 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusBadge(qualification.status)}
-                      <Button size="sm" onClick={() => handleEditQualification(qualification)}>
+                      <Button onClick={() => handleEditQualification(qualification)}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button size="sm" onClick={() => handleDeleteQualification(qualification.id)}>
+                      <Button onClick={() => handleDeleteQualification(qualification.id)}>
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
@@ -476,10 +476,10 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusBadge(qualification.status)}
-                      <Button size="sm" onClick={() => handleEditQualification(qualification)}>
+                      <Button onClick={() => handleEditQualification(qualification)}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button size="sm" onClick={() => handleDeleteQualification(qualification.id)}>
+                      <Button onClick={() => handleDeleteQualification(qualification.id)}>
                         <Trash2 className="h-4 w-4" />
                       </Button>
                     </div>
@@ -511,7 +511,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
             drawerMode === 'create' ? 'Add Qualification' :
             drawerMode === 'edit' ? 'Edit Qualification' : 'Qualification Details'
           }
-          width="lg"
+         
         >
           <div className="p-4">
             <p>Qualification management form would go here</p>

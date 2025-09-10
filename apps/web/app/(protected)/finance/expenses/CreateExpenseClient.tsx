@@ -127,7 +127,7 @@ export default function CreateExpenseClient({
       open={isOpen}
       onClose={onClose}
       title="Create Expense"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Expense Overview */}

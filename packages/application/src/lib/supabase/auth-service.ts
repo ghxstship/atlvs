@@ -4,7 +4,7 @@
  */
 
 import { createBrowserClient } from '@supabase/ssr';
-import type { Database } from './types';
+import type { Database } from '@/types/database';
 import type { User, Session } from '@supabase/supabase-js';
 
 export interface UserProfile {

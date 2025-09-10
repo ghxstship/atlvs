@@ -242,14 +242,14 @@ export default function InspectionsTableClient({
                     </div>
                   </td>
                   <td className="p-3">
-                    <Badge variant={getTypeColor(row.type)} size="sm">
+                    <Badge variant={getTypeColor(row.type)}>
                       {row.type.replace('_', ' ')}
                     </Badge>
                   </td>
                   <td className="p-3">
                     <div className="flex items-center gap-2">
                       <StatusIcon className="w-4 h-4" />
-                      <Badge variant={getStatusColor(row.status)} size="sm">
+                      <Badge variant={getStatusColor(row.status)}>
                         {row.status.replace('_', ' ')}
                       </Badge>
                     </div>
@@ -305,7 +305,7 @@ export default function InspectionsTableClient({
         }}
         title={current?.title || 'Inspection'}
         description={saving ? 'Saving...' : undefined}
-        width="lg"
+       
       >
         {error && (
           <div className="mb-4 p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded">

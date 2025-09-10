@@ -296,7 +296,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                         </p>
                       )}
                       <div className="flex items-center gap-2 mt-1">
-                        <Badge variant="outline" size="sm">
+                        <Badge variant="outline">
                           {formatRelationship(endorsement.relationship)}
                         </Badge>
                         <div className="flex items-center gap-1">
@@ -308,14 +308,14 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => handleEdit(endorsement)}
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => handleDelete(endorsement.id)}
                     >
                       <Trash2 className="h-4 w-4" />
@@ -330,7 +330,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                 <div className="flex items-center justify-between">
                   <div className="flex flex-wrap gap-2">
                     {endorsement.skills_endorsed.map((skill, index) => (
-                      <Badge key={index} variant="secondary" size="sm">
+                      <Badge key={index} variant="secondary">
                         {skill}
                       </Badge>
                     ))}

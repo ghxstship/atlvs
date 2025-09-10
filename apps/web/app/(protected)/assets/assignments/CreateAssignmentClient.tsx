@@ -169,7 +169,7 @@ export default function CreateAssignmentClient({
       open={isOpen}
       onClose={onClose}
       title="Create Asset Assignment"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Personnel */}

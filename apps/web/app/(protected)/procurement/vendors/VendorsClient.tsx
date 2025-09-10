@@ -180,7 +180,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                     </Badge>
                   </div>
                 </div>
-                <Button size="sm">
+                <Button>
                   <Edit className="h-4 w-4" />
                 </Button>
               </div>

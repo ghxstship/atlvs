@@ -107,7 +107,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
                   </span>
                 </td>
                 <td className="px-3 py-2 text-right">
-                  <Button size="sm" onClick={() => removeDomain(d.id)} disabled={loading || !canManage}>Remove</Button>
+                  <Button onClick={() => removeDomain(d.id)} disabled={loading || !canManage}>Remove</Button>
                 </td>
               </tr>
             ))}

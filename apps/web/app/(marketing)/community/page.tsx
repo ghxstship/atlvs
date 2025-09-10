@@ -184,13 +184,13 @@ export default function CommunityPage() {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Join Discord
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
               <a href="/community/events">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto">
                   View Events
                 </Button>
               </a>
@@ -317,7 +317,7 @@ export default function CommunityPage() {
                     </div>
                     <p className="text-xs text-muted-foreground mb-4">{social.description}</p>
                     <a href={social.href as any} target="_blank" rel="noopener noreferrer">
-                      <Button size="sm" className="w-full">
+                      <Button className="w-full">
                         Follow
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
@@ -373,7 +373,7 @@ export default function CommunityPage() {
 
           <div className="text-center">
             <a href="/community/events">
-              <Button size="lg">
+              <Button>
                 View All Events
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -463,13 +463,13 @@ export default function CommunityPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Join Discord Community
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
               <a href="/auth/signup">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto">
                   Create Account
                 </Button>
               </a>

@@ -236,15 +236,15 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       )}
 
       <div className="flex space-x-2">
-        <Button size="sm" variant="outline" className="flex-1" onClick={() => openProjectDrawer(project)}>
+        <Button variant="outline" className="flex-1" onClick={() => openProjectDrawer(project)}>
           <Edit className="h-4 w-4 mr-1" />
           Edit
         </Button>
-        <Button size="sm" variant="outline" className="flex-1">
+        <Button variant="outline" className="flex-1">
           <Eye className="h-4 w-4 mr-1" />
           View
         </Button>
-        <Button size="sm" variant="ghost" onClick={() => deleteProject(project.id)}>
+        <Button variant="ghost" onClick={() => deleteProject(project.id)}>
           <Trash2 className="h-4 w-4" />
         </Button>
       </div>
@@ -301,14 +301,14 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           </Select>
           <div className="flex gap-2">
             <Button
-              size="sm"
+             
               variant={viewMode === 'grid' ? 'primary' : 'outline'}
               onClick={() => setViewMode('grid')}
             >
               Grid
             </Button>
             <Button
-              size="sm"
+             
               variant={viewMode === 'list' ? 'primary' : 'outline'}
               onClick={() => setViewMode('list')}
             >
@@ -369,13 +369,13 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                     </div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Button size="sm" variant="ghost" onClick={() => openProjectDrawer(project)}>
+                    <Button variant="ghost" onClick={() => openProjectDrawer(project)}>
                       <Edit className="h-4 w-4" />
                     </Button>
-                    <Button size="sm" variant="ghost">
+                    <Button variant="ghost">
                       <Eye className="h-4 w-4" />
                     </Button>
-                    <Button size="sm" variant="ghost" onClick={() => deleteProject(project.id)}>
+                    <Button variant="ghost" onClick={() => deleteProject(project.id)}>
                       <Trash2 className="h-4 w-4" />
                     </Button>
                   </div>
@@ -395,7 +395,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           reset();
         }}
         title={selectedProject ? 'Edit Project' : 'Post New Project'}
-        width="lg"
+       
       >
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
           <div>

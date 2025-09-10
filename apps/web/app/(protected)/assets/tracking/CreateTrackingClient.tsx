@@ -171,7 +171,7 @@ export default function CreateTrackingClient({
       open={isOpen}
       onClose={onClose}
       title="Add Tracking Record"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Type */}

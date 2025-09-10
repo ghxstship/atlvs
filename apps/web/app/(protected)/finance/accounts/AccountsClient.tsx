@@ -458,7 +458,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     <div className="flex space-x-2">
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleReconcileAccount(account);
@@ -472,7 +472,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     <div className="flex space-x-2">
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleEditAccount(account);
@@ -482,7 +482,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                       </Button>
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDeleteAccount(account.id);
@@ -532,7 +532,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <Card className="w-full max-w-md mx-4 p-6">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-semibold">Reconcile Account</h3>
-                <Button size="sm" onClick={() => setReconcileDrawerOpen(false)}>
+                <Button onClick={() => setReconcileDrawerOpen(false)}>
                   ×
                 </Button>
               </div>

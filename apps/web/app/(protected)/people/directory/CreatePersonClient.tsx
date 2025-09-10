@@ -136,7 +136,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
       <Button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2"
-        size="sm"
+       
       >
         <Plus className="h-4 w-4" />
         Add Person
@@ -146,7 +146,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         open={isOpen}
         onClose={handleClose}
         title="Add Person"
-        width="lg"
+       
         footer={
           <div className="flex justify-end gap-3">
             <Button

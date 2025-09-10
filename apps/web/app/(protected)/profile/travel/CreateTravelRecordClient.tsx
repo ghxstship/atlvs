@@ -112,7 +112,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
     <>
       <Button 
         variant="primary" 
-        size="sm" 
+        
         onClick={() => setOpen(true)} 
         aria-label="Add Travel Record" 
         title="Add Travel Record"
@@ -124,7 +124,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
         onClose={() => setOpen(false)} 
         title="Add Travel Record" 
         description={submitting ? 'Saving…' : undefined} 
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <form 

@@ -158,7 +158,7 @@ export default function CreateTransactionClient({
       open={isOpen}
       onClose={onClose}
       title="Add Transaction"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Transaction Overview */}

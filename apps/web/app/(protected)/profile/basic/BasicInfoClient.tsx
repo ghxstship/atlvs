@@ -143,7 +143,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
             )}
           </Avatar>
           <Button
-            size="sm"
+           
             variant="outline"
             className="absolute -bottom-2 -right-2 rounded-full p-2"
           >

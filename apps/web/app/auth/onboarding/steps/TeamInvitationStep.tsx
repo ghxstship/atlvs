@@ -238,7 +238,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                         
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={() => removeInvite(index)}
                         >
                           <X className="h-4 w-4" />
@@ -296,7 +296,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
         <Button 
           onClick={handleContinue} 
           disabled={loading}
-          width="lg"
+         
         >
           {loading ? 'Sending invites...' : invites.length > 0 && !skipInvites ? 'Send Invitations' : 'Continue'}
           {invites.length > 0 && !skipInvites ? (

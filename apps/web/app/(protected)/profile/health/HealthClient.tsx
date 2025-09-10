@@ -293,7 +293,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setFilterType(type)}
           >
             {type === 'all' ? 'All Records' : formatRecordType(type)}
@@ -341,19 +341,19 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                           <p className="text-sm text-muted-foreground">{record.description}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge variant="outline" size="sm">
+                          <Badge variant="outline">
                             {formatRecordType(record.record_type)}
                           </Badge>
                           {record.severity && (
-                            <Badge variant={getSeverityColor(record.severity) as any} size="sm">
+                            <Badge variant={getSeverityColor(record.severity) as any}>
                               {record.severity.charAt(0).toUpperCase() + record.severity.slice(1)}
                             </Badge>
                           )}
                           {!record.is_active && (
-                            <Badge variant="secondary" size="sm">Inactive</Badge>
+                            <Badge variant="secondary">Inactive</Badge>
                           )}
                           {isExpiring && (
-                            <Badge variant="destructive" size="sm">Expiring Soon</Badge>
+                            <Badge variant="destructive">Expiring Soon</Badge>
                           )}
                         </div>
                       </div>
@@ -361,14 +361,14 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                     <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleEdit(record)}
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleDelete(record.id)}
                       >
                         <Trash2 className="h-4 w-4" />

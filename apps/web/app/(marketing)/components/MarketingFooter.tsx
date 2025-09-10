@@ -122,7 +122,7 @@ export function MarketingFooter() {
             />
             <Button 
               type="submit" 
-              size="sm" 
+              
               className="sm:w-auto" 
               disabled={isLoading || isSubscribed || !email}
             >

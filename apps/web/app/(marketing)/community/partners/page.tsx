@@ -49,7 +49,7 @@ export default function PartnersPage() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Join our growing ecosystem of partners who help extend GHXSTSHIP's capabilities and reach.
           </p>
-          <Button size="lg">
+          <Button>
             Become a Partner
           </Button>
         </div>
@@ -131,7 +131,7 @@ export default function PartnersPage() {
           </div>
           
           <div className="text-center mt-8">
-            <Button size="lg">
+            <Button>
               Apply for Partnership
             </Button>
           </div>

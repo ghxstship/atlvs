@@ -387,7 +387,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <Button
               key={status}
               variant={statusFilter === status ? 'primary' : 'ghost'}
-              size="sm"
+             
               onClick={() => setStatusFilter(status)}
               className="capitalize"
             >
@@ -502,7 +502,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                     {revenue.status === 'projected' && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRecognizeRevenue(revenue.id);
@@ -514,7 +514,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                     {revenue.status === 'recognized' && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleReceiveRevenue(revenue.id);
@@ -528,7 +528,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEditRevenue(revenue);
@@ -538,7 +538,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteRevenue(revenue.id);

@@ -168,11 +168,11 @@ export function withSentryErrorBoundary<P extends object>(
   Component: React.ComponentType<P>,
   options?: {
     fallback?: React.ComponentType<{ error: Error; resetError: () => void }>;
-    beforeCapture?: (scope: Sentry.Scope, error: Error, errorInfo: React.ErrorInfo) => void;
+    beforeCapture?: (scope: Sentry.Scope, error: unknown, componentStack: string | undefined) => void;
   }
 ) {
   return Sentry.withErrorBoundary(Component, {
-    fallback: options?.fallback || DefaultErrorFallback,
+    fallback: (options?.fallback || DefaultErrorFallback) as any,
     beforeCapture: options?.beforeCapture
   });
 }

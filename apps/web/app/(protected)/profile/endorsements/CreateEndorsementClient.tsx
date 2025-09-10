@@ -99,7 +99,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
     <>
       <Button 
         variant="primary" 
-        size="sm" 
+        
         onClick={() => setOpen(true)} 
         aria-label="Add Endorsement" 
         title="Add Endorsement"
@@ -111,7 +111,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         onClose={() => setOpen(false)} 
         title="Add Professional Endorsement" 
         description={submitting ? 'Saving…' : undefined} 
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <form 

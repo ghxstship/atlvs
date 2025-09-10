@@ -308,7 +308,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Performance Management</h2>
-                <Button size="sm">
+                <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Performance
                 </Button>
@@ -508,19 +508,19 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
 
                   {/* Quick Actions */}
                   <div className="flex gap-2 pt-4 border-t">
-                    <Button size="sm" asChild>
+                    <Button asChild>
                       <a href={`/programming/lineups?event_id=${selectedRecord.id}`}>
                         <Users className="h-4 w-4 mr-2" />
                         Manage Lineup
                       </a>
                     </Button>
-                    <Button size="sm" asChild>
+                    <Button asChild>
                       <a href={`/programming/riders?event_id=${selectedRecord.id}`}>
                         <FileText className="h-4 w-4 mr-2" />
                         Tech Riders
                       </a>
                     </Button>
-                    <Button size="sm" asChild>
+                    <Button asChild>
                       <a href={`/programming/call-sheets?event_id=${selectedRecord.id}`}>
                         <Calendar className="h-4 w-4 mr-2" />
                         Call Sheets

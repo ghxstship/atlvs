@@ -377,13 +377,13 @@ export default function PricingPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth/signup">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto">
                   Contact Sales
                 </Button>
               </Link>

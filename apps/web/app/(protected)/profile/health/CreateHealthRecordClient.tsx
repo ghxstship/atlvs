@@ -102,7 +102,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
     <>
       <Button 
         variant="primary" 
-        size="sm" 
+        
         onClick={() => setOpen(true)} 
         aria-label="Add Health Record" 
         title="Add Health Record"
@@ -114,7 +114,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
         onClose={() => setOpen(false)} 
         title="Add Health Record" 
         description={submitting ? 'Saving…' : undefined} 
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <form 

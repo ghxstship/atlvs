@@ -116,7 +116,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Event"
         description="Add a new programming event"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

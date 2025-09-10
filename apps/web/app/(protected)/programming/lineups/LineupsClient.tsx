@@ -231,7 +231,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Lineups Management</h2>
-                <Button size="sm">
+                <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Performer
                 </Button>

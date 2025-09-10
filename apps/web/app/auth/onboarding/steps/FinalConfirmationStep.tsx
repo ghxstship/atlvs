@@ -199,7 +199,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
         <Button 
           onClick={handleGetStarted} 
           disabled={loading}
-          width="lg"
+         
           className="px-8"
         >
           {loading ? 'Setting up your workspace...' : 'Go to Dashboard'}

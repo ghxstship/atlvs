@@ -181,7 +181,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
           <div className="flex items-center gap-2">
             <Button
               variant="outline"
-              size="sm"
+             
               onClick={() => navigateMonth('prev')}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -191,7 +191,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
             </h2>
             <Button
               variant="outline"
-              size="sm"
+             
               onClick={() => navigateMonth('next')}
             >
               <ChevronRight className="h-4 w-4" />
@@ -200,7 +200,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
           
           <Button
             variant="outline"
-            size="sm"
+           
             onClick={() => setCurrentDate(new Date())}
           >
             Today
@@ -208,11 +208,11 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
         </div>
 
         <div className="flex items-center gap-2">
-          <Button size="sm">
+          <Button>
             <Filter className="h-4 w-4 mr-2" />
             Filter
           </Button>
-          <Button size="sm">
+          <Button>
             <Plus className="h-4 w-4 mr-2" />
             Create Event
           </Button>
@@ -318,7 +318,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
             <div className="text-center py-8 text-muted-foreground">
               <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No events scheduled for this month</p>
-              <Button size="sm">
+              <Button>
                 <Plus className="h-4 w-4 mr-2" />
                 Create Your First Event
               </Button>
@@ -367,7 +367,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
               
               {events.length > 5 && (
                 <div className="text-center pt-4">
-                  <Button size="sm">
+                  <Button>
                     View All {events.length} Events
                   </Button>
                 </div>

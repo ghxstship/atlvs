@@ -461,21 +461,21 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
                     {getStatusBadge(item.status)}
                     <div className="flex items-center gap-1 ml-2">
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleEditItem(item)}
                       >
                         <Edit className="w-3 h-3" />
                       </Button>
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleDuplicateItem(item)}
                       >
                         <Copy className="w-3 h-3" />
                       </Button>
                       <Button
-                        size="sm"
+                       
                         variant="ghost"
                         onClick={() => handleDeleteItem(item.id)}
                       >
@@ -544,7 +544,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
         open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedItem ? 'Edit Advancing Request' : 'New Advancing Request'}
-        width="lg"
+       
       >
         <div className="p-6 space-y-4">
           <div>

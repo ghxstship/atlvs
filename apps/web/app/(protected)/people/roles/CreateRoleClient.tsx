@@ -124,7 +124,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
       <Button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2"
-        size="sm"
+       
       >
         <Plus className="h-4 w-4" />
         Add Role
@@ -134,7 +134,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
         open={isOpen}
         onClose={handleClose}
         title="Add Role"
-        width="lg"
+       
         footer={
           <div className="flex justify-end gap-3">
             <Button

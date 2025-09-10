@@ -334,14 +334,14 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           <div className="flex items-center space-x-1">
             <Button
               variant="ghost"
-              size="sm"
+             
               onClick={() => setEditingWidget(widget)}
             >
               <Edit3 className="h-3 w-3" />
             </Button>
             <Button
               variant="ghost"
-              size="sm"
+             
               onClick={() => deleteWidget(widget.id)}
             >
               <Trash2 className="h-3 w-3" />
@@ -448,15 +448,15 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               )}
             </div>
             <div className="flex items-center space-x-2">
-              <Button size="sm">
+              <Button>
                 <Share2 className="h-4 w-4 mr-2" />
                 Share
               </Button>
-              <Button size="sm">
+              <Button>
                 <Download className="h-4 w-4 mr-2" />
                 Export
               </Button>
-              <Button size="sm">
+              <Button>
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
               </Button>
@@ -470,7 +470,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               <div className="flex items-center space-x-2">
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => addWidget('chart', 'bar')}
                 >
                   <BarChart3 className="h-4 w-4 mr-1" />
@@ -478,7 +478,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => addWidget('chart', 'line')}
                 >
                   <LineChart className="h-4 w-4 mr-1" />
@@ -486,7 +486,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => addWidget('chart', 'pie')}
                 >
                   <PieChart className="h-4 w-4 mr-1" />
@@ -494,7 +494,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                 </Button>
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => addWidget('metric')}
                 >
                   <TrendingUp className="h-4 w-4 mr-1" />

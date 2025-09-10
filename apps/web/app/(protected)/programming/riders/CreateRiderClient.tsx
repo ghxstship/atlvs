@@ -110,7 +110,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Rider"
         description="Add a new technical or hospitality rider"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

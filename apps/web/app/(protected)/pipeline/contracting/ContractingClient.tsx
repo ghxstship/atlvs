@@ -407,7 +407,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                 <div className="flex gap-2">
                   {contract.status === 'draft' && (
                     <Button 
-                      size="sm" 
+                      
                       onClick={() => updateContractStatus(contract.id, 'sent')}
                     >
                       Send for Signature
@@ -415,7 +415,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   )}
                   {contract.status === 'sent' && (
                     <Button 
-                      size="sm" 
+                      
                       variant="outline"
                       onClick={() => updateContractStatus(contract.id, 'signed')}
                     >
@@ -424,14 +424,14 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   )}
                   {contract.status === 'signed' && (
                     <Button 
-                      size="sm" 
+                      
                       variant="destructive"
                       onClick={() => updateContractStatus(contract.id, 'terminated')}
                     >
                       Terminate
                     </Button>
                   )}
-                  <Button size="sm" variant="outline">
+                  <Button variant="outline">
                     View Details
                   </Button>
                 </div>

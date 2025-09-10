@@ -153,7 +153,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
         onClose={handleClose}
         title="Create New RFP"
         description="Create a Request for Proposal to solicit bids from vendors"
-        width="lg"
+       
         footer={
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

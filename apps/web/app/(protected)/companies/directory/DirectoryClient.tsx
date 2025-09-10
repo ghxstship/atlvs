@@ -366,14 +366,14 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             <div className="flex border rounded-md">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('grid')}
               >
                 Grid
               </Button>
               <Button
                 variant={currentView === 'list' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('list')}
               >
                 List
@@ -449,7 +449,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             {(searchQuery || industryFilter !== 'all' || statusFilter !== 'all' || sizeFilter !== 'all') && (
               <Button
                 variant="ghost"
-                size="sm"
+               
                 onClick={() => {
                   setSearchQuery('');
                   setIndustryFilter('all');
@@ -532,7 +532,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEditCompany(company);
@@ -542,7 +542,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteCompany(company.id);
@@ -569,7 +569,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                       <Badge variant={company.status === 'active' ? 'success' : 'outline'}>
                         {company.status}
                       </Badge>
-                      <Button size="sm" onClick={() => handleEditCompany(company)}>
+                      <Button onClick={() => handleEditCompany(company)}>
                         Edit
                       </Button>
                     </div>

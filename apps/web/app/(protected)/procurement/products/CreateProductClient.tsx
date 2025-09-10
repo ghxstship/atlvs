@@ -147,7 +147,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
         onClose={() => setOpen(false)}
         title="Add New Product"
         footer={drawerFooter}
-        width="lg"
+       
       >
         <form id="create-product-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6">
           <div className="space-y-4">

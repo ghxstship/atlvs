@@ -190,7 +190,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
           <h2 className="text-xl font-semibold">
             {resource ? 'Edit Resource' : 'Add New Resource'}
           </h2>
-          <Button size="sm" onClick={onClose}>
+          <Button onClick={onClose}>
             <X className="w-4 h-4" />
           </Button>
         </div>

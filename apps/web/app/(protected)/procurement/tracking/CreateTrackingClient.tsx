@@ -157,7 +157,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
       <Button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2"
-        size="sm"
+       
       >
         <Plus className="h-4 w-4" />
         Update Tracking
@@ -167,7 +167,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
         open={isOpen}
         onClose={handleClose}
         title="Update Order Tracking"
-        width="lg"
+       
         footer={
           <div className="flex justify-end gap-3">
             <Button

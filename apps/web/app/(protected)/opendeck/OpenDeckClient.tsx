@@ -164,10 +164,10 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
           {loading ? t('loading') : error ? <span className="text-red-600">{error}</span> : ''}
         </div>
         <div className="flex items-center gap-2">
-          <Button size="sm" onClick={createNew} disabled={busy} aria-label={t('create')} title={t('create')}>
+          <Button onClick={createNew} disabled={busy} aria-label={t('create')} title={t('create')}>
             <Plus className="mr-1 h-4 w-4" /> {t('create')}
           </Button>
-          <Button size="sm" onClick={load}>{t('refresh')}</Button>
+          <Button onClick={load}>{t('refresh')}</Button>
         </div>
       </div>
 

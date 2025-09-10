@@ -159,7 +159,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         onClose={() => setOpenId(null)}
         title={current?.name || t('title')}
         description={saving ? 'Saving…' : undefined}
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <div className="mb-3 flex items-center gap-2">
@@ -186,7 +186,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
               />
-              <Button size="sm" onClick={addTag}>{t('tags.add')}</Button>
+              <Button onClick={addTag}>{t('tags.add')}</Button>
             </div>
           </div>
         </div>

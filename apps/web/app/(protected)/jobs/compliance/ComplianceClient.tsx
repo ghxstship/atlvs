@@ -473,21 +473,21 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm">
+                    <Button>
                       <EyeIcon className="h-4 w-4 mr-1" />
                       View
                     </Button>
-                    <Button size="sm">
+                    <Button>
                       <PencilIcon className="h-4 w-4 mr-1" />
                       Edit
                     </Button>
                     {item.evidence_url && (
-                      <Button size="sm">
+                      <Button>
                         <ArrowDownTrayIcon className="h-4 w-4 mr-1" />
                         Evidence
                       </Button>
                     )}
-                    <Button size="sm">
+                    <Button>
                       <DocumentCheckIcon className="h-4 w-4 mr-1" />
                       Audit
                     </Button>

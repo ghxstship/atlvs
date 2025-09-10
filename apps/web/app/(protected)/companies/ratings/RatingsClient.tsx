@@ -118,14 +118,14 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
           <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
             <Button
               variant={currentView === 'grid' ? 'primary' : 'ghost'}
-              size="sm"
+             
               onClick={() => setCurrentView('grid')}
             >
               <Grid className="h-4 w-4" />
             </Button>
             <Button
               variant={currentView === 'list' ? 'primary' : 'ghost'}
-              size="sm"
+             
               onClick={() => setCurrentView('list')}
             >
               <List className="h-4 w-4" />
@@ -154,10 +154,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
                   </div>
                 </div>
                 <div className="flex space-x-1">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost">
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost">
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
@@ -196,10 +196,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
                   </div>
                 </div>
                 <div className="flex space-x-1">
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost">
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost">
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>

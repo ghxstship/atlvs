@@ -194,7 +194,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                         {order.status}
                       </Badge>
                       <Button
-                        size="sm"
+                       
                         variant="outline"
                         onClick={() => setSelectedOrder(order)}
                       >
@@ -266,7 +266,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                 <h3 className="text-lg font-semibold">Order Details</h3>
                 <Button
                   variant="outline"
-                  size="sm"
+                 
                   onClick={() => setSelectedOrder(null)}
                 >
                   Close

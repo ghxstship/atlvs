@@ -127,7 +127,7 @@ export default function CreateBudgetClient({
       open={isOpen}
       onClose={onClose}
       title="Create Budget"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Budget Overview */}

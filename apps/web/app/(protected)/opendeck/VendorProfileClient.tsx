@@ -478,14 +478,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                   <span>{item.views || 0}</span>
                 </div>
                 <div className="flex space-x-2">
-                  <Button size="sm" variant="ghost" onClick={() => {
+                  <Button variant="ghost" onClick={() => {
                     setSelectedItem(item);
                     setDrawerMode('portfolio');
                     setDrawerOpen(true);
                   }}>
                     <Edit className="h-4 w-4" />
                   </Button>
-                  <Button size="sm" variant="ghost">
+                  <Button variant="ghost">
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 </div>
@@ -537,14 +537,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
             </div>
             <div className="flex space-x-2 mt-4">
-              <Button size="sm" variant="outline" className="flex-1" onClick={() => {
+              <Button variant="outline" className="flex-1" onClick={() => {
                 setSelectedItem(service);
                 setDrawerMode('service');
                 setDrawerOpen(true);
               }}>
                 Edit
               </Button>
-              <Button size="sm" variant="outline" className="flex-1">
+              <Button variant="outline" className="flex-1">
                 View
               </Button>
             </div>
@@ -601,7 +601,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
           drawerMode === 'service' ? 'Service Package' :
           'Certification'
         }
-        width="lg"
+       
       >
         <div className="p-4">
           <p className="text-muted-foreground">

@@ -223,7 +223,7 @@ export default function SolutionsPage() {
                     <h3 className="font-title text-xl font-bold mb-2">{solution.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4">{solution.tagline}</p>
                     <a href={solution.href as any as any}>
-                      <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                         Learn More
                         <ArrowRight className="ml-2 h-3 w-3" />
                       </Button>
@@ -287,13 +287,13 @@ export default function SolutionsPage() {
                       {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-4">
                         <a href={solution.href as any as any}>
-                          <Button size="lg" className="w-full sm:w-auto group">
+                          <Button className="w-full sm:w-auto group">
                             Explore {solution.title}
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Button>
                         </a>
                         <Link href="/auth/signup">
-                          <Button size="lg" className="w-full sm:w-auto">
+                          <Button className="w-full sm:w-auto">
                             Start Free Trial
                           </Button>
                         </Link>

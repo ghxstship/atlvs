@@ -99,7 +99,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Space"
         description="Add a new venue space or room"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

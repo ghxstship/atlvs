@@ -331,7 +331,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Production Advancing</h3>
-              <Button size="sm">
+              <Button>
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>
@@ -387,7 +387,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-lg font-semibold">Contracts Status</h3>
-              <Button size="sm">
+              <Button>
                 <ArrowRight className="w-4 h-4" />
               </Button>
             </div>

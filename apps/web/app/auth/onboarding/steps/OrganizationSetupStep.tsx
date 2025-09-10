@@ -286,7 +286,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           <Button 
             onClick={handleContinue} 
             disabled={loading || (setupType === 'create' && !orgName.trim()) || (setupType === 'join' && !inviteCode.trim())}
-            width="lg"
+           
           >
             {loading ? 'Setting up...' : 'Continue'}
             <ArrowRight className="ml-2 h-4 w-4" />

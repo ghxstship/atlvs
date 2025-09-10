@@ -171,7 +171,7 @@ export default function CreateCompanyClient({
       open={isOpen}
       onClose={onClose}
       title="Add New Company"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Company Overview */}

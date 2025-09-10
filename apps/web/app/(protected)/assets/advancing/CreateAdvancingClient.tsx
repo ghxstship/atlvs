@@ -167,7 +167,7 @@ export default function CreateAdvancingClient({
       open={isOpen}
       onClose={onClose}
       title="Create Asset Advance"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Personnel */}

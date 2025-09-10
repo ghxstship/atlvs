@@ -201,7 +201,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
           <Package2 className="h-5 w-5" />
           <h3 className="font-semibold">Products Catalog</h3>
         </div>
-        <Button onClick={() => setShowCreateForm(true)} size="sm">
+        <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
           Add Product
         </Button>
@@ -386,7 +386,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                 
                 <div className="flex items-center gap-2">
                   <Button
-                    size="sm"
+                   
                     variant="outline"
                     onClick={() => startEdit(product)}
                     className="flex-1"
@@ -395,7 +395,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                     Edit
                   </Button>
                   <Button
-                    size="sm"
+                   
                     variant="outline"
                     onClick={() => handleDelete(product.id)}
                   >

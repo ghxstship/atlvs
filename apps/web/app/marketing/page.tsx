@@ -43,13 +43,13 @@ export default function MarketingHomePage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Link href="/login">
-                <Button size="lg" className="min-w-[200px]">
+                <Button className="min-w-[200px]">
                   Get Started Free
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/products">
-                <Button size="lg" className="min-w-[200px]">
+                <Button className="min-w-[200px]">
                   <Play className="mr-2 h-4 w-4" />
                   Watch Demo
                 </Button>
@@ -340,18 +340,18 @@ export default function MarketingHomePage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/login">
-                  <Button size="lg" className="min-w-[200px]">
+                  <Button className="min-w-[200px]">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </Link>
                 <Link href="/pricing">
-                  <Button size="lg" className="min-w-[200px]">
+                  <Button className="min-w-[200px]">
                     View Pricing
                   </Button>
                 </Link>
                 <Link href="/company">
-                  <Button size="lg" className="min-w-[200px]">
+                  <Button className="min-w-[200px]">
                     Contact Sales
                   </Button>
                 </Link>

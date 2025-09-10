@@ -250,7 +250,7 @@ export default function PressPage() {
                         {release.excerpt}
                       </p>
                     </div>
-                    <Button size="sm" className="group">
+                    <Button className="group">
                       Read More
                       <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -261,7 +261,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg">
+            <Button>
               View All Press Releases
             </Button>
           </div>
@@ -302,7 +302,7 @@ export default function PressPage() {
                     {article.excerpt}
                   </p>
                   
-                  <Button size="sm" className="group">
+                  <Button className="group">
                     <ExternalLink className="mr-1 h-3 w-3" />
                     Read Article
                   </Button>
@@ -312,7 +312,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg">
+            <Button>
               View All Coverage
             </Button>
           </div>
@@ -401,7 +401,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-12">
-            <Button size="lg" className="group">
+            <Button className="group">
               <Download className="mr-2 h-4 w-4" />
               Download Complete Press Kit
             </Button>

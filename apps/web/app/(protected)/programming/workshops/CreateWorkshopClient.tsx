@@ -124,7 +124,7 @@ export default function CreateWorkshopClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Workshop"
         description="Add a new workshop event"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

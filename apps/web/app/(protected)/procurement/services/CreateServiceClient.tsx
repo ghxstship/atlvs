@@ -148,7 +148,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
         onClose={() => setOpen(false)}
         title="Add New Service"
         footer={drawerFooter}
-        width="lg"
+       
       >
         <form id="create-service-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6">
           <div className="space-y-4">

@@ -48,7 +48,7 @@ export default function EventsPage() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Join our community events to learn, network, and connect with fellow creators and industry professionals.
           </p>
-          <Button size="lg">
+          <Button>
             View All Events
           </Button>
         </div>

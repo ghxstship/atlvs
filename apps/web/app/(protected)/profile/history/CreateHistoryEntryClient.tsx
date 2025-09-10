@@ -105,7 +105,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
     <>
       <Button 
         variant="primary" 
-        size="sm" 
+        
         onClick={() => setOpen(true)} 
         aria-label="Add History Entry" 
         title="Add History Entry"
@@ -117,7 +117,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
         onClose={() => setOpen(false)} 
         title="Add Professional History Entry" 
         description={submitting ? 'Saving…' : undefined} 
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <form 

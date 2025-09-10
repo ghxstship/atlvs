@@ -276,10 +276,10 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                   </span>
                 </td>
                 <td className="px-3 py-2 text-right space-x-2">
-                  <Button size="sm" onClick={() => resendInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
+                  <Button onClick={() => resendInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
                     Resend
                   </Button>
-                  <Button size="sm" onClick={() => revokeInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
+                  <Button onClick={() => revokeInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
                     Revoke
                   </Button>
                 </td>

@@ -109,7 +109,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Call Sheet"
         description="Create a call sheet for an event"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

@@ -402,21 +402,21 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                   <div className="flex items-center space-x-1">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={() => runReport(report.id)}
                     >
                       <Play className="h-3 w-3" />
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={() => setEditingReport(report)}
                     >
                       <Edit3 className="h-3 w-3" />
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={() => deleteReport(report.id)}
                     >
                       <Trash2 className="h-3 w-3" />
@@ -460,11 +460,11 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t">
                   <div className="flex items-center space-x-2">
-                    <Button size="sm">
+                    <Button>
                       <Eye className="h-3 w-3 mr-1" />
                       View
                     </Button>
-                    <Button size="sm">
+                    <Button>
                       <Download className="h-3 w-3 mr-1" />
                       Export
                     </Button>
@@ -472,7 +472,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                   
                   <Button
                     variant="outline"
-                    size="sm"
+                   
                     onClick={() => toggleReportStatus(report.id)}
                   >
                     {report.status === 'active' ? (

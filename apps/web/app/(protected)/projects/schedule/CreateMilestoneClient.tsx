@@ -103,7 +103,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Milestone"
         description="Add a new milestone to track project progress"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

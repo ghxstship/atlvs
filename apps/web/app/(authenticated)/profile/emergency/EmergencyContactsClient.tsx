@@ -375,14 +375,14 @@ export default function EmergencyContactsClient() {
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={() => handleEdit(contact)}
                     >
                       <Edit2 className="w-4 h-4" />
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={() => handleDelete(contact.id)}
                     >
                       <Trash2 className="w-4 h-4" />

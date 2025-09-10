@@ -189,7 +189,7 @@ export default function CreateMaintenanceClient({
       open={isOpen}
       onClose={onClose}
       title="Schedule Maintenance"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Asset & Type */}

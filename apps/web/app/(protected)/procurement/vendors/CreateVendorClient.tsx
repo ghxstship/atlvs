@@ -125,7 +125,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
       <Button
         onClick={() => setIsOpen(true)}
         className="flex items-center gap-2"
-        size="sm"
+       
       >
         <Plus className="h-4 w-4" />
         Add Vendor

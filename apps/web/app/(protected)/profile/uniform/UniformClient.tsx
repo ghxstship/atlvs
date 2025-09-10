@@ -410,7 +410,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setFilterType(type)}
           >
             {type === 'all' ? 'All Items' : 
@@ -460,17 +460,17 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                           <p className="text-sm text-muted-foreground">{item.brand}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge variant="outline" size="sm">
+                          <Badge variant="outline">
                             {formatItemType(item.item_type)}
                           </Badge>
-                          <Badge variant={getConditionColor(item.condition) as any} size="sm">
+                          <Badge variant={getConditionColor(item.condition) as any}>
                             {formatCondition(item.condition)}
                           </Badge>
                           {item.is_required && (
-                            <Badge variant="primary" size="sm">Required</Badge>
+                            <Badge variant="primary">Required</Badge>
                           )}
                           {needsReplacement && (
-                            <Badge variant="destructive" size="sm">Replacement Due</Badge>
+                            <Badge variant="destructive">Replacement Due</Badge>
                           )}
                         </div>
                       </div>
@@ -478,14 +478,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                     <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleEdit(item)}
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleDelete(item.id)}
                       >
                         <Trash2 className="h-4 w-4" />

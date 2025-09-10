@@ -123,7 +123,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Performance"
         description="Add a new performance event"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

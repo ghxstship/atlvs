@@ -304,14 +304,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                   <div className="flex items-center gap-2">
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => openDrawer(job)}
                     >
                       <Edit className="h-4 w-4" />
                     </Button>
                     <Button
                       variant="outline"
-                      size="sm"
+                     
                       onClick={() => deleteJob(job.id)}
                     >
                       <Trash2 className="h-4 w-4" />

@@ -212,7 +212,7 @@ export default function CreateOverviewClient({
       open={isOpen}
       onClose={onClose}
       title="Add Overview Item"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Item Details */}

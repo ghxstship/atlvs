@@ -97,7 +97,7 @@ export default function CreateActivationClient({
         }}
         title="Create New Activation"
         description="Plan a new project activation or launch process"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

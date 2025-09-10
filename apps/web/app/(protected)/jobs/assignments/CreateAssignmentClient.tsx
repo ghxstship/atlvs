@@ -143,7 +143,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
         onClose={handleClose}
         title="Create New Assignment"
         description="Assign work to team members, contractors, or vendors"
-        width="lg"
+       
         footer={
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

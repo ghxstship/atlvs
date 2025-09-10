@@ -427,14 +427,14 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
             <div className="flex border rounded-md">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('grid')}
               >
                 Grid
               </Button>
               <Button
                 variant={currentView === 'list' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('list')}
               >
                 List
@@ -455,7 +455,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
               <Button
                 key={type}
                 variant={typeFilter === type ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setTypeFilter(type)}
                 className="capitalize"
               >
@@ -470,7 +470,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
               <Button
                 key={status}
                 variant={statusFilter === status ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setStatusFilter(status)}
                 className="capitalize"
               >
@@ -547,7 +547,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                     {contract.status === 'expired' && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleRenewContract(contract.id);
@@ -559,7 +559,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                     {contract.documentUrl && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           window.open(contract.documentUrl, '_blank');
@@ -573,7 +573,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEditContract(contract);
@@ -583,7 +583,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteContract(contract.id);
@@ -610,7 +610,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                       <Badge variant={contract.status === 'active' ? 'success' : 'outline'}>
                         {contract.status}
                       </Badge>
-                      <Button size="sm" onClick={() => handleEditContract(contract)}>
+                      <Button onClick={() => handleEditContract(contract)}>
                         Edit
                       </Button>
                     </div>

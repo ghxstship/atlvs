@@ -137,7 +137,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
         onClose={handleClose}
         title="Create New Bid"
         description="Submit a proposal for an opportunity or job"
-        width="lg"
+       
         footer={
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

@@ -27,7 +27,7 @@ export async function GET(request: NextRequest) {
     }
 
     const subs = await services.webhooks.listActive(ctx.organizationId);
-    const items = subs.map((s) => ({
+    const items = subs.map((s: any) => ({
       id: s.id,
       organizationId: s.organizationId,
       url: s.url,

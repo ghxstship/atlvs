@@ -326,7 +326,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
         <Button 
           onClick={handleContinue} 
           disabled={loading}
-          width="lg"
+         
         >
           {loading ? 'Saving profile...' : 'Complete Setup'}
           <ArrowRight className="ml-2 h-4 w-4" />

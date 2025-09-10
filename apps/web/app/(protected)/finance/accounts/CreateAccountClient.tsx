@@ -123,7 +123,7 @@ export default function CreateAccountClient({
       open={isOpen}
       onClose={onClose}
       title="Add Account"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Account Overview */}

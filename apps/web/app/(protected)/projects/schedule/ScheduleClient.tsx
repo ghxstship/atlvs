@@ -105,7 +105,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
         <div className="flex items-center gap-2">
           <Button
             variant={view === 'timeline' ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setView('timeline')}
           >
             <BarChart3 className="w-4 h-4 mr-1" />
@@ -113,7 +113,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
           </Button>
           <Button
             variant={view === 'calendar' ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setView('calendar')}
           >
             <Calendar className="w-4 h-4 mr-1" />
@@ -121,7 +121,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
           </Button>
           <Button
             variant={view === 'list' ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setView('list')}
           >
             <Clock className="w-4 h-4 mr-1" />
@@ -192,21 +192,21 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
             <div className="flex items-center gap-2">
               <Button
                 variant="outline"
-                size="sm"
+               
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
               >
                 <ChevronLeft className="w-4 h-4" />
               </Button>
               <Button
                 variant="outline"
-                size="sm"
+               
                 onClick={() => setCurrentMonth(new Date())}
               >
                 Today
               </Button>
               <Button
                 variant="outline"
-                size="sm"
+               
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
               >
                 <ChevronRight className="w-4 h-4" />

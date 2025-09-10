@@ -397,7 +397,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
           {recentActivity.length > 0 && (
             <div className="mt-4 pt-4 border-t border-border">
               <Link href="/jobs">
-                <Button size="sm" className="w-full">
+                <Button className="w-full">
                   View All Jobs
                   <ArrowRightIcon className="h-4 w-4 ml-2" />
                 </Button>

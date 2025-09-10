@@ -160,12 +160,12 @@ export function MarketingHeader() {
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             <Link href="/login">
-              <Button size="sm">
+              <Button>
                 Sign In
               </Button>
             </Link>
             <Link href="/auth/signup">
-              <Button size="sm">
+              <Button>
                 Start Free Trial
               </Button>
             </Link>
@@ -238,12 +238,12 @@ export function MarketingHeader() {
               {/* Mobile Auth Buttons */}
               <div className="pt-4 space-y-2">
                 <Link href="/login" className="block">
-                  <Button size="sm" className="w-full justify-center">
+                  <Button className="w-full justify-center">
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth/signup" className="block">
-                  <Button size="sm" className="w-full justify-center">
+                  <Button className="w-full justify-center">
                     Start Free Trial
                   </Button>
                 </Link>

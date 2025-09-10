@@ -316,7 +316,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Workshop Management</h2>
-                <Button size="sm">
+                <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Workshop
                 </Button>
@@ -521,15 +521,15 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
 
                   {/* Quick Actions */}
                   <div className="flex gap-2 pt-4 border-t">
-                    <Button size="sm">
+                    <Button>
                       <Users className="h-4 w-4 mr-2" />
                       Manage Participants
                     </Button>
-                    <Button size="sm">
+                    <Button>
                       <BookOpen className="h-4 w-4 mr-2" />
                       Course Materials
                     </Button>
-                    <Button size="sm">
+                    <Button>
                       <MapPin className="h-4 w-4 mr-2" />
                       Room Assignment
                     </Button>

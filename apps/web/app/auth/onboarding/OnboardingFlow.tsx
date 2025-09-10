@@ -62,7 +62,7 @@ export function OnboardingFlow() {
   }, [router, supabase]);
 
   const updateOnboardingData = (stepData: any) => {
-    setOnboardingData(prev => ({ ...prev, ...stepData }));
+    setOnboardingData((prev: any) => ({ ...prev, ...stepData }));
   };
 
   const goToNextStep = () => {
@@ -134,43 +134,43 @@ export function OnboardingFlow() {
           )}
           {currentStep === 'plan-selection' && (
             <PlanSelectionStep
+              data={onboardingData}
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              
             />
           )}
           {currentStep === 'organization-setup' && (
             <OrganizationSetupStep
               user={user}
+              data={onboardingData}
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              
             />
           )}
           {currentStep === 'team-invitation' && (
             <TeamInvitationStep
               user={user}
+              data={onboardingData}
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              
             />
           )}
           {currentStep === 'profile-completion' && (
             <ProfileCompletionStep
               user={user}
+              data={onboardingData}
               onNext={goToNextStep}
               onBack={goToPreviousStep}
               updateData={updateOnboardingData}
-              
             />
           )}
           {currentStep === 'final-confirmation' && (
             <FinalConfirmationStep
               user={user}
-              
+              data={onboardingData}
             />
           )}
         </div>

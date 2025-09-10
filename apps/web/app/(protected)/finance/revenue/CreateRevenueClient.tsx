@@ -121,7 +121,7 @@ export default function CreateRevenueClient({
       open={isOpen}
       onClose={onClose}
       title="Add Revenue"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Revenue Overview */}

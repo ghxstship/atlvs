@@ -127,7 +127,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Itinerary"
         description="Create a travel or daily schedule itinerary"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

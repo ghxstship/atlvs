@@ -143,7 +143,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
         onClose={handleClose}
         title="Create New Compliance Record"
         description="Track compliance requirements and certifications for jobs"
-        width="lg"
+       
         footer={
           <div className="flex items-center justify-between w-full">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">

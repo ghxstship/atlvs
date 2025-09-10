@@ -444,22 +444,22 @@ function ContractsClient({ user }: ContractsClientProps) {
                     )}
                   </div>
                   <div className="flex gap-2">
-                    <Button size="sm">
+                    <Button>
                       <Eye className="h-4 w-4" /> 
                       View
                     </Button>
-                    <Button size="sm">
+                    <Button>
                       <Edit className="h-4 w-4" /> 
                       Edit
                     </Button>
                     {(contract.document_url || contract.documentUrl) && (
-                      <Button size="sm">
+                      <Button>
                         <Download className="h-4 w-4" /> 
                         Download
                       </Button>
                     )}
                     {contract.milestones && contract.milestones.length > 0 && (
-                      <Button size="sm">
+                      <Button>
                         <BarChart3 className="h-4 w-4" /> 
                         Milestones
                       </Button>

@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     const userId = data.user?.id;
     const ctx = getTenantContextFromRequest(request, userId);
 
-    if (authorize({ userId: ctx.userId, organizationId: ctx.organizationId, roles: ctx.roles }, 'settings:view') === 'deny') {
+    if (authorize({ userId: ctx.userId, organizationId: ctx.organizationId, roles: ctx.roles }, 'settings:manage') === 'deny') {
       return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
     }
 

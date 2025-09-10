@@ -412,7 +412,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
               <Button
                 key={status}
                 variant={statusFilter === status ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setStatusFilter(status)}
                 className="capitalize"
               >
@@ -427,7 +427,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
               <Button
                 key={kind}
                 variant={kindFilter === kind ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setKindFilter(kind)}
                 className="capitalize"
               >
@@ -526,7 +526,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                       <div className="flex space-x-2">
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={(e) => {
                             e.stopPropagation();
                             handleEditTransaction(txData);
@@ -536,7 +536,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                         </Button>
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={(e) => {
                             e.stopPropagation();
                             handleDeleteTransaction(txData.id);

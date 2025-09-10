@@ -126,7 +126,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
     <>
       <Button 
         variant="primary" 
-        size="sm" 
+        
         onClick={() => setOpen(true)} 
         aria-label="Add Performance Review" 
         title="Add Performance Review"
@@ -138,7 +138,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         onClose={() => setOpen(false)} 
         title="Add Performance Review" 
         description={submitting ? 'Saving…' : undefined} 
-        width="lg"
+       
       >
         {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
         <form 

@@ -411,7 +411,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
               <Button
                 key={type}
                 variant={typeFilter === type ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setTypeFilter(type)}
                 className="capitalize"
               >
@@ -426,7 +426,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
               <Button
                 key={period}
                 variant={periodFilter === period ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setPeriodFilter(period)}
                 className="capitalize"
               >
@@ -545,7 +545,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                     {!forecast.actual_amount && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           const actual = prompt('Enter actual amount:');
@@ -562,7 +562,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEditForecast(forecast);
@@ -572,7 +572,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteForecast(forecast.id);

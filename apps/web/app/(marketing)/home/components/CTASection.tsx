@@ -34,13 +34,13 @@ export function CTASection() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/auth/signup">
-            <Button size="lg" variant="primary" className="group">
+            <Button variant="primary" className="group">
               Start Your Free Trial
               <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+            <Button variant="outline" className="border-white text-white hover:bg-white/10">
               Talk to Sales
             </Button>
           </Link>

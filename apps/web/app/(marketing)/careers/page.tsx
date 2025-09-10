@@ -178,13 +178,13 @@ export default function CareersPage() {
               Join a fast-growing company where your work directly impacts the future of production management.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" asChild>
+              <Button asChild>
                 <a href="#open-positions">
                   View Open Positions
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </a>
               </Button>
-              <Button size="lg" asChild>
+              <Button asChild>
                 <a href="#culture">
                   Learn About Our Culture
                 </a>
@@ -303,7 +303,7 @@ export default function CareersPage() {
             <p className="text-muted-foreground mb-6">
               Don't see a role that fits? We're always looking for exceptional talent.
             </p>
-            <Button size="lg">
+            <Button>
               Send Us Your Resume
             </Button>
           </div>
@@ -465,13 +465,13 @@ export default function CareersPage() {
                 Take the next step in your career and help us build the future of creative production management.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" asChild>
+                <Button asChild>
                   <a href="#open-positions">
                     Browse Open Positions
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </a>
                 </Button>
-                <Button size="lg">
+                <Button>
                   Join Our Talent Network
                 </Button>
               </div>

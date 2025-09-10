@@ -118,7 +118,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
   return (
     <>
-      <Button size="sm" onClick={() => setOpen(true)}>
+      <Button onClick={() => setOpen(true)}>
         <Plus className="h-4 w-4 mr-2" />
         Create Order
       </Button>

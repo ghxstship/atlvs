@@ -150,8 +150,8 @@ export async function PUT(
 
     // Remove undefined values
     Object.keys(updateData).forEach(key => {
-      if (updateData[key] === undefined) {
-        delete updateData[key];
+      if ((updateData as any)[key] === undefined) {
+        delete (updateData as any)[key];
       }
     });
 
@@ -238,7 +238,7 @@ export async function DELETE(
       .eq('project_id', params.id)
       .single();
 
-    if (!task || task.project.organization_id !== orgId) {
+    if (!task || (task.project as any).organization_id !== orgId) {
       return NextResponse.json({ error: 'Task not found' }, { status: 404 });
     }
 

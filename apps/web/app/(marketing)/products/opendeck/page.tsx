@@ -177,12 +177,12 @@ export default function OPENDECKPage() {
 
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/auth/signup">
-                  <Button size="lg" className="w-full sm:w-auto group">
+                  <Button className="w-full sm:w-auto group">
                     Join OPENDECK
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   Explore Marketplace
                 </Button>
@@ -419,13 +419,13 @@ export default function OPENDECKPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/auth/signup">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Join OPENDECK
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

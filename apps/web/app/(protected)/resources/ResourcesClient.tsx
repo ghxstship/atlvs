@@ -310,7 +310,7 @@ export default function ResourcesClient() {
                   
                   <div className="flex items-center space-x-2">
                     <Button
-                      size="sm"
+                     
                       variant="outline"
                       onClick={(e) => {
                         e.stopPropagation();
@@ -321,7 +321,7 @@ export default function ResourcesClient() {
                     </Button>
                     {resource.file_url && (
                       <Button
-                        size="sm"
+                       
                         variant="outline"
                         onClick={(e) => {
                           e.stopPropagation();

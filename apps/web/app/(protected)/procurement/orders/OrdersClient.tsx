@@ -195,7 +195,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
           <Package className="h-5 w-5" />
           <h3 className="font-semibold">Purchase Orders</h3>
         </div>
-        <Button onClick={() => setShowCreateForm(true)} size="sm">
+        <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
           Create Order
         </Button>
@@ -369,14 +369,14 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                   
                   <div className="flex items-center gap-2">
                     <Button
-                      size="sm"
+                     
                       variant="outline"
                       onClick={() => startEdit(order)}
                     >
                       <Edit className="h-3 w-3" />
                     </Button>
                     <Button
-                      size="sm"
+                     
                       variant="outline"
                       onClick={() => handleDelete(order.id)}
                     >

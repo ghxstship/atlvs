@@ -151,13 +151,13 @@ export default function ProductsPage() {
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <a href={product.href as any as any}>
-                        <Button size="lg" className="w-full sm:w-auto group">
+                        <Button className="w-full sm:w-auto group">
                           {product.ctaText}
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                       <Link href="/auth/signup">
-                        <Button size="lg" className="w-full sm:w-auto">
+                        <Button className="w-full sm:w-auto">
                           Start Free Trial
                         </Button>
                       </Link>
@@ -249,12 +249,12 @@ export default function ProductsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/products/compare">
-                  <Button size="lg">
+                  <Button>
                     Compare Products
                   </Button>
                 </Link>
                 <Link href="/auth/signup">
-                  <Button size="lg">
+                  <Button>
                     Start Complete Suite
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

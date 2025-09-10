@@ -224,7 +224,7 @@ export default function CreateContractClient({
       open={isOpen}
       onClose={onClose}
       title="Create New Contract"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Contract Details */}

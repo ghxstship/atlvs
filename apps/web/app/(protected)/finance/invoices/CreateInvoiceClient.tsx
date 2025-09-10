@@ -281,7 +281,7 @@ export default function CreateInvoiceClient({
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <h4 className="font-medium text-foreground">Line Items</h4>
-            <Button size="sm" onClick={addLineItem}>
+            <Button onClick={addLineItem}>
               <Plus className="h-4 w-4 mr-2" />
               Add Item
             </Button>
@@ -342,7 +342,7 @@ export default function CreateInvoiceClient({
                       <Button
                         type="button"
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={() => removeLineItem(item.id)}
                         className="text-red-600 hover:text-red-700"
                       >

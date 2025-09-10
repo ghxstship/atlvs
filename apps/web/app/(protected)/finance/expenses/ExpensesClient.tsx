@@ -369,7 +369,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
             <Button
               key={status}
               variant={statusFilter === status ? 'primary' : 'ghost'}
-              size="sm"
+             
               onClick={() => setStatusFilter(status)}
               className="capitalize"
             >
@@ -462,7 +462,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                     {expense.status === 'draft' && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleSubmitExpense(expense.id);
@@ -475,7 +475,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                       <>
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={(e) => {
                             e.stopPropagation();
                             handleApproveExpense(expense.id);
@@ -486,7 +486,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                         </Button>
                         <Button
                           variant="ghost"
-                          size="sm"
+                         
                           onClick={(e) => {
                             e.stopPropagation();
                             const reason = prompt('Rejection reason:');
@@ -505,7 +505,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                   <div className="flex space-x-2">
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleEditExpense(expense);
@@ -515,7 +515,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                     </Button>
                     <Button
                       variant="ghost"
-                      size="sm"
+                     
                       onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteExpense(expense.id);

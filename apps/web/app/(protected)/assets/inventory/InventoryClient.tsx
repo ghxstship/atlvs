@@ -398,21 +398,21 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                   </div>
                   <div className="flex items-center gap-1">
                     <Button
-                      size="sm"
+                     
                       variant="ghost"
                       onClick={() => handleEditAsset(asset)}
                     >
                       <Edit className="w-3 h-3" />
                     </Button>
                     <Button
-                      size="sm"
+                     
                       variant="ghost"
                       onClick={() => handleDuplicateAsset(asset)}
                     >
                       <Copy className="w-3 h-3" />
                     </Button>
                     <Button
-                      size="sm"
+                     
                       variant="ghost"
                       onClick={() => handleDeleteAsset(asset.id)}
                     >
@@ -476,7 +476,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
         open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title={selectedAsset ? 'Edit Asset' : 'Create New Asset'}
-        width="lg"
+       
       >
         <div className="p-6 space-y-4">
           <div>

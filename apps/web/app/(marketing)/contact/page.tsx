@@ -279,7 +279,7 @@ export default function ContactPage() {
                     </label>
                   </div>
 
-                  <Button size="lg" className="w-full group">
+                  <Button className="w-full group">
                     Send Message
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
@@ -367,7 +367,7 @@ export default function ContactPage() {
           <div className="text-center mt-12">
             <p className="text-muted-foreground mb-4">Still have questions?</p>
             <Link href="/resources">
-              <Button size="lg">
+              <Button>
                 Visit Help Center
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -389,13 +389,13 @@ export default function ContactPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth/signup">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">
-                <Button size="lg" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto">
                   View Pricing
                 </Button>
               </Link>

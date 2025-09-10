@@ -242,7 +242,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
         {mode === 'client' ? (
           <>
             <Button 
-              size="sm" 
+              
               variant="primary" 
               className="flex-1"
               onClick={() => updateProposalStatus(proposal.id, 'accepted')}
@@ -251,7 +251,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               Accept
             </Button>
             <Button 
-              size="sm" 
+              
               variant="outline" 
               className="flex-1"
               onClick={() => updateProposalStatus(proposal.id, 'shortlisted')}
@@ -260,7 +260,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               Shortlist
             </Button>
             <Button 
-              size="sm" 
+              
               variant="ghost"
               onClick={() => updateProposalStatus(proposal.id, 'rejected')}
             >
@@ -269,11 +269,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           </>
         ) : (
           <>
-            <Button size="sm" variant="outline" className="flex-1">
+            <Button variant="outline" className="flex-1">
               View Details
             </Button>
             {proposal.status === 'submitted' && (
-              <Button size="sm" variant="ghost">
+              <Button variant="ghost">
                 Withdraw
               </Button>
             )}
@@ -385,7 +385,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           reset();
         }}
         title="Submit Proposal"
-        width="lg"
+       
       >
         <form onSubmit={handleSubmit(submitProposal)} className="p-6 space-y-4">
           <div>

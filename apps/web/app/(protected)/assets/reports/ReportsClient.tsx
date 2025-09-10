@@ -413,7 +413,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                         <div className="flex items-center gap-1 ml-2">
                           {report.status === 'ready' && (
                             <Button
-                              size="sm"
+                             
                               variant="outline"
                               onClick={() => handleDownloadReport(report)}
                             >
@@ -423,7 +423,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                           )}
                           {(report.status === 'ready' || report.status === 'failed') && (
                             <Button
-                              size="sm"
+                             
                               variant="outline"
                               onClick={() => handleRegenerateReport(report.id)}
                             >
@@ -648,7 +648,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
         open={showDrawer}
         onClose={() => setShowDrawer(false)}
         title="Generate New Report"
-        width="lg"
+       
       >
         <div className="p-6 space-y-4">
           <div>

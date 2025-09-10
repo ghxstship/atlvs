@@ -305,7 +305,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
             <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('grid')}
                 className="gap-2"
               >
@@ -314,7 +314,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
               </Button>
               <Button
                 variant={currentView === 'list' ? 'primary' : 'ghost'}
-                size="sm"
+               
                 onClick={() => setCurrentView('list')}
                 className="gap-2"
               >
@@ -441,7 +441,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                     <div className="flex space-x-2">
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleEditBudget(budget);
@@ -451,7 +451,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                       </Button>
                       <Button
                         variant="ghost"
-                        size="sm"
+                       
                         onClick={(e) => {
                           e.stopPropagation();
                           handleDeleteBudget(budget.id);
@@ -495,14 +495,14 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                         <div className="flex space-x-2">
                           <Button
                             variant="ghost"
-                            size="sm"
+                           
                             onClick={() => handleEditBudget(budget)}
                           >
                             <Edit className="h-3 w-3" />
                           </Button>
                           <Button
                             variant="ghost"
-                            size="sm"
+                           
                             onClick={() => handleDeleteBudget(budget.id)}
                           >
                             <Trash2 className="h-3 w-3" />

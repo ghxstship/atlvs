@@ -174,7 +174,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
           <Award className="h-5 w-5" />
           <h3 className="font-semibold">Certifications</h3>
         </div>
-        <Button onClick={() => setShowAddForm(true)} size="sm">
+        <Button onClick={() => setShowAddForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
           Add Certification
         </Button>
@@ -322,7 +322,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
                   <div className="flex items-center gap-2">
                     {cert.verification_url && (
                       <Button
-                        size="sm"
+                       
                         variant="outline"
                         onClick={() => window.open(cert.verification_url, '_blank')}
                       >
@@ -330,7 +330,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
                       </Button>
                     )}
                     <Button
-                      size="sm"
+                     
                       variant="outline"
                       onClick={() => handleDelete(cert.id)}
                     >

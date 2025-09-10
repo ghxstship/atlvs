@@ -351,7 +351,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-foreground">Recent Transactions</h3>
-          <Button size="sm">View All</Button>
+          <Button>View All</Button>
         </div>
         <div className="space-y-3">
           {recentTransactions.length > 0 ? (

@@ -219,7 +219,7 @@ export default function ProcurementOverviewClient() {
             <Button
               key={range}
               variant={timeRange === range ? 'primary' : 'outline'}
-              size="sm"
+             
               onClick={() => setTimeRange(range as any)}
             >
               {range.charAt(0).toUpperCase() + range.slice(1)}

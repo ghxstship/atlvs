@@ -98,7 +98,7 @@ export default function CreateInspectionClient({
         }}
         title="Create New Inspection"
         description="Schedule a new inspection for quality, safety, or compliance"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

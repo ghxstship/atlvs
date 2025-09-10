@@ -156,11 +156,11 @@ export default function PartnershipsPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button size="lg" className="group">
+              <Button className="group">
                 Become a Partner
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button size="lg">
+              <Button>
                 Partner Portal
               </Button>
             </div>
@@ -418,12 +418,12 @@ export default function PartnershipsPage() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Start Partnership Discussion
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button size="lg" className="w-full sm:w-auto">
+              <Button className="w-full sm:w-auto">
                 Download Partner Guide
               </Button>
             </div>

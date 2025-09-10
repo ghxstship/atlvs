@@ -397,14 +397,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 <div className="flex gap-1">
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onEdit}
                   >
                     <Edit className="h-4 w-4" />
                   </TempButton>
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onDelete}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -441,14 +441,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 <div className="flex gap-1">
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onEdit}
                   >
                     <Edit className="h-4 w-4" />
                   </TempButton>
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onDelete}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -471,14 +471,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 <div className="flex gap-1">
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onEdit}
                   >
                     <Edit className="h-4 w-4" />
                   </TempButton>
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onDelete}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -520,14 +520,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 <div className="flex gap-1">
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onEdit}
                   >
                     <Edit className="h-4 w-4" />
                   </TempButton>
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onDelete}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -570,14 +570,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 <div className="flex gap-1">
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onEdit}
                   >
                     <Edit className="h-4 w-4" />
                   </TempButton>
                   <TempButton
                     variant="ghost"
-                    size="sm"
+                   
                     onClick={commonProps.onDelete}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -641,7 +641,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           {notifications.length > 0 && (
             <TempButton
               variant="outline"
-              size="sm"
+             
               className="relative"
             >
               <Bell className="h-4 w-4" />
@@ -688,7 +688,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 </div>
                 <TempButton
                   variant="ghost"
-                  size="sm"
+                 
                   onClick={() => setNotifications([])}
                   className="text-blue-600 hover:text-blue-800"
                 >
@@ -736,7 +736,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               <h3 className="text-lg font-medium">Add New Widget</h3>
               <TempButton
                 variant="ghost"
-                size="sm"
+               
                 onClick={() => setIsWidgetDrawerOpen(false)}
               >
                 ×

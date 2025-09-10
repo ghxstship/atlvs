@@ -249,7 +249,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
                 <h2 className="text-lg font-semibold">Spaces Management</h2>
-                <Button size="sm">
+                <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Space
                 </Button>

@@ -111,7 +111,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
         }}
         title="Add Performer to Lineup"
         description="Add a new performer to an event lineup"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

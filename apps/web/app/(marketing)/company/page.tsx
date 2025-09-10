@@ -186,13 +186,13 @@ export default function CompanyPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers">
-                <Button size="lg">
+                <Button>
                   Join Our Team
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button size="lg">
+                <Button>
                   Contact Us
                 </Button>
               </Link>
@@ -287,14 +287,14 @@ export default function CompanyPage() {
                   <div className="flex justify-center gap-3">
                     {member.linkedin && (
                       <a href={member.linkedin as any as any} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm">
+                        <Button>
                           LinkedIn
                         </Button>
                       </a>
                     )}
                     {member.twitter && (
                       <a href={member.twitter as any as any} target="_blank" rel="noopener noreferrer">
-                        <Button size="sm">
+                        <Button>
                           Twitter
                         </Button>
                       </a>
@@ -405,7 +405,7 @@ export default function CompanyPage() {
                       </div>
                     </div>
                     <a href={press.href as any as any}>
-                      <Button size="sm">
+                      <Button>
                         Read More
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </Button>
@@ -418,7 +418,7 @@ export default function CompanyPage() {
 
           <div className="text-center mt-12">
             <a href="/press">
-              <Button size="lg">
+              <Button>
                 View All Press Releases
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -477,19 +477,19 @@ export default function CompanyPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/careers">
-                  <Button size="lg">
+                  <Button>
                     <Users className="mr-2 h-4 w-4" />
                     View Open Positions
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button size="lg">
+                  <Button>
                     <Mail className="mr-2 h-4 w-4" />
                     Get in Touch
                   </Button>
                 </Link>
                 <Link href="/partnerships">
-                  <Button size="lg">
+                  <Button>
                     Partner with Us
                   </Button>
                 </Link>

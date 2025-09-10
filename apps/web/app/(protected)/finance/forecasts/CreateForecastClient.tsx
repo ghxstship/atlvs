@@ -138,7 +138,7 @@ export default function CreateForecastClient({
       open={isOpen}
       onClose={onClose}
       title="Create Forecast"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Forecast Overview */}

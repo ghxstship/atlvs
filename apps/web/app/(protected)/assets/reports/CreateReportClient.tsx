@@ -190,7 +190,7 @@ export default function CreateReportClient({
       open={isOpen}
       onClose={onClose}
       title="Create Asset Report"
-      width="lg"
+     
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Basic Information */}

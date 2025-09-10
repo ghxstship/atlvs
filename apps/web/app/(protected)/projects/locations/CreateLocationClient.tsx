@@ -114,7 +114,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
         }}
         title="Create New Location"
         description="Add a new location for projects and events"
-        width="lg"
+       
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (

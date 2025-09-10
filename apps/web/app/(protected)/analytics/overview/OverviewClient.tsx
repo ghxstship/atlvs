@@ -315,7 +315,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             ))}
           </div>
           <div className="mt-4 pt-4 border-t">
-            <Button size="sm" className="w-full">
+            <Button className="w-full">
               View All Activity
             </Button>
           </div>
@@ -353,7 +353,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             ))}
           </div>
           <div className="mt-4 pt-4 border-t">
-            <Button size="sm" className="w-full">
+            <Button className="w-full">
               View Detailed Analytics
             </Button>
           </div>

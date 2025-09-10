@@ -52,7 +52,7 @@ export default function ForumsPage() {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Connect with fellow creators, share knowledge, and get support from the GHXSTSHIP community.
           </p>
-          <Button size="lg">
+          <Button>
             Join the Discussion
           </Button>
         </div>

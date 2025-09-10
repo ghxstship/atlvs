@@ -159,7 +159,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
         
         <Button
           variant="outline"
-          size="sm"
+         
           onClick={exportActivities}
           className="flex items-center gap-2"
         >

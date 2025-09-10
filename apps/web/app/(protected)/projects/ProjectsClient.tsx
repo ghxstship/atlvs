@@ -194,7 +194,7 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
               open={false}
               onClose={() => {}}
               title="Project Details"
-              width="lg"
+             
             >
               <div className="p-6">
                 <p className="text-muted-foreground">Project details will be displayed here.</p>

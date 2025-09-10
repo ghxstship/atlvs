@@ -328,12 +328,12 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                     <div className="flex gap-2">
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => setSelectedOpportunity(opportunity)}
                       >
                         View
                       </Button>
-                      <Button size="sm">
+                      <Button>
                         Edit
                       </Button>
                     </div>

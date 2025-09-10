@@ -465,7 +465,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 You have {notifications.length} new notifications
               </span>
             </div>
-            <Button size="sm">View All</Button>
+            <Button>View All</Button>
           </div>
         </Card>
       )}

@@ -389,7 +389,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
-            size="sm"
+           
             onClick={() => setFilterType(type)}
           >
             {type === 'all' ? 'All Trips' : formatTravelType(type)}
@@ -433,11 +433,11 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                         <h3 className="font-semibold">{record.destination}</h3>
                         <p className="text-sm text-muted-foreground">{record.country}</p>
                         <div className="flex items-center gap-2 mt-1">
-                          <Badge variant="outline" size="sm">
+                          <Badge variant="outline">
                             {formatTravelType(record.travel_type)}
                           </Badge>
                           {record.visa_required && (
-                            <Badge variant={getVisaStatusColor(record.visa_status) as any} size="sm">
+                            <Badge variant={getVisaStatusColor(record.visa_status) as any}>
                               Visa: {formatVisaStatus(record.visa_status)}
                             </Badge>
                           )}
@@ -447,14 +447,14 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                     <div className="flex items-center gap-2">
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleEdit(record)}
                       >
                         <Edit className="h-4 w-4" />
                       </Button>
                       <Button
                         variant="outline"
-                        size="sm"
+                       
                         onClick={() => handleDelete(record.id)}
                       >
                         <Trash2 className="h-4 w-4" />

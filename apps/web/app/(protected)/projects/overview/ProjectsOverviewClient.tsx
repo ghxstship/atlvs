@@ -271,7 +271,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           <h3 className="text-lg font-semibold">Recent Projects</h3>
           <Button 
             variant="outline" 
-            size="sm"
+           
             onClick={() => router.push('/projects')}
           >
             View All
