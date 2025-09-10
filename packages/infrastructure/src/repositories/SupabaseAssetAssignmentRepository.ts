@@ -1,4 +1,5 @@
-import { createClient } from '@supabase/supabase-js';
+import type { SupabaseClient } from '@supabase/supabase-js';
+import type { Database } from '@ghxstship/domain';
 import { 
   AssetAssignment,
   AssetAssignmentRepository,
@@ -6,7 +7,7 @@ import {
 } from '@ghxstship/domain';
 
 export class SupabaseAssetAssignmentRepository implements AssetAssignmentRepository {
-  constructor(private readonly supabase: ReturnType<typeof createClient>) {}
+  constructor(private readonly supabase: SupabaseClient<Database, 'public'>) {}
 
   async findById(id: string, organizationId: string): Promise<AssetAssignment | null> {
     const { data, error } = await this.supabase
@@ -42,7 +43,7 @@ export class SupabaseAssetAssignmentRepository implements AssetAssignmentReposit
   }
 
   async create(assignment: Omit<AssetAssignment, 'id' | 'createdAt' | 'updatedAt'>): Promise<AssetAssignment> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_assignments')
       .insert(this.mapFromAssetAssignment(assignment))
       .select()
@@ -53,9 +54,9 @@ export class SupabaseAssetAssignmentRepository implements AssetAssignmentReposit
   }
 
   async update(id: string, organizationId: string, updates: Partial<AssetAssignment>): Promise<AssetAssignment> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_assignments')
-      .update(this.mapFromAssetAssignment(updates) as never)
+      .update(this.mapFromAssetAssignment(updates))
       .eq('id', id)
       .eq('organization_id', organizationId)
       .select()

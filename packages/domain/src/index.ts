@@ -54,3 +54,6 @@ export * from './modules/settings';
 
 // Resources module
 export * from './modules/resources';
+
+// Shared types
+export type { Database } from './types/database';
