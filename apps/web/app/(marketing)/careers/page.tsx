@@ -169,9 +169,7 @@ export default function CareersPage() {
             <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
               BUILD YOUR CAREER
               <br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                WITH GHXSTSHIP
-              </span>
+              WITH GHXSTSHIP
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Help us build the tools that empower creative teams worldwide. 

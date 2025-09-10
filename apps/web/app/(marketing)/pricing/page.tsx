@@ -147,9 +147,7 @@ export default function PricingPage() {
             <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
               SIMPLE,
               <br />
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                TRANSPARENT PRICING
-              </span>
+              TRANSPARENT PRICING
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
               Choose the perfect plan for your team. All plans include a 14-day free trial 
