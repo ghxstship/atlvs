@@ -1,5 +1,4 @@
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
-import type { Database } from '@ghxstship/domain';
 import { createServerClient as createSSRClient, type CookieOptions } from '@supabase/ssr';
 
 export const createBrowserClient = () => {
@@ -38,7 +37,7 @@ export const createServiceRoleClient = () => {
   if (!url || !serviceKey) {
     throw new Error('SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set in env');
   }
-  return createSupabaseClient<Database>(url, serviceKey, { auth: { persistSession: false } });
+  return createSupabaseClient(url, serviceKey, { auth: { persistSession: false } });
 };
 
 // Export createClient as an alias for createBrowserClient for backward compatibility

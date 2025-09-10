@@ -25,7 +25,7 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
   try {
     const svc = createServiceRoleClient();
     const vendorId = crypto.randomUUID();
-    await svc.from('marketplace_vendors').insert({
+    await (svc as any).from('marketplace_vendors').insert({
       id: vendorId,
       organization_id: orgId,
       name: 'Blackwater Audio Co',
@@ -33,9 +33,9 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
       contact_email: 'crew@blackwater-audio.test',
       status: 'active',
       is_demo: true
-    });
+    } as any);
     const listingId = crypto.randomUUID();
-    await svc.from('marketplace_listings').insert({
+    await (svc as any).from('marketplace_listings').insert({
       id: listingId,
       organization_id: orgId,
       title: 'Phantom PA Stack — Rent',
@@ -45,7 +45,7 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
       status: 'active',
       vendor_id: vendorId,
       is_demo: true
-    });
+    } as any);
   } catch {}
   // Best-effort: upload a few demo assets to Storage and link in files table
   try {
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
       const path = `${orgId}/${Date.now()}_${a.name}`;
       const { error: upErr } = await supabase.storage.from('attachments').upload(path, arrayBuf, { contentType: a.contentType, upsert: false });
       if (!upErr) {
-        await supabase.from('files').insert({
+        await (supabase as any).from('files').insert({
           organization_id: orgId,
           project_id: projectId,
           name: a.name,
@@ -70,17 +70,17 @@ export async function POST(req: NextRequest, { params }: { params: { orgId: stri
           mime_type: a.contentType,
           size: arrayBuf.byteLength,
           is_demo: true,
-        });
+        } as any);
       }
     }
   } catch {}
   // Notify user
-  await supabase.from('user_notifications').insert({
+  await (supabase as any).from('user_notifications').insert({
     organization_id: orgId,
     title: 'Demo data loaded',
     body: 'Pirate-themed demo projects and resources are now available.',
     href: '/projects/overview'
-  });
+  } as any);
   return NextResponse.json({ ok: true, data });
 }
 
@@ -101,11 +101,11 @@ export async function DELETE(req: NextRequest, { params }: { params: { orgId: st
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
   // Notify user
-  await supabase.from('user_notifications').insert({
+  await (supabase as any).from('user_notifications').insert({
     organization_id: orgId,
     title: 'Demo data removed',
     body: 'All demo records have been deleted for this organization.',
     href: '/projects/overview'
-  });
+  } as any);
   return NextResponse.json({ ok: true, data });
 }

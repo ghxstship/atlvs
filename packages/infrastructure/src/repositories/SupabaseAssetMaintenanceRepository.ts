@@ -47,7 +47,7 @@ export class SupabaseAssetMaintenanceRepository implements AssetMaintenanceRepos
   }
 
   async create(maintenance: Omit<AssetMaintenance, 'id' | 'createdAt' | 'updatedAt'>): Promise<AssetMaintenance> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_maintenance')
       .insert(this.mapFromAssetMaintenance(maintenance))
       .select()
@@ -58,7 +58,7 @@ export class SupabaseAssetMaintenanceRepository implements AssetMaintenanceRepos
   }
 
   async update(id: string, organizationId: string, updates: Partial<AssetMaintenance>): Promise<AssetMaintenance> {
-    const { data, error } = await this.supabase
+    const { data, error } = await (this.supabase as any)
       .from('asset_maintenance')
       .update(this.mapFromAssetMaintenance(updates))
       .eq('id', id)
