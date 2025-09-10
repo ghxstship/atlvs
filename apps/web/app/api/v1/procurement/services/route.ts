@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createServerClient } from '@ghxstship/auth';
-import { ProcurementService } from '@ghxstship/application';
+import { createClient } from '@/lib/supabase/server';
 import { z } from 'zod';
 
 const createServiceSchema = z.object({
@@ -18,7 +17,7 @@ const updateServiceSchema = createServiceSchema.partial();
 
 export async function GET(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -49,10 +48,19 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 });
     }
 
-    const procurementService = new ProcurementService(supabase);
-    const services = await procurementService.listServices(orgId);
+    // Direct Supabase query for services
+    const { data: services, error } = await supabase
+      .from('services')
+      .select('*')
+      .eq('organization_id', orgId)
+      .order('created_at', { ascending: false });
 
-    return NextResponse.json({ data: services });
+    if (error) {
+      console.error('Error fetching services:', error);
+      return NextResponse.json({ error: 'Failed to fetch services' }, { status: 500 });
+    }
+
+    return NextResponse.json({ data: services ?? [] });
   } catch (error) {
     console.error('Error fetching services:', error);
     return NextResponse.json(
@@ -64,7 +72,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const supabase = createServerClient();
+    const supabase = await createClient();
     const { data: { user } } = await supabase.auth.getUser();
     
     if (!user) {
@@ -98,8 +106,29 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = createServiceSchema.parse(body);
 
-    const procurementService = new ProcurementService(supabase);
-    const service = await procurementService.createService(orgId, validatedData, user.id);
+    // Direct Supabase insert for service
+    const { data: service, error } = await supabase
+      .from('services')
+      .insert({
+        organization_id: orgId,
+        name: validatedData.name,
+        description: validatedData.description,
+        category: validatedData.category,
+        rate: validatedData.rate,
+        currency: validatedData.currency,
+        unit: validatedData.unit,
+        supplier: validatedData.supplier,
+        status: validatedData.status,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      })
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error creating service:', error);
+      return NextResponse.json({ error: 'Failed to create service' }, { status: 500 });
+    }
 
     return NextResponse.json({ data: service }, { status: 201 });
   } catch (error) {
