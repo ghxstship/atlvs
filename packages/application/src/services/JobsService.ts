@@ -31,6 +31,16 @@ export class JobsService {
     return this.repos.jobs.list(ctx.organizationId, limit, offset);
   }
 
+  // Alias for API compatibility
+  async list(ctx: TenantContext, { limit = 20, offset = 0 }: { limit?: number; offset?: number }) {
+    return this.listJobs(ctx, { limit, offset });
+  }
+
+  // Alias for API compatibility
+  async create(ctx: TenantContext, input: any) {
+    return this.createJob(ctx, input);
+  }
+
   async getJob(ctx: TenantContext, id: string) {
     const job = await this.repos.jobs.findById(id, ctx.organizationId);
     if (!job) throw new Error('Job not found');

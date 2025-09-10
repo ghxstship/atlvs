@@ -108,7 +108,7 @@ export interface DataViewConfig {
   onRefresh?: () => void;
   onExport?: (data: DataRecord[], format: string) => void;
   onImport?: (data: any[]) => void;
-  onSaveView?: (view: SavedView) => void;
+  onSaveView?: (view: Omit<SavedView, 'id'>) => void;
   onLoadView?: (viewId: string) => void;
 }
 
@@ -163,7 +163,7 @@ export interface ImportConfig {
 
 export interface DataViewConfig {
   // Core configuration
-  data: DataRecord[];
+  data?: DataRecord[];
   fields: FieldConfig[];
   loading?: boolean;
   error?: string;

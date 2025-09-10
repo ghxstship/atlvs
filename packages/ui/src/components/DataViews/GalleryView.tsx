@@ -59,7 +59,7 @@ export function GalleryView({
 
   // Convert data records to gallery items
   const galleryItems = useMemo(() => {
-    return config.data.map(record => ({
+    return (config.data || []).map(record => ({
       id: record.id,
       title: record[titleField] || 'Untitled',
       description: descriptionField ? record[descriptionField] : undefined,
@@ -461,7 +461,10 @@ export function GalleryView({
               variant="ghost"
               size="sm"
               disabled={state.pagination.page === 1}
-              onClick={() => actions.setPagination(state.pagination.page - 1)}
+              onClick={() => actions.setPagination({ 
+                ...state.pagination, 
+                page: state.pagination.page - 1 
+              })}
             >
               Previous
             </Button>
@@ -474,7 +477,10 @@ export function GalleryView({
               variant="ghost"
               size="sm"
               disabled={state.pagination.page >= Math.ceil(filteredItems.length / state.pagination.pageSize)}
-              onClick={() => actions.setPagination(state.pagination.page + 1)}
+              onClick={() => actions.setPagination({ 
+                ...state.pagination, 
+                page: state.pagination.page + 1 
+              })}
             >
               Next
             </Button>

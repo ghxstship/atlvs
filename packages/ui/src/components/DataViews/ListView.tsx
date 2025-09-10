@@ -55,7 +55,7 @@ export function ListView({
 
   // Apply search and filters
   const filteredData = useMemo(() => {
-    let filtered = [...config.data];
+    let filtered = [...(config.data || [])];
 
     // Apply search
     if (state.search) {
@@ -184,9 +184,9 @@ export function ListView({
     const allSelected = state.selection.length === allItems.length;
     
     if (allSelected) {
-      actions.clearSelection();
+      actions.setSelectedRecords([]);
     } else {
-      actions.setSelection(allItems.map(item => item.id));
+      actions.setSelectedRecords(allItems.map(item => item.id));
     }
   }, [paginatedData, state.selection.length, actions]);
 
@@ -309,8 +309,14 @@ export function ListView({
                           {/* Selection Checkbox */}
                           <Checkbox
                             checked={isSelected}
-                            onChange={() => actions.toggleSelection(record.id)}
-                            onClick={(e) => e.stopPropagation()}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              if (isSelected) {
+                                actions.setSelectedRecords(state.selection.filter(id => id !== record.id));
+                              } else {
+                                actions.setSelectedRecords([...state.selection, record.id]);
+                              }
+                            }}
                             aria-label={`Select ${record[titleField]}`}
                           />
 
@@ -414,7 +420,10 @@ export function ListView({
               variant="ghost"
               size="sm"
               disabled={state.pagination.page === 1}
-              onClick={() => actions.setPagination(state.pagination.page - 1)}
+              onClick={() => actions.setPagination({ 
+                ...state.pagination, 
+                page: state.pagination.page - 1 
+              })}
             >
               Previous
             </Button>
@@ -427,7 +436,10 @@ export function ListView({
               variant="ghost"
               size="sm"
               disabled={state.pagination.page >= Math.ceil(filteredData.length / state.pagination.pageSize)}
-              onClick={() => actions.setPagination(state.pagination.page + 1)}
+              onClick={() => actions.setPagination({ 
+                ...state.pagination, 
+                page: state.pagination.page + 1 
+              })}
             >
               Next
             </Button>

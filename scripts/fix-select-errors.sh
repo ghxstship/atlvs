@@ -1,3 +1,16 @@
+#!/bin/bash
+
+# Fix Select component prop errors in DataActions.tsx
+set -e
+
+echo "🔧 Fixing Select component prop errors..."
+
+# Get the project root
+PROJECT_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$PROJECT_ROOT"
+
+# Fix DataActions.tsx Select component usage
+cat > packages/ui/src/components/DataViews/DataActions.tsx << 'EOF'
 'use client';
 
 import React, { useState, useCallback } from 'react';
@@ -232,15 +245,16 @@ export function DataActions({
       {/* Filter Modal */}
       {showFilterModal && (
         <Modal
-          open={showFilterModal}
+          isOpen={showFilterModal}
           onClose={() => setShowFilterModal(false)}
           title="Manage Filters"
+          size="default"
         >
           <FilterForm
             fields={state.fields}
             currentFilters={state.filters}
-            onAddFilter={(filter: any) => actions.setFilters([...state.filters, filter])}
-            onRemoveFilter={(index: number) => actions.setFilters(state.filters.filter((_, i) => i !== index))}
+            onAddFilter={actions.addFilter}
+            onRemoveFilter={actions.removeFilter}
             onClose={() => setShowFilterModal(false)}
           />
         </Modal>
@@ -249,15 +263,16 @@ export function DataActions({
       {/* Sort Modal */}
       {showSortModal && (
         <Modal
-          open={showSortModal}
+          isOpen={showSortModal}
           onClose={() => setShowSortModal(false)}
           title="Manage Sorting"
+          size="default"
         >
           <SortForm
             fields={state.fields}
             currentSorts={state.sorts}
-            onAddSort={(sort: any) => actions.setSorts([...state.sorts, sort])}
-            onRemoveSort={(index: number) => actions.setSorts(state.sorts.filter((_, i) => i !== index))}
+            onAddSort={actions.addSort}
+            onRemoveSort={actions.removeSort}
             onClose={() => setShowSortModal(false)}
           />
         </Modal>
@@ -266,9 +281,10 @@ export function DataActions({
       {/* Export Modal */}
       {showExportModal && (
         <Modal
-          open={showExportModal}
+          isOpen={showExportModal}
           onClose={() => setShowExportModal(false)}
           title="Export Data"
+          size="default"
         >
           <div className="space-y-4">
             <div>
@@ -279,8 +295,8 @@ export function DataActions({
                 className="w-full p-2 border border-gray-300 rounded-md"
               >
                 {config.exportConfig?.formats?.map(format => (
-                  <option key={format} value={format}>
-                    {format.toUpperCase()}
+                  <option key={format.value} value={format.value}>
+                    {format.label}
                   </option>
                 )) || [
                   <option key="csv" value="csv">CSV</option>,
@@ -314,9 +330,10 @@ export function DataActions({
       {/* Import Modal */}
       {showImportModal && (
         <Modal
-          open={showImportModal}
+          isOpen={showImportModal}
           onClose={() => setShowImportModal(false)}
           title="Import Data"
+          size="default"
         >
           <div className="space-y-4">
             <div>
@@ -508,3 +525,16 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
     </div>
   );
 }
+EOF
+
+echo "✅ DataActions.tsx rewritten with proper Select usage"
+
+# Test the build
+echo "🔧 Testing build..."
+if npm run build; then
+    echo "🎉 Build successful! All TypeScript errors resolved."
+else
+    echo "❌ Build still has errors."
+    exit 1
+fi
+EOF

@@ -98,7 +98,7 @@ export function Alert({
             {actions.map((action, index) => (
               <Button
                 key={index}
-                variant={action.variant || 'ghost'}
+                variant={action.variant === 'secondary' ? 'outline' : (action.variant || 'ghost')}
                 size="sm"
                 onClick={action.onClick}
                 className="text-xs"

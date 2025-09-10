@@ -175,7 +175,7 @@ export class FinanceService {
       occurredAt: now, 
       actor: { userId: ctx.userId }, 
       tenant: { organizationId: ctx.organizationId }, 
-      action: 'approve', 
+      action: 'update', 
       entity: { type: 'expense', id: expenseId }, 
       meta: { previousStatus: expense.status, newStatus: 'approved' }
     });

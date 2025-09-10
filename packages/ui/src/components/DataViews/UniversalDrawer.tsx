@@ -510,7 +510,7 @@ export function UniversalDrawer({
                 {actions.map(action => (
                   <Button
                     key={action.key}
-                    variant={action.variant || 'ghost'}
+                    variant={action.variant === 'secondary' ? 'outline' : (action.variant || 'ghost')}
                     size="sm"
                     onClick={() => record && action.onClick(record)}
                   >

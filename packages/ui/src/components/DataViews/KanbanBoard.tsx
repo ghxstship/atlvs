@@ -54,7 +54,7 @@ export function KanbanBoard({
       groups[column.id] = [];
     });
 
-    config.data.forEach(record => {
+    (config.data || []).forEach(record => {
       const status = record[statusField];
       if (groups[status]) {
         groups[status].push(record);
@@ -85,8 +85,8 @@ export function KanbanBoard({
     const cardId = e.dataTransfer.getData('text/plain');
     
     if (cardId && draggedCard) {
-      const card = config.data.find(record => record.id === cardId);
-      const currentColumn = card?.[statusField];
+      const record = (config.data || []).find(r => r.id === cardId);
+      const currentColumn = record?.[statusField];
       
       if (currentColumn !== columnId) {
         onCardMove?.(cardId, currentColumn, columnId);
@@ -239,7 +239,12 @@ export function KanbanBoard({
                       draggable
                       onDragStart={(e) => handleDragStart(e, record.id)}
                       onClick={() => {
-                        actions.toggleSelection(record.id);
+                        const isSelected = state.selection.includes(record.id);
+                        if (isSelected) {
+                          actions.setSelectedRecords(state.selection.filter(id => id !== record.id));
+                        } else {
+                          actions.setSelectedRecords([...state.selection, record.id]);
+                        }
                         onCardClick?.(record);
                       }}
                     >

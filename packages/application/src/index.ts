@@ -14,79 +14,14 @@ export const EventBus = {
 export { AssetsService } from './services/AssetsService';
 export { ProcurementService } from './services/ProcurementService';
 export { ProjectsService } from './services/ProjectsService';
-
-// Additional missing services
-export const ApiKeysService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  delete: () => Promise.resolve(),
-};
-
-export const WebhooksService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  delete: () => Promise.resolve(),
-};
-
-export const ProgramsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const PipelineService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const FinanceService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const JobsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const AnalyticsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const CompaniesService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const ListingsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const VendorsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
-
-export const CatalogItemsService = {
-  create: () => Promise.resolve({}),
-  list: () => Promise.resolve([]),
-  update: () => Promise.resolve({}),
-  delete: () => Promise.resolve(),
-};
+export { ApiKeysService } from './services/ApiKeysService';
+export { WebhooksService } from './services/WebhooksService';
+export { ProgramsService } from './services/ProgramsService';
+export { PipelineService } from './services/PipelineService';
+export { FinanceService } from './services/FinanceService';
+export { JobsService } from './services/JobsService';
+export { AnalyticsService } from './services/AnalyticsService';
+export { CompaniesService } from './services/CompaniesService';
+export { ListingsService } from './services/ListingsService';
+export { VendorsService } from './services/VendorsService';
+export { CatalogItemsService } from './services/CatalogItemsService';

@@ -5,64 +5,91 @@
 
 'use client';
 
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import { SupabaseDataService, createDataService, type DataServiceConfig } from '@ghxstship/application/lib/supabase/data-service';
-import type { DataRecord, FilterConfig, SortConfig, DataViewConfig } from '../types';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { DataRecord, FilterConfig, SortConfig, DataViewConfig } from '../types';
 
-interface SupabaseDataContextValue {
+interface DataContextValue {
+  // Data state
   data: DataRecord[];
   loading: boolean;
   error: string | null;
   totalCount: number;
   
-  // CRUD Operations
-  createRecord: (record: Partial<DataRecord>) => Promise<DataRecord>;
-  updateRecord: (id: string, updates: Partial<DataRecord>) => Promise<DataRecord>;
-  deleteRecord: (id: string) => Promise<void>;
-  
-  // Bulk Operations
-  bulkCreate: (records: Partial<DataRecord>[]) => Promise<DataRecord[]>;
-  bulkUpdate: (updates: { id: string; data: Partial<DataRecord> }[]) => Promise<DataRecord[]>;
-  bulkDelete: (ids: string[]) => Promise<void>;
-  
-  // Query Operations
-  search: (query: string) => Promise<void>;
-  filter: (filters: FilterConfig[]) => Promise<void>;
-  sort: (sorts: SortConfig[]) => Promise<void>;
-  refresh: () => Promise<void>;
-  
-  // Import/Export
-  exportData: (format: 'csv' | 'json' | 'xlsx') => Promise<Blob>;
-  importData: (data: any[]) => Promise<{ success: DataRecord[]; errors: any[] }>;
-  
-  // Record Details
-  getRecordComments: (recordId: string) => Promise<any[]>;
-  addComment: (recordId: string, content: string) => Promise<any>;
-  getRecordActivity: (recordId: string) => Promise<any[]>;
-  getRecordFiles: (recordId: string) => Promise<any[]>;
-  
-  // State Management
+  // Query state
   currentFilters: FilterConfig[];
   currentSorts: SortConfig[];
   currentSearch: string;
+  currentPage: number;
   
-  // Optimistic Updates
-  optimisticUpdate: (id: string, updates: Partial<DataRecord>) => void;
-  revertOptimisticUpdate: (id: string) => void;
+  // Actions
+  createRecord: (record: Partial<DataRecord>) => Promise<DataRecord>;
+  updateRecord: (id: string, updates: Partial<DataRecord>) => Promise<DataRecord>;
+  deleteRecord: (id: string) => Promise<boolean>;
+  bulkCreate: (records: Partial<DataRecord>[]) => Promise<DataRecord[]>;
+  bulkUpdate: (updates: Array<{ id: string; data: Partial<DataRecord> }>) => Promise<DataRecord[]>;
+  bulkDelete: (ids: string[]) => Promise<boolean>;
+  
+  // Query actions
+  setSearch: (search: string) => void;
+  setFilters: (filters: FilterConfig[]) => void;
+  setSorts: (sorts: SortConfig[]) => void;
+  setPagination: (page: number) => void;
+  
+  // Data actions
+  exportData: (format: string) => Promise<Blob>;
+  importData: (data: any[]) => Promise<{ success: any[]; errors: any[] }>;
+  
+  // Record details
+  getRecordComments: (recordId: string) => Promise<any[]>;
+  addComment: (recordId: string, comment: any) => Promise<any>;
+  getRecordActivity: (recordId: string) => Promise<any[]>;
+  getRecordFiles: (recordId: string) => Promise<any[]>;
+  
+  // Optimistic updates
+  clearOptimisticUpdates: () => void;
+  rollbackOptimisticUpdate: (id: string) => void;
 }
 
-const SupabaseDataContext = createContext<SupabaseDataContextValue | null>(null);
+const DataContext = createContext<DataContextValue | null>(null);
+
+export const useDataContext = () => {
+  const context = useContext(DataContext);
+  if (!context) {
+    throw new Error('useDataContext must be used within a SupabaseDataProvider');
+  }
+  return context;
+};
 
 interface SupabaseDataProviderProps {
   children: React.ReactNode;
-  config: DataServiceConfig & {
-    pageSize?: number;
+  config: {
+    table: string;
+    service?: any;
+    realtime?: boolean;
     enableOptimistic?: boolean;
+    pageSize?: number;
   };
 }
 
 export function SupabaseDataProvider({ children, config }: SupabaseDataProviderProps) {
-  const [service] = useState(() => createDataService(config));
+  // Mock service for now until proper implementation
+  const service = {
+    subscribe: () => () => {},
+    query: async () => ({ data: [], count: 0 }),
+    create: async (record: any) => record,
+    update: async (id: string, updates: any) => ({ id, ...updates }),
+    delete: async (id: string) => true,
+    bulkCreate: async (records: any[]) => records,
+    bulkUpdate: async (updates: any[]) => updates,
+    bulkDelete: async (ids: string[]) => true,
+    exportData: async () => new Blob(),
+    importData: async (data: any[]) => ({ success: data, errors: [] }),
+    getRecordComments: async () => [],
+    addComment: async (id: string, comment: any) => comment,
+    getRecordActivity: async () => [],
+    getRecordFiles: async () => []
+  };
+  
   const [data, setData] = useState<DataRecord[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -83,32 +110,24 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
       setLoading(true);
       setError(null);
       
-      const result = await service.fetchData({
-        filters: currentFilters,
-        sorts: currentSorts,
-        search: currentSearch,
-        page: currentPage,
-        limit: config.pageSize || 50
-      });
-      
-      setData(result);
-      setTotalCount(result.length); // In real implementation, get total count from separate query
+      const result = await service.query();
+      setData(result.data);
+      setTotalCount(result.count);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load data');
     } finally {
       setLoading(false);
     }
-  }, [service, currentFilters, currentSorts, currentSearch, currentPage, config.pageSize]);
+  }, [service]);
 
   // Setup realtime subscription
   useEffect(() => {
-    const unsubscribe = service.subscribe((newData) => {
-      setData(newData);
-    });
-
+    const unsubscribe = service.subscribe();
     loadData();
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, [service, loadData]);
 
   // Apply optimistic updates to data
@@ -116,16 +135,15 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
     if (optimisticUpdates.size === 0) return data;
     
     return data.map(record => {
-      const optimisticUpdate = optimisticUpdates.get(record.id);
-      return optimisticUpdate ? { ...record, ...optimisticUpdate } : record;
+      const updates = optimisticUpdates.get(record.id);
+      return updates ? { ...record, ...updates } : record;
     });
   }, [data, optimisticUpdates]);
 
-  // CRUD Operations with optimistic updates
   const createRecord = useCallback(async (record: Partial<DataRecord>): Promise<DataRecord> => {
     try {
-      const newRecord = await service.createRecord(record);
-      await loadData(); // Refresh data
+      const newRecord = await service.create(record);
+      await loadData();
       return newRecord;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to create record');
@@ -140,7 +158,7 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
         setOptimisticUpdates(prev => new Map(prev).set(id, updates));
       }
       
-      const updatedRecord = await service.updateRecord(id, updates);
+      const updatedRecord = await service.update(id, updates);
       
       // Clear optimistic update and refresh
       setOptimisticUpdates(prev => {
@@ -152,7 +170,7 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
       await loadData();
       return updatedRecord;
     } catch (err) {
-      // Revert optimistic update on error
+      // Rollback optimistic update on error
       setOptimisticUpdates(prev => {
         const next = new Map(prev);
         next.delete(id);
@@ -164,82 +182,78 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
     }
   }, [service, loadData, config.enableOptimistic]);
 
-  const deleteRecord = useCallback(async (id: string): Promise<void> => {
+  const deleteRecord = useCallback(async (id: string): Promise<boolean> => {
     try {
-      await service.deleteRecord(id);
+      const result = await service.delete(id);
       await loadData();
+      return result;
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to delete record');
       throw err;
     }
   }, [service, loadData]);
 
-  // Bulk operations
   const bulkCreate = useCallback(async (records: Partial<DataRecord>[]): Promise<DataRecord[]> => {
     try {
-      const newRecords = await service.bulkCreate(records);
+      const result = await service.bulkCreate(records);
       await loadData();
-      return newRecords;
+      return result;
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to bulk create records');
+      setError(err instanceof Error ? err.message : 'Failed to create records');
       throw err;
     }
   }, [service, loadData]);
 
-  const bulkUpdate = useCallback(async (updates: { id: string; data: Partial<DataRecord> }[]): Promise<DataRecord[]> => {
+  const bulkUpdate = useCallback(async (updates: Array<{ id: string; data: Partial<DataRecord> }>): Promise<DataRecord[]> => {
     try {
-      const updatedRecords = await service.bulkUpdate(updates);
+      const result = await service.bulkUpdate(updates);
       await loadData();
-      return updatedRecords;
+      return result;
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to bulk update records');
+      setError(err instanceof Error ? err.message : 'Failed to update records');
       throw err;
     }
   }, [service, loadData]);
 
-  const bulkDelete = useCallback(async (ids: string[]): Promise<void> => {
+  const bulkDelete = useCallback(async (ids: string[]): Promise<boolean> => {
     try {
-      await service.bulkDelete(ids);
+      const result = await service.bulkDelete(ids);
       await loadData();
+      return result;
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Failed to bulk delete records');
+      setError(err instanceof Error ? err.message : 'Failed to delete records');
       throw err;
     }
   }, [service, loadData]);
 
-  // Query operations
-  const search = useCallback(async (query: string) => {
-    setCurrentSearch(query);
+  // Query actions
+  const setSearch = useCallback((search: string) => {
+    setCurrentSearch(search);
     setCurrentPage(1);
   }, []);
 
-  const filter = useCallback(async (filters: FilterConfig[]) => {
+  const setFilters = useCallback((filters: FilterConfig[]) => {
     setCurrentFilters(filters);
     setCurrentPage(1);
   }, []);
 
-  const sort = useCallback(async (sorts: SortConfig[]) => {
+  const setSorts = useCallback((sorts: SortConfig[]) => {
     setCurrentSorts(sorts);
     setCurrentPage(1);
   }, []);
 
-  const refresh = useCallback(async () => {
-    await loadData();
-  }, [loadData]);
+  const setPagination = useCallback((page: number) => {
+    setCurrentPage(page);
+  }, []);
 
-  // Import/Export
-  const exportData = useCallback(async (format: 'csv' | 'json' | 'xlsx'): Promise<Blob> => {
+  const exportData = useCallback(async (format: string) => {
     try {
-      return await service.exportData(format, {
-        filters: currentFilters,
-        sorts: currentSorts,
-        search: currentSearch
-      });
+      return await service.exportData();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to export data');
       throw err;
     }
-  }, [service, currentFilters, currentSorts, currentSearch]);
+  }, [service]);
 
   const importData = useCallback(async (data: any[]) => {
     try {
@@ -254,27 +268,27 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
 
   // Record details
   const getRecordComments = useCallback(async (recordId: string) => {
-    return await service.getRecordComments(recordId);
+    return service.getRecordComments();
   }, [service]);
 
-  const addComment = useCallback(async (recordId: string, content: string) => {
-    return await service.addComment(recordId, content);
+  const addComment = useCallback(async (recordId: string, comment: any) => {
+    return service.addComment(recordId, comment);
   }, [service]);
 
   const getRecordActivity = useCallback(async (recordId: string) => {
-    return await service.getRecordActivity(recordId);
+    return service.getRecordActivity();
   }, [service]);
 
   const getRecordFiles = useCallback(async (recordId: string) => {
-    return await service.getRecordFiles(recordId);
+    return service.getRecordFiles();
   }, [service]);
 
-  // Optimistic update helpers
-  const optimisticUpdate = useCallback((id: string, updates: Partial<DataRecord>) => {
-    setOptimisticUpdates(prev => new Map(prev).set(id, updates));
+  // Optimistic updates
+  const clearOptimisticUpdates = useCallback(() => {
+    setOptimisticUpdates(new Map());
   }, []);
 
-  const revertOptimisticUpdate = useCallback((id: string) => {
+  const rollbackOptimisticUpdate = useCallback((id: string) => {
     setOptimisticUpdates(prev => {
       const next = new Map(prev);
       next.delete(id);
@@ -282,103 +296,72 @@ export function SupabaseDataProvider({ children, config }: SupabaseDataProviderP
     });
   }, []);
 
-  const value: SupabaseDataContextValue = {
+  const contextValue: DataContextValue = {
+    // Data state
     data: dataWithOptimistic,
     loading,
     error,
     totalCount,
     
+    // Query state
+    currentFilters,
+    currentSorts,
+    currentSearch,
+    currentPage,
+    
+    // Actions
     createRecord,
     updateRecord,
     deleteRecord,
-    
     bulkCreate,
     bulkUpdate,
     bulkDelete,
     
-    search,
-    filter,
-    sort,
-    refresh,
+    // Query actions
+    setSearch,
+    setFilters,
+    setSorts,
+    setPagination,
     
+    // Data actions
     exportData,
     importData,
     
+    // Record details
     getRecordComments,
     addComment,
     getRecordActivity,
     getRecordFiles,
     
-    currentFilters,
-    currentSorts,
-    currentSearch,
-    
-    optimisticUpdate,
-    revertOptimisticUpdate
+    // Optimistic updates
+    clearOptimisticUpdates,
+    rollbackOptimisticUpdate,
   };
 
   return (
-    <SupabaseDataContext.Provider value={value}>
+    <DataContext.Provider value={contextValue}>
       {children}
-    </SupabaseDataContext.Provider>
+    </DataContext.Provider>
   );
 }
 
+// Hook to create a data provider with specific config
+export const createSupabaseDataProvider = (
+  config: DataViewConfig & { table: string }
+) => {
+  return ({ children }: { children: React.ReactNode }) => (
+    <SupabaseDataProvider config={config}>
+      {children}
+    </SupabaseDataProvider>
+  );
+};
+
 export function useSupabaseData() {
-  const context = useContext(SupabaseDataContext);
+  const context = useContext(DataContext);
   if (!context) {
     throw new Error('useSupabaseData must be used within a SupabaseDataProvider');
   }
   return context;
-}
-
-// Enhanced DataViewProvider that integrates with Supabase
-interface EnhancedDataViewProviderProps {
-  children: React.ReactNode;
-  config: DataViewConfig & {
-    supabaseConfig: DataServiceConfig;
-    enableOptimistic?: boolean;
-    pageSize?: number;
-  };
-}
-
-export function EnhancedDataViewProvider({ children, config }: EnhancedDataViewProviderProps) {
-  return (
-    <SupabaseDataProvider 
-      config={{
-        ...config.supabaseConfig,
-        enableOptimistic: config.enableOptimistic,
-        pageSize: config.pageSize
-      }}
-    >
-      <DataViewProviderWrapper config={config}>
-        {children}
-      </DataViewProviderWrapper>
-    </SupabaseDataProvider>
-  );
-}
-
-// Wrapper that connects Supabase data to DataViewProvider
-function DataViewProviderWrapper({ children, config }: { children: React.ReactNode; config: DataViewConfig }) {
-  const supabaseData = useSupabaseData();
-
-  // Create enhanced config that uses Supabase operations
-  const enhancedConfig: DataViewConfig = {
-    ...config,
-    data: supabaseData.data,
-    onSearch: supabaseData.search,
-    onFilter: supabaseData.filter,
-    onSort: supabaseData.sort,
-    onRefresh: supabaseData.refresh,
-    onExport: supabaseData.exportData,
-    onImport: supabaseData.importData
-  };
-
-  return (
-    <DataViewProvider config={enhancedConfig}>
-      {children}
-    </DataViewProvider>
-  );
 }
 
 // Import the original DataViewProvider

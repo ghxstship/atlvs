@@ -46,7 +46,7 @@ export function DataGrid({
 
   // Apply filters, search, and sorting
   const processedData = useMemo(() => {
-    let filtered = [...config.data];
+    let filtered = [...(config.data || [])];
 
     // Apply search
     if (state.search) {
@@ -140,9 +140,9 @@ export function DataGrid({
   const handleSelectAll = useCallback(() => {
     const allSelected = state.selection.length === paginatedData.length;
     if (allSelected) {
-      actions.clearSelection();
+      actions.setSelectedRecords([]);
     } else {
-      actions.setSelection(paginatedData.map(record => record.id));
+      actions.setSelectedRecords(paginatedData.map(record => record.id));
     }
   }, [state.selection.length, paginatedData, actions]);
 
@@ -266,8 +266,15 @@ export function DataGrid({
                 <td className="px-4 py-3">
                   <Checkbox
                     checked={state.selection.includes(record.id)}
-                    onChange={() => actions.toggleSelection(record.id)}
-                    onClick={(e) => e.stopPropagation()}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      const isSelected = state.selection.includes(record.id);
+                      if (isSelected) {
+                        actions.setSelectedRecords(state.selection.filter(id => id !== record.id));
+                      } else {
+                        actions.setSelectedRecords([...state.selection, record.id]);
+                      }
+                    }}
                     aria-label={`Select row ${record.id}`}
                   />
                 </td>
@@ -310,7 +317,10 @@ export function DataGrid({
             variant="ghost"
             size="sm"
             disabled={state.pagination.page === 1}
-            onClick={() => actions.setPagination(state.pagination.page - 1)}
+            onClick={() => actions.setPagination({
+              ...state.pagination,
+              page: state.pagination.page - 1
+            })}
           >
             Previous
           </Button>
@@ -323,7 +333,10 @@ export function DataGrid({
             variant="ghost"
             size="sm"
             disabled={state.pagination.page >= Math.ceil(processedData.length / state.pagination.pageSize)}
-            onClick={() => actions.setPagination(state.pagination.page + 1)}
+            onClick={() => actions.setPagination({
+              ...state.pagination,
+              page: state.pagination.page + 1
+            })}
           >
             Next
           </Button>

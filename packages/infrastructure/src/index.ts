@@ -19,6 +19,7 @@ export * from './repositories/SupabaseListingsRepository';
 export * from './repositories/SupabaseVendorsRepository';
 export * from './repositories/SupabaseCatalogItemsRepository';
 export * from './repositories/SupabaseAssetsRepository';
+export * from './repositories/SupabaseAssetAdvancingRepository';
 export * from './repositories/SupabaseAssetAssignmentRepository';
 export * from './repositories/SupabaseAssetTrackingRepository';
 export * from './repositories/SupabaseAssetMaintenanceRepository';

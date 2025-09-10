@@ -11,7 +11,7 @@ import {
   ListView 
 } from '@ghxstship/ui';
 import { 
-  EnhancedDataViewProvider
+  SupabaseDataProvider
 } from '@ghxstship/ui/components/DataViews/providers/SupabaseDataProvider';
 import { useAuth } from '@ghxstship/application/lib/supabase/auth-service';
 import { 
@@ -151,16 +151,9 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
   return (
     <div className="h-full">
       <StateManagerProvider>
-        <EnhancedDataViewProvider 
+        <SupabaseDataProvider 
           config={{
-            ...projectsConfig,
-            supabaseConfig: {
-              table: 'projects',
-              organizationId: orgId,
-              userId: userId,
-              realtime: true,
-              rls: true
-            },
+            table: 'projects',
             enableOptimistic: true,
             pageSize: 50
           }}
@@ -201,7 +194,7 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
               </div>
             </Drawer>
           </div>
-        </EnhancedDataViewProvider>
+        </SupabaseDataProvider>
       </StateManagerProvider>
     </div>
   );

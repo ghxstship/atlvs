@@ -54,6 +54,7 @@ export function TimelineView({
 
   // Convert data records to timeline items
   const timelineItems = useMemo(() => {
+    if (!config.data) return [];
     return config.data.map(record => ({
       id: record.id,
       title: record[titleField] || 'Untitled',

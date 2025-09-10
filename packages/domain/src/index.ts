@@ -16,6 +16,7 @@ export * from './modules/api-keys/ApiKeyRepository';
 export * from './webhooks/Webhook';
 export * from './webhooks/WebhookRepository';
 export * from './modules/programming/Event';
+export * from './modules/programming/Program';
 
 // Profile module exports
 export * from './modules/profile/Profile';

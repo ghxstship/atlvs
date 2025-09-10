@@ -221,7 +221,7 @@ export function EmptyState({ config, className = '' }: EmptyStateProps) {
       <div className="flex items-center justify-center gap-3">
         {config.action && (
           <Button
-            variant={config.action.variant || 'primary'}
+            variant={config.action.variant === 'secondary' ? 'outline' : (config.action.variant || 'primary')}
             onClick={config.action.onClick}
           >
             {config.action.label}
@@ -230,7 +230,7 @@ export function EmptyState({ config, className = '' }: EmptyStateProps) {
         
         {config.secondaryAction && (
           <Button
-            variant={config.secondaryAction.variant || 'ghost'}
+            variant={config.secondaryAction.variant === 'secondary' ? 'outline' : (config.secondaryAction.variant || 'ghost')}
             onClick={config.secondaryAction.onClick}
           >
             {config.secondaryAction.label}
@@ -266,7 +266,7 @@ export function ErrorState({ config, className = '', onDismiss }: ErrorStateProp
           {config.action && (
             <div className="mt-3">
               <Button
-                variant={config.action.variant || 'ghost'}
+                variant={config.action.variant === 'secondary' ? 'outline' : (config.action.variant || 'ghost')}
                 size="sm"
                 onClick={config.action.onClick}
               >

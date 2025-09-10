@@ -153,12 +153,10 @@ export function Tooltip({
   const arrowClasses = cn(
     'absolute w-2 h-2 rotate-45 border',
     tooltipVariants.variant[variant],
-    {
-      'top-full left-1/2 -translate-x-1/2 -translate-y-1/2 border-b-0 border-r-0': placement === 'top',
-      'bottom-full left-1/2 -translate-x-1/2 translate-y-1/2 border-t-0 border-l-0': placement === 'bottom',
-      'right-full top-1/2 translate-x-1/2 -translate-y-1/2 border-l-0 border-b-0': placement === 'left',
-      'left-full top-1/2 -translate-x-1/2 -translate-y-1/2 border-r-0 border-t-0': placement === 'right',
-    }
+    placement === 'top' && 'top-full left-1/2 -translate-x-1/2 -translate-y-1/2 border-b-0 border-r-0',
+    placement === 'bottom' && 'bottom-full left-1/2 -translate-x-1/2 translate-y-1/2 border-t-0 border-l-0',
+    placement === 'left' && 'right-full top-1/2 translate-x-1/2 -translate-y-1/2 border-l-0 border-b-0',
+    placement === 'right' && 'left-full top-1/2 -translate-x-1/2 -translate-y-1/2 border-r-0 border-t-0'
   );
 
   return (

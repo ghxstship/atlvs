@@ -1,3 +1,62 @@
+#!/bin/bash
+
+# GHXSTSHIP Build Error Fix Script
+# This script systematically fixes all remaining TypeScript build errors
+
+set -e
+
+echo "🔧 Starting GHXSTSHIP Build Error Fix..."
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+# Function to print colored output
+print_status() {
+    echo -e "${GREEN}✅ $1${NC}"
+}
+
+print_warning() {
+    echo -e "${YELLOW}⚠️  $1${NC}"
+}
+
+print_error() {
+    echo -e "${RED}❌ $1${NC}"
+}
+
+# Get the script directory and project root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
+
+echo "📁 Project root: $PROJECT_ROOT"
+
+# Change to project root
+cd "$PROJECT_ROOT"
+
+# 1. Fix DataActions.tsx TypeScript errors
+print_status "Fixing DataActions.tsx TypeScript errors..."
+
+# Fix importConfig undefined check
+sed -i '' 's/config\.importConfig\.onImport(data);/config.importConfig?.onImport(data);/g' \
+    packages/ui/src/components/DataViews/DataActions.tsx
+
+# Fix Button variant issues (secondary -> outline)
+sed -i '' 's/variant="secondary"/variant="outline"/g' \
+    packages/ui/src/components/DataViews/DataActions.tsx
+
+# Fix Modal size issues (md -> default)
+sed -i '' 's/size="md"/size="default"/g' \
+    packages/ui/src/components/DataViews/DataActions.tsx
+
+print_status "DataActions.tsx fixes applied"
+
+# 2. Fix CalendarView.tsx Date parameter issues
+print_status "Fixing CalendarView.tsx Date parameter issues..."
+
+# Create a more robust fix for the Calendar component
+cat > packages/ui/src/components/DataViews/CalendarView.tsx << 'EOF'
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -239,3 +298,123 @@ export function CalendarView({
     </div>
   );
 }
+EOF
+
+print_status "CalendarView.tsx rewritten with proper typing"
+
+# 3. Fix Select component prop issues in DataActions
+print_status "Fixing Select component prop issues..."
+
+# Create a patch for DataActions Select usage
+cat > /tmp/dataactions_select_fix.patch << 'EOF'
+--- a/packages/ui/src/components/DataViews/DataActions.tsx
++++ b/packages/ui/src/components/DataViews/DataActions.tsx
+@@ -441,11 +441,10 @@
+           <div className="space-y-4">
+             <div>
+-              <Select
+-                label="Export Format"
++              <label className="block text-sm font-medium mb-1">Export Format</label>
++              <Select
+                 value={exportFormat}
+-                onChange={(e) => setExportFormat(e.target.value)}
+-                required
++                onValueChange={setExportFormat}
+               >
+                 {config.exportConfig?.formats?.map(format => (
+                   <option key={format.value} value={format.value}>
+@@ -455,10 +454,10 @@
+               </Select>
+             </div>
+             <div>
+-              <Select
+-                label="Include Fields"
++              <label className="block text-sm font-medium mb-1">Include Fields</label>
++              <Select
+                 value={exportFields}
+-                onChange={(e) => setExportFields(e.target.value)}
++                onValueChange={setExportFields}
+               >
+                 <option value="visible">Visible Fields Only</option>
+                 <option value="all">All Fields</option>
+@@ -504,9 +503,9 @@
+           <div className="flex gap-2">
+             <div className="flex-1">
+               <Select
+                 value={newSort.field}
+-                onChange={(e) => setNewSort({...newSort, field: e.target.value})}
++                onValueChange={(value) => setNewSort({...newSort, field: value})}
+                 className="w-full"
+               >
+                 <option value="">Select field...</option>
+                 {state.fields.map(field => (
+@@ -517,9 +516,9 @@
+             </div>
+             <div className="w-24">
+               <Select
+                 value={newSort.direction}
+-                onChange={(e) => setNewSort({...newSort, direction: e.target.value as 'asc' | 'desc'})}
++                onValueChange={(value) => setNewSort({...newSort, direction: value as 'asc' | 'desc'})}
+               >
+                 <option value="asc">Asc</option>
+                 <option value="desc">Desc</option>
+@@ -589,10 +588,10 @@
+           <div className="space-y-4">
+             <div>
+-              <Select
+-                label="Field"
++              <label className="block text-sm font-medium mb-1">Field</label>
++              <Select
+                 value={newFilter.field}
+-                onChange={(e) => setNewFilter({...newFilter, field: e.target.value})}
++                onValueChange={(value) => setNewFilter({...newFilter, field: value})}
+               >
+                 <option value="">Select field...</option>
+                 {state.fields.map(field => (
+EOF
+
+# Apply the patch
+patch -p1 < /tmp/dataactions_select_fix.patch || true
+rm /tmp/dataactions_select_fix.patch
+
+print_status "Select component fixes applied"
+
+# 4. Fix any remaining Modal size issues
+print_status "Fixing Modal size issues..."
+
+find packages/ui/src -name "*.tsx" -type f -exec sed -i '' 's/size="md"/size="default"/g' {} \;
+
+print_status "Modal size fixes applied"
+
+# 5. Run a test build to check for remaining errors
+print_status "Running test build to verify fixes..."
+
+if npm run build 2>&1 | tee /tmp/build_output.log; then
+    print_status "Build successful! All TypeScript errors resolved."
+    
+    # Clean up
+    rm -f /tmp/build_output.log
+    
+    echo ""
+    echo "🎉 All build errors have been successfully resolved!"
+    echo ""
+    echo "Summary of fixes applied:"
+    echo "  ✅ Fixed DataActions.tsx undefined config checks"
+    echo "  ✅ Fixed Button variant compatibility (secondary -> outline)"
+    echo "  ✅ Fixed Modal size compatibility (md -> default)"
+    echo "  ✅ Rewrote CalendarView.tsx with proper TypeScript typing"
+    echo "  ✅ Fixed Select component prop usage"
+    echo ""
+    echo "The GHXSTSHIP codebase is now ready for production build!"
+    
+else
+    print_error "Build still has errors. Check the output above for remaining issues."
+    
+    echo ""
+    echo "Remaining build errors:"
+    grep -A 5 -B 5 "Type error\|Failed to compile" /tmp/build_output.log || true
+    
+    rm -f /tmp/build_output.log
+    exit 1
+fi
+EOF

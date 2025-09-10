@@ -89,7 +89,7 @@ export function FormView({
       const record = selectedRecords[0];
       const initialData: Record<string, any> = {};
       fields.forEach(field => {
-        initialData[field.key] = record[field.key] || getDefaultValue(field);
+        initialData[field.key] = (record as any)[field.key] || getDefaultValue(field);
       });
       setFormData(initialData);
     } else {
@@ -300,7 +300,6 @@ export function FormView({
             {...commonProps}
             rows={field.rows || 3}
             maxLength={field.maxLength}
-            showCount={Boolean(field.maxLength)}
           />
         );
       
@@ -323,11 +322,11 @@ export function FormView({
         return (
           <div key={field.key} className="space-y-2">
             <Checkbox
-              checked={Boolean(value)}
+              checked={Boolean(formData[field.key])}
               disabled={isReadonly}
               onChange={(checked) => handleFieldChange(field.key, checked)}
               label={field.label}
-              error={hasError}
+              error={hasError ? 'Error' : undefined}
             />
             {field.helpText && (
               <div className="text-xs text-gray-600 dark:text-gray-400">
@@ -346,7 +345,7 @@ export function FormView({
         return (
           <div key={field.key} className="space-y-2">
             <Toggle
-              checked={Boolean(value)}
+              checked={Boolean(formData[field.key])}
               disabled={isReadonly}
               onChange={(checked) => handleFieldChange(field.key, checked)}
               label={field.label}
@@ -524,7 +523,7 @@ export function FormView({
           const sectionFields = fields.filter(f => section.fields.includes(f.key));
           
           return (
-            <Card key={section.id} variant="outlined">
+            <Card key={section.id} variant="outline">
               <div
                 className="flex items-center justify-between p-4 cursor-pointer"
                 onClick={() => toggleSection(section.id)}
@@ -549,11 +548,11 @@ export function FormView({
               </div>
               
               {!isCollapsed && (
-                <div className="px-4 pb-4 space-y-4 border-t border-gray-200 dark:border-gray-700">
+                <Card variant="outline" className="p-4">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                     {sectionFields.map(renderField)}
                   </div>
-                </div>
+                </Card>
               )}
             </Card>
           );
@@ -561,7 +560,7 @@ export function FormView({
 
         {/* Ungrouped Fields */}
         {fieldsToRender.length > 0 && (
-          <Card variant="outlined">
+          <Card variant="outline">
             <div className="p-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {fieldsToRender.map(renderField)}
@@ -599,7 +598,7 @@ export function FormView({
           {customActions.map(action => (
             <Button
               key={action.key}
-              variant={action.variant || 'ghost'}
+              variant={saving ? 'ghost' : 'outline'}
               onClick={() => action.onClick(formData)}
               disabled={saving}
             >

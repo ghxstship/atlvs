@@ -128,9 +128,9 @@ export function DashboardView({
               return recordValue === filter.value;
             case 'contains':
               return String(recordValue).toLowerCase().includes(String(filter.value).toLowerCase());
-            case 'greater_than':
+            case 'gt':
               return Number(recordValue) > Number(filter.value);
-            case 'less_than':
+            case 'lt':
               return Number(recordValue) < Number(filter.value);
             default:
               return true;
