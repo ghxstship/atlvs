@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Mail, Lock, User, Eye, EyeOff, Check } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { typography } from '../../(marketing)/lib/typography';
+import { spacing, layouts } from '../../(marketing)/lib/spacing';
 import { SignUpForm } from './SignUpForm';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Sign Up - Start Your Free Trial | GHXSTSHIP',
@@ -21,22 +20,22 @@ export const metadata: Metadata = {
 export default function SignUpPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
+      <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
-        <div className="text-center mb-12">
-          <Link href="/home" className="inline-flex items-center space-x-2 mb-8">
-            <span className={`text-2xl font-bold tracking-tight text-foreground ${anton.className}`}>
+        <div className={`text-center ${spacing.marginBottom.xlarge}`}>
+          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
+            <span className={typography.heroTitle}>
               GHXSTSHIP
             </span>
           </Link>
           
-          <Badge variant="outline" className="mb-4">
+          <Badge variant="outline" className={spacing.marginBottom.small}>
             14-Day Free Trial
           </Badge>
-          <h1 className={`${anton.className} uppercase text-4xl lg:text-5xl font-bold mb-6`}>
+          <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
             GET STARTED
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={`${typography.sectionSubtitle} max-w-2xl mx-auto`}>
             Create your account and start building amazing creative projects.
           </p>
         </div>

@@ -6,9 +6,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Button } from '@ghxstship/ui';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Github } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { typography } from '../../(marketing)/lib/typography';
+import { spacing, layouts } from '../../(marketing)/lib/spacing';
+import { accessibility } from '../../(marketing)/lib/accessibility';
 
 export function SignUpForm() {
   const router = useRouter();
@@ -78,66 +78,69 @@ export function SignUpForm() {
 
   return (
     <div>
-      <div className="mb-8">
-        <h2 className={`${anton.className} uppercase text-2xl font-bold mb-2`}>
+      <div className={spacing.marginBottom.large}>
+        <h2 className={`${typography.sectionTitle} ${spacing.marginBottom.small}`}>
           SIGN UP
         </h2>
-        <p className="text-muted-foreground">
+        <p className={typography.bodyLarge}>
           Create your account to get started
         </p>
       </div>
 
-      <form className="space-y-6" onSubmit={onSubmit}>
+      <form className={`${layouts.flexCol} ${spacing.textSpacing}`} onSubmit={onSubmit}>
         {/* Full Name */}
         <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
+          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
             Full Name
           </label>
           <div className="relative">
             <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <input
               type="text"
-              className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+              className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
               placeholder="Enter your full name"
               value={fullName}
               onChange={(e) => setFullName(e.target.value)}
               required
+              aria-label="Full name input"
             />
           </div>
         </div>
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
+          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
             Email Address
           </label>
           <div className="relative">
             <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <input
               type="email"
-              className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+              className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              aria-label="Email address input"
             />
           </div>
         </div>
 
         {/* Password */}
         <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
+          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
             Password
           </label>
           <div className="relative">
             <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <input
               type={showPassword ? 'text' : 'password'}
-              className="w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+              className={`w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
               placeholder="Create a strong password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              aria-label="Password input"
             />
             <button
               type="button"
@@ -157,7 +160,7 @@ export function SignUpForm() {
             className="mt-1 h-4 w-4 text-primary border-border rounded focus:ring-primary"
             required
           />
-          <label htmlFor="terms" className="text-sm text-muted-foreground">
+          <label htmlFor="terms" className={typography.bodySmall}>
             I agree to the{' '}
             <Link href="/terms" className="text-primary hover:underline">
               Terms of Service

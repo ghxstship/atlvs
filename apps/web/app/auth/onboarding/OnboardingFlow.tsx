@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createBrowserClient } from '@ghxstship/auth';
 import Link from 'next/link';
-import { Anton } from 'next/font/google';
+import { typography } from '../../(marketing)/lib/typography';
+import { spacing, layouts } from '../../(marketing)/lib/spacing';
 import { VerifyEmailStep } from './steps/VerifyEmailStep';
 import { PlanSelectionStep } from './steps/PlanSelectionStep';
 import { OrganizationSetupStep } from './steps/OrganizationSetupStep';
@@ -12,7 +13,6 @@ import { TeamInvitationStep } from './steps/TeamInvitationStep';
 import { ProfileCompletionStep } from './steps/ProfileCompletionStep';
 import { FinalConfirmationStep } from './steps/FinalConfirmationStep';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 type OnboardingStep = 
   | 'verify-email'
@@ -91,7 +91,7 @@ export function OnboardingFlow() {
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20 flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading...</p>
+          <p className={typography.bodyLarge}>Loading...</p>
         </div>
       </div>
     );
@@ -99,18 +99,18 @@ export function OnboardingFlow() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
+      <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
-        <div className="text-center mb-8">
-          <Link href="/home" className="inline-flex items-center space-x-2 mb-6">
-            <span className={`text-2xl font-bold tracking-tight text-foreground ${anton.className}`}>
+        <div className={`text-center ${spacing.marginBottom.large}`}>
+          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.medium}`}>
+            <span className={typography.heroTitle}>
               GHXSTSHIP
             </span>
           </Link>
           
           {/* Progress Indicator */}
-          <div className="max-w-md mx-auto mb-6">
-            <div className="flex items-center justify-between text-sm text-muted-foreground mb-2">
+          <div className={`max-w-md mx-auto ${spacing.marginBottom.medium}`}>
+            <div className={`flex items-center justify-between ${typography.bodySmall} ${spacing.marginBottom.small}`}>
               <span>Step {getCurrentStepNumber()} of {getTotalSteps()}</span>
               <span>{Math.round((getCurrentStepNumber() / getTotalSteps()) * 100)}% Complete</span>
             </div>

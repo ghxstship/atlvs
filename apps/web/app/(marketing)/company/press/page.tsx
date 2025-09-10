@@ -7,20 +7,20 @@ import { Anton } from 'next/font/google';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
-  title: 'Press & Media | GHXSTSHIP',
-  description: 'Latest news, press releases, and media coverage about GHXSTSHIP. Download press kit, logos, and connect with our media team.',
+  title: 'Press & Media - The Real Story Behind the Chaos | GHXSTSHIP',
+  description: 'Press coverage, releases, and media kit for the production management company that survived Formula 1 weekends and festival meltdowns.',
   openGraph: {
-    title: 'Press & Media | GHXSTSHIP',
-    description: 'Latest news, press releases, and media coverage about GHXSTSHIP. Download press kit, logos, and connect with our media team.',
+    title: 'Press & Media - The Real Story Behind the Chaos | GHXSTSHIP',
+    description: 'Press coverage and media kit for the production management company that actually works.',
     url: 'https://ghxstship.com/company/press',
   },
 };
 
 const pressReleases = [
   {
-    title: 'GHXSTSHIP Raises $50M Series B to Accelerate Global Creative Collaboration',
+    title: 'GHXSTSHIP Raises $50M Series B to Build Production Tools That Actually Work',
     date: '2024-01-15',
-    excerpt: 'Funding will support international expansion and AI-powered features to enhance creative workflows.',
+    excerpt: 'Funding will support building more tools for production teams tired of juggling 47 different apps.',
     category: 'Funding',
     featured: true,
   },

@@ -11,7 +11,8 @@ export const navigation: NavigationItem[] = [
     children: [
       { label: 'ATLVS', href: '/products/atlvs' },
       { label: 'OPENDECK', href: '/products/opendeck' },
-      { label: 'Compare Products', href: '/products/compare' },
+      { label: 'Compare', href: '/products/compare' },
+      { label: 'Coming Soon', href: '/products/coming-soon' },
     ],
   },
   {

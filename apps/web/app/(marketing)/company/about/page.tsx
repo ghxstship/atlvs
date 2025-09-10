@@ -6,11 +6,11 @@ import { typography } from '../../lib/typography';
 import { Section, SectionHeader } from '../../components/layout/Section';
 
 export const metadata: Metadata = {
-  title: 'About Us | GHXSTSHIP',
-  description: 'Learn about GHXSTSHIP\'s mission to revolutionize creative collaboration. Discover our story, values, and commitment to empowering creative professionals worldwide.',
+  title: 'About Us - Built by People Who Actually Do This Stuff | GHXSTSHIP',
+  description: 'We\'re the production management company that survived 400K+ festival crowds and Formula 1 chaos. Built by people who\'ve been there.',
   openGraph: {
-    title: 'About Us | GHXSTSHIP',
-    description: 'Learn about GHXSTSHIP\'s mission to revolutionize creative collaboration. Discover our story, values, and commitment to empowering creative professionals worldwide.',
+    title: 'About Us - Built by People Who Actually Do This Stuff | GHXSTSHIP',
+    description: 'We\'re the production management company that survived 400K+ festival crowds and Formula 1 chaos.',
     url: 'https://ghxstship.com/company/about',
   },
 };
@@ -18,84 +18,66 @@ export const metadata: Metadata = {
 const values = [
   {
     icon: Heart,
-    title: 'Creative First',
-    description: 'We put creativity at the center of everything we do, building tools that enhance rather than constrain creative expression.',
+    title: 'Chaos-Tested',
+    description: 'Our tools are battle-tested in the real world - from 400K+ festival crowds to Formula 1 pressure. If it works there, it\'ll work anywhere.',
   },
   {
     icon: Globe,
-    title: 'Global Community',
-    description: 'We believe the best creative work happens when diverse talents from around the world can collaborate seamlessly.',
+    title: 'Actually Useful',
+    description: 'We build tools that solve real problems, not features that look good in demos but break when you actually need them.',
   },
   {
     icon: Zap,
-    title: 'Innovation Drive',
-    description: 'We continuously push the boundaries of what\'s possible in creative collaboration and project management.',
+    title: 'Zero BS Policy',
+    description: 'No corporate fluff, no buzzword bingo. Just honest tools built by people who\'ve been in the trenches.',
   },
   {
     icon: Shield,
-    title: 'Trust & Security',
-    description: 'We maintain the highest standards of security and reliability to protect our users\' creative assets and data.',
+    title: 'Reliability Obsessed',
+    description: 'When your event is live and 100K people are watching, "it works on my machine" isn\'t good enough. We get that.',
   },
 ];
 
 const milestones = [
   {
-    year: '2020',
-    title: 'Foundation',
-    description: 'GHXSTSHIP founded with a vision to revolutionize creative collaboration',
+    year: '2011',
+    title: 'The Beginning',
+    description: 'Julian graduated from Indiana University with a music degree and immediately realized the industry needed better tools',
   },
   {
-    year: '2021',
-    title: 'First 1,000 Users',
-    description: 'Reached our first milestone of 1,000 creative professionals on the platform',
+    year: '2016-2018',
+    title: 'Carnival Cruise Line',
+    description: 'Revolutionized talent casting operations, reducing 6-week workflows to 5 minutes (yes, really)',
   },
   {
-    year: '2022',
-    title: 'Global Expansion',
-    description: 'Expanded operations to serve creative teams across 50+ countries',
+    year: '2022-2023',
+    title: 'Festival Circuit',
+    description: 'Managed operations for EDC Orlando, Insomniac events, and survived to tell the tale',
   },
   {
     year: '2023',
-    title: 'Enterprise Launch',
-    description: 'Launched enterprise solutions serving Fortune 500 companies',
+    title: 'GHXSTSHIP Industries LLC',
+    description: 'Founded in Orlando, FL - because someone had to build the tools we actually wanted to use',
   },
   {
     year: '2024',
-    title: 'AI Integration',
-    description: 'Introduced AI-powered features to enhance creative workflows',
+    title: 'Formula 1 Las Vegas',
+    description: 'Managed hospitality for 1,000+ team members at a $500M+ event without breaking anything important',
   },
 ];
 
 const stats = [
-  { metric: '100K+', label: 'Creative Professionals', description: 'Trust GHXSTSHIP for their projects' },
-  { metric: '50+', label: 'Countries Served', description: 'Global reach and impact' },
-  { metric: '1M+', label: 'Projects Completed', description: 'Successful creative collaborations' },
-  { metric: '99.9%', label: 'Uptime SLA', description: 'Reliable platform performance' },
+  { metric: '400K+', label: 'Festival Attendees', description: 'Managed through our productions' },
+  { metric: '15+', label: 'Countries', description: 'Where we\'ve made magic happen' },
+  { metric: '$15M+', label: 'Budgets Managed', description: 'Without losing our minds (mostly)' },
+  { metric: '0', label: 'Safety Incidents', description: 'Because nobody has time for that' },
 ];
 
 const leadership = [
   {
-    name: 'Alex Chen',
-    role: 'CEO & Co-Founder',
-    bio: 'Former creative director with 15+ years in advertising and film production.',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Sarah Rodriguez',
-    role: 'CTO & Co-Founder',
-    bio: 'Technology leader with expertise in scalable platforms and AI integration.',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Marcus Kim',
-    role: 'Head of Product',
-    bio: 'Product strategist focused on user experience and creative workflow optimization.',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Emily Watson',
-    role: 'VP of Engineering',
-    bio: 'Engineering leader building robust, secure platforms for creative collaboration.',
+    name: 'Julian Clarkson',
+    role: 'Founder & CXO',
+    bio: '13+ years surviving the beautiful chaos of live entertainment. From EDC festivals to Formula 1, he\'s the guy who makes impossible deadlines happen.',
     image: '/api/placeholder/150/150',
   },
 ];
@@ -111,18 +93,17 @@ export default function AboutPage() {
               Our Story
             </Badge>
             <h1 className={`mb-6 ${typography.heroTitle}`}>
-              EMPOWERING
+              BUILT BY PEOPLE
               <br />
               <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-                CREATIVE
+                WHO ACTUALLY DO THIS
               </span>
-              <br />
-              COLLABORATION
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              At GHXSTSHIP, we believe that the future of creativity lies in seamless 
-              collaboration. We're building the platform that connects creative minds 
-              across the globe, breaking down barriers and enabling extraordinary work.
+              Born from 13+ years of wrangling chaos in live entertainment, GHXSTSHIP turns 
+              the beautiful madness of creative production into something that actually works. 
+              We're the platform that gets built when someone who's survived Formula 1 weekends 
+              and EDC festivals decides software should be less painful.
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
@@ -149,32 +130,31 @@ export default function AboutPage() {
                 OUR MISSION
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
-                To democratize access to creative talent and enable seamless collaboration 
-                between creative professionals worldwide. We're breaking down geographical 
-                barriers and creating opportunities for extraordinary creative work to happen 
-                anywhere, anytime.
+                To build production management tools that don't make you want to throw your laptop 
+                out the window. After managing everything from cruise ship entertainment to Formula 1 
+                hospitality, we know what actually works when the pressure's on and everything's on fire.
               </p>
               
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Target className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Connect Global Talent</h3>
-                    <p className="text-sm text-muted-foreground">Bridge the gap between creative professionals and opportunities worldwide</p>
+                    <h3 className="font-semibold text-foreground mb-1">Solve Real Problems</h3>
+                    <p className="text-sm text-muted-foreground">Build tools that actually work when you're managing 1,000+ people at 3am</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Enable Seamless Collaboration</h3>
-                    <p className="text-sm text-muted-foreground">Provide tools that make remote creative work as effective as in-person collaboration</p>
+                    <h3 className="font-semibold text-foreground mb-1">Battle-Tested Reliability</h3>
+                    <p className="text-sm text-muted-foreground">Software that doesn't break when the stakes are highest and everyone's watching</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <TrendingUp className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Drive Industry Innovation</h3>
-                    <p className="text-sm text-muted-foreground">Push the boundaries of what's possible in creative project management</p>
+                    <h3 className="font-semibold text-foreground mb-1">Industry Experience</h3>
+                    <p className="text-sm text-muted-foreground">Built by someone who's actually done this stuff, not just read about it</p>
                   </div>
                 </div>
               </div>
@@ -185,14 +165,15 @@ export default function AboutPage() {
                 <CardContent className="p-8">
                   <h3 className={`mb-4 ${typography.cardTitle}`}>Our Vision</h3>
                   <p className="text-muted-foreground mb-6">
-                    A world where creativity knows no boundaries. Where the best ideas can come 
-                    from anywhere and be brought to life through seamless global collaboration.
+                    A world where production management doesn't require a PhD in chaos theory. 
+                    Where creative professionals can focus on creating instead of fighting with 
+                    spreadsheets that break when you look at them wrong.
                   </p>
                   <blockquote className="border-l-4 border-primary pl-4 italic text-foreground">
-                    "We envision a future where every creative professional has access to the 
-                    tools, talent, and opportunities they need to create their best work."
+                    "We're building the tools I wish I had when managing 1,000+ crew members 
+                    at 3am during Formula 1 weekend. Spoiler alert: it would've been nice."
                   </blockquote>
-                  <cite className="text-sm text-muted-foreground mt-2 block">— Alex Chen, CEO & Co-Founder</cite>
+                  <cite className="text-sm text-muted-foreground mt-2 block">— Julian Clarkson, Founder & CXO</cite>
                 </CardContent>
               </Card>
             </div>
@@ -318,41 +299,41 @@ export default function AboutPage() {
               AWARDS & RECOGNITION
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Industry recognition for our innovation and impact in creative collaboration.
+              Real-world achievements from actually managing large-scale productions (not just talking about it).
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: 'Best Creative Platform 2024',
-                organization: 'Creative Industry Awards',
-                description: 'Recognized for innovation in creative collaboration tools',
+                title: 'Zero Safety Incidents',
+                organization: 'Formula 1 Las Vegas Grand Prix',
+                description: 'Managed 1,000+ hospitality team members with perfect safety record',
               },
               {
-                title: 'Top 50 SaaS Companies',
-                organization: 'TechCrunch',
-                description: 'Featured among the most promising SaaS startups',
+                title: 'EDC Orlando Success',
+                organization: 'Insomniac Events',
+                description: 'Streamlined festival production operations for 100,000+ attendees',
               },
               {
-                title: 'Innovation in Remote Work',
-                organization: 'Remote Work Association',
-                description: 'Awarded for advancing remote creative collaboration',
+                title: 'Workflow Revolution',
+                organization: 'Carnival Cruise Line',
+                description: 'Reduced talent casting from 6 weeks to 5 minutes (seriously)',
               },
               {
-                title: 'Customer Choice Award',
-                organization: 'G2 Reviews',
-                description: 'Highest customer satisfaction in project management',
+                title: 'Production Excellence',
+                organization: 'Salvage City Supper Club',
+                description: 'Flawless entertainment production in 24/7 festival environment',
               },
               {
-                title: 'Fast Company Most Innovative',
-                organization: 'Fast Company',
-                description: 'Listed among most innovative companies in design',
+                title: 'Operational Innovation',
+                organization: 'Factory Town Miami',
+                description: '45% efficiency improvement while maintaining zero safety incidents',
               },
               {
-                title: 'Enterprise Solution of the Year',
-                organization: 'SaaS Awards',
-                description: 'Best enterprise creative management platform',
+                title: 'Multi-Million Dollar Management',
+                organization: 'Various Productions',
+                description: 'Successfully managed $15M+ in production budgets without losing sanity',
               },
             ].map((award) => (
               <Card key={award.title} className="hover:shadow-lg transition-shadow">
@@ -380,8 +361,8 @@ export default function AboutPage() {
               JOIN OUR MISSION
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Be part of the creative revolution. Join thousands of professionals 
-              who are already transforming how creative work gets done.
+              Ready to use production tools that don't suck? Join the growing number of 
+              professionals who are tired of fighting with software that breaks when you need it most.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Mail, Lock, Eye, EyeOff, Github } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { typography } from '../(marketing)/lib/typography';
+import { spacing, layouts } from '../(marketing)/lib/spacing';
+import { accessibility } from '../(marketing)/lib/accessibility';
 
 export const metadata: Metadata = {
   title: 'Sign In - Welcome Back | GHXSTSHIP',
@@ -19,19 +19,19 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className="container mx-auto px-4 py-8">
+      <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
-        <div className="text-center mb-12">
-          <Link href="/" className="inline-flex items-center space-x-2 mb-8">
-            <span className={`text-2xl font-bold tracking-tight text-foreground ${anton.className}`}>
+        <div className={`text-center ${spacing.marginBottom.xlarge}`}>
+          <Link href="/" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
+            <span className={typography.heroTitle}>
               GHXSTSHIP
             </span>
           </Link>
           
-          <h1 className={`${anton.className} uppercase text-4xl lg:text-5xl font-bold mb-6`}>
+          <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
             WELCOME BACK
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={`${typography.sectionSubtitle} max-w-2xl mx-auto`}>
             Sign in to your account and continue building amazing creative projects.
           </p>
         </div>
@@ -40,44 +40,46 @@ export default function LoginPage() {
           {/* Sign In Form */}
           <Card className="shadow-xl">
             <CardContent className="p-8">
-              <div className="mb-8">
-                <h2 className={`${anton.className} uppercase text-2xl font-bold mb-2`}>
+              <div className={spacing.marginBottom.large}>
+                <h2 className={`${typography.sectionTitle} ${spacing.marginBottom.small}`}>
                   SIGN IN
                 </h2>
-                <p className="text-muted-foreground">
+                <p className={typography.bodyLarge}>
                   Enter your credentials to access your account
                 </p>
               </div>
 
-              <form className="space-y-6">
+              <form className={`${layouts.flexCol} ${spacing.textSpacing}`}>
                 {/* Email */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
                     Email Address
                   </label>
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <input
                       type="email"
-                      className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                      className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
                       placeholder="Enter your email"
                       required
+                      aria-label="Email address input"
                     />
                   </div>
                 </div>
 
                 {/* Password */}
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
                     Password
                   </label>
                   <div className="relative">
                     <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
                     <input
                       type="password"
-                      className="w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                      className={`w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
                       placeholder="Enter your password"
                       required
+                      aria-label="Password input"
                     />
                     <button
                       type="button"
@@ -96,11 +98,11 @@ export default function LoginPage() {
                       id="remember"
                       className="h-4 w-4 text-primary border-border rounded focus:ring-primary"
                     />
-                    <label htmlFor="remember" className="text-sm text-muted-foreground">
+                    <label htmlFor="remember" className={typography.bodySmall}>
                       Remember me
                     </label>
                   </div>
-                  <Link href="/auth/forgot-password" className="text-sm text-primary hover:underline">
+                  <Link href="/auth/forgot-password" className={`${typography.bodySmall} text-primary hover:underline`}>
                     Forgot password?
                   </Link>
                 </div>

@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import React from 'react';
 import { Loader2 } from 'lucide-react';
 
-const button = cva('btn font-body', {
+const button = cva('btn font-body uppercase whitespace-nowrap', {
   variants: {
     variant: {
       primary: 'btn-primary',

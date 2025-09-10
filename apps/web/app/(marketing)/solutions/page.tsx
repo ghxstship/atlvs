@@ -6,11 +6,11 @@ import { typography } from '../lib/typography';
 import { Section, SectionHeader } from '../components/layout/Section';
 
 export const metadata: Metadata = {
-  title: 'Solutions - Industry-Focused Production Management | GHXSTSHIP',
-  description: 'Discover how GHXSTSHIP transforms production workflows across Film & TV, Advertising, Music & Events, and Corporate industries.',
+  title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',
+  description: 'Real production management for Film & TV, Advertising, Music & Events, and Corporate teams who are tired of juggling 47 different apps.',
   openGraph: {
-    title: 'Solutions - Industry-Focused Production Management | GHXSTSHIP',
-    description: 'Discover how GHXSTSHIP transforms production workflows across Film & TV, Advertising, Music & Events, and Corporate industries.',
+    title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',
+    description: 'Real production management for teams who are tired of juggling 47 different apps.',
     url: 'https://ghxstship.com/solutions',
   },
 };
@@ -20,9 +20,9 @@ const solutions = [
     id: 'film-tv',
     icon: Film,
     title: 'Film & TV',
-    tagline: 'Lights, Camera, Efficiency',
-    description: 'Streamline complex multi-location shoots, coordinate large crews, and manage production schedules with precision.',
-    longDescription: 'From pre-production planning to post-production delivery, GHXSTSHIP provides the comprehensive tools needed to manage the most complex film and television productions. Our platform handles everything from script breakdowns and shooting schedules to crew management and budget tracking.',
+    tagline: 'Production Management That Doesn\'t Crash Under Pressure',
+    description: 'Stop losing your mind coordinating shoots. Manage crews, locations, and budgets without the usual chaos.',
+    longDescription: 'Built by people who\'ve actually managed $50M+ productions. From pre-production planning to post-delivery, we handle the complexity so you can focus on making great content instead of babysitting spreadsheets and Slack channels.',
     features: [
       'Script breakdown and scheduling',
       'Multi-location shoot coordination',
@@ -57,9 +57,9 @@ const solutions = [
     id: 'advertising',
     icon: Megaphone,
     title: 'Advertising',
-    tagline: 'Creative Campaigns, Delivered',
-    description: 'Streamline creative workflows, manage client approvals, and deliver campaigns that drive results.',
-    longDescription: 'Navigate the fast-paced world of advertising with tools designed for creative agencies and in-house marketing teams. From initial concept to final delivery, manage campaigns, coordinate with clients, and ensure every creative asset meets brand standards.',
+    tagline: 'Campaigns That Actually Launch On Time',
+    description: 'Stop chasing approvals and missing deadlines. Manage creative workflows without losing your sanity.',
+    longDescription: 'Built for agencies tired of client revision hell and missed launch dates. From concept to delivery, we streamline the chaos so you can focus on creating great work instead of managing endless email chains and version control nightmares.',
     features: [
       'Campaign planning and strategy',
       'Creative asset management',
@@ -94,9 +94,9 @@ const solutions = [
     id: 'music-events',
     icon: Music,
     title: 'Music & Events',
-    tagline: 'Orchestrate Unforgettable Experiences',
-    description: 'Coordinate large-scale events, manage talent and vendors, and create memorable experiences.',
-    longDescription: 'Whether it\'s a music festival, corporate event, or live performance, our platform helps you coordinate every detail. From venue management and talent coordination to vendor relationships and audience engagement, ensure every event is flawlessly executed.',
+    tagline: 'Events That Don\'t Fall Apart Last Minute',
+    description: 'Stop panicking about vendor no-shows and talent drama. Coordinate events that actually happen as planned.',
+    longDescription: 'Built by event producers who\'ve survived festival meltdowns and last-minute venue changes. From planning to execution, we handle the logistics nightmare so you can focus on creating amazing experiences instead of putting out fires.',
     features: [
       'Event planning and timeline management',
       'Venue and logistics coordination',
@@ -131,9 +131,9 @@ const solutions = [
     id: 'corporate',
     icon: Building,
     title: 'Corporate',
-    tagline: 'Enterprise Content, Simplified',
-    description: 'Coordinate internal communications, training materials, and brand content production at scale.',
-    longDescription: 'Empower your corporate communications and content teams with enterprise-grade production management. From internal training videos and corporate communications to brand content and marketing materials, streamline every aspect of your content production pipeline.',
+    tagline: 'Corporate Content Without the Corporate Headaches',
+    description: 'Scale content production without drowning in approval workflows and compliance nightmares.',
+    longDescription: 'Built for corporate teams tired of endless approval chains and brand guideline chaos. From training videos to marketing materials, we streamline enterprise content production so you can actually ship things instead of living in revision purgatory.',
     features: [
       'Content strategy and planning',
       'Internal communications management',
@@ -207,8 +207,8 @@ export default function SolutionsPage() {
               </span>
             </h1>
             <p className={`max-w-3xl mx-auto ${typography.heroSubtitle}`}>
-              GHXSTSHIP adapts to your specific industry needs with customizable workflows, 
-              specialized features, and deep integrations designed for your unique challenges.
+              Stop juggling 47 different apps. We built production management that actually works 
+              for your industry's specific chaos, not generic project management fluff.
             </p>
           </div>
 
@@ -380,8 +380,8 @@ export default function SolutionsPage() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              While each industry solution is tailored to specific needs, all benefit from 
-              our core platform capabilities and enterprise-grade features.
+              Every industry has its own special brand of chaos. These features work across 
+              all of them to keep your productions from falling apart.
             </p>
           </div>
 
@@ -409,8 +409,8 @@ export default function SolutionsPage() {
                 SEAMLESS INTEGRATIONS
               </h3>
               <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Connect with the tools you already use. GHXSTSHIP integrates with over 100+ 
-                popular applications and services to fit seamlessly into your existing workflow.
+                Works with the tools you're already stuck with. Over 100+ integrations so you don't 
+                have to convince your team to abandon everything they know.
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">

@@ -102,13 +102,17 @@ export function MarketingFooter() {
 
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t">
-          {/* Logo and Copyright */}
-          <div className="flex items-center space-x-4 mb-4 md:mb-0">
+          {/* Logo */}
+          <div className="flex items-center mb-4 md:mb-0">
             <Link href="/" className="flex items-center space-x-2">
               <span className={`${anton.className} text-xl font-bold tracking-tight uppercase`}>
                 GHXSTSHIP
               </span>
             </Link>
+          </div>
+
+          {/* Centered Copyright */}
+          <div className="flex-1 text-center mb-4 md:mb-0">
             <span className="text-sm text-muted-foreground">
               © {currentYear} GHXSTSHIP. All rights reserved.
             </span>

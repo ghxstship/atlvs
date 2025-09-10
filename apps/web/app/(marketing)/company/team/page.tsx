@@ -11,11 +11,11 @@ import { typography } from '../../lib/typography';
 // import { FeatureCard } from '../../components/ui/FeatureCard';
 
 export const metadata: Metadata = {
-  title: 'Our Team | GHXSTSHIP',
-  description: 'Meet the talented team behind GHXSTSHIP. Discover the diverse group of professionals building the future of creative collaboration.',
+  title: 'Our Team - People Who Actually Get It | GHXSTSHIP',
+  description: 'Meet the team that survived Formula 1 chaos and festival meltdowns. We build production tools because we\'ve lived the pain.',
   openGraph: {
-    title: 'Our Team | GHXSTSHIP',
-    description: 'Meet the talented team behind GHXSTSHIP. Discover the diverse group of professionals building the future of creative collaboration.',
+    title: 'Our Team - People Who Actually Get It | GHXSTSHIP',
+    description: 'Meet the team that survived Formula 1 chaos and festival meltdowns.',
     url: 'https://ghxstship.com/company/team',
   },
 };
@@ -67,42 +67,42 @@ const departments = [
   {
     name: 'Engineering',
     count: 25,
-    description: 'Building the platform that powers creative collaboration worldwide',
+    description: 'Building tools that don\'t break when you actually need them',
     leads: ['Emily Watson', 'David Park', 'Lisa Chen'],
     color: 'from-blue-500 to-indigo-500',
   },
   {
     name: 'Product',
     count: 12,
-    description: 'Designing user experiences that delight creative professionals',
+    description: 'Making complex workflows feel less like rocket science',
     leads: ['Marcus Kim', 'Jennifer Liu', 'Alex Thompson'],
     color: 'from-purple-500 to-pink-500',
   },
   {
     name: 'Design',
     count: 8,
-    description: 'Creating beautiful, intuitive interfaces for complex workflows',
+    description: 'Making production management look good (and actually work)',
     leads: ['Maria Gonzalez', 'James Wilson', 'Anna Park'],
     color: 'from-emerald-500 to-teal-500',
   },
   {
     name: 'Sales & Marketing',
     count: 15,
-    description: 'Connecting with creative professionals and growing our community',
+    description: 'Spreading the word without being annoying about it',
     leads: ['Robert Chen', 'Sophie Davis', 'Michael Kim'],
     color: 'from-orange-500 to-red-500',
   },
   {
     name: 'Customer Success',
     count: 10,
-    description: 'Ensuring every customer achieves success with GHXSTSHIP',
+    description: 'Making sure our tools actually solve your problems',
     leads: ['Rachel Martinez', 'Tom Anderson', 'Maya Patel'],
     color: 'from-cyan-500 to-blue-500',
   },
   {
     name: 'Operations',
     count: 6,
-    description: 'Supporting our team and scaling our global operations',
+    description: 'Keeping the lights on and the coffee flowing',
     leads: ['Chris Johnson', 'Elena Rodriguez', 'Sam Taylor'],
     color: 'from-green-500 to-emerald-500',
   },

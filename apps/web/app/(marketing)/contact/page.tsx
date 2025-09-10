@@ -7,11 +7,11 @@ import { Anton } from 'next/font/google';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
-  title: 'Contact Us - Get in Touch | GHXSTSHIP',
-  description: 'Contact GHXSTSHIP for sales inquiries, support, partnerships, or general questions. Multiple ways to reach our team.',
+  title: 'Contact Us - We Actually Respond | GHXSTSHIP',
+  description: 'Reach the production management team that survived Formula 1 chaos. We answer emails, solve problems, and don\'t ghost you.',
   openGraph: {
-    title: 'Contact Us - Get in Touch | GHXSTSHIP',
-    description: 'Contact GHXSTSHIP for sales inquiries, support, partnerships, or general questions. Multiple ways to reach our team.',
+    title: 'Contact Us - We Actually Respond | GHXSTSHIP',
+    description: 'Reach the production management team that actually responds to emails.',
     url: 'https://ghxstship.com/contact',
   },
 };
@@ -20,7 +20,7 @@ const contactMethods = [
   {
     icon: Mail,
     title: 'Email Support',
-    description: 'Get help from our support team',
+    description: 'Get help from people who actually know the product',
     contact: 'support@ghxstship.com',
     response: 'Response within 24 hours',
     color: 'from-blue-500 to-indigo-600',
@@ -28,7 +28,7 @@ const contactMethods = [
   {
     icon: MessageSquare,
     title: 'Sales Inquiries',
-    description: 'Speak with our sales team',
+    description: 'Talk to sales people who won\'t waste your time',
     contact: 'sales@ghxstship.com',
     response: 'Response within 4 hours',
     color: 'from-green-500 to-emerald-600',
@@ -36,7 +36,7 @@ const contactMethods = [
   {
     icon: Users,
     title: 'Partnerships',
-    description: 'Explore partnership opportunities',
+    description: 'Partner with people who actually deliver',
     contact: 'partnerships@ghxstship.com',
     response: 'Response within 48 hours',
     color: 'from-purple-500 to-pink-600',
@@ -44,7 +44,7 @@ const contactMethods = [
   {
     icon: Phone,
     title: 'Phone Support',
-    description: 'Call us during business hours',
+    description: 'Talk to humans, not phone trees',
     contact: '+1 (555) 123-4567',
     response: 'Mon-Fri, 9AM-6PM PST',
     color: 'from-orange-500 to-red-600',
@@ -115,15 +115,15 @@ export default function ContactPage() {
               Contact Us
             </Badge>
             <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
-              GET IN TOUCH
+              NEED HELP?
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                WE'RE HERE TO HELP
+                WE ACTUALLY RESPOND
               </span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Have questions about our products, need support, or want to explore partnerships? 
-              Our team is ready to assist you every step of the way.
+              Questions about production management that doesn't suck? Need support from people who've 
+              actually managed real productions? We're here and we don't ghost you.
             </p>
           </div>
         </div>
@@ -137,7 +137,7 @@ export default function ContactPage() {
               MULTIPLE WAYS TO REACH US
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Choose the contact method that works best for you and your timeline.
+              Pick your preferred way to reach humans who actually know what they're talking about.
             </p>
           </div>
 
@@ -173,7 +173,7 @@ export default function ContactPage() {
                 SEND US A MESSAGE
               </h2>
               <p className="text-lg text-muted-foreground">
-                Fill out the form below and we'll get back to you as soon as possible.
+                Tell us what's going on and we'll actually get back to you (no auto-responders).
               </p>
             </div>
 
@@ -298,7 +298,7 @@ export default function ContactPage() {
               OUR OFFICES
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Visit us at one of our global locations or reach out to your nearest office.
+              Find us in the real world, where we're probably managing some kind of organized chaos.
             </p>
           </div>
 
@@ -349,7 +349,7 @@ export default function ContactPage() {
               FREQUENTLY ASKED QUESTIONS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Quick answers to common questions. Can't find what you're looking for? Contact us directly.
+              Answers to questions we get asked a lot. If yours isn't here, just ask us directly.
             </p>
           </div>
 

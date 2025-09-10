@@ -7,11 +7,11 @@ import { Anton } from 'next/font/google';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
-  title: 'ATLVS - Production Management Platform | GHXSTSHIP',
-  description: 'ATLVS is the complete enterprise production management suite with AI-powered insights, real-time collaboration, and comprehensive project oversight.',
+  title: 'ATLVS - Production Management That Actually Works | GHXSTSHIP',
+  description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS helps you manage productions like a pro without the mental breakdown.',
   openGraph: {
-    title: 'ATLVS - Production Management Platform | GHXSTSHIP',
-    description: 'ATLVS is the complete enterprise production management suite with AI-powered insights, real-time collaboration, and comprehensive project oversight.',
+    title: 'ATLVS - Production Management That Actually Works | GHXSTSHIP',
+    description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS helps you manage productions like a pro without the mental breakdown.',
     url: 'https://ghxstship.com/products/atlvs',
   },
 };
@@ -87,13 +87,13 @@ const useCases = [
 
 const testimonials = [
   {
-    quote: "ATLVS has completely transformed how we manage our productions. The visibility and control we now have is unprecedented.",
+    quote: "ATLVS saved my sanity on our last production. Finally, a tool that actually helps instead of creating more work.",
     author: "Sarah Chen",
     role: "VP of Production, Meridian Studios",
     project: "The Last Frontier",
   },
   {
-    quote: "The real-time collaboration features have eliminated so many bottlenecks. Our team is more aligned than ever.",
+    quote: "No more chasing people down for updates or wondering if we're on budget. ATLVS just works, which is honestly refreshing.",
     author: "Marcus Rodriguez",
     role: "Creative Director, Apex Advertising",
     project: "Global Brand Campaign",
@@ -117,13 +117,13 @@ export default function ATLVSPage() {
                     ATLVS
                   </span>
                   <br />
-                  PRODUCTION MANAGEMENT
+                  PROJECT MANAGEMENT
                   <br />
-                  REIMAGINED
+                  THAT DOESN'T SUCK
                 </h1>
                 <p className="text-xl text-muted-foreground">
-                  The complete enterprise production management suite with AI-powered insights, 
-                  real-time collaboration, and comprehensive project oversight.
+                  Finally, production management built by someone who's actually managed real productions. 
+                  Track budgets, wrangle crews, and hit deadlines without losing your mind.
                 </p>
               </div>
 
@@ -241,11 +241,11 @@ export default function ATLVSPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
-              COMPREHENSIVE FEATURES
+              FEATURES THAT ACTUALLY HELP
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Everything you need to manage complex productions from start to finish, 
-              all in one integrated platform.
+              All the tools you need to manage productions without juggling 47 different apps. 
+              Built from 13+ years of real-world production experience.
             </p>
           </div>
 
@@ -281,11 +281,11 @@ export default function ATLVSPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
-              BUILT FOR YOUR INDUSTRY
+              WORKS FOR REAL PRODUCTIONS
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              ATLVS adapts to your specific industry needs with customizable workflows 
-              and specialized features.
+              Whether you're managing a 50-person festival crew or a 5-person corporate shoot, 
+              ATLVS scales without breaking (unlike your sanity with other tools).
             </p>
           </div>
 
@@ -322,7 +322,7 @@ export default function ATLVSPage() {
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
-              TRUSTED BY INDUSTRY LEADERS
+              LOVED BY PRODUCTION PROS
             </h2>
           </div>
 
@@ -357,10 +357,11 @@ export default function ATLVSPage() {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
-              READY TO TRANSFORM YOUR PRODUCTION?
+              READY TO STOP THE CHAOS?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Join thousands of production teams who have revolutionized their workflows with ATLVS.
+              Join 12K+ production teams who ditched spreadsheet hell for something that actually works. 
+              Your crew will thank you (and so will your stress levels).
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">

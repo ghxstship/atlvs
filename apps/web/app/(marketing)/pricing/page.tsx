@@ -20,7 +20,7 @@ const plans = [
   {
     id: 'starter',
     name: 'Starter',
-    description: 'Perfect for small teams and individual creators',
+    description: 'For small teams who want to stop drowning in spreadsheets',
     monthlyPrice: 29,
     annualPrice: 290,
     features: [
@@ -42,7 +42,7 @@ const plans = [
   {
     id: 'professional',
     name: 'Professional',
-    description: 'Ideal for growing teams and agencies',
+    description: 'For teams tired of juggling 47 different production apps',
     monthlyPrice: 79,
     annualPrice: 790,
     features: [
@@ -64,7 +64,7 @@ const plans = [
   {
     id: 'enterprise',
     name: 'Enterprise',
-    description: 'For large organizations with advanced needs',
+    description: 'For big teams who need production management that actually scales',
     monthlyPrice: 199,
     annualPrice: 1990,
     features: [
@@ -88,19 +88,19 @@ const plans = [
 const addOns = [
   {
     name: 'OPENDECK Marketplace Access',
-    description: 'Connect with 25K+ creative professionals',
+    description: 'Find crew who actually show up and answer their phones',
     price: 19,
     features: ['Talent marketplace access', 'Resource library', 'Global network', 'AI matching'],
   },
   {
     name: 'Advanced Security',
-    description: 'Enhanced security and compliance features',
+    description: 'Extra security for when you\'re paranoid (but rightfully so)',
     price: 39,
     features: ['Advanced encryption', 'Audit logs', 'Compliance reporting', 'Security monitoring'],
   },
   {
     name: 'Premium Support',
-    description: 'Dedicated support and training',
+    description: 'When you need humans who actually know what they\'re talking about',
     price: 99,
     features: ['Dedicated account manager', 'Priority support', 'Custom training', 'Implementation assistance'],
   },

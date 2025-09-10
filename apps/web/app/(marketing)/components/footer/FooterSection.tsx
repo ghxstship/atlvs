@@ -13,7 +13,7 @@ interface FooterSectionProps {
 export function FooterSection({ title, links }: FooterSectionProps) {
   return (
     <div>
-      <h4 className={`${typography.cardSubtitle} mb-4 text-sm uppercase tracking-wide`}>
+      <h4 className={`${typography.cardTitle} mb-4 text-sm uppercase tracking-wide`}>
         {title}
       </h4>
       <ul className="space-y-3">

@@ -7,11 +7,11 @@ import { Anton } from 'next/font/google';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
-  title: 'Community - Connect with Creative Professionals | GHXSTSHIP',
-  description: 'Join the GHXSTSHIP community of creative professionals. Connect, learn, and grow with thousands of industry experts.',
+  title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',
+  description: 'Join 40K+ production professionals who share real advice, not just humble brags. Get help from people who\'ve been there.',
   openGraph: {
-    title: 'Community - Connect with Creative Professionals | GHXSTSHIP',
-    description: 'Join the GHXSTSHIP community of creative professionals. Connect, learn, and grow with thousands of industry experts.',
+    title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',
+    description: 'Join 40K+ production professionals who share real advice, not just humble brags.',
     url: 'https://ghxstship.com/community',
   },
 };
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const communityChannels = [
   {
     name: 'Discord Server',
-    description: 'Real-time chat with 15K+ creative professionals',
+    description: 'Real-time chat with production pros who actually answer questions',
     members: '15,247',
     activity: 'Very Active',
     icon: MessageSquare,
@@ -29,7 +29,7 @@ const communityChannels = [
   },
   {
     name: 'Skool Community',
-    description: 'Structured learning and networking platform',
+    description: 'Learn from people who\'ve managed real productions (not just theory)',
     members: '8,932',
     activity: 'Active',
     icon: Users,
@@ -39,7 +39,7 @@ const communityChannels = [
   },
   {
     name: 'Forums',
-    description: 'In-depth discussions and knowledge sharing',
+    description: 'Deep dives into production problems and solutions that actually work',
     members: '12,456',
     activity: 'Active',
     icon: MessageCircle,
@@ -49,7 +49,7 @@ const communityChannels = [
   },
   {
     name: 'Events & Meetups',
-    description: 'Virtual and in-person networking events',
+    description: 'Network with people who won\'t just pitch you their services',
     members: '5,678',
     activity: 'Weekly',
     icon: Calendar,
@@ -66,7 +66,7 @@ const socialChannels = [
     followers: '25K',
     icon: Twitter,
     href: 'https://twitter.com/ghxstship',
-    description: 'Latest updates and industry news',
+    description: 'Hot takes and production tips that don\'t suck',
   },
   {
     name: 'LinkedIn',
@@ -74,7 +74,7 @@ const socialChannels = [
     followers: '18K',
     icon: Github,
     href: 'https://linkedin.com/company/ghxstship',
-    description: 'Professional insights and company updates',
+    description: 'Professional content without the corporate fluff',
   },
   {
     name: 'YouTube',
@@ -82,7 +82,7 @@ const socialChannels = [
     followers: '12K',
     icon: Youtube,
     href: 'https://youtube.com/@ghxstship',
-    description: 'Tutorials, webinars, and case studies',
+    description: 'Tutorials from real productions, not stock footage demos',
   },
   {
     name: 'GitHub',
@@ -90,7 +90,7 @@ const socialChannels = [
     followers: '8K',
     icon: Github,
     href: 'https://github.com/ghxstship',
-    description: 'Open source projects and integrations',
+    description: 'Code that actually works in production environments',
   },
   {
     name: 'Instagram',
@@ -98,7 +98,7 @@ const socialChannels = [
     followers: '10K',
     icon: Instagram,
     href: 'https://instagram.com/ghxstship',
-    description: 'Behind-the-scenes and community spotlights',
+    description: 'Behind-the-scenes content that isn\'t just humble brags',
   },
   {
     name: 'Twitch',
@@ -106,7 +106,7 @@ const socialChannels = [
     followers: '5K',
     icon: Twitch,
     href: 'https://twitch.tv/ghxstship',
-    description: 'Live streams and community events',
+    description: 'Live streams where we actually build stuff (not just talk about it)',
   },
 ];
 

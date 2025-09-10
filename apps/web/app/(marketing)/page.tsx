@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { typography } from './lib/typography';
 
 export const metadata: Metadata = {
-  title: 'GHXSTSHIP - Revolutionary Production Management Platform',
-  description: 'Transform your creative production workflow with ATLVS and OPENDECK. Enterprise-grade project management, asset organization, and team collaboration tools.',
+  title: 'GHXSTSHIP - Production Management That Actually Works',
+  description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS and OPENDECK help you manage productions like a pro without losing your sanity (or your budget).',
   openGraph: {
-    title: 'GHXSTSHIP - Revolutionary Production Management Platform',
-    description: 'Transform your creative production workflow with ATLVS and OPENDECK. Enterprise-grade project management, asset organization, and team collaboration tools.',
+    title: 'GHXSTSHIP - Production Management That Actually Works',
+    description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS and OPENDECK help you manage productions like a pro without losing your sanity.',
     url: 'https://ghxstship.com',
   },
 };
@@ -25,16 +25,18 @@ export default function RootPage() {
                   New
                 </span>
                 <span className="inline-flex items-center rounded-full border border-slate-200 px-2 py-1 text-xs font-medium text-slate-700">
-                  Introducing ATLVS 2.0 with AI-powered insights
+                  ATLVS 2.0 just dropped with AI that actually helps
                 </span>
               </div>
             </div>
             <h1 className={`mb-6 text-slate-900 ${typography.heroTitle}`}>
-              REVOLUTIONARY PRODUCTION MANAGEMENT PLATFORM
+              PRODUCTION MANAGEMENT
+              <br />
+              THAT DOESN'T SUCK
             </h1>
             <p className={`mx-auto mb-8 max-w-2xl ${typography.heroSubtitle}`}>
-              Transform your creative production workflow with ATLVS and OPENDECK. Enterprise-grade project management, 
-              asset organization, and team collaboration tools designed for modern creative teams.
+              Finally, production tools built by people who've actually managed real productions. 
+              No more juggling 47 different apps or crying into spreadsheets at 2 AM.
             </p>
             <div className="flex items-center justify-center gap-x-6">
               <Link href="/login" className="rounded-md bg-slate-900 px-6 py-3 text-base font-semibold text-white shadow-sm hover:bg-slate-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-slate-900">
@@ -69,13 +71,14 @@ export default function RootPage() {
                 Our Products
               </span>
               <span className="inline-flex items-center rounded-full border border-slate-200 px-3 py-1 text-sm font-medium text-slate-700 mb-6">
-                Trusted by 10,000+ creative teams worldwide
+                Used by 10K+ teams who got tired of production chaos
               </span>
               <h2 className={`mb-4 text-slate-900 ${typography.sectionTitle}`}>
-                EVERYTHING YOU NEED TO MANAGE CREATIVE PRODUCTION
+                TWO PRODUCTS THAT ACTUALLY WORK TOGETHER
               </h2>
               <p className={typography.sectionSubtitle}>
-                From project planning to asset delivery, our integrated suite of tools streamlines every aspect of your creative workflow.
+                Manage your projects with ATLVS, find talent and assets on OPENDECK. 
+                It's like having a production assistant who never calls in sick.
               </p>
             </div>
 
@@ -93,10 +96,11 @@ export default function RootPage() {
                         <span className="text-white text-xl">⚡</span>
                       </div>
                       <h3 className={`mb-2 text-slate-900 ${typography.cardTitle}`}>
-                        ENTERPRISE PROJECT MANAGEMENT
+                        PROJECT MANAGEMENT FOR REAL HUMANS
                       </h3>
                       <p className={typography.bodyMedium}>
-                        Streamline your creative projects with intelligent task management, resource allocation, and real-time collaboration tools.
+                        Track everything from crew schedules to budget burns without wanting to throw your laptop out the window. 
+                        Built by someone who's managed $15M+ in productions.
                       </p>
                     </div>
                     <ul className="mb-6 space-y-2">
@@ -131,10 +135,11 @@ export default function RootPage() {
                         <span className="text-white text-xl">🌐</span>
                       </div>
                       <h3 className={`mb-2 text-slate-900 ${typography.cardTitle}`}>
-                        GLOBAL ASSET MARKETPLACE
+                        TALENT & ASSETS THAT DON'T GHOST YOU
                       </h3>
                       <p className={typography.bodyMedium}>
-                        Access a vast marketplace of creative assets, collaborate with talent worldwide, and monetize your own creative work.
+                        Find verified crew, book reliable vendors, and source assets from people who actually show up. 
+                        No more last-minute "sorry, can't make it" texts.
                       </p>
                     </div>
                     <ul className="mb-6 space-y-2">
@@ -166,10 +171,11 @@ export default function RootPage() {
           <div className="container mx-auto px-4">
             <div className="mx-auto max-w-4xl overflow-hidden rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 p-12 text-center text-white shadow-xl">
               <h2 className={`mb-4 text-white ${typography.sectionTitle}`}>
-                READY TO TRANSFORM YOUR PRODUCTION WORKFLOW?
+                READY TO STOP PRODUCTION CHAOS?
               </h2>
               <p className={`mb-8 opacity-90 ${typography.heroSubtitle}`}>
-                Join thousands of creative teams who trust GHXSTSHIP to deliver exceptional results.
+                Join 10K+ production pros who switched from spreadsheet hell to actually getting stuff done. 
+                Your future self will thank you.
               </p>
               <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Link href="/login" className="rounded-md bg-white px-6 py-3 text-base font-semibold text-blue-600 shadow-sm hover:bg-slate-50">

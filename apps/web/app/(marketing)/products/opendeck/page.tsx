@@ -7,11 +7,11 @@ import { Anton } from 'next/font/google';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
-  title: 'OPENDECK - Creative Marketplace | GHXSTSHIP',
-  description: 'OPENDECK is the world\'s largest marketplace for creative professionals. Connect with top talent, discover resources, and build your creative network.',
+  title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',
+  description: 'Stop getting ghosted by freelancers. OPENDECK connects you with verified crew and vendors who actually answer their phones and show up on time.',
   openGraph: {
-    title: 'OPENDECK - Creative Marketplace | GHXSTSHIP',
-    description: 'OPENDECK is the world\'s largest marketplace for creative professionals. Connect with top talent, discover resources, and build your creative network.',
+    title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',
+    description: 'Stop getting ghosted by freelancers. OPENDECK connects you with verified crew and vendors who actually answer their phones.',
     url: 'https://ghxstship.com/products/opendeck',
   },
 };
@@ -19,27 +19,27 @@ export const metadata: Metadata = {
 const features = [
   {
     icon: ShoppingBag,
-    title: 'Talent Marketplace',
-    description: 'Connect with verified creative professionals across all disciplines including directors, designers, writers, and more.',
-    benefits: ['Verified professionals', 'Portfolio reviews', 'Skill assessments', 'Rating system'],
+    title: 'Talent That Shows Up',
+    description: 'Find verified crew who actually answer their phones and show up when they say they will. No more last-minute "sorry, can\'t make it" texts.',
+    benefits: ['Background verified', 'Real portfolio reviews', 'Actual skill tests', 'Honest rating system'],
   },
   {
     icon: Briefcase,
-    title: 'Resource Library',
-    description: 'Access templates, assets, tools, and educational content curated by industry experts.',
-    benefits: ['Premium templates', 'Stock assets', 'Educational content', 'Tool recommendations'],
+    title: 'Assets That Work',
+    description: 'Pre-made templates and assets that don\'t look like they were designed in 2003. Curated by people who actually use this stuff.',
+    benefits: ['Actually good templates', 'Usable stock assets', 'Real-world tutorials', 'Tools that don\'t suck'],
   },
   {
     icon: Globe,
-    title: 'Global Network',
-    description: 'Worldwide community of creators and enterprises spanning 50+ countries and all time zones.',
-    benefits: ['50+ countries', 'Multi-language support', 'Local expertise', 'Cultural diversity'],
+    title: 'Worldwide Talent Pool',
+    description: 'Access crew and vendors across 50+ countries. Perfect for when your local options are booked or overpriced.',
+    benefits: ['50+ countries covered', 'Multi-language support', 'Local market knowledge', 'Time zone flexibility'],
   },
   {
     icon: Zap,
-    title: 'Instant Matching',
-    description: 'AI-powered talent and project matching algorithms that connect you with the perfect collaborators.',
-    benefits: ['AI matching', 'Skill compatibility', 'Availability sync', 'Budget alignment'],
+    title: 'Smart Matching',
+    description: 'AI that actually helps match you with people who fit your budget, timeline, and won\'t drive you crazy.',
+    benefits: ['Budget-aware matching', 'Skill compatibility', 'Real availability', 'Personality fit'],
   },
   {
     icon: Search,
@@ -49,55 +49,55 @@ const features = [
   },
   {
     icon: Star,
-    title: 'Quality Assurance',
-    description: 'Comprehensive vetting process ensures you work with top-tier professionals and resources.',
-    benefits: ['Background checks', 'Portfolio verification', 'Client reviews', 'Quality scores'],
+    title: 'Actually Vetted Talent',
+    description: 'We check portfolios, references, and backgrounds so you don\'t have to. No more hiring disasters.',
+    benefits: ['Real background checks', 'Portfolio verification', 'Honest client reviews', 'Reliability scores'],
   },
   {
     icon: Award,
-    title: 'Recognition System',
-    description: 'Showcase achievements, build reputation, and get recognized for outstanding work.',
-    benefits: ['Achievement badges', 'Reputation scores', 'Featured profiles', 'Success stories'],
+    title: 'Reputation That Matters',
+    description: 'Build your rep with real projects and honest feedback. No fake reviews or inflated ratings.',
+    benefits: ['Earned achievements', 'Real reputation scores', 'Featured work', 'Verified success stories'],
   },
   {
     icon: Filter,
-    title: 'Smart Curation',
-    description: 'Personalized recommendations based on your preferences, history, and project needs.',
-    benefits: ['Personal recommendations', 'Trending content', 'Curated collections', 'Smart suggestions'],
+    title: 'Recommendations That Help',
+    description: 'Get suggestions based on what you actually need, not what someone\'s trying to sell you.',
+    benefits: ['Relevant recommendations', 'Actually trending content', 'Useful collections', 'Smart suggestions'],
   },
 ];
 
 const categories = [
   {
-    title: 'Creative Professionals',
+    title: 'Verified Professionals',
     count: '25K+',
-    description: 'Directors, designers, writers, photographers, and more',
+    description: 'Crew who actually know what they\'re doing and show up on time',
     examples: ['Film Directors', 'Graphic Designers', 'Copywriters', 'Photographers', 'Animators'],
   },
   {
-    title: 'Resources & Assets',
+    title: 'Useful Resources',
     count: '100K+',
-    description: 'Templates, stock media, tools, and educational content',
+    description: 'Templates and assets that don\'t look like everyone else\'s',
     examples: ['Design Templates', 'Stock Photos', 'Video Assets', 'Audio Libraries', 'Tutorials'],
   },
   {
-    title: 'Active Projects',
+    title: 'Real Opportunities',
     count: '50K+',
-    description: 'Live opportunities across all creative disciplines',
+    description: 'Actual paying gigs, not \'exposure\' opportunities',
     examples: ['Film Projects', 'Brand Campaigns', 'Web Design', 'Content Creation', 'Events'],
   },
 ];
 
 const testimonials = [
   {
-    quote: "OPENDECK has completely changed how we find talent. What used to take weeks now takes hours, and the quality is consistently excellent.",
+    quote: "Finally, freelancers who actually show up and do what they say they'll do. OPENDECK saved our last three productions from disaster.",
     author: "Marcus Rodriguez",
     role: "Creative Director, Apex Advertising",
     project: "Global Brand Campaign",
     rating: 5,
   },
   {
-    quote: "The global network on OPENDECK is incredible. We've found amazing talent from around the world that we never would have discovered otherwise.",
+    quote: "No more getting ghosted by crew or dealing with flaky vendors. OPENDECK's vetting process actually works.",
     author: "Lisa Thompson",
     role: "Executive Producer, Pinnacle Media",
     project: "Documentary Series",
@@ -146,13 +146,13 @@ export default function OPENDECKPage() {
                     OPENDECK
                   </span>
                   <br />
-                  THE CREATIVE
+                  TALENT THAT
                   <br />
-                  MARKETPLACE
+                  DOESN'T GHOST YOU
                 </h1>
                 <p className="text-xl text-muted-foreground">
-                  Connect with top talent, discover resources, and access the world's largest 
-                  marketplace designed for creative professionals and enterprises.
+                  Find verified crew and vendors who actually show up, answer their phones, 
+                  and deliver what they promise. No more production nightmares.
                 </p>
               </div>
 
