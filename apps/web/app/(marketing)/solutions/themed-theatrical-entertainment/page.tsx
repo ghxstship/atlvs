@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Film, Palette, Users, Zap, CheckCircle, Play, Star, Sparkles, Camera } from 'lucide-react';
+import { ArrowRight, Music, Palette, Users, Zap, CheckCircle, Play, Star, Sparkles, Camera } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const challenges = [
   {
-    icon: Film,
+    icon: Music,
     title: 'Complex Production Coordination',
     description: 'Managing intricate theatrical productions with multiple departments, cast, and crew',
     solution: 'Integrated production management with role-specific workflows and real-time coordination',
@@ -180,7 +180,7 @@ export default function ThemedTheatricalPage() {
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                      <Film className="w-3 h-3" />
+                      <Music className="w-3 h-3" />
                       productions.ghxstship.com
                     </div>
                   </div>
