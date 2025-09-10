@@ -55,7 +55,7 @@ export class SupabaseAssetAssignmentRepository implements AssetAssignmentReposit
   async update(id: string, organizationId: string, updates: Partial<AssetAssignment>): Promise<AssetAssignment> {
     const { data, error } = await this.supabase
       .from('asset_assignments')
-      .update(this.mapFromAssetAssignment(updates))
+      .update(this.mapFromAssetAssignment(updates) as never)
       .eq('id', id)
       .eq('organization_id', organizationId)
       .select()
