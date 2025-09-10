@@ -8,15 +8,18 @@ export type Permission =
   | 'projects:view'
   | 'finance:manage'
   | 'finance:view'
+  | 'people:read'
+  | 'people:write'
+  | 'people:delete'
   | '*'; // Wildcard for all permissions
 
 export type Role = 'owner' | 'admin' | 'manager' | 'member';
 
 const rolePermissions: Record<Role, Permission[]> = {
   owner: ['*'], // All permissions
-  admin: ['settings:manage', 'users:manage', 'projects:manage', 'finance:manage'],
-  manager: ['projects:manage', 'users:view', 'finance:view'],
-  member: ['projects:view', 'users:view'],
+  admin: ['settings:manage', 'users:manage', 'projects:manage', 'finance:manage', 'people:read', 'people:write', 'people:delete'],
+  manager: ['projects:manage', 'users:view', 'finance:view', 'people:read', 'people:write'],
+  member: ['projects:view', 'users:view', 'people:read'],
 };
 
 export async function checkPermission(

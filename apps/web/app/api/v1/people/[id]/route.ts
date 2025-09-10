@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { PeopleService } from '@ghxstship/application/services/PeopleService';
 import { extractTenantContext } from '@/lib/tenant-context';
 import { enforceRBAC } from '@/lib/rbac';
+import { createClient } from '@/lib/supabase/server';
 
 const UpdatePersonSchema = z.object({
   firstName: z.string().min(1).optional(),
@@ -26,15 +26,17 @@ export async function GET(
 ) {
   try {
     const context = await extractTenantContext();
-    await enforceRBAC(context, 'people:read');
+    await enforceRBAC(context.userId, context.organizationId, 'people:read');
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    const { data: person, error } = await supabase
+      .from('people')
+      .select('*')
+      .eq('id', params.id)
+      .eq('organization_id', context.organizationId)
+      .single();
 
-    const person = await peopleService.getPerson(context, params.id);
-
-    if (!person) {
+    if (error || !person) {
       return NextResponse.json(
         { success: false, error: 'Person not found' },
         { status: 404 }
@@ -67,17 +69,30 @@ export async function PUT(
   { params }: { params: { id: string } }
 ) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:write');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:write');
 
     const body = await request.json();
     const updates = UpdatePersonSchema.parse(body);
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    const { data: person, error } = await supabase
+      .from('people')
+      .update({
+        ...updates,
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', params.id)
+      .eq('organization_id', context.organizationId)
+      .select()
+      .single();
 
-    const person = await peopleService.updatePerson(context, params.id, updates);
+    if (error || !person) {
+      return NextResponse.json(
+        { success: false, error: 'Person not found or update failed' },
+        { status: 404 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -100,13 +115,6 @@ export async function PUT(
       );
     }
 
-    if (error instanceof Error && error.message.includes('not found')) {
-      return NextResponse.json(
-        { success: false, error: 'Person not found' },
-        { status: 404 }
-      );
-    }
-
     return NextResponse.json(
       { success: false, error: 'Internal server error' },
       { status: 500 }
@@ -119,14 +127,22 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:delete');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:delete');
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    const { error } = await supabase
+      .from('people')
+      .delete()
+      .eq('id', params.id)
+      .eq('organization_id', context.organizationId);
 
-    await peopleService.deletePerson(context, params.id);
+    if (error) {
+      return NextResponse.json(
+        { success: false, error: 'Failed to delete person' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -139,13 +155,6 @@ export async function DELETE(
       return NextResponse.json(
         { success: false, error: 'Insufficient permissions' },
         { status: 403 }
-      );
-    }
-
-    if (error instanceof Error && error.message.includes('not found')) {
-      return NextResponse.json(
-        { success: false, error: 'Person not found' },
-        { status: 404 }
       );
     }
 
