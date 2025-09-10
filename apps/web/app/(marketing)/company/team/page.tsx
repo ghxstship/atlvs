@@ -85,140 +85,284 @@ const leadership = [
 
 const departments = [
   {
-    name: 'Engineering',
-    count: 25,
-    description: 'Building tools that don\'t break when you actually need them',
-    leads: ['Emily Watson', 'David Park', 'Lisa Chen'],
-    color: 'from-blue-500 to-indigo-500',
-  },
-  {
-    name: 'Product',
-    count: 12,
-    description: 'Making complex workflows feel less like rocket science',
-    leads: ['Marcus Kim', 'Jennifer Liu', 'Alex Thompson'],
-    color: 'from-purple-500 to-pink-500',
-  },
-  {
-    name: 'Design',
+    code: 'XLA',
+    name: 'Executive Leadership & Administration',
     count: 8,
-    description: 'Making production management look good (and actually work)',
-    leads: ['Maria Gonzalez', 'James Wilson', 'Anna Park'],
+    description: 'Steering the ship and keeping everyone pointed toward the same horizon',
+    leads: ['Julian Clarkson', 'Sarah Fry', 'John Macejak'],
+    color: 'from-purple-600 to-indigo-600',
+  },
+  {
+    code: 'FPL',
+    name: 'Finance, Procurement & Legal Services',
+    count: 12,
+    description: 'Making sure the money flows right and the contracts actually protect us',
+    leads: ['Marcus Chen', 'Lisa Rodriguez', 'David Kim'],
+    color: 'from-green-600 to-emerald-600',
+  },
+  {
+    code: 'CDS',
+    name: 'Creative Design & Strategy',
+    count: 15,
+    description: 'Turning wild ideas into experiences that actually make sense',
+    leads: ['Maya Patel', 'Alex Thompson', 'Sofia Martinez'],
+    color: 'from-pink-500 to-rose-500',
+  },
+  {
+    code: 'EPR',
+    name: 'Event Programming & Revenue',
+    count: 18,
+    description: 'Crafting experiences that people remember and pay for',
+    leads: ['Jordan Lee', 'Emma Wilson', 'Carlos Ruiz'],
+    color: 'from-amber-500 to-orange-500',
+  },
+  {
+    code: 'MMM',
+    name: 'Marketing & Media Management',
+    count: 14,
+    description: 'Getting the word out without being that annoying brand',
+    leads: ['Taylor Swift', 'Ryan Park', 'Zoe Chen'],
+    color: 'from-blue-500 to-cyan-500',
+  },
+  {
+    code: 'SED',
+    name: 'Site & Environmental Development',
+    count: 22,
+    description: 'Building spaces that don\'t fall down and actually work for humans',
+    leads: ['Mike Johnson', 'Anna Garcia', 'Tom Anderson'],
+    color: 'from-teal-600 to-green-600',
+  },
+  {
+    code: 'SOL',
+    name: 'Site Operations & Logistics',
+    count: 28,
+    description: 'Moving mountains of stuff to the right place at the right time',
+    leads: ['Rachel Kim', 'James Wilson', 'Maria Santos'],
+    color: 'from-slate-600 to-gray-600',
+  },
+  {
+    code: 'ITC',
+    name: 'IT & Communications',
+    count: 16,
+    description: 'Keeping the digital world connected when everything wants to break',
+    leads: ['Kevin Zhang', 'Priya Sharma', 'Lucas Brown'],
+    color: 'from-indigo-500 to-purple-500',
+  },
+  {
+    code: 'XTP',
+    name: 'Experiential & Technical Production',
+    count: 35,
+    description: 'Making the impossible look effortless, one technical miracle at a time',
+    leads: ['Diana Ross', 'Marcus Johnson', 'Elena Rodriguez'],
+    color: 'from-red-500 to-pink-500',
+  },
+  {
+    code: 'BGS',
+    name: 'Branding, Graphics & Signage',
+    count: 11,
+    description: 'Making everything look intentional, even when it definitely wasn\'t',
+    leads: ['Chris Lee', 'Samantha Davis', 'Roberto Martinez'],
+    color: 'from-violet-500 to-purple-500',
+  },
+  {
+    code: 'PSS',
+    name: 'Public Safety & Security',
+    count: 24,
+    description: 'Keeping everyone safe while they\'re having way too much fun',
+    leads: ['Officer Johnson', 'Captain Smith', 'Sergeant Williams'],
+    color: 'from-red-600 to-orange-600',
+  },
+  {
+    code: 'GSX',
+    name: 'Guest Services & Experience',
+    count: 19,
+    description: 'Turning confused visitors into raving fans, one interaction at a time',
+    leads: ['Isabella Chen', 'Noah Thompson', 'Ava Rodriguez'],
     color: 'from-emerald-500 to-teal-500',
   },
   {
-    name: 'Sales & Marketing',
-    count: 15,
-    description: 'Spreading the word without being annoying about it',
-    leads: ['Robert Chen', 'Sophie Davis', 'Michael Kim'],
-    color: 'from-orange-500 to-red-500',
+    code: 'HFB',
+    name: 'Hospitality, Food & Beverage',
+    count: 32,
+    description: 'Feeding people and keeping them happy, which is basically magic',
+    leads: ['Vita Sotakoun', 'Chef Martinez', 'Sommelier Kim'],
+    color: 'from-orange-500 to-amber-500',
   },
   {
-    name: 'Customer Success',
-    count: 10,
-    description: 'Making sure our tools actually solve your problems',
-    leads: ['Rachel Martinez', 'Tom Anderson', 'Maya Patel'],
-    color: 'from-cyan-500 to-blue-500',
+    code: 'ENT',
+    name: 'Entertainment, Talent',
+    count: 21,
+    description: 'Wrangling creative personalities and making sure the show goes on',
+    leads: ['Dallas D-Cal Calles', 'Melody Johnson', 'Rhythm Davis'],
+    color: 'from-fuchsia-500 to-pink-500',
   },
   {
-    name: 'Operations',
-    count: 6,
-    description: 'Keeping the lights on and the coffee flowing',
-    leads: ['Chris Johnson', 'Elena Rodriguez', 'Sam Taylor'],
-    color: 'from-green-500 to-emerald-500',
+    code: 'TDX',
+    name: 'Travel, Destinations, & Experiences',
+    count: 13,
+    description: 'Getting people places and making sure they actually want to be there',
+    leads: ['Journey Smith', 'Atlas Brown', 'Compass Wilson'],
+    color: 'from-sky-500 to-blue-500',
   },
 ];
 
 const teamMembers = [
   {
-    name: 'David Park',
-    role: 'Senior Engineering Manager',
-    department: 'Engineering',
-    location: 'Vancouver, Canada',
+    name: 'Alexandra Sterling',
+    role: 'Executive Operations Director',
+    department: 'XLA',
+    departmentCode: 'XLA',
+    location: 'Global',
     image: '/api/placeholder/150/150',
+    tagline: 'Turns executive chaos into strategic clarity—because someone has to keep the C-suite focused',
+    profile: 'Alex translates big-picture vision into actionable plans that actually work. She\'s the reason leadership meetings end with decisions instead of more meetings.',
   },
   {
-    name: 'Lisa Chen',
-    role: 'Principal Software Engineer',
-    department: 'Engineering',
-    location: 'San Francisco, CA',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Jennifer Liu',
-    role: 'Senior Product Manager',
-    department: 'Product',
-    location: 'Los Angeles, CA',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Alex Thompson',
-    role: 'Product Designer',
-    department: 'Product',
-    location: 'Portland, OR',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Maria Gonzalez',
-    role: 'Design Director',
-    department: 'Design',
-    location: 'Barcelona, Spain',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'James Wilson',
-    role: 'Senior UX Designer',
-    department: 'Design',
-    location: 'London, UK',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Robert Chen',
-    role: 'VP of Sales',
-    department: 'Sales & Marketing',
+    name: 'Marcus Chen',
+    role: 'Senior Financial Analyst',
+    department: 'FPL',
+    departmentCode: 'FPL',
     location: 'New York, NY',
     image: '/api/placeholder/150/150',
+    tagline: 'Makes budgets that survive contact with reality—and lawyers who actually read contracts',
+    profile: 'Marcus has this weird talent for making numbers tell stories that make sense. He can spot a budget red flag from three spreadsheets away.',
   },
   {
-    name: 'Sophie Davis',
-    role: 'Head of Marketing',
-    department: 'Sales & Marketing',
-    location: 'Chicago, IL',
+    name: 'Luna Rodriguez',
+    role: 'Creative Strategy Lead',
+    department: 'CDS',
+    departmentCode: 'CDS',
+    location: 'Los Angeles, CA',
     image: '/api/placeholder/150/150',
+    tagline: 'Transforms "wouldn\'t it be cool if..." into experiences people actually want to attend',
+    profile: 'Luna bridges the gap between wild creative dreams and practical execution. She\'s fluent in both artist-speak and project manager-speak.',
   },
   {
-    name: 'Rachel Martinez',
-    role: 'Customer Success Manager',
-    department: 'Customer Success',
-    location: 'Miami, FL',
+    name: 'Jordan Kim',
+    role: 'Programming Manager',
+    department: 'EPR',
+    departmentCode: 'EPR',
+    location: 'Nashville, TN',
     image: '/api/placeholder/150/150',
+    tagline: 'Curates lineups that sell tickets and creates moments people post about for years',
+    profile: 'Jordan has an uncanny ability to spot what audiences want before they know they want it. His programming decisions consistently drive revenue.',
   },
   {
-    name: 'Tom Anderson',
-    role: 'Senior Customer Success Manager',
-    department: 'Customer Success',
-    location: 'Denver, CO',
-    image: '/api/placeholder/150/150',
-  },
-  {
-    name: 'Chris Johnson',
-    role: 'Head of Operations',
-    department: 'Operations',
+    name: 'Zoe Thompson',
+    role: 'Digital Marketing Strategist',
+    department: 'MMM',
+    departmentCode: 'MMM',
     location: 'Austin, TX',
     image: '/api/placeholder/150/150',
+    tagline: 'Builds buzz that converts to ticket sales—without being cringe about it',
+    profile: 'Zoe creates marketing campaigns that feel authentic instead of desperate. She understands the difference between viral and valuable.',
   },
   {
-    name: 'Elena Rodriguez',
-    role: 'People Operations Manager',
-    department: 'Operations',
-    location: 'Mexico City, Mexico',
+    name: 'River Martinez',
+    role: 'Site Development Manager',
+    department: 'SED',
+    departmentCode: 'SED',
+    location: 'Denver, CO',
     image: '/api/placeholder/150/150',
+    tagline: 'Builds festival grounds that don\'t flood, collapse, or become mud pits of despair',
+    profile: 'River turns empty fields into functional event spaces. He thinks about drainage, power distribution, and crowd flow so you don\'t have to.',
+  },
+  {
+    name: 'Casey Wilson',
+    role: 'Logistics Coordinator',
+    department: 'SOL',
+    departmentCode: 'SOL',
+    location: 'Chicago, IL',
+    image: '/api/placeholder/150/150',
+    tagline: 'Gets 50,000 people fed, watered, and happy without anyone noticing the complexity',
+    profile: 'Casey orchestrates the invisible ballet of event logistics. When everything runs smoothly, that\'s Casey\'s handiwork.',
+  },
+  {
+    name: 'Phoenix Zhang',
+    role: 'IT Systems Manager',
+    department: 'ITC',
+    departmentCode: 'ITC',
+    location: 'Seattle, WA',
+    image: '/api/placeholder/150/150',
+    tagline: 'Keeps WiFi working when 100k people are trying to post the same sunset photo',
+    profile: 'Phoenix designs network infrastructure that survives the social media apocalypse. He plans for the worst-case scenario and then adds more bandwidth.',
+  },
+  {
+    name: 'Sage Anderson',
+    role: 'Technical Production Lead',
+    department: 'XTP',
+    departmentCode: 'XTP',
+    location: 'Las Vegas, NV',
+    image: '/api/placeholder/150/150',
+    tagline: 'Makes stages that don\'t collapse and sound systems that actually work in the back row',
+    profile: 'Sage turns technical riders into reality. She speaks fluent audio engineer and can troubleshoot anything with a power cord.',
+  },
+  {
+    name: 'Indigo Davis',
+    role: 'Brand Design Manager',
+    department: 'BGS',
+    departmentCode: 'BGS',
+    location: 'Portland, OR',
+    image: '/api/placeholder/150/150',
+    tagline: 'Creates signage so good people actually know where they\'re going',
+    profile: 'Indigo designs wayfinding that works even when people are distracted, tired, or slightly intoxicated. Her signs prevent crowd disasters.',
+  },
+  {
+    name: 'Atlas Johnson',
+    role: 'Security Operations Manager',
+    department: 'PSS',
+    departmentCode: 'PSS',
+    location: 'Miami, FL',
+    image: '/api/placeholder/150/150',
+    tagline: 'Keeps everyone safe while maintaining the vibe—no easy feat with 50k party people',
+    profile: 'Atlas balances security with accessibility. He prevents problems before they happen while keeping the atmosphere fun, not fortress-like.',
+  },
+  {
+    name: 'Harmony Lee',
+    role: 'Guest Experience Manager',
+    department: 'GSX',
+    departmentCode: 'GSX',
+    location: 'San Francisco, CA',
+    image: '/api/placeholder/150/150',
+    tagline: 'Turns first-time visitors into lifelong fans through moments that matter',
+    profile: 'Harmony designs touchpoints that create emotional connections. She understands that great experiences happen in the details.',
+  },
+  {
+    name: 'Basil Rodriguez',
+    role: 'Hospitality Operations Lead',
+    department: 'HFB',
+    departmentCode: 'HFB',
+    location: 'New Orleans, LA',
+    image: '/api/placeholder/150/150',
+    tagline: 'Feeds thousands without food poisoning—and makes it taste good too',
+    profile: 'Basil manages complex food operations that scale. He knows how to keep quality high when quantity gets ridiculous.',
+  },
+  {
+    name: 'Melody Santos',
+    role: 'Talent Relations Manager',
+    department: 'ENT',
+    departmentCode: 'ENT',
+    location: 'Los Angeles, CA',
+    image: '/api/placeholder/150/150',
+    tagline: 'Keeps artists happy, on time, and actually showing up to their own performances',
+    profile: 'Melody speaks fluent artist temperament. She manages egos, riders, and last-minute changes with diplomatic grace.',
+  },
+  {
+    name: 'Journey Park',
+    role: 'Travel Experience Coordinator',
+    department: 'TDX',
+    departmentCode: 'TDX',
+    location: 'Vancouver, Canada',
+    image: '/api/placeholder/150/150',
+    tagline: 'Gets people to events without losing their luggage, sanity, or enthusiasm',
+    profile: 'Journey creates travel experiences that enhance rather than exhaust. She turns logistics into part of the adventure.',
   },
 ];
 
 const stats = [
-  { metric: '76', label: 'Team Members', description: 'Across 6 departments' },
-  { metric: '15+', label: 'Countries', description: 'Global distributed team' },
-  { metric: '25+', label: 'Languages', description: 'Spoken by our team' },
+  { metric: '318', label: 'Team Members', description: 'Across 15 departments' },
+  { metric: '25+', label: 'Countries', description: 'Global distributed team' },
+  { metric: '40+', label: 'Languages', description: 'Spoken by our team' },
   { metric: '100%', label: 'Remote-First', description: 'Flexible work culture' },
 ];
 
@@ -314,9 +458,14 @@ export default function TeamPage() {
                 </div>
                 
                 <div className="flex items-center gap-2 mb-3">
-                  <h3 className={`${typography.cardTitle} text-xl`}>
+                  <Badge variant="primary" className="text-xs font-mono">
+                    {dept.code}
+                  </Badge>
+                  <h3 className={`${typography.cardTitle} text-lg`}>
                     {dept.name}
                   </h3>
+                </div>
+                <div className="flex items-center gap-2 mb-3">
                   <Badge variant="outline" className="text-xs">
                     {dept.count} members
                   </Badge>
@@ -350,21 +499,40 @@ export default function TeamPage() {
               Get to know some of the talented individuals who make GHXSTSHIP possible.
             </p>
           </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {teamMembers.map((member) => (
-            <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
+            <Card key={member.name} className="hover:shadow-lg transition-all duration-300 group">
               <CardContent className="p-6">
-                <div className="w-20 h-20 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <Users className="h-6 w-6 text-primary" />
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center">
+                    <Users className="h-6 w-6 text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className={`${typography.cardTitle} text-lg mb-1`}>
+                      {member.name}
+                    </h3>
+                    <p className="text-sm font-semibold text-primary mb-1">{member.role}</p>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="text-xs">
+                        {member.departmentCode}
+                      </Badge>
+                      <Badge variant="secondary" className="text-xs">
+                        {member.department}
+                      </Badge>
+                    </div>
+                  </div>
                 </div>
-                <h3 className={`${typography.cardTitle} text-lg mb-1`}>
-                  {member.name}
-                </h3>
-                <p className="text-sm font-semibold text-primary mb-1">{member.role}</p>
-                <Badge variant="outline" className="text-xs mb-3">
-                  {member.department}
-                </Badge>
-                <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
+                
+                <div className="mb-4">
+                  <p className="text-sm font-medium text-foreground mb-2 italic">
+                    "{member.tagline}"
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    {member.profile}
+                  </p>
+                </div>
+                
+                <div className="flex items-center gap-1 text-xs text-muted-foreground">
                   <MapPin className="h-3 w-3" />
                   {member.location}
                 </div>
