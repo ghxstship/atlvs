@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { PeopleService } from '@ghxstship/application/services/PeopleService';
 import { extractTenantContext } from '@/lib/tenant-context';
 import { enforceRBAC } from '@/lib/rbac';
+import { createClient } from '@/lib/supabase/server';
 
 const CreateCompetencySchema = z.object({
   name: z.string().min(1, 'Competency name is required'),
@@ -23,8 +23,8 @@ const CompetencyFiltersSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:read');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:read');
 
     const { searchParams } = new URL(request.url);
     const filtersData = {
@@ -33,11 +33,23 @@ export async function GET(request: NextRequest) {
     };
 
     const filters = CompetencyFiltersSchema.parse(filtersData);
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    let query = supabase
+      .from('people_competencies')
+      .select('*')
+      .eq('organization_id', context.organizationId);
 
-    const competencies = await peopleService.getCompetencies(context, filters);
+    if (filters.category) query = query.eq('category', filters.category);
+    if (filters.search) query = query.ilike('name', `%${filters.search}%`);
+
+    const { data: competencies, error } = await query;
+    if (error) {
+      console.error('Error fetching competencies:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to fetch competencies' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -70,17 +82,33 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:write');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:write');
 
     const body = await request.json();
     const competencyData = CreateCompetencySchema.parse(body);
+    const supabase = await createClient();
+    const { data: competency, error } = await supabase
+      .from('people_competencies')
+      .insert({
+        organization_id: context.organizationId,
+        name: competencyData.name,
+        description: competencyData.description,
+        category: competencyData.category,
+        level_definitions: competencyData.levelDefinitions ?? null,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
-
-    const competency = await peopleService.createCompetency(context, competencyData);
+    if (error || !competency) {
+      console.error('Error creating competency:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to create competency' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,

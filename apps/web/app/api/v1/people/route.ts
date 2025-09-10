@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { PeopleService } from '@ghxstship/application/services/PeopleService';
 import { extractTenantContext } from '@/lib/tenant-context';
 import { enforceRBAC } from '@/lib/rbac';
+import { createClient } from '@/lib/supabase/server';
 
 const CreatePersonSchema = z.object({
   firstName: z.string().min(1, 'First name is required'),
@@ -31,8 +31,8 @@ const PersonFiltersSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:read');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:read');
 
     const { searchParams } = new URL(request.url);
     const filtersData = {
@@ -45,11 +45,32 @@ export async function GET(request: NextRequest) {
     };
 
     const filters = PersonFiltersSchema.parse(filtersData);
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    let query = supabase
+      .from('people')
+      .select('*')
+      .eq('organization_id', context.organizationId);
 
-    const people = await peopleService.getPeople(context, filters);
+    if (filters.status) query = query.eq('status', filters.status);
+    if (filters.department) query = query.eq('department', filters.department);
+    if (filters.role) query = query.eq('role', filters.role);
+    if (filters.location) query = query.eq('location', filters.location);
+    // naive search across a couple of likely columns
+    if (filters.search) {
+      // Using ilike on a coalesce of name fields if available; fallback to email
+      query = query.or(
+        `firstName.ilike.%${filters.search}%,lastName.ilike.%${filters.search}%,email.ilike.%${filters.search}%`
+      );
+    }
+
+    const { data: people, error } = await query;
+    if (error) {
+      console.error('Error querying people:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to fetch people' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -82,30 +103,40 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:write');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:write');
 
     const body = await request.json();
     const personData = CreatePersonSchema.parse(body);
+    const supabase = await createClient();
+    const { data: person, error } = await supabase
+      .from('people')
+      .insert({
+        organization_id: context.organizationId,
+        firstName: personData.firstName,
+        lastName: personData.lastName,
+        email: personData.email,
+        phone: personData.phone,
+        role: personData.role,
+        department: personData.department,
+        location: personData.location,
+        startDate: personData.startDate,
+        status: personData.status,
+        avatarUrl: personData.avatarUrl,
+        isDemo: personData.isDemo ?? false,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
-
-    const person = await peopleService.createPerson({
-      organizationId: context.organizationId,
-      firstName: body.firstName,
-      lastName: body.lastName,
-      status: body.status,
-      email: body.email,
-      phone: body.phone,
-      role: body.role,
-      department: body.department,
-      location: body.location,
-      startDate: body.startDate,
-      endDate: body.endDate,
-      isDemo: body.isDemo
-    });
+    if (error || !person) {
+      console.error('Error inserting person:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to create person' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,

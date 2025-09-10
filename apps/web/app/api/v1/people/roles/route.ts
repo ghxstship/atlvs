@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { PeopleService } from '@ghxstship/application/services/PeopleService';
 import { extractTenantContext } from '@/lib/tenant-context';
 import { enforceRBAC } from '@/lib/rbac';
+import { createClient } from '@/lib/supabase/server';
 
 const CreateRoleSchema = z.object({
   name: z.string().min(1, 'Role name is required'),
@@ -20,8 +20,8 @@ const RoleFiltersSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:read');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:read');
 
     const { searchParams } = new URL(request.url);
     const filtersData = {
@@ -31,11 +31,26 @@ export async function GET(request: NextRequest) {
     };
 
     const filters = RoleFiltersSchema.parse(filtersData);
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
+    const supabase = await createClient();
+    let query = supabase
+      .from('people_roles')
+      .select('*')
+      .eq('organization_id', context.organizationId);
 
-    const roles = await peopleService.getRoles(context, filters);
+    if (filters.department) query = query.eq('department', filters.department);
+    if (filters.level) query = query.eq('level', filters.level);
+    if (filters.search) {
+      query = query.ilike('name', `%${filters.search}%`);
+    }
+
+    const { data: roles, error } = await query;
+    if (error) {
+      console.error('Error fetching roles:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to fetch roles' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -68,17 +83,34 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const context = await extractTenantContext(request);
-    await enforceRBAC(context, 'people:write');
+    const context = await extractTenantContext();
+    await enforceRBAC(context.userId, context.organizationId, 'people:write');
 
     const body = await request.json();
     const roleData = CreateRoleSchema.parse(body);
+    const supabase = await createClient();
+    const { data: role, error } = await supabase
+      .from('people_roles')
+      .insert({
+        organization_id: context.organizationId,
+        name: roleData.name,
+        description: roleData.description,
+        permissions: roleData.permissions ?? [],
+        level: roleData.level,
+        department: roleData.department,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .select()
+      .single();
 
-    const peopleService = new PeopleService(
-      // Repository dependencies would be injected here
-    );
-
-    const role = await peopleService.createRole(context, roleData);
+    if (error || !role) {
+      console.error('Error creating role:', error);
+      return NextResponse.json(
+        { success: false, error: 'Failed to create role' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
