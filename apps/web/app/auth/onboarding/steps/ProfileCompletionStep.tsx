@@ -1,8 +1,7 @@
-import { Avatar } from "@ghxstship/ui";
 "use client";
 
 import { useState } from 'react';
-import { Card, CardContent, Button } from '@ghxstship/ui';
+import { Card, CardContent, Button, Avatar } from '@ghxstship/ui';
 import { User, Briefcase, MapPin, ArrowRight, ArrowLeft, Camera } from 'lucide-react';
 import { Anton } from 'next/font/google';
 import { createBrowserClient } from '@supabase/ssr';
