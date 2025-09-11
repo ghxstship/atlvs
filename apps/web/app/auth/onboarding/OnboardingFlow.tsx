@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@supabase/ssr';
-import { DynamicProgressBar } from '../../(protected)/components/ui';
+import { DynamicProgressBar } from '../../(protected)/components/ui/DynamicProgressBar';
 import { ArrowRight, ArrowLeft, Check, Building, Users, CreditCard, Settings } from 'lucide-react';
 import { typography } from '../../(marketing)/lib/typography';
 import { spacing, layouts } from '../../(marketing)/lib/spacing';

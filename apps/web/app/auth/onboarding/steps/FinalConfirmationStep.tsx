@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { CheckCircle, ArrowRight, Sparkles, Users, Building, CreditCard } from 'lucide-react';
 import { Anton } from 'next/font/google';
-import { createBrowserClient } from '@ghxstship/auth';
+import { createBrowserClient } from '@supabase/ssr';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -17,7 +17,10 @@ interface FinalConfirmationStepProps {
 export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const supabase = createBrowserClient();
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   const handleGetStarted = async () => {
     setLoading(true);

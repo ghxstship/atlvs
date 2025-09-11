@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Mail, CheckCircle, RefreshCw } from 'lucide-react';
 import { Anton } from 'next/font/google';
-import { createBrowserClient } from '@ghxstship/auth';
+import { createBrowserClient } from '@supabase/ssr';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -18,7 +18,10 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
   const [isVerified, setIsVerified] = useState(false);
   const [isResending, setIsResending] = useState(false);
   const [resendMessage, setResendMessage] = useState('');
-  const supabase = createBrowserClient();
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   useEffect(() => {
     if (user?.email_confirmed_at) {

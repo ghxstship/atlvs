@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Building, Users, ArrowRight, ArrowLeft, Plus } from 'lucide-react';
 import { Anton } from 'next/font/google';
-import { createBrowserClient } from '@ghxstship/auth';
+import { createBrowserClient } from '@supabase/ssr';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -24,7 +24,10 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   
-  const supabase = createBrowserClient();
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   const generateSlug = (name: string) => {
     return name
