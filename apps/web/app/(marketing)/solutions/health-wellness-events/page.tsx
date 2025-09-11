@@ -123,7 +123,7 @@ export default function HealthWellnessEventsPage() {
                 <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
                   TRANSFORM
                   <br />
-                  <span className="bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-success to-success bg-clip-text text-transparent">
                     LIVES THROUGH
                   </span>
                   <br />
@@ -174,9 +174,9 @@ export default function HealthWellnessEventsPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
@@ -189,7 +189,7 @@ export default function HealthWellnessEventsPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-lg font-bold uppercase`}>MINDFUL MOUNTAIN RETREAT</h3>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
+                    <Badge variant="outline" className="text-success border-success">
                       Active
                     </Badge>
                   </div>
@@ -199,8 +199,8 @@ export default function HealthWellnessEventsPage() {
                       <div className="text-xs text-muted-foreground mb-1">Participants</div>
                       <div className="font-semibold">247</div>
                       <div className="flex items-center gap-1 mt-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-green-500">Engaged</span>
+                        <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                        <span className="text-xs text-success">Engaged</span>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -208,7 +208,7 @@ export default function HealthWellnessEventsPage() {
                       <div className="font-semibold">32</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="w-3 h-3 bg-green-500 rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-success rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function HealthWellnessEventsPage() {
                       <div className="text-xs text-muted-foreground mb-1">Wellness Score</div>
                       <div className="font-semibold">8.7/10</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-green-500 h-1 rounded-full w-5/6"></div>
+                        <div className="bg-success h-1 rounded-full w-5/6"></div>
                       </div>
                     </div>
                   </div>
@@ -224,9 +224,9 @@ export default function HealthWellnessEventsPage() {
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground">Today's Schedule</div>
                     {[
-                      { session: 'Morning Yoga', time: '7:00 AM', participants: 89, color: 'bg-green-500' },
-                      { session: 'Mindful Eating', time: '12:30 PM', participants: 156, color: 'bg-blue-500' },
-                      { session: 'Sound Healing', time: '7:00 PM', participants: 203, color: 'bg-purple-500' },
+                      { session: 'Morning Yoga', time: '7:00 AM', participants: 89, color: 'bg-success' },
+                      { session: 'Mindful Eating', time: '12:30 PM', participants: 156, color: 'bg-primary' },
+                      { session: 'Sound Healing', time: '7:00 PM', participants: 203, color: 'bg-info' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-xs">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
@@ -238,10 +238,10 @@ export default function HealthWellnessEventsPage() {
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Leaf className="w-4 h-4 text-green-500" />
+                    <Leaf className="w-4 h-4 text-success" />
                     <span className="text-xs font-medium">Next: Nutrition Workshop - 2:00 PM</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -270,14 +270,14 @@ export default function HealthWellnessEventsPage() {
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-green-500 to-emerald-500">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-success to-success">
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
                         <p className="text-muted-foreground mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
                           <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
                         </div>
                       </div>
@@ -312,7 +312,7 @@ export default function HealthWellnessEventsPage() {
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
                         <span className="text-sm text-foreground">{benefit}</span>
                       </div>
                     ))}
@@ -363,7 +363,7 @@ export default function HealthWellnessEventsPage() {
                       <div className="space-y-3 mb-6">
                         {study.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
-                            <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
+                            <Star className="h-4 w-4 text-warning flex-shrink-0" />
                             <span className="text-sm font-medium text-foreground">{result}</span>
                           </div>
                         ))}
@@ -398,7 +398,7 @@ export default function HealthWellnessEventsPage() {
             {integrations.map((integration) => (
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-success to-success rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>

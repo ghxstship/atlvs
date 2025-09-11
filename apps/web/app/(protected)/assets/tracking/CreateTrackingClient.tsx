@@ -177,7 +177,7 @@ export default function CreateTrackingClient({
         {/* Asset & Type */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Navigation className="h-5 w-5 text-blue-600" />
+            <Navigation className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Asset & Tracking Type</h3>
           </div>
           
@@ -233,7 +233,7 @@ export default function CreateTrackingClient({
         {/* Location & Time */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-green-600" />
+            <MapPin className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Location & Time</h3>
           </div>
           
@@ -279,7 +279,7 @@ export default function CreateTrackingClient({
         {/* Assignment & Condition */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Activity className="h-5 w-5 text-purple-600" />
+            <Activity className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Assignment & Condition</h3>
           </div>
           

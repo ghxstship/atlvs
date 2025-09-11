@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
+import { ProgressBar } from '../../components/ui/ProgressBar';
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -139,19 +140,19 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-warning/10 text-warning';
       case 'accepted':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'active':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'completed':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-secondary/10 text-secondary';
       case 'declined':
-        return 'bg-red-100 text-red-800';
+        return 'bg-destructive/10 text-destructive';
       case 'cancelled':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -177,17 +178,17 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'lead':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-secondary/10 text-secondary';
       case 'contributor':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'reviewer':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'consultant':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-warning/10 text-warning';
       case 'specialist':
-        return 'bg-indigo-100 text-indigo-800';
+        return 'bg-primary/10 text-primary';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -277,47 +278,47 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
               <p className="text-sm font-medium text-foreground/70">Total Assignments</p>
               <p className="text-2xl font-bold text-foreground">{assignments.length}</p>
             </div>
-            <UsersIcon className="h-8 w-8 text-blue-500" />
+            <UsersIcon className="h-8 w-8 text-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Active</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-2xl font-bold text-success">
                 {assignments.filter(a => a.status === 'active').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-green-500" />
+            <CheckCircleIcon className="h-8 w-8 text-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Pending</p>
-              <p className="text-2xl font-bold text-yellow-600">
+              <p className="text-2xl font-bold text-warning">
                 {assignments.filter(a => a.status === 'pending').length}
               </p>
             </div>
-            <ClockIcon className="h-8 w-8 text-yellow-500" />
+            <ClockIcon className="h-8 w-8 text-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Completed</p>
-              <p className="text-2xl font-bold text-purple-600">
+              <p className="text-2xl font-bold text-secondary">
                 {assignments.filter(a => a.status === 'completed').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-purple-500" />
+            <CheckCircleIcon className="h-8 w-8 text-secondary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Avg Utilization</p>
-              <p className="text-2xl font-bold text-indigo-600">
+              <p className="text-2xl font-bold text-primary">
                 {assignments.length > 0 
                   ? Math.round(assignments
                       .map(a => calculateUtilization(a.estimated_hours, a.actual_hours))
@@ -327,7 +328,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   : 0}%
               </p>
             </div>
-            <ChartBarIcon className="h-8 w-8 text-indigo-500" />
+            <ChartBarIcon className="h-8 w-8 text-primary" />
           </div>
         </Card>
       </div>
@@ -359,7 +360,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
             const utilization = calculateUtilization(assignment.estimated_hours, assignment.actual_hours);
 
             return (
-              <Card key={assignment.id} className={`p-6 hover:shadow-md transition-shadow ${isLate ? 'border-red-200 bg-red-50/30' : isDue ? 'border-yellow-200 bg-yellow-50/30' : ''}`}>
+              <Card key={assignment.id} className={`p-6 hover:shadow-md transition-shadow ${isLate ? 'border-destructive/20 bg-destructive/5' : isDue ? 'border-warning/20 bg-warning/5' : ''}`}>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
@@ -368,7 +369,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                           <StatusIcon className="h-5 w-5 text-foreground/60" />
                           {assignment.job_title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-red-500' : 'text-yellow-500'}`} />
+                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-destructive' : 'text-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-foreground/70">
@@ -434,12 +435,12 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                             <span className="text-xs font-medium text-foreground/70">Workload</span>
                             <span className="text-xs text-foreground/70">{assignment.workload_percentage}%</span>
                           </div>
-                          <div className="w-24 bg-gray-200 rounded-full h-2">
-                            <div 
-                              className="bg-blue-500 h-2 rounded-full transition-all duration-300"
-                              style={{ width: `${Math.min(assignment.workload_percentage, 100)}%` }}
-                            />
-                          </div>
+                          <ProgressBar 
+                            percentage={assignment.workload_percentage || 0}
+                            variant="info"
+                            size="md"
+                            className="w-24"
+                          />
                         </div>
                       )}
                       {utilization !== null && (
@@ -448,16 +449,12 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                             <span className="text-xs font-medium text-foreground/70">Utilization</span>
                             <span className="text-xs text-foreground/70">{utilization}%</span>
                           </div>
-                          <div className="w-24 bg-gray-200 rounded-full h-2">
-                            <div 
-                              className={`h-2 rounded-full transition-all duration-300 ${
-                                utilization > 110 ? 'bg-red-500' : 
-                                utilization > 100 ? 'bg-yellow-500' : 
-                                'bg-green-500'
-                              }`}
-                              style={{ width: `${Math.min(utilization, 100)}%` }}
-                            />
-                          </div>
+                          <ProgressBar 
+                            percentage={utilization}
+                            variant={utilization > 100 ? 'warning' : 'success'}
+                            size="md"
+                            className="w-24"
+                          />
                         </div>
                       )}
                     </div>

@@ -219,14 +219,14 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Clock className="h-4 w-4 text-yellow-500" />;
+        return <Clock className="h-4 w-4 text-warning" />;
       case 'completed':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-success" />;
       case 'failed':
       case 'cancelled':
-        return <AlertTriangle className="h-4 w-4 text-red-500" />;
+        return <AlertTriangle className="h-4 w-4 text-destructive" />;
       default:
-        return <Clock className="h-4 w-4 text-gray-500" />;
+        return <Clock className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
@@ -445,7 +445,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 <p className="text-sm text-foreground/70">Total Transactions</p>
                 <p className="text-2xl font-bold text-foreground">{transactions.length}</p>
               </div>
-              <ArrowUpDown className="h-8 w-8 text-blue-500" />
+              <ArrowUpDown className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -453,12 +453,12 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Debits</p>
-                <p className="text-2xl font-bold text-red-600">
+                <p className="text-2xl font-bold text-destructive">
                   {formatCurrency(totalAmounts.debit)}
                 </p>
                 <p className="text-xs text-foreground/60">{kindCounts.debit} transactions</p>
               </div>
-              <ArrowDown className="h-8 w-8 text-red-500" />
+              <ArrowDown className="h-8 w-8 text-destructive" />
             </div>
           </Card>
           
@@ -466,12 +466,12 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Credits</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(totalAmounts.credit)}
                 </p>
                 <p className="text-xs text-foreground/60">{kindCounts.credit} transactions</p>
               </div>
-              <ArrowUp className="h-8 w-8 text-green-500" />
+              <ArrowUp className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -479,12 +479,12 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Net Amount</p>
-                <p className={`text-2xl font-bold ${totalAmounts.net >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                <p className={`text-2xl font-bold ${totalAmounts.net >= 0 ? 'text-success' : 'text-destructive'}`}>
                   {formatCurrency(totalAmounts.net)}
                 </p>
                 <p className="text-xs text-foreground/60">Credits - Debits</p>
               </div>
-              <DollarSign className="h-8 w-8 text-purple-500" />
+              <DollarSign className="h-8 w-8 text-secondary" />
             </div>
           </Card>
         </div>
@@ -500,9 +500,9 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
                         {txData.kind === 'credit' ? (
-                          <ArrowUp className="h-5 w-5 text-green-500" />
+                          <ArrowUp className="h-5 w-5 text-success" />
                         ) : (
-                          <ArrowDown className="h-5 w-5 text-red-500" />
+                          <ArrowDown className="h-5 w-5 text-destructive" />
                         )}
                         {getStatusIcon(txData.status)}
                       </div>
@@ -517,7 +517,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                     
                     <div className="flex items-center space-x-4">
                       <div className="text-right">
-                        <p className={`font-semibold ${txData.kind === 'credit' ? 'text-green-600' : 'text-red-600'}`}>
+                        <p className={`font-semibold ${txData.kind === 'credit' ? 'text-success' : 'text-destructive'}`}>
                           {txData.kind === 'credit' ? '+' : '-'}{formatCurrency(txData.amount, txData.currency)}
                         </p>
                         {getStatusBadge(txData.status)}
@@ -527,7 +527,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                         <Button
                           variant="ghost"
                          
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleEditTransaction(txData);
                           }}
@@ -537,7 +537,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                         <Button
                           variant="ghost"
                          
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleDeleteTransaction(txData.id);
                           }}

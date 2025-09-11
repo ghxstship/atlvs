@@ -107,13 +107,13 @@ export default function ResourcesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth/signup">
-                <Button className="group">
+                <Button className="group transition-all duration-200 hover:scale-105">
                   Get Full Access
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#featured">
-                <Button variant="outline">
+                <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                   Browse Resources
                 </Button>
               </Link>
@@ -200,9 +200,9 @@ export default function ResourcesPage() {
                     <span className="text-sm text-muted-foreground">
                       {resource.readTime}
                     </span>
-                    <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground">
+                    <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
                       {resource.type === 'Premium' ? 'Unlock' : 'Read'}
-                      <ArrowRight className="ml-1 h-3 w-3" />
+                      <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </div>
                 </CardContent>
@@ -227,13 +227,13 @@ export default function ResourcesPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/auth/signup">
-                  <Button size="lg" className="group">
+                  <Button size="lg" className="group transition-all duration-200 hover:scale-105">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/login">
-                  <Button variant="outline" size="lg">
+                  <Button variant="outline" size="lg" className="transition-all duration-200 hover:scale-105">
                     Sign In
                   </Button>
                 </Link>

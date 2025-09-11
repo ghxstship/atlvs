@@ -189,8 +189,8 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
       >
         <form id="manning-slot-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Users className="h-5 w-5 text-blue-600" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Users className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h3 className="font-medium">Manning Slot Information</h3>
@@ -217,7 +217,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 ))}
               </select>
               {errors.projectId && (
-                <p className="text-sm text-red-600 mt-1">{errors.projectId.message}</p>
+                <p className="text-sm text-destructive mt-1">{errors.projectId.message}</p>
               )}
             </div>
 
@@ -307,9 +307,9 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
             </div>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-medium text-blue-900 mb-2">Manning Guidelines</h4>
-            <ul className="text-sm text-blue-800 space-y-1">
+          <div className="bg-primary/10 p-4 rounded-lg">
+            <h4 className="font-medium text-primary-foreground mb-2">Manning Guidelines</h4>
+            <ul className="text-sm text-primary/80 space-y-1">
               <li>• Define clear role requirements and skill expectations</li>
               <li>• Set realistic required counts based on project scope</li>
               <li>• Use priority levels to focus recruitment efforts</li>

@@ -262,8 +262,8 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
       >
         <form id="catalog-item-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <BookOpen className="h-5 w-5 text-green-600" />
+            <div className="p-2 bg-success/10 rounded-lg">
+              <BookOpen className="h-5 w-5 text-success" />
             </div>
             <div>
               <h3 className="font-medium">Catalog Item Information</h3>
@@ -470,9 +470,9 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
             </div>
           </div>
 
-          <div className="bg-green-50 p-4 rounded-lg">
-            <h4 className="font-medium text-green-900 mb-2">Catalog Guidelines</h4>
-            <ul className="text-sm text-green-800 space-y-1">
+          <div className="bg-success/5 p-4 rounded-lg">
+            <h4 className="font-medium text-success mb-2">Catalog Guidelines</h4>
+            <ul className="text-sm text-success/80 space-y-1">
               <li>• Choose descriptive names that clearly identify the item</li>
               <li>• Use categories to organize items for easier browsing</li>
               <li>• Include detailed specifications for technical requirements</li>

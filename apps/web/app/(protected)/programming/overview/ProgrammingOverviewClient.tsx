@@ -41,25 +41,25 @@ export default function ProgrammingOverviewClient({
       title: 'Total Events',
       value: stats.totalEvents,
       icon: CalendarDays,
-      color: 'text-blue-600'
+      color: 'text-primary'
     },
     {
       title: 'Upcoming Events',
       value: stats.upcomingEvents,
       icon: Clock,
-      color: 'text-green-600'
+      color: 'text-success'
     },
     {
       title: 'Available Spaces',
       value: stats.totalSpaces,
       icon: MapPin,
-      color: 'text-purple-600'
+      color: 'text-secondary'
     },
     {
       title: 'Active Lineups',
       value: stats.activeLineups,
       icon: Music,
-      color: 'text-orange-600'
+      color: 'text-warning'
     }
   ];
 

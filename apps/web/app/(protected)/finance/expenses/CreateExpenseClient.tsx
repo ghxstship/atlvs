@@ -131,12 +131,12 @@ export default function CreateExpenseClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Expense Overview */}
-        <Card className="p-4 bg-red-50 border-red-200">
+        <Card className="p-4 bg-destructive/10 border-destructive/20">
           <div className="flex items-center space-x-3">
-            <Receipt className="h-8 w-8 text-red-600" />
+            <Receipt className="h-8 w-8 text-destructive" />
             <div>
-              <h3 className="font-semibold text-red-900">Expense Tracking</h3>
-              <p className="text-sm text-red-700">
+              <h3 className="font-semibold text-destructive-foreground">Expense Tracking</h3>
+              <p className="text-sm text-destructive/80">
                 Record business expenses for approval and reimbursement
               </p>
             </div>
@@ -261,7 +261,7 @@ export default function CreateExpenseClient({
 
         {/* Expense Summary */}
         {formData.amount > 0 && (
-          <Card className="p-4 bg-gray-50 border-gray-200">
+          <Card className="p-4 bg-muted border-border">
             <h4 className="font-medium text-foreground mb-2">Expense Summary</h4>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
@@ -274,7 +274,7 @@ export default function CreateExpenseClient({
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Status:</span>
-                <span className="font-medium text-yellow-600">Draft</span>
+                <span className="font-medium text-warning">Draft</span>
               </div>
             </div>
           </Card>

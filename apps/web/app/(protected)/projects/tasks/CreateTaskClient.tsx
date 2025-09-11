@@ -75,13 +75,13 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
         <Plus className="mr-1 h-4 w-4" /> {t('create.newTitle')}
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title={t('create.newTitle')} description={submitting ? t('drawer.saving') : undefined}>
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
           <div className="grid gap-1">
             <label htmlFor="title" className="text-sm">{t('grid.title')}</label>
             <input id="title" className="rounded border px-2 py-1" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
             <div className="text-xs opacity-70">{t('create.titleHelp')}</div>
-            {form.formState.errors.title ? <div className="text-xs text-red-600">{String(form.formState.errors.title.message)}</div> : null}
+            {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
           </div>
           <div className="grid gap-1">
             <label htmlFor="status" className="text-sm">{t('grid.status')}</label>

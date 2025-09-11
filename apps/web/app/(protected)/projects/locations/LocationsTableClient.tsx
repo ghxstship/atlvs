@@ -152,13 +152,13 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'venue': return 'bg-purple-100 text-purple-800';
-      case 'office': return 'bg-blue-100 text-blue-800';
-      case 'warehouse': return 'bg-gray-100 text-gray-800';
-      case 'studio': return 'bg-pink-100 text-pink-800';
-      case 'outdoor': return 'bg-green-100 text-green-800';
-      case 'virtual': return 'bg-cyan-100 text-cyan-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'venue': return 'bg-secondary/10 text-secondary-foreground';
+      case 'office': return 'bg-primary/10 text-primary-foreground';
+      case 'warehouse': return 'bg-muted/50 text-muted-foreground';
+      case 'studio': return 'bg-accent/50 text-accent-foreground';
+      case 'outdoor': return 'bg-success/10 text-success-foreground';
+      case 'virtual': return 'bg-info/10 text-info-foreground';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
@@ -184,7 +184,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-2">
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-blue-500" />
+                  <MapPin className="w-4 h-4 text-primary" />
                   {r.name}
                 </div>
               </td>
@@ -193,7 +193,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                   {r.type}
                 </Badge>
               </td>
-              <td className="border-b p-2 text-sm text-gray-600">
+              <td className="border-b p-2 text-sm text-muted-foreground">
                 {formatAddress(r)}
               </td>
               <td className="border-b p-2">
@@ -224,7 +224,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
           <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
 
         {tab === 'details' && (
           <div className="space-y-3 text-sm">
@@ -253,7 +253,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.name} 
               />
-              {form.formState.errors.name ? <div className="text-xs text-red-600">{String(form.formState.errors.name.message)}</div> : null}
+              {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
             </div>
             
             <div className="grid gap-1">

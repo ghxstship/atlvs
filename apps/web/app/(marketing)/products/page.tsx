@@ -143,7 +143,7 @@ export default function ProductsPage() {
                       <div className="space-y-2">
                         {product.benefits.map((benefit) => (
                           <div key={benefit} className="flex items-center gap-3">
-                            <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
                             <span className="text-sm text-muted-foreground">{benefit}</span>
                           </div>
                         ))}
@@ -153,13 +153,13 @@ export default function ProductsPage() {
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-4">
                       <a href={product.href as any as any}>
-                        <Button className="w-full sm:w-auto group">
+                        <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                           {product.ctaText}
                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                       <Link href="/auth/signup">
-                        <Button variant="outline" className="w-full sm:w-auto">
+                        <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                           Start Free Trial
                         </Button>
                       </Link>
@@ -239,8 +239,8 @@ export default function ProductsPage() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-green-500/10 mb-4">
-                    <Zap className="h-6 w-6 text-green-500" />
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-success/10 mb-4">
+                    <Zap className="h-6 w-6 text-success" />
                   </div>
                   <h3 className="font-semibold mb-2">Instant Scaling</h3>
                   <p className="text-sm text-muted-foreground">
@@ -251,14 +251,14 @@ export default function ProductsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/products/compare">
-                  <Button variant="outline">
+                  <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     Compare Products
                   </Button>
                 </Link>
                 <Link href="/auth/signup">
-                  <Button>
+                  <Button className="group transition-all duration-200 hover:scale-105">
                     Start Complete Suite
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>

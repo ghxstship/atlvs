@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { createBrowserClient } from '@ghxstship/auth';
+import { createBrowserClient } from '@supabase/ssr';
 import { 
   Card, 
   Button, 
@@ -10,6 +10,7 @@ import {
   Skeleton,
   StateManagerProvider
 } from '@ghxstship/ui';
+import { designTokens } from '../../components/ui/DesignTokens';
 import { 
   Building2,
   Users,
@@ -62,7 +63,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
   const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
   const [topRatedCompanies, setTopRatedCompanies] = useState<any[]>([]);
 
-  const supabase = createBrowserClient();
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   useEffect(() => {
     loadOverviewData();
@@ -180,15 +184,15 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
   const getActivityIcon = (type: string) => {
     switch (type) {
       case 'company_added':
-        return <Building2 className="h-4 w-4 text-blue-500" />;
+        return <Building2 className="h-4 w-4 text-primary" />;
       case 'contract_signed':
-        return <FileText className="h-4 w-4 text-green-500" />;
+        return <FileText className="h-4 w-4 text-success" />;
       case 'qualification_verified':
-        return <Award className="h-4 w-4 text-purple-500" />;
+        return <Award className="h-4 w-4 text-secondary" />;
       case 'rating_submitted':
-        return <Star className="h-4 w-4 text-yellow-500" />;
+        return <Star className="h-4 w-4 text-warning" />;
       default:
-        return <CheckCircle className="h-4 w-4 text-gray-500" />;
+        return <CheckCircle className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
@@ -198,8 +202,8 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
         key={i}
         className={`h-4 w-4 ${
           i < Math.floor(rating) 
-            ? 'text-yellow-400 fill-current' 
-            : 'text-gray-300'
+            ? 'text-warning fill-current' 
+            : 'text-muted-foreground'
         }`}
       />
     ));
@@ -253,9 +257,9 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
               <div>
                 <p className="text-sm text-foreground/70">Total Companies</p>
                 <p className="text-2xl font-bold text-foreground">{stats?.totalCompanies || 0}</p>
-                <p className="text-xs text-green-600">{stats?.activeCompanies || 0} active</p>
+                <p className="text-xs text-success">{stats?.activeCompanies || 0} active</p>
               </div>
-              <Building2 className="h-8 w-8 text-blue-500" />
+              <Building2 className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -263,10 +267,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Active Contracts</p>
-                <p className="text-2xl font-bold text-green-600">{stats?.activeContracts || 0}</p>
+                <p className="text-2xl font-bold text-success">{stats?.activeContracts || 0}</p>
                 <p className="text-xs text-foreground/60">of {stats?.totalContracts || 0} total</p>
               </div>
-              <FileText className="h-8 w-8 text-green-500" />
+              <FileText className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -274,12 +278,12 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Qualifications</p>
-                <p className="text-2xl font-bold text-purple-600">{stats?.totalQualifications || 0}</p>
+                <p className="text-2xl font-bold text-secondary">{stats?.totalQualifications || 0}</p>
                 {(stats?.expiringQualifications || 0) > 0 && (
-                  <p className="text-xs text-orange-600">{stats?.expiringQualifications} expiring soon</p>
+                  <p className="text-xs text-warning">{stats?.expiringQualifications} expiring soon</p>
                 )}
               </div>
-              <Award className="h-8 w-8 text-purple-500" />
+              <Award className="h-8 w-8 text-secondary" />
             </div>
           </Card>
           
@@ -287,12 +291,12 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Average Rating</p>
-                <p className="text-2xl font-bold text-yellow-600">
+                <p className="text-2xl font-bold text-warning">
                   {stats?.averageRating ? stats.averageRating.toFixed(1) : 'N/A'}
                 </p>
                 <p className="text-xs text-foreground/60">{stats?.totalRatings || 0} reviews</p>
               </div>
-              <Star className="h-8 w-8 text-yellow-500" />
+              <Star className="h-8 w-8 text-warning" />
             </div>
           </Card>
         </div>
@@ -301,36 +305,36 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
         {((stats?.expiringContracts || 0) > 0 || (stats?.expiringQualifications || 0) > 0 || (stats?.pendingCompanies || 0) > 0) && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {(stats?.expiringContracts || 0) > 0 && (
-              <Card className="p-4 border-orange-200 bg-orange-50">
+              <Card className="p-4 border-warning/20 bg-warning/10">
                 <div className="flex items-center space-x-3">
-                  <AlertTriangle className="h-5 w-5 text-orange-500" />
+                  <AlertTriangle className="h-5 w-5 text-warning" />
                   <div>
-                    <p className="font-medium text-orange-800">Contracts Expiring</p>
-                    <p className="text-sm text-orange-600">{stats?.expiringContracts} contracts expire within 30 days</p>
+                    <p className="font-medium text-warning">Contracts Expiring</p>
+                    <p className="text-sm text-warning/80">{stats?.expiringContracts} contracts expire within 30 days</p>
                   </div>
                 </div>
               </Card>
             )}
             
             {(stats?.expiringQualifications || 0) > 0 && (
-              <Card className="p-4 border-red-200 bg-red-50">
+              <Card className={`p-4 ${designTokens.colors.status.error}`}>
                 <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-red-500" />
+                  <Clock className="h-5 w-5 text-destructive" />
                   <div>
-                    <p className="font-medium text-red-800">Qualifications Expiring</p>
-                    <p className="text-sm text-red-600">{stats?.expiringQualifications} qualifications expire within 30 days</p>
+                    <p className="font-medium text-destructive">Qualifications Expiring</p>
+                    <p className="text-sm text-destructive/80">{stats?.expiringQualifications} qualifications expire within 30 days</p>
                   </div>
                 </div>
               </Card>
             )}
             
             {(stats?.pendingCompanies || 0) > 0 && (
-              <Card className="p-4 border-blue-200 bg-blue-50">
+              <Card className={`p-4 ${designTokens.colors.status.info}`}>
                 <div className="flex items-center space-x-3">
-                  <Users className="h-5 w-5 text-blue-500" />
+                  <Users className="h-5 w-5 text-primary" />
                   <div>
-                    <p className="font-medium text-blue-800">Pending Reviews</p>
-                    <p className="text-sm text-blue-600">{stats?.pendingCompanies} companies need review</p>
+                    <p className="font-medium text-primary">Pending Reviews</p>
+                    <p className="text-sm text-primary/80">{stats?.pendingCompanies} companies need review</p>
                   </div>
                 </div>
               </Card>

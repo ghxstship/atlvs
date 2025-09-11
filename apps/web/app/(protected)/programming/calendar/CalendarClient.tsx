@@ -141,28 +141,28 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
   const getEventTypeColor = (kind: string) => {
     switch (kind) {
       case 'performance':
-        return 'bg-blue-500';
+        return 'bg-primary';
       case 'activation':
-        return 'bg-green-500';
+        return 'bg-success';
       case 'workshop':
-        return 'bg-purple-500';
+        return 'bg-secondary';
       default:
-        return 'bg-gray-500';
+        return 'bg-muted-foreground';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'scheduled':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-primary bg-primary/10';
       case 'in_progress':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'completed':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
       case 'cancelled':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive bg-destructive/10';
       default:
-        return 'text-yellow-600 bg-yellow-50';
+        return 'text-warning bg-warning/10';
     }
   };
 
@@ -222,15 +222,15 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
       {/* Event Type Legend */}
       <div className="flex items-center gap-4 text-sm">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+          <div className="w-3 h-3 rounded-full bg-primary"></div>
           <span>Performance</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-green-500"></div>
+          <div className="w-3 h-3 rounded-full bg-success"></div>
           <span>Activation</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+          <div className="w-3 h-3 rounded-full bg-secondary"></div>
           <span>Workshop</span>
         </div>
       </div>
@@ -258,12 +258,12 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                 key={index}
                 className={`min-h-[120px] p-2 border-b border-r last:border-r-0 ${
                   date ? 'bg-background hover:bg-muted/50' : 'bg-muted/20'
-                } ${isToday ? 'bg-blue-50 dark:bg-blue-950/20' : ''}`}
+                } ${isToday ? 'bg-primary/10' : ''}`}
               >
                 {date && (
                   <>
                     <div className={`text-sm font-medium mb-2 ${
-                      isToday ? 'text-blue-600 font-bold' : 'text-foreground'
+                      isToday ? 'text-primary font-bold' : 'text-foreground'
                     }`}>
                       {date.getDate()}
                     </div>

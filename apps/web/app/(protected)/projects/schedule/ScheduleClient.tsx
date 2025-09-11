@@ -56,11 +56,11 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': case 'in_progress': case 'todo': return 'bg-blue-100 text-blue-800';
-      case 'completed': case 'done': return 'bg-green-100 text-green-800';
-      case 'on_hold': case 'blocked': return 'bg-yellow-100 text-yellow-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': case 'in_progress': case 'todo': return 'bg-primary/10 text-primary';
+      case 'completed': case 'done': return 'bg-success/10 text-success';
+      case 'on_hold': case 'blocked': return 'bg-warning/10 text-warning';
+      case 'cancelled': return 'bg-destructive/10 text-destructive';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
@@ -87,7 +87,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       {/* Controls */}
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-2">
-          <Filter className="w-4 h-4 text-gray-500" />
+          <Filter className="w-4 h-4 text-muted-foreground" />
           <select
             value={selectedProject}
             onChange={(e) => setSelectedProject(e.target.value)}
@@ -144,13 +144,13 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                       {project.status}
                     </Badge>
                   </div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-sm text-muted-foreground">
                     {formatCurrency(project.budget)}
                   </div>
                 </div>
                 
                 {project.starts_at && project.ends_at && (
-                  <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
                     <span>Start: {new Date(project.starts_at).toLocaleDateString()}</span>
                     <span>End: {new Date(project.ends_at).toLocaleDateString()}</span>
                     <span>
@@ -164,13 +164,13 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                   {filteredData.milestones
                     .filter(m => m.project_id === project.id)
                     .map(milestone => (
-                      <div key={milestone.id} className="flex items-center gap-3 p-2 bg-gray-50 rounded">
-                        <CheckCircle className="w-4 h-4 text-blue-500" />
+                      <div key={milestone.id} className="flex items-center gap-3 p-2 bg-muted/50 rounded">
+                        <CheckCircle className="w-4 h-4 text-primary" />
                         <span className="flex-1">{milestone.title}</span>
                         <Badge className={getStatusColor(milestone.status)}>
                           {milestone.status}
                         </Badge>
-                        <span className={`text-sm ${isOverdue(milestone.due_at) ? 'text-red-600' : 'text-gray-600'}`}>
+                        <span className={`text-sm ${isOverdue(milestone.due_at) ? 'text-destructive' : 'text-muted-foreground'}`}>
                           {new Date(milestone.due_at).toLocaleDateString()}
                         </span>
                       </div>
@@ -214,7 +214,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-1 text-center text-sm font-medium text-gray-600 mb-2">
+          <div className="grid grid-cols-7 gap-1 text-center text-sm font-medium text-muted-foreground mb-2">
             <div>Sun</div>
             <div>Mon</div>
             <div>Tue</div>
@@ -241,10 +241,10 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                 <div
                   key={i}
                   className={`min-h-20 p-1 border rounded ${
-                    isCurrentMonth ? 'bg-white' : 'bg-gray-50'
-                  } ${isToday ? 'ring-2 ring-blue-500' : ''}`}
+                    isCurrentMonth ? 'bg-background' : 'bg-muted/50'
+                  } ${isToday ? 'ring-2 ring-primary' : ''}`}
                 >
-                  <div className={`text-sm ${isCurrentMonth ? 'text-gray-900' : 'text-gray-400'}`}>
+                  <div className={`text-sm ${isCurrentMonth ? 'text-foreground' : 'text-muted-foreground'}`}>
                     {startDate.getDate()}
                   </div>
                   <div className="space-y-1">
@@ -252,7 +252,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                       <div
                         key={idx}
                         className={`text-xs p-1 rounded truncate ${
-                          item.type === 'milestone' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
+                          item.type === 'milestone' ? 'bg-primary/10 text-primary' : 'bg-success/10 text-success'
                         }`}
                         title={item.title}
                       >
@@ -260,7 +260,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                       </div>
                     ))}
                     {dayItems.length > 2 && (
-                      <div className="text-xs text-gray-500">+{dayItems.length - 2} more</div>
+                      <div className="text-xs text-muted-foreground">+{dayItems.length - 2} more</div>
                     )}
                   </div>
                 </div>
@@ -276,26 +276,26 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
           <h3 className="text-lg font-semibold">Upcoming Items</h3>
           <div className="space-y-2">
             {upcomingItems.map((item, index) => (
-              <div key={index} className="flex items-center gap-4 p-3 border rounded-lg hover:bg-gray-50">
+              <div key={index} className="flex items-center gap-4 p-3 border rounded-lg hover:bg-muted/50">
                 <div className="flex items-center gap-2">
                   {item.type === 'milestone' ? (
-                    <CheckCircle className="w-4 h-4 text-blue-500" />
+                    <CheckCircle className="w-4 h-4 text-primary" />
                   ) : (
-                    <Clock className="w-4 h-4 text-green-500" />
+                    <Clock className="w-4 h-4 text-success" />
                   )}
                   <span className="text-sm font-medium capitalize">{item.type}</span>
                 </div>
                 
                 <div className="flex-1">
                   <div className="font-medium">{item.title}</div>
-                  <div className="text-sm text-gray-600">{item.project?.name}</div>
+                  <div className="text-sm text-muted-foreground">{item.project?.name}</div>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Badge className={getStatusColor(item.status)}>
                     {item.status}
                   </Badge>
-                  <div className={`text-sm ${isOverdue(item.date!) ? 'text-red-600 font-medium' : 'text-gray-600'}`}>
+                  <div className={`text-sm ${isOverdue(item.date!) ? 'text-destructive font-medium' : 'text-muted-foreground'}`}>
                     {isOverdue(item.date!) && <AlertCircle className="w-4 h-4 inline mr-1" />}
                     {new Date(item.date!).toLocaleDateString()}
                   </div>
@@ -309,22 +309,22 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-6 border-t">
         <div className="text-center">
-          <div className="text-2xl font-bold text-blue-600">{filteredData.projects.length}</div>
-          <div className="text-sm text-gray-600">Active Projects</div>
+          <div className="text-2xl font-bold text-primary">{filteredData.projects.length}</div>
+          <div className="text-sm text-muted-foreground">Active Projects</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-green-600">{filteredData.milestones.length}</div>
-          <div className="text-sm text-gray-600">Milestones</div>
+          <div className="text-2xl font-bold text-success">{filteredData.milestones.length}</div>
+          <div className="text-sm text-muted-foreground">Milestones</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-orange-600">{filteredData.tasks.length}</div>
-          <div className="text-sm text-gray-600">Scheduled Tasks</div>
+          <div className="text-2xl font-bold text-warning">{filteredData.tasks.length}</div>
+          <div className="text-sm text-muted-foreground">Scheduled Tasks</div>
         </div>
         <div className="text-center">
-          <div className="text-2xl font-bold text-red-600">
+          <div className="text-2xl font-bold text-destructive">
             {upcomingItems.filter(item => isOverdue(item.date!)).length}
           </div>
-          <div className="text-sm text-gray-600">Overdue Items</div>
+          <div className="text-sm text-muted-foreground">Overdue Items</div>
         </div>
       </div>
     </div>

@@ -211,17 +211,17 @@ export default function OverviewClient({ organizationId, translations }: Overvie
 
   const getChangeIcon = (changeType: string) => {
     switch (changeType) {
-      case 'increase': return <ArrowUpRight className="h-4 w-4 text-green-500" />;
-      case 'decrease': return <ArrowDownRight className="h-4 w-4 text-red-500" />;
-      default: return <Minus className="h-4 w-4 text-gray-500" />;
+      case 'increase': return <ArrowUpRight className="h-4 w-4 text-success" />;
+      case 'decrease': return <ArrowDownRight className="h-4 w-4 text-destructive" />;
+      default: return <Minus className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
   const getChangeColor = (changeType: string) => {
     switch (changeType) {
-      case 'increase': return 'text-green-600';
-      case 'decrease': return 'text-red-600';
-      default: return 'text-gray-600';
+      case 'increase': return 'text-success';
+      case 'decrease': return 'text-destructive';
+      default: return 'text-muted-foreground';
     }
   };
 
@@ -231,7 +231,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-gray-200 rounded"></div>
+              <div className="h-20 bg-muted rounded"></div>
             </Card>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
   if (error) {
     return (
       <Card title="Error">
-        <div className="text-sm text-red-600">{error}</div>
+        <div className="text-sm text-destructive">{error}</div>
         <Button onClick={loadOverviewData} className="mt-4">
           Retry
         </Button>
@@ -260,26 +260,26 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             <Card key={metric.id} className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <IconComponent className="h-5 w-5 text-blue-600" />
-                  <span className="text-sm font-medium text-gray-600">
+                  <IconComponent className="h-5 w-5 text-primary" />
+                  <span className="text-sm font-medium text-muted-foreground">
                     {metric.title}
                   </span>
                 </div>
                 {getChangeIcon(metric.changeType)}
               </div>
               <div className="mt-2">
-                <div className="text-2xl font-bold text-gray-900">
+                <div className="text-2xl font-bold text-foreground">
                   {metric.value}
                 </div>
                 <div className="flex items-center space-x-1 mt-1">
                   <span className={`text-sm font-medium ${getChangeColor(metric.changeType)}`}>
                     {metric.change > 0 ? '+' : ''}{metric.change}%
                   </span>
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-muted-foreground">
                     vs last period
                   </span>
                 </div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-muted-foreground mt-1">
                   {metric.description}
                 </div>
               </div>
@@ -295,18 +295,18 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3">
                 <div className="flex-shrink-0">
-                  <Activity className="h-4 w-4 text-blue-600 mt-1" />
+                  <Activity className="h-4 w-4 text-primary mt-1" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm text-gray-900">
+                  <div className="text-sm text-foreground">
                     {activity.description}
                   </div>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-muted-foreground">
                       by {activity.user}
                     </span>
-                    <span className="text-xs text-gray-400">•</span>
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-muted-foreground/60">•</span>
+                    <span className="text-xs text-muted-foreground">
                       {formatTimestamp(activity.timestamp)}
                     </span>
                   </div>
@@ -333,19 +333,19 @@ export default function OverviewClient({ organizationId, translations }: Overvie
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-foreground">
                       {performer.name}
                     </div>
-                    <div className="text-xs text-gray-500">
+                    <div className="text-xs text-muted-foreground">
                       {performer.category}
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-medium text-gray-900">
+                  <div className="text-sm font-medium text-foreground">
                     {performer.value}
                   </div>
-                  <div className="text-xs text-green-600">
+                  <div className="text-xs text-success">
                     +{performer.change}%
                   </div>
                 </div>

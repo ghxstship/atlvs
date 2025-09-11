@@ -191,8 +191,8 @@ export default function CreateRatingClient({
             onClick={() => handleInputChange('rating', star)}
             className={`p-1 rounded transition-colors ${
               star <= formData.rating
-                ? 'text-yellow-400 hover:text-yellow-500'
-                : 'text-gray-300 hover:text-gray-400'
+                ? 'text-warning hover:text-warning/80'
+                : 'text-muted-foreground hover:text-muted-foreground/80'
             }`}
           >
             <Star className="h-6 w-6 fill-current" />
@@ -216,7 +216,7 @@ export default function CreateRatingClient({
         {/* Rating Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Star className="h-5 w-5 text-yellow-500" />
+            <Star className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Rating Details</h3>
           </div>
           
@@ -295,7 +295,7 @@ export default function CreateRatingClient({
         {/* Review Content */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MessageSquare className="h-5 w-5 text-blue-600" />
+            <MessageSquare className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Review Content</h3>
           </div>
           
@@ -318,7 +318,7 @@ export default function CreateRatingClient({
                 id="isPublic"
                 checked={formData.isPublic}
                 onChange={(e) => handleInputChange('isPublic', e.target.checked)}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label htmlFor="isPublic" className="text-sm font-medium">
                 Make this review public (visible to other organizations)

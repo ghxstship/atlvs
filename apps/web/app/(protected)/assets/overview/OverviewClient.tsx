@@ -8,6 +8,7 @@ import {
   Button,
   Badge
 } from '@ghxstship/ui';
+import { StandardButton, ColoredBadge, animationPresets } from '../../components/ui';
 import { 
   Package,
   TrendingUp,
@@ -129,14 +130,25 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
     }
   };
 
+  const getStatusVariant = (status: string) => {
+    switch (status) {
+      case 'available': return 'success';
+      case 'in_use': return 'info';
+      case 'under_maintenance': return 'warning';
+      case 'damaged': return 'error';
+      case 'missing': return 'secondary';
+      default: return 'secondary';
+    }
+  };
+
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'available': return 'bg-green-100 text-green-800';
-      case 'in_use': return 'bg-blue-100 text-blue-800';
-      case 'under_maintenance': return 'bg-yellow-100 text-yellow-800';
-      case 'damaged': return 'bg-red-100 text-red-800';
-      case 'missing': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'available': return 'hsl(var(--success))';
+      case 'in_use': return 'hsl(var(--primary))';
+      case 'under_maintenance': return 'hsl(var(--warning))';
+      case 'damaged': return 'hsl(var(--destructive))';
+      case 'missing': return 'hsl(var(--muted-foreground))';
+      default: return 'hsl(var(--muted-foreground))';
     }
   };
 
@@ -146,8 +158,8 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="p-6 animate-pulse">
-              <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
-              <div className="h-8 bg-gray-200 rounded w-1/2"></div>
+              <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+              <div className="h-8 bg-muted rounded w-1/2"></div>
             </Card>
           ))}
         </div>
@@ -160,18 +172,14 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Assets Overview</h1>
-          <p className="text-gray-600">Monitor and manage your organization's assets</p>
+          <h1 className="text-2xl font-bold text-foreground">Assets Overview</h1>
+          <p className="text-muted-foreground">Monitor and manage your organization's assets</p>
         </div>
         <div className="flex gap-3">
-          <Button>
-            <FileText className="h-4 w-4 mr-2" />
-            Generate Report
-          </Button>
-          <Button>
+          <StandardButton>
             <Plus className="h-4 w-4 mr-2" />
             Add Asset
-          </Button>
+          </StandardButton>
         </div>
       </div>
 
@@ -180,23 +188,11 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Assets</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalAssets}</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Assets</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalAssets}</p>
             </div>
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <Package className="h-6 w-6 text-blue-600" />
-            </div>
-          </div>
-        </Card>
-
-        <Card className="p-6">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-medium text-gray-600">Total Value</p>
-              <p className="text-2xl font-bold text-gray-900">{formatCurrency(stats.totalValue)}</p>
-            </div>
-            <div className="p-3 bg-green-100 rounded-lg">
-              <DollarSign className="h-6 w-6 text-green-600" />
+            <div className="p-3 bg-primary/10 rounded-lg">
+              <Package className="h-6 w-6 text-primary" />
             </div>
           </div>
         </Card>
@@ -204,11 +200,11 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Active Assignments</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.activeAssignments}</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Value</p>
+              <p className="text-2xl font-bold text-foreground">{formatCurrency(stats.totalValue)}</p>
             </div>
-            <div className="p-3 bg-purple-100 rounded-lg">
-              <UserCheck className="h-6 w-6 text-purple-600" />
+            <div className="p-3 bg-success/10 rounded-lg">
+              <DollarSign className="h-6 w-6 text-success" />
             </div>
           </div>
         </Card>
@@ -216,11 +212,23 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Pending Maintenance</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.pendingMaintenance}</p>
+              <p className="text-sm font-medium text-muted-foreground">Active Assignments</p>
+              <p className="text-2xl font-bold text-foreground">{stats.activeAssignments}</p>
             </div>
-            <div className="p-3 bg-orange-100 rounded-lg">
-              <Wrench className="h-6 w-6 text-orange-600" />
+            <div className="p-3 bg-primary/10 rounded-lg">
+              <UserCheck className="h-6 w-6 text-primary" />
+            </div>
+          </div>
+        </Card>
+
+        <Card className="p-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <p className="text-sm font-medium text-muted-foreground">Pending Maintenance</p>
+              <p className="text-2xl font-bold text-foreground">{stats.pendingMaintenance}</p>
+            </div>
+            <div className="p-3 bg-warning/10 rounded-lg">
+              <Wrench className="h-6 w-6 text-warning" />
             </div>
           </div>
         </Card>
@@ -233,12 +241,12 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
           <div className="space-y-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getStatusColor('available') }}></div>
                 <span className="text-sm font-medium">Available</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">{stats.availableAssets}</span>
-                <Badge variant="secondary" className="bg-green-100 text-green-800">
+                <span className="text-sm text-muted-foreground">{stats.availableAssets}</span>
+                <Badge variant={getStatusVariant('available')}>
                   {stats.totalAssets > 0 ? Math.round((stats.availableAssets / stats.totalAssets) * 100) : 0}%
                 </Badge>
               </div>
@@ -246,12 +254,12 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getStatusColor('in_use') }}></div>
                 <span className="text-sm font-medium">In Use</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">{stats.inUseAssets}</span>
-                <Badge variant="secondary" className="bg-blue-100 text-blue-800">
+                <span className="text-sm text-muted-foreground">{stats.inUseAssets}</span>
+                <Badge variant={getStatusVariant('in_use')}>
                   {stats.totalAssets > 0 ? Math.round((stats.inUseAssets / stats.totalAssets) * 100) : 0}%
                 </Badge>
               </div>
@@ -259,12 +267,12 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
 
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                <div className="w-3 h-3 rounded-full" style={{ backgroundColor: getStatusColor('under_maintenance') }}></div>
                 <span className="text-sm font-medium">Under Maintenance</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">{stats.maintenanceAssets}</span>
-                <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
+                <span className="text-sm text-muted-foreground">{stats.maintenanceAssets}</span>
+                <Badge variant={getStatusVariant('under_maintenance')}>
                   {stats.totalAssets > 0 ? Math.round((stats.maintenanceAssets / stats.totalAssets) * 100) : 0}%
                 </Badge>
               </div>
@@ -308,8 +316,8 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <div className="space-y-3">
           {stats.recentActivity.length > 0 ? (
             stats.recentActivity.map((activity, index) => (
-              <div key={index} className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                <div className="p-2 bg-white rounded-lg">
+              <div key={index} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+                <div className="p-2 bg-background rounded-lg">
                   {getActivityIcon(activity.entity_type)}
                 </div>
                 <div className="flex-1">
@@ -319,19 +327,19 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
                      activity.action === 'delete' ? 'Deleted' : activity.action} {' '}
                     {activity.entity_type.replace('_', ' ')}
                   </p>
-                  <p className="text-xs text-gray-600">
+                  <p className="text-xs text-muted-foreground">
                     {new Date(activity.occurred_at).toLocaleString()}
                   </p>
                 </div>
                 {activity.metadata?.status && (
-                  <Badge className={getStatusColor(activity.metadata.status)}>
+                  <Badge variant={getStatusVariant(activity.metadata.status)}>
                     {activity.metadata.status}
                   </Badge>
                 )}
               </div>
             ))
           ) : (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-8 text-muted-foreground">
               <Activity className="h-12 w-12 mx-auto mb-3 opacity-50" />
               <p>No recent activity</p>
             </div>
@@ -341,12 +349,12 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
 
       {/* Alerts & Notifications */}
       {stats.pendingMaintenance > 0 && (
-        <Card className="p-6 border-orange-200 bg-orange-50">
+        <Card className="p-6 border-warning/20 bg-warning/5">
           <div className="flex items-center gap-3">
-            <AlertTriangle className="h-6 w-6 text-orange-600" />
+            <AlertTriangle className="h-6 w-6 text-warning" />
             <div>
-              <h4 className="font-semibold text-orange-900">Maintenance Required</h4>
-              <p className="text-sm text-orange-700">
+              <h4 className="font-semibold text-warning">Maintenance Required</h4>
+              <p className="text-sm text-warning/80">
                 {stats.pendingMaintenance} asset{stats.pendingMaintenance !== 1 ? 's' : ''} require{stats.pendingMaintenance === 1 ? 's' : ''} maintenance attention
               </p>
             </div>

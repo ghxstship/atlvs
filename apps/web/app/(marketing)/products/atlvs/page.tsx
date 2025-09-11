@@ -165,13 +165,13 @@ export default function ATLVSPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                      <div className="w-3 h-3 text-green-500">🔒</div>
+                      <div className="w-3 h-3 text-success">🔒</div>
                       atlvs.ghxstship.com
                     </div>
                   </div>
@@ -183,7 +183,7 @@ export default function ATLVSPage() {
                       <h3 className={`${anton.className} text-lg font-bold uppercase`}>BLACKWATER REVERB</h3>
                       <p className="text-sm text-muted-foreground">Main Deck Takeover</p>
                     </div>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
+                    <Badge variant="outline" className="text-success border-success">
                       On Track
                     </Badge>
                   </div>
@@ -193,14 +193,14 @@ export default function ATLVSPage() {
                       <div className="text-xs text-muted-foreground mb-1">Budget</div>
                       <div className="font-semibold">$75K</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-blue-500 h-1 rounded-full w-3/4"></div>
+                        <div className="bg-primary h-1 rounded-full w-3/4"></div>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
                       <div className="text-xs text-muted-foreground mb-1">Timeline</div>
                       <div className="font-semibold">85%</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-cyan-500 h-1 rounded-full w-4/5"></div>
+                        <div className="bg-secondary h-1 rounded-full w-4/5"></div>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -208,7 +208,7 @@ export default function ATLVSPage() {
                       <div className="font-semibold">12</div>
                       <div className="flex -space-x-1 mt-2">
                         {[1, 2, 3].map((i) => (
-                          <div key={i} className="w-4 h-4 bg-blue-500 rounded-full border border-background"></div>
+                          <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -222,7 +222,7 @@ export default function ATLVSPage() {
                       { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
                     ].map((activity, i) => (
                       <div key={i} className="flex items-center gap-2 text-xs">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-primary rounded-full"></div>
                         <span className="font-medium">{activity.user}</span>
                         <span className="text-muted-foreground">{activity.action}</span>
                         <span className="text-muted-foreground ml-auto">{activity.time}</span>
@@ -255,7 +255,7 @@ export default function ATLVSPage() {
               return (
                 <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-cyan-500 mb-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary mb-4">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
@@ -263,7 +263,7 @@ export default function ATLVSPage() {
                     <div className="space-y-1">
                       {feature.benefits.map((benefit) => (
                         <div key={benefit} className="flex items-center gap-2">
-                          <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                          <CheckCircle className="h-3 w-3 text-success flex-shrink-0" />
                           <span className="text-xs text-muted-foreground">{benefit}</span>
                         </div>
                       ))}
@@ -298,15 +298,15 @@ export default function ATLVSPage() {
                   
                   <div className="grid grid-cols-3 gap-4 pt-6 border-t">
                     <div className="text-center">
-                      <div className={`${anton.className} text-lg font-bold text-blue-500 uppercase`}>{useCase.stats.projects}</div>
+                      <div className={`${anton.className} text-lg font-bold text-primary uppercase`}>{useCase.stats.projects}</div>
                       <div className="text-xs text-muted-foreground">Projects</div>
                     </div>
                     <div className="text-center">
-                      <div className={`${anton.className} text-lg font-bold text-green-500 uppercase`}>{useCase.stats.savings}</div>
+                      <div className={`${anton.className} text-lg font-bold text-success uppercase`}>{useCase.stats.savings}</div>
                       <div className="text-xs text-muted-foreground">Time Saved</div>
                     </div>
                     <div className="text-center">
-                      <div className={`${anton.className} text-lg font-bold text-purple-500 uppercase`}>{useCase.stats.satisfaction}</div>
+                      <div className={`${anton.className} text-lg font-bold text-secondary uppercase`}>{useCase.stats.satisfaction}</div>
                       <div className="text-xs text-muted-foreground">Satisfaction</div>
                     </div>
                   </div>
@@ -380,7 +380,7 @@ export default function ATLVSPage() {
 
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500" />
+                <CheckCircle className="h-4 w-4 text-success" />
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-2">
@@ -388,7 +388,7 @@ export default function ATLVSPage() {
                 <span>Setup in minutes</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 text-blue-500" />
+                <Shield className="h-4 w-4 text-primary" />
                 <span>Enterprise security</span>
               </div>
             </div>

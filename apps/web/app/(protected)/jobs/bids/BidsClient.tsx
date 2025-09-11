@@ -101,34 +101,34 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
       case 'submitted':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'under_review':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-warning/10 text-warning';
       case 'accepted':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'rejected':
-        return 'bg-red-100 text-red-800';
+        return 'bg-destructive/10 text-destructive';
       case 'withdrawn':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-secondary/10 text-secondary-foreground';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'fixed_price':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'hourly':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'milestone_based':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-secondary/10 text-secondary-foreground';
       case 'retainer':
-        return 'bg-indigo-100 text-indigo-800';
+        return 'bg-accent/10 text-accent-foreground';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -159,8 +159,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">{translations.title}</h1>
-            <p className="text-gray-600">{translations.subtitle}</p>
+            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
+            <p className="text-muted-foreground">{translations.subtitle}</p>
           </div>
           <Button onClick={() => setShowCreateDialog(true)}>
             + Create Bid
@@ -173,7 +173,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-gray-200 rounded" />
+                    <div className="h-5 w-5 bg-muted rounded" />
                     <Skeleton className="h-5 w-48" />
                   </div>
                   <Skeleton className="h-4 w-full mb-2" />
@@ -195,8 +195,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{translations.title}</h1>
-          <p className="text-gray-600">{translations.subtitle}</p>
+          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
+          <p className="text-muted-foreground">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           + Create Bid
@@ -215,7 +215,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         <select
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 border border-border rounded-md bg-background"
         >
           {STATUS_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -226,7 +226,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         <select
           value={typeFilter}
           onChange={(e) => setTypeFilter(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md"
+          className="px-3 py-2 border border-border rounded-md bg-background"
         >
           {TYPE_OPTIONS.map((option) => (
             <option key={option.value} value={option.value}>
@@ -238,9 +238,9 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
 
       {filteredBids.length === 0 ? (
         <Card className="p-12 text-center">
-          <div className="h-12 w-12 bg-gray-200 rounded mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">No bids found</h3>
-          <p className="text-gray-600 mb-4">
+          <div className="h-12 w-12 bg-muted rounded mx-auto mb-4" />
+          <h3 className="text-lg font-medium text-foreground mb-2">No bids found</h3>
+          <p className="text-muted-foreground mb-4">
             {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
               ? 'Try adjusting your search or filters to find bids.'
               : 'Get started by creating your first bid.'}
@@ -256,8 +256,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-gray-200 rounded" />
-                    <h3 className="text-lg font-semibold text-gray-900">{bid.title}</h3>
+                    <div className="h-5 w-5 bg-muted rounded" />
+                    <h3 className="text-lg font-semibold text-foreground">{bid.title}</h3>
                     <Badge className={getStatusColor(bid.status)}>
                       {bid.status}
                     </Badge>
@@ -267,30 +267,30 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                   </div>
 
                   {bid.description && (
-                    <p className="text-gray-600 mb-4 line-clamp-2">{bid.description}</p>
+                    <p className="text-muted-foreground mb-4 line-clamp-2">{bid.description}</p>
                   )}
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="h-4 w-4 bg-gray-200 rounded" />
+                      <div className="h-4 w-4 bg-muted rounded" />
                       <span className="font-medium">${bid.amount.toLocaleString()} {bid.currency}</span>
                     </div>
                     {bid.estimatedDuration && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-gray-200 rounded" />
+                        <div className="h-4 w-4 bg-muted rounded" />
                         <span>{bid.estimatedDuration}</span>
                       </div>
                     )}
                     {bid.responseDeadline && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-gray-200 rounded" />
+                        <div className="h-4 w-4 bg-muted rounded" />
                         <span>{new Date(bid.responseDeadline).toLocaleDateString()}</span>
                       </div>
                     )}
                   </div>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <div className="flex items-center gap-4 text-xs text-gray-500">
+                  <div className="flex items-center justify-between pt-4 border-t">
+                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
                       {bid.createdAt && (
                         <span>Created {new Date(bid.createdAt).toLocaleDateString()}</span>
                       )}
@@ -339,11 +339,11 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Description</label>
-                  <textarea name="description" className="w-full p-2 border rounded" rows={3} />
+                  <textarea name="description" className="w-full p-2 border border-border rounded bg-background" rows={3} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium mb-1">Type</label>
-                  <select name="type" className="w-full p-2 border rounded" required>
+                  <select name="type" className="w-full p-2 border border-border rounded bg-background" required>
                     {TYPE_OPTIONS.slice(1).map((option) => (
                       <option key={option.value} value={option.value}>
                         {option.label}

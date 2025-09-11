@@ -150,7 +150,7 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <Section>
-        <div className={layouts.gridPricing}>
+        <div className={cn(layouts.gridPricing, "relative z-0")}>
           {plans.map((plan) => {
             const price = isAnnual ? Math.floor(plan.annualPrice / 12) : plan.monthlyPrice;
             const yearlyPrice = isAnnual ? plan.annualPrice : undefined;
@@ -181,7 +181,7 @@ export default function PricingPage() {
           title="ENHANCE YOUR PLAN"
           subtitle="Supercharge your workflow with powerful add-ons designed to extend your GHXSTSHIP experience."
         />
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8">
           {addOns.map((addon) => (
             <AddOnCard key={addon.name} addon={addon} />
           ))}
@@ -197,19 +197,19 @@ export default function PricingPage() {
           title="READY TO GET STARTED?"
           subtitle="Join thousands of creative professionals who have transformed their workflows with GHXSTSHIP."
         />
-        <CTAGroup>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/auth/signup">
-            <Button className="w-full sm:w-auto group">
+            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
               Start Free Trial
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto">
+            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
               Contact Sales
             </Button>
           </Link>
-        </CTAGroup>
+        </div>
       </Section>
     </div>
   );

@@ -112,7 +112,7 @@ export default function AdvertisingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-500/5 via-background to-red-500/5">
+      <section className="py-20 bg-gradient-to-br from-warning/5 via-background to-destructive/5">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -123,7 +123,7 @@ export default function AdvertisingPage() {
                 <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
                   CREATE MEMORABLE
                   <br />
-                  <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-warning to-destructive bg-clip-text text-transparent">
                     BRAND
                   </span>
                   <br />
@@ -174,9 +174,9 @@ export default function AdvertisingPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
@@ -189,7 +189,7 @@ export default function AdvertisingPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-lg font-bold uppercase`}>APEX RETAIL CAMPAIGN</h3>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
+                    <Badge variant="outline" className="text-success border-success">
                       Active
                     </Badge>
                   </div>
@@ -199,14 +199,14 @@ export default function AdvertisingPage() {
                       <div className="text-xs text-muted-foreground mb-1">Budget</div>
                       <div className="font-semibold">$125K</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-orange-500 h-1 rounded-full w-2/3"></div>
+                        <div className="bg-warning h-1 rounded-full w-2/3"></div>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
                       <div className="text-xs text-muted-foreground mb-1">ROI</div>
                       <div className="font-semibold">285%</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-green-500 h-1 rounded-full w-5/6"></div>
+                        <div className="bg-success h-1 rounded-full w-5/6"></div>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -214,7 +214,7 @@ export default function AdvertisingPage() {
                       <div className="font-semibold">2.5M</div>
                       <div className="flex -space-x-1 mt-2">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="w-4 h-4 bg-orange-500 rounded-full border border-background"></div>
+                          <div key={i} className="w-4 h-4 bg-warning rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -223,9 +223,9 @@ export default function AdvertisingPage() {
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground">Channel Performance</div>
                     {[
-                      { channel: 'Google Ads', performance: '92%', color: 'bg-green-500' },
-                      { channel: 'Facebook', performance: '87%', color: 'bg-blue-500' },
-                      { channel: 'Instagram', performance: '78%', color: 'bg-purple-500' },
+                      { channel: 'Google Ads', performance: '92%', color: 'bg-success' },
+                      { channel: 'Facebook', performance: '87%', color: 'bg-primary' },
+                      { channel: 'Instagram', performance: '78%', color: 'bg-secondary' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-xs">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
@@ -260,14 +260,14 @@ export default function AdvertisingPage() {
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-orange-500 to-red-500">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-warning to-destructive">
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
                         <p className="text-muted-foreground mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
                           <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
                         </div>
                       </div>
@@ -302,7 +302,7 @@ export default function AdvertisingPage() {
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
                         <span className="text-sm text-foreground">{benefit}</span>
                       </div>
                     ))}

@@ -198,7 +198,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
         <div className="flex items-center justify-between p-6 border-b">
           <div>
             <h2 className="text-lg font-semibold">Create Report</h2>
-            <p className="text-sm text-gray-600">Build a custom analytics report</p>
+            <p className="text-sm text-muted-foreground">Build a custom analytics report</p>
           </div>
           <Button onClick={onCancel}>
             <X className="h-4 w-4" />
@@ -215,11 +215,11 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <label className="block text-sm font-medium mb-1">Report Name</label>
                 <input
                   {...register('name')}
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter report name"
                 />
                 {errors.name && (
-                  <p className="text-sm text-red-600 mt-1">{errors.name.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
                 )}
               </div>
 
@@ -228,7 +228,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <textarea
                   {...register('description')}
                   rows={3}
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Describe the purpose of this report"
                 />
               </div>
@@ -238,7 +238,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <label className="block text-sm font-medium mb-1">Report Type</label>
                   <select
                     {...register('type')}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     {REPORT_TYPES.map((type) => (
                       <option key={type.value} value={type.value}>
@@ -252,7 +252,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <label className="block text-sm font-medium mb-1">Data Source</label>
                   <select
                     {...register('dataSource')}
-                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     {DATA_SOURCES.map((source) => (
                       <option key={source.value} value={source.value}>
@@ -267,7 +267,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('isPublic')}
                   type="checkbox"
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-border text-primary focus:ring-primary"
                 />
                 <label className="text-sm font-medium">Make report public</label>
               </div>
@@ -278,19 +278,19 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
               <h3 className="text-sm font-medium">Report Fields</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {availableFields.map((field) => (
-                  <label key={field} className="flex items-center space-x-2 p-2 border rounded cursor-pointer hover:bg-gray-50">
+                  <label key={field} className="flex items-center space-x-2 p-2 border border-border rounded cursor-pointer hover:bg-muted/30">
                     <input
                       type="checkbox"
                       checked={selectedFields.includes(field)}
                       onChange={() => toggleField(field)}
-                      className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                      className="rounded border-border text-primary focus:ring-primary"
                     />
                     <span className="text-sm capitalize">{field.replace('_', ' ')}</span>
                   </label>
                 ))}
               </div>
               {errors.fields && (
-                <p className="text-sm text-red-600">{errors.fields.message}</p>
+                <p className="text-sm text-destructive">{errors.fields.message}</p>
               )}
             </div>
 
@@ -359,19 +359,19 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('schedule.enabled')}
                   type="checkbox"
-                  className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  className="rounded border-border text-primary focus:ring-primary"
                 />
                 <label className="text-sm font-medium">Enable scheduled delivery</label>
               </div>
 
               {scheduleEnabled && (
-                <div className="pl-6 space-y-4 border-l-2 border-blue-200">
+                <div className="pl-6 space-y-4 border-l-2 border-primary/20">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm font-medium mb-1">Frequency</label>
                       <select
                         {...register('schedule.frequency')}
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
                         {FREQUENCIES.map((freq) => (
                           <option key={freq.value} value={freq.value}>
@@ -386,7 +386,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       <input
                         {...register('schedule.time')}
                         type="time"
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
@@ -396,7 +396,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-sm font-medium mb-1">Day of Week</label>
                       <select
                         {...register('schedule.dayOfWeek', { valueAsNumber: true })}
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
                         {DAYS_OF_WEEK.map((day) => (
                           <option key={day.value} value={day.value}>
@@ -415,7 +415,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                         type="number"
                         min="1"
                         max="31"
-                        className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="1-31"
                       />
                     </div>
@@ -425,7 +425,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
             </div>
           </div>
 
-          <div className="p-6 border-t bg-gray-50 flex justify-end space-x-3">
+          <div className="p-6 border-t bg-muted/30 flex justify-end space-x-3">
             <Button type="button" variant="outline" onClick={onCancel}>
               Cancel
             </Button>

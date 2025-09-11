@@ -2,14 +2,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { createBrowserClient } from '@ghxstship/auth';
+import { DynamicProgressBar } from '../../components/ui';
 import { 
   Users, 
   CheckCircle, 
-  Clock, 
-  AlertTriangle, 
+  BarChart3, 
   TrendingUp, 
   Calendar, 
+  Clock, 
+  Target, 
+  Award,
   DollarSign,
   Activity,
   Building,
@@ -23,8 +25,9 @@ import {
   Music,
   Coffee,
   ArrowRight,
-  BarChart3
+  AlertTriangle
 } from 'lucide-react';
+import { createBrowserClient } from '@ghxstship/auth';
 
 interface PipelineStats {
   totalCrew: number;
@@ -190,10 +193,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-gray-200 rounded"></div>
+              <div key={i} className="h-32 bg-muted rounded"></div>
             ))}
           </div>
         </div>
@@ -251,13 +254,13 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-sm font-medium text-muted-foreground">Total Crew</p>
                 <p className="text-2xl font-bold">{stats.totalCrew}</p>
               </div>
-              <div className="p-3 bg-blue-100 rounded-full">
-                <Users className="w-6 h-6 text-blue-600" />
+              <div className="p-3 bg-primary/10 rounded-full">
+                <Users className="w-6 h-6 text-primary" />
               </div>
             </div>
             <div className="mt-4 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 text-green-500 mr-1" />
-              <span className="text-green-600">+12% from last month</span>
+              <TrendingUp className="w-4 h-4 text-success mr-1" />
+              <span className="text-success">+12% from last month</span>
             </div>
           </div>
         </Card>
@@ -269,8 +272,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-sm font-medium text-muted-foreground">Active Projects</p>
                 <p className="text-2xl font-bold">{stats.activeProjects}</p>
               </div>
-              <div className="p-3 bg-green-100 rounded-full">
-                <Activity className="w-6 h-6 text-green-600" />
+              <div className="p-3 bg-success/10 rounded-full">
+                <Activity className="w-6 h-6 text-success" />
               </div>
             </div>
             <div className="mt-4 flex items-center text-sm">
@@ -286,17 +289,17 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-sm font-medium text-muted-foreground">Training Progress</p>
                 <p className="text-2xl font-bold">{trainingCompletion}%</p>
               </div>
-              <div className="p-3 bg-purple-100 rounded-full">
-                <CheckCircle className="w-6 h-6 text-purple-600" />
+              <div className="p-3 bg-secondary/10 rounded-full">
+                <CheckCircle className="w-6 h-6 text-secondary" />
               </div>
             </div>
             <div className="mt-4">
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-purple-600 h-2 rounded-full transition-all"
-                  style={{ width: `${trainingCompletion}%` }}
-                />
-              </div>
+              <DynamicProgressBar
+                percentage={trainingCompletion}
+                variant="default"
+                size="sm"
+                showLabel={false}
+              />
             </div>
           </div>
         </Card>
@@ -308,17 +311,17 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-sm font-medium text-muted-foreground">Advancing Progress</p>
                 <p className="text-2xl font-bold">{advancingProgress}%</p>
               </div>
-              <div className="p-3 bg-orange-100 rounded-full">
-                <BarChart3 className="w-6 h-6 text-orange-600" />
+              <div className="p-3 bg-warning/10 rounded-full">
+                <BarChart3 className="w-6 h-6 text-warning" />
               </div>
             </div>
             <div className="mt-4">
-              <div className="w-full bg-gray-200 rounded-full h-2">
-                <div 
-                  className="bg-orange-600 h-2 rounded-full transition-all"
-                  style={{ width: `${advancingProgress}%` }}
-                />
-              </div>
+              <DynamicProgressBar
+                percentage={advancingProgress}
+                variant="warning"
+                size="sm"
+                showLabel={false}
+              />
             </div>
           </div>
         </Card>
@@ -339,27 +342,27 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-success" />
                   <span className="text-sm">Completed</span>
                 </div>
-                <Badge className="bg-green-500 text-white">
+                <Badge variant="success">
                   {stats.advancingItems.completed}
                 </Badge>
               </div>
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-blue-500" />
+                  <Clock className="w-4 h-4 text-primary" />
                   <span className="text-sm">In Progress</span>
                 </div>
-                <Badge className="bg-blue-500 text-white">
+                <Badge variant="default">
                   {stats.advancingItems.inProgress}
                 </Badge>
               </div>
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-gray-500" />
+                  <Clock className="w-4 h-4 text-muted-foreground" />
                   <span className="text-sm">Pending</span>
                 </div>
                 <Badge variant="secondary">
@@ -370,10 +373,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.advancingItems.blocked > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-red-500" />
+                    <AlertTriangle className="w-4 h-4 text-destructive" />
                     <span className="text-sm">Blocked</span>
                   </div>
-                  <Badge className="bg-red-500 text-white">
+                  <Badge variant="destructive">
                     {stats.advancingItems.blocked}
                   </Badge>
                 </div>
@@ -395,20 +398,20 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-green-500" />
+                  <CheckCircle className="w-4 h-4 text-success" />
                   <span className="text-sm">Signed</span>
                 </div>
-                <Badge className="bg-green-500 text-white">
+                <Badge variant="success">
                   {stats.contractsStatus.signed}
                 </Badge>
               </div>
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-yellow-500" />
+                  <Clock className="w-4 h-4 text-warning" />
                   <span className="text-sm">Pending</span>
                 </div>
-                <Badge className="bg-yellow-500 text-white">
+                <Badge variant="warning">
                   {stats.contractsStatus.pending}
                 </Badge>
               </div>
@@ -416,10 +419,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.contractsStatus.expired > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-red-500" />
+                    <AlertTriangle className="w-4 h-4 text-destructive" />
                     <span className="text-sm">Expired</span>
                   </div>
-                  <Badge className="bg-red-500 text-white">
+                  <Badge variant="destructive">
                     {stats.contractsStatus.expired}
                   </Badge>
                 </div>
@@ -453,14 +456,14 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 );
                 
                 const priorityColors = {
-                  low: 'bg-gray-500',
-                  medium: 'bg-yellow-500',
-                  high: 'bg-orange-500',
-                  critical: 'bg-red-500'
+                  low: 'bg-muted',
+                  medium: 'bg-warning',
+                  high: 'bg-warning',
+                  critical: 'bg-destructive'
                 };
 
                 return (
-                  <div key={deadline.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                  <div key={deadline.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
                         <h4 className="text-sm font-medium">{deadline.title}</h4>
@@ -493,15 +496,15 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="space-y-3">
               {stats.recentActivity.map(activity => {
                 const typeColors = {
-                  training: 'bg-purple-100 text-purple-800',
-                  advancing: 'bg-orange-100 text-orange-800',
-                  onboarding: 'bg-blue-100 text-blue-800',
-                  contract: 'bg-green-100 text-green-800',
-                  manning: 'bg-indigo-100 text-indigo-800'
+                  training: 'bg-secondary/10 text-secondary',
+                  advancing: 'bg-warning/10 text-warning',
+                  onboarding: 'bg-primary/10 text-primary',
+                  contract: 'bg-success/10 text-success',
+                  manning: 'bg-accent/10 text-accent'
                 };
 
                 return (
-                  <div key={activity.id} className="flex items-start space-x-3 p-3 bg-gray-50 rounded-lg">
+                  <div key={activity.id} className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg">
                     <div className="flex-1">
                       <p className="text-sm">{activity.action}</p>
                       <div className="flex items-center space-x-2 mt-1">

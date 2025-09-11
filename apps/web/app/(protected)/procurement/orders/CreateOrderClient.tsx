@@ -157,7 +157,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 placeholder="PO-2024-001"
               />
               {form.formState.errors.order_number && (
-                <p className="text-sm text-red-600">{form.formState.errors.order_number.message}</p>
+                <p className="text-sm text-destructive">{form.formState.errors.order_number.message}</p>
               )}
             </div>
 
@@ -169,7 +169,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 placeholder="Vendor company name"
               />
               {form.formState.errors.vendor_name && (
-                <p className="text-sm text-red-600">{form.formState.errors.vendor_name.message}</p>
+                <p className="text-sm text-destructive">{form.formState.errors.vendor_name.message}</p>
               )}
             </div>
 
@@ -182,7 +182,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 rows={3}
               />
               {form.formState.errors.description && (
-                <p className="text-sm text-red-600">{form.formState.errors.description.message}</p>
+                <p className="text-sm text-destructive">{form.formState.errors.description.message}</p>
               )}
             </div>
 
@@ -196,7 +196,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 placeholder="0.00"
               />
               {form.formState.errors.total_amount && (
-                <p className="text-sm text-red-600">{form.formState.errors.total_amount.message}</p>
+                <p className="text-sm text-destructive">{form.formState.errors.total_amount.message}</p>
               )}
             </div>
 

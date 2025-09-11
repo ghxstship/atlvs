@@ -160,8 +160,8 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
       >
         <form id="vendor-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Building2 className="h-5 w-5 text-blue-600" />
+            <div className="p-2 bg-primary/10 rounded-lg">
+              <Building2 className="h-5 w-5 text-primary" />
             </div>
             <div>
               <h3 className="font-medium">Vendor Information</h3>

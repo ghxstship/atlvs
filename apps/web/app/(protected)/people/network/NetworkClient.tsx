@@ -127,18 +127,18 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
   });
 
   const relationshipTypes = [
-    { value: 'colleague', label: t('colleague'), color: 'bg-blue-100 text-blue-800' },
-    { value: 'mentor', label: t('mentor'), color: 'bg-purple-100 text-purple-800' },
-    { value: 'mentee', label: t('mentee'), color: 'bg-green-100 text-green-800' },
-    { value: 'collaborator', label: t('collaborator'), color: 'bg-orange-100 text-orange-800' },
-    { value: 'friend', label: t('friend'), color: 'bg-pink-100 text-pink-800' },
-    { value: 'professional', label: t('professional'), color: 'bg-gray-100 text-gray-800' }
+    { value: 'colleague', label: t('colleague'), color: 'bg-primary/10 text-primary' },
+    { value: 'mentor', label: t('mentor'), color: 'bg-secondary/10 text-secondary' },
+    { value: 'mentee', label: t('mentee'), color: 'bg-success/10 text-success' },
+    { value: 'collaborator', label: t('collaborator'), color: 'bg-warning/10 text-warning' },
+    { value: 'friend', label: t('friend'), color: 'bg-primary/10 text-primary' },
+    { value: 'professional', label: t('professional'), color: 'bg-muted/50 text-muted-foreground' }
   ];
 
   const strengthLevels = [
-    { value: 'weak', label: t('weak'), color: 'bg-red-100 text-red-800' },
-    { value: 'moderate', label: t('moderate'), color: 'bg-yellow-100 text-yellow-800' },
-    { value: 'strong', label: t('strong'), color: 'bg-green-100 text-green-800' }
+    { value: 'weak', label: t('weak'), color: 'bg-destructive/10 text-destructive' },
+    { value: 'moderate', label: t('moderate'), color: 'bg-warning/10 text-warning' },
+    { value: 'strong', label: t('strong'), color: 'bg-success/10 text-success' }
   ];
 
   if (loading) {
@@ -158,8 +158,8 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
-          <p className="text-gray-600">{t('subtitle')}</p>
+          <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
+          <p className="text-muted-foreground">{t('subtitle')}</p>
         </div>
         <Button className="flex items-center space-x-2">
           <Plus className="h-4 w-4" />
@@ -172,40 +172,40 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalConnections')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalConnections}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('totalConnections')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalConnections}</p>
             </div>
-            <Network className="h-8 w-8 text-blue-500" />
+            <Network className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('strongConnections')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.strongConnections}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('strongConnections')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.strongConnections}</p>
             </div>
-            <Users className="h-8 w-8 text-green-500" />
+            <Users className="h-8 w-8 text-success" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('departments')}</p>
-              <p className="text-2xl font-bold text-gray-900">{Object.keys(stats.departmentConnections).length}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('departments')}</p>
+              <p className="text-2xl font-bold text-foreground">{Object.keys(stats.departmentConnections).length}</p>
             </div>
-            <MessageCircle className="h-8 w-8 text-purple-500" />
+            <MessageCircle className="h-8 w-8 text-secondary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('relationshipTypes')}</p>
-              <p className="text-2xl font-bold text-gray-900">{Object.keys(stats.relationshipTypes).length}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('relationshipTypes')}</p>
+              <p className="text-2xl font-bold text-foreground">{Object.keys(stats.relationshipTypes).length}</p>
             </div>
-            <Calendar className="h-8 w-8 text-orange-500" />
+            <Calendar className="h-8 w-8 text-warning" />
           </div>
         </Card>
       </div>
@@ -216,7 +216,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -228,7 +228,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
             <select
               value={selectedRelationshipType}
               onChange={(e) => setSelectedRelationshipType(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allRelationships')}</option>
               {relationshipTypes.map(type => (
@@ -240,7 +240,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
             <select
               value={selectedStrength}
               onChange={(e) => setSelectedStrength(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allStrengths')}</option>
               {strengthLevels.map(strength => (
@@ -270,16 +270,16 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
                           {connection.person?.first_name} {connection.person?.last_name}
                         </span>
                         {connection.person?.role && (
-                          <span className="text-gray-500 ml-1">({connection.person.role})</span>
+                          <span className="text-muted-foreground ml-1">({connection.person.role})</span>
                         )}
                       </div>
-                      <ArrowRight className="h-4 w-4 text-gray-400" />
+                      <ArrowRight className="h-4 w-4 text-muted-foreground" />
                       <div className="text-sm">
                         <span className="font-medium">
                           {connection.connected_person?.first_name} {connection.connected_person?.last_name}
                         </span>
                         {connection.connected_person?.role && (
-                          <span className="text-gray-500 ml-1">({connection.connected_person.role})</span>
+                          <span className="text-muted-foreground ml-1">({connection.connected_person.role})</span>
                         )}
                       </div>
                     </div>
@@ -299,12 +299,12 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
                 </div>
                 
                 {connection.notes && (
-                  <div className="mt-2 text-sm text-gray-600">
+                  <div className="mt-2 text-sm text-muted-foreground">
                     {connection.notes}
                   </div>
                 )}
                 
-                <div className="mt-2 text-xs text-gray-400">
+                <div className="mt-2 text-xs text-muted-foreground/70">
                   {t('connected')} {new Date(connection.created_at).toLocaleDateString()}
                 </div>
               </div>
@@ -316,9 +316,9 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
       {filteredConnections.length === 0 && (
         <Card>
           <div className="text-center py-8">
-            <Network className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">{t('noConnections')}</p>
-            <p className="text-sm text-gray-400 mt-2">{t('startBuilding')}</p>
+            <Network className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+            <p className="text-muted-foreground">{t('noConnections')}</p>
+            <p className="text-sm text-muted-foreground/70 mt-2">{t('startBuilding')}</p>
           </div>
         </Card>
       )}

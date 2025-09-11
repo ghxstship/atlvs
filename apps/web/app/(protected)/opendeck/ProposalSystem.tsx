@@ -175,7 +175,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             <h4 className="font-semibold">{proposal.vendor?.display_name || 'Vendor'}</h4>
             <div className="flex items-center space-x-3 text-sm text-muted-foreground">
               <div className="flex items-center">
-                <Star className="h-4 w-4 text-yellow-500 fill-yellow-500 mr-1" />
+                <Star className="h-4 w-4 text-warning fill-warning mr-1" />
                 <span>{proposal.vendor?.rating || 0}</span>
               </div>
               <span>•</span>
@@ -396,7 +396,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               rows={4}
             />
             {errors.cover_letter && (
-              <p className="text-sm text-red-500 mt-1">{errors.cover_letter.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.cover_letter.message}</p>
             )}
           </div>
 
@@ -408,7 +408,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               rows={3}
             />
             {errors.approach && (
-              <p className="text-sm text-red-500 mt-1">{errors.approach.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.approach.message}</p>
             )}
           </div>
 
@@ -434,7 +434,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
                 placeholder="0"
               />
               {errors.bid_amount && (
-                <p className="text-sm text-red-500 mt-1">{errors.bid_amount.message}</p>
+                <p className="text-sm text-destructive mt-1">{errors.bid_amount.message}</p>
               )}
             </div>
           </div>
@@ -457,7 +457,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               placeholder="e.g., 2 weeks, 1 month"
             />
             {errors.proposed_timeline && (
-              <p className="text-sm text-red-500 mt-1">{errors.proposed_timeline.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.proposed_timeline.message}</p>
             )}
           </div>
 

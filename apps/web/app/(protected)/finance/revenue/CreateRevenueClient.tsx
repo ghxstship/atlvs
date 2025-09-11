@@ -125,12 +125,12 @@ export default function CreateRevenueClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Revenue Overview */}
-        <Card className="p-4 bg-green-50 border-green-200">
+        <Card className="p-4 bg-success/10 border-success/20">
           <div className="flex items-center space-x-3">
-            <TrendingUp className="h-8 w-8 text-green-600" />
+            <TrendingUp className="h-8 w-8 text-success" />
             <div>
-              <h3 className="font-semibold text-green-900">Revenue Tracking</h3>
-              <p className="text-sm text-green-700">
+              <h3 className="font-semibold text-success-foreground">Revenue Tracking</h3>
+              <p className="text-sm text-success/80">
                 Record and track revenue streams and income recognition
               </p>
             </div>
@@ -251,12 +251,12 @@ export default function CreateRevenueClient({
 
         {/* Revenue Summary */}
         {formData.amount > 0 && (
-          <Card className="p-4 bg-gray-50 border-gray-200">
+          <Card className="p-4 bg-muted border-border">
             <h4 className="font-medium text-foreground mb-2">Revenue Summary</h4>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
                 <span className="text-foreground/70">Amount:</span>
-                <span className="font-medium text-green-600">{formatCurrency(formData.amount)}</span>
+                <span className="font-medium text-success">{formatCurrency(formData.amount)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Source:</span>
@@ -264,7 +264,7 @@ export default function CreateRevenueClient({
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Status:</span>
-                <span className="font-medium text-blue-600">Projected</span>
+                <span className="font-medium text-primary">Projected</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Recognition Date:</span>

@@ -140,11 +140,11 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'completed': return 'bg-blue-100 text-blue-800';
-      case 'on_hold': return 'bg-yellow-100 text-yellow-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': return 'bg-success/10 text-success';
+      case 'completed': return 'bg-primary/10 text-primary';
+      case 'on_hold': return 'bg-warning/10 text-warning';
+      case 'cancelled': return 'bg-destructive/10 text-destructive';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
@@ -163,7 +163,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-gray-200 rounded"></div>
+              <div className="h-20 bg-muted rounded"></div>
             </Card>
           ))}
         </div>
@@ -174,11 +174,11 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
   if (!stats || stats.totalProjects === 0) {
     return (
       <div className="text-center py-12">
-        <div className="mx-auto w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mb-4">
-          <BarChart3 className="w-12 h-12 text-gray-400" />
+        <div className="mx-auto w-24 h-24 bg-muted/50 rounded-full flex items-center justify-center mb-4">
+          <BarChart3 className="w-12 h-12 text-muted-foreground" />
         </div>
         <h3 className="text-lg font-semibold mb-2">No Projects Yet</h3>
-        <p className="text-gray-600 mb-6">Get started by creating your first project or seeding demo data.</p>
+        <p className="text-muted-foreground mb-6">Get started by creating your first project or seeding demo data.</p>
         <div className="flex items-center justify-center gap-4">
           <Button onClick={() => router.push('/projects?create=true')}>
             <Plus className="w-4 h-4 mr-2" />
@@ -193,10 +193,10 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           </Button>
         </div>
         {message && (
-          <div className="mt-4 text-green-600 text-sm">{message}</div>
+          <div className="mt-4 text-success text-sm">{message}</div>
         )}
         {error && (
-          <div className="mt-4 text-red-600 text-sm">{error}</div>
+          <div className="mt-4 text-destructive text-sm">{error}</div>
         )}
       </div>
     );
@@ -209,27 +209,27 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Projects</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Projects</p>
               <p className="text-2xl font-bold">{stats.totalProjects}</p>
             </div>
-            <BarChart3 className="w-8 h-8 text-blue-600" />
+            <BarChart3 className="w-8 h-8 text-primary" />
           </div>
           <div className="mt-2 flex items-center text-sm">
-            <span className="text-green-600">{stats.activeProjects} active</span>
+            <span className="text-success">{stats.activeProjects} active</span>
             <span className="mx-2">•</span>
-            <span className="text-gray-600">{stats.completedProjects} completed</span>
+            <span className="text-muted-foreground">{stats.completedProjects} completed</span>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Total Budget</p>
+              <p className="text-sm font-medium text-muted-foreground">Total Budget</p>
               <p className="text-2xl font-bold">{formatCurrency(stats.totalBudget)}</p>
             </div>
-            <DollarSign className="w-8 h-8 text-green-600" />
+            <DollarSign className="w-8 h-8 text-success" />
           </div>
-          <div className="mt-2 text-sm text-gray-600">
+          <div className="mt-2 text-sm text-muted-foreground">
             Across all projects
           </div>
         </Card>
@@ -237,30 +237,30 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Tasks Progress</p>
+              <p className="text-sm font-medium text-muted-foreground">Tasks Progress</p>
               <p className="text-2xl font-bold">
                 {stats.totalTasks > 0 ? Math.round((stats.completedTasks / stats.totalTasks) * 100) : 0}%
               </p>
             </div>
-            <CheckCircle className="w-8 h-8 text-blue-600" />
+            <CheckCircle className="w-8 h-8 text-primary" />
           </div>
           <div className="mt-2 flex items-center text-sm">
-            <span className="text-green-600">{stats.completedTasks} done</span>
+            <span className="text-success">{stats.completedTasks} done</span>
             <span className="mx-2">•</span>
-            <span className="text-red-600">{stats.overdueTasks} overdue</span>
+            <span className="text-destructive">{stats.overdueTasks} overdue</span>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-gray-600">Risk Status</p>
+              <p className="text-sm font-medium text-muted-foreground">Risk Status</p>
               <p className="text-2xl font-bold">{stats.totalRisks}</p>
             </div>
-            <AlertTriangle className="w-8 h-8 text-orange-600" />
+            <AlertTriangle className="w-8 h-8 text-warning" />
           </div>
           <div className="mt-2 text-sm">
-            <span className="text-red-600">{stats.highRisks} high priority</span>
+            <span className="text-destructive">{stats.highRisks} high priority</span>
           </div>
         </Card>
       </div>
@@ -282,7 +282,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           {recentProjects.map((project) => (
             <div 
               key={project.id}
-              className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 cursor-pointer"
+              className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 cursor-pointer"
               onClick={() => router.push('/projects/' + project.id as any)}
             >
               <div className="flex-1">
@@ -292,7 +292,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                     {project.status}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-4 mt-1 text-sm text-gray-600">
+                <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
                   <span className="flex items-center gap-1">
                     <DollarSign className="w-3 h-3" />
                     {formatCurrency(project.budget || 0)}
@@ -303,7 +303,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                   </span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-gray-400" />
+              <ArrowRight className="w-4 h-4 text-muted-foreground" />
             </div>
           ))}
         </div>

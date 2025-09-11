@@ -372,7 +372,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="preventive">Preventive</option>
@@ -383,7 +383,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <select
                 value={selectedPriority}
                 onChange={(e) => setSelectedPriority(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Priorities</option>
                 <option value="critical">Critical</option>
@@ -394,7 +394,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="scheduled">Scheduled</option>
@@ -422,7 +422,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
       ) : (
         <div className="space-y-4">
           {filteredRecords.map(record => (
-            <Card key={record.id} className={`hover:shadow-md transition-shadow ${isOverdue(record) ? 'border-red-200 bg-red-50' : ''}`}>
+            <Card key={record.id} className={`hover:shadow-md transition-shadow ${isOverdue(record) ? 'border-destructive/20 bg-destructive/10' : ''}`}>
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
@@ -569,7 +569,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <label className="block text-sm font-medium mb-1">Type</label>
               <select
                 defaultValue={selectedRecord?.type}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="preventive">Preventive</option>
                 <option value="corrective">Corrective</option>
@@ -581,7 +581,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <label className="block text-sm font-medium mb-1">Priority</label>
               <select
                 defaultValue={selectedRecord?.priority}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -617,7 +617,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div>
             <label className="block text-sm font-medium mb-1">Description</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Maintenance description"
               defaultValue={selectedRecord?.description}
@@ -626,7 +626,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div>
             <label className="block text-sm font-medium mb-1">Notes</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={2}
               placeholder="Additional notes"
               defaultValue={selectedRecord?.notes}

@@ -174,24 +174,24 @@ function ContractsClient({ user }: ContractsClientProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'draft': return 'bg-gray-100 text-gray-800 border-gray-200';
-      case 'pending_review': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
-      case 'approved': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'active': return 'bg-green-100 text-green-800 border-green-200';
-      case 'completed': return 'bg-green-100 text-green-800 border-green-200';
-      case 'terminated': return 'bg-red-100 text-red-800 border-red-200';
-      case 'cancelled': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'draft': return 'bg-muted text-muted-foreground border-border';
+      case 'pending_review': return 'bg-warning/10 text-warning border-warning/20';
+      case 'approved': return 'bg-primary/10 text-primary border-primary/20';
+      case 'active': return 'bg-success/10 text-success border-success/20';
+      case 'completed': return 'bg-success/10 text-success border-success/20';
+      case 'terminated': return 'bg-destructive/10 text-destructive border-destructive/20';
+      case 'cancelled': return 'bg-destructive/10 text-destructive border-destructive/20';
+      default: return 'bg-muted text-muted-foreground border-border';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'msa': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'sow': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'amendment': return 'bg-orange-100 text-orange-800 border-orange-200';
-      case 'termination': return 'bg-red-100 text-red-800 border-red-200';
-      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+      case 'msa': return 'bg-secondary/10 text-secondary border-secondary/20';
+      case 'sow': return 'bg-primary/10 text-primary border-primary/20';
+      case 'amendment': return 'bg-warning/10 text-warning border-warning/20';
+      case 'termination': return 'bg-destructive/10 text-destructive border-destructive/20';
+      default: return 'bg-muted text-muted-foreground border-border';
     }
   };
 
@@ -274,51 +274,51 @@ function ContractsClient({ user }: ContractsClientProps) {
               <p className="text-sm font-medium text-foreground/70">Total Contracts</p>
               <p className="text-2xl font-bold text-foreground">{contracts.length}</p>
             </div>
-            <FileText className="h-8 w-8 text-blue-500" />
+            <FileText className="h-8 w-8 text-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Active</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-2xl font-bold text-success">
                 {contracts.filter(c => c.status === 'active').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 text-green-500" />
+            <CheckCircle className="h-8 w-8 text-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Completed</p>
-              <p className="text-2xl font-bold text-blue-600">
+              <p className="text-2xl font-bold text-primary">
                 {contracts.filter(c => c.status === 'completed').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 text-blue-500" />
+            <CheckCircle className="h-8 w-8 text-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Expiring Soon</p>
-              <p className="text-2xl font-bold text-orange-600">
+              <p className="text-2xl font-bold text-warning">
                 {contracts.filter(c => isExpiringSoon(c.end_date)).length}
               </p>
             </div>
-            <AlertTriangle className="h-5 w-5 text-yellow-500" />
+            <AlertTriangle className="h-5 w-5 text-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Total Value</p>
-              <p className="text-2xl font-bold text-purple-600">
+              <p className="text-2xl font-bold text-secondary">
                 {formatAmount(contracts.reduce((sum, c) => sum + c.value, 0))}
               </p>
             </div>
-            <DollarSign className="h-5 w-5 text-green-500" />
+            <DollarSign className="h-5 w-5 text-success" />
           </div>
         </Card>
       </div>
@@ -350,7 +350,7 @@ function ContractsClient({ user }: ContractsClientProps) {
             const progress = calculateProgress(contract.milestones);
 
             return (
-              <Card key={contract.id} className={`p-6 hover:shadow-md transition-shadow ${hasExpired ? 'border-red-200 bg-red-50/30' : isExpiring ? 'border-yellow-200 bg-yellow-50/30' : ''}`}>
+              <Card key={contract.id} className={`p-6 hover:shadow-md transition-shadow ${hasExpired ? 'border-destructive/20 bg-destructive/5' : isExpiring ? 'border-warning/20 bg-warning/5' : ''}`}>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
@@ -359,7 +359,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                           <StatusIcon className="h-5 w-5 text-foreground/60" />
                           {contract.title}
                           {(isExpiring || hasExpired) && (
-                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'text-red-500' : 'text-yellow-500'}`} />
+                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'text-destructive' : 'text-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-foreground/70">
@@ -414,9 +414,9 @@ function ContractsClient({ user }: ContractsClientProps) {
                             {contract.milestones.filter(m => m.status === 'completed').length} of {contract.milestones.length} completed
                           </span>
                         </div>
-                        <div className="w-full bg-gray-200 rounded-full h-2">
+                        <div className="w-full bg-muted rounded-full h-2">
                           <div 
-                            className="bg-green-500 h-2 rounded-full transition-all duration-300"
+                            className="bg-success h-2 rounded-full transition-all duration-300"
                             style={{ width: `${progress}%` }}
                           />
                         </div>

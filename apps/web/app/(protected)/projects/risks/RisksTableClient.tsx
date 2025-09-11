@@ -146,23 +146,23 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'very_high': return 'bg-red-100 text-red-800';
-      case 'high': return 'bg-orange-100 text-orange-800';
-      case 'medium': return 'bg-yellow-100 text-yellow-800';
-      case 'low': return 'bg-blue-100 text-blue-800';
-      case 'very_low': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'very_high': return 'bg-destructive/10 text-destructive';
+      case 'high': return 'bg-warning/10 text-warning';
+      case 'medium': return 'bg-warning/10 text-warning';
+      case 'low': return 'bg-primary/10 text-primary';
+      case 'very_low': return 'bg-muted/50 text-muted-foreground';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'identified': return 'bg-red-100 text-red-800';
-      case 'assessed': return 'bg-yellow-100 text-yellow-800';
-      case 'mitigated': return 'bg-blue-100 text-blue-800';
-      case 'accepted': return 'bg-green-100 text-green-800';
-      case 'closed': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'identified': return 'bg-destructive/10 text-destructive';
+      case 'assessed': return 'bg-warning/10 text-warning';
+      case 'mitigated': return 'bg-primary/10 text-primary';
+      case 'accepted': return 'bg-success/10 text-success';
+      case 'closed': return 'bg-muted/50 text-muted-foreground';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
@@ -184,7 +184,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-2">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-orange-500" />
+                  <AlertTriangle className="w-4 h-4 text-warning" />
                   {r.title}
                 </div>
               </td>
@@ -224,7 +224,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
           <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
 
         {tab === 'details' && (
           <div className="space-y-3 text-sm">
@@ -266,7 +266,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                 onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.title} 
               />
-              {form.formState.errors.title ? <div className="text-xs text-red-600">{String(form.formState.errors.title.message)}</div> : null}
+              {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
             </div>
             
             <div className="grid gap-1">

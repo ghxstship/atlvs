@@ -125,13 +125,13 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-2xl font-bold mb-6">4. Acceptable Use Policy</h2>
             
-            <Card className="bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800 mb-6">
+            <Card className="bg-destructive/10 border-destructive/20 mb-6">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="h-6 w-6 text-red-600 mt-1" />
+                  <AlertTriangle className="h-6 w-6 text-destructive mt-1" />
                   <div>
-                    <h3 className="font-semibold text-red-800 dark:text-red-200 mb-2">Prohibited Activities</h3>
-                    <p className="text-sm text-red-700 dark:text-red-300">
+                    <h3 className="font-semibold text-destructive mb-2">Prohibited Activities</h3>
+                    <p className="text-sm text-destructive/80">
                       The following activities are strictly prohibited and may result in immediate account termination.
                     </p>
                   </div>
@@ -279,7 +279,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-2xl font-bold mb-6">9. Disclaimers</h2>
             
-            <Card className="bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800">
+            <Card className="bg-warning/10 border-warning/20">
               <CardContent className="p-6">
                 <p className="text-muted-foreground mb-4">
                   <strong>IMPORTANT:</strong> Our services are provided "as is" without warranties of any kind, either express or implied.
@@ -302,7 +302,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-2xl font-bold mb-6">10. Limitation of Liability</h2>
             
-            <Card className="bg-red-50 dark:bg-red-950/20 border-red-200 dark:border-red-800">
+            <Card className="bg-destructive/10 border-destructive/20">
               <CardContent className="p-6">
                 <p className="text-muted-foreground mb-4">
                   <strong>LIABILITY LIMITS:</strong> To the maximum extent permitted by law, GHXSTSHIP's total liability is limited to the amount you paid us in the 12 months preceding the claim.

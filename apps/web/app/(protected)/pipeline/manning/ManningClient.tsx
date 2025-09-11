@@ -228,9 +228,9 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                         <div className="text-sm font-medium">
                           {Math.round((slot.filledCount / slot.requiredCount) * 100)}%
                         </div>
-                        <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                        <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-blue-500 transition-all"
+                            className="h-full bg-primary transition-all"
                             style={{ width: `${(slot.filledCount / slot.requiredCount) * 100}%` }}
                           />
                         </div>

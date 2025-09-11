@@ -50,10 +50,10 @@ const resourceTypeLabels = {
 };
 
 const statusColors = {
-  draft: 'bg-gray-100 text-gray-800',
-  published: 'bg-green-100 text-green-800',
-  archived: 'bg-yellow-100 text-yellow-800',
-  under_review: 'bg-blue-100 text-blue-800'
+  draft: 'bg-muted/50 text-muted-foreground',
+  published: 'bg-success/10 text-success',
+  archived: 'bg-warning/10 text-warning',
+  under_review: 'bg-primary/10 text-primary'
 };
 
 export default function ResourcesClient() {
@@ -168,7 +168,7 @@ export default function ResourcesClient() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Resources</h1>
-          <p className="text-gray-600">Manage organizational resources and knowledge base</p>
+          <p className="text-muted-foreground">Manage organizational resources and knowledge base</p>
         </div>
         <Button onClick={() => setShowForm(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -179,24 +179,24 @@ export default function ResourcesClient() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card>
-          <div className="text-2xl font-bold text-blue-600">{stats.totalResources}</div>
-          <div className="text-sm text-gray-600">Total Resources</div>
+          <div className="text-2xl font-bold text-primary">{stats.totalResources}</div>
+          <div className="text-sm text-muted-foreground">Total Resources</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-green-600">{stats.publishedResources}</div>
-          <div className="text-sm text-gray-600">Published</div>
+          <div className="text-2xl font-bold text-success">{stats.publishedResources}</div>
+          <div className="text-sm text-muted-foreground">Published</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-yellow-600">{stats.featuredResources}</div>
-          <div className="text-sm text-gray-600">Featured</div>
+          <div className="text-2xl font-bold text-warning">{stats.featuredResources}</div>
+          <div className="text-sm text-muted-foreground">Featured</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-purple-600">{stats.totalViews}</div>
-          <div className="text-sm text-gray-600">Total Views</div>
+          <div className="text-2xl font-bold text-secondary">{stats.totalViews}</div>
+          <div className="text-sm text-muted-foreground">Total Views</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-indigo-600">{stats.totalDownloads}</div>
-          <div className="text-sm text-gray-600">Downloads</div>
+          <div className="text-2xl font-bold text-primary">{stats.totalDownloads}</div>
+          <div className="text-sm text-muted-foreground">Downloads</div>
         </Card>
       </div>
 
@@ -204,11 +204,11 @@ export default function ResourcesClient() {
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <input
               type="text"
               placeholder="Search resources..."
-              className="pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="pl-10 pr-4 py-2 border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:border-transparent"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
@@ -216,7 +216,7 @@ export default function ResourcesClient() {
           
           <div className="flex gap-2">
             <select
-              className="px-3 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="px-3 py-2 border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:border-transparent"
               value={filterType}
               onChange={(e) => setFilterType(e.target.value)}
             >
@@ -235,15 +235,15 @@ export default function ResourcesClient() {
       {/* Content */}
       {loading ? (
         <div className="text-center py-8">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading resources...</p>
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Loading resources...</p>
         </div>
       ) : error ? (
         <Card>
           <div className="text-center py-8">
-            <FileText className="w-12 h-12 text-red-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">Error loading resources</h3>
-            <p className="text-gray-600 mb-4">{error}</p>
+            <FileText className="w-12 h-12 text-destructive mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">Error loading resources</h3>
+            <p className="text-muted-foreground mb-4">{error}</p>
             <Button onClick={fetchResources}>
               Try Again
             </Button>
@@ -252,9 +252,9 @@ export default function ResourcesClient() {
       ) : filteredResources.length === 0 ? (
         <Card>
           <div className="text-center py-8">
-            <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 mb-2">No resources found</h3>
-            <p className="text-gray-600 mb-4">
+            <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">No resources found</h3>
+            <p className="text-muted-foreground mb-4">
               {searchTerm || filterType !== 'all' 
                 ? 'No resources match your current filters.' 
                 : 'Get started by creating your first resource.'}
@@ -277,18 +277,18 @@ export default function ResourcesClient() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <IconComponent className="w-5 h-5 text-blue-600" />
+                    <IconComponent className="w-5 h-5 text-primary" />
                     <Badge variant="secondary" className={statusColors[resource.status]}>
                       {resource.status.replace('_', ' ')}
                     </Badge>
                     {resource.is_featured && (
-                      <Badge variant="secondary" className="bg-yellow-100 text-yellow-800">
+                      <Badge variant="secondary" className="bg-warning/10 text-warning">
                         <Star className="w-3 h-3 mr-1" />
                         Featured
                       </Badge>
                     )}
                   </div>
-                  <div className="flex items-center space-x-1 text-sm text-gray-500">
+                  <div className="flex items-center space-x-1 text-sm text-muted-foreground">
                     <Eye className="w-4 h-4" />
                     <span>{resource.view_count}</span>
                     <Download className="w-4 h-4 ml-2" />
@@ -299,7 +299,7 @@ export default function ResourcesClient() {
                 <h3 className="font-semibold text-lg mb-2 line-clamp-2">{resource.title}</h3>
                 
                 {resource.description && (
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-3">{resource.description}</p>
+                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">{resource.description}</p>
                 )}
                 
                 <div className="flex items-center justify-between">
@@ -312,7 +312,7 @@ export default function ResourcesClient() {
                     <Button
                      
                       variant="outline"
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleEdit(resource);
                       }}
@@ -323,7 +323,7 @@ export default function ResourcesClient() {
                       <Button
                        
                         variant="outline"
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleDownload(resource);
                         }}

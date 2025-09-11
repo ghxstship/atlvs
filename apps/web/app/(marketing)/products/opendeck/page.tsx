@@ -133,7 +133,7 @@ export default function OPENDECKPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-purple-500/5 via-background to-pink-500/5">
+      <section className="py-20 bg-gradient-to-br from-secondary/5 via-background to-primary/5">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -142,7 +142,7 @@ export default function OPENDECKPage() {
                   Creative Marketplace
                 </Badge>
                 <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
-                  <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     OPENDECK
                   </span>
                   <br />
@@ -194,13 +194,13 @@ export default function OPENDECKPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                      <div className="w-3 h-3 text-green-500">🔒</div>
+                      <div className="w-3 h-3 text-success">🔒</div>
                       opendeck.ghxstship.com
                     </div>
                   </div>
@@ -209,7 +209,7 @@ export default function OPENDECKPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-lg font-bold uppercase`}>FEATURED TALENT</h3>
-                    <Badge variant="outline" className="text-purple-600 border-purple-600">
+                    <Badge variant="outline" className="text-secondary border-secondary">
                       Trending
                     </Badge>
                   </div>
@@ -221,7 +221,7 @@ export default function OPENDECKPage() {
                       { name: 'Alex Rivera', role: 'Motion Designer', rating: 5.0, projects: 156, location: 'London, UK' },
                     ].map((talent, i) => (
                       <div key={i} className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
-                        <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                        <div className="w-10 h-10 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
                           <span className="text-white font-semibold text-sm">
                             {talent.name.split(' ').map(n => n[0]).join('')}
                           </span>
@@ -233,7 +233,7 @@ export default function OPENDECKPage() {
                         </div>
                         <div className="text-right">
                           <div className="flex items-center gap-1 mb-1">
-                            <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                            <Star className="h-3 w-3 fill-warning text-warning" />
                             <span className="text-xs font-semibold">{talent.rating}</span>
                           </div>
                           <div className="text-xs text-muted-foreground">{talent.projects} projects</div>
@@ -272,7 +272,7 @@ export default function OPENDECKPage() {
             {categories.map((category) => (
               <Card key={category.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
-                  <div className={`${anton.className} text-4xl font-bold text-purple-500 mb-4 uppercase`}>
+                  <div className={`${anton.className} text-4xl font-bold text-secondary mb-4 uppercase`}>
                     {category.count}
                   </div>
                   <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{category.title}</h3>
@@ -281,7 +281,7 @@ export default function OPENDECKPage() {
                   <div className="space-y-2">
                     {category.examples.map((example) => (
                       <div key={example} className="flex items-center justify-center gap-2">
-                        <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                        <div className="w-2 h-2 bg-secondary rounded-full"></div>
                         <span className="text-sm text-muted-foreground">{example}</span>
                       </div>
                     ))}
@@ -312,7 +312,7 @@ export default function OPENDECKPage() {
               return (
                 <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 mb-4">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-secondary to-primary mb-4">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
@@ -320,7 +320,7 @@ export default function OPENDECKPage() {
                     <div className="space-y-1">
                       {feature.benefits.map((benefit) => (
                         <div key={benefit} className="flex items-center gap-2">
-                          <CheckCircle className="h-3 w-3 text-green-500 flex-shrink-0" />
+                          <CheckCircle className="h-3 w-3 text-success flex-shrink-0" />
                           <span className="text-xs text-muted-foreground">{benefit}</span>
                         </div>
                       ))}
@@ -365,7 +365,7 @@ export default function OPENDECKPage() {
                     
                     <div className="pt-4 border-t">
                       <h4 className="font-semibold text-sm text-muted-foreground mb-2">RESULT</h4>
-                      <p className="font-semibold text-purple-500">{story.result}</p>
+                      <p className="font-semibold text-secondary">{story.result}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -380,14 +380,14 @@ export default function OPENDECKPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                      <Star key={i} className="h-4 w-4 fill-warning text-warning" />
                     ))}
                   </div>
                   <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
                       <span className="text-white font-semibold text-sm">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </span>
@@ -406,7 +406,7 @@ export default function OPENDECKPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500/5 to-pink-500/5">
+      <section className="py-20 bg-gradient-to-r from-secondary/5 to-primary/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
@@ -433,15 +433,15 @@ export default function OPENDECKPage() {
 
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500" />
+                <CheckCircle className="h-4 w-4 text-success" />
                 <span>Free to join</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-purple-500" />
+                <Users className="h-4 w-4 text-secondary" />
                 <span>25K+ professionals</span>
               </div>
               <div className="flex items-center gap-2">
-                <Globe className="h-4 w-4 text-pink-500" />
+                <Globe className="h-4 w-4 text-primary" />
                 <span>Global network</span>
               </div>
             </div>

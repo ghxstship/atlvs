@@ -186,13 +186,13 @@ export default function CompanyPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/careers">
-                <Button>
+                <Button className="group transition-all duration-200 hover:scale-105">
                   Join Our Team
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button>
+                <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                   Contact Us
                 </Button>
               </Link>
@@ -287,14 +287,14 @@ export default function CompanyPage() {
                   <div className="flex justify-center gap-3">
                     {member.linkedin && (
                       <a href={member.linkedin as any as any} target="_blank" rel="noopener noreferrer">
-                        <Button>
+                        <Button size="sm" variant="outline" className="transition-all duration-200 hover:scale-105">
                           LinkedIn
                         </Button>
                       </a>
                     )}
                     {member.twitter && (
                       <a href={member.twitter as any as any} target="_blank" rel="noopener noreferrer">
-                        <Button>
+                        <Button size="sm" variant="outline" className="transition-all duration-200 hover:scale-105">
                           Twitter
                         </Button>
                       </a>
@@ -405,9 +405,9 @@ export default function CompanyPage() {
                       </div>
                     </div>
                     <a href={press.href as any as any}>
-                      <Button>
+                      <Button size="sm" variant="outline" className="group transition-all duration-200 hover:scale-105">
                         Read More
-                        <ExternalLink className="ml-2 h-3 w-3" />
+                        <ExternalLink className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </a>
                   </div>
@@ -418,9 +418,9 @@ export default function CompanyPage() {
 
           <div className="text-center mt-12">
             <a href="/press">
-              <Button>
+              <Button className="group transition-all duration-200 hover:scale-105">
                 View All Press Releases
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
           </div>
@@ -477,19 +477,19 @@ export default function CompanyPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/careers">
-                  <Button>
+                  <Button className="transition-all duration-200 hover:scale-105">
                     <Users className="mr-2 h-4 w-4" />
                     View Open Positions
                   </Button>
                 </Link>
                 <Link href="/contact">
-                  <Button>
+                  <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     <Mail className="mr-2 h-4 w-4" />
                     Get in Touch
                   </Button>
                 </Link>
                 <Link href="/partnerships">
-                  <Button>
+                  <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     Partner with Us
                   </Button>
                 </Link>

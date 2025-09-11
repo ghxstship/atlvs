@@ -67,7 +67,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       <CardContent className="p-8 text-center">
         <div className="mb-8">
           {isVerified ? (
-            <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
+            <CheckCircle className="h-16 w-16 text-success mx-auto mb-4" />
           ) : (
             <Mail className="h-16 w-16 text-primary mx-auto mb-4" />
           )}

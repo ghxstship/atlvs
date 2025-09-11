@@ -126,10 +126,10 @@ export default function CreateForecastClient({
 
   const getConfidenceBadgeColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-green-600 bg-green-100';
-      case 'medium': return 'text-yellow-600 bg-yellow-100';
-      case 'low': return 'text-red-600 bg-red-100';
-      default: return 'text-gray-600 bg-gray-100';
+      case 'high': return 'text-success bg-success/10';
+      case 'medium': return 'text-warning bg-warning/10';
+      case 'low': return 'text-destructive bg-destructive/10';
+      default: return 'text-muted-foreground bg-muted';
     }
   };
 
@@ -142,12 +142,12 @@ export default function CreateForecastClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Forecast Overview */}
-        <Card className="p-4 bg-purple-50 border-purple-200">
+        <Card className="p-4 bg-secondary/5 border-secondary/20">
           <div className="flex items-center space-x-3">
-            <BarChart3 className="h-8 w-8 text-purple-600" />
+            <BarChart3 className="h-8 w-8 text-secondary" />
             <div>
-              <h3 className="font-semibold text-purple-900">Financial Forecasting</h3>
-              <p className="text-sm text-purple-700">
+              <h3 className="font-semibold text-secondary">Financial Forecasting</h3>
+              <p className="text-sm text-secondary/80">
                 Create financial projections and track variance against actuals
               </p>
             </div>
@@ -293,7 +293,7 @@ export default function CreateForecastClient({
 
         {/* Forecast Summary */}
         {formData.name && formData.periodStart && formData.periodEnd && (
-          <Card className="p-4 bg-gray-50 border-gray-200">
+          <Card className="p-4 bg-muted border-border">
             <h4 className="font-medium text-foreground mb-2">Forecast Summary</h4>
             <div className="space-y-2 text-sm">
               <div className="flex justify-between">
@@ -302,7 +302,7 @@ export default function CreateForecastClient({
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Projected Amount:</span>
-                <span className="font-medium text-purple-600">
+                <span className="font-medium text-secondary">
                   {formData.projectedAmount !== 0 ? formatCurrency(formData.projectedAmount) : 'Not set'}
                 </span>
               </div>

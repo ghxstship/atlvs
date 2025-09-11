@@ -30,11 +30,11 @@ interface ContractingClientProps {
 }
 
 const CONTRACT_TYPES = [
-  { id: 'employment', name: 'Employment Contract', color: 'bg-blue-500' },
-  { id: 'freelance', name: 'Freelance Agreement', color: 'bg-green-500' },
-  { id: 'nda', name: 'Non-Disclosure Agreement', color: 'bg-purple-500' },
-  { id: 'vendor', name: 'Vendor Agreement', color: 'bg-orange-500' },
-  { id: 'service', name: 'Service Contract', color: 'bg-red-500' }
+  { id: 'employment', name: 'Employment Contract', color: 'bg-primary' },
+  { id: 'freelance', name: 'Freelance Agreement', color: 'bg-success' },
+  { id: 'nda', name: 'Non-Disclosure Agreement', color: 'bg-secondary' },
+  { id: 'vendor', name: 'Vendor Agreement', color: 'bg-warning' },
+  { id: 'service', name: 'Service Contract', color: 'bg-destructive' }
 ] as const;
 
 export default function ContractingClient({ orgId }: ContractingClientProps) {
@@ -202,7 +202,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
 
   const getTypeColor = (type: Contract['type']) => {
     const typeInfo = CONTRACT_TYPES.find(t => t.id === type);
-    return typeInfo?.color || 'bg-gray-500';
+    return typeInfo?.color || 'bg-muted-foreground';
   };
 
   const formatCurrency = (value: number, currency: string) => {
@@ -237,7 +237,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <select
                     value={formData.personId}
                     onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select person...</option>
@@ -253,7 +253,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <select
                     value={formData.projectId}
                     onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select project...</option>
@@ -271,7 +271,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <select
                     value={formData.type}
                     onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as Contract['type'] }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   >
                     {CONTRACT_TYPES.map(type => (
                       <option key={type.id} value={type.id}>
@@ -295,7 +295,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <select
                     value={formData.currency}
                     onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   >
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
@@ -371,7 +371,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   </div>
                   <div className="text-right">
                     {contract.value && (
-                      <div className="text-lg font-semibold text-green-600 flex items-center gap-1">
+                      <div className="text-lg font-semibold text-success flex items-center gap-1">
                         <DollarSign className="w-4 h-4" />
                         {formatCurrency(contract.value, contract.currency)}
                       </div>

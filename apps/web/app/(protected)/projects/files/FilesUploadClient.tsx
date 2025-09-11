@@ -109,7 +109,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
         />
       </label>
       {error ? (
-        <div role="alert" className="text-sm text-red-600">
+        <div role="alert" className="text-sm text-destructive">
           {error}
         </div>
       ) : null}

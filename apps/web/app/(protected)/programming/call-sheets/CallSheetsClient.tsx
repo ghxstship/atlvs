@@ -177,15 +177,15 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted';
       case 'published':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-primary bg-primary/10';
       case 'distributed':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'completed':
-        return 'text-purple-600 bg-purple-50';
+        return 'text-secondary bg-secondary/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted';
     }
   };
 

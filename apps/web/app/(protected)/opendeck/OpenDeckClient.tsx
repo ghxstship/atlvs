@@ -161,7 +161,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
     <div className="space-y-3">
       <div className="flex items-center justify-between">
         <div className="text-sm opacity-70">
-          {loading ? t('loading') : error ? <span className="text-red-600">{error}</span> : ''}
+          {loading ? t('loading') : error ? <span className="text-destructive">{error}</span> : ''}
         </div>
         <div className="flex items-center gap-2">
           <Button onClick={createNew} disabled={busy} aria-label={t('create')} title={t('create')}>
@@ -219,7 +219,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
                 const vendor = vendors.find(v => v.id === vendorId);
                 return vendor ? (
                   <button 
-                    className="ml-1 text-blue-600 hover:underline" 
+                    className="ml-1 text-primary hover:underline" 
                     onClick={() => openVendorDrawer(vendor.id)}
                     aria-label={`View vendor ${vendor.name}`}
                   >

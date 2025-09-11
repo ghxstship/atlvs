@@ -249,34 +249,34 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'planning':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
       case 'open_registration':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'full':
-        return 'text-orange-600 bg-orange-50';
+        return 'text-warning bg-warning/10';
       case 'in_progress':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-primary bg-primary/10';
       case 'completed':
-        return 'text-purple-600 bg-purple-50';
+        return 'text-secondary bg-secondary/10';
       case 'cancelled':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive bg-destructive/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
     }
   };
 
   const getSkillLevelColor = (level: string) => {
     switch (level) {
       case 'beginner':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'intermediate':
-        return 'text-yellow-600 bg-yellow-50';
+        return 'text-warning bg-warning/10';
       case 'advanced':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive bg-destructive/10';
       case 'all_levels':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-primary bg-primary/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
     }
   };
 
@@ -331,8 +331,8 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-50 rounded-lg">
-                    <BookOpen className="h-5 w-5 text-green-600" />
+                  <div className="p-2 bg-success/10 rounded-lg">
+                    <BookOpen className="h-5 w-5 text-success" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -345,8 +345,8 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-50 rounded-lg">
-                    <GraduationCap className="h-5 w-5 text-blue-600" />
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <GraduationCap className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -359,8 +359,8 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-50 rounded-lg">
-                    <Users className="h-5 w-5 text-purple-600" />
+                  <div className="p-2 bg-secondary/10 rounded-lg">
+                    <Users className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -373,8 +373,8 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-yellow-50 rounded-lg">
-                    <Target className="h-5 w-5 text-yellow-600" />
+                  <div className="p-2 bg-warning/10 rounded-lg">
+                    <Target className="h-5 w-5 text-warning" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -487,7 +487,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Participation Metrics */}
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">
+                      <div className="text-2xl font-bold text-primary">
                         {selectedRecord.current_participants || 0}
                       </div>
                       <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
@@ -496,7 +496,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">
+                      <div className="text-2xl font-bold text-success">
                         {selectedRecord.max_participants || 20}
                       </div>
                       <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">

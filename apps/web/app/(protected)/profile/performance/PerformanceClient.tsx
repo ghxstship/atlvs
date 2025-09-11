@@ -300,7 +300,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+        className={`h-4 w-4 ${i < rating ? 'text-warning fill-current' : 'text-muted-foreground'}`}
       />
     ));
   };
@@ -354,24 +354,24 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="h-5 w-5 text-blue-600" />
+              <BarChart3 className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Performance Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{calculateAverageRating()}</div>
+                <div className="text-2xl font-bold text-primary">{calculateAverageRating()}</div>
                 <div className="text-sm text-muted-foreground">Average Rating</div>
                 <div className="flex justify-center mt-1">
                   {renderStars(Math.round(parseFloat(calculateAverageRating())))}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">{reviews.length}</div>
+                <div className="text-2xl font-bold text-success">{reviews.length}</div>
                 <div className="text-sm text-muted-foreground">Total Reviews</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">
+                <div className="text-2xl font-bold text-secondary">
                   {reviews.filter(r => r.overall_rating >= 4).length}
                 </div>
                 <div className="text-sm text-muted-foreground">Excellent Reviews</div>
@@ -407,8 +407,8 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Award className="h-5 w-5 text-blue-600" />
+                    <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <Award className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold">{review.review_period}</h3>
@@ -626,7 +626,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeStrength(strength)}
-                    className="ml-1 text-red-500 hover:text-red-700"
+                    className="ml-1 text-destructive hover:text-destructive/80"
                   >
                     ×
                   </button>
@@ -658,7 +658,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeImprovement(improvement)}
-                    className="ml-1 text-red-500 hover:text-red-700"
+                    className="ml-1 text-destructive hover:text-destructive/80"
                   >
                     ×
                   </button>
@@ -686,7 +686,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeGoalAchieved(goal)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-destructive hover:text-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -714,7 +714,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeNextGoal(goal)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-destructive hover:text-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

@@ -5,8 +5,8 @@ import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
   Card, 
-  Button, 
   Badge, 
+  Button,
   Skeleton,
   Drawer,
   DataGrid,
@@ -15,6 +15,7 @@ import {
   type FieldConfig,
   type DataRecord
 } from '@ghxstship/ui';
+import { StandardButton } from '../../components/ui/StandardButton';
 import { 
   FileText,
   Plus,
@@ -255,17 +256,17 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'msa':
-        return <FileText className="h-5 w-5 text-blue-500" />;
+        return <FileText className="h-5 w-5 text-primary" />;
       case 'sow':
-        return <FileText className="h-5 w-5 text-green-500" />;
+        return <FileText className="h-5 w-5 text-success" />;
       case 'nda':
-        return <FileText className="h-5 w-5 text-purple-500" />;
+        return <FileText className="h-5 w-5 text-secondary" />;
       case 'service':
-        return <FileText className="h-5 w-5 text-orange-500" />;
+        return <FileText className="h-5 w-5 text-warning" />;
       case 'supply':
-        return <FileText className="h-5 w-5 text-yellow-500" />;
+        return <FileText className="h-5 w-5 text-info" />;
       default:
-        return <FileText className="h-5 w-5 text-gray-500" />;
+        return <FileText className="h-5 w-5 text-muted-foreground" />;
     }
   };
 
@@ -513,7 +514,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   {contract.value && (
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">Value</span>
-                      <span className="font-medium text-green-600">{formatCurrency(contract.value, contract.currency)}</span>
+                      <span className="font-medium text-success">{formatCurrency(contract.value, contract.currency)}</span>
                     </div>
                   )}
                   
@@ -525,7 +526,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   {contract.endDate && (
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">End Date</span>
-                      <span className={`font-medium ${isExpiringSoon(contract.endDate) ? 'text-orange-600' : 'text-foreground'}`}>
+                      <span className={`font-medium ${isExpiringSoon(contract.endDate) ? 'text-warning' : 'text-foreground'}`}>
                         {formatDate(contract.endDate)}
                         {isExpiringSoon(contract.endDate) && (
                           <AlertTriangle className="inline h-3 w-3 ml-1" />
@@ -536,7 +537,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   
                   {contract.autoRenewal && (
                     <div className="flex items-center space-x-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-green-500" />
+                      <CheckCircle className="h-4 w-4 text-success" />
                       <span className="text-foreground/70">Auto-renewal enabled</span>
                     </div>
                   )}
@@ -548,7 +549,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleRenewContract(contract.id);
                         }}
@@ -560,7 +561,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           window.open(contract.documentUrl, '_blank');
                         }}
@@ -571,26 +572,24 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   </div>
                   
                   <div className="flex space-x-2">
-                    <Button
+                    <StandardButton
                       variant="ghost"
-                     
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleEditContract(contract);
+                      size="sm"
+                      onClick={() => setSelectedContract(contract)}
+                    >
+                      View Details
+                    </StandardButton>
+                    <StandardButton
+                      variant="primary"
+                      size="sm"
+                      onClick={() => {
+                        setSelectedContract(contract);
+                        setDrawerMode('edit');
+                        setDrawerOpen(true);
                       }}
                     >
-                      <Edit className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                     
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleDeleteContract(contract.id);
-                      }}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+                      Edit
+                    </StandardButton>
                   </div>
                 </div>
               </Card>

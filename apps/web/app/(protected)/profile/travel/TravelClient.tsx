@@ -359,21 +359,21 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Globe className="h-5 w-5 text-blue-600" />
+              <Globe className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Travel Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-blue-600">{travelRecords.length}</div>
+                <div className="text-2xl font-bold text-primary">{travelRecords.length}</div>
                 <div className="text-sm text-muted-foreground">Total Trips</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-600">{calculateTotalDays()}</div>
+                <div className="text-2xl font-bold text-success">{calculateTotalDays()}</div>
                 <div className="text-sm text-muted-foreground">Days Traveled</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-purple-600">
+                <div className="text-2xl font-bold text-secondary">
                   ${calculateTotalExpenses().toLocaleString()}
                 </div>
                 <div className="text-sm text-muted-foreground">Total Expenses</div>
@@ -618,7 +618,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                 type="checkbox"
                 id="visa_required"
                 {...form.register('visa_required')}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label htmlFor="visa_required" className="text-sm font-medium">
                 Visa required for this trip

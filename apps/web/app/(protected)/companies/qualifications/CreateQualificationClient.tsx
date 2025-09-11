@@ -199,7 +199,7 @@ export default function CreateQualificationClient({
         {/* Qualification Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Award className="h-5 w-5 text-blue-600" />
+            <Award className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Qualification Details</h3>
           </div>
           
@@ -284,7 +284,7 @@ export default function CreateQualificationClient({
         {/* Certification Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileCheck className="h-5 w-5 text-green-600" />
+            <FileCheck className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Certification Details</h3>
           </div>
           

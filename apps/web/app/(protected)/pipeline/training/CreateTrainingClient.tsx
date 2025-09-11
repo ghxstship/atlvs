@@ -178,8 +178,8 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
       >
         <form id="training-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <GraduationCap className="h-5 w-5 text-green-600" />
+            <div className="p-2 bg-success/10 rounded-lg">
+              <GraduationCap className="h-5 w-5 text-success" />
             </div>
             <div>
               <h3 className="font-medium">Training Program Information</h3>
@@ -383,9 +383,9 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
             </div>
           </div>
 
-          <div className="bg-green-50 p-4 rounded-lg">
-            <h4 className="font-medium text-green-900 mb-2">Training Guidelines</h4>
-            <ul className="text-sm text-green-800 space-y-1">
+          <div className="bg-success/5 p-4 rounded-lg">
+            <h4 className="font-medium text-success mb-2">Training Guidelines</h4>
+            <ul className="text-sm text-success/80 space-y-1">
               <li>• Ensure training aligns with organizational safety and compliance requirements</li>
               <li>• Set realistic capacity limits based on venue and format</li>
               <li>• Include detailed prerequisites to ensure participant readiness</li>

@@ -152,20 +152,20 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
         <form id="create-product-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700">Product Name *</label>
+              <label htmlFor="name" className="block text-sm font-medium text-foreground">Product Name *</label>
               <Input
                 id="name"
                 {...form.register('name')}
                 placeholder="Enter product name"
-                className={form.formState.errors.name ? 'border-red-500' : ''}
+                className={form.formState.errors.name ? 'border-destructive' : ''}
               />
               {form.formState.errors.name && (
-                <p className="text-sm text-red-500">{form.formState.errors.name.message}</p>
+                <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="description" className="block text-sm font-medium text-gray-700">Description</label>
+              <label htmlFor="description" className="block text-sm font-medium text-foreground">Description</label>
               <Textarea
                 id="description"
                 {...form.register('description')}
@@ -176,7 +176,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category</label>
+                <label htmlFor="category" className="block text-sm font-medium text-foreground">Category</label>
                 <Select
                   {...form.register('category')}
                   defaultValue=""
@@ -189,23 +189,23 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="price" className="block text-sm font-medium text-gray-700">Price *</label>
+                <label htmlFor="price" className="block text-sm font-medium text-foreground">Price *</label>
                 <Input
                   id="price"
                   type="number"
                   step="0.01"
                   {...form.register('price', { valueAsNumber: true })}
                   placeholder="0.00"
-                  className={form.formState.errors.price ? 'border-red-500' : ''}
+                  className={form.formState.errors.price ? 'border-destructive' : ''}
                 />
                 {form.formState.errors.price && (
-                  <p className="text-sm text-red-500">{form.formState.errors.price.message}</p>
+                  <p className="text-sm text-destructive">{form.formState.errors.price.message}</p>
                 )}
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="currency" className="block text-sm font-medium text-gray-700">Currency</label>
+              <label htmlFor="currency" className="block text-sm font-medium text-foreground">Currency</label>
               <Select
                 {...form.register('currency')}
                 defaultValue="USD"
@@ -218,7 +218,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="sku" className="block text-sm font-medium text-gray-700">SKU</label>
+                <label htmlFor="sku" className="block text-sm font-medium text-foreground">SKU</label>
                 <Input
                   id="sku"
                   {...form.register('sku')}
@@ -227,7 +227,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="supplier" className="block text-sm font-medium text-gray-700">Supplier</label>
+                <label htmlFor="supplier" className="block text-sm font-medium text-foreground">Supplier</label>
                 <Input
                   id="supplier"
                   {...form.register('supplier')}
@@ -237,7 +237,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="status" className="block text-sm font-medium text-gray-700">Status</label>
+              <label htmlFor="status" className="block text-sm font-medium text-foreground">Status</label>
               <Select
                 {...form.register('status')}
                 defaultValue="active"

@@ -27,13 +27,13 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 const categoryColors: Record<string, string> = {
-  profile: 'bg-blue-100 text-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
-  document: 'bg-purple-100 text-purple-800 dark:bg-purple-900/20 dark:text-purple-400',
-  settings: 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400',
-  achievement: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/20 dark:text-yellow-400',
-  schedule: 'bg-green-100 text-green-800 dark:bg-green-900/20 dark:text-green-400',
-  performance: 'bg-orange-100 text-orange-800 dark:bg-orange-900/20 dark:text-orange-400',
-  default: 'bg-gray-100 text-gray-800 dark:bg-gray-900/20 dark:text-gray-400',
+  profile: 'bg-primary/10 text-primary',
+  document: 'bg-secondary/10 text-secondary',
+  settings: 'bg-muted text-muted-foreground',
+  achievement: 'bg-warning/10 text-warning',
+  schedule: 'bg-success/10 text-success',
+  performance: 'bg-warning/10 text-warning',
+  default: 'bg-muted text-muted-foreground',
 };
 
 export default function ActivityLogClient() {

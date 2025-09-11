@@ -2,8 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { createBrowserClient } from '@ghxstship/auth';
 import Link from 'next/link';
+import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { createBrowserClient } from '@supabase/ssr';
+import { DynamicProgressBar } from '../../(protected)/components/ui';
+import { ArrowRight, ArrowLeft, Check, Building, Users, CreditCard, Settings } from 'lucide-react';
 import { typography } from '../../(marketing)/lib/typography';
 import { spacing, layouts } from '../../(marketing)/lib/spacing';
 import { VerifyEmailStep } from './steps/VerifyEmailStep';
@@ -34,7 +37,10 @@ const stepOrder: OnboardingStep[] = [
 export function OnboardingFlow() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const supabase = createBrowserClient();
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
   
   const [currentStep, setCurrentStep] = useState<OnboardingStep>('verify-email');
   const [user, setUser] = useState<any>(null);
@@ -114,12 +120,13 @@ export function OnboardingFlow() {
               <span>Step {getCurrentStepNumber()} of {getTotalSteps()}</span>
               <span>{Math.round((getCurrentStepNumber() / getTotalSteps()) * 100)}% Complete</span>
             </div>
-            <div className="w-full bg-muted rounded-full h-2">
-              <div 
-                className="bg-primary h-2 rounded-full transition-all duration-300"
-                style={{ width: `${(getCurrentStepNumber() / getTotalSteps()) * 100}%` }}
-              />
-            </div>
+            <DynamicProgressBar
+              percentage={(getCurrentStepNumber() / getTotalSteps()) * 100}
+              variant="default"
+              size="sm"
+              showLabel={false}
+              animated={true}
+            />
           </div>
         </div>
 

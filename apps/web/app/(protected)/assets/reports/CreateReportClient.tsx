@@ -196,7 +196,7 @@ export default function CreateReportClient({
         {/* Basic Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="h-5 w-5 text-blue-600" />
+            <FileText className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Basic Information</h3>
           </div>
           
@@ -265,7 +265,7 @@ export default function CreateReportClient({
         {/* Scheduling */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-green-600" />
+            <Calendar className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Scheduling</h3>
           </div>
           
@@ -331,7 +331,7 @@ export default function CreateReportClient({
         {/* Parameters & Filters */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Filter className="h-5 w-5 text-purple-600" />
+            <Filter className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Parameters & Filters</h3>
           </div>
           

@@ -17,7 +17,12 @@ import {
   Clock,
   Calendar,
   ArrowUp,
-  ArrowDown
+  ArrowDown,
+  ArrowUpRight,
+  ArrowDownRight,
+  PieChart,
+  Calculator,
+  Target
 } from 'lucide-react';
 
 interface FinanceOverviewClientProps {
@@ -184,7 +189,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
+          <h1 className="text-2xl font-bold text-foreground">Finance Overview</h1>
           <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={loadFinanceOverview}>
@@ -199,16 +204,14 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Revenue</p>
-              <p className="text-2xl font-bold text-green-600">
-                {formatCurrency(summary?.totalRevenue || 0, summary?.currency)}
-              </p>
-              <p className="text-xs text-green-600 flex items-center mt-1">
+              <p className="text-sm text-muted-foreground">Total Revenue</p>
+              <p className="text-2xl font-bold text-success">{formatCurrency(summary?.totalRevenue || 0, summary?.currency)}</p>
+              <p className="text-xs text-success flex items-center mt-1">
                 <TrendingUp className="h-3 w-3 mr-1" />
                 +12.5% from last month
               </p>
             </div>
-            <Banknote className="h-8 w-8 text-green-500" />
+            <Banknote className="h-8 w-8 text-success" />
           </div>
         </Card>
 
@@ -216,16 +219,14 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Expenses</p>
-              <p className="text-2xl font-bold text-red-600">
-                {formatCurrency(summary?.totalExpenses || 0, summary?.currency)}
-              </p>
-              <p className="text-xs text-red-600 flex items-center mt-1">
+              <p className="text-sm text-muted-foreground">Total Expenses</p>
+              <p className="text-2xl font-bold text-destructive">{formatCurrency(summary?.totalExpenses || 0, summary?.currency)}</p>
+              <p className="text-xs text-destructive flex items-center mt-1">
                 <TrendingUp className="h-3 w-3 mr-1" />
                 +8.2% from last month
               </p>
             </div>
-            <CreditCard className="h-8 w-8 text-red-500" />
+            <CreditCard className="h-8 w-8 text-destructive" />
           </div>
         </Card>
 
@@ -234,19 +235,19 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Net Income</p>
-              <p className={`text-2xl font-bold ${(summary?.netIncome || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <p className={`text-2xl font-bold ${(summary?.netIncome || 0) >= 0 ? 'text-success' : 'text-destructive'}`}>
                 {formatCurrency(summary?.netIncome || 0, summary?.currency)}
               </p>
-              <p className="text-xs text-foreground/60 flex items-center mt-1">
+              <p className="text-xs text-muted-foreground flex items-center mt-1">
                 {(summary?.netIncome || 0) >= 0 ? (
-                  <ArrowUp className="h-3 w-3 mr-1 text-green-500" />
+                  <ArrowUp className="h-3 w-3 mr-1 text-success" />
                 ) : (
-                  <ArrowDown className="h-3 w-3 mr-1 text-red-500" />
+                  <ArrowDown className="h-3 w-3 mr-1 text-destructive" />
                 )}
                 Revenue - Expenses
               </p>
             </div>
-            <DollarSign className="h-8 w-8 text-blue-500" />
+            <DollarSign className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
@@ -254,7 +255,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Budget Utilization</p>
+              <p className="text-sm text-muted-foreground">Budget Utilization</p>
               <p className="text-2xl font-bold text-foreground">
                 {(summary?.budgetUtilization || 0).toFixed(1)}%
               </p>
@@ -262,7 +263,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 of {formatCurrency(summary?.totalBudget || 0, summary?.currency)}
               </p>
             </div>
-            <BarChart3 className="h-8 w-8 text-purple-500" />
+            <PieChart className="h-8 w-8 text-secondary" />
           </div>
         </Card>
 
@@ -276,7 +277,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               </p>
               <p className="text-xs text-foreground/60 mt-1">Across all accounts</p>
             </div>
-            <Banknote className="h-8 w-8 text-indigo-500" />
+            <Banknote className="h-8 w-8 text-success" />
           </div>
         </Card>
 
@@ -285,10 +286,10 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Pending Invoices</p>
-              <p className="text-2xl font-bold text-yellow-600">{summary?.pendingInvoices || 0}</p>
-              <p className="text-xs text-foreground/60 mt-1">Awaiting payment</p>
+              <p className="text-2xl font-bold text-primary">{summary?.pendingInvoices || 0}</p>
+              <p className="text-xs text-muted-foreground mt-1">Awaiting payment</p>
             </div>
-            <Clock className="h-8 w-8 text-yellow-500" />
+            <Clock className="h-5 w-5 text-warning" />
           </div>
         </Card>
 
@@ -297,10 +298,10 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Overdue Invoices</p>
-              <p className="text-2xl font-bold text-red-600">{summary?.overdueInvoices || 0}</p>
-              <p className="text-xs text-foreground/60 mt-1">Require attention</p>
+              <p className="text-2xl font-bold text-destructive">{summary?.overdueInvoices || 0}</p>
+              <p className="text-xs text-muted-foreground mt-1">Require attention</p>
             </div>
-            <AlertTriangle className="h-8 w-8 text-red-500" />
+            <AlertTriangle className="h-5 w-5 text-destructive" />
           </div>
         </Card>
 
@@ -309,12 +310,12 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Cash Flow</p>
-              <p className={`text-2xl font-bold ${(summary?.cashFlow || 0) >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+              <p className={`text-2xl font-bold ${(summary?.cashFlow || 0) >= 0 ? 'text-success' : 'text-destructive'}`}>
                 {formatCurrency(summary?.cashFlow || 0, summary?.currency)}
               </p>
-              <p className="text-xs text-foreground/60 mt-1">This month</p>
+              <p className="text-xs text-muted-foreground">+12% from last month</p>
             </div>
-            <TrendingUp className="h-8 w-8 text-green-500" />
+            <TrendingUp className="h-8 w-8 text-primary" />
           </div>
         </Card>
       </div>
@@ -328,11 +329,11 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           </div>
           <div className="space-y-3">
             {budgetAlerts.map((alert) => (
-              <div key={alert.id} className="flex items-center justify-between p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <div key={alert.id} className="flex items-center justify-between p-3 bg-warning/10 border border-warning/20 rounded-lg">
                 <div className="flex items-center space-x-3">
-                  <AlertTriangle className={`h-5 w-5 ${alert.status === 'critical' ? 'text-red-500' : 'text-yellow-500'}`} />
+                  <AlertTriangle className={`h-5 w-5 ${alert.status === 'critical' ? 'text-destructive' : 'text-warning'}`} />
                   <div>
-                    <p className="font-medium text-foreground">{alert.budgetName}</p>
+                    <h4 className="font-medium text-warning">Budget Alert</h4>
                     <p className="text-sm text-foreground/70">
                       {formatCurrency(alert.spent)} of {formatCurrency(alert.amount)} spent ({alert.utilization.toFixed(1)}%)
                     </p>
@@ -359,23 +360,23 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               <div key={transaction.id} className="flex items-center justify-between p-3 border border-border rounded-lg">
                 <div className="flex items-center space-x-3">
                   {transaction.kind === 'revenue' ? (
-                    <ArrowUp className="h-4 w-4 text-green-500" />
+                    <ArrowUpRight className="h-4 w-4 text-success" />
                   ) : (
-                    <ArrowDown className="h-4 w-4 text-red-500" />
+                    <ArrowDownRight className="h-4 w-4 text-destructive" />
                   )}
                   <div>
                     <p className="font-medium text-foreground">{transaction.description}</p>
-                    <p className="text-sm text-foreground/70">{transaction.accountName} • {formatDate(transaction.occurredAt)}</p>
+                    <span className="text-xs text-warning/70">{transaction.accountName} • {formatDate(transaction.occurredAt)}</span>
                   </div>
                 </div>
-                <p className={`font-semibold ${transaction.kind === 'revenue' ? 'text-green-600' : 'text-red-600'}`}>
-                  {transaction.kind === 'revenue' ? '+' : '-'}{formatCurrency(Math.abs(transaction.amount))}
-                </p>
+                <span className={`text-sm font-medium ${
+                  transaction.kind === 'revenue' ? 'text-success' : 'text-destructive'
+                }`}>{transaction.kind === 'revenue' ? '+' : '-'}{formatCurrency(Math.abs(transaction.amount))}</span>
               </div>
             ))
           ) : (
-            <div className="text-center py-8 text-foreground/50">
-              <Calendar className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
+            <div className="bg-warning/10 border border-warning/20 rounded-lg p-4">
+              <Calendar className="h-12 w-12 mx-auto mb-4 text-muted-foreground/50" />
               <p>No recent transactions found</p>
             </div>
           )}

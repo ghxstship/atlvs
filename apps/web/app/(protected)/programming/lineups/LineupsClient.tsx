@@ -175,13 +175,13 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmed':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'tentative':
-        return 'text-yellow-600 bg-yellow-50';
+        return 'text-warning bg-warning/10';
       case 'cancelled':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive bg-destructive/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/10';
     }
   };
 

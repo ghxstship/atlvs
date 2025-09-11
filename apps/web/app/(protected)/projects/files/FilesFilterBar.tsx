@@ -66,14 +66,14 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
   }
 
   return (
-    <div className="mb-4 p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border" role="region" aria-label={t('filters.title')}>
+    <div className="mb-4 p-3 bg-muted/50 rounded-lg border" role="region" aria-label={t('filters.title')}>
       <div className="flex items-center gap-2 mb-2">
         <Filter className="h-4 w-4" />
         <span className="text-sm font-medium">{t('filters.title')}</span>
         {selectedTags.length > 0 && (
           <button
             onClick={clearAllTags}
-            className="text-xs text-gray-600 hover:text-gray-800 dark:text-gray-400 dark:hover:text-gray-200"
+            className="text-xs text-muted-foreground hover:text-foreground"
             aria-label={t('filters.clearAll')}
           >
             {t('filters.clearAll')}
@@ -84,7 +84,7 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
       {loading ? (
         <div className="flex gap-2">
           {[1, 2, 3].map(i => (
-            <div key={i} className="h-6 w-16 bg-gray-200 dark:bg-gray-700 rounded animate-pulse" />
+            <div key={i} className="h-6 w-16 bg-muted rounded animate-pulse" />
           ))}
         </div>
       ) : (
@@ -97,8 +97,8 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
                 onClick={() => toggleTag(tag.tag)}
                 className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs border transition-colors ${
                   isSelected
-                    ? 'bg-blue-100 border-blue-300 text-blue-800 dark:bg-blue-900 dark:border-blue-600 dark:text-blue-200'
-                    : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-600'
+                    ? 'bg-primary/10 border-primary/30 text-primary'
+                    : 'bg-background border-border text-foreground hover:bg-muted/50'
                 }`}
                 aria-pressed={isSelected}
                 aria-label={`${isSelected ? t('filters.remove') : t('filters.add')} ${tag.tag}`}

@@ -127,12 +127,12 @@ export default function CreateAccountClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Account Overview */}
-        <Card className="p-4 bg-indigo-50 border-indigo-200">
+        <Card className="p-4 bg-primary/5 border-primary/20">
           <div className="flex items-center space-x-3">
-            <Building2 className="h-8 w-8 text-indigo-600" />
+            <Building2 className="h-8 w-8 text-primary" />
             <div>
-              <h3 className="font-semibold text-indigo-900">Account Management</h3>
-              <p className="text-sm text-indigo-700">
+              <h3 className="font-semibold text-primary">Account Management</h3>
+              <p className="text-sm text-primary/80">
                 Add financial accounts to track balances and transactions
               </p>
             </div>
@@ -205,7 +205,7 @@ export default function CreateAccountClient({
 
           {/* Bank-specific fields */}
           {shouldShowBankFields && (
-            <div className="space-y-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <div className="space-y-4 p-4 bg-muted/50 rounded-lg border">
               <h4 className="font-medium text-foreground flex items-center space-x-2">
                 <Building2 className="h-4 w-4" />
                 <span>Bank Details</span>
@@ -255,7 +255,7 @@ export default function CreateAccountClient({
 
         {/* Account Preview */}
         {formData.name && (
-          <Card className="p-4 bg-gray-50 border-gray-200">
+          <Card className="p-4 bg-muted/50">
             <h4 className="font-medium text-foreground mb-2">Account Preview</h4>
             <div className="flex items-center space-x-3">
               <div className="text-foreground/70">

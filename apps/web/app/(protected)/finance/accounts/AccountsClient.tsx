@@ -200,31 +200,31 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     switch (kind) {
       case 'checking':
       case 'savings':
-        return <Building2 className="h-6 w-6 text-blue-500" />;
+        return <Building2 className="h-6 w-6 text-primary" />;
       case 'credit':
-        return <CreditCard className="h-6 w-6 text-purple-500" />;
+        return <CreditCard className="h-6 w-6 text-secondary" />;
       case 'investment':
-        return <TrendingUp className="h-6 w-6 text-green-500" />;
+        return <TrendingUp className="h-6 w-6 text-success" />;
       case 'cash':
-        return <Banknote className="h-6 w-6 text-yellow-500" />;
+        return <Banknote className="h-6 w-6 text-warning" />;
       default:
-        return <DollarSign className="h-6 w-6 text-gray-500" />;
+        return <DollarSign className="h-6 w-6 text-muted-foreground" />;
     }
   };
 
   const getReconciliationStatus = (account: Account) => {
     if (!account.last_reconciled_at) {
-      return { status: 'never', color: 'text-gray-500', label: 'Never Reconciled' };
+      return { status: 'never', color: 'text-muted-foreground', label: 'Never Reconciled' };
     }
 
     const daysSince = Math.floor((Date.now() - new Date(account.last_reconciled_at).getTime()) / (1000 * 60 * 60 * 24));
     
     if (daysSince <= 7) {
-      return { status: 'recent', color: 'text-green-600', label: 'Recently Reconciled' };
+      return { status: 'recent', color: 'text-success', label: 'Recently Reconciled' };
     } else if (daysSince <= 30) {
-      return { status: 'moderate', color: 'text-yellow-600', label: 'Needs Reconciliation' };
+      return { status: 'moderate', color: 'text-warning', label: 'Needs Reconciliation' };
     } else {
-      return { status: 'overdue', color: 'text-red-600', label: 'Overdue for Reconciliation' };
+      return { status: 'overdue', color: 'text-destructive', label: 'Overdue for Reconciliation' };
     }
   };
 
@@ -362,7 +362,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                 <p className="text-2xl font-bold text-foreground">{accounts.length}</p>
                 <p className="text-xs text-foreground/60">{activeAccounts.length} active</p>
               </div>
-              <Building2 className="h-8 w-8 text-blue-500" />
+              <Building2 className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -370,11 +370,11 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Balance</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(totalBalance)}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-500" />
+              <DollarSign className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -382,10 +382,10 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Needs Reconciliation</p>
-                <p className="text-2xl font-bold text-yellow-600">{needsReconciliation.length}</p>
+                <p className="text-2xl font-bold text-warning">{needsReconciliation.length}</p>
                 <p className="text-xs text-foreground/60">accounts overdue</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-yellow-500" />
+              <AlertTriangle className="h-8 w-8 text-warning" />
             </div>
           </Card>
           
@@ -393,11 +393,11 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Average Balance</p>
-                <p className="text-2xl font-bold text-purple-600">
+                <p className="text-2xl font-bold text-secondary">
                   {formatCurrency(accounts.length > 0 ? totalBalance / accounts.length : 0)}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-purple-500" />
+              <TrendingUp className="h-8 w-8 text-secondary" />
             </div>
           </Card>
         </div>
@@ -427,7 +427,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                   <div className="space-y-3 mb-4">
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">Balance</span>
-                      <span className="font-medium text-green-600">{formatCurrency(account.balance, account.currency)}</span>
+                      <span className="font-medium text-success">{formatCurrency(account.balance, account.currency)}</span>
                     </div>
                     
                     {account.bank_name && (
@@ -447,7 +447,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     {balanceDiff !== null && (
                       <div className="flex justify-between text-sm">
                         <span className="text-foreground/70">Difference</span>
-                        <span className={`font-medium ${balanceDiff === 0 ? 'text-green-600' : balanceDiff > 0 ? 'text-blue-600' : 'text-red-600'}`}>
+                        <span className={`font-medium ${balanceDiff === 0 ? 'text-success' : balanceDiff > 0 ? 'text-primary' : 'text-destructive'}`}>
                           {balanceDiff === 0 ? 'Balanced' : formatCurrency(Math.abs(balanceDiff))}
                         </span>
                       </div>
@@ -459,7 +459,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleReconcileAccount(account);
                         }}
@@ -473,7 +473,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleEditAccount(account);
                         }}
@@ -483,7 +483,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleDeleteAccount(account.id);
                         }}

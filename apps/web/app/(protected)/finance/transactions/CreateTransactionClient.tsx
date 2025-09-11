@@ -162,12 +162,12 @@ export default function CreateTransactionClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Transaction Overview */}
-        <Card className="p-4 bg-blue-50 border-blue-200">
+        <Card className="p-4 bg-primary/10 border-primary/20">
           <div className="flex items-center space-x-3">
-            <ArrowUpDown className="h-8 w-8 text-blue-600" />
+            <ArrowUpDown className="h-8 w-8 text-primary" />
             <div>
-              <h3 className="font-semibold text-blue-900">Transaction Entry</h3>
-              <p className="text-sm text-blue-700">
+              <h3 className="font-semibold text-primary-foreground">Transaction Entry</h3>
+              <p className="text-sm text-primary/80">
                 Record financial transactions and update account balances
               </p>
             </div>
@@ -315,18 +315,18 @@ export default function CreateTransactionClient({
 
         {/* Transaction Summary */}
         {formData.amount !== 0 && formData.accountId && (
-          <Card className="p-4 bg-gray-50 border-gray-200">
+          <Card className="p-4 bg-muted border-border">
             <h4 className="font-medium text-foreground mb-2">Transaction Summary</h4>
             <div className="space-y-1 text-sm">
               <div className="flex justify-between">
                 <span className="text-foreground/70">Type:</span>
-                <span className={`font-medium capitalize ${formData.kind === 'revenue' ? 'text-green-600' : 'text-red-600'}`}>
+                <span className={`font-medium capitalize ${formData.kind === 'revenue' ? 'text-success' : 'text-destructive'}`}>
                   {formData.kind} ({formData.kind === 'revenue' ? 'Money In' : 'Money Out'})
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-foreground/70">Amount:</span>
-                <span className={`font-medium ${formData.kind === 'revenue' ? 'text-green-600' : 'text-red-600'}`}>
+                <span className={`font-medium ${formData.kind === 'revenue' ? 'text-success' : 'text-destructive'}`}>
                   {formData.kind === 'revenue' ? '+' : '-'}{formatCurrency(Math.abs(formData.amount))}
                 </span>
               </div>

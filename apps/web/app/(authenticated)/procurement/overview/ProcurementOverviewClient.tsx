@@ -174,21 +174,21 @@ export default function ProcurementOverviewClient() {
   const getChangeIndicator = (value: number) => {
     if (value > 0) {
       return (
-        <span className="flex items-center text-green-600 text-sm">
+        <span className="flex items-center text-success text-sm">
           <ArrowUpRight className="w-4 h-4" />
           {Math.abs(value)}%
         </span>
       );
     } else if (value < 0) {
       return (
-        <span className="flex items-center text-red-600 text-sm">
+        <span className="flex items-center text-destructive text-sm">
           <ArrowDownRight className="w-4 h-4" />
           {Math.abs(value)}%
         </span>
       );
     }
     return (
-      <span className="flex items-center text-gray-600 text-sm">
+      <span className="flex items-center text-muted-foreground text-sm">
         <Minus className="w-4 h-4" />
         0%
       </span>
@@ -251,7 +251,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-2xl font-bold">{formatCurrency(stats.monthlySpend)}</p>
                 {getChangeIndicator(-8)}
               </div>
-              <DollarSign className="w-8 h-8 text-green-600" />
+              <DollarSign className="w-8 h-8 text-success" />
             </div>
           </CardContent>
         </Card>
@@ -266,7 +266,7 @@ export default function ProcurementOverviewClient() {
                   {stats.pendingApprovals} awaiting approval
                 </p>
               </div>
-              <Clock className="w-8 h-8 text-orange-500" />
+              <Clock className="w-8 h-8 text-warning" />
             </div>
           </CardContent>
         </Card>
@@ -277,9 +277,9 @@ export default function ProcurementOverviewClient() {
               <div>
                 <p className="text-sm text-muted-foreground">Savings</p>
                 <p className="text-2xl font-bold">{formatCurrency(stats.savingsThisMonth)}</p>
-                <p className="text-sm text-green-600">This month</p>
+                <p className="text-sm text-success">This month</p>
               </div>
-              <TrendingUp className="w-8 h-8 text-blue-600" />
+              <TrendingUp className="w-8 h-8 text-primary" />
             </div>
           </CardContent>
         </Card>
@@ -378,7 +378,7 @@ export default function ProcurementOverviewClient() {
                     {formatCurrency(category.spend)} ({category.percentage.toFixed(1)}%)
                   </span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-2">
+                <div className="w-full bg-muted rounded-full h-2">
                   <div
                     className="bg-primary h-2 rounded-full transition-all"
                     style={{ width: `${category.percentage}%` }}

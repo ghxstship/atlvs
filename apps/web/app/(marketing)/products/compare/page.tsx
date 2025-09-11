@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Check, X, Zap, Users, Globe, Star, Shield, Clock, DollarSign } from 'lucide-react';
+import { ArrowRight, Check, CheckCircle, X, Minus, Zap, Users, Globe, Star, Shield, Clock, DollarSign } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
@@ -112,7 +112,7 @@ export default function ComparePage() {
                 CHOOSE YOUR PATH
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-success/80 text-sm max-w-3xl mx-auto">
               Compare our flagship products side-by-side to find the perfect solution 
               for your creative workflow and business needs.
             </p>
@@ -132,7 +132,7 @@ export default function ComparePage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-16">
+          <div className="bg-success/10 border border-success/20 rounded-lg p-4 mb-6">
             {productOverview.map((product) => (
               <Card key={product.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
@@ -155,7 +155,7 @@ export default function ComparePage() {
                       <div className="space-y-2">
                         {product.strengths.map((strength) => (
                           <div key={strength} className="flex items-center gap-2">
-                            <Check className="h-4 w-4 text-green-500 flex-shrink-0" />
+                            <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
                             <span className="text-sm">{strength}</span>
                           </div>
                         ))}

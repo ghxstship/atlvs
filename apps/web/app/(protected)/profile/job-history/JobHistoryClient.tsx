@@ -254,8 +254,8 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <Briefcase className="h-6 w-6 text-blue-600" />
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <Briefcase className="h-6 w-6 text-primary" />
                     </div>
                     
                     <div>
@@ -436,7 +436,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 type="checkbox"
                 id="is_current"
                 {...form.register('is_current')}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label htmlFor="is_current" className="text-sm font-medium">
                 This is my current job

@@ -220,8 +220,8 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
       >
         <form id="network-connection-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-teal-100 rounded-lg">
-              <Users className="h-5 w-5 text-teal-600" />
+            <div className="p-2 bg-secondary/10 rounded-lg">
+              <Users className="h-5 w-5 text-secondary" />
             </div>
             <div>
               <h3 className="font-medium">Network Connection Information</h3>
@@ -249,7 +249,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                   ))}
                 </select>
                 {errors.personId && (
-                  <p className="text-sm text-red-600 mt-1">{errors.personId.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.personId.message}</p>
                 )}
               </div>
 
@@ -269,7 +269,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                   ))}
                 </select>
                 {errors.connectedPersonId && (
-                  <p className="text-sm text-red-600 mt-1">{errors.connectedPersonId.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.connectedPersonId.message}</p>
                 )}
               </div>
             </div>
@@ -349,9 +349,9 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
             </div>
           </div>
 
-          <div className="bg-teal-50 p-4 rounded-lg">
-            <h4 className="font-medium text-teal-900 mb-2">Network Guidelines</h4>
-            <ul className="text-sm text-teal-800 space-y-1">
+          <div className="bg-secondary/10 p-4 rounded-lg">
+            <h4 className="font-medium text-secondary mb-2">Network Guidelines</h4>
+            <ul className="text-sm text-secondary/80 space-y-1">
               <li>• Document meaningful professional relationships</li>
               <li>• Use appropriate relationship types for clarity</li>
               <li>• Consider connection strength based on frequency and depth of interaction</li>

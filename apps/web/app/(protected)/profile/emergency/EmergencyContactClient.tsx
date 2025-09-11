@@ -180,8 +180,8 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
               <div className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="p-2 bg-red-100 rounded-lg">
-                      <AlertTriangle className="h-6 w-6 text-red-600" />
+                    <div className="p-2 bg-destructive/10 rounded-lg">
+                      <AlertTriangle className="h-6 w-6 text-destructive" />
                     </div>
                     
                     <div>
@@ -332,7 +332,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                 type="checkbox"
                 id="is_primary"
                 {...form.register('is_primary')}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label htmlFor="is_primary" className="text-sm font-medium">
                 Set as primary emergency contact

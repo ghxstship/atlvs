@@ -216,17 +216,17 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
   const getSizeIcon = (size?: string) => {
     switch (size) {
       case 'startup':
-        return <Users className="h-4 w-4 text-green-500" />;
+        return <Users className="h-4 w-4 text-success" />;
       case 'small':
-        return <Users className="h-4 w-4 text-blue-500" />;
+        return <Users className="h-4 w-4 text-primary" />;
       case 'medium':
-        return <Users className="h-4 w-4 text-yellow-500" />;
+        return <Users className="h-4 w-4 text-warning" />;
       case 'large':
-        return <Users className="h-4 w-4 text-orange-500" />;
+        return <Users className="h-4 w-4 text-secondary" />;
       case 'enterprise':
-        return <Users className="h-4 w-4 text-red-500" />;
+        return <Users className="h-4 w-4 text-destructive" />;
       default:
-        return <Building2 className="h-4 w-4 text-gray-500" />;
+        return <Building2 className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
@@ -470,7 +470,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <Card key={company.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewCompany(company)}>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <Building2 className="h-8 w-8 text-blue-500" />
+                    <Building2 className="h-8 w-8 text-primary" />
                     <div>
                       <h3 className="font-semibold text-foreground">{company.name}</h3>
                       <p className="text-sm text-foreground/70 capitalize">{company.industry}</p>
@@ -489,7 +489,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                   {company.website && (
                     <div className="flex items-center space-x-2 text-sm">
                       <Globe className="h-4 w-4 text-foreground/50" />
-                      <span className="text-blue-600 hover:underline">{company.website}</span>
+                      <span className="text-primary hover:underline">{company.website}</span>
                     </div>
                   )}
                   
@@ -533,7 +533,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleEditCompany(company);
                       }}
@@ -543,7 +543,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleDeleteCompany(company.id);
                       }}

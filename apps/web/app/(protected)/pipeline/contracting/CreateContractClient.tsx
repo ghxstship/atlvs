@@ -187,8 +187,8 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
       >
         <form id="contract-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-orange-100 rounded-lg">
-              <FileText className="h-5 w-5 text-orange-600" />
+            <div className="p-2 bg-warning/10 rounded-lg">
+              <FileText className="h-5 w-5 text-warning" />
             </div>
             <div>
               <h3 className="font-medium">Contract Information</h3>
@@ -472,9 +472,9 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
           </div>
 
-          <div className="bg-orange-50 p-4 rounded-lg">
-            <h4 className="font-medium text-orange-900 mb-2">Contract Guidelines</h4>
-            <ul className="text-sm text-orange-800 space-y-1">
+          <div className="bg-warning/5 p-4 rounded-lg">
+            <h4 className="font-medium text-warning mb-2">Contract Guidelines</h4>
+            <ul className="text-sm text-warning/80 space-y-1">
               <li>• Clearly define scope of work and deliverables to avoid disputes</li>
               <li>• Include payment terms, invoicing requirements, and termination clauses</li>
               <li>• Specify confidentiality and exclusivity requirements as needed</li>

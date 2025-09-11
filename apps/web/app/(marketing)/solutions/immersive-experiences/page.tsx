@@ -112,7 +112,7 @@ export default function ImmersiveExperiencesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-cyan-500/5 via-background to-blue-500/5">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-primary/5">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -123,7 +123,7 @@ export default function ImmersiveExperiencesPage() {
                 <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
                   BUILD THE
                   <br />
-                  <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                     FUTURE OF
                   </span>
                   <br />
@@ -174,9 +174,9 @@ export default function ImmersiveExperiencesPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
@@ -189,7 +189,7 @@ export default function ImmersiveExperiencesPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-lg font-bold uppercase`}>QUANTUM WORLDS VR</h3>
-                    <Badge variant="outline" className="text-green-600 border-green-600">
+                    <Badge variant="outline" className="text-success border-success">
                       Live
                     </Badge>
                   </div>
@@ -199,8 +199,8 @@ export default function ImmersiveExperiencesPage() {
                       <div className="text-xs text-muted-foreground mb-1">Active Users</div>
                       <div className="font-semibold">2.5K</div>
                       <div className="flex items-center gap-1 mt-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-green-500">Live</span>
+                        <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
+                        <span className="text-xs text-success">Live</span>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -208,7 +208,7 @@ export default function ImmersiveExperiencesPage() {
                       <div className="font-semibold">8</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="w-3 h-3 bg-cyan-500 rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function ImmersiveExperiencesPage() {
                       <div className="text-xs text-muted-foreground mb-1">Engagement</div>
                       <div className="font-semibold">94%</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-cyan-500 h-1 rounded-full w-11/12"></div>
+                        <div className="bg-primary h-1 rounded-full w-11/12"></div>
                       </div>
                     </div>
                   </div>
@@ -224,9 +224,9 @@ export default function ImmersiveExperiencesPage() {
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground">Platform Performance</div>
                     {[
-                      { platform: 'Oculus Quest', performance: '98%', color: 'bg-green-500' },
-                      { platform: 'Steam VR', performance: '95%', color: 'bg-blue-500' },
-                      { platform: 'PlayStation VR', performance: '92%', color: 'bg-purple-500' },
+                      { platform: 'Oculus Quest', performance: '98%', color: 'bg-success' },
+                      { platform: 'Steam VR', performance: '95%', color: 'bg-primary' },
+                      { platform: 'PlayStation VR', performance: '92%', color: 'bg-secondary' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-xs">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
@@ -237,10 +237,10 @@ export default function ImmersiveExperiencesPage() {
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Gamepad2 className="w-4 h-4 text-cyan-500" />
+                    <Gamepad2 className="w-4 h-4 text-primary" />
                     <span className="text-xs font-medium">Next Update: Enhanced Physics Engine</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -269,14 +269,14 @@ export default function ImmersiveExperiencesPage() {
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-primary">
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
                         <p className="text-muted-foreground mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
                           <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
                         </div>
                       </div>

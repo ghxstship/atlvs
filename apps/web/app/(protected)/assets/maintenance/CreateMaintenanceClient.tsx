@@ -195,7 +195,7 @@ export default function CreateMaintenanceClient({
         {/* Asset & Type */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Wrench className="h-5 w-5 text-blue-600" />
+            <Wrench className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Asset & Maintenance Type</h3>
           </div>
           
@@ -268,7 +268,7 @@ export default function CreateMaintenanceClient({
         {/* Scheduling */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-green-600" />
+            <Calendar className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Scheduling</h3>
           </div>
           
@@ -313,7 +313,7 @@ export default function CreateMaintenanceClient({
         {/* Description & Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Wrench className="h-5 w-5 text-purple-600" />
+            <Wrench className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Description & Details</h3>
           </div>
           
@@ -347,7 +347,7 @@ export default function CreateMaintenanceClient({
         {/* Cost Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-orange-600" />
+            <DollarSign className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Cost Information</h3>
           </div>
           

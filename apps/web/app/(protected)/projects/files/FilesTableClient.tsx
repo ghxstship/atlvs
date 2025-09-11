@@ -161,7 +161,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         description={saving ? 'Saving…' : undefined}
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <div className="mb-3 flex items-center gap-2">
           <FileText className="h-4 w-4" />
           <div className="text-xs opacity-70">{current?.path}</div>

@@ -143,19 +143,19 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-warning/10 text-warning';
       case 'in_progress':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'compliant':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'non_compliant':
-        return 'bg-red-100 text-red-800';
+        return 'bg-destructive/10 text-destructive';
       case 'expired':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-warning/10 text-warning';
       case 'waived':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -181,36 +181,36 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'low':
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
       case 'medium':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'high':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-warning/10 text-warning';
       case 'critical':
-        return 'bg-red-100 text-red-800';
+        return 'bg-destructive/10 text-destructive';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
   const getKindColor = (kind: string) => {
     switch (kind) {
       case 'regulatory':
-        return 'bg-purple-100 text-purple-800';
+        return 'bg-secondary/10 text-secondary';
       case 'safety':
-        return 'bg-red-100 text-red-800';
+        return 'bg-destructive/10 text-destructive';
       case 'quality':
-        return 'bg-blue-100 text-blue-800';
+        return 'bg-primary/10 text-primary';
       case 'security':
-        return 'bg-indigo-100 text-indigo-800';
+        return 'bg-primary/10 text-primary';
       case 'environmental':
-        return 'bg-green-100 text-green-800';
+        return 'bg-success/10 text-success';
       case 'legal':
-        return 'bg-yellow-100 text-yellow-800';
+        return 'bg-warning/10 text-warning';
       case 'financial':
-        return 'bg-orange-100 text-orange-800';
+        return 'bg-warning/10 text-warning';
       default:
-        return 'bg-gray-100 text-gray-800';
+        return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -298,51 +298,51 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
               <p className="text-sm font-medium text-foreground/70">Total Items</p>
               <p className="text-2xl font-bold text-foreground">{compliance.length}</p>
             </div>
-            <ShieldCheckIcon className="h-8 w-8 text-blue-500" />
+            <ShieldCheckIcon className="h-8 w-8 text-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Compliant</p>
-              <p className="text-2xl font-bold text-green-600">
+              <p className="text-2xl font-bold text-success">
                 {compliance.filter(c => c.status === 'compliant').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-green-500" />
+            <CheckCircleIcon className="h-8 w-8 text-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Non-Compliant</p>
-              <p className="text-2xl font-bold text-red-600">
+              <p className="text-2xl font-bold text-destructive">
                 {compliance.filter(c => c.status === 'non_compliant').length}
               </p>
             </div>
-            <XCircleIcon className="h-8 w-8 text-red-500" />
+            <XCircleIcon className="h-8 w-8 text-destructive" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Overdue</p>
-              <p className="text-2xl font-bold text-orange-600">
+              <p className="text-2xl font-bold text-warning">
                 {compliance.filter(c => isOverdue(c.due_at)).length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 text-orange-500" />
+            <ExclamationTriangleIcon className="h-8 w-8 text-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-foreground/70">Critical</p>
-              <p className="text-2xl font-bold text-purple-600">
+              <p className="text-2xl font-bold text-secondary">
                 {compliance.filter(c => c.priority === 'critical').length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 text-purple-500" />
+            <ExclamationTriangleIcon className="h-8 w-8 text-secondary" />
           </div>
         </Card>
       </div>
@@ -373,7 +373,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             const isDue = isDueSoon(item.due_at);
 
             return (
-              <Card key={item.id} className={`p-6 hover:shadow-md transition-shadow ${isLate ? 'border-red-200 bg-red-50/30' : isDue ? 'border-yellow-200 bg-yellow-50/30' : ''}`}>
+              <Card key={item.id} className={`p-6 hover:shadow-md transition-shadow ${isLate ? 'border-destructive/20 bg-destructive/5' : isDue ? 'border-warning/20 bg-warning/5' : ''}`}>
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
@@ -382,7 +382,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                           <StatusIcon className="h-5 w-5 text-foreground/60" />
                           {item.title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-red-500' : 'text-yellow-500'}`} />
+                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-destructive' : 'text-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-2 text-sm text-foreground/70">
@@ -415,7 +415,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
 
                     <div className="flex items-center gap-6 text-sm text-foreground/70 mb-3">
                       {item.due_at && (
-                        <div className={`flex items-center gap-1 ${isLate ? 'text-red-600' : isDue ? 'text-yellow-600' : ''}`}>
+                        <div className={`flex items-center gap-1 ${isLate ? 'text-destructive' : isDue ? 'text-warning' : ''}`}>
                           <CalendarIcon className="h-4 w-4" />
                           <span>
                             {isLate ? 'Overdue: ' : 'Due: '}
@@ -424,7 +424,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                         </div>
                       )}
                       {item.completed_at && (
-                        <div className="flex items-center gap-1 text-green-600">
+                        <div className="flex items-center gap-1 text-success">
                           <CheckCircleIcon className="h-4 w-4" />
                           <span>Completed: {new Date(item.completed_at).toLocaleDateString()}</span>
                         </div>

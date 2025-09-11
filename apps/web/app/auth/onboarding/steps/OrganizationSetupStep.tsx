@@ -264,8 +264,8 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             )}
 
             {error && (
-              <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
               </div>
             )}
           </CardContent>

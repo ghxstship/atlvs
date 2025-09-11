@@ -41,11 +41,11 @@ interface OnboardingClientProps {
 }
 
 const TASK_CATEGORIES = [
-  { id: 'documentation', name: 'Documentation', icon: FileText, color: 'bg-blue-500' },
-  { id: 'training', name: 'Training', icon: User, color: 'bg-green-500' },
-  { id: 'equipment', name: 'Equipment', icon: Briefcase, color: 'bg-purple-500' },
-  { id: 'access', name: 'Access & Credentials', icon: Shield, color: 'bg-orange-500' },
-  { id: 'compliance', name: 'Compliance', icon: AlertCircle, color: 'bg-red-500' }
+  { id: 'documentation', name: 'Documentation', icon: FileText, color: 'bg-info' },
+  { id: 'training', name: 'Training', icon: User, color: 'bg-success' },
+  { id: 'equipment', name: 'Equipment', icon: Briefcase, color: 'bg-secondary' },
+  { id: 'access', name: 'Access & Credentials', icon: Shield, color: 'bg-warning' },
+  { id: 'compliance', name: 'Compliance', icon: AlertCircle, color: 'bg-destructive' }
 ] as const;
 
 const DEFAULT_TASKS: Omit<OnboardingTask, 'id'>[] = [
@@ -271,7 +271,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
 
   const getCategoryColor = (category: OnboardingTask['category']) => {
     const categoryInfo = TASK_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-gray-500';
+    return categoryInfo?.color || 'bg-muted-foreground';
   };
 
   return (
@@ -299,7 +299,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <select
                     value={formData.personId}
                     onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select person...</option>
@@ -315,7 +315,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <select
                     value={formData.projectId}
                     onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select project...</option>
@@ -391,9 +391,9 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <div className="flex items-center gap-4">
                     <div className="text-right">
                       <div className="text-sm font-medium">{workflow.progress}%</div>
-                      <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
+                      <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-blue-500 transition-all"
+                          className="h-full bg-primary transition-all"
                           style={{ width: `${workflow.progress}%` }}
                         />
                       </div>
@@ -413,19 +413,19 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                           onClick={() => toggleTaskCompletion(workflow.id, task.id)}
                           className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                             task.completed 
-                              ? 'bg-green-500 border-green-500 text-white' 
-                              : 'border-gray-300 hover:border-green-500'
+                              ? 'bg-success border-success text-success-foreground' 
+                              : 'border-border hover:border-success'
                           }`}
                         >
                           {task.completed && <CheckCircle className="w-3 h-3" />}
                         </button>
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getCategoryColor(task.category)}`}>
-                          <IconComponent className="w-4 h-4 text-white" />
+                          <IconComponent className="w-4 h-4 text-primary-foreground" />
                         </div>
                         <div className="flex-1">
                           <div className={`font-medium ${task.completed ? 'line-through text-muted-foreground' : ''}`}>
                             {task.name}
-                            {task.required && <span className="text-red-500 ml-1">*</span>}
+                            {task.required && <span className="text-destructive ml-1">*</span>}
                           </div>
                           {task.description && (
                             <div className="text-sm text-muted-foreground">{task.description}</div>

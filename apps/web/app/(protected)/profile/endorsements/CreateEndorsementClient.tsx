@@ -113,7 +113,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
@@ -129,7 +129,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_name} 
             />
             {form.formState.errors.endorser_name ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.endorser_name.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_name.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -142,7 +142,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_title} 
             />
             {form.formState.errors.endorser_title ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.endorser_title.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_title.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -155,7 +155,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_company} 
             />
             {form.formState.errors.endorser_company ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.endorser_company.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_company.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -176,7 +176,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               <option value="other">Other</option>
             </select>
             {form.formState.errors.relationship ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.relationship.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.relationship.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -190,7 +190,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.skills_endorsed} 
             />
             {form.formState.errors.skills_endorsed ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.skills_endorsed.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.skills_endorsed.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -204,7 +204,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorsement_text} 
             />
             {form.formState.errors.endorsement_text ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.endorsement_text.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.endorsement_text.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">

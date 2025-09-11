@@ -177,11 +177,11 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         <div className="flex items-start justify-between">
           <div className="flex items-start space-x-4">
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-2xl font-bold">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground text-2xl font-bold">
                 {profile?.display_name?.charAt(0) || 'V'}
               </div>
               {profile?.verified && (
-                <div className="absolute -bottom-1 -right-1 bg-green-500 rounded-full p-1">
+                <div className="absolute -bottom-1 -right-1 bg-success rounded-full p-1">
                   <CheckCircle className="h-5 w-5 text-white" />
                 </div>
               )}
@@ -194,7 +194,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                   {profile?.availability_status || 'Available'}
                 </Badge>
                 <div className="flex items-center">
-                  <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-4 w-4 text-warning fill-warning" />
                   <span className="ml-1 text-sm">{profile?.rating || 0} ({profile?.total_reviews || 0} reviews)</span>
                 </div>
               </div>
@@ -216,7 +216,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-sm font-medium">Business Name</label>
                 <Input {...register('business_name')} placeholder="Your business name" />
                 {errors.business_name && (
-                  <p className="text-sm text-red-500 mt-1">{errors.business_name.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.business_name.message}</p>
                 )}
               </div>
 
@@ -241,7 +241,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-sm font-medium">Display Name</label>
                 <Input {...register('display_name')} placeholder="Public display name" />
                 {errors.display_name && (
-                  <p className="text-sm text-red-500 mt-1">{errors.display_name.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.display_name.message}</p>
                 )}
               </div>
 
@@ -249,7 +249,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-sm font-medium">Email</label>
                 <Input {...register('email')} type="email" placeholder="contact@example.com" />
                 {errors.email && (
-                  <p className="text-sm text-red-500 mt-1">{errors.email.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
                 )}
               </div>
 
@@ -408,7 +408,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <div className="flex items-center">
                   <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
                   <a href={profile.website as any} target="_blank" rel="noopener noreferrer" 
-                     className="text-sm text-blue-600 hover:underline">
+                     className="text-sm text-primary hover:underline">
                     Website
                   </a>
                 </div>
@@ -428,9 +428,9 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               <div className="space-y-2">
                 <div className="flex items-center">
                   {profile?.verified ? (
-                    <CheckCircle className="h-4 w-4 mr-2 text-green-500" />
+                    <CheckCircle className="h-4 w-4 mr-2 text-success" />
                   ) : (
-                    <AlertCircle className="h-4 w-4 mr-2 text-yellow-500" />
+                    <AlertCircle className="h-4 w-4 mr-2 text-warning" />
                   )}
                   <span className="text-sm">
                     {profile?.verified ? 'Verified Vendor' : 'Pending Verification'}

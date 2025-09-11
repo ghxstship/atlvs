@@ -3,7 +3,9 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Badge, Input } from '@ghxstship/ui';
+import { CategoryBadge } from '../../components/ui/ColoredBadge';
+import { StandardButton, animationPresets } from '../../components/ui';
 import { Tag, Search, Filter, Package, Wrench, Edit } from 'lucide-react';
 
 interface Category {
@@ -80,11 +82,11 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
     setFilteredCategories(filtered);
   };
 
-  const getStatusColor = (status: Category['status']) => {
+  const getStatusVariant = (status: Category['status']) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'inactive': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': return 'success';
+      case 'inactive': return 'secondary';
+      default: return 'secondary';
     }
   };
 
@@ -172,36 +174,32 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredCategories.map((category) => (
-            <div
+            <Card
               key={category.id}
-              className="border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
+              className={`p-6 ${animationPresets.cardInteractive}`}
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div 
-                    className="p-2 rounded-lg"
-                    style={{ 
-                      backgroundColor: category.color ? `${category.color}20` : '#f3f4f6',
-                      color: category.color || '#6b7280'
-                    }}
-                  >
-                    {getTypeIcon(category.type)}
-                  </div>
+                  <CategoryBadge
+                    category={category}
+                    variant="subtle"
+                  />
                   <div>
                     <h3 className="font-medium">{category.name}</h3>
                     <div className="flex items-center gap-2 mt-1">
-                      <Badge className={getStatusColor(category.status)}>
+                      <Badge variant={getStatusVariant(category.status) === 'success' ? 'default' : 'secondary'}>
                         {category.status}
                       </Badge>
                       <Badge variant="outline">
-                        {getTypeLabel(category.type)}
+                        {getTypeIcon(category.type)}
+                        <span className="ml-1">{getTypeLabel(category.type)}</span>
                       </Badge>
                     </div>
                   </div>
                 </div>
-                <Button>
+                <StandardButton variant="ghost" size="sm">
                   <Edit className="h-4 w-4" />
-                </Button>
+                </StandardButton>
               </div>
 
               {category.description && (
@@ -218,7 +216,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
                   Created {new Date(category.created_at).toLocaleDateString()}
                 </span>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
       )}

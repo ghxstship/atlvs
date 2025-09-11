@@ -165,8 +165,8 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
       >
         <form id="competency-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <Award className="h-5 w-5 text-purple-600" />
+            <div className="p-2 bg-secondary/10 rounded-lg">
+              <Award className="h-5 w-5 text-secondary" />
             </div>
             <div>
               <h3 className="font-medium">Competency Information</h3>
@@ -261,9 +261,9 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
             </div>
           </div>
 
-          <div className="bg-purple-50 p-4 rounded-lg">
-            <h4 className="font-medium text-purple-900 mb-2">Competency Guidelines</h4>
-            <ul className="text-sm text-purple-800 space-y-1">
+          <div className="bg-secondary/10 p-4 rounded-lg">
+            <h4 className="font-medium text-secondary mb-2">Competency Guidelines</h4>
+            <ul className="text-sm text-secondary/80 space-y-1">
               <li>• Use clear, specific names that are easily understood</li>
               <li>• Define measurable criteria for each proficiency level</li>
               <li>• Consider both technical skills and soft skills</li>

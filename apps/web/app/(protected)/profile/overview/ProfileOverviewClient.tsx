@@ -226,22 +226,22 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="w-full bg-muted rounded-full h-2 mb-4">
               <div 
-                className="bg-blue-600 h-2 rounded-full transition-all duration-300" 
+                className="bg-primary h-2 rounded-full transition-all duration-300" 
                 style={{ width: `${profile?.profile_completion_percentage || 0}%` }}
               ></div>
             </div>
             
             <div className="space-y-2 text-sm">
               <div className="flex items-center gap-2 text-muted-foreground">
-                <CheckCircle className="h-4 w-4 text-green-500" />
+                <CheckCircle className="h-4 w-4 text-success" />
                 <span>Basic information completed</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <AlertCircle className="h-4 w-4 text-yellow-500" />
+                <AlertCircle className="h-4 w-4 text-warning" />
                 <span>Add professional certifications</span>
               </div>
               <div className="flex items-center gap-2 text-muted-foreground">
-                <AlertCircle className="h-4 w-4 text-yellow-500" />
+                <AlertCircle className="h-4 w-4 text-warning" />
                 <span>Complete job history</span>
               </div>
             </div>
@@ -255,14 +255,14 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-4 bg-muted/50 rounded-lg">
-                <div className="text-2xl font-bold text-blue-600">
+                <div className="text-2xl font-bold text-primary">
                   {profile?.certifications_count || 0}
                 </div>
                 <div className="text-sm text-muted-foreground">Certifications</div>
               </div>
               
               <div className="text-center p-4 bg-muted/50 rounded-lg">
-                <div className="text-2xl font-bold text-green-600">
+                <div className="text-2xl font-bold text-success">
                   {profile?.job_history_count || 0}
                 </div>
                 <div className="text-sm text-muted-foreground">Job History</div>
@@ -291,7 +291,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
               <div className="space-y-3">
                 {activities.map((activity) => (
                   <div key={activity.id} className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
-                    <div className="h-2 w-2 bg-blue-500 rounded-full"></div>
+                    <div className="h-2 w-2 bg-primary rounded-full"></div>
                     <div className="flex-1">
                       <div className="text-sm font-medium">{activity.activity_description}</div>
                       <div className="text-xs text-muted-foreground">

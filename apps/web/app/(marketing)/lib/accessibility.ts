@@ -31,15 +31,15 @@ export const accessibility = {
   
   // Color contrast helpers
   contrast: {
-    high: 'text-slate-900 dark:text-slate-100',
-    medium: 'text-slate-700 dark:text-slate-300',
-    low: 'text-slate-600 dark:text-slate-400',
+    high: 'text-foreground',
+    medium: 'text-foreground/80',
+    low: 'text-muted-foreground',
   },
   
   // Interactive states
   interactive: {
-    hover: 'hover:bg-slate-50 dark:hover:bg-slate-800',
-    active: 'active:bg-slate-100 dark:active:bg-slate-700',
+    hover: 'hover:bg-muted/50',
+    active: 'active:bg-muted',
     disabled: 'disabled:opacity-50 disabled:cursor-not-allowed',
   },
   

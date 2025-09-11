@@ -112,7 +112,7 @@ export default function CommunityCulturalEventsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-orange-500/5 via-background to-red-500/5">
+      <section className="py-20 bg-gradient-to-br from-warning/5 via-background to-destructive/5">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -123,7 +123,7 @@ export default function CommunityCulturalEventsPage() {
                 <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
                   CELEBRATE
                   <br />
-                  <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-warning to-destructive bg-clip-text text-transparent">
                     COMMUNITY
                   </span>
                   <br />
@@ -162,7 +162,7 @@ export default function CommunityCulturalEventsPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Button className="w-full sm:w-auto group">
+                <Button variant="outline" className="w-full sm:w-auto group">
                   <Play className="mr-2 h-4 w-4" />
                   Explore Traditions
                 </Button>
@@ -174,9 +174,9 @@ export default function CommunityCulturalEventsPage() {
               <Card className="bg-background border shadow-2xl overflow-hidden">
                 <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                   <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                    <div className="w-3 h-3 rounded-full bg-warning"></div>
+                    <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
@@ -189,7 +189,7 @@ export default function CommunityCulturalEventsPage() {
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-lg font-bold uppercase`}>HERITAGE FESTIVAL 2024</h3>
-                    <Badge variant="outline" className="text-orange-600 border-orange-600">
+                    <Badge variant="outline" className="text-warning border-warning">
                       Active
                     </Badge>
                   </div>
@@ -199,8 +199,8 @@ export default function CommunityCulturalEventsPage() {
                       <div className="text-xs text-muted-foreground mb-1">Communities</div>
                       <div className="font-semibold">25</div>
                       <div className="flex items-center gap-1 mt-1">
-                        <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
-                        <span className="text-xs text-orange-500">United</span>
+                        <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
+                        <span className="text-xs text-warning">United</span>
                       </div>
                     </div>
                     <div className="bg-muted/30 rounded-lg p-3">
@@ -208,7 +208,7 @@ export default function CommunityCulturalEventsPage() {
                       <div className="font-semibold">450</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
-                          <div key={i} className="w-3 h-3 bg-orange-500 rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-warning rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function CommunityCulturalEventsPage() {
                       <div className="text-xs text-muted-foreground mb-1">Traditions</div>
                       <div className="font-semibold">100%</div>
                       <div className="w-full bg-muted rounded-full h-1 mt-2">
-                        <div className="bg-green-500 h-1 rounded-full w-full"></div>
+                        <div className="bg-success h-1 rounded-full w-full"></div>
                       </div>
                     </div>
                   </div>
@@ -224,9 +224,9 @@ export default function CommunityCulturalEventsPage() {
                   <div className="space-y-2">
                     <div className="text-xs font-medium text-muted-foreground">Cultural Programming</div>
                     {[
-                      { program: 'Traditional Dance', participants: 120, stage: 'Main', color: 'bg-red-500' },
-                      { program: 'Heritage Crafts', participants: 85, stage: 'Pavilion', color: 'bg-blue-500' },
-                      { program: 'Cultural Food Fair', participants: 300, stage: 'Plaza', color: 'bg-green-500' },
+                      { program: 'Traditional Dance', participants: 120, stage: 'Main', color: 'bg-destructive' },
+                      { program: 'Heritage Crafts', participants: 85, stage: 'Pavilion', color: 'bg-primary' },
+                      { program: 'Cultural Food Fair', participants: 300, stage: 'Plaza', color: 'bg-success' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-3 text-xs">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
@@ -238,10 +238,10 @@ export default function CommunityCulturalEventsPage() {
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Heart className="w-4 h-4 text-orange-500" />
+                    <Heart className="w-4 h-4 text-warning" />
                     <span className="text-xs font-medium">Community Unity Score: 9.8/10</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -270,14 +270,14 @@ export default function CommunityCulturalEventsPage() {
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-orange-500 to-red-500">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-warning to-destructive">
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
                         <p className="text-muted-foreground mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
                           <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
                         </div>
                       </div>
@@ -312,7 +312,7 @@ export default function CommunityCulturalEventsPage() {
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
                         <span className="text-sm text-foreground">{benefit}</span>
                       </div>
                     ))}
@@ -363,7 +363,7 @@ export default function CommunityCulturalEventsPage() {
                       <div className="space-y-3 mb-6">
                         {study.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
-                            <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
+                            <Star className="h-4 w-4 text-warning flex-shrink-0" />
                             <span className="text-sm font-medium text-foreground">{result}</span>
                           </div>
                         ))}
@@ -398,7 +398,7 @@ export default function CommunityCulturalEventsPage() {
             {integrations.map((integration) => (
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-warning to-destructive rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-white" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>
@@ -411,7 +411,7 @@ export default function CommunityCulturalEventsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500/5 to-red-500/5">
+      <section className="py-20 bg-gradient-to-r from-warning/5 to-destructive/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
@@ -430,7 +430,7 @@ export default function CommunityCulturalEventsPage() {
                 </Button>
               </Link>
               <Link href="/contact">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto">
                   Schedule Demo
                 </Button>
               </Link>

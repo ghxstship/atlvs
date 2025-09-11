@@ -70,9 +70,9 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
 
   return (
     <div role="dialog" aria-modal="true" aria-label="Command Palette" className="fixed inset-0 z-50 flex items-start justify-center p-4">
-      <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
-      <div className="relative w-full max-w-xl rounded-xl bg-white dark:bg-neutral-900 shadow-2xl border border-neutral-200 dark:border-neutral-800 overflow-hidden">
-        <div className="p-3 border-b border-neutral-200 dark:border-neutral-800">
+      <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setOpen(false)} />
+      <div className="relative w-full max-w-xl rounded-xl bg-card shadow-2xl border border-border overflow-hidden">
+        <div className="p-3 border-b border-border">
           <input
             autoFocus
             type="text"
@@ -85,17 +85,17 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
         </div>
         <div className="max-h-80 overflow-y-auto">
           {filtered.length === 0 ? (
-            <div className="p-4 text-sm text-neutral-500">No results</div>
+            <div className="p-4 text-sm text-muted-foreground">No results</div>
           ) : (
             <ul className="p-2">
               {filtered.map(cmd => (
                 <li key={cmd.id}>
                   <button
-                    className="w-full text-left px-3 py-2 rounded-md hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    className="w-full text-left px-3 py-2 rounded-md hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                     onClick={() => onSelect(cmd)}
                   >
-                    <div className="text-sm text-neutral-900 dark:text-neutral-100">{cmd.label}</div>
-                    <div className="text-xs text-neutral-500">{cmd.href}</div>
+                    <div className="text-sm">{cmd.label}</div>
+                    <div className="text-xs text-muted-foreground">{cmd.href}</div>
                   </button>
                 </li>
               ))}

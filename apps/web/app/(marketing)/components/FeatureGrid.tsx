@@ -22,84 +22,84 @@ const features = [
     title: 'AI-Powered Insights',
     description: 'Get intelligent recommendations and predictive analytics to optimize your production workflows.',
     category: 'Intelligence',
-    gradient: 'from-yellow-500 to-orange-500',
+    gradient: 'from-warning to-destructive',
   },
   {
     icon: Shield,
     title: 'Enterprise Security',
     description: 'SOC 2 Type II certified with advanced encryption, SSO, and granular permissions.',
     category: 'Security',
-    gradient: 'from-green-500 to-emerald-500',
+    gradient: 'from-success to-accent',
   },
   {
     icon: Globe,
     title: 'Global Collaboration',
     description: 'Connect teams across time zones with real-time sync and multi-language support.',
     category: 'Collaboration',
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-primary to-accent',
   },
   {
     icon: BarChart3,
     title: 'Advanced Analytics',
     description: 'Comprehensive dashboards and custom reports to track performance and ROI.',
     category: 'Analytics',
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-secondary to-accent',
   },
   {
     icon: Users,
     title: 'Team Management',
     description: 'Streamlined onboarding, role-based access, and performance tracking.',
     category: 'Management',
-    gradient: 'from-indigo-500 to-blue-500',
+    gradient: 'from-secondary to-primary',
   },
   {
     icon: Calendar,
     title: 'Smart Scheduling',
     description: 'Intelligent resource allocation and conflict resolution for optimal planning.',
     category: 'Planning',
-    gradient: 'from-red-500 to-pink-500',
+    gradient: 'from-destructive to-accent',
   },
   {
     icon: MessageSquare,
     title: 'Real-time Communication',
     description: 'Integrated chat, video calls, and collaborative workspaces.',
     category: 'Communication',
-    gradient: 'from-teal-500 to-green-500',
+    gradient: 'from-accent to-success',
   },
   {
     icon: FileText,
     title: 'Document Management',
     description: 'Version control, approval workflows, and secure file sharing.',
     category: 'Documents',
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-warning to-destructive',
   },
   {
     icon: Settings,
     title: 'Custom Workflows',
     description: 'Build and automate processes tailored to your specific needs.',
     category: 'Automation',
-    gradient: 'from-gray-500 to-slate-500',
+    gradient: 'from-muted to-secondary',
   },
   {
     icon: Smartphone,
     title: 'Mobile First',
     description: 'Full-featured mobile apps for iOS and Android with offline capabilities.',
     category: 'Mobile',
-    gradient: 'from-violet-500 to-purple-500',
+    gradient: 'from-accent to-secondary',
   },
   {
     icon: Clock,
     title: 'Time Tracking',
     description: 'Accurate time logging with automated timesheets and billing integration.',
     category: 'Productivity',
-    gradient: 'from-amber-500 to-yellow-500',
+    gradient: 'from-warning to-accent',
   },
   {
     icon: Award,
     title: 'Quality Assurance',
     description: 'Built-in review processes and quality checkpoints throughout production.',
     category: 'Quality',
-    gradient: 'from-emerald-500 to-teal-500',
+    gradient: 'from-success to-accent',
   },
 ];
 
@@ -144,7 +144,7 @@ export function FeatureGrid() {
                 <CardContent className="p-6">
                   {/* Icon */}
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
-                    <Icon className="h-6 w-6 text-white" />
+                    <Icon className="h-6 w-6 text-primary-foreground" />
                   </div>
 
                   {/* Category Badge */}
@@ -181,15 +181,15 @@ export function FeatureGrid() {
               </p>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>SOC 2 Type II Certified</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>99.9% Uptime SLA</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>24/7 Expert Support</span>
                 </div>
               </div>
@@ -208,15 +208,15 @@ export function FeatureGrid() {
               </p>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Predictive Analytics</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Smart Recommendations</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Automated Workflows</span>
                 </div>
               </div>
@@ -224,10 +224,10 @@ export function FeatureGrid() {
           </Card>
 
           {/* Global Scale */}
-          <Card className="bg-gradient-to-br from-blue-500/5 to-blue-500/10 border-blue-500/20">
+          <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-8 text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-500/10 mb-6">
-                <Globe className="h-8 w-8 text-blue-500" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                <Globe className="h-8 w-8 text-primary" />
               </div>
               <h3 className="font-title text-xl font-bold mb-4">Global Scale</h3>
               <p className="text-muted-foreground mb-6">
@@ -235,15 +235,15 @@ export function FeatureGrid() {
               </p>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>50+ Countries</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Multi-language Support</span>
                 </div>
                 <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Global CDN</span>
                 </div>
               </div>

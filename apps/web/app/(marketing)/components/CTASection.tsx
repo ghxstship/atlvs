@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { Button, Card, CardContent } from '@ghxstship/ui';
+import { Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, CheckCircle, Star, Zap } from 'lucide-react';
+import { Button } from '@ghxstship/ui';
 
 export function CTASection() {
   return (
@@ -25,13 +26,13 @@ export function CTASection() {
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/products">
-                <Button className="w-full sm:w-auto">
+                <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                   Explore Products
                 </Button>
               </Link>
@@ -40,11 +41,11 @@ export function CTASection() {
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-green-500" />
+                <CheckCircle className="h-4 w-4 text-success" />
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-yellow-500" />
+                <Star className="h-4 w-4 text-warning" />
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-2">
@@ -89,15 +90,15 @@ export function CTASection() {
 
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardContent className="p-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/10 mb-6">
-                <Zap className="h-8 w-8 text-green-500" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/10 mb-6">
+                <Zap className="h-8 w-8 text-success" />
               </div>
               <h3 className="font-title text-xl font-bold mb-4">Instant Results</h3>
               <p className="text-muted-foreground mb-6">
                 See immediate improvements in efficiency and collaboration from day one.
               </p>
               <div className="text-sm text-muted-foreground">
-                Average improvement: <span className="font-semibold text-green-500">40% faster</span>
+                Average improvement: <span className="font-semibold text-success">40% faster</span>
               </div>
             </CardContent>
           </Card>
@@ -115,12 +116,12 @@ export function CTASection() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link href="/contact">
-                  <Button className="w-full sm:w-auto">
+                  <Button className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                     Contact Sales
                   </Button>
                 </Link>
                 <Link href="/products">
-                  <Button className="w-full sm:w-auto">
+                  <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                     Schedule Demo
                   </Button>
                 </Link>

@@ -120,15 +120,15 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
   const categories = [...new Set(competencies.map(c => c.category).filter(Boolean))];
 
   const getCategoryColor = (category?: string) => {
-    if (!category) return 'bg-gray-100 text-gray-800';
+    if (!category) return 'bg-muted text-muted-foreground';
     const colors = [
-      'bg-blue-100 text-blue-800',
-      'bg-green-100 text-green-800',
-      'bg-purple-100 text-purple-800',
-      'bg-orange-100 text-orange-800',
-      'bg-pink-100 text-pink-800'
+      'bg-primary/10 text-primary',
+      'bg-success/10 text-success',
+      'bg-accent/10 text-accent',
+      'bg-warning/10 text-warning',
+      'bg-secondary/10 text-secondary'
     ];
-    const index = category.charCodeAt(0) % colors.length;
+    const index = category.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % colors.length;
     return colors[index];
   };
 
@@ -152,7 +152,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-between">
             <div className="flex flex-col sm:flex-row gap-4 flex-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -164,9 +164,9 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <option value="">{t('allCategories')}</option>
+                <option value="" className="text-muted-foreground">All Categories</option>
                 {categories.map(category => (
                   <option key={category} value={category}>{category}</option>
                 ))}
@@ -181,7 +181,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
 
           {/* Create Form */}
           {showCreateForm && (
-            <div className="border border-gray-200 rounded-lg p-4 bg-gray-50">
+            <div className="border border-border rounded-lg p-4 bg-muted/50">
               <h3 className="text-lg font-medium mb-4">{t('createCompetency')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
@@ -199,13 +199,13 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
                     placeholder={t('description')}
                     value={newCompetency.description}
                     onChange={(e) => setNewCompetency({...newCompetency, description: e.target.value})}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full pl-10 pr-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     rows={2}
                   />
                 </div>
                 
                 <div className="md:col-span-2">
-                  <h4 className="text-sm font-medium mb-2">{t('levelDefinitions')}</h4>
+                  <p className="text-xs text-muted-foreground mt-2">{t('levelDefinitions')}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                     <Input
                       placeholder={t('beginnerLevel')}
@@ -255,7 +255,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
           )}
 
           {/* Results Summary */}
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-muted-foreground">
             {t('resultsCount', { count: filteredCompetencies.length, total: competencies.length })}
           </div>
 
@@ -264,19 +264,19 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             {filteredCompetencies.map((competency) => (
               <div
                 key={competency.id}
-                className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2">
                     <Award className="h-5 w-5 text-primary" />
-                    <h3 className="text-sm font-medium text-gray-900">{competency.name}</h3>
+                    <h3 className="font-semibold text-foreground">{competency.name}</h3>
                   </div>
                   
                   <div className="flex space-x-1">
-                    <button className="p-1 text-gray-400 hover:text-gray-600">
+                    <button className="p-1 text-muted-foreground hover:text-foreground">
                       <Edit className="h-4 w-4" />
                     </button>
-                    <button className="p-1 text-gray-400 hover:text-red-600">
+                    <button className="p-1 text-muted-foreground hover:text-destructive">
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
@@ -289,24 +289,24 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
                 )}
 
                 {competency.description && (
-                  <p className="text-sm text-gray-600 mb-3">{competency.description}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{competency.description}</p>
                 )}
 
                 {competency.level_definitions && (
                   <div className="space-y-1">
-                    <h4 className="text-xs font-medium text-gray-700">{t('levels')}:</h4>
+                    <h4 className="text-xs font-medium text-foreground">{t('levels')}:</h4>
                     <div className="grid grid-cols-2 gap-1 text-xs">
                       {competency.level_definitions.beginner && (
-                        <div className="text-green-600">● {t('beginner')}</div>
+                        <div className="text-success">● {t('beginner')}</div>
                       )}
                       {competency.level_definitions.intermediate && (
-                        <div className="text-yellow-600">● {t('intermediate')}</div>
+                        <span className="text-muted-foreground">Level: {t('intermediate')}</span>
                       )}
                       {competency.level_definitions.advanced && (
-                        <div className="text-orange-600">● {t('advanced')}</div>
+                        <div className="text-secondary">● {t('advanced')}</div>
                       )}
                       {competency.level_definitions.expert && (
-                        <div className="text-red-600">● {t('expert')}</div>
+                        <div className="text-destructive">● {t('expert')}</div>
                       )}
                     </div>
                   </div>
@@ -317,8 +317,8 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
 
           {filteredCompetencies.length === 0 && (
             <div className="text-center py-8">
-              <Award className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-              <p className="text-gray-500">{t('noCompetenciesFound')}</p>
+              <Award className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <span className="text-muted-foreground">Category: Manage skills and competency frameworks.</span>
             </div>
           )}
         </div>

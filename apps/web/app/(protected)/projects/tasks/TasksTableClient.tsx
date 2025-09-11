@@ -142,7 +142,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
           <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
 
         {tab === 'details' && (
           <div className="space-y-2 text-sm">
@@ -157,7 +157,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
             <div className="grid gap-1">
               <label htmlFor="title" className="text-sm">{t('grid.title')}</label>
               <input id="title" name="title" className="rounded border px-2 py-1" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
-              {form.formState.errors.title ? <div className="text-xs text-red-600">{String(form.formState.errors.title.message)}</div> : null}
+              {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
             </div>
             <div className="grid gap-1">
               <label htmlFor="status" className="text-sm">{t('grid.status')}</label>

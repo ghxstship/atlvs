@@ -173,7 +173,7 @@ export default function CreateAdvancingClient({
         {/* Asset & Personnel */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="h-5 w-5 text-blue-600" />
+            <TrendingUp className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Asset & Personnel</h3>
           </div>
           
@@ -221,7 +221,7 @@ export default function CreateAdvancingClient({
         {/* Dates & Timeline */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-green-600" />
+            <Calendar className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Dates & Timeline</h3>
           </div>
           
@@ -256,7 +256,7 @@ export default function CreateAdvancingClient({
         {/* Purpose & Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserIcon className="h-5 w-5 text-purple-600" />
+            <UserIcon className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Purpose & Details</h3>
           </div>
           
@@ -295,7 +295,7 @@ export default function CreateAdvancingClient({
         {/* Financial Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-orange-600" />
+            <DollarSign className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Financial Information</h3>
           </div>
           

@@ -77,12 +77,12 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
         <Plus className="mr-1 h-4 w-4" /> New Project
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="New Project" description={submitting ? 'Saving…' : undefined}>
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
           <div className="grid gap-1">
             <label htmlFor="name" className="text-sm">{t('grid.name')}</label>
             <input id="name" className="rounded border px-2 py-1" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
-            {form.formState.errors.name ? <div className="text-xs text-red-600">{String(form.formState.errors.name.message)}</div> : null}
+            {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
           </div>
           <div className="grid gap-1">
             <label htmlFor="status" className="text-sm">{t('grid.status')}</label>

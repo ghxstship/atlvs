@@ -186,9 +186,9 @@ function DefaultErrorFallback({ error, resetError }: { error: Error; resetError:
   }, [
     React.createElement('div', {
       key: 'icon',
-      className: 'flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full'
+      className: 'flex items-center justify-center w-12 h-12 mx-auto bg-destructive/10 rounded-full'
     }, React.createElement('svg', {
-      className: 'w-6 h-6 text-red-600',
+      className: 'w-6 h-6 text-destructive',
       fill: 'none',
       stroke: 'currentColor',
       viewBox: '0 0 24 24'
@@ -204,16 +204,16 @@ function DefaultErrorFallback({ error, resetError }: { error: Error; resetError:
     }, [
       React.createElement('h3', {
         key: 'title',
-        className: 'text-lg font-medium text-gray-900'
+        className: 'text-lg font-medium text-foreground'
       }, 'Something went wrong'),
       React.createElement('p', {
         key: 'description',
-        className: 'mt-2 text-sm text-gray-600'
+        className: 'mt-2 text-sm text-muted-foreground'
       }, "We've been notified of this error and are working to fix it."),
       React.createElement('button', {
         key: 'button',
         onClick: resetError,
-        className: 'mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500'
+        className: 'mt-4 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'
       }, 'Try again')
     ])
   ]));

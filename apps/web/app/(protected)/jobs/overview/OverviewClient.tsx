@@ -13,7 +13,8 @@ import {
   PlusIcon,
   ArrowRightIcon,
   ChartBarIcon,
-  CalendarIcon
+  CalendarIcon,
+  UsersIcon
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 
@@ -54,28 +55,28 @@ const QUICK_ACTIONS = [
     description: 'Start a new job posting',
     href: '/jobs?action=create',
     icon: BriefcaseIcon,
-    color: 'bg-blue-500',
+    color: 'bg-primary',
   },
   {
     title: 'Browse Opportunities',
     description: 'View available opportunities',
     href: '/jobs/opportunities',
     icon: ClipboardDocumentListIcon,
-    color: 'bg-green-500',
+    color: 'bg-success',
   },
   {
     title: 'Submit New Bid',
     description: 'Create a new bid proposal',
     href: '/jobs/bids?action=create',
     icon: DocumentTextIcon,
-    color: 'bg-purple-500',
+    color: 'bg-secondary',
   },
   {
     title: 'Review Compliance',
     description: 'Check compliance status',
     href: '/jobs/compliance',
     icon: CheckCircleIcon,
-    color: 'bg-orange-500',
+    color: 'bg-warning',
   },
 ];
 
@@ -177,22 +178,13 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
   };
 
   const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'active':
-      case 'in_progress':
-      case 'open':
-        return 'bg-green-100 text-green-800';
-      case 'completed':
-      case 'closed':
-        return 'bg-blue-100 text-blue-800';
-      case 'draft':
-      case 'pending':
-        return 'bg-yellow-100 text-yellow-800';
-      case 'cancelled':
-      case 'rejected':
-        return 'bg-red-100 text-red-800';
-      default:
-        return 'bg-gray-100 text-gray-800';
+    switch (status.toLowerCase()) {
+      case 'active': return 'bg-success/10 text-success';
+      case 'completed': return 'bg-primary/10 text-primary';
+      case 'pending': return 'bg-warning/10 text-warning';
+      case 'draft': return 'bg-muted/10 text-muted-foreground';
+      case 'cancelled': return 'bg-destructive/10 text-destructive';
+      default: return 'bg-muted/10 text-muted-foreground';
     }
   };
 
@@ -240,7 +232,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-sm font-medium text-foreground/70">Total Jobs</p>
                   <p className="text-2xl font-bold text-foreground">{stats?.totalJobs || 0}</p>
                 </div>
-                <BriefcaseIcon className="h-8 w-8 text-blue-500" />
+                <BriefcaseIcon className="h-8 w-8 text-primary" />
               </div>
             </Card>
 
@@ -248,19 +240,19 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-foreground/70">Active Jobs</p>
-                  <p className="text-2xl font-bold text-green-600">{stats?.activeJobs || 0}</p>
+                  <p className="text-xs text-muted-foreground">{stats?.activeJobs || 0} active</p>
                 </div>
-                <ChartBarIcon className="h-8 w-8 text-green-500" />
+                <ChartBarIcon className="h-8 w-8 text-success" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Opportunities</p>
-                  <p className="text-2xl font-bold text-purple-600">{stats?.totalOpportunities || 0}</p>
+                  <p className="text-muted-foreground">Monitor job performance and manage opportunities.</p>
+                  <p className="text-2xl font-bold text-success">{stats?.totalOpportunities || 0}</p>
                 </div>
-                <ClipboardDocumentListIcon className="h-8 w-8 text-purple-500" />
+                <ClipboardDocumentListIcon className="h-8 w-8 text-success" />
               </div>
             </Card>
 
@@ -268,19 +260,19 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-foreground/70">Active Bids</p>
-                  <p className="text-2xl font-bold text-orange-600">{stats?.activeBids || 0}</p>
+                  <p className="text-xs text-muted-foreground">{stats?.activeBids || 0} active bids</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 text-orange-500" />
+                <DocumentTextIcon className="h-8 w-8 text-secondary" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Active Contracts</p>
-                  <p className="text-2xl font-bold text-blue-600">{stats?.activeContracts || 0}</p>
+                  <span className="text-sm text-muted-foreground">tracts</span>
+                  <p className="text-2xl font-bold text-secondary">{stats?.activeContracts || 0}</p>
                 </div>
-                <CheckCircleIcon className="h-8 w-8 text-blue-500" />
+                <CheckCircleIcon className="h-8 w-8 text-accent" />
               </div>
             </Card>
 
@@ -288,19 +280,19 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-foreground/70">Assignments</p>
-                  <p className="text-2xl font-bold text-indigo-600">{stats?.totalAssignments || 0}</p>
+                  <p className="text-xs text-muted-foreground">{stats?.totalAssignments || 0} assignments</p>
                 </div>
-                <CalendarIcon className="h-8 w-8 text-indigo-500" />
+                <DocumentTextIcon className="h-8 w-8 text-warning" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Pending Compliance</p>
-                  <p className="text-2xl font-bold text-red-600">{stats?.pendingCompliance || 0}</p>
+                  <p className="text-sm text-muted-foreground">Pending Compliance</p>
+                  <h1 className="text-2xl font-bold text-foreground">{stats?.pendingCompliance || 0}</h1>
                 </div>
-                <ExclamationTriangleIcon className="h-8 w-8 text-red-500" />
+                <ExclamationTriangleIcon className="h-8 w-8 text-warning" />
               </div>
             </Card>
 
@@ -308,9 +300,9 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-foreground/70">Active RFPs</p>
-                  <p className="text-2xl font-bold text-teal-600">{stats?.activeRFPs || 0}</p>
+                  <p className="text-xs text-muted-foreground">{stats?.activeRFPs || 0} active RFPs</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 text-teal-500" />
+                <DocumentTextIcon className="h-8 w-8 text-primary" />
               </div>
             </Card>
           </>
@@ -351,11 +343,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             <div className="space-y-3">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex items-center space-x-3">
-                  <Skeleton className="h-8 w-8 rounded" />
-                  <div className="flex-1">
-                    <Skeleton className="h-4 w-32 mb-1" />
-                    <Skeleton className="h-3 w-20" />
-                  </div>
+                  <div className="w-3 h-3 bg-muted rounded"></div>
                   <Skeleton className="h-5 w-16" />
                 </div>
               ))}
@@ -386,9 +374,9 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             </div>
           ) : (
             <div className="text-center py-8">
-              <BriefcaseIcon className="h-12 w-12 text-foreground/30 mx-auto mb-3" />
-              <p className="text-sm text-foreground/70">No recent activity</p>
-              <p className="text-xs text-foreground/50 mt-1">
+              <BriefcaseIcon className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
+              <p className="text-sm text-muted-foreground">No recent activity</p>
+              <p className="text-xs text-muted-foreground mt-1">
                 Create your first job to get started
               </p>
             </div>

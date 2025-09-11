@@ -141,7 +141,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
           <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
 
         {tab === 'details' && (
           <div className="space-y-2 text-sm">
@@ -156,7 +156,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
             <div className="grid gap-1">
               <label htmlFor="name" className="text-sm">{labels.name}</label>
               <input id="name" name="name" className="rounded border px-2 py-1" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
-              {form.formState.errors.name ? <div className="text-xs text-red-600">{String(form.formState.errors.name.message)}</div> : null}
+              {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
             </div>
             <div className="grid gap-1">
               <label htmlFor="status" className="text-sm">{labels.status}</label>

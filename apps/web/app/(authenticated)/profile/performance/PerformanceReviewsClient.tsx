@@ -109,8 +109,8 @@ export default function PerformanceReviewsClient() {
             key={star}
             className={`w-5 h-5 ${
               star <= rating
-                ? 'fill-yellow-400 text-yellow-400'
-                : 'text-gray-300'
+                ? 'fill-warning text-warning'
+                : 'text-muted-foreground'
             }`}
           />
         ))}
@@ -193,7 +193,7 @@ export default function PerformanceReviewsClient() {
         <Card>
           <CardHeader>
             <h3 className="font-semibold flex items-center">
-              <TrendingUp className="w-5 h-5 mr-2 text-green-500" />
+              <TrendingUp className="w-5 h-5 mr-2 text-success" />
               Strengths
             </h3>
           </CardHeader>
@@ -201,7 +201,7 @@ export default function PerformanceReviewsClient() {
             <ul className="space-y-2">
               {selectedReview.strengths.map((strength, index) => (
                 <li key={index} className="flex items-start">
-                  <span className="text-green-500 mr-2">•</span>
+                  <span className="text-success mr-2">•</span>
                   <span>{strength}</span>
                 </li>
               ))}
@@ -218,7 +218,7 @@ export default function PerformanceReviewsClient() {
             <ul className="space-y-2">
               {selectedReview.improvements.map((improvement, index) => (
                 <li key={index} className="flex items-start">
-                  <span className="text-orange-500 mr-2">•</span>
+                  <span className="text-warning mr-2">•</span>
                   <span>{improvement}</span>
                 </li>
               ))}
@@ -249,7 +249,7 @@ export default function PerformanceReviewsClient() {
                       <span>Progress</span>
                       <span>{goal.progress}%</span>
                     </div>
-                    <div className="w-full bg-gray-200 rounded-full h-2">
+                    <div className="w-full bg-muted rounded-full h-2">
                       <div
                         className="bg-primary h-2 rounded-full transition-all"
                         style={{ width: `${goal.progress}%` }}
@@ -269,7 +269,7 @@ export default function PerformanceReviewsClient() {
         <Card>
           <CardHeader>
             <h3 className="font-semibold flex items-center">
-              <Award className="w-5 h-5 mr-2 text-yellow-500" />
+              <Award className="w-5 h-5 mr-2 text-warning" />
               Key Achievements
             </h3>
           </CardHeader>

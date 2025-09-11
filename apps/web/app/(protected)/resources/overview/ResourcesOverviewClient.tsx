@@ -26,12 +26,12 @@ export default function ResourcesOverviewClient() {
   ];
 
   const categories = [
-    { name: 'Documents', count: 456, color: 'bg-blue-500' },
-    { name: 'Videos', count: 234, color: 'bg-purple-500' },
-    { name: 'Templates', count: 189, color: 'bg-green-500' },
-    { name: 'Guides', count: 145, color: 'bg-yellow-500' },
-    { name: 'Training', count: 98, color: 'bg-red-500' },
-    { name: 'Other', count: 112, color: 'bg-gray-500' },
+    { name: 'Documents', count: 456, color: 'bg-primary' },
+    { name: 'Videos', count: 234, color: 'bg-secondary' },
+    { name: 'Templates', count: 189, color: 'bg-success' },
+    { name: 'Guides', count: 145, color: 'bg-warning' },
+    { name: 'Training', count: 98, color: 'bg-destructive' },
+    { name: 'Other', count: 112, color: 'bg-muted-foreground' },
   ];
 
   return (
@@ -39,8 +39,8 @@ export default function ResourcesOverviewClient() {
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Resources Overview</h1>
-          <p className="text-gray-600 mt-1">Manage and track your organization's resources</p>
+          <h1 className="text-3xl font-bold text-foreground">Resources Overview</h1>
+          <p className="text-muted-foreground mt-1">Manage and track your organization's resources</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline">
@@ -60,12 +60,12 @@ export default function ResourcesOverviewClient() {
           <Card key={index} className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">{stat.label}</p>
-                <p className="text-2xl font-bold text-gray-900 mt-1">{stat.value}</p>
-                <p className="text-sm text-green-600 mt-2">{stat.trend}</p>
+                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="text-2xl font-bold text-foreground mt-1">{stat.value}</p>
+                <p className="text-sm text-success mt-2">{stat.trend}</p>
               </div>
-              <div className="p-3 bg-gray-100 rounded-lg">
-                <stat.icon className="w-6 h-6 text-gray-600" />
+              <div className="p-3 bg-muted/50 rounded-lg">
+                <stat.icon className="w-6 h-6 text-muted-foreground" />
               </div>
             </div>
           </Card>
@@ -78,29 +78,29 @@ export default function ResourcesOverviewClient() {
         <div className="lg:col-span-2">
           <Card className="p-6">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">Recent Resources</h2>
+              <h2 className="text-lg font-semibold text-foreground">Recent Resources</h2>
               <Button>View All</Button>
             </div>
             <div className="space-y-4">
               {recentResources.map((resource) => (
-                <div key={resource.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50">
+                <div key={resource.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-muted/50">
                   <div className="flex items-center gap-4">
-                    <div className="p-2 bg-gray-100 rounded">
-                      <FileText className="w-5 h-5 text-gray-600" />
+                    <div className="p-2 bg-muted/50 rounded">
+                      <FileText className="w-5 h-5 text-muted-foreground" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-gray-900">{resource.title}</h3>
+                      <h3 className="font-medium text-foreground">{resource.title}</h3>
                       <div className="flex items-center gap-4 mt-1">
                         <Badge variant="outline">{resource.type}</Badge>
-                        <span className="text-sm text-gray-500">{resource.downloads} downloads</span>
+                        <span className="text-sm text-muted-foreground">{resource.downloads} downloads</span>
                         <div className="flex items-center gap-1">
-                          <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                          <span className="text-sm text-gray-500">{resource.rating}</span>
+                          <Star className="w-3 h-3 text-warning fill-current" />
+                          <span className="text-sm text-muted-foreground">{resource.rating}</span>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div className="text-sm text-gray-500">
+                  <div className="text-sm text-muted-foreground">
                     {resource.updated}
                   </div>
                 </div>
@@ -112,15 +112,15 @@ export default function ResourcesOverviewClient() {
         {/* Categories */}
         <div>
           <Card className="p-6">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Categories</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-4">Categories</h2>
             <div className="space-y-3">
               {categories.map((category, index) => (
                 <div key={index} className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className={`w-3 h-3 rounded-full ${category.color}`} />
-                    <span className="text-sm text-gray-700">{category.name}</span>
+                    <span className="text-sm text-foreground">{category.name}</span>
                   </div>
-                  <span className="text-sm font-medium text-gray-900">{category.count}</span>
+                  <span className="text-sm font-medium text-foreground">{category.count}</span>
                 </div>
               ))}
             </div>
@@ -132,7 +132,7 @@ export default function ResourcesOverviewClient() {
 
           {/* Quick Actions */}
           <Card className="p-6 mt-4">
-            <h2 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h2>
+            <h2 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h2>
             <div className="space-y-2">
               <Button variant="outline" className="w-full justify-start">
                 <Search className="w-4 h-4 mr-2" />
@@ -157,27 +157,27 @@ export default function ResourcesOverviewClient() {
 
       {/* Activity Timeline */}
       <Card className="p-6">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+        <h2 className="text-lg font-semibold text-foreground mb-4">Recent Activity</h2>
         <div className="space-y-4">
           <div className="flex gap-4">
-            <div className="w-2 h-2 bg-blue-500 rounded-full mt-2" />
+            <div className="w-2 h-2 bg-primary rounded-full mt-2" />
             <div className="flex-1">
-              <p className="text-sm text-gray-900">New training video uploaded by Sarah Chen</p>
-              <p className="text-xs text-gray-500">10 minutes ago</p>
+              <p className="text-sm text-foreground">New training video uploaded by Sarah Chen</p>
+              <p className="text-xs text-muted-foreground">10 minutes ago</p>
             </div>
           </div>
           <div className="flex gap-4">
-            <div className="w-2 h-2 bg-green-500 rounded-full mt-2" />
+            <div className="w-2 h-2 bg-success rounded-full mt-2" />
             <div className="flex-1">
-              <p className="text-sm text-gray-900">API documentation updated to v2.0</p>
-              <p className="text-xs text-gray-500">1 hour ago</p>
+              <p className="text-sm text-foreground">API documentation updated to v2.0</p>
+              <p className="text-xs text-muted-foreground">1 hour ago</p>
             </div>
           </div>
           <div className="flex gap-4">
-            <div className="w-2 h-2 bg-purple-500 rounded-full mt-2" />
+            <div className="w-2 h-2 bg-secondary rounded-full mt-2" />
             <div className="flex-1">
-              <p className="text-sm text-gray-900">Q4 reports downloaded 50 times</p>
-              <p className="text-xs text-gray-500">3 hours ago</p>
+              <p className="text-sm text-foreground">Q4 reports downloaded 50 times</p>
+              <p className="text-xs text-muted-foreground">3 hours ago</p>
             </div>
           </div>
         </div>

@@ -405,7 +405,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               placeholder="e.g., Stage Design for Music Festival"
             />
             {errors.title && (
-              <p className="text-sm text-red-500 mt-1">{errors.title.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.title.message}</p>
             )}
           </div>
 
@@ -425,7 +425,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               </SelectContent>
             </Select>
             {errors.category && (
-              <p className="text-sm text-red-500 mt-1">{errors.category.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.category.message}</p>
             )}
           </div>
 
@@ -437,7 +437,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               rows={4}
             />
             {errors.description && (
-              <p className="text-sm text-red-500 mt-1">{errors.description.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.description.message}</p>
             )}
           </div>
 
@@ -449,7 +449,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               rows={3}
             />
             {errors.scope && (
-              <p className="text-sm text-red-500 mt-1">{errors.scope.message}</p>
+              <p className="text-sm text-destructive mt-1">{errors.scope.message}</p>
             )}
           </div>
 
@@ -518,7 +518,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             <input
               type="checkbox"
               {...register('is_urgent')}
-              className="rounded border-gray-300"
+              className="rounded border-border"
             />
             <label className="text-sm">Mark as urgent project</label>
           </div>

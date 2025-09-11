@@ -289,14 +289,14 @@ export default function CommunityPage() {
 
                     {channel.href.startsWith('http') ? (
                       <a href={channel.href as any} target="_blank" rel="noopener noreferrer">
-                        <Button className="w-full group">
+                        <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
                           <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                     ) : (
                       <a href={channel.href as any}>
-                        <Button className="w-full group">
+                        <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
                           <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
@@ -339,9 +339,9 @@ export default function CommunityPage() {
                     </div>
                     <p className="text-xs text-muted-foreground mb-4">{social.description}</p>
                     <a href={social.href as any} target="_blank" rel="noopener noreferrer">
-                      <Button className="w-full">
+                      <Button className="w-full group transition-all duration-200 hover:scale-105">
                         Follow
-                        <ExternalLink className="ml-2 h-3 w-3" />
+                        <ExternalLink className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </a>
                   </CardContent>
@@ -385,7 +385,7 @@ export default function CommunityPage() {
                     </div>
                   </div>
 
-                  <Button className="w-full">
+                  <Button className="w-full transition-all duration-200 hover:scale-105">
                     Register Now
                   </Button>
                 </CardContent>
@@ -395,9 +395,9 @@ export default function CommunityPage() {
 
           <div className="text-center">
             <a href="/community/events">
-              <Button>
+              <Button className="group transition-all duration-200 hover:scale-105">
                 View All Events
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
           </div>

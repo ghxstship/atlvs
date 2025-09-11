@@ -311,13 +311,13 @@ export default function CareersPage() {
               Join a fast-growing company where your work directly impacts the future of production management.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild>
+              <Button asChild className="group transition-all duration-200 hover:scale-105">
                 <a href="#open-positions">
                   View Open Positions
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
-              <Button asChild>
+              <Button asChild variant="outline" className="transition-all duration-200 hover:scale-105">
                 <a href="#culture">
                   Learn About Our Culture
                 </a>
@@ -418,12 +418,12 @@ export default function CareersPage() {
                     </div>
 
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button variant="outline">
+                      <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                         Learn More
                       </Button>
-                      <Button variant="primary">
+                      <Button className="group transition-all duration-200 hover:scale-105">
                         Apply Now
-                        <ArrowRight className="ml-2 h-4 w-4" />
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </div>
                   </div>
@@ -436,7 +436,7 @@ export default function CareersPage() {
             <p className="text-muted-foreground mb-6">
               Don't see a role that fits? We're always looking for exceptional talent.
             </p>
-            <Button variant="outline">
+            <Button variant="outline" className="transition-all duration-200 hover:scale-105">
               Send Us Your Resume
             </Button>
           </div>
@@ -598,13 +598,13 @@ export default function CareersPage() {
                 Take the next step in your career and help us build the future of creative production management.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild>
+                <Button asChild className="group transition-all duration-200 hover:scale-105">
                   <a href="#open-positions">
                     Browse Open Positions
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </a>
                 </Button>
-                <Button variant="outline">
+                <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                   Join Our Talent Network
                 </Button>
               </div>

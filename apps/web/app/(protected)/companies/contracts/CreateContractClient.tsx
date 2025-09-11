@@ -230,7 +230,7 @@ export default function CreateContractClient({
         {/* Contract Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="h-5 w-5 text-blue-600" />
+            <FileText className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Contract Details</h3>
           </div>
           
@@ -298,7 +298,7 @@ export default function CreateContractClient({
         {/* Company & Project */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="h-5 w-5 text-green-600" />
+            <Building2 className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Company & Project</h3>
           </div>
           
@@ -342,7 +342,7 @@ export default function CreateContractClient({
         {/* Contract Terms */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-orange-600" />
+            <Calendar className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Contract Terms</h3>
           </div>
           
@@ -432,7 +432,7 @@ export default function CreateContractClient({
                 type="checkbox"
                 checked={formData.autoRenewal}
                 onChange={(e) => handleInputChange('autoRenewal', e.target.checked)}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label className="text-sm font-medium">
                 Enable Auto-Renewal

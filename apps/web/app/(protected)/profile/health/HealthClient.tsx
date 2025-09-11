@@ -492,7 +492,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
               type="checkbox"
               id="is_active"
               {...form.register('is_active')}
-              className="rounded border-gray-300"
+              className="rounded border-border"
             />
             <label htmlFor="is_active" className="text-sm font-medium">
               This record is currently active

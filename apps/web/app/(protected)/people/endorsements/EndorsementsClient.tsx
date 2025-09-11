@@ -176,7 +176,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+        className={`h-4 w-4 ${i < rating ? 'text-warning fill-current' : 'text-muted-foreground'}`}
       />
     ));
   };
@@ -198,8 +198,8 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
-          <p className="text-gray-600">{t('subtitle')}</p>
+          <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
+          <p className="text-muted-foreground">{t('subtitle')}</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)} className="flex items-center space-x-2">
           <Plus className="h-4 w-4" />
@@ -212,44 +212,44 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalEndorsements')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalEndorsements}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('totalEndorsements')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalEndorsements}</p>
             </div>
-            <ThumbsUp className="h-8 w-8 text-blue-500" />
+            <ThumbsUp className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('averageRating')}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('averageRating')}</p>
               <div className="flex items-center space-x-1">
-                <p className="text-2xl font-bold text-gray-900">{stats.averageRating.toFixed(1)}</p>
+                <p className="text-2xl font-bold text-foreground">{stats.averageRating.toFixed(1)}</p>
                 <div className="flex">{renderStars(Math.round(stats.averageRating))}</div>
               </div>
             </div>
-            <Star className="h-8 w-8 text-yellow-500" />
+            <Star className="h-8 w-8 text-warning" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('recentEndorsements')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.recentEndorsements}</p>
-              <p className="text-xs text-gray-500">{t('last30Days')}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('recentEndorsements')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.recentEndorsements}</p>
+              <p className="text-xs text-muted-foreground">{t('last30Days')}</p>
             </div>
-            <Calendar className="h-8 w-8 text-green-500" />
+            <Calendar className="h-8 w-8 text-success" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('topSkills')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.topSkills.length}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('topSkills')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.topSkills.length}</p>
             </div>
-            <MessageSquare className="h-8 w-8 text-purple-500" />
+            <MessageSquare className="h-8 w-8 text-secondary" />
           </div>
         </Card>
       </div>
@@ -260,7 +260,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -272,7 +272,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
             <select
               value={selectedRating}
               onChange={(e) => setSelectedRating(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allRatings')}</option>
               <option value="5">5 {t('stars')}</option>
@@ -290,7 +290,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
         <Card title={t('giveEndorsement')}>
           <div className="p-4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('endorsedPerson')}
               </label>
               <Input
@@ -300,7 +300,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('rating')}
               </label>
               <div className="flex items-center space-x-1">
@@ -308,23 +308,23 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                   <Star
                     key={i}
                     className={`h-6 w-6 cursor-pointer ${
-                      i < newEndorsement.rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                      i < newEndorsement.rating ? 'text-warning fill-current' : 'text-muted-foreground'
                     }`}
                     onClick={() => setNewEndorsement(prev => ({ ...prev, rating: i + 1 }))}
                   />
                 ))}
-                <span className="ml-2 text-sm text-gray-600">{newEndorsement.rating}/5</span>
+                <span className="ml-2 text-sm text-muted-foreground">{newEndorsement.rating}/5</span>
               </div>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('message')}
               </label>
               <textarea
                 value={newEndorsement.message}
                 onChange={(e) => setNewEndorsement(prev => ({ ...prev, message: e.target.value }))}
                 placeholder={t('messagePlaceholder')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 rows={4}
               />
             </div>
@@ -347,13 +347,13 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
             <div className="p-4">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center space-x-3">
-                  <User className="h-8 w-8 text-gray-400" />
+                  <User className="h-8 w-8 text-muted-foreground" />
                   <div>
-                    <div className="font-medium text-gray-900">
+                    <div className="font-medium text-foreground">
                       {endorsement.endorsed_person?.first_name} {endorsement.endorsed_person?.last_name}
                     </div>
                     {endorsement.endorsed_person?.role && (
-                      <div className="text-sm text-gray-500">{endorsement.endorsed_person.role}</div>
+                      <div className="text-sm text-muted-foreground">{endorsement.endorsed_person.role}</div>
                     )}
                   </div>
                 </div>
@@ -363,7 +363,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               </div>
 
               {endorsement.message && (
-                <div className="mb-3 text-gray-700 italic">
+                <div className="mb-3 text-foreground italic">
                   "{endorsement.message}"
                 </div>
               )}
@@ -372,7 +372,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                 <div className="mb-3">
                   <div className="flex flex-wrap gap-1">
                     {endorsement.skills.map((skill, index) => (
-                      <Badge key={index} className="bg-blue-100 text-blue-800">
+                      <Badge key={index} className="bg-primary/10 text-primary">
                         {skill}
                       </Badge>
                     ))}
@@ -380,7 +380,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                 </div>
               )}
 
-              <div className="flex items-center justify-between text-sm text-gray-500">
+              <div className="flex items-center justify-between text-sm text-muted-foreground">
                 <div className="flex items-center space-x-2">
                   <span>{t('endorsedBy')}</span>
                   <span className="font-medium">
@@ -400,9 +400,9 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
       {filteredEndorsements.length === 0 && (
         <Card>
           <div className="text-center py-8">
-            <Star className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">{t('noEndorsements')}</p>
-            <p className="text-sm text-gray-400 mt-2">{t('startEndorsing')}</p>
+            <Star className="h-12 w-12 text-muted mx-auto mb-4" />
+            <p className="text-muted-foreground">{t('noEndorsements')}</p>
+            <p className="text-sm text-muted-foreground mt-2">{t('startEndorsing')}</p>
           </div>
         </Card>
       )}

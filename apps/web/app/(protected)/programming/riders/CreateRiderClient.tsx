@@ -114,7 +114,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-red-600 bg-red-50 border border-red-200 rounded">
+            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
@@ -136,7 +136,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               ))}
             </select>
             {form.formState.errors.event_id && (
-              <div className="text-xs text-red-600">
+              <div className="text-xs text-destructive">
                 {form.formState.errors.event_id.message}
               </div>
             )}
@@ -154,7 +154,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               {...form.register('title')}
             />
             {form.formState.errors.title && (
-              <div className="text-xs text-red-600">
+              <div className="text-xs text-destructive">
                 {form.formState.errors.title.message}
               </div>
             )}

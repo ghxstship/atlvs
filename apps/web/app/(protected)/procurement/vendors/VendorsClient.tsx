@@ -83,10 +83,10 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
 
   const getStatusColor = (status: Vendor['status']) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'inactive': return 'bg-gray-100 text-gray-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': return 'bg-success/10 text-success-foreground';
+      case 'inactive': return 'bg-muted/50 text-muted-foreground';
+      case 'pending': return 'bg-warning/10 text-warning-foreground';
+      default: return 'bg-muted/50 text-muted-foreground';
     }
   };
 
@@ -99,7 +99,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
           <Star
             key={star}
             className={`h-4 w-4 ${
-              star <= rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
+              star <= rating ? 'text-warning fill-current' : 'text-muted-foreground'
             }`}
           />
         ))}
@@ -170,8 +170,8 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-100 rounded-lg">
-                    <Building2 className="h-5 w-5 text-blue-600" />
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Building2 className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-medium">{vendor.name}</h3>
@@ -204,7 +204,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                     <Mail className="h-4 w-4 text-foreground/50" />
                     <a 
                       href={`mailto:${vendor.email}`}
-                      className="text-blue-600 hover:underline"
+                      className="text-primary hover:underline"
                     >
                       {vendor.email}
                     </a>
@@ -216,7 +216,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                     <Phone className="h-4 w-4 text-foreground/50" />
                     <a 
                       href={`tel:${vendor.phone}`}
-                      className="text-blue-600 hover:underline"
+                      className="text-primary hover:underline"
                     >
                       {vendor.phone}
                     </a>
@@ -230,7 +230,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                       href={vendor.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-600 hover:underline"
+                      className="text-primary hover:underline"
                     >
                       Website
                     </a>

@@ -177,7 +177,7 @@ export default function CreateCompanyClient({
         {/* Company Overview */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="h-5 w-5 text-blue-600" />
+            <Building2 className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Company Information</h3>
           </div>
           
@@ -245,7 +245,7 @@ export default function CreateCompanyClient({
         {/* Contact Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Mail className="h-5 w-5 text-green-600" />
+            <Mail className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Contact Information</h3>
           </div>
           
@@ -296,7 +296,7 @@ export default function CreateCompanyClient({
         {/* Address Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-orange-600" />
+            <MapPin className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Address Information</h3>
           </div>
           

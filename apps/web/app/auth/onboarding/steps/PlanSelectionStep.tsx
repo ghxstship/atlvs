@@ -199,7 +199,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                   </div>
                   
                   {billingCycle === 'annual' && plan.price && (
-                    <p className="text-sm text-green-600">
+                    <p className="text-sm text-success">
                       Save ${getAnnualSavings(plan)} per year
                     </p>
                   )}
@@ -212,7 +212,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <Check className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                      <Check className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
                       <span className="text-sm text-foreground">{feature}</span>
                     </li>
                   ))}

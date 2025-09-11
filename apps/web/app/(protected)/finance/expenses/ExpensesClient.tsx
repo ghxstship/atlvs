@@ -386,7 +386,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                 <p className="text-sm text-foreground/70">Total Expenses</p>
                 <p className="text-2xl font-bold text-foreground">{expenses.length}</p>
               </div>
-              <Receipt className="h-8 w-8 text-blue-500" />
+              <Receipt className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -394,11 +394,11 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Amount</p>
-                <p className="text-2xl font-bold text-red-600">
+                <p className="text-2xl font-bold text-destructive">
                   {formatCurrency(expenses.reduce((sum, e) => sum + e.amount, 0))}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-red-500" />
+              <DollarSign className="h-8 w-8 text-destructive" />
             </div>
           </Card>
           
@@ -406,9 +406,9 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Pending Approval</p>
-                <p className="text-2xl font-bold text-yellow-600">{statusCounts.submitted}</p>
+                <p className="text-2xl font-bold text-warning">{statusCounts.submitted}</p>
               </div>
-              <Clock className="h-8 w-8 text-yellow-500" />
+              <Clock className="h-8 w-8 text-warning" />
             </div>
           </Card>
           
@@ -416,9 +416,9 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Approved</p>
-                <p className="text-2xl font-bold text-green-600">{statusCounts.approved}</p>
+                <p className="text-2xl font-bold text-success">{statusCounts.approved}</p>
               </div>
-              <Check className="h-8 w-8 text-green-500" />
+              <Check className="h-8 w-8 text-success" />
             </div>
           </Card>
         </div>
@@ -463,7 +463,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleSubmitExpense(expense.id);
                         }}
@@ -476,7 +476,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                         <Button
                           variant="ghost"
                          
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             handleApproveExpense(expense.id);
                           }}
@@ -487,7 +487,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                         <Button
                           variant="ghost"
                          
-                          onClick={(e) => {
+                          onClick={(e: React.MouseEvent) => {
                             e.stopPropagation();
                             const reason = prompt('Rejection reason:');
                             if (reason !== null) {
@@ -506,7 +506,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleEditExpense(expense);
                       }}
@@ -516,7 +516,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleDeleteExpense(expense.id);
                       }}

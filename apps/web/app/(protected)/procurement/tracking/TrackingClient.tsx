@@ -220,7 +220,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                         <div className="font-medium">
                           {formatDate(order.expected_delivery)}
                           {daysUntilDelivery !== null && (
-                            <span className={`ml-2 text-xs ${daysUntilDelivery < 0 ? 'text-red-600' : daysUntilDelivery <= 3 ? 'text-orange-600' : 'text-green-600'}`}>
+                            <span className={`ml-2 text-xs ${daysUntilDelivery < 0 ? 'text-destructive' : daysUntilDelivery <= 3 ? 'text-warning' : 'text-success'}`}>
                               ({daysUntilDelivery < 0 ? `${Math.abs(daysUntilDelivery)} days overdue` : 
                                 daysUntilDelivery === 0 ? 'Today' : 
                                 `${daysUntilDelivery} days`})

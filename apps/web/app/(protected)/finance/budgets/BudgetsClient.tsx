@@ -29,6 +29,7 @@ import {
   TrendingUp,
   TrendingDown
 } from 'lucide-react';
+import { BudgetUtilizationBar } from '../../components/ui/DynamicProgressBar';
 
 interface BudgetsClientProps {
   user: User;
@@ -167,12 +168,12 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
 
   const getBudgetStatus = (budget: Budget) => {
     const utilization = getBudgetUtilization(budget);
-    if (budget.status === 'cancelled') return { color: 'text-gray-500', label: 'Cancelled' };
-    if (budget.status === 'completed') return { color: 'text-green-600', label: 'Completed' };
-    if (utilization >= 100) return { color: 'text-red-600', label: 'Over Budget' };
-    if (utilization >= 90) return { color: 'text-orange-600', label: 'Near Limit' };
-    if (utilization >= 75) return { color: 'text-yellow-600', label: 'On Track' };
-    return { color: 'text-green-600', label: 'Under Budget' };
+    if (budget.status === 'cancelled') return { color: 'text-muted-foreground', label: 'Cancelled' };
+    if (budget.status === 'completed') return { color: 'text-success', label: 'Completed' };
+    if (utilization >= 100) return { color: 'text-destructive', label: 'Over Budget' };
+    if (utilization >= 90) return { color: 'text-warning', label: 'Near Limit' };
+    if (utilization >= 75) return { color: 'text-warning', label: 'On Track' };
+    return { color: 'text-success', label: 'Under Budget' };
   };
 
   const fieldConfigs: FieldConfig[] = [
@@ -302,7 +303,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
             <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <div className="flex gap-1 p-1 bg-muted rounded-lg">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
                
@@ -337,7 +338,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 <p className="text-sm text-foreground/70">Total Budgets</p>
                 <p className="text-2xl font-bold text-foreground">{budgets.length}</p>
               </div>
-              <DollarSign className="h-8 w-8 text-blue-500" />
+              <DollarSign className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -345,11 +346,11 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Allocated</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.amount, 0))}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-green-500" />
+              <TrendingUp className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -357,11 +358,11 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Spent</p>
-                <p className="text-2xl font-bold text-red-600">
+                <p className="text-2xl font-bold text-destructive">
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.spent, 0))}
                 </p>
               </div>
-              <TrendingDown className="h-8 w-8 text-red-500" />
+              <TrendingDown className="h-8 w-8 text-destructive" />
             </div>
           </Card>
           
@@ -376,7 +377,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   }%
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-purple-500" />
+              <CheckCircle className="h-8 w-8 text-secondary" />
             </div>
           </Card>
         </div>
@@ -416,21 +417,15 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                         <span className="text-foreground/70">Utilization</span>
                         <span className={`font-medium ${status.color}`}>{utilization.toFixed(1)}%</span>
                       </div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div 
-                          className={`h-2 rounded-full ${
-                            utilization >= 100 ? 'bg-red-500' :
-                            utilization >= 90 ? 'bg-orange-500' :
-                            utilization >= 75 ? 'bg-yellow-500' : 'bg-green-500'
-                          }`}
-                          style={{ width: `${Math.min(utilization, 100)}%` }}
-                        />
-                      </div>
+                      <BudgetUtilizationBar
+                        utilized={budget.spent || 0}
+                        total={budget.amount}
+                      />
                     </div>
                     
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">Remaining</span>
-                      <span className={`font-medium ${budget.amount - budget.spent >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                      <span className={`font-medium ${budget.amount - budget.spent >= 0 ? 'text-success' : 'text-destructive'}`}>
                         {formatCurrency(budget.amount - budget.spent, budget.currency)}
                       </span>
                     </div>
@@ -442,7 +437,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleEditBudget(budget);
                         }}
@@ -452,7 +447,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           handleDeleteBudget(budget.id);
                         }}
@@ -481,7 +476,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 </thead>
                 <tbody>
                   {budgets.map((budget) => (
-                    <tr key={budget.id} className="border-b hover:bg-gray-50">
+                    <tr key={budget.id} className="border-b hover:bg-muted/50">
                       <td className="p-2">{budget.name}</td>
                       <td className="p-2">{budget.category}</td>
                       <td className="p-2">${budget.amount?.toLocaleString()}</td>

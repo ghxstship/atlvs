@@ -140,7 +140,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
@@ -157,7 +157,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.review_period} 
             />
             {form.formState.errors.review_period ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.review_period.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.review_period.message)}</div> : null}
           </div>
 
           <div className="grid grid-cols-2 gap-3">
@@ -171,7 +171,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.reviewer_name} 
               />
               {form.formState.errors.reviewer_name ? 
-                <div className="text-xs text-red-600">{String(form.formState.errors.reviewer_name.message)}</div> : null}
+                <div className="text-xs text-destructive">{String(form.formState.errors.reviewer_name.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">
@@ -184,7 +184,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.reviewer_title} 
               />
               {form.formState.errors.reviewer_title ? 
-                <div className="text-xs text-red-600">{String(form.formState.errors.reviewer_title.message)}</div> : null}
+                <div className="text-xs text-destructive">{String(form.formState.errors.reviewer_title.message)}</div> : null}
             </div>
           </div>
 
@@ -317,7 +317,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.strengths} 
             />
             {form.formState.errors.strengths ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.strengths.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.strengths.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -331,7 +331,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.improvement_areas} 
             />
             {form.formState.errors.improvement_areas ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.improvement_areas.message)}</div> : null}
+              <div className="text-xs text-destructive">{String(form.formState.errors.improvement_areas.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
@@ -368,7 +368,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.review_date} 
               />
               {form.formState.errors.review_date ? 
-                <div className="text-xs text-red-600">{String(form.formState.errors.review_date.message)}</div> : null}
+                <div className="text-xs text-destructive">{String(form.formState.errors.review_date.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">

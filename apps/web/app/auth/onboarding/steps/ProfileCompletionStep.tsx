@@ -290,8 +290,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             </div>
 
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-600">{error}</p>
+              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+                <p className="text-sm text-destructive">{error}</p>
               </div>
             )}
           </div>
@@ -302,8 +302,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       <Card>
         <CardContent className="p-6">
           <div className="flex items-start space-x-3">
-            <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mt-0.5">
-              <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+            <div className="w-5 h-5 bg-info/10 rounded-full flex items-center justify-center mt-0.5">
+              <div className="w-2 h-2 bg-info rounded-full"></div>
             </div>
             <div>
               <h4 className="font-semibold text-foreground mb-1">Privacy & Visibility</h4>

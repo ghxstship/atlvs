@@ -177,8 +177,8 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
       >
         <form id="onboarding-task-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-purple-100 rounded-lg">
-              <UserPlus className="h-5 w-5 text-purple-600" />
+            <div className="p-2 bg-secondary/10 rounded-lg">
+              <UserPlus className="h-5 w-5 text-secondary" />
             </div>
             <div>
               <h3 className="font-medium">Onboarding Task Information</h3>
@@ -367,9 +367,9 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
           </div>
 
-          <div className="bg-purple-50 p-4 rounded-lg">
-            <h4 className="font-medium text-purple-900 mb-2">Onboarding Guidelines</h4>
-            <ul className="text-sm text-purple-800 space-y-1">
+          <div className="bg-secondary/5 p-4 rounded-lg">
+            <h4 className="font-medium text-secondary mb-2">Onboarding Guidelines</h4>
+            <ul className="text-sm text-secondary/80 space-y-1">
               <li>• Structure tasks in logical order from most critical to least critical</li>
               <li>• Provide clear instructions and completion criteria</li>
               <li>• Include all necessary resources and prerequisites</li>

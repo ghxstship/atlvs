@@ -346,7 +346,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="project">Project</option>
@@ -357,7 +357,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="assigned">Assigned</option>
@@ -385,7 +385,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       ) : (
         <div className="space-y-4">
           {filteredAssignments.map(assignment => (
-            <Card key={assignment.id} className={`hover:shadow-md transition-shadow ${isOverdue(assignment) ? 'border-red-200 bg-red-50' : ''}`}>
+            <Card key={assignment.id} className={`hover:shadow-md transition-shadow ${isOverdue(assignment) ? 'border-destructive/20 bg-destructive/5' : ''}`}>
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
@@ -441,7 +441,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                   </div>
                   <div>
                     <span className="text-xs text-muted-foreground block">Expected Return</span>
-                    <span className={`font-medium ${isOverdue(assignment) ? 'text-red-600' : ''}`}>
+                    <span className={`font-medium ${isOverdue(assignment) ? 'text-destructive' : ''}`}>
                       {assignment.expectedReturnDate ? formatDate(assignment.expectedReturnDate) : 'TBD'}
                     </span>
                   </div>
@@ -494,7 +494,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               <label className="block text-sm font-medium mb-1">Assignee Type</label>
               <select
                 defaultValue={selectedAssignment?.assigneeType}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="project">Project</option>
                 <option value="crew_member">Crew Member</option>
@@ -536,7 +536,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           <div>
             <label className="block text-sm font-medium mb-1">Notes</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Additional notes"
               defaultValue={selectedAssignment?.notes}

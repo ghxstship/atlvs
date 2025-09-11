@@ -82,7 +82,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
       ) : (
         <div className="text-xs text-foreground/60">Only owners and admins can manage organization domains.</div>
       )}
-      {error ? <div className="text-xs text-red-600">{error}</div> : null}
+      {error ? <div className="text-xs text-destructive">{error}</div> : null}
       <div className="rounded-md border">
         <table className="w-full text-sm">
           <thead>
@@ -99,9 +99,9 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
                 <td className="px-3 py-2">
                   <span className={
                     `inline-flex items-center rounded-full px-2 py-0.5 text-xs ` +
-                    (d.status === 'active' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
-                     d.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
-                     'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300')
+                    (d.status === 'active' ? 'bg-success/10 text-success' :
+                     d.status === 'pending' ? 'bg-warning/10 text-warning' :
+                     'bg-muted/10 text-muted-foreground')
                   }>
                     {d.status}
                   </span>

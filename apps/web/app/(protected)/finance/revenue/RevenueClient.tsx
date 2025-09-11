@@ -5,7 +5,6 @@ import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
   Card, 
-  Button, 
   Badge, 
   Skeleton,
   Drawer,
@@ -15,6 +14,7 @@ import {
   type FieldConfig,
   type DataRecord
 } from '@ghxstship/ui';
+import { StandardButton, StatusBadge, animationPresets } from '../../components/ui';
 import { 
   TrendingUp,
   Plus,
@@ -210,29 +210,21 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
   };
 
   const getStatusBadge = (status: string) => {
-    const statusConfig = {
-      projected: { variant: 'secondary' as const, label: 'Projected', color: 'text-blue-600' },
-      recognized: { variant: 'default' as const, label: 'Recognized', color: 'text-yellow-600' },
-      received: { variant: 'default' as const, label: 'Received', color: 'text-green-600' },
-      cancelled: { variant: 'destructive' as const, label: 'Cancelled', color: 'text-red-600' }
-    };
-    
-    const config = statusConfig[status as keyof typeof statusConfig] || statusConfig.projected;
-    return <Badge variant={config.variant}>{config.label}</Badge>;
+    return <StatusBadge status={status as any} />;
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'projected':
-        return <Target className="h-4 w-4 text-blue-500" />;
+        return <Target className="h-4 w-4 text-primary" />;
       case 'recognized':
-        return <Clock className="h-4 w-4 text-yellow-500" />;
+        return <Clock className="h-4 w-4 text-warning" />;
       case 'received':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-4 w-4 text-success" />;
       case 'cancelled':
-        return <AlertTriangle className="h-4 w-4 text-red-500" />;
+        return <AlertTriangle className="h-4 w-4 text-destructive" />;
       default:
-        return <Target className="h-4 w-4 text-gray-500" />;
+        return <Target className="h-4 w-4 text-muted-foreground" />;
     }
   };
 
@@ -374,25 +366,24 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
           </div>
           <div className="flex items-center space-x-3">
             <ViewSwitcher />
-            <Button onClick={handleCreateRevenue}>
+            <StandardButton onClick={handleCreateRevenue}>
               <Plus className="h-4 w-4 mr-2" />
               Add Revenue
-            </Button>
+            </StandardButton>
           </div>
         </div>
 
         {/* Status Filter Tabs */}
         <div className="flex space-x-1 bg-muted p-1 rounded-lg w-fit">
           {Object.entries(statusCounts).map(([status, count]) => (
-            <Button
+            <StandardButton
               key={status}
               variant={statusFilter === status ? 'primary' : 'ghost'}
-             
               onClick={() => setStatusFilter(status)}
               className="capitalize"
             >
               {status} ({count})
-            </Button>
+            </StandardButton>
           ))}
         </div>
 
@@ -402,11 +393,11 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Revenue</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(totalAmounts.total)}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-green-500" />
+              <DollarSign className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -414,12 +405,12 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Projected</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-primary">
                   {formatCurrency(totalAmounts.projected)}
                 </p>
                 <p className="text-xs text-foreground/60">{statusCounts.projected} items</p>
               </div>
-              <Target className="h-8 w-8 text-blue-500" />
+              <Target className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -427,12 +418,12 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Recognized</p>
-                <p className="text-2xl font-bold text-yellow-600">
+                <p className="text-2xl font-bold text-warning">
                   {formatCurrency(totalAmounts.recognized)}
                 </p>
                 <p className="text-xs text-foreground/60">{statusCounts.recognized} items</p>
               </div>
-              <Clock className="h-8 w-8 text-yellow-500" />
+              <Clock className="h-8 w-8 text-warning" />
             </div>
           </Card>
           
@@ -440,12 +431,12 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Received</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(totalAmounts.received)}
                 </p>
                 <p className="text-xs text-foreground/60">{statusCounts.received} items</p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-500" />
+              <CheckCircle className="h-8 w-8 text-success" />
             </div>
           </Card>
         </div>
@@ -454,7 +445,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {revenues.map((revenue) => (
-              <Card key={revenue.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewRevenue(revenue)}>
+              <Card key={revenue.id} className={`p-6 cursor-pointer ${animationPresets.cardInteractive}`} onClick={() => handleViewRevenue(revenue)}>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     {getStatusIcon(revenue.status)}
@@ -469,7 +460,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                 <div className="space-y-2 mb-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-foreground/70">Amount</span>
-                    <span className="font-medium text-green-600">{formatCurrency(revenue.amount, revenue.currency)}</span>
+                    <span className="font-medium text-success">{formatCurrency(revenue.amount, revenue.currency)}</span>
                   </div>
                   
                   <div className="flex justify-between text-sm">
@@ -480,7 +471,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                   {revenue.received_date && (
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">Received</span>
-                      <span className="font-medium text-green-600">{formatDate(revenue.received_date)}</span>
+                      <span className="font-medium text-success">{formatDate(revenue.received_date)}</span>
                     </div>
                   )}
                   
@@ -500,52 +491,52 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                 <div className="flex items-center justify-between pt-4 border-t border-border">
                   <div className="flex space-x-2">
                     {revenue.status === 'projected' && (
-                      <Button
+                      <StandardButton
                         variant="ghost"
-                       
+                        size="sm"
                         onClick={(e) => {
-                          e.stopPropagation();
+                          e?.stopPropagation();
                           handleRecognizeRevenue(revenue.id);
                         }}
                       >
                         Recognize
-                      </Button>
+                      </StandardButton>
                     )}
                     {revenue.status === 'recognized' && (
-                      <Button
+                      <StandardButton
                         variant="ghost"
-                       
+                        size="sm"
                         onClick={(e) => {
-                          e.stopPropagation();
+                          e?.stopPropagation();
                           handleReceiveRevenue(revenue.id);
                         }}
                       >
                         Mark Received
-                      </Button>
+                      </StandardButton>
                     )}
                   </div>
                   
                   <div className="flex space-x-2">
-                    <Button
+                    <StandardButton
                       variant="ghost"
-                     
+                      size="sm"
                       onClick={(e) => {
-                        e.stopPropagation();
+                        e?.stopPropagation();
                         handleEditRevenue(revenue);
                       }}
                     >
                       <Edit className="h-3 w-3" />
-                    </Button>
-                    <Button
+                    </StandardButton>
+                    <StandardButton
                       variant="ghost"
-                     
+                      size="sm"
                       onClick={(e) => {
-                        e.stopPropagation();
+                        e?.stopPropagation();
                         handleDeleteRevenue(revenue.id);
                       }}
                     >
                       <Trash2 className="h-3 w-3" />
-                    </Button>
+                    </StandardButton>
                   </div>
                 </div>
               </Card>
@@ -563,10 +554,10 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <TrendingUp className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
             <h3 className="text-lg font-semibold text-foreground mb-2">No revenue records found</h3>
             <p className="text-foreground/70 mb-4">Start tracking your revenue by adding your first record</p>
-            <Button onClick={handleCreateRevenue}>
+            <StandardButton onClick={handleCreateRevenue}>
               <Plus className="h-4 w-4 mr-2" />
               Add Revenue
-            </Button>
+            </StandardButton>
           </Card>
         )}
 

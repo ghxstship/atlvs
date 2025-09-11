@@ -265,7 +265,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Briefcase className="h-5 w-5 text-blue-600" />
+              <Briefcase className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Employment Details</h3>
             </div>
             
@@ -347,7 +347,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Award className="h-5 w-5 text-purple-600" />
+              <Award className="h-5 w-5 text-secondary" />
               <h3 className="text-lg font-semibold">Skills & Expertise</h3>
             </div>
             
@@ -375,7 +375,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                     <button
                       type="button"
                       onClick={() => removeSkill(skill)}
-                      className="ml-1 text-red-500 hover:text-red-700"
+                      className="ml-1 text-destructive hover:text-destructive/80"
                     >
                       ×
                     </button>
@@ -390,7 +390,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="h-5 w-5 text-green-600" />
+              <Users className="h-5 w-5 text-success" />
               <h3 className="text-lg font-semibold">Professional Bio</h3>
             </div>
             
@@ -409,7 +409,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="h-5 w-5 text-orange-600" />
+              <TrendingUp className="h-5 w-5 text-warning" />
               <h3 className="text-lg font-semibold">Career Development</h3>
             </div>
             
@@ -449,7 +449,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                         <button
                           type="button"
                           onClick={() => removeMentorshipInterest(interest)}
-                          className="ml-1 text-red-500 hover:text-red-700"
+                          className="ml-1 text-destructive hover:text-destructive/80"
                         >
                           ×
                         </button>
@@ -466,7 +466,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Target className="h-5 w-5 text-blue-600" />
+              <Target className="h-5 w-5 text-primary" />
               <h3 className="text-lg font-semibold">Online Presence</h3>
             </div>
             

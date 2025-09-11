@@ -84,8 +84,8 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
     <div className="space-y-8">
       <div className="text-center">
         <div className="mb-6">
-          <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="h-12 w-12 text-green-600" />
+          <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+            <CheckCircle className="h-12 w-12 text-success" />
           </div>
           <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
             WELCOME TO GHXSTSHIP!

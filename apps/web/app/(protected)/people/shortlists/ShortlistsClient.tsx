@@ -117,10 +117,10 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
   );
 
   const purposes = [
-    { value: 'hiring', label: t('hiring'), color: 'bg-blue-100 text-blue-800' },
-    { value: 'project', label: t('project'), color: 'bg-green-100 text-green-800' },
-    { value: 'event', label: t('event'), color: 'bg-purple-100 text-purple-800' },
-    { value: 'general', label: t('general'), color: 'bg-gray-100 text-gray-800' }
+    { value: 'hiring', label: t('hiring'), color: 'bg-primary/10 text-primary' },
+    { value: 'project', label: t('project'), color: 'bg-success/10 text-success' },
+    { value: 'event', label: t('event'), color: 'bg-secondary/10 text-secondary' },
+    { value: 'general', label: t('general'), color: 'bg-muted text-muted-foreground' }
   ];
 
   if (loading) {
@@ -140,8 +140,8 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">{t('title')}</h1>
-          <p className="text-gray-600">{t('subtitle')}</p>
+          <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
+          <p className="text-muted-foreground">{t('subtitle')}</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)} className="flex items-center space-x-2">
           <Plus className="h-4 w-4" />
@@ -155,7 +155,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -167,7 +167,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
             <select
               value={selectedPurpose}
               onChange={(e) => setSelectedPurpose(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allPurposes')}</option>
               {purposes.map(purpose => (
@@ -185,7 +185,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
         <Card title={t('createShortlist')}>
           <div className="p-4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('name')}
               </label>
               <Input
@@ -195,25 +195,25 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('description')}
               </label>
               <textarea
                 value={newShortlist.description}
                 onChange={(e) => setNewShortlist(prev => ({ ...prev, description: e.target.value }))}
                 placeholder={t('descriptionPlaceholder')}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 rows={3}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
+              <label className="block text-sm font-medium text-foreground mb-1">
                 {t('purpose')}
               </label>
               <select
                 value={newShortlist.purpose}
                 onChange={(e) => setNewShortlist(prev => ({ ...prev, purpose: e.target.value as any }))}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">{t('selectPurpose')}</option>
                 {purposes.map(purpose => (
@@ -244,9 +244,9 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-gray-900 mb-1">{shortlist.name}</h3>
+                    <h3 className="font-semibold text-foreground mb-1">{shortlist.name}</h3>
                     {shortlist.description && (
-                      <p className="text-sm text-gray-600 mb-2">{shortlist.description}</p>
+                      <p className="text-sm text-muted-foreground mb-2">{shortlist.description}</p>
                     )}
                   </div>
                   <div className="flex space-x-1">
@@ -265,18 +265,18 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
                       {purpose.label}
                     </Badge>
                   )}
-                  <div className="flex items-center text-sm text-gray-500">
+                  <div className="flex items-center text-sm text-muted-foreground">
                     <Users className="h-4 w-4 mr-1" />
                     {shortlist.member_count || 0} {t('members')}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-gray-400">
+                <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center">
                     <Calendar className="h-3 w-3 mr-1" />
                     {new Date(shortlist.created_at).toLocaleDateString()}
                   </div>
-                  <Badge className={shortlist.status === 'active' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800'}>
+                  <Badge className={shortlist.status === 'active' ? 'bg-success/10 text-success' : 'bg-muted text-muted-foreground'}>
                     {shortlist.status}
                   </Badge>
                 </div>
@@ -289,9 +289,9 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       {filteredShortlists.length === 0 && (
         <Card>
           <div className="text-center py-8">
-            <List className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">{t('noShortlists')}</p>
-            <p className="text-sm text-gray-400 mt-2">{t('createFirstShortlist')}</p>
+            <List className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <p className="text-muted-foreground">{t('noShortlists')}</p>
+            <p className="text-sm text-muted-foreground mt-2">{t('createFirstShortlist')}</p>
           </div>
         </Card>
       )}

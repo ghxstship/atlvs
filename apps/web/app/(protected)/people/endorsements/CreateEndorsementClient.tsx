@@ -213,8 +213,8 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
       >
         <form id="endorsement-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-yellow-100 rounded-lg">
-              <Star className="h-5 w-5 text-yellow-600" />
+            <div className="p-2 bg-warning/10 rounded-lg">
+              <Star className="h-5 w-5 text-warning" />
             </div>
             <div>
               <h3 className="font-medium">Endorsement Information</h3>
@@ -241,7 +241,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                 ))}
               </select>
               {errors.personId && (
-                <p className="text-sm text-red-600 mt-1">{errors.personId.message}</p>
+                <p className="text-sm text-destructive mt-1">{errors.personId.message}</p>
               )}
             </div>
 
@@ -277,7 +277,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                   <option value={5}>5 - Outstanding</option>
                 </select>
                 {errors.rating && (
-                  <p className="text-sm text-red-600 mt-1">{errors.rating.message}</p>
+                  <p className="text-sm text-destructive mt-1">{errors.rating.message}</p>
                 )}
               </div>
             </div>
@@ -321,9 +321,9 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
             </div>
           </div>
 
-          <div className="bg-yellow-50 p-4 rounded-lg">
-            <h4 className="font-medium text-yellow-900 mb-2">Endorsement Guidelines</h4>
-            <ul className="text-sm text-yellow-800 space-y-1">
+          <div className="bg-warning/5 p-4 rounded-lg">
+            <h4 className="font-medium text-warning mb-2">Endorsement Guidelines</h4>
+            <ul className="text-sm text-warning/80 space-y-1">
               <li>• Provide specific, constructive feedback with examples</li>
               <li>• Focus on observable behaviors and outcomes</li>
               <li>• Be fair and objective in your ratings</li>

@@ -19,9 +19,9 @@ export function ProductToggle({ atlvsEnabled, opendeckEnabled }: { atlvsEnabled:
   };
 
   const baseBtn =
-    "px-3 py-1.5 text-sm rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-brand-500";
+    "px-3 py-1.5 text-sm rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-ring";
   const activeCls = "bg-foreground text-background border-foreground";
-  const idleCls = "bg-background text-foreground border-neutral-300 hover:bg-neutral-50";
+  const idleCls = "bg-background text-foreground border-border hover:bg-muted/50";
   const disabledCls = "opacity-50 cursor-not-allowed";
 
   return (

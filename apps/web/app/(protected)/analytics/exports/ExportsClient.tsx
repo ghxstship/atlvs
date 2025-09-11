@@ -331,12 +331,12 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
 
   const getStatusColor = (status: ExportJob['status'] | ExportHistory['status']) => {
     switch (status) {
-      case 'active': return 'text-green-600';
-      case 'completed': return 'text-green-600';
-      case 'failed': return 'text-red-600';
-      case 'paused': return 'text-yellow-600';
-      case 'running': return 'text-blue-600';
-      default: return 'text-gray-600';
+      case 'active': return 'text-success';
+      case 'completed': return 'text-success';
+      case 'failed': return 'text-destructive';
+      case 'paused': return 'text-warning';
+      case 'running': return 'text-primary';
+      default: return 'text-muted-foreground';
     }
   };
 
@@ -357,10 +357,10 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-48 bg-gray-200 rounded"></div>
+              <div key={i} className="h-48 bg-muted rounded"></div>
             ))}
           </div>
         </div>
@@ -371,7 +371,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
   if (error) {
     return (
       <Card title="Error">
-        <div className="text-sm text-red-600">{error}</div>
+        <div className="text-sm text-destructive">{error}</div>
         <Button onClick={loadExportData} className="mt-4">
           Retry
         </Button>
@@ -384,8 +384,8 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Data Exports</h1>
-          <p className="text-sm text-gray-600">Schedule and manage data exports</p>
+          <h1 className="text-2xl font-bold text-foreground">Data Exports</h1>
+          <p className="text-sm text-muted-foreground">Schedule and manage data exports</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -394,14 +394,14 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
       </div>
 
       {/* Tabs */}
-      <div className="border-b border-gray-200">
+      <div className="border-b border-border">
         <nav className="-mb-px flex space-x-8">
           <button
             onClick={() => setActiveTab('jobs')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'jobs'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-muted'
             }`}
           >
             Export Jobs ({exportJobs.length})
@@ -410,8 +410,8 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             onClick={() => setActiveTab('history')}
             className={`py-2 px-1 border-b-2 font-medium text-sm ${
               activeTab === 'history'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                ? 'border-primary text-primary'
+                : 'border-transparent text-muted-foreground hover:text-foreground hover:border-muted'
             }`}
           >
             Export History ({exportHistory.length})
@@ -423,13 +423,13 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
         <>
           {/* Search */}
           <div className="relative">
-            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
             <input
               type="text"
               placeholder="Search export jobs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-10 pr-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
 
@@ -444,17 +444,17 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                   <Card key={job.id} className="p-6">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center space-x-3">
-                        <div className="p-2 bg-blue-100 rounded-lg">
-                          <FormatIcon className="h-5 w-5 text-blue-600" />
+                        <div className="p-2 bg-primary/10 rounded-lg">
+                          <FormatIcon className="h-5 w-5 text-primary" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-gray-900">{job.name}</h3>
+                          <h3 className="font-semibold text-foreground">{job.name}</h3>
                           <div className="flex items-center space-x-2 mt-1">
                             <StatusIcon className={`h-4 w-4 ${getStatusColor(job.status)}`} />
                             <Badge className={`text-xs ${
-                              job.status === 'active' ? 'bg-green-100 text-green-800' :
-                              job.status === 'paused' ? 'bg-yellow-100 text-yellow-800' :
-                              'bg-gray-100 text-gray-800'
+                              job.status === 'active' ? 'bg-success/10 text-success' :
+                              job.status === 'paused' ? 'bg-warning/10 text-warning' :
+                              'bg-muted text-muted-foreground'
                             }`}>
                               {job.status}
                             </Badge>
@@ -480,25 +480,25 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     </div>
 
                     {job.description && (
-                      <p className="text-sm text-gray-600 mb-4">{job.description}</p>
+                      <p className="text-sm text-muted-foreground mb-4">{job.description}</p>
                     )}
 
                     <div className="space-y-3">
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-500">Data Source:</span>
+                        <span className="text-muted-foreground">Data Source:</span>
                         <Badge variant="outline" className="text-xs">
                           {job.dataSource}
                         </Badge>
                       </div>
                       
                       <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-500">Format:</span>
+                        <span className="text-muted-foreground">Format:</span>
                         <span className="font-medium uppercase">{job.format}</span>
                       </div>
 
                       {job.schedule?.enabled && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-500">Schedule:</span>
+                          <span className="text-muted-foreground">Schedule:</span>
                           <Badge variant="outline" className="text-xs">
                             {job.schedule.frequency}
                           </Badge>
@@ -507,8 +507,8 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
 
                       {job.lastRun && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-500">Last run:</span>
-                          <span className="text-xs text-gray-600">
+                          <span className="text-muted-foreground">Last run:</span>
+                          <span className="text-xs text-muted-foreground">
                             {new Date(job.lastRun).toLocaleDateString()}
                           </span>
                         </div>
@@ -516,7 +516,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
 
                       {job.recordCount && (
                         <div className="flex items-center justify-between text-sm">
-                          <span className="text-gray-500">Records:</span>
+                          <span className="text-muted-foreground">Records:</span>
                           <span className="font-medium">{job.recordCount.toLocaleString()}</span>
                         </div>
                       )}
@@ -555,11 +555,11 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             </div>
           ) : (
             <Card className="p-8 text-center">
-              <Archive className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <Archive className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-foreground mb-2">
                 No export jobs found
               </h3>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-muted-foreground mb-4">
                 {searchTerm 
                   ? 'Try adjusting your search terms'
                   : 'Create your first export job to get started'
@@ -587,10 +587,10 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <div className="flex items-center space-x-4">
                       <StatusIcon className={`h-5 w-5 ${getStatusColor(entry.status)}`} />
                       <div>
-                        <h4 className="font-medium text-gray-900">
+                        <h4 className="font-medium text-foreground">
                           {job?.name || 'Unknown Job'}
                         </h4>
-                        <div className="flex items-center space-x-4 text-sm text-gray-500">
+                        <div className="flex items-center space-x-4 text-sm text-muted-foreground">
                           <span>Started: {new Date(entry.startedAt).toLocaleString()}</span>
                           {entry.completedAt && (
                             <span>Completed: {new Date(entry.completedAt).toLocaleString()}</span>
@@ -603,7 +603,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                           )}
                         </div>
                         {entry.errorMessage && (
-                          <div className="text-sm text-red-600 mt-1">
+                          <div className="text-sm text-destructive mt-1">
                             Error: {entry.errorMessage}
                           </div>
                         )}
@@ -626,11 +626,11 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             })
           ) : (
             <Card className="p-8 text-center">
-              <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-gray-900 mb-2">
+              <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-foreground mb-2">
                 No export history
               </h3>
-              <p className="text-sm text-gray-600">
+              <p className="text-sm text-muted-foreground">
                 Export history will appear here once you run some export jobs
               </p>
             </Card>
@@ -659,39 +659,39 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             >
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Export Name
                   </label>
                   <input
                     name="name"
                     type="text"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="e.g., Monthly Financial Export"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Description
                   </label>
                   <textarea
                     name="description"
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Brief description of this export..."
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Data Source
                     </label>
                     <select
                       name="dataSource"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="projects">Projects</option>
                       <option value="people">People</option>
@@ -702,13 +702,13 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Export Format
                     </label>
                     <select
                       name="format"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="csv">CSV</option>
                       <option value="xlsx">Excel (XLSX)</option>

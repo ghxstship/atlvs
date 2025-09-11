@@ -202,16 +202,16 @@ export default function InviteMemberClient({ orgId, role }: Props) {
         {emailDomain ? (
           <div className="text-xs flex items-center gap-2">
             {domainRecord && domainRecord.status === 'active' ? (
-              <span className="text-green-700 dark:text-green-300">Domain matches active organization domain — seat not counted.</span>
+              <span className="text-success">Domain matches active organization domain — seat not counted.</span>
             ) : domainRecord && domainRecord.status === 'pending' ? (
-              <span className="text-amber-700 dark:text-amber-300">Domain is pending verification — may not count toward domain-unlimited yet.</span>
+              <span className="text-warning">Domain is pending verification — may not count toward domain-unlimited yet.</span>
             ) : (
               <>
                 <span className="text-foreground/60">External domain — will count against seat limit if enforced.</span>
                 <Link
                   href={{ pathname: '/settings/organization/domains', query: emailDomain ? { suggest: emailDomain  as any} : {} }}
                   title="Add your organization email domain(s). When seat policy is domain-unlimited, invites matching active domains do not consume seats."
-                  className="inline-flex items-center rounded-md border px-2 py-1 text-[11px] hover:bg-zinc-50 dark:hover:bg-zinc-800"
+                  className="inline-flex items-center rounded-md border px-2 py-1 text-[11px] hover:bg-muted/50"
                 >
                   Manage domains
                 </Link>
@@ -219,8 +219,8 @@ export default function InviteMemberClient({ orgId, role }: Props) {
             )}
           </div>
         ) : null}
-        {error ? <div className="text-xs text-red-600">{error}</div> : null}
-        {result ? <div className="text-xs text-green-600">{result}</div> : null}
+        {error ? <div className="text-xs text-destructive">{error}</div> : null}
+        {result ? <div className="text-xs text-success">{result}</div> : null}
       </div>
 
       <div className="space-y-2">
@@ -267,10 +267,10 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                 <td className="px-3 py-2">
                   <span className={
                     `inline-flex items-center rounded-full px-2 py-0.5 text-xs ` +
-                    (inv.status === 'pending' ? 'bg-amber-100 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' :
-                     inv.status === 'accepted' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-300' :
-                     inv.status === 'revoked' ? 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300' :
-                     'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300')
+                    (inv.status === 'pending' ? 'bg-warning/10 text-warning' :
+                     inv.status === 'accepted' ? 'bg-success/10 text-success' :
+                     inv.status === 'revoked' ? 'bg-muted/10 text-muted-foreground' :
+                     'bg-muted/10 text-muted-foreground')
                   }>
                     {inv.status}
                   </span>

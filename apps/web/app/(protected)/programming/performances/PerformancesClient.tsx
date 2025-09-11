@@ -256,19 +256,19 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'planning':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
       case 'rehearsal':
-        return 'text-yellow-600 bg-yellow-50';
+        return 'text-warning bg-warning/10';
       case 'ready':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-primary bg-primary/10';
       case 'live':
-        return 'text-green-600 bg-green-50';
+        return 'text-success bg-success/10';
       case 'completed':
-        return 'text-purple-600 bg-purple-50';
+        return 'text-secondary bg-secondary/10';
       case 'cancelled':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive bg-destructive/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
     }
   };
 
@@ -323,8 +323,8 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-blue-50 rounded-lg">
-                    <Calendar className="h-5 w-5 text-blue-600" />
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Calendar className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -337,8 +337,8 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-green-50 rounded-lg">
-                    <Music className="h-5 w-5 text-green-600" />
+                  <div className="p-2 bg-success/10 rounded-lg">
+                    <Music className="h-5 w-5 text-success" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -351,8 +351,8 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-purple-50 rounded-lg">
-                    <Users className="h-5 w-5 text-purple-600" />
+                  <div className="p-2 bg-secondary/10 rounded-lg">
+                    <Users className="h-5 w-5 text-secondary" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -365,8 +365,8 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               
               <Card className="p-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-2 bg-yellow-50 rounded-lg">
-                    <Star className="h-5 w-5 text-yellow-600" />
+                  <div className="p-2 bg-warning/10 rounded-lg">
+                    <Star className="h-5 w-5 text-warning" />
                   </div>
                   <div>
                     <div className="text-2xl font-bold">
@@ -471,21 +471,21 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {/* Performance Metrics */}
                   <div className="grid grid-cols-3 gap-4 pt-4 border-t">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-blue-600">{selectedRecord.lineup_count || 0}</div>
+                      <div className="text-2xl font-bold text-primary">{selectedRecord.lineup_count || 0}</div>
                       <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
                         <Users className="h-3 w-3" />
                         Performers
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-green-600">{selectedRecord.riders_count || 0}</div>
+                      <div className="text-2xl font-bold text-success">{selectedRecord.riders_count || 0}</div>
                       <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
                         <FileText className="h-3 w-3" />
                         Riders
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-purple-600">{selectedRecord.call_sheets_count || 0}</div>
+                      <div className="text-2xl font-bold text-secondary">{selectedRecord.call_sheets_count || 0}</div>
                       <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
                         <Calendar className="h-3 w-3" />
                         Call Sheets

@@ -218,7 +218,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
+        className={`h-4 w-4 ${i < rating ? 'text-warning fill-current' : 'text-muted-foreground'}`}
       />
     ));
   };
@@ -284,8 +284,8 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
-                    <div className="h-10 w-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <User className="h-5 w-5 text-blue-600" />
+                    <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
+                      <User className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <h3 className="font-semibold">{endorsement.endorser_name}</h3>
@@ -323,7 +323,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                   </div>
                 </div>
 
-                <blockquote className="text-muted-foreground italic mb-4 border-l-4 border-blue-200 pl-4">
+                <blockquote className="text-muted-foreground italic mb-4 border-l-4 border-primary/20 pl-4">
                   "{endorsement.endorsement_text}"
                 </blockquote>
 
@@ -425,7 +425,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                   <button
                     type="button"
                     onClick={() => removeSkill(skill)}
-                    className="ml-1 text-red-500 hover:text-red-700"
+                    className="ml-1 text-destructive hover:text-destructive/80"
                   >
                     ×
                   </button>
@@ -433,7 +433,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               ))}
             </div>
             {form.formState.errors.skills_endorsed && (
-              <p className="text-sm text-red-600 mt-1">
+              <p className="text-sm text-destructive mt-1">
                 {form.formState.errors.skills_endorsed.message}
               </p>
             )}
@@ -455,7 +455,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                 type="checkbox"
                 id="is_public"
                 {...form.register('is_public')}
-                className="rounded border-gray-300"
+                className="rounded border-border"
               />
               <label htmlFor="is_public" className="text-sm font-medium">
                 Make this endorsement public

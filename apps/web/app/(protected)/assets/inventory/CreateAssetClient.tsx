@@ -207,7 +207,7 @@ export default function CreateAssetClient({
         {/* Basic Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Package className="h-5 w-5 text-blue-600" />
+            <Package className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Basic Information</h3>
           </div>
           
@@ -291,7 +291,7 @@ export default function CreateAssetClient({
         {/* Identification */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Tag className="h-5 w-5 text-green-600" />
+            <Tag className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Identification</h3>
           </div>
           
@@ -360,7 +360,7 @@ export default function CreateAssetClient({
         {/* Financial Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-orange-600" />
+            <DollarSign className="h-5 w-5 text-warning" />
             <h3 className="font-semibold">Financial Information</h3>
           </div>
           
@@ -410,7 +410,7 @@ export default function CreateAssetClient({
         {/* Location & Notes */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-purple-600" />
+            <MapPin className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Location & Notes</h3>
           </div>
           

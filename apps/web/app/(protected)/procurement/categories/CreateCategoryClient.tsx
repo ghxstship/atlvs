@@ -169,8 +169,8 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
       >
         <form id="category-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <Tag className="h-5 w-5 text-green-600" />
+            <div className="p-2 bg-success/10 rounded-lg">
+              <Tag className="h-5 w-5 text-success" />
             </div>
             <div>
               <h3 className="font-medium">Category Information</h3>
@@ -260,9 +260,9 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
           </div>
 
-          <div className="bg-blue-50 p-4 rounded-lg">
-            <h4 className="font-medium text-blue-900 mb-2">Category Guidelines</h4>
-            <ul className="text-sm text-blue-800 space-y-1">
+          <div className="bg-primary/5 p-4 rounded-lg">
+            <h4 className="font-medium text-primary mb-2">Category Guidelines</h4>
+            <ul className="text-sm text-primary/80 space-y-1">
               <li>• Categories help organize products and services for easier management</li>
               <li>• Choose descriptive names that clearly identify the category purpose</li>
               <li>• Use colors to visually distinguish categories in lists and reports</li>

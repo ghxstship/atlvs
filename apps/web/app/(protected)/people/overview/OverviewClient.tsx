@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Badge } from '@ghxstship/ui';
+import { Card, Badge, Button } from '@ghxstship/ui';
+import { CompletionBar } from '../../components/ui/DynamicProgressBar';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Users, Shield, Award, Star, Network, List, TrendingUp, Calendar } from 'lucide-react';
 
@@ -114,12 +115,12 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
   }
 
   const quickActions = [
-    { icon: Users, label: t('viewDirectory'), href: '/people/directory', color: 'bg-blue-500' },
-    { icon: Shield, label: t('manageRoles'), href: '/people/roles', color: 'bg-purple-500' },
-    { icon: Award, label: t('viewCompetencies'), href: '/people/competencies', color: 'bg-green-500' },
-    { icon: List, label: t('viewShortlists'), href: '/people/shortlists', color: 'bg-orange-500' },
-    { icon: Star, label: t('viewEndorsements'), href: '/people/endorsements', color: 'bg-pink-500' },
-    { icon: Network, label: t('viewNetwork'), href: '/people/network', color: 'bg-indigo-500' }
+    { icon: Users, label: t('viewDirectory'), href: '/people/directory', color: 'bg-primary' },
+    { icon: Shield, label: t('manageRoles'), href: '/people/roles', color: 'bg-secondary' },
+    { icon: Award, label: t('viewCompetencies'), href: '/people/competencies', color: 'bg-success' },
+    { icon: List, label: t('viewShortlists'), href: '/people/shortlists', color: 'bg-warning' },
+    { icon: Star, label: t('viewEndorsements'), href: '/people/endorsements', color: 'bg-accent' },
+    { icon: Network, label: t('viewNetwork'), href: '/people/network', color: 'bg-secondary' }
   ];
 
   return (
@@ -129,43 +130,43 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalPeople')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalPeople}</p>
-              <p className="text-xs text-green-600">
+              <p className="text-sm font-medium text-muted-foreground">{t('totalPeople')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalPeople}</p>
+              <p className="text-xs text-success">
                 {stats.activePeople} {t('active')}
               </p>
             </div>
-            <Users className="h-8 w-8 text-blue-500" />
+            <Users className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalRoles')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalRoles}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('totalRoles')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalRoles}</p>
             </div>
-            <Shield className="h-8 w-8 text-purple-500" />
+            <Shield className="h-8 w-8 text-secondary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalCompetencies')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalCompetencies}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('totalCompetencies')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalCompetencies}</p>
             </div>
-            <Award className="h-8 w-8 text-green-500" />
+            <Award className="h-8 w-8 text-success" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-gray-600">{t('totalEndorsements')}</p>
-              <p className="text-2xl font-bold text-gray-900">{stats.totalEndorsements}</p>
+              <p className="text-sm font-medium text-muted-foreground">{t('totalEndorsements')}</p>
+              <p className="text-2xl font-bold text-foreground">{stats.totalEndorsements}</p>
             </div>
-            <Star className="h-8 w-8 text-yellow-500" />
+            <Star className="h-8 w-8 text-warning" />
           </div>
         </Card>
       </div>
@@ -177,12 +178,12 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <a
               key={index}
               href={action.href}
-              className="flex items-center space-x-3 p-4 border border-gray-200 rounded-lg hover:shadow-md transition-shadow cursor-pointer"
+              className="flex items-center space-x-3 p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer"
             >
               <div className={`p-2 rounded-lg ${action.color}`}>
                 <action.icon className="h-5 w-5 text-white" />
               </div>
-              <span className="text-sm font-medium text-gray-900">{action.label}</span>
+              <span className="text-sm font-medium text-foreground">{action.label}</span>
             </a>
           ))}
         </div>
@@ -193,26 +194,24 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card title={t('peopleByStatus')}>
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('active')}</span>
+              <span className="text-sm text-muted-foreground">{t('active')}</span>
               <div className="flex items-center space-x-2">
-                <div className="w-24 bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-green-500 h-2 rounded-full" 
-                    style={{ width: `${stats.totalPeople > 0 ? (stats.activePeople / stats.totalPeople) * 100 : 0}%` }}
-                  ></div>
-                </div>
+                <CompletionBar
+                  completed={stats.activePeople}
+                  total={stats.totalPeople}
+                  className="w-24"
+                />
                 <span className="text-sm font-medium">{stats.activePeople}</span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('inactive')}</span>
+              <span className="text-sm text-muted-foreground">{t('inactive')}</span>
               <div className="flex items-center space-x-2">
-                <div className="w-24 bg-gray-200 rounded-full h-2">
-                  <div 
-                    className="bg-yellow-500 h-2 rounded-full" 
-                    style={{ width: `${stats.totalPeople > 0 ? ((stats.totalPeople - stats.activePeople) / stats.totalPeople) * 100 : 0}%` }}
-                  ></div>
-                </div>
+                <CompletionBar
+                  completed={stats.totalPeople - stats.activePeople}
+                  total={stats.totalPeople}
+                  className="w-24"
+                />
                 <span className="text-sm font-medium">{stats.totalPeople - stats.activePeople}</span>
               </div>
             </div>
@@ -222,28 +221,28 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card title={t('moduleStatus')}>
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('directory')}</span>
-              <Badge className="bg-green-100 text-green-800">{t('active')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('directory')}</span>
+              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('roles')}</span>
-              <Badge className="bg-green-100 text-green-800">{t('active')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('roles')}</span>
+              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('competencies')}</span>
-              <Badge className="bg-green-100 text-green-800">{t('active')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('competencies')}</span>
+              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('endorsements')}</span>
-              <Badge className="bg-yellow-100 text-yellow-800">{t('beta')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('endorsements')}</span>
+              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('shortlists')}</span>
-              <Badge className="bg-yellow-100 text-yellow-800">{t('beta')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('shortlists')}</span>
+              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-gray-600">{t('network')}</span>
-              <Badge className="bg-yellow-100 text-yellow-800">{t('beta')}</Badge>
+              <span className="text-sm text-muted-foreground">{t('network')}</span>
+              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
             </div>
           </div>
         </Card>
@@ -253,9 +252,9 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       <Card title={t('recentActivity')}>
         <div className="p-4">
           <div className="text-center py-8">
-            <Calendar className="h-12 w-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-500">{t('noRecentActivity')}</p>
-            <p className="text-sm text-gray-400 mt-2">{t('activityWillAppearHere')}</p>
+            <Calendar className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
+            <p className="text-muted-foreground">{t('noRecentActivity')}</p>
+            <p className="text-sm text-muted-foreground/70 mt-2">{t('activityWillAppearHere')}</p>
           </div>
         </div>
       </Card>

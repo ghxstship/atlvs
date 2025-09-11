@@ -81,10 +81,10 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'inactive': return 'bg-yellow-100 text-yellow-800';
-      case 'terminated': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'active': return 'bg-success/10 text-success';
+      case 'inactive': return 'bg-warning/10 text-warning';
+      case 'terminated': return 'bg-destructive/10 text-destructive';
+      default: return 'bg-muted text-muted-foreground';
     }
   };
 
@@ -107,7 +107,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           {/* Search and Filters */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
@@ -119,7 +119,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
             <select
               value={selectedDepartment}
               onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allDepartments')}</option>
               {departments.map(dept => (
@@ -130,7 +130,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allStatuses')}</option>
               <option value="active">{t('active')}</option>
@@ -145,7 +145,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           </div>
 
           {/* Results Summary */}
-          <div className="text-sm text-gray-600">
+          <div className="text-sm text-muted-foreground">
             {t('resultsCount', { count: filteredPeople.length, total: people.length })}
           </div>
 
@@ -154,7 +154,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
             {filteredPeople.map((person) => (
               <div
                 key={person.id}
-                className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
+                className="border border-border rounded-lg p-4 hover:shadow-md transition-shadow cursor-pointer"
               >
                 <div className="flex items-start space-x-3">
                   <Avatar
@@ -166,7 +166,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium text-gray-900 truncate">
+                      <h3 className="text-sm font-medium text-foreground truncate">
                         {person.first_name} {person.last_name}
                       </h3>
                       <Badge className={getStatusColor(person.status)}>
@@ -175,30 +175,30 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
                     </div>
                     
                     {person.role && (
-                      <p className="text-sm text-gray-600 truncate">{person.role}</p>
+                      <p className="text-sm text-muted-foreground truncate">{person.role}</p>
                     )}
                     
                     {person.department && (
-                      <p className="text-xs text-gray-500 truncate">{person.department}</p>
+                      <p className="text-xs text-muted-foreground truncate">{person.department}</p>
                     )}
 
                     <div className="mt-2 space-y-1">
                       {person.email && (
-                        <div className="flex items-center text-xs text-gray-500">
+                        <div className="flex items-center text-xs text-muted-foreground">
                           <Mail className="h-3 w-3 mr-1" />
                           <span className="truncate">{person.email}</span>
                         </div>
                       )}
                       
                       {person.phone && (
-                        <div className="flex items-center text-xs text-gray-500">
+                        <div className="flex items-center text-xs text-muted-foreground">
                           <Phone className="h-3 w-3 mr-1" />
                           <span>{person.phone}</span>
                         </div>
                       )}
                       
                       {person.location && (
-                        <div className="flex items-center text-xs text-gray-500">
+                        <div className="flex items-center text-xs text-muted-foreground">
                           <MapPin className="h-3 w-3 mr-1" />
                           <span className="truncate">{person.location}</span>
                         </div>
@@ -212,7 +212,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
           {filteredPeople.length === 0 && (
             <div className="text-center py-8">
-              <p className="text-gray-500">{t('noPeopleFound')}</p>
+              <p className="text-muted-foreground">{t('noPeopleFound')}</p>
             </div>
           )}
         </div>

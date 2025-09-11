@@ -210,9 +210,9 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
 
   const getVarianceColor = (variance?: number) => {
     if (!variance) return 'text-foreground/70';
-    if (Math.abs(variance) <= 5) return 'text-green-600';
-    if (Math.abs(variance) <= 15) return 'text-yellow-600';
-    return 'text-red-600';
+    if (Math.abs(variance) <= 5) return 'text-success';
+    if (Math.abs(variance) <= 15) return 'text-warning';
+    return 'text-destructive';
   };
 
   const getConfidenceBadge = (level: string) => {
@@ -229,15 +229,15 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'revenue':
-        return <TrendingUp className="h-5 w-5 text-green-500" />;
+        return <TrendingUp className="h-5 w-5 text-success" />;
       case 'expense':
-        return <TrendingUp className="h-5 w-5 text-red-500 rotate-180" />;
+        return <TrendingUp className="h-5 w-5 text-destructive rotate-180" />;
       case 'budget':
-        return <Target className="h-5 w-5 text-blue-500" />;
+        return <Target className="h-5 w-5 text-primary" />;
       case 'cash_flow':
-        return <Activity className="h-5 w-5 text-purple-500" />;
+        return <Activity className="h-5 w-5 text-secondary" />;
       default:
-        return <BarChart3 className="h-5 w-5 text-gray-500" />;
+        return <BarChart3 className="h-5 w-5 text-muted-foreground" />;
     }
   };
 
@@ -445,7 +445,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 <p className="text-2xl font-bold text-foreground">{forecasts.length}</p>
                 <p className="text-xs text-foreground/60">{analytics.completedForecasts} completed</p>
               </div>
-              <BarChart3 className="h-8 w-8 text-blue-500" />
+              <BarChart3 className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -453,11 +453,11 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Projected</p>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-primary">
                   {formatCurrency(analytics.totalProjected)}
                 </p>
               </div>
-              <Target className="h-8 w-8 text-blue-500" />
+              <Target className="h-8 w-8 text-primary" />
             </div>
           </Card>
           
@@ -465,11 +465,11 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Total Actual</p>
-                <p className="text-2xl font-bold text-green-600">
+                <p className="text-2xl font-bold text-success">
                   {formatCurrency(analytics.totalActual)}
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-green-500" />
+              <CheckCircle className="h-8 w-8 text-success" />
             </div>
           </Card>
           
@@ -477,12 +477,12 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-foreground/70">Avg Accuracy</p>
-                <p className="text-2xl font-bold text-purple-600">
+                <p className="text-2xl font-bold text-secondary">
                   {analytics.averageAccuracy > 0 ? `${(100 - analytics.averageAccuracy).toFixed(1)}%` : 'N/A'}
                 </p>
                 <p className="text-xs text-foreground/60">forecast accuracy</p>
               </div>
-              <PieChart className="h-8 w-8 text-purple-500" />
+              <PieChart className="h-8 w-8 text-secondary" />
             </div>
           </Card>
         </div>
@@ -506,13 +506,13 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 <div className="space-y-3 mb-4">
                   <div className="flex justify-between text-sm">
                     <span className="text-foreground/70">Projected</span>
-                    <span className="font-medium text-blue-600">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
+                    <span className="font-medium text-primary">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
                   </div>
                   
                   {forecast.actual_amount !== null && (
                     <div className="flex justify-between text-sm">
                       <span className="text-foreground/70">Actual</span>
-                      <span className="font-medium text-green-600">{formatCurrency(forecast.actual_amount || 0, forecast.currency)}</span>
+                      <span className="font-medium text-success">{formatCurrency(forecast.actual_amount || 0, forecast.currency)}</span>
                     </div>
                   )}
                   
@@ -546,7 +546,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                       <Button
                         variant="ghost"
                        
-                        onClick={(e) => {
+                        onClick={(e: React.MouseEvent) => {
                           e.stopPropagation();
                           const actual = prompt('Enter actual amount:');
                           if (actual !== null && !isNaN(Number(actual))) {
@@ -563,7 +563,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleEditForecast(forecast);
                       }}
@@ -573,7 +573,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                     <Button
                       variant="ghost"
                      
-                      onClick={(e) => {
+                      onClick={(e: React.MouseEvent) => {
                         e.stopPropagation();
                         handleDeleteForecast(forecast.id);
                       }}

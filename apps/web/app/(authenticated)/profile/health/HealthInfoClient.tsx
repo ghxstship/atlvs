@@ -228,14 +228,14 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="font-semibold flex items-center">
-            <Heart className="w-5 h-5 mr-2 text-red-500" />
+            <Heart className="w-5 h-5 mr-2 text-destructive" />
             Basic Information
           </h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Blood Type</label>
+              <label className="block text-sm font-medium text-foreground mb-1">Blood Type</label>
               <Select
                 value={formData.blood_type || ''}
                 onValueChange={(value: string) => setFormData({ ...formData, blood_type: value })}
@@ -274,7 +274,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="font-semibold flex items-center">
-            <AlertCircle className="w-5 h-5 mr-2 text-orange-500" />
+            <AlertCircle className="w-5 h-5 mr-2 text-warning" />
             Allergies
           </h3>
         </CardHeader>
@@ -316,7 +316,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="font-semibold flex items-center">
-            <Pill className="w-5 h-5 mr-2 text-blue-500" />
+            <Pill className="w-5 h-5 mr-2 text-primary" />
             Current Medications
           </h3>
         </CardHeader>
@@ -384,7 +384,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="font-semibold flex items-center">
-            <Activity className="w-5 h-5 mr-2 text-purple-500" />
+            <Activity className="w-5 h-5 mr-2 text-secondary" />
             Medical Conditions
           </h3>
         </CardHeader>

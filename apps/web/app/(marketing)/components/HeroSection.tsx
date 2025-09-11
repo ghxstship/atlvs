@@ -2,10 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Button } from '@ghxstship/ui';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
 import { Anton } from 'next/font/google';
+import { StandardButton, animationPresets } from '../../(protected)/components/ui';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -71,7 +71,8 @@ export function HeroSection() {
                     <span
                       key={feature}
                       className={cn(
-                        "absolute transition-all duration-500",
+                        "absolute",
+                        animationPresets.fadeIn,
                         index === currentFeature
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-2"
@@ -104,15 +105,15 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <StandardButton className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </Button>
+                </StandardButton>
               </Link>
-              <Button className="w-full sm:w-auto group">
+              <StandardButton variant="outline" className="w-full sm:w-auto group">
                 <Play className="mr-2 h-4 w-4" />
                 Watch Demo
-              </Button>
+              </StandardButton>
             </div>
 
             {/* Stats */}
@@ -141,13 +142,13 @@ export function HeroSection() {
               {/* Browser Chrome */}
               <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
                 <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-destructive"></div>
+                  <div className="w-3 h-3 rounded-full bg-warning"></div>
+                  <div className="w-3 h-3 rounded-full bg-success"></div>
                 </div>
                 <div className="flex-1 text-center">
                   <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                    <div className="w-3 h-3 text-green-500">🔒</div>
+                    <div className="w-3 h-3 text-success">🔒</div>
                     app.ghxstship.com
                   </div>
                 </div>
@@ -162,7 +163,7 @@ export function HeroSection() {
                     <p className="text-sm text-muted-foreground">Main Deck Takeover</p>
                   </div>
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                     <span className="text-xs text-muted-foreground">Live</span>
                   </div>
                 </div>

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Button, Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
+import { StandardButton, animationPresets } from '../components/ui';
 import { 
   Briefcase, DollarSign, Users, TrendingUp, Package, Clock, Star, 
   MessageSquare, FileText, Award, Target, Calendar, BarChart3,
@@ -179,12 +180,12 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
             <div>
               <p className="text-sm text-muted-foreground">Total Earnings</p>
               <p className="text-2xl font-bold">${stats.vendor.totalEarnings.toLocaleString()}</p>
-              <p className="text-xs text-green-600 flex items-center mt-1">
+              <p className="text-xs text-success flex items-center mt-1">
                 <ArrowUpRight className="h-3 w-3 mr-1" />
                 +12% from last month
               </p>
             </div>
-            <DollarSign className="h-8 w-8 text-green-600" />
+            <DollarSign className="h-8 w-8 text-success" />
           </div>
         </Card>
 
@@ -197,7 +198,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.vendor.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 text-blue-600" />
+            <Briefcase className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
@@ -207,13 +208,13 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
               <p className="text-sm text-muted-foreground">Average Rating</p>
               <div className="flex items-center">
                 <p className="text-2xl font-bold mr-2">{stats.vendor.avgRating}</p>
-                <Star className="h-5 w-5 text-yellow-500 fill-yellow-500" />
+                <Star className="h-5 w-5 text-warning fill-warning" />
               </div>
               <p className="text-xs text-muted-foreground mt-1">
                 {stats.vendor.totalReviews} reviews
               </p>
             </div>
-            <Award className="h-8 w-8 text-yellow-600" />
+            <Award className="h-8 w-8 text-warning" />
           </div>
         </Card>
 
@@ -226,7 +227,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.vendor.proposalsSent} proposals sent
               </p>
             </div>
-            <Target className="h-8 w-8 text-purple-600" />
+            <Target className="h-8 w-8 text-info" />
           </div>
         </Card>
       </div>
@@ -289,7 +290,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 <div className="flex items-center mb-2">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map(star => (
-                      <Star key={star} className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                      <Star key={star} className="h-4 w-4 text-warning fill-warning" />
                     ))}
                   </div>
                   <span className="ml-2 text-sm text-muted-foreground">2 days ago</span>
@@ -312,12 +313,12 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
             <div>
               <p className="text-sm text-muted-foreground">Total Spent</p>
               <p className="text-2xl font-bold">${stats.client.totalSpent.toLocaleString()}</p>
-              <p className="text-xs text-green-600 flex items-center mt-1">
+              <p className="text-xs text-success flex items-center mt-1">
                 <ArrowDownRight className="h-3 w-3 mr-1" />
                 -8% from budget
               </p>
             </div>
-            <DollarSign className="h-8 w-8 text-blue-600" />
+            <DollarSign className="h-8 w-8 text-primary" />
           </div>
         </Card>
 
@@ -330,7 +331,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.client.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 text-purple-600" />
+            <Briefcase className="h-8 w-8 text-info" />
           </div>
         </Card>
 
@@ -343,7 +344,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 Across all projects
               </p>
             </div>
-            <Users className="h-8 w-8 text-green-600" />
+            <Users className="h-8 w-8 text-success" />
           </div>
         </Card>
 
@@ -352,12 +353,12 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
             <div>
               <p className="text-sm text-muted-foreground">Avg Completion</p>
               <p className="text-2xl font-bold">{stats.client.avgCompletionTime}d</p>
-              <p className="text-xs text-green-600 flex items-center mt-1">
+              <p className="text-xs text-success flex items-center mt-1">
                 <Zap className="h-3 w-3 mr-1" />
                 2 days faster
               </p>
             </div>
-            <Clock className="h-8 w-8 text-orange-600" />
+            <Clock className="h-8 w-8 text-warning" />
           </div>
         </Card>
       </div>
@@ -423,7 +424,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 </div>
                 <p className="text-sm text-muted-foreground">$5,000 - 7 days delivery</p>
                 <div className="flex items-center mt-2">
-                  <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                  <Star className="h-4 w-4 text-warning fill-warning" />
                   <span className="ml-1 text-sm">4.8 rating</span>
                 </div>
               </div>
@@ -457,10 +458,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
       {/* Notifications Bar */}
       {notifications.length > 0 && (
-        <Card className="p-4 bg-blue-50 dark:bg-blue-950/20 border-blue-200">
+        <Card className="p-4 bg-info/5 border-info/20">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <Shield className="h-5 w-5 text-blue-600 mr-2" />
+              <Shield className="h-5 w-5 text-info mr-2" />
               <span className="text-sm">
                 You have {notifications.length} new notifications
               </span>

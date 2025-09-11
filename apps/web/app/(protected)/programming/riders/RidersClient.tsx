@@ -192,30 +192,30 @@ export default function RidersClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
       case 'pending_review':
-        return 'text-yellow-600 bg-yellow-50';
+        return 'text-warning-foreground bg-warning/10';
       case 'approved':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-info-foreground bg-info/10';
       case 'fulfilled':
-        return 'text-green-600 bg-green-50';
+        return 'text-success-foreground bg-success/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'low':
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
       case 'medium':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-info-foreground bg-info/10';
       case 'high':
-        return 'text-orange-600 bg-orange-50';
+        return 'text-warning-foreground bg-warning/10';
       case 'critical':
-        return 'text-red-600 bg-red-50';
+        return 'text-destructive-foreground bg-destructive/10';
       default:
-        return 'text-gray-600 bg-gray-50';
+        return 'text-muted-foreground bg-muted/50';
     }
   };
 
@@ -304,11 +304,11 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                     <div className="space-y-2">
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Pending Review:</span>
-                        <span className="font-medium text-yellow-600">{pendingCount}</span>
+                        <span className="font-medium text-warning">{pendingCount}</span>
                       </div>
                       <div className="flex justify-between text-sm">
                         <span className="text-muted-foreground">Approved:</span>
-                        <span className="font-medium text-green-600">{approvedCount}</span>
+                        <span className="font-medium text-success">{approvedCount}</span>
                       </div>
                     </div>
                     

@@ -130,8 +130,8 @@ export default function EndorsementsClient() {
             key={star}
             className={`w-4 h-4 ${
               star <= rating
-                ? 'fill-yellow-400 text-yellow-400'
-                : 'text-gray-300'
+                ? 'fill-warning text-warning'
+                : 'text-muted-foreground'
             }`}
           />
         ))}
@@ -188,7 +188,7 @@ export default function EndorsementsClient() {
                     : '0.0'}
                 </p>
               </div>
-              <Star className="w-8 h-8 text-yellow-400" />
+              <Star className="w-8 h-8 text-warning" />
             </div>
           </CardContent>
         </Card>
@@ -201,7 +201,7 @@ export default function EndorsementsClient() {
                   {endorsements.filter(e => e.is_public).length}
                 </p>
               </div>
-              <ThumbsUp className="w-8 h-8 text-green-500" />
+              <ThumbsUp className="w-8 h-8 text-success" />
             </div>
           </CardContent>
         </Card>
@@ -218,7 +218,7 @@ export default function EndorsementsClient() {
               <label className="text-sm font-medium">Email of Endorser</label>
               <input
                 type="email"
-                className="w-full mt-1 px-3 py-2 border rounded-lg"
+                className="w-full mt-1 px-3 py-2 border-border rounded-lg"
                 value={newEndorsement.to_user_email}
                 onChange={(e) => setNewEndorsement({ ...newEndorsement, to_user_email: e.target.value })}
                 placeholder="colleague@example.com"
@@ -228,7 +228,7 @@ export default function EndorsementsClient() {
               <label className="text-sm font-medium">Your Relationship</label>
               <input
                 type="text"
-                className="w-full mt-1 px-3 py-2 border rounded-lg"
+                className="w-full mt-1 px-3 py-2 border-border rounded-lg"
                 value={newEndorsement.relationship}
                 onChange={(e) => setNewEndorsement({ ...newEndorsement, relationship: e.target.value })}
                 placeholder="e.g., Direct Manager, Team Member, Client"

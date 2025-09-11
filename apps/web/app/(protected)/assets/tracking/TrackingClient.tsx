@@ -329,7 +329,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -341,7 +341,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
               <select
                 value={selectedMethod}
                 onChange={(e) => setSelectedMethod(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Methods</option>
                 <option value="manual">Manual</option>
@@ -502,7 +502,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <label className="block text-sm font-medium mb-1">Status</label>
             <select
               defaultValue={selectedTracking?.status}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="active">Active</option>
               <option value="idle">Idle</option>
@@ -514,7 +514,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
           <div>
             <label className="block text-sm font-medium mb-1">Notes</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Update notes"
               defaultValue={selectedTracking?.notes}

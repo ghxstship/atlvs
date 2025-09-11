@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader } from '@ghxstship/ui/components/Card';
 import { Badge } from '@ghxstship/ui/components/Badge';
-import { Button } from '@ghxstship/ui/components/Button';
 import { Check, ArrowRight } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
 import { typography } from '../../lib/typography';
+import { StandardButton, animationPresets } from '../../../(protected)/components/ui';
 
 interface PricingCardProps {
   title: string;
@@ -36,12 +36,13 @@ export function PricingCard({
 }: PricingCardProps) {
   return (
     <Card className={cn(
-      'relative h-full flex flex-col hover:shadow-lg transition-shadow',
-      popular && 'border-primary shadow-lg scale-105',
+      'relative h-full flex flex-col',
+      animationPresets.cardInteractive,
+      popular && 'border-primary shadow-lg ring-2 ring-primary/20',
       className
     )}>
       {popular && (
-        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary">
+        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary z-10 shadow-md">
           Most Popular
         </Badge>
       )}
@@ -87,17 +88,17 @@ export function PricingCard({
         {/* Fixed CTA Button */}
         <div className="mt-6 flex-shrink-0">
           {ctaHref ? (
-            <Button asChild className="w-full" variant={popular ? 'primary' : 'outline'}>
+            <StandardButton asChild className="w-full group" variant={popular ? 'primary' : 'outline'}>
               <a href={ctaHref}>
                 {ctaText}
-                {Icon && <Icon className="ml-2 h-4 w-4" />}
+                {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
               </a>
-            </Button>
+            </StandardButton>
           ) : (
-            <Button className="w-full" variant={popular ? 'primary' : 'outline'}>
+            <StandardButton className="w-full group" variant={popular ? 'primary' : 'outline'}>
               {ctaText}
-              {Icon && <Icon className="ml-2 h-4 w-4" />}
-            </Button>
+              {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
+            </StandardButton>
           )}
         </div>
       </CardContent>

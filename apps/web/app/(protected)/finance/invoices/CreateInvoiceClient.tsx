@@ -187,12 +187,12 @@ export default function CreateInvoiceClient({
     >
       <form onSubmit={handleSubmit} className="space-y-6">
         {/* Invoice Overview */}
-        <Card className="p-4 bg-blue-50 border-blue-200">
+        <Card className="p-4 bg-primary/10 border-primary/20">
           <div className="flex items-center space-x-3">
-            <FileText className="h-8 w-8 text-blue-600" />
+            <FileText className="h-8 w-8 text-primary" />
             <div>
-              <h3 className="font-semibold text-blue-900">Invoice Creation</h3>
-              <p className="text-sm text-blue-700">
+              <h3 className="font-semibold text-primary-foreground">Invoice Creation</h3>
+              <p className="text-sm text-primary/80">
                 Create professional invoices with line items and payment terms
               </p>
             </div>
@@ -332,7 +332,7 @@ export default function CreateInvoiceClient({
                     <label className="block text-sm font-medium text-foreground mb-2">
                       Total
                     </label>
-                    <div className="px-3 py-2 bg-gray-50 border border-border rounded-md text-sm font-medium">
+                    <div className="px-3 py-2 bg-muted border border-border rounded-md text-sm font-medium">
                       {formatCurrency(item.total)}
                     </div>
                   </div>
@@ -344,7 +344,7 @@ export default function CreateInvoiceClient({
                         variant="ghost"
                        
                         onClick={() => removeLineItem(item.id)}
-                        className="text-red-600 hover:text-red-700"
+                        className="text-destructive hover:text-destructive/80"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -357,7 +357,7 @@ export default function CreateInvoiceClient({
         </div>
 
         {/* Totals */}
-        <Card className="p-4 bg-gray-50">
+        <Card className="p-4 bg-muted">
           <h4 className="font-medium text-foreground mb-4">Invoice Totals</h4>
           
           <div className="space-y-3">
@@ -406,7 +406,7 @@ export default function CreateInvoiceClient({
             
             <div className="flex justify-between text-lg font-semibold pt-2 border-t border-border">
               <span>Total Amount:</span>
-              <span className="text-blue-600">{formatCurrency(totalAmount)}</span>
+              <span className="text-primary">{formatCurrency(totalAmount)}</span>
             </div>
           </div>
         </Card>

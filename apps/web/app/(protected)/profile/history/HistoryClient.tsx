@@ -545,7 +545,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
               type="checkbox"
               id="is_current"
               {...form.register('is_current')}
-              className="rounded border-gray-300"
+              className="rounded border-border"
             />
             <label htmlFor="is_current" className="text-sm font-medium">
               This is my current position/activity
@@ -582,7 +582,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                   <button
                     type="button"
                     onClick={() => removeSkill(skill)}
-                    className="ml-1 text-red-500 hover:text-red-700"
+                    className="ml-1 text-destructive hover:text-destructive/80"
                   >
                     ×
                   </button>
@@ -609,7 +609,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                   <button
                     type="button"
                     onClick={() => removeAchievement(achievement)}
-                    className="text-red-500 hover:text-red-700"
+                    className="text-destructive hover:text-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

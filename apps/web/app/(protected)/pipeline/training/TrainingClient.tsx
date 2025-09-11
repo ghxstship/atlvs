@@ -1,8 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
-import { Plus, BookOpen, Clock, CheckCircle, AlertTriangle, Calendar, User } from 'lucide-react';
+import { Card, Badge, Button, Input } from '@ghxstship/ui';
+import { DynamicProgressBar } from '../../components/ui';
+import { Users, Calendar, Clock, Award, Search, Filter, BookOpen, Target, CheckCircle, AlertTriangle, User, Plus } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
 
@@ -53,11 +54,11 @@ interface TrainingClientProps {
 }
 
 const TRAINING_CATEGORIES = [
-  { id: 'safety', name: 'Safety', color: 'bg-red-500' },
-  { id: 'technical', name: 'Technical', color: 'bg-blue-500' },
-  { id: 'compliance', name: 'Compliance', color: 'bg-yellow-500' },
-  { id: 'leadership', name: 'Leadership', color: 'bg-purple-500' },
-  { id: 'certification', name: 'Certification', color: 'bg-green-500' }
+  { id: 'safety', name: 'Safety', color: 'bg-destructive' },
+  { id: 'technical', name: 'Technical', color: 'bg-primary' },
+  { id: 'compliance', name: 'Compliance', color: 'bg-warning' },
+  { id: 'leadership', name: 'Leadership', color: 'bg-secondary' },
+  { id: 'certification', name: 'Certification', color: 'bg-success' }
 ] as const;
 
 export default function TrainingClient({ orgId }: TrainingClientProps) {
@@ -196,7 +197,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
 
   const getCategoryColor = (category: TrainingProgram['category']) => {
     const categoryInfo = TRAINING_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-gray-500';
+    return categoryInfo?.color || 'bg-muted-foreground';
   };
 
   return (
@@ -300,12 +301,12 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                       <div className="flex flex-col items-end gap-2">
                         {getStatusBadge(session.status)}
                         <div className="text-right">
-                          <div className="w-20 h-2 bg-gray-200 rounded-full overflow-hidden">
-                            <div 
-                              className="h-full bg-blue-500 transition-all"
-                              style={{ width: `${(session.enrolledCount / session.maxParticipants) * 100}%` }}
-                            />
-                          </div>
+                          <DynamicProgressBar
+                            percentage={(session.enrolledCount / session.maxParticipants) * 100}
+                            variant="info"
+                            size="sm"
+                            showLabel={false}
+                          />
                           <div className="text-xs text-muted-foreground mt-1">
                             {Math.round((session.enrolledCount / session.maxParticipants) * 100)}% full
                           </div>
@@ -350,12 +351,12 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                         {getStatusBadge(record.status)}
                         {record.score && (
                           <div className="text-right">
-                            <div className="w-16 h-2 bg-gray-200 rounded-full overflow-hidden">
-                              <div 
-                                className={`h-full transition-all ${record.score >= 80 ? 'bg-green-500' : record.score >= 60 ? 'bg-yellow-500' : 'bg-red-500'}`}
-                                style={{ width: `${record.score}%` }}
-                              />
-                            </div>
+                            <DynamicProgressBar
+                              percentage={record.score}
+                              variant={record.score >= 80 ? 'success' : record.score >= 60 ? 'warning' : 'error'}
+                              size="sm"
+                              showLabel={false}
+                            />
                           </div>
                         )}
                       </div>

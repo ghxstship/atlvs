@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { ChartBar } from '../../components/ui/ChartBar';
 import { Plus, Search, Filter, Download, Upload, BarChart3, PieChart, TrendingUp, Calendar, DollarSign, Package } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -353,7 +354,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                   <select
                     value={selectedType}
                     onChange={(e) => setSelectedType(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="all">All Types</option>
                     {REPORT_TYPES.map(type => (
@@ -365,7 +366,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                   <select
                     value={selectedStatus}
                     onChange={(e) => setSelectedStatus(e.target.value)}
-                    className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
                     <option value="all">All Status</option>
                     <option value="ready">Ready</option>
@@ -486,7 +487,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <Package className="w-5 h-5 text-blue-500" />
+                <Package className="w-5 h-5 text-primary" />
                 <h3 className="font-semibold">Asset Overview</h3>
               </div>
               <div className="space-y-3">
@@ -496,15 +497,15 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Available</span>
-                  <span className="font-medium text-green-600">89</span>
+                  <span className="font-medium text-success">89</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">In Use</span>
-                  <span className="font-medium text-blue-600">52</span>
+                  <span className="font-medium text-primary">52</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Maintenance</span>
-                  <span className="font-medium text-orange-600">15</span>
+                  <span className="font-medium text-warning">15</span>
                 </div>
               </div>
             </div>
@@ -514,7 +515,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <DollarSign className="w-5 h-5 text-green-500" />
+                <DollarSign className="w-5 h-5 text-success" />
                 <h3 className="font-semibold">Financial Summary</h3>
               </div>
               <div className="space-y-3">
@@ -524,15 +525,15 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">This Month</span>
-                  <span className="font-medium text-green-600">{formatCurrency(45000)}</span>
+                  <span className="font-medium text-success">{formatCurrency(45000)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Maintenance</span>
-                  <span className="font-medium text-red-600">{formatCurrency(12500)}</span>
+                  <span className="font-medium text-destructive">{formatCurrency(12500)}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Depreciation</span>
-                  <span className="font-medium text-orange-600">{formatCurrency(8200)}</span>
+                  <span className="font-medium text-warning">{formatCurrency(8200)}</span>
                 </div>
               </div>
             </div>
@@ -542,7 +543,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <TrendingUp className="w-5 h-5 text-purple-500" />
+                <TrendingUp className="w-5 h-5 text-secondary" />
                 <h3 className="font-semibold">Utilization</h3>
               </div>
               <div className="space-y-3">
@@ -552,15 +553,15 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Artist Technical</span>
-                  <span className="font-medium text-green-600">92%</span>
+                  <span className="font-medium text-success">92%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Site Vehicles</span>
-                  <span className="font-medium text-blue-600">85%</span>
+                  <span className="font-medium text-primary">85%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-sm text-muted-foreground">Heavy Machinery</span>
-                  <span className="font-medium text-orange-600">65%</span>
+                  <span className="font-medium text-warning">65%</span>
                 </div>
               </div>
             </div>
@@ -570,47 +571,19 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card className="md:col-span-2">
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <PieChart className="w-5 h-5 text-indigo-500" />
+                <PieChart className="w-5 h-5 text-primary" />
                 <h3 className="font-semibold">Asset Distribution by Category</h3>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">Artist Technical</span>
-                    <span className="text-sm font-medium">32 assets</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-500 h-2 rounded-full" style={{ width: '65%' }}></div>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">Site Infrastructure</span>
-                    <span className="text-sm font-medium">28 assets</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-green-500 h-2 rounded-full" style={{ width: '56%' }}></div>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">Site Vehicles</span>
-                    <span className="text-sm font-medium">18 assets</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-purple-500 h-2 rounded-full" style={{ width: '36%' }}></div>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-sm">Heavy Machinery</span>
-                    <span className="text-sm font-medium">15 assets</span>
-                  </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-orange-500 h-2 rounded-full" style={{ width: '30%' }}></div>
-                  </div>
-                </div>
-              </div>
+              <ChartBar 
+                data={[
+                  { label: 'Artist Technical', value: 32, percentage: 65, color: 'info' },
+                  { label: 'Site Infrastructure', value: 28, percentage: 56, color: 'success' },
+                  { label: 'Site Vehicles', value: 18, percentage: 36, color: 'default' },
+                  { label: 'Heavy Machinery', value: 15, percentage: 30, color: 'warning' }
+                ]}
+                showValues={true}
+                animated={true}
+              />
             </div>
           </Card>
 
@@ -618,7 +591,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-6">
               <div className="flex items-center gap-3 mb-4">
-                <Calendar className="w-5 h-5 text-cyan-500" />
+                <Calendar className="w-5 h-5 text-primary" />
                 <h3 className="font-semibold">Recent Activity</h3>
               </div>
               <div className="space-y-3">
@@ -653,7 +626,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
         <div className="p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1">Report Type</label>
-            <select className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <select className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary">
               {REPORT_TYPES.map(type => (
                 <option key={type.id} value={type.id}>
                   {type.name}
@@ -682,7 +655,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <div>
             <label className="block text-sm font-medium mb-1">Additional Filters</label>
             <textarea
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Specify any additional filters or requirements"
             />

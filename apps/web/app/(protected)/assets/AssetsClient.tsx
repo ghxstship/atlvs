@@ -254,7 +254,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-sm font-medium text-muted-foreground">Total Assets</p>
                         <p className="text-2xl font-bold">{stats.totalAssets}</p>
                       </div>
-                      <Package className="w-8 h-8 text-blue-500" />
+                      <Package className="w-8 h-8 text-primary" />
                     </div>
                   </div>
                 </Card>
@@ -265,7 +265,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-sm font-medium text-muted-foreground">Active Assignments</p>
                         <p className="text-2xl font-bold">{stats.activeAssignments}</p>
                       </div>
-                      <TrendingUp className="w-8 h-8 text-green-500" />
+                      <TrendingUp className="w-8 h-8 text-success" />
                     </div>
                   </div>
                 </Card>
@@ -276,7 +276,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-sm font-medium text-muted-foreground">Maintenance Required</p>
                         <p className="text-2xl font-bold">{stats.maintenanceRequired}</p>
                       </div>
-                      <AlertTriangle className="w-8 h-8 text-orange-500" />
+                      <AlertTriangle className="w-8 h-8 text-warning" />
                     </div>
                   </div>
                 </Card>
@@ -287,7 +287,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-sm font-medium text-muted-foreground">Total Value</p>
                         <p className="text-2xl font-bold">{formatCurrency(stats.totalValue)}</p>
                       </div>
-                      <BarChart3 className="w-8 h-8 text-purple-500" />
+                      <BarChart3 className="w-8 h-8 text-secondary" />
                     </div>
                   </div>
                 </Card>

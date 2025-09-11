@@ -89,12 +89,12 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
 
   const getActivityColor = (type: string) => {
     const colors = {
-      profile_updated: 'text-blue-600',
-      profile_created: 'text-green-600',
-      profile_viewed: 'text-gray-600',
-      certification_added: 'text-purple-600',
-      job_history_added: 'text-orange-600',
-      default: 'text-gray-600'
+      profile_updated: 'text-primary',
+      profile_created: 'text-success',
+      profile_viewed: 'text-muted-foreground',
+      certification_added: 'text-secondary',
+      job_history_added: 'text-warning',
+      default: 'text-muted-foreground'
     };
     
     return colors[type as keyof typeof colors] || colors.default;

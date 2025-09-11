@@ -36,7 +36,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
         type="button"
         onClick={onRemoveDemo}
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-md border border-red-300 text-red-700 px-3 py-2 text-sm hover:bg-red-50 disabled:opacity-50"
+        className="inline-flex items-center gap-2 rounded-md border border-destructive/30 text-destructive px-3 py-2 text-sm hover:bg-destructive/10 disabled:opacity-50"
         aria-busy={loading}
         aria-live="polite"
         aria-label={t('remove.cta')}

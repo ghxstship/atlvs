@@ -21,7 +21,7 @@ const products = [
       { label: 'Active Teams', value: '12K+' },
       { label: 'Time Saved', value: '40%' },
     ],
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-primary to-accent',
     href: '/products/atlvs',
   },
   {
@@ -40,7 +40,7 @@ const products = [
       { label: 'Projects Listed', value: '50K+' },
       { label: 'Success Rate', value: '94%' },
     ],
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-secondary to-accent',
     href: '/products/opendeck',
   },
 ];

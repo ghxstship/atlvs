@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Badge, Button } from '@ghxstship/ui';
+import { StatusBadge, designTokens } from '../../components/ui/DesignTokens';
 import { 
   ShoppingCart, 
   Package, 
@@ -100,17 +101,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
     }
   };
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case 'delivered': return 'bg-green-100 text-green-800';
-      case 'shipped': return 'bg-blue-100 text-blue-800';
-      case 'approved': return 'bg-purple-100 text-purple-800';
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'draft': return 'bg-gray-100 text-gray-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+  // Using design tokens for status colors
 
   const formatCurrency = (amount: number, currency: string = 'USD') => {
     return new Intl.NumberFormat('en-US', {
@@ -136,8 +127,8 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <ShoppingCart className="h-6 w-6 text-blue-600" />
+            <div className="p-3 bg-primary/10 rounded-lg">
+              <ShoppingCart className="h-6 w-6 text-primary" />
             </div>
             <div>
               <p className="text-sm text-foreground/70">Total Orders</p>
@@ -148,8 +139,8 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
 
         <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-yellow-100 rounded-lg">
-              <Clock className="h-6 w-6 text-yellow-600" />
+            <div className="p-3 bg-warning/10 rounded-lg">
+              <Clock className="h-6 w-6 text-warning" />
             </div>
             <div>
               <p className="text-sm text-foreground/70">Pending Orders</p>
@@ -160,8 +151,8 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
 
         <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-green-100 rounded-lg">
-              <CheckCircle className="h-6 w-6 text-green-600" />
+            <div className="p-3 bg-success/10 rounded-lg">
+              <CheckCircle className="h-6 w-6 text-success" />
             </div>
             <div>
               <p className="text-sm text-foreground/70">Completed Orders</p>
@@ -172,8 +163,8 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
 
         <Card className="p-6">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-purple-100 rounded-lg">
-              <DollarSign className="h-6 w-6 text-purple-600" />
+            <div className="p-3 bg-secondary/10 rounded-lg">
+              <DollarSign className="h-6 w-6 text-secondary" />
             </div>
             <div>
               <p className="text-sm text-foreground/70">Total Spent</p>
@@ -190,7 +181,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Package className="h-5 w-5 text-blue-600" />
+              <Package className="h-5 w-5 text-primary" />
               <span className="font-medium">Products</span>
             </div>
             <Link href="/procurement/products">
@@ -206,7 +197,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Wrench className="h-5 w-5 text-green-600" />
+              <Wrench className="h-5 w-5 text-success" />
               <span className="font-medium">Services</span>
             </div>
             <Link href="/procurement/services">
@@ -222,7 +213,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Building2 className="h-5 w-5 text-orange-600" />
+              <Building2 className="h-5 w-5 text-warning" />
               <span className="font-medium">Vendors</span>
             </div>
             <Link href="/procurement/vendors">
@@ -238,7 +229,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <Tag className="h-5 w-5 text-purple-600" />
+              <Tag className="h-5 w-5 text-secondary" />
               <span className="font-medium">Categories</span>
             </div>
             <Link href="/procurement/categories">
@@ -297,9 +288,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
                         {new Date(order.created_at).toLocaleDateString()}
                       </p>
                     </div>
-                    <Badge className={getStatusColor(order.status)}>
-                      {order.status}
-                    </Badge>
+                    <StatusBadge status={order.status} />
                   </div>
                 </div>
               ))}

@@ -225,9 +225,9 @@ export default function SolutionsPage() {
                     <h3 className="font-title text-xl font-bold mb-2">{solution.title}</h3>
                     <p className="text-sm text-muted-foreground mb-4">{solution.tagline}</p>
                     <a href={solution.href as any as any}>
-                      <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                      <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200 hover:scale-105">
                         Learn More
-                        <ArrowRight className="ml-2 h-3 w-3" />
+                        <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </a>
                   </CardContent>
@@ -289,13 +289,13 @@ export default function SolutionsPage() {
                       {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-4">
                         <a href={solution.href as any as any}>
-                          <Button className="w-full sm:w-auto group">
+                          <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                             Explore {solution.title}
                             <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Button>
                         </a>
                         <Link href="/auth/signup">
-                          <Button variant="outline" className="w-full sm:w-auto">
+                          <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                             Start Free Trial
                           </Button>
                         </Link>
@@ -423,14 +423,14 @@ export default function SolutionsPage() {
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a href="/resources/integrations">
-                  <Button variant="outline">
+                  <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     View All Integrations
                   </Button>
                 </a>
                 <Link href="/auth/signup">
-                  <Button>
+                  <Button className="group transition-all duration-200 hover:scale-105">
                     Start Free Trial
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>

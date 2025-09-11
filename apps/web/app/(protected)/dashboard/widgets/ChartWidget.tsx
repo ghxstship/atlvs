@@ -67,8 +67,8 @@ export default function ChartWidget({
   const supabase = createClient();
 
   const defaultColors = [
-    '#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6',
-    '#EC4899', '#06B6D4', '#84CC16', '#F97316', '#6366F1'
+    'hsl(var(--primary))', 'hsl(var(--destructive))', 'hsl(var(--success))', 'hsl(var(--warning))', 'hsl(var(--info))',
+    'hsl(var(--secondary))', 'hsl(var(--accent))', 'hsl(var(--muted))', 'hsl(var(--border))', 'hsl(var(--ring))'
   ];
 
   useEffect(() => {
@@ -267,8 +267,8 @@ export default function ChartWidget({
     return (
       <Card className="p-6 h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-          <div className="h-64 bg-gray-200 rounded"></div>
+          <div className="h-4 bg-muted/50 rounded w-3/4 mb-4"></div>
+          <div className="h-64 bg-muted/50 rounded"></div>
         </div>
       </Card>
     );
@@ -278,8 +278,8 @@ export default function ChartWidget({
     return (
       <Card className="p-6 h-full">
         <div className="text-center">
-          <p className="text-sm text-red-600 mb-2">Error loading chart</p>
-          <p className="text-xs text-gray-500">{error}</p>
+          <p className="text-sm text-destructive mb-2">Error loading chart</p>
+          <p className="text-xs text-muted-foreground">{error}</p>
         </div>
       </Card>
     );
@@ -289,11 +289,11 @@ export default function ChartWidget({
     <Card className="p-6 h-full relative group">
       {/* Widget Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-lg font-semibold">{title}</h3>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => window.location.reload()}
-            className="p-1 text-gray-400 hover:text-gray-600 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+            className="p-1 text-muted-foreground hover:text-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
             aria-label="Refresh chart"
           >
             <RefreshCw className="h-4 w-4" />
@@ -301,7 +301,7 @@ export default function ChartWidget({
           {(onEdit || onDelete) && (
             <button
               onClick={onEdit}
-              className="p-1 text-gray-400 hover:text-gray-600 rounded opacity-0 group-hover:opacity-100 transition-opacity"
+              className="p-1 text-muted-foreground hover:text-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
               aria-label="Edit widget"
             >
               <MoreHorizontal className="h-4 w-4" />
@@ -313,14 +313,14 @@ export default function ChartWidget({
       {/* Chart */}
       <div className="h-64 mb-4">
         {chartData ? renderChart() : (
-          <div className="flex items-center justify-center h-full text-gray-500">
+          <div className="flex items-center justify-center h-full text-muted-foreground">
             No data available
           </div>
         )}
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between text-xs text-gray-500">
+      <div className="flex items-center justify-between text-xs text-muted-foreground">
         <span>
           Data source: {config.dataSource}
         </span>

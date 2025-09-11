@@ -238,7 +238,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
           />
           <Button
             variant="outline"
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent) => {
               const input = e.currentTarget.previousElementSibling as HTMLInputElement;
               handleLanguageAdd(input.value);
               input.value = '';

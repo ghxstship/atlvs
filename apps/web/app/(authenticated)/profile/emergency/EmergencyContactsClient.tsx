@@ -243,7 +243,7 @@ export default function EmergencyContactsClient() {
                   id="is_primary"
                   checked={formData.is_primary || false}
                   onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
-                  className="rounded border-gray-300"
+                  className="rounded border-border"
                 />
                 <label htmlFor="is_primary" className="text-sm">
                   Primary Contact
@@ -314,7 +314,7 @@ export default function EmergencyContactsClient() {
                         id={`is_primary_${contact.id}`}
                         checked={formData.is_primary || false}
                         onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
-                        className="rounded border-gray-300"
+                        className="rounded border-border"
                       />
                       <label htmlFor={`is_primary_${contact.id}`} className="text-sm">
                         Primary Contact

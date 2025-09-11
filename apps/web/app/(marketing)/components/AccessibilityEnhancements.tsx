@@ -234,7 +234,7 @@ export const AccessibilityEnhancements = () => {
               const asterisk = document.createElement('span');
               asterisk.textContent = ' *';
               asterisk.setAttribute('aria-label', 'required');
-              asterisk.className = 'text-red-500';
+              asterisk.className = 'text-destructive';
               label.appendChild(asterisk);
             }
           }

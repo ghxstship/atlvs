@@ -80,7 +80,7 @@ export default function ComingSoonPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               THE NEXT GENERATION
               <br />
-              <span className="bg-gradient-to-r from-purple-500 to-emerald-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 IS COMING IN 2026
               </span>
             </h1>
@@ -118,20 +118,20 @@ export default function ComingSoonPage() {
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-10 w-10 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Q2 2026</h3>
-                <p className="text-lg font-semibold text-purple-500 mb-2">OPVS Talent Management</p>
+                <p className="text-lg font-semibold text-primary mb-2">OPVS Talent Management</p>
                 <p className="text-muted-foreground">Revolutionary talent platform launches</p>
               </div>
               
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-20 h-20 bg-gradient-to-r from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="h-10 w-10 text-white" />
                 </div>
                 <h3 className="text-xl font-bold mb-2">Q4 2026</h3>
-                <p className="text-lg font-semibold text-emerald-500 mb-2">MVNIFEST Access & Asset Control</p>
+                <p className="text-lg font-semibold text-accent mb-2">MVNIFEST Access & Asset Control</p>
                 <p className="text-muted-foreground">Next-gen security platform debuts</p>
               </div>
             </div>
@@ -169,7 +169,7 @@ export default function ComingSoonPage() {
                   <div className="mb-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge variant="outline">{product.category}</Badge>
-                      <Badge className="bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                      <Badge className="bg-gradient-to-r from-warning to-destructive text-white">
                         <Calendar className="h-3 w-3 mr-1" />
                         {product.launchDate}
                       </Badge>
@@ -200,8 +200,8 @@ export default function ComingSoonPage() {
                       <div className="grid gap-2">
                         {product.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <ArrowRight className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
-                            <span className="text-sm font-semibold text-green-600">{benefit}</span>
+                            <ArrowRight className="h-4 w-4 text-success mt-1 flex-shrink-0" />
+                            <span className="text-sm font-semibold text-success">{benefit}</span>
                           </div>
                         ))}
                       </div>
@@ -258,7 +258,7 @@ export default function ComingSoonPage() {
             ].map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
                     <item.icon className="h-8 w-8 text-white" />
                   </div>
                   <h3 className={`mb-3 ${typography.cardTitle}`}>
@@ -299,12 +299,12 @@ export default function ComingSoonPage() {
       </section>
 
       {/* Early Access CTA */}
-      <section className="py-20 bg-gradient-to-r from-purple-500/5 to-emerald-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
               <div className="flex justify-center mb-6">
-                <div className="w-20 h-20 bg-gradient-to-r from-purple-500 to-emerald-500 rounded-full flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
                   <Zap className="h-10 w-10 text-white" />
                 </div>
               </div>

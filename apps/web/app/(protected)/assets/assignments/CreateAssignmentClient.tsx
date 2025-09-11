@@ -175,7 +175,7 @@ export default function CreateAssignmentClient({
         {/* Asset & Personnel */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserCheck className="h-5 w-5 text-blue-600" />
+            <UserCheck className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Asset & Personnel</h3>
           </div>
           
@@ -233,7 +233,7 @@ export default function CreateAssignmentClient({
         {/* Timeline & Location */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-green-600" />
+            <Calendar className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Timeline & Location</h3>
           </div>
           
@@ -281,7 +281,7 @@ export default function CreateAssignmentClient({
         {/* Assignment Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserCheck className="h-5 w-5 text-purple-600" />
+            <UserCheck className="h-5 w-5 text-secondary" />
             <h3 className="font-semibold">Assignment Details</h3>
           </div>
           

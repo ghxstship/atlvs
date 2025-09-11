@@ -34,19 +34,19 @@ interface InventoryClientProps {
 }
 
 const ASSET_CATEGORIES = [
-  { id: 'site_infrastructure', name: 'Site Infrastructure', color: 'bg-blue-500' },
-  { id: 'site_assets', name: 'Site Assets', color: 'bg-green-500' },
-  { id: 'site_vehicles', name: 'Site Vehicles', color: 'bg-purple-500' },
-  { id: 'site_services', name: 'Site Services', color: 'bg-orange-500' },
-  { id: 'heavy_machinery', name: 'Heavy Machinery & Equipment', color: 'bg-red-500' },
-  { id: 'it_communication', name: 'IT & Communication Services', color: 'bg-cyan-500' },
-  { id: 'office_admin', name: 'Office & Admin', color: 'bg-gray-500' },
-  { id: 'access_credentials', name: 'Access & Credentials', color: 'bg-yellow-500' },
-  { id: 'parking', name: 'Parking', color: 'bg-indigo-500' },
-  { id: 'travel_lodging', name: 'Travel & Lodging', color: 'bg-pink-500' },
-  { id: 'artist_technical', name: 'Artist Technical', color: 'bg-emerald-500' },
-  { id: 'artist_hospitality', name: 'Artist Hospitality', color: 'bg-amber-500' },
-  { id: 'artist_travel', name: 'Artist Travel & Lodging', color: 'bg-teal-500' }
+  { id: 'site_infrastructure', name: 'Site Infrastructure', color: 'bg-primary' },
+  { id: 'site_assets', name: 'Site Assets', color: 'bg-success' },
+  { id: 'site_vehicles', name: 'Site Vehicles', color: 'bg-secondary' },
+  { id: 'site_services', name: 'Site Services', color: 'bg-warning' },
+  { id: 'heavy_machinery', name: 'Heavy Machinery & Equipment', color: 'bg-destructive' },
+  { id: 'it_communication', name: 'IT & Communication Services', color: 'bg-info' },
+  { id: 'office_admin', name: 'Office & Admin', color: 'bg-muted' },
+  { id: 'access_credentials', name: 'Access & Credentials', color: 'bg-warning' },
+  { id: 'parking', name: 'Parking', color: 'bg-primary' },
+  { id: 'travel_lodging', name: 'Travel & Lodging', color: 'bg-secondary' },
+  { id: 'artist_technical', name: 'Artist Technical', color: 'bg-success' },
+  { id: 'artist_hospitality', name: 'Artist Hospitality', color: 'bg-warning' },
+  { id: 'artist_travel', name: 'Artist Travel & Lodging', color: 'bg-info' }
 ] as const;
 
 export default function InventoryClient({ orgId }: InventoryClientProps) {
@@ -296,7 +296,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
 
   const getCategoryColor = (category: string) => {
     const categoryInfo = ASSET_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-gray-500';
+    return categoryInfo?.color || 'bg-muted';
   };
 
   const formatCurrency = (value: number) => {
@@ -348,7 +348,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Categories</option>
                 {ASSET_CATEGORIES.map(category => (
@@ -360,7 +360,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <select
                 value={selectedStatus}
                 onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="available">Available</option>
@@ -498,7 +498,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <label className="block text-sm font-medium mb-1">Category</label>
               <select
                 defaultValue={selectedAsset?.category}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
                 {ASSET_CATEGORIES.map(category => (
                   <option key={category.id} value={category.id}>
@@ -511,7 +511,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <label className="block text-sm font-medium mb-1">Type</label>
               <select
                 defaultValue={selectedAsset?.type}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
                 <option value="fixed">Fixed</option>
                 <option value="rentable">Rentable</option>

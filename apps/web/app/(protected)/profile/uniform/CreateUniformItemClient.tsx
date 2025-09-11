@@ -126,7 +126,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-red-600">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
@@ -161,8 +161,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               placeholder="e.g. Navy Blue Polo Shirt, Safety Helmet"
               aria-invalid={!!form.formState.errors.item_name} 
             />
-            {form.formState.errors.item_name ? 
-              <div className="text-xs text-red-600">{String(form.formState.errors.item_name.message)}</div> : null}
+            {form.formState.errors.item_name ? <div className="text-xs text-destructive">{String(form.formState.errors.item_name.message)}</div> : null}
           </div>
 
           <div className="grid grid-cols-2 gap-3">

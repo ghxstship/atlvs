@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
+import { getStatusColor, StatusBadge } from '../../components/ui/DesignTokens';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
   Plus,
@@ -300,14 +301,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     return report.type === 'table' ? Table : FileText;
   };
 
-  const getStatusColor = (status: Report['status']) => {
-    switch (status) {
-      case 'active': return 'bg-green-100 text-green-800';
-      case 'paused': return 'bg-yellow-100 text-yellow-800';
-      case 'draft': return 'bg-gray-100 text-gray-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
+  // Using design tokens for status colors
 
   const filteredReports = reports.filter(report => {
     const matchesSearch = report.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -320,10 +314,10 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-48 bg-gray-200 rounded"></div>
+              <div key={i} className="h-48 bg-muted rounded"></div>
             ))}
           </div>
         </div>
@@ -334,7 +328,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
   if (error) {
     return (
       <Card title="Error">
-        <div className="text-sm text-red-600">{error}</div>
+          <div className="text-center py-12 text-destructive">{error}</div>
         <Button onClick={loadReports} className="mt-4">
           Retry
         </Button>
@@ -343,162 +337,135 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
   }
 
   return (
-    <div className="space-y-6">
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Reports</h1>
-          <p className="text-sm text-gray-600">Build and schedule custom reports</p>
-        </div>
-        <Button onClick={() => setShowCreateForm(true)}>
-          <Plus className="h-4 w-4 mr-2" />
-          New Report
-        </Button>
+  <div className="space-y-6">
+    {/* Header */}
+    <div className="flex items-center justify-between">
+      <div>
+        <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
+        <p className="text-sm text-muted-foreground">Build and schedule custom reports</p>
       </div>
+      <Button onClick={() => setShowCreateForm(true)}>
+        <Plus className="h-4 w-4 mr-2" />
+        New Report
+      </Button>
+    </div>
 
-      {/* Filters */}
-      <div className="flex items-center space-x-4">
-        <div className="flex-1 relative">
-          <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Search reports..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
-        <select
-          value={filterStatus}
-          onChange={(e) => setFilterStatus(e.target.value)}
-          className="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-        >
-          <option value="all">All Status</option>
-          <option value="active">Active</option>
-          <option value="paused">Paused</option>
-          <option value="draft">Draft</option>
-        </select>
+    {/* Filters */}
+    <div className="flex items-center space-x-4">
+      <div className="flex-1 relative">
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+        <input
+          type="text"
+          placeholder="Search reports..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full pl-10 pr-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+        />
       </div>
+      <select
+        value={filterStatus}
+        onChange={(e) => setFilterStatus(e.target.value)}
+        className="px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+      >
+        <option value="" className="text-muted-foreground">All Statuses</option>
+        <option value="active">Active</option>
+        <option value="paused">Paused</option>
+        <option value="draft">Draft</option>
+      </select>
+    </div>
 
-      {/* Reports Grid */}
-      {filteredReports.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredReports.map((report) => {
-            const IconComponent = getReportIcon(report);
-            return (
-              <Card key={report.id} className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="p-2 bg-blue-100 rounded-lg">
-                      <IconComponent className="h-5 w-5 text-blue-600" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-gray-900">{report.name}</h3>
-                      <Badge className={`text-xs ${getStatusColor(report.status)}`}>
-                        {report.status}
-                      </Badge>
-                    </div>
+    {/* Reports Grid */}
+    {filteredReports.length > 0 ? (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredReports.map((report) => {
+          const IconComponent = getReportIcon(report);
+          return (
+            <Card key={report.id} className="p-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="flex items-center space-x-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <IconComponent className="h-5 w-5 text-primary" />
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <Button
-                      variant="ghost"
-                     
-                      onClick={() => runReport(report.id)}
-                    >
-                      <Play className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                     
-                      onClick={() => setEditingReport(report)}
-                    >
-                      <Edit3 className="h-3 w-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                     
-                      onClick={() => deleteReport(report.id)}
-                    >
-                      <Trash2 className="h-3 w-3" />
-                    </Button>
+                  <div>
+                    <h3 className="font-semibold text-foreground">{report.name}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{report.description}</p>
                   </div>
                 </div>
+                <StatusBadge status={report.status} />
+              </div>
+              
+              <div className="space-y-2 mb-4">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Type:</span>
+                  <span className="font-medium capitalize">{report.type}</span>
+                </div>
+                
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Fields:</span>
+                  <span className="font-medium">{report.fields.length}</span>
+                </div>
+                
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Filters:</span>
+                  <span className="font-medium">{report.filters.length}</span>
+                </div>
 
-                {report.description && (
-                  <p className="text-sm text-gray-600 mb-4">{report.description}</p>
-                )}
-
-                <div className="space-y-3">
+                {report.schedule?.enabled && (
                   <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Fields:</span>
-                    <span className="font-medium">{report.fields.length}</span>
-                  </div>
-                  
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-gray-500">Filters:</span>
-                    <span className="font-medium">{report.filters.length}</span>
-                  </div>
-
-                  {report.schedule?.enabled && (
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Schedule:</span>
+                    <span className="text-muted-foreground">Schedule:</span>
                       <Badge variant="outline" className="text-xs">
                         {report.schedule.frequency}
                       </Badge>
                     </div>
                   )}
 
-                  {report.lastRun && (
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-500">Last run:</span>
-                      <span className="text-xs text-gray-600">
-                        {new Date(report.lastRun).toLocaleDateString()}
-                      </span>
-                    </div>
-                  )}
-                </div>
-
-                <div className="flex items-center justify-between mt-4 pt-4 border-t">
-                  <div className="flex items-center space-x-2">
-                    <Button>
-                      <Eye className="h-3 w-3 mr-1" />
-                      View
-                    </Button>
-                    <Button>
-                      <Download className="h-3 w-3 mr-1" />
-                      Export
-                    </Button>
+                {report.lastRun && (
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-muted-foreground">Last Run:</span>
+                    <span className="text-xs text-muted-foreground">
+                      {new Date(report.lastRun).toLocaleDateString()}
+                    </span>
                   </div>
-                  
-                  <Button
-                    variant="outline"
-                   
-                    onClick={() => toggleReportStatus(report.id)}
-                  >
-                    {report.status === 'active' ? (
-                      <Pause className="h-3 w-3 mr-1" />
-                    ) : (
-                      <Play className="h-3 w-3 mr-1" />
-                    )}
-                    {report.status === 'active' ? 'Pause' : 'Activate'}
+                )}
+                
+                <p className="text-xs text-muted-foreground mt-2">
+                  Created {new Date(report.createdAt).toLocaleDateString()}
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
+                <div className="flex items-center space-x-2">
+                  <Button variant="ghost" size="sm" onClick={() => runReport(report.id)}>
+                    <Play className="h-3 w-3 mr-1" />
+                    Run
+                  </Button>
+                  <Button variant="ghost" size="sm">
+                    <Edit3 className="h-3 w-3 mr-1" />
+                    Edit
+                  </Button>
+                  <Button variant="ghost" size="sm">
+                    <Download className="h-3 w-3 mr-1" />
+                    Export
                   </Button>
                 </div>
-              </Card>
+                
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => deleteReport(report.id)}
+                >
+                  <Trash2 className="h-3 w-3" />
+                </Button>
+              </div>
+            </Card>
             );
           })}
         </div>
       ) : (
         <Card className="p-8 text-center">
-          <FileText className="h-12 w-12 text-gray-400 mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-gray-900 mb-2">
-            No reports found
-          </h3>
-          <p className="text-sm text-gray-600 mb-4">
-            {searchTerm || filterStatus !== 'all' 
-              ? 'Try adjusting your search or filters'
-              : 'Create your first report to get started'
-            }
-          </p>
+            <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+            <h3 className="text-lg font-medium text-foreground mb-2">No reports found</h3>
+          <p className="text-muted-foreground mb-4">Create your first report to get started with analytics.</p>
           <Button onClick={() => setShowCreateForm(true)}>
             <Plus className="h-4 w-4 mr-2" />
             Create Report
@@ -526,39 +493,39 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
             >
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Report Name
                   </label>
                   <input
                     name="name"
                     type="text"
                     required
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="e.g., Monthly Revenue Report"
                   />
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label className="block text-sm font-medium text-foreground mb-1">
                     Description
                   </label>
                   <textarea
                     name="description"
                     rows={3}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Brief description of this report..."
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Report Type
                     </label>
                     <select
                       name="type"
                       required
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="table">Table</option>
                       <option value="chart">Chart</option>
@@ -567,14 +534,14 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-foreground mb-1">
                       Chart Type (if applicable)
                     </label>
                     <select
                       name="chartType"
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="">Select chart type</option>
+                      <option value="" className="text-muted-foreground">All Types</option>
                       <option value="bar">Bar Chart</option>
                       <option value="line">Line Chart</option>
                       <option value="pie">Pie Chart</option>

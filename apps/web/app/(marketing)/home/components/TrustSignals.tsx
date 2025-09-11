@@ -28,14 +28,14 @@ export function TrustSignals() {
   ];
 
   return (
-    <section className="py-12 bg-white border-y border-gray-200">
+    <section className="py-12 bg-background border-y border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {signals.map((signal, index) => (
             <div key={index} className="text-center">
-              <signal.icon className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">{signal.value}</div>
-              <div className="text-sm text-gray-600">{signal.label}</div>
+              <signal.icon className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
+              <div className="text-2xl font-bold text-foreground">{signal.value}</div>
+              <div className="text-sm text-muted-foreground">{signal.label}</div>
             </div>
           ))}
         </div>

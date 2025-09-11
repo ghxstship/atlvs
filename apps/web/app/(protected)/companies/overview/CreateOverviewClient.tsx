@@ -218,7 +218,7 @@ export default function CreateOverviewClient({
         {/* Item Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Target className="h-5 w-5 text-blue-600" />
+            <Target className="h-5 w-5 text-primary" />
             <h3 className="font-semibold">Item Details</h3>
           </div>
           
@@ -302,7 +302,7 @@ export default function CreateOverviewClient({
         {/* Assignment & Timeline */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-green-600" />
+            <Users className="h-5 w-5 text-success" />
             <h3 className="font-semibold">Assignment & Timeline</h3>
           </div>
           
