@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
 import { Anton } from 'next/font/google';
-import { StandardButton, animationPresets } from '../../(protected)/components/ui';
+import { Button } from '@ghxstship/ui';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
@@ -72,7 +72,7 @@ export function HeroSection() {
                       key={feature}
                       className={cn(
                         "absolute",
-                        animationPresets.fadeIn,
+                        "transition-all duration-300 ease-in-out",
                         index === currentFeature
                           ? "opacity-100 translate-y-0"
                           : "opacity-0 translate-y-2"
@@ -105,15 +105,15 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
               <Link href="/auth/signup">
-                <StandardButton className="w-full sm:w-auto group">
+                <Button className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                </StandardButton>
+                </Button>
               </Link>
-              <StandardButton variant="outline" className="w-full sm:w-auto group">
+              <Button variant="outline" className="w-full sm:w-auto group">
                 <Play className="mr-2 h-4 w-4" />
                 Watch Demo
-              </StandardButton>
+              </Button>
             </div>
 
             {/* Stats */}

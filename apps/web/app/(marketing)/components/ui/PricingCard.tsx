@@ -3,7 +3,7 @@ import { Badge } from '@ghxstship/ui/components/Badge';
 import { Check, ArrowRight } from 'lucide-react';
 import { cn } from '@ghxstship/ui/system';
 import { typography } from '../../lib/typography';
-import { StandardButton, animationPresets } from '../../../(protected)/components/ui';
+import { Button } from '@ghxstship/ui';
 
 interface PricingCardProps {
   title: string;
@@ -37,7 +37,7 @@ export function PricingCard({
   return (
     <Card className={cn(
       'relative h-full flex flex-col',
-      animationPresets.cardInteractive,
+      "transition-all duration-200 hover:scale-[1.02] hover:shadow-lg",
       popular && 'border-primary shadow-lg ring-2 ring-primary/20',
       className
     )}>
@@ -88,17 +88,17 @@ export function PricingCard({
         {/* Fixed CTA Button */}
         <div className="mt-6 flex-shrink-0">
           {ctaHref ? (
-            <StandardButton asChild className="w-full group" variant={popular ? 'primary' : 'outline'}>
+            <Button asChild className="w-full group" variant={popular ? 'primary' : 'outline'}>
               <a href={ctaHref}>
                 {ctaText}
                 {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
               </a>
-            </StandardButton>
+            </Button>
           ) : (
-            <StandardButton className="w-full group" variant={popular ? 'primary' : 'outline'}>
+            <Button className="w-full group" variant={popular ? 'primary' : 'outline'}>
               {ctaText}
               {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
-            </StandardButton>
+            </Button>
           )}
         </div>
       </CardContent>
