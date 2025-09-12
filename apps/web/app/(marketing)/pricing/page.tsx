@@ -18,67 +18,101 @@ import { CTAGroup } from '../components/ui/CTAButton';
 
 const plans = [
   {
-    id: 'starter',
-    name: 'Starter',
-    description: 'For small teams who want to stop drowning in spreadsheets',
-    monthlyPrice: 29,
-    annualPrice: 290,
+    id: 'community',
+    name: 'Community',
+    description: 'Perfect for freelancers and solo creators getting started',
+    monthlyPrice: 9,
+    annualPrice: 90,
     features: [
-      { name: 'Up to 5 team members', included: true },
-      { name: '10 active projects', included: true },
-      { name: 'Basic project management', included: true },
-      { name: 'File storage (10GB)', included: true },
+      { name: 'Single user account', included: true },
+      { name: 'OPENDECK marketplace access', included: true },
+      { name: 'Basic talent discovery', included: true },
+      { name: 'Community forums', included: true },
+      { name: '5 active projects', included: true },
+      { name: 'File storage (5GB)', included: true },
       { name: 'Email support', included: true },
-      { name: 'Mobile apps', included: true },
+      { name: 'Mobile app access', included: true },
+      { name: 'ATLVS project management', included: false },
+      { name: 'Team collaboration', included: false },
       { name: 'Advanced analytics', included: false },
       { name: 'Custom workflows', included: false },
       { name: 'API access', included: false },
-      { name: 'SSO integration', included: false },
       { name: 'Priority support', included: false },
     ],
     cta: 'Start Free Trial',
     popular: false,
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    description: 'For teams tired of juggling 47 different production apps',
-    monthlyPrice: 79,
-    annualPrice: 790,
+    id: 'pro',
+    name: 'Pro',
+    description: 'For professionals who need full creative production power',
+    monthlyPrice: 29,
+    annualPrice: 290,
     features: [
-      { name: 'Up to 25 team members', included: true },
+      { name: 'Single user account', included: true },
+      { name: 'OPENDECK marketplace access', included: true },
+      { name: 'ATLVS project management', included: true },
+      { name: 'Advanced talent matching', included: true },
       { name: 'Unlimited projects', included: true },
-      { name: 'Advanced project management', included: true },
-      { name: 'File storage (100GB)', included: true },
+      { name: 'File storage (50GB)', included: true },
       { name: 'Priority email support', included: true },
-      { name: 'Mobile apps', included: true },
-      { name: 'Advanced analytics', included: true },
-      { name: 'Custom workflows', included: true },
-      { name: 'API access', included: true },
+      { name: 'Mobile app access', included: true },
+      { name: 'Basic analytics & reporting', included: true },
+      { name: 'Custom project templates', included: true },
+      { name: 'Team collaboration', included: false },
+      { name: 'Advanced workflows', included: false },
+      { name: 'API access', included: false },
       { name: 'SSO integration', included: false },
-      { name: 'Priority support', included: false },
     ],
     cta: 'Start Free Trial',
     popular: true,
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    description: 'For big teams who need production management that actually scales',
-    monthlyPrice: 199,
-    annualPrice: 1990,
+    id: 'team',
+    name: 'Team',
+    description: 'For growing teams ready to scale their creative operations',
+    monthlyPrice: 99,
+    annualPrice: 990,
     features: [
       { name: 'Unlimited team members', included: true },
+      { name: 'OPENDECK marketplace access', included: true },
+      { name: 'ATLVS project management', included: true },
+      { name: 'Team collaboration tools', included: true },
       { name: 'Unlimited projects', included: true },
-      { name: 'Enterprise project management', included: true },
-      { name: 'File storage (1TB)', included: true },
-      { name: '24/7 phone & email support', included: true },
-      { name: 'Mobile apps', included: true },
-      { name: 'Advanced analytics', included: true },
-      { name: 'Custom workflows', included: true },
-      { name: 'API access', included: true },
-      { name: 'SSO integration', included: true },
+      { name: 'File storage (500GB)', included: true },
       { name: 'Priority support', included: true },
+      { name: 'Mobile app access', included: true },
+      { name: 'Advanced analytics & reporting', included: true },
+      { name: 'Custom workflows', included: true },
+      { name: 'Role-based permissions', included: true },
+      { name: 'Team performance insights', included: true },
+      { name: 'API access', included: false },
+      { name: 'Enterprise features', included: false },
+    ],
+    cta: 'Start Free Trial',
+    popular: false,
+  },
+  {
+    id: 'fleet',
+    name: 'Fleet',
+    description: 'Enterprise-grade solution for large organizations and studios',
+    monthlyPrice: 999,
+    annualPrice: 9990,
+    features: [
+      { name: 'Unlimited users & teams', included: true },
+      { name: 'OPENDECK marketplace access', included: true },
+      { name: 'ATLVS project management', included: true },
+      { name: 'OPVS video production suite', included: true },
+      { name: 'MVNIFEST content distribution', included: true },
+      { name: 'Unlimited projects & regions', included: true },
+      { name: 'Enterprise file storage (10TB+)', included: true },
+      { name: '24/7 dedicated support', included: true },
+      { name: 'White-label solutions', included: true },
+      { name: 'Advanced enterprise analytics', included: true },
+      { name: 'Custom integrations & workflows', included: true },
+      { name: 'SSO & enterprise security', included: true },
+      { name: 'Full API access', included: true },
+      { name: 'Dedicated account manager', included: true },
     ],
     cta: 'Contact Sales',
     popular: false,
@@ -150,7 +184,7 @@ export default function PricingPage() {
 
       {/* Pricing Cards */}
       <Section>
-        <div className={cn(layouts.gridPricing, "relative z-0")}>
+        <div className={cn(layouts.gridPricing, "relative z-0 pt-6")}>
           {plans.map((plan) => {
             const price = isAnnual ? Math.floor(plan.annualPrice / 12) : plan.monthlyPrice;
             const yearlyPrice = isAnnual ? plan.annualPrice : undefined;
@@ -199,13 +233,13 @@ export default function PricingPage() {
         />
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link href="/auth/signup">
-            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
-              Start Free Trial
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap">
+              <span>Start Free Trial</span>
+              <ArrowRight className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
+            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center justify-center whitespace-nowrap">
               Contact Sales
             </Button>
           </Link>

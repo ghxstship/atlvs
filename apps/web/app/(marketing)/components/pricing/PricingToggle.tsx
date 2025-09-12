@@ -1,5 +1,5 @@
-import { cn } from '@ghxstship/ui/system';
 import { Badge } from '@ghxstship/ui';
+import { cn } from '../../../lib/utils';
 
 interface PricingToggleProps {
   isAnnual: boolean;
@@ -15,14 +15,14 @@ export function PricingToggle({ isAnnual, onToggle }: PricingToggleProps) {
       <button
         onClick={() => onToggle(!isAnnual)}
         className={cn(
-          "relative w-14 h-7 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:scale-105",
-          isAnnual ? "bg-primary" : "bg-muted"
+          "relative w-14 h-7 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:scale-105 border-2",
+          isAnnual ? "bg-primary border-primary" : "bg-background border-border"
         )}
         aria-label={`Switch to ${isAnnual ? 'monthly' : 'annual'} billing`}
       >
         <div className={cn(
-          "absolute w-5 h-5 bg-white rounded-full top-1 transition-all duration-200 shadow-sm",
-          isAnnual ? "translate-x-8" : "translate-x-1"
+          "absolute w-5 h-5 rounded-full top-0.5 transition-all duration-200 shadow-lg",
+          isAnnual ? "translate-x-7 bg-white" : "translate-x-0.5 bg-foreground"
         )} />
       </button>
       <span className={cn("text-sm transition-colors", isAnnual ? "text-foreground font-semibold" : "text-muted-foreground")}>

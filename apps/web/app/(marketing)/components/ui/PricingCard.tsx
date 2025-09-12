@@ -42,7 +42,7 @@ export function PricingCard({
       className
     )}>
       {popular && (
-        <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary z-10 shadow-md">
+        <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary z-20 shadow-md px-4 py-1">
           Most Popular
         </Badge>
       )}
@@ -88,16 +88,16 @@ export function PricingCard({
         {/* Fixed CTA Button */}
         <div className="mt-6 flex-shrink-0">
           {ctaHref ? (
-            <Button asChild className="w-full group" variant={popular ? 'primary' : 'outline'}>
-              <a href={ctaHref}>
-                {ctaText}
-                {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
+            <Button asChild className="w-full group min-h-[44px] flex items-center justify-center" variant={popular ? 'primary' : 'outline'}>
+              <a href={ctaHref} className="flex items-center justify-center gap-2 whitespace-nowrap">
+                <span className="truncate">{ctaText}</span>
+                {Icon && <Icon className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />}
               </a>
             </Button>
           ) : (
-            <Button className="w-full group" variant={popular ? 'primary' : 'outline'}>
-              {ctaText}
-              {Icon && <Icon className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />}
+            <Button className="w-full group min-h-[44px] flex items-center justify-center gap-2 whitespace-nowrap" variant={popular ? 'primary' : 'outline'}>
+              <span className="truncate">{ctaText}</span>
+              {Icon && <Icon className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />}
             </Button>
           )}
         </div>
