@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@ghxstship/ui/components/Button';
 import { Menu, X } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../lib/utils';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });

@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../lib/utils';
 import { typography } from '../lib/typography';
 import { layouts } from '../lib/layouts';
 import { Section, SectionHeader } from '../components/layout/Section';

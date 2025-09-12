@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader } from '@ghxstship/ui/components/Card';
 import { Badge } from '@ghxstship/ui/components/Badge';
 import { Check, ArrowRight } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../../lib/utils';
 import { typography } from '../../lib/typography';
 import { Button } from '@ghxstship/ui';
 

@@ -1,4 +1,4 @@
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../../lib/utils';
 import { layouts } from '../../lib/layouts';
 
 interface ContainerProps {

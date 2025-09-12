@@ -1,4 +1,4 @@
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../../lib/utils';
 import { layouts, LayoutClasses } from '../../lib/layouts';
 import { typography } from '../../lib/typography';
 

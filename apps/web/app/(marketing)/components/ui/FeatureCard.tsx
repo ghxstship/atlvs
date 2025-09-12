@@ -1,8 +1,8 @@
 import { Card, CardContent } from '@ghxstship/ui/components/Card';
 import { Badge } from '@ghxstship/ui/components/Badge';
-import { cn } from '@ghxstship/ui/system';
 import { LucideIcon } from 'lucide-react';
 import { typography } from '../../lib/typography';
+import { cn } from '../../../lib/utils';
 
 interface FeatureCardProps {
   title: string;
