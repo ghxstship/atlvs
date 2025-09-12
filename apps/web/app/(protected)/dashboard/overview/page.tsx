@@ -1,34 +1,47 @@
-import { cookies } from 'next/headers';
-import { createServerClient } from '@ghxstship/auth';
-import { getTranslations } from 'next-intl/server';
+import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import DashboardClient from '../DashboardClient';
-import FeatureGate from '../../../components/FeatureGate';
 
 export const metadata = {
   title: 'Dashboard Overview',
 };
 
 export default async function DashboardOverview() {
-  const t = await getTranslations('dashboard');
-  const cookieStore = cookies();
-  const supabase = createServerClient(cookieStore);
+  const supabase = await createClient();
 
   const {
-    data: { user },
+    data: { session },
     error: authError,
-  } = await supabase.auth.getUser();
+  } = await supabase.auth.getSession();
 
-  if (authError || !user) {
-    redirect('/auth/login');
+  if (authError || !session) {
+    redirect('/login');
   }
 
-  // Get organization ID from user metadata or session
-  const orgId = user.user_metadata?.organization_id || user.app_metadata?.organization_id;
-  
-  if (!orgId) {
-    redirect('/onboarding');
+  // Get user profile and organization membership
+  const { data: profile } = await supabase
+    .from('users')
+    .select(`
+      *,
+      memberships!inner(
+        organization_id,
+        role,
+        status,
+        organization:organizations(
+          id,
+          name,
+          slug
+        )
+      )
+    `)
+    .eq('auth_id', session.user.id)
+    .single();
+
+  if (!profile || !profile.memberships?.[0]) {
+    redirect('/auth/onboarding');
   }
+
+  const orgId = profile.memberships[0].organization_id;
 
   return (
     <DashboardClient orgId={orgId} />
