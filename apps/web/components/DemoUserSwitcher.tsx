@@ -114,7 +114,7 @@ export function DemoUserSwitcher() {
               </div>
               
               <Button
-                variant={isCurrentUser ? "default" : "outline"}
+                variant={isCurrentUser ? "primary" : "outline"}
                 size="sm"
                 onClick={() => handleUserSwitch(user.type)}
                 disabled={isLoading}

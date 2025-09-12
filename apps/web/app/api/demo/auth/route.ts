@@ -1,6 +1,5 @@
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@supabase/supabase-js'
 import { NextRequest, NextResponse } from 'next/server'
-import { cookies } from 'next/headers'
 
 // Demo user credentials for each role type
 const DEMO_USERS = {
@@ -53,7 +52,10 @@ export async function POST(request: NextRequest) {
     }
 
     const demoUser = DEMO_USERS[userType as keyof typeof DEMO_USERS]
-    const supabase = createClient()
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
 
     // Sign in as the demo user
     const { data: authData, error: authError } = await supabase.auth.signInWithPassword({

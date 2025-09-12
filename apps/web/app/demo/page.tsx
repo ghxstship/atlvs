@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 
 export default async function DemoPage() {
-  const supabase = createClient()
+  const supabase = await createClient()
   
   // Check if user is authenticated
   const { data: { session } } = await supabase.auth.getSession()
