@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Card, CardContent, Button, Badge } from '@ghxstship/ui';
-import { Check, ArrowRight, ArrowLeft, Zap, Users, Building } from 'lucide-react';
+import { Check, ArrowRight, ArrowLeft, Zap, Users, Building, Crown } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
@@ -16,67 +16,101 @@ interface PlanSelectionStepProps {
 
 const plans = [
   {
-    id: 'starter',
-    name: 'Starter',
-    price: 29,
+    id: 'community',
+    name: 'Community',
+    price: 9,
     period: 'month',
-    description: 'Perfect for individual creators and small teams',
+    description: 'Perfect for freelancers and solo creators getting started',
     icon: Zap,
     features: [
-      'Up to 5 projects',
-      '10GB storage',
-      'Basic collaboration',
+      'Single user account',
+      'OPENDECK marketplace access',
+      'Basic talent discovery',
+      'Community forums',
+      '5 active projects',
+      'File storage (5GB)',
       'Email support',
-      'ATLVS access',
-      'Mobile app'
+      'Mobile app access'
     ],
     popular: false,
     trialDays: 14,
   },
   {
-    id: 'professional',
-    name: 'Professional',
-    price: 79,
+    id: 'pro',
+    name: 'Pro',
+    price: 29,
     period: 'month',
-    description: 'Ideal for growing creative teams',
+    description: 'For professionals who need full creative production power',
     icon: Users,
     features: [
+      'Single user account',
+      'OPENDECK marketplace access',
+      'ATLVS project management',
+      'Advanced talent matching',
       'Unlimited projects',
-      '100GB storage',
-      'Advanced collaboration',
+      'File storage (50GB)',
+      'Priority email support',
+      'Mobile app access',
+      'Basic analytics & reporting',
+      'Custom project templates'
+    ],
+    popular: false,
+    trialDays: 14,
+  },
+  {
+    id: 'team',
+    name: 'Team',
+    price: 99,
+    period: 'month',
+    description: 'For growing teams ready to scale their creative operations',
+    icon: Building,
+    features: [
+      'Unlimited team members',
+      'OPENDECK marketplace access',
+      'ATLVS project management',
+      'Team collaboration tools',
+      'Unlimited projects',
+      'File storage (500GB)',
       'Priority support',
-      'ATLVS + OPENDECK access',
-      'Custom integrations',
-      'Advanced analytics',
-      'Team management'
+      'Mobile app access',
+      'Advanced analytics & reporting',
+      'Custom workflows',
+      'Role-based permissions',
+      'Team performance insights'
     ],
     popular: true,
     trialDays: 14,
   },
   {
-    id: 'enterprise',
-    name: 'Enterprise',
-    price: null,
-    period: 'custom',
-    description: 'For large organizations with specific needs',
-    icon: Building,
+    id: 'fleet',
+    name: 'Fleet',
+    price: 999,
+    period: 'month',
+    description: 'Enterprise-grade solution for large organizations and studios',
+    icon: Crown,
     features: [
-      'Everything in Professional',
-      'Unlimited storage',
-      'Dedicated account manager',
-      'Custom workflows',
-      'SSO integration',
-      'Advanced security',
-      'Custom contracts',
-      'White-label options'
+      'Unlimited users & teams',
+      'OPENDECK marketplace access',
+      'ATLVS project management',
+      'OPVS video production suite',
+      'MVNIFEST content distribution',
+      'Unlimited projects & regions',
+      'Enterprise file storage (10TB+)',
+      '24/7 dedicated support',
+      'White-label solutions',
+      'Advanced enterprise analytics',
+      'Custom integrations & workflows',
+      'SSO & enterprise security',
+      'Full API access',
+      'Dedicated account manager'
     ],
     popular: false,
-    trialDays: 30,
+    trialDays: 14,
   },
 ];
 
 export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSelectionStepProps) {
-  const [selectedPlan, setSelectedPlan] = useState(data.selectedPlan || 'professional');
+  const [selectedPlan, setSelectedPlan] = useState(data.selectedPlan || 'team');
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'annual'>(data.billingCycle || 'monthly');
   const [loading, setLoading] = useState(false);
 
@@ -104,13 +138,30 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
   const getPrice = (plan: typeof plans[0]) => {
     if (!plan.price) return 'Custom';
-    const price = billingCycle === 'annual' ? Math.round(plan.price * 0.8) : plan.price;
+    
+    // Use actual annual pricing from marketing page
+    const annualPrices: { [key: string]: number } = {
+      community: 6, // $72/year = $6/month
+      pro: 19,      // $232/year = ~$19/month
+      team: 66,     // $792/year = $66/month
+      fleet: 666    // $7992/year = $666/month
+    };
+    
+    const price = billingCycle === 'annual' ? annualPrices[plan.id] || plan.price : plan.price;
     return `$${price}`;
   };
 
   const getAnnualSavings = (plan: typeof plans[0]) => {
     if (!plan.price) return 0;
-    return Math.round(plan.price * 12 * 0.2);
+    
+    const annualTotals: { [key: string]: number } = {
+      community: 36, // $108 - $72 = $36 saved
+      pro: 116,      // $348 - $232 = $116 saved  
+      team: 396,     // $1188 - $792 = $396 saved
+      fleet: 3996    // $11988 - $7992 = $3996 saved
+    };
+    
+    return annualTotals[plan.id] || 0;
   };
 
   return (
@@ -154,7 +205,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {plans.map((plan) => {
           const Icon = plan.icon;
           const isSelected = selectedPlan === plan.id;
@@ -238,7 +289,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
           Back
         </Button>
         
-        <Button>
+        <Button onClick={handleContinue} disabled={loading}>
           {loading ? 'Processing...' : 'Continue'}
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
