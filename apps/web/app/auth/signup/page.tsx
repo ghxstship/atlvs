@@ -29,7 +29,7 @@ export default function SignUpPage() {
             </span>
           </Link>
           
-          <Badge variant="outline" className={spacing.marginBottom.small}>
+          <Badge variant="outline" className="mb-4">
             14-Day Free Trial
           </Badge>
           <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
