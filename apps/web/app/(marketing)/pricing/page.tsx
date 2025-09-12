@@ -22,7 +22,7 @@ const plans = [
     name: 'Community',
     description: 'Perfect for freelancers and solo creators getting started',
     monthlyPrice: 9,
-    annualPrice: 90,
+    annualPrice: 72,
     features: [
       { name: 'Single user account', included: true },
       { name: 'OPENDECK marketplace access', included: true },
@@ -47,7 +47,7 @@ const plans = [
     name: 'Pro',
     description: 'For professionals who need full creative production power',
     monthlyPrice: 29,
-    annualPrice: 290,
+    annualPrice: 232,
     features: [
       { name: 'Single user account', included: true },
       { name: 'OPENDECK marketplace access', included: true },
@@ -65,14 +65,14 @@ const plans = [
       { name: 'SSO integration', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: true,
+    popular: false,
   },
   {
     id: 'team',
     name: 'Team',
     description: 'For growing teams ready to scale their creative operations',
     monthlyPrice: 99,
-    annualPrice: 990,
+    annualPrice: 792,
     features: [
       { name: 'Unlimited team members', included: true },
       { name: 'OPENDECK marketplace access', included: true },
@@ -90,14 +90,14 @@ const plans = [
       { name: 'Enterprise features', included: false },
     ],
     cta: 'Start Free Trial',
-    popular: false,
+    popular: true,
   },
   {
     id: 'fleet',
     name: 'Fleet',
     description: 'Enterprise-grade solution for large organizations and studios',
     monthlyPrice: 999,
-    annualPrice: 9990,
+    annualPrice: 7992,
     features: [
       { name: 'Unlimited users & teams', included: true },
       { name: 'OPENDECK marketplace access', included: true },

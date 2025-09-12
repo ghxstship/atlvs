@@ -16,13 +16,13 @@ export function PricingToggle({ isAnnual, onToggle }: PricingToggleProps) {
         onClick={() => onToggle(!isAnnual)}
         className={cn(
           "relative w-14 h-7 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:scale-105 border-2",
-          isAnnual ? "bg-primary border-primary" : "bg-background border-border"
+          isAnnual ? "bg-primary border-primary" : "bg-muted border-muted-foreground"
         )}
         aria-label={`Switch to ${isAnnual ? 'monthly' : 'annual'} billing`}
       >
         <div className={cn(
           "absolute w-5 h-5 rounded-full top-0.5 transition-all duration-200 shadow-lg",
-          isAnnual ? "translate-x-7 bg-white" : "translate-x-0.5 bg-foreground"
+          isAnnual ? "translate-x-7 bg-white" : "translate-x-0.5 bg-white"
         )} />
       </button>
       <span className={cn("text-sm transition-colors", isAnnual ? "text-foreground font-semibold" : "text-muted-foreground")}>

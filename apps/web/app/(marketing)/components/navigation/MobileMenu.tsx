@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@ghxstship/ui/components/Button';
 import { NavigationDropdown } from './NavigationDropdown';
 import { anton } from '../../lib/typography';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '../../../lib/utils';
 
 interface NavigationItem {
   label: string;
@@ -20,7 +20,7 @@ interface MobileMenuProps {
 
 export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: MobileMenuProps) {
   return (
-    <div className="md:hidden border-t bg-background">
+    <div className="md:hidden border-t bg-popover">
       <div className="px-2 pt-2 pb-3 space-y-1">
         {navigation.map((item) => (
           <div key={item.label}>

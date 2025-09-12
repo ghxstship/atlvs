@@ -90,7 +90,7 @@ export function NavigationDropdown({
       {/* Dropdown Menu */}
       <div
         className={cn(
-          "absolute left-0 top-full mt-2 w-48 rounded-md border bg-background/95 backdrop-blur-sm p-1 shadow-lg transition-all duration-200 z-[60]",
+          "absolute left-0 top-full mt-2 w-48 rounded-md border bg-popover p-1 shadow-lg transition-all duration-200 z-[60]",
           activeDropdown === item.label
             ? "opacity-100 translate-y-0 visible"
             : "opacity-0 translate-y-1 invisible"
