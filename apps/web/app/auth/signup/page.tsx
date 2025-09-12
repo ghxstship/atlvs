@@ -23,15 +23,11 @@ export default function SignUpPage() {
       <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
         <div className={`text-center ${spacing.marginBottom.xlarge}`}>
-          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.medium}`}>
+          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
             <span className={typography.sectionTitle}>
               GHXSTSHIP
             </span>
           </Link>
-          
-          <Badge variant="outline" className={`mb-6 ${spacing.marginBottom.medium}`}>
-            14-Day Free Trial
-          </Badge>
           <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
             WELCOME ABOARD
           </h1>

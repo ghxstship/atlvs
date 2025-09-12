@@ -106,7 +106,7 @@ export default async function ProtectedLayout({ children }: { children: ReactNod
     <div className="flex min-h-dvh">
       <SidebarClient navSections={navSections} />
       <main id="main-content" className="flex-1" tabIndex={-1}>
-        <div className="sticky top-0 z-40 border-b bg-background/60 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="sticky top-0 z-40 border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background/95">
           <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
               <BreadcrumbsNav />
