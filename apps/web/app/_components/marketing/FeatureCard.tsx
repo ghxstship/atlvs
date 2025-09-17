@@ -1,3 +1,5 @@
+'use client';
+
 import { Card, CardContent } from '@ghxstship/ui/components/Card';
 import { Badge } from '@ghxstship/ui/components/Badge';
 import { LucideIcon } from 'lucide-react';

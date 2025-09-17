@@ -1,4 +1,5 @@
-import type { Metadata } from 'next';
+'use client';
+
 import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight, Zap, Globe } from 'lucide-react';
@@ -6,16 +7,6 @@ import { typography } from './lib/typography';
 import { HeroSection } from '../_components/marketing/HeroSection';
 import { FeatureCard } from '../_components/marketing/FeatureCard';
 import { CTASection } from '../_components/marketing/CTASection';
-
-export const metadata: Metadata = {
-  title: 'GHXSTSHIP - Production Management That Actually Works',
-  description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS and OPENDECK help you manage productions like a pro without losing your sanity (or your budget).',
-  openGraph: {
-    title: 'GHXSTSHIP - Production Management That Actually Works',
-    description: 'Stop drowning in spreadsheets and Slack chaos. ATLVS and OPENDECK help you manage productions like a pro without losing your sanity.',
-    url: 'https://ghxstship.com',
-  },
-};
 
 export default function RootPage() {
   return (

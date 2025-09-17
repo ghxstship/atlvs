@@ -1,11 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { normalizeRole } from './lib/auth/roles';
-import { createServerClient } from '@ghxstship/auth';
 
 export async function middleware(req: NextRequest) {
-  // Temporarily disable i18n middleware to fix root page 404
-  let res = NextResponse.next();
-
   const { pathname } = req.nextUrl;
 
   // Public paths - marketing pages should be accessible without auth
@@ -31,60 +26,22 @@ export async function middleware(req: NextRequest) {
     pathname.startsWith('/_next') ||
     /\.(?:.*)$/.test(pathname);
 
-  // Allow API paths without auth by default; you may restrict later per-route
-  if (pathname.startsWith('/api')) {
-    return res;
+  // Allow API paths and public paths
+  if (pathname.startsWith('/api') || isPublic) {
+    return NextResponse.next();
   }
 
-  if (isPublic) {
-    return res;
-  }
-
-  // Auth guard using Supabase session in middleware with cookie adapter
-  const supabase = createServerClient({
-    get: (name: string) => req.cookies.get(name) ? { name, value: req.cookies.get(name)!.value } : undefined,
-    set: (name: string, value: string, options) => { res.cookies.set(name, value, options); },
-    remove: (name: string, options) => { res.cookies.set(name, '', { ...options, maxAge: 0 }); }
-  });
-  const {
-    data: { session }
-  } = await supabase.auth.getSession();
-
-  if (!session) {
+  // For protected routes, check for auth token in cookies
+  const authToken = req.cookies.get('sb-access-token') || req.cookies.get('supabase-auth-token');
+  
+  if (!authToken) {
     const url = req.nextUrl.clone();
-    url.pathname = '/login';
+    url.pathname = '/auth/signin';
     url.searchParams.set('next', req.nextUrl.pathname);
     return NextResponse.redirect(url);
   }
 
-  // Project deep pages guard for limited roles without assignments
-  if (pathname.startsWith('/projects') && pathname !== '/projects/overview') {
-    // Get role from active membership (first active)
-    const { data: membership } = await supabase
-      .from('memberships')
-      .select('role')
-      .eq('user_id', session.user.id)
-      .eq('status', 'active')
-      .order('created_at', { ascending: true })
-      .maybeSingle();
-    const role = normalizeRole(membership?.role || 'viewer');
-    const limitedRoles = new Set(['team_member','viewer','client','vendor','partner']);
-    if (limitedRoles.has(role)) {
-      const { count } = await supabase
-        .from('projects_members')
-        .select('project_id', { count: 'exact', head: true })
-        .eq('user_id', session.user.id)
-        .eq('status', 'active');
-      if ((count ?? 0) === 0) {
-        const url = req.nextUrl.clone();
-        url.pathname = '/projects/overview';
-        url.searchParams.delete('next');
-        return NextResponse.redirect(url);
-      }
-    }
-  }
-
-  return res;
+  return NextResponse.next();
 }
 
 export const config = {
