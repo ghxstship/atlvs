@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Film, Megaphone, Music, Building, CheckCircle, Users, BarChart3, Zap, Globe } from 'lucide-react';
 import { typography } from '../lib/typography';
-import { Section, SectionHeader } from '../components/layout/Section';
+import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
 
 export const metadata: Metadata = {
   title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',

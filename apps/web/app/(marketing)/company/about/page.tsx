@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Users, Target, Globe, Award, TrendingUp, Heart, Zap, Shield } from 'lucide-react';
 import { typography } from '../../lib/typography';
-import { Section, SectionHeader } from '../../components/layout/Section';
+import { Section, SectionHeader } from '../../../_components/marketing/layout/Section';
 
 export const metadata: Metadata = {
   title: 'About Us - Built by People Who Actually Do This Stuff | GHXSTSHIP',

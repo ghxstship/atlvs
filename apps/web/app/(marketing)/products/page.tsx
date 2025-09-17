@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Globe, Zap, Shield, CheckCircle } from 'lucide-react';
 import { typography } from '../lib/typography';
-import { Section, SectionHeader } from '../components/layout/Section';
+import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
 
 export const metadata: Metadata = {
   title: 'Products - ATLVS & OPENDECK | GHXSTSHIP',

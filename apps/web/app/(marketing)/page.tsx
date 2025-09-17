@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight, Zap, Globe } from 'lucide-react';

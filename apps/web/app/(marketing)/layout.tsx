@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from '@ghxstship/ui';
-import { MarketingHeader } from './components/MarketingHeader';
-import { MarketingFooter } from './components/MarketingFooter';
-import { CookieConsent } from './components/CookieConsent';
-import Analytics from './components/Analytics';
-import PerformanceOptimizations from './components/PerformanceOptimizations';
-import AccessibilityEnhancements from './components/AccessibilityEnhancements';
+import { MarketingHeader } from '../_components/marketing/MarketingHeader';
+import { MarketingFooter } from '../_components/marketing/MarketingFooter';
+import { CookieConsent } from '../_components/marketing/CookieConsent';
+import Analytics from '../_components/marketing/Analytics';
+import PerformanceOptimizations from '../_components/marketing/PerformanceOptimizations';
+import AccessibilityEnhancements from '../_components/marketing/AccessibilityEnhancements';
 
 export const metadata: Metadata = {
   title: {

@@ -8,12 +8,12 @@ import { ArrowRight } from 'lucide-react';
 import { cn } from '../../lib/utils';
 import { typography } from '../lib/typography';
 import { layouts } from '../lib/layouts';
-import { Section, SectionHeader } from '../components/layout/Section';
+import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
 import { PricingCard } from "../../_components/marketing/PricingCard";
-import { PricingToggle } from '../components/pricing/PricingToggle';
-import { TrustIndicators } from '../components/pricing/TrustIndicators';
-import { AddOnCard } from '../components/pricing/AddOnCard';
-import { FAQSection } from '../components/pricing/FAQSection';
+import { PricingToggle } from '../../_components/marketing/pricing/PricingToggle';
+import { TrustIndicators } from '../../_components/marketing/pricing/TrustIndicators';
+import { AddOnCard } from '../../_components/marketing/pricing/AddOnCard';
+import { FAQSection } from '../../_components/marketing/pricing/FAQSection';
 
 const plans = [
   {

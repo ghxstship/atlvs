@@ -1,5 +1,5 @@
-import { cn } from '../../../lib/utils';
-import { layouts } from '../../lib/layouts';
+import { cn } from '../../lib/utils';
+import { layouts } from '../../../../(marketing)/lib/layouts';
 
 interface ContainerProps {
   children: React.ReactNode;

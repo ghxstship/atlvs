@@ -1,49 +1,254 @@
 'use client';
 
-import React from 'react';
+import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { 
-  LayoutDashboard, Users, Briefcase, Calendar, 
-  ShoppingCart, Building, DollarSign, BarChart,
-  FileText, Settings, User, Workflow, Package
+  Zap, 
+  Shield, 
+  Globe, 
+  BarChart3, 
+  Users, 
+  Calendar, 
+  MessageSquare, 
+  FileText, 
+  Settings, 
+  Smartphone,
+  Clock,
+  Award
 } from 'lucide-react';
 
-export function FeatureGrid() {
-  const features = [
-    { icon: LayoutDashboard, name: 'Dashboard', description: 'Customizable analytics and insights' },
-    { icon: Briefcase, name: 'Projects', description: 'Complete project management suite' },
-    { icon: Users, name: 'People', description: 'HR and team management tools' },
-    { icon: Calendar, name: 'Programming', description: 'Event and schedule management' },
-    { icon: Workflow, name: 'Pipeline', description: 'Sales and workflow automation' },
-    { icon: ShoppingCart, name: 'Procurement', description: 'Purchase order management' },
-    { icon: Package, name: 'Jobs', description: 'Job tracking and assignments' },
-    { icon: Building, name: 'Companies', description: 'Client and vendor management' },
-    { icon: DollarSign, name: 'Finance', description: 'Financial tracking and reporting' },
-    { icon: BarChart, name: 'Analytics', description: 'Advanced data visualization' },
-    { icon: FileText, name: 'Resources', description: 'Document and asset management' },
-    { icon: Settings, name: 'Settings', description: 'System configuration' },
-    { icon: User, name: 'Profile', description: 'User profile management' },
-  ];
+const features = [
+  {
+    icon: Zap,
+    title: 'AI-Powered Insights',
+    description: 'Get intelligent recommendations and predictive analytics to optimize your production workflows.',
+    category: 'Intelligence',
+    gradient: 'from-warning to-destructive',
+  },
+  {
+    icon: Shield,
+    title: 'Enterprise Security',
+    description: 'SOC 2 Type II certified with advanced encryption, SSO, and granular permissions.',
+    category: 'Security',
+    gradient: 'from-success to-accent',
+  },
+  {
+    icon: Globe,
+    title: 'Global Collaboration',
+    description: 'Connect teams across time zones with real-time sync and multi-language support.',
+    category: 'Collaboration',
+    gradient: 'from-primary to-accent',
+  },
+  {
+    icon: BarChart3,
+    title: 'Advanced Analytics',
+    description: 'Comprehensive dashboards and custom reports to track performance and ROI.',
+    category: 'Analytics',
+    gradient: 'from-secondary to-accent',
+  },
+  {
+    icon: Users,
+    title: 'Team Management',
+    description: 'Streamlined onboarding, role-based access, and performance tracking.',
+    category: 'Management',
+    gradient: 'from-secondary to-primary',
+  },
+  {
+    icon: Calendar,
+    title: 'Smart Scheduling',
+    description: 'Intelligent resource allocation and conflict resolution for optimal planning.',
+    category: 'Planning',
+    gradient: 'from-destructive to-accent',
+  },
+  {
+    icon: MessageSquare,
+    title: 'Real-time Communication',
+    description: 'Integrated chat, video calls, and collaborative workspaces.',
+    category: 'Communication',
+    gradient: 'from-accent to-success',
+  },
+  {
+    icon: FileText,
+    title: 'Document Management',
+    description: 'Version control, approval workflows, and secure file sharing.',
+    category: 'Documents',
+    gradient: 'from-warning to-destructive',
+  },
+  {
+    icon: Settings,
+    title: 'Custom Workflows',
+    description: 'Build and automate processes tailored to your specific needs.',
+    category: 'Automation',
+    gradient: 'from-muted to-secondary',
+  },
+  {
+    icon: Smartphone,
+    title: 'Mobile First',
+    description: 'Full-featured mobile apps for iOS and Android with offline capabilities.',
+    category: 'Mobile',
+    gradient: 'from-accent to-secondary',
+  },
+  {
+    icon: Clock,
+    title: 'Time Tracking',
+    description: 'Accurate time logging with automated timesheets and billing integration.',
+    category: 'Productivity',
+    gradient: 'from-warning to-accent',
+  },
+  {
+    icon: Award,
+    title: 'Quality Assurance',
+    description: 'Built-in review processes and quality checkpoints throughout production.',
+    category: 'Quality',
+    gradient: 'from-success to-accent',
+  },
+];
 
+const categories = [
+  'All',
+  'Intelligence',
+  'Security',
+  'Collaboration',
+  'Analytics',
+  'Management',
+  'Planning',
+];
+
+export function FeatureGrid() {
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-heading-2 text-heading-3 color-foreground mb-4">
-            13 Enterprise Modules
+    <section className="py-20 bg-secondary/20">
+      <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <Badge variant="outline" className="mb-4">
+            Platform Features
+          </Badge>
+          <h2 className="text-heading-1">
+            EVERYTHING YOU NEED
+            <br />
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              IN ONE PLATFORM
+            </span>
           </h2>
-          <p className="text-body color-muted max-w-2xl mx-auto">
-            Everything you need to run your business, all in one platform
+          <p className="text-body color-muted max-w-3xl mx-auto">
+            From project inception to final delivery, GHXSTSHIP provides all the tools 
+            and features you need to manage complex productions efficiently.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {features.map((feature, index) => (
-            <div key={index} className="p-6 border border-border rounded-lg hover:shadow-lg transition-shadow">
-              <feature.icon className="w-8 h-8 color-primary mb-3" />
-              <h3 className="text-heading-4 color-foreground mb-1">{feature.name}</h3>
-              <p className="text-body-sm color-muted">{feature.description}</p>
-            </div>
-          ))}
+        {/* Feature Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+          {features.map((feature) => {
+            const Icon = feature.icon;
+            return (
+              <Card key={feature.title} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-6">
+                  {/* Icon */}
+                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
+                    <Icon className="h-6 w-6 color-primary-foreground" />
+                  </div>
+
+                  {/* Category Badge */}
+                  <Badge variant="secondary" className="mb-3 text-body-sm">
+                    {feature.category}
+                  </Badge>
+
+                  {/* Title */}
+                  <h3 className="card-title group-hover:color-primary transition-colors">
+                    {feature.title}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-body-sm color-muted leading-relaxed">
+                    {feature.description}
+                  </p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+
+        {/* Feature Highlights */}
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Enterprise Ready */}
+          <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <CardContent className="p-8 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                <Shield className="h-8 w-8 color-primary" />
+              </div>
+              <h3 className="text-heading-3 mb-4">Enterprise Ready</h3>
+              <p className="color-muted mb-6">
+                Built for scale with enterprise-grade security, compliance, and support.
+              </p>
+              <div className="space-y-2 text-body-sm">
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span>SOC 2 Type II Certified</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span>99.9% Uptime SLA</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-success rounded-full"></div>
+                  <span>24/7 Expert Support</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* AI-Powered */}
+          <Card className="bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
+            <CardContent className="p-8 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
+                <Zap className="h-8 w-8 color-accent" />
+              </div>
+              <h3 className="text-heading-3 mb-4">AI-Powered</h3>
+              <p className="color-muted mb-6">
+                Intelligent automation and insights to optimize your workflows.
+              </p>
+              <div className="space-y-2 text-body-sm">
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
+                  <span>Predictive Analytics</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
+                  <span>Smart Recommendations</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-warning rounded-full"></div>
+                  <span>Automated Workflows</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Global Scale */}
+          <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+            <CardContent className="p-8 text-center">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
+                <Globe className="h-8 w-8 color-primary" />
+              </div>
+              <h3 className="text-heading-3 mb-4">Global Scale</h3>
+              <p className="color-muted mb-6">
+                Connect teams worldwide with multi-region infrastructure.
+              </p>
+              <div className="space-y-2 text-body-sm">
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>50+ Countries</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Multi-language Support</span>
+                </div>
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <span>Global CDN</span>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

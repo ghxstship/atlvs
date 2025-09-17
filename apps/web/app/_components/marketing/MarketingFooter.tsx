@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { typography, anton } from '../lib/typography';
-import { layouts } from '../lib/layouts';
+import { typography, anton } from '../../(marketing)/lib/typography';
+import { layouts } from '../../(marketing)/lib/layouts';
 import { NewsletterSignup } from '../../_components/marketing/NewsletterSignup';
 import { FooterSection } from './footer/FooterSection';
 import { SocialLinks } from './footer/SocialLinks';

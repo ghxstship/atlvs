@@ -9,7 +9,7 @@ import { cn } from '../../lib/utils';
 import { Anton } from 'next/font/google';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
-import { navigation } from '../lib/navigation';
+import { navigation } from '../../(marketing)/lib/navigation';
 import { NavigationDropdown } from './navigation/NavigationDropdown';
 import { MobileMenu } from './navigation/MobileMenu';
 

@@ -1,6 +1,6 @@
 import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { MapPin, Users } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography } from '../../../../(marketing)/lib/typography';
 
 interface TeamMember {
   name: string;

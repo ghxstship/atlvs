@@ -3,7 +3,7 @@
 import { Card, CardContent } from '@ghxstship/ui/components/Card';
 import { Badge } from '@ghxstship/ui/components/Badge';
 import { LucideIcon } from 'lucide-react';
-// import { typography } from '../../lib/typography';
+// import { typography } from '../../../../(marketing)/lib/typography';
 import { cn } from '../../lib/utils';
 
 interface FeatureCardProps {

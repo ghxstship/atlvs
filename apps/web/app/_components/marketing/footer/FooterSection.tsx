@@ -1,4 +1,4 @@
-import { typography } from '../../lib/typography';
+import { typography } from '../../../(marketing)/lib/typography';
 
 interface FooterLink {
   label: string;
