@@ -77,11 +77,11 @@ export function AuthLayout({
             <div className="text-center">
               <p className="text-body-sm color-muted font-body">
                 By continuing, you agree to our{' '}
-                <Link href="/legal/terms" className="color-primary hover:underline">
+                <Link href={"/legal/terms" as any} className="color-primary hover:underline">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/legal/privacy" className="color-primary hover:underline">
+                <Link href={"/legal/privacy" as any} className="color-primary hover:underline">
                   Privacy Policy
                 </Link>
               </p>

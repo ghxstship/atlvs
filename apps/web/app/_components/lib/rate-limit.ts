@@ -47,3 +47,21 @@ export async function rateLimit(
   
   return { success: true, remaining: maxRequests - record.count };
 }
+
+// Helper function for request-based rate limiting
+export async function rateLimitRequest(
+  request: NextRequest,
+  key?: string,
+  windowMs: number = 60000,
+  maxRequests: number = 100
+): Promise<{ success: boolean; remaining?: number }> {
+  // Get identifier from IP address or user ID, optionally with custom key
+  const baseIdentifier = request.ip || 
+    request.headers.get('x-forwarded-for') || 
+    request.headers.get('x-real-ip') || 
+    'anonymous';
+  
+  const identifier = key ? `${key}:${baseIdentifier}` : baseIdentifier;
+  
+  return rateLimit(identifier, maxRequests, windowMs);
+}

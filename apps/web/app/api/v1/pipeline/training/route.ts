@@ -486,14 +486,15 @@ export async function PUT(request: NextRequest) {
             .eq('id', enrollmentId)
             .single();
 
-          if (enrollment?.program?.certification?.issueCertificate) {
+          const certification = Array.isArray(enrollment?.program) ? (enrollment.program as any)[0]?.certification : (enrollment?.program as any)?.certification;
+          if (certification?.issueCertificate) {
             await supabase.from('training_certificates').insert({
               enrollment_id: enrollmentId,
               organization_id: orgId,
-              certificate_name: enrollment.program.certification.certificateName,
+              certificate_name: certification.certificateName,
               issued_at: new Date().toISOString(),
-              expires_at: enrollment.program.certification.validityPeriod ? 
-                new Date(Date.now() + enrollment.program.certification.validityPeriod * 30 * 24 * 60 * 60 * 1000).toISOString() : null,
+              expires_at: certification.validityPeriod ? 
+                new Date(Date.now() + certification.validityPeriod * 30 * 24 * 60 * 60 * 1000).toISOString() : null,
               created_at: new Date().toISOString()
             });
           }
@@ -593,8 +594,8 @@ export async function DELETE(request: NextRequest) {
         resource_type: 'training_enrollment',
         resource_id: enrollmentId,
         details: { 
-          person_name: enrollment?.person?.name || 'Unknown',
-          program_name: enrollment?.program?.name || 'Unknown'
+          person_name: Array.isArray(enrollment?.person) ? (enrollment.person as any)[0]?.name || 'Unknown' : (enrollment?.person as any)?.name || 'Unknown',
+          program_name: Array.isArray(enrollment?.program) ? (enrollment.program as any)[0]?.name || 'Unknown' : (enrollment?.program as any)?.name || 'Unknown'
         },
         occurred_at: new Date().toISOString()
       });

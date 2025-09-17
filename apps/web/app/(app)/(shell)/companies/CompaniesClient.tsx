@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { DataViewProvider, ViewSwitcher, DataGrid, DataActions } from '@ghxstship/data-view';
+import { DataViewProvider, ViewSwitcher, DataGrid, DataActions, KanbanBoard, CalendarView, ListView, Drawer } from '@ghxstship/ui';
 import { StateManagerProvider } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import type { DataRecord } from '@ghxstship/data-view';
+import type { DataRecord, DataViewConfig, FieldConfig } from '@ghxstship/ui';
 
 export default function CompaniesClient({ orgId }: { orgId: string }) {
   const [companies, setCompanies] = useState<DataRecord[]>([]);
@@ -13,11 +13,11 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
   const supabase = useMemo(() => createBrowserClient(), []);
 
   // Field configuration for companies
-  const fieldConfig = [
+  const fieldConfig: FieldConfig[] = [
     {
       key: 'name',
       label: 'Company Name',
-      type: 'text',
+      type: 'text' as const,
       required: true,
       sortable: true,
       filterable: true
@@ -25,7 +25,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'description',
       label: 'Description',
-      type: 'textarea',
+      type: 'textarea' as const,
       required: false,
       sortable: false,
       filterable: true
@@ -33,7 +33,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'industry',
       label: 'Industry',
-      type: 'select',
+      type: 'select' as const,
       required: true,
       sortable: true,
       filterable: true,
@@ -49,7 +49,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'website',
       label: 'Website',
-      type: 'url',
+      type: 'url' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -57,7 +57,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'email',
       label: 'Email',
-      type: 'email',
+      type: 'email' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -65,7 +65,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'phone',
       label: 'Phone',
-      type: 'text',
+      type: 'text' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -73,7 +73,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'address',
       label: 'Address',
-      type: 'text',
+      type: 'text' as const,
       required: false,
       sortable: false,
       filterable: true
@@ -81,7 +81,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'city',
       label: 'City',
-      type: 'text',
+      type: 'text' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -89,7 +89,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'state',
       label: 'State',
-      type: 'text',
+      type: 'text' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -97,7 +97,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'country',
       label: 'Country',
-      type: 'text',
+      type: 'text' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -105,7 +105,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'status',
       label: 'Status',
-      type: 'select',
+      type: 'select' as const,
       required: true,
       sortable: true,
       filterable: true,
@@ -119,7 +119,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'created_at',
       label: 'Created Date',
-      type: 'date',
+      type: 'date' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -127,7 +127,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     {
       key: 'updated_at',
       label: 'Last Updated',
-      type: 'date',
+      type: 'date' as const,
       required: false,
       sortable: true,
       filterable: true
@@ -185,21 +185,21 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     onSearch: (query: string) => {
       setFilters(prev => ({ ...prev, search: query }));
     },
-    onFilter: (newFilters) => {
+    onFilter: (newFilters: any) => {
       setFilters(prev => ({ ...prev, ...newFilters }));
     },
-    onSort: (sorts) => {
+    onSort: (sorts: any) => {
       console.log('Sort companies:', sorts);
       // Sorting functionality implemented
     },
     onRefresh: () => {
       setFilters({}); // Clear filters and reload
     },
-    onExport: (data, format) => {
+    onExport: (data: any, format: any) => {
       console.log('Export companies:', format, data);
       // Export functionality implemented
     },
-    onImport: (data) => {
+    onImport: (data: any) => {
       console.log('Import companies:', data);
       // Import functionality implemented
     },

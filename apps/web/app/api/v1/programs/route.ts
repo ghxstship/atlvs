@@ -154,13 +154,13 @@ export async function GET(request: NextRequest) {
 
     // Calculate program metrics
     const metrics = programs?.reduce((acc, program) => {
-      const totalBudget = program.budget?.total || 0;
-      const spentBudget = program.budget?.spent || 0;
-      const projectCount = program.projects?.length || 0;
+      const totalBudget = (program as any).budget?.total || 0;
+      const spentBudget = (program as any).budget?.spent || 0;
+      const projectCount = (program as any).projects?.length || 0;
       
       return {
         totalPrograms: acc.totalPrograms + 1,
-        activePrograms: acc.activePrograms + (program.status === 'active' ? 1 : 0),
+        activePrograms: acc.activePrograms + ((program as any).status === 'active' ? 1 : 0),
         totalBudget: acc.totalBudget + totalBudget,
         totalSpent: acc.totalSpent + spentBudget,
         totalProjects: acc.totalProjects + projectCount,
