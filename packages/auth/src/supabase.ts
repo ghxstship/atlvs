@@ -7,7 +7,11 @@ export const createBrowserClient = () => {
   if (!url || !key) {
     throw new Error('Supabase URL and Anon Key must be set in env');
     }
-  return createSupabaseClient(url, key);
+  return createSupabaseClient(url, key, {
+    auth: {
+      persistSession: typeof window !== 'undefined'
+    }
+  });
 };
 
 export type CookieAdapter = {

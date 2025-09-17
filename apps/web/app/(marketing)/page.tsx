@@ -1,11 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Play, CheckCircle, Zap, Globe } from 'lucide-react';
+import { Button, Badge } from '@ghxstship/ui';
+import { ArrowRight, Zap, Globe } from 'lucide-react';
 import { typography } from './lib/typography';
-import { HeroSection } from './components/HeroSection';
+import { HeroSection } from '../_components/marketing/HeroSection';
 import { FeatureCard } from '../_components/marketing/FeatureCard';
-import { CTASection } from './components/CTASection';
+import { CTASection } from '../_components/marketing/CTASection';
 
 export const metadata: Metadata = {
   title: 'GHXSTSHIP - Production Management That Actually Works',
