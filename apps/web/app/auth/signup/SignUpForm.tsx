@@ -6,9 +6,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Button } from '@ghxstship/ui';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight, Github } from 'lucide-react';
-import { typography } from '../../(marketing)/lib/typography';
-import { spacing, layouts } from '../../(marketing)/lib/spacing';
-import { accessibility } from '../../(marketing)/lib/accessibility';
+import { typography } from '../../_components/lib/typography';
+import { spacing, layouts } from '../../_components/lib/spacing';
+import { accessibility } from '../../_components/lib/accessibility';
 
 export function SignUpForm() {
   const router = useRouter();

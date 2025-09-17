@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight, Zap, Globe } from 'lucide-react';
-import { typography } from './lib/typography';
+import { typography } from '../_components/lib/typography';
 import { HeroSection } from '../_components/marketing/HeroSection';
 import { FeatureCard } from '../_components/marketing/FeatureCard';
 import { CTASection } from '../_components/marketing/CTASection';

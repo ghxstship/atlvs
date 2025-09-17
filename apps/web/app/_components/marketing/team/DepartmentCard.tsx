@@ -1,6 +1,6 @@
 import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { Users } from 'lucide-react';
-import { typography } from '../../../../(marketing)/lib/typography';
+import { typography } from '../../lib/typography';
 
 interface Department {
   name: string;
