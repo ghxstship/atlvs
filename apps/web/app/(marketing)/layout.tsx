@@ -1,11 +1,6 @@
 import type { Metadata } from 'next';
-import { ThemeProvider } from '@ghxstship/ui';
-import { MarketingHeader } from '../_components/marketing/MarketingHeader';
-import { MarketingFooter } from '../_components/marketing/MarketingFooter';
-import { CookieConsent } from '../_components/marketing/CookieConsent';
-import Analytics from '../_components/marketing/Analytics';
-import PerformanceOptimizations from '../_components/marketing/PerformanceOptimizations';
-import AccessibilityEnhancements from '../_components/marketing/AccessibilityEnhancements';
+import { Suspense } from 'react';
+import { MarketingLayoutClient } from '../_components/marketing/MarketingLayoutClient';
 
 export const metadata: Metadata = {
   title: {
@@ -71,18 +66,10 @@ export default function MarketingLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ThemeProvider>
-      <div className="min-h-screen flex flex-col">
-        <MarketingHeader />
-        <main id="main-content" className="flex-1" tabIndex={-1}>
-          {children}
-        </main>
-        <MarketingFooter />
-      </div>
-      <CookieConsent />
-      <Analytics />
-      <PerformanceOptimizations />
-      <AccessibilityEnhancements />
-    </ThemeProvider>
+    <Suspense fallback={<div className="h-screen bg-background animate-pulse" />}>
+      <MarketingLayoutClient>
+        {children}
+      </MarketingLayoutClient>
+    </Suspense>
   );
 }

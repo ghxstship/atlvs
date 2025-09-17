@@ -7,10 +7,11 @@ import { typography } from '../lib/typography';
 import { HeroSection } from './HeroSection';
 import { FeatureCard } from './FeatureCard';
 import { CTASection } from './CTASection';
+import { MarketingLayoutClient } from './MarketingLayoutClient';
 
 export function MarketingPageClient() {
   return (
-    <div className="min-h-screen">
+    <MarketingLayoutClient>
       {/* Hero Section */}
       <HeroSection />
 
@@ -73,6 +74,6 @@ export function MarketingPageClient() {
 
       {/* Call to Action */}
       <CTASection />
-    </div>
+    </MarketingLayoutClient>
   );
 }
