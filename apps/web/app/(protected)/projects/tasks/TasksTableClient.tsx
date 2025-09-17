@@ -109,7 +109,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse text-body-sm">
         <thead>
           <tr className="sticky top-0">
             <th className="border-b p-2 text-left">{t('grid.title')}</th>
@@ -136,38 +136,38 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         width="xl"
       >
         <div className="flex items-center gap-2 border-b pb-2 mb-3" role="tablist" aria-label={t('title')}>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
 
         {tab === 'details' && (
-          <div className="space-y-2 text-sm">
-            <div><span className="font-medium">{t('grid.title')}:</span> {current?.title}</div>
-            <div><span className="font-medium">{t('grid.status')}:</span> {current?.status}</div>
-            <div><span className="font-medium">{t('grid.dueAt')}:</span> {current?.due_at ? new Date(current.due_at).toLocaleString() : '-'}</div>
+          <div className="space-y-2 text-body-sm">
+            <div><span className="form-label">{t('grid.title')}:</span> {current?.title}</div>
+            <div><span className="form-label">{t('grid.status')}:</span> {current?.status}</div>
+            <div><span className="form-label">{t('grid.dueAt')}:</span> {current?.due_at ? new Date(current.due_at).toLocaleString() : '-'}</div>
           </div>
         )}
 
         {tab === 'edit' && current && (
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-1">
-              <label htmlFor="title" className="text-sm">{t('grid.title')}</label>
+              <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
               <input id="title" name="title" className="rounded border px-2 py-1" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
-              {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
+              {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
             </div>
             <div className="grid gap-1">
-              <label htmlFor="status" className="text-sm">{t('grid.status')}</label>
+              <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
               <input id="status" name="status" className="rounded border px-2 py-1" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
             </div>
             <div className="grid gap-1">
-              <label htmlFor="due_at" className="text-sm">{t('grid.dueAt')}</label>
+              <label htmlFor="due_at" className="text-body-sm">{t('grid.dueAt')}</label>
               <input id="due_at" name="due_at" type="date" className="rounded border px-2 py-1" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
             </div>
-            <div className="text-xs opacity-70">{form.formState.isDirty ? t('drawer.unsaved') : t('drawer.allSaved')}</div>
+            <div className="text-body-sm opacity-70">{form.formState.isDirty ? t('drawer.unsaved') : t('drawer.allSaved')}</div>
           </form>
         )}
 
@@ -177,12 +177,12 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
               <textarea name="body" className="min-h-16 w-full rounded border p-2" placeholder={t('drawer.comments')} />
               <Button type="submit" variant="primary">{t('drawer.post')}</Button>
             </form>
-            {loadingComments ? <div className="text-sm opacity-70">{t('drawer.loading')}</div> : (
+            {loadingComments ? <div className="text-body-sm opacity-70">{t('drawer.loading')}</div> : (
               <ul className="space-y-2">
                 {comments.map(c => (
                   <li key={c.id} className="rounded border p-2">
-                    <div className="text-sm whitespace-pre-wrap">{c.body}</div>
-                    <div className="text-xs opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                    <div className="text-body-sm whitespace-pre-wrap">{c.body}</div>
+                    <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                   </li>
                 ))}
               </ul>
@@ -191,12 +191,12 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         )}
 
         {tab === 'activity' && (
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-body-sm">
             {loadingActivity ? t('drawer.loading') : (
               <ul className="space-y-1">
                 {activity.map((a, i) => (
                   <li key={i} className="flex items-center justify-between gap-4">
-                    <div className="font-mono text-xs opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                    <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
                     <div className="flex-1">{a.action}</div>
                   </li>
                 ))}

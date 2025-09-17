@@ -124,7 +124,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
         className="flex items-center gap-2"
       >
         {isSubmitting ? (
-          <div className="h-4 w-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+          <div className="h-4 w-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
         ) : (
           <Save className="h-4 w-4" />
         )}
@@ -153,7 +153,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
         <form id="create-service-form" onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-6">
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="name" className="block text-sm font-medium text-foreground">Service Name *</label>
+              <label htmlFor="name" className="block text-body-sm form-label color-foreground">Service Name *</label>
               <Input
                 id="name"
                 {...form.register('name')}
@@ -161,12 +161,12 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
                 className={form.formState.errors.name ? 'border-destructive' : ''}
               />
               {form.formState.errors.name && (
-                <p className="text-sm text-destructive">{form.formState.errors.name.message}</p>
+                <p className="text-body-sm color-destructive">{form.formState.errors.name.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="description" className="block text-sm font-medium text-foreground">Description</label>
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground">Description</label>
               <Textarea
                 id="description"
                 {...form.register('description')}
@@ -177,7 +177,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="category" className="block text-sm font-medium text-foreground">Category</label>
+                <label htmlFor="category" className="block text-body-sm form-label color-foreground">Category</label>
                 <Select
                   {...form.register('category')}
                   defaultValue=""
@@ -190,7 +190,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="rate" className="block text-sm font-medium text-foreground">Rate *</label>
+                <label htmlFor="rate" className="block text-body-sm form-label color-foreground">Rate *</label>
                 <Input
                   id="rate"
                   type="number"
@@ -200,13 +200,13 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
                   className={form.formState.errors.rate ? 'border-destructive' : ''}
                 />
                 {form.formState.errors.rate && (
-                  <p className="text-sm text-destructive">{form.formState.errors.rate.message}</p>
+                  <p className="text-body-sm color-destructive">{form.formState.errors.rate.message}</p>
                 )}
               </div>
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="unit" className="block text-sm font-medium text-foreground">Unit</label>
+              <label htmlFor="unit" className="block text-body-sm form-label color-foreground">Unit</label>
               <Select
                 {...form.register('unit')}
                 defaultValue="hour"
@@ -222,7 +222,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label htmlFor="currency" className="block text-sm font-medium text-foreground">Currency</label>
+                <label htmlFor="currency" className="block text-body-sm form-label color-foreground">Currency</label>
                 <Select
                   {...form.register('currency')}
                   defaultValue="USD"
@@ -234,7 +234,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="supplier" className="block text-sm font-medium text-foreground">Supplier</label>
+                <label htmlFor="supplier" className="block text-body-sm form-label color-foreground">Supplier</label>
                 <Input
                   id="supplier"
                   {...form.register('supplier')}
@@ -244,7 +244,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="status" className="block text-sm font-medium text-foreground">Status</label>
+              <label htmlFor="status" className="block text-body-sm form-label color-foreground">Status</label>
               <Select
                 {...form.register('status')}
                 defaultValue="active"

@@ -113,10 +113,10 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
     if (insights.length === 0) return null;
 
     return (
-      <div className="mx-3 mt-3 mb-2 p-3 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-950/50 dark:to-purple-950/50 border border-blue-200 dark:border-blue-800">
+      <div className="mx-3 mt-3 mb-2 p-3 rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
         <div className="flex items-center gap-2 mb-3">
-          <Brain className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-          <span className="text-xs font-semibold text-blue-700 dark:text-blue-300 uppercase tracking-wide">
+          <Brain className="h-4 w-4 text-primary" />
+          <span className="text-xs font-semibold text-primary uppercase tracking-wide">
             AI Insights
           </span>
         </div>
@@ -125,26 +125,26 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
           {insights.slice(0, 2).map((insight, index) => (
             <div
               key={index}
-              className="flex items-start justify-between p-2.5 bg-white/80 dark:bg-neutral-800/80 rounded-md border border-neutral-200/50 dark:border-neutral-700/50 backdrop-blur-sm"
+              className="flex items-start justify-between p-2.5 bg-card/80 rounded-md border border-border/50 backdrop-blur-sm"
             >
               <div className="flex items-start gap-2 flex-1 min-w-0">
-                {insight.type === 'trending' && <TrendingUp className="h-3 w-3 text-green-500 mt-0.5 flex-shrink-0" />}
-                {insight.type === 'time-based' && <Clock className="h-3 w-3 text-blue-500 mt-0.5 flex-shrink-0" />}
-                {insight.type === 'frequent' && <Zap className="h-3 w-3 text-yellow-500 mt-0.5 flex-shrink-0" />}
-                {insight.type === 'suggested' && <Star className="h-3 w-3 text-purple-500 mt-0.5 flex-shrink-0" />}
+                {insight.type === 'trending' && <TrendingUp className="h-3 w-3 text-success mt-0.5 flex-shrink-0" />}
+                {insight.type === 'time-based' && <Clock className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />}
+                {insight.type === 'frequent' && <Zap className="h-3 w-3 text-warning mt-0.5 flex-shrink-0" />}
+                {insight.type === 'suggested' && <Star className="h-3 w-3 text-secondary mt-0.5 flex-shrink-0" />}
                 
                 <div className="flex-1 min-w-0">
-                  <p className="text-xs text-neutral-700 dark:text-neutral-300 leading-relaxed">
+                  <p className="text-xs text-muted-foreground leading-relaxed">
                     {insight.reason}
                   </p>
                   <div className="flex items-center gap-2 mt-1.5">
-                    <div className="h-1.5 bg-neutral-200 dark:bg-neutral-700 rounded-full flex-1">
+                    <div className="h-1.5 bg-muted rounded-full flex-1">
                       <div
-                        className="h-1.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-300"
+                        className="h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full transition-all duration-300"
                         style={{ width: `${insight.confidence * 100}%` }}
                       />
                     </div>
-                    <span className="text-xs text-neutral-500 font-medium">
+                    <span className="text-xs text-muted-foreground font-medium">
                       {Math.round(insight.confidence * 100)}%
                     </span>
                   </div>
@@ -153,7 +153,7 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
               
               <button
                 onClick={() => applyInsight(insight)}
-                className="ml-2 px-2.5 py-1 text-xs bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/50 dark:hover:bg-blue-800/50 text-blue-700 dark:text-blue-300 rounded-md transition-colors duration-200 font-medium flex-shrink-0"
+                className="ml-2 px-2.5 py-1 text-xs bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-200 font-medium flex-shrink-0"
               >
                 Apply
               </button>
@@ -162,8 +162,8 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
         </div>
         
         {isLearning && (
-          <div className="flex items-center gap-2 mt-2 text-xs text-neutral-500">
-            <div className="animate-spin h-3 w-3 border border-brand-500 border-t-transparent rounded-full" />
+          <div className="flex items-center gap-2 mt-2 text-xs text-muted-foreground">
+            <div className="animate-spin h-3 w-3 border border-primary border-t-transparent rounded-full" />
             <span>Learning your patterns...</span>
           </div>
         )}

@@ -6,7 +6,7 @@ export default function ResourcesFeaturedPage() {
   return (
     <div className="space-y-4">
       <Card title="Resources · Featured">
-        <div className="text-sm text-foreground/70">Placeholder: Featured resources and highlights.</div>
+        <div className="text-body-sm color-foreground/70">Placeholder: Featured resources and highlights.</div>
       </Card>
     </div>
   );

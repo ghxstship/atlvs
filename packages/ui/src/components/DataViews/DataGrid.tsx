@@ -175,7 +175,7 @@ export function DataGrid({
   }, [state.sorts]);
 
   const gridClasses = `
-    bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden
+    bg-background border border-border rounded-lg overflow-hidden
     ${className}
   `.trim();
 
@@ -187,10 +187,10 @@ export function DataGrid({
   return (
     <div className={gridClasses} style={{ height }}>
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-2">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               placeholder="Search records..."
               value={state.search}
@@ -227,7 +227,7 @@ export function DataGrid({
       {/* Table */}
       <div className="overflow-auto" style={{ maxHeight: typeof height === 'number' ? height - 120 : 'calc(100% - 120px)' }}>
         <table className={tableClasses}>
-          <thead className={`bg-gray-50 dark:bg-gray-800 ${stickyHeader ? 'sticky top-0 z-10' : ''}`}>
+          <thead className={`bg-muted ${stickyHeader ? 'sticky top-0 z-10' : ''}`}>
             <tr>
               <th className="w-12 px-4 py-3 text-left">
                 <Checkbox
@@ -240,7 +240,7 @@ export function DataGrid({
               {visibleFields.map((field) => (
                 <th
                   key={field.key}
-                  className="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
+                  className="px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/50"
                   style={{ width: columnWidths[field.key] || field.width }}
                   onClick={() => field.sortable !== false && handleSort(field.key)}
                 >
@@ -253,13 +253,13 @@ export function DataGrid({
               <th className="w-12 px-4 py-3"></th>
             </tr>
           </thead>
-          <tbody className="bg-white dark:bg-gray-900 divide-y divide-gray-200 dark:divide-gray-700">
+          <tbody className="bg-background divide-y divide-border">
             {paginatedData.map((record) => (
               <tr
                 key={record.id}
                 className={`
-                  hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer
-                  ${state.selection.includes(record.id) ? 'bg-blue-50 dark:bg-blue-900/20' : ''}
+                  hover:bg-muted/50 cursor-pointer
+                  ${state.selection.includes(record.id) ? 'bg-primary/10' : ''}
                 `}
                 onClick={() => config.onEdit?.(record)}
               >
@@ -281,7 +281,7 @@ export function DataGrid({
                 {visibleFields.map((field) => (
                   <td
                     key={field.key}
-                    className="px-4 py-3 text-sm text-gray-900 dark:text-gray-100"
+                    className="px-4 py-3 text-sm text-foreground"
                   >
                     {formatCellValue(record[field.key], field)}
                   </td>
@@ -305,8 +305,8 @@ export function DataGrid({
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+      <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+        <div className="text-sm text-muted-foreground">
           Showing {((state.pagination.page - 1) * state.pagination.pageSize) + 1} to{' '}
           {Math.min(state.pagination.page * state.pagination.pageSize, processedData.length)} of{' '}
           {processedData.length} results
@@ -325,7 +325,7 @@ export function DataGrid({
             Previous
           </Button>
           
-          <span className="text-sm text-gray-500 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             Page {state.pagination.page} of {Math.ceil(processedData.length / state.pagination.pageSize)}
           </span>
           

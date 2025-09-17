@@ -92,39 +92,39 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
 
   return (
     <Drawer open={open} onClose={onClose} title={vendor?.name || 'Vendor'} description={saving ? t('drawer.saving') : undefined} width="xl">
-      {msg ? <div role="alert" className="mb-2 text-sm">{msg}</div> : null}
+      {msg ? <div role="alert" className="mb-2 text-body-sm">{msg}</div> : null}
       <div className="flex items-center gap-2 border-b pb-2 mb-3" role="tablist" aria-label={vendor?.name || 'Vendor'}>
-        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
-        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
-        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
-        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
+        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
+        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
+        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
+        <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
       </div>
 
       {tab === 'details' && vendor && (
-        <div className="space-y-2 text-sm">
-          <div><span className="font-medium">Name:</span> {vendor.name}</div>
-          <div><span className="font-medium">Website:</span> {vendor.website || '-'}</div>
-          <div><span className="font-medium">Email:</span> {vendor.contactEmail || '-'}</div>
-          <div><span className="font-medium">Status:</span> {vendor.status}</div>
+        <div className="space-y-2 text-body-sm">
+          <div><span className="form-label">Name:</span> {vendor.name}</div>
+          <div><span className="form-label">Website:</span> {vendor.website || '-'}</div>
+          <div><span className="form-label">Email:</span> {vendor.contactEmail || '-'}</div>
+          <div><span className="form-label">Status:</span> {vendor.status}</div>
         </div>
       )}
 
       {tab === 'edit' && vendor && (
         <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
           <div className="grid gap-1">
-            <label htmlFor="name" className="text-sm">Name</label>
+            <label htmlFor="name" className="text-body-sm">Name</label>
             <input id="name" className="rounded border px-2 py-1" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
           </div>
           <div className="grid gap-1">
-            <label htmlFor="website" className="text-sm">Website</label>
+            <label htmlFor="website" className="text-body-sm">Website</label>
             <input id="website" className="rounded border px-2 py-1" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} />
           </div>
           <div className="grid gap-1">
-            <label htmlFor="email" className="text-sm">Email</label>
+            <label htmlFor="email" className="text-body-sm">Email</label>
             <input id="email" className="rounded border px-2 py-1" value={form.contactEmail} onChange={(e) => setForm({ ...form, contactEmail: e.target.value })} />
           </div>
           <div className="grid gap-1">
-            <label htmlFor="status" className="text-sm">Status</label>
+            <label htmlFor="status" className="text-body-sm">Status</label>
             <input id="status" className="rounded border px-2 py-1" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} />
           </div>
           <div className="flex items-center justify-end gap-2 pt-2 border-t">
@@ -134,13 +134,13 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       )}
 
       {tab === 'comments' && (
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2 text-body-sm">
           {loadingComments ? t('drawer.loading') : comments.length === 0 ? t('emptyComments') : (
             <ul className="space-y-2">
               {comments.map(c => (
                 <li key={c.id} className="rounded border p-2">
                   <div className="whitespace-pre-wrap">{c.body}</div>
-                  <div className="text-xs opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                  <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                 </li>
               ))}
             </ul>
@@ -149,12 +149,12 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       )}
 
       {tab === 'activity' && (
-        <div className="space-y-2 text-sm">
+        <div className="space-y-2 text-body-sm">
           {loadingActivity ? t('drawer.loading') : (
             <ul className="space-y-1">
               {activity.map((a, i) => (
                 <li key={i} className="flex items-center justify-between gap-4">
-                  <div className="font-mono text-xs opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                  <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
                   <div className="flex-1">{a.action}</div>
                 </li>
               ))}

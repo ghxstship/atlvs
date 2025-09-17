@@ -1,0 +1,336 @@
+name: Design System Compliance
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'packages/ui/**'
+      - 'apps/web/**'
+      - '**/*.tsx'
+      - '**/*.ts'
+      - '**/*.css'
+  push:
+    branches: [main, develop]
+    paths:
+      - 'packages/ui/**'
+      - 'apps/web/**'
+      - '**/*.tsx'
+      - '**/*.ts'
+      - '**/*.css'
+
+jobs:
+  semantic-token-compliance:
+    name: Semantic Token Compliance Check
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint with semantic token rules
+        run: |
+          npx eslint packages/ui/src/**/*.{ts,tsx} \
+            --config packages/ui/.eslintrc.js \
+            --format json \
+            --output-file eslint-results.json || true
+
+      - name: Parse ESLint results and create report
+        run: |
+          node -e "
+          const fs = require('fs');
+          const results = JSON.parse(fs.readFileSync('eslint-results.json', 'utf8'));
+          
+          let totalViolations = 0;
+          let semanticTokenViolations = 0;
+          let report = '# Design System Compliance Report\n\n';
+          
+          results.forEach(result => {
+            if (result.messages.length > 0) {
+              report += \`## \${result.filePath.replace(process.cwd(), '.')}\n\n\`;
+              
+              result.messages.forEach(message => {
+                totalViolations++;
+                if (message.ruleId && message.ruleId.includes('semantic-tokens')) {
+                  semanticTokenViolations++;
+                }
+                
+                report += \`- **Line \${message.line}**: \${message.message}\n\`;
+                if (message.ruleId) {
+                  report += \`  - Rule: \${message.ruleId}\n\`;
+                }
+                report += '\n';
+              });
+            }
+          });
+          
+          report += \`## Summary\n\n\`;
+          report += \`- Total violations: \${totalViolations}\n\`;
+          report += \`- Semantic token violations: \${semanticTokenViolations}\n\`;
+          report += \`- Compliance rate: \${Math.round((1 - semanticTokenViolations / Math.max(totalViolations, 1)) * 100)}%\n\n\`;
+          
+          if (semanticTokenViolations > 0) {
+            report += '❌ **Design system compliance check failed**\n\n';
+            report += 'Please fix the semantic token violations above before merging.\n';
+          } else {
+            report += '✅ **Design system compliance check passed**\n\n';
+            report += 'All semantic token rules are being followed correctly.\n';
+          }
+          
+          fs.writeFileSync('compliance-report.md', report);
+          console.log(report);
+          
+          // Exit with error code if there are semantic token violations
+          if (semanticTokenViolations > 0) {
+            process.exit(1);
+          }
+          "
+
+      - name: Upload compliance report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: design-system-compliance-report
+          path: compliance-report.md
+
+      - name: Comment PR with compliance report
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            
+            try {
+              const report = fs.readFileSync('compliance-report.md', 'utf8');
+              
+              // Find existing compliance comment
+              const comments = await github.rest.issues.listComments({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+              });
+              
+              const existingComment = comments.data.find(comment => 
+                comment.body.includes('# Design System Compliance Report')
+              );
+              
+              if (existingComment) {
+                // Update existing comment
+                await github.rest.issues.updateComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  comment_id: existingComment.id,
+                  body: report
+                });
+              } else {
+                // Create new comment
+                await github.rest.issues.createComment({
+                  owner: context.repo.owner,
+                  repo: context.repo.repo,
+                  issue_number: context.issue.number,
+                  body: report
+                });
+              }
+            } catch (error) {
+              console.log('Could not read compliance report:', error.message);
+            }
+
+  visual-regression-test:
+    name: Visual Regression Test
+    runs-on: ubuntu-latest
+    needs: semantic-token-compliance
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Storybook
+        run: npm run build-storybook
+        working-directory: packages/ui
+
+      - name: Run visual regression tests
+        run: |
+          npx playwright install --with-deps
+          npx playwright test --config=packages/ui/playwright.config.js
+        continue-on-error: true
+
+      - name: Upload visual test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: visual-regression-results
+          path: packages/ui/test-results/
+
+  accessibility-audit:
+    name: Accessibility Audit
+    runs-on: ubuntu-latest
+    needs: semantic-token-compliance
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and start Storybook
+        run: |
+          npm run build-storybook
+          npx http-server storybook-static -p 6006 &
+          sleep 10
+        working-directory: packages/ui
+
+      - name: Run accessibility tests
+        run: |
+          npx @axe-core/cli http://localhost:6006 \
+            --include-tags wcag2a,wcag2aa,wcag21aa \
+            --reporter json \
+            --output-file accessibility-results.json || true
+
+      - name: Generate accessibility report
+        run: |
+          node -e "
+          const fs = require('fs');
+          
+          try {
+            const results = JSON.parse(fs.readFileSync('accessibility-results.json', 'utf8'));
+            
+            let report = '# Accessibility Audit Report\n\n';
+            
+            if (results.violations && results.violations.length > 0) {
+              report += \`## Violations (\${results.violations.length})\n\n\`;
+              
+              results.violations.forEach((violation, index) => {
+                report += \`### \${index + 1}. \${violation.description}\n\n\`;
+                report += \`- **Impact**: \${violation.impact}\n\`;
+                report += \`- **Tags**: \${violation.tags.join(', ')}\n\`;
+                report += \`- **Help**: [\${violation.helpUrl}](\${violation.helpUrl})\n\n\`;
+                
+                if (violation.nodes && violation.nodes.length > 0) {
+                  report += '**Affected elements:**\n';
+                  violation.nodes.forEach(node => {
+                    report += \`- \${node.target.join(', ')}\n\`;
+                  });
+                  report += '\n';
+                }
+              });
+            } else {
+              report += '✅ **No accessibility violations found**\n\n';
+            }
+            
+            if (results.passes && results.passes.length > 0) {
+              report += \`## Passed Rules (\${results.passes.length})\n\n\`;
+              report += 'The following accessibility rules passed successfully:\n\n';
+              results.passes.forEach(pass => {
+                report += \`- \${pass.description}\n\`;
+              });
+            }
+            
+            fs.writeFileSync('accessibility-report.md', report);
+            console.log(report);
+            
+            // Exit with error if there are violations
+            if (results.violations && results.violations.length > 0) {
+              process.exit(1);
+            }
+          } catch (error) {
+            console.log('No accessibility results found or error parsing results');
+          }
+          "
+
+      - name: Upload accessibility report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: accessibility-audit-report
+          path: accessibility-report.md
+
+  performance-audit:
+    name: Performance Audit
+    runs-on: ubuntu-latest
+    needs: semantic-token-compliance
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Audit bundle size
+        run: |
+          npm run build
+          npx bundlesize --config bundlesize.config.json || true
+        working-directory: packages/ui
+
+      - name: Generate performance report
+        run: |
+          echo "# Performance Audit Report" > performance-report.md
+          echo "" >> performance-report.md
+          echo "## Bundle Size Analysis" >> performance-report.md
+          echo "" >> performance-report.md
+          
+          # Get bundle sizes
+          if [ -f "packages/ui/dist/stats.json" ]; then
+            node -e "
+            const fs = require('fs');
+            const stats = JSON.parse(fs.readFileSync('packages/ui/dist/stats.json', 'utf8'));
+            
+            console.log('| Asset | Size | Gzipped |');
+            console.log('|-------|------|---------|');
+            
+            if (stats.assets) {
+              stats.assets.forEach(asset => {
+                const size = (asset.size / 1024).toFixed(2);
+                console.log(\`| \${asset.name} | \${size} KB | - |\`);
+              });
+            }
+            " >> performance-report.md
+          else
+            echo "Bundle analysis not available" >> performance-report.md
+          fi
+          
+          echo "" >> performance-report.md
+          echo "## Recommendations" >> performance-report.md
+          echo "" >> performance-report.md
+          echo "- Ensure semantic tokens are being used consistently to enable better tree-shaking" >> performance-report.md
+          echo "- Monitor bundle size increases with new components" >> performance-report.md
+          echo "- Consider code splitting for large component libraries" >> performance-report.md
+
+      - name: Upload performance report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: performance-audit-report
+          path: performance-report.md

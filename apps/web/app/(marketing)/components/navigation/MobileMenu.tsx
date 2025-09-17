@@ -35,7 +35,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
               <a
                 href={item.href}
                 className={cn(
-                  "block px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground text-foreground uppercase",
+                  "block px-3 py-2 text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground color-foreground uppercase",
                   anton.className
                 )}
               >
@@ -47,7 +47,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
         
         {/* Mobile Auth Buttons */}
         <div className="pt-4 space-y-2">
-          <Link href="/login" className="block">
+          <Link href="/auth/signin" className="block">
             <Button className="w-full justify-center">
               Sign In
             </Button>

@@ -118,8 +118,8 @@ export default async function ProgrammingOverview() {
       <Card>
         <div className="flex items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Programming Overview</h1>
-            <p className="text-sm text-muted-foreground">
+            <h1 className="text-heading-3 text-heading-3">Programming Overview</h1>
+            <p className="text-body-sm color-muted">
               Manage events, performances, and programming schedules
             </p>
           </div>
@@ -133,7 +133,7 @@ export default async function ProgrammingOverview() {
             upcomingEvents={upcomingEvents}
           />
         ) : (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 color-muted">
             Please join an organization to view programming overview.
           </div>
         )}

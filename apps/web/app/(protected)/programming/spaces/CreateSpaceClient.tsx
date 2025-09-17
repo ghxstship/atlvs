@@ -103,13 +103,13 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="name" className="text-sm font-medium">
+            <label htmlFor="name" className="text-body-sm form-label">
               Space Name *
             </label>
             <input
@@ -120,7 +120,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               {...form.register('name')}
             />
             {form.formState.errors.name && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.name.message}
               </div>
             )}
@@ -128,7 +128,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="type" className="text-sm font-medium">
+              <label htmlFor="type" className="text-body-sm form-label">
                 Space Type *
               </label>
               <select
@@ -147,7 +147,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="availability_status" className="text-sm font-medium">
+              <label htmlFor="availability_status" className="text-body-sm form-label">
                 Availability *
               </label>
               <select
@@ -165,7 +165,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="capacity" className="text-sm font-medium">
+              <label htmlFor="capacity" className="text-body-sm form-label">
                 Capacity
               </label>
               <input
@@ -179,7 +179,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="location" className="text-sm font-medium">
+              <label htmlFor="location" className="text-body-sm form-label">
                 Location
               </label>
               <input
@@ -193,7 +193,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="description" className="text-sm font-medium">
+            <label htmlFor="description" className="text-body-sm form-label">
               Description
             </label>
             <textarea
@@ -206,7 +206,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="amenities" className="text-sm font-medium">
+            <label htmlFor="amenities" className="text-body-sm form-label">
               Amenities
             </label>
             <textarea
@@ -220,7 +220,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="hourly_rate" className="text-sm font-medium">
+              <label htmlFor="hourly_rate" className="text-body-sm form-label">
                 Hourly Rate
               </label>
               <input
@@ -235,7 +235,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="currency" className="text-sm font-medium">
+              <label htmlFor="currency" className="text-body-sm form-label">
                 Currency
               </label>
               <select

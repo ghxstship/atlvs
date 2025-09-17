@@ -95,31 +95,31 @@ export function CookieConsent() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 bg-foreground/30 backdrop-blur-sm">
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg">
         <div className="container mx-auto px-4 py-6">
           {!showPreferences ? (
             // Main consent banner
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4">
               <div className="flex items-start gap-3 flex-1">
-                <Cookie className="h-6 w-6 text-primary mt-1 flex-shrink-0" />
+                <Cookie className="h-6 w-6 color-primary mt-1 flex-shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-foreground mb-2">
+                  <h3 className="text-heading-4 color-foreground mb-2">
                     We use cookies to enhance your experience
                   </h3>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-body-sm color-muted">
                     We use cookies and similar technologies to provide, protect, and improve our services. 
                     By clicking "Accept All", you consent to our use of cookies for analytics, marketing, and functionality.{' '}
                     <Button
                       variant="ghost"
                      
-                      className="p-0 h-auto text-sm underline"
+                      className="p-0 h-auto text-body-sm underline"
                       onClick={() => setShowPreferences(true)}
                     >
                       Customize preferences
                     </Button>{' '}
                     or read our{' '}
-                    <a href="/legal/privacy" className="text-primary hover:underline">
+                    <a href="/legal/privacy" className="color-primary hover:underline">
                       Privacy Policy
                     </a>.
                   </p>
@@ -157,7 +157,7 @@ export function CookieConsent() {
             // Preferences panel
             <div className="max-w-2xl mx-auto">
               <div className="flex items-center justify-between mb-6">
-                <h3 className="font-title text-xl font-bold">Cookie Preferences</h3>
+                <h3 className="font-title text-heading-4 text-heading-3">Cookie Preferences</h3>
                 <Button
                   variant="ghost"
                  
@@ -171,16 +171,16 @@ export function CookieConsent() {
                 {/* Necessary Cookies */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="text-heading-4 color-foreground mb-1">
                       Necessary Cookies
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       Essential for the website to function properly. These cannot be disabled.
                     </p>
                   </div>
                   <div className="ml-4">
                     <div className="w-12 h-6 bg-primary rounded-full relative">
-                      <div className="w-5 h-5 bg-white rounded-full absolute top-0.5 right-0.5"></div>
+                      <div className="w-5 h-5 bg-background rounded-full absolute top-0.5 right-0.5"></div>
                     </div>
                   </div>
                 </div>
@@ -188,10 +188,10 @@ export function CookieConsent() {
                 {/* Analytics Cookies */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="text-heading-4 color-foreground mb-1">
                       Analytics Cookies
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       Help us understand how visitors interact with our website by collecting anonymous information.
                     </p>
                   </div>
@@ -200,11 +200,11 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, analytics: !prev.analytics }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.analytics ? "bg-primary" : "bg-muted"
+                        preferences.analytics ? "bg-primary" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform",
+                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.analytics ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>
@@ -214,10 +214,10 @@ export function CookieConsent() {
                 {/* Marketing Cookies */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="text-heading-4 color-foreground mb-1">
                       Marketing Cookies
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       Used to track visitors across websites to display relevant advertisements.
                     </p>
                   </div>
@@ -226,11 +226,11 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, marketing: !prev.marketing }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.marketing ? "bg-primary" : "bg-muted"
+                        preferences.marketing ? "bg-primary" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform",
+                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.marketing ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>
@@ -240,10 +240,10 @@ export function CookieConsent() {
                 {/* Functional Cookies */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
+                    <h4 className="text-heading-4 color-foreground mb-1">
                       Functional Cookies
                     </h4>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       Enable enhanced functionality like chat widgets and personalized content.
                     </p>
                   </div>
@@ -252,11 +252,11 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, functional: !prev.functional }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.functional ? "bg-primary" : "bg-muted"
+                        preferences.functional ? "bg-primary" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-white rounded-full absolute top-0.5 transition-transform",
+                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.functional ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>

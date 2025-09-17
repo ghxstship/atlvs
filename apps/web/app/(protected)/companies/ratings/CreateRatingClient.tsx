@@ -191,14 +191,14 @@ export default function CreateRatingClient({
             onClick={() => handleInputChange('rating', star)}
             className={`p-1 rounded transition-colors ${
               star <= formData.rating
-                ? 'text-warning hover:text-warning/80'
-                : 'text-muted-foreground hover:text-muted-foreground/80'
+                ? 'color-warning hover:color-warning/80'
+                : 'color-muted hover:color-muted/80'
             }`}
           >
             <Star className="h-6 w-6 fill-current" />
           </button>
         ))}
-        <span className="ml-2 text-sm font-medium">
+        <span className="ml-2 text-body-sm form-label">
           {formData.rating} out of 5 stars
         </span>
       </div>
@@ -216,13 +216,13 @@ export default function CreateRatingClient({
         {/* Rating Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Star className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Rating Details</h3>
+            <Star className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Rating Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Company *
               </label>
               <Select
@@ -239,7 +239,7 @@ export default function CreateRatingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Project (Optional)
               </label>
               <Select
@@ -256,7 +256,7 @@ export default function CreateRatingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Rating Category *
               </label>
               <Select
@@ -272,14 +272,14 @@ export default function CreateRatingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Rating *
               </label>
               {renderStarRating()}
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Review Title *
               </label>
               <Input
@@ -295,13 +295,13 @@ export default function CreateRatingClient({
         {/* Review Content */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MessageSquare className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Review Content</h3>
+            <MessageSquare className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Review Content</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Detailed Review
               </label>
               <Textarea
@@ -320,7 +320,7 @@ export default function CreateRatingClient({
                 onChange={(e) => handleInputChange('isPublic', e.target.checked)}
                 className="rounded border-border"
               />
-              <label htmlFor="isPublic" className="text-sm font-medium">
+              <label htmlFor="isPublic" className="text-body-sm form-label">
                 Make this review public (visible to other organizations)
               </label>
             </div>

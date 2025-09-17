@@ -249,34 +249,34 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'planning':
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
       case 'open_registration':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'full':
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
       case 'in_progress':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       case 'completed':
-        return 'text-secondary bg-secondary/10';
+        return 'color-secondary bg-secondary/10';
       case 'cancelled':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       default:
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
     }
   };
 
   const getSkillLevelColor = (level: string) => {
     switch (level) {
       case 'beginner':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'intermediate':
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
       case 'advanced':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       case 'all_levels':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       default:
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
     }
   };
 
@@ -315,7 +315,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Workshop Management</h2>
+                <h2 className="text-body text-heading-4">Workshop Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Workshop
@@ -332,13 +332,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-success/10 rounded-lg">
-                    <BookOpen className="h-5 w-5 text-success" />
+                    <BookOpen className="h-5 w-5 color-success" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(w => w.status === 'open_registration').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">Open Registration</div>
+                    <div className="text-body-sm color-muted">Open Registration</div>
                   </div>
                 </div>
               </Card>
@@ -346,13 +346,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
-                    <GraduationCap className="h-5 w-5 text-primary" />
+                    <GraduationCap className="h-5 w-5 color-primary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(w => w.status === 'in_progress').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">In Progress</div>
+                    <div className="text-body-sm color-muted">In Progress</div>
                   </div>
                 </div>
               </Card>
@@ -360,13 +360,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-secondary/10 rounded-lg">
-                    <Users className="h-5 w-5 text-secondary" />
+                    <Users className="h-5 w-5 color-secondary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.reduce((sum, w) => sum + (w.current_participants || 0), 0)}
                     </div>
-                    <div className="text-sm text-muted-foreground">Total Participants</div>
+                    <div className="text-body-sm color-muted">Total Participants</div>
                   </div>
                 </div>
               </Card>
@@ -374,13 +374,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-warning/10 rounded-lg">
-                    <Target className="h-5 w-5 text-warning" />
+                    <Target className="h-5 w-5 color-warning" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(w => w.status === 'completed').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">Completed</div>
+                    <div className="text-body-sm color-muted">Completed</div>
                   </div>
                 </div>
               </Card>
@@ -433,9 +433,9 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                 <div className="space-y-6 mt-6">
                   {/* Workshop Info */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Date:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Calendar className="h-4 w-4 color-muted" />
+                      <span className="form-label">Date:</span>
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleDateString()
@@ -443,9 +443,9 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Time:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Clock className="h-4 w-4 color-muted" />
+                      <span className="form-label">Time:</span>
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleTimeString([], { 
@@ -456,14 +456,14 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <User className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Instructor:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <User className="h-4 w-4 color-muted" />
+                      <span className="form-label">Instructor:</span>
                       <span>{selectedRecord.instructor || 'TBD'}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Duration:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Clock className="h-4 w-4 color-muted" />
+                      <span className="form-label">Duration:</span>
                       <span>{selectedRecord.duration_minutes ? `${selectedRecord.duration_minutes} min` : 'TBD'}</span>
                     </div>
                   </div>
@@ -471,13 +471,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Status and Level Badges */}
                   <div className="flex items-center gap-4">
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-sm">Status:</span>
+                      <span className="form-label text-body-sm">Status:</span>
                       <Badge className={getStatusColor(selectedRecord.status)}>
                         {selectedRecord.status?.replace('_', ' ') || 'Planning'}
                       </Badge>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="font-medium text-sm">Level:</span>
+                      <span className="form-label text-body-sm">Level:</span>
                       <Badge className={getSkillLevelColor(selectedRecord.skill_level)}>
                         {selectedRecord.skill_level?.replace('_', ' ') || 'All Levels'}
                       </Badge>
@@ -487,19 +487,19 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Participation Metrics */}
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">
+                      <div className="text-heading-3 text-heading-3 color-primary">
                         {selectedRecord.current_participants || 0}
                       </div>
-                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <div className="text-body-sm color-muted flex items-center justify-center gap-1">
                         <Users className="h-3 w-3" />
                         Current Participants
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-success">
+                      <div className="text-heading-3 text-heading-3 color-success">
                         {selectedRecord.max_participants || 20}
                       </div>
-                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <div className="text-body-sm color-muted flex items-center justify-center gap-1">
                         <Target className="h-3 w-3" />
                         Max Capacity
                       </div>
@@ -509,11 +509,11 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Workshop Description */}
                   {selectedRecord.description && (
                     <div className="pt-4 border-t">
-                      <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                      <h4 className="form-label text-body-sm mb-2 flex items-center gap-2">
                         <BookOpen className="h-4 w-4" />
                         Workshop Description
                       </h4>
-                      <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
+                      <p className="text-body-sm color-muted bg-secondary/50 p-3 rounded-lg">
                         {selectedRecord.description}
                       </p>
                     </div>
@@ -541,9 +541,9 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-8 text-center">
-                <BookOpen className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Workshops Yet</h3>
-                <p className="text-muted-foreground mb-4">
+                <BookOpen className="h-12 w-12 mx-auto mb-4 color-muted" />
+                <h3 className="text-body text-heading-4 mb-2">No Workshops Yet</h3>
+                <p className="color-muted mb-4">
                   Start creating educational workshops and training sessions for your events.
                 </p>
                 <Button onClick={handleCreateWorkshop}>

@@ -102,8 +102,8 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Itineraries</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-3 text-heading-3">Itineraries</h1>
+          <p className="color-muted">
             Manage travel schedules and itineraries
           </p>
         </div>
@@ -116,7 +116,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
       {/* Search */}
       <div className="flex-1">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
           <Input
             placeholder="Search itineraries..."
             value={searchTerm}
@@ -138,15 +138,15 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
           {filteredItineraries.map((itinerary) => (
             <div key={itinerary.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer">
               <div className="flex items-start justify-between mb-2">
-                <h3 className="font-medium">{itinerary.name}</h3>
+                <h3 className="form-label">{itinerary.name}</h3>
                 <Badge variant={getStatusColor(itinerary.status)}>
                   {itinerary.status}
                 </Badge>
               </div>
               {itinerary.description && (
-                <p className="text-sm text-muted-foreground mb-3">{itinerary.description}</p>
+                <p className="text-body-sm color-muted mb-3">{itinerary.description}</p>
               )}
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex items-center gap-2 text-body-sm color-muted">
                 <Calendar className="h-3 w-3" />
                 {new Date(itinerary.start_date).toLocaleDateString()} - {new Date(itinerary.end_date).toLocaleDateString()}
               </div>

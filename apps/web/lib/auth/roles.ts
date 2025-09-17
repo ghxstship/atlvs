@@ -11,7 +11,7 @@ export type Role =
 
 // Top-level module IDs used in routeRegistry
 const MODULES = [
-  'dashboard','projects','people','programming','pipeline','procurement','jobs','companies','finance','analytics','resources','settings','profile'
+  'dashboard','projects','people','programming','pipeline','procurement','jobs','companies','finance','analytics','resources','enterprise','settings','profile'
 ] as const;
 export type ModuleId = typeof MODULES[number];
 

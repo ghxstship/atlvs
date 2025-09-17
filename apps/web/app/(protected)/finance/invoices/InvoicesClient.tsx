@@ -68,8 +68,8 @@ const InvoicesClient: React.FC<InvoicesClientProps> = ({ user, orgId, translatio
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <Button onClick={() => setIsCreateDrawerOpen(true)}>
             <Plus className="h-4 w-4 mr-2" />
@@ -78,9 +78,9 @@ const InvoicesClient: React.FC<InvoicesClientProps> = ({ user, orgId, translatio
         </div>
 
         <Card className="p-12 text-center">
-          <FileText className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-          <h3 className="text-lg font-semibold text-foreground mb-2">Invoice management coming soon</h3>
-          <p className="text-foreground/70 mb-4">This feature is under development</p>
+          <FileText className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+          <h3 className="text-body text-heading-4 color-foreground mb-2">Invoice management coming soon</h3>
+          <p className="color-foreground/70 mb-4">This feature is under development</p>
         </Card>
 
         <CreateInvoiceClient

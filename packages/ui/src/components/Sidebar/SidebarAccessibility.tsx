@@ -139,7 +139,7 @@ export const AccessibleNavItem: React.FC<AccessibleNavItemProps> = ({
       aria-level={level + 1}
       tabIndex={isActive ? 0 : -1}
       onClick={onClick}
-      className="w-full text-left focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 rounded-lg"
+      className="w-full text-left focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg"
     >
       {children}
     </button>
@@ -151,7 +151,7 @@ export const SkipNavigation: React.FC = () => {
   return (
     <a
       href="#main-content"
-      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-brand-600 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+      className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
     >
       Skip to main content
     </a>

@@ -38,7 +38,7 @@ const upcomingProducts = [
       'Enhanced team performance tracking',
     ],
     targetUsers: ['Production Managers', 'Talent Coordinators', 'HR Teams', 'Freelance Professionals'],
-    gradient: 'from-purple-500 to-indigo-500',
+    gradient: 'from-primary to-accent',
   },
   {
     id: 'mvnifest',
@@ -63,7 +63,7 @@ const upcomingProducts = [
       'Enhanced operational security',
     ],
     targetUsers: ['Security Managers', 'Asset Controllers', 'Operations Teams', 'Compliance Officers'],
-    gradient: 'from-emerald-500 to-teal-500',
+    gradient: 'from-primary to-accent',
   },
 ];
 
@@ -84,7 +84,7 @@ export default function ComingSoonPage() {
                 IS COMING IN 2026
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               We're building the future of production management with two revolutionary new products 
               that will transform how you manage talent and secure your operations. Get ready for 
               something completely different.
@@ -119,20 +119,20 @@ export default function ComingSoonPage() {
             <div className="grid md:grid-cols-2 gap-8">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="h-10 w-10 text-white" />
+                  <Users className="h-10 w-10 text-background" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Q2 2026</h3>
-                <p className="text-lg font-semibold text-primary mb-2">OPVS Talent Management</p>
-                <p className="text-muted-foreground">Revolutionary talent platform launches</p>
+                <h3 className="text-heading-4 text-heading-3 mb-2">Q2 2026</h3>
+                <p className="text-body text-heading-4 color-primary mb-2">OPVS Talent Management</p>
+                <p className="color-muted">Revolutionary talent platform launches</p>
               </div>
               
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-r from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Shield className="h-10 w-10 text-white" />
+                  <Shield className="h-10 w-10 text-background" />
                 </div>
-                <h3 className="text-xl font-bold mb-2">Q4 2026</h3>
-                <p className="text-lg font-semibold text-accent mb-2">MVNIFEST Access & Asset Control</p>
-                <p className="text-muted-foreground">Next-gen security platform debuts</p>
+                <h3 className="text-heading-4 text-heading-3 mb-2">Q4 2026</h3>
+                <p className="text-body text-heading-4 color-accent mb-2">MVNIFEST Access & Asset Control</p>
+                <p className="color-muted">Next-gen security platform debuts</p>
               </div>
             </div>
           </div>
@@ -148,16 +148,16 @@ export default function ComingSoonPage() {
                 <div className="md:w-1/2 mb-8 md:mb-0">
                   <Card className="hover:shadow-xl transition-all duration-300">
                     <div className={`h-80 bg-gradient-to-br ${product.gradient} flex items-center justify-center relative overflow-hidden`}>
-                      <div className="text-center text-white">
-                        <div className="text-6xl font-bold mb-4 opacity-90">
+                      <div className="text-center text-background">
+                        <div className="text-display text-heading-3 mb-4 opacity-90">
                           {product.name}
                         </div>
-                        <div className="text-xl opacity-75">
+                        <div className="text-heading-4 opacity-75">
                           {product.subtitle}
                         </div>
                       </div>
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/20 text-white border-white/30">
+                        <Badge className="bg-background/20 color-foreground border-foreground/30">
                           {product.status}
                         </Badge>
                       </div>
@@ -169,7 +169,7 @@ export default function ComingSoonPage() {
                   <div className="mb-6">
                     <div className="flex items-center gap-3 mb-4">
                       <Badge variant="outline">{product.category}</Badge>
-                      <Badge className="bg-gradient-to-r from-warning to-destructive text-white">
+                      <Badge className="bg-primary color-primary-foreground">
                         <Calendar className="h-3 w-3 mr-1" />
                         {product.launchDate}
                       </Badge>
@@ -177,38 +177,38 @@ export default function ComingSoonPage() {
                     <h2 className={`mb-4 ${typography.sectionTitle}`}>
                       {product.name} {product.subtitle}
                     </h2>
-                    <p className="text-lg text-muted-foreground mb-6">
+                    <p className="text-body color-muted mb-6">
                       {product.description}
                     </p>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <h3 className="text-lg font-semibold mb-3">Key Features</h3>
+                      <h3 className="text-body text-heading-4 mb-3">Key Features</h3>
                       <div className="grid gap-2">
                         {product.features.map((feature, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <Zap className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground">{feature}</span>
+                            <Zap className="h-4 w-4 color-primary mt-1 flex-shrink-0" />
+                            <span className="text-body-sm color-muted">{feature}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-semibold mb-3">Expected Benefits</h3>
+                      <h3 className="text-body text-heading-4 mb-3">Expected Benefits</h3>
                       <div className="grid gap-2">
                         {product.benefits.map((benefit, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <ArrowRight className="h-4 w-4 text-success mt-1 flex-shrink-0" />
-                            <span className="text-sm font-semibold text-success">{benefit}</span>
+                            <ArrowRight className="h-4 w-4 color-success mt-1 flex-shrink-0" />
+                            <span className="text-body-sm text-heading-4 color-success">{benefit}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h3 className="text-lg font-semibold mb-3">Target Users</h3>
+                      <h3 className="text-body text-heading-4 mb-3">Target Users</h3>
                       <div className="flex flex-wrap gap-2">
                         {product.targetUsers.map((user) => (
                           <Badge key={user} variant="secondary">
@@ -226,13 +226,13 @@ export default function ComingSoonPage() {
       </section>
 
       {/* Feature Request Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               SHAPE THE FUTURE
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Have ideas for features or entirely new products? We're building the future of production 
               management based on real user needs. Your input directly influences our roadmap.
             </p>
@@ -259,12 +259,12 @@ export default function ComingSoonPage() {
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
                 <CardContent className="p-8">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <item.icon className="h-8 w-8 text-white" />
+                    <item.icon className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-3 ${typography.cardTitle}`}>
                     {item.title}
                   </h3>
-                  <p className="text-muted-foreground">
+                  <p className="color-muted">
                     {item.description}
                   </p>
                 </CardContent>
@@ -275,11 +275,11 @@ export default function ComingSoonPage() {
           <div className="text-center">
             <Card className="max-w-2xl mx-auto">
               <CardContent className="p-8">
-                <MessageSquare className="h-12 w-12 text-primary mx-auto mb-4" />
+                <MessageSquare className="h-12 w-12 color-primary mx-auto mb-4" />
                 <h3 className={`mb-4 ${typography.cardTitle}`}>
                   Feature Request Portal
                 </h3>
-                <p className="text-muted-foreground mb-6">
+                <p className="color-muted mb-6">
                   Submit feature requests, vote on community ideas, and track development progress 
                   on our dedicated feedback platform.
                 </p>
@@ -289,7 +289,7 @@ export default function ComingSoonPage() {
                     <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <p className="text-xs text-muted-foreground mt-3">
+                <p className="text-body-sm color-muted mt-3">
                   External link to canny.io feedback platform
                 </p>
               </CardContent>
@@ -305,13 +305,13 @@ export default function ComingSoonPage() {
             <CardContent className="p-12">
               <div className="flex justify-center mb-6">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
-                  <Zap className="h-10 w-10 text-white" />
+                  <Zap className="h-10 w-10 text-background" />
                 </div>
               </div>
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 GET EARLY ACCESS
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Be among the first to experience the next generation of production management tools. 
                 Early access users get exclusive features, priority support, and special pricing.
               </p>
@@ -328,7 +328,7 @@ export default function ComingSoonPage() {
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 Free early access • Priority support • Exclusive features
               </p>
             </CardContent>

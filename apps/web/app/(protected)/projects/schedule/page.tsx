@@ -114,8 +114,8 @@ export default async function ProjectSchedulePage() {
         ) : (
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h3 className="text-lg font-semibold">{t('empty.title')}</h3>
-              <p className="text-sm opacity-80">{t('empty.description')}</p>
+              <h3 className="text-body text-heading-4">{t('empty.title')}</h3>
+              <p className="text-body-sm opacity-80">{t('empty.description')}</p>
             </div>
             {orgId ? (
               <ProjectsOverviewClient orgId={orgId} />

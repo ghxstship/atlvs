@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import type { Route } from 'next';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Mail, Lock, User, Eye, EyeOff, Check } from 'lucide-react';
 import { typography } from '../../(marketing)/lib/typography';
@@ -23,7 +24,7 @@ export default function SignUpPage() {
       <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
         <div className={`text-center ${spacing.marginBottom.xlarge}`}>
-          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
+          <Link href={"/home" as Route} className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
             <span className={typography.sectionTitle}>
               GHXSTSHIP
             </span>
@@ -46,9 +47,9 @@ export default function SignUpPage() {
 
           {/* Help */}
           <div className="text-center mt-8">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-body-sm color-muted">
               Need help getting started?{' '}
-              <Link href="/contact" className="text-primary hover:underline">
+              <Link href="/contact" className="color-primary hover:underline">
                 Contact support
               </Link>
             </p>

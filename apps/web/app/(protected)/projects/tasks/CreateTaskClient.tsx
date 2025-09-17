@@ -75,23 +75,23 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
         <Plus className="mr-1 h-4 w-4" /> {t('create.newTitle')}
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title={t('create.newTitle')} description={submitting ? t('drawer.saving') : undefined}>
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
           <div className="grid gap-1">
-            <label htmlFor="title" className="text-sm">{t('grid.title')}</label>
+            <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
             <input id="title" className="rounded border px-2 py-1" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
-            <div className="text-xs opacity-70">{t('create.titleHelp')}</div>
-            {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
+            <div className="text-body-sm opacity-70">{t('create.titleHelp')}</div>
+            {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
           </div>
           <div className="grid gap-1">
-            <label htmlFor="status" className="text-sm">{t('grid.status')}</label>
+            <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
             <input id="status" className="rounded border px-2 py-1" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
-            <div className="text-xs opacity-70">{t('create.statusHelp')}</div>
+            <div className="text-body-sm opacity-70">{t('create.statusHelp')}</div>
           </div>
           <div className="grid gap-1">
-            <label htmlFor="due_at" className="text-sm">{t('grid.dueAt')}</label>
+            <label htmlFor="due_at" className="text-body-sm">{t('grid.dueAt')}</label>
             <input id="due_at" type="date" className="rounded border px-2 py-1" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
-            <div className="text-xs opacity-70">{t('create.dueAtHelp')}</div>
+            <div className="text-body-sm opacity-70">{t('create.dueAtHelp')}</div>
           </div>
           <div className="flex items-center justify-end gap-2 pt-2 border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>{t('create.cancel')}</Button>

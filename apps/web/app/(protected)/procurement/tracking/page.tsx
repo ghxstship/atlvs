@@ -34,8 +34,8 @@ export default async function ProcurementTrackingPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Tracking</h1>
-          <p className="text-foreground/70">
+          <h1 className="text-heading-3 text-heading-3">Tracking</h1>
+          <p className="color-foreground/70">
             Track order status and delivery progress
           </p>
         </div>

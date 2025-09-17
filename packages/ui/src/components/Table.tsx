@@ -97,7 +97,7 @@ export interface TableProps<T = any> extends VariantProps<typeof tableVariants> 
   scroll?: { x?: number; y?: number };
 }
 
-export function Table<T = any>({
+export function Table<T extends Record<string, any> = Record<string, any>>({
   columns,
   data,
   loading = false,
@@ -276,8 +276,7 @@ export function Table<T = any>({
               <span>Show</span>
               <Select
                 value={pageSize.toString()}
-                onChange={(e) => onChange(1, parseInt(e.target.value))}
-                size="sm"
+                onValueChange={(value) => onChange(1, parseInt(value))}
               >
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -316,7 +315,7 @@ export function Table<T = any>({
               return (
                 <Button
                   key={pageNum}
-                  variant={current === pageNum ? 'default' : 'ghost'}
+                  variant={current === pageNum ? 'primary' : 'ghost'}
                   size="sm"
                   onClick={() => onChange(pageNum, pageSize)}
                   className="w-8 h-8 p-0"
@@ -519,7 +518,7 @@ export function Table<T = any>({
                               column.align === 'right' && 'text-right'
                             )}
                           >
-                            {content}
+                            {content as React.ReactNode}
                           </td>
                         );
                       })}
@@ -564,7 +563,7 @@ export function Table<T = any>({
 export const DataTable = Table;
 
 export const SimpleTable = <T,>(props: Omit<TableProps<T>, 'pagination' | 'searchable' | 'filterable'>) => (
-  <Table {...props} pagination={undefined} searchable={false} filterable={false} />
+  <Table {...(props as any)} pagination={undefined} searchable={false} filterable={false} />
 );
 
 export const ActionTable = <T,>(props: TableProps<T> & { 
@@ -596,5 +595,5 @@ export const ActionTable = <T,>(props: TableProps<T> & {
     }] : []),
   ];
   
-  return <Table {...tableProps} actions={[...defaultActions, ...(tableProps.actions || [])]} />;
+  return <Table {...(tableProps as any)} actions={[...defaultActions, ...(tableProps.actions || [])]} />;
 };

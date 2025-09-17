@@ -218,13 +218,13 @@ export default function CreateOverviewClient({
         {/* Item Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Target className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Item Details</h3>
+            <Target className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Item Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Item Type *
               </label>
               <Select
@@ -240,7 +240,7 @@ export default function CreateOverviewClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Title *
               </label>
               <Input
@@ -252,7 +252,7 @@ export default function CreateOverviewClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -265,7 +265,7 @@ export default function CreateOverviewClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Priority
                 </label>
                 <Select
@@ -281,7 +281,7 @@ export default function CreateOverviewClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -302,13 +302,13 @@ export default function CreateOverviewClient({
         {/* Assignment & Timeline */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Users className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Assignment & Timeline</h3>
+            <Users className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Assignment & Timeline</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Related Company (Optional)
               </label>
               <Select
@@ -325,7 +325,7 @@ export default function CreateOverviewClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Assigned To (Optional)
               </label>
               <Select
@@ -342,7 +342,7 @@ export default function CreateOverviewClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 <Calendar className="h-4 w-4 inline mr-1" />
                 Due Date (Optional)
               </label>

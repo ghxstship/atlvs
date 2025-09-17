@@ -115,13 +115,13 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="event_id" className="text-sm font-medium">
+            <label htmlFor="event_id" className="text-body-sm form-label">
               Event *
             </label>
             <select
@@ -137,14 +137,14 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               ))}
             </select>
             {form.formState.errors.event_id && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.event_id.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="performer" className="text-sm font-medium">
+            <label htmlFor="performer" className="text-body-sm form-label">
               Performer Name *
             </label>
             <input
@@ -155,7 +155,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               {...form.register('performer')}
             />
             {form.formState.errors.performer && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.performer.message}
               </div>
             )}
@@ -163,7 +163,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="role" className="text-sm font-medium">
+              <label htmlFor="role" className="text-body-sm form-label">
                 Role
               </label>
               <input
@@ -176,7 +176,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="stage" className="text-sm font-medium">
+              <label htmlFor="stage" className="text-body-sm form-label">
                 Stage
               </label>
               <input
@@ -190,7 +190,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="status" className="text-sm font-medium">
+            <label htmlFor="status" className="text-body-sm form-label">
               Status *
             </label>
             <select
@@ -206,7 +206,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="start_time" className="text-sm font-medium">
+              <label htmlFor="start_time" className="text-body-sm form-label">
                 Start Time
               </label>
               <input
@@ -218,7 +218,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="end_time" className="text-sm font-medium">
+              <label htmlFor="end_time" className="text-body-sm form-label">
                 End Time
               </label>
               <input
@@ -231,7 +231,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="notes" className="text-sm font-medium">
+            <label htmlFor="notes" className="text-body-sm form-label">
               Notes
             </label>
             <textarea

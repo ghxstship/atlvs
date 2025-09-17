@@ -126,10 +126,10 @@ export default function CreateForecastClient({
 
   const getConfidenceBadgeColor = (level: string) => {
     switch (level) {
-      case 'high': return 'text-success bg-success/10';
-      case 'medium': return 'text-warning bg-warning/10';
-      case 'low': return 'text-destructive bg-destructive/10';
-      default: return 'text-muted-foreground bg-muted';
+      case 'high': return 'color-success bg-success/10';
+      case 'medium': return 'color-warning bg-warning/10';
+      case 'low': return 'color-destructive bg-destructive/10';
+      default: return 'color-muted bg-secondary';
     }
   };
 
@@ -144,10 +144,10 @@ export default function CreateForecastClient({
         {/* Forecast Overview */}
         <Card className="p-4 bg-secondary/5 border-secondary/20">
           <div className="flex items-center space-x-3">
-            <BarChart3 className="h-8 w-8 text-secondary" />
+            <BarChart3 className="h-8 w-8 color-secondary" />
             <div>
-              <h3 className="font-semibold text-secondary">Financial Forecasting</h3>
-              <p className="text-sm text-secondary/80">
+              <h3 className="text-heading-4 color-secondary">Financial Forecasting</h3>
+              <p className="text-body-sm color-secondary/80">
                 Create financial projections and track variance against actuals
               </p>
             </div>
@@ -157,7 +157,7 @@ export default function CreateForecastClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Forecast Name *
             </label>
             <Input
@@ -169,7 +169,7 @@ export default function CreateForecastClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Description
             </label>
             <Textarea
@@ -182,11 +182,11 @@ export default function CreateForecastClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Projected Amount
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="number"
                   value={formData.projectedAmount || ''}
@@ -197,14 +197,14 @@ export default function CreateForecastClient({
                 />
               </div>
               {formData.projectedAmount !== 0 && (
-                <p className="text-sm text-foreground/60 mt-1">
+                <p className="text-body-sm color-foreground/60 mt-1">
                   {formatCurrency(formData.projectedAmount)}
                 </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -222,11 +222,11 @@ export default function CreateForecastClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Confidence Level
               </label>
               <div className="relative">
-                <TrendingUp className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <TrendingUp className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Select
                   value={formData.confidenceLevel}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, confidenceLevel: value }))}
@@ -239,11 +239,11 @@ export default function CreateForecastClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Forecast Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.forecastDate}
@@ -257,11 +257,11 @@ export default function CreateForecastClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Period Start *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.periodStart}
@@ -273,11 +273,11 @@ export default function CreateForecastClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Period End *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.periodEnd}
@@ -293,34 +293,34 @@ export default function CreateForecastClient({
 
         {/* Forecast Summary */}
         {formData.name && formData.periodStart && formData.periodEnd && (
-          <Card className="p-4 bg-muted border-border">
-            <h4 className="font-medium text-foreground mb-2">Forecast Summary</h4>
-            <div className="space-y-2 text-sm">
+          <Card className="p-4 bg-secondary border-border">
+            <h4 className="form-label color-foreground mb-2">Forecast Summary</h4>
+            <div className="space-y-2 text-body-sm">
               <div className="flex justify-between">
-                <span className="text-foreground/70">Forecast Name:</span>
-                <span className="font-medium">{formData.name}</span>
+                <span className="color-foreground/70">Forecast Name:</span>
+                <span className="form-label">{formData.name}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Projected Amount:</span>
-                <span className="font-medium text-secondary">
+                <span className="color-foreground/70">Projected Amount:</span>
+                <span className="form-label color-secondary">
                   {formData.projectedAmount !== 0 ? formatCurrency(formData.projectedAmount) : 'Not set'}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Confidence:</span>
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getConfidenceBadgeColor(formData.confidenceLevel)}`}>
+                <span className="color-foreground/70">Confidence:</span>
+                <span className={`px-2 py-1 rounded-full text-body-sm form-label ${getConfidenceBadgeColor(formData.confidenceLevel)}`}>
                   {formData.confidenceLevel.charAt(0).toUpperCase() + formData.confidenceLevel.slice(1)}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Period:</span>
-                <span className="font-medium">
+                <span className="color-foreground/70">Period:</span>
+                <span className="form-label">
                   {new Date(formData.periodStart).toLocaleDateString()} - {new Date(formData.periodEnd).toLocaleDateString()}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Duration:</span>
-                <span className="font-medium">
+                <span className="color-foreground/70">Duration:</span>
+                <span className="form-label">
                   {Math.ceil((new Date(formData.periodEnd).getTime() - new Date(formData.periodStart).getTime()) / (1000 * 60 * 60 * 24))} days
                 </span>
               </div>
@@ -345,7 +345,7 @@ export default function CreateForecastClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (

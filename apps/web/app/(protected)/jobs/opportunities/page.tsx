@@ -36,8 +36,8 @@ export default async function JobsOpportunitiesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-foreground">{t('opportunities.title')}</h1>
-          <p className="text-muted-foreground">{t('opportunities.subtitle')}</p>
+          <h1 className="text-heading-3 text-heading-4 color-foreground">{t('opportunities.title')}</h1>
+          <p className="color-muted">{t('opportunities.subtitle')}</p>
         </div>
         <CreateOpportunityClient orgId={profile.organization_id} />
       </div>

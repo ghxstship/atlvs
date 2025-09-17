@@ -253,10 +253,10 @@ export default function JobsClient({ orgId }: { orgId: string }) {
             <DataGrid />
             <KanbanBoard 
               columns={[
-                { id: 'open', title: 'Open', color: '#10b981' },
-                { id: 'in_progress', title: 'In Progress', color: '#3b82f6' },
-                { id: 'closed', title: 'Closed', color: '#6b7280' },
-                { id: 'cancelled', title: 'Cancelled', color: '#ef4444' }
+                { id: 'open', title: 'Open' },
+                { id: 'in_progress', title: 'In Progress' },
+                { id: 'closed', title: 'Closed' },
+                { id: 'cancelled', title: 'Cancelled' }
               ]}
               statusField="status"
               titleField="title"

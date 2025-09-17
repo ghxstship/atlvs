@@ -121,8 +121,8 @@ export default function ManningClient({ orgId }: ManningClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Manning Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage project staffing requirements and assignments</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Manning Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage project staffing requirements and assignments</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -133,11 +133,11 @@ export default function ManningClient({ orgId }: ManningClientProps) {
       {/* Project Selection */}
       <Card>
         <div className="p-4">
-          <label className="block text-sm font-medium mb-2">Select Project</label>
+          <label className="block text-body-sm form-label mb-2">Select Project</label>
           <select
             value={selectedProject}
             onChange={(e) => setSelectedProject(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="">Select a project...</option>
             {projects.map(project => (
@@ -153,14 +153,14 @@ export default function ManningClient({ orgId }: ManningClientProps) {
       {showForm && (
         <Card>
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Add Manning Slot</h3>
+            <h3 className="text-body text-heading-4 mb-4">Add Manning Slot</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Project</label>
+                <label className="block text-body-sm form-label mb-1">Project</label>
                 <select
                   value={formData.projectId}
                   onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 >
                   <option value="">Select project...</option>
@@ -172,7 +172,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Role</label>
+                <label className="block text-body-sm form-label mb-1">Role</label>
                 <Input
                   type="text"
                   value={formData.role}
@@ -182,7 +182,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Required Count</label>
+                <label className="block text-body-sm form-label mb-1">Required Count</label>
                 <Input
                   type="number"
                   min="1"
@@ -206,11 +206,11 @@ export default function ManningClient({ orgId }: ManningClientProps) {
       {selectedProject && (
         <Card>
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Manning Slots</h3>
+            <h3 className="text-body text-heading-4 mb-4">Manning Slots</h3>
             {loading ? (
-              <div className="text-center py-8 text-muted-foreground">Loading manning slots...</div>
+              <div className="text-center py-8 color-muted">Loading manning slots...</div>
             ) : slots.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-8 color-muted">
                 No manning slots found for this project.
               </div>
             ) : (
@@ -218,17 +218,17 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                 {slots.map(slot => (
                   <div key={slot.id} className="flex items-center justify-between p-4 border rounded-lg">
                     <div className="flex-1">
-                      <h4 className="font-medium">{slot.role}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="form-label">{slot.role}</h4>
+                      <p className="text-body-sm color-muted">
                         {slot.filledCount} of {slot.requiredCount} positions filled
                       </p>
                     </div>
                     <div className="flex items-center gap-4">
                       <div className="text-right">
-                        <div className="text-sm font-medium">
+                        <div className="text-body-sm form-label">
                           {Math.round((slot.filledCount / slot.requiredCount) * 100)}%
                         </div>
-                        <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
+                        <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
                           <div 
                             className="h-full bg-primary transition-all"
                             style={{ width: `${(slot.filledCount / slot.requiredCount) * 100}%` }}

@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Button, Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { StandardButton, animationPresets } from '../components/ui';
+import { animationPresets } from '../../_components/ui';
 import { 
   Briefcase, DollarSign, Users, TrendingUp, Package, Clock, Star, 
   MessageSquare, FileText, Award, Target, Calendar, BarChart3,
@@ -178,52 +178,52 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Total Earnings</p>
-              <p className="text-2xl font-bold">${stats.vendor.totalEarnings.toLocaleString()}</p>
-              <p className="text-xs text-success flex items-center mt-1">
+              <p className="text-body-sm color-muted">Total Earnings</p>
+              <p className="text-heading-3 text-heading-3">${stats.vendor.totalEarnings.toLocaleString()}</p>
+              <p className="text-body-sm color-success flex items-center mt-1">
                 <ArrowUpRight className="h-3 w-3 mr-1" />
                 +12% from last month
               </p>
             </div>
-            <DollarSign className="h-8 w-8 text-success" />
+            <DollarSign className="h-8 w-8 color-success" />
           </div>
         </Card>
 
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Active Projects</p>
-              <p className="text-2xl font-bold">{stats.vendor.activeProjects}</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted">Active Projects</p>
+              <p className="text-heading-3 text-heading-3">{stats.vendor.activeProjects}</p>
+              <p className="text-body-sm color-muted mt-1">
                 {stats.vendor.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 text-primary" />
+            <Briefcase className="h-8 w-8 color-primary" />
           </div>
         </Card>
 
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Average Rating</p>
+              <p className="text-body-sm color-muted">Average Rating</p>
               <div className="flex items-center">
-                <p className="text-2xl font-bold mr-2">{stats.vendor.avgRating}</p>
-                <Star className="h-5 w-5 text-warning fill-warning" />
+                <p className="text-heading-3 text-heading-3 mr-2">{stats.vendor.avgRating}</p>
+                <Star className="h-5 w-5 color-warning fill-warning" />
               </div>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted mt-1">
                 {stats.vendor.totalReviews} reviews
               </p>
             </div>
-            <Award className="h-8 w-8 text-warning" />
+            <Award className="h-8 w-8 color-warning" />
           </div>
         </Card>
 
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Success Rate</p>
-              <p className="text-2xl font-bold">{stats.vendor.successRate}%</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted">Success Rate</p>
+              <p className="text-heading-3 text-heading-3">{stats.vendor.successRate}%</p>
+              <p className="text-body-sm color-muted mt-1">
                 {stats.vendor.proposalsSent} proposals sent
               </p>
             </div>
@@ -235,15 +235,15 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Performance Overview */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2 p-6">
-          <h3 className="text-lg font-semibold mb-4">Earnings Overview</h3>
+          <h3 className="text-body text-heading-4 mb-4">Earnings Overview</h3>
           <div className="h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
-            <BarChart3 className="h-12 w-12 text-muted-foreground" />
-            <span className="ml-2 text-muted-foreground">Chart will be rendered here</span>
+            <BarChart3 className="h-12 w-12 color-muted" />
+            <span className="ml-2 color-muted">Chart will be rendered here</span>
           </div>
         </Card>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+          <h3 className="text-body text-heading-4 mb-4">Quick Actions</h3>
           <div className="space-y-3">
             <Button variant="outline" className="w-full justify-start">
               <Package className="h-4 w-4 mr-2" />
@@ -268,13 +268,13 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Active Projects & Upcoming Milestones */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Active Projects</h3>
+          <h3 className="text-body text-heading-4 mb-4">Active Projects</h3>
           <div className="space-y-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
                 <div>
-                  <p className="font-medium">Event Production Setup</p>
-                  <p className="text-sm text-muted-foreground">Due in 3 days</p>
+                  <p className="form-label">Event Production Setup</p>
+                  <p className="text-body-sm color-muted">Due in 3 days</p>
                 </div>
                 <Badge variant="secondary">In Progress</Badge>
               </div>
@@ -283,19 +283,19 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Recent Reviews</h3>
+          <h3 className="text-body text-heading-4 mb-4">Recent Reviews</h3>
           <div className="space-y-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="p-3 border rounded-lg">
                 <div className="flex items-center mb-2">
                   <div className="flex">
                     {[1, 2, 3, 4, 5].map(star => (
-                      <Star key={star} className="h-4 w-4 text-warning fill-warning" />
+                      <Star key={star} className="h-4 w-4 color-warning fill-warning" />
                     ))}
                   </div>
-                  <span className="ml-2 text-sm text-muted-foreground">2 days ago</span>
+                  <span className="ml-2 text-body-sm color-muted">2 days ago</span>
                 </div>
-                <p className="text-sm">"Excellent work on the lighting setup. Professional and timely."</p>
+                <p className="text-body-sm">"Excellent work on the lighting setup. Professional and timely."</p>
               </div>
             ))}
           </div>
@@ -311,23 +311,23 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Total Spent</p>
-              <p className="text-2xl font-bold">${stats.client.totalSpent.toLocaleString()}</p>
-              <p className="text-xs text-success flex items-center mt-1">
+              <p className="text-body-sm color-muted">Total Spent</p>
+              <p className="text-heading-3 text-heading-3">${stats.client.totalSpent.toLocaleString()}</p>
+              <p className="text-body-sm color-success flex items-center mt-1">
                 <ArrowDownRight className="h-3 w-3 mr-1" />
                 -8% from budget
               </p>
             </div>
-            <DollarSign className="h-8 w-8 text-primary" />
+            <DollarSign className="h-8 w-8 color-primary" />
           </div>
         </Card>
 
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Active Projects</p>
-              <p className="text-2xl font-bold">{stats.client.activeProjects}</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted">Active Projects</p>
+              <p className="text-heading-3 text-heading-3">{stats.client.activeProjects}</p>
+              <p className="text-body-sm color-muted mt-1">
                 {stats.client.completedProjects} completed
               </p>
             </div>
@@ -338,27 +338,27 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Vendors Hired</p>
-              <p className="text-2xl font-bold">{stats.client.vendorsHired}</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted">Vendors Hired</p>
+              <p className="text-heading-3 text-heading-3">{stats.client.vendorsHired}</p>
+              <p className="text-body-sm color-muted mt-1">
                 Across all projects
               </p>
             </div>
-            <Users className="h-8 w-8 text-success" />
+            <Users className="h-8 w-8 color-success" />
           </div>
         </Card>
 
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-muted-foreground">Avg Completion</p>
-              <p className="text-2xl font-bold">{stats.client.avgCompletionTime}d</p>
-              <p className="text-xs text-success flex items-center mt-1">
+              <p className="text-body-sm color-muted">Avg Completion</p>
+              <p className="text-heading-3 text-heading-3">{stats.client.avgCompletionTime}d</p>
+              <p className="text-body-sm color-success flex items-center mt-1">
                 <Zap className="h-3 w-3 mr-1" />
                 2 days faster
               </p>
             </div>
-            <Clock className="h-8 w-8 text-warning" />
+            <Clock className="h-8 w-8 color-warning" />
           </div>
         </Card>
       </div>
@@ -366,15 +366,15 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Project Management */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <Card className="lg:col-span-2 p-6">
-          <h3 className="text-lg font-semibold mb-4">Project Timeline</h3>
+          <h3 className="text-body text-heading-4 mb-4">Project Timeline</h3>
           <div className="h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
-            <Calendar className="h-12 w-12 text-muted-foreground" />
-            <span className="ml-2 text-muted-foreground">Timeline will be rendered here</span>
+            <Calendar className="h-12 w-12 color-muted" />
+            <span className="ml-2 color-muted">Timeline will be rendered here</span>
           </div>
         </Card>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+          <h3 className="text-body text-heading-4 mb-4">Quick Actions</h3>
           <div className="space-y-3">
             <Button variant="outline" className="w-full justify-start">
               <FileText className="h-4 w-4 mr-2" />
@@ -399,13 +399,13 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Active Projects & Proposals */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Active Projects</h3>
+          <h3 className="text-body text-heading-4 mb-4">Active Projects</h3>
           <div className="space-y-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center justify-between p-3 border rounded-lg">
                 <div>
-                  <p className="font-medium">Music Festival Setup</p>
-                  <p className="text-sm text-muted-foreground">3 vendors assigned</p>
+                  <p className="form-label">Music Festival Setup</p>
+                  <p className="text-body-sm color-muted">3 vendors assigned</p>
                 </div>
                 <Badge variant="secondary">In Progress</Badge>
               </div>
@@ -414,18 +414,18 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Recent Proposals</h3>
+          <h3 className="text-body text-heading-4 mb-4">Recent Proposals</h3>
           <div className="space-y-3">
             {[1, 2, 3].map(i => (
               <div key={i} className="p-3 border rounded-lg">
                 <div className="flex items-center justify-between mb-2">
-                  <p className="font-medium">Stage Design Services</p>
+                  <p className="form-label">Stage Design Services</p>
                   <Badge variant="outline">New</Badge>
                 </div>
-                <p className="text-sm text-muted-foreground">$5,000 - 7 days delivery</p>
+                <p className="text-body-sm color-muted">$5,000 - 7 days delivery</p>
                 <div className="flex items-center mt-2">
-                  <Star className="h-4 w-4 text-warning fill-warning" />
-                  <span className="ml-1 text-sm">4.8 rating</span>
+                  <Star className="h-4 w-4 color-warning fill-warning" />
+                  <span className="ml-1 text-body-sm">4.8 rating</span>
                 </div>
               </div>
             ))}
@@ -440,7 +440,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Dashboard Toggle */}
       {userRole === 'both' && (
         <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold">OPENDECK Dashboard</h2>
+          <h2 className="text-heading-3 text-heading-3">OPENDECK Dashboard</h2>
           <Tabs value={activeView} onValueChange={(v) => setActiveView(v as 'vendor' | 'client')}>
             <TabsList>
               <TabsTrigger value="vendor">
@@ -462,7 +462,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <Shield className="h-5 w-5 text-info mr-2" />
-              <span className="text-sm">
+              <span className="text-body-sm">
                 You have {notifications.length} new notifications
               </span>
             </div>

@@ -36,8 +36,8 @@ export default async function PipelineContractingPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Contracting Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage contractor agreements and relationships</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Contracting Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage contractor agreements and relationships</p>
         </div>
         <CreateContractClient orgId={orgId} />
       </div>

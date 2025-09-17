@@ -8,7 +8,7 @@ export { Skeleton } from './components/Skeleton';
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
 export { Drawer } from './components/Drawer';
 export { EmptyState } from './components/EmptyState';
-export { Card, CardHeader, CardContent, CardFooter, StatsCard, FeatureCard } from './components/Card';
+export { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, StatsCard, FeatureCard } from './components/Card';
 export { Breadcrumbs } from './components/Breadcrumbs';
 export { Sidebar } from './components/Sidebar';
 export { Avatar } from './components/Avatar';
@@ -17,9 +17,11 @@ export { EnhancedUniversalDrawer } from './components/EnhancedUniversalDrawer';
 // Export new atomic components
 export { Tooltip } from './components/Tooltip';
 export { Loader } from './components/Loader';
-export { Alert } from './components/Alert';
+export { Alert, AlertTitle, AlertDescription } from './components/Alert';
+export { Progress } from './components/Progress';
 export { Toggle } from './components/Toggle';
 export { Checkbox } from './components/Checkbox';
+export { Label } from './atoms/Label';
 export { useToast, Toast, ToastContainer, ToastProvider, useToastContext } from './components/Toast';
 
 // Export comprehensive data view system

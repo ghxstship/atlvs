@@ -174,21 +174,21 @@ export default function ProcurementOverviewClient() {
   const getChangeIndicator = (value: number) => {
     if (value > 0) {
       return (
-        <span className="flex items-center text-success text-sm">
+        <span className="flex items-center color-success text-body-sm">
           <ArrowUpRight className="w-4 h-4" />
           {Math.abs(value)}%
         </span>
       );
     } else if (value < 0) {
       return (
-        <span className="flex items-center text-destructive text-sm">
+        <span className="flex items-center color-destructive text-body-sm">
           <ArrowDownRight className="w-4 h-4" />
           {Math.abs(value)}%
         </span>
       );
     }
     return (
-      <span className="flex items-center text-muted-foreground text-sm">
+      <span className="flex items-center color-muted text-body-sm">
         <Minus className="w-4 h-4" />
         0%
       </span>
@@ -211,8 +211,8 @@ export default function ProcurementOverviewClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Procurement Overview</h1>
-          <p className="text-muted-foreground">Monitor procurement activities and spending</p>
+          <h1 className="text-heading-2 text-heading-3">Procurement Overview</h1>
+          <p className="color-muted">Monitor procurement activities and spending</p>
         </div>
         <div className="flex gap-2">
           {['week', 'month', 'quarter', 'year'].map((range) => (
@@ -234,11 +234,11 @@ export default function ProcurementOverviewClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Orders</p>
-                <p className="text-2xl font-bold">{stats.totalOrders}</p>
+                <p className="text-body-sm color-muted">Total Orders</p>
+                <p className="text-heading-3 text-heading-3">{stats.totalOrders}</p>
                 {getChangeIndicator(12)}
               </div>
-              <ShoppingCart className="w-8 h-8 text-primary" />
+              <ShoppingCart className="w-8 h-8 color-primary" />
             </div>
           </CardContent>
         </Card>
@@ -247,11 +247,11 @@ export default function ProcurementOverviewClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Monthly Spend</p>
-                <p className="text-2xl font-bold">{formatCurrency(stats.monthlySpend)}</p>
+                <p className="text-body-sm color-muted">Monthly Spend</p>
+                <p className="text-heading-3 text-heading-3">{formatCurrency(stats.monthlySpend)}</p>
                 {getChangeIndicator(-8)}
               </div>
-              <DollarSign className="w-8 h-8 text-success" />
+              <DollarSign className="w-8 h-8 color-success" />
             </div>
           </CardContent>
         </Card>
@@ -260,13 +260,13 @@ export default function ProcurementOverviewClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Pending Orders</p>
-                <p className="text-2xl font-bold">{stats.pendingOrders}</p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body-sm color-muted">Pending Orders</p>
+                <p className="text-heading-3 text-heading-3">{stats.pendingOrders}</p>
+                <p className="text-body-sm color-muted">
                   {stats.pendingApprovals} awaiting approval
                 </p>
               </div>
-              <Clock className="w-8 h-8 text-warning" />
+              <Clock className="w-8 h-8 color-warning" />
             </div>
           </CardContent>
         </Card>
@@ -275,11 +275,11 @@ export default function ProcurementOverviewClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Savings</p>
-                <p className="text-2xl font-bold">{formatCurrency(stats.savingsThisMonth)}</p>
-                <p className="text-sm text-success">This month</p>
+                <p className="text-body-sm color-muted">Savings</p>
+                <p className="text-heading-3 text-heading-3">{formatCurrency(stats.savingsThisMonth)}</p>
+                <p className="text-body-sm color-success">This month</p>
               </div>
-              <TrendingUp className="w-8 h-8 text-primary" />
+              <TrendingUp className="w-8 h-8 color-primary" />
             </div>
           </CardContent>
         </Card>
@@ -289,7 +289,7 @@ export default function ProcurementOverviewClient() {
         {/* Recent Orders */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <h3 className="font-semibold flex items-center gap-2">
+            <h3 className="text-heading-4 flex items-center gap-2">
               <Activity className="w-5 h-5" />
               Recent Orders
             </h3>
@@ -297,15 +297,15 @@ export default function ProcurementOverviewClient() {
           <CardContent>
             <div className="space-y-3">
               {stats.recentOrders.map((order) => (
-                <div key={order.id} className="flex items-center justify-between p-3 bg-muted rounded-lg">
+                <div key={order.id} className="flex items-center justify-between p-3 bg-secondary rounded-lg">
                   <div>
-                    <p className="font-medium">{order.vendor}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="form-label">{order.vendor}</p>
+                    <p className="text-body-sm color-muted">
                       {new Date(order.created_at).toLocaleDateString()}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="font-semibold">{formatCurrency(order.total)}</span>
+                    <span className="text-heading-4">{formatCurrency(order.total)}</span>
                     <Badge variant={getStatusColor(order.status)}>
                       {order.status}
                     </Badge>
@@ -313,7 +313,7 @@ export default function ProcurementOverviewClient() {
                 </div>
               ))}
               {stats.recentOrders.length === 0 && (
-                <p className="text-center text-muted-foreground py-4">No recent orders</p>
+                <p className="text-center color-muted py-4">No recent orders</p>
               )}
             </div>
             <Link href="/procurement/orders">
@@ -327,7 +327,7 @@ export default function ProcurementOverviewClient() {
         {/* Top Suppliers */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold flex items-center gap-2">
+            <h3 className="text-heading-4 flex items-center gap-2">
               <Package className="w-5 h-5" />
               Top Suppliers
             </h3>
@@ -337,23 +337,23 @@ export default function ProcurementOverviewClient() {
               {stats.topSuppliers.map((supplier, index) => (
                 <div key={supplier.name} className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-sm font-medium text-muted-foreground">
+                    <span className="text-body-sm form-label color-muted">
                       #{index + 1}
                     </span>
                     <div>
-                      <p className="font-medium">{supplier.name}</p>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="form-label">{supplier.name}</p>
+                      <p className="text-body-sm color-muted">
                         {supplier.orders} orders
                       </p>
                     </div>
                   </div>
-                  <span className="font-semibold text-sm">
+                  <span className="text-heading-4 text-body-sm">
                     {formatCurrency(supplier.spend)}
                   </span>
                 </div>
               ))}
               {stats.topSuppliers.length === 0 && (
-                <p className="text-center text-muted-foreground py-4">No supplier data</p>
+                <p className="text-center color-muted py-4">No supplier data</p>
               )}
             </div>
           </CardContent>
@@ -363,7 +363,7 @@ export default function ProcurementOverviewClient() {
       {/* Category Breakdown */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center gap-2">
+          <h3 className="text-heading-4 flex items-center gap-2">
             <PieChart className="w-5 h-5" />
             Spending by Category
           </h3>
@@ -373,12 +373,12 @@ export default function ProcurementOverviewClient() {
             {stats.categoryBreakdown.map((category) => (
               <div key={category.category}>
                 <div className="flex justify-between mb-1">
-                  <span className="text-sm font-medium">{category.category}</span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-body-sm form-label">{category.category}</span>
+                  <span className="text-body-sm color-muted">
                     {formatCurrency(category.spend)} ({category.percentage.toFixed(1)}%)
                   </span>
                 </div>
-                <div className="w-full bg-muted rounded-full h-2">
+                <div className="w-full bg-secondary rounded-full h-2">
                   <div
                     className="bg-primary h-2 rounded-full transition-all"
                     style={{ width: `${category.percentage}%` }}
@@ -387,7 +387,7 @@ export default function ProcurementOverviewClient() {
               </div>
             ))}
             {stats.categoryBreakdown.length === 0 && (
-              <p className="text-center text-muted-foreground py-4">No category data</p>
+              <p className="text-center color-muted py-4">No category data</p>
             )}
           </div>
         </CardContent>
@@ -398,9 +398,9 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/orders" as="/procurement/orders/new">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardContent className="p-6 text-center">
-              <Plus className="w-8 h-8 mx-auto mb-2 text-primary" />
-              <p className="font-semibold">Create Order</p>
-              <p className="text-sm text-muted-foreground">Start a new purchase order</p>
+              <Plus className="w-8 h-8 mx-auto mb-2 color-primary" />
+              <p className="text-heading-4">Create Order</p>
+              <p className="text-body-sm color-muted">Start a new purchase order</p>
             </CardContent>
           </Card>
         </Link>
@@ -408,9 +408,9 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/catalog">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardContent className="p-6 text-center">
-              <Package className="w-8 h-8 mx-auto mb-2 text-primary" />
-              <p className="font-semibold">Browse Catalog</p>
-              <p className="text-sm text-muted-foreground">View products and services</p>
+              <Package className="w-8 h-8 mx-auto mb-2 color-primary" />
+              <p className="text-heading-4">Browse Catalog</p>
+              <p className="text-body-sm color-muted">View products and services</p>
             </CardContent>
           </Card>
         </Link>
@@ -418,9 +418,9 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/tracking">
           <Card className="hover:shadow-lg transition-shadow cursor-pointer">
             <CardContent className="p-6 text-center">
-              <Activity className="w-8 h-8 mx-auto mb-2 text-primary" />
-              <p className="font-semibold">Track Orders</p>
-              <p className="text-sm text-muted-foreground">Monitor order status</p>
+              <Activity className="w-8 h-8 mx-auto mb-2 color-primary" />
+              <p className="text-heading-4">Track Orders</p>
+              <p className="text-body-sm color-muted">Monitor order status</p>
             </CardContent>
           </Card>
         </Link>

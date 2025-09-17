@@ -460,7 +460,7 @@ export function FormView({
 
   if (error) {
     return (
-      <Alert variant="error" className="m-4">
+      <Alert variant="destructive" className="m-4">
         <AlertCircle className="h-4 w-4" />
         <div>
           <div className="font-medium">Error loading form</div>
@@ -486,13 +486,13 @@ export function FormView({
           </h2>
           {showProgress && (
             <div className="flex items-center gap-2 mt-2">
-              <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+              <div className="flex-1 bg-muted rounded-full h-2">
                 <div
-                  className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                  className="bg-primary h-2 rounded-full transition-all duration-300"
                   style={{ width: `${completionPercentage}%` }}
                 />
               </div>
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-sm text-muted-foreground">
                 {Math.round(completionPercentage)}%
               </span>
             </div>
@@ -501,7 +501,7 @@ export function FormView({
         
         <div className="flex items-center gap-2">
           {autoSaving && (
-            <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader size="xs" />
               Auto-saving...
             </div>
@@ -536,7 +536,7 @@ export function FormView({
                   )}
                   <h3 className="font-medium">{section.title}</h3>
                   {section.description && (
-                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                    <span className="text-sm text-muted-foreground">
                       {section.description}
                     </span>
                   )}
@@ -571,7 +571,7 @@ export function FormView({
       </div>
 
       {/* Form Actions */}
-      <div className="flex items-center justify-between pt-6 border-t border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between pt-6 border-t border-border">
         <div className="flex items-center gap-2">
           {allowReset && (
             <Button

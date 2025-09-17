@@ -17,7 +17,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
 
   return (
     <div className="h-full">
-      <h4 className={`${typography.cardTitle} mb-4 text-sm uppercase tracking-wide`}>
+      <h4 className={`${typography.cardTitle} mb-4 text-body-sm uppercase tracking-wide`}>
         {title}
       </h4>
       <div className="h-32 flex flex-col">
@@ -28,7 +28,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
               <a
                 href={link.href}
                 {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-body-sm color-muted hover:color-foreground transition-colors"
               >
                 {link.label}
               </a>
@@ -46,7 +46,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
                     <a
                       href={link.href}
                       {...(link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                      className="text-body-sm color-muted hover:color-foreground transition-colors"
                     >
                       {link.label}
                     </a>

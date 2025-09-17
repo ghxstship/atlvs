@@ -146,11 +146,11 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
        
         footer={
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-destructive" />
-                  <span className="text-destructive">{error}</span>
+                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <span className="color-destructive">{error}</span>
                 </>
               )}
             </div>
@@ -179,7 +179,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
         <form id="create-compliance-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-2">
                 Title *
               </label>
               <Input
@@ -191,7 +191,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground mb-2">
                 Description
               </label>
               <Textarea
@@ -204,7 +204,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="jobId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-2">
                   Job ID *
                 </label>
                 <Input
@@ -216,7 +216,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
               </div>
 
               <div>
-                <label htmlFor="kind" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="kind" className="block text-body-sm form-label color-foreground mb-2">
                   Compliance Type *
                 </label>
                 <Select {...register('kind')}>
@@ -233,7 +233,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="status" className="block text-body-sm form-label color-foreground mb-2">
                   Status
                 </label>
                 <Select {...register('status')}>
@@ -246,7 +246,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
               </div>
 
               <div>
-                <label htmlFor="priority" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="priority" className="block text-body-sm form-label color-foreground mb-2">
                   Priority
                 </label>
                 <Select {...register('priority')}>
@@ -260,7 +260,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="dueAt" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="dueAt" className="block text-body-sm form-label color-foreground mb-2">
                   Due Date
                 </label>
                 <Input
@@ -270,7 +270,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
               </div>
 
               <div>
-                <label htmlFor="completedAt" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="completedAt" className="block text-body-sm form-label color-foreground mb-2">
                   Completed Date
                 </label>
                 <Input
@@ -282,7 +282,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="reviewedBy" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="reviewedBy" className="block text-body-sm form-label color-foreground mb-2">
                   Reviewed By
                 </label>
                 <Input
@@ -295,16 +295,16 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <input
                   type="checkbox"
                   {...register('certificationRequired')}
-                  className="h-4 w-4 text-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
                 />
-                <label htmlFor="certificationRequired" className="text-sm font-medium text-foreground">
+                <label htmlFor="certificationRequired" className="text-body-sm form-label color-foreground">
                   Certification Required
                 </label>
               </div>
             </div>
 
             <div>
-              <label htmlFor="documentationUrl" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="documentationUrl" className="block text-body-sm form-label color-foreground mb-2">
                 Documentation URL
               </label>
               <Input
@@ -315,7 +315,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
             </div>
 
             <div>
-              <label htmlFor="requirements" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="requirements" className="block text-body-sm form-label color-foreground mb-2">
                 Requirements
               </label>
               <Textarea
@@ -326,7 +326,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
             </div>
 
             <div>
-              <label htmlFor="findings" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="findings" className="block text-body-sm form-label color-foreground mb-2">
                 Findings
               </label>
               <Textarea
@@ -337,7 +337,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
             </div>
 
             <div>
-              <label htmlFor="remediation" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="remediation" className="block text-body-sm form-label color-foreground mb-2">
                 Remediation Plan
               </label>
               <Textarea
@@ -348,7 +348,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="notes" className="block text-body-sm form-label color-foreground mb-2">
                 Notes
               </label>
               <Textarea

@@ -312,8 +312,8 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Asset Assignments</h1>
-          <p className="text-sm text-muted-foreground">Track asset assignments and returns</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Asset Assignments</h1>
+          <p className="text-body-sm color-muted">Track asset assignments and returns</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" className="flex items-center gap-2">
@@ -333,7 +333,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
                 <Input
                   placeholder="Search assignments..."
                   value={searchQuery}
@@ -374,11 +374,11 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       {/* Assignments List */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading assignments...</div>
+          <div className="p-8 text-center color-muted">Loading assignments...</div>
         </Card>
       ) : filteredAssignments.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No assignments found matching your criteria.
           </div>
         </Card>
@@ -389,10 +389,10 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5 text-muted-foreground" />
+                    <Users className="w-5 h-5 color-muted" />
                     <div>
-                      <h3 className="font-semibold">{assignment.assetName}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="text-heading-4">{assignment.assetName}</h3>
+                      <p className="text-body-sm color-muted">
                         Assigned to {assignment.assigneeName} • {formatDate(assignment.assignedDate)}
                       </p>
                     </div>
@@ -429,43 +429,43 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                 </div>
 
                 {assignment.purpose && (
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="text-body-sm color-muted mb-3">
                     {assignment.purpose}
                   </p>
                 )}
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                   <div>
-                    <span className="text-xs text-muted-foreground block">Assigned By</span>
-                    <span className="font-medium">{assignment.assignedBy}</span>
+                    <span className="text-body-sm color-muted block">Assigned By</span>
+                    <span className="form-label">{assignment.assignedBy}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Expected Return</span>
-                    <span className={`font-medium ${isOverdue(assignment) ? 'text-destructive' : ''}`}>
+                    <span className="text-body-sm color-muted block">Expected Return</span>
+                    <span className={`form-label ${isOverdue(assignment) ? 'color-destructive' : ''}`}>
                       {assignment.expectedReturnDate ? formatDate(assignment.expectedReturnDate) : 'TBD'}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Location</span>
-                    <span className="font-medium">{assignment.location || 'Unspecified'}</span>
+                    <span className="text-body-sm color-muted block">Location</span>
+                    <span className="form-label">{assignment.location || 'Unspecified'}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Condition</span>
+                    <span className="text-body-sm color-muted block">Condition</span>
                     {getConditionBadge(assignment.condition)}
                   </div>
                 </div>
 
                 {assignment.actualReturnDate && (
-                  <div className="flex items-center gap-4 text-sm mb-3">
-                    <span className="text-muted-foreground">Returned:</span>
-                    <span className="font-medium">{formatDate(assignment.actualReturnDate)}</span>
+                  <div className="flex items-center gap-4 text-body-sm mb-3">
+                    <span className="color-muted">Returned:</span>
+                    <span className="form-label">{formatDate(assignment.actualReturnDate)}</span>
                   </div>
                 )}
 
                 {assignment.notes && (
-                  <div className="mt-3 p-3 bg-muted rounded-md">
-                    <span className="text-xs text-muted-foreground block mb-1">Notes</span>
-                    <p className="text-sm">{assignment.notes}</p>
+                  <div className="mt-3 p-3 bg-secondary rounded-md">
+                    <span className="text-body-sm color-muted block mb-1">Notes</span>
+                    <p className="text-body-sm">{assignment.notes}</p>
                   </div>
                 )}
               </div>
@@ -483,7 +483,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
       >
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Asset</label>
+            <label className="block text-body-sm form-label mb-1">Asset</label>
             <Input
               placeholder="Select asset"
               defaultValue={selectedAssignment?.assetName}
@@ -491,7 +491,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Assignee Type</label>
+              <label className="block text-body-sm form-label mb-1">Assignee Type</label>
               <select
                 defaultValue={selectedAssignment?.assigneeType}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -503,7 +503,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Assignee</label>
+              <label className="block text-body-sm form-label mb-1">Assignee</label>
               <Input
                 placeholder="Select assignee"
                 defaultValue={selectedAssignment?.assigneeName}
@@ -512,14 +512,14 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Expected Return Date</label>
+              <label className="block text-body-sm form-label mb-1">Expected Return Date</label>
               <Input
                 type="date"
                 defaultValue={selectedAssignment?.expectedReturnDate?.split('T')[0]}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Location</label>
+              <label className="block text-body-sm form-label mb-1">Location</label>
               <Input
                 placeholder="Assignment location"
                 defaultValue={selectedAssignment?.location}
@@ -527,14 +527,14 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Purpose</label>
+            <label className="block text-body-sm form-label mb-1">Purpose</label>
             <Input
               placeholder="Purpose of assignment"
               defaultValue={selectedAssignment?.purpose}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-body-sm form-label mb-1">Notes</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}

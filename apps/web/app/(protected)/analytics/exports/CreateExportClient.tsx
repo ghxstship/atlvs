@@ -254,8 +254,8 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-lg font-semibold">Create Export Job</h2>
-            <p className="text-sm text-muted-foreground">Set up automated data exports</p>
+            <h2 className="text-body text-heading-4">Create Export Job</h2>
+            <p className="text-body-sm color-muted">Set up automated data exports</p>
           </div>
           <Button onClick={onCancel || (() => {})}>
             <X className="h-4 w-4" />
@@ -266,22 +266,22 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
           <div className="flex-1 p-6 space-y-6 overflow-y-auto">
             {/* Basic Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Basic Information</h3>
+              <h3 className="text-body-sm form-label">Basic Information</h3>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Export Job Name</label>
+                <label className="block text-body-sm form-label mb-1">Export Job Name</label>
                 <input
                   {...register('name')}
                   className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter export job name"
                 />
                 {errors.name && (
-                  <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-body-sm form-label mb-1">Description</label>
                 <textarea
                   {...register('description')}
                   rows={3}
@@ -293,27 +293,27 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
 
             {/* Data Source & Format */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Data Source & Format</h3>
+              <h3 className="text-body-sm form-label">Data Source & Format</h3>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Data Source</label>
+                <label className="block text-body-sm form-label mb-2">Data Source</label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {DATA_SOURCES.map((source) => {
                     const IconComponent = source.icon;
                     return (
-                      <label key={source.value} className="flex items-start space-x-3 p-3 border-border rounded cursor-pointer hover:bg-muted/50">
+                      <label key={source.value} className="flex items-start space-x-3 p-3 border-border rounded cursor-pointer hover:bg-secondary/50">
                         <input
                           {...register('dataSource')}
                           type="radio"
                           value={source.value}
-                          className="mt-1 text-primary focus:ring-primary"
+                          className="mt-1 color-primary focus:ring-primary"
                         />
                         <div className="flex-1">
                           <div className="flex items-center space-x-2">
                             <IconComponent className="h-4 w-4" />
-                            <span className="font-medium">{source.label}</span>
+                            <span className="form-label">{source.label}</span>
                           </div>
-                          <p className="text-sm text-muted-foreground mt-1">{source.description}</p>
+                          <p className="text-body-sm color-muted mt-1">{source.description}</p>
                         </div>
                       </label>
                     );
@@ -323,7 +323,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Export Format</label>
+                  <label className="block text-body-sm form-label mb-1">Export Format</label>
                   <select
                     {...register('format')}
                     className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -337,7 +337,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Max Records</label>
+                  <label className="block text-body-sm form-label mb-1">Max Records</label>
                   <input
                     {...register('maxRecords', { valueAsNumber: true })}
                     type="number"
@@ -354,18 +354,18 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <input
                     {...register('includeHeaders')}
                     type="checkbox"
-                    className="rounded border-border text-primary focus:ring-primary"
+                    className="rounded border-border color-primary focus:ring-primary"
                   />
-                  <span className="text-sm">Include headers</span>
+                  <span className="text-body-sm">Include headers</span>
                 </label>
                 
                 <label className="flex items-center space-x-2">
                   <input
                     {...register('compression')}
                     type="checkbox"
-                    className="rounded border-border text-primary focus:ring-primary"
+                    className="rounded border-border color-primary focus:ring-primary"
                   />
-                  <span className="text-sm">Compress file</span>
+                  <span className="text-body-sm">Compress file</span>
                 </label>
               </div>
             </div>
@@ -373,17 +373,17 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
             {/* Fields Selection */}
             {dataSource !== 'custom_query' && availableFields.length > 0 && (
               <div className="space-y-4">
-                <h3 className="text-sm font-medium">Export Fields</h3>
+                <h3 className="text-body-sm form-label">Export Fields</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                   {availableFields.map((field) => (
-                    <label key={field} className="flex items-center space-x-2 p-2 border-border rounded cursor-pointer hover:bg-muted/50">
+                    <label key={field} className="flex items-center space-x-2 p-2 border-border rounded cursor-pointer hover:bg-secondary/50">
                       <input
                         type="checkbox"
                         checked={selectedFields.includes(field)}
                         onChange={() => toggleField(field)}
-                        className="rounded border-border text-primary focus:ring-primary"
+                        className="rounded border-border color-primary focus:ring-primary"
                       />
-                      <span className="text-sm capitalize">{field.replace('_', ' ')}</span>
+                      <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
                     </label>
                   ))}
                 </div>
@@ -393,15 +393,15 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
             {/* Custom Query */}
             {dataSource === 'custom_query' && (
               <div className="space-y-4">
-                <h3 className="text-sm font-medium">Custom SQL Query</h3>
+                <h3 className="text-body-sm form-label">Custom SQL Query</h3>
                 <textarea
                   value={customQuery}
                   onChange={(e) => setCustomQuery(e.target.value)}
                   rows={6}
-                  className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-mono text-sm"
+                  className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-mono text-body-sm"
                   placeholder="SELECT * FROM projects WHERE status = 'active'"
                 />
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body-sm color-muted">
                   Write a custom SQL query to export specific data. Be careful with permissions and data access.
                 </p>
               </div>
@@ -411,7 +411,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
             {dataSource !== 'custom_query' && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium">Filters</h3>
+                  <h3 className="text-body-sm form-label">Filters</h3>
                   <Button
                     type="button"
                     variant="outline"
@@ -428,7 +428,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     <select
                       value={filter.field}
                       onChange={(e) => updateFilter(index, 'field', e.target.value)}
-                      className="flex-1 px-2 py-1 border-border rounded text-sm"
+                      className="flex-1 px-2 py-1 border-border rounded text-body-sm"
                     >
                       {availableFields.map((field) => (
                         <option key={field} value={field}>
@@ -440,7 +440,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     <select
                       value={filter.operator}
                       onChange={(e) => updateFilter(index, 'operator', e.target.value)}
-                      className="px-2 py-1 border-border rounded text-sm"
+                      className="px-2 py-1 border-border rounded text-body-sm"
                     >
                       <option value="equals">Equals</option>
                       <option value="contains">Contains</option>
@@ -452,7 +452,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     <input
                       value={filter.value}
                       onChange={(e) => updateFilter(index, 'value', e.target.value)}
-                      className="flex-1 px-2 py-1 border-border rounded text-sm"
+                      className="flex-1 px-2 py-1 border-border rounded text-body-sm"
                       placeholder="Filter value"
                     />
                     
@@ -475,16 +475,16 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('schedule.enabled')}
                   type="checkbox"
-                  className="rounded border-border text-primary focus:ring-primary"
+                  className="rounded border-border color-primary focus:ring-primary"
                 />
-                <label className="text-sm font-medium">Enable scheduled exports</label>
+                <label className="text-body-sm form-label">Enable scheduled exports</label>
               </div>
 
               {scheduleEnabled && (
                 <div className="pl-6 space-y-4 border-l-2 border-primary/20">
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-1">Frequency</label>
+                      <label className="block text-body-sm form-label mb-1">Frequency</label>
                       <select
                         {...register('schedule.frequency')}
                         className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -498,7 +498,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">Time</label>
+                      <label className="block text-body-sm form-label mb-1">Time</label>
                       <input
                         {...register('schedule.time')}
                         type="time"
@@ -507,7 +507,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">Timezone</label>
+                      <label className="block text-body-sm form-label mb-1">Timezone</label>
                       <select
                         {...register('schedule.timezone')}
                         className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -523,7 +523,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
 
                   {frequency === 'weekly' && (
                     <div>
-                      <label className="block text-sm font-medium mb-1">Day of Week</label>
+                      <label className="block text-body-sm form-label mb-1">Day of Week</label>
                       <select
                         {...register('schedule.dayOfWeek', { valueAsNumber: true })}
                         className="w-full px-3 py-2 border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -539,7 +539,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
 
                   {frequency === 'monthly' && (
                     <div>
-                      <label className="block text-sm font-medium mb-1">Day of Month</label>
+                      <label className="block text-body-sm form-label mb-1">Day of Month</label>
                       <input
                         {...register('schedule.dayOfMonth', { valueAsNumber: true })}
                         type="number"
@@ -556,31 +556,31 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
 
             {/* Notifications */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Notifications</h3>
+              <h3 className="text-body-sm form-label">Notifications</h3>
               
               <div className="flex items-center space-x-4">
                 <label className="flex items-center space-x-2">
                   <input
                     {...register('notifications.onSuccess')}
                     type="checkbox"
-                    className="rounded border-border text-primary focus:ring-primary"
+                    className="rounded border-border color-primary focus:ring-primary"
                   />
-                  <span className="text-sm">Notify on success</span>
+                  <span className="text-body-sm">Notify on success</span>
                 </label>
                 
                 <label className="flex items-center space-x-2">
                   <input
                     {...register('notifications.onFailure')}
                     type="checkbox"
-                    className="rounded border-border text-primary focus:ring-primary"
+                    className="rounded border-border color-primary focus:ring-primary"
                   />
-                  <span className="text-sm">Notify on failure</span>
+                  <span className="text-body-sm">Notify on failure</span>
                 </label>
               </div>
             </div>
           </div>
 
-          <div className="p-6 border-t bg-muted/30 flex justify-end space-x-3">
+          <div className="p-6 border-t bg-secondary/30 flex justify-end space-x-3">
             <Button type="button" variant="outline" onClick={onCancel || (() => {})}>
               Cancel
             </Button>

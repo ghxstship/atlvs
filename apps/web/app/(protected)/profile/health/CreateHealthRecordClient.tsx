@@ -116,14 +116,14 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="record_type" className="text-sm font-medium">Record Type *</label>
+            <label htmlFor="record_type" className="text-body-sm form-label">Record Type *</label>
             <select 
               id="record_type" 
               className="rounded border px-2 py-1" 
@@ -140,7 +140,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="title" className="text-sm font-medium">Title *</label>
+            <label htmlFor="title" className="text-body-sm form-label">Title *</label>
             <input 
               id="title" 
               className="rounded border px-2 py-1" 
@@ -149,11 +149,11 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.title} 
             />
             {form.formState.errors.title ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="description" className="text-sm font-medium">Description</label>
+            <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -164,7 +164,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="provider" className="text-sm font-medium">Healthcare Provider</label>
+            <label htmlFor="provider" className="text-body-sm form-label">Healthcare Provider</label>
             <input 
               id="provider" 
               className="rounded border px-2 py-1" 
@@ -175,7 +175,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="date_recorded" className="text-sm font-medium">Date Recorded</label>
+            <label htmlFor="date_recorded" className="text-body-sm form-label">Date Recorded</label>
             <input 
               id="date_recorded" 
               type="date" 
@@ -186,7 +186,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="expiry_date" className="text-sm font-medium">Expiry Date</label>
+            <label htmlFor="expiry_date" className="text-body-sm form-label">Expiry Date</label>
             <input 
               id="expiry_date" 
               type="date" 
@@ -197,7 +197,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="severity" className="text-sm font-medium">Severity</label>
+            <label htmlFor="severity" className="text-body-sm form-label">Severity</label>
             <select 
               id="severity" 
               className="rounded border px-2 py-1" 
@@ -212,7 +212,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="status" className="text-sm font-medium">Status</label>
+            <label htmlFor="status" className="text-body-sm form-label">Status</label>
             <select 
               id="status" 
               className="rounded border px-2 py-1" 
@@ -226,7 +226,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="document_url" className="text-sm font-medium">Document URL</label>
+            <label htmlFor="document_url" className="text-body-sm form-label">Document URL</label>
             <input 
               id="document_url" 
               type="url" 
@@ -238,7 +238,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="notes" className="text-sm font-medium">Notes</label>
+            <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
               className="rounded border px-2 py-1 min-h-[60px]" 

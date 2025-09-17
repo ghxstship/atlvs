@@ -260,10 +260,10 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -273,7 +273,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Health Records</h2>
+        <h2 className="text-heading-4 text-heading-4">Health Records</h2>
         <Button 
           onClick={() => {
             setEditingRecord(null);
@@ -304,9 +304,9 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
       {filteredRecords.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <Heart className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No Health Records</h3>
-            <p className="text-muted-foreground mb-4">
+            <Heart className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No Health Records</h3>
+            <p className="color-muted mb-4">
               Keep track of your medical history, vaccinations, allergies, and health conditions.
             </p>
             <Button 
@@ -336,9 +336,9 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                         <IconComponent className={`h-5 w-5 text-${getRecordTypeColor(record.record_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold">{record.title}</h3>
+                        <h3 className="text-heading-4">{record.title}</h3>
                         {record.description && (
-                          <p className="text-sm text-muted-foreground">{record.description}</p>
+                          <p className="text-body-sm color-muted">{record.description}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
                           <Badge variant="outline">
@@ -377,12 +377,12 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                   </div>
 
                   {record.notes && (
-                    <div className="mb-4 p-3 bg-muted rounded-lg">
-                      <p className="text-sm">{record.notes}</p>
+                    <div className="mb-4 p-3 bg-secondary rounded-lg">
+                      <p className="text-body-sm">{record.notes}</p>
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between text-sm text-muted-foreground">
+                  <div className="flex items-center justify-between text-body-sm color-muted">
                     <div className="flex items-center gap-4">
                       {record.provider && (
                         <span>Provider: {record.provider}</span>
@@ -494,7 +494,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
               {...form.register('is_active')}
               className="rounded border-border"
             />
-            <label htmlFor="is_active" className="text-sm font-medium">
+            <label htmlFor="is_active" className="text-body-sm form-label">
               This record is currently active
             </label>
           </div>

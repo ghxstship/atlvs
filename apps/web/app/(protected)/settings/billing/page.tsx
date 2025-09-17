@@ -8,7 +8,7 @@ export default function SettingsBillingPage() {
   return (
     <div className="space-y-4">
       <Card title="Settings · Billing">
-        <div className="text-sm text-foreground/70">Manage your subscription and payment methods.</div>
+        <div className="text-body-sm color-foreground/70">Manage your subscription and payment methods.</div>
         <div className="mt-4">
           <BillingPortalClient />
         </div>

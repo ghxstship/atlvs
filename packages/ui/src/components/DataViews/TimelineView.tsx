@@ -197,14 +197,14 @@ export function TimelineView({
   }, [draggedItem, timelineItems, onItemMove]);
 
   const timelineClasses = `
-    bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden
+    bg-background border border-border rounded-lg overflow-hidden
     ${className}
   `.trim();
 
   return (
     <div className={timelineClasses}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <Button
@@ -215,7 +215,7 @@ export function TimelineView({
               <ChevronLeft className="h-4 w-4" />
             </Button>
             
-            <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100 min-w-[150px] text-center">
+            <h2 className="text-lg font-semibold text-foreground min-w-[150px] text-center">
               {formatHeaderLabel()}
             </h2>
             
@@ -238,7 +238,7 @@ export function TimelineView({
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+          <div className="flex items-center bg-muted rounded-lg p-1">
             {(['day', 'week', 'month', 'quarter'] as TimelineScale[]).map((scaleOption) => (
               <Button
                 key={scaleOption}
@@ -266,15 +266,15 @@ export function TimelineView({
       {/* Timeline */}
       <div className="overflow-auto">
         {/* Timeline Header */}
-        <div className="flex border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
-          <div className="w-64 p-3 border-r border-gray-200 dark:border-gray-700 font-medium text-sm text-gray-900 dark:text-gray-100">
+        <div className="flex border-b border-border bg-muted">
+          <div className="w-64 p-3 border-r border-border font-medium text-sm text-foreground">
             Task
           </div>
           <div className="flex-1 flex">
             {timelineGrid.periods.map((period, index) => (
               <div
                 key={index}
-                className="flex-1 p-3 border-r border-gray-200 dark:border-gray-700 text-center text-sm font-medium text-gray-600 dark:text-gray-400 min-w-[80px]"
+                className="flex-1 p-3 border-r border-border text-center text-sm font-medium text-muted-foreground min-w-[80px]"
                 onDragOver={(e) => e.preventDefault()}
                 onDrop={(e) => handleItemDrop(e, period)}
               >
@@ -285,7 +285,7 @@ export function TimelineView({
         </div>
 
         {/* Timeline Items */}
-        <div className="divide-y divide-gray-200 dark:divide-gray-700">
+        <div className="divide-y divide-border">
           {timelineItems.map((item) => {
             const position = getItemPosition(item);
             const isDragging = draggedItem === item.id;
@@ -293,26 +293,26 @@ export function TimelineView({
             return (
               <div
                 key={item.id}
-                className={`flex hover:bg-gray-50 dark:hover:bg-gray-800 ${isDragging ? 'opacity-50' : ''}`}
+                className={`flex hover:bg-muted/50 ${isDragging ? 'opacity-50' : ''}`}
               >
                 {/* Task Info */}
-                <div className="w-64 p-3 border-r border-gray-200 dark:border-gray-700">
+                <div className="w-64 p-3 border-r border-border">
                   <div className="flex items-center gap-2">
                     {item.milestone && (
-                      <Flag className="h-4 w-4 text-yellow-500" />
+                      <Flag className="h-4 w-4 text-warning" />
                     )}
                     {item.critical && (
-                      <AlertTriangle className="h-4 w-4 text-red-500" />
+                      <AlertTriangle className="h-4 w-4 text-destructive" />
                     )}
                     <div
-                      className="font-medium text-sm text-gray-900 dark:text-gray-100 cursor-pointer hover:text-blue-600 dark:hover:text-blue-400 truncate"
+                      className="font-medium text-sm text-foreground cursor-pointer hover:text-primary truncate"
                       onClick={() => onItemClick?.(item.record)}
                     >
                       {item.title}
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-4 mt-1 text-xs text-gray-500 dark:text-gray-400">
+                  <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
                     {item.assignee && (
                       <div className="flex items-center gap-1">
                         <Users className="h-3 w-3" />
@@ -333,7 +333,7 @@ export function TimelineView({
                   <div className="relative h-6">
                     {item.milestone ? (
                       <div
-                        className="absolute top-1/2 transform -translate-y-1/2 w-3 h-3 bg-yellow-500 rotate-45 cursor-pointer"
+                        className="absolute top-1/2 transform -translate-y-1/2 w-3 h-3 bg-warning rotate-45 cursor-pointer"
                         style={{ left: position.left }}
                         draggable
                         onDragStart={(e) => handleItemDragStart(e, item.id)}
@@ -344,7 +344,7 @@ export function TimelineView({
                       <div
                         className={`
                           absolute top-1/2 transform -translate-y-1/2 h-4 rounded cursor-pointer
-                          ${item.critical ? 'bg-red-500' : 'bg-blue-500'}
+                          ${item.critical ? 'bg-destructive' : 'bg-primary'}
                           hover:opacity-80 transition-opacity
                         `}
                         style={position}
@@ -356,7 +356,7 @@ export function TimelineView({
                         {/* Progress Bar */}
                         {item.progress > 0 && (
                           <div
-                            className="h-full bg-green-400 rounded"
+                            className="h-full bg-success rounded"
                             style={{ width: `${item.progress}%` }}
                           />
                         )}
@@ -384,7 +384,7 @@ export function TimelineView({
 
         {/* Empty State */}
         {timelineItems.length === 0 && (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-12 text-muted-foreground">
             <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <div className="text-lg font-medium mb-2">No tasks in timeline</div>
             <Button

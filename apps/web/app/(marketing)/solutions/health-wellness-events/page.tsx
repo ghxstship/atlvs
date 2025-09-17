@@ -112,7 +112,7 @@ export default function HealthWellnessEventsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-green-500/5 via-background to-emerald-500/5">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -120,7 +120,7 @@ export default function HealthWellnessEventsPage() {
                 <Badge variant="outline" className="mb-4">
                   Health & Wellness Events
                 </Badge>
-                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
                   TRANSFORM
                   <br />
                   <span className="bg-gradient-to-r from-success to-success bg-clip-text text-transparent">
@@ -129,7 +129,7 @@ export default function HealthWellnessEventsPage() {
                   <br />
                   WELLNESS
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-heading-4 color-muted">
                   Create meaningful health and wellness experiences that inspire lasting 
                   change. From intimate retreats to large-scale wellness conferences, 
                   GHXSTSHIP helps you orchestrate transformative events.
@@ -138,20 +138,20 @@ export default function HealthWellnessEventsPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>500K+</div>
-                  <div className="text-sm text-muted-foreground">Lives Transformed</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>500K+</div>
+                  <div className="text-body-sm color-muted">Lives Transformed</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>2,500+</div>
-                  <div className="text-sm text-muted-foreground">Events Managed</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>2,500+</div>
+                  <div className="text-body-sm color-muted">Events Managed</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>98%</div>
-                  <div className="text-sm text-muted-foreground">Safety Record</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>98%</div>
+                  <div className="text-body-sm color-muted">Safety Record</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>85%</div>
-                  <div className="text-sm text-muted-foreground">Goal Achievement</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>85%</div>
+                  <div className="text-body-sm color-muted">Goal Achievement</div>
                 </div>
               </div>
 
@@ -172,14 +172,14 @@ export default function HealthWellnessEventsPage() {
             {/* Wellness Dashboard Preview */}
             <div className="relative">
               <Card className="bg-background border shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-destructive"></div>
                     <div className="w-3 h-3 rounded-full bg-warning"></div>
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
                       <Heart className="w-3 h-3" />
                       wellness.ghxstship.com
                     </div>
@@ -188,58 +188,58 @@ export default function HealthWellnessEventsPage() {
 
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>MINDFUL MOUNTAIN RETREAT</h3>
-                    <Badge variant="outline" className="text-success border-success">
+                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>MINDFUL MOUNTAIN RETREAT</h3>
+                    <Badge variant="outline" className="color-success border-success">
                       Active
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Participants</div>
-                      <div className="font-semibold">247</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Participants</div>
+                      <div className="text-heading-4">247</div>
                       <div className="flex items-center gap-1 mt-1">
                         <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                        <span className="text-xs text-success">Engaged</span>
+                        <span className="text-body-sm color-success">Engaged</span>
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Sessions</div>
-                      <div className="font-semibold">32</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Sessions</div>
+                      <div className="text-heading-4">32</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="w-3 h-3 bg-success rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Wellness Score</div>
-                      <div className="font-semibold">8.7/10</div>
-                      <div className="w-full bg-muted rounded-full h-1 mt-2">
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Wellness Score</div>
+                      <div className="text-heading-4">8.7/10</div>
+                      <div className="w-full bg-secondary rounded-full h-1 mt-2">
                         <div className="bg-success h-1 rounded-full w-5/6"></div>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="text-xs font-medium text-muted-foreground">Today's Schedule</div>
+                    <div className="text-body-sm form-label color-muted">Today's Schedule</div>
                     {[
                       { session: 'Morning Yoga', time: '7:00 AM', participants: 89, color: 'bg-success' },
                       { session: 'Mindful Eating', time: '12:30 PM', participants: 156, color: 'bg-primary' },
                       { session: 'Sound Healing', time: '7:00 PM', participants: 203, color: 'bg-info' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-xs">
+                      <div key={i} className="flex items-center gap-3 text-body-sm">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
-                        <span className="font-medium flex-1">{item.session}</span>
-                        <span className="text-muted-foreground">{item.time}</span>
-                        <span className="text-muted-foreground">({item.participants})</span>
+                        <span className="form-label flex-1">{item.session}</span>
+                        <span className="color-muted">{item.time}</span>
+                        <span className="color-muted">({item.participants})</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Leaf className="w-4 h-4 text-success" />
-                    <span className="text-xs font-medium">Next: Nutrition Workshop - 2:00 PM</span>
+                    <Leaf className="w-4 h-4 color-success" />
+                    <span className="text-body-sm form-label">Next: Nutrition Workshop - 2:00 PM</span>
                     <div className="ml-auto">
                       <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
                     </div>
@@ -255,10 +255,10 @@ export default function HealthWellnessEventsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               WELLNESS EVENT CHALLENGES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Health and wellness events require specialized care, compliance, and personalized approaches.
             </p>
           </div>
@@ -271,14 +271,14 @@ export default function HealthWellnessEventsPage() {
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-success to-success">
-                        <Icon className="h-6 w-6 text-white" />
+                        <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
-                        <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
-                        <p className="text-muted-foreground mb-4">{challenge.description}</p>
+                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>{challenge.title}</h3>
+                        <p className="color-muted mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
-                          <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
+                          <CheckCircle className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
                         </div>
                       </div>
                     </div>
@@ -291,13 +291,13 @@ export default function HealthWellnessEventsPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMPREHENSIVE WELLNESS PLATFORM
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Everything you need to create transformative health and wellness experiences.
             </p>
           </div>
@@ -306,14 +306,14 @@ export default function HealthWellnessEventsPage() {
             {features.map((feature) => (
               <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{feature.title}</h3>
-                  <p className="text-muted-foreground mb-6">{feature.description}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{feature.title}</h3>
+                  <p className="color-muted mb-6">{feature.description}</p>
                   
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                        <span className="text-sm text-foreground">{benefit}</span>
+                        <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                        <span className="text-body-sm color-foreground">{benefit}</span>
                       </div>
                     ))}
                   </div>
@@ -328,10 +328,10 @@ export default function HealthWellnessEventsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               WELLNESS TRANSFORMATION STORIES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               See how wellness leaders are creating life-changing experiences with GHXSTSHIP.
             </p>
           </div>
@@ -343,35 +343,35 @@ export default function HealthWellnessEventsPage() {
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div>
                       <Badge variant="outline" className="mb-4">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>{study.title}</h3>
+                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-4 uppercase`}>{study.title}</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">CHALLENGE</h4>
-                          <p className="text-foreground">{study.challenge}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">CHALLENGE</h4>
+                          <p className="color-foreground">{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">SOLUTION</h4>
-                          <p className="text-foreground">{study.solution}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">SOLUTION</h4>
+                          <p className="color-foreground">{study.solution}</p>
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-4 uppercase">RESULTS</h4>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-4 uppercase">RESULTS</h4>
                       <div className="space-y-3 mb-6">
                         {study.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
-                            <Star className="h-4 w-4 text-warning flex-shrink-0" />
-                            <span className="text-sm font-medium text-foreground">{result}</span>
+                            <Star className="h-4 w-4 color-warning flex-shrink-0" />
+                            <span className="text-body-sm form-label color-foreground">{result}</span>
                           </div>
                         ))}
                       </div>
 
                       <blockquote className="border-l-4 border-primary pl-4">
-                        <p className="text-foreground italic mb-2">"{study.testimonial}"</p>
-                        <cite className="text-sm text-muted-foreground">— {study.author}</cite>
+                        <p className="color-foreground italic mb-2">"{study.testimonial}"</p>
+                        <cite className="text-body-sm color-muted">— {study.author}</cite>
                       </blockquote>
                     </div>
                   </div>
@@ -383,13 +383,13 @@ export default function HealthWellnessEventsPage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               WELLNESS ECOSYSTEM INTEGRATIONS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Connect with leading health and wellness platforms for comprehensive experiences.
             </p>
           </div>
@@ -399,10 +399,10 @@ export default function HealthWellnessEventsPage() {
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-success to-success rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Zap className="h-6 w-6 text-white" />
+                    <Zap className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>
-                  <p className="text-xs text-muted-foreground">{integration.category}</p>
+                  <h3 className="text-heading-4 color-foreground mb-1">{integration.name}</h3>
+                  <p className="text-body-sm color-muted">{integration.category}</p>
                 </CardContent>
               </Card>
             ))}
@@ -411,13 +411,13 @@ export default function HealthWellnessEventsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-500/5 to-emerald-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO TRANSFORM LIVES?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Join wellness leaders using GHXSTSHIP to create meaningful health experiences 
               that inspire lasting positive change in people's lives.
             </p>

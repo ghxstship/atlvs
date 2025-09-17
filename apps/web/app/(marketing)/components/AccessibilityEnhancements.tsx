@@ -31,8 +31,8 @@ export const AccessibilityEnhancements = () => {
           position: absolute;
           top: -40px;
           left: 6px;
-          background: #000;
-          color: #fff;
+          background: hsl(var(--foreground));
+          color: hsl(var(--background));
           padding: 8px;
           text-decoration: none;
           border-radius: 4px;
@@ -234,7 +234,7 @@ export const AccessibilityEnhancements = () => {
               const asterisk = document.createElement('span');
               asterisk.textContent = ' *';
               asterisk.setAttribute('aria-label', 'required');
-              asterisk.className = 'text-destructive';
+              asterisk.className = 'color-destructive';
               label.appendChild(asterisk);
             }
           }

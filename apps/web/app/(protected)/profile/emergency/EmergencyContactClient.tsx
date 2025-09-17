@@ -156,7 +156,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
       <div className="space-y-4">
         {[...Array(2)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-24 bg-muted rounded-lg"></div>
+            <div className="h-24 bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -166,7 +166,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Emergency Contacts</h2>
+        <h2 className="text-heading-4 text-heading-4">Emergency Contacts</h2>
         <Button onClick={() => openDrawer()} className="flex items-center gap-2">
           <Plus className="h-4 w-4" />
           Add Contact
@@ -181,18 +181,18 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-destructive/10 rounded-lg">
-                      <AlertTriangle className="h-6 w-6 text-destructive" />
+                      <AlertTriangle className="h-6 w-6 color-destructive" />
                     </div>
                     
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <h3 className="text-lg font-semibold">{contact.name}</h3>
+                        <h3 className="text-body text-heading-4">{contact.name}</h3>
                         {contact.is_primary && (
                           <Badge variant="destructive">Primary</Badge>
                         )}
                       </div>
                       
-                      <div className="space-y-1 text-sm text-muted-foreground">
+                      <div className="space-y-1 text-body-sm color-muted">
                         <div className="flex items-center gap-2">
                           <User className="h-4 w-4" />
                           <span>{contact.relationship}</span>
@@ -214,13 +214,13 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                         )}
                         
                         {contact.address && (
-                          <div className="text-xs mt-2">
+                          <div className="text-body-sm mt-2">
                             <strong>Address:</strong> {contact.address}
                           </div>
                         )}
                         
                         {contact.notes && (
-                          <div className="text-xs mt-2">
+                          <div className="text-body-sm mt-2">
                             <strong>Notes:</strong> {contact.notes}
                           </div>
                         )}
@@ -251,9 +251,9 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
         ) : (
           <Card>
             <div className="p-8 text-center">
-              <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-              <h3 className="text-lg font-medium mb-2">No Emergency Contacts</h3>
-              <p className="text-muted-foreground mb-4">
+              <AlertTriangle className="h-12 w-12 mx-auto mb-4 color-muted opacity-50" />
+              <h3 className="text-body form-label mb-2">No Emergency Contacts</h3>
+              <p className="color-muted mb-4">
                 Add emergency contacts for safety and security purposes.
               </p>
               <Button onClick={() => openDrawer()}>
@@ -334,7 +334,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                 {...form.register('is_primary')}
                 className="rounded border-border"
               />
-              <label htmlFor="is_primary" className="text-sm font-medium">
+              <label htmlFor="is_primary" className="text-body-sm form-label">
                 Set as primary emergency contact
               </label>
             </div>

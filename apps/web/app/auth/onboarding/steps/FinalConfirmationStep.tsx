@@ -88,12 +88,12 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       <div className="text-center">
         <div className="mb-6">
           <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
-            <CheckCircle className="h-12 w-12 text-success" />
+            <CheckCircle className="h-12 w-12 color-success" />
           </div>
-          <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+          <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
             WELCOME TO GHXSTSHIP!
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-body color-muted max-w-2xl mx-auto">
             Your account is ready! You're all set to start creating amazing projects with your team.
           </p>
         </div>
@@ -103,11 +103,11 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       <Card className="shadow-xl">
         <CardContent className="p-8">
           <div className="text-center mb-6">
-            <Sparkles className="h-8 w-8 text-primary mx-auto mb-3" />
-            <h2 className={`${anton.className} uppercase text-xl font-bold mb-2`}>
+            <Sparkles className="h-8 w-8 color-primary mx-auto mb-3" />
+            <h2 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
               SETUP COMPLETE
             </h2>
-            <p className="text-muted-foreground">
+            <p className="color-muted">
               Here's what we've set up for you
             </p>
           </div>
@@ -116,13 +116,13 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
             {getSetupSummary().map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="flex items-center space-x-4 p-4 bg-muted/50 rounded-lg">
+                <div key={index} className="flex items-center space-x-4 p-4 bg-secondary/50 rounded-lg">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Icon className="h-5 w-5 text-primary" />
+                    <Icon className="h-5 w-5 color-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">{item.title}</h3>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
+                    <h3 className="text-heading-4 color-foreground">{item.title}</h3>
+                    <p className="text-body-sm color-muted">{item.description}</p>
                   </div>
                 </div>
               );
@@ -134,31 +134,31 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       {/* Next Steps */}
       <Card>
         <CardContent className="p-6">
-          <h3 className={`${anton.className} uppercase text-lg font-bold mb-4`}>
+          <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-4`}>
             WHAT'S NEXT?
           </h3>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Explore Your Dashboard</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="text-heading-4 color-foreground">Explore Your Dashboard</h4>
+              <p className="text-body-sm color-muted">
                 Get familiar with your project overview and team workspace
               </p>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Create Your First Project</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="text-heading-4 color-foreground">Create Your First Project</h4>
+              <p className="text-body-sm color-muted">
                 Start organizing your creative work with ATLVS project management
               </p>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Invite More Team Members</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="text-heading-4 color-foreground">Invite More Team Members</h4>
+              <p className="text-body-sm color-muted">
                 Add collaborators and assign them to specific projects
               </p>
             </div>
             <div className="space-y-2">
-              <h4 className="font-semibold text-foreground">Customize Your Workspace</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="text-heading-4 color-foreground">Customize Your Workspace</h4>
+              <p className="text-body-sm color-muted">
                 Set up workflows, templates, and integrations that work for you
               </p>
             </div>
@@ -171,25 +171,25 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
         <Card className="border-primary/20 bg-primary/5">
           <CardContent className="p-6">
             <div className="text-center">
-              <h3 className={`${anton.className} uppercase text-lg font-bold mb-2 text-primary`}>
+              <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-2 color-primary`}>
                 FREE TRIAL ACTIVE
               </h3>
-              <p className="text-muted-foreground mb-4">
+              <p className="color-muted mb-4">
                 You have {data.planData.trialDays} days to explore all features. 
                 No credit card required until your trial ends.
               </p>
-              <div className="flex justify-center space-x-6 text-sm">
+              <div className="flex justify-center space-x-6 text-body-sm">
                 <div className="text-center">
-                  <div className="font-semibold text-foreground">Full Access</div>
-                  <div className="text-muted-foreground">All premium features</div>
+                  <div className="text-heading-4 color-foreground">Full Access</div>
+                  <div className="color-muted">All premium features</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-foreground">No Commitment</div>
-                  <div className="text-muted-foreground">Cancel anytime</div>
+                  <div className="text-heading-4 color-foreground">No Commitment</div>
+                  <div className="color-muted">Cancel anytime</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-foreground">Support Included</div>
-                  <div className="text-muted-foreground">Priority assistance</div>
+                  <div className="text-heading-4 color-foreground">Support Included</div>
+                  <div className="color-muted">Priority assistance</div>
                 </div>
               </div>
             </div>
@@ -209,13 +209,13 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
           <ArrowRight className="ml-2 h-4 w-4" />
         </Button>
         
-        <p className="text-sm text-muted-foreground mt-4">
+        <p className="text-body-sm color-muted mt-4">
           Need help getting started?{' '}
-          <a href="/resources/docs" className="text-primary hover:underline">
+          <a href="/resources/docs" className="color-primary hover:underline">
             Check out our documentation
           </a>{' '}
           or{' '}
-          <a href="/contact" className="text-primary hover:underline">
+          <a href="/contact" className="color-primary hover:underline">
             contact support
           </a>
         </p>

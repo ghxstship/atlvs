@@ -179,12 +179,12 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
 
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
-      case 'active': return 'bg-success/10 text-success';
-      case 'completed': return 'bg-primary/10 text-primary';
-      case 'pending': return 'bg-warning/10 text-warning';
-      case 'draft': return 'bg-muted/10 text-muted-foreground';
-      case 'cancelled': return 'bg-destructive/10 text-destructive';
-      default: return 'bg-muted/10 text-muted-foreground';
+      case 'active': return 'bg-success/10 color-success';
+      case 'completed': return 'bg-primary/10 color-primary';
+      case 'pending': return 'bg-warning/10 color-warning';
+      case 'draft': return 'bg-secondary/10 color-muted';
+      case 'cancelled': return 'bg-destructive/10 color-destructive';
+      default: return 'bg-secondary/10 color-muted';
     }
   };
 
@@ -211,8 +211,8 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-        <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+        <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+        <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
       </div>
 
       {/* Stats Grid */}
@@ -229,80 +229,80 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Total Jobs</p>
-                  <p className="text-2xl font-bold text-foreground">{stats?.totalJobs || 0}</p>
+                  <p className="text-body-sm form-label color-foreground/70">Total Jobs</p>
+                  <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalJobs || 0}</p>
                 </div>
-                <BriefcaseIcon className="h-8 w-8 text-primary" />
+                <BriefcaseIcon className="h-8 w-8 color-primary" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Active Jobs</p>
-                  <p className="text-xs text-muted-foreground">{stats?.activeJobs || 0} active</p>
+                  <p className="text-body-sm form-label color-foreground/70">Active Jobs</p>
+                  <p className="text-body-sm color-muted">{stats?.activeJobs || 0} active</p>
                 </div>
-                <ChartBarIcon className="h-8 w-8 text-success" />
+                <ChartBarIcon className="h-8 w-8 color-success" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground">Monitor job performance and manage opportunities.</p>
-                  <p className="text-2xl font-bold text-success">{stats?.totalOpportunities || 0}</p>
+                  <p className="color-muted">Monitor job performance and manage opportunities.</p>
+                  <p className="text-heading-3 text-heading-3 color-success">{stats?.totalOpportunities || 0}</p>
                 </div>
-                <ClipboardDocumentListIcon className="h-8 w-8 text-success" />
+                <ClipboardDocumentListIcon className="h-8 w-8 color-success" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Active Bids</p>
-                  <p className="text-xs text-muted-foreground">{stats?.activeBids || 0} active bids</p>
+                  <p className="text-body-sm form-label color-foreground/70">Active Bids</p>
+                  <p className="text-body-sm color-muted">{stats?.activeBids || 0} active bids</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 text-secondary" />
+                <DocumentTextIcon className="h-8 w-8 color-secondary" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <span className="text-sm text-muted-foreground">tracts</span>
-                  <p className="text-2xl font-bold text-secondary">{stats?.activeContracts || 0}</p>
+                  <span className="text-body-sm color-muted">tracts</span>
+                  <p className="text-heading-3 text-heading-3 color-secondary">{stats?.activeContracts || 0}</p>
                 </div>
-                <CheckCircleIcon className="h-8 w-8 text-accent" />
+                <CheckCircleIcon className="h-8 w-8 color-accent" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Assignments</p>
-                  <p className="text-xs text-muted-foreground">{stats?.totalAssignments || 0} assignments</p>
+                  <p className="text-body-sm form-label color-foreground/70">Assignments</p>
+                  <p className="text-body-sm color-muted">{stats?.totalAssignments || 0} assignments</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 text-warning" />
+                <DocumentTextIcon className="h-8 w-8 color-warning" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm text-muted-foreground">Pending Compliance</p>
-                  <h1 className="text-2xl font-bold text-foreground">{stats?.pendingCompliance || 0}</h1>
+                  <p className="text-body-sm color-muted">Pending Compliance</p>
+                  <h1 className="text-heading-3 text-heading-3 color-foreground">{stats?.pendingCompliance || 0}</h1>
                 </div>
-                <ExclamationTriangleIcon className="h-8 w-8 text-warning" />
+                <ExclamationTriangleIcon className="h-8 w-8 color-warning" />
               </div>
             </Card>
 
             <Card className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-foreground/70">Active RFPs</p>
-                  <p className="text-xs text-muted-foreground">{stats?.activeRFPs || 0} active RFPs</p>
+                  <p className="text-body-sm form-label color-foreground/70">Active RFPs</p>
+                  <p className="text-body-sm color-muted">{stats?.activeRFPs || 0} active RFPs</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 text-primary" />
+                <DocumentTextIcon className="h-8 w-8 color-primary" />
               </div>
             </Card>
           </>
@@ -318,18 +318,18 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               return (
                 <Link key={action.title} href={action.href as any as any as any}>
                   <div className="flex items-center p-4 rounded-lg border border-border hover:bg-accent transition-colors cursor-pointer">
-                    <div className={`p-2 rounded-lg ${action.color} text-white mr-3`}>
+                    <div className={`p-2 rounded-lg ${action.color} text-background mr-3`}>
                       <Icon className="h-5 w-5" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-foreground truncate">
+                      <p className="text-body-sm form-label color-foreground truncate">
                         {action.title}
                       </p>
-                      <p className="text-xs text-foreground/70 truncate">
+                      <p className="text-body-sm color-foreground/70 truncate">
                         {action.description}
                       </p>
                     </div>
-                    <ArrowRightIcon className="h-4 w-4 text-foreground/40" />
+                    <ArrowRightIcon className="h-4 w-4 color-foreground/40" />
                   </div>
                 </Link>
               );
@@ -343,7 +343,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             <div className="space-y-3">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex items-center space-x-3">
-                  <div className="w-3 h-3 bg-muted rounded"></div>
+                  <div className="w-3 h-3 bg-secondary rounded"></div>
                   <Skeleton className="h-5 w-16" />
                 </div>
               ))}
@@ -355,12 +355,12 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                 return (
                   <div key={activity.id} className="flex items-center justify-between p-3 rounded-lg border border-border">
                     <div className="flex items-center space-x-3">
-                      <Icon className="h-5 w-5 text-foreground/60" />
+                      <Icon className="h-5 w-5 color-foreground/60" />
                       <div>
-                        <p className="text-sm font-medium text-foreground truncate">
+                        <p className="text-body-sm form-label color-foreground truncate">
                           {activity.title}
                         </p>
-                        <p className="text-xs text-foreground/70 capitalize">
+                        <p className="text-body-sm color-foreground/70 capitalize">
                           {activity.type} • {new Date(activity.updatedAt).toLocaleDateString()}
                         </p>
                       </div>
@@ -374,9 +374,9 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             </div>
           ) : (
             <div className="text-center py-8">
-              <BriefcaseIcon className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-              <p className="text-sm text-muted-foreground">No recent activity</p>
-              <p className="text-xs text-muted-foreground mt-1">
+              <BriefcaseIcon className="h-12 w-12 color-muted mx-auto mb-3" />
+              <p className="text-body-sm color-muted">No recent activity</p>
+              <p className="text-body-sm color-muted mt-1">
                 Create your first job to get started
               </p>
             </div>

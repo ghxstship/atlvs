@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { getStatusColor, StatusBadge } from '../../components/ui/DesignTokens';
+import { getStatusColor, StatusBadge } from "../../../_components/ui/DesignTokens";
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
   Plus,
@@ -314,10 +314,10 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-secondary rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-48 bg-muted rounded"></div>
+              <div key={i} className="h-48 bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -328,7 +328,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
   if (error) {
     return (
       <Card title="Error">
-          <div className="text-center py-12 text-destructive">{error}</div>
+          <div className="text-center py-12 color-destructive">{error}</div>
         <Button onClick={loadReports} className="mt-4">
           Retry
         </Button>
@@ -341,8 +341,8 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     {/* Header */}
     <div className="flex items-center justify-between">
       <div>
-        <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-        <p className="text-sm text-muted-foreground">Build and schedule custom reports</p>
+        <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+        <p className="text-body-sm color-muted">Build and schedule custom reports</p>
       </div>
       <Button onClick={() => setShowCreateForm(true)}>
         <Plus className="h-4 w-4 mr-2" />
@@ -353,7 +353,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     {/* Filters */}
     <div className="flex items-center space-x-4">
       <div className="flex-1 relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
         <input
           type="text"
           placeholder="Search reports..."
@@ -367,7 +367,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
         onChange={(e) => setFilterStatus(e.target.value)}
         className="px-4 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
       >
-        <option value="" className="text-muted-foreground">All Statuses</option>
+        <option value="" className="color-muted">All Statuses</option>
         <option value="active">Active</option>
         <option value="paused">Paused</option>
         <option value="draft">Draft</option>
@@ -384,51 +384,51 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center space-x-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
-                    <IconComponent className="h-5 w-5 text-primary" />
+                    <IconComponent className="h-5 w-5 color-primary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">{report.name}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">{report.description}</p>
+                    <h3 className="text-heading-4 color-foreground">{report.name}</h3>
+                    <p className="text-body-sm color-muted mt-1">{report.description}</p>
                   </div>
                 </div>
                 <StatusBadge status={report.status} />
               </div>
               
               <div className="space-y-2 mb-4">
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Type:</span>
-                  <span className="font-medium capitalize">{report.type}</span>
+                <div className="flex items-center justify-between text-body-sm">
+                  <span className="color-muted">Type:</span>
+                  <span className="form-label capitalize">{report.type}</span>
                 </div>
                 
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Fields:</span>
-                  <span className="font-medium">{report.fields.length}</span>
+                <div className="flex items-center justify-between text-body-sm">
+                  <span className="color-muted">Fields:</span>
+                  <span className="form-label">{report.fields.length}</span>
                 </div>
                 
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Filters:</span>
-                  <span className="font-medium">{report.filters.length}</span>
+                <div className="flex items-center justify-between text-body-sm">
+                  <span className="color-muted">Filters:</span>
+                  <span className="form-label">{report.filters.length}</span>
                 </div>
 
                 {report.schedule?.enabled && (
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Schedule:</span>
-                      <Badge variant="outline" className="text-xs">
+                  <div className="flex items-center justify-between text-body-sm">
+                    <span className="color-muted">Schedule:</span>
+                      <Badge variant="outline" className="text-body-sm">
                         {report.schedule.frequency}
                       </Badge>
                     </div>
                   )}
 
                 {report.lastRun && (
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Last Run:</span>
-                    <span className="text-xs text-muted-foreground">
+                  <div className="flex items-center justify-between text-body-sm">
+                    <span className="color-muted">Last Run:</span>
+                    <span className="text-body-sm color-muted">
                       {new Date(report.lastRun).toLocaleDateString()}
                     </span>
                   </div>
                 )}
                 
-                <p className="text-xs text-muted-foreground mt-2">
+                <p className="text-body-sm color-muted mt-2">
                   Created {new Date(report.createdAt).toLocaleDateString()}
                 </p>
               </div>
@@ -463,9 +463,9 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
         </div>
       ) : (
         <Card className="p-8 text-center">
-            <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No reports found</h3>
-          <p className="text-muted-foreground mb-4">Create your first report to get started with analytics.</p>
+            <FileText className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No reports found</h3>
+          <p className="color-muted mb-4">Create your first report to get started with analytics.</p>
           <Button onClick={() => setShowCreateForm(true)}>
             <Plus className="h-4 w-4 mr-2" />
             Create Report
@@ -475,9 +475,9 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
       {/* Create Report Form */}
       {showCreateForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center z-50">
           <Card className="w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto">
-            <h3 className="text-lg font-semibold mb-4">Create New Report</h3>
+            <h3 className="text-body text-heading-4 mb-4">Create New Report</h3>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -493,7 +493,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
             >
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <label className="block text-body-sm form-label color-foreground mb-1">
                     Report Name
                   </label>
                   <input
@@ -506,7 +506,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <label className="block text-body-sm form-label color-foreground mb-1">
                     Description
                   </label>
                   <textarea
@@ -519,7 +519,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">
+                    <label className="block text-body-sm form-label color-foreground mb-1">
                       Report Type
                     </label>
                     <select
@@ -534,14 +534,14 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-foreground mb-1">
+                    <label className="block text-body-sm form-label color-foreground mb-1">
                       Chart Type (if applicable)
                     </label>
                     <select
                       name="chartType"
                       className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
-                      <option value="" className="text-muted-foreground">All Types</option>
+                      <option value="" className="color-muted">All Types</option>
                       <option value="bar">Bar Chart</option>
                       <option value="line">Line Chart</option>
                       <option value="pie">Pie Chart</option>

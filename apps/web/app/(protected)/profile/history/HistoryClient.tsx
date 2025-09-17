@@ -315,10 +315,10 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -328,7 +328,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Professional History</h2>
+        <h2 className="text-heading-4 text-heading-4">Professional History</h2>
         <Button 
           onClick={() => {
             setEditingEntry(null);
@@ -359,9 +359,9 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
       {sortedEntries.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <History className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No History Entries</h3>
-            <p className="text-muted-foreground mb-4">
+            <History className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No History Entries</h3>
+            <p className="color-muted mb-4">
               Build your professional timeline by adding employment, education, projects, and achievements.
             </p>
             <Button 
@@ -389,9 +389,9 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                         <IconComponent className={`h-5 w-5 text-${getEntryTypeColor(entry.entry_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold">{entry.title}</h3>
+                        <h3 className="text-heading-4">{entry.title}</h3>
                         {entry.organization && (
-                          <p className="text-sm text-muted-foreground">{entry.organization}</p>
+                          <p className="text-body-sm color-muted">{entry.organization}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
                           <Badge variant="outline">
@@ -422,7 +422,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                   </div>
 
                   <div className="mb-4">
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                    <div className="flex items-center gap-4 text-body-sm color-muted mb-2">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         {new Date(entry.start_date).toLocaleDateString()} - {
@@ -446,13 +446,13 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
 
                   {entry.description && (
                     <div className="mb-4">
-                      <p className="text-sm text-muted-foreground">{entry.description}</p>
+                      <p className="text-body-sm color-muted">{entry.description}</p>
                     </div>
                   )}
 
                   {entry.skills_gained.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-medium mb-2">Skills Gained</h4>
+                      <h4 className="text-body-sm form-label mb-2">Skills Gained</h4>
                       <div className="flex flex-wrap gap-2">
                         {entry.skills_gained.map((skill, index) => (
                           <Badge key={index} variant="secondary">
@@ -465,10 +465,10 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
 
                   {entry.achievements.length > 0 && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-medium mb-2">Key Achievements</h4>
+                      <h4 className="text-body-sm form-label mb-2">Key Achievements</h4>
                       <ul className="list-disc list-inside space-y-1">
                         {entry.achievements.map((achievement, index) => (
-                          <li key={index} className="text-sm text-muted-foreground">
+                          <li key={index} className="text-body-sm color-muted">
                             {achievement}
                           </li>
                         ))}
@@ -547,7 +547,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
               {...form.register('is_current')}
               className="rounded border-border"
             />
-            <label htmlFor="is_current" className="text-sm font-medium">
+            <label htmlFor="is_current" className="text-body-sm form-label">
               This is my current position/activity
             </label>
           </div>
@@ -561,7 +561,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           />
 
           <div>
-            <label className="block text-sm font-medium mb-2">Skills Gained</label>
+            <label className="block text-body-sm form-label mb-2">Skills Gained</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add a skill"
@@ -582,7 +582,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                   <button
                     type="button"
                     onClick={() => removeSkill(skill)}
-                    className="ml-1 text-destructive hover:text-destructive/80"
+                    className="ml-1 color-destructive hover:color-destructive/80"
                   >
                     ×
                   </button>
@@ -592,7 +592,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-2">Key Achievements</label>
+            <label className="block text-body-sm form-label mb-2">Key Achievements</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add an achievement"
@@ -604,12 +604,12 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             </div>
             <div className="space-y-2">
               {form.watch('achievements').map((achievement, index) => (
-                <div key={index} className="flex items-center justify-between p-2 bg-muted rounded">
-                  <span className="text-sm">{achievement}</span>
+                <div key={index} className="flex items-center justify-between p-2 bg-secondary rounded">
+                  <span className="text-body-sm">{achievement}</span>
                   <button
                     type="button"
                     onClick={() => removeAchievement(achievement)}
-                    className="text-destructive hover:text-destructive/80"
+                    className="color-destructive hover:color-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

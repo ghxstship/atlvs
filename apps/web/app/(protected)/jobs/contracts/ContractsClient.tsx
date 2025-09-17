@@ -174,24 +174,24 @@ function ContractsClient({ user }: ContractsClientProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'draft': return 'bg-muted text-muted-foreground border-border';
-      case 'pending_review': return 'bg-warning/10 text-warning border-warning/20';
-      case 'approved': return 'bg-primary/10 text-primary border-primary/20';
-      case 'active': return 'bg-success/10 text-success border-success/20';
-      case 'completed': return 'bg-success/10 text-success border-success/20';
-      case 'terminated': return 'bg-destructive/10 text-destructive border-destructive/20';
-      case 'cancelled': return 'bg-destructive/10 text-destructive border-destructive/20';
-      default: return 'bg-muted text-muted-foreground border-border';
+      case 'draft': return 'bg-secondary color-muted border-border';
+      case 'pending_review': return 'bg-warning/10 color-warning border-warning/20';
+      case 'approved': return 'bg-primary/10 color-primary border-primary/20';
+      case 'active': return 'bg-success/10 color-success border-success/20';
+      case 'completed': return 'bg-success/10 color-success border-success/20';
+      case 'terminated': return 'bg-destructive/10 color-destructive border-destructive/20';
+      case 'cancelled': return 'bg-destructive/10 color-destructive border-destructive/20';
+      default: return 'bg-secondary color-muted border-border';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'msa': return 'bg-secondary/10 text-secondary border-secondary/20';
-      case 'sow': return 'bg-primary/10 text-primary border-primary/20';
-      case 'amendment': return 'bg-warning/10 text-warning border-warning/20';
-      case 'termination': return 'bg-destructive/10 text-destructive border-destructive/20';
-      default: return 'bg-muted text-muted-foreground border-border';
+      case 'msa': return 'bg-secondary/10 color-secondary border-secondary/20';
+      case 'sow': return 'bg-primary/10 color-primary border-primary/20';
+      case 'amendment': return 'bg-warning/10 color-warning border-warning/20';
+      case 'termination': return 'bg-destructive/10 color-destructive border-destructive/20';
+      default: return 'bg-secondary color-muted border-border';
     }
   };
 
@@ -219,8 +219,8 @@ function ContractsClient({ user }: ContractsClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -271,54 +271,54 @@ function ContractsClient({ user }: ContractsClientProps) {
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Contracts</p>
-              <p className="text-2xl font-bold text-foreground">{contracts.length}</p>
+              <p className="text-body-sm form-label color-foreground/70">Total Contracts</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{contracts.length}</p>
             </div>
-            <FileText className="h-8 w-8 text-primary" />
+            <FileText className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Active</p>
-              <p className="text-2xl font-bold text-success">
+              <p className="text-body-sm form-label color-foreground/70">Active</p>
+              <p className="text-heading-3 text-heading-3 color-success">
                 {contracts.filter(c => c.status === 'active').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 text-success" />
+            <CheckCircle className="h-8 w-8 color-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Completed</p>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-body-sm form-label color-foreground/70">Completed</p>
+              <p className="text-heading-3 text-heading-3 color-primary">
                 {contracts.filter(c => c.status === 'completed').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 text-primary" />
+            <CheckCircle className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Expiring Soon</p>
-              <p className="text-2xl font-bold text-warning">
+              <p className="text-body-sm form-label color-foreground/70">Expiring Soon</p>
+              <p className="text-heading-3 text-heading-3 color-warning">
                 {contracts.filter(c => isExpiringSoon(c.end_date)).length}
               </p>
             </div>
-            <AlertTriangle className="h-5 w-5 text-warning" />
+            <AlertTriangle className="h-5 w-5 color-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Value</p>
-              <p className="text-2xl font-bold text-secondary">
+              <p className="text-body-sm form-label color-foreground/70">Total Value</p>
+              <p className="text-heading-3 text-heading-3 color-secondary">
                 {formatAmount(contracts.reduce((sum, c) => sum + c.value, 0))}
               </p>
             </div>
-            <DollarSign className="h-5 w-5 text-success" />
+            <DollarSign className="h-5 w-5 color-success" />
           </div>
         </Card>
       </div>
@@ -355,14 +355,14 @@ function ContractsClient({ user }: ContractsClientProps) {
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
-                          <StatusIcon className="h-5 w-5 text-foreground/60" />
+                        <h3 className="text-body text-heading-4 color-foreground mb-1 flex items-center gap-2">
+                          <StatusIcon className="h-5 w-5 color-foreground/60" />
                           {contract.title}
                           {(isExpiring || hasExpired) && (
-                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'text-destructive' : 'text-warning'}`} />
+                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
-                        <div className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="flex items-center gap-2 text-body-sm color-foreground/70">
                           <Building className="h-4 w-4" />
                           <span>{contract.job_title || 'N/A'}</span>
                           <span>•</span>
@@ -379,14 +379,14 @@ function ContractsClient({ user }: ContractsClientProps) {
                       </div>
                     </div>
 
-                    <p className="text-sm text-foreground/80 mb-3 line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-3 line-clamp-2">
                       {contract.description}
                     </p>
 
-                    <div className="flex items-center gap-6 text-sm text-foreground/70 mb-3">
+                    <div className="flex items-center gap-6 text-body-sm color-foreground/70 mb-3">
                       <div className="flex items-center gap-1">
                         <DollarSign className="h-4 w-4" />
-                        <span className="font-medium">{formatAmount(contract.value, contract.currency)}</span>
+                        <span className="form-label">{formatAmount(contract.value, contract.currency)}</span>
                       </div>
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
@@ -407,20 +407,20 @@ function ContractsClient({ user }: ContractsClientProps) {
                     {contract.milestones && contract.milestones.length > 0 && (
                       <div className="mb-3">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs font-medium text-foreground/70">
+                          <span className="text-body-sm form-label color-foreground/70">
                             Milestones Progress
                           </span>
-                          <span className="text-xs text-foreground/70">
+                          <span className="text-body-sm color-foreground/70">
                             {contract.milestones.filter(m => m.status === 'completed').length} of {contract.milestones.length} completed
                           </span>
                         </div>
-                        <div className="w-full bg-muted rounded-full h-2">
+                        <div className="w-full bg-secondary rounded-full h-2">
                           <div 
                             className="bg-success h-2 rounded-full transition-all duration-300"
                             style={{ width: `${progress}%` }}
                           />
                         </div>
-                        <div className="text-xs text-foreground/70 mt-1">
+                        <div className="text-body-sm color-foreground/70 mt-1">
                           {progress}% complete
                         </div>
                       </div>
@@ -428,7 +428,7 @@ function ContractsClient({ user }: ContractsClientProps) {
 
                     {contract.notes && (
                       <div className="mt-3 p-2 bg-accent rounded-md">
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-body-sm color-foreground/70">
                           <strong>Notes:</strong> {contract.notes}
                         </p>
                       </div>
@@ -437,7 +437,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 </div>
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <div className="text-xs text-foreground/50">
+                  <div className="text-body-sm color-foreground/50">
                     Created: {formatDate(contract.created_at || contract.createdAt)}
                     {(contract.signed_at || contract.signedAt) && (
                       <span> • Signed: {formatDate(contract.signed_at || contract.signedAt)}</span>
@@ -471,9 +471,9 @@ function ContractsClient({ user }: ContractsClientProps) {
           })
         ) : (
           <Card className="p-12 text-center">
-            <FileText className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No contracts found</h3>
-            <p className="text-sm text-foreground/70 mb-4">
+            <FileText className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No contracts found</h3>
+            <p className="text-body-sm color-foreground/70 mb-4">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
                 ? 'Try adjusting your filters or search terms.'
                 : 'Get started by creating your first contract.'}

@@ -62,11 +62,11 @@ const ROLE_ICONS = {
 }
 
 const ROLE_COLORS = {
-  owner: 'bg-purple-100 text-purple-800 border-purple-200',
-  admin: 'bg-red-100 text-red-800 border-red-200',
-  manager: 'bg-blue-100 text-blue-800 border-blue-200',
-  contributor: 'bg-green-100 text-green-800 border-green-200',
-  viewer: 'bg-gray-100 text-gray-800 border-gray-200'
+  owner: 'bg-secondary/10 color-secondary border-secondary/30',
+  admin: 'bg-destructive/10 color-destructive border-destructive/30',
+  manager: 'bg-primary/10 color-primary border-primary/30',
+  contributor: 'bg-success/10 color-success border-success/30',
+  viewer: 'bg-muted/30 color-muted border-muted/30'
 }
 
 const DEMO_ORG_ID = '00000000-0000-0000-0000-000000000001'
@@ -227,18 +227,18 @@ export function DemoSetupClient() {
     return (
       <Card className="p-6 max-w-2xl mx-auto">
         <div className="flex items-center gap-2 mb-4">
-          <CheckCircle className="h-5 w-5 text-green-600" />
-          <h3 className="text-lg font-semibold">Setup Complete</h3>
+          <CheckCircle className="h-5 w-5 color-success" />
+          <h3 className="text-body text-heading-4">Setup Complete</h3>
         </div>
 
         <div className="space-y-4">
           {successful.length > 0 && (
             <div>
-              <h4 className="font-medium text-green-700 mb-2">Successfully Created ({successful.length})</h4>
+              <h4 className="form-label color-success mb-2">Successfully Created ({successful.length})</h4>
               <div className="space-y-2">
                 {successful.map((result) => (
-                  <div key={result.email} className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                  <div key={result.email} className="flex items-center gap-2 text-body-sm">
+                    <CheckCircle className="h-4 w-4 color-success" />
                     <span>{result.email}</span>
                   </div>
                 ))}
@@ -248,16 +248,16 @@ export function DemoSetupClient() {
 
           {failed.length > 0 && (
             <div>
-              <h4 className="font-medium text-red-700 mb-2">Failed ({failed.length})</h4>
+              <h4 className="form-label color-destructive mb-2">Failed ({failed.length})</h4>
               <div className="space-y-2">
                 {failed.map((result) => (
-                  <div key={result.email} className="text-sm">
+                  <div key={result.email} className="text-body-sm">
                     <div className="flex items-center gap-2">
-                      <XCircle className="h-4 w-4 text-red-600" />
+                      <XCircle className="h-4 w-4 color-destructive" />
                       <span>{result.email}</span>
                     </div>
                     {result.error && (
-                      <p className="text-xs text-red-600 ml-6">{result.error}</p>
+                      <p className="text-body-sm color-destructive ml-6">{result.error}</p>
                     )}
                   </div>
                 ))}
@@ -266,12 +266,12 @@ export function DemoSetupClient() {
           )}
         </div>
 
-        <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+        <div className="mt-6 p-4 bg-primary/10 rounded-lg">
           <div className="flex items-start gap-2">
-            <AlertCircle className="h-4 w-4 text-blue-600 mt-0.5" />
-            <div className="text-sm">
-              <p className="font-medium text-blue-900">Next Steps:</p>
-              <ol className="list-decimal list-inside text-blue-800 mt-1 space-y-1">
+            <AlertCircle className="h-4 w-4 color-primary mt-0.5" />
+            <div className="text-body-sm">
+              <p className="form-label color-primary">Next Steps:</p>
+              <ol className="list-decimal list-inside color-primary mt-1 space-y-1">
                 <li>Create auth users manually in Supabase Auth dashboard</li>
                 <li>Use the emails and password "demo123!" for each user</li>
                 <li>Visit <a href="/demo" className="underline">/demo</a> to test user switching</li>
@@ -295,17 +295,17 @@ export function DemoSetupClient() {
   return (
     <Card className="p-6 max-w-2xl mx-auto">
       <div className="flex items-center gap-2 mb-4">
-        <Users className="h-5 w-5 text-muted-foreground" />
-        <h3 className="text-lg font-semibold">Create Demo Users</h3>
+        <Users className="h-5 w-5 color-muted" />
+        <h3 className="text-body text-heading-4">Create Demo Users</h3>
       </div>
       
-      <p className="text-sm text-muted-foreground mb-6">
+      <p className="text-body-sm color-muted mb-6">
         This will create demo user profiles and memberships for testing different roles and permissions.
         You'll need to manually create the auth users in Supabase Auth dashboard afterwards.
       </p>
 
       <div className="space-y-3 mb-6">
-        <h4 className="font-medium">Users to be created:</h4>
+        <h4 className="form-label">Users to be created:</h4>
         {DEMO_USERS.map((user) => {
           const Icon = ROLE_ICONS[user.role as keyof typeof ROLE_ICONS]
           
@@ -315,16 +315,16 @@ export function DemoSetupClient() {
               className="flex items-center justify-between p-3 border rounded-lg"
             >
               <div className="flex items-center gap-3">
-                <Icon className="h-4 w-4 text-muted-foreground" />
+                <Icon className="h-4 w-4 color-muted" />
                 <div>
-                  <div className="font-medium">{user.full_name}</div>
-                  <div className="text-sm text-muted-foreground">{user.email}</div>
+                  <div className="form-label">{user.full_name}</div>
+                  <div className="text-body-sm color-muted">{user.email}</div>
                 </div>
               </div>
               
               <Badge 
                 variant="outline" 
-                className={`text-xs ${ROLE_COLORS[user.role as keyof typeof ROLE_COLORS]}`}
+                className={`text-body-sm ${ROLE_COLORS[user.role as keyof typeof ROLE_COLORS]}`}
               >
                 {user.role.toUpperCase()}
               </Badge>

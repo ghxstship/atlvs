@@ -133,10 +133,10 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           INVITE YOUR TEAM
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-body color-muted max-w-2xl mx-auto">
           {data.userRole === 'owner' 
             ? 'Invite team members to collaborate on your projects. You can always add more people later.'
             : 'You can invite team members if you have admin permissions, or skip this step for now.'
@@ -150,19 +150,19 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             {/* Add Team Member Form */}
             <div className="space-y-4">
               <div className="flex items-center space-x-2 mb-4">
-                <UserPlus className="h-5 w-5 text-primary" />
-                <h3 className={`${anton.className} uppercase text-lg font-bold`}>
+                <UserPlus className="h-5 w-5 color-primary" />
+                <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                   ADD TEAM MEMBERS
                 </h3>
               </div>
 
               <div className="grid md:grid-cols-3 gap-4">
                 <div className="md:col-span-2">
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                     <input
                       type="email"
                       className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -175,7 +175,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Role
                   </label>
                   <select
@@ -199,7 +199,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
               {error && (
                 <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
-                  <p className="text-sm text-destructive">{error}</p>
+                  <p className="text-body-sm color-destructive">{error}</p>
                 </div>
               )}
             </div>
@@ -207,20 +207,20 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             {/* Invited Members List */}
             {invites.length > 0 && (
               <div className="space-y-4">
-                <h4 className={`${anton.className} uppercase text-md font-bold`}>
+                <h4 className={`${anton.className} uppercase text-md text-heading-3`}>
                   PENDING INVITATIONS ({invites.length})
                 </h4>
                 
                 <div className="space-y-3">
                   {invites.map((invite, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+                    <div key={index} className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
                       <div className="flex items-center space-x-3">
                         <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                          <Mail className="h-4 w-4 text-primary" />
+                          <Mail className="h-4 w-4 color-primary" />
                         </div>
                         <div>
-                          <p className="font-medium text-foreground">{invite.email}</p>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="form-label color-foreground">{invite.email}</p>
+                          <p className="text-body-sm color-muted">
                             {roles.find(r => r.value === invite.role)?.label}
                           </p>
                         </div>
@@ -228,7 +228,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                       
                       <div className="flex items-center space-x-2">
                         <select
-                          className="px-3 py-1 border border-border rounded text-sm bg-background"
+                          className="px-3 py-1 border border-border rounded text-body-sm bg-background"
                           value={invite.role}
                           onChange={(e) => updateInviteRole(index, e.target.value as TeamMember['role'])}
                         >
@@ -261,9 +261,9 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   id="skip-invites"
                   checked={skipInvites}
                   onChange={(e) => setSkipInvites(e.target.checked)}
-                  className="h-4 w-4 text-primary border-border rounded focus:ring-primary"
+                  className="h-4 w-4 color-primary border-border rounded focus:ring-primary"
                 />
-                <label htmlFor="skip-invites" className="text-sm text-muted-foreground">
+                <label htmlFor="skip-invites" className="text-body-sm color-muted">
                   Skip for now - I'll invite team members later
                 </label>
               </div>
@@ -275,14 +275,14 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       {/* Role Descriptions */}
       <Card>
         <CardContent className="p-6">
-          <h4 className={`${anton.className} uppercase text-md font-bold mb-4`}>
+          <h4 className={`${anton.className} uppercase text-md text-heading-3 mb-4`}>
             ROLE PERMISSIONS
           </h4>
           <div className="grid md:grid-cols-3 gap-4">
             {roles.map(role => (
               <div key={role.value} className="space-y-2">
-                <h5 className="font-semibold text-foreground">{role.label}</h5>
-                <p className="text-sm text-muted-foreground">{role.description}</p>
+                <h5 className="text-heading-4 color-foreground">{role.label}</h5>
+                <p className="text-body-sm color-muted">{role.description}</p>
               </div>
             ))}
           </div>

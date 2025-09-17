@@ -1,4 +1,4 @@
-import { Home, Briefcase, Users, Code, Layers, ShoppingCart, Building, DollarSign, BarChart3, BookOpen, Settings, User, Package } from 'lucide-react';
+import { Home, Briefcase, Users, Code, Layers, ShoppingCart, Building, DollarSign, BarChart3, BookOpen, Settings, User, Package, Shield } from 'lucide-react';
 
 export type RouteNode = {
   id: string;
@@ -119,6 +119,15 @@ export const routeRegistry: RouteNode[] = [
     { id: 'resources-featured', label: 'Featured', path: '/resources/featured' },
   ]},
 
+  // Enterprise features - requires admin role and ghxstship feature flag
+  { id: 'enterprise', label: 'Enterprise', icon: Shield, featureFlag: 'ghxstship', children: [
+    { id: 'enterprise-overview', label: 'Overview', path: '/admin/enterprise' },
+    { id: 'enterprise-monitoring', label: 'System Monitoring', path: '/admin/enterprise/monitoring' },
+    { id: 'enterprise-security', label: 'Security Dashboard', path: '/admin/enterprise/security' },
+    { id: 'enterprise-database', label: 'Database Management', path: '/admin/enterprise/database' },
+    { id: 'enterprise-settings', label: 'Configuration', path: '/admin/enterprise/settings' },
+  ]},
+
   // Settings and Profile are always present
   { id: 'settings', label: 'Settings', icon: Settings, children: [
     { id: 'settings-account', label: 'Account', path: '/settings/account' },
@@ -180,14 +189,15 @@ export function filterByRole(routes: RouteNode[], role: string): RouteNode[] {
     });
 }
 
-export function filterByEntitlements(routes: RouteNode[], feature_atlvs: boolean): RouteNode[] {
+export function filterByEntitlements(routes: RouteNode[], feature_atlvs: boolean, feature_ghxstship: boolean = false): RouteNode[] {
   // Today, treat all main modules as ATLVS-gated. Settings/Profile are unconditional
   const gated = new Set([
     'dashboard','projects','people','programming','pipeline','procurement','jobs','companies','finance','analytics','resources'
   ]);
   return routes.filter((r) => {
     if (r.id === 'settings' || r.id === 'profile') return true;
-    if (gated.has(r.id)) return feature_atlvs;
+    if (r.featureFlag === 'ghxstship') return feature_ghxstship;
+    if (r.featureFlag === 'atlvs' || gated.has(r.id)) return feature_atlvs;
     return true;
   });
 }

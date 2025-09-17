@@ -230,13 +230,13 @@ export default function CreateContractClient({
         {/* Contract Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Contract Details</h3>
+            <FileText className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Contract Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Contract Title *
               </label>
               <Input
@@ -248,7 +248,7 @@ export default function CreateContractClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -261,7 +261,7 @@ export default function CreateContractClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Contract Type *
                 </label>
                 <Select
@@ -277,7 +277,7 @@ export default function CreateContractClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -298,13 +298,13 @@ export default function CreateContractClient({
         {/* Company & Project */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Company & Project</h3>
+            <Building2 className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Company & Project</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Company *
               </label>
               <Select
@@ -321,7 +321,7 @@ export default function CreateContractClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Project (Optional)
               </label>
               <Select
@@ -342,14 +342,14 @@ export default function CreateContractClient({
         {/* Contract Terms */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Contract Terms</h3>
+            <Calendar className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Contract Terms</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Start Date
                 </label>
                 <Input
@@ -360,7 +360,7 @@ export default function CreateContractClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   End Date
                 </label>
                 <Input
@@ -373,7 +373,7 @@ export default function CreateContractClient({
 
             <div className="grid grid-cols-3 gap-4">
               <div className="col-span-2">
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <DollarSign className="h-4 w-4 inline mr-1" />
                   Contract Value
                 </label>
@@ -387,7 +387,7 @@ export default function CreateContractClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Currency
                 </label>
                 <Select
@@ -404,7 +404,7 @@ export default function CreateContractClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Document URL
               </label>
               <Input
@@ -416,7 +416,7 @@ export default function CreateContractClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Renewal Terms
               </label>
               <Textarea
@@ -434,7 +434,7 @@ export default function CreateContractClient({
                 onChange={(e) => handleInputChange('autoRenewal', e.target.checked)}
                 className="rounded border-border"
               />
-              <label className="text-sm font-medium">
+              <label className="text-body-sm form-label">
                 Enable Auto-Renewal
               </label>
             </div>

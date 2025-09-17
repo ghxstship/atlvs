@@ -134,10 +134,10 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           ORGANIZATION SETUP
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-body color-muted max-w-2xl mx-auto">
           Create a new organization or join an existing one to collaborate with your team.
         </p>
       </div>
@@ -150,11 +150,11 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             onClick={() => setSetupType('create')}
           >
             <CardContent className="p-8 text-center">
-              <Building className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className={`${anton.className} uppercase text-xl font-bold mb-3`}>
+              <Building className="h-12 w-12 color-primary mx-auto mb-4" />
+              <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                 CREATE ORGANIZATION
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="color-muted mb-6">
                 Start fresh with a new organization. You'll be the owner and can invite team members.
               </p>
               <Button className="w-full">
@@ -170,11 +170,11 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             onClick={() => setSetupType('join')}
           >
             <CardContent className="p-8 text-center">
-              <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-              <h3 className={`${anton.className} uppercase text-xl font-bold mb-3`}>
+              <Users className="h-12 w-12 color-primary mx-auto mb-4" />
+              <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                 JOIN ORGANIZATION
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="color-muted mb-6">
                 Join an existing organization using an invite code from your team.
               </p>
               <Button variant="outline" className="w-full">
@@ -190,17 +190,17 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             {setupType === 'create' ? (
               <div className="space-y-6">
                 <div className="text-center mb-6">
-                  <Building className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h2 className={`${anton.className} uppercase text-2xl font-bold mb-2`}>
+                  <Building className="h-12 w-12 color-primary mx-auto mb-4" />
+                  <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-2`}>
                     CREATE YOUR ORGANIZATION
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="color-muted">
                     Set up your organization workspace
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Organization Name
                   </label>
                   <input
@@ -214,11 +214,11 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Organization URL
                   </label>
                   <div className="flex">
-                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border bg-muted text-muted-foreground text-sm">
+                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
                       ghxstship.com/
                     </span>
                     <input
@@ -230,7 +230,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                       required
                     />
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-body-sm color-muted mt-1">
                     This will be your organization's unique URL
                   </p>
                 </div>
@@ -238,28 +238,28 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             ) : (
               <div className="space-y-6">
                 <div className="text-center mb-6">
-                  <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-                  <h2 className={`${anton.className} uppercase text-2xl font-bold mb-2`}>
+                  <Users className="h-12 w-12 color-primary mx-auto mb-4" />
+                  <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-2`}>
                     JOIN ORGANIZATION
                   </h2>
-                  <p className="text-muted-foreground">
+                  <p className="color-muted">
                     Enter the invite code provided by your team
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Invite Code
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-center text-lg font-mono"
+                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-center text-body font-mono"
                     placeholder="Enter invite code"
                     value={inviteCode}
                     onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
                     required
                   />
-                  <p className="text-xs text-muted-foreground mt-1">
+                  <p className="text-body-sm color-muted mt-1">
                     Ask your team admin for the organization invite code
                   </p>
                 </div>
@@ -268,7 +268,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
 
             {error && (
               <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
-                <p className="text-sm text-destructive">{error}</p>
+                <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}
           </CardContent>

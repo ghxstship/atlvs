@@ -43,10 +43,10 @@ export default function PartnersPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className={`${anton.className} uppercase text-4xl md:text-5xl font-bold mb-6`}>
+          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
             COMMUNITY PARTNERS
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
             Join our growing ecosystem of partners who help extend GHXSTSHIP's capabilities and reach.
           </p>
           <Button>
@@ -60,13 +60,13 @@ export default function PartnersPage() {
             return (
               <div key={tier.title} className="bg-card rounded-lg p-6 border text-center">
                 <div className="bg-primary/10 p-4 rounded-lg inline-flex mb-4">
-                  <Icon className="h-8 w-8 text-primary" />
+                  <Icon className="h-8 w-8 color-primary" />
                 </div>
-                <h3 className={`${anton.className} uppercase text-xl font-bold mb-3`}>
+                <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                   {tier.title}
                 </h3>
-                <p className="text-muted-foreground mb-6">{tier.description}</p>
-                <ul className="space-y-2 text-sm">
+                <p className="color-muted mb-6">{tier.description}</p>
+                <ul className="space-y-2 text-body-sm">
                   {tier.benefits.map((benefit) => (
                     <li key={benefit} className="flex items-center justify-center gap-2">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
@@ -80,29 +80,29 @@ export default function PartnersPage() {
         </div>
 
         <div className="mb-16">
-          <h2 className={`${anton.className} uppercase text-2xl font-bold mb-8 text-center`}>
+          <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-8 text-center`}>
             FEATURED PARTNERS
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredPartners.map((partner) => (
               <div key={partner.name} className="bg-card rounded-lg p-6 border text-center hover:shadow-lg transition-shadow">
-                <div className="bg-muted/30 rounded-lg h-16 mb-4 flex items-center justify-center">
-                  <span className="text-xs text-muted-foreground">Partner Logo</span>
+                <div className="bg-secondary/30 rounded-lg h-16 mb-4 flex items-center justify-center">
+                  <span className="text-body-sm color-muted">Partner Logo</span>
                 </div>
-                <h3 className="font-semibold mb-1">{partner.name}</h3>
-                <p className="text-sm text-muted-foreground">{partner.category} Partner</p>
+                <h3 className="text-heading-4 mb-1">{partner.name}</h3>
+                <p className="text-body-sm color-muted">{partner.category} Partner</p>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="bg-muted/30 rounded-lg p-8">
+        <div className="bg-secondary/30 rounded-lg p-8">
           <div className="text-center mb-8">
-            <Users className="h-12 w-12 text-primary mx-auto mb-4" />
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <Users className="h-12 w-12 color-primary mx-auto mb-4" />
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               PARTNER WITH US
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="color-muted max-w-2xl mx-auto">
               Ready to join the GHXSTSHIP partner ecosystem? Let's explore how we can work together 
               to deliver exceptional value to our shared customers.
             </p>
@@ -110,8 +110,8 @@ export default function PartnersPage() {
           
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <h3 className="font-semibold mb-3">Partnership Benefits</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-heading-4 mb-3">Partnership Benefits</h3>
+              <ul className="space-y-2 text-body-sm color-muted">
                 <li>• Access to GHXSTSHIP's growing customer base</li>
                 <li>• Co-marketing and promotional opportunities</li>
                 <li>• Technical support and training resources</li>
@@ -120,8 +120,8 @@ export default function PartnersPage() {
             </div>
             
             <div>
-              <h3 className="font-semibold mb-3">Getting Started</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <h3 className="text-heading-4 mb-3">Getting Started</h3>
+              <ul className="space-y-2 text-body-sm color-muted">
                 <li>• Submit partnership application</li>
                 <li>• Technical and business evaluation</li>
                 <li>• Partnership agreement and onboarding</li>

@@ -57,7 +57,7 @@ export function ViewSwitcher({
   const availableViews = config.availableViews || ['grid', 'kanban', 'calendar', 'timeline', 'gallery', 'list', 'dashboard', 'form'];
   
   const containerClasses = `
-    flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg
+    flex gap-1 p-1 bg-muted rounded-lg
     ${orientation === 'vertical' ? 'flex-col' : 'flex-row'}
     ${className}
   `.trim();

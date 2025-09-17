@@ -8,7 +8,7 @@ export default function SettingsAccount() {
   return (
     <div className="space-y-4">
       <Card title="Account Settings">
-        <div className="text-sm text-foreground/70">
+        <div className="text-body-sm color-foreground/70">
           Placeholder: Profile details, password, 2FA, sessions, API keys.
         </div>
       </Card>

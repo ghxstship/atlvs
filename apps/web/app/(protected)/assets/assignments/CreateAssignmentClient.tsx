@@ -175,13 +175,13 @@ export default function CreateAssignmentClient({
         {/* Asset & Personnel */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserCheck className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Asset & Personnel</h3>
+            <UserCheck className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Asset & Personnel</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Asset ID *
               </label>
               <Input
@@ -194,7 +194,7 @@ export default function CreateAssignmentClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Assigned To *
                 </label>
                 <Input
@@ -206,7 +206,7 @@ export default function CreateAssignmentClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Assigned By
                 </label>
                 <Input
@@ -218,7 +218,7 @@ export default function CreateAssignmentClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Project ID
               </label>
               <Input
@@ -233,14 +233,14 @@ export default function CreateAssignmentClient({
         {/* Timeline & Location */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Timeline & Location</h3>
+            <Calendar className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Timeline & Location</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <Clock className="h-4 w-4 inline mr-1" />
                   Assignment Date *
                 </label>
@@ -253,7 +253,7 @@ export default function CreateAssignmentClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Expected Return Date
                 </label>
                 <Input
@@ -265,7 +265,7 @@ export default function CreateAssignmentClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 <MapPin className="h-4 w-4 inline mr-1" />
                 Location
               </label>
@@ -281,13 +281,13 @@ export default function CreateAssignmentClient({
         {/* Assignment Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserCheck className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Assignment Details</h3>
+            <UserCheck className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Assignment Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Purpose *
               </label>
               <Textarea
@@ -301,7 +301,7 @@ export default function CreateAssignmentClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -317,7 +317,7 @@ export default function CreateAssignmentClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Priority
                 </label>
                 <Select
@@ -334,7 +334,7 @@ export default function CreateAssignmentClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

@@ -18,8 +18,8 @@ export function TeamStats({ stats }: TeamStatsProps) {
           <div className={`${typography.statValue} mb-2`}>
             {stat.metric}
           </div>
-          <div className="font-semibold text-foreground mb-1">{stat.label}</div>
-          <div className="text-sm text-muted-foreground">{stat.description}</div>
+          <div className="text-heading-4 color-foreground mb-1">{stat.label}</div>
+          <div className="text-body-sm color-muted">{stat.description}</div>
         </div>
       ))}
     </div>

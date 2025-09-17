@@ -42,10 +42,10 @@ export default function EventsPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className={`${anton.className} uppercase text-4xl md:text-5xl font-bold mb-6`}>
+          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
             COMMUNITY EVENTS
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
             Join our community events to learn, network, and connect with fellow creators and industry professionals.
           </p>
           <Button>
@@ -54,7 +54,7 @@ export default function EventsPage() {
         </div>
 
         <div className="mb-16">
-          <h2 className={`${anton.className} uppercase text-2xl font-bold mb-8`}>
+          <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-8`}>
             UPCOMING EVENTS
           </h2>
           <div className="space-y-6">
@@ -63,14 +63,14 @@ export default function EventsPage() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <span className="bg-primary/10 text-primary px-2 py-1 rounded text-xs font-medium">
+                      <span className="bg-primary/10 color-primary px-2 py-1 rounded text-body-sm form-label">
                         {event.type}
                       </span>
                     </div>
-                    <h3 className={`${anton.className} uppercase text-xl font-bold mb-2`}>
+                    <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
                       {event.title}
                     </h3>
-                    <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
+                    <div className="flex flex-wrap gap-4 text-body-sm color-muted">
                       <div className="flex items-center gap-1">
                         <Calendar className="h-4 w-4" />
                         {new Date(event.date).toLocaleDateString()}
@@ -101,11 +101,11 @@ export default function EventsPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-muted/30 rounded-lg p-8">
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+          <div className="bg-secondary/30 rounded-lg p-8">
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               HOST AN EVENT
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="color-muted mb-6">
               Want to organize a GHXSTSHIP community event in your area? We'd love to help you connect with local creators.
             </p>
             <Button variant="outline">
@@ -113,11 +113,11 @@ export default function EventsPage() {
             </Button>
           </div>
           
-          <div className="bg-muted/30 rounded-lg p-8">
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+          <div className="bg-secondary/30 rounded-lg p-8">
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               PAST EVENTS
             </h2>
-            <p className="text-muted-foreground mb-6">
+            <p className="color-muted mb-6">
               Missed an event? Check out recordings and resources from our previous workshops and meetups.
             </p>
             <Button variant="outline">

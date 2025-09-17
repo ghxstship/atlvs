@@ -47,10 +47,10 @@ export default function SecurityPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className={`${anton.className} uppercase text-4xl md:text-5xl font-bold mb-6`}>
+          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
             SECURITY & TRUST
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-heading-4 color-muted max-w-3xl mx-auto">
             Your data security is our top priority. Learn about the comprehensive measures we take 
             to protect your information and maintain the highest security standards.
           </p>
@@ -63,13 +63,13 @@ export default function SecurityPage() {
               <div key={feature.title} className="bg-card rounded-lg p-6 border">
                 <div className="flex items-center mb-4">
                   <div className="bg-primary/10 p-3 rounded-lg mr-4">
-                    <Icon className="h-6 w-6 text-primary" />
+                    <Icon className="h-6 w-6 color-primary" />
                   </div>
-                  <h3 className={`${anton.className} uppercase text-lg font-bold`}>
+                  <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                     {feature.title}
                   </h3>
                 </div>
-                <p className="text-muted-foreground">{feature.description}</p>
+                <p className="color-muted">{feature.description}</p>
               </div>
             );
           })}
@@ -77,31 +77,31 @@ export default function SecurityPage() {
 
         <div className="prose prose-lg max-w-none space-y-8">
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               COMPLIANCE & CERTIFICATIONS
             </h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-muted/30 p-6 rounded-lg">
-                <h3 className="font-semibold mb-2">SOC 2 Type II</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="bg-secondary/30 p-6 rounded-lg">
+                <h3 className="text-heading-4 mb-2">SOC 2 Type II</h3>
+                <p className="text-body-sm color-muted">
                   Independently audited security controls for availability, confidentiality, and processing integrity.
                 </p>
               </div>
-              <div className="bg-muted/30 p-6 rounded-lg">
-                <h3 className="font-semibold mb-2">ISO 27001</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="bg-secondary/30 p-6 rounded-lg">
+                <h3 className="text-heading-4 mb-2">ISO 27001</h3>
+                <p className="text-body-sm color-muted">
                   International standard for information security management systems (ISMS).
                 </p>
               </div>
-              <div className="bg-muted/30 p-6 rounded-lg">
-                <h3 className="font-semibold mb-2">GDPR Compliant</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="bg-secondary/30 p-6 rounded-lg">
+                <h3 className="text-heading-4 mb-2">GDPR Compliant</h3>
+                <p className="text-body-sm color-muted">
                   Full compliance with European data protection regulations and user privacy rights.
                 </p>
               </div>
-              <div className="bg-muted/30 p-6 rounded-lg">
-                <h3 className="font-semibold mb-2">CCPA Compliant</h3>
-                <p className="text-sm text-muted-foreground">
+              <div className="bg-secondary/30 p-6 rounded-lg">
+                <h3 className="text-heading-4 mb-2">CCPA Compliant</h3>
+                <p className="text-body-sm color-muted">
                   California Consumer Privacy Act compliance for user data rights and transparency.
                 </p>
               </div>
@@ -109,31 +109,31 @@ export default function SecurityPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               DATA PROTECTION
             </h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold">Encryption</h3>
+                <h3 className="text-heading-4">Encryption</h3>
                 <p>All data is encrypted using industry-standard AES-256 encryption both in transit and at rest.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Data Residency</h3>
+                <h3 className="text-heading-4">Data Residency</h3>
                 <p>Your data is stored in secure, geographically distributed data centers with strict access controls.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Backup & Recovery</h3>
+                <h3 className="text-heading-4">Backup & Recovery</h3>
                 <p>Automated daily backups with point-in-time recovery and disaster recovery procedures.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Data Retention</h3>
+                <h3 className="text-heading-4">Data Retention</h3>
                 <p>Clear data retention policies with secure deletion procedures when data is no longer needed.</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               INCIDENT RESPONSE
             </h2>
             <p>
@@ -150,14 +150,14 @@ export default function SecurityPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               SECURITY CONTACT
             </h2>
             <p>
               If you discover a security vulnerability or have security-related questions, please contact our security team:
             </p>
-            <div className="bg-muted/30 p-6 rounded-lg mt-4">
-              <p><strong>Email:</strong> <a href="mailto:security@ghxstship.com" className="text-primary hover:underline">security@ghxstship.com</a></p>
+            <div className="bg-secondary/30 p-6 rounded-lg mt-4">
+              <p><strong>Email:</strong> <a href="mailto:security@ghxstship.com" className="color-primary hover:underline">security@ghxstship.com</a></p>
               <p><strong>PGP Key:</strong> Available upon request</p>
               <p><strong>Response Time:</strong> Within 24 hours for critical issues</p>
             </div>

@@ -102,13 +102,13 @@ export default function CreateInspectionClient({
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="title" className="text-sm font-medium">
+            <label htmlFor="title" className="text-body-sm form-label">
               Inspection Title *
             </label>
             <input
@@ -119,14 +119,14 @@ export default function CreateInspectionClient({
               {...form.register('title')}
             />
             {form.formState.errors.title && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.title.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="type" className="text-sm font-medium">
+            <label htmlFor="type" className="text-body-sm form-label">
               Inspection Type *
             </label>
             <select
@@ -145,7 +145,7 @@ export default function CreateInspectionClient({
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="scheduled_at" className="text-sm font-medium">
+              <label htmlFor="scheduled_at" className="text-body-sm form-label">
                 Scheduled Date & Time
               </label>
               <input
@@ -157,7 +157,7 @@ export default function CreateInspectionClient({
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="inspector_name" className="text-sm font-medium">
+              <label htmlFor="inspector_name" className="text-body-sm form-label">
                 Inspector Name
               </label>
               <input
@@ -171,7 +171,7 @@ export default function CreateInspectionClient({
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="project_id" className="text-sm font-medium">
+            <label htmlFor="project_id" className="text-body-sm form-label">
               Associated Project
             </label>
             <select
@@ -189,7 +189,7 @@ export default function CreateInspectionClient({
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="notes" className="text-sm font-medium">
+            <label htmlFor="notes" className="text-body-sm form-label">
               Notes
             </label>
             <textarea

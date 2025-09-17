@@ -36,8 +36,8 @@ export default async function JobsAssignmentsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-foreground">{t('assignments.title')}</h1>
-          <p className="text-muted-foreground">{t('assignments.subtitle')}</p>
+          <h1 className="text-heading-3 text-heading-4 color-foreground">{t('assignments.title')}</h1>
+          <p className="color-muted">{t('assignments.subtitle')}</p>
         </div>
         <CreateAssignmentClient orgId={profile.organization_id} />
       </div>

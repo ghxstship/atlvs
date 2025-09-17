@@ -114,13 +114,13 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="event_id" className="text-sm font-medium">
+            <label htmlFor="event_id" className="text-body-sm form-label">
               Event *
             </label>
             <select
@@ -136,14 +136,14 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               ))}
             </select>
             {form.formState.errors.event_id && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.event_id.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="title" className="text-sm font-medium">
+            <label htmlFor="title" className="text-body-sm form-label">
               Rider Title *
             </label>
             <input
@@ -154,7 +154,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               {...form.register('title')}
             />
             {form.formState.errors.title && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.title.message}
               </div>
             )}
@@ -162,7 +162,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="type" className="text-sm font-medium">
+              <label htmlFor="type" className="text-body-sm form-label">
                 Rider Type *
               </label>
               <select
@@ -177,7 +177,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="priority" className="text-sm font-medium">
+              <label htmlFor="priority" className="text-body-sm form-label">
                 Priority *
               </label>
               <select
@@ -194,7 +194,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="status" className="text-sm font-medium">
+            <label htmlFor="status" className="text-body-sm form-label">
               Status *
             </label>
             <select
@@ -210,7 +210,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="requirements" className="text-sm font-medium">
+            <label htmlFor="requirements" className="text-body-sm form-label">
               Requirements
             </label>
             <textarea
@@ -223,7 +223,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="notes" className="text-sm font-medium">
+            <label htmlFor="notes" className="text-body-sm form-label">
               Additional Notes
             </label>
             <textarea

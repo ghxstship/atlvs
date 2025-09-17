@@ -35,23 +35,23 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
     const typeConfig = {
       success: {
         icon: CheckCircle,
-        className: 'border-green-200 bg-green-50 text-green-800 dark:border-green-800 dark:bg-green-900/20 dark:text-green-400',
-        iconClassName: 'text-green-600 dark:text-green-400'
+        className: 'border-success/20 bg-success/10 text-success',
+        iconClassName: 'text-success'
       },
       error: {
         icon: AlertCircle,
-        className: 'border-red-200 bg-red-50 text-red-800 dark:border-red-800 dark:bg-red-900/20 dark:text-red-400',
-        iconClassName: 'text-red-600 dark:text-red-400'
+        className: 'border-destructive/20 bg-destructive/10 text-destructive',
+        iconClassName: 'text-destructive'
       },
       warning: {
         icon: AlertTriangle,
-        className: 'border-amber-200 bg-amber-50 text-amber-800 dark:border-amber-800 dark:bg-amber-900/20 dark:text-amber-400',
-        iconClassName: 'text-amber-600 dark:text-amber-400'
+        className: 'border-warning/20 bg-warning/10 text-warning',
+        iconClassName: 'text-warning'
       },
       info: {
         icon: Info,
-        className: 'border-blue-200 bg-blue-50 text-blue-800 dark:border-blue-800 dark:bg-blue-900/20 dark:text-blue-400',
-        iconClassName: 'text-blue-600 dark:text-blue-400'
+        className: 'border-primary/20 bg-primary/10 text-primary',
+        iconClassName: 'text-primary'
       },
       loading: {
         icon: Loader2,
@@ -134,7 +134,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
         {/* Progress Bar for timed toasts */}
         {!persistent && duration > 0 && type !== 'loading' && (
-          <div className="absolute bottom-0 left-0 right-0 h-1 bg-black/10 dark:bg-white/10 rounded-b-lg overflow-hidden">
+          <div className="absolute bottom-0 left-0 right-0 h-1 bg-muted/20 rounded-b-lg overflow-hidden">
             <div 
               className="h-full bg-current opacity-30 transition-all ease-linear"
               style={{

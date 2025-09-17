@@ -129,6 +129,38 @@ export const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
 );
 CardFooter.displayName = 'CardFooter';
 
+// Card Title
+export const CardTitle = React.forwardRef<HTMLHeadingElement, React.HTMLAttributes<HTMLHeadingElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <h3
+        ref={ref}
+        className={twMerge(
+          clsx('font-display text-lg font-semibold leading-none tracking-tight', className)
+        )}
+        {...props}
+      />
+    );
+  }
+);
+CardTitle.displayName = 'CardTitle';
+
+// Card Description
+export const CardDescription = React.forwardRef<HTMLParagraphElement, React.HTMLAttributes<HTMLParagraphElement>>(
+  ({ className, ...props }, ref) => {
+    return (
+      <p
+        ref={ref}
+        className={twMerge(
+          clsx('text-sm text-muted-foreground font-body', className)
+        )}
+        {...props}
+      />
+    );
+  }
+);
+CardDescription.displayName = 'CardDescription';
+
 // Specialized Card Variants
 export const StatsCard = React.forwardRef<HTMLDivElement, CardProps & {
   title: string;
@@ -139,8 +171,8 @@ export const StatsCard = React.forwardRef<HTMLDivElement, CardProps & {
 }>(
   ({ title, value, change, changeType = 'neutral', icon, className, ...props }, ref) => {
     const changeColors = {
-      positive: 'text-green-600',
-      negative: 'text-red-600',
+      positive: 'text-success',
+      negative: 'text-destructive',
       neutral: 'text-muted-foreground'
     };
 

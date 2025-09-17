@@ -11,12 +11,12 @@ const TempCard = ({ children, className, ...props }: any) => (
 );
 
 const TempButton = ({ children, variant = 'default', size = 'default', className, onClick, disabled, ...props }: any) => {
-  const baseClasses = 'inline-flex items-center justify-center rounded-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
+  const baseClasses = 'inline-flex items-center justify-center rounded-md form-label transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
   const variantClasses: Record<string, string> = {
-    default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-    outline: 'border border-border hover:bg-muted/50',
-    ghost: 'hover:bg-muted',
-    destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90'
+    default: 'bg-primary color-primary-foreground hover:bg-primary/90',
+    outline: 'border border-border hover:bg-secondary/50',
+    ghost: 'hover:bg-secondary',
+    destructive: 'bg-destructive color-destructive-foreground hover:bg-destructive/90'
   };
   const sizeClasses: Record<string, string> = {
     default: 'h-10 py-2 px-4',
@@ -38,16 +38,16 @@ const TempButton = ({ children, variant = 'default', size = 'default', className
 
 const TempBadge = ({ children, variant = 'default', className, ...props }: any) => {
   const variantClasses: Record<string, string> = {
-    default: 'bg-primary/10 text-primary',
-    secondary: 'bg-muted text-muted-foreground',
-    success: 'bg-success/10 text-success',
-    destructive: 'bg-destructive/10 text-destructive',
-    warning: 'bg-warning/10 text-warning'
+    default: 'bg-primary/10 color-primary',
+    secondary: 'bg-secondary color-muted',
+    success: 'bg-success/10 color-success',
+    destructive: 'bg-destructive/10 color-destructive',
+    warning: 'bg-warning/10 color-warning'
   };
   
   return (
     <span 
-      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ${variantClasses[variant] || variantClasses.default} ${className || ''}`}
+      className={`inline-flex items-center rounded-full px-2.5 py-0.5 text-body-sm form-label ${variantClasses[variant] || variantClasses.default} ${className || ''}`}
       {...props}
     >
       {children}
@@ -392,7 +392,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         return (
           <TempCard className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="font-medium">{widget.title}</h3>
+              <h3 className="form-label">{widget.title}</h3>
               {editMode && (
                 <div className="flex gap-1">
                   <TempButton
@@ -413,7 +413,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               )}
             </div>
             <div className="space-y-2">
-              <div className="text-2xl font-bold">
+              <div className="text-heading-3 text-heading-3">
                 {widget.config.format === 'currency' ? 
                   `$${(widget.config.value || 0).toLocaleString()}` : 
                   (widget.config.value || '0')}
@@ -426,7 +426,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                   {widget.config.change || '0'}%
                 </TempBadge>
                 {widget.config.subtitle && (
-                  <span className="text-xs text-muted-foreground">{widget.config.subtitle}</span>
+                  <span className="text-body-sm color-muted">{widget.config.subtitle}</span>
                 )}
               </div>
             </div>
@@ -436,7 +436,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         return (
           <TempCard className="p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-medium">{widget.title}</h3>
+              <h3 className="form-label">{widget.title}</h3>
               {editMode && (
                 <div className="flex gap-1">
                   <TempButton
@@ -456,9 +456,9 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 </div>
               )}
             </div>
-            <div className="h-48 flex items-center justify-center bg-muted/50 rounded">
-              <BarChart3 className="h-12 w-12 text-muted-foreground" />
-              <span className="ml-2 text-muted-foreground">Chart Widget</span>
+            <div className="h-48 flex items-center justify-center bg-secondary/50 rounded">
+              <BarChart3 className="h-12 w-12 color-muted" />
+              <span className="ml-2 color-muted">Chart Widget</span>
             </div>
           </TempCard>
         );
@@ -466,7 +466,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         return (
           <TempCard className="p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-medium">{widget.title}</h3>
+              <h3 className="form-label">{widget.title}</h3>
               {editMode && (
                 <div className="flex gap-1">
                   <TempButton
@@ -490,17 +490,17 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               {widget.config.activities?.map((activity: any, index: number) => (
                 <div key={index} className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Activity className="h-4 w-4 text-primary" />
+                    <Activity className="h-4 w-4 color-primary" />
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm">
-                      <span className="font-medium">{activity.user}</span> {activity.action}{' '}
-                      <span className="font-medium">{activity.item}</span>
+                    <p className="text-body-sm">
+                      <span className="form-label">{activity.user}</span> {activity.action}{' '}
+                      <span className="form-label">{activity.item}</span>
                     </p>
                     <div className="flex items-center gap-2">
-                      <p className="text-xs text-muted-foreground">{activity.time}</p>
+                      <p className="text-body-sm color-muted">{activity.time}</p>
                       {activity.module && (
-                        <TempBadge variant="secondary" className="text-xs">
+                        <TempBadge variant="secondary" className="text-body-sm">
                           {activity.module}
                         </TempBadge>
                       )}
@@ -515,7 +515,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         return (
           <TempCard className="p-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="font-medium">{widget.title}</h3>
+              <h3 className="form-label">{widget.title}</h3>
               {editMode && (
                 <div className="flex gap-1">
                   <TempButton
@@ -536,11 +536,11 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               )}
             </div>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-body-sm">
                 <thead>
                   <tr className="border-b">
                     {widget.config.headers?.map((header: string, index: number) => (
-                      <th key={index} className="text-left py-2 px-3 font-medium">
+                      <th key={index} className="text-left py-2 px-3 form-label">
                         {header}
                       </th>
                     ))}
@@ -565,7 +565,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         return (
           <TempCard className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <h3 className="font-medium">{widget.title}</h3>
+              <h3 className="form-label">{widget.title}</h3>
               {editMode && (
                 <div className="flex gap-1">
                   <TempButton
@@ -585,7 +585,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 </div>
               )}
             </div>
-            <p className="text-muted-foreground">Widget content</p>
+            <p className="color-muted">Widget content</p>
           </TempCard>
         );
     }
@@ -596,13 +596,13 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold font-anton uppercase">Dashboard</h1>
-            <p className="text-sm opacity-80">Loading your dashboard...</p>
+            <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Dashboard</h1>
+            <p className="text-body-sm opacity-80">Loading your dashboard...</p>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[...Array(6)].map((_, i) => (
-            <TempCard key={i} className="h-32 animate-pulse bg-muted/50" />
+            <TempCard key={i} className="h-32 animate-pulse bg-secondary/50" />
           ))}
         </div>
       </div>
@@ -614,12 +614,12 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold font-anton uppercase">Dashboard</h1>
-            <p className="text-sm opacity-80">Error loading dashboard</p>
+            <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Dashboard</h1>
+            <p className="text-body-sm opacity-80">Error loading dashboard</p>
           </div>
         </div>
         <TempCard className="p-6 text-center">
-          <p className="text-destructive mb-4">{error}</p>
+          <p className="color-destructive mb-4">{error}</p>
           <TempButton onClick={loadDashboard}>Retry</TempButton>
         </TempCard>
       </div>
@@ -630,10 +630,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">
             {dashboard?.name || 'Dashboard'}
           </h1>
-          <p className="text-sm opacity-80">
+          <p className="text-body-sm opacity-80">
             {dashboard?.description || 'Your personalized dashboard'}
           </p>
         </div>
@@ -645,7 +645,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               className="relative"
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute -top-1 -right-1 bg-destructive text-destructive-foreground text-xs rounded-full h-5 w-5 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 bg-destructive color-destructive-foreground text-body-sm rounded-full h-5 w-5 flex items-center justify-center">
                 {notifications.length}
               </span>
             </TempButton>
@@ -666,9 +666,9 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
 
       {widgets.length === 0 ? (
         <TempCard className="p-12 text-center">
-          <BarChart3 className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
-          <h3 className="text-lg font-medium mb-2">No widgets yet</h3>
-          <p className="text-muted-foreground mb-4">
+          <BarChart3 className="h-12 w-12 mx-auto color-muted mb-4" />
+          <h3 className="text-body form-label mb-2">No widgets yet</h3>
+          <p className="color-muted mb-4">
             Add your first widget to start building your dashboard
           </p>
           <TempButton onClick={() => setIsWidgetDrawerOpen(true)}>
@@ -684,7 +684,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <Bell className="h-4 w-4 text-info" />
-                  <h3 className="font-medium text-info">Real-time Updates</h3>
+                  <h3 className="form-label text-info">Real-time Updates</h3>
                 </div>
                 <TempButton
                   variant="ghost"
@@ -697,10 +697,10 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
               </div>
               <div className="space-y-2">
                 {notifications.slice(0, 3).map((notification) => (
-                  <div key={notification.id} className="flex items-center gap-2 text-sm text-info">
+                  <div key={notification.id} className="flex items-center gap-2 text-body-sm text-info">
                     <AlertCircle className="h-3 w-3" />
                     <span>{notification.message}</span>
-                    <span className="text-xs text-info ml-auto">
+                    <span className="text-body-sm text-info ml-auto">
                       {new Date(notification.timestamp).toLocaleTimeString()}
                     </span>
                   </div>
@@ -721,7 +721,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           {/* Accessibility: Skip to content link */}
           <a 
             href="#main-content" 
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary text-primary-foreground px-4 py-2 rounded-md z-50"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary color-primary-foreground px-4 py-2 rounded-md z-50"
           >
             Skip to main content
           </a>
@@ -733,7 +733,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center">
           <TempCard className="w-full max-w-md p-6 m-4">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-medium">Add New Widget</h3>
+              <h3 className="text-body form-label">Add New Widget</h3>
               <TempButton
                 variant="ghost"
                
@@ -744,7 +744,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             </div>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Widget Type</label>
+                <label className="block text-body-sm form-label mb-2">Widget Type</label>
                 <select className="w-full p-2 border border-border rounded-md bg-background">
                   <option value="metric">Metric</option>
                   <option value="chart">Chart</option>
@@ -753,7 +753,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                 </select>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Title</label>
+                <label className="block text-body-sm form-label mb-2">Title</label>
                 <input 
                   type="text" 
                   className="w-full p-2 border border-border rounded-md bg-background" 

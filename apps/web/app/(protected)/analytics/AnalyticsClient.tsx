@@ -232,7 +232,7 @@ export default function AnalyticsClient({ orgId }: { orgId: string }) {
               width="md"
             >
               <div className="p-6">
-                <p className="text-muted-foreground">Analytics details will be displayed here.</p>
+                <p className="color-muted">Analytics details will be displayed here.</p>
               </div>
             </Drawer>
           </div>

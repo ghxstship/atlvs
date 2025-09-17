@@ -33,8 +33,8 @@ export default async function PeopleShortlistsPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Shortlists</h1>
-          <p className="text-sm text-muted-foreground">Curate lists of candidates for roles or projects</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Shortlists</h1>
+          <p className="text-body-sm color-muted">Curate lists of candidates for roles or projects</p>
         </div>
         <CreateShortlistClient orgId={orgId} />
       </div>

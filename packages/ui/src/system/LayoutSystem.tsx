@@ -247,9 +247,9 @@ const sectionVariants = cva(
       },
       background: {
         none: '',
-        subtle: 'bg-neutral-50 dark:bg-neutral-900',
-        card: 'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg',
-        accent: 'bg-brand-50 dark:bg-brand-950',
+        subtle: 'bg-muted',
+        card: 'bg-card border border-border rounded-lg',
+        accent: 'bg-primary/5',
       },
     },
     defaultVariants: {
@@ -279,7 +279,7 @@ export const Section: React.FC<SectionProps> = ({
 
 // Panel Component - Content panels with consistent styling
 const panelVariants = cva(
-  'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm',
+  'bg-card border border-border rounded-lg shadow-sm',
   {
     variants: {
       padding: {
@@ -338,7 +338,7 @@ export const Header: React.FC<HeaderProps> = ({
   className 
 }) => {
   return (
-    <header className={twMerge('border-b border-neutral-200 dark:border-neutral-700 pb-6 mb-8', className)}>
+    <header className={twMerge('border-b border-border pb-6 mb-8', className)}>
       {breadcrumbs && (
         <div className="mb-4">
           {breadcrumbs}
@@ -346,11 +346,11 @@ export const Header: React.FC<HeaderProps> = ({
       )}
       <div className="flex items-start justify-between">
         <div className="min-w-0 flex-1">
-          <h1 className="text-3xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100 font-display uppercase">
+          <h1 className="text-3xl font-bold tracking-tight text-foreground font-display uppercase">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-2 text-lg text-neutral-600 dark:text-neutral-400 font-body">
+            <p className="mt-2 text-lg text-muted-foreground font-body">
               {subtitle}
             </p>
           )}
@@ -386,9 +386,9 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
   className 
 }) => {
   return (
-    <div className={twMerge('min-h-screen bg-neutral-50 dark:bg-neutral-900', className)}>
+    <div className={twMerge('min-h-screen bg-muted', className)}>
       {header && (
-        <div className="sticky top-0 z-40 bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div className="sticky top-0 z-40 bg-background border-b border-border">
           {header}
         </div>
       )}
@@ -396,7 +396,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       <div className="flex flex-1">
         {sidebar && (
           <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:pt-16">
-            <div className="flex-1 flex flex-col min-h-0 bg-white dark:bg-neutral-800 border-r border-neutral-200 dark:border-neutral-700">
+            <div className="flex-1 flex flex-col min-h-0 bg-background border-r border-border">
               {sidebar}
             </div>
           </aside>
@@ -413,7 +413,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       </div>
       
       {footer && (
-        <footer className="bg-white dark:bg-neutral-800 border-t border-neutral-200 dark:border-neutral-700">
+        <footer className="bg-background border-t border-border">
           {footer}
         </footer>
       )}

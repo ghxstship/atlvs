@@ -44,7 +44,7 @@ const solutions = [
       satisfaction: '99%',
       clients: '500+',
     },
-    gradient: 'from-red-500 to-orange-500',
+    gradient: 'from-primary to-accent',
     href: '/solutions/film-tv',
     caseStudy: {
       company: 'Meridian Studios',
@@ -81,7 +81,7 @@ const solutions = [
       satisfaction: '97%',
       clients: '750+',
     },
-    gradient: 'from-blue-500 to-purple-500',
+    gradient: 'from-primary to-accent',
     href: '/solutions/advertising',
     caseStudy: {
       company: 'Apex Advertising',
@@ -118,7 +118,7 @@ const solutions = [
       satisfaction: '98%',
       clients: '300+',
     },
-    gradient: 'from-green-500 to-teal-500',
+    gradient: 'from-primary to-accent',
     href: '/solutions/music-events',
     caseStudy: {
       company: 'Harmony Events',
@@ -155,7 +155,7 @@ const solutions = [
       satisfaction: '98%',
       clients: '1K+',
     },
-    gradient: 'from-indigo-500 to-blue-500',
+    gradient: 'from-primary to-accent',
     href: '/solutions/corporate',
     caseStudy: {
       company: 'Global Tech Corp',
@@ -220,12 +220,12 @@ export default function SolutionsPage() {
                 <Card key={solution.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-6 text-center">
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r ${solution.gradient} mb-4`}>
-                      <Icon className="h-8 w-8 text-white" />
+                      <Icon className="h-8 w-8 text-background" />
                     </div>
-                    <h3 className="font-title text-xl font-bold mb-2">{solution.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{solution.tagline}</p>
+                    <h3 className="font-title text-heading-4 text-heading-3 mb-2">{solution.title}</h3>
+                    <p className="text-body-sm color-muted mb-4">{solution.tagline}</p>
                     <a href={solution.href as any as any}>
-                      <Button className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200 hover:scale-105">
+                      <Button className="group-hover:bg-primary group-hover:color-primary-foreground transition-all duration-200 hover:scale-105">
                         Learn More
                         <ArrowRight className="ml-2 h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </Button>
@@ -252,22 +252,22 @@ export default function SolutionsPage() {
                       <div>
                         <div className="flex items-center gap-3 mb-3">
                           <div className={`p-3 rounded-lg bg-gradient-to-r ${solution.gradient}`}>
-                            <Icon className="h-6 w-6 text-white" />
+                            <Icon className="h-6 w-6 text-background" />
                           </div>
-                          <h2 className="font-title text-3xl lg:text-4xl font-bold">{solution.title}</h2>
+                          <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3">{solution.title}</h2>
                         </div>
-                        <p className="text-xl font-medium text-primary mb-4">{solution.tagline}</p>
-                        <p className="text-lg text-muted-foreground">{solution.longDescription}</p>
+                        <p className="text-heading-4 form-label color-primary mb-4">{solution.tagline}</p>
+                        <p className="text-body color-muted">{solution.longDescription}</p>
                       </div>
 
                       {/* Features */}
                       <div>
-                        <h3 className="font-semibold text-foreground mb-3">Key Features</h3>
+                        <h3 className="text-heading-4 color-foreground mb-3">Key Features</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                           {solution.features.map((feature) => (
                             <div key={feature} className="flex items-center gap-3">
-                              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                              <span className="text-sm text-muted-foreground">{feature}</span>
+                              <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                              <span className="text-body-sm color-muted">{feature}</span>
                             </div>
                           ))}
                         </div>
@@ -275,12 +275,12 @@ export default function SolutionsPage() {
 
                       {/* Benefits */}
                       <div>
-                        <h3 className="font-semibold text-foreground mb-3">Benefits</h3>
+                        <h3 className="text-heading-4 color-foreground mb-3">Benefits</h3>
                         <div className="space-y-2">
                           {solution.benefits.map((benefit) => (
                             <div key={benefit} className="flex items-center gap-3">
                               <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${solution.gradient}`}></div>
-                              <span className="text-sm text-muted-foreground">{benefit}</span>
+                              <span className="text-body-sm color-muted">{benefit}</span>
                             </div>
                           ))}
                         </div>
@@ -309,52 +309,52 @@ export default function SolutionsPage() {
                       <CardContent className="p-8">
                         {/* Stats */}
                         <div className="mb-8">
-                          <h3 className="font-title text-2xl font-bold mb-6 text-center">
+                          <h3 className="font-title text-heading-3 text-heading-3 mb-6 text-center">
                             {solution.title} by the Numbers
                           </h3>
                           <div className="grid grid-cols-2 gap-6">
                             <div className="text-center">
-                              <div className="font-title text-3xl font-bold text-foreground mb-2">
+                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                                 {solution.stats.projects}
                               </div>
-                              <div className="text-sm text-muted-foreground">Projects</div>
+                              <div className="text-body-sm color-muted">Projects</div>
                             </div>
                             <div className="text-center">
-                              <div className="font-title text-3xl font-bold text-foreground mb-2">
+                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                                 {solution.stats.savings}
                               </div>
-                              <div className="text-sm text-muted-foreground">Time Saved</div>
+                              <div className="text-body-sm color-muted">Time Saved</div>
                             </div>
                             <div className="text-center">
-                              <div className="font-title text-3xl font-bold text-foreground mb-2">
+                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                                 {solution.stats.satisfaction}
                               </div>
-                              <div className="text-sm text-muted-foreground">Satisfaction</div>
+                              <div className="text-body-sm color-muted">Satisfaction</div>
                             </div>
                             <div className="text-center">
-                              <div className="font-title text-3xl font-bold text-foreground mb-2">
+                              <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                                 {solution.stats.clients}
                               </div>
-                              <div className="text-sm text-muted-foreground">Clients</div>
+                              <div className="text-body-sm color-muted">Clients</div>
                             </div>
                           </div>
                         </div>
 
                         {/* Case Study */}
                         <div className="pt-8 border-t">
-                          <h4 className="font-semibold text-foreground mb-4">Success Story</h4>
+                          <h4 className="text-heading-4 color-foreground mb-4">Success Story</h4>
                           <div className="space-y-3">
                             <div>
-                              <span className="font-semibold text-sm">{solution.caseStudy.company}</span>
-                              <span className="text-sm text-muted-foreground"> - {solution.caseStudy.project}</span>
+                              <span className="text-heading-4 text-body-sm">{solution.caseStudy.company}</span>
+                              <span className="text-body-sm color-muted"> - {solution.caseStudy.project}</span>
                             </div>
                             <div>
-                              <div className="text-xs text-muted-foreground mb-1">CHALLENGE</div>
-                              <div className="text-sm text-foreground">{solution.caseStudy.challenge}</div>
+                              <div className="text-body-sm color-muted mb-1">CHALLENGE</div>
+                              <div className="text-body-sm color-foreground">{solution.caseStudy.challenge}</div>
                             </div>
                             <div>
-                              <div className="text-xs text-muted-foreground mb-1">RESULT</div>
-                              <div className="text-sm font-semibold text-primary">{solution.caseStudy.result}</div>
+                              <div className="text-body-sm color-muted mb-1">RESULT</div>
+                              <div className="text-body-sm text-heading-4 color-primary">{solution.caseStudy.result}</div>
                             </div>
                           </div>
                         </div>
@@ -369,17 +369,17 @@ export default function SolutionsPage() {
       </section>
 
       {/* Common Features Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               POWERFUL FEATURES
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 ACROSS ALL INDUSTRIES
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Every industry has its own special brand of chaos. These features work across 
               all of them to keep your productions from falling apart.
             </p>
@@ -392,10 +392,10 @@ export default function SolutionsPage() {
                 <Card key={feature.title} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                      <Icon className="h-6 w-6 text-primary" />
+                      <Icon className="h-6 w-6 color-primary" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground">{feature.description}</p>
+                    <h3 className="text-heading-4 color-foreground mb-3">{feature.title}</h3>
+                    <p className="text-body-sm color-muted">{feature.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -405,10 +405,10 @@ export default function SolutionsPage() {
           {/* Integration Highlight */}
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8 lg:p-12 text-center">
-              <h3 className="font-title text-2xl font-bold mb-6">
+              <h3 className="font-title text-heading-3 text-heading-3 mb-6">
                 SEAMLESS INTEGRATIONS
               </h3>
-              <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="color-muted mb-8 max-w-2xl mx-auto">
                 Works with the tools you're already stuck with. Over 100+ integrations so you don't 
                 have to convince your team to abandon everything they know.
               </p>
@@ -416,7 +416,7 @@ export default function SolutionsPage() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
                 {['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'].map((integration) => (
                   <div key={integration} className="flex items-center justify-center p-4 bg-background rounded-lg border">
-                    <span className="text-sm font-medium text-muted-foreground">{integration}</span>
+                    <span className="text-body-sm form-label color-muted">{integration}</span>
                   </div>
                 ))}
               </div>

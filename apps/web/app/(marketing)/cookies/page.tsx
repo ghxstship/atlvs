@@ -12,17 +12,17 @@ export default function CookiePolicyPage() {
   return (
     <div className="container mx-auto px-4 py-16 max-w-4xl">
       <div className="prose prose-lg max-w-none">
-        <h1 className={`${anton.className} uppercase text-4xl font-bold mb-8`}>
+        <h1 className={`${anton.className} uppercase text-heading-1 text-heading-3 mb-8`}>
           COOKIE POLICY
         </h1>
         
-        <p className="text-lg text-muted-foreground mb-8">
+        <p className="text-body color-muted mb-8">
           Last updated: {new Date().toLocaleDateString()}
         </p>
 
         <div className="space-y-8">
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               WHAT ARE COOKIES
             </h2>
             <p>
@@ -32,7 +32,7 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               HOW WE USE COOKIES
             </h2>
             <p>We use cookies for several purposes:</p>
@@ -45,31 +45,31 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               TYPES OF COOKIES WE USE
             </h2>
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold">Strictly Necessary Cookies</h3>
+                <h3 className="text-heading-4">Strictly Necessary Cookies</h3>
                 <p>These cookies are essential for the website to function and cannot be disabled.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Performance Cookies</h3>
+                <h3 className="text-heading-4">Performance Cookies</h3>
                 <p>These cookies collect information about how you use our website to help us improve it.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Functional Cookies</h3>
+                <h3 className="text-heading-4">Functional Cookies</h3>
                 <p>These cookies remember your preferences and provide enhanced features.</p>
               </div>
               <div>
-                <h3 className="font-semibold">Targeting Cookies</h3>
+                <h3 className="text-heading-4">Targeting Cookies</h3>
                 <p>These cookies are used to deliver relevant advertisements based on your interests.</p>
               </div>
             </div>
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               MANAGING COOKIES
             </h2>
             <p>
@@ -85,7 +85,7 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               THIRD-PARTY COOKIES
             </h2>
             <p>
@@ -99,12 +99,12 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+            <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               CONTACT US
             </h2>
             <p>
               If you have any questions about our Cookie Policy, please contact us at{' '}
-              <a href="mailto:privacy@ghxstship.com" className="text-primary hover:underline">
+              <a href="mailto:privacy@ghxstship.com" className="color-primary hover:underline">
                 privacy@ghxstship.com
               </a>
             </p>

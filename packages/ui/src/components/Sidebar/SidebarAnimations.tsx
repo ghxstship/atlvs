@@ -35,7 +35,7 @@ export const sidebarAnimations = {
           idle: 'scale-100 translate-x-0',
           hover: 'scale-[1.02] translate-x-1',
           active: 'scale-[0.98] translate-x-2',
-          focus: 'scale-[1.01] translate-x-1 ring-2 ring-brand-500 ring-offset-2',
+          focus: 'scale-[1.01] translate-x-1 ring-2 ring-primary ring-offset-2',
         },
         level: {
           0: '',
@@ -68,7 +68,7 @@ export const sidebarAnimations = {
       variants: {
         state: {
           idle: 'scale-100 opacity-100',
-          focus: 'scale-[1.02] opacity-100 ring-2 ring-brand-500',
+          focus: 'scale-[1.02] opacity-100 ring-2 ring-primary',
           typing: 'scale-[1.01] opacity-100',
         },
       },
@@ -98,7 +98,7 @@ export const sidebarAnimations = {
         state: {
           idle: 'scale-100 rotate-0 opacity-60',
           hover: 'scale-110 rotate-12 opacity-100',
-          pinned: 'scale-100 rotate-0 opacity-100 text-brand-500',
+          pinned: 'scale-100 rotate-0 opacity-100 text-primary',
           pinning: 'animate-in zoom-in-50 spin-in-180 duration-300',
           unpinning: 'animate-out zoom-out-50 spin-out-180 duration-300',
         },

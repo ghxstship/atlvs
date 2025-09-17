@@ -9,12 +9,11 @@ import { cn } from '../../lib/utils';
 import { typography } from '../lib/typography';
 import { layouts } from '../lib/layouts';
 import { Section, SectionHeader } from '../components/layout/Section';
-import { PricingCard } from '../components/ui/PricingCard';
+import { PricingCard } from "../../_components/marketing/PricingCard";
 import { PricingToggle } from '../components/pricing/PricingToggle';
 import { TrustIndicators } from '../components/pricing/TrustIndicators';
 import { AddOnCard } from '../components/pricing/AddOnCard';
 import { FAQSection } from '../components/pricing/FAQSection';
-import { CTAGroup } from '../components/ui/CTAButton';
 
 const plans = [
   {

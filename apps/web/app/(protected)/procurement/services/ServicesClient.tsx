@@ -186,9 +186,9 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
     return (
       <div className="space-y-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -200,7 +200,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Wrench className="h-5 w-5" />
-          <h3 className="font-semibold">Services Catalog</h3>
+          <h3 className="text-heading-4">Services Catalog</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -210,7 +210,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
         <Input
           placeholder="Search services by name, category, unit, or supplier..."
           value={searchQuery}
@@ -223,13 +223,13 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       {(showCreateForm || editingService) && (
         <Card>
           <div className="p-4">
-            <h4 className="font-medium mb-4">
+            <h4 className="form-label mb-4">
               {editingService ? 'Edit Service' : 'Add New Service'}
             </h4>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Service Name *</label>
+                <label className="text-body-sm form-label">Service Name *</label>
                 <Input
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -238,7 +238,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Category</label>
+                <label className="text-body-sm form-label">Category</label>
                 <Input
                   value={formData.category}
                   onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
@@ -247,7 +247,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2 md:col-span-2">
-                <label className="text-sm font-medium">Description</label>
+                <label className="text-body-sm form-label">Description</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
@@ -258,7 +258,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Rate *</label>
+                <label className="text-body-sm form-label">Rate *</label>
                 <Input
                   type="number"
                   step="0.01"
@@ -269,7 +269,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Currency</label>
+                <label className="text-body-sm form-label">Currency</label>
                 <select 
                   value={formData.currency} 
                   onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
@@ -282,7 +282,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Unit</label>
+                <label className="text-body-sm form-label">Unit</label>
                 <select 
                   value={formData.unit} 
                   onChange={(e) => setFormData(prev => ({ ...prev, unit: e.target.value }))}
@@ -298,7 +298,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Supplier</label>
+                <label className="text-body-sm form-label">Supplier</label>
                 <Input
                   value={formData.supplier}
                   onChange={(e) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
@@ -307,7 +307,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Status</label>
+                <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
                   onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as ServiceStatus }))}
@@ -348,10 +348,10 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
         {filteredServices.length === 0 ? (
           <div className="col-span-full">
             <Card>
-              <div className="p-8 text-center text-muted-foreground">
+              <div className="p-8 text-center color-muted">
                 <Wrench className="h-12 w-12 mx-auto mb-4 opacity-50" />
                 <p>{searchQuery ? 'No services found matching your search.' : 'No services in catalog.'}</p>
-                <p className="text-sm">
+                <p className="text-body-sm">
                   {searchQuery ? 'Try adjusting your search terms.' : 'Add your first service to get started.'}
                 </p>
               </div>
@@ -362,35 +362,35 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
             <Card key={service.id}>
               <div className="p-4">
                 <div className="flex items-start justify-between mb-2">
-                  <h4 className="font-medium">{service.name}</h4>
+                  <h4 className="form-label">{service.name}</h4>
                   <Badge variant={getStatusColor(service.status)}>
                     {service.status}
                   </Badge>
                 </div>
                 
                 {service.category && (
-                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">
+                  <p className="text-body-sm color-muted mb-2 uppercase tracking-wide">
                     {service.category}
                   </p>
                 )}
                 
-                <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                <p className="text-body-sm color-muted mb-3 line-clamp-2">
                   {service.description}
                 </p>
                 
                 <div className="flex items-center justify-between mb-3">
-                  <div className="flex items-center gap-1 text-lg font-semibold">
+                  <div className="flex items-center gap-1 text-body text-heading-4">
                     <DollarSign className="h-4 w-4" />
                     {service.rate.toLocaleString()} {service.currency}
                   </div>
-                  <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1 text-body-sm color-muted">
                     <Clock className="h-3 w-3" />
                     per {service.unit}
                   </div>
                 </div>
                 
                 {service.supplier && (
-                  <div className="text-xs text-muted-foreground mb-3">
+                  <div className="text-body-sm color-muted mb-3">
                     <strong>Provider:</strong> {service.supplier}
                   </div>
                 )}

@@ -24,7 +24,7 @@ const communityChannels = [
     activity: 'Very Active',
     icon: MessageSquare,
     href: 'https://discord.gg/ghxstship',
-    gradient: 'from-indigo-500 to-purple-500',
+    gradient: 'from-primary to-accent',
     features: ['Real-time chat', 'Voice channels', 'Screen sharing', 'Industry channels'],
   },
   {
@@ -34,7 +34,7 @@ const communityChannels = [
     activity: 'Active',
     icon: Users,
     href: 'https://skool.com/ghxstship',
-    gradient: 'from-green-500 to-teal-500',
+    gradient: 'from-primary to-accent',
     features: ['Courses & workshops', 'Networking events', 'Mentorship programs', 'Resource library'],
   },
   {
@@ -44,7 +44,7 @@ const communityChannels = [
     activity: 'Active',
     icon: MessageCircle,
     href: '/community/forums',
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-primary to-accent',
     features: ['Technical discussions', 'Project showcases', 'Q&A sessions', 'Industry insights'],
   },
   {
@@ -54,7 +54,7 @@ const communityChannels = [
     activity: 'Weekly',
     icon: Calendar,
     href: '/community/events',
-    gradient: 'from-orange-500 to-red-500',
+    gradient: 'from-primary to-accent',
     features: ['Monthly meetups', 'Workshops', 'Conferences', 'Networking sessions'],
   },
 ];
@@ -192,14 +192,14 @@ export default function CommunityPage() {
             <Badge variant="outline" className="mb-4">
               Community
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
               JOIN THE
               <br />
-              <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 GHXSTSHIP COMMUNITY
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Connect with 25,000+ creative professionals, share knowledge, and grow your career 
               in the world's most vibrant creative community.
             </p>
@@ -222,20 +222,20 @@ export default function CommunityPage() {
           {/* Community Stats */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             <div>
-              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50K+</div>
-              <div className="text-sm text-muted-foreground">Community Members</div>
+              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>50K+</div>
+              <div className="text-body-sm color-muted">Community Members</div>
             </div>
             <div>
-              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>200+</div>
-              <div className="text-sm text-muted-foreground">Countries</div>
+              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>200+</div>
+              <div className="text-body-sm color-muted">Countries</div>
             </div>
             <div>
-              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>24/7</div>
-              <div className="text-sm text-muted-foreground">Support Available</div>
+              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>24/7</div>
+              <div className="text-body-sm color-muted">Support Available</div>
             </div>
             <div>
-              <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>98%</div>
-              <div className="text-sm text-muted-foreground">Satisfaction Rate</div>
+              <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>98%</div>
+              <div className="text-body-sm color-muted">Satisfaction Rate</div>
             </div>
           </div>
         </div>
@@ -245,10 +245,10 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               CONNECT WITH CREATORS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Choose how you want to engage with the community. Each platform offers 
               unique opportunities for learning, networking, and collaboration.
             </p>
@@ -262,18 +262,18 @@ export default function CommunityPage() {
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4 mb-6">
                       <div className={`p-3 rounded-lg bg-gradient-to-r ${channel.gradient}`}>
-                        <Icon className="h-6 w-6 text-white" />
+                        <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{channel.name}</h3>
-                          <Badge variant="secondary" className="text-xs">
+                          <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{channel.name}</h3>
+                          <Badge variant="secondary" className="text-body-sm">
                             {channel.activity}
                           </Badge>
                         </div>
-                        <p className="text-muted-foreground mb-2">{channel.description}</p>
-                        <div className="text-sm text-muted-foreground">
-                          <span className="font-semibold text-foreground">{channel.members}</span> members
+                        <p className="color-muted mb-2">{channel.description}</p>
+                        <div className="text-body-sm color-muted">
+                          <span className="text-heading-4 color-foreground">{channel.members}</span> members
                         </div>
                       </div>
                     </div>
@@ -282,7 +282,7 @@ export default function CommunityPage() {
                       {channel.features.map((feature) => (
                         <div key={feature} className="flex items-center gap-2">
                           <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${channel.gradient}`}></div>
-                          <span className="text-xs text-muted-foreground">{feature}</span>
+                          <span className="text-body-sm color-muted">{feature}</span>
                         </div>
                       ))}
                     </div>
@@ -311,13 +311,13 @@ export default function CommunityPage() {
       </section>
 
       {/* Social Media */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               FOLLOW US EVERYWHERE
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Stay updated with the latest news, insights, and community highlights 
               across all our social media channels.
             </p>
@@ -330,14 +330,14 @@ export default function CommunityPage() {
                 <Card key={social.name} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                      <Icon className="h-6 w-6 text-primary" />
+                      <Icon className="h-6 w-6 color-primary" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-2">{social.name}</h3>
-                    <p className="text-sm text-muted-foreground mb-2">{social.handle}</p>
-                    <div className="text-sm font-semibold text-primary mb-4">
+                    <h3 className="text-heading-4 color-foreground mb-2">{social.name}</h3>
+                    <p className="text-body-sm color-muted mb-2">{social.handle}</p>
+                    <div className="text-body-sm text-heading-4 color-primary mb-4">
                       {social.followers} followers
                     </div>
-                    <p className="text-xs text-muted-foreground mb-4">{social.description}</p>
+                    <p className="text-body-sm color-muted mb-4">{social.description}</p>
                     <a href={social.href as any} target="_blank" rel="noopener noreferrer">
                       <Button className="w-full group transition-all duration-200 hover:scale-105">
                         Follow
@@ -356,10 +356,10 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               UPCOMING EVENTS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Join our regular events to learn, network, and stay ahead of industry trends.
             </p>
           </div>
@@ -371,16 +371,16 @@ export default function CommunityPage() {
                   <Badge variant="outline" className="mb-4">
                     {event.type}
                   </Badge>
-                  <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{event.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{event.title}</h3>
+                  <p className="text-body-sm color-muted mb-4">{event.description}</p>
                   
                   <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-primary" />
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Calendar className="h-4 w-4 color-primary" />
                       <span>{event.date} at {event.time}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Users className="h-4 w-4 text-primary" />
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Users className="h-4 w-4 color-primary" />
                       <span>{event.attendees} registered</span>
                     </div>
                   </div>
@@ -405,10 +405,10 @@ export default function CommunityPage() {
       </section>
 
       {/* Community Testimonials */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMMUNITY VOICES
             </h2>
           </div>
@@ -417,18 +417,18 @@ export default function CommunityPage() {
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
-                  <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+                  <blockquote className="text-body color-foreground mb-6 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
-                      <span className="text-white font-semibold text-sm">
+                      <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.avatar}
                       </span>
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
+                      <div className="text-heading-4 color-foreground">{testimonial.author}</div>
+                      <div className="text-body-sm color-muted">{testimonial.role}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -442,10 +442,10 @@ export default function CommunityPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMMUNITY ACHIEVEMENTS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Recognize and celebrate the contributions of our amazing community members.
             </p>
           </div>
@@ -457,12 +457,12 @@ export default function CommunityPage() {
                 <Card key={achievement.title} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-                      <Icon className="h-8 w-8 text-primary" />
+                      <Icon className="h-8 w-8 color-primary" />
                     </div>
-                    <div className={`${anton.className} text-2xl font-bold text-primary mb-2 uppercase`}>{achievement.metric}</div>
-                    <p className="text-muted-foreground mb-6">{achievement.description}</p>
-                    <div className="text-sm text-muted-foreground">
-                      <span className="font-semibold text-primary">{achievement.recipients}</span> recipients
+                    <div className={`${anton.className} text-heading-3 text-heading-3 color-primary mb-2 uppercase`}>{achievement.metric}</div>
+                    <p className="color-muted mb-6">{achievement.description}</p>
+                    <div className="text-body-sm color-muted">
+                      <span className="text-heading-4 color-primary">{achievement.recipients}</span> recipients
                     </div>
                   </CardContent>
                 </Card>
@@ -476,10 +476,10 @@ export default function CommunityPage() {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO JOIN THE COMMUNITY?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Connect with 25,000+ creative professionals and take your career to the next level.
             </p>
             

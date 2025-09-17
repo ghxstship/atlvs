@@ -177,13 +177,13 @@ export default function CreateTrackingClient({
         {/* Asset & Type */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Navigation className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Asset & Tracking Type</h3>
+            <Navigation className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Asset & Tracking Type</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Asset ID *
               </label>
               <Input
@@ -196,7 +196,7 @@ export default function CreateTrackingClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Tracking Type
                 </label>
                 <Select
@@ -212,7 +212,7 @@ export default function CreateTrackingClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -233,13 +233,13 @@ export default function CreateTrackingClient({
         {/* Location & Time */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Location & Time</h3>
+            <MapPin className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Location & Time</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Location *
               </label>
               <Input
@@ -251,7 +251,7 @@ export default function CreateTrackingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Coordinates (GPS)
               </label>
               <Input
@@ -262,7 +262,7 @@ export default function CreateTrackingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 <Calendar className="h-4 w-4 inline mr-1" />
                 Timestamp *
               </label>
@@ -279,13 +279,13 @@ export default function CreateTrackingClient({
         {/* Assignment & Condition */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Activity className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Assignment & Condition</h3>
+            <Activity className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Assignment & Condition</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Assigned To
               </label>
               <Input
@@ -296,7 +296,7 @@ export default function CreateTrackingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Condition
               </label>
               <Select
@@ -312,7 +312,7 @@ export default function CreateTrackingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

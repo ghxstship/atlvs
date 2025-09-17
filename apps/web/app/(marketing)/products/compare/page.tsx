@@ -65,7 +65,7 @@ const productOverview = [
     name: 'ATLVS',
     description: 'Enterprise project management platform for creative teams',
     icon: '⚡',
-    color: 'from-blue-500 to-indigo-600',
+    color: 'from-primary to-accent',
     strengths: [
       'Advanced project management',
       'AI-powered insights',
@@ -81,7 +81,7 @@ const productOverview = [
     name: 'OPENDECK',
     description: 'Global marketplace for creative professionals and resources',
     icon: '🌐',
-    color: 'from-purple-500 to-pink-600',
+    color: 'from-primary to-accent',
     strengths: [
       'Global talent network',
       'Resource marketplace',
@@ -105,14 +105,14 @@ export default function ComparePage() {
             <Badge variant="outline" className="mb-4">
               Product Comparison
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
               ATLVS VS OPENDECK
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 CHOOSE YOUR PATH
               </span>
             </h1>
-            <p className="text-success/80 text-sm max-w-3xl mx-auto">
+            <p className="color-success/80 text-body-sm max-w-3xl mx-auto">
               Compare our flagship products side-by-side to find the perfect solution 
               for your creative workflow and business needs.
             </p>
@@ -124,10 +124,10 @@ export default function ComparePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PRODUCT OVERVIEW
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Understanding the core purpose and strengths of each platform.
             </p>
           </div>
@@ -138,33 +138,33 @@ export default function ComparePage() {
                 <CardContent className="p-8">
                   <div className="text-center mb-8">
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${product.color} mb-4`}>
-                      <span className="text-2xl">{product.icon}</span>
+                      <span className="text-heading-3 text-background">{product.icon}</span>
                     </div>
-                    <h3 className={`${anton.className} text-2xl font-bold mb-2 uppercase`}>{product.name}</h3>
-                    <p className="text-muted-foreground mb-4">{product.description}</p>
+                    <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-2 uppercase`}>{product.name}</h3>
+                    <p className="color-muted mb-4">{product.description}</p>
                     <div className="flex items-baseline justify-center gap-2 mb-6">
-                      <span className="text-sm text-muted-foreground">Starting at</span>
-                      <span className="text-3xl font-bold">{product.startingPrice}</span>
-                      <span className="text-sm text-muted-foreground">/month</span>
+                      <span className="text-body-sm color-muted">Starting at</span>
+                      <span className="text-heading-2 text-heading-3">{product.startingPrice}</span>
+                      <span className="text-body-sm color-muted">/month</span>
                     </div>
                   </div>
 
                   <div className="space-y-6">
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-3 uppercase">KEY STRENGTHS</h4>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-3 uppercase">KEY STRENGTHS</h4>
                       <div className="space-y-2">
                         {product.strengths.map((strength) => (
                           <div key={strength} className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                            <span className="text-sm">{strength}</span>
+                            <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                            <span className="text-body-sm">{strength}</span>
                           </div>
                         ))}
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-3 uppercase">BEST FOR</h4>
-                      <p className="text-sm text-foreground">{product.bestFor}</p>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-3 uppercase">BEST FOR</h4>
+                      <p className="text-body-sm color-foreground">{product.bestFor}</p>
                     </div>
 
                     <a href={product.href as any as any}>
@@ -182,13 +182,13 @@ export default function ComparePage() {
       </section>
 
       {/* Feature Comparison */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               DETAILED FEATURE COMPARISON
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Compare features across categories to make an informed decision.
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function ComparePage() {
             {comparisonData.map((category) => (
               <Card key={category.category}>
                 <CardContent className="p-8">
-                  <h3 className={`${anton.className} text-xl font-bold mb-6 uppercase`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-6 uppercase`}>
                     {category.category}
                   </h3>
                   
@@ -205,27 +205,27 @@ export default function ComparePage() {
                     <table className="w-full">
                       <thead>
                         <tr className="border-b">
-                          <th className="text-left py-3 font-semibold">Feature</th>
-                          <th className="text-center py-3 font-semibold">ATLVS</th>
-                          <th className="text-center py-3 font-semibold">OPENDECK</th>
+                          <th className="text-left py-3 text-heading-4">Feature</th>
+                          <th className="text-center py-3 text-heading-4">ATLVS</th>
+                          <th className="text-center py-3 text-heading-4">OPENDECK</th>
                         </tr>
                       </thead>
                       <tbody>
                         {category.features.map((feature) => (
                           <tr key={feature.name} className="border-b border-muted/50">
-                            <td className="py-4 font-medium">{feature.name}</td>
+                            <td className="py-4 form-label">{feature.name}</td>
                             <td className="py-4 text-center">
                               {feature.atlvs ? (
-                                <Check className="h-5 w-5 text-green-500 mx-auto" />
+                                <Check className="h-5 w-5 color-success mx-auto" />
                               ) : (
-                                <X className="h-5 w-5 text-muted-foreground mx-auto" />
+                                <X className="h-5 w-5 color-muted mx-auto" />
                               )}
                             </td>
                             <td className="py-4 text-center">
                               {feature.opendeck ? (
-                                <Check className="h-5 w-5 text-green-500 mx-auto" />
+                                <Check className="h-5 w-5 color-success mx-auto" />
                               ) : (
-                                <X className="h-5 w-5 text-muted-foreground mx-auto" />
+                                <X className="h-5 w-5 color-muted mx-auto" />
                               )}
                             </td>
                           </tr>
@@ -244,10 +244,10 @@ export default function ComparePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               CHOOSE THE RIGHT SOLUTION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Select the platform that best matches your workflow and business needs.
             </p>
           </div>
@@ -256,39 +256,39 @@ export default function ComparePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+                    <Zap className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className={`${anton.className} text-xl font-bold uppercase`}>CHOOSE ATLVS IF</h3>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE ATLVS IF</h3>
                 </div>
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You manage complex projects</p>
-                      <p className="text-sm text-muted-foreground">Need advanced project management with custom workflows</p>
+                      <p className="text-heading-4">You manage complex projects</p>
+                      <p className="text-body-sm color-muted">Need advanced project management with custom workflows</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You have an existing team</p>
-                      <p className="text-sm text-muted-foreground">Focus on internal collaboration and productivity</p>
+                      <p className="text-heading-4">You have an existing team</p>
+                      <p className="text-body-sm color-muted">Focus on internal collaboration and productivity</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You need detailed analytics</p>
-                      <p className="text-sm text-muted-foreground">Require comprehensive reporting and insights</p>
+                      <p className="text-heading-4">You need detailed analytics</p>
+                      <p className="text-body-sm color-muted">Require comprehensive reporting and insights</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You manage budgets</p>
-                      <p className="text-sm text-muted-foreground">Need financial tracking and budget management</p>
+                      <p className="text-heading-4">You manage budgets</p>
+                      <p className="text-body-sm color-muted">Need financial tracking and budget management</p>
                     </div>
                   </div>
                 </div>
@@ -307,39 +307,39 @@ export default function ComparePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+                    <Globe className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className={`${anton.className} text-xl font-bold uppercase`}>CHOOSE OPENDECK IF</h3>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE OPENDECK IF</h3>
                 </div>
                 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You need to find talent</p>
-                      <p className="text-sm text-muted-foreground">Access to global network of creative professionals</p>
+                      <p className="text-heading-4">You need to find talent</p>
+                      <p className="text-body-sm color-muted">Access to global network of creative professionals</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You're a freelancer</p>
-                      <p className="text-sm text-muted-foreground">Connect with clients and showcase your work</p>
+                      <p className="text-heading-4">You're a freelancer</p>
+                      <p className="text-body-sm color-muted">Connect with clients and showcase your work</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You need creative resources</p>
-                      <p className="text-sm text-muted-foreground">Access templates, assets, and educational content</p>
+                      <p className="text-heading-4">You need creative resources</p>
+                      <p className="text-body-sm color-muted">Access templates, assets, and educational content</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="h-5 w-5 text-green-500 flex-shrink-0 mt-0.5" />
+                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold">You work on diverse projects</p>
-                      <p className="text-sm text-muted-foreground">Flexible marketplace for various creative needs</p>
+                      <p className="text-heading-4">You work on diverse projects</p>
+                      <p className="text-body-sm color-muted">Flexible marketplace for various creative needs</p>
                     </div>
                   </div>
                 </div>
@@ -362,10 +362,10 @@ export default function ComparePage() {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO GET STARTED?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Try both platforms with our free trials and see which one fits your workflow best.
             </p>
             

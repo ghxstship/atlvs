@@ -9,6 +9,7 @@ import { createBrowserClient } from '@ghxstship/auth';
 import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Tag, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
+import { lightTheme } from '@/lib/design-system/colors-2026';
 
 const categorySchema = z.object({
   name: z.string().min(1, 'Category name is required'),
@@ -119,14 +120,14 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
   };
 
   const colorOptions = [
-    { value: '#ef4444', label: 'Red' },
-    { value: '#f97316', label: 'Orange' },
-    { value: '#eab308', label: 'Yellow' },
-    { value: '#22c55e', label: 'Green' },
-    { value: '#3b82f6', label: 'Blue' },
-    { value: '#8b5cf6', label: 'Purple' },
-    { value: '#ec4899', label: 'Pink' },
-    { value: '#6b7280', label: 'Gray' },
+    { value: lightTheme.status.error, label: 'Red' },
+    { value: lightTheme.badge.orange.bg, label: 'Orange' },
+    { value: lightTheme.badge.yellow.bg, label: 'Yellow' },
+    { value: lightTheme.status.success, label: 'Green' },
+    { value: lightTheme.badge.blue.bg, label: 'Blue' },
+    { value: lightTheme.badge.purple.bg, label: 'Purple' },
+    { value: lightTheme.text.link, label: 'Pink/Accent' },
+    { value: lightTheme.text.secondary, label: 'Gray' },
   ];
 
   return (
@@ -170,11 +171,11 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         <form id="category-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-success/10 rounded-lg">
-              <Tag className="h-5 w-5 text-success" />
+              <Tag className="h-5 w-5 color-success" />
             </div>
             <div>
-              <h3 className="font-medium">Category Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Category Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Create a new category for organizing products and services
               </p>
             </div>
@@ -182,7 +183,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
 
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Category Name *
               </label>
               <Input
@@ -193,7 +194,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Type
               </label>
               <select
@@ -207,7 +208,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Status
               </label>
               <select
@@ -220,7 +221,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Color
               </label>
               <select
@@ -237,7 +238,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Sort Order
               </label>
               <Input
@@ -249,7 +250,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -261,8 +262,8 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
           </div>
 
           <div className="bg-primary/5 p-4 rounded-lg">
-            <h4 className="font-medium text-primary mb-2">Category Guidelines</h4>
-            <ul className="text-sm text-primary/80 space-y-1">
+            <h4 className="form-label color-primary mb-2">Category Guidelines</h4>
+            <ul className="text-body-sm color-primary/80 space-y-1">
               <li>• Categories help organize products and services for easier management</li>
               <li>• Choose descriptive names that clearly identify the category purpose</li>
               <li>• Use colors to visually distinguish categories in lists and reports</li>

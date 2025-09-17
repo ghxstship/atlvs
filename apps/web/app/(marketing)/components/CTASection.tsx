@@ -12,14 +12,14 @@ export function CTASection() {
         {/* Main CTA */}
         <div className="text-center mb-16">
           <div className="max-w-4xl mx-auto">
-            <h2 className="font-title text-3xl lg:text-5xl font-bold mb-6">
+            <h2 className="text-heading-1">
               READY TO TRANSFORM
               <br />
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 YOUR PRODUCTION?
               </span>
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Join thousands of creative professionals who have revolutionized their workflows 
               with GHXSTSHIP. Start your free trial today and experience the future of production management.
             </p>
@@ -39,17 +39,17 @@ export function CTASection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap justify-center items-center gap-6 text-body-sm color-muted">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-success" />
+                <CheckCircle className="h-4 w-4 color-success" />
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-2">
-                <Star className="h-4 w-4 text-warning" />
+                <Star className="h-4 w-4 color-warning" />
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-primary" />
+                <Zap className="h-4 w-4 color-primary" />
                 <span>Setup in minutes</span>
               </div>
             </div>
@@ -61,14 +61,14 @@ export function CTASection() {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardContent className="p-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
-                <CheckCircle className="h-8 w-8 text-primary" />
+                <CheckCircle className="h-8 w-8 color-primary" />
               </div>
-              <h3 className="font-title text-xl font-bold mb-4">Quick Setup</h3>
-              <p className="text-muted-foreground mb-6">
+              <h3 className="text-heading-3 mb-4">Quick Setup</h3>
+              <p className="color-muted mb-6">
                 Get started in minutes with our guided onboarding process and pre-built templates.
               </p>
-              <div className="text-sm text-muted-foreground">
-                Average setup time: <span className="font-semibold text-primary">5 minutes</span>
+              <div className="text-body-sm color-muted">
+                Average setup time: <span className="text-heading-4 color-primary">5 minutes</span>
               </div>
             </CardContent>
           </Card>
@@ -76,14 +76,14 @@ export function CTASection() {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardContent className="p-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
-                <Star className="h-8 w-8 text-accent" />
+                <Star className="h-8 w-8 color-accent" />
               </div>
-              <h3 className="font-title text-xl font-bold mb-4">Expert Support</h3>
-              <p className="text-muted-foreground mb-6">
+              <h3 className="text-heading-3 mb-4">Expert Support</h3>
+              <p className="color-muted mb-6">
                 Get help from our team of production experts available 24/7 via chat, email, or phone.
               </p>
-              <div className="text-sm text-muted-foreground">
-                Response time: <span className="font-semibold text-accent">Under 2 hours</span>
+              <div className="text-body-sm color-muted">
+                Response time: <span className="text-heading-4 color-accent">Under 2 hours</span>
               </div>
             </CardContent>
           </Card>
@@ -91,14 +91,14 @@ export function CTASection() {
           <Card className="text-center hover:shadow-lg transition-shadow">
             <CardContent className="p-8">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/10 mb-6">
-                <Zap className="h-8 w-8 text-success" />
+                <Zap className="h-8 w-8 color-success" />
               </div>
-              <h3 className="font-title text-xl font-bold mb-4">Instant Results</h3>
-              <p className="text-muted-foreground mb-6">
+              <h3 className="text-heading-3 mb-4">Instant Results</h3>
+              <p className="color-muted mb-6">
                 See immediate improvements in efficiency and collaboration from day one.
               </p>
-              <div className="text-sm text-muted-foreground">
-                Average improvement: <span className="font-semibold text-success">40% faster</span>
+              <div className="text-body-sm color-muted">
+                Average improvement: <span className="text-heading-4 color-success">40% faster</span>
               </div>
             </CardContent>
           </Card>
@@ -108,10 +108,10 @@ export function CTASection() {
         <div className="text-center">
           <Card className="max-w-2xl mx-auto bg-gradient-to-r from-muted/50 to-muted/30 border-muted">
             <CardContent className="p-8">
-              <h3 className="font-title text-2xl font-bold mb-4">
+              <h3 className="text-heading-2 mb-4">
                 Need a Custom Solution?
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="color-muted mb-6">
                 Our enterprise team can help you build a tailored solution that fits your specific needs and scale.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

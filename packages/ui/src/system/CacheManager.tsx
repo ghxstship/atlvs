@@ -69,7 +69,9 @@ class LRUCache {
     // Evict least recently used if needed
     while (this.currentSize + entry.size > this.maxSize && this.cache.size > 0) {
       const firstKey = this.cache.keys().next().value;
-      this.delete(firstKey);
+      if (firstKey) {
+        this.delete(firstKey);
+      }
     }
 
     // Add new entry

@@ -141,10 +141,10 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           COMPLETE YOUR PROFILE
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-body color-muted max-w-2xl mx-auto">
           Help your team get to know you better and personalize your GHXSTSHIP experience.
         </p>
       </div>
@@ -155,7 +155,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             {/* Avatar Upload */}
             <div className="text-center">
               <div className="relative inline-block">
-                <div className="w-24 h-24 bg-muted rounded-full flex items-center justify-center overflow-hidden">
+                <div className="w-24 h-24 bg-secondary rounded-full flex items-center justify-center overflow-hidden">
                   {profile.avatar ? (
                     <img 
                       src={profile.avatar} 
@@ -163,10 +163,10 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <User className="h-12 w-12 text-muted-foreground" />
+                    <User className="h-12 w-12 color-muted" />
                   )}
                 </div>
-                <label className="absolute bottom-0 right-0 bg-primary text-primary-foreground rounded-full p-2 cursor-pointer hover:bg-primary/90 transition-colors">
+                <label className="absolute bottom-0 right-0 bg-primary color-primary-foreground rounded-full p-2 cursor-pointer hover:bg-primary/90 transition-colors">
                   <Camera className="h-4 w-4" />
                   <input
                     type="file"
@@ -176,7 +176,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   />
                 </label>
               </div>
-              <p className="text-sm text-muted-foreground mt-2">
+              <p className="text-body-sm color-muted mt-2">
                 Upload a profile photo
               </p>
             </div>
@@ -184,11 +184,11 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             <div className="grid md:grid-cols-2 gap-6">
               {/* Job Title */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Job Title
                 </label>
                 <div className="relative">
-                  <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
                     className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -201,11 +201,11 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
               {/* Location */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Location
                 </label>
                 <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
                     className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -218,7 +218,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
               {/* Industry */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Industry
                 </label>
                 <select
@@ -237,7 +237,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
               {/* Role */}
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Primary Role
                 </label>
                 <select
@@ -256,7 +256,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
               {/* Team Size */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Team Size
                 </label>
                 <select
@@ -275,7 +275,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
               {/* Bio */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Bio (Optional)
                 </label>
                 <textarea
@@ -285,7 +285,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   value={profile.bio}
                   onChange={(e) => handleInputChange('bio', e.target.value)}
                 />
-                <p className="text-xs text-muted-foreground mt-1">
+                <p className="text-body-sm color-muted mt-1">
                   This will be visible to your team members
                 </p>
               </div>
@@ -293,7 +293,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
             {error && (
               <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
-                <p className="text-sm text-destructive">{error}</p>
+                <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}
           </div>
@@ -308,8 +308,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               <div className="w-2 h-2 bg-info rounded-full"></div>
             </div>
             <div>
-              <h4 className="font-semibold text-foreground mb-1">Privacy & Visibility</h4>
-              <p className="text-sm text-muted-foreground">
+              <h4 className="text-heading-4 color-foreground mb-1">Privacy & Visibility</h4>
+              <p className="text-body-sm color-muted">
                 Your profile information will be visible to members of your organization. 
                 You can update these details anytime in your account settings.
               </p>

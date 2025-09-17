@@ -106,9 +106,9 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
     return (
       <div className="space-y-6">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -121,12 +121,12 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
         <div className="p-4">
           <div className="flex items-center gap-2 mb-4">
             <Phone className="h-5 w-5" />
-            <h3 className="font-semibold">Phone Numbers</h3>
+            <h3 className="text-heading-4">Phone Numbers</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Primary Phone</label>
+              <label className="text-body-sm form-label">Primary Phone</label>
               <Input
                 value={formData.phone_primary}
                 onChange={(e) => setFormData(prev => ({ ...prev, phone_primary: e.target.value }))}
@@ -135,7 +135,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Secondary Phone</label>
+              <label className="text-body-sm form-label">Secondary Phone</label>
               <Input
                 value={formData.phone_secondary}
                 onChange={(e) => setFormData(prev => ({ ...prev, phone_secondary: e.target.value }))}
@@ -151,12 +151,12 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
         <div className="p-4">
           <div className="flex items-center gap-2 mb-4">
             <MapPin className="h-5 w-5" />
-            <h3 className="font-semibold">Address</h3>
+            <h3 className="text-heading-4">Address</h3>
           </div>
           
           <div className="space-y-4">
             <div className="space-y-2">
-              <label className="text-sm font-medium">Address Line 1</label>
+              <label className="text-body-sm form-label">Address Line 1</label>
               <Input
                 value={formData.address_line1}
                 onChange={(e) => setFormData(prev => ({ ...prev, address_line1: e.target.value }))}
@@ -165,7 +165,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Address Line 2</label>
+              <label className="text-body-sm form-label">Address Line 2</label>
               <Input
                 value={formData.address_line2}
                 onChange={(e) => setFormData(prev => ({ ...prev, address_line2: e.target.value }))}
@@ -175,7 +175,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">City</label>
+                <label className="text-body-sm form-label">City</label>
                 <Input
                   value={formData.city}
                   onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
@@ -184,7 +184,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">State/Province</label>
+                <label className="text-body-sm form-label">State/Province</label>
                 <Input
                   value={formData.state_province}
                   onChange={(e) => setFormData(prev => ({ ...prev, state_province: e.target.value }))}
@@ -193,7 +193,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Postal Code</label>
+                <label className="text-body-sm form-label">Postal Code</label>
                 <Input
                   value={formData.postal_code}
                   onChange={(e) => setFormData(prev => ({ ...prev, postal_code: e.target.value }))}
@@ -203,7 +203,7 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             </div>
             
             <div className="space-y-2">
-              <label className="text-sm font-medium">Country</label>
+              <label className="text-body-sm form-label">Country</label>
               <Input
                 value={formData.country}
                 onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}

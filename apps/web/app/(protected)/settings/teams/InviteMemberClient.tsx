@@ -147,32 +147,32 @@ export default function InviteMemberClient({ orgId, role }: Props) {
 
   return (
     <div className="space-y-6">
-      <div className="rounded-md border bg-muted/30 p-3 text-sm">
+      <div className="rounded-md border bg-secondary/30 p-3 text-body-sm">
         {usage ? (
           usage.seat_policy === 'domain-unlimited' ? (
             <div className="flex items-center justify-between">
               <div>
-                <span className="font-medium">Seat policy:</span> Domain-unlimited
+                <span className="form-label">Seat policy:</span> Domain-unlimited
               </div>
-              <div className="text-foreground/70">Active members: {usage.active_count}</div>
+              <div className="color-foreground/70">Active members: {usage.active_count}</div>
             </div>
           ) : (
             <div className="flex items-center justify-between">
               <div>
-                <span className="font-medium">Seat policy:</span> Per-user
+                <span className="form-label">Seat policy:</span> Per-user
               </div>
-              <div className="text-foreground/70">
+              <div className="color-foreground/70">
                 Active members: {usage.active_count}{usage.seats_limit != null ? ` / ${usage.seats_limit}` : ''}
               </div>
             </div>
           )
         ) : (
-          <div className="text-foreground/60">Loading seat usage…</div>
+          <div className="color-foreground/60">Loading seat usage…</div>
         )}
       </div>
 
       <div className="space-y-2">
-        <div className="text-sm text-foreground/70">
+        <div className="text-body-sm color-foreground/70">
           Invite teammates by email. Team plan supports unlimited seats for emails matching your active organization domains.
         </div>
         <div className="flex flex-col gap-2 sm:flex-row sm:items-center">
@@ -184,7 +184,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
           <select
             value={inviteRole}
             onChange={(e: any) => setInviteRole(e.target.value)}
-            className="h-10 rounded-md border bg-background px-2 text-sm"
+            className="h-10 rounded-md border bg-background px-2 text-body-sm"
           >
             {ROLES.map((r) => (
               <option key={r} value={r}>{r}</option>
@@ -196,22 +196,22 @@ export default function InviteMemberClient({ orgId, role }: Props) {
               <Button variant="outline" onClick={() => submit('addExisting')} disabled={loading || !validEmail}>Add Existing</Button>
             </div>
           ) : (
-            <div className="text-xs text-foreground/60">Only owners and admins can send invites.</div>
+            <div className="text-body-sm color-foreground/60">Only owners and admins can send invites.</div>
           )}
         </div>
         {emailDomain ? (
-          <div className="text-xs flex items-center gap-2">
+          <div className="text-body-sm flex items-center gap-2">
             {domainRecord && domainRecord.status === 'active' ? (
-              <span className="text-success">Domain matches active organization domain — seat not counted.</span>
+              <span className="color-success">Domain matches active organization domain — seat not counted.</span>
             ) : domainRecord && domainRecord.status === 'pending' ? (
-              <span className="text-warning">Domain is pending verification — may not count toward domain-unlimited yet.</span>
+              <span className="color-warning">Domain is pending verification — may not count toward domain-unlimited yet.</span>
             ) : (
               <>
-                <span className="text-foreground/60">External domain — will count against seat limit if enforced.</span>
+                <span className="color-foreground/60">External domain — will count against seat limit if enforced.</span>
                 <Link
                   href={{ pathname: '/settings/organization/domains', query: emailDomain ? { suggest: emailDomain  as any} : {} }}
                   title="Add your organization email domain(s). When seat policy is domain-unlimited, invites matching active domains do not consume seats."
-                  className="inline-flex items-center rounded-md border px-2 py-1 text-[11px] hover:bg-muted/50"
+                  className="inline-flex items-center rounded-md border px-2 py-1 text-[11px] hover:bg-secondary/50"
                 >
                   Manage domains
                 </Link>
@@ -219,40 +219,40 @@ export default function InviteMemberClient({ orgId, role }: Props) {
             )}
           </div>
         ) : null}
-        {error ? <div className="text-xs text-destructive">{error}</div> : null}
-        {result ? <div className="text-xs text-success">{result}</div> : null}
+        {error ? <div className="text-body-sm color-destructive">{error}</div> : null}
+        {result ? <div className="text-body-sm color-success">{result}</div> : null}
       </div>
 
       <div className="space-y-2">
-        <div className="text-sm font-medium">Bulk invites</div>
-        <div className="text-xs text-foreground/70">Paste a list of emails (comma, space, or newline separated).</div>
+        <div className="text-body-sm form-label">Bulk invites</div>
+        <div className="text-body-sm color-foreground/70">Paste a list of emails (comma, space, or newline separated).</div>
         <textarea
           value={bulkText}
           onChange={(e: any) => setBulkText(e.target.value)}
           rows={4}
-          className="w-full rounded-md border bg-background px-3 py-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="w-full rounded-md border bg-background px-3 py-2 text-body-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           placeholder="user1@company.com, user2@company.com\nuser3@other.com"
         />
         <div className="flex items-center gap-2">
-          <span className="text-xs text-foreground/60">Role for all:</span>
+          <span className="text-body-sm color-foreground/60">Role for all:</span>
           <select
             value={bulkRole}
             onChange={(e: any) => setBulkRole(e.target.value)}
-            className="h-9 rounded-md border bg-background px-2 text-sm"
+            className="h-9 rounded-md border bg-background px-2 text-body-sm"
           >
             {ROLES.map((r) => (
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
           <Button onClick={submitBulk} disabled={loading || parseBulk(bulkText).length === 0 || !canManage}>Invite All</Button>
-          <div className="text-xs text-foreground/60">Detected: {parseBulk(bulkText).length} email(s)</div>
+          <div className="text-body-sm color-foreground/60">Detected: {parseBulk(bulkText).length} email(s)</div>
         </div>
       </div>
 
       <div className="rounded-md border">
-        <table className="w-full text-sm">
+        <table className="w-full text-body-sm">
           <thead>
-            <tr className="bg-muted/40">
+            <tr className="bg-secondary/40">
               <th className="px-3 py-2 text-left">Email</th>
               <th className="px-3 py-2 text-left">Role</th>
               <th className="px-3 py-2 text-left">Status</th>
@@ -266,11 +266,11 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                 <td className="px-3 py-2">{inv.role}</td>
                 <td className="px-3 py-2">
                   <span className={
-                    `inline-flex items-center rounded-full px-2 py-0.5 text-xs ` +
-                    (inv.status === 'pending' ? 'bg-warning/10 text-warning' :
-                     inv.status === 'accepted' ? 'bg-success/10 text-success' :
-                     inv.status === 'revoked' ? 'bg-muted/10 text-muted-foreground' :
-                     'bg-muted/10 text-muted-foreground')
+                    `inline-flex items-center rounded-full px-2 py-0.5 text-body-sm ` +
+                    (inv.status === 'pending' ? 'bg-warning/10 color-warning' :
+                     inv.status === 'accepted' ? 'bg-success/10 color-success' :
+                     inv.status === 'revoked' ? 'bg-secondary/10 color-muted' :
+                     'bg-secondary/10 color-muted')
                   }>
                     {inv.status}
                   </span>
@@ -287,7 +287,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
             ))}
             {invites.length === 0 ? (
               <tr>
-                <td className="px-3 py-6 text-center text-foreground/60" colSpan={4}>No invites yet.</td>
+                <td className="px-3 py-6 text-center color-foreground/60" colSpan={4}>No invites yet.</td>
               </tr>
             ) : null}
           </tbody>

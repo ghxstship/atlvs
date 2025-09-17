@@ -133,7 +133,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse text-body-sm">
         <thead>
           <tr className="sticky top-0">
             <th className="border-b p-2 text-left">Name</th>
@@ -161,16 +161,16 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         description={saving ? 'Saving…' : undefined}
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <div className="mb-3 flex items-center gap-2">
           <FileText className="h-4 w-4" />
-          <div className="text-xs opacity-70">{current?.path}</div>
+          <div className="text-body-sm opacity-70">{current?.path}</div>
         </div>
         <div className="mb-3">
-          <div className="mb-1 flex items-center gap-2 text-sm font-medium"><Tag className="h-4 w-4" /> {t('tags.title')}</div>
+          <div className="mb-1 flex items-center gap-2 text-body-sm form-label"><Tag className="h-4 w-4" /> {t('tags.title')}</div>
           <div className="flex flex-wrap items-center gap-2">
             {tags.map((tg) => (
-              <span key={tg.id} className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs">
+              <span key={tg.id} className="inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-body-sm">
                 {tg.tag}
                 <button type="button" className="opacity-60 hover:opacity-100" aria-label={t('tags.remove')} title={t('tags.remove')} onClick={() => removeTag(tg.id)}>
                   <XIcon className="h-3 w-3" />
@@ -181,7 +181,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
               <input
                 aria-label={t('tags.addPlaceholder')}
                 placeholder={t('tags.addPlaceholder')}
-                className="px-2 py-1 text-xs outline-none"
+                className="px-2 py-1 text-body-sm outline-none"
                 value={tagInput}
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
@@ -191,7 +191,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
           </div>
         </div>
         <div className="grid gap-1">
-          <label htmlFor="name" className="text-sm">Name</label>
+          <label htmlFor="name" className="text-body-sm">Name</label>
           <input id="name" className="rounded border px-2 py-1" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="mt-3 flex items-center justify-between gap-2 border-t pt-3">

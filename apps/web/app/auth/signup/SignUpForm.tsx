@@ -79,10 +79,10 @@ export function SignUpForm() {
   return (
     <div>
       <div className={spacing.marginBottom.large}>
-        <h2 className={`${typography.sectionTitle} ${spacing.marginBottom.small}`}>
+        <h2 className="text-heading-2 mb-2">
           SIGN UP
         </h2>
-        <p className={typography.bodyLarge}>
+        <p className="text-body color-muted">
           Create your account to get started
         </p>
       </div>
@@ -90,11 +90,11 @@ export function SignUpForm() {
       <form className={`${layouts.flexCol} ${spacing.textSpacing}`} onSubmit={onSubmit}>
         {/* Full Name */}
         <div>
-          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
+          <label className="form-label">
             Full Name
           </label>
           <div className="relative">
-            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
             <input
               type="text"
               className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
@@ -109,11 +109,11 @@ export function SignUpForm() {
 
         {/* Email */}
         <div>
-          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
+          <label className="form-label">
             Email Address
           </label>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
             <input
               type="email"
               className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
@@ -128,11 +128,11 @@ export function SignUpForm() {
 
         {/* Password */}
         <div>
-          <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
+          <label className="form-label">
             Password
           </label>
           <div className="relative">
-            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
             <input
               type={showPassword ? 'text' : 'password'}
               className={`w-full pl-10 pr-12 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
@@ -145,7 +145,7 @@ export function SignUpForm() {
             <button
               type="button"
               onClick={() => setShowPassword((v) => !v)}
-              className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+              className="absolute right-3 top-1/2 transform -translate-y-1/2 color-muted hover:color-foreground"
             >
               {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
             </button>
@@ -157,16 +157,16 @@ export function SignUpForm() {
           <input
             type="checkbox"
             id="terms"
-            className="mt-1 h-4 w-4 text-primary border-border rounded focus:ring-primary"
+            className="mt-1 h-4 w-4 color-primary border-border rounded focus:ring-primary"
             required
           />
-          <label htmlFor="terms" className={typography.bodySmall}>
+          <label htmlFor="terms" className="text-body-sm color-foreground">
             I agree to the{' '}
-            <Link href="/terms" className="text-primary hover:underline">
+            <Link href="/terms" className="color-primary hover:underline">
               Terms of Service
             </Link>{' '}
             and{' '}
-            <Link href="/privacy" className="text-primary hover:underline">
+            <Link href="/privacy" className="color-primary hover:underline">
               Privacy Policy
             </Link>
           </label>
@@ -182,7 +182,7 @@ export function SignUpForm() {
       {/* Divider */}
       <div className="my-8 flex items-center">
         <div className="flex-1 border-t border-border"></div>
-        <span className="px-4 text-sm text-muted-foreground">Or continue with</span>
+        <span className="px-4 text-body-sm color-muted">Or continue with</span>
         <div className="flex-1 border-t border-border"></div>
       </div>
 
@@ -204,14 +204,14 @@ export function SignUpForm() {
       </div>
 
       {/* Messages */}
-      {message && <div className="mt-6 text-sm text-green-600">{message}</div>}
-      {error && <div className="mt-2 text-sm text-red-600">{error}</div>}
+      {message && <div className="mt-6 text-body-sm color-success">{message}</div>}
+      {error && <div className="mt-2 text-body-sm color-error">{error}</div>}
 
       {/* Footer */}
       <div className="mt-8 text-center">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-body-sm color-muted">
           Already have an account?{' '}
-          <Link href="/login" className="text-primary hover:underline font-medium">
+          <Link href="/auth/signin" className="color-primary hover:underline form-label">
             Sign in
           </Link>
         </p>

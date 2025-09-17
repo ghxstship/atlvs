@@ -192,30 +192,30 @@ export default function RidersClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
       case 'pending_review':
-        return 'text-warning-foreground bg-warning/10';
+        return 'color-warning-foreground bg-warning/10';
       case 'approved':
         return 'text-info-foreground bg-info/10';
       case 'fulfilled':
-        return 'text-success-foreground bg-success/10';
+        return 'color-success-foreground bg-success/10';
       default:
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
     }
   };
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'low':
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
       case 'medium':
         return 'text-info-foreground bg-info/10';
       case 'high':
-        return 'text-warning-foreground bg-warning/10';
+        return 'color-warning-foreground bg-warning/10';
       case 'critical':
-        return 'text-destructive-foreground bg-destructive/10';
+        return 'color-destructive-foreground bg-destructive/10';
       default:
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
     }
   };
 
@@ -270,7 +270,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Riders Management</h2>
+                <h2 className="text-body text-heading-4">Riders Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Rider
@@ -292,7 +292,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                 return (
                   <Card key={type} className="p-4">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-semibold flex items-center gap-2">
+                      <h3 className="text-heading-4 flex items-center gap-2">
                         <IconComponent className="h-4 w-4" />
                         {riderTypeLabels[type] || type}
                       </h3>
@@ -302,13 +302,13 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                     </div>
                     
                     <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Pending Review:</span>
-                        <span className="font-medium text-warning">{pendingCount}</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-muted">Pending Review:</span>
+                        <span className="form-label color-warning">{pendingCount}</span>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Approved:</span>
-                        <span className="font-medium text-success">{approvedCount}</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-muted">Approved:</span>
+                        <span className="form-label color-success">{approvedCount}</span>
                       </div>
                     </div>
                     
@@ -316,12 +316,12 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                       {typeRiders.slice(0, 2).map((rider: any) => (
                         <div
                           key={rider.id}
-                          className="flex items-center justify-between text-xs p-2 rounded border cursor-pointer hover:bg-muted/50"
+                          className="flex items-center justify-between text-body-sm p-2 rounded border cursor-pointer hover:bg-secondary/50"
                           onClick={() => handleViewRider(rider)}
                         >
                           <div>
-                            <div className="font-medium">{rider.event_name}</div>
-                            <div className="text-muted-foreground flex items-center gap-1">
+                            <div className="form-label">{rider.event_name}</div>
+                            <div className="color-muted flex items-center gap-1">
                               <Calendar className="h-3 w-3" />
                               {new Date(rider.created_at).toLocaleDateString()}
                             </div>
@@ -338,7 +338,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                       ))}
                       
                       {typeRiders.length > 2 && (
-                        <div className="text-xs text-muted-foreground text-center pt-1">
+                        <div className="text-body-sm color-muted text-center pt-1">
                           +{typeRiders.length - 2} more riders
                         </div>
                       )}
@@ -386,13 +386,13 @@ export default function RidersClient({ orgId }: { orgId: string }) {
               {selectedRecord && (
                 <div className="space-y-4 mt-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <FileText className="h-4 w-4" />
                       <span>
                         {selectedRecord.kind?.replace('_', ' ') || 'Technical'} Rider
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Calendar className="h-4 w-4" />
                       <span>
                         Created {new Date(selectedRecord.created_at).toLocaleDateString()}
@@ -411,8 +411,8 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                   
                   {selectedRecord.details && (
                     <div className="pt-4 border-t">
-                      <h4 className="font-medium mb-2">Rider Details</h4>
-                      <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded">
+                      <h4 className="form-label mb-2">Rider Details</h4>
+                      <div className="text-body-sm color-muted bg-secondary/50 p-3 rounded">
                         {typeof selectedRecord.details === 'object' 
                           ? JSON.stringify(selectedRecord.details, null, 2)
                           : selectedRecord.details
@@ -427,9 +427,9 @@ export default function RidersClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-8 text-center">
-                <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Riders Yet</h3>
-                <p className="text-muted-foreground mb-4">
+                <FileText className="h-12 w-12 mx-auto mb-4 color-muted" />
+                <h3 className="text-body text-heading-4 mb-2">No Riders Yet</h3>
+                <p className="color-muted mb-4">
                   Start creating technical and hospitality riders for your events to ensure all requirements are met.
                 </p>
                 <Button onClick={handleCreateRider}>

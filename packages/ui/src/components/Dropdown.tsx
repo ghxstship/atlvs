@@ -59,7 +59,7 @@ const itemVariants = cva(
     variants: {
       variant: {
         default: 'hover:bg-accent hover:text-accent-foreground',
-        destructive: 'text-red-600 hover:bg-red-50 hover:text-red-700 dark:text-red-400 dark:hover:bg-red-950 dark:hover:text-red-300',
+        destructive: 'text-destructive hover:bg-destructive/10 hover:text-destructive',
       },
       inset: {
         true: 'pl-8',
@@ -280,7 +280,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     return (
       <ItemComponent
         key={item.key}
-        ref={(el) => (itemRefs.current[index] = el)}
+        ref={(el: any) => (itemRefs.current[index] = el)}
         className={twMerge(
           itemVariants({ 
             variant: item.variant, 

@@ -202,7 +202,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
 
   const getTypeColor = (type: Contract['type']) => {
     const typeInfo = CONTRACT_TYPES.find(t => t.id === type);
-    return typeInfo?.color || 'bg-muted-foreground';
+    return typeInfo?.color || 'bg-secondary-foreground';
   };
 
   const formatCurrency = (value: number, currency: string) => {
@@ -216,8 +216,8 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Contracting Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage crew contracts and agreements</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Contracting Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage crew contracts and agreements</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -229,11 +229,11 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
       {showForm && (
         <Card>
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Create New Contract</h3>
+            <h3 className="text-body text-heading-4 mb-4">Create New Contract</h3>
             <form onSubmit={handleCreateContract} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Person</label>
+                  <label className="block text-body-sm form-label mb-1">Person</label>
                   <select
                     value={formData.personId}
                     onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
@@ -249,7 +249,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Project</label>
+                  <label className="block text-body-sm form-label mb-1">Project</label>
                   <select
                     value={formData.projectId}
                     onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
@@ -267,7 +267,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
               </div>
               <div className="grid grid-cols-3 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Contract Type</label>
+                  <label className="block text-body-sm form-label mb-1">Contract Type</label>
                   <select
                     value={formData.type}
                     onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as Contract['type'] }))}
@@ -281,7 +281,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Value</label>
+                  <label className="block text-body-sm form-label mb-1">Value</label>
                   <Input
                     type="number"
                     step="0.01"
@@ -291,7 +291,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Currency</label>
+                  <label className="block text-body-sm form-label mb-1">Currency</label>
                   <select
                     value={formData.currency}
                     onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
@@ -305,7 +305,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Start Date</label>
+                  <label className="block text-body-sm form-label mb-1">Start Date</label>
                   <Input
                     type="date"
                     value={formData.startDate}
@@ -314,7 +314,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">End Date</label>
+                  <label className="block text-body-sm form-label mb-1">End Date</label>
                   <Input
                     type="date"
                     value={formData.endDate}
@@ -323,7 +323,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium mb-1">Notes</label>
+                <label className="block text-body-sm form-label mb-1">Notes</label>
                 <Input
                   value={formData.notes}
                   onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
@@ -344,11 +344,11 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
       {/* Contracts List */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading contracts...</div>
+          <div className="p-8 text-center color-muted">Loading contracts...</div>
         </Card>
       ) : contracts.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No contracts found. Create one to get started.
           </div>
         </Card>
@@ -361,17 +361,17 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <div className={`w-3 h-3 rounded-full ${getTypeColor(contract.type)}`} />
-                      <h3 className="text-lg font-semibold">{contract.personName}</h3>
+                      <h3 className="text-body text-heading-4">{contract.personName}</h3>
                       {getStatusBadge(contract.status)}
                     </div>
-                    <p className="text-sm text-muted-foreground mb-2">{contract.projectName}</p>
-                    <div className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted mb-2">{contract.projectName}</p>
+                    <div className="text-body-sm color-muted">
                       {CONTRACT_TYPES.find(t => t.id === contract.type)?.name}
                     </div>
                   </div>
                   <div className="text-right">
                     {contract.value && (
-                      <div className="text-lg font-semibold text-success flex items-center gap-1">
+                      <div className="text-body text-heading-4 color-success flex items-center gap-1">
                         <DollarSign className="w-4 h-4" />
                         {formatCurrency(contract.value, contract.currency)}
                       </div>
@@ -379,28 +379,28 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 text-sm mb-4">
+                <div className="grid grid-cols-2 gap-4 text-body-sm mb-4">
                   <div>
-                    <span className="font-medium">Start Date:</span> {new Date(contract.startDate).toLocaleDateString()}
+                    <span className="form-label">Start Date:</span> {new Date(contract.startDate).toLocaleDateString()}
                   </div>
                   {contract.endDate && (
                     <div>
-                      <span className="font-medium">End Date:</span> {new Date(contract.endDate).toLocaleDateString()}
+                      <span className="form-label">End Date:</span> {new Date(contract.endDate).toLocaleDateString()}
                     </div>
                   )}
                   {contract.signedDate && (
                     <div>
-                      <span className="font-medium">Signed:</span> {new Date(contract.signedDate).toLocaleDateString()}
+                      <span className="form-label">Signed:</span> {new Date(contract.signedDate).toLocaleDateString()}
                     </div>
                   )}
                   <div>
-                    <span className="font-medium">Created:</span> {contract.createdAt ? new Date(contract.createdAt).toLocaleDateString() : 'N/A'}
+                    <span className="form-label">Created:</span> {contract.createdAt ? new Date(contract.createdAt).toLocaleDateString() : 'N/A'}
                   </div>
                 </div>
 
                 {contract.notes && (
-                  <div className="text-sm text-muted-foreground mb-4 p-3 bg-muted rounded-md">
-                    <span className="font-medium">Notes:</span> {contract.notes}
+                  <div className="text-body-sm color-muted mb-4 p-3 bg-secondary rounded-md">
+                    <span className="form-label">Notes:</span> {contract.notes}
                   </div>
                 )}
 

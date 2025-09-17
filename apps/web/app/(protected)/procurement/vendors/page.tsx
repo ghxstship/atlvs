@@ -34,8 +34,8 @@ export default async function VendorsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Vendors</h1>
-          <p className="text-foreground/70">
+          <h1 className="text-heading-3 text-heading-3">Vendors</h1>
+          <p className="color-foreground/70">
             Manage your procurement vendors and suppliers
           </p>
         </div>

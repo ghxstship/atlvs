@@ -104,11 +104,11 @@ export default function BlogPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               INSIGHTS FROM
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 THE TRENCHES
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Real stories, hard-won lessons, and practical insights from managing 
               everything from cruise ship entertainment to Formula 1 hospitality. 
               No fluff, just what actually works when the pressure's on.
@@ -138,7 +138,7 @@ export default function BlogPage() {
               <Badge 
                 key={category} 
                 variant={category === 'All' ? 'default' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2"
+                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2"
               >
                 {category}
               </Badge>
@@ -154,15 +154,15 @@ export default function BlogPage() {
             {blogPosts.map((post) => (
               <Card key={post.id} className="hover:shadow-lg transition-all duration-300 group overflow-hidden">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <Eye className="h-12 w-12 text-primary mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Preview Image</p>
+                      <Eye className="h-12 w-12 color-primary mx-auto mb-2" />
+                      <p className="text-body-sm color-muted">Preview Image</p>
                     </div>
                   </div>
                   {post.isPremium && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                      <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-1" />
                         Premium
                       </Badge>
@@ -174,14 +174,14 @@ export default function BlogPage() {
                 </div>
                 
                 <CardContent className="p-6">
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {post.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="color-muted mb-4 line-clamp-2">
                     {post.excerpt}
                   </p>
                   
-                  <div className="flex items-center justify-between text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center justify-between text-body-sm color-muted mb-4">
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
                         <User className="h-4 w-4" />
@@ -199,7 +199,7 @@ export default function BlogPage() {
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-1 text-body-sm color-muted">
                       <Clock className="h-4 w-4" />
                       {post.readTime}
                     </div>
@@ -227,14 +227,14 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <Card className="max-w-2xl mx-auto text-center">
             <CardContent className="p-8">
               <h2 className={`mb-4 ${typography.cardTitle}`}>
                 NEVER MISS AN UPDATE
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="color-muted mb-6">
                 Get the latest insights, case studies, and industry updates delivered to your inbox. 
                 No spam, just the good stuff from someone who's actually been there.
               </p>
@@ -245,7 +245,7 @@ export default function BlogPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline">
                     Sign In
                   </Button>

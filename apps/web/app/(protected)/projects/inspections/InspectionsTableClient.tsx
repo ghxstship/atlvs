@@ -215,15 +215,15 @@ export default function InspectionsTableClient({
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm">
+        <table className="w-full border-collapse text-body-sm">
           <thead>
             <tr className="border-b">
-              <th className="text-left p-3 font-medium">Inspection</th>
-              <th className="text-left p-3 font-medium">Type</th>
-              <th className="text-left p-3 font-medium">Status</th>
-              <th className="text-left p-3 font-medium">Project</th>
-              <th className="text-left p-3 font-medium">Scheduled</th>
-              <th className="text-left p-3 font-medium">Inspector</th>
+              <th className="text-left p-3 form-label">Inspection</th>
+              <th className="text-left p-3 form-label">Type</th>
+              <th className="text-left p-3 form-label">Status</th>
+              <th className="text-left p-3 form-label">Project</th>
+              <th className="text-left p-3 form-label">Scheduled</th>
+              <th className="text-left p-3 form-label">Inspector</th>
             </tr>
           </thead>
           <tbody>
@@ -237,8 +237,8 @@ export default function InspectionsTableClient({
                 >
                   <td className="p-3">
                     <div className="flex items-center gap-2">
-                      <ClipboardCheck className="w-4 h-4 text-muted-foreground" />
-                      <span className="font-medium">{row.title}</span>
+                      <ClipboardCheck className="w-4 h-4 color-muted" />
+                      <span className="form-label">{row.title}</span>
                     </div>
                   </td>
                   <td className="p-3">
@@ -257,31 +257,31 @@ export default function InspectionsTableClient({
                   <td className="p-3">
                     {row.project ? (
                       <div className="flex items-center gap-2">
-                        <Building className="w-4 h-4 text-muted-foreground" />
+                        <Building className="w-4 h-4 color-muted" />
                         <span>{row.project.name}</span>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground">No project</span>
+                      <span className="color-muted">No project</span>
                     )}
                   </td>
                   <td className="p-3">
                     {row.scheduled_at ? (
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <Calendar className="w-4 h-4 color-muted" />
                         <span>{new Date(row.scheduled_at).toLocaleDateString()}</span>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground">Not scheduled</span>
+                      <span className="color-muted">Not scheduled</span>
                     )}
                   </td>
                   <td className="p-3">
                     {row.inspector_name ? (
                       <div className="flex items-center gap-2">
-                        <User className="w-4 h-4 text-muted-foreground" />
+                        <User className="w-4 h-4 color-muted" />
                         <span>{row.inspector_name}</span>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground">Unassigned</span>
+                      <span className="color-muted">Unassigned</span>
                     )}
                   </td>
                 </tr>
@@ -291,7 +291,7 @@ export default function InspectionsTableClient({
         </table>
 
         {rows.length === 0 && (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 color-muted">
             No inspections found. Create your first inspection to get started.
           </div>
         )}
@@ -308,7 +308,7 @@ export default function InspectionsTableClient({
        
       >
         {error && (
-          <div className="mb-4 p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+          <div className="mb-4 p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
             {error}
           </div>
         )}
@@ -323,10 +323,10 @@ export default function InspectionsTableClient({
             <button
               key={key}
               onClick={() => setActiveTab(key as any)}
-              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              className={`flex items-center gap-2 px-4 py-2 text-body-sm form-label border-b-2 transition-colors ${
                 activeTab === key
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
+                  ? 'border-primary color-primary'
+                  : 'border-transparent color-muted hover:color-foreground'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -339,7 +339,7 @@ export default function InspectionsTableClient({
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Type</label>
+                <label className="text-body-sm form-label color-muted">Type</label>
                 <div className="mt-1">
                   <Badge variant={getTypeColor(current.type)}>
                     {current.type.replace('_', ' ')}
@@ -347,7 +347,7 @@ export default function InspectionsTableClient({
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Status</label>
+                <label className="text-body-sm form-label color-muted">Status</label>
                 <div className="mt-1">
                   <Badge variant={getStatusColor(current.status)}>
                     {current.status.replace('_', ' ')}
@@ -358,14 +358,14 @@ export default function InspectionsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Project</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Project</label>
+                <div className="mt-1 text-body-sm">
                   {current.project?.name || 'No project assigned'}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Inspector</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Inspector</label>
+                <div className="mt-1 text-body-sm">
                   {current.inspector_name || 'Unassigned'}
                 </div>
               </div>
@@ -373,8 +373,8 @@ export default function InspectionsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Scheduled</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Scheduled</label>
+                <div className="mt-1 text-body-sm">
                   {current.scheduled_at 
                     ? new Date(current.scheduled_at).toLocaleString()
                     : 'Not scheduled'
@@ -382,8 +382,8 @@ export default function InspectionsTableClient({
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Completed</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Completed</label>
+                <div className="mt-1 text-body-sm">
                   {current.completed_at 
                     ? new Date(current.completed_at).toLocaleString()
                     : 'Not completed'
@@ -397,7 +397,7 @@ export default function InspectionsTableClient({
         {activeTab === 'edit' && (
           <form onSubmit={form.handleSubmit(onSave)} className="space-y-4">
             <div className="grid gap-2">
-              <label htmlFor="title" className="text-sm font-medium">Title *</label>
+              <label htmlFor="title" className="text-body-sm form-label">Title *</label>
               <input
                 id="title"
                 type="text"
@@ -405,7 +405,7 @@ export default function InspectionsTableClient({
                 {...form.register('title')}
               />
               {form.formState.errors.title && (
-                <div className="text-xs text-destructive">
+                <div className="text-body-sm color-destructive">
                   {form.formState.errors.title.message}
                 </div>
               )}
@@ -413,7 +413,7 @@ export default function InspectionsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <label htmlFor="type" className="text-sm font-medium">Type *</label>
+                <label htmlFor="type" className="text-body-sm form-label">Type *</label>
                 <select
                   id="type"
                   className="rounded border px-3 py-2"
@@ -429,7 +429,7 @@ export default function InspectionsTableClient({
               </div>
 
               <div className="grid gap-2">
-                <label htmlFor="status" className="text-sm font-medium">Status *</label>
+                <label htmlFor="status" className="text-body-sm form-label">Status *</label>
                 <select
                   id="status"
                   className="rounded border px-3 py-2"
@@ -445,7 +445,7 @@ export default function InspectionsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <label htmlFor="scheduled_at" className="text-sm font-medium">Scheduled Date</label>
+                <label htmlFor="scheduled_at" className="text-body-sm form-label">Scheduled Date</label>
                 <input
                   id="scheduled_at"
                   type="datetime-local"
@@ -455,7 +455,7 @@ export default function InspectionsTableClient({
               </div>
 
               <div className="grid gap-2">
-                <label htmlFor="inspector_name" className="text-sm font-medium">Inspector</label>
+                <label htmlFor="inspector_name" className="text-body-sm form-label">Inspector</label>
                 <input
                   id="inspector_name"
                   type="text"
@@ -467,7 +467,7 @@ export default function InspectionsTableClient({
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="project_id" className="text-sm font-medium">Project</label>
+              <label htmlFor="project_id" className="text-body-sm form-label">Project</label>
               <select
                 id="project_id"
                 className="rounded border px-3 py-2"
@@ -501,7 +501,7 @@ export default function InspectionsTableClient({
 
         {activeTab === 'comments' && (
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-body-sm color-muted">
               Comments functionality would be implemented here
             </div>
           </div>
@@ -509,7 +509,7 @@ export default function InspectionsTableClient({
 
         {activeTab === 'activity' && (
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-body-sm color-muted">
               Activity log functionality would be implemented here
             </div>
           </div>

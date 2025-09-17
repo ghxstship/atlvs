@@ -218,15 +218,15 @@ export default function ActivationsTableClient({
   return (
     <>
       <div className="overflow-x-auto">
-        <table className="w-full border-collapse text-sm">
+        <table className="w-full border-collapse text-body-sm">
           <thead>
             <tr className="border-b">
-              <th className="text-left p-3 font-medium">Activation</th>
-              <th className="text-left p-3 font-medium">Status</th>
-              <th className="text-left p-3 font-medium">Project</th>
-              <th className="text-left p-3 font-medium">Activation Date</th>
-              <th className="text-left p-3 font-medium">Budget</th>
-              <th className="text-left p-3 font-medium">Completion</th>
+              <th className="text-left p-3 form-label">Activation</th>
+              <th className="text-left p-3 form-label">Status</th>
+              <th className="text-left p-3 form-label">Project</th>
+              <th className="text-left p-3 form-label">Activation Date</th>
+              <th className="text-left p-3 form-label">Budget</th>
+              <th className="text-left p-3 form-label">Completion</th>
             </tr>
           </thead>
           <tbody>
@@ -240,8 +240,8 @@ export default function ActivationsTableClient({
                 >
                   <td className="p-3">
                     <div className="flex items-center gap-2">
-                      <Rocket className="w-4 h-4 text-muted-foreground" />
-                      <span className="font-medium">{row.name}</span>
+                      <Rocket className="w-4 h-4 color-muted" />
+                      <span className="form-label">{row.name}</span>
                     </div>
                   </td>
                   <td className="p-3">
@@ -255,26 +255,26 @@ export default function ActivationsTableClient({
                   <td className="p-3">
                     {row.project ? (
                       <div className="flex items-center gap-2">
-                        <Building className="w-4 h-4 text-muted-foreground" />
+                        <Building className="w-4 h-4 color-muted" />
                         <span>{row.project.name}</span>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground">No project</span>
+                      <span className="color-muted">No project</span>
                     )}
                   </td>
                   <td className="p-3">
                     {row.activation_date ? (
                       <div className="flex items-center gap-2">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
+                        <Calendar className="w-4 h-4 color-muted" />
                         <span>{new Date(row.activation_date).toLocaleDateString()}</span>
                       </div>
                     ) : (
-                      <span className="text-muted-foreground">Not scheduled</span>
+                      <span className="color-muted">Not scheduled</span>
                     )}
                   </td>
                   <td className="p-3">
                     <div className="flex items-center gap-2">
-                      <DollarSign className="w-4 h-4 text-muted-foreground" />
+                      <DollarSign className="w-4 h-4 color-muted" />
                       <span>{formatCurrency(row.budget)}</span>
                     </div>
                   </td>
@@ -282,7 +282,7 @@ export default function ActivationsTableClient({
                     {row.completion_date ? (
                       <span>{new Date(row.completion_date).toLocaleDateString()}</span>
                     ) : (
-                      <span className="text-muted-foreground">Ongoing</span>
+                      <span className="color-muted">Ongoing</span>
                     )}
                   </td>
                 </tr>
@@ -292,7 +292,7 @@ export default function ActivationsTableClient({
         </table>
 
         {rows.length === 0 && (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 color-muted">
             No activations found. Create your first activation to get started.
           </div>
         )}
@@ -309,7 +309,7 @@ export default function ActivationsTableClient({
        
       >
         {error && (
-          <div className="mb-4 p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+          <div className="mb-4 p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
             {error}
           </div>
         )}
@@ -324,10 +324,10 @@ export default function ActivationsTableClient({
             <button
               key={key}
               onClick={() => setActiveTab(key as any)}
-              className={`flex items-center gap-2 px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              className={`flex items-center gap-2 px-4 py-2 text-body-sm form-label border-b-2 transition-colors ${
                 activeTab === key
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-muted-foreground hover:text-foreground'
+                  ? 'border-primary color-primary'
+                  : 'border-transparent color-muted hover:color-foreground'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -340,7 +340,7 @@ export default function ActivationsTableClient({
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Status</label>
+                <label className="text-body-sm form-label color-muted">Status</label>
                 <div className="mt-1">
                   <Badge variant={getStatusColor(current.status)}>
                     {current.status}
@@ -348,8 +348,8 @@ export default function ActivationsTableClient({
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Budget</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Budget</label>
+                <div className="mt-1 text-body-sm">
                   {formatCurrency(current.budget)}
                 </div>
               </div>
@@ -357,14 +357,14 @@ export default function ActivationsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Project</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Project</label>
+                <div className="mt-1 text-body-sm">
                   {current.project?.name || 'No project assigned'}
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Created</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Created</label>
+                <div className="mt-1 text-body-sm">
                   {new Date(current.created_at).toLocaleDateString()}
                 </div>
               </div>
@@ -372,8 +372,8 @@ export default function ActivationsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Activation Date</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Activation Date</label>
+                <div className="mt-1 text-body-sm">
                   {current.activation_date 
                     ? new Date(current.activation_date).toLocaleString()
                     : 'Not scheduled'
@@ -381,8 +381,8 @@ export default function ActivationsTableClient({
                 </div>
               </div>
               <div>
-                <label className="text-sm font-medium text-muted-foreground">Completion Date</label>
-                <div className="mt-1 text-sm">
+                <label className="text-body-sm form-label color-muted">Completion Date</label>
+                <div className="mt-1 text-body-sm">
                   {current.completion_date 
                     ? new Date(current.completion_date).toLocaleString()
                     : 'Not completed'
@@ -396,7 +396,7 @@ export default function ActivationsTableClient({
         {activeTab === 'edit' && (
           <form onSubmit={form.handleSubmit(onSave)} className="space-y-4">
             <div className="grid gap-2">
-              <label htmlFor="name" className="text-sm font-medium">Name *</label>
+              <label htmlFor="name" className="text-body-sm form-label">Name *</label>
               <input
                 id="name"
                 type="text"
@@ -404,7 +404,7 @@ export default function ActivationsTableClient({
                 {...form.register('name')}
               />
               {form.formState.errors.name && (
-                <div className="text-xs text-red-600">
+                <div className="text-body-sm color-error">
                   {form.formState.errors.name.message}
                 </div>
               )}
@@ -412,7 +412,7 @@ export default function ActivationsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <label htmlFor="status" className="text-sm font-medium">Status *</label>
+                <label htmlFor="status" className="text-body-sm form-label">Status *</label>
                 <select
                   id="status"
                   className="rounded border px-3 py-2"
@@ -427,7 +427,7 @@ export default function ActivationsTableClient({
               </div>
 
               <div className="grid gap-2">
-                <label htmlFor="budget" className="text-sm font-medium">Budget ($)</label>
+                <label htmlFor="budget" className="text-body-sm form-label">Budget ($)</label>
                 <input
                   id="budget"
                   type="number"
@@ -442,7 +442,7 @@ export default function ActivationsTableClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="grid gap-2">
-                <label htmlFor="activation_date" className="text-sm font-medium">Activation Date</label>
+                <label htmlFor="activation_date" className="text-body-sm form-label">Activation Date</label>
                 <input
                   id="activation_date"
                   type="datetime-local"
@@ -452,7 +452,7 @@ export default function ActivationsTableClient({
               </div>
 
               <div className="grid gap-2">
-                <label htmlFor="completion_date" className="text-sm font-medium">Completion Date</label>
+                <label htmlFor="completion_date" className="text-body-sm form-label">Completion Date</label>
                 <input
                   id="completion_date"
                   type="datetime-local"
@@ -463,7 +463,7 @@ export default function ActivationsTableClient({
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="project_id" className="text-sm font-medium">Project</label>
+              <label htmlFor="project_id" className="text-body-sm form-label">Project</label>
               <select
                 id="project_id"
                 className="rounded border px-3 py-2"
@@ -497,7 +497,7 @@ export default function ActivationsTableClient({
 
         {activeTab === 'comments' && (
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-body-sm color-muted">
               Comments functionality would be implemented here
             </div>
           </div>
@@ -505,7 +505,7 @@ export default function ActivationsTableClient({
 
         {activeTab === 'activity' && (
           <div className="space-y-4">
-            <div className="text-sm text-muted-foreground">
+            <div className="text-body-sm color-muted">
               Activity log functionality would be implemented here
             </div>
           </div>

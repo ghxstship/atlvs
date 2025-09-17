@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Input } from '@ghxstship/ui';
-import { CategoryBadge } from '../../components/ui/ColoredBadge';
-import { StandardButton, animationPresets } from '../../components/ui';
+import { Card, Badge, Button, Input } from '@ghxstship/ui';
+import { animationPresets } from '../../../_components/ui';
 import { Tag, Search, Filter, Package, Wrench, Edit } from 'lucide-react';
 
 interface Category {
@@ -113,7 +112,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-foreground/70">Loading categories...</p>
+          <p className="color-foreground/70">Loading categories...</p>
         </div>
       </div>
     );
@@ -125,7 +124,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-1">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
             <Input
               placeholder="Search categories..."
               value={searchQuery}
@@ -162,9 +161,9 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
       {/* Categories Grid */}
       {filteredCategories.length === 0 ? (
         <div className="text-center py-12">
-          <Tag className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-          <h3 className="text-lg font-medium mb-2">No categories found</h3>
-          <p className="text-foreground/70 mb-4">
+          <Tag className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+          <h3 className="text-body form-label mb-2">No categories found</h3>
+          <p className="color-foreground/70 mb-4">
             {searchQuery || typeFilter !== 'all' || statusFilter !== 'all'
               ? 'Try adjusting your search or filters'
               : 'Get started by creating your first category'
@@ -180,12 +179,11 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
             >
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <CategoryBadge
-                    category={category}
-                    variant="subtle"
-                  />
+                  <Badge variant="outline">
+                    {category.name}
+                  </Badge>
                   <div>
-                    <h3 className="font-medium">{category.name}</h3>
+                    <h3 className="form-label">{category.name}</h3>
                     <div className="flex items-center gap-2 mt-1">
                       <Badge variant={getStatusVariant(category.status) === 'success' ? 'default' : 'secondary'}>
                         {category.status}
@@ -197,18 +195,18 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
                     </div>
                   </div>
                 </div>
-                <StandardButton variant="ghost" size="sm">
+                <Button variant="ghost" size="sm">
                   <Edit className="h-4 w-4" />
-                </StandardButton>
+                </Button>
               </div>
 
               {category.description && (
-                <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
+                <p className="text-body-sm color-foreground/70 mb-4 line-clamp-2">
                   {category.description}
                 </p>
               )}
 
-              <div className="flex items-center justify-between text-sm text-foreground/50">
+              <div className="flex items-center justify-between text-body-sm color-foreground/50">
                 {category.sort_order !== undefined && (
                   <span>Order: {category.sort_order}</span>
                 )}

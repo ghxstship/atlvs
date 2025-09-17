@@ -33,7 +33,7 @@ export default async function ProfessionalPage() {
         <div className="mb-3 flex items-center justify-end">
           <CreateProfessionalClient orgId={orgId} userId={user.user.id} />
         </div>
-        <div className="text-sm text-foreground/70">
+        <div className="text-body-sm color-foreground/70">
           <Suspense fallback={<div>Loading...</div>}>
             <ProfessionalClient orgId={orgId} userId={user.user.id} />
           </Suspense>

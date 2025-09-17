@@ -27,8 +27,8 @@ export default async function DemoSetupPage() {
     <div className="min-h-screen bg-background">
       <div className="container mx-auto py-12 px-4">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold mb-2">Demo Users Setup</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-2 text-heading-3 mb-2">Demo Users Setup</h1>
+          <p className="color-muted">
             Create authenticated demo users for testing different roles and permissions
           </p>
         </div>

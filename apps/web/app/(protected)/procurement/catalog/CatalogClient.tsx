@@ -110,16 +110,16 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
   };
 
   const getTypeColor = (type: string) => {
-    return type === 'product' ? 'bg-primary/10 text-primary' : 'bg-success/10 text-success';
+    return type === 'product' ? 'bg-primary/10 color-primary' : 'bg-success/10 color-success';
   };
 
   if (loading) {
     return (
       <div className="space-y-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <BookOpen className="h-5 w-5" />
-          <h3 className="font-semibold">Procurement Catalog</h3>
+          <h3 className="text-heading-4">Procurement Catalog</h3>
           <Badge variant="secondary">{filteredItems.length} items</Badge>
         </div>
         <div className="flex items-center gap-2">
@@ -155,7 +155,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
           <Input
             placeholder="Search catalog items..."
             value={searchQuery}
@@ -168,7 +168,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
           <select 
             value={typeFilter} 
             onChange={(e) => setTypeFilter(e.target.value as typeof typeFilter)}
-            className="px-3 py-2 border border-input bg-background rounded-md text-sm"
+            className="px-3 py-2 border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Types</option>
             <option value="product">Products</option>
@@ -178,7 +178,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
           <select 
             value={statusFilter} 
             onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
-            className="px-3 py-2 border border-input bg-background rounded-md text-sm"
+            className="px-3 py-2 border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -191,10 +191,10 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       {/* Catalog Items */}
       {filteredItems.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             <BookOpen className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p>{searchQuery || typeFilter !== 'all' || statusFilter !== 'all' ? 'No items found matching your filters.' : 'No items in catalog.'}</p>
-            <p className="text-sm">
+            <p className="text-body-sm">
               {searchQuery || typeFilter !== 'all' || statusFilter !== 'all' ? 'Try adjusting your search or filters.' : 'Add products and services to build your catalog.'}
             </p>
           </div>
@@ -209,7 +209,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
                       <TypeIcon className="h-4 w-4" />
-                      <h4 className="font-medium">{item.name}</h4>
+                      <h4 className="form-label">{item.name}</h4>
                     </div>
                     <Badge variant={getStatusColor(item.status)}>
                       {item.status}
@@ -217,28 +217,28 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
                   </div>
                   
                   <div className="flex items-center gap-2 mb-2">
-                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(item.type)}`}>
+                    <span className={`px-2 py-1 rounded-full text-body-sm form-label ${getTypeColor(item.type)}`}>
                       {item.type}
                     </span>
                     {item.category && (
-                      <span className="text-xs text-muted-foreground uppercase tracking-wide">
+                      <span className="text-body-sm color-muted uppercase tracking-wide">
                         {item.category}
                       </span>
                     )}
                   </div>
                   
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  <p className="text-body-sm color-muted mb-3 line-clamp-2">
                     {item.description}
                   </p>
                   
                   <div className="flex items-center justify-between mb-2">
-                    <div className="text-lg font-semibold">
+                    <div className="text-body text-heading-4">
                       ${item.price.toLocaleString()} {item.currency}
                     </div>
                   </div>
                   
                   {item.supplier && (
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       <strong>Supplier:</strong> {item.supplier}
                     </div>
                   )}
@@ -256,28 +256,28 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
                 <div key={`${item.type}-${item.id}`} className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3 flex-1">
-                      <TypeIcon className="h-5 w-5 text-muted-foreground" />
+                      <TypeIcon className="h-5 w-5 color-muted" />
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-medium">{item.name}</h4>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getTypeColor(item.type)}`}>
+                          <h4 className="form-label">{item.name}</h4>
+                          <span className={`px-2 py-1 rounded-full text-body-sm form-label ${getTypeColor(item.type)}`}>
                             {item.type}
                           </span>
-                          <Badge variant={getStatusColor(item.status)} className="text-xs">
+                          <Badge variant={getStatusColor(item.status)} className="text-body-sm">
                             {item.status}
                           </Badge>
                         </div>
-                        <p className="text-sm text-muted-foreground line-clamp-1">
+                        <p className="text-body-sm color-muted line-clamp-1">
                           {item.description}
                         </p>
-                        <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
+                        <div className="flex items-center gap-4 mt-1 text-body-sm color-muted">
                           {item.category && <span>Category: {item.category}</span>}
                           {item.supplier && <span>Supplier: {item.supplier}</span>}
                         </div>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-lg font-semibold">
+                      <div className="text-body text-heading-4">
                         ${item.price.toLocaleString()} {item.currency}
                       </div>
                     </div>

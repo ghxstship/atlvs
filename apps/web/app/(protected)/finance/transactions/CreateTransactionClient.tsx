@@ -164,10 +164,10 @@ export default function CreateTransactionClient({
         {/* Transaction Overview */}
         <Card className="p-4 bg-primary/10 border-primary/20">
           <div className="flex items-center space-x-3">
-            <ArrowUpDown className="h-8 w-8 text-primary" />
+            <ArrowUpDown className="h-8 w-8 color-primary" />
             <div>
-              <h3 className="font-semibold text-primary-foreground">Transaction Entry</h3>
-              <p className="text-sm text-primary/80">
+              <h3 className="text-heading-4 color-primary-foreground">Transaction Entry</h3>
+              <p className="text-body-sm color-primary/80">
                 Record financial transactions and update account balances
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function CreateTransactionClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Transaction Description *
             </label>
             <Input
@@ -190,7 +190,7 @@ export default function CreateTransactionClient({
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Type *
               </label>
               <Select
@@ -203,11 +203,11 @@ export default function CreateTransactionClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="number"
                   value={formData.amount || ''}
@@ -222,7 +222,7 @@ export default function CreateTransactionClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -239,11 +239,11 @@ export default function CreateTransactionClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Account *
             </label>
             <div className="relative">
-              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+              <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
               <Select
                 value={formData.accountId}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, accountId: value }))}
@@ -260,7 +260,7 @@ export default function CreateTransactionClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Reference Number
               </label>
               <Input
@@ -271,11 +271,11 @@ export default function CreateTransactionClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Transaction Date & Time *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="datetime-local"
                   value={formData.occurredAt}
@@ -290,7 +290,7 @@ export default function CreateTransactionClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Project ID
               </label>
               <Input
@@ -301,7 +301,7 @@ export default function CreateTransactionClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Invoice ID
               </label>
               <Input
@@ -315,30 +315,30 @@ export default function CreateTransactionClient({
 
         {/* Transaction Summary */}
         {formData.amount !== 0 && formData.accountId && (
-          <Card className="p-4 bg-muted border-border">
-            <h4 className="font-medium text-foreground mb-2">Transaction Summary</h4>
-            <div className="space-y-1 text-sm">
+          <Card className="p-4 bg-secondary border-border">
+            <h4 className="form-label color-foreground mb-2">Transaction Summary</h4>
+            <div className="space-y-1 text-body-sm">
               <div className="flex justify-between">
-                <span className="text-foreground/70">Type:</span>
-                <span className={`font-medium capitalize ${formData.kind === 'revenue' ? 'text-success' : 'text-destructive'}`}>
+                <span className="color-foreground/70">Type:</span>
+                <span className={`form-label capitalize ${formData.kind === 'revenue' ? 'color-success' : 'color-destructive'}`}>
                   {formData.kind} ({formData.kind === 'revenue' ? 'Money In' : 'Money Out'})
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Amount:</span>
-                <span className={`font-medium ${formData.kind === 'revenue' ? 'text-success' : 'text-destructive'}`}>
+                <span className="color-foreground/70">Amount:</span>
+                <span className={`form-label ${formData.kind === 'revenue' ? 'color-success' : 'color-destructive'}`}>
                   {formData.kind === 'revenue' ? '+' : '-'}{formatCurrency(Math.abs(formData.amount))}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Account:</span>
-                <span className="font-medium">
+                <span className="color-foreground/70">Account:</span>
+                <span className="form-label">
                   {accounts.find(a => a.id === formData.accountId)?.name || 'Unknown'}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Date:</span>
-                <span className="font-medium">
+                <span className="color-foreground/70">Date:</span>
+                <span className="form-label">
                   {new Date(formData.occurredAt).toLocaleString()}
                 </span>
               </div>
@@ -363,7 +363,7 @@ export default function CreateTransactionClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Adding...</span>
               </div>
             ) : (

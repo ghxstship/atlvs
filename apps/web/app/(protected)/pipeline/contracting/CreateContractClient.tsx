@@ -188,11 +188,11 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
         <form id="contract-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-warning/10 rounded-lg">
-              <FileText className="h-5 w-5 text-warning" />
+              <FileText className="h-5 w-5 color-warning" />
             </div>
             <div>
-              <h3 className="font-medium">Contract Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Contract Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Create a new contractor agreement
               </p>
             </div>
@@ -200,7 +200,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Contract Title *
               </label>
               <Input
@@ -212,7 +212,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Contractor Name *
                 </label>
                 <Input
@@ -223,7 +223,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Email Address *
                 </label>
                 <Input
@@ -237,7 +237,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Phone Number
                 </label>
                 <Input
@@ -247,7 +247,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Company (if applicable)
                 </label>
                 <Input
@@ -258,7 +258,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Contract Type
               </label>
               <select
@@ -275,7 +275,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Start Date *
                 </label>
                 <Input
@@ -286,7 +286,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   End Date
                 </label>
                 <Input
@@ -298,7 +298,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Rate *
                 </label>
                 <Input
@@ -312,7 +312,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Rate Type
                 </label>
                 <select
@@ -328,7 +328,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Max Hours (if applicable)
                 </label>
                 <Input
@@ -341,7 +341,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Location
               </label>
               <Input
@@ -351,7 +351,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Scope of Work *
               </label>
               <Textarea
@@ -363,7 +363,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Deliverables
               </label>
               <Textarea
@@ -374,7 +374,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Requirements
               </label>
               <Textarea
@@ -385,7 +385,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Payment Terms
               </label>
               <Textarea
@@ -397,7 +397,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Termination Notice (days)
                 </label>
                 <Input
@@ -411,7 +411,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               <div>
                 {autoRenewal && (
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Renewal Period (months)
                     </label>
                     <Input
@@ -432,7 +432,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                   {...register('remote')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   Remote work allowed
                 </label>
               </div>
@@ -443,7 +443,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                   {...register('confidentiality')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   Confidentiality agreement required
                 </label>
               </div>
@@ -454,7 +454,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                   {...register('exclusivity')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   Exclusive contractor (no competing work)
                 </label>
               </div>
@@ -465,7 +465,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                   {...register('autoRenewal')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   Auto-renewal clause
                 </label>
               </div>
@@ -473,8 +473,8 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
           </div>
 
           <div className="bg-warning/5 p-4 rounded-lg">
-            <h4 className="font-medium text-warning mb-2">Contract Guidelines</h4>
-            <ul className="text-sm text-warning/80 space-y-1">
+            <h4 className="form-label color-warning mb-2">Contract Guidelines</h4>
+            <ul className="text-body-sm color-warning/80 space-y-1">
               <li>• Clearly define scope of work and deliverables to avoid disputes</li>
               <li>• Include payment terms, invoicing requirements, and termination clauses</li>
               <li>• Specify confidentiality and exclusivity requirements as needed</li>

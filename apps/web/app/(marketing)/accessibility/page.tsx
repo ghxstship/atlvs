@@ -21,13 +21,13 @@ export default function AccessibilityPage() {
           <Badge variant="outline" className="mb-4">
             Accessibility
           </Badge>
-          <h1 className="font-title text-4xl lg:text-5xl font-bold mb-6">
+          <h1 className="font-title text-heading-1 lg:text-display text-heading-3 mb-6">
             ACCESSIBILITY STATEMENT
           </h1>
-          <p className="text-lg text-muted-foreground mb-4">
+          <p className="text-body color-muted mb-4">
             We're committed to ensuring our platform is accessible to everyone, regardless of ability or technology.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-body-sm color-muted">
             Last updated: December 15, 2024
           </p>
         </div>
@@ -36,20 +36,20 @@ export default function AccessibilityPage() {
         <Card className="mb-12 bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Heart className="h-8 w-8 text-primary" />
-              <h2 className="font-title text-2xl font-bold">Our Commitment</h2>
+              <Heart className="h-8 w-8 color-primary" />
+              <h2 className="font-title text-heading-3 text-heading-3">Our Commitment</h2>
             </div>
-            <p className="text-muted-foreground mb-6">
+            <p className="color-muted mb-6">
               GHXSTSHIP is committed to ensuring digital accessibility for people with disabilities. We continually improve the user experience for everyone and apply relevant accessibility standards.
             </p>
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <h3 className="font-semibold mb-2">WCAG 2.2 AA Compliance</h3>
-                <p className="text-sm text-muted-foreground">We strive to meet Web Content Accessibility Guidelines (WCAG) 2.2 Level AA standards.</p>
+                <h3 className="text-heading-4 mb-2">WCAG 2.2 AA Compliance</h3>
+                <p className="text-body-sm color-muted">We strive to meet Web Content Accessibility Guidelines (WCAG) 2.2 Level AA standards.</p>
               </div>
               <div>
-                <h3 className="font-semibold mb-2">Ongoing Improvement</h3>
-                <p className="text-sm text-muted-foreground">We regularly audit our platform and implement improvements based on user feedback.</p>
+                <h3 className="text-heading-4 mb-2">Ongoing Improvement</h3>
+                <p className="text-body-sm color-muted">We regularly audit our platform and implement improvements based on user feedback.</p>
               </div>
             </div>
           </CardContent>
@@ -57,16 +57,16 @@ export default function AccessibilityPage() {
 
         {/* Accessibility Features */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Accessibility Features</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Accessibility Features</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Eye className="h-6 w-6 text-primary" />
-                  <h3 className="font-semibold">Visual Accessibility</h3>
+                  <Eye className="h-6 w-6 color-primary" />
+                  <h3 className="text-heading-4">Visual Accessibility</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• High contrast color schemes</li>
                   <li>• Scalable text up to 200% without loss of functionality</li>
                   <li>• Clear focus indicators for keyboard navigation</li>
@@ -79,10 +79,10 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Ear className="h-6 w-6 text-primary" />
-                  <h3 className="font-semibold">Auditory Accessibility</h3>
+                  <Ear className="h-6 w-6 color-primary" />
+                  <h3 className="text-heading-4">Auditory Accessibility</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• Captions for all video content</li>
                   <li>• Transcripts for audio content</li>
                   <li>• Visual indicators for audio alerts</li>
@@ -95,10 +95,10 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Hand className="h-6 w-6 text-primary" />
-                  <h3 className="font-semibold">Motor Accessibility</h3>
+                  <Hand className="h-6 w-6 color-primary" />
+                  <h3 className="text-heading-4">Motor Accessibility</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• Full keyboard navigation support</li>
                   <li>• Generous click targets (minimum 44px)</li>
                   <li>• No time-sensitive actions without extensions</li>
@@ -111,10 +111,10 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Brain className="h-6 w-6 text-primary" />
-                  <h3 className="font-semibold">Cognitive Accessibility</h3>
+                  <Brain className="h-6 w-6 color-primary" />
+                  <h3 className="text-heading-4">Cognitive Accessibility</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• Clear, consistent navigation</li>
                   <li>• Simple, plain language</li>
                   <li>• Error prevention and clear error messages</li>
@@ -128,27 +128,27 @@ export default function AccessibilityPage() {
 
         {/* Technical Standards */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Technical Standards</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Technical Standards</h2>
           
           <div className="space-y-6">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-4">Web Content Accessibility Guidelines (WCAG) 2.2</h3>
-                <p className="text-muted-foreground mb-4">
+                <h3 className="text-heading-4 text-body mb-4">Web Content Accessibility Guidelines (WCAG) 2.2</h3>
+                <p className="color-muted mb-4">
                   Our platform aims to conform to WCAG 2.2 Level AA standards, which include:
                 </p>
                 <div className="grid md:grid-cols-3 gap-4">
                   <div>
-                    <h4 className="font-semibold mb-2">Perceivable</h4>
-                    <p className="text-sm text-muted-foreground">Information must be presentable in ways users can perceive.</p>
+                    <h4 className="text-heading-4 mb-2">Perceivable</h4>
+                    <p className="text-body-sm color-muted">Information must be presentable in ways users can perceive.</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Operable</h4>
-                    <p className="text-sm text-muted-foreground">Interface components must be operable by all users.</p>
+                    <h4 className="text-heading-4 mb-2">Operable</h4>
+                    <p className="text-body-sm color-muted">Interface components must be operable by all users.</p>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Understandable</h4>
-                    <p className="text-sm text-muted-foreground">Information and UI operation must be understandable.</p>
+                    <h4 className="text-heading-4 mb-2">Understandable</h4>
+                    <p className="text-body-sm color-muted">Information and UI operation must be understandable.</p>
                   </div>
                 </div>
               </CardContent>
@@ -156,18 +156,18 @@ export default function AccessibilityPage() {
 
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold text-lg mb-4">Assistive Technology Support</h3>
-                <p className="text-muted-foreground mb-4">
+                <h3 className="text-heading-4 text-body mb-4">Assistive Technology Support</h3>
+                <p className="color-muted mb-4">
                   Our platform is tested with and supports:
                 </p>
                 <div className="grid md:grid-cols-2 gap-4">
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• JAWS (Windows)</li>
                     <li>• NVDA (Windows)</li>
                     <li>• VoiceOver (macOS/iOS)</li>
                     <li>• TalkBack (Android)</li>
                   </ul>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• Dragon NaturallySpeaking</li>
                     <li>• Switch navigation devices</li>
                     <li>• High contrast displays</li>
@@ -181,14 +181,14 @@ export default function AccessibilityPage() {
 
         {/* Browser Compatibility */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Browser & Device Compatibility</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Browser & Device Compatibility</h2>
           
           <Card>
             <CardContent className="p-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold mb-4">Supported Browsers</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-4">Supported Browsers</h3>
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• Chrome 90+ (Windows, macOS, Linux)</li>
                     <li>• Firefox 88+ (Windows, macOS, Linux)</li>
                     <li>• Safari 14+ (macOS, iOS)</li>
@@ -196,8 +196,8 @@ export default function AccessibilityPage() {
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold mb-4">Mobile Devices</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-4">Mobile Devices</h3>
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• iOS 14+ (Safari, Chrome)</li>
                     <li>• Android 8+ (Chrome, Firefox)</li>
                     <li>• Responsive design for all screen sizes</li>
@@ -211,20 +211,20 @@ export default function AccessibilityPage() {
 
         {/* Known Issues */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Known Issues & Limitations</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Known Issues & Limitations</h2>
           
-          <Card className="bg-yellow-50 dark:bg-yellow-950/20 border-yellow-200 dark:border-yellow-800">
+          <Card className="bg-warning/10 border-warning/30">
             <CardContent className="p-6">
-              <p className="text-muted-foreground mb-4">
+              <p className="color-muted mb-4">
                 We're actively working to address the following known accessibility issues:
               </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-body-sm color-muted">
                 <li>• Some complex data visualizations may have limited screen reader support</li>
                 <li>• Certain third-party integrations may not meet full WCAG standards</li>
                 <li>• File upload drag-and-drop areas require keyboard alternatives (available via context menu)</li>
                 <li>• Some dynamic content updates may not be immediately announced to screen readers</li>
               </ul>
-              <p className="text-sm text-muted-foreground mt-4">
+              <p className="text-body-sm color-muted mt-4">
                 <strong>Timeline:</strong> We aim to address these issues in our next major release (Q2 2025).
               </p>
             </CardContent>
@@ -233,13 +233,13 @@ export default function AccessibilityPage() {
 
         {/* Testing & Validation */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Testing & Validation</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Testing & Validation</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Automated Testing</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-heading-4 mb-4">Automated Testing</h3>
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• axe-core accessibility engine</li>
                   <li>• WAVE Web Accessibility Evaluation Tool</li>
                   <li>• Lighthouse accessibility audits</li>
@@ -250,8 +250,8 @@ export default function AccessibilityPage() {
             
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Manual Testing</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
+                <h3 className="text-heading-4 mb-4">Manual Testing</h3>
+                <ul className="space-y-2 text-body-sm color-muted">
                   <li>• Screen reader navigation testing</li>
                   <li>• Keyboard-only navigation testing</li>
                   <li>• High contrast mode validation</li>
@@ -264,22 +264,22 @@ export default function AccessibilityPage() {
 
         {/* Feedback & Support */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Feedback & Support</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Feedback & Support</h2>
           
           <Card>
             <CardContent className="p-6">
               <div className="flex items-start gap-4">
-                <Mail className="h-6 w-6 text-primary mt-1" />
+                <Mail className="h-6 w-6 color-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-3">We Want to Hear From You</h3>
-                  <p className="text-muted-foreground mb-4">
+                  <h3 className="text-heading-4 mb-3">We Want to Hear From You</h3>
+                  <p className="color-muted mb-4">
                     Your feedback helps us improve accessibility for everyone. If you encounter any accessibility barriers or have suggestions for improvement, please contact us:
                   </p>
                   
                   <div className="space-y-3">
                     <div>
-                      <h4 className="font-semibold mb-2">Accessibility Team</h4>
-                      <div className="space-y-1 text-sm">
+                      <h4 className="text-heading-4 mb-2">Accessibility Team</h4>
+                      <div className="space-y-1 text-body-sm">
                         <p><strong>Email:</strong> accessibility@ghxstship.com</p>
                         <p><strong>Phone:</strong> +1 (555) 123-4567 (TTY available)</p>
                         <p><strong>Response Time:</strong> We aim to respond within 2 business days</p>
@@ -287,8 +287,8 @@ export default function AccessibilityPage() {
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold mb-2">Alternative Formats</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="text-heading-4 mb-2">Alternative Formats</h4>
+                      <p className="text-body-sm color-muted">
                         We can provide information in alternative formats such as large print, audio, or electronic formats upon request.
                       </p>
                     </div>
@@ -301,28 +301,28 @@ export default function AccessibilityPage() {
 
         {/* Accessibility Resources */}
         <section className="mb-12">
-          <h2 className="font-title text-3xl font-bold mb-8">Accessibility Resources</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Accessibility Resources</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">Getting Started</h3>
+                <h3 className="text-heading-4 mb-4">Getting Started</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="/help/accessibility-guide" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="/help/accessibility-guide" className="color-primary hover:underline">
                       Accessibility User Guide
                     </a>
                   </li>
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="/help/keyboard-shortcuts" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="/help/keyboard-shortcuts" className="color-primary hover:underline">
                       Keyboard Shortcuts Reference
                     </a>
                   </li>
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="/help/screen-reader-guide" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="/help/screen-reader-guide" className="color-primary hover:underline">
                       Screen Reader Setup Guide
                     </a>
                   </li>
@@ -332,23 +332,23 @@ export default function AccessibilityPage() {
             
             <Card>
               <CardContent className="p-6">
-                <h3 className="font-semibold mb-4">External Resources</h3>
+                <h3 className="text-heading-4 mb-4">External Resources</h3>
                 <ul className="space-y-3">
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" className="color-primary hover:underline">
                       W3C Web Accessibility Initiative
                     </a>
                   </li>
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="https://webaim.org/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="https://webaim.org/" target="_blank" rel="noopener noreferrer" className="color-primary hover:underline">
                       WebAIM Accessibility Resources
                     </a>
                   </li>
                   <li className="flex items-center gap-2">
-                    <ExternalLink className="h-4 w-4 text-primary" />
-                    <a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                    <ExternalLink className="h-4 w-4 color-primary" />
+                    <a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" className="color-primary hover:underline">
                       ADA.gov Information
                     </a>
                   </li>
@@ -360,18 +360,18 @@ export default function AccessibilityPage() {
 
         {/* Legal Compliance */}
         <section>
-          <h2 className="font-title text-3xl font-bold mb-8">Legal Compliance</h2>
+          <h2 className="font-title text-heading-2 text-heading-3 mb-8">Legal Compliance</h2>
           
           <Card>
             <CardContent className="p-6">
-              <p className="text-muted-foreground mb-4">
+              <p className="color-muted mb-4">
                 GHXSTSHIP is committed to compliance with applicable accessibility laws and regulations, including:
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
-                  <h3 className="font-semibold mb-3">United States</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-3">United States</h3>
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• Americans with Disabilities Act (ADA)</li>
                     <li>• Section 508 of the Rehabilitation Act</li>
                     <li>• 21st Century Communications and Video Accessibility Act</li>
@@ -379,8 +379,8 @@ export default function AccessibilityPage() {
                 </div>
                 
                 <div>
-                  <h3 className="font-semibold mb-3">International</h3>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-3">International</h3>
+                  <ul className="space-y-2 text-body-sm color-muted">
                     <li>• European Accessibility Act (EAA)</li>
                     <li>• EN 301 549 European Standard</li>
                     <li>• Accessibility for Ontarians with Disabilities Act (AODA)</li>
@@ -388,7 +388,7 @@ export default function AccessibilityPage() {
                 </div>
               </div>
               
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 This accessibility statement was last reviewed and updated on December 15, 2024. We review and update this statement regularly to ensure it remains current and accurate.
               </p>
             </CardContent>

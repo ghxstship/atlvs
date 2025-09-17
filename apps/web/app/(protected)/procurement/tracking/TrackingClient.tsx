@@ -118,9 +118,9 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
     return (
       <div className="space-y-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -132,7 +132,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Truck className="h-5 w-5" />
-          <h3 className="font-semibold">Order Tracking</h3>
+          <h3 className="text-heading-4">Order Tracking</h3>
           <Badge variant="secondary">{filteredOrders.length} orders</Badge>
         </div>
       </div>
@@ -140,7 +140,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
           <Input
             placeholder="Search by order number, vendor, tracking number..."
             value={searchQuery}
@@ -152,7 +152,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
         <select 
           value={statusFilter} 
           onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
-          className="px-3 py-2 border border-input bg-background rounded-md text-sm"
+          className="px-3 py-2 border border-input bg-background rounded-md text-body-sm"
         >
           <option value="all">All Status</option>
           <option value="ordered">Ordered</option>
@@ -164,10 +164,10 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       {/* Orders List */}
       {filteredOrders.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             <Truck className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <p>{searchQuery || statusFilter !== 'all' ? 'No orders found matching your filters.' : 'No orders to track.'}</p>
-            <p className="text-sm">
+            <p className="text-body-sm">
               {searchQuery || statusFilter !== 'all' ? 'Try adjusting your search or filters.' : 'Orders will appear here once they are placed.'}
             </p>
           </div>
@@ -183,10 +183,10 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                 <div className="p-4">
                   <div className="flex items-start justify-between mb-3">
                     <div className="flex items-center gap-3">
-                      <StatusIcon className="h-5 w-5 text-muted-foreground" />
+                      <StatusIcon className="h-5 w-5 color-muted" />
                       <div>
-                        <h4 className="font-medium">{order.order_number}</h4>
-                        <p className="text-sm text-muted-foreground">{order.vendor_name}</p>
+                        <h4 className="form-label">{order.order_number}</h4>
+                        <p className="text-body-sm color-muted">{order.vendor_name}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-2">
@@ -204,23 +204,23 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                     </div>
                   </div>
                   
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-1">
+                  <p className="text-body-sm color-muted mb-3 line-clamp-1">
                     {order.description}
                   </p>
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-body-sm">
                     <div>
-                      <div className="text-muted-foreground">Order Date</div>
-                      <div className="font-medium">{formatDate(order.order_date)}</div>
+                      <div className="color-muted">Order Date</div>
+                      <div className="form-label">{formatDate(order.order_date)}</div>
                     </div>
                     
                     {order.expected_delivery && (
                       <div>
-                        <div className="text-muted-foreground">Expected Delivery</div>
-                        <div className="font-medium">
+                        <div className="color-muted">Expected Delivery</div>
+                        <div className="form-label">
                           {formatDate(order.expected_delivery)}
                           {daysUntilDelivery !== null && (
-                            <span className={`ml-2 text-xs ${daysUntilDelivery < 0 ? 'text-destructive' : daysUntilDelivery <= 3 ? 'text-warning' : 'text-success'}`}>
+                            <span className={`ml-2 text-body-sm ${daysUntilDelivery < 0 ? 'color-destructive' : daysUntilDelivery <= 3 ? 'color-warning' : 'color-success'}`}>
                               ({daysUntilDelivery < 0 ? `${Math.abs(daysUntilDelivery)} days overdue` : 
                                 daysUntilDelivery === 0 ? 'Today' : 
                                 `${daysUntilDelivery} days`})
@@ -232,20 +232,20 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                     
                     {order.tracking_number && (
                       <div>
-                        <div className="text-muted-foreground">Tracking Number</div>
-                        <div className="font-medium font-mono text-xs">{order.tracking_number}</div>
+                        <div className="color-muted">Tracking Number</div>
+                        <div className="form-label font-mono text-body-sm">{order.tracking_number}</div>
                       </div>
                     )}
                     
                     <div>
-                      <div className="text-muted-foreground">Total Amount</div>
-                      <div className="font-medium">${order.total_amount.toLocaleString()} {order.currency}</div>
+                      <div className="color-muted">Total Amount</div>
+                      <div className="form-label">${order.total_amount.toLocaleString()} {order.currency}</div>
                     </div>
                   </div>
                   
                   {order.shipping_carrier && (
                     <div className="mt-3 pt-3 border-t">
-                      <div className="text-xs text-muted-foreground">
+                      <div className="text-body-sm color-muted">
                         <strong>Carrier:</strong> {order.shipping_carrier}
                       </div>
                     </div>
@@ -259,11 +259,11 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
 
       {/* Order Details Modal */}
       {selectedOrder && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <Card className="w-full max-w-2xl max-h-[80vh] overflow-y-auto">
             <div className="p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Order Details</h3>
+                <h3 className="text-body text-heading-4">Order Details</h3>
                 <Button
                   variant="outline"
                  
@@ -276,11 +276,11 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Order Number</label>
-                    <div className="font-medium">{selectedOrder.order_number}</div>
+                    <label className="text-body-sm form-label color-muted">Order Number</label>
+                    <div className="form-label">{selectedOrder.order_number}</div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Status</label>
+                    <label className="text-body-sm form-label color-muted">Status</label>
                     <div>
                       <Badge variant={getStatusColor(selectedOrder.status)}>
                         {selectedOrder.status}
@@ -290,50 +290,50 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                 </div>
                 
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Vendor</label>
-                  <div className="font-medium">{selectedOrder.vendor_name}</div>
+                  <label className="text-body-sm form-label color-muted">Vendor</label>
+                  <div className="form-label">{selectedOrder.vendor_name}</div>
                 </div>
                 
                 <div>
-                  <label className="text-sm font-medium text-muted-foreground">Description</label>
+                  <label className="text-body-sm form-label color-muted">Description</label>
                   <div>{selectedOrder.description}</div>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Order Date</label>
+                    <label className="text-body-sm form-label color-muted">Order Date</label>
                     <div>{formatDate(selectedOrder.order_date)}</div>
                   </div>
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Total Amount</label>
-                    <div className="font-medium">${selectedOrder.total_amount.toLocaleString()} {selectedOrder.currency}</div>
+                    <label className="text-body-sm form-label color-muted">Total Amount</label>
+                    <div className="form-label">${selectedOrder.total_amount.toLocaleString()} {selectedOrder.currency}</div>
                   </div>
                 </div>
                 
                 {selectedOrder.expected_delivery && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Expected Delivery</label>
+                    <label className="text-body-sm form-label color-muted">Expected Delivery</label>
                     <div>{formatDate(selectedOrder.expected_delivery)}</div>
                   </div>
                 )}
                 
                 {selectedOrder.actual_delivery && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Actual Delivery</label>
+                    <label className="text-body-sm form-label color-muted">Actual Delivery</label>
                     <div>{formatDate(selectedOrder.actual_delivery)}</div>
                   </div>
                 )}
                 
                 {selectedOrder.tracking_number && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Tracking Number</label>
-                    <div className="font-mono text-sm bg-muted p-2 rounded">{selectedOrder.tracking_number}</div>
+                    <label className="text-body-sm form-label color-muted">Tracking Number</label>
+                    <div className="font-mono text-body-sm bg-secondary p-2 rounded">{selectedOrder.tracking_number}</div>
                   </div>
                 )}
                 
                 {selectedOrder.shipping_carrier && (
                   <div>
-                    <label className="text-sm font-medium text-muted-foreground">Shipping Carrier</label>
+                    <label className="text-body-sm form-label color-muted">Shipping Carrier</label>
                     <div>{selectedOrder.shipping_carrier}</div>
                   </div>
                 )}

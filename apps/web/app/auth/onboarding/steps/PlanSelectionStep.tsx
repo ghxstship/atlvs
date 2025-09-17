@@ -167,37 +167,37 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
   return (
     <div className="space-y-8">
       <div className="text-center">
-        <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+        <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           CHOOSE YOUR PLAN
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-body color-muted max-w-2xl mx-auto">
           Start with a 14-day free trial. No credit card required. Cancel anytime.
         </p>
       </div>
 
       {/* Billing Toggle */}
       <div className="flex justify-center">
-        <div className="bg-muted p-1 rounded-lg">
+        <div className="bg-secondary p-1 rounded-lg">
           <button
             onClick={() => setBillingCycle('monthly')}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-md text-body-sm form-label transition-colors ${
               billingCycle === 'monthly'
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-background color-foreground shadow-sm'
+                : 'color-muted hover:color-foreground'
             }`}
           >
             Monthly
           </button>
           <button
             onClick={() => setBillingCycle('annual')}
-            className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-md text-body-sm form-label transition-colors ${
               billingCycle === 'annual'
-                ? 'bg-background text-foreground shadow-sm'
-                : 'text-muted-foreground hover:text-foreground'
+                ? 'bg-background color-foreground shadow-sm'
+                : 'color-muted hover:color-foreground'
             }`}
           >
             Annual
-            <Badge variant="secondary" className="ml-2 text-xs">
+            <Badge variant="secondary" className="ml-2 text-body-sm">
               Save 20%
             </Badge>
           </button>
@@ -222,7 +222,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
             >
               {plan.popular && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary text-primary-foreground">
+                  <Badge className="bg-primary color-primary-foreground">
                     Most Popular
                   </Badge>
                 </div>
@@ -230,32 +230,32 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
               
               <CardContent className="p-6">
                 <div className="text-center mb-6">
-                  <Icon className="h-8 w-8 text-primary mx-auto mb-3" />
-                  <h3 className={`${anton.className} uppercase text-xl font-bold mb-2`}>
+                  <Icon className="h-8 w-8 color-primary mx-auto mb-3" />
+                  <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
                     {plan.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <p className="text-body-sm color-muted mb-4">
                     {plan.description}
                   </p>
                   
                   <div className="mb-2">
-                    <span className="text-3xl font-bold text-foreground">
+                    <span className="text-heading-2 text-heading-3 color-foreground">
                       {getPrice(plan)}
                     </span>
                     {plan.price && (
-                      <span className="text-muted-foreground">
+                      <span className="color-muted">
                         /{billingCycle === 'annual' ? 'month' : 'month'}
                       </span>
                     )}
                   </div>
                   
                   {billingCycle === 'annual' && plan.price && (
-                    <p className="text-sm text-success">
+                    <p className="text-body-sm color-success">
                       Save ${getAnnualSavings(plan)} per year
                     </p>
                   )}
                   
-                  <p className="text-xs text-muted-foreground mt-2">
+                  <p className="text-body-sm color-muted mt-2">
                     {plan.trialDays}-day free trial
                   </p>
                 </div>
@@ -263,8 +263,8 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                 <ul className="space-y-3 mb-6">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start space-x-3">
-                      <Check className="h-4 w-4 text-success mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-foreground">{feature}</span>
+                      <Check className="h-4 w-4 color-success mt-0.5 flex-shrink-0" />
+                      <span className="text-body-sm color-foreground">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -297,10 +297,10 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
       {/* Trust Signals */}
       <div className="text-center pt-8 border-t border-border">
-        <p className="text-sm text-muted-foreground mb-4">
+        <p className="text-body-sm color-muted mb-4">
           Trusted by 10,000+ creative professionals worldwide
         </p>
-        <div className="flex justify-center space-x-8 text-xs text-muted-foreground">
+        <div className="flex justify-center space-x-8 text-body-sm color-muted">
           <div>✓ 99.9% Uptime</div>
           <div>✓ 24/7 Support</div>
           <div>✓ Cancel Anytime</div>

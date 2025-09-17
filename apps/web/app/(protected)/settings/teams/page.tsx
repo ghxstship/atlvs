@@ -30,7 +30,7 @@ export default async function SettingsTeamsPage() {
         {orgId ? (
           <InviteMemberClient orgId={orgId} role={role} />
         ) : (
-          <div className="text-sm text-foreground/70">You are not currently a member of an active organization.</div>
+          <div className="text-body-sm color-foreground/70">You are not currently a member of an active organization.</div>
         )}
       </Card>
     </div>

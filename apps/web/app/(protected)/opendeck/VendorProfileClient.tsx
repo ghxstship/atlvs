@@ -177,25 +177,25 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         <div className="flex items-start justify-between">
           <div className="flex items-start space-x-4">
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-primary-foreground text-2xl font-bold">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-primary-foreground text-heading-3 text-heading-3">
                 {profile?.display_name?.charAt(0) || 'V'}
               </div>
               {profile?.verified && (
                 <div className="absolute -bottom-1 -right-1 bg-success rounded-full p-1">
-                  <CheckCircle className="h-5 w-5 text-white" />
+                  <CheckCircle className="h-5 w-5 text-background" />
                 </div>
               )}
             </div>
             <div>
-              <h2 className="text-2xl font-bold">{profile?.display_name || 'Vendor Profile'}</h2>
-              <p className="text-muted-foreground">{profile?.tagline || 'No tagline set'}</p>
+              <h2 className="text-heading-3 text-heading-3">{profile?.display_name || 'Vendor Profile'}</h2>
+              <p className="color-muted">{profile?.tagline || 'No tagline set'}</p>
               <div className="flex items-center space-x-4 mt-2">
                 <Badge variant={profile?.availability_status === 'available' ? 'success' : 'secondary'}>
                   {profile?.availability_status || 'Available'}
                 </Badge>
                 <div className="flex items-center">
-                  <Star className="h-4 w-4 text-warning fill-warning" />
-                  <span className="ml-1 text-sm">{profile?.rating || 0} ({profile?.total_reviews || 0} reviews)</span>
+                  <Star className="h-4 w-4 color-warning fill-warning" />
+                  <span className="ml-1 text-body-sm">{profile?.rating || 0} ({profile?.total_reviews || 0} reviews)</span>
                 </div>
               </div>
             </div>
@@ -213,15 +213,15 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium">Business Name</label>
+                <label className="text-body-sm form-label">Business Name</label>
                 <Input {...register('business_name')} placeholder="Your business name" />
                 {errors.business_name && (
-                  <p className="text-sm text-destructive mt-1">{errors.business_name.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.business_name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="text-sm font-medium">Business Type</label>
+                <label className="text-body-sm form-label">Business Type</label>
                 <Select 
                   value={watch('business_type')} 
                   onValueChange={(value) => setValue('business_type', value as any)}
@@ -238,33 +238,33 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Display Name</label>
+                <label className="text-body-sm form-label">Display Name</label>
                 <Input {...register('display_name')} placeholder="Public display name" />
                 {errors.display_name && (
-                  <p className="text-sm text-destructive mt-1">{errors.display_name.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.display_name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="text-sm font-medium">Email</label>
+                <label className="text-body-sm form-label">Email</label>
                 <Input {...register('email')} type="email" placeholder="contact@example.com" />
                 {errors.email && (
-                  <p className="text-sm text-destructive mt-1">{errors.email.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.email.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="text-sm font-medium">Phone</label>
+                <label className="text-body-sm form-label">Phone</label>
                 <Input {...register('phone')} placeholder="+1 234 567 8900" />
               </div>
 
               <div>
-                <label className="text-sm font-medium">Website</label>
+                <label className="text-body-sm form-label">Website</label>
                 <Input {...register('website')} placeholder="https://example.com" />
               </div>
 
               <div>
-                <label className="text-sm font-medium">Primary Category</label>
+                <label className="text-body-sm form-label">Primary Category</label>
                 <Select 
                   value={watch('primary_category')} 
                   onValueChange={(value) => setValue('primary_category', value)}
@@ -281,7 +281,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Availability</label>
+                <label className="text-body-sm form-label">Availability</label>
                 <Select 
                   value={watch('availability_status')} 
                   onValueChange={(value) => setValue('availability_status', value as any)}
@@ -298,7 +298,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Years of Experience</label>
+                <label className="text-body-sm form-label">Years of Experience</label>
                 <Input 
                   {...register('years_experience', { valueAsNumber: true })} 
                   type="number" 
@@ -307,7 +307,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Team Size</label>
+                <label className="text-body-sm form-label">Team Size</label>
                 <Input 
                   {...register('team_size', { valueAsNumber: true })} 
                   type="number" 
@@ -316,7 +316,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Hourly Rate</label>
+                <label className="text-body-sm form-label">Hourly Rate</label>
                 <Input 
                   {...register('hourly_rate', { valueAsNumber: true })} 
                   type="number" 
@@ -325,18 +325,18 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               </div>
 
               <div>
-                <label className="text-sm font-medium">Response Time</label>
+                <label className="text-body-sm form-label">Response Time</label>
                 <Input {...register('response_time')} placeholder="Within 1 hour" />
               </div>
             </div>
 
             <div>
-              <label className="text-sm font-medium">Tagline</label>
+              <label className="text-body-sm form-label">Tagline</label>
               <Input {...register('tagline')} placeholder="Your professional tagline" />
             </div>
 
             <div>
-              <label className="text-sm font-medium">Bio</label>
+              <label className="text-body-sm form-label">Bio</label>
               <Textarea 
                 {...register('bio')} 
                 placeholder="Tell clients about your experience and expertise..."
@@ -357,32 +357,32 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="md:col-span-2 p-6">
-            <h3 className="text-lg font-semibold mb-4">About</h3>
-            <p className="text-muted-foreground mb-6">
+            <h3 className="text-body text-heading-4 mb-4">About</h3>
+            <p className="color-muted mb-6">
               {profile?.bio || 'No bio provided yet.'}
             </p>
 
             <div className="space-y-4">
               <div className="flex items-center">
-                <Briefcase className="h-5 w-5 mr-3 text-muted-foreground" />
+                <Briefcase className="h-5 w-5 mr-3 color-muted" />
                 <span>{profile?.years_experience || 0} years experience</span>
               </div>
               <div className="flex items-center">
-                <User className="h-5 w-5 mr-3 text-muted-foreground" />
+                <User className="h-5 w-5 mr-3 color-muted" />
                 <span>Team of {profile?.team_size || 1}</span>
               </div>
               <div className="flex items-center">
-                <DollarSign className="h-5 w-5 mr-3 text-muted-foreground" />
+                <DollarSign className="h-5 w-5 mr-3 color-muted" />
                 <span>${profile?.hourly_rate || 0}/hour</span>
               </div>
               <div className="flex items-center">
-                <Clock className="h-5 w-5 mr-3 text-muted-foreground" />
+                <Clock className="h-5 w-5 mr-3 color-muted" />
                 <span>Responds {profile?.response_time || 'within 24 hours'}</span>
               </div>
             </div>
 
             <div className="mt-6">
-              <h4 className="font-medium mb-2">Skills</h4>
+              <h4 className="form-label mb-2">Skills</h4>
               <div className="flex flex-wrap gap-2">
                 {(profile?.skills || []).map((skill: string) => (
                   <Badge key={skill} variant="secondary">{skill}</Badge>
@@ -392,31 +392,31 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
           </Card>
 
           <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Contact</h3>
+            <h3 className="text-body text-heading-4 mb-4">Contact</h3>
             <div className="space-y-3">
               <div className="flex items-center">
-                <Mail className="h-4 w-4 mr-2 text-muted-foreground" />
-                <span className="text-sm">{profile?.email}</span>
+                <Mail className="h-4 w-4 mr-2 color-muted" />
+                <span className="text-body-sm">{profile?.email}</span>
               </div>
               {profile?.phone && (
                 <div className="flex items-center">
-                  <Phone className="h-4 w-4 mr-2 text-muted-foreground" />
-                  <span className="text-sm">{profile?.phone}</span>
+                  <Phone className="h-4 w-4 mr-2 color-muted" />
+                  <span className="text-body-sm">{profile?.phone}</span>
                 </div>
               )}
               {profile?.website && (
                 <div className="flex items-center">
-                  <Globe className="h-4 w-4 mr-2 text-muted-foreground" />
+                  <Globe className="h-4 w-4 mr-2 color-muted" />
                   <a href={profile.website as any} target="_blank" rel="noopener noreferrer" 
-                     className="text-sm text-primary hover:underline">
+                     className="text-body-sm color-primary hover:underline">
                     Website
                   </a>
                 </div>
               )}
               {profile?.address && (
                 <div className="flex items-start">
-                  <MapPin className="h-4 w-4 mr-2 mt-0.5 text-muted-foreground" />
-                  <span className="text-sm">
+                  <MapPin className="h-4 w-4 mr-2 mt-0.5 color-muted" />
+                  <span className="text-body-sm">
                     {profile.address.city}, {profile.address.state}
                   </span>
                 </div>
@@ -424,15 +424,15 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             </div>
 
             <div className="mt-6">
-              <h4 className="font-medium mb-2">Verification</h4>
+              <h4 className="form-label mb-2">Verification</h4>
               <div className="space-y-2">
                 <div className="flex items-center">
                   {profile?.verified ? (
-                    <CheckCircle className="h-4 w-4 mr-2 text-success" />
+                    <CheckCircle className="h-4 w-4 mr-2 color-success" />
                   ) : (
-                    <AlertCircle className="h-4 w-4 mr-2 text-warning" />
+                    <AlertCircle className="h-4 w-4 mr-2 color-warning" />
                   )}
-                  <span className="text-sm">
+                  <span className="text-body-sm">
                     {profile?.verified ? 'Verified Vendor' : 'Pending Verification'}
                   </span>
                 </div>
@@ -447,7 +447,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
   const PortfolioTab = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Portfolio Items</h3>
+        <h3 className="text-body text-heading-4">Portfolio Items</h3>
         <Button onClick={() => {
           setDrawerMode('portfolio');
           setSelectedItem(null);
@@ -461,7 +461,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {portfolio.map((item) => (
           <Card key={item.id} className="overflow-hidden">
-            <div className="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 relative">
+            <div className="aspect-video bg-gradient-to-br from-primary to-accent relative">
               {item.featured && (
                 <Badge className="absolute top-2 right-2" variant="secondary">
                   Featured
@@ -469,11 +469,11 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               )}
             </div>
             <div className="p-4">
-              <h4 className="font-semibold">{item.title}</h4>
-              <p className="text-sm text-muted-foreground mt-1">{item.category}</p>
-              <p className="text-sm mt-2 line-clamp-2">{item.description}</p>
+              <h4 className="text-heading-4">{item.title}</h4>
+              <p className="text-body-sm color-muted mt-1">{item.category}</p>
+              <p className="text-body-sm mt-2 line-clamp-2">{item.description}</p>
               <div className="flex items-center justify-between mt-4">
-                <div className="flex items-center space-x-2 text-sm text-muted-foreground">
+                <div className="flex items-center space-x-2 text-body-sm color-muted">
                   <Eye className="h-4 w-4" />
                   <span>{item.views || 0}</span>
                 </div>
@@ -500,7 +500,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
   const ServicesTab = () => (
     <div className="space-y-6">
       <div className="flex justify-between items-center">
-        <h3 className="text-lg font-semibold">Services</h3>
+        <h3 className="text-body text-heading-4">Services</h3>
         <Button onClick={() => {
           setDrawerMode('service');
           setSelectedItem(null);
@@ -515,23 +515,23 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         {services.map((service) => (
           <Card key={service.id} className="p-4">
             <div className="flex justify-between items-start mb-3">
-              <h4 className="font-semibold">{service.title}</h4>
+              <h4 className="text-heading-4">{service.title}</h4>
               <Badge variant={service.status === 'active' ? 'success' : 'secondary'}>
                 {service.status}
               </Badge>
             </div>
-            <p className="text-sm text-muted-foreground mb-3">{service.category}</p>
-            <p className="text-sm line-clamp-2 mb-4">{service.description}</p>
+            <p className="text-body-sm color-muted mb-3">{service.category}</p>
+            <p className="text-body-sm line-clamp-2 mb-4">{service.description}</p>
             <div className="space-y-2">
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-body-sm">
                 <span>Starting at</span>
-                <span className="font-semibold">${service.base_price}</span>
+                <span className="text-heading-4">${service.base_price}</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-body-sm">
                 <span>Delivery</span>
                 <span>{service.delivery_time}</span>
               </div>
-              <div className="flex justify-between text-sm">
+              <div className="flex justify-between text-body-sm">
                 <span>Orders</span>
                 <span>{service.orders_completed || 0}</span>
               </div>
@@ -586,8 +586,8 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
         <TabsContent value="earnings">
           <Card className="p-6">
-            <h3 className="text-lg font-semibold mb-4">Earnings Overview</h3>
-            <p className="text-muted-foreground">Earnings tracking coming soon...</p>
+            <h3 className="text-body text-heading-4 mb-4">Earnings Overview</h3>
+            <p className="color-muted">Earnings tracking coming soon...</p>
           </Card>
         </TabsContent>
       </Tabs>
@@ -604,7 +604,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
        
       >
         <div className="p-4">
-          <p className="text-muted-foreground">
+          <p className="color-muted">
             Form for {drawerMode} will be implemented here...
           </p>
         </div>

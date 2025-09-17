@@ -133,10 +133,10 @@ export default function CreateBudgetClient({
         {/* Budget Overview */}
         <Card className="p-4 bg-primary/5 border-primary/20">
           <div className="flex items-center space-x-3">
-            <Target className="h-8 w-8 text-primary" />
+            <Target className="h-8 w-8 color-primary" />
             <div>
-              <h3 className="font-semibold text-primary">Budget Planning</h3>
-              <p className="text-sm text-primary/80">
+              <h3 className="text-heading-4 color-primary">Budget Planning</h3>
+              <p className="text-body-sm color-primary/80">
                 Set financial targets and track spending against your budget
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function CreateBudgetClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Budget Name *
             </label>
             <Input
@@ -158,7 +158,7 @@ export default function CreateBudgetClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Description
             </label>
             <Textarea
@@ -171,11 +171,11 @@ export default function CreateBudgetClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Budget Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="number"
                   value={formData.amount || ''}
@@ -188,14 +188,14 @@ export default function CreateBudgetClient({
                 />
               </div>
               {formData.amount > 0 && (
-                <p className="text-sm text-foreground/60 mt-1">
+                <p className="text-body-sm color-foreground/60 mt-1">
                   {formatCurrency(formData.amount)}
                 </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -212,7 +212,7 @@ export default function CreateBudgetClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Category
             </label>
             <Select
@@ -232,11 +232,11 @@ export default function CreateBudgetClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Start Date
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.startDate}
@@ -247,11 +247,11 @@ export default function CreateBudgetClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 End Date
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.endDate}
@@ -281,7 +281,7 @@ export default function CreateBudgetClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (

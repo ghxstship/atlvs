@@ -118,13 +118,13 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="name" className="text-sm font-medium">
+            <label htmlFor="name" className="text-body-sm form-label">
               Location Name *
             </label>
             <input
@@ -135,14 +135,14 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
               {...form.register('name')}
             />
             {form.formState.errors.name && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.name.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="type" className="text-sm font-medium">
+            <label htmlFor="type" className="text-body-sm form-label">
               Location Type *
             </label>
             <select
@@ -161,7 +161,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="address" className="text-sm font-medium">
+            <label htmlFor="address" className="text-body-sm form-label">
               Address
             </label>
             <input
@@ -175,7 +175,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="city" className="text-sm font-medium">
+              <label htmlFor="city" className="text-body-sm form-label">
                 City
               </label>
               <input
@@ -188,7 +188,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="state" className="text-sm font-medium">
+              <label htmlFor="state" className="text-body-sm form-label">
                 State/Province
               </label>
               <input
@@ -203,7 +203,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="country" className="text-sm font-medium">
+              <label htmlFor="country" className="text-body-sm form-label">
                 Country
               </label>
               <input
@@ -216,7 +216,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="capacity" className="text-sm font-medium">
+              <label htmlFor="capacity" className="text-body-sm form-label">
                 Capacity
               </label>
               <input
@@ -231,7 +231,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="project_id" className="text-sm font-medium">
+            <label htmlFor="project_id" className="text-body-sm form-label">
               Associated Project
             </label>
             <select
@@ -249,7 +249,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="notes" className="text-sm font-medium">
+            <label htmlFor="notes" className="text-body-sm form-label">
               Notes
             </label>
             <textarea

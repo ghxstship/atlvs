@@ -6,7 +6,7 @@ export default function ResourcesTrainingsPage() {
   return (
     <div className="space-y-4">
       <Card title="Resources · Trainings">
-        <div className="text-sm text-foreground/70">Placeholder: Training modules and tracking.</div>
+        <div className="text-body-sm color-foreground/70">Placeholder: Training modules and tracking.</div>
       </Card>
     </div>
   );

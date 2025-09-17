@@ -50,7 +50,7 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
   return (
     <AnimationOptimizer>
       <SidebarProvider userId={userId}>
-        <div className="flex h-screen bg-neutral-50 dark:bg-neutral-900">
+        <div className="flex h-screen bg-muted">
           <SkipNavigation />
           
           <SidebarLandmarks>
@@ -88,14 +88,14 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
               aria-label="Main content"
             >
               <div className="max-w-7xl mx-auto">
-                <h1 className="text-2xl font-bold text-neutral-900 dark:text-neutral-100 mb-6">
+                <h1 className="text-2xl font-bold text-foreground mb-6">
                   2026 Sidebar Navigation Demo
                 </h1>
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                  <div className="bg-card p-6 rounded-lg border border-border">
                     <h2 className="text-lg font-semibold mb-3">Features</h2>
-                    <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+                    <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>✅ Multi-level expand/collapse</li>
                       <li>✅ Responsive design (desktop/tablet/mobile)</li>
                       <li>✅ Micro-animations & GPU acceleration</li>
@@ -107,20 +107,20 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
                     </ul>
                   </div>
                   
-                  <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                  <div className="bg-card p-6 rounded-lg border border-border">
                     <h2 className="text-lg font-semibold mb-3">Keyboard Shortcuts</h2>
-                    <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
-                      <li><kbd className="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 rounded text-xs">↑/↓</kbd> Navigate items</li>
-                      <li><kbd className="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 rounded text-xs">←/→</kbd> Expand/collapse</li>
-                      <li><kbd className="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 rounded text-xs">Enter</kbd> Activate item</li>
-                      <li><kbd className="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 rounded text-xs">Home/End</kbd> First/last item</li>
-                      <li><kbd className="px-2 py-1 bg-neutral-100 dark:bg-neutral-700 rounded text-xs">Esc</kbd> Clear search</li>
+                    <ul className="space-y-2 text-sm text-muted-foreground">
+                      <li><kbd className="px-2 py-1 bg-muted rounded text-xs">↑/↓</kbd> Navigate items</li>
+                      <li><kbd className="px-2 py-1 bg-muted rounded text-xs">←/→</kbd> Expand/collapse</li>
+                      <li><kbd className="px-2 py-1 bg-muted rounded text-xs">Enter</kbd> Activate item</li>
+                      <li><kbd className="px-2 py-1 bg-muted rounded text-xs">Home/End</kbd> First/last item</li>
+                      <li><kbd className="px-2 py-1 bg-muted rounded text-xs">Esc</kbd> Clear search</li>
                     </ul>
                   </div>
                   
-                  <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                  <div className="bg-card p-6 rounded-lg border border-border">
                     <h2 className="text-lg font-semibold mb-3">AI Personalization</h2>
-                    <ul className="space-y-2 text-sm text-neutral-600 dark:text-neutral-400">
+                    <ul className="space-y-2 text-sm text-muted-foreground">
                       <li>🧠 Time-based suggestions</li>
                       <li>📈 Usage pattern analysis</li>
                       <li>⭐ Adaptive item ordering</li>
@@ -130,18 +130,18 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
                   </div>
                 </div>
                 
-                <div className="mt-8 p-6 bg-gradient-to-r from-brand-50 to-purple-50 dark:from-brand-950 dark:to-purple-950 rounded-lg border border-brand-200 dark:border-brand-800">
-                  <h2 className="text-lg font-semibold text-brand-900 dark:text-brand-100 mb-3">
+                <div className="mt-8 p-6 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg border border-primary/20">
+                  <h2 className="text-lg font-semibold text-primary mb-3">
                     🚀 2026-Ready Features
                   </h2>
-                  <p className="text-brand-700 dark:text-brand-300 mb-4">
+                  <p className="text-primary/80 mb-4">
                     This sidebar navigation system represents the future of enterprise UI/UX design with advanced personalization, 
                     accessibility, and performance optimizations.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <h3 className="font-medium text-brand-800 dark:text-brand-200 mb-2">Performance</h3>
-                      <ul className="text-sm text-brand-600 dark:text-brand-400 space-y-1">
+                      <h3 className="font-medium text-primary mb-2">Performance</h3>
+                      <ul className="text-sm text-primary/80 space-y-1">
                         <li>• GPU-accelerated animations</li>
                         <li>• Reduced motion support</li>
                         <li>• Optimized re-renders</li>
@@ -149,8 +149,8 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-medium text-brand-800 dark:text-brand-200 mb-2">Accessibility</h3>
-                      <ul className="text-sm text-brand-600 dark:text-brand-400 space-y-1">
+                      <h3 className="font-medium text-primary mb-2">Accessibility</h3>
+                      <ul className="text-sm text-primary/80 space-y-1">
                         <li>• Screen reader optimized</li>
                         <li>• Focus management</li>
                         <li>• ARIA landmarks</li>

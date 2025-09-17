@@ -10,7 +10,7 @@ import {
   Skeleton,
   StateManagerProvider
 } from '@ghxstship/ui';
-import { designTokens } from '../../components/ui/DesignTokens';
+import { StatusBadge, designTokens } from '../../../_components/ui/DesignTokens';
 import { 
   Building2,
   Users,
@@ -184,15 +184,15 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
   const getActivityIcon = (type: string) => {
     switch (type) {
       case 'company_added':
-        return <Building2 className="h-4 w-4 text-primary" />;
+        return <Building2 className="h-4 w-4 color-primary" />;
       case 'contract_signed':
-        return <FileText className="h-4 w-4 text-success" />;
+        return <FileText className="h-4 w-4 color-success" />;
       case 'qualification_verified':
-        return <Award className="h-4 w-4 text-secondary" />;
+        return <Award className="h-4 w-4 color-secondary" />;
       case 'rating_submitted':
-        return <Star className="h-4 w-4 text-warning" />;
+        return <Star className="h-4 w-4 color-warning" />;
       default:
-        return <CheckCircle className="h-4 w-4 text-muted-foreground" />;
+        return <CheckCircle className="h-4 w-4 color-muted" />;
     }
   };
 
@@ -202,8 +202,8 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
         key={i}
         className={`h-4 w-4 ${
           i < Math.floor(rating) 
-            ? 'text-warning fill-current' 
-            : 'text-muted-foreground'
+            ? 'color-warning fill-current' 
+            : 'color-muted'
         }`}
       />
     ));
@@ -235,8 +235,8 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <Button variant="outline" onClick={() => window.location.href = '/companies/directory'}>
@@ -255,48 +255,48 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Companies</p>
-                <p className="text-2xl font-bold text-foreground">{stats?.totalCompanies || 0}</p>
-                <p className="text-xs text-success">{stats?.activeCompanies || 0} active</p>
+                <p className="text-body-sm color-foreground/70">Total Companies</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalCompanies || 0}</p>
+                <p className="text-body-sm color-success">{stats?.activeCompanies || 0} active</p>
               </div>
-              <Building2 className="h-8 w-8 text-primary" />
+              <Building2 className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Active Contracts</p>
-                <p className="text-2xl font-bold text-success">{stats?.activeContracts || 0}</p>
-                <p className="text-xs text-foreground/60">of {stats?.totalContracts || 0} total</p>
+                <p className="text-body-sm color-foreground/70">Active Contracts</p>
+                <p className="text-heading-3 text-heading-3 color-success">{stats?.activeContracts || 0}</p>
+                <p className="text-body-sm color-foreground/60">of {stats?.totalContracts || 0} total</p>
               </div>
-              <FileText className="h-8 w-8 text-success" />
+              <FileText className="h-8 w-8 color-success" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Qualifications</p>
-                <p className="text-2xl font-bold text-secondary">{stats?.totalQualifications || 0}</p>
+                <p className="text-body-sm color-foreground/70">Qualifications</p>
+                <p className="text-heading-3 text-heading-3 color-secondary">{stats?.totalQualifications || 0}</p>
                 {(stats?.expiringQualifications || 0) > 0 && (
-                  <p className="text-xs text-warning">{stats?.expiringQualifications} expiring soon</p>
+                  <p className="text-body-sm color-warning">{stats?.expiringQualifications} expiring soon</p>
                 )}
               </div>
-              <Award className="h-8 w-8 text-secondary" />
+              <Award className="h-8 w-8 color-secondary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Average Rating</p>
-                <p className="text-2xl font-bold text-warning">
+                <p className="text-body-sm color-foreground/70">Average Rating</p>
+                <p className="text-heading-3 text-heading-3 color-warning">
                   {stats?.averageRating ? stats.averageRating.toFixed(1) : 'N/A'}
                 </p>
-                <p className="text-xs text-foreground/60">{stats?.totalRatings || 0} reviews</p>
+                <p className="text-body-sm color-foreground/60">{stats?.totalRatings || 0} reviews</p>
               </div>
-              <Star className="h-8 w-8 text-warning" />
+              <Star className="h-8 w-8 color-warning" />
             </div>
           </Card>
         </div>
@@ -307,10 +307,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.expiringContracts || 0) > 0 && (
               <Card className="p-4 border-warning/20 bg-warning/10">
                 <div className="flex items-center space-x-3">
-                  <AlertTriangle className="h-5 w-5 text-warning" />
+                  <AlertTriangle className="h-5 w-5 color-warning" />
                   <div>
-                    <p className="font-medium text-warning">Contracts Expiring</p>
-                    <p className="text-sm text-warning/80">{stats?.expiringContracts} contracts expire within 30 days</p>
+                    <p className="form-label color-warning">Contracts Expiring</p>
+                    <p className="text-body-sm color-warning/80">{stats?.expiringContracts} contracts expire within 30 days</p>
                   </div>
                 </div>
               </Card>
@@ -319,10 +319,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.expiringQualifications || 0) > 0 && (
               <Card className={`p-4 ${designTokens.colors.status.error}`}>
                 <div className="flex items-center space-x-3">
-                  <Clock className="h-5 w-5 text-destructive" />
+                  <Clock className="h-5 w-5 color-destructive" />
                   <div>
-                    <p className="font-medium text-destructive">Qualifications Expiring</p>
-                    <p className="text-sm text-destructive/80">{stats?.expiringQualifications} qualifications expire within 30 days</p>
+                    <p className="form-label color-destructive">Qualifications Expiring</p>
+                    <p className="text-body-sm color-destructive/80">{stats?.expiringQualifications} qualifications expire within 30 days</p>
                   </div>
                 </div>
               </Card>
@@ -331,10 +331,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.pendingCompanies || 0) > 0 && (
               <Card className={`p-4 ${designTokens.colors.status.info}`}>
                 <div className="flex items-center space-x-3">
-                  <Users className="h-5 w-5 text-primary" />
+                  <Users className="h-5 w-5 color-primary" />
                   <div>
-                    <p className="font-medium text-primary">Pending Reviews</p>
-                    <p className="text-sm text-primary/80">{stats?.pendingCompanies} companies need review</p>
+                    <p className="form-label color-primary">Pending Reviews</p>
+                    <p className="text-body-sm color-primary/80">{stats?.pendingCompanies} companies need review</p>
                   </div>
                 </div>
               </Card>
@@ -346,7 +346,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
           {/* Recent Activity */}
           <Card className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-foreground">Recent Activity</h3>
+              <h3 className="text-body text-heading-4 color-foreground">Recent Activity</h3>
               <Button>View All</Button>
             </div>
             <div className="space-y-4">
@@ -354,9 +354,9 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                 <div key={activity.id} className="flex items-start space-x-3">
                   {getActivityIcon(activity.type)}
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-foreground">{activity.companyName}</p>
-                    <p className="text-sm text-foreground/70">{activity.description}</p>
-                    <p className="text-xs text-foreground/50 mt-1">
+                    <p className="text-body-sm form-label color-foreground">{activity.companyName}</p>
+                    <p className="text-body-sm color-foreground/70">{activity.description}</p>
+                    <p className="text-body-sm color-foreground/50 mt-1">
                       {formatTimeAgo(activity.timestamp)} by {activity.user}
                     </p>
                   </div>
@@ -368,20 +368,20 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
           {/* Top Rated Companies */}
           <Card className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold text-foreground">Top Rated Companies</h3>
+              <h3 className="text-body text-heading-4 color-foreground">Top Rated Companies</h3>
               <Button>View All Ratings</Button>
             </div>
             <div className="space-y-4">
               {topRatedCompanies.map((company, index) => (
                 <div key={index} className="flex items-center justify-between">
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-foreground">{company.name}</p>
+                    <p className="text-body-sm form-label color-foreground">{company.name}</p>
                     <div className="flex items-center space-x-2 mt-1">
                       <div className="flex items-center space-x-1">
                         {renderStars(company.rating)}
                       </div>
-                      <span className="text-sm text-foreground/70">{company.rating}</span>
-                      <span className="text-xs text-foreground/50">({company.reviewCount} reviews)</span>
+                      <span className="text-body-sm color-foreground/70">{company.rating}</span>
+                      <span className="text-body-sm color-foreground/50">({company.reviewCount} reviews)</span>
                     </div>
                   </div>
                   <Badge variant="secondary">#{index + 1}</Badge>
@@ -393,23 +393,23 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
 
         {/* Quick Actions */}
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-foreground mb-4">Quick Actions</h3>
+          <h3 className="text-body text-heading-4 color-foreground mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies'}>
               <Building2 className="h-6 w-6 mb-2" />
-              <span className="text-sm">Add Company</span>
+              <span className="text-body-sm">Add Company</span>
             </Button>
             <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/contracts'}>
               <FileText className="h-6 w-6 mb-2" />
-              <span className="text-sm">New Contract</span>
+              <span className="text-body-sm">New Contract</span>
             </Button>
             <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/qualifications'}>
               <Award className="h-6 w-6 mb-2" />
-              <span className="text-sm">Add Qualification</span>
+              <span className="text-body-sm">Add Qualification</span>
             </Button>
             <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/ratings'}>
               <Star className="h-6 w-6 mb-2" />
-              <span className="text-sm">Submit Rating</span>
+              <span className="text-body-sm">Submit Rating</span>
             </Button>
           </div>
         </Card>

@@ -101,38 +101,38 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'lead':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'qualified':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'proposal':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'negotiation':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'won':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'lost':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       default:
-        return 'bg-muted/50 text-muted-foreground';
+        return 'bg-secondary/50 color-muted';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'construction':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'technical':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'creative':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'logistics':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'consulting':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'other':
-        return 'bg-muted/50 text-muted-foreground';
+        return 'bg-secondary/50 color-muted';
       default:
-        return 'bg-muted/50 text-muted-foreground';
+        return 'bg-secondary/50 color-muted';
     }
   };
 
@@ -163,8 +163,8 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-muted-foreground">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="color-muted">{translations.subtitle}</p>
           </div>
           <Button onClick={() => setShowCreateDialog(true)}>
             + Create Opportunity
@@ -202,7 +202,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-muted rounded" />
+                    <div className="h-5 w-5 bg-secondary rounded" />
                     <Skeleton className="h-5 w-48" />
                   </div>
                   <Skeleton className="h-4 w-full mb-2" />
@@ -224,8 +224,8 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-muted-foreground">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="color-muted">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           + Create Opportunity
@@ -259,9 +259,9 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
       {filteredOpportunities.length === 0 ? (
         <Card className="p-12 text-center">
-          <div className="h-12 w-12 bg-muted rounded mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-foreground mb-2">No opportunities found</h3>
-          <p className="text-muted-foreground mb-4">
+          <div className="h-12 w-12 bg-secondary rounded mx-auto mb-4" />
+          <h3 className="text-body form-label color-foreground mb-2">No opportunities found</h3>
+          <p className="color-muted mb-4">
             {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
               ? 'Try adjusting your search or filters to find opportunities.'
               : 'Get started by creating your first opportunity.'}
@@ -277,8 +277,8 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-muted rounded" />
-                    <h3 className="text-lg font-semibold text-foreground">{opportunity.title}</h3>
+                    <div className="h-5 w-5 bg-secondary rounded" />
+                    <h3 className="text-body text-heading-4 color-foreground">{opportunity.title}</h3>
                     <Badge className={getStatusColor(opportunity.status)}>
                       {opportunity.status}
                     </Badge>
@@ -288,28 +288,28 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                   </div>
 
                   {opportunity.description && (
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{opportunity.description}</p>
+                    <p className="color-muted mb-4 line-clamp-2">{opportunity.description}</p>
                   )}
 
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-body-sm">
                     {opportunity.clientName && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-muted rounded" />
-                        <span className="text-muted-foreground">{opportunity.clientName}</span>
+                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <span className="color-muted">{opportunity.clientName}</span>
                       </div>
                     )}
                     {opportunity.estimatedValue && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-muted rounded" />
-                        <span className="text-muted-foreground">
+                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <span className="color-muted">
                           ${opportunity.estimatedValue.toLocaleString()} {opportunity.currency || 'USD'}
                         </span>
                       </div>
                     )}
                     {opportunity.expectedCloseDate && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-muted rounded" />
-                        <span className="text-muted-foreground">
+                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <span className="color-muted">
                           {new Date(opportunity.expectedCloseDate).toLocaleDateString()}
                         </span>
                       </div>
@@ -317,7 +317,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                   </div>
 
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-4 text-body-sm color-muted">
                       {opportunity.createdAt && (
                         <span>Created {new Date(opportunity.createdAt).toLocaleDateString()}</span>
                       )}
@@ -347,9 +347,9 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
       {/* Create Dialog */}
       {showCreateDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center p-4 z-50">
           <div className="bg-background rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Create New Opportunity</h3>
+            <h3 className="text-body text-heading-4 mb-4">Create New Opportunity</h3>
             <form onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
@@ -365,15 +365,15 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
             }}>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Title</label>
+                  <label className="block text-body-sm form-label mb-1">Title</label>
                   <Input />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Description</label>
+                  <label className="block text-body-sm form-label mb-1">Description</label>
                   <textarea className="w-full p-2 border border-border rounded bg-background" rows={3} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Type</label>
+                  <label className="block text-body-sm form-label mb-1">Type</label>
                   <Select>
                     {TYPE_OPTIONS.slice(1).map((option) => (
                       <option key={option.value} value={option.value}>
@@ -383,11 +383,11 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                   </Select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Client Name</label>
+                  <label className="block text-body-sm form-label mb-1">Client Name</label>
                   <Input />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Estimated Value</label>
+                  <label className="block text-body-sm form-label mb-1">Estimated Value</label>
                   <Input type="number" />
                 </div>
               </div>

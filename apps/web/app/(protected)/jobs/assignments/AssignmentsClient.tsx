@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
-import { ProgressBar } from '../../components/ui/ProgressBar';
+import { ProgressBar } from '../../../_components/ui/ProgressBar';
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -140,19 +140,19 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'accepted':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'active':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'completed':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'declined':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       case 'cancelled':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -178,17 +178,17 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'lead':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'contributor':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'reviewer':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'consultant':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'specialist':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -223,8 +223,8 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           <PlusIcon className="h-4 w-4 mr-2" />
@@ -275,50 +275,50 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Assignments</p>
-              <p className="text-2xl font-bold text-foreground">{assignments.length}</p>
+              <p className="text-body-sm form-label color-foreground/70">Total Assignments</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{assignments.length}</p>
             </div>
-            <UsersIcon className="h-8 w-8 text-primary" />
+            <UsersIcon className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Active</p>
-              <p className="text-2xl font-bold text-success">
+              <p className="text-body-sm form-label color-foreground/70">Active</p>
+              <p className="text-heading-3 text-heading-3 color-success">
                 {assignments.filter(a => a.status === 'active').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-success" />
+            <CheckCircleIcon className="h-8 w-8 color-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Pending</p>
-              <p className="text-2xl font-bold text-warning">
+              <p className="text-body-sm form-label color-foreground/70">Pending</p>
+              <p className="text-heading-3 text-heading-3 color-warning">
                 {assignments.filter(a => a.status === 'pending').length}
               </p>
             </div>
-            <ClockIcon className="h-8 w-8 text-warning" />
+            <ClockIcon className="h-8 w-8 color-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Completed</p>
-              <p className="text-2xl font-bold text-secondary">
+              <p className="text-body-sm form-label color-foreground/70">Completed</p>
+              <p className="text-heading-3 text-heading-3 color-secondary">
                 {assignments.filter(a => a.status === 'completed').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-secondary" />
+            <CheckCircleIcon className="h-8 w-8 color-secondary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Avg Utilization</p>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-body-sm form-label color-foreground/70">Avg Utilization</p>
+              <p className="text-heading-3 text-heading-3 color-primary">
                 {assignments.length > 0 
                   ? Math.round(assignments
                       .map(a => calculateUtilization(a.estimated_hours, a.actual_hours))
@@ -328,7 +328,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   : 0}%
               </p>
             </div>
-            <ChartBarIcon className="h-8 w-8 text-primary" />
+            <ChartBarIcon className="h-8 w-8 color-primary" />
           </div>
         </Card>
       </div>
@@ -365,14 +365,14 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
-                          <StatusIcon className="h-5 w-5 text-foreground/60" />
+                        <h3 className="text-body text-heading-4 color-foreground mb-1 flex items-center gap-2">
+                          <StatusIcon className="h-5 w-5 color-foreground/60" />
                           {assignment.job_title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-destructive' : 'text-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
-                        <div className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="flex items-center gap-2 text-body-sm color-foreground/70">
                           <div className="flex items-center gap-1">
                             {assignment.assignee_avatar ? (
                               <img 
@@ -403,7 +403,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-foreground/70 mb-3">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-body-sm color-foreground/70 mb-3">
                       <div className="flex items-center gap-1">
                         <CalendarIcon className="h-4 w-4" />
                         <span>
@@ -432,8 +432,8 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                       {assignment.workload_percentage && (
                         <div>
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-medium text-foreground/70">Workload</span>
-                            <span className="text-xs text-foreground/70">{assignment.workload_percentage}%</span>
+                            <span className="text-body-sm form-label color-foreground/70">Workload</span>
+                            <span className="text-body-sm color-foreground/70">{assignment.workload_percentage}%</span>
                           </div>
                           <ProgressBar 
                             percentage={assignment.workload_percentage || 0}
@@ -446,8 +446,8 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                       {utilization !== null && (
                         <div>
                           <div className="flex items-center justify-between mb-1">
-                            <span className="text-xs font-medium text-foreground/70">Utilization</span>
-                            <span className="text-xs text-foreground/70">{utilization}%</span>
+                            <span className="text-body-sm form-label color-foreground/70">Utilization</span>
+                            <span className="text-body-sm color-foreground/70">{utilization}%</span>
                           </div>
                           <ProgressBar 
                             percentage={utilization}
@@ -461,15 +461,15 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
 
                     {assignment.skills_required && assignment.skills_required.length > 0 && (
                       <div className="mb-3">
-                        <span className="text-xs font-medium text-foreground/70 mb-1 block">Required Skills:</span>
+                        <span className="text-body-sm form-label color-foreground/70 mb-1 block">Required Skills:</span>
                         <div className="flex flex-wrap gap-1">
                           {assignment.skills_required.slice(0, 5).map((skill, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs">
+                            <Badge key={index} variant="secondary" className="text-body-sm">
                               {skill}
                             </Badge>
                           ))}
                           {assignment.skills_required.length > 5 && (
-                            <Badge variant="secondary" className="text-xs">
+                            <Badge variant="secondary" className="text-body-sm">
                               +{assignment.skills_required.length - 5} more
                             </Badge>
                           )}
@@ -479,7 +479,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
 
                     {assignment.notes && (
                       <div className="mt-3 p-2 bg-accent rounded-md">
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-body-sm color-foreground/70">
                           <strong>Notes:</strong> {assignment.notes}
                         </p>
                       </div>
@@ -488,7 +488,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                 </div>
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <div className="text-xs text-foreground/50">
+                  <div className="text-body-sm color-foreground/50">
                     Created: {new Date(assignment.created_at).toLocaleDateString()}
                     {assignment.updated_at !== assignment.created_at && (
                       <span> • Updated: {new Date(assignment.updated_at).toLocaleDateString()}</span>
@@ -514,9 +514,9 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
           })
         ) : (
           <Card className="p-12 text-center">
-            <UsersIcon className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No assignments found</h3>
-            <p className="text-sm text-foreground/70 mb-4">
+            <UsersIcon className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No assignments found</h3>
+            <p className="text-body-sm color-foreground/70 mb-4">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
                 ? 'Try adjusting your filters or search terms.'
                 : 'Get started by creating your first assignment.'}

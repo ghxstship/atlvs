@@ -15,11 +15,11 @@ const LINKEDIN_PARTNER_ID = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID || '1234
 // Declare gtag function for TypeScript
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    fbq: (...args: any[]) => void;
-    lintrk: (...args: any[]) => void;
-    _linkedin_partner_id: string;
-    _linkedin_data_partner_ids: string[];
+    gtag?: (...args: any[]) => void;
+    fbq?: (...args: any[]) => void;
+    lintrk?: (...args: any[]) => void;
+    _linkedin_partner_id?: string;
+    _linkedin_data_partner_ids?: string[];
   }
 }
 

@@ -213,8 +213,8 @@ export default function TravelPreferencesClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Travel Preferences</h2>
-          <p className="text-muted-foreground">Manage your travel documents and preferences</p>
+          <h2 className="text-heading-3 text-heading-3">Travel Preferences</h2>
+          <p className="color-muted">Manage your travel documents and preferences</p>
         </div>
         {!isEditing ? (
           <Button onClick={() => setIsEditing(true)}>Edit Preferences</Button>
@@ -237,8 +237,8 @@ export default function TravelPreferencesClient() {
       {/* Passport Information */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Globe className="w-5 h-5 mr-2 text-primary" />
+          <h3 className="text-heading-4 flex items-center">
+            <Globe className="w-5 h-5 mr-2 color-primary" />
             Passport Information
           </h3>
         </CardHeader>
@@ -270,7 +270,7 @@ export default function TravelPreferencesClient() {
       {/* Travel Programs */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Travel Programs</h3>
+          <h3 className="text-heading-4">Travel Programs</h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -301,14 +301,14 @@ export default function TravelPreferencesClient() {
       {/* Flight Preferences */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Plane className="w-5 h-5 mr-2 text-secondary" />
+          <h3 className="text-heading-4 flex items-center">
+            <Plane className="w-5 h-5 mr-2 color-secondary" />
             Flight Preferences
           </h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <label className="text-sm font-medium">Seat Preference</label>
+            <label className="text-body-sm form-label">Seat Preference</label>
             <Select
               value={formData.seat_preference || ''}
               onValueChange={(value: string) => setFormData({ ...formData, seat_preference: value })}
@@ -321,7 +321,7 @@ export default function TravelPreferencesClient() {
               <option value="exit_row">Exit Row</option>
               <option value="bulkhead">Bulkhead</option>
             </Select>
-            <label className="text-sm font-medium">Meal Preference</label>
+            <label className="text-body-sm form-label">Meal Preference</label>
             <Select
               value={formData.meal_preference || ''}
               onValueChange={(value: string) => setFormData({ ...formData, meal_preference: value })}
@@ -337,7 +337,7 @@ export default function TravelPreferencesClient() {
             </Select>
           </div>
           <div className="space-y-2">
-            <label className="text-sm font-medium">Preferred Airlines</label>
+            <label className="text-body-sm form-label">Preferred Airlines</label>
             <div className="flex flex-wrap gap-2">
               {(formData.airline_preferences || []).map((airline, index) => (
                 <Badge key={index} variant="secondary">
@@ -370,8 +370,8 @@ export default function TravelPreferencesClient() {
       {/* Hotel Preferences */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Hotel className="w-5 h-5 mr-2 text-success" />
+          <h3 className="text-heading-4 flex items-center">
+            <Hotel className="w-5 h-5 mr-2 color-success" />
             Hotel Preferences
           </h3>
         </CardHeader>
@@ -409,8 +409,8 @@ export default function TravelPreferencesClient() {
       {/* Car Rental Preferences */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Car className="w-5 h-5 mr-2 text-warning" />
+          <h3 className="text-heading-4 flex items-center">
+            <Car className="w-5 h-5 mr-2 color-warning" />
             Car Rental Preferences
           </h3>
         </CardHeader>
@@ -448,15 +448,15 @@ export default function TravelPreferencesClient() {
       {/* Loyalty Programs */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Loyalty Programs</h3>
+          <h3 className="text-heading-4">Loyalty Programs</h3>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
             {(formData.loyalty_programs || []).map((program, index) => (
-              <div key={index} className="p-3 bg-muted rounded-lg flex justify-between items-center">
+              <div key={index} className="p-3 bg-secondary rounded-lg flex justify-between items-center">
                 <div>
-                  <p className="font-semibold">{program.company}</p>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-heading-4">{program.company}</p>
+                  <p className="text-body-sm color-muted">
                     {program.type} - {program.number}
                     {program.status && ` (${program.status})`}
                   </p>
@@ -475,7 +475,7 @@ export default function TravelPreferencesClient() {
             {isEditing && (
               <div className="space-y-2 p-3 border rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  <label className="text-sm font-medium">Program Type</label>
+                  <label className="text-body-sm form-label">Program Type</label>
                   <Select
                     value={newLoyaltyProgram.type}
                     onValueChange={(value: string) => setNewLoyaltyProgram({ 
@@ -526,7 +526,7 @@ export default function TravelPreferencesClient() {
       {/* Travel Notes */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Travel Notes</h3>
+          <h3 className="text-heading-4">Travel Notes</h3>
         </CardHeader>
         <CardContent>
           <Textarea

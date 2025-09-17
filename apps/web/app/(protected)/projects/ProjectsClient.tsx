@@ -13,7 +13,6 @@ import {
 import { 
   SupabaseDataProvider
 } from '@ghxstship/ui/components/DataViews/providers/SupabaseDataProvider';
-import { useAuth } from '@ghxstship/application/lib/supabase/auth-service';
 import { 
   DataViewProvider, 
   Drawer,
@@ -100,7 +99,7 @@ const projectsConfig: Omit<DataViewConfig, 'data' | 'onRefresh' | 'onExport' | '
 
 export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: string, userId: string, userEmail: string }) {
   const t = useTranslations('projects');
-  const { profile } = useAuth();
+  const [profile, setProfile] = useState(null);
   const [selectedRecord, setSelectedRecord] = useState<any>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [drawerMode, setDrawerMode] = useState<'view' | 'edit' | 'create'>('view');
@@ -190,7 +189,7 @@ export default function ProjectsClient({ orgId, userId, userEmail }: { orgId: st
              
             >
               <div className="p-6">
-                <p className="text-muted-foreground">Project details will be displayed here.</p>
+                <p className="color-muted">Project details will be displayed here.</p>
               </div>
             </Drawer>
           </div>

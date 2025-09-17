@@ -143,11 +143,11 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
        
         footer={
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-destructive" />
-                  <span className="text-destructive">{error}</span>
+                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <span className="color-destructive">{error}</span>
                 </>
               )}
             </div>
@@ -176,7 +176,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
         <form id="create-contract-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-2">
                 Title *
               </label>
               <Input
@@ -188,7 +188,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground mb-2">
                 Description
               </label>
               <Textarea
@@ -201,7 +201,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="jobId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-2">
                   Job ID *
                 </label>
                 <Input
@@ -213,7 +213,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               </div>
 
               <div>
-                <label htmlFor="companyId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="companyId" className="block text-body-sm form-label color-foreground mb-2">
                   Company ID (Optional)
                 </label>
                 <Input
@@ -226,7 +226,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="type" className="block text-body-sm form-label color-foreground mb-2">
                   Contract Type *
                 </label>
                 <Select {...register('type')}>
@@ -239,7 +239,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               </div>
 
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="status" className="block text-body-sm form-label color-foreground mb-2">
                   Status
                 </label>
                 <Select {...register('status')}>
@@ -255,7 +255,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="value" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="value" className="block text-body-sm form-label color-foreground mb-2">
                   Contract Value
                 </label>
                 <Input
@@ -268,7 +268,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               </div>
 
               <div>
-                <label htmlFor="currency" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="currency" className="block text-body-sm form-label color-foreground mb-2">
                   Currency
                 </label>
                 <Select {...register('currency')}>
@@ -282,7 +282,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="startDate" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="startDate" className="block text-body-sm form-label color-foreground mb-2">
                   Start Date
                 </label>
                 <Input
@@ -292,7 +292,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               </div>
 
               <div>
-                <label htmlFor="endDate" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="endDate" className="block text-body-sm form-label color-foreground mb-2">
                   End Date
                 </label>
                 <Input
@@ -303,7 +303,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
             </div>
 
             <div>
-              <label htmlFor="documentUrl" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="documentUrl" className="block text-body-sm form-label color-foreground mb-2">
                 Document URL
               </label>
               <Input
@@ -314,7 +314,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
             </div>
 
             <div>
-              <label htmlFor="terms" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="terms" className="block text-body-sm form-label color-foreground mb-2">
                 Terms & Conditions
               </label>
               <Textarea
@@ -325,7 +325,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="notes" className="block text-body-sm form-label color-foreground mb-2">
                 Notes
               </label>
               <Textarea

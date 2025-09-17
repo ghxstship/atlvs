@@ -175,8 +175,8 @@ export default function EmergencyContactsClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Emergency Contacts</h2>
-          <p className="text-muted-foreground">Manage your emergency contact information</p>
+          <h2 className="text-heading-3 text-heading-3">Emergency Contacts</h2>
+          <p className="color-muted">Manage your emergency contact information</p>
         </div>
         <Button onClick={handleAdd} disabled={isAdding}>
           <Plus className="w-4 h-4 mr-2" />
@@ -188,8 +188,8 @@ export default function EmergencyContactsClient() {
         <Alert>
           <AlertTriangle className="h-4 w-4" />
           <div>
-            <h3 className="font-semibold">No emergency contacts</h3>
-            <p className="text-sm">Add at least one emergency contact for safety purposes.</p>
+            <h3 className="text-heading-4">No emergency contacts</h3>
+            <p className="text-body-sm">Add at least one emergency contact for safety purposes.</p>
           </div>
         </Alert>
       )}
@@ -197,7 +197,7 @@ export default function EmergencyContactsClient() {
       {isAdding && (
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">New Emergency Contact</h3>
+            <h3 className="text-heading-4">New Emergency Contact</h3>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -245,7 +245,7 @@ export default function EmergencyContactsClient() {
                   onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
                   className="rounded border-border"
                 />
-                <label htmlFor="is_primary" className="text-sm">
+                <label htmlFor="is_primary" className="text-body-sm">
                   Primary Contact
                 </label>
               </div>
@@ -316,7 +316,7 @@ export default function EmergencyContactsClient() {
                         onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
                         className="rounded border-border"
                       />
-                      <label htmlFor={`is_primary_${contact.id}`} className="text-sm">
+                      <label htmlFor={`is_primary_${contact.id}`} className="text-body-sm">
                         Primary Contact
                       </label>
                     </div>
@@ -341,35 +341,35 @@ export default function EmergencyContactsClient() {
                 <div className="flex justify-between items-start">
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
-                      <User className="w-5 h-5 text-muted-foreground" />
-                      <span className="font-semibold text-lg">{contact.name}</span>
+                      <User className="w-5 h-5 color-muted" />
+                      <span className="text-heading-4 text-body">{contact.name}</span>
                       {contact.is_primary && (
-                        <span className="px-2 py-1 bg-primary/10 text-primary text-xs rounded-full">
+                        <span className="px-2 py-1 bg-primary/10 color-primary text-body-sm rounded-full">
                           Primary
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-muted-foreground">{contact.relationship}</p>
+                    <p className="text-body-sm color-muted">{contact.relationship}</p>
                     <div className="space-y-1">
                       <div className="flex items-center space-x-2">
-                        <Phone className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm">{contact.phone_primary}</span>
+                        <Phone className="w-4 h-4 color-muted" />
+                        <span className="text-body-sm">{contact.phone_primary}</span>
                       </div>
                       {contact.phone_secondary && (
                         <div className="flex items-center space-x-2">
-                          <Phone className="w-4 h-4 text-muted-foreground" />
-                          <span className="text-sm">{contact.phone_secondary}</span>
+                          <Phone className="w-4 h-4 color-muted" />
+                          <span className="text-body-sm">{contact.phone_secondary}</span>
                         </div>
                       )}
                       {contact.email && (
                         <div className="flex items-center space-x-2">
-                          <Mail className="w-4 h-4 text-muted-foreground" />
-                          <span className="text-sm">{contact.email}</span>
+                          <Mail className="w-4 h-4 color-muted" />
+                          <span className="text-body-sm">{contact.email}</span>
                         </div>
                       )}
                     </div>
                     {contact.notes && (
-                      <p className="text-sm text-muted-foreground mt-2">{contact.notes}</p>
+                      <p className="text-body-sm color-muted mt-2">{contact.notes}</p>
                     )}
                   </div>
                   <div className="flex space-x-2">

@@ -213,8 +213,8 @@ export default function HealthInfoClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Health Information</h2>
-          <p className="text-muted-foreground">Manage your medical and health details</p>
+          <h2 className="text-heading-3 text-heading-3">Health Information</h2>
+          <p className="color-muted">Manage your medical and health details</p>
         </div>
         {!isEditing && (
           <Button onClick={() => setIsEditing(true)}>
@@ -227,15 +227,15 @@ export default function HealthInfoClient() {
       {/* Basic Health Info */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Heart className="w-5 h-5 mr-2 text-destructive" />
+          <h3 className="text-heading-4 flex items-center">
+            <Heart className="w-5 h-5 mr-2 color-destructive" />
             Basic Information
           </h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">Blood Type</label>
+              <label className="block text-body-sm form-label color-foreground mb-1">Blood Type</label>
               <Select
                 value={formData.blood_type || ''}
                 onValueChange={(value: string) => setFormData({ ...formData, blood_type: value })}
@@ -273,8 +273,8 @@ export default function HealthInfoClient() {
       {/* Allergies */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <AlertCircle className="w-5 h-5 mr-2 text-warning" />
+          <h3 className="text-heading-4 flex items-center">
+            <AlertCircle className="w-5 h-5 mr-2 color-warning" />
             Allergies
           </h3>
         </CardHeader>
@@ -287,7 +287,7 @@ export default function HealthInfoClient() {
                   {isEditing && (
                     <button
                       onClick={() => removeAllergy(index)}
-                      className="ml-2 hover:text-white"
+                      className="ml-2 hover:text-background"
                     >
                       <X className="w-3 h-3" />
                     </button>
@@ -315,23 +315,23 @@ export default function HealthInfoClient() {
       {/* Medications */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Pill className="w-5 h-5 mr-2 text-primary" />
+          <h3 className="text-heading-4 flex items-center">
+            <Pill className="w-5 h-5 mr-2 color-primary" />
             Current Medications
           </h3>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
             {(formData.medications || []).map((med, index) => (
-              <div key={index} className="p-3 bg-muted rounded-lg">
+              <div key={index} className="p-3 bg-secondary rounded-lg">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="font-semibold">{med.name}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-heading-4">{med.name}</p>
+                    <p className="text-body-sm color-muted">
                       {med.dosage} - {med.frequency}
                     </p>
                     {med.reason && (
-                      <p className="text-sm text-muted-foreground">Reason: {med.reason}</p>
+                      <p className="text-body-sm color-muted">Reason: {med.reason}</p>
                     )}
                   </div>
                   {isEditing && (
@@ -383,8 +383,8 @@ export default function HealthInfoClient() {
       {/* Medical Conditions */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Activity className="w-5 h-5 mr-2 text-secondary" />
+          <h3 className="text-heading-4 flex items-center">
+            <Activity className="w-5 h-5 mr-2 color-secondary" />
             Medical Conditions
           </h3>
         </CardHeader>
@@ -425,7 +425,7 @@ export default function HealthInfoClient() {
       {/* Dietary Restrictions */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Dietary Restrictions</h3>
+          <h3 className="text-heading-4">Dietary Restrictions</h3>
         </CardHeader>
         <CardContent>
           <div className="space-y-3">
@@ -464,7 +464,7 @@ export default function HealthInfoClient() {
       {/* Insurance & Physician Info */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Insurance & Physician</h3>
+          <h3 className="text-heading-4">Insurance & Physician</h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -500,7 +500,7 @@ export default function HealthInfoClient() {
       {/* Emergency Notes */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Emergency Notes</h3>
+          <h3 className="text-heading-4">Emergency Notes</h3>
         </CardHeader>
         <CardContent>
           <Textarea

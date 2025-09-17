@@ -117,10 +117,10 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
   );
 
   const purposes = [
-    { value: 'hiring', label: t('hiring'), color: 'bg-primary/10 text-primary' },
-    { value: 'project', label: t('project'), color: 'bg-success/10 text-success' },
-    { value: 'event', label: t('event'), color: 'bg-secondary/10 text-secondary' },
-    { value: 'general', label: t('general'), color: 'bg-muted text-muted-foreground' }
+    { value: 'hiring', label: t('hiring'), color: 'bg-primary/10 color-primary' },
+    { value: 'project', label: t('project'), color: 'bg-success/10 color-success' },
+    { value: 'event', label: t('event'), color: 'bg-secondary/10 color-secondary' },
+    { value: 'general', label: t('general'), color: 'bg-secondary color-muted' }
   ];
 
   if (loading) {
@@ -140,8 +140,8 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{t('title')}</h1>
-          <p className="text-muted-foreground">{t('subtitle')}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{t('title')}</h1>
+          <p className="color-muted">{t('subtitle')}</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)} className="flex items-center space-x-2">
           <Plus className="h-4 w-4" />
@@ -155,7 +155,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -185,7 +185,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
         <Card title={t('createShortlist')}>
           <div className="p-4 space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-body-sm form-label color-foreground mb-1">
                 {t('name')}
               </label>
               <Input
@@ -195,7 +195,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-body-sm form-label color-foreground mb-1">
                 {t('description')}
               </label>
               <textarea
@@ -207,7 +207,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-body-sm form-label color-foreground mb-1">
                 {t('purpose')}
               </label>
               <select
@@ -244,9 +244,9 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex-1">
-                    <h3 className="font-semibold text-foreground mb-1">{shortlist.name}</h3>
+                    <h3 className="text-heading-4 color-foreground mb-1">{shortlist.name}</h3>
                     {shortlist.description && (
-                      <p className="text-sm text-muted-foreground mb-2">{shortlist.description}</p>
+                      <p className="text-body-sm color-muted mb-2">{shortlist.description}</p>
                     )}
                   </div>
                   <div className="flex space-x-1">
@@ -265,18 +265,18 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
                       {purpose.label}
                     </Badge>
                   )}
-                  <div className="flex items-center text-sm text-muted-foreground">
+                  <div className="flex items-center text-body-sm color-muted">
                     <Users className="h-4 w-4 mr-1" />
                     {shortlist.member_count || 0} {t('members')}
                   </div>
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center justify-between text-body-sm color-muted">
                   <div className="flex items-center">
                     <Calendar className="h-3 w-3 mr-1" />
                     {new Date(shortlist.created_at).toLocaleDateString()}
                   </div>
-                  <Badge className={shortlist.status === 'active' ? 'bg-success/10 text-success' : 'bg-muted text-muted-foreground'}>
+                  <Badge className={shortlist.status === 'active' ? 'bg-success/10 color-success' : 'bg-secondary color-muted'}>
                     {shortlist.status}
                   </Badge>
                 </div>
@@ -289,9 +289,9 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       {filteredShortlists.length === 0 && (
         <Card>
           <div className="text-center py-8">
-            <List className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">{t('noShortlists')}</p>
-            <p className="text-sm text-muted-foreground mt-2">{t('createFirstShortlist')}</p>
+            <List className="h-12 w-12 color-muted mx-auto mb-4" />
+            <p className="color-muted">{t('noShortlists')}</p>
+            <p className="text-body-sm color-muted mt-2">{t('createFirstShortlist')}</p>
           </div>
         </Card>
       )}

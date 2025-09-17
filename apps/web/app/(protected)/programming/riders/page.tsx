@@ -29,7 +29,7 @@ export default async function ProgrammingRidersPage() {
     <div className="space-y-4">
       <Card title={t('riders')}>
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h1 className="text-2xl font-bold font-anton uppercase">{t('riders')}</h1>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">{t('riders')}</h1>
           {orgId && <CreateRiderClient orgId={orgId} />}
         </div>
         

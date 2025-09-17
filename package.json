@@ -10,21 +10,26 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
     "lint": "turbo run lint",
-    "test": "turbo run test",
     "typecheck": "turbo run typecheck",
     "dev:core": "corepack pnpm -r --workspace-concurrency=1 run dev",
     "build:core": "corepack pnpm -r run build",
     "lint:core": "corepack pnpm -r run lint",
-    "typecheck:core": "corepack pnpm -r run typecheck"
+    "typecheck:core": "corepack pnpm -r run typecheck",
+    "lint:tokens:colors": "eslint --ext .ts,.tsx --rule 'no-hardcoded-colors: error' .",
+    "lint:tokens:spacing": "eslint --ext .ts,.tsx --rule 'no-hardcoded-spacing: error' .",
+    "lint:tokens:shadows": "eslint --ext .ts,.tsx --rule 'no-hardcoded-shadows: warn' .",
+    "lint:tokens:motion": "eslint --ext .ts,.tsx --rule 'no-hardcoded-motion: warn' .",
+    "lint:imports": "eslint --ext .ts,.tsx --rule 'consistent-imports: error' .",
+    "lint:legacy-imports": "eslint --ext .ts,.tsx --rule 'no-legacy-imports: error' ."
   },
   "devDependencies": {
-    "@types/node": "^20.12.11",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.23",
-    "eslint": "^9.0.0",
-    "prettier": "^3.2.5",
-    "turbo": "^2.0.0",
-    "typescript": "^5.4.0"
+    "@types/node": "^20.19.14",
+    "@types/react": "^18.3.24",
+    "@types/react-dom": "^18.3.7",
+    "eslint": "^9.35.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.6",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2"

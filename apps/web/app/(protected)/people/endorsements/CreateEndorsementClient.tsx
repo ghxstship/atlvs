@@ -214,11 +214,11 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
         <form id="endorsement-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-warning/10 rounded-lg">
-              <Star className="h-5 w-5 text-warning" />
+              <Star className="h-5 w-5 color-warning" />
             </div>
             <div>
-              <h3 className="font-medium">Endorsement Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Endorsement Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Provide feedback and recognition for team members
               </p>
             </div>
@@ -226,7 +226,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Person *
               </label>
               <select
@@ -241,13 +241,13 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                 ))}
               </select>
               {errors.personId && (
-                <p className="text-sm text-destructive mt-1">{errors.personId.message}</p>
+                <p className="text-body-sm color-destructive mt-1">{errors.personId.message}</p>
               )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Endorsement Type
                 </label>
                 <select
@@ -263,7 +263,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Rating *
                 </label>
                 <select
@@ -277,13 +277,13 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                   <option value={5}>5 - Outstanding</option>
                 </select>
                 {errors.rating && (
-                  <p className="text-sm text-destructive mt-1">{errors.rating.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.rating.message}</p>
                 )}
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Specific Competency (Optional)
               </label>
               <select
@@ -300,7 +300,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Project (Optional)
               </label>
               <Input
@@ -310,7 +310,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Comments
               </label>
               <Textarea
@@ -322,8 +322,8 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
           </div>
 
           <div className="bg-warning/5 p-4 rounded-lg">
-            <h4 className="font-medium text-warning mb-2">Endorsement Guidelines</h4>
-            <ul className="text-sm text-warning/80 space-y-1">
+            <h4 className="form-label color-warning mb-2">Endorsement Guidelines</h4>
+            <ul className="text-body-sm color-warning/80 space-y-1">
               <li>• Provide specific, constructive feedback with examples</li>
               <li>• Focus on observable behaviors and outcomes</li>
               <li>• Be fair and objective in your ratings</li>

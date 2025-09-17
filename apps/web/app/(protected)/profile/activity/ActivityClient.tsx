@@ -89,12 +89,12 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
 
   const getActivityColor = (type: string) => {
     const colors = {
-      profile_updated: 'text-primary',
-      profile_created: 'text-success',
-      profile_viewed: 'text-muted-foreground',
-      certification_added: 'text-secondary',
-      job_history_added: 'text-warning',
-      default: 'text-muted-foreground'
+      profile_updated: 'color-primary',
+      profile_created: 'color-success',
+      profile_viewed: 'color-muted',
+      certification_added: 'color-secondary',
+      job_history_added: 'color-warning',
+      default: 'color-muted'
     };
     
     return colors[type as keyof typeof colors] || colors.default;
@@ -131,7 +131,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
       <div className="space-y-4">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-16 bg-muted rounded-lg"></div>
+            <div className="h-16 bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -143,11 +143,11 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
       {/* Header with filters */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-4">
-          <h2 className="text-xl font-semibold">Activity Log</h2>
+          <h2 className="text-heading-4 text-heading-4">Activity Log</h2>
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="px-3 py-1 border rounded-md text-sm"
+            className="px-3 py-1 border rounded-md text-body-sm"
           >
             <option value="all">All Activities</option>
             <option value="profile_updated">Profile Updates</option>
@@ -175,32 +175,32 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
             <Card key={activity.id}>
               <div className="p-4">
                 <div className="flex items-start gap-4">
-                  <div className={`p-2 rounded-full bg-muted ${getActivityColor(activity.activity_type)}`}>
+                  <div className={`p-2 rounded-full bg-secondary ${getActivityColor(activity.activity_type)}`}>
                     {getActivityIcon(activity.activity_type)}
                   </div>
                   
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
-                        <h4 className="font-medium">{activity.activity_description}</h4>
-                        <Badge variant="secondary" className="text-xs">
+                        <h4 className="form-label">{activity.activity_description}</h4>
+                        <Badge variant="secondary" className="text-body-sm">
                           {formatActivityType(activity.activity_type)}
                         </Badge>
                       </div>
                       
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-2 text-body-sm color-muted">
                         <Clock className="h-4 w-4" />
                         <span>{new Date(activity.created_at).toLocaleString()}</span>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <User className="h-4 w-4" />
                       <span>by {activity.performed_by_name}</span>
                     </div>
                     
                     {activity.metadata && (
-                      <div className="mt-2 p-2 bg-muted/50 rounded text-xs">
+                      <div className="mt-2 p-2 bg-secondary/50 rounded text-body-sm">
                         <pre className="whitespace-pre-wrap">
                           {JSON.stringify(activity.metadata, null, 2)}
                         </pre>
@@ -214,9 +214,9 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
         ) : (
           <Card>
             <div className="p-8 text-center">
-              <Activity className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-              <h3 className="text-lg font-medium mb-2">No Activity Found</h3>
-              <p className="text-muted-foreground">
+              <Activity className="h-12 w-12 mx-auto mb-4 color-muted opacity-50" />
+              <h3 className="text-body form-label mb-2">No Activity Found</h3>
+              <p className="color-muted">
                 {filter === 'all' 
                   ? 'No profile activity has been recorded yet.'
                   : `No ${formatActivityType(filter)} activities found.`

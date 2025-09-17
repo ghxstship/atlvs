@@ -119,14 +119,14 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="entry_type" className="text-sm font-medium">Entry Type *</label>
+            <label htmlFor="entry_type" className="text-body-sm form-label">Entry Type *</label>
             <select 
               id="entry_type" 
               className="rounded border px-2 py-1" 
@@ -142,7 +142,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="title" className="text-sm font-medium">Title/Position *</label>
+            <label htmlFor="title" className="text-body-sm form-label">Title/Position *</label>
             <input 
               id="title" 
               className="rounded border px-2 py-1" 
@@ -151,11 +151,11 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.title} 
             />
             {form.formState.errors.title ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="organization" className="text-sm font-medium">Organization/Company *</label>
+            <label htmlFor="organization" className="text-body-sm form-label">Organization/Company *</label>
             <input 
               id="organization" 
               className="rounded border px-2 py-1" 
@@ -164,11 +164,11 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.organization} 
             />
             {form.formState.errors.organization ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.organization.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.organization.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="description" className="text-sm font-medium">Description</label>
+            <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
               className="rounded border px-2 py-1 min-h-[80px]" 
@@ -180,7 +180,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="start_date" className="text-sm font-medium">Start Date *</label>
+              <label htmlFor="start_date" className="text-body-sm form-label">Start Date *</label>
               <input 
                 id="start_date" 
                 type="date" 
@@ -190,11 +190,11 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
                 aria-invalid={!!form.formState.errors.start_date} 
               />
               {form.formState.errors.start_date ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.start_date.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.start_date.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="end_date" className="text-sm font-medium">End Date</label>
+              <label htmlFor="end_date" className="text-body-sm form-label">End Date</label>
               <input 
                 id="end_date" 
                 type="date" 
@@ -218,11 +218,11 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
                 }
               }} 
             />
-            <label htmlFor="is_current" className="text-sm font-medium">This is my current position</label>
+            <label htmlFor="is_current" className="text-body-sm form-label">This is my current position</label>
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="location" className="text-sm font-medium">Location</label>
+            <label htmlFor="location" className="text-body-sm form-label">Location</label>
             <input 
               id="location" 
               className="rounded border px-2 py-1" 
@@ -233,7 +233,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="skills_gained" className="text-sm font-medium">Skills Gained (comma-separated)</label>
+            <label htmlFor="skills_gained" className="text-body-sm form-label">Skills Gained (comma-separated)</label>
             <textarea 
               id="skills_gained" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -244,7 +244,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="achievements" className="text-sm font-medium">Key Achievements (comma-separated)</label>
+            <label htmlFor="achievements" className="text-body-sm form-label">Key Achievements (comma-separated)</label>
             <textarea 
               id="achievements" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -255,7 +255,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="references" className="text-sm font-medium">References</label>
+            <label htmlFor="references" className="text-body-sm form-label">References</label>
             <textarea 
               id="references" 
               className="rounded border px-2 py-1 min-h-[60px]" 

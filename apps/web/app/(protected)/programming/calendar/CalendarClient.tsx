@@ -147,22 +147,22 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
       case 'workshop':
         return 'bg-secondary';
       default:
-        return 'bg-muted-foreground';
+        return 'bg-secondary-foreground';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'scheduled':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       case 'in_progress':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'completed':
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
       case 'cancelled':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       default:
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
     }
   };
 
@@ -186,7 +186,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-            <h2 className="text-xl font-semibold min-w-[200px] text-center">
+            <h2 className="text-heading-4 text-heading-4 min-w-[200px] text-center">
               {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
             </h2>
             <Button
@@ -220,7 +220,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
       </div>
 
       {/* Event Type Legend */}
-      <div className="flex items-center gap-4 text-sm">
+      <div className="flex items-center gap-4 text-body-sm">
         <div className="flex items-center gap-2">
           <div className="w-3 h-3 rounded-full bg-primary"></div>
           <span>Performance</span>
@@ -242,7 +242,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
           {weekDays.map(day => (
             <div
               key={day}
-              className="p-3 text-center text-sm font-medium text-muted-foreground border-b border-r last:border-r-0"
+              className="p-3 text-center text-body-sm form-label color-muted border-b border-r last:border-r-0"
             >
               {day}
             </div>
@@ -257,13 +257,13 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
               <div
                 key={index}
                 className={`min-h-[120px] p-2 border-b border-r last:border-r-0 ${
-                  date ? 'bg-background hover:bg-muted/50' : 'bg-muted/20'
+                  date ? 'bg-background hover:bg-secondary/50' : 'bg-secondary/20'
                 } ${isToday ? 'bg-primary/10' : ''}`}
               >
                 {date && (
                   <>
-                    <div className={`text-sm font-medium mb-2 ${
-                      isToday ? 'text-primary font-bold' : 'text-foreground'
+                    <div className={`text-body-sm form-label mb-2 ${
+                      isToday ? 'color-primary text-heading-3' : 'color-foreground'
                     }`}>
                       {date.getDate()}
                     </div>
@@ -272,14 +272,14 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                       {dayEvents.slice(0, 3).map(event => (
                         <div
                           key={event.id}
-                          className="text-xs p-1 rounded cursor-pointer hover:opacity-80 transition-opacity"
+                          className="text-body-sm p-1 rounded cursor-pointer hover:opacity-80 transition-opacity"
                           style={{ backgroundColor: `${getEventTypeColor(event.kind)}20` }}
                         >
                           <div className="flex items-center gap-1">
                             <div className={`w-2 h-2 rounded-full ${getEventTypeColor(event.kind)}`}></div>
-                            <span className="truncate font-medium">{event.name}</span>
+                            <span className="truncate form-label">{event.name}</span>
                           </div>
-                          <div className="text-muted-foreground mt-1 flex items-center gap-1">
+                          <div className="color-muted mt-1 flex items-center gap-1">
                             <Clock className="h-3 w-3" />
                             <span>
                               {new Date(event.starts_at).toLocaleTimeString([], { 
@@ -292,7 +292,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                       ))}
                       
                       {dayEvents.length > 3 && (
-                        <div className="text-xs text-muted-foreground p-1">
+                        <div className="text-body-sm color-muted p-1">
                           +{dayEvents.length - 3} more
                         </div>
                       )}
@@ -308,14 +308,14 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
       {/* Upcoming Events List */}
       <Card>
         <div className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Upcoming Events This Month</h3>
+          <h3 className="text-body text-heading-4 mb-4">Upcoming Events This Month</h3>
           
           {loading ? (
-            <div className="text-center py-8 text-muted-foreground">
+            <div className="text-center py-8 color-muted">
               Loading events...
             </div>
           ) : events.length === 0 ? (
-            <div className="text-center py-8 text-muted-foreground">
+            <div className="text-center py-8 color-muted">
               <Calendar className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No events scheduled for this month</p>
               <Button>
@@ -328,13 +328,13 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
               {events.slice(0, 5).map(event => (
                 <div
                   key={event.id}
-                  className="flex items-center justify-between p-3 rounded-lg border hover:bg-muted/50 cursor-pointer transition-colors"
+                  className="flex items-center justify-between p-3 rounded-lg border hover:bg-secondary/50 cursor-pointer transition-colors"
                 >
                   <div className="flex items-center gap-3">
                     <div className={`w-3 h-3 rounded-full ${getEventTypeColor(event.kind)}`}></div>
                     <div>
-                      <div className="font-medium">{event.name}</div>
-                      <div className="text-sm text-muted-foreground flex items-center gap-4">
+                      <div className="form-label">{event.name}</div>
+                      <div className="text-body-sm color-muted flex items-center gap-4">
                         <span className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
                           {new Date(event.starts_at).toLocaleDateString()}

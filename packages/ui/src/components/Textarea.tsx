@@ -12,8 +12,8 @@ const textareaVariants = cva(
     variants: {
       variant: {
         default: 'border-border hover:border-border/80',
-        success: 'border-green-500 focus-visible:ring-green-500',
-        error: 'border-red-500 focus-visible:ring-red-500',
+        success: 'border-success focus-visible:ring-success',
+        error: 'border-destructive focus-visible:ring-destructive',
       },
       size: {
         default: 'min-h-[80px] px-3 py-2',
@@ -125,8 +125,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               'text-sm font-medium leading-none transition-colors duration-200',
               'peer-disabled:cursor-not-allowed peer-disabled:opacity-70',
               isFocused && 'text-primary',
-              error && 'text-red-600',
-              success && 'text-green-600'
+              error && 'text-destructive',
+              success && 'text-success'
             )}
           >
             {label}
@@ -146,7 +146,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
               leftIcon && 'pl-10',
               'group-hover:shadow-sm',
               isFocused && 'shadow-md',
-              isOverLimit && 'border-red-500 focus-visible:ring-red-500',
+              isOverLimit && 'border-destructive focus-visible:ring-destructive',
               className
             )}
             value={value}
@@ -171,14 +171,14 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           {/* Success indicator */}
           {success && !loading && (
             <div className="absolute right-3 top-3 pointer-events-none">
-              <Check className="h-4 w-4 text-green-500" />
+              <Check className="h-4 w-4 text-success" />
             </div>
           )}
           
           {/* Error indicator */}
           {error && !loading && (
             <div className="absolute right-3 top-3 pointer-events-none">
-              <AlertCircle className="h-4 w-4 text-red-500" />
+              <AlertCircle className="h-4 w-4 text-destructive" />
             </div>
           )}
         </div>
@@ -189,8 +189,8 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
             <div />
             <div className={clsx(
               'transition-colors duration-200',
-              isOverLimit ? 'text-red-600' : 
-              isNearLimit ? 'text-yellow-600' : 
+              isOverLimit ? 'text-destructive' : 
+              isNearLimit ? 'text-warning' : 
               'text-muted-foreground'
             )}>
               {charCount}{maxLength && `/${maxLength}`}
@@ -204,13 +204,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           </p>
         )}
         {error && (
-          <p id={`${textareaId}-error`} className="text-sm text-red-600 flex items-center gap-1" role="alert">
+          <p id={`${textareaId}-error`} className="text-sm text-destructive flex items-center gap-1" role="alert">
             <AlertCircle className="h-3 w-3" />
             {error}
           </p>
         )}
         {success && !error && (
-          <p className="text-sm text-green-600 flex items-center gap-1">
+          <p className="text-sm text-success flex items-center gap-1">
             <Check className="h-3 w-3" />
             Input validated
           </p>

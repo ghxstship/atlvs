@@ -190,11 +190,11 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
         <form id="manning-slot-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <Users className="h-5 w-5 text-primary" />
+              <Users className="h-5 w-5 color-primary" />
             </div>
             <div>
-              <h3 className="font-medium">Manning Slot Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Manning Slot Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Define staffing requirements for a project role
               </p>
             </div>
@@ -202,7 +202,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Project *
               </label>
               <select
@@ -217,13 +217,13 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 ))}
               </select>
               {errors.projectId && (
-                <p className="text-sm text-destructive mt-1">{errors.projectId.message}</p>
+                <p className="text-body-sm color-destructive mt-1">{errors.projectId.message}</p>
               )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Role *
                 </label>
                 <Input
@@ -234,7 +234,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Required Count *
                 </label>
                 <Input
@@ -248,7 +248,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Priority
               </label>
               <select
@@ -264,7 +264,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Start Date
                 </label>
                 <Input
@@ -274,7 +274,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   End Date
                 </label>
                 <Input
@@ -285,7 +285,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -296,7 +296,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Skill Requirements
               </label>
               <Textarea
@@ -308,8 +308,8 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
           </div>
 
           <div className="bg-primary/10 p-4 rounded-lg">
-            <h4 className="font-medium text-primary-foreground mb-2">Manning Guidelines</h4>
-            <ul className="text-sm text-primary/80 space-y-1">
+            <h4 className="form-label color-primary-foreground mb-2">Manning Guidelines</h4>
+            <ul className="text-body-sm color-primary/80 space-y-1">
               <li>• Define clear role requirements and skill expectations</li>
               <li>• Set realistic required counts based on project scope</li>
               <li>• Use priority levels to focus recruitment efforts</li>

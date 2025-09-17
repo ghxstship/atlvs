@@ -295,8 +295,8 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Asset Tracking</h1>
-          <p className="text-sm text-muted-foreground">Real-time asset location and status monitoring</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Asset Tracking</h1>
+          <p className="text-body-sm color-muted">Real-time asset location and status monitoring</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" onClick={handleScanBarcode} className="flex items-center gap-2">
@@ -316,7 +316,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
                 <Input
                   placeholder="Search assets..."
                   value={searchQuery}
@@ -358,11 +358,11 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       {/* Tracking Grid */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading tracking data...</div>
+          <div className="p-8 text-center color-muted">Loading tracking data...</div>
         </Card>
       ) : filteredData.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No tracking data found matching your criteria.
           </div>
         </Card>
@@ -373,8 +373,8 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-muted-foreground" />
-                    <h3 className="font-semibold truncate">{tracking.assetName}</h3>
+                    <MapPin className="w-4 h-4 color-muted" />
+                    <h3 className="text-heading-4 truncate">{tracking.assetName}</h3>
                   </div>
                   <div className="flex items-center gap-1">
                     {getStatusBadge(tracking.status)}
@@ -383,25 +383,25 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
 
                 <div className="space-y-3 mb-4">
                   <div>
-                    <span className="text-xs text-muted-foreground block">Current Location</span>
-                    <span className="font-medium">{tracking.currentLocation}</span>
+                    <span className="text-body-sm color-muted block">Current Location</span>
+                    <span className="form-label">{tracking.currentLocation}</span>
                   </div>
                   
                   {tracking.previousLocation && (
                     <div>
-                      <span className="text-xs text-muted-foreground block">Previous Location</span>
-                      <span className="text-sm">{tracking.previousLocation}</span>
+                      <span className="text-body-sm color-muted block">Previous Location</span>
+                      <span className="text-body-sm">{tracking.previousLocation}</span>
                     </div>
                   )}
 
                   <div>
-                    <span className="text-xs text-muted-foreground block">Last Seen</span>
-                    <span className="text-sm">{formatDateTime(tracking.lastSeen)}</span>
+                    <span className="text-body-sm color-muted block">Last Seen</span>
+                    <span className="text-body-sm">{formatDateTime(tracking.lastSeen)}</span>
                   </div>
 
                   <div>
-                    <span className="text-xs text-muted-foreground block">Tracked By</span>
-                    <span className="text-sm">{tracking.trackedBy}</span>
+                    <span className="text-body-sm color-muted block">Tracked By</span>
+                    <span className="text-body-sm">{tracking.trackedBy}</span>
                   </div>
                 </div>
 
@@ -409,7 +409,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
                   <div className="flex items-center gap-2">
                     {getMethodBadge(tracking.trackingMethod)}
                   </div>
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-2 text-body-sm">
                     {tracking.batteryLevel && (
                       <span className="flex items-center gap-1">
                         {getBatteryIcon(tracking.batteryLevel)}
@@ -426,16 +426,16 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
                 </div>
 
                 {(tracking.temperature || tracking.humidity) && (
-                  <div className="grid grid-cols-2 gap-4 mb-4 text-sm">
+                  <div className="grid grid-cols-2 gap-4 mb-4 text-body-sm">
                     {tracking.temperature && (
                       <div>
-                        <span className="text-xs text-muted-foreground block">Temperature</span>
+                        <span className="text-body-sm color-muted block">Temperature</span>
                         <span>{tracking.temperature}°C</span>
                       </div>
                     )}
                     {tracking.humidity && (
                       <div>
-                        <span className="text-xs text-muted-foreground block">Humidity</span>
+                        <span className="text-body-sm color-muted block">Humidity</span>
                         <span>{tracking.humidity}%</span>
                       </div>
                     )}
@@ -443,18 +443,18 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
                 )}
 
                 {tracking.coordinates && (
-                  <div className="mb-4 text-sm">
-                    <span className="text-xs text-muted-foreground block">Coordinates</span>
-                    <span className="font-mono text-xs">
+                  <div className="mb-4 text-body-sm">
+                    <span className="text-body-sm color-muted block">Coordinates</span>
+                    <span className="font-mono text-body-sm">
                       {tracking.coordinates.latitude.toFixed(4)}, {tracking.coordinates.longitude.toFixed(4)}
                     </span>
                   </div>
                 )}
 
                 {tracking.notes && (
-                  <div className="mt-3 p-3 bg-muted rounded-md">
-                    <span className="text-xs text-muted-foreground block mb-1">Notes</span>
-                    <p className="text-sm">{tracking.notes}</p>
+                  <div className="mt-3 p-3 bg-secondary rounded-md">
+                    <span className="text-body-sm color-muted block mb-1">Notes</span>
+                    <p className="text-body-sm">{tracking.notes}</p>
                   </div>
                 )}
 
@@ -484,22 +484,22 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       >
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Asset</label>
+            <label className="block text-body-sm form-label mb-1">Asset</label>
             <Input
               value={selectedTracking?.assetName || ''}
               disabled
-              className="bg-muted"
+              className="bg-secondary"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Current Location</label>
+            <label className="block text-body-sm form-label mb-1">Current Location</label>
             <Input
               placeholder="Enter new location"
               defaultValue={selectedTracking?.currentLocation}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Status</label>
+            <label className="block text-body-sm form-label mb-1">Status</label>
             <select
               defaultValue={selectedTracking?.status}
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -512,7 +512,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             </select>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-body-sm form-label mb-1">Notes</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}

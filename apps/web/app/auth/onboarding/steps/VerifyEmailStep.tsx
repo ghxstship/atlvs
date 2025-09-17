@@ -70,28 +70,28 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       <CardContent className="p-8 text-center">
         <div className="mb-8">
           {isVerified ? (
-            <CheckCircle className="h-16 w-16 text-success mx-auto mb-4" />
+            <CheckCircle className="h-16 w-16 color-success mx-auto mb-4" />
           ) : (
-            <Mail className="h-16 w-16 text-primary mx-auto mb-4" />
+            <Mail className="h-16 w-16 color-primary mx-auto mb-4" />
           )}
           
-          <h1 className={`${anton.className} uppercase text-3xl font-bold mb-4`}>
+          <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
             {isVerified ? 'EMAIL VERIFIED!' : 'VERIFY YOUR EMAIL'}
           </h1>
           
           {isVerified ? (
-            <p className="text-lg text-muted-foreground">
+            <p className="text-body color-muted">
               Great! Your email has been verified. Redirecting you to the next step...
             </p>
           ) : (
             <div className="space-y-4">
-              <p className="text-lg text-muted-foreground">
+              <p className="text-body color-muted">
                 We've sent a verification link to:
               </p>
-              <p className="text-xl font-semibold text-foreground">
+              <p className="text-heading-4 text-heading-4 color-foreground">
                 {user?.email}
               </p>
-              <p className="text-muted-foreground">
+              <p className="color-muted">
                 Click the link in your email to verify your account and continue.
               </p>
             </div>
@@ -110,7 +110,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
             </Button>
             
             <div className="text-center">
-              <p className="text-sm text-muted-foreground mb-2">
+              <p className="text-body-sm color-muted mb-2">
                 Didn't receive the email?
               </p>
               <Button
@@ -122,7 +122,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
                 {isResending ? 'Sending...' : 'Resend Verification Email'}
               </Button>
               {resendMessage && (
-                <p className="text-sm mt-2 text-muted-foreground">
+                <p className="text-body-sm mt-2 color-muted">
                   {resendMessage}
                 </p>
               )}

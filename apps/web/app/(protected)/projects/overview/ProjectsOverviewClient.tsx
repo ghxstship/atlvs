@@ -140,11 +140,11 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-success/10 text-success';
-      case 'completed': return 'bg-primary/10 text-primary';
-      case 'on_hold': return 'bg-warning/10 text-warning';
-      case 'cancelled': return 'bg-destructive/10 text-destructive';
-      default: return 'bg-muted/50 text-muted-foreground';
+      case 'active': return 'bg-success/10 color-success';
+      case 'completed': return 'bg-primary/10 color-primary';
+      case 'on_hold': return 'bg-warning/10 color-warning';
+      case 'cancelled': return 'bg-destructive/10 color-destructive';
+      default: return 'bg-secondary/50 color-muted';
     }
   };
 
@@ -163,7 +163,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-muted rounded"></div>
+              <div className="h-20 bg-secondary rounded"></div>
             </Card>
           ))}
         </div>
@@ -174,11 +174,11 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
   if (!stats || stats.totalProjects === 0) {
     return (
       <div className="text-center py-12">
-        <div className="mx-auto w-24 h-24 bg-muted/50 rounded-full flex items-center justify-center mb-4">
-          <BarChart3 className="w-12 h-12 text-muted-foreground" />
+        <div className="mx-auto w-24 h-24 bg-secondary/50 rounded-full flex items-center justify-center mb-4">
+          <BarChart3 className="w-12 h-12 color-muted" />
         </div>
-        <h3 className="text-lg font-semibold mb-2">No Projects Yet</h3>
-        <p className="text-muted-foreground mb-6">Get started by creating your first project or seeding demo data.</p>
+        <h3 className="text-body text-heading-4 mb-2">No Projects Yet</h3>
+        <p className="color-muted mb-6">Get started by creating your first project or seeding demo data.</p>
         <div className="flex items-center justify-center gap-4">
           <Button onClick={() => router.push('/projects?create=true')}>
             <Plus className="w-4 h-4 mr-2" />
@@ -193,10 +193,10 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           </Button>
         </div>
         {message && (
-          <div className="mt-4 text-success text-sm">{message}</div>
+          <div className="mt-4 color-success text-body-sm">{message}</div>
         )}
         {error && (
-          <div className="mt-4 text-destructive text-sm">{error}</div>
+          <div className="mt-4 color-destructive text-body-sm">{error}</div>
         )}
       </div>
     );
@@ -209,27 +209,27 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Total Projects</p>
-              <p className="text-2xl font-bold">{stats.totalProjects}</p>
+              <p className="text-body-sm form-label color-muted">Total Projects</p>
+              <p className="text-heading-3 text-heading-3">{stats.totalProjects}</p>
             </div>
-            <BarChart3 className="w-8 h-8 text-primary" />
+            <BarChart3 className="w-8 h-8 color-primary" />
           </div>
-          <div className="mt-2 flex items-center text-sm">
-            <span className="text-success">{stats.activeProjects} active</span>
+          <div className="mt-2 flex items-center text-body-sm">
+            <span className="color-success">{stats.activeProjects} active</span>
             <span className="mx-2">•</span>
-            <span className="text-muted-foreground">{stats.completedProjects} completed</span>
+            <span className="color-muted">{stats.completedProjects} completed</span>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Total Budget</p>
-              <p className="text-2xl font-bold">{formatCurrency(stats.totalBudget)}</p>
+              <p className="text-body-sm form-label color-muted">Total Budget</p>
+              <p className="text-heading-3 text-heading-3">{formatCurrency(stats.totalBudget)}</p>
             </div>
-            <DollarSign className="w-8 h-8 text-success" />
+            <DollarSign className="w-8 h-8 color-success" />
           </div>
-          <div className="mt-2 text-sm text-muted-foreground">
+          <div className="mt-2 text-body-sm color-muted">
             Across all projects
           </div>
         </Card>
@@ -237,30 +237,30 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Tasks Progress</p>
-              <p className="text-2xl font-bold">
+              <p className="text-body-sm form-label color-muted">Tasks Progress</p>
+              <p className="text-heading-3 text-heading-3">
                 {stats.totalTasks > 0 ? Math.round((stats.completedTasks / stats.totalTasks) * 100) : 0}%
               </p>
             </div>
-            <CheckCircle className="w-8 h-8 text-primary" />
+            <CheckCircle className="w-8 h-8 color-primary" />
           </div>
-          <div className="mt-2 flex items-center text-sm">
-            <span className="text-success">{stats.completedTasks} done</span>
+          <div className="mt-2 flex items-center text-body-sm">
+            <span className="color-success">{stats.completedTasks} done</span>
             <span className="mx-2">•</span>
-            <span className="text-destructive">{stats.overdueTasks} overdue</span>
+            <span className="color-destructive">{stats.overdueTasks} overdue</span>
           </div>
         </Card>
 
         <Card className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">Risk Status</p>
-              <p className="text-2xl font-bold">{stats.totalRisks}</p>
+              <p className="text-body-sm form-label color-muted">Risk Status</p>
+              <p className="text-heading-3 text-heading-3">{stats.totalRisks}</p>
             </div>
-            <AlertTriangle className="w-8 h-8 text-warning" />
+            <AlertTriangle className="w-8 h-8 color-warning" />
           </div>
-          <div className="mt-2 text-sm">
-            <span className="text-destructive">{stats.highRisks} high priority</span>
+          <div className="mt-2 text-body-sm">
+            <span className="color-destructive">{stats.highRisks} high priority</span>
           </div>
         </Card>
       </div>
@@ -268,7 +268,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
       {/* Recent Projects */}
       <Card className="p-6">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold">Recent Projects</h3>
+          <h3 className="text-body text-heading-4">Recent Projects</h3>
           <Button 
             variant="outline" 
            
@@ -282,17 +282,17 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           {recentProjects.map((project) => (
             <div 
               key={project.id}
-              className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 cursor-pointer"
+              className="flex items-center justify-between p-3 border rounded-lg hover:bg-secondary/50 cursor-pointer"
               onClick={() => router.push('/projects/' + project.id as any)}
             >
               <div className="flex-1">
                 <div className="flex items-center gap-3">
-                  <h4 className="font-medium">{project.name}</h4>
+                  <h4 className="form-label">{project.name}</h4>
                   <Badge className={getStatusColor(project.status)}>
                     {project.status}
                   </Badge>
                 </div>
-                <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
+                <div className="flex items-center gap-4 mt-1 text-body-sm color-muted">
                   <span className="flex items-center gap-1">
                     <DollarSign className="w-3 h-3" />
                     {formatCurrency(project.budget || 0)}
@@ -303,7 +303,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                   </span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 text-muted-foreground" />
+              <ArrowRight className="w-4 h-4 color-muted" />
             </div>
           ))}
         </div>
@@ -311,7 +311,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
 
       {/* Quick Actions */}
       <Card className="p-6">
-        <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+        <h3 className="text-body text-heading-4 mb-4">Quick Actions</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Button 
             variant="outline" 

@@ -80,13 +80,13 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
           <Button onClick={addDomain} disabled={loading || !newDomain}>Add</Button>
         </div>
       ) : (
-        <div className="text-xs text-foreground/60">Only owners and admins can manage organization domains.</div>
+        <div className="text-body-sm color-foreground/60">Only owners and admins can manage organization domains.</div>
       )}
-      {error ? <div className="text-xs text-destructive">{error}</div> : null}
+      {error ? <div className="text-body-sm color-destructive">{error}</div> : null}
       <div className="rounded-md border">
-        <table className="w-full text-sm">
+        <table className="w-full text-body-sm">
           <thead>
-            <tr className="bg-muted/40">
+            <tr className="bg-secondary/40">
               <th className="px-3 py-2 text-left">Domain</th>
               <th className="px-3 py-2 text-left">Status</th>
               <th className="px-3 py-2 text-right">Actions</th>
@@ -98,10 +98,10 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
                 <td className="px-3 py-2">{d.domain}</td>
                 <td className="px-3 py-2">
                   <span className={
-                    `inline-flex items-center rounded-full px-2 py-0.5 text-xs ` +
-                    (d.status === 'active' ? 'bg-success/10 text-success' :
-                     d.status === 'pending' ? 'bg-warning/10 text-warning' :
-                     'bg-muted/10 text-muted-foreground')
+                    `inline-flex items-center rounded-full px-2 py-0.5 text-body-sm ` +
+                    (d.status === 'active' ? 'bg-success/10 color-success' :
+                     d.status === 'pending' ? 'bg-warning/10 color-warning' :
+                     'bg-secondary/10 color-muted')
                   }>
                     {d.status}
                   </span>
@@ -113,7 +113,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
             ))}
             {domains.length === 0 ? (
               <tr>
-                <td className="px-3 py-6 text-center text-foreground/60" colSpan={3}>No domains. Add your company email domain(s) to allow unlimited seats on Team plans.</td>
+                <td className="px-3 py-6 text-center color-foreground/60" colSpan={3}>No domains. Add your company email domain(s) to allow unlimited seats on Team plans.</td>
               </tr>
             ) : null}
           </tbody>

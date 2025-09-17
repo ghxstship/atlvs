@@ -158,9 +158,9 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
     return (
       <div className="space-y-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -172,7 +172,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Award className="h-5 w-5" />
-          <h3 className="font-semibold">Certifications</h3>
+          <h3 className="text-heading-4">Certifications</h3>
         </div>
         <Button onClick={() => setShowAddForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -184,11 +184,11 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
       {showAddForm && (
         <Card>
           <div className="p-4">
-            <h4 className="font-medium mb-4">Add New Certification</h4>
+            <h4 className="form-label mb-4">Add New Certification</h4>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Certification Name *</label>
+                <label className="text-body-sm form-label">Certification Name *</label>
                 <Input
                   value={formData.name}
                   onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -197,7 +197,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Issuing Organization *</label>
+                <label className="text-body-sm form-label">Issuing Organization *</label>
                 <Input
                   value={formData.issuing_organization}
                   onChange={(e) => setFormData(prev => ({ ...prev, issuing_organization: e.target.value }))}
@@ -206,7 +206,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Certification Number</label>
+                <label className="text-body-sm form-label">Certification Number</label>
                 <Input
                   value={formData.certification_number}
                   onChange={(e) => setFormData(prev => ({ ...prev, certification_number: e.target.value }))}
@@ -215,7 +215,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Issue Date</label>
+                <label className="text-body-sm form-label">Issue Date</label>
                 <Input
                   type="date"
                   value={formData.issue_date}
@@ -224,7 +224,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Expiry Date</label>
+                <label className="text-body-sm form-label">Expiry Date</label>
                 <Input
                   type="date"
                   value={formData.expiry_date}
@@ -233,7 +233,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Verification URL</label>
+                <label className="text-body-sm form-label">Verification URL</label>
                 <Input
                   value={formData.verification_url}
                   onChange={(e) => setFormData(prev => ({ ...prev, verification_url: e.target.value }))}
@@ -243,7 +243,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
             </div>
             
             <div className="space-y-2 mb-4">
-              <label className="text-sm font-medium">Notes</label>
+              <label className="text-body-sm form-label">Notes</label>
               <textarea
                 value={formData.notes}
                 onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
@@ -270,10 +270,10 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
       <div className="space-y-4">
         {certifications.length === 0 ? (
           <Card>
-            <div className="p-8 text-center text-muted-foreground">
+            <div className="p-8 text-center color-muted">
               <Award className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No certifications added yet.</p>
-              <p className="text-sm">Add your professional certifications to showcase your expertise.</p>
+              <p className="text-body-sm">Add your professional certifications to showcase your expertise.</p>
             </div>
           </Card>
         ) : (
@@ -283,23 +283,23 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h4 className="font-medium">{cert.name}</h4>
+                      <h4 className="form-label">{cert.name}</h4>
                       <Badge variant={getStatusColor(cert.status, cert.expiry_date)}>
                         {getStatusText(cert.status, cert.expiry_date)}
                       </Badge>
                     </div>
                     
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-body-sm color-muted mb-2">
                       Issued by {cert.issuing_organization}
                     </p>
                     
                     {cert.certification_number && (
-                      <p className="text-sm">
-                        <span className="font-medium">Number:</span> {cert.certification_number}
+                      <p className="text-body-sm">
+                        <span className="form-label">Number:</span> {cert.certification_number}
                       </p>
                     )}
                     
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mt-2">
+                    <div className="flex items-center gap-4 text-body-sm color-muted mt-2">
                       {cert.issue_date && (
                         <div className="flex items-center gap-1">
                           <Calendar className="h-3 w-3" />
@@ -315,7 +315,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
                     </div>
                     
                     {cert.notes && (
-                      <p className="text-sm mt-2 text-muted-foreground">{cert.notes}</p>
+                      <p className="text-body-sm mt-2 color-muted">{cert.notes}</p>
                     )}
                   </div>
                   

@@ -36,7 +36,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
         type="button"
         onClick={onRemoveDemo}
         disabled={loading}
-        className="inline-flex items-center gap-2 rounded-md border border-destructive/30 text-destructive px-3 py-2 text-sm hover:bg-destructive/10 disabled:opacity-50"
+        className="inline-flex items-center gap-2 rounded-md border border-destructive/30 color-destructive px-3 py-2 text-body-sm hover:bg-destructive/10 disabled:opacity-50"
         aria-busy={loading}
         aria-live="polite"
         aria-label={t('remove.cta')}
@@ -45,7 +45,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
         {loading ? t('remove.loading') : t('remove.cta')}
       </button>
       {error ? (
-        <div role="alert" className="text-sm text-red-600">
+        <div role="alert" className="text-body-sm color-error">
           {error}
         </div>
       ) : null}

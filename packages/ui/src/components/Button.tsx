@@ -11,9 +11,9 @@ const button = cva('btn font-body uppercase whitespace-nowrap', {
       outline: 'btn-outline',
       ghost: 'btn-ghost',
       destructive: 'btn-destructive',
-      success: 'bg-green-600 text-white hover:bg-green-700 shadow-green-600/20',
-      warning: 'bg-amber-600 text-white hover:bg-amber-700 shadow-amber-600/20',
-      info: 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-600/20',
+      success: 'bg-success text-success-foreground hover:bg-success/90 shadow-success/20',
+      warning: 'bg-warning text-warning-foreground hover:bg-warning/90 shadow-warning/20',
+      info: 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-primary/20',
     },
     size: {
       xs: 'h-7 px-2 text-xs rounded-md',
@@ -59,7 +59,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {...props}
       >
         {/* Ripple effect overlay */}
-        <span className="absolute inset-0 bg-white/20 scale-0 group-active:scale-100 transition-transform duration-200 rounded-inherit" />
+        <span className="absolute inset-0 bg-foreground/15 scale-0 group-active:scale-100 transition-transform duration-200 rounded-inherit" />
         
         {/* Content wrapper */}
         <span className="relative flex items-center justify-center gap-2">

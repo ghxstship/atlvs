@@ -178,11 +178,11 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
         <form id="onboarding-task-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-secondary/10 rounded-lg">
-              <UserPlus className="h-5 w-5 text-secondary" />
+              <UserPlus className="h-5 w-5 color-secondary" />
             </div>
             <div>
-              <h3 className="font-medium">Onboarding Task Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Onboarding Task Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Create a new task for the onboarding process
               </p>
             </div>
@@ -190,7 +190,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Task Title *
               </label>
               <Input
@@ -202,7 +202,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Category
                 </label>
                 <select
@@ -220,7 +220,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Priority
                 </label>
                 <select
@@ -237,7 +237,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Estimated Duration *
                 </label>
                 <Input
@@ -250,7 +250,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Duration Unit
                 </label>
                 <select
@@ -264,7 +264,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Order
                 </label>
                 <Input
@@ -278,7 +278,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Assignee Role
               </label>
               <Input
@@ -288,7 +288,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -299,7 +299,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Instructions
               </label>
               <Textarea
@@ -310,7 +310,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Prerequisites
               </label>
               <Textarea
@@ -321,7 +321,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Resources
               </label>
               <Textarea
@@ -332,7 +332,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Completion Criteria
               </label>
               <Textarea
@@ -349,7 +349,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                   {...register('mandatory')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   This task is mandatory for all new hires
                 </label>
               </div>
@@ -360,7 +360,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                   {...register('automated')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   This task can be completed automatically
                 </label>
               </div>
@@ -368,8 +368,8 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
           </div>
 
           <div className="bg-secondary/5 p-4 rounded-lg">
-            <h4 className="font-medium text-secondary mb-2">Onboarding Guidelines</h4>
-            <ul className="text-sm text-secondary/80 space-y-1">
+            <h4 className="form-label color-secondary mb-2">Onboarding Guidelines</h4>
+            <ul className="text-body-sm color-secondary/80 space-y-1">
               <li>• Structure tasks in logical order from most critical to least critical</li>
               <li>• Provide clear instructions and completion criteria</li>
               <li>• Include all necessary resources and prerequisites</li>

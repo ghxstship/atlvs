@@ -86,20 +86,20 @@ export default function BillingPortalClient() {
 
   return (
     <div className="space-y-2">
-      <div className="text-xs text-foreground/70">Open Stripe Customer Portal as current user or for an organization. Create a Checkout session for a plan price ID.</div>
+      <div className="text-body-sm color-foreground/70">Open Stripe Customer Portal as current user or for an organization. Create a Checkout session for a plan price ID.</div>
       <div className="flex flex-col gap-2">
         <div className="flex gap-2">
-          <button onClick={openPortalForUser} disabled={loading} className="rounded-md bg-foreground px-3 py-2 text-sm text-background">Open Portal (User)</button>
-          <input value={organizationId} onChange={(e) => setOrganizationId(e.target.value)} placeholder="organizationId" className="w-full rounded-md border bg-background px-3 py-2 text-sm" />
-          <button onClick={openPortalForOrg} disabled={!organizationId || loading} className="rounded-md border px-3 py-2 text-sm">Open Portal (Org)</button>
+          <button onClick={openPortalForUser} disabled={loading} className="rounded-md bg-foreground px-3 py-2 text-body-sm text-background">Open Portal (User)</button>
+          <input value={organizationId} onChange={(e) => setOrganizationId(e.target.value)} placeholder="organizationId" className="w-full rounded-md border bg-background px-3 py-2 text-body-sm" />
+          <button onClick={openPortalForOrg} disabled={!organizationId || loading} className="rounded-md border px-3 py-2 text-body-sm">Open Portal (Org)</button>
         </div>
         <div className="flex gap-2">
-          <input value={priceId} onChange={(e) => setPriceId(e.target.value)} placeholder="price_..." className="w-full rounded-md border bg-background px-3 py-2 text-sm" />
-          <button onClick={() => startCheckout('user')} disabled={!priceId || loading} className="rounded-md border px-3 py-2 text-sm">Checkout (User)</button>
-          <button onClick={() => startCheckout('org')} disabled={!priceId || !organizationId || loading} className="rounded-md border px-3 py-2 text-sm">Checkout (Org)</button>
+          <input value={priceId} onChange={(e) => setPriceId(e.target.value)} placeholder="price_..." className="w-full rounded-md border bg-background px-3 py-2 text-body-sm" />
+          <button onClick={() => startCheckout('user')} disabled={!priceId || loading} className="rounded-md border px-3 py-2 text-body-sm">Checkout (User)</button>
+          <button onClick={() => startCheckout('org')} disabled={!priceId || !organizationId || loading} className="rounded-md border px-3 py-2 text-body-sm">Checkout (Org)</button>
         </div>
       </div>
-      {error ? <div className="text-xs text-red-600">{error}</div> : null}
+      {error ? <div className="text-body-sm color-error">{error}</div> : null}
     </div>
   );
 }

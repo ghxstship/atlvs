@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { DynamicProgressBar } from '../../components/ui';
+import { DynamicProgressBar } from '../../../_components/ui/DynamicProgressBar';
 import { 
   Users, 
   CheckCircle, 
@@ -193,10 +193,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-secondary rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-muted rounded"></div>
+              <div key={i} className="h-32 bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -208,7 +208,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
     return (
       <Card>
         <div className="p-8 text-center">
-          <p className="text-muted-foreground">Failed to load overview data</p>
+          <p className="color-muted">Failed to load overview data</p>
           <Button onClick={loadOverviewData} className="mt-4">
             Retry
           </Button>
@@ -234,8 +234,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Pipeline Overview</h1>
-          <p className="text-sm text-muted-foreground">
+          <h1 className="text-heading-3 text-heading-3">Pipeline Overview</h1>
+          <p className="text-body-sm color-muted">
             Production pipeline status and key metrics
           </p>
         </div>
@@ -251,16 +251,16 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Total Crew</p>
-                <p className="text-2xl font-bold">{stats.totalCrew}</p>
+                <p className="text-body-sm form-label color-muted">Total Crew</p>
+                <p className="text-heading-3 text-heading-3">{stats.totalCrew}</p>
               </div>
               <div className="p-3 bg-primary/10 rounded-full">
-                <Users className="w-6 h-6 text-primary" />
+                <Users className="w-6 h-6 color-primary" />
               </div>
             </div>
-            <div className="mt-4 flex items-center text-sm">
-              <TrendingUp className="w-4 h-4 text-success mr-1" />
-              <span className="text-success">+12% from last month</span>
+            <div className="mt-4 flex items-center text-body-sm">
+              <TrendingUp className="w-4 h-4 color-success mr-1" />
+              <span className="color-success">+12% from last month</span>
             </div>
           </div>
         </Card>
@@ -269,15 +269,15 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Active Projects</p>
-                <p className="text-2xl font-bold">{stats.activeProjects}</p>
+                <p className="text-body-sm form-label color-muted">Active Projects</p>
+                <p className="text-heading-3 text-heading-3">{stats.activeProjects}</p>
               </div>
               <div className="p-3 bg-success/10 rounded-full">
-                <Activity className="w-6 h-6 text-success" />
+                <Activity className="w-6 h-6 color-success" />
               </div>
             </div>
-            <div className="mt-4 flex items-center text-sm">
-              <span className="text-muted-foreground">Across multiple venues</span>
+            <div className="mt-4 flex items-center text-body-sm">
+              <span className="color-muted">Across multiple venues</span>
             </div>
           </div>
         </Card>
@@ -286,11 +286,11 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Training Progress</p>
-                <p className="text-2xl font-bold">{trainingCompletion}%</p>
+                <p className="text-body-sm form-label color-muted">Training Progress</p>
+                <p className="text-heading-3 text-heading-3">{trainingCompletion}%</p>
               </div>
               <div className="p-3 bg-secondary/10 rounded-full">
-                <CheckCircle className="w-6 h-6 text-secondary" />
+                <CheckCircle className="w-6 h-6 color-secondary" />
               </div>
             </div>
             <div className="mt-4">
@@ -308,11 +308,11 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Advancing Progress</p>
-                <p className="text-2xl font-bold">{advancingProgress}%</p>
+                <p className="text-body-sm form-label color-muted">Advancing Progress</p>
+                <p className="text-heading-3 text-heading-3">{advancingProgress}%</p>
               </div>
               <div className="p-3 bg-warning/10 rounded-full">
-                <BarChart3 className="w-6 h-6 text-warning" />
+                <BarChart3 className="w-6 h-6 color-warning" />
               </div>
             </div>
             <div className="mt-4">
@@ -333,7 +333,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Production Advancing</h3>
+              <h3 className="text-body text-heading-4">Production Advancing</h3>
               <Button>
                 <ArrowRight className="w-4 h-4" />
               </Button>
@@ -342,8 +342,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  <span className="text-sm">Completed</span>
+                  <CheckCircle className="w-4 h-4 color-success" />
+                  <span className="text-body-sm">Completed</span>
                 </div>
                 <Badge variant="success">
                   {stats.advancingItems.completed}
@@ -352,8 +352,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-primary" />
-                  <span className="text-sm">In Progress</span>
+                  <Clock className="w-4 h-4 color-primary" />
+                  <span className="text-body-sm">In Progress</span>
                 </div>
                 <Badge variant="default">
                   {stats.advancingItems.inProgress}
@@ -362,8 +362,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-muted-foreground" />
-                  <span className="text-sm">Pending</span>
+                  <Clock className="w-4 h-4 color-muted" />
+                  <span className="text-body-sm">Pending</span>
                 </div>
                 <Badge variant="secondary">
                   {stats.advancingItems.pending}
@@ -373,8 +373,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.advancingItems.blocked > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-destructive" />
-                    <span className="text-sm">Blocked</span>
+                    <AlertTriangle className="w-4 h-4 color-destructive" />
+                    <span className="text-body-sm">Blocked</span>
                   </div>
                   <Badge variant="destructive">
                     {stats.advancingItems.blocked}
@@ -389,7 +389,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Contracts Status</h3>
+              <h3 className="text-body text-heading-4">Contracts Status</h3>
               <Button>
                 <ArrowRight className="w-4 h-4" />
               </Button>
@@ -398,8 +398,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <CheckCircle className="w-4 h-4 text-success" />
-                  <span className="text-sm">Signed</span>
+                  <CheckCircle className="w-4 h-4 color-success" />
+                  <span className="text-body-sm">Signed</span>
                 </div>
                 <Badge variant="success">
                   {stats.contractsStatus.signed}
@@ -408,8 +408,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <Clock className="w-4 h-4 text-warning" />
-                  <span className="text-sm">Pending</span>
+                  <Clock className="w-4 h-4 color-warning" />
+                  <span className="text-body-sm">Pending</span>
                 </div>
                 <Badge variant="warning">
                   {stats.contractsStatus.pending}
@@ -419,8 +419,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.contractsStatus.expired > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <AlertTriangle className="w-4 h-4 text-destructive" />
-                    <span className="text-sm">Expired</span>
+                    <AlertTriangle className="w-4 h-4 color-destructive" />
+                    <span className="text-body-sm">Expired</span>
                   </div>
                   <Badge variant="destructive">
                     {stats.contractsStatus.expired}
@@ -430,7 +430,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             </div>
             
             <div className="mt-4 pt-4 border-t">
-              <div className="flex justify-between text-sm text-muted-foreground">
+              <div className="flex justify-between text-body-sm color-muted">
                 <span>Completion Rate</span>
                 <span>{contractCompletion}%</span>
               </div>
@@ -445,8 +445,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Upcoming Deadlines</h3>
-              <Calendar className="w-5 h-5 text-muted-foreground" />
+              <h3 className="text-body text-heading-4">Upcoming Deadlines</h3>
+              <Calendar className="w-5 h-5 color-muted" />
             </div>
             
             <div className="space-y-3">
@@ -455,27 +455,27 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                   (new Date(deadline.dueDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24)
                 );
                 
-                const priorityColors = {
-                  low: 'bg-muted',
-                  medium: 'bg-warning',
-                  high: 'bg-warning',
-                  critical: 'bg-destructive'
+                const priorityStyles = {
+                  low: 'bg-secondary text-secondary-foreground',
+                  medium: 'bg-warning text-warning-foreground',
+                  high: 'bg-warning text-warning-foreground',
+                  critical: 'bg-destructive text-destructive-foreground'
                 };
 
                 return (
-                  <div key={deadline.id} className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                  <div key={deadline.id} className="flex items-center justify-between p-3 bg-secondary/30 rounded-lg">
                     <div className="flex-1">
                       <div className="flex items-center space-x-2 mb-1">
-                        <h4 className="text-sm font-medium">{deadline.title}</h4>
-                        <Badge className={`${priorityColors[deadline.priority]} text-white text-xs`}>
+                        <h4 className="text-body-sm form-label">{deadline.title}</h4>
+                        <Badge className={`${priorityStyles[deadline.priority]} text-body-sm`}>
                           {deadline.priority}
                         </Badge>
                       </div>
-                      <p className="text-xs text-muted-foreground">
+                      <p className="text-body-sm color-muted">
                         {daysUntil > 0 ? `${daysUntil} days remaining` : 'Overdue'}
                       </p>
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       {new Date(deadline.dueDate).toLocaleDateString()}
                     </div>
                   </div>
@@ -489,32 +489,32 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Recent Activity</h3>
-              <Activity className="w-5 h-5 text-muted-foreground" />
+              <h3 className="text-body text-heading-4">Recent Activity</h3>
+              <Activity className="w-5 h-5 color-muted" />
             </div>
             
             <div className="space-y-3">
               {stats.recentActivity.map(activity => {
                 const typeColors = {
-                  training: 'bg-secondary/10 text-secondary',
-                  advancing: 'bg-warning/10 text-warning',
-                  onboarding: 'bg-primary/10 text-primary',
-                  contract: 'bg-success/10 text-success',
-                  manning: 'bg-accent/10 text-accent'
+                  training: 'bg-secondary/10 color-secondary',
+                  advancing: 'bg-warning/10 color-warning',
+                  onboarding: 'bg-primary/10 color-primary',
+                  contract: 'bg-success/10 color-success',
+                  manning: 'bg-accent/10 color-accent'
                 };
 
                 return (
-                  <div key={activity.id} className="flex items-start space-x-3 p-3 bg-muted/30 rounded-lg">
+                  <div key={activity.id} className="flex items-start space-x-3 p-3 bg-secondary/30 rounded-lg">
                     <div className="flex-1">
-                      <p className="text-sm">{activity.action}</p>
+                      <p className="text-body-sm">{activity.action}</p>
                       <div className="flex items-center space-x-2 mt-1">
-                        <span className="text-xs text-muted-foreground">by {activity.user}</span>
-                        <Badge className={`${typeColors[activity.type]} text-xs`}>
+                        <span className="text-body-sm color-muted">by {activity.user}</span>
+                        <Badge className={`${typeColors[activity.type]} text-body-sm`}>
                           {activity.type}
                         </Badge>
                       </div>
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       {new Date(activity.timestamp).toLocaleTimeString()}
                     </div>
                   </div>
@@ -528,23 +528,23 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       {/* Quick Actions */}
       <Card>
         <div className="p-6">
-          <h3 className="text-lg font-semibold mb-4">Quick Actions</h3>
+          <h3 className="text-body text-heading-4 mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
               <Users className="w-6 h-6" />
-              <span className="text-sm">Manage Crew</span>
+              <span className="text-body-sm">Manage Crew</span>
             </Button>
             <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
               <CheckCircle className="w-6 h-6" />
-              <span className="text-sm">Schedule Training</span>
+              <span className="text-body-sm">Schedule Training</span>
             </Button>
             <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
               <Building className="w-6 h-6" />
-              <span className="text-sm">Update Advancing</span>
+              <span className="text-body-sm">Update Advancing</span>
             </Button>
             <Button variant="outline" className="h-auto p-4 flex flex-col items-center space-y-2">
               <DollarSign className="w-6 h-6" />
-              <span className="text-sm">Review Contracts</span>
+              <span className="text-body-sm">Review Contracts</span>
             </Button>
           </div>
         </div>

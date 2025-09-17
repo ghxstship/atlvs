@@ -113,14 +113,14 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="endorser_name" className="text-sm font-medium">Endorser Name *</label>
+            <label htmlFor="endorser_name" className="text-body-sm form-label">Endorser Name *</label>
             <input 
               id="endorser_name" 
               className="rounded border px-2 py-1" 
@@ -129,11 +129,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_name} 
             />
             {form.formState.errors.endorser_name ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_name.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.endorser_name.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="endorser_title" className="text-sm font-medium">Endorser Title *</label>
+            <label htmlFor="endorser_title" className="text-body-sm form-label">Endorser Title *</label>
             <input 
               id="endorser_title" 
               className="rounded border px-2 py-1" 
@@ -142,11 +142,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_title} 
             />
             {form.formState.errors.endorser_title ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_title.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.endorser_title.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="endorser_company" className="text-sm font-medium">Company *</label>
+            <label htmlFor="endorser_company" className="text-body-sm form-label">Company *</label>
             <input 
               id="endorser_company" 
               className="rounded border px-2 py-1" 
@@ -155,11 +155,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorser_company} 
             />
             {form.formState.errors.endorser_company ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.endorser_company.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.endorser_company.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="relationship" className="text-sm font-medium">Relationship *</label>
+            <label htmlFor="relationship" className="text-body-sm form-label">Relationship *</label>
             <select 
               id="relationship" 
               className="rounded border px-2 py-1" 
@@ -176,11 +176,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               <option value="other">Other</option>
             </select>
             {form.formState.errors.relationship ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.relationship.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.relationship.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="skills_endorsed" className="text-sm font-medium">Skills Endorsed *</label>
+            <label htmlFor="skills_endorsed" className="text-body-sm form-label">Skills Endorsed *</label>
             <input 
               id="skills_endorsed" 
               className="rounded border px-2 py-1" 
@@ -190,11 +190,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.skills_endorsed} 
             />
             {form.formState.errors.skills_endorsed ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.skills_endorsed.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.skills_endorsed.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="endorsement_text" className="text-sm font-medium">Endorsement Text *</label>
+            <label htmlFor="endorsement_text" className="text-body-sm form-label">Endorsement Text *</label>
             <textarea 
               id="endorsement_text" 
               className="rounded border px-2 py-1 min-h-[100px]" 
@@ -204,11 +204,11 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               aria-invalid={!!form.formState.errors.endorsement_text} 
             />
             {form.formState.errors.endorsement_text ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.endorsement_text.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.endorsement_text.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="rating" className="text-sm font-medium">Rating (1-5 stars) *</label>
+            <label htmlFor="rating" className="text-body-sm form-label">Rating (1-5 stars) *</label>
             <select 
               id="rating" 
               className="rounded border px-2 py-1" 
@@ -224,7 +224,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="date_received" className="text-sm font-medium">Date Received</label>
+            <label htmlFor="date_received" className="text-body-sm form-label">Date Received</label>
             <input 
               id="date_received" 
               type="date" 
@@ -241,7 +241,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               checked={form.getValues('is_public')} 
               onChange={(e) => form.setValue('is_public', e.target.checked, { shouldDirty: true })} 
             />
-            <label htmlFor="is_public" className="text-sm font-medium">Make this endorsement public</label>
+            <label htmlFor="is_public" className="text-body-sm form-label">Make this endorsement public</label>
           </div>
 
           <div className="flex items-center justify-end gap-2 pt-2 border-t">

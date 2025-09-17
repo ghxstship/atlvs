@@ -191,14 +191,14 @@ export function ListView({
   }, [paginatedData, state.selection.length, actions]);
 
   const listClasses = `
-    bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden
+    bg-background border border-border rounded-lg overflow-hidden
     ${className}
   `.trim();
 
   return (
     <div className={listClasses}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-2">
           <Checkbox
             checked={state.selection.length > 0}
@@ -207,7 +207,7 @@ export function ListView({
             aria-label="Select all items"
           />
           
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             {state.selection.length > 0 
               ? `${state.selection.length} selected` 
               : `${filteredData.length} items`
@@ -238,7 +238,7 @@ export function ListView({
       </div>
 
       {/* List Content */}
-      <div className="divide-y divide-gray-200 dark:divide-gray-700">
+      <div className="divide-y divide-border">
         {Object.entries(paginatedData).map(([groupKey, items]) => {
           const isCollapsed = collapsedGroups.has(groupKey);
           const showGroupHeader = groupBy && Object.keys(paginatedData).length > 1;
@@ -247,13 +247,13 @@ export function ListView({
             <div key={groupKey}>
               {/* Group Header */}
               {showGroupHeader && (
-                <div className="bg-gray-50 dark:bg-gray-800 px-4 py-2 border-b border-gray-200 dark:border-gray-700">
+                <div className="bg-muted px-4 py-2 border-b border-border">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       {collapsibleGroups && (
                         <button
                           onClick={() => toggleGroup(groupKey)}
-                          className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+                          className="p-1 hover:bg-muted/50 rounded"
                         >
                           {isCollapsed ? (
                             <ChevronRight className="h-4 w-4" />
@@ -263,7 +263,7 @@ export function ListView({
                         </button>
                       )}
                       
-                      <h3 className="font-medium text-gray-900 dark:text-gray-100">
+                      <h3 className="font-medium text-foreground">
                         {groupKey}
                       </h3>
                       
@@ -281,7 +281,7 @@ export function ListView({
               {!isCollapsed && (
                 <div>
                   {items.length === 0 ? (
-                    <div className="p-8 text-center text-gray-500 dark:text-gray-400">
+                    <div className="p-8 text-center text-muted-foreground">
                       <div className="text-sm">No items in {groupKey}</div>
                     </div>
                   ) : (
@@ -299,8 +299,8 @@ export function ListView({
                           key={record.id}
                           className={`
                             flex items-center gap-3 p-4 cursor-pointer transition-all duration-200
-                            hover:bg-gray-50 dark:hover:bg-gray-800
-                            ${isSelected ? 'bg-blue-50 dark:bg-blue-900/20 border-l-4 border-l-blue-500' : ''}
+                            hover:bg-muted/50
+                            ${isSelected ? 'bg-primary/10 border-l-4 border-l-primary' : ''}
                           `}
                           onClick={() => onItemClick?.(record)}
                           onMouseEnter={() => setHoveredItem(record.id)}
@@ -330,7 +330,7 @@ export function ListView({
                                   className="w-10 h-10 rounded-full object-cover"
                                 />
                               ) : (
-                                <div className="w-10 h-10 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-sm font-medium text-gray-600 dark:text-gray-400">
+                                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-medium text-muted-foreground">
                                   {String(avatar).charAt(0).toUpperCase()}
                                 </div>
                               )}
@@ -340,7 +340,7 @@ export function ListView({
                           {/* Content */}
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2 mb-1">
-                              <h4 className="font-medium text-gray-900 dark:text-gray-100 truncate">
+                              <h4 className="font-medium text-foreground truncate">
                                 {record[titleField]}
                               </h4>
                               
@@ -358,7 +358,7 @@ export function ListView({
                             </div>
                             
                             {subtitle && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400 truncate">
+                              <p className="text-sm text-muted-foreground truncate">
                                 {subtitle}
                               </p>
                             )}
@@ -408,8 +408,8 @@ export function ListView({
 
       {/* Pagination */}
       {!groupBy && filteredData.length > state.pagination.pageSize && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+          <div className="text-sm text-muted-foreground">
             Showing {((state.pagination.page - 1) * state.pagination.pageSize) + 1} to{' '}
             {Math.min(state.pagination.page * state.pagination.pageSize, filteredData.length)} of{' '}
             {filteredData.length} items
@@ -428,7 +428,7 @@ export function ListView({
               Previous
             </Button>
             
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-muted-foreground">
               Page {state.pagination.page} of {Math.ceil(filteredData.length / state.pagination.pageSize)}
             </span>
             

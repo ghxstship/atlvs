@@ -143,19 +143,19 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'pending':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'in_progress':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'compliant':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'non_compliant':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       case 'expired':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'waived':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -181,36 +181,36 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
   const getPriorityColor = (priority: string) => {
     switch (priority) {
       case 'low':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       case 'medium':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'high':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'critical':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
   const getKindColor = (kind: string) => {
     switch (kind) {
       case 'regulatory':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'safety':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       case 'quality':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'security':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'environmental':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'legal':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'financial':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -232,8 +232,8 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           <PlusIcon className="h-4 w-4 mr-2" />
@@ -295,54 +295,54 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Items</p>
-              <p className="text-2xl font-bold text-foreground">{compliance.length}</p>
+              <p className="text-body-sm form-label color-foreground/70">Total Items</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{compliance.length}</p>
             </div>
-            <ShieldCheckIcon className="h-8 w-8 text-primary" />
+            <ShieldCheckIcon className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Compliant</p>
-              <p className="text-2xl font-bold text-success">
+              <p className="text-body-sm form-label color-foreground/70">Compliant</p>
+              <p className="text-heading-3 text-heading-3 color-success">
                 {compliance.filter(c => c.status === 'compliant').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-success" />
+            <CheckCircleIcon className="h-8 w-8 color-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Non-Compliant</p>
-              <p className="text-2xl font-bold text-destructive">
+              <p className="text-body-sm form-label color-foreground/70">Non-Compliant</p>
+              <p className="text-heading-3 text-heading-3 color-destructive">
                 {compliance.filter(c => c.status === 'non_compliant').length}
               </p>
             </div>
-            <XCircleIcon className="h-8 w-8 text-destructive" />
+            <XCircleIcon className="h-8 w-8 color-destructive" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Overdue</p>
-              <p className="text-2xl font-bold text-warning">
+              <p className="text-body-sm form-label color-foreground/70">Overdue</p>
+              <p className="text-heading-3 text-heading-3 color-warning">
                 {compliance.filter(c => isOverdue(c.due_at)).length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 text-warning" />
+            <ExclamationTriangleIcon className="h-8 w-8 color-warning" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Critical</p>
-              <p className="text-2xl font-bold text-secondary">
+              <p className="text-body-sm form-label color-foreground/70">Critical</p>
+              <p className="text-heading-3 text-heading-3 color-secondary">
                 {compliance.filter(c => c.priority === 'critical').length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 text-secondary" />
+            <ExclamationTriangleIcon className="h-8 w-8 color-secondary" />
           </div>
         </Card>
       </div>
@@ -378,14 +378,14 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
-                          <StatusIcon className="h-5 w-5 text-foreground/60" />
+                        <h3 className="text-body text-heading-4 color-foreground mb-1 flex items-center gap-2">
+                          <StatusIcon className="h-5 w-5 color-foreground/60" />
                           {item.title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-destructive' : 'text-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
-                        <div className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="flex items-center gap-2 text-body-sm color-foreground/70">
                           <BuildingOfficeIcon className="h-4 w-4" />
                           <span>{item.job_title}</span>
                           {item.responsible_party && (
@@ -409,13 +409,13 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                       </div>
                     </div>
 
-                    <p className="text-sm text-foreground/80 mb-3 line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-3 line-clamp-2">
                       {item.description}
                     </p>
 
-                    <div className="flex items-center gap-6 text-sm text-foreground/70 mb-3">
+                    <div className="flex items-center gap-6 text-body-sm color-foreground/70 mb-3">
                       {item.due_at && (
-                        <div className={`flex items-center gap-1 ${isLate ? 'text-destructive' : isDue ? 'text-warning' : ''}`}>
+                        <div className={`flex items-center gap-1 ${isLate ? 'color-destructive' : isDue ? 'color-warning' : ''}`}>
                           <CalendarIcon className="h-4 w-4" />
                           <span>
                             {isLate ? 'Overdue: ' : 'Due: '}
@@ -424,7 +424,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                         </div>
                       )}
                       {item.completed_at && (
-                        <div className="flex items-center gap-1 text-success">
+                        <div className="flex items-center gap-1 color-success">
                           <CheckCircleIcon className="h-4 w-4" />
                           <span>Completed: {new Date(item.completed_at).toLocaleDateString()}</span>
                         </div>
@@ -438,16 +438,16 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
 
                     {item.requirements && item.requirements.length > 0 && (
                       <div className="mb-3">
-                        <span className="text-xs font-medium text-foreground/70 mb-1 block">Requirements:</span>
+                        <span className="text-body-sm form-label color-foreground/70 mb-1 block">Requirements:</span>
                         <div className="space-y-1">
                           {item.requirements.slice(0, 3).map((req, index) => (
-                            <div key={index} className="text-xs text-foreground/70 flex items-start gap-2">
-                              <span className="text-foreground/40">•</span>
+                            <div key={index} className="text-body-sm color-foreground/70 flex items-start gap-2">
+                              <span className="color-foreground/40">•</span>
                               <span>{req}</span>
                             </div>
                           ))}
                           {item.requirements.length > 3 && (
-                            <div className="text-xs text-foreground/50">
+                            <div className="text-body-sm color-foreground/50">
                               +{item.requirements.length - 3} more requirements
                             </div>
                           )}
@@ -457,7 +457,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
 
                     {item.notes && (
                       <div className="mt-3 p-2 bg-accent rounded-md">
-                        <p className="text-xs text-foreground/70">
+                        <p className="text-body-sm color-foreground/70">
                           <strong>Notes:</strong> {item.notes}
                         </p>
                       </div>
@@ -466,7 +466,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 </div>
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <div className="text-xs text-foreground/50">
+                  <div className="text-body-sm color-foreground/50">
                     Created: {new Date(item.created_at).toLocaleDateString()}
                     {item.updated_at !== item.created_at && (
                       <span> • Updated: {new Date(item.updated_at).toLocaleDateString()}</span>
@@ -498,9 +498,9 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
           })
         ) : (
           <Card className="p-12 text-center">
-            <ShieldCheckIcon className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No compliance items found</h3>
-            <p className="text-sm text-foreground/70 mb-4">
+            <ShieldCheckIcon className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No compliance items found</h3>
+            <p className="text-body-sm color-foreground/70 mb-4">
               {searchTerm || statusFilter !== 'all' || kindFilter !== 'all' || priorityFilter !== 'all'
                 ? 'Try adjusting your filters or search terms.'
                 : 'Get started by adding your first compliance requirement.'}

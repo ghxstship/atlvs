@@ -81,10 +81,10 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': return 'bg-success/10 text-success';
-      case 'inactive': return 'bg-warning/10 text-warning';
-      case 'terminated': return 'bg-destructive/10 text-destructive';
-      default: return 'bg-muted text-muted-foreground';
+      case 'active': return 'bg-success/10 color-success';
+      case 'inactive': return 'bg-warning/10 color-warning';
+      case 'terminated': return 'bg-destructive/10 color-destructive';
+      default: return 'bg-secondary color-muted';
     }
   };
 
@@ -107,7 +107,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           {/* Search and Filters */}
           <div className="flex flex-col sm:flex-row gap-4">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
               <Input
                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
@@ -145,7 +145,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           </div>
 
           {/* Results Summary */}
-          <div className="text-sm text-muted-foreground">
+          <div className="text-body-sm color-muted">
             {t('resultsCount', { count: filteredPeople.length, total: people.length })}
           </div>
 
@@ -166,7 +166,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
                   
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <h3 className="text-sm font-medium text-foreground truncate">
+                      <h3 className="text-body-sm form-label color-foreground truncate">
                         {person.first_name} {person.last_name}
                       </h3>
                       <Badge className={getStatusColor(person.status)}>
@@ -175,30 +175,30 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
                     </div>
                     
                     {person.role && (
-                      <p className="text-sm text-muted-foreground truncate">{person.role}</p>
+                      <p className="text-body-sm color-muted truncate">{person.role}</p>
                     )}
                     
                     {person.department && (
-                      <p className="text-xs text-muted-foreground truncate">{person.department}</p>
+                      <p className="text-body-sm color-muted truncate">{person.department}</p>
                     )}
 
                     <div className="mt-2 space-y-1">
                       {person.email && (
-                        <div className="flex items-center text-xs text-muted-foreground">
+                        <div className="flex items-center text-body-sm color-muted">
                           <Mail className="h-3 w-3 mr-1" />
                           <span className="truncate">{person.email}</span>
                         </div>
                       )}
                       
                       {person.phone && (
-                        <div className="flex items-center text-xs text-muted-foreground">
+                        <div className="flex items-center text-body-sm color-muted">
                           <Phone className="h-3 w-3 mr-1" />
                           <span>{person.phone}</span>
                         </div>
                       )}
                       
                       {person.location && (
-                        <div className="flex items-center text-xs text-muted-foreground">
+                        <div className="flex items-center text-body-sm color-muted">
                           <MapPin className="h-3 w-3 mr-1" />
                           <span className="truncate">{person.location}</span>
                         </div>
@@ -212,7 +212,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
           {filteredPeople.length === 0 && (
             <div className="text-center py-8">
-              <p className="text-muted-foreground">{t('noPeopleFound')}</p>
+              <p className="color-muted">{t('noPeopleFound')}</p>
             </div>
           )}
         </div>

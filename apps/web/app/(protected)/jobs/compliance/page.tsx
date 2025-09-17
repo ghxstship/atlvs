@@ -36,8 +36,8 @@ export default async function JobsCompliancePage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-foreground">{t('compliance.title')}</h1>
-          <p className="text-muted-foreground">{t('compliance.subtitle')}</p>
+          <h1 className="text-heading-3 text-heading-4 color-foreground">{t('compliance.title')}</h1>
+          <p className="color-muted">{t('compliance.subtitle')}</p>
         </div>
         <CreateComplianceClient orgId={profile.organization_id} />
       </div>

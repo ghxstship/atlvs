@@ -207,13 +207,13 @@ export default function CreateAssetClient({
         {/* Basic Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Package className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Basic Information</h3>
+            <Package className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Basic Information</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Asset Name *
               </label>
               <Input
@@ -225,7 +225,7 @@ export default function CreateAssetClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -238,7 +238,7 @@ export default function CreateAssetClient({
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Category *
                 </label>
                 <Select
@@ -254,7 +254,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Type *
                 </label>
                 <Select
@@ -270,7 +270,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -291,14 +291,14 @@ export default function CreateAssetClient({
         {/* Identification */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Tag className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Identification</h3>
+            <Tag className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Identification</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   SKU
                 </label>
                 <Input
@@ -309,7 +309,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Barcode
                 </label>
                 <Input
@@ -322,7 +322,7 @@ export default function CreateAssetClient({
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Manufacturer
                 </label>
                 <Input
@@ -333,7 +333,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Model
                 </label>
                 <Input
@@ -344,7 +344,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Serial Number
                 </label>
                 <Input
@@ -360,13 +360,13 @@ export default function CreateAssetClient({
         {/* Financial Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Financial Information</h3>
+            <DollarSign className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Financial Information</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 <Calendar className="h-4 w-4 inline mr-1" />
                 Purchase Date
               </label>
@@ -379,7 +379,7 @@ export default function CreateAssetClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Purchase Cost
                 </label>
                 <Input
@@ -392,7 +392,7 @@ export default function CreateAssetClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Current Value
                 </label>
                 <Input
@@ -410,13 +410,13 @@ export default function CreateAssetClient({
         {/* Location & Notes */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Location & Notes</h3>
+            <MapPin className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Location & Notes</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Location
               </label>
               <Input
@@ -427,7 +427,7 @@ export default function CreateAssetClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

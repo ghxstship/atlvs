@@ -327,10 +327,10 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -340,7 +340,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Travel History</h2>
+        <h2 className="text-heading-4 text-heading-4">Travel History</h2>
         <Button 
           onClick={() => {
             setEditingRecord(null);
@@ -359,24 +359,24 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Globe className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Travel Summary</h3>
+              <Globe className="h-5 w-5 color-primary" />
+              <h3 className="text-body text-heading-4">Travel Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{travelRecords.length}</div>
-                <div className="text-sm text-muted-foreground">Total Trips</div>
+                <div className="text-heading-3 text-heading-3 color-primary">{travelRecords.length}</div>
+                <div className="text-body-sm color-muted">Total Trips</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-success">{calculateTotalDays()}</div>
-                <div className="text-sm text-muted-foreground">Days Traveled</div>
+                <div className="text-heading-3 text-heading-3 color-success">{calculateTotalDays()}</div>
+                <div className="text-body-sm color-muted">Days Traveled</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-secondary">
+                <div className="text-heading-3 text-heading-3 color-secondary">
                   ${calculateTotalExpenses().toLocaleString()}
                 </div>
-                <div className="text-sm text-muted-foreground">Total Expenses</div>
+                <div className="text-body-sm color-muted">Total Expenses</div>
               </div>
             </div>
           </div>
@@ -400,9 +400,9 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
       {sortedRecords.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <Plane className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No Travel Records</h3>
-            <p className="text-muted-foreground mb-4">
+            <Plane className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No Travel Records</h3>
+            <p className="color-muted mb-4">
               Keep track of your business trips, training, and personal travel history.
             </p>
             <Button 
@@ -430,8 +430,8 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                         <IconComponent className={`h-5 w-5 text-${getTravelTypeColor(record.travel_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold">{record.destination}</h3>
-                        <p className="text-sm text-muted-foreground">{record.country}</p>
+                        <h3 className="text-heading-4">{record.destination}</h3>
+                        <p className="text-body-sm color-muted">{record.country}</p>
                         <div className="flex items-center gap-2 mt-1">
                           <Badge variant="outline">
                             {formatTravelType(record.travel_type)}
@@ -463,18 +463,18 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                   </div>
 
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium mb-1">Purpose</h4>
-                    <p className="text-sm text-muted-foreground">{record.purpose}</p>
+                    <h4 className="text-body-sm form-label mb-1">Purpose</h4>
+                    <p className="text-body-sm color-muted">{record.purpose}</p>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                     <div>
-                      <h4 className="text-sm font-medium mb-1">Travel Dates</h4>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <h4 className="text-body-sm form-label mb-1">Travel Dates</h4>
+                      <div className="flex items-center gap-1 text-body-sm color-muted">
                         <Calendar className="h-4 w-4" />
                         {new Date(record.start_date).toLocaleDateString()} - {new Date(record.end_date).toLocaleDateString()}
                       </div>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
+                      <div className="flex items-center gap-1 text-body-sm color-muted mt-1">
                         <Clock className="h-4 w-4" />
                         {record.duration_days} day{record.duration_days !== 1 ? 's' : ''}
                       </div>
@@ -482,8 +482,8 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
 
                     {record.expenses && (
                       <div>
-                        <h4 className="text-sm font-medium mb-1">Expenses</h4>
-                        <p className="text-sm text-muted-foreground">
+                        <h4 className="text-body-sm form-label mb-1">Expenses</h4>
+                        <p className="text-body-sm color-muted">
                           ${record.expenses.toLocaleString()}
                         </p>
                       </div>
@@ -494,15 +494,15 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                       {record.accommodation && (
                         <div>
-                          <h4 className="text-sm font-medium mb-1">Accommodation</h4>
-                          <p className="text-sm text-muted-foreground">{record.accommodation}</p>
+                          <h4 className="text-body-sm form-label mb-1">Accommodation</h4>
+                          <p className="text-body-sm color-muted">{record.accommodation}</p>
                         </div>
                       )}
                       
                       {record.transportation && (
                         <div>
-                          <h4 className="text-sm font-medium mb-1">Transportation</h4>
-                          <p className="text-sm text-muted-foreground">{record.transportation}</p>
+                          <h4 className="text-body-sm form-label mb-1">Transportation</h4>
+                          <p className="text-body-sm color-muted">{record.transportation}</p>
                         </div>
                       )}
                     </div>
@@ -510,8 +510,8 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
 
                   {record.passport_used && (
                     <div className="mb-4">
-                      <h4 className="text-sm font-medium mb-1">Passport Used</h4>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <h4 className="text-body-sm form-label mb-1">Passport Used</h4>
+                      <div className="flex items-center gap-1 text-body-sm color-muted">
                         <CreditCard className="h-4 w-4" />
                         {record.passport_used}
                       </div>
@@ -519,9 +519,9 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                   )}
 
                   {record.notes && (
-                    <div className="mb-4 p-3 bg-muted rounded-lg">
-                      <h4 className="text-sm font-medium mb-1">Notes</h4>
-                      <p className="text-sm text-muted-foreground">{record.notes}</p>
+                    <div className="mb-4 p-3 bg-secondary rounded-lg">
+                      <h4 className="text-body-sm form-label mb-1">Notes</h4>
+                      <p className="text-body-sm color-muted">{record.notes}</p>
                     </div>
                   )}
                 </div>
@@ -620,7 +620,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                 {...form.register('visa_required')}
                 className="rounded border-border"
               />
-              <label htmlFor="visa_required" className="text-sm font-medium">
+              <label htmlFor="visa_required" className="text-body-sm form-label">
                 Visa required for this trip
               </label>
             </div>

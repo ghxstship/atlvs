@@ -160,11 +160,11 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
         <form id="role-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-success/10 rounded-lg">
-              <Briefcase className="h-5 w-5 text-success" />
+              <Briefcase className="h-5 w-5 color-success" />
             </div>
             <div>
-              <h3 className="font-medium">Role Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Role Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Define a new role within your organization
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Role Name *
               </label>
               <Input
@@ -184,7 +184,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Department
                 </label>
                 <Input
@@ -194,7 +194,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Level
                 </label>
                 <select
@@ -214,7 +214,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -225,7 +225,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Key Responsibilities
               </label>
               <Textarea
@@ -236,7 +236,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Requirements
               </label>
               <Textarea
@@ -247,7 +247,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Salary Range
               </label>
               <Input
@@ -262,15 +262,15 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
                 {...register('isActive')}
                 className="w-4 h-4"
               />
-              <label className="text-sm font-medium">
+              <label className="text-body-sm form-label">
                 Role is currently active for hiring
               </label>
             </div>
           </div>
 
           <div className="bg-success/5 p-4 rounded-lg">
-            <h4 className="font-medium text-success mb-2">Role Guidelines</h4>
-            <ul className="text-sm text-success/80 space-y-1">
+            <h4 className="form-label color-success mb-2">Role Guidelines</h4>
+            <ul className="text-body-sm color-success/80 space-y-1">
               <li>• Use clear, descriptive role names that reflect actual responsibilities</li>
               <li>• Define specific requirements to help with candidate evaluation</li>
               <li>• Include both technical and soft skill requirements</li>

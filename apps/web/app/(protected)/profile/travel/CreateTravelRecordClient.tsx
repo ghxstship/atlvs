@@ -126,14 +126,14 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="travel_type" className="text-sm font-medium">Travel Type *</label>
+            <label htmlFor="travel_type" className="text-body-sm form-label">Travel Type *</label>
             <select 
               id="travel_type" 
               className="rounded border px-2 py-1" 
@@ -149,7 +149,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="destination" className="text-sm font-medium">Destination *</label>
+            <label htmlFor="destination" className="text-body-sm form-label">Destination *</label>
             <input 
               id="destination" 
               className="rounded border px-2 py-1" 
@@ -159,11 +159,11 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.destination} 
             />
             {form.formState.errors.destination ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.destination.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.destination.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="purpose" className="text-sm font-medium">Purpose *</label>
+            <label htmlFor="purpose" className="text-body-sm form-label">Purpose *</label>
             <input 
               id="purpose" 
               className="rounded border px-2 py-1" 
@@ -173,12 +173,12 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.purpose} 
             />
             {form.formState.errors.purpose ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.purpose.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.purpose.message)}</div> : null}
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="start_date" className="text-sm font-medium">Start Date *</label>
+              <label htmlFor="start_date" className="text-body-sm form-label">Start Date *</label>
               <input 
                 id="start_date" 
                 type="date" 
@@ -188,11 +188,11 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
                 aria-invalid={!!form.formState.errors.start_date} 
               />
               {form.formState.errors.start_date ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.start_date.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.start_date.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="end_date" className="text-sm font-medium">End Date *</label>
+              <label htmlFor="end_date" className="text-body-sm form-label">End Date *</label>
               <input 
                 id="end_date" 
                 type="date" 
@@ -202,12 +202,12 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
                 aria-invalid={!!form.formState.errors.end_date} 
               />
               {form.formState.errors.end_date ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.end_date.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.end_date.message)}</div> : null}
             </div>
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="accommodation" className="text-sm font-medium">Accommodation</label>
+            <label htmlFor="accommodation" className="text-body-sm form-label">Accommodation</label>
             <input 
               id="accommodation" 
               className="rounded border px-2 py-1" 
@@ -218,7 +218,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="transportation" className="text-sm font-medium">Transportation</label>
+            <label htmlFor="transportation" className="text-body-sm form-label">Transportation</label>
             <input 
               id="transportation" 
               className="rounded border px-2 py-1" 
@@ -240,12 +240,12 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
                 }
               }} 
             />
-            <label htmlFor="visa_required" className="text-sm font-medium">Visa required for this travel</label>
+            <label htmlFor="visa_required" className="text-body-sm form-label">Visa required for this travel</label>
           </div>
 
           {form.getValues('visa_required') && (
             <div className="grid gap-1">
-              <label htmlFor="visa_status" className="text-sm font-medium">Visa Status</label>
+              <label htmlFor="visa_status" className="text-body-sm form-label">Visa Status</label>
               <select 
                 id="visa_status" 
                 className="rounded border px-2 py-1" 
@@ -261,7 +261,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="total_expense" className="text-sm font-medium">Total Expense</label>
+              <label htmlFor="total_expense" className="text-body-sm form-label">Total Expense</label>
               <input 
                 id="total_expense" 
                 type="number" 
@@ -275,7 +275,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="currency" className="text-sm font-medium">Currency</label>
+              <label htmlFor="currency" className="text-body-sm form-label">Currency</label>
               <select 
                 id="currency" 
                 className="rounded border px-2 py-1" 
@@ -293,7 +293,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="notes" className="text-sm font-medium">Notes</label>
+            <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
               className="rounded border px-2 py-1 min-h-[80px]" 

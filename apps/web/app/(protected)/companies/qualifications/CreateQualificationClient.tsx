@@ -199,13 +199,13 @@ export default function CreateQualificationClient({
         {/* Qualification Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Award className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Qualification Details</h3>
+            <Award className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Qualification Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Company *
               </label>
               <Select
@@ -222,7 +222,7 @@ export default function CreateQualificationClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Qualification Title *
               </label>
               <Input
@@ -234,7 +234,7 @@ export default function CreateQualificationClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -247,7 +247,7 @@ export default function CreateQualificationClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Qualification Type *
                 </label>
                 <Select
@@ -263,7 +263,7 @@ export default function CreateQualificationClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -284,13 +284,13 @@ export default function CreateQualificationClient({
         {/* Certification Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileCheck className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Certification Details</h3>
+            <FileCheck className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Certification Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Issuing Authority
               </label>
               <Input
@@ -301,7 +301,7 @@ export default function CreateQualificationClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Certificate Number
               </label>
               <Input
@@ -313,7 +313,7 @@ export default function CreateQualificationClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <Calendar className="h-4 w-4 inline mr-1" />
                   Issued Date
                 </label>
@@ -325,7 +325,7 @@ export default function CreateQualificationClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <Calendar className="h-4 w-4 inline mr-1" />
                   Expiry Date
                 </label>
@@ -338,7 +338,7 @@ export default function CreateQualificationClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Document URL
               </label>
               <Input
@@ -350,7 +350,7 @@ export default function CreateQualificationClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Verification Notes
               </label>
               <Textarea

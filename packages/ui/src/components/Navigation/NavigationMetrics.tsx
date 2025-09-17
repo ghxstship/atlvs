@@ -160,9 +160,9 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
   }
 
   const getPerformanceColor = (value: number, thresholds: [number, number]) => {
-    if (value < thresholds[0]) return 'text-green-500';
-    if (value < thresholds[1]) return 'text-yellow-500';
-    return 'text-red-500';
+    if (value < thresholds[0]) return 'text-success';
+    if (value < thresholds[1]) return 'text-warning';
+    return 'text-destructive';
   };
 
   return (
@@ -170,7 +170,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
       {/* Toggle button */}
       <button
         onClick={() => setIsVisible(!isVisible)}
-        className="fixed bottom-4 right-4 p-2 bg-black/80 text-white rounded-lg text-xs font-mono z-50 hover:bg-black/90 transition-colors"
+        className="fixed bottom-4 right-4 p-2 bg-foreground/80 text-background rounded-lg text-xs font-mono z-50 hover:bg-foreground/90 transition-colors"
         aria-label="Toggle navigation metrics"
       >
         📊
@@ -178,12 +178,12 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
 
       {/* Metrics panel */}
       {isVisible && (
-        <div className="fixed bottom-14 right-4 p-4 bg-black/90 text-white rounded-lg text-xs font-mono z-50 min-w-[300px] backdrop-blur-sm">
+        <div className="fixed bottom-14 right-4 p-4 bg-popover/95 text-popover-foreground border border-border rounded-lg text-xs font-mono z-50 min-w-[300px] backdrop-blur-sm">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-sm font-bold">Navigation Metrics</h3>
             <button
               onClick={() => setIsVisible(false)}
-              className="text-gray-400 hover:text-white"
+              className="text-muted-foreground hover:text-foreground"
               aria-label="Close metrics"
             >
               ✕
@@ -193,7 +193,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
           <div className="space-y-2">
             <div className="flex justify-between">
               <span>Current Path:</span>
-              <span className="text-blue-400 truncate max-w-[150px]">{currentPath}</span>
+              <span className="text-primary truncate max-w-[150px]">{currentPath}</span>
             </div>
             
             <div className="flex justify-between">
@@ -238,18 +238,18 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
           </div>
 
           {/* Performance indicators */}
-          <div className="mt-3 pt-3 border-t border-gray-700">
+          <div className="mt-3 pt-3 border-t border-border">
             <div className="text-[10px] space-y-1">
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                <span className="w-2 h-2 bg-success rounded-full"></span>
                 <span>Good ({`<500ms load, <100ms render`})</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                <span className="w-2 h-2 bg-warning rounded-full"></span>
                 <span>Needs Improvement</span>
               </div>
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-red-500 rounded-full"></span>
+                <span className="w-2 h-2 bg-destructive rounded-full"></span>
                 <span>Poor ({`>1500ms load, >300ms render`})</span>
               </div>
             </div>
@@ -269,7 +269,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
                 errorRate: 0
               });
             }}
-            className="mt-3 w-full py-1 px-2 bg-gray-800 hover:bg-gray-700 rounded text-[10px] transition-colors"
+            className="mt-3 w-full py-1 px-2 bg-muted hover:bg-muted/80 rounded text-[10px] transition-colors"
           >
             Clear Metrics
           </button>

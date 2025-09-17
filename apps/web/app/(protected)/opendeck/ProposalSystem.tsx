@@ -168,14 +168,14 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
     <Card className="p-6">
       <div className="flex justify-between items-start mb-4">
         <div className="flex items-start space-x-4">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-background text-heading-3">
             {proposal.vendor?.display_name?.charAt(0) || 'V'}
           </div>
           <div>
-            <h4 className="font-semibold">{proposal.vendor?.display_name || 'Vendor'}</h4>
-            <div className="flex items-center space-x-3 text-sm text-muted-foreground">
+            <h4 className="text-heading-4">{proposal.vendor?.display_name || 'Vendor'}</h4>
+            <div className="flex items-center space-x-3 text-body-sm color-muted">
               <div className="flex items-center">
-                <Star className="h-4 w-4 text-warning fill-warning mr-1" />
+                <Star className="h-4 w-4 color-warning fill-warning mr-1" />
                 <span>{proposal.vendor?.rating || 0}</span>
               </div>
               <span>•</span>
@@ -201,35 +201,35 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
       <div className="space-y-3">
         <div>
-          <p className="text-sm font-medium mb-1">Proposed Budget</p>
-          <p className="text-2xl font-bold">
+          <p className="text-body-sm form-label mb-1">Proposed Budget</p>
+          <p className="text-heading-3 text-heading-3">
             ${proposal.bid_amount.toLocaleString()}
-            {proposal.fee_type === 'hourly' && <span className="text-sm font-normal">/hr</span>}
+            {proposal.fee_type === 'hourly' && <span className="text-body-sm text-body">/hr</span>}
           </p>
         </div>
 
         <div>
-          <p className="text-sm font-medium mb-1">Timeline</p>
-          <p className="text-sm">{proposal.proposed_timeline}</p>
+          <p className="text-body-sm form-label mb-1">Timeline</p>
+          <p className="text-body-sm">{proposal.proposed_timeline}</p>
         </div>
 
         <div>
-          <p className="text-sm font-medium mb-1">Cover Letter</p>
-          <p className="text-sm line-clamp-3">{proposal.cover_letter}</p>
+          <p className="text-body-sm form-label mb-1">Cover Letter</p>
+          <p className="text-body-sm line-clamp-3">{proposal.cover_letter}</p>
         </div>
 
         {proposal.milestones && proposal.milestones.length > 0 && (
           <div>
-            <p className="text-sm font-medium mb-1">Milestones</p>
+            <p className="text-body-sm form-label mb-1">Milestones</p>
             <div className="space-y-1">
               {proposal.milestones.slice(0, 2).map((milestone: any, i: number) => (
-                <div key={i} className="flex justify-between text-sm">
+                <div key={i} className="flex justify-between text-body-sm">
                   <span>{milestone.title}</span>
-                  <span className="font-medium">${milestone.amount.toLocaleString()}</span>
+                  <span className="form-label">${milestone.amount.toLocaleString()}</span>
                 </div>
               ))}
               {proposal.milestones.length > 2 && (
-                <p className="text-xs text-muted-foreground">
+                <p className="text-body-sm color-muted">
                   +{proposal.milestones.length - 2} more milestones
                 </p>
               )}
@@ -296,11 +296,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       {/* Project Summary */}
       {project && (
         <Card className="p-6 bg-accent/10">
-          <h3 className="text-lg font-semibold mb-2">{project.title}</h3>
-          <p className="text-sm text-muted-foreground mb-4">{project.description}</p>
-          <div className="flex items-center space-x-6 text-sm">
+          <h3 className="text-body text-heading-4 mb-2">{project.title}</h3>
+          <p className="text-body-sm color-muted mb-4">{project.description}</p>
+          <div className="flex items-center space-x-6 text-body-sm">
             <div className="flex items-center">
-              <DollarSign className="h-4 w-4 mr-1 text-muted-foreground" />
+              <DollarSign className="h-4 w-4 mr-1 color-muted" />
               <span>
                 {project.budget_type === 'fixed' ? 
                   `$${project.budget_min?.toLocaleString()} - $${project.budget_max?.toLocaleString()}` :
@@ -311,11 +311,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               </span>
             </div>
             <div className="flex items-center">
-              <Calendar className="h-4 w-4 mr-1 text-muted-foreground" />
+              <Calendar className="h-4 w-4 mr-1 color-muted" />
               <span>{project.duration || 'Timeline flexible'}</span>
             </div>
             <div className="flex items-center">
-              <FileText className="h-4 w-4 mr-1 text-muted-foreground" />
+              <FileText className="h-4 w-4 mr-1 color-muted" />
               <span>{proposals.length} proposals</span>
             </div>
           </div>
@@ -325,7 +325,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       {/* Actions */}
       {mode === 'vendor' && (
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Your Proposals</h3>
+          <h3 className="text-body text-heading-4">Your Proposals</h3>
           {proposals.length === 0 && (
             <Button onClick={() => setDrawerOpen(true)}>
               <Send className="h-4 w-4 mr-2" />
@@ -337,7 +337,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
       {mode === 'client' && (
         <div className="flex justify-between items-center">
-          <h3 className="text-lg font-semibold">Received Proposals</h3>
+          <h3 className="text-body text-heading-4">Received Proposals</h3>
           <div className="flex items-center space-x-2">
             <Badge variant="secondary">
               {proposals.filter(p => p.status === 'shortlisted').length} shortlisted
@@ -352,11 +352,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       {/* Proposals List */}
       {proposals.length === 0 ? (
         <Card className="p-12 text-center">
-          <Award className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-          <h3 className="text-lg font-semibold mb-2">
+          <Award className="h-12 w-12 mx-auto mb-4 color-muted" />
+          <h3 className="text-body text-heading-4 mb-2">
             {mode === 'vendor' ? 'No proposals submitted yet' : 'No proposals received yet'}
           </h3>
-          <p className="text-muted-foreground mb-4">
+          <p className="color-muted mb-4">
             {mode === 'vendor' ? 
               'Submit a proposal to bid on this project' : 
               'Proposals from vendors will appear here'
@@ -389,32 +389,32 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       >
         <form onSubmit={handleSubmit(submitProposal)} className="p-6 space-y-4">
           <div>
-            <label className="text-sm font-medium">Cover Letter</label>
+            <label className="text-body-sm form-label">Cover Letter</label>
             <Textarea 
               {...register('cover_letter')} 
               placeholder="Introduce yourself and explain why you're the best fit for this project..."
               rows={4}
             />
             {errors.cover_letter && (
-              <p className="text-sm text-destructive mt-1">{errors.cover_letter.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.cover_letter.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium">Your Approach</label>
+            <label className="text-body-sm form-label">Your Approach</label>
             <Textarea 
               {...register('approach')} 
               placeholder="Describe how you would approach this project..."
               rows={3}
             />
             {errors.approach && (
-              <p className="text-sm text-destructive mt-1">{errors.approach.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.approach.message}</p>
             )}
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium">Fee Type</label>
+              <label className="text-body-sm form-label">Fee Type</label>
               <select 
                 {...register('fee_type')}
                 className="w-full rounded border px-3 py-2"
@@ -425,7 +425,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             </div>
 
             <div>
-              <label className="text-sm font-medium">
+              <label className="text-body-sm form-label">
                 {watch('fee_type') === 'hourly' ? 'Hourly Rate' : 'Total Amount'}
               </label>
               <Input 
@@ -434,14 +434,14 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
                 placeholder="0"
               />
               {errors.bid_amount && (
-                <p className="text-sm text-destructive mt-1">{errors.bid_amount.message}</p>
+                <p className="text-body-sm color-destructive mt-1">{errors.bid_amount.message}</p>
               )}
             </div>
           </div>
 
           {watch('fee_type') === 'hourly' && (
             <div>
-              <label className="text-sm font-medium">Estimated Hours</label>
+              <label className="text-body-sm form-label">Estimated Hours</label>
               <Input 
                 {...register('estimated_hours', { valueAsNumber: true })} 
                 type="number" 
@@ -451,18 +451,18 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           )}
 
           <div>
-            <label className="text-sm font-medium">Proposed Timeline</label>
+            <label className="text-body-sm form-label">Proposed Timeline</label>
             <Input 
               {...register('proposed_timeline')} 
               placeholder="e.g., 2 weeks, 1 month"
             />
             {errors.proposed_timeline && (
-              <p className="text-sm text-destructive mt-1">{errors.proposed_timeline.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.proposed_timeline.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium">Start Availability</label>
+            <label className="text-body-sm form-label">Start Availability</label>
             <Input 
               {...register('start_availability')} 
               type="date"
@@ -470,7 +470,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           </div>
 
           <div>
-            <label className="text-sm font-medium">Questions for Client (Optional)</label>
+            <label className="text-body-sm form-label">Questions for Client (Optional)</label>
             <Textarea 
               {...register('questions')} 
               placeholder="Any questions or clarifications needed?"

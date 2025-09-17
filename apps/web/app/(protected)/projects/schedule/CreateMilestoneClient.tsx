@@ -107,13 +107,13 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="project_id" className="text-sm font-medium">
+            <label htmlFor="project_id" className="text-body-sm form-label">
               Project *
             </label>
             <select
@@ -129,14 +129,14 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
               ))}
             </select>
             {form.formState.errors.project_id && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.project_id.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="title" className="text-sm font-medium">
+            <label htmlFor="title" className="text-body-sm form-label">
               Milestone Title *
             </label>
             <input
@@ -147,14 +147,14 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
               {...form.register('title')}
             />
             {form.formState.errors.title && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.title.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="description" className="text-sm font-medium">
+            <label htmlFor="description" className="text-body-sm form-label">
               Description
             </label>
             <textarea
@@ -167,7 +167,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="due_at" className="text-sm font-medium">
+            <label htmlFor="due_at" className="text-body-sm form-label">
               Due Date *
             </label>
             <input
@@ -177,7 +177,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
               {...form.register('due_at')}
             />
             {form.formState.errors.due_at && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.due_at.message}
               </div>
             )}

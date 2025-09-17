@@ -119,11 +119,11 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-24 w-24 bg-muted rounded-full mx-auto mb-4"></div>
+          <div className="h-24 w-24 bg-secondary rounded-full mx-auto mb-4"></div>
           <div className="space-y-3">
-            <div className="h-4 bg-muted rounded w-3/4"></div>
-            <div className="h-4 bg-muted rounded w-1/2"></div>
-            <div className="h-4 bg-muted rounded w-2/3"></div>
+            <div className="h-4 bg-secondary rounded w-3/4"></div>
+            <div className="h-4 bg-secondary rounded w-1/2"></div>
+            <div className="h-4 bg-secondary rounded w-2/3"></div>
           </div>
         </div>
       </div>
@@ -156,7 +156,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
             <Badge variant={profile.status === 'active' ? 'default' : 'secondary'}>
               {profile.status}
             </Badge>
-            <div className="mt-2 text-sm text-muted-foreground">
+            <div className="mt-2 text-body-sm color-muted">
               Profile {profile.profile_completion_percentage}% complete
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       {/* Basic Information Form */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <label className="text-sm font-medium">Avatar URL</label>
+          <label className="text-body-sm form-label">Avatar URL</label>
           <Input
             value={formData.avatar_url}
             onChange={(e) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
@@ -175,7 +175,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Date of Birth</label>
+          <label className="text-body-sm form-label">Date of Birth</label>
           <Input
             type="date"
             value={formData.date_of_birth}
@@ -184,7 +184,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Gender</label>
+          <label className="text-body-sm form-label">Gender</label>
           <select
             value={formData.gender}
             onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
@@ -199,7 +199,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">Nationality</label>
+          <label className="text-body-sm form-label">Nationality</label>
           <Input
             value={formData.nationality}
             onChange={(e) => setFormData(prev => ({ ...prev, nationality: e.target.value }))}
@@ -211,7 +211,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       {/* Languages Section */}
       <div className="space-y-4">
         <div>
-          <label className="text-sm font-medium">Languages</label>
+          <label className="text-body-sm form-label">Languages</label>
           <div className="flex flex-wrap gap-2 mt-2">
             {formData.languages.map((language) => (
               <Badge

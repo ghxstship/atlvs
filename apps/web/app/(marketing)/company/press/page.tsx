@@ -142,20 +142,20 @@ export default function PressPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-emerald-500/5 via-background to-teal-500/5">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Press & Media
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
               IN THE
               <br />
-              <span className="bg-gradient-to-r from-emerald-500 to-teal-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 SPOTLIGHT
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Stay updated with the latest GHXSTSHIP news, press releases, and media coverage. 
               Access our press kit and connect with our media team.
             </p>
@@ -178,7 +178,7 @@ export default function PressPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12">
-            <h2 className={`${anton.className} text-3xl font-bold mb-6 uppercase`}>Latest News</h2>
+            <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Latest News</h2>
           </div>
 
           <Card className="overflow-hidden hover:shadow-lg transition-shadow mb-12">
@@ -188,10 +188,10 @@ export default function PressPage() {
                   <Badge variant="outline" className="mb-4">
                     {pressReleases[0].category}
                   </Badge>
-                  <h3 className={`${anton.className} text-2xl lg:text-3xl font-bold mb-4 uppercase`}>
+                  <h3 className={`${anton.className} text-heading-3 lg:text-heading-2 text-heading-3 mb-4 uppercase`}>
                     {pressReleases[0].title}
                   </h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+                  <div className="flex items-center gap-2 text-body-sm color-muted mb-4">
                     <Calendar className="h-4 w-4" />
                     {new Date(pressReleases[0].date).toLocaleDateString('en-US', { 
                       year: 'numeric', 
@@ -199,7 +199,7 @@ export default function PressPage() {
                       day: 'numeric' 
                     })}
                   </div>
-                  <p className="text-lg text-muted-foreground mb-6">
+                  <p className="text-body color-muted mb-6">
                     {pressReleases[0].excerpt}
                   </p>
                   <Button className="group">
@@ -208,8 +208,8 @@ export default function PressPage() {
                   </Button>
                 </div>
 
-                <div className="bg-gradient-to-br from-emerald-500/10 to-teal-500/10 rounded-lg p-8 flex items-center justify-center">
-                  <FileText className="h-16 w-16 text-emerald-500" />
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-8 flex items-center justify-center">
+                  <FileText className="h-16 w-16 color-success" />
                 </div>
               </div>
             </CardContent>
@@ -218,10 +218,10 @@ export default function PressPage() {
       </section>
 
       {/* Press Releases */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="mb-12">
-            <h2 className={`${anton.className} text-3xl font-bold mb-6 uppercase`}>Press Releases</h2>
+            <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Press Releases</h2>
           </div>
 
           <div className="space-y-6">
@@ -231,10 +231,10 @@ export default function PressPage() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-body-sm">
                           {release.category}
                         </Badge>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-2 text-body-sm color-muted">
                           <Calendar className="h-3 w-3" />
                           {new Date(release.date).toLocaleDateString('en-US', { 
                             year: 'numeric', 
@@ -243,10 +243,10 @@ export default function PressPage() {
                           })}
                         </div>
                       </div>
-                      <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                      <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>
                         {release.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm">
+                      <p className="color-muted text-body-sm">
                         {release.excerpt}
                       </p>
                     </div>
@@ -272,8 +272,8 @@ export default function PressPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12">
-            <h2 className={`${anton.className} text-3xl font-bold mb-6 uppercase`}>Media Coverage</h2>
-            <p className="text-lg text-muted-foreground">
+            <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Media Coverage</h2>
+            <p className="text-body color-muted">
               See what industry publications are saying about GHXSTSHIP.
             </p>
           </div>
@@ -283,10 +283,10 @@ export default function PressPage() {
               <Card key={index} className="hover:shadow-lg transition-shadow group">
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-4 mb-4">
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-body-sm">
                       {article.publication}
                     </Badge>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Calendar className="h-3 w-3" />
                       {new Date(article.date).toLocaleDateString('en-US', { 
                         month: 'short', 
@@ -295,10 +295,10 @@ export default function PressPage() {
                     </div>
                   </div>
                   
-                  <h3 className={`${anton.className} text-lg font-bold mb-3 uppercase group-hover:text-primary transition-colors`}>
+                  <h3 className={`${anton.className} text-body text-heading-3 mb-3 uppercase group-hover:color-primary transition-colors`}>
                     {article.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm mb-4">
+                  <p className="color-muted text-body-sm mb-4">
                     {article.excerpt}
                   </p>
                   
@@ -320,13 +320,13 @@ export default function PressPage() {
       </section>
 
       {/* Awards & Recognition */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               AWARDS & RECOGNITION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Industry recognition for our innovation and impact in creative collaboration.
             </p>
           </div>
@@ -336,22 +336,22 @@ export default function PressPage() {
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <FileText className="h-6 w-6 text-white" />
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                      <FileText className="h-6 w-6 text-background" />
                     </div>
                     <div className="flex-1">
-                      <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                      <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>
                         {award.title}
                       </h3>
-                      <p className="text-primary font-semibold mb-2">{award.organization}</p>
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
+                      <p className="color-primary text-heading-4 mb-2">{award.organization}</p>
+                      <div className="flex items-center gap-2 text-body-sm color-muted mb-3">
                         <Calendar className="h-3 w-3" />
                         {new Date(award.date).toLocaleDateString('en-US', { 
                           year: 'numeric', 
                           month: 'long' 
                         })}
                       </div>
-                      <p className="text-muted-foreground text-sm">{award.description}</p>
+                      <p className="color-muted text-body-sm">{award.description}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -365,10 +365,10 @@ export default function PressPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               MEDIA KIT
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Download high-quality assets, logos, and company information for your coverage.
             </p>
           </div>
@@ -377,16 +377,16 @@ export default function PressPage() {
             {mediaKit.map((kit) => (
               <Card key={kit.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>
                     {kit.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">{kit.description}</p>
+                  <p className="color-muted mb-4">{kit.description}</p>
                   
                   <div className="space-y-2 mb-6">
                     {kit.items.map((item) => (
                       <div key={item} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full"></div>
-                        <span className="text-sm text-foreground">{item}</span>
+                        <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                        <span className="text-body-sm color-foreground">{item}</span>
                       </div>
                     ))}
                   </div>
@@ -410,13 +410,13 @@ export default function PressPage() {
       </section>
 
       {/* Media Contact */}
-      <section className="py-20 bg-gradient-to-r from-emerald-500/5 to-teal-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               MEDIA CONTACT
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-body color-muted max-w-2xl mx-auto">
               For press inquiries, interviews, or additional information, please contact our media team.
             </p>
           </div>
@@ -424,13 +424,13 @@ export default function PressPage() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-8 text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Mail className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Mail className="h-6 w-6 text-foreground" />
                 </div>
-                <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>
                   Press Inquiries
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="color-muted mb-4">
                   For all media and press related questions
                 </p>
                 <Button variant="outline" className="group">
@@ -442,13 +442,13 @@ export default function PressPage() {
 
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="p-8 text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <Phone className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <Phone className="h-6 w-6 text-background" />
                 </div>
-                <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase`}>
+                <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>
                   Media Relations
                 </h3>
-                <p className="text-muted-foreground mb-4">
+                <p className="color-muted mb-4">
                   Sarah Martinez, Head of Communications
                 </p>
                 <Button variant="outline" className="group">
@@ -465,10 +465,10 @@ export default function PressPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               STAY UPDATED
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Subscribe to our press updates to receive the latest news and announcements 
               directly in your inbox.
             </p>
@@ -489,10 +489,10 @@ export default function PressPage() {
       </section>
 
       {/* Related Pages */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               LEARN MORE
             </h2>
           </div>
@@ -506,10 +506,10 @@ export default function PressPage() {
               <a key={link.title} href={link.href as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
-                    <h3 className={`${anton.className} text-lg font-bold mb-2 uppercase group-hover:text-primary transition-colors`}>
+                    <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase group-hover:color-primary transition-colors`}>
                       {link.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       {link.description}
                     </p>
                   </CardContent>

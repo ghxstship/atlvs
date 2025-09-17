@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { StandardButton } from '../../components/ui/StandardButton';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
   Plus,
@@ -329,8 +328,8 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
       <Card key={widget.id} className={`p-4 ${widget.size === 'small' ? 'col-span-1' : widget.size === 'large' ? 'col-span-2' : 'col-span-1'}`}>
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center space-x-2">
-            <IconComponent className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium">{widget.title}</span>
+            <IconComponent className="h-4 w-4 color-primary" />
+            <span className="text-body-sm form-label">{widget.title}</span>
           </div>
           <div className="flex items-center space-x-1">
             <Button
@@ -350,20 +349,20 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           </div>
         </div>
         
-        <div className="h-32 bg-muted/50 rounded flex items-center justify-center">
+        <div className="h-32 bg-secondary/50 rounded flex items-center justify-center">
           {widget.type === 'metric' && widget.data?.[0] ? (
             <div className="text-center">
-              <div className="text-2xl font-bold text-foreground">
+              <div className="text-heading-3 text-heading-3 color-foreground">
                 {widget.config.format === 'currency' ? `$${widget.data[0].value.toLocaleString()}` : widget.data[0].value}
               </div>
-              <div className="text-sm text-success">
+              <div className="text-body-sm color-success">
                 +{widget.data[0].change}% vs last period
               </div>
             </div>
           ) : (
-            <div className="text-center text-muted-foreground">
+            <div className="text-center color-muted">
               <IconComponent className="h-8 w-8 mx-auto mb-2" />
-              <div className="text-sm">Chart Preview</div>
+              <div className="text-body-sm">Chart Preview</div>
             </div>
           )}
         </div>
@@ -375,10 +374,10 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded w-1/4 mb-4"></div>
+          <div className="h-8 bg-secondary rounded w-1/4 mb-4"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="h-32 bg-muted rounded"></div>
+              <div key={i} className="h-32 bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -389,7 +388,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
   if (error) {
     return (
       <Card title="Error">
-        <div className="text-sm text-destructive">{error}</div>
+        <div className="text-body-sm color-destructive">{error}</div>
         <Button onClick={loadDashboards} className="mt-4">
           Retry
         </Button>
@@ -402,13 +401,13 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
       {/* Dashboard Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">Dashboards</h1>
-          <p className="text-sm text-muted-foreground">Create and manage custom analytics dashboards</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">Dashboards</h1>
+          <p className="text-body-sm color-muted">Create and manage custom analytics dashboards</p>
         </div>
-        <StandardButton onClick={() => setShowCreateDashboard(true)}>
+        <Button onClick={() => setShowCreateDashboard(true)}>
           <Plus className="h-4 w-4 mr-2" />
           New Dashboard
-        </StandardButton>
+        </Button>
       </div>
 
       {/* Dashboard Selector */}
@@ -419,15 +418,15 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             onClick={() => setSelectedDashboard(dashboard)}
             className={`flex-shrink-0 px-4 py-2 rounded-lg border transition-colors ${
               selectedDashboard?.id === dashboard.id
-                ? 'bg-primary/10 border-primary/20 text-primary'
-                : 'bg-background border-border text-foreground hover:bg-muted'
+                ? 'bg-primary/10 border-primary/20 color-primary'
+                : 'bg-background border-border color-foreground hover:bg-secondary'
             }`}
           >
             <div className="flex items-center space-x-2">
               <Layout className="h-4 w-4" />
-              <span className="text-sm font-medium">{dashboard.name}</span>
+              <span className="text-body-sm form-label">{dashboard.name}</span>
               {dashboard.isPublic && (
-                <Badge variant="outline" className="text-xs">Public</Badge>
+                <Badge variant="outline" className="text-body-sm">Public</Badge>
               )}
             </div>
           </button>
@@ -439,11 +438,11 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           {/* Dashboard Actions */}
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <h2 className="text-lg font-semibold text-foreground">
+              <h2 className="text-body text-heading-4 color-foreground">
                 {selectedDashboard.name}
               </h2>
               {selectedDashboard.description && (
-                <span className="text-sm text-muted-foreground">
+                <span className="text-body-sm color-muted">
                   — {selectedDashboard.description}
                 </span>
               )}
@@ -467,7 +466,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           {/* Add Widget Bar */}
           <Card className="p-4">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-foreground">Add Widget:</span>
+              <span className="text-body-sm form-label color-foreground">Add Widget:</span>
               <div className="flex items-center space-x-2">
                 <Button
                   variant="outline"
@@ -512,11 +511,11 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             </div>
           ) : (
             <Card className="p-8 text-center">
-              <Layout className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-foreground mb-2">
+              <Layout className="h-12 w-12 color-muted mx-auto mb-4" />
+              <h3 className="text-body form-label color-foreground mb-2">
                 No widgets yet
               </h3>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-body-sm color-muted mb-4">
                 Add your first widget to start building your dashboard
               </p>
               <Button onClick={() => addWidget('metric')}>
@@ -530,9 +529,9 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
 
       {/* Create Dashboard Form */}
       {showCreateForm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center z-50">
           <Card className="w-full max-w-md p-6">
-            <h3 className="text-lg font-semibold mb-4">Create New Dashboard</h3>
+            <h3 className="text-body text-heading-4 mb-4">Create New Dashboard</h3>
             <form
               onSubmit={(e) => {
                 e.preventDefault();
@@ -544,7 +543,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             >
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <label className="block text-body-sm form-label color-foreground mb-1">
                     Dashboard Name
                   </label>
                   <input
@@ -556,7 +555,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-1">
+                  <label className="block text-body-sm form-label color-foreground mb-1">
                     Description (Optional)
                   </label>
                   <textarea

@@ -47,14 +47,14 @@ export function HeroSection() {
           {/* Left Column - Content */}
           <div className="space-y-8">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 color-primary text-body-sm form-label">
               <Zap className="h-4 w-4" />
               Now with AI-powered insights
             </div>
 
             {/* Main Headline */}
             <div className="space-y-4">
-              <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold tracking-tight text-foreground uppercase`}>
+              <h1 className="hero-title">
                 THE FUTURE OF
                 <br />
                 <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
@@ -66,7 +66,7 @@ export function HeroSection() {
               
               {/* Dynamic Feature Highlight */}
               <div className="h-8 flex items-center">
-                <p className="text-xl text-muted-foreground">
+                <p className="text-heading-4 color-muted">
                   {features.map((feature, index) => (
                     <span
                       key={feature}
@@ -86,7 +86,7 @@ export function HeroSection() {
             </div>
 
             {/* Description */}
-            <p className="text-lg text-muted-foreground max-w-xl">
+            <p className="text-body color-muted max-w-xl">
               ATLVS and OPENDECK combine to deliver the most comprehensive enterprise production 
               management and marketplace platform. Streamline workflows, connect with talent, 
               and scale your creative operations with confidence.
@@ -96,8 +96,8 @@ export function HeroSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {features.map((feature, index) => (
                 <div key={feature} className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                  <span className="text-sm text-muted-foreground">{feature}</span>
+                  <CheckCircle className="h-5 w-5 color-primary flex-shrink-0" />
+                  <span className="text-body-sm color-muted">{feature}</span>
                 </div>
               ))}
             </div>
@@ -123,12 +123,12 @@ export function HeroSection() {
                 return (
                   <div key={stat.label} className="text-center lg:text-left">
                     <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
-                      <Icon className="h-5 w-5 text-primary" />
-                      <span className={`${anton.className} text-2xl font-bold text-foreground uppercase`}>
+                      <Icon className="h-5 w-5 color-primary" />
+                      <span className="text-heading-3 color-primary">
                         {stat.value}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                    <p className="text-body-sm color-muted">{stat.label}</p>
                   </div>
                 );
               })}
@@ -140,15 +140,15 @@ export function HeroSection() {
             {/* Main Dashboard Preview */}
             <div className="relative bg-background border rounded-2xl shadow-2xl overflow-hidden">
               {/* Browser Chrome */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+              <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
                 <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-destructive"></div>
                   <div className="w-3 h-3 rounded-full bg-warning"></div>
                   <div className="w-3 h-3 rounded-full bg-success"></div>
                 </div>
                 <div className="flex-1 text-center">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                    <div className="w-3 h-3 text-success">🔒</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
+                    <div className="w-3 h-3 color-success">🔒</div>
                     app.ghxstship.com
                   </div>
                 </div>
@@ -159,34 +159,34 @@ export function HeroSection() {
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>BLACKWATER REVERB</h3>
-                    <p className="text-sm text-muted-foreground">Main Deck Takeover</p>
+                    <h3 className="card-title">BLACKWATER REVERB</h3>
+                    <p className="text-body-sm color-muted">Main Deck Takeover</p>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-success rounded-full"></div>
-                    <span className="text-xs text-muted-foreground">Live</span>
+                    <span className="text-body-sm color-muted">Live</span>
                   </div>
                 </div>
 
                 {/* Progress Cards */}
                 <div className="grid grid-cols-3 gap-3">
-                  <div className="bg-muted/30 rounded-lg p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Budget</div>
-                    <div className="font-semibold">$75K</div>
-                    <div className="w-full bg-muted rounded-full h-1 mt-2">
+                  <div className="bg-secondary/30 rounded-lg p-3">
+                    <div className="text-body-sm color-muted mb-1">Budget</div>
+                    <div className="text-heading-4">$75K</div>
+                    <div className="w-full bg-secondary rounded-full h-1 mt-2">
                       <div className="bg-primary h-1 rounded-full w-3/4"></div>
                     </div>
                   </div>
-                  <div className="bg-muted/30 rounded-lg p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Timeline</div>
-                    <div className="font-semibold">85%</div>
-                    <div className="w-full bg-muted rounded-full h-1 mt-2">
+                  <div className="bg-secondary/30 rounded-lg p-3">
+                    <div className="text-body-sm color-muted mb-1">Timeline</div>
+                    <div className="text-heading-4">85%</div>
+                    <div className="w-full bg-secondary rounded-full h-1 mt-2">
                       <div className="bg-accent h-1 rounded-full w-4/5"></div>
                     </div>
                   </div>
-                  <div className="bg-muted/30 rounded-lg p-3">
-                    <div className="text-xs text-muted-foreground mb-1">Team</div>
-                    <div className="font-semibold">12</div>
+                  <div className="bg-secondary/30 rounded-lg p-3">
+                    <div className="text-body-sm color-muted mb-1">Team</div>
+                    <div className="text-heading-4">12</div>
                     <div className="flex -space-x-1 mt-2">
                       {[1, 2, 3].map((i) => (
                         <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
@@ -197,17 +197,17 @@ export function HeroSection() {
 
                 {/* Activity Feed */}
                 <div className="space-y-2">
-                  <div className="text-xs font-medium text-muted-foreground">Recent Activity</div>
+                  <div className="text-body-sm form-label color-muted">Recent Activity</div>
                   {[
                     { user: 'Captain Blackwater', action: 'approved budget revision', time: '2m ago' },
                     { user: 'First Mate Torres', action: 'updated crew schedule', time: '5m ago' },
                     { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
                   ].map((activity, i) => (
-                    <div key={i} className="flex items-center gap-2 text-xs">
+                    <div key={i} className="flex items-center gap-2 text-body-sm">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
-                      <span className="font-medium">{activity.user}</span>
-                      <span className="text-muted-foreground">{activity.action}</span>
-                      <span className="text-muted-foreground ml-auto">{activity.time}</span>
+                      <span className="form-label">{activity.user}</span>
+                      <span className="color-muted">{activity.action}</span>
+                      <span className="color-muted ml-auto">{activity.time}</span>
                     </div>
                   ))}
                 </div>
@@ -215,10 +215,10 @@ export function HeroSection() {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground rounded-full p-3 shadow-lg">
+            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-3 shadow-lg">
               <Zap className="h-6 w-6" />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-accent text-accent-foreground rounded-full p-3 shadow-lg">
+            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-3 shadow-lg">
               <Star className="h-6 w-6" />
             </div>
           </div>

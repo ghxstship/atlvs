@@ -267,8 +267,8 @@ export default function ChartWidget({
     return (
       <Card className="p-6 h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-muted/50 rounded w-3/4 mb-4"></div>
-          <div className="h-64 bg-muted/50 rounded"></div>
+          <div className="h-4 bg-secondary/50 rounded w-3/4 mb-4"></div>
+          <div className="h-64 bg-secondary/50 rounded"></div>
         </div>
       </Card>
     );
@@ -278,8 +278,8 @@ export default function ChartWidget({
     return (
       <Card className="p-6 h-full">
         <div className="text-center">
-          <p className="text-sm text-destructive mb-2">Error loading chart</p>
-          <p className="text-xs text-muted-foreground">{error}</p>
+          <p className="text-body-sm color-destructive mb-2">Error loading chart</p>
+          <p className="text-body-sm color-muted">{error}</p>
         </div>
       </Card>
     );
@@ -289,11 +289,11 @@ export default function ChartWidget({
     <Card className="p-6 h-full relative group">
       {/* Widget Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-body text-heading-4">{title}</h3>
         <div className="flex items-center space-x-2">
           <button
             onClick={() => window.location.reload()}
-            className="p-1 text-muted-foreground hover:text-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
+            className="p-1 color-muted hover:color-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
             aria-label="Refresh chart"
           >
             <RefreshCw className="h-4 w-4" />
@@ -301,7 +301,7 @@ export default function ChartWidget({
           {(onEdit || onDelete) && (
             <button
               onClick={onEdit}
-              className="p-1 text-muted-foreground hover:text-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
+              className="p-1 color-muted hover:color-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
               aria-label="Edit widget"
             >
               <MoreHorizontal className="h-4 w-4" />
@@ -313,14 +313,14 @@ export default function ChartWidget({
       {/* Chart */}
       <div className="h-64 mb-4">
         {chartData ? renderChart() : (
-          <div className="flex items-center justify-center h-full text-muted-foreground">
+          <div className="flex items-center justify-center h-full color-muted">
             No data available
           </div>
         )}
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between text-xs text-muted-foreground">
+      <div className="flex items-center justify-between text-body-sm color-muted">
         <span>
           Data source: {config.dataSource}
         </span>

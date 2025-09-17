@@ -79,8 +79,8 @@ export default async function ProjectsActivationsPage() {
       <Card>
         <div className="flex items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Activations</h1>
-            <p className="text-sm text-muted-foreground">
+            <h1 className="text-heading-3 text-heading-3">Activations</h1>
+            <p className="text-body-sm color-muted">
               Manage project activations, launches, and go-live processes
             </p>
           </div>
@@ -90,7 +90,7 @@ export default async function ProjectsActivationsPage() {
         {orgId ? (
           <ActivationsTableClient orgId={orgId} rows={activations} projects={projects} />
         ) : (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 color-muted">
             Please join an organization to manage activations.
           </div>
         )}

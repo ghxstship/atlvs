@@ -29,7 +29,7 @@ export default async function ProgrammingCallSheetsPage() {
     <div className="space-y-4">
       <Card title={t('call_sheets')}>
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h1 className="text-2xl font-bold font-anton uppercase">{t('call_sheets')}</h1>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">{t('call_sheets')}</h1>
           {orgId && <CreateCallSheetClient orgId={orgId} />}
         </div>
         

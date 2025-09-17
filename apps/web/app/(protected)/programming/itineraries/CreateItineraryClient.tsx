@@ -131,13 +131,13 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="name" className="text-sm font-medium">
+            <label htmlFor="name" className="text-body-sm form-label">
               Itinerary Name *
             </label>
             <input
@@ -148,14 +148,14 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               {...form.register('name')}
             />
             {form.formState.errors.name && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.name.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="description" className="text-sm font-medium">
+            <label htmlFor="description" className="text-body-sm form-label">
               Description
             </label>
             <textarea
@@ -169,7 +169,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="type" className="text-sm font-medium">
+              <label htmlFor="type" className="text-body-sm form-label">
                 Type *
               </label>
               <select
@@ -185,7 +185,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="status" className="text-sm font-medium">
+              <label htmlFor="status" className="text-body-sm form-label">
                 Status *
               </label>
               <select
@@ -204,7 +204,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="start_date" className="text-sm font-medium">
+              <label htmlFor="start_date" className="text-body-sm form-label">
                 Start Date *
               </label>
               <input
@@ -214,14 +214,14 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
                 {...form.register('start_date')}
               />
               {form.formState.errors.start_date && (
-                <div className="text-xs text-destructive">
+                <div className="text-body-sm color-destructive">
                   {form.formState.errors.start_date.message}
                 </div>
               )}
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="end_date" className="text-sm font-medium">
+              <label htmlFor="end_date" className="text-body-sm form-label">
                 End Date *
               </label>
               <input
@@ -231,7 +231,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
                 {...form.register('end_date')}
               />
               {form.formState.errors.end_date && (
-                <div className="text-xs text-destructive">
+                <div className="text-body-sm color-destructive">
                   {form.formState.errors.end_date.message}
                 </div>
               )}
@@ -240,7 +240,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="location" className="text-sm font-medium">
+              <label htmlFor="location" className="text-body-sm form-label">
                 Location
               </label>
               <input
@@ -253,7 +253,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="transportation_type" className="text-sm font-medium">
+              <label htmlFor="transportation_type" className="text-body-sm form-label">
                 Transportation
               </label>
               <select
@@ -274,7 +274,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-3 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="total_cost" className="text-sm font-medium">
+              <label htmlFor="total_cost" className="text-body-sm form-label">
                 Total Cost
               </label>
               <input
@@ -289,7 +289,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="currency" className="text-sm font-medium">
+              <label htmlFor="currency" className="text-body-sm form-label">
                 Currency
               </label>
               <select
@@ -305,7 +305,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="participants_count" className="text-sm font-medium">
+              <label htmlFor="participants_count" className="text-body-sm form-label">
                 Participants
               </label>
               <input
@@ -321,7 +321,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="project_id" className="text-sm font-medium">
+              <label htmlFor="project_id" className="text-body-sm form-label">
                 Associated Project
               </label>
               <select
@@ -339,7 +339,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="event_id" className="text-sm font-medium">
+              <label htmlFor="event_id" className="text-body-sm form-label">
                 Associated Event
               </label>
               <select

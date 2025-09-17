@@ -33,8 +33,8 @@ export default async function PeopleNetworkPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Network</h1>
-          <p className="text-sm text-muted-foreground">Document professional relationships within the organization</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Network</h1>
+          <p className="text-body-sm color-muted">Document professional relationships within the organization</p>
         </div>
         <CreateNetworkConnectionClient orgId={orgId} />
       </div>

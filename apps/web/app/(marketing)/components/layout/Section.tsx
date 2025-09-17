@@ -66,7 +66,7 @@ export function SectionHeader({
     <div className={cn(LayoutClasses.sectionHeader, className)}>
       {badge && (
         <div className="mb-4">
-          <span className="inline-block px-3 py-1 text-sm font-medium bg-muted text-muted-foreground rounded-full border">
+          <span className="inline-block px-3 py-1 text-body-sm form-label bg-secondary color-muted rounded-full border">
             {badge}
           </span>
         </div>
@@ -75,7 +75,7 @@ export function SectionHeader({
         {title}
       </h2>
       {subtitle && (
-        <p className={cn('text-lg text-muted-foreground max-w-3xl mx-auto', subtitleClassName)}>
+        <p className={cn('text-body color-muted max-w-3xl mx-auto', subtitleClassName)}>
           {subtitle}
         </p>
       )}

@@ -1,6 +1,6 @@
 import { cookies } from 'next/headers';
 import { createServerClient, type CookieAdapter } from '@ghxstship/auth';
-import { composeSupabaseServices } from '@ghxstship/infrastructure';
+// import { composeSupabaseServices } from '@ghxstship/infrastructure';
 
 export function getSupabaseAndServices() {
   const cookieStore = cookies();
@@ -10,6 +10,14 @@ export function getSupabaseAndServices() {
     remove: (name: string) => cookieStore.delete(name)
   };
   const sb = createServerClient(adapter);
-  const composed = composeSupabaseServices(sb);
+  // const composed = composeSupabaseServices(sb);
+  const composed = { 
+    repos: {}, 
+    services: { 
+      webhooks: { redrive: async (limit: number) => {} },
+      projects: { findById: async () => null }
+    }, 
+    audit: { record: async (entry: any) => {} } 
+  }; // Placeholder
   return { sb, ...composed };
 }

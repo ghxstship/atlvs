@@ -115,12 +115,12 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
   const getLevelColor = (level?: string) => {
     switch (level) {
-      case 'entry': return 'bg-success/10 text-success';
-      case 'mid': return 'bg-primary/10 text-primary';
-      case 'senior': return 'bg-accent/10 text-accent';
-      case 'lead': return 'bg-warning/10 text-warning';
-      case 'executive': return 'bg-destructive/10 text-destructive';
-      default: return 'bg-muted text-muted-foreground';
+      case 'entry': return 'bg-success/10 color-success';
+      case 'mid': return 'bg-primary/10 color-primary';
+      case 'senior': return 'bg-accent/10 color-accent';
+      case 'lead': return 'bg-warning/10 color-warning';
+      case 'executive': return 'bg-destructive/10 color-destructive';
+      default: return 'bg-secondary color-muted';
     }
   };
 
@@ -155,7 +155,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
           <div className="flex flex-col sm:flex-row gap-4 justify-between">
             <div className="flex flex-col sm:flex-row gap-4 flex-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
                 <Input
                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
@@ -169,7 +169,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 onChange={(e) => setSelectedDepartment(e.target.value)}
                 className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <option value="" className="text-muted-foreground">All Departments</option>
+                <option value="" className="color-muted">All Departments</option>
                 {departments.map(dept => (
                   <option key={dept} value={dept}>{dept}</option>
                 ))}
@@ -180,7 +180,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 onChange={(e) => setSelectedLevel(e.target.value)}
                 className="px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
-                <option value="" className="text-muted-foreground">All Levels</option>
+                <option value="" className="color-muted">All Levels</option>
                 <option value="entry">{t('entry')}</option>
                 <option value="mid">{t('mid')}</option>
                 <option value="senior">{t('senior')}</option>
@@ -197,8 +197,8 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
           {/* Create Form */}
           {showCreateForm && (
-            <div className="border border-border rounded-lg p-4 bg-muted/50">
-              <h3 className="text-lg font-medium text-foreground mb-2">No roles found</h3>
+            <div className="border border-border rounded-lg p-4 bg-secondary/50">
+              <h3 className="text-body form-label color-foreground mb-2">No roles found</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <Input
                   placeholder={t('roleName')}
@@ -246,7 +246,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
           )}
 
           {/* Results Summary */}
-          <div className="text-sm text-muted-foreground">
+          <div className="text-body-sm color-muted">
             {t('resultsCount', { count: filteredRoles.length, total: roles.length })}
           </div>
 
@@ -259,15 +259,15 @@ export default function RolesClient({ orgId }: RolesClientProps) {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <Shield className="h-5 w-5 text-primary" />
-                    <h3 className="font-semibold text-foreground">{role.name}</h3>
+                    <Shield className="h-5 w-5 color-primary" />
+                    <h3 className="text-heading-4 color-foreground">{role.name}</h3>
                   </div>
                   
                   <div className="flex space-x-1">
-                    <button className="p-1 text-muted-foreground hover:text-foreground">
+                    <button className="p-1 color-muted hover:color-foreground">
                       <Edit className="h-4 w-4" />
                     </button>
-                    <button className="p-1 text-muted-foreground hover:text-destructive">
+                    <button className="p-1 color-muted hover:color-destructive">
                       <Trash2 className="h-4 w-4" />
                     </button>
                   </div>
@@ -276,7 +276,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 <div className="space-y-2 mb-3">
                   {role.level && (
                     <div className="flex items-center justify-between">
-                      <span className="text-xs px-2 py-1 bg-muted text-muted-foreground rounded">{role.level}</span>
+                      <span className="text-body-sm px-2 py-1 bg-secondary color-muted rounded">{role.level}</span>
                       <Badge className={getLevelColor(role.level)}>
                         {getLevelIcon(role.level)} {role.level}
                       </Badge>
@@ -285,8 +285,8 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
                   {role.department && (
                     <div className="flex items-center justify-between">
-                      <p className="text-sm text-muted-foreground mt-1">{role.description}</p>
-                      <Badge className="bg-primary/10 text-primary">
+                      <p className="text-body-sm color-muted mt-1">{role.description}</p>
+                      <Badge className="bg-primary/10 color-primary">
                         {role.department}
                       </Badge>
                     </div>
@@ -294,23 +294,23 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 </div>
 
                 {role.description && (
-                  <p className="text-xs text-muted-foreground mt-2">Create your first role to get started.</p>
+                  <p className="text-body-sm color-muted mt-2">Create your first role to get started.</p>
                 )}
 
                 {role.permissions && role.permissions.length > 0 && (
                   <div className="space-y-1">
-                    <h4 className="text-xs font-medium text-foreground flex items-center">
+                    <h4 className="text-body-sm form-label color-foreground flex items-center">
                       <Users className="h-3 w-3 mr-1" />
                       {t('permissions')} ({role.permissions.length})
                     </h4>
                     <div className="flex flex-wrap gap-1">
                       {role.permissions.slice(0, 3).map((permission, index) => (
-                        <Badge key={index} className="bg-muted text-muted-foreground text-xs">
+                        <Badge key={index} className="bg-secondary color-muted text-body-sm">
                           {permission}
                         </Badge>
                       ))}
                       {role.permissions.length > 3 && (
-                        <Badge className="bg-muted text-muted-foreground text-xs">
+                        <Badge className="bg-secondary color-muted text-body-sm">
                           +{role.permissions.length - 3}
                         </Badge>
                       )}
@@ -323,8 +323,8 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
           {filteredRoles.length === 0 && (
             <div className="text-center py-12">
-              <Users className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <p className="text-muted-foreground">{t('noRolesFound')}</p>
+              <Users className="h-12 w-12 color-muted mx-auto mb-4" />
+              <p className="color-muted">{t('noRolesFound')}</p>
             </div>
           )}
         </div>

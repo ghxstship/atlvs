@@ -209,10 +209,10 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
   };
 
   const getVarianceColor = (variance?: number) => {
-    if (!variance) return 'text-foreground/70';
-    if (Math.abs(variance) <= 5) return 'text-success';
-    if (Math.abs(variance) <= 15) return 'text-warning';
-    return 'text-destructive';
+    if (!variance) return 'color-foreground/70';
+    if (Math.abs(variance) <= 5) return 'color-success';
+    if (Math.abs(variance) <= 15) return 'color-warning';
+    return 'color-destructive';
   };
 
   const getConfidenceBadge = (level: string) => {
@@ -229,15 +229,15 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'revenue':
-        return <TrendingUp className="h-5 w-5 text-success" />;
+        return <TrendingUp className="h-5 w-5 color-success" />;
       case 'expense':
-        return <TrendingUp className="h-5 w-5 text-destructive rotate-180" />;
+        return <TrendingUp className="h-5 w-5 color-destructive rotate-180" />;
       case 'budget':
-        return <Target className="h-5 w-5 text-primary" />;
+        return <Target className="h-5 w-5 color-primary" />;
       case 'cash_flow':
-        return <Activity className="h-5 w-5 text-secondary" />;
+        return <Activity className="h-5 w-5 color-secondary" />;
       default:
-        return <BarChart3 className="h-5 w-5 text-muted-foreground" />;
+        return <BarChart3 className="h-5 w-5 color-muted" />;
     }
   };
 
@@ -391,8 +391,8 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <ViewSwitcher />
@@ -406,7 +406,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
         {/* Filter Tabs */}
         <div className="flex flex-wrap items-center gap-4">
           {/* Type Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(typeCounts).map(([type, count]) => (
               <Button
                 key={type}
@@ -421,7 +421,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
           </div>
 
           {/* Period Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(periodCounts).map(([period, count]) => (
               <Button
                 key={period}
@@ -441,48 +441,48 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Forecasts</p>
-                <p className="text-2xl font-bold text-foreground">{forecasts.length}</p>
-                <p className="text-xs text-foreground/60">{analytics.completedForecasts} completed</p>
+                <p className="text-body-sm color-foreground/70">Total Forecasts</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{forecasts.length}</p>
+                <p className="text-body-sm color-foreground/60">{analytics.completedForecasts} completed</p>
               </div>
-              <BarChart3 className="h-8 w-8 text-primary" />
+              <BarChart3 className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Projected</p>
-                <p className="text-2xl font-bold text-primary">
+                <p className="text-body-sm color-foreground/70">Total Projected</p>
+                <p className="text-heading-3 text-heading-3 color-primary">
                   {formatCurrency(analytics.totalProjected)}
                 </p>
               </div>
-              <Target className="h-8 w-8 text-primary" />
+              <Target className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Actual</p>
-                <p className="text-2xl font-bold text-success">
+                <p className="text-body-sm color-foreground/70">Total Actual</p>
+                <p className="text-heading-3 text-heading-3 color-success">
                   {formatCurrency(analytics.totalActual)}
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-success" />
+              <CheckCircle className="h-8 w-8 color-success" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Avg Accuracy</p>
-                <p className="text-2xl font-bold text-secondary">
+                <p className="text-body-sm color-foreground/70">Avg Accuracy</p>
+                <p className="text-heading-3 text-heading-3 color-secondary">
                   {analytics.averageAccuracy > 0 ? `${(100 - analytics.averageAccuracy).toFixed(1)}%` : 'N/A'}
                 </p>
-                <p className="text-xs text-foreground/60">forecast accuracy</p>
+                <p className="text-body-sm color-foreground/60">forecast accuracy</p>
               </div>
-              <PieChart className="h-8 w-8 text-secondary" />
+              <PieChart className="h-8 w-8 color-secondary" />
             </div>
           </Card>
         </div>
@@ -496,43 +496,43 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                   <div className="flex items-center space-x-3">
                     {getTypeIcon(forecast.type)}
                     <div>
-                      <h3 className="font-semibold text-foreground">{forecast.name}</h3>
-                      <p className="text-sm text-foreground/70 capitalize">{forecast.type.replace('_', ' ')} • {forecast.period}</p>
+                      <h3 className="text-heading-4 color-foreground">{forecast.name}</h3>
+                      <p className="text-body-sm color-foreground/70 capitalize">{forecast.type.replace('_', ' ')} • {forecast.period}</p>
                     </div>
                   </div>
                   {getConfidenceBadge(forecast.confidence_level)}
                 </div>
                 
                 <div className="space-y-3 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Projected</span>
-                    <span className="font-medium text-primary">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Projected</span>
+                    <span className="form-label color-primary">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
                   </div>
                   
                   {forecast.actual_amount !== null && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Actual</span>
-                      <span className="font-medium text-success">{formatCurrency(forecast.actual_amount || 0, forecast.currency)}</span>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Actual</span>
+                      <span className="form-label color-success">{formatCurrency(forecast.actual_amount || 0, forecast.currency)}</span>
                     </div>
                   )}
                   
                   {forecast.variance !== null && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Variance</span>
-                      <span className={`font-medium ${getVarianceColor(forecast.variance)}`}>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Variance</span>
+                      <span className={`form-label ${getVarianceColor(forecast.variance)}`}>
                         {formatPercentage(forecast.variance || 0)}
                       </span>
                     </div>
                   )}
                   
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Period</span>
-                    <span className="font-medium">{formatDate(forecast.start_date)} - {formatDate(forecast.end_date)}</span>
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Period</span>
+                    <span className="form-label">{formatDate(forecast.start_date)} - {formatDate(forecast.end_date)}</span>
                   </div>
                   
                   {forecast.assumptions && (
-                    <div className="text-sm text-foreground/70">
-                      <span className="font-medium">Assumptions:</span> {forecast.assumptions.length > 100 
+                    <div className="text-body-sm color-foreground/70">
+                      <span className="form-label">Assumptions:</span> {forecast.assumptions.length > 100 
                         ? `${forecast.assumptions.substring(0, 100)}...`
                         : forecast.assumptions
                       }
@@ -594,9 +594,9 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
         {/* Empty State */}
         {forecasts.length === 0 && (
           <Card className="p-12 text-center">
-            <BarChart3 className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No forecasts found</h3>
-            <p className="text-foreground/70 mb-4">Create your first financial forecast to start planning</p>
+            <BarChart3 className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No forecasts found</h3>
+            <p className="color-foreground/70 mb-4">Create your first financial forecast to start planning</p>
             <Button onClick={handleCreateForecast}>
               <Plus className="h-4 w-4 mr-2" />
               Create Forecast

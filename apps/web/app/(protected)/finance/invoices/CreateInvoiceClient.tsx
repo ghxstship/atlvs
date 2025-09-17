@@ -189,10 +189,10 @@ export default function CreateInvoiceClient({
         {/* Invoice Overview */}
         <Card className="p-4 bg-primary/10 border-primary/20">
           <div className="flex items-center space-x-3">
-            <FileText className="h-8 w-8 text-primary" />
+            <FileText className="h-8 w-8 color-primary" />
             <div>
-              <h3 className="font-semibold text-primary-foreground">Invoice Creation</h3>
-              <p className="text-sm text-primary/80">
+              <h3 className="text-heading-4 color-primary-foreground">Invoice Creation</h3>
+              <p className="text-body-sm color-primary/80">
                 Create professional invoices with line items and payment terms
               </p>
             </div>
@@ -203,7 +203,7 @@ export default function CreateInvoiceClient({
         <div className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Invoice Number *
               </label>
               <Input
@@ -215,7 +215,7 @@ export default function CreateInvoiceClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -232,7 +232,7 @@ export default function CreateInvoiceClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Invoice Description
             </label>
             <Input
@@ -244,11 +244,11 @@ export default function CreateInvoiceClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Issue Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.issuedDate}
@@ -260,11 +260,11 @@ export default function CreateInvoiceClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Due Date
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.dueDate}
@@ -280,7 +280,7 @@ export default function CreateInvoiceClient({
         {/* Line Items */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium text-foreground">Line Items</h4>
+            <h4 className="form-label color-foreground">Line Items</h4>
             <Button onClick={addLineItem}>
               <Plus className="h-4 w-4 mr-2" />
               Add Item
@@ -292,7 +292,7 @@ export default function CreateInvoiceClient({
               <Card key={item.id} className="p-4">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-end">
                   <div className="md:col-span-5">
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-body-sm form-label color-foreground mb-2">
                       Description
                     </label>
                     <Input
@@ -303,7 +303,7 @@ export default function CreateInvoiceClient({
                   </div>
                   
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-body-sm form-label color-foreground mb-2">
                       Quantity
                     </label>
                     <Input
@@ -316,7 +316,7 @@ export default function CreateInvoiceClient({
                   </div>
                   
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-body-sm form-label color-foreground mb-2">
                       Unit Price
                     </label>
                     <Input
@@ -329,10 +329,10 @@ export default function CreateInvoiceClient({
                   </div>
                   
                   <div className="md:col-span-2">
-                    <label className="block text-sm font-medium text-foreground mb-2">
+                    <label className="block text-body-sm form-label color-foreground mb-2">
                       Total
                     </label>
-                    <div className="px-3 py-2 bg-muted border border-border rounded-md text-sm font-medium">
+                    <div className="px-3 py-2 bg-secondary border border-border rounded-md text-body-sm form-label">
                       {formatCurrency(item.total)}
                     </div>
                   </div>
@@ -344,7 +344,7 @@ export default function CreateInvoiceClient({
                         variant="ghost"
                        
                         onClick={() => removeLineItem(item.id)}
-                        className="text-destructive hover:text-destructive/80"
+                        className="color-destructive hover:color-destructive/80"
                       >
                         <Trash2 className="h-4 w-4" />
                       </Button>
@@ -357,22 +357,22 @@ export default function CreateInvoiceClient({
         </div>
 
         {/* Totals */}
-        <Card className="p-4 bg-muted">
-          <h4 className="font-medium text-foreground mb-4">Invoice Totals</h4>
+        <Card className="p-4 bg-secondary">
+          <h4 className="form-label color-foreground mb-4">Invoice Totals</h4>
           
           <div className="space-y-3">
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-body-sm">
               <span>Subtotal:</span>
-              <span className="font-medium">{formatCurrency(subtotal)}</span>
+              <span className="form-label">{formatCurrency(subtotal)}</span>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Tax Amount
                 </label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                   <Input
                     type="number"
                     value={formData.taxAmount}
@@ -386,11 +386,11 @@ export default function CreateInvoiceClient({
               </div>
               
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Discount Amount
                 </label>
                 <div className="relative">
-                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                  <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                   <Input
                     type="number"
                     value={formData.discountAmount}
@@ -404,16 +404,16 @@ export default function CreateInvoiceClient({
               </div>
             </div>
             
-            <div className="flex justify-between text-lg font-semibold pt-2 border-t border-border">
+            <div className="flex justify-between text-body text-heading-4 pt-2 border-t border-border">
               <span>Total Amount:</span>
-              <span className="text-primary">{formatCurrency(totalAmount)}</span>
+              <span className="color-primary">{formatCurrency(totalAmount)}</span>
             </div>
           </div>
         </Card>
 
         {/* Notes */}
         <div>
-          <label className="block text-sm font-medium text-foreground mb-2">
+          <label className="block text-body-sm form-label color-foreground mb-2">
             Notes
           </label>
           <Textarea
@@ -441,7 +441,7 @@ export default function CreateInvoiceClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (

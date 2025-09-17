@@ -340,10 +340,10 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -353,7 +353,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Uniform & Equipment</h2>
+        <h2 className="text-heading-4 text-heading-4">Uniform & Equipment</h2>
         <Button 
           onClick={() => {
             setEditingItem(null);
@@ -372,32 +372,32 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Package className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Uniform Summary</h3>
+              <Package className="h-5 w-5 color-primary" />
+              <h3 className="text-body text-heading-4">Uniform Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{uniformItems.length}</div>
-                <div className="text-sm text-muted-foreground">Total Items</div>
+                <div className="text-heading-3 text-heading-3 color-primary">{uniformItems.length}</div>
+                <div className="text-body-sm color-muted">Total Items</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-success">
+                <div className="text-heading-3 text-heading-3 color-success">
                   {uniformItems.filter(item => item.is_required).length}
                 </div>
-                <div className="text-sm text-muted-foreground">Required Items</div>
+                <div className="text-body-sm color-muted">Required Items</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-warning">
+                <div className="text-heading-3 text-heading-3 color-warning">
                   {getItemsNeedingReplacement().length}
                 </div>
-                <div className="text-sm text-muted-foreground">Need Replacement</div>
+                <div className="text-body-sm color-muted">Need Replacement</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-secondary">
+                <div className="text-heading-3 text-heading-3 color-secondary">
                   ${calculateTotalValue().toLocaleString()}
                 </div>
-                <div className="text-sm text-muted-foreground">Total Value</div>
+                <div className="text-body-sm color-muted">Total Value</div>
               </div>
             </div>
           </div>
@@ -423,9 +423,9 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
       {filteredItems.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <Shirt className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No Uniform Items</h3>
-            <p className="text-muted-foreground mb-4">
+            <Shirt className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No Uniform Items</h3>
+            <p className="color-muted mb-4">
               Keep track of your uniform items, equipment, and their maintenance schedules.
             </p>
             <Button 
@@ -455,9 +455,9 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                         <IconComponent className={`h-5 w-5 text-${getItemTypeColor(item.item_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold">{item.item_name}</h3>
+                        <h3 className="text-heading-4">{item.item_name}</h3>
                         {item.brand && (
-                          <p className="text-sm text-muted-foreground">{item.brand}</p>
+                          <p className="text-body-sm color-muted">{item.brand}</p>
                         )}
                         <div className="flex items-center gap-2 mt-1">
                           <Badge variant="outline">
@@ -495,41 +495,41 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
 
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                     <div>
-                      <h4 className="text-sm font-medium mb-1">Size & Details</h4>
-                      <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                      <h4 className="text-body-sm form-label mb-1">Size & Details</h4>
+                      <div className="flex items-center gap-1 text-body-sm color-muted">
                         <Ruler className="h-4 w-4" />
                         Size: {item.size}
                       </div>
                       {item.color && (
-                        <p className="text-sm text-muted-foreground">Color: {item.color}</p>
+                        <p className="text-body-sm color-muted">Color: {item.color}</p>
                       )}
                       {item.material && (
-                        <p className="text-sm text-muted-foreground">Material: {item.material}</p>
+                        <p className="text-body-sm color-muted">Material: {item.material}</p>
                       )}
                     </div>
 
                     {(item.purchase_date || item.cost) && (
                       <div>
-                        <h4 className="text-sm font-medium mb-1">Purchase Info</h4>
+                        <h4 className="text-body-sm form-label mb-1">Purchase Info</h4>
                         {item.purchase_date && (
-                          <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1 text-body-sm color-muted">
                             <Calendar className="h-4 w-4" />
                             {new Date(item.purchase_date).toLocaleDateString()}
                           </div>
                         )}
                         {item.cost && (
-                          <p className="text-sm text-muted-foreground">Cost: ${item.cost}</p>
+                          <p className="text-body-sm color-muted">Cost: ${item.cost}</p>
                         )}
                         {item.supplier && (
-                          <p className="text-sm text-muted-foreground">Supplier: {item.supplier}</p>
+                          <p className="text-body-sm color-muted">Supplier: {item.supplier}</p>
                         )}
                       </div>
                     )}
 
                     {item.replacement_due && (
                       <div>
-                        <h4 className="text-sm font-medium mb-1">Replacement</h4>
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                        <h4 className="text-body-sm form-label mb-1">Replacement</h4>
+                        <div className="flex items-center gap-1 text-body-sm color-muted">
                           <Calendar className="h-4 w-4" />
                           Due: {new Date(item.replacement_due).toLocaleDateString()}
                         </div>
@@ -538,16 +538,16 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                   </div>
 
                   {item.care_instructions && (
-                    <div className="mb-4 p-3 bg-muted rounded-lg">
-                      <h4 className="text-sm font-medium mb-1">Care Instructions</h4>
-                      <p className="text-sm text-muted-foreground">{item.care_instructions}</p>
+                    <div className="mb-4 p-3 bg-secondary rounded-lg">
+                      <h4 className="text-body-sm form-label mb-1">Care Instructions</h4>
+                      <p className="text-body-sm color-muted">{item.care_instructions}</p>
                     </div>
                   )}
 
                   {item.notes && (
-                    <div className="mb-4 p-3 bg-muted rounded-lg">
-                      <h4 className="text-sm font-medium mb-1">Notes</h4>
-                      <p className="text-sm text-muted-foreground">{item.notes}</p>
+                    <div className="mb-4 p-3 bg-secondary rounded-lg">
+                      <h4 className="text-body-sm form-label mb-1">Notes</h4>
+                      <p className="text-body-sm color-muted">{item.notes}</p>
                     </div>
                   )}
                 </div>
@@ -683,7 +683,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               {...form.register('is_required')}
               className="rounded border-border"
             />
-            <label htmlFor="is_required" className="text-sm font-medium">
+            <label htmlFor="is_required" className="text-body-sm form-label">
               This is a required uniform item
             </label>
           </div>

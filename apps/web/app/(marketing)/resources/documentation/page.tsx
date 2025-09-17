@@ -110,11 +110,11 @@ export default function DocumentationPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               TECHNICAL
               <br />
-              <span className="bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 DOCUMENTATION
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Everything you need to integrate, customize, and get the most out of GHXSTSHIP. 
               Built by developers who actually use this stuff in production environments.
             </p>
@@ -136,7 +136,7 @@ export default function DocumentationPage() {
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
               <input
                 type="text"
                 placeholder="Search documentation..."
@@ -156,7 +156,7 @@ export default function DocumentationPage() {
           <div className="flex flex-wrap justify-center gap-4">
             {quickLinks.map((link) => (
               <Link key={link.title} href={link.href as any}>
-                <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2">
+                <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2">
                   {link.title}
                   {link.external && <ExternalLink className="ml-1 h-3 w-3" />}
                 </Badge>
@@ -173,7 +173,7 @@ export default function DocumentationPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               DOCUMENTATION SECTIONS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Find exactly what you need, whether you're just getting started or building complex integrations.
             </p>
           </div>
@@ -185,13 +185,13 @@ export default function DocumentationPage() {
                 <Card key={section.id} className="hover:shadow-lg transition-all duration-300 group">
                   <CardContent className="p-8">
                     <div className="flex items-start justify-between mb-6">
-                      <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Icon className="h-8 w-8 text-white" />
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Icon className="h-8 w-8 text-background" />
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="secondary">{section.articles} articles</Badge>
                         {section.isPremium && (
-                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                          <Badge className="bg-warning color-warning-foreground">
                             <Lock className="h-3 w-3 mr-1" />
                             Premium
                           </Badge>
@@ -199,18 +199,18 @@ export default function DocumentationPage() {
                       </div>
                     </div>
                     
-                    <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                    <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                       {section.title}
                     </h3>
-                    <p className="text-muted-foreground mb-6">
+                    <p className="color-muted mb-6">
                       {section.description}
                     </p>
                     
                     <div className="mb-6">
-                      <h4 className="text-sm font-semibold text-foreground mb-3">Popular Topics:</h4>
+                      <h4 className="text-body-sm text-heading-4 color-foreground mb-3">Popular Topics:</h4>
                       <div className="flex flex-wrap gap-2">
                         {section.topics.map((topic) => (
-                          <Badge key={topic} variant="outline" className="text-xs">
+                          <Badge key={topic} variant="outline" className="text-body-sm">
                             {topic}
                           </Badge>
                         ))}
@@ -233,13 +233,13 @@ export default function DocumentationPage() {
       </section>
 
       {/* Popular Documentation */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               POPULAR DOCUMENTATION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               The most accessed and helpful documentation articles from our community.
             </p>
           </div>
@@ -251,11 +251,11 @@ export default function DocumentationPage() {
                   <div className="flex items-center justify-between mb-4">
                     <Badge variant="outline">{doc.category}</Badge>
                     <div className="flex items-center gap-2">
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-body-sm">
                         {doc.popularity}
                       </Badge>
                       {doc.isPremium && (
-                        <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs">
+                        <Badge className="bg-warning color-warning-foreground text-body-sm">
                           <Lock className="h-3 w-3 mr-1" />
                           Premium
                         </Badge>
@@ -263,15 +263,15 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                   
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {doc.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="color-muted mb-4">
                     {doc.description}
                   </p>
                   
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-body-sm color-muted">
                       {doc.readTime} read
                     </span>
                     <Button 
@@ -322,13 +322,13 @@ export default function DocumentationPage() {
             ].map((resource, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <resource.icon className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <resource.icon className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-3 ${typography.cardTitle}`}>
                     {resource.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="color-muted mb-6">
                     {resource.description}
                   </p>
                   <Button 
@@ -345,15 +345,15 @@ export default function DocumentationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-orange-500/5 to-red-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <Code className="h-16 w-16 text-primary mx-auto mb-6" />
+              <Code className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 BUILD WITH GHXSTSHIP
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Get full access to our API documentation, SDKs, and developer resources. 
                 Build integrations that work with real production management workflows.
               </p>
@@ -364,13 +364,13 @@ export default function DocumentationPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline" size="lg">
                     Sign In
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 Free tier available • No credit card required • Rate limits apply
               </p>
             </CardContent>

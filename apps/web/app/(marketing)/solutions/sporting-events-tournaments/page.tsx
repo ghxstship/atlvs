@@ -120,7 +120,7 @@ export default function SportingEventsTournamentsPage() {
                 <Badge variant="outline" className="mb-4">
                   Sporting Events & Tournaments
                 </Badge>
-                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
                   POWER
                   <br />
                   <span className="bg-gradient-to-r from-primary to-success bg-clip-text text-transparent">
@@ -129,7 +129,7 @@ export default function SportingEventsTournamentsPage() {
                   <br />
                   EXCELLENCE
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-heading-4 color-muted">
                   From local tournaments to championship events, GHXSTSHIP empowers sports 
                   organizers to create world-class athletic competitions that inspire athletes, 
                   engage fans, and celebrate sporting excellence.
@@ -138,20 +138,20 @@ export default function SportingEventsTournamentsPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>10M+</div>
-                  <div className="text-sm text-muted-foreground">Athletes Managed</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>10M+</div>
+                  <div className="text-body-sm color-muted">Athletes Managed</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>25,000+</div>
-                  <div className="text-sm text-muted-foreground">Tournaments</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>25,000+</div>
+                  <div className="text-body-sm color-muted">Tournaments</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>500+</div>
-                  <div className="text-sm text-muted-foreground">Sports Covered</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>500+</div>
+                  <div className="text-body-sm color-muted">Sports Covered</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>99.9%</div>
-                  <div className="text-sm text-muted-foreground">Event Success Rate</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>99.9%</div>
+                  <div className="text-body-sm color-muted">Event Success Rate</div>
                 </div>
               </div>
 
@@ -172,14 +172,14 @@ export default function SportingEventsTournamentsPage() {
             {/* Tournament Dashboard Preview */}
             <div className="relative">
               <Card className="bg-background border shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-destructive"></div>
                     <div className="w-3 h-3 rounded-full bg-warning"></div>
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
                       <Activity className="w-3 h-3" />
                       tournament.ghxstship.com
                     </div>
@@ -188,61 +188,61 @@ export default function SportingEventsTournamentsPage() {
 
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>CHAMPIONSHIP 2024</h3>
-                    <Badge variant="outline" className="text-primary border-primary">
+                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>CHAMPIONSHIP 2024</h3>
+                    <Badge variant="outline" className="color-primary border-primary">
                       Live
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Teams</div>
-                      <div className="font-semibold">128</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Teams</div>
+                      <div className="text-heading-4">128</div>
                       <div className="flex items-center gap-1 mt-1">
                         <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                        <span className="text-xs text-primary">Active</span>
+                        <span className="text-body-sm color-primary">Active</span>
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Matches</div>
-                      <div className="font-semibold">127</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Matches</div>
+                      <div className="text-heading-4">127</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="w-3 h-3 bg-success rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Progress</div>
-                      <div className="font-semibold">85%</div>
-                      <div className="w-full bg-muted rounded-full h-1 mt-2">
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Progress</div>
+                      <div className="text-heading-4">85%</div>
+                      <div className="w-full bg-secondary rounded-full h-1 mt-2">
                         <div className="bg-primary h-1 rounded-full w-4/5"></div>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="text-xs font-medium text-muted-foreground">Current Matches</div>
+                    <div className="text-body-sm form-label color-muted">Current Matches</div>
                     {[
                       { match: 'Eagles vs Hawks', venue: 'Stadium A', time: '14:30', status: 'Live' },
                       { match: 'Lions vs Tigers', venue: 'Stadium B', time: '15:00', status: 'Starting' },
                       { match: 'Wolves vs Bears', venue: 'Stadium C', time: '15:30', status: 'Scheduled' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-xs">
+                      <div key={i} className="flex items-center gap-3 text-body-sm">
                         <div className={`w-2 h-2 rounded-full ${
                           item.status === 'Live' ? 'bg-destructive animate-pulse' : 
-                          item.status === 'Starting' ? 'bg-warning' : 'bg-muted-foreground'
+                          item.status === 'Starting' ? 'bg-warning' : 'bg-secondary-foreground'
                         }`}></div>
-                        <span className="font-medium flex-1">{item.match}</span>
-                        <span className="text-muted-foreground">{item.venue}</span>
-                        <span className="text-muted-foreground">{item.time}</span>
+                        <span className="form-label flex-1">{item.match}</span>
+                        <span className="color-muted">{item.venue}</span>
+                        <span className="color-muted">{item.time}</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Trophy className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-medium">Championship Final: Tomorrow 19:00</span>
+                    <Trophy className="w-4 h-4 color-primary" />
+                    <span className="text-body-sm form-label">Championship Final: Tomorrow 19:00</span>
                     <div className="ml-auto">
                       <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
                     </div>
@@ -258,10 +258,10 @@ export default function SportingEventsTournamentsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               SPORTING EVENT CHALLENGES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Athletic competitions demand precision, fairness, and seamless coordination across all aspects.
             </p>
           </div>
@@ -274,14 +274,14 @@ export default function SportingEventsTournamentsPage() {
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-success">
-                        <Icon className="h-6 w-6 text-white" />
+                        <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
-                        <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
-                        <p className="text-muted-foreground mb-4">{challenge.description}</p>
+                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>{challenge.title}</h3>
+                        <p className="color-muted mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
-                          <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
+                          <CheckCircle className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
                         </div>
                       </div>
                     </div>
@@ -294,13 +294,13 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               ATHLETIC COMPETITION PLATFORM
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Everything you need to organize world-class sporting events and tournaments.
             </p>
           </div>
@@ -309,14 +309,14 @@ export default function SportingEventsTournamentsPage() {
             {features.map((feature) => (
               <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{feature.title}</h3>
-                  <p className="text-muted-foreground mb-6">{feature.description}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{feature.title}</h3>
+                  <p className="color-muted mb-6">{feature.description}</p>
                   
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
-                        <span className="text-sm text-foreground">{benefit}</span>
+                        <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                        <span className="text-body-sm color-foreground">{benefit}</span>
                       </div>
                     ))}
                   </div>
@@ -331,10 +331,10 @@ export default function SportingEventsTournamentsPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               CHAMPIONSHIP SUCCESS STORIES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               See how sporting organizations are creating world-class competitions with GHXSTSHIP.
             </p>
           </div>
@@ -346,35 +346,35 @@ export default function SportingEventsTournamentsPage() {
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div>
                       <Badge variant="outline" className="mb-4">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>{study.title}</h3>
+                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-4 uppercase`}>{study.title}</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">CHALLENGE</h4>
-                          <p className="text-foreground">{study.challenge}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">CHALLENGE</h4>
+                          <p className="color-foreground">{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">SOLUTION</h4>
-                          <p className="text-foreground">{study.solution}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">SOLUTION</h4>
+                          <p className="color-foreground">{study.solution}</p>
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-4 uppercase">RESULTS</h4>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-4 uppercase">RESULTS</h4>
                       <div className="space-y-3 mb-6">
                         {study.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
-                            <Star className="h-4 w-4 text-yellow-500 flex-shrink-0" />
-                            <span className="text-sm font-medium text-foreground">{result}</span>
+                            <Star className="h-4 w-4 color-warning flex-shrink-0" />
+                            <span className="text-body-sm form-label color-foreground">{result}</span>
                           </div>
                         ))}
                       </div>
 
                       <blockquote className="border-l-4 border-primary pl-4">
-                        <p className="text-foreground italic mb-2">"{study.testimonial}"</p>
-                        <cite className="text-sm text-muted-foreground">— {study.author}</cite>
+                        <p className="color-foreground italic mb-2">"{study.testimonial}"</p>
+                        <cite className="text-body-sm color-muted">— {study.author}</cite>
                       </blockquote>
                     </div>
                   </div>
@@ -386,13 +386,13 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               SPORTS ECOSYSTEM CONNECTIONS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Connect with sports federations, timing systems, broadcast networks, and athletic organizations.
             </p>
           </div>
@@ -401,11 +401,11 @@ export default function SportingEventsTournamentsPage() {
             {integrations.map((integration) => (
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-green-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Zap className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Zap className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>
-                  <p className="text-xs text-muted-foreground">{integration.category}</p>
+                  <h3 className="text-heading-4 color-foreground mb-1">{integration.name}</h3>
+                  <p className="text-body-sm color-muted">{integration.category}</p>
                 </CardContent>
               </Card>
             ))}
@@ -414,13 +414,13 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500/5 to-green-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO CHAMPION EXCELLENCE?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Join sports organizations using GHXSTSHIP to create world-class tournaments 
               and athletic competitions that inspire athletes and engage fans worldwide.
             </p>

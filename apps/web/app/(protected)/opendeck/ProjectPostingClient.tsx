@@ -190,8 +190,8 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
     <Card className="p-6 hover:shadow-lg transition-shadow">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h3 className="text-lg font-semibold">{project.title}</h3>
-          <p className="text-sm text-muted-foreground">{project.category}</p>
+          <h3 className="text-body text-heading-4">{project.title}</h3>
+          <p className="text-body-sm color-muted">{project.category}</p>
         </div>
         <Badge variant={
           project.status === 'open' ? 'success' : 
@@ -202,11 +202,11 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
         </Badge>
       </div>
 
-      <p className="text-sm line-clamp-3 mb-4">{project.description}</p>
+      <p className="text-body-sm line-clamp-3 mb-4">{project.description}</p>
 
       <div className="space-y-2 mb-4">
-        <div className="flex items-center text-sm">
-          <DollarSign className="h-4 w-4 mr-2 text-muted-foreground" />
+        <div className="flex items-center text-body-sm">
+          <DollarSign className="h-4 w-4 mr-2 color-muted" />
           {project.budget_type === 'fixed' ? 
             `$${project.budget_min?.toLocaleString()} - $${project.budget_max?.toLocaleString()}` :
             project.budget_type === 'hourly' ?
@@ -214,16 +214,16 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             'Budget not specified'
           }
         </div>
-        <div className="flex items-center text-sm">
-          <Calendar className="h-4 w-4 mr-2 text-muted-foreground" />
+        <div className="flex items-center text-body-sm">
+          <Calendar className="h-4 w-4 mr-2 color-muted" />
           {project.duration || 'Timeline flexible'}
         </div>
-        <div className="flex items-center text-sm">
-          <MapPin className="h-4 w-4 mr-2 text-muted-foreground" />
+        <div className="flex items-center text-body-sm">
+          <MapPin className="h-4 w-4 mr-2 color-muted" />
           {project.location_type || 'Remote'}
         </div>
-        <div className="flex items-center text-sm">
-          <Users className="h-4 w-4 mr-2 text-muted-foreground" />
+        <div className="flex items-center text-body-sm">
+          <Users className="h-4 w-4 mr-2 color-muted" />
           {project.proposals?.[0]?.count || 0} proposals
         </div>
       </div>
@@ -264,8 +264,8 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Project Postings</h2>
-          <p className="text-muted-foreground">Manage your project briefs and proposals</p>
+          <h2 className="text-heading-3 text-heading-3">Project Postings</h2>
+          <p className="color-muted">Manage your project briefs and proposals</p>
         </div>
         <Button onClick={() => openProjectDrawer()}>
           <Plus className="h-4 w-4 mr-2" />
@@ -278,7 +278,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
         <div className="flex flex-col md:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
               <Input
                 placeholder="Search projects..."
                 value={searchQuery}
@@ -322,9 +322,9 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       {filteredProjects.length === 0 ? (
         <Card className="p-12 text-center">
           <div className="max-w-md mx-auto">
-            <Paperclip className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">No projects found</h3>
-            <p className="text-muted-foreground mb-4">
+            <Paperclip className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">No projects found</h3>
+            <p className="color-muted mb-4">
               Post your first project to start receiving proposals from vendors
             </p>
             <Button onClick={() => openProjectDrawer()}>
@@ -347,7 +347,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-3">
-                      <h3 className="font-semibold">{project.title}</h3>
+                      <h3 className="text-heading-4">{project.title}</h3>
                       <Badge variant={
                         project.status === 'open' ? 'success' : 
                         project.status === 'in_progress' ? 'warning' : 
@@ -359,8 +359,8 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                         <Badge variant="destructive">Urgent</Badge>
                       )}
                     </div>
-                    <p className="text-sm text-muted-foreground mt-1">{project.description}</p>
-                    <div className="flex items-center gap-4 mt-2 text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted mt-1">{project.description}</p>
+                    <div className="flex items-center gap-4 mt-2 text-body-sm color-muted">
                       <span>{project.category}</span>
                       <span>•</span>
                       <span>{project.proposals?.[0]?.count || 0} proposals</span>
@@ -399,18 +399,18 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       >
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-4">
           <div>
-            <label className="text-sm font-medium">Project Title</label>
+            <label className="text-body-sm form-label">Project Title</label>
             <Input 
               {...register('title')} 
               placeholder="e.g., Stage Design for Music Festival"
             />
             {errors.title && (
-              <p className="text-sm text-destructive mt-1">{errors.title.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.title.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium">Category</label>
+            <label className="text-body-sm form-label">Category</label>
             <Select 
               value={watch('category')} 
               onValueChange={(value) => setValue('category', value)}
@@ -425,37 +425,37 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               </SelectContent>
             </Select>
             {errors.category && (
-              <p className="text-sm text-destructive mt-1">{errors.category.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.category.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium">Description</label>
+            <label className="text-body-sm form-label">Description</label>
             <Textarea 
               {...register('description')} 
               placeholder="Describe your project requirements in detail..."
               rows={4}
             />
             {errors.description && (
-              <p className="text-sm text-destructive mt-1">{errors.description.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.description.message}</p>
             )}
           </div>
 
           <div>
-            <label className="text-sm font-medium">Scope of Work</label>
+            <label className="text-body-sm form-label">Scope of Work</label>
             <Textarea 
               {...register('scope')} 
               placeholder="Define the scope and deliverables..."
               rows={3}
             />
             {errors.scope && (
-              <p className="text-sm text-destructive mt-1">{errors.scope.message}</p>
+              <p className="text-body-sm color-destructive mt-1">{errors.scope.message}</p>
             )}
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-sm font-medium">Budget Type</label>
+              <label className="text-body-sm form-label">Budget Type</label>
               <Select 
                 value={watch('budget_type')} 
                 onValueChange={(value) => setValue('budget_type', value as any)}
@@ -472,7 +472,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             </div>
 
             <div>
-              <label className="text-sm font-medium">Experience Level</label>
+              <label className="text-body-sm form-label">Experience Level</label>
               <Select 
                 value={watch('experience_level')} 
                 onValueChange={(value) => setValue('experience_level', value as any)}
@@ -492,7 +492,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           {watch('budget_type') !== 'not_specified' && (
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   {watch('budget_type') === 'hourly' ? 'Min Rate' : 'Min Budget'}
                 </label>
                 <Input 
@@ -502,7 +502,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                 />
               </div>
               <div>
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   {watch('budget_type') === 'hourly' ? 'Max Rate' : 'Max Budget'}
                 </label>
                 <Input 
@@ -520,7 +520,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               {...register('is_urgent')}
               className="rounded border-border"
             />
-            <label className="text-sm">Mark as urgent project</label>
+            <label className="text-body-sm">Mark as urgent project</label>
           </div>
 
           <div className="flex justify-end space-x-2 pt-4 border-t">

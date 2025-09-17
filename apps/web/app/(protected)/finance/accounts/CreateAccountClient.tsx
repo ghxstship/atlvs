@@ -129,10 +129,10 @@ export default function CreateAccountClient({
         {/* Account Overview */}
         <Card className="p-4 bg-primary/5 border-primary/20">
           <div className="flex items-center space-x-3">
-            <Building2 className="h-8 w-8 text-primary" />
+            <Building2 className="h-8 w-8 color-primary" />
             <div>
-              <h3 className="font-semibold text-primary">Account Management</h3>
-              <p className="text-sm text-primary/80">
+              <h3 className="text-heading-4 color-primary">Account Management</h3>
+              <p className="text-body-sm color-primary/80">
                 Add financial accounts to track balances and transactions
               </p>
             </div>
@@ -142,7 +142,7 @@ export default function CreateAccountClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Account Name *
             </label>
             <Input
@@ -154,7 +154,7 @@ export default function CreateAccountClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Description
             </label>
             <Textarea
@@ -167,11 +167,11 @@ export default function CreateAccountClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Account Type *
               </label>
               <div className="relative">
-                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground/50">
+                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 color-foreground/50">
                   {getAccountIcon(formData.kind)}
                 </div>
                 <Select
@@ -187,7 +187,7 @@ export default function CreateAccountClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -205,14 +205,14 @@ export default function CreateAccountClient({
 
           {/* Bank-specific fields */}
           {shouldShowBankFields && (
-            <div className="space-y-4 p-4 bg-muted/50 rounded-lg border">
-              <h4 className="font-medium text-foreground flex items-center space-x-2">
+            <div className="space-y-4 p-4 bg-secondary/50 rounded-lg border">
+              <h4 className="form-label color-foreground flex items-center space-x-2">
                 <Building2 className="h-4 w-4" />
                 <span>Bank Details</span>
               </h4>
               
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">
+                <label className="block text-body-sm form-label color-foreground mb-2">
                   Bank Name
                 </label>
                 <Input
@@ -224,7 +224,7 @@ export default function CreateAccountClient({
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Account Number
                   </label>
                   <Input
@@ -233,13 +233,13 @@ export default function CreateAccountClient({
                     placeholder="****1234"
                     type="password"
                   />
-                  <p className="text-xs text-foreground/60 mt-1">
+                  <p className="text-body-sm color-foreground/60 mt-1">
                     Last 4 digits for identification
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Routing Number
                   </label>
                   <Input
@@ -255,19 +255,19 @@ export default function CreateAccountClient({
 
         {/* Account Preview */}
         {formData.name && (
-          <Card className="p-4 bg-muted/50">
-            <h4 className="font-medium text-foreground mb-2">Account Preview</h4>
+          <Card className="p-4 bg-secondary/50">
+            <h4 className="form-label color-foreground mb-2">Account Preview</h4>
             <div className="flex items-center space-x-3">
-              <div className="text-foreground/70">
+              <div className="color-foreground/70">
                 {getAccountIcon(formData.kind)}
               </div>
               <div>
-                <p className="font-medium text-foreground">{formData.name}</p>
-                <p className="text-sm text-foreground/70 capitalize">
+                <p className="form-label color-foreground">{formData.name}</p>
+                <p className="text-body-sm color-foreground/70 capitalize">
                   {formData.kind.replace('_', ' ')} • {formData.currency}
                 </p>
                 {formData.bankName && (
-                  <p className="text-xs text-foreground/60">{formData.bankName}</p>
+                  <p className="text-body-sm color-foreground/60">{formData.bankName}</p>
                 )}
               </div>
             </div>
@@ -291,7 +291,7 @@ export default function CreateAccountClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Adding...</span>
               </div>
             ) : (

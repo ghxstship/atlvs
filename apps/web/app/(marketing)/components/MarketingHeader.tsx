@@ -42,7 +42,7 @@ export function MarketingHeader() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <div className="flex items-center">
-              <span className={`text-2xl font-bold tracking-tight text-foreground ${anton.className}`}>
+              <span className="text-display color-primary">
                 GHXSTSHIP
               </span>
             </div>
@@ -62,9 +62,8 @@ export function MarketingHeader() {
                   <a
                     href={item.href}
                     className={cn(
-                      "text-sm font-medium transition-colors hover:text-primary uppercase",
-                      anton.className,
-                      pathname === item.href ? "text-primary" : "text-muted-foreground"
+                      "nav-link",
+                      pathname === item.href ? "color-primary" : "color-muted"
                     )}
                   >
                     {item.label}
@@ -76,7 +75,7 @@ export function MarketingHeader() {
 
           {/* Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <Link href="/login">
+            <Link href="/auth/signin">
               <Button>
                 Sign In
               </Button>

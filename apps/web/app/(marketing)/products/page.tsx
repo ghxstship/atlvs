@@ -41,7 +41,7 @@ const products = [
       { label: 'Time Saved', value: '40%' },
       { label: 'Client Satisfaction', value: '98%' },
     ],
-    gradient: 'from-blue-500 to-cyan-500',
+    gradient: 'from-primary to-accent',
     href: '/products/atlvs',
     ctaText: 'Explore ATLVS',
   },
@@ -70,7 +70,7 @@ const products = [
       { label: 'Success Rate', value: '94%' },
       { label: 'Countries', value: '50+' },
     ],
-    gradient: 'from-purple-500 to-pink-500',
+    gradient: 'from-primary to-accent',
     href: '/products/opendeck',
     ctaText: 'Explore OPENDECK',
   },
@@ -115,7 +115,7 @@ export default function ProductsPage() {
                         <h2 className={typography.sectionTitle}>{product.name}</h2>
                         <Badge variant="secondary">Enterprise Ready</Badge>
                       </div>
-                      <p className={`mb-4 text-primary ${typography.cardSubtitle}`}>{product.tagline}</p>
+                      <p className={`mb-4 color-primary ${typography.cardSubtitle}`}>{product.tagline}</p>
                       <p className={typography.bodyLarge}>{product.longDescription}</p>
                     </div>
 
@@ -126,11 +126,11 @@ export default function ProductsPage() {
                         return (
                           <div key={feature.label} className="flex items-start gap-3">
                             <div className={`p-2 rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10 flex-shrink-0`}>
-                              <Icon className="h-5 w-5 text-primary" />
+                              <Icon className="h-5 w-5 color-primary" />
                             </div>
                             <div>
-                              <div className="font-semibold text-foreground">{feature.label}</div>
-                              <div className="text-sm text-muted-foreground">{feature.description}</div>
+                              <div className="text-heading-4 color-foreground">{feature.label}</div>
+                              <div className="text-body-sm color-muted">{feature.description}</div>
                             </div>
                           </div>
                         );
@@ -139,12 +139,12 @@ export default function ProductsPage() {
 
                     {/* Benefits */}
                     <div>
-                      <h3 className="font-semibold text-foreground mb-3">Key Benefits</h3>
+                      <h3 className="text-heading-4 color-foreground mb-3">Key Benefits</h3>
                       <div className="space-y-2">
                         {product.benefits.map((benefit) => (
                           <div key={benefit} className="flex items-center gap-3">
-                            <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                            <span className="text-sm text-muted-foreground">{benefit}</span>
+                            <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                            <span className="text-body-sm color-muted">{benefit}</span>
                           </div>
                         ))}
                       </div>
@@ -172,16 +172,16 @@ export default function ProductsPage() {
                   <Card className="bg-gradient-to-br from-muted/30 to-muted/10">
                     <CardContent className="p-8">
                       <div className={`h-2 bg-gradient-to-r ${product.gradient} rounded-full mb-6`}></div>
-                      <h3 className="font-title text-2xl font-bold mb-6 text-center">
+                      <h3 className="font-title text-heading-3 text-heading-3 mb-6 text-center">
                         {product.name} by the Numbers
                       </h3>
                       <div className="grid grid-cols-2 gap-6">
                         {product.stats.map((stat) => (
                           <div key={stat.label} className="text-center">
-                            <div className="font-title text-3xl font-bold text-foreground mb-2">
+                            <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                               {stat.value}
                             </div>
-                            <div className="text-sm text-muted-foreground">{stat.label}</div>
+                            <div className="text-body-sm color-muted">{stat.label}</div>
                           </div>
                         ))}
                       </div>
@@ -195,13 +195,13 @@ export default function ProductsPage() {
       </section>
 
       {/* Integration Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               BETTER TOGETHER
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               When used together, ATLVS and OPENDECK create a unified ecosystem where project management 
               meets talent acquisition, enabling unprecedented efficiency and collaboration.
             </p>
@@ -210,40 +210,40 @@ export default function ProductsPage() {
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8 lg:p-12">
               <div className="flex items-center justify-center gap-6 mb-8">
-                <div className="font-title text-2xl font-bold">ATLVS</div>
+                <div className="font-title text-heading-3 text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-                  <Zap className="h-6 w-6 text-primary" />
+                  <Zap className="h-6 w-6 color-primary" />
                   <div className="w-12 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
                 </div>
-                <div className="font-title text-2xl font-bold">OPENDECK</div>
+                <div className="font-title text-heading-3 text-heading-3">OPENDECK</div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <Users className="h-6 w-6 text-primary" />
+                    <Users className="h-6 w-6 color-primary" />
                   </div>
-                  <h3 className="font-semibold mb-2">Unified Teams</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-2">Unified Teams</h3>
+                  <p className="text-body-sm color-muted">
                     Seamlessly integrate external talent into your project workflows
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-4">
-                    <BarChart3 className="h-6 w-6 text-accent" />
+                    <BarChart3 className="h-6 w-6 color-accent" />
                   </div>
-                  <h3 className="font-semibold mb-2">Shared Analytics</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-2">Shared Analytics</h3>
+                  <p className="text-body-sm color-muted">
                     Get comprehensive insights across projects and marketplace activities
                   </p>
                 </div>
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-success/10 mb-4">
-                    <Zap className="h-6 w-6 text-success" />
+                    <Zap className="h-6 w-6 color-success" />
                   </div>
-                  <h3 className="font-semibold mb-2">Instant Scaling</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-2">Instant Scaling</h3>
+                  <p className="text-body-sm color-muted">
                     Scale your team up or down based on project demands
                   </p>
                 </div>

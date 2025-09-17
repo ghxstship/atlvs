@@ -152,13 +152,13 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'venue': return 'bg-secondary/10 text-secondary-foreground';
-      case 'office': return 'bg-primary/10 text-primary-foreground';
-      case 'warehouse': return 'bg-muted/50 text-muted-foreground';
-      case 'studio': return 'bg-accent/50 text-accent-foreground';
-      case 'outdoor': return 'bg-success/10 text-success-foreground';
+      case 'venue': return 'bg-secondary/10 color-secondary-foreground';
+      case 'office': return 'bg-primary/10 color-primary-foreground';
+      case 'warehouse': return 'bg-secondary/50 color-muted';
+      case 'studio': return 'bg-accent/50 color-accent-foreground';
+      case 'outdoor': return 'bg-success/10 color-success-foreground';
       case 'virtual': return 'bg-info/10 text-info-foreground';
-      default: return 'bg-muted/50 text-muted-foreground';
+      default: return 'bg-secondary/50 color-muted';
     }
   };
 
@@ -169,7 +169,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse text-body-sm">
         <thead>
           <tr className="sticky top-0">
             <th className="border-b p-2 text-left">Location</th>
@@ -184,7 +184,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-2">
                 <div className="flex items-center gap-2">
-                  <MapPin className="w-4 h-4 text-primary" />
+                  <MapPin className="w-4 h-4 color-primary" />
                   {r.name}
                 </div>
               </td>
@@ -193,7 +193,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                   {r.type}
                 </Badge>
               </td>
-              <td className="border-b p-2 text-sm text-muted-foreground">
+              <td className="border-b p-2 text-body-sm color-muted">
                 {formatAddress(r)}
               </td>
               <td className="border-b p-2">
@@ -218,33 +218,33 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
         width="xl"
       >
         <div className="flex items-center gap-2 border-b pb-2 mb-3" role="tablist">
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
 
         {tab === 'details' && (
-          <div className="space-y-3 text-sm">
-            <div><span className="font-medium">Name:</span> {current?.name}</div>
+          <div className="space-y-3 text-body-sm">
+            <div><span className="form-label">Name:</span> {current?.name}</div>
             <div className="flex items-center gap-2">
-              <span className="font-medium">Type:</span>
+              <span className="form-label">Type:</span>
               <Badge className={getTypeColor(current?.type || '')}>
                 {current?.type}
               </Badge>
             </div>
-            <div><span className="font-medium">Address:</span> {formatAddress(current!)}</div>
-            <div><span className="font-medium">Capacity:</span> {current?.capacity || 'Not specified'}</div>
-            <div><span className="font-medium">Project:</span> {current?.project?.name || 'No project assigned'}</div>
+            <div><span className="form-label">Address:</span> {formatAddress(current!)}</div>
+            <div><span className="form-label">Capacity:</span> {current?.capacity || 'Not specified'}</div>
+            <div><span className="form-label">Project:</span> {current?.project?.name || 'No project assigned'}</div>
           </div>
         )}
 
         {tab === 'edit' && current && (
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-1">
-              <label htmlFor="name" className="text-sm font-medium">Location Name</label>
+              <label htmlFor="name" className="text-body-sm form-label">Location Name</label>
               <input 
                 id="name" 
                 name="name" 
@@ -253,11 +253,11 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.name} 
               />
-              {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
+              {form.formState.errors.name ? <div className="text-body-sm color-destructive">{String(form.formState.errors.name.message)}</div> : null}
             </div>
             
             <div className="grid gap-1">
-              <label htmlFor="type" className="text-sm font-medium">Type</label>
+              <label htmlFor="type" className="text-body-sm form-label">Type</label>
               <select 
                 id="type" 
                 name="type" 
@@ -276,7 +276,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="address" className="text-sm font-medium">Address</label>
+              <label htmlFor="address" className="text-body-sm form-label">Address</label>
               <input 
                 id="address" 
                 name="address" 
@@ -288,7 +288,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
 
             <div className="grid grid-cols-2 gap-3">
               <div className="grid gap-1">
-                <label htmlFor="city" className="text-sm font-medium">City</label>
+                <label htmlFor="city" className="text-body-sm form-label">City</label>
                 <input 
                   id="city" 
                   name="city" 
@@ -299,7 +299,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="state" className="text-sm font-medium">State/Province</label>
+                <label htmlFor="state" className="text-body-sm form-label">State/Province</label>
                 <input 
                   id="state" 
                   name="state" 
@@ -312,7 +312,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
 
             <div className="grid grid-cols-2 gap-3">
               <div className="grid gap-1">
-                <label htmlFor="country" className="text-sm font-medium">Country</label>
+                <label htmlFor="country" className="text-body-sm form-label">Country</label>
                 <input 
                   id="country" 
                   name="country" 
@@ -323,7 +323,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="capacity" className="text-sm font-medium">Capacity</label>
+                <label htmlFor="capacity" className="text-body-sm form-label">Capacity</label>
                 <input 
                   id="capacity" 
                   name="capacity" 
@@ -335,7 +335,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               </div>
             </div>
 
-            <div className="text-xs opacity-70">{form.formState.isDirty ? 'Unsaved changes' : 'All changes saved'}</div>
+            <div className="text-body-sm opacity-70">{form.formState.isDirty ? 'Unsaved changes' : 'All changes saved'}</div>
           </form>
         )}
 
@@ -345,12 +345,12 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               <textarea name="body" className="min-h-16 w-full rounded border p-2" placeholder="Add a comment..." />
               <Button type="submit" variant="primary">Post</Button>
             </form>
-            {loadingComments ? <div className="text-sm opacity-70">Loading comments...</div> : (
+            {loadingComments ? <div className="text-body-sm opacity-70">Loading comments...</div> : (
               <ul className="space-y-2">
                 {comments.map(c => (
                   <li key={c.id} className="rounded border p-2">
-                    <div className="text-sm whitespace-pre-wrap">{c.body}</div>
-                    <div className="text-xs opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                    <div className="text-body-sm whitespace-pre-wrap">{c.body}</div>
+                    <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                   </li>
                 ))}
               </ul>
@@ -359,12 +359,12 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
         )}
 
         {tab === 'activity' && (
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-body-sm">
             {loadingActivity ? 'Loading activity...' : (
               <ul className="space-y-1">
                 {activity.map((a, i) => (
                   <li key={i} className="flex items-center justify-between gap-4">
-                    <div className="font-mono text-xs opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                    <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
                     <div className="flex-1">{a.action}</div>
                   </li>
                 ))}

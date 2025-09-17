@@ -161,11 +161,11 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
         <form id="vendor-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <Building2 className="h-5 w-5 text-primary" />
+              <Building2 className="h-5 w-5 color-primary" />
             </div>
             <div>
-              <h3 className="font-medium">Vendor Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Vendor Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Add a new vendor to your procurement system
               </p>
             </div>
@@ -173,7 +173,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
 
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Vendor Name *
               </label>
               <Input
@@ -184,7 +184,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Contact Person
               </label>
               <Input
@@ -194,7 +194,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Status
               </label>
               <select
@@ -208,7 +208,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Email
               </label>
               <Input
@@ -220,7 +220,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Phone
               </label>
               <Input
@@ -230,7 +230,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Website
               </label>
               <Input
@@ -241,7 +241,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Tax ID
               </label>
               <Input
@@ -251,7 +251,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Payment Terms
               </label>
               <Input
@@ -261,7 +261,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Rating (1-5)
               </label>
               <select
@@ -278,7 +278,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Address
               </label>
               <Textarea
@@ -289,7 +289,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -300,7 +300,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
             </div>
 
             <div className="col-span-2">
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Notes
               </label>
               <Textarea

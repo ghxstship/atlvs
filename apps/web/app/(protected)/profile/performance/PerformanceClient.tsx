@@ -300,7 +300,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-warning fill-current' : 'text-muted-foreground'}`}
+        className={`h-4 w-4 ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
       />
     ));
   };
@@ -322,10 +322,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -335,7 +335,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Performance Reviews</h2>
+        <h2 className="text-heading-4 text-heading-4">Performance Reviews</h2>
         <Button 
           onClick={() => {
             setEditingReview(null);
@@ -354,27 +354,27 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Performance Summary</h3>
+              <BarChart3 className="h-5 w-5 color-primary" />
+              <h3 className="text-body text-heading-4">Performance Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">{calculateAverageRating()}</div>
-                <div className="text-sm text-muted-foreground">Average Rating</div>
+                <div className="text-heading-3 text-heading-3 color-primary">{calculateAverageRating()}</div>
+                <div className="text-body-sm color-muted">Average Rating</div>
                 <div className="flex justify-center mt-1">
                   {renderStars(Math.round(parseFloat(calculateAverageRating())))}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-success">{reviews.length}</div>
-                <div className="text-sm text-muted-foreground">Total Reviews</div>
+                <div className="text-heading-3 text-heading-3 color-success">{reviews.length}</div>
+                <div className="text-body-sm color-muted">Total Reviews</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-secondary">
+                <div className="text-heading-3 text-heading-3 color-secondary">
                   {reviews.filter(r => r.overall_rating >= 4).length}
                 </div>
-                <div className="text-sm text-muted-foreground">Excellent Reviews</div>
+                <div className="text-body-sm color-muted">Excellent Reviews</div>
               </div>
             </div>
           </div>
@@ -384,9 +384,9 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
       {reviews.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <TrendingUp className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No Performance Reviews</h3>
-            <p className="text-muted-foreground mb-4">
+            <TrendingUp className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No Performance Reviews</h3>
+            <p className="color-muted mb-4">
               Track your professional growth and achievements with performance reviews.
             </p>
             <Button 
@@ -408,11 +408,11 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Award className="h-5 w-5 text-primary" />
+                      <Award className="h-5 w-5 color-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">{review.review_period}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="text-heading-4">{review.review_period}</h3>
+                      <p className="text-body-sm color-muted">
                         Reviewed by {review.reviewer_name}
                         {review.reviewer_title && ` (${review.reviewer_title})`}
                       </p>
@@ -448,16 +448,16 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 {/* Performance Areas */}
                 {review.performance_areas.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium mb-2">Performance Areas</h4>
+                    <h4 className="text-body-sm form-label mb-2">Performance Areas</h4>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                       {review.performance_areas.map((area, index) => (
-                        <div key={index} className="flex items-center justify-between p-2 bg-muted rounded">
-                          <span className="text-sm font-medium">{area.area}</span>
+                        <div key={index} className="flex items-center justify-between p-2 bg-secondary rounded">
+                          <span className="text-body-sm form-label">{area.area}</span>
                           <div className="flex items-center gap-2">
                             <div className="flex items-center gap-1">
                               {renderStars(area.rating)}
                             </div>
-                            <span className="text-sm text-muted-foreground">{area.rating}/5</span>
+                            <span className="text-body-sm color-muted">{area.rating}/5</span>
                           </div>
                         </div>
                       ))}
@@ -468,7 +468,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 {/* Strengths */}
                 {review.strengths.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium mb-2">Strengths</h4>
+                    <h4 className="text-body-sm form-label mb-2">Strengths</h4>
                     <div className="flex flex-wrap gap-2">
                       {review.strengths.map((strength, index) => (
                         <Badge key={index} variant="success">
@@ -482,7 +482,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 {/* Areas for Improvement */}
                 {review.areas_for_improvement.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium mb-2">Areas for Improvement</h4>
+                    <h4 className="text-body-sm form-label mb-2">Areas for Improvement</h4>
                     <div className="flex flex-wrap gap-2">
                       {review.areas_for_improvement.map((area, index) => (
                         <Badge key={index} variant="warning">
@@ -497,10 +497,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   {review.goals_achieved.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-medium mb-2">Goals Achieved</h4>
+                      <h4 className="text-body-sm form-label mb-2">Goals Achieved</h4>
                       <ul className="list-disc list-inside space-y-1">
                         {review.goals_achieved.map((goal, index) => (
-                          <li key={index} className="text-sm text-muted-foreground">
+                          <li key={index} className="text-body-sm color-muted">
                             {goal}
                           </li>
                         ))}
@@ -510,10 +510,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   
                   {review.goals_for_next_period.length > 0 && (
                     <div>
-                      <h4 className="text-sm font-medium mb-2">Goals for Next Period</h4>
+                      <h4 className="text-body-sm form-label mb-2">Goals for Next Period</h4>
                       <ul className="list-disc list-inside space-y-1">
                         {review.goals_for_next_period.map((goal, index) => (
-                          <li key={index} className="text-sm text-muted-foreground">
+                          <li key={index} className="text-body-sm color-muted">
                             {goal}
                           </li>
                         ))}
@@ -523,13 +523,13 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                 </div>
 
                 {review.additional_comments && (
-                  <div className="mb-4 p-3 bg-muted rounded-lg">
-                    <h4 className="text-sm font-medium mb-1">Additional Comments</h4>
-                    <p className="text-sm text-muted-foreground">{review.additional_comments}</p>
+                  <div className="mb-4 p-3 bg-secondary rounded-lg">
+                    <h4 className="text-body-sm form-label mb-1">Additional Comments</h4>
+                    <p className="text-body-sm color-muted">{review.additional_comments}</p>
                   </div>
                 )}
 
-                <div className="flex items-center justify-between text-sm text-muted-foreground">
+                <div className="flex items-center justify-between text-body-sm color-muted">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-4 w-4" />
                     Review Date: {new Date(review.review_date).toLocaleDateString()}
@@ -605,7 +605,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
 
           {/* Strengths */}
           <div>
-            <label className="block text-sm font-medium mb-2">Strengths</label>
+            <label className="block text-body-sm form-label mb-2">Strengths</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add a strength"
@@ -626,7 +626,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeStrength(strength)}
-                    className="ml-1 text-destructive hover:text-destructive/80"
+                    className="ml-1 color-destructive hover:color-destructive/80"
                   >
                     ×
                   </button>
@@ -637,7 +637,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
 
           {/* Areas for Improvement */}
           <div>
-            <label className="block text-sm font-medium mb-2">Areas for Improvement</label>
+            <label className="block text-body-sm form-label mb-2">Areas for Improvement</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add an area for improvement"
@@ -658,7 +658,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                   <button
                     type="button"
                     onClick={() => removeImprovement(improvement)}
-                    className="ml-1 text-destructive hover:text-destructive/80"
+                    className="ml-1 color-destructive hover:color-destructive/80"
                   >
                     ×
                   </button>
@@ -669,7 +669,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
 
           {/* Goals Achieved */}
           <div>
-            <label className="block text-sm font-medium mb-2">Goals Achieved</label>
+            <label className="block text-body-sm form-label mb-2">Goals Achieved</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add a goal that was achieved"
@@ -681,12 +681,12 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
             </div>
             <div className="space-y-2">
               {form.watch('goals_achieved').map((goal, index) => (
-                <div key={index} className="flex items-center justify-between p-2 bg-muted rounded">
-                  <span className="text-sm">{goal}</span>
+                <div key={index} className="flex items-center justify-between p-2 bg-secondary rounded">
+                  <span className="text-body-sm">{goal}</span>
                   <button
                     type="button"
                     onClick={() => removeGoalAchieved(goal)}
-                    className="text-destructive hover:text-destructive/80"
+                    className="color-destructive hover:color-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>
@@ -697,7 +697,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
 
           {/* Goals for Next Period */}
           <div>
-            <label className="block text-sm font-medium mb-2">Goals for Next Period</label>
+            <label className="block text-body-sm form-label mb-2">Goals for Next Period</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add a goal for the next period"
@@ -709,12 +709,12 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
             </div>
             <div className="space-y-2">
               {form.watch('goals_for_next_period').map((goal, index) => (
-                <div key={index} className="flex items-center justify-between p-2 bg-muted rounded">
-                  <span className="text-sm">{goal}</span>
+                <div key={index} className="flex items-center justify-between p-2 bg-secondary rounded">
+                  <span className="text-body-sm">{goal}</span>
                   <button
                     type="button"
                     onClick={() => removeNextGoal(goal)}
-                    className="text-destructive hover:text-destructive/80"
+                    className="color-destructive hover:color-destructive/80"
                   >
                     <Trash2 className="h-4 w-4" />
                   </button>

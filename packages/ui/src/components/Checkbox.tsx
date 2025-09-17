@@ -15,11 +15,11 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
 
 const checkboxVariants = {
   variant: {
-    default: 'border-gray-300 text-blue-600 focus:ring-blue-500',
-    primary: 'border-blue-300 text-blue-600 focus:ring-blue-500',
-    success: 'border-green-300 text-green-600 focus:ring-green-500',
-    warning: 'border-yellow-300 text-yellow-600 focus:ring-yellow-500',
-    danger: 'border-red-300 text-red-600 focus:ring-red-500',
+    default: 'border-border text-primary focus:ring-primary',
+    primary: 'border-primary/30 text-primary focus:ring-primary',
+    success: 'border-success/30 text-success focus:ring-success',
+    warning: 'border-warning/30 text-warning focus:ring-warning',
+    danger: 'border-destructive/30 text-destructive focus:ring-destructive',
   },
   size: {
     sm: 'h-4 w-4',
@@ -51,8 +51,8 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     }, [indeterminate]);
 
     const baseClasses = `
-      rounded border-2 bg-white dark:bg-gray-800 
-      focus:ring-2 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900
+      rounded border-2 bg-background 
+      focus:ring-2 focus:ring-offset-2 focus:ring-offset-background
       disabled:opacity-50 disabled:cursor-not-allowed
       transition-all duration-200
       relative cursor-pointer
@@ -65,7 +65,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       baseClasses,
       variantClasses,
       sizeClasses,
-      error && 'border-red-500 focus:ring-red-500',
+      error && 'border-destructive focus:ring-destructive',
       className
     );
 
@@ -85,19 +85,19 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
           baseClasses,
           variantClasses,
           sizeClasses,
-          error && 'border-red-500',
+          error && 'border-destructive',
           'peer-checked:bg-current peer-checked:border-current',
           'peer-indeterminate:bg-current peer-indeterminate:border-current',
           disabled && 'opacity-50 cursor-not-allowed'
         )}>
           {indeterminate ? (
             <Minus 
-              className="text-white dark:text-gray-900" 
+              className="text-primary-foreground" 
               size={iconSize}
             />
           ) : (
             <Check 
-              className="text-white dark:text-gray-900 opacity-0 peer-checked:opacity-100 transition-opacity duration-200" 
+              className="text-primary-foreground opacity-0 peer-checked:opacity-100 transition-opacity duration-200" 
               size={iconSize}
             />
           )}
@@ -113,7 +113,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             {label && (
               <label 
                 className={cn(
-                  'text-sm font-medium text-gray-900 dark:text-gray-100 cursor-pointer',
+                  'text-sm font-medium text-foreground cursor-pointer',
                   disabled && 'opacity-50 cursor-not-allowed'
                 )}
                 onClick={() => !disabled && checkboxRef.current?.click()}
@@ -122,12 +122,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
               </label>
             )}
             {description && (
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {description}
               </p>
             )}
             {error && (
-              <p className="text-sm text-red-600 dark:text-red-400 mt-1">
+              <p className="text-sm text-destructive mt-1">
                 {error}
               </p>
             )}

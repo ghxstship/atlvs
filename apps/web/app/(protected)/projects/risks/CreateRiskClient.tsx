@@ -113,13 +113,13 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           {error && (
-            <div className="p-3 text-sm text-destructive bg-destructive/10 border border-destructive/20 rounded">
+            <div className="p-3 text-body-sm color-destructive bg-destructive/10 border border-destructive/20 rounded">
               {error}
             </div>
           )}
 
           <div className="grid gap-2">
-            <label htmlFor="title" className="text-sm font-medium">
+            <label htmlFor="title" className="text-body-sm form-label">
               Risk Title *
             </label>
             <input
@@ -130,14 +130,14 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
               {...form.register('title')}
             />
             {form.formState.errors.title && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.title.message}
               </div>
             )}
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="description" className="text-sm font-medium">
+            <label htmlFor="description" className="text-body-sm form-label">
               Description
             </label>
             <textarea
@@ -150,7 +150,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="category" className="text-sm font-medium">
+            <label htmlFor="category" className="text-body-sm form-label">
               Category *
             </label>
             <select
@@ -169,7 +169,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
               <option value="legal">Legal</option>
             </select>
             {form.formState.errors.category && (
-              <div className="text-xs text-destructive">
+              <div className="text-body-sm color-destructive">
                 {form.formState.errors.category.message}
               </div>
             )}
@@ -177,7 +177,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
 
           <div className="grid grid-cols-2 gap-4">
             <div className="grid gap-2">
-              <label htmlFor="impact" className="text-sm font-medium">
+              <label htmlFor="impact" className="text-body-sm form-label">
                 Impact *
               </label>
               <select
@@ -194,7 +194,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid gap-2">
-              <label htmlFor="probability" className="text-sm font-medium">
+              <label htmlFor="probability" className="text-body-sm form-label">
                 Probability *
               </label>
               <select
@@ -212,7 +212,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
           </div>
 
           <div className="grid gap-2">
-            <label htmlFor="project_id" className="text-sm font-medium">
+            <label htmlFor="project_id" className="text-body-sm form-label">
               Associated Project
             </label>
             <select

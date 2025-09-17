@@ -217,11 +217,11 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         <form id="shortlist-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <List className="h-5 w-5 text-primary" />
+              <List className="h-5 w-5 color-primary" />
             </div>
             <div>
-              <h3 className="font-medium">Shortlist Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Shortlist Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Create a curated list of candidates for a specific role or project
               </p>
             </div>
@@ -229,7 +229,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Shortlist Name *
               </label>
               <Input
@@ -241,7 +241,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Project
                 </label>
                 <select
@@ -258,7 +258,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Role
                 </label>
                 <select
@@ -277,7 +277,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Status
                 </label>
                 <select
@@ -291,7 +291,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Max Members
                 </label>
                 <Input
@@ -304,7 +304,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -315,22 +315,22 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Tags
               </label>
               <Input
                 {...register('tags')}
                 placeholder="e.g., urgent, experienced, local (comma separated)"
               />
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted mt-1">
                 Enter tags separated by commas
               </p>
             </div>
           </div>
 
           <div className="bg-primary/10 p-4 rounded-lg">
-            <h4 className="font-medium text-primary mb-2">Shortlist Guidelines</h4>
-            <ul className="text-sm text-primary/80 space-y-1">
+            <h4 className="form-label color-primary mb-2">Shortlist Guidelines</h4>
+            <ul className="text-body-sm color-primary/80 space-y-1">
               <li>• Use descriptive names that clearly indicate the purpose</li>
               <li>• Link to specific projects and roles when applicable</li>
               <li>• Set realistic maximum member limits</li>

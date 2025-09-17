@@ -140,11 +140,11 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
        
         footer={
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-destructive" />
-                  <span className="text-destructive">{error}</span>
+                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <span className="color-destructive">{error}</span>
                 </>
               )}
             </div>
@@ -173,7 +173,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
         <form id="create-bid-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-2">
                 Title *
               </label>
               <Input
@@ -185,7 +185,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground mb-2">
                 Description
               </label>
               <Textarea
@@ -198,7 +198,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="opportunityId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="opportunityId" className="block text-body-sm form-label color-foreground mb-2">
                   Opportunity ID *
                 </label>
                 <Input
@@ -210,7 +210,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
               </div>
 
               <div>
-                <label htmlFor="jobId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-2">
                   Job ID (Optional)
                 </label>
                 <Input
@@ -222,7 +222,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
             </div>
 
             <div>
-              <label htmlFor="type" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="type" className="block text-body-sm form-label color-foreground mb-2">
                 Bid Type *
               </label>
               <Select {...register('type')}>
@@ -235,7 +235,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="amount" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="amount" className="block text-body-sm form-label color-foreground mb-2">
                   Amount *
                 </label>
                 <Input
@@ -247,7 +247,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
               </div>
 
               <div>
-                <label htmlFor="currency" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="currency" className="block text-body-sm form-label color-foreground mb-2">
                   Currency
                 </label>
                 <Select {...register('currency')}>
@@ -261,7 +261,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="estimatedDuration" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="estimatedDuration" className="block text-body-sm form-label color-foreground mb-2">
                   Estimated Duration
                 </label>
                 <Input
@@ -271,7 +271,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
               </div>
 
               <div>
-                <label htmlFor="responseDeadline" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="responseDeadline" className="block text-body-sm form-label color-foreground mb-2">
                   Response Deadline
                 </label>
                 <Input
@@ -282,7 +282,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="notes" className="block text-body-sm form-label color-foreground mb-2">
                 Notes
               </label>
               <Textarea

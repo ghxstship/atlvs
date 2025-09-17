@@ -8,10 +8,10 @@ const trustBadges = [
 export function TrustBadges() {
   return (
     <div className="mt-8 pt-8 border-t text-center">
-      <div className="flex flex-wrap justify-center items-center gap-6 text-xs text-muted-foreground">
+      <div className="flex flex-wrap justify-center items-center gap-6 text-body-sm color-muted">
         {trustBadges.map((badge) => (
           <span key={badge} className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            <div className="w-2 h-2 bg-success rounded-full"></div>
             {badge}
           </span>
         ))}

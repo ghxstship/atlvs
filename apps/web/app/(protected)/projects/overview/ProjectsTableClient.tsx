@@ -108,12 +108,12 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse text-body-sm">
         <thead>
           <tr className="sticky top-0">
-            <th className="border-b p-2 text-left">{labels.name}</th>
-            <th className="border-b p-2 text-left">{labels.status}</th>
-            <th className="border-b p-2 text-left">{labels.startsAt}</th>
+            <th className="border-b p-2 text-left form-label">{labels.name}</th>
+            <th className="border-b p-2 text-left form-label">{labels.status}</th>
+            <th className="border-b p-2 text-left form-label">{labels.startsAt}</th>
           </tr>
         </thead>
         <tbody>
@@ -135,38 +135,38 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         width="xl"
       >
         <div className="flex items-center gap-2 border-b pb-2 mb-3" role="tablist" aria-label="Project tabs">
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
 
         {tab === 'details' && (
-          <div className="space-y-2 text-sm">
-            <div><span className="font-medium">{labels.name}:</span> {current?.name}</div>
-            <div><span className="font-medium">{labels.status}:</span> {current?.status}</div>
-            <div><span className="font-medium">{labels.startsAt}:</span> {current?.starts_at ? new Date(current.starts_at).toLocaleString() : '-'}</div>
+          <div className="space-y-2 text-body-sm">
+            <div><span className="form-label">{labels.name}:</span> {current?.name}</div>
+            <div><span className="form-label">{labels.status}:</span> {current?.status}</div>
+            <div><span className="form-label">{labels.startsAt}:</span> {current?.starts_at ? new Date(current.starts_at).toLocaleString() : '-'}</div>
           </div>
         )}
 
         {tab === 'edit' && current && (
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-1">
-              <label htmlFor="name" className="text-sm">{labels.name}</label>
+              <label htmlFor="name" className="form-label">{labels.name}</label>
               <input id="name" name="name" className="rounded border px-2 py-1" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
-              {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
+              {form.formState.errors.name ? <div className="form-error">{String(form.formState.errors.name.message)}</div> : null}
             </div>
             <div className="grid gap-1">
-              <label htmlFor="status" className="text-sm">{labels.status}</label>
+              <label htmlFor="status" className="form-label">{labels.status}</label>
               <input id="status" name="status" className="rounded border px-2 py-1" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
             </div>
             <div className="grid gap-1">
-              <label htmlFor="starts_at" className="text-sm">{labels.startsAt}</label>
+              <label htmlFor="starts_at" className="form-label">{labels.startsAt}</label>
               <input id="starts_at" name="starts_at" type="date" className="rounded border px-2 py-1" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
             </div>
-            <div className="text-xs opacity-70">{form.formState.isDirty ? 'Unsaved changes will autosave…' : 'All changes saved'}</div>
+            <div className="form-helper">{form.formState.isDirty ? 'Unsaved changes will autosave…' : 'All changes saved'}</div>
           </form>
         )}
 
@@ -176,12 +176,12 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
               <textarea name="body" className="min-h-16 w-full rounded border p-2" placeholder="Write a comment…" />
               <Button type="submit" variant="primary">Post</Button>
             </form>
-            {loadingComments ? <div className="text-sm opacity-70">Loading…</div> : (
+            {loadingComments ? <div className="text-body-sm color-muted">Loading…</div> : (
               <ul className="space-y-2">
                 {comments.map(c => (
                   <li key={c.id} className="rounded border p-2">
-                    <div className="text-sm whitespace-pre-wrap">{c.body}</div>
-                    <div className="text-xs opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                    <div className="text-body-sm whitespace-pre-wrap">{c.body}</div>
+                    <div className="form-helper">{new Date(c.created_at).toLocaleString()}</div>
                   </li>
                 ))}
               </ul>
@@ -190,12 +190,12 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         )}
 
         {tab === 'activity' && (
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-body-sm">
             {loadingActivity ? 'Loading…' : (
               <ul className="space-y-1">
                 {activity.map((a, i) => (
                   <li key={i} className="flex items-center justify-between gap-4">
-                    <div className="font-mono text-xs opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                    <div className="text-code form-helper">{new Date(a.occurred_at).toLocaleString()}</div>
                     <div className="flex-1">{a.action}</div>
                   </li>
                 ))}

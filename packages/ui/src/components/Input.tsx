@@ -51,7 +51,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const variantClasses = {
       default: '',
       search: 'pl-10',
-      success: 'border-green-500 focus:border-green-500 focus:ring-green-500/20',
+      success: 'border-success focus:border-success focus:ring-success/20',
       error: 'border-destructive focus:border-destructive focus:ring-destructive/20'
     };
 
@@ -81,7 +81,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {label && (
           <label className="block text-sm font-medium font-body text-foreground mb-2 flex items-center gap-2">
             {label}
-            {variant === 'success' && <CheckCircle2 className="h-4 w-4 text-green-500" />}
+            {variant === 'success' && <CheckCircle2 className="h-4 w-4 text-success" />}
             {(variant === 'error' || error) && <AlertCircle className="h-4 w-4 text-destructive" />}
           </label>
         )}

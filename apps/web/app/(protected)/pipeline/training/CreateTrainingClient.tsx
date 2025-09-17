@@ -179,11 +179,11 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
         <form id="training-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-success/10 rounded-lg">
-              <GraduationCap className="h-5 w-5 text-success" />
+              <GraduationCap className="h-5 w-5 color-success" />
             </div>
             <div>
-              <h3 className="font-medium">Training Program Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Training Program Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Create a new training program for your organization
               </p>
             </div>
@@ -191,7 +191,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Training Title *
               </label>
               <Input
@@ -203,7 +203,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Type
                 </label>
                 <select
@@ -219,7 +219,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Format
                 </label>
                 <select
@@ -235,7 +235,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Duration (hours) *
                 </label>
                 <Input
@@ -249,7 +249,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Capacity *
                 </label>
                 <Input
@@ -262,7 +262,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Cost
                 </label>
                 <Input
@@ -278,7 +278,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Start Date *
                 </label>
                 <Input
@@ -289,7 +289,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   End Date
                 </label>
                 <Input
@@ -301,7 +301,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Provider/Instructor
                 </label>
                 <Input
@@ -311,7 +311,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Location
                 </label>
                 <Input
@@ -322,7 +322,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -333,7 +333,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Prerequisites
               </label>
               <Textarea
@@ -350,7 +350,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                   {...register('certification')}
                   className="w-4 h-4"
                 />
-                <label className="text-sm font-medium">
+                <label className="text-body-sm form-label">
                   This training provides certification
                 </label>
               </div>
@@ -358,7 +358,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               {certification && (
                 <div className="grid grid-cols-2 gap-4 pl-6">
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Certification Body
                     </label>
                     <Input
@@ -368,7 +368,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Validity Period (months)
                     </label>
                     <Input
@@ -384,8 +384,8 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
           </div>
 
           <div className="bg-success/5 p-4 rounded-lg">
-            <h4 className="font-medium text-success mb-2">Training Guidelines</h4>
-            <ul className="text-sm text-success/80 space-y-1">
+            <h4 className="form-label color-success mb-2">Training Guidelines</h4>
+            <ul className="text-body-sm color-success/80 space-y-1">
               <li>• Ensure training aligns with organizational safety and compliance requirements</li>
               <li>• Set realistic capacity limits based on venue and format</li>
               <li>• Include detailed prerequisites to ensure participant readiness</li>

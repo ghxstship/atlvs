@@ -1,4 +1,4 @@
-import FeatureGate from '../../components/FeatureGate';
+import FeatureGate from '../../_components/FeatureGate';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
@@ -48,8 +48,8 @@ export default async function OpenDeckLanding() {
           />
         ) : (
           <div className="text-center py-12">
-            <h2 className="text-2xl font-bold mb-4">{t('title')}</h2>
-            <p className="text-muted-foreground">{t('unauthorized')}</p>
+            <h2 className="text-heading-3 text-heading-3 mb-4">{t('title')}</h2>
+            <p className="color-muted">{t('unauthorized')}</p>
           </div>
         )}
       </div>

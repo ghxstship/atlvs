@@ -221,11 +221,11 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
         <form id="network-connection-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-secondary/10 rounded-lg">
-              <Users className="h-5 w-5 text-secondary" />
+              <Users className="h-5 w-5 color-secondary" />
             </div>
             <div>
-              <h3 className="font-medium">Network Connection Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Network Connection Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Document professional relationships within your organization
               </p>
             </div>
@@ -234,7 +234,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Person *
                 </label>
                 <select
@@ -249,12 +249,12 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                   ))}
                 </select>
                 {errors.personId && (
-                  <p className="text-sm text-destructive mt-1">{errors.personId.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.personId.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Connected To *
                 </label>
                 <select
@@ -269,14 +269,14 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                   ))}
                 </select>
                 {errors.connectedPersonId && (
-                  <p className="text-sm text-destructive mt-1">{errors.connectedPersonId.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.connectedPersonId.message}</p>
                 )}
               </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Relationship Type
                 </label>
                 <select
@@ -295,7 +295,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Connection Strength
                 </label>
                 <select
@@ -310,7 +310,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Project Context (Optional)
               </label>
               <select
@@ -327,7 +327,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Notes
               </label>
               <Textarea
@@ -343,15 +343,15 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                 {...register('isPublic')}
                 className="w-4 h-4"
               />
-              <label className="text-sm font-medium">
+              <label className="text-body-sm form-label">
                 Make this connection visible to other team members
               </label>
             </div>
           </div>
 
           <div className="bg-secondary/10 p-4 rounded-lg">
-            <h4 className="font-medium text-secondary mb-2">Network Guidelines</h4>
-            <ul className="text-sm text-secondary/80 space-y-1">
+            <h4 className="form-label color-secondary mb-2">Network Guidelines</h4>
+            <ul className="text-body-sm color-secondary/80 space-y-1">
               <li>• Document meaningful professional relationships</li>
               <li>• Use appropriate relationship types for clarity</li>
               <li>• Consider connection strength based on frequency and depth of interaction</li>

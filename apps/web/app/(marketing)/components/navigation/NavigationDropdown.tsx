@@ -37,9 +37,9 @@ export function NavigationDropdown({
         <button
           onClick={handleToggle}
           className={cn(
-            "flex items-center justify-between w-full px-3 py-2 text-base font-medium rounded-md transition-colors hover:bg-accent hover:text-accent-foreground uppercase",
+            "flex items-center justify-between w-full px-3 py-2 text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground uppercase",
             anton.className,
-            pathname.startsWith(item.href) ? "bg-accent text-accent-foreground" : "text-foreground"
+            pathname.startsWith(item.href) ? "bg-accent color-accent-foreground" : "color-foreground"
           )}
         >
           <span>{item.label}</span>
@@ -57,8 +57,8 @@ export function NavigationDropdown({
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-3 py-2 text-sm rounded-md transition-colors hover:bg-accent hover:text-accent-foreground",
-                  pathname === child.href ? "bg-accent text-accent-foreground" : "text-muted-foreground"
+                  "block px-3 py-2 text-body-sm rounded-md transition-colors hover:bg-accent hover:color-accent-foreground",
+                  pathname === child.href ? "bg-accent color-accent-foreground" : "color-muted"
                 )}
               >
                 {child.label}
@@ -78,9 +78,9 @@ export function NavigationDropdown({
     >
       <button
         className={cn(
-          "flex items-center space-x-1 text-sm font-medium transition-colors hover:text-primary uppercase",
+          "flex items-center space-x-1 text-body-sm form-label transition-colors hover:color-primary uppercase",
           anton.className,
-          pathname.startsWith(item.href) ? "text-primary" : "text-muted-foreground"
+          pathname.startsWith(item.href) ? "color-primary" : "color-muted"
         )}
       >
         <span>{item.label}</span>
@@ -101,8 +101,8 @@ export function NavigationDropdown({
             key={child.href}
             href={child.href}
             className={cn(
-              "block px-3 py-2 text-sm rounded-sm transition-colors hover:bg-accent hover:text-accent-foreground",
-              pathname === child.href ? "bg-accent text-accent-foreground" : "text-popover-foreground"
+              "block px-3 py-2 text-body-sm rounded-sm transition-colors hover:bg-accent hover:color-accent-foreground",
+              pathname === child.href ? "bg-accent color-accent-foreground" : "text-popover-foreground"
             )}
           >
             {child.label}

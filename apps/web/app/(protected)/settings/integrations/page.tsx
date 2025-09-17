@@ -6,7 +6,7 @@ export default function SettingsIntegrationsPage() {
   return (
     <div className="space-y-4">
       <Card title="Settings · Integrations">
-        <div className="text-sm text-foreground/70">Placeholder: Integration connectors and API keys.</div>
+        <div className="text-body-sm color-foreground/70">Placeholder: Integration connectors and API keys.</div>
       </Card>
     </div>
   );

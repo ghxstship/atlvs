@@ -166,11 +166,11 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
         <form id="competency-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-secondary/10 rounded-lg">
-              <Award className="h-5 w-5 text-secondary" />
+              <Award className="h-5 w-5 color-secondary" />
             </div>
             <div>
-              <h3 className="font-medium">Competency Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Competency Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Define a new skill or competency for assessment
               </p>
             </div>
@@ -178,7 +178,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Competency Name *
               </label>
               <Input
@@ -189,7 +189,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Category
               </label>
               <Input
@@ -199,7 +199,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Description
               </label>
               <Textarea
@@ -210,13 +210,13 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
             </div>
 
             <div className="space-y-4">
-              <h4 className="font-medium text-sm">Level Definitions</h4>
-              <p className="text-xs text-muted-foreground">
+              <h4 className="form-label text-body-sm">Level Definitions</h4>
+              <p className="text-body-sm color-muted">
                 Define what each proficiency level means for this competency
               </p>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Beginner Level
                 </label>
                 <Textarea
@@ -227,7 +227,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Intermediate Level
                 </label>
                 <Textarea
@@ -238,7 +238,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Advanced Level
                 </label>
                 <Textarea
@@ -249,7 +249,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Expert Level
                 </label>
                 <Textarea
@@ -262,8 +262,8 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
           </div>
 
           <div className="bg-secondary/10 p-4 rounded-lg">
-            <h4 className="font-medium text-secondary mb-2">Competency Guidelines</h4>
-            <ul className="text-sm text-secondary/80 space-y-1">
+            <h4 className="form-label color-secondary mb-2">Competency Guidelines</h4>
+            <ul className="text-body-sm color-secondary/80 space-y-1">
               <li>• Use clear, specific names that are easily understood</li>
               <li>• Define measurable criteria for each proficiency level</li>
               <li>• Consider both technical skills and soft skills</li>

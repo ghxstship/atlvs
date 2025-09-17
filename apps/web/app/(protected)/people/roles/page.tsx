@@ -33,8 +33,8 @@ export default async function PeopleRolesPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Roles</h1>
-          <p className="text-sm text-muted-foreground">Define organizational roles and responsibilities</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Roles</h1>
+          <p className="text-body-sm color-muted">Define organizational roles and responsibilities</p>
         </div>
         <CreateRoleClient orgId={orgId} />
       </div>

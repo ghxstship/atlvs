@@ -193,11 +193,11 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
         <form id="tracking-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <Truck className="h-5 w-5 text-primary" />
+              <Truck className="h-5 w-5 color-primary" />
             </div>
             <div>
-              <h3 className="font-medium">Tracking Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Tracking Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Add or update shipping and delivery details
               </p>
             </div>
@@ -205,7 +205,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Select Order *
               </label>
               <select
@@ -220,13 +220,13 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 ))}
               </select>
               {errors.order_id && (
-                <p className="text-sm text-destructive mt-1">{errors.order_id.message}</p>
+                <p className="text-body-sm color-destructive mt-1">{errors.order_id.message}</p>
               )}
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Tracking Number *
                 </label>
                 <Input
@@ -237,7 +237,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Shipping Carrier *
                 </label>
                 <Input
@@ -249,7 +249,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Status *
               </label>
               <select
@@ -264,7 +264,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Expected Delivery
                 </label>
                 <Input
@@ -275,7 +275,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
 
               {selectedStatus === 'delivered' && (
                 <div>
-                  <label className="block text-sm font-medium mb-2">
+                  <label className="block text-body-sm form-label mb-2">
                     Actual Delivery
                   </label>
                   <Input
@@ -287,7 +287,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Delivery Address
               </label>
               <Textarea
@@ -298,7 +298,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Shipping Notes
               </label>
               <Textarea
@@ -310,8 +310,8 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
           </div>
 
           <div className="bg-primary/10 p-4 rounded-lg">
-            <h4 className="font-medium text-primary-foreground mb-2">Tracking Guidelines</h4>
-            <ul className="text-sm text-primary/80 space-y-1">
+            <h4 className="form-label color-primary-foreground mb-2">Tracking Guidelines</h4>
+            <ul className="text-body-sm color-primary/80 space-y-1">
               <li>• Enter accurate tracking numbers for shipment monitoring</li>
               <li>• Update status as packages move through delivery process</li>
               <li>• Include delivery address for accurate routing</li>

@@ -177,15 +177,15 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'text-muted-foreground bg-muted';
+        return 'color-muted bg-secondary';
       case 'published':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       case 'distributed':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'completed':
-        return 'text-secondary bg-secondary/10';
+        return 'color-secondary bg-secondary/10';
       default:
-        return 'text-muted-foreground bg-muted';
+        return 'color-muted bg-secondary';
     }
   };
 
@@ -248,7 +248,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Call Sheets Management</h2>
+                <h2 className="text-body text-heading-4">Call Sheets Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Call Sheet
@@ -272,7 +272,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <IconComponent className="h-4 w-4" />
-                      <span className="font-medium">{label}</span>
+                      <span className="form-label">{label}</span>
                     </div>
                     <Badge variant="secondary" className={getStatusColor(status)}>
                       {statusCounts[status] || 0}
@@ -285,7 +285,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
             {/* Upcoming Call Sheets */}
             {upcomingCallSheets.length > 0 && (
               <Card className="p-4 mb-6">
-                <h3 className="font-semibold mb-3 flex items-center gap-2">
+                <h3 className="text-heading-4 mb-3 flex items-center gap-2">
                   <Calendar className="h-4 w-4" />
                   Upcoming Call Sheets
                 </h3>
@@ -293,12 +293,12 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                   {upcomingCallSheets.map((callSheet: any) => (
                     <div
                       key={callSheet.id}
-                      className="flex items-center justify-between p-3 rounded border cursor-pointer hover:bg-muted/50"
+                      className="flex items-center justify-between p-3 rounded border cursor-pointer hover:bg-secondary/50"
                       onClick={() => handleViewCallSheet(callSheet)}
                     >
                       <div>
-                        <div className="font-medium">{callSheet.event_name}</div>
-                        <div className="text-sm text-muted-foreground flex items-center gap-4">
+                        <div className="form-label">{callSheet.event_name}</div>
+                        <div className="text-body-sm color-muted flex items-center gap-4">
                           <span className="flex items-center gap-1">
                             <Calendar className="h-3 w-3" />
                             {new Date(callSheet.call_date).toLocaleDateString()}
@@ -359,13 +359,13 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
               {selectedRecord && (
                 <div className="space-y-4 mt-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Calendar className="h-4 w-4" />
                       <span>
                         {new Date(selectedRecord.call_date).toLocaleDateString()}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Clock className="h-4 w-4" />
                       <span>
                         {selectedRecord.call_time || 'Call time TBD'}
@@ -374,7 +374,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                   </div>
                   
                   {selectedRecord.location && selectedRecord.location !== 'TBD' && (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Users className="h-4 w-4" />
                       <span>{selectedRecord.location}</span>
                     </div>
@@ -388,8 +388,8 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                   
                   {selectedRecord.details && typeof selectedRecord.details === 'object' && (
                     <div className="pt-4 border-t">
-                      <h4 className="font-medium mb-2">Call Sheet Details</h4>
-                      <div className="text-sm text-muted-foreground bg-muted/50 p-3 rounded">
+                      <h4 className="form-label mb-2">Call Sheet Details</h4>
+                      <div className="text-body-sm color-muted bg-secondary/50 p-3 rounded">
                         <pre className="whitespace-pre-wrap">
                           {JSON.stringify(selectedRecord.details, null, 2)}
                         </pre>
@@ -403,9 +403,9 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-8 text-center">
-                <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Call Sheets Yet</h3>
-                <p className="text-muted-foreground mb-4">
+                <FileText className="h-12 w-12 mx-auto mb-4 color-muted" />
+                <h3 className="text-body text-heading-4 mb-2">No Call Sheets Yet</h3>
+                <p className="color-muted mb-4">
                   Create call sheets to organize production schedules and ensure everyone knows when and where to be.
                 </p>
                 <Button onClick={handleCreateCallSheet}>

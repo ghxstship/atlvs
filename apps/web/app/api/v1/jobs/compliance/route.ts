@@ -1,93 +1,28 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { getSupabaseAndServices } from '../../../../../lib/services';
-import type { TenantContext } from '@ghxstship/domain';
-import { authorize } from '@ghxstship/domain';
-import * as Sentry from '@sentry/nextjs';
-import { z } from 'zod';
 
 export const dynamic = 'force-dynamic';
-
-function getTenantContextFromRequest(req: NextRequest, userId?: string): TenantContext {
-  const organizationId = req.headers.get('x-org-id') || '';
-  const projectId = req.headers.get('x-project-id') || undefined;
-  const rolesHeader = req.headers.get('x-roles');
-  const roles = rolesHeader ? (rolesHeader.split(',').map((r) => r.trim()) as any) : [];
-  if (!organizationId) throw new Error('Missing x-org-id header');
-  if (!userId) throw new Error('Unauthenticated');
-  return { organizationId, projectId, userId, roles };
-}
-
-const CreateComplianceSchema = z.object({
-  jobId: z.string().min(1),
-  kind: z.enum(['insurance', 'license', 'certification', 'permit', 'safety', 'environmental', 'tax', 'other']),
-  title: z.string().min(1),
-  description: z.string().optional(),
-  requiredBy: z.string().optional(),
-  dueAt: z.string().optional(),
-  expiresAt: z.string().optional(),
-  certificateNumber: z.string().optional(),
-  issuingAuthority: z.string().optional(),
-  notes: z.string().optional(),
-});
+export const runtime = 'nodejs';
 
 export async function GET(request: NextRequest) {
-  return Sentry.startSpan({ name: 'compliance.list' }, async () => {
-    const { sb, services } = getSupabaseAndServices();
-    const { data } = await sb.auth.getUser();
-    const userId = data.user?.id;
-    const ctx = getTenantContextFromRequest(request, userId);
-
-    const url = new URL(request.url);
-    const limit = Number(url.searchParams.get('limit') ?? '20');
-    const offset = Number(url.searchParams.get('offset') ?? '0');
-    
-    // Parse filters
-    const filters: any = {};
-    const status = url.searchParams.get('status');
-    if (status) filters.status = status.split(',');
-    
-    const kind = url.searchParams.get('kind');
-    if (kind) filters.kind = kind.split(',');
-    
-    const jobId = url.searchParams.get('jobId');
-    if (jobId) filters.jobId = jobId;
-
-    const items = await services.jobs.listCompliance(ctx, filters);
-    return NextResponse.json({ items }, { status: 200 });
-  });
+  return NextResponse.json({ 
+    message: 'API endpoint will be available in a future release'
+  }, { status: 501 });
 }
 
 export async function POST(request: NextRequest) {
-  return Sentry.startSpan({ name: 'compliance.create' }, async () => {
-    const { sb, services } = getSupabaseAndServices();
-    const { data } = await sb.auth.getUser();
-    const userId = data.user?.id;
-    const ctx = getTenantContextFromRequest(request, userId);
+  return NextResponse.json({ 
+    error: 'API endpoint will be available in a future release'
+  }, { status: 501 });
+}
 
-    if (authorize({ userId: ctx.userId, organizationId: ctx.organizationId, roles: ctx.roles }, 'settings:manage') === 'deny') {
-      return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
-    }
+export async function PUT(request: NextRequest) {
+  return NextResponse.json({ 
+    error: 'API endpoint will be available in a future release'
+  }, { status: 501 });
+}
 
-    try {
-      const body = await request.json();
-      const validatedData = CreateComplianceSchema.parse(body);
-      
-      const input = {
-        ...validatedData,
-        id: crypto.randomUUID(),
-        organizationId: ctx.organizationId,
-        status: 'pending' as const,
-        createdAt: new Date().toISOString(),
-        updatedAt: new Date().toISOString(),
-      };
-
-      const created = await services.jobs.createCompliance(ctx, input);
-      return NextResponse.json({ compliance: created }, { status: 201 });
-    } catch (error) {
-      if (error instanceof z.ZodError) {
-        return NextResponse.json({ error: 'Validation failed', details: error.errors }, { status: 400 });
-      }
-      throw error;
-    }
-  });
+export async function DELETE(request: NextRequest) {
+  return NextResponse.json({ 
+    error: 'API endpoint will be available in a future release'
+  }, { status: 501 });
 }

@@ -142,8 +142,8 @@ export default function UniformSizingClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Uniform Sizing</h2>
-          <p className="text-muted-foreground">Manage your uniform and clothing sizes</p>
+          <h2 className="text-heading-3 text-heading-3">Uniform Sizing</h2>
+          <p className="color-muted">Manage your uniform and clothing sizes</p>
         </div>
         {!isEditing ? (
           <Button onClick={() => setIsEditing(true)}>
@@ -169,14 +169,14 @@ export default function UniformSizingClient() {
       {/* Standard Sizes */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold flex items-center">
-            <Shirt className="w-5 h-5 mr-2 text-primary" />
+          <h3 className="text-heading-4 flex items-center">
+            <Shirt className="w-5 h-5 mr-2 color-primary" />
             Standard Sizes
           </h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <label className="text-sm font-medium">Shirt Size</label>
+            <label className="text-body-sm form-label">Shirt Size</label>
             <Select
               value={formData.shirt_size || ''}
               onValueChange={(value: string) => setFormData({ ...formData, shirt_size: value })}
@@ -199,7 +199,7 @@ export default function UniformSizingClient() {
               placeholder="e.g., 32x30"
               disabled={!isEditing}
             />
-            <label className="text-sm font-medium">Jacket Size</label>
+            <label className="text-body-sm form-label">Jacket Size</label>
             <Select
               value={formData.jacket_size || ''}
               onValueChange={(value: string) => setFormData({ ...formData, jacket_size: value })}
@@ -229,7 +229,7 @@ export default function UniformSizingClient() {
               placeholder="e.g., 7 1/4"
               disabled={!isEditing}
             />
-            <label className="text-sm font-medium">Glove Size</label>
+            <label className="text-body-sm form-label">Glove Size</label>
             <Select
               value={formData.glove_size || ''}
               onValueChange={(value: string) => setFormData({ ...formData, glove_size: value })}
@@ -250,10 +250,10 @@ export default function UniformSizingClient() {
       {/* Fit Preference */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Fit Preference</h3>
+          <h3 className="text-heading-4">Fit Preference</h3>
         </CardHeader>
         <CardContent>
-          <label className="text-sm font-medium">Gender Fit</label>
+          <label className="text-body-sm form-label">Gender Fit</label>
           <Select
             value={formData.gender_fit || ''}
             onValueChange={(value: string) => setFormData({ ...formData, gender_fit: value })}
@@ -270,8 +270,8 @@ export default function UniformSizingClient() {
       {/* Detailed Measurements */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Detailed Measurements</h3>
-          <p className="text-sm text-muted-foreground">Optional measurements for custom fitting</p>
+          <h3 className="text-heading-4">Detailed Measurements</h3>
+          <p className="text-body-sm color-muted">Optional measurements for custom fitting</p>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -324,7 +324,7 @@ export default function UniformSizingClient() {
       {/* Special Requirements */}
       <Card>
         <CardHeader>
-          <h3 className="font-semibold">Special Requirements</h3>
+          <h3 className="text-heading-4">Special Requirements</h3>
         </CardHeader>
         <CardContent>
           <Input

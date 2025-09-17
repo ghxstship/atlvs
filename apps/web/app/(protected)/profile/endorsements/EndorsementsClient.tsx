@@ -218,7 +218,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'text-warning fill-current' : 'text-muted-foreground'}`}
+        className={`h-4 w-4 ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
       />
     ));
   };
@@ -231,10 +231,10 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -244,7 +244,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Endorsements</h2>
+        <h2 className="text-heading-4 text-heading-4">Endorsements</h2>
         <Button 
           onClick={() => {
             setEditingEndorsement(null);
@@ -261,9 +261,9 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
       {endorsements.length === 0 ? (
         <Card>
           <div className="p-8 text-center">
-            <ThumbsUp className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No Endorsements Yet</h3>
-            <p className="text-muted-foreground mb-4">
+            <ThumbsUp className="h-12 w-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body text-heading-4 mb-2">No Endorsements Yet</h3>
+            <p className="color-muted mb-4">
               Start building your professional reputation by adding endorsements from colleagues and clients.
             </p>
             <Button 
@@ -285,12 +285,12 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center gap-3">
                     <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <User className="h-5 w-5 text-primary" />
+                      <User className="h-5 w-5 color-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold">{endorsement.endorser_name}</h3>
+                      <h3 className="text-heading-4">{endorsement.endorser_name}</h3>
                       {endorsement.endorser_title && (
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-body-sm color-muted">
                           {endorsement.endorser_title}
                           {endorsement.endorser_company && ` at ${endorsement.endorser_company}`}
                         </p>
@@ -323,7 +323,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                   </div>
                 </div>
 
-                <blockquote className="text-muted-foreground italic mb-4 border-l-4 border-primary/20 pl-4">
+                <blockquote className="color-muted italic mb-4 border-l-4 border-primary/20 pl-4">
                   "{endorsement.endorsement_text}"
                 </blockquote>
 
@@ -335,7 +335,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                       </Badge>
                     ))}
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-body-sm color-muted">
                     <Calendar className="h-4 w-4" />
                     {new Date(endorsement.date_received).toLocaleDateString()}
                   </div>
@@ -404,7 +404,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
           />
 
           <div>
-            <label className="block text-sm font-medium mb-2">Skills Endorsed</label>
+            <label className="block text-body-sm form-label mb-2">Skills Endorsed</label>
             <div className="flex gap-2 mb-2">
               <Input
                 placeholder="Add a skill"
@@ -425,7 +425,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                   <button
                     type="button"
                     onClick={() => removeSkill(skill)}
-                    className="ml-1 text-destructive hover:text-destructive/80"
+                    className="ml-1 color-destructive hover:color-destructive/80"
                   >
                     ×
                   </button>
@@ -433,7 +433,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               ))}
             </div>
             {form.formState.errors.skills_endorsed && (
-              <p className="text-sm text-destructive mt-1">
+              <p className="text-body-sm color-destructive mt-1">
                 {form.formState.errors.skills_endorsed.message}
               </p>
             )}
@@ -457,7 +457,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                 {...form.register('is_public')}
                 className="rounded border-border"
               />
-              <label htmlFor="is_public" className="text-sm font-medium">
+              <label htmlFor="is_public" className="text-body-sm form-label">
                 Make this endorsement public
               </label>
             </div>

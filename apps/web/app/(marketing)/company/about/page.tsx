@@ -86,7 +86,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-500/5 via-background to-purple-500/5">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
@@ -95,11 +95,11 @@ export default function AboutPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               BUILT BY PEOPLE
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 WHO ACTUALLY DO THIS
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Born from 13+ years of wrangling chaos in live entertainment, GHXSTSHIP turns 
               the beautiful madness of creative production into something that actually works. 
               We're the platform that gets built when someone who's survived Formula 1 weekends 
@@ -109,11 +109,11 @@ export default function AboutPage() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {stats.map((stat) => (
                 <div key={stat.metric} className="text-center">
-                  <div className={`mb-2 text-foreground ${typography.statValue}`}>
+                  <div className={`mb-2 color-foreground ${typography.statValue}`}>
                     {stat.metric}
                   </div>
-                  <div className="font-semibold text-foreground mb-1">{stat.label}</div>
-                  <div className="text-sm text-muted-foreground">{stat.description}</div>
+                  <div className="text-heading-4 color-foreground mb-1">{stat.label}</div>
+                  <div className="text-body-sm color-muted">{stat.description}</div>
                 </div>
               ))}
             </div>
@@ -129,7 +129,7 @@ export default function AboutPage() {
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 OUR MISSION
               </h2>
-              <p className="text-lg text-muted-foreground mb-8">
+              <p className="text-body color-muted mb-8">
                 To build production management tools that don't make you want to throw your laptop 
                 out the window. After managing everything from cruise ship entertainment to Formula 1 
                 hospitality, we know what actually works when the pressure's on and everything's on fire.
@@ -137,43 +137,43 @@ export default function AboutPage() {
               
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <Target className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                  <Target className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Solve Real Problems</h3>
-                    <p className="text-sm text-muted-foreground">Build tools that actually work when you're managing 1,000+ people at 3am</p>
+                    <h3 className="text-heading-4 color-foreground mb-1">Solve Real Problems</h3>
+                    <p className="text-body-sm color-muted">Build tools that actually work when you're managing 1,000+ people at 3am</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <Users className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                  <Users className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Battle-Tested Reliability</h3>
-                    <p className="text-sm text-muted-foreground">Software that doesn't break when the stakes are highest and everyone's watching</p>
+                    <h3 className="text-heading-4 color-foreground mb-1">Battle-Tested Reliability</h3>
+                    <p className="text-body-sm color-muted">Software that doesn't break when the stakes are highest and everyone's watching</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <TrendingUp className="h-5 w-5 text-primary flex-shrink-0 mt-1" />
+                  <TrendingUp className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
-                    <h3 className="font-semibold text-foreground mb-1">Industry Experience</h3>
-                    <p className="text-sm text-muted-foreground">Built by someone who's actually done this stuff, not just read about it</p>
+                    <h3 className="text-heading-4 color-foreground mb-1">Industry Experience</h3>
+                    <p className="text-body-sm color-muted">Built by someone who's actually done this stuff, not just read about it</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="relative">
-              <Card className="bg-gradient-to-br from-blue-500/5 to-purple-500/5 border-0">
+              <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-0">
                 <CardContent className="p-8">
                   <h3 className={`mb-4 ${typography.cardTitle}`}>Our Vision</h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="color-muted mb-6">
                     A world where production management doesn't require a PhD in chaos theory. 
                     Where creative professionals can focus on creating instead of fighting with 
                     spreadsheets that break when you look at them wrong.
                   </p>
-                  <blockquote className="border-l-4 border-primary pl-4 italic text-foreground">
+                  <blockquote className="border-l-4 border-primary pl-4 italic color-foreground">
                     "We're building the tools I wish I had when managing 1,000+ crew members 
                     at 3am during Formula 1 weekend. Spoiler alert: it would've been nice."
                   </blockquote>
-                  <cite className="text-sm text-muted-foreground mt-2 block">— Julian Clarkson, Founder & CXO</cite>
+                  <cite className="text-body-sm color-muted mt-2 block">— Julian Clarkson, Founder & CXO</cite>
                 </CardContent>
               </Card>
             </div>
@@ -182,13 +182,13 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR VALUES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               These core values guide every decision we make and every feature we build.
             </p>
           </div>
@@ -200,12 +200,12 @@ export default function AboutPage() {
                 <Card key={value.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500">
-                        <Icon className="h-6 w-6 text-white" />
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent">
+                        <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`mb-3 ${typography.cardTitle}`}>{value.title}</h3>
-                        <p className="text-muted-foreground">{value.description}</p>
+                        <p className="color-muted">{value.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -223,7 +223,7 @@ export default function AboutPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR JOURNEY
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               From a small startup to a global platform serving creative professionals worldwide.
             </p>
           </div>
@@ -237,13 +237,13 @@ export default function AboutPage() {
                   <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <Card className="hover:shadow-lg transition-shadow">
                       <CardContent className="p-6">
-                        <div className={`mb-2 text-primary ${typography.statValue}`}>
+                        <div className={`mb-2 color-primary ${typography.statValue}`}>
                           {milestone.year}
                         </div>
                         <h3 className={`mb-2 ${typography.cardTitle}`}>
                           {milestone.title}
                         </h3>
-                        <p className="text-muted-foreground">{milestone.description}</p>
+                        <p className="color-muted">{milestone.description}</p>
                       </CardContent>
                     </Card>
                   </div>
@@ -261,13 +261,13 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               LEADERSHIP TEAM
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Meet the experienced leaders driving GHXSTSHIP's vision and growth.
             </p>
           </div>
@@ -276,14 +276,14 @@ export default function AboutPage() {
             {leadership.map((leader) => (
               <Card key={leader.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Users className="h-8 w-8 text-primary" />
+                  <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <Users className="h-8 w-8 color-primary" />
                   </div>
                   <h3 className={`mb-1 ${typography.cardTitle}`}>
                     {leader.name}
                   </h3>
-                  <p className="text-sm font-semibold text-primary mb-3">{leader.role}</p>
-                  <p className="text-sm text-muted-foreground">{leader.bio}</p>
+                  <p className="text-body-sm text-heading-4 color-primary mb-3">{leader.role}</p>
+                  <p className="text-body-sm color-muted">{leader.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -298,7 +298,7 @@ export default function AboutPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               AWARDS & RECOGNITION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Real-world achievements from actually managing large-scale productions (not just talking about it).
             </p>
           </div>
@@ -338,14 +338,14 @@ export default function AboutPage() {
             ].map((award) => (
               <Card key={award.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Award className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Award className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`mb-2 ${typography.cardTitle}`}>
                     {award.title}
                   </h3>
-                  <p className="text-sm font-semibold text-primary mb-2">{award.organization}</p>
-                  <p className="text-sm text-muted-foreground">{award.description}</p>
+                  <p className="text-body-sm text-heading-4 color-primary mb-2">{award.organization}</p>
+                  <p className="text-body-sm color-muted">{award.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -354,13 +354,13 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500/5 to-purple-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               JOIN OUR MISSION
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Ready to use production tools that don't suck? Join the growing number of 
               professionals who are tired of fighting with software that breaks when you need it most.
             </p>
@@ -400,10 +400,10 @@ export default function AboutPage() {
               <a key={link.title} href={link.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
                   <CardContent className="p-6 text-center">
-                    <h3 className={`mb-2 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                    <h3 className={`mb-2 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                       {link.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       {link.description}
                     </p>
                   </CardContent>

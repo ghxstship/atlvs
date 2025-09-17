@@ -219,14 +219,14 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Clock className="h-4 w-4 text-warning" />;
+        return <Clock className="h-4 w-4 color-warning" />;
       case 'completed':
-        return <CheckCircle className="h-4 w-4 text-success" />;
+        return <CheckCircle className="h-4 w-4 color-success" />;
       case 'failed':
       case 'cancelled':
-        return <AlertTriangle className="h-4 w-4 text-destructive" />;
+        return <AlertTriangle className="h-4 w-4 color-destructive" />;
       default:
-        return <Clock className="h-4 w-4 text-muted-foreground" />;
+        return <Clock className="h-4 w-4 color-muted" />;
     }
   };
 
@@ -380,8 +380,8 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <ViewSwitcher />
@@ -396,18 +396,18 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         <div className="flex flex-wrap items-center gap-4">
           {/* Search */}
           <div className="relative">
-            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-foreground/50" />
+            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 color-foreground/50" />
             <input
               type="text"
               placeholder="Search transactions..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-10 pr-4 py-2 border border-border rounded-md bg-background text-foreground"
+              className="pl-10 pr-4 py-2 border border-border rounded-md bg-background color-foreground"
             />
           </div>
 
           {/* Status Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(statusCounts).map(([status, count]) => (
               <Button
                 key={status}
@@ -422,7 +422,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
           </div>
 
           {/* Kind Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(kindCounts).map(([kind, count]) => (
               <Button
                 key={kind}
@@ -442,49 +442,49 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Transactions</p>
-                <p className="text-2xl font-bold text-foreground">{transactions.length}</p>
+                <p className="text-body-sm color-foreground/70">Total Transactions</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{transactions.length}</p>
               </div>
-              <ArrowUpDown className="h-8 w-8 text-primary" />
+              <ArrowUpDown className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Debits</p>
-                <p className="text-2xl font-bold text-destructive">
+                <p className="text-body-sm color-foreground/70">Total Debits</p>
+                <p className="text-heading-3 text-heading-3 color-destructive">
                   {formatCurrency(totalAmounts.debit)}
                 </p>
-                <p className="text-xs text-foreground/60">{kindCounts.debit} transactions</p>
+                <p className="text-body-sm color-foreground/60">{kindCounts.debit} transactions</p>
               </div>
-              <ArrowDown className="h-8 w-8 text-destructive" />
+              <ArrowDown className="h-8 w-8 color-destructive" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Credits</p>
-                <p className="text-2xl font-bold text-success">
+                <p className="text-body-sm color-foreground/70">Total Credits</p>
+                <p className="text-heading-3 text-heading-3 color-success">
                   {formatCurrency(totalAmounts.credit)}
                 </p>
-                <p className="text-xs text-foreground/60">{kindCounts.credit} transactions</p>
+                <p className="text-body-sm color-foreground/60">{kindCounts.credit} transactions</p>
               </div>
-              <ArrowUp className="h-8 w-8 text-success" />
+              <ArrowUp className="h-8 w-8 color-success" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Net Amount</p>
-                <p className={`text-2xl font-bold ${totalAmounts.net >= 0 ? 'text-success' : 'text-destructive'}`}>
+                <p className="text-body-sm color-foreground/70">Net Amount</p>
+                <p className={`text-heading-3 text-heading-3 ${totalAmounts.net >= 0 ? 'color-success' : 'color-destructive'}`}>
                   {formatCurrency(totalAmounts.net)}
                 </p>
-                <p className="text-xs text-foreground/60">Credits - Debits</p>
+                <p className="text-body-sm color-foreground/60">Credits - Debits</p>
               </div>
-              <DollarSign className="h-8 w-8 text-secondary" />
+              <DollarSign className="h-8 w-8 color-secondary" />
             </div>
           </Card>
         </div>
@@ -496,20 +496,20 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
               {transactionRecords.map((transaction) => {
                 const txData = transactions.find(t => t.id === transaction.id)!;
                 return (
-                  <div key={transaction.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-muted/50 cursor-pointer" onClick={() => handleViewTransaction(txData)}>
+                  <div key={transaction.id} className="flex items-center justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 cursor-pointer" onClick={() => handleViewTransaction(txData)}>
                     <div className="flex items-center space-x-4">
                       <div className="flex items-center space-x-2">
                         {txData.kind === 'credit' ? (
-                          <ArrowUp className="h-5 w-5 text-success" />
+                          <ArrowUp className="h-5 w-5 color-success" />
                         ) : (
-                          <ArrowDown className="h-5 w-5 text-destructive" />
+                          <ArrowDown className="h-5 w-5 color-destructive" />
                         )}
                         {getStatusIcon(txData.status)}
                       </div>
                       
                       <div>
-                        <p className="font-medium text-foreground">{txData.description}</p>
-                        <p className="text-sm text-foreground/70">
+                        <p className="form-label color-foreground">{txData.description}</p>
+                        <p className="text-body-sm color-foreground/70">
                           {txData.account?.name} • {txData.category} • {formatDateTime(txData.occurred_at)}
                         </p>
                       </div>
@@ -517,7 +517,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                     
                     <div className="flex items-center space-x-4">
                       <div className="text-right">
-                        <p className={`font-semibold ${txData.kind === 'credit' ? 'text-success' : 'text-destructive'}`}>
+                        <p className={`text-heading-4 ${txData.kind === 'credit' ? 'color-success' : 'color-destructive'}`}>
                           {txData.kind === 'credit' ? '+' : '-'}{formatCurrency(txData.amount, txData.currency)}
                         </p>
                         {getStatusBadge(txData.status)}
@@ -560,9 +560,9 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         {/* Empty State */}
         {transactions.length === 0 && (
           <Card className="p-12 text-center">
-            <ArrowUpDown className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No transactions found</h3>
-            <p className="text-foreground/70 mb-4">Start tracking your financial transactions</p>
+            <ArrowUpDown className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No transactions found</h3>
+            <p className="color-foreground/70 mb-4">Start tracking your financial transactions</p>
             <Button onClick={handleCreateTransaction}>
               <Plus className="h-4 w-4 mr-2" />
               Add Transaction

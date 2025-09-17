@@ -139,7 +139,7 @@ const defaultNavigationData: NavigationItem[] = [
 
 const sidebarVariants = cva(
   [
-    'flex flex-col bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800',
+    'flex flex-col bg-background border-r border-border',
     'transition-all duration-300 ease-in-out',
     'relative z-40',
   ],
@@ -152,7 +152,7 @@ const sidebarVariants = cva(
       },
       variant: {
         default: '',
-        floating: 'mx-2 my-2 rounded-lg border shadow-sm bg-white/95 dark:bg-neutral-900/95 backdrop-blur',
+        floating: 'mx-2 my-2 rounded-lg border border-border shadow-sm bg-background/95 backdrop-blur',
         overlay: 'fixed inset-y-0 left-0 z-50 shadow-xl',
       },
     },
@@ -167,15 +167,15 @@ const navItemVariants = cva(
   [
     'flex items-center gap-3 px-3 py-2 mx-2 rounded-lg text-sm font-medium',
     'motion-safe:transition-all motion-safe:duration-200',
-    'hover:bg-neutral-100 dark:hover:bg-neutral-800',
-    'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2',
+    'hover:bg-muted',
+    'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
     'group relative',
   ],
   {
     variants: {
       active: {
-        true: 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300',
-        false: 'text-neutral-700 dark:text-neutral-300',
+        true: 'bg-primary/10 text-primary',
+        false: 'text-muted-foreground',
       },
       level: {
         0: 'ml-0',
@@ -408,13 +408,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               <span className="flex-1 text-left truncate">{item.label}</span>
               
               {item.badge && (
-                <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-brand-100 bg-brand-600 rounded-full">
+                <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-primary-foreground bg-primary rounded-full">
                   {item.badge}
                 </span>
               )}
               
               {isPinned && (
-                <Pin className="h-3 w-3 text-brand-500" />
+                <Pin className="h-3 w-3 text-primary" />
               )}
               
               {hasChildren && (
@@ -431,7 +431,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           
           {/* Tooltip for collapsed state */}
           {isCollapsed && (
-            <div className="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 motion-safe:transition-opacity motion-safe:duration-200 pointer-events-none whitespace-nowrap z-50">
+            <div className="absolute left-full ml-2 px-2 py-1 bg-popover text-popover-foreground text-xs rounded opacity-0 group-hover:opacity-100 motion-safe:transition-opacity motion-safe:duration-200 pointer-events-none whitespace-nowrap z-50">
               {item.label}
               {item.badge && ` (${item.badge})`}
             </div>
@@ -441,27 +441,27 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         {/* Pin toggle button */}
         {!isCollapsed && level === 0 && (
           <button
-            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-all duration-200"
+            className="absolute right-2 top-1/2 -translate-y-1/2 p-1 rounded opacity-0 group-hover:opacity-100 hover:bg-muted transition-all duration-200"
             onClick={(e) => {
               e.stopPropagation();
               togglePin(item.id);
             }}
             aria-label={isPinned ? 'Unpin item' : 'Pin item'}
           >
-            <Pin className={`h-3 w-3 ${isPinned ? 'text-brand-500' : 'text-neutral-400'}`} />
+            <Pin className={`h-3 w-3 ${isPinned ? 'text-primary' : 'text-muted-foreground'}`} />
           </button>
         )}
 
         {/* Children */}
         {hasChildren && isExpanded && !isCollapsed && (
-          <div id={childContainerId} className="ml-2 border-l border-neutral-200 dark:border-neutral-700 animate-in slide-in-from-top-2 motion-safe:duration-200">
+          <div id={childContainerId} className="ml-2 border-l border-border animate-in slide-in-from-top-2 motion-safe:duration-200">
             {item.children!.map((child: NavigationItem) => (
               <div
                 key={child.id}
                 role="link"
                 tabIndex={0}
                 aria-label={child.label}
-                className="flex items-center gap-2 px-3 py-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 rounded-md cursor-pointer motion-safe:transition-colors motion-safe:duration-200"
+                className="flex items-center gap-2 px-3 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-md cursor-pointer motion-safe:transition-colors motion-safe:duration-200"
                 onClick={() => onNavigate?.(child.href || '#')}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
@@ -472,7 +472,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               >
                 <span className="truncate">{child.label}</span>
                 {child.badge && (
-                  <span className="ml-auto text-xs bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 px-1.5 py-0.5 rounded">
+                  <span className="ml-auto text-xs bg-secondary text-secondary-foreground px-1.5 py-0.5 rounded">
                     {child.badge}
                   </span>
                 )}
@@ -490,7 +490,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       <>
         {/* Mobile toggle button */}
         <button
-          className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm"
+          className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-background border border-border rounded-lg shadow-sm"
           onClick={() => setIsMobileOpen(true)}
           aria-label="Open navigation"
         >
@@ -515,17 +515,17 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           >
             {/* Backdrop */}
             <div
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm"
+              className="fixed inset-0 bg-foreground/30 backdrop-blur-sm"
               onClick={() => setIsMobileOpen(false)}
             />
             
             {/* Sidebar */}
             <div className={sidebarVariants({ state: 'expanded', variant: 'overlay' })}>
-              <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-700">
-                <h2 className="text-lg font-semibold text-neutral-900 dark:text-neutral-100">ATLVS</h2>
+              <div className="flex items-center justify-between p-4 border-b border-border">
+                <h2 className="text-lg font-semibold text-foreground">ATLVS</h2>
                 <button
                   onClick={() => setIsMobileOpen(false)}
-                  className="p-1 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800"
+                  className="p-1 rounded hover:bg-muted"
                   aria-label="Close navigation"
                 >
                   <X className="h-5 w-5" />
@@ -535,14 +535,14 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               {/* Search */}
               <div className="p-4">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
                     ref={searchInputRef}
                     type="text"
                     placeholder="Search navigation..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full pl-10 pr-4 py-2 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"
+                    className="w-full pl-10 pr-4 py-2 bg-background border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
               </div>
@@ -565,16 +565,16 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       variant 
     }), className)}>
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-neutral-200 dark:border-neutral-700">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         {!isCollapsed && (
-          <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-100" style={{ fontFamily: 'var(--font-anton), ANTON, sans-serif' }}>
+          <h2 className="text-lg font-bold text-foreground" style={{ fontFamily: 'var(--font-anton), ANTON, sans-serif' }}>
             ATLVS
           </h2>
         )}
         
         <button
+          className="p-1.5 rounded-lg hover:bg-muted motion-safe:transition-colors motion-safe:duration-200"
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="p-1.5 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 motion-safe:transition-colors motion-safe:duration-200"
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
           <Menu className="h-5 w-5" />
@@ -585,14 +585,14 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       {!isCollapsed && (
         <div className="p-4">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-400" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               ref={searchInputRef}
               type="text"
               placeholder="Search navigation..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 motion-safe:transition-all motion-safe:duration-200"
+              className="w-full pl-10 pr-4 py-2 bg-background border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary motion-safe:transition-all motion-safe:duration-200"
               onKeyDown={(e) => {
                 if (e.key === 'Escape') {
                   setSearchQuery('');
@@ -609,7 +609,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         {/* Pinned items first */}
         {!isCollapsed && pinnedItems.size > 0 && (
           <div className="mb-4">
-            <div className="px-3 py-2 text-xs font-semibold text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+            <div className="px-3 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wide">
               Pinned
             </div>
             {filteredNavigation
@@ -625,7 +625,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       </nav>
 
       {/* Footer */}
-      <div className="border-t border-neutral-200 dark:border-neutral-700 p-2">
+      <div className="border-t border-border p-2">
         <button
           className={navItemVariants({
             active: activeItem === 'profile',
@@ -637,7 +637,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           {!isCollapsed && <span className="flex-1 text-left">Profile</span>}
           
           {isCollapsed && (
-            <div className="absolute left-full ml-2 px-2 py-1 bg-neutral-900 text-white text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
+            <div className="absolute left-full ml-2 px-2 py-1 bg-popover text-popover-foreground text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-50">
               Profile
             </div>
           )}

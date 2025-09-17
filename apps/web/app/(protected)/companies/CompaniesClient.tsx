@@ -244,10 +244,10 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
             <DataGrid />
             <KanbanBoard 
               columns={[
-                { id: 'active', title: 'Active', color: '#10b981' },
-                { id: 'inactive', title: 'Inactive', color: '#6b7280' },
-                { id: 'pending', title: 'Pending', color: '#f59e0b' },
-                { id: 'blacklisted', title: 'Blacklisted', color: '#ef4444' }
+                { id: 'active', title: 'Active' },
+                { id: 'inactive', title: 'Inactive' },
+                { id: 'pending', title: 'Pending' },
+                { id: 'blacklisted', title: 'Blacklisted' }
               ]}
               statusField="status"
               titleField="name"
@@ -267,7 +267,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
               onClose={() => {}}
             >
               <div className="p-6">
-                <p className="text-muted-foreground">Company details will be displayed here.</p>
+                <p className="color-muted">Company details will be displayed here.</p>
               </div>
             </Drawer>
           </div>

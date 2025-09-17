@@ -180,9 +180,9 @@ export function withSentryErrorBoundary<P extends object>(
 // Default error fallback component
 function DefaultErrorFallback({ error, resetError }: { error: Error; resetError: () => void }) {
   return React.createElement('div', {
-    className: 'min-h-screen flex items-center justify-center bg-gray-50'
+    className: 'min-h-screen flex items-center justify-center bg-surface'
   }, React.createElement('div', {
-    className: 'max-w-md w-full bg-white shadow-lg rounded-lg p-6'
+    className: 'max-w-md w-full bg-elevated shadow-lg rounded-lg p-6'
   }, [
     React.createElement('div', {
       key: 'icon',

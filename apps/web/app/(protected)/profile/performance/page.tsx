@@ -33,7 +33,7 @@ export default async function ProfilePerformancePage() {
         <div className="mb-3 flex items-center justify-end">
           <CreatePerformanceReviewClient orgId={orgId} userId={user.user.id} />
         </div>
-        <div className="text-sm text-foreground/70">
+        <div className="text-body-sm color-foreground/70">
           <Suspense fallback={<div>Loading...</div>}>
             <PerformanceClient orgId={orgId} userId={user.user.id} />
           </Suspense>

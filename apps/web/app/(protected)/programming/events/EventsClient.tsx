@@ -228,7 +228,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Events Management</h2>
+                <h2 className="text-body text-heading-4">Events Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Event
@@ -286,7 +286,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
               {selectedRecord && (
                 <div className="space-y-4 mt-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Calendar className="h-4 w-4" />
                       <span>
                         {selectedRecord.starts_at 
@@ -295,7 +295,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Clock className="h-4 w-4" />
                       <span>
                         {selectedRecord.starts_at 
@@ -308,16 +308,16 @@ export default function EventsClient({ orgId }: { orgId: string }) {
                   
                   <div className="grid grid-cols-3 gap-4 pt-4 border-t">
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{selectedRecord.lineups_count || 0}</div>
-                      <div className="text-sm text-muted-foreground">Lineups</div>
+                      <div className="text-heading-3 text-heading-3">{selectedRecord.lineups_count || 0}</div>
+                      <div className="text-body-sm color-muted">Lineups</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{selectedRecord.riders_count || 0}</div>
-                      <div className="text-sm text-muted-foreground">Riders</div>
+                      <div className="text-heading-3 text-heading-3">{selectedRecord.riders_count || 0}</div>
+                      <div className="text-body-sm color-muted">Riders</div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold">{selectedRecord.call_sheets_count || 0}</div>
-                      <div className="text-sm text-muted-foreground">Call Sheets</div>
+                      <div className="text-heading-3 text-heading-3">{selectedRecord.call_sheets_count || 0}</div>
+                      <div className="text-body-sm color-muted">Call Sheets</div>
                     </div>
                   </div>
                 </div>

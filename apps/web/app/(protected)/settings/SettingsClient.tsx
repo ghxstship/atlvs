@@ -240,11 +240,11 @@ export default function SettingsClient({ orgId, userId }: { orgId: string; userI
             <DataGrid />
             <KanbanBoard 
               columns={[
-                { id: 'organization', title: 'Organization', color: '#3b82f6' },
-                { id: 'security', title: 'Security', color: '#ef4444' },
-                { id: 'notifications', title: 'Notifications', color: '#f59e0b' },
-                { id: 'integrations', title: 'Integrations', color: '#8b5cf6' },
-                { id: 'billing', title: 'Billing', color: '#10b981' }
+                { id: 'organization', title: 'Organization' },
+                { id: 'security', title: 'Security' },
+                { id: 'notifications', title: 'Notifications' },
+                { id: 'integrations', title: 'Integrations' },
+                { id: 'billing', title: 'Billing' }
               ]}
               statusField="category"
               titleField="name"

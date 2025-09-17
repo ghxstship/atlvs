@@ -28,11 +28,11 @@ export default async function SettingsOrganizationPage() {
     <div className="space-y-4">
       <Card title={t('title')}>
         <div className="space-y-2">
-          <p className="text-sm text-foreground/80">{t('description')}</p>
+          <p className="text-body-sm color-foreground/80">{t('description')}</p>
           {orgId ? (
             <div className="rounded-md border border-destructive/20 bg-destructive/10 p-3">
-              <h3 className="font-semibold text-destructive">{t('remove.title')}</h3>
-              <p className="text-sm text-destructive/80">{t('remove.help')}</p>
+              <h3 className="text-heading-4 color-destructive">{t('remove.title')}</h3>
+              <p className="text-body-sm color-destructive/80">{t('remove.help')}</p>
               <div className="mt-2">
                 <RemoveDemoClient orgId={orgId} />
               </div>

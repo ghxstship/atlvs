@@ -196,13 +196,13 @@ export default function CreateReportClient({
         {/* Basic Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <FileText className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Basic Information</h3>
+            <FileText className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Basic Information</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Report Name *
               </label>
               <Input
@@ -214,7 +214,7 @@ export default function CreateReportClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -227,7 +227,7 @@ export default function CreateReportClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <BarChart3 className="h-4 w-4 inline mr-1" />
                   Report Type
                 </label>
@@ -244,7 +244,7 @@ export default function CreateReportClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Format
                 </label>
                 <Select
@@ -265,14 +265,14 @@ export default function CreateReportClient({
         {/* Scheduling */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Scheduling</h3>
+            <Calendar className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Scheduling</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Frequency
                 </label>
                 <Select
@@ -288,7 +288,7 @@ export default function CreateReportClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -305,7 +305,7 @@ export default function CreateReportClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Scheduled Date/Time
               </label>
               <Input
@@ -316,7 +316,7 @@ export default function CreateReportClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Recipients
               </label>
               <Input
@@ -331,13 +331,13 @@ export default function CreateReportClient({
         {/* Parameters & Filters */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Filter className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Parameters & Filters</h3>
+            <Filter className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Parameters & Filters</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Report Parameters
               </label>
               <Textarea
@@ -349,7 +349,7 @@ export default function CreateReportClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Filters
               </label>
               <Textarea
@@ -361,7 +361,7 @@ export default function CreateReportClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

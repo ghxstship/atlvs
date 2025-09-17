@@ -36,8 +36,8 @@ export default async function PipelineOnboardingPage() {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Onboarding Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage new hire onboarding tasks and processes</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Onboarding Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage new hire onboarding tasks and processes</p>
         </div>
         <CreateOnboardingTaskClient orgId={orgId} />
       </div>

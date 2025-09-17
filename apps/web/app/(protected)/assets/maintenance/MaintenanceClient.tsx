@@ -338,8 +338,8 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Asset Maintenance</h1>
-          <p className="text-sm text-muted-foreground">Schedule and track asset maintenance activities</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Asset Maintenance</h1>
+          <p className="text-body-sm color-muted">Schedule and track asset maintenance activities</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" className="flex items-center gap-2">
@@ -359,7 +359,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
                 <Input
                   placeholder="Search maintenance records..."
                   value={searchQuery}
@@ -411,11 +411,11 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
       {/* Records List */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading maintenance records...</div>
+          <div className="p-8 text-center color-muted">Loading maintenance records...</div>
         </Card>
       ) : filteredRecords.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No maintenance records found matching your criteria.
           </div>
         </Card>
@@ -426,10 +426,10 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <div className="p-4">
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-3">
-                    <Wrench className="w-5 h-5 text-muted-foreground" />
+                    <Wrench className="w-5 h-5 color-muted" />
                     <div>
-                      <h3 className="font-semibold">{record.title}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="text-heading-4">{record.title}</h3>
+                      <p className="text-body-sm color-muted">
                         {record.assetName} • Scheduled: {formatDateTime(record.scheduledDate)}
                       </p>
                     </div>
@@ -467,43 +467,43 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                 </div>
 
                 {record.description && (
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="text-body-sm color-muted mb-3">
                     {record.description}
                   </p>
                 )}
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                   <div>
-                    <span className="text-xs text-muted-foreground block">Assigned To</span>
-                    <span className="font-medium">{record.assignedTo || 'Unassigned'}</span>
+                    <span className="text-body-sm color-muted block">Assigned To</span>
+                    <span className="form-label">{record.assignedTo || 'Unassigned'}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Duration</span>
-                    <span className="font-medium">
+                    <span className="text-body-sm color-muted block">Duration</span>
+                    <span className="form-label">
                       {record.actualDuration || record.estimatedDuration} min
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Cost</span>
-                    <span className="font-medium">
+                    <span className="text-body-sm color-muted block">Cost</span>
+                    <span className="form-label">
                       {record.cost ? formatCurrency(record.cost) : 'TBD'}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Next Maintenance</span>
-                    <span className="font-medium">
+                    <span className="text-body-sm color-muted block">Next Maintenance</span>
+                    <span className="form-label">
                       {record.nextMaintenanceDate ? formatDateTime(record.nextMaintenanceDate) : 'TBD'}
                     </span>
                   </div>
                 </div>
 
                 {record.completedDate && (
-                  <div className="flex items-center gap-4 text-sm mb-3">
-                    <span className="text-muted-foreground">Completed:</span>
-                    <span className="font-medium">{formatDateTime(record.completedDate)}</span>
+                  <div className="flex items-center gap-4 text-body-sm mb-3">
+                    <span className="color-muted">Completed:</span>
+                    <span className="form-label">{formatDateTime(record.completedDate)}</span>
                     {record.performedBy && (
                       <>
-                        <span className="text-muted-foreground">By:</span>
+                        <span className="color-muted">By:</span>
                         <span>{record.performedBy}</span>
                       </>
                     )}
@@ -512,10 +512,10 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
 
                 {record.partsUsed && record.partsUsed.length > 0 && (
                   <div className="mb-3">
-                    <span className="text-xs text-muted-foreground block mb-1">Parts Used</span>
+                    <span className="text-body-sm color-muted block mb-1">Parts Used</span>
                     <div className="flex flex-wrap gap-1">
                       {record.partsUsed.map((part, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
+                        <Badge key={index} variant="outline" className="text-body-sm">
                           {part}
                         </Badge>
                       ))}
@@ -524,16 +524,16 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                 )}
 
                 {record.vendor && (
-                  <div className="flex items-center gap-4 text-sm mb-3">
-                    <span className="text-muted-foreground">Vendor:</span>
-                    <span className="font-medium">{record.vendor}</span>
+                  <div className="flex items-center gap-4 text-body-sm mb-3">
+                    <span className="color-muted">Vendor:</span>
+                    <span className="form-label">{record.vendor}</span>
                   </div>
                 )}
 
                 {record.notes && (
-                  <div className="mt-3 p-3 bg-muted rounded-md">
-                    <span className="text-xs text-muted-foreground block mb-1">Notes</span>
-                    <p className="text-sm">{record.notes}</p>
+                  <div className="mt-3 p-3 bg-secondary rounded-md">
+                    <span className="text-body-sm color-muted block mb-1">Notes</span>
+                    <p className="text-body-sm">{record.notes}</p>
                   </div>
                 )}
               </div>
@@ -551,14 +551,14 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
       >
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Title</label>
+            <label className="block text-body-sm form-label mb-1">Title</label>
             <Input
               placeholder="Enter maintenance title"
               defaultValue={selectedRecord?.title}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Asset</label>
+            <label className="block text-body-sm form-label mb-1">Asset</label>
             <Input
               placeholder="Select asset"
               defaultValue={selectedRecord?.assetName}
@@ -566,7 +566,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Type</label>
+              <label className="block text-body-sm form-label mb-1">Type</label>
               <select
                 defaultValue={selectedRecord?.type}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -578,7 +578,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Priority</label>
+              <label className="block text-body-sm form-label mb-1">Priority</label>
               <select
                 defaultValue={selectedRecord?.priority}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -590,7 +590,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Duration (min)</label>
+              <label className="block text-body-sm form-label mb-1">Duration (min)</label>
               <Input
                 type="number"
                 placeholder="60"
@@ -600,14 +600,14 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Scheduled Date</label>
+              <label className="block text-body-sm form-label mb-1">Scheduled Date</label>
               <Input
                 type="datetime-local"
                 defaultValue={selectedRecord?.scheduledDate?.slice(0, 16)}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Assigned To</label>
+              <label className="block text-body-sm form-label mb-1">Assigned To</label>
               <Input
                 placeholder="Select technician"
                 defaultValue={selectedRecord?.assignedTo}
@@ -615,7 +615,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-body-sm form-label mb-1">Description</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
@@ -624,7 +624,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-body-sm form-label mb-1">Notes</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={2}

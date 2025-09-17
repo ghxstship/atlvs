@@ -40,17 +40,17 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                 <CardContent className="p-0">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-muted/30 transition-colors"
+                    className="w-full p-6 text-left flex items-center justify-between hover:bg-secondary/30 transition-colors"
                   >
-                    <span className="font-semibold text-foreground">{faq.question}</span>
+                    <span className="text-heading-4 color-foreground">{faq.question}</span>
                     <HelpCircle className={cn(
-                      "h-5 w-5 text-muted-foreground transition-transform",
+                      "h-5 w-5 color-muted transition-transform",
                       openFaq === index ? "rotate-180" : ""
                     )} />
                   </button>
                   {openFaq === index && (
                     <div className="px-6 pb-6">
-                      <p className="text-muted-foreground">{faq.answer}</p>
+                      <p className="color-muted">{faq.answer}</p>
                     </div>
                   )}
                 </CardContent>

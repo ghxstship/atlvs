@@ -233,17 +233,17 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'certification':
-        return <Award className="h-5 w-5 text-primary" />;
+        return <Award className="h-5 w-5 color-primary" />;
       case 'license':
-        return <FileText className="h-5 w-5 text-success" />;
+        return <FileText className="h-5 w-5 color-success" />;
       case 'insurance':
-        return <Shield className="h-5 w-5 text-secondary" />;
+        return <Shield className="h-5 w-5 color-secondary" />;
       case 'bond':
-        return <Shield className="h-5 w-5 text-warning" />;
+        return <Shield className="h-5 w-5 color-warning" />;
       case 'safety':
-        return <Shield className="h-5 w-5 text-destructive" />;
+        return <Shield className="h-5 w-5 color-destructive" />;
       default:
-        return <Award className="h-5 w-5 text-muted-foreground" />;
+        return <Award className="h-5 w-5 color-muted" />;
     }
   };
 
@@ -381,11 +381,11 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
+            <div className="flex items-center space-x-1 bg-secondary rounded-lg p-1">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
                
@@ -411,7 +411,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
         {/* Filter Tabs */}
         <div className="flex flex-wrap items-center gap-4">
           {/* Type Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(typeCounts).map(([type, count]) => (
               <Button
                 key={type}
@@ -426,7 +426,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
           </div>
 
           {/* Status Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(statusCounts).map(([status, count]) => (
               <Button
                 key={status}
@@ -449,8 +449,8 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                 <Card key={qualification.id} className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h3 className="font-medium">{qualification.name}</h3>
-                      <p className="text-sm text-muted-foreground">{qualification.companyName}</p>
+                      <h3 className="form-label">{qualification.name}</h3>
+                      <p className="text-body-sm color-muted">{qualification.companyName}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusBadge(qualification.status)}
@@ -471,8 +471,8 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                 <Card key={qualification.id} className="p-4">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
-                      <h3 className="font-medium">{qualification.name}</h3>
-                      <p className="text-sm text-muted-foreground">{qualification.companyName}</p>
+                      <h3 className="form-label">{qualification.name}</h3>
+                      <p className="text-body-sm color-muted">{qualification.companyName}</p>
                     </div>
                     <div className="flex items-center space-x-2">
                       {getStatusBadge(qualification.status)}
@@ -493,9 +493,9 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
         {/* Empty State */}
         {qualifications.length === 0 && (
           <Card className="p-12 text-center">
-            <Award className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No qualifications found</h3>
-            <p className="text-foreground/70 mb-4">Add company qualifications, certifications, and licenses</p>
+            <Award className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No qualifications found</h3>
+            <p className="color-foreground/70 mb-4">Add company qualifications, certifications, and licenses</p>
             <Button onClick={handleCreateQualification}>
               <Plus className="h-4 w-4 mr-2" />
               Add Qualification

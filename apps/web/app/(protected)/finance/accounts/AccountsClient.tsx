@@ -200,31 +200,31 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     switch (kind) {
       case 'checking':
       case 'savings':
-        return <Building2 className="h-6 w-6 text-primary" />;
+        return <Building2 className="h-6 w-6 color-primary" />;
       case 'credit':
-        return <CreditCard className="h-6 w-6 text-secondary" />;
+        return <CreditCard className="h-6 w-6 color-secondary" />;
       case 'investment':
-        return <TrendingUp className="h-6 w-6 text-success" />;
+        return <TrendingUp className="h-6 w-6 color-success" />;
       case 'cash':
-        return <Banknote className="h-6 w-6 text-warning" />;
+        return <Banknote className="h-6 w-6 color-warning" />;
       default:
-        return <DollarSign className="h-6 w-6 text-muted-foreground" />;
+        return <DollarSign className="h-6 w-6 color-muted" />;
     }
   };
 
   const getReconciliationStatus = (account: Account) => {
     if (!account.last_reconciled_at) {
-      return { status: 'never', color: 'text-muted-foreground', label: 'Never Reconciled' };
+      return { status: 'never', color: 'color-muted', label: 'Never Reconciled' };
     }
 
     const daysSince = Math.floor((Date.now() - new Date(account.last_reconciled_at).getTime()) / (1000 * 60 * 60 * 24));
     
     if (daysSince <= 7) {
-      return { status: 'recent', color: 'text-success', label: 'Recently Reconciled' };
+      return { status: 'recent', color: 'color-success', label: 'Recently Reconciled' };
     } else if (daysSince <= 30) {
-      return { status: 'moderate', color: 'text-warning', label: 'Needs Reconciliation' };
+      return { status: 'moderate', color: 'color-warning', label: 'Needs Reconciliation' };
     } else {
-      return { status: 'overdue', color: 'text-destructive', label: 'Overdue for Reconciliation' };
+      return { status: 'overdue', color: 'color-destructive', label: 'Overdue for Reconciliation' };
     }
   };
 
@@ -341,8 +341,8 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <ViewSwitcher />
@@ -358,46 +358,46 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Accounts</p>
-                <p className="text-2xl font-bold text-foreground">{accounts.length}</p>
-                <p className="text-xs text-foreground/60">{activeAccounts.length} active</p>
+                <p className="text-body-sm color-foreground/70">Total Accounts</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{accounts.length}</p>
+                <p className="text-body-sm color-foreground/60">{activeAccounts.length} active</p>
               </div>
-              <Building2 className="h-8 w-8 text-primary" />
+              <Building2 className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Balance</p>
-                <p className="text-2xl font-bold text-success">
+                <p className="text-body-sm color-foreground/70">Total Balance</p>
+                <p className="text-heading-3 text-heading-3 color-success">
                   {formatCurrency(totalBalance)}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-success" />
+              <DollarSign className="h-8 w-8 color-success" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Needs Reconciliation</p>
-                <p className="text-2xl font-bold text-warning">{needsReconciliation.length}</p>
-                <p className="text-xs text-foreground/60">accounts overdue</p>
+                <p className="text-body-sm color-foreground/70">Needs Reconciliation</p>
+                <p className="text-heading-3 text-heading-3 color-warning">{needsReconciliation.length}</p>
+                <p className="text-body-sm color-foreground/60">accounts overdue</p>
               </div>
-              <AlertTriangle className="h-8 w-8 text-warning" />
+              <AlertTriangle className="h-8 w-8 color-warning" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Average Balance</p>
-                <p className="text-2xl font-bold text-secondary">
+                <p className="text-body-sm color-foreground/70">Average Balance</p>
+                <p className="text-heading-3 text-heading-3 color-secondary">
                   {formatCurrency(accounts.length > 0 ? totalBalance / accounts.length : 0)}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-secondary" />
+              <TrendingUp className="h-8 w-8 color-secondary" />
             </div>
           </Card>
         </div>
@@ -415,8 +415,8 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     <div className="flex items-center space-x-3">
                       {getAccountIcon(account.kind)}
                       <div>
-                        <h3 className="font-semibold text-foreground">{account.name}</h3>
-                        <p className="text-sm text-foreground/70 capitalize">{account.kind.replace('_', ' ')}</p>
+                        <h3 className="text-heading-4 color-foreground">{account.name}</h3>
+                        <p className="text-body-sm color-foreground/70 capitalize">{account.kind.replace('_', ' ')}</p>
                       </div>
                     </div>
                     <Badge variant={account.is_active ? 'default' : 'secondary'}>
@@ -425,29 +425,29 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                   </div>
                   
                   <div className="space-y-3 mb-4">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Balance</span>
-                      <span className="font-medium text-success">{formatCurrency(account.balance, account.currency)}</span>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Balance</span>
+                      <span className="form-label color-success">{formatCurrency(account.balance, account.currency)}</span>
                     </div>
                     
                     {account.bank_name && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-foreground/70">Bank</span>
-                        <span className="font-medium">{account.bank_name}</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-foreground/70">Bank</span>
+                        <span className="form-label">{account.bank_name}</span>
                       </div>
                     )}
                     
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Last Reconciled</span>
-                      <span className={`font-medium ${reconciliationStatus.color}`}>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Last Reconciled</span>
+                      <span className={`form-label ${reconciliationStatus.color}`}>
                         {formatDate(account.last_reconciled_at)}
                       </span>
                     </div>
                     
                     {balanceDiff !== null && (
-                      <div className="flex justify-between text-sm">
-                        <span className="text-foreground/70">Difference</span>
-                        <span className={`font-medium ${balanceDiff === 0 ? 'text-success' : balanceDiff > 0 ? 'text-primary' : 'text-destructive'}`}>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-foreground/70">Difference</span>
+                        <span className={`form-label ${balanceDiff === 0 ? 'color-success' : balanceDiff > 0 ? 'color-primary' : 'color-destructive'}`}>
                           {balanceDiff === 0 ? 'Balanced' : formatCurrency(Math.abs(balanceDiff))}
                         </span>
                       </div>
@@ -505,9 +505,9 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
         {/* Empty State */}
         {accounts.length === 0 && (
           <Card className="p-12 text-center">
-            <Building2 className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No accounts found</h3>
-            <p className="text-foreground/70 mb-4">Add your first financial account to start tracking</p>
+            <Building2 className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No accounts found</h3>
+            <p className="color-foreground/70 mb-4">Add your first financial account to start tracking</p>
             <Button onClick={handleCreateAccount}>
               <Plus className="h-4 w-4 mr-2" />
               Add Account
@@ -528,10 +528,10 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
 
         {/* Reconciliation Drawer */}
         {reconcileDrawerOpen && selectedAccount && (
-          <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center">
+          <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm z-50 flex items-center justify-center">
             <Card className="w-full max-w-md mx-4 p-6">
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Reconcile Account</h3>
+                <h3 className="text-body text-heading-4">Reconcile Account</h3>
                 <Button onClick={() => setReconcileDrawerOpen(false)}>
                   ×
                 </Button>
@@ -539,12 +539,12 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
               
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm text-foreground/70 mb-2">Account: {selectedAccount.name}</p>
-                  <p className="text-sm text-foreground/70 mb-2">Current Balance: {formatCurrency(selectedAccount.balance, selectedAccount.currency)}</p>
+                  <p className="text-body-sm color-foreground/70 mb-2">Account: {selectedAccount.name}</p>
+                  <p className="text-body-sm color-foreground/70 mb-2">Current Balance: {formatCurrency(selectedAccount.balance, selectedAccount.currency)}</p>
                 </div>
                 
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">
+                  <label className="block text-body-sm form-label color-foreground mb-2">
                     Bank Statement Balance
                   </label>
                   <input
@@ -552,12 +552,12 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     step="0.01"
                     value={reconcileBalance}
                     onChange={(e) => setReconcileBalance(Number(e.target.value))}
-                    className="w-full px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                    className="w-full px-3 py-2 border border-border rounded-md bg-background color-foreground"
                   />
                 </div>
                 
-                <div className="bg-muted p-3 rounded-md">
-                  <p className="text-sm text-foreground/70">
+                <div className="bg-secondary p-3 rounded-md">
+                  <p className="text-body-sm color-foreground/70">
                     Difference: {formatCurrency(selectedAccount.balance - reconcileBalance, selectedAccount.currency)}
                   </p>
                 </div>

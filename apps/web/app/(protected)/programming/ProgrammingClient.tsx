@@ -194,7 +194,7 @@ export default function ProgrammingClient({ orgId }: { orgId: string }) {
         <StateManagerProvider>
           <div className="space-y-4">
             <div className="flex items-center justify-between mb-4">
-              <h1 className="text-2xl font-bold">{t('programming')}</h1>
+              <h1 className="text-heading-3 text-heading-3">{t('programming')}</h1>
               <div className="flex items-center gap-2">
                 <ViewSwitcher />
                 <DataActions />

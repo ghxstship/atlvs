@@ -15,20 +15,20 @@ export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
 const toggleVariants = {
   variant: {
     default: {
-      track: 'bg-gray-200 dark:bg-gray-700 peer-checked:bg-blue-600 peer-focus:ring-blue-300',
-      thumb: 'bg-white',
+      track: 'bg-muted peer-checked:bg-primary peer-focus:ring-primary/30',
+      thumb: 'bg-background',
     },
     success: {
-      track: 'bg-gray-200 dark:bg-gray-700 peer-checked:bg-green-600 peer-focus:ring-green-300',
-      thumb: 'bg-white',
+      track: 'bg-muted peer-checked:bg-success peer-focus:ring-success/30',
+      thumb: 'bg-background',
     },
     warning: {
-      track: 'bg-gray-200 dark:bg-gray-700 peer-checked:bg-yellow-600 peer-focus:ring-yellow-300',
-      thumb: 'bg-white',
+      track: 'bg-muted peer-checked:bg-warning peer-focus:ring-warning/30',
+      thumb: 'bg-background',
     },
     danger: {
-      track: 'bg-gray-200 dark:bg-gray-700 peer-checked:bg-red-600 peer-focus:ring-red-300',
-      thumb: 'bg-white',
+      track: 'bg-muted peer-checked:bg-destructive peer-focus:ring-destructive/30',
+      thumb: 'bg-background',
     },
   },
   size: {
@@ -65,12 +65,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
 
     const trackVisualClasses = cn(
       'relative rounded-full transition-colors duration-200 ease-in-out',
-      'peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-offset-white dark:peer-focus:ring-offset-gray-900',
+      'peer-focus:ring-2 peer-focus:ring-offset-2 peer-focus:ring-offset-background',
       'cursor-pointer',
       toggleVariants.variant[variant].track,
       toggleVariants.size[size].track,
       (disabled || loading) && 'opacity-50 cursor-not-allowed',
-      error && 'ring-2 ring-red-500'
+      error && 'ring-2 ring-destructive'
     );
 
     const thumbClasses = cn(
@@ -94,7 +94,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
           <div className={thumbClasses} />
           {loading && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-3 h-3 border-2 border-gray-300 border-t-transparent rounded-full animate-spin" />
+              <div className="w-3 h-3 border-2 border-muted-foreground border-t-transparent rounded-full animate-spin" />
             </div>
           )}
         </div>
@@ -109,7 +109,7 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
             {label && (
               <label 
                 className={cn(
-                  'text-sm font-medium text-gray-900 dark:text-gray-100 cursor-pointer',
+                  'text-sm font-medium text-foreground cursor-pointer',
                   (disabled || loading) && 'opacity-50 cursor-not-allowed'
                 )}
                 onClick={() => !disabled && !loading && ref && 'current' in ref && ref.current?.click()}
@@ -118,12 +118,12 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
               </label>
             )}
             {description && (
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
+              <p className="text-sm text-muted-foreground mt-1">
                 {description}
               </p>
             )}
             {error && (
-              <p className="text-sm text-red-600 dark:text-red-400 mt-1">
+              <p className="text-sm text-destructive mt-1">
                 {error}
               </p>
             )}

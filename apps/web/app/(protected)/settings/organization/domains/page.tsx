@@ -14,7 +14,7 @@ export default async function OrgDomainsPage({ searchParams }: { searchParams?: 
     return (
       <div className="container mx-auto p-4">
         <Card title="Organization Domains">
-          <div className="text-sm text-foreground/70">You must be signed in.</div>
+          <div className="text-body-sm color-foreground/70">You must be signed in.</div>
         </Card>
       </div>
     );
@@ -38,7 +38,7 @@ export default async function OrgDomainsPage({ searchParams }: { searchParams?: 
         {orgId ? (
           <DomainsClient orgId={orgId} role={role} suggest={suggest} />
         ) : (
-          <div className="text-sm text-foreground/70">You are not currently a member of an active organization.</div>
+          <div className="text-body-sm color-foreground/70">You are not currently a member of an active organization.</div>
         )}
       </Card>
     </div>

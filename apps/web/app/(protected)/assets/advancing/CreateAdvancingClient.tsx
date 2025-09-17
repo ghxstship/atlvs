@@ -173,13 +173,13 @@ export default function CreateAdvancingClient({
         {/* Asset & Personnel */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Asset & Personnel</h3>
+            <TrendingUp className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Asset & Personnel</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Asset ID *
               </label>
               <Input
@@ -192,7 +192,7 @@ export default function CreateAdvancingClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <UserIcon className="h-4 w-4 inline mr-1" />
                   Advanced To *
                 </label>
@@ -205,7 +205,7 @@ export default function CreateAdvancingClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Advanced By
                 </label>
                 <Input
@@ -221,14 +221,14 @@ export default function CreateAdvancingClient({
         {/* Dates & Timeline */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Dates & Timeline</h3>
+            <Calendar className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Dates & Timeline</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Advance Date *
                 </label>
                 <Input
@@ -240,7 +240,7 @@ export default function CreateAdvancingClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Expected Return Date
                 </label>
                 <Input
@@ -256,13 +256,13 @@ export default function CreateAdvancingClient({
         {/* Purpose & Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <UserIcon className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Purpose & Details</h3>
+            <UserIcon className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Purpose & Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Purpose *
               </label>
               <Textarea
@@ -275,7 +275,7 @@ export default function CreateAdvancingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Status
               </label>
               <Select
@@ -295,14 +295,14 @@ export default function CreateAdvancingClient({
         {/* Financial Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Financial Information</h3>
+            <DollarSign className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Financial Information</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Amount
                 </label>
                 <Input
@@ -315,7 +315,7 @@ export default function CreateAdvancingClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Currency
                 </label>
                 <Select
@@ -332,7 +332,7 @@ export default function CreateAdvancingClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

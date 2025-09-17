@@ -1,2 +1,2 @@
 export * from './posthog';
-export { PostHogProvider } from './provider';
+// export { PostHogProvider } from './provider';

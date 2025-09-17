@@ -126,14 +126,14 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="item_type" className="text-sm font-medium">Item Type *</label>
+            <label htmlFor="item_type" className="text-body-sm form-label">Item Type *</label>
             <select 
               id="item_type" 
               className="rounded border px-2 py-1" 
@@ -152,7 +152,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="item_name" className="text-sm font-medium">Item Name *</label>
+            <label htmlFor="item_name" className="text-body-sm form-label">Item Name *</label>
             <input 
               id="item_name" 
               className="rounded border px-2 py-1" 
@@ -161,12 +161,12 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               placeholder="e.g. Navy Blue Polo Shirt, Safety Helmet"
               aria-invalid={!!form.formState.errors.item_name} 
             />
-            {form.formState.errors.item_name ? <div className="text-xs text-destructive">{String(form.formState.errors.item_name.message)}</div> : null}
+            {form.formState.errors.item_name ? <div className="text-body-sm color-destructive">{String(form.formState.errors.item_name.message)}</div> : null}
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="size" className="text-sm font-medium">Size</label>
+              <label htmlFor="size" className="text-body-sm form-label">Size</label>
               <input 
                 id="size" 
                 className="rounded border px-2 py-1" 
@@ -177,7 +177,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="color" className="text-sm font-medium">Color</label>
+              <label htmlFor="color" className="text-body-sm form-label">Color</label>
               <input 
                 id="color" 
                 className="rounded border px-2 py-1" 
@@ -189,7 +189,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="condition" className="text-sm font-medium">Condition *</label>
+            <label htmlFor="condition" className="text-body-sm form-label">Condition *</label>
             <select 
               id="condition" 
               className="rounded border px-2 py-1" 
@@ -206,7 +206,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="purchase_date" className="text-sm font-medium">Purchase Date</label>
+              <label htmlFor="purchase_date" className="text-body-sm form-label">Purchase Date</label>
               <input 
                 id="purchase_date" 
                 type="date" 
@@ -217,7 +217,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="purchase_price" className="text-sm font-medium">Purchase Price ($)</label>
+              <label htmlFor="purchase_price" className="text-body-sm form-label">Purchase Price ($)</label>
               <input 
                 id="purchase_price" 
                 type="number" 
@@ -232,7 +232,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="supplier" className="text-sm font-medium">Supplier/Brand</label>
+            <label htmlFor="supplier" className="text-body-sm form-label">Supplier/Brand</label>
             <input 
               id="supplier" 
               className="rounded border px-2 py-1" 
@@ -243,7 +243,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="care_instructions" className="text-sm font-medium">Care Instructions</label>
+            <label htmlFor="care_instructions" className="text-body-sm form-label">Care Instructions</label>
             <textarea 
               id="care_instructions" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -254,7 +254,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="replacement_due" className="text-sm font-medium">Replacement Due Date</label>
+            <label htmlFor="replacement_due" className="text-body-sm form-label">Replacement Due Date</label>
             <input 
               id="replacement_due" 
               type="date" 
@@ -271,11 +271,11 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               checked={form.getValues('is_required')} 
               onChange={(e) => form.setValue('is_required', e.target.checked, { shouldDirty: true })} 
             />
-            <label htmlFor="is_required" className="text-sm font-medium">This is a required uniform item</label>
+            <label htmlFor="is_required" className="text-body-sm form-label">This is a required uniform item</label>
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="notes" className="text-sm font-medium">Notes</label>
+            <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
               className="rounded border px-2 py-1 min-h-[60px]" 

@@ -77,19 +77,19 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
         <Plus className="mr-1 h-4 w-4" /> New Project
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="New Project" description={submitting ? 'Saving…' : undefined}>
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
           <div className="grid gap-1">
-            <label htmlFor="name" className="text-sm">{t('grid.name')}</label>
+            <label htmlFor="name" className="text-body-sm">{t('grid.name')}</label>
             <input id="name" className="rounded border px-2 py-1" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
-            {form.formState.errors.name ? <div className="text-xs text-destructive">{String(form.formState.errors.name.message)}</div> : null}
+            {form.formState.errors.name ? <div className="text-body-sm color-destructive">{String(form.formState.errors.name.message)}</div> : null}
           </div>
           <div className="grid gap-1">
-            <label htmlFor="status" className="text-sm">{t('grid.status')}</label>
+            <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
             <input id="status" className="rounded border px-2 py-1" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
           </div>
           <div className="grid gap-1">
-            <label htmlFor="starts_at" className="text-sm">{t('grid.startsAt')}</label>
+            <label htmlFor="starts_at" className="text-body-sm">{t('grid.startsAt')}</label>
             <input id="starts_at" type="date" className="rounded border px-2 py-1" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
           </div>
           <div className="flex items-center justify-end gap-2 pt-2 border-t">

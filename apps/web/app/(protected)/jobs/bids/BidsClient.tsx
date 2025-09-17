@@ -101,34 +101,34 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       case 'submitted':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'under_review':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'accepted':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'rejected':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       case 'withdrawn':
-        return 'bg-secondary/10 text-secondary-foreground';
+        return 'bg-secondary/10 color-secondary-foreground';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'fixed_price':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'hourly':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'milestone_based':
-        return 'bg-secondary/10 text-secondary-foreground';
+        return 'bg-secondary/10 color-secondary-foreground';
       case 'retainer':
-        return 'bg-accent/10 text-accent-foreground';
+        return 'bg-accent/10 color-accent-foreground';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -159,8 +159,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-muted-foreground">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="color-muted">{translations.subtitle}</p>
           </div>
           <Button onClick={() => setShowCreateDialog(true)}>
             + Create Bid
@@ -173,7 +173,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-muted rounded" />
+                    <div className="h-5 w-5 bg-secondary rounded" />
                     <Skeleton className="h-5 w-48" />
                   </div>
                   <Skeleton className="h-4 w-full mb-2" />
@@ -195,8 +195,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-muted-foreground">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="color-muted">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           + Create Bid
@@ -238,9 +238,9 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
 
       {filteredBids.length === 0 ? (
         <Card className="p-12 text-center">
-          <div className="h-12 w-12 bg-muted rounded mx-auto mb-4" />
-          <h3 className="text-lg font-medium text-foreground mb-2">No bids found</h3>
-          <p className="text-muted-foreground mb-4">
+          <div className="h-12 w-12 bg-secondary rounded mx-auto mb-4" />
+          <h3 className="text-body form-label color-foreground mb-2">No bids found</h3>
+          <p className="color-muted mb-4">
             {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
               ? 'Try adjusting your search or filters to find bids.'
               : 'Get started by creating your first bid.'}
@@ -256,8 +256,8 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="h-5 w-5 bg-muted rounded" />
-                    <h3 className="text-lg font-semibold text-foreground">{bid.title}</h3>
+                    <div className="h-5 w-5 bg-secondary rounded" />
+                    <h3 className="text-body text-heading-4 color-foreground">{bid.title}</h3>
                     <Badge className={getStatusColor(bid.status)}>
                       {bid.status}
                     </Badge>
@@ -267,30 +267,30 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                   </div>
 
                   {bid.description && (
-                    <p className="text-muted-foreground mb-4 line-clamp-2">{bid.description}</p>
+                    <p className="color-muted mb-4 line-clamp-2">{bid.description}</p>
                   )}
 
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm mb-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-body-sm mb-4">
                     <div className="flex items-center gap-2">
-                      <div className="h-4 w-4 bg-muted rounded" />
-                      <span className="font-medium">${bid.amount.toLocaleString()} {bid.currency}</span>
+                      <div className="h-4 w-4 bg-secondary rounded" />
+                      <span className="form-label">${bid.amount.toLocaleString()} {bid.currency}</span>
                     </div>
                     {bid.estimatedDuration && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-muted rounded" />
+                        <div className="h-4 w-4 bg-secondary rounded" />
                         <span>{bid.estimatedDuration}</span>
                       </div>
                     )}
                     {bid.responseDeadline && (
                       <div className="flex items-center gap-2">
-                        <div className="h-4 w-4 bg-muted rounded" />
+                        <div className="h-4 w-4 bg-secondary rounded" />
                         <span>{new Date(bid.responseDeadline).toLocaleDateString()}</span>
                       </div>
                     )}
                   </div>
 
                   <div className="flex items-center justify-between pt-4 border-t">
-                    <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-4 text-body-sm color-muted">
                       {bid.createdAt && (
                         <span>Created {new Date(bid.createdAt).toLocaleDateString()}</span>
                       )}
@@ -316,9 +316,9 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
 
       {/* Create Dialog */}
       {showCreateDialog && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-          <div className="bg-white rounded-lg p-6 w-full max-w-md">
-            <h3 className="text-lg font-semibold mb-4">Create New Bid</h3>
+        <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+          <div className="bg-background rounded-lg p-6 w-full max-w-md">
+            <h3 className="text-body text-heading-4 mb-4">Create New Bid</h3>
             <form onSubmit={(e) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
@@ -334,15 +334,15 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
             }}>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Title</label>
+                  <label className="block text-body-sm form-label mb-1">Title</label>
                   <Input name="title" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Description</label>
+                  <label className="block text-body-sm form-label mb-1">Description</label>
                   <textarea name="description" className="w-full p-2 border border-border rounded bg-background" rows={3} />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Type</label>
+                  <label className="block text-body-sm form-label mb-1">Type</label>
                   <select name="type" className="w-full p-2 border border-border rounded bg-background" required>
                     {TYPE_OPTIONS.slice(1).map((option) => (
                       <option key={option.value} value={option.value}>
@@ -352,11 +352,11 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Amount</label>
+                  <label className="block text-body-sm form-label mb-1">Amount</label>
                   <Input name="amount" type="number" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Opportunity ID</label>
+                  <label className="block text-body-sm form-label mb-1">Opportunity ID</label>
                   <Input name="opportunityId" required />
                 </div>
               </div>

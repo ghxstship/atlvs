@@ -13,64 +13,60 @@ import { DESIGN_TOKENS, COMPONENT_SIZES } from './DesignSystem';
 // =============================================================================
 
 // Universal Button System
-export const buttonVariants = cva(
+  export const buttonVariants = cva(
   [
     'inline-flex items-center justify-center gap-2 rounded-lg font-medium transition-all duration-200',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
     'disabled:pointer-events-none disabled:opacity-50',
     'relative overflow-hidden',
     // Ripple effect base
-    'before:absolute before:inset-0 before:rounded-lg before:bg-white/20 before:opacity-0 before:transition-opacity',
+    'before:absolute before:inset-0 before:rounded-lg before:bg-foreground/15 before:opacity-0 before:transition-opacity',
     'active:before:opacity-100 active:before:duration-75',
   ],
   {
     variants: {
       variant: {
         primary: [
-          'bg-brand-600 text-white shadow-sm',
-          'hover:bg-brand-700 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-brand-500',
-          'active:bg-brand-800 active:translate-y-0 active:shadow-sm',
+          'bg-primary text-primary-foreground shadow-sm',
+          'hover:bg-primary/90 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-primary',
+          'active:bg-primary/95 active:translate-y-0 active:shadow-sm',
         ],
         secondary: [
-          'bg-neutral-100 text-neutral-900 shadow-sm border border-neutral-200',
-          'hover:bg-neutral-200 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-neutral-500',
-          'active:bg-neutral-300 active:translate-y-0 active:shadow-sm',
-          'dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700',
-          'dark:hover:bg-neutral-700',
+          'bg-secondary text-secondary-foreground shadow-sm border border-border',
+          'hover:bg-secondary/90 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-secondary',
+          'active:bg-secondary/95 active:translate-y-0 active:shadow-sm',
         ],
         outline: [
-          'border-2 border-brand-600 text-brand-600 bg-transparent',
-          'hover:bg-brand-50 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-brand-500',
-          'active:bg-brand-100 active:translate-y-0 active:shadow-sm',
-          'dark:border-brand-400 dark:text-brand-400 dark:hover:bg-brand-950',
+          'border-2 border-primary text-primary bg-transparent',
+          'hover:bg-primary/10 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-primary',
+          'active:bg-primary/15 active:translate-y-0 active:shadow-sm',
         ],
         ghost: [
-          'text-neutral-700 bg-transparent',
-          'hover:bg-neutral-100 hover:text-neutral-900',
-          'focus-visible:ring-neutral-500',
-          'active:bg-neutral-200',
-          'dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
+          'text-foreground bg-transparent',
+          'hover:bg-muted hover:text-foreground',
+          'focus-visible:ring-primary',
+          'active:bg-muted/70',
         ],
         destructive: [
-          'bg-error-600 text-white shadow-sm',
-          'hover:bg-error-700 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-error-500',
-          'active:bg-error-800 active:translate-y-0 active:shadow-sm',
+          'bg-destructive text-destructive-foreground shadow-sm',
+          'hover:bg-destructive/90 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-destructive',
+          'active:bg-destructive/95 active:translate-y-0 active:shadow-sm',
         ],
         success: [
-          'bg-success-600 text-white shadow-sm',
-          'hover:bg-success-700 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-success-500',
-          'active:bg-success-800 active:translate-y-0 active:shadow-sm',
+          'bg-success text-success-foreground shadow-sm',
+          'hover:bg-success/90 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-success',
+          'active:bg-success/95 active:translate-y-0 active:shadow-sm',
         ],
         warning: [
-          'bg-warning-600 text-white shadow-sm',
-          'hover:bg-warning-700 hover:shadow-md hover:-translate-y-0.5',
-          'focus-visible:ring-warning-500',
-          'active:bg-warning-800 active:translate-y-0 active:shadow-sm',
+          'bg-warning text-warning-foreground shadow-sm',
+          'hover:bg-warning/90 hover:shadow-md hover:-translate-y-0.5',
+          'focus-visible:ring-warning',
+          'active:bg-warning/95 active:translate-y-0 active:shadow-sm',
         ],
       },
       size: {
@@ -101,30 +97,24 @@ export const buttonVariants = cva(
 // Universal Input System
 export const inputVariants = cva(
   [
-    'flex w-full rounded-lg border bg-white px-3 py-2 text-sm transition-all duration-200',
-    'placeholder:text-neutral-500 focus:outline-none focus:ring-2 focus:ring-offset-1',
-    'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-neutral-50',
-    'dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100',
-    'dark:placeholder:text-neutral-400 dark:disabled:bg-neutral-900',
+    'flex w-full rounded-lg border bg-background px-3 py-2 text-sm transition-all duration-200',
+    'placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-offset-1',
+    'disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-muted/30',
   ],
   {
     variants: {
       variant: {
         default: [
-          'border-neutral-300 focus:border-brand-500 focus:ring-brand-500/20',
-          'dark:border-neutral-600 dark:focus:border-brand-400',
+          'border-border focus:border-primary focus:ring-primary/20',
         ],
         error: [
-          'border-error-300 focus:border-error-500 focus:ring-error-500/20',
-          'dark:border-error-600 dark:focus:border-error-400',
+          'border-destructive focus:border-destructive focus:ring-destructive/20',
         ],
         success: [
-          'border-success-300 focus:border-success-500 focus:ring-success-500/20',
-          'dark:border-success-600 dark:focus:border-success-400',
+          'border-success focus:border-success focus:ring-success/20',
         ],
         warning: [
-          'border-warning-300 focus:border-warning-500 focus:ring-warning-500/20',
-          'dark:border-warning-600 dark:focus:border-warning-400',
+          'border-warning focus:border-warning focus:ring-warning/20',
         ],
       },
       size: {
@@ -150,32 +140,25 @@ export const badgeVariants = cva(
     variants: {
       variant: {
         default: [
-          'bg-neutral-100 text-neutral-800 border border-neutral-200',
-          'dark:bg-neutral-800 dark:text-neutral-200 dark:border-neutral-700',
+          'bg-secondary text-secondary-foreground border border-border',
         ],
         primary: [
-          'bg-brand-100 text-brand-800 border border-brand-200',
-          'dark:bg-brand-900 dark:text-brand-200 dark:border-brand-800',
+          'bg-primary/10 text-primary border border-primary/20',
         ],
         secondary: [
-          'bg-neutral-100 text-neutral-600 border border-neutral-200',
-          'dark:bg-neutral-800 dark:text-neutral-400 dark:border-neutral-700',
+          'bg-muted text-foreground border border-border',
         ],
         success: [
-          'bg-success-100 text-success-800 border border-success-200',
-          'dark:bg-success-900 dark:text-success-200 dark:border-success-800',
+          'bg-success/10 text-success border border-success/20',
         ],
         warning: [
-          'bg-warning-100 text-warning-800 border border-warning-200',
-          'dark:bg-warning-900 dark:text-warning-200 dark:border-warning-800',
+          'bg-warning/10 text-warning border border-warning/20',
         ],
         error: [
-          'bg-error-100 text-error-800 border border-error-200',
-          'dark:bg-error-900 dark:text-error-200 dark:border-error-800',
+          'bg-destructive/10 text-destructive border border-destructive/20',
         ],
         outline: [
-          'bg-transparent text-neutral-700 border border-neutral-300',
-          'dark:text-neutral-300 dark:border-neutral-600',
+          'bg-transparent text-foreground border border-border',
         ],
       },
       size: {
@@ -204,35 +187,29 @@ export const badgeVariants = cva(
 // Universal Card System
 export const cardVariants = cva(
   [
-    'rounded-lg border bg-white shadow-sm transition-all duration-200',
-    'dark:bg-neutral-800 dark:border-neutral-700',
+    'rounded-lg border bg-card shadow-sm transition-all duration-200',
   ],
   {
     variants: {
       variant: {
         default: [
-          'border-neutral-200',
-          'dark:border-neutral-700',
+          'border-border',
         ],
         elevated: [
-          'border-neutral-200 shadow-md',
+          'border-border shadow-md',
           'hover:shadow-lg hover:-translate-y-1',
-          'dark:border-neutral-700',
         ],
         interactive: [
-          'border-neutral-200 cursor-pointer',
-          'hover:border-brand-300 hover:shadow-md hover:-translate-y-0.5',
-          'focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500',
-          'dark:border-neutral-700 dark:hover:border-brand-600',
+          'border-border cursor-pointer',
+          'hover:border-primary/50 hover:shadow-md hover:-translate-y-0.5',
+          'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary',
         ],
         outline: [
-          'border-2 border-brand-200 bg-brand-50/50',
-          'dark:border-brand-800 dark:bg-brand-950/50',
+          'border-2 border-primary/20 bg-primary/5',
         ],
         ghost: [
           'border-transparent bg-transparent shadow-none',
-          'hover:bg-neutral-50 hover:border-neutral-200',
-          'dark:hover:bg-neutral-800 dark:hover:border-neutral-700',
+          'hover:bg-muted hover:border-border',
         ],
       },
       padding: {
@@ -252,8 +229,7 @@ export const cardVariants = cva(
 // Universal Avatar System
 export const avatarVariants = cva(
   [
-    'relative inline-flex items-center justify-center overflow-hidden rounded-full bg-neutral-100',
-    'dark:bg-neutral-800',
+    'relative inline-flex items-center justify-center overflow-hidden rounded-full bg-muted',
   ],
   {
     variants: {
@@ -267,8 +243,8 @@ export const avatarVariants = cva(
       },
       variant: {
         default: '',
-        ring: 'ring-2 ring-white ring-offset-2 dark:ring-neutral-800',
-        'ring-brand': 'ring-2 ring-brand-500 ring-offset-2',
+        ring: 'ring-2 ring-background ring-offset-2',
+        'ring-brand': 'ring-2 ring-primary ring-offset-2',
       },
     },
     defaultVariants: {
@@ -281,7 +257,7 @@ export const avatarVariants = cva(
 // Universal Skeleton System
 export const skeletonVariants = cva(
   [
-    'animate-pulse rounded bg-neutral-200 dark:bg-neutral-700',
+    'animate-pulse rounded bg-muted',
   ],
   {
     variants: {
@@ -308,9 +284,9 @@ export const skeletonVariants = cva(
 export const stateVariants = {
   loading: 'opacity-50 pointer-events-none cursor-wait',
   disabled: 'opacity-50 pointer-events-none cursor-not-allowed',
-  error: 'border-error-300 bg-error-50 text-error-900 dark:border-error-600 dark:bg-error-950 dark:text-error-100',
-  success: 'border-success-300 bg-success-50 text-success-900 dark:border-success-600 dark:bg-success-950 dark:text-success-100',
-  warning: 'border-warning-300 bg-warning-50 text-warning-900 dark:border-warning-600 dark:bg-warning-950 dark:text-warning-100',
+  error: 'border-destructive bg-destructive/10 text-destructive-foreground',
+  success: 'border-success bg-success/10 text-success-foreground',
+  warning: 'border-warning bg-warning/10 text-warning-foreground',
 };
 
 // =============================================================================
@@ -343,7 +319,7 @@ export const animationVariants = {
   // Hover effects
   hoverScale: 'hover:scale-105 transition-transform duration-200',
   hoverLift: 'hover:-translate-y-1 hover:shadow-lg transition-all duration-200',
-  hoverGlow: 'hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-200',
+  hoverGlow: 'hover:shadow-lg hover:shadow-primary/25 transition-all duration-200',
 };
 
 // =============================================================================
@@ -422,10 +398,10 @@ export const withDefaults = <T extends Record<string, any>>(
 // =============================================================================
 
 export const a11yVariants = {
-  focusRing: 'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2',
+  focusRing: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
   srOnly: 'sr-only',
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-md',
-  highContrast: 'contrast-more:border-black contrast-more:text-black dark:contrast-more:border-white dark:contrast-more:text-white',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md',
+  highContrast: 'contrast-more:border-foreground contrast-more:text-foreground',
   reducedMotion: 'motion-reduce:animate-none motion-reduce:transition-none',
 };
 

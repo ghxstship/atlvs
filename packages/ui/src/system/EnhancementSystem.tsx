@@ -44,7 +44,7 @@ const animationVariants = cva('', {
     hover: {
       lift: 'hover:-translate-y-1 hover:shadow-lg transition-all duration-200 ease-out',
       scale: 'hover:scale-105 transition-transform duration-200 ease-out',
-      glow: 'hover:shadow-lg hover:shadow-brand-500/25 transition-all duration-200 ease-out',
+      glow: 'hover:shadow-lg hover:shadow-primary/25 transition-all duration-200 ease-out',
       rotate: 'hover:rotate-3 transition-transform duration-200 ease-out',
       skew: 'hover:skew-x-3 transition-transform duration-200 ease-out',
       pulse: 'hover:animate-pulse',
@@ -54,8 +54,8 @@ const animationVariants = cva('', {
     
     // Focus animations
     focus: {
-      ring: 'focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 transition-all duration-200',
-      glow: 'focus:shadow-lg focus:shadow-brand-500/50 transition-all duration-200',
+      ring: 'focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200',
+      glow: 'focus:shadow-lg focus:shadow-primary/50 transition-all duration-200',
       scale: 'focus:scale-105 transition-transform duration-200',
       lift: 'focus:-translate-y-0.5 focus:shadow-md transition-all duration-200',
     },
@@ -73,7 +73,7 @@ const animationVariants = cva('', {
     
     // Micro-interactions
     micro: {
-      ripple: 'relative overflow-hidden before:absolute before:inset-0 before:bg-white/20 before:opacity-0 before:transition-opacity active:before:opacity-100 active:before:duration-75',
+      ripple: 'relative overflow-hidden before:absolute before:inset-0 before:bg-foreground/15 before:opacity-0 before:transition-opacity active:before:opacity-100 active:before:duration-75',
       press: 'active:scale-95 transition-transform duration-75',
       tap: 'active:brightness-90 transition-all duration-75',
       elastic: 'active:scale-110 transition-transform duration-150 ease-elastic',
@@ -369,7 +369,7 @@ const enhancedButtonVariants = cva(
     'disabled:pointer-events-none disabled:opacity-50',
     'relative overflow-hidden',
     // Ripple effect
-    'before:absolute before:inset-0 before:rounded-lg before:bg-white/20 before:opacity-0 before:transition-opacity',
+    'before:absolute before:inset-0 before:rounded-lg before:bg-foreground/15 before:opacity-0 before:transition-opacity',
     'active:before:opacity-100 active:before:duration-75',
     // Micro-animations
     'hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:scale-95',
@@ -380,25 +380,22 @@ const enhancedButtonVariants = cva(
     variants: {
       variant: {
         primary: [
-          'bg-brand-600 text-white shadow-sm',
-          'hover:bg-brand-700 hover:shadow-lg',
-          'focus-visible:ring-brand-500',
-          'active:bg-brand-800',
+          'bg-primary text-primary-foreground shadow-sm',
+          'hover:bg-primary/90 hover:shadow-lg',
+          'focus-visible:ring-primary',
+          'active:bg-primary/95',
         ],
         secondary: [
-          'bg-neutral-100 text-neutral-900 shadow-sm border border-neutral-200',
-          'hover:bg-neutral-200 hover:shadow-md',
-          'focus-visible:ring-neutral-500',
-          'active:bg-neutral-300',
-          'dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700',
-          'dark:hover:bg-neutral-700',
+          'bg-secondary text-secondary-foreground shadow-sm border border-border',
+          'hover:bg-secondary/90 hover:shadow-md',
+          'focus-visible:ring-secondary',
+          'active:bg-secondary/95',
         ],
         ghost: [
-          'text-neutral-700 bg-transparent',
-          'hover:bg-neutral-100 hover:text-neutral-900',
-          'focus-visible:ring-neutral-500',
-          'active:bg-neutral-200',
-          'dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:text-neutral-100',
+          'text-foreground bg-transparent',
+          'hover:bg-muted hover:text-foreground',
+          'focus-visible:ring-primary',
+          'active:bg-muted/70',
         ],
       },
       size: {
@@ -424,34 +421,32 @@ const enhancedButtonVariants = cva(
 // Enhanced Card with 2026 features
 const enhancedCardVariants = cva(
   [
-    'rounded-lg border bg-white shadow-sm transition-all duration-300',
-    'dark:bg-neutral-800 dark:border-neutral-700',
+    'rounded-lg border bg-card shadow-sm transition-all duration-300',
     // Hover effects
     'hover:shadow-md hover:-translate-y-1',
     // Focus effects
-    'focus-within:ring-2 focus-within:ring-brand-500/20',
+    'focus-within:ring-2 focus-within:ring-primary/20',
     // Accessibility
     'motion-reduce:transition-none motion-reduce:hover:transform-none',
   ],
   {
     variants: {
       variant: {
-        default: 'border-neutral-200',
+        default: 'border-border',
         elevated: 'shadow-lg hover:shadow-xl',
         interactive: [
-          'cursor-pointer border-neutral-200',
-          'hover:border-brand-300 hover:shadow-lg',
+          'cursor-pointer border-border',
+          'hover:border-primary/50 hover:shadow-lg',
           'active:scale-98',
         ],
         glass: [
-          'bg-white/80 backdrop-blur-sm border-white/20',
-          'dark:bg-neutral-800/80 dark:border-neutral-700/20',
+          'bg-background/80 backdrop-blur-sm border-border/50',
         ],
       },
       animation: {
         none: '',
         lift: 'hover:-translate-y-2 hover:shadow-xl',
-        glow: 'hover:shadow-lg hover:shadow-brand-500/25',
+        glow: 'hover:shadow-lg hover:shadow-primary/25',
         scale: 'hover:scale-105',
       },
     },
@@ -468,8 +463,8 @@ const enhancedCardVariants = cva(
 
 export const a11yEnhancements = {
   // Focus management
-  focusTrap: 'focus-within:ring-2 focus-within:ring-brand-500 focus-within:ring-offset-2',
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-md',
+  focusTrap: 'focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md',
   
   // Screen reader support
   srOnly: 'sr-only',
@@ -477,13 +472,13 @@ export const a11yEnhancements = {
   assertive: '[aria-live="assertive"]',
   
   // High contrast support
-  highContrast: 'contrast-more:border-black contrast-more:text-black dark:contrast-more:border-white dark:contrast-more:text-white',
+  highContrast: 'contrast-more:border-foreground contrast-more:text-foreground',
   
   // Reduced motion support
   reducedMotion: 'motion-reduce:animate-none motion-reduce:transition-none motion-reduce:transform-none',
   
   // Keyboard navigation
-  keyboardFocus: 'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 rounded',
+  keyboardFocus: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded',
   
   // Touch targets
   touchTarget: 'min-h-[44px] min-w-[44px]',

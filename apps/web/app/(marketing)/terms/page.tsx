@@ -21,13 +21,13 @@ export default function TermsOfServicePage() {
           <Badge variant="outline" className="mb-4">
             Legal
           </Badge>
-          <h1 className="font-title text-4xl lg:text-5xl font-bold mb-6">
+          <h1 className="font-title text-heading-1 lg:text-display text-heading-3 mb-6">
             TERMS OF SERVICE
           </h1>
-          <p className="text-lg text-muted-foreground mb-4">
+          <p className="text-body color-muted mb-4">
             These terms govern your use of GHXSTSHIP's services and platform.
           </p>
-          <p className="text-sm text-muted-foreground">
+          <p className="text-body-sm color-muted">
             Last updated: December 15, 2024
           </p>
         </div>
@@ -36,29 +36,29 @@ export default function TermsOfServicePage() {
         <Card className="mb-12 bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-8">
             <div className="flex items-center gap-3 mb-6">
-              <Scale className="h-8 w-8 text-primary" />
-              <h2 className="font-title text-2xl font-bold">Terms Summary</h2>
+              <Scale className="h-8 w-8 color-primary" />
+              <h2 className="font-title text-heading-3 text-heading-3">Terms Summary</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="flex items-start gap-3">
-                <FileText className="h-5 w-5 text-primary mt-1" />
+                <FileText className="h-5 w-5 color-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-2">Your Agreement</h3>
-                  <p className="text-sm text-muted-foreground">By using our services, you agree to these terms and our privacy policy.</p>
+                  <h3 className="text-heading-4 mb-2">Your Agreement</h3>
+                  <p className="text-body-sm color-muted">By using our services, you agree to these terms and our privacy policy.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Shield className="h-5 w-5 text-primary mt-1" />
+                <Shield className="h-5 w-5 color-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-2">Your Responsibilities</h3>
-                  <p className="text-sm text-muted-foreground">Use our platform lawfully and respect other users' rights.</p>
+                  <h3 className="text-heading-4 mb-2">Your Responsibilities</h3>
+                  <p className="text-body-sm color-muted">Use our platform lawfully and respect other users' rights.</p>
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <AlertTriangle className="h-5 w-5 text-primary mt-1" />
+                <AlertTriangle className="h-5 w-5 color-primary mt-1" />
                 <div>
-                  <h3 className="font-semibold mb-2">Important Limits</h3>
-                  <p className="text-sm text-muted-foreground">Our liability is limited and disputes are resolved through arbitration.</p>
+                  <h3 className="text-heading-4 mb-2">Important Limits</h3>
+                  <p className="text-body-sm color-muted">Our liability is limited and disputes are resolved through arbitration.</p>
                 </div>
               </div>
             </div>
@@ -69,42 +69,42 @@ export default function TermsOfServicePage() {
         <div className="space-y-12">
           {/* Acceptance of Terms */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">1. Acceptance of Terms</h2>
-            <p className="text-muted-foreground mb-4">
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">1. Acceptance of Terms</h2>
+            <p className="color-muted mb-4">
               By accessing or using GHXSTSHIP's services, you agree to be bound by these Terms of Service ("Terms") and our Privacy Policy. If you disagree with any part of these terms, you may not access our services.
             </p>
-            <p className="text-muted-foreground">
+            <p className="color-muted">
               These Terms apply to all visitors, users, and others who access or use our service, including our website, mobile applications, and API.
             </p>
           </section>
 
           {/* Description of Service */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">2. Description of Service</h2>
-            <p className="text-muted-foreground mb-4">
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">2. Description of Service</h2>
+            <p className="color-muted mb-4">
               GHXSTSHIP provides cloud-based production management software including:
             </p>
-            <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4 mb-4">
+            <ul className="list-disc list-inside space-y-2 color-muted ml-4 mb-4">
               <li>ATLVS - Production management and workflow tools</li>
               <li>OPENDECK - Creative asset management platform</li>
               <li>Related APIs, integrations, and support services</li>
             </ul>
-            <p className="text-muted-foreground">
+            <p className="color-muted">
               We reserve the right to modify, suspend, or discontinue any part of our service at any time with reasonable notice.
             </p>
           </section>
 
           {/* User Accounts */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">3. User Accounts</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">3. User Accounts</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-lg mb-3">Account Registration</h3>
-                <p className="text-muted-foreground mb-3">
+                <h3 className="text-heading-4 text-body mb-3">Account Registration</h3>
+                <p className="color-muted mb-3">
                   To use our services, you must:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
                   <li>Provide accurate and complete information</li>
                   <li>Be at least 18 years old or have parental consent</li>
                   <li>Maintain the security of your account credentials</li>
@@ -113,8 +113,8 @@ export default function TermsOfServicePage() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-3">Account Responsibility</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 text-body mb-3">Account Responsibility</h3>
+                <p className="color-muted">
                   You are responsible for all activities that occur under your account. You agree to use strong passwords and enable two-factor authentication when available.
                 </p>
               </div>
@@ -123,15 +123,15 @@ export default function TermsOfServicePage() {
 
           {/* Acceptable Use */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">4. Acceptable Use Policy</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">4. Acceptable Use Policy</h2>
             
             <Card className="bg-destructive/10 border-destructive/20 mb-6">
               <CardContent className="p-6">
                 <div className="flex items-start gap-3">
-                  <AlertTriangle className="h-6 w-6 text-destructive mt-1" />
+                  <AlertTriangle className="h-6 w-6 color-destructive mt-1" />
                   <div>
-                    <h3 className="font-semibold text-destructive mb-2">Prohibited Activities</h3>
-                    <p className="text-sm text-destructive/80">
+                    <h3 className="text-heading-4 color-destructive mb-2">Prohibited Activities</h3>
+                    <p className="text-body-sm color-destructive/80">
                       The following activities are strictly prohibited and may result in immediate account termination.
                     </p>
                   </div>
@@ -141,8 +141,8 @@ export default function TermsOfServicePage() {
 
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">You may not:</h3>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+                <h3 className="text-heading-4 mb-2">You may not:</h3>
+                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
                   <li>Violate any applicable laws or regulations</li>
                   <li>Infringe on intellectual property rights</li>
                   <li>Upload malicious code or attempt to hack our systems</li>
@@ -158,15 +158,15 @@ export default function TermsOfServicePage() {
 
           {/* Content and Data */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">5. Content and Data</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">5. Content and Data</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-lg mb-3">Your Content</h3>
-                <p className="text-muted-foreground mb-3">
+                <h3 className="text-heading-4 text-body mb-3">Your Content</h3>
+                <p className="color-muted mb-3">
                   You retain ownership of all content you upload to our platform. By using our service, you grant us a limited license to:
                 </p>
-                <ul className="list-disc list-inside space-y-2 text-muted-foreground ml-4">
+                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
                   <li>Store and process your content to provide our services</li>
                   <li>Make backups for data protection and recovery</li>
                   <li>Display your content to authorized team members</li>
@@ -175,15 +175,15 @@ export default function TermsOfServicePage() {
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-3">Content Standards</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 text-body mb-3">Content Standards</h3>
+                <p className="color-muted">
                   All content must comply with applicable laws and our community guidelines. We reserve the right to remove content that violates these terms or is reported by other users.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-3">Data Backup</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 text-body mb-3">Data Backup</h3>
+                <p className="color-muted">
                   While we maintain regular backups, you are responsible for maintaining your own copies of important data. We recommend regular exports of critical information.
                 </p>
               </div>
@@ -192,26 +192,26 @@ export default function TermsOfServicePage() {
 
           {/* Payment Terms */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">6. Payment Terms</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">6. Payment Terms</h2>
             
             <div className="space-y-6">
               <div>
-                <h3 className="font-semibold text-lg mb-3">Subscription Fees</h3>
-                <p className="text-muted-foreground mb-3">
+                <h3 className="text-heading-4 text-body mb-3">Subscription Fees</h3>
+                <p className="color-muted mb-3">
                   Paid plans are billed in advance on a monthly or annual basis. Fees are non-refundable except as required by law or as specified in our refund policy.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-3">Price Changes</h3>
-                <p className="text-muted-foreground mb-3">
+                <h3 className="text-heading-4 text-body mb-3">Price Changes</h3>
+                <p className="color-muted mb-3">
                   We may change our pricing with 30 days' notice. Price changes will not affect your current billing cycle.
                 </p>
               </div>
 
               <div>
-                <h3 className="font-semibold text-lg mb-3">Late Payment</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 text-body mb-3">Late Payment</h3>
+                <p className="color-muted">
                   If payment fails, we may suspend your account after reasonable notice. You remain responsible for all charges incurred before suspension.
                 </p>
               </div>
@@ -220,26 +220,26 @@ export default function TermsOfServicePage() {
 
           {/* Intellectual Property */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">7. Intellectual Property</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">7. Intellectual Property</h2>
             
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Our Rights</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Our Rights</h3>
+                <p className="color-muted">
                   GHXSTSHIP and its licensors own all rights to our platform, including software, designs, trademarks, and documentation. These Terms do not grant you any ownership rights.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">License to Use</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">License to Use</h3>
+                <p className="color-muted">
                   We grant you a limited, non-exclusive, non-transferable license to use our platform in accordance with these Terms and your subscription plan.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Feedback</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Feedback</h3>
+                <p className="color-muted">
                   Any feedback, suggestions, or ideas you provide may be used by us without compensation or attribution.
                 </p>
               </div>
@@ -248,17 +248,17 @@ export default function TermsOfServicePage() {
 
           {/* Privacy and Security */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">8. Privacy and Security</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">8. Privacy and Security</h2>
             
-            <p className="text-muted-foreground mb-4">
+            <p className="color-muted mb-4">
               Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.
             </p>
             
             <div className="grid md:grid-cols-2 gap-6">
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">Data Security</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-3">Data Security</h3>
+                  <p className="text-body-sm color-muted">
                     We implement industry-standard security measures, but cannot guarantee absolute security. You should also take precautions to protect your data.
                   </p>
                 </CardContent>
@@ -266,8 +266,8 @@ export default function TermsOfServicePage() {
               
               <Card>
                 <CardContent className="p-6">
-                  <h3 className="font-semibold mb-3">Data Processing</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="text-heading-4 mb-3">Data Processing</h3>
+                  <p className="text-body-sm color-muted">
                     We process your data in accordance with applicable privacy laws, including GDPR and CCPA where applicable.
                   </p>
                 </CardContent>
@@ -277,15 +277,15 @@ export default function TermsOfServicePage() {
 
           {/* Disclaimers */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">9. Disclaimers</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">9. Disclaimers</h2>
             
             <Card className="bg-warning/10 border-warning/20">
               <CardContent className="p-6">
-                <p className="text-muted-foreground mb-4">
+                <p className="color-muted mb-4">
                   <strong>IMPORTANT:</strong> Our services are provided "as is" without warranties of any kind, either express or implied.
                 </p>
                 
-                <div className="space-y-3 text-sm text-muted-foreground">
+                <div className="space-y-3 text-body-sm color-muted">
                   <p>We disclaim all warranties, including but not limited to:</p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Merchantability and fitness for a particular purpose</li>
@@ -300,15 +300,15 @@ export default function TermsOfServicePage() {
 
           {/* Limitation of Liability */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">10. Limitation of Liability</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">10. Limitation of Liability</h2>
             
             <Card className="bg-destructive/10 border-destructive/20">
               <CardContent className="p-6">
-                <p className="text-muted-foreground mb-4">
+                <p className="color-muted mb-4">
                   <strong>LIABILITY LIMITS:</strong> To the maximum extent permitted by law, GHXSTSHIP's total liability is limited to the amount you paid us in the 12 months preceding the claim.
                 </p>
                 
-                <div className="space-y-3 text-sm text-muted-foreground">
+                <div className="space-y-3 text-body-sm color-muted">
                   <p>We are not liable for:</p>
                   <ul className="list-disc list-inside space-y-1 ml-4">
                     <li>Indirect, incidental, or consequential damages</li>
@@ -323,35 +323,35 @@ export default function TermsOfServicePage() {
 
           {/* Indemnification */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">11. Indemnification</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">11. Indemnification</h2>
             
-            <p className="text-muted-foreground">
+            <p className="color-muted">
               You agree to indemnify and hold harmless GHXSTSHIP from any claims, damages, or expenses arising from your use of our services, violation of these Terms, or infringement of any rights of another party.
             </p>
           </section>
 
           {/* Termination */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">12. Termination</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">12. Termination</h2>
             
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">By You</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">By You</h3>
+                <p className="color-muted">
                   You may terminate your account at any time through your account settings or by contacting us. Termination does not entitle you to a refund of prepaid fees.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">By Us</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">By Us</h3>
+                <p className="color-muted">
                   We may suspend or terminate your account for violation of these Terms, non-payment, or other reasons with reasonable notice when possible.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Effect of Termination</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Effect of Termination</h3>
+                <p className="color-muted">
                   Upon termination, your access will cease and we may delete your data after a reasonable retention period. You should export important data before termination.
                 </p>
               </div>
@@ -360,26 +360,26 @@ export default function TermsOfServicePage() {
 
           {/* Dispute Resolution */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">13. Dispute Resolution</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">13. Dispute Resolution</h2>
             
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Informal Resolution</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Informal Resolution</h3>
+                <p className="color-muted">
                   Before filing any formal dispute, please contact us at legal@ghxstship.com to attempt informal resolution.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Binding Arbitration</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Binding Arbitration</h3>
+                <p className="color-muted">
                   Any disputes will be resolved through binding arbitration rather than in court, except for small claims court matters and intellectual property disputes.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Class Action Waiver</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Class Action Waiver</h3>
+                <p className="color-muted">
                   You agree to resolve disputes individually and waive the right to participate in class actions or representative proceedings.
                 </p>
               </div>
@@ -388,33 +388,33 @@ export default function TermsOfServicePage() {
 
           {/* General Provisions */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">14. General Provisions</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">14. General Provisions</h2>
             
             <div className="space-y-4">
               <div>
-                <h3 className="font-semibold mb-2">Governing Law</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Governing Law</h3>
+                <p className="color-muted">
                   These Terms are governed by the laws of California, United States, without regard to conflict of law principles.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Severability</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Severability</h3>
+                <p className="color-muted">
                   If any provision is found unenforceable, the remaining provisions will continue in full force and effect.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Entire Agreement</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Entire Agreement</h3>
+                <p className="color-muted">
                   These Terms, together with our Privacy Policy, constitute the entire agreement between you and GHXSTSHIP.
                 </p>
               </div>
               
               <div>
-                <h3 className="font-semibold mb-2">Changes to Terms</h3>
-                <p className="text-muted-foreground">
+                <h3 className="text-heading-4 mb-2">Changes to Terms</h3>
+                <p className="color-muted">
                   We may update these Terms from time to time. Material changes will be communicated with reasonable advance notice.
                 </p>
               </div>
@@ -423,19 +423,19 @@ export default function TermsOfServicePage() {
 
           {/* Contact Information */}
           <section>
-            <h2 className="font-title text-2xl font-bold mb-6">15. Contact Information</h2>
+            <h2 className="font-title text-heading-3 text-heading-3 mb-6">15. Contact Information</h2>
             
             <Card>
               <CardContent className="p-6">
                 <div className="flex items-start gap-4">
-                  <Mail className="h-6 w-6 text-primary mt-1" />
+                  <Mail className="h-6 w-6 color-primary mt-1" />
                   <div>
-                    <h3 className="font-semibold mb-3">Questions About These Terms?</h3>
-                    <p className="text-muted-foreground mb-4">
+                    <h3 className="text-heading-4 mb-3">Questions About These Terms?</h3>
+                    <p className="color-muted mb-4">
                       If you have questions about these Terms of Service, please contact us:
                     </p>
                     
-                    <div className="space-y-2 text-sm">
+                    <div className="space-y-2 text-body-sm">
                       <p><strong>Email:</strong> legal@ghxstship.com</p>
                       <p><strong>Address:</strong> GHXSTSHIP, Inc.<br />123 Market Street, Suite 500<br />San Francisco, CA 94105</p>
                       <p><strong>Phone:</strong> +1 (555) 123-4567</p>

@@ -21,7 +21,7 @@ const resourceCategories = [
     icon: FileText,
     href: '/resources/blog',
     count: '25+ Articles',
-    color: 'from-blue-500 to-blue-600',
+    color: 'from-primary to-accent',
   },
   {
     title: 'Case Studies',
@@ -29,7 +29,7 @@ const resourceCategories = [
     icon: TrendingUp,
     href: '/resources/case-studies',
     count: '12 Studies',
-    color: 'from-green-500 to-green-600',
+    color: 'from-primary to-accent',
   },
   {
     title: 'Guides',
@@ -37,7 +37,7 @@ const resourceCategories = [
     icon: BookOpen,
     href: '/resources/guides',
     count: '18 Guides',
-    color: 'from-purple-500 to-purple-600',
+    color: 'from-primary to-accent',
   },
   {
     title: 'Documentation',
@@ -45,7 +45,7 @@ const resourceCategories = [
     icon: Users,
     href: '/resources/documentation',
     count: 'Full Docs',
-    color: 'from-orange-500 to-orange-600',
+    color: 'from-primary to-accent',
   },
   {
     title: 'Whitepapers',
@@ -53,7 +53,7 @@ const resourceCategories = [
     icon: Download,
     href: '/resources/whitepapers',
     count: '8 Papers',
-    color: 'from-red-500 to-red-600',
+    color: 'from-primary to-accent',
   },
 ];
 
@@ -94,13 +94,13 @@ export default function ResourcesPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               RESOURCES FOR
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 PRODUCTION
               </span>
               <br />
               PROFESSIONALS
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Learn from real-world experience managing everything from cruise ship entertainment 
               to Formula 1 events. Get the insights, tools, and strategies that actually work 
               when the pressure's on and everyone's watching.
@@ -129,7 +129,7 @@ export default function ResourcesPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               EXPLORE BY CATEGORY
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Find exactly what you need to level up your production management game.
             </p>
           </div>
@@ -142,20 +142,20 @@ export default function ResourcesPage() {
                   <Card className="hover:shadow-lg transition-all duration-300 group h-full">
                     <CardContent className="p-8">
                       <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                        <Icon className="h-8 w-8 text-white" />
+                        <Icon className="h-8 w-8 text-background" />
                       </div>
                       <div className="flex items-center justify-between mb-3">
-                        <h3 className={`group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                        <h3 className={`group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                           {category.title}
                         </h3>
-                        <Badge variant="secondary" className="text-xs">
+                        <Badge variant="secondary" className="text-body-sm">
                           {category.count}
                         </Badge>
                       </div>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="color-muted mb-4">
                         {category.description}
                       </p>
-                      <div className="flex items-center text-primary text-sm font-medium group-hover:translate-x-1 transition-transform">
+                      <div className="flex items-center color-primary text-body-sm form-label group-hover:translate-x-1 transition-transform">
                         Explore {category.title}
                         <ArrowRight className="ml-1 h-4 w-4" />
                       </div>
@@ -169,13 +169,13 @@ export default function ResourcesPage() {
       </section>
 
       {/* Featured Resources */}
-      <section id="featured" className="py-20 bg-muted/20">
+      <section id="featured" className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               FEATURED RESOURCES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Hand-picked content from our most popular and impactful resources.
             </p>
           </div>
@@ -190,17 +190,17 @@ export default function ResourcesPage() {
                       {resource.type}
                     </Badge>
                   </div>
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {resource.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="color-muted mb-4">
                     {resource.description}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground">
+                    <span className="text-body-sm color-muted">
                       {resource.readTime}
                     </span>
-                    <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                    <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:color-primary-foreground transition-all duration-200">
                       {resource.type === 'Premium' ? 'Unlock' : 'Read'}
                       <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -213,15 +213,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500/5 to-purple-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <Zap className="h-16 w-16 text-primary mx-auto mb-6" />
+              <Zap className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 UNLOCK ALL RESOURCES
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Get unlimited access to our complete library of case studies, guides, whitepapers, 
                 and exclusive content. Learn from real-world experience managing million-dollar productions.
               </p>
@@ -232,13 +232,13 @@ export default function ResourcesPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline" size="lg" className="transition-all duration-200 hover:scale-105">
                     Sign In
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 No credit card required • Full access for 14 days
               </p>
             </CardContent>

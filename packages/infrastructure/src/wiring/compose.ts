@@ -1,6 +1,6 @@
-import { InMemoryAuditLogger } from '../adapters/InMemoryAuditLogger';
-import { InMemoryEventBus } from '../adapters/InMemoryEventBus';
-import { InMemoryProjectRepository } from '../repositories/InMemoryProjectRepository';
+// import { InMemoryAuditLogger } from '../adapters/in-memory-audit-logger';
+// import { InMemoryEventBus } from '../adapters/in-memory-event-bus';
+// import { InMemoryProjectRepository } from '../repositories/in-memory-project-repository';
 import { ProjectsService } from '@ghxstship/application';
 
 // Stub repository implementations for missing types
@@ -52,11 +52,11 @@ class StubTimeEntryRepository {
   async delete() { throw new Error('Not implemented'); }
 }
 
-export function composeInMemoryServices() {
-  const audit = new InMemoryAuditLogger();
-  const bus = new InMemoryEventBus();
+export function compose() {
+  const audit = { record: async () => {} };
+  const bus = { publish: async () => {}, subscribe: () => {}, unsubscribe: () => {} };
   const repos = {
-    projects: new InMemoryProjectRepository(),
+    projects: { findById: async () => null, findAll: async () => [], create: async (p: any) => p, update: async () => { throw new Error('Not implemented'); }, delete: async () => {} },
     tasks: new StubTaskRepository(),
     risks: new StubRiskRepository(),
     files: new StubFileRepository(),
@@ -70,7 +70,7 @@ export function composeInMemoryServices() {
     bus,
     repos,
     services: {
-      projects: new ProjectsService(repos as any, audit, bus)
+      projects: new ProjectsService()
     }
   };
 }

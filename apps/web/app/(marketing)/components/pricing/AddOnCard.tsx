@@ -20,18 +20,18 @@ export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
       <CardContent className="p-6 flex flex-col h-full">
         <div className="text-center mb-6">
           <h3 className={`${typography.cardTitle} mb-3`}>{addon.name}</h3>
-          <p className="text-muted-foreground mb-4 text-sm leading-relaxed">{addon.description}</p>
+          <p className="color-muted mb-4 text-body-sm leading-relaxed">{addon.description}</p>
           <div className="flex items-baseline justify-center gap-2">
-            <span className={`${typography.statValue} text-3xl`}>${addon.price}</span>
-            <span className="text-muted-foreground">/month</span>
+            <span className={`${typography.statValue} text-heading-2`}>${addon.price}</span>
+            <span className="color-muted">/month</span>
           </div>
         </div>
 
         <div className="space-y-3 mb-6 flex-1">
           {addon.features.map((feature) => (
             <div key={feature} className="flex items-start gap-3">
-              <Check className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
-              <span className="text-sm text-foreground leading-relaxed">{feature}</span>
+              <Check className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+              <span className="text-body-sm color-foreground leading-relaxed">{feature}</span>
             </div>
           ))}
         </div>

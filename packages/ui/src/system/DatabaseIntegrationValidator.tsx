@@ -5,7 +5,7 @@
  */
 
 import React, { useEffect, useState, useCallback, useRef } from 'react';
-import { createClient } from '@supabase/supabase-js';
+// import { createClient } from '@supabase/supabase-js';
 
 // =============================================================================
 // DATABASE INTEGRATION VALIDATION TYPES
@@ -59,7 +59,7 @@ export class DatabaseIntegrationValidator {
 
   constructor(supabaseUrl?: string, supabaseKey?: string) {
     if (supabaseUrl && supabaseKey) {
-      this.supabaseClient = createClient(supabaseUrl, supabaseKey);
+      // this.supabaseClient = createClient(supabaseUrl, supabaseKey);
     }
   }
 
@@ -728,18 +728,18 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
   return (
     <div
-      className={`fixed ${positionClasses[position]} z-[9998] bg-gray-900/95 text-white rounded-lg shadow-2xl backdrop-blur-sm transition-all duration-300 ${
+      className={`fixed ${positionClasses[position]} z-[9998] bg-popover/95 text-popover-foreground rounded-lg shadow-2xl backdrop-blur-sm transition-all duration-300 ${
         isMinimized ? 'w-auto' : 'w-[420px]'
       }`}
     >
-      <div className="p-3 border-b border-white/20 flex justify-between items-center bg-gradient-to-r from-blue-600/20 to-purple-600/20">
+      <div className="p-3 border-b border-border/50 flex justify-between items-center bg-gradient-to-r from-primary/20 to-secondary/20">
         <h3 className="text-sm font-semibold flex items-center gap-2">
-          <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+          <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
           Database Integration Monitor
         </h3>
         <button
           onClick={() => setIsMinimized(!isMinimized)}
-          className="text-xs px-2 py-1 rounded hover:bg-white/10"
+          className="text-xs px-2 py-1 rounded hover:bg-muted/50"
         >
           {isMinimized ? '📊' : '➖'}
         </button>
@@ -749,25 +749,25 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
         <div className="p-3">
           {/* Summary Stats */}
           <div className="grid grid-cols-2 gap-2 mb-3 text-xs">
-            <div className="bg-white/5 rounded p-2">
-              <div className="text-gray-400">Total Components</div>
+            <div className="bg-foreground/5 rounded p-2">
+              <div className="text-muted-foreground">Total Components</div>
               <div className="text-xl font-mono">{report.summary.totalComponents}</div>
             </div>
-            <div className="bg-white/5 rounded p-2">
-              <div className="text-gray-400">Connected</div>
-              <div className="text-xl font-mono text-green-400">
+            <div className="bg-foreground/5 rounded p-2">
+              <div className="text-muted-foreground">Connected</div>
+              <div className="text-xl font-mono text-success">
                 {report.summary.connectedComponents}
               </div>
             </div>
-            <div className="bg-white/5 rounded p-2">
-              <div className="text-gray-400">Mock Data</div>
-              <div className="text-xl font-mono text-yellow-400">
+            <div className="bg-foreground/5 rounded p-2">
+              <div className="text-muted-foreground">Mock Data</div>
+              <div className="text-xl font-mono text-warning">
                 {report.summary.mockDataComponents}
               </div>
             </div>
-            <div className="bg-white/5 rounded p-2">
-              <div className="text-gray-400">Coverage</div>
-              <div className="text-xl font-mono text-blue-400">
+            <div className="bg-foreground/5 rounded p-2">
+              <div className="text-muted-foreground">Coverage</div>
+              <div className="text-xl font-mono text-primary">
                 {report.summary.coveragePercentage.toFixed(0)}%
               </div>
             </div>
@@ -775,9 +775,9 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Progress Bar */}
           <div className="mb-3">
-            <div className="h-2 bg-gray-700 rounded-full overflow-hidden">
+            <div className="h-2 bg-muted rounded-full overflow-hidden">
               <div
-                className="h-full bg-gradient-to-r from-green-500 to-blue-500 transition-all duration-500"
+                className="h-full bg-gradient-to-r from-success to-primary transition-all duration-500"
                 style={{ width: `${report.summary.coveragePercentage}%` }}
               />
             </div>
@@ -796,14 +796,14 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
                   onClick={() => setSelectedModule(isSelected ? null : module)}
                   className={`px-2 py-1 text-[10px] rounded whitespace-nowrap transition-all ${
                     isSelected 
-                      ? 'bg-blue-500/30 text-blue-300' 
-                      : 'bg-white/5 hover:bg-white/10'
+                      ? 'bg-primary/30 text-primary' 
+                      : 'bg-foreground/5 hover:bg-muted/50'
                   }`}
                 >
                   <div>{module}</div>
                   <div className={`text-[8px] ${
-                    coverage === 100 ? 'text-green-400' : 
-                    coverage > 50 ? 'text-yellow-400' : 'text-red-400'
+                    coverage === 100 ? 'text-success' : 
+                    coverage > 50 ? 'text-warning' : 'text-destructive'
                   }`}>
                     {coverage.toFixed(0)}%
                   </div>
@@ -814,21 +814,21 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Selected Module Details */}
           {selectedModule && report.modules.get(selectedModule) && (
-            <div className="bg-white/5 rounded p-2 max-h-48 overflow-y-auto">
+            <div className="bg-foreground/5 rounded p-2 max-h-48 overflow-y-auto">
               <h4 className="text-xs font-semibold mb-2">{selectedModule} Module</h4>
               {report.modules.get(selectedModule).criticalIssues.length > 0 && (
                 <div className="mb-2">
-                  <div className="text-[10px] text-red-400 font-semibold mb-1">Critical Issues:</div>
+                  <div className="text-[10px] text-destructive font-semibold mb-1">Critical Issues:</div>
                   {report.modules.get(selectedModule).criticalIssues.map((issue: string, i: number) => (
-                    <div key={i} className="text-[9px] text-red-300 mb-1">• {issue}</div>
+                    <div key={i} className="text-[9px] text-destructive/80 mb-1">• {issue}</div>
                   ))}
                 </div>
               )}
               {report.modules.get(selectedModule).recommendations.length > 0 && (
                 <div>
-                  <div className="text-[10px] text-yellow-400 font-semibold mb-1">Recommendations:</div>
+                  <div className="text-[10px] text-warning font-semibold mb-1">Recommendations:</div>
                   {report.modules.get(selectedModule).recommendations.map((rec: string, i: number) => (
-                    <div key={i} className="text-[9px] text-yellow-300 mb-1">• {rec}</div>
+                    <div key={i} className="text-[9px] text-warning/80 mb-1">• {rec}</div>
                   ))}
                 </div>
               )}
@@ -837,11 +837,11 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Critical Issues Summary */}
           {report.summary.criticalIssues > 0 && !selectedModule && (
-            <div className="bg-red-500/10 border border-red-500/30 rounded p-2 text-[10px]">
-              <div className="text-red-400 font-semibold mb-1">
+            <div className="bg-destructive/10 border border-destructive/30 rounded p-2 text-[10px]">
+              <div className="text-destructive font-semibold mb-1">
                 ⚠️ {report.summary.criticalIssues} Critical Issues Found
               </div>
-              <div className="text-red-300">
+              <div className="text-destructive/80">
                 Components using mock data or missing Supabase integration
               </div>
             </div>

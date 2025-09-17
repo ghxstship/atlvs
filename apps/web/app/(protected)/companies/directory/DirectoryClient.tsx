@@ -216,17 +216,17 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
   const getSizeIcon = (size?: string) => {
     switch (size) {
       case 'startup':
-        return <Users className="h-4 w-4 text-success" />;
+        return <Users className="h-4 w-4 color-success" />;
       case 'small':
-        return <Users className="h-4 w-4 text-primary" />;
+        return <Users className="h-4 w-4 color-primary" />;
       case 'medium':
-        return <Users className="h-4 w-4 text-warning" />;
+        return <Users className="h-4 w-4 color-warning" />;
       case 'large':
-        return <Users className="h-4 w-4 text-secondary" />;
+        return <Users className="h-4 w-4 color-secondary" />;
       case 'enterprise':
-        return <Users className="h-4 w-4 text-destructive" />;
+        return <Users className="h-4 w-4 color-destructive" />;
       default:
-        return <Building2 className="h-4 w-4 text-muted-foreground" />;
+        return <Building2 className="h-4 w-4 color-muted" />;
     }
   };
 
@@ -359,8 +359,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <div className="flex border rounded-md">
@@ -391,7 +391,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   placeholder="Search companies..."
                   value={searchQuery}
@@ -402,11 +402,11 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             </div>
             
             <div className="flex items-center space-x-2">
-              <Filter className="h-4 w-4 text-foreground/70" />
+              <Filter className="h-4 w-4 color-foreground/70" />
               <select
                 value={industryFilter}
                 onChange={(e) => setIndustryFilter(e.target.value)}
-                className="px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                className="px-3 py-2 border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Industries</option>
                 {industries.map(industry => (
@@ -419,7 +419,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                className="px-3 py-2 border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Statuses</option>
                 {statuses.map(status => (
@@ -432,7 +432,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <select
                 value={sizeFilter}
                 onChange={(e) => setSizeFilter(e.target.value)}
-                className="px-3 py-2 border border-border rounded-md bg-background text-foreground"
+                className="px-3 py-2 border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Sizes</option>
                 {sizes.map(size => (
@@ -444,7 +444,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             </div>
           </div>
           
-          <div className="mt-4 flex items-center justify-between text-sm text-foreground/70">
+          <div className="mt-4 flex items-center justify-between text-body-sm color-foreground/70">
             <span>Showing {filteredCompanies.length} of {companies.length} companies</span>
             {(searchQuery || industryFilter !== 'all' || statusFilter !== 'all' || sizeFilter !== 'all') && (
               <Button
@@ -470,62 +470,62 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <Card key={company.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewCompany(company)}>
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <Building2 className="h-8 w-8 text-primary" />
+                    <Building2 className="h-8 w-8 color-primary" />
                     <div>
-                      <h3 className="font-semibold text-foreground">{company.name}</h3>
-                      <p className="text-sm text-foreground/70 capitalize">{company.industry}</p>
+                      <h3 className="text-heading-4 color-foreground">{company.name}</h3>
+                      <p className="text-body-sm color-foreground/70 capitalize">{company.industry}</p>
                     </div>
                   </div>
                   {getStatusBadge(company.status)}
                 </div>
                 
                 {company.description && (
-                  <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
+                  <p className="text-body-sm color-foreground/70 mb-4 line-clamp-2">
                     {company.description}
                   </p>
                 )}
                 
                 <div className="space-y-2 mb-4">
                   {company.website && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Globe className="h-4 w-4 text-foreground/50" />
-                      <span className="text-primary hover:underline">{company.website}</span>
+                    <div className="flex items-center space-x-2 text-body-sm">
+                      <Globe className="h-4 w-4 color-foreground/50" />
+                      <span className="color-primary hover:underline">{company.website}</span>
                     </div>
                   )}
                   
                   {company.email && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Mail className="h-4 w-4 text-foreground/50" />
-                      <span className="text-foreground/70">{company.email}</span>
+                    <div className="flex items-center space-x-2 text-body-sm">
+                      <Mail className="h-4 w-4 color-foreground/50" />
+                      <span className="color-foreground/70">{company.email}</span>
                     </div>
                   )}
                   
                   {company.phone && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <Phone className="h-4 w-4 text-foreground/50" />
-                      <span className="text-foreground/70">{company.phone}</span>
+                    <div className="flex items-center space-x-2 text-body-sm">
+                      <Phone className="h-4 w-4 color-foreground/50" />
+                      <span className="color-foreground/70">{company.phone}</span>
                     </div>
                   )}
                   
                   {(company.city || company.country) && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <MapPin className="h-4 w-4 text-foreground/50" />
-                      <span className="text-foreground/70">
+                    <div className="flex items-center space-x-2 text-body-sm">
+                      <MapPin className="h-4 w-4 color-foreground/50" />
+                      <span className="color-foreground/70">
                         {[company.city, company.state, company.country].filter(Boolean).join(', ')}
                       </span>
                     </div>
                   )}
                   
                   {company.size && (
-                    <div className="flex items-center space-x-2 text-sm">
+                    <div className="flex items-center space-x-2 text-body-sm">
                       {getSizeIcon(company.size)}
-                      <span className="text-foreground/70 capitalize">{company.size}</span>
+                      <span className="color-foreground/70 capitalize">{company.size}</span>
                     </div>
                   )}
                 </div>
                 
                 <div className="flex items-center justify-between pt-4 border-t border-border">
-                  <div className="text-xs text-foreground/50">
+                  <div className="text-body-sm color-foreground/50">
                     Added {new Date(company.createdAt || '').toLocaleDateString()}
                   </div>
                   
@@ -562,8 +562,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                 <div key={company.id} className="border rounded-lg p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-semibold">{company.name}</h3>
-                      <p className="text-sm text-muted-foreground">{company.industry}</p>
+                      <h3 className="text-heading-4">{company.name}</h3>
+                      <p className="text-body-sm color-muted">{company.industry}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge variant={company.status === 'active' ? 'success' : 'outline'}>
@@ -583,14 +583,14 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
         {/* Empty State */}
         {filteredCompanies.length === 0 && (
           <Card className="p-12 text-center">
-            <Building2 className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">
+            <Building2 className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">
               {searchQuery || industryFilter !== 'all' || statusFilter !== 'all' || sizeFilter !== 'all' 
                 ? 'No companies match your filters' 
                 : 'No companies found'
               }
             </h3>
-            <p className="text-foreground/70 mb-4">
+            <p className="color-foreground/70 mb-4">
               {searchQuery || industryFilter !== 'all' || statusFilter !== 'all' || sizeFilter !== 'all'
                 ? 'Try adjusting your search criteria or filters'
                 : 'Add your first company to get started'
@@ -613,7 +613,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
           }
         >
           <div className="p-6">
-            <p className="text-muted-foreground">Company details will be displayed here.</p>
+            <p className="color-muted">Company details will be displayed here.</p>
           </div>
         </Drawer>
       </div>

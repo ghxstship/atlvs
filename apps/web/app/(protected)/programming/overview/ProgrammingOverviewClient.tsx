@@ -41,25 +41,25 @@ export default function ProgrammingOverviewClient({
       title: 'Total Events',
       value: stats.totalEvents,
       icon: CalendarDays,
-      color: 'text-primary'
+      color: 'color-primary'
     },
     {
       title: 'Upcoming Events',
       value: stats.upcomingEvents,
       icon: Clock,
-      color: 'text-success'
+      color: 'color-success'
     },
     {
       title: 'Available Spaces',
       value: stats.totalSpaces,
       icon: MapPin,
-      color: 'text-secondary'
+      color: 'color-secondary'
     },
     {
       title: 'Active Lineups',
       value: stats.activeLineups,
       icon: Music,
-      color: 'text-warning'
+      color: 'color-warning'
     }
   ];
 
@@ -95,7 +95,7 @@ export default function ProgrammingOverviewClient({
       <div className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-24 bg-muted animate-pulse rounded-lg" />
+            <div key={i} className="h-24 bg-secondary animate-pulse rounded-lg" />
           ))}
         </div>
       </div>
@@ -112,10 +112,10 @@ export default function ProgrammingOverviewClient({
             <Card key={index} className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">
+                  <p className="text-body-sm form-label color-muted">
                     {stat.title}
                   </p>
-                  <p className="text-2xl font-bold">{stat.value}</p>
+                  <p className="text-heading-3 text-heading-3">{stat.value}</p>
                 </div>
                 <Icon className={`h-8 w-8 ${stat.color}`} />
               </div>
@@ -126,17 +126,17 @@ export default function ProgrammingOverviewClient({
 
       {/* Quick Actions */}
       <div className="space-y-4">
-        <h2 className="text-lg font-semibold">Quick Actions</h2>
+        <h2 className="text-body text-heading-4">Quick Actions</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {quickActions.map((action, index) => {
             const Icon = action.icon;
             return (
               <Card key={index} className="p-4 hover:shadow-md transition-shadow">
                 <div className="flex items-start space-x-4">
-                  <Icon className="h-6 w-6 text-primary mt-1" />
+                  <Icon className="h-6 w-6 color-primary mt-1" />
                   <div className="flex-1">
-                    <h3 className="font-medium">{action.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-3">
+                    <h3 className="form-label">{action.title}</h3>
+                    <p className="text-body-sm color-muted mb-3">
                       {action.description}
                     </p>
                     <Button asChild>
@@ -153,51 +153,51 @@ export default function ProgrammingOverviewClient({
       {/* Recent Events */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold">Recent Events</h2>
+          <h2 className="text-body text-heading-4">Recent Events</h2>
           <Card className="p-4">
             {recentEvents.length > 0 ? (
               <div className="space-y-3">
                 {recentEvents.map((event) => (
                   <div key={event.id} className="flex items-center justify-between py-2 border-b last:border-b-0">
                     <div>
-                      <p className="font-medium">{event.name}</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="form-label">{event.name}</p>
+                      <p className="text-body-sm color-muted">
                         {event.kind} • {event.project?.name || 'No project'}
                       </p>
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       {event.starts_at ? new Date(event.starts_at).toLocaleDateString() : 'No date'}
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-4">No recent events</p>
+              <p className="color-muted text-center py-4">No recent events</p>
             )}
           </Card>
         </div>
 
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold">Upcoming Events</h2>
+          <h2 className="text-body text-heading-4">Upcoming Events</h2>
           <Card className="p-4">
             {upcomingEvents.length > 0 ? (
               <div className="space-y-3">
                 {upcomingEvents.map((event) => (
                   <div key={event.id} className="flex items-center justify-between py-2 border-b last:border-b-0">
                     <div>
-                      <p className="font-medium">{event.name}</p>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="form-label">{event.name}</p>
+                      <p className="text-body-sm color-muted">
                         {event.kind} • {event.project?.name || 'No project'}
                       </p>
                     </div>
-                    <div className="text-sm text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       {event.starts_at ? new Date(event.starts_at).toLocaleDateString() : 'No date'}
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-4">No upcoming events</p>
+              <p className="color-muted text-center py-4">No upcoming events</p>
             )}
           </Card>
         </div>
@@ -205,11 +205,11 @@ export default function ProgrammingOverviewClient({
 
       {/* Programming Modules */}
       <div className="space-y-4">
-        <h2 className="text-lg font-semibold">Programming Modules</h2>
+        <h2 className="text-body text-heading-4">Programming Modules</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="p-4">
-            <h3 className="font-medium mb-2">Calendar View</h3>
-            <p className="text-sm text-muted-foreground mb-3">
+            <h3 className="form-label mb-2">Calendar View</h3>
+            <p className="text-body-sm color-muted mb-3">
               View all events and schedules in calendar format
             </p>
             <Button asChild>
@@ -218,8 +218,8 @@ export default function ProgrammingOverviewClient({
           </Card>
           
           <Card className="p-4">
-            <h3 className="font-medium mb-2">Technical Riders</h3>
-            <p className="text-sm text-muted-foreground mb-3">
+            <h3 className="form-label mb-2">Technical Riders</h3>
+            <p className="text-body-sm color-muted mb-3">
               Manage technical, hospitality, and stage plot requirements
             </p>
             <Button asChild>
@@ -228,8 +228,8 @@ export default function ProgrammingOverviewClient({
           </Card>
           
           <Card className="p-4">
-            <h3 className="font-medium mb-2">Workshops</h3>
-            <p className="text-sm text-muted-foreground mb-3">
+            <h3 className="form-label mb-2">Workshops</h3>
+            <p className="text-body-sm color-muted mb-3">
               Schedule and organize educational sessions
             </p>
             <Button asChild>

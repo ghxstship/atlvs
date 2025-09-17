@@ -183,15 +183,15 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
   const getAvailabilityColor = (availability: string) => {
     switch (availability) {
       case 'available':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'occupied':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       case 'maintenance':
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
       case 'reserved':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       default:
-        return 'text-muted-foreground bg-muted';
+        return 'color-muted bg-secondary';
     }
   };
 
@@ -248,7 +248,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Spaces Management</h2>
+                <h2 className="text-body text-heading-4">Spaces Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Space
@@ -270,7 +270,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                 return (
                   <Card key={type} className="p-4">
                     <div className="flex items-center justify-between mb-3">
-                      <h3 className="font-semibold flex items-center gap-2">
+                      <h3 className="text-heading-4 flex items-center gap-2">
                         <IconComponent className="h-4 w-4" />
                         {spaceTypeLabels[type] || type}
                       </h3>
@@ -280,13 +280,13 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                     </div>
                     
                     <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Available:</span>
-                        <span className="font-medium text-success">{availableSpaces}</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-muted">Available:</span>
+                        <span className="form-label color-success">{availableSpaces}</span>
                       </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">Total Capacity:</span>
-                        <span className="font-medium">{totalCapacity}</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-muted">Total Capacity:</span>
+                        <span className="form-label">{totalCapacity}</span>
                       </div>
                     </div>
                     
@@ -294,12 +294,12 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                       {typeSpaces.slice(0, 2).map((space: any) => (
                         <div
                           key={space.id}
-                          className="flex items-center justify-between text-xs p-2 rounded border cursor-pointer hover:bg-muted/50"
+                          className="flex items-center justify-between text-body-sm p-2 rounded border cursor-pointer hover:bg-secondary/50"
                           onClick={() => handleViewSpace(space)}
                         >
                           <div>
-                            <div className="font-medium">{space.name}</div>
-                            <div className="text-muted-foreground flex items-center gap-1">
+                            <div className="form-label">{space.name}</div>
+                            <div className="color-muted flex items-center gap-1">
                               <MapPin className="h-3 w-3" />
                               {space.location || 'Location TBD'}
                             </div>
@@ -311,7 +311,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                       ))}
                       
                       {typeSpaces.length > 2 && (
-                        <div className="text-xs text-muted-foreground text-center pt-1">
+                        <div className="text-body-sm color-muted text-center pt-1">
                           +{typeSpaces.length - 2} more spaces
                         </div>
                       )}
@@ -359,13 +359,13 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
               {selectedRecord && (
                 <div className="space-y-4 mt-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Square className="h-4 w-4" />
                       <span>
                         {selectedRecord.kind?.replace('_', ' ') || 'General Room'}
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Users className="h-4 w-4" />
                       <span>
                         {selectedRecord.capacity ? `${selectedRecord.capacity} people` : 'Capacity TBD'}
@@ -374,7 +374,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                   </div>
                   
                   {selectedRecord.location && (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <MapPin className="h-4 w-4" />
                       <span>{selectedRecord.location}</span>
                     </div>
@@ -392,9 +392,9 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-8 text-center">
-                <Square className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Spaces Yet</h3>
-                <p className="text-muted-foreground mb-4">
+                <Square className="h-12 w-12 mx-auto mb-4 color-muted" />
+                <h3 className="text-body text-heading-4 mb-2">No Spaces Yet</h3>
+                <p className="color-muted mb-4">
                   Start managing your venue spaces by adding rooms, green rooms, dressing rooms, and other facilities.
                 </p>
                 <Button onClick={handleCreateSpace}>

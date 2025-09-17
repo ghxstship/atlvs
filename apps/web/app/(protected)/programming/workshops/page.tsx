@@ -29,7 +29,7 @@ export default async function ProgrammingWorkshopsPage() {
     <div className="space-y-4">
       <Card title={t('workshops')}>
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h1 className="text-2xl font-bold font-anton uppercase">{t('workshops')}</h1>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">{t('workshops')}</h1>
           {orgId && <CreateWorkshopClient orgId={orgId} />}
         </div>
         

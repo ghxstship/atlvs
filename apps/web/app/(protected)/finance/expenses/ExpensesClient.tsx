@@ -351,8 +351,8 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <ViewSwitcher />
@@ -364,7 +364,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
         </div>
 
         {/* Status Filter Tabs */}
-        <div className="flex space-x-1 bg-muted p-1 rounded-lg w-fit">
+        <div className="flex space-x-1 bg-secondary p-1 rounded-lg w-fit">
           {Object.entries(statusCounts).map(([status, count]) => (
             <Button
               key={status}
@@ -383,42 +383,42 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Expenses</p>
-                <p className="text-2xl font-bold text-foreground">{expenses.length}</p>
+                <p className="text-body-sm color-foreground/70">Total Expenses</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{expenses.length}</p>
               </div>
-              <Receipt className="h-8 w-8 text-primary" />
+              <Receipt className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Amount</p>
-                <p className="text-2xl font-bold text-destructive">
+                <p className="text-body-sm color-foreground/70">Total Amount</p>
+                <p className="text-heading-3 text-heading-3 color-destructive">
                   {formatCurrency(expenses.reduce((sum, e) => sum + e.amount, 0))}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 text-destructive" />
+              <DollarSign className="h-8 w-8 color-destructive" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Pending Approval</p>
-                <p className="text-2xl font-bold text-warning">{statusCounts.submitted}</p>
+                <p className="text-body-sm color-foreground/70">Pending Approval</p>
+                <p className="text-heading-3 text-heading-3 color-warning">{statusCounts.submitted}</p>
               </div>
-              <Clock className="h-8 w-8 text-warning" />
+              <Clock className="h-8 w-8 color-warning" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Approved</p>
-                <p className="text-2xl font-bold text-success">{statusCounts.approved}</p>
+                <p className="text-body-sm color-foreground/70">Approved</p>
+                <p className="text-heading-3 text-heading-3 color-success">{statusCounts.approved}</p>
               </div>
-              <Check className="h-8 w-8 text-success" />
+              <Check className="h-8 w-8 color-success" />
             </div>
           </Card>
         </div>
@@ -430,25 +430,25 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
               <Card key={expense.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewExpense(expense)}>
                 <div className="flex items-start justify-between mb-4">
                   <div>
-                    <h3 className="font-semibold text-foreground">{expense.title}</h3>
-                    <p className="text-sm text-foreground/70 capitalize">{expense.category}</p>
+                    <h3 className="text-heading-4 color-foreground">{expense.title}</h3>
+                    <p className="text-body-sm color-foreground/70 capitalize">{expense.category}</p>
                   </div>
                   {getStatusBadge(expense.status)}
                 </div>
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Amount</span>
-                    <span className="font-medium">{formatCurrency(expense.amount, expense.currency)}</span>
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Amount</span>
+                    <span className="form-label">{formatCurrency(expense.amount, expense.currency)}</span>
                   </div>
                   
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Date</span>
-                    <span className="font-medium">{formatDate(expense.expense_date)}</span>
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Date</span>
+                    <span className="form-label">{formatDate(expense.expense_date)}</span>
                   </div>
                   
                   {expense.description && (
-                    <div className="text-sm text-foreground/70">
+                    <div className="text-body-sm color-foreground/70">
                       {expense.description.length > 100 
                         ? `${expense.description.substring(0, 100)}...`
                         : expense.description
@@ -537,9 +537,9 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
         {/* Empty State */}
         {expenses.length === 0 && (
           <Card className="p-12 text-center">
-            <Receipt className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No expenses found</h3>
-            <p className="text-foreground/70 mb-4">Create your first expense to start tracking</p>
+            <Receipt className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No expenses found</h3>
+            <p className="color-foreground/70 mb-4">Create your first expense to start tracking</p>
             <Button onClick={handleCreateExpense}>
               <Plus className="h-4 w-4 mr-2" />
               Create Expense

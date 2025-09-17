@@ -127,10 +127,10 @@ export default function CreateRevenueClient({
         {/* Revenue Overview */}
         <Card className="p-4 bg-success/10 border-success/20">
           <div className="flex items-center space-x-3">
-            <TrendingUp className="h-8 w-8 text-success" />
+            <TrendingUp className="h-8 w-8 color-success" />
             <div>
-              <h3 className="font-semibold text-success-foreground">Revenue Tracking</h3>
-              <p className="text-sm text-success/80">
+              <h3 className="text-heading-4 color-success-foreground">Revenue Tracking</h3>
+              <p className="text-body-sm color-success/80">
                 Record and track revenue streams and income recognition
               </p>
             </div>
@@ -140,7 +140,7 @@ export default function CreateRevenueClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Revenue Description *
             </label>
             <Input
@@ -153,11 +153,11 @@ export default function CreateRevenueClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="number"
                   value={formData.amount || ''}
@@ -170,14 +170,14 @@ export default function CreateRevenueClient({
                 />
               </div>
               {formData.amount > 0 && (
-                <p className="text-sm text-foreground/60 mt-1">
+                <p className="text-body-sm color-foreground/60 mt-1">
                   {formatCurrency(formData.amount)}
                 </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -195,11 +195,11 @@ export default function CreateRevenueClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Revenue Source
               </label>
               <div className="relative">
-                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Select
                   value={formData.source}
                   onValueChange={(value) => setFormData(prev => ({ ...prev, source: value }))}
@@ -218,11 +218,11 @@ export default function CreateRevenueClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Recognition Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.recognitionDate}
@@ -235,7 +235,7 @@ export default function CreateRevenueClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Related Invoice ID
             </label>
             <Input
@@ -243,7 +243,7 @@ export default function CreateRevenueClient({
               onChange={(e) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
               placeholder="Optional: Link to existing invoice"
             />
-            <p className="text-xs text-foreground/60 mt-1">
+            <p className="text-body-sm color-foreground/60 mt-1">
               Connect this revenue to an existing invoice for tracking
             </p>
           </div>
@@ -251,24 +251,24 @@ export default function CreateRevenueClient({
 
         {/* Revenue Summary */}
         {formData.amount > 0 && (
-          <Card className="p-4 bg-muted border-border">
-            <h4 className="font-medium text-foreground mb-2">Revenue Summary</h4>
-            <div className="space-y-1 text-sm">
+          <Card className="p-4 bg-secondary border-border">
+            <h4 className="form-label color-foreground mb-2">Revenue Summary</h4>
+            <div className="space-y-1 text-body-sm">
               <div className="flex justify-between">
-                <span className="text-foreground/70">Amount:</span>
-                <span className="font-medium text-success">{formatCurrency(formData.amount)}</span>
+                <span className="color-foreground/70">Amount:</span>
+                <span className="form-label color-success">{formatCurrency(formData.amount)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Source:</span>
-                <span className="font-medium capitalize">{formData.source.replace('_', ' ')}</span>
+                <span className="color-foreground/70">Source:</span>
+                <span className="form-label capitalize">{formData.source.replace('_', ' ')}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Status:</span>
-                <span className="font-medium text-primary">Projected</span>
+                <span className="color-foreground/70">Status:</span>
+                <span className="form-label color-primary">Projected</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Recognition Date:</span>
-                <span className="font-medium">{new Date(formData.recognitionDate).toLocaleDateString()}</span>
+                <span className="color-foreground/70">Recognition Date:</span>
+                <span className="form-label">{new Date(formData.recognitionDate).toLocaleDateString()}</span>
               </div>
             </div>
           </Card>
@@ -291,7 +291,7 @@ export default function CreateRevenueClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Adding...</span>
               </div>
             ) : (

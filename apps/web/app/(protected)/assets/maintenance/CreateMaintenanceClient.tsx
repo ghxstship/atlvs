@@ -195,13 +195,13 @@ export default function CreateMaintenanceClient({
         {/* Asset & Type */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Wrench className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Asset & Maintenance Type</h3>
+            <Wrench className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Asset & Maintenance Type</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Asset ID *
               </label>
               <Input
@@ -214,7 +214,7 @@ export default function CreateMaintenanceClient({
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Type
                 </label>
                 <Select
@@ -230,7 +230,7 @@ export default function CreateMaintenanceClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <AlertTriangle className="h-4 w-4 inline mr-1" />
                   Priority
                 </label>
@@ -247,7 +247,7 @@ export default function CreateMaintenanceClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -268,14 +268,14 @@ export default function CreateMaintenanceClient({
         {/* Scheduling */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Calendar className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Scheduling</h3>
+            <Calendar className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Scheduling</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Scheduled Date
                 </label>
                 <Input
@@ -286,7 +286,7 @@ export default function CreateMaintenanceClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Completed Date
                 </label>
                 <Input
@@ -298,7 +298,7 @@ export default function CreateMaintenanceClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Assigned To
               </label>
               <Input
@@ -313,13 +313,13 @@ export default function CreateMaintenanceClient({
         {/* Description & Details */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Wrench className="h-5 w-5 text-secondary" />
-            <h3 className="font-semibold">Description & Details</h3>
+            <Wrench className="h-5 w-5 color-secondary" />
+            <h3 className="text-heading-4">Description & Details</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description *
               </label>
               <Textarea
@@ -332,7 +332,7 @@ export default function CreateMaintenanceClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Vendor/Service Provider
               </label>
               <Input
@@ -347,14 +347,14 @@ export default function CreateMaintenanceClient({
         {/* Cost Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <DollarSign className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Cost Information</h3>
+            <DollarSign className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Cost Information</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Estimated/Actual Cost
                 </label>
                 <Input
@@ -367,7 +367,7 @@ export default function CreateMaintenanceClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Currency
                 </label>
                 <Select
@@ -384,7 +384,7 @@ export default function CreateMaintenanceClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Notes
               </label>
               <Textarea

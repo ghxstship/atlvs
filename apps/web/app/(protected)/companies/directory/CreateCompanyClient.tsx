@@ -177,13 +177,13 @@ export default function CreateCompanyClient({
         {/* Company Overview */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Building2 className="h-5 w-5 text-primary" />
-            <h3 className="font-semibold">Company Information</h3>
+            <Building2 className="h-5 w-5 color-primary" />
+            <h3 className="text-heading-4">Company Information</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Company Name *
               </label>
               <Input
@@ -195,7 +195,7 @@ export default function CreateCompanyClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Description
               </label>
               <Textarea
@@ -208,7 +208,7 @@ export default function CreateCompanyClient({
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Industry *
                 </label>
                 <Select
@@ -224,7 +224,7 @@ export default function CreateCompanyClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Status
                 </label>
                 <Select
@@ -245,14 +245,14 @@ export default function CreateCompanyClient({
         {/* Contact Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <Mail className="h-5 w-5 text-success" />
-            <h3 className="font-semibold">Contact Information</h3>
+            <Mail className="h-5 w-5 color-success" />
+            <h3 className="text-heading-4">Contact Information</h3>
           </div>
           
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <Globe className="h-4 w-4 inline mr-1" />
                   Website
                 </label>
@@ -265,7 +265,7 @@ export default function CreateCompanyClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   <Mail className="h-4 w-4 inline mr-1" />
                   Email
                 </label>
@@ -279,7 +279,7 @@ export default function CreateCompanyClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 <Phone className="h-4 w-4 inline mr-1" />
                 Phone
               </label>
@@ -296,13 +296,13 @@ export default function CreateCompanyClient({
         {/* Address Information */}
         <Card className="p-4">
           <div className="flex items-center gap-2 mb-4">
-            <MapPin className="h-5 w-5 text-warning" />
-            <h3 className="font-semibold">Address Information</h3>
+            <MapPin className="h-5 w-5 color-warning" />
+            <h3 className="text-heading-4">Address Information</h3>
           </div>
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-1">
+              <label className="block text-body-sm form-label mb-1">
                 Street Address
               </label>
               <Input
@@ -314,7 +314,7 @@ export default function CreateCompanyClient({
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   City
                 </label>
                 <Input
@@ -325,7 +325,7 @@ export default function CreateCompanyClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   State/Province
                 </label>
                 <Input
@@ -336,7 +336,7 @@ export default function CreateCompanyClient({
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label className="block text-body-sm form-label mb-1">
                   Country
                 </label>
                 <Input

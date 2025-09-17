@@ -1,0 +1,261 @@
+openapi: 3.0.0
+info:
+  title: GHXSTSHIP API
+  version: 1.0.0
+  description: Enterprise-grade SaaS API for production management
+  contact:
+    name: API Support
+    email: api@ghxstship.com
+  license:
+    name: MIT
+servers:
+  - url: https://api.ghxstship.com/v1
+    description: Production server
+  - url: http://localhost:3000/api/v1
+    description: Development server
+security:
+  - bearerAuth: []
+  - organizationId: []
+paths:
+  /health:
+    get:
+      summary: Health check
+      tags:
+        - System
+      responses:
+        '200':
+          description: Service is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: healthy
+                  version:
+                    type: string
+                    example: 1.0.0
+  /projects:
+    get:
+      summary: List projects
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/OrganizationId'
+        - $ref: '#/components/parameters/PageParam'
+        - $ref: '#/components/parameters/LimitParam'
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Project'
+    post:
+      summary: Create project
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectInput'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+  /people:
+    get:
+      summary: List people
+      tags:
+        - People
+      parameters:
+        - $ref: '#/components/parameters/OrganizationId'
+      responses:
+        '200':
+          description: List of people
+    post:
+      summary: Create person
+      tags:
+        - People
+      responses:
+        '201':
+          description: Person created
+  /companies:
+    get:
+      summary: List companies
+      tags:
+        - Companies
+      responses:
+        '200':
+          description: List of companies
+    post:
+      summary: Create company
+      tags:
+        - Companies
+      responses:
+        '201':
+          description: Company created
+  /finance/budgets:
+    get:
+      summary: List budgets
+      tags:
+        - Finance
+      responses:
+        '200':
+          description: List of budgets
+  /procurement/orders:
+    get:
+      summary: List purchase orders
+      tags:
+        - Procurement
+      responses:
+        '200':
+          description: List of purchase orders
+  /jobs:
+    get:
+      summary: List jobs
+      tags:
+        - Jobs
+      responses:
+        '200':
+          description: List of jobs
+  /resources:
+    get:
+      summary: List resources
+      tags:
+        - Resources
+      responses:
+        '200':
+          description: List of resources
+  /analytics/dashboards:
+    get:
+      summary: List dashboards
+      tags:
+        - Analytics
+      responses:
+        '200':
+          description: List of dashboards
+  /settings:
+    get:
+      summary: Get settings
+      tags:
+        - Settings
+      responses:
+        '200':
+          description: Organization settings
+  /profile:
+    get:
+      summary: Get user profile
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: User profile
+    put:
+      summary: Update user profile
+      tags:
+        - Profile
+      responses:
+        '200':
+          description: Profile updated
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+    organizationId:
+      type: apiKey
+      in: header
+      name: X-Organization-Id
+  parameters:
+    OrganizationId:
+      name: X-Organization-Id
+      in: header
+      required: true
+      schema:
+        type: string
+        format: uuid
+    PageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        default: 1
+    LimitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        default: 20
+        maximum: 100
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [planning, active, completed, cancelled]
+        budget:
+          type: number
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+        organization_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    ProjectInput:
+      type: object
+      required:
+        - name
+        - status
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        description:
+          type: string
+        status:
+          type: string
+          enum: [planning, active, completed, cancelled]
+        budget:
+          type: number
+          minimum: 0
+        start_date:
+          type: string
+          format: date
+        end_date:
+          type: string
+          format: date
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        details:
+          type: object

@@ -120,14 +120,14 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="job_title" className="text-sm font-medium">Job Title *</label>
+            <label htmlFor="job_title" className="text-body-sm form-label">Job Title *</label>
             <input 
               id="job_title" 
               className="rounded border px-2 py-1" 
@@ -136,11 +136,11 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.job_title} 
             />
             {form.formState.errors.job_title ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.job_title.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.job_title.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="department" className="text-sm font-medium">Department *</label>
+            <label htmlFor="department" className="text-body-sm form-label">Department *</label>
             <input 
               id="department" 
               className="rounded border px-2 py-1" 
@@ -149,11 +149,11 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
               aria-invalid={!!form.formState.errors.department} 
             />
             {form.formState.errors.department ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.department.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.department.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="employee_id" className="text-sm font-medium">Employee ID</label>
+            <label htmlFor="employee_id" className="text-body-sm form-label">Employee ID</label>
             <input 
               id="employee_id" 
               className="rounded border px-2 py-1" 
@@ -163,7 +163,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="hire_date" className="text-sm font-medium">Hire Date</label>
+            <label htmlFor="hire_date" className="text-body-sm form-label">Hire Date</label>
             <input 
               id="hire_date" 
               type="date" 
@@ -174,7 +174,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="skills" className="text-sm font-medium">Skills (comma-separated)</label>
+            <label htmlFor="skills" className="text-body-sm form-label">Skills (comma-separated)</label>
             <textarea 
               id="skills" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -185,7 +185,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="bio" className="text-sm font-medium">Professional Bio</label>
+            <label htmlFor="bio" className="text-body-sm form-label">Professional Bio</label>
             <textarea 
               id="bio" 
               className="rounded border px-2 py-1 min-h-[80px]" 
@@ -196,7 +196,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="linkedin_url" className="text-sm font-medium">LinkedIn URL</label>
+            <label htmlFor="linkedin_url" className="text-body-sm form-label">LinkedIn URL</label>
             <input 
               id="linkedin_url" 
               type="url" 
@@ -208,7 +208,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="website_url" className="text-sm font-medium">Website URL</label>
+            <label htmlFor="website_url" className="text-body-sm form-label">Website URL</label>
             <input 
               id="website_url" 
               type="url" 
@@ -220,7 +220,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="career_goals" className="text-sm font-medium">Career Goals</label>
+            <label htmlFor="career_goals" className="text-body-sm form-label">Career Goals</label>
             <textarea 
               id="career_goals" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -231,7 +231,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="mentorship_interests" className="text-sm font-medium">Mentorship Interests</label>
+            <label htmlFor="mentorship_interests" className="text-body-sm form-label">Mentorship Interests</label>
             <textarea 
               id="mentorship_interests" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -242,7 +242,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="performance_rating" className="text-sm font-medium">Performance Rating (1-5)</label>
+            <label htmlFor="performance_rating" className="text-body-sm form-label">Performance Rating (1-5)</label>
             <select 
               id="performance_rating" 
               className="rounded border px-2 py-1" 

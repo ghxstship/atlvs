@@ -113,11 +113,11 @@ export default function WhitepapersPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               INDUSTRY
               <br />
-              <span className="bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 RESEARCH & INSIGHTS
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Deep-dive research reports and industry analysis based on 13+ years of managing 
               productions from intimate events to 100K+ attendee festivals. Data-driven insights 
               you can actually use.
@@ -143,13 +143,13 @@ export default function WhitepapersPage() {
       <section className="py-8 border-b">
         <div className="container mx-auto px-4">
           <div className="space-y-4">
-            <h3 className="text-sm font-semibold text-foreground mb-3">Categories</h3>
+            <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Categories</h3>
             <div className="flex flex-wrap gap-2">
               {categories.map((category) => (
                 <Badge 
                   key={category} 
                   variant={category === 'All Categories' ? 'default' : 'outline'} 
-                  className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
                 >
                   {category}
                 </Badge>
@@ -166,7 +166,7 @@ export default function WhitepapersPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               FEATURED RESEARCH
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Our most comprehensive and impactful research reports, covering the biggest 
               challenges and opportunities in production management.
             </p>
@@ -176,20 +176,20 @@ export default function WhitepapersPage() {
             {featuredPapers.map((paper) => (
               <Card key={paper.id} className="hover:shadow-xl transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-64 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 flex items-center justify-center">
+                  <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <FileText className="h-16 w-16 text-primary mx-auto mb-4" />
-                      <p className="text-sm text-muted-foreground">Research Report</p>
+                      <FileText className="h-16 w-16 color-primary mx-auto mb-4" />
+                      <p className="text-body-sm color-muted">Research Report</p>
                     </div>
                   </div>
                   <div className="absolute top-4 right-4">
-                    <Badge className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white">
+                    <Badge className="bg-primary color-primary-foreground">
                       Featured
                     </Badge>
                   </div>
                   {paper.isPremium && (
                     <div className="absolute top-4 left-4">
-                      <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                      <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-1" />
                         Premium
                       </Badge>
@@ -201,47 +201,47 @@ export default function WhitepapersPage() {
                 </div>
                 
                 <CardContent className="p-8">
-                  <h3 className={`mb-4 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-4 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {paper.title}
                   </h3>
-                  <p className="text-muted-foreground mb-6">
+                  <p className="color-muted mb-6">
                     {paper.description}
                   </p>
                   
                   <div className="space-y-4 mb-6">
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm">
+                      <div className="flex items-center gap-1 color-muted">
                         <Calendar className="h-4 w-4" />
                         {paper.publishDate}
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-1 color-muted">
                         <FileText className="h-4 w-4" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm">
+                      <div className="flex items-center gap-1 color-muted">
                         <Download className="h-4 w-4" />
                         {paper.downloads} downloads
                       </div>
                       <div className="flex items-center gap-1">
-                        <TrendingUp className="h-4 w-4 text-green-500" />
-                        <span className="text-green-500 font-semibold">Popular</span>
+                        <TrendingUp className="h-4 w-4 color-success" />
+                        <span className="text-heading-4 color-success">Popular</span>
                       </div>
                     </div>
                   </div>
                   
                   <div className="border-t pt-4 mb-6">
-                    <h4 className="text-sm font-semibold text-foreground mb-2">Key Topics:</h4>
+                    <h4 className="text-body-sm text-heading-4 color-foreground mb-2">Key Topics:</h4>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {paper.topics.map((topic) => (
-                        <Badge key={topic} variant="outline" className="text-xs">
+                        <Badge key={topic} variant="outline" className="text-body-sm">
                           {topic}
                         </Badge>
                       ))}
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       {paper.preview}
                     </p>
                   </div>
@@ -261,7 +261,7 @@ export default function WhitepapersPage() {
       </section>
 
       {/* All Whitepapers */}
-      <section id="whitepapers" className="py-20 bg-muted/20">
+      <section id="whitepapers" className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
@@ -273,15 +273,15 @@ export default function WhitepapersPage() {
             {regularPapers.map((paper) => (
               <Card key={paper.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <FileText className="h-12 w-12 text-primary mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Research Report</p>
+                      <FileText className="h-12 w-12 color-primary mx-auto mb-2" />
+                      <p className="text-body-sm color-muted">Research Report</p>
                     </div>
                   </div>
                   {paper.isPremium && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                      <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-1" />
                         Premium
                       </Badge>
@@ -293,31 +293,31 @@ export default function WhitepapersPage() {
                 </div>
                 
                 <CardContent className="p-6">
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {paper.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="color-muted mb-4 line-clamp-2">
                     {paper.description}
                   </p>
                   
                   <div className="space-y-3 mb-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm">
+                      <div className="flex items-center gap-1 color-muted">
                         <Calendar className="h-4 w-4" />
                         {paper.publishDate}
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-1 color-muted">
                         <FileText className="h-4 w-4" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm">
+                      <div className="flex items-center gap-1 color-muted">
                         <Download className="h-4 w-4" />
                         {paper.downloads}
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-1 color-muted">
                         <Eye className="h-4 w-4" />
                         Preview
                       </div>
@@ -325,7 +325,7 @@ export default function WhitepapersPage() {
                   </div>
                   
                   <div className="border-t pt-4 mb-4">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       {paper.preview}
                     </p>
                   </div>
@@ -352,7 +352,7 @@ export default function WhitepapersPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               RESEARCH SUBSCRIPTION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-body color-muted max-w-3xl mx-auto mb-8">
               Get early access to new research, exclusive industry reports, and quarterly trend analysis.
             </p>
           </div>
@@ -377,13 +377,13 @@ export default function WhitepapersPage() {
             ].map((benefit, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
                 <CardContent className="p-8">
-                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <FileText className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <FileText className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-3 ${typography.cardTitle}`}>
                     {benefit.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="color-muted mb-4">
                     {benefit.description}
                   </p>
                   <Badge variant="outline">{benefit.frequency}</Badge>
@@ -395,15 +395,15 @@ export default function WhitepapersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-500/5 to-cyan-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <FileText className="h-16 w-16 text-primary mx-auto mb-6" />
+              <FileText className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 ACCESS ALL RESEARCH
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Get unlimited access to our complete library of research reports, industry analysis, 
                 and exclusive insights. Learn from data collected across $15M+ in production budgets.
               </p>
@@ -414,13 +414,13 @@ export default function WhitepapersPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline" size="lg">
                     Sign In
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 Instant access • All formats included • Regular updates
               </p>
             </CardContent>

@@ -1,0 +1,44 @@
+name: Enterprise Validation
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run comprehensive validation
+      run: npm run validate:all
+    
+    - name: Check for root directory clutter
+      run: |
+        if ls *.tmp *.log fix_*.sh *_AUDIT_*.md *_REPORT.md 2> /dev/null; then
+          echo "❌ Root directory clutter detected"
+          exit 1
+        fi
+        echo "✅ Root directory clean"
+    
+    - name: Validate package structure
+      run: |
+        for pkg in ui domain application infrastructure auth config utils; do
+          if [ ! -f "packages/$pkg/package.json" ]; then
+            echo "❌ Missing package.json in packages/$pkg"
+            exit 1
+          fi
+        done
+        echo "✅ All packages have required structure"

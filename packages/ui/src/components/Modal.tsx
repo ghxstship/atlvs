@@ -26,10 +26,10 @@ const modalVariants = cva(
       },
       variant: {
         default: 'bg-background',
-        destructive: 'bg-background border-red-200 dark:border-red-800',
-        success: 'bg-background border-green-200 dark:border-green-800',
-        warning: 'bg-background border-yellow-200 dark:border-yellow-800',
-        info: 'bg-background border-blue-200 dark:border-blue-800',
+        destructive: 'bg-background border-destructive/20',
+        success: 'bg-background border-success/20',
+        warning: 'bg-background border-warning/20',
+        info: 'bg-background border-primary/20',
       },
     },
     defaultVariants: {
@@ -44,10 +44,10 @@ const overlayVariants = cva(
   {
     variants: {
       blur: {
-        none: 'bg-black/50',
-        sm: 'bg-black/50 backdrop-blur-sm',
-        default: 'bg-black/50 backdrop-blur',
-        lg: 'bg-black/50 backdrop-blur-lg',
+        none: 'bg-foreground/30',
+        sm: 'bg-foreground/30 backdrop-blur-sm',
+        default: 'bg-foreground/30 backdrop-blur',
+        lg: 'bg-foreground/30 backdrop-blur-lg',
       },
     },
     defaultVariants: {
@@ -311,9 +311,9 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   const getIcon = () => {
     switch (variant) {
       case 'destructive':
-        return <AlertTriangle className="h-6 w-6 text-red-500" />;
+        return <AlertTriangle className="h-6 w-6 text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-blue-500" />;
+        return <Info className="h-6 w-6 text-primary" />;
     }
   };
 
@@ -370,13 +370,13 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   const getIcon = () => {
     switch (type) {
       case 'success':
-        return <CheckCircle className="h-6 w-6 text-green-500" />;
+        return <CheckCircle className="h-6 w-6 text-success" />;
       case 'warning':
-        return <AlertTriangle className="h-6 w-6 text-yellow-500" />;
+        return <AlertTriangle className="h-6 w-6 text-warning" />;
       case 'error':
-        return <AlertCircle className="h-6 w-6 text-red-500" />;
+        return <AlertCircle className="h-6 w-6 text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-blue-500" />;
+        return <Info className="h-6 w-6 text-primary" />;
     }
   };
 

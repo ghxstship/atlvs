@@ -2,7 +2,6 @@
 export { DataViewProvider, useDataView } from './DataViewProvider';
 export { ViewSwitcher } from './ViewSwitcher';
 export { DataGrid } from './DataGrid';
-export { KanbanBoard } from './KanbanBoard';
 export { CalendarView } from './CalendarView';
 export { TimelineView } from './TimelineView';
 export { GalleryView } from './GalleryView';
@@ -10,7 +9,15 @@ export { ListView } from './ListView';
 export { DashboardView } from './DashboardView';
 export { FormView } from './FormView';
 export { DataActions } from './DataActions';
-export { UniversalDrawer } from './UniversalDrawer';
+export { KanbanBoard } from './KanbanBoard';
+export type { SchemaValidationFramework } from './SchemaValidationFramework';
+export { SchemaIntrospector } from './SchemaValidationFramework';
+export { SchemaIntegratedDataGrid } from './SchemaIntegratedDataGrid';
+export { AdvancedSearchSystem } from './AdvancedSearchSystem';
+export { DynamicFieldManager } from './DynamicFieldManager';
+export { DatabaseTransactionManager, useDatabaseTransaction } from './DatabaseTransactionManager';
+export { CRUDOperationsFramework } from './CRUDOperationsFramework';
+export { PerformanceMonitoringSystem } from './PerformanceMonitoringSystem';
 
 // State Management
 export { 

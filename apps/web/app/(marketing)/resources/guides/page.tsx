@@ -111,11 +111,11 @@ export default function GuidesPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               STEP-BY-STEP
               <br />
-              <span className="bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 MASTERY GUIDES
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Learn production management the right way with practical, step-by-step guides 
               built from 13+ years of managing everything from cruise entertainment to Formula 1 events. 
               No theory, just what actually works.
@@ -142,13 +142,13 @@ export default function GuidesPage() {
         <div className="container mx-auto px-4">
           <div className="space-y-4">
             <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Categories</h3>
+              <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Categories</h3>
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <Badge 
                     key={category} 
                     variant={category === 'All Categories' ? 'primary' : 'outline'} 
-                    className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                    className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
                   >
                     {category}
                   </Badge>
@@ -156,13 +156,13 @@ export default function GuidesPage() {
               </div>
             </div>
             <div>
-              <h3 className="text-sm font-semibold text-foreground mb-3">Difficulty</h3>
+              <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Difficulty</h3>
               <div className="flex flex-wrap gap-2">
                 {difficulties.map((difficulty) => (
                   <Badge 
                     key={difficulty} 
                     variant={difficulty === 'All Levels' ? 'primary' : 'outline'} 
-                    className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                    className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
                   >
                     {difficulty}
                   </Badge>
@@ -180,15 +180,15 @@ export default function GuidesPage() {
             {guides.map((guide) => (
               <Card key={guide.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-purple-500/10 to-pink-500/10 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <BookOpen className="h-12 w-12 text-primary mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Guide Preview</p>
+                      <BookOpen className="h-12 w-12 color-primary mx-auto mb-2" />
+                      <p className="text-body-sm color-muted">Guide Preview</p>
                     </div>
                   </div>
                   {guide.isPremium && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                      <Badge variant="warning">
                         <Lock className="h-3 w-3 mr-1" />
                         Premium
                       </Badge>
@@ -203,31 +203,31 @@ export default function GuidesPage() {
                 </div>
                 
                 <CardContent className="p-6">
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {guide.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="color-muted mb-4 line-clamp-2">
                     {guide.description}
                   </p>
                   
                   <div className="space-y-3 mb-4">
-                    <div className="flex items-center justify-between text-sm">
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm">
+                      <div className="flex items-center gap-1 color-muted">
                         <Clock className="h-4 w-4" />
                         {guide.duration}
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-1 color-muted">
                         <BookOpen className="h-4 w-4" />
                         {guide.chapters} chapters
                       </div>
                     </div>
                     
-                    <div className="flex items-center justify-between text-sm">
+                    <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-1">
-                        <Star className="h-4 w-4 text-yellow-500 fill-current" />
-                        <span className="font-semibold">{guide.rating}</span>
+                        <Star className="h-4 w-4 color-warning fill-current" />
+                        <span className="text-heading-4">{guide.rating}</span>
                       </div>
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-1 color-muted">
                         <CheckCircle className="h-4 w-4" />
                         {guide.completions} completed
                       </div>
@@ -235,7 +235,7 @@ export default function GuidesPage() {
                   </div>
                   
                   <div className="border-t pt-4 mb-4">
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       {guide.preview}
                     </p>
                   </div>
@@ -256,13 +256,13 @@ export default function GuidesPage() {
       </section>
 
       {/* Learning Path CTA */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               STRUCTURED LEARNING PATHS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-body color-muted max-w-3xl mx-auto mb-8">
               Follow curated learning paths designed to take you from beginner to expert 
               in specific areas of production management.
             </p>
@@ -294,27 +294,27 @@ export default function GuidesPage() {
             ].map((path, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
-                    <BookOpen className="h-8 w-8 text-white" />
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-3 ${typography.cardTitle}`}>
                     {path.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="color-muted mb-4">
                     {path.description}
                   </p>
-                  <div className="space-y-2 text-sm text-muted-foreground mb-4">
+                  <div className="space-y-2 text-body-sm color-muted mb-4">
                     <div className="flex justify-between">
                       <span>Guides:</span>
-                      <span className="font-semibold">{path.guides}</span>
+                      <span className="text-heading-4">{path.guides}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Duration:</span>
-                      <span className="font-semibold">{path.duration}</span>
+                      <span className="text-heading-4">{path.duration}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Level:</span>
-                      <span className="font-semibold">{path.level}</span>
+                      <span className="text-heading-4">{path.level}</span>
                     </div>
                   </div>
                   <Button variant="outline" size="sm" className="w-full">
@@ -328,15 +328,15 @@ export default function GuidesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-purple-500/5 to-pink-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <BookOpen className="h-16 w-16 text-primary mx-auto mb-6" />
+              <BookOpen className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 MASTER PRODUCTION MANAGEMENT
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Get access to our complete library of step-by-step guides, learning paths, 
                 and practical exercises. Learn from someone who's managed $15M+ in production budgets.
               </p>
@@ -347,13 +347,13 @@ export default function GuidesPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline" size="lg">
                     Sign In
                   </Button>
                 </Link>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 14-day free trial • Cancel anytime • No setup fees
               </p>
             </CardContent>

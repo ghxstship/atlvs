@@ -15,7 +15,6 @@ import {
   type FieldConfig,
   type DataRecord
 } from '@ghxstship/ui';
-import { StandardButton } from '../../components/ui/StandardButton';
 import { 
   FileText,
   Plus,
@@ -256,17 +255,17 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'msa':
-        return <FileText className="h-5 w-5 text-primary" />;
+        return <FileText className="h-5 w-5 color-primary" />;
       case 'sow':
-        return <FileText className="h-5 w-5 text-success" />;
+        return <FileText className="h-5 w-5 color-success" />;
       case 'nda':
-        return <FileText className="h-5 w-5 text-secondary" />;
+        return <FileText className="h-5 w-5 color-secondary" />;
       case 'service':
-        return <FileText className="h-5 w-5 text-warning" />;
+        return <FileText className="h-5 w-5 color-warning" />;
       case 'supply':
         return <FileText className="h-5 w-5 text-info" />;
       default:
-        return <FileText className="h-5 w-5 text-muted-foreground" />;
+        return <FileText className="h-5 w-5 color-muted" />;
     }
   };
 
@@ -421,8 +420,8 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
             <div className="flex border rounded-md">
@@ -451,7 +450,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         {/* Filter Tabs */}
         <div className="flex flex-wrap items-center gap-4">
           {/* Type Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(typeCounts).map(([type, count]) => (
               <Button
                 key={type}
@@ -466,7 +465,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
           </div>
 
           {/* Status Filter */}
-          <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+          <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
             {Object.entries(statusCounts).map(([status, count]) => (
               <Button
                 key={status}
@@ -490,43 +489,43 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   <div className="flex items-center space-x-3">
                     {getTypeIcon(contract.type)}
                     <div>
-                      <h3 className="font-semibold text-foreground">{contract.name}</h3>
-                      <p className="text-sm text-foreground/70">{contract.companyName}</p>
+                      <h3 className="text-heading-4 color-foreground">{contract.name}</h3>
+                      <p className="text-body-sm color-foreground/70">{contract.companyName}</p>
                     </div>
                   </div>
                   {getStatusBadge(contract.status)}
                 </div>
                 
                 {contract.description && (
-                  <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
+                  <p className="text-body-sm color-foreground/70 mb-4 line-clamp-2">
                     {contract.description}
                   </p>
                 )}
                 
                 <div className="space-y-2 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Type</span>
-                    <span className="font-medium capitalize">
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Type</span>
+                    <span className="form-label capitalize">
                       {contract.type === 'msa' ? 'MSA' : contract.type === 'sow' ? 'SOW' : contract.type === 'nda' ? 'NDA' : contract.type}
                     </span>
                   </div>
                   
                   {contract.value && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Value</span>
-                      <span className="font-medium text-success">{formatCurrency(contract.value, contract.currency)}</span>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Value</span>
+                      <span className="form-label color-success">{formatCurrency(contract.value, contract.currency)}</span>
                     </div>
                   )}
                   
-                  <div className="flex justify-between text-sm">
-                    <span className="text-foreground/70">Start Date</span>
-                    <span className="font-medium">{formatDate(contract.startDate)}</span>
+                  <div className="flex justify-between text-body-sm">
+                    <span className="color-foreground/70">Start Date</span>
+                    <span className="form-label">{formatDate(contract.startDate)}</span>
                   </div>
                   
                   {contract.endDate && (
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">End Date</span>
-                      <span className={`font-medium ${isExpiringSoon(contract.endDate) ? 'text-warning' : 'text-foreground'}`}>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">End Date</span>
+                      <span className={`form-label ${isExpiringSoon(contract.endDate) ? 'color-warning' : 'color-foreground'}`}>
                         {formatDate(contract.endDate)}
                         {isExpiringSoon(contract.endDate) && (
                           <AlertTriangle className="inline h-3 w-3 ml-1" />
@@ -536,9 +535,9 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   )}
                   
                   {contract.autoRenewal && (
-                    <div className="flex items-center space-x-2 text-sm">
-                      <CheckCircle className="h-4 w-4 text-success" />
-                      <span className="text-foreground/70">Auto-renewal enabled</span>
+                    <div className="flex items-center space-x-2 text-body-sm">
+                      <CheckCircle className="h-4 w-4 color-success" />
+                      <span className="color-foreground/70">Auto-renewal enabled</span>
                     </div>
                   )}
                 </div>
@@ -572,14 +571,14 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                   </div>
                   
                   <div className="flex space-x-2">
-                    <StandardButton
+                    <Button
                       variant="ghost"
                       size="sm"
                       onClick={() => setSelectedContract(contract)}
                     >
                       View Details
-                    </StandardButton>
-                    <StandardButton
+                    </Button>
+                    <Button
                       variant="primary"
                       size="sm"
                       onClick={() => {
@@ -589,7 +588,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                       }}
                     >
                       Edit
-                    </StandardButton>
+                    </Button>
                   </div>
                 </div>
               </Card>
@@ -602,8 +601,8 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                 <div key={contract.id} className="border rounded-lg p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="font-semibold">{contract.name}</h3>
-                      <p className="text-sm text-muted-foreground">{contract.type}</p>
+                      <h3 className="text-heading-4">{contract.name}</h3>
+                      <p className="text-body-sm color-muted">{contract.type}</p>
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge variant={contract.status === 'active' ? 'success' : 'outline'}>
@@ -623,9 +622,9 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         {/* Empty State */}
         {contracts.length === 0 && (
           <Card className="p-12 text-center">
-            <FileText className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No contracts found</h3>
-            <p className="text-foreground/70 mb-4">Create your first company contract to get started</p>
+            <FileText className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No contracts found</h3>
+            <p className="color-foreground/70 mb-4">Create your first company contract to get started</p>
             <Button onClick={handleCreateContract}>
               <Plus className="h-4 w-4 mr-2" />
               New Contract
@@ -643,7 +642,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
           }
         >
           <div className="p-6">
-            <p className="text-muted-foreground">Contract details will be displayed here.</p>
+            <p className="color-muted">Contract details will be displayed here.</p>
           </div>
         </Drawer>
       </div>

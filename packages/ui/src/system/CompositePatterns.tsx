@@ -19,9 +19,9 @@ const tableVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-white dark:bg-neutral-800',
-        striped: 'bg-white dark:bg-neutral-800 [&_tbody_tr:nth-child(even)]:bg-neutral-50 dark:[&_tbody_tr:nth-child(even)]:bg-neutral-900',
-        bordered: 'border border-neutral-200 dark:border-neutral-700',
+        default: 'bg-card',
+        striped: 'bg-card [&_tbody_tr:nth-child(even)]:bg-muted',
+        bordered: 'border border-border',
       },
       size: {
         sm: '[&_th]:px-3 [&_th]:py-2 [&_td]:px-3 [&_td]:py-2 text-sm',
@@ -37,11 +37,11 @@ const tableVariants = cva(
 );
 
 const tableHeaderVariants = cva(
-  'text-left font-semibold text-neutral-900 dark:text-neutral-100 border-b border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-900',
+  'text-left font-semibold text-foreground border-b border-border bg-muted',
   {
     variants: {
       sortable: {
-        true: 'cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors',
+        true: 'cursor-pointer hover:bg-muted transition-colors',
         false: '',
       },
     },
@@ -52,7 +52,7 @@ const tableHeaderVariants = cva(
 );
 
 const tableCellVariants = cva(
-  'border-b border-neutral-200 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300',
+  'border-b border-border text-muted-foreground',
   {
     variants: {
       align: {
@@ -69,13 +69,13 @@ const tableCellVariants = cva(
 
 // Enhanced List Pattern
 const listVariants = cva(
-  'divide-y divide-neutral-200 dark:divide-neutral-700',
+  'divide-y divide-border',
   {
     variants: {
       variant: {
-        default: 'bg-white dark:bg-neutral-800',
-        bordered: 'border border-neutral-200 dark:border-neutral-700 rounded-lg',
-        card: 'bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-sm',
+        default: 'bg-card',
+        bordered: 'border border-border rounded-lg',
+        card: 'bg-card border border-border rounded-lg shadow-sm',
       },
       spacing: {
         none: '[&>*]:py-0',
@@ -96,11 +96,11 @@ const listItemVariants = cva(
   {
     variants: {
       interactive: {
-        true: 'hover:bg-neutral-50 dark:hover:bg-neutral-700 cursor-pointer',
+        true: 'hover:bg-muted cursor-pointer',
         false: '',
       },
       selected: {
-        true: 'bg-brand-50 dark:bg-brand-950 border-l-4 border-brand-500',
+        true: 'bg-primary/5 border-l-4 border-primary',
         false: '',
       },
     },
@@ -144,7 +144,7 @@ const gridPatternVariants = cva(
 
 // Enhanced Modal Pattern
 const modalOverlayVariants = cva(
-  'fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm',
+  'fixed inset-0 z-50 flex items-center justify-center p-4 bg-foreground/30 backdrop-blur-sm',
   {
     variants: {
       animation: {
@@ -160,7 +160,7 @@ const modalOverlayVariants = cva(
 );
 
 const modalContentVariants = cva(
-  'relative w-full max-w-lg bg-white dark:bg-neutral-800 rounded-lg shadow-xl border border-neutral-200 dark:border-neutral-700',
+  'relative w-full max-w-lg bg-card rounded-lg shadow-xl border border-border',
   {
     variants: {
       size: {
@@ -186,7 +186,7 @@ const modalContentVariants = cva(
 
 // Enhanced Drawer Pattern
 const drawerOverlayVariants = cva(
-  'fixed inset-0 z-50 bg-black/50 backdrop-blur-sm',
+  'fixed inset-0 z-50 bg-foreground/30 backdrop-blur-sm',
   {
     variants: {
       animation: {
@@ -200,7 +200,7 @@ const drawerOverlayVariants = cva(
 );
 
 const drawerContentVariants = cva(
-  'fixed bg-white dark:bg-neutral-800 border-neutral-200 dark:border-neutral-700 shadow-xl',
+  'fixed bg-card border-border shadow-xl',
   {
     variants: {
       side: {
@@ -276,24 +276,19 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: [
-          'bg-neutral-50 text-neutral-900 border-neutral-200',
-          'dark:bg-neutral-900 dark:text-neutral-100 dark:border-neutral-700',
+          'bg-muted text-foreground border-border',
         ],
         info: [
-          'bg-brand-50 text-brand-900 border-brand-200',
-          'dark:bg-brand-950 dark:text-brand-100 dark:border-brand-800',
+          'bg-primary/10 text-primary border border-primary/20',
         ],
         success: [
-          'bg-success-50 text-success-900 border-success-200',
-          'dark:bg-success-950 dark:text-success-100 dark:border-success-800',
+          'bg-success/10 text-success border border-success/20',
         ],
         warning: [
-          'bg-warning-50 text-warning-900 border-warning-200',
-          'dark:bg-warning-950 dark:text-warning-100 dark:border-warning-800',
+          'bg-warning/10 text-warning border border-warning/20',
         ],
         error: [
-          'bg-error-50 text-error-900 border-error-200',
-          'dark:bg-error-950 dark:text-error-100 dark:border-error-800',
+          'bg-destructive/10 text-destructive border border-destructive/20',
         ],
       },
       dismissible: {
@@ -315,20 +310,16 @@ const toastVariants = cva(
     variants: {
       variant: {
         default: [
-          'bg-white text-neutral-900 border-neutral-200',
-          'dark:bg-neutral-800 dark:text-neutral-100 dark:border-neutral-700',
+          'bg-card text-foreground border-border',
         ],
         success: [
-          'bg-success-50 text-success-900 border-success-200',
-          'dark:bg-success-950 dark:text-success-100 dark:border-success-800',
+          'bg-success/10 text-success border border-success/20',
         ],
         warning: [
-          'bg-warning-50 text-warning-900 border-warning-200',
-          'dark:bg-warning-950 dark:text-warning-100 dark:border-warning-800',
+          'bg-warning/10 text-warning border border-warning/20',
         ],
         error: [
-          'bg-error-50 text-error-900 border-error-200',
-          'dark:bg-error-950 dark:text-error-100 dark:border-error-800',
+          'bg-destructive/10 text-destructive border border-destructive/20',
         ],
       },
       position: {
@@ -357,8 +348,8 @@ const navVariants = cva(
       variant: {
         horizontal: 'flex-row space-x-1',
         vertical: 'flex-col space-y-1',
-        tabs: 'flex-row border-b border-neutral-200 dark:border-neutral-700',
-        pills: 'flex-row space-x-1 p-1 bg-neutral-100 dark:bg-neutral-800 rounded-lg',
+        tabs: 'flex-row border-b border-border',
+        pills: 'flex-row space-x-1 p-1 bg-muted rounded-lg',
       },
       size: {
         sm: 'text-sm',
@@ -374,21 +365,18 @@ const navVariants = cva(
 );
 
 const navItemVariants = cva(
-  'relative inline-flex items-center justify-center px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2',
+  'relative inline-flex items-center justify-center px-3 py-2 text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
   {
     variants: {
       variant: {
         default: [
-          'text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100 rounded-md',
-          'dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-700',
+          'text-muted-foreground hover:text-foreground hover:bg-muted rounded-md',
         ],
         tabs: [
-          'text-neutral-600 hover:text-neutral-900 border-b-2 border-transparent hover:border-neutral-300 rounded-none',
-          'dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:border-neutral-600',
+          'text-muted-foreground hover:text-foreground border-b-2 border-transparent hover:border-border rounded-none',
         ],
         pills: [
-          'text-neutral-600 hover:text-neutral-900 hover:bg-white rounded-md',
-          'dark:text-neutral-400 dark:hover:text-neutral-100 dark:hover:bg-neutral-700',
+          'text-muted-foreground hover:text-foreground hover:bg-background rounded-md',
         ],
       },
       active: {
@@ -400,17 +388,17 @@ const navItemVariants = cva(
       {
         variant: 'default',
         active: true,
-        class: 'text-brand-600 bg-brand-50 dark:text-brand-400 dark:bg-brand-950',
+        class: 'text-primary bg-primary/5',
       },
       {
         variant: 'tabs',
         active: true,
-        class: 'text-brand-600 border-brand-600 dark:text-brand-400 dark:border-brand-400',
+        class: 'text-primary border-primary',
       },
       {
         variant: 'pills',
         active: true,
-        class: 'text-brand-600 bg-white shadow-sm dark:text-brand-400 dark:bg-neutral-700',
+        class: 'text-primary bg-background shadow-sm',
       },
     ],
     defaultVariants: {
@@ -445,9 +433,9 @@ const formLabelVariants = cva(
   {
     variants: {
       variant: {
-        default: 'text-neutral-900 dark:text-neutral-100',
-        required: 'text-neutral-900 dark:text-neutral-100 after:content-["*"] after:ml-0.5 after:text-error-500',
-        optional: 'text-neutral-600 dark:text-neutral-400',
+        default: 'text-foreground',
+        required: 'text-foreground after:content-["*"] after:ml-0.5 after:text-destructive',
+        optional: 'text-muted-foreground',
       },
     },
     defaultVariants: {
@@ -457,11 +445,11 @@ const formLabelVariants = cva(
 );
 
 const formDescriptionVariants = cva(
-  'text-sm text-neutral-600 dark:text-neutral-400'
+  'text-sm text-muted-foreground'
 );
 
 const formErrorVariants = cva(
-  'text-sm text-error-600 dark:text-error-400'
+  'text-sm text-destructive'
 );
 
 // =============================================================================

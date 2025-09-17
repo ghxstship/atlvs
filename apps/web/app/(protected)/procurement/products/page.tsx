@@ -30,8 +30,8 @@ export default async function ProcurementProductsPage() {
     <div className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Products</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-3 text-heading-3">Products</h1>
+          <p className="color-muted">
             Manage your product catalog and inventory
           </p>
         </div>

@@ -200,44 +200,21 @@ export interface ProjectTimeEntry {
 }
 
 // Repository Interfaces
-import type { BaseRepository } from '../../repositories/BaseRepository';
+// import type { BaseRepository } from '../../repositories/BaseRepository';
 
-export interface ProjectRepository extends BaseRepository<Project> {
+export interface ProjectRepository {
   findByManager(managerId: UUID, context: { organizationId: UUID }): Promise<Project[]>;
   findByTeamMember(userId: UUID, context: { organizationId: UUID }): Promise<Project[]>;
   findByClient(clientId: UUID, context: { organizationId: UUID }): Promise<Project[]>;
 }
 
-export interface TaskRepository extends BaseRepository<ProjectTask> {
+export interface TaskRepository {
   findByProject(projectId: string): Promise<ProjectTask[]>;
   findByAssignee(assigneeId: string): Promise<ProjectTask[]>;
   findByStatus(status: ProjectTask['status']): Promise<ProjectTask[]>;
 }
 
-export interface RiskRepository extends BaseRepository<ProjectRisk> {
-  findByProject(projectId: string): Promise<ProjectRisk[]>;
-  findByCategory(category: ProjectRisk['category']): Promise<ProjectRisk[]>;
-  findByOwner(ownerId: string): Promise<ProjectRisk[]>;
-}
-
-export interface FileRepository extends BaseRepository<ProjectFile> {
-  findByProject(projectId: string): Promise<ProjectFile[]>;
-  findByCategory(category: ProjectFile['category']): Promise<ProjectFile[]>;
-}
-
-export interface InspectionRepository extends BaseRepository<ProjectInspection> {
-  findByProject(projectId: string): Promise<ProjectInspection[]>;
-  findByInspector(inspectorId: string): Promise<ProjectInspection[]>;
-  findByType(type: ProjectInspection['type']): Promise<ProjectInspection[]>;
-}
-
-export interface ActivationRepository extends BaseRepository<ProjectActivation> {
-  findByProject(projectId: string): Promise<ProjectActivation[]>;
-  findByResponsible(responsibleId: string): Promise<ProjectActivation[]>;
-  findByType(type: ProjectActivation['type']): Promise<ProjectActivation[]>;
-}
-
-export interface TimeEntryRepository extends BaseRepository<ProjectTimeEntry> {
+export interface TimeEntryRepository {
   findByProject(projectId: string): Promise<ProjectTimeEntry[]>;
   findByUser(userId: string): Promise<ProjectTimeEntry[]>;
   findByDateRange(startDate: string, endDate: string): Promise<ProjectTimeEntry[]>;

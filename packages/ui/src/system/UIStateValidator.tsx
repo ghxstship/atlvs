@@ -159,9 +159,7 @@ export class UIStateValidator {
   /**
    * Check color contrast (simplified check)
    */
-  private hasS
-
-ufficientContrast(element: HTMLElement): boolean {
+  private hasSufficientContrast(element: HTMLElement): boolean {
     const styles = window.getComputedStyle(element);
     const backgroundColor = styles.backgroundColor;
     const color = styles.color;
@@ -237,7 +235,7 @@ ufficientContrast(element: HTMLElement): boolean {
     // Count event listeners (simplified)
     const eventTypes = ['click', 'change', 'input', 'focus', 'blur'];
     eventTypes.forEach(type => {
-      if (element[`on${type}`]) {
+      if ((element as any)[`on${type}`]) {
         size += 1000; // Rough estimate: 1KB per listener
       }
     });

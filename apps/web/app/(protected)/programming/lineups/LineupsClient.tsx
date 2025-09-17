@@ -175,13 +175,13 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'confirmed':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'tentative':
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
       case 'cancelled':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       default:
-        return 'text-muted-foreground bg-muted/10';
+        return 'color-muted bg-secondary/10';
     }
   };
 
@@ -230,7 +230,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Lineups Management</h2>
+                <h2 className="text-body text-heading-4">Lineups Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Add Performer
@@ -247,7 +247,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
               {Object.entries(lineupsByStage).map(([stage, stageLineups]: [string, any]) => (
                 <Card key={stage} className="p-4">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-semibold flex items-center gap-2">
+                    <h3 className="text-heading-4 flex items-center gap-2">
                       <MapPin className="h-4 w-4" />
                       {stage}
                     </h3>
@@ -260,12 +260,12 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                     {stageLineups.slice(0, 3).map((lineup: any) => (
                       <div
                         key={lineup.id}
-                        className="flex items-center justify-between text-sm p-2 rounded border cursor-pointer hover:bg-muted/50"
+                        className="flex items-center justify-between text-body-sm p-2 rounded border cursor-pointer hover:bg-secondary/50"
                         onClick={() => handleViewLineup(lineup)}
                       >
                         <div>
-                          <div className="font-medium">{lineup.performer}</div>
-                          <div className="text-muted-foreground flex items-center gap-2">
+                          <div className="form-label">{lineup.performer}</div>
+                          <div className="color-muted flex items-center gap-2">
                             <Clock className="h-3 w-3" />
                             {lineup.set_time || 'TBD'}
                             {lineup.duration && (
@@ -280,7 +280,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                     ))}
                     
                     {stageLineups.length > 3 && (
-                      <div className="text-xs text-muted-foreground text-center pt-2">
+                      <div className="text-body-sm color-muted text-center pt-2">
                         +{stageLineups.length - 3} more performers
                       </div>
                     )}
@@ -295,8 +295,8 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
               {data.map((lineup) => (
                 <div key={lineup.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewLineup(lineup)}>
-                  <h3 className="font-medium">{lineup.performer}</h3>
-                  <p className="text-sm text-muted-foreground">{lineup.stage}</p>
+                  <h3 className="form-label">{lineup.performer}</h3>
+                  <p className="text-body-sm color-muted">{lineup.stage}</p>
                 </div>
               ))}
             </div>
@@ -324,7 +324,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
               {selectedRecord && (
                 <div className="space-y-4 mt-6">
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Calendar className="h-4 w-4" />
                       <span>
                         {selectedRecord.event_date 
@@ -333,7 +333,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Clock className="h-4 w-4" />
                       <span>
                         {selectedRecord.set_time || 'Set time TBD'}
@@ -341,13 +341,13 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-body-sm color-muted">
                     <MapPin className="h-4 w-4" />
                     <span>{selectedRecord.stage || 'Stage TBD'}</span>
                   </div>
                   
                   {selectedRecord.duration && (
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 text-body-sm color-muted">
                       <Music className="h-4 w-4" />
                       <span>{selectedRecord.duration} minute set</span>
                     </div>
@@ -365,9 +365,9 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-8 text-center">
-                <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-                <h3 className="text-lg font-semibold mb-2">No Lineups Yet</h3>
-                <p className="text-muted-foreground mb-4">
+                <Users className="h-12 w-12 mx-auto mb-4 color-muted" />
+                <h3 className="text-body text-heading-4 mb-2">No Lineups Yet</h3>
+                <p className="color-muted mb-4">
                   Start building your event lineups by adding performers and their set times.
                 </p>
                 <Button onClick={handleCreateLineup}>

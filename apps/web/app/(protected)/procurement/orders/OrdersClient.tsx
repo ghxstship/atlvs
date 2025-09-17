@@ -179,9 +179,9 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
     return (
       <div className="space-y-4">
         <div className="animate-pulse space-y-4">
-          <div className="h-4 bg-muted rounded w-3/4"></div>
-          <div className="h-4 bg-muted rounded w-1/2"></div>
-          <div className="h-4 bg-muted rounded w-2/3"></div>
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -193,7 +193,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Package className="h-5 w-5" />
-          <h3 className="font-semibold">Purchase Orders</h3>
+          <h3 className="text-heading-4">Purchase Orders</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-2" />
@@ -205,13 +205,13 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
       {(showCreateForm || editingOrder) && (
         <Card>
           <div className="p-4">
-            <h4 className="font-medium mb-4">
+            <h4 className="form-label mb-4">
               {editingOrder ? 'Edit Purchase Order' : 'Create New Purchase Order'}
             </h4>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
               <div className="space-y-2">
-                <label className="text-sm font-medium">Order Number</label>
+                <label className="text-body-sm form-label">Order Number</label>
                 <Input
                   value={formData.order_number}
                   onChange={(e) => setFormData(prev => ({ ...prev, order_number: e.target.value }))}
@@ -220,7 +220,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Vendor Name *</label>
+                <label className="text-body-sm form-label">Vendor Name *</label>
                 <Input
                   value={formData.vendor_name}
                   onChange={(e) => setFormData(prev => ({ ...prev, vendor_name: e.target.value }))}
@@ -229,7 +229,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2 md:col-span-2">
-                <label className="text-sm font-medium">Description *</label>
+                <label className="text-body-sm form-label">Description *</label>
                 <Input
                   value={formData.description}
                   onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
@@ -238,7 +238,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Total Amount *</label>
+                <label className="text-body-sm form-label">Total Amount *</label>
                 <Input
                   type="number"
                   step="0.01"
@@ -249,7 +249,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Currency</label>
+                <label className="text-body-sm form-label">Currency</label>
                 <select 
                   value={formData.currency} 
                   onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
@@ -262,7 +262,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Status</label>
+                <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
                   onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as OrderStatus }))}
@@ -278,7 +278,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Order Date</label>
+                <label className="text-body-sm form-label">Order Date</label>
                 <Input
                   type="date"
                   value={formData.order_date}
@@ -287,7 +287,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               </div>
               
               <div className="space-y-2">
-                <label className="text-sm font-medium">Expected Delivery</label>
+                <label className="text-body-sm form-label">Expected Delivery</label>
                 <Input
                   type="date"
                   value={formData.expected_delivery}
@@ -323,10 +323,10 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
       <div className="space-y-4">
         {orders.length === 0 ? (
           <Card>
-            <div className="p-8 text-center text-muted-foreground">
+            <div className="p-8 text-center color-muted">
               <Package className="h-12 w-12 mx-auto mb-4 opacity-50" />
               <p>No purchase orders found.</p>
-              <p className="text-sm">Create your first purchase order to get started.</p>
+              <p className="text-body-sm">Create your first purchase order to get started.</p>
             </div>
           </Card>
         ) : (
@@ -336,20 +336,20 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h4 className="font-medium">{order.order_number}</h4>
+                      <h4 className="form-label">{order.order_number}</h4>
                       <Badge variant={getStatusColor(order.status)}>
                         {getStatusIcon(order.status)}
                         <span className="ml-1 capitalize">{order.status}</span>
                       </Badge>
                     </div>
                     
-                    <p className="text-sm text-muted-foreground mb-2">
+                    <p className="text-body-sm color-muted mb-2">
                       <strong>Vendor:</strong> {order.vendor_name}
                     </p>
                     
-                    <p className="text-sm mb-2">{order.description}</p>
+                    <p className="text-body-sm mb-2">{order.description}</p>
                     
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <div className="flex items-center gap-4 text-body-sm color-muted">
                       <div className="flex items-center gap-1">
                         <DollarSign className="h-3 w-3" />
                         {order.total_amount.toLocaleString()} {order.currency}

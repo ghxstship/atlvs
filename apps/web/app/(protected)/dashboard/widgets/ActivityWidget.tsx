@@ -148,15 +148,15 @@ export default function ActivityWidget({
   const getModuleColor = (module: string) => {
     switch (module) {
       case 'projects':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'people':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'budgets':
       case 'expenses':
       case 'revenue':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -196,14 +196,14 @@ export default function ActivityWidget({
     return (
       <Card className="p-6 h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-muted/50 rounded w-3/4 mb-4"></div>
+          <div className="h-4 bg-secondary/50 rounded w-3/4 mb-4"></div>
           <div className="space-y-3">
             {[...Array(5)].map((_, i) => (
               <div key={i} className="flex items-center space-x-3">
-                <div className="h-8 w-8 bg-muted/50 rounded-full"></div>
+                <div className="h-8 w-8 bg-secondary/50 rounded-full"></div>
                 <div className="flex-1 space-y-1">
-                  <div className="h-3 bg-muted/50 rounded w-3/4"></div>
-                  <div className="h-2 bg-muted/50 rounded w-1/2"></div>
+                  <div className="h-3 bg-secondary/50 rounded w-3/4"></div>
+                  <div className="h-2 bg-secondary/50 rounded w-1/2"></div>
                 </div>
               </div>
             ))}
@@ -217,8 +217,8 @@ export default function ActivityWidget({
     return (
       <Card className="p-6 h-full">
         <div className="text-center">
-          <p className="text-sm text-destructive mb-2">Error loading activities</p>
-          <p className="text-xs text-muted-foreground">{error}</p>
+          <p className="text-body-sm color-destructive mb-2">Error loading activities</p>
+          <p className="text-body-sm color-muted">{error}</p>
         </div>
       </Card>
     );
@@ -230,12 +230,12 @@ export default function ActivityWidget({
     <Card className="p-6 h-full relative group">
       {/* Widget Header */}
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold">{title}</h3>
+        <h3 className="text-body text-heading-4">{title}</h3>
         {(onEdit || onDelete) && (
           <div className="opacity-0 group-hover:opacity-100 transition-opacity">
             <button
               onClick={onEdit}
-              className="p-1 text-muted-foreground hover:text-foreground rounded"
+              className="p-1 color-muted hover:color-foreground rounded"
               aria-label="Edit widget"
             >
               <MoreHorizontal className="h-4 w-4" />
@@ -249,26 +249,26 @@ export default function ActivityWidget({
         {Object.entries(groupedActivities).map(([groupName, groupActivities]) => (
           <div key={groupName}>
             {config.groupByDate && (
-              <h4 className="text-sm font-medium text-muted-foreground mb-2">{groupName}</h4>
+              <h4 className="text-body-sm form-label color-muted mb-2">{groupName}</h4>
             )}
             <div className="space-y-3">
               {groupActivities.map((activity) => (
                 <div key={activity.id} className="flex items-start space-x-3">
                   {config.showAvatars && (
                     <div className="flex-shrink-0">
-                      <div className="h-8 w-8 bg-muted/50 rounded-full flex items-center justify-center">
-                        <User className="h-4 w-4 text-muted-foreground" />
+                      <div className="h-8 w-8 bg-secondary/50 rounded-full flex items-center justify-center">
+                        <User className="h-4 w-4 color-muted" />
                       </div>
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-2 mb-1">
-                      <p className="text-sm font-medium truncate">
+                      <p className="text-body-sm form-label truncate">
                         {activity.user_name}
                       </p>
                       <Badge 
                         variant="secondary" 
-                        className={`text-xs ${getModuleColor(activity.module)}`}
+                        className={`text-body-sm ${getModuleColor(activity.module)}`}
                       >
                         <span className="flex items-center space-x-1">
                           {getModuleIcon(activity.module)}
@@ -276,10 +276,10 @@ export default function ActivityWidget({
                         </span>
                       </Badge>
                     </div>
-                    <p className="text-sm text-muted-foreground mb-1">
+                    <p className="text-body-sm color-muted mb-1">
                       {activity.description}
                     </p>
-                    <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                    <div className="flex items-center space-x-2 text-body-sm color-muted">
                       <Clock className="h-3 w-3" />
                       <span>{formatTimestamp(activity.timestamp)}</span>
                     </div>
@@ -292,14 +292,14 @@ export default function ActivityWidget({
 
         {activities.length === 0 && (
           <div className="text-center py-8">
-            <p className="text-sm text-muted-foreground">No recent activity</p>
+            <p className="text-body-sm color-muted">No recent activity</p>
           </div>
         )}
       </div>
 
       {/* Footer */}
       <div className="mt-4 pt-4 border-t border-border">
-        <p className="text-xs text-muted-foreground text-center">
+        <p className="text-body-sm color-muted text-center">
           Showing last {Math.min(activities.length, config.maxItems)} activities
         </p>
       </div>

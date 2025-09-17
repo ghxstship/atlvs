@@ -16,7 +16,7 @@ import { ContainerSystem } from './ContainerSystem';
 
 // Enhanced Page Layout System
 const pageLayoutVariants = cva(
-  'min-h-screen bg-neutral-50 dark:bg-neutral-950',
+  'min-h-screen bg-muted',
   {
     variants: {
       type: {
@@ -143,14 +143,14 @@ const workflowVariants = cva(
       },
       state: {
         loading: 'opacity-50 pointer-events-none',
-        error: 'border-l-4 border-error-500 pl-4',
-        success: 'border-l-4 border-success-500 pl-4',
-        warning: 'border-l-4 border-warning-500 pl-4',
+        error: 'border-l-4 border-destructive pl-4',
+        success: 'border-l-4 border-success pl-4',
+        warning: 'border-l-4 border-warning pl-4',
         default: '',
       },
       progress: {
         none: '',
-        linear: 'relative before:absolute before:top-0 before:left-0 before:h-1 before:bg-brand-500 before:transition-all',
+        linear: 'relative before:absolute before:top-0 before:left-0 before:h-1 before:bg-primary before:transition-all',
         circular: 'relative',
         stepped: 'relative',
       },
@@ -169,17 +169,17 @@ const stepVariants = cva(
   {
     variants: {
       variant: {
-        default: 'p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg',
+        default: 'p-6 bg-card border border-border rounded-lg',
         minimal: 'p-4',
-        card: 'p-6 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg shadow-sm',
-        highlighted: 'p-6 bg-brand-50 dark:bg-brand-950 border border-brand-200 dark:border-brand-800 rounded-lg',
+        card: 'p-6 bg-card border border-border rounded-lg shadow-sm',
+        highlighted: 'p-6 bg-primary/5 border border-primary rounded-lg',
       },
       state: {
         pending: 'opacity-60',
-        active: 'ring-2 ring-brand-500 ring-offset-2',
-        completed: 'bg-success-50 dark:bg-success-950 border-success-200 dark:border-success-800',
-        error: 'bg-error-50 dark:bg-error-950 border-error-200 dark:border-error-800',
-        skipped: 'opacity-40 bg-neutral-100 dark:bg-neutral-800',
+        active: 'ring-2 ring-primary ring-offset-2',
+        completed: 'bg-success/10 border-success/20',
+        error: 'bg-destructive/10 border-destructive/20',
+        skipped: 'opacity-40 bg-muted',
       },
       interactive: {
         true: 'cursor-pointer hover:shadow-md hover:-translate-y-0.5 transition-all duration-200',
@@ -200,7 +200,7 @@ const stepVariants = cva(
 
 // Enhanced Breadcrumb System
 const breadcrumbVariants = cva(
-  'flex items-center space-x-2 text-sm text-neutral-600 dark:text-neutral-400',
+  'flex items-center space-x-2 text-sm text-muted-foreground',
   {
     variants: {
       variant: {
@@ -209,9 +209,9 @@ const breadcrumbVariants = cva(
         prominent: 'text-base font-medium',
       },
       separator: {
-        slash: '[&>*:not(:last-child)]:after:content-["/"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-neutral-400',
-        chevron: '[&>*:not(:last-child)]:after:content-["›"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-neutral-400',
-        arrow: '[&>*:not(:last-child)]:after:content-["→"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-neutral-400',
+        slash: '[&>*:not(:last-child)]:after:content-["/"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-muted-foreground',
+        chevron: '[&>*:not(:last-child)]:after:content-["›"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-muted-foreground',
+        arrow: '[&>*:not(:last-child)]:after:content-["→"] [&>*:not(:last-child)]:after:mx-2 [&>*:not(:last-child)]:after:text-muted-foreground',
       },
     },
     defaultVariants: {
@@ -227,10 +227,10 @@ const progressVariants = cva(
   {
     variants: {
       variant: {
-        linear: 'w-full bg-neutral-200 dark:bg-neutral-700 rounded-full h-2',
+        linear: 'w-full bg-muted rounded-full h-2',
         stepped: 'space-x-4',
         circular: 'relative w-16 h-16',
-        minimal: 'text-sm text-neutral-600 dark:text-neutral-400',
+        minimal: 'text-sm text-muted-foreground',
       },
       size: {
         sm: 'h-1',
@@ -251,7 +251,7 @@ const progressVariants = cva(
 
 // Enhanced Action Bar System
 const actionBarVariants = cva(
-  'flex items-center justify-between p-4 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800',
+  'flex items-center justify-between p-4 bg-background border-t border-border',
   {
     variants: {
       variant: {
@@ -283,14 +283,14 @@ const actionBarVariants = cva(
 
 // Enhanced Toolbar System
 const toolbarVariants = cva(
-  'flex items-center gap-2 p-2 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg',
+  'flex items-center gap-2 p-2 bg-muted border border-border rounded-lg',
   {
     variants: {
       variant: {
         default: '',
         minimal: 'bg-transparent border-0 p-0',
         prominent: 'p-4 shadow-sm',
-        floating: 'shadow-lg border-neutral-300 dark:border-neutral-600',
+        floating: 'shadow-lg border-border',
       },
       orientation: {
         horizontal: 'flex-row',
@@ -320,12 +320,12 @@ const statusVariants = cva(
   {
     variants: {
       variant: {
-        success: 'bg-success-100 text-success-800 dark:bg-success-900 dark:text-success-200',
-        warning: 'bg-warning-100 text-warning-800 dark:bg-warning-900 dark:text-warning-200',
-        error: 'bg-error-100 text-error-800 dark:bg-error-900 dark:text-error-200',
-        info: 'bg-brand-100 text-brand-800 dark:bg-brand-900 dark:text-brand-200',
-        neutral: 'bg-neutral-100 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-200',
-        processing: 'bg-brand-100 text-brand-800 dark:bg-brand-900 dark:text-brand-200 animate-pulse',
+        success: 'bg-success/10 text-success',
+        warning: 'bg-warning/10 text-warning',
+        error: 'bg-destructive/10 text-destructive',
+        info: 'bg-primary/10 text-primary',
+        neutral: 'bg-muted text-foreground',
+        processing: 'bg-primary/10 text-primary animate-pulse',
       },
       size: {
         sm: 'px-2 py-0.5 text-xs',
@@ -351,10 +351,10 @@ const notificationVariants = cva(
   {
     variants: {
       variant: {
-        success: 'bg-success-50 border-success-200 text-success-900 dark:bg-success-950 dark:border-success-800 dark:text-success-100',
-        warning: 'bg-warning-50 border-warning-200 text-warning-900 dark:bg-warning-950 dark:border-warning-800 dark:text-warning-100',
-        error: 'bg-error-50 border-error-200 text-error-900 dark:bg-error-950 dark:border-error-800 dark:text-error-100',
-        info: 'bg-brand-50 border-brand-200 text-brand-900 dark:bg-brand-950 dark:border-brand-800 dark:text-brand-100',
+        success: 'bg-success/10 border-success/20 text-success',
+        warning: 'bg-warning/10 border-warning/20 text-warning',
+        error: 'bg-destructive/10 border-destructive/20 text-destructive',
+        info: 'bg-primary/10 border-primary/20 text-primary',
       },
       position: {
         inline: 'mb-4',
@@ -380,7 +380,7 @@ const notificationVariants = cva(
 
 const responsiveWorkflowVariants = {
   // Mobile-first navigation
-  mobileNav: 'lg:hidden fixed inset-x-0 bottom-0 z-50 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-800',
+  mobileNav: 'lg:hidden fixed inset-x-0 bottom-0 z-50 bg-background border-t border-border',
   
   // Desktop sidebar
   desktopSidebar: 'hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:z-50',
@@ -409,29 +409,29 @@ export const workflowOptimization = {
   // Auto-save patterns
   autoSave: {
     debounce: 500,
-    indicator: 'text-xs text-neutral-500 animate-pulse',
-    success: 'text-xs text-success-600',
-    error: 'text-xs text-error-600',
+    indicator: 'text-xs text-muted-foreground animate-pulse',
+    success: 'text-xs text-success',
+    error: 'text-xs text-destructive',
   },
   
   // Loading states
   loading: {
-    skeleton: 'animate-pulse bg-neutral-200 dark:bg-neutral-700 rounded',
-    spinner: 'animate-spin h-4 w-4 border-2 border-brand-500 border-t-transparent rounded-full',
-    dots: 'flex space-x-1 [&>div]:w-2 [&>div]:h-2 [&>div]:bg-brand-500 [&>div]:rounded-full [&>div]:animate-bounce',
+    skeleton: 'animate-pulse bg-muted rounded',
+    spinner: 'animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full',
+    dots: 'flex space-x-1 [&>div]:w-2 [&>div]:h-2 [&>div]:bg-primary [&>div]:rounded-full [&>div]:animate-bounce',
   },
   
   // Error recovery
   errorRecovery: {
-    retry: 'inline-flex items-center gap-2 text-sm text-brand-600 hover:text-brand-700 cursor-pointer',
-    fallback: 'p-4 bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg text-center',
+    retry: 'inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 cursor-pointer',
+    fallback: 'p-4 bg-muted border border-border rounded-lg text-center',
   },
   
   // Progressive disclosure
   disclosure: {
     collapsed: 'max-h-0 overflow-hidden transition-all duration-300',
     expanded: 'max-h-screen overflow-visible transition-all duration-300',
-    toggle: 'flex items-center gap-2 text-sm font-medium text-brand-600 hover:text-brand-700 cursor-pointer',
+    toggle: 'flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 cursor-pointer',
   },
 };
 
@@ -442,9 +442,9 @@ export const workflowOptimization = {
 export const a11yWorkflowPatterns = {
   // Focus management
   focusManagement: {
-    trap: 'focus-within:ring-2 focus-within:ring-brand-500 focus-within:ring-offset-2',
+    trap: 'focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2',
     skip: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50',
-    restore: 'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2',
+    restore: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
   },
   
   // Screen reader support
@@ -457,7 +457,7 @@ export const a11yWorkflowPatterns = {
   
   // Keyboard navigation
   keyboard: {
-    navigation: 'focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2 rounded',
+    navigation: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded',
     shortcuts: '[data-hotkey]',
     escape: '[data-dismiss="escape"]',
   },

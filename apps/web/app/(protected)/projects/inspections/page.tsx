@@ -81,8 +81,8 @@ export default async function ProjectsInspectionsPage() {
       <Card>
         <div className="flex items-center justify-between gap-4 mb-6">
           <div>
-            <h1 className="text-2xl font-bold">Inspections</h1>
-            <p className="text-sm text-muted-foreground">
+            <h1 className="text-heading-3 text-heading-3">Inspections</h1>
+            <p className="text-body-sm color-muted">
               Manage pre-event, post-event, and compliance inspections
             </p>
           </div>
@@ -92,7 +92,7 @@ export default async function ProjectsInspectionsPage() {
         {orgId ? (
           <InspectionsTableClient orgId={orgId} rows={inspections} projects={projects} />
         ) : (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 color-muted">
             Please join an organization to manage inspections.
           </div>
         )}

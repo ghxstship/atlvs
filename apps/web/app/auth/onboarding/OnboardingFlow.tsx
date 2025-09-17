@@ -3,9 +3,10 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import type { Route } from 'next';
 import { Card, Button, Input, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@supabase/ssr';
-import { DynamicProgressBar } from '../../(protected)/components/ui/DynamicProgressBar';
+import { DynamicProgressBar } from '../../_components/ui/DynamicProgressBar';
 import { ArrowRight, ArrowLeft, Check, Building, Users, CreditCard, Settings } from 'lucide-react';
 import { typography } from '../../(marketing)/lib/typography';
 import { spacing, layouts } from '../../(marketing)/lib/spacing';
@@ -108,7 +109,7 @@ export function OnboardingFlow() {
       <div className={`${layouts.container} ${spacing.sectionPadding}`}>
         {/* Header */}
         <div className={`text-center ${spacing.marginBottom.large}`}>
-          <Link href="/home" className={`inline-flex items-center space-x-2 ${spacing.marginBottom.medium}`}>
+          <Link href={"/home" as Route} className={`inline-flex items-center space-x-2 ${spacing.marginBottom.medium}`}>
             <span className={typography.heroTitle}>
               GHXSTSHIP
             </span>

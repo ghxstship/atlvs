@@ -249,9 +249,9 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
             <DataGrid />
             <KanbanBoard 
               columns={[
-                { id: 'active', title: 'Active', color: '#10b981' },
-                { id: 'inactive', title: 'Inactive', color: '#6b7280' },
-                { id: 'pending', title: 'Pending', color: '#f59e0b' }
+                { id: 'active', title: 'Active' },
+                { id: 'inactive', title: 'Inactive' },
+                { id: 'pending', title: 'Pending' }
               ]}
               statusField="status"
               titleField="full_name"

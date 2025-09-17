@@ -24,8 +24,8 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold">OPENDECK MARKETPLACE</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-2 text-heading-3">OPENDECK MARKETPLACE</h1>
+          <p className="color-muted">
             Digital marketplace for live and experiential entertainment
           </p>
         </div>
@@ -101,41 +101,41 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
 
         <TabsContent value="messages">
           <div className="text-center py-12">
-            <MessageSquare className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">Messages</h3>
-            <p className="text-muted-foreground">Communication hub coming soon...</p>
+            <MessageSquare className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">Messages</h3>
+            <p className="color-muted">Communication hub coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="payments">
           <div className="text-center py-12">
-            <DollarSign className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">Payments & Escrow</h3>
-            <p className="text-muted-foreground">Payment processing coming soon...</p>
+            <DollarSign className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">Payments & Escrow</h3>
+            <p className="color-muted">Payment processing coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="reviews">
           <div className="text-center py-12">
-            <Star className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">Reviews & Ratings</h3>
-            <p className="text-muted-foreground">Reputation system coming soon...</p>
+            <Star className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">Reviews & Ratings</h3>
+            <p className="color-muted">Reputation system coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="contracts">
           <div className="text-center py-12">
-            <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">Contracts</h3>
-            <p className="text-muted-foreground">Contract management coming soon...</p>
+            <FileText className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">Contracts</h3>
+            <p className="color-muted">Contract management coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="settings">
           <div className="text-center py-12">
-            <Settings className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
-            <h3 className="text-lg font-semibold mb-2">Marketplace Settings</h3>
-            <p className="text-muted-foreground">Settings coming soon...</p>
+            <Settings className="h-12 w-12 mx-auto mb-4 color-muted" />
+            <h3 className="text-body text-heading-4 mb-2">Marketplace Settings</h3>
+            <p className="color-muted">Settings coming soon...</p>
           </div>
         </TabsContent>
       </Tabs>

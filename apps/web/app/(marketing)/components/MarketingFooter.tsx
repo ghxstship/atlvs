@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { typography, anton } from '../lib/typography';
 import { layouts } from '../lib/layouts';
-import { NewsletterSignup } from './ui/NewsletterSignup';
+import { NewsletterSignup } from '../../_components/marketing/NewsletterSignup';
 import { FooterSection } from './footer/FooterSection';
 import { SocialLinks } from './footer/SocialLinks';
 import { TrustBadges } from './footer/TrustBadges';
@@ -80,14 +80,14 @@ export function MarketingFooter() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-muted/30 border-t">
+    <footer className="bg-secondary/30 border-t">
       <div className={`${layouts.container} ${layouts.sectionPadding}`}>
         {/* Newsletter Signup */}
         <div className="mb-12 text-center">
           <h3 className={`${typography.sectionTitle} mb-4`}>
             STAY UPDATED WITH GHXSTSHIP
           </h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="color-muted mb-6 max-w-2xl mx-auto">
             Get the latest updates on new features, industry insights, and exclusive content delivered to your inbox.
           </p>
           <NewsletterSignup variant="centered" />
@@ -105,7 +105,7 @@ export function MarketingFooter() {
           {/* Logo */}
           <div className="flex items-center mb-4 md:mb-0">
             <Link href="/" className="flex items-center space-x-2">
-              <span className={`${anton.className} text-xl font-bold tracking-tight uppercase`}>
+              <span className={`${anton.className} text-heading-4 text-heading-3 tracking-tight uppercase`}>
                 GHXSTSHIP
               </span>
             </Link>
@@ -113,7 +113,7 @@ export function MarketingFooter() {
 
           {/* Centered Copyright */}
           <div className="flex-1 text-center mb-4 md:mb-0">
-            <span className="text-sm text-muted-foreground">
+            <span className="text-body-sm color-muted">
               © {currentYear} GHXSTSHIP. All rights reserved.
             </span>
           </div>

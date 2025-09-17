@@ -184,10 +184,10 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-6 border-b">
-          <h2 className="text-xl font-semibold">
+          <h2 className="text-heading-4 text-heading-4">
             {resource ? 'Edit Resource' : 'Add New Resource'}
           </h2>
           <Button onClick={onClose}>
@@ -198,7 +198,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
         <form onSubmit={handleSubmit} className="p-6 space-y-6">
           {/* Title */}
           <div>
-            <label className="block text-sm font-medium mb-2">Title *</label>
+            <label className="block text-body-sm form-label mb-2">Title *</label>
             <input
               type="text"
               className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -206,12 +206,12 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
               placeholder="Enter resource title"
             />
-            {errors.title && <p className="text-destructive text-sm mt-1">{errors.title}</p>}
+            {errors.title && <p className="color-destructive text-body-sm mt-1">{errors.title}</p>}
           </div>
 
           {/* Description */}
           <div>
-            <label className="block text-sm font-medium mb-2">Description</label>
+            <label className="block text-body-sm form-label mb-2">Description</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
               rows={3}
@@ -224,7 +224,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
           {/* Type and Category */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Type *</label>
+              <label className="block text-body-sm form-label mb-2">Type *</label>
               <select
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.type}
@@ -239,7 +239,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Category *</label>
+              <label className="block text-body-sm form-label mb-2">Category *</label>
               <input
                 type="text"
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -247,14 +247,14 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
                 onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                 placeholder="e.g., HR, Safety, Operations"
               />
-              {errors.category && <p className="text-destructive text-sm mt-1">{errors.category}</p>}
+              {errors.category && <p className="color-destructive text-body-sm mt-1">{errors.category}</p>}
             </div>
           </div>
 
           {/* Status and Visibility */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Status</label>
+              <label className="block text-body-sm form-label mb-2">Status</label>
               <select
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.status}
@@ -269,7 +269,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Visibility</label>
+              <label className="block text-body-sm form-label mb-2">Visibility</label>
               <select
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.visibility}
@@ -287,7 +287,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
           {/* Version and Language */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-2">Version</label>
+              <label className="block text-body-sm form-label mb-2">Version</label>
               <input
                 type="text"
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -298,7 +298,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Language</label>
+              <label className="block text-body-sm form-label mb-2">Language</label>
               <select
                 className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.language}
@@ -316,7 +316,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
 
           {/* Tags */}
           <div>
-            <label className="block text-sm font-medium mb-2">Tags</label>
+            <label className="block text-body-sm form-label mb-2">Tags</label>
             <input
               type="text"
               className="w-full px-3 py-2 border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
@@ -324,12 +324,12 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
               placeholder="Enter tags separated by commas"
             />
-            <p className="text-sm text-muted-foreground mt-1">Separate multiple tags with commas</p>
+            <p className="text-body-sm color-muted mt-1">Separate multiple tags with commas</p>
           </div>
 
           {/* File Upload */}
           <div>
-            <label className="block text-sm font-medium mb-2">
+            <label className="block text-body-sm form-label mb-2">
               File {!resource && '*'}
             </label>
             <div className="border-2 border-dashed border-border rounded-md p-4">
@@ -340,17 +340,17 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
                 accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.md"
               />
               {file && (
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-body-sm color-muted mt-2">
                   Selected: {file.name} ({(file.size / 1024 / 1024).toFixed(2)} MB)
                 </p>
               )}
               {resource?.file_url && !file && (
-                <p className="text-sm text-muted-foreground mt-2">
+                <p className="text-body-sm color-muted mt-2">
                   Current file: {resource.file_url.split('/').pop()}
                 </p>
               )}
             </div>
-            {errors.file && <p className="text-destructive text-sm mt-1">{errors.file}</p>}
+            {errors.file && <p className="color-destructive text-body-sm mt-1">{errors.file}</p>}
           </div>
 
           {/* Featured */}
@@ -360,9 +360,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               id="is_featured"
               checked={formData.is_featured}
               onChange={(e) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
-              className="rounded border-border text-primary focus:ring-primary"
+              className="rounded border-border color-primary focus:ring-primary"
             />
-            <label htmlFor="is_featured" className="text-sm font-medium">
+            <label htmlFor="is_featured" className="text-body-sm form-label">
               Mark as featured resource
             </label>
           </div>
@@ -370,7 +370,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
           {/* Error Messages */}
           {errors.submit && (
             <div className="bg-destructive/10 border border-destructive/20 rounded-md p-3">
-              <p className="text-destructive text-sm">{errors.submit}</p>
+              <p className="color-destructive text-body-sm">{errors.submit}</p>
             </div>
           )}
 
@@ -382,7 +382,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <Button type="submit" disabled={uploading}>
               {uploading ? (
                 <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin mr-2"></div>
                   {resource ? 'Updating...' : 'Creating...'}
                 </>
               ) : (

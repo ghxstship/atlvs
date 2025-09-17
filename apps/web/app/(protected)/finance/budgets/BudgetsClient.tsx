@@ -29,7 +29,7 @@ import {
   TrendingUp,
   TrendingDown
 } from 'lucide-react';
-import { BudgetUtilizationBar } from '../../components/ui/DynamicProgressBar';
+import { BudgetUtilizationBar } from '../../../_components/ui/DynamicProgressBar';
 
 interface BudgetsClientProps {
   user: User;
@@ -168,12 +168,12 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
 
   const getBudgetStatus = (budget: Budget) => {
     const utilization = getBudgetUtilization(budget);
-    if (budget.status === 'cancelled') return { color: 'text-muted-foreground', label: 'Cancelled' };
-    if (budget.status === 'completed') return { color: 'text-success', label: 'Completed' };
-    if (utilization >= 100) return { color: 'text-destructive', label: 'Over Budget' };
-    if (utilization >= 90) return { color: 'text-warning', label: 'Near Limit' };
-    if (utilization >= 75) return { color: 'text-warning', label: 'On Track' };
-    return { color: 'text-success', label: 'Under Budget' };
+    if (budget.status === 'cancelled') return { color: 'color-muted', label: 'Cancelled' };
+    if (budget.status === 'completed') return { color: 'color-success', label: 'Completed' };
+    if (utilization >= 100) return { color: 'color-destructive', label: 'Over Budget' };
+    if (utilization >= 90) return { color: 'color-warning', label: 'Near Limit' };
+    if (utilization >= 75) return { color: 'color-warning', label: 'On Track' };
+    return { color: 'color-success', label: 'Under Budget' };
   };
 
   const fieldConfigs: FieldConfig[] = [
@@ -299,11 +299,11 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
         {/* Header */}
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-            <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+            <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+            <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
           </div>
           <div className="flex items-center space-x-3">
-            <div className="flex gap-1 p-1 bg-muted rounded-lg">
+            <div className="flex gap-1 p-1 bg-secondary rounded-lg">
               <Button
                 variant={currentView === 'grid' ? 'primary' : 'ghost'}
                
@@ -335,49 +335,49 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Budgets</p>
-                <p className="text-2xl font-bold text-foreground">{budgets.length}</p>
+                <p className="text-body-sm color-foreground/70">Total Budgets</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">{budgets.length}</p>
               </div>
-              <DollarSign className="h-8 w-8 text-primary" />
+              <DollarSign className="h-8 w-8 color-primary" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Allocated</p>
-                <p className="text-2xl font-bold text-success">
+                <p className="text-body-sm color-foreground/70">Total Allocated</p>
+                <p className="text-heading-3 text-heading-3 color-success">
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.amount, 0))}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 text-success" />
+              <TrendingUp className="h-8 w-8 color-success" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Total Spent</p>
-                <p className="text-2xl font-bold text-destructive">
+                <p className="text-body-sm color-foreground/70">Total Spent</p>
+                <p className="text-heading-3 text-heading-3 color-destructive">
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.spent, 0))}
                 </p>
               </div>
-              <TrendingDown className="h-8 w-8 text-destructive" />
+              <TrendingDown className="h-8 w-8 color-destructive" />
             </div>
           </Card>
           
           <Card className="p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-foreground/70">Avg Utilization</p>
-                <p className="text-2xl font-bold text-foreground">
+                <p className="text-body-sm color-foreground/70">Avg Utilization</p>
+                <p className="text-heading-3 text-heading-3 color-foreground">
                   {budgets.length > 0 
                     ? (budgets.reduce((sum, b) => sum + getBudgetUtilization(b), 0) / budgets.length).toFixed(1)
                     : '0'
                   }%
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 text-secondary" />
+              <CheckCircle className="h-8 w-8 color-secondary" />
             </div>
           </Card>
         </div>
@@ -393,8 +393,8 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 <Card key={budget.id} className="p-6 hover:shadow-md transition-shadow cursor-pointer" onClick={() => handleViewBudget(budget)}>
                   <div className="flex items-start justify-between mb-4">
                     <div>
-                      <h3 className="font-semibold text-foreground">{budget.name}</h3>
-                      <p className="text-sm text-foreground/70 capitalize">{budget.category}</p>
+                      <h3 className="text-heading-4 color-foreground">{budget.name}</h3>
+                      <p className="text-body-sm color-foreground/70 capitalize">{budget.category}</p>
                     </div>
                     <Badge variant={budget.status === 'active' ? 'default' : 'secondary'}>
                       {budget.status}
@@ -402,20 +402,20 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   </div>
                   
                   <div className="space-y-3">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Budget</span>
-                      <span className="font-medium">{formatCurrency(budget.amount, budget.currency)}</span>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Budget</span>
+                      <span className="form-label">{formatCurrency(budget.amount, budget.currency)}</span>
                     </div>
                     
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Spent</span>
-                      <span className="font-medium">{formatCurrency(budget.spent, budget.currency)}</span>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Spent</span>
+                      <span className="form-label">{formatCurrency(budget.spent, budget.currency)}</span>
                     </div>
                     
                     <div className="space-y-2">
-                      <div className="flex justify-between text-sm">
-                        <span className="text-foreground/70">Utilization</span>
-                        <span className={`font-medium ${status.color}`}>{utilization.toFixed(1)}%</span>
+                      <div className="flex justify-between text-body-sm">
+                        <span className="color-foreground/70">Utilization</span>
+                        <span className={`form-label ${status.color}`}>{utilization.toFixed(1)}%</span>
                       </div>
                       <BudgetUtilizationBar
                         utilized={budget.spent || 0}
@@ -423,16 +423,16 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                       />
                     </div>
                     
-                    <div className="flex justify-between text-sm">
-                      <span className="text-foreground/70">Remaining</span>
-                      <span className={`font-medium ${budget.amount - budget.spent >= 0 ? 'text-success' : 'text-destructive'}`}>
+                    <div className="flex justify-between text-body-sm">
+                      <span className="color-foreground/70">Remaining</span>
+                      <span className={`form-label ${budget.amount - budget.spent >= 0 ? 'color-success' : 'color-destructive'}`}>
                         {formatCurrency(budget.amount - budget.spent, budget.currency)}
                       </span>
                     </div>
                   </div>
                   
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                    <span className={`text-xs ${status.color}`}>{status.label}</span>
+                    <span className={`text-body-sm ${status.color}`}>{status.label}</span>
                     <div className="flex space-x-2">
                       <Button
                         variant="ghost"
@@ -476,7 +476,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 </thead>
                 <tbody>
                   {budgets.map((budget) => (
-                    <tr key={budget.id} className="border-b hover:bg-muted/50">
+                    <tr key={budget.id} className="border-b hover:bg-secondary/50">
                       <td className="p-2">{budget.name}</td>
                       <td className="p-2">{budget.category}</td>
                       <td className="p-2">${budget.amount?.toLocaleString()}</td>
@@ -515,9 +515,9 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
         {/* Empty State */}
         {budgets.length === 0 && (
           <Card className="p-12 text-center">
-            <DollarSign className="h-12 w-12 mx-auto mb-4 text-foreground/30" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No budgets found</h3>
-            <p className="text-foreground/70 mb-4">Create your first budget to start tracking expenses</p>
+            <DollarSign className="h-12 w-12 mx-auto mb-4 color-foreground/30" />
+            <h3 className="text-body text-heading-4 color-foreground mb-2">No budgets found</h3>
+            <p className="color-foreground/70 mb-4">Create your first budget to start tracking expenses</p>
             <Button onClick={handleCreateBudget}>
               <Plus className="h-4 w-4 mr-2" />
               Create Budget

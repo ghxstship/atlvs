@@ -14,14 +14,14 @@ import { ComponentSystem } from './ComponentSystem';
 
 // Enhanced Header Pattern
 const headerVariants = cva(
-  'sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 dark:bg-neutral-900/95 dark:supports-[backdrop-filter]:bg-neutral-900/60',
+  'sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60',
   {
     variants: {
       variant: {
-        default: 'border-neutral-200 dark:border-neutral-800',
-        elevated: 'border-neutral-200 dark:border-neutral-800 shadow-sm',
+        default: 'border-border',
+        elevated: 'border-border shadow-sm',
         transparent: 'border-transparent bg-transparent backdrop-blur-none',
-        solid: 'bg-white dark:bg-neutral-900 backdrop-blur-none',
+        solid: 'bg-background backdrop-blur-none',
       },
       size: {
         sm: 'h-12',
@@ -45,13 +45,13 @@ const headerVariants = cva(
 
 // Enhanced Footer Pattern
 const footerVariants = cva(
-  'w-full border-t bg-white dark:bg-neutral-900',
+  'w-full border-t bg-background',
   {
     variants: {
       variant: {
-        default: 'border-neutral-200 dark:border-neutral-800',
-        minimal: 'border-neutral-100 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-950',
-        elevated: 'border-neutral-200 dark:border-neutral-800 shadow-lg',
+        default: 'border-border',
+        minimal: 'border-border bg-muted',
+        elevated: 'border-border shadow-lg',
       },
       size: {
         sm: 'py-4',
@@ -75,14 +75,14 @@ const footerVariants = cva(
 
 // Enhanced Sidebar Pattern
 const sidebarVariants = cva(
-  'flex flex-col bg-white dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800',
+  'flex flex-col bg-background border-r border-border',
   {
     variants: {
       variant: {
         default: '',
         elevated: 'shadow-lg',
-        minimal: 'bg-neutral-50 dark:bg-neutral-950 border-neutral-100 dark:border-neutral-800',
-        floating: 'mx-2 my-2 rounded-lg border shadow-sm',
+        minimal: 'bg-muted border-border',
+        floating: 'mx-2 my-2 rounded-lg border border-border shadow-sm',
       },
       width: {
         sm: 'w-48',
@@ -110,7 +110,7 @@ const sidebarVariants = cva(
 
 // Enhanced Panel Pattern
 const panelVariants = cva(
-  'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg',
+  'bg-card border border-border rounded-lg',
   {
     variants: {
       variant: {
@@ -118,7 +118,7 @@ const panelVariants = cva(
         elevated: 'shadow-md',
         outlined: 'border-2',
         ghost: 'border-transparent bg-transparent',
-        filled: 'bg-neutral-50 dark:bg-neutral-950 border-neutral-100 dark:border-neutral-800',
+        filled: 'bg-muted border-border',
       },
       padding: {
         none: 'p-0',
@@ -147,14 +147,14 @@ const panelVariants = cva(
 
 // Enhanced Filter Panel Pattern
 const filterPanelVariants = cva(
-  'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg',
+  'bg-card border border-border rounded-lg',
   {
     variants: {
       variant: {
         default: '',
-        compact: 'border-0 bg-neutral-50 dark:bg-neutral-950',
-        floating: 'shadow-lg border-neutral-300 dark:border-neutral-600',
-        sidebar: 'border-r border-t-0 border-b-0 border-l-0 rounded-none',
+        compact: 'border-0 bg-muted',
+        floating: 'shadow-lg border-border',
+        sidebar: 'border-r border-border border-t-0 border-b-0 border-l-0 rounded-none',
       },
       layout: {
         vertical: 'flex flex-col space-y-4',
@@ -187,10 +187,10 @@ const searchBarVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-600 rounded-lg',
-        filled: 'bg-neutral-100 dark:bg-neutral-800 border border-transparent rounded-lg',
-        minimal: 'bg-transparent border-b border-neutral-300 dark:border-neutral-600 rounded-none',
-        floating: 'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-lg shadow-lg',
+        default: 'bg-background border border-border rounded-lg',
+        filled: 'bg-muted border border-transparent rounded-lg',
+        minimal: 'bg-transparent border-b border-border rounded-none',
+        floating: 'bg-background border border-border rounded-lg shadow-lg',
       },
       size: {
         sm: 'h-8 px-3 text-sm',
@@ -225,7 +225,7 @@ const formVariants = cva(
     variants: {
       variant: {
         default: '',
-        card: 'bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-lg p-6',
+        card: 'bg-card border border-border rounded-lg p-6',
         inline: 'flex flex-row items-end gap-4 space-y-0',
         stepped: 'space-y-8',
       },
@@ -254,9 +254,9 @@ const formSectionVariants = cva(
     variants: {
       variant: {
         default: '',
-        card: 'bg-neutral-50 dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-lg p-4',
-        bordered: 'border-l-4 border-brand-500 pl-4',
-        collapsible: 'border border-neutral-200 dark:border-neutral-800 rounded-lg',
+        card: 'bg-muted border border-border rounded-lg p-4',
+        bordered: 'border-l-4 border-primary pl-4',
+        collapsible: 'border border-border rounded-lg',
       },
       spacing: {
         tight: 'space-y-2',
@@ -273,7 +273,7 @@ const formSectionVariants = cva(
 
 // Enhanced Form Actions Pattern
 const formActionsVariants = cva(
-  'flex gap-3 pt-6 border-t border-neutral-200 dark:border-neutral-800',
+  'flex gap-3 pt-6 border-t border-border',
   {
     variants: {
       variant: {
@@ -288,7 +288,7 @@ const formActionsVariants = cva(
         responsive: 'flex-col sm:flex-row sm:justify-end',
       },
       sticky: {
-        true: 'sticky bottom-0 bg-white dark:bg-neutral-900 p-4 -mx-4 -mb-4 rounded-b-lg',
+        true: 'sticky bottom-0 bg-background p-4 -mx-4 -mb-4 rounded-b-lg',
         false: '',
       },
     },
@@ -313,8 +313,8 @@ const contentSectionVariants = cva(
         default: '',
         hero: 'text-center py-12 sm:py-16 lg:py-20',
         feature: 'py-8 sm:py-12',
-        testimonial: 'bg-neutral-50 dark:bg-neutral-950 py-8 sm:py-12 rounded-lg',
-        cta: 'bg-brand-50 dark:bg-brand-950 py-8 sm:py-12 rounded-lg text-center',
+        testimonial: 'bg-muted py-8 sm:py-12 rounded-lg',
+        cta: 'bg-primary/5 py-8 sm:py-12 rounded-lg text-center',
       },
       padding: {
         none: 'p-0',
@@ -484,10 +484,10 @@ export const withContainer = (
 
 export const layoutPatterns = {
   // Standard app layout
-  app: 'min-h-screen bg-neutral-50 dark:bg-neutral-950',
+  app: 'min-h-screen bg-muted',
   
   // Dashboard layout
-  dashboard: 'flex h-screen bg-neutral-50 dark:bg-neutral-950',
+  dashboard: 'flex h-screen bg-muted',
   
   // Content layout
   content: 'flex-1 flex flex-col overflow-hidden',
@@ -520,10 +520,10 @@ export const layoutPatterns = {
 
 export const a11yContainerPatterns = {
   // Skip links
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-brand-600 focus:text-white focus:rounded-md',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-md',
   
   // Focus containers
-  focusContainer: 'focus-within:ring-2 focus-within:ring-brand-500 focus-within:ring-offset-2 rounded-lg',
+  focusContainer: 'focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 rounded-lg',
   
   // Landmark regions
   landmark: '[role="main"], [role="navigation"], [role="banner"], [role="contentinfo"], [role="complementary"]',
@@ -532,7 +532,7 @@ export const a11yContainerPatterns = {
   srOnly: 'sr-only',
   
   // High contrast support
-  highContrast: 'contrast-more:border-black contrast-more:text-black dark:contrast-more:border-white dark:contrast-more:text-white',
+  highContrast: 'contrast-more:border-foreground contrast-more:text-foreground',
   
   // Reduced motion support
   reducedMotion: 'motion-reduce:animate-none motion-reduce:transition-none',

@@ -24,19 +24,19 @@ export function LeadershipCard({ leader }: LeadershipCardProps) {
     <Card className="hover:shadow-lg transition-shadow">
       <CardContent className="p-8">
         <div className="flex gap-6">
-          <div className="w-24 h-24 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <Users className="h-8 w-8 text-primary" />
+          <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <Users className="h-8 w-8 color-primary" />
           </div>
           <div className="flex-1">
             <h3 className={`${typography.cardTitle} mb-1`}>
               {leader.name}
             </h3>
-            <p className="text-primary font-semibold mb-2">{leader.role}</p>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-4">
+            <p className="color-primary text-heading-4 mb-2">{leader.role}</p>
+            <div className="flex items-center gap-2 text-body-sm color-muted mb-4">
               <MapPin className="h-3 w-3" />
               {leader.location}
             </div>
-            <p className="text-muted-foreground mb-4">{leader.bio}</p>
+            <p className="color-muted mb-4">{leader.bio}</p>
             
             <div className="flex gap-2">
               {leader.social.linkedin && (

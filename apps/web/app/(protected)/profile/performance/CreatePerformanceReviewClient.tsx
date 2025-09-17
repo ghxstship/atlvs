@@ -140,14 +140,14 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         description={submitting ? 'Saving…' : undefined} 
        
       >
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="space-y-3" 
           onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-1">
-            <label htmlFor="review_period" className="text-sm font-medium">Review Period *</label>
+            <label htmlFor="review_period" className="text-body-sm form-label">Review Period *</label>
             <input 
               id="review_period" 
               className="rounded border px-2 py-1" 
@@ -157,12 +157,12 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.review_period} 
             />
             {form.formState.errors.review_period ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.review_period.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.review_period.message)}</div> : null}
           </div>
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="reviewer_name" className="text-sm font-medium">Reviewer Name *</label>
+              <label htmlFor="reviewer_name" className="text-body-sm form-label">Reviewer Name *</label>
               <input 
                 id="reviewer_name" 
                 className="rounded border px-2 py-1" 
@@ -171,11 +171,11 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.reviewer_name} 
               />
               {form.formState.errors.reviewer_name ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.reviewer_name.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.reviewer_name.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="reviewer_title" className="text-sm font-medium">Reviewer Title *</label>
+              <label htmlFor="reviewer_title" className="text-body-sm form-label">Reviewer Title *</label>
               <input 
                 id="reviewer_title" 
                 className="rounded border px-2 py-1" 
@@ -184,12 +184,12 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.reviewer_title} 
               />
               {form.formState.errors.reviewer_title ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.reviewer_title.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.reviewer_title.message)}</div> : null}
             </div>
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="overall_rating" className="text-sm font-medium">Overall Rating (1-5) *</label>
+            <label htmlFor="overall_rating" className="text-body-sm form-label">Overall Rating (1-5) *</label>
             <select 
               id="overall_rating" 
               className="rounded border px-2 py-1" 
@@ -205,14 +205,14 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
           </div>
 
           <div className="space-y-2">
-            <h4 className="text-sm font-medium">Performance Areas (1-5 rating each)</h4>
+            <h4 className="text-body-sm form-label">Performance Areas (1-5 rating each)</h4>
             
             <div className="grid grid-cols-2 gap-3">
               <div className="grid gap-1">
-                <label htmlFor="technical_skills" className="text-xs">Technical Skills</label>
+                <label htmlFor="technical_skills" className="text-body-sm">Technical Skills</label>
                 <select 
                   id="technical_skills" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('technical_skills') || 3} 
                   onChange={(e) => form.setValue('technical_skills', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -225,10 +225,10 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="communication" className="text-xs">Communication</label>
+                <label htmlFor="communication" className="text-body-sm">Communication</label>
                 <select 
                   id="communication" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('communication') || 3} 
                   onChange={(e) => form.setValue('communication', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -241,10 +241,10 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="teamwork" className="text-xs">Teamwork</label>
+                <label htmlFor="teamwork" className="text-body-sm">Teamwork</label>
                 <select 
                   id="teamwork" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('teamwork') || 3} 
                   onChange={(e) => form.setValue('teamwork', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -257,10 +257,10 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="leadership" className="text-xs">Leadership</label>
+                <label htmlFor="leadership" className="text-body-sm">Leadership</label>
                 <select 
                   id="leadership" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('leadership') || 3} 
                   onChange={(e) => form.setValue('leadership', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -273,10 +273,10 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="problem_solving" className="text-xs">Problem Solving</label>
+                <label htmlFor="problem_solving" className="text-body-sm">Problem Solving</label>
                 <select 
                   id="problem_solving" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('problem_solving') || 3} 
                   onChange={(e) => form.setValue('problem_solving', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -289,10 +289,10 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="adaptability" className="text-xs">Adaptability</label>
+                <label htmlFor="adaptability" className="text-body-sm">Adaptability</label>
                 <select 
                   id="adaptability" 
-                  className="rounded border px-2 py-1 text-sm" 
+                  className="rounded border px-2 py-1 text-body-sm" 
                   value={form.getValues('adaptability') || 3} 
                   onChange={(e) => form.setValue('adaptability', Number(e.target.value), { shouldDirty: true })}
                 >
@@ -307,7 +307,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="strengths" className="text-sm font-medium">Key Strengths *</label>
+            <label htmlFor="strengths" className="text-body-sm form-label">Key Strengths *</label>
             <textarea 
               id="strengths" 
               className="rounded border px-2 py-1 min-h-[80px]" 
@@ -317,11 +317,11 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.strengths} 
             />
             {form.formState.errors.strengths ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.strengths.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.strengths.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="improvement_areas" className="text-sm font-medium">Areas for Improvement *</label>
+            <label htmlFor="improvement_areas" className="text-body-sm form-label">Areas for Improvement *</label>
             <textarea 
               id="improvement_areas" 
               className="rounded border px-2 py-1 min-h-[80px]" 
@@ -331,11 +331,11 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               aria-invalid={!!form.formState.errors.improvement_areas} 
             />
             {form.formState.errors.improvement_areas ? 
-              <div className="text-xs text-destructive">{String(form.formState.errors.improvement_areas.message)}</div> : null}
+              <div className="text-body-sm color-destructive">{String(form.formState.errors.improvement_areas.message)}</div> : null}
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="goals_achieved" className="text-sm font-medium">Goals Achieved</label>
+            <label htmlFor="goals_achieved" className="text-body-sm form-label">Goals Achieved</label>
             <textarea 
               id="goals_achieved" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -346,7 +346,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
           </div>
 
           <div className="grid gap-1">
-            <label htmlFor="future_goals" className="text-sm font-medium">Future Goals</label>
+            <label htmlFor="future_goals" className="text-body-sm form-label">Future Goals</label>
             <textarea 
               id="future_goals" 
               className="rounded border px-2 py-1 min-h-[60px]" 
@@ -358,7 +358,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
 
           <div className="grid grid-cols-2 gap-3">
             <div className="grid gap-1">
-              <label htmlFor="review_date" className="text-sm font-medium">Review Date *</label>
+              <label htmlFor="review_date" className="text-body-sm form-label">Review Date *</label>
               <input 
                 id="review_date" 
                 type="date" 
@@ -368,11 +368,11 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 aria-invalid={!!form.formState.errors.review_date} 
               />
               {form.formState.errors.review_date ? 
-                <div className="text-xs text-destructive">{String(form.formState.errors.review_date.message)}</div> : null}
+                <div className="text-body-sm color-destructive">{String(form.formState.errors.review_date.message)}</div> : null}
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="next_review_date" className="text-sm font-medium">Next Review Date</label>
+              <label htmlFor="next_review_date" className="text-body-sm form-label">Next Review Date</label>
               <input 
                 id="next_review_date" 
                 type="date" 

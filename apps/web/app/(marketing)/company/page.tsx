@@ -177,10 +177,10 @@ export default function CompanyPage() {
             <Badge variant="outline" className="mb-4">
               About GHXSTSHIP
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
               LEADERSHIP TEAM
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               We're on a mission to empower creative teams worldwide with intelligent, 
               intuitive production management tools that unlock their full potential.
             </p>
@@ -208,10 +208,10 @@ export default function CompanyPage() {
               { label: 'Years of Innovation', value: '5+' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className={`${anton.className} text-3xl lg:text-4xl font-bold text-primary mb-2`}>
+                <div className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 color-primary mb-2`}>
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="color-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -225,16 +225,16 @@ export default function CompanyPage() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Target className="h-6 w-6 text-primary" />
+                  <Target className="h-6 w-6 color-primary" />
                 </div>
-                <h2 className={`${anton.className} text-3xl font-bold uppercase`}>OUR MISSION</h2>
+                <h2 className={`${anton.className} text-heading-2 text-heading-3 uppercase`}>OUR MISSION</h2>
               </div>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-body color-muted mb-6">
                 To democratize professional production management by providing creative teams 
                 with enterprise-grade tools that are intuitive, powerful, and accessible to 
                 organizations of all sizes.
               </p>
-              <p className="text-muted-foreground">
+              <p className="color-muted">
                 We believe that great creative work shouldn't be hindered by poor project 
                 management. Our platform eliminates the friction between creative vision 
                 and execution, allowing teams to focus on what they do best.
@@ -243,16 +243,16 @@ export default function CompanyPage() {
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Globe className="h-6 w-6 text-accent" />
+                  <Globe className="h-6 w-6 color-accent" />
                 </div>
-                <h2 className={`${anton.className} text-3xl font-bold uppercase`}>OUR VISION</h2>
+                <h2 className={`${anton.className} text-heading-2 text-heading-3 uppercase`}>OUR VISION</h2>
               </div>
-              <p className="text-lg text-muted-foreground mb-6">
+              <p className="text-body color-muted mb-6">
                 To become the global standard for creative production management, 
                 powering the next generation of films, shows, campaigns, and creative 
                 projects worldwide.
               </p>
-              <p className="text-muted-foreground">
+              <p className="color-muted">
                 We envision a world where creative teams can seamlessly collaborate 
                 across time zones, disciplines, and platforms, bringing their boldest 
                 ideas to life with unprecedented efficiency and quality.
@@ -263,13 +263,13 @@ export default function CompanyPage() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               LEADERSHIP TEAM
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Meet the experienced leaders driving innovation and growth at GHXSTSHIP.
             </p>
           </div>
@@ -279,11 +279,11 @@ export default function CompanyPage() {
               <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
                   <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-6 flex items-center justify-center">
-                    <Users className="h-12 w-12 text-primary" />
+                    <Users className="h-12 w-12 color-primary" />
                   </div>
-                  <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>{member.name}</h3>
-                  <div className="text-primary font-semibold mb-4">{member.role}</div>
-                  <p className="text-sm text-muted-foreground mb-6">{member.bio}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{member.name}</h3>
+                  <div className="color-primary text-heading-4 mb-4">{member.role}</div>
+                  <p className="text-body-sm color-muted mb-6">{member.bio}</p>
                   <div className="flex justify-center gap-3">
                     {member.linkedin && (
                       <a href={member.linkedin as any as any} target="_blank" rel="noopener noreferrer">
@@ -311,10 +311,10 @@ export default function CompanyPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               OUR JOURNEY
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               From startup to industry leader, here are the key milestones in our story.
             </p>
           </div>
@@ -327,16 +327,16 @@ export default function CompanyPage() {
               <div className="space-y-12">
                 {milestones.map((milestone, index) => (
                   <div key={milestone.year} className="relative flex items-start gap-8">
-                    <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold relative z-10">
+                    <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 relative z-10">
                       {milestone.year.slice(-2)}
                     </div>
                     <div className="flex-1 pb-8">
                       <div className="flex items-center gap-3 mb-3">
-                        <Calendar className="h-5 w-5 text-primary" />
-                        <span className="text-sm font-semibold text-primary">{milestone.year}</span>
+                        <Calendar className="h-5 w-5 color-primary" />
+                        <span className="text-body-sm text-heading-4 color-primary">{milestone.year}</span>
                       </div>
-                      <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{milestone.title}</h3>
-                      <p className="text-muted-foreground">{milestone.description}</p>
+                      <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>{milestone.title}</h3>
+                      <p className="color-muted">{milestone.description}</p>
                     </div>
                   </div>
                 ))}
@@ -347,13 +347,13 @@ export default function CompanyPage() {
       </section>
 
       {/* Awards & Recognition */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               AWARDS & RECOGNITION
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               We're honored to be recognized by industry leaders and organizations.
             </p>
           </div>
@@ -362,12 +362,12 @@ export default function CompanyPage() {
             {awards.map((award) => (
               <Card key={award.title} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-yellow-400/20 to-orange-500/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Award className="h-8 w-8 text-yellow-600" />
+                  <div className="w-16 h-16 bg-gradient-to-br from-warning/20 to-warning/30 rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <Award className="h-8 w-8 color-warning" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-2">{award.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">{award.organization}</p>
-                  <Badge variant="secondary" className="text-xs">
+                  <h3 className="text-heading-4 color-foreground mb-2">{award.title}</h3>
+                  <p className="text-body-sm color-muted mb-2">{award.organization}</p>
+                  <Badge variant="secondary" className="text-body-sm">
                     {award.year}
                   </Badge>
                 </CardContent>
@@ -381,10 +381,10 @@ export default function CompanyPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               PRESS & MEDIA
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Latest news and coverage about GHXSTSHIP in the media.
             </p>
           </div>
@@ -395,10 +395,10 @@ export default function CompanyPage() {
                 <CardContent className="p-6">
                   <div className="flex items-start justify-between gap-6">
                     <div className="flex-1">
-                      <h3 className="font-semibold text-foreground mb-2 hover:text-primary transition-colors">
+                      <h3 className="text-heading-4 color-foreground mb-2 hover:color-primary transition-colors">
                         {press.title}
                       </h3>
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                      <div className="flex items-center gap-4 text-body-sm color-muted">
                         <span>{press.publication}</span>
                         <span>•</span>
                         <span>{press.date}</span>
@@ -428,13 +428,13 @@ export default function CompanyPage() {
       </section>
 
       {/* Global Offices */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="font-title text-3xl lg:text-4xl font-bold mb-6">
+            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               GLOBAL PRESENCE
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               We're building a global team with offices around the world.
             </p>
           </div>
@@ -444,18 +444,18 @@ export default function CompanyPage() {
               <Card key={office.city} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <MapPin className="h-8 w-8 text-primary" />
+                    <MapPin className="h-8 w-8 color-primary" />
                   </div>
-                  <h3 className={`${anton.className} text-xl font-bold mb-2 uppercase`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>
                     {office.city}
                     {office.isHQ && (
-                      <Badge variant="secondary" className="ml-2 text-xs">
+                      <Badge variant="secondary" className="ml-2 text-body-sm">
                         HQ
                       </Badge>
                     )}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-2">{office.address}</p>
-                  <p className="text-sm text-muted-foreground">{office.country}</p>
+                  <p className="text-body-sm color-muted mb-2">{office.address}</p>
+                  <p className="text-body-sm color-muted">{office.country}</p>
                 </CardContent>
               </Card>
             ))}
@@ -468,10 +468,10 @@ export default function CompanyPage() {
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center bg-gradient-to-r from-primary/5 to-accent/5">
             <CardContent className="p-12">
-              <h3 className={`${anton.className} text-3xl font-bold mb-6 uppercase`}>
+              <h3 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>
                 LET'S WORK TOGETHER
               </h3>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Whether you're interested in joining our team, partnering with us, 
                 or learning more about our solutions, we'd love to hear from you.
               </p>

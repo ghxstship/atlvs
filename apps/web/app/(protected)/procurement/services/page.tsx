@@ -29,8 +29,8 @@ export default async function ProcurementServicesPage() {
     <div className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Services</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-3 text-heading-3">Services</h1>
+          <p className="color-muted">
             Manage your services catalog and rates
           </p>
         </div>

@@ -50,10 +50,10 @@ const resourceTypeLabels = {
 };
 
 const statusColors = {
-  draft: 'bg-muted/50 text-muted-foreground',
-  published: 'bg-success/10 text-success',
-  archived: 'bg-warning/10 text-warning',
-  under_review: 'bg-primary/10 text-primary'
+  draft: 'bg-secondary/50 color-muted',
+  published: 'bg-success/10 color-success',
+  archived: 'bg-warning/10 color-warning',
+  under_review: 'bg-primary/10 color-primary'
 };
 
 export default function ResourcesClient() {
@@ -167,8 +167,8 @@ export default function ResourcesClient() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Resources</h1>
-          <p className="text-muted-foreground">Manage organizational resources and knowledge base</p>
+          <h1 className="text-heading-3 text-heading-3">Resources</h1>
+          <p className="color-muted">Manage organizational resources and knowledge base</p>
         </div>
         <Button onClick={() => setShowForm(true)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -179,24 +179,24 @@ export default function ResourcesClient() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         <Card>
-          <div className="text-2xl font-bold text-primary">{stats.totalResources}</div>
-          <div className="text-sm text-muted-foreground">Total Resources</div>
+          <div className="text-heading-3 text-heading-3 color-primary">{stats.totalResources}</div>
+          <div className="text-body-sm color-muted">Total Resources</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-success">{stats.publishedResources}</div>
-          <div className="text-sm text-muted-foreground">Published</div>
+          <div className="text-heading-3 text-heading-3 color-success">{stats.publishedResources}</div>
+          <div className="text-body-sm color-muted">Published</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-warning">{stats.featuredResources}</div>
-          <div className="text-sm text-muted-foreground">Featured</div>
+          <div className="text-heading-3 text-heading-3 color-warning">{stats.featuredResources}</div>
+          <div className="text-body-sm color-muted">Featured</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-secondary">{stats.totalViews}</div>
-          <div className="text-sm text-muted-foreground">Total Views</div>
+          <div className="text-heading-3 text-heading-3 color-secondary">{stats.totalViews}</div>
+          <div className="text-body-sm color-muted">Total Views</div>
         </Card>
         <Card>
-          <div className="text-2xl font-bold text-primary">{stats.totalDownloads}</div>
-          <div className="text-sm text-muted-foreground">Downloads</div>
+          <div className="text-heading-3 text-heading-3 color-primary">{stats.totalDownloads}</div>
+          <div className="text-body-sm color-muted">Downloads</div>
         </Card>
       </div>
 
@@ -204,7 +204,7 @@ export default function ResourcesClient() {
       <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center justify-between">
         <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
             <input
               type="text"
               placeholder="Search resources..."
@@ -236,14 +236,14 @@ export default function ResourcesClient() {
       {loading ? (
         <div className="text-center py-8">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Loading resources...</p>
+          <p className="color-muted">Loading resources...</p>
         </div>
       ) : error ? (
         <Card>
           <div className="text-center py-8">
-            <FileText className="w-12 h-12 text-destructive mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">Error loading resources</h3>
-            <p className="text-muted-foreground mb-4">{error}</p>
+            <FileText className="w-12 h-12 color-destructive mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">Error loading resources</h3>
+            <p className="color-muted mb-4">{error}</p>
             <Button onClick={fetchResources}>
               Try Again
             </Button>
@@ -252,9 +252,9 @@ export default function ResourcesClient() {
       ) : filteredResources.length === 0 ? (
         <Card>
           <div className="text-center py-8">
-            <FileText className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No resources found</h3>
-            <p className="text-muted-foreground mb-4">
+            <FileText className="w-12 h-12 color-muted mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No resources found</h3>
+            <p className="color-muted mb-4">
               {searchTerm || filterType !== 'all' 
                 ? 'No resources match your current filters.' 
                 : 'Get started by creating your first resource.'}
@@ -277,18 +277,18 @@ export default function ResourcesClient() {
               >
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center space-x-2">
-                    <IconComponent className="w-5 h-5 text-primary" />
+                    <IconComponent className="w-5 h-5 color-primary" />
                     <Badge variant="secondary" className={statusColors[resource.status]}>
                       {resource.status.replace('_', ' ')}
                     </Badge>
                     {resource.is_featured && (
-                      <Badge variant="secondary" className="bg-warning/10 text-warning">
+                      <Badge variant="secondary" className="bg-warning/10 color-warning">
                         <Star className="w-3 h-3 mr-1" />
                         Featured
                       </Badge>
                     )}
                   </div>
-                  <div className="flex items-center space-x-1 text-sm text-muted-foreground">
+                  <div className="flex items-center space-x-1 text-body-sm color-muted">
                     <Eye className="w-4 h-4" />
                     <span>{resource.view_count}</span>
                     <Download className="w-4 h-4 ml-2" />
@@ -296,10 +296,10 @@ export default function ResourcesClient() {
                   </div>
                 </div>
                 
-                <h3 className="font-semibold text-lg mb-2 line-clamp-2">{resource.title}</h3>
+                <h3 className="text-heading-4 text-body mb-2 line-clamp-2">{resource.title}</h3>
                 
                 {resource.description && (
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">{resource.description}</p>
+                  <p className="text-body-sm color-muted mb-3 line-clamp-3">{resource.description}</p>
                 )}
                 
                 <div className="flex items-center justify-between">
@@ -337,12 +337,12 @@ export default function ResourcesClient() {
                 {resource.tags && resource.tags.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-1">
                     {resource.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge key={tag} variant="secondary" className="text-body-sm">
                         {tag}
                       </Badge>
                     ))}
                     {resource.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-body-sm">
                         +{resource.tags.length - 3} more
                       </Badge>
                     )}

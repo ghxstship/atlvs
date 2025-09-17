@@ -112,15 +112,15 @@ export function KanbanBoard({
   const getPriorityColor = useCallback((priority: string) => {
     switch (priority?.toLowerCase()) {
       case 'urgent':
-        return 'bg-red-500';
+        return 'bg-destructive';
       case 'high':
-        return 'bg-orange-500';
+        return 'bg-warning';
       case 'medium':
-        return 'bg-yellow-500';
+        return 'bg-primary';
       case 'low':
-        return 'bg-green-500';
+        return 'bg-success';
       default:
-        return 'bg-gray-500';
+        return 'bg-muted-foreground';
     }
   }, []);
 
@@ -159,20 +159,20 @@ export function KanbanBoard({
           <div
             key={column.id}
             className={`
-              flex-shrink-0 w-80 bg-gray-50 dark:bg-gray-800 rounded-lg
-              ${isDragOver ? 'ring-2 ring-blue-500 bg-blue-50 dark:bg-blue-900/20' : ''}
+              flex-shrink-0 w-80 bg-muted rounded-lg
+              ${isDragOver ? 'ring-2 ring-primary bg-primary/10' : ''}
             `}
             onDragOver={(e) => handleDragOver(e, column.id)}
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, column.id)}
           >
             {/* Column Header */}
-            <div className="p-4 border-b border-gray-200 dark:border-gray-700">
+            <div className="p-4 border-b border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => toggleColumnCollapse(column.id)}
-                    className="p-1 hover:bg-gray-200 dark:hover:bg-gray-700 rounded"
+                    className="p-1 hover:bg-muted/50 rounded"
                   >
                     {isCollapsed ? (
                       <ChevronRight className="h-4 w-4" />
@@ -181,7 +181,7 @@ export function KanbanBoard({
                     )}
                   </button>
                   
-                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                  <h3 className="font-semibold text-foreground">
                     {column.title}
                   </h3>
                   
@@ -234,7 +234,7 @@ export function KanbanBoard({
                       className={`
                         cursor-pointer transition-all duration-200 hover:shadow-md
                         ${isDragging ? 'opacity-50 rotate-2 scale-95' : ''}
-                        ${state.selection.includes(record.id) ? 'ring-2 ring-blue-500' : ''}
+                        ${state.selection.includes(record.id) ? 'ring-2 ring-primary' : ''}
                       `}
                       draggable
                       onDragStart={(e) => handleDragStart(e, record.id)}
@@ -253,20 +253,20 @@ export function KanbanBoard({
                         {priority && (
                           <div className="flex items-center gap-2">
                             <div className={`w-2 h-2 rounded-full ${getPriorityColor(priority)}`} />
-                            <span className="text-xs text-gray-500 dark:text-gray-400 capitalize">
+                            <span className="text-xs text-muted-foreground capitalize">
                               {priority} Priority
                             </span>
                           </div>
                         )}
 
                         {/* Title */}
-                        <h4 className="font-medium text-gray-900 dark:text-gray-100 line-clamp-2">
+                        <h4 className="font-medium text-foreground line-clamp-2">
                           {record[titleField]}
                         </h4>
 
                         {/* Description */}
                         {record.description && (
-                          <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2">
+                          <p className="text-sm text-muted-foreground line-clamp-2">
                             {record.description}
                           </p>
                         )}
@@ -288,10 +288,10 @@ export function KanbanBoard({
                         )}
 
                         {/* Footer */}
-                        <div className="flex items-center justify-between pt-2 border-t border-gray-100 dark:border-gray-700">
+                        <div className="flex items-center justify-between pt-2 border-t border-border">
                           <div className="flex items-center gap-2">
                             {assignee && (
-                              <div className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                              <div className="flex items-center gap-1 text-xs text-muted-foreground">
                                 <User className="h-3 w-3" />
                                 <span>{assignee}</span>
                               </div>
@@ -302,8 +302,8 @@ export function KanbanBoard({
                             <div className={`
                               flex items-center gap-1 text-xs
                               ${new Date(dueDate) < new Date() 
-                                ? 'text-red-600 dark:text-red-400' 
-                                : 'text-gray-500 dark:text-gray-400'
+                                ? 'text-destructive' 
+                                : 'text-muted-foreground'
                               }
                             `}>
                               <Calendar className="h-3 w-3" />
@@ -318,7 +318,7 @@ export function KanbanBoard({
 
                 {/* Empty State */}
                 {records.length === 0 && (
-                  <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                  <div className="text-center py-8 text-muted-foreground">
                     <div className="text-sm">No items in {column.title}</div>
                     <Button
                       variant="ghost"

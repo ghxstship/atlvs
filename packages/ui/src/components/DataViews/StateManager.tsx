@@ -252,9 +252,7 @@ export function ErrorState({ config, className = '', onDismiss }: ErrorStateProp
   return (
     <div className={`py-8 ${className}`}>
       <Alert
-        variant="error"
-        dismissible={config.dismissible}
-        onDismiss={onDismiss}
+        variant="destructive"
       >
         <AlertCircle className="h-4 w-4" />
         <div>

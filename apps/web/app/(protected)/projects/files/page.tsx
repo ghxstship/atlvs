@@ -41,7 +41,7 @@ export default async function ProjectsFilesPage() {
     <div className="space-y-4">
       <Card title={t('title')}>
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h1 className="text-2xl font-bold">{t('title')}</h1>
+          <h1 className="text-heading-3 text-heading-3">{t('title')}</h1>
           {orgId ? <FilesUploadClient orgId={orgId} /> : null}
         </div>
         

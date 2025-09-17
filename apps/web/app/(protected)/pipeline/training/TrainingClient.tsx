@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button, Input } from '@ghxstship/ui';
-import { DynamicProgressBar } from '../../components/ui';
+import { DynamicProgressBar } from '../../../_components/ui/DynamicProgressBar';
 import { Users, Calendar, Clock, Award, Search, Filter, BookOpen, Target, CheckCircle, AlertTriangle, User, Plus } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -197,15 +197,15 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
 
   const getCategoryColor = (category: TrainingProgram['category']) => {
     const categoryInfo = TRAINING_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-muted-foreground';
+    return categoryInfo?.color || 'bg-secondary-foreground';
   };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Training Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage training programs, sessions, and completion records</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Training Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage training programs, sessions, and completion records</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -214,7 +214,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
       </div>
 
       {/* Tabs */}
-      <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+      <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
         {[
           { id: 'programs', label: 'Programs', icon: BookOpen },
           { id: 'sessions', label: 'Sessions', icon: Calendar },
@@ -225,10 +225,10 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-body-sm form-label transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-background text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? 'bg-background color-foreground shadow-sm'
+                  : 'color-muted hover:color-foreground'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -240,7 +240,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
 
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading training data...</div>
+          <div className="p-8 text-center color-muted">Loading training data...</div>
         </Card>
       ) : (
         <>
@@ -254,11 +254,11 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
                           <div className={`w-3 h-3 rounded-full ${getCategoryColor(program.category)}`} />
-                          <h3 className="text-lg font-semibold">{program.name}</h3>
-                          {program.required && <Badge variant="destructive" className="text-xs">Required</Badge>}
+                          <h3 className="text-body text-heading-4">{program.name}</h3>
+                          {program.required && <Badge variant="destructive" className="text-body-sm">Required</Badge>}
                         </div>
-                        <p className="text-sm text-muted-foreground mb-3">{program.description}</p>
-                        <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                        <p className="text-body-sm color-muted mb-3">{program.description}</p>
+                        <div className="flex items-center gap-4 text-body-sm color-muted">
                           <span>Duration: {program.duration} hours</span>
                           <span>Category: {TRAINING_CATEGORIES.find(cat => cat.id === program.category)?.name}</span>
                           {program.expiryMonths && <span>Expires: {program.expiryMonths} months</span>}
@@ -279,22 +279,22 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                   <div className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-1">{session.programName}</h3>
-                        <div className="text-sm text-muted-foreground mb-3">
+                        <h3 className="text-body text-heading-4 mb-1">{session.programName}</h3>
+                        <div className="text-body-sm color-muted mb-3">
                           Instructor: {session.instructorName || 'TBD'}
                         </div>
-                        <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div className="grid grid-cols-2 gap-4 text-body-sm">
                           <div>
-                            <span className="font-medium">Date:</span> {new Date(session.scheduledDate).toLocaleDateString()}
+                            <span className="form-label">Date:</span> {new Date(session.scheduledDate).toLocaleDateString()}
                           </div>
                           <div>
-                            <span className="font-medium">Time:</span> {session.startTime} - {session.endTime}
+                            <span className="form-label">Time:</span> {session.startTime} - {session.endTime}
                           </div>
                           <div>
-                            <span className="font-medium">Location:</span> {session.location}
+                            <span className="form-label">Location:</span> {session.location}
                           </div>
                           <div>
-                            <span className="font-medium">Capacity:</span> {session.enrolledCount}/{session.maxParticipants}
+                            <span className="form-label">Capacity:</span> {session.enrolledCount}/{session.maxParticipants}
                           </div>
                         </div>
                       </div>
@@ -307,7 +307,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                             size="sm"
                             showLabel={false}
                           />
-                          <div className="text-xs text-muted-foreground mt-1">
+                          <div className="text-body-sm color-muted mt-1">
                             {Math.round((session.enrolledCount / session.maxParticipants) * 100)}% full
                           </div>
                         </div>
@@ -327,22 +327,22 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                   <div className="p-4">
                     <div className="flex items-start justify-between">
                       <div className="flex-1">
-                        <h3 className="text-lg font-semibold mb-1">{record.personName}</h3>
-                        <p className="text-sm text-muted-foreground mb-2">{record.programName}</p>
-                        <div className="grid grid-cols-2 gap-4 text-sm">
+                        <h3 className="text-body text-heading-4 mb-1">{record.personName}</h3>
+                        <p className="text-body-sm color-muted mb-2">{record.programName}</p>
+                        <div className="grid grid-cols-2 gap-4 text-body-sm">
                           {record.completedDate && (
                             <div>
-                              <span className="font-medium">Completed:</span> {new Date(record.completedDate).toLocaleDateString()}
+                              <span className="form-label">Completed:</span> {new Date(record.completedDate).toLocaleDateString()}
                             </div>
                           )}
                           {record.expiryDate && (
                             <div>
-                              <span className="font-medium">Expires:</span> {new Date(record.expiryDate).toLocaleDateString()}
+                              <span className="form-label">Expires:</span> {new Date(record.expiryDate).toLocaleDateString()}
                             </div>
                           )}
                           {record.score && (
                             <div>
-                              <span className="font-medium">Score:</span> {record.score}%
+                              <span className="form-label">Score:</span> {record.score}%
                             </div>
                           )}
                         </div>

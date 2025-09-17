@@ -37,8 +37,8 @@ export default async function ProcurementOrdersPage() {
     <div className="p-6">
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Orders</h1>
-          <p className="text-muted-foreground">
+          <h1 className="text-heading-3 text-heading-3">Orders</h1>
+          <p className="color-muted">
             Manage your purchase orders and procurement requests
           </p>
         </div>

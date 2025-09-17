@@ -112,7 +112,7 @@ export function DataActions({
 
   // Build CSS classes
   const actionsClasses = `
-    flex items-center justify-between gap-4 p-4 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700
+    flex items-center justify-between gap-4 p-4 bg-background border-b border-border
     ${className}
   `.trim();
 
@@ -123,13 +123,13 @@ export function DataActions({
         <div className="flex items-center gap-2 flex-1">
           {showSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search..."
                 value={state.search}
                 onChange={(e) => actions.setSearch(e.target.value)}
-                className="pl-10 pr-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="pl-10 pr-4 py-2 border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
           )}
@@ -144,7 +144,7 @@ export function DataActions({
                 <Filter className="h-4 w-4" />
                 Filters
                 {state.filters.length > 0 && (
-                  <span className="ml-1 px-1.5 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">
+                  <span className="ml-1 px-1.5 py-0.5 text-xs bg-primary/10 text-primary rounded">
                     {state.filters.length}
                   </span>
                 )}
@@ -161,7 +161,7 @@ export function DataActions({
               <SortAsc className="h-4 w-4" />
               Sort
               {state.sorts.length > 0 && (
-                <span className="ml-1 px-1.5 py-0.5 text-xs bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded">
+                <span className="ml-1 px-1.5 py-0.5 text-xs bg-primary/10 text-primary rounded">
                   {state.sorts.length}
                 </span>
               )}
@@ -174,7 +174,7 @@ export function DataActions({
           {/* Bulk Actions */}
           {showBulkActions && state.selection.length > 0 && config.bulkActions && (
             <div className="flex items-center gap-1 mr-2">
-              <span className="text-sm text-gray-600 dark:text-gray-400">
+              <span className="text-sm text-muted-foreground">
                 {state.selection.length} selected:
               </span>
               {config.bulkActions.map((action) => (
@@ -276,7 +276,7 @@ export function DataActions({
               <select
                 value={exportFormat}
                 onChange={(e) => setExportFormat(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="w-full p-2 border border-border rounded-md bg-background text-foreground"
               >
                 {config.exportConfig?.formats?.map(format => (
                   <option key={format} value={format}>
@@ -293,7 +293,7 @@ export function DataActions({
               <select
                 value={exportFields}
                 onChange={(e) => setExportFields(e.target.value)}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="w-full p-2 border border-border rounded-md bg-background text-foreground"
               >
                 <option value="visible">Visible Fields Only</option>
                 <option value="all">All Fields</option>
@@ -330,7 +330,7 @@ export function DataActions({
                     handleImport(file);
                   }
                 }}
-                className="w-full p-2 border border-gray-300 rounded-md"
+                className="w-full p-2 border border-border rounded-md bg-background text-foreground"
               />
             </div>
             <div className="flex justify-end gap-2">
@@ -365,7 +365,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <select
             value={newFilter.field}
             onChange={(e) => setNewFilter({...newFilter, field: e.target.value})}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-border rounded-md bg-background text-foreground"
           >
             <option value="">Select field...</option>
             {fields.filter((f: any) => f.filterable !== false).map((field: any) => (
@@ -381,7 +381,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <select
             value={newFilter.operator}
             onChange={(e) => setNewFilter({...newFilter, operator: e.target.value})}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-border rounded-md bg-background text-foreground"
           >
             <option value="equals">Equals</option>
             <option value="contains">Contains</option>
@@ -396,7 +396,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
             type="text"
             value={newFilter.value}
             onChange={(e) => setNewFilter({...newFilter, value: e.target.value})}
-            className="w-full p-2 border border-gray-300 rounded-md"
+            className="w-full p-2 border border-border rounded-md bg-background text-foreground"
             placeholder="Enter filter value..."
           />
         </div>
@@ -457,7 +457,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
             <select
               value={newSort.field}
               onChange={(e) => setNewSort({...newSort, field: e.target.value})}
-              className="w-full p-2 border border-gray-300 rounded-md"
+              className="w-full p-2 border border-border rounded-md bg-background text-foreground"
             >
               <option value="">Select field...</option>
               {fields.filter((f: any) => f.sortable !== false).map((field: any) => (
@@ -471,7 +471,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
           <select
             value={newSort.direction}
             onChange={(e) => setNewSort({...newSort, direction: e.target.value as 'asc' | 'desc'})}
-            className="w-24 p-2 border border-gray-300 rounded-md"
+            className="w-24 p-2 border border-border rounded-md bg-background text-foreground"
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>

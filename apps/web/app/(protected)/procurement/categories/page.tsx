@@ -34,8 +34,8 @@ export default async function CategoriesPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Categories</h1>
-          <p className="text-foreground/70">
+          <h1 className="text-heading-3 text-heading-3">Categories</h1>
+          <p className="color-foreground/70">
             Organize your products and services with categories
           </p>
         </div>

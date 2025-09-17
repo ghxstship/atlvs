@@ -109,8 +109,8 @@ export default function PerformanceReviewsClient() {
             key={star}
             className={`w-5 h-5 ${
               star <= rating
-                ? 'fill-warning text-warning'
-                : 'text-muted-foreground'
+                ? 'fill-warning color-warning'
+                : 'color-muted'
             }`}
           />
         ))}
@@ -153,8 +153,8 @@ export default function PerformanceReviewsClient() {
       <div className="space-y-6">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-2xl font-bold">Performance Review</h2>
-            <p className="text-muted-foreground">{selectedReview.review_period}</p>
+            <h2 className="text-heading-3 text-heading-3">Performance Review</h2>
+            <p className="color-muted">{selectedReview.review_period}</p>
           </div>
           <Button variant="outline" onClick={() => setSelectedReview(null)}>
             Back to Reviews
@@ -164,19 +164,19 @@ export default function PerformanceReviewsClient() {
         {/* Overall Rating */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">Overall Performance</h3>
+            <h3 className="text-heading-4">Overall Performance</h3>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-3 mb-2">
                   {renderStars(selectedReview.overall_rating)}
-                  <span className="text-2xl font-bold">{selectedReview.overall_rating}/5</span>
+                  <span className="text-heading-3 text-heading-3">{selectedReview.overall_rating}/5</span>
                 </div>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body-sm color-muted">
                   Reviewed by {selectedReview.reviewer_name} ({selectedReview.reviewer_role})
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-body-sm color-muted">
                   {new Date(selectedReview.review_date).toLocaleDateString()}
                 </p>
               </div>
@@ -192,8 +192,8 @@ export default function PerformanceReviewsClient() {
         {/* Strengths */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold flex items-center">
-              <TrendingUp className="w-5 h-5 mr-2 text-success" />
+            <h3 className="text-heading-4 flex items-center">
+              <TrendingUp className="w-5 h-5 mr-2 color-success" />
               Strengths
             </h3>
           </CardHeader>
@@ -201,7 +201,7 @@ export default function PerformanceReviewsClient() {
             <ul className="space-y-2">
               {selectedReview.strengths.map((strength, index) => (
                 <li key={index} className="flex items-start">
-                  <span className="text-success mr-2">•</span>
+                  <span className="color-success mr-2">•</span>
                   <span>{strength}</span>
                 </li>
               ))}
@@ -212,13 +212,13 @@ export default function PerformanceReviewsClient() {
         {/* Areas for Improvement */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">Areas for Improvement</h3>
+            <h3 className="text-heading-4">Areas for Improvement</h3>
           </CardHeader>
           <CardContent>
             <ul className="space-y-2">
               {selectedReview.improvements.map((improvement, index) => (
                 <li key={index} className="flex items-start">
-                  <span className="text-warning mr-2">•</span>
+                  <span className="color-warning mr-2">•</span>
                   <span>{improvement}</span>
                 </li>
               ))}
@@ -229,7 +229,7 @@ export default function PerformanceReviewsClient() {
         {/* Goals */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">Goals</h3>
+            <h3 className="text-heading-4">Goals</h3>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -237,25 +237,25 @@ export default function PerformanceReviewsClient() {
                 <div key={index} className="border-l-4 border-primary pl-4">
                   <div className="flex justify-between items-start mb-2">
                     <div>
-                      <h4 className="font-semibold">{goal.title}</h4>
-                      <p className="text-sm text-muted-foreground">{goal.description}</p>
+                      <h4 className="text-heading-4">{goal.title}</h4>
+                      <p className="text-body-sm color-muted">{goal.description}</p>
                     </div>
                     <Badge variant={getStatusColor(goal.status)}>
                       {goal.status.replace('_', ' ')}
                     </Badge>
                   </div>
                   <div className="mt-2">
-                    <div className="flex justify-between text-sm mb-1">
+                    <div className="flex justify-between text-body-sm mb-1">
                       <span>Progress</span>
                       <span>{goal.progress}%</span>
                     </div>
-                    <div className="w-full bg-muted rounded-full h-2">
+                    <div className="w-full bg-secondary rounded-full h-2">
                       <div
                         className="bg-primary h-2 rounded-full transition-all"
                         style={{ width: `${goal.progress}%` }}
                       />
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <p className="text-body-sm color-muted mt-1">
                       Target: {new Date(goal.target_date).toLocaleDateString()}
                     </p>
                   </div>
@@ -268,19 +268,19 @@ export default function PerformanceReviewsClient() {
         {/* Achievements */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold flex items-center">
-              <Award className="w-5 h-5 mr-2 text-warning" />
+            <h3 className="text-heading-4 flex items-center">
+              <Award className="w-5 h-5 mr-2 color-warning" />
               Key Achievements
             </h3>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
               {selectedReview.achievements.map((achievement, index) => (
-                <div key={index} className="flex justify-between items-start p-3 bg-muted rounded-lg">
+                <div key={index} className="flex justify-between items-start p-3 bg-secondary rounded-lg">
                   <div>
-                    <h4 className="font-semibold">{achievement.title}</h4>
-                    <p className="text-sm text-muted-foreground">{achievement.description}</p>
-                    <p className="text-xs text-muted-foreground mt-1">
+                    <h4 className="text-heading-4">{achievement.title}</h4>
+                    <p className="text-body-sm color-muted">{achievement.description}</p>
+                    <p className="text-body-sm color-muted mt-1">
                       {new Date(achievement.date).toLocaleDateString()}
                     </p>
                   </div>
@@ -296,10 +296,10 @@ export default function PerformanceReviewsClient() {
         {/* Feedback */}
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">Additional Feedback</h3>
+            <h3 className="text-heading-4">Additional Feedback</h3>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground">{selectedReview.feedback}</p>
+            <p className="color-muted">{selectedReview.feedback}</p>
           </CardContent>
         </Card>
       </div>
@@ -309,15 +309,15 @@ export default function PerformanceReviewsClient() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Performance Reviews</h2>
-        <p className="text-muted-foreground">View your performance evaluations and feedback</p>
+        <h2 className="text-heading-3 text-heading-3">Performance Reviews</h2>
+        <p className="color-muted">View your performance evaluations and feedback</p>
       </div>
 
       {reviews.length === 0 ? (
         <Card>
           <CardContent className="text-center py-12">
-            <BarChart3 className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-muted-foreground">No performance reviews available</p>
+            <BarChart3 className="w-12 h-12 mx-auto mb-4 color-muted" />
+            <p className="color-muted">No performance reviews available</p>
           </CardContent>
         </Card>
       ) : (
@@ -332,30 +332,30 @@ export default function PerformanceReviewsClient() {
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
-                      <h3 className="font-semibold text-lg">{review.review_period}</h3>
+                      <h3 className="text-heading-4 text-body">{review.review_period}</h3>
                       <Badge variant={review.status === 'acknowledged' ? 'success' : 'warning'}>
                         {review.status}
                       </Badge>
                     </div>
                     <div className="flex items-center gap-4 mb-2">
                       {renderStars(review.overall_rating)}
-                      <span className="font-semibold">{review.overall_rating}/5</span>
+                      <span className="text-heading-4">{review.overall_rating}/5</span>
                     </div>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-body-sm color-muted">
                       Reviewed by {review.reviewer_name} • {new Date(review.review_date).toLocaleDateString()}
                     </p>
                     <div className="flex gap-4 mt-3">
                       <div className="flex items-center gap-1">
-                        <Calendar className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm">{review.goals.length} Goals</span>
+                        <Calendar className="w-4 h-4 color-muted" />
+                        <span className="text-body-sm">{review.goals.length} Goals</span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Award className="w-4 h-4 text-muted-foreground" />
-                        <span className="text-sm">{review.achievements.length} Achievements</span>
+                        <Award className="w-4 h-4 color-muted" />
+                        <span className="text-body-sm">{review.achievements.length} Achievements</span>
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 text-muted-foreground" />
+                  <ChevronRight className="w-5 h-5 color-muted" />
                 </div>
               </CardContent>
             </Card>

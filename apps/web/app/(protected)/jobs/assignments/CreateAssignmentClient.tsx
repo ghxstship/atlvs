@@ -146,11 +146,11 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
        
         footer={
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-destructive" />
-                  <span className="text-destructive">{error}</span>
+                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <span className="color-destructive">{error}</span>
                 </>
               )}
             </div>
@@ -179,7 +179,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
         <form id="create-assignment-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-2">
                 Title *
               </label>
               <Input
@@ -191,7 +191,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground mb-2">
                 Description
               </label>
               <Textarea
@@ -204,7 +204,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="jobId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-2">
                   Job ID *
                 </label>
                 <Input
@@ -216,7 +216,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               </div>
 
               <div>
-                <label htmlFor="assigneeUserId" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="assigneeUserId" className="block text-body-sm form-label color-foreground mb-2">
                   Assignee User ID
                 </label>
                 <Input
@@ -229,7 +229,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="assigneeType" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="assigneeType" className="block text-body-sm form-label color-foreground mb-2">
                   Assignee Type *
                 </label>
                 <Select {...register('assigneeType')}>
@@ -240,7 +240,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               </div>
 
               <div>
-                <label htmlFor="priority" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="priority" className="block text-body-sm form-label color-foreground mb-2">
                   Priority
                 </label>
                 <Select {...register('priority')}>
@@ -253,7 +253,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
             </div>
 
             <div>
-              <label htmlFor="status" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="status" className="block text-body-sm form-label color-foreground mb-2">
                 Status
               </label>
               <Select {...register('status')}>
@@ -267,7 +267,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="startDate" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="startDate" className="block text-body-sm form-label color-foreground mb-2">
                   Start Date
                 </label>
                 <Input
@@ -277,7 +277,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               </div>
 
               <div>
-                <label htmlFor="dueDate" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="dueDate" className="block text-body-sm form-label color-foreground mb-2">
                   Due Date
                 </label>
                 <Input
@@ -289,7 +289,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
 
             <div className="grid grid-cols-3 gap-4">
               <div>
-                <label htmlFor="estimatedHours" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="estimatedHours" className="block text-body-sm form-label color-foreground mb-2">
                   Estimated Hours
                 </label>
                 <Input
@@ -301,7 +301,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               </div>
 
               <div>
-                <label htmlFor="hourlyRate" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="hourlyRate" className="block text-body-sm form-label color-foreground mb-2">
                   Hourly Rate
                 </label>
                 <Input
@@ -313,7 +313,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               </div>
 
               <div>
-                <label htmlFor="currency" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="currency" className="block text-body-sm form-label color-foreground mb-2">
                   Currency
                 </label>
                 <Select {...register('currency')}>
@@ -326,7 +326,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
             </div>
 
             <div>
-              <label htmlFor="requirements" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="requirements" className="block text-body-sm form-label color-foreground mb-2">
                 Requirements
               </label>
               <Textarea
@@ -337,7 +337,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
             </div>
 
             <div>
-              <label htmlFor="deliverables" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="deliverables" className="block text-body-sm form-label color-foreground mb-2">
                 Deliverables
               </label>
               <Textarea
@@ -348,7 +348,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="notes" className="block text-body-sm form-label color-foreground mb-2">
                 Notes
               </label>
               <Textarea

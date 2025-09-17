@@ -27,13 +27,13 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 const categoryColors: Record<string, string> = {
-  profile: 'bg-primary/10 text-primary',
-  document: 'bg-secondary/10 text-secondary',
-  settings: 'bg-muted text-muted-foreground',
-  achievement: 'bg-warning/10 text-warning',
-  schedule: 'bg-success/10 text-success',
-  performance: 'bg-warning/10 text-warning',
-  default: 'bg-muted text-muted-foreground',
+  profile: 'bg-primary/10 color-primary',
+  document: 'bg-secondary/10 color-secondary',
+  settings: 'bg-secondary color-muted',
+  achievement: 'bg-warning/10 color-warning',
+  schedule: 'bg-success/10 color-success',
+  performance: 'bg-warning/10 color-warning',
+  default: 'bg-secondary color-muted',
 };
 
 export default function ActivityLogClient() {
@@ -165,8 +165,8 @@ export default function ActivityLogClient() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-2xl font-bold">Activity Log</h2>
-        <p className="text-muted-foreground">Track your recent account activity</p>
+        <h2 className="text-heading-3 text-heading-3">Activity Log</h2>
+        <p className="color-muted">Track your recent account activity</p>
       </div>
 
       {/* Filter Tabs */}
@@ -175,10 +175,10 @@ export default function ActivityLogClient() {
           <button
             key={category}
             onClick={() => setFilter(category)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-lg text-body-sm form-label transition-colors ${
               filter === category
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-muted hover:bg-muted/80'
+                ? 'bg-primary color-primary-foreground'
+                : 'bg-secondary hover:bg-secondary/80'
             }`}
           >
             {category === 'all' ? 'All Activity' : category.charAt(0).toUpperCase() + category.slice(1)}
@@ -189,15 +189,15 @@ export default function ActivityLogClient() {
       {activities.length === 0 ? (
         <Card>
           <CardContent className="text-center py-12">
-            <Activity className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-muted-foreground">No activity to display</p>
+            <Activity className="w-12 h-12 mx-auto mb-4 color-muted" />
+            <p className="color-muted">No activity to display</p>
           </CardContent>
         </Card>
       ) : (
         <div className="space-y-6">
           {Object.entries(groupedActivities).map(([date, dateActivities]) => (
             <div key={date}>
-              <h3 className="text-sm font-semibold text-muted-foreground mb-3">{date}</h3>
+              <h3 className="text-body-sm text-heading-4 color-muted mb-3">{date}</h3>
               <div className="space-y-2">
                 {dateActivities.map(activity => (
                   <Card key={activity.id} className="hover:shadow-sm transition-shadow">
@@ -207,27 +207,27 @@ export default function ActivityLogClient() {
                           {categoryIcons[activity.category] || categoryIcons.default}
                         </div>
                         <div className="flex-1">
-                          <p className="font-medium">{getActivityDescription(activity)}</p>
+                          <p className="form-label">{getActivityDescription(activity)}</p>
                           <div className="flex items-center gap-4 mt-1">
-                            <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                            <div className="flex items-center gap-1 text-body-sm color-muted">
                               <Clock className="w-3 h-3" />
                               <span>{formatDistanceToNow(new Date(activity.created_at), { addSuffix: true })}</span>
                             </div>
                             {activity.ip_address && (
-                              <span className="text-xs text-muted-foreground">
+                              <span className="text-body-sm color-muted">
                                 IP: {activity.ip_address}
                               </span>
                             )}
                           </div>
                           {activity.details && Object.keys(activity.details).length > 0 && (
-                            <div className="mt-2 p-2 bg-muted rounded text-xs">
+                            <div className="mt-2 p-2 bg-secondary rounded text-body-sm">
                               <pre className="whitespace-pre-wrap">
                                 {JSON.stringify(activity.details, null, 2)}
                               </pre>
                             </div>
                           )}
                         </div>
-                        <Badge variant="outline" className="text-xs">
+                        <Badge variant="outline" className="text-body-sm">
                           {activity.category}
                         </Badge>
                       </div>

@@ -197,8 +197,8 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-lg font-semibold">Create Report</h2>
-            <p className="text-sm text-muted-foreground">Build a custom analytics report</p>
+            <h2 className="text-body text-heading-4">Create Report</h2>
+            <p className="text-body-sm color-muted">Build a custom analytics report</p>
           </div>
           <Button onClick={onCancel}>
             <X className="h-4 w-4" />
@@ -209,22 +209,22 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
           <div className="flex-1 p-6 space-y-6 overflow-y-auto">
             {/* Basic Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Basic Information</h3>
+              <h3 className="text-body-sm form-label">Basic Information</h3>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Report Name</label>
+                <label className="block text-body-sm form-label mb-1">Report Name</label>
                 <input
                   {...register('name')}
                   className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter report name"
                 />
                 {errors.name && (
-                  <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-body-sm form-label mb-1">Description</label>
                 <textarea
                   {...register('description')}
                   rows={3}
@@ -235,7 +235,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
 
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Report Type</label>
+                  <label className="block text-body-sm form-label mb-1">Report Type</label>
                   <select
                     {...register('type')}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -249,7 +249,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-1">Data Source</label>
+                  <label className="block text-body-sm form-label mb-1">Data Source</label>
                   <select
                     {...register('dataSource')}
                     className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -267,37 +267,37 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('isPublic')}
                   type="checkbox"
-                  className="rounded border-border text-primary focus:ring-primary"
+                  className="rounded border-border color-primary focus:ring-primary"
                 />
-                <label className="text-sm font-medium">Make report public</label>
+                <label className="text-body-sm form-label">Make report public</label>
               </div>
             </div>
 
             {/* Fields Selection */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Report Fields</h3>
+              <h3 className="text-body-sm form-label">Report Fields</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                 {availableFields.map((field) => (
-                  <label key={field} className="flex items-center space-x-2 p-2 border border-border rounded cursor-pointer hover:bg-muted/30">
+                  <label key={field} className="flex items-center space-x-2 p-2 border border-border rounded cursor-pointer hover:bg-secondary/30">
                     <input
                       type="checkbox"
                       checked={selectedFields.includes(field)}
                       onChange={() => toggleField(field)}
-                      className="rounded border-border text-primary focus:ring-primary"
+                      className="rounded border-border color-primary focus:ring-primary"
                     />
-                    <span className="text-sm capitalize">{field.replace('_', ' ')}</span>
+                    <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
                   </label>
                 ))}
               </div>
               {errors.fields && (
-                <p className="text-sm text-destructive">{errors.fields.message}</p>
+                <p className="text-body-sm color-destructive">{errors.fields.message}</p>
               )}
             </div>
 
             {/* Filters */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium">Filters</h3>
+                <h3 className="text-body-sm form-label">Filters</h3>
                 <Button
                   type="button"
                   variant="outline"
@@ -314,7 +314,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <select
                     value={filter.field}
                     onChange={(e) => updateFilter(index, 'field', e.target.value)}
-                    className="flex-1 px-2 py-1 border rounded text-sm"
+                    className="flex-1 px-2 py-1 border rounded text-body-sm"
                   >
                     {availableFields.map((field) => (
                       <option key={field} value={field}>
@@ -326,7 +326,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <select
                     value={filter.operator}
                     onChange={(e) => updateFilter(index, 'operator', e.target.value)}
-                    className="px-2 py-1 border rounded text-sm"
+                    className="px-2 py-1 border rounded text-body-sm"
                   >
                     <option value="equals">Equals</option>
                     <option value="contains">Contains</option>
@@ -337,7 +337,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <input
                     value={filter.value}
                     onChange={(e) => updateFilter(index, 'value', e.target.value)}
-                    className="flex-1 px-2 py-1 border rounded text-sm"
+                    className="flex-1 px-2 py-1 border rounded text-body-sm"
                     placeholder="Filter value"
                   />
                   
@@ -359,16 +359,16 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('schedule.enabled')}
                   type="checkbox"
-                  className="rounded border-border text-primary focus:ring-primary"
+                  className="rounded border-border color-primary focus:ring-primary"
                 />
-                <label className="text-sm font-medium">Enable scheduled delivery</label>
+                <label className="text-body-sm form-label">Enable scheduled delivery</label>
               </div>
 
               {scheduleEnabled && (
                 <div className="pl-6 space-y-4 border-l-2 border-primary/20">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-1">Frequency</label>
+                      <label className="block text-body-sm form-label mb-1">Frequency</label>
                       <select
                         {...register('schedule.frequency')}
                         className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -382,7 +382,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium mb-1">Time</label>
+                      <label className="block text-body-sm form-label mb-1">Time</label>
                       <input
                         {...register('schedule.time')}
                         type="time"
@@ -393,7 +393,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
 
                   {frequency === 'weekly' && (
                     <div>
-                      <label className="block text-sm font-medium mb-1">Day of Week</label>
+                      <label className="block text-body-sm form-label mb-1">Day of Week</label>
                       <select
                         {...register('schedule.dayOfWeek', { valueAsNumber: true })}
                         className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -409,7 +409,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
 
                   {frequency === 'monthly' && (
                     <div>
-                      <label className="block text-sm font-medium mb-1">Day of Month</label>
+                      <label className="block text-body-sm form-label mb-1">Day of Month</label>
                       <input
                         {...register('schedule.dayOfMonth', { valueAsNumber: true })}
                         type="number"
@@ -425,7 +425,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
             </div>
           </div>
 
-          <div className="p-6 border-t bg-muted/30 flex justify-end space-x-3">
+          <div className="p-6 border-t bg-secondary/30 flex justify-end space-x-3">
             <Button type="button" variant="outline" onClick={onCancel}>
               Cancel
             </Button>

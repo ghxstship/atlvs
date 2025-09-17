@@ -11,17 +11,17 @@ export const EventBus = {
 };
 
 // Export services
-export { AssetsService } from './services/AssetsService';
-export { ProcurementService } from './services/ProcurementService';
-export { ProjectsService } from './services/ProjectsService';
-export { ApiKeysService } from './services/ApiKeysService';
-export { WebhooksService } from './services/WebhooksService';
-export { ProgramsService } from './services/ProgramsService';
-export { PipelineService } from './services/PipelineService';
-export { FinanceService } from './services/FinanceService';
-export { JobsService } from './services/JobsService';
-export { AnalyticsService } from './services/AnalyticsService';
-export { CompaniesService } from './services/CompaniesService';
-export { ListingsService } from './services/ListingsService';
-export { VendorsService } from './services/VendorsService';
-export { CatalogItemsService } from './services/CatalogItemsService';
+export { AssetsService } from './services/assets-service';
+export { ProcurementService } from './services/procurement-service';
+export { ProjectsService } from './services/projects-service';
+export { ApiKeysService } from './services/api-keys-service';
+export { WebhooksService } from './services/webhooks-service';
+export { ProgramsService } from './services/programs-service';
+export { PipelineService } from './services/pipeline-service';
+export { FinanceService } from './services/finance-service';
+export { JobsService } from './services/jobs-service';
+export { AnalyticsService } from './services/analytics-service';
+export { CompaniesService } from './services/companies-service';
+export { ListingsService } from './services/listings-service';
+export { VendorsService } from './services/vendors-service';
+export { CatalogItemsService } from './services/catalog-items-service';

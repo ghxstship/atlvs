@@ -271,15 +271,15 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
 
   const getCategoryColor = (category: OnboardingTask['category']) => {
     const categoryInfo = TASK_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-muted-foreground';
+    return categoryInfo?.color || 'bg-secondary-foreground';
   };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Onboarding Pipeline</h1>
-          <p className="text-sm text-muted-foreground">Manage crew onboarding workflows and task completion</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Onboarding Pipeline</h1>
+          <p className="text-body-sm color-muted">Manage crew onboarding workflows and task completion</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -291,11 +291,11 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
       {showForm && (
         <Card>
           <div className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Create Onboarding Workflow</h3>
+            <h3 className="text-body text-heading-4 mb-4">Create Onboarding Workflow</h3>
             <form onSubmit={handleCreateWorkflow} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Person</label>
+                  <label className="block text-body-sm form-label mb-1">Person</label>
                   <select
                     value={formData.personId}
                     onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
@@ -311,7 +311,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Project</label>
+                  <label className="block text-body-sm form-label mb-1">Project</label>
                   <select
                     value={formData.projectId}
                     onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
@@ -329,7 +329,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-1">Start Date</label>
+                  <label className="block text-body-sm form-label mb-1">Start Date</label>
                   <Input
                     type="date"
                     value={formData.startDate}
@@ -338,7 +338,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-1">Expected Completion</label>
+                  <label className="block text-body-sm form-label mb-1">Expected Completion</label>
                   <Input
                     type="date"
                     value={formData.expectedCompletionDate}
@@ -360,11 +360,11 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
       {/* Workflows List */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading onboarding workflows...</div>
+          <div className="p-8 text-center color-muted">Loading onboarding workflows...</div>
         </Card>
       ) : workflows.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No onboarding workflows found. Create one to get started.
           </div>
         </Card>
@@ -375,14 +375,14 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
               <div className="p-4">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold">{workflow.personName}</h3>
-                    <p className="text-sm text-muted-foreground">{workflow.projectName}</p>
+                    <h3 className="text-body text-heading-4">{workflow.personName}</h3>
+                    <p className="text-body-sm color-muted">{workflow.projectName}</p>
                     <div className="flex items-center gap-4 mt-2">
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-body-sm color-muted">
                         Started: {new Date(workflow.startDate).toLocaleDateString()}
                       </span>
                       {workflow.expectedCompletionDate && (
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-body-sm color-muted">
                           Expected: {new Date(workflow.expectedCompletionDate).toLocaleDateString()}
                         </span>
                       )}
@@ -390,8 +390,8 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   </div>
                   <div className="flex items-center gap-4">
                     <div className="text-right">
-                      <div className="text-sm font-medium">{workflow.progress}%</div>
-                      <div className="w-20 h-2 bg-muted rounded-full overflow-hidden">
+                      <div className="text-body-sm form-label">{workflow.progress}%</div>
+                      <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-primary transition-all"
                           style={{ width: `${workflow.progress}%` }}
@@ -404,7 +404,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
 
                 {/* Tasks */}
                 <div className="space-y-2">
-                  <h4 className="text-sm font-medium text-muted-foreground mb-3">Tasks ({workflow.tasks.filter(t => t.completed).length}/{workflow.tasks.length})</h4>
+                  <h4 className="text-body-sm form-label color-muted mb-3">Tasks ({workflow.tasks.filter(t => t.completed).length}/{workflow.tasks.length})</h4>
                   {workflow.tasks.map(task => {
                     const IconComponent = getCategoryIcon(task.category);
                     return (
@@ -413,30 +413,30 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                           onClick={() => toggleTaskCompletion(workflow.id, task.id)}
                           className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
                             task.completed 
-                              ? 'bg-success border-success text-success-foreground' 
+                              ? 'bg-success border-success color-success-foreground' 
                               : 'border-border hover:border-success'
                           }`}
                         >
                           {task.completed && <CheckCircle className="w-3 h-3" />}
                         </button>
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getCategoryColor(task.category)}`}>
-                          <IconComponent className="w-4 h-4 text-primary-foreground" />
+                          <IconComponent className="w-4 h-4 color-primary-foreground" />
                         </div>
                         <div className="flex-1">
-                          <div className={`font-medium ${task.completed ? 'line-through text-muted-foreground' : ''}`}>
+                          <div className={`form-label ${task.completed ? 'line-through color-muted' : ''}`}>
                             {task.name}
-                            {task.required && <span className="text-destructive ml-1">*</span>}
+                            {task.required && <span className="color-destructive ml-1">*</span>}
                           </div>
                           {task.description && (
-                            <div className="text-sm text-muted-foreground">{task.description}</div>
+                            <div className="text-body-sm color-muted">{task.description}</div>
                           )}
-                          <div className="flex items-center gap-4 mt-1 text-xs text-muted-foreground">
+                          <div className="flex items-center gap-4 mt-1 text-body-sm color-muted">
                             <span>Category: {TASK_CATEGORIES.find(cat => cat.id === task.category)?.name}</span>
                             {task.dueDate && <span>Due: {new Date(task.dueDate).toLocaleDateString()}</span>}
                             {task.assignedTo && <span>Assigned: {task.assignedTo}</span>}
                           </div>
                         </div>
-                        <Badge variant={task.required ? 'destructive' : 'secondary'} className="text-xs">
+                        <Badge variant={task.required ? 'destructive' : 'secondary'} className="text-body-sm">
                           {task.required ? 'Required' : 'Optional'}
                         </Badge>
                       </div>

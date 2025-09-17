@@ -217,11 +217,11 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
     return (
       <div className="space-y-6">
         <div className="animate-pulse">
-          <div className="h-8 bg-muted rounded mb-4"></div>
+          <div className="h-8 bg-secondary rounded mb-4"></div>
           <div className="space-y-4">
-            <div className="h-32 bg-muted rounded"></div>
-            <div className="h-24 bg-muted rounded"></div>
-            <div className="h-24 bg-muted rounded"></div>
+            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-24 bg-secondary rounded"></div>
+            <div className="h-24 bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -231,7 +231,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Professional Information</h2>
+        <h2 className="text-heading-4 text-heading-4">Professional Information</h2>
         {!editing ? (
           <Button onClick={() => setEditing(true)} className="flex items-center gap-2">
             <Edit className="h-4 w-4" />
@@ -265,8 +265,8 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Briefcase className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Employment Details</h3>
+              <Briefcase className="h-5 w-5 color-primary" />
+              <h3 className="text-body text-heading-4">Employment Details</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -347,8 +347,8 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Award className="h-5 w-5 text-secondary" />
-              <h3 className="text-lg font-semibold">Skills & Expertise</h3>
+              <Award className="h-5 w-5 color-secondary" />
+              <h3 className="text-body text-heading-4">Skills & Expertise</h3>
             </div>
             
             {editing && (
@@ -375,7 +375,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                     <button
                       type="button"
                       onClick={() => removeSkill(skill)}
-                      className="ml-1 text-destructive hover:text-destructive/80"
+                      className="ml-1 color-destructive hover:color-destructive/80"
                     >
                       ×
                     </button>
@@ -390,8 +390,8 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Users className="h-5 w-5 text-success" />
-              <h3 className="text-lg font-semibold">Professional Bio</h3>
+              <Users className="h-5 w-5 color-success" />
+              <h3 className="text-body text-heading-4">Professional Bio</h3>
             </div>
             
             <Textarea
@@ -409,8 +409,8 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <TrendingUp className="h-5 w-5 text-warning" />
-              <h3 className="text-lg font-semibold">Career Development</h3>
+              <TrendingUp className="h-5 w-5 color-warning" />
+              <h3 className="text-body text-heading-4">Career Development</h3>
             </div>
             
             <div className="space-y-4">
@@ -424,7 +424,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
               />
               
               <div>
-                <label className="block text-sm font-medium mb-2">Mentorship Interests</label>
+                <label className="block text-body-sm form-label mb-2">Mentorship Interests</label>
                 {editing && (
                   <div className="flex gap-2 mb-4">
                     <Input
@@ -449,7 +449,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                         <button
                           type="button"
                           onClick={() => removeMentorshipInterest(interest)}
-                          className="ml-1 text-destructive hover:text-destructive/80"
+                          className="ml-1 color-destructive hover:color-destructive/80"
                         >
                           ×
                         </button>
@@ -466,8 +466,8 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-6">
             <div className="flex items-center gap-2 mb-4">
-              <Target className="h-5 w-5 text-primary" />
-              <h3 className="text-lg font-semibold">Online Presence</h3>
+              <Target className="h-5 w-5 color-primary" />
+              <h3 className="text-body text-heading-4">Online Presence</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

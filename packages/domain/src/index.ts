@@ -1,33 +1,33 @@
 export * from './core/Identifier';
 export * from './core/Result';
-export * from './tenant/TenantContext';
-export * from './security/RBAC';
-export * from './events/DomainEvent';
-export * from './events/EventBus';
-export * from './audit/AuditLog';
+// export * from './tenant/TenantContext';
+export * from './security/r-b-a-c';
+// export * from './events/DomainEvent';
+// export * from './events/EventBus';
+export * from './audit';
 
-export * from './repositories/BaseRepository';
+export * from './repositories/base-repository';
 
 export * from './modules/projects/Project';
-export type { ProjectRepository } from './modules/projects/ProjectRepository';
-export { ProjectRepositoryImpl } from './modules/projects/ProjectRepository';
-export * from './modules/api-keys/ApiKey';
-export * from './modules/api-keys/ApiKeyRepository';
+export type { ProjectRepository } from './modules/projects/project-repository';
+// export { ProjectRepositoryImpl } from './modules/projects/project-repository';
+export * from './modules/api-keys/api-key';
+export * from './modules/api-keys/api-key-repository';
 export * from './webhooks/Webhook';
-export * from './webhooks/WebhookRepository';
+export * from './webhooks/webhook-repository';
 export * from './modules/programming/Event';
 export * from './modules/programming/Program';
 
 // Profile module exports
 export * from './modules/profile/Profile';
-export * from './modules/profile/ProfileRepository';
+export * from './modules/profile/profile-repository';
 export * from './modules/pipeline/Pipeline';
 export * from './modules/pipeline/Manning';
 export * from './modules/pipeline/Advancing';
 export * from './modules/pipeline/Onboarding';
 export * from './modules/pipeline/Training';
 export * from './modules/pipeline/Contracting';
-export * from './modules/procurement/PurchaseOrder';
+export * from './modules/procurement/purchase-order';
 export * from './modules/finance';
 export * from './modules/jobs/Job';
 export * from './modules/jobs/Opportunity';
@@ -35,13 +35,13 @@ export * from './modules/jobs/Bid';
 export * from './modules/jobs/Contract';
 export * from './modules/jobs/Assignment';
 export * from './modules/jobs/Compliance';
-export * from './modules/jobs/RFP';
+export * from './modules/jobs/r-f-p';
 export * from './modules/analytics/Report';
 export * from './modules/analytics/Dashboard';
 export * from './modules/companies/Company';
 export * from './modules/marketplace/Listing';
 export * from './modules/marketplace/Vendor';
-export * from './modules/marketplace/CatalogItem';
+export * from './modules/marketplace/catalog-item';
 
 // People module exports
 export * from './modules/people/Person';

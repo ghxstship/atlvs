@@ -40,7 +40,7 @@ const ASSET_CATEGORIES = [
   { id: 'site_services', name: 'Site Services', color: 'bg-warning' },
   { id: 'heavy_machinery', name: 'Heavy Machinery & Equipment', color: 'bg-destructive' },
   { id: 'it_communication', name: 'IT & Communication Services', color: 'bg-info' },
-  { id: 'office_admin', name: 'Office & Admin', color: 'bg-muted' },
+  { id: 'office_admin', name: 'Office & Admin', color: 'bg-secondary' },
   { id: 'access_credentials', name: 'Access & Credentials', color: 'bg-warning' },
   { id: 'parking', name: 'Parking', color: 'bg-primary' },
   { id: 'travel_lodging', name: 'Travel & Lodging', color: 'bg-secondary' },
@@ -296,7 +296,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
 
   const getCategoryColor = (category: string) => {
     const categoryInfo = ASSET_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-muted';
+    return categoryInfo?.color || 'bg-secondary';
   };
 
   const formatCurrency = (value: number) => {
@@ -310,8 +310,8 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Asset Inventory</h1>
-          <p className="text-sm text-muted-foreground">Master catalog of all available assets</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Asset Inventory</h1>
+          <p className="text-body-sm color-muted">Master catalog of all available assets</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" className="flex items-center gap-2">
@@ -335,7 +335,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
                 <Input
                   placeholder="Search assets..."
                   value={searchQuery}
@@ -378,11 +378,11 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
       {/* Assets Grid */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading assets...</div>
+          <div className="p-8 text-center color-muted">Loading assets...</div>
         </Card>
       ) : filteredAssets.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No assets found matching your criteria.
           </div>
         </Card>
@@ -394,7 +394,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 <div className="flex items-start justify-between mb-3">
                   <div className="flex items-center gap-2">
                     <div className={`w-3 h-3 rounded-full ${getCategoryColor(asset.category)}`} />
-                    <h3 className="font-semibold truncate">{asset.name}</h3>
+                    <h3 className="text-heading-4 truncate">{asset.name}</h3>
                   </div>
                   <div className="flex items-center gap-1">
                     <Button
@@ -422,30 +422,30 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 </div>
 
                 {asset.description && (
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                  <p className="text-body-sm color-muted mb-3 line-clamp-2">
                     {asset.description}
                   </p>
                 )}
 
                 <div className="space-y-2 mb-4">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">SKU:</span>
+                  <div className="flex items-center justify-between text-body-sm">
+                    <span className="color-muted">SKU:</span>
                     <span className="font-mono">{asset.sku || 'N/A'}</span>
                   </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Location:</span>
+                  <div className="flex items-center justify-between text-body-sm">
+                    <span className="color-muted">Location:</span>
                     <span>{asset.location || 'Unassigned'}</span>
                   </div>
                   {asset.currentValue && (
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-muted-foreground">Value:</span>
-                      <span className="font-medium">{formatCurrency(asset.currentValue)}</span>
+                    <div className="flex items-center justify-between text-body-sm">
+                      <span className="color-muted">Value:</span>
+                      <span className="form-label">{formatCurrency(asset.currentValue)}</span>
                     </div>
                   )}
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-xs">
+                  <Badge variant="outline" className="text-body-sm">
                     {ASSET_CATEGORIES.find(cat => cat.id === asset.category)?.name}
                   </Badge>
                   {getStatusBadge(asset.status)}
@@ -454,12 +454,12 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 {asset.tags && asset.tags.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-1">
                     {asset.tags.slice(0, 3).map(tag => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
+                      <Badge key={tag} variant="secondary" className="text-body-sm">
                         {tag}
                       </Badge>
                     ))}
                     {asset.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-xs">
+                      <Badge variant="secondary" className="text-body-sm">
                         +{asset.tags.length - 3}
                       </Badge>
                     )}
@@ -480,14 +480,14 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
       >
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Asset Name</label>
+            <label className="block text-body-sm form-label mb-1">Asset Name</label>
             <Input
               placeholder="Enter asset name"
               defaultValue={selectedAsset?.name}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-body-sm form-label mb-1">Description</label>
             <Input
               placeholder="Enter description"
               defaultValue={selectedAsset?.description}
@@ -495,7 +495,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Category</label>
+              <label className="block text-body-sm form-label mb-1">Category</label>
               <select
                 defaultValue={selectedAsset?.category}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
@@ -508,7 +508,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Type</label>
+              <label className="block text-body-sm form-label mb-1">Type</label>
               <select
                 defaultValue={selectedAsset?.type}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
@@ -521,14 +521,14 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">SKU</label>
+              <label className="block text-body-sm form-label mb-1">SKU</label>
               <Input
                 placeholder="Enter SKU"
                 defaultValue={selectedAsset?.sku}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Location</label>
+              <label className="block text-body-sm form-label mb-1">Location</label>
               <Input
                 placeholder="Enter location"
                 defaultValue={selectedAsset?.location}

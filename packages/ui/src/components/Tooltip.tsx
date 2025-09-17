@@ -19,12 +19,12 @@ export interface TooltipProps {
 
 const tooltipVariants = {
   variant: {
-    default: 'bg-gray-900 text-white border-gray-700',
-    dark: 'bg-black text-white border-gray-800',
-    light: 'bg-white text-gray-900 border-gray-200 shadow-lg',
-    error: 'bg-red-600 text-white border-red-700',
-    warning: 'bg-yellow-600 text-white border-yellow-700',
-    success: 'bg-green-600 text-white border-green-700',
+    default: 'bg-popover text-popover-foreground border-border',
+    dark: 'bg-foreground text-background border-border',
+    light: 'bg-background text-foreground border-border shadow-lg',
+    error: 'bg-destructive text-destructive-foreground border-destructive',
+    warning: 'bg-warning text-warning-foreground border-warning',
+    success: 'bg-success text-success-foreground border-success',
   },
   size: {
     sm: 'px-2 py-1 text-xs',

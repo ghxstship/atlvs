@@ -83,10 +83,10 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
 
   const getStatusColor = (status: Vendor['status']) => {
     switch (status) {
-      case 'active': return 'bg-success/10 text-success-foreground';
-      case 'inactive': return 'bg-muted/50 text-muted-foreground';
-      case 'pending': return 'bg-warning/10 text-warning-foreground';
-      default: return 'bg-muted/50 text-muted-foreground';
+      case 'active': return 'bg-success/10 color-success-foreground';
+      case 'inactive': return 'bg-secondary/50 color-muted';
+      case 'pending': return 'bg-warning/10 color-warning-foreground';
+      default: return 'bg-secondary/50 color-muted';
     }
   };
 
@@ -99,11 +99,11 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
           <Star
             key={star}
             className={`h-4 w-4 ${
-              star <= rating ? 'text-warning fill-current' : 'text-muted-foreground'
+              star <= rating ? 'color-warning fill-current' : 'color-muted'
             }`}
           />
         ))}
-        <span className="text-sm text-foreground/70 ml-1">({rating})</span>
+        <span className="text-body-sm color-foreground/70 ml-1">({rating})</span>
       </div>
     );
   };
@@ -113,7 +113,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-center py-12">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-foreground/70">Loading vendors...</p>
+          <p className="color-foreground/70">Loading vendors...</p>
         </div>
       </div>
     );
@@ -125,7 +125,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-1">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
             <Input
               placeholder="Search vendors..."
               value={searchQuery}
@@ -152,9 +152,9 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
       {/* Vendors Grid */}
       {filteredVendors.length === 0 ? (
         <div className="text-center py-12">
-          <Building2 className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-          <h3 className="text-lg font-medium mb-2">No vendors found</h3>
-          <p className="text-foreground/70 mb-4">
+          <Building2 className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+          <h3 className="text-body form-label mb-2">No vendors found</h3>
+          <p className="color-foreground/70 mb-4">
             {searchQuery || statusFilter !== 'all' 
               ? 'Try adjusting your search or filters'
               : 'Get started by adding your first vendor'
@@ -171,10 +171,10 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
-                    <Building2 className="h-5 w-5 text-primary" />
+                    <Building2 className="h-5 w-5 color-primary" />
                   </div>
                   <div>
-                    <h3 className="font-medium">{vendor.name}</h3>
+                    <h3 className="form-label">{vendor.name}</h3>
                     <Badge className={getStatusColor(vendor.status)}>
                       {vendor.status}
                     </Badge>
@@ -186,25 +186,25 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
               </div>
 
               {vendor.description && (
-                <p className="text-sm text-foreground/70 mb-4 line-clamp-2">
+                <p className="text-body-sm color-foreground/70 mb-4 line-clamp-2">
                   {vendor.description}
                 </p>
               )}
 
               <div className="space-y-2 mb-4">
                 {vendor.contact_person && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <span className="font-medium">Contact:</span>
-                    <span className="text-foreground/70">{vendor.contact_person}</span>
+                  <div className="flex items-center gap-2 text-body-sm">
+                    <span className="form-label">Contact:</span>
+                    <span className="color-foreground/70">{vendor.contact_person}</span>
                   </div>
                 )}
                 
                 {vendor.email && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <Mail className="h-4 w-4 text-foreground/50" />
+                  <div className="flex items-center gap-2 text-body-sm">
+                    <Mail className="h-4 w-4 color-foreground/50" />
                     <a 
                       href={`mailto:${vendor.email}`}
-                      className="text-primary hover:underline"
+                      className="color-primary hover:underline"
                     >
                       {vendor.email}
                     </a>
@@ -212,11 +212,11 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                 )}
                 
                 {vendor.phone && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <Phone className="h-4 w-4 text-foreground/50" />
+                  <div className="flex items-center gap-2 text-body-sm">
+                    <Phone className="h-4 w-4 color-foreground/50" />
                     <a 
                       href={`tel:${vendor.phone}`}
-                      className="text-primary hover:underline"
+                      className="color-primary hover:underline"
                     >
                       {vendor.phone}
                     </a>
@@ -224,13 +224,13 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                 )}
                 
                 {vendor.website && (
-                  <div className="flex items-center gap-2 text-sm">
-                    <Globe className="h-4 w-4 text-foreground/50" />
+                  <div className="flex items-center gap-2 text-body-sm">
+                    <Globe className="h-4 w-4 color-foreground/50" />
                     <a 
                       href={vendor.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-primary hover:underline"
+                      className="color-primary hover:underline"
                     >
                       Website
                     </a>
@@ -245,9 +245,9 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
               )}
 
               {vendor.payment_terms && (
-                <div className="text-sm">
-                  <span className="font-medium">Payment Terms:</span>
-                  <span className="text-foreground/70 ml-2">{vendor.payment_terms}</span>
+                <div className="text-body-sm">
+                  <span className="form-label">Payment Terms:</span>
+                  <span className="color-foreground/70 ml-2">{vendor.payment_terms}</span>
                 </div>
               )}
             </div>

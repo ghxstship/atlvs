@@ -46,10 +46,10 @@ export default function ForumsPage() {
     <div className="container mx-auto px-4 py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <h1 className={`${anton.className} uppercase text-4xl md:text-5xl font-bold mb-6`}>
+          <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
             COMMUNITY FORUMS
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
             Connect with fellow creators, share knowledge, and get support from the GHXSTSHIP community.
           </p>
           <Button>
@@ -65,17 +65,17 @@ export default function ForumsPage() {
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
                     <div className="bg-primary/10 p-3 rounded-lg mr-4">
-                      <Icon className="h-6 w-6 text-primary" />
+                      <Icon className="h-6 w-6 color-primary" />
                     </div>
                     <div>
-                      <h3 className={`${anton.className} uppercase text-lg font-bold mb-1`}>
+                      <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-1`}>
                         {category.title}
                       </h3>
-                      <p className="text-sm text-muted-foreground">{category.description}</p>
+                      <p className="text-body-sm color-muted">{category.description}</p>
                     </div>
                   </div>
                 </div>
-                <div className="flex justify-between text-sm text-muted-foreground">
+                <div className="flex justify-between text-body-sm color-muted">
                   <span>{category.posts.toLocaleString()} posts</span>
                   <span>{category.members.toLocaleString()} members</span>
                 </div>
@@ -84,29 +84,29 @@ export default function ForumsPage() {
           })}
         </div>
 
-        <div className="bg-muted/30 rounded-lg p-8 text-center">
-          <h2 className={`${anton.className} uppercase text-2xl font-bold mb-4`}>
+        <div className="bg-secondary/30 rounded-lg p-8 text-center">
+          <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
             COMMUNITY GUIDELINES
           </h2>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          <p className="color-muted mb-6 max-w-2xl mx-auto">
             Help us maintain a welcoming and productive community by following our guidelines.
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-left">
             <div>
-              <h3 className="font-semibold mb-2">Be Respectful</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-heading-4 mb-2">Be Respectful</h3>
+              <p className="text-body-sm color-muted">
                 Treat all community members with respect and courtesy.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Stay On Topic</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-heading-4 mb-2">Stay On Topic</h3>
+              <p className="text-body-sm color-muted">
                 Keep discussions relevant to the forum category.
               </p>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Help Others</h3>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="text-heading-4 mb-2">Help Others</h3>
+              <p className="text-body-sm color-muted">
                 Share your knowledge and help fellow community members.
               </p>
             </div>

@@ -176,7 +176,7 @@ export function CalendarView({
           <div className="grid grid-cols-7 gap-1 h-full">
             {/* Day headers */}
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="p-2 text-center text-sm font-medium text-gray-500">
+              <div key={day} className="p-2 text-center text-sm font-medium text-muted-foreground">
                 {day}
               </div>
             ))}
@@ -191,10 +191,10 @@ export function CalendarView({
                 <div
                   key={index}
                   className={`
-                    p-1 min-h-[100px] border border-gray-200 cursor-pointer
-                    ${!isCurrentMonth ? 'bg-gray-50 text-gray-400' : 'bg-white'}
-                    ${isToday ? 'bg-blue-50 border-blue-200' : ''}
-                    hover:bg-gray-50
+                    p-1 min-h-[100px] border border-border cursor-pointer
+                    ${!isCurrentMonth ? 'bg-muted text-muted-foreground' : 'bg-background'}
+                    ${isToday ? 'bg-primary/10 border-primary' : ''}
+                    hover:bg-muted/50
                   `}
                   onClick={() => onDateClick?.(date)}
                 >
@@ -218,7 +218,7 @@ export function CalendarView({
                       </div>
                     ))}
                     {dayEvents.length > 3 && (
-                      <div className="text-xs text-gray-500">
+                      <div className="text-xs text-muted-foreground">
                         +{dayEvents.length - 3} more
                       </div>
                     )}
@@ -231,7 +231,7 @@ export function CalendarView({
         
         {/* Week and Day views would go here */}
         {viewMode !== 'month' && (
-          <div className="flex items-center justify-center h-full text-gray-500">
+          <div className="flex items-center justify-center h-full text-muted-foreground">
             {viewMode.charAt(0).toUpperCase() + viewMode.slice(1)} view coming soon
           </div>
         )}

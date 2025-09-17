@@ -141,7 +141,7 @@ export default function OPENDECKPage() {
                 <Badge variant="outline" className="mb-4">
                   Creative Marketplace
                 </Badge>
-                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
                   <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     OPENDECK
                   </span>
@@ -150,7 +150,7 @@ export default function OPENDECKPage() {
                   <br />
                   DOESN'T GHOST YOU
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-heading-4 color-muted">
                   Find verified crew and vendors who actually show up, answer their phones, 
                   and deliver what they promise. No more production nightmares.
                 </p>
@@ -158,20 +158,20 @@ export default function OPENDECKPage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>25K+</div>
-                  <div className="text-sm text-muted-foreground">Active Creators</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>25K+</div>
+                  <div className="text-body-sm color-muted">Active Creators</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50K+</div>
-                  <div className="text-sm text-muted-foreground">Projects Listed</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>50K+</div>
+                  <div className="text-body-sm color-muted">Projects Listed</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>94%</div>
-                  <div className="text-sm text-muted-foreground">Success Rate</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>94%</div>
+                  <div className="text-body-sm color-muted">Success Rate</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>50+</div>
-                  <div className="text-sm text-muted-foreground">Countries</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>50+</div>
+                  <div className="text-body-sm color-muted">Countries</div>
                 </div>
               </div>
 
@@ -192,15 +192,15 @@ export default function OPENDECKPage() {
             {/* Marketplace Preview */}
             <div className="relative">
               <Card className="bg-background border shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-destructive"></div>
                     <div className="w-3 h-3 rounded-full bg-warning"></div>
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
-                      <div className="w-3 h-3 text-success">🔒</div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
+                      <div className="w-3 h-3 color-success">🔒</div>
                       opendeck.ghxstship.com
                     </div>
                   </div>
@@ -208,8 +208,8 @@ export default function OPENDECKPage() {
 
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>FEATURED TALENT</h3>
-                    <Badge variant="outline" className="text-secondary border-secondary">
+                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>FEATURED TALENT</h3>
+                    <Badge variant="outline" className="color-secondary border-secondary">
                       Trending
                     </Badge>
                   </div>
@@ -220,30 +220,30 @@ export default function OPENDECKPage() {
                       { name: 'Maya Chen', role: 'Creative Director', rating: 4.8, projects: 89, location: 'New York, NY' },
                       { name: 'Alex Rivera', role: 'Motion Designer', rating: 5.0, projects: 156, location: 'London, UK' },
                     ].map((talent, i) => (
-                      <div key={i} className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg">
+                      <div key={i} className="flex items-center gap-3 p-3 bg-secondary/30 rounded-lg">
                         <div className="w-10 h-10 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
-                          <span className="text-white font-semibold text-sm">
+                          <span className="text-background text-heading-4 text-body-sm">
                             {talent.name.split(' ').map(n => n[0]).join('')}
                           </span>
                         </div>
                         <div className="flex-1">
-                          <div className="font-semibold text-sm">{talent.name}</div>
-                          <div className="text-xs text-muted-foreground">{talent.role}</div>
-                          <div className="text-xs text-muted-foreground">{talent.location}</div>
+                          <div className="text-heading-4 text-body-sm">{talent.name}</div>
+                          <div className="text-body-sm color-muted">{talent.role}</div>
+                          <div className="text-body-sm color-muted">{talent.location}</div>
                         </div>
                         <div className="text-right">
                           <div className="flex items-center gap-1 mb-1">
-                            <Star className="h-3 w-3 fill-warning text-warning" />
-                            <span className="text-xs font-semibold">{talent.rating}</span>
+                            <Star className="h-3 w-3 fill-warning color-warning" />
+                            <span className="text-body-sm text-heading-4">{talent.rating}</span>
                           </div>
-                          <div className="text-xs text-muted-foreground">{talent.projects} projects</div>
+                          <div className="text-body-sm color-muted">{talent.projects} projects</div>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   <div className="pt-3 border-t">
-                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                    <div className="flex items-center justify-between text-body-sm color-muted">
                       <span>25,847 active creators</span>
                       <span>Updated 2 min ago</span>
                     </div>
@@ -259,10 +259,10 @@ export default function OPENDECKPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               DISCOVER EVERYTHING CREATIVE
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               From world-class talent to premium resources, OPENDECK connects you with 
               everything you need to bring your creative vision to life.
             </p>
@@ -272,17 +272,17 @@ export default function OPENDECKPage() {
             {categories.map((category) => (
               <Card key={category.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8 text-center">
-                  <div className={`${anton.className} text-4xl font-bold text-secondary mb-4 uppercase`}>
+                  <div className={`${anton.className} text-heading-1 text-heading-3 color-secondary mb-4 uppercase`}>
                     {category.count}
                   </div>
-                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{category.title}</h3>
-                  <p className="text-muted-foreground mb-6">{category.description}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{category.title}</h3>
+                  <p className="color-muted mb-6">{category.description}</p>
                   
                   <div className="space-y-2">
                     {category.examples.map((example) => (
                       <div key={example} className="flex items-center justify-center gap-2">
                         <div className="w-2 h-2 bg-secondary rounded-full"></div>
-                        <span className="text-sm text-muted-foreground">{example}</span>
+                        <span className="text-body-sm color-muted">{example}</span>
                       </div>
                     ))}
                   </div>
@@ -294,13 +294,13 @@ export default function OPENDECKPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               POWERFUL MARKETPLACE FEATURES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Advanced tools and features designed to help you find, connect, and collaborate 
               with the best creative talent and resources.
             </p>
@@ -313,15 +313,15 @@ export default function OPENDECKPage() {
                 <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-secondary to-primary mb-4">
-                      <Icon className="h-6 w-6 text-white" />
+                      <Icon className="h-6 w-6 text-background" />
                     </div>
-                    <h3 className="font-semibold text-foreground mb-3">{feature.title}</h3>
-                    <p className="text-sm text-muted-foreground mb-4">{feature.description}</p>
+                    <h3 className="text-heading-4 color-foreground mb-3">{feature.title}</h3>
+                    <p className="text-body-sm color-muted mb-4">{feature.description}</p>
                     <div className="space-y-1">
                       {feature.benefits.map((benefit) => (
                         <div key={benefit} className="flex items-center gap-2">
-                          <CheckCircle className="h-3 w-3 text-success flex-shrink-0" />
-                          <span className="text-xs text-muted-foreground">{benefit}</span>
+                          <CheckCircle className="h-3 w-3 color-success flex-shrink-0" />
+                          <span className="text-body-sm color-muted">{benefit}</span>
                         </div>
                       ))}
                     </div>
@@ -337,10 +337,10 @@ export default function OPENDECKPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               SUCCESS STORIES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               See how leading companies have transformed their creative workflows with OPENDECK.
             </p>
           </div>
@@ -350,22 +350,22 @@ export default function OPENDECKPage() {
               <Card key={story.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
                   <Badge variant="outline" className="mb-4">{story.industry}</Badge>
-                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{story.title}</h3>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{story.title}</h3>
                   
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">CHALLENGE</h4>
-                      <p className="text-sm text-foreground">{story.challenge}</p>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-2">CHALLENGE</h4>
+                      <p className="text-body-sm color-foreground">{story.challenge}</p>
                     </div>
                     
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">SOLUTION</h4>
-                      <p className="text-sm text-foreground">{story.solution}</p>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-2">SOLUTION</h4>
+                      <p className="text-body-sm color-foreground">{story.solution}</p>
                     </div>
                     
                     <div className="pt-4 border-t">
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-2">RESULT</h4>
-                      <p className="font-semibold text-secondary">{story.result}</p>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-2">RESULT</h4>
+                      <p className="text-heading-4 color-secondary">{story.result}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -380,22 +380,22 @@ export default function OPENDECKPage() {
                 <CardContent className="p-8">
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-warning text-warning" />
+                      <Star key={i} className="h-4 w-4 fill-warning color-warning" />
                     ))}
                   </div>
-                  <blockquote className="text-lg text-foreground mb-6 leading-relaxed">
+                  <blockquote className="text-body color-foreground mb-6 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-4">
                     <div className="w-12 h-12 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
-                      <span className="text-white font-semibold text-sm">
+                      <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">{testimonial.author}</div>
-                      <div className="text-sm text-muted-foreground">{testimonial.role}</div>
-                      <div className="text-xs text-muted-foreground">Project: {testimonial.project}</div>
+                      <div className="text-heading-4 color-foreground">{testimonial.author}</div>
+                      <div className="text-body-sm color-muted">{testimonial.role}</div>
+                      <div className="text-body-sm color-muted">Project: {testimonial.project}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -409,10 +409,10 @@ export default function OPENDECKPage() {
       <section className="py-20 bg-gradient-to-r from-secondary/5 to-primary/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               JOIN THE CREATIVE REVOLUTION
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Connect with 25,000+ creative professionals and discover unlimited opportunities 
               in the world's largest creative marketplace.
             </p>
@@ -431,17 +431,17 @@ export default function OPENDECKPage() {
               </Link>
             </div>
 
-            <div className="flex flex-wrap justify-center items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap justify-center items-center gap-6 text-body-sm color-muted">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-success" />
+                <CheckCircle className="h-4 w-4 color-success" />
                 <span>Free to join</span>
               </div>
               <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-secondary" />
+                <Users className="h-4 w-4 color-secondary" />
                 <span>25K+ professionals</span>
               </div>
               <div className="flex items-center gap-2">
-                <Globe className="h-4 w-4 text-primary" />
+                <Globe className="h-4 w-4 color-primary" />
                 <span>Global network</span>
               </div>
             </div>

@@ -298,10 +298,10 @@ export function UniversalDrawer({
             <div className="space-y-3">
               {fields.filter(f => f.visible !== false).map(field => (
                 <div key={field.key}>
-                  <label className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  <label className="text-sm font-medium text-muted-foreground">
                     {field.label}
                   </label>
-                  <div className="mt-1 text-sm text-gray-900 dark:text-gray-100">
+                  <div className="mt-1 text-sm text-foreground">
                     {formatValue(record?.[field.key], field)}
                   </div>
                 </div>
@@ -355,7 +355,7 @@ export function UniversalDrawer({
                         className="w-8 h-8 rounded-full"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-xs font-medium">
+                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
                         {comment.author.charAt(0).toUpperCase()}
                       </div>
                     )}
@@ -363,11 +363,11 @@ export function UniversalDrawer({
                   <div className="flex-1">
                     <div className="flex items-center gap-2 text-sm">
                       <span className="font-medium">{comment.author}</span>
-                      <span className="text-gray-500 dark:text-gray-400">
+                      <span className="text-muted-foreground">
                         {comment.createdAt.toLocaleString()}
                       </span>
                     </div>
-                    <div className="mt-1 text-sm text-gray-900 dark:text-gray-100">
+                    <div className="mt-1 text-sm text-foreground">
                       {comment.content}
                     </div>
                   </div>
@@ -375,7 +375,7 @@ export function UniversalDrawer({
               ))}
               
               {comments.length === 0 && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   <MessageSquare className="h-8 w-8 mx-auto mb-2 opacity-50" />
                   <div className="text-sm">No comments yet</div>
                 </div>
@@ -392,16 +392,16 @@ export function UniversalDrawer({
           <div className="space-y-3">
             {activity.map(item => (
               <div key={item.id} className="flex gap-3">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-blue-500 mt-2" />
+                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
                 <div className="flex-1">
                   <div className="text-sm">
                     <span className="font-medium">{item.author}</span>
-                    <span className="text-gray-600 dark:text-gray-400"> {item.action}</span>
+                    <span className="text-muted-foreground"> {item.action}</span>
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                  <div className="text-sm text-muted-foreground mt-1">
                     {item.description}
                   </div>
-                  <div className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                  <div className="text-xs text-muted-foreground mt-1">
                     {item.createdAt.toLocaleString()}
                   </div>
                 </div>
@@ -409,7 +409,7 @@ export function UniversalDrawer({
             ))}
             
             {activity.length === 0 && (
-              <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+              <div className="text-center py-8 text-muted-foreground">
                 <Activity className="h-8 w-8 mx-auto mb-2 opacity-50" />
                 <div className="text-sm">No activity yet</div>
               </div>
@@ -427,23 +427,23 @@ export function UniversalDrawer({
         content: (
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="text-sm text-gray-600 dark:text-gray-400">Views</div>
+              <div className="p-3 bg-muted rounded-lg">
+                <div className="text-sm text-muted-foreground">Views</div>
                 <div className="text-2xl font-semibold">{analytics.views || 0}</div>
               </div>
-              <div className="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                <div className="text-sm text-gray-600 dark:text-gray-400">Comments</div>
+              <div className="p-3 bg-muted rounded-lg">
+                <div className="text-sm text-muted-foreground">Comments</div>
                 <div className="text-2xl font-semibold">{analytics.comments || 0}</div>
               </div>
             </div>
             
             <div className="space-y-2">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600 dark:text-gray-400">Created</span>
+                <span className="text-muted-foreground">Created</span>
                 <span>{analytics.createdAt.toLocaleDateString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600 dark:text-gray-400">Last Modified</span>
+                <span className="text-muted-foreground">Last Modified</span>
                 <span>{analytics.lastModified.toLocaleDateString()}</span>
               </div>
             </div>
@@ -465,13 +465,13 @@ export function UniversalDrawer({
       <div className="flex flex-col h-full">
         {/* Status Messages */}
         {error && (
-          <Alert variant="error" className="mb-4" dismissible>
+          <Alert variant="destructive" className="mb-4">
             {error}
           </Alert>
         )}
         
         {success && (
-          <Alert variant="success" className="mb-4" dismissible>
+          <Alert variant="success" className="mb-4">
             {success}
           </Alert>
         )}
@@ -505,7 +505,7 @@ export function UniversalDrawer({
             </Tabs>
 
             {/* Actions */}
-            <div className="flex items-center justify-between gap-2 pt-4 border-t border-gray-200 dark:border-gray-700 mt-4">
+            <div className="flex items-center justify-between gap-2 pt-4 border-t border-border mt-4">
               <div className="flex items-center gap-2">
                 {actions.map(action => (
                   <Button

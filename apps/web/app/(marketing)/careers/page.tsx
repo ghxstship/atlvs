@@ -301,12 +301,12 @@ export default function CareersPage() {
             <Badge variant="outline" className="mb-4">
               Careers at GHXSTSHIP
             </Badge>
-            <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
               BUILD YOUR CAREER
               <br />
               WITH GHXSTSHIP
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Help us build the tools that empower creative teams worldwide. 
               Join a fast-growing company where your work directly impacts the future of production management.
             </p>
@@ -334,10 +334,10 @@ export default function CareersPage() {
               { label: 'Avg. Tenure', value: '3.2 years' },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className={`${anton.className} uppercase text-3xl lg:text-4xl font-bold text-primary mb-2`}>
+                <div className={`${anton.className} uppercase text-heading-2 lg:text-heading-1 text-heading-3 color-primary mb-2`}>
                   {stat.value}
                 </div>
-                <div className="text-muted-foreground">{stat.label}</div>
+                <div className="color-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -348,21 +348,21 @@ export default function CareersPage() {
       <section id="open-positions" className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OPEN POSITIONS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Find your next opportunity and help us build the future of creative production.
             </p>
           </div>
 
           {/* Department Filter */}
           <div className="flex flex-wrap justify-center gap-3 mb-12">
-            <Badge variant="secondary" className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors">
+            <Badge variant="secondary" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
               All Departments
             </Badge>
             {departments.map((dept) => (
-              <Badge key={dept.name} variant="outline" className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors">
+              <Badge key={dept.name} variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
                 {dept.name} ({dept.count})
               </Badge>
             ))}
@@ -376,20 +376,20 @@ export default function CareersPage() {
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-3">
-                        <h3 className={`${anton.className} uppercase text-xl font-bold text-foreground`}>
+                        <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 color-foreground`}>
                           {position.title}
                         </h3>
                         <Badge variant="secondary">{position.department}</Badge>
                         {position.remote && (
-                          <Badge variant="outline" className="text-green-600 border-green-600">
+                          <Badge variant="success">
                             Remote OK
                           </Badge>
                         )}
                       </div>
                       
-                      <p className="text-muted-foreground mb-4">{position.description}</p>
+                      <p className="color-muted mb-4">{position.description}</p>
                       
-                      <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-4">
+                      <div className="flex flex-wrap items-center gap-4 text-body-sm color-muted mb-4">
                         <div className="flex items-center gap-1">
                           <MapPin className="h-4 w-4" />
                           {position.location}
@@ -410,7 +410,7 @@ export default function CareersPage() {
 
                       <div className="flex flex-wrap gap-2">
                         {position.requirements.slice(0, 3).map((req) => (
-                          <Badge key={req} variant="outline" className="text-xs">
+                          <Badge key={req} variant="outline" className="text-body-sm">
                             {req}
                           </Badge>
                         ))}
@@ -433,7 +433,7 @@ export default function CareersPage() {
           </div>
 
           <div className="text-center mt-12">
-            <p className="text-muted-foreground mb-6">
+            <p className="color-muted mb-6">
               Don't see a role that fits? We're always looking for exceptional talent.
             </p>
             <Button variant="outline" className="transition-all duration-200 hover:scale-105">
@@ -444,13 +444,13 @@ export default function CareersPage() {
       </section>
 
       {/* Culture & Values */}
-      <section id="culture" className="py-20 bg-muted/20">
+      <section id="culture" className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OUR CULTURE & VALUES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               We're building more than just software – we're creating a culture where everyone can do their best work.
             </p>
           </div>
@@ -462,10 +462,10 @@ export default function CareersPage() {
                 <Card key={value.title} className="text-center hover:shadow-lg transition-shadow">
                   <CardContent className="p-6">
                     <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
-                      <Icon className="h-8 w-8 text-primary" />
+                      <Icon className="h-8 w-8 color-primary" />
                     </div>
-                    <h3 className={`${anton.className} uppercase text-lg font-bold mb-3`}>{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                    <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-3`}>{value.title}</h3>
+                    <p className="text-body-sm color-muted">{value.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -477,9 +477,9 @@ export default function CareersPage() {
             <Card className="overflow-hidden">
               <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                 <div className="text-center">
-                  <Users className="h-16 w-16 text-primary mx-auto mb-4" />
-                  <p className="text-lg font-semibold text-foreground">Our Amazing Team</p>
-                  <p className="text-muted-foreground">Building the future together</p>
+                  <Users className="h-16 w-16 color-primary mx-auto mb-4" />
+                  <p className="text-body text-heading-4 color-foreground">Our Amazing Team</p>
+                  <p className="color-muted">Building the future together</p>
                 </div>
               </div>
             </Card>
@@ -491,10 +491,10 @@ export default function CareersPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               BENEFITS & PERKS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               We believe in taking care of our team with comprehensive benefits and meaningful perks.
             </p>
           </div>
@@ -507,11 +507,11 @@ export default function CareersPage() {
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-primary" />
+                        <Icon className="h-6 w-6 color-primary" />
                       </div>
                       <div>
-                        <h3 className={`${anton.className} uppercase text-lg font-bold mb-3`}>{benefit.title}</h3>
-                        <p className="text-sm text-muted-foreground">{benefit.description}</p>
+                        <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-3`}>{benefit.title}</h3>
+                        <p className="text-body-sm color-muted">{benefit.description}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -523,13 +523,13 @@ export default function CareersPage() {
       </section>
 
       {/* Departments Overview */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               DEPARTMENTS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Explore different teams and find where you can make the biggest impact.
             </p>
           </div>
@@ -539,10 +539,10 @@ export default function CareersPage() {
               <Card key={dept.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Briefcase className="h-8 w-8 text-primary" />
+                    <Briefcase className="h-8 w-8 color-primary" />
                   </div>
-                  <h3 className={`${anton.className} uppercase text-xl font-bold mb-2`}>{dept.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-4">{dept.description}</p>
+                  <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>{dept.name}</h3>
+                  <p className="text-body-sm color-muted mb-4">{dept.description}</p>
                   <Badge variant="secondary">
                     {dept.count} open position{dept.count !== 1 ? 's' : ''}
                   </Badge>
@@ -557,10 +557,10 @@ export default function CareersPage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               APPLICATION PROCESS
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Our hiring process is designed to be transparent, efficient, and respectful of your time.
             </p>
           </div>
@@ -574,11 +574,11 @@ export default function CareersPage() {
                 { step: '04', title: 'Offer', description: 'Reference checks and offer discussion.' },
               ].map((step) => (
                 <div key={step.step} className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-lg mx-auto mb-4">
+                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 text-body mx-auto mb-4">
                     {step.step}
                   </div>
-                  <h3 className={`${anton.className} uppercase text-lg font-bold mb-3`}>{step.title}</h3>
-                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                  <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-3`}>{step.title}</h3>
+                  <p className="text-body-sm color-muted">{step.description}</p>
                 </div>
               ))}
             </div>
@@ -591,10 +591,10 @@ export default function CareersPage() {
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+              <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
                 READY TO JOIN OUR TEAM?
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Take the next step in your career and help us build the future of creative production management.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -608,9 +608,9 @@ export default function CareersPage() {
                   Join Our Talent Network
                 </Button>
               </div>
-              <p className="text-sm text-muted-foreground mt-6">
+              <p className="text-body-sm color-muted mt-6">
                 Questions about working at GHXSTSHIP? Email us at{' '}
-                <a href="mailto:careers@ghxstship.com" className="text-primary hover:underline">
+                <a href="mailto:careers@ghxstship.com" className="color-primary hover:underline">
                   careers@ghxstship.com
                 </a>
               </p>

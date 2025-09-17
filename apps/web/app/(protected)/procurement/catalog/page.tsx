@@ -34,8 +34,8 @@ export default async function ProcurementCatalogPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Catalog</h1>
-          <p className="text-foreground/70">
+          <h1 className="text-heading-3 text-heading-3">Catalog</h1>
+          <p className="color-foreground/70">
             Browse and manage your complete procurement catalog
           </p>
         </div>

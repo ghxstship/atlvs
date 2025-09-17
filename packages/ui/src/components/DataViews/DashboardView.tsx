@@ -214,14 +214,14 @@ export function DashboardView({
         variant="elevated"
       >
         {/* Widget Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+        <div className="flex items-center justify-between p-4 border-b border-border">
           <div className="flex items-center gap-2">
             {widget.config.icon && (
-              <div className="p-1 rounded bg-blue-100 dark:bg-blue-900">
-                {widget.config.icon === 'database' && <BarChart3 className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
-                {widget.config.icon === 'users' && <Users className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
-                {widget.config.icon === 'dollar' && <DollarSign className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
-                {widget.config.icon === 'activity' && <Activity className="h-4 w-4 text-blue-600 dark:text-blue-400" />}
+              <div className="p-1 rounded bg-primary/10">
+                {widget.config.icon === 'database' && <BarChart3 className="h-4 w-4 text-primary" />}
+                {widget.config.icon === 'users' && <Users className="h-4 w-4 text-primary" />}
+                {widget.config.icon === 'dollar' && <DollarSign className="h-4 w-4 text-primary" />}
+                {widget.config.icon === 'activity' && <Activity className="h-4 w-4 text-primary" />}
               </div>
             )}
             <h3 className="font-semibold text-sm">{widget.title}</h3>
@@ -261,11 +261,11 @@ export function DashboardView({
         <div className="p-4">
           {widget.type === 'metric' && (
             <div className="text-center">
-              <div className="text-3xl font-bold text-gray-900 dark:text-gray-100">
+              <div className="text-3xl font-bold text-foreground">
                 {formatMetricValue(calculateMetric(widget), widget.config.format || 'number')}
               </div>
               {widget.config.subtitle && (
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                <div className="text-sm text-muted-foreground mt-1">
                   {widget.config.subtitle}
                 </div>
               )}
@@ -299,9 +299,9 @@ export function DashboardView({
                         <span>{item.label}</span>
                         <span>{item.value}</span>
                       </div>
-                      <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                      <div className="w-full bg-secondary rounded-full h-2">
                         <div
-                          className="bg-blue-500 h-2 rounded-full transition-all duration-300"
+                          className="bg-primary h-2 rounded-full transition-all duration-300"
                           style={{ 
                             width: `${(item.value / Math.max(...getChartData(widget).map(d => d.value))) * 100}%` 
                           }}
@@ -313,7 +313,7 @@ export function DashboardView({
               )}
               
               {widget.config.chartType === 'line' && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   <TrendingUp className="h-8 w-8 mx-auto mb-2" />
                   <div className="text-sm">Line chart visualization</div>
                   <div className="text-xs">Chart library integration needed</div>
@@ -327,13 +327,13 @@ export function DashboardView({
               {getRecentActivity(widget.config.limit || 5).map((record, index) => (
                 <div 
                   key={record.id}
-                  className="flex items-center justify-between p-2 rounded hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer"
+                  className="flex items-center justify-between p-2 rounded hover:bg-muted/50 cursor-pointer"
                   onClick={() => onRecordClick?.(record)}
                 >
                   <div className="flex-1">
                     <div className="font-medium text-sm">{record.name || `Record ${index + 1}`}</div>
                     {record.description && (
-                      <div className="text-xs text-gray-600 dark:text-gray-400 truncate">
+                      <div className="text-xs text-muted-foreground truncate">
                         {record.description}
                       </div>
                     )}
@@ -354,7 +354,7 @@ export function DashboardView({
                     )}
                     
                     {widget.config.showTimestamp && (
-                      <div className="text-xs text-gray-500 dark:text-gray-400">
+                      <div className="text-xs text-muted-foreground">
                         {new Date(record.updatedAt || record.createdAt).toLocaleDateString()}
                       </div>
                     )}
@@ -363,7 +363,7 @@ export function DashboardView({
               ))}
               
               {filteredData.length === 0 && (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
+                <div className="text-center py-8 text-muted-foreground">
                   <Activity className="h-8 w-8 mx-auto mb-2 opacity-50" />
                   <div className="text-sm">No recent activity</div>
                 </div>
@@ -398,8 +398,8 @@ export function DashboardView({
   if (error) {
     return (
       <div className="text-center py-12">
-        <div className="text-red-600 dark:text-red-400 mb-2">Error loading dashboard</div>
-        <div className="text-sm text-gray-600 dark:text-gray-400">{error}</div>
+        <div className="text-destructive mb-2">Error loading dashboard</div>
+        <div className="text-sm text-muted-foreground">{error}</div>
         <Button variant="ghost" size="sm" onClick={handleRefresh} className="mt-4">
           <RefreshCw className="h-4 w-4 mr-2" />
           Retry
@@ -461,11 +461,11 @@ export function DashboardView({
       {/* Empty State */}
       {widgets.length === 0 && (
         <div className="text-center py-12">
-          <BarChart3 className="h-12 w-12 mx-auto mb-4 text-gray-400" />
-          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-100 mb-2">
+          <BarChart3 className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+          <h3 className="text-lg font-medium text-foreground mb-2">
             No widgets configured
           </h3>
-          <p className="text-gray-600 dark:text-gray-400 mb-4">
+          <p className="text-muted-foreground mb-4">
             Add widgets to create your custom dashboard view
           </p>
           {customizable && (

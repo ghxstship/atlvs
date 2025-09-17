@@ -36,8 +36,8 @@ export default async function JobsRFPsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-semibold text-foreground">{t('rfps.title')}</h1>
-          <p className="text-muted-foreground">{t('rfps.subtitle')}</p>
+          <h1 className="text-heading-3 text-heading-4 color-foreground">{t('rfps.title')}</h1>
+          <p className="color-muted">{t('rfps.subtitle')}</p>
         </div>
         <CreateRfpClient orgId={profile.organization_id} />
       </div>

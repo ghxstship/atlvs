@@ -113,11 +113,11 @@ export default function CaseStudiesPage() {
             <h1 className={`mb-6 ${typography.heroTitle}`}>
               REAL RESULTS FROM
               <br />
-              <span className="bg-gradient-to-r from-green-500 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
                 REAL PRODUCTIONS
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               Deep dives into actual productions we've managed - from Formula 1 hospitality 
               to EDC festivals. See the challenges, strategies, and results that prove 
               these methods work when millions of dollars and thousands of people are on the line.
@@ -147,7 +147,7 @@ export default function CaseStudiesPage() {
               <Badge 
                 key={industry} 
                 variant={industry === 'All Industries' ? 'primary' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors px-4 py-2"
+                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2"
               >
                 {industry}
               </Badge>
@@ -163,7 +163,7 @@ export default function CaseStudiesPage() {
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               FEATURED CASE STUDIES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Our most impactful and comprehensive production management success stories.
             </p>
           </div>
@@ -174,15 +174,15 @@ export default function CaseStudiesPage() {
                 <CardContent className="p-0">
                   <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                     <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <div className="h-64 lg:h-full bg-gradient-to-br from-green-500/10 to-blue-500/10 flex items-center justify-center">
+                      <div className="h-64 lg:h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                         <div className="text-center">
-                          <TrendingUp className="h-16 w-16 text-primary mx-auto mb-4" />
-                          <p className="text-sm text-muted-foreground">Case Study Preview</p>
+                          <TrendingUp className="h-16 w-16 color-primary mx-auto mb-4" />
+                          <p className="text-body-sm color-muted">Case Study Preview</p>
                         </div>
                       </div>
                       {study.isPremium && (
                         <div className="absolute top-4 right-4">
-                          <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                          <Badge className="bg-warning color-warning-foreground">
                             <Lock className="h-3 w-3 mr-1" />
                             Premium
                           </Badge>
@@ -198,41 +198,41 @@ export default function CaseStudiesPage() {
                     
                     <div className="p-8 flex flex-col justify-center">
                       <Badge variant="outline" className="w-fit mb-4">{study.industry}</Badge>
-                      <h3 className={`mb-4 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                      <h3 className={`mb-4 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                         {study.title}
                       </h3>
-                      <p className="text-muted-foreground mb-6">
+                      <p className="color-muted mb-6">
                         {study.excerpt}
                       </p>
                       
                       <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="flex items-center gap-2 text-sm">
-                          <DollarSign className="h-4 w-4 text-primary" />
-                          <span className="text-muted-foreground">Budget:</span>
-                          <span className="font-semibold">{study.budget}</span>
+                        <div className="flex items-center gap-2 text-body-sm">
+                          <DollarSign className="h-4 w-4 color-primary" />
+                          <span className="color-muted">Budget:</span>
+                          <span className="text-heading-4">{study.budget}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <Users className="h-4 w-4 text-primary" />
-                          <span className="text-muted-foreground">Team:</span>
-                          <span className="font-semibold">{study.teamSize}</span>
+                        <div className="flex items-center gap-2 text-body-sm">
+                          <Users className="h-4 w-4 color-primary" />
+                          <span className="color-muted">Team:</span>
+                          <span className="text-heading-4">{study.teamSize}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <Calendar className="h-4 w-4 text-primary" />
-                          <span className="text-muted-foreground">Duration:</span>
-                          <span className="font-semibold">{study.duration}</span>
+                        <div className="flex items-center gap-2 text-body-sm">
+                          <Calendar className="h-4 w-4 color-primary" />
+                          <span className="color-muted">Duration:</span>
+                          <span className="text-heading-4">{study.duration}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-sm">
-                          <TrendingUp className="h-4 w-4 text-primary" />
-                          <span className="text-muted-foreground">Results:</span>
-                          <span className="font-semibold">{study.results.length} Key Wins</span>
+                        <div className="flex items-center gap-2 text-body-sm">
+                          <TrendingUp className="h-4 w-4 color-primary" />
+                          <span className="color-muted">Results:</span>
+                          <span className="text-heading-4">{study.results.length} Key Wins</span>
                         </div>
                       </div>
 
                       <div className="mb-6">
-                        <h4 className="font-semibold text-foreground mb-2">Key Results:</h4>
+                        <h4 className="text-heading-4 color-foreground mb-2">Key Results:</h4>
                         <ul className="space-y-1">
                           {study.results.slice(0, 2).map((result, idx) => (
-                            <li key={idx} className="text-sm text-muted-foreground flex items-center gap-2">
+                            <li key={idx} className="text-body-sm color-muted flex items-center gap-2">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                               {result}
                             </li>
@@ -257,7 +257,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Regular Case Studies */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
@@ -269,15 +269,15 @@ export default function CaseStudiesPage() {
             {regularStudies.map((study) => (
               <Card key={study.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-green-500/10 to-blue-500/10 flex items-center justify-center">
+                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <Eye className="h-12 w-12 text-primary mx-auto mb-2" />
-                      <p className="text-sm text-muted-foreground">Case Study</p>
+                      <Eye className="h-12 w-12 color-primary mx-auto mb-2" />
+                      <p className="text-body-sm color-muted">Case Study</p>
                     </div>
                   </div>
                   {study.isPremium && (
                     <div className="absolute top-4 right-4">
-                      <Badge className="bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                      <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-1" />
                         Premium
                       </Badge>
@@ -289,21 +289,21 @@ export default function CaseStudiesPage() {
                 </div>
                 
                 <CardContent className="p-6">
-                  <h3 className={`mb-3 group-hover:text-primary transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {study.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4 line-clamp-2">
+                  <p className="color-muted mb-4 line-clamp-2">
                     {study.excerpt}
                   </p>
                   
-                  <div className="space-y-2 mb-4 text-sm">
+                  <div className="space-y-2 mb-4 text-body-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Budget:</span>
-                      <span className="font-semibold">{study.budget}</span>
+                      <span className="color-muted">Budget:</span>
+                      <span className="text-heading-4">{study.budget}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Team Size:</span>
-                      <span className="font-semibold">{study.teamSize}</span>
+                      <span className="color-muted">Team Size:</span>
+                      <span className="text-heading-4">{study.teamSize}</span>
                     </div>
                   </div>
                   
@@ -323,15 +323,15 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-green-500/5 to-blue-500/5">
+      <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-4">
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-12">
-              <TrendingUp className="h-16 w-16 text-primary mx-auto mb-6" />
+              <TrendingUp className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 LEARN FROM REAL RESULTS
               </h2>
-              <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Get access to detailed breakdowns of actual productions, including budgets, 
                 timelines, challenges, and solutions. Learn what works when millions are on the line.
               </p>
@@ -342,7 +342,7 @@ export default function CaseStudiesPage() {
                     <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
-                <Link href="/login">
+                <Link href="/auth/signin">
                   <Button variant="outline" size="lg">
                     Sign In
                   </Button>

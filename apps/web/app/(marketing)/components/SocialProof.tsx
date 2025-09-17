@@ -109,14 +109,14 @@ export function SocialProof() {
           <Badge variant="outline" className="mb-4">
             Social Proof
           </Badge>
-          <h2 className="font-title text-3xl lg:text-5xl font-bold mb-6">
+          <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-6">
             TRUSTED BY
             <br />
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               INDUSTRY LEADERS
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-body color-muted max-w-3xl mx-auto">
             Join thousands of creative professionals and enterprises who have transformed 
             their production workflows with GHXSTSHIP.
           </p>
@@ -130,7 +130,7 @@ export function SocialProof() {
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Quote className="h-6 w-6 text-primary" />
+                    <Quote className="h-6 w-6 color-primary" />
                   </div>
                 </div>
 
@@ -139,27 +139,27 @@ export function SocialProof() {
                   {/* Rating */}
                   <div className="flex items-center gap-1 mb-4">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-warning text-warning" />
+                      <Star key={i} className="h-5 w-5 fill-warning color-warning" />
                     ))}
                   </div>
 
                   {/* Quote */}
-                  <blockquote className="text-xl lg:text-2xl text-foreground mb-6 leading-relaxed">
+                  <blockquote className="text-heading-4 lg:text-heading-3 color-foreground mb-6 leading-relaxed">
                     "{testimonials[currentTestimonial].quote}"
                   </blockquote>
 
                   {/* Author Info */}
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-muted rounded-full flex items-center justify-center">
-                      <span className="text-sm font-semibold">
+                    <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                      <span className="text-body-sm text-heading-4">
                         {testimonials[currentTestimonial].name.split(' ').map(n => n[0]).join('')}
                       </span>
                     </div>
                     <div>
-                      <div className="font-semibold text-foreground">
+                      <div className="text-heading-4 color-foreground">
                         {testimonials[currentTestimonial].name}
                       </div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-body-sm color-muted">
                         {testimonials[currentTestimonial].role} at {testimonials[currentTestimonial].company}
                       </div>
                     </div>
@@ -181,7 +181,7 @@ export function SocialProof() {
                       onClick={() => setCurrentTestimonial(index)}
                       className={cn(
                         "w-2 h-2 rounded-full transition-colors",
-                        index === currentTestimonial ? "bg-primary" : "bg-muted"
+                        index === currentTestimonial ? "bg-primary" : "bg-secondary"
                       )}
                     />
                   ))}
@@ -190,13 +190,13 @@ export function SocialProof() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={prevTestimonial}
-                    className="p-2 rounded-full hover:bg-muted transition-colors"
+                    className="p-2 rounded-full hover:bg-secondary transition-colors"
                   >
                     <ChevronLeft className="h-4 w-4" />
                   </button>
                   <button
                     onClick={nextTestimonial}
-                    className="p-2 rounded-full hover:bg-muted transition-colors"
+                    className="p-2 rounded-full hover:bg-secondary transition-colors"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </button>
@@ -208,7 +208,7 @@ export function SocialProof() {
 
         {/* Case Studies */}
         <div className="mb-16">
-          <h3 className="font-title text-2xl font-bold text-center mb-8">
+          <h3 className="font-title text-heading-3 text-heading-3 text-center mb-8">
             SUCCESS STORIES
           </h3>
           <div className="grid md:grid-cols-3 gap-6">
@@ -216,8 +216,8 @@ export function SocialProof() {
               <Card key={study.company} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6">
                   {/* Company Logo */}
-                  <div className="w-16 h-8 bg-muted/30 rounded-lg flex items-center justify-center mb-4">
-                    <span className="text-xs font-medium text-muted-foreground">
+                  <div className="w-16 h-8 bg-secondary/30 rounded-lg flex items-center justify-center mb-4">
+                    <span className="text-body-sm form-label color-muted">
                       {study.company}
                     </span>
                   </div>
@@ -229,23 +229,23 @@ export function SocialProof() {
 
                   {/* Challenge */}
                   <div className="mb-4">
-                    <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    <h4 className="text-heading-4 text-body-sm color-muted mb-2">
                       CHALLENGE
                     </h4>
-                    <p className="text-sm text-foreground">{study.challenge}</p>
+                    <p className="text-body-sm color-foreground">{study.challenge}</p>
                   </div>
 
                   {/* Result */}
                   <div className="mb-4">
-                    <h4 className="font-semibold text-sm text-muted-foreground mb-2">
+                    <h4 className="text-heading-4 text-body-sm color-muted mb-2">
                       RESULT
                     </h4>
-                    <p className="text-sm text-foreground">{study.result}</p>
+                    <p className="text-body-sm color-foreground">{study.result}</p>
                   </div>
 
                   {/* Metric */}
                   <div className="pt-4 border-t">
-                    <div className="font-title text-lg font-bold text-primary">
+                    <div className="font-title text-body text-heading-3 color-primary">
                       {study.metric}
                     </div>
                   </div>
@@ -258,20 +258,20 @@ export function SocialProof() {
         {/* Stats Grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
           <div>
-            <div className="font-title text-3xl font-bold text-foreground mb-2">98%</div>
-            <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+            <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">98%</div>
+            <div className="text-body-sm color-muted">Client Satisfaction</div>
           </div>
           <div>
-            <div className="font-title text-3xl font-bold text-foreground mb-2">40%</div>
-            <div className="text-sm text-muted-foreground">Average Time Saved</div>
+            <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">40%</div>
+            <div className="text-body-sm color-muted">Average Time Saved</div>
           </div>
           <div>
-            <div className="font-title text-3xl font-bold text-foreground mb-2">$2M+</div>
-            <div className="text-sm text-muted-foreground">Cost Savings Generated</div>
+            <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">$2M+</div>
+            <div className="text-body-sm color-muted">Cost Savings Generated</div>
           </div>
           <div>
-            <div className="font-title text-3xl font-bold text-foreground mb-2">24/7</div>
-            <div className="text-sm text-muted-foreground">Expert Support</div>
+            <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">24/7</div>
+            <div className="text-body-sm color-muted">Expert Support</div>
           </div>
         </div>
       </div>

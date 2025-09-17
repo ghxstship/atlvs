@@ -45,7 +45,7 @@ const ASSET_CATEGORIES = [
   { id: 'site_services', name: 'Site Services', color: 'bg-warning' },
   { id: 'heavy_machinery', name: 'Heavy Machinery & Equipment', color: 'bg-destructive' },
   { id: 'it_communication', name: 'IT & Communication Services', color: 'bg-info' },
-  { id: 'office_admin', name: 'Office & Admin', color: 'bg-muted' },
+  { id: 'office_admin', name: 'Office & Admin', color: 'bg-secondary' },
   { id: 'access_credentials', name: 'Access & Credentials', color: 'bg-accent' },
   { id: 'parking', name: 'Parking', color: 'bg-primary/80' },
   { id: 'travel_lodging', name: 'Travel & Lodging', color: 'bg-secondary/80' },
@@ -338,7 +338,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
 
   const getCategoryColor = (category: string) => {
     const categoryInfo = ASSET_CATEGORIES.find(cat => cat.id === category);
-    return categoryInfo?.color || 'bg-muted';
+    return categoryInfo?.color || 'bg-secondary';
   };
 
   const formatCurrency = (value: number) => {
@@ -360,8 +360,8 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Asset Advancing</h1>
-          <p className="text-sm text-muted-foreground">Request and manage asset procurement</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Asset Advancing</h1>
+          <p className="text-body-sm color-muted">Request and manage asset procurement</p>
         </div>
         <div className="flex items-center gap-2">
           <Button variant="outline" className="flex items-center gap-2">
@@ -381,7 +381,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           <div className="flex flex-wrap items-center gap-4">
             <div className="flex-1 min-w-64">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
                 <Input
                   placeholder="Search requests..."
                   value={searchQuery}
@@ -433,11 +433,11 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
       {/* Items List */}
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading advancing requests...</div>
+          <div className="p-8 text-center color-muted">Loading advancing requests...</div>
         </Card>
       ) : filteredItems.length === 0 ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">
+          <div className="p-8 text-center color-muted">
             No advancing requests found matching your criteria.
           </div>
         </Card>
@@ -450,8 +450,8 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
                   <div className="flex items-center gap-3">
                     <div className={`w-3 h-3 rounded-full ${getCategoryColor(item.category)}`} />
                     <div>
-                      <h3 className="font-semibold">{item.name}</h3>
-                      <p className="text-sm text-muted-foreground">
+                      <h3 className="text-heading-4">{item.name}</h3>
+                      <p className="text-body-sm color-muted">
                         Requested by {item.requestedBy} • {formatDate(item.requestedDate)}
                       </p>
                     </div>
@@ -486,41 +486,41 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
                 </div>
 
                 {item.description && (
-                  <p className="text-sm text-muted-foreground mb-3">
+                  <p className="text-body-sm color-muted mb-3">
                     {item.description}
                   </p>
                 )}
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                   <div>
-                    <span className="text-xs text-muted-foreground block">Type</span>
+                    <span className="text-body-sm color-muted block">Type</span>
                     {getTypeBadge(item.type)}
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Quantity</span>
-                    <span className="font-medium">{item.quantity} {item.unit}</span>
+                    <span className="text-body-sm color-muted block">Quantity</span>
+                    <span className="form-label">{item.quantity} {item.unit}</span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Estimated Cost</span>
-                    <span className="font-medium">
+                    <span className="text-body-sm color-muted block">Estimated Cost</span>
+                    <span className="form-label">
                       {item.estimatedCost ? formatCurrency(item.estimatedCost) : 'TBD'}
                     </span>
                   </div>
                   <div>
-                    <span className="text-xs text-muted-foreground block">Needed By</span>
-                    <span className="font-medium">
+                    <span className="text-body-sm color-muted block">Needed By</span>
+                    <span className="form-label">
                       {item.neededBy ? formatDate(item.neededBy) : 'TBD'}
                     </span>
                   </div>
                 </div>
 
                 {item.vendor && (
-                  <div className="flex items-center gap-4 text-sm">
-                    <span className="text-muted-foreground">Vendor:</span>
-                    <span className="font-medium">{item.vendor}</span>
+                  <div className="flex items-center gap-4 text-body-sm">
+                    <span className="color-muted">Vendor:</span>
+                    <span className="form-label">{item.vendor}</span>
                     {item.location && (
                       <>
-                        <span className="text-muted-foreground">Location:</span>
+                        <span className="color-muted">Location:</span>
                         <span>{item.location}</span>
                       </>
                     )}
@@ -528,9 +528,9 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
                 )}
 
                 {item.notes && (
-                  <div className="mt-3 p-3 bg-muted rounded-md">
-                    <span className="text-xs text-muted-foreground block mb-1">Notes</span>
-                    <p className="text-sm">{item.notes}</p>
+                  <div className="mt-3 p-3 bg-secondary rounded-md">
+                    <span className="text-body-sm color-muted block mb-1">Notes</span>
+                    <p className="text-body-sm">{item.notes}</p>
                   </div>
                 )}
               </div>
@@ -548,14 +548,14 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
       >
         <div className="p-6 space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Request Name</label>
+            <label className="block text-body-sm form-label mb-1">Request Name</label>
             <Input
               placeholder="Enter request name"
               defaultValue={selectedItem?.name}
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-body-sm form-label mb-1">Description</label>
             <Input
               placeholder="Enter description"
               defaultValue={selectedItem?.description}
@@ -563,7 +563,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Category</label>
+              <label className="block text-body-sm form-label mb-1">Category</label>
               <select
                 defaultValue={selectedItem?.category}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -576,7 +576,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               </select>
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Type</label>
+              <label className="block text-body-sm form-label mb-1">Type</label>
               <select
                 defaultValue={selectedItem?.type}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -589,7 +589,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Quantity</label>
+              <label className="block text-body-sm form-label mb-1">Quantity</label>
               <Input
                 type="number"
                 placeholder="1"
@@ -597,14 +597,14 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Unit</label>
+              <label className="block text-body-sm form-label mb-1">Unit</label>
               <Input
                 placeholder="units"
                 defaultValue={selectedItem?.unit}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Priority</label>
+              <label className="block text-body-sm form-label mb-1">Priority</label>
               <select
                 defaultValue={selectedItem?.priority}
                 className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
@@ -618,7 +618,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium mb-1">Estimated Cost</label>
+              <label className="block text-body-sm form-label mb-1">Estimated Cost</label>
               <Input
                 type="number"
                 placeholder="0.00"
@@ -626,7 +626,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               />
             </div>
             <div>
-              <label className="block text-sm font-medium mb-1">Needed By</label>
+              <label className="block text-body-sm form-label mb-1">Needed By</label>
               <Input
                 type="date"
                 defaultValue={selectedItem?.neededBy?.split('T')[0]}
@@ -634,7 +634,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
             </div>
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Notes</label>
+            <label className="block text-body-sm form-label mb-1">Notes</label>
             <textarea
               className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}

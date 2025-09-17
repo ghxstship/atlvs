@@ -150,31 +150,31 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
         <form className="space-y-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <label htmlFor="order_number" className="text-sm font-medium">Order Number *</label>
+              <label htmlFor="order_number" className="text-body-sm form-label">Order Number *</label>
               <Input
                 id="order_number"
                 {...form.register('order_number')}
                 placeholder="PO-2024-001"
               />
               {form.formState.errors.order_number && (
-                <p className="text-sm text-destructive">{form.formState.errors.order_number.message}</p>
+                <p className="text-body-sm color-destructive">{form.formState.errors.order_number.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="vendor_name" className="text-sm font-medium">Vendor Name *</label>
+              <label htmlFor="vendor_name" className="text-body-sm form-label">Vendor Name *</label>
               <Input
                 id="vendor_name"
                 {...form.register('vendor_name')}
                 placeholder="Vendor company name"
               />
               {form.formState.errors.vendor_name && (
-                <p className="text-sm text-destructive">{form.formState.errors.vendor_name.message}</p>
+                <p className="text-body-sm color-destructive">{form.formState.errors.vendor_name.message}</p>
               )}
             </div>
 
             <div className="space-y-2 md:col-span-2">
-              <label htmlFor="description" className="text-sm font-medium">Description *</label>
+              <label htmlFor="description" className="text-body-sm form-label">Description *</label>
               <Textarea
                 id="description"
                 {...form.register('description')}
@@ -182,12 +182,12 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 rows={3}
               />
               {form.formState.errors.description && (
-                <p className="text-sm text-destructive">{form.formState.errors.description.message}</p>
+                <p className="text-body-sm color-destructive">{form.formState.errors.description.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="total_amount" className="text-sm font-medium">Total Amount *</label>
+              <label htmlFor="total_amount" className="text-body-sm form-label">Total Amount *</label>
               <Input
                 id="total_amount"
                 type="number"
@@ -196,12 +196,12 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
                 placeholder="0.00"
               />
               {form.formState.errors.total_amount && (
-                <p className="text-sm text-destructive">{form.formState.errors.total_amount.message}</p>
+                <p className="text-body-sm color-destructive">{form.formState.errors.total_amount.message}</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="currency" className="text-sm font-medium">Currency</label>
+              <label htmlFor="currency" className="text-body-sm form-label">Currency</label>
               <Select 
                 {...form.register('currency')}
                 defaultValue="USD"
@@ -213,7 +213,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="status" className="text-sm font-medium">Status</label>
+              <label htmlFor="status" className="text-body-sm form-label">Status</label>
               <Select 
                 {...form.register('status')}
                 defaultValue="draft"
@@ -226,7 +226,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="order_date" className="text-sm font-medium">Order Date</label>
+              <label htmlFor="order_date" className="text-body-sm form-label">Order Date</label>
               <Input
                 id="order_date"
                 type="date"
@@ -235,7 +235,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="expected_delivery" className="text-sm font-medium">Expected Delivery</label>
+              <label htmlFor="expected_delivery" className="text-body-sm form-label">Expected Delivery</label>
               <Input
                 id="expected_delivery"
                 type="date"
@@ -244,7 +244,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             </div>
 
             <div className="space-y-2">
-              <label htmlFor="project_id" className="text-sm font-medium">Project ID</label>
+              <label htmlFor="project_id" className="text-body-sm form-label">Project ID</label>
               <Input
                 id="project_id"
                 {...form.register('project_id')}
@@ -253,7 +253,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
             </div>
 
             <div className="space-y-2 md:col-span-2">
-              <label htmlFor="notes" className="text-sm font-medium">Notes</label>
+              <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
               <Textarea
                 id="notes"
                 {...form.register('notes')}

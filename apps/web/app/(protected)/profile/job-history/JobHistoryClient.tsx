@@ -228,7 +228,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-32 bg-muted rounded-lg"></div>
+            <div className="h-32 bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -239,7 +239,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
     <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold">Job History</h2>
+        <h2 className="text-heading-4 text-heading-4">Job History</h2>
         <Button onClick={() => openDrawer()} className="flex items-center gap-2">
           <Plus className="h-4 w-4" />
           Add Job
@@ -255,18 +255,18 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-4">
                     <div className="p-2 bg-primary/10 rounded-lg">
-                      <Briefcase className="h-6 w-6 text-primary" />
+                      <Briefcase className="h-6 w-6 color-primary" />
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-semibold">{job.job_title}</h3>
-                      <div className="flex items-center gap-2 text-muted-foreground mb-2">
+                      <h3 className="text-body text-heading-4">{job.job_title}</h3>
+                      <div className="flex items-center gap-2 color-muted mb-2">
                         <Building className="h-4 w-4" />
                         <span>{job.company_name}</span>
                         {job.department && <span>• {job.department}</span>}
                       </div>
                       
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                      <div className="flex items-center gap-4 text-body-sm color-muted mb-2">
                         <div className="flex items-center gap-1">
                           <Calendar className="h-4 w-4" />
                           <span>
@@ -284,7 +284,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                       </div>
                       
                       {job.location && (
-                        <div className="flex items-center gap-1 text-sm text-muted-foreground mb-2">
+                        <div className="flex items-center gap-1 text-body-sm color-muted mb-2">
                           <MapPin className="h-4 w-4" />
                           <span>{job.location}</span>
                         </div>
@@ -321,15 +321,15 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 
                 {job.description && (
                   <div className="mb-4">
-                    <h4 className="font-medium mb-2">Description</h4>
-                    <p className="text-sm text-muted-foreground">{job.description}</p>
+                    <h4 className="form-label mb-2">Description</h4>
+                    <p className="text-body-sm color-muted">{job.description}</p>
                   </div>
                 )}
                 
                 {job.achievements && job.achievements.length > 0 && (
                   <div className="mb-4">
-                    <h4 className="font-medium mb-2">Key Achievements</h4>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                    <h4 className="form-label mb-2">Key Achievements</h4>
+                    <ul className="list-disc list-inside text-body-sm color-muted space-y-1">
                       {job.achievements.map((achievement, index) => (
                         <li key={index}>{achievement}</li>
                       ))}
@@ -339,10 +339,10 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 
                 {job.skills_used && job.skills_used.length > 0 && (
                   <div>
-                    <h4 className="font-medium mb-2">Skills Used</h4>
+                    <h4 className="form-label mb-2">Skills Used</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.skills_used.map((skill, index) => (
-                        <Badge key={index} variant="outline" className="text-xs">
+                        <Badge key={index} variant="outline" className="text-body-sm">
                           {skill}
                         </Badge>
                       ))}
@@ -355,9 +355,9 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
         ) : (
           <Card>
             <div className="p-8 text-center">
-              <Briefcase className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-              <h3 className="text-lg font-medium mb-2">No Job History</h3>
-              <p className="text-muted-foreground mb-4">
+              <Briefcase className="h-12 w-12 mx-auto mb-4 color-muted opacity-50" />
+              <h3 className="text-body form-label mb-2">No Job History</h3>
+              <p className="color-muted mb-4">
                 Add your work experience to showcase your professional background.
               </p>
               <Button onClick={() => openDrawer()}>
@@ -438,7 +438,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 {...form.register('is_current')}
                 className="rounded border-border"
               />
-              <label htmlFor="is_current" className="text-sm font-medium">
+              <label htmlFor="is_current" className="text-body-sm form-label">
                 This is my current job
               </label>
             </div>

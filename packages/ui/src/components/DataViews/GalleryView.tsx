@@ -154,8 +154,8 @@ export function GalleryView({
             className="w-full h-48 object-cover"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <Play className="h-12 w-12 text-white" />
+          <div className="absolute inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <Play className="h-12 w-12 text-background" />
           </div>
         </div>
       );
@@ -170,8 +170,8 @@ export function GalleryView({
       );
     } else {
       return (
-        <div className="w-full h-48 bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-          <FileText className="h-12 w-12 text-gray-400" />
+        <div className="w-full h-48 bg-muted flex items-center justify-center">
+          <FileText className="h-12 w-12 text-muted-foreground" />
         </div>
       );
     }
@@ -193,16 +193,16 @@ export function GalleryView({
   }, [viewLayout, gridColumns]);
 
   const galleryClasses = `
-    bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg overflow-hidden
+    bg-background border border-border rounded-lg overflow-hidden
     ${className}
   `.trim();
 
   return (
     <div className={galleryClasses}>
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-700">
+      <div className="flex items-center justify-between p-4 border-b border-border">
         <div className="flex items-center gap-2">
-          <span className="text-sm text-gray-600 dark:text-gray-400">
+          <span className="text-sm text-muted-foreground">
             {selectedItems.size > 0 ? `${selectedItems.size} selected` : `${filteredItems.length} items`}
           </span>
           
@@ -222,7 +222,7 @@ export function GalleryView({
 
         <div className="flex items-center gap-2">
           {/* Layout Switcher */}
-          <div className="flex items-center bg-gray-100 dark:bg-gray-800 rounded-lg p-1">
+          <div className="flex items-center bg-muted rounded-lg p-1">
             <Button
               variant={viewLayout === 'grid' ? 'primary' : 'ghost'}
               size="sm"
@@ -244,7 +244,7 @@ export function GalleryView({
             <select
               value={gridColumns}
               onChange={(e) => setGridColumns(Number(e.target.value) as any)}
-              className="px-2 py-1 text-sm border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-800"
+              className="px-2 py-1 text-sm border border-border rounded bg-background"
             >
               <option value={2}>2 columns</option>
               <option value={3}>3 columns</option>
@@ -267,7 +267,7 @@ export function GalleryView({
       {/* Gallery Content */}
       <div className="p-4">
         {paginatedItems.length === 0 ? (
-          <div className="text-center py-12 text-gray-500 dark:text-gray-400">
+          <div className="text-center py-12 text-muted-foreground">
             <ImageIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
             <div className="text-lg font-medium mb-2">No items found</div>
             <p className="text-sm">Try adjusting your search or filters</p>
@@ -284,7 +284,7 @@ export function GalleryView({
                     key={item.id}
                     className={`
                       cursor-pointer transition-all duration-200 hover:shadow-md
-                      ${isSelected ? 'ring-2 ring-blue-500' : ''}
+                      ${isSelected ? 'ring-2 ring-primary' : ''}
                     `}
                   >
                     <div className="flex gap-4 p-4">
@@ -297,11 +297,11 @@ export function GalleryView({
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between">
                           <div>
-                            <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate">
+                            <h3 className="font-semibold text-foreground truncate">
                               {item.title}
                             </h3>
                             {item.description && (
-                              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1 line-clamp-2">
+                              <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                                 {item.description}
                               </p>
                             )}
@@ -356,7 +356,7 @@ export function GalleryView({
                   key={item.id}
                   className={`
                     cursor-pointer transition-all duration-200 hover:shadow-md group
-                    ${isSelected ? 'ring-2 ring-blue-500' : ''}
+                    ${isSelected ? 'ring-2 ring-primary' : ''}
                     ${viewLayout === 'masonry' ? 'break-inside-avoid mb-4' : ''}
                   `}
                   onClick={() => onItemClick?.(item.record)}
@@ -366,12 +366,12 @@ export function GalleryView({
                     {renderMediaPreview(item)}
                     
                     {/* Overlay Actions */}
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute inset-0 bg-foreground/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
                       <div className="absolute top-2 right-2 flex gap-1">
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
+                          className="bg-background/20 backdrop-blur-sm text-background hover:bg-background/30"
                           onClick={(e) => {
                             e.stopPropagation();
                             onItemPreview?.(item.record);
@@ -382,7 +382,7 @@ export function GalleryView({
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="bg-white/20 backdrop-blur-sm text-white hover:bg-white/30"
+                          className="bg-background/20 backdrop-blur-sm text-background hover:bg-background/30"
                           onClick={(e) => {
                             e.stopPropagation();
                             onItemDownload?.(item.record);
@@ -406,7 +406,7 @@ export function GalleryView({
 
                       {mediaType === 'video' && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <Play className="h-12 w-12 text-white" />
+                          <Play className="h-12 w-12 text-background" />
                         </div>
                       )}
                     </div>
@@ -414,12 +414,12 @@ export function GalleryView({
 
                   {/* Content */}
                   <div className="p-3">
-                    <h3 className="font-semibold text-gray-900 dark:text-gray-100 truncate mb-1">
+                    <h3 className="font-semibold text-foreground truncate mb-1">
                       {item.title}
                     </h3>
                     
                     {item.description && (
-                      <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-2 mb-2">
+                      <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
                         {item.description}
                       </p>
                     )}
@@ -449,8 +449,8 @@ export function GalleryView({
 
       {/* Pagination */}
       {filteredItems.length > state.pagination.pageSize && (
-        <div className="flex items-center justify-between px-4 py-3 border-t border-gray-200 dark:border-gray-700">
-          <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="flex items-center justify-between px-4 py-3 border-t border-border">
+          <div className="text-sm text-muted-foreground">
             Showing {((state.pagination.page - 1) * state.pagination.pageSize) + 1} to{' '}
             {Math.min(state.pagination.page * state.pagination.pageSize, filteredItems.length)} of{' '}
             {filteredItems.length} items
@@ -469,7 +469,7 @@ export function GalleryView({
               Previous
             </Button>
             
-            <span className="text-sm text-gray-500 dark:text-gray-400">
+            <span className="text-sm text-muted-foreground">
               Page {state.pagination.page} of {Math.ceil(filteredItems.length / state.pagination.pageSize)}
             </span>
             

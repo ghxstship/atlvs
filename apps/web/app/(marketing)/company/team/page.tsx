@@ -90,7 +90,7 @@ const departments = [
     count: 8,
     description: 'Steering the ship and keeping everyone pointed toward the same horizon',
     leads: ['Julian Clarkson', 'Sarah Fry', 'John Macejak'],
-    color: 'from-purple-600 to-indigo-600',
+    color: 'from-primary to-accent',
   },
   {
     code: 'FPL',
@@ -98,7 +98,7 @@ const departments = [
     count: 12,
     description: 'Making sure the money flows right and the contracts actually protect us',
     leads: ['Marcus Chen', 'Lisa Rodriguez', 'David Kim'],
-    color: 'from-green-600 to-emerald-600',
+    color: 'from-primary to-accent',
   },
   {
     code: 'CDS',
@@ -106,7 +106,7 @@ const departments = [
     count: 15,
     description: 'Turning wild ideas into experiences that actually make sense',
     leads: ['Maya Patel', 'Alex Thompson', 'Sofia Martinez'],
-    color: 'from-pink-500 to-rose-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'EPR',
@@ -114,7 +114,7 @@ const departments = [
     count: 18,
     description: 'Crafting experiences that people remember and pay for',
     leads: ['Jordan Lee', 'Emma Wilson', 'Carlos Ruiz'],
-    color: 'from-amber-500 to-orange-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'MMM',
@@ -122,7 +122,7 @@ const departments = [
     count: 14,
     description: 'Getting the word out without being that annoying brand',
     leads: ['Taylor Swift', 'Ryan Park', 'Zoe Chen'],
-    color: 'from-blue-500 to-cyan-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'SED',
@@ -130,7 +130,7 @@ const departments = [
     count: 22,
     description: 'Building spaces that don\'t fall down and actually work for humans',
     leads: ['Mike Johnson', 'Anna Garcia', 'Tom Anderson'],
-    color: 'from-teal-600 to-green-600',
+    color: 'from-primary to-accent',
   },
   {
     code: 'SOL',
@@ -138,7 +138,7 @@ const departments = [
     count: 28,
     description: 'Moving mountains of stuff to the right place at the right time',
     leads: ['Rachel Kim', 'James Wilson', 'Maria Santos'],
-    color: 'from-slate-600 to-gray-600',
+    color: 'from-primary to-accent',
   },
   {
     code: 'ITC',
@@ -146,7 +146,7 @@ const departments = [
     count: 16,
     description: 'Keeping the digital world connected when everything wants to break',
     leads: ['Kevin Zhang', 'Priya Sharma', 'Lucas Brown'],
-    color: 'from-indigo-500 to-purple-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'XTP',
@@ -154,7 +154,7 @@ const departments = [
     count: 35,
     description: 'Making the impossible look effortless, one technical miracle at a time',
     leads: ['Diana Ross', 'Marcus Johnson', 'Elena Rodriguez'],
-    color: 'from-red-500 to-pink-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'BGS',
@@ -162,7 +162,7 @@ const departments = [
     count: 11,
     description: 'Making everything look intentional, even when it definitely wasn\'t',
     leads: ['Chris Lee', 'Samantha Davis', 'Roberto Martinez'],
-    color: 'from-violet-500 to-purple-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'PSS',
@@ -170,7 +170,7 @@ const departments = [
     count: 24,
     description: 'Keeping everyone safe while they\'re having way too much fun',
     leads: ['Officer Johnson', 'Captain Smith', 'Sergeant Williams'],
-    color: 'from-red-600 to-orange-600',
+    color: 'from-primary to-accent',
   },
   {
     code: 'GSX',
@@ -178,7 +178,7 @@ const departments = [
     count: 19,
     description: 'Turning confused visitors into raving fans, one interaction at a time',
     leads: ['Isabella Chen', 'Noah Thompson', 'Ava Rodriguez'],
-    color: 'from-emerald-500 to-teal-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'HFB',
@@ -186,7 +186,7 @@ const departments = [
     count: 32,
     description: 'Feeding people and keeping them happy, which is basically magic',
     leads: ['Vita Sotakoun', 'Chef Martinez', 'Sommelier Kim'],
-    color: 'from-orange-500 to-amber-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'ENT',
@@ -194,7 +194,7 @@ const departments = [
     count: 21,
     description: 'Wrangling creative personalities and making sure the show goes on',
     leads: ['Dallas D-Cal Calles', 'Melody Johnson', 'Rhythm Davis'],
-    color: 'from-fuchsia-500 to-pink-500',
+    color: 'from-primary to-accent',
   },
   {
     code: 'TDX',
@@ -202,7 +202,7 @@ const departments = [
     count: 13,
     description: 'Getting people places and making sure they actually want to be there',
     leads: ['Journey Smith', 'Atlas Brown', 'Compass Wilson'],
-    color: 'from-sky-500 to-blue-500',
+    color: 'from-primary to-accent',
   },
 ];
 
@@ -370,14 +370,14 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-indigo-500/5 via-background to-purple-500/5">
+      <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Our People
             </Badge>
             <h1 className={`${typography.heroTitle} mb-6`}>
-              MEET THE<br /><span className="bg-gradient-to-r from-indigo-500 to-purple-500 bg-clip-text text-transparent">TEAM</span>
+              MEET THE<br /><span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">TEAM</span>
             </h1>
             <p className={`${typography.heroSubtitle} mb-8`}>
               We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.
@@ -414,8 +414,8 @@ export default function TeamPage() {
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center space-x-4 mb-4 h-12">
-                  <div className="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="w-6 h-6 text-background" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className={`${typography.cardTitle} text-lg truncate`}>{leader.name}</h3>
@@ -464,8 +464,8 @@ export default function TeamPage() {
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center gap-4 mb-4 h-12">
-                  <div className={`w-12 h-12 bg-gradient-to-r ${dept.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <Users className="h-6 w-6 text-white" />
+                  <div className={`w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <Users className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${typography.cardTitle} text-lg flex-1 min-w-0`}>
                     {dept.name}
@@ -502,7 +502,7 @@ export default function TeamPage() {
               <CardContent className="p-6 flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center space-x-4 mb-4 h-16">
-                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500/20 to-purple-500/20 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="h-6 w-6 text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -600,8 +600,8 @@ export default function TeamPage() {
             return (
               <Card key={value.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Icon className="h-6 w-6 text-white" />
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <Icon className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${typography.cardTitle} mb-3`}>
                     {value.title}

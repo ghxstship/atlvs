@@ -120,7 +120,7 @@ export default function CorporatePage() {
                 <Badge variant="outline" className="mb-4">
                   Corporate & Private Events
                 </Badge>
-                <h1 className={`${anton.className} text-4xl lg:text-6xl font-bold mb-6 uppercase`}>
+                <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
                   ORCHESTRATE
                   <br />
                   <span className="bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
@@ -129,7 +129,7 @@ export default function CorporatePage() {
                   <br />
                   EVENTS
                 </h1>
-                <p className="text-xl text-muted-foreground">
+                <p className="text-heading-4 color-muted">
                   From executive board meetings to exclusive private celebrations, GHXSTSHIP 
                   delivers white-glove event management that exceeds the highest expectations 
                   and creates unforgettable experiences for discerning clients.
@@ -138,20 +138,20 @@ export default function CorporatePage() {
 
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>2,500+</div>
-                  <div className="text-sm text-muted-foreground">Premium Events</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>2,500+</div>
+                  <div className="text-body-sm color-muted">Premium Events</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>500+</div>
-                  <div className="text-sm text-muted-foreground">Executive Clients</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>500+</div>
+                  <div className="text-body-sm color-muted">Executive Clients</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>100%</div>
-                  <div className="text-sm text-muted-foreground">Confidentiality</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>100%</div>
+                  <div className="text-body-sm color-muted">Confidentiality</div>
                 </div>
                 <div className="text-center lg:text-left">
-                  <div className={`${anton.className} text-3xl font-bold text-foreground mb-2 uppercase`}>9.8/10</div>
-                  <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+                  <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>9.8/10</div>
+                  <div className="text-body-sm color-muted">Client Satisfaction</div>
                 </div>
               </div>
 
@@ -172,14 +172,14 @@ export default function CorporatePage() {
             {/* Enterprise Dashboard Preview */}
             <div className="relative">
               <Card className="bg-background border shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-muted/50 border-b">
+                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
                   <div className="flex gap-2">
                     <div className="w-3 h-3 rounded-full bg-destructive"></div>
                     <div className="w-3 h-3 rounded-full bg-warning"></div>
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-xs text-muted-foreground">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
                       <Building className="w-3 h-3" />
                       enterprise.ghxstship.com
                     </div>
@@ -188,58 +188,58 @@ export default function CorporatePage() {
 
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className={`${anton.className} text-lg font-bold uppercase`}>EXECUTIVE GALA 2024</h3>
-                    <Badge variant="outline" className="text-success border-success">
+                    <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>EXECUTIVE GALA 2024</h3>
+                    <Badge variant="outline" className="color-success border-success">
                       Active
                     </Badge>
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">VIP Guests</div>
-                      <div className="font-semibold">150</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">VIP Guests</div>
+                      <div className="text-heading-4">150</div>
                       <div className="flex items-center gap-1 mt-1">
                         <div className="w-2 h-2 bg-warning rounded-full animate-pulse"></div>
-                        <span className="text-xs text-warning">Confirmed</span>
+                        <span className="text-body-sm color-warning">Confirmed</span>
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Vendors</div>
-                      <div className="font-semibold">12</div>
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Vendors</div>
+                      <div className="text-heading-4">12</div>
                       <div className="flex -space-x-1 mt-1">
                         {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-muted/30 rounded-lg p-3">
-                      <div className="text-xs text-muted-foreground mb-1">Timeline</div>
-                      <div className="font-semibold">On Track</div>
-                      <div className="w-full bg-muted rounded-full h-1 mt-2">
+                    <div className="bg-secondary/30 rounded-lg p-3">
+                      <div className="text-body-sm color-muted mb-1">Timeline</div>
+                      <div className="text-heading-4">On Track</div>
+                      <div className="w-full bg-secondary rounded-full h-1 mt-2">
                         <div className="bg-success h-1 rounded-full w-5/6"></div>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <div className="text-xs font-medium text-muted-foreground">Event Schedule</div>
+                    <div className="text-body-sm form-label color-muted">Event Schedule</div>
                     {[
                       { event: 'VIP Reception', time: '6:00 PM', status: 'Ready', color: 'bg-success' },
                       { event: 'Dinner Service', time: '7:30 PM', status: 'Prep', color: 'bg-primary' },
                       { event: 'Awards Ceremony', time: '9:00 PM', status: 'Setup', color: 'bg-info' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-xs">
+                      <div key={i} className="flex items-center gap-3 text-body-sm">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
-                        <span className="font-medium flex-1">{item.event}</span>
-                        <span className="text-muted-foreground">{item.time}</span>
-                        <span className="text-muted-foreground">({item.status})</span>
+                        <span className="form-label flex-1">{item.event}</span>
+                        <span className="color-muted">{item.time}</span>
+                        <span className="color-muted">({item.status})</span>
                       </div>
                     ))}
                   </div>
 
                   <div className="flex items-center gap-2 pt-2 border-t">
-                    <Globe className="w-4 h-4 text-primary" />
-                    <span className="text-xs font-medium">White-Glove Service Active</span>
+                    <Globe className="w-4 h-4 color-primary" />
+                    <span className="text-body-sm form-label">White-Glove Service Active</span>
                     <div className="ml-auto">
                       <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
                     </div>
@@ -255,10 +255,10 @@ export default function CorporatePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PREMIUM EVENT CHALLENGES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Corporate and private events demand the highest standards of execution and discretion.
             </p>
           </div>
@@ -271,14 +271,14 @@ export default function CorporatePage() {
                   <CardContent className="p-8">
                     <div className="flex items-start gap-4">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-info">
-                        <Icon className="h-6 w-6 text-white" />
+                        <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
-                        <h3 className={`${anton.className} text-xl font-bold mb-3 uppercase`}>{challenge.title}</h3>
-                        <p className="text-muted-foreground mb-4">{challenge.description}</p>
+                        <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>{challenge.title}</h3>
+                        <p className="color-muted mb-4">{challenge.description}</p>
                         <div className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-success flex-shrink-0 mt-0.5" />
-                          <p className="text-sm font-medium text-foreground">{challenge.solution}</p>
+                          <CheckCircle className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+                          <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
                         </div>
                       </div>
                     </div>
@@ -291,13 +291,13 @@ export default function CorporatePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               WHITE-GLOVE EVENT PLATFORM
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Premium event management designed for the most discerning corporate and private clients.
             </p>
           </div>
@@ -306,14 +306,14 @@ export default function CorporatePage() {
             {features.map((feature) => (
               <Card key={feature.title} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-8">
-                  <h3 className={`${anton.className} text-xl font-bold mb-4 uppercase`}>{feature.title}</h3>
-                  <p className="text-muted-foreground mb-6">{feature.description}</p>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{feature.title}</h3>
+                  <p className="color-muted mb-6">{feature.description}</p>
                   
                   <div className="space-y-2">
                     {feature.benefits.map((benefit) => (
                       <div key={benefit} className="flex items-center gap-2">
-                        <CheckCircle className="h-4 w-4 text-success flex-shrink-0" />
-                        <span className="text-sm text-foreground">{benefit}</span>
+                        <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                        <span className="text-body-sm color-foreground">{benefit}</span>
                       </div>
                     ))}
                   </div>
@@ -328,10 +328,10 @@ export default function CorporatePage() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PREMIUM EVENT SUCCESS STORIES
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               See how discerning clients create exceptional corporate and private events with GHXSTSHIP.
             </p>
           </div>
@@ -343,35 +343,35 @@ export default function CorporatePage() {
                   <div className="grid lg:grid-cols-2 gap-8">
                     <div>
                       <Badge variant="outline" className="mb-4">{study.project}</Badge>
-                      <h3 className={`${anton.className} text-2xl font-bold mb-4 uppercase`}>{study.title}</h3>
+                      <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-4 uppercase`}>{study.title}</h3>
                       
                       <div className="space-y-4">
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">CHALLENGE</h4>
-                          <p className="text-foreground">{study.challenge}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">CHALLENGE</h4>
+                          <p className="color-foreground">{study.challenge}</p>
                         </div>
                         
                         <div>
-                          <h4 className="font-semibold text-sm text-muted-foreground mb-2 uppercase">SOLUTION</h4>
-                          <p className="text-foreground">{study.solution}</p>
+                          <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">SOLUTION</h4>
+                          <p className="color-foreground">{study.solution}</p>
                         </div>
                       </div>
                     </div>
 
                     <div>
-                      <h4 className="font-semibold text-sm text-muted-foreground mb-4 uppercase">RESULTS</h4>
+                      <h4 className="text-heading-4 text-body-sm color-muted mb-4 uppercase">RESULTS</h4>
                       <div className="space-y-3 mb-6">
                         {study.results.map((result) => (
                           <div key={result} className="flex items-center gap-2">
-                            <Star className="h-4 w-4 text-warning flex-shrink-0" />
-                            <span className="text-sm font-medium text-foreground">{result}</span>
+                            <Star className="h-4 w-4 color-warning flex-shrink-0" />
+                            <span className="text-body-sm form-label color-foreground">{result}</span>
                           </div>
                         ))}
                       </div>
 
                       <blockquote className="border-l-4 border-primary pl-4">
-                        <p className="text-foreground italic mb-2">"{study.testimonial}"</p>
-                        <cite className="text-sm text-muted-foreground">— {study.author}</cite>
+                        <p className="color-foreground italic mb-2">"{study.testimonial}"</p>
+                        <cite className="text-body-sm color-muted">— {study.author}</cite>
                       </blockquote>
                     </div>
                   </div>
@@ -383,13 +383,13 @@ export default function CorporatePage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-20 bg-muted/20">
+      <section className="py-20 bg-secondary/20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PREMIUM VENDOR NETWORK
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-body color-muted max-w-3xl mx-auto">
               Access our curated network of luxury vendors and premium service providers.
             </p>
           </div>
@@ -399,10 +399,10 @@ export default function CorporatePage() {
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
                 <CardContent className="p-6 text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-info rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <Zap className="h-6 w-6 text-white" />
+                    <Zap className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1">{integration.name}</h3>
-                  <p className="text-xs text-muted-foreground">{integration.category}</p>
+                  <h3 className="text-heading-4 color-foreground mb-1">{integration.name}</h3>
+                  <p className="text-body-sm color-muted">{integration.category}</p>
                 </CardContent>
               </Card>
             ))}
@@ -414,10 +414,10 @@ export default function CorporatePage() {
       <section className="py-20 bg-gradient-to-r from-primary/5 to-info/5">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className={`${anton.className} text-3xl lg:text-4xl font-bold mb-6 uppercase`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY FOR WHITE-GLOVE SERVICE?
             </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+            <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
               Join discerning clients using GHXSTSHIP to create exceptional corporate 
               and private events that exceed the highest expectations.
             </p>

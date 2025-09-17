@@ -121,19 +121,19 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'draft':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       case 'published':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'open':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'closed':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'awarded':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'cancelled':
-        return 'bg-destructive/10 text-destructive';
+        return 'bg-destructive/10 color-destructive';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -159,19 +159,19 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'services':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'products':
-        return 'bg-success/10 text-success';
+        return 'bg-success/10 color-success';
       case 'consulting':
-        return 'bg-secondary/10 text-secondary';
+        return 'bg-secondary/10 color-secondary';
       case 'construction':
-        return 'bg-warning/10 text-warning';
+        return 'bg-warning/10 color-warning';
       case 'technology':
-        return 'bg-primary/10 text-primary';
+        return 'bg-primary/10 color-primary';
       case 'other':
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
       default:
-        return 'bg-muted text-muted-foreground';
+        return 'bg-secondary color-muted';
     }
   };
 
@@ -204,8 +204,8 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
           <PlusIcon className="h-4 w-4 mr-2" />
@@ -256,54 +256,54 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total RFPs</p>
-              <p className="text-2xl font-bold text-foreground">{rfps.length}</p>
+              <p className="text-body-sm form-label color-foreground/70">Total RFPs</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{rfps.length}</p>
             </div>
-            <DocumentTextIcon className="h-8 w-8 text-primary" />
+            <DocumentTextIcon className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Open</p>
-              <p className="text-2xl font-bold text-success">
+              <p className="text-body-sm form-label color-foreground/70">Open</p>
+              <p className="text-heading-3 text-heading-3 color-success">
                 {rfps.filter(r => r.status === 'open').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-success" />
+            <CheckCircleIcon className="h-8 w-8 color-success" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Published</p>
-              <p className="text-2xl font-bold text-primary">
+              <p className="text-body-sm form-label color-foreground/70">Published</p>
+              <p className="text-heading-3 text-heading-3 color-primary">
                 {rfps.filter(r => r.status === 'published').length}
               </p>
             </div>
-            <PaperAirplaneIcon className="h-8 w-8 text-primary" />
+            <PaperAirplaneIcon className="h-8 w-8 color-primary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Awarded</p>
-              <p className="text-2xl font-bold text-secondary">
+              <p className="text-body-sm form-label color-foreground/70">Awarded</p>
+              <p className="text-heading-3 text-heading-3 color-secondary">
                 {rfps.filter(r => r.status === 'awarded').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 text-secondary" />
+            <CheckCircleIcon className="h-8 w-8 color-secondary" />
           </div>
         </Card>
         <Card className="p-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-foreground/70">Total Responses</p>
-              <p className="text-2xl font-bold text-warning">
+              <p className="text-body-sm form-label color-foreground/70">Total Responses</p>
+              <p className="text-heading-3 text-heading-3 color-warning">
                 {rfps.reduce((sum, r) => sum + (r.responses_count || 0), 0)}
               </p>
             </div>
-            <UsersIcon className="h-8 w-8 text-warning" />
+            <UsersIcon className="h-8 w-8 color-warning" />
           </div>
         </Card>
       </div>
@@ -339,14 +339,14 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h3 className="text-lg font-semibold text-foreground mb-1 flex items-center gap-2">
-                          <StatusIcon className="h-5 w-5 text-foreground/60" />
+                        <h3 className="text-body text-heading-4 color-foreground mb-1 flex items-center gap-2">
+                          <StatusIcon className="h-5 w-5 color-foreground/60" />
                           {rfp.title}
                           {(isUrgent || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'text-destructive' : 'text-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
-                        <div className="flex items-center gap-2 text-sm text-foreground/70">
+                        <div className="flex items-center gap-2 text-body-sm color-foreground/70">
                           <BuildingOfficeIcon className="h-4 w-4" />
                           <span>{rfp.issuer_organization}</span>
                           {rfp.responses_count !== undefined && (
@@ -367,16 +367,16 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                       </div>
                     </div>
 
-                    <p className="text-sm text-foreground/80 mb-3 line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-3 line-clamp-2">
                       {rfp.description}
                     </p>
 
-                    <div className="flex items-center gap-6 text-sm text-foreground/70 mb-3">
+                    <div className="flex items-center gap-6 text-body-sm color-foreground/70 mb-3">
                       <div className="flex items-center gap-1">
                         <CurrencyDollarIcon className="h-4 w-4" />
                         <span>{formatBudget(rfp.budget_min, rfp.budget_max, rfp.currency)}</span>
                       </div>
-                      <div className={`flex items-center gap-1 ${isLate ? 'text-destructive' : isUrgent ? 'text-warning' : ''}`}>
+                      <div className={`flex items-center gap-1 ${isLate ? 'color-destructive' : isUrgent ? 'color-warning' : ''}`}>
                         <CalendarIcon className="h-4 w-4" />
                         <span>
                           {isLate ? 'Overdue: ' : 'Deadline: '}
@@ -398,16 +398,16 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
 
                     {rfp.requirements && rfp.requirements.length > 0 && (
                       <div className="mb-3">
-                        <span className="text-xs font-medium text-foreground/70 mb-1 block">Key Requirements:</span>
+                        <span className="text-body-sm form-label color-foreground/70 mb-1 block">Key Requirements:</span>
                         <div className="space-y-1">
                           {rfp.requirements.slice(0, 3).map((req, index) => (
-                            <div key={index} className="text-xs text-foreground/70 flex items-start gap-2">
-                              <span className="text-foreground/40">•</span>
+                            <div key={index} className="text-body-sm color-foreground/70 flex items-start gap-2">
+                              <span className="color-foreground/40">•</span>
                               <span>{req}</span>
                             </div>
                           ))}
                           {rfp.requirements.length > 3 && (
-                            <div className="text-xs text-foreground/50">
+                            <div className="text-body-sm color-foreground/50">
                               +{rfp.requirements.length - 3} more requirements
                             </div>
                           )}
@@ -417,15 +417,15 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
 
                     {rfp.evaluation_criteria && rfp.evaluation_criteria.length > 0 && (
                       <div className="mb-3">
-                        <span className="text-xs font-medium text-foreground/70 mb-1 block">Evaluation Criteria:</span>
+                        <span className="text-body-sm form-label color-foreground/70 mb-1 block">Evaluation Criteria:</span>
                         <div className="flex flex-wrap gap-1">
                           {rfp.evaluation_criteria.slice(0, 4).map((criteria, index) => (
-                            <Badge key={index} variant="secondary" className="text-xs">
+                            <Badge key={index} variant="secondary" className="text-body-sm">
                               {criteria}
                             </Badge>
                           ))}
                           {rfp.evaluation_criteria.length > 4 && (
-                            <Badge variant="secondary" className="text-xs">
+                            <Badge variant="secondary" className="text-body-sm">
                               +{rfp.evaluation_criteria.length - 4} more
                             </Badge>
                           )}
@@ -436,7 +436,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 </div>
 
                 <div className="flex items-center justify-between mt-4 pt-4 border-t border-border">
-                  <div className="text-xs text-foreground/50">
+                  <div className="text-body-sm color-foreground/50">
                     Created: {new Date(rfp.created_at).toLocaleDateString()}
                     {rfp.published_at && (
                       <span> • Published: {new Date(rfp.published_at).toLocaleDateString()}</span>
@@ -473,9 +473,9 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
           })
         ) : (
           <Card className="p-12 text-center">
-            <DocumentTextIcon className="h-12 w-12 text-foreground/30 mx-auto mb-4" />
-            <h3 className="text-lg font-medium text-foreground mb-2">No RFPs found</h3>
-            <p className="text-sm text-foreground/70 mb-4">
+            <DocumentTextIcon className="h-12 w-12 color-foreground/30 mx-auto mb-4" />
+            <h3 className="text-body form-label color-foreground mb-2">No RFPs found</h3>
+            <p className="text-body-sm color-foreground/70 mb-4">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
                 ? 'Try adjusting your filters or search terms.'
                 : 'Get started by creating your first RFP.'}

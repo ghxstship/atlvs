@@ -146,29 +146,29 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
 
   const getImpactColor = (impact: string) => {
     switch (impact) {
-      case 'very_high': return 'bg-destructive/10 text-destructive';
-      case 'high': return 'bg-warning/10 text-warning';
-      case 'medium': return 'bg-warning/10 text-warning';
-      case 'low': return 'bg-primary/10 text-primary';
-      case 'very_low': return 'bg-muted/50 text-muted-foreground';
-      default: return 'bg-muted/50 text-muted-foreground';
+      case 'very_high': return 'bg-destructive/10 color-destructive';
+      case 'high': return 'bg-warning/10 color-warning';
+      case 'medium': return 'bg-warning/10 color-warning';
+      case 'low': return 'bg-primary/10 color-primary';
+      case 'very_low': return 'bg-secondary/50 color-muted';
+      default: return 'bg-secondary/50 color-muted';
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'identified': return 'bg-destructive/10 text-destructive';
-      case 'assessed': return 'bg-warning/10 text-warning';
-      case 'mitigated': return 'bg-primary/10 text-primary';
-      case 'accepted': return 'bg-success/10 text-success';
-      case 'closed': return 'bg-muted/50 text-muted-foreground';
-      default: return 'bg-muted/50 text-muted-foreground';
+      case 'identified': return 'bg-destructive/10 color-destructive';
+      case 'assessed': return 'bg-warning/10 color-warning';
+      case 'mitigated': return 'bg-primary/10 color-primary';
+      case 'accepted': return 'bg-success/10 color-success';
+      case 'closed': return 'bg-secondary/50 color-muted';
+      default: return 'bg-secondary/50 color-muted';
     }
   };
 
   return (
     <div className="overflow-x-auto">
-      <table className="w-full border-collapse text-sm">
+      <table className="w-full border-collapse text-body-sm">
         <thead>
           <tr className="sticky top-0">
             <th className="border-b p-2 text-left">Risk</th>
@@ -184,7 +184,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-2">
                 <div className="flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 text-warning" />
+                  <AlertTriangle className="w-4 h-4 color-warning" />
                   {r.title}
                 </div>
               </td>
@@ -218,46 +218,46 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
         width="xl"
       >
         <div className="flex items-center gap-2 border-b pb-2 mb-3" role="tablist">
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
-          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
+          <button className={`inline-flex items-center gap-2 rounded px-2 py-1 text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
         </div>
 
-        {error ? <div role="alert" className="mb-2 text-sm text-destructive">{error}</div> : null}
+        {error ? <div role="alert" className="mb-2 text-body-sm color-destructive">{error}</div> : null}
 
         {tab === 'details' && (
-          <div className="space-y-3 text-sm">
-            <div><span className="font-medium">Risk:</span> {current?.title}</div>
-            <div><span className="font-medium">Category:</span> {current?.category}</div>
+          <div className="space-y-3 text-body-sm">
+            <div><span className="form-label">Risk:</span> {current?.title}</div>
+            <div><span className="form-label">Category:</span> {current?.category}</div>
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <span className="font-medium">Impact:</span>
+                <span className="form-label">Impact:</span>
                 <Badge className={getImpactColor(current?.impact || '')}>
                   {current?.impact?.replace('_', ' ')}
                 </Badge>
               </div>
               <div className="flex items-center gap-2">
-                <span className="font-medium">Probability:</span>
+                <span className="form-label">Probability:</span>
                 <Badge className={getImpactColor(current?.probability || '')}>
                   {current?.probability?.replace('_', ' ')}
                 </Badge>
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-medium">Status:</span>
+              <span className="form-label">Status:</span>
               <Badge className={getStatusColor(current?.status || '')}>
                 {current?.status}
               </Badge>
             </div>
-            <div><span className="font-medium">Project:</span> {current?.project?.name || 'No project assigned'}</div>
+            <div><span className="form-label">Project:</span> {current?.project?.name || 'No project assigned'}</div>
           </div>
         )}
 
         {tab === 'edit' && current && (
           <form className="space-y-3" onSubmit={(e) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-1">
-              <label htmlFor="title" className="text-sm font-medium">Risk Title</label>
+              <label htmlFor="title" className="text-body-sm form-label">Risk Title</label>
               <input 
                 id="title" 
                 name="title" 
@@ -266,11 +266,11 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                 onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.title} 
               />
-              {form.formState.errors.title ? <div className="text-xs text-destructive">{String(form.formState.errors.title.message)}</div> : null}
+              {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
             </div>
             
             <div className="grid gap-1">
-              <label htmlFor="category" className="text-sm font-medium">Category</label>
+              <label htmlFor="category" className="text-body-sm form-label">Category</label>
               <select 
                 id="category" 
                 name="category" 
@@ -290,7 +290,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
 
             <div className="grid grid-cols-2 gap-3">
               <div className="grid gap-1">
-                <label htmlFor="impact" className="text-sm font-medium">Impact</label>
+                <label htmlFor="impact" className="text-body-sm form-label">Impact</label>
                 <select 
                   id="impact" 
                   name="impact" 
@@ -307,7 +307,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
               </div>
 
               <div className="grid gap-1">
-                <label htmlFor="probability" className="text-sm font-medium">Probability</label>
+                <label htmlFor="probability" className="text-body-sm form-label">Probability</label>
                 <select 
                   id="probability" 
                   name="probability" 
@@ -325,7 +325,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
             </div>
 
             <div className="grid gap-1">
-              <label htmlFor="status" className="text-sm font-medium">Status</label>
+              <label htmlFor="status" className="text-body-sm form-label">Status</label>
               <select 
                 id="status" 
                 name="status" 
@@ -341,7 +341,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
               </select>
             </div>
 
-            <div className="text-xs opacity-70">{form.formState.isDirty ? 'Unsaved changes' : 'All changes saved'}</div>
+            <div className="text-body-sm opacity-70">{form.formState.isDirty ? 'Unsaved changes' : 'All changes saved'}</div>
           </form>
         )}
 
@@ -351,12 +351,12 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
               <textarea name="body" className="min-h-16 w-full rounded border p-2" placeholder="Add a comment..." />
               <Button type="submit" variant="primary">Post</Button>
             </form>
-            {loadingComments ? <div className="text-sm opacity-70">Loading comments...</div> : (
+            {loadingComments ? <div className="text-body-sm opacity-70">Loading comments...</div> : (
               <ul className="space-y-2">
                 {comments.map(c => (
                   <li key={c.id} className="rounded border p-2">
-                    <div className="text-sm whitespace-pre-wrap">{c.body}</div>
-                    <div className="text-xs opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                    <div className="text-body-sm whitespace-pre-wrap">{c.body}</div>
+                    <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                   </li>
                 ))}
               </ul>
@@ -365,12 +365,12 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
         )}
 
         {tab === 'activity' && (
-          <div className="space-y-2 text-sm">
+          <div className="space-y-2 text-body-sm">
             {loadingActivity ? 'Loading activity...' : (
               <ul className="space-y-1">
                 {activity.map((a, i) => (
                   <li key={i} className="flex items-center justify-between gap-4">
-                    <div className="font-mono text-xs opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                    <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
                     <div className="flex-1">{a.action}</div>
                   </li>
                 ))}

@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { HeroSection } from './components/HeroSection';
-import { ProductHighlights } from './components/ProductHighlights';
-import { TrustSignals } from './components/TrustSignals';
-import { SocialProof } from './components/SocialProof';
-import { FeatureGrid } from './components/FeatureGrid';
-import { CTASection } from './components/CTASection';
+import { HeroSection } from '../../_components/marketing/HeroSection';
+import { ProductHighlights } from '../../_components/marketing/ProductHighlights';
+import { TrustSignals } from '../../_components/marketing/TrustSignals';
+import { SocialProof } from '../../_components/marketing/SocialProof';
+import { FeatureGrid } from '../../_components/marketing/FeatureGrid';
+import { CTASection } from '../../_components/marketing/CTASection';
 
 export const metadata: Metadata = {
   title: 'GHXSTSHIP - Enterprise Production Management Platform',

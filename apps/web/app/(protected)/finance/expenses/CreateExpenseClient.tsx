@@ -133,10 +133,10 @@ export default function CreateExpenseClient({
         {/* Expense Overview */}
         <Card className="p-4 bg-destructive/10 border-destructive/20">
           <div className="flex items-center space-x-3">
-            <Receipt className="h-8 w-8 text-destructive" />
+            <Receipt className="h-8 w-8 color-destructive" />
             <div>
-              <h3 className="font-semibold text-destructive-foreground">Expense Tracking</h3>
-              <p className="text-sm text-destructive/80">
+              <h3 className="text-heading-4 color-destructive-foreground">Expense Tracking</h3>
+              <p className="text-body-sm color-destructive/80">
                 Record business expenses for approval and reimbursement
               </p>
             </div>
@@ -146,7 +146,7 @@ export default function CreateExpenseClient({
         {/* Basic Information */}
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Expense Description *
             </label>
             <Input
@@ -159,11 +159,11 @@ export default function CreateExpenseClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="number"
                   value={formData.amount || ''}
@@ -176,14 +176,14 @@ export default function CreateExpenseClient({
                 />
               </div>
               {formData.amount > 0 && (
-                <p className="text-sm text-foreground/60 mt-1">
+                <p className="text-body-sm color-foreground/60 mt-1">
                   {formatCurrency(formData.amount)}
                 </p>
               )}
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Currency
               </label>
               <Select
@@ -201,7 +201,7 @@ export default function CreateExpenseClient({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Category
               </label>
               <Select
@@ -222,11 +222,11 @@ export default function CreateExpenseClient({
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-foreground mb-2">
+              <label className="block text-body-sm form-label color-foreground mb-2">
                 Expense Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Input
                   type="date"
                   value={formData.expenseDate}
@@ -240,11 +240,11 @@ export default function CreateExpenseClient({
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-foreground mb-2">
+            <label className="block text-body-sm form-label color-foreground mb-2">
               Receipt URL
             </label>
             <div className="relative">
-              <Upload className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-foreground/50" />
+              <Upload className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
               <Input
                 type="url"
                 value={formData.receiptUrl}
@@ -253,7 +253,7 @@ export default function CreateExpenseClient({
                 className="pl-10"
               />
             </div>
-            <p className="text-xs text-foreground/60 mt-1">
+            <p className="text-body-sm color-foreground/60 mt-1">
               Upload receipt to cloud storage and paste the URL here
             </p>
           </div>
@@ -261,20 +261,20 @@ export default function CreateExpenseClient({
 
         {/* Expense Summary */}
         {formData.amount > 0 && (
-          <Card className="p-4 bg-muted border-border">
-            <h4 className="font-medium text-foreground mb-2">Expense Summary</h4>
-            <div className="space-y-1 text-sm">
+          <Card className="p-4 bg-secondary border-border">
+            <h4 className="form-label color-foreground mb-2">Expense Summary</h4>
+            <div className="space-y-1 text-body-sm">
               <div className="flex justify-between">
-                <span className="text-foreground/70">Amount:</span>
-                <span className="font-medium">{formatCurrency(formData.amount)}</span>
+                <span className="color-foreground/70">Amount:</span>
+                <span className="form-label">{formatCurrency(formData.amount)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Category:</span>
-                <span className="font-medium capitalize">{formData.category.replace('_', ' ')}</span>
+                <span className="color-foreground/70">Category:</span>
+                <span className="form-label capitalize">{formData.category.replace('_', ' ')}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-foreground/70">Status:</span>
-                <span className="font-medium text-warning">Draft</span>
+                <span className="color-foreground/70">Status:</span>
+                <span className="form-label color-warning">Draft</span>
               </div>
             </div>
           </Card>
@@ -297,7 +297,7 @@ export default function CreateExpenseClient({
           >
             {loading ? (
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (

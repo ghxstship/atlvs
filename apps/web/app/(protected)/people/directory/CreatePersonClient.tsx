@@ -172,11 +172,11 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         <form id="person-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <User className="h-5 w-5 text-primary" />
+              <User className="h-5 w-5 color-primary" />
             </div>
             <div>
-              <h3 className="font-medium">Person Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Person Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Add a new person to your organization directory
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   First Name *
                 </label>
                 <Input
@@ -196,7 +196,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Last Name *
                 </label>
                 <Input
@@ -209,7 +209,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Email
                 </label>
                 <Input
@@ -221,7 +221,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Phone
                 </label>
                 <Input
@@ -233,7 +233,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Role
                 </label>
                 <Input
@@ -243,7 +243,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Department
                 </label>
                 <Input
@@ -255,7 +255,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Location
                 </label>
                 <Input
@@ -265,7 +265,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Start Date
                 </label>
                 <Input
@@ -276,7 +276,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Status
               </label>
               <select
@@ -290,20 +290,20 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Skills
               </label>
               <Input
                 {...register('skills')}
                 placeholder="e.g., Lighting, Sound, Rigging (comma separated)"
               />
-              <p className="text-xs text-muted-foreground mt-1">
+              <p className="text-body-sm color-muted mt-1">
                 Enter skills separated by commas
               </p>
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Bio
               </label>
               <Textarea
@@ -315,8 +315,8 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
           </div>
 
           <div className="bg-primary/5 p-4 rounded-lg">
-            <h4 className="font-medium text-primary mb-2">Directory Guidelines</h4>
-            <ul className="text-sm text-primary/80 space-y-1">
+            <h4 className="form-label color-primary mb-2">Directory Guidelines</h4>
+            <ul className="text-body-sm color-primary/80 space-y-1">
               <li>• Provide accurate contact information for effective communication</li>
               <li>• Include relevant skills to help with project assignments</li>
               <li>• Keep role and department information current</li>

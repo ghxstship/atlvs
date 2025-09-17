@@ -156,11 +156,11 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
        
         footer={
           <div className="flex items-center justify-between w-full">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-destructive" />
-                  <span className="text-destructive">{error}</span>
+                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <span className="color-destructive">{error}</span>
                 </>
               )}
             </div>
@@ -189,7 +189,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
         <form id="create-rfp-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="grid grid-cols-1 gap-6">
             <div>
-              <label htmlFor="title" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-2">
                 Title *
               </label>
               <Input
@@ -201,7 +201,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="description" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="description" className="block text-body-sm form-label color-foreground mb-2">
                 Description
               </label>
               <Textarea
@@ -214,7 +214,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="category" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="category" className="block text-body-sm form-label color-foreground mb-2">
                   Category *
                 </label>
                 <Select {...register('category')}>
@@ -228,7 +228,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               </div>
 
               <div>
-                <label htmlFor="status" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="status" className="block text-body-sm form-label color-foreground mb-2">
                   Status
                 </label>
                 <Select {...register('status')}>
@@ -243,7 +243,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="budget" className="block text-body-sm form-label color-foreground mb-2">
                   Budget
                 </label>
                 <Input
@@ -257,7 +257,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               </div>
 
               <div>
-                <label htmlFor="currency" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="currency" className="block text-body-sm form-label color-foreground mb-2">
                   Currency
                 </label>
                 <Select {...register('currency')}>
@@ -271,7 +271,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="projectId" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="projectId" className="block text-body-sm form-label color-foreground mb-2">
                 Associated Project ID
               </label>
               <Input
@@ -282,7 +282,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="submissionDeadline" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="submissionDeadline" className="block text-body-sm form-label color-foreground mb-2">
                   Submission Deadline
                 </label>
                 <Input
@@ -292,7 +292,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               </div>
 
               <div>
-                <label htmlFor="questionsDeadline" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="questionsDeadline" className="block text-body-sm form-label color-foreground mb-2">
                   Questions Deadline
                 </label>
                 <Input
@@ -304,7 +304,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
 
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label htmlFor="contactName" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="contactName" className="block text-body-sm form-label color-foreground mb-2">
                   Contact Name
                 </label>
                 <Input
@@ -314,7 +314,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
               </div>
 
               <div>
-                <label htmlFor="contactEmail" className="block text-sm font-medium text-foreground mb-2">
+                <label htmlFor="contactEmail" className="block text-body-sm form-label color-foreground mb-2">
                   Contact Email
                 </label>
                 <Input
@@ -327,7 +327,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="requirements" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="requirements" className="block text-body-sm form-label color-foreground mb-2">
                 Requirements
               </label>
               <Textarea
@@ -338,7 +338,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="deliverables" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="deliverables" className="block text-body-sm form-label color-foreground mb-2">
                 Deliverables
               </label>
               <Textarea
@@ -349,7 +349,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="timeline" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="timeline" className="block text-body-sm form-label color-foreground mb-2">
                 Timeline
               </label>
               <Textarea
@@ -360,7 +360,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="evaluationCriteria" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="evaluationCriteria" className="block text-body-sm form-label color-foreground mb-2">
                 Evaluation Criteria
               </label>
               <Textarea
@@ -371,7 +371,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="minimumQualifications" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="minimumQualifications" className="block text-body-sm form-label color-foreground mb-2">
                 Minimum Qualifications
               </label>
               <Textarea
@@ -382,7 +382,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             </div>
 
             <div>
-              <label htmlFor="preferredQualifications" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="preferredQualifications" className="block text-body-sm form-label color-foreground mb-2">
                 Preferred Qualifications
               </label>
               <Textarea
@@ -397,9 +397,9 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('isPublic')}
-                  className="h-4 w-4 text-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
                 />
-                <label htmlFor="isPublic" className="text-sm font-medium text-foreground">
+                <label htmlFor="isPublic" className="text-body-sm form-label color-foreground">
                   Public RFP
                 </label>
               </div>
@@ -408,16 +408,16 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('allowQuestions')}
-                  className="h-4 w-4 text-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
                 />
-                <label htmlFor="allowQuestions" className="text-sm font-medium text-foreground">
+                <label htmlFor="allowQuestions" className="text-body-sm form-label color-foreground">
                   Allow Questions
                 </label>
               </div>
             </div>
 
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium text-foreground mb-2">
+              <label htmlFor="notes" className="block text-body-sm form-label color-foreground mb-2">
                 Notes
               </label>
               <Textarea

@@ -95,7 +95,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
 
   return (
     <div className="flex flex-col items-end gap-2">
-      <label className="inline-flex items-center gap-2 rounded-md border px-3 py-2 text-sm hover:bg-accent cursor-pointer">
+      <label className="inline-flex items-center gap-2 rounded-md border px-3 py-2 text-body-sm hover:bg-accent cursor-pointer">
         <span>{uploading ? t('upload.uploading') : t('upload.cta')}</span>
         <input
           ref={inputRef}
@@ -109,7 +109,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
         />
       </label>
       {error ? (
-        <div role="alert" className="text-sm text-destructive">
+        <div role="alert" className="text-body-sm color-destructive">
           {error}
         </div>
       ) : null}

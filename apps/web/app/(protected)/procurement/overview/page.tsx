@@ -32,8 +32,8 @@ export default async function ProcurementOverview() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold">Procurement Overview</h1>
-        <p className="text-foreground/70">
+        <h1 className="text-heading-3 text-heading-3">Procurement Overview</h1>
+        <p className="color-foreground/70">
           Monitor your procurement activities and performance
         </p>
       </div>

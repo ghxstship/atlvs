@@ -52,11 +52,11 @@ export default function ForgotPasswordPage() {
               <form className={`${layouts.flexCol} ${spacing.textSpacing}`}>
                 {/* Email */}
                 <div>
-                  <label className={`${typography.bodyMedium} block font-medium ${spacing.marginBottom.small}`}>
+                  <label className={`${typography.bodyMedium} block form-label ${spacing.marginBottom.small}`}>
                     Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                     <input
                       type="email"
                       className={`w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background ${accessibility.focus.ring}`}
@@ -75,7 +75,7 @@ export default function ForgotPasswordPage() {
               </form>
 
               <div className="mt-8 text-center">
-                <Link href="/login" className={`inline-flex items-center ${typography.bodySmall} text-primary hover:underline`}>
+                <Link href="/auth/signin" className={`inline-flex items-center ${typography.bodySmall} color-primary hover:underline`}>
                   <ArrowLeft className="mr-1 h-4 w-4" />
                   Back to sign in
                 </Link>
@@ -85,9 +85,9 @@ export default function ForgotPasswordPage() {
 
           {/* Help */}
           <div className="text-center mt-8">
-            <p className="text-sm text-muted-foreground">
+            <p className="text-body-sm color-muted">
               Still having trouble?{' '}
-              <Link href="/contact" className="text-primary hover:underline">
+              <Link href="/contact" className="color-primary hover:underline">
                 Contact support
               </Link>
             </p>

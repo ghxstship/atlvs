@@ -198,8 +198,8 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold font-anton uppercase">Assets Management</h1>
-          <p className="text-sm text-muted-foreground">Comprehensive asset inventory, tracking, and management system</p>
+          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Assets Management</h1>
+          <p className="text-body-sm color-muted">Comprehensive asset inventory, tracking, and management system</p>
         </div>
         <Button className="flex items-center gap-2">
           <Plus className="w-4 h-4" />
@@ -208,7 +208,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
       </div>
 
       {/* Navigation Tabs */}
-      <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+      <div className="flex space-x-1 bg-secondary p-1 rounded-lg">
         {[
           { id: 'overview', label: 'Overview', icon: BarChart3 },
           { id: 'inventory', label: 'Inventory', icon: Package },
@@ -223,10 +223,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              className={`flex items-center gap-2 px-3 py-2 rounded-md text-body-sm form-label transition-colors ${
                 activeTab === tab.id
-                  ? 'bg-background text-foreground shadow-sm'
-                  : 'text-muted-foreground hover:text-foreground'
+                  ? 'bg-background color-foreground shadow-sm'
+                  : 'color-muted hover:color-foreground'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -238,7 +238,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
 
       {loading ? (
         <Card>
-          <div className="p-8 text-center text-muted-foreground">Loading assets data...</div>
+          <div className="p-8 text-center color-muted">Loading assets data...</div>
         </Card>
       ) : (
         <>
@@ -251,10 +251,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                   <div className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Total Assets</p>
-                        <p className="text-2xl font-bold">{stats.totalAssets}</p>
+                        <p className="text-body-sm form-label color-muted">Total Assets</p>
+                        <p className="text-heading-3 text-heading-3">{stats.totalAssets}</p>
                       </div>
-                      <Package className="w-8 h-8 text-primary" />
+                      <Package className="w-8 h-8 color-primary" />
                     </div>
                   </div>
                 </Card>
@@ -262,10 +262,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                   <div className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Active Assignments</p>
-                        <p className="text-2xl font-bold">{stats.activeAssignments}</p>
+                        <p className="text-body-sm form-label color-muted">Active Assignments</p>
+                        <p className="text-heading-3 text-heading-3">{stats.activeAssignments}</p>
                       </div>
-                      <TrendingUp className="w-8 h-8 text-success" />
+                      <TrendingUp className="w-8 h-8 color-success" />
                     </div>
                   </div>
                 </Card>
@@ -273,10 +273,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                   <div className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Maintenance Required</p>
-                        <p className="text-2xl font-bold">{stats.maintenanceRequired}</p>
+                        <p className="text-body-sm form-label color-muted">Maintenance Required</p>
+                        <p className="text-heading-3 text-heading-3">{stats.maintenanceRequired}</p>
                       </div>
-                      <AlertTriangle className="w-8 h-8 text-warning" />
+                      <AlertTriangle className="w-8 h-8 color-warning" />
                     </div>
                   </div>
                 </Card>
@@ -284,10 +284,10 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                   <div className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-muted-foreground">Total Value</p>
-                        <p className="text-2xl font-bold">{formatCurrency(stats.totalValue)}</p>
+                        <p className="text-body-sm form-label color-muted">Total Value</p>
+                        <p className="text-heading-3 text-heading-3">{formatCurrency(stats.totalValue)}</p>
                       </div>
-                      <BarChart3 className="w-8 h-8 text-secondary" />
+                      <BarChart3 className="w-8 h-8 color-secondary" />
                     </div>
                   </div>
                 </Card>
@@ -296,19 +296,19 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
               {/* Recent Assets */}
               <Card>
                 <div className="p-4">
-                  <h3 className="text-lg font-semibold mb-4">Recent Assets</h3>
+                  <h3 className="text-body text-heading-4 mb-4">Recent Assets</h3>
                   <div className="space-y-3">
                     {assets.slice(0, 5).map(asset => (
                       <div key={asset.id} className="flex items-center justify-between p-3 border rounded-lg">
                         <div className="flex-1">
-                          <h4 className="font-medium">{asset.name}</h4>
-                          <p className="text-sm text-muted-foreground">
+                          <h4 className="form-label">{asset.name}</h4>
+                          <p className="text-body-sm color-muted">
                             {ASSET_CATEGORIES.find(cat => cat.id === asset.category)?.name} • {asset.location}
                           </p>
                         </div>
                         <div className="flex items-center gap-3">
                           {asset.currentValue && (
-                            <span className="text-sm font-medium">{formatCurrency(asset.currentValue)}</span>
+                            <span className="text-body-sm form-label">{formatCurrency(asset.currentValue)}</span>
                           )}
                           {getStatusBadge(asset.status)}
                         </div>
@@ -323,8 +323,8 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
           {/* Other tabs will be implemented as separate components */}
           {activeTab !== 'overview' && (
             <Card>
-              <div className="p-8 text-center text-muted-foreground">
-                <h3 className="text-lg font-semibold mb-2">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Module</h3>
+              <div className="p-8 text-center color-muted">
+                <h3 className="text-body text-heading-4 mb-2">{activeTab.charAt(0).toUpperCase() + activeTab.slice(1)} Module</h3>
                 <p>This submodule is being implemented. Full functionality coming soon.</p>
               </div>
             </Card>

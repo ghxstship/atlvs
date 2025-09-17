@@ -19,25 +19,25 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
     <Card className="hover:shadow-lg transition-shadow">
       <CardContent className="p-6">
         <div className={`w-12 h-12 bg-gradient-to-r ${department.color} rounded-lg flex items-center justify-center mb-4`}>
-          <Users className="h-6 w-6 text-white" />
+          <Users className="h-6 w-6 text-background" />
         </div>
         
         <div className="flex items-center gap-2 mb-3">
-          <h3 className={`${typography.cardTitle} text-xl`}>
+          <h3 className={`${typography.cardTitle} text-heading-4`}>
             {department.name}
           </h3>
-          <Badge variant="outline" className="text-xs">
+          <Badge variant="outline" className="text-body-sm">
             {department.count} members
           </Badge>
         </div>
         
-        <p className="text-muted-foreground mb-4">{department.description}</p>
+        <p className="color-muted mb-4">{department.description}</p>
         
         <div>
-          <h4 className="text-sm font-semibold text-muted-foreground mb-2 uppercase">Team Leads</h4>
+          <h4 className="text-body-sm text-heading-4 color-muted mb-2 uppercase">Team Leads</h4>
           <div className="space-y-1">
             {department.leads.map((lead) => (
-              <div key={lead} className="text-sm text-foreground">{lead}</div>
+              <div key={lead} className="text-body-sm color-foreground">{lead}</div>
             ))}
           </div>
         </div>

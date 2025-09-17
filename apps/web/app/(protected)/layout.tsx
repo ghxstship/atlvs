@@ -3,11 +3,11 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { createServerClient } from '@ghxstship/auth';
 import { routeRegistry, toNavSections, filterByEntitlements, filterByRole } from '../../lib/navigation/routeRegistry';
-import { SidebarClient } from '../../components/nav/SidebarClient';
-import { CommandPalette } from '../../components/nav/CommandPalette';
-import { ProductToggle } from '../../components/nav/ProductToggle';
-import { BreadcrumbsNav } from '../../components/nav/BreadcrumbsNav';
-import NotificationsBell from '../components/NotificationsBell';
+import { SidebarClient } from '../_components/nav/SidebarClient';
+import { CommandPalette } from '../_components/nav/CommandPalette';
+import { ProductToggle } from '../_components/nav/ProductToggle';
+import { BreadcrumbsNav } from '../_components/nav/BreadcrumbsNav';
+import NotificationsBell from '../_components/NotificationsBell';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -69,7 +69,7 @@ export default async function ProtectedLayout({ children }: { children: ReactNod
   const feature_ghxstship = (orgEnt?.feature_ghxstship ?? false) || (userEnt?.feature_ghxstship ?? false);
 
   // Build navigation from centralized route registry with entitlements + RBAC role filtering
-  const filteredRoutes = filterByEntitlements(routeRegistry, feature_atlvs);
+  const filteredRoutes = filterByEntitlements(routeRegistry, feature_atlvs, feature_ghxstship);
   let roleFilteredRoutes = filterByRole(filteredRoutes, role || 'viewer');
 
   // Project-scoped RBAC: if user has no assigned projects and role is limited,

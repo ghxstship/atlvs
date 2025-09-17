@@ -47,21 +47,21 @@ const products = [
 
 export function ProductHighlights() {
   return (
-    <section className="py-20 bg-muted/20">
+    <section className="py-20 bg-secondary/20">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
             Our Products
           </Badge>
-          <h2 className="font-title text-3xl lg:text-5xl font-bold mb-6">
+          <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-6">
             TWO PLATFORMS,
             <br />
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
               INFINITE POSSIBILITIES
             </span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-body color-muted max-w-3xl mx-auto">
             ATLVS and OPENDECK work together to provide the most comprehensive solution for 
             creative production management and talent acquisition in the industry.
           </p>
@@ -77,13 +77,13 @@ export function ProductHighlights() {
                 {/* Product Header */}
                 <div className="mb-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="font-title text-2xl font-bold">{product.name}</h3>
-                    <Badge variant="secondary" className="text-xs">
+                    <h3 className="font-title text-heading-3 text-heading-3">{product.name}</h3>
+                    <Badge variant="secondary" className="text-body-sm">
                       Enterprise Ready
                     </Badge>
                   </div>
-                  <p className="text-lg font-medium text-primary mb-3">{product.tagline}</p>
-                  <p className="text-muted-foreground">{product.description}</p>
+                  <p className="text-body form-label color-primary mb-3">{product.tagline}</p>
+                  <p className="color-muted">{product.description}</p>
                 </div>
 
                 {/* Features Grid */}
@@ -93,11 +93,11 @@ export function ProductHighlights() {
                     return (
                       <div key={feature.label} className="flex items-start gap-3">
                         <div className={`p-2 rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
-                          <Icon className="h-4 w-4 text-primary" />
+                          <Icon className="h-4 w-4 color-primary" />
                         </div>
                         <div>
-                          <div className="font-medium text-sm">{feature.label}</div>
-                          <div className="text-xs text-muted-foreground">{feature.description}</div>
+                          <div className="form-label text-body-sm">{feature.label}</div>
+                          <div className="text-body-sm color-muted">{feature.description}</div>
                         </div>
                       </div>
                     );
@@ -105,11 +105,11 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-muted/30 rounded-lg">
+                <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-secondary/30 rounded-lg">
                   {product.stats.map((stat) => (
                     <div key={stat.label} className="text-center">
-                      <div className="font-title text-lg font-bold text-foreground">{stat.value}</div>
-                      <div className="text-xs text-muted-foreground">{stat.label}</div>
+                      <div className="font-title text-body text-heading-3 color-foreground">{stat.value}</div>
+                      <div className="text-body-sm color-muted">{stat.label}</div>
                     </div>
                   ))}
                 </div>
@@ -138,19 +138,19 @@ export function ProductHighlights() {
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-8">
               <div className="flex items-center justify-center gap-4 mb-6">
-                <div className="font-title text-xl font-bold">ATLVS</div>
+                <div className="font-title text-heading-4 text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-                  <Zap className="h-5 w-5 text-primary" />
+                  <Zap className="h-5 w-5 color-primary" />
                   <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
                 </div>
-                <div className="font-title text-xl font-bold">OPENDECK</div>
+                <div className="font-title text-heading-4 text-heading-3">OPENDECK</div>
               </div>
               
-              <h3 className="font-title text-2xl font-bold mb-4">
+              <h3 className="font-title text-heading-3 text-heading-3 mb-4">
                 SEAMLESS INTEGRATION
               </h3>
-              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+              <p className="color-muted mb-6 max-w-2xl mx-auto">
                 When used together, ATLVS and OPENDECK create a unified ecosystem where project management 
                 meets talent acquisition, enabling unprecedented efficiency and collaboration.
               </p>

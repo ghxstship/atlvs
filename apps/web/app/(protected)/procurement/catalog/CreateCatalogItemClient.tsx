@@ -263,11 +263,11 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
         <form id="catalog-item-form" onSubmit={handleSubmit(onSubmit)} className="space-y-6">
           <div className="flex items-center gap-3 mb-6">
             <div className="p-2 bg-success/10 rounded-lg">
-              <BookOpen className="h-5 w-5 text-success" />
+              <BookOpen className="h-5 w-5 color-success" />
             </div>
             <div>
-              <h3 className="font-medium">Catalog Item Information</h3>
-              <p className="text-sm text-foreground/70">
+              <h3 className="form-label">Catalog Item Information</h3>
+              <p className="text-body-sm color-foreground/70">
                 Add a new product or service to your catalog
               </p>
             </div>
@@ -275,7 +275,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
 
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-body-sm form-label mb-2">
                 Item Type *
               </label>
               <div className="flex gap-4">
@@ -304,7 +304,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
 
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-2">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Name *
                 </label>
                 <Input
@@ -315,7 +315,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Category
                 </label>
                 <select
@@ -332,7 +332,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Status
                 </label>
                 <select
@@ -348,7 +348,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               {selectedType === 'product' ? (
                 <>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Price
                     </label>
                     <Input
@@ -361,7 +361,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       SKU
                     </label>
                     <Input
@@ -373,7 +373,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               ) : (
                 <>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Rate
                     </label>
                     <Input
@@ -386,7 +386,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-body-sm form-label mb-2">
                       Unit
                     </label>
                     <select
@@ -405,7 +405,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               )}
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Currency
                 </label>
                 <select
@@ -420,7 +420,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Supplier/Vendor
                 </label>
                 <select
@@ -437,7 +437,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div className="col-span-2">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Description
                 </label>
                 <Textarea
@@ -448,7 +448,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div className="col-span-2">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Specifications
                 </label>
                 <Textarea
@@ -459,7 +459,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               </div>
 
               <div className="col-span-2">
-                <label className="block text-sm font-medium mb-2">
+                <label className="block text-body-sm form-label mb-2">
                   Tags
                 </label>
                 <Input
@@ -471,8 +471,8 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
           </div>
 
           <div className="bg-success/5 p-4 rounded-lg">
-            <h4 className="font-medium text-success mb-2">Catalog Guidelines</h4>
-            <ul className="text-sm text-success/80 space-y-1">
+            <h4 className="form-label color-success mb-2">Catalog Guidelines</h4>
+            <ul className="text-body-sm color-success/80 space-y-1">
               <li>• Choose descriptive names that clearly identify the item</li>
               <li>• Use categories to organize items for easier browsing</li>
               <li>• Include detailed specifications for technical requirements</li>

@@ -4,7 +4,7 @@ import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Play, CheckCircle, Zap, Globe } from 'lucide-react';
 import { typography } from './lib/typography';
 import { HeroSection } from './components/HeroSection';
-import { FeatureCard } from './components/ui/FeatureCard';
+import { FeatureCard } from '../_components/marketing/FeatureCard';
 import { CTASection } from './components/CTASection';
 
 export const metadata: Metadata = {
@@ -24,7 +24,7 @@ export default function RootPage() {
       <HeroSection />
 
         {/* Product Showcase */}
-        <section className="py-20 bg-muted/20">
+        <section className="py-20 bg-secondary/20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <Badge variant="outline" className="mb-4">

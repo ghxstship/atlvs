@@ -76,7 +76,7 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
       <Star
         key={i}
         className={`h-4 w-4 ${
-          i < rating ? 'fill-warning text-warning' : 'text-muted-foreground'
+          i < rating ? 'fill-warning color-warning' : 'color-muted'
         }`}
       />
     ));
@@ -111,11 +111,11 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-foreground">{translations.title}</h1>
-          <p className="text-sm text-foreground/70 mt-1">{translations.subtitle}</p>
+          <h1 className="text-heading-3 text-heading-3 color-foreground">{translations.title}</h1>
+          <p className="text-body-sm color-foreground/70 mt-1">{translations.subtitle}</p>
         </div>
         <div className="flex items-center space-x-3">
-          <div className="flex items-center space-x-1 bg-muted rounded-lg p-1">
+          <div className="flex items-center space-x-1 bg-secondary rounded-lg p-1">
             <Button
               variant={currentView === 'grid' ? 'primary' : 'ghost'}
              
@@ -145,10 +145,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
             <Card key={rating.id} className="p-6 hover:shadow-lg transition-shadow">
               <div className="flex items-start justify-between mb-4">
                 <div>
-                  <h3 className="font-semibold text-lg">{rating.company_name}</h3>
+                  <h3 className="text-heading-4 text-body">{rating.company_name}</h3>
                   <div className="flex items-center space-x-1 mt-1">
                     {renderStars(rating.rating)}
-                    <span className="text-sm text-muted-foreground ml-2">
+                    <span className="text-body-sm color-muted ml-2">
                       {rating.rating}/5
                     </span>
                   </div>
@@ -162,10 +162,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
                   </Button>
                 </div>
               </div>
-              <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+              <p className="text-body-sm color-muted mb-4 line-clamp-3">
                 {rating.review}
               </p>
-              <div className="flex items-center justify-between text-xs text-muted-foreground">
+              <div className="flex items-center justify-between text-body-sm color-muted">
                 <span>By {rating.reviewer_name}</span>
                 <span>{new Date(rating.created_at).toLocaleDateString()}</span>
               </div>
@@ -179,18 +179,18 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-4 mb-2">
-                    <h3 className="font-semibold text-lg">{rating.company_name}</h3>
+                    <h3 className="text-heading-4 text-body">{rating.company_name}</h3>
                     <div className="flex items-center space-x-1">
                       {renderStars(rating.rating)}
-                      <span className="text-sm text-muted-foreground ml-2">
+                      <span className="text-body-sm color-muted ml-2">
                         {rating.rating}/5
                       </span>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-2">
+                  <p className="text-body-sm color-muted mb-2">
                     {rating.review}
                   </p>
-                  <div className="flex items-center space-x-4 text-xs text-muted-foreground">
+                  <div className="flex items-center space-x-4 text-body-sm color-muted">
                     <span>By {rating.reviewer_name}</span>
                     <span>{new Date(rating.created_at).toLocaleDateString()}</span>
                   </div>
@@ -212,9 +212,9 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
       {/* Empty State */}
       {ratings.length === 0 && (
         <div className="text-center py-12">
-          <Building2 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-          <h3 className="text-lg font-semibold mb-2">No ratings yet</h3>
-          <p className="text-muted-foreground mb-4">
+          <Building2 className="h-12 w-12 color-muted mx-auto mb-4" />
+          <h3 className="text-body text-heading-4 mb-2">No ratings yet</h3>
+          <p className="color-muted mb-4">
             Start by adding your first company rating.
           </p>
           <Button onClick={handleCreateRating}>
@@ -232,7 +232,7 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
         width="md"
       >
         <div className="p-6">
-          <p className="text-muted-foreground">
+          <p className="color-muted">
             Rating creation form will be implemented here.
           </p>
         </div>

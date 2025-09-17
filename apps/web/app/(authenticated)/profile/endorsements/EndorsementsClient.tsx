@@ -130,8 +130,8 @@ export default function EndorsementsClient() {
             key={star}
             className={`w-4 h-4 ${
               star <= rating
-                ? 'fill-warning text-warning'
-                : 'text-muted-foreground'
+                ? 'fill-warning color-warning'
+                : 'color-muted'
             }`}
           />
         ))}
@@ -155,8 +155,8 @@ export default function EndorsementsClient() {
     <div className="space-y-6">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold">Endorsements</h2>
-          <p className="text-muted-foreground">Professional recommendations from colleagues</p>
+          <h2 className="text-heading-3 text-heading-3">Endorsements</h2>
+          <p className="color-muted">Professional recommendations from colleagues</p>
         </div>
         <Button onClick={() => setShowAddForm(!showAddForm)}>
           <Plus className="w-4 h-4 mr-2" />
@@ -170,10 +170,10 @@ export default function EndorsementsClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Total Endorsements</p>
-                <p className="text-2xl font-bold">{endorsements.length}</p>
+                <p className="text-body-sm color-muted">Total Endorsements</p>
+                <p className="text-heading-3 text-heading-3">{endorsements.length}</p>
               </div>
-              <Award className="w-8 h-8 text-primary" />
+              <Award className="w-8 h-8 color-primary" />
             </div>
           </CardContent>
         </Card>
@@ -181,14 +181,14 @@ export default function EndorsementsClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Average Rating</p>
-                <p className="text-2xl font-bold">
+                <p className="text-body-sm color-muted">Average Rating</p>
+                <p className="text-heading-3 text-heading-3">
                   {endorsements.length > 0
                     ? (endorsements.reduce((acc, e) => acc + e.rating, 0) / endorsements.length).toFixed(1)
                     : '0.0'}
                 </p>
               </div>
-              <Star className="w-8 h-8 text-warning" />
+              <Star className="w-8 h-8 color-warning" />
             </div>
           </CardContent>
         </Card>
@@ -196,12 +196,12 @@ export default function EndorsementsClient() {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-muted-foreground">Public Endorsements</p>
-                <p className="text-2xl font-bold">
+                <p className="text-body-sm color-muted">Public Endorsements</p>
+                <p className="text-heading-3 text-heading-3">
                   {endorsements.filter(e => e.is_public).length}
                 </p>
               </div>
-              <ThumbsUp className="w-8 h-8 text-success" />
+              <ThumbsUp className="w-8 h-8 color-success" />
             </div>
           </CardContent>
         </Card>
@@ -211,11 +211,11 @@ export default function EndorsementsClient() {
       {showAddForm && (
         <Card>
           <CardHeader>
-            <h3 className="font-semibold">Request an Endorsement</h3>
+            <h3 className="text-heading-4">Request an Endorsement</h3>
           </CardHeader>
           <CardContent className="space-y-4">
             <div>
-              <label className="text-sm font-medium">Email of Endorser</label>
+              <label className="text-body-sm form-label">Email of Endorser</label>
               <input
                 type="email"
                 className="w-full mt-1 px-3 py-2 border-border rounded-lg"
@@ -225,7 +225,7 @@ export default function EndorsementsClient() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Your Relationship</label>
+              <label className="text-body-sm form-label">Your Relationship</label>
               <input
                 type="text"
                 className="w-full mt-1 px-3 py-2 border-border rounded-lg"
@@ -235,7 +235,7 @@ export default function EndorsementsClient() {
               />
             </div>
             <div>
-              <label className="text-sm font-medium">Skills to Endorse</label>
+              <label className="text-body-sm form-label">Skills to Endorse</label>
               <div className="flex flex-wrap gap-2 mt-2">
                 {availableSkills.map(skill => (
                   <Badge
@@ -250,7 +250,7 @@ export default function EndorsementsClient() {
               </div>
             </div>
             <div>
-              <label className="text-sm font-medium">Message (Optional)</label>
+              <label className="text-body-sm form-label">Message (Optional)</label>
               <Textarea
                 value={newEndorsement.message}
                 onChange={(e) => setNewEndorsement({ ...newEndorsement, message: e.target.value })}
@@ -274,9 +274,9 @@ export default function EndorsementsClient() {
       {endorsements.length === 0 ? (
         <Card>
           <CardContent className="text-center py-12">
-            <Award className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
-            <p className="text-muted-foreground">No endorsements yet</p>
-            <p className="text-sm text-muted-foreground mt-2">
+            <Award className="w-12 h-12 mx-auto mb-4 color-muted" />
+            <p className="color-muted">No endorsements yet</p>
+            <p className="text-body-sm color-muted mt-2">
               Request endorsements from colleagues to build your professional profile
             </p>
           </CardContent>
@@ -296,17 +296,17 @@ export default function EndorsementsClient() {
                           className="w-full h-full rounded-full object-cover"
                         />
                       ) : (
-                        <User className="w-6 h-6 text-primary" />
+                        <User className="w-6 h-6 color-primary" />
                       )}
                     </div>
                     <div>
-                      <h4 className="font-semibold">{endorsement.from_user_name}</h4>
-                      <p className="text-sm text-muted-foreground">
+                      <h4 className="text-heading-4">{endorsement.from_user_name}</h4>
+                      <p className="text-body-sm color-muted">
                         {endorsement.from_user_role || endorsement.relationship}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
                         {renderStars(endorsement.rating)}
-                        <span className="text-sm text-muted-foreground">
+                        <span className="text-body-sm color-muted">
                           {new Date(endorsement.created_at).toLocaleDateString()}
                         </span>
                       </div>
@@ -321,7 +321,7 @@ export default function EndorsementsClient() {
 
                 {endorsement.skills.length > 0 && (
                   <div className="mb-4">
-                    <p className="text-sm font-medium mb-2">Endorsed Skills</p>
+                    <p className="text-body-sm form-label mb-2">Endorsed Skills</p>
                     <div className="flex flex-wrap gap-2">
                       {endorsement.skills.map((skill, index) => (
                         <Badge key={index} variant="outline">
@@ -333,9 +333,9 @@ export default function EndorsementsClient() {
                 )}
 
                 {endorsement.message && (
-                  <div className="p-4 bg-muted rounded-lg">
-                    <MessageSquare className="w-4 h-4 text-muted-foreground mb-2" />
-                    <p className="text-sm italic">"{endorsement.message}"</p>
+                  <div className="p-4 bg-secondary rounded-lg">
+                    <MessageSquare className="w-4 h-4 color-muted mb-2" />
+                    <p className="text-body-sm italic">"{endorsement.message}"</p>
                   </div>
                 )}
               </CardContent>

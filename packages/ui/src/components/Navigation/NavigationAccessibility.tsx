@@ -1,6 +1,12 @@
+/**
+ * Enhanced Navigation Accessibility System
+ * Advanced WCAG 2.2 AA+ compliance with 2026/2027 standards
+ */
+
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { navigationTokens } from '../../tokens/navigation';
 
 interface NavigationAnnouncerProps {
   pathname?: string;
@@ -40,13 +46,13 @@ export const NavigationAnnouncer: React.FC<NavigationAnnouncerProps> = ({ pathna
       <div className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:top-0 focus-within:left-0 focus-within:z-50">
         <a
           href="#main-content"
-          className="inline-block px-4 py-2 m-2 bg-brand-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+          className="inline-block px-4 py-2 m-2 bg-primary text-primary-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           Skip to main content
         </a>
         <a
           href="#navigation"
-          className="inline-block px-4 py-2 m-2 bg-brand-600 text-white rounded-md focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2"
+          className="inline-block px-4 py-2 m-2 bg-primary text-primary-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           Skip to navigation
         </a>
@@ -133,10 +139,10 @@ export const AccessibleNavigationItem: React.FC<NavigationItemProps> = ({
           className={`
             flex-1 px-3 py-2 rounded-md text-sm font-medium
             ${isActive 
-              ? 'bg-brand-50 text-brand-700 dark:bg-brand-950 dark:text-brand-300' 
-              : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800'
+              ? 'bg-primary/10 text-primary' 
+              : 'text-muted-foreground hover:bg-muted'
             }
-            focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2
+            focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
           `}
         >
           {label}
@@ -282,4 +288,236 @@ export const useReducedMotion = () => {
   }, []);
 
   return prefersReducedMotion;
+};
+
+// =============================================================================
+// ENHANCED 2026/2027 ACCESSIBILITY FEATURES
+// =============================================================================
+
+// Voice navigation support
+export const useVoiceNavigation = () => {
+  const [isListening, setIsListening] = useState(false);
+  const [transcript, setTranscript] = useState('');
+  const recognitionRef = useRef<any | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+      return;
+    }
+
+    const SpeechRecognitionCtor = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    recognitionRef.current = new SpeechRecognitionCtor();
+    
+    const recognition = recognitionRef.current;
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onstart = () => setIsListening(true);
+    recognition.onend = () => setIsListening(false);
+    recognition.onresult = (event: any) => {
+      const current = event.resultIndex;
+      const transcript = event.results[current][0].transcript;
+      setTranscript(transcript);
+    };
+
+    return () => {
+      recognition.stop();
+    };
+  }, []);
+
+  const startListening = useCallback(() => {
+    if (recognitionRef.current && !isListening) {
+      recognitionRef.current.start();
+    }
+  }, [isListening]);
+
+  const stopListening = useCallback(() => {
+    if (recognitionRef.current && isListening) {
+      recognitionRef.current.stop();
+    }
+  }, [isListening]);
+
+  return { isListening, transcript, startListening, stopListening };
+};
+
+// Enhanced color contrast utilities
+export const useColorContrast = () => {
+  const [contrastRatio, setContrastRatio] = useState<number>(4.5);
+  
+  const calculateContrast = useCallback((color1: string, color2: string): number => {
+    // Simplified contrast calculation - in production, use a proper color library
+    const getLuminance = (color: string): number => {
+      // This is a simplified version - use proper color parsing in production
+      const hex = color.replace('#', '');
+      const r = parseInt(hex.substr(0, 2), 16) / 255;
+      const g = parseInt(hex.substr(2, 2), 16) / 255;
+      const b = parseInt(hex.substr(4, 2), 16) / 255;
+      
+      const sRGB = [r, g, b].map(c => {
+        return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+      });
+      
+      return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+    };
+
+    const lum1 = getLuminance(color1);
+    const lum2 = getLuminance(color2);
+    const brightest = Math.max(lum1, lum2);
+    const darkest = Math.min(lum1, lum2);
+    
+    return (brightest + 0.05) / (darkest + 0.05);
+  }, []);
+
+  const meetsWCAG = useCallback((ratio: number, level: 'AA' | 'AAA' = 'AA'): boolean => {
+    return level === 'AA' ? ratio >= 4.5 : ratio >= 7;
+  }, []);
+
+  return { contrastRatio, calculateContrast, meetsWCAG };
+};
+
+// Gesture recognition for touch navigation
+export const useGestureNavigation = (containerRef: React.RefObject<HTMLElement>) => {
+  const [gesture, setGesture] = useState<string | null>(null);
+  const touchStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      touchStartRef.current = {
+        x: touch.clientX,
+        y: touch.clientY,
+        time: Date.now()
+      };
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!touchStartRef.current) return;
+
+      const touch = e.changedTouches[0];
+      const deltaX = touch.clientX - touchStartRef.current.x;
+      const deltaY = touch.clientY - touchStartRef.current.y;
+      const deltaTime = Date.now() - touchStartRef.current.time;
+
+      // Detect swipe gestures
+      const minSwipeDistance = 50;
+      const maxSwipeTime = 300;
+
+      if (deltaTime < maxSwipeTime) {
+        if (Math.abs(deltaX) > minSwipeDistance && Math.abs(deltaX) > Math.abs(deltaY)) {
+          setGesture(deltaX > 0 ? 'swipe-right' : 'swipe-left');
+        } else if (Math.abs(deltaY) > minSwipeDistance && Math.abs(deltaY) > Math.abs(deltaX)) {
+          setGesture(deltaY > 0 ? 'swipe-down' : 'swipe-up');
+        }
+      }
+
+      // Clear gesture after handling
+      setTimeout(() => setGesture(null), 100);
+      touchStartRef.current = null;
+    };
+
+    container.addEventListener('touchstart', handleTouchStart, { passive: true });
+    container.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      container.removeEventListener('touchstart', handleTouchStart);
+      container.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [containerRef]);
+
+  return gesture;
+};
+
+// Screen reader optimizations
+export const useScreenReaderOptimizations = () => {
+  const [isScreenReaderActive, setIsScreenReaderActive] = useState(false);
+  const announceRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Detect screen reader usage
+    const detectScreenReader = () => {
+      // Check for common screen reader indicators
+      const hasScreenReader = 
+        window.navigator.userAgent.includes('NVDA') ||
+        window.navigator.userAgent.includes('JAWS') ||
+        window.speechSynthesis?.getVoices().length > 0;
+      
+      setIsScreenReaderActive(hasScreenReader);
+    };
+
+    detectScreenReader();
+    window.speechSynthesis?.addEventListener('voiceschanged', detectScreenReader);
+
+    return () => {
+      window.speechSynthesis?.removeEventListener('voiceschanged', detectScreenReader);
+    };
+  }, []);
+
+  const announce = useCallback((message: string, priority: 'polite' | 'assertive' = 'polite') => {
+    if (announceRef.current) {
+      announceRef.current.setAttribute('aria-live', priority);
+      announceRef.current.textContent = message;
+      
+      // Clear after announcement
+      setTimeout(() => {
+        if (announceRef.current) {
+          announceRef.current.textContent = '';
+        }
+      }, 1000);
+    }
+  }, []);
+
+  const AnnouncementRegion = useCallback(() => (
+    <div
+      ref={announceRef}
+      aria-live="polite"
+      aria-atomic="true"
+      className="sr-only"
+    />
+  ), []);
+
+  return { isScreenReaderActive, announce, AnnouncementRegion };
+};
+
+// Enhanced keyboard shortcuts
+export const useAdvancedKeyboardShortcuts = () => {
+  const [shortcuts, setShortcuts] = useState<Map<string, () => void>>(new Map());
+
+  const registerShortcut = useCallback((key: string, callback: () => void) => {
+    setShortcuts(prev => new Map(prev.set(key, callback)));
+  }, []);
+
+  const unregisterShortcut = useCallback((key: string) => {
+    setShortcuts(prev => {
+      const newMap = new Map(prev);
+      newMap.delete(key);
+      return newMap;
+    });
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const key = [
+        e.ctrlKey && 'ctrl',
+        e.altKey && 'alt',
+        e.shiftKey && 'shift',
+        e.metaKey && 'meta',
+        e.key.toLowerCase()
+      ].filter(Boolean).join('+');
+
+      const callback = shortcuts.get(key);
+      if (callback) {
+        e.preventDefault();
+        callback();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [shortcuts]);
+
+  return { registerShortcut, unregisterShortcut };
 };

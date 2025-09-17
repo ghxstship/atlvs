@@ -211,17 +211,17 @@ export default function OverviewClient({ organizationId, translations }: Overvie
 
   const getChangeIcon = (changeType: string) => {
     switch (changeType) {
-      case 'increase': return <ArrowUpRight className="h-4 w-4 text-success" />;
-      case 'decrease': return <ArrowDownRight className="h-4 w-4 text-destructive" />;
-      default: return <Minus className="h-4 w-4 text-muted-foreground" />;
+      case 'increase': return <ArrowUpRight className="h-4 w-4 color-success" />;
+      case 'decrease': return <ArrowDownRight className="h-4 w-4 color-destructive" />;
+      default: return <Minus className="h-4 w-4 color-muted" />;
     }
   };
 
   const getChangeColor = (changeType: string) => {
     switch (changeType) {
-      case 'increase': return 'text-success';
-      case 'decrease': return 'text-destructive';
-      default: return 'text-muted-foreground';
+      case 'increase': return 'color-success';
+      case 'decrease': return 'color-destructive';
+      default: return 'color-muted';
     }
   };
 
@@ -231,7 +231,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {[1, 2, 3, 4].map((i) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-muted rounded"></div>
+              <div className="h-20 bg-secondary rounded"></div>
             </Card>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
   if (error) {
     return (
       <Card title="Error">
-        <div className="text-sm text-destructive">{error}</div>
+        <div className="text-body-sm color-destructive">{error}</div>
         <Button onClick={loadOverviewData} className="mt-4">
           Retry
         </Button>
@@ -260,26 +260,26 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             <Card key={metric.id} className="p-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <IconComponent className="h-5 w-5 text-primary" />
-                  <span className="text-sm font-medium text-muted-foreground">
+                  <IconComponent className="h-5 w-5 color-primary" />
+                  <span className="text-body-sm form-label color-muted">
                     {metric.title}
                   </span>
                 </div>
                 {getChangeIcon(metric.changeType)}
               </div>
               <div className="mt-2">
-                <div className="text-2xl font-bold text-foreground">
+                <div className="text-heading-3 text-heading-3 color-foreground">
                   {metric.value}
                 </div>
                 <div className="flex items-center space-x-1 mt-1">
-                  <span className={`text-sm font-medium ${getChangeColor(metric.changeType)}`}>
+                  <span className={`text-body-sm form-label ${getChangeColor(metric.changeType)}`}>
                     {metric.change > 0 ? '+' : ''}{metric.change}%
                   </span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-body-sm color-muted">
                     vs last period
                   </span>
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="text-body-sm color-muted mt-1">
                   {metric.description}
                 </div>
               </div>
@@ -295,18 +295,18 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex items-start space-x-3">
                 <div className="flex-shrink-0">
-                  <Activity className="h-4 w-4 text-primary mt-1" />
+                  <Activity className="h-4 w-4 color-primary mt-1" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="text-sm text-foreground">
+                  <div className="text-body-sm color-foreground">
                     {activity.description}
                   </div>
                   <div className="flex items-center space-x-2 mt-1">
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-body-sm color-muted">
                       by {activity.user}
                     </span>
-                    <span className="text-xs text-muted-foreground/60">•</span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-body-sm color-muted/60">•</span>
+                    <span className="text-body-sm color-muted">
                       {formatTimestamp(activity.timestamp)}
                     </span>
                   </div>
@@ -328,24 +328,24 @@ export default function OverviewClient({ organizationId, translations }: Overvie
               <div key={performer.id} className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
                   <div className="flex-shrink-0">
-                    <Badge variant="outline" className="text-xs">
+                    <Badge variant="outline" className="text-body-sm">
                       #{index + 1}
                     </Badge>
                   </div>
                   <div>
-                    <div className="text-sm font-medium text-foreground">
+                    <div className="text-body-sm form-label color-foreground">
                       {performer.name}
                     </div>
-                    <div className="text-xs text-muted-foreground">
+                    <div className="text-body-sm color-muted">
                       {performer.category}
                     </div>
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-sm font-medium text-foreground">
+                  <div className="text-body-sm form-label color-foreground">
                     {performer.value}
                   </div>
-                  <div className="text-xs text-success">
+                  <div className="text-body-sm color-success">
                     +{performer.change}%
                   </div>
                 </div>

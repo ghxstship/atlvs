@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Card, Badge, Button } from '@ghxstship/ui';
-import { CompletionBar } from '../../components/ui/DynamicProgressBar';
+import { CompletionBar } from '../../../_components/ui/DynamicProgressBar';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Users, Shield, Award, Star, Network, List, TrendingUp, Calendar } from 'lucide-react';
 
@@ -130,43 +130,43 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">{t('totalPeople')}</p>
-              <p className="text-2xl font-bold text-foreground">{stats.totalPeople}</p>
-              <p className="text-xs text-success">
+              <p className="text-body-sm form-label color-muted">{t('totalPeople')}</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalPeople}</p>
+              <p className="text-body-sm color-success">
                 {stats.activePeople} {t('active')}
               </p>
             </div>
-            <Users className="h-8 w-8 text-primary" />
+            <Users className="h-8 w-8 color-primary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">{t('totalRoles')}</p>
-              <p className="text-2xl font-bold text-foreground">{stats.totalRoles}</p>
+              <p className="text-body-sm form-label color-muted">{t('totalRoles')}</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalRoles}</p>
             </div>
-            <Shield className="h-8 w-8 text-secondary" />
+            <Shield className="h-8 w-8 color-secondary" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">{t('totalCompetencies')}</p>
-              <p className="text-2xl font-bold text-foreground">{stats.totalCompetencies}</p>
+              <p className="text-body-sm form-label color-muted">{t('totalCompetencies')}</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalCompetencies}</p>
             </div>
-            <Award className="h-8 w-8 text-success" />
+            <Award className="h-8 w-8 color-success" />
           </div>
         </Card>
 
         <Card>
           <div className="flex items-center justify-between p-4">
             <div>
-              <p className="text-sm font-medium text-muted-foreground">{t('totalEndorsements')}</p>
-              <p className="text-2xl font-bold text-foreground">{stats.totalEndorsements}</p>
+              <p className="text-body-sm form-label color-muted">{t('totalEndorsements')}</p>
+              <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalEndorsements}</p>
             </div>
-            <Star className="h-8 w-8 text-warning" />
+            <Star className="h-8 w-8 color-warning" />
           </div>
         </Card>
       </div>
@@ -181,9 +181,9 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               className="flex items-center space-x-3 p-4 border rounded-lg hover:shadow-md transition-shadow cursor-pointer"
             >
               <div className={`p-2 rounded-lg ${action.color}`}>
-                <action.icon className="h-5 w-5 text-white" />
+                <action.icon className="h-5 w-5 text-background" />
               </div>
-              <span className="text-sm font-medium text-foreground">{action.label}</span>
+              <span className="text-body-sm form-label color-foreground">{action.label}</span>
             </a>
           ))}
         </div>
@@ -194,25 +194,25 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card title={t('peopleByStatus')}>
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('active')}</span>
+              <span className="text-body-sm color-muted">{t('active')}</span>
               <div className="flex items-center space-x-2">
                 <CompletionBar
                   completed={stats.activePeople}
                   total={stats.totalPeople}
                   className="w-24"
                 />
-                <span className="text-sm font-medium">{stats.activePeople}</span>
+                <span className="text-body-sm form-label">{stats.activePeople}</span>
               </div>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('inactive')}</span>
+              <span className="text-body-sm color-muted">{t('inactive')}</span>
               <div className="flex items-center space-x-2">
                 <CompletionBar
                   completed={stats.totalPeople - stats.activePeople}
                   total={stats.totalPeople}
                   className="w-24"
                 />
-                <span className="text-sm font-medium">{stats.totalPeople - stats.activePeople}</span>
+                <span className="text-body-sm form-label">{stats.totalPeople - stats.activePeople}</span>
               </div>
             </div>
           </div>
@@ -221,28 +221,28 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
         <Card title={t('moduleStatus')}>
           <div className="p-4 space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('directory')}</span>
-              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              <span className="text-body-sm color-muted">{t('directory')}</span>
+              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('roles')}</span>
-              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              <span className="text-body-sm color-muted">{t('roles')}</span>
+              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('competencies')}</span>
-              <Badge className="bg-success/10 text-success">{t('active')}</Badge>
+              <span className="text-body-sm color-muted">{t('competencies')}</span>
+              <Badge className="bg-success/10 color-success">{t('active')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('endorsements')}</span>
-              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              <span className="text-body-sm color-muted">{t('endorsements')}</span>
+              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('shortlists')}</span>
-              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              <span className="text-body-sm color-muted">{t('shortlists')}</span>
+              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <span className="text-sm text-muted-foreground">{t('network')}</span>
-              <Badge className="bg-warning/10 text-warning">{t('beta')}</Badge>
+              <span className="text-body-sm color-muted">{t('network')}</span>
+              <Badge className="bg-warning/10 color-warning">{t('beta')}</Badge>
             </div>
           </div>
         </Card>
@@ -252,9 +252,9 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       <Card title={t('recentActivity')}>
         <div className="p-4">
           <div className="text-center py-8">
-            <Calendar className="h-12 w-12 text-muted-foreground/50 mx-auto mb-4" />
-            <p className="text-muted-foreground">{t('noRecentActivity')}</p>
-            <p className="text-sm text-muted-foreground/70 mt-2">{t('activityWillAppearHere')}</p>
+            <Calendar className="h-12 w-12 color-muted/50 mx-auto mb-4" />
+            <p className="color-muted">{t('noRecentActivity')}</p>
+            <p className="text-body-sm color-muted/70 mt-2">{t('activityWillAppearHere')}</p>
           </div>
         </div>
       </Card>

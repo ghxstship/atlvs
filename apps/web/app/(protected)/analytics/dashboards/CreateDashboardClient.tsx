@@ -144,8 +144,8 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
       <div className="flex flex-col h-full">
         <div className="flex items-center justify-between p-6 border-b">
           <div>
-            <h2 className="text-lg font-semibold">Create Dashboard</h2>
-            <p className="text-sm text-muted-foreground">Build a custom analytics dashboard</p>
+            <h2 className="text-body text-heading-4">Create Dashboard</h2>
+            <p className="text-body-sm color-muted">Build a custom analytics dashboard</p>
           </div>
           <Button onClick={onCancel || (() => {})}>
             <X className="h-4 w-4" />
@@ -156,22 +156,22 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
           <div className="flex-1 p-6 space-y-6 overflow-y-auto">
             {/* Basic Information */}
             <div className="space-y-4">
-              <h3 className="text-sm font-medium">Basic Information</h3>
+              <h3 className="text-body-sm form-label">Basic Information</h3>
               
               <div>
-                <label className="block text-sm font-medium mb-1">Dashboard Name</label>
+                <label className="block text-body-sm form-label mb-1">Dashboard Name</label>
                 <input
                   {...register('name')}
-                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter dashboard name"
                 />
                 {errors.name && (
-                  <p className="text-sm text-destructive mt-1">{errors.name.message}</p>
+                  <p className="text-body-sm color-destructive mt-1">{errors.name.message}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-body-sm form-label mb-1">Description</label>
                 <textarea
                   {...register('description')}
                   rows={3}
@@ -184,13 +184,13 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <input
                   {...register('isPublic')}
                   type="checkbox"
-                  className="rounded border-border text-primary focus:ring-primary"
+                  className="rounded border-border color-primary focus:ring-primary"
                 />
-                <label className="text-sm font-medium">Make dashboard public</label>
+                <label className="text-body-sm form-label">Make dashboard public</label>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-1">Layout Type</label>
+                <label className="block text-body-sm form-label mb-1">Layout Type</label>
                 <select
                   {...register('layout')}
                   className="w-full px-3 py-2 border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
@@ -204,7 +204,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
             {/* Widgets Section */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-sm font-medium">Dashboard Widgets</h3>
+                <h3 className="text-body-sm form-label">Dashboard Widgets</h3>
                 <Button
                   type="button"
                   variant="outline"
@@ -217,10 +217,10 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
               </div>
 
               {widgets.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-8 color-muted">
                   <BarChart3 className="h-12 w-12 mx-auto mb-2 opacity-50" />
                   <p>No widgets added yet</p>
-                  <p className="text-sm">Add widgets to build your dashboard</p>
+                  <p className="text-body-sm">Add widgets to build your dashboard</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -228,7 +228,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                     <Card key={widget.id} className="p-4">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <h4 className="font-medium">{widget.title}</h4>
+                          <h4 className="form-label">{widget.title}</h4>
                           <div className="flex items-center space-x-2 mt-1">
                             <Badge variant="secondary">{widget.type}</Badge>
                             {widget.chartType && (
@@ -253,7 +253,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
             </div>
           </div>
 
-          <div className="p-6 border-t bg-muted/30 flex justify-end space-x-3">
+          <div className="p-6 border-t bg-secondary/30 flex justify-end space-x-3">
             <Button type="button" variant="outline" onClick={onCancel || (() => {})}>
               Cancel
             </Button>
@@ -302,11 +302,11 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
   return (
     <div className="fixed inset-0 bg-background/80 backdrop-blur-sm flex items-center justify-center z-50">
       <div className="bg-card rounded-lg p-6 w-full max-w-md border shadow-lg">
-        <h3 className="text-lg font-semibold mb-4">Add Widget</h3>
+        <h3 className="text-body text-heading-4 mb-4">Add Widget</h3>
         
         <div className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1">Widget Title</label>
+            <label className="block text-body-sm form-label mb-1">Widget Title</label>
             <input
               value={widgetData.title}
               onChange={(e) => setWidgetData({ ...widgetData, title: e.target.value })}
@@ -316,7 +316,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Refresh Interval (seconds)</label>
+            <label className="block text-body-sm form-label mb-1">Refresh Interval (seconds)</label>
             <input
               value={widgetData.refreshInterval}
               onChange={(e) => setWidgetData({ ...widgetData, refreshInterval: parseInt(e.target.value) || 0 })}
@@ -328,7 +328,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1">Widget Type</label>
+            <label className="block text-body-sm form-label mb-1">Widget Type</label>
             <select
               value={widgetData.type}
               onChange={(e) => setWidgetData({ ...widgetData, type: e.target.value as any })}
@@ -344,7 +344,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
 
           {widgetData.type === 'chart' && (
             <div>
-              <label className="block text-sm font-medium mb-1">Data Source</label>
+              <label className="block text-body-sm form-label mb-1">Data Source</label>
               <input
                 value={widgetData.dataSource}
                 onChange={(e) => setWidgetData({ ...widgetData, dataSource: e.target.value })}
@@ -356,7 +356,7 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
 
           {widgetData.type === 'chart' && (
             <div>
-              <label className="block text-sm font-medium mb-1">Chart Type</label>
+              <label className="block text-body-sm form-label mb-1">Chart Type</label>
               <select
                 value={widgetData.chartType}
                 onChange={(e) => setWidgetData({ ...widgetData, chartType: e.target.value as any })}
@@ -372,11 +372,11 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
           )}
 
           <div>
-            <label className="block text-sm font-medium mb-1">Widget Size</label>
+            <label className="block text-body-sm form-label mb-1">Widget Size</label>
             <select
               value={widgetData.size}
               onChange={(e) => setWidgetData({ ...widgetData, size: e.target.value as any })}
-              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               {WIDGET_SIZES.map((size) => (
                 <option key={size.value} value={size.value}>

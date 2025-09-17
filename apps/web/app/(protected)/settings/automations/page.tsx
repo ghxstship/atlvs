@@ -6,7 +6,7 @@ export default function SettingsAutomationsPage() {
   return (
     <div className="space-y-4">
       <Card title="Settings · Automations">
-        <div className="text-sm text-foreground/70">Placeholder: Automation rules and recipes.</div>
+        <div className="text-body-sm color-foreground/70">Placeholder: Automation rules and recipes.</div>
       </Card>
     </div>
   );

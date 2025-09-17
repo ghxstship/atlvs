@@ -256,19 +256,19 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'planning':
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
       case 'rehearsal':
-        return 'text-warning bg-warning/10';
+        return 'color-warning bg-warning/10';
       case 'ready':
-        return 'text-primary bg-primary/10';
+        return 'color-primary bg-primary/10';
       case 'live':
-        return 'text-success bg-success/10';
+        return 'color-success bg-success/10';
       case 'completed':
-        return 'text-secondary bg-secondary/10';
+        return 'color-secondary bg-secondary/10';
       case 'cancelled':
-        return 'text-destructive bg-destructive/10';
+        return 'color-destructive bg-destructive/10';
       default:
-        return 'text-muted-foreground bg-muted/50';
+        return 'color-muted bg-secondary/50';
     }
   };
 
@@ -307,7 +307,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             {/* Header Actions */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-4">
-                <h2 className="text-lg font-semibold">Performance Management</h2>
+                <h2 className="text-body text-heading-4">Performance Management</h2>
                 <Button>
                   <Plus className="h-4 w-4 mr-2" />
                   Create Performance
@@ -324,13 +324,13 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-primary/10 rounded-lg">
-                    <Calendar className="h-5 w-5 text-primary" />
+                    <Calendar className="h-5 w-5 color-primary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(p => p.status === 'ready' || p.status === 'live').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">Upcoming</div>
+                    <div className="text-body-sm color-muted">Upcoming</div>
                   </div>
                 </div>
               </Card>
@@ -338,13 +338,13 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-success/10 rounded-lg">
-                    <Music className="h-5 w-5 text-success" />
+                    <Music className="h-5 w-5 color-success" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(p => p.status === 'live').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">Live Now</div>
+                    <div className="text-body-sm color-muted">Live Now</div>
                   </div>
                 </div>
               </Card>
@@ -352,13 +352,13 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-secondary/10 rounded-lg">
-                    <Users className="h-5 w-5 text-secondary" />
+                    <Users className="h-5 w-5 color-secondary" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.reduce((sum, p) => sum + (p.lineup_count || 0), 0)}
                     </div>
-                    <div className="text-sm text-muted-foreground">Total Performers</div>
+                    <div className="text-body-sm color-muted">Total Performers</div>
                   </div>
                 </div>
               </Card>
@@ -366,13 +366,13 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-warning/10 rounded-lg">
-                    <Star className="h-5 w-5 text-warning" />
+                    <Star className="h-5 w-5 color-warning" />
                   </div>
                   <div>
-                    <div className="text-2xl font-bold">
+                    <div className="text-heading-3 text-heading-3">
                       {data.filter(p => p.status === 'completed').length}
                     </div>
-                    <div className="text-sm text-muted-foreground">Completed</div>
+                    <div className="text-body-sm color-muted">Completed</div>
                   </div>
                 </div>
               </Card>
@@ -425,9 +425,9 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                 <div className="space-y-6 mt-6">
                   {/* Performance Info */}
                   <div className="grid grid-cols-2 gap-4">
-                    <div className="flex items-center gap-2 text-sm">
-                      <Calendar className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Date:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Calendar className="h-4 w-4 color-muted" />
+                      <span className="form-label">Date:</span>
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleDateString()
@@ -435,9 +435,9 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Time:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Clock className="h-4 w-4 color-muted" />
+                      <span className="form-label">Time:</span>
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleTimeString([], { 
@@ -448,21 +448,21 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                         }
                       </span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <MapPin className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Venue:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <MapPin className="h-4 w-4 color-muted" />
+                      <span className="form-label">Venue:</span>
                       <span>{selectedRecord.venue || 'TBD'}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-sm">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="font-medium">Duration:</span>
+                    <div className="flex items-center gap-2 text-body-sm">
+                      <Clock className="h-4 w-4 color-muted" />
+                      <span className="form-label">Duration:</span>
                       <span>{selectedRecord.duration_minutes ? `${selectedRecord.duration_minutes} min` : 'TBD'}</span>
                     </div>
                   </div>
 
                   {/* Status Badge */}
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-sm">Status:</span>
+                    <span className="form-label text-body-sm">Status:</span>
                     <Badge className={getStatusColor(selectedRecord.status)}>
                       {selectedRecord.status?.replace('_', ' ') || 'Unknown'}
                     </Badge>
@@ -471,22 +471,22 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {/* Performance Metrics */}
                   <div className="grid grid-cols-3 gap-4 pt-4 border-t">
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-primary">{selectedRecord.lineup_count || 0}</div>
-                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <div className="text-heading-3 text-heading-3 color-primary">{selectedRecord.lineup_count || 0}</div>
+                      <div className="text-body-sm color-muted flex items-center justify-center gap-1">
                         <Users className="h-3 w-3" />
                         Performers
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-success">{selectedRecord.riders_count || 0}</div>
-                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <div className="text-heading-3 text-heading-3 color-success">{selectedRecord.riders_count || 0}</div>
+                      <div className="text-body-sm color-muted flex items-center justify-center gap-1">
                         <FileText className="h-3 w-3" />
                         Riders
                       </div>
                     </div>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-secondary">{selectedRecord.call_sheets_count || 0}</div>
-                      <div className="text-sm text-muted-foreground flex items-center justify-center gap-1">
+                      <div className="text-heading-3 text-heading-3 color-secondary">{selectedRecord.call_sheets_count || 0}</div>
+                      <div className="text-body-sm color-muted flex items-center justify-center gap-1">
                         <Calendar className="h-3 w-3" />
                         Call Sheets
                       </div>
@@ -496,11 +496,11 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {/* Technical Requirements */}
                   {selectedRecord.technical_requirements && selectedRecord.technical_requirements !== 'None specified' && (
                     <div className="pt-4 border-t">
-                      <h4 className="font-medium text-sm mb-2 flex items-center gap-2">
+                      <h4 className="form-label text-body-sm mb-2 flex items-center gap-2">
                         <Mic className="h-4 w-4" />
                         Technical Requirements
                       </h4>
-                      <p className="text-sm text-muted-foreground bg-muted/50 p-3 rounded-lg">
+                      <p className="text-body-sm color-muted bg-secondary/50 p-3 rounded-lg">
                         {selectedRecord.technical_requirements}
                       </p>
                     </div>
