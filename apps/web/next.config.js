@@ -25,7 +25,11 @@ const nextConfig = {
     '@ghxstship/infrastructure'
   ],
   experimental: {
-    typedRoutes: true
+    typedRoutes: true,
+    instrumentationHook: true
+  },
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production'
   },
   async headers() {
     const csp = `
