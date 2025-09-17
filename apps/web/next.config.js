@@ -62,4 +62,14 @@ const withNextIntl = createNextIntlPlugin();
 
 const wrapped = withNextIntl(nextConfig);
 
-export default withSentryConfig(wrapped, { silent: true }, { hideSourceMaps: true });
+export default withSentryConfig(
+  wrapped,
+  {
+    silent: true,
+    // Remove this once Sentry SDK defaults to deleting sourcemaps
+    sourcemaps: { deleteSourcemapsAfterUpload: true },
+    // Optional: suppress missing global-error warning if needed
+    // suppressGlobalErrorHandlerFileWarning: true,
+  },
+  { hideSourceMaps: true }
+);
