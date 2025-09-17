@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, Shield, Zap, ExternalLink, MessageSquare, Lightbulb } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Coming Soon | GHXSTSHIP Products',

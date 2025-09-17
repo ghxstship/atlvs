@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
-import { anton } from '../../../../(marketing)/lib/typography';
+import { anton } from '../../lib/typography';
 
 interface NavigationItem {
   label: string;

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Button } from '@ghxstship/ui/components/Button';
 import { NavigationDropdown } from './NavigationDropdown';
-import { anton } from '../../../../(marketing)/lib/typography';
+import { anton } from '../../lib/typography';
 import { cn } from '../../lib/utils';
 
 interface NavigationItem {

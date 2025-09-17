@@ -1,6 +1,6 @@
 import { cn } from '../../lib/utils';
-import { layouts, LayoutClasses } from '../../../(marketing)/lib/layouts';
-import { typography } from '../../../(marketing)/lib/typography';
+import { layouts, LayoutClasses } from '../../lib/layouts';
+import { typography } from '../../lib/typography';
 
 interface SectionProps {
   children: React.ReactNode;

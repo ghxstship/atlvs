@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, Mail, Globe, Users, TrendingUp, Heart, Shield, Target, MapPin, Linkedin } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography } from '../../../_components/lib/typography';
 // import { Section, SectionHeader } from '../../components/layout/Section';
 // import { TeamMemberCard } from '../../components/team/TeamMemberCard';
 // import { LeadershipCard } from '../../components/team/LeadershipCard';

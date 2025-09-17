@@ -3,8 +3,8 @@ import Link from 'next/link';
 import type { Route } from 'next';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Mail, Lock, User, Eye, EyeOff, Check } from 'lucide-react';
-import { typography } from '../../(marketing)/lib/typography';
-import { spacing, layouts } from '../../(marketing)/lib/spacing';
+import { typography } from '../../_components/lib/typography';
+import { spacing, layouts } from '../../_components/lib/spacing';
 import { SignUpForm } from './SignUpForm';
 
 export const metadata: Metadata = {

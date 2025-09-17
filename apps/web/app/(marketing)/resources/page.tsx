@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, BookOpen, Download, Users, TrendingUp, Zap } from 'lucide-react';
-import { typography } from '../lib/typography';
+import { typography } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Resources | GHXSTSHIP',

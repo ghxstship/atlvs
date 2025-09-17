@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react';
-// import { usePerformanceMonitoring } from '../lib/performance';
+// import { usePerformanceMonitoring } from '../../_components/lib/performance';
 
 interface PerformanceDisplayProps {
   showDetails?: boolean;

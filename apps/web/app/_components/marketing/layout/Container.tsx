@@ -1,4 +1,4 @@
-import { cn } from '../../lib/utils';
+import { cn } from '../../_components/lib/utils';
 import { layouts } from '../../../../(marketing)/lib/layouts';
 
 interface ContainerProps {

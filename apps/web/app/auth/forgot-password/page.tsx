@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, Mail, ArrowLeft } from 'lucide-react';
-import { typography } from '../../(marketing)/lib/typography';
-import { spacing, layouts } from '../../(marketing)/lib/spacing';
-import { accessibility } from '../../(marketing)/lib/accessibility';
+import { typography } from '../../_components/lib/typography';
+import { spacing, layouts } from '../../_components/lib/spacing';
+import { accessibility } from '../../_components/lib/accessibility';
 
 export const metadata: Metadata = {
   title: 'Reset Password | GHXSTSHIP',

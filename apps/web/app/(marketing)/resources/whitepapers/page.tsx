@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Download, Lock, Calendar, Users, TrendingUp, Eye } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Whitepapers | GHXSTSHIP Resources',

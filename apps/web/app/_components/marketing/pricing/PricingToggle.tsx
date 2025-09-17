@@ -1,5 +1,5 @@
 import { Badge } from '@ghxstship/ui';
-import { cn } from '../../lib/utils';
+import { cn } from '../../_components/lib/utils';
 
 interface PricingToggleProps {
   isAnnual: boolean;

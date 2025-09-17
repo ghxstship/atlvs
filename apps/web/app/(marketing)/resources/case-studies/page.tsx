@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, TrendingUp, Users, DollarSign, Calendar, Lock, Eye, Award } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Case Studies | GHXSTSHIP Resources',

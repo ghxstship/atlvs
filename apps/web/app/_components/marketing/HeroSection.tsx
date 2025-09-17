@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
-import { cn } from '../../lib/utils';
+import { cn } from '../../_components/lib/utils';
 import { Anton } from 'next/font/google';
 import { Button } from '@ghxstship/ui';
 
