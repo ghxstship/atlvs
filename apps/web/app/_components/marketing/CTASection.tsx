@@ -8,7 +8,7 @@ import { Button } from '@ghxstship/ui';
 export function CTASection() {
   return (
     <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         {/* Main CTA */}
         <div className="text-center mb-16">
           <div className="max-w-4xl mx-auto">
@@ -24,7 +24,7 @@ export function CTASection() {
               with GHXSTSHIP. Start your free trial today and experience the future of production management.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+            <div className="flex flex-col sm:flex-row gap-md justify-center mb-8">
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                   Start Free Trial
@@ -39,16 +39,16 @@ export function CTASection() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="flex flex-wrap justify-center items-center gap-6 text-body-sm color-muted">
-              <div className="flex items-center gap-2">
+            <div className="flex flex-wrap justify-center items-center gap-lg text-body-sm color-muted">
+              <div className="flex items-center gap-sm">
                 <CheckCircle className="h-4 w-4 color-success" />
                 <span>No credit card required</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-sm">
                 <Star className="h-4 w-4 color-warning" />
                 <span>14-day free trial</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-sm">
                 <Zap className="h-4 w-4 color-primary" />
                 <span>Setup in minutes</span>
               </div>
@@ -57,9 +57,9 @@ export function CTASection() {
         </div>
 
         {/* Feature Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-3 gap-lg mb-16">
           <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardContent className="p-8">
+            <CardContent className="p-xl">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
                 <CheckCircle className="h-8 w-8 color-primary" />
               </div>
@@ -74,7 +74,7 @@ export function CTASection() {
           </Card>
 
           <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardContent className="p-8">
+            <CardContent className="p-xl">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
                 <Star className="h-8 w-8 color-accent" />
               </div>
@@ -89,7 +89,7 @@ export function CTASection() {
           </Card>
 
           <Card className="text-center hover:shadow-lg transition-shadow">
-            <CardContent className="p-8">
+            <CardContent className="p-xl">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/10 mb-6">
                 <Zap className="h-8 w-8 color-success" />
               </div>
@@ -107,14 +107,14 @@ export function CTASection() {
         {/* Secondary CTA */}
         <div className="text-center">
           <Card className="max-w-2xl mx-auto bg-gradient-to-r from-muted/50 to-muted/30 border-muted">
-            <CardContent className="p-8">
+            <CardContent className="p-xl">
               <h3 className="text-heading-2 mb-4">
                 Need a Custom Solution?
               </h3>
               <p className="color-muted mb-6">
                 Our enterprise team can help you build a tailored solution that fits your specific needs and scale.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/contact">
                   <Button className="w-full sm:w-auto transition-all duration-200 hover:scale-105">
                     Contact Sales

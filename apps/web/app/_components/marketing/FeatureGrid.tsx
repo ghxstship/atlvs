@@ -116,7 +116,7 @@ const categories = [
 export function FeatureGrid() {
   return (
     <section className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -136,12 +136,12 @@ export function FeatureGrid() {
         </div>
 
         {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg mb-16">
           {features.map((feature) => {
             const Icon = feature.icon;
             return (
               <Card key={feature.title} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   {/* Icon */}
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} mb-4`}>
                     <Icon className="h-6 w-6 color-primary-foreground" />
@@ -168,10 +168,10 @@ export function FeatureGrid() {
         </div>
 
         {/* Feature Highlights */}
-        <div className="grid lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-xl">
           {/* Enterprise Ready */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-xl text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
                 <Shield className="h-8 w-8 color-primary" />
               </div>
@@ -179,16 +179,16 @@ export function FeatureGrid() {
               <p className="color-muted mb-6">
                 Built for scale with enterprise-grade security, compliance, and support.
               </p>
-              <div className="space-y-2 text-body-sm">
-                <div className="flex items-center justify-center gap-2">
+              <div className="stack-sm text-body-sm">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>SOC 2 Type II Certified</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>99.9% Uptime SLA</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>24/7 Expert Support</span>
                 </div>
@@ -198,7 +198,7 @@ export function FeatureGrid() {
 
           {/* AI-Powered */}
           <Card className="bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-xl text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-6">
                 <Zap className="h-8 w-8 color-accent" />
               </div>
@@ -206,16 +206,16 @@ export function FeatureGrid() {
               <p className="color-muted mb-6">
                 Intelligent automation and insights to optimize your workflows.
               </p>
-              <div className="space-y-2 text-body-sm">
-                <div className="flex items-center justify-center gap-2">
+              <div className="stack-sm text-body-sm">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Predictive Analytics</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Smart Recommendations</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Automated Workflows</span>
                 </div>
@@ -225,7 +225,7 @@ export function FeatureGrid() {
 
           {/* Global Scale */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-xl text-center">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
                 <Globe className="h-8 w-8 color-primary" />
               </div>
@@ -233,16 +233,16 @@ export function FeatureGrid() {
               <p className="color-muted mb-6">
                 Connect teams worldwide with multi-region infrastructure.
               </p>
-              <div className="space-y-2 text-body-sm">
-                <div className="flex items-center justify-center gap-2">
+              <div className="stack-sm text-body-sm">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>50+ Countries</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Multi-language Support</span>
                 </div>
-                <div className="flex items-center justify-center gap-2">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Global CDN</span>
                 </div>

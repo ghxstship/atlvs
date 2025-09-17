@@ -72,7 +72,7 @@ export default function ComingSoonPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Coming Soon
@@ -89,7 +89,7 @@ export default function ComingSoonPage() {
               that will transform how you manage talent and secure your operations. Get ready for 
               something completely different.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Get Early Access
@@ -108,7 +108,7 @@ export default function ComingSoonPage() {
 
       {/* Timeline */}
       <section className="py-16 border-b">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-12">
             <h2 className={`mb-4 ${typography.sectionTitle}`}>
               2026 PRODUCT ROADMAP
@@ -116,7 +116,7 @@ export default function ComingSoonPage() {
           </div>
           
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-xl">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-10 w-10 text-background" />
@@ -141,10 +141,10 @@ export default function ComingSoonPage() {
 
       {/* Product Previews */}
       <section id="products" className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="space-y-20">
             {upcomingProducts.map((product, index) => (
-              <div key={product.id} className={`${index % 2 === 1 ? 'md:flex-row-reverse' : ''} md:flex items-center gap-12`}>
+              <div key={product.id} className={`${index % 2 === 1 ? 'md:flex-row-reverse' : ''} md:flex items-center gap-2xl`}>
                 <div className="md:w-1/2 mb-8 md:mb-0">
                   <Card className="hover:shadow-xl transition-all duration-300">
                     <div className={`h-80 bg-gradient-to-br ${product.gradient} flex items-center justify-center relative overflow-hidden`}>
@@ -167,7 +167,7 @@ export default function ComingSoonPage() {
                 
                 <div className="md:w-1/2">
                   <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-sm mb-4">
                       <Badge variant="outline">{product.category}</Badge>
                       <Badge className="bg-primary color-primary-foreground">
                         <Calendar className="h-3 w-3 mr-1" />
@@ -182,12 +182,12 @@ export default function ComingSoonPage() {
                     </p>
                   </div>
 
-                  <div className="space-y-6">
+                  <div className="stack-lg">
                     <div>
                       <h3 className="text-body text-heading-4 mb-3">Key Features</h3>
-                      <div className="grid gap-2">
+                      <div className="grid gap-sm">
                         {product.features.map((feature, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
+                          <div key={idx} className="flex items-start gap-sm">
                             <Zap className="h-4 w-4 color-primary mt-1 flex-shrink-0" />
                             <span className="text-body-sm color-muted">{feature}</span>
                           </div>
@@ -197,9 +197,9 @@ export default function ComingSoonPage() {
 
                     <div>
                       <h3 className="text-body text-heading-4 mb-3">Expected Benefits</h3>
-                      <div className="grid gap-2">
+                      <div className="grid gap-sm">
                         {product.benefits.map((benefit, idx) => (
-                          <div key={idx} className="flex items-start gap-2">
+                          <div key={idx} className="flex items-start gap-sm">
                             <ArrowRight className="h-4 w-4 color-success mt-1 flex-shrink-0" />
                             <span className="text-body-sm text-heading-4 color-success">{benefit}</span>
                           </div>
@@ -209,7 +209,7 @@ export default function ComingSoonPage() {
 
                     <div>
                       <h3 className="text-body text-heading-4 mb-3">Target Users</h3>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-sm">
                         {product.targetUsers.map((user) => (
                           <Badge key={user} variant="secondary">
                             {user}
@@ -227,7 +227,7 @@ export default function ComingSoonPage() {
 
       {/* Feature Request Section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               SHAPE THE FUTURE
@@ -238,7 +238,7 @@ export default function ComingSoonPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-xl mb-12">
             {[
               {
                 icon: Lightbulb,
@@ -257,7 +257,7 @@ export default function ComingSoonPage() {
               },
             ].map((item, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
                     <item.icon className="h-8 w-8 text-background" />
                   </div>
@@ -274,7 +274,7 @@ export default function ComingSoonPage() {
 
           <div className="text-center">
             <Card className="max-w-2xl mx-auto">
-              <CardContent className="p-8">
+              <CardContent className="p-xl">
                 <MessageSquare className="h-12 w-12 color-primary mx-auto mb-4" />
                 <h3 className={`mb-4 ${typography.cardTitle}`}>
                   Feature Request Portal
@@ -300,9 +300,9 @@ export default function ComingSoonPage() {
 
       {/* Early Access CTA */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <div className="flex justify-center mb-6">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
                   <Zap className="h-10 w-10 text-background" />
@@ -315,7 +315,7 @@ export default function ComingSoonPage() {
                 Be among the first to experience the next generation of production management tools. 
                 Early access users get exclusive features, priority support, and special pricing.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Join Early Access Program

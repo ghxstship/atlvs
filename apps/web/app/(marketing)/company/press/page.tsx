@@ -143,7 +143,7 @@ export default function PressPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Press & Media
@@ -160,7 +160,7 @@ export default function PressPage() {
               Access our press kit and connect with our media team.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Button className="group">
                 <Download className="mr-2 h-4 w-4" />
                 Download Press Kit
@@ -176,14 +176,14 @@ export default function PressPage() {
 
       {/* Featured Press Release */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="mb-12">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Latest News</h2>
           </div>
 
           <Card className="overflow-hidden hover:shadow-lg transition-shadow mb-12">
-            <CardContent className="p-8">
-              <div className="grid lg:grid-cols-2 gap-8">
+            <CardContent className="p-xl">
+              <div className="grid lg:grid-cols-2 gap-xl">
                 <div>
                   <Badge variant="outline" className="mb-4">
                     {pressReleases[0].category}
@@ -191,7 +191,7 @@ export default function PressPage() {
                   <h3 className={`${anton.className} text-heading-3 lg:text-heading-2 text-heading-3 mb-4 uppercase`}>
                     {pressReleases[0].title}
                   </h3>
-                  <div className="flex items-center gap-2 text-body-sm color-muted mb-4">
+                  <div className="flex items-center gap-sm text-body-sm color-muted mb-4">
                     <Calendar className="h-4 w-4" />
                     {new Date(pressReleases[0].date).toLocaleDateString('en-US', { 
                       year: 'numeric', 
@@ -208,7 +208,7 @@ export default function PressPage() {
                   </Button>
                 </div>
 
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-8 flex items-center justify-center">
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-lg p-xl flex items-center justify-center">
                   <FileText className="h-16 w-16 color-success" />
                 </div>
               </div>
@@ -219,22 +219,22 @@ export default function PressPage() {
 
       {/* Press Releases */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="mb-12">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Press Releases</h2>
           </div>
 
-          <div className="space-y-6">
+          <div className="stack-lg">
             {pressReleases.slice(1).map((release, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between gap-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-start justify-between gap-md">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-sm mb-3">
                         <Badge variant="outline" className="text-body-sm">
                           {release.category}
                         </Badge>
-                        <div className="flex items-center gap-2 text-body-sm color-muted">
+                        <div className="flex items-center gap-sm text-body-sm color-muted">
                           <Calendar className="h-3 w-3" />
                           {new Date(release.date).toLocaleDateString('en-US', { 
                             year: 'numeric', 
@@ -270,7 +270,7 @@ export default function PressPage() {
 
       {/* Media Coverage */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="mb-12">
             <h2 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>Media Coverage</h2>
             <p className="text-body color-muted">
@@ -278,15 +278,15 @@ export default function PressPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-lg">
             {mediaCoverage.map((article, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow group">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between gap-4 mb-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-start justify-between gap-md mb-4">
                     <Badge variant="outline" className="text-body-sm">
                       {article.publication}
                     </Badge>
-                    <div className="flex items-center gap-2 text-body-sm color-muted">
+                    <div className="flex items-center gap-sm text-body-sm color-muted">
                       <Calendar className="h-3 w-3" />
                       {new Date(article.date).toLocaleDateString('en-US', { 
                         month: 'short', 
@@ -321,7 +321,7 @@ export default function PressPage() {
 
       {/* Awards & Recognition */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               AWARDS & RECOGNITION
@@ -331,11 +331,11 @@ export default function PressPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-lg">
             {awards.map((award, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-start gap-md">
                     <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
                       <FileText className="h-6 w-6 text-background" />
                     </div>
@@ -344,7 +344,7 @@ export default function PressPage() {
                         {award.title}
                       </h3>
                       <p className="color-primary text-heading-4 mb-2">{award.organization}</p>
-                      <div className="flex items-center gap-2 text-body-sm color-muted mb-3">
+                      <div className="flex items-center gap-sm text-body-sm color-muted mb-3">
                         <Calendar className="h-3 w-3" />
                         {new Date(award.date).toLocaleDateString('en-US', { 
                           year: 'numeric', 
@@ -363,7 +363,7 @@ export default function PressPage() {
 
       {/* Media Kit */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               MEDIA KIT
@@ -373,18 +373,18 @@ export default function PressPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {mediaKit.map((kit) => (
               <Card key={kit.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>
                     {kit.title}
                   </h3>
                   <p className="color-muted mb-4">{kit.description}</p>
                   
-                  <div className="space-y-2 mb-6">
+                  <div className="stack-sm mb-6">
                     {kit.items.map((item) => (
-                      <div key={item} className="flex items-center gap-2">
+                      <div key={item} className="flex items-center gap-sm">
                         <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                         <span className="text-body-sm color-foreground">{item}</span>
                       </div>
@@ -411,7 +411,7 @@ export default function PressPage() {
 
       {/* Media Contact */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-12">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               MEDIA CONTACT
@@ -421,9 +421,9 @@ export default function PressPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-xl max-w-4xl mx-auto">
             <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-xl text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Mail className="h-6 w-6 text-foreground" />
                 </div>
@@ -441,7 +441,7 @@ export default function PressPage() {
             </Card>
 
             <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-8 text-center">
+              <CardContent className="p-xl text-center">
                 <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
                   <Phone className="h-6 w-6 text-background" />
                 </div>
@@ -463,7 +463,7 @@ export default function PressPage() {
 
       {/* CTA Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               STAY UPDATED
@@ -473,11 +473,11 @@ export default function PressPage() {
               directly in your inbox.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">
+            <div className="flex flex-col sm:flex-row gap-md justify-center max-w-md mx-auto">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="flex-1 px-4 py-3 border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
+                className="flex-1 px-md py-sm border border-border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary"
               />
               <Button className="group">
                 Subscribe
@@ -490,14 +490,14 @@ export default function PressPage() {
 
       {/* Related Pages */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               LEARN MORE
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-lg">
             {[
               { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and story' },
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
@@ -505,7 +505,7 @@ export default function PressPage() {
             ].map((link) => (
               <a key={link.title} href={link.href as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase group-hover:color-primary transition-colors`}>
                       {link.title}
                     </h3>

@@ -43,7 +43,7 @@ export default function ForumsPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-md py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
@@ -57,14 +57,14 @@ export default function ForumsPage() {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 gap-lg mb-16">
           {forumCategories.map((category) => {
             const Icon = category.icon;
             return (
-              <div key={category.title} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
+              <div key={category.title} className="bg-card rounded-lg p-lg border hover:shadow-lg transition-shadow">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center">
-                    <div className="bg-primary/10 p-3 rounded-lg mr-4">
+                    <div className="bg-primary/10 p-sm rounded-lg mr-4">
                       <Icon className="h-6 w-6 color-primary" />
                     </div>
                     <div>
@@ -84,14 +84,14 @@ export default function ForumsPage() {
           })}
         </div>
 
-        <div className="bg-secondary/30 rounded-lg p-8 text-center">
+        <div className="bg-secondary/30 rounded-lg p-xl text-center">
           <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
             COMMUNITY GUIDELINES
           </h2>
           <p className="color-muted mb-6 max-w-2xl mx-auto">
             Help us maintain a welcoming and productive community by following our guidelines.
           </p>
-          <div className="grid md:grid-cols-3 gap-6 text-left">
+          <div className="grid md:grid-cols-3 gap-lg text-left">
             <div>
               <h3 className="text-heading-4 mb-2">Be Respectful</h3>
               <p className="text-body-sm color-muted">

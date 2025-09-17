@@ -37,10 +37,10 @@ export function MarketingHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center cluster-sm">
             <div className="flex items-center">
               <span className="text-display color-primary">
                 GHXSTSHIP
@@ -49,7 +49,7 @@ export function MarketingHeader() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center cluster-xl">
             {navigation.map((item) => (
               <div key={item.label} className="relative">
                 {item.children ? (
@@ -62,7 +62,8 @@ export function MarketingHeader() {
                   <a
                     href={item.href}
                     className={cn(
-                      "nav-link",
+                      "text-body-sm form-label transition-colors hover:color-primary uppercase",
+                      anton.className,
                       pathname === item.href ? "color-primary" : "color-muted"
                     )}
                   >
@@ -74,7 +75,7 @@ export function MarketingHeader() {
           </nav>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center space-x-4">
+          <div className="hidden md:flex items-center cluster">
             <Link href="/auth/signin">
               <Button>
                 Sign In

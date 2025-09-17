@@ -47,9 +47,9 @@ export function NewsletterSignup({
   };
 
   const variants = {
-    default: 'flex flex-col sm:flex-row gap-4 max-w-md',
-    inline: 'flex gap-2 max-w-sm',
-    centered: 'flex flex-col sm:flex-row gap-4 max-w-md mx-auto',
+    default: 'flex flex-col sm:flex-row gap-md max-w-md',
+    inline: 'flex gap-sm max-w-sm',
+    centered: 'flex flex-col sm:flex-row gap-md max-w-md mx-auto',
   };
 
   if (isSubscribed && showSuccess) {
@@ -70,7 +70,7 @@ export function NewsletterSignup({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-4 py-2 rounded-md border border-input bg-background text-body-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:opacity-50"
+          className="w-full px-md py-sm rounded-md border border-input bg-background text-body-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:opacity-50"
           disabled={isLoading}
           required
         />

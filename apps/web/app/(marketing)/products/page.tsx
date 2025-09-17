@@ -81,7 +81,7 @@ export default function ProductsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Our Products
@@ -103,15 +103,15 @@ export default function ProductsPage() {
 
       {/* Product Details */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="space-y-20">
             {products.map((product, index) => (
-              <div key={product.id} className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+              <div key={product.id} className={`grid lg:grid-cols-2 gap-2xl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <div className="space-y-6">
+                  <div className="stack-lg">
                     <div>
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-sm mb-3">
                         <h2 className={typography.sectionTitle}>{product.name}</h2>
                         <Badge variant="secondary">Enterprise Ready</Badge>
                       </div>
@@ -120,12 +120,12 @@ export default function ProductsPage() {
                     </div>
 
                     {/* Features */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
                       {product.features.map((feature) => {
                         const Icon = feature.icon;
                         return (
-                          <div key={feature.label} className="flex items-start gap-3">
-                            <div className={`p-2 rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10 flex-shrink-0`}>
+                          <div key={feature.label} className="flex items-start gap-sm">
+                            <div className={`p-sm rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10 flex-shrink-0`}>
                               <Icon className="h-5 w-5 color-primary" />
                             </div>
                             <div>
@@ -140,9 +140,9 @@ export default function ProductsPage() {
                     {/* Benefits */}
                     <div>
                       <h3 className="text-heading-4 color-foreground mb-3">Key Benefits</h3>
-                      <div className="space-y-2">
+                      <div className="stack-sm">
                         {product.benefits.map((benefit) => (
-                          <div key={benefit} className="flex items-center gap-3">
+                          <div key={benefit} className="flex items-center gap-sm">
                             <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                             <span className="text-body-sm color-muted">{benefit}</span>
                           </div>
@@ -151,7 +151,7 @@ export default function ProductsPage() {
                     </div>
 
                     {/* CTA */}
-                    <div className="flex flex-col sm:flex-row gap-4">
+                    <div className="flex flex-col sm:flex-row gap-md">
                       <a href={product.href as any as any}>
                         <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                           {product.ctaText}
@@ -170,12 +170,12 @@ export default function ProductsPage() {
                 {/* Stats Card */}
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
                   <Card className="bg-gradient-to-br from-muted/30 to-muted/10">
-                    <CardContent className="p-8">
+                    <CardContent className="p-xl">
                       <div className={`h-2 bg-gradient-to-r ${product.gradient} rounded-full mb-6`}></div>
                       <h3 className="font-title text-heading-3 text-heading-3 mb-6 text-center">
                         {product.name} by the Numbers
                       </h3>
-                      <div className="grid grid-cols-2 gap-6">
+                      <div className="grid grid-cols-2 gap-lg">
                         {product.stats.map((stat) => (
                           <div key={stat.label} className="text-center">
                             <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
@@ -196,7 +196,7 @@ export default function ProductsPage() {
 
       {/* Integration Section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-12">
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               BETTER TOGETHER
@@ -208,10 +208,10 @@ export default function ProductsPage() {
           </div>
 
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-8 lg:p-12">
-              <div className="flex items-center justify-center gap-6 mb-8">
+            <CardContent className="p-xl lg:p-2xl">
+              <div className="flex items-center justify-center gap-lg mb-8">
                 <div className="font-title text-heading-3 text-heading-3">ATLVS</div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-sm">
                   <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
                   <Zap className="h-6 w-6 color-primary" />
                   <div className="w-12 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
@@ -219,7 +219,7 @@ export default function ProductsPage() {
                 <div className="font-title text-heading-3 text-heading-3">OPENDECK</div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="grid md:grid-cols-3 gap-lg mb-8">
                 <div className="text-center">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
                     <Users className="h-6 w-6 color-primary" />
@@ -249,7 +249,7 @@ export default function ProductsPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/products/compare">
                   <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     Compare Products

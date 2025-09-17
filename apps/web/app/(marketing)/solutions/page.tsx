@@ -194,7 +194,7 @@ export default function SolutionsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Industry Solutions
@@ -213,12 +213,12 @@ export default function SolutionsPage() {
           </div>
 
           {/* Industry Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {solutions.map((solution) => {
               const Icon = solution.icon;
               return (
                 <Card key={solution.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-lg text-center">
                     <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r ${solution.gradient} mb-4`}>
                       <Icon className="h-8 w-8 text-background" />
                     </div>
@@ -240,18 +240,18 @@ export default function SolutionsPage() {
 
       {/* Detailed Solutions */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="space-y-20">
             {solutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
-                <div key={solution.id} className={`grid lg:grid-cols-2 gap-12 items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                <div key={solution.id} className={`grid lg:grid-cols-2 gap-2xl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                    <div className="space-y-6">
+                    <div className="stack-lg">
                       <div>
-                        <div className="flex items-center gap-3 mb-3">
-                          <div className={`p-3 rounded-lg bg-gradient-to-r ${solution.gradient}`}>
+                        <div className="flex items-center gap-sm mb-3">
+                          <div className={`p-sm rounded-lg bg-gradient-to-r ${solution.gradient}`}>
                             <Icon className="h-6 w-6 text-background" />
                           </div>
                           <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3">{solution.title}</h2>
@@ -263,9 +263,9 @@ export default function SolutionsPage() {
                       {/* Features */}
                       <div>
                         <h3 className="text-heading-4 color-foreground mb-3">Key Features</h3>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm">
                           {solution.features.map((feature) => (
-                            <div key={feature} className="flex items-center gap-3">
+                            <div key={feature} className="flex items-center gap-sm">
                               <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                               <span className="text-body-sm color-muted">{feature}</span>
                             </div>
@@ -276,9 +276,9 @@ export default function SolutionsPage() {
                       {/* Benefits */}
                       <div>
                         <h3 className="text-heading-4 color-foreground mb-3">Benefits</h3>
-                        <div className="space-y-2">
+                        <div className="stack-sm">
                           {solution.benefits.map((benefit) => (
-                            <div key={benefit} className="flex items-center gap-3">
+                            <div key={benefit} className="flex items-center gap-sm">
                               <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${solution.gradient}`}></div>
                               <span className="text-body-sm color-muted">{benefit}</span>
                             </div>
@@ -287,7 +287,7 @@ export default function SolutionsPage() {
                       </div>
 
                       {/* CTA */}
-                      <div className="flex flex-col sm:flex-row gap-4">
+                      <div className="flex flex-col sm:flex-row gap-md">
                         <a href={solution.href as any as any}>
                           <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                             Explore {solution.title}
@@ -306,13 +306,13 @@ export default function SolutionsPage() {
                   {/* Stats & Case Study Card */}
                   <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
                     <Card className={`bg-gradient-to-br ${solution.gradient} bg-opacity-5 border-opacity-20`}>
-                      <CardContent className="p-8">
+                      <CardContent className="p-xl">
                         {/* Stats */}
                         <div className="mb-8">
                           <h3 className="font-title text-heading-3 text-heading-3 mb-6 text-center">
                             {solution.title} by the Numbers
                           </h3>
-                          <div className="grid grid-cols-2 gap-6">
+                          <div className="grid grid-cols-2 gap-lg">
                             <div className="text-center">
                               <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">
                                 {solution.stats.projects}
@@ -343,7 +343,7 @@ export default function SolutionsPage() {
                         {/* Case Study */}
                         <div className="pt-8 border-t">
                           <h4 className="text-heading-4 color-foreground mb-4">Success Story</h4>
-                          <div className="space-y-3">
+                          <div className="stack-sm">
                             <div>
                               <span className="text-heading-4 text-body-sm">{solution.caseStudy.company}</span>
                               <span className="text-body-sm color-muted"> - {solution.caseStudy.project}</span>
@@ -370,7 +370,7 @@ export default function SolutionsPage() {
 
       {/* Common Features Section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
               POWERFUL FEATURES
@@ -385,12 +385,12 @@ export default function SolutionsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg mb-16">
             {commonFeatures.map((feature) => {
               const Icon = feature.icon;
               return (
                 <Card key={feature.title} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
+                  <CardContent className="p-lg">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
                       <Icon className="h-6 w-6 color-primary" />
                     </div>
@@ -404,7 +404,7 @@ export default function SolutionsPage() {
 
           {/* Integration Highlight */}
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-8 lg:p-12 text-center">
+            <CardContent className="p-xl lg:p-2xl text-center">
               <h3 className="font-title text-heading-3 text-heading-3 mb-6">
                 SEAMLESS INTEGRATIONS
               </h3>
@@ -413,15 +413,15 @@ export default function SolutionsPage() {
                 have to convince your team to abandon everything they know.
               </p>
               
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-lg mb-8">
                 {['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'].map((integration) => (
-                  <div key={integration} className="flex items-center justify-center p-4 bg-background rounded-lg border">
+                  <div key={integration} className="flex items-center justify-center p-md bg-background rounded-lg border">
                     <span className="text-body-sm form-label color-muted">{integration}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <a href="/resources/integrations">
                   <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                     View All Integrations

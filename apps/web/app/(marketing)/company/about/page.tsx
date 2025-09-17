@@ -87,7 +87,7 @@ export default function AboutPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Our Story
@@ -106,7 +106,7 @@ export default function AboutPage() {
               and EDC festivals decides software should be less painful.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
               {stats.map((stat) => (
                 <div key={stat.metric} className="text-center">
                   <div className={`mb-2 color-foreground ${typography.statValue}`}>
@@ -123,8 +123,8 @@ export default function AboutPage() {
 
       {/* Mission & Vision */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-md">
+          <div className="grid lg:grid-cols-2 gap-2xl items-center">
             <div>
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 OUR MISSION
@@ -135,22 +135,22 @@ export default function AboutPage() {
                 hospitality, we know what actually works when the pressure's on and everything's on fire.
               </p>
               
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
+              <div className="stack-md">
+                <div className="flex items-start gap-sm">
                   <Target className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-1">Solve Real Problems</h3>
                     <p className="text-body-sm color-muted">Build tools that actually work when you're managing 1,000+ people at 3am</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <Users className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-1">Battle-Tested Reliability</h3>
                     <p className="text-body-sm color-muted">Software that doesn't break when the stakes are highest and everyone's watching</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <TrendingUp className="h-5 w-5 color-primary flex-shrink-0 mt-1" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-1">Industry Experience</h3>
@@ -162,7 +162,7 @@ export default function AboutPage() {
 
             <div className="relative">
               <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-0">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <h3 className={`mb-4 ${typography.cardTitle}`}>Our Vision</h3>
                   <p className="color-muted mb-6">
                     A world where production management doesn't require a PhD in chaos theory. 
@@ -183,7 +183,7 @@ export default function AboutPage() {
 
       {/* Values */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR VALUES
@@ -193,13 +193,13 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {values.map((value) => {
               const Icon = value.icon;
               return (
                 <Card key={value.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-4">
+                  <CardContent className="p-xl">
+                    <div className="flex items-start gap-md">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent">
                         <Icon className="h-6 w-6 text-background" />
                       </div>
@@ -218,7 +218,7 @@ export default function AboutPage() {
 
       {/* Timeline */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               OUR JOURNEY
@@ -233,10 +233,10 @@ export default function AboutPage() {
             
             <div className="space-y-12">
               {milestones.map((milestone, index) => (
-                <div key={milestone.year} className={`flex items-center gap-8 ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
+                <div key={milestone.year} className={`flex items-center gap-xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <Card className="hover:shadow-lg transition-shadow">
-                      <CardContent className="p-6">
+                      <CardContent className="p-lg">
                         <div className={`mb-2 color-primary ${typography.statValue}`}>
                           {milestone.year}
                         </div>
@@ -262,7 +262,7 @@ export default function AboutPage() {
 
       {/* Leadership */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               LEADERSHIP TEAM
@@ -272,10 +272,10 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-xl">
             {leadership.map((leader) => (
               <Card key={leader.name} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 color-primary" />
                   </div>
@@ -293,7 +293,7 @@ export default function AboutPage() {
 
       {/* Awards & Recognition */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               AWARDS & RECOGNITION
@@ -303,7 +303,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {[
               {
                 title: 'Zero Safety Incidents',
@@ -337,7 +337,7 @@ export default function AboutPage() {
               },
             ].map((award) => (
               <Card key={award.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Award className="h-6 w-6 text-background" />
                   </div>
@@ -355,7 +355,7 @@ export default function AboutPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               JOIN OUR MISSION
@@ -365,7 +365,7 @@ export default function AboutPage() {
               professionals who are tired of fighting with software that breaks when you need it most.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Creating
@@ -384,14 +384,14 @@ export default function AboutPage() {
 
       {/* Related Pages */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               LEARN MORE
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-lg">
             {[
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and press coverage' },
@@ -399,7 +399,7 @@ export default function AboutPage() {
             ].map((link) => (
               <a key={link.title} href={link.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-lg text-center">
                     <h3 className={`mb-2 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                       {link.title}
                     </h3>

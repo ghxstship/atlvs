@@ -296,7 +296,7 @@ export default function CareersPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Careers at GHXSTSHIP
@@ -310,7 +310,7 @@ export default function CareersPage() {
               Help us build the tools that empower creative teams worldwide. 
               Join a fast-growing company where your work directly impacts the future of production management.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Button asChild className="group transition-all duration-200 hover:scale-105">
                 <a href="#open-positions">
                   View Open Positions
@@ -326,7 +326,7 @@ export default function CareersPage() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-xl max-w-4xl mx-auto">
             {[
               { label: 'Team Members', value: '150+' },
               { label: 'Open Positions', value: '19' },
@@ -346,7 +346,7 @@ export default function CareersPage() {
 
       {/* Open Positions */}
       <section id="open-positions" className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OPEN POSITIONS
@@ -357,7 +357,7 @@ export default function CareersPage() {
           </div>
 
           {/* Department Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
+          <div className="flex flex-wrap justify-center gap-sm mb-12">
             <Badge variant="secondary" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
               All Departments
             </Badge>
@@ -369,13 +369,13 @@ export default function CareersPage() {
           </div>
 
           {/* Job Listings */}
-          <div className="space-y-6 max-w-4xl mx-auto">
+          <div className="stack-lg max-w-4xl mx-auto">
             {openPositions.map((position) => (
               <Card key={position.id} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <CardContent className="p-lg">
+                  <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-lg">
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-sm mb-3">
                         <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 color-foreground`}>
                           {position.title}
                         </h3>
@@ -389,26 +389,26 @@ export default function CareersPage() {
                       
                       <p className="color-muted mb-4">{position.description}</p>
                       
-                      <div className="flex flex-wrap items-center gap-4 text-body-sm color-muted mb-4">
-                        <div className="flex items-center gap-1">
+                      <div className="flex flex-wrap items-center gap-md text-body-sm color-muted mb-4">
+                        <div className="flex items-center gap-xs">
                           <MapPin className="h-4 w-4" />
                           {position.location}
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-xs">
                           <Clock className="h-4 w-4" />
                           {position.type}
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-xs">
                           <DollarSign className="h-4 w-4" />
                           {position.salary}
                         </div>
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-xs">
                           <Calendar className="h-4 w-4" />
                           Posted {position.posted}
                         </div>
                       </div>
 
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-sm">
                         {position.requirements.slice(0, 3).map((req) => (
                           <Badge key={req} variant="outline" className="text-body-sm">
                             {req}
@@ -417,7 +417,7 @@ export default function CareersPage() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex flex-col sm:flex-row gap-sm">
                       <Button variant="outline" className="transition-all duration-200 hover:scale-105">
                         Learn More
                       </Button>
@@ -445,7 +445,7 @@ export default function CareersPage() {
 
       {/* Culture & Values */}
       <section id="culture" className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OUR CULTURE & VALUES
@@ -455,12 +455,12 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-xl mb-16">
             {cultureValues.map((value) => {
               const Icon = value.icon;
               return (
                 <Card key={value.title} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
+                  <CardContent className="p-lg">
                     <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
                       <Icon className="h-8 w-8 color-primary" />
                     </div>
@@ -489,7 +489,7 @@ export default function CareersPage() {
 
       {/* Benefits & Perks */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               BENEFITS & PERKS
@@ -499,13 +499,13 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {benefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <Card key={benefit.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
+                  <CardContent className="p-lg">
+                    <div className="flex items-start gap-md">
                       <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Icon className="h-6 w-6 color-primary" />
                       </div>
@@ -524,7 +524,7 @@ export default function CareersPage() {
 
       {/* Departments Overview */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               DEPARTMENTS
@@ -534,10 +534,10 @@ export default function CareersPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
             {departments.map((dept) => (
               <Card key={dept.name} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Briefcase className="h-8 w-8 color-primary" />
                   </div>
@@ -555,7 +555,7 @@ export default function CareersPage() {
 
       {/* Application Process */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               APPLICATION PROCESS
@@ -566,7 +566,7 @@ export default function CareersPage() {
           </div>
 
           <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-4 gap-8">
+            <div className="grid md:grid-cols-4 gap-xl">
               {[
                 { step: '01', title: 'Apply', description: 'Submit your application and resume through our careers page.' },
                 { step: '02', title: 'Screen', description: 'Initial phone/video call with our recruiting team.' },
@@ -588,16 +588,16 @@ export default function CareersPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
                 READY TO JOIN OUR TEAM?
               </h2>
               <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Take the next step in your career and help us build the future of creative production management.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Button asChild className="group transition-all duration-200 hover:scale-105">
                   <a href="#open-positions">
                     Browse Open Positions

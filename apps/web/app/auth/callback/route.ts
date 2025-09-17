@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
   if (exchErr) {
     // Even if exchange fails, attempt to redirect to login
     const url = req.nextUrl.clone();
-    url.pathname = '/login';
+    url.pathname = '/auth/signin';
     url.searchParams.set('error', exchErr.message);
     return NextResponse.redirect(url);
   }
@@ -29,7 +29,7 @@ export async function GET(req: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) {
     const url = req.nextUrl.clone();
-    url.pathname = '/login';
+    url.pathname = '/auth/signin';
     return NextResponse.redirect(url);
   }
 

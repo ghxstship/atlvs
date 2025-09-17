@@ -113,9 +113,9 @@ export default function HospitalityTravelPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
+        <div className="container mx-auto px-md">
+          <div className="grid lg:grid-cols-2 gap-2xl items-center">
+            <div className="stack-xl">
               <div>
                 <Badge variant="outline" className="mb-4">
                   Hospitality & Travel
@@ -136,7 +136,7 @@ export default function HospitalityTravelPage() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-lg">
                 <div className="text-center lg:text-left">
                   <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>1M+</div>
                   <div className="text-body-sm color-muted">Guests Served</div>
@@ -155,7 +155,7 @@ export default function HospitalityTravelPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-md">
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Start Journey
@@ -172,21 +172,21 @@ export default function HospitalityTravelPage() {
             {/* Travel Dashboard Preview */}
             <div className="relative">
               <Card className="bg-background border shadow-2xl overflow-hidden">
-                <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
-                  <div className="flex gap-2">
+                <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
+                  <div className="flex gap-sm">
                     <div className="w-3 h-3 rounded-full bg-destructive"></div>
                     <div className="w-3 h-3 rounded-full bg-warning"></div>
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
+                    <div className="inline-flex items-center gap-sm px-sm py-xs bg-background rounded-md text-body-sm color-muted">
                       <Plane className="w-3 h-3" />
                       travel.ghxstship.com
                     </div>
                   </div>
                 </div>
 
-                <CardContent className="p-6 space-y-4">
+                <CardContent className="p-lg stack-md">
                   <div className="flex items-center justify-between">
                     <h3 className={`${anton.className} text-body text-heading-3 uppercase`}>PARADISE RESORT BALI</h3>
                     <Badge variant="outline" className="color-primary border-primary">
@@ -194,25 +194,25 @@ export default function HospitalityTravelPage() {
                     </Badge>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-secondary/30 rounded-lg p-3">
+                  <div className="grid grid-cols-3 gap-sm">
+                    <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-1">Occupancy</div>
                       <div className="text-heading-4">87%</div>
-                      <div className="flex items-center gap-1 mt-1">
+                      <div className="flex items-center gap-xs mt-1">
                         <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
                         <span className="text-body-sm color-success">High</span>
                       </div>
                     </div>
-                    <div className="bg-secondary/30 rounded-lg p-3">
+                    <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-1">Check-ins</div>
                       <div className="text-heading-4">42</div>
-                      <div className="flex -space-x-1 mt-1">
+                      <div className="flex -cluster-xs mt-1">
                         {[1, 2, 3, 4].map((i) => (
                           <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
-                    <div className="bg-secondary/30 rounded-lg p-3">
+                    <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-1">Satisfaction</div>
                       <div className="text-heading-4">4.9/5</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-2">
@@ -221,14 +221,14 @@ export default function HospitalityTravelPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="stack-sm">
                     <div className="text-body-sm form-label color-muted">Today's Activities</div>
                     {[
                       { activity: 'Sunrise Yoga', time: '6:00 AM', guests: 28, color: 'bg-warning' },
                       { activity: 'Snorkeling Tour', time: '10:00 AM', guests: 45, color: 'bg-primary' },
                       { activity: 'Sunset Dinner', time: '7:00 PM', guests: 89, color: 'bg-info' },
                     ].map((item, i) => (
-                      <div key={i} className="flex items-center gap-3 text-body-sm">
+                      <div key={i} className="flex items-center gap-sm text-body-sm">
                         <div className={`w-2 h-2 rounded-full ${item.color}`}></div>
                         <span className="form-label flex-1">{item.activity}</span>
                         <span className="color-muted">{item.time}</span>
@@ -237,7 +237,7 @@ export default function HospitalityTravelPage() {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-2 pt-2 border-t">
+                  <div className="flex items-center gap-sm pt-2 border-t">
                     <Luggage className="w-4 h-4 color-primary" />
                     <span className="text-body-sm form-label">VIP Arrival: Royal Suite - 3:30 PM</span>
                     <div className="ml-auto">
@@ -253,7 +253,7 @@ export default function HospitalityTravelPage() {
 
       {/* Challenges Section */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               HOSPITALITY & TRAVEL CHALLENGES
@@ -263,20 +263,20 @@ export default function HospitalityTravelPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {challenges.map((challenge) => {
               const Icon = challenge.icon;
               return (
                 <Card key={challenge.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-4">
+                  <CardContent className="p-xl">
+                    <div className="flex items-start gap-md">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-primary">
                         <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-3 uppercase`}>{challenge.title}</h3>
                         <p className="color-muted mb-4">{challenge.description}</p>
-                        <div className="flex items-start gap-2">
+                        <div className="flex items-start gap-sm">
                           <CheckCircle className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
                           <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
                         </div>
@@ -292,7 +292,7 @@ export default function HospitalityTravelPage() {
 
       {/* Features Section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMPLETE HOSPITALITY PLATFORM
@@ -302,16 +302,16 @@ export default function HospitalityTravelPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {features.map((feature) => (
               <Card key={feature.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-4 uppercase`}>{feature.title}</h3>
                   <p className="color-muted mb-6">{feature.description}</p>
                   
-                  <div className="space-y-2">
+                  <div className="stack-sm">
                     {feature.benefits.map((benefit) => (
-                      <div key={benefit} className="flex items-center gap-2">
+                      <div key={benefit} className="flex items-center gap-sm">
                         <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                         <span className="text-body-sm color-foreground">{benefit}</span>
                       </div>
@@ -326,7 +326,7 @@ export default function HospitalityTravelPage() {
 
       {/* Case Studies */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               EXCEPTIONAL JOURNEY STORIES
@@ -339,13 +339,13 @@ export default function HospitalityTravelPage() {
           <div className="space-y-12">
             {caseStudies.map((study) => (
               <Card key={study.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="grid lg:grid-cols-2 gap-8">
+                <CardContent className="p-xl">
+                  <div className="grid lg:grid-cols-2 gap-xl">
                     <div>
                       <Badge variant="outline" className="mb-4">{study.project}</Badge>
                       <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-4 uppercase`}>{study.title}</h3>
                       
-                      <div className="space-y-4">
+                      <div className="stack-md">
                         <div>
                           <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">CHALLENGE</h4>
                           <p className="color-foreground">{study.challenge}</p>
@@ -360,9 +360,9 @@ export default function HospitalityTravelPage() {
 
                     <div>
                       <h4 className="text-heading-4 text-body-sm color-muted mb-4 uppercase">RESULTS</h4>
-                      <div className="space-y-3 mb-6">
+                      <div className="stack-sm mb-6">
                         {study.results.map((result) => (
-                          <div key={result} className="flex items-center gap-2">
+                          <div key={result} className="flex items-center gap-sm">
                             <Star className="h-4 w-4 color-warning flex-shrink-0" />
                             <span className="text-body-sm form-label color-foreground">{result}</span>
                           </div>
@@ -384,7 +384,7 @@ export default function HospitalityTravelPage() {
 
       {/* Integrations */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               TRAVEL ECOSYSTEM INTEGRATIONS
@@ -394,10 +394,10 @@ export default function HospitalityTravelPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
             {integrations.map((integration) => (
               <Card key={integration.name} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-primary rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
@@ -412,7 +412,7 @@ export default function HospitalityTravelPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO CREATE MAGIC?
@@ -422,7 +422,7 @@ export default function HospitalityTravelPage() {
               that turn first-time guests into lifelong advocates.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Journey

@@ -61,14 +61,14 @@ export default async function FeatureGate({ feature, children }: { feature: Feat
 
   // Upsell card when feature is disabled
   return (
-    <div className="space-y-4">
+    <div className="stack-md">
       <Card title="Upgrade required">
-        <div className="space-y-3 text-body-sm color-foreground/80">
+        <div className="stack-sm text-body-sm color-foreground/80">
           <p>
             This area requires the {feature.toUpperCase()} feature. Visit Billing to upgrade your plan
             or add your organization email domain(s) for Team unlimited seats.
           </p>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-sm">
             <Link href="/settings/billing" className="btn btn-primary">Go to Billing</Link>
             <Link href="/settings/organization/domains" className="btn border border-border bg-transparent hover:bg-accent">Manage Domains</Link>
           </div>

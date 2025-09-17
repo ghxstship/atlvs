@@ -465,28 +465,28 @@ export function PredictiveSuggestions() {
       {topPredictions.map(prediction => (
         <div
           key={prediction.id}
-          className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-3 max-w-sm animate-slide-in-right"
+          className="bg-card border border-border rounded-lg shadow-lg p-3 max-w-sm animate-slide-in-right"
         >
           <div className="flex items-start justify-between mb-2">
             <div className="flex items-center space-x-2">
-              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" />
-              <span className="text-sm font-medium text-gray-900 dark:text-white">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <span className="text-sm font-medium text-foreground">
                 Suggestion
               </span>
             </div>
-            <div className="text-xs text-gray-500 dark:text-gray-400">
+            <div className="text-xs text-muted-foreground">
               {Math.round(prediction.confidence * 100)}%
             </div>
           </div>
           
-          <p className="text-sm text-gray-600 dark:text-gray-300 mb-3">
+          <p className="text-sm text-muted-foreground mb-3">
             {prediction.context}
           </p>
           
           <div className="flex space-x-2">
             <button
               onClick={() => executePrediction(prediction.id)}
-              className="px-3 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-3 py-1 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90"
             >
               Apply
             </button>
@@ -552,10 +552,10 @@ export function SmartField({ fieldId, type = 'text', placeholder, value, onChang
       />
       
       {showSuggestion && smartDefault && (
-        <div className="absolute top-full left-0 right-0 mt-1 p-2 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-700 rounded text-sm">
+        <div className="absolute top-full left-0 right-0 mt-1 p-2 bg-primary/10 border border-primary/20 rounded text-sm">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-blue-800 dark:text-blue-200">
+              <span className="text-primary">
                 Suggested: {smartDefault.value}
               </span>
               <div className="text-xs text-blue-600 dark:text-blue-400">
@@ -564,7 +564,7 @@ export function SmartField({ fieldId, type = 'text', placeholder, value, onChang
             </div>
             <button
               onClick={applySuggestion}
-              className="px-2 py-1 text-xs bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-2 py-1 text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90"
             >
               Apply
             </button>
@@ -583,8 +583,8 @@ export function ContextualActions() {
 
   return (
     <div className="fixed bottom-20 right-4 z-50">
-      <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-lg p-4 max-w-sm">
-        <h4 className="text-sm font-medium text-gray-900 dark:text-white mb-3">
+      <div className="bg-card border border-border rounded-lg shadow-lg p-4 max-w-sm">
+        <h4 className="text-sm font-medium text-foreground mb-3">
           Suggested Actions
         </h4>
         
@@ -593,10 +593,10 @@ export function ContextualActions() {
             <button
               key={suggestion.id}
               onClick={suggestion.action}
-              className="w-full text-left p-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded"
+              className="w-full text-left p-2 text-sm text-foreground hover:bg-muted rounded"
             >
               <div className="font-medium">{suggestion.title}</div>
-              <div className="text-xs text-gray-500 dark:text-gray-400">
+              <div className="text-xs text-muted-foreground">
                 {suggestion.description}
               </div>
             </button>

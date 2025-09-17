@@ -22,7 +22,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
       </h4>
       <div className="h-32 flex flex-col">
         {/* Always visible first 4 items */}
-        <ul className="space-y-3 flex-shrink-0">
+        <ul className="stack-sm flex-shrink-0">
           {visibleLinks.map((link) => (
             <li key={link.href}>
               <a
@@ -40,7 +40,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
         {hasOverflow && (
           <div className="flex-1 min-h-0 mt-3">
             <div className="h-full overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-              <ul className="space-y-3 pr-2">
+              <ul className="stack-sm pr-2">
                 {overflowLinks.map((link) => (
                   <li key={link.href}>
                     <a

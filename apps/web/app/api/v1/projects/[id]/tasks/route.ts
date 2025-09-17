@@ -6,7 +6,7 @@ import { authorize } from '@ghxstship/domain';
 const CreateTaskSchema = z.object({
   title: z.string().min(1).max(255),
   description: z.string().optional(),
-  status: z.enum(['todo', 'in_progress', 'review', 'done', 'blocked']).default('todo'),
+  status: z.enum(['pending', 'in_progress', 'review', 'done', 'blocked']).default('pending'),
   priority: z.enum(['low', 'medium', 'high', 'critical']).default('medium'),
   type: z.enum(['task', 'bug', 'feature', 'improvement', 'research']).default('task'),
   assigneeId: z.string().uuid().optional(),

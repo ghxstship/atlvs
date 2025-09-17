@@ -35,7 +35,7 @@ export const createTaskSchema = z.object({
   assigneeId: z.string().optional(),
   priority: z.enum(['low', 'medium', 'high']).default('medium'),
   dueDate: z.string().optional(),
-  status: z.enum(['todo', 'in_progress', 'completed']).default('todo')
+  status: z.enum(['pending', 'in_progress', 'completed']).default('pending')
 })
 
 // Profile form schemas

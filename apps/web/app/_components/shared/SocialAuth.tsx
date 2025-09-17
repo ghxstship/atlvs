@@ -10,9 +10,6 @@ export default function SocialAuth() {
       <Button variant="outline" className="w-full font-display tracking-wide" onClick={() => {}}>
         Continue with Google
       </Button>
-      <Button variant="outline" className="w-full font-display tracking-wide" onClick={() => {}}>
-        Continue with GitHub
-      </Button>
     </div>
   )
 }

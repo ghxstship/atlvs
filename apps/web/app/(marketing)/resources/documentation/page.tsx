@@ -102,7 +102,7 @@ export default function DocumentationPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Documentation
@@ -118,7 +118,7 @@ export default function DocumentationPage() {
               Everything you need to integrate, customize, and get the most out of GHXSTSHIP. 
               Built by developers who actually use this stuff in production environments.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Get API Access
@@ -140,7 +140,7 @@ export default function DocumentationPage() {
               <input
                 type="text"
                 placeholder="Search documentation..."
-                className="w-full pl-12 pr-4 py-4 bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full pl-12 pr-4 py-md bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
               <Button size="sm" className="absolute right-2 top-1/2 transform -translate-y-1/2">
                 Search
@@ -151,12 +151,12 @@ export default function DocumentationPage() {
       </section>
 
       {/* Quick Links */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4">
+      <section className="py-xl border-b">
+        <div className="container mx-auto px-md">
+          <div className="flex flex-wrap justify-center gap-md">
             {quickLinks.map((link) => (
               <Link key={link.title} href={link.href as any}>
-                <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2">
+                <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm">
                   {link.title}
                   {link.external && <ExternalLink className="ml-1 h-3 w-3" />}
                 </Badge>
@@ -168,7 +168,7 @@ export default function DocumentationPage() {
 
       {/* Documentation Sections */}
       <section id="sections" className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               DOCUMENTATION SECTIONS
@@ -178,17 +178,17 @@ export default function DocumentationPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {docSections.map((section) => {
               const Icon = section.icon;
               return (
                 <Card key={section.id} className="hover:shadow-lg transition-all duration-300 group">
-                  <CardContent className="p-8">
+                  <CardContent className="p-xl">
                     <div className="flex items-start justify-between mb-6">
                       <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Icon className="h-8 w-8 text-background" />
                       </div>
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-sm">
                         <Badge variant="secondary">{section.articles} articles</Badge>
                         {section.isPremium && (
                           <Badge className="bg-warning color-warning-foreground">
@@ -208,7 +208,7 @@ export default function DocumentationPage() {
                     
                     <div className="mb-6">
                       <h4 className="text-body-sm text-heading-4 color-foreground mb-3">Popular Topics:</h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-sm">
                         {section.topics.map((topic) => (
                           <Badge key={topic} variant="outline" className="text-body-sm">
                             {topic}
@@ -234,7 +234,7 @@ export default function DocumentationPage() {
 
       {/* Popular Documentation */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               POPULAR DOCUMENTATION
@@ -244,13 +244,13 @@ export default function DocumentationPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-lg">
             {popularDocs.map((doc, index) => (
               <Card key={index} className="hover:shadow-lg transition-all duration-300 group">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <div className="flex items-center justify-between mb-4">
                     <Badge variant="outline">{doc.category}</Badge>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-sm">
                       <Badge variant="secondary" className="text-body-sm">
                         {doc.popularity}
                       </Badge>
@@ -292,14 +292,14 @@ export default function DocumentationPage() {
 
       {/* Developer Resources */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               DEVELOPER RESOURCES
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-xl">
             {[
               {
                 title: 'API Explorer',
@@ -321,7 +321,7 @@ export default function DocumentationPage() {
               },
             ].map((resource, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
                     <resource.icon className="h-8 w-8 text-background" />
                   </div>
@@ -346,9 +346,9 @@ export default function DocumentationPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <Code className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 BUILD WITH GHXSTSHIP
@@ -357,7 +357,7 @@ export default function DocumentationPage() {
                 Get full access to our API documentation, SDKs, and developer resources. 
                 Build integrations that work with real production management workflows.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Get API Keys

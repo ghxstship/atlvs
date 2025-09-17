@@ -109,7 +109,7 @@ export default function ContactPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <Badge variant="outline" className="mb-4">
               Contact Us
@@ -131,7 +131,7 @@ export default function ContactPage() {
 
       {/* Contact Methods */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               MULTIPLE WAYS TO REACH US
@@ -141,18 +141,18 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {contactMethods.map((method) => {
               const Icon = method.icon;
               return (
                 <Card key={method.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-lg text-center">
                     <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${method.color} mb-4`}>
                       <Icon className="h-6 w-6 text-background" />
                     </div>
                     <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>{method.title}</h3>
                     <p className="text-body-sm color-muted mb-4">{method.description}</p>
-                    <div className="space-y-2">
+                    <div className="stack-sm">
                       <p className="text-heading-4 color-foreground">{method.contact}</p>
                       <p className="text-body-sm color-muted">{method.response}</p>
                     </div>
@@ -166,7 +166,7 @@ export default function ContactPage() {
 
       {/* Contact Form */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-16">
               <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
@@ -178,9 +178,9 @@ export default function ContactPage() {
             </div>
 
             <Card>
-              <CardContent className="p-8">
-                <form className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
+              <CardContent className="p-xl">
+                <form className="stack-lg">
+                  <div className="grid md:grid-cols-2 gap-lg">
                     <div>
                       <label htmlFor="firstName" className="block text-body-sm form-label color-foreground mb-2">
                         First Name *
@@ -190,7 +190,7 @@ export default function ContactPage() {
                         id="firstName"
                         name="firstName"
                         required
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     <div>
@@ -202,12 +202,12 @@ export default function ContactPage() {
                         id="lastName"
                         name="lastName"
                         required
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
 
-                  <div className="grid md:grid-cols-2 gap-6">
+                  <div className="grid md:grid-cols-2 gap-lg">
                     <div>
                       <label htmlFor="email" className="block text-body-sm form-label color-foreground mb-2">
                         Email Address *
@@ -217,7 +217,7 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     <div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                         type="text"
                         id="company"
                         name="company"
-                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                       id="subject"
                       name="subject"
                       required
-                      className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select a subject</option>
                       <option value="sales">Sales Inquiry</option>
@@ -263,11 +263,11 @@ export default function ContactPage() {
                       rows={6}
                       required
                       placeholder="Tell us more about your inquiry..."
-                      className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     ></textarea>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-sm">
                     <input
                       type="checkbox"
                       id="newsletter"
@@ -292,7 +292,7 @@ export default function ContactPage() {
 
       {/* Office Locations */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OUR OFFICES
@@ -302,11 +302,11 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-xl">
             {offices.map((office) => (
               <Card key={office.city} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-3 mb-6">
+                <CardContent className="p-xl">
+                  <div className="flex items-center gap-sm mb-6">
                     <MapPin className="h-6 w-6 color-primary" />
                     <div>
                       <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>{office.city}</h3>
@@ -316,7 +316,7 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-4">
+                  <div className="stack-md">
                     <div>
                       <h4 className="text-heading-4 text-body-sm color-muted mb-2 uppercase">ADDRESS</h4>
                       <p className="text-body-sm color-foreground">{office.address}</p>
@@ -343,7 +343,7 @@ export default function ContactPage() {
 
       {/* FAQ Section */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               FREQUENTLY ASKED QUESTIONS
@@ -353,10 +353,10 @@ export default function ContactPage() {
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto stack-lg">
             {faqs.map((faq, index) => (
               <Card key={index}>
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className="text-heading-4 color-foreground mb-3">{faq.question}</h3>
                   <p className="color-muted">{faq.answer}</p>
                 </CardContent>
@@ -378,7 +378,7 @@ export default function ContactPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO GET STARTED?
@@ -387,7 +387,7 @@ export default function ContactPage() {
               Don't wait - start your free trial today and see why thousands of creative teams choose GHXSTSHIP.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial

@@ -44,7 +44,7 @@ export default function SecurityPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-md py-16">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-16">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
@@ -56,13 +56,13 @@ export default function SecurityPage() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl mb-16">
           {securityFeatures.map((feature) => {
             const Icon = feature.icon;
             return (
-              <div key={feature.title} className="bg-card rounded-lg p-6 border">
+              <div key={feature.title} className="bg-card rounded-lg p-lg border">
                 <div className="flex items-center mb-4">
-                  <div className="bg-primary/10 p-3 rounded-lg mr-4">
+                  <div className="bg-primary/10 p-sm rounded-lg mr-4">
                     <Icon className="h-6 w-6 color-primary" />
                   </div>
                   <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
@@ -75,31 +75,31 @@ export default function SecurityPage() {
           })}
         </div>
 
-        <div className="prose prose-lg max-w-none space-y-8">
+        <div className="prose prose-lg max-w-none stack-xl">
           <section>
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               COMPLIANCE & CERTIFICATIONS
             </h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="bg-secondary/30 p-6 rounded-lg">
+            <div className="grid md:grid-cols-2 gap-lg">
+              <div className="bg-secondary/30 p-lg rounded-lg">
                 <h3 className="text-heading-4 mb-2">SOC 2 Type II</h3>
                 <p className="text-body-sm color-muted">
                   Independently audited security controls for availability, confidentiality, and processing integrity.
                 </p>
               </div>
-              <div className="bg-secondary/30 p-6 rounded-lg">
+              <div className="bg-secondary/30 p-lg rounded-lg">
                 <h3 className="text-heading-4 mb-2">ISO 27001</h3>
                 <p className="text-body-sm color-muted">
                   International standard for information security management systems (ISMS).
                 </p>
               </div>
-              <div className="bg-secondary/30 p-6 rounded-lg">
+              <div className="bg-secondary/30 p-lg rounded-lg">
                 <h3 className="text-heading-4 mb-2">GDPR Compliant</h3>
                 <p className="text-body-sm color-muted">
                   Full compliance with European data protection regulations and user privacy rights.
                 </p>
               </div>
-              <div className="bg-secondary/30 p-6 rounded-lg">
+              <div className="bg-secondary/30 p-lg rounded-lg">
                 <h3 className="text-heading-4 mb-2">CCPA Compliant</h3>
                 <p className="text-body-sm color-muted">
                   California Consumer Privacy Act compliance for user data rights and transparency.
@@ -112,7 +112,7 @@ export default function SecurityPage() {
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               DATA PROTECTION
             </h2>
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4">Encryption</h3>
                 <p>All data is encrypted using industry-standard AES-256 encryption both in transit and at rest.</p>
@@ -140,7 +140,7 @@ export default function SecurityPage() {
               We maintain a comprehensive incident response plan with 24/7 monitoring and rapid response capabilities. 
               In the unlikely event of a security incident, we will:
             </p>
-            <ul className="list-disc pl-6 space-y-2">
+            <ul className="list-disc pl-6 stack-sm">
               <li>Immediately contain and assess the incident</li>
               <li>Notify affected users within 72 hours</li>
               <li>Work with law enforcement and regulatory bodies as required</li>
@@ -156,7 +156,7 @@ export default function SecurityPage() {
             <p>
               If you discover a security vulnerability or have security-related questions, please contact our security team:
             </p>
-            <div className="bg-secondary/30 p-6 rounded-lg mt-4">
+            <div className="bg-secondary/30 p-lg rounded-lg mt-4">
               <p><strong>Email:</strong> <a href="mailto:security@ghxstship.com" className="color-primary hover:underline">security@ghxstship.com</a></p>
               <p><strong>PGP Key:</strong> Available upon request</p>
               <p><strong>Response Time:</strong> Within 24 hours for critical issues</p>

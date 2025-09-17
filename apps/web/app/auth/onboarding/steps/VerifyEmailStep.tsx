@@ -67,7 +67,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
 
   return (
     <Card className="shadow-xl">
-      <CardContent className="p-8 text-center">
+      <CardContent className="p-xl text-center">
         <div className="mb-8">
           {isVerified ? (
             <CheckCircle className="h-16 w-16 color-success mx-auto mb-4" />
@@ -84,7 +84,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
               Great! Your email has been verified. Redirecting you to the next step...
             </p>
           ) : (
-            <div className="space-y-4">
+            <div className="stack-md">
               <p className="text-body color-muted">
                 We've sent a verification link to:
               </p>
@@ -99,7 +99,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
         </div>
 
         {!isVerified && (
-          <div className="space-y-4">
+          <div className="stack-md">
             <Button 
               onClick={checkVerification}
               className="w-full"

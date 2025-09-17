@@ -23,10 +23,10 @@ export function PerformanceMonitor({ showDetails = false }: PerformanceDisplayPr
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 bg-background/95 backdrop-blur-sm border rounded-lg p-4 shadow-lg z-50 max-w-sm">
+    <div className="fixed bottom-4 right-4 bg-background/95 backdrop-blur-sm border rounded-lg p-md shadow-lg z-50 max-w-sm">
       <div className="flex items-center justify-between mb-2">
         <h3 className="text-sm font-semibold">Performance</h3>
-        <div className={`text-xs px-2 py-1 rounded ${
+        <div className={`text-xs px-sm py-xs rounded ${
           score.grade === 'A' ? 'bg-success text-success-foreground' :
           score.grade === 'B' ? 'bg-warning text-warning-foreground' :
           'bg-destructive text-destructive-foreground'
@@ -35,7 +35,7 @@ export function PerformanceMonitor({ showDetails = false }: PerformanceDisplayPr
         </div>
       </div>
       
-      <div className="space-y-1 text-xs">
+      <div className="stack-xs text-xs">
         {metrics.lcp && (
           <div className="flex justify-between">
             <span>LCP:</span>

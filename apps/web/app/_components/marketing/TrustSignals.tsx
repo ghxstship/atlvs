@@ -67,17 +67,17 @@ const metrics = [
 export function TrustSignals() {
   return (
     <section className="py-16 bg-background border-b">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         {/* Trust Badges */}
         <div className="text-center mb-12">
           <p className="text-body-sm color-muted mb-6 uppercase tracking-wide">
             TRUSTED BY INDUSTRY LEADERS
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8">
+          <div className="flex flex-wrap justify-center items-center gap-xl">
             {trustBadges.map((badge) => {
               const Icon = badge.icon;
               return (
-                <div key={badge.label} className="flex items-center gap-3 color-muted">
+                <div key={badge.label} className="flex items-center gap-sm color-muted">
                   <Icon className="h-5 w-5" />
                   <div className="text-body-sm">
                     <span className="text-heading-4 color-foreground">{badge.label}</span>
@@ -91,7 +91,7 @@ export function TrustSignals() {
 
         {/* Client Logos */}
         <div className="mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-8 items-center opacity-60 hover:opacity-80 transition-opacity">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-xl items-center opacity-60 hover:opacity-80 transition-opacity">
             {clientLogos.map((client) => (
               <div key={client.name} className="flex items-center justify-center">
                 <div className="w-24 h-12 bg-secondary/30 rounded-lg flex items-center justify-center">
@@ -105,7 +105,7 @@ export function TrustSignals() {
         </div>
 
         {/* Key Metrics */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
           {metrics.map((metric) => {
             const Icon = metric.icon;
             return (
@@ -132,20 +132,20 @@ export function TrustSignals() {
           <p className="text-body-sm color-muted mb-6 uppercase tracking-wide">
             AWARDS & RECOGNITION
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-8 text-body-sm color-muted">
-            <Badge variant="outline" className="gap-2">
+          <div className="flex flex-wrap justify-center items-center gap-xl text-body-sm color-muted">
+            <Badge variant="outline" className="gap-sm">
               <Award className="h-4 w-4" />
               Best Enterprise Software 2024
             </Badge>
-            <Badge variant="outline" className="gap-2">
+            <Badge variant="outline" className="gap-sm">
               <Users className="h-4 w-4" />
               Top Workplace Technology
             </Badge>
-            <Badge variant="outline" className="gap-2">
+            <Badge variant="outline" className="gap-sm">
               <Shield className="h-4 w-4" />
               Security Excellence Award
             </Badge>
-            <Badge variant="outline" className="gap-2">
+            <Badge variant="outline" className="gap-sm">
               <Globe className="h-4 w-4" />
               Global Innovation Leader
             </Badge>

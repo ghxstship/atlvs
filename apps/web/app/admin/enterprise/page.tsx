@@ -61,7 +61,7 @@ export default function EnterprisePage() {
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="stack-lg">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Enterprise Dashboard</h1>
         <p className="text-muted-foreground mt-2">
@@ -69,15 +69,15 @@ export default function EnterprisePage() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
         {dashboardSections.map((section) => {
           const Icon = section.icon;
           return (
             <Link key={section.href} href={section.href as any} className="block">
               <Card className="h-full transition-colors hover:bg-muted/50">
                 <CardHeader className="pb-3">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-lg ${section.bgColor}`}>
+                  <div className="flex items-center gap-sm">
+                    <div className={`p-sm rounded-lg ${section.bgColor}`}>
                       <Icon className={`h-5 w-5 ${section.color}`} />
                     </div>
                     <CardTitle className="text-lg">{section.title}</CardTitle>
@@ -97,7 +97,7 @@ export default function EnterprisePage() {
       <div className="mt-8">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-sm">
               <Shield className="h-5 w-5" />
               Enterprise Features Status
             </CardTitle>
@@ -106,20 +106,20 @@ export default function EnterprisePage() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-              <div className="flex items-center gap-2">
+            <div className="grid gap-md md:grid-cols-2 lg:grid-cols-4">
+              <div className="flex items-center gap-sm">
                 <div className="h-2 w-2 bg-success rounded-full" />
                 <span className="text-sm">Advanced Monitoring</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-sm">
                 <div className="h-2 w-2 bg-success rounded-full" />
                 <span className="text-sm">Security Dashboard</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-sm">
                 <div className="h-2 w-2 bg-success rounded-full" />
                 <span className="text-sm">Compliance Tracking</span>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-sm">
                 <div className="h-2 w-2 bg-success rounded-full" />
                 <span className="text-sm">Disaster Recovery</span>
               </div>

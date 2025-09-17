@@ -1,10 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import type { Route } from 'next';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Mail, Lock, User, Eye, EyeOff, Check } from 'lucide-react';
-import { typography } from '../../_components/lib/typography';
-import { spacing, layouts } from '../../_components/lib/spacing';
+import { AuthLayout } from '../_components/AuthLayout';
+import { AuthText, AuthLink } from '../_components/AuthForm';
 import { SignUpForm } from './SignUpForm';
 
 export const metadata: Metadata = {
@@ -20,43 +16,20 @@ export const metadata: Metadata = {
 
 export default function SignUpPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-muted/20">
-      <div className={`${layouts.container} ${spacing.sectionPadding}`}>
-        {/* Header */}
-        <div className={`text-center ${spacing.marginBottom.xlarge}`}>
-          <Link href={"/home" as Route} className={`inline-flex items-center space-x-2 ${spacing.marginBottom.large}`}>
-            <span className={typography.sectionTitle}>
-              GHXSTSHIP
-            </span>
-          </Link>
-          <h1 className={`${typography.heroTitle} ${spacing.marginBottom.medium}`}>
-            WELCOME ABOARD
-          </h1>
-          <p className={`${typography.sectionSubtitle} max-w-2xl mx-auto`}>
-            Create your account and start building amazing creative projects.
-          </p>
-        </div>
-
-        <div className="max-w-md mx-auto">
-          {/* Sign Up Form */}
-          <Card className="shadow-xl">
-            <CardContent className="p-8">
-              <SignUpForm />
-            </CardContent>
-          </Card>
-
-          {/* Help */}
-          <div className="text-center mt-8">
-            <p className="text-body-sm color-muted">
-              Need help getting started?{' '}
-              <Link href="/contact" className="color-primary hover:underline">
-                Contact support
-              </Link>
-            </p>
-          </div>
-        </div>
-
+    <AuthLayout
+      title="Welcome Aboard"
+      subtitle="Create your account and start building amazing creative projects"
+      badge="JOIN GHXSTSHIP"
+      showFooter={true}
+    >
+      <SignUpForm />
+      
+      <div className="text-center mt-lg">
+        <AuthText>
+          Need help getting started?{' '}
+          <AuthLink href="/contact">Contact support</AuthLink>
+        </AuthText>
       </div>
-    </div>
+    </AuthLayout>
   );
 }

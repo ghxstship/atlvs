@@ -96,7 +96,7 @@ export default function BlogPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Blog
@@ -113,7 +113,7 @@ export default function BlogPage() {
               everything from cruise ship entertainment to Formula 1 hospitality. 
               No fluff, just what actually works when the pressure's on.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Unlock Premium Content
@@ -131,14 +131,14 @@ export default function BlogPage() {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-3">
+      <section className="py-xl border-b">
+        <div className="container mx-auto px-md">
+          <div className="flex flex-wrap justify-center gap-sm">
             {categories.map((category) => (
               <Badge 
                 key={category} 
                 variant={category === 'All' ? 'default' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2"
+                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm"
               >
                 {category}
               </Badge>
@@ -149,8 +149,8 @@ export default function BlogPage() {
 
       {/* Blog Posts */}
       <section id="posts" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-8">
+        <div className="container mx-auto px-md">
+          <div className="grid lg:grid-cols-2 gap-xl">
             {blogPosts.map((post) => (
               <Card key={post.id} className="hover:shadow-lg transition-all duration-300 group overflow-hidden">
                 <div className="relative">
@@ -173,7 +173,7 @@ export default function BlogPage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {post.title}
                   </h3>
@@ -182,24 +182,24 @@ export default function BlogPage() {
                   </p>
                   
                   <div className="flex items-center justify-between text-body-sm color-muted mb-4">
-                    <div className="flex items-center gap-4">
-                      <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-md">
+                      <div className="flex items-center gap-xs">
                         <User className="h-4 w-4" />
                         {post.author}
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <Calendar className="h-4 w-4" />
                         {new Date(post.date).toLocaleDateString()}
                       </div>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-xs">
                       <Eye className="h-4 w-4" />
                       {post.views}
                     </div>
                   </div>
                   
                   <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-1 text-body-sm color-muted">
+                    <div className="flex items-center gap-xs text-body-sm color-muted">
                       <Clock className="h-4 w-4" />
                       {post.readTime}
                     </div>
@@ -228,9 +228,9 @@ export default function BlogPage() {
 
       {/* Newsletter CTA */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-2xl mx-auto text-center">
-            <CardContent className="p-8">
+            <CardContent className="p-xl">
               <h2 className={`mb-4 ${typography.cardTitle}`}>
                 NEVER MISS AN UPDATE
               </h2>
@@ -238,7 +238,7 @@ export default function BlogPage() {
                 Get the latest insights, case studies, and industry updates delivered to your inbox. 
                 No spam, just the good stuff from someone who's actually been there.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button className="group">
                     Subscribe to Blog

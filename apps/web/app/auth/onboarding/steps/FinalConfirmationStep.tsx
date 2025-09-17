@@ -84,7 +84,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
   };
 
   return (
-    <div className="space-y-8">
+    <div className="stack-xl">
       <div className="text-center">
         <div className="mb-6">
           <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -101,7 +101,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
 
       {/* Setup Summary */}
       <Card className="shadow-xl">
-        <CardContent className="p-8">
+        <CardContent className="p-xl">
           <div className="text-center mb-6">
             <Sparkles className="h-8 w-8 color-primary mx-auto mb-3" />
             <h2 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
@@ -112,11 +112,11 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
             </p>
           </div>
 
-          <div className="space-y-4">
+          <div className="stack-md">
             {getSetupSummary().map((item, index) => {
               const Icon = item.icon;
               return (
-                <div key={index} className="flex items-center space-x-4 p-4 bg-secondary/50 rounded-lg">
+                <div key={index} className="flex items-center cluster p-md bg-secondary/50 rounded-lg">
                   <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
                     <Icon className="h-5 w-5 color-primary" />
                   </div>
@@ -133,30 +133,30 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
 
       {/* Next Steps */}
       <Card>
-        <CardContent className="p-6">
+        <CardContent className="p-lg">
           <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-4`}>
             WHAT'S NEXT?
           </h3>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-2">
+          <div className="grid md:grid-cols-2 gap-md">
+            <div className="stack-sm">
               <h4 className="text-heading-4 color-foreground">Explore Your Dashboard</h4>
               <p className="text-body-sm color-muted">
                 Get familiar with your project overview and team workspace
               </p>
             </div>
-            <div className="space-y-2">
+            <div className="stack-sm">
               <h4 className="text-heading-4 color-foreground">Create Your First Project</h4>
               <p className="text-body-sm color-muted">
                 Start organizing your creative work with ATLVS project management
               </p>
             </div>
-            <div className="space-y-2">
+            <div className="stack-sm">
               <h4 className="text-heading-4 color-foreground">Invite More Team Members</h4>
               <p className="text-body-sm color-muted">
                 Add collaborators and assign them to specific projects
               </p>
             </div>
-            <div className="space-y-2">
+            <div className="stack-sm">
               <h4 className="text-heading-4 color-foreground">Customize Your Workspace</h4>
               <p className="text-body-sm color-muted">
                 Set up workflows, templates, and integrations that work for you
@@ -169,7 +169,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       {/* Trial Information */}
       {data.planData?.trialDays && (
         <Card className="border-primary/20 bg-primary/5">
-          <CardContent className="p-6">
+          <CardContent className="p-lg">
             <div className="text-center">
               <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-2 color-primary`}>
                 FREE TRIAL ACTIVE
@@ -178,7 +178,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
                 You have {data.planData.trialDays} days to explore all features. 
                 No credit card required until your trial ends.
               </p>
-              <div className="flex justify-center space-x-6 text-body-sm">
+              <div className="flex justify-center cluster-lg text-body-sm">
                 <div className="text-center">
                   <div className="text-heading-4 color-foreground">Full Access</div>
                   <div className="color-muted">All premium features</div>
@@ -203,7 +203,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
           onClick={handleGetStarted} 
           disabled={loading}
          
-          className="px-8"
+          className="px-xl"
         >
           {loading ? 'Setting up your workspace...' : 'Go to Dashboard'}
           <ArrowRight className="ml-2 h-4 w-4" />

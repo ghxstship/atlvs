@@ -131,7 +131,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
   };
 
   return (
-    <div className="space-y-8">
+    <div className="stack-xl">
       <div className="text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           INVITE YOUR TEAM
@@ -145,18 +145,18 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       </div>
 
       <Card className="shadow-xl">
-        <CardContent className="p-8">
-          <div className="space-y-6">
+        <CardContent className="p-xl">
+          <div className="stack-lg">
             {/* Add Team Member Form */}
-            <div className="space-y-4">
-              <div className="flex items-center space-x-2 mb-4">
+            <div className="stack-md">
+              <div className="flex items-center cluster-sm mb-4">
                 <UserPlus className="h-5 w-5 color-primary" />
                 <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                   ADD TEAM MEMBERS
                 </h3>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-4">
+              <div className="grid md:grid-cols-3 gap-md">
                 <div className="md:col-span-2">
                   <label className="block text-body-sm form-label color-foreground mb-2">
                     Email Address
@@ -165,7 +165,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                     <input
                       type="email"
-                      className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                      className="w-full pl-10 pr-4 py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                       placeholder="colleague@company.com"
                       value={currentEmail}
                       onChange={(e) => setCurrentEmail(e.target.value)}
@@ -179,7 +179,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                     Role
                   </label>
                   <select
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                    className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     value={currentRole}
                     onChange={(e) => setCurrentRole(e.target.value as TeamMember['role'])}
                   >
@@ -198,7 +198,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
               </Button>
 
               {error && (
-                <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+                <div className="p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                   <p className="text-body-sm color-destructive">{error}</p>
                 </div>
               )}
@@ -206,15 +206,15 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
             {/* Invited Members List */}
             {invites.length > 0 && (
-              <div className="space-y-4">
+              <div className="stack-md">
                 <h4 className={`${anton.className} uppercase text-md text-heading-3`}>
                   PENDING INVITATIONS ({invites.length})
                 </h4>
                 
-                <div className="space-y-3">
+                <div className="stack-sm">
                   {invites.map((invite, index) => (
-                    <div key={index} className="flex items-center justify-between p-4 bg-secondary/50 rounded-lg">
-                      <div className="flex items-center space-x-3">
+                    <div key={index} className="flex items-center justify-between p-md bg-secondary/50 rounded-lg">
+                      <div className="flex items-center cluster-sm">
                         <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
                           <Mail className="h-4 w-4 color-primary" />
                         </div>
@@ -226,9 +226,9 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                         </div>
                       </div>
                       
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center cluster-sm">
                         <select
-                          className="px-3 py-1 border border-border rounded text-body-sm bg-background"
+                          className="px-sm py-xs border border-border rounded text-body-sm bg-background"
                           value={invite.role}
                           onChange={(e) => updateInviteRole(index, e.target.value as TeamMember['role'])}
                         >
@@ -255,7 +255,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
             {/* Skip Option */}
             <div className="pt-6 border-t border-border">
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center cluster-sm">
                 <input
                   type="checkbox"
                   id="skip-invites"
@@ -274,13 +274,13 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
       {/* Role Descriptions */}
       <Card>
-        <CardContent className="p-6">
+        <CardContent className="p-lg">
           <h4 className={`${anton.className} uppercase text-md text-heading-3 mb-4`}>
             ROLE PERMISSIONS
           </h4>
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-md">
             {roles.map(role => (
-              <div key={role.value} className="space-y-2">
+              <div key={role.value} className="stack-sm">
                 <h5 className="text-heading-4 color-foreground">{role.label}</h5>
                 <p className="text-body-sm color-muted">{role.description}</p>
               </div>

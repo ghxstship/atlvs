@@ -94,7 +94,7 @@ export function MarketingFooter() {
         </div>
 
         {/* Footer Links */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-xl mb-12">
           {footerSections.map((section) => (
             <FooterSection key={section.title} title={section.title} links={section.links} />
           ))}
@@ -104,7 +104,7 @@ export function MarketingFooter() {
         <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t">
           {/* Logo */}
           <div className="flex items-center mb-4 md:mb-0">
-            <Link href="/" className="flex items-center space-x-2">
+            <Link href="/" className="flex items-center cluster-sm">
               <span className={`${anton.className} text-heading-4 text-heading-3 tracking-tight uppercase`}>
                 GHXSTSHIP
               </span>

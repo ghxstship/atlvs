@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function SettingsPage() {
   return (
-    <div className="space-y-6">
+    <div className="stack-lg">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Enterprise Settings</h1>
         <p className="text-muted-foreground mt-2">
@@ -17,16 +17,16 @@ export default function SettingsPage() {
         </p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-lg lg:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-sm">
               <Shield className="h-5 w-5" />
               Security Configuration
             </CardTitle>
             <CardDescription>Authentication, authorization, and security policies</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Multi-Factor Authentication</p>
@@ -56,13 +56,13 @@ export default function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-sm">
               <Database className="h-5 w-5" />
               Database Configuration
             </CardTitle>
             <CardDescription>Performance tuning and backup settings</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Connection Pooling</p>
@@ -92,13 +92,13 @@ export default function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-sm">
               <Users className="h-5 w-5" />
               User Management
             </CardTitle>
             <CardDescription>User provisioning and access control</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Auto-Provisioning</p>
@@ -128,13 +128,13 @@ export default function SettingsPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-sm">
               <Bell className="h-5 w-5" />
               Notification Settings
             </CardTitle>
             <CardDescription>Alert channels and notification preferences</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Email Notifications</p>
@@ -165,50 +165,50 @@ export default function SettingsPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-sm">
             <Zap className="h-5 w-5" />
             Feature Toggles
           </CardTitle>
           <CardDescription>Enable or disable enterprise features</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+          <div className="grid gap-md md:grid-cols-2 lg:grid-cols-3">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">Advanced Monitoring</p>
                 <p className="text-xs text-muted-foreground">Real-time metrics and alerts</p>
               </div>
               <Badge variant="default">On</Badge>
             </div>
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">Threat Detection</p>
                 <p className="text-xs text-muted-foreground">AI-powered security monitoring</p>
               </div>
               <Badge variant="default">On</Badge>
             </div>
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">Compliance Reporting</p>
                 <p className="text-xs text-muted-foreground">GDPR, SOC2, ISO27001</p>
               </div>
               <Badge variant="default">On</Badge>
             </div>
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">Disaster Recovery</p>
                 <p className="text-xs text-muted-foreground">Automated backup and recovery</p>
               </div>
               <Badge variant="default">On</Badge>
             </div>
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">Audit Logging</p>
                 <p className="text-xs text-muted-foreground">Comprehensive activity logs</p>
               </div>
               <Badge variant="default">On</Badge>
             </div>
-            <div className="flex items-center justify-between p-3 border rounded-lg">
+            <div className="flex items-center justify-between p-sm border rounded-lg">
               <div>
                 <p className="font-medium">API Rate Limiting</p>
                 <p className="text-xs text-muted-foreground">Advanced rate limiting</p>
@@ -221,16 +221,16 @@ export default function SettingsPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
+          <CardTitle className="flex items-center gap-sm">
             <Globe className="h-5 w-5" />
             Integration Status
           </CardTitle>
           <CardDescription>External service integrations and API connections</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="stack-md">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 <Key className="h-4 w-4 text-muted-foreground" />
                 <div>
                   <p className="font-medium">Supabase Enterprise</p>
@@ -240,7 +240,7 @@ export default function SettingsPage() {
               <Badge variant="default">Connected</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 <Key className="h-4 w-4 text-muted-foreground" />
                 <div>
                   <p className="font-medium">Monitoring Service</p>
@@ -250,7 +250,7 @@ export default function SettingsPage() {
               <Badge variant="default">Connected</Badge>
             </div>
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 <Key className="h-4 w-4 text-muted-foreground" />
                 <div>
                   <p className="font-medium">Security Scanner</p>

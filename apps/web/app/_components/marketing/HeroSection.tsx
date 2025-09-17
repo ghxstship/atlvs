@@ -42,18 +42,18 @@ export function HeroSection() {
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 py-20 lg:py-32 relative">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-md py-20 lg:py-32 relative">
+        <div className="grid lg:grid-cols-2 gap-2xl items-center">
           {/* Left Column - Content */}
-          <div className="space-y-8">
+          <div className="stack-xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 color-primary text-body-sm form-label">
+            <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-primary/10 color-primary text-body-sm form-label">
               <Zap className="h-4 w-4" />
               Now with AI-powered insights
             </div>
 
             {/* Main Headline */}
-            <div className="space-y-4">
+            <div className="stack-md">
               <h1 className="hero-title">
                 THE FUTURE OF
                 <br />
@@ -93,9 +93,9 @@ export function HeroSection() {
             </p>
 
             {/* Feature List */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm">
               {features.map((feature, index) => (
-                <div key={feature} className="flex items-center gap-3">
+                <div key={feature} className="flex items-center gap-sm">
                   <CheckCircle className="h-5 w-5 color-primary flex-shrink-0" />
                   <span className="text-body-sm color-muted">{feature}</span>
                 </div>
@@ -103,7 +103,7 @@ export function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4">
+            <div className="flex flex-col sm:flex-row gap-md">
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
@@ -117,12 +117,12 @@ export function HeroSection() {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-8 border-t">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-lg pt-8 border-t">
               {stats.map((stat) => {
                 const Icon = stat.icon;
                 return (
                   <div key={stat.label} className="text-center lg:text-left">
-                    <div className="flex items-center justify-center lg:justify-start gap-2 mb-2">
+                    <div className="flex items-center justify-center lg:justify-start gap-sm mb-2">
                       <Icon className="h-5 w-5 color-primary" />
                       <span className="text-heading-3 color-primary">
                         {stat.value}
@@ -140,14 +140,14 @@ export function HeroSection() {
             {/* Main Dashboard Preview */}
             <div className="relative bg-background border rounded-2xl shadow-2xl overflow-hidden">
               {/* Browser Chrome */}
-              <div className="flex items-center gap-2 px-4 py-3 bg-secondary/50 border-b">
-                <div className="flex gap-2">
+              <div className="flex items-center gap-sm px-md py-sm bg-secondary/50 border-b">
+                <div className="flex gap-sm">
                   <div className="w-3 h-3 rounded-full bg-destructive"></div>
                   <div className="w-3 h-3 rounded-full bg-warning"></div>
                   <div className="w-3 h-3 rounded-full bg-success"></div>
                 </div>
                 <div className="flex-1 text-center">
-                  <div className="inline-flex items-center gap-2 px-3 py-1 bg-background rounded-md text-body-sm color-muted">
+                  <div className="inline-flex items-center gap-sm px-sm py-xs bg-background rounded-md text-body-sm color-muted">
                     <div className="w-3 h-3 color-success">🔒</div>
                     app.ghxstship.com
                   </div>
@@ -155,39 +155,39 @@ export function HeroSection() {
               </div>
 
               {/* Dashboard Content */}
-              <div className="p-6 space-y-4">
+              <div className="p-lg stack-md">
                 {/* Header */}
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="card-title">BLACKWATER REVERB</h3>
                     <p className="text-body-sm color-muted">Main Deck Takeover</p>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-sm">
                     <div className="w-2 h-2 bg-success rounded-full"></div>
                     <span className="text-body-sm color-muted">Live</span>
                   </div>
                 </div>
 
                 {/* Progress Cards */}
-                <div className="grid grid-cols-3 gap-3">
-                  <div className="bg-secondary/30 rounded-lg p-3">
+                <div className="grid grid-cols-3 gap-sm">
+                  <div className="bg-secondary/30 rounded-lg p-sm">
                     <div className="text-body-sm color-muted mb-1">Budget</div>
                     <div className="text-heading-4">$75K</div>
                     <div className="w-full bg-secondary rounded-full h-1 mt-2">
                       <div className="bg-primary h-1 rounded-full w-3/4"></div>
                     </div>
                   </div>
-                  <div className="bg-secondary/30 rounded-lg p-3">
+                  <div className="bg-secondary/30 rounded-lg p-sm">
                     <div className="text-body-sm color-muted mb-1">Timeline</div>
                     <div className="text-heading-4">85%</div>
                     <div className="w-full bg-secondary rounded-full h-1 mt-2">
                       <div className="bg-accent h-1 rounded-full w-4/5"></div>
                     </div>
                   </div>
-                  <div className="bg-secondary/30 rounded-lg p-3">
+                  <div className="bg-secondary/30 rounded-lg p-sm">
                     <div className="text-body-sm color-muted mb-1">Team</div>
                     <div className="text-heading-4">12</div>
-                    <div className="flex -space-x-1 mt-2">
+                    <div className="flex -cluster-xs mt-2">
                       {[1, 2, 3].map((i) => (
                         <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
                       ))}
@@ -196,14 +196,14 @@ export function HeroSection() {
                 </div>
 
                 {/* Activity Feed */}
-                <div className="space-y-2">
+                <div className="stack-sm">
                   <div className="text-body-sm form-label color-muted">Recent Activity</div>
                   {[
                     { user: 'Captain Blackwater', action: 'approved budget revision', time: '2m ago' },
                     { user: 'First Mate Torres', action: 'updated crew schedule', time: '5m ago' },
                     { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
                   ].map((activity, i) => (
-                    <div key={i} className="flex items-center gap-2 text-body-sm">
+                    <div key={i} className="flex items-center gap-sm text-body-sm">
                       <div className="w-2 h-2 bg-primary rounded-full"></div>
                       <span className="form-label">{activity.user}</span>
                       <span className="color-muted">{activity.action}</span>
@@ -215,10 +215,10 @@ export function HeroSection() {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-3 shadow-lg">
+            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-sm shadow-lg">
               <Zap className="h-6 w-6" />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-3 shadow-lg">
+            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm shadow-lg">
               <Star className="h-6 w-6" />
             </div>
           </div>

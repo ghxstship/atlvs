@@ -105,7 +105,7 @@ export default function CaseStudiesPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Case Studies
@@ -122,7 +122,7 @@ export default function CaseStudiesPage() {
               to EDC festivals. See the challenges, strategies, and results that prove 
               these methods work when millions of dollars and thousands of people are on the line.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Access Full Case Studies
@@ -140,14 +140,14 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Industry Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-3">
+      <section className="py-xl border-b">
+        <div className="container mx-auto px-md">
+          <div className="flex flex-wrap justify-center gap-sm">
             {industries.map((industry) => (
               <Badge 
                 key={industry} 
                 variant={industry === 'All Industries' ? 'primary' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-4 py-2"
+                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm"
               >
                 {industry}
               </Badge>
@@ -158,7 +158,7 @@ export default function CaseStudiesPage() {
 
       {/* Featured Case Studies */}
       <section id="featured" className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               FEATURED CASE STUDIES
@@ -168,7 +168,7 @@ export default function CaseStudiesPage() {
             </p>
           </div>
 
-          <div className="space-y-8">
+          <div className="stack-xl">
             {featuredStudies.map((study, index) => (
               <Card key={study.id} className="hover:shadow-lg transition-all duration-300 group overflow-hidden">
                 <CardContent className="p-0">
@@ -196,7 +196,7 @@ export default function CaseStudiesPage() {
                       </div>
                     </div>
                     
-                    <div className="p-8 flex flex-col justify-center">
+                    <div className="p-xl flex flex-col justify-center">
                       <Badge variant="outline" className="w-fit mb-4">{study.industry}</Badge>
                       <h3 className={`mb-4 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                         {study.title}
@@ -205,23 +205,23 @@ export default function CaseStudiesPage() {
                         {study.excerpt}
                       </p>
                       
-                      <div className="grid grid-cols-2 gap-4 mb-6">
-                        <div className="flex items-center gap-2 text-body-sm">
+                      <div className="grid grid-cols-2 gap-md mb-6">
+                        <div className="flex items-center gap-sm text-body-sm">
                           <DollarSign className="h-4 w-4 color-primary" />
                           <span className="color-muted">Budget:</span>
                           <span className="text-heading-4">{study.budget}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm">
+                        <div className="flex items-center gap-sm text-body-sm">
                           <Users className="h-4 w-4 color-primary" />
                           <span className="color-muted">Team:</span>
                           <span className="text-heading-4">{study.teamSize}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm">
+                        <div className="flex items-center gap-sm text-body-sm">
                           <Calendar className="h-4 w-4 color-primary" />
                           <span className="color-muted">Duration:</span>
                           <span className="text-heading-4">{study.duration}</span>
                         </div>
-                        <div className="flex items-center gap-2 text-body-sm">
+                        <div className="flex items-center gap-sm text-body-sm">
                           <TrendingUp className="h-4 w-4 color-primary" />
                           <span className="color-muted">Results:</span>
                           <span className="text-heading-4">{study.results.length} Key Wins</span>
@@ -230,9 +230,9 @@ export default function CaseStudiesPage() {
 
                       <div className="mb-6">
                         <h4 className="text-heading-4 color-foreground mb-2">Key Results:</h4>
-                        <ul className="space-y-1">
+                        <ul className="stack-xs">
                           {study.results.slice(0, 2).map((result, idx) => (
-                            <li key={idx} className="text-body-sm color-muted flex items-center gap-2">
+                            <li key={idx} className="text-body-sm color-muted flex items-center gap-sm">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                               {result}
                             </li>
@@ -258,14 +258,14 @@ export default function CaseStudiesPage() {
 
       {/* Regular Case Studies */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               MORE CASE STUDIES
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {regularStudies.map((study) => (
               <Card key={study.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
@@ -288,7 +288,7 @@ export default function CaseStudiesPage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {study.title}
                   </h3>
@@ -296,7 +296,7 @@ export default function CaseStudiesPage() {
                     {study.excerpt}
                   </p>
                   
-                  <div className="space-y-2 mb-4 text-body-sm">
+                  <div className="stack-sm mb-4 text-body-sm">
                     <div className="flex justify-between">
                       <span className="color-muted">Budget:</span>
                       <span className="text-heading-4">{study.budget}</span>
@@ -324,9 +324,9 @@ export default function CaseStudiesPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <TrendingUp className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 LEARN FROM REAL RESULTS
@@ -335,7 +335,7 @@ export default function CaseStudiesPage() {
                 Get access to detailed breakdowns of actual productions, including budgets, 
                 timelines, challenges, and solutions. Learn what works when millions are on the line.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Access All Case Studies

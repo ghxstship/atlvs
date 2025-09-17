@@ -1,13 +1,49 @@
 import { NextRequest } from 'next/server';
 
 // Simple rate limiting implementation
-export async function rateLimitRequest(
-  req: NextRequest,
-  key: string,
-  windowSizeInSeconds: number,
-  maxRequests: number
+// Rate limiting with in-memory cache for development
+// In production, replace with Redis-based solution
+
+interface RateLimitRecord {
+  count: number;
+  resetTime: number;
+}
+
+const cache = new Map<string, RateLimitRecord>();
+
+export async function rateLimit(
+  identifier: string,
+  maxRequests: number,
+  windowMs: number = 60000 // 1 minute default
 ): Promise<{ success: boolean; remaining?: number }> {
-  // For now, return success to allow builds to pass
-  // TODO: Implement proper rate limiting with Redis or similar
-  return { success: true, remaining: maxRequests };
+  const key = `rate_limit_${identifier}`;
+  const now = Date.now();
+  
+  const record = cache.get(key) || { count: 0, resetTime: now + windowMs };
+  
+  // Reset window if expired
+  if (now > record.resetTime) {
+    record.count = 0;
+    record.resetTime = now + windowMs;
+  }
+  
+  // Check if limit exceeded
+  if (record.count >= maxRequests) {
+    return { success: false, remaining: 0 };
+  }
+  
+  // Increment count
+  record.count++;
+  cache.set(key, record);
+  
+  // Clean up old entries periodically
+  if (Math.random() < 0.01) { // 1% chance
+    for (const [k, v] of cache.entries()) {
+      if (now > v.resetTime) {
+        cache.delete(k);
+      }
+    }
+  }
+  
+  return { success: true, remaining: maxRequests - record.count };
 }

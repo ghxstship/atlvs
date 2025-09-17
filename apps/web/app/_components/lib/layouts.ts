@@ -3,9 +3,9 @@ import { cn } from './utils';
 // Layout utility classes
 export const layouts = {
   // Container patterns
-  container: 'container mx-auto px-4',
-  containerWide: 'container mx-auto px-4 max-w-7xl',
-  containerNarrow: 'container mx-auto px-4 max-w-4xl',
+  container: 'container mx-auto px-md',
+  containerWide: 'container mx-auto px-md max-w-7xl',
+  containerNarrow: 'container mx-auto px-md max-w-4xl',
   
   // Section spacing
   sectionPadding: 'py-20',
@@ -13,10 +13,10 @@ export const layouts = {
   sectionMargin: 'mb-16',
   
   // Grid patterns
-  gridFeatures: 'grid md:grid-cols-2 lg:grid-cols-3 gap-8',
-  gridCards: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6',
-  gridStats: 'grid grid-cols-2 md:grid-cols-4 gap-6',
-  gridPricing: 'grid lg:grid-cols-3 gap-8',
+  gridFeatures: 'grid md:grid-cols-2 lg:grid-cols-3 gap-xl',
+  gridCards: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg',
+  gridStats: 'grid grid-cols-2 md:grid-cols-4 gap-lg',
+  gridPricing: 'grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-lg lg:gap-xl',
   
   // Flex patterns
   flexCenter: 'flex items-center justify-center',
@@ -25,8 +25,8 @@ export const layouts = {
   flexColCenter: 'flex flex-col items-center',
   
   // CTA button groups
-  ctaGroup: 'flex flex-col sm:flex-row gap-4 justify-center',
-  ctaGroupLeft: 'flex flex-col sm:flex-row gap-4',
+  ctaGroup: 'flex flex-col sm:flex-row gap-md justify-center',
+  ctaGroupLeft: 'flex flex-col sm:flex-row gap-md',
   
   // Background patterns
   gradientBg: 'bg-gradient-to-br from-background via-background to-muted/20',
@@ -44,7 +44,7 @@ export const LayoutClasses = {
   // Content containers
   sectionContainer: cn(layouts.container),
   sectionHeader: cn('text-center', layouts.sectionMargin),
-  sectionContent: 'space-y-8',
+  sectionContent: 'stack-xl',
   
   // Common patterns
   cardHover: 'hover:shadow-lg transition-shadow',

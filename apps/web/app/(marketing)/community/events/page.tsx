@@ -39,7 +39,7 @@ export default function EventsPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-md py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
@@ -57,33 +57,33 @@ export default function EventsPage() {
           <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-8`}>
             UPCOMING EVENTS
           </h2>
-          <div className="space-y-6">
+          <div className="stack-lg">
             {upcomingEvents.map((event, index) => (
-              <div key={index} className="bg-card rounded-lg p-6 border hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-card rounded-lg p-lg border hover:shadow-lg transition-shadow">
                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="bg-primary/10 color-primary px-2 py-1 rounded text-body-sm form-label">
+                    <div className="flex items-center gap-sm mb-2">
+                      <span className="bg-primary/10 color-primary px-sm py-xs rounded text-body-sm form-label">
                         {event.type}
                       </span>
                     </div>
                     <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
                       {event.title}
                     </h3>
-                    <div className="flex flex-wrap gap-4 text-body-sm color-muted">
-                      <div className="flex items-center gap-1">
+                    <div className="flex flex-wrap gap-md text-body-sm color-muted">
+                      <div className="flex items-center gap-xs">
                         <Calendar className="h-4 w-4" />
                         {new Date(event.date).toLocaleDateString()}
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <Clock className="h-4 w-4" />
                         {event.time}
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <MapPin className="h-4 w-4" />
                         {event.location}
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <Users className="h-4 w-4" />
                         {event.attendees} attending
                       </div>
@@ -100,8 +100,8 @@ export default function EventsPage() {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-secondary/30 rounded-lg p-8">
+        <div className="grid md:grid-cols-2 gap-xl">
+          <div className="bg-secondary/30 rounded-lg p-xl">
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               HOST AN EVENT
             </h2>
@@ -113,7 +113,7 @@ export default function EventsPage() {
             </Button>
           </div>
           
-          <div className="bg-secondary/30 rounded-lg p-8">
+          <div className="bg-secondary/30 rounded-lg p-xl">
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
               PAST EVENTS
             </h2>

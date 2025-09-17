@@ -1,5 +1,9 @@
 // Export all components
-export { Button } from './components/Button';
+export * from './components/Button';
+export * from './components/Card';
+export * from './components/Badge';
+export * from './components/DepartmentBadge';
+export * from './components/SubwaySystem';
 export { Input } from './components/Input';
 export { Textarea } from './components/Textarea';
 export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
@@ -23,6 +27,12 @@ export { Toggle } from './components/Toggle';
 export { Checkbox } from './components/Checkbox';
 export { Label } from './atoms/Label';
 export { useToast, Toast, ToastContainer, ToastProvider, useToastContext } from './components/Toast';
+
+// Export typography and icon components
+export { Heading, DisplayHeading, H1, H2, H3, SectionHeader } from './components/Heading';
+export type { HeadingProps, SectionHeaderProps } from './components/Heading';
+export { Icon, IconButton, StatusIcon, IconWithText } from './components/Icon';
+export type { IconProps, IconButtonProps, StatusIconProps, IconWithTextProps } from './components/Icon';
 
 // Export comprehensive data view system
 export * from './components/DataViews';

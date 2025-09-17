@@ -187,7 +187,7 @@ export default function CommunityPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Community
@@ -204,7 +204,7 @@ export default function CommunityPage() {
               in the world's most vibrant creative community.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
                   Join Discord Community
@@ -220,7 +220,7 @@ export default function CommunityPage() {
           </div>
 
           {/* Community Stats */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl text-center">
             <div>
               <div className={`${anton.className} text-heading-2 text-heading-3 color-foreground mb-2 uppercase`}>50K+</div>
               <div className="text-body-sm color-muted">Community Members</div>
@@ -243,7 +243,7 @@ export default function CommunityPage() {
 
       {/* Community Channels */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               CONNECT WITH CREATORS
@@ -254,18 +254,18 @@ export default function CommunityPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
+          <div className="grid md:grid-cols-2 gap-xl mb-16">
             {communityChannels.map((channel) => {
               const Icon = channel.icon;
               return (
                 <Card key={channel.name} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-4 mb-6">
-                      <div className={`p-3 rounded-lg bg-gradient-to-r ${channel.gradient}`}>
+                  <CardContent className="p-xl">
+                    <div className="flex items-start gap-md mb-6">
+                      <div className={`p-sm rounded-lg bg-gradient-to-r ${channel.gradient}`}>
                         <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
+                        <div className="flex items-center gap-sm mb-2">
                           <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{channel.name}</h3>
                           <Badge variant="secondary" className="text-body-sm">
                             {channel.activity}
@@ -278,9 +278,9 @@ export default function CommunityPage() {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 mb-6">
+                    <div className="grid grid-cols-2 gap-sm mb-6">
                       {channel.features.map((feature) => (
-                        <div key={feature} className="flex items-center gap-2">
+                        <div key={feature} className="flex items-center gap-sm">
                           <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${channel.gradient}`}></div>
                           <span className="text-body-sm color-muted">{feature}</span>
                         </div>
@@ -312,7 +312,7 @@ export default function CommunityPage() {
 
       {/* Social Media */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               FOLLOW US EVERYWHERE
@@ -323,12 +323,12 @@ export default function CommunityPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {socialChannels.map((social) => {
               const Icon = social.icon;
               return (
                 <Card key={social.name} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
+                  <CardContent className="p-lg">
                     <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
                       <Icon className="h-6 w-6 color-primary" />
                     </div>
@@ -354,7 +354,7 @@ export default function CommunityPage() {
 
       {/* Upcoming Events */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               UPCOMING EVENTS
@@ -364,22 +364,22 @@ export default function CommunityPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid lg:grid-cols-3 gap-xl mb-12">
             {upcomingEvents.map((event) => (
               <Card key={event.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <Badge variant="outline" className="mb-4">
                     {event.type}
                   </Badge>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{event.title}</h3>
                   <p className="text-body-sm color-muted mb-4">{event.description}</p>
                   
-                  <div className="space-y-2 mb-6">
-                    <div className="flex items-center gap-2 text-body-sm">
+                  <div className="stack-sm mb-6">
+                    <div className="flex items-center gap-sm text-body-sm">
                       <Calendar className="h-4 w-4 color-primary" />
                       <span>{event.date} at {event.time}</span>
                     </div>
-                    <div className="flex items-center gap-2 text-body-sm">
+                    <div className="flex items-center gap-sm text-body-sm">
                       <Users className="h-4 w-4 color-primary" />
                       <span>{event.attendees} registered</span>
                     </div>
@@ -406,21 +406,21 @@ export default function CommunityPage() {
 
       {/* Community Testimonials */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMMUNITY VOICES
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-3 gap-xl">
             {testimonials.map((testimonial, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <blockquote className="text-body color-foreground mb-6 leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-md">
                     <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.avatar}
@@ -440,7 +440,7 @@ export default function CommunityPage() {
 
       {/* Community Achievements */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               COMMUNITY ACHIEVEMENTS
@@ -450,12 +450,12 @@ export default function CommunityPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-xl">
             {achievements.map((achievement) => {
               const Icon = achievement.icon;
               return (
                 <Card key={achievement.title} className="text-center hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
+                  <CardContent className="p-xl">
                     <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-6">
                       <Icon className="h-8 w-8 color-primary" />
                     </div>
@@ -474,7 +474,7 @@ export default function CommunityPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO JOIN THE COMMUNITY?
@@ -483,7 +483,7 @@ export default function CommunityPage() {
               Connect with 25,000+ creative professionals and take your career to the next level.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
                   Join Discord Community

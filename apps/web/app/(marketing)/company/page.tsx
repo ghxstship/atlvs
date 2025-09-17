@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
+import { Button, Card, CardContent, Badge, H1, H2, Icon, IconWithText } from '@ghxstship/ui';
 import { Users, Target, Globe, Award, TrendingUp, Heart, Calendar, MapPin, ArrowRight, ExternalLink, Mail } from 'lucide-react';
 import { Anton } from 'next/font/google';
 
@@ -172,23 +172,23 @@ export default function CompanyPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               About GHXSTSHIP
             </Badge>
-            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-6 uppercase`}>
+            <H1 className={`${anton.className} lg:text-display uppercase mb-6`}>
               LEADERSHIP TEAM
-            </h1>
+            </H1>
             <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-8">
               We're on a mission to empower creative teams worldwide with intelligent, 
               intuitive production management tools that unlock their full potential.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/careers">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Join Our Team
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <Icon icon={ArrowRight} size="sm" className="ml-2 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
@@ -200,7 +200,7 @@ export default function CompanyPage() {
           </div>
 
           {/* Stats */}
-          <div className="grid md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-xl max-w-4xl mx-auto">
             {[
               { label: 'Team Members', value: '150+' },
               { label: 'Countries', value: '25+' },
@@ -220,14 +220,14 @@ export default function CompanyPage() {
 
       {/* Mission & Vision */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-sm mb-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Target className="h-6 w-6 color-primary" />
+                  <Icon icon={Target} size="lg" color="primary" />
                 </div>
-                <h2 className={`${anton.className} text-heading-2 text-heading-3 uppercase`}>OUR MISSION</h2>
+                <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR MISSION</h2>
               </div>
               <p className="text-body color-muted mb-6">
                 To democratize professional production management by providing creative teams 
@@ -241,11 +241,11 @@ export default function CompanyPage() {
               </p>
             </div>
             <div>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex items-center gap-sm mb-6">
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Globe className="h-6 w-6 color-accent" />
+                  <Icon icon={Globe} size="lg" className="text-accent" />
                 </div>
-                <h2 className={`${anton.className} text-heading-2 text-heading-3 uppercase`}>OUR VISION</h2>
+                <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR VISION</h2>
               </div>
               <p className="text-body color-muted mb-6">
                 To become the global standard for creative production management, 
@@ -264,27 +264,27 @@ export default function CompanyPage() {
 
       {/* Leadership Team */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
+            <H2 className="mb-6 uppercase">
               LEADERSHIP TEAM
-            </h2>
+            </H2>
             <p className="text-body color-muted max-w-3xl mx-auto">
               Meet the experienced leaders driving innovation and growth at GHXSTSHIP.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {leadership.map((member) => (
-              <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
+              <Card key={member.name} className="text-center" interactive>
+                <CardContent className="p-xl">
                   <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-6 flex items-center justify-center">
                     <Users className="h-12 w-12 color-primary" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-2 uppercase`}>{member.name}</h3>
                   <div className="color-primary text-heading-4 mb-4">{member.role}</div>
                   <p className="text-body-sm color-muted mb-6">{member.bio}</p>
-                  <div className="flex justify-center gap-3">
+                  <div className="flex justify-center gap-sm">
                     {member.linkedin && (
                       <a href={member.linkedin as any as any} target="_blank" rel="noopener noreferrer">
                         <Button size="sm" variant="outline" className="transition-all duration-200 hover:scale-105">
@@ -309,11 +309,11 @@ export default function CompanyPage() {
 
       {/* Company Timeline */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
+            <H2 className="mb-6 uppercase">
               OUR JOURNEY
-            </h2>
+            </H2>
             <p className="text-body color-muted max-w-3xl mx-auto">
               From startup to industry leader, here are the key milestones in our story.
             </p>
@@ -326,12 +326,12 @@ export default function CompanyPage() {
               
               <div className="space-y-12">
                 {milestones.map((milestone, index) => (
-                  <div key={milestone.year} className="relative flex items-start gap-8">
+                  <div key={milestone.year} className="relative flex items-start gap-xl">
                     <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 relative z-10">
                       {milestone.year.slice(-2)}
                     </div>
                     <div className="flex-1 pb-8">
-                      <div className="flex items-center gap-3 mb-3">
+                      <div className="flex items-center gap-sm mb-3">
                         <Calendar className="h-5 w-5 color-primary" />
                         <span className="text-body-sm text-heading-4 color-primary">{milestone.year}</span>
                       </div>
@@ -348,20 +348,20 @@ export default function CompanyPage() {
 
       {/* Awards & Recognition */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
+            <H2 className="mb-6 uppercase">
               AWARDS & RECOGNITION
-            </h2>
+            </H2>
             <p className="text-body color-muted max-w-3xl mx-auto">
               We're honored to be recognized by industry leaders and organizations.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {awards.map((award) => (
-              <Card key={award.title} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+              <Card key={award.title} className="text-center" interactive variant="elevated">
+                <CardContent className="p-lg">
                   <div className="w-16 h-16 bg-gradient-to-br from-warning/20 to-warning/30 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <Award className="h-8 w-8 color-warning" />
                   </div>
@@ -379,26 +379,26 @@ export default function CompanyPage() {
 
       {/* Press & Media */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
+            <H2 className="mb-6 uppercase">
               PRESS & MEDIA
-            </h2>
+            </H2>
             <p className="text-body color-muted max-w-3xl mx-auto">
               Latest news and coverage about GHXSTSHIP in the media.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto space-y-6">
+          <div className="max-w-4xl mx-auto stack-lg">
             {pressReleases.map((press) => (
               <Card key={press.href} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start justify-between gap-6">
+                <CardContent className="p-lg">
+                  <div className="flex items-start justify-between gap-lg">
                     <div className="flex-1">
                       <h3 className="text-heading-4 color-foreground mb-2 hover:color-primary transition-colors">
                         {press.title}
                       </h3>
-                      <div className="flex items-center gap-4 text-body-sm color-muted">
+                      <div className="flex items-center gap-md text-body-sm color-muted">
                         <span>{press.publication}</span>
                         <span>•</span>
                         <span>{press.date}</span>
@@ -429,20 +429,20 @@ export default function CompanyPage() {
 
       {/* Global Offices */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
-            <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-6">
+            <H2 className="mb-6 uppercase">
               GLOBAL PRESENCE
-            </h2>
+            </H2>
             <p className="text-body color-muted max-w-3xl mx-auto">
               We're building a global team with offices around the world.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-xl max-w-4xl mx-auto">
             {offices.map((office) => (
               <Card key={office.city} className="text-center hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-4 flex items-center justify-center">
                     <MapPin className="h-8 w-8 color-primary" />
                   </div>
@@ -465,17 +465,17 @@ export default function CompanyPage() {
 
       {/* Contact CTA */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center bg-gradient-to-r from-primary/5 to-accent/5">
-            <CardContent className="p-12">
-              <h3 className={`${anton.className} text-heading-2 text-heading-3 mb-6 uppercase`}>
+            <CardContent className="p-2xl">
+              <h3 className={`${anton.className} text-heading-2 mb-6 uppercase`}>
                 LET'S WORK TOGETHER
               </h3>
               <p className="text-body color-muted mb-8 max-w-2xl mx-auto">
                 Whether you're interested in joining our team, partnering with us, 
                 or learning more about our solutions, we'd love to hear from you.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/careers">
                   <Button className="transition-all duration-200 hover:scale-105">
                     <Users className="mr-2 h-4 w-4" />

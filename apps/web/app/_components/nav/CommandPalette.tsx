@@ -69,29 +69,29 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
   if (!open) return null;
 
   return (
-    <div role="dialog" aria-modal="true" aria-label="Command Palette" className="fixed inset-0 z-50 flex items-start justify-center p-4">
+    <div role="dialog" aria-modal="true" aria-label="Command Palette" className="fixed inset-0 z-50 flex items-start justify-center p-md">
       <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" onClick={() => setOpen(false)} />
       <div className="relative w-full max-w-xl rounded-xl bg-card shadow-2xl border border-border overflow-hidden">
-        <div className="p-3 border-b border-border">
+        <div className="p-sm border-b border-border">
           <input
             autoFocus
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search modules and pages (⌘K)"
-            className="w-full bg-transparent outline-none text-sm px-2 py-1"
+            className="w-full bg-transparent outline-none text-sm px-sm py-xs"
             aria-label="Search commands"
           />
         </div>
         <div className="max-h-80 overflow-y-auto">
           {filtered.length === 0 ? (
-            <div className="p-4 text-sm text-muted-foreground">No results</div>
+            <div className="p-md text-sm text-muted-foreground">No results</div>
           ) : (
-            <ul className="p-2">
+            <ul className="p-sm">
               {filtered.map(cmd => (
                 <li key={cmd.id}>
                   <button
-                    className="w-full text-left px-3 py-2 rounded-md hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full text-left px-sm py-sm rounded-md hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                     onClick={() => onSelect(cmd)}
                   >
                     <div className="text-sm">{cmd.label}</div>

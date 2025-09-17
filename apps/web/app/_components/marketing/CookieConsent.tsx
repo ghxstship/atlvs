@@ -97,11 +97,11 @@ export function CookieConsent() {
   return (
     <div className="fixed inset-0 z-50 bg-foreground/30 backdrop-blur-sm">
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t shadow-lg">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-md py-lg">
           {!showPreferences ? (
             // Main consent banner
-            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-4">
-              <div className="flex items-start gap-3 flex-1">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center gap-md">
+              <div className="flex items-start gap-sm flex-1">
                 <Cookie className="h-6 w-6 color-primary mt-1 flex-shrink-0" />
                 <div>
                   <h3 className="text-heading-4 color-foreground mb-2">
@@ -126,7 +126,7 @@ export function CookieConsent() {
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+              <div className="flex flex-col sm:flex-row gap-sm w-full lg:w-auto">
                 <Button
                   variant="outline"
                  
@@ -167,7 +167,7 @@ export function CookieConsent() {
                 </Button>
               </div>
               
-              <div className="space-y-6">
+              <div className="stack-lg">
                 {/* Necessary Cookies */}
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -264,7 +264,7 @@ export function CookieConsent() {
                 </div>
               </div>
               
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <div className="flex flex-col sm:flex-row gap-sm mt-8">
                 <Button
                   variant="outline"
                  

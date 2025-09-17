@@ -12,7 +12,7 @@ export function Container({ children, className, size = 'default' }: ContainerPr
     default: layouts.container,
     wide: layouts.containerWide,
     narrow: layouts.containerNarrow,
-    full: 'w-full px-4',
+    full: 'w-full px-md',
   };
 
   return (
@@ -52,9 +52,9 @@ export function Grid({
   };
 
   const gapClasses = {
-    sm: 'gap-4',
-    md: 'gap-6',
-    lg: 'gap-8',
+    sm: 'gap-md',
+    md: 'gap-lg',
+    lg: 'gap-xl',
   };
 
   // Build custom grid classes if cols is provided

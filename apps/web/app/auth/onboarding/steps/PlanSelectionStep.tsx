@@ -165,7 +165,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
   };
 
   return (
-    <div className="space-y-8">
+    <div className="stack-xl">
       <div className="text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           CHOOSE YOUR PLAN
@@ -177,10 +177,10 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
       {/* Billing Toggle */}
       <div className="flex justify-center">
-        <div className="bg-secondary p-1 rounded-lg">
+        <div className="bg-secondary p-xs rounded-lg">
           <button
             onClick={() => setBillingCycle('monthly')}
-            className={`px-4 py-2 rounded-md text-body-sm form-label transition-colors ${
+            className={`px-md py-sm rounded-md text-body-sm form-label transition-colors ${
               billingCycle === 'monthly'
                 ? 'bg-background color-foreground shadow-sm'
                 : 'color-muted hover:color-foreground'
@@ -190,7 +190,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
           </button>
           <button
             onClick={() => setBillingCycle('annual')}
-            className={`px-4 py-2 rounded-md text-body-sm form-label transition-colors ${
+            className={`px-md py-sm rounded-md text-body-sm form-label transition-colors ${
               billingCycle === 'annual'
                 ? 'bg-background color-foreground shadow-sm'
                 : 'color-muted hover:color-foreground'
@@ -205,7 +205,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
         {plans.map((plan) => {
           const Icon = plan.icon;
           const isSelected = selectedPlan === plan.id;
@@ -228,7 +228,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                 </div>
               )}
               
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <div className="text-center mb-6">
                   <Icon className="h-8 w-8 color-primary mx-auto mb-3" />
                   <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-2`}>
@@ -260,9 +260,9 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                   </p>
                 </div>
 
-                <ul className="space-y-3 mb-6">
+                <ul className="stack-sm mb-6">
                   {plan.features.map((feature, index) => (
-                    <li key={index} className="flex items-start space-x-3">
+                    <li key={index} className="flex items-start cluster-sm">
                       <Check className="h-4 w-4 color-success mt-0.5 flex-shrink-0" />
                       <span className="text-body-sm color-foreground">{feature}</span>
                     </li>
@@ -300,7 +300,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
         <p className="text-body-sm color-muted mb-4">
           Trusted by 10,000+ creative professionals worldwide
         </p>
-        <div className="flex justify-center space-x-8 text-body-sm color-muted">
+        <div className="flex justify-center cluster-xl text-body-sm color-muted">
           <div>✓ 99.9% Uptime</div>
           <div>✓ 24/7 Support</div>
           <div>✓ Cancel Anytime</div>

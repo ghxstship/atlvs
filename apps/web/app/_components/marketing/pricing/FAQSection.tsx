@@ -34,13 +34,13 @@ export function FAQSection({ faqs }: FAQSectionProps) {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <div className="space-y-4">
+          <div className="stack-md">
             {faqs.map((faq, index) => (
               <Card key={index} className="hover:shadow-sm transition-shadow">
                 <CardContent className="p-0">
                   <button
                     onClick={() => toggleFaq(index)}
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-secondary/30 transition-colors"
+                    className="w-full p-lg text-left flex items-center justify-between hover:bg-secondary/30 transition-colors"
                   >
                     <span className="text-heading-4 color-foreground">{faq.question}</span>
                     <HelpCircle className={cn(
@@ -49,7 +49,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                     )} />
                   </button>
                   {openFaq === index && (
-                    <div className="px-6 pb-6">
+                    <div className="px-lg pb-6">
                       <p className="color-muted">{faq.answer}</p>
                     </div>
                   )}

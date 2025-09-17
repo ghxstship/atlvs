@@ -9,7 +9,7 @@ export default async function DemoSetupPage() {
   const { data: { session } } = await supabase.auth.getSession()
   
   if (!session) {
-    redirect('/login')
+    redirect('/auth/signin')
   }
 
   // Check if user has admin role
@@ -25,7 +25,7 @@ export default async function DemoSetupPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto py-12 px-4">
+      <div className="container mx-auto py-2xl px-md">
         <div className="text-center mb-8">
           <h1 className="text-heading-2 text-heading-3 mb-2">Demo Users Setup</h1>
           <p className="color-muted">

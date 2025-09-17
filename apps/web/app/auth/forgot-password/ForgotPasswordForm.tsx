@@ -22,14 +22,14 @@ export default function ForgotPasswordForm() {
 
   if (sent) {
     return (
-      <Card className="p-6">
+      <Card className="p-lg">
         <div className="text-center">
           <CheckCircle className="h-12 w-12 color-success mx-auto mb-4" />
           <h2 className="font-display text-heading-4 text-heading-3 mb-2">Check Your Email</h2>
           <p className="color-muted mb-6">
             We've sent password reset instructions to <strong>{email}</strong>
           </p>
-          <div className="space-y-3">
+          <div className="stack-sm">
             <Button 
               onClick={() => setSent(false)} 
               variant="outline" 
@@ -49,10 +49,10 @@ export default function ForgotPasswordForm() {
   }
 
   return (
-    <Card className="p-6">
-      <form onSubmit={handleSubmit} className="space-y-6">
+    <Card className="p-lg">
+      <form onSubmit={handleSubmit} className="stack-lg">
         <div>
-          <Label htmlFor="email" className="flex items-center gap-2">
+          <Label htmlFor="email" className="flex items-center gap-sm">
             <Mail className="h-4 w-4" />
             Email Address
           </Label>

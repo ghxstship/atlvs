@@ -225,19 +225,19 @@ export function DemoSetupClient() {
     const failed = results.filter(r => !r.success)
 
     return (
-      <Card className="p-6 max-w-2xl mx-auto">
-        <div className="flex items-center gap-2 mb-4">
+      <Card className="p-lg max-w-2xl mx-auto">
+        <div className="flex items-center gap-sm mb-4">
           <CheckCircle className="h-5 w-5 color-success" />
           <h3 className="text-body text-heading-4">Setup Complete</h3>
         </div>
 
-        <div className="space-y-4">
+        <div className="stack-md">
           {successful.length > 0 && (
             <div>
               <h4 className="form-label color-success mb-2">Successfully Created ({successful.length})</h4>
-              <div className="space-y-2">
+              <div className="stack-sm">
                 {successful.map((result) => (
-                  <div key={result.email} className="flex items-center gap-2 text-body-sm">
+                  <div key={result.email} className="flex items-center gap-sm text-body-sm">
                     <CheckCircle className="h-4 w-4 color-success" />
                     <span>{result.email}</span>
                   </div>
@@ -249,10 +249,10 @@ export function DemoSetupClient() {
           {failed.length > 0 && (
             <div>
               <h4 className="form-label color-destructive mb-2">Failed ({failed.length})</h4>
-              <div className="space-y-2">
+              <div className="stack-sm">
                 {failed.map((result) => (
                   <div key={result.email} className="text-body-sm">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-sm">
                       <XCircle className="h-4 w-4 color-destructive" />
                       <span>{result.email}</span>
                     </div>
@@ -266,12 +266,12 @@ export function DemoSetupClient() {
           )}
         </div>
 
-        <div className="mt-6 p-4 bg-primary/10 rounded-lg">
-          <div className="flex items-start gap-2">
+        <div className="mt-6 p-md bg-primary/10 rounded-lg">
+          <div className="flex items-start gap-sm">
             <AlertCircle className="h-4 w-4 color-primary mt-0.5" />
             <div className="text-body-sm">
               <p className="form-label color-primary">Next Steps:</p>
-              <ol className="list-decimal list-inside color-primary mt-1 space-y-1">
+              <ol className="list-decimal list-inside color-primary mt-1 stack-xs">
                 <li>Create auth users manually in Supabase Auth dashboard</li>
                 <li>Use the emails and password "demo123!" for each user</li>
                 <li>Visit <a href="/demo" className="underline">/demo</a> to test user switching</li>
@@ -280,7 +280,7 @@ export function DemoSetupClient() {
           </div>
         </div>
 
-        <div className="flex gap-2 mt-6">
+        <div className="flex gap-sm mt-6">
           <Button onClick={() => setStep('setup')} variant="outline">
             Run Setup Again
           </Button>
@@ -293,8 +293,8 @@ export function DemoSetupClient() {
   }
 
   return (
-    <Card className="p-6 max-w-2xl mx-auto">
-      <div className="flex items-center gap-2 mb-4">
+    <Card className="p-lg max-w-2xl mx-auto">
+      <div className="flex items-center gap-sm mb-4">
         <Users className="h-5 w-5 color-muted" />
         <h3 className="text-body text-heading-4">Create Demo Users</h3>
       </div>
@@ -304,7 +304,7 @@ export function DemoSetupClient() {
         You'll need to manually create the auth users in Supabase Auth dashboard afterwards.
       </p>
 
-      <div className="space-y-3 mb-6">
+      <div className="stack-sm mb-6">
         <h4 className="form-label">Users to be created:</h4>
         {DEMO_USERS.map((user) => {
           const Icon = ROLE_ICONS[user.role as keyof typeof ROLE_ICONS]
@@ -312,9 +312,9 @@ export function DemoSetupClient() {
           return (
             <div
               key={user.id}
-              className="flex items-center justify-between p-3 border rounded-lg"
+              className="flex items-center justify-between p-sm border rounded-lg"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 <Icon className="h-4 w-4 color-muted" />
                 <div>
                   <div className="form-label">{user.full_name}</div>

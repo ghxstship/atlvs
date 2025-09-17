@@ -37,7 +37,7 @@ export function NavigationDropdown({
         <button
           onClick={handleToggle}
           className={cn(
-            "flex items-center justify-between w-full px-3 py-2 text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground uppercase",
+            "flex items-center justify-between w-full px-sm py-sm text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground uppercase",
             anton.className,
             pathname.startsWith(item.href) ? "bg-accent color-accent-foreground" : "color-foreground"
           )}
@@ -51,13 +51,13 @@ export function NavigationDropdown({
           />
         </button>
         {activeDropdown === item.label && (
-          <div className="pl-4 space-y-1">
+          <div className="pl-4 stack-xs">
             {item.children?.map((child) => (
               <a
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-3 py-2 text-body-sm rounded-md transition-colors hover:bg-accent hover:color-accent-foreground",
+                  "block px-sm py-sm text-body-sm rounded-md transition-colors hover:bg-accent hover:color-accent-foreground",
                   pathname === child.href ? "bg-accent color-accent-foreground" : "color-muted"
                 )}
               >
@@ -78,7 +78,7 @@ export function NavigationDropdown({
     >
       <button
         className={cn(
-          "flex items-center space-x-1 text-body-sm form-label transition-colors hover:color-primary uppercase",
+          "flex items-center cluster-xs text-body-sm form-label transition-colors hover:color-primary uppercase",
           anton.className,
           pathname.startsWith(item.href) ? "color-primary" : "color-muted"
         )}
@@ -90,7 +90,7 @@ export function NavigationDropdown({
       {/* Dropdown Menu */}
       <div
         className={cn(
-          "absolute left-0 top-full mt-2 w-48 rounded-md border bg-popover p-1 shadow-lg transition-all duration-200 z-[60]",
+          "absolute left-0 top-full mt-2 w-48 rounded-md border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 p-xs shadow-lg transition-all duration-200 z-[60]",
           activeDropdown === item.label
             ? "opacity-100 translate-y-0 visible"
             : "opacity-0 translate-y-1 invisible"
@@ -101,7 +101,7 @@ export function NavigationDropdown({
             key={child.href}
             href={child.href}
             className={cn(
-              "block px-3 py-2 text-body-sm rounded-sm transition-colors hover:bg-accent hover:color-accent-foreground",
+              "block px-sm py-sm text-body-sm rounded-sm transition-colors hover:bg-accent hover:color-accent-foreground",
               pathname === child.href ? "bg-accent color-accent-foreground" : "text-popover-foreground"
             )}
           >

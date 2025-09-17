@@ -48,7 +48,7 @@ const products = [
 export function ProductHighlights() {
   return (
     <section className="py-20 bg-secondary/20">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -68,15 +68,15 @@ export function ProductHighlights() {
         </div>
 
         {/* Product Cards */}
-        <div className="grid lg:grid-cols-2 gap-8 mb-16">
+        <div className="grid lg:grid-cols-2 gap-xl mb-16">
           {products.map((product) => (
             <Card key={product.id} className="group hover:shadow-2xl transition-all duration-300 overflow-hidden">
               <div className={`h-2 bg-gradient-to-r ${product.gradient}`}></div>
               
-              <CardContent className="p-8">
+              <CardContent className="p-xl">
                 {/* Product Header */}
                 <div className="mb-6">
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-sm mb-3">
                     <h3 className="font-title text-heading-3 text-heading-3">{product.name}</h3>
                     <Badge variant="secondary" className="text-body-sm">
                       Enterprise Ready
@@ -87,12 +87,12 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="grid grid-cols-2 gap-md mb-6">
                   {product.features.map((feature) => {
                     const Icon = feature.icon;
                     return (
-                      <div key={feature.label} className="flex items-start gap-3">
-                        <div className={`p-2 rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
+                      <div key={feature.label} className="flex items-start gap-sm">
+                        <div className={`p-sm rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
                           <Icon className="h-4 w-4 color-primary" />
                         </div>
                         <div>
@@ -105,7 +105,7 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-4 mb-6 p-4 bg-secondary/30 rounded-lg">
+                <div className="grid grid-cols-3 gap-md mb-6 p-md bg-secondary/30 rounded-lg">
                   {product.stats.map((stat) => (
                     <div key={stat.label} className="text-center">
                       <div className="font-title text-body text-heading-3 color-foreground">{stat.value}</div>
@@ -115,7 +115,7 @@ export function ProductHighlights() {
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-3">
+                <div className="flex flex-col sm:flex-row gap-sm">
                   <a href={product.href as any as any} className="flex-1">
                     <Button className="w-full group">
                       Learn More
@@ -136,10 +136,10 @@ export function ProductHighlights() {
         {/* Integration Highlight */}
         <div className="text-center">
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-8">
-              <div className="flex items-center justify-center gap-4 mb-6">
+            <CardContent className="p-xl">
+              <div className="flex items-center justify-center gap-md mb-6">
                 <div className="font-title text-heading-4 text-heading-3">ATLVS</div>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-sm">
                   <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
                   <Zap className="h-5 w-5 color-primary" />
                   <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
@@ -155,7 +155,7 @@ export function ProductHighlights() {
                 meets talent acquisition, enabling unprecedented efficiency and collaboration.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/products/compare">
                   <Button variant="outline">
                     Compare Products

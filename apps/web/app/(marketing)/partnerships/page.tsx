@@ -137,7 +137,7 @@ export default function PartnershipsPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Partner Program
@@ -155,7 +155,7 @@ export default function PartnershipsPage() {
               we'll help you succeed in the creative collaboration market.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-md justify-center mb-12">
               <Button className="group">
                 Become a Partner
                 <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -165,7 +165,7 @@ export default function PartnershipsPage() {
               </Button>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-2xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-2xl mx-auto">
               <div className="text-center">
                 <div className={`${anton.className} text-heading-3 text-heading-3 color-foreground mb-2 uppercase`}>200+</div>
                 <div className="text-body-sm color-muted">Active Partners</div>
@@ -189,7 +189,7 @@ export default function PartnershipsPage() {
 
       {/* Partnership Types */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PARTNERSHIP OPPORTUNITIES
@@ -199,12 +199,12 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {partnershipTypes.map((type) => {
               const Icon = type.icon;
               return (
                 <Card key={type.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
+                  <CardContent className="p-xl">
                     <div className={`w-12 h-12 bg-gradient-to-r ${type.color} rounded-lg flex items-center justify-center mb-6`}>
                       <Icon className="h-6 w-6 text-background" />
                     </div>
@@ -214,10 +214,10 @@ export default function PartnershipsPage() {
                     </h3>
                     <p className="color-muted mb-6">{type.description}</p>
                     
-                    <div className="space-y-2 mb-6">
+                    <div className="stack-sm mb-6">
                       <h4 className="text-heading-4 text-body-sm color-muted uppercase">Benefits</h4>
                       {type.benefits.map((benefit) => (
-                        <div key={benefit} className="flex items-center gap-2">
+                        <div key={benefit} className="flex items-center gap-sm">
                           <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                           <span className="text-body-sm color-foreground">{benefit}</span>
                         </div>
@@ -238,7 +238,7 @@ export default function PartnershipsPage() {
 
       {/* Current Partners */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               OUR PARTNERS
@@ -248,10 +248,10 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
             {currentPartners.map((partner) => (
               <Card key={partner.name} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mx-auto mb-4 flex items-center justify-center">
                     <Users className="h-8 w-8 color-primary" />
                   </div>
@@ -271,7 +271,7 @@ export default function PartnershipsPage() {
 
       {/* Partner Benefits */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               WHY PARTNER WITH US?
@@ -281,13 +281,13 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {partnerBenefits.map((benefit) => {
               const Icon = benefit.icon;
               return (
                 <Card key={benefit.title} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-8">
-                    <div className="flex items-start gap-4">
+                  <CardContent className="p-xl">
+                    <div className="flex items-start gap-md">
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent">
                         <Icon className="h-6 w-6 text-background" />
                       </div>
@@ -306,7 +306,7 @@ export default function PartnershipsPage() {
 
       {/* Partnership Process */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               HOW TO BECOME A PARTNER
@@ -321,10 +321,10 @@ export default function PartnershipsPage() {
             
             <div className="space-y-12">
               {partnershipProcess.map((step, index) => (
-                <div key={step.step} className={`flex items-center gap-8 ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
+                <div key={step.step} className={`flex items-center gap-xl ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                   <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
                     <Card className="hover:shadow-lg transition-shadow">
-                      <CardContent className="p-6">
+                      <CardContent className="p-lg">
                         <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase`}>
                           {step.title}
                         </h3>
@@ -349,7 +349,7 @@ export default function PartnershipsPage() {
 
       {/* Partner Success Stories */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PARTNER SUCCESS STORIES
@@ -359,7 +359,7 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             {[
               {
                 company: 'CreativeFlow Solutions',
@@ -377,8 +377,8 @@ export default function PartnershipsPage() {
               },
             ].map((story) => (
               <Card key={story.company} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-8">
-                  <div className="flex items-center gap-2 mb-4">
+                <CardContent className="p-xl">
+                  <div className="flex items-center gap-sm mb-4">
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>
                       {story.company}
                     </h3>
@@ -387,7 +387,7 @@ export default function PartnershipsPage() {
                     </Badge>
                   </div>
                   
-                  <div className="flex items-center gap-2 mb-4">
+                  <div className="flex items-center gap-sm mb-4">
                     <Star className="h-4 w-4 color-warning" />
                     <span className="text-heading-4 color-primary">{story.result}</span>
                   </div>
@@ -406,7 +406,7 @@ export default function PartnershipsPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               READY TO PARTNER?
@@ -416,7 +416,7 @@ export default function PartnershipsPage() {
               Let's build the future of creative collaboration together.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/contact">
                 <Button className="w-full sm:w-auto group">
                   Start Partnership Discussion
@@ -433,14 +433,14 @@ export default function PartnershipsPage() {
 
       {/* Related Resources */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-6 uppercase`}>
               PARTNER RESOURCES
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-lg">
             {[
               { title: 'API Documentation', href: '/resources/docs', description: 'Technical integration guides' },
               { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
@@ -448,7 +448,7 @@ export default function PartnershipsPage() {
             ].map((resource) => (
               <a key={resource.title} href={resource.href as any as any}>
                 <Card className="hover:shadow-lg transition-shadow group">
-                  <CardContent className="p-6 text-center">
+                  <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-2 uppercase group-hover:color-primary transition-colors`}>
                       {resource.title}
                     </h3>

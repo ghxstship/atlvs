@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function DatabasePage() {
   return (
-    <div className="space-y-6">
+    <div className="stack-lg">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">Database Management</h1>
         <p className="text-muted-foreground mt-2">
@@ -17,14 +17,14 @@ export default function DatabasePage() {
         </p>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Database Health</CardTitle>
             <Database className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center cluster-sm">
               <CheckCircle className="h-4 w-4 color-success" />
               <span className="text-2xl font-bold">Healthy</span>
             </div>
@@ -61,7 +61,7 @@ export default function DatabasePage() {
             <Shield className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center cluster-sm">
               <CheckCircle className="h-4 w-4 color-success" />
               <span className="text-2xl font-bold">Ready</span>
             </div>
@@ -70,13 +70,13 @@ export default function DatabasePage() {
         </Card>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-lg lg:grid-cols-2">
         <Card>
           <CardHeader>
             <CardTitle>Backup Schedule</CardTitle>
             <CardDescription>Automated backup procedures and status</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Full Database Backup</p>
@@ -106,7 +106,7 @@ export default function DatabasePage() {
             <CardTitle>Disaster Recovery</CardTitle>
             <CardDescription>Recovery procedures and testing status</CardDescription>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="stack-md">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium">Recovery Procedure Test</p>
@@ -138,22 +138,22 @@ export default function DatabasePage() {
           <CardDescription>Important database operations and alerts</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
-            <div className="flex items-start space-x-3">
+          <div className="stack-md">
+            <div className="flex items-start cluster-sm">
               <CheckCircle className="h-5 w-5 color-success mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">Backup completed successfully</p>
                 <p className="text-xs text-muted-foreground">2 hours ago • Full database backup</p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start cluster-sm">
               <AlertCircle className="h-5 w-5 color-warning mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">High query volume detected</p>
                 <p className="text-xs text-muted-foreground">4 hours ago • Performance monitoring</p>
               </div>
             </div>
-            <div className="flex items-start space-x-3">
+            <div className="flex items-start cluster-sm">
               <CheckCircle className="h-5 w-5 color-success mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">Recovery test completed</p>

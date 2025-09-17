@@ -40,7 +40,7 @@ export default function PartnersPage() {
   ];
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-md py-16">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-6`}>
@@ -54,21 +54,21 @@ export default function PartnersPage() {
           </Button>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-3 gap-xl mb-16">
           {partnerTiers.map((tier) => {
             const Icon = tier.icon;
             return (
-              <div key={tier.title} className="bg-card rounded-lg p-6 border text-center">
-                <div className="bg-primary/10 p-4 rounded-lg inline-flex mb-4">
+              <div key={tier.title} className="bg-card rounded-lg p-lg border text-center">
+                <div className="bg-primary/10 p-md rounded-lg inline-flex mb-4">
                   <Icon className="h-8 w-8 color-primary" />
                 </div>
                 <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                   {tier.title}
                 </h3>
                 <p className="color-muted mb-6">{tier.description}</p>
-                <ul className="space-y-2 text-body-sm">
+                <ul className="stack-sm text-body-sm">
                   {tier.benefits.map((benefit) => (
-                    <li key={benefit} className="flex items-center justify-center gap-2">
+                    <li key={benefit} className="flex items-center justify-center gap-sm">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       {benefit}
                     </li>
@@ -83,9 +83,9 @@ export default function PartnersPage() {
           <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-8 text-center`}>
             FEATURED PARTNERS
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {featuredPartners.map((partner) => (
-              <div key={partner.name} className="bg-card rounded-lg p-6 border text-center hover:shadow-lg transition-shadow">
+              <div key={partner.name} className="bg-card rounded-lg p-lg border text-center hover:shadow-lg transition-shadow">
                 <div className="bg-secondary/30 rounded-lg h-16 mb-4 flex items-center justify-center">
                   <span className="text-body-sm color-muted">Partner Logo</span>
                 </div>
@@ -96,7 +96,7 @@ export default function PartnersPage() {
           </div>
         </div>
 
-        <div className="bg-secondary/30 rounded-lg p-8">
+        <div className="bg-secondary/30 rounded-lg p-xl">
           <div className="text-center mb-8">
             <Users className="h-12 w-12 color-primary mx-auto mb-4" />
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-4`}>
@@ -108,10 +108,10 @@ export default function PartnersPage() {
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-xl">
             <div>
               <h3 className="text-heading-4 mb-3">Partnership Benefits</h3>
-              <ul className="space-y-2 text-body-sm color-muted">
+              <ul className="stack-sm text-body-sm color-muted">
                 <li>• Access to GHXSTSHIP's growing customer base</li>
                 <li>• Co-marketing and promotional opportunities</li>
                 <li>• Technical support and training resources</li>
@@ -121,7 +121,7 @@ export default function PartnersPage() {
             
             <div>
               <h3 className="text-heading-4 mb-3">Getting Started</h3>
-              <ul className="space-y-2 text-body-sm color-muted">
+              <ul className="stack-sm text-body-sm color-muted">
                 <li>• Submit partnership application</li>
                 <li>• Technical and business evaluation</li>
                 <li>• Partnership agreement and onboarding</li>

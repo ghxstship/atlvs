@@ -132,7 +132,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
   };
 
   return (
-    <div className="space-y-8">
+    <div className="stack-xl">
       <div className="text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           ORGANIZATION SETUP
@@ -143,13 +143,13 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
       </div>
 
       {!setupType ? (
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-lg">
           {/* Create Organization */}
           <Card 
             className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
             onClick={() => setSetupType('create')}
           >
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-xl text-center">
               <Building className="h-12 w-12 color-primary mx-auto mb-4" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                 CREATE ORGANIZATION
@@ -169,7 +169,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             className="cursor-pointer hover:shadow-lg transition-all duration-200 hover:scale-105"
             onClick={() => setSetupType('join')}
           >
-            <CardContent className="p-8 text-center">
+            <CardContent className="p-xl text-center">
               <Users className="h-12 w-12 color-primary mx-auto mb-4" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-3`}>
                 JOIN ORGANIZATION
@@ -186,9 +186,9 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
         </div>
       ) : (
         <Card className="shadow-xl">
-          <CardContent className="p-8">
+          <CardContent className="p-xl">
             {setupType === 'create' ? (
-              <div className="space-y-6">
+              <div className="stack-lg">
                 <div className="text-center mb-6">
                   <Building className="h-12 w-12 color-primary mx-auto mb-4" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-2`}>
@@ -205,7 +205,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                    className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="Enter organization name"
                     value={orgName}
                     onChange={(e) => handleOrgNameChange(e.target.value)}
@@ -218,12 +218,12 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                     Organization URL
                   </label>
                   <div className="flex">
-                    <span className="inline-flex items-center px-3 rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
+                    <span className="inline-flex items-center px-sm rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
                       ghxstship.com/
                     </span>
                     <input
                       type="text"
-                      className="flex-1 px-4 py-3 border border-border rounded-r-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                      className="flex-1 px-md py-sm border border-border rounded-r-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                       placeholder="organization-slug"
                       value={orgSlug}
                       onChange={(e) => setOrgSlug(e.target.value)}
@@ -236,7 +236,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 </div>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="stack-lg">
                 <div className="text-center mb-6">
                   <Users className="h-12 w-12 color-primary mx-auto mb-4" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-2`}>
@@ -253,7 +253,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                   </label>
                   <input
                     type="text"
-                    className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-center text-body font-mono"
+                    className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-center text-body font-mono"
                     placeholder="Enter invite code"
                     value={inviteCode}
                     onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
@@ -267,7 +267,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             )}
 
             {error && (
-              <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+              <div className="mt-4 p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                 <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}

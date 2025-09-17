@@ -9,7 +9,7 @@ import { Badge, Button, Card } from '@ghxstship/ui';
  */
 export default function ColorSystemDemo() {
   return (
-    <div className="p-8 space-y-8 bg-background text-foreground">
+    <div className="p-xl stack-xl bg-background text-foreground">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -20,9 +20,9 @@ export default function ColorSystemDemo() {
         </div>
 
         {/* Neutral Foundation (Semantic Tokens) */}
-        <Card className="p-6 mb-8">
+        <Card className="p-lg mb-8">
           <h2 className="text-2xl font-bold mb-6">Neutral Foundation</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-sm">
             {[
               { name: 'Background', className: 'bg-background' },
               { name: 'Foreground', className: 'bg-foreground' },
@@ -46,13 +46,13 @@ export default function ColorSystemDemo() {
         </Card>
 
         {/* Subway-Style Metro Accents */}
-        <Card className="p-6 mb-8">
+        <Card className="p-lg mb-8">
           <h2 className="text-2xl font-bold mb-6">Subway-Style Metro Accents</h2>
           
           {/* NYC Subway (Semantic Mapping) */}
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-3">NYC Subway Inspired</h3>
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-6 gap-md">
               {[
                 { name: 'Red Line', className: 'bg-destructive text-destructive-foreground', desc: '4/5/6 Line' },
                 { name: 'Blue Line', className: 'bg-primary text-primary-foreground', desc: 'A/C/E Line' },
@@ -73,7 +73,7 @@ export default function ColorSystemDemo() {
           {/* London Underground (Semantic Mapping) */}
           <div className="mb-6">
             <h3 className="text-lg font-semibold mb-3">London Underground Inspired</h3>
-            <div className="grid grid-cols-7 gap-4">
+            <div className="grid grid-cols-7 gap-md">
               {[
                 { name: 'Bakerloo', className: 'bg-secondary text-secondary-foreground' },
                 { name: 'Central', className: 'bg-destructive text-destructive-foreground' },
@@ -94,7 +94,7 @@ export default function ColorSystemDemo() {
           {/* Tokyo Metro (Semantic Mapping) */}
           <div>
             <h3 className="text-lg font-semibold mb-3">Tokyo Metro Inspired</h3>
-            <div className="grid grid-cols-6 gap-4">
+            <div className="grid grid-cols-6 gap-md">
               {[
                 { name: 'Ginza', className: 'bg-warning text-warning-foreground' },
                 { name: 'Marunouchi', className: 'bg-destructive text-destructive-foreground' },
@@ -113,25 +113,25 @@ export default function ColorSystemDemo() {
         </Card>
 
         {/* Interactive Components */}
-        <Card className="p-6 mb-8">
+        <Card className="p-lg mb-8">
           <h2 className="text-2xl font-bold mb-6">Interactive Components</h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-xl">
             {/* Buttons */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Buttons</h3>
-              <div className="space-y-3">
-                <div className="flex gap-3">
+              <div className="stack-sm">
+                <div className="flex gap-sm">
                   <Button variant="primary" size="lg">Primary Large</Button>
                   <Button variant="primary" size="md">Primary Medium</Button>
                   <Button variant="primary" size="sm">Primary Small</Button>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-sm">
                   <Button variant="outline" size="lg">Secondary Large</Button>
                   <Button variant="outline" size="md">Outline Medium</Button>
                   <Button variant="ghost" size="sm">Ghost Small</Button>
                 </div>
-                <div className="flex gap-3">
+                <div className="flex gap-sm">
                   <Button variant="destructive" size="md">Destructive</Button>
                   <Button disabled size="md">Disabled</Button>
                 </div>
@@ -141,20 +141,20 @@ export default function ColorSystemDemo() {
             {/* Status Indicators */}
             <div>
               <h3 className="text-lg font-semibold mb-4">Status Indicators</h3>
-              <div className="space-y-3">
-                <div className="flex gap-2">
-                  <Badge variant="success" className="px-3 py-1 text-sm font-medium">
+              <div className="stack-sm">
+                <div className="flex gap-sm">
+                  <Badge variant="success" className="px-sm py-xs text-sm font-medium">
                     Success
                   </Badge>
-                  <Badge variant="warning" className="px-3 py-1 text-sm font-medium">
+                  <Badge variant="warning" className="px-sm py-xs text-sm font-medium">
                     Warning
                   </Badge>
                 </div>
-                <div className="flex gap-2">
-                  <Badge variant="destructive" className="px-3 py-1 text-sm font-medium">
+                <div className="flex gap-sm">
+                  <Badge variant="destructive" className="px-sm py-xs text-sm font-medium">
                     Error
                   </Badge>
-                  <Badge variant="secondary" className="px-3 py-1 text-sm font-medium">
+                  <Badge variant="secondary" className="px-sm py-xs text-sm font-medium">
                     Info
                   </Badge>
                 </div>
@@ -164,9 +164,9 @@ export default function ColorSystemDemo() {
         </Card>
 
         {/* Subway-Style Badges (Semantic) */}
-        <Card className="p-6 mb-8">
+        <Card className="p-lg mb-8">
           <h2 className="text-2xl font-bold mb-6">Subway-Style Badges</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
             {[
               { name: 'Red Line', className: 'bg-destructive text-destructive-foreground' },
               { name: 'Blue Line', className: 'bg-primary text-primary-foreground' },
@@ -179,7 +179,7 @@ export default function ColorSystemDemo() {
             ].map((badge) => (
               <div 
                 key={badge.name}
-                className={`px-4 py-2 rounded-full text-center font-bold text-sm ${badge.className}`}
+                className={`px-md py-sm rounded-full text-center font-bold text-sm ${badge.className}`}
               >
                 {badge.name}
               </div>
@@ -188,9 +188,9 @@ export default function ColorSystemDemo() {
         </Card>
 
         {/* Typography Hierarchy */}
-        <Card className="p-6 mb-8">
+        <Card className="p-lg mb-8">
           <h2 className="text-2xl font-bold mb-6">Typography Hierarchy</h2>
-          <div className="space-y-4">
+          <div className="stack-md">
             <div>
               <h1 className="text-4xl font-bold text-primary">Heading 1 - Display</h1>
               <p className="text-sm text-muted-foreground">4xl / Bold / Primary Color</p>
@@ -219,33 +219,33 @@ export default function ColorSystemDemo() {
         </Card>
 
         {/* Accessibility Compliance (Semantic) */}
-        <Card className="p-6">
+        <Card className="p-lg">
           <h2 className="text-2xl font-bold mb-6">Accessibility Compliance</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
             <div>
               <h3 className="text-lg font-semibold mb-3">AA Compliant (4.5:1)</h3>
-              <div className="space-y-2">
-                <div className="p-3 rounded-md bg-background text-muted-foreground border">
+              <div className="stack-sm">
+                <div className="p-sm rounded-md bg-background text-muted-foreground border">
                   White background + Grey 600 text
                 </div>
-                <div className="p-3 rounded-md bg-primary text-primary-foreground">
+                <div className="p-sm rounded-md bg-primary text-primary-foreground">
                   Primary + Primary Foreground
                 </div>
-                <div className="p-3 rounded-md bg-destructive text-destructive-foreground">
+                <div className="p-sm rounded-md bg-destructive text-destructive-foreground">
                   Destructive + Destructive Foreground
                 </div>
               </div>
             </div>
             <div>
               <h3 className="text-lg font-semibold mb-3">AAA Compliant (7:1)</h3>
-              <div className="space-y-2">
-                <div className="p-3 rounded-md bg-background text-foreground border">
+              <div className="stack-sm">
+                <div className="p-sm rounded-md bg-background text-foreground border">
                   White background + Grey 700 text
                 </div>
-                <div className="p-3 rounded-md bg-background text-foreground border">
+                <div className="p-sm rounded-md bg-background text-foreground border">
                   White background + Grey 900 text
                 </div>
-                <div className="p-3 rounded-md bg-foreground text-background">
+                <div className="p-sm rounded-md bg-foreground text-background">
                   Foreground + Background text
                 </div>
               </div>

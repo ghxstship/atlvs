@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-md max-w-4xl">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -34,27 +34,27 @@ export default function PrivacyPolicyPage() {
 
         {/* Quick Overview */}
         <Card className="mb-12 bg-gradient-to-r from-primary/5 to-accent/5">
-          <CardContent className="p-8">
-            <div className="flex items-center gap-3 mb-6">
+          <CardContent className="p-xl">
+            <div className="flex items-center gap-sm mb-6">
               <Shield className="h-8 w-8 color-primary" />
               <h2 className="font-title text-heading-3 text-heading-3">Privacy at a Glance</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="flex items-start gap-3">
+            <div className="grid md:grid-cols-3 gap-lg">
+              <div className="flex items-start gap-sm">
                 <Eye className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">What We Collect</h3>
                   <p className="text-body-sm color-muted">Account info, usage data, and technical information to provide our services.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <Lock className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">How We Protect</h3>
                   <p className="text-body-sm color-muted">Enterprise-grade security, encryption, and access controls protect your data.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <Users className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">Your Rights</h3>
@@ -71,13 +71,13 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">1. Information We Collect</h2>
             
-            <div className="space-y-6">
+            <div className="stack-lg">
               <div>
                 <h3 className="text-heading-4 text-body mb-3">Account Information</h3>
                 <p className="color-muted mb-3">
                   When you create an account, we collect:
                 </p>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>Name and email address</li>
                   <li>Company name and role</li>
                   <li>Profile information you choose to provide</li>
@@ -90,7 +90,7 @@ export default function PrivacyPolicyPage() {
                 <p className="color-muted mb-3">
                   To improve our services, we collect:
                 </p>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>How you use our platform and features</li>
                   <li>Projects and content you create (stored securely)</li>
                   <li>Performance and error data</li>
@@ -103,7 +103,7 @@ export default function PrivacyPolicyPage() {
                 <p className="color-muted mb-3">
                   For security and functionality:
                 </p>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>IP address and device information</li>
                   <li>Browser type and version</li>
                   <li>Operating system</li>
@@ -117,8 +117,8 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">2. How We Use Your Information</h2>
             
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
+            <div className="stack-md">
+              <div className="flex items-start gap-sm">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <h3 className="text-heading-4 mb-2">Provide Our Services</h3>
@@ -126,7 +126,7 @@ export default function PrivacyPolicyPage() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <h3 className="text-heading-4 mb-2">Improve Our Platform</h3>
@@ -134,7 +134,7 @@ export default function PrivacyPolicyPage() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <h3 className="text-heading-4 mb-2">Communicate With You</h3>
@@ -142,7 +142,7 @@ export default function PrivacyPolicyPage() {
                 </div>
               </div>
               
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <div className="w-2 h-2 bg-primary rounded-full mt-2"></div>
                 <div>
                   <h3 className="text-heading-4 mb-2">Ensure Security</h3>
@@ -157,12 +157,12 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">3. Information Sharing</h2>
             
             <Card className="bg-secondary/20">
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <p className="color-muted mb-4">
                   <strong>We do not sell your personal information.</strong> We only share information in these limited circumstances:
                 </p>
                 
-                <div className="space-y-4">
+                <div className="stack-md">
                   <div>
                     <h3 className="text-heading-4 mb-2">Service Providers</h3>
                     <p className="text-body-sm color-muted">Trusted partners who help us operate our platform (hosting, payments, analytics) under strict data protection agreements.</p>
@@ -186,10 +186,10 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">4. Data Security</h2>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-lg">
               <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-center gap-sm mb-4">
                     <Lock className="h-6 w-6 color-primary" />
                     <h3 className="text-heading-4">Encryption</h3>
                   </div>
@@ -198,8 +198,8 @@ export default function PrivacyPolicyPage() {
               </Card>
               
               <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-center gap-sm mb-4">
                     <Shield className="h-6 w-6 color-primary" />
                     <h3 className="text-heading-4">Access Controls</h3>
                   </div>
@@ -208,8 +208,8 @@ export default function PrivacyPolicyPage() {
               </Card>
               
               <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-center gap-sm mb-4">
                     <Globe className="h-6 w-6 color-primary" />
                     <h3 className="text-heading-4">Compliance</h3>
                   </div>
@@ -218,8 +218,8 @@ export default function PrivacyPolicyPage() {
               </Card>
               
               <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-3 mb-4">
+                <CardContent className="p-lg">
+                  <div className="flex items-center gap-sm mb-4">
                     <Users className="h-6 w-6 color-primary" />
                     <h3 className="text-heading-4">Team Training</h3>
                   </div>
@@ -233,7 +233,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">5. Your Rights and Choices</h2>
             
-            <div className="space-y-6">
+            <div className="stack-lg">
               <div>
                 <h3 className="text-heading-4 text-body mb-3">Data Access and Portability</h3>
                 <p className="color-muted">
@@ -272,16 +272,16 @@ export default function PrivacyPolicyPage() {
               We use cookies and similar technologies to enhance your experience:
             </p>
             
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
+            <div className="stack-sm">
+              <div className="flex items-start gap-sm">
                 <Badge variant="secondary" className="mt-1">Essential</Badge>
                 <p className="text-body-sm color-muted">Required for basic platform functionality and security.</p>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <Badge variant="outline" className="mt-1">Analytics</Badge>
                 <p className="text-body-sm color-muted">Help us understand how you use our platform to improve it.</p>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <Badge variant="outline" className="mt-1">Preferences</Badge>
                 <p className="text-body-sm color-muted">Remember your settings and preferences across sessions.</p>
               </div>
@@ -300,7 +300,7 @@ export default function PrivacyPolicyPage() {
               GHXSTSHIP operates globally. Your information may be transferred to and processed in countries other than your own, including the United States. We ensure appropriate safeguards are in place:
             </p>
             
-            <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+            <ul className="list-disc list-inside stack-sm color-muted ml-4">
               <li>Standard Contractual Clauses for EU data transfers</li>
               <li>Adequacy decisions where available</li>
               <li>Binding corporate rules for internal transfers</li>
@@ -313,7 +313,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">8. Children's Privacy</h2>
             
             <Card className="bg-warning/10 border-warning/30">
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <p className="color-muted">
                   Our services are not intended for children under 13 years of age. We do not knowingly collect personal information from children under 13. If you believe we have collected information from a child under 13, please contact us immediately.
                 </p>
@@ -329,7 +329,7 @@ export default function PrivacyPolicyPage() {
               We may update this privacy policy from time to time. We will notify you of any material changes by:
             </p>
             
-            <ul className="list-disc list-inside space-y-2 color-muted ml-4 mb-4">
+            <ul className="list-disc list-inside stack-sm color-muted ml-4 mb-4">
               <li>Email notification to your registered address</li>
               <li>Prominent notice on our website</li>
               <li>In-app notification when you next log in</li>
@@ -345,8 +345,8 @@ export default function PrivacyPolicyPage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">10. Contact Us</h2>
             
             <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
+              <CardContent className="p-lg">
+                <div className="flex items-start gap-md">
                   <Mail className="h-6 w-6 color-primary mt-1" />
                   <div>
                     <h3 className="text-heading-4 mb-3">Questions About This Policy?</h3>
@@ -354,7 +354,7 @@ export default function PrivacyPolicyPage() {
                       If you have any questions about this privacy policy or our data practices, please contact us:
                     </p>
                     
-                    <div className="space-y-2 text-body-sm">
+                    <div className="stack-sm text-body-sm">
                       <p><strong>Email:</strong> privacy@ghxstship.com</p>
                       <p><strong>Address:</strong> GHXSTSHIP, Inc.<br />123 Market Street, Suite 500<br />San Francisco, CA 94105</p>
                       <p><strong>Data Protection Officer:</strong> dpo@ghxstship.com</p>

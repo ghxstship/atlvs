@@ -80,8 +80,8 @@ export function DemoUserSwitcher() {
   }
 
   return (
-    <Card className="p-6 max-w-2xl mx-auto">
-      <div className="flex items-center gap-2 mb-4">
+    <Card className="p-lg max-w-2xl mx-auto">
+      <div className="flex items-center gap-sm mb-4">
         <Users className="h-5 w-5 text-muted-foreground" />
         <h3 className="text-lg font-semibold">Demo User Switcher</h3>
       </div>
@@ -90,7 +90,7 @@ export function DemoUserSwitcher() {
         Switch between different user roles to test permissions and access levels in the GHXSTSHIP application.
       </p>
 
-      <div className="grid gap-3">
+      <div className="grid gap-sm">
         {demoUsers.map((user) => {
           const Icon = ROLE_ICONS[user.role as keyof typeof ROLE_ICONS]
           const isCurrentUser = currentUser === user.type
@@ -98,9 +98,9 @@ export function DemoUserSwitcher() {
           return (
             <div
               key={user.type}
-              className="flex items-center justify-between p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+              className="flex items-center justify-between p-sm border rounded-lg hover:bg-muted/50 transition-colors"
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 <Icon className="h-4 w-4 text-muted-foreground" />
                 <div>
                   <div className="font-medium">{user.name}</div>
@@ -133,9 +133,9 @@ export function DemoUserSwitcher() {
         })}
       </div>
 
-      <div className="mt-6 p-4 bg-muted/50 rounded-lg">
+      <div className="mt-6 p-md bg-muted/50 rounded-lg">
         <h4 className="font-medium text-sm mb-2">Role Permissions:</h4>
-        <ul className="text-xs text-muted-foreground space-y-1">
+        <ul className="text-xs text-muted-foreground stack-xs">
           <li><strong>Owner:</strong> Full access to all features and settings</li>
           <li><strong>Admin:</strong> Manage users, projects, and most settings</li>
           <li><strong>Manager:</strong> Create and manage projects, view reports</li>

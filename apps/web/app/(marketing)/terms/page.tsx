@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen py-20">
-      <div className="container mx-auto px-4 max-w-4xl">
+      <div className="container mx-auto px-md max-w-4xl">
         {/* Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -34,27 +34,27 @@ export default function TermsOfServicePage() {
 
         {/* Quick Summary */}
         <Card className="mb-12 bg-gradient-to-r from-primary/5 to-accent/5">
-          <CardContent className="p-8">
-            <div className="flex items-center gap-3 mb-6">
+          <CardContent className="p-xl">
+            <div className="flex items-center gap-sm mb-6">
               <Scale className="h-8 w-8 color-primary" />
               <h2 className="font-title text-heading-3 text-heading-3">Terms Summary</h2>
             </div>
-            <div className="grid md:grid-cols-3 gap-6">
-              <div className="flex items-start gap-3">
+            <div className="grid md:grid-cols-3 gap-lg">
+              <div className="flex items-start gap-sm">
                 <FileText className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">Your Agreement</h3>
                   <p className="text-body-sm color-muted">By using our services, you agree to these terms and our privacy policy.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <Shield className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">Your Responsibilities</h3>
                   <p className="text-body-sm color-muted">Use our platform lawfully and respect other users' rights.</p>
                 </div>
               </div>
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-sm">
                 <AlertTriangle className="h-5 w-5 color-primary mt-1" />
                 <div>
                   <h3 className="text-heading-4 mb-2">Important Limits</h3>
@@ -84,7 +84,7 @@ export default function TermsOfServicePage() {
             <p className="color-muted mb-4">
               GHXSTSHIP provides cloud-based production management software including:
             </p>
-            <ul className="list-disc list-inside space-y-2 color-muted ml-4 mb-4">
+            <ul className="list-disc list-inside stack-sm color-muted ml-4 mb-4">
               <li>ATLVS - Production management and workflow tools</li>
               <li>OPENDECK - Creative asset management platform</li>
               <li>Related APIs, integrations, and support services</li>
@@ -98,13 +98,13 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">3. User Accounts</h2>
             
-            <div className="space-y-6">
+            <div className="stack-lg">
               <div>
                 <h3 className="text-heading-4 text-body mb-3">Account Registration</h3>
                 <p className="color-muted mb-3">
                   To use our services, you must:
                 </p>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>Provide accurate and complete information</li>
                   <li>Be at least 18 years old or have parental consent</li>
                   <li>Maintain the security of your account credentials</li>
@@ -126,8 +126,8 @@ export default function TermsOfServicePage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">4. Acceptable Use Policy</h2>
             
             <Card className="bg-destructive/10 border-destructive/20 mb-6">
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
+              <CardContent className="p-lg">
+                <div className="flex items-start gap-sm">
                   <AlertTriangle className="h-6 w-6 color-destructive mt-1" />
                   <div>
                     <h3 className="text-heading-4 color-destructive mb-2">Prohibited Activities</h3>
@@ -139,10 +139,10 @@ export default function TermsOfServicePage() {
               </CardContent>
             </Card>
 
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4 mb-2">You may not:</h3>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>Violate any applicable laws or regulations</li>
                   <li>Infringe on intellectual property rights</li>
                   <li>Upload malicious code or attempt to hack our systems</li>
@@ -160,13 +160,13 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">5. Content and Data</h2>
             
-            <div className="space-y-6">
+            <div className="stack-lg">
               <div>
                 <h3 className="text-heading-4 text-body mb-3">Your Content</h3>
                 <p className="color-muted mb-3">
                   You retain ownership of all content you upload to our platform. By using our service, you grant us a limited license to:
                 </p>
-                <ul className="list-disc list-inside space-y-2 color-muted ml-4">
+                <ul className="list-disc list-inside stack-sm color-muted ml-4">
                   <li>Store and process your content to provide our services</li>
                   <li>Make backups for data protection and recovery</li>
                   <li>Display your content to authorized team members</li>
@@ -194,7 +194,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">6. Payment Terms</h2>
             
-            <div className="space-y-6">
+            <div className="stack-lg">
               <div>
                 <h3 className="text-heading-4 text-body mb-3">Subscription Fees</h3>
                 <p className="color-muted mb-3">
@@ -222,7 +222,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">7. Intellectual Property</h2>
             
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4 mb-2">Our Rights</h3>
                 <p className="color-muted">
@@ -254,9 +254,9 @@ export default function TermsOfServicePage() {
               Your privacy is important to us. Our collection and use of personal information is governed by our Privacy Policy, which is incorporated into these Terms by reference.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-lg">
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className="text-heading-4 mb-3">Data Security</h3>
                   <p className="text-body-sm color-muted">
                     We implement industry-standard security measures, but cannot guarantee absolute security. You should also take precautions to protect your data.
@@ -265,7 +265,7 @@ export default function TermsOfServicePage() {
               </Card>
               
               <Card>
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className="text-heading-4 mb-3">Data Processing</h3>
                   <p className="text-body-sm color-muted">
                     We process your data in accordance with applicable privacy laws, including GDPR and CCPA where applicable.
@@ -280,14 +280,14 @@ export default function TermsOfServicePage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">9. Disclaimers</h2>
             
             <Card className="bg-warning/10 border-warning/20">
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <p className="color-muted mb-4">
                   <strong>IMPORTANT:</strong> Our services are provided "as is" without warranties of any kind, either express or implied.
                 </p>
                 
-                <div className="space-y-3 text-body-sm color-muted">
+                <div className="stack-sm text-body-sm color-muted">
                   <p>We disclaim all warranties, including but not limited to:</p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
+                  <ul className="list-disc list-inside stack-xs ml-4">
                     <li>Merchantability and fitness for a particular purpose</li>
                     <li>Non-infringement of third-party rights</li>
                     <li>Uninterrupted or error-free operation</li>
@@ -303,14 +303,14 @@ export default function TermsOfServicePage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">10. Limitation of Liability</h2>
             
             <Card className="bg-destructive/10 border-destructive/20">
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <p className="color-muted mb-4">
                   <strong>LIABILITY LIMITS:</strong> To the maximum extent permitted by law, GHXSTSHIP's total liability is limited to the amount you paid us in the 12 months preceding the claim.
                 </p>
                 
-                <div className="space-y-3 text-body-sm color-muted">
+                <div className="stack-sm text-body-sm color-muted">
                   <p>We are not liable for:</p>
-                  <ul className="list-disc list-inside space-y-1 ml-4">
+                  <ul className="list-disc list-inside stack-xs ml-4">
                     <li>Indirect, incidental, or consequential damages</li>
                     <li>Loss of profits, data, or business opportunities</li>
                     <li>Third-party actions or content</li>
@@ -334,7 +334,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">12. Termination</h2>
             
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4 mb-2">By You</h3>
                 <p className="color-muted">
@@ -362,7 +362,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">13. Dispute Resolution</h2>
             
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4 mb-2">Informal Resolution</h3>
                 <p className="color-muted">
@@ -390,7 +390,7 @@ export default function TermsOfServicePage() {
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">14. General Provisions</h2>
             
-            <div className="space-y-4">
+            <div className="stack-md">
               <div>
                 <h3 className="text-heading-4 mb-2">Governing Law</h3>
                 <p className="color-muted">
@@ -426,8 +426,8 @@ export default function TermsOfServicePage() {
             <h2 className="font-title text-heading-3 text-heading-3 mb-6">15. Contact Information</h2>
             
             <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-4">
+              <CardContent className="p-lg">
+                <div className="flex items-start gap-md">
                   <Mail className="h-6 w-6 color-primary mt-1" />
                   <div>
                     <h3 className="text-heading-4 mb-3">Questions About These Terms?</h3>
@@ -435,7 +435,7 @@ export default function TermsOfServicePage() {
                       If you have questions about these Terms of Service, please contact us:
                     </p>
                     
-                    <div className="space-y-2 text-body-sm">
+                    <div className="stack-sm text-body-sm">
                       <p><strong>Email:</strong> legal@ghxstship.com</p>
                       <p><strong>Address:</strong> GHXSTSHIP, Inc.<br />123 Market Street, Suite 500<br />San Francisco, CA 94105</p>
                       <p><strong>Phone:</strong> +1 (555) 123-4567</p>

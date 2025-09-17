@@ -3,34 +3,46 @@ import { cva } from 'class-variance-authority';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 
-const badge = cva('badge font-body', {
-  variants: {
-    variant: {
-      default: 'bg-muted text-muted-foreground border-muted',
-      success: 'bg-success/10 text-success border-success/20',
-      warning: 'bg-warning/10 text-warning border-warning/20',
-      error: 'bg-destructive/10 text-destructive border-destructive/20',
-      info: 'bg-primary/10 text-primary border-primary/20',
-      destructive: 'bg-destructive text-destructive-foreground border-destructive',
-      outline: 'border-border bg-transparent text-foreground hover:bg-muted',
-      secondary: 'bg-secondary text-secondary-foreground border-secondary',
-      primary: 'bg-primary text-primary-foreground border-primary',
+const badgeVariants = cva(
+  'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
+  {
+    variants: {
+      variant: {
+        default: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
+        primary: 'border-transparent bg-primary text-primary-foreground hover:bg-primary/80',
+        secondary: 'border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80',
+        destructive: 'border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80',
+        outline: 'text-foreground',
+        success: 'border-transparent bg-success text-success-foreground hover:bg-success/80',
+        warning: 'border-transparent bg-warning text-warning-foreground hover:bg-warning/80',
+        info: 'border-transparent bg-info text-info-foreground hover:bg-info/80',
+        muted: 'border-transparent bg-muted text-muted-foreground hover:bg-muted/80',
+        ghost: 'hover:bg-accent hover:text-accent-foreground',
+        // Subway-style variants
+        'subway-red': 'border-transparent bg-subway-red text-subway-red-foreground hover:bg-subway-red/80',
+        'subway-blue': 'border-transparent bg-subway-blue text-subway-blue-foreground hover:bg-subway-blue/80',
+        'subway-green': 'border-transparent bg-subway-green text-subway-green-foreground hover:bg-subway-green/80',
+        'subway-orange': 'border-transparent bg-subway-orange text-subway-orange-foreground hover:bg-subway-orange/80',
+        'subway-purple': 'border-transparent bg-subway-purple text-subway-purple-foreground hover:bg-subway-purple/80',
+        'subway-grey': 'border-transparent bg-subway-grey text-subway-grey-foreground hover:bg-subway-grey/80',
+      },
+      size: {
+        xs: 'text-xs px-1.5 py-0.5 h-5',
+        sm: 'text-xs px-2 py-0.5 h-6',
+        md: 'text-sm px-2.5 py-0.5 h-7',
+        lg: 'text-sm px-3 py-1 h-8',
+      },
     },
-    size: {
-      xs: 'text-xs px-1.5 py-0.5 h-5',
-      sm: 'text-xs px-2 py-0.5 h-6',
-      md: 'text-sm px-2.5 py-0.5 h-7',
-      lg: 'text-sm px-3 py-1 h-8',
+    defaultVariants: {
+      variant: 'default',
+      size: 'md',
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-    size: 'md',
-  },
-});
+  }
+);
 
 export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'success' | 'warning' | 'error' | 'info' | 'destructive' | 'outline' | 'secondary' | 'primary';
+  variant?: 'default' | 'primary' | 'secondary' | 'destructive' | 'outline' | 'success' | 'warning' | 'info' | 'muted' | 'ghost' |
+           'subway-red' | 'subway-blue' | 'subway-green' | 'subway-orange' | 'subway-purple' | 'subway-grey';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   dot?: boolean;
   removable?: boolean;
@@ -43,8 +55,7 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
       ref={ref} 
       className={twMerge(
         clsx(
-          badge({ variant, size }),
-          'inline-flex items-center gap-1 rounded-full border transition-colors',
+          badgeVariants({ variant, size }),
           dot && 'pl-1.5',
           className
         )
@@ -56,9 +67,9 @@ export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
           'w-2 h-2 rounded-full',
           variant === 'success' && 'bg-success',
           variant === 'warning' && 'bg-warning',
-          variant === 'error' && 'bg-destructive',
+          variant === 'destructive' && 'bg-destructive',
           variant === 'info' && 'bg-primary',
-          variant === 'destructive' && 'bg-destructive-foreground',
+          variant === 'muted' && 'bg-muted-foreground',
           (!variant || variant === 'default') && 'bg-muted-foreground'
         )} />
       )}
@@ -89,9 +100,9 @@ export const StatusBadge = React.forwardRef<HTMLDivElement, Omit<BadgeProps, 'va
       inactive: { variant: 'default' as const, children: 'Inactive' },
       pending: { variant: 'warning' as const, children: 'Pending' },
       completed: { variant: 'success' as const, children: 'Completed' },
-      failed: { variant: 'error' as const, children: 'Failed' },
+      failed: { variant: 'destructive' as const, children: 'Failed' },
       draft: { variant: 'outline' as const, children: 'Draft' },
-      published: { variant: 'primary' as const, children: 'Published' },
+      published: { variant: 'default' as const, children: 'Published' },
       archived: { variant: 'secondary' as const, children: 'Archived' },
     };
 

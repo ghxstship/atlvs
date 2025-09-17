@@ -39,27 +39,27 @@ export default function NotificationsBell() {
         aria-label="Notifications"
         title="Notifications"
         onClick={() => setOpen(true)}
-        className="relative inline-flex items-center justify-center rounded-md p-2 hover:bg-accent"
+        className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-accent"
       >
         <Bell className="h-5 w-5" />
         {unread > 0 && (
-          <span className="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center badge badge-error px-1 text-[10px] rounded-full">
+          <span className="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center badge badge-error px-xs text-[10px] rounded-full">
             {unread}
           </span>
         )}
       </button>
 
       <Drawer open={open} onClose={() => setOpen(false)} title="Notifications" description="Your latest alerts">
-        <div className="space-y-2">
+        <div className="stack-sm">
           {loading ? (
             <div className="text-body-sm opacity-80">Loading…</div>
           ) : items.length === 0 ? (
             <div className="text-body-sm opacity-80">You're all caught up.</div>
           ) : (
-            <ul className="space-y-2">
+            <ul className="stack-sm">
               {items.map((n) => (
-                <li key={n.id} className="rounded border p-2">
-                  <div className="flex items-start justify-between gap-2">
+                <li key={n.id} className="rounded border p-sm">
+                  <div className="flex items-start justify-between gap-sm">
                     <div>
                       <div className="form-label">{n.title}</div>
                       {n.body ? <div className="text-body-sm opacity-80">{n.body}</div> : null}

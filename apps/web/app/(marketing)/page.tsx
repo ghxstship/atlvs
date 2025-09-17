@@ -14,7 +14,7 @@ export default function RootPage() {
 
         {/* Product Showcase */}
         <section className="py-20 bg-secondary/20">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-md">
             <div className="text-center mb-16">
               <Badge variant="outline" className="mb-4">
                 Our Products
@@ -28,7 +28,7 @@ export default function RootPage() {
               </p>
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-xl max-w-6xl mx-auto">
               {/* ATLVS Card */}
               <FeatureCard
                 title="PROJECT MANAGEMENT FOR REAL HUMANS"
@@ -37,7 +37,7 @@ export default function RootPage() {
                 badge="ATLVS"
                 gradient="from-primary to-secondary"
                 variant="hover"
-                className="p-8"
+                className="p-xl"
               />
               
               {/* OPENDECK Card */}
@@ -48,11 +48,11 @@ export default function RootPage() {
                 badge="OPENDECK"
                 gradient="from-success to-accent"
                 variant="hover"
-                className="p-8"
+                className="p-xl"
               />
             </div>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
+            <div className="flex flex-col sm:flex-row gap-md justify-center mt-12">
               <Link href="/products/atlvs">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Explore ATLVS

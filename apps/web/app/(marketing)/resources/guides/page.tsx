@@ -103,7 +103,7 @@ export default function GuidesPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Guides
@@ -120,7 +120,7 @@ export default function GuidesPage() {
               built from 13+ years of managing everything from cruise entertainment to Formula 1 events. 
               No theory, just what actually works.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Access All Guides
@@ -138,12 +138,12 @@ export default function GuidesPage() {
       </section>
 
       {/* Filters */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="space-y-4">
+      <section className="py-xl border-b">
+        <div className="container mx-auto px-md">
+          <div className="stack-md">
             <div>
               <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Categories</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-sm">
                 {categories.map((category) => (
                   <Badge 
                     key={category} 
@@ -157,7 +157,7 @@ export default function GuidesPage() {
             </div>
             <div>
               <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Difficulty</h3>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-sm">
                 {difficulties.map((difficulty) => (
                   <Badge 
                     key={difficulty} 
@@ -175,8 +175,8 @@ export default function GuidesPage() {
 
       {/* Guides Grid */}
       <section id="guides" className="py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="container mx-auto px-md">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {guides.map((guide) => (
               <Card key={guide.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
@@ -202,7 +202,7 @@ export default function GuidesPage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {guide.title}
                   </h3>
@@ -210,24 +210,24 @@ export default function GuidesPage() {
                     {guide.description}
                   </p>
                   
-                  <div className="space-y-3 mb-4">
+                  <div className="stack-sm mb-4">
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Clock className="h-4 w-4" />
                         {guide.duration}
                       </div>
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <BookOpen className="h-4 w-4" />
                         {guide.chapters} chapters
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <Star className="h-4 w-4 color-warning fill-current" />
                         <span className="text-heading-4">{guide.rating}</span>
                       </div>
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <CheckCircle className="h-4 w-4" />
                         {guide.completions} completed
                       </div>
@@ -257,7 +257,7 @@ export default function GuidesPage() {
 
       {/* Learning Path CTA */}
       <section className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-12">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               STRUCTURED LEARNING PATHS
@@ -268,7 +268,7 @@ export default function GuidesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-xl">
             {[
               {
                 title: 'Festival Production Mastery',
@@ -293,7 +293,7 @@ export default function GuidesPage() {
               },
             ].map((path, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
                     <BookOpen className="h-8 w-8 text-background" />
                   </div>
@@ -303,7 +303,7 @@ export default function GuidesPage() {
                   <p className="color-muted mb-4">
                     {path.description}
                   </p>
-                  <div className="space-y-2 text-body-sm color-muted mb-4">
+                  <div className="stack-sm text-body-sm color-muted mb-4">
                     <div className="flex justify-between">
                       <span>Guides:</span>
                       <span className="text-heading-4">{path.guides}</span>
@@ -329,9 +329,9 @@ export default function GuidesPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <BookOpen className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 MASTER PRODUCTION MANAGEMENT
@@ -340,7 +340,7 @@ export default function GuidesPage() {
                 Get access to our complete library of step-by-step guides, learning paths, 
                 and practical exercises. Learn from someone who's managed $15M+ in production budgets.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Start Learning Today

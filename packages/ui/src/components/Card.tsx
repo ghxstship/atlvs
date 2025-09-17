@@ -3,14 +3,17 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 
 export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'outline' | 'elevated' | 'glass' | 'gradient';
+  variant?: 'default' | 'outline' | 'elevated' | 'floating' | 'glass' | 'glass-intense' | 'gradient' | 'subway-accent' | 'surface';
   size?: 'sm' | 'md' | 'lg';
   interactive?: boolean;
   loading?: boolean;
+  depth?: 'surface' | 'elevated' | 'floating';
+  glow?: 'primary' | 'success' | 'warning' | 'error' | 'none';
+  subwayLine?: 'red' | 'blue' | 'green' | 'orange' | 'purple' | 'yellow' | 'grey';
 }
 
 export const Card = React.forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant = 'default', size = 'md', interactive = false, loading = false, children, ...props }, ref) => {
+  ({ className, variant = 'default', size = 'md', interactive = false, loading = false, depth, glow = 'none', subwayLine, children, ...props }, ref) => {
     const sizeClasses = {
       sm: 'p-4 rounded-lg',
       md: 'p-6 rounded-lg',
@@ -18,12 +21,39 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
     };
 
     const variantClasses = {
-      default: 'card',
-      outline: 'card border-2 border-border/50',
-      elevated: 'card surface-elevated',
-      glass: 'glass border border-white/20',
-      gradient: 'bg-gradient-to-br from-background to-muted/50 border border-border/50'
+      default: 'bg-card text-card-foreground border-thin border-default shadow-surface',
+      surface: 'depth-surface bg-card text-card-foreground',
+      outline: 'bg-card text-card-foreground border-medium border-accent shadow-surface',
+      elevated: 'depth-elevated bg-card text-card-foreground',
+      floating: 'depth-floating bg-card text-card-foreground',
+      glass: 'glass-medium text-foreground',
+      'glass-intense': 'glass-intense text-foreground',
+      gradient: 'bg-gradient-to-br from-background to-muted/50 border-thin border-subtle shadow-elevated',
+      'subway-accent': 'bg-card text-card-foreground border-l-heavy shadow-surface'
     };
+
+    const depthClasses = depth ? {
+      surface: 'depth-surface',
+      elevated: 'depth-elevated', 
+      floating: 'depth-floating'
+    }[depth] : '';
+
+    const glowClasses = glow !== 'none' ? {
+      primary: 'glow-primary',
+      success: 'glow-success',
+      warning: 'glow-warning',
+      error: 'glow-error'
+    }[glow] : '';
+
+    const subwayAccentClasses = subwayLine ? {
+      red: 'border-l-subway-red',
+      blue: 'border-l-subway-blue', 
+      green: 'border-l-subway-green',
+      orange: 'border-l-subway-orange',
+      purple: 'border-l-subway-purple',
+      yellow: 'border-l-subway-yellow',
+      grey: 'border-l-subway-grey'
+    }[subwayLine] : '';
 
     return (
       <div
@@ -33,7 +63,10 @@ export const Card = React.forwardRef<HTMLDivElement, CardProps>(
             'relative overflow-hidden transition-all duration-200',
             sizeClasses[size],
             variantClasses[variant],
-            interactive && 'interactive cursor-pointer hover:shadow-lg',
+            depthClasses,
+            glowClasses,
+            variant === 'subway-accent' && subwayAccentClasses,
+            interactive && 'interactive-depth cursor-pointer',
             loading && 'animate-pulse pointer-events-none',
             className
           )
@@ -66,7 +99,7 @@ export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>(
         ref={ref}
         className={twMerge(
           clsx(
-            'flex items-start justify-between space-y-1.5 pb-4 border-b border-border/50',
+            'flex items-start justify-between space-y-1.5 pb-4 border-b border-thin border-subtle',
             className
           )
         )}
@@ -118,7 +151,7 @@ export const CardFooter = React.forwardRef<HTMLDivElement, React.HTMLAttributes<
         ref={ref}
         className={twMerge(
           clsx(
-            'flex items-center justify-between pt-4 mt-4 border-t border-border/50 font-body',
+            'flex items-center justify-between pt-4 mt-4 border-t border-thin border-subtle font-body',
             className
           )
         )}

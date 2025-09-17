@@ -12,7 +12,7 @@ interface TeamStatsProps {
 
 export function TeamStats({ stats }: TeamStatsProps) {
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
       {stats.map((stat) => (
         <div key={stat.metric} className="text-center">
           <div className={`${typography.statValue} mb-2`}>

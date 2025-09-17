@@ -105,7 +105,7 @@ export default function WhitepapersPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-background via-background to-muted/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Whitepapers
@@ -122,7 +122,7 @@ export default function WhitepapersPage() {
               productions from intimate events to 100K+ attendee festivals. Data-driven insights 
               you can actually use.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-md justify-center">
               <Link href="/auth/signup">
                 <Button className="group">
                   Download All Reports
@@ -140,11 +140,11 @@ export default function WhitepapersPage() {
       </section>
 
       {/* Categories Filter */}
-      <section className="py-8 border-b">
-        <div className="container mx-auto px-4">
-          <div className="space-y-4">
+      <section className="py-xl border-b">
+        <div className="container mx-auto px-md">
+          <div className="stack-md">
             <h3 className="text-body-sm text-heading-4 color-foreground mb-3">Categories</h3>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-sm">
               {categories.map((category) => (
                 <Badge 
                   key={category} 
@@ -161,7 +161,7 @@ export default function WhitepapersPage() {
 
       {/* Featured Whitepapers */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               FEATURED RESEARCH
@@ -172,7 +172,7 @@ export default function WhitepapersPage() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8 mb-20">
+          <div className="grid lg:grid-cols-2 gap-xl mb-20">
             {featuredPapers.map((paper) => (
               <Card key={paper.id} className="hover:shadow-xl transition-all duration-300 group">
                 <div className="relative">
@@ -200,7 +200,7 @@ export default function WhitepapersPage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <h3 className={`mb-4 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {paper.title}
                   </h3>
@@ -208,24 +208,24 @@ export default function WhitepapersPage() {
                     {paper.description}
                   </p>
                   
-                  <div className="space-y-4 mb-6">
+                  <div className="stack-md mb-6">
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Calendar className="h-4 w-4" />
                         {paper.publishDate}
                       </div>
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <FileText className="h-4 w-4" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Download className="h-4 w-4" />
                         {paper.downloads} downloads
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <TrendingUp className="h-4 w-4 color-success" />
                         <span className="text-heading-4 color-success">Popular</span>
                       </div>
@@ -234,7 +234,7 @@ export default function WhitepapersPage() {
                   
                   <div className="border-t pt-4 mb-6">
                     <h4 className="text-body-sm text-heading-4 color-foreground mb-2">Key Topics:</h4>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-sm mb-4">
                       {paper.topics.map((topic) => (
                         <Badge key={topic} variant="outline" className="text-body-sm">
                           {topic}
@@ -262,14 +262,14 @@ export default function WhitepapersPage() {
 
       {/* All Whitepapers */}
       <section id="whitepapers" className="py-20 bg-secondary/20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               ALL RESEARCH REPORTS
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {regularPapers.map((paper) => (
               <Card key={paper.id} className="hover:shadow-lg transition-all duration-300 group">
                 <div className="relative">
@@ -292,7 +292,7 @@ export default function WhitepapersPage() {
                   </div>
                 </div>
                 
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   <h3 className={`mb-3 group-hover:color-primary transition-colors ${typography.cardTitle}`}>
                     {paper.title}
                   </h3>
@@ -300,24 +300,24 @@ export default function WhitepapersPage() {
                     {paper.description}
                   </p>
                   
-                  <div className="space-y-3 mb-4">
+                  <div className="stack-sm mb-4">
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Calendar className="h-4 w-4" />
                         {paper.publishDate}
                       </div>
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <FileText className="h-4 w-4" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Download className="h-4 w-4" />
                         {paper.downloads}
                       </div>
-                      <div className="flex items-center gap-1 color-muted">
+                      <div className="flex items-center gap-xs color-muted">
                         <Eye className="h-4 w-4" />
                         Preview
                       </div>
@@ -347,7 +347,7 @@ export default function WhitepapersPage() {
 
       {/* Research Subscription */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-12">
             <h2 className={`mb-6 ${typography.sectionTitle}`}>
               RESEARCH SUBSCRIPTION
@@ -357,7 +357,7 @@ export default function WhitepapersPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-xl">
             {[
               {
                 title: 'Quarterly Industry Reports',
@@ -376,7 +376,7 @@ export default function WhitepapersPage() {
               },
             ].map((benefit, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow text-center">
-                <CardContent className="p-8">
+                <CardContent className="p-xl">
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-4">
                     <FileText className="h-8 w-8 text-background" />
                   </div>
@@ -396,9 +396,9 @@ export default function WhitepapersPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-r from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-12">
+            <CardContent className="p-2xl">
               <FileText className="h-16 w-16 color-primary mx-auto mb-6" />
               <h2 className={`mb-6 ${typography.sectionTitle}`}>
                 ACCESS ALL RESEARCH
@@ -407,7 +407,7 @@ export default function WhitepapersPage() {
                 Get unlimited access to our complete library of research reports, industry analysis, 
                 and exclusive insights. Learn from data collected across $15M+ in production budgets.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Download All Reports

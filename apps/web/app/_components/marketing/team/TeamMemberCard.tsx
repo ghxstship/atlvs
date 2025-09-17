@@ -18,7 +18,7 @@ interface TeamMemberCardProps {
 export function TeamMemberCard({ member, variant = 'default' }: TeamMemberCardProps) {
   return (
     <Card className="text-center hover:shadow-lg transition-shadow">
-      <CardContent className="p-6">
+      <CardContent className="p-lg">
         <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-4 flex items-center justify-center">
           <Users className="h-6 w-6 color-primary" />
         </div>
@@ -29,7 +29,7 @@ export function TeamMemberCard({ member, variant = 'default' }: TeamMemberCardPr
         <Badge variant="outline" className="text-body-sm mb-3">
           {member.department}
         </Badge>
-        <div className="flex items-center justify-center gap-1 text-body-sm color-muted">
+        <div className="flex items-center justify-center gap-xs text-body-sm color-muted">
           <MapPin className="h-3 w-3" />
           {member.location}
         </div>

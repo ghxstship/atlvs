@@ -4,17 +4,27 @@ import { createServerClient } from '@ghxstship/auth';
 import { cookies } from 'next/headers';
 
 const vendorSchema = z.object({
-  name: z.string().min(1, 'Vendor name is required'),
-  description: z.string().optional(),
-  contact_person: z.string().optional(),
-  email: z.string().email('Invalid email format').optional().or(z.literal('')),
+  business_name: z.string().min(1, 'Business name is required'),
+  display_name: z.string().min(1, 'Display name is required'),
+  business_type: z.enum(['individual', 'company', 'agency']).default('company'),
+  email: z.string().email('Invalid email format'),
   phone: z.string().optional(),
-  address: z.string().optional(),
   website: z.string().url('Invalid URL format').optional().or(z.literal('')),
-  tax_id: z.string().optional(),
+  address: z.object({
+    street: z.string().optional(),
+    city: z.string().optional(),
+    state: z.string().optional(),
+    postal_code: z.string().optional(),
+    country: z.string().optional(),
+  }).optional(),
+  primary_category: z.string().min(1, 'Primary category is required'),
+  categories: z.array(z.string()).optional(),
+  skills: z.array(z.string()).optional(),
+  hourly_rate: z.number().positive().optional(),
+  currency: z.string().default('USD'),
   payment_terms: z.string().optional(),
-  status: z.enum(['active', 'inactive', 'pending']).default('active'),
-  rating: z.number().min(1).max(5).optional(),
+  tax_id: z.string().optional(),
+  vat_number: z.string().optional(),
   notes: z.string().optional(),
 });
 
@@ -37,7 +47,7 @@ export async function GET(request: NextRequest) {
 
     // Check user has access to organization
     const { data: membership } = await sb
-      .from('organization_members')
+      .from('memberships')
       .select('role')
       .eq('organization_id', orgId)
       .eq('user_id', user.id)
@@ -47,12 +57,51 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Access denied' }, { status: 403 });
     }
 
-    // Fetch vendors
-    const { data: vendors, error } = await sb
-      .from('procurement_vendors')
-      .select('*')
+    // Get search parameters
+    const { searchParams } = new URL(request.url);
+    const search = searchParams.get('search');
+    const category = searchParams.get('category');
+    const status = searchParams.get('status') || 'active';
+
+    // Fetch vendors from opendeck_vendor_profiles with procurement context
+    let query = sb
+      .from('opendeck_vendor_profiles')
+      .select(`
+        id,
+        business_name,
+        display_name,
+        business_type,
+        email,
+        phone,
+        website,
+        address,
+        primary_category,
+        categories,
+        skills,
+        hourly_rate,
+        currency,
+        tax_id,
+        vat_number,
+        rating,
+        total_reviews,
+        total_projects,
+        status,
+        created_at,
+        updated_at
+      `)
       .eq('organization_id', orgId)
+      .eq('status', status)
       .order('created_at', { ascending: false });
+
+    // Apply filters
+    if (search) {
+      query = query.or(`business_name.ilike.%${search}%,display_name.ilike.%${search}%`);
+    }
+    if (category) {
+      query = query.eq('primary_category', category);
+    }
+
+    const { data: vendors, error } = await query;
 
     if (error) {
       console.error('Database error:', error);
@@ -86,13 +135,13 @@ export async function POST(request: NextRequest) {
 
     // Check user has admin or manager role
     const { data: membership } = await sb
-      .from('organization_members')
+      .from('memberships')
       .select('role')
       .eq('organization_id', orgId)
       .eq('user_id', user.id)
       .single();
 
-    if (!membership || !['admin', 'manager'].includes(membership.role)) {
+    if (!membership || !['owner', 'admin', 'manager'].includes(membership.role)) {
       return NextResponse.json({ error: 'Insufficient permissions' }, { status: 403 });
     }
 
@@ -100,13 +149,29 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = vendorSchema.parse(body);
 
-    // Create vendor
+    // Create vendor profile in opendeck_vendor_profiles
     const { data: vendor, error } = await sb
-      .from('procurement_vendors')
+      .from('opendeck_vendor_profiles')
       .insert({
-        ...validatedData,
+        user_id: user.id, // Required field
         organization_id: orgId,
-        created_by: user.id,
+        business_name: validatedData.business_name,
+        display_name: validatedData.display_name,
+        business_type: validatedData.business_type,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        website: validatedData.website,
+        address: validatedData.address,
+        primary_category: validatedData.primary_category,
+        categories: validatedData.categories || [],
+        skills: validatedData.skills || [],
+        hourly_rate: validatedData.hourly_rate,
+        currency: validatedData.currency,
+        tax_id: validatedData.tax_id,
+        vat_number: validatedData.vat_number,
+        bio: validatedData.notes, // Map notes to bio field
+        status: 'active', // Default status for procurement vendors
+        availability_status: 'available',
       })
       .select()
       .single();
@@ -115,6 +180,21 @@ export async function POST(request: NextRequest) {
       console.error('Database error:', error);
       return NextResponse.json({ error: 'Failed to create vendor' }, { status: 500 });
     }
+
+    // Log audit event
+    await sb.from('audit_logs').insert({
+      organization_id: orgId,
+      user_id: user.id,
+      action: 'procurement.vendor.create',
+      resource_type: 'vendor',
+      resource_id: vendor.id,
+      details: { 
+        business_name: vendor.business_name,
+        primary_category: vendor.primary_category,
+        context: 'procurement'
+      },
+      occurred_at: new Date().toISOString()
+    });
 
     return NextResponse.json({ data: vendor }, { status: 201 });
 

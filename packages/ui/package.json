@@ -4,6 +4,12 @@
   "type": "module",
   "main": "src/index.ts",
   "sideEffects": ["src/styles.css"],
+  "scripts": {
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "test-storybook": "test-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
+  },
   "dependencies": {
     "clsx": "^2.1.0",
     "tailwind-merge": "^2.3.0",
@@ -16,6 +22,15 @@
   },
   "devDependencies": {
     "next-themes": "^0.2.1",
-    "lucide-react": "^0.454.0"
+    "lucide-react": "^0.454.0",
+    "@storybook/addon-essentials": "^7.6.0",
+    "@storybook/addon-interactions": "^7.6.0",
+    "@storybook/addon-a11y": "^7.6.0",
+    "@storybook/addon-docs": "^7.6.0",
+    "@storybook/nextjs": "^7.6.0",
+    "@storybook/react": "^7.6.0",
+    "@storybook/test-runner": "^0.16.0",
+    "chromatic": "^10.0.0",
+    "storybook": "^7.6.0"
   }
 }

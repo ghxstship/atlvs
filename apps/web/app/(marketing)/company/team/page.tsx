@@ -371,7 +371,7 @@ export default function TeamPage() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-accent/5">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <Badge variant="outline" className="mb-4">
               Our People
@@ -382,7 +382,7 @@ export default function TeamPage() {
             <p className={`${typography.heroSubtitle} mb-8`}>
               We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.
             </p>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
               {stats.map((stat) => (
                 <div key={stat.metric} className="text-center">
                   <div className={`${typography.statValue} mb-2`}>
@@ -399,7 +399,7 @@ export default function TeamPage() {
 
       {/* Leadership Team */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               LEADERSHIP TEAM
@@ -408,12 +408,12 @@ export default function TeamPage() {
               Meet the experienced leaders guiding GHXSTSHIP's vision and growth.
             </p>
           </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl max-w-7xl mx-auto">
           {leadership.map((leader) => (
             <Card key={leader.name} className="group hover:shadow-lg transition-all duration-300 h-[320px] flex flex-col">
-              <CardContent className="p-6 flex flex-col h-full">
+              <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center space-x-4 mb-4 h-12">
+                <div className="flex items-center cluster mb-4 h-12">
                   <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-background" />
                   </div>
@@ -449,7 +449,7 @@ export default function TeamPage() {
 
       {/* Departments */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               OUR DEPARTMENTS
@@ -458,12 +458,12 @@ export default function TeamPage() {
               Each department brings unique expertise to building the future of creative collaboration.
             </p>
           </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
           {departments.map((dept) => (
             <Card key={dept.name} className="hover:shadow-lg transition-shadow h-[200px] flex flex-col">
-              <CardContent className="p-6 flex flex-col h-full">
+              <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center gap-4 mb-4 h-12">
+                <div className="flex items-center gap-md mb-4 h-12">
                   <div className={`w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <Users className="h-6 w-6 text-background" />
                   </div>
@@ -487,7 +487,7 @@ export default function TeamPage() {
 
       {/* Team Members */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               TEAM MEMBERS
@@ -496,12 +496,12 @@ export default function TeamPage() {
               Get to know some of the talented individuals who make GHXSTSHIP possible.
             </p>
           </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
           {teamMembers.map((member) => (
             <Card key={member.name} className="hover:shadow-lg transition-all duration-300 group h-[400px] flex flex-col">
-              <CardContent className="p-6 flex flex-col h-full">
+              <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center space-x-4 mb-4 h-16">
+                <div className="flex items-center cluster mb-4 h-16">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="h-6 w-6 text-primary" />
                   </div>
@@ -529,7 +529,7 @@ export default function TeamPage() {
                 </div>
                 
                 {/* Footer Section - Fixed Height */}
-                <div className="flex items-center gap-1 text-xs text-muted-foreground h-4">
+                <div className="flex items-center gap-xs text-xs text-muted-foreground h-4">
                   <MapPin className="h-3 w-3 flex-shrink-0" />
                   <span className="truncate">{member.location}</span>
                 </div>
@@ -554,7 +554,7 @@ export default function TeamPage() {
 
       {/* Culture & Values */}
       <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               OUR CULTURE
@@ -563,7 +563,7 @@ export default function TeamPage() {
               We've built a culture that celebrates creativity, embraces diversity, and empowers every team member to do their best work.
             </p>
           </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
           {[
             {
               title: 'Remote-First',
@@ -599,7 +599,7 @@ export default function TeamPage() {
             const Icon = value.icon;
             return (
               <Card key={value.title} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-4">
                     <Icon className="h-6 w-6 text-background" />
                   </div>
@@ -617,7 +617,7 @@ export default function TeamPage() {
 
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               WANT TO JOIN US?
@@ -626,7 +626,7 @@ export default function TeamPage() {
               We're always looking for talented individuals who share our passion for empowering creative collaboration. Explore our open positions.
             </p>
           </div>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-md justify-center">
           <Link href="/careers">
             <Button className="w-full sm:w-auto group">
               View Open Positions
@@ -643,13 +643,13 @@ export default function TeamPage() {
 
       {/* Related Pages */}
       <section className="py-20">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-md">
           <div className="text-center mb-16">
             <h2 className={`${typography.sectionTitle} mb-6`}>
               LEARN MORE
             </h2>
           </div>
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-3 gap-lg">
           {[
             { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and values' },
             { title: 'Careers', href: '/careers', description: 'Join our growing team' },
@@ -657,7 +657,7 @@ export default function TeamPage() {
           ].map((link) => (
             <Link key={link.title} href={link.href as any}>
               <Card className="hover:shadow-lg transition-shadow group">
-                <CardContent className="p-6 text-center">
+                <CardContent className="p-lg text-center">
                   <h3 className={`${typography.cardTitle} text-lg mb-2 group-hover:text-primary transition-colors`}>
                     {link.title}
                   </h3>

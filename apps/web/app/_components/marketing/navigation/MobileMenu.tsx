@@ -21,7 +21,7 @@ interface MobileMenuProps {
 export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: MobileMenuProps) {
   return (
     <div className="md:hidden border-t bg-popover">
-      <div className="px-2 pt-2 pb-3 space-y-1">
+      <div className="px-sm pt-2 pb-3 stack-xs">
         {navigation.map((item) => (
           <div key={item.label}>
             {item.children ? (
@@ -35,7 +35,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
               <a
                 href={item.href}
                 className={cn(
-                  "block px-3 py-2 text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground color-foreground uppercase",
+                  "block px-sm py-sm text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground color-foreground uppercase",
                   anton.className
                 )}
               >
@@ -46,7 +46,7 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
         ))}
         
         {/* Mobile Auth Buttons */}
-        <div className="pt-4 space-y-2">
+        <div className="pt-4 stack-sm">
           <Link href="/auth/signin" className="block">
             <Button className="w-full justify-center">
               Sign In

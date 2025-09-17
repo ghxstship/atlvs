@@ -8,7 +8,7 @@ interface PricingToggleProps {
 
 export function PricingToggle({ isAnnual, onToggle }: PricingToggleProps) {
   return (
-    <div className="flex items-center justify-center gap-4 mb-12">
+    <div className="flex items-center justify-center gap-md mb-12">
       <span className={cn("text-body-sm transition-colors", !isAnnual ? "color-foreground text-heading-4" : "color-muted")}>
         Monthly
       </span>

@@ -19,13 +19,13 @@ export function ProductToggle({ atlvsEnabled, opendeckEnabled }: { atlvsEnabled:
   };
 
   const baseBtn =
-    "px-3 py-1.5 text-sm rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-ring";
+    "px-sm py-xs.5 text-sm rounded-md border transition-colors focus:outline-none focus:ring-2 focus:ring-ring";
   const activeCls = "bg-foreground text-background border-foreground";
   const idleCls = "bg-background text-foreground border-border hover:bg-muted/50";
   const disabledCls = "opacity-50 cursor-not-allowed";
 
   return (
-    <div className="inline-flex items-center gap-1" role="group" aria-label="Product Toggle">
+    <div className="inline-flex items-center gap-xs" role="group" aria-label="Product Toggle">
       <button
         className={`${baseBtn} ${active === "atlvs" ? activeCls : idleCls} ${!atlvsEnabled ? disabledCls : ""}`}
         onClick={() => go("atlvs")}

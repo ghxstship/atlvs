@@ -8,23 +8,23 @@ export const spacing = {
   sectionPaddingSmall: 'py-16',
   
   // Container spacing
-  containerPadding: 'px-4',
+  containerPadding: 'px-md',
   containerMargin: 'mx-auto',
   
   // Content spacing
-  contentGap: 'gap-8',
-  contentGapLarge: 'gap-12',
-  contentGapSmall: 'gap-6',
+  contentGap: 'gap-xl',
+  contentGapLarge: 'gap-2xl',
+  contentGapSmall: 'gap-lg',
   
   // Grid spacing
-  gridGap: 'gap-6',
-  gridGapLarge: 'gap-8',
-  gridGapSmall: 'gap-4',
+  gridGap: 'gap-lg',
+  gridGapLarge: 'gap-xl',
+  gridGapSmall: 'gap-md',
   
   // Text spacing
-  textSpacing: 'space-y-6',
-  textSpacingLarge: 'space-y-8',
-  textSpacingSmall: 'space-y-4',
+  textSpacing: 'stack-lg',
+  textSpacingLarge: 'stack-xl',
+  textSpacingSmall: 'stack-md',
   
   // Margin utilities
   marginBottom: {

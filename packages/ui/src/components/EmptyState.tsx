@@ -69,22 +69,22 @@ export function EmptyState({
   return (
     <div className={`text-center py-12 ${className}`}>
       {icon && (
-        <div className="flex justify-center mb-4 text-gray-400">
+        <div className="flex justify-center mb-4 text-muted-foreground">
           {icon}
         </div>
       )}
       
-      <div className="text-lg font-medium mb-2 text-gray-900 dark:text-gray-100">
+      <div className="text-lg font-medium mb-2 text-foreground">
         {title}
       </div>
       
-      <div className="text-sm mb-6 text-gray-600 dark:text-gray-400 max-w-md mx-auto">
+      <div className="text-sm mb-6 text-muted-foreground max-w-md mx-auto">
         {description}
       </div>
       
       {demoError && (
-        <div className="mb-4 p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-md">
-          <div className="text-sm text-red-700 dark:text-red-400">{demoError}</div>
+        <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+          <div className="text-sm text-destructive">{demoError}</div>
         </div>
       )}
       
@@ -114,7 +114,7 @@ export function EmptyState({
       </div>
       
       {demoAction && (
-        <div className="mt-3 text-xs text-gray-500 dark:text-gray-400">
+        <div className="mt-3 text-xs text-muted-foreground">
           Demo includes pirate-themed sample data for immediate exploration
         </div>
       )}

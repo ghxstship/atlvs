@@ -103,7 +103,7 @@ export function SocialProof() {
 
   return (
     <section className="py-20 bg-background">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-md">
         {/* Section Header */}
         <div className="text-center mb-16">
           <Badge variant="outline" className="mb-4">
@@ -125,8 +125,8 @@ export function SocialProof() {
         {/* Featured Testimonial Carousel */}
         <div className="max-w-4xl mx-auto mb-16">
           <Card className="relative overflow-hidden">
-            <CardContent className="p-8 lg:p-12">
-              <div className="flex items-start gap-6">
+            <CardContent className="p-xl lg:p-2xl">
+              <div className="flex items-start gap-lg">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -137,7 +137,7 @@ export function SocialProof() {
                 {/* Testimonial Content */}
                 <div className="flex-1">
                   {/* Rating */}
-                  <div className="flex items-center gap-1 mb-4">
+                  <div className="flex items-center gap-xs mb-4">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
                       <Star key={i} className="h-5 w-5 fill-warning color-warning" />
                     ))}
@@ -149,7 +149,7 @@ export function SocialProof() {
                   </blockquote>
 
                   {/* Author Info */}
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-md">
                     <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
                       <span className="text-body-sm text-heading-4">
                         {testimonials[currentTestimonial].name.split(' ').map(n => n[0]).join('')}
@@ -174,7 +174,7 @@ export function SocialProof() {
 
               {/* Navigation */}
               <div className="flex items-center justify-between mt-8">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-sm">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
@@ -187,16 +187,16 @@ export function SocialProof() {
                   ))}
                 </div>
                 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-sm">
                   <button
                     onClick={prevTestimonial}
-                    className="p-2 rounded-full hover:bg-secondary transition-colors"
+                    className="p-sm rounded-full hover:bg-secondary transition-colors"
                   >
                     <ChevronLeft className="h-4 w-4" />
                   </button>
                   <button
                     onClick={nextTestimonial}
-                    className="p-2 rounded-full hover:bg-secondary transition-colors"
+                    className="p-sm rounded-full hover:bg-secondary transition-colors"
                   >
                     <ChevronRight className="h-4 w-4" />
                   </button>
@@ -211,10 +211,10 @@ export function SocialProof() {
           <h3 className="font-title text-heading-3 text-heading-3 text-center mb-8">
             SUCCESS STORIES
           </h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-lg">
             {caseStudies.map((study) => (
               <Card key={study.company} className="hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
+                <CardContent className="p-lg">
                   {/* Company Logo */}
                   <div className="w-16 h-8 bg-secondary/30 rounded-lg flex items-center justify-center mb-4">
                     <span className="text-body-sm form-label color-muted">
@@ -256,7 +256,7 @@ export function SocialProof() {
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl text-center">
           <div>
             <div className="font-title text-heading-2 text-heading-3 color-foreground mb-2">98%</div>
             <div className="text-body-sm color-muted">Client Satisfaction</div>

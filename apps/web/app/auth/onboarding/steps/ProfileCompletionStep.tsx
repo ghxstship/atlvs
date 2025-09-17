@@ -139,7 +139,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
   };
 
   return (
-    <div className="space-y-8">
+    <div className="stack-xl">
       <div className="text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-4`}>
           COMPLETE YOUR PROFILE
@@ -150,8 +150,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       </div>
 
       <Card className="shadow-xl">
-        <CardContent className="p-8">
-          <div className="space-y-6">
+        <CardContent className="p-xl">
+          <div className="stack-lg">
             {/* Avatar Upload */}
             <div className="text-center">
               <div className="relative inline-block">
@@ -166,7 +166,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                     <User className="h-12 w-12 color-muted" />
                   )}
                 </div>
-                <label className="absolute bottom-0 right-0 bg-primary color-primary-foreground rounded-full p-2 cursor-pointer hover:bg-primary/90 transition-colors">
+                <label className="absolute bottom-0 right-0 bg-primary color-primary-foreground rounded-full p-sm cursor-pointer hover:bg-primary/90 transition-colors">
                   <Camera className="h-4 w-4" />
                   <input
                     type="file"
@@ -181,7 +181,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid md:grid-cols-2 gap-lg">
               {/* Job Title */}
               <div>
                 <label className="block text-body-sm form-label color-foreground mb-2">
@@ -191,7 +191,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
-                    className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                    className="w-full pl-10 pr-4 py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="e.g. Creative Director"
                     value={profile.jobTitle}
                     onChange={(e) => handleInputChange('jobTitle', e.target.value)}
@@ -208,7 +208,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
-                    className="w-full pl-10 pr-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                    className="w-full pl-10 pr-4 py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="e.g. Los Angeles, CA"
                     value={profile.location}
                     onChange={(e) => handleInputChange('location', e.target.value)}
@@ -222,7 +222,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Industry
                 </label>
                 <select
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                  className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.industry}
                   onChange={(e) => handleInputChange('industry', e.target.value)}
                 >
@@ -241,7 +241,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Primary Role
                 </label>
                 <select
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                  className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.role}
                   onChange={(e) => handleInputChange('role', e.target.value)}
                 >
@@ -260,7 +260,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Team Size
                 </label>
                 <select
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                  className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.teamSize}
                   onChange={(e) => handleInputChange('teamSize', e.target.value)}
                 >
@@ -279,7 +279,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Bio (Optional)
                 </label>
                 <textarea
-                  className="w-full px-4 py-3 border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
+                  className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   placeholder="Tell us a bit about yourself and what you do..."
                   rows={4}
                   value={profile.bio}
@@ -292,7 +292,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             </div>
 
             {error && (
-              <div className="p-3 bg-destructive/10 border border-destructive/20 rounded-lg">
+              <div className="p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                 <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}
@@ -302,8 +302,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
       {/* Privacy Notice */}
       <Card>
-        <CardContent className="p-6">
-          <div className="flex items-start space-x-3">
+        <CardContent className="p-lg">
+          <div className="flex items-start cluster-sm">
             <div className="w-5 h-5 bg-info/10 rounded-full flex items-center justify-center mt-0.5">
               <div className="w-2 h-2 bg-info rounded-full"></div>
             </div>

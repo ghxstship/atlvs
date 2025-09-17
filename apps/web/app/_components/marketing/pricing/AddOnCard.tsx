@@ -5,7 +5,7 @@ import { typography } from '../../lib/typography';
 interface AddOn {
   name: string;
   description: string;
-  price: number;
+  price: number | string;
   features: string[];
 }
 
@@ -17,19 +17,25 @@ interface AddOnCardProps {
 export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
   return (
     <Card className="hover:shadow-lg transition-all duration-200 hover:scale-105 h-full flex flex-col">
-      <CardContent className="p-6 flex flex-col h-full">
+      <CardContent className="p-lg flex flex-col h-full">
         <div className="text-center mb-6">
           <h3 className={`${typography.cardTitle} mb-3`}>{addon.name}</h3>
           <p className="color-muted mb-4 text-body-sm leading-relaxed">{addon.description}</p>
-          <div className="flex items-baseline justify-center gap-2">
-            <span className={`${typography.statValue} text-heading-2`}>${addon.price}</span>
-            <span className="color-muted">/month</span>
+          <div className="flex items-baseline justify-center gap-sm">
+            {typeof addon.price === 'string' ? (
+              <span className={`${typography.statValue} text-heading-2`}>{addon.price}</span>
+            ) : (
+              <>
+                <span className={`${typography.statValue} text-heading-2`}>${addon.price}</span>
+                <span className="color-muted">/month</span>
+              </>
+            )}
           </div>
         </div>
 
-        <div className="space-y-3 mb-6 flex-1">
+        <div className="stack-sm mb-6 flex-1">
           {addon.features.map((feature) => (
-            <div key={feature} className="flex items-start gap-3">
+            <div key={feature} className="flex items-start gap-sm">
               <Check className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
               <span className="text-body-sm color-foreground leading-relaxed">{feature}</span>
             </div>

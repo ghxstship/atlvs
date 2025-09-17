@@ -61,7 +61,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
         </CardDescription>
       </CardHeader>
       
-      <CardContent className="space-y-4">
+      <CardContent className="stack-md">
         <div>
           <label htmlFor="code" className="block text-body-sm form-label mb-2">
             Verification Code
@@ -98,7 +98,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
           </Button>
         </div>
 
-        <div className="bg-secondary/50 rounded-lg p-3">
+        <div className="bg-secondary/50 rounded-lg p-sm">
           <p className="text-body-sm color-muted">
             Check your spam folder if you don't see the email in your inbox.
           </p>

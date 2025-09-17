@@ -33,7 +33,7 @@ export function Section({
   const spacingClasses = {
     default: layouts.sectionPadding,
     large: layouts.sectionPaddingLarge,
-    compact: 'py-12',
+    compact: 'py-2xl',
   };
 
   return (
@@ -66,7 +66,7 @@ export function SectionHeader({
     <div className={cn(LayoutClasses.sectionHeader, className)}>
       {badge && (
         <div className="mb-4">
-          <span className="inline-block px-3 py-1 text-body-sm form-label bg-secondary color-muted rounded-full border">
+          <span className="inline-block px-sm py-xs text-body-sm form-label bg-secondary color-muted rounded-full border">
             {badge}
           </span>
         </div>
