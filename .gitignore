@@ -8,12 +8,17 @@ out
 /dist
 /.turbo
 **/.turbo
+*.tsbuildinfo
+tsconfig.tsbuildinfo
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
+pixel-perfect-fix.log
+complete-spacing-fix.log
 
 # Env
 .env*
