@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
-import { cn } from '../../lib/utils';
+import { cn } from '../../utils';
 
 // Haptic feedback types
 type HapticType = 'light' | 'medium' | 'heavy' | 'success' | 'warning' | 'error';
@@ -280,7 +280,7 @@ export function SuccessFeedback({ children, message = 'Success!', duration = 200
         {children}
       </div>
       {showFeedback && (
-        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-3 py-1 rounded-lg text-sm animate-bounce">
+        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-success text-background px-sm py-xs rounded-lg text-sm animate-bounce">
           {message}
           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-green-500"></div>
         </div>
@@ -317,7 +317,7 @@ export function ErrorFeedback({ children, message = 'Error occurred', duration =
         {children}
       </div>
       {showFeedback && (
-        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-3 py-1 rounded-lg text-sm animate-shake">
+        <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-destructive text-background px-sm py-xs rounded-lg text-sm animate-shake">
           {message}
           <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
         </div>
@@ -408,7 +408,7 @@ export function FloatingAction({ children, action, onAction }: FloatingActionPro
         {children}
       </div>
       {isHovered && (
-        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-2 py-1 rounded text-xs whitespace-nowrap animate-float">
+        <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-muted/90 text-background px-sm py-xs rounded text-xs whitespace-nowrap animate-float">
           {action}
         </div>
       )}
