@@ -265,7 +265,7 @@ export function GalleryView({
       </div>
 
       {/* Gallery Content */}
-      <div className="p-4">
+      <div className="p-md">
         {paginatedItems.length === 0 ? (
           <div className="text-center py-12 text-muted-foreground">
             <ImageIcon className="h-12 w-12 mx-auto mb-4 opacity-50" />
@@ -413,7 +413,7 @@ export function GalleryView({
                   </div>
 
                   {/* Content */}
-                  <div className="p-3">
+                  <div className="p-sm">
                     <h3 className="font-semibold text-foreground truncate mb-1">
                       {item.title}
                     </h3>

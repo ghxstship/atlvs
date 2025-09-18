@@ -270,7 +270,7 @@ export function DataActions({
           onClose={() => setShowExportModal(false)}
           title="Export Data"
         >
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div>
               <label className="block text-sm font-medium mb-1">Export Format</label>
               <select
@@ -318,7 +318,7 @@ export function DataActions({
           onClose={() => setShowImportModal(false)}
           title="Import Data"
         >
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div>
               <label className="block text-sm font-medium mb-1">Select File</label>
               <input
@@ -358,8 +358,8 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
   };
 
   return (
-    <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-md">
+      <form onSubmit={handleSubmit} className="space-y-md">
         <div>
           <label className="block text-sm font-medium mb-1">Field</label>
           <select
@@ -412,7 +412,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
       </form>
 
       {currentFilters.length > 0 && (
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <h4 className="font-medium">Current Filters:</h4>
           {currentFilters.map((filter: any, index: number) => {
             const field = fields.find((f: any) => f.key === filter.field);
@@ -450,8 +450,8 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
   };
 
   return (
-    <div className="space-y-4">
-      <form onSubmit={handleSubmit} className="space-y-4">
+    <div className="space-y-md">
+      <form onSubmit={handleSubmit} className="space-y-md">
         <div className="flex gap-2">
           <div className="flex-1">
             <select
@@ -484,7 +484,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
       </form>
 
       {currentSorts.length > 0 && (
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <h4 className="font-medium">Current Sorts:</h4>
           {currentSorts.map((sort: any, index: number) => {
             const field = fields.find((f: any) => f.key === sort.field);

@@ -362,7 +362,7 @@ export function DynamicFieldManager({
         {(field.type === 'select' || field.type === 'multiselect') && (
           <div>
             <label className="block text-sm font-medium mb-1">Options</label>
-            <div className="space-y-2">
+            <div className="space-y-xs">
               {(field.options || []).map((option, index) => (
                 <div key={index} className="flex items-center gap-2">
                   <Input
@@ -494,7 +494,7 @@ export function DynamicFieldManager({
         {/* Current Fields */}
         <div>
           <h3 className="text-sm font-medium mb-2">Current Fields ({fields.length})</h3>
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {fields.map((field, index) => {
               const isSchemaField = schemaInfo?.tables[tableName]?.columns.some(col => col.name === field.key);
               const hasValidationIssues = fieldValidation[field.key]?.length > 0;

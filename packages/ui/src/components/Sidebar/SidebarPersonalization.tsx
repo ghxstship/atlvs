@@ -121,7 +121,7 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
           </span>
         </div>
         
-        <div className="space-y-2">
+        <div className="space-y-xs">
           {insights.slice(0, 2).map((insight, index) => (
             <div
               key={index}

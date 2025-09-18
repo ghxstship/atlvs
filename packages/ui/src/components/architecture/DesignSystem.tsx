@@ -237,7 +237,7 @@ export const CompositionPatterns: CompositionPattern[] = [
           <h3 className="text-lg font-semibold">Card Title</h3>
           <p className="text-sm text-muted-foreground">Card subtitle or description</p>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-sm">
           <p>Card content goes here. This can include any type of content.</p>
         </div>
         <div className="border-t pt-4 mt-4 flex justify-end space-x-2">
@@ -251,7 +251,7 @@ export const CompositionPatterns: CompositionPattern[] = [
     <h3 className="text-lg font-semibold">Card Title</h3>
     <p className="text-sm text-muted-foreground">Subtitle</p>
   </div>
-  <div className="space-y-3">
+  <div className="space-y-sm">
     {/* Content */}
   </div>
   <div className="border-t pt-4 mt-4 flex justify-end space-x-2">
@@ -282,7 +282,7 @@ export const CompositionPatterns: CompositionPattern[] = [
     name: 'Form Field Pattern',
     description: 'Standard form field layout with label, input, and error message',
     example: (
-      <div className="space-y-2">
+      <div className="space-y-xs">
         <label className="block text-sm font-medium text-gray-700">
           Email Address
         </label>
@@ -294,7 +294,7 @@ export const CompositionPatterns: CompositionPattern[] = [
         <p className="text-sm text-red-600">Please enter a valid email address</p>
       </div>
     ),
-    code: `<div className="space-y-2">
+    code: `<div className="space-y-xs">
   <label className="block text-sm font-medium text-gray-700">
     Email Address
   </label>
@@ -342,7 +342,7 @@ export const DesignSystemGuide: React.FC = () => {
   );
 
   const renderTypographyScale = () => (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {Object.entries(DesignTokens.typography.fontSize).map(([size, [fontSize, config]]) => (
         <div key={size} className="flex items-center space-x-4">
           <div className="w-16 text-sm text-muted-foreground">{size}</div>
@@ -358,7 +358,7 @@ export const DesignSystemGuide: React.FC = () => {
   );
 
   const renderSpacingScale = () => (
-    <div className="space-y-3">
+    <div className="space-y-sm">
       {Object.entries(DesignTokens.spacing).map(([name, value]) => (
         <div key={name} className="flex items-center space-x-4">
           <div className="w-8 text-sm text-muted-foreground">{name}</div>
@@ -373,7 +373,7 @@ export const DesignSystemGuide: React.FC = () => {
   );
 
   const renderPatterns = () => (
-    <div className="space-y-8">
+    <div className="space-y-xl">
       {CompositionPatterns.map((pattern, index) => (
         <div key={index} className="border border-border rounded-lg p-6">
           <h4 className="text-lg font-semibold mb-2">{pattern.name}</h4>
@@ -398,10 +398,10 @@ export const DesignSystemGuide: React.FC = () => {
   );
 
   const renderAccessibilityGuidelines = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div>
         <h4 className="text-lg font-semibold mb-3">ARIA Attributes</h4>
-        <div className="space-y-2">
+        <div className="space-y-xs">
           {AccessibilityStandards.aria.required.map(attr => (
             <Badge key={attr} variant="primary" className="mr-2">{attr}</Badge>
           ))}
@@ -410,7 +410,7 @@ export const DesignSystemGuide: React.FC = () => {
       
       <div>
         <h4 className="text-lg font-semibold mb-3">Color Contrast</h4>
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <div>Normal text: {AccessibilityStandards.contrast.normal}:1 minimum</div>
           <div>Large text: {AccessibilityStandards.contrast.large}:1 minimum</div>
           <div>Enhanced: {AccessibilityStandards.contrast.enhanced}:1 minimum</div>
@@ -419,7 +419,7 @@ export const DesignSystemGuide: React.FC = () => {
       
       <div>
         <h4 className="text-lg font-semibold mb-3">Focus Management</h4>
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <code className="bg-muted px-2 py-1 rounded text-sm">
             {AccessibilityStandards.focus.visible}
           </code>
@@ -444,12 +444,12 @@ export const DesignSystemGuide: React.FC = () => {
         return renderSpacingScale();
       case 'components':
         return (
-          <div className="space-y-6">
+          <div className="space-y-lg">
             <h4 className="text-lg font-semibold">Component Variants</h4>
             {Object.entries(ComponentVariants).map(([component, variants]) => (
               <div key={component} className="border border-border rounded-lg p-4">
                 <h5 className="font-medium mb-3 capitalize">{component} Variants</h5>
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   {Object.entries(variants).map(([variant, classes]) => (
                     <div key={variant} className="flex items-center space-x-3">
                       <Badge variant="default">{variant}</Badge>
@@ -481,7 +481,7 @@ export const DesignSystemGuide: React.FC = () => {
           <p className="text-sm text-muted-foreground">GHXSTSHIP Component Library</p>
         </div>
         
-        <nav className="p-4">
+        <nav className="p-md">
           {sections.map(section => (
             <button
               key={section.id}
@@ -501,7 +501,7 @@ export const DesignSystemGuide: React.FC = () => {
       
       {/* Main content */}
       <div className="flex-1 overflow-auto">
-        <div className="p-8">
+        <div className="p-xl">
           <h3 className="text-2xl font-bold mb-6 capitalize">
             {sections.find(s => s.id === activeSection)?.name}
           </h3>

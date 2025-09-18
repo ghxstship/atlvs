@@ -258,7 +258,7 @@ export function DashboardView({
         </div>
 
         {/* Widget Content */}
-        <div className="p-4">
+        <div className="p-md">
           {widget.type === 'metric' && (
             <div className="text-center">
               <div className="text-3xl font-bold text-foreground">
@@ -273,9 +273,9 @@ export function DashboardView({
           )}
 
           {widget.type === 'chart' && (
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {widget.config.chartType === 'pie' && (
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   {getChartData(widget).map((item, index) => (
                     <div key={item.label} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
@@ -292,9 +292,9 @@ export function DashboardView({
               )}
               
               {widget.config.chartType === 'bar' && (
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   {getChartData(widget).map((item, index) => (
-                    <div key={item.label} className="space-y-1">
+                    <div key={item.label} className="space-y-xs">
                       <div className="flex justify-between text-sm">
                         <span>{item.label}</span>
                         <span>{item.value}</span>
@@ -323,7 +323,7 @@ export function DashboardView({
           )}
 
           {widget.type === 'list' && (
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {getRecentActivity(widget.config.limit || 5).map((record, index) => (
                 <div 
                   key={record.id}
@@ -409,7 +409,7 @@ export function DashboardView({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Dashboard Controls */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">

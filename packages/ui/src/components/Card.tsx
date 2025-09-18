@@ -212,7 +212,7 @@ export const StatsCard = React.forwardRef<HTMLDivElement, CardProps & {
     return (
       <Card ref={ref} className={clsx('relative overflow-hidden', className)} {...props}>
         <div className="flex items-center justify-between">
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <p className="text-sm font-medium text-muted-foreground font-body">{title}</p>
             <p className="text-2xl font-bold font-display">{value}</p>
             {change && (
@@ -254,13 +254,13 @@ export const FeatureCard = React.forwardRef<HTMLDivElement, CardProps & {
             </span>
           </div>
         )}
-        <div className="space-y-4">
+        <div className="space-y-md">
           {icon && (
             <div className="text-primary group-hover:scale-110 transition-transform duration-200">
               {icon}
             </div>
           )}
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <h3 className="font-display text-lg font-semibold">{title}</h3>
             <p className="text-sm text-muted-foreground font-body leading-relaxed">
               {description}

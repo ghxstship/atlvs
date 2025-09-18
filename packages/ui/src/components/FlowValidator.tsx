@@ -307,7 +307,7 @@ export const FlowHealthDashboard: React.FC<FlowHealthDashboardProps> = ({
                 {validatedSteps}/{totalSteps} steps validated
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 {flow.map((step, index) => {
                   const result = validationResults[`${flowId}-${step.id}`];
                   const isLast = index === flow.length - 1;

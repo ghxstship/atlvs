@@ -712,7 +712,7 @@ export function VoiceCommandSuggestions() {
         Try saying:
       </h4>
       
-      <div className="space-y-2">
+      <div className="space-y-xs">
         {suggestions.map((suggestion, index) => (
           <button
             key={index}

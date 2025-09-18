@@ -175,7 +175,7 @@ export class DataFetchingComponent<T, P extends DataFetchingProps<T> = DataFetch
     }
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-md">
         {/* Data status bar */}
         <div className="flex items-center justify-between text-sm text-gray-600">
           <div className="flex items-center space-x-2">
@@ -282,7 +282,7 @@ export class FormComponent<T, P extends FormProps<T> = FormProps<T>>
     const { isSubmitting, isDirty } = this.state;
 
     return (
-      <form onSubmit={this.handleSubmit} className="space-y-6">
+      <form onSubmit={this.handleSubmit} className="space-y-lg">
         {this.renderFormFields()}
         
         <div className="flex items-center justify-between pt-4 border-t">
@@ -436,7 +436,7 @@ export const ModalComponent: React.FC<ModalProps> = ({
           )}
           
           {/* Content */}
-          <div className="p-6">
+          <div className="p-lg">
             {children}
           </div>
         </Card>

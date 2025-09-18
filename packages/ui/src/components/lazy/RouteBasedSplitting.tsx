@@ -325,7 +325,7 @@ export const NavigationWithPreloading: React.FC<{
   };
 
   return (
-    <nav className="space-y-1">
+    <nav className="space-y-xs">
       {Object.entries(routeConfigs).map(([key, config]) => (
         <button
           key={key}

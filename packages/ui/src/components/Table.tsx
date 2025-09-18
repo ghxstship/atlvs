@@ -346,7 +346,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
   const someSelected = selectedRowKeys.length > 0 && selectedRowKeys.length < data.length;
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Search and Filters */}
       {(searchable || filterable) && (
         <div className="flex items-center gap-4">

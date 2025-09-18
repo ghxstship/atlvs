@@ -17,7 +17,7 @@ interface ListWithKeysProps {
  */
 export const ListWithKeys: React.FC<ListWithKeysProps> = ({ items, renderItem }) => {
   return (
-    <div className="space-y-2">
+    <div className="space-y-xs">
       {items.map((item, index) => (
         <div key={item.id || `item-${index}`}>
           {renderItem(item, index)}

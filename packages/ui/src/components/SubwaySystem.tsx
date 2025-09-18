@@ -250,7 +250,7 @@ export const SubwayMap = React.forwardRef<HTMLDivElement, SubwayMapProps>(
           System Status
         </h3>
         
-        <div className="space-y-3">
+        <div className="space-y-sm">
           {lines.map(({ line, stations, status = 'operational' }) => (
             <SubwayStatus
               key={line}

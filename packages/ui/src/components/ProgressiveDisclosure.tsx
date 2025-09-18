@@ -330,7 +330,7 @@ export const ExperienceLevelSelector: React.FC<ExperienceLevelSelectorProps> = (
   return (
     <div className={`space-y-3 ${className}`}>
       <h4 className="font-medium">Experience Level</h4>
-      <div className="space-y-2">
+      <div className="space-y-xs">
         {levels.map(level => (
           <label key={level.value} className="flex items-start gap-3 cursor-pointer">
             <input

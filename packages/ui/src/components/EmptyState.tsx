@@ -67,7 +67,7 @@ export function EmptyState({
   };
 
   return (
-    <div className={`text-center py-12 ${className}`}>
+    <div className={`text-center py-3xl ${className}`}>
       {icon && (
         <div className="flex justify-center mb-4 text-muted-foreground">
           {icon}
@@ -83,16 +83,16 @@ export function EmptyState({
       </div>
       
       {demoError && (
-        <div className="mb-4 p-3 bg-destructive/10 border border-destructive/20 rounded-md">
+        <div className="mb-md p-sm bg-destructive/10 border border-destructive/20 rounded-md">
           <div className="text-sm text-destructive">{demoError}</div>
         </div>
       )}
       
-      <div className="flex items-center justify-center gap-3">
+      <div className="flex items-center justify-center gap-x-sm">
         {primaryAction && (
           <Button
             onClick={primaryAction.onClick}
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-x-xs"
             variant="primary"
           >
             {primaryAction.icon || <Plus className="h-4 w-4" />}
@@ -104,7 +104,7 @@ export function EmptyState({
           <Button
             onClick={handleLoadDemo}
             disabled={loadingDemo}
-            className="inline-flex items-center gap-2"
+            className="inline-flex items-center gap-x-xs"
             variant="outline"
           >
             <Sparkles className="h-4 w-4" />

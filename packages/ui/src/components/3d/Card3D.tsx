@@ -248,7 +248,7 @@ export function ProjectCard3D({ title, description, status, progress, dueDate, o
       onClick={onClick}
       className="group"
     >
-      <div className="space-y-4">
+      <div className="space-y-md">
         {/* Header */}
         <div className="flex items-start justify-between">
           <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
@@ -266,7 +266,7 @@ export function ProjectCard3D({ title, description, status, progress, dueDate, o
 
         {/* Progress bar */}
         {progress !== undefined && (
-          <div className="space-y-1">
+          <div className="space-y-xs">
             <div className="flex justify-between text-xs text-muted-foreground">
               <span>Progress</span>
               <span>{progress}%</span>
@@ -318,7 +318,7 @@ export function MetricCard3D({ title, value, change, trend, icon, onClick }: Met
       onClick={onClick}
       className="group"
     >
-      <div className="space-y-3">
+      <div className="space-y-sm">
         {/* Header with icon */}
         <div className="flex items-center justify-between">
           <div className="text-muted-foreground group-hover:text-primary transition-colors">

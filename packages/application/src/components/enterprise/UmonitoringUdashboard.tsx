@@ -125,7 +125,7 @@ export function MonitoringDashboard({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -222,7 +222,7 @@ export function MonitoringDashboard({
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {alerts.slice(0, 5).map((alert, index) => (
                 <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
                   <div className="flex items-center space-x-3">
@@ -245,7 +245,7 @@ export function MonitoringDashboard({
       )}
 
       {/* Detailed Metrics Tabs */}
-      <Tabs defaultValue="performance" className="space-y-4">
+      <Tabs defaultValue="performance" className="space-y-md">
         <TabsList>
           <TabsTrigger value="performance">Performance</TabsTrigger>
           <TabsTrigger value="security">Security</TabsTrigger>
@@ -253,7 +253,7 @@ export function MonitoringDashboard({
           <TabsTrigger value="capacity">Capacity</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="performance" className="space-y-4">
+        <TabsContent value="performance" className="space-y-md">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Card>
               <CardHeader>
@@ -261,7 +261,7 @@ export function MonitoringDashboard({
                 <CardDescription>Recent database query metrics</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {metrics
                     .filter(m => m.metricType === 'query_performance')
                     .slice(0, 10)
@@ -285,7 +285,7 @@ export function MonitoringDashboard({
                 <CardDescription>Cache hit rates and efficiency</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {metrics
                     .filter(m => m.metricType === 'cache_performance')
                     .slice(0, 10)
@@ -305,7 +305,7 @@ export function MonitoringDashboard({
           </div>
         </TabsContent>
 
-        <TabsContent value="security" className="space-y-4">
+        <TabsContent value="security" className="space-y-md">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Card>
               <CardHeader>
@@ -313,7 +313,7 @@ export function MonitoringDashboard({
                 <CardDescription>Recent security incidents and threats</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {metrics
                     .filter(m => m.metricType === 'security_events')
                     .slice(0, 10)
@@ -337,7 +337,7 @@ export function MonitoringDashboard({
                 <CardDescription>Login attempts and authentication status</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-600">Failed Logins (1h)</span>
                     <span className="font-medium">0</span>
@@ -356,7 +356,7 @@ export function MonitoringDashboard({
           </div>
         </TabsContent>
 
-        <TabsContent value="compliance" className="space-y-4">
+        <TabsContent value="compliance" className="space-y-md">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
             <Card>
               <CardHeader>
@@ -418,7 +418,7 @@ export function MonitoringDashboard({
                 <CardDescription>Compliance audit activities</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <div className="flex justify-between text-sm">
                     <span>Last Audit</span>
                     <span>2 days ago</span>
@@ -437,7 +437,7 @@ export function MonitoringDashboard({
           </div>
         </TabsContent>
 
-        <TabsContent value="capacity" className="space-y-4">
+        <TabsContent value="capacity" className="space-y-md">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             <Card>
               <CardHeader>
@@ -445,7 +445,7 @@ export function MonitoringDashboard({
                 <CardDescription>Database storage usage and projections</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span>Current Usage</span>
@@ -466,7 +466,7 @@ export function MonitoringDashboard({
                 <CardDescription>Database connection utilization</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <div>
                     <div className="flex justify-between text-sm mb-2">
                       <span>Active Connections</span>

@@ -24,7 +24,17 @@ import {
   ExternalLink,
   Calendar,
   User,
-  Tag
+  Tag,
+  Workflow,
+  Paperclip,
+  Users,
+  Upload,
+  Download,
+  Play,
+  Pause,
+  Settings,
+  Eye,
+  Clock
 } from 'lucide-react';
 import { DataRecord, FieldConfig } from './types';
 
@@ -71,6 +81,52 @@ interface UniversalDrawerProps {
     [key: string]: any;
   };
   
+  // Workflow automation
+  workflows?: Array<{
+    id: string;
+    name: string;
+    description: string;
+    trigger: 'manual' | 'status_change' | 'field_change' | 'time_based';
+    conditions?: Array<{
+      field: string;
+      operator: 'equals' | 'not_equals' | 'contains' | 'greater_than' | 'less_than';
+      value: any;
+    }>;
+    actions: Array<{
+      type: 'update_field' | 'send_notification' | 'create_task' | 'assign_user' | 'send_email';
+      config: any;
+    }>;
+    enabled: boolean;
+  }>;
+  
+  // Advanced attachments
+  attachments?: Array<{
+    id: string;
+    name: string;
+    type: string;
+    size: number;
+    url: string;
+    uploadedBy: string;
+    uploadedAt: Date;
+    thumbnail?: string;
+  }>;
+  onUploadAttachment?: (file: File) => Promise<void>;
+  onDeleteAttachment?: (attachmentId: string) => Promise<void>;
+  
+  // Real-time collaboration
+  collaborators?: Array<{
+    id: string;
+    name: string;
+    avatar?: string;
+    status: 'online' | 'away' | 'offline';
+    lastSeen?: Date;
+  }>;
+  currentUser?: {
+    id: string;
+    name: string;
+    avatar?: string;
+  };
+  
   // Customization
   tabs?: Array<{
     key: string;
@@ -105,6 +161,12 @@ export function UniversalDrawer({
   activity = [],
   onAddComment,
   analytics,
+  workflows = [],
+  attachments = [],
+  onUploadAttachment,
+  onDeleteAttachment,
+  collaborators = [],
+  currentUser,
   tabs = [],
   actions = []
 }: UniversalDrawerProps) {
@@ -293,9 +355,9 @@ export function UniversalDrawer({
       label: 'Details',
       icon: <FileText className="h-4 w-4" />,
       content: (
-        <div className="space-y-4">
+        <div className="space-y-md">
           {mode === 'view' ? (
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {fields.filter(f => f.visible !== false).map(field => (
                 <div key={field.key}>
                   <label className="text-sm font-medium text-muted-foreground">
@@ -308,7 +370,7 @@ export function UniversalDrawer({
               ))}
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-md">
               {fields.filter(f => f.visible !== false).map(renderField)}
             </div>
           )}
@@ -324,7 +386,7 @@ export function UniversalDrawer({
         label: 'Comments',
         icon: <MessageSquare className="h-4 w-4" />,
         content: (
-          <div className="space-y-4">
+          <div className="space-y-md">
             {onAddComment && (
               <div className="flex gap-2">
                 <Textarea
@@ -344,7 +406,7 @@ export function UniversalDrawer({
               </div>
             )}
             
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {comments.map(comment => (
                 <div key={comment.id} className="flex gap-3">
                   <div className="flex-shrink-0">
@@ -389,7 +451,7 @@ export function UniversalDrawer({
         label: 'Activity',
         icon: <Activity className="h-4 w-4" />,
         content: (
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {activity.map(item => (
               <div key={item.id} className="flex gap-3">
                 <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-2" />
@@ -425,7 +487,7 @@ export function UniversalDrawer({
         label: 'Analytics',
         icon: <BarChart3 className="h-4 w-4" />,
         content: (
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div className="grid grid-cols-2 gap-4">
               <div className="p-3 bg-muted rounded-lg">
                 <div className="text-sm text-muted-foreground">Views</div>
@@ -437,7 +499,7 @@ export function UniversalDrawer({
               </div>
             </div>
             
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <div className="flex justify-between text-sm">
                 <span className="text-muted-foreground">Created</span>
                 <span>{analytics.createdAt.toLocaleDateString()}</span>
@@ -447,6 +509,233 @@ export function UniversalDrawer({
                 <span>{analytics.lastModified.toLocaleDateString()}</span>
               </div>
             </div>
+          </div>
+        )
+      });
+    }
+
+    // Workflows Tab
+    if (workflows && workflows.length > 0) {
+      defaultTabs.push({
+        key: 'workflows',
+        label: 'Workflows',
+        icon: <Workflow className="h-4 w-4" />,
+        content: (
+          <div className="space-y-md">
+            <div className="flex items-center justify-between">
+              <h4 className="font-medium">Automated Workflows</h4>
+              <Button variant="ghost" size="sm">
+                <Settings className="h-4 w-4" />
+                Configure
+              </Button>
+            </div>
+            
+            <div className="space-y-sm">
+              {workflows.map(workflow => (
+                <div key={workflow.id} className="p-3 border border-border rounded-lg">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className={`w-2 h-2 rounded-full ${workflow.enabled ? 'bg-success' : 'bg-muted-foreground'}`} />
+                      <span className="font-medium text-sm">{workflow.name}</span>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => {
+                        // Toggle workflow
+                        console.log('Toggle workflow:', workflow.id);
+                      }}
+                    >
+                      {workflow.enabled ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3" />}
+                    </Button>
+                  </div>
+                  <p className="text-xs text-muted-foreground mb-2">{workflow.description}</p>
+                  <div className="flex items-center gap-2 text-xs">
+                    <Badge variant="outline" size="sm">
+                      {workflow.trigger.replace('_', ' ')}
+                    </Badge>
+                    <span className="text-muted-foreground">
+                      {workflow.actions.length} actions
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )
+      });
+    }
+
+    // Attachments Tab
+    if (attachments && attachments.length > 0 || onUploadAttachment) {
+      defaultTabs.push({
+        key: 'attachments',
+        label: 'Attachments',
+        icon: <Paperclip className="h-4 w-4" />,
+        content: (
+          <div className="space-y-md">
+            {onUploadAttachment && (
+              <div className="border-2 border-dashed border-border rounded-lg p-6 text-center">
+                <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                <p className="text-sm text-muted-foreground mb-2">
+                  Drag files here or click to upload
+                </p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => {
+                    const input = document.createElement('input');
+                    input.type = 'file';
+                    input.multiple = true;
+                    input.onchange = (e) => {
+                      const files = (e.target as HTMLInputElement).files;
+                      if (files) {
+                        Array.from(files).forEach(file => {
+                          onUploadAttachment(file);
+                        });
+                      }
+                    };
+                    input.click();
+                  }}
+                >
+                  Choose Files
+                </Button>
+              </div>
+            )}
+            
+            <div className="space-y-xs">
+              {attachments.map(attachment => (
+                <div key={attachment.id} className="flex items-center gap-3 p-2 hover:bg-muted rounded-lg">
+                  {attachment.thumbnail ? (
+                    <img
+                      src={attachment.thumbnail}
+                      alt={attachment.name}
+                      className="w-10 h-10 rounded object-cover"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 bg-muted rounded flex items-center justify-center">
+                      <FileText className="h-5 w-5 text-muted-foreground" />
+                    </div>
+                  )}
+                  
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium truncate">{attachment.name}</p>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <span>{(attachment.size / 1024).toFixed(1)} KB</span>
+                      <span>•</span>
+                      <span>{attachment.uploadedBy}</span>
+                      <span>•</span>
+                      <span>{attachment.uploadedAt.toLocaleDateString()}</span>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => window.open(attachment.url, '_blank')}
+                    >
+                      <Download className="h-3 w-3" />
+                    </Button>
+                    {onDeleteAttachment && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => onDeleteAttachment(attachment.id)}
+                      >
+                        <Trash2 className="h-3 w-3" />
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              ))}
+              
+              {attachments.length === 0 && (
+                <div className="text-center py-8 text-muted-foreground">
+                  <Paperclip className="h-8 w-8 mx-auto mb-2 opacity-50" />
+                  <div className="text-sm">No attachments yet</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )
+      });
+    }
+
+    // Collaboration Tab
+    if (collaborators && collaborators.length > 0) {
+      defaultTabs.push({
+        key: 'collaboration',
+        label: 'Team',
+        icon: <Users className="h-4 w-4" />,
+        content: (
+          <div className="space-y-md">
+            <div className="flex items-center justify-between">
+              <h4 className="font-medium">Collaborators</h4>
+              <Button variant="ghost" size="sm">
+                <User className="h-4 w-4" />
+                Invite
+              </Button>
+            </div>
+            
+            <div className="space-y-sm">
+              {collaborators.map(collaborator => (
+                <div key={collaborator.id} className="flex items-center gap-3">
+                  <div className="relative">
+                    {collaborator.avatar ? (
+                      <img
+                        src={collaborator.avatar}
+                        alt={collaborator.name}
+                        className="w-8 h-8 rounded-full"
+                      />
+                    ) : (
+                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                        {collaborator.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    <div className={`absolute -bottom-1 -right-1 w-3 h-3 rounded-full border-2 border-background ${
+                      collaborator.status === 'online' ? 'bg-success' :
+                      collaborator.status === 'away' ? 'bg-warning' : 'bg-muted-foreground'
+                    }`} />
+                  </div>
+                  
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-medium">{collaborator.name}</span>
+                      {currentUser?.id === collaborator.id && (
+                        <Badge variant="outline" size="sm">You</Badge>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                      <div className={`w-1.5 h-1.5 rounded-full ${
+                        collaborator.status === 'online' ? 'bg-success' :
+                        collaborator.status === 'away' ? 'bg-warning' : 'bg-muted-foreground'
+                      }`} />
+                      <span className="capitalize">{collaborator.status}</span>
+                      {collaborator.lastSeen && collaborator.status !== 'online' && (
+                        <>
+                          <span>•</span>
+                          <span>Last seen {collaborator.lastSeen.toLocaleDateString()}</span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <Button variant="ghost" size="sm">
+                    <Eye className="h-3 w-3" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+            
+            {currentUser && (
+              <div className="pt-4 border-t border-border">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="h-3 w-3" />
+                  <span>You're currently viewing this record</span>
+                </div>
+              </div>
+            )}
           </div>
         )
       });

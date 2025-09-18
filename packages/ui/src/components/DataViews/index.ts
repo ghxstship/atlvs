@@ -1,22 +1,34 @@
 // Data Views - Comprehensive data visualization and interaction system
 export { DataViewProvider, useDataView } from './DataViewProvider';
-export { ViewSwitcher } from './ViewSwitcher';
 export { DataGrid } from './DataGrid';
+export { KanbanBoard } from './KanbanBoard';
+export { ListView } from './ListView';
 export { CalendarView } from './CalendarView';
 export { TimelineView } from './TimelineView';
 export { GalleryView } from './GalleryView';
-export { ListView } from './ListView';
 export { DashboardView } from './DashboardView';
 export { FormView } from './FormView';
+export { UniversalDrawer } from './UniversalDrawer';
+export { ViewSwitcher } from './ViewSwitcher';
 export { DataActions } from './DataActions';
-export { KanbanBoard } from './KanbanBoard';
-export type { SchemaValidationFramework } from './SchemaValidationFramework';
+
+// Advanced Data Views
+export { PivotTableView } from './PivotTableView';
+export { MapView } from './MapView';
+export { WhiteboardView } from './WhiteboardView';
+export { VirtualizedGrid } from './VirtualizedGrid';
+
+// Performance & Optimization
+export { PerformanceOptimizer } from './PerformanceOptimizer';
+export { DatabaseOptimizer } from './DatabaseOptimizer';
+export { DesignTokenValidator } from './DesignTokenValidator';
+
+// Framework Components
 export { SchemaIntrospector } from './SchemaValidationFramework';
 export { SchemaIntegratedDataGrid } from './SchemaIntegratedDataGrid';
 export { AdvancedSearchSystem } from './AdvancedSearchSystem';
 export { DynamicFieldManager } from './DynamicFieldManager';
 export { DatabaseTransactionManager, useDatabaseTransaction } from './DatabaseTransactionManager';
-export { CRUDOperationsFramework } from './CRUDOperationsFramework';
 export { PerformanceMonitoringSystem } from './PerformanceMonitoringSystem';
 
 // State Management
@@ -33,9 +45,9 @@ export {
 } from './StateManager';
 
 // Performance Components
-export { VirtualizedList, VirtualizedGrid, LazyLoad, useInfiniteScroll } from './VirtualizedList';
+export { VirtualizedList, LazyLoad, useInfiniteScroll } from './VirtualizedList';
 
-// Types
+// Types (consolidated to avoid duplicates)
 export type {
   DataRecord,
   ViewType,

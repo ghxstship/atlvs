@@ -117,7 +117,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     const isOverLimit = maxLength && charCount > maxLength;
     
     return (
-      <div className="space-y-2">
+      <div className="space-y-xs">
         {label && (
           <label 
             htmlFor={textareaId}
@@ -134,7 +134,7 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
         )}
         <div className="relative group">
           {leftIcon && (
-            <div className="absolute left-3 top-3 text-muted-foreground pointer-events-none z-10">
+            <div className="absolute left-sm top-sm text-muted-foreground pointer-events-none z-10">
               {leftIcon}
             </div>
           )}
@@ -163,21 +163,21 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           
           {/* Loading indicator */}
           {loading && (
-            <div className="absolute right-3 top-3 pointer-events-none">
+            <div className="absolute right-sm top-sm pointer-events-none">
               <div className="animate-spin h-4 w-4 border-2 border-muted-foreground border-t-transparent rounded-full" />
             </div>
           )}
           
           {/* Success indicator */}
           {success && !loading && (
-            <div className="absolute right-3 top-3 pointer-events-none">
+            <div className="absolute right-sm top-sm pointer-events-none">
               <Check className="h-4 w-4 text-success" />
             </div>
           )}
           
           {/* Error indicator */}
           {error && !loading && (
-            <div className="absolute right-3 top-3 pointer-events-none">
+            <div className="absolute right-sm top-sm pointer-events-none">
               <AlertCircle className="h-4 w-4 text-destructive" />
             </div>
           )}
@@ -204,13 +204,13 @@ export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
           </p>
         )}
         {error && (
-          <p id={`${textareaId}-error`} className="text-sm text-destructive flex items-center gap-1" role="alert">
+          <p id={`${textareaId}-error`} className="text-sm text-destructive flex items-center gap-x-xs" role="alert">
             <AlertCircle className="h-3 w-3" />
             {error}
           </p>
         )}
         {success && !error && (
-          <p className="text-sm text-success flex items-center gap-1">
+          <p className="text-sm text-success flex items-center gap-x-xs">
             <Check className="h-3 w-3" />
             Input validated
           </p>

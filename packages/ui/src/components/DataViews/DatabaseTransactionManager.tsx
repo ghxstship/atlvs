@@ -493,7 +493,7 @@ export function DatabaseTransactionManager({
             </div>
           </div>
           
-          <div className="space-y-1">
+          <div className="space-y-xs">
             {currentBatch.operations.map((op, index) => (
               <div key={op.id} className="flex items-center justify-between text-sm">
                 <span>{index + 1}. {op.type.toUpperCase()} {op.table}</span>

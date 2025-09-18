@@ -533,7 +533,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               </div>
               
               {/* Search */}
-              <div className="p-4">
+              <div className="p-md">
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <input
@@ -583,7 +583,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
 
       {/* Search */}
       {!isCollapsed && (
-        <div className="p-4">
+        <div className="p-md">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
@@ -619,7 +619,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         )}
         
         {/* All items */}
-        <div className="space-y-1">
+        <div className="space-y-xs">
           {filteredNavigation.map(item => renderNavItem(item))}
         </div>
       </nav>

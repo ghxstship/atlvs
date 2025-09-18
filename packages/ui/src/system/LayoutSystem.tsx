@@ -506,7 +506,7 @@ export const DetailLayout: React.FC<DetailLayoutProps> = ({
         </div>
         
         {sidebar && (
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {sidebar}
           </div>
         )}

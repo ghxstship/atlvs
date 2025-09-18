@@ -383,7 +383,7 @@ export function AccessibilityPanel({ className }: { className?: string }) {
           {adaptations.length > 0 && (
             <div className="mb-4">
               <h4 className="text-sm font-medium mb-2">Active Adaptations</h4>
-              <div className="space-y-1">
+              <div className="space-y-xs">
                 {adaptations.map((adaptation, index) => (
                   <div key={index} className="text-xs text-gray-600 dark:text-gray-400 flex items-center space-x-1">
                     <Zap className="h-3 w-3 text-green-500" />
@@ -395,7 +395,7 @@ export function AccessibilityPanel({ className }: { className?: string }) {
           )}
 
           {/* Quick controls */}
-          <div className="space-y-3">
+          <div className="space-y-sm">
             <div className="flex items-center justify-between">
               <span className="text-sm">Font Size</span>
               <div className="flex items-center space-x-2">

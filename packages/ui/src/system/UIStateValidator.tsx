@@ -553,7 +553,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {Array.from(report.entries()).map(([name, validation]) => {
               const statesCount = Object.values(validation.states).filter(Boolean).length;
               const a11yCount = Object.values(validation.accessibility).filter(Boolean).length;

@@ -203,7 +203,7 @@ export function CalendarView({
                   </div>
                   
                   {/* Events */}
-                  <div className="space-y-1">
+                  <div className="space-y-xs">
                     {dayEvents.slice(0, 3).map(event => (
                       <div
                         key={event.id}

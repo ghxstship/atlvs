@@ -588,7 +588,7 @@ export function ContextualActions() {
           Suggested Actions
         </h4>
         
-        <div className="space-y-2">
+        <div className="space-y-xs">
           {suggestions.slice(0, 3).map(suggestion => (
             <button
               key={suggestion.id}

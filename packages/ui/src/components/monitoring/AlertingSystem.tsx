@@ -256,7 +256,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
 
       {/* Alert Summary */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="p-4">
+        <Card className="p-md">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-destructive">{activeAlerts.length}</div>
@@ -265,7 +265,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             <AlertTriangle className="h-8 w-8 text-destructive" />
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-md">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-warning">{acknowledgedAlerts.length}</div>
@@ -274,7 +274,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             <Clock className="h-8 w-8 text-warning" />
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-md">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-primary">{rules.length}</div>
@@ -283,7 +283,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             <Settings className="h-8 w-8 text-primary" />
           </div>
         </Card>
-        <Card className="p-4">
+        <Card className="p-md">
           <div className="flex items-center justify-between">
             <div>
               <div className="text-2xl font-bold text-success">{rules.filter(r => r.enabled).length}</div>
@@ -322,7 +322,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
 
       {/* Content */}
       {activeTab === 'alerts' && (
-        <div className="space-y-4">
+        <div className="space-y-md">
           {alerts.length === 0 ? (
             <Card className="p-8 text-center">
               <CheckCircle className="h-12 w-12 text-success mx-auto mb-4" />
@@ -331,7 +331,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             </Card>
           ) : (
             alerts.map((alert) => (
-              <Card key={alert.id} className="p-6">
+              <Card key={alert.id} className="p-lg">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start space-x-4">
                     {getStatusIcon(alert.status)}
@@ -392,9 +392,9 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
       )}
 
       {activeTab === 'rules' && (
-        <div className="space-y-4">
+        <div className="space-y-md">
           {rules.map((rule) => (
-            <Card key={rule.id} className="p-6">
+            <Card key={rule.id} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center space-x-2 mb-2">
@@ -539,12 +539,12 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
 
   return (
     <Modal open={isOpen} onClose={onClose} size="lg">
-      <div className="p-6">
+      <div className="p-lg">
         <h2 className="text-xl font-semibold mb-4">
           {rule ? 'Edit Alert Rule' : 'Create Alert Rule'}
         </h2>
         
-        <div className="space-y-4">
+        <div className="space-y-md">
           <Input
             label="Rule Name"
             value={formData.name}

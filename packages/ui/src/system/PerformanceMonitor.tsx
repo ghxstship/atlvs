@@ -516,7 +516,7 @@ export function PerformanceDashboard() {
 
             {/* Web Vitals Tab */}
             {selectedTab === 'vitals' && (
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <div className="grid grid-cols-2 gap-2">
                   <div className="p-2 bg-muted rounded">
                     <div className="text-xs text-muted-foreground">LCP</div>

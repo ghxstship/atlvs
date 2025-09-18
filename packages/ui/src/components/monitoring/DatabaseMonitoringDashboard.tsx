@@ -288,7 +288,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {/* Health Overview */}
       {data?.healthReport && (
-        <Card className="p-6">
+        <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <Activity className="h-5 w-5 mr-2 text-success" />
             System Health Overview
@@ -313,12 +313,12 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {/* Performance Recommendations */}
       {data?.recommendations && data.recommendations.length > 0 && (
-        <Card className="p-6">
+        <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <TrendingUp className="h-5 w-5 mr-2 text-warning" />
             Performance Recommendations
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {data.recommendations.map((rec, index) => (
               <div key={index} className="p-4 border border-border rounded-lg">
                 <div className="flex items-start justify-between mb-2">
@@ -340,7 +340,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {/* Table Performance Stats */}
       {data?.tableStats && (
-        <Card className="p-6">
+        <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <Database className="h-5 w-5 mr-2 text-primary" />
             Table Performance Statistics
@@ -361,9 +361,9 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
                 {data.tableStats.map((table, index) => (
                   <tr key={index} className="border-b border-border hover:bg-muted/50">
                     <td className="p-2 font-medium">{table.tableName}</td>
-                    <td className="p-2">{table.totalSize}</td>
-                    <td className="p-2">{table.rowCount.toLocaleString()}</td>
-                    <td className="p-2">
+                    <td className="p-xs">{table.totalSize}</td>
+                    <td className="p-xs">{table.rowCount.toLocaleString()}</td>
+                    <td className="p-xs">
                       <div className="flex items-center space-x-2">
                         <div className="w-16 bg-muted rounded-full h-2">
                           <div 
@@ -377,8 +377,8 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
                         <span className="text-xs">{table.indexUsagePercent}%</span>
                       </div>
                     </td>
-                    <td className="p-2">{table.seqScan.toLocaleString()}</td>
-                    <td className="p-2">{table.idxScan.toLocaleString()}</td>
+                    <td className="p-xs">{table.seqScan.toLocaleString()}</td>
+                    <td className="p-xs">{table.idxScan.toLocaleString()}</td>
                   </tr>
                 ))}
               </tbody>
@@ -389,12 +389,12 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {/* Maintenance Alerts */}
       {data?.vacuumCandidates && data.vacuumCandidates.length > 0 && (
-        <Card className="p-6">
+        <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <TrendingDown className="h-5 w-5 mr-2 text-destructive" />
             Maintenance Required
           </h3>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {data.vacuumCandidates.map((candidate, index) => (
               <Alert key={index} variant="warning">
                 <AlertTriangle className="h-4 w-4" />
@@ -413,7 +413,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {/* Unused Indexes */}
       {data?.unusedIndexes && data.unusedIndexes.length > 0 && (
-        <Card className="p-6">
+        <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-4 flex items-center">
             <Database className="h-5 w-5 mr-2 text-muted-foreground" />
             Unused Indexes
@@ -421,7 +421,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
           <div className="text-sm text-muted-foreground mb-3">
             These indexes are not being used and could potentially be dropped to save space.
           </div>
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {data.unusedIndexes.map((index, idx) => (
               <div key={idx} className="flex items-center justify-between p-3 border border-border rounded-lg">
                 <div>

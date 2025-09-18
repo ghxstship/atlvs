@@ -320,7 +320,7 @@ export function FormView({
       
       case 'boolean':
         return (
-          <div key={field.key} className="space-y-2">
+          <div key={field.key} className="space-y-xs">
             <Checkbox
               checked={Boolean(formData[field.key])}
               disabled={isReadonly}
@@ -343,7 +343,7 @@ export function FormView({
       
       case 'toggle':
         return (
-          <div key={field.key} className="space-y-2">
+          <div key={field.key} className="space-y-xs">
             <Toggle
               checked={Boolean(formData[field.key])}
               disabled={isReadonly}
@@ -516,7 +516,7 @@ export function FormView({
       </div>
 
       {/* Form Content */}
-      <div className="space-y-6">
+      <div className="space-y-lg">
         {/* Sections */}
         {sections.map(section => {
           const isCollapsed = collapsedSections.has(section.id);
@@ -548,7 +548,7 @@ export function FormView({
               </div>
               
               {!isCollapsed && (
-                <Card variant="outline" className="p-4">
+                <Card variant="outline" className="p-md">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
                     {sectionFields.map(renderField)}
                   </div>
@@ -561,7 +561,7 @@ export function FormView({
         {/* Ungrouped Fields */}
         {fieldsToRender.length > 0 && (
           <Card variant="outline">
-            <div className="p-4">
+            <div className="p-md">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {fieldsToRender.map(renderField)}
               </div>

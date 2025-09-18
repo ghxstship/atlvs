@@ -371,7 +371,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       {/* Metric Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {summaryStats.map((stat) => (
-          <Card key={stat.id} className="p-4">
+          <Card key={stat.id} className="p-md">
             <div className="flex items-center justify-between mb-2">
               <h3 className="text-sm font-medium text-gray-600">{stat.name}</h3>
               <Badge variant={getStatusColor(stat.status)}>
@@ -404,7 +404,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {metricsData.map((metric) => (
-          <Card key={metric.id} className="p-6">
+          <Card key={metric.id} className="p-lg">
             <div className="flex items-center justify-between mb-4">
               <div>
                 <h3 className="text-lg font-semibold text-gray-900">{metric.name}</h3>
@@ -444,7 +444,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       </div>
 
       {/* Metric Selection */}
-      <Card className="p-6">
+      <Card className="p-lg">
         <h3 className="text-lg font-semibold mb-4">Select Metrics to Display</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {AVAILABLE_METRICS.map((metric) => (

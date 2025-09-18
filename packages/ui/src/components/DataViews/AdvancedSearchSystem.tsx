@@ -432,7 +432,7 @@ export function AdvancedSearchSystem({
       {isExpanded && (
         <div className="p-4 space-y-4">
           {/* Query Builder */}
-          <div className="space-y-3">
+          <div className="space-y-sm">
             <div className="flex items-center justify-between">
               <h3 className="text-sm font-medium">Advanced Filters</h3>
               <div className="flex items-center gap-2">
@@ -502,7 +502,7 @@ export function AdvancedSearchSystem({
 
           {/* Saved Searches */}
           {savedSearches.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <h3 className="text-sm font-medium">Saved Searches</h3>
               <div className="flex flex-wrap gap-2">
                 {savedSearches.map(search => (

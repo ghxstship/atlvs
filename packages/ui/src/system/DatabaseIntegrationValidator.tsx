@@ -746,7 +746,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
       </div>
 
       {!isMinimized && (
-        <div className="p-3">
+        <div className="p-sm">
           {/* Summary Stats */}
           <div className="grid grid-cols-2 gap-2 mb-3 text-xs">
             <div className="bg-foreground/5 rounded p-2">

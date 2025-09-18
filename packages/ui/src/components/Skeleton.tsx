@@ -70,8 +70,8 @@ Skeleton.displayName = 'Skeleton';
 // Skeleton Patterns for common UI elements
 export const SkeletonCard = React.forwardRef<HTMLDivElement, Omit<SkeletonProps, 'variant'>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={clsx('p-6 space-y-4', className)} {...props}>
-      <div className="flex items-center space-x-4">
+    <div ref={ref} className={clsx('p-xl space-y-md', className)} {...props}>
+      <div className="flex items-center space-x-md">
         <Skeleton variant="avatar" />
         <div className="space-y-2 flex-1">
           <Skeleton variant="text" width="60%" />
@@ -79,7 +79,7 @@ export const SkeletonCard = React.forwardRef<HTMLDivElement, Omit<SkeletonProps,
         </div>
       </div>
       <Skeleton variant="rectangular" height={120} />
-      <div className="space-y-2">
+      <div className="space-y-xs">
         <Skeleton variant="text" lines={3} />
       </div>
       <div className="flex justify-between items-center">
@@ -93,7 +93,7 @@ SkeletonCard.displayName = 'SkeletonCard';
 
 export const SkeletonTable = React.forwardRef<HTMLDivElement, { rows?: number; columns?: number }>(
   ({ rows = 5, columns = 4 }, ref) => (
-    <div ref={ref} className="space-y-3">
+    <div ref={ref} className="space-y-sm">
       {/* Header */}
       <div className="flex space-x-4">
         {Array.from({ length: columns }).map((_, index) => (
@@ -115,7 +115,7 @@ SkeletonTable.displayName = 'SkeletonTable';
 
 export const SkeletonList = React.forwardRef<HTMLDivElement, { items?: number }>(
   ({ items = 5 }, ref) => (
-    <div ref={ref} className="space-y-4">
+    <div ref={ref} className="space-y-md">
       {Array.from({ length: items }).map((_, index) => (
         <div key={index} className="flex items-center space-x-4">
           <Skeleton variant="avatar" />
@@ -133,9 +133,9 @@ SkeletonList.displayName = 'SkeletonList';
 
 export const SkeletonForm = React.forwardRef<HTMLDivElement, { fields?: number }>(
   ({ fields = 4 }, ref) => (
-    <div ref={ref} className="space-y-6">
+    <div ref={ref} className="space-y-lg">
       {Array.from({ length: fields }).map((_, index) => (
-        <div key={index} className="space-y-2">
+        <div key={index} className="space-y-xs">
           <Skeleton variant="text" width="25%" height={16} />
           <Skeleton variant="rectangular" height={40} />
         </div>

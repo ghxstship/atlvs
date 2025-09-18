@@ -43,9 +43,9 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       : type;
 
     const sizeClasses = {
-      sm: 'h-8 px-3 text-xs',
-      md: 'h-10 px-3 text-sm',
-      lg: 'h-12 px-4 text-base'
+      sm: 'h-8 px-sm text-xs',
+      md: 'h-10 px-sm text-sm',
+      lg: 'h-12 px-md text-base'
     };
 
     const variantClasses = {
@@ -79,7 +79,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <label className="block text-sm font-medium font-body text-foreground mb-2 flex items-center gap-2">
+          <label className="block text-sm font-medium font-body text-foreground mb-xs flex items-center gap-x-xs">
             {label}
             {variant === 'success' && <CheckCircle2 className="h-4 w-4 text-success" />}
             {(variant === 'error' || error) && <AlertCircle className="h-4 w-4 text-destructive" />}
@@ -132,7 +132,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
           
           {/* Right Icons */}
-          <div className="absolute inset-y-0 right-0 flex items-center pr-3 gap-1">
+          <div className="absolute inset-y-0 right-0 flex items-center pr-sm gap-x-xs">
             {loading && (
               <div className="animate-spin h-4 w-4 border-2 border-muted-foreground border-t-transparent rounded-full" />
             )}
@@ -140,7 +140,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {clearable && internalValue && !loading && (
               <button
                 type="button"
-                className="text-muted-foreground hover:text-foreground transition-colors p-0.5 rounded-sm hover:bg-muted"
+                className="text-muted-foreground hover:text-foreground transition-colors p-xs rounded-sm hover:bg-muted"
                 onClick={handleClear}
                 tabIndex={-1}
               >
@@ -151,7 +151,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
             {showPasswordToggle && type === 'password' && !loading && (
               <button
                 type="button"
-                className="text-muted-foreground hover:text-foreground transition-colors p-0.5 rounded-sm hover:bg-muted"
+                className="text-muted-foreground hover:text-foreground transition-colors p-xs rounded-sm hover:bg-muted"
                 onClick={() => setShowPassword(!showPassword)}
                 tabIndex={-1}
               >
@@ -172,7 +172,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
         
         {error && (
-          <p className="mt-1 text-sm text-destructive flex items-center gap-1 font-body">
+          <p className="mt-xs text-sm text-destructive flex items-center gap-x-xs font-body">
             <AlertCircle className="h-3 w-3 shrink-0" />
             {error}
           </p>

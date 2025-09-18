@@ -190,7 +190,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
             </button>
           </div>
           
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <div className="flex justify-between">
               <span>Current Path:</span>
               <span className="text-primary truncate max-w-[150px]">{currentPath}</span>

@@ -113,7 +113,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
                 {/* Search Results */}
                 <div className="max-h-96 overflow-y-auto">
                   {query ? (
-                    <div className="p-4">
+                    <div className="p-md">
                       <p className="text-sm text-muted-foreground mb-4">
                         Searching for "{query}"...
                       </p>
@@ -150,7 +150,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
                           <h3 className="text-sm font-medium text-muted-foreground mb-2">
                             Quick Actions
                           </h3>
-                          <div className="space-y-1">
+                          <div className="space-y-xs">
                             {shortcuts.map((shortcut, index) => (
                               <button
                                 key={index}
@@ -176,7 +176,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
                           <h3 className="text-sm font-medium text-muted-foreground mb-2">
                             Recent Searches
                           </h3>
-                          <div className="space-y-1">
+                          <div className="space-y-xs">
                             {recentSearches.map((search, index) => (
                               <button
                                 key={index}
