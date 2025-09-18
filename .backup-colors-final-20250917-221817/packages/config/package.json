@@ -1,0 +1,10 @@
+{
+  "name": "@ghxstship/config",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "files": ["src", "tailwind-preset.ts"],
+  "devDependencies": {
+    "tailwindcss": "^3.4.7"
+  }
+}

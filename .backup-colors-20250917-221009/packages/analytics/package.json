@@ -1,0 +1,10 @@
+{
+  "name": "@ghxstship/analytics",
+  "version": "0.0.1",
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "posthog-js": "^1.138.0",
+    "react": "^18.2.0"
+  }
+}

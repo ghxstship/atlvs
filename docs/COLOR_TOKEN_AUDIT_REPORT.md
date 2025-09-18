@@ -1,0 +1,831 @@
+# GHXSTSHIP Semantic Color Token Audit Report
+Generated: Wed Sep 17 22:08:33 EDT 2025
+
+## Executive Summary
+This report identifies all color token violations in the GHXSTSHIP repository where hardcoded colors are used instead of semantic design tokens.
+
+## Key Requirements
+1. **Titles/Headers**: Must use foreground color (black), NOT accent color
+2. **Gradients**: Must use proper gradient classes with correct application
+3. **Badges**: Must use semantic color tokens with proper opacity
+4. **Backgrounds**: Must use semantic bg- classes
+5. **Borders**: Must use semantic border- classes  
+6. **Shadows**: Must use semantic shadow- classes
+
+## Color Token Mapping
+
+### Text Colors (Semantic)
+- `text-foreground` - Primary text (black/white based on theme)
+- `text-muted-foreground` - Secondary text
+- `text-accent` - Accent color text (green)
+- `text-primary` - Primary brand color
+- `text-destructive` - Error/danger text
+- `text-success` - Success text
+- `text-warning` - Warning text
+
+### Background Colors (Semantic)
+- `bg-background` - Main background
+- `bg-muted` - Muted background
+- `bg-card` - Card background
+- `bg-accent` - Accent background
+- `bg-primary` - Primary background
+- `bg-destructive` - Error background
+- `bg-success` - Success background
+- `bg-warning` - Warning background
+
+### Border Colors (Semantic)
+- `border-border` - Default border
+- `border-accent` - Accent border
+- `border-primary` - Primary border
+- `border-destructive` - Error border
+- `border-success` - Success border
+- `border-warning` - Warning border
+
+---
+
+## Violations Found
+
+### 1. Hardcoded Text Colors
+Files using hardcoded Tailwind text colors instead of semantic tokens:
+
+- `.backup-v2-20250917-213524/packages/ui/src/atoms/CardTitle.tsx`: text-gray-900
+- `.backup-v2-20250917-213524/packages/ui/src/atoms/Label.tsx`: text-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/system/UIStateValidator.tsx`: text-green-400,text-red-400
+- `.backup-v2-20250917-213524/packages/ui/src/system/ContainerSystem.tsx`: text-neutral-400,text-neutral-600
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Spatial3D.tsx`: text-gray-400,text-gray-600
+- `.backup-v2-20250917-213524/packages/ui/src/components/Loader.tsx`: text-blue-600,text-gray-400,text-gray-600
+- `.backup-v2-20250917-213524/packages/ui/src/components/Breadcrumbs.tsx`: text-zinc-100,text-zinc-500,text-zinc-900
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/StateManager.tsx`: text-gray-100,text-gray-400,text-gray-600,text-gray-900,text-red-400
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/FormView.tsx`: text-gray-400,text-gray-600,text-red-400,text-red-600
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/DesignSystem.tsx`: text-gray-700,text-red-600
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/ComponentPatterns.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-red-700,text-red-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx`: text-gray-100,text-gray-200,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceInterface.tsx`: text-blue-200,text-blue-400,text-blue-600,text-blue-800,text-gray-300,text-gray-700,text-gray-900
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PersonalizationEngine.tsx`: text-blue-400,text-blue-800,text-gray-200,text-gray-300,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900,text-green-400,text-green-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PredictiveUI.tsx`: text-blue-400,text-blue-600,text-gray-200,text-gray-400,text-gray-600,text-gray-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: text-blue-600,text-gray-600,text-red-600,text-red-700,text-red-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: text-blue-600,text-blue-900,text-gray-500,text-gray-600,text-gray-700,text-gray-900,text-red-700,text-red-800,text-yellow-700,text-yellow-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-500,text-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/accessibility/AIAccessibility.tsx`: text-gray-400,text-gray-600,text-green-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/Navigation.tsx`: text-amber-600,text-blue-600,text-green-600,text-red-600
+- `.backup-v2-20250917-213524/packages/data-view/src/grid/Grid.tsx`: text-zinc-300,text-zinc-500,text-zinc-700
+- `.backup-v2-20250917-213524/packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-yellow-600
+- `.backup-remediation-20250917-214310/packages/ui/src/system/ContainerSystem.tsx`: text-neutral-400,text-neutral-600
+- `.backup-remediation-20250917-214310/packages/ui/src/components/architecture/DesignSystem.tsx`: text-gray-700,text-red-600
+- `.backup-remediation-20250917-214310/packages/ui/src/components/Navigation.tsx`: text-amber-600,text-blue-600,text-green-600,text-red-600
+- `packages/ui/src/atoms/CardTitle.tsx`: text-gray-900
+- `packages/ui/src/atoms/Label.tsx`: text-gray-700
+- `packages/ui/src/system/UIStateValidator.tsx`: text-green-400,text-red-400
+- `packages/ui/src/system/ContainerSystem.tsx`: text-neutral-400,text-neutral-600
+- `packages/ui/src/components/3d/Spatial3D.tsx`: text-gray-400,text-gray-600
+- `packages/ui/src/components/Loader.tsx`: text-blue-600,text-gray-400,text-gray-600
+- `packages/ui/src/components/Breadcrumbs.tsx`: text-zinc-100,text-zinc-500,text-zinc-900
+- `packages/ui/src/components/DataViews/StateManager.tsx`: text-gray-100,text-gray-400,text-gray-600,text-gray-900,text-red-400
+- `packages/ui/src/components/DataViews/FormView.tsx`: text-gray-400,text-gray-600,text-red-400,text-red-600
+- `packages/ui/src/components/architecture/DesignSystem.tsx`: text-gray-700,text-red-600
+- `packages/ui/src/components/architecture/ComponentPatterns.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-red-700,text-red-800
+- `packages/ui/src/components/voice/VoiceSearch.tsx`: text-gray-100,text-gray-200,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900
+- `packages/ui/src/components/voice/VoiceInterface.tsx`: text-blue-200,text-blue-400,text-blue-600,text-blue-800,text-gray-300,text-gray-700,text-gray-900
+- `packages/ui/src/components/ai/PersonalizationEngine.tsx`: text-blue-400,text-blue-800,text-gray-200,text-gray-300,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900,text-green-400,text-green-800
+- `packages/ui/src/components/ai/PredictiveUI.tsx`: text-blue-400,text-blue-600,text-gray-200,text-gray-400,text-gray-600,text-gray-800
+- `packages/ui/src/components/lazy/LazyComponentLoader.tsx`: text-blue-600,text-gray-600,text-red-600,text-red-700,text-red-800
+- `packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: text-blue-600,text-blue-900,text-gray-500,text-gray-600,text-gray-700,text-gray-900,text-red-700,text-red-800,text-yellow-700,text-yellow-800
+- `packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-500,text-red-500
+- `packages/ui/src/components/accessibility/AIAccessibility.tsx`: text-gray-400,text-gray-600,text-green-500
+- `packages/ui/src/components/Navigation.tsx`: text-amber-600,text-blue-600,text-green-600,text-red-600
+- `packages/data-view/src/grid/Grid.tsx`: text-zinc-300,text-zinc-500,text-zinc-700
+- `packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-yellow-600
+- `.backup-complete-20250917-215031/packages/ui/src/atoms/CardTitle.tsx`: text-gray-900
+- `.backup-complete-20250917-215031/packages/ui/src/atoms/Label.tsx`: text-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/system/UIStateValidator.tsx`: text-green-400,text-red-400
+- `.backup-complete-20250917-215031/packages/ui/src/system/ContainerSystem.tsx`: text-neutral-400,text-neutral-600
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Spatial3D.tsx`: text-gray-400,text-gray-600
+- `.backup-complete-20250917-215031/packages/ui/src/components/Loader.tsx`: text-blue-600,text-gray-400,text-gray-600
+- `.backup-complete-20250917-215031/packages/ui/src/components/Breadcrumbs.tsx`: text-zinc-100,text-zinc-500,text-zinc-900
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/StateManager.tsx`: text-gray-100,text-gray-400,text-gray-600,text-gray-900,text-red-400
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/FormView.tsx`: text-gray-400,text-gray-600,text-red-400,text-red-600
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/DesignSystem.tsx`: text-gray-700,text-red-600
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/ComponentPatterns.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-red-700,text-red-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx`: text-gray-100,text-gray-200,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceInterface.tsx`: text-blue-200,text-blue-400,text-blue-600,text-blue-800,text-gray-300,text-gray-700,text-gray-900
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PersonalizationEngine.tsx`: text-blue-400,text-blue-800,text-gray-200,text-gray-300,text-gray-400,text-gray-500,text-gray-600,text-gray-800,text-gray-900,text-green-400,text-green-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PredictiveUI.tsx`: text-blue-400,text-blue-600,text-gray-200,text-gray-400,text-gray-600,text-gray-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: text-blue-600,text-gray-600,text-red-600,text-red-700,text-red-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: text-blue-600,text-blue-900,text-gray-500,text-gray-600,text-gray-700,text-gray-900,text-red-700,text-red-800,text-yellow-700,text-yellow-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-500,text-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/accessibility/AIAccessibility.tsx`: text-gray-400,text-gray-600,text-green-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/Navigation.tsx`: text-amber-600,text-blue-600,text-green-600,text-red-600
+- `.backup-complete-20250917-215031/packages/data-view/src/grid/Grid.tsx`: text-zinc-300,text-zinc-500,text-zinc-700
+- `.backup-complete-20250917-215031/packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: text-blue-600,text-gray-500,text-gray-600,text-gray-900,text-green-600,text-red-600,text-yellow-600
+
+### 2. Hardcoded Background Colors
+Files using hardcoded Tailwind background colors instead of semantic tokens:
+
+- `.backup-v2-20250917-213524/packages/ui/src/system/UIStateValidator.tsx`: bg-green-500,bg-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/micro-interactions/MicroInteractions.tsx`: bg-gray-800,bg-green-500,bg-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Spatial3D.tsx`: bg-gray-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/Loader.tsx`: bg-gray-200,bg-gray-700,bg-gray-900
+- `.backup-v2-20250917-213524/packages/ui/src/components/Navigation/NavigationAccessibility.tsx`: bg-neutral-100,bg-neutral-800
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/DataActions.tsx`: bg-gray-50
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/MapView.tsx`: bg-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/ComponentPatterns.tsx`: bg-red-50
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx`: bg-gray-800,bg-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceInterface.tsx`: bg-blue-50,bg-blue-900,bg-gray-100,bg-gray-700,bg-gray-800,bg-red-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PersonalizationEngine.tsx`: bg-blue-100,bg-blue-600,bg-blue-700,bg-blue-900,bg-gray-100,bg-gray-200,bg-gray-700,bg-gray-800,bg-green-100,bg-green-900
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: bg-red-50,bg-red-600,bg-red-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: bg-blue-100,bg-gray-100,bg-red-50,bg-yellow-50
+- `.backup-v2-20250917-213524/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: bg-red-500,bg-yellow-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/accessibility/AIAccessibility.tsx`: bg-blue-500,bg-gray-800
+- `.backup-v2-20250917-213524/packages/data-view/src/grid/Grid.tsx`: bg-zinc-50,bg-zinc-900
+- `.backup-remediation-20250917-214310/packages/ui/src/components/DataViews/DataActions.tsx`: bg-gray-50
+- `packages/ui/src/system/UIStateValidator.tsx`: bg-green-500,bg-red-500
+- `packages/ui/src/components/micro-interactions/MicroInteractions.tsx`: bg-gray-800,bg-green-500,bg-red-500
+- `packages/ui/src/components/3d/Spatial3D.tsx`: bg-gray-800
+- `packages/ui/src/components/Loader.tsx`: bg-gray-200,bg-gray-700,bg-gray-900
+- `packages/ui/src/components/Navigation/NavigationAccessibility.tsx`: bg-neutral-100,bg-neutral-800
+- `packages/ui/src/components/DataViews/DataActions.tsx`: bg-gray-50
+- `packages/ui/src/components/DataViews/MapView.tsx`: bg-red-500
+- `packages/ui/src/components/architecture/ComponentPatterns.tsx`: bg-red-50
+- `packages/ui/src/components/voice/VoiceSearch.tsx`: bg-gray-800,bg-red-500
+- `packages/ui/src/components/voice/VoiceInterface.tsx`: bg-blue-50,bg-blue-900,bg-gray-100,bg-gray-700,bg-gray-800,bg-red-500
+- `packages/ui/src/components/ai/PersonalizationEngine.tsx`: bg-blue-100,bg-blue-600,bg-blue-700,bg-blue-900,bg-gray-100,bg-gray-200,bg-gray-700,bg-gray-800,bg-green-100,bg-green-900
+- `packages/ui/src/components/lazy/LazyComponentLoader.tsx`: bg-red-50,bg-red-600,bg-red-700
+- `packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: bg-blue-100,bg-gray-100,bg-red-50,bg-yellow-50
+- `packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: bg-red-500,bg-yellow-500
+- `packages/ui/src/components/accessibility/AIAccessibility.tsx`: bg-blue-500,bg-gray-800
+- `packages/data-view/src/grid/Grid.tsx`: bg-zinc-50,bg-zinc-900
+- `.backup-complete-20250917-215031/packages/ui/src/system/UIStateValidator.tsx`: bg-green-500,bg-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/micro-interactions/MicroInteractions.tsx`: bg-gray-800,bg-green-500,bg-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Spatial3D.tsx`: bg-gray-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/Loader.tsx`: bg-gray-200,bg-gray-700,bg-gray-900
+- `.backup-complete-20250917-215031/packages/ui/src/components/Navigation/NavigationAccessibility.tsx`: bg-neutral-100,bg-neutral-800
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/DataActions.tsx`: bg-gray-50
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/MapView.tsx`: bg-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/ComponentPatterns.tsx`: bg-red-50
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx`: bg-gray-800,bg-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceInterface.tsx`: bg-blue-50,bg-blue-900,bg-gray-100,bg-gray-700,bg-gray-800,bg-red-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PersonalizationEngine.tsx`: bg-blue-100,bg-blue-600,bg-blue-700,bg-blue-900,bg-gray-100,bg-gray-200,bg-gray-700,bg-gray-800,bg-green-100,bg-green-900
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: bg-red-50,bg-red-600,bg-red-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: bg-blue-100,bg-gray-100,bg-red-50,bg-yellow-50
+- `.backup-complete-20250917-215031/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: bg-red-500,bg-yellow-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/accessibility/AIAccessibility.tsx`: bg-blue-500,bg-gray-800
+- `.backup-complete-20250917-215031/packages/data-view/src/grid/Grid.tsx`: bg-zinc-50,bg-zinc-900
+
+### 3. Hardcoded Border Colors
+Files using hardcoded Tailwind border colors instead of semantic tokens:
+
+- `.backup-v2-20250917-213524/packages/ui/src/atoms/Textarea.tsx`: border-gray-300
+- `.backup-v2-20250917-213524/packages/ui/src/system/LayoutSystem.tsx`: border-neutral-200,border-neutral-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Spatial3D.tsx`: border-gray-200,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/Loader.tsx`: border-blue-600,border-gray-200,border-gray-400,border-gray-600,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/WhiteboardView.tsx`: border-gray-300
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/DesignSystem.tsx`: border-gray-300
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/ComponentPatterns.tsx`: border-red-200
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx`: border-gray-200,border-gray-300,border-gray-600,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceInterface.tsx`: border-gray-200,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PersonalizationEngine.tsx`: border-gray-200,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: border-red-200
+- `.backup-v2-20250917-213524/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: border-blue-500,border-red-200,border-yellow-200
+- `.backup-v2-20250917-213524/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: border-blue-600,border-gray-300
+- `.backup-v2-20250917-213524/packages/ui/src/components/accessibility/AIAccessibility.tsx`: border-gray-200,border-gray-700
+- `.backup-v2-20250917-213524/packages/ui/src/UnifiedDesignSystem.tsx`: border-gray-300
+- `.backup-v2-20250917-213524/packages/data-view/src/grid/Grid.tsx`: border-zinc-100,border-zinc-200,border-zinc-800,border-zinc-900
+- `.backup-v2-20250917-213524/packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: border-blue-600
+- `.backup-remediation-20250917-214310/packages/ui/src/system/LayoutSystem.tsx`: border-neutral-200,border-neutral-700
+- `.backup-remediation-20250917-214310/packages/ui/src/components/architecture/DesignSystem.tsx`: border-gray-300
+- `packages/ui/src/atoms/Textarea.tsx`: border-gray-300
+- `packages/ui/src/system/LayoutSystem.tsx`: border-neutral-200,border-neutral-700
+- `packages/ui/src/components/3d/Spatial3D.tsx`: border-gray-200,border-gray-700
+- `packages/ui/src/components/Loader.tsx`: border-blue-600,border-gray-200,border-gray-400,border-gray-600,border-gray-700
+- `packages/ui/src/components/DataViews/WhiteboardView.tsx`: border-gray-300
+- `packages/ui/src/components/architecture/DesignSystem.tsx`: border-gray-300
+- `packages/ui/src/components/architecture/ComponentPatterns.tsx`: border-red-200
+- `packages/ui/src/components/voice/VoiceSearch.tsx`: border-gray-200,border-gray-300,border-gray-600,border-gray-700
+- `packages/ui/src/components/voice/VoiceInterface.tsx`: border-gray-200,border-gray-700
+- `packages/ui/src/components/ai/PersonalizationEngine.tsx`: border-gray-200,border-gray-700
+- `packages/ui/src/components/lazy/LazyComponentLoader.tsx`: border-red-200
+- `packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: border-blue-500,border-red-200,border-yellow-200
+- `packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: border-blue-600,border-gray-300
+- `packages/ui/src/components/accessibility/AIAccessibility.tsx`: border-gray-200,border-gray-700
+- `packages/ui/src/UnifiedDesignSystem.tsx`: border-gray-300
+- `packages/data-view/src/grid/Grid.tsx`: border-zinc-100,border-zinc-200,border-zinc-800,border-zinc-900
+- `packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: border-blue-600
+- `.backup-complete-20250917-215031/packages/ui/src/atoms/Textarea.tsx`: border-gray-300
+- `.backup-complete-20250917-215031/packages/ui/src/system/LayoutSystem.tsx`: border-neutral-200,border-neutral-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Spatial3D.tsx`: border-gray-200,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/Loader.tsx`: border-blue-600,border-gray-200,border-gray-400,border-gray-600,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/WhiteboardView.tsx`: border-gray-300
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/DesignSystem.tsx`: border-gray-300
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/ComponentPatterns.tsx`: border-red-200
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx`: border-gray-200,border-gray-300,border-gray-600,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceInterface.tsx`: border-gray-200,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PersonalizationEngine.tsx`: border-gray-200,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/LazyComponentLoader.tsx`: border-red-200
+- `.backup-complete-20250917-215031/packages/ui/src/components/lazy/RouteBasedSplitting.tsx`: border-blue-500,border-red-200,border-yellow-200
+- `.backup-complete-20250917-215031/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx`: border-blue-600,border-gray-300
+- `.backup-complete-20250917-215031/packages/ui/src/components/accessibility/AIAccessibility.tsx`: border-gray-200,border-gray-700
+- `.backup-complete-20250917-215031/packages/ui/src/UnifiedDesignSystem.tsx`: border-gray-300
+- `.backup-complete-20250917-215031/packages/data-view/src/grid/Grid.tsx`: border-zinc-100,border-zinc-200,border-zinc-800,border-zinc-900
+- `.backup-complete-20250917-215031/packages/application/src/components/enterprise/UmonitoringUdashboard.tsx`: border-blue-600
+
+### 4. Incorrect Title/Header Colors
+Files where titles/headers use accent color instead of foreground:
+
+- `.backup-v2-20250917-213524/packages/ui/src/components/Sidebar/SidebarExample.tsx` (h tag with accent color)
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Card3D.tsx` (h tag with accent color)
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/ComponentBase.tsx` (h tag with accent color)
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/company/team/page.tsx` (h tag with accent color)
+- `.backup-v2-20250917-213524/apps/web/app/_components/ColorSystemDemo.tsx` (h tag with accent color)
+- `.backup-remediation-20250917-214310/packages/ui/src/components/Sidebar/SidebarExample.tsx` (h tag with accent color)
+- `packages/ui/src/components/Sidebar/SidebarExample.tsx` (h tag with accent color)
+- `packages/ui/src/components/3d/Card3D.tsx` (h tag with accent color)
+- `packages/ui/src/components/architecture/ComponentBase.tsx` (h tag with accent color)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Sidebar/SidebarExample.tsx` (h tag with accent color)
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Card3D.tsx` (h tag with accent color)
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/ComponentBase.tsx` (h tag with accent color)
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/company/team/page.tsx` (h tag with accent color)
+- `.backup-complete-20250917-215031/apps/web/app/_components/ColorSystemDemo.tsx` (h tag with accent color)
+- `apps/web/app/(marketing)/company/team/page.tsx` (h tag with accent color)
+- `apps/web/app/_components/ColorSystemDemo.tsx` (h tag with accent color)
+
+### 5. Gradient Implementation Issues
+Files with potential gradient issues:
+
+- `.eslintrc.semantic-tokens.js` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/.eslintrc.semantic-tokens.js` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/providers/AdaptiveThemeProvider.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/WorkflowSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/ComponentSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/EnhancementSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/LayoutSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/ContainerSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/CompositePatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/system/GridSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/Sidebar/SidebarNavigation.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/Sidebar/SidebarAnimations.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Spatial3D.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/Navigation/NavigationVariants.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/DatabaseOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/StateManager.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/FormView.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/DashboardView.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/DatabaseTransactionManager.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/DesignTokenValidator.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/PerformanceOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/ComponentPatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceInterface.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PredictiveUI.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/WorkflowOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/monitoring/DatabaseMonitoringDashboard.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/Modal.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/components/Toast.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/packages/ui/src/UnifiedDesignSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/pipeline/contracting/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/projects/overview/AutoSeedOnFirstRun.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/profile/basic/BasicInfoClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/companies/contracts/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/admin/enterprise/settings/page.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/security/page.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/MarketingPageClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/_components/index.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/api/v1/procurement/purchase-orders/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/api/organizations/[orgId]/demo/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/api/organizations/[orgId]/profiles/[profileId]/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/app/api/organizations/[orgId]/profiles/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/lib/telemetry.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-v2-20250917-213524/apps/web/lib/animations.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/WorkflowSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/ComponentSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/LayoutSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/ContainerSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/CompositePatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/system/GridSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/components/Sidebar/SidebarNavigation.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/components/DataViews/DatabaseOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/components/DataViews/DesignTokenValidator.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-remediation-20250917-214310/packages/ui/src/components/monitoring/DatabaseMonitoringDashboard.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/providers/AdaptiveThemeProvider.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/WorkflowSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/ComponentSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/EnhancementSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/LayoutSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/ContainerSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/CompositePatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/system/GridSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/Sidebar/SidebarNavigation.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/Sidebar/SidebarAnimations.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/3d/Spatial3D.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/Navigation/NavigationVariants.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/DatabaseOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/StateManager.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/FormView.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/DashboardView.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/DatabaseTransactionManager.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/DesignTokenValidator.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/DataViews/PerformanceOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/architecture/ComponentPatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/voice/VoiceSearch.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/voice/VoiceInterface.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/ai/PredictiveUI.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/WorkflowOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/monitoring/DatabaseMonitoringDashboard.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/Modal.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/components/Toast.tsx` (uses gradient syntax but may lack proper classes)
+- `packages/ui/src/UnifiedDesignSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/.eslintrc.semantic-tokens.js` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/providers/AdaptiveThemeProvider.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/WorkflowSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/ComponentSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/EnhancementSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/LayoutSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/ContainerSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/CompositePatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/system/GridSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Sidebar/SidebarNavigation.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Sidebar/SidebarAnimations.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Spatial3D.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Navigation/NavigationVariants.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/DatabaseOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/StateManager.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/FormView.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/DashboardView.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/DatabaseTransactionManager.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/DesignTokenValidator.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/PerformanceOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/ComponentPatterns.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceInterface.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PredictiveUI.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/WorkflowOptimizer.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/monitoring/DatabaseMonitoringDashboard.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/monitoring/PerformanceMetricsChart.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Modal.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/components/Toast.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/packages/ui/src/UnifiedDesignSystem.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/pipeline/contracting/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/projects/overview/AutoSeedOnFirstRun.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/profile/basic/BasicInfoClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/companies/contracts/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/admin/enterprise/settings/page.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/security/page.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/MarketingPageClient.tsx` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/_components/index.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/api/v1/procurement/purchase-orders/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/api/organizations/[orgId]/demo/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/api/organizations/[orgId]/profiles/[profileId]/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/app/api/organizations/[orgId]/profiles/route.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/lib/telemetry.ts` (uses gradient syntax but may lack proper classes)
+- `.backup-complete-20250917-215031/apps/web/lib/animations.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/(app)/(shell)/pipeline/contracting/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/(app)/(shell)/projects/overview/AutoSeedOnFirstRun.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/(app)/(shell)/profile/basic/BasicInfoClient.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/(app)/(shell)/companies/contracts/CreateContractClient.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/admin/enterprise/settings/page.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/(marketing)/security/page.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/_components/marketing/MarketingPageClient.tsx` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/_components/index.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/api/v1/procurement/purchase-orders/route.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/api/organizations/[orgId]/demo/route.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/api/organizations/[orgId]/profiles/[profileId]/route.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/app/api/organizations/[orgId]/profiles/route.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/lib/telemetry.ts` (uses gradient syntax but may lack proper classes)
+- `apps/web/lib/animations.ts` (uses gradient syntax but may lack proper classes)
+
+### 6. Hardcoded Shadow Values
+Files using hardcoded shadow values instead of semantic tokens:
+
+- `.backup-v2-20250917-213524/packages/ui/src/system/WorkflowSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/system/DatabaseIntegrationValidator.tsx`: shadow-2xl
+- `.backup-v2-20250917-213524/packages/ui/src/system/UIStateValidator.tsx`: shadow-2xl
+- `.backup-v2-20250917-213524/packages/ui/src/system/LayoutSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/system/ContainerSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/system/CompositePatterns.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/system/PerformanceMonitor.tsx`: shadow-2xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/Sidebar/SidebarNavigation.tsx`: shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Spatial3D.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/3d/Card3D.tsx`: shadow-2xl,shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/EnhancedUniversalDrawer.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Navigation/NavigationVariants.tsx`: shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/Drawer.tsx`: shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/Tooltip.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/MapView.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/GalleryView.tsx`: shadow-md
+- `.backup-v2-20250917-213524/packages/ui/src/components/DataViews/AdvancedSearchSystem.tsx`: shadow-lg,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/DesignSystem.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/components/SubwaySystem.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceInterface.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Dropdown.tsx`: shadow-md
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PersonalizationEngine.tsx`: shadow-lg,shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/components/ai/PredictiveUI.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/WorkflowOptimizer.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Select/Select.tsx`: shadow-md
+- `.backup-v2-20250917-213524/packages/ui/src/components/Toggle.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/components/Modal.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Toast.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/accessibility/AIAccessibility.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Navigation.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/components/Textarea.tsx`: shadow-md,shadow-sm
+- `.backup-v2-20250917-213524/packages/ui/src/components/AccessibilityProvider.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/packages/ui/src/UnifiedDesignSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(chromeless)/profile/activity/ActivityLogClient.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(chromeless)/profile/performance/PerformanceReviewsClient.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(chromeless)/procurement/overview/ProcurementOverviewClient.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/pipeline/training/TrainingClient.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/resources/ResourcesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/opendeck/ProjectPostingClient.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/dashboard/DashboardClient.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/programming/lineups/LineupsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/programming/itineraries/ItinerariesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/programming/overview/ProgrammingOverviewClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/procurement/vendors/VendorsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/people/roles/RolesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/people/directory/DirectoryClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/people/competencies/CompetenciesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/people/overview/OverviewClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/finance/expenses/ExpensesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/finance/accounts/AccountsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/finance/budgets/BudgetsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/finance/forecasts/ForecastsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/assignments/AssignmentsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/opportunities/OpportunitiesClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/bids/BidsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/contracts/ContractsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/compliance/ComplianceClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/jobs/rfps/RFPsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/assignments/AssignmentsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/advancing/AdvancingClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/AssetsClient.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/inventory/InventoryClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/tracking/TrackingClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/maintenance/MaintenanceClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/assets/reports/ReportsClient.tsx`: shadow-md,shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/companies/contracts/ContractsClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/companies/ratings/RatingsClient.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/companies/directory/DirectoryClient.tsx`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/(app)/(shell)/analytics/dashboards/CreateDashboardClient.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/VerifyEmailStep.tsx`: shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/TeamInvitationStep.tsx`: shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/ProfileCompletionStep.tsx`: shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/PlanSelectionStep.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/FinalConfirmationStep.tsx`: shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/auth/onboarding/steps/OrganizationSetupStep.tsx`: shadow-lg,shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/contact/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/products/opendeck/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/products/atlvs/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/products/compare/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/products/coming-soon/page.tsx`: shadow-lg,shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/documentation/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/whitepapers/page.tsx`: shadow-lg,shadow-xl
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/blog/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/case-studies/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/guides/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/resources/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/trade-shows-conferences/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/film-tv/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/immersive-experiences/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/community-cultural-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/health-wellness-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/concerts-festivals-tours/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/brand-activations/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/sporting-events-tournaments/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/corporate-community-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/hospitality-travel/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/themed-theatrical-entertainment/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/solutions/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/careers/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/partnerships/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/community/forums/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/community/partners/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/community/events/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/community/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/company/press/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/company/about/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/company/team/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/(marketing)/company/page.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/ui/index.ts`: shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/_components/lib/layouts.ts`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/CTASection.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/PricingCard.tsx`: shadow-lg,shadow-md
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/SocialProof.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/ProductHighlights.tsx`: shadow-2xl
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/navigation/NavigationDropdown.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/CookieConsent.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/FeatureGrid.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/team/DepartmentCard.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/team/TeamMemberCard.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/team/LeadershipCard.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/HeroSection.tsx`: shadow-2xl,shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/pricing/PricingToggle.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/pricing/AddOnCard.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/pricing/FAQSection.tsx`: shadow-sm
+- `.backup-v2-20250917-213524/apps/web/app/_components/marketing/FeatureCard.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/PerformanceMonitor.tsx`: shadow-lg
+- `.backup-v2-20250917-213524/apps/web/app/_components/nav/CommandPalette.tsx`: shadow-2xl
+- `.backup-v2-20250917-213524/apps/web/lib/sentry.ts`: shadow-lg
+- `.backup-remediation-20250917-214310/packages/ui/src/system/WorkflowSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-remediation-20250917-214310/packages/ui/src/system/LayoutSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm,shadow-xl
+- `.backup-remediation-20250917-214310/packages/ui/src/system/ContainerSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-remediation-20250917-214310/packages/ui/src/system/CompositePatterns.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `.backup-remediation-20250917-214310/packages/ui/src/system/PerformanceMonitor.tsx`: shadow-2xl
+- `.backup-remediation-20250917-214310/packages/ui/src/components/Sidebar/SidebarNavigation.tsx`: shadow-sm,shadow-xl
+- `.backup-remediation-20250917-214310/packages/ui/src/components/DataViews/GalleryView.tsx`: shadow-md
+- `.backup-remediation-20250917-214310/packages/ui/src/components/architecture/DesignSystem.tsx`: shadow-sm
+- `.backup-remediation-20250917-214310/packages/ui/src/components/Navigation.tsx`: shadow-2xl,shadow-lg
+- `.backup-remediation-20250917-214310/apps/web/app/_components/marketing/CTASection.tsx`: shadow-lg
+- `.backup-remediation-20250917-214310/apps/web/app/_components/marketing/SocialProof.tsx`: shadow-lg
+- `.backup-remediation-20250917-214310/apps/web/app/_components/marketing/ProductHighlights.tsx`: shadow-2xl
+- `.backup-remediation-20250917-214310/apps/web/app/_components/marketing/FeatureGrid.tsx`: shadow-lg
+- `.backup-remediation-20250917-214310/apps/web/app/_components/marketing/HeroSection.tsx`: shadow-2xl,shadow-lg
+- `packages/ui/src/system/WorkflowSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `packages/ui/src/system/DatabaseIntegrationValidator.tsx`: shadow-2xl
+- `packages/ui/src/system/UIStateValidator.tsx`: shadow-2xl
+- `packages/ui/src/system/LayoutSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm,shadow-xl
+- `packages/ui/src/system/ContainerSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `packages/ui/src/system/CompositePatterns.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `packages/ui/src/system/PerformanceMonitor.tsx`: shadow-2xl
+- `packages/ui/src/components/Sidebar/SidebarNavigation.tsx`: shadow-sm,shadow-xl
+- `packages/ui/src/components/3d/Spatial3D.tsx`: shadow-lg
+- `packages/ui/src/components/3d/Card3D.tsx`: shadow-2xl,shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `packages/ui/src/components/EnhancedUniversalDrawer.tsx`: shadow-lg
+- `packages/ui/src/components/Navigation/NavigationVariants.tsx`: shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `packages/ui/src/components/Drawer.tsx`: shadow-xl
+- `packages/ui/src/components/Tooltip.tsx`: shadow-lg
+- `packages/ui/src/components/DataViews/MapView.tsx`: shadow-lg
+- `packages/ui/src/components/DataViews/GalleryView.tsx`: shadow-md
+- `packages/ui/src/components/DataViews/AdvancedSearchSystem.tsx`: shadow-lg,shadow-xl
+- `packages/ui/src/components/architecture/DesignSystem.tsx`: shadow-sm
+- `packages/ui/src/components/SubwaySystem.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `packages/ui/src/components/voice/VoiceSearch.tsx`: shadow-lg
+- `packages/ui/src/components/voice/VoiceInterface.tsx`: shadow-lg
+- `packages/ui/src/components/Dropdown.tsx`: shadow-md
+- `packages/ui/src/components/ai/PersonalizationEngine.tsx`: shadow-lg,shadow-sm
+- `packages/ui/src/components/ai/PredictiveUI.tsx`: shadow-lg
+- `packages/ui/src/components/WorkflowOptimizer.tsx`: shadow-lg
+- `packages/ui/src/components/Select/Select.tsx`: shadow-md
+- `packages/ui/src/components/Toggle.tsx`: shadow-sm
+- `packages/ui/src/components/Modal.tsx`: shadow-lg
+- `packages/ui/src/components/Toast.tsx`: shadow-lg
+- `packages/ui/src/components/accessibility/AIAccessibility.tsx`: shadow-lg
+- `packages/ui/src/components/Navigation.tsx`: shadow-2xl,shadow-lg
+- `packages/ui/src/components/Textarea.tsx`: shadow-md,shadow-sm
+- `packages/ui/src/components/AccessibilityProvider.tsx`: shadow-lg
+- `packages/ui/src/UnifiedDesignSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/system/WorkflowSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/system/DatabaseIntegrationValidator.tsx`: shadow-2xl
+- `.backup-complete-20250917-215031/packages/ui/src/system/UIStateValidator.tsx`: shadow-2xl
+- `.backup-complete-20250917-215031/packages/ui/src/system/LayoutSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/system/ContainerSystem.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/system/CompositePatterns.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/system/PerformanceMonitor.tsx`: shadow-2xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/Sidebar/SidebarNavigation.tsx`: shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Spatial3D.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/3d/Card3D.tsx`: shadow-2xl,shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/EnhancedUniversalDrawer.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Navigation/NavigationVariants.tsx`: shadow-lg,shadow-md,shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/Drawer.tsx`: shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/Tooltip.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/MapView.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/GalleryView.tsx`: shadow-md
+- `.backup-complete-20250917-215031/packages/ui/src/components/DataViews/AdvancedSearchSystem.tsx`: shadow-lg,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/DesignSystem.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/components/SubwaySystem.tsx`: shadow-lg,shadow-sm,shadow-xl
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceInterface.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Dropdown.tsx`: shadow-md
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PersonalizationEngine.tsx`: shadow-lg,shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/components/ai/PredictiveUI.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/WorkflowOptimizer.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Select/Select.tsx`: shadow-md
+- `.backup-complete-20250917-215031/packages/ui/src/components/Toggle.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/components/Modal.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Toast.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/accessibility/AIAccessibility.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Navigation.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/components/Textarea.tsx`: shadow-md,shadow-sm
+- `.backup-complete-20250917-215031/packages/ui/src/components/AccessibilityProvider.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/packages/ui/src/UnifiedDesignSystem.tsx`: shadow-lg,shadow-md,shadow-none,shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(chromeless)/profile/activity/ActivityLogClient.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(chromeless)/profile/performance/PerformanceReviewsClient.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(chromeless)/procurement/overview/ProcurementOverviewClient.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/pipeline/training/TrainingClient.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/resources/ResourcesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/opendeck/ProjectPostingClient.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/dashboard/DashboardClient.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/programming/lineups/LineupsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/programming/itineraries/ItinerariesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/programming/overview/ProgrammingOverviewClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/procurement/vendors/VendorsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/people/roles/RolesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/people/directory/DirectoryClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/people/competencies/CompetenciesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/people/overview/OverviewClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/finance/expenses/ExpensesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/finance/accounts/AccountsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/finance/budgets/BudgetsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/finance/forecasts/ForecastsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/assignments/AssignmentsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/opportunities/OpportunitiesClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/bids/BidsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/contracts/ContractsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/compliance/ComplianceClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/jobs/rfps/RFPsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/assignments/AssignmentsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/advancing/AdvancingClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/AssetsClient.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/inventory/InventoryClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/tracking/TrackingClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/maintenance/MaintenanceClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/assets/reports/ReportsClient.tsx`: shadow-md,shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/companies/contracts/ContractsClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/companies/ratings/RatingsClient.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/companies/directory/DirectoryClient.tsx`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/(app)/(shell)/analytics/dashboards/CreateDashboardClient.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/VerifyEmailStep.tsx`: shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/TeamInvitationStep.tsx`: shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/ProfileCompletionStep.tsx`: shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/PlanSelectionStep.tsx`: shadow-lg,shadow-md,shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/FinalConfirmationStep.tsx`: shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/auth/onboarding/steps/OrganizationSetupStep.tsx`: shadow-lg,shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/contact/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/products/opendeck/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/products/atlvs/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/products/compare/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/products/coming-soon/page.tsx`: shadow-lg,shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/documentation/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/whitepapers/page.tsx`: shadow-lg,shadow-xl
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/blog/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/case-studies/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/guides/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/resources/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/trade-shows-conferences/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/film-tv/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/immersive-experiences/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/community-cultural-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/health-wellness-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/concerts-festivals-tours/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/brand-activations/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/sporting-events-tournaments/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/corporate-community-events/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/hospitality-travel/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/themed-theatrical-entertainment/page.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/solutions/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/careers/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/partnerships/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/community/forums/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/community/partners/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/community/events/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/community/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/company/press/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/company/about/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/company/team/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/(marketing)/company/page.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/ui/index.ts`: shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/_components/lib/layouts.ts`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/CTASection.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/PricingCard.tsx`: shadow-lg,shadow-md
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/SocialProof.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/ProductHighlights.tsx`: shadow-2xl
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/navigation/NavigationDropdown.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/CookieConsent.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/FeatureGrid.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/team/DepartmentCard.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/team/TeamMemberCard.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/team/LeadershipCard.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/HeroSection.tsx`: shadow-2xl,shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/pricing/PricingToggle.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/pricing/AddOnCard.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/pricing/FAQSection.tsx`: shadow-sm
+- `.backup-complete-20250917-215031/apps/web/app/_components/marketing/FeatureCard.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/PerformanceMonitor.tsx`: shadow-lg
+- `.backup-complete-20250917-215031/apps/web/app/_components/nav/CommandPalette.tsx`: shadow-2xl
+- `.backup-complete-20250917-215031/apps/web/lib/sentry.ts`: shadow-lg
+- `apps/web/app/(app)/(chromeless)/profile/activity/ActivityLogClient.tsx`: shadow-sm
+- `apps/web/app/(app)/(chromeless)/profile/performance/PerformanceReviewsClient.tsx`: shadow-lg
+- `apps/web/app/(app)/(chromeless)/procurement/overview/ProcurementOverviewClient.tsx`: shadow-lg
+- `apps/web/app/(app)/(shell)/pipeline/training/TrainingClient.tsx`: shadow-sm
+- `apps/web/app/(app)/(shell)/resources/ResourcesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/opendeck/ProjectPostingClient.tsx`: shadow-lg
+- `apps/web/app/(app)/(shell)/dashboard/DashboardClient.tsx`: shadow-sm
+- `apps/web/app/(app)/(shell)/programming/lineups/LineupsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/programming/itineraries/ItinerariesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/programming/overview/ProgrammingOverviewClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/procurement/vendors/VendorsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/people/roles/RolesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/people/directory/DirectoryClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/people/competencies/CompetenciesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/people/overview/OverviewClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/finance/expenses/ExpensesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/finance/accounts/AccountsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/finance/budgets/BudgetsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/finance/forecasts/ForecastsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/assignments/AssignmentsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/opportunities/OpportunitiesClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/bids/BidsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/contracts/ContractsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/compliance/ComplianceClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/jobs/rfps/RFPsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/assignments/AssignmentsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/advancing/AdvancingClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/AssetsClient.tsx`: shadow-sm
+- `apps/web/app/(app)/(shell)/assets/inventory/InventoryClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/tracking/TrackingClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/maintenance/MaintenanceClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/assets/reports/ReportsClient.tsx`: shadow-md,shadow-sm
+- `apps/web/app/(app)/(shell)/companies/contracts/ContractsClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/companies/ratings/RatingsClient.tsx`: shadow-lg
+- `apps/web/app/(app)/(shell)/companies/directory/DirectoryClient.tsx`: shadow-md
+- `apps/web/app/(app)/(shell)/analytics/dashboards/CreateDashboardClient.tsx`: shadow-lg
+- `apps/web/app/auth/onboarding/steps/VerifyEmailStep.tsx`: shadow-xl
+- `apps/web/app/auth/onboarding/steps/TeamInvitationStep.tsx`: shadow-xl
+- `apps/web/app/auth/onboarding/steps/ProfileCompletionStep.tsx`: shadow-xl
+- `apps/web/app/auth/onboarding/steps/PlanSelectionStep.tsx`: shadow-lg,shadow-md,shadow-sm
+- `apps/web/app/auth/onboarding/steps/FinalConfirmationStep.tsx`: shadow-xl
+- `apps/web/app/auth/onboarding/steps/OrganizationSetupStep.tsx`: shadow-lg,shadow-xl
+- `apps/web/app/(marketing)/contact/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/products/opendeck/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/products/atlvs/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/products/compare/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/products/coming-soon/page.tsx`: shadow-lg,shadow-xl
+- `apps/web/app/(marketing)/resources/documentation/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/resources/whitepapers/page.tsx`: shadow-lg,shadow-xl
+- `apps/web/app/(marketing)/resources/blog/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/resources/case-studies/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/resources/guides/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/resources/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/solutions/trade-shows-conferences/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/film-tv/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/immersive-experiences/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/community-cultural-events/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/health-wellness-events/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/concerts-festivals-tours/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/brand-activations/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/sporting-events-tournaments/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/corporate-community-events/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/hospitality-travel/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/themed-theatrical-entertainment/page.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/(marketing)/solutions/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/careers/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/partnerships/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/community/forums/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/community/partners/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/community/events/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/community/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/company/press/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/company/about/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/company/team/page.tsx`: shadow-lg
+- `apps/web/app/(marketing)/company/page.tsx`: shadow-lg
+- `apps/web/app/_components/ui/index.ts`: shadow-md
+- `apps/web/app/_components/lib/layouts.ts`: shadow-lg
+- `apps/web/app/_components/marketing/CTASection.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/PricingCard.tsx`: shadow-lg,shadow-md
+- `apps/web/app/_components/marketing/SocialProof.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/ProductHighlights.tsx`: shadow-2xl
+- `apps/web/app/_components/marketing/navigation/NavigationDropdown.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/CookieConsent.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/FeatureGrid.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/team/DepartmentCard.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/team/TeamMemberCard.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/team/LeadershipCard.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/HeroSection.tsx`: shadow-2xl,shadow-lg
+- `apps/web/app/_components/marketing/pricing/PricingToggle.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/pricing/AddOnCard.tsx`: shadow-lg
+- `apps/web/app/_components/marketing/pricing/FAQSection.tsx`: shadow-sm
+- `apps/web/app/_components/marketing/FeatureCard.tsx`: shadow-lg
+- `apps/web/app/_components/PerformanceMonitor.tsx`: shadow-lg
+- `apps/web/app/_components/nav/CommandPalette.tsx`: shadow-2xl
+- `apps/web/lib/sentry.ts`: shadow-lg
+
+### 7. Hardcoded Ring/Focus Colors
+Files using hardcoded ring colors instead of semantic tokens:
+
+- `.backup-v2-20250917-213524/packages/ui/src/atoms/Textarea.tsx`: ring-blue-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/architecture/DesignSystem.tsx`: ring-blue-500
+- `.backup-v2-20250917-213524/packages/ui/src/components/voice/VoiceSearch.tsx`: ring-blue-500
+- `.backup-remediation-20250917-214310/packages/ui/src/components/architecture/DesignSystem.tsx`: ring-blue-500
+- `packages/ui/src/atoms/Textarea.tsx`: ring-blue-500
+- `packages/ui/src/components/architecture/DesignSystem.tsx`: ring-blue-500
+- `packages/ui/src/components/voice/VoiceSearch.tsx`: ring-blue-500
+- `.backup-complete-20250917-215031/packages/ui/src/atoms/Textarea.tsx`: ring-blue-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/architecture/DesignSystem.tsx`: ring-blue-500
+- `.backup-complete-20250917-215031/packages/ui/src/components/voice/VoiceSearch.tsx`: ring-blue-500
+
+## Summary Statistics
+
+- **Text Color Violations**:       69 files
+- **Background Color Violations**:       49 files
+- **Border Color Violations**:       53 files
+- **Ring Color Violations**:       10 files
+- **Total Files with Violations**: 181 files
+
+## Recommended Actions
+
+1. Run `semantic-color-fix.sh` to automatically fix violations
+2. Review gradient implementations for proper class usage
+3. Ensure all titles use `text-foreground` not `text-accent`
+4. Replace all hardcoded colors with semantic tokens
+5. Update shadow utilities to use semantic shadow classes
+

@@ -1,0 +1,40 @@
+import { redirect } from 'next/navigation';
+import { cookies } from 'next/headers';
+import { createServerClient } from '@ghxstship/auth';
+import QualificationsClient from './QualificationsClient';
+
+export const metadata = { title: 'Companies · Qualifications' };
+
+export default async function CompaniesQualificationsPage() {
+  const cookieStore = cookies();
+  const supabase = createServerClient(cookieStore);
+  
+  const {
+    data: { user },
+    error: authError,
+  } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    redirect('/auth/login');
+  }
+
+  // Get organization ID from user metadata or session
+  const orgId = user.user_metadata?.organization_id || user.app_metadata?.organization_id;
+  
+  if (!orgId) {
+    redirect('/onboarding');
+  }
+
+  const translations = {
+    title: 'Company Qualifications',
+    subtitle: 'Track certifications, licenses, insurance, bonds and safety qualifications'
+  };
+
+  return (
+    <QualificationsClient 
+      user={user} 
+      orgId={orgId} 
+      translations={translations}
+    />
+  );
+}
