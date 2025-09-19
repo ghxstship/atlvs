@@ -91,10 +91,11 @@ export function NavigationDropdown({
       {/* Dropdown Menu */}
       <div
         className={cn(
-          "absolute left-0 top-full mt-xs w-48 rounded-md border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80 p-xs shadow-floating transition-all duration-200 z-[60]",
+          "absolute left-0 top-full mt-xs w-48 rounded-md border bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 p-xs shadow-lg transition-all duration-200",
+          "z-[var(--z-dropdown)] pointer-events-auto",
           activeDropdown === item.label
             ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 translate-y-1 invisible"
+            : "opacity-0 translate-y-1 invisible pointer-events-none"
         )}
       >
         {item.children?.map((child: any) => (

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Users, Target, Globe, Award, TrendingUp, Heart, Zap, Shield } from 'lucide-react';
+import { anton, typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'About Us - Built by People Who Actually Do This Stuff | GHXSTSHIP',
@@ -395,7 +396,7 @@ export default function AboutPage() {
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and press coverage' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             ].map((link: any) => (
-              <a key={link.title} href={product.href}>
+              <a key={link.title} href={link.href}>
                 <Card className="hover:shadow-floating transition-shadow group">
                   <CardContent className="p-lg text-center">
                     <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>

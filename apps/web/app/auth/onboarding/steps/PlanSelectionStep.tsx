@@ -3,9 +3,8 @@
 import { useState } from 'react';
 import { Card, CardContent, Button, Badge } from '@ghxstship/ui';
 import { Check, ArrowRight, ArrowLeft, Zap, Users, Building, Crown } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface PlanSelectionStepProps {
   onNext: () => void;

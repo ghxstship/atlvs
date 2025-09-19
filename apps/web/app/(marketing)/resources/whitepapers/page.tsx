@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Download, Lock, Calendar, Users, TrendingUp, Eye } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Whitepapers | GHXSTSHIP Resources',
@@ -249,7 +248,7 @@ export default function WhitepapersPage() {
                   </div>
                   
                   <Button 
-                    variant={paper.isPremium ? "primary" : "outline"}
+                    variant={paper.isPremium ? "default" : "outline"}
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >
                     {paper.isPremium ? 'Download Premium Report' : 'Download Free Report'}
@@ -333,7 +332,7 @@ export default function WhitepapersPage() {
                   </div>
                   
                   <Button 
-                    variant={paper.isPremium ? "primary" : "outline"} 
+                    variant={paper.isPremium ? "default" : "outline"} 
                     size="sm" 
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >

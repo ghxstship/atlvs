@@ -167,6 +167,28 @@ export type {
 } from './components/DataViews/types';
 
 // ==========================================
+// NAVIGATION VARIANTS
+// ==========================================
+
+export {
+  headerVariants,
+  sidebarVariants,
+  navigationItemVariants,
+  breadcrumbVariants,
+  dropdownVariants,
+  searchVariants,
+} from './components/Navigation/NavigationVariants';
+
+export type {
+  HeaderVariants,
+  SidebarVariants,
+  NavigationItemVariants,
+  BreadcrumbVariants,
+  DropdownVariants,
+  SearchVariants,
+} from './components/Navigation/NavigationVariants';
+
+// ==========================================
 // UTILITIES
 // ==========================================
 

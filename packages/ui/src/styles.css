@@ -537,6 +537,27 @@
     box-shadow: var(--pop-shadow-sm);
     transform: translate(2px, 2px);
   }
+
+  /* Enhanced hover effects for interactive elements */
+  .hover-lift:hover {
+    transform: translateY(-2px);
+    transition: all var(--motion-duration-fast) var(--motion-easing-standard);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+    transition: all var(--motion-duration-fast) var(--motion-easing-standard);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    transition: all var(--motion-duration-fast) var(--motion-easing-standard);
+  }
+
+  .hover-border:hover {
+    border-color: hsl(var(--primary));
+    transition: all var(--motion-duration-fast) var(--motion-easing-standard);
+  }
   
   /* Pop art button variants */
   .btn-pop {
@@ -743,6 +764,22 @@
   .stack-xl > * + * { margin-top: var(--space-8); }
   .stack-2xl > * + * { margin-top: var(--space-12); }
   .stack-3xl > * + * { margin-top: var(--space-16); }
+
+  /* Nested Element Spacing - Adds proper padding above nested elements */
+  .nested-spacing > * { padding-top: var(--space-2); }
+  .nested-spacing-sm > * { padding-top: var(--space-1); }
+  .nested-spacing-md > * { padding-top: var(--space-4); }
+  .nested-spacing-lg > * { padding-top: var(--space-6); }
+
+  /* Section Spacing - Ensures proper spacing between major sections */
+  .section-spacing { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+  .section-spacing-sm { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+  .section-spacing-lg { padding-top: var(--space-24); padding-bottom: var(--space-24); }
+
+  /* Content Spacing - For content within cards and containers */
+  .content-spacing > * + * { margin-top: var(--space-4); }
+  .content-spacing-sm > * + * { margin-top: var(--space-2); }
+  .content-spacing-lg > * + * { margin-top: var(--space-6); }
 
   .cluster-xs > * + * { margin-left: var(--space-1); }
   .cluster-sm > * + * { margin-left: var(--space-2); }

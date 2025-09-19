@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, TrendingUp, Users, DollarSign, Calendar, Lock, Eye, Award } from 'lucide-react';
+import { anton } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Case Studies | GHXSTSHIP Resources',
@@ -145,7 +146,7 @@ export default function CaseStudiesPage() {
             {industries.map((industry: any) => (
               <Badge 
                 key={industry} 
-                variant={industry === 'All Industries' ? 'primary' : 'outline'} 
+                variant={industry === 'All Industries' ? 'default' : 'outline'} 
                 className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm"
               >
                 {industry}
@@ -240,7 +241,7 @@ export default function CaseStudiesPage() {
                       </div>
                       
                       <Button 
-                        variant={study.isPremium ? "primary" : "outline"} 
+                        variant={study.isPremium ? "default" : "outline"} 
                         className="w-fit group-hover:translate-x-1 transition-transform"
                       >
                         {study.isPremium ? 'Unlock Full Study' : 'Read Case Study'}
@@ -307,7 +308,7 @@ export default function CaseStudiesPage() {
                   </div>
                   
                   <Button 
-                    variant={study.isPremium ? "primary" : "outline"} 
+                    variant={study.isPremium ? "default" : "outline"} 
                     size="sm" 
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >

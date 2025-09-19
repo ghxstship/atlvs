@@ -55,7 +55,7 @@ export function HeroSection() {
 
             {/* Main Headline */}
             <div className="stack-2xl">
-              <h1 className="text-display text-foreground uppercase glow-accent">
+              <h1 className="text-display text-foreground uppercase">
                 THE FUTURE OF
                 <br />
                 <span className="ghxstship-gradient bg-clip-text text-transparent">
@@ -104,14 +104,14 @@ export function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-xl">
+            <div className="flex flex-col sm:flex-row gap-md">
               <Link href="/auth/signup">
-                <Button variant="pop" className="w-full sm:w-auto group">
+                <Button variant="pop" size="lg" className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
-              <Button variant="outline" className="w-full sm:w-auto group">
+              <Button variant="outline" size="lg" className="w-full sm:w-auto group">
                 <Play className="mr-sm h-4 w-4" />
                 Watch Demo
               </Button>

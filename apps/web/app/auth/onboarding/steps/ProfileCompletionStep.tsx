@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import { Card, CardContent, Button, Avatar } from '@ghxstship/ui';
 import { User, Briefcase, MapPin, ArrowRight, ArrowLeft, Camera } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface ProfileCompletionStepProps {
   user;

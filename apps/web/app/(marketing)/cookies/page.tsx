@@ -1,7 +1,5 @@
 import { Metadata } from 'next';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Cookie Policy | GHXSTSHIP',

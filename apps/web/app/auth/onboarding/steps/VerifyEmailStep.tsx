@@ -3,13 +3,16 @@
 import { useState, useEffect } from 'react';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Mail, CheckCircle, RefreshCw } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface VerifyEmailStepProps {
-  user;
+  user: {
+    id: string;
+    email: string;
+    email_confirmed_at?: string;
+  };
   onNext: () => void;
   updateData: (data: any) => void;
 }
@@ -42,7 +45,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       if (error) throw error;
       setResendMessage('Verification email sent! Check your inbox.');
     } catch (error) {
-      setResendMessage(error.message || 'Failed to resend email');
+      setResendMessage(error instanceof Error ? error.message : 'Failed to resend email');
     } finally {
       setIsResending(false);
     }

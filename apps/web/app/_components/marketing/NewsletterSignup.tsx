@@ -67,11 +67,12 @@ export function NewsletterSignup({
   return (
     <form onSubmit={handleSubmit} className={cn(variants[variant], className)}>
       <div className="flex-1">
-        <UnifiedInput           type="email"
+        <Input 
+          type="email"
           value={email}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           placeholder={placeholder}
-          size="md"
+          size="default"
           disabled={isLoading}
           required
           error={error}
@@ -80,7 +81,7 @@ export function NewsletterSignup({
       </div>
       <Button 
         type="submit" 
-        size="md"
+        size="default"
         disabled={isLoading || !email}
         className={variant === 'inline' ? 'shrink-0' : ''}
       >

@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Check, CheckCircle, X, Minus, Zap, Users, Globe, Star, Shield, Clock, DollarSign } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Compare Products - ATLVS vs OPENDECK | GHXSTSHIP',

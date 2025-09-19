@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
-import { Anton } from 'next/font/google';
+import { anton } from '../../_components/lib/typography';
 import { Shield, Lock, Eye, Server, Users, FileCheck } from 'lucide-react';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Security | GHXSTSHIP',

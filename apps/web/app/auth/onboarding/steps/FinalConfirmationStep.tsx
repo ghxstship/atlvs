@@ -4,10 +4,9 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { CheckCircle, ArrowRight, Sparkles, Users, Building, CreditCard } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface FinalConfirmationStepProps {
   user;

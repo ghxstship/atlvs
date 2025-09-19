@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, Shield, CheckCircle, Play, Zap, Clock, FileText, Settings, MessageSquare } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'ATLVS - Production Management That Actually Works | GHXSTSHIP',

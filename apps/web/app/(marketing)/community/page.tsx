@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, MessageCircle, Users, Calendar, Trophy, ExternalLink, Github, Twitter, Youtube, Instagram, Twitch, MessageSquare } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Community - Production Pros Who Actually Help | GHXSTSHIP',

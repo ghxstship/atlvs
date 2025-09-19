@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Code, Zap, Lock, Search, BookOpen, ExternalLink } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Documentation | GHXSTSHIP Resources',
@@ -220,7 +219,7 @@ export default function DocumentationPage() {
                     </div>
                     
                     <Button 
-                      variant={section.isPremium ? "primary" : "outline"} 
+                      variant={section.isPremium ? "default" : "outline"} 
                       className="w-full group-hover:translate-x-1 transition-transform"
                     >
                       {section.isPremium ? 'Unlock Section' : 'Browse Section'}
@@ -277,7 +276,7 @@ export default function DocumentationPage() {
                       {doc.readTime} read
                     </span>
                     <Button 
-                      variant={doc.isPremium ? "primary" : "outline"} 
+                      variant={doc.isPremium ? "default" : "outline"} 
                       size="sm" 
                       className="group-hover:translate-x-1 transition-transform"
                     >
@@ -334,7 +333,7 @@ export default function DocumentationPage() {
                     {resource.description}
                   </p>
                   <Button 
-                    variant={resource.isPremium ? "primary" : "outline"} 
+                    variant={resource.isPremium ? "default" : "outline"} 
                     size="sm"
                   >
                     {resource.isPremium ? 'Get Access' : 'Explore'}

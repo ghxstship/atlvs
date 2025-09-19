@@ -3,10 +3,9 @@
 import { useState } from 'react';
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Building, Users, ArrowRight, ArrowLeft, Plus } from 'lucide-react';
-import { Anton } from 'next/font/google';
+import { anton } from '../../../_components/lib/typography';
 import { createBrowserClient } from '@supabase/ssr';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface OrganizationSetupStepProps {
   user;

@@ -1,10 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
-import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Globe, Zap, Shield, CheckCircle } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { ArrowRight, CheckCircle, Star, Users, Zap, Shield, Globe, BarChart3, Calendar, Briefcase, ShoppingBag } from 'lucide-react';
+import { anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Products - ATLVS & OPENDECK | GHXSTSHIP',

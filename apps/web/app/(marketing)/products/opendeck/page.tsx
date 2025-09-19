@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, ShoppingBag, Briefcase, Globe, Zap, CheckCircle, Play, Users, Star, Award, Search, Filter } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'OPENDECK - Find Talent That Actually Shows Up | GHXSTSHIP',

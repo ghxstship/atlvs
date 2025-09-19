@@ -86,14 +86,14 @@ export function MarketingHeader() {
           </nav>
 
           {/* Auth Buttons */}
-          <div className="hidden md:flex items-center cluster">
+          <div className="hidden md:flex items-center gap-md">
             <Link href="/auth/signin">
-              <Button>
+              <Button size="sm">
                 Sign In
               </Button>
             </Link>
             <Link href="/auth/signup">
-              <Button variant="outline">
+              <Button variant="outline" size="sm">
                 Sign Up
               </Button>
             </Link>

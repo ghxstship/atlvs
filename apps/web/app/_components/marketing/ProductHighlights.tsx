@@ -71,33 +71,33 @@ export function ProductHighlights() {
         {/* Product Cards */}
         <div className="grid lg:grid-cols-2 gap-2xl mb-xl">
           {products.map((product: any) => (
-            <Card key={product.id} className="group hover:shadow-popover transition-all duration-300 overflow-hidden">
+            <Card key={product.id} className="group hover-lift hover-glow transition-all duration-300 overflow-hidden border-2 hover-border">
               <div className={`h-2 bg-gradient-to-r ${product.gradient}`}></div>
               
-              <CardContent className="p-xl">
+              <CardContent className="p-2xl">
                 {/* Product Header */}
-                <div className="mb-md">
-                  <div className="flex items-center gap-sm mb-sm">
-                    <h3 className="font-title text-heading-3 text-heading-3">{product.name}</h3>
+                <div className="mb-xl">
+                  <div className="flex items-center gap-md mb-md">
+                    <h3 className="font-title text-heading-3">{product.name}</h3>
                     <Badge variant="secondary">
                       <span className="text-body-sm">Enterprise Ready</span>
                     </Badge>
                   </div>
-                  <p className="text-body form-label color-primary mb-sm">{product.tagline}</p>
+                  <p className="text-body form-label color-primary mb-md">{product.tagline}</p>
                   <p className="color-muted">{product.description}</p>
                 </div>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-md mb-md">
+                <div className="grid grid-cols-2 gap-lg mb-xl">
                   {product.features.map((feature: any) => {
                     const Icon = feature.icon;
                     return (
-                      <div key={feature.label} className="flex items-start gap-sm">
-                        <div className={`p-sm rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
-                          <Icon className="h-4 w-4 color-primary" />
+                      <div key={feature.label} className="flex items-start gap-md">
+                        <div className={`p-md rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
+                          <Icon className="h-5 w-5 color-primary" />
                         </div>
                         <div>
-                          <div className="form-label text-body-sm">{feature.label}</div>
+                          <div className="form-label text-body-sm mb-xs">{feature.label}</div>
                           <div className="text-body-sm color-muted">{feature.description}</div>
                         </div>
                       </div>
@@ -106,25 +106,25 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-sm mb-md p-md bg-secondary/30 rounded-lg">
+                <div className="grid grid-cols-3 gap-md mb-xl p-lg bg-secondary/30 rounded-lg">
                   {product.stats.map((stat: any) => (
                     <div key={stat.label} className="text-center">
-                      <div className="font-title text-body text-heading-3 color-foreground">{stat.value}</div>
+                      <div className="font-title text-heading-3 color-foreground">{stat.value}</div>
                       <div className="text-body-sm color-muted">{stat.label}</div>
                     </div>
                   ))}
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-sm">
+                <div className="flex flex-col sm:flex-row gap-md">
                   <a href="#" className="flex-1">
-                    <Button className="w-full group">
+                    <Button className="w-full group" size="lg">
                       Learn More
                       <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </a>
                   <Link href="/auth/signup">
-                    <Button variant="outline" className="w-full sm:w-auto">
+                    <Button variant="outline" size="lg" className="w-full sm:w-auto">
                       Try Free
                     </Button>
                   </Link>
@@ -137,33 +137,33 @@ export function ProductHighlights() {
         {/* Integration Highlight */}
         <div className="text-center">
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-xl">
-              <div className="flex items-center justify-center gap-sm mb-md">
-                <div className="font-title text-heading-4 text-heading-3">ATLVS</div>
-                <div className="flex items-center gap-sm">
+            <CardContent className="p-2xl">
+              <div className="flex items-center justify-center gap-md mb-xl">
+                <div className="font-title text-heading-3">ATLVS</div>
+                <div className="flex items-center gap-md">
                   <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-                  <Zap className="h-5 w-5 color-primary" />
+                  <Zap className="h-6 w-6 color-primary" />
                   <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
                 </div>
-                <div className="font-title text-heading-4 text-heading-3">OPENDECK</div>
+                <div className="font-title text-heading-3">OPENDECK</div>
               </div>
               
-              <h3 className="font-title text-heading-3 text-heading-3 mb-sm">
+              <h3 className="font-title text-heading-3 mb-lg">
                 SEAMLESS INTEGRATION
               </h3>
-              <p className="color-muted mb-md max-w-2xl mx-auto">
+              <p className="color-muted mb-xl max-w-2xl mx-auto">
                 When used together, ATLVS and OPENDECK create a unified ecosystem where project management 
                 meets talent acquisition, enabling unprecedented efficiency and collaboration.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-sm justify-center">
+              <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/products/compare">
-                  <Button variant="outline">
+                  <Button variant="outline" size="lg">
                     Compare Products
                   </Button>
                 </Link>
                 <Link href="/auth/signup">
-                  <Button>
+                  <Button size="lg">
                     Start Complete Suite
                     <ArrowRight className="ml-sm h-4 w-4" />
                   </Button>
