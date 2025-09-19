@@ -27,14 +27,14 @@ export function FeatureCard({
   variant = 'default'
 }: FeatureCardProps) {
   const variants = {
-    default: 'p-lg',
-    hover: 'p-lg group hover:shadow-floating transition-all duration-300 hover:-translate-y-1',
-    compact: 'p-md',
+    default: '',
+    hover: 'group hover:shadow-floating transition-all duration-300 hover:-translate-y-1',
+    compact: '',
   };
 
   return (
     <Card className={cn(variants[variant], className)}>
-      <CardContent className="p-0">
+      <CardContent className="p-lg">
         {Icon && (
           <div className={cn(
             'inline-flex items-center justify-center w-12 h-12 rounded-lg mb-sm',
@@ -81,8 +81,8 @@ export function StatsCard({
   className
 }: StatsCardProps) {
   return (
-    <Card className={cn('p-lg text-center', className)}>
-      <CardContent className="p-0">
+    <Card className={cn('text-center', className)}>
+      <CardContent className="p-lg">
         {Icon && (
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 mb-sm">
             <Icon className="h-6 w-6 color-primary" />
@@ -128,8 +128,8 @@ export function TestimonialCard({
   className
 }: TestimonialCardProps) {
   return (
-    <Card className={cn('p-lg', className)}>
-      <CardContent className="p-0">
+    <Card className={cn(className)}>
+      <CardContent className="p-lg">
         <blockquote className="text-body mb-md italic">
           "{quote}"
         </blockquote>

@@ -21,7 +21,7 @@ const socialLinks = [
 
 export function SocialLinks() {
   return (
-    <div className="flex items-center cluster">
+    <div className="flex items-center gap-md">
       {socialLinks.map((social: any) => {
         const Icon = social.icon;
         return (

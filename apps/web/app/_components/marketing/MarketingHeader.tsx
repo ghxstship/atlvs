@@ -8,9 +8,7 @@ import { Button } from '@ghxstship/ui';
 import { headerVariants } from '@ghxstship/ui';
 import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../lib/typography';
 import { navigation } from '../lib/navigation';
 import { NavigationDropdown } from './navigation/NavigationDropdown';
 import { MobileMenu } from './navigation/MobileMenu';
@@ -47,7 +45,7 @@ export function MarketingHeader() {
   }, []);
 
   return (
-    <header className={headerVariants({ variant: 'glass', scrolled: isScrolled })}>
+    <header className={cn(headerVariants({ variant: 'glass', scrolled: isScrolled }), 'sticky top-0 z-50')}>
       <div className="container mx-auto px-lg">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
