@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -75,7 +76,7 @@ export default function CreateInspectionClient({
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create inspection');
     } finally {
       setLoading(false);
@@ -114,7 +115,7 @@ export default function CreateInspectionClient({
             <input
               id="title"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter inspection title..."
               {...form.register('title')}
             />
@@ -131,7 +132,7 @@ export default function CreateInspectionClient({
             </label>
             <select
               id="type"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('type')}
             >
               <option value="pre_event">Pre-Event Inspection</option>
@@ -151,7 +152,7 @@ export default function CreateInspectionClient({
               <input
                 id="scheduled_at"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('scheduled_at')}
               />
             </div>
@@ -163,7 +164,7 @@ export default function CreateInspectionClient({
               <input
                 id="inspector_name"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Inspector name..."
                 {...form.register('inspector_name')}
               />
@@ -176,11 +177,11 @@ export default function CreateInspectionClient({
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project (organization-wide inspection)</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>
@@ -195,7 +196,7 @@ export default function CreateInspectionClient({
             <textarea
               id="notes"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Additional notes about this inspection..."
               {...form.register('notes')}
             />

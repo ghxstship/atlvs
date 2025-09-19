@@ -1,8 +1,9 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Input, Card, CardHeader, CardContent, Alert } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, CardHeader, CardContent, Alert } from '@ghxstship/ui';
 import { Phone, Mail, User, AlertTriangle, Plus, Edit2, Trash2, Save, X } from 'lucide-react';
 import { useToast } from '@ghxstship/ui';
 
@@ -175,7 +176,7 @@ export default function EmergencyContactsClient() {
     <div className="stack-lg">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Emergency Contacts</h2>
+          <h2 className="text-heading-3">Emergency Contacts</h2>
           <p className="color-muted">Manage your emergency contact information</p>
         </div>
         <Button onClick={handleAdd} disabled={isAdding}>
@@ -188,7 +189,7 @@ export default function EmergencyContactsClient() {
         <Alert>
           <AlertTriangle className="h-4 w-4" />
           <div>
-            <h3 className="text-heading-4">No emergency contacts</h3>
+            <h3 className="text-body text-heading-4">No emergency contacts</h3>
             <p className="text-body-sm">Add at least one emergency contact for safety purposes.</p>
           </div>
         </Alert>
@@ -197,44 +198,39 @@ export default function EmergencyContactsClient() {
       {isAdding && (
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">New Emergency Contact</h3>
+            <h3 className="text-body text-heading-4">New Emergency Contact</h3>
           </CardHeader>
           <CardContent className="stack-md">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <Input
-                label="Full Name"
+              <UnifiedInput                 label="Full Name"
                 value={formData.name || ''}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="John Doe"
                 required
               />
-              <Input
-                label="Relationship"
+              <UnifiedInput                 label="Relationship"
                 value={formData.relationship || ''}
-                onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, relationship: e.target.value })}
                 placeholder="Spouse, Parent, Friend, etc."
                 required
               />
-              <Input
-                label="Primary Phone"
+              <UnifiedInput                 label="Primary Phone"
                 type="tel"
                 value={formData.phone_primary || ''}
-                onChange={(e) => setFormData({ ...formData, phone_primary: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_primary: e.target.value })}
                 placeholder="+1 (555) 123-4567"
                 required
               />
-              <Input
-                label="Secondary Phone"
+              <UnifiedInput                 label="Secondary Phone"
                 type="tel"
                 value={formData.phone_secondary || ''}
-                onChange={(e) => setFormData({ ...formData, phone_secondary: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_secondary: e.target.value })}
                 placeholder="+1 (555) 987-6543"
               />
-              <Input
-                label="Email"
+              <UnifiedInput                 label="Email"
                 type="email"
                 value={formData.email || ''}
-                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
                 placeholder="contact@example.com"
               />
               <div className="flex items-center cluster-sm">
@@ -242,7 +238,7 @@ export default function EmergencyContactsClient() {
                   type="checkbox"
                   id="is_primary"
                   checked={formData.is_primary || false}
-                  onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, is_primary: e.target.checked })}
                   className="rounded border-border"
                 />
                 <label htmlFor="is_primary" className="text-body-sm">
@@ -250,10 +246,9 @@ export default function EmergencyContactsClient() {
                 </label>
               </div>
             </div>
-            <Input
-              label="Notes"
+            <UnifiedInput               label="Notes"
               value={formData.notes || ''}
-              onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, notes: e.target.value })}
               placeholder="Additional information..."
             />
             <div className="flex justify-end cluster-sm">
@@ -271,49 +266,44 @@ export default function EmergencyContactsClient() {
       )}
 
       <div className="stack-md">
-        {contacts.map((contact) => (
+        {contacts.map((contact: any) => (
           <Card key={contact.id} className={contact.is_primary ? 'ring-2 ring-primary' : ''}>
             <CardContent className="p-lg">
               {editingId === contact.id ? (
                 <div className="stack-md">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                    <Input
-                      label="Full Name"
+                    <UnifiedInput                       label="Full Name"
                       value={formData.name || ''}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, name: e.target.value })}
                       required
                     />
-                    <Input
-                      label="Relationship"
+                    <UnifiedInput                       label="Relationship"
                       value={formData.relationship || ''}
-                      onChange={(e) => setFormData({ ...formData, relationship: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, relationship: e.target.value })}
                       required
                     />
-                    <Input
-                      label="Primary Phone"
+                    <UnifiedInput                       label="Primary Phone"
                       type="tel"
                       value={formData.phone_primary || ''}
-                      onChange={(e) => setFormData({ ...formData, phone_primary: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_primary: e.target.value })}
                       required
                     />
-                    <Input
-                      label="Secondary Phone"
+                    <UnifiedInput                       label="Secondary Phone"
                       type="tel"
                       value={formData.phone_secondary || ''}
-                      onChange={(e) => setFormData({ ...formData, phone_secondary: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, phone_secondary: e.target.value })}
                     />
-                    <Input
-                      label="Email"
+                    <UnifiedInput                       label="Email"
                       type="email"
                       value={formData.email || ''}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, email: e.target.value })}
                     />
                     <div className="flex items-center cluster-sm">
                       <input
                         type="checkbox"
                         id={`is_primary_${contact.id}`}
                         checked={formData.is_primary || false}
-                        onChange={(e) => setFormData({ ...formData, is_primary: e.target.checked })}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, is_primary: e.target.checked })}
                         className="rounded border-border"
                       />
                       <label htmlFor={`is_primary_${contact.id}`} className="text-body-sm">
@@ -321,10 +311,9 @@ export default function EmergencyContactsClient() {
                       </label>
                     </div>
                   </div>
-                  <Input
-                    label="Notes"
+                  <UnifiedInput                     label="Notes"
                     value={formData.notes || ''}
-                    onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, notes: e.target.value })}
                   />
                   <div className="flex justify-end cluster-sm">
                     <Button variant="outline" onClick={handleCancel}>
@@ -344,13 +333,13 @@ export default function EmergencyContactsClient() {
                       <User className="w-5 h-5 color-muted" />
                       <span className="text-heading-4 text-body">{contact.name}</span>
                       {contact.is_primary && (
-                        <span className="px-sm py-xs bg-primary/10 color-primary text-body-sm rounded-full">
+                        <span className=" px-md py-xs bg-primary/10 color-primary text-body-sm rounded-full">
                           Primary
                         </span>
                       )}
                     </div>
                     <p className="text-body-sm color-muted">{contact.relationship}</p>
-                    <div className="stack-xs">
+                    <div className="stack-md">
                       <div className="flex items-center cluster-sm">
                         <Phone className="w-4 h-4 color-muted" />
                         <span className="text-body-sm">{contact.phone_primary}</span>

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { Badge } from '@ghxstship/ui';
 import { Shield, Award, Users, Globe, Zap, CheckCircle } from 'lucide-react';
 
@@ -66,23 +67,23 @@ const metrics = [
 
 export function TrustSignals() {
   return (
-    <section className="py-xl bg-background border-b">
-      <div className="container mx-auto px-lg px-md">
+    <section className="py-4xl bg-background border-b">
+      <div className="container mx-auto px-lg">
         {/* Trust Badges */}
         <div className="text-center mb-lg">
           <p className="text-body-sm color-muted mb-md uppercase tracking-wide">
             TRUSTED BY INDUSTRY LEADERS
           </p>
           <div className="flex flex-wrap justify-center items-center gap-xl">
-            {trustBadges.map((badge) => {
+            {trustBadges.map((badge: any) => {
               const Icon = badge.icon;
               return (
                 <div key={badge.label} className="flex items-center gap-xl color-muted">
                   <Icon className="h-5 w-5" />
-                  <div className="text-body-sm">
+                  <span className="text-body-sm">
                     <span className="text-heading-4 color-foreground">{badge.label}</span>
                     <span className="ml-xs">{badge.description}</span>
-                  </div>
+                  </span>
                 </div>
               );
             })}
@@ -92,7 +93,7 @@ export function TrustSignals() {
         {/* Client Logos */}
         <div className="mb-lg">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-xl items-center opacity-60 hover:opacity-80 transition-opacity">
-            {clientLogos.map((client) => (
+            {clientLogos.map((client: any) => (
               <div key={client.name} className="flex items-center justify-center">
                 <div className="w-24 h-12 bg-secondary/30 rounded-lg flex items-center justify-center">
                   <span className="text-body-sm form-label color-muted">
@@ -106,7 +107,7 @@ export function TrustSignals() {
 
         {/* Key Metrics */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
-          {metrics.map((metric) => {
+          {metrics.map((metric: any) => {
             const Icon = metric.icon;
             return (
               <div key={metric.label} className="text-center">

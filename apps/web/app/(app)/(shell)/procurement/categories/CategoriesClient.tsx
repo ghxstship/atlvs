@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input } from '@ghxstship/ui';
+import { Card, Badge, Button, UnifiedInput } from '@ghxstship/ui';
 import { animationPresets } from "../../../../_components/ui"
 import { Tag, Search, Filter, Package, Wrench, Edit } from 'lucide-react';
 
@@ -125,10 +126,9 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
         <div className="flex-1">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-            <Input
-              placeholder="Search categories..."
+            <UnifiedInput               placeholder="Search categories..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
               className="pl-2xl"
             />
           </div>
@@ -137,8 +137,8 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
         <div className="flex gap-sm">
           <select
             value={typeFilter}
-            onChange={(e) => setTypeFilter(e.target.value as any)}
-            className="px-sm py-sm border border-input rounded-md bg-background"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value as any)}
+            className=" px-md py-sm border border-input rounded-md bg-background"
           >
             <option value="all">All Types</option>
             <option value="product">Products</option>
@@ -148,8 +148,8 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
           
           <select
             value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value as any)}
-            className="px-sm py-sm border border-input rounded-md bg-background"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as any)}
+            className=" px-md py-sm border border-input rounded-md bg-background"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -172,7 +172,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-          {filteredCategories.map((category) => (
+          {filteredCategories.map((category: any) => (
             <Card
               key={category.id}
               className={`p-lg ${animationPresets.cardInteractive}`}

@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Star, MessageSquare, Calendar, User, ThumbsUp } from 'lucide-react';
 
@@ -261,18 +262,17 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
+                <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
             </div>
             <select
               value={selectedRating}
-              onChange={(e) => setSelectedRating(e.target.value)}
-              className="px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedRating(e.target.value)}
+              className=" px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allRatings')}</option>
               <option value="5">5 {t('stars')}</option>
@@ -293,9 +293,8 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               <label className="block text-body-sm form-label color-foreground mb-xs">
                 {t('endorsedPerson')}
               </label>
-              <Input
-                value={newEndorsement.endorsedPersonId}
-                onChange={(e) => setNewEndorsement(prev => ({ ...prev, endorsedPersonId: e.target.value }))}
+              <UnifiedInput                 value={newEndorsement.endorsedPersonId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement(prev => ({ ...prev, endorsedPersonId: e.target.value }))}
                 placeholder={t('selectPerson')}
               />
             </div>
@@ -322,9 +321,9 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               </label>
               <textarea
                 value={newEndorsement.message}
-                onChange={(e) => setNewEndorsement(prev => ({ ...prev, message: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement(prev => ({ ...prev, message: e.target.value }))}
                 placeholder={t('messagePlaceholder')}
-                className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 rows={4}
               />
             </div>
@@ -342,7 +341,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
 
       {/* Endorsements List */}
       <div className="stack-md">
-        {filteredEndorsements.map((endorsement) => (
+        {filteredEndorsements.map((endorsement: any) => (
           <Card key={endorsement.id}>
             <div className="p-md">
               <div className="flex items-start justify-between mb-sm">

@@ -3,8 +3,8 @@
 import React, { useState, useCallback } from 'react';
 // Avoid importing Supabase types to keep UI package dependency-free
 // type SupabaseClient = any;
-import { Button } from '../Button';
-import { Input } from '../Input';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
 import { Badge } from '../Badge';
 import { 
   Plus, 
@@ -20,8 +20,8 @@ import {
   Eye,
   Copy
 } from 'lucide-react';
-import { DataRecord, FieldConfig } from './types';
 import { SchemaValidationFramework } from './SchemaValidationFramework';
+import { DataRecord, FieldConfig, ValidationError } from '../../types/data-views';
 
 interface CRUDOperationsFrameworkProps {
   supabase: any;
@@ -40,12 +40,6 @@ interface CRUDOperationsFrameworkProps {
   className?: string;
 }
 
-interface ValidationError {
-  field: string;
-  message: string;
-  type: 'required' | 'type' | 'constraint' | 'foreign_key' | 'unique';
-  value?: any;
-}
 
 interface CRUDOperation {
   type: 'create' | 'update' | 'delete' | 'bulk_create' | 'bulk_update' | 'bulk_delete';
@@ -357,7 +351,7 @@ export function CRUDOperationsFramework({
   }, [permissions.create, handleCreate]);
 
   // Render field input
-  const renderFieldInput = (field: FieldConfig, value: any, onChange: (value: any) => void) => {
+  const renderFieldInput = (field: any, value: any, onChange: (value: any) => void) => {
     const error = validationErrors.find(e => e.field === field.key);
     
     switch (field.type) {
@@ -368,7 +362,7 @@ export function CRUDOperationsFramework({
           <Input
             type={field.type}
             value={value || ''}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e: any) => onChange(e.target.value)}
             placeholder={field.label}
             className={error ? 'border-destructive' : ''}
             required={field.required}
@@ -379,7 +373,7 @@ export function CRUDOperationsFramework({
           <Input
             type="number"
             value={value || ''}
-            onChange={(e) => onChange(Number(e.target.value))}
+            onChange={(e: any) => onChange(Number(e.target.value))}
             placeholder={field.label}
             className={error ? 'border-destructive' : ''}
             required={field.required}
@@ -390,7 +384,7 @@ export function CRUDOperationsFramework({
           <input
             type="checkbox"
             checked={value || false}
-            onChange={(e) => onChange(e.target.checked)}
+            onChange={(e: any) => onChange(e.target.checked)}
             className="rounded border-border"
           />
         );
@@ -399,7 +393,7 @@ export function CRUDOperationsFramework({
           <Input
             type="date"
             value={value ? new Date(value).toISOString().split('T')[0] : ''}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e: any) => onChange(e.target.value)}
             className={error ? 'border-destructive' : ''}
             required={field.required}
           />
@@ -408,7 +402,7 @@ export function CRUDOperationsFramework({
         return (
           <Input
             value={value || ''}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e: any) => onChange(e.target.value)}
             placeholder={field.label}
             className={error ? 'border-destructive' : ''}
             required={field.required}
@@ -494,8 +488,8 @@ export function CRUDOperationsFramework({
                   {field.label}
                   {field.required && <span className="text-destructive ml-xs">*</span>}
                 </label>
-                {renderFieldInput(field, newRecord[field.key], (value) => 
-                  setNewRecord(prev => ({ ...prev, [field.key]: value }))
+                {renderFieldInput(field, newRecord[field.key], (value: any) => 
+                  setNewRecord((prev: DataRecord) => ({ ...prev, [field.key]: value }))
                 )}
               </div>
             ))}
@@ -538,7 +532,7 @@ export function CRUDOperationsFramework({
                   <input
                     type="checkbox"
                     checked={selectedRecords.size === data.length && data.length > 0}
-                    onChange={(e) => {
+                    onChange={(e: any) => {
                       if (e.target.checked) {
                         setSelectedRecords(new Set(data.map(r => r.id)));
                       } else {
@@ -565,7 +559,7 @@ export function CRUDOperationsFramework({
                     <input
                       type="checkbox"
                       checked={selectedRecords.has(record.id)}
-                      onChange={(e) => {
+                      onChange={(e: any) => {
                         const newSelected = new Set(selectedRecords);
                         if (e.target.checked) {
                           newSelected.add(record.id);
@@ -580,8 +574,8 @@ export function CRUDOperationsFramework({
                   {fields.map(field => (
                     <td key={field.key} className="px-md py-sm text-sm text-foreground">
                       {editingRecord?.id === record.id ? (
-                        renderFieldInput(field, editingRecord[field.key], (value) =>
-                          setEditingRecord(prev => prev ? { ...prev, [field.key]: value } : null)
+                        renderFieldInput(field, editingRecord[field.key], (value: any) =>
+                          setEditingRecord((prev: DataRecord | null) => prev ? { ...prev, [field.key]: value } : null)
                         )
                       ) : (
                         <span>{String(record[field.key] || '')}</span>
@@ -593,7 +587,7 @@ export function CRUDOperationsFramework({
                       {editingRecord?.id === record.id ? (
                         <>
                           <Button
-                            size="sm"
+                            
                             variant="ghost"
                             onClick={() => {
                               setEditingRecord(null);
@@ -603,7 +597,7 @@ export function CRUDOperationsFramework({
                             <X className="h-3 w-3" />
                           </Button>
                           <Button
-                            size="sm"
+                            
                             onClick={() => handleUpdate(record.id, editingRecord)}
                             disabled={isLoading}
                           >
@@ -613,13 +607,13 @@ export function CRUDOperationsFramework({
                       ) : (
                         <>
                           {permissions.read && (
-                            <Button size="sm" variant="ghost">
+                            <Button  variant="ghost">
                               <Eye className="h-3 w-3" />
                             </Button>
                           )}
                           {permissions.update && (
                             <Button
-                              size="sm"
+                              
                               variant="ghost"
                               onClick={() => setEditingRecord(record)}
                             >
@@ -628,7 +622,7 @@ export function CRUDOperationsFramework({
                           )}
                           {permissions.create && (
                             <Button
-                              size="sm"
+                              
                               variant="ghost"
                               onClick={() => handleDuplicate(record)}
                             >
@@ -637,7 +631,7 @@ export function CRUDOperationsFramework({
                           )}
                           {permissions.delete && (
                             <Button
-                              size="sm"
+                              
                               variant="ghost"
                               onClick={() => handleDelete(record.id)}
                               disabled={isLoading}

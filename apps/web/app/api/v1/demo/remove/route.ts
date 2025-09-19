@@ -78,7 +78,7 @@ export async function DELETE(request: NextRequest) {
       message: 'Demo data removed successfully'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Demo removal error:', error);
     return NextResponse.json({ 
       error: 'Failed to remove demo data',

@@ -1,9 +1,9 @@
 'use client';
 
+
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, DollarSign, Calendar, Target } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -149,9 +149,8 @@ export default function CreateBudgetClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Budget Name *
             </label>
-            <Input
-              value={formData.name}
-              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+            <UnifiedInput               value={formData.name}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
               placeholder="e.g., Q1 Marketing Budget, Project Alpha Budget"
               required
             />
@@ -163,7 +162,7 @@ export default function CreateBudgetClient({
             </label>
             <Textarea
               value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Describe the purpose and scope of this budget..."
               rows={3}
             />
@@ -176,10 +175,9 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   value={formData.amount || ''}
-                  onChange={(e) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                   className="pl-2xl"
                   min="0"
@@ -200,7 +198,7 @@ export default function CreateBudgetClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -217,7 +215,7 @@ export default function CreateBudgetClient({
             </label>
             <Select
               value={formData.category}
-              onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
+              onValueChange={(value: any) => setFormData(prev => ({ ...prev, category: value }))}
             >
               <option value="general">General</option>
               <option value="marketing">Marketing</option>
@@ -237,10 +235,9 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.startDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                   className="pl-2xl"
                 />
               </div>
@@ -252,10 +249,9 @@ export default function CreateBudgetClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.endDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   className="pl-2xl"
                   min={formData.startDate}
                 />

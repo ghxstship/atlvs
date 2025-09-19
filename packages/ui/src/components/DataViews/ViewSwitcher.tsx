@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { useDataView } from './DataViewProvider';
 import { ViewType } from './types';
 import { 
@@ -66,7 +66,7 @@ export function ViewSwitcher({
 
   return (
     <div className={containerClasses} role="tablist" aria-label="View switcher">
-      {availableViews.map((viewType) => {
+      {availableViews.map((viewType: any) => {
         const Icon = viewIcons[viewType];
         const isActive = state.type === viewType;
         

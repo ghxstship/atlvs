@@ -38,7 +38,7 @@ export function SignUpForm() {
       
       // Redirect to onboarding flow after successful signup
       window.location.href = '/auth/onboarding?step=verify-email';
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Signup error');
     } finally {
       setPending(false);
@@ -53,7 +53,7 @@ export function SignUpForm() {
         options: { redirectTo }
       });
       if (error) throw error;
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Google OAuth error');
       setPending(false);
     }
@@ -75,7 +75,7 @@ export function SignUpForm() {
           label="Full Name"
           placeholder="Enter your full name"
           value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFullName(e.target.value)}
           required
           autoComplete="name"
         />
@@ -87,7 +87,7 @@ export function SignUpForm() {
           label="Email Address"
           placeholder="Enter your email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           required
           autoComplete="email"
         />
@@ -99,14 +99,14 @@ export function SignUpForm() {
           label="Password"
           placeholder="Create a strong password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           required
           autoComplete="new-password"
           showPassword={showPassword}
           onTogglePassword={() => setShowPassword(!showPassword)}
         />
         
-        <div className="cluster-xs">
+        <div className="cluster">
           <input
             type="checkbox"
             id="terms"

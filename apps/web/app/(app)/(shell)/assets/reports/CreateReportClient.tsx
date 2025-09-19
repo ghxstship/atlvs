@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   FileText,
   Calendar,
@@ -197,7 +191,7 @@ export default function CreateReportClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <FileText className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Basic Information</h3>
+            <h3 className="text-body text-heading-4">Basic Information</h3>
           </div>
           
           <div className="stack-md">
@@ -205,9 +199,8 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Report Name *
               </label>
-              <Input
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
+              <UnifiedInput                 value={formData.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter report name"
                 required
               />
@@ -219,7 +212,7 @@ export default function CreateReportClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Brief description of the report"
                 rows={3}
               />
@@ -233,7 +226,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value) => handleInputChange('type', value)}
+                  onValueChange={(value: any) => handleInputChange('type', value)}
                 >
                   {REPORT_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -249,7 +242,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.format}
-                  onValueChange={(value) => handleInputChange('format', value)}
+                  onValueChange={(value: any) => handleInputChange('format', value)}
                 >
                   {REPORT_FORMATS.map(format => (
                     <option key={format.value} value={format.value}>
@@ -266,7 +259,7 @@ export default function CreateReportClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Calendar className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Scheduling</h3>
+            <h3 className="text-body text-heading-4">Scheduling</h3>
           </div>
           
           <div className="stack-md">
@@ -277,7 +270,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.frequency}
-                  onValueChange={(value) => handleInputChange('frequency', value)}
+                  onValueChange={(value: any) => handleInputChange('frequency', value)}
                 >
                   {REPORT_FREQUENCIES.map(frequency => (
                     <option key={frequency.value} value={frequency.value}>
@@ -293,7 +286,7 @@ export default function CreateReportClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {REPORT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -308,10 +301,9 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Scheduled Date/Time
               </label>
-              <Input
-                type="datetime-local"
+              <UnifiedInput                 type="datetime-local"
                 value={formData.scheduledDate}
-                onChange={(e) => handleInputChange('scheduledDate', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('scheduledDate', e.target.value)}
               />
             </div>
 
@@ -319,9 +311,8 @@ export default function CreateReportClient({
               <label className="block text-body-sm form-label mb-xs">
                 Recipients
               </label>
-              <Input
-                value={formData.recipients}
-                onChange={(e) => handleInputChange('recipients', e.target.value)}
+              <UnifiedInput                 value={formData.recipients}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('recipients', e.target.value)}
                 placeholder="Email addresses separated by commas"
               />
             </div>
@@ -332,7 +323,7 @@ export default function CreateReportClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Filter className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Parameters & Filters</h3>
+            <h3 className="text-body text-heading-4">Parameters & Filters</h3>
           </div>
           
           <div className="stack-md">
@@ -342,7 +333,7 @@ export default function CreateReportClient({
               </label>
               <Textarea
                 value={formData.parameters}
-                onChange={(e) => handleInputChange('parameters', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('parameters', e.target.value)}
                 placeholder="JSON format parameters for report generation"
                 rows={3}
               />
@@ -354,7 +345,7 @@ export default function CreateReportClient({
               </label>
               <Textarea
                 value={formData.filters}
-                onChange={(e) => handleInputChange('filters', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('filters', e.target.value)}
                 placeholder="Filters to apply to the report data"
                 rows={3}
               />
@@ -366,7 +357,7 @@ export default function CreateReportClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about this report"
                 rows={3}
               />

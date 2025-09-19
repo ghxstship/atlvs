@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { BookOpen, Plus, Save, X, Package, Wrench } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -307,8 +307,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Name *
                 </label>
-                <Input
-                  {...register('name')}
+                <UnifiedInput                   {...register('name')}
                   placeholder={`Enter ${selectedType} name`}
                   error={errors.name?.message}
                 />
@@ -320,10 +319,10 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 </label>
                 <select
                   {...register('category')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select category</option>
-                  {filteredCategories.map((category) => (
+                  {filteredCategories.map((category: any) => (
                     <option key={category.id} value={category.name}>
                       {category.name}
                     </option>
@@ -337,7 +336,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 </label>
                 <select
                   {...register('status')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -351,8 +350,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       Price
                     </label>
-                    <Input
-                      {...register('price', { valueAsNumber: true })}
+                    <UnifiedInput                       {...register('price', { valueAsNumber: true })}
                       type="number"
                       step="0.01"
                       min="0"
@@ -364,8 +362,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       SKU
                     </label>
-                    <Input
-                      {...register('sku')}
+                    <UnifiedInput                       {...register('sku')}
                       placeholder="Product SKU"
                     />
                   </div>
@@ -376,8 +373,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     <label className="block text-body-sm form-label mb-sm">
                       Rate
                     </label>
-                    <Input
-                      {...register('rate', { valueAsNumber: true })}
+                    <UnifiedInput                       {...register('rate', { valueAsNumber: true })}
                       type="number"
                       step="0.01"
                       min="0"
@@ -391,7 +387,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     </label>
                     <select
                       {...register('unit')}
-                      className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                      className="w-full  px-md py-sm border border-input rounded-md bg-background"
                     >
                       <option value="hour">Hour</option>
                       <option value="day">Day</option>
@@ -410,7 +406,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 </label>
                 <select
                   {...register('currency')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -425,10 +421,10 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 </label>
                 <select
                   {...register('supplier')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select vendor</option>
-                  {vendors.map((vendor) => (
+                  {vendors.map((vendor: any) => (
                     <option key={vendor.id} value={vendor.name}>
                       {vendor.name}
                     </option>
@@ -462,8 +458,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Tags
                 </label>
-                <Input
-                  {...register('tags')}
+                <UnifiedInput                   {...register('tags')}
                   placeholder="Comma-separated tags for easier searching"
                 />
               </div>

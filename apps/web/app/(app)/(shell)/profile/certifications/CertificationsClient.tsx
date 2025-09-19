@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Award, Calendar, ExternalLink, Trash2 } from 'lucide-react';
 
 interface Certification {
@@ -172,7 +173,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <Award className="h-5 w-5" />
-          <h3 className="text-heading-4">Certifications</h3>
+          <h3 className="text-body text-heading-4">Certifications</h3>
         </div>
         <Button onClick={() => setShowAddForm(true)}>
           <Plus className="h-4 w-4 mr-sm" />
@@ -189,54 +190,48 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Certification Name *</label>
-                <Input
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                <UnifiedInput                   value={formData.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="AWS Solutions Architect"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Issuing Organization *</label>
-                <Input
-                  value={formData.issuing_organization}
-                  onChange={(e) => setFormData(prev => ({ ...prev, issuing_organization: e.target.value }))}
+                <UnifiedInput                   value={formData.issuing_organization}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issuing_organization: e.target.value }))}
                   placeholder="Amazon Web Services"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Certification Number</label>
-                <Input
-                  value={formData.certification_number}
-                  onChange={(e) => setFormData(prev => ({ ...prev, certification_number: e.target.value }))}
+                <UnifiedInput                   value={formData.certification_number}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, certification_number: e.target.value }))}
                   placeholder="AWS-SAA-123456"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Issue Date</label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.issue_date}
-                  onChange={(e) => setFormData(prev => ({ ...prev, issue_date: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issue_date: e.target.value }))}
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Expiry Date</label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.expiry_date}
-                  onChange={(e) => setFormData(prev => ({ ...prev, expiry_date: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expiry_date: e.target.value }))}
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Verification URL</label>
-                <Input
-                  value={formData.verification_url}
-                  onChange={(e) => setFormData(prev => ({ ...prev, verification_url: e.target.value }))}
+                <UnifiedInput                   value={formData.verification_url}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, verification_url: e.target.value }))}
                   placeholder="https://verify.aws.com/..."
                 />
               </div>
@@ -246,8 +241,8 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
               <label className="text-body-sm form-label">Notes</label>
               <textarea
                 value={formData.notes}
-                onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
-                className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
+                className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 rows={3}
                 placeholder="Additional notes about this certification..."
               />
@@ -277,7 +272,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
             </div>
           </Card>
         ) : (
-          certifications.map((cert) => (
+          certifications.map((cert: any) => (
             <Card key={cert.id}>
               <div className="p-md">
                 <div className="flex items-start justify-between">

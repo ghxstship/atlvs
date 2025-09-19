@@ -32,9 +32,9 @@ export default async function AppShell({ children }: AppShellProps) {
   // constrain Projects children to Overview only (hide deep pages that require assignments)
   const limitedRoles = new Set(['team_member', 'viewer', 'client', 'vendor', 'partner']);
   if (projectsAssignedCount === 0 && limitedRoles.has((role || 'viewer').toLowerCase())) {
-    roleFilteredRoutes = roleFilteredRoutes.map((r) => {
+    roleFilteredRoutes = roleFilteredRoutes.map((r: any) => {
       if (r.id !== 'projects' || !r.children) return r;
-      const overview = r.children.find((c) => c.id === 'projects-overview');
+      const overview = r.children.find((c: any) => c.id === 'projects-overview');
       return { ...r, children: overview ? [overview] : [] };
     });
   }

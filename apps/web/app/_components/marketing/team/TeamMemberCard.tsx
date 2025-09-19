@@ -22,7 +22,7 @@ export function TeamMemberCard({ member, variant = 'default' }: TeamMemberCardPr
         <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-sm flex items-center justify-center">
           <Users className="h-6 w-6 color-primary" />
         </div>
-        <h3 className={`${typography.cardTitle} mb-xs`}>
+        <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>
           {member.name}
         </h3>
         <p className="text-body-sm text-heading-4 color-primary mb-xs">{member.role}</p>

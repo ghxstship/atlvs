@@ -1,22 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  DataActions,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   Receipt,
   Plus,
@@ -426,7 +414,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
         {/* Expense Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {expenses.map((expense) => (
+            {expenses.map((expense: any) => (
               <Card key={expense.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewExpense(expense)}>
                 <div className="flex items-start justify-between mb-md">
                   <div>

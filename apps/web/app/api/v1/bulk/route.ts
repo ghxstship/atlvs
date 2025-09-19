@@ -212,7 +212,7 @@ export async function POST(request: NextRequest) {
       result
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Bulk operation error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -263,7 +263,7 @@ export async function GET(request: NextRequest) {
       supportedOperations: ['create', 'update', 'delete', 'export', 'import']
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Bulk operation history error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

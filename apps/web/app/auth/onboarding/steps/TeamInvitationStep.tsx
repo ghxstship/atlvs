@@ -9,11 +9,11 @@ import { createBrowserClient } from '@supabase/ssr';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface TeamInvitationStepProps {
-  user: any;
+  user;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data: any;
+  data;
 }
 
 interface TeamMember {
@@ -116,7 +116,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       });
 
       onNext();
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Failed to send invitations');
     } finally {
       setLoading(false);
@@ -168,7 +168,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                       className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                       placeholder="colleague@company.com"
                       value={currentEmail}
-                      onChange={(e) => setCurrentEmail(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentEmail(e.target.value)}
                       onKeyPress={handleKeyPress}
                     />
                   </div>
@@ -181,7 +181,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   <select
                     className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     value={currentRole}
-                    onChange={(e) => setCurrentRole(e.target.value as TeamMember['role'])}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCurrentRole(e.target.value as TeamMember['role'])}
                   >
                     {roles.map(role => (
                       <option key={role.value} value={role.value}>
@@ -228,9 +228,9 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                       
                       <div className="flex items-center cluster-sm">
                         <select
-                          className="px-sm py-xs border border-border rounded text-body-sm bg-background"
+                          className=" px-md py-xs border border-border rounded text-body-sm bg-background"
                           value={invite.role}
-                          onChange={(e) => updateInviteRole(index, e.target.value as TeamMember['role'])}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateInviteRole(index, e.target.value as TeamMember['role'])}
                         >
                           {roles.map(role => (
                             <option key={role.value} value={role.value}>
@@ -260,7 +260,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   type="checkbox"
                   id="skip-invites"
                   checked={skipInvites}
-                  onChange={(e) => setSkipInvites(e.target.checked)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkipInvites(e.target.checked)}
                   className="h-4 w-4 color-primary border-border rounded focus:ring-primary"
                 />
                 <label htmlFor="skip-invites" className="text-body-sm color-muted">

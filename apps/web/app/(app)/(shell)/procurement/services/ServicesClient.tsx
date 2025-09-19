@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Wrench, DollarSign, Edit, Trash2, Search, Clock } from 'lucide-react';
 
 interface Service {
@@ -200,7 +201,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <Wrench className="h-5 w-5" />
-          <h3 className="text-heading-4">Services Catalog</h3>
+          <h3 className="text-body text-heading-4">Services Catalog</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-sm" />
@@ -211,10 +212,9 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-        <Input
-          placeholder="Search services by name, category, unit, or supplier..."
+        <UnifiedInput           placeholder="Search services by name, category, unit, or supplier..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
           className="pl-2xl"
         />
       </div>
@@ -230,18 +230,16 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Service Name *</label>
-                <Input
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                <UnifiedInput                   value={formData.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="Service name"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Category</label>
-                <Input
-                  value={formData.category}
-                  onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
+                <UnifiedInput                   value={formData.category}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                   placeholder="Consulting, Development, Design, etc."
                 />
               </div>
@@ -250,8 +248,8 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Description</label>
                 <textarea
                   value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                   rows={3}
                   placeholder="Service description..."
                 />
@@ -259,11 +257,10 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Rate *</label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.rate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, rate: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, rate: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                 />
               </div>
@@ -272,8 +269,8 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Currency</label>
                 <select 
                   value={formData.currency} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -285,8 +282,8 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Unit</label>
                 <select 
                   value={formData.unit} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, unit: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, unit: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="hour">Hour</option>
                   <option value="day">Day</option>
@@ -299,9 +296,8 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Supplier</label>
-                <Input
-                  value={formData.supplier}
-                  onChange={(e) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
+                <UnifiedInput                   value={formData.supplier}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
                   placeholder="Service provider name"
                 />
               </div>
@@ -310,8 +306,8 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as ServiceStatus }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value as ServiceStatus }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -358,7 +354,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
             </Card>
           </div>
         ) : (
-          filteredServices.map((service) => (
+          filteredServices.map((service: any) => (
             <Card key={service.id}>
               <div className="p-md">
                 <div className="flex items-start justify-between mb-sm">

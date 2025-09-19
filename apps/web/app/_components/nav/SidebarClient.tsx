@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Sidebar } from "@ghxstship/ui";
+import { Sidebar } from '@ghxstship/ui';
 import { useTelemetry, trackSearchQuery } from "../../../lib/telemetry";
 
 export type NavSection = { label: string; items: { label: string; href: string }[] };

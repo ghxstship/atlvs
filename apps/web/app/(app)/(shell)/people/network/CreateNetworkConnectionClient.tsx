@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Users, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -239,10 +239,10 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                 </label>
                 <select
                   {...register('personId')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select person...</option>
-                  {people.map((person) => (
+                  {people.map((person: any) => (
                     <option key={person.id} value={person.id}>
                       {person.first_name} {person.last_name} {person.role && `(${person.role})`}
                     </option>
@@ -259,10 +259,10 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                 </label>
                 <select
                   {...register('connectedPersonId')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select connected person...</option>
-                  {availableConnectedPeople.map((person) => (
+                  {availableConnectedPeople.map((person: any) => (
                     <option key={person.id} value={person.id}>
                       {person.first_name} {person.last_name} {person.role && `(${person.role})`}
                     </option>
@@ -281,7 +281,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                 </label>
                 <select
                   {...register('relationshipType')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="colleague">Colleague</option>
                   <option value="mentor">Mentor</option>
@@ -300,7 +300,7 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
                 </label>
                 <select
                   {...register('strength')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="weak">Weak - Occasional interaction</option>
                   <option value="moderate">Moderate - Regular interaction</option>
@@ -315,10 +315,10 @@ export default function CreateNetworkConnectionClient({ orgId, onConnectionCreat
               </label>
               <select
                 {...register('projectId')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select project (optional)...</option>
-                {projects.map((project) => (
+                {projects.map((project: any) => (
                   <option key={project.id} value={project.id}>
                     {project.name} ({project.status})
                   </option>

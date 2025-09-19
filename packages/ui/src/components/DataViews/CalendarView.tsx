@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { ChevronLeft, ChevronRight, Calendar as CalendarIcon } from 'lucide-react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { useDataView } from './DataViewProvider';
 
 export interface CalendarEvent {
@@ -134,21 +134,21 @@ export function CalendarView({
           <div className="flex items-center gap-xs">
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={() => navigateDate('prev')}
             >
               <ChevronLeft className="w-4 h-4" />
             </Button>
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={() => navigateDate('next')}
             >
               <ChevronRight className="w-4 h-4" />
             </Button>
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={goToToday}
             >
               Today
@@ -161,7 +161,7 @@ export function CalendarView({
             <Button
               key={mode}
               variant={viewMode === mode ? 'primary' : 'outline'}
-              size="sm"
+              
               onClick={() => setViewMode(mode)}
             >
               {mode.charAt(0).toUpperCase() + mode.slice(1)}
@@ -209,7 +209,7 @@ export function CalendarView({
                         key={event.id}
                         className="text-xs p-xs rounded truncate cursor-pointer"
                         style={{ backgroundColor: event.color + '20', color: event.color }}
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                           e.stopPropagation();
                           onEventClick?.(event);
                         }}

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -60,7 +61,7 @@ export default function ResetPasswordPage() {
       setTimeout(() => {
         router.push('/auth/signin');
       }, 2000);
-    } catch (error: any) {
+    } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
@@ -104,7 +105,7 @@ export default function ResetPasswordPage() {
           label="New Password"
           placeholder="Enter your new password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           required
           autoComplete="new-password"
           showPassword={showPassword}
@@ -118,7 +119,7 @@ export default function ResetPasswordPage() {
           label="Confirm New Password"
           placeholder="Confirm your new password"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
           required
           autoComplete="new-password"
           showPassword={showConfirmPassword}

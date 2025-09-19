@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, Mail, Globe, Users, TrendingUp, Heart, Shield, Target, MapPin, Linkedin } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
 // import { Section, SectionHeader } from '../../components/layout/Section';
 // import { TeamMemberCard } from '../../components/team/TeamMemberCard';
 // import { LeadershipCard } from '../../components/team/LeadershipCard';
@@ -376,14 +375,14 @@ export default function TeamPage() {
             <Badge variant="outline" className="mb-md">
               Our People
             </Badge>
-            <h1 className={`${typography.heroTitle} mb-lg`}>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase mb-lg`}>
               MEET THE<br /><span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">TEAM</span>
             </h1>
             <p className={`${typography.heroSubtitle} mb-xl`}>
               We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
-              {stats.map((stat) => (
+              {stats.map((stat: any) => (
                 <div key={stat.metric} className="text-center">
                   <div className={`${typography.statValue} mb-sm`}>
                     {stat.metric}
@@ -401,7 +400,7 @@ export default function TeamPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               LEADERSHIP TEAM
             </h2>
             <p className={`${typography.sectionSubtitle}`}>
@@ -409,7 +408,7 @@ export default function TeamPage() {
             </p>
           </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl max-w-7xl mx-auto">
-          {leadership.map((leader) => (
+          {leadership.map((leader: any) => (
             <Card key={leader.name} className="group hover:shadow-floating transition-all duration-300 h-[320px] flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
@@ -418,7 +417,7 @@ export default function TeamPage() {
                     <Users className="w-6 h-6 text-background" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`${typography.cardTitle} text-lg truncate`}>{leader.name}</h3>
+                    <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg truncate`}>{leader.name}</h3>
                     <p className="text-sm text-muted-foreground truncate">{leader.role}</p>
                   </div>
                   {leader.social?.linkedin && (
@@ -451,7 +450,7 @@ export default function TeamPage() {
       <section className="py-4xl bg-muted">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               OUR DEPARTMENTS
             </h2>
             <p className={`${typography.sectionSubtitle}`}>
@@ -459,7 +458,7 @@ export default function TeamPage() {
             </p>
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-          {departments.map((dept) => (
+          {departments.map((dept: any) => (
             <Card key={dept.name} className="hover:shadow-floating transition-shadow h-[200px] flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
@@ -467,7 +466,7 @@ export default function TeamPage() {
                   <div className={`w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <Users className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className={`${typography.cardTitle} text-lg flex-1 min-w-0`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg flex-1 min-w-0`}>
                     {dept.name}
                   </h3>
                 </div>
@@ -489,7 +488,7 @@ export default function TeamPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               TEAM MEMBERS
             </h2>
             <p className={`${typography.sectionSubtitle}`}>
@@ -497,7 +496,7 @@ export default function TeamPage() {
             </p>
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-          {teamMembers.map((member) => (
+          {teamMembers.map((member: any) => (
             <Card key={member.name} className="hover:shadow-floating transition-all duration-300 group h-[400px] flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
@@ -506,7 +505,7 @@ export default function TeamPage() {
                     <Users className="h-6 w-6 text-primary" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className={`${typography.cardTitle} text-lg mb-xs truncate`}>
+                    <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-xs truncate`}>
                       {member.name}
                     </h3>
                     <p className="text-sm font-semibold text-primary mb-xs truncate">{member.role}</p>
@@ -556,7 +555,7 @@ export default function TeamPage() {
       <section className="py-4xl bg-muted">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               OUR CULTURE
             </h2>
             <p className={`${typography.sectionSubtitle}`}>
@@ -595,7 +594,7 @@ export default function TeamPage() {
               description: 'Every team member contributes to meaningful work that impacts creative professionals worldwide.',
               icon: Target,
             },
-          ].map((value) => {
+          ].map((value: any) => {
             const Icon = value.icon;
             return (
               <Card key={value.title} className="hover:shadow-floating transition-shadow">
@@ -603,7 +602,7 @@ export default function TeamPage() {
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Icon className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className={`${typography.cardTitle} mb-sm`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-sm`}>
                     {value.title}
                   </h3>
                   <p className="text-muted-foreground">{value.description}</p>
@@ -619,7 +618,7 @@ export default function TeamPage() {
       <section className="py-4xl bg-primary text-primary-foreground">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               WANT TO JOIN US?
             </h2>
             <p className={`${typography.sectionSubtitle}`}>
@@ -645,7 +644,7 @@ export default function TeamPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`${typography.sectionTitle} mb-lg`}>
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
               LEARN MORE
             </h2>
           </div>
@@ -654,11 +653,11 @@ export default function TeamPage() {
             { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and values' },
             { title: 'Careers', href: '/careers', description: 'Join our growing team' },
             { title: 'Press & Media', href: '/company/press', description: 'Latest news and coverage' },
-          ].map((link) => (
-            <Link key={link.title} href={link.href as any}>
+          ].map((link: any) => (
+            <Link key={link.title} href="#">
               <Card className="hover:shadow-floating transition-shadow group">
                 <CardContent className="p-lg text-center">
-                  <h3 className={`${typography.cardTitle} text-lg mb-sm group-hover:text-primary transition-colors`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-sm group-hover:text-primary transition-colors`}>
                     {link.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">

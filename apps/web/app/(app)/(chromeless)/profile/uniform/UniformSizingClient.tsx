@@ -1,8 +1,9 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Input, Select, Card, CardHeader, CardContent } from '@ghxstship/ui';
+import { Button, UnifiedInput, Select, Card, CardHeader, CardContent } from '@ghxstship/ui';
 import { Shirt, Save, Edit2 } from 'lucide-react';
 import { useToast } from '@ghxstship/ui';
 
@@ -142,7 +143,7 @@ export default function UniformSizingClient() {
     <div className="stack-lg">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Uniform Sizing</h2>
+          <h2 className="text-heading-3">Uniform Sizing</h2>
           <p className="color-muted">Manage your uniform and clothing sizes</p>
         </div>
         {!isEditing ? (
@@ -151,7 +152,7 @@ export default function UniformSizingClient() {
             Edit Sizing
           </Button>
         ) : (
-          <div className="cluster-sm">
+          <div className="cluster">
             <Button variant="outline" onClick={() => {
               setIsEditing(false);
               setFormData(sizing || {});
@@ -192,10 +193,9 @@ export default function UniformSizingClient() {
               <option value="3XL">3XL</option>
               <option value="4XL">4XL</option>
             </Select>
-            <Input
-              label="Pants Size"
+            <UnifiedInput               label="Pants Size"
               value={formData.pants_size || ''}
-              onChange={(e) => setFormData({ ...formData, pants_size: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, pants_size: e.target.value })}
               placeholder="e.g., 32x30"
               disabled={!isEditing}
             />
@@ -215,17 +215,15 @@ export default function UniformSizingClient() {
               <option value="3XL">3XL</option>
               <option value="4XL">4XL</option>
             </Select>
-            <Input
-              label="Shoe Size"
+            <UnifiedInput               label="Shoe Size"
               value={formData.shoe_size || ''}
-              onChange={(e) => setFormData({ ...formData, shoe_size: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, shoe_size: e.target.value })}
               placeholder="e.g., 10.5"
               disabled={!isEditing}
             />
-            <Input
-              label="Hat Size"
+            <UnifiedInput               label="Hat Size"
               value={formData.hat_size || ''}
-              onChange={(e) => setFormData({ ...formData, hat_size: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, hat_size: e.target.value })}
               placeholder="e.g., 7 1/4"
               disabled={!isEditing}
             />
@@ -250,7 +248,7 @@ export default function UniformSizingClient() {
       {/* Fit Preference */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Fit Preference</h3>
+          <h3 className="text-body text-heading-4">Fit Preference</h3>
         </CardHeader>
         <CardContent>
           <label className="text-body-sm form-label">Gender Fit</label>
@@ -270,50 +268,44 @@ export default function UniformSizingClient() {
       {/* Detailed Measurements */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Detailed Measurements</h3>
+          <h3 className="text-body text-heading-4">Detailed Measurements</h3>
           <p className="text-body-sm color-muted">Optional measurements for custom fitting</p>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
-            <Input
-              label="Chest"
+            <UnifiedInput               label="Chest"
               value={formData.measurements?.chest || ''}
-              onChange={(e) => updateMeasurement('chest', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('chest', e.target.value)}
               placeholder="e.g., 42 inches"
               disabled={!isEditing}
             />
-            <Input
-              label="Waist"
+            <UnifiedInput               label="Waist"
               value={formData.measurements?.waist || ''}
-              onChange={(e) => updateMeasurement('waist', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('waist', e.target.value)}
               placeholder="e.g., 34 inches"
               disabled={!isEditing}
             />
-            <Input
-              label="Hips"
+            <UnifiedInput               label="Hips"
               value={formData.measurements?.hips || ''}
-              onChange={(e) => updateMeasurement('hips', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('hips', e.target.value)}
               placeholder="e.g., 40 inches"
               disabled={!isEditing}
             />
-            <Input
-              label="Inseam"
+            <UnifiedInput               label="Inseam"
               value={formData.measurements?.inseam || ''}
-              onChange={(e) => updateMeasurement('inseam', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('inseam', e.target.value)}
               placeholder="e.g., 30 inches"
               disabled={!isEditing}
             />
-            <Input
-              label="Sleeve Length"
+            <UnifiedInput               label="Sleeve Length"
               value={formData.measurements?.sleeve || ''}
-              onChange={(e) => updateMeasurement('sleeve', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('sleeve', e.target.value)}
               placeholder="e.g., 33 inches"
               disabled={!isEditing}
             />
-            <Input
-              label="Neck"
+            <UnifiedInput               label="Neck"
               value={formData.measurements?.neck || ''}
-              onChange={(e) => updateMeasurement('neck', e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateMeasurement('neck', e.target.value)}
               placeholder="e.g., 16 inches"
               disabled={!isEditing}
             />
@@ -324,12 +316,11 @@ export default function UniformSizingClient() {
       {/* Special Requirements */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Special Requirements</h3>
+          <h3 className="text-body text-heading-4">Special Requirements</h3>
         </CardHeader>
         <CardContent>
-          <Input
-            value={formData.special_requirements || ''}
-            onChange={(e) => setFormData({ ...formData, special_requirements: e.target.value })}
+          <UnifiedInput             value={formData.special_requirements || ''}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, special_requirements: e.target.value })}
             placeholder="Any special uniform requirements or notes..."
             disabled={!isEditing}
           />

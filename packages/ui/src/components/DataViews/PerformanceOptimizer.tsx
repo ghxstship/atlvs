@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -292,7 +292,7 @@ export function PerformanceOptimizer({
     
     // Performance observer for detailed metrics
     if ('PerformanceObserver' in window) {
-      performanceObserverRef.current = new PerformanceObserver((list) => {
+      performanceObserverRef.current = new PerformanceObserver((list: any) => {
         const entries = list.getEntries();
         // Process performance entries
         console.log('Performance entries:', entries);
@@ -393,13 +393,13 @@ export function PerformanceOptimizer({
         <div className="flex items-center gap-sm">
           <Badge 
             variant={performanceScore >= 80 ? 'success' : performanceScore >= 60 ? 'warning' : 'destructive'}
-            size="sm"
+            
           >
             Score: {performanceScore}
           </Badge>
           <Button
             variant={isMonitoring ? 'destructive' : 'primary'}
-            size="sm"
+            
             onClick={isMonitoring ? stopMonitoring : startMonitoring}
           >
             {isMonitoring ? (
@@ -487,10 +487,10 @@ export function PerformanceOptimizer({
                     <div className="flex-1">
                       <div className="flex items-center gap-sm mb-xs">
                         <span className="font-medium text-sm">{optimization.name}</span>
-                        <Badge variant="outline" size="sm">
+                        <Badge variant="outline" >
                           {optimization.impact} impact
                         </Badge>
-                        <Badge variant="outline" size="sm">
+                        <Badge variant="outline" >
                           {optimization.effort} effort
                         </Badge>
                       </div>
@@ -499,8 +499,8 @@ export function PerformanceOptimizer({
                       </p>
                     </div>
                     <Button
-                      variant="primary"
-                      size="sm"
+                      variant="default"
+                      
                       onClick={() => applyOptimization(optimization)}
                     >
                       Apply
@@ -523,7 +523,7 @@ export function PerformanceOptimizer({
               {Array.from(appliedOptimizations).map(id => {
                 const optimization = optimizations.find(opt => opt.id === id);
                 return optimization ? (
-                  <Badge key={id} variant="success" size="sm">
+                  <Badge key={id} variant="success" >
                     {optimization.name}
                   </Badge>
                 ) : null;

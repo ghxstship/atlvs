@@ -19,7 +19,7 @@ interface EnhancedNavigationProps {
   onTogglePin?: (itemId: string, pinned: boolean) => void;
 }
 
-const NavigationWithAI: React.FC<EnhancedNavigationProps> = (props) => {
+const NavigationWithAI: React.FC<EnhancedNavigationProps> = (props: any) => {
   const { predictions } = useNavigationAI();
   const { prefetchRoutes } = useNavigationCache();
 
@@ -40,7 +40,7 @@ const NavigationWithAI: React.FC<EnhancedNavigationProps> = (props) => {
   );
 };
 
-export const EnhancedNavigation: React.FC<EnhancedNavigationProps> = (props) => {
+export const EnhancedNavigation: React.FC<EnhancedNavigationProps> = (props: any) => {
   return (
     <NavigationCacheProvider>
       <NavigationWithAI {...props} />

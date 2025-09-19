@@ -120,7 +120,7 @@ export async function GET(request: NextRequest) {
     const itemsWithRatings = items?.map(item => ({
       ...item,
       averageRating: item.reviews?.length > 0 
-        ? item.reviews.reduce((sum: number, r: any) => sum + r.rating, 0) / item.reviews.length 
+        ? item.reviews.reduce((sum: number, r) => sum + r.rating, 0) / item.reviews.length 
         : 0,
       reviewCount: item.reviews?.length || 0
     })) || [];
@@ -139,7 +139,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ items: itemsWithRatings });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Catalog items GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -208,7 +208,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ item }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Catalog items POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -269,7 +269,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ item });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Catalog items PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -326,7 +326,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Catalog items DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

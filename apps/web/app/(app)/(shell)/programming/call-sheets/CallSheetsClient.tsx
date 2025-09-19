@@ -1,22 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  StateManagerProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  ListView, 
-  ViewSwitcher, 
-  DataActions, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord,
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, FileText, Calendar, Clock, Users, CheckCircle } from 'lucide-react';
@@ -235,7 +221,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
     .sort((a, b) => new Date(a.call_date).getTime() - new Date(b.call_date).getTime())
     .slice(0, 3);
 
-  const statusCounts = data.reduce((acc: any, cs: any) => {
+  const statusCounts = data.reduce((acc, cs) => {
     acc[cs.status] = (acc[cs.status] || 0) + 1;
     return acc;
   }, {});
@@ -274,7 +260,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
                       <IconComponent className="h-4 w-4" />
                       <span className="form-label">{label}</span>
                     </div>
-                    <Badge variant="secondary" className={getStatusColor(status)}>
+                    <Badge variant="outline">
                       {statusCounts[status] || 0}
                     </Badge>
                   </div>

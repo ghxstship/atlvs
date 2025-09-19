@@ -46,7 +46,7 @@ const DotsLoader = ({ size, color, className }: { size: string; color: string; c
   
   return (
     <div className={cn('flex space-x-xs', className)}>
-      {[0, 1, 2].map((i) => (
+      {[0, 1, 2].map((i: any) => (
         <div
           key={i}
           className={cn(
@@ -83,7 +83,7 @@ const BarsLoader = ({ size, color, className }: { size: string; color: string; c
   
   return (
     <div className={cn('flex items-end space-x-xs', className)}>
-      {[0, 1, 2, 3].map((i) => (
+      {[0, 1, 2, 3].map((i: any) => (
         <div
           key={i}
           className={cn(

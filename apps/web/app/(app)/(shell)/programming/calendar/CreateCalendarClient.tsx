@@ -1,18 +1,11 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { 
-  Button, 
-  Drawer, 
-  Input, 
-  Textarea, 
-  Select,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Button, Drawer, UnifiedInput, Textarea, Select, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Calendar, Clock, MapPin, Users } from 'lucide-react';
@@ -162,8 +155,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-lg">
           <div className="grid grid-cols-1 gap-md">
-            <Input
-              label="Event Name"
+            <UnifiedInput               label="Event Name"
               placeholder="Enter event name"
               {...form.register('name')}
              
@@ -216,16 +208,14 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
             </Select>
 
             <div className="grid grid-cols-2 gap-md">
-              <Input
-                label="Start Time"
+              <UnifiedInput                 label="Start Time"
                 type="datetime-local"
                 {...form.register('start_at')}
                
                 required
               />
 
-              <Input
-                label="End Time"
+              <UnifiedInput                 label="End Time"
                 type="datetime-local"
                 {...form.register('end_at')}
                
@@ -234,15 +224,13 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
             </div>
 
             <div className="grid grid-cols-2 gap-md">
-              <Input
-                label="Location"
+              <UnifiedInput                 label="Location"
                 placeholder="Enter location (optional)"
                 {...form.register('location')}
                
               />
 
-              <Input
-                label="Capacity"
+              <UnifiedInput                 label="Capacity"
                 type="number"
                 placeholder="Enter capacity (optional)"
                 {...form.register('capacity', { valueAsNumber: true })}

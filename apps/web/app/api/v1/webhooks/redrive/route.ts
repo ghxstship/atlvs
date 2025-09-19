@@ -119,7 +119,7 @@ export async function GET(request: NextRequest) {
       summary
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook redrive GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -305,7 +305,7 @@ export async function POST(request: NextRequest) {
       results
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook redrive POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -375,7 +375,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook redrive PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -442,7 +442,7 @@ export async function DELETE(request: NextRequest) {
       cutoffDate: cutoffDate.toISOString()
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook redrive DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -93,7 +94,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create event');
     } finally {
       setLoading(false);
@@ -132,7 +133,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter event name..."
               {...form.register('name')}
             />
@@ -150,7 +151,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the event..."
               {...form.register('description')}
             />
@@ -163,7 +164,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="kind"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('kind')}
               >
                 <option value="performance">Performance</option>
@@ -178,7 +179,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="status"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('status')}
               >
                 <option value="planning">Planning</option>
@@ -198,7 +199,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               <input
                 id="start_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('start_date')}
               />
             </div>
@@ -210,7 +211,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               <input
                 id="end_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('end_date')}
               />
             </div>
@@ -224,7 +225,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               <input
                 id="location"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Event location..."
                 {...form.register('location')}
               />
@@ -238,7 +239,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
                 id="capacity"
                 type="number"
                 min="0"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Max attendees..."
                 {...form.register('capacity', { valueAsNumber: true })}
               />
@@ -251,11 +252,11 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project association</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>

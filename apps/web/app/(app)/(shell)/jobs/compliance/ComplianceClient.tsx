@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -128,7 +129,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
     }
   };
 
-  const filteredCompliance = compliance.filter((item) => {
+  const filteredCompliance = compliance.filter((item: any) => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (item.job_title && item.job_title.toLowerCase().includes(searchTerm.toLowerCase())) ||
@@ -245,20 +246,19 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <Input
-              placeholder="Search compliance items..."
+            <UnifiedInput               placeholder="Search compliance items..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
             />
           </div>
           <div className="flex gap-sm">
             <select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {STATUS_OPTIONS.map((option) => (
+              {STATUS_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -266,10 +266,10 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             </select>
             <select
               value={kindFilter}
-              onChange={(e) => setKindFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setKindFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {KIND_OPTIONS.map((option) => (
+              {KIND_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -277,10 +277,10 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             </select>
             <select
               value={priorityFilter}
-              onChange={(e) => setPriorityFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPriorityFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {PRIORITY_OPTIONS.map((option) => (
+              {PRIORITY_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -367,7 +367,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             </Card>
           ))
         ) : filteredCompliance.length > 0 ? (
-          filteredCompliance.map((item) => {
+          filteredCompliance.map((item: any) => {
             const StatusIcon = getStatusIcon(item.status);
             const isLate = isOverdue(item.due_at);
             const isDue = isDueSoon(item.due_at);
@@ -439,7 +439,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                     {item.requirements && item.requirements.length > 0 && (
                       <div className="mb-sm">
                         <span className="text-body-sm form-label color-foreground/70 mb-xs block">Requirements:</span>
-                        <div className="stack-xs">
+                        <div className="stack-md">
                           {item.requirements.slice(0, 3).map((req, index) => (
                             <div key={index} className="text-body-sm color-foreground/70 flex items-start gap-sm">
                               <span className="color-foreground/40">•</span>

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -88,7 +89,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create lineup');
     } finally {
       setLoading(false);
@@ -126,11 +127,11 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="event_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('event_id')}
             >
               <option value="">Select an event</option>
-              {events.map((event) => (
+              {events.map((event: any) => (
                 <option key={event.id} value={event.id}>
                   {event.name}
                 </option>
@@ -150,7 +151,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             <input
               id="performer"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter performer name..."
               {...form.register('performer')}
             />
@@ -169,7 +170,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               <input
                 id="role"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="e.g., Lead Vocalist, DJ..."
                 {...form.register('role')}
               />
@@ -182,7 +183,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               <input
                 id="stage"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="e.g., Main Stage, Studio A..."
                 {...form.register('stage')}
               />
@@ -195,7 +196,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="status"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('status')}
             >
               <option value="confirmed">Confirmed</option>
@@ -212,7 +213,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               <input
                 id="start_time"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('start_time')}
               />
             </div>
@@ -224,7 +225,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               <input
                 id="end_time"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('end_time')}
               />
             </div>
@@ -237,7 +238,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
             <textarea
               id="notes"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Additional notes about the performer..."
               {...form.register('notes')}
             />

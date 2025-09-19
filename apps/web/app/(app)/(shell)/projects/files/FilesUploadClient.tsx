@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -86,7 +87,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
 
       if (inputRef.current) inputRef.current.value = '';
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || t('upload.error'));
     } finally {
       setUploading(false);
@@ -95,7 +96,7 @@ export default function FilesUploadClient({ orgId }: { orgId: string }) {
 
   return (
     <div className="flex flex-col items-end gap-sm">
-      <label className="inline-flex items-center gap-sm rounded-md border px-sm py-sm text-body-sm hover:bg-accent cursor-pointer">
+      <label className="inline-flex items-center gap-sm rounded-md border  px-md py-sm text-body-sm hover:bg-accent cursor-pointer">
         <span>{uploading ? t('upload.uploading') : t('upload.cta')}</span>
         <input
           ref={inputRef}

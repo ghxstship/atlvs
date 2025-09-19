@@ -1,8 +1,9 @@
-import './globals.css';
+import '@ghxstship/ui/styles.css';
 import type { Metadata } from 'next';
 import { Anton, Share_Tech, Share_Tech_Mono } from 'next/font/google';
 import { headers } from 'next/headers';
 import { WebVitals } from './web-vitals';
+import { GHXSTSHIPProvider } from '@ghxstship/ui';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 const shareTech = Share_Tech({ weight: '400', subsets: ['latin'], variable: '--font-body' });
@@ -42,8 +43,27 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${shareTech.className} ${shareTech.variable} ${shareTechMono.variable} ${anton.variable}`} data-brand={brand}>
-        <WebVitals />
-        {children}
+        <GHXSTSHIPProvider 
+          theme={{ 
+            defaultBrand: brand as 'ghxstship' | 'atlvs' | 'opendeck',
+            defaultTheme: 'system'
+          }}
+          accessibility={{
+            defaultConfig: {
+              announcements: true,
+              focusManagement: true,
+              keyboardNavigation: true,
+              screenReaderOptimizations: true,
+              colorContrastEnforcement: true,
+              motionReduction: false,
+              textScaling: true,
+              highContrastMode: false,
+            }
+          }}
+        >
+          <WebVitals />
+          {children}
+        </GHXSTSHIPProvider>
       </body>
     </html>
   );

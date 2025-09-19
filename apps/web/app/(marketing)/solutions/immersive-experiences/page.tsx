@@ -179,7 +179,7 @@ export default function ImmersiveExperiencesPage() {
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm px-sm py-xs bg-background rounded-md text-body-sm color-muted">
+                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
                       <Eye className="w-3 h-3" />
                       immersive.ghxstship.com
                     </div>
@@ -197,7 +197,7 @@ export default function ImmersiveExperiencesPage() {
                   <div className="grid grid-cols-3 gap-sm">
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Active Users</div>
-                      <div className="text-heading-4">2.5K</div>
+                      <div>2.5K</div>
                       <div className="flex items-center gap-xs mt-xs">
                         <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
                         <span className="text-body-sm color-success">Live</span>
@@ -205,16 +205,16 @@ export default function ImmersiveExperiencesPage() {
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Platforms</div>
-                      <div className="text-heading-4">8</div>
+                      <div>8</div>
                       <div className="flex -cluster-xs mt-xs">
-                        {[1, 2, 3, 4].map((i) => (
+                        {[1, 2, 3, 4].map((i: any) => (
                           <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Engagement</div>
-                      <div className="text-heading-4">94%</div>
+                      <div>94%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
                         <div className="bg-primary h-1 rounded-full w-11/12"></div>
                       </div>
@@ -263,7 +263,7 @@ export default function ImmersiveExperiencesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {challenges.map((challenge) => {
+            {challenges.map((challenge: any) => {
               const Icon = challenge.icon;
               return (
                 <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
@@ -302,14 +302,14 @@ export default function ImmersiveExperiencesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {features.map((feature) => (
+            {features.map((feature: any) => (
               <Card key={feature.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{feature.title}</h3>
                   <p className="color-muted mb-lg">{feature.description}</p>
                   
                   <div className="stack-sm">
-                    {feature.benefits.map((benefit) => (
+                    {feature.benefits.map((benefit: any) => (
                       <div key={benefit} className="flex items-center gap-sm">
                         <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                         <span className="text-body-sm color-foreground">{benefit}</span>
@@ -336,7 +336,7 @@ export default function ImmersiveExperiencesPage() {
           </div>
 
           <div className="space-y-2xl">
-            {caseStudies.map((study) => (
+            {caseStudies.map((study: any) => (
               <Card key={study.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="grid lg:grid-cols-2 gap-xl">
@@ -360,7 +360,7 @@ export default function ImmersiveExperiencesPage() {
                     <div>
                       <h4 className="text-heading-4 text-body-sm color-muted mb-md uppercase">RESULTS</h4>
                       <div className="stack-sm mb-lg">
-                        {study.results.map((result) => (
+                        {study.results.map((result: any) => (
                           <div key={result} className="flex items-center gap-sm">
                             <Star className="h-4 w-4 color-warning flex-shrink-0" />
                             <span className="text-body-sm form-label color-foreground">{result}</span>
@@ -394,7 +394,7 @@ export default function ImmersiveExperiencesPage() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-lg">
-            {integrations.map((integration) => (
+            {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">

@@ -48,7 +48,7 @@ export default async function OpenDeckLanding() {
           />
         ) : (
           <div className="text-center py-2xl">
-            <h2 className="text-heading-3 text-heading-3 mb-md">{t('title')}</h2>
+            <h2 className="text-heading-3 mb-md">{t('title')}</h2>
             <p className="color-muted">{t('unauthorized')}</p>
           </div>
         )}

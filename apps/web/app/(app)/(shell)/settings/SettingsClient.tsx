@@ -1,21 +1,9 @@
 'use client';
 
+
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import {
-  DataViewProvider,
-  StateManagerProvider,
-  DataGrid,
-  KanbanBoard,
-  CalendarView,
-  ListView,
-  ViewSwitcher,
-  DataActions,
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Drawer, type DataRecord } from '@ghxstship/ui';
 
 // Settings field configuration for ATLVS DataViews
 const fieldConfig: FieldConfig[] = [
@@ -198,11 +186,11 @@ export default function SettingsClient({ orgId, userId }: { orgId: string; userI
       console.log('Search settings:', query);
       // Search functionality implemented
     },
-    onFilter: async (filters) => {
+    onFilter: async (filters: any) => {
       console.log('Filter settings:', filters);
       // Filtering functionality implemented
     },
-    onSort: async (sorts) => {
+    onSort: async (sorts: any) => {
       console.log('Sort settings:', sorts);
       // Sorting functionality implemented
     },
@@ -219,7 +207,7 @@ export default function SettingsClient({ orgId, userId }: { orgId: string; userI
     onExport: (data, format) => {
       console.log('Export settings:', format, data);
     },
-    onImport: (data) => {
+    onImport: (data: any) => {
       console.log('Import settings:', data);
     }
   };

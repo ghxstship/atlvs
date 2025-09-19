@@ -1,9 +1,10 @@
 'use client';
 
+
 import React from "react";
 
 import { useState } from 'react'
-import { Button, Input, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@ghxstship/ui"
+import { Button, UnifiedInput, Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@ghxstship/ui'
 import { Mail, CheckCircle } from 'lucide-react'
 
 interface EmailVerificationStepProps {
@@ -66,12 +67,11 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
           <label htmlFor="code" className="block text-body-sm form-label mb-sm">
             Verification Code
           </label>
-          <Input
-            id="code"
+          <UnifiedInput             id="code"
             type="text"
             placeholder="Enter 6-digit code"
             value={verificationCode}
-            onChange={(e: React.FormEvent) => setVerificationCode((e.target as HTMLInputElement).value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setVerificationCode((e.target as HTMLInputElement).value)}
             maxLength={6}
             aria-label="Verification code"
             aria-invalid={!!error}

@@ -1,9 +1,9 @@
 'use client';
 
+
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, Receipt, Calendar, DollarSign, Upload } from 'lucide-react';
 
 interface CreateExpenseClientProps {
@@ -149,9 +149,8 @@ export default function CreateExpenseClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Expense Description *
             </label>
-            <Input
-              value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            <UnifiedInput               value={formData.description}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="e.g., Client dinner, Office supplies, Travel expenses"
               required
             />
@@ -164,10 +163,9 @@ export default function CreateExpenseClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   value={formData.amount || ''}
-                  onChange={(e) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                   className="pl-2xl"
                   min="0"
@@ -188,7 +186,7 @@ export default function CreateExpenseClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -206,7 +204,7 @@ export default function CreateExpenseClient({
               </label>
               <Select
                 value={formData.category}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, category: value }))}
               >
                 <option value="general">General</option>
                 <option value="travel">Travel</option>
@@ -227,10 +225,9 @@ export default function CreateExpenseClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.expenseDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, expenseDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expenseDate: e.target.value }))}
                   className="pl-2xl"
                   max={new Date().toISOString().split('T')[0]}
                   required
@@ -245,10 +242,9 @@ export default function CreateExpenseClient({
             </label>
             <div className="relative">
               <Upload className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-              <Input
-                type="url"
+              <UnifiedInput                 type="url"
                 value={formData.receiptUrl}
-                onChange={(e) => setFormData(prev => ({ ...prev, receiptUrl: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, receiptUrl: e.target.value }))}
                 placeholder="https://example.com/receipt.pdf"
                 className="pl-2xl"
               />

@@ -8,7 +8,7 @@ export default {
   presets: [preset as any],
   darkMode: ['class'],
   content: [
-    './app/**/*.{ts,tsx}',
+    '../../packages/ui/src/**/*.{js,ts,jsx,tsx}',    './app/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
     '../../packages/ui/src/**/*.{ts,tsx}'
   ],

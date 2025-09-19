@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowRight, Play, CheckCircle, Star, Users, Zap } from 'lucide-react';
@@ -42,7 +43,7 @@ export function HeroSection() {
       <div className="absolute top-0 pointer-events-none left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 pointer-events-none right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-lg px-md py-5xl lg:py-5xl relative">
+      <div className="container mx-auto px-lg py-5xl relative">
         <div className="grid lg:grid-cols-2 gap-3xl items-center">
           {/* Left Column - Content */}
           <div className="stack-2xl">
@@ -54,10 +55,10 @@ export function HeroSection() {
 
             {/* Main Headline */}
             <div className="stack-2xl">
-              <h1 className="text-display text-foreground uppercase">
+              <h1 className="text-display text-foreground uppercase glow-accent">
                 THE FUTURE OF
                 <br />
-                <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                <span className="ghxstship-gradient bg-clip-text text-transparent">
                   PRODUCTION
                 </span>
                 <br />
@@ -105,7 +106,7 @@ export function HeroSection() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-xl">
               <Link href="/auth/signup">
-                <Button className="w-full sm:w-auto group">
+                <Button variant="pop" className="w-full sm:w-auto group">
                   Start Free Trial
                   <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -118,7 +119,7 @@ export function HeroSection() {
 
             {/* Stats */}
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl pt-xl border-t">
-              {stats.map((stat) => {
+              {stats.map((stat: any) => {
                 const Icon = stat.icon;
                 return (
                   <div key={stat.label} className="text-center lg:text-left">
@@ -138,16 +139,16 @@ export function HeroSection() {
           {/* Right Column - Visual */}
           <div className="relative">
             {/* Main Dashboard Preview */}
-            <div className="relative bg-background border rounded-2xl shadow-popover overflow-hidden">
+            <div className="relative bg-background border-2 border-black rounded-2xl pop-shadow-lg overflow-hidden">
               {/* Browser Chrome */}
-              <div className="flex items-center gap-xl px-md py-sm bg-secondary/50 border-b">
+              <div className="flex items-center gap-xl px-md py-sm bg-secondary/50 border-b border-black">
                 <div className="flex gap-xl">
                   <div className="w-3 h-3 rounded-full bg-destructive"></div>
                   <div className="w-3 h-3 rounded-full bg-warning"></div>
                   <div className="w-3 h-3 rounded-full bg-success"></div>
                 </div>
                 <div className="flex-1 text-center">
-                  <div className="inline-flex items-center gap-xl px-sm py-xs bg-background rounded-md text-body-sm color-muted">
+                  <div className="inline-flex items-center gap-xl  px-md py-xs bg-background rounded-md text-body-sm color-muted">
                     <div className="w-3 h-3 color-success">🔒</div>
                     app.ghxstship.com
                   </div>
@@ -170,25 +171,25 @@ export function HeroSection() {
 
                 {/* Progress Cards */}
                 <div className="grid grid-cols-3 gap-xl">
-                  <div className="bg-secondary/30 rounded-lg p-sm">
+                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
                     <div className="text-body-sm color-muted mb-xs">Budget</div>
-                    <div className="text-heading-4">$75K</div>
+                    <span className="text-body-sm">$75K</span>
                     <div className="w-full bg-secondary rounded-full h-1 mt-xs">
                       <div className="bg-primary h-1 rounded-full w-3/4"></div>
                     </div>
                   </div>
-                  <div className="bg-secondary/30 rounded-lg p-sm">
+                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
                     <div className="text-body-sm color-muted mb-xs">Timeline</div>
-                    <div className="text-heading-4">85%</div>
+                    <span className="text-body-sm">85%</span>
                     <div className="w-full bg-secondary rounded-full h-1 mt-xs">
                       <div className="bg-accent h-1 rounded-full w-4/5"></div>
                     </div>
                   </div>
-                  <div className="bg-secondary/30 rounded-lg p-sm">
+                  <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
                     <div className="text-body-sm color-muted mb-xs">Team</div>
-                    <div className="text-heading-4">12</div>
+                    <span className="text-body-sm">12</span>
                     <div className="flex -cluster-xs mt-xs">
-                      {[1, 2, 3].map((i) => (
+                      {[1, 2, 3].map((i: any) => (
                         <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
                       ))}
                     </div>
@@ -215,10 +216,10 @@ export function HeroSection() {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-sm shadow-floating">
+            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
               <Zap className="h-6 w-6" />
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm shadow-floating">
+            <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-accent">
               <Star className="h-6 w-6" />
             </div>
           </div>

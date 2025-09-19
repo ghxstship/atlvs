@@ -106,7 +106,7 @@ export async function GET(request: NextRequest) {
       stats
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Organization GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -153,7 +153,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ organization });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Organization PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -248,7 +248,7 @@ export async function DELETE(request: NextRequest) {
       message: 'Organization has been deactivated'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Organization DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

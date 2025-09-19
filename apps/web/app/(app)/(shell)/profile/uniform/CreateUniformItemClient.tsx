@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -101,7 +102,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -129,16 +130,16 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="item_type" className="text-body-sm form-label">Item Type *</label>
             <select 
               id="item_type" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('item_type') || 'shirt'} 
-              onChange={(e) => form.setValue('item_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('item_type', e.target.value as any, { shouldDirty: true })}
             >
               <option value="shirt">Shirt</option>
               <option value="pants">Pants</option>
@@ -155,9 +156,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="item_name" className="text-body-sm form-label">Item Name *</label>
             <input 
               id="item_name" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('item_name') || ''} 
-              onChange={(e) => form.setValue('item_name', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('item_name', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Navy Blue Polo Shirt, Safety Helmet"
               aria-invalid={!!form.formState.errors.item_name} 
             />
@@ -169,9 +170,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               <label htmlFor="size" className="text-body-sm form-label">Size</label>
               <input 
                 id="size" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('size') || ''} 
-                onChange={(e) => form.setValue('size', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('size', e.target.value, { shouldDirty: true })} 
                 placeholder="S, M, L, XL, 32, 10.5, etc."
               />
             </div>
@@ -180,9 +181,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               <label htmlFor="color" className="text-body-sm form-label">Color</label>
               <input 
                 id="color" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('color') || ''} 
-                onChange={(e) => form.setValue('color', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('color', e.target.value, { shouldDirty: true })} 
                 placeholder="Navy, Black, White, etc."
               />
             </div>
@@ -192,9 +193,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="condition" className="text-body-sm form-label">Condition *</label>
             <select 
               id="condition" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('condition') || 'new'} 
-              onChange={(e) => form.setValue('condition', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('condition', e.target.value as any, { shouldDirty: true })}
             >
               <option value="new">New</option>
               <option value="good">Good</option>
@@ -210,9 +211,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               <input 
                 id="purchase_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('purchase_date') || ''} 
-                onChange={(e) => form.setValue('purchase_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('purchase_date', e.target.value, { shouldDirty: true })} 
               />
             </div>
 
@@ -223,9 +224,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
                 type="number" 
                 step="0.01" 
                 min="0" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('purchase_price') || ''} 
-                onChange={(e) => form.setValue('purchase_price', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('purchase_price', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })} 
                 placeholder="0.00"
               />
             </div>
@@ -235,9 +236,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="supplier" className="text-body-sm form-label">Supplier/Brand</label>
             <input 
               id="supplier" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('supplier') || ''} 
-              onChange={(e) => form.setValue('supplier', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('supplier', e.target.value, { shouldDirty: true })} 
               placeholder="Company or brand name"
             />
           </div>
@@ -246,9 +247,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="care_instructions" className="text-body-sm form-label">Care Instructions</label>
             <textarea 
               id="care_instructions" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('care_instructions') || ''} 
-              onChange={(e) => form.setValue('care_instructions', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('care_instructions', e.target.value, { shouldDirty: true })} 
               placeholder="Washing, maintenance, or storage instructions..."
             />
           </div>
@@ -258,9 +259,9 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <input 
               id="replacement_due" 
               type="date" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('replacement_due') || ''} 
-              onChange={(e) => form.setValue('replacement_due', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('replacement_due', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -269,7 +270,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
               id="is_required" 
               type="checkbox" 
               checked={form.getValues('is_required')} 
-              onChange={(e) => form.setValue('is_required', e.target.checked, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('is_required', e.target.checked, { shouldDirty: true })} 
             />
             <label htmlFor="is_required" className="text-body-sm form-label">This is a required uniform item</label>
           </div>
@@ -278,16 +279,16 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('notes') || ''} 
-              onChange={(e) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes about this item..."
             />
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

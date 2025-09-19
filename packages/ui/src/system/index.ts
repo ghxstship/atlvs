@@ -356,9 +356,9 @@ export const performanceMonitor = {
   
   // Monitor animation performance
   trackAnimation: (animationName: string, element: HTMLElement) => {
-    const observer = new PerformanceObserver((list) => {
+    const observer = new PerformanceObserver((list: any) => {
       const entries = list.getEntries();
-      entries.forEach((entry) => {
+      entries.forEach((entry: any) => {
         if (entry.duration > 100) { // Animation longer than 100ms
           console.warn(`Long animation detected: ${animationName} took ${entry.duration.toFixed(2)}ms`);
         }

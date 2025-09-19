@@ -133,7 +133,7 @@ export async function GET(request: NextRequest) {
         .select('opportunity_id, status')
         .in('opportunity_id', opportunityIds);
 
-      applicationStats = applications?.reduce((acc: any, app) => {
+      applicationStats = applications?.reduce((acc, app) => {
         if (!acc[app.opportunity_id]) {
           acc[app.opportunity_id] = { total: 0, pending: 0, reviewed: 0, shortlisted: 0 };
         }
@@ -160,7 +160,7 @@ export async function GET(request: NextRequest) {
       applicationStats
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Opportunities GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -241,7 +241,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ opportunity }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Opportunities POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -302,7 +302,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ opportunity });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Opportunities PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -359,7 +359,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Opportunities DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

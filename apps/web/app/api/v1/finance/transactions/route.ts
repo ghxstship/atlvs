@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ transactions: transactions || [] });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Transactions GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ transaction }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Transactions POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -208,7 +208,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ transaction });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Transactions PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -265,7 +265,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Transactions DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

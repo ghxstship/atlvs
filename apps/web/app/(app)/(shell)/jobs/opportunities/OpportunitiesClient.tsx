@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Card, Button, Badge, Input, Select, Skeleton } from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Select, Skeleton } from '@ghxstship/ui';
 
 interface OpportunitiesClientProps {
   user: User;
@@ -88,7 +89,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
     }
   };
 
-  const filteredOpportunities = opportunities.filter((opportunity) => {
+  const filteredOpportunities = opportunities.filter((opportunity: any) => {
     const matchesSearch = opportunity.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (opportunity.clientName?.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          (opportunity.description?.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -173,22 +174,21 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
         <div className="flex gap-md mb-lg">
           <div className="flex-1">
-            <Input
-              placeholder="Search opportunities..."
+            <UnifiedInput               placeholder="Search opportunities..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
             />
           </div>
           <Select value={statusFilter} onValueChange={setStatusFilter}>
-            {STATUS_OPTIONS.map((option) => (
+            {STATUS_OPTIONS.map((option: any) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
             ))}
           </Select>
           <Select value={typeFilter} onValueChange={setTypeFilter}>
-            {TYPE_OPTIONS.map((option) => (
+            {TYPE_OPTIONS.map((option: any) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -234,22 +234,21 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
 
       <div className="flex gap-md mb-lg">
         <div className="flex-1">
-          <Input
-            placeholder="Search opportunities..."
+          <UnifiedInput             placeholder="Search opportunities..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="w-full"
           />
         </div>
         <Select value={statusFilter} onValueChange={setStatusFilter}>
-          {STATUS_OPTIONS.map((option) => (
+          {STATUS_OPTIONS.map((option: any) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
           ))}
         </Select>
         <Select value={typeFilter} onValueChange={setTypeFilter}>
-          {TYPE_OPTIONS.map((option) => (
+          {TYPE_OPTIONS.map((option: any) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -272,7 +271,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
         </Card>
       ) : (
         <div className="grid gap-md">
-          {filteredOpportunities.map((opportunity) => (
+          {filteredOpportunities.map((opportunity: any) => (
             <Card key={opportunity.id} className="p-lg hover:shadow-elevated transition-shadow">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -350,7 +349,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
         <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center p-md z-50">
           <div className="bg-background rounded-lg p-lg w-full max-w-md">
             <h3 className="text-body text-heading-4 mb-md">Create New Opportunity</h3>
-            <form onSubmit={(e) => {
+            <form onSubmit={(e: any) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
               createOpportunity({
@@ -366,7 +365,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="stack-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Title</label>
-                  <Input />
+                  <UnifiedInput />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Description</label>
@@ -375,7 +374,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Type</label>
                   <Select>
-                    {TYPE_OPTIONS.slice(1).map((option) => (
+                    {TYPE_OPTIONS.slice(1).map((option: any) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
@@ -384,11 +383,11 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Client Name</label>
-                  <Input />
+                  <UnifiedInput />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Estimated Value</label>
-                  <Input type="number" />
+                  <UnifiedInput type="number" />
                 </div>
               </div>
               <div className="flex gap-sm mt-lg">

@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Drawer, Button, Input, Select, Textarea } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Loader2, AlertCircle } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
@@ -182,8 +182,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <Input
-                id="title"
+              <UnifiedInput                 id="title"
                 {...register('title')}
                 placeholder="Enter assignment title"
                
@@ -207,8 +206,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-sm">
                   Job ID *
                 </label>
-                <Input
-                  id="jobId"
+                <UnifiedInput                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
                  
@@ -219,8 +217,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="assigneeUserId" className="block text-body-sm form-label color-foreground mb-sm">
                   Assignee User ID
                 </label>
-                <Input
-                  id="assigneeUserId"
+                <UnifiedInput                   id="assigneeUserId"
                   {...register('assigneeUserId')}
                   placeholder="Enter user ID to assign"
                 />
@@ -270,8 +267,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="startDate" className="block text-body-sm form-label color-foreground mb-sm">
                   Start Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   {...register('startDate')}
                 />
               </div>
@@ -280,8 +276,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="dueDate" className="block text-body-sm form-label color-foreground mb-sm">
                   Due Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   {...register('dueDate')}
                 />
               </div>
@@ -292,8 +287,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="estimatedHours" className="block text-body-sm form-label color-foreground mb-sm">
                   Estimated Hours
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.5"
                   {...register('estimatedHours', { valueAsNumber: true })}
                   placeholder="0"
@@ -304,8 +298,7 @@ export default function CreateAssignmentClient({ orgId, onSuccess }: CreateAssig
                 <label htmlFor="hourlyRate" className="block text-body-sm form-label color-foreground mb-sm">
                   Hourly Rate
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   {...register('hourlyRate', { valueAsNumber: true })}
                   placeholder="0.00"

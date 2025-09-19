@@ -1,22 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  StateManagerProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  ListView, 
-  ViewSwitcher, 
-  DataActions, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord,
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Users, Clock, Calendar, Music, MapPin } from 'lucide-react';
@@ -213,7 +199,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
   };
 
   // Group lineups by stage for better visualization
-  const lineupsByStage = data.reduce((acc: any, lineup: any) => {
+  const lineupsByStage = data.reduce((acc, lineup) => {
     const stage = lineup.stage || 'Unassigned';
     if (!acc[stage]) {
       acc[stage] = [];
@@ -273,7 +259,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                             )}
                           </div>
                         </div>
-                        <Badge variant="outline" className={getStatusColor(lineup.status)}>
+                        <Badge variant="outline">
                           {lineup.status}
                         </Badge>
                       </div>
@@ -293,7 +279,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             <DataGrid />
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md mt-md">
-              {data.map((lineup) => (
+              {data.map((lineup: any) => (
                 <div key={lineup.id} className="p-md border rounded-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewLineup(lineup)}>
                   <h3 className="form-label">{lineup.performer}</h3>
                   <p className="text-body-sm color-muted">{lineup.stage}</p>

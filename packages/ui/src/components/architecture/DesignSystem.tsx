@@ -403,7 +403,7 @@ export const DesignSystemGuide: React.FC = () => {
         <h4 className="text-lg font-semibold mb-sm">ARIA Attributes</h4>
         <div className="space-y-xs">
           {AccessibilityStandards.aria.required.map(attr => (
-            <Badge key={attr} variant="primary" className="mr-sm">{attr}</Badge>
+            <Badge key={attr} variant="default" className="mr-sm">{attr}</Badge>
           ))}
         </div>
       </div>

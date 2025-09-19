@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -115,7 +116,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -137,22 +138,21 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         open={open} 
         onClose={() => setOpen(false)} 
         title="Add Performance Review" 
-        description={submitting ? 'Saving…' : undefined} 
-       
+        description={submitting ? 'Saving…' : undefined}
       >
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="review_period" className="text-body-sm form-label">Review Period *</label>
             <input 
               id="review_period" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('review_period') || ''} 
-              onChange={(e) => form.setValue('review_period', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('review_period', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Q1 2024, Annual 2023"
               aria-invalid={!!form.formState.errors.review_period} 
             />
@@ -165,9 +165,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               <label htmlFor="reviewer_name" className="text-body-sm form-label">Reviewer Name *</label>
               <input 
                 id="reviewer_name" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('reviewer_name') || ''} 
-                onChange={(e) => form.setValue('reviewer_name', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('reviewer_name', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.reviewer_name} 
               />
               {form.formState.errors.reviewer_name ? 
@@ -178,9 +178,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               <label htmlFor="reviewer_title" className="text-body-sm form-label">Reviewer Title *</label>
               <input 
                 id="reviewer_title" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('reviewer_title') || ''} 
-                onChange={(e) => form.setValue('reviewer_title', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('reviewer_title', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.reviewer_title} 
               />
               {form.formState.errors.reviewer_title ? 
@@ -192,9 +192,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="overall_rating" className="text-body-sm form-label">Overall Rating (1-5) *</label>
             <select 
               id="overall_rating" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('overall_rating') || 3} 
-              onChange={(e) => form.setValue('overall_rating', Number(e.target.value), { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('overall_rating', Number(e.target.value), { shouldDirty: true })}
             >
               <option value="1">1 - Needs Improvement</option>
               <option value="2">2 - Below Expectations</option>
@@ -212,9 +212,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="technical_skills" className="text-body-sm">Technical Skills</label>
                 <select 
                   id="technical_skills" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('technical_skills') || 3} 
-                  onChange={(e) => form.setValue('technical_skills', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('technical_skills', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -228,9 +228,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="communication" className="text-body-sm">Communication</label>
                 <select 
                   id="communication" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('communication') || 3} 
-                  onChange={(e) => form.setValue('communication', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('communication', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -244,9 +244,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="teamwork" className="text-body-sm">Teamwork</label>
                 <select 
                   id="teamwork" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('teamwork') || 3} 
-                  onChange={(e) => form.setValue('teamwork', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('teamwork', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -260,9 +260,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="leadership" className="text-body-sm">Leadership</label>
                 <select 
                   id="leadership" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('leadership') || 3} 
-                  onChange={(e) => form.setValue('leadership', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('leadership', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -276,9 +276,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="problem_solving" className="text-body-sm">Problem Solving</label>
                 <select 
                   id="problem_solving" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('problem_solving') || 3} 
-                  onChange={(e) => form.setValue('problem_solving', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('problem_solving', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -292,9 +292,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
                 <label htmlFor="adaptability" className="text-body-sm">Adaptability</label>
                 <select 
                   id="adaptability" 
-                  className="rounded border px-sm py-xs text-body-sm" 
+                  className="rounded border  px-md py-xs text-body-sm" 
                   value={form.getValues('adaptability') || 3} 
-                  onChange={(e) => form.setValue('adaptability', Number(e.target.value), { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('adaptability', Number(e.target.value), { shouldDirty: true })}
                 >
                   <option value="1">1</option>
                   <option value="2">2</option>
@@ -310,9 +310,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="strengths" className="text-body-sm form-label">Key Strengths *</label>
             <textarea 
               id="strengths" 
-              className="rounded border px-sm py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-[80px]" 
               value={form.getValues('strengths') || ''} 
-              onChange={(e) => form.setValue('strengths', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('strengths', e.target.value, { shouldDirty: true })} 
               placeholder="List key strengths and positive contributions..."
               aria-invalid={!!form.formState.errors.strengths} 
             />
@@ -324,9 +324,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="improvement_areas" className="text-body-sm form-label">Areas for Improvement *</label>
             <textarea 
               id="improvement_areas" 
-              className="rounded border px-sm py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-[80px]" 
               value={form.getValues('improvement_areas') || ''} 
-              onChange={(e) => form.setValue('improvement_areas', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('improvement_areas', e.target.value, { shouldDirty: true })} 
               placeholder="Areas where growth and development are needed..."
               aria-invalid={!!form.formState.errors.improvement_areas} 
             />
@@ -338,9 +338,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="goals_achieved" className="text-body-sm form-label">Goals Achieved</label>
             <textarea 
               id="goals_achieved" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('goals_achieved') || ''} 
-              onChange={(e) => form.setValue('goals_achieved', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('goals_achieved', e.target.value, { shouldDirty: true })} 
               placeholder="Goals that were successfully completed..."
             />
           </div>
@@ -349,9 +349,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="future_goals" className="text-body-sm form-label">Future Goals</label>
             <textarea 
               id="future_goals" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('future_goals') || ''} 
-              onChange={(e) => form.setValue('future_goals', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('future_goals', e.target.value, { shouldDirty: true })} 
               placeholder="Goals for the next review period..."
             />
           </div>
@@ -362,9 +362,9 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               <input 
                 id="review_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('review_date') || ''} 
-                onChange={(e) => form.setValue('review_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('review_date', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.review_date} 
               />
               {form.formState.errors.review_date ? 
@@ -376,16 +376,16 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
               <input 
                 id="next_review_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('next_review_date') || ''} 
-                onChange={(e) => form.setValue('next_review_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('next_review_date', e.target.value, { shouldDirty: true })} 
               />
             </div>
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

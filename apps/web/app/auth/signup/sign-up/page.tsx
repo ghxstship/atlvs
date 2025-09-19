@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Route } from 'next';
@@ -38,7 +39,7 @@ export default function SignUpPage() {
       if (error) throw error
 
       router.push('/auth/verify-email' as Route)
-    } catch (error: any) {
+    } catch (error) {
       setError(error.message)
     } finally {
       setLoading(false)
@@ -65,7 +66,7 @@ export default function SignUpPage() {
           label="Email Address"
           placeholder="Enter your email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           required
           autoComplete="email"
         />
@@ -77,7 +78,7 @@ export default function SignUpPage() {
           label="Password"
           placeholder="Create a password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           required
           autoComplete="new-password"
           showPassword={showPassword}
@@ -91,7 +92,7 @@ export default function SignUpPage() {
           label="Confirm Password"
           placeholder="Confirm your password"
           value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value)}
           required
           autoComplete="new-password"
           showPassword={showConfirmPassword}

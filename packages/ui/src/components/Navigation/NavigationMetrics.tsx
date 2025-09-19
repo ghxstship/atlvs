@@ -46,9 +46,9 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
     let paintTime = 0;
     
     // Measure paint time
-    const observer = new PerformanceObserver((list) => {
+    const observer = new PerformanceObserver((list: any) => {
       const entries = list.getEntries();
-      entries.forEach((entry) => {
+      entries.forEach((entry: any) => {
         if (entry.entryType === 'paint' && entry.name === 'first-contentful-paint') {
           paintTime = entry.startTime;
         }

@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Textarea,
-  Select,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Textarea, Select, Card } from '@ghxstship/ui';
 import { 
   TrendingUp,
   Calendar,
@@ -174,7 +168,7 @@ export default function CreateAdvancingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <TrendingUp className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Asset & Personnel</h3>
+            <h3 className="text-body text-heading-4">Asset & Personnel</h3>
           </div>
           
           <div className="stack-md">
@@ -182,9 +176,8 @@ export default function CreateAdvancingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <Input
-                value={formData.assetId}
-                onChange={(e) => handleInputChange('assetId', e.target.value)}
+              <UnifiedInput                 value={formData.assetId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
               />
@@ -196,9 +189,8 @@ export default function CreateAdvancingClient({
                   <UserIcon className="h-4 w-4 inline mr-xs" />
                   Advanced To *
                 </label>
-                <Input
-                  value={formData.advancedTo}
-                  onChange={(e) => handleInputChange('advancedTo', e.target.value)}
+                <UnifiedInput                   value={formData.advancedTo}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advancedTo', e.target.value)}
                   placeholder="Person receiving the advance"
                   required
                 />
@@ -208,9 +200,8 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Advanced By
                 </label>
-                <Input
-                  value={formData.advancedBy}
-                  onChange={(e) => handleInputChange('advancedBy', e.target.value)}
+                <UnifiedInput                   value={formData.advancedBy}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advancedBy', e.target.value)}
                   placeholder="Person authorizing the advance"
                 />
               </div>
@@ -222,7 +213,7 @@ export default function CreateAdvancingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Calendar className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Dates & Timeline</h3>
+            <h3 className="text-body text-heading-4">Dates & Timeline</h3>
           </div>
           
           <div className="stack-md">
@@ -231,10 +222,9 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Advance Date *
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.advanceDate}
-                  onChange={(e) => handleInputChange('advanceDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('advanceDate', e.target.value)}
                   required
                 />
               </div>
@@ -243,10 +233,9 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Expected Return Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.returnDate}
-                  onChange={(e) => handleInputChange('returnDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('returnDate', e.target.value)}
                 />
               </div>
             </div>
@@ -257,7 +246,7 @@ export default function CreateAdvancingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <UserIcon className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Purpose & Details</h3>
+            <h3 className="text-body text-heading-4">Purpose & Details</h3>
           </div>
           
           <div className="stack-md">
@@ -267,7 +256,7 @@ export default function CreateAdvancingClient({
               </label>
               <Textarea
                 value={formData.purpose}
-                onChange={(e) => handleInputChange('purpose', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purpose', e.target.value)}
                 placeholder="Describe the purpose of this advance"
                 rows={3}
                 required
@@ -280,7 +269,7 @@ export default function CreateAdvancingClient({
               </label>
               <Select
                 value={formData.status}
-                onValueChange={(value) => handleInputChange('status', value)}
+                onValueChange={(value: any) => handleInputChange('status', value)}
               >
                 {ADVANCE_STATUSES.map(status => (
                   <option key={status.value} value={status.value}>
@@ -296,7 +285,7 @@ export default function CreateAdvancingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <DollarSign className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Financial Information</h3>
+            <h3 className="text-body text-heading-4">Financial Information</h3>
           </div>
           
           <div className="stack-md">
@@ -305,11 +294,10 @@ export default function CreateAdvancingClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Amount
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.amount}
-                  onChange={(e) => handleInputChange('amount', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('amount', e.target.value)}
                   placeholder="0.00"
                 />
               </div>
@@ -320,7 +308,7 @@ export default function CreateAdvancingClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value) => handleInputChange('currency', value)}
+                  onValueChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>
@@ -337,7 +325,7 @@ export default function CreateAdvancingClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about this advance"
                 rows={3}
               />

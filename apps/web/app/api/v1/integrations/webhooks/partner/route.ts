@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
       console.log('Webhook received', { id, event: payload?.event, ts: new Date().toISOString() });
 
       return NextResponse.json({ received: true }, { status: 200 });
-    } catch (err: any) {
+    } catch (err) {
       console.error('Webhook error', err);
       return NextResponse.json({ error: 'Bad Request' }, { status: 400 });
     }

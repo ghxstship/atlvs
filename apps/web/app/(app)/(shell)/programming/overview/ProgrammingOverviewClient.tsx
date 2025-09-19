@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
 import { Card, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -157,7 +158,7 @@ export default function ProgrammingOverviewClient({
           <Card className="p-md">
             {recentEvents.length > 0 ? (
               <div className="stack-sm">
-                {recentEvents.map((event) => (
+                {recentEvents.map((event: any) => (
                   <div key={event.id} className="flex items-center justify-between py-sm border-b last:border-b-0">
                     <div>
                       <p className="form-label">{event.name}</p>
@@ -182,7 +183,7 @@ export default function ProgrammingOverviewClient({
           <Card className="p-md">
             {upcomingEvents.length > 0 ? (
               <div className="stack-sm">
-                {upcomingEvents.map((event) => (
+                {upcomingEvents.map((event: any) => (
                   <div key={event.id} className="flex items-center justify-between py-sm border-b last:border-b-0">
                     <div>
                       <p className="form-label">{event.name}</p>

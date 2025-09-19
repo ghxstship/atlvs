@@ -9,7 +9,7 @@ import { createBrowserClient } from '@supabase/ssr';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface VerifyEmailStepProps {
-  user: any;
+  user;
   onNext: () => void;
   updateData: (data: any) => void;
 }
@@ -41,7 +41,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       
       if (error) throw error;
       setResendMessage('Verification email sent! Check your inbox.');
-    } catch (error: any) {
+    } catch (error) {
       setResendMessage(error.message || 'Failed to resend email');
     } finally {
       setIsResending(false);

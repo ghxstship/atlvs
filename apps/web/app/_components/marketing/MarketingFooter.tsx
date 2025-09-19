@@ -1,5 +1,6 @@
 'use client';
 
+
 import Link from 'next/link';
 import { typography, anton } from '../lib/typography';
 import { layouts } from '../lib/layouts';
@@ -14,8 +15,9 @@ const footerSections = [
     links: [
       { label: 'ATLVS', href: '/products/atlvs' },
       { label: 'OPENDECK', href: '/products/opendeck' },
-      { label: 'Compare Products', href: '/products/compare' },
+      { label: 'Compare', href: '/products/compare' },
       { label: 'Pricing', href: '/pricing' },
+      { label: 'Coming Soon', href: '/products/coming-soon' },
     ],
   },
   {
@@ -57,9 +59,12 @@ const footerSections = [
   {
     title: 'Community',
     links: [
-      { label: 'Discord', href: 'https://discord.gg/ghxstship' },
-      { label: 'Forums', href: '/community/forums' },
+      { label: 'Skool', href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed' },
       { label: 'Events', href: '/community/events' },
+      { label: 'News', href: '/community/forums' },
+      { label: 'Showcase', href: '/community/showcase' },
+      { label: 'Impact', href: '/community/impact' },
+      { label: 'Opportunities', href: '/community/opportunities' },
       { label: 'Partners', href: '/community/partners' },
     ],
   },
@@ -85,7 +90,7 @@ export function MarketingFooter() {
       <section className="py-3xl bg-muted/30 border-t">
         <div className={`${layouts.container} ${layouts.sectionPadding}`}>
           <div className="text-center">
-            <h3 className={`${typography.sectionTitle} mb-sm`}>
+            <h3 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-sm`}>
               STAY UPDATED WITH GHXSTSHIP
             </h3>
             <p className="color-muted mb-md max-w-2xl mx-auto">
@@ -101,7 +106,7 @@ export function MarketingFooter() {
         <div className={`${layouts.container} ${layouts.sectionPadding} py-2xl`}>
           {/* Footer Links */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
-            {footerSections.map((section) => (
+            {footerSections.map((section: any) => (
               <FooterSection key={section.title} title={section.title} links={section.links} />
             ))}
           </div>

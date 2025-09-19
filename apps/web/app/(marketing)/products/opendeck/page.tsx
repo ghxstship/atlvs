@@ -199,7 +199,7 @@ export default function OPENDECKPage() {
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm px-sm py-xs bg-background rounded-md text-body-sm color-muted">
+                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
                       <div className="w-3 h-3 color-success">🔒</div>
                       opendeck.ghxstship.com
                     </div>
@@ -227,14 +227,14 @@ export default function OPENDECKPage() {
                           </span>
                         </div>
                         <div className="flex-1">
-                          <div className="text-body-sm">{talent.name}</div>
+                          <div>{talent.name}</div>
                           <div className="text-body-sm color-muted">{talent.role}</div>
                           <div className="text-body-sm color-muted">{talent.location}</div>
                         </div>
                         <div className="text-right">
                           <div className="flex items-center gap-xs mb-xs">
                             <Star className="h-3 w-3 fill-warning color-warning" />
-                            <span className="text-body-sm">{talent.rating}</span>
+                            <span>{talent.rating}</span>
                           </div>
                           <div className="text-body-sm color-muted">{talent.projects} projects</div>
                         </div>
@@ -269,7 +269,7 @@ export default function OPENDECKPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-xl mb-3xl">
-            {categories.map((category) => (
+            {categories.map((category: any) => (
               <Card key={category.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl text-center">
                   <div className={`${anton.className} text-heading-1 color-secondary mb-md uppercase`}>
@@ -279,7 +279,7 @@ export default function OPENDECKPage() {
                   <p className="color-muted mb-lg">{category.description}</p>
                   
                   <div className="stack-sm">
-                    {category.examples.map((example) => (
+                    {category.examples.map((example: any) => (
                       <div key={example} className="flex items-center justify-center gap-sm">
                         <div className="w-2 h-2 bg-secondary rounded-full"></div>
                         <span className="text-body-sm color-muted">{example}</span>
@@ -307,7 +307,7 @@ export default function OPENDECKPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {features.map((feature) => {
+            {features.map((feature: any) => {
               const Icon = feature.icon;
               return (
                 <Card key={feature.title} className="hover:shadow-floating transition-shadow">
@@ -317,8 +317,8 @@ export default function OPENDECKPage() {
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{feature.description}</p>
-                    <div className="stack-xs">
-                      {feature.benefits.map((benefit) => (
+                    <div className="stack-sm gap-xs">
+                      {feature.benefits.map((benefit: any) => (
                         <div key={benefit} className="flex items-center gap-sm">
                           <CheckCircle className="h-3 w-3 color-success flex-shrink-0" />
                           <span className="text-body-sm color-muted">{benefit}</span>
@@ -346,7 +346,7 @@ export default function OPENDECKPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-xl mb-3xl">
-            {successStories.map((story) => (
+            {successStories.map((story: any) => (
               <Card key={story.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <Badge variant="outline" className="mb-md">{story.industry}</Badge>

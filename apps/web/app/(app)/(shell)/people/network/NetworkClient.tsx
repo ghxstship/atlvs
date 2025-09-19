@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Users, Network, MessageCircle, Calendar, ArrowRight } from 'lucide-react';
 
@@ -217,18 +218,17 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
+                <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
             </div>
             <select
               value={selectedRelationshipType}
-              onChange={(e) => setSelectedRelationshipType(e.target.value)}
-              className="px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedRelationshipType(e.target.value)}
+              className=" px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allRelationships')}</option>
               {relationshipTypes.map(type => (
@@ -239,8 +239,8 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
             </select>
             <select
               value={selectedStrength}
-              onChange={(e) => setSelectedStrength(e.target.value)}
-              className="px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStrength(e.target.value)}
+              className=" px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allStrengths')}</option>
               {strengthLevels.map(strength => (
@@ -255,7 +255,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
 
       {/* Network Connections */}
       <div className="stack-md">
-        {filteredConnections.map((connection) => {
+        {filteredConnections.map((connection: any) => {
           const relationshipType = relationshipTypes.find(t => t.value === connection.relationship_type);
           const strength = strengthLevels.find(s => s.value === connection.strength);
           

@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
-import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
 
 interface BidsClientProps {
   user: User;
@@ -89,7 +90,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
     }
   };
 
-  const filteredBids = bids.filter((bid) => {
+  const filteredBids = bids.filter((bid: any) => {
     const matchesSearch = bid.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          (bid.description?.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesStatus = statusFilter === 'all' || bid.status === statusFilter;
@@ -205,19 +206,18 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
 
       <div className="flex gap-md mb-lg">
         <div className="flex-1">
-          <Input
-            placeholder="Search bids..."
+          <UnifiedInput             placeholder="Search bids..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="w-full"
           />
         </div>
         <select
           value={statusFilter}
-          onChange={(e) => setStatusFilter(e.target.value)}
-          className="px-sm py-sm border border-border rounded-md bg-background"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value)}
+          className=" px-md py-sm border border-border rounded-md bg-background"
         >
-          {STATUS_OPTIONS.map((option) => (
+          {STATUS_OPTIONS.map((option: any) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -225,10 +225,10 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         </select>
         <select
           value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value)}
-          className="px-sm py-sm border border-border rounded-md bg-background"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value)}
+          className=" px-md py-sm border border-border rounded-md bg-background"
         >
-          {TYPE_OPTIONS.map((option) => (
+          {TYPE_OPTIONS.map((option: any) => (
             <option key={option.value} value={option.value}>
               {option.label}
             </option>
@@ -251,7 +251,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         </Card>
       ) : (
         <div className="grid gap-md">
-          {filteredBids.map((bid) => (
+          {filteredBids.map((bid: any) => (
             <Card key={bid.id} className="p-lg hover:shadow-elevated transition-shadow">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -319,7 +319,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
         <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center p-md z-50">
           <div className="bg-background rounded-lg p-lg w-full max-w-md">
             <h3 className="text-body text-heading-4 mb-md">Create New Bid</h3>
-            <form onSubmit={(e) => {
+            <form onSubmit={(e: any) => {
               e.preventDefault();
               const formData = new FormData(e.currentTarget);
               createBid({
@@ -335,7 +335,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
               <div className="stack-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Title</label>
-                  <Input name="title" required />
+                  <UnifiedInput name="title" required />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Description</label>
@@ -344,7 +344,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Type</label>
                   <select name="type" className="w-full p-sm border border-border rounded bg-background" required>
-                    {TYPE_OPTIONS.slice(1).map((option) => (
+                    {TYPE_OPTIONS.slice(1).map((option: any) => (
                       <option key={option.value} value={option.value}>
                         {option.label}
                       </option>
@@ -353,11 +353,11 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Amount</label>
-                  <Input name="amount" type="number" required />
+                  <UnifiedInput name="amount" type="number" required />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Opportunity ID</label>
-                  <Input name="opportunityId" required />
+                  <UnifiedInput name="opportunityId" required />
                 </div>
               </div>
               <div className="flex gap-sm mt-lg">

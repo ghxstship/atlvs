@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   TrendingUp, 
   Edit, 
@@ -402,7 +402,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         </Card>
       ) : (
         <div className="stack-md">
-          {reviews.map((review) => (
+          {reviews.map((review: any) => (
             <Card key={review.id}>
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
@@ -411,7 +411,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                       <Award className="h-5 w-5 color-primary" />
                     </div>
                     <div>
-                      <h3 className="text-heading-4">{review.review_period}</h3>
+                      <h3 className="text-body text-heading-4">{review.review_period}</h3>
                       <p className="text-body-sm color-muted">
                         Reviewed by {review.reviewer_name}
                         {review.reviewer_title && ` (${review.reviewer_title})`}
@@ -554,23 +554,20 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         description={editingReview ? 'Update performance review details' : 'Add a new performance review'}
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-md">
-          <Input
-            label="Review Period"
+          <UnifiedInput             label="Review Period"
             placeholder="e.g., Q4 2023 Annual Review"
             {...form.register('review_period')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Reviewer Name"
+            <UnifiedInput               label="Reviewer Name"
               placeholder="Name of reviewer"
               {...form.register('reviewer_name')}
              
             />
 
-            <Input
-              label="Reviewer Title"
+            <UnifiedInput               label="Reviewer Title"
               placeholder="Reviewer's job title"
               {...form.register('reviewer_title')}
              
@@ -588,16 +585,14 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               <option value={1}>1 - Unsatisfactory</option>
             </Select>
 
-            <Input
-              label="Review Date"
+            <UnifiedInput               label="Review Date"
               type="date"
               {...form.register('review_date')}
              
             />
           </div>
 
-          <Input
-            label="Next Review Date (Optional)"
+          <UnifiedInput             label="Next Review Date (Optional)"
             type="date"
             {...form.register('next_review_date')}
            
@@ -607,11 +602,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Strengths</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add a strength"
+              <UnifiedInput                 placeholder="Add a strength"
                 value={strengthInput}
-                onChange={(e) => setStrengthInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addStrength())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStrengthInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addStrength())}
               />
               <Button type="button" onClick={addStrength}>Add</Button>
             </div>
@@ -639,11 +633,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Areas for Improvement</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add an area for improvement"
+              <UnifiedInput                 placeholder="Add an area for improvement"
                 value={improvementInput}
-                onChange={(e) => setImprovementInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addImprovement())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setImprovementInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addImprovement())}
               />
               <Button type="button" onClick={addImprovement}>Add</Button>
             </div>
@@ -671,11 +664,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Goals Achieved</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add a goal that was achieved"
+              <UnifiedInput                 placeholder="Add a goal that was achieved"
                 value={goalAchievedInput}
-                onChange={(e) => setGoalAchievedInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addGoalAchieved())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setGoalAchievedInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addGoalAchieved())}
               />
               <Button type="button" onClick={addGoalAchieved}>Add</Button>
             </div>
@@ -699,11 +691,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           <div>
             <label className="block text-body-sm form-label mb-sm">Goals for Next Period</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add a goal for the next period"
+              <UnifiedInput                 placeholder="Add a goal for the next period"
                 value={nextGoalInput}
-                onChange={(e) => setNextGoalInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addNextGoal())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNextGoalInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addNextGoal())}
               />
               <Button type="button" onClick={addNextGoal}>Add</Button>
             </div>

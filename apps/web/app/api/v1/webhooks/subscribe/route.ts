@@ -146,7 +146,7 @@ export async function GET(request: NextRequest) {
       totalWebhooks: webhooks?.length || 0
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook subscriptions GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -308,7 +308,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook subscribe POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -438,7 +438,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook subscribe PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -494,7 +494,7 @@ export async function DELETE(request: NextRequest) {
       eventType: eventType || 'all'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook subscribe DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

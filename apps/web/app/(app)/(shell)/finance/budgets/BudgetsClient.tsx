@@ -1,21 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  DataActions,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   DollarSign,
   Plus,
@@ -385,7 +374,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
         {/* Budget Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {budgets.map((budget) => {
+            {budgets.map((budget: any) => {
               const utilization = getBudgetUtilization(budget);
               const status = getBudgetStatus(budget);
               
@@ -475,7 +464,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   </tr>
                 </thead>
                 <tbody>
-                  {budgets.map((budget) => (
+                  {budgets.map((budget: any) => (
                     <tr key={budget.id} className="border-b hover:bg-secondary/50">
                       <td className="p-sm">{budget.name}</td>
                       <td className="p-sm">{budget.category}</td>

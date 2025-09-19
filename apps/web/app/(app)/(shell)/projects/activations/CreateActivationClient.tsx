@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -74,7 +75,7 @@ export default function CreateActivationClient({
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create activation');
     } finally {
       setLoading(false);
@@ -113,7 +114,7 @@ export default function CreateActivationClient({
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter activation name..."
               {...form.register('name')}
             />
@@ -132,7 +133,7 @@ export default function CreateActivationClient({
               <input
                 id="activation_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('activation_date')}
               />
             </div>
@@ -146,7 +147,7 @@ export default function CreateActivationClient({
                 type="number"
                 min="0"
                 step="0.01"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="0.00"
                 {...form.register('budget', { valueAsNumber: true })}
               />
@@ -159,11 +160,11 @@ export default function CreateActivationClient({
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project (organization-wide activation)</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>
@@ -178,7 +179,7 @@ export default function CreateActivationClient({
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the activation process, goals, and requirements..."
               {...form.register('description')}
             />

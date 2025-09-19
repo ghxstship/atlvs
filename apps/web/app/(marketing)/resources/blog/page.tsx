@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Clock, User, Calendar, Lock, Eye } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Blog | GHXSTSHIP Resources',
@@ -101,7 +100,7 @@ export default function BlogPage() {
             <Badge variant="outline" className="mb-md">
               Blog
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               INSIGHTS FROM
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -134,7 +133,7 @@ export default function BlogPage() {
       <section className="py-xl border-b">
         <div className="container mx-auto px-md">
           <div className="flex flex-wrap justify-center gap-sm">
-            {categories.map((category) => (
+            {categories.map((category: any) => (
               <Badge 
                 key={category} 
                 variant={category === 'All' ? 'default' : 'outline'} 
@@ -151,7 +150,7 @@ export default function BlogPage() {
       <section id="posts" className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-xl">
-            {blogPosts.map((post) => (
+            {blogPosts.map((post: any) => (
               <Card key={post.id} className="hover:shadow-floating transition-all duration-300 group overflow-hidden">
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -174,7 +173,7 @@ export default function BlogPage() {
                 </div>
                 
                 <CardContent className="p-lg">
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {post.title}
                   </h3>
                   <p className="color-muted mb-md line-clamp-2">
@@ -231,7 +230,7 @@ export default function BlogPage() {
         <div className="container mx-auto px-md">
           <Card className="max-w-2xl mx-auto text-center">
             <CardContent className="p-xl">
-              <h2 className={`mb-md ${typography.cardTitle}`}>
+              <h2 className={`mb-md ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                 NEVER MISS AN UPDATE
               </h2>
               <p className="color-muted mb-lg">

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
-import { Input } from '../Input';
+import { Input } from '../atomic/Input';
 import { 
   Palette, 
   CheckCircle, 
@@ -372,13 +372,13 @@ export function DesignTokenValidator({
         <div className="flex items-center gap-sm">
           <Badge 
             variant={stats.complianceScore >= 95 ? 'success' : stats.complianceScore >= 80 ? 'warning' : 'destructive'}
-            size="sm"
+            
           >
             {stats.complianceScore}% Compliant
           </Badge>
           <Button
-            variant="primary"
-            size="sm"
+            variant="default"
+            
             onClick={runValidation}
             disabled={isValidating}
           >
@@ -460,14 +460,14 @@ export function DesignTokenValidator({
             <Input
               placeholder="Search violations..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: any) => setSearchQuery(e.target.value)}
               className="pl-2xl"
             />
           </div>
           
           <select
             value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
+            onChange={(e: any) => setSelectedCategory(e.target.value)}
             className="px-sm py-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="all">All Categories</option>
@@ -480,7 +480,7 @@ export function DesignTokenValidator({
           
           <select
             value={selectedSeverity}
-            onChange={(e) => setSelectedSeverity(e.target.value)}
+            onChange={(e: any) => setSelectedSeverity(e.target.value)}
             className="px-sm py-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="all">All Severities</option>
@@ -506,11 +506,11 @@ export function DesignTokenValidator({
                       <Badge 
                         variant={violation.severity === 'error' ? 'destructive' : 
                                 violation.severity === 'warning' ? 'warning' : 'secondary'}
-                        size="sm"
+                        
                       >
                         {violation.severity}
                       </Badge>
-                      <Badge variant="outline" size="sm">
+                      <Badge variant="outline" >
                         {violation.category}
                       </Badge>
                       <span className="text-sm font-medium">
@@ -541,8 +541,8 @@ export function DesignTokenValidator({
                   </div>
                   
                   <Button
-                    variant="primary"
-                    size="sm"
+                    variant="default"
+                    
                     onClick={() => fixViolation(violation)}
                   >
                     Fix
@@ -575,7 +575,7 @@ export function DesignTokenValidator({
                 <div className="flex items-center justify-between mb-sm">
                   <code className="text-sm font-medium">{usage.token}</code>
                   {usage.isDeprecated && (
-                    <Badge variant="warning" size="sm">Deprecated</Badge>
+                    <Badge variant="warning" >Deprecated</Badge>
                   )}
                 </div>
                 
@@ -600,11 +600,11 @@ export function DesignTokenValidator({
           </div>
           
           <div className="flex items-center gap-sm">
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Download className="h-4 w-4 mr-xs" />
               Export Report
             </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Settings className="h-4 w-4 mr-xs" />
               Configure Rules
             </Button>

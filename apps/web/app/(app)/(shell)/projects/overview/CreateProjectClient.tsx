@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -64,7 +65,7 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
       setOpen(false);
       form.reset({ name: '', status: 'planning', starts_at: null });
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -78,23 +79,23 @@ export default function CreateProjectClient({ orgId }: { orgId: string }) {
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title="New Project" description={submitting ? 'Saving…' : undefined}>
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
-        <form className="stack-sm" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
+        <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
           <div className="grid gap-xs">
             <label htmlFor="name" className="text-body-sm">{t('grid.name')}</label>
-            <input id="name" className="rounded border px-sm py-xs" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
+            <input id="name" className="rounded border  px-md py-xs" value={form.getValues('name') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
             {form.formState.errors.name ? <div className="text-body-sm color-destructive">{String(form.formState.errors.name.message)}</div> : null}
           </div>
           <div className="grid gap-xs">
             <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
-            <input id="status" className="rounded border px-sm py-xs" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
+            <input id="status" className="rounded border  px-md py-xs" value={form.getValues('status') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value, { shouldDirty: true })} />
           </div>
           <div className="grid gap-xs">
             <label htmlFor="starts_at" className="text-body-sm">{t('grid.startsAt')}</label>
-            <input id="starts_at" type="date" className="rounded border px-sm py-xs" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
+            <input id="starts_at" type="date" className="rounded border  px-md py-xs" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
           </div>
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>Create</Button>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>Create</Button>
           </div>
         </form>
       </Drawer>

@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Package, Edit, Trash2, Copy, Calendar, DollarSign } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -382,10 +383,9 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
-                <Input
-                  placeholder="Search requests..."
+                <UnifiedInput                   placeholder="Search requests..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -393,8 +393,8 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
             <div className="flex items-center gap-sm">
               <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedCategory(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Categories</option>
                 {ASSET_CATEGORIES.map(category => (
@@ -405,8 +405,8 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               </select>
               <select
                 value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedType(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="purchase">Purchase</option>
@@ -415,8 +415,8 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               </select>
               <select
                 value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="requested">Requested</option>
@@ -450,7 +450,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
                   <div className="flex items-center gap-sm">
                     <div className={`w-3 h-3 rounded-full ${getCategoryColor(item.category)}`} />
                     <div>
-                      <h3 className="text-heading-4">{item.name}</h3>
+                      <h3 className="text-body text-heading-4">{item.name}</h3>
                       <p className="text-body-sm color-muted">
                         Requested by {item.requestedBy} • {formatDate(item.requestedDate)}
                       </p>
@@ -529,7 +529,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
 
                 {item.notes && (
                   <div className="mt-sm p-sm bg-secondary rounded-md">
-                    <span className="text-body-sm color-muted block mb-xs">Notes</span>
+                    <h3 className="text-body text-heading-4">Notes</h3>
                     <p className="text-body-sm">{item.notes}</p>
                   </div>
                 )}
@@ -549,15 +549,13 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Request Name</label>
-            <Input
-              placeholder="Enter request name"
+            <UnifiedInput               placeholder="Enter request name"
               defaultValue={selectedItem?.name}
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Description</label>
-            <Input
-              placeholder="Enter description"
+            <UnifiedInput               placeholder="Enter description"
               defaultValue={selectedItem?.description}
             />
           </div>
@@ -566,7 +564,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               <label className="block text-body-sm form-label mb-xs">Category</label>
               <select
                 defaultValue={selectedItem?.category}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 {ASSET_CATEGORIES.map(category => (
                   <option key={category.id} value={category.id}>
@@ -579,7 +577,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               <label className="block text-body-sm form-label mb-xs">Type</label>
               <select
                 defaultValue={selectedItem?.type}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="purchase">Purchase</option>
                 <option value="rental">Rental</option>
@@ -590,16 +588,14 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           <div className="grid grid-cols-3 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Quantity</label>
-              <Input
-                type="number"
+              <UnifiedInput                 type="number"
                 placeholder="1"
                 defaultValue={selectedItem?.quantity}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Unit</label>
-              <Input
-                placeholder="units"
+              <UnifiedInput                 placeholder="units"
                 defaultValue={selectedItem?.unit}
               />
             </div>
@@ -607,7 +603,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
               <label className="block text-body-sm form-label mb-xs">Priority</label>
               <select
                 defaultValue={selectedItem?.priority}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -619,16 +615,14 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Estimated Cost</label>
-              <Input
-                type="number"
+              <UnifiedInput                 type="number"
                 placeholder="0.00"
                 defaultValue={selectedItem?.estimatedCost}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Needed By</label>
-              <Input
-                type="date"
+              <UnifiedInput                 type="date"
                 defaultValue={selectedItem?.neededBy?.split('T')[0]}
               />
             </div>
@@ -636,7 +630,7 @@ export default function AdvancingClient({ orgId }: AdvancingClientProps) {
           <div>
             <label className="block text-body-sm form-label mb-xs">Notes</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Additional notes or requirements"
               defaultValue={selectedItem?.notes}

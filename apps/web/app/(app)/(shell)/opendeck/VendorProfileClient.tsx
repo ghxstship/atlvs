@@ -1,11 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Card, Button, Badge, Input, Textarea, Select, SelectContent, 
-  SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, 
-  TabsList, TabsTrigger, Drawer 
-} from '@ghxstship/ui';
+import { Card, CardContent, Button, Badge, UnifiedInput, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Tabs, TabsContent, TabsList, TabsTrigger, Drawer } from '@ghxstship/ui';
 import { 
   User, Briefcase, Award, Globe, Mail, Phone, MapPin, Calendar,
   DollarSign, Clock, Star, Upload, Plus, Edit, Trash2, Eye,
@@ -177,7 +173,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         <div className="flex items-start justify-between">
           <div className="flex items-start cluster">
             <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-primary-foreground text-heading-3 text-heading-3">
+              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-primary-foreground text-heading-3">
                 {profile?.display_name?.charAt(0) || 'V'}
               </div>
               {profile?.verified && (
@@ -187,7 +183,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               )}
             </div>
             <div>
-              <h2 className="text-heading-3 text-heading-3">{profile?.display_name || 'Vendor Profile'}</h2>
+              <h2 className="text-heading-3">{profile?.display_name || 'Vendor Profile'}</h2>
               <p className="color-muted">{profile?.tagline || 'No tagline set'}</p>
               <div className="flex items-center cluster mt-sm">
                 <Badge variant={profile?.availability_status === 'available' ? 'success' : 'secondary'}>
@@ -214,7 +210,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="text-body-sm form-label">Business Name</label>
-                <Input {...register('business_name')} placeholder="Your business name" />
+                <UnifiedInput {...register('business_name')} placeholder="Your business name" />
                 {errors.business_name && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.business_name.message}</p>
                 )}
@@ -224,7 +220,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-body-sm form-label">Business Type</label>
                 <Select 
                   value={watch('business_type')} 
-                  onValueChange={(value) => setValue('business_type', value as any)}
+                  onValueChange={(value: any) => setValue('business_type', value as any)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select type" />
@@ -239,7 +235,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Display Name</label>
-                <Input {...register('display_name')} placeholder="Public display name" />
+                <UnifiedInput {...register('display_name')} placeholder="Public display name" />
                 {errors.display_name && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.display_name.message}</p>
                 )}
@@ -247,7 +243,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Email</label>
-                <Input {...register('email')} type="email" placeholder="contact@example.com" />
+                <UnifiedInput {...register('email')} type="email" placeholder="contact@example.com" />
                 {errors.email && (
                   <p className="text-body-sm color-destructive mt-xs">{errors.email.message}</p>
                 )}
@@ -255,19 +251,19 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Phone</label>
-                <Input {...register('phone')} placeholder="+1 234 567 8900" />
+                <UnifiedInput {...register('phone')} placeholder="+1 234 567 8900" />
               </div>
 
               <div>
                 <label className="text-body-sm form-label">Website</label>
-                <Input {...register('website')} placeholder="https://example.com" />
+                <UnifiedInput {...register('website')} placeholder="https://example.com" />
               </div>
 
               <div>
                 <label className="text-body-sm form-label">Primary Category</label>
                 <Select 
                   value={watch('primary_category')} 
-                  onValueChange={(value) => setValue('primary_category', value)}
+                  onValueChange={(value: any) => setValue('primary_category', value)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select category" />
@@ -284,7 +280,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
                 <label className="text-body-sm form-label">Availability</label>
                 <Select 
                   value={watch('availability_status')} 
-                  onValueChange={(value) => setValue('availability_status', value as any)}
+                  onValueChange={(value: any) => setValue('availability_status', value as any)}
                 >
                   <SelectTrigger>
                     <SelectValue placeholder="Select status" />
@@ -299,7 +295,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Years of Experience</label>
-                <Input 
+                <UnifiedInput 
                   {...register('years_experience', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="5" 
@@ -308,7 +304,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Team Size</label>
-                <Input 
+                <UnifiedInput 
                   {...register('team_size', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="10" 
@@ -317,7 +313,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Hourly Rate</label>
-                <Input 
+                <UnifiedInput 
                   {...register('hourly_rate', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="150" 
@@ -326,13 +322,13 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
               <div>
                 <label className="text-body-sm form-label">Response Time</label>
-                <Input {...register('response_time')} placeholder="Within 1 hour" />
+                <UnifiedInput {...register('response_time')} placeholder="Within 1 hour" />
               </div>
             </div>
 
             <div>
               <label className="text-body-sm form-label">Tagline</label>
-              <Input {...register('tagline')} placeholder="Your professional tagline" />
+              <UnifiedInput {...register('tagline')} placeholder="Your professional tagline" />
             </div>
 
             <div>
@@ -407,7 +403,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               {profile?.website && (
                 <div className="flex items-center">
                   <Globe className="h-4 w-4 mr-sm color-muted" />
-                  <a href={profile.website as any} target="_blank" rel="noopener noreferrer" 
+                  <a href="#" target="_blank" rel="noopener noreferrer" 
                      className="text-body-sm color-primary hover:underline">
                     Website
                   </a>
@@ -459,7 +455,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-        {portfolio.map((item) => (
+        {portfolio.map((item: any) => (
           <Card key={item.id} className="overflow-hidden">
             <div className="aspect-video bg-gradient-to-br from-primary to-accent relative">
               {item.featured && (
@@ -469,7 +465,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               )}
             </div>
             <div className="p-md">
-              <h4 className="text-heading-4">{item.title}</h4>
+              <h4 className="text-body text-heading-4">{item.title}</h4>
               <p className="text-body-sm color-muted mt-xs">{item.category}</p>
               <p className="text-body-sm mt-sm line-clamp-2">{item.description}</p>
               <div className="flex items-center justify-between mt-md">
@@ -512,10 +508,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-        {services.map((service) => (
+        {services.map((service: any) => (
           <Card key={service.id} className="p-md">
             <div className="flex justify-between items-start mb-sm">
-              <h4 className="text-heading-4">{service.title}</h4>
+              <h4 className="text-body text-heading-4">{service.title}</h4>
               <Badge variant={service.status === 'active' ? 'success' : 'secondary'}>
                 {service.status}
               </Badge>
@@ -525,7 +521,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             <div className="stack-sm">
               <div className="flex justify-between text-body-sm">
                 <span>Starting at</span>
-                <span className="text-heading-4">${service.base_price}</span>
+                <span className="text-body-sm">${service.base_price}</span>
               </div>
               <div className="flex justify-between text-body-sm">
                 <span>Delivery</span>

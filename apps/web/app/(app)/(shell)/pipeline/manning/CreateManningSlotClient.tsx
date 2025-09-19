@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Users, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -207,10 +207,10 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               </label>
               <select
                 {...register('projectId')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select project...</option>
-                {projects.map((project) => (
+                {projects.map((project: any) => (
                   <option key={project.id} value={project.id}>
                     {project.name} ({project.status})
                   </option>
@@ -226,8 +226,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Role *
                 </label>
-                <Input
-                  {...register('role')}
+                <UnifiedInput                   {...register('role')}
                   placeholder="e.g., Production Manager, Rigger, etc."
                   error={errors.role?.message}
                 />
@@ -237,8 +236,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Required Count *
                 </label>
-                <Input
-                  {...register('requiredCount', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('requiredCount', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -253,7 +251,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               </label>
               <select
                 {...register('priority')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -267,8 +265,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date
                 </label>
-                <Input
-                  {...register('startDate')}
+                <UnifiedInput                   {...register('startDate')}
                   type="date"
                 />
               </div>
@@ -277,8 +274,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
                 <label className="block text-body-sm form-label mb-sm">
                   End Date
                 </label>
-                <Input
-                  {...register('endDate')}
+                <UnifiedInput                   {...register('endDate')}
                   type="date"
                 />
               </div>

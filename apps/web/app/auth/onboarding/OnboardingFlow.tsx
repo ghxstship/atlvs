@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import type { Route } from 'next';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@supabase/ssr';
 import { DynamicProgressBar } from '../../_components/ui';
 import { ArrowRight, ArrowLeft, Check, Building, Users, CreditCard, Settings } from 'lucide-react';
@@ -106,18 +106,18 @@ export function OnboardingFlow() {
 
   return (
     <div className="min-h-screen bg-gradient-subtle">
-      <div className={`${layouts.container} ${spacing.sectionPadding}`}>
+      <div className="container mx-auto px-md py-4xl">
         {/* Header */}
-        <div className={`text-center ${spacing.marginBottom.large}`}>
-          <Link href={"/home" as Route} className={`inline-flex items-center cluster-sm ${spacing.marginBottom.medium}`}>
-            <span className={typography.heroTitle}>
+        <div className="text-center mb-3xl">
+          <Link href={"/home" as Route} className="inline-flex items-center gap-sm mb-2xl">
+            <span className="text-heading-1 lg:text-display uppercase">
               GHXSTSHIP
             </span>
           </Link>
           
           {/* Progress Indicator */}
-          <div className={`max-w-md mx-auto ${spacing.marginBottom.medium}`}>
-            <div className={`flex items-center justify-between ${typography.bodySmall} ${spacing.marginBottom.small}`}>
+          <div className="max-w-md mx-auto mb-lg">
+            <div className="flex items-center justify-between text-body-sm mb-sm">
               <span>Step {getCurrentStepNumber()} of {getTotalSteps()}</span>
               <span>{Math.round((getCurrentStepNumber() / getTotalSteps()) * 100)}% Complete</span>
             </div>

@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ apiKeys: apiKeys || [] });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('API keys list error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

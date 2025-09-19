@@ -1,8 +1,8 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Input, Select, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Plane, Hotel, Car, MapPin, Globe, Save, Plus, X } from 'lucide-react';
 import { useToast } from '@ghxstship/ui';
 
@@ -213,13 +213,13 @@ export default function TravelPreferencesClient() {
     <div className="stack-lg">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Travel Preferences</h2>
+          <h2 className="text-heading-3">Travel Preferences</h2>
           <p className="color-muted">Manage your travel documents and preferences</p>
         </div>
         {!isEditing ? (
           <Button onClick={() => setIsEditing(true)}>Edit Preferences</Button>
         ) : (
-          <div className="cluster-sm">
+          <div className="cluster">
             <Button variant="outline" onClick={() => {
               setIsEditing(false);
               setFormData(preferences || {});
@@ -244,23 +244,20 @@ export default function TravelPreferencesClient() {
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
-            <Input
-              label="Passport Number"
+            <UnifiedInput               label="Passport Number"
               value={formData.passport_number || ''}
-              onChange={(e) => setFormData({ ...formData, passport_number: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, passport_number: e.target.value })}
               disabled={!isEditing}
             />
-            <Input
-              label="Expiry Date"
+            <UnifiedInput               label="Expiry Date"
               type="date"
               value={formData.passport_expiry || ''}
-              onChange={(e) => setFormData({ ...formData, passport_expiry: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, passport_expiry: e.target.value })}
               disabled={!isEditing}
             />
-            <Input
-              label="Issuing Country"
+            <UnifiedInput               label="Issuing Country"
               value={formData.passport_country || ''}
-              onChange={(e) => setFormData({ ...formData, passport_country: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, passport_country: e.target.value })}
               disabled={!isEditing}
             />
           </div>
@@ -270,28 +267,25 @@ export default function TravelPreferencesClient() {
       {/* Travel Programs */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Travel Programs</h3>
+          <h3 className="text-body text-heading-4">Travel Programs</h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
-            <Input
-              label="TSA PreCheck"
+            <UnifiedInput               label="TSA PreCheck"
               value={formData.tsa_precheck || ''}
-              onChange={(e) => setFormData({ ...formData, tsa_precheck: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, tsa_precheck: e.target.value })}
               placeholder="Known Traveler Number"
               disabled={!isEditing}
             />
-            <Input
-              label="Global Entry"
+            <UnifiedInput               label="Global Entry"
               value={formData.global_entry || ''}
-              onChange={(e) => setFormData({ ...formData, global_entry: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, global_entry: e.target.value })}
               placeholder="PASSID"
               disabled={!isEditing}
             />
-            <Input
-              label="Known Traveler Number"
+            <UnifiedInput               label="Known Traveler Number"
               value={formData.known_traveler || ''}
-              onChange={(e) => setFormData({ ...formData, known_traveler: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, known_traveler: e.target.value })}
               disabled={!isEditing}
             />
           </div>
@@ -352,11 +346,10 @@ export default function TravelPreferencesClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newAirline}
-                  onChange={(e) => setNewAirline(e.target.value)}
+                <UnifiedInput                   value={newAirline}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewAirline(e.target.value)}
                   placeholder="Add airline..."
-                  onKeyPress={(e) => e.key === 'Enter' && addAirline()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addAirline()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -391,11 +384,10 @@ export default function TravelPreferencesClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newHotel}
-                  onChange={(e) => setNewHotel(e.target.value)}
+                <UnifiedInput                   value={newHotel}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewHotel(e.target.value)}
                   placeholder="Add hotel chain..."
-                  onKeyPress={(e) => e.key === 'Enter' && addHotel()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addHotel()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -430,11 +422,10 @@ export default function TravelPreferencesClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newCarRental}
-                  onChange={(e) => setNewCarRental(e.target.value)}
+                <UnifiedInput                   value={newCarRental}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCarRental(e.target.value)}
                   placeholder="Add car rental company..."
-                  onKeyPress={(e) => e.key === 'Enter' && addCarRental()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addCarRental()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -448,14 +439,14 @@ export default function TravelPreferencesClient() {
       {/* Loyalty Programs */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Loyalty Programs</h3>
+          <h3 className="text-body text-heading-4">Loyalty Programs</h3>
         </CardHeader>
         <CardContent>
           <div className="stack-sm">
             {(formData.loyalty_programs || []).map((program, index) => (
               <div key={index} className="p-sm bg-secondary rounded-lg flex justify-between items-center">
                 <div>
-                  <p className="text-heading-4">{program.company}</p>
+                  <p className="text-body-sm">{program.company}</p>
                   <p className="text-body-sm color-muted">
                     {program.type} - {program.number}
                     {program.status && ` (${program.status})`}
@@ -488,26 +479,23 @@ export default function TravelPreferencesClient() {
                     <option value="car">Car Rental</option>
                     <option value="other">Other</option>
                   </Select>
-                  <Input
-                    placeholder="Company name"
+                  <UnifiedInput                     placeholder="Company name"
                     value={newLoyaltyProgram.company}
-                    onChange={(e) => setNewLoyaltyProgram({ 
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewLoyaltyProgram({ 
                       ...newLoyaltyProgram, 
                       company: e.target.value 
                     })}
                   />
-                  <Input
-                    placeholder="Member number"
+                  <UnifiedInput                     placeholder="Member number"
                     value={newLoyaltyProgram.number}
-                    onChange={(e) => setNewLoyaltyProgram({ 
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewLoyaltyProgram({ 
                       ...newLoyaltyProgram, 
                       number: e.target.value 
                     })}
                   />
-                  <Input
-                    placeholder="Status (optional)"
+                  <UnifiedInput                     placeholder="Status (optional)"
                     value={newLoyaltyProgram.status}
-                    onChange={(e) => setNewLoyaltyProgram({ 
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewLoyaltyProgram({ 
                       ...newLoyaltyProgram, 
                       status: e.target.value 
                     })}
@@ -526,12 +514,12 @@ export default function TravelPreferencesClient() {
       {/* Travel Notes */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Travel Notes</h3>
+          <h3 className="text-body text-heading-4">Travel Notes</h3>
         </CardHeader>
         <CardContent>
           <Textarea
             value={formData.travel_notes || ''}
-            onChange={(e) => setFormData({ ...formData, travel_notes: e.target.value })}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, travel_notes: e.target.value })}
             placeholder="Special requirements, preferences, or notes for travel arrangements..."
             rows={4}
             disabled={!isEditing}

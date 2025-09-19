@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   Building,
   Globe,
@@ -178,7 +172,7 @@ export default function CreateCompanyClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Building className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Company Information</h3>
+            <h3 className="text-body text-heading-4">Company Information</h3>
           </div>
           
           <div className="stack-md">
@@ -186,9 +180,8 @@ export default function CreateCompanyClient({
               <label className="block text-body-sm form-label mb-xs">
                 Company Name *
               </label>
-              <Input
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
+              <UnifiedInput                 value={formData.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter company name"
                 required
               />
@@ -200,7 +193,7 @@ export default function CreateCompanyClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Brief description of the company"
                 rows={3}
               />
@@ -213,7 +206,7 @@ export default function CreateCompanyClient({
                 </label>
                 <Select
                   value={formData.industry}
-                  onValueChange={(value) => handleInputChange('industry', value)}
+                  onValueChange={(value: any) => handleInputChange('industry', value)}
                 >
                   {INDUSTRIES.map(industry => (
                     <option key={industry.value} value={industry.value}>
@@ -229,7 +222,7 @@ export default function CreateCompanyClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -246,7 +239,7 @@ export default function CreateCompanyClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Mail className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Contact Information</h3>
+            <h3 className="text-body text-heading-4">Contact Information</h3>
           </div>
           
           <div className="stack-md">
@@ -256,10 +249,9 @@ export default function CreateCompanyClient({
                   <Globe className="h-4 w-4 inline mr-xs" />
                   Website
                 </label>
-                <Input
-                  type="url"
+                <UnifiedInput                   type="url"
                   value={formData.website}
-                  onChange={(e) => handleInputChange('website', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('website', e.target.value)}
                   placeholder="https://company.com"
                 />
               </div>
@@ -269,10 +261,9 @@ export default function CreateCompanyClient({
                   <Mail className="h-4 w-4 inline mr-xs" />
                   Email
                 </label>
-                <Input
-                  type="email"
+                <UnifiedInput                   type="email"
                   value={formData.email}
-                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('email', e.target.value)}
                   placeholder="contact@company.com"
                 />
               </div>
@@ -283,10 +274,9 @@ export default function CreateCompanyClient({
                 <Phone className="h-4 w-4 inline mr-xs" />
                 Phone
               </label>
-              <Input
-                type="tel"
+              <UnifiedInput                 type="tel"
                 value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('phone', e.target.value)}
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -297,7 +287,7 @@ export default function CreateCompanyClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <MapPin className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Address Information</h3>
+            <h3 className="text-body text-heading-4">Address Information</h3>
           </div>
           
           <div className="stack-md">
@@ -305,9 +295,8 @@ export default function CreateCompanyClient({
               <label className="block text-body-sm form-label mb-xs">
                 Street Address
               </label>
-              <Input
-                value={formData.address}
-                onChange={(e) => handleInputChange('address', e.target.value)}
+              <UnifiedInput                 value={formData.address}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('address', e.target.value)}
                 placeholder="123 Business Street"
               />
             </div>
@@ -317,9 +306,8 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   City
                 </label>
-                <Input
-                  value={formData.city}
-                  onChange={(e) => handleInputChange('city', e.target.value)}
+                <UnifiedInput                   value={formData.city}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('city', e.target.value)}
                   placeholder="Los Angeles"
                 />
               </div>
@@ -328,9 +316,8 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   State/Province
                 </label>
-                <Input
-                  value={formData.state}
-                  onChange={(e) => handleInputChange('state', e.target.value)}
+                <UnifiedInput                   value={formData.state}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('state', e.target.value)}
                   placeholder="CA"
                 />
               </div>
@@ -339,9 +326,8 @@ export default function CreateCompanyClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Country
                 </label>
-                <Input
-                  value={formData.country}
-                  onChange={(e) => handleInputChange('country', e.target.value)}
+                <UnifiedInput                   value={formData.country}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('country', e.target.value)}
                   placeholder="USA"
                 />
               </div>

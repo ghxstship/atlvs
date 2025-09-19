@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Wrench, Edit, Trash2, Copy, Calendar, Clock, AlertTriangle } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -360,10 +361,9 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
-                <Input
-                  placeholder="Search maintenance records..."
+                <UnifiedInput                   placeholder="Search maintenance records..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -371,8 +371,8 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             <div className="flex items-center gap-sm">
               <select
                 value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedType(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="preventive">Preventive</option>
@@ -382,8 +382,8 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               </select>
               <select
                 value={selectedPriority}
-                onChange={(e) => setSelectedPriority(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedPriority(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Priorities</option>
                 <option value="critical">Critical</option>
@@ -393,8 +393,8 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               </select>
               <select
                 value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="scheduled">Scheduled</option>
@@ -428,7 +428,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                   <div className="flex items-center gap-sm">
                     <Wrench className="w-5 h-5 color-muted" />
                     <div>
-                      <h3 className="text-heading-4">{record.title}</h3>
+                      <h3 className="text-body text-heading-4">{record.title}</h3>
                       <p className="text-body-sm color-muted">
                         {record.assetName} • Scheduled: {formatDateTime(record.scheduledDate)}
                       </p>
@@ -515,7 +515,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
                     <span className="text-body-sm color-muted block mb-xs">Parts Used</span>
                     <div className="flex flex-wrap gap-xs">
                       {record.partsUsed.map((part, index) => (
-                        <Badge key={index} variant="outline" className="text-body-sm">
+                        <Badge key={index} variant="outline">
                           {part}
                         </Badge>
                       ))}
@@ -552,15 +552,13 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Title</label>
-            <Input
-              placeholder="Enter maintenance title"
+            <UnifiedInput               placeholder="Enter maintenance title"
               defaultValue={selectedRecord?.title}
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset</label>
-            <Input
-              placeholder="Select asset"
+            <UnifiedInput               placeholder="Select asset"
               defaultValue={selectedRecord?.assetName}
             />
           </div>
@@ -569,7 +567,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <label className="block text-body-sm form-label mb-xs">Type</label>
               <select
                 defaultValue={selectedRecord?.type}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="preventive">Preventive</option>
                 <option value="corrective">Corrective</option>
@@ -581,7 +579,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <label className="block text-body-sm form-label mb-xs">Priority</label>
               <select
                 defaultValue={selectedRecord?.priority}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
@@ -591,8 +589,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Duration (min)</label>
-              <Input
-                type="number"
+              <UnifiedInput                 type="number"
                 placeholder="60"
                 defaultValue={selectedRecord?.estimatedDuration}
               />
@@ -601,15 +598,13 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Scheduled Date</label>
-              <Input
-                type="datetime-local"
+              <UnifiedInput                 type="datetime-local"
                 defaultValue={selectedRecord?.scheduledDate?.slice(0, 16)}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Assigned To</label>
-              <Input
-                placeholder="Select technician"
+              <UnifiedInput                 placeholder="Select technician"
                 defaultValue={selectedRecord?.assignedTo}
               />
             </div>
@@ -617,7 +612,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div>
             <label className="block text-body-sm form-label mb-xs">Description</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Maintenance description"
               defaultValue={selectedRecord?.description}
@@ -626,7 +621,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
           <div>
             <label className="block text-body-sm form-label mb-xs">Notes</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={2}
               placeholder="Additional notes"
               defaultValue={selectedRecord?.notes}

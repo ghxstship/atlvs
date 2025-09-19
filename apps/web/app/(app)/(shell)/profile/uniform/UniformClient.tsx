@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   Shirt, 
   Edit, 
@@ -406,7 +406,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
 
       {/* Filter Tabs */}
       <div className="flex gap-sm flex-wrap">
-        {['all', 'required', 'shirt', 'pants', 'jacket', 'hat', 'shoes', 'safety-gear', 'accessories', 'other'].map((type) => (
+        {['all', 'required', 'shirt', 'pants', 'jacket', 'hat', 'shoes', 'safety-gear', 'accessories', 'other'].map((type: any) => (
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
@@ -441,7 +441,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
         </Card>
       ) : (
         <div className="stack-md">
-          {filteredItems.map((item) => {
+          {filteredItems.map((item: any) => {
             const IconComponent = getItemTypeIcon(item.item_type);
             const needsReplacement = item.replacement_due && 
               new Date(item.replacement_due) <= new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
@@ -455,7 +455,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                         <IconComponent className={`h-5 w-5 text-${getItemTypeColor(item.item_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="text-heading-4">{item.item_name}</h3>
+                        <h3 className="text-body text-heading-4">{item.item_name}</h3>
                         {item.brand && (
                           <p className="text-body-sm color-muted">{item.brand}</p>
                         )}
@@ -590,23 +590,20 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
             </Select>
           </div>
 
-          <Input
-            label="Item Name"
+          <UnifiedInput             label="Item Name"
             placeholder="Enter item name"
             {...form.register('item_name')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Brand"
+            <UnifiedInput               label="Brand"
               placeholder="Brand or manufacturer"
               {...form.register('brand')}
              
             />
 
-            <Input
-              label="Size"
+            <UnifiedInput               label="Size"
               placeholder="Size (e.g., L, 34W x 32L)"
               {...form.register('size')}
              
@@ -614,15 +611,13 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Color"
+            <UnifiedInput               label="Color"
               placeholder="Color or pattern"
               {...form.register('color')}
              
             />
 
-            <Input
-              label="Material"
+            <UnifiedInput               label="Material"
               placeholder="Material composition"
               {...form.register('material')}
              
@@ -630,31 +625,27 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-3 gap-md">
-            <Input
-              label="Purchase Date"
+            <UnifiedInput               label="Purchase Date"
               type="date"
               {...form.register('purchase_date')}
              
             />
 
-            <Input
-              label="Cost ($)"
+            <UnifiedInput               label="Cost ($)"
               type="number"
               placeholder="0"
               {...form.register('cost', { valueAsNumber: true })}
              
             />
 
-            <Input
-              label="Replacement Due"
+            <UnifiedInput               label="Replacement Due"
               type="date"
               {...form.register('replacement_due')}
              
             />
           </div>
 
-          <Input
-            label="Supplier"
+          <UnifiedInput             label="Supplier"
             placeholder="Supplier or vendor"
             {...form.register('supplier')}
            

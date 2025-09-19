@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -168,7 +169,7 @@ export default function ActivationsTableClient({
 
       router.refresh();
       setActiveTab('details');
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to update activation');
     } finally {
       setSaving(false);
@@ -200,7 +201,7 @@ export default function ActivationsTableClient({
 
       setOpenId(null);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to delete activation');
     } finally {
       setSaving(false);
@@ -230,7 +231,7 @@ export default function ActivationsTableClient({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               const StatusIcon = getStatusIcon(row.status);
               return (
                 <tr 
@@ -400,7 +401,7 @@ export default function ActivationsTableClient({
               <input
                 id="name"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('name')}
               />
               {form.formState.errors.name && (
@@ -415,7 +416,7 @@ export default function ActivationsTableClient({
                 <label htmlFor="status" className="text-body-sm form-label">Status *</label>
                 <select
                   id="status"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('status')}
                 >
                   <option value="planning">Planning</option>
@@ -433,7 +434,7 @@ export default function ActivationsTableClient({
                   type="number"
                   min="0"
                   step="0.01"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   placeholder="0.00"
                   {...form.register('budget', { valueAsNumber: true })}
                 />
@@ -446,7 +447,7 @@ export default function ActivationsTableClient({
                 <input
                   id="activation_date"
                   type="datetime-local"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('activation_date')}
                 />
               </div>
@@ -456,7 +457,7 @@ export default function ActivationsTableClient({
                 <input
                   id="completion_date"
                   type="datetime-local"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('completion_date')}
                 />
               </div>
@@ -466,11 +467,11 @@ export default function ActivationsTableClient({
               <label htmlFor="project_id" className="text-body-sm form-label">Project</label>
               <select
                 id="project_id"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('project_id')}
               >
                 <option value="">No project</option>
-                {projects.map((project) => (
+                {projects.map((project: any) => (
                   <option key={project.id} value={project.id}>
                     {project.name}
                   </option>

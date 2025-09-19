@@ -170,7 +170,7 @@ export default function ATLVSPage() {
                     <div className="w-3 h-3 rounded-full bg-success"></div>
                   </div>
                   <div className="flex-1 text-center">
-                    <div className="inline-flex items-center gap-sm px-sm py-xs bg-background rounded-md text-body-sm color-muted">
+                    <div className="inline-flex items-center gap-sm  px-md py-xs bg-background rounded-md text-body-sm color-muted">
                       <div className="w-3 h-3 color-success">🔒</div>
                       atlvs.ghxstship.com
                     </div>
@@ -191,23 +191,23 @@ export default function ATLVSPage() {
                   <div className="grid grid-cols-3 gap-sm">
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Budget</div>
-                      <div className="text-heading-4">$75K</div>
+                      <div>$75K</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
                         <div className="bg-primary h-1 rounded-full w-3/4"></div>
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Timeline</div>
-                      <div className="text-heading-4">85%</div>
+                      <div>85%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
                         <div className="bg-secondary h-1 rounded-full w-4/5"></div>
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
                       <div className="text-body-sm color-muted mb-xs">Team</div>
-                      <div className="text-heading-4">12</div>
+                      <div>12</div>
                       <div className="flex -cluster-xs mt-sm">
-                        {[1, 2, 3].map((i) => (
+                        {[1, 2, 3].map((i: any) => (
                           <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
                         ))}
                       </div>
@@ -250,7 +250,7 @@ export default function ATLVSPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {features.map((feature) => {
+            {features.map((feature: any) => {
               const Icon = feature.icon;
               return (
                 <Card key={feature.title} className="hover:shadow-floating transition-shadow">
@@ -261,7 +261,7 @@ export default function ATLVSPage() {
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{feature.description}</p>
                     <div className="stack-xs">
-                      {feature.benefits.map((benefit) => (
+                      {feature.benefits.map((benefit: any) => (
                         <div key={benefit} className="flex items-center gap-sm">
                           <CheckCircle className="h-3 w-3 color-success flex-shrink-0" />
                           <span className="text-body-sm color-muted">{benefit}</span>
@@ -290,7 +290,7 @@ export default function ATLVSPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-xl">
-            {useCases.map((useCase) => (
+            {useCases.map((useCase: any) => (
               <Card key={useCase.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>{useCase.title}</h3>

@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Badge, Button, Input } from '@ghxstship/ui';
+import { Card, Badge, Button, UnifiedInput } from '@ghxstship/ui';
 import { DynamicProgressBar } from "../../../../_components/ui"
 import { Users, Calendar, Clock, Award, Search, Filter, BookOpen, Target, CheckCircle, AlertTriangle, User, Plus } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -204,7 +205,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
     <div className="stack-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Training Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Training Pipeline</h1>
           <p className="text-body-sm color-muted">Manage training programs, sessions, and completion records</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
@@ -219,7 +220,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
           { id: 'programs', label: 'Programs', icon: BookOpen },
           { id: 'sessions', label: 'Sessions', icon: Calendar },
           { id: 'records', label: 'Records', icon: User }
-        ].map((tab) => {
+        ].map((tab: any) => {
           const Icon = tab.icon;
           return (
             <button
@@ -255,7 +256,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                         <div className="flex items-center gap-sm mb-sm">
                           <div className={`w-3 h-3 rounded-full ${getCategoryColor(program.category)}`} />
                           <h3 className="text-body text-heading-4">{program.name}</h3>
-                          {program.required && <Badge variant="destructive" className="text-body-sm">Required</Badge>}
+                          {program.required && <Badge variant="destructive">Required</Badge>}
                         </div>
                         <p className="text-body-sm color-muted mb-sm">{program.description}</p>
                         <div className="flex items-center gap-md text-body-sm color-muted">

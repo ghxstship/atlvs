@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, TrendingUp, Users, DollarSign, Calendar, Lock, Eye, Award } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Case Studies | GHXSTSHIP Resources',
@@ -110,7 +109,7 @@ export default function CaseStudiesPage() {
             <Badge variant="outline" className="mb-md">
               Case Studies
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               REAL RESULTS FROM
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -143,7 +142,7 @@ export default function CaseStudiesPage() {
       <section className="py-xl border-b">
         <div className="container mx-auto px-md">
           <div className="flex flex-wrap justify-center gap-sm">
-            {industries.map((industry) => (
+            {industries.map((industry: any) => (
               <Badge 
                 key={industry} 
                 variant={industry === 'All Industries' ? 'primary' : 'outline'} 
@@ -160,7 +159,7 @@ export default function CaseStudiesPage() {
       <section id="featured" className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               FEATURED CASE STUDIES
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -198,7 +197,7 @@ export default function CaseStudiesPage() {
                     
                     <div className="p-xl flex flex-col justify-center">
                       <Badge variant="outline" className="w-fit mb-md">{study.industry}</Badge>
-                      <h3 className={`mb-md group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                      <h3 className={`mb-md group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                         {study.title}
                       </h3>
                       <p className="color-muted mb-lg">
@@ -209,22 +208,22 @@ export default function CaseStudiesPage() {
                         <div className="flex items-center gap-sm text-body-sm">
                           <DollarSign className="h-4 w-4 text-foreground" />
                           <span className="color-muted">Budget:</span>
-                          <span className="text-heading-4">{study.budget}</span>
+                          <span>{study.budget}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
                           <Users className="h-4 w-4 text-foreground" />
                           <span className="color-muted">Team:</span>
-                          <span className="text-heading-4">{study.teamSize}</span>
+                          <span>{study.teamSize}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
                           <Calendar className="h-4 w-4 text-foreground" />
                           <span className="color-muted">Duration:</span>
-                          <span className="text-heading-4">{study.duration}</span>
+                          <span>{study.duration}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
                           <TrendingUp className="h-4 w-4 text-foreground" />
                           <span className="color-muted">Results:</span>
-                          <span className="text-heading-4">{study.results.length} Key Wins</span>
+                          <span>{study.results.length} Key Wins</span>
                         </div>
                       </div>
 
@@ -260,13 +259,13 @@ export default function CaseStudiesPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               MORE CASE STUDIES
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {regularStudies.map((study) => (
+            {regularStudies.map((study: any) => (
               <Card key={study.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -289,7 +288,7 @@ export default function CaseStudiesPage() {
                 </div>
                 
                 <CardContent className="p-lg">
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {study.title}
                   </h3>
                   <p className="color-muted mb-md line-clamp-2">
@@ -299,11 +298,11 @@ export default function CaseStudiesPage() {
                   <div className="stack-sm mb-md text-body-sm">
                     <div className="flex justify-between">
                       <span className="color-muted">Budget:</span>
-                      <span className="text-heading-4">{study.budget}</span>
+                      <span>{study.budget}</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="color-muted">Team Size:</span>
-                      <span className="text-heading-4">{study.teamSize}</span>
+                      <span>{study.teamSize}</span>
                     </div>
                   </div>
                   
@@ -328,7 +327,7 @@ export default function CaseStudiesPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <TrendingUp className="h-16 w-16 text-foreground mx-auto mb-lg" />
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 LEARN FROM REAL RESULTS
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

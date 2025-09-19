@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { GraduationCap, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -194,8 +194,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Training Title *
               </label>
-              <Input
-                {...register('title')}
+              <UnifiedInput                 {...register('title')}
                 placeholder="e.g., Safety Orientation, Technical Skills Workshop"
                 error={errors.title?.message}
               />
@@ -208,7 +207,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 </label>
                 <select
                   {...register('type')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="safety">Safety</option>
                   <option value="technical">Technical</option>
@@ -224,7 +223,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 </label>
                 <select
                   {...register('format')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="in_person">In Person</option>
                   <option value="virtual">Virtual</option>
@@ -238,8 +237,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Duration (hours) *
                 </label>
-                <Input
-                  {...register('duration', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('duration', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   step="0.5"
@@ -252,8 +250,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Capacity *
                 </label>
-                <Input
-                  {...register('capacity', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('capacity', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="20"
@@ -265,8 +262,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Cost
                 </label>
-                <Input
-                  {...register('cost', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('cost', { valueAsNumber: true })}
                   type="number"
                   min="0"
                   step="0.01"
@@ -281,8 +277,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Start Date *
                 </label>
-                <Input
-                  {...register('startDate')}
+                <UnifiedInput                   {...register('startDate')}
                   type="datetime-local"
                   error={errors.startDate?.message}
                 />
@@ -292,8 +287,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   End Date
                 </label>
-                <Input
-                  {...register('endDate')}
+                <UnifiedInput                   {...register('endDate')}
                   type="datetime-local"
                 />
               </div>
@@ -304,8 +298,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Provider/Instructor
                 </label>
-                <Input
-                  {...register('provider')}
+                <UnifiedInput                   {...register('provider')}
                   placeholder="Training provider or instructor name"
                 />
               </div>
@@ -314,8 +307,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Location
                 </label>
-                <Input
-                  {...register('location')}
+                <UnifiedInput                   {...register('location')}
                   placeholder="Training venue or online platform"
                 />
               </div>
@@ -361,8 +353,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                     <label className="block text-body-sm form-label mb-sm">
                       Certification Body
                     </label>
-                    <Input
-                      {...register('certificationBody')}
+                    <UnifiedInput                       {...register('certificationBody')}
                       placeholder="e.g., OSHA, NFPA, etc."
                     />
                   </div>
@@ -371,8 +362,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                     <label className="block text-body-sm form-label mb-sm">
                       Validity Period (months)
                     </label>
-                    <Input
-                      {...register('validityPeriod', { valueAsNumber: true })}
+                    <UnifiedInput                       {...register('validityPeriod', { valueAsNumber: true })}
                       type="number"
                       min="1"
                       placeholder="12"

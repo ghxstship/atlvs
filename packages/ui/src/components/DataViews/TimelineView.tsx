@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { 
   ChevronLeft, 
   ChevronRight, 
@@ -14,7 +14,7 @@ import {
   Users,
   AlertTriangle
 } from 'lucide-react';
-import { TimelineItem, DataRecord } from './types';
+import { TimelineItem } from './types';
 
 interface TimelineViewProps {
   className?: string;
@@ -209,7 +209,7 @@ export function TimelineView({
           <div className="flex items-center gap-sm">
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => navigateTimeline('prev')}
             >
               <ChevronLeft className="h-4 w-4" />
@@ -221,7 +221,7 @@ export function TimelineView({
             
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => navigateTimeline('next')}
             >
               <ChevronRight className="h-4 w-4" />
@@ -230,7 +230,7 @@ export function TimelineView({
           
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={() => setCurrentDate(new Date())}
           >
             Today
@@ -239,11 +239,11 @@ export function TimelineView({
 
         <div className="flex items-center gap-sm">
           <div className="flex items-center bg-muted rounded-lg p-xs">
-            {(['day', 'week', 'month', 'quarter'] as TimelineScale[]).map((scaleOption) => (
+            {(['day', 'week', 'month', 'quarter'] as TimelineScale[]).map((scaleOption: any) => (
               <Button
                 key={scaleOption}
                 variant={scale === scaleOption ? 'primary' : 'ghost'}
-                size="sm"
+                
                 onClick={() => setScale(scaleOption)}
                 className="capitalize"
               >
@@ -253,8 +253,8 @@ export function TimelineView({
           </div>
           
           <Button
-            variant="primary"
-            size="sm"
+            variant="default"
+            
             onClick={() => config.onCreate?.()}
           >
             <Plus className="h-4 w-4 mr-xs" />
@@ -275,8 +275,8 @@ export function TimelineView({
               <div
                 key={index}
                 className="flex-1 p-sm border-r border-border text-center text-sm font-medium text-muted-foreground min-w-[80px]"
-                onDragOver={(e) => e.preventDefault()}
-                onDrop={(e) => handleItemDrop(e, period)}
+                onDragOver={(e: any) => e.preventDefault()}
+                onDrop={(e: any) => handleItemDrop(e, period)}
               >
                 {formatPeriodLabel(period)}
               </div>
@@ -286,7 +286,7 @@ export function TimelineView({
 
         {/* Timeline Items */}
         <div className="divide-y divide-border">
-          {timelineItems.map((item) => {
+          {timelineItems.map((item: any) => {
             const position = getItemPosition(item);
             const isDragging = draggedItem === item.id;
             
@@ -336,7 +336,7 @@ export function TimelineView({
                         className="absolute top-1/2 transform -translate-y-1/2 w-3 h-3 bg-warning rotate-45 cursor-pointer"
                         style={{ left: position.left }}
                         draggable
-                        onDragStart={(e) => handleItemDragStart(e, item.id)}
+                        onDragStart={(e: any) => handleItemDragStart(e, item.id)}
                         onClick={() => onItemClick?.(item.record)}
                         title={`${item.title} - ${item.start.toLocaleDateString()}`}
                       />
@@ -349,7 +349,7 @@ export function TimelineView({
                         `}
                         style={position}
                         draggable
-                        onDragStart={(e) => handleItemDragStart(e, item.id)}
+                        onDragStart={(e: any) => handleItemDragStart(e, item.id)}
                         onClick={() => onItemClick?.(item.record)}
                         title={`${item.title} - ${item.start.toLocaleDateString()}${item.end ? ` to ${item.end.toLocaleDateString()}` : ''}`}
                       >
@@ -369,7 +369,7 @@ export function TimelineView({
                 <div className="w-12 p-sm flex items-center justify-center">
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => {
                       // Show item actions menu
                     }}
@@ -388,7 +388,7 @@ export function TimelineView({
             <Calendar className="h-12 w-12 mx-auto mb-md opacity-50" />
             <div className="text-lg font-medium mb-sm">No tasks in timeline</div>
             <Button
-              variant="primary"
+              variant="default"
               onClick={() => config.onCreate?.()}
             >
               <Plus className="h-4 w-4 mr-xs" />

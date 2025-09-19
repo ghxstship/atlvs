@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, BookOpen, Clock, Users, Star, Lock, Eye, CheckCircle } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Guides | GHXSTSHIP Resources',
@@ -108,7 +107,7 @@ export default function GuidesPage() {
             <Badge variant="outline" className="mb-md">
               Guides
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               STEP-BY-STEP
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -144,7 +143,7 @@ export default function GuidesPage() {
             <div>
               <h3 className="text-body-sm text-heading-4 color-foreground mb-sm">Categories</h3>
               <div className="flex flex-wrap gap-sm">
-                {categories.map((category) => (
+                {categories.map((category: any) => (
                   <Badge 
                     key={category} 
                     variant={category === 'All Categories' ? 'primary' : 'outline'} 
@@ -158,7 +157,7 @@ export default function GuidesPage() {
             <div>
               <h3 className="text-body-sm text-heading-4 color-foreground mb-sm">Difficulty</h3>
               <div className="flex flex-wrap gap-sm">
-                {difficulties.map((difficulty) => (
+                {difficulties.map((difficulty: any) => (
                   <Badge 
                     key={difficulty} 
                     variant={difficulty === 'All Levels' ? 'primary' : 'outline'} 
@@ -177,7 +176,7 @@ export default function GuidesPage() {
       <section id="guides" className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {guides.map((guide) => (
+            {guides.map((guide: any) => (
               <Card key={guide.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -203,7 +202,7 @@ export default function GuidesPage() {
                 </div>
                 
                 <CardContent className="p-lg">
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {guide.title}
                   </h3>
                   <p className="color-muted mb-md line-clamp-2">
@@ -225,7 +224,7 @@ export default function GuidesPage() {
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs">
                         <Star className="h-4 w-4 color-warning fill-current" />
-                        <span className="text-heading-4">{guide.rating}</span>
+                        <span>{guide.rating}</span>
                       </div>
                       <div className="flex items-center gap-xs color-muted">
                         <CheckCircle className="h-4 w-4" />
@@ -259,7 +258,7 @@ export default function GuidesPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               STRUCTURED LEARNING PATHS
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto mb-xl">
@@ -297,7 +296,7 @@ export default function GuidesPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
                     <BookOpen className="h-8 w-8 text-background" />
                   </div>
-                  <h3 className={`mb-sm ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {path.title}
                   </h3>
                   <p className="color-muted mb-md">
@@ -306,15 +305,15 @@ export default function GuidesPage() {
                   <div className="stack-sm text-body-sm color-muted mb-md">
                     <div className="flex justify-between">
                       <span>Guides:</span>
-                      <span className="text-heading-4">{path.guides}</span>
+                      <span>{path.guides}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Duration:</span>
-                      <span className="text-heading-4">{path.duration}</span>
+                      <span>{path.duration}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Level:</span>
-                      <span className="text-heading-4">{path.level}</span>
+                      <span>{path.level}</span>
                     </div>
                   </div>
                   <Button variant="outline" size="sm" className="w-full">
@@ -333,7 +332,7 @@ export default function GuidesPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <BookOpen className="h-16 w-16 text-foreground mx-auto mb-lg" />
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 MASTER PRODUCTION MANAGEMENT
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

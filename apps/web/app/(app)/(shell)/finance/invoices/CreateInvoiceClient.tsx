@@ -1,9 +1,9 @@
 'use client';
 
+
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, FileText, Calendar, DollarSign, Building, Trash2 } from 'lucide-react';
 
 interface CreateInvoiceClientProps {
@@ -152,7 +152,7 @@ export default function CreateInvoiceClient({
     }));
   };
 
-  const updateLineItem = (id: string, field: keyof LineItem, value: any) => {
+  const updateLineItem = (id: string, field: keyof LineItem, value) => {
     setFormData(prev => ({
       ...prev,
       lineItems: prev.lineItems.map(item => {
@@ -206,9 +206,8 @@ export default function CreateInvoiceClient({
               <label className="block text-body-sm form-label color-foreground mb-sm">
                 Invoice Number *
               </label>
-              <Input
-                value={formData.invoiceNumber}
-                onChange={(e) => setFormData(prev => ({ ...prev, invoiceNumber: e.target.value }))}
+              <UnifiedInput                 value={formData.invoiceNumber}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, invoiceNumber: e.target.value }))}
                 placeholder="INV-001"
                 required
               />
@@ -220,7 +219,7 @@ export default function CreateInvoiceClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -235,9 +234,8 @@ export default function CreateInvoiceClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Invoice Description
             </label>
-            <Input
-              value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            <UnifiedInput               value={formData.description}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Brief description of services or products"
             />
           </div>
@@ -249,10 +247,9 @@ export default function CreateInvoiceClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.issuedDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, issuedDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, issuedDate: e.target.value }))}
                   className="pl-2xl"
                   required
                 />
@@ -265,10 +262,9 @@ export default function CreateInvoiceClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.dueDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, dueDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, dueDate: e.target.value }))}
                   className="pl-2xl"
                   min={formData.issuedDate}
                 />
@@ -295,9 +291,8 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Description
                     </label>
-                    <Input
-                      value={item.description}
-                      onChange={(e) => updateLineItem(item.id, 'description', e.target.value)}
+                    <UnifiedInput                       value={item.description}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'description', e.target.value)}
                       placeholder="Item description"
                     />
                   </div>
@@ -306,10 +301,9 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Quantity
                     </label>
-                    <Input
-                      type="number"
+                    <UnifiedInput                       type="number"
                       value={item.quantity}
-                      onChange={(e) => updateLineItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'quantity', parseFloat(e.target.value) || 0)}
                       min="0"
                       step="0.01"
                     />
@@ -319,10 +313,9 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Unit Price
                     </label>
-                    <Input
-                      type="number"
+                    <UnifiedInput                       type="number"
                       value={item.unitPrice}
-                      onChange={(e) => updateLineItem(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateLineItem(item.id, 'unitPrice', parseFloat(e.target.value) || 0)}
                       min="0"
                       step="0.01"
                     />
@@ -332,7 +325,7 @@ export default function CreateInvoiceClient({
                     <label className="block text-body-sm form-label color-foreground mb-sm">
                       Total
                     </label>
-                    <div className="px-sm py-sm bg-secondary border border-border rounded-md text-body-sm form-label">
+                    <div className=" px-md py-sm bg-secondary border border-border rounded-md text-body-sm form-label">
                       {formatCurrency(item.total)}
                     </div>
                   </div>
@@ -373,10 +366,9 @@ export default function CreateInvoiceClient({
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                  <Input
-                    type="number"
+                  <UnifiedInput                     type="number"
                     value={formData.taxAmount}
-                    onChange={(e) => setFormData(prev => ({ ...prev, taxAmount: parseFloat(e.target.value) || 0 }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, taxAmount: parseFloat(e.target.value) || 0 }))}
                     placeholder="0.00"
                     className="pl-2xl"
                     min="0"
@@ -391,10 +383,9 @@ export default function CreateInvoiceClient({
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                  <Input
-                    type="number"
+                  <UnifiedInput                     type="number"
                     value={formData.discountAmount}
-                    onChange={(e) => setFormData(prev => ({ ...prev, discountAmount: parseFloat(e.target.value) || 0 }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, discountAmount: parseFloat(e.target.value) || 0 }))}
                     placeholder="0.00"
                     className="pl-2xl"
                     min="0"
@@ -418,7 +409,7 @@ export default function CreateInvoiceClient({
           </label>
           <Textarea
             value={formData.notes}
-            onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
             placeholder="Payment terms, additional notes, or special instructions..."
             rows={3}
           />

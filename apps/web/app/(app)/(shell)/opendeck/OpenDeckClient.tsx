@@ -1,5 +1,8 @@
 'use client';
 
+
+
+
 import { useEffect, useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Edit3, FileText, Activity as ActivityIcon, MessageSquare, Plus } from 'lucide-react';
@@ -34,7 +37,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Failed to load');
       setRows(json.items ?? []);
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to load');
     } finally {
       setLoading(false);
@@ -83,7 +86,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       });
       if (!res.ok) throw new Error((await res.json())?.error || 'Update failed');
       setMsg(t('updated'));
-    } catch (e: any) {
+    } catch (e) {
       setMsg(e?.message || 'Update failed');
       // reload to rollback
       load();
@@ -107,7 +110,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       setRows([json.listing, ...rows]);
       setOpenId(json.listing.id);
       setTab('details');
-    } catch (e: any) {
+    } catch (e) {
       setMsg(e?.message || 'Create failed');
     } finally {
       setBusy(false);
@@ -181,7 +184,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
             </tr>
           </thead>
           <tbody>
-            {rows.map((r) => (
+            {rows.map((r: any) => (
               <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => onOpen(r.id)}>
                 <td className="border-b p-sm">{r.title}</td>
                 <td className="border-b p-sm">{r.display?.priceFormatted || `${r.price} ${r.currency}`}</td>
@@ -233,22 +236,22 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         )}
 
         {tab === 'edit' && current && (
-          <form className="stack-sm" onSubmit={(e) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
+          <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
             <div className="grid gap-xs">
               <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
-              <input id="title" className="rounded border px-sm py-xs" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} />
+              <input id="title" className="rounded border  px-md py-xs" value={form.title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, title: e.target.value })} />
             </div>
             <div className="grid gap-xs">
               <label htmlFor="price" className="text-body-sm">{t('grid.price')}</label>
-              <input id="price" type="number" step="0.01" className="rounded border px-sm py-xs" value={form.price} onChange={(e) => setForm({ ...form, price: Number(e.target.value) })} />
+              <input id="price" type="number" step="0.01" className="rounded border  px-md py-xs" value={form.price} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, price: Number(e.target.value) })} />
             </div>
             <div className="grid gap-xs">
               <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
-              <input id="status" className="rounded border px-sm py-xs" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} />
+              <input id="status" className="rounded border  px-md py-xs" value={form.status} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, status: e.target.value })} />
             </div>
             <div className="grid gap-xs">
               <label htmlFor="vendor" className="text-body-sm">{t('grid.vendor')}</label>
-              <select id="vendor" className="rounded border px-sm py-xs" value={form.vendorId || ''} onChange={(e) => setForm({ ...form, vendorId: e.target.value || undefined })}>
+              <select id="vendor" className="rounded border  px-md py-xs" value={form.vendorId || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, vendorId: e.target.value || undefined })}>
                 <option value="">{t('noVendor')}</option>
                 {vendors.map(v => (
                   <option key={v.id} value={v.id}>{v.name}</option>
@@ -257,10 +260,10 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
             </div>
             <div className="grid gap-xs">
               <label htmlFor="description" className="text-body-sm">{t('grid.description')}</label>
-              <textarea id="description" className="min-h-24 rounded border p-sm" value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} />
+              <textarea id="description" className="min-h-24 rounded border p-sm" value={form.description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, description: e.target.value })} />
             </div>
             <div className="flex items-center justify-end gap-sm pt-sm border-t">
-              <Button type="submit" variant="primary" disabled={saving}>{t('save')}</Button>
+              <Button type="submit" variant="default" disabled={saving}>{t('save')}</Button>
             </div>
           </form>
         )}

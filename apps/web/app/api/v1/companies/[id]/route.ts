@@ -69,7 +69,7 @@ export async function GET(
     // Calculate average ratings
     const ratings = company.company_ratings || [];
     const averageRating = ratings.length > 0 
-      ? ratings.reduce((sum: number, r: any) => sum + r.rating, 0) / ratings.length 
+      ? ratings.reduce((sum: number, r) => sum + r.rating, 0) / ratings.length 
       : 0;
 
     // Log audit event
@@ -91,7 +91,7 @@ export async function GET(
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Company GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

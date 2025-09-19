@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -131,7 +132,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
       }
       await loadOverviewData(); // Refresh data after seeding
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || t('empty.error'));
     } finally {
       setSeedLoading(false);
@@ -210,7 +211,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-muted">Total Projects</p>
-              <p className="text-heading-3 text-heading-3">{stats.totalProjects}</p>
+              <p className="text-heading-3">{stats.totalProjects}</p>
             </div>
             <BarChart3 className="w-8 h-8 color-primary" />
           </div>
@@ -225,7 +226,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-muted">Total Budget</p>
-              <p className="text-heading-3 text-heading-3">{formatCurrency(stats.totalBudget)}</p>
+              <p className="text-heading-3">{formatCurrency(stats.totalBudget)}</p>
             </div>
             <DollarSign className="w-8 h-8 color-success" />
           </div>
@@ -238,7 +239,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-muted">Tasks Progress</p>
-              <p className="text-heading-3 text-heading-3">
+              <p className="text-heading-3">
                 {stats.totalTasks > 0 ? Math.round((stats.completedTasks / stats.totalTasks) * 100) : 0}%
               </p>
             </div>
@@ -255,7 +256,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-muted">Risk Status</p>
-              <p className="text-heading-3 text-heading-3">{stats.totalRisks}</p>
+              <p className="text-heading-3">{stats.totalRisks}</p>
             </div>
             <AlertTriangle className="w-8 h-8 color-warning" />
           </div>
@@ -279,7 +280,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
           </Button>
         </div>
         <div className="stack-sm">
-          {recentProjects.map((project) => (
+          {recentProjects.map((project: any) => (
             <div 
               key={project.id}
               className="flex items-center justify-between p-sm border rounded-lg hover:bg-secondary/50 cursor-pointer"

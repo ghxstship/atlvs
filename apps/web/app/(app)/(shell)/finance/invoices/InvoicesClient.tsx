@@ -1,17 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  StateManagerProvider,
-  Input
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, UnifiedInput } from '@ghxstship/ui';
 import { 
   FileText,
   Plus,

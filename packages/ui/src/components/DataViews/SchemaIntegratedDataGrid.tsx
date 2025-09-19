@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Checkbox } from '../Checkbox';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
+import { Checkbox } from '../atomic/Checkbox';
 import { 
   ChevronUp, 
   ChevronDown, 
@@ -17,7 +17,7 @@ import {
   Database,
   AlertTriangle
 } from 'lucide-react';
-import { FieldConfig, DataRecord, SortConfig } from './types';
+import { SortConfig } from './types';
 import { 
   SchemaIntrospector, 
   SchemaValidationFramework, 
@@ -298,11 +298,11 @@ export function SchemaIntegratedDataGrid({
             <Input
               placeholder="Search with full-text search..."
               value={state.search}
-              onChange={(e) => handleSchemaOptimizedSearch(e.target.value)}
+              onChange={(e: any) => handleSchemaOptimizedSearch(e.target.value)}
               className="pl-2xl w-64"
             />
           </div>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Filter className="h-4 w-4" />
             Filters ({state.filters.length})
           </Button>
@@ -314,22 +314,22 @@ export function SchemaIntegratedDataGrid({
         </div>
 
         <div className="flex items-center gap-sm">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Settings className="h-4 w-4" />
             Columns
           </Button>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Database className="h-4 w-4" />
             Schema
           </Button>
           {config.exportConfig && (
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Download className="h-4 w-4" />
               Export
             </Button>
           )}
           {config.importConfig && (
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Upload className="h-4 w-4" />
               Import
             </Button>

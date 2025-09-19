@@ -1,5 +1,6 @@
 'use client';
 
+
 import React from 'react';
 import { Badge, Button, Card } from '@ghxstship/ui';
 
@@ -36,7 +37,7 @@ export default function ColorSystemDemo() {
               { name: 'Success', className: 'bg-success' },
               { name: 'Warning', className: 'bg-warning' },
               { name: 'Destructive', className: 'bg-destructive' },
-            ].map((color) => (
+            ].map((color: any) => (
               <div key={color.name} className="text-center">
                 <div className={`w-full h-16 rounded-md border mb-xs ${color.className}`} />
                 <div className="text-xs font-mono">{color.name}</div>
@@ -60,7 +61,7 @@ export default function ColorSystemDemo() {
                 { name: 'Orange Line', className: 'bg-warning text-warning-foreground', desc: 'B/D/F/M Line' },
                 { name: 'Purple Line', className: 'bg-accent text-accent-foreground', desc: '7 Line' },
                 { name: 'Yellow Line', className: 'bg-warning text-warning-foreground', desc: 'N/Q/R/W Line' },
-              ].map((metro) => (
+              ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
                   <div className={`w-full h-12 rounded-md mb-xs ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
@@ -82,7 +83,7 @@ export default function ColorSystemDemo() {
                 { name: 'Northern', className: 'bg-foreground text-background' },
                 { name: 'Piccadilly', className: 'bg-primary text-primary-foreground' },
                 { name: 'Victoria', className: 'bg-accent text-accent-foreground' },
-              ].map((metro) => (
+              ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
                   <div className={`w-full h-12 rounded-md mb-xs border ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
@@ -102,7 +103,7 @@ export default function ColorSystemDemo() {
                 { name: 'Tozai', className: 'bg-primary text-primary-foreground' },
                 { name: 'Chiyoda', className: 'bg-success text-success-foreground' },
                 { name: 'Yurakucho', className: 'bg-warning text-warning-foreground' },
-              ].map((metro) => (
+              ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
                   <div className={`w-full h-12 rounded-md mb-xs ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
@@ -122,9 +123,9 @@ export default function ColorSystemDemo() {
               <h3 className="text-lg font-semibold mb-sm">Buttons</h3>
               <div className="stack-sm">
                 <div className="flex gap-sm">
-                  <Button variant="primary" size="lg">Primary Large</Button>
-                  <Button variant="primary" size="md">Primary Medium</Button>
-                  <Button variant="primary" size="sm">Primary Small</Button>
+                  <Button variant="default" size="lg">Primary Large</Button>
+                  <Button variant="default" size="md">Primary Medium</Button>
+                  <Button variant="default" size="sm">Primary Small</Button>
                 </div>
                 <div className="flex gap-sm">
                   <Button variant="outline" size="lg">Secondary Large</Button>
@@ -143,18 +144,18 @@ export default function ColorSystemDemo() {
               <h3 className="text-lg font-semibold mb-sm">Status Indicators</h3>
               <div className="stack-sm">
                 <div className="flex gap-sm">
-                  <Badge variant="success" className="px-sm py-xs text-sm font-medium">
+                  <Badge variant="success" className=" px-md py-xs text-sm font-medium">
                     Success
                   </Badge>
-                  <Badge variant="warning" className="px-sm py-xs text-sm font-medium">
+                  <Badge variant="warning" className=" px-md py-xs text-sm font-medium">
                     Warning
                   </Badge>
                 </div>
                 <div className="flex gap-sm">
-                  <Badge variant="destructive" className="px-sm py-xs text-sm font-medium">
+                  <Badge variant="destructive" className=" px-md py-xs text-sm font-medium">
                     Error
                   </Badge>
-                  <Badge variant="secondary" className="px-sm py-xs text-sm font-medium">
+                  <Badge variant="secondary" className=" px-md py-xs text-sm font-medium">
                     Info
                   </Badge>
                 </div>
@@ -176,7 +177,7 @@ export default function ColorSystemDemo() {
               { name: 'Yellow Line', className: 'bg-warning text-warning-foreground' },
               { name: 'Grey Line', className: 'bg-muted text-foreground' },
               { name: 'Express', className: 'bg-foreground text-background' },
-            ].map((badge) => (
+            ].map((badge: any) => (
               <div 
                 key={badge.name}
                 className={`px-md py-sm rounded-full text-center font-bold text-sm ${badge.className}`}

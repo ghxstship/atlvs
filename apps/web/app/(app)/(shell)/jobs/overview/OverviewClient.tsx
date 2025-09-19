@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -313,10 +314,10 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
         {/* Quick Actions */}
         <Card title="Quick Actions" className="p-lg">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-            {QUICK_ACTIONS.map((action) => {
+            {QUICK_ACTIONS.map((action: any) => {
               const Icon = action.icon;
               return (
-                <Link key={action.title} href={action.href as any as any as any}>
+                <Link key={action.title} href="#">
                   <div className="flex items-center p-md rounded-lg border border-border hover:bg-accent transition-colors cursor-pointer">
                     <div className={`p-sm rounded-lg ${action.color} text-background mr-sm`}>
                       <Icon className="h-5 w-5" />
@@ -350,7 +351,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             </div>
           ) : recentActivity.length > 0 ? (
             <div className="stack-sm">
-              {recentActivity.map((activity) => {
+              {recentActivity.map((activity: any) => {
                 const Icon = getTypeIcon(activity.type);
                 return (
                   <div key={activity.id} className="flex items-center justify-between p-sm rounded-lg border border-border">

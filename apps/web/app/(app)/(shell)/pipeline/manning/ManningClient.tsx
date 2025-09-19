@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { Plus, Users, UserCheck, AlertCircle } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -121,7 +122,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
     <div className="stack-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Manning Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Manning Pipeline</h1>
           <p className="text-body-sm color-muted">Manage project staffing requirements and assignments</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
@@ -136,8 +137,8 @@ export default function ManningClient({ orgId }: ManningClientProps) {
           <label className="block text-body-sm form-label mb-sm">Select Project</label>
           <select
             value={selectedProject}
-            onChange={(e) => setSelectedProject(e.target.value)}
-            className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedProject(e.target.value)}
+            className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
           >
             <option value="">Select a project...</option>
             {projects.map(project => (
@@ -159,8 +160,8 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                 <label className="block text-body-sm form-label mb-xs">Project</label>
                 <select
                   value={formData.projectId}
-                  onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   required
                 >
                   <option value="">Select project...</option>
@@ -173,21 +174,19 @@ export default function ManningClient({ orgId }: ManningClientProps) {
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Role</label>
-                <Input
-                  type="text"
+                <UnifiedInput                   type="text"
                   value={formData.role}
-                  onChange={(e) => setFormData(prev => ({ ...prev, role: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, role: e.target.value }))}
                   placeholder="e.g., Camera Operator, Sound Engineer"
                   required
                 />
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Required Count</label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   min="1"
                   value={formData.requiredCount}
-                  onChange={(e) => setFormData(prev => ({ ...prev, requiredCount: parseInt(e.target.value) }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, requiredCount: parseInt(e.target.value) }))}
                   required
                 />
               </div>

@@ -70,7 +70,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ lineups: lineups || [] });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Lineups API error:', error);
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
@@ -150,7 +150,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ lineup }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Create lineup error:', error);
     
     if (error instanceof z.ZodError) {

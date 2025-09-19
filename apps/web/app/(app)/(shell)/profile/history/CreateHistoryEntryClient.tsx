@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -94,7 +95,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -122,16 +123,16 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="entry_type" className="text-body-sm form-label">Entry Type *</label>
             <select 
               id="entry_type" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('entry_type') || 'employment'} 
-              onChange={(e) => form.setValue('entry_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('entry_type', e.target.value as any, { shouldDirty: true })}
             >
               <option value="employment">Employment</option>
               <option value="education">Education</option>
@@ -145,9 +146,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="title" className="text-body-sm form-label">Title/Position *</label>
             <input 
               id="title" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('title') || ''} 
-              onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('title', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.title} 
             />
             {form.formState.errors.title ? 
@@ -158,9 +159,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="organization" className="text-body-sm form-label">Organization/Company *</label>
             <input 
               id="organization" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('organization') || ''} 
-              onChange={(e) => form.setValue('organization', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('organization', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.organization} 
             />
             {form.formState.errors.organization ? 
@@ -171,9 +172,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
-              className="rounded border px-sm py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-[80px]" 
               value={form.getValues('description') || ''} 
-              onChange={(e) => form.setValue('description', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('description', e.target.value, { shouldDirty: true })} 
               placeholder="Describe your role, responsibilities, or what this entry involved..."
             />
           </div>
@@ -184,9 +185,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               <input 
                 id="start_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('start_date') || ''} 
-                onChange={(e) => form.setValue('start_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('start_date', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.start_date} 
               />
               {form.formState.errors.start_date ? 
@@ -198,9 +199,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               <input 
                 id="end_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('end_date') || ''} 
-                onChange={(e) => form.setValue('end_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('end_date', e.target.value, { shouldDirty: true })} 
                 disabled={form.getValues('is_current')}
               />
             </div>
@@ -211,7 +212,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
               id="is_current" 
               type="checkbox" 
               checked={form.getValues('is_current')} 
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 form.setValue('is_current', e.target.checked, { shouldDirty: true });
                 if (e.target.checked) {
                   form.setValue('end_date', '', { shouldDirty: true });
@@ -225,9 +226,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="location" className="text-body-sm form-label">Location</label>
             <input 
               id="location" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('location') || ''} 
-              onChange={(e) => form.setValue('location', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('location', e.target.value, { shouldDirty: true })} 
               placeholder="City, State/Country"
             />
           </div>
@@ -236,9 +237,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="skills_gained" className="text-body-sm form-label">Skills Gained (comma-separated)</label>
             <textarea 
               id="skills_gained" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('skills_gained') || ''} 
-              onChange={(e) => form.setValue('skills_gained', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('skills_gained', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Project Management, Leadership, Python, React"
             />
           </div>
@@ -247,9 +248,9 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="achievements" className="text-body-sm form-label">Key Achievements (comma-separated)</label>
             <textarea 
               id="achievements" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('achievements') || ''} 
-              onChange={(e) => form.setValue('achievements', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('achievements', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Increased sales by 25%, Led team of 10, Launched new product"
             />
           </div>
@@ -258,16 +259,16 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="references" className="text-body-sm form-label">References</label>
             <textarea 
               id="references" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('references') || ''} 
-              onChange={(e) => form.setValue('references', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('references', e.target.value, { shouldDirty: true })} 
               placeholder="Contact information for references..."
             />
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

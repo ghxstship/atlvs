@@ -63,7 +63,7 @@ export default function EventsPage() {
                 <div className="flex flex-col md:flex-row md:items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-sm mb-sm">
-                      <span className="bg-primary/10 text-foreground px-sm py-xs rounded text-body-sm form-label">
+                      <span className="bg-primary/10 text-foreground  px-md py-xs rounded text-body-sm form-label">
                         {event.type}
                       </span>
                     </div>

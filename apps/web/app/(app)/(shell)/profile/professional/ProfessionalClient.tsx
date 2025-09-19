@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select } from '@ghxstship/ui';
 import { 
   Briefcase, 
   Edit, 
@@ -270,32 +270,28 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <Input
-                label="Job Title"
+              <UnifiedInput                 label="Job Title"
                 placeholder="Enter your job title"
                 {...form.register('job_title')}
                
                 disabled={!editing}
               />
 
-              <Input
-                label="Department"
+              <UnifiedInput                 label="Department"
                 placeholder="Enter your department"
                 {...form.register('department')}
                
                 disabled={!editing}
               />
 
-              <Input
-                label="Employee ID"
+              <UnifiedInput                 label="Employee ID"
                 placeholder="Enter employee ID"
                 {...form.register('employee_id')}
                
                 disabled={!editing}
               />
 
-              <Input
-                label="Hire Date"
+              <UnifiedInput                 label="Hire Date"
                 type="date"
                 {...form.register('hire_date')}
                
@@ -353,11 +349,10 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             
             {editing && (
               <div className="flex gap-sm mb-md">
-                <Input
-                  placeholder="Add a skill"
+                <UnifiedInput                   placeholder="Add a skill"
                   value={skillInput}
-                  onChange={(e) => setSkillInput(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
+                  onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
                 />
                 <Button type="button" onClick={addSkill}>Add</Button>
               </div>
@@ -427,11 +422,10 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
                 <label className="block text-body-sm form-label mb-sm">Mentorship Interests</label>
                 {editing && (
                   <div className="flex gap-sm mb-md">
-                    <Input
-                      placeholder="Add mentorship interest"
+                    <UnifiedInput                       placeholder="Add mentorship interest"
                       value={mentorshipInput}
-                      onChange={(e) => setMentorshipInput(e.target.value)}
-                      onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addMentorshipInterest())}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setMentorshipInput(e.target.value)}
+                      onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addMentorshipInterest())}
                     />
                     <Button type="button" onClick={addMentorshipInterest}>Add</Button>
                   </div>
@@ -471,16 +465,14 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-              <Input
-                label="LinkedIn URL"
+              <UnifiedInput                 label="LinkedIn URL"
                 placeholder="https://linkedin.com/in/username"
                 {...form.register('linkedin_url')}
                
                 disabled={!editing}
               />
 
-              <Input
-                label="Website URL"
+              <UnifiedInput                 label="Website URL"
                 placeholder="https://yourwebsite.com"
                 {...form.register('website_url')}
                

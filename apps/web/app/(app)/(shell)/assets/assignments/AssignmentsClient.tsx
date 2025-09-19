@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Users, Edit, Trash2, Copy, Calendar, MapPin } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -334,10 +335,9 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
-                <Input
-                  placeholder="Search assignments..."
+                <UnifiedInput                   placeholder="Search assignments..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -345,8 +345,8 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             <div className="flex items-center gap-sm">
               <select
                 value={selectedType}
-                onChange={(e) => setSelectedType(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedType(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Types</option>
                 <option value="project">Project</option>
@@ -356,8 +356,8 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               </select>
               <select
                 value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="assigned">Assigned</option>
@@ -391,7 +391,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
                   <div className="flex items-center gap-sm">
                     <Users className="w-5 h-5 color-muted" />
                     <div>
-                      <h3 className="text-heading-4">{assignment.assetName}</h3>
+                      <h3 className="text-body text-heading-4">{assignment.assetName}</h3>
                       <p className="text-body-sm color-muted">
                         Assigned to {assignment.assigneeName} • {formatDate(assignment.assignedDate)}
                       </p>
@@ -484,8 +484,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset</label>
-            <Input
-              placeholder="Select asset"
+            <UnifiedInput               placeholder="Select asset"
               defaultValue={selectedAssignment?.assetName}
             />
           </div>
@@ -494,7 +493,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
               <label className="block text-body-sm form-label mb-xs">Assignee Type</label>
               <select
                 defaultValue={selectedAssignment?.assigneeType}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="project">Project</option>
                 <option value="crew_member">Crew Member</option>
@@ -504,8 +503,7 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Assignee</label>
-              <Input
-                placeholder="Select assignee"
+              <UnifiedInput                 placeholder="Select assignee"
                 defaultValue={selectedAssignment?.assigneeName}
               />
             </div>
@@ -513,30 +511,27 @@ export default function AssignmentsClient({ orgId }: AssignmentsClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">Expected Return Date</label>
-              <Input
-                type="date"
+              <UnifiedInput                 type="date"
                 defaultValue={selectedAssignment?.expectedReturnDate?.split('T')[0]}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Location</label>
-              <Input
-                placeholder="Assignment location"
+              <UnifiedInput                 placeholder="Assignment location"
                 defaultValue={selectedAssignment?.location}
               />
             </div>
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Purpose</label>
-            <Input
-              placeholder="Purpose of assignment"
+            <UnifiedInput               placeholder="Purpose of assignment"
               defaultValue={selectedAssignment?.purpose}
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Notes</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Additional notes"
               defaultValue={selectedAssignment?.notes}

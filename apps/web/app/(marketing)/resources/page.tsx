@@ -91,7 +91,7 @@ export default function ResourcesPage() {
             <Badge variant="outline" className="mb-md">
               Knowledge Hub
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               RESOURCES FOR
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -126,7 +126,7 @@ export default function ResourcesPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               EXPLORE BY CATEGORY
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -135,20 +135,20 @@ export default function ResourcesPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {resourceCategories.map((category) => {
+            {resourceCategories.map((category: any) => {
               const Icon = category.icon;
               return (
-                <Link key={category.title} href={category.href as any}>
+                <Link key={category.title} href="#">
                   <Card className="hover:shadow-floating transition-all duration-300 group h-full">
                     <CardContent className="p-xl">
                       <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-lg group-hover:scale-110 transition-transform`}>
                         <Icon className="h-8 w-8 text-background" />
                       </div>
                       <div className="flex items-center justify-between mb-sm">
-                        <h3 className={`group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                        <h3 className={`group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                           {category.title}
                         </h3>
-                        <Badge variant="secondary" className="text-body-sm">
+                        <Badge variant="outline">
                           {category.count}
                         </Badge>
                       </div>
@@ -172,7 +172,7 @@ export default function ResourcesPage() {
       <section id="featured" className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               FEATURED RESOURCES
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -190,7 +190,7 @@ export default function ResourcesPage() {
                       {resource.type}
                     </Badge>
                   </div>
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {resource.title}
                   </h3>
                   <p className="color-muted mb-md">
@@ -218,7 +218,7 @@ export default function ResourcesPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <Zap className="h-16 w-16 text-foreground mx-auto mb-lg" />
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 UNLOCK ALL RESOURCES
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

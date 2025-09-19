@@ -6,7 +6,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { DataRecord, FilterConfig, SortConfig, DataViewConfig } from '../types';
+import { FilterConfig, SortConfig } from '../types';
 
 interface DataContextValue {
   // Data state
@@ -365,6 +365,4 @@ export function useSupabaseData() {
 }
 
 // Import the original DataViewProvider
-import { DataViewProvider } from '../DataViewProvider';
-
 // EnhancedUniversalDrawer removed due to build issues

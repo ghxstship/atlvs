@@ -1,4 +1,5 @@
-'use client'
+'use client';
+
 
 import { useState } from 'react'
 import { Button } from '@ghxstship/ui'
@@ -91,7 +92,7 @@ export function DemoUserSwitcher() {
       </p>
 
       <div className="grid gap-sm">
-        {demoUsers.map((user) => {
+        {demoUsers.map((user: any) => {
           const Icon = ROLE_ICONS[user.role as keyof typeof ROLE_ICONS]
           const isCurrentUser = currentUser === user.type
           

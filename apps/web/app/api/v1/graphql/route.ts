@@ -109,7 +109,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
@@ -182,7 +182,7 @@ export async function POST(request: NextRequest) {
       errors: [{ message: 'Query not supported' }] 
     }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('GraphQL error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
 import { useEffect, useMemo, useState } from 'react';
-import { Button } from '@ghxstship/ui';
+import { Button, UnifiedInput } from '@ghxstship/ui';
 import Link from 'next/link';
 
 const ROLES = ['viewer', 'contributor', 'manager', 'admin'] as const;
@@ -28,7 +28,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
     const m = email.toLowerCase().match(/@([a-z0-9.-]+\.[a-z]{2,})$/i);
     return m ? m[1] : '';
   }, [email]);
-  const domainRecord = useMemo(() => domains.find((d) => d.domain === emailDomain), [domains, emailDomain]);
+  const domainRecord = useMemo(() => domains.find((d: any) => d.domain === emailDomain), [domains, emailDomain]);
 
   async function fetchInvites() {
     setError(null);
@@ -69,7 +69,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
       setResult(mode === 'invite' ? `Invite sent to ${data?.email || email}` : 'Member added');
       setEmail('');
       await Promise.all([fetchInvites(), fetchUsage()]);
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
     } finally {
       setLoading(false);
@@ -87,7 +87,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Failed to resend');
       setResult('Invite resent');
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
     } finally {
       setLoading(false);
@@ -97,7 +97,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
   async function revokeInvite(id: string) {
     setLoading(true); setError(null); setResult(null);
     const prev = invites;
-    setInvites(prev.map((i) => (i.id === id ? { ...i, status: 'revoked' } : i)));
+    setInvites(prev.map((i: any) => (i.id === id ? { ...i, status: 'revoked' } : i)));
     try {
       const res = await fetch(`/api/organizations/${orgId}/invites`, {
         method: 'DELETE',
@@ -106,7 +106,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Failed to revoke');
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
       setInvites((prev: any) => prev);
     } finally {
@@ -118,8 +118,8 @@ export default function InviteMemberClient({ orgId, role }: Props) {
     return Array.from(new Set(
       text
         .split(/[\s,;]+/)
-        .map((s) => s.trim())
-        .filter((s) => /.+@.+\..+/.test(s))
+        .map((s: any) => s.trim())
+        .filter((s: any) => /.+@.+\..+/.test(s))
     ));
   }
 
@@ -145,30 +145,39 @@ export default function InviteMemberClient({ orgId, role }: Props) {
     setResult(`Bulk invites complete: ${success} sent, ${failed} failed`);
   }
 
+  const renderUsageInfo = () => {
+    if (!usage) {
+      return <div className="color-foreground/60">Loading seat usage…</div>;
+    }
+
+    if (usage.seat_policy === 'domain-unlimited') {
+      return (
+        <div className="flex items-center justify-between">
+          <div>
+            <span className="form-label">Seat policy:</span> Domain-unlimited
+          </div>
+          <div className="color-foreground/70">Active members: {usage.active_count}</div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-between">
+        <div>
+          <span className="form-label">Seat policy:</span> Per-user
+        </div>
+        <div className="color-foreground/70">
+          Active members: {usage.active_count}
+          {usage.seats_limit != null && ` / ${usage.seats_limit}`}
+        </div>
+      </div>
+    );
+  };
+
   return (
     <div className="stack-lg">
       <div className="rounded-md border bg-secondary/30 p-sm text-body-sm">
-        {usage ? (
-          usage.seat_policy === 'domain-unlimited' ? (
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="form-label">Seat policy:</span> Domain-unlimited
-              </div>
-              <div className="color-foreground/70">Active members: {usage.active_count}</div>
-            </div>
-          ) : (
-            <div className="flex items-center justify-between">
-              <div>
-                <span className="form-label">Seat policy:</span> Per-user
-              </div>
-              <div className="color-foreground/70">
-                Active members: {usage.active_count}{usage.seats_limit != null ? ` / ${usage.seats_limit}` : ''}
-              </div>
-            </div>
-          )
-        ) : (
-          <div className="color-foreground/60">Loading seat usage…</div>
-        )}
+        {renderUsageInfo()}
       </div>
 
       <div className="stack-sm">
@@ -176,17 +185,20 @@ export default function InviteMemberClient({ orgId, role }: Props) {
           Invite teammates by email. Team plan supports unlimited seats for emails matching your active organization domains.
         </div>
         <div className="flex flex-col gap-sm sm:flex-row sm:items-center">
-          <input
+          <UnifiedInput
+            type="email"
             value={email}
-            onChange={(e: any) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             placeholder="teammate@company.com"
+            variant={error ? 'error' : 'default'}
+            error={error || undefined}
           />
           <select
             value={inviteRole}
-            onChange={(e: any) => setInviteRole(e.target.value)}
-            className="h-10 rounded-md border bg-background px-sm text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInviteRole(e.target.value)}
+            className="h-10 rounded-md border bg-background  px-md text-body-sm"
           >
-            {ROLES.map((r) => (
+            {ROLES.map((r: any) => (
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
@@ -209,9 +221,9 @@ export default function InviteMemberClient({ orgId, role }: Props) {
               <>
                 <span className="color-foreground/60">External domain — will count against seat limit if enforced.</span>
                 <Link
-                  href={{ pathname: '/settings/organization/domains', query: emailDomain ? { suggest: emailDomain  as any} : {} }}
+                  href="#"
                   title="Add your organization email domain(s). When seat policy is domain-unlimited, invites matching active domains do not consume seats."
-                  className="inline-flex items-center rounded-md border px-sm py-xs text-[11px] hover:bg-secondary/50"
+                  className="inline-flex items-center rounded-md border  px-md py-xs text-[11px] hover:bg-secondary/50"
                 >
                   Manage domains
                 </Link>
@@ -228,19 +240,19 @@ export default function InviteMemberClient({ orgId, role }: Props) {
         <div className="text-body-sm color-foreground/70">Paste a list of emails (comma, space, or newline separated).</div>
         <textarea
           value={bulkText}
-          onChange={(e: any) => setBulkText(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBulkText(e.target.value)}
           rows={4}
-          className="w-full rounded-md border bg-background px-sm py-sm text-body-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="w-full rounded-md border bg-background  px-md py-sm text-body-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           placeholder="user1@company.com, user2@company.com\nuser3@other.com"
         />
         <div className="flex items-center gap-sm">
           <span className="text-body-sm color-foreground/60">Role for all:</span>
           <select
             value={bulkRole}
-            onChange={(e: any) => setBulkRole(e.target.value)}
-            className="h-9 rounded-md border bg-background px-sm text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setBulkRole(e.target.value)}
+            className="h-9 rounded-md border bg-background  px-md text-body-sm"
           >
-            {ROLES.map((r) => (
+            {ROLES.map((r: any) => (
               <option key={r} value={r}>{r}</option>
             ))}
           </select>
@@ -253,18 +265,18 @@ export default function InviteMemberClient({ orgId, role }: Props) {
         <table className="w-full text-body-sm">
           <thead>
             <tr className="bg-secondary/40">
-              <th className="px-sm py-sm text-left">Email</th>
-              <th className="px-sm py-sm text-left">Role</th>
-              <th className="px-sm py-sm text-left">Status</th>
-              <th className="px-sm py-sm text-right">Actions</th>
+              <th className=" px-md py-sm text-left">Email</th>
+              <th className=" px-md py-sm text-left">Role</th>
+              <th className=" px-md py-sm text-left">Status</th>
+              <th className=" px-md py-sm text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {invites.map((inv) => (
+            {invites.map((inv: any) => (
               <tr key={inv.id} className="border-t">
-                <td className="px-sm py-sm">{inv.email}</td>
-                <td className="px-sm py-sm">{inv.role}</td>
-                <td className="px-sm py-sm">
+                <td className=" px-md py-sm">{inv.email}</td>
+                <td className=" px-md py-sm">{inv.role}</td>
+                <td className=" px-md py-sm">
                   <span className={
                     `inline-flex items-center rounded-full px-sm py-0.5 text-body-sm ` +
                     (inv.status === 'pending' ? 'bg-warning/10 color-warning' :
@@ -275,7 +287,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                     {inv.status}
                   </span>
                 </td>
-                <td className="px-sm py-sm text-right cluster-sm">
+                <td className=" px-md py-sm text-right cluster-sm">
                   <Button onClick={() => resendInvite(inv.id)} disabled={loading || !canManage || inv.status !== 'pending'}>
                     Resend
                   </Button>
@@ -287,7 +299,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
             ))}
             {invites.length === 0 ? (
               <tr>
-                <td className="px-sm py-lg text-center color-foreground/60" colSpan={4}>No invites yet.</td>
+                <td className=" px-md py-lg text-center color-foreground/60" colSpan={4}>No invites yet.</td>
               </tr>
             ) : null}
           </tbody>

@@ -1,12 +1,13 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Drawer, Input, Select } from '@ghxstship/ui';
+import { Card, Badge, Button, Drawer, UnifiedInput, Select } from '@ghxstship/ui';
 import { Phone, Plus, Edit, Trash2, User, AlertTriangle } from 'lucide-react';
 
 const emergencyContactSchema = z.object({
@@ -175,7 +176,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
 
       <div className="stack-md">
         {contacts.length > 0 ? (
-          contacts.map((contact) => (
+          contacts.map((contact: any) => (
             <Card key={contact.id}>
               <div className="p-lg">
                 <div className="flex items-start justify-between">
@@ -272,16 +273,14 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-lg">
           <div className="grid grid-cols-1 gap-md">
-            <Input
-              label="Full Name"
+            <UnifiedInput               label="Full Name"
               placeholder="Enter contact's full name"
               {...form.register('name')}
               error={form.formState.errors.name?.message}
               required
             />
 
-            <Input
-              label="Relationship"
+            <UnifiedInput               label="Relationship"
               placeholder="e.g., Spouse, Parent, Sibling, Friend"
               {...form.register('relationship')}
               error={form.formState.errors.relationship?.message}
@@ -289,39 +288,34 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
             />
 
             <div className="grid grid-cols-2 gap-md">
-              <Input
-                label="Primary Phone"
+              <UnifiedInput                 label="Primary Phone"
                 placeholder="Enter primary phone number"
                 {...form.register('phone_primary')}
                 error={form.formState.errors.phone_primary?.message}
                 required
               />
 
-              <Input
-                label="Secondary Phone"
+              <UnifiedInput                 label="Secondary Phone"
                 placeholder="Enter secondary phone (optional)"
                 {...form.register('phone_secondary')}
                 error={form.formState.errors.phone_secondary?.message}
               />
             </div>
 
-            <Input
-              label="Email"
+            <UnifiedInput               label="Email"
               type="email"
               placeholder="Enter email address (optional)"
               {...form.register('email')}
               error={form.formState.errors.email?.message}
             />
 
-            <Input
-              label="Address"
+            <UnifiedInput               label="Address"
               placeholder="Enter full address (optional)"
               {...form.register('address')}
               error={form.formState.errors.address?.message}
             />
 
-            <Input
-              label="Notes"
+            <UnifiedInput               label="Notes"
               placeholder="Any additional notes (optional)"
               {...form.register('notes')}
               error={form.formState.errors.notes?.message}

@@ -28,7 +28,7 @@ export function LeadershipCard({ leader }: LeadershipCardProps) {
             <Users className="h-8 w-8 color-primary" />
           </div>
           <div className="flex-1">
-            <h3 className={`${typography.cardTitle} mb-xs`}>
+            <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>
               {leader.name}
             </h3>
             <p className="color-primary text-heading-4 mb-xs">{leader.role}</p>

@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, BookOpen, Package2, Wrench, Search, Filter, Grid, List } from 'lucide-react';
 
 interface CatalogItem {
@@ -131,7 +132,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <BookOpen className="h-5 w-5" />
-          <h3 className="text-heading-4">Procurement Catalog</h3>
+          <h3 className="text-body text-heading-4">Procurement Catalog</h3>
           <Badge variant="secondary">{filteredItems.length} items</Badge>
         </div>
         <div className="flex items-center gap-sm">
@@ -156,10 +157,9 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-          <Input
-            placeholder="Search catalog items..."
+          <UnifiedInput             placeholder="Search catalog items..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             className="pl-2xl"
           />
         </div>
@@ -167,8 +167,8 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
         <div className="flex gap-sm">
           <select 
             value={typeFilter} 
-            onChange={(e) => setTypeFilter(e.target.value as typeof typeFilter)}
-            className="px-sm py-sm border border-input bg-background rounded-md text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value as typeof typeFilter)}
+            className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Types</option>
             <option value="product">Products</option>
@@ -177,8 +177,8 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
           
           <select 
             value={statusFilter} 
-            onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
-            className="px-sm py-sm border border-input bg-background rounded-md text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as typeof statusFilter)}
+            className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -201,7 +201,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
         </Card>
       ) : viewMode === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-          {filteredItems.map((item) => {
+          {filteredItems.map((item: any) => {
             const TypeIcon = getTypeIcon(item.type);
             return (
               <Card key={`${item.type}-${item.id}`}>
@@ -250,7 +250,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
       ) : (
         <Card>
           <div className="divide-y">
-            {filteredItems.map((item) => {
+            {filteredItems.map((item: any) => {
               const TypeIcon = getTypeIcon(item.type);
               return (
                 <div key={`${item.type}-${item.id}`} className="p-md">
@@ -263,7 +263,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
                           <span className={`px-sm py-xs rounded-full text-body-sm form-label ${getTypeColor(item.type)}`}>
                             {item.type}
                           </span>
-                          <Badge variant={getStatusColor(item.status)} className="text-body-sm">
+                          <Badge variant={getStatusColor(item.status)}>
                             {item.status}
                           </Badge>
                         </div>

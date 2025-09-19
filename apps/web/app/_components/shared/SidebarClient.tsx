@@ -1,6 +1,7 @@
 'use client';
 
-import { Badge, Button, cn } from "@ghxstship/ui";
+
+import { Badge, Button, cn } from '@ghxstship/ui';
 import React, { useState } from 'react';
 import { 
   Home, 
@@ -60,7 +61,7 @@ export default function SidebarClient() {
   >
     Skip to main content
   </a>
-        {navigation.map((item) => (
+        {navigation.map((item: any) => (
           <div key={item.name}>
             <Button
               variant="ghost"
@@ -85,7 +86,7 @@ export default function SidebarClient() {
             
             {item.children && expandedItems.includes(item.name) && (
               <div className="ml-md mt-xs space-y-xs">
-                {item.children.map((child) => (
+                {item.children.map((child: any) => (
                   <Button aria-label="action" onClick={() => {}}
                     key={child.name}
                     variant="ghost"

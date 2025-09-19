@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   Building,
   Target,
@@ -219,7 +213,7 @@ export default function CreateOverviewClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Target className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Item Details</h3>
+            <h3 className="text-body text-heading-4">Item Details</h3>
           </div>
           
           <div className="stack-md">
@@ -229,7 +223,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.type}
-                onValueChange={(value) => handleInputChange('type', value)}
+                onValueChange={(value: any) => handleInputChange('type', value)}
               >
                 {OVERVIEW_TYPES.map(type => (
                   <option key={type.value} value={type.value}>
@@ -243,9 +237,8 @@ export default function CreateOverviewClient({
               <label className="block text-body-sm form-label mb-xs">
                 Title *
               </label>
-              <Input
-                value={formData.title}
-                onChange={(e) => handleInputChange('title', e.target.value)}
+              <UnifiedInput                 value={formData.title}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Enter item title"
                 required
               />
@@ -257,7 +250,7 @@ export default function CreateOverviewClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Detailed description of the item"
                 rows={3}
               />
@@ -270,7 +263,7 @@ export default function CreateOverviewClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value) => handleInputChange('priority', value)}
+                  onValueChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {PRIORITIES.map(priority => (
                     <option key={priority.value} value={priority.value}>
@@ -286,7 +279,7 @@ export default function CreateOverviewClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -303,7 +296,7 @@ export default function CreateOverviewClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Users className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Assignment & Timeline</h3>
+            <h3 className="text-body text-heading-4">Assignment & Timeline</h3>
           </div>
           
           <div className="stack-md">
@@ -313,7 +306,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value) => handleInputChange('companyId', value)}
+                onValueChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">No company association</option>
                 {companies.map(company => (
@@ -330,7 +323,7 @@ export default function CreateOverviewClient({
               </label>
               <Select
                 value={formData.assignedTo}
-                onValueChange={(value) => handleInputChange('assignedTo', value)}
+                onValueChange={(value: any) => handleInputChange('assignedTo', value)}
               >
                 <option value="">Unassigned</option>
                 {teamMembers.map(member => (
@@ -346,10 +339,9 @@ export default function CreateOverviewClient({
                 <Calendar className="h-4 w-4 inline mr-xs" />
                 Due Date (Optional)
               </label>
-              <Input
-                type="date"
+              <UnifiedInput                 type="date"
                 value={formData.dueDate}
-                onChange={(e) => handleInputChange('dueDate', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('dueDate', e.target.value)}
               />
             </div>
           </div>

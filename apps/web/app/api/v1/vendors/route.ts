@@ -157,7 +157,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendors GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ vendor }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendors POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -304,7 +304,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ vendor });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendors PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -361,7 +361,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendors DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, Package, Edit, Trash2, Copy } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -336,10 +337,9 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
-                <Input
-                  placeholder="Search assets..."
+                <UnifiedInput                   placeholder="Search assets..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -347,8 +347,8 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
             <div className="flex items-center gap-sm">
               <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedCategory(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Categories</option>
                 {ASSET_CATEGORIES.map(category => (
@@ -359,8 +359,8 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               </select>
               <select
                 value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="available">Available</option>
@@ -445,7 +445,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <Badge variant="outline" className="text-body-sm">
+                  <Badge variant="outline">
                     {ASSET_CATEGORIES.find(cat => cat.id === asset.category)?.name}
                   </Badge>
                   {getStatusBadge(asset.status)}
@@ -454,12 +454,12 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 {asset.tags && asset.tags.length > 0 && (
                   <div className="mt-sm flex flex-wrap gap-xs">
                     {asset.tags.slice(0, 3).map(tag => (
-                      <Badge key={tag} variant="secondary" className="text-body-sm">
+                      <Badge key={tag} variant="secondary">
                         {tag}
                       </Badge>
                     ))}
                     {asset.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-body-sm">
+                      <Badge variant="secondary">
                         +{asset.tags.length - 3}
                       </Badge>
                     )}
@@ -481,15 +481,13 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset Name</label>
-            <Input
-              placeholder="Enter asset name"
+            <UnifiedInput               placeholder="Enter asset name"
               defaultValue={selectedAsset?.name}
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Description</label>
-            <Input
-              placeholder="Enter description"
+            <UnifiedInput               placeholder="Enter description"
               defaultValue={selectedAsset?.description}
             />
           </div>
@@ -498,7 +496,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <label className="block text-body-sm form-label mb-xs">Category</label>
               <select
                 defaultValue={selectedAsset?.category}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
                 {ASSET_CATEGORIES.map(category => (
                   <option key={category.id} value={category.id}>
@@ -511,7 +509,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
               <label className="block text-body-sm form-label mb-xs">Type</label>
               <select
                 defaultValue={selectedAsset?.type}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
                 <option value="fixed">Fixed</option>
                 <option value="rentable">Rentable</option>
@@ -522,15 +520,13 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
           <div className="grid grid-cols-2 gap-md">
             <div>
               <label className="block text-body-sm form-label mb-xs">SKU</label>
-              <Input
-                placeholder="Enter SKU"
+              <UnifiedInput                 placeholder="Enter SKU"
                 defaultValue={selectedAsset?.sku}
               />
             </div>
             <div>
               <label className="block text-body-sm form-label mb-xs">Location</label>
-              <Input
-                placeholder="Enter location"
+              <UnifiedInput                 placeholder="Enter location"
                 defaultValue={selectedAsset?.location}
               />
             </div>

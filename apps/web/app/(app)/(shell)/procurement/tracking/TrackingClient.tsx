@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Package, Truck, MapPin, Calendar, Clock, Search, Filter, Eye } from 'lucide-react';
 
 interface TrackingOrder {
@@ -132,7 +133,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <Truck className="h-5 w-5" />
-          <h3 className="text-heading-4">Order Tracking</h3>
+          <h3 className="text-body text-heading-4">Order Tracking</h3>
           <Badge variant="secondary">{filteredOrders.length} orders</Badge>
         </div>
       </div>
@@ -141,18 +142,17 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-          <Input
-            placeholder="Search by order number, vendor, tracking number..."
+          <UnifiedInput             placeholder="Search by order number, vendor, tracking number..."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
             className="pl-2xl"
           />
         </div>
         
         <select 
           value={statusFilter} 
-          onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}
-          className="px-sm py-sm border border-input bg-background rounded-md text-body-sm"
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as typeof statusFilter)}
+          className=" px-md py-sm border border-input bg-background rounded-md text-body-sm"
         >
           <option value="all">All Status</option>
           <option value="ordered">Ordered</option>
@@ -174,7 +174,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
         </Card>
       ) : (
         <div className="stack-md">
-          {filteredOrders.map((order) => {
+          {filteredOrders.map((order: any) => {
             const StatusIcon = getStatusIcon(order.status);
             const daysUntilDelivery = getDaysUntilDelivery(order.expected_delivery);
             

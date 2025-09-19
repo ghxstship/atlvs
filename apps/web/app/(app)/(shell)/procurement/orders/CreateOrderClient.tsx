@@ -1,17 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Button, 
-  Drawer,
-  Input,
-  Select,
-  Textarea
-} from '@ghxstship/ui';
+import { Button, Drawer, UnifiedInput, Select, Textarea } from '@ghxstship/ui';
 import { Plus, Save, Package } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -151,8 +146,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
             <div className="stack-sm">
               <label htmlFor="order_number" className="text-body-sm form-label">Order Number *</label>
-              <Input
-                id="order_number"
+              <UnifiedInput                 id="order_number"
                 {...form.register('order_number')}
                 placeholder="PO-2024-001"
               />
@@ -163,8 +157,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
             <div className="stack-sm">
               <label htmlFor="vendor_name" className="text-body-sm form-label">Vendor Name *</label>
-              <Input
-                id="vendor_name"
+              <UnifiedInput                 id="vendor_name"
                 {...form.register('vendor_name')}
                 placeholder="Vendor company name"
               />
@@ -188,8 +181,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
             <div className="stack-sm">
               <label htmlFor="total_amount" className="text-body-sm form-label">Total Amount *</label>
-              <Input
-                id="total_amount"
+              <UnifiedInput                 id="total_amount"
                 type="number"
                 step="0.01"
                 {...form.register('total_amount', { valueAsNumber: true })}
@@ -227,8 +219,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
             <div className="stack-sm">
               <label htmlFor="order_date" className="text-body-sm form-label">Order Date</label>
-              <Input
-                id="order_date"
+              <UnifiedInput                 id="order_date"
                 type="date"
                 {...form.register('order_date')}
               />
@@ -236,8 +227,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
             <div className="stack-sm">
               <label htmlFor="expected_delivery" className="text-body-sm form-label">Expected Delivery</label>
-              <Input
-                id="expected_delivery"
+              <UnifiedInput                 id="expected_delivery"
                 type="date"
                 {...form.register('expected_delivery')}
               />
@@ -245,8 +235,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
 
             <div className="stack-sm">
               <label htmlFor="project_id" className="text-body-sm form-label">Project ID</label>
-              <Input
-                id="project_id"
+              <UnifiedInput                 id="project_id"
                 {...form.register('project_id')}
                 placeholder="Optional project reference"
               />

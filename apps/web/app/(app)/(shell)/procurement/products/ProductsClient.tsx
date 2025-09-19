@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Package2, DollarSign, Edit, Trash2, Search } from 'lucide-react';
 
 interface Product {
@@ -199,7 +200,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <Package2 className="h-5 w-5" />
-          <h3 className="text-heading-4">Products Catalog</h3>
+          <h3 className="text-body text-heading-4">Products Catalog</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-sm" />
@@ -210,10 +211,9 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
       {/* Search */}
       <div className="relative">
         <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-        <Input
-          placeholder="Search products by name, category, SKU, or supplier..."
+        <UnifiedInput           placeholder="Search products by name, category, SKU, or supplier..."
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
           className="pl-2xl"
         />
       </div>
@@ -229,18 +229,16 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Product Name *</label>
-                <Input
-                  value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+                <UnifiedInput                   value={formData.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                   placeholder="Product name"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Category</label>
-                <Input
-                  value={formData.category}
-                  onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
+                <UnifiedInput                   value={formData.category}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                   placeholder="Equipment, Supplies, Materials, etc."
                 />
               </div>
@@ -249,8 +247,8 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Description</label>
                 <textarea
                   value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                   rows={3}
                   placeholder="Product description..."
                 />
@@ -258,11 +256,10 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Price *</label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.price}
-                  onChange={(e) => setFormData(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, price: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                 />
               </div>
@@ -271,8 +268,8 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Currency</label>
                 <select 
                   value={formData.currency} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -282,18 +279,16 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">SKU</label>
-                <Input
-                  value={formData.sku}
-                  onChange={(e) => setFormData(prev => ({ ...prev, sku: e.target.value }))}
+                <UnifiedInput                   value={formData.sku}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, sku: e.target.value }))}
                   placeholder="Product SKU/Code"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Supplier</label>
-                <Input
-                  value={formData.supplier}
-                  onChange={(e) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
+                <UnifiedInput                   value={formData.supplier}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, supplier: e.target.value }))}
                   placeholder="Supplier name"
                 />
               </div>
@@ -302,8 +297,8 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as 'active' | 'inactive' | 'discontinued' }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value as 'active' | 'inactive' | 'discontinued' }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="active">Active</option>
                   <option value="inactive">Inactive</option>
@@ -350,7 +345,7 @@ export default function ProductsClient({ orgId }: { orgId: string }) {
             </Card>
           </div>
         ) : (
-          filteredProducts.map((product) => (
+          filteredProducts.map((product: any) => (
             <Card key={product.id}>
               <div className="p-md">
                 <div className="flex items-start justify-between mb-sm">

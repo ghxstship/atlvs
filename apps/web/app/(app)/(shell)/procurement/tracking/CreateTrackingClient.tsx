@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Truck, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -210,10 +210,10 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
               </label>
               <select
                 {...register('order_id')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Choose an order...</option>
-                {availableOrders.map((order) => (
+                {availableOrders.map((order: any) => (
                   <option key={order.id} value={order.id}>
                     {order.order_number} - {order.vendor_name} ({order.status})
                   </option>
@@ -229,8 +229,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Tracking Number *
                 </label>
-                <Input
-                  {...register('tracking_number')}
+                <UnifiedInput                   {...register('tracking_number')}
                   placeholder="1Z999AA1234567890"
                   error={errors.tracking_number?.message}
                 />
@@ -240,8 +239,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Shipping Carrier *
                 </label>
-                <Input
-                  {...register('shipping_carrier')}
+                <UnifiedInput                   {...register('shipping_carrier')}
                   placeholder="UPS, FedEx, DHL, etc."
                   error={errors.shipping_carrier?.message}
                 />
@@ -254,7 +252,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
               </label>
               <select
                 {...register('status')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="ordered">Ordered</option>
                 <option value="shipped">Shipped</option>
@@ -267,8 +265,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                 <label className="block text-body-sm form-label mb-sm">
                   Expected Delivery
                 </label>
-                <Input
-                  {...register('expected_delivery')}
+                <UnifiedInput                   {...register('expected_delivery')}
                   type="date"
                 />
               </div>
@@ -278,8 +275,7 @@ export default function CreateTrackingClient({ orgId, onTrackingCreated }: Creat
                   <label className="block text-body-sm form-label mb-sm">
                     Actual Delivery
                   </label>
-                  <Input
-                    {...register('actual_delivery')}
+                  <UnifiedInput                     {...register('actual_delivery')}
                     type="date"
                   />
                 </div>

@@ -91,7 +91,7 @@ async function getAuthenticatedUser() {
 }
 
 // Generate PO number
-async function generatePONumber(supabase: any, orgId: string): Promise<string> {
+async function generatePONumber(supabase, orgId: string): Promise<string> {
   const year = new Date().getFullYear();
   const { data: lastPO } = await supabase
     .from('purchase_orders')
@@ -160,7 +160,7 @@ export async function GET(request: NextRequest) {
     // Calculate metrics
     const metrics = {
       totalValue: purchaseOrders?.reduce((sum, po) => {
-        const itemsTotal = po.items?.reduce((itemSum: number, item: any) => 
+        const itemsTotal = po.items?.reduce((itemSum: number, item) => 
           itemSum + (item.quantity * item.unit_price), 0) || 0;
         const shipping = po.terms?.shipping_cost || 0;
         const tax = itemsTotal * (po.terms?.tax_rate || 0);
@@ -195,7 +195,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Purchase orders GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -340,7 +340,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ purchaseOrder }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Purchase orders POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -467,7 +467,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ purchaseOrder });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Purchase orders PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -539,7 +539,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Purchase orders DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

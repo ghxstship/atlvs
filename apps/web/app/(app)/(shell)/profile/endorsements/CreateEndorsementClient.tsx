@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -88,7 +89,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -98,7 +99,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
   return (
     <>
       <Button 
-        variant="primary" 
+        variant="default" 
         
         onClick={() => setOpen(true)} 
         aria-label="Add Endorsement" 
@@ -116,16 +117,16 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="endorser_name" className="text-body-sm form-label">Endorser Name *</label>
             <input 
               id="endorser_name" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('endorser_name') || ''} 
-              onChange={(e) => form.setValue('endorser_name', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('endorser_name', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.endorser_name} 
             />
             {form.formState.errors.endorser_name ? 
@@ -136,9 +137,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="endorser_title" className="text-body-sm form-label">Endorser Title *</label>
             <input 
               id="endorser_title" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('endorser_title') || ''} 
-              onChange={(e) => form.setValue('endorser_title', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('endorser_title', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.endorser_title} 
             />
             {form.formState.errors.endorser_title ? 
@@ -149,9 +150,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="endorser_company" className="text-body-sm form-label">Company *</label>
             <input 
               id="endorser_company" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('endorser_company') || ''} 
-              onChange={(e) => form.setValue('endorser_company', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('endorser_company', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.endorser_company} 
             />
             {form.formState.errors.endorser_company ? 
@@ -162,9 +163,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="relationship" className="text-body-sm form-label">Relationship *</label>
             <select 
               id="relationship" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('relationship') || ''} 
-              onChange={(e) => form.setValue('relationship', e.target.value, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('relationship', e.target.value, { shouldDirty: true })}
             >
               <option value="">Select relationship...</option>
               <option value="manager">Manager</option>
@@ -183,9 +184,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="skills_endorsed" className="text-body-sm form-label">Skills Endorsed *</label>
             <input 
               id="skills_endorsed" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('skills_endorsed') || ''} 
-              onChange={(e) => form.setValue('skills_endorsed', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('skills_endorsed', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Leadership, Project Management, Communication"
               aria-invalid={!!form.formState.errors.skills_endorsed} 
             />
@@ -197,9 +198,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="endorsement_text" className="text-body-sm form-label">Endorsement Text *</label>
             <textarea 
               id="endorsement_text" 
-              className="rounded border px-sm py-xs min-h-[100px]" 
+              className="rounded border  px-md py-xs min-h-[100px]" 
               value={form.getValues('endorsement_text') || ''} 
-              onChange={(e) => form.setValue('endorsement_text', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('endorsement_text', e.target.value, { shouldDirty: true })} 
               placeholder="The endorsement text..."
               aria-invalid={!!form.formState.errors.endorsement_text} 
             />
@@ -211,9 +212,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="rating" className="text-body-sm form-label">Rating (1-5 stars) *</label>
             <select 
               id="rating" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('rating') || 5} 
-              onChange={(e) => form.setValue('rating', Number(e.target.value), { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('rating', Number(e.target.value), { shouldDirty: true })}
             >
               <option value="1">1 Star</option>
               <option value="2">2 Stars</option>
@@ -228,9 +229,9 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <input 
               id="date_received" 
               type="date" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('date_received') || ''} 
-              onChange={(e) => form.setValue('date_received', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('date_received', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -239,14 +240,14 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
               id="is_public" 
               type="checkbox" 
               checked={form.getValues('is_public')} 
-              onChange={(e) => form.setValue('is_public', e.target.checked, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('is_public', e.target.checked, { shouldDirty: true })} 
             />
             <label htmlFor="is_public" className="text-body-sm form-label">Make this endorsement public</label>
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

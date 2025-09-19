@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { X, Upload, FileText, BookOpen, GraduationCap, File, Clipboard, Star } from 'lucide-react';
@@ -9,7 +10,7 @@ interface ResourceFormProps {
   isOpen: boolean;
   onClose: () => void;
   onSuccess: () => void;
-  resource?: any;
+  resource?;
 }
 
 const resourceTypeOptions = [
@@ -187,7 +188,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
     <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center z-50 p-md">
       <Card className="w-full max-w-2xl max-h-[90vh] overflow-y-auto">
         <div className="flex items-center justify-between p-lg border-b">
-          <h2 className="text-heading-4 text-heading-4">
+          <h2 className="text-heading-4">
             {resource ? 'Edit Resource' : 'Add New Resource'}
           </h2>
           <Button onClick={onClose}>
@@ -201,9 +202,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <label className="block text-body-sm form-label mb-sm">Title *</label>
             <input
               type="text"
-              className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
               value={formData.title}
-              onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, title: e.target.value }))}
               placeholder="Enter resource title"
             />
             {errors.title && <p className="color-destructive text-body-sm mt-xs">{errors.title}</p>}
@@ -213,10 +214,10 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
           <div>
             <label className="block text-body-sm form-label mb-sm">Description</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
               rows={3}
               value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="Enter resource description"
             />
           </div>
@@ -226,9 +227,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <div>
               <label className="block text-body-sm form-label mb-sm">Type *</label>
               <select
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.type}
-                onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, type: e.target.value }))}
               >
                 {resourceTypeOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -242,9 +243,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               <label className="block text-body-sm form-label mb-sm">Category *</label>
               <input
                 type="text"
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.category}
-                onChange={(e) => setFormData(prev => ({ ...prev, category: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, category: e.target.value }))}
                 placeholder="e.g., HR, Safety, Operations"
               />
               {errors.category && <p className="color-destructive text-body-sm mt-xs">{errors.category}</p>}
@@ -256,9 +257,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <div>
               <label className="block text-body-sm form-label mb-sm">Status</label>
               <select
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.status}
-                onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value }))}
               >
                 {statusOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -271,9 +272,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <div>
               <label className="block text-body-sm form-label mb-sm">Visibility</label>
               <select
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.visibility}
-                onChange={(e) => setFormData(prev => ({ ...prev, visibility: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, visibility: e.target.value }))}
               >
                 {visibilityOptions.map(option => (
                   <option key={option.value} value={option.value}>
@@ -290,9 +291,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               <label className="block text-body-sm form-label mb-sm">Version</label>
               <input
                 type="text"
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.version}
-                onChange={(e) => setFormData(prev => ({ ...prev, version: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, version: e.target.value }))}
                 placeholder="1.0"
               />
             </div>
@@ -300,9 +301,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <div>
               <label className="block text-body-sm form-label mb-sm">Language</label>
               <select
-                className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
                 value={formData.language}
-                onChange={(e) => setFormData(prev => ({ ...prev, language: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, language: e.target.value }))}
               >
                 <option value="en">English</option>
                 <option value="es">Spanish</option>
@@ -319,9 +320,9 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
             <label className="block text-body-sm form-label mb-sm">Tags</label>
             <input
               type="text"
-              className="w-full px-sm py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full  px-md py-sm border border-border rounded-md focus:ring-2 focus:ring-primary focus:border-transparent"
               value={formData.tags}
-              onChange={(e) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, tags: e.target.value }))}
               placeholder="Enter tags separated by commas"
             />
             <p className="text-body-sm color-muted mt-xs">Separate multiple tags with commas</p>
@@ -359,7 +360,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               type="checkbox"
               id="is_featured"
               checked={formData.is_featured}
-              onChange={(e) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
               className="rounded border-border color-primary focus:ring-primary"
             />
             <label htmlFor="is_featured" className="text-body-sm form-label">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label, cn } from "@ghxstship/ui";
+import { Label, cn } from '@ghxstship/ui';
 import { ReactNode } from 'react'
 
 interface FormFieldProps {

@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -17,7 +17,7 @@ import {
   Image as ImageIcon,
   FileText
 } from 'lucide-react';
-import { GalleryItem, DataRecord } from './types';
+import { GalleryItem } from './types';
 
 interface GalleryViewProps {
   className?: string;
@@ -208,11 +208,11 @@ export function GalleryView({
           
           {selectedItems.size > 0 && (
             <div className="flex items-center gap-sm ml-md">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" >
                 <Download className="h-4 w-4" />
                 Download
               </Button>
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" >
                 <Share className="h-4 w-4" />
                 Share
               </Button>
@@ -225,14 +225,14 @@ export function GalleryView({
           <div className="flex items-center bg-muted rounded-lg p-xs">
             <Button
               variant={viewLayout === 'grid' ? 'primary' : 'ghost'}
-              size="sm"
+              
               onClick={() => setViewLayout('grid')}
             >
               <Grid3x3 className="h-4 w-4" />
             </Button>
             <Button
               variant={viewLayout === 'list' ? 'primary' : 'ghost'}
-              size="sm"
+              
               onClick={() => setViewLayout('list')}
             >
               <List className="h-4 w-4" />
@@ -243,7 +243,7 @@ export function GalleryView({
           {viewLayout !== 'list' && (
             <select
               value={gridColumns}
-              onChange={(e) => setGridColumns(Number(e.target.value) as any)}
+              onChange={(e: any) => setGridColumns(Number(e.target.value) as any)}
               className="px-sm py-xs text-sm border border-border rounded bg-background"
             >
               <option value={2}>2 columns</option>
@@ -256,7 +256,7 @@ export function GalleryView({
 
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={handleSelectAll}
           >
             {selectedItems.size === paginatedItems.length ? 'Deselect All' : 'Select All'}
@@ -274,7 +274,7 @@ export function GalleryView({
           </div>
         ) : (
           <div className={gridClasses}>
-            {paginatedItems.map((item) => {
+            {paginatedItems.map((item: any) => {
               const isSelected = selectedItems.has(item.id);
               const mediaType = getMediaType(item);
 
@@ -310,14 +310,14 @@ export function GalleryView({
                           <div className="flex items-center gap-sm ml-md">
                             <Button
                               variant="ghost"
-                              size="sm"
+                              
                               onClick={() => onItemPreview?.(item.record)}
                             >
                               <Eye className="h-4 w-4" />
                             </Button>
                             <Button
                               variant="ghost"
-                              size="sm"
+                              
                               onClick={() => handleItemSelect(item.id, !isSelected)}
                             >
                               <input
@@ -334,12 +334,12 @@ export function GalleryView({
                         {item.tags && Array.isArray(item.tags) && item.tags.length > 0 && (
                           <div className="flex flex-wrap gap-xs mt-sm">
                             {item.tags.slice(0, 3).map((tag, index) => (
-                              <Badge key={index} variant="outline" size="sm">
+                              <Badge key={index} variant="outline" >
                                 {String(tag)}
                               </Badge>
                             ))}
                             {item.tags.length > 3 && (
-                              <Badge variant="outline" size="sm">
+                              <Badge variant="outline" >
                                 +{item.tags.length - 3}
                               </Badge>
                             )}
@@ -370,9 +370,9 @@ export function GalleryView({
                       <div className="absolute top-2 right-2 flex gap-xs">
                         <Button
                           variant="ghost"
-                          size="sm"
+                          
                           className="bg-background/20 backdrop-blur-sm text-background hover:bg-background/30"
-                          onClick={(e) => {
+                          onClick={(e: any) => {
                             e.stopPropagation();
                             onItemPreview?.(item.record);
                           }}
@@ -381,9 +381,9 @@ export function GalleryView({
                         </Button>
                         <Button
                           variant="ghost"
-                          size="sm"
+                          
                           className="bg-background/20 backdrop-blur-sm text-background hover:bg-background/30"
-                          onClick={(e) => {
+                          onClick={(e: any) => {
                             e.stopPropagation();
                             onItemDownload?.(item.record);
                           }}
@@ -396,7 +396,7 @@ export function GalleryView({
                         <input
                           type="checkbox"
                           checked={isSelected}
-                          onChange={(e) => {
+                          onChange={(e: any) => {
                             e.stopPropagation();
                             handleItemSelect(item.id, e.target.checked);
                           }}
@@ -428,12 +428,12 @@ export function GalleryView({
                     {item.tags && Array.isArray(item.tags) && item.tags.length > 0 && (
                       <div className="flex flex-wrap gap-xs">
                         {item.tags.slice(0, 2).map((tag, index) => (
-                          <Badge key={index} variant="outline" size="sm">
+                          <Badge key={index} variant="outline" >
                             {String(tag)}
                           </Badge>
                         ))}
                         {item.tags.length > 2 && (
-                          <Badge variant="outline" size="sm">
+                          <Badge variant="outline" >
                             +{item.tags.length - 2}
                           </Badge>
                         )}
@@ -459,7 +459,7 @@ export function GalleryView({
           <div className="flex items-center gap-sm">
             <Button
               variant="ghost"
-              size="sm"
+              
               disabled={state.pagination.page === 1}
               onClick={() => actions.setPagination({ 
                 ...state.pagination, 
@@ -475,7 +475,7 @@ export function GalleryView({
             
             <Button
               variant="ghost"
-              size="sm"
+              
               disabled={state.pagination.page >= Math.ceil(filteredItems.length / state.pagination.pageSize)}
               onClick={() => actions.setPagination({ 
                 ...state.pagination, 

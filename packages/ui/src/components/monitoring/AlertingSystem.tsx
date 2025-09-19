@@ -330,7 +330,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
               <p className="text-muted-foreground">All systems are operating normally.</p>
             </Card>
           ) : (
-            alerts.map((alert) => (
+            alerts.map((alert: any) => (
               <Card key={alert.id} className="p-lg">
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-md">
@@ -367,7 +367,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
                         </Button>
                         <Button
                           onClick={() => handleResolveAlert(alert.id)}
-                          variant="primary"
+                          variant="default"
                           size="sm"
                         >
                           Resolve
@@ -377,7 +377,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
                     {alert.status === 'acknowledged' && (
                       <Button
                         onClick={() => handleResolveAlert(alert.id)}
-                        variant="primary"
+                        variant="default"
                         size="sm"
                       >
                         Resolve
@@ -393,7 +393,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
 
       {activeTab === 'rules' && (
         <div className="space-y-md">
-          {rules.map((rule) => (
+          {rules.map((rule: any) => (
             <Card key={rule.id} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
@@ -445,7 +445,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
         isOpen={showRuleModal}
         onClose={() => setShowRuleModal(false)}
         rule={editingRule}
-        onSave={(rule) => {
+        onSave={(rule: any) => {
           if (editingRule) {
             setRules(rules.map(r => r.id === rule.id ? rule : r));
             onRuleUpdated?.(rule);
@@ -548,14 +548,14 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
           <Input
             label="Rule Name"
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e: any) => setFormData({ ...formData, name: e.target.value })}
             placeholder="Enter rule name"
           />
           
           <Input
             label="Description"
             value={formData.description}
-            onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            onChange={(e: any) => setFormData({ ...formData, description: e.target.value })}
             placeholder="Describe what this rule monitors"
           />
           
@@ -564,7 +564,7 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
               <label className="block text-sm font-medium text-foreground mb-xs">Metric</label>
               <select
                 value={formData.metric}
-                onChange={(e) => setFormData({ ...formData, metric: e.target.value })}
+                onChange={(e: any) => setFormData({ ...formData, metric: e.target.value })}
                 className="w-full p-sm border border-border rounded-md"
               >
                 {METRIC_OPTIONS.map(option => (
@@ -579,7 +579,7 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
               <label className="block text-sm font-medium text-foreground mb-xs">Operator</label>
               <select
                 value={formData.operator}
-                onChange={(e) => setFormData({ ...formData, operator: e.target.value as any })}
+                onChange={(e: any) => setFormData({ ...formData, operator: e.target.value as any })}
                 className="w-full p-sm border border-border rounded-md"
               >
                 {OPERATOR_OPTIONS.map(option => (
@@ -596,7 +596,7 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
               label="Threshold"
               type="number"
               value={formData.threshold}
-              onChange={(e) => setFormData({ ...formData, threshold: Number(e.target.value) })}
+              onChange={(e: any) => setFormData({ ...formData, threshold: Number(e.target.value) })}
               placeholder="Enter threshold value"
             />
             
@@ -604,7 +604,7 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
               <label className="block text-sm font-medium text-foreground mb-xs">Severity</label>
               <select
                 value={formData.severity}
-                onChange={(e) => setFormData({ ...formData, severity: e.target.value as AlertSeverity })}
+                onChange={(e: any) => setFormData({ ...formData, severity: e.target.value as AlertSeverity })}
                 className="w-full p-sm border border-border rounded-md"
               >
                 <option value="low">Low</option>
@@ -619,14 +619,14 @@ const AlertRuleModal: React.FC<AlertRuleModalProps> = ({ isOpen, onClose, rule, 
             label="Cooldown (minutes)"
             type="number"
             value={formData.cooldownMinutes}
-            onChange={(e) => setFormData({ ...formData, cooldownMinutes: Number(e.target.value) })}
+            onChange={(e: any) => setFormData({ ...formData, cooldownMinutes: Number(e.target.value) })}
             placeholder="Minutes between alerts"
           />
           
           <div className="flex items-center gap-sm">
             <Toggle
               checked={formData.enabled}
-              onChange={(e) => setFormData({ ...formData, enabled: e.currentTarget.checked })}
+              onChange={(e: any) => setFormData({ ...formData, enabled: e.currentTarget.checked })}
             />
             <label className="text-sm font-medium text-foreground">Enable this rule</label>
           </div>

@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   UserCheck,
   Calendar,
@@ -176,7 +170,7 @@ export default function CreateAssignmentClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <UserCheck className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Asset & Personnel</h3>
+            <h3 className="text-body text-heading-4">Asset & Personnel</h3>
           </div>
           
           <div className="stack-md">
@@ -184,9 +178,8 @@ export default function CreateAssignmentClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <Input
-                value={formData.assetId}
-                onChange={(e) => handleInputChange('assetId', e.target.value)}
+              <UnifiedInput                 value={formData.assetId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
               />
@@ -197,9 +190,8 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Assigned To *
                 </label>
-                <Input
-                  value={formData.assignedTo}
-                  onChange={(e) => handleInputChange('assignedTo', e.target.value)}
+                <UnifiedInput                   value={formData.assignedTo}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                   placeholder="Person receiving assignment"
                   required
                 />
@@ -209,9 +201,8 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Assigned By
                 </label>
-                <Input
-                  value={formData.assignedBy}
-                  onChange={(e) => handleInputChange('assignedBy', e.target.value)}
+                <UnifiedInput                   value={formData.assignedBy}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedBy', e.target.value)}
                   placeholder="Person making assignment"
                 />
               </div>
@@ -221,9 +212,8 @@ export default function CreateAssignmentClient({
               <label className="block text-body-sm form-label mb-xs">
                 Project ID
               </label>
-              <Input
-                value={formData.projectId}
-                onChange={(e) => handleInputChange('projectId', e.target.value)}
+              <UnifiedInput                 value={formData.projectId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('projectId', e.target.value)}
                 placeholder="Associated project (optional)"
               />
             </div>
@@ -234,7 +224,7 @@ export default function CreateAssignmentClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Calendar className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Timeline & Location</h3>
+            <h3 className="text-body text-heading-4">Timeline & Location</h3>
           </div>
           
           <div className="stack-md">
@@ -244,10 +234,9 @@ export default function CreateAssignmentClient({
                   <Clock className="h-4 w-4 inline mr-xs" />
                   Assignment Date *
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.assignmentDate}
-                  onChange={(e) => handleInputChange('assignmentDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignmentDate', e.target.value)}
                   required
                 />
               </div>
@@ -256,10 +245,9 @@ export default function CreateAssignmentClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Expected Return Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.returnDate}
-                  onChange={(e) => handleInputChange('returnDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('returnDate', e.target.value)}
                 />
               </div>
             </div>
@@ -269,9 +257,8 @@ export default function CreateAssignmentClient({
                 <MapPin className="h-4 w-4 inline mr-xs" />
                 Location
               </label>
-              <Input
-                value={formData.location}
-                onChange={(e) => handleInputChange('location', e.target.value)}
+              <UnifiedInput                 value={formData.location}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Assignment location"
               />
             </div>
@@ -282,7 +269,7 @@ export default function CreateAssignmentClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <UserCheck className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Assignment Details</h3>
+            <h3 className="text-body text-heading-4">Assignment Details</h3>
           </div>
           
           <div className="stack-md">
@@ -292,7 +279,7 @@ export default function CreateAssignmentClient({
               </label>
               <Textarea
                 value={formData.purpose}
-                onChange={(e) => handleInputChange('purpose', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purpose', e.target.value)}
                 placeholder="Describe the purpose of this assignment"
                 rows={3}
                 required
@@ -306,7 +293,7 @@ export default function CreateAssignmentClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {ASSIGNMENT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -322,7 +309,7 @@ export default function CreateAssignmentClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value) => handleInputChange('priority', value)}
+                  onValueChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {PRIORITY_LEVELS.map(priority => (
                     <option key={priority.value} value={priority.value}>
@@ -339,7 +326,7 @@ export default function CreateAssignmentClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about this assignment"
                 rows={3}
               />

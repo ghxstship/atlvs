@@ -1,22 +1,10 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import {
-  DataViewProvider,
-  StateManagerProvider,
-  DataGrid,
-  KanbanBoard,
-  CalendarView,
-  ListView,
-  ViewSwitcher,
-  DataActions,
-  Drawer
-} from '@ghxstship/ui';
+import { Drawer } from '@ghxstship/ui';
 import type {
-  FieldConfig,
-  DataViewConfig,
-  DataRecord,
   FilterConfig,
   SortConfig
 } from '@ghxstship/ui/components/DataViews/types';

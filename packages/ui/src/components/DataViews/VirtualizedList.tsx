@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { Loader } from '../Loader';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 interface VirtualizedListProps<T = any> {
@@ -181,7 +181,7 @@ export function VirtualizedList<T>({
             }}
             className="flex items-center justify-center"
           >
-            <Loader size="sm" text="Loading more..." />
+            <Loader  text="Loading more..." />
           </div>
         )}
       </div>
@@ -322,7 +322,7 @@ export function VirtualizedGrid<T>({
             }}
             className="flex items-center justify-center"
           >
-            <Loader size="sm" text="Loading more..." />
+            <Loader  text="Loading more..." />
           </div>
         )}
       </div>

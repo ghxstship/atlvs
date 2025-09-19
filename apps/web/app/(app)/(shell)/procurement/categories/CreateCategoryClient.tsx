@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Tag, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 import { lightTheme } from '@/lib/design-system/colors-2026';
@@ -186,8 +186,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Category Name *
               </label>
-              <Input
-                {...register('name')}
+              <UnifiedInput                 {...register('name')}
                 placeholder="Enter category name"
                 error={errors.name?.message}
               />
@@ -199,7 +198,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               </label>
               <select
                 {...register('type')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="both">Products & Services</option>
                 <option value="product">Products Only</option>
@@ -213,7 +212,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               </label>
               <select
                 {...register('status')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
@@ -226,10 +225,10 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               </label>
               <select
                 {...register('color')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select color</option>
-                {colorOptions.map((color) => (
+                {colorOptions.map((color: any) => (
                   <option key={color.value} value={color.value}>
                     {color.label}
                   </option>
@@ -241,8 +240,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               <label className="block text-body-sm form-label mb-sm">
                 Sort Order
               </label>
-              <Input
-                {...register('sort_order', { valueAsNumber: true })}
+              <UnifiedInput                 {...register('sort_order', { valueAsNumber: true })}
                 type="number"
                 min="0"
                 placeholder="0"

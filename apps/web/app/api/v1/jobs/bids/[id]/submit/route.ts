@@ -174,7 +174,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       message: 'Bid submitted successfully' 
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Bid submit error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

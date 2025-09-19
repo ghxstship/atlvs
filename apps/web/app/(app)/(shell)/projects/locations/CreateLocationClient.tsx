@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -91,7 +92,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create location');
     } finally {
       setLoading(false);
@@ -130,7 +131,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter location name..."
               {...form.register('name')}
             />
@@ -147,7 +148,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="type"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('type')}
             >
               <option value="venue">Venue</option>
@@ -167,7 +168,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             <input
               id="address"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Street address..."
               {...form.register('address')}
             />
@@ -181,7 +182,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
               <input
                 id="city"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="City..."
                 {...form.register('city')}
               />
@@ -194,7 +195,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
               <input
                 id="state"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="State or province..."
                 {...form.register('state')}
               />
@@ -209,7 +210,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
               <input
                 id="country"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Country..."
                 {...form.register('country')}
               />
@@ -223,7 +224,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
                 id="capacity"
                 type="number"
                 min="1"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Max capacity..."
                 {...form.register('capacity', { valueAsNumber: true })}
               />
@@ -236,11 +237,11 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project (organization-wide location)</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>
@@ -255,7 +256,7 @@ export default function CreateLocationClient({ orgId }: { orgId: string }) {
             <textarea
               id="notes"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Additional notes about this location..."
               {...form.register('notes')}
             />

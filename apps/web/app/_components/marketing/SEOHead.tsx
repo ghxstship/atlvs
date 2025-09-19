@@ -1,5 +1,6 @@
 'use client';
 
+
 import Head from 'next/head';
 import { usePathname } from 'next/navigation';
 
@@ -196,7 +197,7 @@ export default function SEOHead({
           {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
           {author && <meta property="article:author" content={author} />}
           {section && <meta property="article:section" content={section} />}
-          {tags.map((tag) => (
+          {tags.map((tag: any) => (
             <meta key={tag} property="article:tag" content={tag} />
           ))}
         </>

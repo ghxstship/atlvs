@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
 import { ProgressBar } from "../../../../_components/ui"
 import { 
   MagnifyingGlassIcon,
@@ -127,7 +128,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
     }
   };
 
-  const filteredAssignments = assignments.filter((assignment) => {
+  const filteredAssignments = assignments.filter((assignment: any) => {
     const matchesSearch = (assignment.job_title && assignment.job_title.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          (assignment.assignee_name && assignment.assignee_name.toLowerCase().includes(searchTerm.toLowerCase())) ||
                          (assignment.notes && assignment.notes.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -236,20 +237,19 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <Input
-              placeholder="Search assignments..."
+            <UnifiedInput               placeholder="Search assignments..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
             />
           </div>
           <div className="flex gap-sm">
             <select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {STATUS_OPTIONS.map((option) => (
+              {STATUS_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -257,10 +257,10 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
             </select>
             <select
               value={typeFilter}
-              onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {TYPE_OPTIONS.map((option) => (
+              {TYPE_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -353,7 +353,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
             </Card>
           ))
         ) : filteredAssignments.length > 0 ? (
-          filteredAssignments.map((assignment) => {
+          filteredAssignments.map((assignment: any) => {
             const StatusIcon = getStatusIcon(assignment.status);
             const isLate = isOverdue(assignment.end_date);
             const isDue = isDueSoon(assignment.end_date);
@@ -464,12 +464,12 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                         <span className="text-body-sm form-label color-foreground/70 mb-xs block">Required Skills:</span>
                         <div className="flex flex-wrap gap-xs">
                           {assignment.skills_required.slice(0, 5).map((skill, index) => (
-                            <Badge key={index} variant="secondary" className="text-body-sm">
+                            <Badge key={index} variant="secondary">
                               {skill}
                             </Badge>
                           ))}
                           {assignment.skills_required.length > 5 && (
-                            <Badge variant="secondary" className="text-body-sm">
+                            <Badge variant="secondary">
                               +{assignment.skills_required.length - 5} more
                             </Badge>
                           )}

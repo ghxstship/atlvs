@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState, useEffect, useMemo } from 'react';
-import { DataViewProvider, ViewSwitcher, DataGrid, DataActions, KanbanBoard, CalendarView, ListView, Drawer } from '@ghxstship/ui';
-import { StateManagerProvider } from '@ghxstship/ui';
+import { Drawer } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
-import type { DataRecord, DataViewConfig, FieldConfig } from '@ghxstship/ui';
+import type {} from '@ghxstship/ui';
 
 export default function CompaniesClient({ orgId }: { orgId: string }) {
   const [companies, setCompanies] = useState<DataRecord[]>([]);
@@ -135,7 +135,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
   ];
 
   // Real Supabase data loading function
-  const loadCompaniesData = async (filters?: any): Promise<DataRecord[]> => {
+  const loadCompaniesData = async (filters?): Promise<DataRecord[]> => {
     try {
       const params = new URLSearchParams();
       if (filters?.industry) params.append('industry', filters.industry);
@@ -195,7 +195,7 @@ export default function CompaniesClient({ orgId }: { orgId: string }) {
     onRefresh: () => {
       setFilters({}); // Clear filters and reload
     },
-    onExport: (data: any, format: any) => {
+    onExport: (data, format) => {
       console.log('Export companies:', format, data);
       // Export functionality implemented
     },

@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Mark events for redrive
-    const redrivePromises = failedEvents.map(async (event) => {
+    const redrivePromises = failedEvents.map(async (event: any) => {
       try {
         // Reset event status and increment retry count
         const { error: updateError } = await supabase
@@ -108,7 +108,7 @@ export async function POST(request: NextRequest) {
         }
 
         return { id: event.id, status: 'queued' };
-      } catch (error: any) {
+      } catch (error) {
         console.error(`Error processing event ${event.id}:`, error);
         return { id: event.id, status: 'error', error: error.message };
       }
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Webhook redrive error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

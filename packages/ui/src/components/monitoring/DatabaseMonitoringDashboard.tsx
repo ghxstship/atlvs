@@ -84,7 +84,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
   // Mock data fetching function - replace with actual API call
   const fetchMonitoringData = useCallback(async (): Promise<MonitoringData> => {
     // This would be replaced with actual API call to DatabaseMonitoringService
-    return new Promise((resolve) => {
+    return new Promise((resolve: any) => {
       setTimeout(() => {
         resolve({
           healthReport: [

@@ -320,7 +320,7 @@ export const withBaseComponent = <P extends BaseComponentProps>(
   WrappedComponent: React.ComponentType<P>,
   metadata: ComponentMetadata
 ) => {
-  const WithBaseComponent: React.FC<P> = (props) => {
+  const WithBaseComponent: React.FC<P> = (props: any) => {
     const lifecycle: ComponentLifecycle = {
       onMount: () => {
         if (process.env.NODE_ENV === 'development') {

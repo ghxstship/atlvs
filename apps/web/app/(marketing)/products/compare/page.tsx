@@ -133,7 +133,7 @@ export default function ComparePage() {
           </div>
 
           <div className="bg-success/10 border border-success/20 rounded-lg p-md mb-lg">
-            {productOverview.map((product) => (
+            {productOverview.map((product: any) => (
               <Card key={product.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="text-center mb-xl">
@@ -153,10 +153,10 @@ export default function ComparePage() {
                     <div>
                       <h4 className="text-heading-4 text-body-sm color-muted mb-sm uppercase">KEY STRENGTHS</h4>
                       <div className="stack-sm">
-                        {product.strengths.map((strength) => (
+                        {product.strengths.map((strength: any) => (
                           <div key={strength} className="flex items-center gap-sm">
                             <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
-                            <span className="text-body-sm">{strength}</span>
+                            <span>{strength}</span>
                           </div>
                         ))}
                       </div>
@@ -167,7 +167,7 @@ export default function ComparePage() {
                       <p className="text-body-sm color-foreground">{product.bestFor}</p>
                     </div>
 
-                    <a href={product.href as any as any}>
+                    <a href={product.href}>
                       <Button className="w-full group">
                         Explore {product.name}
                         <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -194,7 +194,7 @@ export default function ComparePage() {
           </div>
 
           <div className="space-y-2xl">
-            {comparisonData.map((category) => (
+            {comparisonData.map((category: any) => (
               <Card key={category.category}>
                 <CardContent className="p-xl">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-lg uppercase`}>
@@ -211,7 +211,7 @@ export default function ComparePage() {
                         </tr>
                       </thead>
                       <tbody>
-                        {category.features.map((feature) => (
+                        {category.features.map((feature: any) => (
                           <tr key={feature.name} className="border-b border-muted/50">
                             <td className="py-md form-label">{feature.name}</td>
                             <td className="py-md text-center">
@@ -266,28 +266,28 @@ export default function ComparePage() {
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You manage complex projects</p>
+                      <p className="text-body-sm color-foreground">You manage complex projects</p>
                       <p className="text-body-sm color-muted">Need advanced project management with custom workflows</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You have an existing team</p>
+                      <p className="text-body-sm color-foreground">You have an existing team</p>
                       <p className="text-body-sm color-muted">Focus on internal collaboration and productivity</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You need detailed analytics</p>
+                      <p className="text-body-sm color-foreground">You need detailed analytics</p>
                       <p className="text-body-sm color-muted">Require comprehensive reporting and insights</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You manage budgets</p>
+                      <p className="text-body-sm color-foreground">You manage budgets</p>
                       <p className="text-body-sm color-muted">Need financial tracking and budget management</p>
                     </div>
                   </div>
@@ -317,28 +317,28 @@ export default function ComparePage() {
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You need to find talent</p>
+                      <p className="text-body-sm color-foreground">You need to find talent</p>
                       <p className="text-body-sm color-muted">Access to global network of creative professionals</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You're a freelancer</p>
+                      <p className="text-body-sm color-foreground">You're a freelancer</p>
                       <p className="text-body-sm color-muted">Connect with clients and showcase your work</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You need creative resources</p>
+                      <p className="text-body-sm color-foreground">You need creative resources</p>
                       <p className="text-body-sm color-muted">Access templates, assets, and educational content</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
                     <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="text-heading-4">You work on diverse projects</p>
+                      <p className="text-body-sm color-foreground">You work on diverse projects</p>
                       <p className="text-body-sm color-muted">Flexible marketplace for various creative needs</p>
                     </div>
                   </div>

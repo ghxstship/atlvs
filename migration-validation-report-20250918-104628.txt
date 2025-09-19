@@ -1,0 +1,15 @@
+GHXSTSHIP UI Migration Validation Report
+Generated: Thu Sep 18 10:46:28 EDT 2025
+=====================================
+
+Critical Issues: 1
+Warnings: 3
+Total Issues: 4
+
+Details:
+- Global CSS imports:        1
+- Module CSS imports:        0
+- Deprecated typography:     3814
+- Deprecated buttons:        3
+- Deprecated spacing:     4520
+- UI package imports:      507

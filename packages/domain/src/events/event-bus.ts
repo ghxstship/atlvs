@@ -1,4 +1,4 @@
-import { DomainEvent } from './DomainEvent';
+import { DomainEvent } from './domain-event';
 
 export type EventHandler<T = any> = (event: DomainEvent<T>) => Promise<void> | void;
 

@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Download, Lock, Calendar, Users, TrendingUp, Eye } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Whitepapers | GHXSTSHIP Resources',
@@ -110,7 +112,7 @@ export default function WhitepapersPage() {
             <Badge variant="outline" className="mb-md">
               Whitepapers
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               INDUSTRY
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -145,7 +147,7 @@ export default function WhitepapersPage() {
           <div className="stack-md">
             <h3 className="text-body-sm text-heading-4 color-foreground mb-sm">Categories</h3>
             <div className="flex flex-wrap gap-sm">
-              {categories.map((category) => (
+              {categories.map((category: any) => (
                 <Badge 
                   key={category} 
                   variant={category === 'All Categories' ? 'default' : 'outline'} 
@@ -163,7 +165,7 @@ export default function WhitepapersPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               FEATURED RESEARCH
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -173,7 +175,7 @@ export default function WhitepapersPage() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-xl mb-4xl">
-            {featuredPapers.map((paper) => (
+            {featuredPapers.map((paper: any) => (
               <Card key={paper.id} className="hover:shadow-modal transition-all duration-300 group">
                 <div className="relative">
                   <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -201,7 +203,7 @@ export default function WhitepapersPage() {
                 </div>
                 
                 <CardContent className="p-xl">
-                  <h3 className={`mb-md group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-md group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {paper.title}
                   </h3>
                   <p className="color-muted mb-lg">
@@ -235,8 +237,8 @@ export default function WhitepapersPage() {
                   <div className="border-t pt-md mb-lg">
                     <h4 className="text-body-sm text-heading-4 color-foreground mb-sm">Key Topics:</h4>
                     <div className="flex flex-wrap gap-sm mb-md">
-                      {paper.topics.map((topic) => (
-                        <Badge key={topic} variant="outline" className="text-body-sm">
+                      {paper.topics.map((topic: any) => (
+                        <Badge key={topic} variant="outline">
                           {topic}
                         </Badge>
                       ))}
@@ -264,13 +266,13 @@ export default function WhitepapersPage() {
       <section id="whitepapers" className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               ALL RESEARCH REPORTS
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {regularPapers.map((paper) => (
+            {regularPapers.map((paper: any) => (
               <Card key={paper.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
                   <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
@@ -293,7 +295,7 @@ export default function WhitepapersPage() {
                 </div>
                 
                 <CardContent className="p-lg">
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {paper.title}
                   </h3>
                   <p className="color-muted mb-md line-clamp-2">
@@ -349,7 +351,7 @@ export default function WhitepapersPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               RESEARCH SUBSCRIPTION
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto mb-xl">
@@ -380,7 +382,7 @@ export default function WhitepapersPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
                     <FileText className="h-8 w-8 text-background" />
                   </div>
-                  <h3 className={`mb-sm ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {benefit.title}
                   </h3>
                   <p className="color-muted mb-md">
@@ -400,7 +402,7 @@ export default function WhitepapersPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <FileText className="h-16 w-16 text-foreground mx-auto mb-lg" />
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 ACCESS ALL RESEARCH
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

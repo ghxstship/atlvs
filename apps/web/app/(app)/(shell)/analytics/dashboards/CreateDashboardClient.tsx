@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -162,7 +163,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <label className="block text-body-sm form-label mb-xs">Dashboard Name</label>
                 <input
                   {...register('name')}
-                  className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter dashboard name"
                 />
                 {errors.name && (
@@ -175,7 +176,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <textarea
                   {...register('description')}
                   rows={3}
-                  className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                  className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   placeholder="Describe the purpose of this dashboard"
                 />
               </div>
@@ -193,7 +194,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <label className="block text-body-sm form-label mb-xs">Layout Type</label>
                 <select
                   {...register('layout')}
-                  className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                  className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                 >
                   <option value="grid">Grid Layout</option>
                   <option value="freeform">Freeform Layout</option>
@@ -309,8 +310,8 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Widget Title</label>
             <input
               value={widgetData.title}
-              onChange={(e) => setWidgetData({ ...widgetData, title: e.target.value })}
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, title: e.target.value })}
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               placeholder="Enter widget title"
             />
           </div>
@@ -319,10 +320,10 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Refresh Interval (seconds)</label>
             <input
               value={widgetData.refreshInterval}
-              onChange={(e) => setWidgetData({ ...widgetData, refreshInterval: parseInt(e.target.value) || 0 })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, refreshInterval: parseInt(e.target.value) || 0 })}
               type="number"
               min="0"
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               placeholder="Seconds (0 for manual refresh)"
             />
           </div>
@@ -331,10 +332,10 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Widget Type</label>
             <select
               value={widgetData.type}
-              onChange={(e) => setWidgetData({ ...widgetData, type: e.target.value as any })}
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, type: e.target.value as any })}
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
             >
-              {WIDGET_TYPES.map((type) => (
+              {WIDGET_TYPES.map((type: any) => (
                 <option key={type.value} value={type.value}>
                   {type.label}
                 </option>
@@ -347,8 +348,8 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
               <label className="block text-body-sm form-label mb-xs">Data Source</label>
               <input
                 value={widgetData.dataSource}
-                onChange={(e) => setWidgetData({ ...widgetData, dataSource: e.target.value })}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, dataSource: e.target.value })}
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                 placeholder="e.g., /api/analytics/revenue"
               />
             </div>
@@ -359,10 +360,10 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
               <label className="block text-body-sm form-label mb-xs">Chart Type</label>
               <select
                 value={widgetData.chartType}
-                onChange={(e) => setWidgetData({ ...widgetData, chartType: e.target.value as any })}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, chartType: e.target.value as any })}
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
               >
-                {CHART_TYPES.map((type) => (
+                {CHART_TYPES.map((type: any) => (
                   <option key={type.value} value={type.value}>
                     {type.label}
                   </option>
@@ -375,10 +376,10 @@ function WidgetForm({ onSave, onCancel }: WidgetFormProps) {
             <label className="block text-body-sm form-label mb-xs">Widget Size</label>
             <select
               value={widgetData.size}
-              onChange={(e) => setWidgetData({ ...widgetData, size: e.target.value as any })}
-              className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setWidgetData({ ...widgetData, size: e.target.value as any })}
+              className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
-              {WIDGET_SIZES.map((size) => (
+              {WIDGET_SIZES.map((size: any) => (
                 <option key={size.value} value={size.value}>
                   {size.label} ({size.dimensions})
                 </option>

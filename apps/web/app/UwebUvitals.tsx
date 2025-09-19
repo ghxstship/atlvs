@@ -1,9 +1,10 @@
-'use client'
+'use client';
+
 
 import { useReportWebVitals } from 'next/web-vitals'
 
 export function WebVitals() {
-  useReportWebVitals((metric) => {
+  useReportWebVitals((metric: any) => {
     // Send to analytics service
     if (typeof window !== 'undefined' && window.gtag) {
       window.gtag('event', metric.name, {

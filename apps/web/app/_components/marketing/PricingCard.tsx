@@ -1,10 +1,11 @@
 'use client';
 
-import { Card, CardContent, CardHeader } from '@ghxstship/ui/components/Card';
-import { Badge } from '@ghxstship/ui/components/Badge';
+
+import { Card, CardContent, CardHeader  } from '@ghxstship/ui';
+import { Badge  } from '@ghxstship/ui';
 import { Check, ArrowRight } from 'lucide-react';
 import { cn } from '../lib/utils';
-import { typography } from '../lib/typography';
+import { typography, anton } from '../lib/typography';
 import { Button } from '@ghxstship/ui';
 
 interface PricingCardProps {
@@ -18,7 +19,7 @@ interface PricingCardProps {
   ctaText: string;
   ctaHref?: string;
   popular?: boolean;
-  icon?: any;
+  icon?: React.ComponentType<any>;
   className?: string;
 }
 
@@ -51,7 +52,7 @@ export function PricingCard({
       
       {/* Fixed Header Section */}
       <CardHeader className="text-center pb-md flex-shrink-0">
-        <h3 className={`${typography.cardTitle} mb-xs`}>{title}</h3>
+        <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>{title}</h3>
         <div className="h-12 flex items-center justify-center">
           <p className="color-muted text-body-sm leading-tight line-clamp-2">{description}</p>
         </div>
@@ -96,14 +97,14 @@ export function PricingCard({
         {/* Fixed CTA Button */}
         <div className="mt-md flex-shrink-0">
           {ctaHref ? (
-            <Button asChild className="w-full group min-h-[44px] flex items-center justify-center" variant={popular ? 'primary' : 'outline'}>
+            <Button asChild className="w-full group min-h-[44px] flex items-center justify-center" variant={popular ? 'default' : 'outline'}>
               <a href={ctaHref} className="flex items-center justify-center gap-xl whitespace-nowrap">
                 <span className="truncate">{ctaText}</span>
                 {Icon && <Icon className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />}
               </a>
             </Button>
           ) : (
-            <Button className="w-full group min-h-[44px] flex items-center justify-center gap-xl whitespace-nowrap" variant={popular ? 'primary' : 'outline'}>
+            <Button className="w-full group min-h-[44px] flex items-center justify-center gap-xl whitespace-nowrap" variant={popular ? 'default' : 'outline'}>
               <span className="truncate">{ctaText}</span>
               {Icon && <Icon className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />}
             </Button>

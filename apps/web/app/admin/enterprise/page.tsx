@@ -70,10 +70,10 @@ export default function EnterprisePage() {
       </div>
 
       <div className="grid gap-lg md:grid-cols-2 lg:grid-cols-3">
-        {dashboardSections.map((section) => {
+        {dashboardSections.map((section: any) => {
           const Icon = section.icon;
           return (
-            <Link key={section.href} href={section.href as any} className="block">
+            <Link key={section.href} href="#" className="block">
               <Card className="h-full transition-colors hover:bg-muted/50">
                 <CardHeader className="pb-sm">
                   <div className="flex items-center gap-sm">

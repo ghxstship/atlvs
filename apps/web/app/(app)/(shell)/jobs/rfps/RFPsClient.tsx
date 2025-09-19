@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Button, Badge, Input, Skeleton } from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Skeleton } from '@ghxstship/ui';
 import { 
   MagnifyingGlassIcon,
   PlusIcon,
@@ -108,7 +109,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
     }
   };
 
-  const filteredRFPs = rfps.filter((rfp) => {
+  const filteredRFPs = rfps.filter((rfp: any) => {
     const matchesSearch = rfp.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          rfp.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
                          rfp.issuer_organization.toLowerCase().includes(searchTerm.toLowerCase());
@@ -217,20 +218,19 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
       <Card className="p-md">
         <div className="flex flex-col sm:flex-row gap-md">
           <div className="flex-1">
-            <Input
-              placeholder="Search RFPs..."
+            <UnifiedInput               placeholder="Search RFPs..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full"
             />
           </div>
           <div className="flex gap-sm">
             <select
               value={statusFilter}
-              onChange={(e) => setStatusFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {STATUS_OPTIONS.map((option) => (
+              {STATUS_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -238,10 +238,10 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
             </select>
             <select
               value={typeFilter}
-              onChange={(e) => setTypeFilter(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md bg-background"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTypeFilter(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md bg-background"
             >
-              {TYPE_OPTIONS.map((option) => (
+              {TYPE_OPTIONS.map((option: any) => (
                 <option key={option.value} value={option.value}>
                   {option.label}
                 </option>
@@ -328,7 +328,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
             </Card>
           ))
         ) : filteredRFPs.length > 0 ? (
-          filteredRFPs.map((rfp) => {
+          filteredRFPs.map((rfp: any) => {
             const StatusIcon = getStatusIcon(rfp.status);
             const isUrgent = isDeadlineApproaching(rfp.submission_deadline);
             const isLate = isOverdue(rfp.submission_deadline);
@@ -399,7 +399,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                     {rfp.requirements && rfp.requirements.length > 0 && (
                       <div className="mb-sm">
                         <span className="text-body-sm form-label color-foreground/70 mb-xs block">Key Requirements:</span>
-                        <div className="stack-xs">
+                        <div className="stack-md">
                           {rfp.requirements.slice(0, 3).map((req, index) => (
                             <div key={index} className="text-body-sm color-foreground/70 flex items-start gap-sm">
                               <span className="color-foreground/40">•</span>
@@ -420,12 +420,12 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                         <span className="text-body-sm form-label color-foreground/70 mb-xs block">Evaluation Criteria:</span>
                         <div className="flex flex-wrap gap-xs">
                           {rfp.evaluation_criteria.slice(0, 4).map((criteria, index) => (
-                            <Badge key={index} variant="secondary" className="text-body-sm">
+                            <Badge key={index} variant="secondary">
                               {criteria}
                             </Badge>
                           ))}
                           {rfp.evaluation_criteria.length > 4 && (
-                            <Badge variant="secondary" className="text-body-sm">
+                            <Badge variant="secondary">
                               +{rfp.evaluation_criteria.length - 4} more
                             </Badge>
                           )}

@@ -1,20 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   Banknote,
   Plus,
@@ -405,7 +395,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
         {/* Account Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {accounts.map((account) => {
+            {accounts.map((account: any) => {
               const reconciliationStatus = getReconciliationStatus(account);
               const balanceDiff = getBalanceDifference(account);
               
@@ -551,8 +541,8 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     type="number"
                     step="0.01"
                     value={reconcileBalance}
-                    onChange={(e) => setReconcileBalance(Number(e.target.value))}
-                    className="w-full px-sm py-sm border border-border rounded-md bg-background color-foreground"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setReconcileBalance(Number(e.target.value))}
+                    className="w-full  px-md py-sm border border-border rounded-md bg-background color-foreground"
                   />
                 </div>
                 

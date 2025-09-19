@@ -17,4 +17,4 @@ export { accessibility, a11yValidation } from './accessibility';
 export { performance, performanceMonitoring } from './performance';
 
 // Re-export commonly used external utilities
-export { cn } from '@ghxstship/ui/system';
+export { cn } from '@ghxstship/ui';

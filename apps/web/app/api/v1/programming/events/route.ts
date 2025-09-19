@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ events: events || [] });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Events API error:', error);
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
@@ -156,7 +156,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ event }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Create event error:', error);
     
     if (error instanceof z.ZodError) {

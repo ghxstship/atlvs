@@ -199,7 +199,7 @@ export default function SolutionsPage() {
             <Badge variant="outline" className="mb-md">
               Industry Solutions
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TAILORED FOR
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -214,7 +214,7 @@ export default function SolutionsPage() {
 
           {/* Industry Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {solutions.map((solution) => {
+            {solutions.map((solution: any) => {
               const Icon = solution.icon;
               return (
                 <Card key={solution.id} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
@@ -224,7 +224,7 @@ export default function SolutionsPage() {
                     </div>
                     <h3 className="font-title text-heading-4 text-heading-3 mb-sm">{solution.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{solution.tagline}</p>
-                    <a href={solution.href as any as any}>
+                    <a href={product.href}>
                       <Button className="group-hover:bg-primary group-hover:color-primary-foreground transition-all duration-200 hover:scale-105">
                         Learn More
                         <ArrowRight className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
@@ -264,7 +264,7 @@ export default function SolutionsPage() {
                       <div>
                         <h3 className="text-heading-4 color-foreground mb-sm">Key Features</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm">
-                          {solution.features.map((feature) => (
+                          {solution.features.map((feature: any) => (
                             <div key={feature} className="flex items-center gap-sm">
                               <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                               <span className="text-body-sm color-muted">{feature}</span>
@@ -277,7 +277,7 @@ export default function SolutionsPage() {
                       <div>
                         <h3 className="text-heading-4 color-foreground mb-sm">Benefits</h3>
                         <div className="stack-sm">
-                          {solution.benefits.map((benefit) => (
+                          {solution.benefits.map((benefit: any) => (
                             <div key={benefit} className="flex items-center gap-sm">
                               <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${solution.gradient}`}></div>
                               <span className="text-body-sm color-muted">{benefit}</span>
@@ -288,7 +288,7 @@ export default function SolutionsPage() {
 
                       {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-md">
-                        <a href={solution.href as any as any}>
+                        <a href={product.href}>
                           <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                             Explore {solution.title}
                             <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -386,7 +386,7 @@ export default function SolutionsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg mb-3xl">
-            {commonFeatures.map((feature) => {
+            {commonFeatures.map((feature: any) => {
               const Icon = feature.icon;
               return (
                 <Card key={feature.title} className="text-center hover:shadow-floating transition-shadow">
@@ -414,7 +414,7 @@ export default function SolutionsPage() {
               </p>
               
               <div className="grid grid-cols-2 md:grid-cols-4 gap-lg mb-xl">
-                {['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'].map((integration) => (
+                {['Slack', 'Adobe CC', 'Google Workspace', 'Microsoft 365'].map((integration: any) => (
                   <div key={integration} className="flex items-center justify-center p-md bg-background rounded-lg border">
                     <span className="text-body-sm form-label color-muted">{integration}</span>
                   </div>

@@ -132,7 +132,7 @@ export async function GET(request: NextRequest) {
     // Calculate stage metrics
     const metrics = (stages || []).reduce((acc, stage) => {
       const itemCount = (stage as any).items?.length || 0;
-      const totalValue = (stage as any).items?.reduce((sum: number, item: any) => sum + (item.value || 0), 0) || 0;
+      const totalValue = (stage as any).items?.reduce((sum: number, item) => sum + (item.value || 0), 0) || 0;
       
       return {
         totalStages: acc.totalStages + 1,
@@ -170,7 +170,7 @@ export async function GET(request: NextRequest) {
       metrics
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Pipeline stages GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -324,7 +324,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ stage }, { status: 201 });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Pipeline stages POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -385,7 +385,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ stage });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Pipeline stages PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -462,7 +462,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Pipeline stages DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

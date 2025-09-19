@@ -239,7 +239,7 @@ export function InteractiveWrapper({
       onClick={handleClick}
       role="button"
       tabIndex={disabled ? -1 : 0}
-      onKeyDown={(e) => {
+      onKeyDown={(e: any) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           handleClick();

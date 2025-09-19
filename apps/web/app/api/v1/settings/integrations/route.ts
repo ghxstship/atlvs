@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
       availableIntegrations
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Integrations GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -200,7 +200,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ integration }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Integrations POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -261,7 +261,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ integration });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Integrations PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -322,7 +322,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Integrations DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

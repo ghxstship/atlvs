@@ -77,9 +77,9 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
             autoFocus
             type="text"
             value={query}
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
             placeholder="Search modules and pages (⌘K)"
-            className="w-full bg-transparent outline-none text-sm px-sm py-xs"
+            className="w-full bg-transparent outline-none text-sm  px-md py-xs"
             aria-label="Search commands"
           />
         </div>
@@ -91,7 +91,7 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
               {filtered.map(cmd => (
                 <li key={cmd.id}>
                   <button
-                    className="w-full text-left px-sm py-sm rounded-md hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
+                    className="w-full text-left  px-md py-sm rounded-md hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
                     onClick={() => onSelect(cmd)}
                   >
                     <div className="text-sm">{cmd.label}</div>

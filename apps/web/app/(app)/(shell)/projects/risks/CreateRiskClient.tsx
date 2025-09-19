@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -86,7 +87,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create risk');
     } finally {
       setLoading(false);
@@ -125,7 +126,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
             <input
               id="title"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter risk title..."
               {...form.register('title')}
             />
@@ -143,7 +144,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the risk in detail..."
               {...form.register('description')}
             />
@@ -155,7 +156,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="category"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('category')}
             >
               <option value="">Select category</option>
@@ -182,7 +183,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="impact"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('impact')}
               >
                 <option value="very_low">Very Low</option>
@@ -199,7 +200,7 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="probability"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('probability')}
               >
                 <option value="very_low">Very Low</option>
@@ -217,11 +218,11 @@ export default function CreateRiskClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project (organization-wide risk)</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>

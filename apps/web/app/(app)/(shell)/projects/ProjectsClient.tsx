@@ -1,29 +1,15 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  StateManagerProvider, 
-  ViewSwitcher, 
-  DataActions, 
-  DataGrid, 
-  KanbanBoard, 
-  CalendarView, 
-  ListView 
-} from '@ghxstship/ui';
 import { 
   SupabaseDataProvider
 } from '@ghxstship/ui/components/DataViews/providers/SupabaseDataProvider';
-import { 
-  DataViewProvider, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Drawer, type DataRecord } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 
-const projectsConfig: Omit<DataViewConfig, 'data' | 'onRefresh' | 'onExport' | 'onImport'> = {
+const projectsConfig: Omit<'data' | 'onRefresh' | 'onExport' | 'onImport'> = {
   id: 'projects-management',
   name: 'Projects Management',
   viewType: 'grid',

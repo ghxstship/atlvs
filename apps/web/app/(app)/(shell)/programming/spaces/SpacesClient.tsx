@@ -1,22 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  StateManagerProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  ListView, 
-  ViewSwitcher, 
-  DataActions, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord,
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, MapPin, Users, Square, Home, Coffee, Presentation } from 'lucide-react';
@@ -223,7 +209,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
   };
 
   // Group spaces by type for better visualization
-  const spacesByType = data.reduce((acc: any, space: any) => {
+  const spacesByType = data.reduce((acc, space) => {
     const type = space.kind || 'room';
     if (!acc[type]) {
       acc[type] = [];
@@ -265,7 +251,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
               {Object.entries(spacesByType).map(([type, typeSpaces]: [string, any]) => {
                 const IconComponent = getSpaceIcon(type);
                 const availableSpaces = typeSpaces.filter((s: any) => s.availability === 'available').length;
-                const totalCapacity = typeSpaces.reduce((sum: number, s: any) => sum + (s.capacity || 0), 0);
+                const totalCapacity = typeSpaces.reduce((sum: number, s) => sum + (s.capacity || 0), 0);
                 
                 return (
                   <Card key={type} className="p-md">
@@ -304,7 +290,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                               {space.location || 'Location TBD'}
                             </div>
                           </div>
-                          <Badge variant="outline" className={getAvailabilityColor(space.availability)}>
+                          <Badge variant="outline">
                             {space.availability}
                           </Badge>
                         </div>

@@ -1,20 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   TrendingUp,
   Plus,
@@ -490,7 +480,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
         {/* Forecast Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {forecasts.map((forecast) => (
+            {forecasts.map((forecast: any) => (
               <Card key={forecast.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewForecast(forecast)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">

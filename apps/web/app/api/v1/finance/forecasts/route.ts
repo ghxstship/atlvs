@@ -92,7 +92,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ forecasts: forecasts || [] });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Forecasts GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -141,7 +141,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ forecast }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Forecasts POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -202,7 +202,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ forecast });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Forecasts PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -259,7 +259,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Forecasts DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

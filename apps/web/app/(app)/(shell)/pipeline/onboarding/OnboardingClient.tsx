@@ -1,7 +1,7 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Textarea } from '@ghxstship/ui';
 import { Plus, CheckCircle, Clock, AlertCircle, User, FileText, Shield, Briefcase } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -278,7 +278,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
     <div className="stack-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Onboarding Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Onboarding Pipeline</h1>
           <p className="text-body-sm color-muted">Manage crew onboarding workflows and task completion</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
@@ -298,8 +298,8 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Person</label>
                   <select
                     value={formData.personId}
-                    onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select person...</option>
@@ -314,8 +314,8 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Project</label>
                   <select
                     value={formData.projectId}
-                    onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select project...</option>
@@ -330,19 +330,17 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
               <div className="grid grid-cols-2 gap-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Start Date</label>
-                  <Input
-                    type="date"
+                  <UnifiedInput                     type="date"
                     value={formData.startDate}
-                    onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Expected Completion</label>
-                  <Input
-                    type="date"
+                  <UnifiedInput                     type="date"
                     value={formData.expectedCompletionDate}
-                    onChange={(e) => setFormData(prev => ({ ...prev, expectedCompletionDate: e.target.value }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expectedCompletionDate: e.target.value }))}
                   />
                 </div>
               </div>
@@ -436,7 +434,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                             {task.assignedTo && <span>Assigned: {task.assignedTo}</span>}
                           </div>
                         </div>
-                        <Badge variant={task.required ? 'destructive' : 'secondary'} className="text-body-sm">
+                        <Badge variant={task.required ? 'destructive' : 'secondary'}>
                           {task.required ? 'Required' : 'Optional'}
                         </Badge>
                       </div>

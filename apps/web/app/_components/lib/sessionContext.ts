@@ -3,8 +3,8 @@ import { createServerClient } from '@ghxstship/auth';
 import { cache } from 'react';
 
 export interface SessionContext {
-  session: any;
-  user: any;
+  session;
+  user;
   orgId: string | null;
   role: string | undefined;
   entitlements: {
@@ -56,7 +56,7 @@ export const getSessionContext = cache(async (): Promise<SessionContext | null> 
   role = membership?.role ?? undefined;
 
   // Get organization entitlements
-  let orgEnt: any = null;
+  let orgEnt = null;
   if (orgId) {
     const { data } = await supabase
       .from('organization_entitlements')
@@ -67,7 +67,7 @@ export const getSessionContext = cache(async (): Promise<SessionContext | null> 
   }
 
   // Get user entitlements
-  let userEnt: any = null;
+  let userEnt = null;
   const { data } = await supabase
     .from('user_entitlements')
     .select('*')

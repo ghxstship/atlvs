@@ -2,8 +2,8 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
-import { Checkbox } from '../Checkbox';
+import { Button } from '../atomic/Button';
+import { Checkbox } from '../atomic/Checkbox';
 import { Badge } from '../Badge';
 import { 
   ChevronDown, 
@@ -14,7 +14,7 @@ import {
   Search,
   Settings
 } from 'lucide-react';
-import { DataRecord, GroupConfig } from './types';
+import { GroupConfig } from './types';
 
 interface ListViewProps {
   className?: string;
@@ -214,21 +214,21 @@ export function ListView({
             }
           </span>
 
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Filter className="h-4 w-4" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Settings className="h-4 w-4" />
             View Options
           </Button>
           
           <Button
-            variant="primary"
-            size="sm"
+            variant="default"
+            
             onClick={() => config.onCreate?.()}
           >
             <Plus className="h-4 w-4 mr-xs" />
@@ -268,7 +268,7 @@ export function ListView({
                       </h3>
                       
                       {showGroupCounts && (
-                        <Badge variant="secondary" size="sm">
+                        <Badge variant="secondary" >
                           {items.length}
                         </Badge>
                       )}
@@ -285,7 +285,7 @@ export function ListView({
                       <div className="text-sm">No items in {groupKey}</div>
                     </div>
                   ) : (
-                    items.map((record) => {
+                    items.map((record: any) => {
                       const isSelected = state.selection.includes(record.id);
                       const isHovered = hoveredItem === record.id;
                       const priority = priorityField ? record[priorityField] : null;
@@ -309,7 +309,7 @@ export function ListView({
                           {/* Selection Checkbox */}
                           <Checkbox
                             checked={isSelected}
-                            onClick={(e) => {
+                            onClick={(e: any) => {
                               e.stopPropagation();
                               if (isSelected) {
                                 actions.setSelectedRecords(state.selection.filter(id => id !== record.id));
@@ -345,13 +345,13 @@ export function ListView({
                               </h4>
                               
                               {priority && (
-                                <Badge variant={getPriorityColor(priority)} size="sm">
+                                <Badge variant={getPriorityColor(priority)} >
                                   {priority}
                                 </Badge>
                               )}
                               
                               {status && (
-                                <Badge variant={getStatusColor(status)} size="sm">
+                                <Badge variant={getStatusColor(status)} >
                                   {status}
                                 </Badge>
                               )}
@@ -366,12 +366,12 @@ export function ListView({
                             {tags && Array.isArray(tags) && tags.length > 0 && (
                               <div className="flex flex-wrap gap-xs mt-sm">
                                 {tags.slice(0, 3).map((tag, index) => (
-                                  <Badge key={index} variant="outline" size="sm">
+                                  <Badge key={index} variant="outline" >
                                     {String(tag)}
                                   </Badge>
                                 ))}
                                 {tags.length > 3 && (
-                                  <Badge variant="outline" size="sm">
+                                  <Badge variant="outline" >
                                     +{tags.length - 3}
                                   </Badge>
                                 )}
@@ -386,8 +386,8 @@ export function ListView({
                           `}>
                             <Button
                               variant="ghost"
-                              size="sm"
-                              onClick={(e) => {
+                              
+                              onClick={(e: any) => {
                                 e.stopPropagation();
                                 // Show item actions menu
                               }}
@@ -418,7 +418,7 @@ export function ListView({
           <div className="flex items-center gap-sm">
             <Button
               variant="ghost"
-              size="sm"
+              
               disabled={state.pagination.page === 1}
               onClick={() => actions.setPagination({ 
                 ...state.pagination, 
@@ -434,7 +434,7 @@ export function ListView({
             
             <Button
               variant="ghost"
-              size="sm"
+              
               disabled={state.pagination.page >= Math.ceil(filteredData.length / state.pagination.pageSize)}
               onClick={() => actions.setPagination({ 
                 ...state.pagination, 

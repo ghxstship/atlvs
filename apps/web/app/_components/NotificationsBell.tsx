@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useEffect, useMemo, useState } from 'react';
 import { Bell, Check } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button } from '@ghxstship/ui';
+import { Drawer, Button, Badge } from '@ghxstship/ui';
 
 export default function NotificationsBell() {
   const sb = useMemo(() => createBrowserClient(), []);
@@ -57,7 +58,7 @@ export default function NotificationsBell() {
             <div className="text-body-sm opacity-80">You're all caught up.</div>
           ) : (
             <ul className="stack-sm">
-              {items.map((n) => (
+              {items.map((n: any) => (
                 <li key={n.id} className="rounded border p-sm">
                   <div className="flex items-start justify-between gap-sm">
                     <div>

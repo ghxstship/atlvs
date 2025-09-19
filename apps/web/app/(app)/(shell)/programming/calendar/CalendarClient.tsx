@@ -1,11 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 
@@ -268,7 +265,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                       {date.getDate()}
                     </div>
                     
-                    <div className="stack-xs">
+                    <div className="stack-md">
                       {dayEvents.slice(0, 3).map(event => (
                         <div
                           key={event.id}
@@ -355,7 +352,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                   </div>
                   
                   <div className="flex items-center gap-sm">
-                    <Badge variant="secondary" className={getStatusColor(event.status)}>
+                    <Badge variant="outline">
                       {event.status.replace('_', ' ')}
                     </Badge>
                     <Badge variant="outline">

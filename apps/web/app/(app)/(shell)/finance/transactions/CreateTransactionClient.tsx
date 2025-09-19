@@ -1,9 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, ArrowUpDown, Calendar, DollarSign, Building } from 'lucide-react';
 
 interface CreateTransactionClientProps {
@@ -180,9 +180,8 @@ export default function CreateTransactionClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Transaction Description *
             </label>
-            <Input
-              value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            <UnifiedInput               value={formData.description}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="e.g., Payment received from Client ABC, Office rent payment"
               required
             />
@@ -208,10 +207,9 @@ export default function CreateTransactionClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   value={formData.amount || ''}
-                  onChange={(e) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                   className="pl-2xl"
                   min="0"
@@ -227,7 +225,7 @@ export default function CreateTransactionClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -246,10 +244,10 @@ export default function CreateTransactionClient({
               <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
               <Select
                 value={formData.accountId}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, accountId: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, accountId: value }))}
               >
                 <option value="">Select an account...</option>
-                {accounts.map((account) => (
+                {accounts.map((account: any) => (
                   <option key={account.id} value={account.id}>
                     {account.name} ({account.kind}) - {account.currency}
                   </option>
@@ -263,9 +261,8 @@ export default function CreateTransactionClient({
               <label className="block text-body-sm form-label color-foreground mb-sm">
                 Reference Number
               </label>
-              <Input
-                value={formData.referenceNumber}
-                onChange={(e) => setFormData(prev => ({ ...prev, referenceNumber: e.target.value }))}
+              <UnifiedInput                 value={formData.referenceNumber}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, referenceNumber: e.target.value }))}
                 placeholder="e.g., Check #1234, Wire #ABC123"
               />
             </div>
@@ -276,10 +273,9 @@ export default function CreateTransactionClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   value={formData.occurredAt}
-                  onChange={(e) => setFormData(prev => ({ ...prev, occurredAt: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, occurredAt: e.target.value }))}
                   className="pl-2xl"
                   max={new Date().toISOString().slice(0, 16)}
                   required
@@ -293,9 +289,8 @@ export default function CreateTransactionClient({
               <label className="block text-body-sm form-label color-foreground mb-sm">
                 Project ID
               </label>
-              <Input
-                value={formData.projectId}
-                onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
+              <UnifiedInput                 value={formData.projectId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
                 placeholder="Optional: Link to project"
               />
             </div>
@@ -304,9 +299,8 @@ export default function CreateTransactionClient({
               <label className="block text-body-sm form-label color-foreground mb-sm">
                 Invoice ID
               </label>
-              <Input
-                value={formData.invoiceId}
-                onChange={(e) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
+              <UnifiedInput                 value={formData.invoiceId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
                 placeholder="Optional: Link to invoice"
               />
             </div>

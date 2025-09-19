@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Select } from '../Select';
-import { Input } from '../Input';
+import { Input } from '../atomic/Input';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -20,8 +20,6 @@ import {
   Satellite,
   Globe
 } from 'lucide-react';
-import { DataRecord, FieldConfig } from './types';
-
 interface MapViewProps {
   className?: string;
   defaultCenter?: [number, number];
@@ -264,14 +262,14 @@ export function MapView({
             <Input
               placeholder="Search locations..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: any) => setSearchQuery(e.target.value)}
               className="pl-2xl w-64"
             />
           </div>
           
           <Select
             value={mapType}
-            onChange={(e) => setMapType(e.target.value as MapType)}
+            onChange={(e: any) => setMapType(e.target.value as MapType)}
           >
             <option value="roadmap">Roadmap</option>
             <option value="satellite">Satellite</option>
@@ -283,7 +281,7 @@ export function MapView({
         <div className="flex items-center gap-sm">
           <Button
             variant={showClusters ? 'primary' : 'outline'}
-            size="sm"
+            
             onClick={() => setShowClusters(!showClusters)}
           >
             <Layers className="h-4 w-4" />
@@ -292,7 +290,7 @@ export function MapView({
           
           <Button
             variant={showHeatmapLayer ? 'primary' : 'outline'}
-            size="sm"
+            
             onClick={() => setShowHeatmapLayer(!showHeatmapLayer)}
           >
             <Globe className="h-4 w-4" />
@@ -301,7 +299,7 @@ export function MapView({
           
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={fitBounds}
           >
             <Maximize className="h-4 w-4" />
@@ -363,11 +361,11 @@ export function MapView({
                       </p>
                     )}
                     <div className="flex items-center gap-sm mt-sm">
-                      <Badge variant="secondary" size="sm">
+                      <Badge variant="secondary" >
                         {marker.lat.toFixed(4)}, {marker.lng.toFixed(4)}
                       </Badge>
                       {marker.record[colorField] && (
-                        <Badge variant="outline" size="sm">
+                        <Badge variant="outline" >
                           {String(marker.record[colorField])}
                         </Badge>
                       )}
@@ -382,21 +380,21 @@ export function MapView({
           <div className="absolute top-4 right-4 flex flex-col gap-sm">
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={() => setMapZoom(Math.min(mapZoom + 1, 20))}
             >
               <ZoomIn className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={() => setMapZoom(Math.max(mapZoom - 1, 1))}
             >
               <ZoomOut className="h-4 w-4" />
             </Button>
             <Button
               variant="outline"
-              size="sm"
+              
               onClick={() => {
                 // Mock current location
                 setMapCenter([40.7128, -74.0060]);

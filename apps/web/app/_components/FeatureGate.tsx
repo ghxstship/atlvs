@@ -30,7 +30,7 @@ export default async function FeatureGate({ feature, children }: { feature: Feat
     orgId = membership?.organization_id ?? null;
   }
 
-  let orgEnt: any = null;
+  let orgEnt = null;
   if (orgId) {
     const { data } = await supabase
       .from('organization_entitlements')
@@ -40,7 +40,7 @@ export default async function FeatureGate({ feature, children }: { feature: Feat
     orgEnt = data || null;
   }
 
-  let userEnt: any = null;
+  let userEnt = null;
   if (user) {
     const { data } = await supabase
       .from('user_entitlements')

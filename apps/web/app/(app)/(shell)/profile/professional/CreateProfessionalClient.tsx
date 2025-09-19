@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -95,7 +96,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -123,16 +124,16 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="job_title" className="text-body-sm form-label">Job Title *</label>
             <input 
               id="job_title" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('job_title') || ''} 
-              onChange={(e) => form.setValue('job_title', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('job_title', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.job_title} 
             />
             {form.formState.errors.job_title ? 
@@ -143,9 +144,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="department" className="text-body-sm form-label">Department *</label>
             <input 
               id="department" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('department') || ''} 
-              onChange={(e) => form.setValue('department', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('department', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.department} 
             />
             {form.formState.errors.department ? 
@@ -156,9 +157,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="employee_id" className="text-body-sm form-label">Employee ID</label>
             <input 
               id="employee_id" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('employee_id') || ''} 
-              onChange={(e) => form.setValue('employee_id', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('employee_id', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -167,9 +168,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <input 
               id="hire_date" 
               type="date" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('hire_date') || ''} 
-              onChange={(e) => form.setValue('hire_date', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('hire_date', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -177,9 +178,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="skills" className="text-body-sm form-label">Skills (comma-separated)</label>
             <textarea 
               id="skills" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('skills') || ''} 
-              onChange={(e) => form.setValue('skills', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('skills', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. JavaScript, React, Node.js"
             />
           </div>
@@ -188,9 +189,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="bio" className="text-body-sm form-label">Professional Bio</label>
             <textarea 
               id="bio" 
-              className="rounded border px-sm py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-[80px]" 
               value={form.getValues('bio') || ''} 
-              onChange={(e) => form.setValue('bio', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('bio', e.target.value, { shouldDirty: true })} 
               placeholder="Brief professional summary..."
             />
           </div>
@@ -200,9 +201,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <input 
               id="linkedin_url" 
               type="url" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('linkedin_url') || ''} 
-              onChange={(e) => form.setValue('linkedin_url', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('linkedin_url', e.target.value, { shouldDirty: true })} 
               placeholder="https://linkedin.com/in/username"
             />
           </div>
@@ -212,9 +213,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <input 
               id="website_url" 
               type="url" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('website_url') || ''} 
-              onChange={(e) => form.setValue('website_url', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('website_url', e.target.value, { shouldDirty: true })} 
               placeholder="https://yourwebsite.com"
             />
           </div>
@@ -223,9 +224,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="career_goals" className="text-body-sm form-label">Career Goals</label>
             <textarea 
               id="career_goals" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('career_goals') || ''} 
-              onChange={(e) => form.setValue('career_goals', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('career_goals', e.target.value, { shouldDirty: true })} 
               placeholder="Your professional aspirations..."
             />
           </div>
@@ -234,9 +235,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="mentorship_interests" className="text-body-sm form-label">Mentorship Interests</label>
             <textarea 
               id="mentorship_interests" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('mentorship_interests') || ''} 
-              onChange={(e) => form.setValue('mentorship_interests', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('mentorship_interests', e.target.value, { shouldDirty: true })} 
               placeholder="Areas where you'd like mentorship or can provide mentorship..."
             />
           </div>
@@ -245,9 +246,9 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="performance_rating" className="text-body-sm form-label">Performance Rating (1-5)</label>
             <select 
               id="performance_rating" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('performance_rating') || ''} 
-              onChange={(e) => form.setValue('performance_rating', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('performance_rating', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })}
             >
               <option value="">Select rating...</option>
               <option value="1">1 - Needs Improvement</option>
@@ -260,7 +261,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

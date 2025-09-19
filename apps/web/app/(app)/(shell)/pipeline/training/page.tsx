@@ -36,7 +36,7 @@ export default async function PipelineTrainingPage() {
     <div className="stack-md">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Training Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Training Pipeline</h1>
           <p className="text-body-sm color-muted">Manage training programs and certifications</p>
         </div>
         <CreateTrainingClient orgId={orgId} />

@@ -68,7 +68,7 @@ class PerformanceObserverManager {
   private initializeObservers() {
     // LCP Observer
     try {
-      const lcpObserver = new PerformanceObserver((list) => {
+      const lcpObserver = new PerformanceObserver((list: any) => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1] as any;
         this.metrics.lcp = lastEntry.renderTime || lastEntry.loadTime;
@@ -82,7 +82,7 @@ class PerformanceObserverManager {
 
     // FID Observer
     try {
-      const fidObserver = new PerformanceObserver((list) => {
+      const fidObserver = new PerformanceObserver((list: any) => {
         const entries = list.getEntries();
         const firstInput = entries[0] as any;
         this.metrics.fid = firstInput.processingStart - firstInput.startTime;
@@ -99,7 +99,7 @@ class PerformanceObserverManager {
       let clsValue = 0;
       let clsEntries: any[] = [];
       
-      const clsObserver = new PerformanceObserver((list) => {
+      const clsObserver = new PerformanceObserver((list: any) => {
         for (const entry of list.getEntries() as any[]) {
           if (!entry.hadRecentInput) {
             clsValue += entry.value;
@@ -117,7 +117,7 @@ class PerformanceObserverManager {
 
     // Paint timing
     try {
-      const paintObserver = new PerformanceObserver((list) => {
+      const paintObserver = new PerformanceObserver((list: any) => {
         for (const entry of list.getEntries()) {
           if (entry.name === 'first-contentful-paint') {
             this.metrics.fcp = entry.startTime;
@@ -381,15 +381,15 @@ export function usePerformanceMonitor() {
     networkMonitorRef.current = new NetworkMonitor();
 
     // Subscribe to metrics
-    observerRef.current.subscribe((webVitals) => {
+    observerRef.current.subscribe((webVitals: any) => {
       setMetrics(prev => ({ ...prev, ...webVitals }));
     });
 
-    fpsMonitorRef.current.subscribe((fps) => {
+    fpsMonitorRef.current.subscribe((fps: any) => {
       setMetrics(prev => ({ ...prev, fps }));
     });
 
-    networkMonitorRef.current.subscribe((networkRequests) => {
+    networkMonitorRef.current.subscribe((networkRequests: any) => {
       setMetrics(prev => ({ ...prev, networkRequests }));
     });
 

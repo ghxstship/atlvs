@@ -1,7 +1,8 @@
 'use client';
 
+
 import Link from 'next/link';
-import { Button } from '@ghxstship/ui/components/Button';
+import { Button  } from '@ghxstship/ui';
 import { NavigationDropdown } from './NavigationDropdown';
 import { anton } from '../../lib/typography';
 import { cn } from '../../lib/utils';
@@ -21,8 +22,8 @@ interface MobileMenuProps {
 export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: MobileMenuProps) {
   return (
     <div className="md:hidden border-t bg-popover">
-      <div className="px-sm pt-sm pb-sm stack-xl">
-        {navigation.map((item) => (
+      <div className=" px-md pt-sm pb-sm stack-xl">
+        {navigation.map((item: any) => (
           <div key={item.label}>
             {item.children ? (
               <NavigationDropdown
@@ -53,8 +54,8 @@ export function MobileMenu({ navigation, activeDropdown, onDropdownChange }: Mob
             </Button>
           </Link>
           <Link href="/auth/signup" className="block">
-            <Button className="w-full justify-center">
-              Start Free Trial
+            <Button variant="outline" className="w-full justify-center">
+              Sign Up
             </Button>
           </Link>
         </div>

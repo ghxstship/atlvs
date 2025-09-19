@@ -375,7 +375,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               handleNavigate(item.href, item.id);
             }
           }}
-          onKeyDown={(e) => {
+          onKeyDown={(e: any) => {
             if (e.key === 'Enter' || e.key === ' ') {
               e.preventDefault();
               if (hasChildren) {
@@ -442,7 +442,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         {!isCollapsed && level === 0 && (
           <button
             className="absolute right-2 top-1/2 -translate-y-1/2 p-xs rounded opacity-0 group-hover:opacity-100 hover:bg-muted transition-all duration-200"
-            onClick={(e) => {
+            onClick={(e: any) => {
               e.stopPropagation();
               togglePin(item.id);
             }}
@@ -463,7 +463,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                 aria-label={child.label}
                 className="flex items-center gap-sm px-sm py-sm text-sm text-muted-foreground hover:text-foreground hover:bg-muted rounded-md cursor-pointer motion-safe:transition-colors motion-safe:duration-200"
                 onClick={() => onNavigate?.(child.href || '#')}
-                onKeyDown={(e) => {
+                onKeyDown={(e: any) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     onNavigate?.(child.href || '#');
@@ -501,10 +501,10 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         {isMobileOpen && (
           <div
             className="lg:hidden fixed inset-0 z-50 flex"
-            onTouchStart={(e) => {
+            onTouchStart={(e: any) => {
               touchStartX.current = e.touches[0].clientX;
             }}
-            onTouchMove={(e) => {
+            onTouchMove={(e: any) => {
               if (touchStartX.current == null) return;
               const dx = e.touches[0].clientX - touchStartX.current;
               if (Math.abs(dx) > 50) {
@@ -541,7 +541,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                     type="text"
                     placeholder="Search navigation..."
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={(e: any) => setSearchQuery(e.target.value)}
                     className="w-full pl-2xl pr-md py-sm bg-background border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary"
                   />
                 </div>
@@ -591,9 +591,9 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               type="text"
               placeholder="Search navigation..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: any) => setSearchQuery(e.target.value)}
               className="w-full pl-2xl pr-md py-sm bg-background border border-border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary motion-safe:transition-all motion-safe:duration-200"
-              onKeyDown={(e) => {
+              onKeyDown={(e: any) => {
                 if (e.key === 'Escape') {
                   setSearchQuery('');
                   searchInputRef.current?.blur();

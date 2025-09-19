@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   History, 
   Edit, 
@@ -344,7 +344,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
 
       {/* Filter Tabs */}
       <div className="flex gap-sm flex-wrap">
-        {['all', 'employment', 'education', 'project', 'achievement', 'certification', 'other'].map((type) => (
+        {['all', 'employment', 'education', 'project', 'achievement', 'certification', 'other'].map((type: any) => (
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
@@ -377,7 +377,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
         </Card>
       ) : (
         <div className="stack-md">
-          {sortedEntries.map((entry) => {
+          {sortedEntries.map((entry: any) => {
             const IconComponent = getEntryTypeIcon(entry.entry_type);
             
             return (
@@ -389,7 +389,7 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
                         <IconComponent className={`h-5 w-5 text-${getEntryTypeColor(entry.entry_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="text-heading-4">{entry.title}</h3>
+                        <h3 className="text-body text-heading-4">{entry.title}</h3>
                         {entry.organization && (
                           <p className="text-body-sm color-muted">{entry.organization}</p>
                         )}
@@ -500,23 +500,20 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
             <option value="other">Other</option>
           </Select>
 
-          <Input
-            label="Title"
+          <UnifiedInput             label="Title"
             placeholder="Position title, degree, project name, etc."
             {...form.register('title')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Organization"
+            <UnifiedInput               label="Organization"
               placeholder="Company, school, or organization"
               {...form.register('organization')}
              
             />
 
-            <Input
-              label="Location"
+            <UnifiedInput               label="Location"
               placeholder="City, state, country"
               {...form.register('location')}
              
@@ -524,15 +521,13 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Start Date"
+            <UnifiedInput               label="Start Date"
               type="date"
               {...form.register('start_date')}
              
             />
 
-            <Input
-              label="End Date"
+            <UnifiedInput               label="End Date"
               type="date"
               {...form.register('end_date')}
              
@@ -563,11 +558,10 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           <div>
             <label className="block text-body-sm form-label mb-sm">Skills Gained</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add a skill"
+              <UnifiedInput                 placeholder="Add a skill"
                 value={skillInput}
-                onChange={(e) => setSkillInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
               />
               <Button type="button" onClick={addSkill}>Add</Button>
             </div>
@@ -594,11 +588,10 @@ export default function HistoryClient({ orgId, userId }: { orgId: string; userId
           <div>
             <label className="block text-body-sm form-label mb-sm">Key Achievements</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add an achievement"
+              <UnifiedInput                 placeholder="Add an achievement"
                 value={achievementInput}
-                onChange={(e) => setAchievementInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addAchievement())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAchievementInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addAchievement())}
               />
               <Button type="button" onClick={addAchievement}>Add</Button>
             </div>

@@ -9,11 +9,11 @@ import { createBrowserClient } from '@supabase/ssr';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface OrganizationSetupStepProps {
-  user: any;
+  user;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data: any;
+  data;
 }
 
 export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }: OrganizationSetupStepProps) {
@@ -124,7 +124,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
       }
 
       onNext();
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Something went wrong');
     } finally {
       setLoading(false);
@@ -208,7 +208,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                     className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="Enter organization name"
                     value={orgName}
-                    onChange={(e) => handleOrgNameChange(e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleOrgNameChange(e.target.value)}
                     required
                   />
                 </div>
@@ -218,7 +218,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                     Organization URL
                   </label>
                   <div className="flex">
-                    <span className="inline-flex items-center px-sm rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
+                    <span className="inline-flex items-center  px-md rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
                       ghxstship.com/
                     </span>
                     <input
@@ -226,7 +226,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                       className="flex-1 px-md py-sm border border-border rounded-r-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                       placeholder="organization-slug"
                       value={orgSlug}
-                      onChange={(e) => setOrgSlug(e.target.value)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOrgSlug(e.target.value)}
                       required
                     />
                   </div>
@@ -256,7 +256,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                     className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background text-center text-body font-mono"
                     placeholder="Enter invite code"
                     value={inviteCode}
-                    onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInviteCode(e.target.value.toUpperCase())}
                     required
                   />
                   <p className="text-body-sm color-muted mt-xs">

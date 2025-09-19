@@ -1,23 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  StateManagerProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  CalendarView, 
-  ListView, 
-  ViewSwitcher, 
-  DataActions, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord,
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { 

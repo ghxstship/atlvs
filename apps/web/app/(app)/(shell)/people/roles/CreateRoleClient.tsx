@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Briefcase, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -175,8 +175,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Role Name *
               </label>
-              <Input
-                {...register('name')}
+              <UnifiedInput                 {...register('name')}
                 placeholder="e.g., Production Manager, Lighting Designer"
                 error={errors.name?.message}
               />
@@ -187,8 +186,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
                 <label className="block text-body-sm form-label mb-sm">
                   Department
                 </label>
-                <Input
-                  {...register('department')}
+                <UnifiedInput                   {...register('department')}
                   placeholder="e.g., Production, Technical, Creative"
                 />
               </div>
@@ -199,7 +197,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
                 </label>
                 <select
                   {...register('level')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="entry">Entry Level</option>
                   <option value="junior">Junior</option>
@@ -250,8 +248,7 @@ export default function CreateRoleClient({ orgId, onRoleCreated }: CreateRoleCli
               <label className="block text-body-sm form-label mb-sm">
                 Salary Range
               </label>
-              <Input
-                {...register('salaryRange')}
+              <UnifiedInput                 {...register('salaryRange')}
                 placeholder="e.g., $50,000 - $70,000 annually"
               />
             </div>

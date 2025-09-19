@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -328,7 +329,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
             <Badge variant="secondary">{budgetAlerts.length} alerts</Badge>
           </div>
           <div className="stack-sm">
-            {budgetAlerts.map((alert) => (
+            {budgetAlerts.map((alert: any) => (
               <div key={alert.id} className="flex items-center justify-between p-sm bg-warning/10 border border-warning/20 rounded-lg">
                 <div className="flex items-center cluster-sm">
                   <AlertTriangle className={`h-5 w-5 ${alert.status === 'critical' ? 'color-destructive' : 'color-warning'}`} />
@@ -356,7 +357,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
         </div>
         <div className="stack-sm">
           {recentTransactions.length > 0 ? (
-            recentTransactions.map((transaction) => (
+            recentTransactions.map((transaction: any) => (
               <div key={transaction.id} className="flex items-center justify-between p-sm border border-border rounded-lg">
                 <div className="flex items-center cluster-sm">
                   {transaction.kind === 'revenue' ? (

@@ -1,5 +1,6 @@
 'use client';
 
+
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Zap, Shield, Globe } from 'lucide-react';
@@ -47,8 +48,8 @@ const products = [
 
 export function ProductHighlights() {
   return (
-    <section className="py-smxl bg-secondary/20">
-      <div className="container mx-auto px-lg px-md">
+    <section className="py-4xl bg-secondary/20">
+      <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
           <Badge variant="outline" className="mb-sm">
@@ -68,18 +69,18 @@ export function ProductHighlights() {
         </div>
 
         {/* Product Cards */}
-        <div className="grid lg:grid-cols-2 gap-smxl mb-xl">
-          {products.map((product) => (
+        <div className="grid lg:grid-cols-2 gap-2xl mb-xl">
+          {products.map((product: any) => (
             <Card key={product.id} className="group hover:shadow-popover transition-all duration-300 overflow-hidden">
               <div className={`h-2 bg-gradient-to-r ${product.gradient}`}></div>
               
               <CardContent className="p-xl">
                 {/* Product Header */}
                 <div className="mb-md">
-                  <div className="flex items-center gap-smxl mb-sm">
+                  <div className="flex items-center gap-sm mb-sm">
                     <h3 className="font-title text-heading-3 text-heading-3">{product.name}</h3>
-                    <Badge variant="secondary" className="text-body-sm">
-                      Enterprise Ready
+                    <Badge variant="secondary">
+                      <span className="text-body-sm">Enterprise Ready</span>
                     </Badge>
                   </div>
                   <p className="text-body form-label color-primary mb-sm">{product.tagline}</p>
@@ -87,11 +88,11 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Features Grid */}
-                <div className="grid grid-cols-2 gap-smxl mb-md">
-                  {product.features.map((feature) => {
+                <div className="grid grid-cols-2 gap-md mb-md">
+                  {product.features.map((feature: any) => {
                     const Icon = feature.icon;
                     return (
-                      <div key={feature.label} className="flex items-start gap-smxl">
+                      <div key={feature.label} className="flex items-start gap-sm">
                         <div className={`p-sm rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
                           <Icon className="h-4 w-4 color-primary" />
                         </div>
@@ -105,8 +106,8 @@ export function ProductHighlights() {
                 </div>
 
                 {/* Stats */}
-                <div className="grid grid-cols-3 gap-smxl mb-md p-md bg-secondary/30 rounded-lg">
-                  {product.stats.map((stat) => (
+                <div className="grid grid-cols-3 gap-sm mb-md p-md bg-secondary/30 rounded-lg">
+                  {product.stats.map((stat: any) => (
                     <div key={stat.label} className="text-center">
                       <div className="font-title text-body text-heading-3 color-foreground">{stat.value}</div>
                       <div className="text-body-sm color-muted">{stat.label}</div>
@@ -115,8 +116,8 @@ export function ProductHighlights() {
                 </div>
 
                 {/* CTA */}
-                <div className="flex flex-col sm:flex-row gap-smxl">
-                  <a href={product.href as any as any} className="flex-1">
+                <div className="flex flex-col sm:flex-row gap-sm">
+                  <a href="#" className="flex-1">
                     <Button className="w-full group">
                       Learn More
                       <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -137,9 +138,9 @@ export function ProductHighlights() {
         <div className="text-center">
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
             <CardContent className="p-xl">
-              <div className="flex items-center justify-center gap-smxl mb-md">
+              <div className="flex items-center justify-center gap-sm mb-md">
                 <div className="font-title text-heading-4 text-heading-3">ATLVS</div>
-                <div className="flex items-center gap-smxl">
+                <div className="flex items-center gap-sm">
                   <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
                   <Zap className="h-5 w-5 color-primary" />
                   <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
@@ -155,7 +156,7 @@ export function ProductHighlights() {
                 meets talent acquisition, enabling unprecedented efficiency and collaboration.
               </p>
               
-              <div className="flex flex-col sm:flex-row gap-smxl justify-center">
+              <div className="flex flex-col sm:flex-row gap-sm justify-center">
                 <Link href="/products/compare">
                   <Button variant="outline">
                     Compare Products

@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Card, Badge } from '@ghxstship/ui';
 import { MoreHorizontal, Clock, User, FileText, DollarSign, Users } from 'lucide-react';
@@ -113,7 +114,7 @@ export default function ActivityWidget({
     };
   }, [id, config, organizationId, supabase]);
 
-  const generateActivityDescription = (log: any): string => {
+  const generateActivityDescription = (log): string => {
     const action = log.action;
     const tableName = log.table_name;
     const recordName = log.new_values?.name || log.old_values?.name || 'record';
@@ -252,7 +253,7 @@ export default function ActivityWidget({
               <h4 className="text-body-sm form-label color-muted mb-sm">{groupName}</h4>
             )}
             <div className="stack-sm">
-              {groupActivities.map((activity) => (
+              {groupActivities.map((activity: any) => (
                 <div key={activity.id} className="flex items-start cluster-sm">
                   {config.showAvatars && (
                     <div className="flex-shrink-0">

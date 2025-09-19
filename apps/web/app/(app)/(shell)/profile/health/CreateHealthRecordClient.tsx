@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -91,7 +92,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -119,16 +120,16 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="record_type" className="text-body-sm form-label">Record Type *</label>
             <select 
               id="record_type" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('record_type') || 'medical'} 
-              onChange={(e) => form.setValue('record_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('record_type', e.target.value as any, { shouldDirty: true })}
             >
               <option value="medical">Medical</option>
               <option value="vaccination">Vaccination</option>
@@ -143,9 +144,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="title" className="text-body-sm form-label">Title *</label>
             <input 
               id="title" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('title') || ''} 
-              onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('title', e.target.value, { shouldDirty: true })} 
               aria-invalid={!!form.formState.errors.title} 
             />
             {form.formState.errors.title ? 
@@ -156,9 +157,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('description') || ''} 
-              onChange={(e) => form.setValue('description', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('description', e.target.value, { shouldDirty: true })} 
               placeholder="Additional details about this health record..."
             />
           </div>
@@ -167,9 +168,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="provider" className="text-body-sm form-label">Healthcare Provider</label>
             <input 
               id="provider" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('provider') || ''} 
-              onChange={(e) => form.setValue('provider', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('provider', e.target.value, { shouldDirty: true })} 
               placeholder="Doctor, clinic, or hospital name"
             />
           </div>
@@ -179,9 +180,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <input 
               id="date_recorded" 
               type="date" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('date_recorded') || ''} 
-              onChange={(e) => form.setValue('date_recorded', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('date_recorded', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -190,9 +191,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <input 
               id="expiry_date" 
               type="date" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('expiry_date') || ''} 
-              onChange={(e) => form.setValue('expiry_date', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('expiry_date', e.target.value, { shouldDirty: true })} 
             />
           </div>
 
@@ -200,9 +201,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="severity" className="text-body-sm form-label">Severity</label>
             <select 
               id="severity" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('severity') || ''} 
-              onChange={(e) => form.setValue('severity', e.target.value as any || undefined, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('severity', e.target.value as any || undefined, { shouldDirty: true })}
             >
               <option value="">Select severity...</option>
               <option value="low">Low</option>
@@ -215,9 +216,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="status" className="text-body-sm form-label">Status</label>
             <select 
               id="status" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('status') || 'active'} 
-              onChange={(e) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
             >
               <option value="active">Active</option>
               <option value="inactive">Inactive</option>
@@ -230,9 +231,9 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <input 
               id="document_url" 
               type="url" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('document_url') || ''} 
-              onChange={(e) => form.setValue('document_url', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('document_url', e.target.value, { shouldDirty: true })} 
               placeholder="https://example.com/document.pdf"
             />
           </div>
@@ -241,16 +242,16 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border px-sm py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-[60px]" 
               value={form.getValues('notes') || ''} 
-              onChange={(e) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes or instructions..."
             />
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

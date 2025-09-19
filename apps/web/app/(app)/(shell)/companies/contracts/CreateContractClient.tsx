@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   FileText,
   Building,
@@ -231,7 +225,7 @@ export default function CreateContractClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <FileText className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Contract Details</h3>
+            <h3 className="text-body text-heading-4">Contract Details</h3>
           </div>
           
           <div className="stack-md">
@@ -239,9 +233,8 @@ export default function CreateContractClient({
               <label className="block text-body-sm form-label mb-xs">
                 Contract Title *
               </label>
-              <Input
-                value={formData.title}
-                onChange={(e) => handleInputChange('title', e.target.value)}
+              <UnifiedInput                 value={formData.title}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Enter contract title"
                 required
               />
@@ -253,7 +246,7 @@ export default function CreateContractClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Brief description of the contract"
                 rows={3}
               />
@@ -266,7 +259,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.contractType}
-                  onValueChange={(value) => handleInputChange('contractType', value)}
+                  onValueChange={(value: any) => handleInputChange('contractType', value)}
                 >
                   {CONTRACT_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -282,7 +275,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {CONTRACT_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -299,7 +292,7 @@ export default function CreateContractClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Building className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Company & Project</h3>
+            <h3 className="text-body text-heading-4">Company & Project</h3>
           </div>
           
           <div className="stack-md">
@@ -309,7 +302,7 @@ export default function CreateContractClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value) => handleInputChange('companyId', value)}
+                onValueChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -326,7 +319,7 @@ export default function CreateContractClient({
               </label>
               <Select
                 value={formData.projectId}
-                onValueChange={(value) => handleInputChange('projectId', value)}
+                onValueChange={(value: any) => handleInputChange('projectId', value)}
               >
                 <option value="">No project association</option>
                 {projects.map(project => (
@@ -343,7 +336,7 @@ export default function CreateContractClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Calendar className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Contract Terms</h3>
+            <h3 className="text-body text-heading-4">Contract Terms</h3>
           </div>
           
           <div className="stack-md">
@@ -352,10 +345,9 @@ export default function CreateContractClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Start Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.startDate}
-                  onChange={(e) => handleInputChange('startDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('startDate', e.target.value)}
                 />
               </div>
 
@@ -363,10 +355,9 @@ export default function CreateContractClient({
                 <label className="block text-body-sm form-label mb-xs">
                   End Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.endDate}
-                  onChange={(e) => handleInputChange('endDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('endDate', e.target.value)}
                 />
               </div>
             </div>
@@ -377,11 +368,10 @@ export default function CreateContractClient({
                   <DollarSign className="h-4 w-4 inline mr-xs" />
                   Contract Value
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.value}
-                  onChange={(e) => handleInputChange('value', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('value', e.target.value)}
                   placeholder="0.00"
                 />
               </div>
@@ -392,7 +382,7 @@ export default function CreateContractClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value) => handleInputChange('currency', value)}
+                  onValueChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>
@@ -407,10 +397,9 @@ export default function CreateContractClient({
               <label className="block text-body-sm form-label mb-xs">
                 Document URL
               </label>
-              <Input
-                type="url"
+              <UnifiedInput                 type="url"
                 value={formData.documentUrl}
-                onChange={(e) => handleInputChange('documentUrl', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('documentUrl', e.target.value)}
                 placeholder="https://documents.example.com/contract.pdf"
               />
             </div>
@@ -421,7 +410,7 @@ export default function CreateContractClient({
               </label>
               <Textarea
                 value={formData.renewalTerms}
-                onChange={(e) => handleInputChange('renewalTerms', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('renewalTerms', e.target.value)}
                 placeholder="Terms and conditions for contract renewal"
                 rows={2}
               />
@@ -431,7 +420,7 @@ export default function CreateContractClient({
               <input
                 type="checkbox"
                 checked={formData.autoRenewal}
-                onChange={(e) => handleInputChange('autoRenewal', e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('autoRenewal', e.target.checked)}
                 className="rounded border-border"
               />
               <label className="text-body-sm form-label">

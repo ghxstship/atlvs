@@ -236,7 +236,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
     
     return (
       <div className="flex items-center gap-xs">
-        {actions.slice(0, 2).map((action) => (
+        {actions.slice(0, 2).map((action: any) => (
           <Button
             key={action.key}
             variant="ghost"
@@ -276,7 +276,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
               <span>Show</span>
               <Select
                 value={pageSize.toString()}
-                onValueChange={(value) => onChange(1, parseInt(value))}
+                onValueChange={(value: any) => onChange(1, parseInt(value))}
               >
                 <option value="10">10</option>
                 <option value="20">20</option>
@@ -355,7 +355,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
               <Input
                 placeholder="Search..."
                 value={searchValue}
-                onChange={(e) => handleSearch(e.target.value)}
+                onChange={(e: any) => handleSearch(e.target.value)}
                 leftIcon={<Search className="h-4 w-4" />}
               />
             </div>
@@ -379,10 +379,10 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                   <input
                     type="checkbox"
                     checked={allSelected}
-                    ref={(input) => {
+                    ref={(input: any) => {
                       if (input) input.indeterminate = someSelected;
                     }}
-                    onChange={(e) => handleSelectAll(e.target.checked)}
+                    onChange={(e: any) => handleSelectAll(e.target.checked)}
                     className="rounded border-border"
                   />
                 </th>
@@ -390,7 +390,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
               {hasExpansion && (
                 <th className="w-12 px-md py-sm"></th>
               )}
-              {columns.map((column) => (
+              {columns.map((column: any) => (
                 <th
                   key={column.key}
                   className={clsx(
@@ -427,7 +427,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                       <Skeleton className="h-4 w-4" />
                     </td>
                   )}
-                  {columns.map((column) => (
+                  {columns.map((column: any) => (
                     <td key={column.key} className="px-md py-sm">
                       <Skeleton className="h-4 w-full" />
                     </td>
@@ -476,8 +476,8 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                           <input
                             type="checkbox"
                             checked={isSelected}
-                            onChange={(e) => handleRowSelection(key, e.target.checked)}
-                            onClick={(e) => e.stopPropagation()}
+                            onChange={(e: any) => handleRowSelection(key, e.target.checked)}
+                            onClick={(e: any) => e.stopPropagation()}
                             className="rounded border-border"
                           />
                         </td>
@@ -489,7 +489,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                               variant="ghost"
                               size="sm"
                               className="h-6 w-6 p-0"
-                              onClick={(e) => {
+                              onClick={(e: any) => {
                                 e.stopPropagation();
                                 handleRowExpand(key);
                               }}
@@ -503,7 +503,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                           )}
                         </td>
                       )}
-                      {columns.map((column) => {
+                      {columns.map((column: any) => {
                         const value = column.dataIndex ? record[column.dataIndex] : record;
                         const content = column.render 
                           ? column.render(value, record, index)
@@ -524,7 +524,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                       })}
                       {actions && (
                         <td className="px-md py-sm text-right">
-                          <div onClick={(e) => e.stopPropagation()}>
+                          <div onClick={(e: any) => e.stopPropagation()}>
                             {renderActions(record)}
                           </div>
                         </td>

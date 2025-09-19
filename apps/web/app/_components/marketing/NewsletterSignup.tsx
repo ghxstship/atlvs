@@ -1,8 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
-import { Button } from '@ghxstship/ui/components/Button';
-import { cn } from '@ghxstship/ui/system';
+import { Button  } from '@ghxstship/ui';
+import { UnifiedInput as Input  } from '@ghxstship/ui';
+import { cn } from '@ghxstship/ui';
 
 interface NewsletterSignupProps {
   className?: string;
@@ -65,21 +67,20 @@ export function NewsletterSignup({
   return (
     <form onSubmit={handleSubmit} className={cn(variants[variant], className)}>
       <div className="flex-1">
-        <input
-          type="email"
+        <UnifiedInput           type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           placeholder={placeholder}
-          className="w-full px-md py-md rounded-md border border-input bg-background text-body-sm focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent disabled:opacity-50"
+          size="md"
           disabled={isLoading}
           required
+          error={error}
+          className="w-full"
         />
-        {error && (
-          <p className="text-body-sm color-error mt-xs">{error}</p>
-        )}
       </div>
       <Button 
         type="submit" 
+        size="md"
         disabled={isLoading || !email}
         className={variant === 'inline' ? 'shrink-0' : ''}
       >

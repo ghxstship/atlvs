@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -66,7 +67,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         const res = await fetch(`/api/audit/${orgId}/tasks/${openId}`);
         const json = await res.json();
         setActivity(json?.data ?? []);
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Failed to load activity');
       } finally {
         setLoadingActivity(false);
@@ -82,7 +83,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
       setSaving(true);
       setError(null);
       try {
-        const patch: any = {};
+        const patch = {};
         if (info.name === 'title') patch.title = values.title;
         if (info.name === 'status') patch.status = values.status;
         if (info.name === 'due_at') patch.due_at = values.due_at;
@@ -91,7 +92,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         if (typeof window !== 'undefined' && (window as any).posthog) {
           (window as any).posthog.capture('task.updated', { organization_id: orgId, task_id: openId, keys: Object.keys(patch) });
         }
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Save failed');
       } finally {
         setSaving(false);
@@ -118,7 +119,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {rows.map((r: any) => (
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-sm">{r.title}</td>
               <td className="border-b p-sm capitalize">{r.status}</td>
@@ -153,19 +154,19 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         )}
 
         {tab === 'edit' && current && (
-          <form className="stack-sm" onSubmit={(e) => e.preventDefault()} aria-live="polite">
+          <form className="stack-sm" onSubmit={(e: any) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-xs">
               <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
-              <input id="title" name="title" className="rounded border px-sm py-xs" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
+              <input id="title" name="title" className="rounded border  px-md py-xs" value={form.getValues('title') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
               {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
             </div>
             <div className="grid gap-xs">
               <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
-              <input id="status" name="status" className="rounded border px-sm py-xs" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
+              <input id="status" name="status" className="rounded border  px-md py-xs" value={form.getValues('status') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value, { shouldDirty: true })} />
             </div>
             <div className="grid gap-xs">
               <label htmlFor="due_at" className="text-body-sm">{t('grid.dueAt')}</label>
-              <input id="due_at" name="due_at" type="date" className="rounded border px-sm py-xs" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
+              <input id="due_at" name="due_at" type="date" className="rounded border  px-md py-xs" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
             </div>
             <div className="text-body-sm opacity-70">{form.formState.isDirty ? t('drawer.unsaved') : t('drawer.allSaved')}</div>
           </form>
@@ -175,7 +176,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm" aria-label={t('drawer.comments')}>
               <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder={t('drawer.comments')} />
-              <Button variant="primary">{t('drawer.post')}</Button>
+              <Button variant="default">{t('drawer.post')}</Button>
             </form>
             {loadingComments ? <div className="text-body-sm opacity-70">{t('drawer.loading')}</div> : (
               <ul className="stack-sm">

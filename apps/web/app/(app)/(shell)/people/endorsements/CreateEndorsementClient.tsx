@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Star, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -231,10 +231,10 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               </label>
               <select
                 {...register('personId')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select person...</option>
-                {people.map((person) => (
+                {people.map((person: any) => (
                   <option key={person.id} value={person.id}>
                     {person.first_name} {person.last_name} {person.role && `(${person.role})`}
                   </option>
@@ -252,7 +252,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                 </label>
                 <select
                   {...register('endorsementType')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="skill">Skill</option>
                   <option value="performance">Performance</option>
@@ -268,7 +268,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
                 </label>
                 <select
                   {...register('rating', { valueAsNumber: true })}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value={1}>1 - Needs Improvement</option>
                   <option value={2}>2 - Below Expectations</option>
@@ -288,10 +288,10 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               </label>
               <select
                 {...register('competencyId')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select competency (optional)...</option>
-                {competencies.map((competency) => (
+                {competencies.map((competency: any) => (
                   <option key={competency.id} value={competency.id}>
                     {competency.name} {competency.category && `(${competency.category})`}
                   </option>
@@ -303,8 +303,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               <label className="block text-body-sm form-label mb-sm">
                 Project (Optional)
               </label>
-              <Input
-                {...register('projectId')}
+              <UnifiedInput                 {...register('projectId')}
                 placeholder="Project ID or name where this was observed"
               />
             </div>

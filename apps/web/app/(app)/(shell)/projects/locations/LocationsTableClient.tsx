@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useMemo, useState } from 'react';
 import { Drawer, Button, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -98,7 +99,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
         const res = await fetch(`/api/audit/${orgId}/locations/${openId}`);
         const json = await res.json();
         setActivity(json?.data ?? []);
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Failed to load activity');
       } finally {
         setLoadingActivity(false);
@@ -114,7 +115,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
       setSaving(true);
       setError(null);
       try {
-        const patch: any = {};
+        const patch = {};
         if (info.name === 'name') patch.name = values.name;
         if (info.name === 'address') patch.address = values.address;
         if (info.name === 'city') patch.city = values.city;
@@ -129,7 +130,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
         if (typeof window !== 'undefined' && (window as any).posthog) {
           (window as any).posthog.capture('location.updated', { organization_id: orgId, location_id: openId, keys: Object.keys(patch) });
         }
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Save failed');
       } finally {
         setSaving(false);
@@ -180,7 +181,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {rows.map((r: any) => (
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-sm">
                 <div className="flex items-center gap-sm">
@@ -242,15 +243,15 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
         )}
 
         {tab === 'edit' && current && (
-          <form className="stack-sm" onSubmit={(e) => e.preventDefault()} aria-live="polite">
+          <form className="stack-sm" onSubmit={(e: any) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-xs">
               <label htmlFor="name" className="text-body-sm form-label">Location Name</label>
               <input 
                 id="name" 
                 name="name" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('name') || ''} 
-                onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('name', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.name} 
               />
               {form.formState.errors.name ? <div className="text-body-sm color-destructive">{String(form.formState.errors.name.message)}</div> : null}
@@ -261,9 +262,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               <select 
                 id="type" 
                 name="type" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('type') || ''} 
-                onChange={(e) => form.setValue('type', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('type', e.target.value as any, { shouldDirty: true })}
               >
                 <option value="venue">Venue</option>
                 <option value="office">Office</option>
@@ -280,9 +281,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
               <input 
                 id="address" 
                 name="address" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('address') || ''} 
-                onChange={(e) => form.setValue('address', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('address', e.target.value, { shouldDirty: true })} 
               />
             </div>
 
@@ -292,9 +293,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 <input 
                   id="city" 
                   name="city" 
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('city') || ''} 
-                  onChange={(e) => form.setValue('city', e.target.value, { shouldDirty: true })} 
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('city', e.target.value, { shouldDirty: true })} 
                 />
               </div>
 
@@ -303,9 +304,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 <input 
                   id="state" 
                   name="state" 
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('state') || ''} 
-                  onChange={(e) => form.setValue('state', e.target.value, { shouldDirty: true })} 
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('state', e.target.value, { shouldDirty: true })} 
                 />
               </div>
             </div>
@@ -316,9 +317,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                 <input 
                   id="country" 
                   name="country" 
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('country') || ''} 
-                  onChange={(e) => form.setValue('country', e.target.value, { shouldDirty: true })} 
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('country', e.target.value, { shouldDirty: true })} 
                 />
               </div>
 
@@ -328,9 +329,9 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
                   id="capacity" 
                   name="capacity" 
                   type="number"
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('capacity') || ''} 
-                  onChange={(e) => form.setValue('capacity', e.target.value ? parseInt(e.target.value) : undefined, { shouldDirty: true })} 
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('capacity', e.target.value ? parseInt(e.target.value) : undefined, { shouldDirty: true })} 
                 />
               </div>
             </div>
@@ -343,7 +344,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm">
               <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder="Add a comment..." />
-              <Button variant="primary">Post</Button>
+              <Button variant="default">Post</Button>
             </form>
             {loadingComments ? <div className="text-body-sm opacity-70">Loading comments...</div> : (
               <ul className="stack-sm">

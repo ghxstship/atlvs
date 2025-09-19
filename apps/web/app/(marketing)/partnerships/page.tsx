@@ -200,7 +200,7 @@ export default function PartnershipsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {partnershipTypes.map((type) => {
+            {partnershipTypes.map((type: any) => {
               const Icon = type.icon;
               return (
                 <Card key={type.title} className="hover:shadow-floating transition-shadow">
@@ -216,7 +216,7 @@ export default function PartnershipsPage() {
                     
                     <div className="stack-sm mb-lg">
                       <h4 className="text-heading-4 text-body-sm color-muted uppercase">Benefits</h4>
-                      {type.benefits.map((benefit) => (
+                      {type.benefits.map((benefit: any) => (
                         <div key={benefit} className="flex items-center gap-sm">
                           <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                           <span className="text-body-sm color-foreground">{benefit}</span>
@@ -249,7 +249,7 @@ export default function PartnershipsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {currentPartners.map((partner) => (
+            {currentPartners.map((partner: any) => (
               <Card key={partner.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mx-auto mb-md flex items-center justify-center">
@@ -282,7 +282,7 @@ export default function PartnershipsPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {partnerBenefits.map((benefit) => {
+            {partnerBenefits.map((benefit: any) => {
               const Icon = benefit.icon;
               return (
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
@@ -375,14 +375,14 @@ export default function PartnershipsPage() {
                 testimonial: 'The GHXSTSHIP integration has brought us thousands of new users and strengthened our platform significantly.',
                 author: 'David Chen, CTO',
               },
-            ].map((story) => (
+            ].map((story: any) => (
               <Card key={story.company} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="flex items-center gap-sm mb-md">
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>
                       {story.company}
                     </h3>
-                    <Badge variant="outline" className="text-body-sm">
+                    <Badge variant="outline">
                       {story.type}
                     </Badge>
                   </div>
@@ -445,8 +445,8 @@ export default function PartnershipsPage() {
               { title: 'API Documentation', href: '/resources/docs', description: 'Technical integration guides' },
               { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
               { title: 'Support Center', href: '/contact', description: 'Partner support and assistance' },
-            ].map((resource) => (
-              <a key={resource.title} href={resource.href as any as any}>
+            ].map((resource: any) => (
+              <a key={resource.title} href={product.href}>
                 <Card className="hover:shadow-floating transition-shadow group">
                   <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase group-hover:text-foreground transition-colors`}>

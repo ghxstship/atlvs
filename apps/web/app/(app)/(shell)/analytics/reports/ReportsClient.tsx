@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { getStatusColor, StatusBadge } from "../../../../_components/ui"
@@ -44,7 +45,7 @@ interface ReportFilter {
   id: string;
   field: string;
   operator: 'equals' | 'contains' | 'greater_than' | 'less_than' | 'between';
-  value: any;
+  value;
 }
 
 interface Report {
@@ -365,7 +366,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
         <div className="animate-pulse">
           <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3].map((i: any) => (
               <div key={i} className="h-48 bg-secondary rounded"></div>
             ))}
           </div>
@@ -386,7 +387,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
   }
 
   return (
-  <div className="stack-lg">
+    <div className="stack-lg">
     {/* Header */}
     <div className="flex items-center justify-between">
       <div>
@@ -407,13 +408,13 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
           type="text"
           placeholder="Search reports..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
           className="w-full pl-2xl pr-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
         />
       </div>
       <select
         value={filterStatus}
-        onChange={(e) => setFilterStatus(e.target.value)}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilterStatus(e.target.value)}
         className="px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
       >
         <option value="" className="color-muted">All Statuses</option>
@@ -426,7 +427,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     {/* Reports Grid */}
     {filteredReports.length > 0 ? (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-        {filteredReports.map((report) => {
+        {filteredReports.map((report: any) => {
           const IconComponent = getReportIcon(report);
           return (
             <Card key={report.id} className="p-lg">
@@ -462,7 +463,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                 {report.schedule?.enabled && (
                   <div className="flex items-center justify-between text-body-sm">
                     <span className="color-muted">Schedule:</span>
-                      <Badge variant="outline" className="text-body-sm">
+                      <Badge variant="outline">
                         {report.schedule.frequency}
                       </Badge>
                     </div>
@@ -528,7 +529,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
           <Card className="w-full max-w-2xl p-lg max-h-[90vh] overflow-y-auto">
             <h3 className="text-body text-heading-4 mb-md">Create New Report</h3>
             <form
-              onSubmit={(e) => {
+              onSubmit={(e: any) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
                 const reportData = {
@@ -549,7 +550,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                     name="name"
                     type="text"
                     required
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="e.g., Monthly Revenue Report"
                   />
                 </div>
@@ -561,7 +562,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                   <textarea
                     name="description"
                     rows={3}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Brief description of this report..."
                   />
                 </div>
@@ -574,7 +575,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                     <select
                       name="type"
                       required
-                      className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="table">Table</option>
                       <option value="chart">Chart</option>
@@ -588,7 +589,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
                     </label>
                     <select
                       name="chartType"
-                      className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="" className="color-muted">All Types</option>
                       <option value="bar">Bar Chart</option>

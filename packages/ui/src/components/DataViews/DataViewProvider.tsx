@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
-import { ViewType, FilterConfig, SortConfig, GroupConfig, DataRecord, SavedView, DataViewConfig, ViewState } from './types';
+import { ViewType, FilterConfig, SortConfig, GroupConfig, SavedView, ViewState } from './types';
 
 interface DataViewContextType {
   // Configuration and state

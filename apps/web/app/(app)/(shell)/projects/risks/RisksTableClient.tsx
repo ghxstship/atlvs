@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useMemo, useState } from 'react';
 import { Drawer, Button, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -93,7 +94,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
         const res = await fetch(`/api/audit/${orgId}/risks/${openId}`);
         const json = await res.json();
         setActivity(json?.data ?? []);
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Failed to load activity');
       } finally {
         setLoadingActivity(false);
@@ -109,7 +110,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
       setSaving(true);
       setError(null);
       try {
-        const patch: any = {};
+        const patch = {};
         if (info.name === 'title') patch.title = values.title;
         if (info.name === 'category') patch.category = values.category;
         if (info.name === 'impact') patch.impact = values.impact;
@@ -123,7 +124,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
         if (typeof window !== 'undefined' && (window as any).posthog) {
           (window as any).posthog.capture('risk.updated', { organization_id: orgId, risk_id: openId, keys: Object.keys(patch) });
         }
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Save failed');
       } finally {
         setSaving(false);
@@ -180,7 +181,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {rows.map((r: any) => (
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-sm">
                 <div className="flex items-center gap-sm">
@@ -255,15 +256,15 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
         )}
 
         {tab === 'edit' && current && (
-          <form className="stack-sm" onSubmit={(e) => e.preventDefault()} aria-live="polite">
+          <form className="stack-sm" onSubmit={(e: any) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-xs">
               <label htmlFor="title" className="text-body-sm form-label">Risk Title</label>
               <input 
                 id="title" 
                 name="title" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('title') || ''} 
-                onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('title', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.title} 
               />
               {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
@@ -274,9 +275,9 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
               <select 
                 id="category" 
                 name="category" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('category') || ''} 
-                onChange={(e) => form.setValue('category', e.target.value, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('category', e.target.value, { shouldDirty: true })}
               >
                 <option value="">Select category</option>
                 <option value="technical">Technical</option>
@@ -294,9 +295,9 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                 <select 
                   id="impact" 
                   name="impact" 
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('impact') || ''} 
-                  onChange={(e) => form.setValue('impact', e.target.value as any, { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('impact', e.target.value as any, { shouldDirty: true })}
                 >
                   <option value="very_low">Very Low</option>
                   <option value="low">Low</option>
@@ -311,9 +312,9 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
                 <select 
                   id="probability" 
                   name="probability" 
-                  className="rounded border px-sm py-xs" 
+                  className="rounded border  px-md py-xs" 
                   value={form.getValues('probability') || ''} 
-                  onChange={(e) => form.setValue('probability', e.target.value as any, { shouldDirty: true })}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('probability', e.target.value as any, { shouldDirty: true })}
                 >
                   <option value="very_low">Very Low</option>
                   <option value="low">Low</option>
@@ -329,9 +330,9 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
               <select 
                 id="status" 
                 name="status" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('status') || ''} 
-                onChange={(e) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as any, { shouldDirty: true })}
               >
                 <option value="identified">Identified</option>
                 <option value="assessed">Assessed</option>
@@ -349,7 +350,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm">
               <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder="Add a comment..." />
-              <Button variant="primary">Post</Button>
+              <Button variant="default">Post</Button>
             </form>
             {loadingComments ? <div className="text-body-sm opacity-70">Loading comments...</div> : (
               <ul className="stack-sm">

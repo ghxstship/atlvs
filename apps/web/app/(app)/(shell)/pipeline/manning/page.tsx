@@ -36,7 +36,7 @@ export default async function PipelineManningPage() {
     <div className="stack-md">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Manning Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Manning Pipeline</h1>
           <p className="text-body-sm color-muted">Manage project staffing requirements and assignments</p>
         </div>
         <CreateManningSlotClient orgId={orgId} />

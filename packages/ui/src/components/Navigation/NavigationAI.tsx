@@ -217,7 +217,7 @@ export class NavigationAI {
     let bestMatch: string | null = null;
     let bestScore = 0;
     
-    this.patterns.forEach((patterns) => {
+    this.patterns.forEach((patterns: any) => {
       patterns.forEach(pattern => {
         const sequenceMatch = this.sequenceMemory.filter(s => s === pattern.from).length;
         if (sequenceMatch > bestScore) {

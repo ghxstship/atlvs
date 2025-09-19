@@ -1,22 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  StateManagerProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  ListView, 
-  ViewSwitcher, 
-  DataActions, 
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord,
-  Button,
-  Card,
-  Badge
-} from '@ghxstship/ui';
+import { Drawer, type Button, Card, Badge } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, FileText, Mic, Utensils, Settings, Calendar } from 'lucide-react';
@@ -247,7 +233,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
   };
 
   // Group riders by type for better visualization
-  const ridersByType = data.reduce((acc: any, rider: any) => {
+  const ridersByType = data.reduce((acc, rider) => {
     const type = rider.kind || 'technical';
     if (!acc[type]) {
       acc[type] = [];
@@ -327,10 +313,10 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                             </div>
                           </div>
                           <div className="flex flex-col gap-xs">
-                            <Badge variant="outline" className={getStatusColor(rider.status)}>
+                            <Badge variant="outline">
                               {rider.status.replace('_', ' ')}
                             </Badge>
-                            <Badge variant="outline" className={getPriorityColor(rider.priority)}>
+                            <Badge variant="outline">
                               {rider.priority}
                             </Badge>
                           </div>

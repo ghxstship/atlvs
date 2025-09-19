@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -104,7 +105,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create itinerary');
     } finally {
       setLoading(false);
@@ -143,7 +144,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter itinerary name..."
               {...form.register('name')}
             />
@@ -161,7 +162,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the itinerary..."
               {...form.register('description')}
             />
@@ -174,7 +175,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="type"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('type')}
               >
                 <option value="travel">Travel</option>
@@ -190,7 +191,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="status"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('status')}
               >
                 <option value="draft">Draft</option>
@@ -210,7 +211,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               <input
                 id="start_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('start_date')}
               />
               {form.formState.errors.start_date && (
@@ -227,7 +228,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               <input
                 id="end_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('end_date')}
               />
               {form.formState.errors.end_date && (
@@ -246,7 +247,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               <input
                 id="location"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Primary location..."
                 {...form.register('location')}
               />
@@ -258,7 +259,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="transportation_type"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('transportation_type')}
               >
                 <option value="">Select transportation</option>
@@ -282,7 +283,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
                 type="number"
                 min="0"
                 step="0.01"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="0.00"
                 {...form.register('total_cost', { valueAsNumber: true })}
               />
@@ -294,7 +295,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="currency"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('currency')}
               >
                 <option value="USD">USD</option>
@@ -312,7 +313,7 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
                 id="participants_count"
                 type="number"
                 min="0"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="0"
                 {...form.register('participants_count', { valueAsNumber: true })}
               />
@@ -326,11 +327,11 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="project_id"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('project_id')}
               >
                 <option value="">No project association</option>
-                {projects.map((project) => (
+                {projects.map((project: any) => (
                   <option key={project.id} value={project.id}>
                     {project.name}
                   </option>
@@ -344,11 +345,11 @@ export default function CreateItineraryClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="event_id"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('event_id')}
               >
                 <option value="">No event association</option>
-                {events.map((event) => (
+                {events.map((event: any) => (
                   <option key={event.id} value={event.id}>
                     {event.name}
                   </option>

@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   Package,
   Tag,
@@ -208,7 +202,7 @@ export default function CreateAssetClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Package className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Basic Information</h3>
+            <h3 className="text-body text-heading-4">Basic Information</h3>
           </div>
           
           <div className="stack-md">
@@ -216,9 +210,8 @@ export default function CreateAssetClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset Name *
               </label>
-              <Input
-                value={formData.name}
-                onChange={(e) => handleInputChange('name', e.target.value)}
+              <UnifiedInput                 value={formData.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('name', e.target.value)}
                 placeholder="Enter asset name"
                 required
               />
@@ -230,7 +223,7 @@ export default function CreateAssetClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Brief description of the asset"
                 rows={3}
               />
@@ -243,7 +236,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.category}
-                  onValueChange={(value) => handleInputChange('category', value)}
+                  onValueChange={(value: any) => handleInputChange('category', value)}
                 >
                   {ASSET_CATEGORIES.map(category => (
                     <option key={category.value} value={category.value}>
@@ -259,7 +252,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value) => handleInputChange('type', value)}
+                  onValueChange={(value: any) => handleInputChange('type', value)}
                 >
                   {ASSET_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -275,7 +268,7 @@ export default function CreateAssetClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {ASSET_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -292,7 +285,7 @@ export default function CreateAssetClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Tag className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Identification</h3>
+            <h3 className="text-body text-heading-4">Identification</h3>
           </div>
           
           <div className="stack-md">
@@ -301,9 +294,8 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   SKU
                 </label>
-                <Input
-                  value={formData.sku}
-                  onChange={(e) => handleInputChange('sku', e.target.value)}
+                <UnifiedInput                   value={formData.sku}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('sku', e.target.value)}
                   placeholder="Stock Keeping Unit"
                 />
               </div>
@@ -312,9 +304,8 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Barcode
                 </label>
-                <Input
-                  value={formData.barcode}
-                  onChange={(e) => handleInputChange('barcode', e.target.value)}
+                <UnifiedInput                   value={formData.barcode}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('barcode', e.target.value)}
                   placeholder="Barcode number"
                 />
               </div>
@@ -325,9 +316,8 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Manufacturer
                 </label>
-                <Input
-                  value={formData.manufacturer}
-                  onChange={(e) => handleInputChange('manufacturer', e.target.value)}
+                <UnifiedInput                   value={formData.manufacturer}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('manufacturer', e.target.value)}
                   placeholder="Manufacturer name"
                 />
               </div>
@@ -336,9 +326,8 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Model
                 </label>
-                <Input
-                  value={formData.model}
-                  onChange={(e) => handleInputChange('model', e.target.value)}
+                <UnifiedInput                   value={formData.model}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('model', e.target.value)}
                   placeholder="Model number"
                 />
               </div>
@@ -347,9 +336,8 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Serial Number
                 </label>
-                <Input
-                  value={formData.serialNumber}
-                  onChange={(e) => handleInputChange('serialNumber', e.target.value)}
+                <UnifiedInput                   value={formData.serialNumber}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('serialNumber', e.target.value)}
                   placeholder="Serial number"
                 />
               </div>
@@ -361,7 +349,7 @@ export default function CreateAssetClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <DollarSign className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Financial Information</h3>
+            <h3 className="text-body text-heading-4">Financial Information</h3>
           </div>
           
           <div className="stack-md">
@@ -370,10 +358,9 @@ export default function CreateAssetClient({
                 <Calendar className="h-4 w-4 inline mr-xs" />
                 Purchase Date
               </label>
-              <Input
-                type="date"
+              <UnifiedInput                 type="date"
                 value={formData.purchaseDate}
-                onChange={(e) => handleInputChange('purchaseDate', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purchaseDate', e.target.value)}
               />
             </div>
 
@@ -382,11 +369,10 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Purchase Cost
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.purchaseCost}
-                  onChange={(e) => handleInputChange('purchaseCost', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('purchaseCost', e.target.value)}
                   placeholder="0.00"
                 />
               </div>
@@ -395,11 +381,10 @@ export default function CreateAssetClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Current Value
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.currentValue}
-                  onChange={(e) => handleInputChange('currentValue', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('currentValue', e.target.value)}
                   placeholder="0.00"
                 />
               </div>
@@ -411,7 +396,7 @@ export default function CreateAssetClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <MapPin className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Location & Notes</h3>
+            <h3 className="text-body text-heading-4">Location & Notes</h3>
           </div>
           
           <div className="stack-md">
@@ -419,9 +404,8 @@ export default function CreateAssetClient({
               <label className="block text-body-sm form-label mb-xs">
                 Location
               </label>
-              <Input
-                value={formData.location}
-                onChange={(e) => handleInputChange('location', e.target.value)}
+              <UnifiedInput                 value={formData.location}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Current location of the asset"
               />
             </div>
@@ -432,7 +416,7 @@ export default function CreateAssetClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about the asset"
                 rows={3}
               />

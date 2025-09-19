@@ -2,11 +2,12 @@
 
 import React, { useState, useCallback, useEffect, useMemo } from 'react';
 import { Card } from '../Card';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Textarea } from '../Textarea';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
+import { Textarea } from '../atomic/Textarea';
 import { Select } from '../Select';
-import { Checkbox } from '../Checkbox';
+import { Checkbox } from '../atomic/Checkbox';
+import { FieldConfig, FormSection, ViewProps } from '../../types/data-views';
 import { Toggle } from '../Toggle';
 import { Badge } from '../Badge';
 import { Alert } from '../Alert';
@@ -27,7 +28,7 @@ import {
   Copy,
   RotateCcw
 } from 'lucide-react';
-import { DataRecord, ViewProps, FieldConfig, FormSection, FormValidation } from './types';
+import { FormValidation } from './types';
 import { useDataView } from './DataViewProvider';
 
 interface FormViewProps extends ViewProps {
@@ -35,6 +36,7 @@ interface FormViewProps extends ViewProps {
   sections?: FormSection[];
   validation?: FormValidation;
   mode?: 'create' | 'edit' | 'view';
+  error?: string | null;
   autoSave?: boolean;
   autoSaveDelay?: number;
   showProgress?: boolean;
@@ -140,7 +142,7 @@ export function FormView({
     }
   }
 
-  const validateField = useCallback((field: FieldConfig, value: any): string[] => {
+  const validateField = useCallback((field: any, value: any): string[] => {
     const fieldErrors: string[] = [];
     
     // Required validation
@@ -310,7 +312,7 @@ export function FormView({
             {...commonProps}
           >
             <option value="">Select {field.label.toLowerCase()}...</option>
-            {field.options?.map(option => (
+            {field.options?.map((option: any) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -321,13 +323,14 @@ export function FormView({
       case 'boolean':
         return (
           <div key={field.key} className="space-y-xs">
-            <Checkbox
-              checked={Boolean(formData[field.key])}
-              disabled={isReadonly}
-              onChange={(checked) => handleFieldChange(field.key, checked)}
-              label={field.label}
-              error={hasError ? 'Error' : undefined}
-            />
+            <div className="flex items-center space-x-2">
+              <Checkbox
+                checked={Boolean(formData[field.key])}
+                disabled={isReadonly}
+                onCheckedChange={(checked: any) => handleFieldChange(field.key, checked)}
+              />
+              <label className="text-sm font-medium">{field.label}</label>
+            </div>
             {field.helpText && (
               <div className="text-xs text-muted-foreground/70 dark:text-muted-foreground/50">
                 {field.helpText}
@@ -347,7 +350,7 @@ export function FormView({
             <Toggle
               checked={Boolean(formData[field.key])}
               disabled={isReadonly}
-              onChange={(checked) => handleFieldChange(field.key, checked)}
+              onChange={(checked: any) => handleFieldChange(field.key, checked)}
               label={field.label}
             />
             {field.helpText && (
@@ -370,7 +373,7 @@ export function FormView({
             {...commonProps}
             type="date"
             value={value ? new Date(value).toISOString().split('T')[0] : ''}
-            onChange={(e) => handleFieldChange(field.key, e.target.value)}
+            onChange={(e: any) => handleFieldChange(field.key, e.target.value)}
           />
         );
       
@@ -383,7 +386,7 @@ export function FormView({
             min={field.min}
             max={field.max}
             step={field.step}
-            onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
+            onChange={(e: any) => handleFieldChange(field.key, Number(e.target.value))}
           />
         );
       
@@ -395,7 +398,7 @@ export function FormView({
             type="number"
             step="0.01"
             prefix="$"
-            onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
+            onChange={(e: any) => handleFieldChange(field.key, Number(e.target.value))}
           />
         );
       
@@ -471,7 +474,7 @@ export function FormView({
   }
 
   const fieldsToRender = sections.length > 0 
-    ? fields.filter(f => !sections.some(s => s.fields.includes(f.key)))
+    ? fields.filter(f => !sections.some(s => s.fields.some(sf => sf.key === f.key)))
     : fields;
 
   return (
@@ -502,7 +505,7 @@ export function FormView({
         <div className="flex items-center gap-sm">
           {autoSaving && (
             <div className="flex items-center gap-sm text-sm text-muted-foreground">
-              <Loader size="xs" />
+              <Loader  />
               Auto-saving...
             </div>
           )}
@@ -518,15 +521,16 @@ export function FormView({
       {/* Form Content */}
       <div className="space-y-lg">
         {/* Sections */}
-        {sections.map(section => {
-          const isCollapsed = collapsedSections.has(section.id);
-          const sectionFields = fields.filter(f => section.fields.includes(f.key));
+        {sections.map((section, index) => {
+          const sectionId = section.id || `section-${index}`;
+          const isCollapsed = collapsedSections.has(sectionId);
+          const sectionFields = fields.filter(f => section.fields.some(sf => sf.key === f.key));
           
           return (
-            <Card key={section.id} variant="outline">
+            <Card key={sectionId} variant="outline">
               <div
                 className="flex items-center justify-between p-md cursor-pointer"
-                onClick={() => toggleSection(section.id)}
+                onClick={() => toggleSection(sectionId)}
               >
                 <div className="flex items-center gap-sm">
                   {isCollapsed ? (
@@ -611,11 +615,11 @@ export function FormView({
         <div className="flex items-center gap-sm">
           {mode !== 'view' && (
             <Button
-              variant="primary"
+              variant="default"
               onClick={handleSave}
               disabled={saving || (showValidation && totalErrors > 0)}
             >
-              {saving ? <Loader size="xs" /> : <Save className="h-4 w-4" />}
+              {saving ? <Loader  /> : <Save className="h-4 w-4" />}
               {saving ? 'Saving...' : 'Save'}
             </Button>
           )}

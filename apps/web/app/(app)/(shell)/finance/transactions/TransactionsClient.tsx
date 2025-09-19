@@ -1,20 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   ArrowUpDown,
   Plus,
@@ -401,7 +391,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
               type="text"
               placeholder="Search transactions..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="pl-2xl pr-md py-sm border border-border rounded-md bg-background color-foreground"
             />
           </div>
@@ -493,7 +483,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         {currentView === 'list' ? (
           <Card className="p-lg">
             <div className="stack-md">
-              {transactionRecords.map((transaction) => {
+              {transactionRecords.map((transaction: any) => {
                 const txData = transactions.find(t => t.id === transaction.id)!;
                 return (
                   <div key={transaction.id} className="flex items-center justify-between p-md border border-border rounded-lg hover:bg-secondary/50 cursor-pointer" onClick={() => handleViewTransaction(txData)}>

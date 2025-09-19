@@ -1,5 +1,6 @@
 'use client';
 
+
 import React from 'react';
 import { Card } from '@ghxstship/ui';
 import { Button } from '@ghxstship/ui';
@@ -61,7 +62,7 @@ export default function ResourcesOverviewClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">{stat.label}</p>
-                <p className="text-heading-3 text-heading-3 color-foreground mt-xs">{stat.value}</p>
+                <p className="text-heading-3 color-foreground mt-xs">{stat.value}</p>
                 <p className="text-body-sm color-success mt-sm">{stat.trend}</p>
               </div>
               <div className="p-sm bg-secondary/50 rounded-lg">
@@ -82,7 +83,7 @@ export default function ResourcesOverviewClient() {
               <Button>View All</Button>
             </div>
             <div className="stack-md">
-              {recentResources.map((resource) => (
+              {recentResources.map((resource: any) => (
                 <div key={resource.id} className="flex items-center justify-between p-md border rounded-lg hover:bg-secondary/50">
                   <div className="flex items-center gap-md">
                     <div className="p-sm bg-secondary/50 rounded">

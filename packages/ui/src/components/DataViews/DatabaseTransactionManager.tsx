@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useRef, useEffect } from 'react';
 // Avoid importing Supabase types to keep UI package dependency-free
 // type SupabaseClient = any;
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Badge } from '../Badge';
 import { 
   Database, 
@@ -15,8 +15,6 @@ import {
   Save,
   Loader2
 } from 'lucide-react';
-import { DataRecord } from './types';
-
 interface DatabaseTransactionManagerProps {
   supabase: any;
   tableName: string;
@@ -511,7 +509,7 @@ export function DatabaseTransactionManager({
             {currentBatch.status === 'pending' && (
               <>
                 <Button
-                  size="sm"
+                  
                   variant="ghost"
                   onClick={() => {
                     setCurrentBatch(null);
@@ -521,7 +519,7 @@ export function DatabaseTransactionManager({
                   Cancel
                 </Button>
                 <Button
-                  size="sm"
+                  
                   onClick={executeTransaction}
                   disabled={isExecuting || currentBatch.operations.length === 0}
                 >
@@ -537,7 +535,7 @@ export function DatabaseTransactionManager({
             
             {currentBatch.status === 'completed' && (
               <Button
-                size="sm"
+                
                 variant="ghost"
                 onClick={() => rollbackTransaction(currentBatch.id)}
               >
@@ -568,7 +566,7 @@ export function DatabaseTransactionManager({
                 
                 {batch.status === 'completed' && (
                   <Button
-                    size="sm"
+                    
                     variant="ghost"
                     onClick={() => rollbackTransaction(batch.id)}
                   >

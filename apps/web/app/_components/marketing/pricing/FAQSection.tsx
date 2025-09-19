@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@ghxstship/ui';
 import { HelpCircle } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
-import { typography } from '../../lib/typography';
+import { cn } from '@ghxstship/ui';
+import { typography, anton } from '../../lib/typography';
 import { layouts } from '../../lib/layouts';
 
 interface FAQ {
@@ -25,7 +25,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
     <section className={layouts.sectionPadding}>
       <div className={layouts.container}>
         <div className="text-center mb-xl">
-          <h2 className={`${typography.sectionTitle} mb-md`}>
+          <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-md`}>
             FREQUENTLY ASKED QUESTIONS
           </h2>
           <p className={`${typography.sectionSubtitle}`}>

@@ -81,7 +81,7 @@ export default async function ProjectsInspectionsPage() {
       <Card>
         <div className="flex items-center justify-between gap-md mb-lg">
           <div>
-            <h1 className="text-heading-3 text-heading-3">Inspections</h1>
+            <h1 className="text-heading-3">Inspections</h1>
             <p className="text-body-sm color-muted">
               Manage pre-event, post-event, and compliance inspections
             </p>

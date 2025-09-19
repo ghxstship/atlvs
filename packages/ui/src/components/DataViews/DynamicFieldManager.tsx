@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useCallback, useEffect } from 'react';
-import { Button } from '../Button';
-import { Input } from '../Input';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../Select';
-import { Checkbox } from '../Checkbox';
+import { Checkbox } from '../atomic/Checkbox';
 import { Badge } from '../Badge';
 import { 
   Plus, 
@@ -18,7 +18,7 @@ import {
   Database,
   AlertCircle
 } from 'lucide-react';
-import { FieldConfig, FieldType } from './types';
+import { FieldType } from './types';
 import { 
   SchemaValidationFramework, 
   ColumnValidation,
@@ -264,7 +264,7 @@ export function DynamicFieldManager({
             <label className="block text-sm font-medium mb-xs">Key</label>
             <Input
               value={field.key}
-              onChange={(e) => updateField(field.key, { key: e.target.value })}
+              onChange={(e: any) => updateField(field.key, { key: e.target.value })}
               disabled={isSchemaField}
               placeholder="field_key"
             />
@@ -274,7 +274,7 @@ export function DynamicFieldManager({
             <label className="block text-sm font-medium mb-xs">Label</label>
             <Input
               value={field.label}
-              onChange={(e) => updateField(field.key, { label: e.target.value })}
+              onChange={(e: any) => updateField(field.key, { label: e.target.value })}
               placeholder="Field Label"
             />
           </div>
@@ -283,7 +283,7 @@ export function DynamicFieldManager({
             <label className="block text-sm font-medium mb-xs">Type</label>
             <Select
               value={field.type}
-              onValueChange={(type) => updateField(field.key, { type: type as FieldType })}
+              onValueChange={(type: any) => updateField(field.key, { type: type as FieldType })}
               disabled={isSchemaField}
             >
               <SelectTrigger className="w-48">
@@ -310,7 +310,7 @@ export function DynamicFieldManager({
             <Input
               type="number"
               value={field.width || ''}
-              onChange={(e) => updateField(field.key, { width: parseInt(e.target.value) || undefined })}
+              onChange={(e: any) => updateField(field.key, { width: parseInt(e.target.value) || undefined })}
               placeholder="Auto"
             />
           </div>
@@ -320,7 +320,7 @@ export function DynamicFieldManager({
           <label className="flex items-center gap-sm">
             <Checkbox
               checked={field.visible !== false}
-              onChange={(e) => updateField(field.key, { visible: (e.target as HTMLInputElement).checked })}
+              onChange={(e: any) => updateField(field.key, { visible: (e.target as HTMLInputElement).checked })}
             />
             <span className="text-sm">Visible</span>
           </label>
@@ -328,7 +328,7 @@ export function DynamicFieldManager({
           <label className="flex items-center gap-sm">
             <Checkbox
               checked={field.required || false}
-              onChange={(e) => updateField(field.key, { required: (e.target as HTMLInputElement).checked })}
+              onChange={(e: any) => updateField(field.key, { required: (e.target as HTMLInputElement).checked })}
               disabled={isSchemaField && schemaInfo?.tables[tableName]?.columns.find(col => col.name === field.key)?.is_nullable === false}
             />
             <span className="text-sm">Required</span>
@@ -337,7 +337,7 @@ export function DynamicFieldManager({
           <label className="flex items-center gap-sm">
             <Checkbox
               checked={field.sortable !== false}
-              onChange={(e) => updateField(field.key, { sortable: (e.target as HTMLInputElement).checked })}
+              onChange={(e: any) => updateField(field.key, { sortable: (e.target as HTMLInputElement).checked })}
             />
             <span className="text-sm">Sortable</span>
           </label>
@@ -345,7 +345,7 @@ export function DynamicFieldManager({
           <label className="flex items-center gap-sm">
             <Checkbox
               checked={field.filterable !== false}
-              onChange={(e) => updateField(field.key, { filterable: (e.target as HTMLInputElement).checked })}
+              onChange={(e: any) => updateField(field.key, { filterable: (e.target as HTMLInputElement).checked })}
             />
             <span className="text-sm">Filterable</span>
           </label>
@@ -353,7 +353,7 @@ export function DynamicFieldManager({
           <label className="flex items-center gap-sm">
             <Checkbox
               checked={field.readonly || false}
-              onChange={(e) => updateField(field.key, { readonly: (e.target as HTMLInputElement).checked })}
+              onChange={(e: any) => updateField(field.key, { readonly: (e.target as HTMLInputElement).checked })}
             />
             <span className="text-sm">Read-only</span>
           </label>
@@ -367,7 +367,7 @@ export function DynamicFieldManager({
                 <div key={index} className="flex items-center gap-sm">
                   <Input
                     value={option.value}
-                    onChange={(e) => {
+                    onChange={(e: any) => {
                       const newOptions = [...(field.options || [])];
                       newOptions[index] = { ...option, value: e.target.value };
                       updateField(field.key, { options: newOptions });
@@ -377,7 +377,7 @@ export function DynamicFieldManager({
                   />
                   <Input
                     value={option.label}
-                    onChange={(e) => {
+                    onChange={(e: any) => {
                       const newOptions = [...(field.options || [])];
                       newOptions[index] = { ...option, label: e.target.value };
                       updateField(field.key, { options: newOptions });
@@ -386,7 +386,7 @@ export function DynamicFieldManager({
                     className="flex-1"
                   />
                   <Button
-                    size="sm"
+                    
                     variant="ghost"
                     onClick={() => {
                       const newOptions = (field.options || []).filter((_, i) => i !== index);
@@ -398,7 +398,7 @@ export function DynamicFieldManager({
                 </div>
               ))}
               <Button
-                size="sm"
+                
                 variant="ghost"
                 onClick={() => {
                   const newOptions = [...(field.options || []), { value: '', label: '' }];
@@ -415,7 +415,7 @@ export function DynamicFieldManager({
         <div className="flex justify-end gap-sm">
           {!isSchemaField && (
             <Button
-              size="sm"
+              
               variant="destructive"
               onClick={() => removeField(field.key)}
             >
@@ -423,7 +423,7 @@ export function DynamicFieldManager({
             </Button>
           )}
           <Button
-            size="sm"
+            
             onClick={() => setEditingField(null)}
           >
             Done
@@ -437,7 +437,7 @@ export function DynamicFieldManager({
     return (
       <Button
         variant="ghost"
-        size="sm"
+        
         onClick={() => setIsOpen(true)}
         className={className}
       >
@@ -454,12 +454,12 @@ export function DynamicFieldManager({
           <h2 className="text-lg font-medium">Field Manager</h2>
           <div className="flex items-center gap-sm">
             {schemaInfo?.tables[tableName] && (
-              <Button size="sm" variant="ghost" onClick={syncWithSchema}>
+              <Button  variant="ghost" onClick={syncWithSchema}>
                 <Database className="h-4 w-4 mr-xs" />
                 Sync Schema
               </Button>
             )}
-            <Button size="sm" onClick={() => setIsOpen(false)}>
+            <Button  onClick={() => setIsOpen(false)}>
               Done
             </Button>
           </div>
@@ -474,7 +474,7 @@ export function DynamicFieldManager({
             {FIELD_TEMPLATES.map(template => (
               <Button
                 key={template.id}
-                size="sm"
+                
                 variant="outline"
                 onClick={() => {
                   template.fields.forEach(fieldTemplate => addField(fieldTemplate));
@@ -484,7 +484,7 @@ export function DynamicFieldManager({
                 {template.name}
               </Button>
             ))}
-            <Button size="sm" variant="outline" onClick={() => addField()}>
+            <Button  variant="outline" onClick={() => addField()}>
               <Plus className="h-3 w-3 mr-xs" />
               Custom Field
             </Button>
@@ -508,7 +508,7 @@ export function DynamicFieldManager({
                   draggable
                   onDragStart={() => handleDragStart(field.key)}
                   onDragOver={handleDragOver}
-                  onDrop={(e) => handleDrop(e, field.key)}
+                  onDrop={(e: any) => handleDrop(e, field.key)}
                 >
                   <GripVertical className="h-4 w-4 text-muted-foreground cursor-move" />
                   
@@ -533,7 +533,7 @@ export function DynamicFieldManager({
 
                   <div className="flex items-center gap-sm">
                     <Button
-                      size="sm"
+                      
                       variant="ghost"
                       onClick={() => updateField(field.key, { visible: !field.visible })}
                     >
@@ -545,7 +545,7 @@ export function DynamicFieldManager({
                     </Button>
                     
                     <Button
-                      size="sm"
+                      
                       variant="ghost"
                       onClick={() => setEditingField(editingField?.key === field.key ? null : field)}
                     >

@@ -2,11 +2,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, Shield, Zap, ExternalLink, MessageSquare, Lightbulb } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Coming Soon | GHXSTSHIP Products',
-  description: 'Get a sneak peek at the next generation of GHXSTSHIP products launching in 2026. OPVS Talent Management and MVNIFEST Access & Asset Control.',
+  description: 'Get a sneak peek at the next generation of GHXSTSHIP products launching in 2026. GXTEWAY Blockchain Ticketing & Access Control, MVNIFEST Inventory Management, and OPVS Artist & Talent Management.',
   openGraph: {
     title: 'Coming Soon | GHXSTSHIP Products',
     description: 'Get a sneak peek at the next generation of GHXSTSHIP products launching in 2026.',
@@ -16,53 +15,78 @@ export const metadata: Metadata = {
 
 const upcomingProducts = [
   {
-    id: 'opvs',
-    name: 'OPVS',
-    subtitle: 'Talent Management',
-    description: 'Revolutionary talent management platform that connects production teams with verified professionals worldwide.',
-    launchDate: 'Q2 2026',
+    id: 'gxteway',
+    name: 'GXTEWAY',
+    subtitle: 'Open Source Blockchain Ticketing & Access Control',
+    description: 'Revolutionary blockchain-based platform that combines decentralized ticketing with comprehensive access control for secure, transparent event management.',
+    launchDate: 'Q1 2026',
     status: 'In Development',
-    category: 'Talent & Workforce',
+    category: 'Blockchain & Access Control',
     features: [
-      'Global talent directory with skill verification',
-      'AI-powered crew matching and recommendations',
-      'Integrated scheduling and availability management',
-      'Performance tracking and rating system',
-      'Automated contract and payment processing',
-      'Real-time communication and collaboration tools',
+      'NFT-based ticket ownership and verification',
+      'Biometric access control integration',
+      'Smart contract automation',
+      'Fraud-proof verification system',
+      'Real-time access monitoring',
+      'Open source community development',
     ],
     benefits: [
-      'Reduce hiring time by 70%',
-      'Access to 50K+ verified professionals',
-      'Streamlined onboarding process',
-      'Enhanced team performance tracking',
+      'Eliminate ticket fraud completely',
+      'Streamlined access control',
+      'Transparent pricing and fees',
+      'Enhanced security protocols',
     ],
-    targetUsers: ['Production Managers', 'Talent Coordinators', 'HR Teams', 'Freelance Professionals'],
+    targetUsers: ['Event Organizers', 'Venue Owners', 'Security Teams', 'Developers'],
     gradient: 'from-primary to-accent',
   },
   {
     id: 'mvnifest',
     name: 'MVNIFEST',
-    subtitle: 'Access & Asset Control',
-    description: 'Next-generation security and asset management system for high-stakes production environments.',
-    launchDate: 'Q4 2026',
-    status: 'Early Planning',
-    category: 'Security & Assets',
+    subtitle: 'Inventory Management System',
+    description: 'Advanced inventory management platform designed specifically for production environments, providing real-time tracking and automated workflow management.',
+    launchDate: 'Q2 2026',
+    status: 'In Development',
+    category: 'Inventory & Assets',
     features: [
-      'Biometric access control and monitoring',
       'Real-time asset tracking with IoT integration',
-      'Advanced security protocols and compliance',
-      'Automated incident reporting and response',
-      'Integration with existing security systems',
+      'Automated inventory auditing',
+      'Predictive maintenance scheduling',
+      'Multi-location inventory management',
+      'Integration with procurement systems',
       'Mobile-first interface for field operations',
     ],
     benefits: [
-      'Reduce security incidents by 85%',
-      'Real-time asset visibility',
+      'Reduce inventory losses by 75%',
       'Automated compliance reporting',
-      'Enhanced operational security',
+      'Streamlined asset utilization',
+      'Enhanced operational efficiency',
     ],
-    targetUsers: ['Security Managers', 'Asset Controllers', 'Operations Teams', 'Compliance Officers'],
+    targetUsers: ['Inventory Managers', 'Operations Teams', 'Asset Controllers', 'Production Coordinators'],
+    gradient: 'from-accent to-primary',
+  },
+  {
+    id: 'opvs',
+    name: 'OPVS',
+    subtitle: 'Artist & Talent Management',
+    description: 'Comprehensive artist and talent management platform that revolutionizes how creative professionals manage their careers and connect with opportunities.',
+    launchDate: 'Q3 2026',
+    status: 'Early Planning',
+    category: 'Talent & Artists',
+    features: [
+      'Artist portfolio and showcase management',
+      'Talent booking and scheduling system',
+      'Revenue tracking and financial management',
+      'Contract and rights management',
+      'Collaboration and networking tools',
+      'Performance analytics and insights',
+    ],
+    benefits: [
+      'Increase booking opportunities by 80%',
+      'Streamlined career management',
+      'Enhanced financial tracking',
+      'Professional network expansion',
+    ],
+    targetUsers: ['Artists', 'Talent Managers', 'Booking Agents', 'Creative Professionals'],
     gradient: 'from-primary to-accent',
   },
 ];
@@ -77,7 +101,7 @@ export default function ComingSoonPage() {
             <Badge variant="outline" className="mb-md">
               Coming Soon
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               THE NEXT GENERATION
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -85,8 +109,8 @@ export default function ComingSoonPage() {
               </span>
             </h1>
             <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
-              We're building the future of production management with two revolutionary new products 
-              that will transform how you manage talent and secure your operations. Get ready for 
+              We're building the future of production management with three revolutionary new products 
+              that will transform event management, ticketing, and talent coordination. Get ready for 
               something completely different.
             </p>
             <div className="flex flex-col sm:flex-row gap-md justify-center">
@@ -110,29 +134,38 @@ export default function ComingSoonPage() {
       <section className="py-3xl border-b">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
-            <h2 className={`mb-md ${typography.sectionTitle}`}>
+            <h2 className={`mb-md ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               2026 PRODUCT ROADMAP
             </h2>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-xl">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-xl">
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center mx-auto mb-md">
-                  <Users className="h-10 w-10 text-background" />
+                  <Shield className="h-10 w-10 text-background" />
                 </div>
-                <h3 className="text-heading-4 text-heading-3 mb-sm">Q2 2026</h3>
-                <p className="text-body text-heading-4 text-foreground mb-sm">OPVS Talent Management</p>
-                <p className="color-muted">Revolutionary talent platform launches</p>
+                <h3 className="text-heading-4 text-heading-3 mb-sm">Q1 2026</h3>
+                <p className="text-body text-heading-4 text-foreground mb-sm">GXTEWAY Blockchain Ticketing</p>
+                <p className="color-muted">Open source ticketing & access control</p>
               </div>
               
               <div className="text-center">
                 <div className="w-20 h-20 bg-gradient-to-r from-accent to-accent/80 rounded-full flex items-center justify-center mx-auto mb-md">
-                  <Shield className="h-10 w-10 text-background" />
+                  <Zap className="h-10 w-10 text-background" />
                 </div>
-                <h3 className="text-heading-4 text-heading-3 mb-sm">Q4 2026</h3>
-                <p className="text-body text-heading-4 color-accent mb-sm">MVNIFEST Access & Asset Control</p>
-                <p className="color-muted">Next-gen security platform debuts</p>
+                <h3 className="text-heading-4 text-heading-3 mb-sm">Q2 2026</h3>
+                <p className="text-body text-heading-4 color-accent mb-sm">MVNIFEST Inventory</p>
+                <p className="color-muted">Advanced inventory management system</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-md">
+                  <Users className="h-10 w-10 text-background" />
+                </div>
+                <h3 className="text-heading-4 text-heading-3 mb-sm">Q3 2026</h3>
+                <p className="text-body text-heading-4 text-foreground mb-sm">OPVS Artist & Talent</p>
+                <p className="color-muted">Comprehensive talent management</p>
               </div>
             </div>
           </div>
@@ -174,7 +207,7 @@ export default function ComingSoonPage() {
                         {product.launchDate}
                       </Badge>
                     </div>
-                    <h2 className={`mb-md ${typography.sectionTitle}`}>
+                    <h2 className={`mb-md ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                       {product.name} {product.subtitle}
                     </h2>
                     <p className="text-body color-muted mb-lg">
@@ -210,7 +243,7 @@ export default function ComingSoonPage() {
                     <div>
                       <h3 className="text-body text-heading-4 mb-sm">Target Users</h3>
                       <div className="flex flex-wrap gap-sm">
-                        {product.targetUsers.map((user) => (
+                        {product.targetUsers.map((user: any) => (
                           <Badge key={user} variant="secondary">
                             {user}
                           </Badge>
@@ -229,7 +262,7 @@ export default function ComingSoonPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               SHAPE THE FUTURE
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -261,7 +294,7 @@ export default function ComingSoonPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
                     <item.icon className="h-8 w-8 text-background" />
                   </div>
-                  <h3 className={`mb-sm ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {item.title}
                   </h3>
                   <p className="color-muted">
@@ -276,7 +309,7 @@ export default function ComingSoonPage() {
             <Card className="max-w-2xl mx-auto">
               <CardContent className="p-xl">
                 <MessageSquare className="h-12 w-12 text-foreground mx-auto mb-md" />
-                <h3 className={`mb-md ${typography.cardTitle}`}>
+                <h3 className={`mb-md ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                   Feature Request Portal
                 </h3>
                 <p className="color-muted mb-lg">
@@ -308,7 +341,7 @@ export default function ComingSoonPage() {
                   <Zap className="h-10 w-10 text-background" />
                 </div>
               </div>
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 GET EARLY ACCESS
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

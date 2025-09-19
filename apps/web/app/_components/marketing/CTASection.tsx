@@ -1,5 +1,6 @@
 'use client';
 
+
 import Link from 'next/link';
 import { Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, CheckCircle, Star, Zap } from 'lucide-react';
@@ -7,12 +8,12 @@ import { Button } from '@ghxstship/ui';
 
 export function CTASection() {
   return (
-    <section className="py-smxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
-      <div className="container mx-auto px-lg px-md">
+    <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <div className="container mx-auto px-lg">
         {/* Main CTA */}
         <div className="text-center mb-xl">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-heading-1">
+            <h2 className="text-heading-1 lg:text-display text-heading-3 uppercase">
               READY TO TRANSFORM
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">

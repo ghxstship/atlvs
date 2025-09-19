@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -173,7 +174,7 @@ export default function InspectionsTableClient({
 
       router.refresh();
       setActiveTab('details');
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to update inspection');
     } finally {
       setSaving(false);
@@ -205,7 +206,7 @@ export default function InspectionsTableClient({
 
       setOpenId(null);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to delete inspection');
     } finally {
       setSaving(false);
@@ -227,7 +228,7 @@ export default function InspectionsTableClient({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               const StatusIcon = getStatusIcon(row.status);
               return (
                 <tr 
@@ -401,7 +402,7 @@ export default function InspectionsTableClient({
               <input
                 id="title"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('title')}
               />
               {form.formState.errors.title && (
@@ -416,7 +417,7 @@ export default function InspectionsTableClient({
                 <label htmlFor="type" className="text-body-sm form-label">Type *</label>
                 <select
                   id="type"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('type')}
                 >
                   <option value="pre_event">Pre-Event</option>
@@ -432,7 +433,7 @@ export default function InspectionsTableClient({
                 <label htmlFor="status" className="text-body-sm form-label">Status *</label>
                 <select
                   id="status"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('status')}
                 >
                   <option value="scheduled">Scheduled</option>
@@ -449,7 +450,7 @@ export default function InspectionsTableClient({
                 <input
                   id="scheduled_at"
                   type="datetime-local"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   {...form.register('scheduled_at')}
                 />
               </div>
@@ -459,7 +460,7 @@ export default function InspectionsTableClient({
                 <input
                   id="inspector_name"
                   type="text"
-                  className="rounded border px-sm py-sm"
+                  className="rounded border  px-md py-sm"
                   placeholder="Inspector name..."
                   {...form.register('inspector_name')}
                 />
@@ -470,11 +471,11 @@ export default function InspectionsTableClient({
               <label htmlFor="project_id" className="text-body-sm form-label">Project</label>
               <select
                 id="project_id"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('project_id')}
               >
                 <option value="">No project</option>
-                {projects.map((project) => (
+                {projects.map((project: any) => (
                   <option key={project.id} value={project.id}>
                     {project.name}
                   </option>

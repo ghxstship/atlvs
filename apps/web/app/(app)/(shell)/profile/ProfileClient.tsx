@@ -1,21 +1,9 @@
 'use client';
 
+
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import {
-  DataViewProvider,
-  StateManagerProvider,
-  DataGrid,
-  KanbanBoard,
-  CalendarView,
-  ListView,
-  ViewSwitcher,
-  DataActions,
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Drawer, type DataRecord } from '@ghxstship/ui';
 
 // Profile field configuration for ATLVS DataViews
 const fieldConfig: FieldConfig[] = [
@@ -213,7 +201,7 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
       // In real implementation, update the data state
       console.log('Search results:', searchResults);
     },
-    onFilter: async (filters) => {
+    onFilter: async (filters: any) => {
       // Filtering implemented with Supabase
       let query = sb.from('user_profiles').select('*');
       Object.entries(filters).forEach(([key, value]) => {
@@ -222,7 +210,7 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
       const { data: filteredResults } = await query;
       console.log('Filtered results:', filteredResults);
     },
-    onSort: async (sorts) => {
+    onSort: async (sorts: any) => {
       // Sorting implemented with Supabase
       const sort = sorts[0];
       if (sort) {
@@ -245,7 +233,7 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
     onExport: (data, format) => {
       console.log('Export profiles:', format, data);
     },
-    onImport: (data) => {
+    onImport: (data: any) => {
       console.log('Import profiles:', data);
     }
   };

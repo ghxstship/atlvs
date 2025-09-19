@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 // import { SupabaseClient } from '@supabase/supabase-js';
 type SupabaseClient = any; // Placeholder type
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Badge } from '../Badge';
 import { 
   Activity, 
@@ -389,7 +389,7 @@ export function PerformanceMonitoringSystem({
         <div className="flex items-center gap-sm">
           <Button
             variant="outline"
-            size="sm"
+            
             onClick={() => setMonitoringInterval(prev => prev === 5000 ? 1000 : 5000)}
           >
             <Settings className="h-4 w-4 mr-xs" />
@@ -532,7 +532,7 @@ export function PerformanceMonitoringSystem({
         <div>
           <div className="flex items-center justify-between mb-md">
             <h3 className="text-lg font-medium">Recent Alerts</h3>
-            <Button variant="ghost" size="sm" onClick={clearAlerts}>
+            <Button variant="ghost"  onClick={clearAlerts}>
               Clear All
             </Button>
           </div>
@@ -575,7 +575,7 @@ export function PerformanceMonitoringSystem({
                   
                   {!alert.resolved && (
                     <Button
-                      size="sm"
+                      
                       variant="ghost"
                       onClick={() => resolveAlert(alert.id)}
                     >

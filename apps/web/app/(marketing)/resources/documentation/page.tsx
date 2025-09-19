@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, Code, Zap, Lock, Search, BookOpen, ExternalLink } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Documentation | GHXSTSHIP Resources',
@@ -107,7 +109,7 @@ export default function DocumentationPage() {
             <Badge variant="outline" className="mb-md">
               Documentation
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TECHNICAL
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -154,8 +156,8 @@ export default function DocumentationPage() {
       <section className="py-xl border-b">
         <div className="container mx-auto px-md">
           <div className="flex flex-wrap justify-center gap-md">
-            {quickLinks.map((link) => (
-              <Link key={link.title} href={link.href as any}>
+            {quickLinks.map((link: any) => (
+              <Link key={link.title} href="#">
                 <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm">
                   {link.title}
                   {link.external && <ExternalLink className="ml-xs h-3 w-3" />}
@@ -170,7 +172,7 @@ export default function DocumentationPage() {
       <section id="sections" className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               DOCUMENTATION SECTIONS
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -179,7 +181,7 @@ export default function DocumentationPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {docSections.map((section) => {
+            {docSections.map((section: any) => {
               const Icon = section.icon;
               return (
                 <Card key={section.id} className="hover:shadow-floating transition-all duration-300 group">
@@ -199,7 +201,7 @@ export default function DocumentationPage() {
                       </div>
                     </div>
                     
-                    <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                    <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                       {section.title}
                     </h3>
                     <p className="color-muted mb-lg">
@@ -209,8 +211,8 @@ export default function DocumentationPage() {
                     <div className="mb-lg">
                       <h4 className="text-body-sm text-heading-4 color-foreground mb-sm">Popular Topics:</h4>
                       <div className="flex flex-wrap gap-sm">
-                        {section.topics.map((topic) => (
-                          <Badge key={topic} variant="outline" className="text-body-sm">
+                        {section.topics.map((topic: any) => (
+                          <Badge key={topic} variant="outline">
                             {topic}
                           </Badge>
                         ))}
@@ -236,7 +238,7 @@ export default function DocumentationPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               POPULAR DOCUMENTATION
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -251,7 +253,7 @@ export default function DocumentationPage() {
                   <div className="flex items-center justify-between mb-md">
                     <Badge variant="outline">{doc.category}</Badge>
                     <div className="flex items-center gap-sm">
-                      <Badge variant="secondary" className="text-body-sm">
+                      <Badge variant="outline">
                         {doc.popularity}
                       </Badge>
                       {doc.isPremium && (
@@ -263,7 +265,7 @@ export default function DocumentationPage() {
                     </div>
                   </div>
                   
-                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {doc.title}
                   </h3>
                   <p className="color-muted mb-md">
@@ -294,7 +296,7 @@ export default function DocumentationPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               DEVELOPER RESOURCES
             </h2>
           </div>
@@ -325,7 +327,7 @@ export default function DocumentationPage() {
                   <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
                     <resource.icon className="h-8 w-8 text-background" />
                   </div>
-                  <h3 className={`mb-sm ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {resource.title}
                   </h3>
                   <p className="color-muted mb-lg">
@@ -350,7 +352,7 @@ export default function DocumentationPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <Code className="h-16 w-16 text-foreground mx-auto mb-lg" />
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 BUILD WITH GHXSTSHIP
               </h2>
               <p className="text-body color-muted mb-xl max-w-2xl mx-auto">

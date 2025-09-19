@@ -1,20 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Badge, 
-  Button,
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Badge, Button, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { StatusBadge, animationPresets } from "../../../../_components/ui"
 import { 
   TrendingUp,
@@ -445,7 +435,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
         {/* Revenue Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {revenues.map((revenue) => (
+            {revenues.map((revenue: any) => (
               <Card key={revenue.id} className={`p-lg cursor-pointer ${animationPresets.cardInteractive}`} onClick={() => handleViewRevenue(revenue)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">
@@ -495,7 +485,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                           e?.stopPropagation();
                           handleRecognizeRevenue(revenue.id);
                         }}
@@ -507,7 +497,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                       <Button
                         variant="ghost"
                         size="sm"
-                        onClick={(e) => {
+                        onClick={(e: any) => {
                           e?.stopPropagation();
                           handleReceiveRevenue(revenue.id);
                         }}
@@ -521,7 +511,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={(e) => {
+                      onClick={(e: any) => {
                         e?.stopPropagation();
                         handleEditRevenue(revenue);
                       }}
@@ -531,7 +521,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                     <Button
                       variant="ghost"
                       size="sm"
-                      onClick={(e) => {
+                      onClick={(e: any) => {
                         e?.stopPropagation();
                         handleDeleteRevenue(revenue.id);
                       }}

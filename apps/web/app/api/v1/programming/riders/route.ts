@@ -68,7 +68,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ riders: riders || [] });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Riders API error:', error);
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
@@ -148,7 +148,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ rider }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Create rider error:', error);
     
     if (error instanceof z.ZodError) {

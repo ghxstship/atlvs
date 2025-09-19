@@ -1,8 +1,9 @@
 'use client';
 
+
+
 import { useState, useEffect } from 'react';
 import { Card, Button, Badge, Tabs, TabsContent, TabsList, TabsTrigger } from '@ghxstship/ui';
-import { animationPresets } from '../../../_components/ui';
 import { 
   Briefcase, DollarSign, Users, TrendingUp, Package, Clock, Star, 
   MessageSquare, FileText, Award, Target, Calendar, BarChart3,
@@ -179,7 +180,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Total Earnings</p>
-              <p className="text-heading-3 text-heading-3">${stats.vendor.totalEarnings.toLocaleString()}</p>
+              <p className="text-heading-3">${stats.vendor.totalEarnings.toLocaleString()}</p>
               <p className="text-body-sm color-success flex items-center mt-xs">
                 <ArrowUpRight className="h-3 w-3 mr-xs" />
                 +12% from last month
@@ -193,7 +194,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Active Projects</p>
-              <p className="text-heading-3 text-heading-3">{stats.vendor.activeProjects}</p>
+              <p className="text-heading-3">{stats.vendor.activeProjects}</p>
               <p className="text-body-sm color-muted mt-xs">
                 {stats.vendor.completedProjects} completed
               </p>
@@ -207,7 +208,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
             <div>
               <p className="text-body-sm color-muted">Average Rating</p>
               <div className="flex items-center">
-                <p className="text-heading-3 text-heading-3 mr-sm">{stats.vendor.avgRating}</p>
+                <p className="text-heading-3 mr-sm">{stats.vendor.avgRating}</p>
                 <Star className="h-5 w-5 color-warning fill-warning" />
               </div>
               <p className="text-body-sm color-muted mt-xs">
@@ -222,7 +223,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Success Rate</p>
-              <p className="text-heading-3 text-heading-3">{stats.vendor.successRate}%</p>
+              <p className="text-heading-3">{stats.vendor.successRate}%</p>
               <p className="text-body-sm color-muted mt-xs">
                 {stats.vendor.proposalsSent} proposals sent
               </p>
@@ -312,7 +313,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Total Spent</p>
-              <p className="text-heading-3 text-heading-3">${stats.client.totalSpent.toLocaleString()}</p>
+              <p className="text-heading-3">${stats.client.totalSpent.toLocaleString()}</p>
               <p className="text-body-sm color-success flex items-center mt-xs">
                 <ArrowDownRight className="h-3 w-3 mr-xs" />
                 -8% from budget
@@ -326,7 +327,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Active Projects</p>
-              <p className="text-heading-3 text-heading-3">{stats.client.activeProjects}</p>
+              <p className="text-heading-3">{stats.client.activeProjects}</p>
               <p className="text-body-sm color-muted mt-xs">
                 {stats.client.completedProjects} completed
               </p>
@@ -339,7 +340,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Vendors Hired</p>
-              <p className="text-heading-3 text-heading-3">{stats.client.vendorsHired}</p>
+              <p className="text-heading-3">{stats.client.vendorsHired}</p>
               <p className="text-body-sm color-muted mt-xs">
                 Across all projects
               </p>
@@ -352,7 +353,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Avg Completion</p>
-              <p className="text-heading-3 text-heading-3">{stats.client.avgCompletionTime}d</p>
+              <p className="text-heading-3">{stats.client.avgCompletionTime}d</p>
               <p className="text-body-sm color-success flex items-center mt-xs">
                 <Zap className="h-3 w-3 mr-xs" />
                 2 days faster
@@ -440,8 +441,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Dashboard Toggle */}
       {userRole === 'both' && (
         <div className="flex items-center justify-between">
-          <h2 className="text-heading-3 text-heading-3">OPENDECK Dashboard</h2>
-          <Tabs value={activeView} onValueChange={(v) => setActiveView(v as 'vendor' | 'client')}>
+          <h2 className="text-heading-3">OPENDECK Dashboard</h2>
+          <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v as 'vendor' | 'client')}>
             <TabsList>
               <TabsTrigger value="vendor">
                 <Building className="h-4 w-4 mr-sm" />

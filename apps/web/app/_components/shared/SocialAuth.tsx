@@ -1,8 +1,9 @@
 'use client';
 
+
 import React from 'react';
 
-import { Button, cn } from "@ghxstship/ui";
+import { Button, cn } from '@ghxstship/ui';
 
 export default function SocialAuth() {
   return (

@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardContent, Badge } from '@ghxstship/ui';
@@ -10,7 +11,7 @@ interface ActivityLog {
   id: string;
   action: string;
   category: string;
-  details?: any;
+  details?;
   ip_address?: string;
   user_agent?: string;
   created_at: string;
@@ -165,7 +166,7 @@ export default function ActivityLogClient() {
   return (
     <div className="stack-lg">
       <div>
-        <h2 className="text-heading-3 text-heading-3">Activity Log</h2>
+        <h2 className="text-heading-3">Activity Log</h2>
         <p className="color-muted">Track your recent account activity</p>
       </div>
 
@@ -227,7 +228,7 @@ export default function ActivityLogClient() {
                             </div>
                           )}
                         </div>
-                        <Badge variant="outline" className="text-body-sm">
+                        <Badge variant="outline">
                           {activity.category}
                         </Badge>
                       </div>

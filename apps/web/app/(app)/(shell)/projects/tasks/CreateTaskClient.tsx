@@ -1,22 +1,43 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import { Drawer, Button } from '@ghxstship/ui';
-import { Plus } from 'lucide-react';
+import { useMemo, useState, useEffect } from 'react';
+import { Drawer, Button, Select, Textarea, Badge, UnifiedInput } from '@ghxstship/ui';
+import { Plus, Calendar, User, Tag, AlertCircle, CheckCircle2 } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const schema = z.object({
-  title: z.string().min(2, 'Title is required'),
-  status: z.string().min(2).default('pending'),
+  title: z.string().min(2, 'Title must be at least 2 characters').max(100, 'Title must be less than 100 characters'),
+  description: z.string().optional(),
+  status: z.enum(['pending', 'in_progress', 'completed', 'blocked', 'cancelled']).default('pending'),
+  priority: z.enum(['low', 'medium', 'high', 'urgent']).default('medium'),
   due_at: z.string().nullable().optional(),
+  assigned_to: z.string().nullable().optional(),
+  project_id: z.string().nullable().optional(),
+  tags: z.array(z.string()).default([]),
+  estimated_hours: z.number().min(0).max(1000).nullable().optional(),
 });
 
 type Values = z.infer<typeof schema>;
+
+const statusOptions = [
+  { value: 'pending', label: 'Pending', color: 'bg-gray-500' },
+  { value: 'in_progress', label: 'In Progress', color: 'bg-blue-500' },
+  { value: 'completed', label: 'Completed', color: 'bg-green-500' },
+  { value: 'blocked', label: 'Blocked', color: 'bg-red-500' },
+  { value: 'cancelled', label: 'Cancelled', color: 'bg-gray-400' },
+];
+
+const priorityOptions = [
+  { value: 'low', label: 'Low', color: 'bg-green-500' },
+  { value: 'medium', label: 'Medium', color: 'bg-yellow-500' },
+  { value: 'high', label: 'High', color: 'bg-orange-500' },
+  { value: 'urgent', label: 'Critical', color: 'bg-red-500' },
+];
 
 export default function CreateTaskClient({ orgId }: { orgId: string }) {
   const t = useTranslations('tasks');
@@ -62,7 +83,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
       setOpen(false);
       form.reset({ title: '', status: 'pending', due_at: null });
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -76,26 +97,40 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title={t('create.newTitle')} description={submitting ? t('drawer.saving') : undefined}>
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
-        <form className="stack-sm" onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
-          <div className="grid gap-xs">
-            <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
-            <input id="title" className="rounded border px-sm py-xs" value={form.getValues('title') || ''} onChange={(e) => form.setValue('title', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.title} />
-            <div className="text-body-sm opacity-70">{t('create.titleHelp')}</div>
-            {form.formState.errors.title ? <div className="text-body-sm color-destructive">{String(form.formState.errors.title.message)}</div> : null}
-          </div>
+        <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} aria-live="polite">
+          <UnifiedInput
+            id="title"
+            label={t('grid.title')}
+            description={t('create.titleHelp')}
+            value={form.getValues('title') || ''}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('title', e.target.value, { shouldDirty: true })}
+            error={form.formState.errors.title?.message}
+            required
+          />
           <div className="grid gap-xs">
             <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
-            <input id="status" className="rounded border px-sm py-xs" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
+            <select 
+              id="status" 
+              className="rounded border  px-md py-xs" 
+              value={form.getValues('status') || 'pending'} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value as 'pending' | 'in_progress' | 'completed' | 'blocked' | 'cancelled', { shouldDirty: true })}
+            >
+              {statusOptions.map((option: any) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
             <div className="text-body-sm opacity-70">{t('create.statusHelp')}</div>
           </div>
           <div className="grid gap-xs">
             <label htmlFor="due_at" className="text-body-sm">{t('grid.dueAt')}</label>
-            <input id="due_at" type="date" className="rounded border px-sm py-xs" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
+            <input id="due_at" type="date" className="rounded border  px-md py-xs" value={form.getValues('due_at')?.slice(0,10) || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('due_at', e.target.value || null, { shouldDirty: true })} />
             <div className="text-body-sm opacity-70">{t('create.dueAtHelp')}</div>
           </div>
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>{t('create.cancel')}</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>{t('create.create')}</Button>
+            <Button type="submit" variant="default" disabled={submitting || !form.formState.isDirty}>{submitting ? t('drawer.saving') : t('create.submit')}</Button>
           </div>
         </form>
       </Drawer>

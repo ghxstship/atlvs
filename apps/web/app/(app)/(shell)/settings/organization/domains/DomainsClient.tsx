@@ -44,7 +44,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
       if (searchParams.get('suggest')) {
         router.replace('/settings/organization/domains');
       }
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
       setDomains((prev: OrgDomain[]) => prev.filter((d: OrgDomain) => d.id !== optimistic.id));
     } finally {
@@ -65,7 +65,7 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Failed to delete');
       // success: no-op, optimistic state already removed
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
       setDomains((prev: any) => prev);
     } finally {
@@ -87,16 +87,16 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
         <table className="w-full text-body-sm">
           <thead>
             <tr className="bg-secondary/40">
-              <th className="px-sm py-sm text-left">Domain</th>
-              <th className="px-sm py-sm text-left">Status</th>
-              <th className="px-sm py-sm text-right">Actions</th>
+              <th className=" px-md py-sm text-left">Domain</th>
+              <th className=" px-md py-sm text-left">Status</th>
+              <th className=" px-md py-sm text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {domains.map((d) => (
+            {domains.map((d: any) => (
               <tr key={d.id} className="border-t">
-                <td className="px-sm py-sm">{d.domain}</td>
-                <td className="px-sm py-sm">
+                <td className=" px-md py-sm">{d.domain}</td>
+                <td className=" px-md py-sm">
                   <span className={
                     `inline-flex items-center rounded-full px-sm py-0.5 text-body-sm ` +
                     (d.status === 'active' ? 'bg-success/10 color-success' :
@@ -106,14 +106,14 @@ export default function DomainsClient({ orgId, role, suggest }: { orgId: string;
                     {d.status}
                   </span>
                 </td>
-                <td className="px-sm py-sm text-right">
+                <td className=" px-md py-sm text-right">
                   <Button onClick={() => removeDomain(d.id)} disabled={loading || !canManage}>Remove</Button>
                 </td>
               </tr>
             ))}
             {domains.length === 0 ? (
               <tr>
-                <td className="px-sm py-lg text-center color-foreground/60" colSpan={3}>No domains. Add your company email domain(s) to allow unlimited seats on Team plans.</td>
+                <td className=" px-md py-lg text-center color-foreground/60" colSpan={3}>No domains. Add your company email domain(s) to allow unlimited seats on Team plans.</td>
               </tr>
             ) : null}
           </tbody>

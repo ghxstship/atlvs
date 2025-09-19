@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, List, Users, Calendar } from 'lucide-react';
 
@@ -156,18 +157,17 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
             <div className="flex-1">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
+                <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
             </div>
             <select
               value={selectedPurpose}
-              onChange={(e) => setSelectedPurpose(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedPurpose(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allPurposes')}</option>
               {purposes.map(purpose => (
@@ -188,9 +188,8 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               <label className="block text-body-sm form-label color-foreground mb-xs">
                 {t('name')}
               </label>
-              <Input
-                value={newShortlist.name}
-                onChange={(e) => setNewShortlist(prev => ({ ...prev, name: e.target.value }))}
+              <UnifiedInput                 value={newShortlist.name}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, name: e.target.value }))}
                 placeholder={t('namePlaceholder')}
               />
             </div>
@@ -200,9 +199,9 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               </label>
               <textarea
                 value={newShortlist.description}
-                onChange={(e) => setNewShortlist(prev => ({ ...prev, description: e.target.value }))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, description: e.target.value }))}
                 placeholder={t('descriptionPlaceholder')}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 rows={3}
               />
             </div>
@@ -212,8 +211,8 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
               </label>
               <select
                 value={newShortlist.purpose}
-                onChange={(e) => setNewShortlist(prev => ({ ...prev, purpose: e.target.value as any }))}
-                className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewShortlist(prev => ({ ...prev, purpose: e.target.value as any }))}
+                className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="">{t('selectPurpose')}</option>
                 {purposes.map(purpose => (
@@ -237,7 +236,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
 
       {/* Shortlists Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-        {filteredShortlists.map((shortlist) => {
+        {filteredShortlists.map((shortlist: any) => {
           const purpose = purposes.find(p => p.value === shortlist.purpose);
           return (
             <Card key={shortlist.id}>

@@ -96,7 +96,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ dashboards: dashboards || [] });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Analytics dashboards GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -145,7 +145,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ dashboard }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Analytics dashboards POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -206,7 +206,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ dashboard });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Analytics dashboards PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -263,7 +263,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Analytics dashboards DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

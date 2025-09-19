@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
 
   if (!stripe) return NextResponse.json({ error: 'Stripe not configured' }, { status: 500 });
 
-  let payload: any;
+  let payload;
   try {
     payload = await req.json();
   } catch {

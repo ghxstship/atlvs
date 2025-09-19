@@ -11,7 +11,7 @@ interface PlanSelectionStepProps {
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data: any;
+  data;
 }
 
 const plans = [
@@ -206,7 +206,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
 
       {/* Plans Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-        {plans.map((plan) => {
+        {plans.map((plan: any) => {
           const Icon = plan.icon;
           const isSelected = selectedPlan === plan.id;
           

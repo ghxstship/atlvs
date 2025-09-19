@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { AuthLayout } from '../_components/AuthLayout';
@@ -25,7 +26,7 @@ export default function ForgotPasswordPage() {
 
       if (error) throw error;
       setSuccess(true);
-    } catch (error: any) {
+    } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
@@ -76,7 +77,7 @@ export default function ForgotPasswordPage() {
           label="Email Address"
           placeholder="Enter your email address"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           required
           autoComplete="email"
         />

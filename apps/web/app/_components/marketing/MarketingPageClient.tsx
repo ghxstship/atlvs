@@ -3,11 +3,14 @@
 import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight, Zap, Globe } from 'lucide-react';
+import { Anton } from 'next/font/google';
 import { typography } from '../lib/typography';
 import { HeroSection } from './HeroSection';
 import { FeatureCard } from './FeatureCard';
 import { CTASection } from './CTASection';
 import { MarketingLayoutClient } from './MarketingLayoutClient';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export function MarketingPageClient() {
   return (
@@ -22,7 +25,7 @@ export function MarketingPageClient() {
             <Badge variant="outline" className="mb-sm">
               Our Products
             </Badge>
-            <h2 className={`mb-md ${typography.sectionTitle}`}>
+            <h2 className={`mb-md ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               TWO PRODUCTS THAT ACTUALLY WORK TOGETHER
             </h2>
             <p className={`${typography.sectionSubtitle} max-w-3xl mx-auto`}>

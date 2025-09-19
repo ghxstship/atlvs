@@ -1,6 +1,6 @@
 import { Card, CardContent, Button } from '@ghxstship/ui';
 import { Check } from 'lucide-react';
-import { typography } from '../../lib/typography';
+import { typography, anton } from '../../lib/typography';
 
 interface AddOn {
   name: string;
@@ -19,7 +19,7 @@ export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
     <Card className="hover:shadow-floating transition-all duration-200 hover:scale-105 h-full flex flex-col">
       <CardContent className="p-lg flex flex-col h-full">
         <div className="text-center mb-md">
-          <h3 className={`${typography.cardTitle} mb-sm`}>{addon.name}</h3>
+          <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-sm`}>{addon.name}</h3>
           <p className="color-muted mb-sm text-body-sm leading-relaxed">{addon.description}</p>
           <div className="flex items-baseline justify-center gap-xl">
             {typeof addon.price === 'string' ? (
@@ -34,7 +34,7 @@ export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
         </div>
 
         <div className="stack-xl mb-md flex-1">
-          {addon.features.map((feature) => (
+          {addon.features.map((feature: any) => (
             <div key={feature} className="flex items-start gap-xl">
               <Check className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
               <span className="text-body-sm color-foreground leading-relaxed">{feature}</span>

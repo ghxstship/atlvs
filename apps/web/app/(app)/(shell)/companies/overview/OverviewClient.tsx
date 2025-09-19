@@ -1,15 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@supabase/ssr';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  StateManagerProvider
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton } from '@ghxstship/ui';
 import { StatusBadge, designTokens } from "../../../../_components/ui"
 import { 
   Building,
@@ -350,7 +345,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
               <Button>View All</Button>
             </div>
             <div className="stack-md">
-              {recentActivity.map((activity) => (
+              {recentActivity.map((activity: any) => (
                 <div key={activity.id} className="flex items-start cluster-sm">
                   {getActivityIcon(activity.type)}
                   <div className="flex-1 min-w-0">

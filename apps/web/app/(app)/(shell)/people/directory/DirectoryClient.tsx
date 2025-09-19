@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge, ViewSwitcher, DataGrid, Avatar } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Avatar } from '@ghxstship/ui';
 import { createClient } from '@ghxstship/auth';
 import { Search, Filter, UserPlus, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -108,18 +109,17 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
-              <Input
-                placeholder={t('searchPlaceholder')}
+              <UnifiedInput                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 className="pl-2xl"
               />
             </div>
             
             <select
               value={selectedDepartment}
-              onChange={(e) => setSelectedDepartment(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedDepartment(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allDepartments')}</option>
               {departments.map(dept => (
@@ -129,8 +129,8 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
             <select
               value={selectedStatus}
-              onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+              className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="">{t('allStatuses')}</option>
               <option value="active">{t('active')}</option>
@@ -151,7 +151,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
 
           {/* People Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {filteredPeople.map((person) => (
+            {filteredPeople.map((person: any) => (
               <div
                 key={person.id}
                 className="border border-border rounded-lg p-md hover:shadow-elevated transition-shadow cursor-pointer"

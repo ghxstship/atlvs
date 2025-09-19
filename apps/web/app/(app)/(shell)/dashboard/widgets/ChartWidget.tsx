@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Card } from '@ghxstship/ui';
 import { MoreHorizontal, RefreshCw } from 'lucide-react';
@@ -167,9 +168,9 @@ export default function ChartWidget({
           case 'count':
             return items.length;
           case 'sum':
-            return items.reduce((sum: number, item: any) => sum + (item[config.yAxis as string] || 0), 0);
+            return items.reduce((sum: number, item) => sum + (item[config.yAxis as string] || 0), 0);
           case 'avg':
-            const total = items.reduce((sum: number, item: any) => sum + (item[config.yAxis as string] || 0), 0);
+            const total = items.reduce((sum: number, item) => sum + (item[config.yAxis as string] || 0), 0);
             return total / items.length;
           default:
             return items.length;

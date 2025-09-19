@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -76,7 +77,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create space');
     } finally {
       setLoading(false);
@@ -115,7 +116,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter space name..."
               {...form.register('name')}
             />
@@ -133,7 +134,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="type"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('type')}
               >
                 <option value="stage">Stage</option>
@@ -152,7 +153,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="availability_status"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('availability_status')}
               >
                 <option value="available">Available</option>
@@ -172,7 +173,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
                 id="capacity"
                 type="number"
                 min="0"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Max occupancy..."
                 {...form.register('capacity', { valueAsNumber: true })}
               />
@@ -185,7 +186,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               <input
                 id="location"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Building, floor, room..."
                 {...form.register('location')}
               />
@@ -199,7 +200,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the space..."
               {...form.register('description')}
             />
@@ -212,7 +213,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
             <textarea
               id="amenities"
               rows={2}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="List available amenities..."
               {...form.register('amenities')}
             />
@@ -228,7 +229,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
                 type="number"
                 min="0"
                 step="0.01"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="0.00"
                 {...form.register('hourly_rate', { valueAsNumber: true })}
               />
@@ -240,7 +241,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="currency"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('currency')}
               >
                 <option value="USD">USD</option>

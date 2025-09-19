@@ -165,7 +165,7 @@ export async function GET(request: NextRequest) {
       securityMetrics
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Security settings GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -247,7 +247,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Security settings POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -296,7 +296,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ securitySettings: settings.security_settings });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Security settings PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -386,7 +386,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ error: 'Invalid reset type' }, { status: 400 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Security settings DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

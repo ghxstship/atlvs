@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Card, Button, Badge } from '@ghxstship/ui';
 import { Plus, Package, TrendingUp, AlertTriangle, Settings, BarChart3 } from 'lucide-react';
@@ -217,7 +218,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
           { id: 'tracking', label: 'Tracking', icon: AlertTriangle },
           { id: 'maintenance', label: 'Maintenance', icon: Settings },
           { id: 'reports', label: 'Reports', icon: BarChart3 }
-        ].map((tab) => {
+        ].map((tab: any) => {
           const Icon = tab.icon;
           return (
             <button

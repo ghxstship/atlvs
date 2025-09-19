@@ -79,7 +79,7 @@ export default async function ProjectsActivationsPage() {
       <Card>
         <div className="flex items-center justify-between gap-md mb-lg">
           <div>
-            <h1 className="text-heading-3 text-heading-3">Activations</h1>
+            <h1 className="text-heading-3">Activations</h1>
             <p className="text-body-sm color-muted">
               Manage project activations, launches, and go-live processes
             </p>

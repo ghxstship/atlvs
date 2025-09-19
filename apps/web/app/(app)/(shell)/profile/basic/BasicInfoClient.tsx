@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Avatar, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Avatar, Badge } from '@ghxstship/ui';
 import { Camera, Save, User } from 'lucide-react';
 
 interface UserProfile {
@@ -167,19 +168,17 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
         <div className="stack-sm">
           <label className="text-body-sm form-label">Avatar URL</label>
-          <Input
-            value={formData.avatar_url}
-            onChange={(e) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
+          <UnifiedInput             value={formData.avatar_url}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, avatar_url: e.target.value }))}
             placeholder="https://example.com/avatar.jpg"
           />
         </div>
 
         <div className="stack-sm">
           <label className="text-body-sm form-label">Date of Birth</label>
-          <Input
-            type="date"
+          <UnifiedInput             type="date"
             value={formData.date_of_birth}
-            onChange={(e) => setFormData(prev => ({ ...prev, date_of_birth: e.target.value }))}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, date_of_birth: e.target.value }))}
           />
         </div>
 
@@ -187,8 +186,8 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
           <label className="text-body-sm form-label">Gender</label>
           <select
             value={formData.gender}
-            onChange={(e) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
-            className="w-full px-sm py-sm border border-input bg-background rounded-md"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, gender: e.target.value }))}
+            className="w-full  px-md py-sm border border-input bg-background rounded-md"
           >
             <option value="">Select gender</option>
             <option value="male">Male</option>
@@ -200,9 +199,8 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
 
         <div className="stack-sm">
           <label className="text-body-sm form-label">Nationality</label>
-          <Input
-            value={formData.nationality}
-            onChange={(e) => setFormData(prev => ({ ...prev, nationality: e.target.value }))}
+          <UnifiedInput             value={formData.nationality}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, nationality: e.target.value }))}
             placeholder="e.g., American, British, Canadian"
           />
         </div>
@@ -213,7 +211,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         <div>
           <label className="text-body-sm form-label">Languages</label>
           <div className="flex flex-wrap gap-sm mt-sm">
-            {formData.languages.map((language) => (
+            {formData.languages.map((language: any) => (
               <Badge
                 key={language}
                 variant="secondary"
@@ -227,9 +225,8 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
         </div>
         
         <div className="flex gap-sm">
-          <Input
-            placeholder="Add a language"
-            onKeyPress={(e) => {
+          <UnifiedInput             placeholder="Add a language"
+            onKeyPress={(e: any) => {
               if (e.key === 'Enter') {
                 handleLanguageAdd(e.currentTarget.value);
                 e.currentTarget.value = '';

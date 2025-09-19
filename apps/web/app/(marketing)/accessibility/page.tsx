@@ -64,7 +64,7 @@ export default function AccessibilityPage() {
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
                   <Eye className="h-6 w-6 text-foreground" />
-                  <h3 className="text-heading-4">Visual Accessibility</h3>
+                  <h3>Visual Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
                   <li>• High contrast color schemes</li>
@@ -80,7 +80,7 @@ export default function AccessibilityPage() {
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
                   <Ear className="h-6 w-6 text-foreground" />
-                  <h3 className="text-heading-4">Auditory Accessibility</h3>
+                  <h3>Auditory Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
                   <li>• Captions for all video content</li>
@@ -96,7 +96,7 @@ export default function AccessibilityPage() {
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
                   <Hand className="h-6 w-6 text-foreground" />
-                  <h3 className="text-heading-4">Motor Accessibility</h3>
+                  <h3>Motor Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
                   <li>• Full keyboard navigation support</li>
@@ -112,7 +112,7 @@ export default function AccessibilityPage() {
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
                   <Brain className="h-6 w-6 text-foreground" />
-                  <h3 className="text-heading-4">Cognitive Accessibility</h3>
+                  <h3>Cognitive Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
                   <li>• Clear, consistent navigation</li>

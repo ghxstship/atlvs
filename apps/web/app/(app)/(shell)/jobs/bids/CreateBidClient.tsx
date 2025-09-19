@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Drawer, Button, Input, Select, Textarea } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Loader2, AlertCircle } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
@@ -176,8 +176,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <Input
-                id="title"
+              <UnifiedInput                 id="title"
                 {...register('title')}
                 placeholder="Enter bid title"
                
@@ -201,8 +200,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 <label htmlFor="opportunityId" className="block text-body-sm form-label color-foreground mb-sm">
                   Opportunity ID *
                 </label>
-                <Input
-                  id="opportunityId"
+                <UnifiedInput                   id="opportunityId"
                   {...register('opportunityId')}
                   placeholder="Enter opportunity ID"
                  
@@ -213,8 +211,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-sm">
                   Job ID (Optional)
                 </label>
-                <Input
-                  id="jobId"
+                <UnifiedInput                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter job ID if applicable"
                 />
@@ -238,8 +235,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 <label htmlFor="amount" className="block text-body-sm form-label color-foreground mb-sm">
                   Amount *
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   {...register('amount', { valueAsNumber: true })}
                   placeholder="0.00"
@@ -264,8 +260,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 <label htmlFor="estimatedDuration" className="block text-body-sm form-label color-foreground mb-sm">
                   Estimated Duration
                 </label>
-                <Input
-                  {...register('estimatedDuration')}
+                <UnifiedInput                   {...register('estimatedDuration')}
                   placeholder="e.g., 2 weeks, 3 months"
                 />
               </div>
@@ -274,8 +269,7 @@ export default function CreateBidClient({ orgId, onSuccess }: CreateBidClientPro
                 <label htmlFor="responseDeadline" className="block text-body-sm form-label color-foreground mb-sm">
                   Response Deadline
                 </label>
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   {...register('responseDeadline')}
                 />
               </div>

@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { List, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -232,8 +232,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Shortlist Name *
               </label>
-              <Input
-                {...register('name')}
+              <UnifiedInput                 {...register('name')}
                 placeholder="e.g., Sound Engineers - Festival 2024"
                 error={errors.name?.message}
               />
@@ -246,10 +245,10 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
                 </label>
                 <select
                   {...register('projectId')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select project (optional)...</option>
-                  {projects.map((project) => (
+                  {projects.map((project: any) => (
                     <option key={project.id} value={project.id}>
                       {project.name} ({project.status})
                     </option>
@@ -263,10 +262,10 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
                 </label>
                 <select
                   {...register('roleId')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="">Select role (optional)...</option>
-                  {roles.map((role) => (
+                  {roles.map((role: any) => (
                     <option key={role.id} value={role.id}>
                       {role.name} {role.department && `(${role.department})`}
                     </option>
@@ -282,7 +281,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
                 </label>
                 <select
                   {...register('status')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="active">Active</option>
                   <option value="closed">Closed</option>
@@ -294,8 +293,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Max Members
                 </label>
-                <Input
-                  {...register('maxMembers', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('maxMembers', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="10"
@@ -318,8 +316,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Tags
               </label>
-              <Input
-                {...register('tags')}
+              <UnifiedInput                 {...register('tags')}
                 placeholder="e.g., urgent, experienced, local (comma separated)"
               />
               <p className="text-body-sm color-muted mt-xs">

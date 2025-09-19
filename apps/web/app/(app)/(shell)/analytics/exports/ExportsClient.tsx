@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -359,7 +360,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
         <div className="animate-pulse">
           <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3].map((i: any) => (
               <div key={i} className="h-48 bg-secondary rounded"></div>
             ))}
           </div>
@@ -428,7 +429,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
               type="text"
               placeholder="Search export jobs..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
               className="w-full pl-2xl pr-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             />
           </div>
@@ -436,7 +437,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
           {/* Export Jobs Grid */}
           {filteredJobs.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-              {filteredJobs.map((job) => {
+              {filteredJobs.map((job: any) => {
                 const FormatIcon = getFormatIcon(job.format);
                 const StatusIcon = getStatusIcon(job.status);
                 
@@ -486,7 +487,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <div className="stack-sm">
                       <div className="flex items-center justify-between text-body-sm">
                         <span className="color-muted">Data Source:</span>
-                        <Badge variant="outline" className="text-body-sm">
+                        <Badge variant="outline">
                           {job.dataSource}
                         </Badge>
                       </div>
@@ -499,7 +500,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                       {job.schedule?.enabled && (
                         <div className="flex items-center justify-between text-body-sm">
                           <span className="color-muted">Schedule:</span>
-                          <Badge variant="outline" className="text-body-sm">
+                          <Badge variant="outline">
                             {job.schedule.frequency}
                           </Badge>
                         </div>
@@ -577,7 +578,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
       {activeTab === 'history' && (
         <div className="stack-md">
           {exportHistory.length > 0 ? (
-            exportHistory.map((entry) => {
+            exportHistory.map((entry: any) => {
               const job = exportJobs.find(j => j.id === entry.exportJobId);
               const StatusIcon = getStatusIcon(entry.status);
               
@@ -644,7 +645,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
           <Card className="w-full max-w-2xl p-lg max-h-[90vh] overflow-y-auto">
             <h3 className="text-body text-heading-4 mb-md">Create Export Job</h3>
             <form
-              onSubmit={(e) => {
+              onSubmit={(e: any) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
                 const jobData = {
@@ -666,7 +667,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     name="name"
                     type="text"
                     required
-                    className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="e.g., Monthly Financial Export"
                   />
                 </div>
@@ -678,7 +679,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                   <textarea
                     name="description"
                     rows={3}
-                    className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Brief description of this export..."
                   />
                 </div>
@@ -691,7 +692,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <select
                       name="dataSource"
                       required
-                      className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="projects">Projects</option>
                       <option value="people">People</option>
@@ -708,7 +709,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <select
                       name="format"
                       required
-                      className="w-full px-sm py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="csv">CSV</option>
                       <option value="xlsx">Excel (XLSX)</option>

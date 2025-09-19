@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { DynamicProgressBar } from "../../../../_components/ui"
@@ -234,7 +235,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3">Pipeline Overview</h1>
+          <h1 className="text-heading-3">Pipeline Overview</h1>
           <p className="text-body-sm color-muted">
             Production pipeline status and key metrics
           </p>
@@ -252,7 +253,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm form-label color-muted">Total Crew</p>
-                <p className="text-heading-3 text-heading-3">{stats.totalCrew}</p>
+                <p className="text-heading-3">{stats.totalCrew}</p>
               </div>
               <div className="p-sm bg-primary/10 rounded-full">
                 <Users className="w-6 h-6 color-primary" />
@@ -270,7 +271,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm form-label color-muted">Active Projects</p>
-                <p className="text-heading-3 text-heading-3">{stats.activeProjects}</p>
+                <p className="text-heading-3">{stats.activeProjects}</p>
               </div>
               <div className="p-sm bg-success/10 rounded-full">
                 <Activity className="w-6 h-6 color-success" />
@@ -287,7 +288,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm form-label color-muted">Training Progress</p>
-                <p className="text-heading-3 text-heading-3">{trainingCompletion}%</p>
+                <p className="text-heading-3">{trainingCompletion}%</p>
               </div>
               <div className="p-sm bg-secondary/10 rounded-full">
                 <CheckCircle className="w-6 h-6 color-secondary" />
@@ -309,7 +310,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm form-label color-muted">Advancing Progress</p>
-                <p className="text-heading-3 text-heading-3">{advancingProgress}%</p>
+                <p className="text-heading-3">{advancingProgress}%</p>
               </div>
               <div className="p-sm bg-warning/10 rounded-full">
                 <BarChart3 className="w-6 h-6 color-warning" />

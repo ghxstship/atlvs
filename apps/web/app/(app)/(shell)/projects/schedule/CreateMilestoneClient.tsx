@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -80,7 +81,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create milestone');
     } finally {
       setLoading(false);
@@ -118,11 +119,11 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">Select a project</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>
@@ -142,7 +143,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
             <input
               id="title"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter milestone title..."
               {...form.register('title')}
             />
@@ -160,7 +161,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the milestone..."
               {...form.register('description')}
             />
@@ -173,7 +174,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
             <input
               id="due_at"
               type="date"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('due_at')}
             />
             {form.formState.errors.due_at && (

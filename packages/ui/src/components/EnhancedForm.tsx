@@ -7,7 +7,7 @@ export interface EnhancedFormProps {
 
 export const EnhancedForm: React.FC<EnhancedFormProps> = ({ children, onSubmit }) => {
   return (
-    <form onSubmit={(e) => { e.preventDefault(); onSubmit?.({}); }}>
+    <form onSubmit={(e: any) => { e.preventDefault(); onSubmit?.({}); }}>
       {children}
     </form>
   );

@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Checkbox } from '../Checkbox';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
+import { Checkbox } from '../atomic/Checkbox';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { Loader } from '../Loader';
@@ -18,7 +18,7 @@ import {
   Grid3X3,
   List
 } from 'lucide-react';
-import { FieldConfig, DataRecord, SortConfig } from './types';
+import { SortConfig, DataRecord } from './types';
 
 interface VirtualizedGridProps {
   className?: string;
@@ -26,7 +26,7 @@ interface VirtualizedGridProps {
   itemWidth?: number;
   gap?: number;
   overscan?: number;
-  renderItem?: (item: DataRecord, index: number) => React.ReactNode;
+  renderItem?: (item: any, index: number) => React.ReactNode;
   onItemClick?: (item: DataRecord) => void;
   onItemSelect?: (item: DataRecord) => void;
   enableVirtualization?: boolean;
@@ -233,7 +233,7 @@ export function VirtualizedGrid({
   }, []);
 
   // Default item renderer
-  const defaultRenderItem = useCallback((item: DataRecord, index: number) => {
+  const defaultRenderItem = useCallback((item: any, index: number) => {
     const titleField = visibleFields.find(f => f.key === 'name' || f.key === 'title') || visibleFields[0];
     const statusField = visibleFields.find(f => f.key === 'status');
     const dateField = visibleFields.find(f => f.type === 'date');
@@ -255,7 +255,7 @@ export function VirtualizedGrid({
                 {titleField ? String(item[titleField.key] || 'Untitled') : 'Untitled'}
               </h3>
               {statusField && (
-                <Badge variant="outline" size="sm">
+                <Badge variant="outline" >
                   {String(item[statusField.key] || 'Unknown')}
                 </Badge>
               )}
@@ -263,7 +263,7 @@ export function VirtualizedGrid({
             <div className="flex items-center gap-xs ml-sm">
               <Checkbox
                 checked={state.selection.includes(item.id)}
-                onClick={(e) => {
+                onClick={(e: any) => {
                   e.stopPropagation();
                   onItemSelect?.(item);
                 }}
@@ -271,8 +271,8 @@ export function VirtualizedGrid({
               />
               <Button
                 variant="ghost"
-                size="sm"
-                onClick={(e) => {
+                
+                onClick={(e: any) => {
                   e.stopPropagation();
                   // Show item actions menu
                 }}
@@ -362,22 +362,22 @@ export function VirtualizedGrid({
             <Input
               placeholder="Search records..."
               value={state.search}
-              onChange={(e) => actions.setSearch(e.target.value)}
+              onChange={(e: any) => actions.setSearch(e.target.value)}
               className="pl-2xl w-64"
             />
           </div>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Filter className="h-4 w-4" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Settings className="h-4 w-4" />
             View Options
           </Button>
-          <Badge variant="secondary" size="sm">
+          <Badge variant="secondary" >
             {processedData.length} items
           </Badge>
         </div>
@@ -461,7 +461,7 @@ export function VirtualizedGrid({
             </span>
           )}
           {state.selection.length > 0 && (
-            <Badge variant="primary" size="sm">
+            <Badge variant="default" >
               {state.selection.length} selected
             </Badge>
           )}
@@ -469,8 +469,8 @@ export function VirtualizedGrid({
         
         <div className="flex items-center gap-sm">
           <Button
-            variant={enableVirtualization ? 'primary' : 'ghost'}
-            size="sm"
+            variant={enableVirtualization ? 'default' : 'ghost'}
+            
             onClick={() => {
               // Toggle virtualization (would be controlled by parent)
               console.log('Toggle virtualization');

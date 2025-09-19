@@ -57,7 +57,7 @@ export default function SecurityPage() {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl mb-3xl">
-          {securityFeatures.map((feature) => {
+          {securityFeatures.map((feature: any) => {
             const Icon = feature.icon;
             return (
               <div key={feature.title} className="bg-card rounded-lg p-lg border">
@@ -114,19 +114,19 @@ export default function SecurityPage() {
             </h2>
             <div className="stack-md">
               <div>
-                <h3 className="text-heading-4">Encryption</h3>
+                <h3>Encryption</h3>
                 <p>All data is encrypted using industry-standard AES-256 encryption both in transit and at rest.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Data Residency</h3>
+                <h3>Data Residency</h3>
                 <p>Your data is stored in secure, geographically distributed data centers with strict access controls.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Backup & Recovery</h3>
+                <h3>Backup & Recovery</h3>
                 <p>Automated daily backups with point-in-time recovery and disaster recovery procedures.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Data Retention</h3>
+                <h3>Data Retention</h3>
                 <p>Clear data retention policies with secure deletion procedures when data is no longer needed.</p>
               </div>
             </div>

@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Button, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
@@ -104,7 +105,7 @@ export default function PerformanceReviewsClient() {
   const renderStars = (rating: number) => {
     return (
       <div className="flex gap-xs">
-        {[1, 2, 3, 4, 5].map((star) => (
+        {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
             className={`w-5 h-5 ${
@@ -153,7 +154,7 @@ export default function PerformanceReviewsClient() {
       <div className="stack-lg">
         <div className="flex justify-between items-center">
           <div>
-            <h2 className="text-heading-3 text-heading-3">Performance Review</h2>
+            <h2 className="text-heading-3">Performance Review</h2>
             <p className="color-muted">{selectedReview.review_period}</p>
           </div>
           <Button variant="outline" onClick={() => setSelectedReview(null)}>
@@ -164,14 +165,14 @@ export default function PerformanceReviewsClient() {
         {/* Overall Rating */}
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">Overall Performance</h3>
+            <h3 className="text-body text-heading-4">Overall Performance</h3>
           </CardHeader>
           <CardContent>
             <div className="flex items-center justify-between">
               <div>
                 <div className="flex items-center gap-sm mb-sm">
                   {renderStars(selectedReview.overall_rating)}
-                  <span className="text-heading-3 text-heading-3">{selectedReview.overall_rating}/5</span>
+                  <span className="text-heading-3">{selectedReview.overall_rating}/5</span>
                 </div>
                 <p className="text-body-sm color-muted">
                   Reviewed by {selectedReview.reviewer_name} ({selectedReview.reviewer_role})
@@ -212,7 +213,7 @@ export default function PerformanceReviewsClient() {
         {/* Areas for Improvement */}
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">Areas for Improvement</h3>
+            <h3 className="text-body text-heading-4">Areas for Improvement</h3>
           </CardHeader>
           <CardContent>
             <ul className="stack-sm">
@@ -229,7 +230,7 @@ export default function PerformanceReviewsClient() {
         {/* Goals */}
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">Goals</h3>
+            <h3 className="text-body text-heading-4">Goals</h3>
           </CardHeader>
           <CardContent>
             <div className="stack-md">
@@ -237,7 +238,7 @@ export default function PerformanceReviewsClient() {
                 <div key={index} className="border-l-4 border-primary pl-md">
                   <div className="flex justify-between items-start mb-sm">
                     <div>
-                      <h4 className="text-heading-4">{goal.title}</h4>
+                      <h4 className="text-body text-heading-4">{goal.title}</h4>
                       <p className="text-body-sm color-muted">{goal.description}</p>
                     </div>
                     <Badge variant={getStatusColor(goal.status)}>
@@ -278,7 +279,7 @@ export default function PerformanceReviewsClient() {
               {selectedReview.achievements.map((achievement, index) => (
                 <div key={index} className="flex justify-between items-start p-sm bg-secondary rounded-lg">
                   <div>
-                    <h4 className="text-heading-4">{achievement.title}</h4>
+                    <h4 className="text-body text-heading-4">{achievement.title}</h4>
                     <p className="text-body-sm color-muted">{achievement.description}</p>
                     <p className="text-body-sm color-muted mt-xs">
                       {new Date(achievement.date).toLocaleDateString()}
@@ -296,7 +297,7 @@ export default function PerformanceReviewsClient() {
         {/* Feedback */}
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">Additional Feedback</h3>
+            <h3 className="text-body text-heading-4">Additional Feedback</h3>
           </CardHeader>
           <CardContent>
             <p className="color-muted">{selectedReview.feedback}</p>
@@ -309,7 +310,7 @@ export default function PerformanceReviewsClient() {
   return (
     <div className="stack-lg">
       <div>
-        <h2 className="text-heading-3 text-heading-3">Performance Reviews</h2>
+        <h2 className="text-heading-3">Performance Reviews</h2>
         <p className="color-muted">View your performance evaluations and feedback</p>
       </div>
 
@@ -322,7 +323,7 @@ export default function PerformanceReviewsClient() {
         </Card>
       ) : (
         <div className="stack-md">
-          {reviews.map((review) => (
+          {reviews.map((review: any) => (
             <Card
               key={review.id}
               className="cursor-pointer hover:shadow-floating transition-shadow"
@@ -339,7 +340,7 @@ export default function PerformanceReviewsClient() {
                     </div>
                     <div className="flex items-center gap-md mb-sm">
                       {renderStars(review.overall_rating)}
-                      <span className="text-heading-4">{review.overall_rating}/5</span>
+                      <span className="text-body-sm">{review.overall_rating}/5</span>
                     </div>
                     <p className="text-body-sm color-muted">
                       Reviewed by {review.reviewer_name} • {new Date(review.review_date).toLocaleDateString()}

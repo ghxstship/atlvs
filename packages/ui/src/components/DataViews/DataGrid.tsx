@@ -2,9 +2,9 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Checkbox } from '../Checkbox';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
+import { Checkbox } from '../atomic/Checkbox';
 import { 
   ChevronUp, 
   ChevronDown, 
@@ -15,7 +15,7 @@ import {
   Download,
   Upload
 } from 'lucide-react';
-import { FieldConfig, DataRecord, SortConfig } from './types';
+import { SortConfig } from './types';
 
 interface DataGridProps {
   className?: string;
@@ -194,29 +194,29 @@ export function DataGrid({
             <Input
               placeholder="Search records..."
               value={state.search}
-              onChange={(e) => actions.setSearch(e.target.value)}
+              onChange={(e: any) => actions.setSearch(e.target.value)}
               className="pl-2xl w-64"
             />
           </div>
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Filter className="h-4 w-4" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Settings className="h-4 w-4" />
             Columns
           </Button>
           {config.exportConfig && (
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Download className="h-4 w-4" />
               Export
             </Button>
           )}
           {config.importConfig && (
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Upload className="h-4 w-4" />
               Import
             </Button>
@@ -237,7 +237,7 @@ export function DataGrid({
                   aria-label="Select all rows"
                 />
               </th>
-              {visibleFields.map((field) => (
+              {visibleFields.map((field: any) => (
                 <th
                   key={field.key}
                   className="px-md py-sm text-left text-xs font-medium text-muted-foreground uppercase tracking-wider cursor-pointer hover:bg-muted/50"
@@ -254,7 +254,7 @@ export function DataGrid({
             </tr>
           </thead>
           <tbody className="bg-background divide-y divide-border">
-            {paginatedData.map((record) => (
+            {paginatedData.map((record: any) => (
               <tr
                 key={record.id}
                 className={`
@@ -266,7 +266,7 @@ export function DataGrid({
                 <td className="px-md py-sm">
                   <Checkbox
                     checked={state.selection.includes(record.id)}
-                    onClick={(e) => {
+                    onClick={(e: any) => {
                       e.stopPropagation();
                       const isSelected = state.selection.includes(record.id);
                       if (isSelected) {
@@ -278,7 +278,7 @@ export function DataGrid({
                     aria-label={`Select row ${record.id}`}
                   />
                 </td>
-                {visibleFields.map((field) => (
+                {visibleFields.map((field: any) => (
                   <td
                     key={field.key}
                     className="px-md py-sm text-sm text-foreground"
@@ -289,8 +289,8 @@ export function DataGrid({
                 <td className="px-md py-sm">
                   <Button
                     variant="ghost"
-                    size="sm"
-                    onClick={(e) => {
+                    
+                    onClick={(e: any) => {
                       e.stopPropagation();
                       // Show row actions menu
                     }}
@@ -315,7 +315,7 @@ export function DataGrid({
         <div className="flex items-center gap-sm">
           <Button
             variant="ghost"
-            size="sm"
+            
             disabled={state.pagination.page === 1}
             onClick={() => actions.setPagination({
               ...state.pagination,
@@ -331,7 +331,7 @@ export function DataGrid({
           
           <Button
             variant="ghost"
-            size="sm"
+            
             disabled={state.pagination.page >= Math.ceil(processedData.length / state.pagination.pageSize)}
             onClick={() => actions.setPagination({
               ...state.pagination,

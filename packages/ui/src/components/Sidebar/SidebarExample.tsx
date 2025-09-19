@@ -59,7 +59,7 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
               <SidebarPersonalization
                 userId={userId}
                 navigationData={[]}
-                onInsightApplied={(insight) => {
+                onInsightApplied={(insight: any) => {
                   console.log('Applied insight:', insight);
                 }}
               />

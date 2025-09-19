@@ -2,9 +2,9 @@
 
 import React, { useState, useCallback, useEffect } from 'react';
 import { Drawer } from '../Drawer';
-import { Button } from '../Button';
-import { Input } from '../Input';
-import { Textarea } from '../Textarea';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
+import { Textarea } from '../atomic/Textarea';
 import { Select } from '../Select';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '../Tabs';
 import { Badge } from '../Badge';
@@ -36,8 +36,6 @@ import {
   Eye,
   Clock
 } from 'lucide-react';
-import { DataRecord, FieldConfig } from './types';
-
 interface UniversalDrawerProps {
   open: boolean;
   onClose: () => void;
@@ -272,7 +270,7 @@ export function UniversalDrawer({
               type="checkbox"
               checked={Boolean(value)}
               disabled={isReadonly}
-              onChange={(e) => handleFieldChange(field.key, e.target.checked)}
+              onChange={(e: any) => handleFieldChange(field.key, e.target.checked)}
               className="rounded"
             />
             <label className="text-sm font-medium">{field.label}</label>
@@ -286,7 +284,7 @@ export function UniversalDrawer({
             {...commonProps}
             type="date"
             value={value ? new Date(value).toISOString().split('T')[0] : ''}
-            onChange={(e) => handleFieldChange(field.key, e.target.value)}
+            onChange={(e: any) => handleFieldChange(field.key, e.target.value)}
           />
         );
       
@@ -296,7 +294,7 @@ export function UniversalDrawer({
             key={field.key}
             {...commonProps}
             type="number"
-            onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
+            onChange={(e: any) => handleFieldChange(field.key, Number(e.target.value))}
           />
         );
       
@@ -308,7 +306,7 @@ export function UniversalDrawer({
             type="number"
             step="0.01"
             prefix="$"
-            onChange={(e) => handleFieldChange(field.key, Number(e.target.value))}
+            onChange={(e: any) => handleFieldChange(field.key, Number(e.target.value))}
           />
         );
       
@@ -392,16 +390,16 @@ export function UniversalDrawer({
                 <Textarea
                   placeholder="Add a comment..."
                   value={newComment}
-                  onChange={(e) => setNewComment(e.target.value)}
+                  onChange={(e: any) => setNewComment(e.target.value)}
                   rows={2}
                   className="flex-1"
                 />
                 <Button
                   onClick={handleAddComment}
                   disabled={!newComment.trim() || addingComment}
-                  size="sm"
+                  
                 >
-                  {addingComment ? <Loader size="xs" /> : <Send className="h-4 w-4" />}
+                  {addingComment ? <Loader  /> : <Send className="h-4 w-4" />}
                 </Button>
               </div>
             )}
@@ -524,7 +522,7 @@ export function UniversalDrawer({
           <div className="space-y-md">
             <div className="flex items-center justify-between">
               <h4 className="font-medium">Automated Workflows</h4>
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" >
                 <Settings className="h-4 w-4" />
                 Configure
               </Button>
@@ -540,7 +538,7 @@ export function UniversalDrawer({
                     </div>
                     <Button
                       variant="ghost"
-                      size="sm"
+                      
                       onClick={() => {
                         // Toggle workflow
                         console.log('Toggle workflow:', workflow.id);
@@ -551,7 +549,7 @@ export function UniversalDrawer({
                   </div>
                   <p className="text-xs text-muted-foreground mb-sm">{workflow.description}</p>
                   <div className="flex items-center gap-sm text-xs">
-                    <Badge variant="outline" size="sm">
+                    <Badge variant="outline" >
                       {workflow.trigger.replace('_', ' ')}
                     </Badge>
                     <span className="text-muted-foreground">
@@ -582,12 +580,12 @@ export function UniversalDrawer({
                 </p>
                 <Button
                   variant="outline"
-                  size="sm"
+                  
                   onClick={() => {
                     const input = document.createElement('input');
                     input.type = 'file';
                     input.multiple = true;
-                    input.onchange = (e) => {
+                    input.onchange = (e: any) => {
                       const files = (e.target as HTMLInputElement).files;
                       if (files) {
                         Array.from(files).forEach(file => {
@@ -632,7 +630,7 @@ export function UniversalDrawer({
                   <div className="flex items-center gap-xs">
                     <Button
                       variant="ghost"
-                      size="sm"
+                      
                       onClick={() => window.open(attachment.url, '_blank')}
                     >
                       <Download className="h-3 w-3" />
@@ -640,7 +638,7 @@ export function UniversalDrawer({
                     {onDeleteAttachment && (
                       <Button
                         variant="ghost"
-                        size="sm"
+                        
                         onClick={() => onDeleteAttachment(attachment.id)}
                       >
                         <Trash2 className="h-3 w-3" />
@@ -672,7 +670,7 @@ export function UniversalDrawer({
           <div className="space-y-md">
             <div className="flex items-center justify-between">
               <h4 className="font-medium">Collaborators</h4>
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" >
                 <User className="h-4 w-4" />
                 Invite
               </Button>
@@ -703,7 +701,7 @@ export function UniversalDrawer({
                     <div className="flex items-center gap-sm">
                       <span className="text-sm font-medium">{collaborator.name}</span>
                       {currentUser?.id === collaborator.id && (
-                        <Badge variant="outline" size="sm">You</Badge>
+                        <Badge variant="outline" >You</Badge>
                       )}
                     </div>
                     <div className="flex items-center gap-xs text-xs text-muted-foreground">
@@ -721,7 +719,7 @@ export function UniversalDrawer({
                     </div>
                   </div>
                   
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" >
                     <Eye className="h-3 w-3" />
                   </Button>
                 </div>
@@ -800,7 +798,7 @@ export function UniversalDrawer({
                   <Button
                     key={action.key}
                     variant={action.variant === 'secondary' ? 'outline' : (action.variant || 'ghost')}
-                    size="sm"
+                    
                     onClick={() => record && action.onClick(record)}
                   >
                     {action.icon}
@@ -811,7 +809,7 @@ export function UniversalDrawer({
                 {record && onDuplicate && (
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => onDuplicate(record)}
                   >
                     <Copy className="h-4 w-4" />
@@ -824,7 +822,7 @@ export function UniversalDrawer({
                 {record && onDelete && (
                   <Button
                     variant="destructive"
-                    size="sm"
+                    
                     onClick={() => onDelete(record.id)}
                   >
                     <Trash2 className="h-4 w-4" />
@@ -834,7 +832,7 @@ export function UniversalDrawer({
                 
                 <Button
                   variant="ghost"
-                  size="sm"
+                  
                   onClick={onClose}
                 >
                   Cancel
@@ -842,12 +840,12 @@ export function UniversalDrawer({
                 
                 {(mode === 'edit' || mode === 'create') && onSave && (
                   <Button
-                    variant="primary"
-                    size="sm"
+                    variant="default"
+                    
                     onClick={handleSave}
                     disabled={saving}
                   >
-                    {saving ? <Loader size="xs" /> : <Save className="h-4 w-4" />}
+                    {saving ? <Loader  /> : <Save className="h-4 w-4" />}
                     {saving ? 'Saving...' : 'Save'}
                   </Button>
                 )}

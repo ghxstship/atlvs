@@ -280,6 +280,58 @@ export const searchInputVariants = cva(
 );
 
 // =============================================================================
+// HEADER VARIANTS
+// =============================================================================
+
+export const headerVariants = cva(
+  [
+    'sticky top-0 w-full border-b z-[var(--nav-z-overlay)]',
+    'transition-all duration-[var(--nav-duration-normal)] ease-[var(--nav-easing-ease-out)]',
+  ],
+  {
+    variants: {
+      variant: {
+        default: [
+          'bg-[hsl(var(--nav-bg-primary))] border-[hsl(var(--nav-border-default))]',
+        ],
+        glass: [
+          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-lg)]',
+          'border-[hsl(var(--nav-border-subtle))]',
+          'supports-[backdrop-filter]:bg-[hsl(var(--nav-bg-primary)/0.8)]',
+        ],
+        floating: [
+          'mx-sm mt-sm rounded-[var(--nav-radius-lg)]',
+          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-md)]',
+          'border shadow-[var(--nav-shadow-md)]',
+        ],
+        minimal: [
+          'bg-transparent border-transparent',
+          'backdrop-blur-[var(--nav-backdrop-blur-sm)]',
+        ],
+      },
+      scrolled: {
+        true: [
+          'shadow-[var(--nav-shadow-lg)]',
+          'bg-[hsl(var(--nav-bg-primary)/0.95)]',
+          'backdrop-blur-[var(--nav-backdrop-blur-lg)]',
+        ],
+        false: '',
+      },
+      size: {
+        compact: 'h-12',
+        comfortable: 'h-16',
+        spacious: 'h-20',
+      },
+    },
+    defaultVariants: {
+      variant: 'glass',
+      scrolled: false,
+      size: 'comfortable',
+    },
+  }
+);
+
+// =============================================================================
 // ANIMATION VARIANTS
 // =============================================================================
 
@@ -316,4 +368,5 @@ export type DropdownVariants = VariantProps<typeof dropdownVariants>;
 export type DropdownItemVariants = VariantProps<typeof dropdownItemVariants>;
 export type SearchVariants = VariantProps<typeof searchVariants>;
 export type SearchInputVariants = VariantProps<typeof searchInputVariants>;
+export type HeaderVariants = VariantProps<typeof headerVariants>;
 export type AnimationVariants = VariantProps<typeof animationVariants>;

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -26,7 +27,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
   const [tab, setTab] = useState<'details' | 'edit' | 'comments' | 'activity'>('details');
   const [saving, setSaving] = useState(false);
   const [comments, setComments] = useState<Array<{ id: string; body: string; created_at: string }>>([]);
-  const [activity, setActivity] = useState<Array<{ id: string; action: string; occurred_at: string; meta?: any }>>([]);
+  const [activity, setActivity] = useState<Array<{ id: string; action: string; occurred_at: string; meta? }>>([]);
   const [loadingComments, setLoadingComments] = useState(false);
   const [loadingActivity, setLoadingActivity] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -65,7 +66,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         const res = await fetch(`/api/audit/${orgId}/projects/${openId}`);
         const json = await res.json();
         setActivity(json?.data ?? []);
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Failed to load activity');
       } finally {
         setLoadingActivity(false);
@@ -81,7 +82,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
       setSaving(true);
       setError(null);
       try {
-        const patch: any = {};
+        const patch = {};
         if (info.name === 'name') patch.name = values.name;
         if (info.name === 'status') patch.status = values.status;
         if (info.name === 'starts_at') patch.starts_at = values.starts_at;
@@ -90,7 +91,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         if (typeof window !== 'undefined' && (window as any).posthog) {
           (window as any).posthog.capture('project.updated', { organization_id: orgId, project_id: openId, keys: Object.keys(patch) });
         }
-      } catch (e: any) {
+      } catch (e) {
         setError(e?.message || 'Save failed');
       } finally {
         setSaving(false);
@@ -117,7 +118,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {rows.map((r: any) => (
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-sm">{r.name}</td>
               <td className="border-b p-sm capitalize">{r.status}</td>
@@ -152,19 +153,19 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         )}
 
         {tab === 'edit' && current && (
-          <form className="stack-sm" onSubmit={(e) => e.preventDefault()} aria-live="polite">
+          <form className="stack-sm" onSubmit={(e: any) => e.preventDefault()} aria-live="polite">
             <div className="grid gap-xs">
               <label htmlFor="name" className="form-label">{labels.name}</label>
-              <input id="name" name="name" className="rounded border px-sm py-xs" value={form.getValues('name') || ''} onChange={(e) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
+              <input id="name" name="name" className="rounded border  px-md py-xs" value={form.getValues('name') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('name', e.target.value, { shouldDirty: true })} aria-invalid={!!form.formState.errors.name} />
               {form.formState.errors.name ? <div className="form-error">{String(form.formState.errors.name.message)}</div> : null}
             </div>
             <div className="grid gap-xs">
               <label htmlFor="status" className="form-label">{labels.status}</label>
-              <input id="status" name="status" className="rounded border px-sm py-xs" value={form.getValues('status') || ''} onChange={(e) => form.setValue('status', e.target.value, { shouldDirty: true })} />
+              <input id="status" name="status" className="rounded border  px-md py-xs" value={form.getValues('status') || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('status', e.target.value, { shouldDirty: true })} />
             </div>
             <div className="grid gap-xs">
               <label htmlFor="starts_at" className="form-label">{labels.startsAt}</label>
-              <input id="starts_at" name="starts_at" type="date" className="rounded border px-sm py-xs" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
+              <input id="starts_at" name="starts_at" type="date" className="rounded border  px-md py-xs" value={form.getValues('starts_at')?.slice(0,10) || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('starts_at', e.target.value || null, { shouldDirty: true })} />
             </div>
             <div className="form-helper">{form.formState.isDirty ? 'Unsaved changes will autosave…' : 'All changes saved'}</div>
           </form>
@@ -174,7 +175,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm" aria-label="Add comment">
               <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder="Write a comment…" />
-              <Button variant="primary">Post</Button>
+              <Button variant="default">Post</Button>
             </form>
             {loadingComments ? <div className="text-body-sm color-muted">Loading…</div> : (
               <ul className="stack-sm">

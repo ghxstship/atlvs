@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, cn } from "@ghxstship/ui";
+import { Card, cn } from '@ghxstship/ui';
 import { ReactNode } from 'react'
 
 interface AuthLayoutProps {

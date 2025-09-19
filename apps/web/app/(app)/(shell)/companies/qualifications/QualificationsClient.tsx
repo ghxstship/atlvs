@@ -1,18 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, type DataRecord } from '@ghxstship/ui';
 import { 
   Award,
   Plus,
@@ -445,7 +437,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
         <div className="grid gap-md">
           {currentView === 'grid' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-              {qualifications.map((qualification) => (
+              {qualifications.map((qualification: any) => (
                 <Card key={qualification.id} className="p-md">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">
@@ -467,7 +459,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
             </div>
           ) : (
             <div className="stack-sm">
-              {qualifications.map((qualification) => (
+              {qualifications.map((qualification: any) => (
                 <Card key={qualification.id} className="p-md">
                   <div className="flex items-center justify-between">
                     <div className="flex-1">

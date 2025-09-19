@@ -1,5 +1,6 @@
 'use client';
 
+
 import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { 
   Zap, 
@@ -115,20 +116,20 @@ const categories = [
 
 export function FeatureGrid() {
   return (
-    <section className="py-smxl bg-secondary/20">
-      <div className="container mx-auto px-lg px-md">
+    <section className="py-4xl bg-secondary/20">
+      <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
           <Badge variant="outline" className="mb-sm">
             Platform Features
           </Badge>
-          <h2 className="text-heading-1">
+          <h1 className="text-heading-1">
             EVERYTHING YOU NEED
             <br />
             <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
               IN ONE PLATFORM
             </span>
-          </h2>
+          </h1>
           <p className="text-body color-muted max-w-3xl mx-auto">
             From project inception to final delivery, GHXSTSHIP provides all the tools 
             and features you need to manage complex productions efficiently.
@@ -136,8 +137,8 @@ export function FeatureGrid() {
         </div>
 
         {/* Feature Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-smxl mb-xl">
-          {features.map((feature) => {
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-xl mb-xl">
+          {features.map((feature: any) => {
             const Icon = feature.icon;
             return (
               <Card key={feature.title} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
@@ -168,7 +169,7 @@ export function FeatureGrid() {
         </div>
 
         {/* Feature Highlights */}
-        <div className="grid lg:grid-cols-3 gap-smxl">
+        <div className="grid lg:grid-cols-3 gap-xl">
           {/* Enterprise Ready */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-xl text-center">
@@ -180,15 +181,15 @@ export function FeatureGrid() {
                 Built for scale with enterprise-grade security, compliance, and support.
               </p>
               <div className="stack-xl text-body-sm">
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>SOC 2 Type II Certified</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>99.9% Uptime SLA</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-success rounded-full"></div>
                   <span>24/7 Expert Support</span>
                 </div>
@@ -207,15 +208,15 @@ export function FeatureGrid() {
                 Intelligent automation and insights to optimize your workflows.
               </p>
               <div className="stack-xl text-body-sm">
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Predictive Analytics</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Smart Recommendations</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-warning rounded-full"></div>
                   <span>Automated Workflows</span>
                 </div>
@@ -234,15 +235,15 @@ export function FeatureGrid() {
                 Connect teams worldwide with multi-region infrastructure.
               </p>
               <div className="stack-xl text-body-sm">
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>50+ Countries</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Multi-language Support</span>
                 </div>
-                <div className="flex items-center justify-center gap-smxl">
+                <div className="flex items-center justify-center gap-sm">
                   <div className="w-2 h-2 bg-primary rounded-full"></div>
                   <span>Global CDN</span>
                 </div>

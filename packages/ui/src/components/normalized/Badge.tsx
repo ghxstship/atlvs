@@ -96,7 +96,7 @@ const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
         {removable && (
           <button
             type="button"
-            onClick={(e) => {
+            onClick={(e: any) => {
               e.stopPropagation()
               onRemove?.()
             }}

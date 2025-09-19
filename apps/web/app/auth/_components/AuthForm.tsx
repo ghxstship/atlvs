@@ -1,7 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
-import { Button, Input } from '@ghxstship/ui';
+import { Button, UnifiedInput } from '@ghxstship/ui';
 import { Eye, EyeOff } from 'lucide-react';
 
 interface AuthFormProps {
@@ -72,8 +72,7 @@ export function AuthInput({
         {label}
       </label>
       <div className="relative">
-        <Input
-          id={id}
+        <UnifiedInput           id={id}
           name={name}
           type={showPassword ? 'text' : type}
           autoComplete={autoComplete}
@@ -81,7 +80,7 @@ export function AuthInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-          className="input w-full"
+           className="input w-full"
         />
         {isPassword && onTogglePassword && (
           <button

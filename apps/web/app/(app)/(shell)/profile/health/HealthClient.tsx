@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   Heart, 
   Edit, 
@@ -289,7 +289,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
 
       {/* Filter Tabs */}
       <div className="flex gap-sm flex-wrap">
-        {['all', 'medical', 'vaccination', 'allergy', 'medication', 'condition', 'emergency'].map((type) => (
+        {['all', 'medical', 'vaccination', 'allergy', 'medication', 'condition', 'emergency'].map((type: any) => (
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
@@ -322,7 +322,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
         </Card>
       ) : (
         <div className="stack-md">
-          {filteredRecords.map((record) => {
+          {filteredRecords.map((record: any) => {
             const IconComponent = getRecordTypeIcon(record.record_type);
             const isExpiring = record.expiry_date && 
               new Date(record.expiry_date) <= new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
@@ -336,7 +336,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                         <IconComponent className={`h-5 w-5 text-${getRecordTypeColor(record.record_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="text-heading-4">{record.title}</h3>
+                        <h3 className="text-body text-heading-4">{record.title}</h3>
                         {record.description && (
                           <p className="text-body-sm color-muted">{record.description}</p>
                         )}
@@ -434,8 +434,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
             </Select>
           </div>
 
-          <Input
-            label="Title"
+          <UnifiedInput             label="Title"
             placeholder="Enter record title"
             {...form.register('title')}
            
@@ -450,30 +449,26 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Date Recorded"
+            <UnifiedInput               label="Date Recorded"
               type="date"
               {...form.register('date_recorded')}
              
             />
 
-            <Input
-              label="Expiry Date (Optional)"
+            <UnifiedInput               label="Expiry Date (Optional)"
               type="date"
               {...form.register('expiry_date')}
              
             />
           </div>
 
-          <Input
-            label="Healthcare Provider"
+          <UnifiedInput             label="Healthcare Provider"
             placeholder="Doctor, clinic, or hospital name"
             {...form.register('provider')}
            
           />
 
-          <Input
-            label="Document URL (Optional)"
+          <UnifiedInput             label="Document URL (Optional)"
             placeholder="Link to medical document or report"
             {...form.register('document_url')}
            

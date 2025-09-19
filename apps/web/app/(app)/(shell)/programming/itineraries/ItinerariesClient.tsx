@@ -1,9 +1,10 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Plus, Search, Calendar } from 'lucide-react';
 import { Button } from '@ghxstship/ui';
-import { Input } from '@ghxstship/ui';
+import { UnifiedInput } from '@ghxstship/ui';
 import { Badge } from '@ghxstship/ui';
 import { Drawer } from '@ghxstship/ui';
 import { EmptyState } from '@ghxstship/ui';
@@ -25,7 +26,7 @@ interface Itinerary {
 }
 
 interface ItinerariesClientProps {
-  user: any;
+  user;
   orgId: string;
 }
 
@@ -117,10 +118,9 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
       <div className="flex-1">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
-          <Input
-            placeholder="Search itineraries..."
+          <UnifiedInput             placeholder="Search itineraries..."
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             className="pl-2xl"
           />
         </div>
@@ -135,7 +135,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
         />
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md mt-md">
-          {filteredItineraries.map((itinerary) => (
+          {filteredItineraries.map((itinerary: any) => (
             <div key={itinerary.id} className="p-md border rounded-lg hover:shadow-elevated transition-shadow cursor-pointer">
               <div className="flex items-start justify-between mb-sm">
                 <h3 className="form-label">{itinerary.name}</h3>

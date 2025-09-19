@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@ghxstship/config/eslint'],
+  extends: ['next/core-web-vitals'],
   rules: {
     // Enforce module boundaries - prevent shadow UI components
     'no-restricted-imports': [

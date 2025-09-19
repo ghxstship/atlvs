@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Textarea,
-  Select,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Textarea, Select, Card } from '@ghxstship/ui';
 import { 
   Star,
   Building,
@@ -184,7 +178,7 @@ export default function CreateRatingClient({
   const renderStarRating = () => {
     return (
       <div className="flex items-center gap-xs">
-        {[1, 2, 3, 4, 5].map((star) => (
+        {[1, 2, 3, 4, 5].map((star: any) => (
           <button
             key={star}
             type="button"
@@ -217,7 +211,7 @@ export default function CreateRatingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Star className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Rating Details</h3>
+            <h3 className="text-body text-heading-4">Rating Details</h3>
           </div>
           
           <div className="stack-md">
@@ -227,7 +221,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.companyId}
-                onValueChange={(value) => handleInputChange('companyId', value)}
+                onValueChange={(value: any) => handleInputChange('companyId', value)}
               >
                 <option value="">Select a company</option>
                 {companies.map(company => (
@@ -244,7 +238,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.projectId}
-                onValueChange={(value) => handleInputChange('projectId', value)}
+                onValueChange={(value: any) => handleInputChange('projectId', value)}
               >
                 <option value="">No project association</option>
                 {projects.map(project => (
@@ -261,7 +255,7 @@ export default function CreateRatingClient({
               </label>
               <Select
                 value={formData.category}
-                onValueChange={(value) => handleInputChange('category', value)}
+                onValueChange={(value: any) => handleInputChange('category', value)}
               >
                 {RATING_CATEGORIES.map(category => (
                   <option key={category.value} value={category.value}>
@@ -282,9 +276,8 @@ export default function CreateRatingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Review Title *
               </label>
-              <Input
-                value={formData.title}
-                onChange={(e) => handleInputChange('title', e.target.value)}
+              <UnifiedInput                 value={formData.title}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('title', e.target.value)}
                 placeholder="Brief title for your review"
                 required
               />
@@ -296,7 +289,7 @@ export default function CreateRatingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <MessageSquare className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Review Content</h3>
+            <h3 className="text-body text-heading-4">Review Content</h3>
           </div>
           
           <div className="stack-md">
@@ -306,7 +299,7 @@ export default function CreateRatingClient({
               </label>
               <Textarea
                 value={formData.review}
-                onChange={(e) => handleInputChange('review', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('review', e.target.value)}
                 placeholder="Share your experience working with this company..."
                 rows={5}
               />
@@ -317,7 +310,7 @@ export default function CreateRatingClient({
                 type="checkbox"
                 id="isPublic"
                 checked={formData.isPublic}
-                onChange={(e) => handleInputChange('isPublic', e.target.checked)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('isPublic', e.target.checked)}
                 className="rounded border-border"
               />
               <label htmlFor="isPublic" className="text-body-sm form-label">

@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -215,7 +216,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <label className="block text-body-sm form-label mb-xs">Report Name</label>
                 <input
                   {...register('name')}
-                  className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter report name"
                 />
                 {errors.name && (
@@ -228,7 +229,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <textarea
                   {...register('description')}
                   rows={3}
-                  className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Describe the purpose of this report"
                 />
               </div>
@@ -238,9 +239,9 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <label className="block text-body-sm form-label mb-xs">Report Type</label>
                   <select
                     {...register('type')}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    {REPORT_TYPES.map((type) => (
+                    {REPORT_TYPES.map((type: any) => (
                       <option key={type.value} value={type.value}>
                         {type.label}
                       </option>
@@ -252,9 +253,9 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   <label className="block text-body-sm form-label mb-xs">Data Source</label>
                   <select
                     {...register('dataSource')}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    {DATA_SOURCES.map((source) => (
+                    {DATA_SOURCES.map((source: any) => (
                       <option key={source.value} value={source.value}>
                         {source.label}
                       </option>
@@ -277,12 +278,12 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
             <div className="stack-md">
               <h3 className="text-body-sm form-label">Report Fields</h3>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-sm">
-                {availableFields.map((field) => (
+                {availableFields.map((field: any) => (
                   <label key={field} className="flex items-center cluster-sm p-sm border border-border rounded cursor-pointer hover:bg-secondary/30">
                     <input
                       type="checkbox"
                       checked={selectedFields.includes(field)}
-                      onChange={() => toggleField(field)}
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => toggleField(field)}
                       className="rounded border-border color-primary focus:ring-primary"
                     />
                     <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
@@ -313,10 +314,10 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <div key={index} className="flex items-center cluster-sm p-sm border rounded">
                   <select
                     value={filter.field}
-                    onChange={(e) => updateFilter(index, 'field', e.target.value)}
-                    className="flex-1 px-sm py-xs border rounded text-body-sm"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'field', e.target.value)}
+                    className="flex-1  px-md py-xs border rounded text-body-sm"
                   >
-                    {availableFields.map((field) => (
+                    {availableFields.map((field: any) => (
                       <option key={field} value={field}>
                         {field.replace('_', ' ')}
                       </option>
@@ -325,8 +326,8 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   
                   <select
                     value={filter.operator}
-                    onChange={(e) => updateFilter(index, 'operator', e.target.value)}
-                    className="px-sm py-xs border rounded text-body-sm"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'operator', e.target.value)}
+                    className=" px-md py-xs border rounded text-body-sm"
                   >
                     <option value="equals">Equals</option>
                     <option value="contains">Contains</option>
@@ -336,8 +337,8 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                   
                   <input
                     value={filter.value}
-                    onChange={(e) => updateFilter(index, 'value', e.target.value)}
-                    className="flex-1 px-sm py-xs border rounded text-body-sm"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'value', e.target.value)}
+                    className="flex-1  px-md py-xs border rounded text-body-sm"
                     placeholder="Filter value"
                   />
                   
@@ -371,9 +372,9 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-body-sm form-label mb-xs">Frequency</label>
                       <select
                         {...register('schedule.frequency')}
-                        className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        {FREQUENCIES.map((freq) => (
+                        {FREQUENCIES.map((freq: any) => (
                           <option key={freq.value} value={freq.value}>
                             {freq.label}
                           </option>
@@ -386,7 +387,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       <input
                         {...register('schedule.time')}
                         type="time"
-                        className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
@@ -396,9 +397,9 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-body-sm form-label mb-xs">Day of Week</label>
                       <select
                         {...register('schedule.dayOfWeek', { valueAsNumber: true })}
-                        className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        {DAYS_OF_WEEK.map((day) => (
+                        {DAYS_OF_WEEK.map((day: any) => (
                           <option key={day.value} value={day.value}>
                             {day.label}
                           </option>
@@ -415,7 +416,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                         type="number"
                         min="1"
                         max="31"
-                        className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="1-31"
                       />
                     </div>

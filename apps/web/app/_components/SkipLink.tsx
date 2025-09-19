@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 
 export function SkipLink() {
@@ -24,7 +25,7 @@ export function SkipLink() {
       `}
       onFocus={() => setIsVisible(true)}
       onBlur={() => setIsVisible(false)}
-      onClick={(e) => {
+      onClick={(e: any) => {
         e.preventDefault();
         handleSkip();
       }}

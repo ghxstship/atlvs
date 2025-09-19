@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -231,7 +232,7 @@ export const StaggeredListAnimation: React.FC<StaggeredListAnimationProps> = ({
       }}
       className={className}
     >
-      {children.map((child, index) => (
+      {children && Array.isArray(children) ? children.map((child: React.ReactNode, index: number) => (
         <motion.div
           key={index}
           variants={{
@@ -245,7 +246,7 @@ export const StaggeredListAnimation: React.FC<StaggeredListAnimationProps> = ({
         >
           {child}
         </motion.div>
-      ))}
+      )) : null}
     </motion.div>
   );
 };

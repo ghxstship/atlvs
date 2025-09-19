@@ -142,7 +142,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {contactMethods.map((method) => {
+            {contactMethods.map((method: any) => {
               const Icon = method.icon;
               return (
                 <Card key={method.title} className="hover:shadow-floating transition-shadow">
@@ -190,7 +190,7 @@ export default function ContactPage() {
                         id="firstName"
                         name="firstName"
                         required
-                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     <div>
@@ -202,7 +202,7 @@ export default function ContactPage() {
                         id="lastName"
                         name="lastName"
                         required
-                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
@@ -217,7 +217,7 @@ export default function ContactPage() {
                         id="email"
                         name="email"
                         required
-                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                     <div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                         type="text"
                         id="company"
                         name="company"
-                        className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export default function ContactPage() {
                       id="subject"
                       name="subject"
                       required
-                      className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     >
                       <option value="">Select a subject</option>
                       <option value="sales">Sales Inquiry</option>
@@ -263,7 +263,7 @@ export default function ContactPage() {
                       rows={6}
                       required
                       placeholder="Tell us more about your inquiry..."
-                      className="w-full px-sm py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                      className="w-full  px-md py-sm border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     ></textarea>
                   </div>
 
@@ -303,7 +303,7 @@ export default function ContactPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-xl">
-            {offices.map((office) => (
+            {offices.map((office: any) => (
               <Card key={office.city} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="flex items-center gap-sm mb-lg">

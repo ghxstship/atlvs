@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { Plus, FileText, Clock, CheckCircle, AlertTriangle, DollarSign, Calendar } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -216,7 +217,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
     <div className="stack-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">Contracting Pipeline</h1>
+          <h1 className="text-heading-3 font-anton uppercase">Contracting Pipeline</h1>
           <p className="text-body-sm color-muted">Manage crew contracts and agreements</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
@@ -236,8 +237,8 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Person</label>
                   <select
                     value={formData.personId}
-                    onChange={(e) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, personId: e.target.value }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select person...</option>
@@ -252,8 +253,8 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Project</label>
                   <select
                     value={formData.projectId}
-                    onChange={(e) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectId: e.target.value }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                     required
                   >
                     <option value="">Select project...</option>
@@ -270,8 +271,8 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Contract Type</label>
                   <select
                     value={formData.type}
-                    onChange={(e) => setFormData(prev => ({ ...prev, type: e.target.value as Contract['type'] }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, type: e.target.value as Contract['type'] }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   >
                     {CONTRACT_TYPES.map(type => (
                       <option key={type.id} value={type.id}>
@@ -282,11 +283,10 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Value</label>
-                  <Input
-                    type="number"
+                  <UnifiedInput                     type="number"
                     step="0.01"
                     value={formData.value}
-                    onChange={(e) => setFormData(prev => ({ ...prev, value: e.target.value }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, value: e.target.value }))}
                     placeholder="Contract value"
                   />
                 </div>
@@ -294,8 +294,8 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <label className="block text-body-sm form-label mb-xs">Currency</label>
                   <select
                     value={formData.currency}
-                    onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background"
                   >
                     <option value="USD">USD</option>
                     <option value="EUR">EUR</option>
@@ -306,27 +306,24 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
               <div className="grid grid-cols-2 gap-md">
                 <div>
                   <label className="block text-body-sm form-label mb-xs">Start Date</label>
-                  <Input
-                    type="date"
+                  <UnifiedInput                     type="date"
                     value={formData.startDate}
-                    onChange={(e) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, startDate: e.target.value }))}
                     required
                   />
                 </div>
                 <div>
                   <label className="block text-body-sm form-label mb-xs">End Date</label>
-                  <Input
-                    type="date"
+                  <UnifiedInput                     type="date"
                     value={formData.endDate}
-                    onChange={(e) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, endDate: e.target.value }))}
                   />
                 </div>
               </div>
               <div>
                 <label className="block text-body-sm form-label mb-xs">Notes</label>
-                <Input
-                  value={formData.notes}
-                  onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
+                <UnifiedInput                   value={formData.notes}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
                   placeholder="Additional notes or terms"
                 />
               </div>

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -23,7 +24,7 @@ interface ActivityRecord {
   performed_by: string;
   performed_by_name?: string;
   created_at: string;
-  metadata?: any;
+  metadata?;
 }
 
 export default function ActivityClient({ orgId, userId }: { orgId: string; userId: string }) {
@@ -146,8 +147,8 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
           <h2 className="text-heading-4 text-heading-4">Activity Log</h2>
           <select
             value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            className="px-sm py-xs border rounded-md text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilter(e.target.value)}
+            className=" px-md py-xs border rounded-md text-body-sm"
           >
             <option value="all">All Activities</option>
             <option value="profile_updated">Profile Updates</option>
@@ -183,7 +184,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
                     <div className="flex items-center justify-between mb-sm">
                       <div className="flex items-center gap-sm">
                         <h4 className="form-label">{activity.activity_description}</h4>
-                        <Badge variant="secondary" className="text-body-sm">
+                        <Badge variant="secondary">
                           {formatActivityType(activity.activity_type)}
                         </Badge>
                       </div>

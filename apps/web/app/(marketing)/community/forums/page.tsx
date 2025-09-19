@@ -58,7 +58,7 @@ export default function ForumsPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-lg mb-3xl">
-          {forumCategories.map((category) => {
+          {forumCategories.map((category: any) => {
             const Icon = category.icon;
             return (
               <div key={category.title} className="bg-card rounded-lg p-lg border hover:shadow-floating transition-shadow">

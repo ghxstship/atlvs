@@ -1,10 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Card, Button, Badge, Input, Textarea, Select, SelectContent, 
-  SelectItem, SelectTrigger, SelectValue, Drawer 
-} from '@ghxstship/ui';
+import { Card, CardContent, Button, Badge, UnifiedInput, Textarea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue, Drawer } from '@ghxstship/ui';
 import { 
   Plus, Edit, Trash2, Eye, Send, Calendar, DollarSign, 
   MapPin, Users, Clock, Paperclip, Tag, Filter, Search,
@@ -152,7 +149,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
     }
   }
 
-  function openProjectDrawer(project?: any) {
+  function openProjectDrawer(project?) {
     if (project) {
       setSelectedProject(project);
       reset(project);
@@ -186,7 +183,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
     return matchesStatus && matchesSearch;
   });
 
-  const ProjectCard = ({ project }: { project: any }) => (
+  const ProjectCard = ({ project }: { project }) => (
     <Card className="p-lg hover:shadow-floating transition-shadow">
       <div className="flex justify-between items-start mb-md">
         <div>
@@ -264,7 +261,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       {/* Header */}
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Project Postings</h2>
+          <h2 className="text-heading-3">Project Postings</h2>
           <p className="color-muted">Manage your project briefs and proposals</p>
         </div>
         <Button onClick={() => openProjectDrawer()}>
@@ -279,10 +276,9 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           <div className="flex-1">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
-              <Input
-                placeholder="Search projects..."
+              <UnifiedInput                 placeholder="Search projects..."
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                 className="pl-2xl"
               />
             </div>
@@ -347,7 +343,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center gap-sm">
-                      <h3 className="text-heading-4">{project.title}</h3>
+                      <h3 className="text-body text-heading-4">{project.title}</h3>
                       <Badge variant={
                         project.status === 'open' ? 'success' : 
                         project.status === 'in_progress' ? 'warning' : 
@@ -400,7 +396,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
         <form onSubmit={handleSubmit(onSubmit)} className="p-lg stack-md">
           <div>
             <label className="text-body-sm form-label">Project Title</label>
-            <Input 
+            <UnifiedInput 
               {...register('title')} 
               placeholder="e.g., Stage Design for Music Festival"
             />
@@ -413,7 +409,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             <label className="text-body-sm form-label">Category</label>
             <Select 
               value={watch('category')} 
-              onValueChange={(value) => setValue('category', value)}
+              onValueChange={(value: any) => setValue('category', value)}
             >
               <SelectTrigger>
                 <SelectValue placeholder="Select category" />
@@ -458,7 +454,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               <label className="text-body-sm form-label">Budget Type</label>
               <Select 
                 value={watch('budget_type')} 
-                onValueChange={(value) => setValue('budget_type', value as any)}
+                onValueChange={(value: any) => setValue('budget_type', value as any)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select budget type" />
@@ -475,7 +471,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               <label className="text-body-sm form-label">Experience Level</label>
               <Select 
                 value={watch('experience_level')} 
-                onValueChange={(value) => setValue('experience_level', value as any)}
+                onValueChange={(value: any) => setValue('experience_level', value as any)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select level" />
@@ -495,7 +491,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                 <label className="text-body-sm form-label">
                   {watch('budget_type') === 'hourly' ? 'Min Rate' : 'Min Budget'}
                 </label>
-                <Input 
+                <UnifiedInput 
                   {...register('budget_min', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="0"
@@ -505,7 +501,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                 <label className="text-body-sm form-label">
                   {watch('budget_type') === 'hourly' ? 'Max Rate' : 'Max Budget'}
                 </label>
-                <Input 
+                <UnifiedInput 
                   {...register('budget_max', { valueAsNumber: true })} 
                   type="number" 
                   placeholder="0"

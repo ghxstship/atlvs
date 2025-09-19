@@ -208,7 +208,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       notificationsSent: publishData.notifyContractors ? contractorIds.length : 0
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('RFP publish error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

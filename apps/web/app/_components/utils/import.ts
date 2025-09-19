@@ -11,7 +11,7 @@ export const handleImport = (
   const file = files[0];
   const reader = new FileReader();
   
-  reader.onload = (e) => {
+  reader.onload = (e: any) => {
     try {
       const content = e.target?.result as string;
       let importedData: any[];
@@ -48,7 +48,7 @@ const parseCSV = (content: string): any[] => {
   const headers = lines[0].split(',').map(h => h.trim());
   const data = lines.slice(1).map(line => {
     const values = line.split(',').map(v => v.trim());
-    const obj: any = {};
+    const obj = {};
     headers.forEach((header, index) => {
       obj[header] = values[index] || '';
     });

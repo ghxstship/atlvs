@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, Shield, Users } from 'lucide-react';
 
@@ -156,18 +157,17 @@ export default function RolesClient({ orgId }: RolesClientProps) {
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
+                <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
               
               <select
                 value={selectedDepartment}
-                onChange={(e) => setSelectedDepartment(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedDepartment(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="" className="color-muted">All Departments</option>
                 {departments.map(dept => (
@@ -177,8 +177,8 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
               <select
                 value={selectedLevel}
-                onChange={(e) => setSelectedLevel(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedLevel(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="" className="color-muted">All Levels</option>
                 <option value="entry">{t('entry')}</option>
@@ -200,20 +200,18 @@ export default function RolesClient({ orgId }: RolesClientProps) {
             <div className="border border-border rounded-lg p-md bg-secondary/50">
               <h3 className="text-body form-label color-foreground mb-sm">No roles found</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                <Input
-                  placeholder={t('roleName')}
+                <UnifiedInput                   placeholder={t('roleName')}
                   value={newRole.name}
-                  onChange={(e) => setNewRole({...newRole, name: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, name: e.target.value})}
                 />
-                <Input
-                  placeholder={t('department')}
+                <UnifiedInput                   placeholder={t('department')}
                   value={newRole.department}
-                  onChange={(e) => setNewRole({...newRole, department: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, department: e.target.value})}
                 />
                 <select
                   value={newRole.level}
-                  onChange={(e) => setNewRole({...newRole, level: e.target.value as any})}
-                  className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, level: e.target.value as any})}
+                  className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                 >
                   <option value="">{t('selectLevel')}</option>
                   <option value="entry">{t('entry')}</option>
@@ -227,7 +225,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                   <textarea
                     placeholder={t('description')}
                     value={newRole.description}
-                    onChange={(e) => setNewRole({...newRole, description: e.target.value})}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRole({...newRole, description: e.target.value})}
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     rows={2}
                   />
@@ -252,7 +250,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
 
           {/* Roles Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {filteredRoles.map((role) => (
+            {filteredRoles.map((role: any) => (
               <div
                 key={role.id}
                 className="border border-border rounded-lg p-md hover:shadow-elevated transition-shadow"
@@ -276,7 +274,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 <div className="stack-sm mb-sm">
                   {role.level && (
                     <div className="flex items-center justify-between">
-                      <span className="text-body-sm px-sm py-xs bg-secondary color-muted rounded">{role.level}</span>
+                      <span className="text-body-sm  px-md py-xs bg-secondary color-muted rounded">{role.level}</span>
                       <Badge className={getLevelColor(role.level)}>
                         {getLevelIcon(role.level)} {role.level}
                       </Badge>
@@ -298,7 +296,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                 )}
 
                 {role.permissions && role.permissions.length > 0 && (
-                  <div className="stack-xs">
+                  <div className="stack-md">
                     <h4 className="text-body-sm form-label color-foreground flex items-center">
                       <Users className="h-3 w-3 mr-xs" />
                       {t('permissions')} ({role.permissions.length})

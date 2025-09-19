@@ -231,7 +231,7 @@ export default function PressPage() {
                   <div className="flex items-start justify-between gap-md">
                     <div className="flex-1">
                       <div className="flex items-center gap-sm mb-sm">
-                        <Badge variant="outline" className="text-body-sm">
+                        <Badge variant="outline">
                           {release.category}
                         </Badge>
                         <div className="flex items-center gap-sm text-body-sm color-muted">
@@ -283,7 +283,7 @@ export default function PressPage() {
               <Card key={index} className="hover:shadow-floating transition-shadow group">
                 <CardContent className="p-lg">
                   <div className="flex items-start justify-between gap-md mb-md">
-                    <Badge variant="outline" className="text-body-sm">
+                    <Badge variant="outline">
                       {article.publication}
                     </Badge>
                     <div className="flex items-center gap-sm text-body-sm color-muted">
@@ -312,7 +312,7 @@ export default function PressPage() {
           </div>
 
           <div className="text-center mt-2xl">
-            <Button variant="primary">
+            <Button variant="default">
               View All Coverage
             </Button>
           </div>
@@ -374,7 +374,7 @@ export default function PressPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {mediaKit.map((kit) => (
+            {mediaKit.map((kit: any) => (
               <Card key={kit.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>
@@ -383,7 +383,7 @@ export default function PressPage() {
                   <p className="color-muted mb-md">{kit.description}</p>
                   
                   <div className="stack-sm mb-lg">
-                    {kit.items.map((item) => (
+                    {kit.items.map((item: any) => (
                       <div key={item} className="flex items-center gap-sm">
                         <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
                         <span className="text-body-sm color-foreground">{item}</span>
@@ -502,8 +502,8 @@ export default function PressPage() {
               { title: 'About Us', href: '/company/about', description: 'Our mission, vision, and story' },
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
-            ].map((link) => (
-              <a key={link.title} href={link.href as any}>
+            ].map((link: any) => (
+              <a key={link.title} href="#">
                 <Card className="hover:shadow-floating transition-shadow group">
                   <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase group-hover:text-foreground transition-colors`}>

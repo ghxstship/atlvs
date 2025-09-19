@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -87,7 +88,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create rider');
     } finally {
       setLoading(false);
@@ -125,11 +126,11 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="event_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('event_id')}
             >
               <option value="">Select an event</option>
-              {events.map((event) => (
+              {events.map((event: any) => (
                 <option key={event.id} value={event.id}>
                   {event.name}
                 </option>
@@ -149,7 +150,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             <input
               id="title"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter rider title..."
               {...form.register('title')}
             />
@@ -167,7 +168,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="type"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('type')}
               >
                 <option value="technical">Technical</option>
@@ -182,7 +183,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="priority"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('priority')}
               >
                 <option value="low">Low</option>
@@ -199,7 +200,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="status"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('status')}
             >
               <option value="draft">Draft</option>
@@ -216,7 +217,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             <textarea
               id="requirements"
               rows={4}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="List specific requirements..."
               {...form.register('requirements')}
             />
@@ -229,7 +230,7 @@ export default function CreateRiderClient({ orgId }: { orgId: string }) {
             <textarea
               id="notes"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Any additional notes or special instructions..."
               {...form.register('notes')}
             />

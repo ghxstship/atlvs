@@ -1,21 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  Input,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer, UnifiedInput, type DataRecord } from '@ghxstship/ui';
 import { 
   Building,
   Search,
@@ -392,10 +381,9 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  placeholder="Search companies..."
+                <UnifiedInput                   placeholder="Search companies..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -405,8 +393,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <Filter className="h-4 w-4 color-foreground/70" />
               <select
                 value={industryFilter}
-                onChange={(e) => setIndustryFilter(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md bg-background color-foreground"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIndustryFilter(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Industries</option>
                 {industries.map(industry => (
@@ -418,8 +406,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               
               <select
                 value={statusFilter}
-                onChange={(e) => setStatusFilter(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md bg-background color-foreground"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Statuses</option>
                 {statuses.map(status => (
@@ -431,8 +419,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               
               <select
                 value={sizeFilter}
-                onChange={(e) => setSizeFilter(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md bg-background color-foreground"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSizeFilter(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md bg-background color-foreground"
               >
                 <option value="all">All Sizes</option>
                 {sizes.map(size => (
@@ -466,7 +454,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
         {/* Company Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {filteredCompanies.map((company) => (
+            {filteredCompanies.map((company: any) => (
               <Card key={company.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewCompany(company)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">
@@ -558,11 +546,11 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
         ) : (
           <Card className="p-lg">
             <div className="stack-md">
-              {companies.map((company) => (
+              {companies.map((company: any) => (
                 <div key={company.id} className="border rounded-lg p-md">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-heading-4">{company.name}</h3>
+                      <h3 className="text-body text-heading-4">{company.name}</h3>
                       <p className="text-body-sm color-muted">{company.industry}</p>
                     </div>
                     <div className="flex items-center gap-sm">

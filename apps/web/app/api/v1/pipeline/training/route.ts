@@ -206,7 +206,7 @@ export async function GET(request: NextRequest) {
     const metrics = {
       totalPrograms: programs?.length || 0,
       activePrograms: programs?.filter((p: any) => p.status === 'active').length || 0,
-      totalEnrollments: programs?.reduce((sum: number, p: any) => sum + (p.enrollments?.[0]?.count || 0), 0) || 0,
+      totalEnrollments: programs?.reduce((sum: number, p) => sum + (p.enrollments?.[0]?.count || 0), 0) || 0,
       completionRate: 0 // Would need additional query to calculate
     };
 
@@ -227,7 +227,7 @@ export async function GET(request: NextRequest) {
       metrics
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Training GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -414,7 +414,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ program }, { status: 201 });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Training POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -541,7 +541,7 @@ export async function PUT(request: NextRequest) {
       return NextResponse.json({ error: 'ID is required' }, { status: 400 });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Training PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -644,7 +644,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Training DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

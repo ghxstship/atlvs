@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect } from 'react';
 
 // Performance monitoring and optimization utilities
@@ -90,7 +91,7 @@ export const PerformanceOptimizations = () => {
     // Performance monitoring
     if ('PerformanceObserver' in window) {
       // Monitor Largest Contentful Paint
-      const lcpObserver = new PerformanceObserver((list) => {
+      const lcpObserver = new PerformanceObserver((list: any) => {
         const entries = list.getEntries();
         const lastEntry = entries[entries.length - 1];
         
@@ -107,7 +108,7 @@ export const PerformanceOptimizations = () => {
       }
 
       // Monitor Cumulative Layout Shift
-      const clsObserver = new PerformanceObserver((list) => {
+      const clsObserver = new PerformanceObserver((list: any) => {
         let clsValue = 0;
         for (const entry of list.getEntries()) {
           if (!(entry as any).hadRecentInput) {
@@ -156,7 +157,7 @@ export const OptimizedImage = ({
   height?: number;
   priority?: boolean;
   className?: string;
-  [key: string]: any;
+  [key: string];
 }) => {
   const imageSrc = priority ? src : undefined;
   const dataSrc = priority ? undefined : src;

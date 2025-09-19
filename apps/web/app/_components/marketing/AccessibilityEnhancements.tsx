@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
 
 // Accessibility enhancement utilities
@@ -63,7 +64,7 @@ export const AccessibilityEnhancements = () => {
         const firstFocusable = focusableElements[0] as HTMLElement;
         const lastFocusable = focusableElements[focusableElements.length - 1] as HTMLElement;
 
-        element.addEventListener('keydown', (e) => {
+        element.addEventListener('keydown', (e: any) => {
           if (e.key === 'Tab') {
             if (e.shiftKey) {
               if (document.activeElement === firstFocusable) {
@@ -106,7 +107,7 @@ export const AccessibilityEnhancements = () => {
     // Keyboard navigation enhancements
     const enhanceKeyboardNavigation = () => {
       // Add keyboard support for custom components
-      document.addEventListener('keydown', (e) => {
+      document.addEventListener('keydown', (e: any) => {
         // Escape key handling
         if (e.key === 'Escape') {
           const openModal = document.querySelector('[role="dialog"][aria-hidden="false"]');
@@ -332,7 +333,7 @@ export const AccessibleButton = ({
   ariaLabel?: string;
   ariaDescribedBy?: string;
   className?: string;
-  [key: string]: any;
+  [key: string];
 }) => {
   return (
     <button

@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { UserPlus, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -193,8 +193,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Task Title *
               </label>
-              <Input
-                {...register('title')}
+              <UnifiedInput                 {...register('title')}
                 placeholder="e.g., Complete Safety Orientation, Setup IT Equipment"
                 error={errors.title?.message}
               />
@@ -207,7 +206,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 </label>
                 <select
                   {...register('category')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="documentation">Documentation</option>
                   <option value="training">Training</option>
@@ -225,7 +224,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 </label>
                 <select
                   {...register('priority')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="low">Low</option>
                   <option value="medium">Medium</option>
@@ -240,8 +239,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Estimated Duration *
                 </label>
-                <Input
-                  {...register('estimatedDuration', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('estimatedDuration', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -255,7 +253,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 </label>
                 <select
                   {...register('durationUnit')}
-                  className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                  className="w-full  px-md py-sm border border-input rounded-md bg-background"
                 >
                   <option value="minutes">Minutes</option>
                   <option value="hours">Hours</option>
@@ -267,8 +265,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <label className="block text-body-sm form-label mb-sm">
                   Order
                 </label>
-                <Input
-                  {...register('order', { valueAsNumber: true })}
+                <UnifiedInput                   {...register('order', { valueAsNumber: true })}
                   type="number"
                   min="1"
                   placeholder="1"
@@ -281,8 +278,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               <label className="block text-body-sm form-label mb-sm">
                 Assignee Role
               </label>
-              <Input
-                {...register('assigneeRole')}
+              <UnifiedInput                 {...register('assigneeRole')}
                 placeholder="e.g., HR Manager, IT Administrator, Direct Supervisor"
               />
             </div>

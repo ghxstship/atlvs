@@ -1,4 +1,4 @@
-import { typography } from '../../lib/typography';
+import { typography, anton } from '../../lib/typography';
 
 interface FooterLink {
   label: string;
@@ -17,13 +17,13 @@ export function FooterSection({ title, links }: FooterSectionProps) {
 
   return (
     <div>
-      <h4 className={`text-foreground font-title mb-sm text-body-sm uppercase tracking-wide`}>
+      <h4 className={`${anton.className} text-foreground mb-sm text-body-sm uppercase tracking-wide font-bold`}>
         {title}
       </h4>
       <div className="flex flex-col">
         {/* Always visible first 4 items */}
         <ul className="stack-xs flex-shrink-0">
-          {visibleLinks.map((link) => (
+          {visibleLinks.map((link: any) => (
             <li key={link.href}>
               <a
                 href={link.href}
@@ -41,7 +41,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
           <div className="mt-xs">
             <div className="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
               <ul className="stack-xs pr-sm">
-                {overflowLinks.map((link) => (
+                {overflowLinks.map((link: any) => (
                   <li key={link.href}>
                     <a
                       href={link.href}

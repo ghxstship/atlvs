@@ -1,17 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Button, 
-  Drawer,
-  Input,
-  Select,
-  Textarea
-} from '@ghxstship/ui';
+import { Button, Drawer, UnifiedInput, Select, Textarea } from '@ghxstship/ui';
 import { Plus, Save, Wrench } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -154,8 +149,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
           <div className="stack-md">
             <div className="stack-sm">
               <label htmlFor="name" className="block text-body-sm form-label color-foreground">Service Name *</label>
-              <Input
-                id="name"
+              <UnifiedInput                 id="name"
                 {...form.register('name')}
                 placeholder="Enter service name"
                 className={form.formState.errors.name ? 'border-destructive' : ''}
@@ -191,8 +185,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
 
               <div className="stack-sm">
                 <label htmlFor="rate" className="block text-body-sm form-label color-foreground">Rate *</label>
-                <Input
-                  id="rate"
+                <UnifiedInput                   id="rate"
                   type="number"
                   step="0.01"
                   {...form.register('rate', { valueAsNumber: true })}
@@ -235,8 +228,7 @@ export default function CreateServiceClient({ orgId, onServiceCreated }: CreateS
 
               <div className="stack-sm">
                 <label htmlFor="supplier" className="block text-body-sm form-label color-foreground">Supplier</label>
-                <Input
-                  id="supplier"
+                <UnifiedInput                   id="supplier"
                   {...form.register('supplier')}
                   placeholder="Enter supplier name"
                 />

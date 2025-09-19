@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
-import { Card, Button, Input, Badge, Drawer } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge, Drawer } from '@ghxstship/ui';
 import { Plus, Search, Filter, Download, Upload, MapPin, Edit, Trash2, Copy, QrCode, Scan, Activity } from 'lucide-react';
 import { createBrowserClient } from '@ghxstship/auth';
 import { useTranslations } from 'next-intl';
@@ -317,10 +318,9 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <div className="flex-1 min-w-64">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
-                <Input
-                  placeholder="Search assets..."
+                <UnifiedInput                   placeholder="Search assets..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
@@ -328,8 +328,8 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <div className="flex items-center gap-sm">
               <select
                 value={selectedStatus}
-                onChange={(e) => setSelectedStatus(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedStatus(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Status</option>
                 <option value="active">Active</option>
@@ -340,8 +340,8 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
               </select>
               <select
                 value={selectedMethod}
-                onChange={(e) => setSelectedMethod(e.target.value)}
-                className="px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedMethod(e.target.value)}
+                className=" px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="all">All Methods</option>
                 <option value="manual">Manual</option>
@@ -485,16 +485,14 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
         <div className="p-lg stack-md">
           <div>
             <label className="block text-body-sm form-label mb-xs">Asset</label>
-            <Input
-              value={selectedTracking?.assetName || ''}
+            <UnifiedInput               value={selectedTracking?.assetName || ''}
               disabled
-              className="bg-secondary"
+               className="bg-secondary"
             />
           </div>
           <div>
             <label className="block text-body-sm form-label mb-xs">Current Location</label>
-            <Input
-              placeholder="Enter new location"
+            <UnifiedInput               placeholder="Enter new location"
               defaultValue={selectedTracking?.currentLocation}
             />
           </div>
@@ -502,7 +500,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
             <label className="block text-body-sm form-label mb-xs">Status</label>
             <select
               defaultValue={selectedTracking?.status}
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
             >
               <option value="active">Active</option>
               <option value="idle">Idle</option>
@@ -514,7 +512,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
           <div>
             <label className="block text-body-sm form-label mb-xs">Notes</label>
             <textarea
-              className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               rows={3}
               placeholder="Update notes"
               defaultValue={selectedTracking?.notes}

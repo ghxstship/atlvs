@@ -2,9 +2,9 @@
 
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Select } from '../Select';
-import { Input } from '../Input';
+import { Input } from '../atomic/Input';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -26,8 +26,6 @@ import {
   Palette,
   Settings
 } from 'lucide-react';
-import { DataRecord } from './types';
-
 interface WhiteboardViewProps {
   className?: string;
   width?: number;
@@ -473,7 +471,7 @@ export function WhiteboardView({
               <Button
                 key={tool}
                 variant={whiteboardState.selectedTool === tool ? 'primary' : 'ghost'}
-                size="sm"
+                
                 onClick={() => selectTool(tool as Tool)}
                 title={label}
                 disabled={readOnly && tool !== 'select' && tool !== 'pan'}
@@ -501,7 +499,7 @@ export function WhiteboardView({
           {/* Stroke Width */}
           <Select
             value={whiteboardState.strokeWidth.toString()}
-            onChange={(e) => setWhiteboardState(prev => ({ ...prev, strokeWidth: Number(e.target.value) }))}
+            onChange={(e: any) => setWhiteboardState(prev => ({ ...prev, strokeWidth: Number(e.target.value) }))}
             disabled={readOnly}
           >
             {STROKE_WIDTHS.map(width => (
@@ -516,7 +514,7 @@ export function WhiteboardView({
           {/* Undo/Redo */}
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={undo}
             disabled={historyIndex <= 0 || readOnly}
           >
@@ -524,7 +522,7 @@ export function WhiteboardView({
           </Button>
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={redo}
             disabled={historyIndex >= history.length - 1 || readOnly}
           >
@@ -534,14 +532,14 @@ export function WhiteboardView({
           {/* Zoom Controls */}
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={() => setWhiteboardState(prev => ({ ...prev, zoom: Math.min(prev.zoom * 1.2, 3) }))}
           >
             <ZoomIn className="h-4 w-4" />
           </Button>
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={() => setWhiteboardState(prev => ({ ...prev, zoom: Math.max(prev.zoom / 1.2, 0.1) }))}
           >
             <ZoomOut className="h-4 w-4" />
@@ -550,7 +548,7 @@ export function WhiteboardView({
           {/* Actions */}
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={exportWhiteboard}
           >
             <Download className="h-4 w-4" />
@@ -560,7 +558,7 @@ export function WhiteboardView({
           {!readOnly && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={clearWhiteboard}
             >
               <Trash2 className="h-4 w-4" />
@@ -588,12 +586,12 @@ export function WhiteboardView({
             <span>Zoom: {Math.round(whiteboardState.zoom * 100)}%</span>
             <span>Tool: {whiteboardState.selectedTool}</span>
             {allowCollaboration && (
-              <Badge variant="secondary" size="sm">
+              <Badge variant="secondary" >
                 Collaborative
               </Badge>
             )}
             {readOnly && (
-              <Badge variant="outline" size="sm">
+              <Badge variant="outline" >
                 Read Only
               </Badge>
             )}

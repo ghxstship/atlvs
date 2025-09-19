@@ -161,7 +161,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ roles: roleStats });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Roles GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -281,7 +281,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ role: newRole }, { status: 201 });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Roles POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -342,7 +342,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ role: updatedRole });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Roles PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -434,7 +434,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Roles DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

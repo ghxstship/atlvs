@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -272,7 +273,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 <label className="block text-body-sm form-label mb-xs">Export Job Name</label>
                 <input
                   {...register('name')}
-                  className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Enter export job name"
                 />
                 {errors.name && (
@@ -285,7 +286,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 <textarea
                   {...register('description')}
                   rows={3}
-                  className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                  className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   placeholder="Describe the purpose of this export"
                 />
               </div>
@@ -298,7 +299,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
               <div>
                 <label className="block text-body-sm form-label mb-sm">Data Source</label>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
-                  {DATA_SOURCES.map((source) => {
+                  {DATA_SOURCES.map((source: any) => {
                     const IconComponent = source.icon;
                     return (
                       <label key={source.value} className="flex items-start cluster-sm p-sm border-border rounded cursor-pointer hover:bg-secondary/50">
@@ -326,9 +327,9 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <label className="block text-body-sm form-label mb-xs">Export Format</label>
                   <select
                     {...register('format')}
-                    className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    {EXPORT_FORMATS.map((format) => (
+                    {EXPORT_FORMATS.map((format: any) => (
                       <option key={format.value} value={format.value}>
                         {format.label} - {format.description}
                       </option>
@@ -343,7 +344,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     type="number"
                     min="1"
                     max="1000000"
-                    className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="No limit"
                   />
                 </div>
@@ -375,12 +376,12 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
               <div className="stack-md">
                 <h3 className="text-body-sm form-label">Export Fields</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-sm">
-                  {availableFields.map((field) => (
+                  {availableFields.map((field: any) => (
                     <label key={field} className="flex items-center cluster-sm p-sm border-border rounded cursor-pointer hover:bg-secondary/50">
                       <input
                         type="checkbox"
                         checked={selectedFields.includes(field)}
-                        onChange={() => toggleField(field)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => toggleField(field)}
                         className="rounded border-border color-primary focus:ring-primary"
                       />
                       <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
@@ -396,9 +397,9 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 <h3 className="text-body-sm form-label">Custom SQL Query</h3>
                 <textarea
                   value={customQuery}
-                  onChange={(e) => setCustomQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCustomQuery(e.target.value)}
                   rows={6}
-                  className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-mono text-body-sm"
+                  className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary font-mono text-body-sm"
                   placeholder="SELECT * FROM projects WHERE status = 'active'"
                 />
                 <p className="text-body-sm color-muted">
@@ -427,10 +428,10 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <div key={index} className="flex items-center cluster-sm p-sm border-border rounded">
                     <select
                       value={filter.field}
-                      onChange={(e) => updateFilter(index, 'field', e.target.value)}
-                      className="flex-1 px-sm py-xs border-border rounded text-body-sm"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'field', e.target.value)}
+                      className="flex-1  px-md py-xs border-border rounded text-body-sm"
                     >
-                      {availableFields.map((field) => (
+                      {availableFields.map((field: any) => (
                         <option key={field} value={field}>
                           {field.replace('_', ' ')}
                         </option>
@@ -439,8 +440,8 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     
                     <select
                       value={filter.operator}
-                      onChange={(e) => updateFilter(index, 'operator', e.target.value)}
-                      className="px-sm py-xs border-border rounded text-body-sm"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'operator', e.target.value)}
+                      className=" px-md py-xs border-border rounded text-body-sm"
                     >
                       <option value="equals">Equals</option>
                       <option value="contains">Contains</option>
@@ -451,8 +452,8 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                     
                     <input
                       value={filter.value}
-                      onChange={(e) => updateFilter(index, 'value', e.target.value)}
-                      className="flex-1 px-sm py-xs border-border rounded text-body-sm"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => updateFilter(index, 'value', e.target.value)}
+                      className="flex-1  px-md py-xs border-border rounded text-body-sm"
                       placeholder="Filter value"
                     />
                     
@@ -487,9 +488,9 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-body-sm form-label mb-xs">Frequency</label>
                       <select
                         {...register('schedule.frequency')}
-                        className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        {FREQUENCIES.map((freq) => (
+                        {FREQUENCIES.map((freq: any) => (
                           <option key={freq.value} value={freq.value}>
                             {freq.label}
                           </option>
@@ -502,7 +503,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                       <input
                         {...register('schedule.time')}
                         type="time"
-                        className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       />
                     </div>
 
@@ -510,9 +511,9 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-body-sm form-label mb-xs">Timezone</label>
                       <select
                         {...register('schedule.timezone')}
-                        className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        {TIMEZONES.map((tz) => (
+                        {TIMEZONES.map((tz: any) => (
                           <option key={tz.value} value={tz.value}>
                             {tz.label}
                           </option>
@@ -526,9 +527,9 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                       <label className="block text-body-sm form-label mb-xs">Day of Week</label>
                       <select
                         {...register('schedule.dayOfWeek', { valueAsNumber: true })}
-                        className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                       >
-                        {DAYS_OF_WEEK.map((day) => (
+                        {DAYS_OF_WEEK.map((day: any) => (
                           <option key={day.value} value={day.value}>
                             {day.label}
                           </option>
@@ -545,7 +546,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                         type="number"
                         min="1"
                         max="31"
-                        className="w-full px-sm py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                        className="w-full  px-md py-sm border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                         placeholder="1-31"
                       />
                     </div>

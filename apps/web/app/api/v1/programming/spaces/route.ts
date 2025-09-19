@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ spaces: spaces || [] });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Spaces API error:', error);
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
@@ -121,7 +121,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ space }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Create space error:', error);
     
     if (error instanceof z.ZodError) {

@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   ThumbsUp, 
   Edit, 
@@ -279,7 +279,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
         </Card>
       ) : (
         <div className="stack-md">
-          {endorsements.map((endorsement) => (
+          {endorsements.map((endorsement: any) => (
             <Card key={endorsement.id}>
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
@@ -288,7 +288,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                       <User className="h-5 w-5 color-primary" />
                     </div>
                     <div>
-                      <h3 className="text-heading-4">{endorsement.endorser_name}</h3>
+                      <h3 className="text-body text-heading-4">{endorsement.endorser_name}</h3>
                       {endorsement.endorser_title && (
                         <p className="text-body-sm color-muted">
                           {endorsement.endorser_title}
@@ -353,23 +353,20 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
         description={editingEndorsement ? 'Update endorsement details' : 'Add a new professional endorsement'}
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-md">
-          <Input
-            label="Endorser Name"
+          <UnifiedInput             label="Endorser Name"
             placeholder="Enter endorser's full name"
             {...form.register('endorser_name')}
            
           />
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Title"
+            <UnifiedInput               label="Title"
               placeholder="Job title"
               {...form.register('endorser_title')}
              
             />
 
-            <Input
-              label="Company"
+            <UnifiedInput               label="Company"
               placeholder="Company name"
               {...form.register('endorser_company')}
              
@@ -387,8 +384,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               <option value="other">Other</option>
             </Select>
 
-            <Input
-              label="Date Received"
+            <UnifiedInput               label="Date Received"
               type="date"
               {...form.register('date_received')}
              
@@ -406,11 +402,10 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
           <div>
             <label className="block text-body-sm form-label mb-sm">Skills Endorsed</label>
             <div className="flex gap-sm mb-sm">
-              <Input
-                placeholder="Add a skill"
+              <UnifiedInput                 placeholder="Add a skill"
                 value={skillInput}
-                onChange={(e) => setSkillInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkillInput(e.target.value)}
+                onKeyPress={(e: any) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
               />
               <Button type="button" onClick={addSkill}>Add</Button>
             </div>

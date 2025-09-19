@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 // import { useOrganization } from '@/hooks/useOrganization';
@@ -9,29 +10,16 @@ const useOrganization = () => ({ organization: { id: 'mock-org-id' } });
 const createClient = () => ({
   from: (table: string) => ({
     select: (fields: string) => ({
-      eq: (field: string, value: any) => ({
-        order: (field: string, options: any) => ({
+      eq: (field: string, value) => ({
+        order: (field: string, options) => ({
           then: () => Promise.resolve({ data: [] })
         })
       })
     })
   })
 });
-import {
-  DataViewProvider,
-  StateManagerProvider,
-  DataGrid,
-  KanbanBoard,
-  CalendarView,
-  ListView,
-  ViewSwitcher,
-  DataActions,
-  Drawer
-} from '@ghxstship/ui';
+import { Drawer } from '@ghxstship/ui';
 import type {
-  FieldConfig,
-  DataViewConfig,
-  DataRecord,
   FilterConfig,
   SortConfig
 } from '@ghxstship/ui/components/DataViews/types';

@@ -24,7 +24,7 @@ export default function Plans() {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Checkout failed');
       if (data?.url) window.location.href = data.url;
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
     } finally {
       setLoading(null);
@@ -44,7 +44,7 @@ export default function Plans() {
       const data = await res.json();
       if (!res.ok) throw new Error(data?.error || 'Checkout failed');
       if (data?.url) window.location.href = data.url;
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Unknown error');
     } finally {
       setLoading(null);
@@ -63,7 +63,7 @@ export default function Plans() {
           <button
             onClick={() => startCheckoutUser(INDIVIDUAL_PRICE)}
             disabled={!INDIVIDUAL_PRICE || loading !== null}
-            className="mt-md rounded-md bg-foreground px-sm py-sm text-body-sm text-background disabled:opacity-50"
+            className="mt-md rounded-md bg-foreground  px-md py-sm text-body-sm text-background disabled:opacity-50"
           >
             {loading === 'user' ? 'Starting...' : 'Choose Individual'}
           </button>
@@ -79,7 +79,7 @@ export default function Plans() {
           <button
             onClick={() => startCheckoutUser(PRO_PRICE)}
             disabled={!PRO_PRICE || loading !== null}
-            className="mt-md rounded-md bg-foreground px-sm py-sm text-body-sm text-background disabled:opacity-50"
+            className="mt-md rounded-md bg-foreground  px-md py-sm text-body-sm text-background disabled:opacity-50"
           >
             {loading === 'user' ? 'Starting...' : 'Choose Pro'}
           </button>
@@ -93,12 +93,12 @@ export default function Plans() {
             <li>All ATLVS features for teams</li>
           </ul>
           <div className="mt-sm flex gap-sm">
-            <input value={orgId} onChange={(e) => setOrgId(e.target.value)} placeholder="organizationId" className="w-full rounded-md border bg-background px-sm py-sm text-body-sm" />
+            <input value={orgId} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setOrgId(e.target.value)} placeholder="organizationId" className="w-full rounded-md border bg-background  px-md py-sm text-body-sm" />
           </div>
           <button
             onClick={() => startCheckoutOrg(TEAM_PRICE)}
             disabled={!TEAM_PRICE || !orgId || loading !== null}
-            className="mt-md rounded-md bg-foreground px-sm py-sm text-body-sm text-background disabled:opacity-50"
+            className="mt-md rounded-md bg-foreground  px-md py-sm text-body-sm text-background disabled:opacity-50"
           >
             {loading === 'org' ? 'Starting...' : 'Choose Team'}
           </button>
@@ -111,7 +111,7 @@ export default function Plans() {
             <li>Custom pricing and onboarding</li>
             <li>GHXSTSHIP professional services</li>
           </ul>
-          <a href={ENTERPRISE_CONTACT_URL} className="mt-md inline-block rounded-md border px-sm py-sm text-body-sm">
+          <a href={ENTERPRISE_CONTACT_URL} className="mt-md inline-block rounded-md border  px-md py-sm text-body-sm">
             Contact Sales
           </a>
         </div>

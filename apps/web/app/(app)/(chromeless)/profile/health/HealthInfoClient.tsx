@@ -1,8 +1,8 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Input, Select, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Heart, Activity, Pill, AlertCircle, Save, Plus, X, Edit2, Trash2 } from 'lucide-react';
 import { useToast } from '@ghxstship/ui';
 
@@ -213,7 +213,7 @@ export default function HealthInfoClient() {
     <div className="stack-lg">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Health Information</h2>
+          <h2 className="text-heading-3">Health Information</h2>
           <p className="color-muted">Manage your medical and health details</p>
         </div>
         {!isEditing && (
@@ -252,17 +252,15 @@ export default function HealthInfoClient() {
               <option value="O-">O-</option>
             </Select>
             </div>
-            <Input
-              label="Height"
+            <UnifiedInput               label="Height"
               value={formData.height || ''}
-              onChange={(e) => setFormData({ ...formData, height: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, height: e.target.value })}
               placeholder="e.g., 5'10&quot; or 178cm"
               disabled={!isEditing}
             />
-            <Input
-              label="Weight"
+            <UnifiedInput               label="Weight"
               value={formData.weight || ''}
-              onChange={(e) => setFormData({ ...formData, weight: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, weight: e.target.value })}
               placeholder="e.g., 165 lbs or 75kg"
               disabled={!isEditing}
             />
@@ -297,11 +295,10 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newAllergy}
-                  onChange={(e) => setNewAllergy(e.target.value)}
+                <UnifiedInput                   value={newAllergy}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewAllergy(e.target.value)}
                   placeholder="Add allergy..."
-                  onKeyPress={(e) => e.key === 'Enter' && addAllergy()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addAllergy()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -326,7 +323,7 @@ export default function HealthInfoClient() {
               <div key={index} className="p-sm bg-secondary rounded-lg">
                 <div className="flex justify-between items-start">
                   <div>
-                    <p className="text-heading-4">{med.name}</p>
+                    <p className="text-body-sm">{med.name}</p>
                     <p className="text-body-sm color-muted">
                       {med.dosage} - {med.frequency}
                     </p>
@@ -349,25 +346,21 @@ export default function HealthInfoClient() {
             {isEditing && (
               <div className="stack-sm p-sm border rounded-lg">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
-                  <Input
-                    placeholder="Medication name"
+                  <UnifiedInput                     placeholder="Medication name"
                     value={newMedication.name}
-                    onChange={(e) => setNewMedication({ ...newMedication, name: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, name: e.target.value })}
                   />
-                  <Input
-                    placeholder="Dosage"
+                  <UnifiedInput                     placeholder="Dosage"
                     value={newMedication.dosage}
-                    onChange={(e) => setNewMedication({ ...newMedication, dosage: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, dosage: e.target.value })}
                   />
-                  <Input
-                    placeholder="Frequency"
+                  <UnifiedInput                     placeholder="Frequency"
                     value={newMedication.frequency}
-                    onChange={(e) => setNewMedication({ ...newMedication, frequency: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, frequency: e.target.value })}
                   />
-                  <Input
-                    placeholder="Reason (optional)"
+                  <UnifiedInput                     placeholder="Reason (optional)"
                     value={newMedication.reason}
-                    onChange={(e) => setNewMedication({ ...newMedication, reason: e.target.value })}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewMedication({ ...newMedication, reason: e.target.value })}
                   />
                 </div>
                 <Button>
@@ -407,11 +400,10 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newCondition}
-                  onChange={(e) => setNewCondition(e.target.value)}
+                <UnifiedInput                   value={newCondition}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCondition(e.target.value)}
                   placeholder="Add medical condition..."
-                  onKeyPress={(e) => e.key === 'Enter' && addCondition()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addCondition()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -425,7 +417,7 @@ export default function HealthInfoClient() {
       {/* Dietary Restrictions */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Dietary Restrictions</h3>
+          <h3 className="text-body text-heading-4">Dietary Restrictions</h3>
         </CardHeader>
         <CardContent>
           <div className="stack-sm">
@@ -446,11 +438,10 @@ export default function HealthInfoClient() {
             </div>
             {isEditing && (
               <div className="flex gap-sm">
-                <Input
-                  value={newRestriction}
-                  onChange={(e) => setNewRestriction(e.target.value)}
+                <UnifiedInput                   value={newRestriction}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewRestriction(e.target.value)}
                   placeholder="Add dietary restriction..."
-                  onKeyPress={(e) => e.key === 'Enter' && addRestriction()}
+                  onKeyPress={(e: any) => e.key === 'Enter' && addRestriction()}
                 />
                 <Button>
                   <Plus className="w-4 h-4" />
@@ -464,33 +455,29 @@ export default function HealthInfoClient() {
       {/* Insurance & Physician Info */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Insurance & Physician</h3>
+          <h3 className="text-body text-heading-4">Insurance & Physician</h3>
         </CardHeader>
         <CardContent>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-            <Input
-              label="Insurance Provider"
+            <UnifiedInput               label="Insurance Provider"
               value={formData.insurance_provider || ''}
-              onChange={(e) => setFormData({ ...formData, insurance_provider: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, insurance_provider: e.target.value })}
               disabled={!isEditing}
             />
-            <Input
-              label="Policy Number"
+            <UnifiedInput               label="Policy Number"
               value={formData.insurance_policy_number || ''}
-              onChange={(e) => setFormData({ ...formData, insurance_policy_number: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, insurance_policy_number: e.target.value })}
               disabled={!isEditing}
             />
-            <Input
-              label="Primary Physician"
+            <UnifiedInput               label="Primary Physician"
               value={formData.physician_name || ''}
-              onChange={(e) => setFormData({ ...formData, physician_name: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, physician_name: e.target.value })}
               disabled={!isEditing}
             />
-            <Input
-              label="Physician Phone"
+            <UnifiedInput               label="Physician Phone"
               type="tel"
               value={formData.physician_phone || ''}
-              onChange={(e) => setFormData({ ...formData, physician_phone: e.target.value })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, physician_phone: e.target.value })}
               disabled={!isEditing}
             />
           </div>
@@ -500,12 +487,12 @@ export default function HealthInfoClient() {
       {/* Emergency Notes */}
       <Card>
         <CardHeader>
-          <h3 className="text-heading-4">Emergency Notes</h3>
+          <h3 className="text-body text-heading-4">Emergency Notes</h3>
         </CardHeader>
         <CardContent>
           <Textarea
             value={formData.emergency_notes || ''}
-            onChange={(e) => setFormData({ ...formData, emergency_notes: e.target.value })}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData({ ...formData, emergency_notes: e.target.value })}
             placeholder="Any additional information for emergency responders..."
             rows={4}
             disabled={!isEditing}

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -23,7 +24,7 @@ interface AnalyticsMetric {
   value: string;
   change: number;
   changeType: 'increase' | 'decrease' | 'neutral';
-  icon: any;
+  icon;
   description: string;
 }
 
@@ -83,7 +84,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
       const totalProjects = projectsData.data?.length || 0;
       const activeProjects = projectsData.data?.filter((p: any) => p.status === 'active').length || 0;
       const totalPeople = peopleData.data?.length || 0;
-      const totalRevenue = financeData.data?.filter((t: any) => t.type === 'income').reduce((sum: number, t: any) => sum + (t.amount || 0), 0) || 0;
+      const totalRevenue = financeData.data?.filter((t: any) => t.type === 'income').reduce((sum: number, t) => sum + (t.amount || 0), 0) || 0;
       const totalEvents = eventsData.data?.length || 0;
 
       const calculatedMetrics: AnalyticsMetric[] = [
@@ -229,7 +230,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
     return (
       <div className="stack-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-          {[1, 2, 3, 4].map((i) => (
+          {[1, 2, 3, 4].map((i: any) => (
             <Card key={i} className="animate-pulse">
               <div className="h-20 bg-secondary rounded"></div>
             </Card>
@@ -254,7 +255,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
     <div className="stack-lg">
       {/* Key Metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
-        {metrics.map((metric) => {
+        {metrics.map((metric: any) => {
           const IconComponent = metric.icon;
           return (
             <Card key={metric.id} className="p-lg">
@@ -292,7 +293,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
         {/* Recent Activity */}
         <Card title="Recent Activity" className="p-lg">
           <div className="stack-md">
-            {recentActivity.map((activity) => (
+            {recentActivity.map((activity: any) => (
               <div key={activity.id} className="flex items-start cluster-sm">
                 <div className="flex-shrink-0">
                   <Activity className="h-4 w-4 color-primary mt-xs" />
@@ -328,9 +329,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
               <div key={performer.id} className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
                   <div className="flex-shrink-0">
-                    <Badge variant="outline" className="text-body-sm">
-                      #{index + 1}
-                    </Badge>
+                    <Badge variant="outline">#{index + 1}</Badge>
                   </div>
                   <div>
                     <div className="text-body-sm form-label color-foreground">

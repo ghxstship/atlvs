@@ -1,21 +1,9 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import {
-  DataViewProvider,
-  StateManagerProvider,
-  DataGrid,
-  KanbanBoard,
-  CalendarView,
-  ListView,
-  ViewSwitcher,
-  DataActions,
-  Drawer,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Drawer, type DataRecord } from '@ghxstship/ui';
 
 // Mock Supabase client for now
 const sb = {
@@ -203,11 +191,11 @@ export default function JobsClient({ orgId }: { orgId: string }) {
       console.log('Search:', query);
       // Implement search logic
     },
-    onFilter: (filters) => {
+    onFilter: (filters: any) => {
       console.log('Filter:', filters);
       // Implement filter logic
     },
-    onSort: (sorts) => {
+    onSort: (sorts: any) => {
       console.log('Sort:', sorts);
       // Implement sort logic
     },
@@ -219,7 +207,7 @@ export default function JobsClient({ orgId }: { orgId: string }) {
       console.log('Export:', format, data);
       // Implement export logic
     },
-    onImport: (importData) => {
+    onImport: (importData: any) => {
       console.log('Import:', importData);
       // Implement import logic
     }

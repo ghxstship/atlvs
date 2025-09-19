@@ -2,7 +2,7 @@
 
 import React, { useState, useCallback, useMemo } from 'react';
 import { Card } from '../Card';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Select } from '../Select';
 import { Badge } from '../Badge';
 import { Loader } from '../Loader';
@@ -24,7 +24,7 @@ import {
   Download,
   Filter
 } from 'lucide-react';
-import { DataRecord, ViewProps, DashboardWidget } from './types';
+import { ViewProps, DashboardWidget } from './types';
 import { useDataView } from './DataViewProvider';
 
 interface DashboardViewProps extends ViewProps {
@@ -230,7 +230,7 @@ export function DashboardView({
           <div className="flex items-center gap-xs">
             <Button
               variant="ghost"
-              size="xs"
+              
               onClick={handleRefresh}
               disabled={refreshing}
             >
@@ -239,7 +239,7 @@ export function DashboardView({
             
             <Button
               variant="ghost"
-              size="xs"
+              
               onClick={() => setExpandedWidget(isExpanded ? null : widget.id)}
             >
               {isExpanded ? <Minimize2 className="h-3 w-3" /> : <Maximize2 className="h-3 w-3" />}
@@ -248,7 +248,7 @@ export function DashboardView({
             {customizable && (
               <Button
                 variant="ghost"
-                size="xs"
+                
                 onClick={() => onWidgetRemove?.(widget.id)}
               >
                 <MoreHorizontal className="h-3 w-3" />
@@ -347,7 +347,7 @@ export function DashboardView({
                           record.status === 'pending' ? 'warning' :
                           record.status === 'inactive' ? 'secondary' : 'default'
                         }
-                        size="sm"
+                        
                       >
                         {record.status}
                       </Badge>
@@ -400,7 +400,7 @@ export function DashboardView({
       <div className="text-center py-2xl">
         <div className="text-destructive mb-sm">Error loading dashboard</div>
         <div className="text-sm text-muted-foreground">{error}</div>
-        <Button variant="ghost" size="sm" onClick={handleRefresh} className="mt-md">
+        <Button variant="ghost"  onClick={handleRefresh} className="mt-md">
           <RefreshCw className="h-4 w-4 mr-sm" />
           Retry
         </Button>
@@ -421,7 +421,7 @@ export function DashboardView({
           {customizable && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => onWidgetAdd?.({
                 id: `widget-${Date.now()}`,
                 type: 'metric',
@@ -438,7 +438,7 @@ export function DashboardView({
           
           <Button
             variant="ghost"
-            size="sm"
+            
             onClick={handleRefresh}
             disabled={refreshing}
           >
@@ -446,7 +446,7 @@ export function DashboardView({
             Refresh
           </Button>
           
-          <Button variant="ghost" size="sm">
+          <Button variant="ghost" >
             <Download className="h-4 w-4 mr-sm" />
             Export
           </Button>

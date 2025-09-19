@@ -118,7 +118,7 @@ class PersistentCache {
         resolve();
       };
       
-      request.onupgradeneeded = (event) => {
+      request.onupgradeneeded = (event: any) => {
         const db = (event.target as IDBOpenDBRequest).result;
         if (!db.objectStoreNames.contains(this.storeName)) {
           const store = db.createObjectStore(this.storeName, { keyPath: 'key' });
@@ -184,7 +184,7 @@ class PersistentCache {
       const index = store.index('timestamp');
       const request = index.openCursor();
       
-      request.onsuccess = (event) => {
+      request.onsuccess = (event: any) => {
         const cursor = (event.target as IDBRequest).result;
         if (cursor) {
           const entry = cursor.value;

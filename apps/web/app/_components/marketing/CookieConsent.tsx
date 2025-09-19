@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Button } from '@ghxstship/ui';
 import { X, Cookie, Settings } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '@ghxstship/ui';
 
 interface CookiePreferences {
   necessary: boolean;

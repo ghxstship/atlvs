@@ -231,7 +231,7 @@ export async function GET(request: NextRequest) {
       lastUpdated: organization.updated_at
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Settings GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -345,7 +345,7 @@ export async function PUT(request: NextRequest) {
       lastUpdated: updatedOrg.updated_at
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Settings PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -373,7 +373,7 @@ export async function DELETE(request: NextRequest) {
       return NextResponse.json({ error: 'Confirmation required to reset settings' }, { status: 400 });
     }
 
-    let updateData: any = {};
+    let updateData = {};
 
     if (category) {
       // Reset specific category
@@ -417,7 +417,7 @@ export async function DELETE(request: NextRequest) {
       message: category ? `${category} settings reset to defaults` : 'All settings reset to defaults'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Settings DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -2,35 +2,28 @@
 // All UI components should be imported directly from @ghxstship/ui
 // This file exists only for backward compatibility during migration
 
-import {
-  // Core components
-  Button,
-  Card,
-  Badge,
-  Input,
-  Textarea,
-  Select,
-  Checkbox,
+import React from 'react';
+import { 
+  Button, 
+  Card, 
+  Badge, 
+  UnifiedInput, 
   Skeleton,
-  Progress,
-  Loader,
-  Alert,
-  EmptyState,
-  
-  // Data views
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  
-  // Layout
-  Container,
-  Stack,
-  Inline,
-  
-  // System utilities
-  getColor,
+  Textarea,
+  Checkbox,
   cn,
-  DESIGN_TOKENS
+  DataGrid,
+  KanbanBoard,
+  ListView,
+  CalendarView,
+  ViewSwitcher,
+  DataActions,
+  DataViewProvider,
+  StateRenderer,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  useStateManager
 } from '@ghxstship/ui';
 
 // Re-export core components
@@ -38,84 +31,74 @@ export {
   Button,
   Card,
   Badge,
-  Input,
-  Textarea,
-  Select,
-  Checkbox,
+  UnifiedInput as Input,
   Skeleton,
+  Textarea,
+  Checkbox,
+  cn,
   DataGrid,
+  KanbanBoard,
+  ListView,
+  CalendarView,
   ViewSwitcher,
-  StateManagerProvider,
-  Container,
-  Stack,
-  Inline,
-  cn
+  DataActions,
+  DataViewProvider,
+  StateRenderer,
+  EmptyState,
+  ErrorState,
+  LoadingState,
+  useStateManager
 };
 
-// Legacy aliases for backward compatibility
-export const LoadingState = Loader;
-export const ErrorState = Alert;
-// ProgressBar component with percentage prop support
+// Legacy container components
+export const Container = ({ children }: { children: React.ReactNode }) => children;
+export const Stack = ({ children }: { children: React.ReactNode }) => children;
+export const Inline = ({ children }: { children: React.ReactNode }) => children;
+
+// Legacy progress components - simplified non-JSX versions
 export const ProgressBar = ({ percentage, ...props }: { percentage?: number; [key: string]: any }) => {
-  return Progress({ value: percentage, ...props });
+  return React.createElement('div', {
+    className: 'w-full bg-muted rounded-full h-2',
+    ...props
+  }, React.createElement('div', {
+    className: 'bg-primary h-2 rounded-full transition-all',
+    style: { width: `${Math.min(100, Math.max(0, percentage || 0))}%` }
+  }));
 };
-// BudgetUtilizationBar component with utilized/total props support
+
 export const BudgetUtilizationBar = ({ utilized, total, ...props }: { utilized?: number; total?: number; [key: string]: any }) => {
   const percentage = total && total > 0 ? (utilized || 0) / total * 100 : 0;
-  return Progress({ value: percentage, ...props });
-};
-// CompletionBar component with percentage prop support
-export const CompletionBar = ({ percentage, ...props }: { percentage?: number; [key: string]: any }) => {
-  return Progress({ value: percentage, ...props });
-};
-// DynamicProgressBar component with percentage prop support
-export const DynamicProgressBar = ({ percentage, ...props }: { percentage?: number; [key: string]: any }) => {
-  return Progress({ value: percentage, ...props });
+  return ProgressBar({ percentage, ...props });
 };
 
-// Design tokens compatibility with legacy structure
+export const CompletionBar = ProgressBar;
+export const DynamicProgressBar = ProgressBar;
+
+// Design tokens
 export const designTokens = {
-  ...DESIGN_TOKENS,
   colors: {
-    ...DESIGN_TOKENS,
     status: {
-      success: 'bg-success',
-      warning: 'bg-warning',
-      error: 'bg-destructive',
-      info: 'bg-primary'
+      success: 'bg-green-500',
+      warning: 'bg-yellow-500',
+      error: 'bg-red-500',
+      info: 'bg-blue-500'
     }
   }
 };
-export const getStatusColor = getColor;
-export const getPriorityColor = getColor;
+
+export const getStatusColor = (status: string) => designTokens.colors.status[status as keyof typeof designTokens.colors.status] || '';
+export const getPriorityColor = getStatusColor;
 
 // Component aliases
 export const TokenizedCard = Card;
 export const PriorityBadge = Badge;
+export const StatusBadge = Badge;
 
-// StatusBadge component with status prop support
-export const StatusBadge = ({ status, ...props }: { status?: string; [key: string]: any }) => {
-  const getVariantFromStatus = (status?: string) => {
-    switch (status) {
-      case 'active': return 'default';
-      case 'draft': return 'secondary';
-      case 'paused': return 'outline';
-      case 'completed': return 'default';
-      case 'pending': return 'secondary';
-      case 'approved': return 'default';
-      case 'rejected': return 'destructive';
-      default: return 'secondary';
-    }
-  };
-  
-  return Badge({ variant: getVariantFromStatus(status), children: status, ...props });
-};
-
-// Animation constants - simplified
+// Animation constants
 export const animations = {
   duration: { fast: '150ms', normal: '300ms', slow: '500ms' },
   easing: { ease: 'ease', easeIn: 'ease-in', easeOut: 'ease-out' },
-  cardInteractive: 'hover:shadow-elevated transition-shadow'
+  cardInteractive: 'hover:shadow-lg transition-shadow'
 };
 export const animationPresets = animations;
 export const combineAnimations = (a: any, b: any) => ({ ...a, ...b });

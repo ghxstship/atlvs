@@ -143,8 +143,8 @@ export async function GET(request: NextRequest) {
 
     // Calculate manning metrics
     const metrics = (manningPlans || []).reduce((acc, plan) => {
-      const totalPositions = (plan as any).positions?.reduce((sum: number, pos: any) => sum + pos.quantity, 0) || 0;
-      const filledPositions = (plan as any).positions?.reduce((sum: number, pos: any) => 
+      const totalPositions = (plan as any).positions?.reduce((sum: number, pos) => sum + pos.quantity, 0) || 0;
+      const filledPositions = (plan as any).positions?.reduce((sum: number, pos) => 
         sum + (pos.assignments?.filter((a: any) => ['assigned', 'confirmed', 'active'].includes(a.status)).length || 0), 0) || 0;
       
       return {
@@ -179,7 +179,7 @@ export async function GET(request: NextRequest) {
       metrics
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Manning GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -353,7 +353,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ manningPlan }, { status: 201 });
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Manning POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -414,7 +414,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ manningPlan });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Manning PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -503,7 +503,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Manning DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

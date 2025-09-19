@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Parse after validation
-    let payload: any = {};
+    let payload = {};
     try {
       payload = JSON.parse(rawBody);
     } catch {
@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ ok: true }, { status: 200 });
-  } catch (e: any) {
+  } catch (e) {
     return NextResponse.json({ error: e?.message ?? 'Internal error' }, { status: 500 });
   }
 }

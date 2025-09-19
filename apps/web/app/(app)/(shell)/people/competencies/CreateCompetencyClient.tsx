@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Award, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -181,8 +181,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               <label className="block text-body-sm form-label mb-sm">
                 Competency Name *
               </label>
-              <Input
-                {...register('name')}
+              <UnifiedInput                 {...register('name')}
                 placeholder="e.g., Lighting Design, Sound Engineering"
                 error={errors.name?.message}
               />
@@ -192,8 +191,7 @@ export default function CreateCompetencyClient({ orgId, onCompetencyCreated }: C
               <label className="block text-body-sm form-label mb-sm">
                 Category
               </label>
-              <Input
-                {...register('category')}
+              <UnifiedInput                 {...register('category')}
                 placeholder="e.g., Technical, Creative, Management"
               />
             </div>

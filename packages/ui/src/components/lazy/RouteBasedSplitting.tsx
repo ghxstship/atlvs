@@ -27,7 +27,7 @@ export const RouteComponents = {
   // Dashboard routes
   Dashboard: createRouteComponent(
     BundleAnalyzer.measureComponentLoad('Dashboard', () => 
-      import('../DataViews/DashboardView')
+      import('../DataViews/DashboardView').then(m => ({ default: m.DashboardView }))
     ),
     ['MonitoringDashboard', 'PerformanceMetrics']
   ),
@@ -54,19 +54,19 @@ export const RouteComponents = {
   // Data management routes
   KanbanBoard: createRouteComponent(
     BundleAnalyzer.measureComponentLoad('KanbanBoard', () => 
-      import('../DataViews/KanbanBoard')
+      import('../DataViews/KanbanBoard').then(m => ({ default: m.KanbanBoard }))
     )
   ),
 
   AdvancedSearch: createRouteComponent(
     BundleAnalyzer.measureComponentLoad('AdvancedSearch', () => 
-      import('../DataViews/AdvancedSearchSystem')
+      import('../DataViews/AdvancedSearchSystem').then(m => ({ default: m.AdvancedSearchSystem }))
     )
   ),
 
   DatabaseManager: createRouteComponent(
     BundleAnalyzer.measureComponentLoad('DatabaseManager', () => 
-      import('../DataViews/DatabaseTransactionManager')
+      import('../DataViews/DatabaseTransactionManager').then(m => ({ default: m.DatabaseTransactionManager }))
     ),
     ['MonitoringDashboard']
   ),
@@ -366,9 +366,9 @@ export const BundleSizeMonitor: React.FC = () => {
     }
 
     // Monitor performance entries for chunk loading
-    const observer = new PerformanceObserver((list) => {
+    const observer = new PerformanceObserver((list: any) => {
       const entries = list.getEntries();
-      entries.forEach((entry) => {
+      entries.forEach((entry: any) => {
         if (entry.name.includes('chunk') || entry.name.includes('.js')) {
           setBundleInfo(prev => ({
             ...prev,

@@ -3,7 +3,7 @@
 import React, { createContext, useContext, useReducer, useCallback, useEffect } from 'react';
 import { Loader } from '../Loader';
 import { Alert } from '../Alert';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { 
   Database, 
   RefreshCw, 
@@ -265,7 +265,7 @@ export function ErrorState({ config, className = '', onDismiss }: ErrorStateProp
             <div className="mt-sm">
               <Button
                 variant={config.action.variant === 'secondary' ? 'outline' : (config.action.variant || 'ghost')}
-                size="sm"
+                
                 onClick={config.action.onClick}
               >
                 {config.action.label}

@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { twMerge } from 'tailwind-merge';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Button } from './Button';
+import { Button } from './atomic/Button';
 
 export interface EnhancedUniversalDrawerProps {
   isOpen: boolean;

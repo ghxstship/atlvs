@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -376,7 +377,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
         <div className="animate-pulse">
           <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {[1, 2, 3].map((i) => (
+            {[1, 2, 3].map((i: any) => (
               <div key={i} className="h-32 bg-secondary rounded"></div>
             ))}
           </div>
@@ -412,7 +413,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
 
       {/* Dashboard Selector */}
       <div className="flex items-center cluster overflow-x-auto pb-sm">
-        {dashboards.map((dashboard) => (
+        {dashboards.map((dashboard: any) => (
           <button
             key={dashboard.id}
             onClick={() => setSelectedDashboard(dashboard)}
@@ -426,7 +427,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
               <Layout className="h-4 w-4" />
               <span className="text-body-sm form-label">{dashboard.name}</span>
               {dashboard.isPublic && (
-                <Badge variant="outline" className="text-body-sm">Public</Badge>
+                <Badge variant="outline">Public</Badge>
               )}
             </div>
           </button>
@@ -533,7 +534,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           <Card className="w-full max-w-md p-lg">
             <h3 className="text-body text-heading-4 mb-md">Create New Dashboard</h3>
             <form
-              onSubmit={(e) => {
+              onSubmit={(e: any) => {
                 e.preventDefault();
                 const formData = new FormData(e.currentTarget);
                 const name = formData.get('name') as string;
@@ -550,7 +551,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                     name="name"
                     type="text"
                     required
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="e.g., Sales Dashboard"
                   />
                 </div>
@@ -561,7 +562,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                   <textarea
                     name="description"
                     rows={3}
-                    className="w-full px-sm py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="w-full  px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     placeholder="Brief description of this dashboard..."
                   />
                 </div>
@@ -587,7 +588,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
       {showCreateDashboard && (
         <CreateDashboardClient
           organizationId={organizationId}
-          onSuccess={(dashboard) => {
+          onSuccess={(dashboard: any) => {
             setDashboards([...dashboards, dashboard]);
             setSelectedDashboard(dashboard);
             setShowCreateDashboard(false);

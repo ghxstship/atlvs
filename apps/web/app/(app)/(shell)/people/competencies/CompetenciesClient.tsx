@@ -1,8 +1,9 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Card, Button, Input, Badge } from '@ghxstship/ui';
+import { Card, Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Search, Edit, Trash2, Award } from 'lucide-react';
 
@@ -153,17 +154,16 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
-                <Input
-                  placeholder={t('searchPlaceholder')}
+                <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-2xl"
                 />
               </div>
               
               <select
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedCategory(e.target.value)}
                 className="px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
               >
                 <option value="" className="color-muted">All Categories</option>
@@ -184,21 +184,19 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             <div className="border border-border rounded-lg p-md bg-secondary/50">
               <h3 className="text-body form-label mb-md">{t('createCompetency')}</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-                <Input
-                  placeholder={t('competencyName')}
+                <UnifiedInput                   placeholder={t('competencyName')}
                   value={newCompetency.name}
-                  onChange={(e) => setNewCompetency({...newCompetency, name: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({...newCompetency, name: e.target.value})}
                 />
-                <Input
-                  placeholder={t('category')}
+                <UnifiedInput                   placeholder={t('category')}
                   value={newCompetency.category}
-                  onChange={(e) => setNewCompetency({...newCompetency, category: e.target.value})}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({...newCompetency, category: e.target.value})}
                 />
                 <div className="md:col-span-2">
                   <textarea
                     placeholder={t('description')}
                     value={newCompetency.description}
-                    onChange={(e) => setNewCompetency({...newCompetency, description: e.target.value})}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({...newCompetency, description: e.target.value})}
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
                     rows={2}
                   />
@@ -207,34 +205,30 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
                 <div className="md:col-span-2">
                   <p className="text-body-sm color-muted mt-sm">{t('levelDefinitions')}</p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
-                    <Input
-                      placeholder={t('beginnerLevel')}
+                    <UnifiedInput                       placeholder={t('beginnerLevel')}
                       value={newCompetency.levelDefinitions.beginner}
-                      onChange={(e) => setNewCompetency({
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, beginner: e.target.value}
                       })}
                     />
-                    <Input
-                      placeholder={t('intermediateLevel')}
+                    <UnifiedInput                       placeholder={t('intermediateLevel')}
                       value={newCompetency.levelDefinitions.intermediate}
-                      onChange={(e) => setNewCompetency({
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, intermediate: e.target.value}
                       })}
                     />
-                    <Input
-                      placeholder={t('advancedLevel')}
+                    <UnifiedInput                       placeholder={t('advancedLevel')}
                       value={newCompetency.levelDefinitions.advanced}
-                      onChange={(e) => setNewCompetency({
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, advanced: e.target.value}
                       })}
                     />
-                    <Input
-                      placeholder={t('expertLevel')}
+                    <UnifiedInput                       placeholder={t('expertLevel')}
                       value={newCompetency.levelDefinitions.expert}
-                      onChange={(e) => setNewCompetency({
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewCompetency({
                         ...newCompetency,
                         levelDefinitions: {...newCompetency.levelDefinitions, expert: e.target.value}
                       })}
@@ -261,7 +255,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
 
           {/* Competencies Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {filteredCompetencies.map((competency) => (
+            {filteredCompetencies.map((competency: any) => (
               <div
                 key={competency.id}
                 className="border border-border rounded-lg p-md hover:shadow-elevated transition-shadow"
@@ -293,7 +287,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
                 )}
 
                 {competency.level_definitions && (
-                  <div className="stack-xs">
+                  <div className="stack-md">
                     <h4 className="text-body-sm form-label color-foreground">{t('levels')}:</h4>
                     <div className="grid grid-cols-2 gap-xs text-body-sm">
                       {competency.level_definitions.beginner && (

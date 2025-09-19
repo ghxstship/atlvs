@@ -23,10 +23,10 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
         </div>
         
         <div className="flex items-center gap-xl mb-sm">
-          <h3 className={`${typography.cardTitle} text-heading-4`}>
+          <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-heading-4`}>
             {department.name}
           </h3>
-          <Badge variant="outline" className="text-body-sm">
+          <Badge variant="outline">
             {department.count} members
           </Badge>
         </div>
@@ -36,7 +36,7 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
         <div>
           <h4 className="text-body-sm text-heading-4 color-muted mb-xs uppercase">Team Leads</h4>
           <div className="stack-xl">
-            {department.leads.map((lead) => (
+            {department.leads.map((lead: any) => (
               <div key={lead} className="text-body-sm color-foreground">{lead}</div>
             ))}
           </div>

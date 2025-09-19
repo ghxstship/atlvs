@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -23,7 +24,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error || 'Request failed');
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || t('remove.error'));
     } finally {
       setLoading(false);
@@ -36,7 +37,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
         type="button"
         onClick={onRemoveDemo}
         disabled={loading}
-        className="inline-flex items-center gap-sm rounded-md border border-destructive/30 color-destructive px-sm py-sm text-body-sm hover:bg-destructive/10 disabled:opacity-50"
+        className="inline-flex items-center gap-sm rounded-md border border-destructive/30 color-destructive  px-md py-sm text-body-sm hover:bg-destructive/10 disabled:opacity-50"
         aria-busy={loading}
         aria-live="polite"
         aria-label={t('remove.cta')}

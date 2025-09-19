@@ -1,7 +1,8 @@
 'use client';
 
+
 import { useState } from 'react'
-import { Card, Button, Input, Label } from "@ghxstship/ui"
+import { Card, Button, UnifiedInput, Label } from '@ghxstship/ui'
 import { Mail, ArrowRight, CheckCircle } from 'lucide-react'
 import Link from 'next/link'
 
@@ -56,12 +57,11 @@ export default function ForgotPasswordForm() {
             <Mail className="h-4 w-4" />
             Email Address
           </Label>
-          <Input
-            id="email"
+          <UnifiedInput             id="email"
             type="email"
             placeholder="Enter your email address"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
             required
             className="mt-xs"
           />

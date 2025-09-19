@@ -205,7 +205,7 @@ export async function POST(request: NextRequest) {
       message: 'Demo data seeded successfully'
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Demo seed error:', error);
     return NextResponse.json({ 
       error: 'Failed to seed demo data',

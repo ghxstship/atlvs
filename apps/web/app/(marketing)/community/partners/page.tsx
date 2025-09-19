@@ -55,7 +55,7 @@ export default function PartnersPage() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-xl mb-3xl">
-          {partnerTiers.map((tier) => {
+          {partnerTiers.map((tier: any) => {
             const Icon = tier.icon;
             return (
               <div key={tier.title} className="bg-card rounded-lg p-lg border text-center">
@@ -67,7 +67,7 @@ export default function PartnersPage() {
                 </h3>
                 <p className="color-muted mb-lg">{tier.description}</p>
                 <ul className="stack-sm text-body-sm">
-                  {tier.benefits.map((benefit) => (
+                  {tier.benefits.map((benefit: any) => (
                     <li key={benefit} className="flex items-center justify-center gap-sm">
                       <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                       {benefit}
@@ -84,7 +84,7 @@ export default function PartnersPage() {
             FEATURED PARTNERS
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {featuredPartners.map((partner) => (
+            {featuredPartners.map((partner: any) => (
               <div key={partner.name} className="bg-card rounded-lg p-lg border text-center hover:shadow-floating transition-shadow">
                 <div className="bg-secondary/30 rounded-lg h-16 mb-md flex items-center justify-center">
                   <span className="text-body-sm color-muted">Partner Logo</span>

@@ -122,7 +122,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
 
     return NextResponse.json({ person, metrics });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Person GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -224,7 +224,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
     return NextResponse.json({ person });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Person PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -300,7 +300,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
     return NextResponse.json({ success: true, message: 'Person has been deactivated' });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Person DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

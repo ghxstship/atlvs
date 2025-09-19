@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, BarChart3, ShoppingBag, Briefcase, Globe, Zap, Shield, CheckCircle } from 'lucide-react';
-import { typography } from '../../_components/lib/typography';
-import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 export const metadata: Metadata = {
   title: 'Products - ATLVS & OPENDECK | GHXSTSHIP',
@@ -86,14 +87,14 @@ export default function ProductsPage() {
             <Badge variant="outline" className="mb-md">
               Our Products
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TWO PLATFORMS,
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
                 INFINITE POSSIBILITIES
               </span>
             </h1>
-            <p className={`max-w-3xl mx-auto ${typography.heroSubtitle}`}>
+            <p className="max-w-3xl mx-auto text-body-lg color-muted">
               ATLVS and OPENDECK work together to provide the most comprehensive solution for 
               creative production management and talent acquisition in the industry.
             </p>
@@ -112,16 +113,16 @@ export default function ProductsPage() {
                   <div className="stack-lg">
                     <div>
                       <div className="flex items-center gap-sm mb-sm">
-                        <h2 className={typography.sectionTitle}>{product.name}</h2>
+                        <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>{product.name}</h2>
                         <Badge variant="secondary">Enterprise Ready</Badge>
                       </div>
-                      <p className={`mb-md text-foreground ${typography.cardSubtitle}`}>{product.tagline}</p>
-                      <p className={typography.bodyLarge}>{product.longDescription}</p>
+                      <p className="mb-md text-foreground text-body-lg">{product.tagline}</p>
+                      <p className="text-body-lg">{product.longDescription}</p>
                     </div>
 
                     {/* Features */}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-md">
-                      {product.features.map((feature) => {
+                      {product.features.map((feature: any) => {
                         const Icon = feature.icon;
                         return (
                           <div key={feature.label} className="flex items-start gap-sm">
@@ -141,7 +142,7 @@ export default function ProductsPage() {
                     <div>
                       <h3 className="text-heading-4 color-foreground mb-sm">Key Benefits</h3>
                       <div className="stack-sm">
-                        {product.benefits.map((benefit) => (
+                        {product.benefits.map((benefit: any) => (
                           <div key={benefit} className="flex items-center gap-sm">
                             <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
                             <span className="text-body-sm color-muted">{benefit}</span>
@@ -152,7 +153,7 @@ export default function ProductsPage() {
 
                     {/* CTA */}
                     <div className="flex flex-col sm:flex-row gap-md">
-                      <a href={product.href as any as any}>
+                      <a href={product.href}>
                         <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                           {product.ctaText}
                           <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -176,7 +177,7 @@ export default function ProductsPage() {
                         {product.name} by the Numbers
                       </h3>
                       <div className="grid grid-cols-2 gap-lg">
-                        {product.stats.map((stat) => (
+                        {product.stats.map((stat: any) => (
                           <div key={stat.label} className="text-center">
                             <div className="font-title text-heading-2 text-heading-3 color-foreground mb-sm">
                               {stat.value}

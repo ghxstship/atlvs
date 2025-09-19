@@ -6,9 +6,9 @@ import Link from 'next/link';
 import { Button, Badge } from '@ghxstship/ui';
 import { ArrowRight } from 'lucide-react';
 import { cn } from '../../_components/lib/utils';
-import { typography } from '../../_components/lib/typography';
-import { layouts } from '../../_components/lib/layouts';
-import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
+import { Anton } from 'next/font/google';
+
+const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 import { PricingCard } from "../../_components/marketing/PricingCard";
 import { PricingToggle } from '../../_components/marketing/pricing/PricingToggle';
 import { TrustIndicators } from '../../_components/marketing/pricing/TrustIndicators';
@@ -230,12 +230,19 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <Section variant="hero">
-        <SectionHeader 
-          badge="Pricing Plans"
-          title={<>PLANS THAT GROW<br />WITH YOU</>}
-          subtitle="Start your free 14-day trial, no credit card required. Choose the perfect plan for your team and scale as you grow."
-        />
+      <section className="py-4xl bg-gradient-subtle">
+        <div className="container mx-auto px-md">
+          <div className="text-center mb-3xl">
+            <Badge variant="outline" className="mb-md">
+              Pricing Plans
+            </Badge>
+            <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
+              PLANS THAT GROW<br />WITH YOU
+            </h1>
+            <p className="text-heading-4 color-muted max-w-3xl mx-auto mb-xl">
+              Start your free 14-day trial, no credit card required. Choose the perfect plan for your team and scale as you grow.
+            </p>
+          </div>
         <div className="flex justify-center mt-xl">
           <PricingToggle isAnnual={isAnnual} onToggle={setIsAnnual} />
         </div>
@@ -246,12 +253,14 @@ export default function PricingPage() {
             </Badge>
           </div>
         )}
-      </Section>
+      </div>
+      </section>
 
       {/* Pricing Cards */}
-      <Section>
-        <div className={cn(layouts.gridPricing, "relative z-0 pt-2xl")}>
-          {plans.map((plan) => {
+      <section className="py-4xl">
+        <div className="container mx-auto px-md">
+          <div className="grid lg:grid-cols-3 gap-xl relative z-0 pt-2xl">
+          {plans.map((plan: any) => {
             let price: number | string;
             let yearlyPrice: number | undefined;
             
@@ -281,30 +290,42 @@ export default function PricingPage() {
           })}
         </div>
         <TrustIndicators />
-      </Section>
+      </div>
+      </section>
 
       {/* Add-ons Section */}
-      <Section variant="muted">
-        <SectionHeader 
-          title="ENHANCE YOUR PLAN"
-          subtitle="Supercharge your workflow with powerful add-ons designed to extend your GHXSTSHIP experience."
-        />
+      <section className="py-4xl bg-secondary/20">
+        <div className="container mx-auto px-md">
+          <div className="text-center mb-3xl">
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
+              ENHANCE YOUR PLAN
+            </h2>
+            <p className="text-body color-muted max-w-3xl mx-auto">
+              Supercharge your workflow with powerful add-ons designed to extend your GHXSTSHIP experience.
+            </p>
+          </div>
         <div className="grid md:grid-cols-3 gap-lg lg:gap-xl">
-          {addOns.map((addon) => (
+          {addOns.map((addon: any) => (
             <AddOnCard key={addon.name} addon={addon} />
           ))}
         </div>
-      </Section>
+        </div>
+      </section>
 
       {/* FAQ Section */}
       <FAQSection faqs={faqs} />
 
       {/* CTA Section */}
-      <Section variant="cta">
-        <SectionHeader 
-          title="READY TO GET STARTED?"
-          subtitle="Join thousands of creative professionals who have transformed their workflows with GHXSTSHIP."
-        />
+      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+        <div className="container mx-auto px-md">
+          <div className="text-center mb-2xl">
+            <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
+              READY TO GET STARTED?
+            </h2>
+            <p className="text-body color-muted max-w-3xl mx-auto mb-xl">
+              Join thousands of creative professionals who have transformed their workflows with GHXSTSHIP.
+            </p>
+          </div>
         <div className="flex flex-col sm:flex-row gap-md justify-center items-center">
           <Link href="/auth/signup">
             <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center justify-center gap-sm whitespace-nowrap">
@@ -318,7 +339,8 @@ export default function PricingPage() {
             </Button>
           </Link>
         </div>
-      </Section>
+        </div>
+      </section>
     </div>
   );
 }

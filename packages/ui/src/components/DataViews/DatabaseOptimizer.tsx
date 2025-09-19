@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState, useMemo, useCallback, useEffect } from 'react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
-import { Input } from '../Input';
+import { Input } from '../atomic/Input';
 import { Select } from '../Select';
 import { 
   Database, 
@@ -317,13 +317,13 @@ export function DatabaseOptimizer({
         <div className="flex items-center gap-sm">
           <Badge 
             variant={performanceScore >= 80 ? 'success' : performanceScore >= 60 ? 'warning' : 'destructive'}
-            size="sm"
+            
           >
             Score: {performanceScore}
           </Badge>
           <Button
-            variant="primary"
-            size="sm"
+            variant="default"
+            
             onClick={analyzePerformance}
             disabled={isAnalyzing}
           >
@@ -414,13 +414,13 @@ export function DatabaseOptimizer({
                         <span className="font-medium">
                           {recommendation.table}({recommendation.columns.join(', ')})
                         </span>
-                        <Badge variant="outline" size="sm">
+                        <Badge variant="outline" >
                           {recommendation.type}
                         </Badge>
                         <Badge 
                           variant={recommendation.impact === 'high' ? 'destructive' : 
                                   recommendation.impact === 'medium' ? 'warning' : 'secondary'}
-                          size="sm"
+                          
                         >
                           {recommendation.impact} impact
                         </Badge>
@@ -433,8 +433,8 @@ export function DatabaseOptimizer({
                       </div>
                     </div>
                     <Button
-                      variant="primary"
-                      size="sm"
+                      variant="default"
+                      
                       onClick={() => applyIndexRecommendation(recommendation)}
                     >
                       Create Index
@@ -456,7 +456,7 @@ export function DatabaseOptimizer({
             <div className="flex items-center gap-sm">
               <Select
                 value={selectedTable}
-                onChange={(e) => setSelectedTable(e.target.value)}
+                onChange={(e: any) => setSelectedTable(e.target.value)}
               >
                 <option value="all">All Tables</option>
                 {tables.map(table => (
@@ -465,7 +465,7 @@ export function DatabaseOptimizer({
               </Select>
               <Select
                 value={timeRange}
-                onChange={(e) => setTimeRange(e.target.value)}
+                onChange={(e: any) => setTimeRange(e.target.value)}
               >
                 <option value="1h">Last Hour</option>
                 <option value="24h">Last 24 Hours</option>
@@ -480,12 +480,12 @@ export function DatabaseOptimizer({
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-sm mb-xs">
-                      <Badge variant="outline" size="sm">{query.table}</Badge>
+                      <Badge variant="outline" >{query.table}</Badge>
                       <span className="text-sm font-medium">
                         {query.executionTime}ms
                       </span>
                       {query.executionTime > slowQueryThreshold && (
-                        <Badge variant="destructive" size="sm">Slow</Badge>
+                        <Badge variant="destructive" >Slow</Badge>
                       )}
                     </div>
                     <code className="text-xs text-muted-foreground block truncate">
@@ -505,11 +505,11 @@ export function DatabaseOptimizer({
                   </div>
                   <div className="flex items-center gap-xs">
                     {query.indexesUsed.length > 0 ? (
-                      <Badge variant="success" size="sm">
+                      <Badge variant="success" >
                         {query.indexesUsed.length} indexes
                       </Badge>
                     ) : (
-                      <Badge variant="destructive" size="sm">
+                      <Badge variant="destructive" >
                         No indexes
                       </Badge>
                     )}

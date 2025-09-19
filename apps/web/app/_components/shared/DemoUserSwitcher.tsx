@@ -1,8 +1,9 @@
 'use client';
 
+
 import React from "react";
 
-import { Badge, Button, Card, cn } from "@ghxstship/ui";
+import { Badge, Button, Card, cn } from '@ghxstship/ui';
 import { useState } from 'react'
 
 const demoUsers = [
@@ -18,7 +19,7 @@ export default function DemoUserSwitcher() {
     <Card className="p-md">
       <h1 className="text-heading-4 mb-md">Demo User Switcher</h1>
       <div className="space-y-sm">
-        {demoUsers.map((user) => (
+        {demoUsers.map((user: any) => (
           <div key={user.id} className="flex items-center justify-between p-sm rounded border">
             <div>
               <span className="form-label">{user.name}</span>

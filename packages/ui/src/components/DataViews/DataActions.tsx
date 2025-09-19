@@ -11,7 +11,7 @@ import {
   X,
   Plus
 } from 'lucide-react';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Modal } from '../Modal';
 import { Select } from '../Select';
 import { useDataView } from './DataViewProvider';
@@ -78,7 +78,7 @@ export function DataActions({
   const handleImport = useCallback((file: File) => {
     if (config.importConfig) {
       const reader = new FileReader();
-      reader.onload = (e) => {
+      reader.onload = (e: any) => {
         try {
           const content = e.target?.result as string;
           let data;
@@ -128,7 +128,7 @@ export function DataActions({
                 type="text"
                 placeholder="Search..."
                 value={state.search}
-                onChange={(e) => actions.setSearch(e.target.value)}
+                onChange={(e: any) => actions.setSearch(e.target.value)}
                 className="pl-2xl pr-md py-sm border border-border rounded-md bg-background text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
             </div>
@@ -138,7 +138,7 @@ export function DataActions({
             <div className="flex items-center gap-xs">
               <Button
                 variant="ghost"
-                size="sm"
+                
                 onClick={() => setShowFilterModal(true)}
               >
                 <Filter className="h-4 w-4" />
@@ -155,7 +155,7 @@ export function DataActions({
           {showSort && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => setShowSortModal(true)}
             >
               <SortAsc className="h-4 w-4" />
@@ -177,11 +177,11 @@ export function DataActions({
               <span className="text-sm text-muted-foreground">
                 {state.selection.length} selected:
               </span>
-              {config.bulkActions.map((action) => (
+              {config.bulkActions.map((action: any) => (
                 <Button
                   key={action.key}
                   variant={action.variant === 'secondary' ? 'outline' : (action.variant || 'ghost')}
-                  size="sm"
+                  
                   onClick={() => handleBulkAction(action)}
                   disabled={action.disabled}
                 >
@@ -196,7 +196,7 @@ export function DataActions({
           {showExport && config.exportConfig && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => setShowExportModal(true)}
             >
               <Download className="h-4 w-4" />
@@ -208,7 +208,7 @@ export function DataActions({
           {showImport && config.importConfig && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => setShowImportModal(true)}
             >
               <Upload className="h-4 w-4" />
@@ -220,7 +220,7 @@ export function DataActions({
           {showViewOptions && (
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => {/* Toggle view options */}}
             >
               <MoreHorizontal className="h-4 w-4" />
@@ -275,7 +275,7 @@ export function DataActions({
               <label className="block text-sm font-medium mb-xs">Export Format</label>
               <select
                 value={exportFormat}
-                onChange={(e) => setExportFormat(e.target.value)}
+                onChange={(e: any) => setExportFormat(e.target.value)}
                 className="w-full p-sm border border-border rounded-md bg-background text-foreground"
               >
                 {config.exportConfig?.formats?.map(format => (
@@ -292,7 +292,7 @@ export function DataActions({
               <label className="block text-sm font-medium mb-xs">Include Fields</label>
               <select
                 value={exportFields}
-                onChange={(e) => setExportFields(e.target.value)}
+                onChange={(e: any) => setExportFields(e.target.value)}
                 className="w-full p-sm border border-border rounded-md bg-background text-foreground"
               >
                 <option value="visible">Visible Fields Only</option>
@@ -303,7 +303,7 @@ export function DataActions({
               <Button variant="outline" onClick={() => setShowExportModal(false)}>
                 Cancel
               </Button>
-              <Button variant="primary" onClick={() => handleExport(exportFormat)}>
+              <Button variant="default" onClick={() => handleExport(exportFormat)}>
                 Export
               </Button>
             </div>
@@ -324,7 +324,7 @@ export function DataActions({
               <input
                 type="file"
                 accept=".csv,.json"
-                onChange={(e) => {
+                onChange={(e: any) => {
                   const file = e.target.files?.[0];
                   if (file) {
                     handleImport(file);
@@ -364,7 +364,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <label className="block text-sm font-medium mb-xs">Field</label>
           <select
             value={newFilter.field}
-            onChange={(e) => setNewFilter({...newFilter, field: e.target.value})}
+            onChange={(e: any) => setNewFilter({...newFilter, field: e.target.value})}
             className="w-full p-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="">Select field...</option>
@@ -380,7 +380,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <label className="block text-sm font-medium mb-xs">Operator</label>
           <select
             value={newFilter.operator}
-            onChange={(e) => setNewFilter({...newFilter, operator: e.target.value})}
+            onChange={(e: any) => setNewFilter({...newFilter, operator: e.target.value})}
             className="w-full p-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="equals">Equals</option>
@@ -395,7 +395,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <input
             type="text"
             value={newFilter.value}
-            onChange={(e) => setNewFilter({...newFilter, value: e.target.value})}
+            onChange={(e: any) => setNewFilter({...newFilter, value: e.target.value})}
             className="w-full p-sm border border-border rounded-md bg-background text-foreground"
             placeholder="Enter filter value..."
           />
@@ -405,7 +405,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
           <Button type="button" variant="outline" onClick={onClose}>
             Cancel
           </Button>
-          <Button type="submit" variant="primary" disabled={!newFilter.field || !newFilter.value}>
+          <Button type="submit" variant="default" disabled={!newFilter.field || !newFilter.value}>
             Add Filter
           </Button>
         </div>
@@ -423,7 +423,7 @@ function FilterForm({ fields, currentFilters, onAddFilter, onRemoveFilter, onClo
                 </span>
                 <Button
                   variant="ghost"
-                  size="sm"
+                  
                   onClick={() => onRemoveFilter(index)}
                 >
                   <X className="h-3 w-3" />
@@ -456,7 +456,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
           <div className="flex-1">
             <select
               value={newSort.field}
-              onChange={(e) => setNewSort({...newSort, field: e.target.value})}
+              onChange={(e: any) => setNewSort({...newSort, field: e.target.value})}
               className="w-full p-sm border border-border rounded-md bg-background text-foreground"
             >
               <option value="">Select field...</option>
@@ -470,7 +470,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
 
           <select
             value={newSort.direction}
-            onChange={(e) => setNewSort({...newSort, direction: e.target.value as 'asc' | 'desc'})}
+            onChange={(e: any) => setNewSort({...newSort, direction: e.target.value as 'asc' | 'desc'})}
             className="w-24 p-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="asc">Ascending</option>
@@ -495,7 +495,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
                 </span>
                 <Button
                   variant="ghost"
-                  size="sm"
+                  
                   onClick={() => onRemoveSort(index)}
                 >
                   <X className="h-3 w-3" />

@@ -152,7 +152,7 @@ export async function GET(request: NextRequest) {
         .select('rfp_id, status')
         .in('rfp_id', rfpIds);
 
-      proposalStats = proposals?.reduce((acc: any, prop) => {
+      proposalStats = proposals?.reduce((acc, prop) => {
         if (!acc[prop.rfp_id]) {
           acc[prop.rfp_id] = { total: 0, submitted: 0, shortlisted: 0, awarded: 0 };
         }
@@ -179,7 +179,7 @@ export async function GET(request: NextRequest) {
       proposalStats
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('RFPs GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -248,7 +248,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ rfp }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('RFPs POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -332,7 +332,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ rfp });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('RFPs PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -396,7 +396,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('RFPs DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

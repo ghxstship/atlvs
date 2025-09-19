@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Textarea, Drawer } from '@ghxstship/ui';
 import { Building, Plus, Save, X } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
 
@@ -176,8 +176,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Vendor Name *
               </label>
-              <Input
-                {...register('name')}
+              <UnifiedInput                 {...register('name')}
                 placeholder="Enter vendor name"
                 error={errors.name?.message}
               />
@@ -187,8 +186,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Contact Person
               </label>
-              <Input
-                {...register('contact_person')}
+              <UnifiedInput                 {...register('contact_person')}
                 placeholder="Primary contact name"
               />
             </div>
@@ -199,7 +197,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               </label>
               <select
                 {...register('status')}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
@@ -211,8 +209,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Email
               </label>
-              <Input
-                {...register('email')}
+              <UnifiedInput                 {...register('email')}
                 type="email"
                 placeholder="vendor@example.com"
                 error={errors.email?.message}
@@ -223,8 +220,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Phone
               </label>
-              <Input
-                {...register('phone')}
+              <UnifiedInput                 {...register('phone')}
                 placeholder="+1 (555) 123-4567"
               />
             </div>
@@ -233,8 +229,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Website
               </label>
-              <Input
-                {...register('website')}
+              <UnifiedInput                 {...register('website')}
                 placeholder="https://vendor.com"
                 error={errors.website?.message}
               />
@@ -244,8 +239,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Tax ID
               </label>
-              <Input
-                {...register('tax_id')}
+              <UnifiedInput                 {...register('tax_id')}
                 placeholder="Tax identification number"
               />
             </div>
@@ -254,8 +248,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               <label className="block text-body-sm form-label mb-sm">
                 Payment Terms
               </label>
-              <Input
-                {...register('payment_terms')}
+              <UnifiedInput                 {...register('payment_terms')}
                 placeholder="Net 30, COD, etc."
               />
             </div>
@@ -266,7 +259,7 @@ export default function CreateVendorClient({ orgId, onVendorCreated }: CreateVen
               </label>
               <select
                 {...register('rating', { valueAsNumber: true })}
-                className="w-full px-sm py-sm border border-input rounded-md bg-background"
+                className="w-full  px-md py-sm border border-input rounded-md bg-background"
               >
                 <option value="">Select rating</option>
                 <option value={1}>1 - Poor</option>

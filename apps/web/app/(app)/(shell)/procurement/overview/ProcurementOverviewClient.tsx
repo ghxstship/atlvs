@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -77,7 +78,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
       const ordersData = orders.data || [];
       const pendingOrders = ordersData.filter((o: any) => ['draft', 'pending', 'approved'].includes(o.status));
       const completedOrders = ordersData.filter((o: any) => ['delivered'].includes(o.status));
-      const totalSpent = ordersData.reduce((sum: number, order: any) => sum + (order.total_amount || 0), 0);
+      const totalSpent = ordersData.reduce((sum: number, order) => sum + (order.total_amount || 0), 0);
 
       setStats({
         totalOrders: ordersData.length,
@@ -270,7 +271,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
             </div>
           ) : (
             <div className="stack-md">
-              {recentOrders.map((order) => (
+              {recentOrders.map((order: any) => (
                 <div key={order.id} className="flex items-center justify-between p-md border border-border rounded-lg">
                   <div className="flex items-center gap-md">
                     <div>

@@ -75,7 +75,7 @@ function convertToCSV(data: any[], fields?: string[], includeHeaders = true): st
 function convertToJSON(data: any[], fields?: string[]): string {
   if (fields) {
     const filteredData = data.map(row => {
-      const filtered: any = {};
+      const filtered = {};
       fields.forEach(field => {
         if (row.hasOwnProperty(field)) {
           filtered[field] = row[field];
@@ -89,7 +89,7 @@ function convertToJSON(data: any[], fields?: string[]): string {
 }
 
 // Apply filters to query
-function applyFilters(query: any, filters: Record<string, any>) {
+function applyFilters(query, filters: Record<string, any>) {
   let filteredQuery = query;
 
   Object.entries(filters).forEach(([key, value]) => {
@@ -215,7 +215,7 @@ export async function POST(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Bulk export error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -298,7 +298,7 @@ export async function GET(request: NextRequest) {
       templates
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Export template error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

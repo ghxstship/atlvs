@@ -10,8 +10,8 @@ import { createBrowserClient } from '@supabase/ssr';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface FinalConfirmationStepProps {
-  user: any;
-  data: any;
+  user;
+  data;
 }
 
 export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps) {

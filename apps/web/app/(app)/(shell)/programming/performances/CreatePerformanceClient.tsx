@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -100,7 +101,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create performance');
     } finally {
       setLoading(false);
@@ -139,7 +140,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
             <input
               id="name"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter performance name..."
               {...form.register('name')}
             />
@@ -157,7 +158,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
             <textarea
               id="description"
               rows={3}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Describe the performance..."
               {...form.register('description')}
             />
@@ -169,7 +170,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="status"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('status')}
             >
               <option value="planning">Planning</option>
@@ -188,7 +189,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               <input
                 id="start_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('start_date')}
               />
             </div>
@@ -200,7 +201,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               <input
                 id="end_date"
                 type="datetime-local"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('end_date')}
               />
             </div>
@@ -214,7 +215,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               <input
                 id="location"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Performance location..."
                 {...form.register('location')}
               />
@@ -227,7 +228,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               <input
                 id="venue"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Venue name..."
                 {...form.register('venue')}
               />
@@ -242,7 +243,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               <input
                 id="stage"
                 type="text"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Stage name..."
                 {...form.register('stage')}
               />
@@ -256,7 +257,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
                 id="capacity"
                 type="number"
                 min="0"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="Max audience..."
                 {...form.register('capacity', { valueAsNumber: true })}
               />
@@ -273,7 +274,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
                 type="number"
                 min="0"
                 step="0.01"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 placeholder="0.00"
                 {...form.register('ticket_price', { valueAsNumber: true })}
               />
@@ -285,7 +286,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               </label>
               <select
                 id="currency"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('currency')}
               >
                 <option value="USD">USD</option>
@@ -302,11 +303,11 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="project_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('project_id')}
             >
               <option value="">No project association</option>
-              {projects.map((project) => (
+              {projects.map((project: any) => (
                 <option key={project.id} value={project.id}>
                   {project.name}
                 </option>

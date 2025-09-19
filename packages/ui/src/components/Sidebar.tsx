@@ -36,17 +36,17 @@ const iconMap: Record<string, React.ComponentType<any>> = {
 const convertNavSections = (
   navSections: { label: string; items: { label: string; href: string }[] }[]
 ) => {
-  return navSections.map((section) => {
+  return navSections.map((section: any) => {
     const id = section.label.toLowerCase().replace(/\s+/g, '-');
     const topLevelIcon = iconMap[section.label] || BookOpen;
-    const children = section.items.map((it) => ({
+    const children = section.items.map((it: any) => ({
       id: `${id}-${it.label.toLowerCase().replace(/\s+/g, '-')}`,
       label: it.label,
       href: it.href,
     }));
 
     // Prefer Overview as top-level href if present
-    const overview = section.items.find((i) => i.label.toLowerCase() === 'overview');
+    const overview = section.items.find((i: any) => i.label.toLowerCase() === 'overview');
 
     return {
       id,

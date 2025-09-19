@@ -12,6 +12,7 @@ export const navigation: NavigationItem[] = [
       { label: 'ATLVS', href: '/products/atlvs' },
       { label: 'OPENDECK', href: '/products/opendeck' },
       { label: 'Compare', href: '/products/compare' },
+      { label: 'Pricing', href: '/pricing' },
       { label: 'Coming Soon', href: '/products/coming-soon' },
     ],
   },
@@ -32,7 +33,6 @@ export const navigation: NavigationItem[] = [
       { label: 'Trade Shows & Conferences', href: '/solutions/trade-shows-conferences' },
     ],
   },
-  { label: 'Pricing', href: '/pricing' },
   {
     label: 'Resources',
     href: '/resources',
@@ -44,7 +44,19 @@ export const navigation: NavigationItem[] = [
       { label: 'Whitepapers', href: '/resources/whitepapers' },
     ],
   },
-  { label: 'Community', href: '/community' },
+  {
+    label: 'Community',
+    href: '/community',
+    children: [
+      { label: 'Skool', href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed' },
+      { label: 'Events', href: '/community/events' },
+      { label: 'News', href: '/community/forums' },
+      { label: 'Showcase', href: '/community/showcase' },
+      { label: 'Impact', href: '/community/impact' },
+      { label: 'Opportunities', href: '/community/opportunities' },
+      { label: 'Partners', href: '/community/partners' },
+    ],
+  },
   {
     label: 'Company',
     href: '/company',

@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card, Badge } from '@ghxstship/ui';
 import { Plus, Save, Package, Calendar, DollarSign, Truck, Eye, Edit, Trash2 } from 'lucide-react';
 
 interface ProcurementOrder {
@@ -193,7 +194,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
           <Package className="h-5 w-5" />
-          <h3 className="text-heading-4">Purchase Orders</h3>
+          <h3 className="text-body text-heading-4">Purchase Orders</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
           <Plus className="h-4 w-4 mr-sm" />
@@ -212,38 +213,34 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-md mb-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Order Number</label>
-                <Input
-                  value={formData.order_number}
-                  onChange={(e) => setFormData(prev => ({ ...prev, order_number: e.target.value }))}
+                <UnifiedInput                   value={formData.order_number}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, order_number: e.target.value }))}
                   placeholder="PO-2024-001"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Vendor Name *</label>
-                <Input
-                  value={formData.vendor_name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, vendor_name: e.target.value }))}
+                <UnifiedInput                   value={formData.vendor_name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, vendor_name: e.target.value }))}
                   placeholder="Vendor Company Name"
                 />
               </div>
               
               <div className="stack-sm md:col-span-2">
                 <label className="text-body-sm form-label">Description *</label>
-                <Input
-                  value={formData.description}
-                  onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                <UnifiedInput                   value={formData.description}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
                   placeholder="Description of goods/services"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Total Amount *</label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.total_amount}
-                  onChange={(e) => setFormData(prev => ({ ...prev, total_amount: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, total_amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                 />
               </div>
@@ -252,8 +249,8 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Currency</label>
                 <select 
                   value={formData.currency} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, currency: e.target.value }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="USD">USD</option>
                   <option value="EUR">EUR</option>
@@ -265,8 +262,8 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 <label className="text-body-sm form-label">Status</label>
                 <select 
                   value={formData.status} 
-                  onChange={(e) => setFormData(prev => ({ ...prev, status: e.target.value as OrderStatus }))}
-                  className="w-full px-sm py-sm border border-input bg-background rounded-md"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, status: e.target.value as OrderStatus }))}
+                  className="w-full  px-md py-sm border border-input bg-background rounded-md"
                 >
                   <option value="draft">Draft</option>
                   <option value="pending">Pending</option>
@@ -279,19 +276,17 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Order Date</label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.order_date}
-                  onChange={(e) => setFormData(prev => ({ ...prev, order_date: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, order_date: e.target.value }))}
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Expected Delivery</label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.expected_delivery}
-                  onChange={(e) => setFormData(prev => ({ ...prev, expected_delivery: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expected_delivery: e.target.value }))}
                 />
               </div>
             </div>
@@ -330,7 +325,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
             </div>
           </Card>
         ) : (
-          orders.map((order) => (
+          orders.map((order: any) => (
             <Card key={order.id}>
               <div className="p-md">
                 <div className="flex items-start justify-between">

@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { Card, CardContent, Badge } from '@ghxstship/ui';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '@ghxstship/ui/system';
+import { cn } from '@ghxstship/ui';
 
 const testimonials = [
   {
@@ -102,8 +103,8 @@ export function SocialProof() {
   };
 
   return (
-    <section className="py-smxl bg-background">
-      <div className="container mx-auto px-lg px-md">
+    <section className="py-4xl bg-background">
+      <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
           <Badge variant="outline" className="mb-sm">
@@ -125,8 +126,8 @@ export function SocialProof() {
         {/* Featured Testimonial Carousel */}
         <div className="max-w-4xl mx-auto mb-xl">
           <Card className="relative overflow-hidden">
-            <CardContent className="p-xl lg:p-smxl">
-              <div className="flex items-start gap-xl">
+            <CardContent className="p-xl lg:p-2xl">
+              <div className="flex items-start gap-lg">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -212,7 +213,7 @@ export function SocialProof() {
             SUCCESS STORIES
           </h3>
           <div className="grid md:grid-cols-3 gap-xl">
-            {caseStudies.map((study) => (
+            {caseStudies.map((study: any) => (
               <Card key={study.company} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   {/* Company Logo */}

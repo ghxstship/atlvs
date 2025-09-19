@@ -18,24 +18,14 @@ export const metadata: Metadata = {
 
 const communityChannels = [
   {
-    name: 'Discord Server',
+    name: 'Skool Community',
     description: 'Real-time chat with production pros who actually answer questions',
     members: '15,247',
     activity: 'Very Active',
     icon: MessageSquare,
-    href: 'https://discord.gg/ghxstship',
+    href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed',
     gradient: 'from-primary to-accent',
     features: ['Real-time chat', 'Voice channels', 'Screen sharing', 'Industry channels'],
-  },
-  {
-    name: 'Skool Community',
-    description: 'Learn from people who\'ve managed real productions (not just theory)',
-    members: '8,932',
-    activity: 'Active',
-    icon: Users,
-    href: 'https://skool.com/ghxstship',
-    gradient: 'from-primary to-accent',
-    features: ['Courses & workshops', 'Networking events', 'Mentorship programs', 'Resource library'],
   },
   {
     name: 'Forums',
@@ -124,7 +114,7 @@ const testimonials = [
     avatar: "MR",
   },
   {
-    quote: "The Discord server is my go-to place for quick answers and industry insights. The community is incredibly supportive and knowledgeable.",
+    quote: "The Skool community is my go-to place for quick answers and industry insights. The community is incredibly supportive and knowledgeable.",
     author: "Emily Watson",
     role: "Head of Operations, Harmony Events",
     avatar: "EW",
@@ -205,9 +195,9 @@ export default function CommunityPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
-                  Join Discord Community
+                  Join Skool Community
                   <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
@@ -255,7 +245,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl mb-3xl">
-            {communityChannels.map((channel) => {
+            {communityChannels.map((channel: any) => {
               const Icon = channel.icon;
               return (
                 <Card key={channel.name} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
@@ -267,7 +257,7 @@ export default function CommunityPage() {
                       <div className="flex-1">
                         <div className="flex items-center gap-sm mb-sm">
                           <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{channel.name}</h3>
-                          <Badge variant="secondary" className="text-body-sm">
+                          <Badge variant="secondary">
                             {channel.activity}
                           </Badge>
                         </div>
@@ -279,7 +269,7 @@ export default function CommunityPage() {
                     </div>
 
                     <div className="grid grid-cols-2 gap-sm mb-lg">
-                      {channel.features.map((feature) => (
+                      {channel.features.map((feature: any) => (
                         <div key={feature} className="flex items-center gap-sm">
                           <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${channel.gradient}`}></div>
                           <span className="text-body-sm color-muted">{feature}</span>
@@ -288,14 +278,14 @@ export default function CommunityPage() {
                     </div>
 
                     {channel.href.startsWith('http') ? (
-                      <a href={channel.href as any} target="_blank" rel="noopener noreferrer">
+                      <a href="#" target="_blank" rel="noopener noreferrer">
                         <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
                           <ExternalLink className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                     ) : (
-                      <a href={channel.href as any}>
+                      <a href="#">
                         <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
                           <ExternalLink className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -324,7 +314,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {socialChannels.map((social) => {
+            {socialChannels.map((social: any) => {
               const Icon = social.icon;
               return (
                 <Card key={social.name} className="text-center hover:shadow-floating transition-shadow">
@@ -338,7 +328,7 @@ export default function CommunityPage() {
                       {social.followers} followers
                     </div>
                     <p className="text-body-sm color-muted mb-md">{social.description}</p>
-                    <a href={social.href as any} target="_blank" rel="noopener noreferrer">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
                       <Button className="w-full group transition-all duration-200 hover:scale-105">
                         Follow
                         <ExternalLink className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
@@ -365,7 +355,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-xl mb-2xl">
-            {upcomingEvents.map((event) => (
+            {upcomingEvents.map((event: any) => (
               <Card key={event.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <Badge variant="outline" className="mb-md">
@@ -451,7 +441,7 @@ export default function CommunityPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-xl">
-            {achievements.map((achievement) => {
+            {achievements.map((achievement: any) => {
               const Icon = achievement.icon;
               return (
                 <Card key={achievement.title} className="text-center hover:shadow-floating transition-shadow">
@@ -484,9 +474,9 @@ export default function CommunityPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-md justify-center">
-              <a href="https://discord.gg/ghxstship" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
-                  Join Discord Community
+                  Join Skool Community
                   <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>

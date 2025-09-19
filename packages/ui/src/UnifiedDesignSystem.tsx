@@ -816,16 +816,16 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
                   <input
                     type="checkbox"
                     checked={allSelected}
-                    ref={(input) => {
+                    ref={(input: any) => {
                       if (input) input.indeterminate = someSelected
                     }}
-                    onChange={(e) => handleSelectAll(e.target.checked)}
+                    onChange={(e: any) => handleSelectAll(e.target.checked)}
                     className="rounded border-border text-primary focus:ring-primary"
                     aria-label="Select all rows"
                   />
                 </th>
               )}
-              {columns.map((column) => (
+              {columns.map((column: any) => (
                 <th 
                   key={column.key} 
                   className={cn(thClasses, {
@@ -877,13 +877,13 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
                         <input
                           type="checkbox"
                           checked={isSelected}
-                          onChange={(e) => handleRowSelection(key, e.target.checked)}
+                          onChange={(e: any) => handleRowSelection(key, e.target.checked)}
                           className="rounded border-border text-primary focus:ring-primary"
                           aria-label={`Select row ${index + 1}`}
                         />
                       </td>
                     )}
-                    {columns.map((column) => {
+                    {columns.map((column: any) => {
                       const value = column.dataIndex ? record[column.dataIndex] : record[column.key]
                       const content = column.render ? column.render(value, record, index) : value
                       

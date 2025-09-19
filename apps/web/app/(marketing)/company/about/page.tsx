@@ -2,8 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Users, Target, Globe, Award, TrendingUp, Heart, Zap, Shield } from 'lucide-react';
-import { typography } from '../../../_components/lib/typography';
-import { Section, SectionHeader } from '../../../_components/marketing/layout/Section';
 
 export const metadata: Metadata = {
   title: 'About Us - Built by People Who Actually Do This Stuff | GHXSTSHIP',
@@ -92,7 +90,7 @@ export default function AboutPage() {
             <Badge variant="outline" className="mb-md">
               Our Story
             </Badge>
-            <h1 className={`mb-lg ${typography.heroTitle}`}>
+            <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               BUILT BY PEOPLE
               <br />
               <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
@@ -107,7 +105,7 @@ export default function AboutPage() {
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-lg max-w-4xl mx-auto">
-              {stats.map((stat) => (
+              {stats.map((stat: any) => (
                 <div key={stat.metric} className="text-center">
                   <div className={`mb-sm color-foreground ${typography.statValue}`}>
                     {stat.metric}
@@ -126,7 +124,7 @@ export default function AboutPage() {
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-2xl items-center">
             <div>
-              <h2 className={`mb-lg ${typography.sectionTitle}`}>
+              <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 OUR MISSION
               </h2>
               <p className="text-body color-muted mb-xl">
@@ -163,7 +161,7 @@ export default function AboutPage() {
             <div className="relative">
               <Card className="bg-gradient-to-br from-primary/5 to-accent/5 border-0">
                 <CardContent className="p-xl">
-                  <h3 className={`mb-md ${typography.cardTitle}`}>Our Vision</h3>
+                  <h3 className={`mb-md ${anton.className} text-heading-4 text-heading-3 uppercase`}>Our Vision</h3>
                   <p className="color-muted mb-lg">
                     A world where production management doesn't require a PhD in chaos theory. 
                     Where creative professionals can focus on creating instead of fighting with 
@@ -185,7 +183,7 @@ export default function AboutPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               OUR VALUES
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -194,7 +192,7 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-xl">
-            {values.map((value) => {
+            {values.map((value: any) => {
               const Icon = value.icon;
               return (
                 <Card key={value.title} className="hover:shadow-floating transition-shadow">
@@ -204,7 +202,7 @@ export default function AboutPage() {
                         <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
-                        <h3 className={`mb-sm ${typography.cardTitle}`}>{value.title}</h3>
+                        <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>{value.title}</h3>
                         <p className="color-muted">{value.description}</p>
                       </div>
                     </div>
@@ -220,7 +218,7 @@ export default function AboutPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               OUR JOURNEY
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -240,7 +238,7 @@ export default function AboutPage() {
                         <div className={`mb-sm text-foreground ${typography.statValue}`}>
                           {milestone.year}
                         </div>
-                        <h3 className={`mb-sm ${typography.cardTitle}`}>
+                        <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                           {milestone.title}
                         </h3>
                         <p className="color-muted">{milestone.description}</p>
@@ -264,7 +262,7 @@ export default function AboutPage() {
       <section className="py-4xl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               LEADERSHIP TEAM
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -273,13 +271,13 @@ export default function AboutPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-xl">
-            {leadership.map((leader) => (
+            {leadership.map((leader: any) => (
               <Card key={leader.name} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
                     <Users className="h-8 w-8 text-foreground" />
                   </div>
-                  <h3 className={`mb-xs ${typography.cardTitle}`}>
+                  <h3 className={`mb-xs ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {leader.name}
                   </h3>
                   <p className="text-body-sm text-heading-4 text-foreground mb-sm">{leader.role}</p>
@@ -295,7 +293,7 @@ export default function AboutPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               AWARDS & RECOGNITION
             </h2>
             <p className="text-body color-muted max-w-3xl mx-auto">
@@ -335,13 +333,13 @@ export default function AboutPage() {
                 organization: 'Various Productions',
                 description: 'Successfully managed $15M+ in production budgets without losing sanity',
               },
-            ].map((award) => (
+            ].map((award: any) => (
               <Card key={award.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
                   <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Award className="h-6 w-6 text-background" />
                   </div>
-                  <h3 className={`mb-sm ${typography.cardTitle}`}>
+                  <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {award.title}
                   </h3>
                   <p className="text-body-sm text-heading-4 text-foreground mb-sm">{award.organization}</p>
@@ -357,7 +355,7 @@ export default function AboutPage() {
       <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               JOIN OUR MISSION
             </h2>
             <p className="text-body color-muted mb-xl max-w-2xl mx-auto">
@@ -386,7 +384,7 @@ export default function AboutPage() {
       <section className="py-4xl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
-            <h2 className={`mb-lg ${typography.sectionTitle}`}>
+            <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
               LEARN MORE
             </h2>
           </div>
@@ -396,11 +394,11 @@ export default function AboutPage() {
               { title: 'Our Team', href: '/company/team', description: 'Meet the people behind GHXSTSHIP' },
               { title: 'Press & Media', href: '/company/press', description: 'Latest news and press coverage' },
               { title: 'Careers', href: '/careers', description: 'Join our growing team' },
-            ].map((link) => (
-              <a key={link.title} href={link.href as any as any}>
+            ].map((link: any) => (
+              <a key={link.title} href={product.href}>
                 <Card className="hover:shadow-floating transition-shadow group">
                   <CardContent className="p-lg text-center">
-                    <h3 className={`mb-sm group-hover:text-foreground transition-colors ${typography.cardTitle}`}>
+                    <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                       {link.title}
                     </h3>
                     <p className="text-body-sm color-muted">

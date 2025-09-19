@@ -1,20 +1,13 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Badge, 
-  Button, 
-  Drawer, 
-  Input, 
-  Textarea, 
-  Select
-} from '@ghxstship/ui';
+import { Card, Badge, Button, Drawer, UnifiedInput, Textarea, Select } from '@ghxstship/ui';
 import { 
   Briefcase, 
   Plus, 
@@ -249,7 +242,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       {/* Job History List */}
       <div className="stack-md">
         {jobHistory.length > 0 ? (
-          jobHistory.map((job) => (
+          jobHistory.map((job: any) => (
             <Card key={job.id}>
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
@@ -342,7 +335,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                     <h4 className="form-label mb-sm">Skills Used</h4>
                     <div className="flex flex-wrap gap-sm">
                       {job.skills_used.map((skill, index) => (
-                        <Badge key={index} variant="outline" className="text-body-sm">
+                        <Badge key={index} variant="outline">
                           {skill}
                         </Badge>
                       ))}
@@ -378,16 +371,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       >
         <form onSubmit={form.handleSubmit(onSubmit)} className="stack-lg">
           <div className="grid grid-cols-1 gap-md">
-            <Input
-              label="Company Name"
+            <UnifiedInput               label="Company Name"
               placeholder="Enter company name"
               {...form.register('company_name')}
              
               required
             />
 
-            <Input
-              label="Job Title"
+            <UnifiedInput               label="Job Title"
               placeholder="Enter job title"
               {...form.register('job_title')}
              
@@ -395,8 +386,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
             />
 
             <div className="grid grid-cols-2 gap-md">
-              <Input
-                label="Department"
+              <UnifiedInput                 label="Department"
                 placeholder="Enter department (optional)"
                 {...form.register('department')}
                
@@ -414,16 +404,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
             </div>
 
             <div className="grid grid-cols-2 gap-md">
-              <Input
-                label="Start Date"
+              <UnifiedInput                 label="Start Date"
                 type="date"
                 {...form.register('start_date')}
                
                 required
               />
 
-              <Input
-                label="End Date"
+              <UnifiedInput                 label="End Date"
                 type="date"
                 {...form.register('end_date')}
                
@@ -443,8 +431,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               </label>
             </div>
 
-            <Input
-              label="Location"
+            <UnifiedInput               label="Location"
               placeholder="Enter location (optional)"
               {...form.register('location')}
              

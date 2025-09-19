@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { useState } from 'react'
 import { Button } from '@ghxstship/ui'
@@ -127,7 +127,7 @@ export function DemoSetupClient() {
 
       return { success: true, email: demoUser.email }
 
-    } catch (error: any) {
+    } catch (error) {
       return { success: false, email: demoUser.email, error: error.message }
     }
   }
@@ -184,7 +184,7 @@ export function DemoSetupClient() {
         console.warn('Companies seeding warning:', companiesError.message)
       }
 
-    } catch (error: any) {
+    } catch (error) {
       console.error('Failed to seed demo data:', error.message)
       throw error
     }
@@ -211,7 +211,7 @@ export function DemoSetupClient() {
       setResults(userResults)
       setStep('results')
       
-    } catch (error: any) {
+    } catch (error) {
       console.error('Setup failed:', error)
       setResults([{ email: 'Setup', success: false, error: error.message }])
       setStep('results')
@@ -236,7 +236,7 @@ export function DemoSetupClient() {
             <div>
               <h4 className="form-label color-success mb-sm">Successfully Created ({successful.length})</h4>
               <div className="stack-sm">
-                {successful.map((result) => (
+                {successful.map((result: any) => (
                   <div key={result.email} className="flex items-center gap-sm text-body-sm">
                     <CheckCircle className="h-4 w-4 color-success" />
                     <span>{result.email}</span>
@@ -250,7 +250,7 @@ export function DemoSetupClient() {
             <div>
               <h4 className="form-label color-destructive mb-sm">Failed ({failed.length})</h4>
               <div className="stack-sm">
-                {failed.map((result) => (
+                {failed.map((result: any) => (
                   <div key={result.email} className="text-body-sm">
                     <div className="flex items-center gap-sm">
                       <XCircle className="h-4 w-4 color-destructive" />
@@ -306,7 +306,7 @@ export function DemoSetupClient() {
 
       <div className="stack-sm mb-lg">
         <h4 className="form-label">Users to be created:</h4>
-        {DEMO_USERS.map((user) => {
+        {DEMO_USERS.map((user: any) => {
           const Icon = ROLE_ICONS[user.role as keyof typeof ROLE_ICONS]
           
           return (

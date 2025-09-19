@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase/client';
@@ -29,7 +30,7 @@ export default function SignInPage() {
       if (error) throw error
 
       router.push('/dashboard')
-    } catch (error: any) {
+    } catch (error) {
       setError(error.message)
     } finally {
       setLoading(false)
@@ -55,7 +56,7 @@ export default function SignInPage() {
           label="Email Address"
           placeholder="Enter your email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
           required
           autoComplete="email"
         />
@@ -67,7 +68,7 @@ export default function SignInPage() {
           label="Password"
           placeholder="Enter your password"
           value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           required
           autoComplete="current-password"
           showPassword={showPassword}

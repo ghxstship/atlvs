@@ -14,7 +14,7 @@ export const SearchFilter = ({ value, onChange, placeholder = "Search..." }: Sea
     <Input
       type="search"
       value={value}
-      onChange={(e) => onChange(e.target.value)}
+      onChange={(e: any) => onChange(e.target.value)}
       placeholder={placeholder}
       className="max-w-sm"
     />

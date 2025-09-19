@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { Plus } from 'lucide-react';
@@ -101,7 +102,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
       setOpen(false);
       form.reset();
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Create failed');
     } finally {
       setSubmitting(false);
@@ -129,16 +130,16 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <form 
           className="stack-sm" 
-          onSubmit={(e) => { e.preventDefault(); onSubmit(form.getValues()); }} 
+          onSubmit={(e: any) => { e.preventDefault(); onSubmit(form.getValues()); }} 
           aria-live="polite"
         >
           <div className="grid gap-xs">
             <label htmlFor="travel_type" className="text-body-sm form-label">Travel Type *</label>
             <select 
               id="travel_type" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('travel_type') || 'business'} 
-              onChange={(e) => form.setValue('travel_type', e.target.value as any, { shouldDirty: true })}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('travel_type', e.target.value as any, { shouldDirty: true })}
             >
               <option value="business">Business</option>
               <option value="personal">Personal</option>
@@ -152,9 +153,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="destination" className="text-body-sm form-label">Destination *</label>
             <input 
               id="destination" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('destination') || ''} 
-              onChange={(e) => form.setValue('destination', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('destination', e.target.value, { shouldDirty: true })} 
               placeholder="City, Country"
               aria-invalid={!!form.formState.errors.destination} 
             />
@@ -166,9 +167,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="purpose" className="text-body-sm form-label">Purpose *</label>
             <input 
               id="purpose" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('purpose') || ''} 
-              onChange={(e) => form.setValue('purpose', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('purpose', e.target.value, { shouldDirty: true })} 
               placeholder="Brief description of travel purpose"
               aria-invalid={!!form.formState.errors.purpose} 
             />
@@ -182,9 +183,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               <input 
                 id="start_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('start_date') || ''} 
-                onChange={(e) => form.setValue('start_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('start_date', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.start_date} 
               />
               {form.formState.errors.start_date ? 
@@ -196,9 +197,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               <input 
                 id="end_date" 
                 type="date" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('end_date') || ''} 
-                onChange={(e) => form.setValue('end_date', e.target.value, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('end_date', e.target.value, { shouldDirty: true })} 
                 aria-invalid={!!form.formState.errors.end_date} 
               />
               {form.formState.errors.end_date ? 
@@ -210,9 +211,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="accommodation" className="text-body-sm form-label">Accommodation</label>
             <input 
               id="accommodation" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('accommodation') || ''} 
-              onChange={(e) => form.setValue('accommodation', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('accommodation', e.target.value, { shouldDirty: true })} 
               placeholder="Hotel name, address, or other accommodation details"
             />
           </div>
@@ -221,9 +222,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="transportation" className="text-body-sm form-label">Transportation</label>
             <input 
               id="transportation" 
-              className="rounded border px-sm py-xs" 
+              className="rounded border  px-md py-xs" 
               value={form.getValues('transportation') || ''} 
-              onChange={(e) => form.setValue('transportation', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('transportation', e.target.value, { shouldDirty: true })} 
               placeholder="Flight, train, car rental, etc."
             />
           </div>
@@ -233,7 +234,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               id="visa_required" 
               type="checkbox" 
               checked={form.getValues('visa_required')} 
-              onChange={(e) => {
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                 form.setValue('visa_required', e.target.checked, { shouldDirty: true });
                 if (!e.target.checked) {
                   form.setValue('visa_status', 'not_required', { shouldDirty: true });
@@ -248,9 +249,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               <label htmlFor="visa_status" className="text-body-sm form-label">Visa Status</label>
               <select 
                 id="visa_status" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('visa_status') || 'pending'} 
-                onChange={(e) => form.setValue('visa_status', e.target.value as any, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('visa_status', e.target.value as any, { shouldDirty: true })}
               >
                 <option value="pending">Pending</option>
                 <option value="approved">Approved</option>
@@ -267,9 +268,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
                 type="number" 
                 step="0.01" 
                 min="0" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('total_expense') || ''} 
-                onChange={(e) => form.setValue('total_expense', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })} 
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('total_expense', e.target.value ? Number(e.target.value) : undefined, { shouldDirty: true })} 
                 placeholder="0.00"
               />
             </div>
@@ -278,9 +279,9 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
               <label htmlFor="currency" className="text-body-sm form-label">Currency</label>
               <select 
                 id="currency" 
-                className="rounded border px-sm py-xs" 
+                className="rounded border  px-md py-xs" 
                 value={form.getValues('currency') || 'USD'} 
-                onChange={(e) => form.setValue('currency', e.target.value, { shouldDirty: true })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('currency', e.target.value, { shouldDirty: true })}
               >
                 <option value="USD">USD</option>
                 <option value="EUR">EUR</option>
@@ -296,16 +297,16 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border px-sm py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-[80px]" 
               value={form.getValues('notes') || ''} 
-              onChange={(e) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes about this travel..."
             />
           </div>
 
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
             <Button type="button" variant="ghost" onClick={() => setOpen(false)}>Cancel</Button>
-            <Button variant="primary" disabled={submitting || !form.formState.isDirty}>
+            <Button variant="default" disabled={submitting || !form.formState.isDirty}>
               Create
             </Button>
           </div>

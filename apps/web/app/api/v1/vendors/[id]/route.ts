@@ -125,7 +125,7 @@ export async function GET(
 
     return NextResponse.json({ vendor });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendor GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -201,7 +201,7 @@ export async function PUT(
 
     return NextResponse.json({ vendor });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendor PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -281,7 +281,7 @@ export async function DELETE(
 
     return NextResponse.json({ success: true, message: 'Vendor deleted successfully' });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Vendor DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

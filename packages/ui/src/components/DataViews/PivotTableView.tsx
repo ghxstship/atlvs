@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -15,8 +15,6 @@ import {
   Plus,
   Minus
 } from 'lucide-react';
-import { DataRecord, FieldConfig } from './types';
-
 interface PivotTableProps {
   className?: string;
   defaultRowFields?: string[];
@@ -230,7 +228,7 @@ export function PivotTableView({
           <div className="flex items-center gap-sm">
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => setPivotConfig({
                 rowFields: [],
                 columnFields: [],
@@ -242,7 +240,7 @@ export function PivotTableView({
               <RotateCcw className="h-4 w-4" />
               Reset
             </Button>
-            <Button variant="ghost" size="sm">
+            <Button variant="ghost" >
               <Download className="h-4 w-4" />
               Export
             </Button>
@@ -255,7 +253,7 @@ export function PivotTableView({
             <label className="block text-sm font-medium mb-sm">Row Fields</label>
             <select
               value=""
-              onChange={(e) => {
+              onChange={(e: any) => {
                 const field = e.target.value;
                 if (field && !pivotConfig.rowFields.includes(field)) {
                   setPivotConfig(prev => ({
@@ -281,7 +279,7 @@ export function PivotTableView({
                   <span className="text-sm">{state.fields.find(f => f.key === field)?.label}</span>
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => setPivotConfig(prev => ({
                       ...prev,
                       rowFields: prev.rowFields.filter(f => f !== field)
@@ -299,7 +297,7 @@ export function PivotTableView({
             <label className="block text-sm font-medium mb-sm">Column Fields</label>
             <select
               value=""
-              onChange={(e) => {
+              onChange={(e: any) => {
                 const field = e.target.value;
                 if (field && !pivotConfig.columnFields.includes(field)) {
                   setPivotConfig(prev => ({
@@ -325,7 +323,7 @@ export function PivotTableView({
                   <span className="text-sm">{state.fields.find(f => f.key === field)?.label}</span>
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => setPivotConfig(prev => ({
                       ...prev,
                       columnFields: prev.columnFields.filter(f => f !== field)
@@ -343,7 +341,7 @@ export function PivotTableView({
             <label className="block text-sm font-medium mb-sm">Value Fields</label>
             <select
               value=""
-              onChange={(e) => {
+              onChange={(e: any) => {
                 const field = e.target.value;
                 if (field && !pivotConfig.valueFields.includes(field)) {
                   setPivotConfig(prev => ({
@@ -371,7 +369,7 @@ export function PivotTableView({
                   </span>
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => setPivotConfig(prev => ({
                       ...prev,
                       valueFields: prev.valueFields.filter(f => f !== field)
@@ -434,7 +432,7 @@ export function PivotTableView({
                         {pathIndex === 0 && pivotConfig.rowFields.length > 1 && (
                           <Button
                             variant="ghost"
-                            size="sm"
+                            
                             onClick={() => toggleRowExpansion(rowKey)}
                           >
                             {expandedRows.has(rowKey) ? (
@@ -450,7 +448,7 @@ export function PivotTableView({
                   ))}
                   
                   {/* Data cells */}
-                  {pivotData.columnHeaders.map((columnPath) => {
+                  {pivotData.columnHeaders.map((columnPath: any) => {
                     const columnKey = columnPath.join('|');
                     const cell = pivotData.pivot[rowKey]?.[columnKey];
                     
@@ -496,7 +494,7 @@ export function PivotTableView({
                 <td colSpan={pivotConfig.rowFields.length} className="px-md py-xsxs text-sm font-semibold">
                   Grand Total
                 </td>
-                {pivotData.columnHeaders.map((columnPath) => {
+                {pivotData.columnHeaders.map((columnPath: any) => {
                   const columnKey = columnPath.join('|');
                   const columnCells = Object.values(pivotData.pivot)
                     .map(row => row[columnKey])

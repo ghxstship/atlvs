@@ -50,19 +50,19 @@ export default function CookiePolicyPage() {
             </h2>
             <div className="stack-md">
               <div>
-                <h3 className="text-heading-4">Strictly Necessary Cookies</h3>
+                <h3>Strictly Necessary Cookies</h3>
                 <p>These cookies are essential for the website to function and cannot be disabled.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Performance Cookies</h3>
+                <h3>Performance Cookies</h3>
                 <p>These cookies collect information about how you use our website to help us improve it.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Functional Cookies</h3>
+                <h3>Functional Cookies</h3>
                 <p>These cookies remember your preferences and provide enhanced features.</p>
               </div>
               <div>
-                <h3 className="text-heading-4">Targeting Cookies</h3>
+                <h3>Targeting Cookies</h3>
                 <p>These cookies are used to deliver relevant advertisements based on your interests.</p>
               </div>
             </div>

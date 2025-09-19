@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { Card, CardHeader, CardContent, Badge, Button } from '@ghxstship/ui';
@@ -124,10 +125,10 @@ export default function ProcurementOverviewClient() {
         totalOrders: orders?.length || 0,
         pendingOrders: orders?.filter((o: any) => o.status === 'pending' || o.status === 'processing').length || 0,
         completedOrders: orders?.filter((o: any) => o.status === 'delivered' || o.status === 'completed').length || 0,
-        totalSpend: orders?.reduce((sum: number, o: any) => sum + (o.total || 0), 0) || 0,
-        monthlySpend: monthlyOrders.reduce((sum: number, o: any) => sum + (o.total || 0), 0),
+        totalSpend: orders?.reduce((sum: number, o) => sum + (o.total || 0), 0) || 0,
+        monthlySpend: monthlyOrders.reduce((sum: number, o) => sum + (o.total || 0), 0),
         averageOrderValue: orders?.length ? 
-          (orders.reduce((sum: number, o: any) => sum + (o.total || 0), 0) / orders.length) : 0,
+          (orders.reduce((sum: number, o) => sum + (o.total || 0), 0) / orders.length) : 0,
         topSuppliers,
         recentOrders: orders?.slice(0, 5).map((o: any) => ({
           id: o.id,
@@ -137,7 +138,7 @@ export default function ProcurementOverviewClient() {
           created_at: o.created_at,
         })) || [],
         categoryBreakdown,
-        savingsThisMonth: monthlyOrders.reduce((sum: number, o: any) => sum + (o.savings || 0), 0),
+        savingsThisMonth: monthlyOrders.reduce((sum: number, o) => sum + (o.savings || 0), 0),
         ordersThisWeek: weeklyOrders.length,
         pendingApprovals: orders?.filter((o: any) => o.status === 'pending_approval').length || 0,
       });
@@ -215,7 +216,7 @@ export default function ProcurementOverviewClient() {
           <p className="color-muted">Monitor procurement activities and spending</p>
         </div>
         <div className="flex gap-sm">
-          {['week', 'month', 'quarter', 'year'].map((range) => (
+          {['week', 'month', 'quarter', 'year'].map((range: any) => (
             <Button
               key={range}
               variant={timeRange === range ? 'primary' : 'outline'}
@@ -235,7 +236,7 @@ export default function ProcurementOverviewClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Total Orders</p>
-                <p className="text-heading-3 text-heading-3">{stats.totalOrders}</p>
+                <p className="text-heading-3">{stats.totalOrders}</p>
                 {getChangeIndicator(12)}
               </div>
               <ShoppingCart className="w-8 h-8 color-primary" />
@@ -248,7 +249,7 @@ export default function ProcurementOverviewClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Monthly Spend</p>
-                <p className="text-heading-3 text-heading-3">{formatCurrency(stats.monthlySpend)}</p>
+                <p className="text-heading-3">{formatCurrency(stats.monthlySpend)}</p>
                 {getChangeIndicator(-8)}
               </div>
               <DollarSign className="w-8 h-8 color-success" />
@@ -261,7 +262,7 @@ export default function ProcurementOverviewClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Pending Orders</p>
-                <p className="text-heading-3 text-heading-3">{stats.pendingOrders}</p>
+                <p className="text-heading-3">{stats.pendingOrders}</p>
                 <p className="text-body-sm color-muted">
                   {stats.pendingApprovals} awaiting approval
                 </p>
@@ -276,7 +277,7 @@ export default function ProcurementOverviewClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Savings</p>
-                <p className="text-heading-3 text-heading-3">{formatCurrency(stats.savingsThisMonth)}</p>
+                <p className="text-heading-3">{formatCurrency(stats.savingsThisMonth)}</p>
                 <p className="text-body-sm color-success">This month</p>
               </div>
               <TrendingUp className="w-8 h-8 color-primary" />
@@ -296,7 +297,7 @@ export default function ProcurementOverviewClient() {
           </CardHeader>
           <CardContent>
             <div className="stack-sm">
-              {stats.recentOrders.map((order) => (
+              {stats.recentOrders.map((order: any) => (
                 <div key={order.id} className="flex items-center justify-between p-sm bg-secondary rounded-lg">
                   <div>
                     <p className="form-label">{order.vendor}</p>
@@ -305,7 +306,7 @@ export default function ProcurementOverviewClient() {
                     </p>
                   </div>
                   <div className="flex items-center gap-sm">
-                    <span className="text-heading-4">{formatCurrency(order.total)}</span>
+                    <span className="text-body-sm">{formatCurrency(order.total)}</span>
                     <Badge variant={getStatusColor(order.status)}>
                       {order.status}
                     </Badge>
@@ -370,7 +371,7 @@ export default function ProcurementOverviewClient() {
         </CardHeader>
         <CardContent>
           <div className="stack-sm">
-            {stats.categoryBreakdown.map((category) => (
+            {stats.categoryBreakdown.map((category: any) => (
               <div key={category.category}>
                 <div className="flex justify-between mb-xs">
                   <span className="text-body-sm form-label">{category.category}</span>
@@ -399,7 +400,7 @@ export default function ProcurementOverviewClient() {
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
               <Plus className="w-8 h-8 mx-auto mb-sm color-primary" />
-              <p className="text-heading-4">Create Order</p>
+              <p className="text-body-sm">Create Order</p>
               <p className="text-body-sm color-muted">Start a new purchase order</p>
             </CardContent>
           </Card>
@@ -409,7 +410,7 @@ export default function ProcurementOverviewClient() {
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
               <Package className="w-8 h-8 mx-auto mb-sm color-primary" />
-              <p className="text-heading-4">Browse Catalog</p>
+              <p className="text-body-sm">Browse Catalog</p>
               <p className="text-body-sm color-muted">View products and services</p>
             </CardContent>
           </Card>
@@ -419,7 +420,7 @@ export default function ProcurementOverviewClient() {
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
               <Activity className="w-8 h-8 mx-auto mb-sm color-primary" />
-              <p className="text-heading-4">Track Orders</p>
+              <p className="text-body-sm">Track Orders</p>
               <p className="text-body-sm color-muted">Monitor order status</p>
             </CardContent>
           </Card>

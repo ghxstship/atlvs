@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
@@ -52,7 +53,7 @@ export function NavigationDropdown({
         </button>
         {activeDropdown === item.label && (
           <div className="pl-md stack-xl">
-            {item.children?.map((child) => (
+            {item.children?.map((child: any) => (
               <a
                 key={child.href}
                 href={child.href}
@@ -96,7 +97,7 @@ export function NavigationDropdown({
             : "opacity-0 translate-y-1 invisible"
         )}
       >
-        {item.children?.map((child) => (
+        {item.children?.map((child: any) => (
           <a
             key={child.href}
             href={child.href}

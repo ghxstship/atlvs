@@ -1,8 +1,9 @@
 'use client';
 
+
 import React from "react";
 
-import { Badge, Button, Card, Input, cn } from "@ghxstship/ui";
+import { Badge, Button, Card, UnifiedInput, cn } from '@ghxstship/ui';
 import { useState, useEffect } from 'react'
 import { createClient } from "../../../../../lib/supabase/client"
 
@@ -74,22 +75,22 @@ export default function Client({ className }: ClientProps) {
       </div>
 
       <div className="mb-md">
-        <Input onChange={() => {}} placeholder="Search health records..." className="w-full sm:w-auto sm:max-w-sm" aria- />
+        <UnifiedInput onChange={(e: React.ChangeEvent<HTMLInputElement>) => {}} placeholder="Search health records..." className="w-full sm:w-auto sm:max-w-sm" aria- />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md">
-        {data.map((item) => (
+        {data.map((item: any) => (
           <Card key={item.id} className="p-md">
             <div className="flex flex-col sm:flex-row items-center justify-between">
               <div>
-                <h2 className="text-heading-4">{item.name}</h2>
+                <h2 className="text-body text-heading-3">{item.name}</h2>
                 <p className="text-body-sm color-foreground-subtle">ID: {item.id}</p>
               </div>
               <div className="flex flex-col sm:flex-row items-center gap-sm">
                 <Badge variant={item.status === 'active' ? 'default' : 'secondary'}>
                   {item.status}
                 </Badge>
-                <Button variant="primary" size="sm" onClick={() => console.log("Edit clicked")}>Edit</Button>
+                <Button variant="default" size="sm" onClick={() => console.log("Edit clicked")}>Edit</Button>
               </div>
             </div>
           </Card>

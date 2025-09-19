@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
 
 export default function AutoSeedOnFirstRun({ orgId }: { orgId: string }) {

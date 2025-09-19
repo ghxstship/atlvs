@@ -1,13 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Badge, 
-  Button
-} from '@ghxstship/ui';
+import { Card, Badge, Button } from '@ghxstship/ui';
 import { 
   User, 
   Mail, 
@@ -289,7 +286,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             {activities.length > 0 ? (
               <div className="stack-sm">
-                {activities.map((activity) => (
+                {activities.map((activity: any) => (
                   <div key={activity.id} className="flex items-center gap-sm p-sm bg-secondary/50 rounded-lg">
                     <div className="h-2 w-2 bg-primary rounded-full"></div>
                     <div className="flex-1">

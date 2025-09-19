@@ -1,20 +1,8 @@
 'use client';
 
+
 import { useEffect, useState } from 'react';
-import { 
-  DataViewProvider, 
-  DataGrid, 
-  KanbanBoard, 
-  CalendarView, 
-  ListView,
-  ViewSwitcher, 
-  DataActions,
-  Drawer,
-  StateManagerProvider,
-  type FieldConfig,
-  type DataViewConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Drawer, type DataRecord } from '@ghxstship/ui';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
 
@@ -165,11 +153,11 @@ export default function FinanceClient({ orgId }: { orgId: string }) {
       console.log('Search:', query);
       // Implement search logic
     },
-    onFilter: (filters) => {
+    onFilter: (filters: any) => {
       console.log('Filter:', filters);
       // Implement filter logic
     },
-    onSort: (sorts) => {
+    onSort: (sorts: any) => {
       console.log('Sort:', sorts);
       // Implement sort logic
     },
@@ -180,7 +168,7 @@ export default function FinanceClient({ orgId }: { orgId: string }) {
       console.log('Export:', format, data);
       // Implement export logic
     },
-    onImport: (data) => {
+    onImport: (data: any) => {
       console.log('Import:', data);
       // Implement import logic
     }

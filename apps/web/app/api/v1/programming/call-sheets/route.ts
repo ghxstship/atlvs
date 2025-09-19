@@ -76,7 +76,7 @@ export async function GET(request: NextRequest) {
     if (error) throw error;
 
     return NextResponse.json({ call_sheets: callSheets || [] });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Call sheets API error:', error);
     return NextResponse.json(
       { error: error?.message || 'Internal server error' },
@@ -156,7 +156,7 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json({ call_sheet: callSheet }, { status: 201 });
-  } catch (error: any) {
+  } catch (error) {
     console.error('Create call sheet error:', error);
     
     if (error instanceof z.ZodError) {

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button } from './Button';
+import { Button } from './atomic/Button';
 import { Plus, Sparkles } from 'lucide-react';
 
 interface EmptyStateProps {
@@ -93,7 +93,7 @@ export function EmptyState({
           <Button
             onClick={primaryAction.onClick}
             className="inline-flex items-center gap-x-xs"
-            variant="primary"
+            variant="default"
           >
             {primaryAction.icon || <Plus className="h-4 w-4" />}
             {primaryAction.label}

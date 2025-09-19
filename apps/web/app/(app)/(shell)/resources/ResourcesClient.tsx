@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Card, Badge, Button } from '@ghxstship/ui';
 import { Plus, FileText, BookOpen, GraduationCap, File, Clipboard, Star, Search, Download, Eye, Edit } from 'lucide-react';
@@ -167,7 +168,7 @@ export default function ResourcesClient() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-heading-3 text-heading-3">Resources</h1>
+          <h1 className="text-heading-3">Resources</h1>
           <p className="color-muted">Manage organizational resources and knowledge base</p>
         </div>
         <Button onClick={() => setShowForm(true)}>
@@ -179,23 +180,23 @@ export default function ResourcesClient() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-md">
         <Card>
-          <div className="text-heading-3 text-heading-3 color-primary">{stats.totalResources}</div>
+          <div className="text-heading-3 color-primary">{stats.totalResources}</div>
           <div className="text-body-sm color-muted">Total Resources</div>
         </Card>
         <Card>
-          <div className="text-heading-3 text-heading-3 color-success">{stats.publishedResources}</div>
+          <div className="text-heading-3 color-success">{stats.publishedResources}</div>
           <div className="text-body-sm color-muted">Published</div>
         </Card>
         <Card>
-          <div className="text-heading-3 text-heading-3 color-warning">{stats.featuredResources}</div>
+          <div className="text-heading-3 color-warning">{stats.featuredResources}</div>
           <div className="text-body-sm color-muted">Featured</div>
         </Card>
         <Card>
-          <div className="text-heading-3 text-heading-3 color-secondary">{stats.totalViews}</div>
+          <div className="text-heading-3 color-secondary">{stats.totalViews}</div>
           <div className="text-body-sm color-muted">Total Views</div>
         </Card>
         <Card>
-          <div className="text-heading-3 text-heading-3 color-primary">{stats.totalDownloads}</div>
+          <div className="text-heading-3 color-primary">{stats.totalDownloads}</div>
           <div className="text-body-sm color-muted">Downloads</div>
         </Card>
       </div>
@@ -210,15 +211,15 @@ export default function ResourcesClient() {
               placeholder="Search resources..."
               className="pl-2xl pr-md py-sm border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:border-transparent"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}
             />
           </div>
           
           <div className="flex gap-sm">
             <select
-              className="px-sm py-sm border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:border-transparent"
+              className=" px-md py-sm border border-border rounded-md bg-background focus:ring-2 focus:ring-primary focus:border-transparent"
               value={filterType}
-              onChange={(e) => setFilterType(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFilterType(e.target.value)}
             >
               <option value="all">All Types</option>
               <option value="policy">Policies</option>
@@ -267,7 +268,7 @@ export default function ResourcesClient() {
         </Card>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-          {filteredResources.map((resource) => {
+          {filteredResources.map((resource: any) => {
             const IconComponent = resourceTypeIcons[resource.type];
             
             return (
@@ -278,7 +279,7 @@ export default function ResourcesClient() {
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
                     <IconComponent className="w-5 h-5 color-primary" />
-                    <Badge variant="secondary" className={statusColors[resource.status]}>
+                    <Badge variant="outline">
                       {resource.status.replace('_', ' ')}
                     </Badge>
                     {resource.is_featured && (
@@ -336,13 +337,13 @@ export default function ResourcesClient() {
                 
                 {resource.tags && resource.tags.length > 0 && (
                   <div className="mt-sm flex flex-wrap gap-xs">
-                    {resource.tags.slice(0, 3).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-body-sm">
+                    {resource.tags.slice(0, 3).map((tag: any) => (
+                      <Badge key={tag} variant="secondary">
                         {tag}
                       </Badge>
                     ))}
                     {resource.tags.length > 3 && (
-                      <Badge variant="secondary" className="text-body-sm">
+                      <Badge variant="secondary">
                         +{resource.tags.length - 3} more
                       </Badge>
                     )}

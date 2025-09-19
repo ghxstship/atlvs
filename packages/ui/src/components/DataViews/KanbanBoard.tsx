@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useCallback } from 'react';
 import { useDataView } from './DataViewProvider';
-import { Button } from '../Button';
+import { Button } from '../atomic/Button';
 import { Card } from '../Card';
 import { Badge } from '../Badge';
 import { 
@@ -14,7 +14,7 @@ import {
   ChevronDown,
   ChevronRight
 } from 'lucide-react';
-import { KanbanColumn, KanbanCard, DataRecord } from './types';
+import { KanbanColumn, KanbanCard } from './types';
 
 interface KanbanBoardProps {
   className?: string;
@@ -48,7 +48,7 @@ export function KanbanBoard({
 
   // Group records by status
   const groupedRecords = useMemo(() => {
-    const groups: Record<string, DataRecord[]> = {};
+    const groups: Record<string[]> = {};
     
     columns.forEach(column => {
       groups[column.id] = [];
@@ -149,7 +149,7 @@ export function KanbanBoard({
 
   return (
     <div className={boardClasses}>
-      {columns.map((column) => {
+      {columns.map((column: any) => {
         const records = groupedRecords[column.id] || [];
         const isCollapsed = collapsedColumns.has(column.id);
         const isOverLimit = column.wipLimit && records.length > column.wipLimit;
@@ -162,9 +162,9 @@ export function KanbanBoard({
               flex-shrink-0 w-80 bg-muted rounded-lg
               ${isDragOver ? 'ring-2 ring-primary bg-primary/10' : ''}
             `}
-            onDragOver={(e) => handleDragOver(e, column.id)}
+            onDragOver={(e: any) => handleDragOver(e, column.id)}
             onDragLeave={handleDragLeave}
-            onDrop={(e) => handleDrop(e, column.id)}
+            onDrop={(e: any) => handleDrop(e, column.id)}
           >
             {/* Column Header */}
             <div className="p-md border-b border-border">
@@ -185,14 +185,14 @@ export function KanbanBoard({
                     {column.title}
                   </h3>
                   
-                  <Badge variant="secondary" size="sm">
+                  <Badge variant="secondary" >
                     {records.length}
                   </Badge>
                   
                   {column.wipLimit && (
                     <Badge 
                       variant={isOverLimit ? 'destructive' : 'outline'} 
-                      size="sm"
+                      
                     >
                       {records.length}/{column.wipLimit}
                     </Badge>
@@ -202,7 +202,7 @@ export function KanbanBoard({
                 <div className="flex items-center gap-xs">
                   <Button
                     variant="ghost"
-                    size="sm"
+                    
                     onClick={() => {
                       // Create new card in this column
                       config.onCreate?.();
@@ -211,7 +211,7 @@ export function KanbanBoard({
                     <Plus className="h-4 w-4" />
                   </Button>
                   
-                  <Button variant="ghost" size="sm">
+                  <Button variant="ghost" >
                     <MoreHorizontal className="h-4 w-4" />
                   </Button>
                 </div>
@@ -221,7 +221,7 @@ export function KanbanBoard({
             {/* Column Content */}
             {!isCollapsed && (
               <div className="p-md space-y-sm max-h-[calc(100vh-200px)] overflow-y-auto">
-                {records.map((record) => {
+                {records.map((record: any) => {
                   const isDragging = draggedCard === record.id;
                   const priority = priorityField ? record[priorityField] : null;
                   const assignee = assigneeField ? record[assigneeField] : null;
@@ -237,7 +237,7 @@ export function KanbanBoard({
                         ${state.selection.includes(record.id) ? 'ring-2 ring-primary' : ''}
                       `}
                       draggable
-                      onDragStart={(e) => handleDragStart(e, record.id)}
+                      onDragStart={(e: any) => handleDragStart(e, record.id)}
                       onClick={() => {
                         const isSelected = state.selection.includes(record.id);
                         if (isSelected) {
@@ -275,12 +275,12 @@ export function KanbanBoard({
                         {tags && Array.isArray(tags) && tags.length > 0 && (
                           <div className="flex flex-wrap gap-xs">
                             {tags.slice(0, 3).map((tag, index) => (
-                              <Badge key={index} variant="outline" size="sm">
+                              <Badge key={index} variant="outline" >
                                 {tag}
                               </Badge>
                             ))}
                             {tags.length > 3 && (
-                              <Badge variant="outline" size="sm">
+                              <Badge variant="outline" >
                                 +{tags.length - 3}
                               </Badge>
                             )}
@@ -322,7 +322,7 @@ export function KanbanBoard({
                     <div className="text-sm">No items in {column.title}</div>
                     <Button
                       variant="ghost"
-                      size="sm"
+                      
                       className="mt-sm"
                       onClick={() => config.onCreate?.()}
                     >

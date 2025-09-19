@@ -45,7 +45,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       if (typeof window !== 'undefined' && (window as any).posthog) {
         (window as any).posthog.capture('vendor.updated', { organization_id: orgId, vendor_id: vendorId });
       }
-    } catch (e: any) {
+    } catch (e) {
       setMsg(e?.message || 'Update failed');
     } finally {
       setSaving(false);
@@ -110,25 +110,25 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       )}
 
       {tab === 'edit' && vendor && (
-        <form className="stack-sm" onSubmit={(e) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
+        <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
           <div className="grid gap-xs">
             <label htmlFor="name" className="text-body-sm">Name</label>
-            <input id="name" className="rounded border px-sm py-xs" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+            <input id="name" className="rounded border  px-md py-xs" value={form.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })} />
           </div>
           <div className="grid gap-xs">
             <label htmlFor="website" className="text-body-sm">Website</label>
-            <input id="website" className="rounded border px-sm py-xs" value={form.website} onChange={(e) => setForm({ ...form, website: e.target.value })} />
+            <input id="website" className="rounded border  px-md py-xs" value={form.website} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, website: e.target.value })} />
           </div>
           <div className="grid gap-xs">
             <label htmlFor="email" className="text-body-sm">Email</label>
-            <input id="email" className="rounded border px-sm py-xs" value={form.contactEmail} onChange={(e) => setForm({ ...form, contactEmail: e.target.value })} />
+            <input id="email" className="rounded border  px-md py-xs" value={form.contactEmail} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, contactEmail: e.target.value })} />
           </div>
           <div className="grid gap-xs">
             <label htmlFor="status" className="text-body-sm">Status</label>
-            <input id="status" className="rounded border px-sm py-xs" value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} />
+            <input id="status" className="rounded border  px-md py-xs" value={form.status} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, status: e.target.value })} />
           </div>
           <div className="flex items-center justify-end gap-sm pt-sm border-t">
-            <Button variant="primary" disabled={saving}>{t('save')}</Button>
+            <Button variant="default" disabled={saving}>{t('save')}</Button>
           </div>
         </form>
       )}

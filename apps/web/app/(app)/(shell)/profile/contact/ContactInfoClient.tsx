@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Card } from '@ghxstship/ui';
+import { Button, UnifiedInput, Card } from '@ghxstship/ui';
 import { Save, Phone, Mail, MapPin } from 'lucide-react';
 
 interface UserProfile {
@@ -121,24 +122,22 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
         <div className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Phone className="h-5 w-5" />
-            <h3 className="text-heading-4">Phone Numbers</h3>
+            <h3 className="text-body text-heading-4">Phone Numbers</h3>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
             <div className="stack-sm">
               <label className="text-body-sm form-label">Primary Phone</label>
-              <Input
-                value={formData.phone_primary}
-                onChange={(e) => setFormData(prev => ({ ...prev, phone_primary: e.target.value }))}
+              <UnifiedInput                 value={formData.phone_primary}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, phone_primary: e.target.value }))}
                 placeholder="+1 (555) 123-4567"
               />
             </div>
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Secondary Phone</label>
-              <Input
-                value={formData.phone_secondary}
-                onChange={(e) => setFormData(prev => ({ ...prev, phone_secondary: e.target.value }))}
+              <UnifiedInput                 value={formData.phone_secondary}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, phone_secondary: e.target.value }))}
                 placeholder="+1 (555) 987-6543"
               />
             </div>
@@ -151,24 +150,22 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
         <div className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <MapPin className="h-5 w-5" />
-            <h3 className="text-heading-4">Address</h3>
+            <h3 className="text-body text-heading-4">Address</h3>
           </div>
           
           <div className="stack-md">
             <div className="stack-sm">
               <label className="text-body-sm form-label">Address Line 1</label>
-              <Input
-                value={formData.address_line1}
-                onChange={(e) => setFormData(prev => ({ ...prev, address_line1: e.target.value }))}
+              <UnifiedInput                 value={formData.address_line1}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, address_line1: e.target.value }))}
                 placeholder="123 Main Street"
               />
             </div>
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Address Line 2</label>
-              <Input
-                value={formData.address_line2}
-                onChange={(e) => setFormData(prev => ({ ...prev, address_line2: e.target.value }))}
+              <UnifiedInput                 value={formData.address_line2}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, address_line2: e.target.value }))}
                 placeholder="Apt 4B, Suite 200"
               />
             </div>
@@ -176,27 +173,24 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
               <div className="stack-sm">
                 <label className="text-body-sm form-label">City</label>
-                <Input
-                  value={formData.city}
-                  onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
+                <UnifiedInput                   value={formData.city}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, city: e.target.value }))}
                   placeholder="San Francisco"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">State/Province</label>
-                <Input
-                  value={formData.state_province}
-                  onChange={(e) => setFormData(prev => ({ ...prev, state_province: e.target.value }))}
+                <UnifiedInput                   value={formData.state_province}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, state_province: e.target.value }))}
                   placeholder="California"
                 />
               </div>
               
               <div className="stack-sm">
                 <label className="text-body-sm form-label">Postal Code</label>
-                <Input
-                  value={formData.postal_code}
-                  onChange={(e) => setFormData(prev => ({ ...prev, postal_code: e.target.value }))}
+                <UnifiedInput                   value={formData.postal_code}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, postal_code: e.target.value }))}
                   placeholder="94102"
                 />
               </div>
@@ -204,9 +198,8 @@ export default function ContactInfoClient({ orgId, userId }: { orgId: string; us
             
             <div className="stack-sm">
               <label className="text-body-sm form-label">Country</label>
-              <Input
-                value={formData.country}
-                onChange={(e) => setFormData(prev => ({ ...prev, country: e.target.value }))}
+              <UnifiedInput                 value={formData.country}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, country: e.target.value }))}
                 placeholder="United States"
               />
             </div>

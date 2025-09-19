@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -86,7 +87,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
       form.reset();
       setOpen(false);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Failed to create call sheet');
     } finally {
       setLoading(false);
@@ -124,11 +125,11 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="event_id"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('event_id')}
             >
               <option value="">Select an event</option>
-              {events.map((event) => (
+              {events.map((event: any) => (
                 <option key={event.id} value={event.id}>
                   {event.name}
                 </option>
@@ -148,7 +149,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
             <input
               id="title"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Enter call sheet title..."
               {...form.register('title')}
             />
@@ -167,7 +168,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
               <input
                 id="call_date"
                 type="date"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('call_date')}
               />
               {form.formState.errors.call_date && (
@@ -184,7 +185,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
               <input
                 id="call_time"
                 type="time"
-                className="rounded border px-sm py-sm"
+                className="rounded border  px-md py-sm"
                 {...form.register('call_time')}
               />
             </div>
@@ -197,7 +198,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
             <input
               id="location"
               type="text"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Meeting location..."
               {...form.register('location')}
             />
@@ -209,7 +210,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
             </label>
             <select
               id="status"
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               {...form.register('status')}
             >
               <option value="draft">Draft</option>
@@ -226,7 +227,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
             <textarea
               id="notes"
               rows={4}
-              className="rounded border px-sm py-sm"
+              className="rounded border  px-md py-sm"
               placeholder="Additional notes or instructions..."
               {...form.register('notes')}
             />

@@ -1,12 +1,12 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Card, Badge, Button, Input, Textarea, Select, Drawer } from '@ghxstship/ui';
 import { 
   Plane, 
   Edit, 
@@ -385,7 +385,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
 
       {/* Filter Tabs */}
       <div className="flex gap-sm flex-wrap">
-        {['all', 'business', 'personal', 'training', 'conference', 'relocation', 'other'].map((type) => (
+        {['all', 'business', 'personal', 'training', 'conference', 'relocation', 'other'].map((type: any) => (
           <Button
             key={type}
             variant={filterType === type ? 'primary' : 'outline'}
@@ -418,7 +418,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
         </Card>
       ) : (
         <div className="stack-md">
-          {sortedRecords.map((record) => {
+          {sortedRecords.map((record: any) => {
             const IconComponent = getTravelTypeIcon(record.travel_type);
             
             return (
@@ -430,7 +430,7 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
                         <IconComponent className={`h-5 w-5 text-${getTravelTypeColor(record.travel_type)}-600`} />
                       </div>
                       <div>
-                        <h3 className="text-heading-4">{record.destination}</h3>
+                        <h3 className="text-body text-heading-4">{record.destination}</h3>
                         <p className="text-body-sm color-muted">{record.country}</p>
                         <div className="flex items-center gap-sm mt-xs">
                           <Badge variant="outline">
@@ -550,45 +550,39 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </Select>
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Destination"
+            <UnifiedInput               label="Destination"
               placeholder="City, location"
               {...form.register('destination')}
              
             />
 
-            <Input
-              label="Country"
+            <UnifiedInput               label="Country"
               placeholder="Country name"
               {...form.register('country')}
              
             />
           </div>
 
-          <Input
-            label="Purpose"
+          <UnifiedInput             label="Purpose"
             placeholder="Purpose of travel"
             {...form.register('purpose')}
            
           />
 
           <div className="grid grid-cols-3 gap-md">
-            <Input
-              label="Start Date"
+            <UnifiedInput               label="Start Date"
               type="date"
               {...form.register('start_date')}
              
             />
 
-            <Input
-              label="End Date"
+            <UnifiedInput               label="End Date"
               type="date"
               {...form.register('end_date')}
              
             />
 
-            <Input
-              label="Duration (Days)"
+            <UnifiedInput               label="Duration (Days)"
               type="number"
               {...form.register('duration_days', { valueAsNumber: true })}
              
@@ -597,15 +591,13 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Accommodation"
+            <UnifiedInput               label="Accommodation"
               placeholder="Hotel, residence, etc."
               {...form.register('accommodation')}
              
             />
 
-            <Input
-              label="Transportation"
+            <UnifiedInput               label="Transportation"
               placeholder="Flight, car, ship, etc."
               {...form.register('transportation')}
              
@@ -637,15 +629,13 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
           </div>
 
           <div className="grid grid-cols-2 gap-md">
-            <Input
-              label="Passport Used"
+            <UnifiedInput               label="Passport Used"
               placeholder="Passport number or type"
               {...form.register('passport_used')}
              
             />
 
-            <Input
-              label="Expenses ($)"
+            <UnifiedInput               label="Expenses ($)"
               type="number"
               placeholder="0"
               {...form.register('expenses', { valueAsNumber: true })}

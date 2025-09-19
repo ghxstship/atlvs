@@ -1,5 +1,5 @@
 // Data Views - Comprehensive data visualization and interaction system
-export { DataViewProvider, useDataView } from './DataViewProvider';
+export { useDataView, DataViewProvider } from './DataViewProvider';
 export { DataGrid } from './DataGrid';
 export { KanbanBoard } from './KanbanBoard';
 export { ListView } from './ListView';
@@ -33,7 +33,6 @@ export { PerformanceMonitoringSystem } from './PerformanceMonitoringSystem';
 
 // State Management
 export { 
-  StateManagerProvider, 
   useStateManager,
   StateRenderer,
   EmptyState,
@@ -49,14 +48,11 @@ export { VirtualizedList, LazyLoad, useInfiniteScroll } from './VirtualizedList'
 
 // Types (consolidated to avoid duplicates)
 export type {
-  DataRecord,
   ViewType,
   ViewProps,
   FilterConfig,
   SortConfig,
   GroupConfig,
-  FieldConfig,
-  DataViewConfig,
   ViewState,
   KanbanColumn,
   KanbanCard,

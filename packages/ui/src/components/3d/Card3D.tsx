@@ -170,7 +170,7 @@ export function Card3D({
       onClick={handleClick}
       role={onClick ? 'button' : undefined}
       tabIndex={onClick && !disabled ? 0 : undefined}
-      onKeyDown={(e) => {
+      onKeyDown={(e: any) => {
         if (onClick && !disabled && (e.key === 'Enter' || e.key === ' ')) {
           e.preventDefault();
           handleClick();

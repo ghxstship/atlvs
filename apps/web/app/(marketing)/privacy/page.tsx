@@ -191,7 +191,7 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
                     <Lock className="h-6 w-6 text-foreground" />
-                    <h3 className="text-heading-4">Encryption</h3>
+                    <h3>Encryption</h3>
                   </div>
                   <p className="text-body-sm color-muted">All data is encrypted in transit and at rest using industry-standard AES-256 encryption.</p>
                 </CardContent>
@@ -201,7 +201,7 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
                     <Shield className="h-6 w-6 text-foreground" />
-                    <h3 className="text-heading-4">Access Controls</h3>
+                    <h3>Access Controls</h3>
                   </div>
                   <p className="text-body-sm color-muted">Strict access controls and regular security audits protect your information.</p>
                 </CardContent>
@@ -211,7 +211,7 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
                     <Globe className="h-6 w-6 text-foreground" />
-                    <h3 className="text-heading-4">Compliance</h3>
+                    <h3>Compliance</h3>
                   </div>
                   <p className="text-body-sm color-muted">SOC 2 Type II certified and GDPR/CCPA compliant data handling practices.</p>
                 </CardContent>
@@ -221,7 +221,7 @@ export default function PrivacyPolicyPage() {
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
                     <Users className="h-6 w-6 text-foreground" />
-                    <h3 className="text-heading-4">Team Training</h3>
+                    <h3>Team Training</h3>
                   </div>
                   <p className="text-body-sm color-muted">Regular security training for all employees with access to user data.</p>
                 </CardContent>

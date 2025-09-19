@@ -28,7 +28,7 @@ export default async function SettingsPage() {
     <div className="stack-md">
       <Card title={t('title')}>
         <div className="flex items-center justify-between gap-md mb-lg">
-          <h1 className="text-heading-3 text-heading-3 font-anton uppercase">{t('title')}</h1>
+          <h1 className="text-heading-3 font-anton uppercase">{t('title')}</h1>
         </div>
         
         {orgId && user ? <SettingsClient orgId={orgId} userId={user.id} /> : null}

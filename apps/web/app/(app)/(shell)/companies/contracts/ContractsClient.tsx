@@ -3,22 +3,7 @@
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Badge, 
-  Button,
-  Skeleton,
-  Drawer,
-  DataGrid,
-  ViewSwitcher,
-  StateManagerProvider,
-  Icon,
-  IconWithText,
-  StatusIcon,
-  H2,
-  type FieldConfig,
-  type DataRecord
-} from '@ghxstship/ui';
+import { Card, Badge, Button, Skeleton, Drawer, Icon, IconWithText, StatusIcon, H2, type DataRecord } from '@ghxstship/ui';
 import { 
   FileText,
   Plus,
@@ -424,7 +409,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         {/* Header */}
         <div className="flex items-center justify-between mb-lg">
           <div>
-            <H2>Company Contracts</H2>
+            <h2 className="text-heading-2">Company Contracts</h2>
             <p className="text-sm text-muted-foreground mt-xs">Manage contracts and agreements with companies</p>
           </div>
           <div className="flex items-center cluster-sm">
@@ -486,7 +471,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         {/* Contract Grid/List View */}
         {currentView === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-            {contracts.map((contract) => (
+            {contracts.map((contract: any) => (
               <Card key={contract.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewContract(contract)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">
@@ -582,7 +567,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                       View Details
                     </Button>
                     <Button
-                      variant="primary"
+                      variant="default"
                       size="sm"
                       onClick={() => {
                         setSelectedContract(contract);
@@ -600,11 +585,11 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
         ) : (
           <Card className="p-lg">
             <div className="stack-md">
-              {contracts.map((contract) => (
+              {contracts.map((contract: any) => (
                 <div key={contract.id} className="border rounded-lg p-md">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h3 className="text-heading-4">{contract.name}</h3>
+                      <h3 className="text-body text-heading-4">{contract.name}</h3>
                       <p className="text-body-sm color-muted">{contract.type}</p>
                     </div>
                     <div className="flex items-center gap-sm">

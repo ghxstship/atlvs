@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Drawer, Button, Input, Select, Textarea } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Loader2, AlertCircle } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
@@ -182,8 +182,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <Input
-                id="title"
+              <UnifiedInput                 id="title"
                 {...register('title')}
                 placeholder="Enter compliance requirement title"
                
@@ -207,8 +206,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-sm">
                   Job ID *
                 </label>
-                <Input
-                  id="jobId"
+                <UnifiedInput                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
                  
@@ -263,8 +261,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <label htmlFor="dueAt" className="block text-body-sm form-label color-foreground mb-sm">
                   Due Date
                 </label>
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   {...register('dueAt')}
                 />
               </div>
@@ -273,8 +270,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <label htmlFor="completedAt" className="block text-body-sm form-label color-foreground mb-sm">
                   Completed Date
                 </label>
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   {...register('completedAt')}
                 />
               </div>
@@ -285,8 +281,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <label htmlFor="reviewedBy" className="block text-body-sm form-label color-foreground mb-sm">
                   Reviewed By
                 </label>
-                <Input
-                  {...register('reviewedBy')}
+                <UnifiedInput                   {...register('reviewedBy')}
                   placeholder="Enter reviewer name or ID"
                 />
               </div>
@@ -307,8 +302,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
               <label htmlFor="documentationUrl" className="block text-body-sm form-label color-foreground mb-sm">
                 Documentation URL
               </label>
-              <Input
-                type="url"
+              <UnifiedInput                 type="url"
                 {...register('documentationUrl')}
                 placeholder="https://example.com/compliance-docs.pdf"
               />

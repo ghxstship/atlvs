@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Drawer, Button, Input, Select, Textarea } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Loader2, AlertCircle } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
@@ -177,8 +177,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <Input
-                id="title"
+              <UnifiedInput                 id="title"
                 {...register('title')}
                 placeholder="Enter opportunity title"
                
@@ -232,8 +231,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="estimatedValue" className="block text-body-sm form-label color-foreground mb-sm">
                   Estimated Value
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   {...register('estimatedValue', { valueAsNumber: true })}
                   placeholder="0.00"
@@ -259,8 +257,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="probability" className="block text-body-sm form-label color-foreground mb-sm">
                   Probability (%)
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   min="0"
                   max="100"
                   {...register('probability', { valueAsNumber: true })}
@@ -273,8 +270,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="expectedCloseDate" className="block text-body-sm form-label color-foreground mb-sm">
                   Expected Close Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   {...register('expectedCloseDate')}
                 />
               </div>
@@ -285,8 +281,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="clientName" className="block text-body-sm form-label color-foreground mb-sm">
                   Client Name
                 </label>
-                <Input
-                  {...register('clientName')}
+                <UnifiedInput                   {...register('clientName')}
                   placeholder="Enter client name"
                 />
               </div>
@@ -295,8 +290,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 <label htmlFor="clientContact" className="block text-body-sm form-label color-foreground mb-sm">
                   Client Contact
                 </label>
-                <Input
-                  {...register('clientContact')}
+                <UnifiedInput                   {...register('clientContact')}
                   placeholder="Enter contact information"
                 />
               </div>
@@ -306,8 +300,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
               <label htmlFor="source" className="block text-body-sm form-label color-foreground mb-sm">
                 Source
               </label>
-              <Input
-                {...register('source')}
+              <UnifiedInput                 {...register('source')}
                 placeholder="How did you find this opportunity?"
               />
             </div>

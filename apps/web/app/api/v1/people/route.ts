@@ -98,7 +98,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ people: people || [] });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('People GET error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -147,7 +147,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ person }, { status: 201 });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('People POST error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -208,7 +208,7 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json({ person });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('People PUT error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -265,7 +265,7 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('People DELETE error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

@@ -1,9 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Button, Input, Badge } from '@ghxstship/ui';
+import { Button, UnifiedInput, Badge } from '@ghxstship/ui';
 import { Building, Search, Filter, Star, Phone, Mail, Globe, Edit } from 'lucide-react';
 
 interface Vendor {
@@ -95,7 +96,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
     
     return (
       <div className="flex items-center gap-xs">
-        {[1, 2, 3, 4, 5].map((star) => (
+        {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
             className={`h-4 w-4 ${
@@ -126,10 +127,9 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         <div className="flex-1">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-            <Input
-              placeholder="Search vendors..."
+            <UnifiedInput               placeholder="Search vendors..."
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
               className="pl-2xl"
             />
           </div>
@@ -138,8 +138,8 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         <div className="flex gap-sm">
           <select
             value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value as any)}
-            className="px-sm py-sm border border-input rounded-md bg-background"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setStatusFilter(e.target.value as any)}
+            className=" px-md py-sm border border-input rounded-md bg-background"
           >
             <option value="all">All Status</option>
             <option value="active">Active</option>
@@ -163,7 +163,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-          {filteredVendors.map((vendor) => (
+          {filteredVendors.map((vendor: any) => (
             <div
               key={vendor.id}
               className="border border-border rounded-lg p-lg hover:shadow-elevated transition-shadow"

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useEffect } from 'react';
 import { usePathname, useSearchParams } from 'next/navigation';
 
@@ -62,11 +63,11 @@ export const fbPixel = (...args: any[]) => {
   }
 };
 
-export const trackFBEvent = (eventName: string, parameters?: any) => {
+export const trackFBEvent = (eventName: string, parameters?) => {
   fbPixel('track', eventName, parameters);
 };
 
-export const trackFBCustomEvent = (eventName: string, parameters?: any) => {
+export const trackFBCustomEvent = (eventName: string, parameters?) => {
   fbPixel('trackCustom', eventName, parameters);
 };
 

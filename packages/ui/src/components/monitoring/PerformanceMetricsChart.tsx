@@ -370,7 +370,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
 
       {/* Metric Summary Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
-        {summaryStats.map((stat) => (
+        {summaryStats.map((stat: any) => (
           <Card key={stat.id} className="p-md">
             <div className="flex items-center justify-between mb-sm">
               <h3 className="text-sm font-medium text-muted-foreground/70">{stat.name}</h3>
@@ -403,7 +403,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
 
       {/* Charts */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
-        {metricsData.map((metric) => (
+        {metricsData.map((metric: any) => (
           <Card key={metric.id} className="p-lg">
             <div className="flex items-center justify-between mb-md">
               <div>
@@ -447,12 +447,12 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       <Card className="p-lg">
         <h3 className="text-lg font-semibold mb-md">Select Metrics to Display</h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-md">
-          {AVAILABLE_METRICS.map((metric) => (
+          {AVAILABLE_METRICS.map((metric: any) => (
             <label key={metric.id} className="flex items-center space-x-sm cursor-pointer">
               <input
                 type="checkbox"
                 checked={selectedMetrics.includes(metric.id)}
-                onChange={(e) => {
+                onChange={(e: any) => {
                   if (e.target.checked) {
                     setSelectedMetrics([...selectedMetrics, metric.id]);
                   } else {

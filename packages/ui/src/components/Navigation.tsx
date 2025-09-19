@@ -97,7 +97,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
                     ref={searchRef}
                     type="text"
                     value={query}
-                    onChange={(e) => handleSearch(e.target.value)}
+                    onChange={(e: any) => handleSearch(e.target.value)}
                     placeholder={placeholder}
                     className="flex-1 bg-transparent outline-none text-sm font-body"
                     autoComplete="off"
@@ -238,7 +238,7 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
               onClick={() => setIsOpen(false)} 
             />
             <div className="absolute right-0 top-full mt-sm w-48 bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
-              {themes.map((themeOption) => (
+              {themes.map((themeOption: any) => (
                 <button
                   key={themeOption.value}
                   onClick={() => {
@@ -334,7 +334,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
                     <p className="text-sm">No notifications</p>
                   </div>
                 ) : (
-                  notifications.map((notification) => (
+                  notifications.map((notification: any) => (
                     <button
                       key={notification.id}
                       onClick={() => {

@@ -9,11 +9,11 @@ import { createBrowserClient } from '@supabase/ssr';
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 
 interface ProfileCompletionStepProps {
-  user: any;
+  user;
   onNext: () => void;
   onBack: () => void;
   updateData: (data: any) => void;
-  data: any;
+  data;
 }
 
 const industries = [
@@ -91,7 +91,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
         .getPublicUrl(filePath);
 
       setProfile((prev: any) => ({ ...prev, avatar: publicUrl }));
-    } catch (err: any) {
+    } catch (err) {
       setError('Failed to upload avatar');
     }
   };
@@ -131,7 +131,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
       updateData({ profile });
       onNext();
-    } catch (err: any) {
+    } catch (err) {
       setError(err.message || 'Failed to update profile');
     } finally {
       setLoading(false);
@@ -194,7 +194,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="e.g. Creative Director"
                     value={profile.jobTitle}
-                    onChange={(e) => handleInputChange('jobTitle', e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('jobTitle', e.target.value)}
                   />
                 </div>
               </div>
@@ -211,7 +211,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                     placeholder="e.g. Los Angeles, CA"
                     value={profile.location}
-                    onChange={(e) => handleInputChange('location', e.target.value)}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                   />
                 </div>
               </div>
@@ -224,7 +224,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.industry}
-                  onChange={(e) => handleInputChange('industry', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('industry', e.target.value)}
                 >
                   <option value="">Select industry</option>
                   {industries.map(industry => (
@@ -243,7 +243,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.role}
-                  onChange={(e) => handleInputChange('role', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('role', e.target.value)}
                 >
                   <option value="">Select role</option>
                   {roles.map(role => (
@@ -262,7 +262,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <select
                   className="w-full px-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
                   value={profile.teamSize}
-                  onChange={(e) => handleInputChange('teamSize', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('teamSize', e.target.value)}
                 >
                   <option value="">Select team size</option>
                   {teamSizes.map(size => (
@@ -283,7 +283,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   placeholder="Tell us a bit about yourself and what you do..."
                   rows={4}
                   value={profile.bio}
-                  onChange={(e) => handleInputChange('bio', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('bio', e.target.value)}
                 />
                 <p className="text-body-sm color-muted mt-xs">
                   This will be visible to your team members

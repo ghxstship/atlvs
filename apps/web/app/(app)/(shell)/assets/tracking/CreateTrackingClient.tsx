@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   MapPin,
   Calendar,
@@ -178,7 +172,7 @@ export default function CreateTrackingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Navigation className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Asset & Tracking Type</h3>
+            <h3 className="text-body text-heading-4">Asset & Tracking Type</h3>
           </div>
           
           <div className="stack-md">
@@ -186,9 +180,8 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <Input
-                value={formData.assetId}
-                onChange={(e) => handleInputChange('assetId', e.target.value)}
+              <UnifiedInput                 value={formData.assetId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
               />
@@ -201,7 +194,7 @@ export default function CreateTrackingClient({
                 </label>
                 <Select
                   value={formData.trackingType}
-                  onValueChange={(value) => handleInputChange('trackingType', value)}
+                  onValueChange={(value: any) => handleInputChange('trackingType', value)}
                 >
                   {TRACKING_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -217,7 +210,7 @@ export default function CreateTrackingClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {TRACKING_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -234,7 +227,7 @@ export default function CreateTrackingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <MapPin className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Location & Time</h3>
+            <h3 className="text-body text-heading-4">Location & Time</h3>
           </div>
           
           <div className="stack-md">
@@ -242,9 +235,8 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Location *
               </label>
-              <Input
-                value={formData.location}
-                onChange={(e) => handleInputChange('location', e.target.value)}
+              <UnifiedInput                 value={formData.location}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('location', e.target.value)}
                 placeholder="Current location of the asset"
                 required
               />
@@ -254,9 +246,8 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Coordinates (GPS)
               </label>
-              <Input
-                value={formData.coordinates}
-                onChange={(e) => handleInputChange('coordinates', e.target.value)}
+              <UnifiedInput                 value={formData.coordinates}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('coordinates', e.target.value)}
                 placeholder="Latitude, Longitude (e.g., 40.7128, -74.0060)"
               />
             </div>
@@ -266,10 +257,9 @@ export default function CreateTrackingClient({
                 <Calendar className="h-4 w-4 inline mr-xs" />
                 Timestamp *
               </label>
-              <Input
-                type="datetime-local"
+              <UnifiedInput                 type="datetime-local"
                 value={formData.timestamp}
-                onChange={(e) => handleInputChange('timestamp', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('timestamp', e.target.value)}
                 required
               />
             </div>
@@ -280,7 +270,7 @@ export default function CreateTrackingClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Activity className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Assignment & Condition</h3>
+            <h3 className="text-body text-heading-4">Assignment & Condition</h3>
           </div>
           
           <div className="stack-md">
@@ -288,9 +278,8 @@ export default function CreateTrackingClient({
               <label className="block text-body-sm form-label mb-xs">
                 Assigned To
               </label>
-              <Input
-                value={formData.assignedTo}
-                onChange={(e) => handleInputChange('assignedTo', e.target.value)}
+              <UnifiedInput                 value={formData.assignedTo}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                 placeholder="Person currently responsible for asset"
               />
             </div>
@@ -301,7 +290,7 @@ export default function CreateTrackingClient({
               </label>
               <Select
                 value={formData.condition}
-                onValueChange={(value) => handleInputChange('condition', value)}
+                onValueChange={(value: any) => handleInputChange('condition', value)}
               >
                 {ASSET_CONDITIONS.map(condition => (
                   <option key={condition.value} value={condition.value}>
@@ -317,7 +306,7 @@ export default function CreateTrackingClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about this tracking update"
                 rows={3}
               />

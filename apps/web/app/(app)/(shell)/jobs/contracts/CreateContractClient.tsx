@@ -1,10 +1,10 @@
 'use client';
 
+
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { Drawer, Button, Input, Select, Textarea } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
 import { Plus, Loader2, AlertCircle } from 'lucide-react';
 import { usePostHog } from 'posthog-js/react';
@@ -179,8 +179,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               <label htmlFor="title" className="block text-body-sm form-label color-foreground mb-sm">
                 Title *
               </label>
-              <Input
-                id="title"
+              <UnifiedInput                 id="title"
                 {...register('title')}
                 placeholder="Enter contract title"
                
@@ -204,8 +203,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="jobId" className="block text-body-sm form-label color-foreground mb-sm">
                   Job ID *
                 </label>
-                <Input
-                  id="jobId"
+                <UnifiedInput                   id="jobId"
                   {...register('jobId')}
                   placeholder="Enter associated job ID"
                  
@@ -216,8 +214,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="companyId" className="block text-body-sm form-label color-foreground mb-sm">
                   Company ID (Optional)
                 </label>
-                <Input
-                  id="companyId"
+                <UnifiedInput                   id="companyId"
                   {...register('companyId')}
                   placeholder="Enter company ID if applicable"
                 />
@@ -258,8 +255,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="value" className="block text-body-sm form-label color-foreground mb-sm">
                   Contract Value
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   {...register('value', { valueAsNumber: true })}
                   placeholder="0.00"
@@ -285,8 +281,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="startDate" className="block text-body-sm form-label color-foreground mb-sm">
                   Start Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   {...register('startDate')}
                 />
               </div>
@@ -295,8 +290,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
                 <label htmlFor="endDate" className="block text-body-sm form-label color-foreground mb-sm">
                   End Date
                 </label>
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   {...register('endDate')}
                 />
               </div>
@@ -306,8 +300,7 @@ export default function CreateContractClient({ orgId, onSuccess }: CreateContrac
               <label htmlFor="documentUrl" className="block text-body-sm form-label color-foreground mb-sm">
                 Document URL
               </label>
-              <Input
-                type="url"
+              <UnifiedInput                 type="url"
                 {...register('documentUrl')}
                 placeholder="https://example.com/contract.pdf"
               />

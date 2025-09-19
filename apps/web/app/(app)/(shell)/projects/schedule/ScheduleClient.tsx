@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useState } from 'react';
 import { Badge, Button } from '@ghxstship/ui';
 import { 
@@ -90,8 +91,8 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
           <Filter className="w-4 h-4 color-muted" />
           <select
             value={selectedProject}
-            onChange={(e) => setSelectedProject(e.target.value)}
-            className="rounded border px-sm py-xs text-body-sm"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedProject(e.target.value)}
+            className="rounded border  px-md py-xs text-body-sm"
           >
             <option value="all">All Projects</option>
             {data.projects.map(project => (
@@ -247,7 +248,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                   <div className={`text-body-sm ${isCurrentMonth ? 'color-foreground' : 'color-muted'}`}>
                     {startDate.getDate()}
                   </div>
-                  <div className="stack-xs">
+                  <div className="stack-md">
                     {dayItems.slice(0, 2).map((item, idx) => (
                       <div
                         key={idx}
@@ -309,19 +310,19 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-md pt-lg border-t">
         <div className="text-center">
-          <div className="text-heading-3 text-heading-3 color-primary">{filteredData.projects.length}</div>
+          <div className="text-heading-3 color-primary">{filteredData.projects.length}</div>
           <div className="text-body-sm color-muted">Active Projects</div>
         </div>
         <div className="text-center">
-          <div className="text-heading-3 text-heading-3 color-success">{filteredData.milestones.length}</div>
+          <div className="text-heading-3 color-success">{filteredData.milestones.length}</div>
           <div className="text-body-sm color-muted">Milestones</div>
         </div>
         <div className="text-center">
-          <div className="text-heading-3 text-heading-3 color-warning">{filteredData.tasks.length}</div>
+          <div className="text-heading-3 color-warning">{filteredData.tasks.length}</div>
           <div className="text-body-sm color-muted">Scheduled Tasks</div>
         </div>
         <div className="text-center">
-          <div className="text-heading-3 text-heading-3 color-destructive">
+          <div className="text-heading-3 color-destructive">
             {upcomingItems.filter(item => isOverdue(item.date!)).length}
           </div>
           <div className="text-body-sm color-muted">Overdue Items</div>

@@ -1,5 +1,6 @@
 'use client';
 
+
 import { useMemo, useState } from 'react';
 import { Drawer, Button } from '@ghxstship/ui';
 import { createBrowserClient } from '@ghxstship/auth';
@@ -63,7 +64,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
   async function removeTag(tagId: string) {
     if (!openId) return;
     const prev = tags.slice();
-    setTags((p) => p.filter((t) => t.id !== tagId));
+    setTags((p: any) => p.filter((t: any) => t.id !== tagId));
     const { error } = await sb
       .from('tags')
       .delete()
@@ -95,7 +96,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         href: '/projects/files'
       });
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Update failed');
     } finally {
       setSaving(false);
@@ -124,7 +125,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
       });
       setOpenId(null);
       router.refresh();
-    } catch (e: any) {
+    } catch (e) {
       setError(e?.message || 'Delete failed');
     } finally {
       setSaving(false);
@@ -143,7 +144,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
           </tr>
         </thead>
         <tbody>
-          {rows.map((r) => (
+          {rows.map((r: any) => (
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => onOpen(r.id)}>
               <td className="border-b p-sm">{r.name}</td>
               <td className="border-b p-sm">{r.mime_type || 'file'}</td>
@@ -169,8 +170,8 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         <div className="mb-sm">
           <div className="mb-xs flex items-center gap-sm text-body-sm form-label"><Tag className="h-4 w-4" /> {t('tags.title')}</div>
           <div className="flex flex-wrap items-center gap-sm">
-            {tags.map((tg) => (
-              <span key={tg.id} className="inline-flex items-center gap-xs rounded-full border px-sm py-0.5 text-body-sm">
+            {tags.map((tg: any) => (
+              <span key={tg.id} className="inline-flex items-center gap-xs rounded-full border  px-md py-0.5 text-body-sm">
                 {tg.tag}
                 <button type="button" className="opacity-60 hover:opacity-100" aria-label={t('tags.remove')} title={t('tags.remove')} onClick={() => removeTag(tg.id)}>
                   <XIcon className="h-3 w-3" />
@@ -181,10 +182,10 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
               <input
                 aria-label={t('tags.addPlaceholder')}
                 placeholder={t('tags.addPlaceholder')}
-                className="px-sm py-xs text-body-sm outline-none"
+                className=" px-md py-xs text-body-sm outline-none"
                 value={tagInput}
-                onChange={(e) => setTagInput(e.target.value)}
-                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setTagInput(e.target.value)}
+                onKeyDown={(e: any) => { if (e.key === 'Enter') { e.preventDefault(); addTag(); } }}
               />
               <Button onClick={addTag}>{t('tags.add')}</Button>
             </div>
@@ -192,7 +193,7 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
         </div>
         <div className="grid gap-xs">
           <label htmlFor="name" className="text-body-sm">Name</label>
-          <input id="name" className="rounded border px-sm py-xs" value={name} onChange={(e) => setName(e.target.value)} />
+          <input id="name" className="rounded border  px-md py-xs" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
         </div>
         <div className="mt-sm flex items-center justify-between gap-sm border-t pt-sm">
           <Button variant="outline" onClick={onSave}><FileEdit className="mr-xs h-4 w-4" /> Save</Button>

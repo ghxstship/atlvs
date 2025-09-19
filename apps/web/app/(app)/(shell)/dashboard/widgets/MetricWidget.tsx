@@ -1,5 +1,6 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { Card, Badge } from '@ghxstship/ui';
 import { StatusBadge } from "../../../../_components/ui"
@@ -232,10 +233,7 @@ export default function MetricWidget({
                   {formatValue(value, metric.format)}
                 </p>
                 {metric.color && (
-                  <Badge
-                    variant="outline"
-                    className="text-body-sm"
-                  >
+                  <Badge variant="outline">
                     {metric.label}
                   </Badge>
                 )}

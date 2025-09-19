@@ -1,15 +1,10 @@
 'use client';
 
+
 import { useState, useEffect } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Card, 
-  Button, 
-  Badge, 
-  Skeleton,
-  Drawer
-} from '@ghxstship/ui';
+import { Card, Button, Badge, Skeleton, Drawer } from '@ghxstship/ui';
 import { 
   Star,
   Plus,
@@ -141,7 +136,7 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
       {/* Ratings Grid/List */}
       {currentView === 'grid' ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
-          {ratings.map((rating) => (
+          {ratings.map((rating: any) => (
             <Card key={rating.id} className="p-lg hover:shadow-floating transition-shadow">
               <div className="flex items-start justify-between mb-md">
                 <div>
@@ -174,7 +169,7 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
         </div>
       ) : (
         <div className="stack-md">
-          {ratings.map((rating) => (
+          {ratings.map((rating: any) => (
             <Card key={rating.id} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">

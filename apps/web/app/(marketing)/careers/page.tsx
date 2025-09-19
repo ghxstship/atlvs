@@ -332,7 +332,7 @@ export default function CareersPage() {
               { label: 'Open Positions', value: '19' },
               { label: 'Countries', value: '15+' },
               { label: 'Avg. Tenure', value: '3.2 years' },
-            ].map((stat) => (
+            ].map((stat: any) => (
               <div key={stat.label} className="text-center">
                 <div className={`${anton.className} uppercase text-heading-2 lg:text-heading-1 text-heading-3 text-foreground mb-sm`}>
                   {stat.value}
@@ -361,7 +361,7 @@ export default function CareersPage() {
             <Badge variant="secondary" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
               All Departments
             </Badge>
-            {departments.map((dept) => (
+            {departments.map((dept: any) => (
               <Badge key={dept.name} variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
                 {dept.name} ({dept.count})
               </Badge>
@@ -370,7 +370,7 @@ export default function CareersPage() {
 
           {/* Job Listings */}
           <div className="stack-lg max-w-4xl mx-auto">
-            {openPositions.map((position) => (
+            {openPositions.map((position: any) => (
               <Card key={position.id} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-lg">
@@ -409,8 +409,8 @@ export default function CareersPage() {
                       </div>
 
                       <div className="flex flex-wrap gap-sm">
-                        {position.requirements.slice(0, 3).map((req) => (
-                          <Badge key={req} variant="outline" className="text-body-sm">
+                        {position.requirements.slice(0, 3).map((req: any) => (
+                          <Badge key={req} variant="outline">
                             {req}
                           </Badge>
                         ))}
@@ -456,7 +456,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-xl mb-3xl">
-            {cultureValues.map((value) => {
+            {cultureValues.map((value: any) => {
               const Icon = value.icon;
               return (
                 <Card key={value.title} className="text-center hover:shadow-floating transition-shadow">
@@ -500,7 +500,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
-            {benefits.map((benefit) => {
+            {benefits.map((benefit: any) => {
               const Icon = benefit.icon;
               return (
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
@@ -535,7 +535,7 @@ export default function CareersPage() {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-lg">
-            {departments.map((dept) => (
+            {departments.map((dept: any) => (
               <Card key={dept.name} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
@@ -572,7 +572,7 @@ export default function CareersPage() {
                 { step: '02', title: 'Screen', description: 'Initial phone/video call with our recruiting team.' },
                 { step: '03', title: 'Interview', description: 'Technical and cultural fit interviews with the team.' },
                 { step: '04', title: 'Offer', description: 'Reference checks and offer discussion.' },
-              ].map((step) => (
+              ].map((step: any) => (
                 <div key={step.step} className="text-center">
                   <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 text-body mx-auto mb-md">
                     {step.step}

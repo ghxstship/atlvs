@@ -265,7 +265,7 @@ export const createRouteComponent = (
   });
 
   // Wrapper component that handles preloading
-  const WrappedComponent: React.FC<any> = (props) => {
+  const WrappedComponent: React.FC<any> = (props: any) => {
     const { preloadMultiple } = usePreloadComponent();
 
     React.useEffect(() => {

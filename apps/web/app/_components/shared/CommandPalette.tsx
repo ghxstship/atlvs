@@ -77,9 +77,9 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
             autoFocus
             type="text"
             value={query}
-            onChange={(e: React.FormEvent) => setQuery((e.target as HTMLInputElement).value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery((e.target as HTMLInputElement).value)}
             placeholder="Search modules and pages (⌘K)"
-            className="w-full bg-transparent outline-none text-body-sm px-sm py-xs"
+            className="w-full bg-transparent outline-none text-body-sm  px-md py-xs"
             aria-label="Search commands"
           />
         </div>

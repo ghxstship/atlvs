@@ -1,9 +1,9 @@
 'use client';
 
+
 import { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { Drawer, Button, Input, Textarea, Select, Card } from '@ghxstship/ui';
 import { Plus, TrendingUp, Calendar, DollarSign, Building } from 'lucide-react';
 
 interface CreateRevenueClientProps {
@@ -143,9 +143,8 @@ export default function CreateRevenueClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Revenue Description *
             </label>
-            <Input
-              value={formData.description}
-              onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+            <UnifiedInput               value={formData.description}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               placeholder="e.g., Project Alpha Payment, Consulting Services, Product Sales"
               required
             />
@@ -158,10 +157,9 @@ export default function CreateRevenueClient({
               </label>
               <div className="relative">
                 <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   value={formData.amount || ''}
-                  onChange={(e) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
                   placeholder="0.00"
                   className="pl-2xl"
                   min="0"
@@ -182,7 +180,7 @@ export default function CreateRevenueClient({
               </label>
               <Select
                 value={formData.currency}
-                onValueChange={(value) => setFormData(prev => ({ ...prev, currency: value }))}
+                onValueChange={(value: any) => setFormData(prev => ({ ...prev, currency: value }))}
               >
                 <option value="USD">USD - US Dollar</option>
                 <option value="EUR">EUR - Euro</option>
@@ -202,7 +200,7 @@ export default function CreateRevenueClient({
                 <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
                 <Select
                   value={formData.source}
-                  onValueChange={(value) => setFormData(prev => ({ ...prev, source: value }))}
+                  onValueChange={(value: any) => setFormData(prev => ({ ...prev, source: value }))}
                 >
                   <option value="services">Professional Services</option>
                   <option value="products">Product Sales</option>
@@ -223,10 +221,9 @@ export default function CreateRevenueClient({
               </label>
               <div className="relative">
                 <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
-                <Input
-                  type="date"
+                <UnifiedInput                   type="date"
                   value={formData.recognitionDate}
-                  onChange={(e) => setFormData(prev => ({ ...prev, recognitionDate: e.target.value }))}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, recognitionDate: e.target.value }))}
                   className="pl-2xl"
                   required
                 />
@@ -238,9 +235,8 @@ export default function CreateRevenueClient({
             <label className="block text-body-sm form-label color-foreground mb-sm">
               Related Invoice ID
             </label>
-            <Input
-              value={formData.invoiceId}
-              onChange={(e) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
+            <UnifiedInput               value={formData.invoiceId}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, invoiceId: e.target.value }))}
               placeholder="Optional: Link to existing invoice"
             />
             <p className="text-body-sm color-foreground/60 mt-xs">

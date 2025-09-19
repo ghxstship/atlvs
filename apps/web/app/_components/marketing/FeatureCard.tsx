@@ -1,7 +1,8 @@
 'use client';
 
-import { Card, CardContent } from '@ghxstship/ui/components/Card';
-import { Badge } from '@ghxstship/ui/components/Badge';
+
+import { Card, CardContent  } from '@ghxstship/ui';
+import { Badge  } from '@ghxstship/ui';
 import { LucideIcon } from 'lucide-react';
 // import { typography } from '../../../../(marketing)/lib/typography';
 import { cn } from '../lib/utils';
@@ -143,7 +144,7 @@ export function TestimonialCard({
           )}
           
           <div>
-            <div className="text-heading-4">{author}</div>
+            <div className="text-body-sm">{author}</div>
             <div className="text-body-sm color-muted">
               {role}{company && ` at ${company}`}
             </div>

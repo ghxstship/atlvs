@@ -181,7 +181,7 @@ export const ToastContainer = React.forwardRef<HTMLDivElement, ToastContainerPro
         aria-live="polite"
         aria-label="Notifications"
       >
-        {visibleToasts.map((toast) => (
+        {visibleToasts.map((toast: any) => (
           <Toast key={toast.id} {...toast} />
         ))}
       </div>

@@ -1,16 +1,10 @@
 'use client';
 
+
 import React, { useState } from 'react';
 import { User } from '@supabase/supabase-js';
 import { createBrowserClient } from '@ghxstship/auth';
-import { 
-  Drawer,
-  Button,
-  Input,
-  Select,
-  Textarea,
-  Card
-} from '@ghxstship/ui';
+import { Drawer, Button, UnifiedInput, Select, Textarea, Card } from '@ghxstship/ui';
 import { 
   Wrench,
   Calendar,
@@ -196,7 +190,7 @@ export default function CreateMaintenanceClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Wrench className="h-5 w-5 color-primary" />
-            <h3 className="text-heading-4">Asset & Maintenance Type</h3>
+            <h3 className="text-body text-heading-4">Asset & Maintenance Type</h3>
           </div>
           
           <div className="stack-md">
@@ -204,9 +198,8 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Asset ID *
               </label>
-              <Input
-                value={formData.assetId}
-                onChange={(e) => handleInputChange('assetId', e.target.value)}
+              <UnifiedInput                 value={formData.assetId}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assetId', e.target.value)}
                 placeholder="Enter asset ID"
                 required
               />
@@ -219,7 +212,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.type}
-                  onValueChange={(value) => handleInputChange('type', value)}
+                  onValueChange={(value: any) => handleInputChange('type', value)}
                 >
                   {MAINTENANCE_TYPES.map(type => (
                     <option key={type.value} value={type.value}>
@@ -236,7 +229,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.priority}
-                  onValueChange={(value) => handleInputChange('priority', value)}
+                  onValueChange={(value: any) => handleInputChange('priority', value)}
                 >
                   {MAINTENANCE_PRIORITIES.map(priority => (
                     <option key={priority.value} value={priority.value}>
@@ -252,7 +245,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.status}
-                  onValueChange={(value) => handleInputChange('status', value)}
+                  onValueChange={(value: any) => handleInputChange('status', value)}
                 >
                   {MAINTENANCE_STATUSES.map(status => (
                     <option key={status.value} value={status.value}>
@@ -269,7 +262,7 @@ export default function CreateMaintenanceClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Calendar className="h-5 w-5 color-success" />
-            <h3 className="text-heading-4">Scheduling</h3>
+            <h3 className="text-body text-heading-4">Scheduling</h3>
           </div>
           
           <div className="stack-md">
@@ -278,10 +271,9 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Scheduled Date
                 </label>
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   value={formData.scheduledDate}
-                  onChange={(e) => handleInputChange('scheduledDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('scheduledDate', e.target.value)}
                 />
               </div>
 
@@ -289,10 +281,9 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Completed Date
                 </label>
-                <Input
-                  type="datetime-local"
+                <UnifiedInput                   type="datetime-local"
                   value={formData.completedDate}
-                  onChange={(e) => handleInputChange('completedDate', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('completedDate', e.target.value)}
                 />
               </div>
             </div>
@@ -301,9 +292,8 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Assigned To
               </label>
-              <Input
-                value={formData.assignedTo}
-                onChange={(e) => handleInputChange('assignedTo', e.target.value)}
+              <UnifiedInput                 value={formData.assignedTo}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('assignedTo', e.target.value)}
                 placeholder="Person or team assigned to maintenance"
               />
             </div>
@@ -314,7 +304,7 @@ export default function CreateMaintenanceClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <Wrench className="h-5 w-5 color-secondary" />
-            <h3 className="text-heading-4">Description & Details</h3>
+            <h3 className="text-body text-heading-4">Description & Details</h3>
           </div>
           
           <div className="stack-md">
@@ -324,7 +314,7 @@ export default function CreateMaintenanceClient({
               </label>
               <Textarea
                 value={formData.description}
-                onChange={(e) => handleInputChange('description', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('description', e.target.value)}
                 placeholder="Describe the maintenance work to be performed"
                 rows={3}
                 required
@@ -335,9 +325,8 @@ export default function CreateMaintenanceClient({
               <label className="block text-body-sm form-label mb-xs">
                 Vendor/Service Provider
               </label>
-              <Input
-                value={formData.vendor}
-                onChange={(e) => handleInputChange('vendor', e.target.value)}
+              <UnifiedInput                 value={formData.vendor}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('vendor', e.target.value)}
                 placeholder="External vendor or service provider"
               />
             </div>
@@ -348,7 +337,7 @@ export default function CreateMaintenanceClient({
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
             <DollarSign className="h-5 w-5 color-warning" />
-            <h3 className="text-heading-4">Cost Information</h3>
+            <h3 className="text-body text-heading-4">Cost Information</h3>
           </div>
           
           <div className="stack-md">
@@ -357,11 +346,10 @@ export default function CreateMaintenanceClient({
                 <label className="block text-body-sm form-label mb-xs">
                   Estimated/Actual Cost
                 </label>
-                <Input
-                  type="number"
+                <UnifiedInput                   type="number"
                   step="0.01"
                   value={formData.cost}
-                  onChange={(e) => handleInputChange('cost', e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('cost', e.target.value)}
                   placeholder="0.00"
                 />
               </div>
@@ -372,7 +360,7 @@ export default function CreateMaintenanceClient({
                 </label>
                 <Select
                   value={formData.currency}
-                  onValueChange={(value) => handleInputChange('currency', value)}
+                  onValueChange={(value: any) => handleInputChange('currency', value)}
                 >
                   {CURRENCIES.map(currency => (
                     <option key={currency.value} value={currency.value}>
@@ -389,7 +377,7 @@ export default function CreateMaintenanceClient({
               </label>
               <Textarea
                 value={formData.notes}
-                onChange={(e) => handleInputChange('notes', e.target.value)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleInputChange('notes', e.target.value)}
                 placeholder="Additional notes about the maintenance"
                 rows={3}
               />

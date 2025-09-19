@@ -3,10 +3,11 @@
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 // Note: Avoid importing Supabase types to keep UI package dependency-free
 // type SupabaseClient = any;
-import { Button } from '../Button';
-import { Input } from '../Input';
+import { Button } from '../atomic/Button';
+import { Input } from '../atomic/Input';
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '../Select';
 import { Badge } from '../Badge';
+import { FieldConfig } from './types';
 import { 
   Search, 
   Filter, 
@@ -19,7 +20,7 @@ import {
   ChevronDown,
   ChevronRight
 } from 'lucide-react';
-import { FilterConfig, FieldConfig, SortConfig } from './types';
+import { FilterConfig, SortConfig } from './types';
 
 interface AdvancedSearchSystemProps {
   tableName: string;
@@ -290,13 +291,13 @@ export function AdvancedSearchSystem({
         return (
           <Select
             value={condition.value}
-            onValueChange={(value) => updateCondition(condition.id, { value })}
+            onValueChange={(value: any) => updateCondition(condition.id, { value })}
           >
             <SelectTrigger className="w-48">
               <SelectValue placeholder="Select value..." />
             </SelectTrigger>
             <SelectContent>
-              {field.options?.map(option => (
+              {field.options?.map((option: any) => (
                 <SelectItem key={option.value} value={String(option.value)}>
                   {option.label}
                 </SelectItem>
@@ -310,7 +311,7 @@ export function AdvancedSearchSystem({
           <Input
             type="number"
             value={condition.value}
-            onChange={(e) => updateCondition(condition.id, { value: e.target.value })}
+            onChange={(e: any) => updateCondition(condition.id, { value: e.target.value })}
             placeholder="Enter number..."
             className="w-32"
           />
@@ -321,7 +322,7 @@ export function AdvancedSearchSystem({
           <Input
             type="date"
             value={condition.value}
-            onChange={(e) => updateCondition(condition.id, { value: e.target.value })}
+            onChange={(e: any) => updateCondition(condition.id, { value: e.target.value })}
             className="w-40"
           />
         );
@@ -330,7 +331,7 @@ export function AdvancedSearchSystem({
         return (
           <Select
             value={String(!!condition.value)}
-            onValueChange={(value) => updateCondition(condition.id, { value: value === 'true' })}
+            onValueChange={(value: any) => updateCondition(condition.id, { value: value === 'true' })}
           >
             <SelectTrigger className="w-32">
               <SelectValue />
@@ -346,7 +347,7 @@ export function AdvancedSearchSystem({
         return (
           <Input
             value={condition.value}
-            onChange={(e) => updateCondition(condition.id, { value: e.target.value })}
+            onChange={(e: any) => updateCondition(condition.id, { value: e.target.value })}
             placeholder="Enter value..."
             className="w-48"
           />
@@ -363,10 +364,10 @@ export function AdvancedSearchSystem({
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
               value={globalQuery}
-              onChange={(e) => setGlobalQuery(e.target.value)}
+              onChange={(e: any) => setGlobalQuery(e.target.value)}
               placeholder="Search across all fields with AI-powered suggestions..."
               className="pl-2xl pr-md"
-              onKeyDown={(e) => e.key === 'Enter' && executeSearch()}
+              onKeyDown={(e: any) => e.key === 'Enter' && executeSearch()}
             />
             
             {/* Search Suggestions */}
@@ -438,12 +439,12 @@ export function AdvancedSearchSystem({
               <div className="flex items-center gap-sm">
                 <Select
                   value={queryBuilder.logic}
-                  onValueChange={(value) => setQueryBuilder(prev => ({ ...prev, logic: value as 'AND' | 'OR' }))}
+                  onValueChange={(value: any) => setQueryBuilder(prev => ({ ...prev, logic: value as 'AND' | 'OR' }))}
                 >
                   <option value="AND">Match All (AND)</option>
                   <option value="OR">Match Any (OR)</option>
                 </Select>
-                <Button size="sm" onClick={addCondition}>
+                <Button  onClick={addCondition}>
                   <Plus className="h-3 w-3" />
                   Add Filter
                 </Button>
@@ -460,7 +461,7 @@ export function AdvancedSearchSystem({
 
                 <Select
                   value={condition.field}
-                  onValueChange={(field) => {
+                  onValueChange={(field: any) => {
                     const fieldConfig = fields.find(f => f.key === field);
                     updateCondition(condition.id, { 
                       field, 
@@ -478,7 +479,7 @@ export function AdvancedSearchSystem({
 
                 <Select
                   value={condition.operator}
-                  onValueChange={(operator) => updateCondition(condition.id, { operator: operator as FilterOperator })}
+                  onValueChange={(operator: any) => updateCondition(condition.id, { operator: operator as FilterOperator })}
                 >
                   {FIELD_TYPE_OPERATORS[condition.dataType]?.map(op => (
                     <option key={op} value={op}>
@@ -490,7 +491,7 @@ export function AdvancedSearchSystem({
                 {renderValueInput(condition)}
 
                 <Button
-                  size="sm"
+                  
                   variant="ghost"
                   onClick={() => removeCondition(condition.id)}
                 >
@@ -524,7 +525,7 @@ export function AdvancedSearchSystem({
           <div className="flex items-center justify-between pt-sm border-t border-border">
             <Button
               variant="ghost"
-              size="sm"
+              
               onClick={() => setShowSaveDialog(true)}
               disabled={!globalQuery && queryBuilder.conditions.length === 0}
             >
@@ -535,7 +536,7 @@ export function AdvancedSearchSystem({
             <div className="flex items-center gap-sm">
               <Button
                 variant="ghost"
-                size="sm"
+                
                 onClick={() => {
                   setGlobalQuery('');
                   setQueryBuilder({ conditions: [], logic: 'AND' });
@@ -559,7 +560,7 @@ export function AdvancedSearchSystem({
             <h3 className="text-lg font-medium mb-md">Save Search</h3>
             <Input
               value={saveSearchName}
-              onChange={(e) => setSaveSearchName(e.target.value)}
+              onChange={(e: any) => setSaveSearchName(e.target.value)}
               placeholder="Enter search name..."
               className="mb-md"
             />

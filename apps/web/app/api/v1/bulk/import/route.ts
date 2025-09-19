@@ -79,7 +79,7 @@ function parseCSV(csvContent: string, hasHeaders = true, delimiter = ','): any[]
 
   return dataLines.map(line => {
     const values = line.split(delimiter).map(v => v.trim().replace(/^"|"$/g, ''));
-    const row: any = {};
+    const row = {};
     
     headers.forEach((header, index) => {
       const value = values[index] || '';
@@ -107,7 +107,7 @@ function parseCSV(csvContent: string, hasHeaders = true, delimiter = ','): any[]
 }
 
 // Validate record data
-function validateRecord(record: any, table: string): { valid: boolean; errors: string[] } {
+function validateRecord(record, table: string): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
   // Basic validation rules by table
@@ -357,7 +357,7 @@ export async function POST(request: NextRequest) {
             importedCount += insertResult?.length || 0;
           }
         }
-      } catch (batchError: any) {
+      } catch (batchError) {
         errors.push({ batch, error: batchError.message });
       }
     }
@@ -392,7 +392,7 @@ export async function POST(request: NextRequest) {
       errors: errors.slice(0, 10) // Limit error details
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Bulk import error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -479,7 +479,7 @@ export async function GET(request: NextRequest) {
       }
     });
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('Import template error:', error);
     if (error.message === 'Unauthorized') {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

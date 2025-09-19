@@ -1,8 +1,8 @@
 'use client';
 
+
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@/lib/supabase/client';
-import { Button, Textarea, Card, CardHeader, CardContent, Badge } from '@ghxstship/ui';
 import { Star, ThumbsUp, Award, MessageSquare, Plus, User } from 'lucide-react';
 import { useToast } from '@ghxstship/ui';
 
@@ -125,7 +125,7 @@ export default function EndorsementsClient() {
   const renderStars = (rating: number) => {
     return (
       <div className="flex gap-0.5">
-        {[1, 2, 3, 4, 5].map((star) => (
+        {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
             className={`w-4 h-4 ${
@@ -155,7 +155,7 @@ export default function EndorsementsClient() {
     <div className="stack-lg">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-heading-3 text-heading-3">Endorsements</h2>
+          <h2 className="text-heading-3">Endorsements</h2>
           <p className="color-muted">Professional recommendations from colleagues</p>
         </div>
         <Button onClick={() => setShowAddForm(!showAddForm)}>
@@ -171,7 +171,7 @@ export default function EndorsementsClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Total Endorsements</p>
-                <p className="text-heading-3 text-heading-3">{endorsements.length}</p>
+                <p className="text-heading-3">{endorsements.length}</p>
               </div>
               <Award className="w-8 h-8 color-primary" />
             </div>
@@ -182,7 +182,7 @@ export default function EndorsementsClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Average Rating</p>
-                <p className="text-heading-3 text-heading-3">
+                <p className="text-heading-3">
                   {endorsements.length > 0
                     ? (endorsements.reduce((acc, e) => acc + e.rating, 0) / endorsements.length).toFixed(1)
                     : '0.0'}
@@ -197,7 +197,7 @@ export default function EndorsementsClient() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-muted">Public Endorsements</p>
-                <p className="text-heading-3 text-heading-3">
+                <p className="text-heading-3">
                   {endorsements.filter(e => e.is_public).length}
                 </p>
               </div>
@@ -211,16 +211,16 @@ export default function EndorsementsClient() {
       {showAddForm && (
         <Card>
           <CardHeader>
-            <h3 className="text-heading-4">Request an Endorsement</h3>
+            <h3 className="text-body text-heading-4">Request an Endorsement</h3>
           </CardHeader>
           <CardContent className="stack-md">
             <div>
               <label className="text-body-sm form-label">Email of Endorser</label>
               <input
                 type="email"
-                className="w-full mt-xs px-sm py-sm border-border rounded-lg"
+                className="w-full mt-xs  px-md py-sm border-border rounded-lg"
                 value={newEndorsement.to_user_email}
-                onChange={(e) => setNewEndorsement({ ...newEndorsement, to_user_email: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement({ ...newEndorsement, to_user_email: e.target.value })}
                 placeholder="colleague@example.com"
               />
             </div>
@@ -228,9 +228,9 @@ export default function EndorsementsClient() {
               <label className="text-body-sm form-label">Your Relationship</label>
               <input
                 type="text"
-                className="w-full mt-xs px-sm py-sm border-border rounded-lg"
+                className="w-full mt-xs  px-md py-sm border-border rounded-lg"
                 value={newEndorsement.relationship}
-                onChange={(e) => setNewEndorsement({ ...newEndorsement, relationship: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement({ ...newEndorsement, relationship: e.target.value })}
                 placeholder="e.g., Direct Manager, Team Member, Client"
               />
             </div>
@@ -253,7 +253,7 @@ export default function EndorsementsClient() {
               <label className="text-body-sm form-label">Message (Optional)</label>
               <Textarea
                 value={newEndorsement.message}
-                onChange={(e) => setNewEndorsement({ ...newEndorsement, message: e.target.value })}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewEndorsement({ ...newEndorsement, message: e.target.value })}
                 placeholder="Add a personal message to your endorsement request..."
                 rows={3}
               />
@@ -283,7 +283,7 @@ export default function EndorsementsClient() {
         </Card>
       ) : (
         <div className="stack-md">
-          {endorsements.map((endorsement) => (
+          {endorsements.map((endorsement: any) => (
             <Card key={endorsement.id}>
               <CardContent className="p-lg">
                 <div className="flex justify-between items-start mb-md">
@@ -300,7 +300,7 @@ export default function EndorsementsClient() {
                       )}
                     </div>
                     <div>
-                      <h4 className="text-heading-4">{endorsement.from_user_name}</h4>
+                      <h4 className="text-body text-heading-4">{endorsement.from_user_name}</h4>
                       <p className="text-body-sm color-muted">
                         {endorsement.from_user_role || endorsement.relationship}
                       </p>

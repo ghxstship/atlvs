@@ -354,7 +354,7 @@ export const ExperienceLevelSelector: React.FC<ExperienceLevelSelectorProps> = (
           <input
             type="checkbox"
             checked={state.userPreferences.showAdvancedOptions}
-            onChange={(e) => updatePreferences({ showAdvancedOptions: e.target.checked })}
+            onChange={(e: any) => updatePreferences({ showAdvancedOptions: e.target.checked })}
           />
           <span className="text-sm">Always show advanced options</span>
         </label>

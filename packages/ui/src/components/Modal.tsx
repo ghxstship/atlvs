@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X, AlertTriangle, CheckCircle, Info, AlertCircle } from 'lucide-react';
-import { Button } from './Button';
+import { Button } from './atomic/Button';
 
 const modalVariants = cva(
   'relative bg-background border border-border shadow-floating rounded-lg',
@@ -233,7 +233,7 @@ export const Modal: React.FC<ModalProps> = ({
         aria-modal="true"
         aria-labelledby={ariaLabelledBy || (title ? titleId : undefined)}
         aria-describedby={ariaDescribedBy || (description ? descriptionId : undefined)}
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: any) => e.stopPropagation()}
       >
         {/* Header */}
         {(title || showCloseButton) && (
@@ -339,7 +339,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
           {cancelText}
         </Button>
         <Button
-          variant={variant === 'destructive' ? 'destructive' : 'primary'}
+          variant={variant === 'destructive' ? 'destructive' : 'default'}
           onClick={onConfirm}
           loading={loading}
         >

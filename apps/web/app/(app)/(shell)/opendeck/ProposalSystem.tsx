@@ -1,9 +1,9 @@
 'use client';
 
+
+
 import { useState, useEffect } from 'react';
-import { 
-  Card, Button, Badge, Input, Textarea, Drawer 
-} from '@ghxstship/ui';
+import { Card, Button, Badge, UnifiedInput, Textarea, Drawer } from '@ghxstship/ui';
 import { 
   Send, DollarSign, Calendar, Clock, FileText, 
   CheckCircle, XCircle, Star, TrendingUp, Award
@@ -164,7 +164,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
     }
   }
 
-  const ProposalCard = ({ proposal }: { proposal: any }) => (
+  const ProposalCard = ({ proposal }: { proposal }) => (
     <Card className="p-lg">
       <div className="flex justify-between items-start mb-md">
         <div className="flex items-start cluster">
@@ -172,7 +172,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             {proposal.vendor?.display_name?.charAt(0) || 'V'}
           </div>
           <div>
-            <h4 className="text-heading-4">{proposal.vendor?.display_name || 'Vendor'}</h4>
+            <h4 className="text-body text-heading-4">{proposal.vendor?.display_name || 'Vendor'}</h4>
             <div className="flex items-center cluster-sm text-body-sm color-muted">
               <div className="flex items-center">
                 <Star className="h-4 w-4 color-warning fill-warning mr-xs" />
@@ -202,7 +202,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       <div className="stack-sm">
         <div>
           <p className="text-body-sm form-label mb-xs">Proposed Budget</p>
-          <p className="text-heading-3 text-heading-3">
+          <p className="text-heading-3">
             ${proposal.bid_amount.toLocaleString()}
             {proposal.fee_type === 'hourly' && <span className="text-body-sm text-body">/hr</span>}
           </p>
@@ -221,8 +221,8 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
         {proposal.milestones && proposal.milestones.length > 0 && (
           <div>
             <p className="text-body-sm form-label mb-xs">Milestones</p>
-            <div className="stack-xs">
-              {proposal.milestones.slice(0, 2).map((milestone: any, i: number) => (
+            <div className="stack-md">
+              {proposal.milestones.slice(0, 2).map((milestone, i: number) => (
                 <div key={i} className="flex justify-between text-body-sm">
                   <span>{milestone.title}</span>
                   <span className="form-label">${milestone.amount.toLocaleString()}</span>
@@ -243,7 +243,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           <>
             <Button 
               
-              variant="primary" 
+              variant="default" 
               className="flex-1"
               onClick={() => updateProposalStatus(proposal.id, 'accepted')}
             >
@@ -417,7 +417,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               <label className="text-body-sm form-label">Fee Type</label>
               <select 
                 {...register('fee_type')}
-                className="w-full rounded border px-sm py-sm"
+                className="w-full rounded border  px-md py-sm"
               >
                 <option value="fixed">Fixed Price</option>
                 <option value="hourly">Hourly Rate</option>
@@ -428,7 +428,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
               <label className="text-body-sm form-label">
                 {watch('fee_type') === 'hourly' ? 'Hourly Rate' : 'Total Amount'}
               </label>
-              <Input 
+              <UnifiedInput 
                 {...register('bid_amount', { valueAsNumber: true })} 
                 type="number" 
                 placeholder="0"
@@ -442,7 +442,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           {watch('fee_type') === 'hourly' && (
             <div>
               <label className="text-body-sm form-label">Estimated Hours</label>
-              <Input 
+              <UnifiedInput 
                 {...register('estimated_hours', { valueAsNumber: true })} 
                 type="number" 
                 placeholder="0"
@@ -452,7 +452,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
           <div>
             <label className="text-body-sm form-label">Proposed Timeline</label>
-            <Input 
+            <UnifiedInput 
               {...register('proposed_timeline')} 
               placeholder="e.g., 2 weeks, 1 month"
             />
@@ -463,7 +463,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
           <div>
             <label className="text-body-sm form-label">Start Availability</label>
-            <Input 
+            <UnifiedInput 
               {...register('start_availability')} 
               type="date"
             />
