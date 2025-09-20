@@ -390,7 +390,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('isPublic')}
-                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-accent focus:ring-primary border-border rounded"
                 />
                 <label htmlFor="isPublic" className="text-body-sm form-label color-foreground">
                   Public RFP
@@ -401,7 +401,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('allowQuestions')}
-                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-accent focus:ring-primary border-border rounded"
                 />
                 <label htmlFor="allowQuestions" className="text-body-sm form-label color-foreground">
                   Allow Questions

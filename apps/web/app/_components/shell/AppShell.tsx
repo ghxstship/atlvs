@@ -50,7 +50,7 @@ export default async function AppShell({ children }: AppShellProps) {
   }
 
   return (
-    <div className="flex min-h-dvh">
+    <div className="flex min-h-dvh brand-atlvs">
       <SidebarClient navSections={navSections} />
       <main id="main-content" className="flex-1" tabIndex={-1}>
         <div className="sticky top-0 z-40 border-b bg-background backdrop-blur supports-[backdrop-filter]:bg-background/95">

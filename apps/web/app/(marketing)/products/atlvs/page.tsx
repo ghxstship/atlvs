@@ -100,7 +100,7 @@ const testimonials = [
 
 export default function ATLVSPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen brand-atlvs">
       {/* Hero Section */}
       <section className="py-4xl bg-gradient-subtle">
         <div className="container mx-auto px-md">
@@ -111,7 +111,7 @@ export default function ATLVSPage() {
                   Production Management
                 </Badge>
                 <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                     ATLVS
                   </span>
                   <br />
@@ -191,7 +191,7 @@ export default function ATLVSPage() {
                       <div className="text-body-sm color-muted mb-xs">Budget</div>
                       <div>$75K</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-primary h-1 rounded-full w-3/4"></div>
+                        <div className="bg-accent h-1 rounded-full w-3/4"></div>
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
@@ -206,7 +206,7 @@ export default function ATLVSPage() {
                       <div>12</div>
                       <div className="flex -cluster-xs mt-sm">
                         {[1, 2, 3].map((i: any) => (
-                          <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
+                          <div key={i} className="w-4 h-4 bg-accent rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -220,7 +220,7 @@ export default function ATLVSPage() {
                       { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
                     ].map((activity, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <div className="w-2 h-2 bg-accent rounded-full"></div>
                         <span className="form-label">{activity.user}</span>
                         <span className="color-muted">{activity.action}</span>
                         <span className="color-muted ml-auto">{activity.time}</span>
@@ -332,7 +332,7 @@ export default function ATLVSPage() {
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </span>

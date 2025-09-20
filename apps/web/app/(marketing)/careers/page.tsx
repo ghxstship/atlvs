@@ -358,11 +358,11 @@ export default function CareersPage() {
 
           {/* Department Filter */}
           <div className="flex flex-wrap justify-center gap-sm mb-2xl">
-            <Badge variant="secondary" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
+            <Badge variant="secondary" className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent">
               All Departments
             </Badge>
             {departments.map((dept: any) => (
-              <Badge key={dept.name} variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors">
+              <Badge key={dept.name} variant="outline" className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent">
                 {dept.name} ({dept.count})
               </Badge>
             ))}
@@ -461,7 +461,7 @@ export default function CareersPage() {
               return (
                 <Card key={value.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-md flex items-center justify-center">
+                    <div className="w-16 h-16 bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
                       <Icon className="h-8 w-8 text-foreground" />
                     </div>
                     <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{value.title}</h3>
@@ -506,7 +506,7 @@ export default function CareersPage() {
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
                     <div className="flex items-start gap-md">
-                      <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
                         <Icon className="h-6 w-6 text-foreground" />
                       </div>
                       <div>
@@ -574,7 +574,7 @@ export default function CareersPage() {
                 { step: '04', title: 'Offer', description: 'Reference checks and offer discussion.' },
               ].map((step: any) => (
                 <div key={step.step} className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 text-body mx-auto mb-md">
+                  <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 text-body mx-auto mb-md">
                     {step.step}
                   </div>
                   <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{step.title}</h3>

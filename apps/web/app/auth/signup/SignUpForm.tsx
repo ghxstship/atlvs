@@ -38,8 +38,9 @@ export function SignUpForm() {
       
       // Redirect to onboarding flow after successful signup
       window.location.href = '/auth/onboarding?step=verify-email';
-    } catch (e) {
-      setError(e?.message || 'Signup error');
+    } catch (err: unknown) {
+      const msg = typeof err === 'object' && err && 'message' in err ? String((err as any).message) : 'Signup error';
+      setError(msg);
     } finally {
       setPending(false);
     }
@@ -53,8 +54,9 @@ export function SignUpForm() {
         options: { redirectTo }
       });
       if (error) throw error;
-    } catch (e) {
-      setError(e?.message || 'Google OAuth error');
+    } catch (err: unknown) {
+      const msg = typeof err === 'object' && err && 'message' in err ? String((err as any).message) : 'Google OAuth error';
+      setError(msg);
       setPending(false);
     }
   };
@@ -106,12 +108,12 @@ export function SignUpForm() {
           onTogglePassword={() => setShowPassword(!showPassword)}
         />
         
-        <div className="cluster">
+        <div className="brand-ghostship flex items-start gap-sm">
           <input
             type="checkbox"
             id="terms"
             required
-            className="h-4 w-4 text-primary focus:ring-primary border-border rounded"
+            className="h-4 w-4 text-accent focus:ring-primary border-border rounded"
           />
           <label htmlFor="terms" className="form-helper leading-relaxed">
             I agree to the{' '}
@@ -122,13 +124,13 @@ export function SignUpForm() {
         </div>
         
         {message && (
-          <div className="bg-success border border-success rounded-md p-md">
+          <div className="brand-ghostship bg-success border border-success rounded-md p-md">
             <p className="text-body-sm color-success font-body">{message}</p>
           </div>
         )}
       </AuthForm>
       
-      <div className="text-center mt-lg">
+      <div className="brand-ghostship text-center mt-lg">
         <AuthText>
           Already have an account?{' '}
           <AuthLink href="/auth/signin">Sign in</AuthLink>

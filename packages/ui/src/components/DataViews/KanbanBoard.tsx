@@ -116,7 +116,7 @@ export function KanbanBoard({
       case 'high':
         return 'bg-warning';
       case 'medium':
-        return 'bg-primary';
+        return 'bg-accent';
       case 'low':
         return 'bg-success';
       default:
@@ -160,7 +160,7 @@ export function KanbanBoard({
             key={column.id}
             className={`
               flex-shrink-0 w-80 bg-muted rounded-lg
-              ${isDragOver ? 'ring-2 ring-primary bg-primary/10' : ''}
+              ${isDragOver ? 'ring-2 ring-primary bg-accent/10' : ''}
             `}
             onDragOver={(e: any) => handleDragOver(e, column.id)}
             onDragLeave={handleDragLeave}

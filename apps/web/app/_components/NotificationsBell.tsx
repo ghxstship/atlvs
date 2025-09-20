@@ -65,7 +65,7 @@ export default function NotificationsBell() {
                       <div className="form-label">{n.title}</div>
                       {n.body ? <div className="text-body-sm opacity-80">{n.body}</div> : null}
                       {n.href ? (
-                        <a href={n.href} className="text-body-sm color-primary underline underline-offset-2">View</a>
+                        <a href={n.href} className="text-body-sm color-accent underline underline-offset-2">View</a>
                       ) : null}
                     </div>
                     {!n.read ? <Check className="h-4 w-4 opacity-50" aria-hidden /> : null}

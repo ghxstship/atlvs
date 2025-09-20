@@ -104,7 +104,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
       case 'draft':
         return 'bg-secondary color-muted';
       case 'submitted':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'under_review':
         return 'bg-warning/10 color-warning';
       case 'accepted':
@@ -121,7 +121,7 @@ export function BidsClient({ user, orgId, translations }: BidsClientProps) {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'fixed_price':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'hourly':
         return 'bg-success/10 color-success';
       case 'milestone_based':

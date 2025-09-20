@@ -213,7 +213,7 @@ function DefaultErrorFallback({ error, resetError }: { error: Error; resetError:
       React.createElement('button', {
         key: 'button',
         onClick: resetError,
-        className: 'mt-md inline-flex items-center px-md py-sm border border-transparent text-sm font-medium rounded-md text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'
+        className: 'mt-md inline-flex items-center px-md py-sm border border-transparent text-sm font-medium rounded-md text-accent-foreground bg-accent hover:bg-accent/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary'
       }, 'Try again')
     ])
   ]));

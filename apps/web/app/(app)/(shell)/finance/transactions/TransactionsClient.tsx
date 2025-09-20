@@ -435,7 +435,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 <p className="text-body-sm color-foreground/70">Total Transactions</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{transactions.length}</p>
               </div>
-              <ArrowUpDown className="h-8 w-8 color-primary" />
+              <ArrowUpDown className="h-8 w-8 color-accent" />
             </div>
           </Card>
           

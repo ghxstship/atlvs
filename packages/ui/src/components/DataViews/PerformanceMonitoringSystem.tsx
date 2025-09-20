@@ -453,7 +453,7 @@ export function PerformanceMonitoringSystem({
                 {metrics ? formatMetricValue('queryTime', metrics.queryTime) : '--'}
               </p>
             </div>
-            <Database className="h-8 w-8 text-primary" />
+            <Database className="h-8 w-8 text-accent" />
           </div>
         </div>
 
@@ -508,7 +508,7 @@ export function PerformanceMonitoringSystem({
           <h3 className="text-lg font-medium mb-md">Schema Health</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
             <div className="text-center">
-              <div className="text-2xl font-bold text-primary">{schemaHealth.tablesCount}</div>
+              <div className="text-2xl font-bold text-accent">{schemaHealth.tablesCount}</div>
               <div className="text-sm text-muted-foreground">Tables</div>
             </div>
             <div className="text-center">

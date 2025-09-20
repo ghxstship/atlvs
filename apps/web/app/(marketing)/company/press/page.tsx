@@ -151,7 +151,7 @@ export default function PressPage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               IN THE
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 SPOTLIGHT
               </span>
             </h1>
@@ -336,7 +336,7 @@ export default function PressPage() {
               <Card key={index} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   <div className="flex items-start gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0">
                       <FileText className="h-6 w-6 text-background" />
                     </div>
                     <div className="flex-1">
@@ -385,7 +385,7 @@ export default function PressPage() {
                   <div className="stack-sm mb-lg">
                     {kit.items.map((item: any) => (
                       <div key={item} className="flex items-center gap-sm">
-                        <div className="w-1.5 h-1.5 bg-primary rounded-full"></div>
+                        <div className="w-1.5 h-1.5 bg-accent rounded-full"></div>
                         <span className="text-body-sm color-foreground">{item}</span>
                       </div>
                     ))}
@@ -424,7 +424,7 @@ export default function PressPage() {
           <div className="grid md:grid-cols-2 gap-xl max-w-4xl mx-auto">
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                   <Mail className="h-6 w-6 text-foreground" />
                 </div>
                 <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>
@@ -442,7 +442,7 @@ export default function PressPage() {
 
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl text-center">
-                <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                   <Phone className="h-6 w-6 text-background" />
                 </div>
                 <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>

@@ -313,7 +313,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Pill className="w-5 h-5 mr-sm color-primary" />
+            <Pill className="w-5 h-5 mr-sm color-accent" />
             Current Medications
           </h3>
         </CardHeader>

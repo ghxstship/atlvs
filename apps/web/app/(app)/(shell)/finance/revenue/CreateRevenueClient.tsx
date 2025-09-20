@@ -260,7 +260,7 @@ export default function CreateRevenueClient({
               </div>
               <div className="flex justify-between">
                 <span className="color-foreground/70">Status:</span>
-                <span className="form-label color-primary">Projected</span>
+                <span className="form-label color-accent">Projected</span>
               </div>
               <div className="flex justify-between">
                 <span className="color-foreground/70">Recognition Date:</span>

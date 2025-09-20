@@ -33,7 +33,7 @@ export default function ColorSystemDemo() {
               { name: 'Accent', className: 'bg-accent' },
               { name: 'Secondary', className: 'bg-secondary' },
               { name: 'Border', className: 'bg-border' },
-              { name: 'Primary', className: 'bg-primary' },
+              { name: 'Primary', className: 'bg-accent' },
               { name: 'Success', className: 'bg-success' },
               { name: 'Warning', className: 'bg-warning' },
               { name: 'Destructive', className: 'bg-destructive' },
@@ -56,7 +56,7 @@ export default function ColorSystemDemo() {
             <div className="grid grid-cols-6 gap-md">
               {[
                 { name: 'Red Line', className: 'bg-destructive text-destructive-foreground', desc: '4/5/6 Line' },
-                { name: 'Blue Line', className: 'bg-primary text-primary-foreground', desc: 'A/C/E Line' },
+                { name: 'Blue Line', className: 'bg-accent text-accent-foreground', desc: 'A/C/E Line' },
                 { name: 'Green Line', className: 'bg-success text-success-foreground', desc: '4/5/6 Line' },
                 { name: 'Orange Line', className: 'bg-warning text-warning-foreground', desc: 'B/D/F/M Line' },
                 { name: 'Purple Line', className: 'bg-accent text-accent-foreground', desc: '7 Line' },
@@ -81,7 +81,7 @@ export default function ColorSystemDemo() {
                 { name: 'District', className: 'bg-success text-success-foreground' },
                 { name: 'Jubilee', className: 'bg-muted text-foreground' },
                 { name: 'Northern', className: 'bg-foreground text-background' },
-                { name: 'Piccadilly', className: 'bg-primary text-primary-foreground' },
+                { name: 'Piccadilly', className: 'bg-accent text-accent-foreground' },
                 { name: 'Victoria', className: 'bg-accent text-accent-foreground' },
               ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
@@ -100,7 +100,7 @@ export default function ColorSystemDemo() {
                 { name: 'Ginza', className: 'bg-warning text-warning-foreground' },
                 { name: 'Marunouchi', className: 'bg-destructive text-destructive-foreground' },
                 { name: 'Hibiya', className: 'bg-muted text-foreground' },
-                { name: 'Tozai', className: 'bg-primary text-primary-foreground' },
+                { name: 'Tozai', className: 'bg-accent text-accent-foreground' },
                 { name: 'Chiyoda', className: 'bg-success text-success-foreground' },
                 { name: 'Yurakucho', className: 'bg-warning text-warning-foreground' },
               ].map((metro: any) => (
@@ -170,7 +170,7 @@ export default function ColorSystemDemo() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
             {[
               { name: 'Red Line', className: 'bg-destructive text-destructive-foreground' },
-              { name: 'Blue Line', className: 'bg-primary text-primary-foreground' },
+              { name: 'Blue Line', className: 'bg-accent text-accent-foreground' },
               { name: 'Green Line', className: 'bg-success text-success-foreground' },
               { name: 'Orange Line', className: 'bg-warning text-warning-foreground' },
               { name: 'Purple Line', className: 'bg-accent text-accent-foreground' },
@@ -229,7 +229,7 @@ export default function ColorSystemDemo() {
                 <div className="p-sm rounded-md bg-background text-muted-foreground border">
                   White background + Grey 600 text
                 </div>
-                <div className="p-sm rounded-md bg-primary text-primary-foreground">
+                <div className="p-sm rounded-md bg-accent text-accent-foreground">
                   Primary + Primary Foreground
                 </div>
                 <div className="p-sm rounded-md bg-destructive text-destructive-foreground">

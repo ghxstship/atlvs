@@ -2,8 +2,8 @@ import { Shield, Zap, Users, Globe } from 'lucide-react';
 
 const trustIndicators = [
   { icon: Shield, text: '14-day free trial', color: 'color-success' },
-  { icon: Zap, text: 'No setup fees', color: 'color-primary' },
-  { icon: Users, text: 'Cancel anytime', color: 'color-primary' },
+  { icon: Zap, text: 'No setup fees', color: 'color-accent' },
+  { icon: Users, text: 'Cancel anytime', color: 'color-accent' },
   { icon: Globe, text: '24/7 support', color: 'color-secondary' },
 ];
 

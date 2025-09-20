@@ -169,7 +169,7 @@ export const MetricCard: React.FC<MetricCardProps> = ({
             )}
           </div>
           {icon && (
-            <div className="flex h-12 w-12 items-center justify-center rounded-radius-lg bg-primary/10 text-primary">
+            <div className="flex h-12 w-12 items-center justify-center rounded-radius-lg bg-accent/10 text-accent">
               {icon}
             </div>
           )}
@@ -198,7 +198,7 @@ export const FeatureCard: React.FC<FeatureCardProps> = ({
     <Card variant="elevated" className={className}>
       <CardHeader>
         {icon && (
-          <div className="mb-sm flex h-10 w-10 items-center justify-center rounded-radius-md bg-primary/10 text-primary">
+          <div className="mb-sm flex h-10 w-10 items-center justify-center rounded-radius-md bg-accent/10 text-accent">
             {icon}
           </div>
         )}

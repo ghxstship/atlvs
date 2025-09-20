@@ -264,7 +264,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Database className="h-6 w-6 text-primary" />
+          <Database className="h-6 w-6 text-accent" />
           <h2 className="text-2xl font-bold text-foreground">Database Monitoring</h2>
         </div>
         <div className="flex items-center gap-sm">
@@ -342,7 +342,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.tableStats && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <Database className="h-5 w-5 mr-sm text-primary" />
+            <Database className="h-5 w-5 mr-sm text-accent" />
             Table Performance Statistics
           </h3>
           <div className="overflow-x-auto">
@@ -440,7 +440,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {loading && (
         <div className="flex items-center justify-center p-xl">
-          <RefreshCw className="h-6 w-6 animate-spin text-primary mr-sm" />
+          <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
           <span className="text-muted-foreground">Loading monitoring data...</span>
         </div>
       )}

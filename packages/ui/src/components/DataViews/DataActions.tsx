@@ -144,7 +144,7 @@ export function DataActions({
                 <Filter className="h-4 w-4" />
                 Filters
                 {state.filters.length > 0 && (
-                  <span className="ml-xs px-xs.5 py-0.5 text-xs bg-primary/10 text-primary rounded">
+                  <span className="ml-xs px-xs.5 py-0.5 text-xs bg-accent/10 text-accent rounded">
                     {state.filters.length}
                   </span>
                 )}
@@ -161,7 +161,7 @@ export function DataActions({
               <SortAsc className="h-4 w-4" />
               Sort
               {state.sorts.length > 0 && (
-                <span className="ml-xs px-xs.5 py-0.5 text-xs bg-primary/10 text-primary rounded">
+                <span className="ml-xs px-xs.5 py-0.5 text-xs bg-accent/10 text-accent rounded">
                   {state.sorts.length}
                 </span>
               )}

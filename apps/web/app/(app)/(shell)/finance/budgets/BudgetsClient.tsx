@@ -327,7 +327,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 <p className="text-body-sm color-foreground/70">Total Budgets</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{budgets.length}</p>
               </div>
-              <DollarSign className="h-8 w-8 color-primary" />
+              <DollarSign className="h-8 w-8 color-accent" />
             </div>
           </Card>
           

@@ -249,7 +249,7 @@ const sectionVariants = cva(
         none: '',
         subtle: 'bg-muted',
         card: 'bg-card border border-border rounded-lg',
-        accent: 'bg-primary/5',
+        accent: 'bg-accent/5',
       },
     },
     defaultVariants: {

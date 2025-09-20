@@ -91,7 +91,7 @@ export class UIStateValidator {
       loading: this.hasStateClasses(classList, 'animate-pulse', 'cursor-wait'),
       error: this.hasStateClasses(classList, 'border-red', 'text-red', 'bg-red'),
       empty: this.hasStateClasses(classList, 'opacity-60', 'border-dashed'),
-      success: this.hasStateClasses(classList, 'border-green', 'text-green', 'bg-green'),
+      success: this.hasStateClasses(classList, 'border-green', 'text-success', 'bg-success'),
       interactive: computedStyles.cursor === 'pointer' || this.hasStateClasses(classList, 'cursor-pointer'),
     };
   }

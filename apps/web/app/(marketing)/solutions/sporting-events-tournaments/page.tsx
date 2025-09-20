@@ -199,7 +199,7 @@ export default function SportingEventsTournamentsPage() {
                       <div className="text-body-sm color-muted mb-xs">Teams</div>
                       <div>128</div>
                       <div className="flex items-center gap-xs mt-xs">
-                        <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                        <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                         <span className="text-body-sm text-foreground">Active</span>
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function SportingEventsTournamentsPage() {
                       <div className="text-body-sm color-muted mb-xs">Progress</div>
                       <div>85%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-primary h-1 rounded-full w-4/5"></div>
+                        <div className="bg-accent h-1 rounded-full w-4/5"></div>
                       </div>
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function SportingEventsTournamentsPage() {
                     <Trophy className="w-4 h-4 text-foreground" />
                     <span className="text-body-sm form-label">Championship Final: Tomorrow 19:00</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -401,7 +401,7 @@ export default function SportingEventsTournamentsPage() {
             {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>

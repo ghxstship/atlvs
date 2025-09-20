@@ -171,7 +171,7 @@ export default function CreateTrackingClient({
         {/* Asset & Type */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Navigation className="h-5 w-5 color-primary" />
+            <Navigation className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Asset & Tracking Type</h3>
           </div>
           

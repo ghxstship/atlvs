@@ -27,7 +27,7 @@ export default function ResourcesOverviewClient() {
   ];
 
   const categories = [
-    { name: 'Documents', count: 456, color: 'bg-primary' },
+    { name: 'Documents', count: 456, color: 'bg-accent' },
     { name: 'Videos', count: 234, color: 'bg-secondary' },
     { name: 'Templates', count: 189, color: 'bg-success' },
     { name: 'Guides', count: 145, color: 'bg-warning' },
@@ -161,7 +161,7 @@ export default function ResourcesOverviewClient() {
         <h2 className="text-body text-heading-4 color-foreground mb-md">Recent Activity</h2>
         <div className="stack-md">
           <div className="flex gap-md">
-            <div className="w-2 h-2 bg-primary rounded-full mt-sm" />
+            <div className="w-2 h-2 bg-accent rounded-full mt-sm" />
             <div className="flex-1">
               <p className="text-body-sm color-foreground">New training video uploaded by Sarah Chen</p>
               <p className="text-body-sm color-muted">10 minutes ago</p>

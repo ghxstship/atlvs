@@ -359,13 +359,13 @@ export default function TravelClient({ orgId, userId }: { orgId: string; userId:
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Globe className="h-5 w-5 color-primary" />
+              <Globe className="h-5 w-5 color-accent" />
               <h3 className="text-body text-heading-4">Travel Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
               <div className="text-center">
-                <div className="text-heading-3 text-heading-3 color-primary">{travelRecords.length}</div>
+                <div className="text-heading-3 text-heading-3 color-accent">{travelRecords.length}</div>
                 <div className="text-body-sm color-muted">Total Trips</div>
               </div>
               <div className="text-center">

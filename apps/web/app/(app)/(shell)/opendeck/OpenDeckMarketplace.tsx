@@ -23,8 +23,8 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
   const [activeTab, setActiveTab] = useState('dashboard');
 
   return (
-    <div className="stack-lg">
-      <div className="flex items-center justify-between">
+    <div className="brand-opendeck stack-lg">
+      <div className="brand-opendeck flex items-center justify-between">
         <div>
           <h1 className="text-heading-2 text-heading-3">OPENDECK MARKETPLACE</h1>
           <p className="color-muted">
@@ -102,7 +102,7 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="messages">
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <MessageSquare className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Messages</h3>
             <p className="color-muted">Communication hub coming soon...</p>
@@ -110,7 +110,7 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="payments">
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <DollarSign className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Payments & Escrow</h3>
             <p className="color-muted">Payment processing coming soon...</p>
@@ -118,7 +118,7 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="reviews">
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <Star className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Reviews & Ratings</h3>
             <p className="color-muted">Reputation system coming soon...</p>
@@ -126,7 +126,7 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="contracts">
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <FileText className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Contracts</h3>
             <p className="color-muted">Contract management coming soon...</p>
@@ -134,7 +134,7 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="settings">
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <Settings className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Marketplace Settings</h3>
             <p className="color-muted">Settings coming soon...</p>

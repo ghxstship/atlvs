@@ -21,7 +21,7 @@ const contactMethods = [
     description: 'Get help from people who actually know the product',
     contact: 'support@ghxstship.com',
     response: 'Response within 24 hours',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: MessageSquare,
@@ -29,7 +29,7 @@ const contactMethods = [
     description: 'Talk to sales people who won\'t waste your time',
     contact: 'sales@ghxstship.com',
     response: 'Response within 4 hours',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: Users,
@@ -37,7 +37,7 @@ const contactMethods = [
     description: 'Partner with people who actually deliver',
     contact: 'partnerships@ghxstship.com',
     response: 'Response within 48 hours',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: Phone,
@@ -45,7 +45,7 @@ const contactMethods = [
     description: 'Talk to humans, not phone trees',
     contact: '+1 (555) 123-4567',
     response: 'Mon-Fri, 9AM-6PM PST',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
 ];
 
@@ -115,7 +115,7 @@ export default function ContactPage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               NEED HELP?
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 WE ACTUALLY RESPOND
               </span>
             </h1>

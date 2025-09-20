@@ -290,7 +290,7 @@ export default function CreateComplianceClient({ orgId, onSuccess }: CreateCompl
                 <input
                   type="checkbox"
                   {...register('certificationRequired')}
-                  className="h-4 w-4 color-primary focus:ring-primary border-border rounded"
+                  className="h-4 w-4 color-accent focus:ring-primary border-border rounded"
                 />
                 <label htmlFor="certificationRequired" className="text-body-sm form-label color-foreground">
                   Certification Required

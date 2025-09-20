@@ -64,7 +64,7 @@ export default function ForumsPage() {
               <div key={category.title} className="bg-card rounded-lg p-lg border hover:shadow-floating transition-shadow">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center">
-                    <div className="bg-primary/10 p-sm rounded-lg mr-md">
+                    <div className="bg-accent/10 p-sm rounded-lg mr-md">
                       <Icon className="h-6 w-6 text-foreground" />
                     </div>
                     <div>

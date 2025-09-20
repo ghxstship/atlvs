@@ -114,7 +114,7 @@ export default function WhitepapersPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               INDUSTRY
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 RESEARCH & INSIGHTS
               </span>
             </h1>
@@ -150,7 +150,7 @@ export default function WhitepapersPage() {
                 <Badge 
                   key={category} 
                   variant={category === 'All Categories' ? 'default' : 'outline'} 
-                  className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
+                  className="cursor-pointer hover:bg-accent hover:color-accent-foreground transition-colors"
                 >
                   {category}
                 </Badge>
@@ -184,7 +184,7 @@ export default function WhitepapersPage() {
                     </div>
                   </div>
                   <div className="absolute top-4 right-4">
-                    <Badge className="bg-primary color-primary-foreground">
+                    <Badge className="bg-accent color-accent-foreground">
                       Featured
                     </Badge>
                   </div>
@@ -378,7 +378,7 @@ export default function WhitepapersPage() {
             ].map((benefit, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow text-center">
                 <CardContent className="p-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <FileText className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>

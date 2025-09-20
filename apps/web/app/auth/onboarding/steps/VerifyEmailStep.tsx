@@ -71,11 +71,11 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
   return (
     <Card className="shadow-modal">
       <CardContent className="p-xl text-center">
-        <div className="mb-xl">
+        <div className="brand-ghostship mb-xl">
           {isVerified ? (
             <CheckCircle className="h-16 w-16 color-success mx-auto mb-md" />
           ) : (
-            <Mail className="h-16 w-16 color-primary mx-auto mb-md" />
+            <Mail className="h-16 w-16 color-accent mx-auto mb-md" />
           )}
           
           <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
@@ -87,7 +87,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
               Great! Your email has been verified. Redirecting you to the next step...
             </p>
           ) : (
-            <div className="stack-md">
+            <div className="brand-ghostship stack-md">
               <p className="text-body color-muted">
                 We've sent a verification link to:
               </p>
@@ -102,7 +102,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
         </div>
 
         {!isVerified && (
-          <div className="stack-md">
+          <div className="brand-ghostship stack-md">
             <Button 
               onClick={checkVerification}
               className="w-full"
@@ -112,7 +112,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
               I've Verified My Email
             </Button>
             
-            <div className="text-center">
+            <div className="brand-ghostship text-center">
               <p className="text-body-sm color-muted mb-sm">
                 Didn't receive the email?
               </p>
@@ -134,7 +134,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
         )}
 
         {isVerified && (
-          <div className="mt-lg">
+          <div className="brand-ghostship mt-lg">
             <Button className="w-full">
               Continue to Plan Selection
             </Button>

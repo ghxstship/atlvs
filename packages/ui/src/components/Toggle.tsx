@@ -15,7 +15,7 @@ export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputEle
 const toggleVariants = {
   variant: {
     default: {
-      track: 'bg-muted peer-checked:bg-primary peer-focus:ring-primary/30',
+      track: 'bg-muted peer-checked:bg-accent peer-focus:ring-primary/30',
       thumb: 'bg-background',
     },
     success: {

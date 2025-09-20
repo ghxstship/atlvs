@@ -111,7 +111,7 @@ export default function CatalogClient({ orgId }: { orgId: string }) {
   };
 
   const getTypeColor = (type: string) => {
-    return type === 'product' ? 'bg-primary/10 color-primary' : 'bg-success/10 color-success';
+    return type === 'product' ? 'bg-accent/10 color-accent' : 'bg-success/10 color-success';
   };
 
   if (loading) {

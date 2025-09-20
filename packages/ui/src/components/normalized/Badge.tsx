@@ -12,7 +12,7 @@ const badgeVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-transparent bg-primary text-primary-foreground',
+        default: 'border-transparent bg-accent text-accent-foreground',
         secondary: 'border-transparent bg-secondary text-secondary-foreground',
         destructive: 'border-transparent bg-destructive text-destructive-foreground',
         outline: 'text-foreground border border-input',
@@ -20,7 +20,7 @@ const badgeVariants = cva(
         warning: 'border-transparent bg-warning text-warning-foreground',
         info: 'border-transparent bg-info text-info-foreground',
         ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
-        gradient: 'border-transparent bg-gradient-to-r from-primary to-accent text-white',
+        gradient: 'border-transparent bg-gradient-to-r from-primary to-secondary text-white',
       },
       size: {
         xs: 'px-xs py-xs text-size-xs rounded-radius-sm gap-xs',

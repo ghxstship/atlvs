@@ -259,7 +259,7 @@ export function DataGrid({
                 key={record.id}
                 className={`
                   hover:bg-muted/50 cursor-pointer
-                  ${state.selection.includes(record.id) ? 'bg-primary/10' : ''}
+                  ${state.selection.includes(record.id) ? 'bg-accent/10' : ''}
                 `}
                 onClick={() => config.onEdit?.(record)}
               >

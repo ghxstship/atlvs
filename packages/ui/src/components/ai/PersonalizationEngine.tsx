@@ -484,7 +484,7 @@ interface AISuggestionProps {
 export function AISuggestion({ suggestion, onApply, onDismiss }: AISuggestionProps) {
   const impactColors = {
     low: 'bg-muted/20 text-muted-foreground/90 dark:bg-muted/90 dark:text-muted-foreground/30',
-    medium: 'bg-primary/20 text-primary dark:bg-primary/20 dark:text-primary',
+    medium: 'bg-accent/20 text-accent dark:bg-accent/20 dark:text-accent',
     high: 'bg-success/20 text-success dark:bg-success/20 dark:text-success',
   };
 
@@ -523,7 +523,7 @@ export function AISuggestion({ suggestion, onApply, onDismiss }: AISuggestionPro
           )}
           <button
             onClick={onApply}
-            className="px-sm py-xs text-xs bg-primary text-background rounded hover:bg-primary"
+            className="px-sm py-xs text-xs bg-accent text-background rounded hover:bg-accent"
           >
             Apply
           </button>
@@ -543,7 +543,7 @@ export function LearningProgress() {
     <div className="fixed bottom-4 right-4 p-sm bg-background dark:bg-muted/90 border border-border dark:border-border rounded-lg shadow-floating z-50">
       <div className="flex items-center space-x-sm">
         <div className="animate-pulse">
-          <div className="w-3 h-3 bg-primary rounded-full"></div>
+          <div className="w-3 h-3 bg-accent rounded-full"></div>
         </div>
         <div className="flex-1">
           <div className="text-sm font-medium text-foreground dark:text-background mb-xs">
@@ -551,7 +551,7 @@ export function LearningProgress() {
           </div>
           <div className="w-32 bg-muted/30 dark:bg-muted/80 rounded-full h-2">
             <div 
-              className="bg-primary h-2 rounded-full transition-all duration-300"
+              className="bg-accent h-2 rounded-full transition-all duration-300"
               style={{ width: `${learningProgress * 100}%` }}
             />
           </div>

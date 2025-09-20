@@ -17,8 +17,8 @@ export default function OnboardingPage() {
       showTrustIndicators={false}
     >
       <Suspense fallback={
-        <div className="text-center py-xl">
-          <div className="animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-md"></div>
+        <div className="brand-ghostship text-center py-xl">
+          <div className="brand-ghostship animate-spin h-8 w-8 border-2 border-primary border-t-transparent rounded-full mx-auto mb-md"></div>
           <p className="color-muted font-body">Loading...</p>
         </div>
       }>

@@ -208,14 +208,14 @@ class Renderer3D {
     this.ctx.stroke();
     
     // Y axis (green)
-    this.ctx.strokeStyle = 'var(--color-green-500)';
+    this.ctx.strokeStyle = 'var(--color-success-500)';
     this.ctx.beginPath();
     this.ctx.moveTo(originProj.x, originProj.y);
     this.ctx.lineTo(yProj.x, yProj.y);
     this.ctx.stroke();
     
     // Z axis (blue)
-    this.ctx.strokeStyle = 'var(--color-blue-500)';
+    this.ctx.strokeStyle = 'var(--color-info-500)';
     this.ctx.beginPath();
     this.ctx.moveTo(originProj.x, originProj.y);
     this.ctx.lineTo(zProj.x, zProj.y);
@@ -252,7 +252,7 @@ class Renderer3D {
       
       // Node color based on type
       const colors = {
-        metric: 'var(--color-blue-500)',
+        metric: 'var(--color-info-500)',
         category: 'var(--color-emerald-500)',
         trend: 'var(--color-amber-500)',
         outlier: 'var(--color-red-500)',
@@ -286,7 +286,7 @@ class Renderer3D {
       
       // Holographic glow
       const gradient = this.ctx.createRadialGradient(x, y, 0, x, y, 20);
-      gradient.addColorStop(0, 'var(--color-blue-500)');
+      gradient.addColorStop(0, 'var(--color-info-500)');
       gradient.addColorStop(1, 'transparent');
       
       this.ctx.fillStyle = gradient;

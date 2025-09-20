@@ -336,7 +336,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
       case 'completed': return 'color-success';
       case 'failed': return 'color-destructive';
       case 'paused': return 'color-warning';
-      case 'running': return 'color-primary';
+      case 'running': return 'color-accent';
       default: return 'color-muted';
     }
   };
@@ -401,7 +401,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             onClick={() => setActiveTab('jobs')}
             className={`py-sm px-xs border-b-2 form-label text-body-sm ${
               activeTab === 'jobs'
-                ? 'border-primary color-primary'
+                ? 'border-primary color-accent'
                 : 'border-transparent color-muted hover:color-foreground hover:border-muted'
             }`}
           >
@@ -411,7 +411,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             onClick={() => setActiveTab('history')}
             className={`py-sm px-xs border-b-2 form-label text-body-sm ${
               activeTab === 'history'
-                ? 'border-primary color-primary'
+                ? 'border-primary color-accent'
                 : 'border-transparent color-muted hover:color-foreground hover:border-muted'
             }`}
           >
@@ -445,8 +445,8 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                   <Card key={job.id} className="p-lg">
                     <div className="flex items-start justify-between mb-md">
                       <div className="flex items-center cluster-sm">
-                        <div className="p-sm bg-primary/10 rounded-lg">
-                          <FormatIcon className="h-5 w-5 color-primary" />
+                        <div className="p-sm bg-accent/10 rounded-lg">
+                          <FormatIcon className="h-5 w-5 color-accent" />
                         </div>
                         <div>
                           <h3 className="text-heading-4 color-foreground">{job.name}</h3>

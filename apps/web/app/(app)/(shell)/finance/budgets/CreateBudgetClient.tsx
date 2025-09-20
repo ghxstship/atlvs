@@ -131,12 +131,12 @@ export default function CreateBudgetClient({
     >
       <form onSubmit={handleSubmit} className="stack-lg">
         {/* Budget Overview */}
-        <Card className="p-md bg-primary/5 border-primary/20">
+        <Card className="p-md bg-accent/5 border-primary/20">
           <div className="flex items-center cluster-sm">
-            <Target className="h-8 w-8 color-primary" />
+            <Target className="h-8 w-8 color-accent" />
             <div>
-              <h3 className="text-heading-4 color-primary">Budget Planning</h3>
-              <p className="text-body-sm color-primary/80">
+              <h3 className="text-heading-4 color-accent">Budget Planning</h3>
+              <p className="text-body-sm color-accent/80">
                 Set financial targets and track spending against your budget
               </p>
             </div>

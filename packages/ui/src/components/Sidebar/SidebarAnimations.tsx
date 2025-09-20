@@ -98,7 +98,7 @@ export const sidebarAnimations = {
         state: {
           idle: 'scale-100 rotate-0 opacity-60',
           hover: 'scale-110 rotate-12 opacity-100',
-          pinned: 'scale-100 rotate-0 opacity-100 text-primary',
+          pinned: 'scale-100 rotate-0 opacity-100 text-accent',
           pinning: 'animate-in zoom-in-50 spin-in-180 duration-300',
           unpinning: 'animate-out zoom-out-50 spin-out-180 duration-300',
         },

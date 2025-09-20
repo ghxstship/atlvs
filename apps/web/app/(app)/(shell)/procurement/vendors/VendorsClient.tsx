@@ -170,8 +170,8 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
             >
               <div className="flex items-start justify-between mb-md">
                 <div className="flex items-center gap-sm">
-                  <div className="p-sm bg-primary/10 rounded-lg">
-                    <Building className="h-5 w-5 color-primary" />
+                  <div className="p-sm bg-accent/10 rounded-lg">
+                    <Building className="h-5 w-5 color-accent" />
                   </div>
                   <div>
                     <h3 className="form-label">{vendor.name}</h3>
@@ -204,7 +204,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                     <Mail className="h-4 w-4 color-foreground/50" />
                     <a 
                       href={`mailto:${vendor.email}`}
-                      className="color-primary hover:underline"
+                      className="color-accent hover:underline"
                     >
                       {vendor.email}
                     </a>
@@ -216,7 +216,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                     <Phone className="h-4 w-4 color-foreground/50" />
                     <a 
                       href={`tel:${vendor.phone}`}
-                      className="color-primary hover:underline"
+                      className="color-accent hover:underline"
                     >
                       {vendor.phone}
                     </a>
@@ -230,7 +230,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                       href={vendor.website}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="color-primary hover:underline"
+                      className="color-accent hover:underline"
                     >
                       Website
                     </a>

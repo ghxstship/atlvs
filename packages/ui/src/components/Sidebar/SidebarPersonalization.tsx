@@ -115,8 +115,8 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
     return (
       <div className="mx-sm mt-sm mb-sm p-sm rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
         <div className="flex items-center gap-sm mb-sm">
-          <Brain className="h-4 w-4 text-primary" />
-          <span className="text-xs font-semibold text-primary uppercase tracking-wide">
+          <Brain className="h-4 w-4 text-accent" />
+          <span className="text-xs font-semibold text-accent uppercase tracking-wide">
             AI Insights
           </span>
         </div>
@@ -129,7 +129,7 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
             >
               <div className="flex items-start gap-sm flex-1 min-w-0">
                 {insight.type === 'trending' && <TrendingUp className="h-3 w-3 text-success mt-0.5 flex-shrink-0" />}
-                {insight.type === 'time-based' && <Clock className="h-3 w-3 text-primary mt-0.5 flex-shrink-0" />}
+                {insight.type === 'time-based' && <Clock className="h-3 w-3 text-accent mt-0.5 flex-shrink-0" />}
                 {insight.type === 'frequent' && <Zap className="h-3 w-3 text-warning mt-0.5 flex-shrink-0" />}
                 {insight.type === 'suggested' && <Star className="h-3 w-3 text-secondary mt-0.5 flex-shrink-0" />}
                 
@@ -153,7 +153,7 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
               
               <button
                 onClick={() => applyInsight(insight)}
-                className="ml-sm px-sm.5 py-xs text-xs bg-primary/10 hover:bg-primary/20 text-primary rounded-md transition-colors duration-200 font-medium flex-shrink-0"
+                className="ml-sm px-sm.5 py-xs text-xs bg-accent/10 hover:bg-accent/20 text-accent rounded-md transition-colors duration-200 font-medium flex-shrink-0"
               >
                 Apply
               </button>

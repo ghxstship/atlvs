@@ -185,7 +185,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
   const ProjectCard = ({ project }: { project }) => (
     <Card className="p-lg hover:shadow-floating transition-shadow">
-      <div className="flex justify-between items-start mb-md">
+      <div className="brand-opendeck flex justify-between items-start mb-md">
         <div>
           <h3 className="text-body text-heading-4">{project.title}</h3>
           <p className="text-body-sm color-muted">{project.category}</p>
@@ -201,8 +201,8 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
       <p className="text-body-sm line-clamp-3 mb-md">{project.description}</p>
 
-      <div className="stack-sm mb-md">
-        <div className="flex items-center text-body-sm">
+      <div className="brand-opendeck stack-sm mb-md">
+        <div className="brand-opendeck flex items-center text-body-sm">
           <DollarSign className="h-4 w-4 mr-sm color-muted" />
           {project.budget_type === 'fixed' ? 
             `$${project.budget_min?.toLocaleString()} - $${project.budget_max?.toLocaleString()}` :
@@ -211,15 +211,15 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             'Budget not specified'
           }
         </div>
-        <div className="flex items-center text-body-sm">
+        <div className="brand-opendeck flex items-center text-body-sm">
           <Calendar className="h-4 w-4 mr-sm color-muted" />
           {project.duration || 'Timeline flexible'}
         </div>
-        <div className="flex items-center text-body-sm">
+        <div className="brand-opendeck flex items-center text-body-sm">
           <MapPin className="h-4 w-4 mr-sm color-muted" />
           {project.location_type || 'Remote'}
         </div>
-        <div className="flex items-center text-body-sm">
+        <div className="brand-opendeck flex items-center text-body-sm">
           <Users className="h-4 w-4 mr-sm color-muted" />
           {project.proposals?.[0]?.count || 0} proposals
         </div>
@@ -232,7 +232,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
         </Badge>
       )}
 
-      <div className="flex cluster-sm">
+      <div className="brand-opendeck flex cluster-sm">
         <Button variant="outline" className="flex-1" onClick={() => openProjectDrawer(project)}>
           <Edit className="h-4 w-4 mr-xs" />
           Edit
@@ -250,16 +250,16 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="brand-opendeck flex items-center justify-center h-64">
+        <div className="brand-opendeck animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Header */}
-      <div className="flex justify-between items-center">
+      <div className="brand-opendeck flex justify-between items-center">
         <div>
           <h2 className="text-heading-3">Project Postings</h2>
           <p className="color-muted">Manage your project briefs and proposals</p>
@@ -272,9 +272,9 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
       {/* Filters */}
       <Card className="p-md">
-        <div className="flex flex-col md:flex-row gap-md">
-          <div className="flex-1">
-            <div className="relative">
+        <div className="brand-opendeck flex flex-col md:flex-row gap-md">
+          <div className="brand-opendeck flex-1">
+            <div className="brand-opendeck relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
               <UnifiedInput                 placeholder="Search projects..."
                 value={searchQuery}
@@ -295,7 +295,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
               <SelectItem value="completed">Completed</SelectItem>
             </SelectContent>
           </Select>
-          <div className="flex gap-sm">
+          <div className="brand-opendeck flex gap-sm">
             <Button
              
               variant={viewMode === 'grid' ? 'primary' : 'outline'}
@@ -317,7 +317,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
       {/* Projects Grid/List */}
       {filteredProjects.length === 0 ? (
         <Card className="p-2xl text-center">
-          <div className="max-w-md mx-auto">
+          <div className="brand-opendeck max-w-md mx-auto">
             <Paperclip className="h-12 w-12 mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">No projects found</h3>
             <p className="color-muted mb-md">
@@ -330,19 +330,19 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           </div>
         </Card>
       ) : viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+        <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {filteredProjects.map(project => (
             <ProjectCard key={project.id} project={project} />
           ))}
         </div>
       ) : (
         <Card>
-          <div className="divide-y">
+          <div className="brand-opendeck divide-y">
             {filteredProjects.map(project => (
               <div key={project.id} className="p-md hover:bg-accent/50 transition-colors">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-sm">
+                <div className="brand-opendeck flex items-center justify-between">
+                  <div className="brand-opendeck flex-1">
+                    <div className="brand-opendeck flex items-center gap-sm">
                       <h3 className="text-body text-heading-4">{project.title}</h3>
                       <Badge variant={
                         project.status === 'open' ? 'success' : 
@@ -356,7 +356,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                       )}
                     </div>
                     <p className="text-body-sm color-muted mt-xs">{project.description}</p>
-                    <div className="flex items-center gap-md mt-sm text-body-sm color-muted">
+                    <div className="brand-opendeck flex items-center gap-md mt-sm text-body-sm color-muted">
                       <span>{project.category}</span>
                       <span>•</span>
                       <span>{project.proposals?.[0]?.count || 0} proposals</span>
@@ -364,7 +364,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
                       <span>Posted {new Date(project.created_at).toLocaleDateString()}</span>
                     </div>
                   </div>
-                  <div className="flex items-center gap-sm">
+                  <div className="brand-opendeck flex items-center gap-sm">
                     <Button variant="ghost" onClick={() => openProjectDrawer(project)}>
                       <Edit className="h-4 w-4" />
                     </Button>
@@ -449,7 +449,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-md">
+          <div className="brand-opendeck grid grid-cols-2 gap-md">
             <div>
               <label className="text-body-sm form-label">Budget Type</label>
               <Select 
@@ -486,7 +486,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
           </div>
 
           {watch('budget_type') !== 'not_specified' && (
-            <div className="grid grid-cols-2 gap-md">
+            <div className="brand-opendeck grid grid-cols-2 gap-md">
               <div>
                 <label className="text-body-sm form-label">
                   {watch('budget_type') === 'hourly' ? 'Min Rate' : 'Min Budget'}
@@ -510,7 +510,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             </div>
           )}
 
-          <div className="flex items-center cluster-sm">
+          <div className="brand-opendeck flex items-center cluster-sm">
             <input
               type="checkbox"
               {...register('is_urgent')}
@@ -519,7 +519,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
             <label className="text-body-sm">Mark as urgent project</label>
           </div>
 
-          <div className="flex justify-end cluster-sm pt-md border-t">
+          <div className="brand-opendeck flex justify-end cluster-sm pt-md border-t">
             <Button type="button" variant="outline" onClick={() => setDrawerOpen(false)}>
               Cancel
             </Button>

@@ -154,7 +154,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'venue': return 'bg-secondary/10 color-secondary-foreground';
-      case 'office': return 'bg-primary/10 color-primary-foreground';
+      case 'office': return 'bg-accent/10 color-accent-foreground';
       case 'warehouse': return 'bg-secondary/50 color-muted';
       case 'studio': return 'bg-accent/50 color-accent-foreground';
       case 'outdoor': return 'bg-success/10 color-success-foreground';
@@ -185,7 +185,7 @@ export default function LocationsTableClient({ rows, orgId }: { rows: LocationRo
             <tr key={r.id} className="hover:bg-accent/20 cursor-pointer" onClick={() => { setOpenId(r.id); setTab('details'); }}>
               <td className="border-b p-sm">
                 <div className="flex items-center gap-sm">
-                  <MapPin className="w-4 h-4 color-primary" />
+                  <MapPin className="w-4 h-4 color-accent" />
                   {r.name}
                 </div>
               </td>

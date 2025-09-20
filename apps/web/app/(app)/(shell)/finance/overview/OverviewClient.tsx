@@ -248,7 +248,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 Revenue - Expenses
               </p>
             </div>
-            <DollarSign className="h-8 w-8 color-primary" />
+            <DollarSign className="h-8 w-8 color-accent" />
           </div>
         </Card>
 
@@ -287,7 +287,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-foreground/70">Pending Invoices</p>
-              <p className="text-heading-3 text-heading-3 color-primary">{summary?.pendingInvoices || 0}</p>
+              <p className="text-heading-3 text-heading-3 color-accent">{summary?.pendingInvoices || 0}</p>
               <p className="text-body-sm color-muted mt-xs">Awaiting payment</p>
             </div>
             <Clock className="h-5 w-5 color-warning" />
@@ -316,7 +316,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               </p>
               <p className="text-body-sm color-muted">+12% from last month</p>
             </div>
-            <TrendingUp className="h-8 w-8 color-primary" />
+            <TrendingUp className="h-8 w-8 color-accent" />
           </div>
         </Card>
       </div>

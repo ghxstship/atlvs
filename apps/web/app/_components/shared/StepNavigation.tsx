@@ -50,7 +50,7 @@ export function StepNavigation({
                   ${isCompleted 
                     ? 'bg-success color-success-foreground' 
                     : isActive 
-                      ? 'bg-primary color-primary-foreground' 
+                      ? 'bg-accent color-accent-foreground' 
                       : isAccessible
                         ? 'bg-secondary color-muted hover:bg-secondary/80'
                         : 'bg-secondary/50 color-muted/50 cursor-not-allowed'
@@ -71,12 +71,12 @@ export function StepNavigation({
                   disabled={!isAccessible}
                   className={`
                     text-left w-full transition-colors duration-200
-                    ${isAccessible ? 'hover:color-primary' : 'cursor-not-allowed'}
+                    ${isAccessible ? 'hover:color-accent' : 'cursor-not-allowed'}
                   `}
                 >
                   <h1 className={`
                     form-label text-body-sm
-                    ${isActive ? 'color-primary' : 
+                    ${isActive ? 'color-accent' : 
                       isCompleted ? 'color-success' : 
                       isAccessible ? 'color-foreground' : 'color-muted/50'}
                   `}>
@@ -86,7 +86,7 @@ export function StepNavigation({
                   {showLabels && step.description && (
                     <p className={`
                       text-body-sm mt-xs
-                      ${isActive ? 'color-primary/70' : 
+                      ${isActive ? 'color-accent/70' : 
                         isCompleted ? 'color-success/70' : 
                         isAccessible ? 'color-muted' : 'color-muted/50'}
                     `}>
@@ -127,7 +127,7 @@ export function StepNavigation({
                   ${isCompleted 
                     ? 'bg-success color-success-foreground' 
                     : isActive 
-                      ? 'bg-primary color-primary-foreground' 
+                      ? 'bg-accent color-accent-foreground' 
                       : isAccessible
                         ? 'bg-secondary color-muted hover:bg-secondary/80'
                         : 'bg-secondary/50 color-muted/50 cursor-not-allowed'
@@ -146,7 +146,7 @@ export function StepNavigation({
                 <div className="mt-sm text-center max-w-24">
                   <p className={`
                     text-body-sm form-label
-                    ${isActive ? 'color-primary' : 
+                    ${isActive ? 'color-accent' : 
                       isCompleted ? 'color-success' : 
                       isAccessible ? 'color-foreground' : 'color-muted/50'}
                   `}>
@@ -156,7 +156,7 @@ export function StepNavigation({
                   {step.description && (
                     <p className={`
                       text-body-sm mt-xs
-                      ${isActive ? 'color-primary/70' : 
+                      ${isActive ? 'color-accent/70' : 
                         isCompleted ? 'color-success/70' : 
                         isAccessible ? 'color-muted' : 'color-muted/50'}
                     `}>
@@ -236,7 +236,7 @@ export function StepNavigationControls({
                 ${isCompleted 
                   ? 'bg-success' 
                   : isActive 
-                    ? 'bg-primary' 
+                    ? 'bg-accent' 
                     : 'bg-secondary'
                 }
               `}
@@ -252,7 +252,7 @@ export function StepNavigationControls({
           flex items-center space-x-sm px-md py-sm text-body-sm form-label rounded-lg transition-colors
           ${isLastStep || isLoading
             ? 'color-muted/50 cursor-not-allowed'
-            : 'bg-primary color-primary-foreground hover:bg-primary/90'
+            : 'bg-accent color-accent-foreground hover:bg-accent/90'
           }
         `}
       >

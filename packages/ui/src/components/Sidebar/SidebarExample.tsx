@@ -134,14 +134,14 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
                   <h2 className="text-lg font-semibold text-foreground mb-sm">
                     🚀 2026-Ready Features
                   </h2>
-                  <p className="text-primary/80 mb-md">
+                  <p className="text-accent/80 mb-md">
                     This sidebar navigation system represents the future of enterprise UI/UX design with advanced personalization, 
                     accessibility, and performance optimizations.
                   </p>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                     <div>
                       <h3 className="font-medium text-foreground mb-sm">Performance</h3>
-                      <ul className="text-sm text-primary/80 gap-xs">
+                      <ul className="text-sm text-accent/80 gap-xs">
                         <li>• GPU-accelerated animations</li>
                         <li>• Reduced motion support</li>
                         <li>• Optimized re-renders</li>
@@ -150,7 +150,7 @@ export const SidebarExample: React.FC<SidebarExampleProps> = ({
                     </div>
                     <div>
                       <h3 className="font-medium text-foreground mb-sm">Accessibility</h3>
-                      <ul className="text-sm text-primary/80 gap-xs">
+                      <ul className="text-sm text-accent/80 gap-xs">
                         <li>• Screen reader optimized</li>
                         <li>• Focus management</li>
                         <li>• ARIA landmarks</li>

@@ -277,10 +277,10 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
         <Card className="p-md">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-2xl font-bold text-primary">{rules.length}</div>
+              <div className="text-2xl font-bold text-accent">{rules.length}</div>
               <div className="text-sm text-muted-foreground">Alert Rules</div>
             </div>
-            <Settings className="h-8 w-8 text-primary" />
+            <Settings className="h-8 w-8 text-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -301,7 +301,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             onClick={() => setActiveTab('alerts')}
             className={`py-sm px-xs border-b-2 font-medium text-sm ${
               activeTab === 'alerts'
-                ? 'border-primary text-primary'
+                ? 'border-primary text-accent'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >
@@ -311,7 +311,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
             onClick={() => setActiveTab('rules')}
             className={`py-sm px-xs border-b-2 font-medium text-sm ${
               activeTab === 'rules'
-                ? 'border-primary text-primary'
+                ? 'border-primary text-accent'
                 : 'border-transparent text-muted-foreground hover:text-foreground hover:border-border'
             }`}
           >

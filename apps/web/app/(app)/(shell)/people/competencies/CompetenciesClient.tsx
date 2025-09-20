@@ -123,7 +123,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
   const getCategoryColor = (category?: string) => {
     if (!category) return 'bg-secondary color-muted';
     const colors = [
-      'bg-primary/10 color-primary',
+      'bg-accent/10 color-accent',
       'bg-success/10 color-success',
       'bg-accent/10 color-accent',
       'bg-warning/10 color-warning',
@@ -262,7 +262,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <Award className="h-5 w-5 color-primary" />
+                    <Award className="h-5 w-5 color-accent" />
                     <h3 className="text-heading-4 color-foreground">{competency.name}</h3>
                   </div>
                   

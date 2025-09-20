@@ -268,7 +268,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('isPublic')}
                   type="checkbox"
-                  className="rounded border-border color-primary focus:ring-primary"
+                  className="rounded border-border color-accent focus:ring-primary"
                 />
                 <label className="text-body-sm form-label">Make report public</label>
               </div>
@@ -284,7 +284,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                       type="checkbox"
                       checked={selectedFields.includes(field)}
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) => toggleField(field)}
-                      className="rounded border-border color-primary focus:ring-primary"
+                      className="rounded border-border color-accent focus:ring-primary"
                     />
                     <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
                   </label>
@@ -360,7 +360,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('schedule.enabled')}
                   type="checkbox"
-                  className="rounded border-border color-primary focus:ring-primary"
+                  className="rounded border-border color-accent focus:ring-primary"
                 />
                 <label className="text-body-sm form-label">Enable scheduled delivery</label>
               </div>

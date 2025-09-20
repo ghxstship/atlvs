@@ -31,7 +31,7 @@ interface ContractingClientProps {
 }
 
 const CONTRACT_TYPES = [
-  { id: 'employment', name: 'Employment Contract', color: 'bg-primary' },
+  { id: 'employment', name: 'Employment Contract', color: 'bg-accent' },
   { id: 'freelance', name: 'Freelance Agreement', color: 'bg-success' },
   { id: 'nda', name: 'Non-Disclosure Agreement', color: 'bg-secondary' },
   { id: 'vendor', name: 'Vendor Agreement', color: 'bg-warning' },

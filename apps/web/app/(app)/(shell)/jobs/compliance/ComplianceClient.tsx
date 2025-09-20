@@ -146,7 +146,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       case 'pending':
         return 'bg-warning/10 color-warning';
       case 'in_progress':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'compliant':
         return 'bg-success/10 color-success';
       case 'non_compliant':
@@ -184,7 +184,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       case 'low':
         return 'bg-secondary color-muted';
       case 'medium':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'high':
         return 'bg-warning/10 color-warning';
       case 'critical':
@@ -201,9 +201,9 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
       case 'safety':
         return 'bg-destructive/10 color-destructive';
       case 'quality':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'security':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'environmental':
         return 'bg-success/10 color-success';
       case 'legal':
@@ -298,7 +298,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
               <p className="text-body-sm form-label color-foreground/70">Total Items</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{compliance.length}</p>
             </div>
-            <ShieldCheckIcon className="h-8 w-8 color-primary" />
+            <ShieldCheckIcon className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">

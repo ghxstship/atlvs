@@ -150,7 +150,7 @@ const workflowVariants = cva(
       },
       progress: {
         none: '',
-        linear: 'relative before:absolute before:top-0 before:left-0 before:h-1 before:bg-primary before:transition-all',
+        linear: 'relative before:absolute before:top-0 before:left-0 before:h-1 before:bg-accent before:transition-all',
         circular: 'relative',
         stepped: 'relative',
       },
@@ -172,7 +172,7 @@ const stepVariants = cva(
         default: 'p-lg bg-card border border-border rounded-lg',
         minimal: 'p-md',
         card: 'p-lg bg-card border border-border rounded-lg shadow-surface',
-        highlighted: 'p-lg bg-primary/5 border border-primary rounded-lg',
+        highlighted: 'p-lg bg-accent/5 border border-primary rounded-lg',
       },
       state: {
         pending: 'opacity-60',
@@ -323,9 +323,9 @@ const statusVariants = cva(
         success: 'bg-success/10 text-success',
         warning: 'bg-warning/10 text-warning',
         error: 'bg-destructive/10 text-destructive',
-        info: 'bg-primary/10 text-primary',
+        info: 'bg-accent/10 text-accent',
         neutral: 'bg-muted text-foreground',
-        processing: 'bg-primary/10 text-primary animate-pulse',
+        processing: 'bg-accent/10 text-accent animate-pulse',
       },
       size: {
         sm: 'px-sm py-0.5 text-xs',
@@ -354,7 +354,7 @@ const notificationVariants = cva(
         success: 'bg-success/10 border-success/20 text-success',
         warning: 'bg-warning/10 border-warning/20 text-warning',
         error: 'bg-destructive/10 border-destructive/20 text-destructive',
-        info: 'bg-primary/10 border-primary/20 text-primary',
+        info: 'bg-accent/10 border-primary/20 text-accent',
       },
       position: {
         inline: 'mb-md',
@@ -418,12 +418,12 @@ export const workflowOptimization = {
   loading: {
     skeleton: 'animate-pulse bg-muted rounded',
     spinner: 'animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full',
-    dots: 'flex gap-xs [&>div]:w-2 [&>div]:h-2 [&>div]:bg-primary [&>div]:rounded-full [&>div]:animate-bounce',
+    dots: 'flex gap-xs [&>div]:w-2 [&>div]:h-2 [&>div]:bg-accent [&>div]:rounded-full [&>div]:animate-bounce',
   },
   
   // Error recovery
   errorRecovery: {
-    retry: 'inline-flex items-center gap-sm text-sm text-primary hover:text-primary/80 cursor-pointer',
+    retry: 'inline-flex items-center gap-sm text-sm text-accent hover:text-accent/80 cursor-pointer',
     fallback: 'p-md bg-muted border border-border rounded-lg text-center',
   },
   
@@ -431,7 +431,7 @@ export const workflowOptimization = {
   disclosure: {
     collapsed: 'max-h-0 overflow-hidden transition-all duration-300',
     expanded: 'max-h-screen overflow-visible transition-all duration-300',
-    toggle: 'flex items-center gap-sm text-sm font-medium text-primary hover:text-primary/80 cursor-pointer',
+    toggle: 'flex items-center gap-sm text-sm font-medium text-accent hover:text-accent/80 cursor-pointer',
   },
 };
 

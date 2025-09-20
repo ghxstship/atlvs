@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { anton } from '../../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, BookOpen, Clock, Users, Star, Lock, Eye, CheckCircle } from 'lucide-react';
@@ -110,7 +111,7 @@ export default function GuidesPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               STEP-BY-STEP
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 MASTERY GUIDES
               </span>
             </h1>
@@ -146,8 +147,8 @@ export default function GuidesPage() {
                 {categories.map((category: any) => (
                   <Badge 
                     key={category} 
-                    variant={category === 'All Categories' ? 'primary' : 'outline'} 
-                    className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
+                    variant={category === 'All Categories' ? 'default' : 'outline'} 
+                    className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent"
                   >
                     {category}
                   </Badge>
@@ -160,8 +161,8 @@ export default function GuidesPage() {
                 {difficulties.map((difficulty: any) => (
                   <Badge 
                     key={difficulty} 
-                    variant={difficulty === 'All Levels' ? 'primary' : 'outline'} 
-                    className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors"
+                    variant={difficulty === 'All Levels' ? 'default' : 'outline'} 
+                    className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent"
                   >
                     {difficulty}
                   </Badge>
@@ -240,7 +241,7 @@ export default function GuidesPage() {
                   </div>
                   
                   <Button 
-                    variant={guide.isPremium ? "primary" : "outline"} 
+                    variant={guide.isPremium ? "default" : "outline"} 
                     size="sm" 
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >
@@ -293,7 +294,7 @@ export default function GuidesPage() {
             ].map((path, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <BookOpen className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>

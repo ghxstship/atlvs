@@ -116,7 +116,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
   }
 
   const quickActions = [
-    { icon: Users, label: t('viewDirectory'), href: '/people/directory', color: 'bg-primary' },
+    { icon: Users, label: t('viewDirectory'), href: '/people/directory', color: 'bg-accent' },
     { icon: Shield, label: t('manageRoles'), href: '/people/roles', color: 'bg-secondary' },
     { icon: Award, label: t('viewCompetencies'), href: '/people/competencies', color: 'bg-success' },
     { icon: List, label: t('viewShortlists'), href: '/people/shortlists', color: 'bg-warning' },
@@ -137,7 +137,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 {stats.activePeople} {t('active')}
               </p>
             </div>
-            <Users className="h-8 w-8 color-primary" />
+            <Users className="h-8 w-8 color-accent" />
           </div>
         </Card>
 

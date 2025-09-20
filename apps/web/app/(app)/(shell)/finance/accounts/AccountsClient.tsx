@@ -190,7 +190,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     switch (kind) {
       case 'checking':
       case 'savings':
-        return <Building className="h-6 w-6 color-primary" />;
+        return <Building className="h-6 w-6 color-accent" />;
       case 'credit':
         return <CreditCard className="h-6 w-6 color-secondary" />;
       case 'investment':
@@ -352,7 +352,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                 <p className="text-heading-3 text-heading-3 color-foreground">{accounts.length}</p>
                 <p className="text-body-sm color-foreground/60">{activeAccounts.length} active</p>
               </div>
-              <Building className="h-8 w-8 color-primary" />
+              <Building className="h-8 w-8 color-accent" />
             </div>
           </Card>
           
@@ -437,7 +437,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                     {balanceDiff !== null && (
                       <div className="flex justify-between text-body-sm">
                         <span className="color-foreground/70">Difference</span>
-                        <span className={`form-label ${balanceDiff === 0 ? 'color-success' : balanceDiff > 0 ? 'color-primary' : 'color-destructive'}`}>
+                        <span className={`form-label ${balanceDiff === 0 ? 'color-success' : balanceDiff > 0 ? 'color-accent' : 'color-destructive'}`}>
                           {balanceDiff === 0 ? 'Balanced' : formatCurrency(Math.abs(balanceDiff))}
                         </span>
                       </div>

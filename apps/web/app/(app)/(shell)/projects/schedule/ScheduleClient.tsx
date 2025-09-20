@@ -57,7 +57,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'active': case 'in_progress': case 'pending': return 'bg-primary/10 color-primary';
+      case 'active': case 'in_progress': case 'pending': return 'bg-accent/10 color-accent';
       case 'completed': case 'done': return 'bg-success/10 color-success';
       case 'on_hold': case 'blocked': return 'bg-warning/10 color-warning';
       case 'cancelled': return 'bg-destructive/10 color-destructive';
@@ -166,7 +166,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                     .filter(m => m.project_id === project.id)
                     .map(milestone => (
                       <div key={milestone.id} className="flex items-center gap-sm p-sm bg-secondary/50 rounded">
-                        <CheckCircle className="w-4 h-4 color-primary" />
+                        <CheckCircle className="w-4 h-4 color-accent" />
                         <span className="flex-1">{milestone.title}</span>
                         <Badge className={getStatusColor(milestone.status)}>
                           {milestone.status}
@@ -253,7 +253,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                       <div
                         key={idx}
                         className={`text-body-sm p-xs rounded truncate ${
-                          item.type === 'milestone' ? 'bg-primary/10 color-primary' : 'bg-success/10 color-success'
+                          item.type === 'milestone' ? 'bg-accent/10 color-accent' : 'bg-success/10 color-success'
                         }`}
                         title={item.title}
                       >
@@ -280,7 +280,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
               <div key={index} className="flex items-center gap-md p-sm border rounded-lg hover:bg-secondary/50">
                 <div className="flex items-center gap-sm">
                   {item.type === 'milestone' ? (
-                    <CheckCircle className="w-4 h-4 color-primary" />
+                    <CheckCircle className="w-4 h-4 color-accent" />
                   ) : (
                     <Clock className="w-4 h-4 color-success" />
                   )}
@@ -310,7 +310,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       {/* Summary Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-md pt-lg border-t">
         <div className="text-center">
-          <div className="text-heading-3 color-primary">{filteredData.projects.length}</div>
+          <div className="text-heading-3 color-accent">{filteredData.projects.length}</div>
           <div className="text-body-sm color-muted">Active Projects</div>
         </div>
         <div className="text-center">

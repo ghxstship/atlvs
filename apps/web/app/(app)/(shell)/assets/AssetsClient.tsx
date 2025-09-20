@@ -255,7 +255,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-body-sm form-label color-muted">Total Assets</p>
                         <p className="text-heading-3 text-heading-3">{stats.totalAssets}</p>
                       </div>
-                      <Package className="w-8 h-8 color-primary" />
+                      <Package className="w-8 h-8 color-accent" />
                     </div>
                   </div>
                 </Card>

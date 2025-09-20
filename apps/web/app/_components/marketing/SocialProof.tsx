@@ -113,7 +113,7 @@ export function SocialProof() {
           <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-md">
             TRUSTED BY
             <br />
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               INDUSTRY LEADERS
             </span>
           </h2>
@@ -130,8 +130,8 @@ export function SocialProof() {
               <div className="flex items-start gap-lg">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Quote className="h-6 w-6 color-primary" />
+                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
+                    <Quote className="h-6 w-6 color-accent" />
                   </div>
                 </div>
 
@@ -182,7 +182,7 @@ export function SocialProof() {
                       onClick={() => setCurrentTestimonial(index)}
                       className={cn(
                         "w-2 h-2 rounded-full transition-colors",
-                        index === currentTestimonial ? "bg-primary" : "bg-secondary"
+                        index === currentTestimonial ? "bg-accent" : "bg-secondary"
                       )}
                     />
                   ))}
@@ -246,7 +246,7 @@ export function SocialProof() {
 
                   {/* Metric */}
                   <div className="pt-md border-t">
-                    <div className="font-title text-body text-heading-3 color-primary">
+                    <div className="font-title text-body text-heading-3 color-accent">
                       {study.metric}
                     </div>
                   </div>

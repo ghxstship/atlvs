@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, FileText, BookOpen, Download, Users, TrendingUp, Zap } from 'lucide-react';
-import { typography } from '../../_components/lib/typography';
+import { typography, anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Resources | GHXSTSHIP',
@@ -21,7 +21,7 @@ const resourceCategories = [
     icon: FileText,
     href: '/resources/blog',
     count: '25+ Articles',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     title: 'Case Studies',
@@ -29,7 +29,7 @@ const resourceCategories = [
     icon: TrendingUp,
     href: '/resources/case-studies',
     count: '12 Studies',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     title: 'Guides',
@@ -37,7 +37,7 @@ const resourceCategories = [
     icon: BookOpen,
     href: '/resources/guides',
     count: '18 Guides',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     title: 'Documentation',
@@ -45,7 +45,7 @@ const resourceCategories = [
     icon: Users,
     href: '/resources/documentation',
     count: 'Full Docs',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     title: 'Whitepapers',
@@ -53,7 +53,7 @@ const resourceCategories = [
     icon: Download,
     href: '/resources/whitepapers',
     count: '8 Papers',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
 ];
 
@@ -94,7 +94,7 @@ export default function ResourcesPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               RESOURCES FOR
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 PRODUCTION
               </span>
               <br />
@@ -200,7 +200,7 @@ export default function ResourcesPage() {
                     <span className="text-body-sm color-muted">
                       {resource.readTime}
                     </span>
-                    <Button variant="ghost" size="sm" className="group-hover:bg-primary group-hover:color-primary-foreground transition-all duration-200">
+                    <Button variant="ghost" size="sm" className="transition-all duration-200 group-hover:text-accent">
                       {resource.type === 'Premium' ? 'Unlock' : 'Read'}
                       <ArrowRight className="ml-xs h-3 w-3 transition-transform group-hover:translate-x-1" />
                     </Button>

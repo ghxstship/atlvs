@@ -374,7 +374,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                 <p className="text-body-sm color-foreground/70">Total Expenses</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{expenses.length}</p>
               </div>
-              <Receipt className="h-8 w-8 color-primary" />
+              <Receipt className="h-8 w-8 color-accent" />
             </div>
           </Card>
           

@@ -45,7 +45,7 @@ export function PricingCard({
       className
     )}>
       {popular && (
-        <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary z-20 shadow-elevated px-md py-xs">
+        <Badge className="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent z-20 shadow-elevated px-md py-xs">
           Most Popular
         </Badge>
       )}

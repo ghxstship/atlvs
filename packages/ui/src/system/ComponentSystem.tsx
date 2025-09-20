@@ -27,10 +27,10 @@ import { DESIGN_TOKENS, COMPONENT_SIZES } from './DesignSystem';
     variants: {
       variant: {
         primary: [
-          'bg-primary text-primary-foreground shadow-surface',
-          'hover:bg-primary/90 hover:shadow-elevated hover:-translate-y-0.5',
+          'bg-accent text-accent-foreground shadow-surface',
+          'hover:bg-accent/90 hover:shadow-elevated hover:-translate-y-0.5',
           'focus-visible:ring-primary',
-          'active:bg-primary/95 active:translate-y-0 active:shadow-surface',
+          'active:bg-accent/95 active:translate-y-0 active:shadow-surface',
         ],
         secondary: [
           'bg-secondary text-secondary-foreground shadow-surface border border-border',
@@ -39,10 +39,10 @@ import { DESIGN_TOKENS, COMPONENT_SIZES } from './DesignSystem';
           'active:bg-secondary/95 active:translate-y-0 active:shadow-surface',
         ],
         outline: [
-          'border-2 border-primary text-primary bg-transparent',
-          'hover:bg-primary/10 hover:shadow-elevated hover:-translate-y-0.5',
+          'border-2 border-primary text-accent bg-transparent',
+          'hover:bg-accent/10 hover:shadow-elevated hover:-translate-y-0.5',
           'focus-visible:ring-primary',
-          'active:bg-primary/15 active:translate-y-0 active:shadow-surface',
+          'active:bg-accent/15 active:translate-y-0 active:shadow-surface',
         ],
         ghost: [
           'text-foreground bg-transparent',
@@ -143,7 +143,7 @@ export const badgeVariants = cva(
           'bg-secondary text-secondary-foreground border border-border',
         ],
         primary: [
-          'bg-primary/10 text-primary border border-primary/20',
+          'bg-accent/10 text-accent border border-primary/20',
         ],
         secondary: [
           'bg-muted text-foreground border border-border',
@@ -205,7 +205,7 @@ export const cardVariants = cva(
           'focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary',
         ],
         outline: [
-          'border-2 border-primary/20 bg-primary/5',
+          'border-2 border-primary/20 bg-accent/5',
         ],
         ghost: [
           'border-transparent bg-transparent shadow-none',
@@ -400,7 +400,7 @@ export const withDefaults = <T extends Record<string, any>>(
 export const a11yVariants = {
   focusRing: 'focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2',
   srOnly: 'sr-only',
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-primary focus:text-primary-foreground focus:rounded-md',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-accent focus:text-accent-foreground focus:rounded-md',
   highContrast: 'contrast-more:border-foreground contrast-more:text-foreground',
   reducedMotion: 'motion-reduce:animate-none motion-reduce:transition-none',
 };

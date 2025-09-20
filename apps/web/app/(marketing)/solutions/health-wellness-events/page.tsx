@@ -225,7 +225,7 @@ export default function HealthWellnessEventsPage() {
                     <div className="text-body-sm form-label color-muted">Today's Schedule</div>
                     {[
                       { session: 'Morning Yoga', time: '7:00 AM', participants: 89, color: 'bg-success' },
-                      { session: 'Mindful Eating', time: '12:30 PM', participants: 156, color: 'bg-primary' },
+                      { session: 'Mindful Eating', time: '12:30 PM', participants: 156, color: 'bg-accent' },
                       { session: 'Sound Healing', time: '7:00 PM', participants: 203, color: 'bg-info' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">

@@ -42,7 +42,7 @@ export default function ProgrammingOverviewClient({
       title: 'Total Events',
       value: stats.totalEvents,
       icon: CalendarDays,
-      color: 'color-primary'
+      color: 'color-accent'
     },
     {
       title: 'Upcoming Events',
@@ -134,7 +134,7 @@ export default function ProgrammingOverviewClient({
             return (
               <Card key={index} className="p-md hover:shadow-elevated transition-shadow">
                 <div className="flex items-start cluster">
-                  <Icon className="h-6 w-6 color-primary mt-xs" />
+                  <Icon className="h-6 w-6 color-accent mt-xs" />
                   <div className="flex-1">
                     <h3 className="form-label">{action.title}</h3>
                     <p className="text-body-sm color-muted mb-sm">

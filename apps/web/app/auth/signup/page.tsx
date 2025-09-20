@@ -17,14 +17,14 @@ export const metadata: Metadata = {
 export default function SignUpPage() {
   return (
     <AuthLayout
-      title="Welcome Aboard"
+      title="Sign Up"
       subtitle="Create your account and start building amazing creative projects"
-      badge="JOIN GHXSTSHIP"
+      badge="WELCOME ABOARD"
       showFooter={true}
     >
       <SignUpForm />
       
-      <div className="text-center mt-lg">
+      <div className="brand-ghostship text-center mt-lg">
         <AuthText>
           Need help getting started?{' '}
           <AuthLink href="/contact">Contact support</AuthLink>

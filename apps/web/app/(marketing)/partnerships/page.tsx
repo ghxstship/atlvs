@@ -2,9 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Users, Globe, Zap, CheckCircle, Star, Building, Target } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Partnerships | GHXSTSHIP',
@@ -22,28 +20,28 @@ const partnershipTypes = [
     title: 'Technology Partners',
     description: 'Integrate your tools and services with the GHXSTSHIP platform to provide seamless workflows for creative professionals.',
     benefits: ['API access', 'Co-marketing opportunities', 'Technical support', 'Joint go-to-market'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: Users,
     title: 'Channel Partners',
     description: 'Resell GHXSTSHIP solutions to your clients and earn competitive commissions while expanding your service offerings.',
     benefits: ['Revenue sharing', 'Sales training', 'Marketing materials', 'Dedicated support'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: Building,
     title: 'Strategic Partners',
     description: 'Form strategic alliances to co-develop solutions, enter new markets, and create innovative offerings together.',
     benefits: ['Joint development', 'Market expansion', 'Shared resources', 'Strategic alignment'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     icon: Globe,
     title: 'Regional Partners',
     description: 'Represent GHXSTSHIP in your local market and help us expand our global presence while growing your business.',
     benefits: ['Territory exclusivity', 'Local market expertise', 'Cultural adaptation', 'Regional support'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
 ];
 
@@ -145,7 +143,7 @@ export default function PartnershipsPage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               GROW
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 TOGETHER
               </span>
             </h1>
@@ -288,7 +286,7 @@ export default function PartnershipsPage() {
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary">
                         <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
@@ -334,7 +332,7 @@ export default function PartnershipsPage() {
                   </div>
                   
                   <div className="relative z-10 hidden lg:block">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center text-background text-heading-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-background text-heading-3">
                       {step.step}
                     </div>
                   </div>
@@ -446,7 +444,7 @@ export default function PartnershipsPage() {
               { title: 'Marketing Materials', href: '/resources/guides', description: 'Co-marketing resources' },
               { title: 'Support Center', href: '/contact', description: 'Partner support and assistance' },
             ].map((resource: any) => (
-              <a key={resource.title} href={product.href}>
+              <a key={resource.title} href={resource.href}>
                 <Card className="hover:shadow-floating transition-shadow group">
                   <CardContent className="p-lg text-center">
                     <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase group-hover:text-foreground transition-colors`}>

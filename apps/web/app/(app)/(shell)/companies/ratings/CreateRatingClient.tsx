@@ -288,7 +288,7 @@ export default function CreateRatingClient({
         {/* Review Content */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <MessageSquare className="h-5 w-5 color-primary" />
+            <MessageSquare className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Review Content</h3>
           </div>
           

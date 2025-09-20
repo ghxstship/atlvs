@@ -208,7 +208,7 @@ export default function HospitalityTravelPage() {
                       <div>42</div>
                       <div className="flex -cluster-xs mt-xs">
                         {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-accent rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function HospitalityTravelPage() {
                       <div className="text-body-sm color-muted mb-xs">Satisfaction</div>
                       <div>4.9/5</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-primary h-1 rounded-full w-11/12"></div>
+                        <div className="bg-accent h-1 rounded-full w-11/12"></div>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function HospitalityTravelPage() {
                     <div className="text-body-sm form-label color-muted">Today's Activities</div>
                     {[
                       { activity: 'Sunrise Yoga', time: '6:00 AM', guests: 28, color: 'bg-warning' },
-                      { activity: 'Snorkeling Tour', time: '10:00 AM', guests: 45, color: 'bg-primary' },
+                      { activity: 'Snorkeling Tour', time: '10:00 AM', guests: 45, color: 'bg-accent' },
                       { activity: 'Sunset Dinner', time: '7:00 PM', guests: 89, color: 'bg-info' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">
@@ -241,7 +241,7 @@ export default function HospitalityTravelPage() {
                     <Luggage className="w-4 h-4 text-foreground" />
                     <span className="text-body-sm form-label">VIP Arrival: Royal Suite - 3:30 PM</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>

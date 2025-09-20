@@ -24,9 +24,9 @@ const ROLE_ICONS = {
 }
 
 const ROLE_COLORS = {
-  owner: 'color-primary',
-  admin: 'color-error',
-  manager: 'color-primary',
+  owner: 'color-accent',
+  admin: 'color-destructive',
+  manager: 'color-accent',
   contributor: 'color-success',
   viewer: 'color-muted'
 }

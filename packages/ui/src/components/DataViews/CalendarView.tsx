@@ -193,7 +193,7 @@ export function CalendarView({
                   className={`
                     p-xs min-h-[100px] border border-border cursor-pointer
                     ${!isCurrentMonth ? 'bg-muted text-muted-foreground' : 'bg-background'}
-                    ${isToday ? 'bg-primary/10 border-primary' : ''}
+                    ${isToday ? 'bg-accent/10 border-primary' : ''}
                     hover:bg-muted/50
                   `}
                   onClick={() => onDateClick?.(date)}

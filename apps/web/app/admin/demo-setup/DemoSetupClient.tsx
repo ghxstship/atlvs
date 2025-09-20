@@ -64,7 +64,7 @@ const ROLE_ICONS = {
 const ROLE_COLORS = {
   owner: 'bg-secondary/10 color-secondary border-secondary/30',
   admin: 'bg-destructive/10 color-destructive border-destructive/30',
-  manager: 'bg-primary/10 color-primary border-primary/30',
+  manager: 'bg-accent/10 color-accent border-primary/30',
   contributor: 'bg-success/10 color-success border-success/30',
   viewer: 'bg-muted/30 color-muted border-muted/30'
 }
@@ -266,12 +266,12 @@ export function DemoSetupClient() {
           )}
         </div>
 
-        <div className="mt-lg p-md bg-primary/10 rounded-lg">
+        <div className="mt-lg p-md bg-accent/10 rounded-lg">
           <div className="flex items-start gap-sm">
-            <AlertCircle className="h-4 w-4 color-primary mt-0.5" />
+            <AlertCircle className="h-4 w-4 color-accent mt-0.5" />
             <div className="text-body-sm">
-              <p className="form-label color-primary">Next Steps:</p>
-              <ol className="list-decimal list-inside color-primary mt-xs stack-xs">
+              <p className="form-label color-accent">Next Steps:</p>
+              <ol className="list-decimal list-inside color-accent mt-xs stack-xs">
                 <li>Create auth users manually in Supabase Auth dashboard</li>
                 <li>Use the emails and password "demo123!" for each user</li>
                 <li>Visit <a href="/demo" className="underline">/demo</a> to test user switching</li>

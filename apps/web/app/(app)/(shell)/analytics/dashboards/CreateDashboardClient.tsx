@@ -185,7 +185,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                 <input
                   {...register('isPublic')}
                   type="checkbox"
-                  className="rounded border-border color-primary focus:ring-primary"
+                  className="rounded border-border color-accent focus:ring-primary"
                 />
                 <label className="text-body-sm form-label">Make dashboard public</label>
               </div>

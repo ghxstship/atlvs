@@ -216,7 +216,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalEndorsements')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalEndorsements}</p>
             </div>
-            <ThumbsUp className="h-8 w-8 color-primary" />
+            <ThumbsUp className="h-8 w-8 color-accent" />
           </div>
         </Card>
 
@@ -371,7 +371,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                 <div className="mb-sm">
                   <div className="flex flex-wrap gap-xs">
                     {endorsement.skills.map((skill, index) => (
-                      <Badge key={index} className="bg-primary/10 color-primary">
+                      <Badge key={index} className="bg-accent/10 color-accent">
                         {skill}
                       </Badge>
                     ))}

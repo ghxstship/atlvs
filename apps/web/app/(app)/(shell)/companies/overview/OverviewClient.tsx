@@ -179,7 +179,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
   const getActivityIcon = (type: string) => {
     switch (type) {
       case 'company_added':
-        return <Building className="h-4 w-4 color-primary" />;
+        return <Building className="h-4 w-4 color-accent" />;
       case 'contract_signed':
         return <FileText className="h-4 w-4 color-success" />;
       case 'qualification_verified':
@@ -254,7 +254,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                 <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalCompanies || 0}</p>
                 <p className="text-body-sm color-success">{stats?.activeCompanies || 0} active</p>
               </div>
-              <Building className="h-8 w-8 color-primary" />
+              <Building className="h-8 w-8 color-accent" />
             </div>
           </Card>
           
@@ -326,10 +326,10 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.pendingCompanies || 0) > 0 && (
               <Card className={`p-md ${designTokens.colors.status.info}`}>
                 <div className="flex items-center cluster-sm">
-                  <Users className="h-5 w-5 color-primary" />
+                  <Users className="h-5 w-5 color-accent" />
                   <div>
-                    <p className="form-label color-primary">Pending Reviews</p>
-                    <p className="text-body-sm color-primary/80">{stats?.pendingCompanies} companies need review</p>
+                    <p className="form-label color-accent">Pending Reviews</p>
+                    <p className="text-body-sm color-accent/80">{stats?.pendingCompanies} companies need review</p>
                   </div>
                 </div>
               </Card>

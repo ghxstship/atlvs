@@ -189,7 +189,7 @@ export default function CreateMaintenanceClient({
         {/* Asset & Type */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Wrench className="h-5 w-5 color-primary" />
+            <Wrench className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Asset & Maintenance Type</h3>
           </div>
           

@@ -13,7 +13,7 @@ const headingVariants = cva('', {
     },
     color: {
       default: '',
-      primary: 'text-primary',
+      primary: 'text-accent',
       muted: 'text-muted-foreground',
       foreground: 'text-foreground',
     },
@@ -40,7 +40,7 @@ export const Heading = React.forwardRef<HTMLHeadingElement, HeadingProps>(
       clsx(
         headingVariants({ variant, color }),
         uppercase && 'uppercase',
-        gradient && 'bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent',
+        gradient && 'bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent',
         className
       )
     );

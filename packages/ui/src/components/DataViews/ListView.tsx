@@ -300,7 +300,7 @@ export function ListView({
                           className={`
                             flex items-center gap-sm p-md cursor-pointer transition-all duration-200
                             hover:bg-muted/50
-                            ${isSelected ? 'bg-primary/10 border-l-4 border-l-primary' : ''}
+                            ${isSelected ? 'bg-accent/10 border-l-4 border-l-primary' : ''}
                           `}
                           onClick={() => onItemClick?.(record)}
                           onMouseEnter={() => setHoveredItem(record.id)}

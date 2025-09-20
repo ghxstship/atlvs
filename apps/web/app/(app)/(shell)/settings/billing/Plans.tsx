@@ -116,7 +116,7 @@ export default function Plans() {
           </a>
         </div>
       </div>
-      {error ? <div className="text-body-sm color-error">{error}</div> : null}
+      {error ? <div className="text-body-sm color-destructive">{error}</div> : null}
     </div>
   );
 }

@@ -2,7 +2,6 @@
 
 
 import { Card, CardContent  } from '@ghxstship/ui';
-import { Badge  } from '@ghxstship/ui';
 import { LucideIcon } from 'lucide-react';
 // import { typography } from '../../../../(marketing)/lib/typography';
 import { cn } from '../lib/utils';
@@ -11,7 +10,7 @@ interface FeatureCardProps {
   title: string;
   description: string;
   icon?: LucideIcon;
-  badge?: string;
+  label?: string; // e.g., ATLVS or OPENDECK
   gradient?: string;
   className?: string;
   variant?: 'default' | 'hover' | 'compact';
@@ -21,8 +20,8 @@ export function FeatureCard({
   title,
   description,
   icon: Icon,
-  badge,
-  gradient = 'from-primary to-accent',
+  label,
+  gradient = 'from-primary to-secondary',
   className,
   variant = 'default'
 }: FeatureCardProps) {
@@ -44,10 +43,10 @@ export function FeatureCard({
           </div>
         )}
         
-        {badge && (
-          <Badge variant="secondary" className="mb-sm">
-            {badge}
-          </Badge>
+        {label && (
+          <div className="mb-xs text-body-xs uppercase tracking-wide text-foreground/70">
+            {label}
+          </div>
         )}
         
         <h3 className="text-xl font-semibold mb-sm">
@@ -84,8 +83,8 @@ export function StatsCard({
     <Card className={cn('text-center', className)}>
       <CardContent className="p-lg">
         {Icon && (
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-primary/10 mb-sm">
-            <Icon className="h-6 w-6 color-primary" />
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-accent/10 mb-sm">
+            <Icon className="h-6 w-6 color-accent" />
           </div>
         )}
         
@@ -100,7 +99,7 @@ export function StatsCard({
         {trend && (
           <div className={cn(
             'text-body-sm form-label mt-xs',
-            trend.direction === 'up' ? 'color-success' : 'color-error'
+            trend.direction === 'up' ? 'color-success' : 'color-destructive'
           )}>
             {trend.direction === 'up' ? '↗' : '↘'} {trend.value}
           </div>

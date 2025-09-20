@@ -247,7 +247,7 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
                   }}
                   className={clsx(
                     'flex items-center gap-sm w-full px-sm py-sm text-sm hover:bg-muted transition-colors',
-                    theme === themeOption.value && 'bg-muted text-primary'
+                    theme === themeOption.value && 'bg-muted text-accent'
                   )}
                 >
                   <themeOption.icon className="h-4 w-4" />
@@ -283,7 +283,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
     const [isOpen, setIsOpen] = React.useState(false);
 
     const typeColors = {
-      info: 'text-primary',
+      info: 'text-accent',
       success: 'text-success',
       warning: 'text-warning',
       error: 'text-destructive',
@@ -348,7 +348,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
                     >
                       <div className={clsx(
                         'w-2 h-2 rounded-full mt-sm shrink-0',
-                        notification.read ? 'bg-muted-foreground/30' : 'bg-primary'
+                        notification.read ? 'bg-muted-foreground/30' : 'bg-accent'
                       )} />
                       <div className="flex-1 min-w-0">
                         <p className="font-medium text-sm truncate">
@@ -400,7 +400,7 @@ export const UserMenu = React.forwardRef<HTMLDivElement, UserMenuProps>(
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center gap-sm p-xs hover:bg-muted rounded-lg transition-colors"
         >
-          <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
+          <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
             {user.avatar ? (
               <img 
                 src={user.avatar} 
@@ -408,7 +408,7 @@ export const UserMenu = React.forwardRef<HTMLDivElement, UserMenuProps>(
                 className="w-8 h-8 rounded-full object-cover"
               />
             ) : (
-              <User className="h-4 w-4 text-primary" />
+              <User className="h-4 w-4 text-accent" />
             )}
           </div>
           <ChevronDown className="h-3 w-3 text-muted-foreground" />

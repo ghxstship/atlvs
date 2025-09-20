@@ -193,7 +193,7 @@ export default function CreateQualificationClient({
         {/* Qualification Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Award className="h-5 w-5 color-primary" />
+            <Award className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Qualification Details</h3>
           </div>
           

@@ -375,7 +375,7 @@
     box-shadow: var(--shadow-outline);
   }
   .btn-primary { 
-    @apply bg-primary text-primary-foreground;
+    @apply bg-accent text-accent-foreground;
   }
   .btn-primary:hover {
     background-color: hsl(var(--primary) / 0.9);
@@ -727,7 +727,7 @@
 
   /* Missing Color Utilities */
   .color-foreground { color: hsl(var(--foreground)); }
-  .color-primary { color: hsl(var(--primary)); }
+  .color-accent { color: hsl(var(--primary)); }
   .color-secondary { color: hsl(var(--secondary)); }
   .color-accent { color: hsl(var(--accent)); }
   .color-muted { color: hsl(var(--muted-foreground)); }
@@ -736,7 +736,7 @@
   .color-destructive { color: hsl(var(--destructive)); }
   .color-info { color: hsl(var(--info)); }
 
-  .color-primary-foreground { color: hsl(var(--primary-foreground)); }
+  .color-accent-foreground { color: hsl(var(--primary-foreground)); }
   .color-secondary-foreground { color: hsl(var(--secondary-foreground)); }
   .color-accent-foreground { color: hsl(var(--accent-foreground)); }
   .color-success-foreground { color: hsl(var(--success-foreground)); }

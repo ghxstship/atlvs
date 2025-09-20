@@ -19,13 +19,13 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'default', size = 'default', loading, children, disabled, ...props }, ref) => {
     const variants = {
-      default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-      primary: 'bg-primary text-primary-foreground hover:bg-primary/90',
+      default: 'bg-accent text-accent-foreground hover:bg-accent/90',
+      primary: 'bg-accent text-accent-foreground hover:bg-accent/90',
       secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80',
       destructive: 'bg-destructive text-destructive-foreground hover:bg-destructive/90',
       outline: 'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
       ghost: 'hover:bg-accent hover:text-accent-foreground',
-      link: 'text-primary underline-offset-4 hover:underline',
+      link: 'text-accent underline-offset-4 hover:underline',
     }
 
     const sizes = {
@@ -312,7 +312,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
 export const Badge = forwardRef<HTMLDivElement, BadgeProps>(
   ({ className, variant = 'default', ...props }, ref) => {
     const variants = {
-      default: 'border-transparent bg-primary text-primary-foreground',
+      default: 'border-transparent bg-accent text-accent-foreground',
       secondary: 'border-transparent bg-secondary text-secondary-foreground',
       destructive: 'border-transparent bg-destructive text-destructive-foreground',
       outline: 'text-foreground',
@@ -820,7 +820,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
                       if (input) input.indeterminate = someSelected
                     }}
                     onChange={(e: any) => handleSelectAll(e.target.checked)}
-                    className="rounded border-border text-primary focus:ring-primary"
+                    className="rounded border-border text-accent focus:ring-primary"
                     aria-label="Select all rows"
                   />
                 </th>
@@ -866,7 +866,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
                       'transition-colors hover:bg-muted/50',
                       {
                         'bg-muted/50': variant === 'striped' && index % 2 === 1,
-                        'bg-primary/5': isSelected,
+                        'bg-accent/5': isSelected,
                         'cursor-pointer': onRowClick,
                       }
                     )}
@@ -878,7 +878,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
                           type="checkbox"
                           checked={isSelected}
                           onChange={(e: any) => handleRowSelection(key, e.target.checked)}
-                          className="rounded border-border text-primary focus:ring-primary"
+                          className="rounded border-border text-accent focus:ring-primary"
                           aria-label={`Select row ${index + 1}`}
                         />
                       </td>

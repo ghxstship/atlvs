@@ -128,8 +128,8 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
         <Card className="p-lg">
           <div className="flex items-center gap-md">
-            <div className="p-sm bg-primary/10 rounded-lg">
-              <ShoppingCart className="h-6 w-6 color-primary" />
+            <div className="p-sm bg-accent/10 rounded-lg">
+              <ShoppingCart className="h-6 w-6 color-accent" />
             </div>
             <div>
               <p className="text-body-sm color-foreground/70">Total Orders</p>
@@ -182,7 +182,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center justify-between mb-md">
             <div className="flex items-center gap-sm">
-              <Package className="h-5 w-5 color-primary" />
+              <Package className="h-5 w-5 color-accent" />
               <span className="form-label">Products</span>
             </div>
             <Link href="/procurement/products">

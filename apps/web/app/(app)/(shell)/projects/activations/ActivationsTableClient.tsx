@@ -327,7 +327,7 @@ export default function ActivationsTableClient({
               onClick={() => setActiveTab(key as any)}
               className={`flex items-center gap-sm px-md py-sm text-body-sm form-label border-b-2 transition-colors ${
                 activeTab === key
-                  ? 'border-primary color-primary'
+                  ? 'border-primary color-accent'
                   : 'border-transparent color-muted hover:color-foreground'
               }`}
             >
@@ -405,7 +405,7 @@ export default function ActivationsTableClient({
                 {...form.register('name')}
               />
               {form.formState.errors.name && (
-                <div className="text-body-sm color-error">
+                <div className="text-body-sm color-destructive">
                   {form.formState.errors.name.message}
                 </div>
               )}

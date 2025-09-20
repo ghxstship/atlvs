@@ -433,8 +433,8 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
             <Card key={report.id} className="p-lg">
               <div className="flex items-start justify-between mb-md">
                 <div className="flex items-center cluster-sm">
-                  <div className="p-sm bg-primary/10 rounded-lg">
-                    <IconComponent className="h-5 w-5 color-primary" />
+                  <div className="p-sm bg-accent/10 rounded-lg">
+                    <IconComponent className="h-5 w-5 color-accent" />
                   </div>
                   <div>
                     <h3 className="text-heading-4 color-foreground">{report.name}</h3>

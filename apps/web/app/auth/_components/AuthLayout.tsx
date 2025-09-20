@@ -23,13 +23,13 @@ export function AuthLayout({
   showFooter = false 
 }: AuthLayoutProps) {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 to-accent/5">
+    <div className="min-h-screen brand-ghostship bg-gradient-to-br from-primary/5 to-accent/5">
       {/* Header */}
       <div className="py-xl">
         <div className="content-width content-padding">
           <div className="text-center">
             <Link href="/" className="inline-block">
-              <h1 className="text-heading-3 tracking-tight color-primary">GHXSTSHIP</h1>
+              <h1 className="text-heading-3 tracking-tight text-black">GHXSTSHIP</h1>
             </Link>
           </div>
         </div>
@@ -55,7 +55,7 @@ export function AuthLayout({
           {/* Trust Indicators */}
           {showTrustIndicators && (
             <div className="pt-lg border-t border-muted">
-              <div className="cluster justify-center text-body-sm color-muted">
+              <div className="flex flex-col sm:flex-row items-center justify-between gap-sm text-body-sm color-muted">
                 <div className="cluster-xs flex items-center">
                   <Shield className="h-3 w-3" />
                   <span>Secure</span>
@@ -77,11 +77,11 @@ export function AuthLayout({
             <div className="text-center">
               <p className="text-body-sm color-muted font-body">
                 By continuing, you agree to our{' '}
-                <Link href="/legal/terms" className="color-primary hover:underline">
+                <Link href="/legal/terms" className="color-accent hover:underline">
                   Terms of Service
                 </Link>{' '}
                 and{' '}
-                <Link href="/legal/privacy" className="color-primary hover:underline">
+                <Link href="/legal/privacy" className="color-accent hover:underline">
                   Privacy Policy
                 </Link>
               </p>

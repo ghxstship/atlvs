@@ -90,7 +90,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
 
   const getActivityColor = (type: string) => {
     const colors = {
-      profile_updated: 'color-primary',
+      profile_updated: 'color-accent',
       profile_created: 'color-success',
       profile_viewed: 'color-muted',
       certification_added: 'color-secondary',

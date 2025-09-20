@@ -177,7 +177,7 @@ function ContractsClient({ user }: ContractsClientProps) {
     switch (status) {
       case 'draft': return 'bg-secondary color-muted border-border';
       case 'pending_review': return 'bg-warning/10 color-warning border-warning/20';
-      case 'approved': return 'bg-primary/10 color-primary border-primary/20';
+      case 'approved': return 'bg-accent/10 color-accent border-primary/20';
       case 'active': return 'bg-success/10 color-success border-success/20';
       case 'completed': return 'bg-success/10 color-success border-success/20';
       case 'terminated': return 'bg-destructive/10 color-destructive border-destructive/20';
@@ -189,7 +189,7 @@ function ContractsClient({ user }: ContractsClientProps) {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'msa': return 'bg-secondary/10 color-secondary border-secondary/20';
-      case 'sow': return 'bg-primary/10 color-primary border-primary/20';
+      case 'sow': return 'bg-accent/10 color-accent border-primary/20';
       case 'amendment': return 'bg-warning/10 color-warning border-warning/20';
       case 'termination': return 'bg-destructive/10 color-destructive border-destructive/20';
       default: return 'bg-secondary color-muted border-border';
@@ -274,7 +274,7 @@ function ContractsClient({ user }: ContractsClientProps) {
               <p className="text-body-sm form-label color-foreground/70">Total Contracts</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{contracts.length}</p>
             </div>
-            <FileText className="h-8 w-8 color-primary" />
+            <FileText className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -292,11 +292,11 @@ function ContractsClient({ user }: ContractsClientProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-foreground/70">Completed</p>
-              <p className="text-heading-3 text-heading-3 color-primary">
+              <p className="text-heading-3 text-heading-3 color-accent">
                 {contracts.filter(c => c.status === 'completed').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 color-primary" />
+            <CheckCircle className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">

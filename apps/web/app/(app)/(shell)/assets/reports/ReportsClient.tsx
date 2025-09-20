@@ -487,7 +487,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-lg">
               <div className="flex items-center gap-sm mb-md">
-                <Package className="w-5 h-5 color-primary" />
+                <Package className="w-5 h-5 color-accent" />
                 <h3 className="text-body text-heading-4">Asset Overview</h3>
               </div>
               <div className="stack-sm">
@@ -501,7 +501,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-body-sm color-muted">In Use</span>
-                  <span className="form-label color-primary">52</span>
+                  <span className="form-label color-accent">52</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-body-sm color-muted">Maintenance</span>
@@ -557,7 +557,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-body-sm color-muted">Site Vehicles</span>
-                  <span className="form-label color-primary">85%</span>
+                  <span className="form-label color-accent">85%</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-body-sm color-muted">Heavy Machinery</span>
@@ -571,7 +571,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card className="md:col-span-2">
             <div className="p-lg">
               <div className="flex items-center gap-sm mb-md">
-                <PieChart className="w-5 h-5 color-primary" />
+                <PieChart className="w-5 h-5 color-accent" />
                 <h3 className="text-body text-heading-4">Asset Distribution by Category</h3>
               </div>
               <div className="stack-sm">
@@ -590,7 +590,7 @@ export default function ReportsClient({ orgId }: ReportsClientProps) {
           <Card>
             <div className="p-lg">
               <div className="flex items-center gap-sm mb-md">
-                <Calendar className="w-5 h-5 color-primary" />
+                <Calendar className="w-5 h-5 color-accent" />
                 <h3 className="text-body text-heading-4">Recent Activity</h3>
               </div>
               <div className="stack-sm">

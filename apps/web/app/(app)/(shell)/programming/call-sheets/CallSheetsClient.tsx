@@ -165,7 +165,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
       case 'draft':
         return 'color-muted bg-secondary';
       case 'published':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       case 'distributed':
         return 'color-success bg-success/10';
       case 'completed':

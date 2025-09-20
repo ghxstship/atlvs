@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Calendar, Users, Shield, Zap, ExternalLink, MessageSquare, Lightbulb } from 'lucide-react';
+import { anton } from '../../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'Coming Soon | GHXSTSHIP Products',
@@ -37,7 +38,7 @@ const upcomingProducts = [
       'Enhanced security protocols',
     ],
     targetUsers: ['Event Organizers', 'Venue Owners', 'Security Teams', 'Developers'],
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
   },
   {
     id: 'mvnifest',
@@ -62,7 +63,7 @@ const upcomingProducts = [
       'Enhanced operational efficiency',
     ],
     targetUsers: ['Inventory Managers', 'Operations Teams', 'Asset Controllers', 'Production Coordinators'],
-    gradient: 'from-accent to-primary',
+    gradient: 'from-secondary to-primary',
   },
   {
     id: 'opvs',
@@ -87,7 +88,7 @@ const upcomingProducts = [
       'Professional network expansion',
     ],
     targetUsers: ['Artists', 'Talent Managers', 'Booking Agents', 'Creative Professionals'],
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
   },
 ];
 
@@ -104,7 +105,7 @@ export default function ComingSoonPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               THE NEXT GENERATION
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 IS COMING IN 2026
               </span>
             </h1>
@@ -160,7 +161,7 @@ export default function ComingSoonPage() {
               </div>
 
               <div className="text-center">
-                <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-md">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center mx-auto mb-md">
                   <Users className="h-10 w-10 text-background" />
                 </div>
                 <h3 className="text-heading-4 text-heading-3 mb-sm">Q3 2026</h3>
@@ -202,7 +203,7 @@ export default function ComingSoonPage() {
                   <div className="mb-lg">
                     <div className="flex items-center gap-sm mb-md">
                       <Badge variant="outline">{product.category}</Badge>
-                      <Badge className="bg-primary color-primary-foreground">
+                      <Badge className="bg-accent color-accent-foreground">
                         <Calendar className="h-3 w-3 mr-xs" />
                         {product.launchDate}
                       </Badge>
@@ -291,7 +292,7 @@ export default function ComingSoonPage() {
             ].map((item, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow text-center">
                 <CardContent className="p-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <item.icon className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
@@ -337,7 +338,7 @@ export default function ComingSoonPage() {
           <Card className="max-w-4xl mx-auto text-center">
             <CardContent className="p-2xl">
               <div className="flex justify-center mb-lg">
-                <div className="w-20 h-20 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                   <Zap className="h-10 w-10 text-background" />
                 </div>
               </div>

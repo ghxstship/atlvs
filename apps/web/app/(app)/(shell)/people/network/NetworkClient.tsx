@@ -128,11 +128,11 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
   });
 
   const relationshipTypes = [
-    { value: 'colleague', label: t('colleague'), color: 'bg-primary/10 color-primary' },
+    { value: 'colleague', label: t('colleague'), color: 'bg-accent/10 color-accent' },
     { value: 'mentor', label: t('mentor'), color: 'bg-secondary/10 color-secondary' },
     { value: 'mentee', label: t('mentee'), color: 'bg-success/10 color-success' },
     { value: 'collaborator', label: t('collaborator'), color: 'bg-warning/10 color-warning' },
-    { value: 'friend', label: t('friend'), color: 'bg-primary/10 color-primary' },
+    { value: 'friend', label: t('friend'), color: 'bg-accent/10 color-accent' },
     { value: 'professional', label: t('professional'), color: 'bg-secondary/50 color-muted' }
   ];
 
@@ -176,7 +176,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalConnections')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalConnections}</p>
             </div>
-            <Network className="h-8 w-8 color-primary" />
+            <Network className="h-8 w-8 color-accent" />
           </div>
         </Card>
 

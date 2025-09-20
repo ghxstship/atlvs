@@ -56,7 +56,7 @@ const QUICK_ACTIONS = [
     description: 'Start a new job posting',
     href: '/jobs?action=create',
     icon: BriefcaseIcon,
-    color: 'bg-primary',
+    color: 'bg-accent',
   },
   {
     title: 'Browse Opportunities',
@@ -181,7 +181,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
   const getStatusColor = (status: string) => {
     switch (status.toLowerCase()) {
       case 'active': return 'bg-success/10 color-success';
-      case 'completed': return 'bg-primary/10 color-primary';
+      case 'completed': return 'bg-accent/10 color-accent';
       case 'pending': return 'bg-warning/10 color-warning';
       case 'draft': return 'bg-secondary/10 color-muted';
       case 'cancelled': return 'bg-destructive/10 color-destructive';
@@ -233,7 +233,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Total Jobs</p>
                   <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalJobs || 0}</p>
                 </div>
-                <BriefcaseIcon className="h-8 w-8 color-primary" />
+                <BriefcaseIcon className="h-8 w-8 color-accent" />
               </div>
             </Card>
 
@@ -303,7 +303,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Active RFPs</p>
                   <p className="text-body-sm color-muted">{stats?.activeRFPs || 0} active RFPs</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 color-primary" />
+                <DocumentTextIcon className="h-8 w-8 color-accent" />
               </div>
             </Card>
           </>

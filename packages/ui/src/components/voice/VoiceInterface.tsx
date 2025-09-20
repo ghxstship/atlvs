@@ -658,13 +658,13 @@ export function VoiceControls({ className }: { className?: string }) {
 
       {/* Current command display */}
       {currentCommand && (
-        <div className="flex items-center space-x-sm px-sm py-xs bg-primary/10 dark:bg-primary/20 rounded-lg">
-          <Zap className="h-3 w-3 text-primary dark:text-primary" />
-          <span className="text-sm text-primary dark:text-primary">
+        <div className="flex items-center space-x-sm px-sm py-xs bg-accent/10 dark:bg-accent/20 rounded-lg">
+          <Zap className="h-3 w-3 text-accent dark:text-accent" />
+          <span className="text-sm text-accent dark:text-accent">
             {currentCommand}
           </span>
           {confidence > 0 && (
-            <span className="text-xs text-primary dark:text-primary">
+            <span className="text-xs text-accent dark:text-accent">
               {Math.round(confidence * 100)}%
             </span>
           )}

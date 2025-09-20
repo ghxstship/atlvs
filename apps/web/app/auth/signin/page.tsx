@@ -30,8 +30,9 @@ export default function SignInPage() {
       if (error) throw error
 
       router.push('/dashboard')
-    } catch (error) {
-      setError(error.message)
+    } catch (err: unknown) {
+      const msg = typeof err === 'object' && err && 'message' in err ? String((err as any).message) : 'Sign in error';
+      setError(msg)
     } finally {
       setLoading(false)
     }
@@ -39,7 +40,7 @@ export default function SignInPage() {
 
   return (
     <AuthLayout
-      title="Sign in to GHXSTSHIP"
+      title="Sign In"
       subtitle="Access your production management dashboard"
       badge="WELCOME BACK"
     >
@@ -75,14 +76,14 @@ export default function SignInPage() {
           onTogglePassword={() => setShowPassword(!showPassword)}
         />
         
-        <div className="text-center">
+        <div className="brand-ghostship text-center">
           <AuthLink href="/auth/forgot-password">
             Forgot your password?
           </AuthLink>
         </div>
       </AuthForm>
       
-      <div className="text-center mt-lg">
+      <div className="brand-ghostship text-center mt-lg">
         <AuthText>
           Don't have an account?{' '}
           <AuthLink href="/auth/signup">Sign up for free</AuthLink>

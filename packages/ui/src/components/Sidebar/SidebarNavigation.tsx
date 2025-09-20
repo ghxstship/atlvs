@@ -174,7 +174,7 @@ const navItemVariants = cva(
   {
     variants: {
       active: {
-        true: 'bg-primary/10 text-primary',
+        true: 'bg-accent/10 text-accent',
         false: 'text-muted-foreground',
       },
       level: {
@@ -408,13 +408,13 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               <span className="flex-1 text-left truncate">{item.label}</span>
               
               {item.badge && (
-                <span className="inline-flex items-center justify-center px-sm py-xs text-xs font-bold leading-none text-primary-foreground bg-primary rounded-full">
+                <span className="inline-flex items-center justify-center px-sm py-xs text-xs font-bold leading-none text-accent-foreground bg-accent rounded-full">
                   {item.badge}
                 </span>
               )}
               
               {isPinned && (
-                <Pin className="h-3 w-3 text-primary" />
+                <Pin className="h-3 w-3 text-accent" />
               )}
               
               {hasChildren && (
@@ -448,7 +448,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
             }}
             aria-label={isPinned ? 'Unpin item' : 'Pin item'}
           >
-            <Pin className={`h-3 w-3 ${isPinned ? 'text-primary' : 'text-muted-foreground'}`} />
+            <Pin className={`h-3 w-3 ${isPinned ? 'text-accent' : 'text-muted-foreground'}`} />
           </button>
         )}
 

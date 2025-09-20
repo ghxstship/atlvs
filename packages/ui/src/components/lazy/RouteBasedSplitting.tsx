@@ -13,7 +13,7 @@ const RouteLoadingFallback: React.FC<{ routeName: string; icon?: React.ReactNode
   <Card className="p-2xl flex flex-col items-center justify-center min-h-[400px]">
     <div className="flex items-center space-x-sm mb-md">
       {icon}
-      <RefreshCw className="h-8 w-8 animate-spin text-primary" />
+      <RefreshCw className="h-8 w-8 animate-spin text-accent" />
     </div>
     <h3 className="text-xl font-semibold text-foreground mb-sm">Loading {routeName}</h3>
     <p className="text-muted-foreground/70 text-center max-w-md">
@@ -333,7 +333,7 @@ export const NavigationWithPreloading: React.FC<{
           onMouseEnter={() => handleRouteHover(key as keyof typeof routeConfigs)}
           className={`w-full flex items-center space-x-sm px-sm py-sm text-left rounded-md transition-colors ${
             currentRoute === key
-              ? 'bg-primary/20 text-primary border-l-4 border-primary'
+              ? 'bg-accent/20 text-accent border-l-4 border-primary'
               : 'text-muted-foreground/80 hover:bg-muted/20'
           }`}
         >

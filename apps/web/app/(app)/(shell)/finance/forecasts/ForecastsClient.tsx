@@ -223,7 +223,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
       case 'expense':
         return <TrendingUp className="h-5 w-5 color-destructive rotate-180" />;
       case 'budget':
-        return <Target className="h-5 w-5 color-primary" />;
+        return <Target className="h-5 w-5 color-accent" />;
       case 'cash_flow':
         return <Activity className="h-5 w-5 color-secondary" />;
       default:
@@ -435,7 +435,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 <p className="text-heading-3 text-heading-3 color-foreground">{forecasts.length}</p>
                 <p className="text-body-sm color-foreground/60">{analytics.completedForecasts} completed</p>
               </div>
-              <BarChart3 className="h-8 w-8 color-primary" />
+              <BarChart3 className="h-8 w-8 color-accent" />
             </div>
           </Card>
           
@@ -443,11 +443,11 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-foreground/70">Total Projected</p>
-                <p className="text-heading-3 text-heading-3 color-primary">
+                <p className="text-heading-3 text-heading-3 color-accent">
                   {formatCurrency(analytics.totalProjected)}
                 </p>
               </div>
-              <Target className="h-8 w-8 color-primary" />
+              <Target className="h-8 w-8 color-accent" />
             </div>
           </Card>
           
@@ -496,7 +496,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 <div className="stack-sm mb-md">
                   <div className="flex justify-between text-body-sm">
                     <span className="color-foreground/70">Projected</span>
-                    <span className="form-label color-primary">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
+                    <span className="form-label color-accent">{formatCurrency(forecast.projected_amount, forecast.currency)}</span>
                   </div>
                   
                   {forecast.actual_amount !== null && (

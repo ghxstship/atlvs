@@ -131,8 +131,8 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
   };
 
   return (
-    <div className="stack-xl">
-      <div className="text-center">
+    <div className="brand-ghostship stack-xl">
+      <div className="brand-ghostship text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
           ORGANIZATION SETUP
         </h1>
@@ -142,14 +142,14 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
       </div>
 
       {!setupType ? (
-        <div className="grid md:grid-cols-2 gap-lg">
+        <div className="brand-ghostship grid md:grid-cols-2 gap-lg">
           {/* Create Organization */}
           <Card 
             className="cursor-pointer hover:shadow-floating transition-all duration-200 hover:scale-105"
             onClick={() => setSetupType('create')}
           >
             <CardContent className="p-xl text-center">
-              <Building className="h-12 w-12 color-primary mx-auto mb-md" />
+              <Building className="h-12 w-12 color-accent mx-auto mb-md" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                 CREATE ORGANIZATION
               </h3>
@@ -169,7 +169,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             onClick={() => setSetupType('join')}
           >
             <CardContent className="p-xl text-center">
-              <Users className="h-12 w-12 color-primary mx-auto mb-md" />
+              <Users className="h-12 w-12 color-accent mx-auto mb-md" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                 JOIN ORGANIZATION
               </h3>
@@ -187,9 +187,9 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
         <Card className="shadow-modal">
           <CardContent className="p-xl">
             {setupType === 'create' ? (
-              <div className="stack-lg">
-                <div className="text-center mb-lg">
-                  <Building className="h-12 w-12 color-primary mx-auto mb-md" />
+              <div className="brand-ghostship stack-lg">
+                <div className="brand-ghostship text-center mb-lg">
+                  <Building className="h-12 w-12 color-accent mx-auto mb-md" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
                     CREATE YOUR ORGANIZATION
                   </h2>
@@ -216,7 +216,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                   <label className="block text-body-sm form-label color-foreground mb-sm">
                     Organization URL
                   </label>
-                  <div className="flex">
+                  <div className="brand-ghostship flex">
                     <span className="inline-flex items-center  px-md rounded-l-lg border border-r-0 border-border bg-secondary color-muted text-body-sm">
                       ghxstship.com/
                     </span>
@@ -235,9 +235,9 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 </div>
               </div>
             ) : (
-              <div className="stack-lg">
-                <div className="text-center mb-lg">
-                  <Users className="h-12 w-12 color-primary mx-auto mb-md" />
+              <div className="brand-ghostship stack-lg">
+                <div className="brand-ghostship text-center mb-lg">
+                  <Users className="h-12 w-12 color-accent mx-auto mb-md" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
                     JOIN ORGANIZATION
                   </h2>
@@ -266,7 +266,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             )}
 
             {error && (
-              <div className="mt-md p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
+              <div className="brand-ghostship mt-md p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                 <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}
@@ -275,7 +275,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
       )}
 
       {/* Action Buttons */}
-      <div className="flex justify-between pt-lg">
+      <div className="brand-ghostship flex justify-between pt-lg">
         <Button 
           variant="outline" 
           onClick={setupType ? () => setSetupType(null) : onBack}

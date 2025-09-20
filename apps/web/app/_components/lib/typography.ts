@@ -20,10 +20,10 @@ export const typography = {
   
   // Card titles
   cardTitle: `${anton.className} text-xl font-bold mb-sm uppercase`,
-  cardSubtitle: 'text-sm font-semibold text-primary mb-sm',
+  cardSubtitle: 'text-sm font-semibold text-accent mb-sm',
   
   // Stats and metrics
-  statValue: `${anton.className} text-3xl lg:text-4xl font-bold text-primary uppercase`,
+  statValue: `${anton.className} text-3xl lg:text-4xl font-bold text-accent uppercase`,
   statLabel: 'text-muted-foreground',
   
   // Body text
@@ -32,7 +32,7 @@ export const typography = {
   bodySmall: 'text-sm text-muted-foreground',
   
   // Special text
-  gradient: 'bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent',
+  gradient: 'bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent',
 } as const;
 
 // Typography component helpers

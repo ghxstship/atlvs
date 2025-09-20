@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
+import { anton } from '../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Film, Megaphone, Music, Building, CheckCircle, Users, BarChart3, Zap, Globe } from 'lucide-react';
 import { typography } from '../../_components/lib/typography';
-import { Section, SectionHeader } from '../../_components/marketing/layout/Section';
 
 export const metadata: Metadata = {
   title: 'Solutions - Production Management That Actually Works | GHXSTSHIP',
@@ -44,7 +44,7 @@ const solutions = [
       satisfaction: '99%',
       clients: '500+',
     },
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/solutions/film-tv',
     caseStudy: {
       company: 'Meridian Studios',
@@ -81,7 +81,7 @@ const solutions = [
       satisfaction: '97%',
       clients: '750+',
     },
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/solutions/advertising',
     caseStudy: {
       company: 'Apex Advertising',
@@ -118,7 +118,7 @@ const solutions = [
       satisfaction: '98%',
       clients: '300+',
     },
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/solutions/music-events',
     caseStudy: {
       company: 'Harmony Events',
@@ -155,7 +155,7 @@ const solutions = [
       satisfaction: '98%',
       clients: '1K+',
     },
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/solutions/corporate',
     caseStudy: {
       company: 'Global Tech Corp',
@@ -202,7 +202,7 @@ export default function SolutionsPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TAILORED FOR
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 YOUR INDUSTRY
               </span>
             </h1>
@@ -224,8 +224,8 @@ export default function SolutionsPage() {
                     </div>
                     <h3 className="font-title text-heading-4 text-heading-3 mb-sm">{solution.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{solution.tagline}</p>
-                    <a href={product.href}>
-                      <Button className="group-hover:bg-primary group-hover:color-primary-foreground transition-all duration-200 hover:scale-105">
+                    <a href={solution.href}>
+                      <Button className="transition-all duration-200 hover:scale-105 group-hover:text-accent">
                         Learn More
                         <ArrowRight className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
                       </Button>
@@ -288,7 +288,7 @@ export default function SolutionsPage() {
 
                       {/* CTA */}
                       <div className="flex flex-col sm:flex-row gap-md">
-                        <a href={product.href}>
+                        <a href={solution.href}>
                           <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                             Explore {solution.title}
                             <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -375,7 +375,7 @@ export default function SolutionsPage() {
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-lg">
               POWERFUL FEATURES
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 ACROSS ALL INDUSTRIES
               </span>
             </h2>
@@ -391,7 +391,7 @@ export default function SolutionsPage() {
               return (
                 <Card key={feature.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-md">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
                       <Icon className="h-6 w-6 text-foreground" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>

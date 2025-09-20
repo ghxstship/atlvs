@@ -238,7 +238,7 @@ export default function TravelPreferencesClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Globe className="w-5 h-5 mr-sm color-primary" />
+            <Globe className="w-5 h-5 mr-sm color-accent" />
             Passport Information
           </h3>
         </CardHeader>

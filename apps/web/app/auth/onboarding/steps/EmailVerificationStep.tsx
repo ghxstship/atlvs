@@ -53,8 +53,8 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-md">
-          <Mail className="w-6 h-6 color-primary" />
+        <div className="brand-ghostship flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
+          <Mail className="w-6 h-6 color-accent" />
         </div>
         <CardTitle>Verify your email</CardTitle>
         <CardDescription>
@@ -84,7 +84,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
           )}
         </div>
 
-        <div className="flex items-center justify-between text-body-sm">
+        <div className="brand-ghostship flex items-center justify-between text-body-sm">
           <span className="color-muted">
             Didn't receive the code?
           </span>
@@ -98,7 +98,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
           </Button>
         </div>
 
-        <div className="bg-secondary/50 rounded-lg p-sm">
+        <div className="brand-ghostship bg-secondary/50 rounded-lg p-sm">
           <p className="text-body-sm color-muted">
             Check your spam folder if you don't see the email in your inbox.
           </p>

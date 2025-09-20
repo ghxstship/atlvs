@@ -191,7 +191,7 @@ export abstract class BaseComponent<P extends BaseComponentProps = BaseComponent
     
     return (
       <Card className="p-xl flex items-center justify-center">
-        <RefreshCw className="h-6 w-6 animate-spin text-primary mr-sm" />
+        <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
         <span className="text-muted-foreground">Loading {metadata.name}...</span>
       </Card>
     );
@@ -429,15 +429,15 @@ export const ComponentInspector: React.FC = () => {
   }
 
   return (
-    <Card className="p-md mb-md bg-primary/10 border-primary/20">
+    <Card className="p-md mb-md bg-accent/10 border-primary/20">
       <h4 className="font-semibold text-foreground mb-sm">Component Inspector (Dev Only)</h4>
       <div className="space-y-sm text-sm">
         {components.map(component => (
           <div key={component.name} className="flex justify-between items-center">
-            <span className="text-primary/80">
+            <span className="text-accent/80">
               {component.name} v{component.version}
             </span>
-            <span className="text-primary bg-primary/10 px-sm py-xs rounded text-xs">
+            <span className="text-accent bg-accent/10 px-sm py-xs rounded text-xs">
               {instances[component.name] || 0} instances
             </span>
           </div>

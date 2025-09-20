@@ -101,7 +101,7 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       </div>
 
       {tab === 'details' && vendor && (
-        <div className="stack-sm text-body-sm">
+        <div className="brand-opendeck stack-sm text-body-sm">
           <div><span className="form-label">Name:</span> {vendor.name}</div>
           <div><span className="form-label">Website:</span> {vendor.website || '-'}</div>
           <div><span className="form-label">Email:</span> {vendor.contactEmail || '-'}</div>
@@ -111,36 +111,36 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
 
       {tab === 'edit' && vendor && (
         <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
-          <div className="grid gap-xs">
+          <div className="brand-opendeck grid gap-xs">
             <label htmlFor="name" className="text-body-sm">Name</label>
             <input id="name" className="rounded border  px-md py-xs" value={form.name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, name: e.target.value })} />
           </div>
-          <div className="grid gap-xs">
+          <div className="brand-opendeck grid gap-xs">
             <label htmlFor="website" className="text-body-sm">Website</label>
             <input id="website" className="rounded border  px-md py-xs" value={form.website} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, website: e.target.value })} />
           </div>
-          <div className="grid gap-xs">
+          <div className="brand-opendeck grid gap-xs">
             <label htmlFor="email" className="text-body-sm">Email</label>
             <input id="email" className="rounded border  px-md py-xs" value={form.contactEmail} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, contactEmail: e.target.value })} />
           </div>
-          <div className="grid gap-xs">
+          <div className="brand-opendeck grid gap-xs">
             <label htmlFor="status" className="text-body-sm">Status</label>
             <input id="status" className="rounded border  px-md py-xs" value={form.status} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, status: e.target.value })} />
           </div>
-          <div className="flex items-center justify-end gap-sm pt-sm border-t">
+          <div className="brand-opendeck flex items-center justify-end gap-sm pt-sm border-t">
             <Button variant="default" disabled={saving}>{t('save')}</Button>
           </div>
         </form>
       )}
 
       {tab === 'comments' && (
-        <div className="stack-sm text-body-sm">
+        <div className="brand-opendeck stack-sm text-body-sm">
           {loadingComments ? t('drawer.loading') : comments.length === 0 ? t('emptyComments') : (
             <ul className="stack-sm">
               {comments.map(c => (
                 <li key={c.id} className="rounded border p-sm">
-                  <div className="whitespace-pre-wrap">{c.body}</div>
-                  <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                  <div className="brand-opendeck whitespace-pre-wrap">{c.body}</div>
+                  <div className="brand-opendeck text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                 </li>
               ))}
             </ul>
@@ -149,13 +149,13 @@ export default function OpenDeckVendorClient({ orgId, vendorId, open, onClose }:
       )}
 
       {tab === 'activity' && (
-        <div className="stack-sm text-body-sm">
+        <div className="brand-opendeck stack-sm text-body-sm">
           {loadingActivity ? t('drawer.loading') : (
             <ul className="stack-xs">
               {activity.map((a, i) => (
                 <li key={i} className="flex items-center justify-between gap-md">
-                  <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
-                  <div className="flex-1">{a.action}</div>
+                  <div className="brand-opendeck font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                  <div className="brand-opendeck flex-1">{a.action}</div>
                 </li>
               ))}
             </ul>

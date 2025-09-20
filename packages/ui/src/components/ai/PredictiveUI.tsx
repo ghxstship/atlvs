@@ -469,7 +469,7 @@ export function PredictiveSuggestions() {
         >
           <div className="flex items-start justify-between mb-sm">
             <div className="flex items-center space-x-sm">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              <div className="w-2 h-2 bg-accent rounded-full animate-pulse" />
               <span className="text-sm font-medium text-foreground">
                 Suggestion
               </span>
@@ -486,7 +486,7 @@ export function PredictiveSuggestions() {
           <div className="flex space-x-sm">
             <button
               onClick={() => executePrediction(prediction.id)}
-              className="px-sm py-xs text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90"
+              className="px-sm py-xs text-xs bg-accent text-accent-foreground rounded hover:bg-accent/90"
             >
               Apply
             </button>
@@ -552,19 +552,19 @@ export function SmartField({ fieldId, type = 'text', placeholder, value, onChang
       />
       
       {showSuggestion && smartDefault && (
-        <div className="absolute top-full left-0 right-0 mt-xs p-sm bg-primary/10 border border-primary/20 rounded text-sm">
+        <div className="absolute top-full left-0 right-0 mt-xs p-sm bg-accent/10 border border-primary/20 rounded text-sm">
           <div className="flex items-center justify-between">
             <div>
-              <span className="text-primary">
+              <span className="text-accent">
                 Suggested: {smartDefault.value}
               </span>
-              <div className="text-xs text-primary dark:text-primary">
+              <div className="text-xs text-accent dark:text-accent">
                 {smartDefault.reasoning}
               </div>
             </div>
             <button
               onClick={applySuggestion}
-              className="px-sm py-xs text-xs bg-primary text-primary-foreground rounded hover:bg-primary/90"
+              className="px-sm py-xs text-xs bg-accent text-accent-foreground rounded hover:bg-accent/90"
             >
               Apply
             </button>

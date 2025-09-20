@@ -41,12 +41,12 @@ export default function ForgotPasswordPage() {
         badge="EMAIL SENT"
         showTrustIndicators={false}
       >
-        <div className="text-center stack-lg">
+        <div className="brand-ghostship text-center stack-lg">
           <AuthText className="text-center">
             If you don't see the email in your inbox, check your spam folder.
           </AuthText>
           
-          <div className="cluster justify-center">
+          <div className="brand-ghostship cluster justify-center">
             <AuthLink href="/auth/signin" className="cluster-xs">
               <ArrowLeft className="h-4 w-4" />
               Back to sign in
@@ -83,7 +83,7 @@ export default function ForgotPasswordPage() {
         />
       </AuthForm>
       
-      <div className="text-center stack-md mt-lg">
+      <div className="brand-ghostship text-center stack-md mt-lg">
         <AuthLink href="/auth/signin" className="cluster-xs justify-center">
           <ArrowLeft className="h-4 w-4" />
           Back to sign in

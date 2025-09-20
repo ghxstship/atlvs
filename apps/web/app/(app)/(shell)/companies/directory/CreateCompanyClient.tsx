@@ -171,7 +171,7 @@ export default function CreateCompanyClient({
         {/* Company Overview */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Building className="h-5 w-5 color-primary" />
+            <Building className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Company Information</h3>
           </div>
           

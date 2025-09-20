@@ -138,8 +138,8 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
   };
 
   return (
-    <div className="stack-xl">
-      <div className="text-center">
+    <div className="brand-ghostship stack-xl">
+      <div className="brand-ghostship text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
           COMPLETE YOUR PROFILE
         </h1>
@@ -150,11 +150,11 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
 
       <Card className="shadow-modal">
         <CardContent className="p-xl">
-          <div className="stack-lg">
+          <div className="brand-ghostship stack-lg">
             {/* Avatar Upload */}
-            <div className="text-center">
-              <div className="relative inline-block">
-                <div className="w-24 h-24 bg-secondary rounded-full flex items-center justify-center overflow-hidden">
+            <div className="brand-ghostship text-center">
+              <div className="brand-ghostship relative inline-block">
+                <div className="brand-ghostship w-24 h-24 bg-secondary rounded-full flex items-center justify-center overflow-hidden">
                   {profile.avatar ? (
                     <img 
                       src={profile.avatar} 
@@ -165,7 +165,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                     <User className="h-12 w-12 color-muted" />
                   )}
                 </div>
-                <label className="absolute bottom-0 right-0 bg-primary color-primary-foreground rounded-full p-sm cursor-pointer hover:bg-primary/90 transition-colors">
+                <label className="absolute bottom-0 right-0 bg-accent color-accent-foreground rounded-full p-sm cursor-pointer hover:bg-accent/90 transition-colors">
                   <Camera className="h-4 w-4" />
                   <input
                     type="file"
@@ -180,13 +180,13 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-lg">
+            <div className="brand-ghostship grid md:grid-cols-2 gap-lg">
               {/* Job Title */}
               <div>
                 <label className="block text-body-sm form-label color-foreground mb-sm">
                   Job Title
                 </label>
-                <div className="relative">
+                <div className="brand-ghostship relative">
                   <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
@@ -203,7 +203,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                 <label className="block text-body-sm form-label color-foreground mb-sm">
                   Location
                 </label>
-                <div className="relative">
+                <div className="brand-ghostship relative">
                   <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                   <input
                     type="text"
@@ -254,7 +254,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               </div>
 
               {/* Team Size */}
-              <div className="md:col-span-2">
+              <div className="brand-ghostship md:col-span-2">
                 <label className="block text-body-sm form-label color-foreground mb-sm">
                   Team Size
                 </label>
@@ -273,7 +273,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
               </div>
 
               {/* Bio */}
-              <div className="md:col-span-2">
+              <div className="brand-ghostship md:col-span-2">
                 <label className="block text-body-sm form-label color-foreground mb-sm">
                   Bio (Optional)
                 </label>
@@ -291,7 +291,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             </div>
 
             {error && (
-              <div className="p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
+              <div className="brand-ghostship p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                 <p className="text-body-sm color-destructive">{error}</p>
               </div>
             )}
@@ -302,9 +302,9 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       {/* Privacy Notice */}
       <Card>
         <CardContent className="p-lg">
-          <div className="flex items-start cluster-sm">
-            <div className="w-5 h-5 bg-info/10 rounded-full flex items-center justify-center mt-0.5">
-              <div className="w-2 h-2 bg-info rounded-full"></div>
+          <div className="brand-ghostship flex items-start cluster-sm">
+            <div className="brand-ghostship w-5 h-5 bg-info/10 rounded-full flex items-center justify-center mt-0.5">
+              <div className="brand-ghostship w-2 h-2 bg-info rounded-full"></div>
             </div>
             <div>
               <h4 className="text-heading-4 color-foreground mb-xs">Privacy & Visibility</h4>
@@ -318,7 +318,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       </Card>
 
       {/* Action Buttons */}
-      <div className="flex justify-between pt-lg">
+      <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
           <ArrowLeft className="mr-sm h-4 w-4" />
           Back

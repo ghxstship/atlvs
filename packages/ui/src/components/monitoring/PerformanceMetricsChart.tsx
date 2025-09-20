@@ -351,7 +351,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-sm">
-          <BarChart3 className="h-6 w-6 text-primary" />
+          <BarChart3 className="h-6 w-6 text-accent" />
           <h2 className="text-2xl font-bold text-foreground">Performance Metrics</h2>
         </div>
         <div className="flex items-center space-x-sm">

@@ -35,20 +35,32 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-subtle">
+    <section
+      className={cn(
+        // Keep background styling
+        "relative overflow-hidden bg-gradient-subtle",
+        // Ensure the hero fits within the viewport minus fixed header (64px => 4rem)
+        // Use small-viewport units for mobile browser UI correctness
+        "min-h-[calc(100svh-4rem)]",
+        // Vertically center content while still allowing some breathing room at the top
+        "flex items-center",
+        // Add subtle vertical padding for top elements like the AI badge
+        "py-xl"
+      )}
+    >
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Gradient Orbs */}
-      <div className="absolute top-0 pointer-events-none left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 pointer-events-none left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
       <div className="absolute bottom-0 pointer-events-none right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-lg py-5xl relative">
+      <div className="container mx-auto px-lg py-0 relative">
         <div className="grid lg:grid-cols-2 gap-3xl items-center">
           {/* Left Column - Content */}
           <div className="stack-2xl">
             {/* Badge */}
-            <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-primary/10 color-primary text-body-sm form-label">
+            <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-accent/10 color-accent text-body-sm form-label">
               <Zap className="h-4 w-4" />
               Now with AI-powered insights
             </div>
@@ -97,7 +109,7 @@ export function HeroSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-xl">
               {features.map((feature, index) => (
                 <div key={feature} className="flex items-center gap-xl">
-                  <CheckCircle className="h-5 w-5 color-primary flex-shrink-0" />
+                  <CheckCircle className="h-5 w-5 color-accent flex-shrink-0" />
                   <span className="text-body-sm color-muted">{feature}</span>
                 </div>
               ))}
@@ -117,29 +129,12 @@ export function HeroSection() {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl pt-xl border-t">
-              {stats.map((stat: any) => {
-                const Icon = stat.icon;
-                return (
-                  <div key={stat.label} className="text-center lg:text-left">
-                    <div className="flex items-center justify-center lg:justify-start gap-xl mb-xs">
-                      <Icon className="h-5 w-5 color-primary" />
-                      <span className="text-heading-3 color-primary">
-                        {stat.value}
-                      </span>
-                    </div>
-                    <p className="text-body-sm color-muted">{stat.label}</p>
-                  </div>
-                );
-              })}
-            </div>
           </div>
 
           {/* Right Column - Visual */}
           <div className="relative">
             {/* Main Dashboard Preview */}
-            <div className="relative bg-background border-2 border-black rounded-2xl pop-shadow-lg overflow-hidden">
+            <div className="relative bg-background border-2 border-black rounded-2xl pop-shadow-lg overflow-hidden max-w-full lg:max-h-[60svh]">
               {/* Browser Chrome */}
               <div className="flex items-center gap-xl px-md py-sm bg-secondary/50 border-b border-black">
                 <div className="flex gap-xl">
@@ -147,12 +142,7 @@ export function HeroSection() {
                   <div className="w-3 h-3 rounded-full bg-warning"></div>
                   <div className="w-3 h-3 rounded-full bg-success"></div>
                 </div>
-                <div className="flex-1 text-center">
-                  <div className="inline-flex items-center gap-xl  px-md py-xs bg-background rounded-md text-body-sm color-muted">
-                    <div className="w-3 h-3 color-success">🔒</div>
-                    app.ghxstship.com
-                  </div>
-                </div>
+                {/* Removed URL box for cleaner look */}
               </div>
 
               {/* Dashboard Content */}
@@ -175,7 +165,7 @@ export function HeroSection() {
                     <div className="text-body-sm color-muted mb-xs">Budget</div>
                     <span className="text-body-sm">$75K</span>
                     <div className="w-full bg-secondary rounded-full h-1 mt-xs">
-                      <div className="bg-primary h-1 rounded-full w-3/4"></div>
+                      <div className="bg-accent h-1 rounded-full w-3/4"></div>
                     </div>
                   </div>
                   <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
@@ -190,7 +180,7 @@ export function HeroSection() {
                     <span className="text-body-sm">12</span>
                     <div className="flex -cluster-xs mt-xs">
                       {[1, 2, 3].map((i: any) => (
-                        <div key={i} className="w-4 h-4 bg-primary rounded-full border border-background"></div>
+                        <div key={i} className="w-4 h-4 bg-accent rounded-full border border-background"></div>
                       ))}
                     </div>
                   </div>
@@ -205,7 +195,7 @@ export function HeroSection() {
                     { user: 'Quartermaster Jin', action: 'ordered new equipment', time: '12m ago' },
                   ].map((activity, i) => (
                     <div key={i} className="flex items-center gap-xl text-body-sm">
-                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
                       <span className="form-label">{activity.user}</span>
                       <span className="color-muted">{activity.action}</span>
                       <span className="color-muted ml-auto">{activity.time}</span>
@@ -216,12 +206,32 @@ export function HeroSection() {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 bg-primary color-primary-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
+            <div className="absolute -top-4 -right-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
               <Zap className="h-6 w-6" />
             </div>
             <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-accent">
               <Star className="h-6 w-6" />
             </div>
+          </div>
+        </div>
+
+        {/* Stats - full width under both columns */}
+        <div className="pt-3xl pb-4xl border-t">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
+            {stats.map((stat: any) => {
+              const Icon = stat.icon;
+              return (
+                <div key={stat.label} className="text-center lg:text-left">
+                  <div className="flex items-center justify-center lg:justify-start gap-xl mb-xs">
+                    <Icon className="h-5 w-5 color-accent" />
+                    <span className="text-heading-3 color-accent">
+                      {stat.value}
+                    </span>
+                  </div>
+                  <p className="text-body-sm color-muted">{stat.label}</p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

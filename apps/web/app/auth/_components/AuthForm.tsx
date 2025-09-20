@@ -29,12 +29,12 @@ interface AuthInputProps {
 export function AuthForm({ onSubmit, children, submitText, loading, error }: AuthFormProps) {
   return (
     <form onSubmit={onSubmit} className="stack-lg">
-      <div className="stack-md">
+      <div className="brand-ghostship stack-md">
         {children}
       </div>
 
       {error && (
-        <div className="bg-error border border-error rounded-md p-md">
+        <div className="brand-ghostship bg-destructive border border-destructive rounded-md p-md">
           <p className="form-error font-body">{error}</p>
         </div>
       )}
@@ -42,7 +42,8 @@ export function AuthForm({ onSubmit, children, submitText, loading, error }: Aut
       <Button
         type="submit"
         disabled={loading}
-        className="btn btn-primary w-full"
+        variant="default"
+        className="w-full"
         size="lg"
       >
         {loading ? 'Please wait...' : submitText}
@@ -67,11 +68,11 @@ export function AuthInput({
   const isPassword = type === 'password' || (type === 'text' && onTogglePassword);
   
   return (
-    <div className="stack-xs">
+    <div className="brand-ghostship stack-xs">
       <label htmlFor={id} className="form-label">
         {label}
       </label>
-      <div className="relative">
+      <div className="brand-ghostship relative">
         <UnifiedInput           id={id}
           name={name}
           type={showPassword ? 'text' : type}
@@ -80,7 +81,7 @@ export function AuthInput({
           placeholder={placeholder}
           value={value}
           onChange={onChange}
-           className="input w-full"
+           className="input w-full pr-12"
         />
         {isPassword && onTogglePassword && (
           <button
@@ -110,7 +111,7 @@ export function AuthLink({ href, children, className = '' }: AuthLinkProps) {
   return (
     <a 
       href={href} 
-      className={`color-primary hover:underline form-label ${className}`}
+      className={`color-accent hover:underline form-label ${className}`}
     >
       {children}
     </a>

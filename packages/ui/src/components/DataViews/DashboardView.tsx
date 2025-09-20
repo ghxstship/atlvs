@@ -217,11 +217,11 @@ export function DashboardView({
         <div className="flex items-center justify-between p-md border-b border-border">
           <div className="flex items-center gap-sm">
             {widget.config.icon && (
-              <div className="p-xs rounded bg-primary/10">
-                {widget.config.icon === 'database' && <BarChart3 className="h-4 w-4 text-primary" />}
-                {widget.config.icon === 'users' && <Users className="h-4 w-4 text-primary" />}
-                {widget.config.icon === 'dollar' && <DollarSign className="h-4 w-4 text-primary" />}
-                {widget.config.icon === 'activity' && <Activity className="h-4 w-4 text-primary" />}
+              <div className="p-xs rounded bg-accent/10">
+                {widget.config.icon === 'database' && <BarChart3 className="h-4 w-4 text-accent" />}
+                {widget.config.icon === 'users' && <Users className="h-4 w-4 text-accent" />}
+                {widget.config.icon === 'dollar' && <DollarSign className="h-4 w-4 text-accent" />}
+                {widget.config.icon === 'activity' && <Activity className="h-4 w-4 text-accent" />}
               </div>
             )}
             <h3 className="font-semibold text-sm">{widget.title}</h3>
@@ -301,7 +301,7 @@ export function DashboardView({
                       </div>
                       <div className="w-full bg-secondary rounded-full h-2">
                         <div
-                          className="bg-primary h-2 rounded-full transition-all duration-300"
+                          className="bg-accent h-2 rounded-full transition-all duration-300"
                           style={{ 
                             width: `${(item.value / Math.max(...getChartData(widget).map(d => d.value))) * 100}%` 
                           }}

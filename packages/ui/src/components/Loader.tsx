@@ -21,7 +21,7 @@ const loaderVariants = {
     xl: 'w-12 h-12',
   },
   color: {
-    primary: 'text-primary border-primary',
+    primary: 'text-accent border-primary',
     secondary: 'text-muted-foreground/70 border-border',
     white: 'text-background border-white',
     gray: 'text-muted-foreground/50 border-border',

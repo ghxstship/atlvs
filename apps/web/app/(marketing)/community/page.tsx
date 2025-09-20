@@ -22,7 +22,7 @@ const communityChannels = [
     activity: 'Very Active',
     icon: MessageSquare,
     href: 'https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed',
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     features: ['Real-time chat', 'Voice channels', 'Screen sharing', 'Industry channels'],
   },
   {
@@ -32,7 +32,7 @@ const communityChannels = [
     activity: 'Active',
     icon: MessageCircle,
     href: '/community/forums',
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     features: ['Technical discussions', 'Project showcases', 'Q&A sessions', 'Industry insights'],
   },
   {
@@ -42,7 +42,7 @@ const communityChannels = [
     activity: 'Weekly',
     icon: Calendar,
     href: '/community/events',
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     features: ['Monthly meetups', 'Workshops', 'Conferences', 'Networking sessions'],
   },
 ];
@@ -183,7 +183,7 @@ export default function CommunityPage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               JOIN THE
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 GHXSTSHIP COMMUNITY
               </span>
             </h1>
@@ -317,7 +317,7 @@ export default function CommunityPage() {
               return (
                 <Card key={social.name} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-md">
+                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
                       <Icon className="h-6 w-6 text-foreground" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{social.name}</h3>
@@ -409,7 +409,7 @@ export default function CommunityPage() {
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-full flex items-center justify-center">
+                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.avatar}
                       </span>
@@ -444,7 +444,7 @@ export default function CommunityPage() {
               return (
                 <Card key={achievement.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-lg">
+                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-lg">
                       <Icon className="h-8 w-8 text-foreground" />
                     </div>
                     <div className={`${anton.className} text-heading-3 text-heading-3 text-foreground mb-sm uppercase`}>{achievement.metric}</div>

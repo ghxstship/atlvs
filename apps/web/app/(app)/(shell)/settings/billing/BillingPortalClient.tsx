@@ -99,7 +99,7 @@ export default function BillingPortalClient() {
           <button onClick={() => startCheckout('org')} disabled={!priceId || !organizationId || loading} className="rounded-md border  px-md py-sm text-body-sm">Checkout (Org)</button>
         </div>
       </div>
-      {error ? <div className="text-body-sm color-error">{error}</div> : null}
+      {error ? <div className="text-body-sm color-destructive">{error}</div> : null}
     </div>
   );
 }

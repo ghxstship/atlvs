@@ -95,7 +95,7 @@ export function OnboardingFlow() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-subtle flex items-center justify-center">
+      <div className="min-h-screen brand-ghostship bg-gradient-subtle flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
           <p className={typography.bodyLarge}>Loading...</p>
@@ -105,7 +105,7 @@ export function OnboardingFlow() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-subtle">
+    <div className="min-h-screen brand-ghostship bg-gradient-subtle">
       <div className="container mx-auto px-md py-4xl">
         {/* Header */}
         <div className="text-center mb-3xl">

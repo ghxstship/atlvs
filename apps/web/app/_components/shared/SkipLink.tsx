@@ -20,7 +20,7 @@ export function SkipLink() {
     <a
       href="#main-content"
       className={`
-        fixed top-md left-md z-50 px-md py-sm bg-primary color-primary-foreground rounded
+        fixed top-md left-md z-50 px-md py-sm bg-accent color-accent-foreground rounded
         transform transition-transform duration-200 form-label
         focus:outline-none focus:ring-primary ring-primary focus:ring-primary focus:ring-primary focus:ring-ring focus:ring-offset-2
         ${isVisible ? 'translate-y-0' : '-translate-y-16'}

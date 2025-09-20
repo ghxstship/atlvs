@@ -171,8 +171,8 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
       >
         <form id="person-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
-            <div className="p-sm bg-primary/10 rounded-lg">
-              <User className="h-5 w-5 color-primary" />
+            <div className="p-sm bg-accent/10 rounded-lg">
+              <User className="h-5 w-5 color-accent" />
             </div>
             <div>
               <h3 className="form-label">Person Information</h3>
@@ -305,9 +305,9 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
             </div>
           </div>
 
-          <div className="bg-primary/5 p-md rounded-lg">
-            <h4 className="form-label color-primary mb-sm">Directory Guidelines</h4>
-            <ul className="text-body-sm color-primary/80 stack-xs">
+          <div className="bg-accent/5 p-md rounded-lg">
+            <h4 className="form-label color-accent mb-sm">Directory Guidelines</h4>
+            <ul className="text-body-sm color-accent/80 stack-xs">
               <li>• Provide accurate contact information for effective communication</li>
               <li>• Include relevant skills to help with project assignments</li>
               <li>• Keep role and department information current</li>

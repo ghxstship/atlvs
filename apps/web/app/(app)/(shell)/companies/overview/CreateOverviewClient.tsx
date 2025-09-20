@@ -212,7 +212,7 @@ export default function CreateOverviewClient({
         {/* Item Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Target className="h-5 w-5 color-primary" />
+            <Target className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Item Details</h3>
           </div>
           

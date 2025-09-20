@@ -36,12 +36,17 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
+        // Neutral-first button; brand color only on micro-interactions
         default: [
-          'bg-primary',
-          'text-primary-foreground',
+          'bg-foreground',
+          'text-background',
           'border-transparent',
-          'hover:bg-primary/90',
-          'focus-visible:ring-primary',
+          'hover:bg-foreground/90',
+          // Accent only appears as focus ring (microinteraction)
+          'focus-visible:ring-accent',
+          // Subtle hover ring tinted by context (ATLVS/OPENDECK)
+          'hover:ring-2',
+          'hover:ring-[hsl(var(--color-accent)/0.25)]',
         ],
         destructive: [
           'bg-destructive',
@@ -51,33 +56,42 @@ const buttonVariants = cva(
           'focus-visible:ring-destructive',
         ],
         outline: [
-          'border-input',
+          // Neutral surface with subtle hover using accent tint only as microinteraction
+          'border-border',
           'bg-background',
           'text-foreground',
-          'hover:bg-accent',
-          'hover:text-accent-foreground',
-          'focus-visible:ring-ring',
+          'hover:bg-foreground/5',
+          'focus-visible:ring-accent',
+          'hover:ring-2',
+          'hover:ring-[hsl(var(--color-accent)/0.25)]',
         ],
         secondary: [
-          'bg-secondary',
-          'text-secondary-foreground',
-          'border-transparent',
-          'hover:bg-secondary/80',
-          'focus-visible:ring-secondary',
+          // Muted neutral secondary
+          'bg-muted',
+          'text-foreground',
+          'border-border',
+          'hover:bg-muted/80',
+          'focus-visible:ring-accent',
+          'hover:ring-2',
+          'hover:ring-[hsl(var(--color-accent)/0.25)]',
         ],
         ghost: [
           'border-transparent',
           'text-foreground',
-          'hover:bg-accent',
-          'hover:text-accent-foreground',
-          'focus-visible:ring-ring',
+          // Neutral hover; no solid brand fill
+          'hover:bg-foreground/5',
+          'focus-visible:ring-accent',
+          'hover:ring-2',
+          'hover:ring-[hsl(var(--color-accent)/0.25)]',
         ],
         link: [
-          'text-primary',
+          // Neutral base; brand accent on hover text only
+          'text-foreground',
           'underline-offset-4',
           'hover:underline',
+          'hover:text-accent',
           'border-transparent',
-          'focus-visible:ring-primary',
+          'focus-visible:ring-accent',
         ],
         pop: [
           'bg-accent',
@@ -253,4 +267,3 @@ ButtonGroup.displayName = 'ButtonGroup';
 // ==========================================
 
 export { Button, ButtonGroup, buttonVariants };
-export type { ButtonProps };

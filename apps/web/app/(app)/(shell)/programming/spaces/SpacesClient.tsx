@@ -175,7 +175,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
       case 'maintenance':
         return 'color-warning bg-warning/10';
       case 'reserved':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       default:
         return 'color-muted bg-secondary';
     }

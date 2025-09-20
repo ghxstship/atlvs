@@ -333,7 +333,7 @@ export default function EmergencyContactsClient() {
                       <User className="w-5 h-5 color-muted" />
                       <span className="text-heading-4 text-body">{contact.name}</span>
                       {contact.is_primary && (
-                        <span className=" px-md py-xs bg-primary/10 color-primary text-body-sm rounded-full">
+                        <span className=" px-md py-xs bg-accent/10 color-accent text-body-sm rounded-full">
                           Primary
                         </span>
                       )}

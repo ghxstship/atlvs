@@ -207,7 +207,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'projected':
-        return <Target className="h-4 w-4 color-primary" />;
+        return <Target className="h-4 w-4 color-accent" />;
       case 'recognized':
         return <Clock className="h-4 w-4 color-warning" />;
       case 'received':
@@ -396,12 +396,12 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-body-sm color-foreground/70">Projected</p>
-                <p className="text-heading-3 text-heading-3 color-primary">
+                <p className="text-heading-3 text-heading-3 color-accent">
                   {formatCurrency(totalAmounts.projected)}
                 </p>
                 <p className="text-body-sm color-foreground/60">{statusCounts.projected} items</p>
               </div>
-              <Target className="h-8 w-8 color-primary" />
+              <Target className="h-8 w-8 color-accent" />
             </div>
           </Card>
           

@@ -17,7 +17,7 @@ const alertVariants = cva(
         success:
           'border-success/50 text-success bg-success/10 [&>svg]:text-success',
         info:
-          'border-primary/50 text-primary bg-primary/10 [&>svg]:text-primary',
+          'border-primary/50 text-accent bg-accent/10 [&>svg]:text-accent',
       },
     },
     defaultVariants: {

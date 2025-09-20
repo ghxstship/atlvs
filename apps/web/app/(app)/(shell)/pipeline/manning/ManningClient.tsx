@@ -229,7 +229,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                         </div>
                         <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
                           <div 
-                            className="h-full bg-primary transition-all"
+                            className="h-full bg-accent transition-all"
                             style={{ width: `${(slot.filledCount / slot.requiredCount) * 100}%` }}
                           />
                         </div>

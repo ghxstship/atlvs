@@ -100,7 +100,7 @@ const listItemVariants = cva(
         false: '',
       },
       selected: {
-        true: 'bg-primary/5 border-l-4 border-primary',
+        true: 'bg-accent/5 border-l-4 border-primary',
         false: '',
       },
     },
@@ -279,7 +279,7 @@ const alertVariants = cva(
           'bg-muted text-foreground border-border',
         ],
         info: [
-          'bg-primary/10 text-primary border border-primary/20',
+          'bg-accent/10 text-accent border border-primary/20',
         ],
         success: [
           'bg-success/10 text-success border border-success/20',
@@ -388,17 +388,17 @@ const navItemVariants = cva(
       {
         variant: 'default',
         active: true,
-        class: 'text-primary bg-primary/5',
+        class: 'text-accent bg-accent/5',
       },
       {
         variant: 'tabs',
         active: true,
-        class: 'text-primary border-primary',
+        class: 'text-accent border-primary',
       },
       {
         variant: 'pills',
         active: true,
-        class: 'text-primary bg-background shadow-surface',
+        class: 'text-accent bg-background shadow-surface',
       },
     ],
     defaultVariants: {

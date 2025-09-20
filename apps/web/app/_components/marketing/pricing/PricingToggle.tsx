@@ -16,7 +16,7 @@ export function PricingToggle({ isAnnual, onToggle }: PricingToggleProps) {
         onClick={() => onToggle(!isAnnual)}
         className={cn(
           "relative w-14 h-7 rounded-full transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 hover:scale-105 border-2",
-          isAnnual ? "bg-primary border-primary" : "bg-secondary border-muted-foreground"
+          isAnnual ? "bg-accent border-primary" : "bg-secondary border-muted-foreground"
         )}
         aria-label={`Switch to ${isAnnual ? 'monthly' : 'annual'} billing`}
       >

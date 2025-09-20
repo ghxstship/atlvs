@@ -313,7 +313,7 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
       case 'destructive':
         return <AlertTriangle className="h-6 w-6 text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-primary" />;
+        return <Info className="h-6 w-6 text-accent" />;
     }
   };
 
@@ -376,7 +376,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       case 'error':
         return <AlertCircle className="h-6 w-6 text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-primary" />;
+        return <Info className="h-6 w-6 text-accent" />;
     }
   };
 

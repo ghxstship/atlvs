@@ -361,7 +361,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
               id="is_featured"
               checked={formData.is_featured}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, is_featured: e.target.checked }))}
-              className="rounded border-border color-primary focus:ring-primary"
+              className="rounded border-border color-accent focus:ring-primary"
             />
             <label htmlFor="is_featured" className="text-body-sm form-label">
               Mark as featured resource

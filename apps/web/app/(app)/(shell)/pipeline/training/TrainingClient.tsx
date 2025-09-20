@@ -56,7 +56,7 @@ interface TrainingClientProps {
 
 const TRAINING_CATEGORIES = [
   { id: 'safety', name: 'Safety', color: 'bg-destructive' },
-  { id: 'technical', name: 'Technical', color: 'bg-primary' },
+  { id: 'technical', name: 'Technical', color: 'bg-accent' },
   { id: 'compliance', name: 'Compliance', color: 'bg-warning' },
   { id: 'leadership', name: 'Leadership', color: 'bg-secondary' },
   { id: 'certification', name: 'Certification', color: 'bg-success' }

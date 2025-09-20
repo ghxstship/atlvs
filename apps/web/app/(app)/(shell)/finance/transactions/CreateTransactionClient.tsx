@@ -162,12 +162,12 @@ export default function CreateTransactionClient({
     >
       <form onSubmit={handleSubmit} className="stack-lg">
         {/* Transaction Overview */}
-        <Card className="p-md bg-primary/10 border-primary/20">
+        <Card className="p-md bg-accent/10 border-primary/20">
           <div className="flex items-center cluster-sm">
-            <ArrowUpDown className="h-8 w-8 color-primary" />
+            <ArrowUpDown className="h-8 w-8 color-accent" />
             <div>
-              <h3 className="text-heading-4 color-primary-foreground">Transaction Entry</h3>
-              <p className="text-body-sm color-primary/80">
+              <h3 className="text-heading-4 color-accent-foreground">Transaction Entry</h3>
+              <p className="text-body-sm color-accent/80">
                 Record financial transactions and update account balances
               </p>
             </div>

@@ -61,7 +61,7 @@ export const ProgressBar = ({ percentage, ...props }: { percentage?: number; [ke
     className: 'w-full bg-muted rounded-full h-2',
     ...props
   }, React.createElement('div', {
-    className: 'bg-primary h-2 rounded-full transition-all',
+    className: 'bg-accent h-2 rounded-full transition-all',
     style: { width: `${Math.min(100, Math.max(0, percentage || 0))}%` }
   }));
 };
@@ -78,10 +78,10 @@ export const DynamicProgressBar = ProgressBar;
 export const designTokens = {
   colors: {
     status: {
-      success: 'bg-green-500',
-      warning: 'bg-yellow-500',
+      success: 'bg-success-500',
+      warning: 'bg-warning-500',
       error: 'bg-red-500',
-      info: 'bg-blue-500'
+      info: 'bg-info-500'
     }
   }
 };

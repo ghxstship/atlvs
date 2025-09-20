@@ -129,7 +129,7 @@ const successStories = [
 
 export default function OPENDECKPage() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen brand-opendeck">
       {/* Hero Section */}
       <section className="py-4xl bg-gradient-to-br from-secondary/5 via-background to-primary/5">
         <div className="container mx-auto px-md">

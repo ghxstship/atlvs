@@ -336,7 +336,7 @@ export const ListComponent = <T,>({
   if (loading) {
     return (
       <Card className={`p-xl flex items-center justify-center ${className}`}>
-        <RefreshCw className="h-6 w-6 animate-spin text-primary mr-sm" />
+        <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
         <span className="text-muted-foreground/70">Loading items...</span>
       </Card>
     );

@@ -64,7 +64,7 @@ const productOverview = [
     name: 'ATLVS',
     description: 'Enterprise project management platform for creative teams',
     icon: '⚡',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
     strengths: [
       'Advanced project management',
       'AI-powered insights',
@@ -80,7 +80,7 @@ const productOverview = [
     name: 'OPENDECK',
     description: 'Global marketplace for creative professionals and resources',
     icon: '🌐',
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
     strengths: [
       'Global talent network',
       'Resource marketplace',
@@ -107,7 +107,7 @@ export default function ComparePage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               ATLVS VS OPENDECK
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 CHOOSE YOUR PATH
               </span>
             </h1>
@@ -255,7 +255,7 @@ export default function ComparePage() {
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE ATLVS IF</h3>
@@ -306,7 +306,7 @@ export default function ComparePage() {
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
                     <Globe className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE OPENDECK IF</h3>

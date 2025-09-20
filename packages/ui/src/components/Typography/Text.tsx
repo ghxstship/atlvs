@@ -18,7 +18,7 @@ const textVariants = cva('', {
     },
     color: {
       default: 'text-foreground',
-      primary: 'text-primary',
+      primary: 'text-accent',
       secondary: 'text-secondary-foreground',
       muted: 'text-muted-foreground',
       success: 'text-success',

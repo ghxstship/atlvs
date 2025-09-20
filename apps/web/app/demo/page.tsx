@@ -28,7 +28,7 @@ export default async function DemoPage() {
             <div className="flex gap-md justify-center">
               <a 
                 href="/dashboard" 
-                className="inline-flex items-center px-md py-sm bg-primary color-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
+                className="inline-flex items-center px-md py-sm bg-accent color-accent-foreground rounded-md hover:bg-accent/90 transition-colors"
               >
                 Go to Dashboard
               </a>

@@ -25,13 +25,13 @@ export function LeadershipCard({ leader }: LeadershipCardProps) {
       <CardContent className="p-xl">
         <div className="flex gap-xl">
           <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <Users className="h-8 w-8 color-primary" />
+            <Users className="h-8 w-8 color-accent" />
           </div>
           <div className="flex-1">
             <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>
               {leader.name}
             </h3>
-            <p className="color-primary text-heading-4 mb-xs">{leader.role}</p>
+            <p className="color-accent text-heading-4 mb-xs">{leader.role}</p>
             <div className="flex items-center gap-xl text-body-sm color-muted mb-sm">
               <MapPin className="h-3 w-3" />
               {leader.location}

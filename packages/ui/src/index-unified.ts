@@ -101,6 +101,11 @@ export { Input as LegacyInput } from './components/atomic/Input';
 export { Card, CardContent, CardHeader, CardFooter, CardTitle, CardDescription } from './components/Card';
 export { Badge } from './components/Badge';
 
+// Export Icon and Progress components
+export { Icon, IconButton, StatusIcon, IconWithText } from './components/Icon';
+export type { IconProps, IconButtonProps, StatusIconProps, IconWithTextProps } from './components/Icon';
+export { Progress } from './components/Progress';
+
 // ==========================================
 // DATA VIEWS COMPONENTS
 // ==========================================

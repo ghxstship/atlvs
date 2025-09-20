@@ -466,7 +466,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                       className={clsx(
                         'border-b transition-colors hover:bg-muted/50',
                         variant === 'striped' && index % 2 === 1 && 'bg-muted/25',
-                        isSelected && 'bg-primary/5',
+                        isSelected && 'bg-accent/5',
                         onRowClick && 'cursor-pointer'
                       )}
                       onClick={() => onRowClick?.(record, index)}

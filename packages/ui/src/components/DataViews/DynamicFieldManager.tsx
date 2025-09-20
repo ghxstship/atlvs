@@ -241,7 +241,7 @@ export function DynamicFieldManager({
             {isSchemaField ? 'Schema Field' : 'Custom Field'}: {field.label}
           </h3>
           <div className="flex items-center gap-sm">
-            {isSchemaField && <Database className="h-4 w-4 text-primary" />}
+            {isSchemaField && <Database className="h-4 w-4 text-accent" />}
             {validation.length > 0 && <AlertCircle className="h-4 w-4 text-destructive" />}
           </div>
         </div>

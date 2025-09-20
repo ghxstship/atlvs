@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { Users, Target, Globe, Award, TrendingUp, Heart, Calendar, MapPin, ArrowRight, ExternalLink, Mail } from 'lucide-react';
-import { Anton } from 'next/font/google';
-
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
+import { Badge, Card, CardContent, Button } from '@ghxstship/ui';
+import { anton } from '../../_components/lib/typography';
 
 export const metadata: Metadata = {
   title: 'About Us - Building the Future of Creative Production | GHXSTSHIP',
@@ -187,7 +186,7 @@ export default function CompanyPage() {
               <Link href="/careers">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Join Our Team
-                  <Icon icon={ArrowRight} size="sm" className="ml-sm transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-4 w-4 ml-sm transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
@@ -223,8 +222,8 @@ export default function CompanyPage() {
           <div className="grid lg:grid-cols-2 gap-3xl items-center">
             <div>
               <div className="flex items-center gap-sm mb-lg">
-                <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                  <Icon icon={Target} size="lg" color="primary" />
+                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
+                  <Target className="h-6 w-6 color-accent" />
                 </div>
                 <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR MISSION</h2>
               </div>
@@ -242,7 +241,7 @@ export default function CompanyPage() {
             <div>
               <div className="flex items-center gap-sm mb-lg">
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Icon icon={Globe} size="lg" className="text-foreground" />
+                  <Globe className="h-6 w-6 text-foreground" />
                 </div>
                 <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR VISION</h2>
               </div>
@@ -275,7 +274,7 @@ export default function CompanyPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {leadership.map((member: any) => (
-              <Card key={member.name} className="text-center" interactive>
+              <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-xl">
                   <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-lg flex items-center justify-center">
                     <Users className="h-12 w-12 text-foreground" />
@@ -285,14 +284,14 @@ export default function CompanyPage() {
                   <p className="text-body-sm color-muted mb-lg">{member.bio}</p>
                   <div className="flex justify-center gap-sm">
                     {member.linkedin && (
-                      <a href={product.href} target="_blank" rel="noopener noreferrer">
+                      <a href={member.linkedin} target="_blank" rel="noopener noreferrer">
                         <Button size="sm" variant="outline" className="transition-all duration-200 hover:scale-105">
                           LinkedIn
                         </Button>
                       </a>
                     )}
                     {member.twitter && (
-                      <a href={product.href} target="_blank" rel="noopener noreferrer">
+                      <a href={member.twitter} target="_blank" rel="noopener noreferrer">
                         <Button size="sm" variant="outline" className="transition-all duration-200 hover:scale-105">
                           Twitter
                         </Button>
@@ -326,7 +325,7 @@ export default function CompanyPage() {
               <div className="space-y-2xl">
                 {milestones.map((milestone, index) => (
                   <div key={milestone.year} className="relative flex items-start gap-xl">
-                    <div className="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center color-primary-foreground text-heading-3 relative z-10">
+                    <div className="flex-shrink-0 w-16 h-16 bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 relative z-10">
                       {milestone.year.slice(-2)}
                     </div>
                     <div className="flex-1 pb-xl">
@@ -359,7 +358,7 @@ export default function CompanyPage() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {awards.map((award: any) => (
-              <Card key={award.title} className="text-center" interactive variant="elevated">
+              <Card key={award.title} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-lg">
                   <div className="w-16 h-16 bg-gradient-to-br from-warning/20 to-warning/30 rounded-full mx-auto mb-md flex items-center justify-center">
                     <Award className="h-8 w-8 color-warning" />
@@ -403,7 +402,7 @@ export default function CompanyPage() {
                         <span>{press.date}</span>
                       </div>
                     </div>
-                    <a href={product.href}>
+                    <a href={press.href}>
                       <Button size="sm" variant="outline" className="group transition-all duration-200 hover:scale-105">
                         Read More
                         <ExternalLink className="ml-sm h-3 w-3 transition-transform group-hover:translate-x-1" />
@@ -442,7 +441,7 @@ export default function CompanyPage() {
             {offices.map((office: any) => (
               <Card key={office.city} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full mx-auto mb-md flex items-center justify-center">
+                  <div className="w-16 h-16 bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
                     <MapPin className="h-8 w-8 text-foreground" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>

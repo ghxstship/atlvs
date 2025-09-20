@@ -1,7 +1,7 @@
 'use client';
 
-
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
@@ -34,42 +34,86 @@ export function NavigationDropdown({
 
   if (isMobile) {
     return (
-      <div>
+      <div className="border-b border-border/20 last:border-b-0">
         <button
           onClick={handleToggle}
           className={cn(
-            "flex items-center justify-between w-full px-sm py-sm text-body form-label rounded-md transition-colors hover:bg-accent hover:color-accent-foreground uppercase",
+            "flex items-center justify-between w-full px-sm py-sm text-body form-label rounded-md transition-all duration-200 uppercase",
+            "hover:bg-accent/10 hover:color-accent hover:scale-[1.02]",
+            "focus:outline-none focus:ring-2 focus:ring-primary/20",
             anton.className,
-            pathname.startsWith(item.href) ? "bg-accent color-accent-foreground" : "color-foreground"
+            pathname.startsWith(item.href) ? "bg-accent/10 color-accent" : "color-foreground"
           )}
+          aria-expanded={activeDropdown === item.label}
         >
           <span>{item.label}</span>
           <ChevronDown
             className={cn(
-              "h-4 w-4 transition-transform",
-              activeDropdown === item.label ? "rotate-180" : ""
+              "h-4 w-4 transition-all duration-300",
+              activeDropdown === item.label ? "rotate-180 color-accent" : "rotate-0"
             )}
           />
         </button>
-        {activeDropdown === item.label && (
-          <div className="pl-md stack-xl">
-            {item.children?.map((child: any) => (
-              <a
+        
+        {/* Mobile submenu with slide animation */}
+        <div 
+          className={cn(
+            "overflow-hidden transition-all duration-300 ease-out",
+            activeDropdown === item.label 
+              ? "max-h-96 opacity-100" 
+              : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="pl-md pt-xs stack-xs">
+            {item.children?.map((child: any, index: number) => (
+              <Link
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block px-sm py-sm text-body-sm rounded-md transition-colors hover:bg-accent hover:color-accent-foreground",
-                  pathname === child.href ? "bg-accent color-accent-foreground" : "color-muted"
+                  "block px-sm py-sm text-body-sm rounded-md transition-all duration-200",
+                  "hover:bg-accent/10 hover:color-accent hover:translate-x-1",
+                  "focus:outline-none focus:bg-accent/10 focus:color-accent",
+                  pathname === child.href ? "bg-accent/10 color-accent" : "color-muted"
                 )}
+                style={{
+                  animationDelay: `${index * 50}ms`
+                }}
               >
                 {child.label}
-              </a>
+              </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     );
   }
+
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [dropdownPosition, setDropdownPosition] = useState<'left' | 'right'>('left');
+
+  // Adjust dropdown position based on viewport
+  useEffect(() => {
+    if (activeDropdown === item.label && dropdownRef.current) {
+      const rect = dropdownRef.current.getBoundingClientRect();
+      const viewportWidth = window.innerWidth;
+      
+      if (rect.right > viewportWidth - 20) {
+        setDropdownPosition('right');
+      } else {
+        setDropdownPosition('left');
+      }
+    }
+  }, [activeDropdown, item.label]);
+
+  // Keyboard navigation
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onDropdownChange(activeDropdown === item.label ? null : item.label);
+    } else if (e.key === 'Escape') {
+      onDropdownChange(null);
+    }
+  };
 
   return (
     <div
@@ -79,36 +123,72 @@ export function NavigationDropdown({
     >
       <button
         className={cn(
-          "flex items-center cluster-xs text-body-sm form-label transition-colors hover:color-primary uppercase",
+          "flex items-center cluster-xs text-body-sm form-label transition-all duration-200 uppercase relative group",
+          "hover:color-accent hover:scale-105",
+          "focus:outline-none focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 rounded-sm px-xs py-xs",
           anton.className,
-          pathname.startsWith(item.href) ? "color-primary" : "color-muted"
+          pathname.startsWith(item.href) ? "color-accent" : "color-muted",
+          // Add underline animation
+          "after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-accent after:transition-all after:duration-200",
+          "hover:after:w-full",
+          pathname.startsWith(item.href) && "after:w-full"
         )}
+        onKeyDown={handleKeyDown}
+        aria-expanded={activeDropdown === item.label}
+        aria-haspopup="true"
       >
         <span>{item.label}</span>
-        <ChevronDown className="h-4 w-4" />
+        <ChevronDown 
+          className={cn(
+            "h-4 w-4 transition-all duration-200",
+            activeDropdown === item.label ? "rotate-180" : "rotate-0"
+          )} 
+        />
       </button>
       
-      {/* Dropdown Menu */}
+      {/* Dropdown Menu with enhanced positioning and animations */}
       <div
+        ref={dropdownRef}
         className={cn(
-          "absolute left-0 top-full mt-xs w-48 rounded-md border bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 p-xs shadow-lg transition-all duration-200",
-          "z-[var(--z-dropdown)] pointer-events-auto",
+          // No margin-top to avoid hover gap; add internal padding-top instead
+          "absolute top-full w-56 rounded-xl border border-border/70",
+          // Make surface fully opaque to eliminate bleed-through completely
+          "bg-background text-foreground",
+          // Stronger elevation for visual separation
+          "pt-xs px-xs pb-xs shadow-2xl shadow-black/20 transition-all duration-300 ease-out",
+          // Ensure above all content and above the fixed header
+          "z-[300]",
+          // Position based on viewport
+          dropdownPosition === 'right' ? 'right-0' : 'left-0',
+          // Animation states
           activeDropdown === item.label
-            ? "opacity-100 translate-y-0 visible"
-            : "opacity-0 translate-y-1 invisible pointer-events-none"
+            ? "opacity-100 translate-y-0 scale-100 visible pointer-events-auto"
+            : "opacity-0 -translate-y-1 scale-95 invisible pointer-events-none"
         )}
+        role="menu"
+        aria-label={`${item.label} menu`}
       >
-        {item.children?.map((child: any) => (
-          <a
+        {item.children?.map((child: any, index: number) => (
+          <Link
             key={child.href}
             href={child.href}
             className={cn(
-              "block px-sm py-sm text-body-sm rounded-sm transition-colors hover:bg-accent hover:color-accent-foreground",
-              pathname === child.href ? "bg-accent color-accent-foreground" : "text-popover-foreground"
+              "flex items-center px-sm py-sm text-body-sm rounded-md transition-all duration-200",
+              "hover:bg-accent/10 hover:color-accent hover:translate-x-1",
+              "focus:outline-none focus:bg-accent/10 focus:color-accent",
+              "group relative overflow-hidden",
+              pathname === child.href ? "bg-accent/10 color-accent" : "text-foreground"
             )}
+            role="menuitem"
+            tabIndex={activeDropdown === item.label ? 0 : -1}
+            style={{
+              animationDelay: `${index * 50}ms`
+            }}
           >
-            {child.label}
-          </a>
+            {/* Hover effect background */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+            <span className="relative z-10">{child.label}</span>
+          </Link>
         ))}
       </div>
     </div>

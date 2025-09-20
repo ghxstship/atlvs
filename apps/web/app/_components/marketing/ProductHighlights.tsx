@@ -22,7 +22,7 @@ const products = [
       { label: 'Active Teams', value: '12K+' },
       { label: 'Time Saved', value: '40%' },
     ],
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/products/atlvs',
   },
   {
@@ -58,7 +58,7 @@ export function ProductHighlights() {
           <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-md">
             TWO PLATFORMS,
             <br />
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               INFINITE POSSIBILITIES
             </span>
           </h2>
@@ -83,7 +83,7 @@ export function ProductHighlights() {
                       <span className="text-body-sm">Enterprise Ready</span>
                     </Badge>
                   </div>
-                  <p className="text-body form-label color-primary mb-md">{product.tagline}</p>
+                  <p className="text-body form-label color-accent mb-md">{product.tagline}</p>
                   <p className="color-muted">{product.description}</p>
                 </div>
 
@@ -94,7 +94,7 @@ export function ProductHighlights() {
                     return (
                       <div key={feature.label} className="flex items-start gap-md">
                         <div className={`p-md rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
-                          <Icon className="h-5 w-5 color-primary" />
+                          <Icon className="h-5 w-5 color-accent" />
                         </div>
                         <div>
                           <div className="form-label text-body-sm mb-xs">{feature.label}</div>
@@ -141,9 +141,9 @@ export function ProductHighlights() {
               <div className="flex items-center justify-center gap-md mb-xl">
                 <div className="font-title text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-md">
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
-                  <Zap className="h-6 w-6 color-primary" />
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+                  <Zap className="h-6 w-6 color-accent" />
+                  <div className="w-8 h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
                 </div>
                 <div className="font-title text-heading-3">OPENDECK</div>
               </div>

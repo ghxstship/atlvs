@@ -495,19 +495,19 @@ export function PerformanceDashboard() {
             {/* Tab Navigation */}
             <div className="flex gap-sm mb-md">
               <button
-                className={`px-sm py-xs text-xs rounded ${selectedTab === 'vitals' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+                className={`px-sm py-xs text-xs rounded ${selectedTab === 'vitals' ? 'bg-accent text-accent-foreground' : 'bg-muted'}`}
                 onClick={() => setSelectedTab('vitals')}
               >
                 Web Vitals
               </button>
               <button
-                className={`px-sm py-xs text-xs rounded ${selectedTab === 'network' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+                className={`px-sm py-xs text-xs rounded ${selectedTab === 'network' ? 'bg-accent text-accent-foreground' : 'bg-muted'}`}
                 onClick={() => setSelectedTab('network')}
               >
                 Network
               </button>
               <button
-                className={`px-sm py-xs text-xs rounded ${selectedTab === 'components' ? 'bg-primary text-primary-foreground' : 'bg-muted'}`}
+                className={`px-sm py-xs text-xs rounded ${selectedTab === 'components' ? 'bg-accent text-accent-foreground' : 'bg-muted'}`}
                 onClick={() => setSelectedTab('components')}
               >
                 Components

@@ -225,7 +225,7 @@ export default function CommunityCulturalEventsPage() {
                     <div className="text-body-sm form-label color-muted">Cultural Programming</div>
                     {[
                       { program: 'Traditional Dance', participants: 120, stage: 'Main', color: 'bg-destructive' },
-                      { program: 'Heritage Crafts', participants: 85, stage: 'Pavilion', color: 'bg-primary' },
+                      { program: 'Heritage Crafts', participants: 85, stage: 'Pavilion', color: 'bg-accent' },
                       { program: 'Cultural Food Fair', participants: 300, stage: 'Plaza', color: 'bg-success' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">

@@ -46,13 +46,13 @@ export const NavigationAnnouncer: React.FC<NavigationAnnouncerProps> = ({ pathna
       <div className="sr-only focus-within:not-sr-only focus-within:absolute focus-within:top-0 focus-within:left-0 focus-within:z-50">
         <a
           href="#main-content"
-          className="inline-block px-md py-sm m-sm bg-primary text-primary-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="inline-block px-md py-sm m-sm bg-accent text-accent-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           Skip to main content
         </a>
         <a
           href="#navigation"
-          className="inline-block px-md py-sm m-sm bg-primary text-primary-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          className="inline-block px-md py-sm m-sm bg-accent text-accent-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
         >
           Skip to navigation
         </a>
@@ -139,7 +139,7 @@ export const AccessibleNavigationItem: React.FC<NavigationItemProps> = ({
           className={`
             flex-1 px-sm py-sm rounded-md text-sm font-medium
             ${isActive 
-              ? 'bg-primary/10 text-primary' 
+              ? 'bg-accent/10 text-accent' 
               : 'text-muted-foreground hover:bg-muted'
             }
             focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2

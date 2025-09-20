@@ -239,7 +239,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-heading-3">{stats.totalOrders}</p>
                 {getChangeIndicator(12)}
               </div>
-              <ShoppingCart className="w-8 h-8 color-primary" />
+              <ShoppingCart className="w-8 h-8 color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -280,7 +280,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-heading-3">{formatCurrency(stats.savingsThisMonth)}</p>
                 <p className="text-body-sm color-success">This month</p>
               </div>
-              <TrendingUp className="w-8 h-8 color-primary" />
+              <TrendingUp className="w-8 h-8 color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -381,7 +381,7 @@ export default function ProcurementOverviewClient() {
                 </div>
                 <div className="w-full bg-secondary rounded-full h-2">
                   <div
-                    className="bg-primary h-2 rounded-full transition-all"
+                    className="bg-accent h-2 rounded-full transition-all"
                     style={{ width: `${category.percentage}%` }}
                   />
                 </div>
@@ -399,7 +399,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/orders" as="/procurement/orders/new">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Plus className="w-8 h-8 mx-auto mb-sm color-primary" />
+              <Plus className="w-8 h-8 mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Create Order</p>
               <p className="text-body-sm color-muted">Start a new purchase order</p>
             </CardContent>
@@ -409,7 +409,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/catalog">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Package className="w-8 h-8 mx-auto mb-sm color-primary" />
+              <Package className="w-8 h-8 mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Browse Catalog</p>
               <p className="text-body-sm color-muted">View products and services</p>
             </CardContent>
@@ -419,7 +419,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/tracking">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Activity className="w-8 h-8 mx-auto mb-sm color-primary" />
+              <Activity className="w-8 h-8 mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Track Orders</p>
               <p className="text-body-sm color-muted">Monitor order status</p>
             </CardContent>

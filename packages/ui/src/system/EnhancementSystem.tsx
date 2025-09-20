@@ -380,10 +380,10 @@ const enhancedButtonVariants = cva(
     variants: {
       variant: {
         primary: [
-          'bg-primary text-primary-foreground shadow-surface',
-          'hover:bg-primary/90 hover:shadow-floating',
+          'bg-accent text-accent-foreground shadow-surface',
+          'hover:bg-accent/90 hover:shadow-floating',
           'focus-visible:ring-primary',
-          'active:bg-primary/95',
+          'active:bg-accent/95',
         ],
         secondary: [
           'bg-secondary text-secondary-foreground shadow-surface border border-border',
@@ -464,7 +464,7 @@ const enhancedCardVariants = cva(
 export const a11yEnhancements = {
   // Focus management
   focusTrap: 'focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2',
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-primary focus:text-primary-foreground focus:rounded-md',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-accent focus:text-accent-foreground focus:rounded-md',
   
   // Screen reader support
   srOnly: 'sr-only',

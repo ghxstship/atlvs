@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Badge, Button, Card, CardContent } from '@ghxstship/ui';
 import { ArrowRight, Mail, Globe, Users, TrendingUp, Heart, Shield, Target, MapPin, Linkedin } from 'lucide-react';
+import { anton, typography } from '../../../_components/lib/typography';
 // import { Section, SectionHeader } from '../../components/layout/Section';
 // import { TeamMemberCard } from '../../components/team/TeamMemberCard';
 // import { LeadershipCard } from '../../components/team/LeadershipCard';
@@ -89,7 +90,7 @@ const departments = [
     count: 8,
     description: 'Steering the ship and keeping everyone pointed toward the same horizon',
     leads: ['Julian Clarkson', 'Sarah Fry', 'John Macejak'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'FPL',
@@ -97,7 +98,7 @@ const departments = [
     count: 12,
     description: 'Making sure the money flows right and the contracts actually protect us',
     leads: ['Marcus Chen', 'Lisa Rodriguez', 'David Kim'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'CDS',
@@ -105,7 +106,7 @@ const departments = [
     count: 15,
     description: 'Turning wild ideas into experiences that actually make sense',
     leads: ['Maya Patel', 'Alex Thompson', 'Sofia Martinez'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'EPR',
@@ -113,7 +114,7 @@ const departments = [
     count: 18,
     description: 'Crafting experiences that people remember and pay for',
     leads: ['Jordan Lee', 'Emma Wilson', 'Carlos Ruiz'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'MMM',
@@ -121,7 +122,7 @@ const departments = [
     count: 14,
     description: 'Getting the word out without being that annoying brand',
     leads: ['Taylor Swift', 'Ryan Park', 'Zoe Chen'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'SED',
@@ -129,7 +130,7 @@ const departments = [
     count: 22,
     description: 'Building spaces that don\'t fall down and actually work for humans',
     leads: ['Mike Johnson', 'Anna Garcia', 'Tom Anderson'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'SOL',
@@ -137,7 +138,7 @@ const departments = [
     count: 28,
     description: 'Moving mountains of stuff to the right place at the right time',
     leads: ['Rachel Kim', 'James Wilson', 'Maria Santos'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'ITC',
@@ -145,7 +146,7 @@ const departments = [
     count: 16,
     description: 'Keeping the digital world connected when everything wants to break',
     leads: ['Kevin Zhang', 'Priya Sharma', 'Lucas Brown'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'XTP',
@@ -153,7 +154,7 @@ const departments = [
     count: 35,
     description: 'Making the impossible look effortless, one technical miracle at a time',
     leads: ['Diana Ross', 'Marcus Johnson', 'Elena Rodriguez'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'BGS',
@@ -161,7 +162,7 @@ const departments = [
     count: 11,
     description: 'Making everything look intentional, even when it definitely wasn\'t',
     leads: ['Chris Lee', 'Samantha Davis', 'Roberto Martinez'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'PSS',
@@ -169,7 +170,7 @@ const departments = [
     count: 24,
     description: 'Keeping everyone safe while they\'re having way too much fun',
     leads: ['Officer Johnson', 'Captain Smith', 'Sergeant Williams'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'GSX',
@@ -177,7 +178,7 @@ const departments = [
     count: 19,
     description: 'Turning confused visitors into raving fans, one interaction at a time',
     leads: ['Isabella Chen', 'Noah Thompson', 'Ava Rodriguez'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'HFB',
@@ -185,7 +186,7 @@ const departments = [
     count: 32,
     description: 'Feeding people and keeping them happy, which is basically magic',
     leads: ['Vita Sotakoun', 'Chef Martinez', 'Sommelier Kim'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'ENT',
@@ -193,7 +194,7 @@ const departments = [
     count: 21,
     description: 'Wrangling creative personalities and making sure the show goes on',
     leads: ['Dallas D-Cal Calles', 'Melody Johnson', 'Rhythm Davis'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
   {
     code: 'TDX',
@@ -201,7 +202,7 @@ const departments = [
     count: 13,
     description: 'Getting people places and making sure they actually want to be there',
     leads: ['Journey Smith', 'Atlas Brown', 'Compass Wilson'],
-    color: 'from-primary to-accent',
+    color: 'from-primary to-secondary',
   },
 ];
 
@@ -376,7 +377,7 @@ export default function TeamPage() {
               Our People
             </Badge>
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase mb-lg`}>
-              MEET THE<br /><span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">TEAM</span>
+              MEET THE<br /><span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">TEAM</span>
             </h1>
             <p className={`${typography.heroSubtitle} mb-xl`}>
               We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.
@@ -413,7 +414,7 @@ export default function TeamPage() {
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center cluster mb-md h-12">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0">
                     <Users className="w-6 h-6 text-background" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -421,7 +422,7 @@ export default function TeamPage() {
                     <p className="text-sm text-muted-foreground truncate">{leader.role}</p>
                   </div>
                   {leader.social?.linkedin && (
-                    <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors flex-shrink-0">
+                    <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors flex-shrink-0">
                       <Linkedin className="w-5 h-5" />
                     </a>
                   )}
@@ -463,7 +464,7 @@ export default function TeamPage() {
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center gap-md mb-md h-12">
-                  <div className={`w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0`}>
                     <Users className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg flex-1 min-w-0`}>
@@ -502,13 +503,13 @@ export default function TeamPage() {
                 {/* Header Section - Fixed Height */}
                 <div className="flex items-center cluster mb-md h-16">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-primary" />
+                    <Users className="h-6 w-6 text-accent" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-xs truncate`}>
                       {member.name}
                     </h3>
-                    <p className="text-sm font-semibold text-primary mb-xs truncate">{member.role}</p>
+                    <p className="text-sm font-semibold text-accent mb-xs truncate">{member.role}</p>
                     <Badge variant="outline" className="text-xs">
                       {member.departmentCode}
                     </Badge>
@@ -599,7 +600,7 @@ export default function TeamPage() {
             return (
               <Card key={value.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Icon className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-sm`}>
@@ -615,7 +616,7 @@ export default function TeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-primary text-primary-foreground">
+      <section className="py-4xl bg-accent text-accent-foreground">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -657,7 +658,7 @@ export default function TeamPage() {
             <Link key={link.title} href="#">
               <Card className="hover:shadow-floating transition-shadow group">
                 <CardContent className="p-lg text-center">
-                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-sm group-hover:text-primary transition-colors`}>
+                  <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-sm group-hover:text-accent transition-colors`}>
                     {link.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">

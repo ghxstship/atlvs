@@ -207,7 +207,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
       case 'startup':
         return <Users className="h-4 w-4 color-success" />;
       case 'small':
-        return <Users className="h-4 w-4 color-primary" />;
+        return <Users className="h-4 w-4 color-accent" />;
       case 'medium':
         return <Users className="h-4 w-4 color-warning" />;
       case 'large':
@@ -458,7 +458,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <Card key={company.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewCompany(company)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">
-                    <Building className="h-8 w-8 color-primary" />
+                    <Building className="h-8 w-8 color-accent" />
                     <div>
                       <h3 className="text-heading-4 color-foreground">{company.name}</h3>
                       <p className="text-body-sm color-foreground/70 capitalize">{company.industry}</p>
@@ -477,7 +477,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                   {company.website && (
                     <div className="flex items-center cluster-sm text-body-sm">
                       <Globe className="h-4 w-4 color-foreground/50" />
-                      <span className="color-primary hover:underline">{company.website}</span>
+                      <span className="color-accent hover:underline">{company.website}</span>
                     </div>
                   )}
                   

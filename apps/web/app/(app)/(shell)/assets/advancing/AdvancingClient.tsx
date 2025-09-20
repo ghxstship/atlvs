@@ -40,7 +40,7 @@ interface AdvancingClientProps {
 }
 
 const ASSET_CATEGORIES = [
-  { id: 'site_infrastructure', name: 'Site Infrastructure', color: 'bg-primary' },
+  { id: 'site_infrastructure', name: 'Site Infrastructure', color: 'bg-accent' },
   { id: 'site_assets', name: 'Site Assets', color: 'bg-success' },
   { id: 'site_vehicles', name: 'Site Vehicles', color: 'bg-secondary' },
   { id: 'site_services', name: 'Site Services', color: 'bg-warning' },
@@ -48,7 +48,7 @@ const ASSET_CATEGORIES = [
   { id: 'it_communication', name: 'IT & Communication Services', color: 'bg-info' },
   { id: 'office_admin', name: 'Office & Admin', color: 'bg-secondary' },
   { id: 'access_credentials', name: 'Access & Credentials', color: 'bg-accent' },
-  { id: 'parking', name: 'Parking', color: 'bg-primary/80' },
+  { id: 'parking', name: 'Parking', color: 'bg-accent/80' },
   { id: 'travel_lodging', name: 'Travel & Lodging', color: 'bg-secondary/80' },
   { id: 'artist_technical', name: 'Artist Technical', color: 'bg-success/80' },
   { id: 'artist_hospitality', name: 'Artist Hospitality', color: 'bg-warning/80' },

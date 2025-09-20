@@ -224,7 +224,7 @@ export default function CreateContractClient({
         {/* Contract Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <FileText className="h-5 w-5 color-primary" />
+            <FileText className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Contract Details</h3>
           </div>
           

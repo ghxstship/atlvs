@@ -372,13 +372,13 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Package className="h-5 w-5 color-primary" />
+              <Package className="h-5 w-5 color-accent" />
               <h3 className="text-body text-heading-4">Uniform Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
               <div className="text-center">
-                <div className="text-heading-3 text-heading-3 color-primary">{uniformItems.length}</div>
+                <div className="text-heading-3 text-heading-3 color-accent">{uniformItems.length}</div>
                 <div className="text-body-sm color-muted">Total Items</div>
               </div>
               <div className="text-center">

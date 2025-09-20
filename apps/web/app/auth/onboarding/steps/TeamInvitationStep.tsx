@@ -130,8 +130,8 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
   };
 
   return (
-    <div className="stack-xl">
-      <div className="text-center">
+    <div className="brand-ghostship stack-xl">
+      <div className="brand-ghostship text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
           INVITE YOUR TEAM
         </h1>
@@ -145,22 +145,22 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
       <Card className="shadow-modal">
         <CardContent className="p-xl">
-          <div className="stack-lg">
+          <div className="brand-ghostship stack-lg">
             {/* Add Team Member Form */}
-            <div className="stack-md">
-              <div className="flex items-center cluster-sm mb-md">
-                <UserPlus className="h-5 w-5 color-primary" />
+            <div className="brand-ghostship stack-md">
+              <div className="brand-ghostship flex items-center cluster-sm mb-md">
+                <UserPlus className="h-5 w-5 color-accent" />
                 <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                   ADD TEAM MEMBERS
                 </h3>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-md">
-                <div className="md:col-span-2">
+              <div className="brand-ghostship grid md:grid-cols-3 gap-md">
+                <div className="brand-ghostship md:col-span-2">
                   <label className="block text-body-sm form-label color-foreground mb-sm">
                     Email Address
                   </label>
-                  <div className="relative">
+                  <div className="brand-ghostship relative">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
                     <input
                       type="email"
@@ -197,7 +197,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
               </Button>
 
               {error && (
-                <div className="p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
+                <div className="brand-ghostship p-sm bg-destructive/10 border border-destructive/20 rounded-lg">
                   <p className="text-body-sm color-destructive">{error}</p>
                 </div>
               )}
@@ -205,17 +205,17 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
 
             {/* Invited Members List */}
             {invites.length > 0 && (
-              <div className="stack-md">
+              <div className="brand-ghostship stack-md">
                 <h4 className={`${anton.className} uppercase text-md text-heading-3`}>
                   PENDING INVITATIONS ({invites.length})
                 </h4>
                 
-                <div className="stack-sm">
+                <div className="brand-ghostship stack-sm">
                   {invites.map((invite, index) => (
                     <div key={index} className="flex items-center justify-between p-md bg-secondary/50 rounded-lg">
-                      <div className="flex items-center cluster-sm">
-                        <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                          <Mail className="h-4 w-4 color-primary" />
+                      <div className="brand-ghostship flex items-center cluster-sm">
+                        <div className="brand-ghostship w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
+                          <Mail className="h-4 w-4 color-accent" />
                         </div>
                         <div>
                           <p className="form-label color-foreground">{invite.email}</p>
@@ -225,7 +225,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                         </div>
                       </div>
                       
-                      <div className="flex items-center cluster-sm">
+                      <div className="brand-ghostship flex items-center cluster-sm">
                         <select
                           className=" px-md py-xs border border-border rounded text-body-sm bg-background"
                           value={invite.role}
@@ -253,14 +253,14 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             )}
 
             {/* Skip Option */}
-            <div className="pt-lg border-t border-border">
-              <div className="flex items-center cluster-sm">
+            <div className="brand-ghostship pt-lg border-t border-border">
+              <div className="brand-ghostship flex items-center cluster-sm">
                 <input
                   type="checkbox"
                   id="skip-invites"
                   checked={skipInvites}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkipInvites(e.target.checked)}
-                  className="h-4 w-4 color-primary border-border rounded focus:ring-primary"
+                  className="h-4 w-4 color-accent border-border rounded focus:ring-primary"
                 />
                 <label htmlFor="skip-invites" className="text-body-sm color-muted">
                   Skip for now - I'll invite team members later
@@ -277,7 +277,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
           <h4 className={`${anton.className} uppercase text-md text-heading-3 mb-md`}>
             ROLE PERMISSIONS
           </h4>
-          <div className="grid md:grid-cols-3 gap-md">
+          <div className="brand-ghostship grid md:grid-cols-3 gap-md">
             {roles.map(role => (
               <div key={role.value} className="stack-sm">
                 <h5 className="text-heading-4 color-foreground">{role.label}</h5>
@@ -289,7 +289,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       </Card>
 
       {/* Action Buttons */}
-      <div className="flex justify-between pt-lg">
+      <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
           <ArrowLeft className="mr-sm h-4 w-4" />
           Back

@@ -50,13 +50,13 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       },
       info: {
         icon: Info,
-        className: 'border-primary/20 bg-primary/10 text-primary',
-        iconClassName: 'text-primary'
+        className: 'border-primary/20 bg-accent/10 text-accent',
+        iconClassName: 'text-accent'
       },
       loading: {
         icon: Loader2,
         className: 'border-border bg-background text-foreground',
-        iconClassName: 'text-primary animate-spin'
+        iconClassName: 'text-accent animate-spin'
       }
     };
 

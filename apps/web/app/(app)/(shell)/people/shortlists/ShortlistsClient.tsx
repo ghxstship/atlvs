@@ -118,7 +118,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
   );
 
   const purposes = [
-    { value: 'hiring', label: t('hiring'), color: 'bg-primary/10 color-primary' },
+    { value: 'hiring', label: t('hiring'), color: 'bg-accent/10 color-accent' },
     { value: 'project', label: t('project'), color: 'bg-success/10 color-success' },
     { value: 'event', label: t('event'), color: 'bg-secondary/10 color-secondary' },
     { value: 'general', label: t('general'), color: 'bg-secondary color-muted' }

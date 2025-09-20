@@ -16,10 +16,10 @@ const displayVariants = cva(
       },
       color: {
         default: 'text-foreground',
-        primary: 'text-primary',
+        primary: 'text-accent',
         accent: 'text-accent',
         muted: 'text-muted-foreground',
-        gradient: 'bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent',
+        gradient: 'bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent',
         'gradient-success': 'bg-gradient-to-r from-success to-primary bg-clip-text text-transparent',
         'gradient-warning': 'bg-gradient-to-r from-warning to-primary bg-clip-text text-transparent',
       },

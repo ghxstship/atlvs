@@ -173,11 +173,11 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
   }
 
   const VendorDashboard = () => (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+      <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Total Earnings</p>
               <p className="text-heading-3">${stats.vendor.totalEarnings.toLocaleString()}</p>
@@ -191,7 +191,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Active Projects</p>
               <p className="text-heading-3">{stats.vendor.activeProjects}</p>
@@ -199,15 +199,15 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.vendor.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 color-primary" />
+            <Briefcase className="h-8 w-8 color-accent" />
           </div>
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Average Rating</p>
-              <div className="flex items-center">
+              <div className="brand-opendeck flex items-center">
                 <p className="text-heading-3 mr-sm">{stats.vendor.avgRating}</p>
                 <Star className="h-5 w-5 color-warning fill-warning" />
               </div>
@@ -220,7 +220,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Success Rate</p>
               <p className="text-heading-3">{stats.vendor.successRate}%</p>
@@ -234,10 +234,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       </div>
 
       {/* Performance Overview */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+      <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-3 gap-lg">
         <Card className="lg:col-span-2 p-lg">
           <h3 className="text-body text-heading-4 mb-md">Earnings Overview</h3>
-          <div className="h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
+          <div className="brand-opendeck h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
             <BarChart3 className="h-12 w-12 color-muted" />
             <span className="ml-sm color-muted">Chart will be rendered here</span>
           </div>
@@ -245,7 +245,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             <Button variant="outline" className="w-full justify-start">
               <Package className="h-4 w-4 mr-sm" />
               Create New Service
@@ -267,10 +267,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       </div>
 
       {/* Active Projects & Upcoming Milestones */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+      <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-2 gap-lg">
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Active Projects</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center justify-between p-sm border rounded-lg">
                 <div>
@@ -285,11 +285,11 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Recent Reviews</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             {[1, 2, 3].map(i => (
               <div key={i} className="p-sm border rounded-lg">
-                <div className="flex items-center mb-sm">
-                  <div className="flex">
+                <div className="brand-opendeck flex items-center mb-sm">
+                  <div className="brand-opendeck flex">
                     {[1, 2, 3, 4, 5].map(star => (
                       <Star key={star} className="h-4 w-4 color-warning fill-warning" />
                     ))}
@@ -306,11 +306,11 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
   );
 
   const ClientDashboard = () => (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+      <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Total Spent</p>
               <p className="text-heading-3">${stats.client.totalSpent.toLocaleString()}</p>
@@ -319,12 +319,12 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 -8% from budget
               </p>
             </div>
-            <DollarSign className="h-8 w-8 color-primary" />
+            <DollarSign className="h-8 w-8 color-accent" />
           </div>
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Active Projects</p>
               <p className="text-heading-3">{stats.client.activeProjects}</p>
@@ -337,7 +337,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Vendors Hired</p>
               <p className="text-heading-3">{stats.client.vendorsHired}</p>
@@ -350,7 +350,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         </Card>
 
         <Card className="p-md">
-          <div className="flex items-center justify-between">
+          <div className="brand-opendeck flex items-center justify-between">
             <div>
               <p className="text-body-sm color-muted">Avg Completion</p>
               <p className="text-heading-3">{stats.client.avgCompletionTime}d</p>
@@ -365,10 +365,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       </div>
 
       {/* Project Management */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
+      <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-3 gap-lg">
         <Card className="lg:col-span-2 p-lg">
           <h3 className="text-body text-heading-4 mb-md">Project Timeline</h3>
-          <div className="h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
+          <div className="brand-opendeck h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
             <Calendar className="h-12 w-12 color-muted" />
             <span className="ml-sm color-muted">Timeline will be rendered here</span>
           </div>
@@ -376,7 +376,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             <Button variant="outline" className="w-full justify-start">
               <FileText className="h-4 w-4 mr-sm" />
               Post New Project
@@ -398,10 +398,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       </div>
 
       {/* Active Projects & Proposals */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+      <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-2 gap-lg">
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Active Projects</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             {[1, 2, 3].map(i => (
               <div key={i} className="flex items-center justify-between p-sm border rounded-lg">
                 <div>
@@ -416,15 +416,15 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 mb-md">Recent Proposals</h3>
-          <div className="stack-sm">
+          <div className="brand-opendeck stack-sm">
             {[1, 2, 3].map(i => (
               <div key={i} className="p-sm border rounded-lg">
-                <div className="flex items-center justify-between mb-sm">
+                <div className="brand-opendeck flex items-center justify-between mb-sm">
                   <p className="form-label">Stage Design Services</p>
                   <Badge variant="outline">New</Badge>
                 </div>
                 <p className="text-body-sm color-muted">$5,000 - 7 days delivery</p>
-                <div className="flex items-center mt-sm">
+                <div className="brand-opendeck flex items-center mt-sm">
                   <Star className="h-4 w-4 color-warning fill-warning" />
                   <span className="ml-xs text-body-sm">4.8 rating</span>
                 </div>
@@ -437,10 +437,10 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
   );
 
   return (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Dashboard Toggle */}
       {userRole === 'both' && (
-        <div className="flex items-center justify-between">
+        <div className="brand-opendeck flex items-center justify-between">
           <h2 className="text-heading-3">OPENDECK Dashboard</h2>
           <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v as 'vendor' | 'client')}>
             <TabsList>
@@ -460,8 +460,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       {/* Notifications Bar */}
       {notifications.length > 0 && (
         <Card className="p-md bg-info/5 border-info/20">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center">
+          <div className="brand-opendeck flex items-center justify-between">
+            <div className="brand-opendeck flex items-center">
               <Shield className="h-5 w-5 text-info mr-sm" />
               <span className="text-body-sm">
                 You have {notifications.length} new notifications
@@ -474,8 +474,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
       {/* Main Dashboard Content */}
       {loading ? (
-        <div className="flex items-center justify-center h-64">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="brand-opendeck flex items-center justify-center h-64">
+          <div className="brand-opendeck animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
         </div>
       ) : (
         activeView === 'vendor' ? <VendorDashboard /> : <ClientDashboard />

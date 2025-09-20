@@ -103,7 +103,7 @@ export function CookieConsent() {
             // Main consent banner
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-xl">
               <div className="flex items-start gap-xl flex-1">
-                <Cookie className="h-6 w-6 color-primary mt-xs flex-shrink-0" />
+                <Cookie className="h-6 w-6 color-accent mt-xs flex-shrink-0" />
                 <div>
                   <h3 className="text-heading-4 color-foreground mb-xs">
                     We use cookies to enhance your experience
@@ -120,7 +120,7 @@ export function CookieConsent() {
                       Customize preferences
                     </Button>{' '}
                     or read our{' '}
-                    <a href="/legal/privacy" className="color-primary hover:underline">
+                    <a href="/legal/privacy" className="color-accent hover:underline">
                       Privacy Policy
                     </a>.
                   </p>
@@ -180,7 +180,7 @@ export function CookieConsent() {
                     </p>
                   </div>
                   <div className="ml-md">
-                    <div className="w-12 h-6 bg-primary rounded-full relative">
+                    <div className="w-12 h-6 bg-accent rounded-full relative">
                       <div className="w-5 h-5 bg-background rounded-full absolute top-0.5 right-0.5"></div>
                     </div>
                   </div>
@@ -201,7 +201,7 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, analytics: !prev.analytics }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.analytics ? "bg-primary" : "bg-secondary"
+                        preferences.analytics ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
@@ -227,7 +227,7 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, marketing: !prev.marketing }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.marketing ? "bg-primary" : "bg-secondary"
+                        preferences.marketing ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
@@ -253,7 +253,7 @@ export function CookieConsent() {
                       onClick={() => setPreferences(prev => ({ ...prev, functional: !prev.functional }))}
                       className={cn(
                         "w-12 h-6 rounded-full relative transition-colors",
-                        preferences.functional ? "bg-primary" : "bg-secondary"
+                        preferences.functional ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(

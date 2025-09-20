@@ -37,7 +37,7 @@ const features = [
     title: 'Global Collaboration',
     description: 'Connect teams across time zones with real-time sync and multi-language support.',
     category: 'Collaboration',
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
   },
   {
     icon: BarChart3,
@@ -126,7 +126,7 @@ export function FeatureGrid() {
           <h1 className="text-heading-1">
             EVERYTHING YOU NEED
             <br />
-            <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
               IN ONE PLATFORM
             </span>
           </h1>
@@ -145,7 +145,7 @@ export function FeatureGrid() {
                 <CardContent className="p-lg">
                   {/* Icon */}
                   <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} mb-sm`}>
-                    <Icon className="h-6 w-6 color-primary-foreground" />
+                    <Icon className="h-6 w-6 color-accent-foreground" />
                   </div>
 
                   {/* Category Badge */}
@@ -154,7 +154,7 @@ export function FeatureGrid() {
                   </Badge>
 
                   {/* Title */}
-                  <h3 className="text-heading-3 text-foreground uppercase group-hover:color-primary transition-colors">
+                  <h3 className="text-heading-3 text-foreground uppercase group-hover:color-accent transition-colors">
                     {feature.title}
                   </h3>
 
@@ -173,8 +173,8 @@ export function FeatureGrid() {
           {/* Enterprise Ready */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-xl text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-md">
-                <Shield className="h-8 w-8 color-primary" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
+                <Shield className="h-8 w-8 color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Enterprise Ready</h3>
               <p className="color-muted mb-md">
@@ -227,8 +227,8 @@ export function FeatureGrid() {
           {/* Global Scale */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-xl text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-md">
-                <Globe className="h-8 w-8 color-primary" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
+                <Globe className="h-8 w-8 color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Global Scale</h3>
               <p className="color-muted mb-md">
@@ -236,15 +236,15 @@ export function FeatureGrid() {
               </p>
               <div className="stack-xl text-body-sm">
                 <div className="flex items-center justify-center gap-sm">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span>50+ Countries</span>
                 </div>
                 <div className="flex items-center justify-center gap-sm">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span>Multi-language Support</span>
                 </div>
                 <div className="flex items-center justify-center gap-sm">
-                  <div className="w-2 h-2 bg-primary rounded-full"></div>
+                  <div className="w-2 h-2 bg-accent rounded-full"></div>
                   <span>Global CDN</span>
                 </div>
               </div>

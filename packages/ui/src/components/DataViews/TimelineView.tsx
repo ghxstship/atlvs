@@ -305,7 +305,7 @@ export function TimelineView({
                       <AlertTriangle className="h-4 w-4 text-destructive" />
                     )}
                     <div
-                      className="font-medium text-sm text-foreground cursor-pointer hover:text-primary truncate"
+                      className="font-medium text-sm text-foreground cursor-pointer hover:text-accent truncate"
                       onClick={() => onItemClick?.(item.record)}
                     >
                       {item.title}
@@ -344,7 +344,7 @@ export function TimelineView({
                       <div
                         className={`
                           absolute top-1/2 transform -translate-y-1/2 h-4 rounded cursor-pointer
-                          ${item.critical ? 'bg-destructive' : 'bg-primary'}
+                          ${item.critical ? 'bg-destructive' : 'bg-accent'}
                           hover:opacity-80 transition-opacity
                         `}
                         style={position}

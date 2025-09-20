@@ -150,7 +150,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
       case 'very_high': return 'bg-destructive/10 color-destructive';
       case 'high': return 'bg-warning/10 color-warning';
       case 'medium': return 'bg-warning/10 color-warning';
-      case 'low': return 'bg-primary/10 color-primary';
+      case 'low': return 'bg-accent/10 color-accent';
       case 'very_low': return 'bg-secondary/50 color-muted';
       default: return 'bg-secondary/50 color-muted';
     }
@@ -160,7 +160,7 @@ export default function RisksTableClient({ rows, orgId }: { rows: RiskRow[]; org
     switch (status) {
       case 'identified': return 'bg-destructive/10 color-destructive';
       case 'assessed': return 'bg-warning/10 color-warning';
-      case 'mitigated': return 'bg-primary/10 color-primary';
+      case 'mitigated': return 'bg-accent/10 color-accent';
       case 'accepted': return 'bg-success/10 color-success';
       case 'closed': return 'bg-secondary/50 color-muted';
       default: return 'bg-secondary/50 color-muted';

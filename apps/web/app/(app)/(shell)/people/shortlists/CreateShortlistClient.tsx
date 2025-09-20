@@ -216,8 +216,8 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
       >
         <form id="shortlist-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
-            <div className="p-sm bg-primary/10 rounded-lg">
-              <List className="h-5 w-5 color-primary" />
+            <div className="p-sm bg-accent/10 rounded-lg">
+              <List className="h-5 w-5 color-accent" />
             </div>
             <div>
               <h3 className="form-label">Shortlist Information</h3>
@@ -325,9 +325,9 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
             </div>
           </div>
 
-          <div className="bg-primary/10 p-md rounded-lg">
-            <h4 className="form-label color-primary mb-sm">Shortlist Guidelines</h4>
-            <ul className="text-body-sm color-primary/80 stack-xs">
+          <div className="bg-accent/10 p-md rounded-lg">
+            <h4 className="form-label color-accent mb-sm">Shortlist Guidelines</h4>
+            <ul className="text-body-sm color-accent/80 stack-xs">
               <li>• Use descriptive names that clearly indicate the purpose</li>
               <li>• Link to specific projects and roles when applicable</li>
               <li>• Set realistic maximum member limits</li>

@@ -54,7 +54,7 @@ const statusColors = {
   draft: 'bg-secondary/50 color-muted',
   published: 'bg-success/10 color-success',
   archived: 'bg-warning/10 color-warning',
-  under_review: 'bg-primary/10 color-primary'
+  under_review: 'bg-accent/10 color-accent'
 };
 
 export default function ResourcesClient() {
@@ -180,7 +180,7 @@ export default function ResourcesClient() {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-md">
         <Card>
-          <div className="text-heading-3 color-primary">{stats.totalResources}</div>
+          <div className="text-heading-3 color-accent">{stats.totalResources}</div>
           <div className="text-body-sm color-muted">Total Resources</div>
         </Card>
         <Card>
@@ -196,7 +196,7 @@ export default function ResourcesClient() {
           <div className="text-body-sm color-muted">Total Views</div>
         </Card>
         <Card>
-          <div className="text-heading-3 color-primary">{stats.totalDownloads}</div>
+          <div className="text-heading-3 color-accent">{stats.totalDownloads}</div>
           <div className="text-body-sm color-muted">Downloads</div>
         </Card>
       </div>
@@ -278,7 +278,7 @@ export default function ResourcesClient() {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <IconComponent className="w-5 h-5 color-primary" />
+                    <IconComponent className="w-5 h-5 color-accent" />
                     <Badge variant="outline">
                       {resource.status.replace('_', ' ')}
                     </Badge>

@@ -111,8 +111,8 @@ export function TrustSignals() {
             const Icon = metric.icon;
             return (
               <div key={metric.label} className="text-center">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-sm">
-                  <Icon className="h-6 w-6 color-primary" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-sm">
+                  <Icon className="h-6 w-6 color-accent" />
                 </div>
                 <div className="font-title text-heading-2 text-heading-3 color-foreground mb-xs">
                   {metric.value}

@@ -314,7 +314,7 @@ const contentSectionVariants = cva(
         hero: 'text-center py-2xl sm:py-3xl lg:py-4xl',
         feature: 'py-xl sm:py-2xl',
         testimonial: 'bg-muted py-xl sm:py-2xl rounded-lg',
-        cta: 'bg-primary/5 py-xl sm:py-2xl rounded-lg text-center',
+        cta: 'bg-accent/5 py-xl sm:py-2xl rounded-lg text-center',
       },
       padding: {
         none: 'p-0',
@@ -349,7 +349,7 @@ const emptyStateVariants = cva(
         default: 'text-muted-foreground/70 dark:text-muted-foreground/50',
         illustration: 'gap-md',
         minimal: 'py-xl text-sm',
-        error: 'text-error-600 dark:text-error-400',
+        error: 'text-destructive-600 dark:text-destructive-400',
       },
       size: {
         sm: 'py-xl gap-sm',
@@ -520,7 +520,7 @@ export const layoutPatterns = {
 
 export const a11yContainerPatterns = {
   // Skip links
-  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-primary focus:text-primary-foreground focus:rounded-md',
+  skipLink: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-md focus:py-sm focus:bg-accent focus:text-accent-foreground focus:rounded-md',
   
   // Focus containers
   focusContainer: 'focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 rounded-lg',

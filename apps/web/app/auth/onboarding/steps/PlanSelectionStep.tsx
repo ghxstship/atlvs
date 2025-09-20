@@ -164,8 +164,8 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
   };
 
   return (
-    <div className="stack-xl">
-      <div className="text-center">
+    <div className="brand-ghostship stack-xl">
+      <div className="brand-ghostship text-center">
         <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
           CHOOSE YOUR PLAN
         </h1>
@@ -175,8 +175,8 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Billing Toggle */}
-      <div className="flex justify-center">
-        <div className="bg-secondary p-xs rounded-lg">
+      <div className="brand-ghostship flex justify-center">
+        <div className="brand-ghostship bg-secondary p-xs rounded-lg">
           <button
             onClick={() => setBillingCycle('monthly')}
             className={`px-md py-sm rounded-md text-body-sm form-label transition-colors ${
@@ -204,7 +204,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Plans Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
+      <div className="brand-ghostship grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
         {plans.map((plan: any) => {
           const Icon = plan.icon;
           const isSelected = selectedPlan === plan.id;
@@ -220,16 +220,16 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
               onClick={() => handlePlanSelect(plan.id)}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <Badge className="bg-primary color-primary-foreground">
+                <div className="brand-ghostship absolute -top-3 left-1/2 transform -translate-x-1/2">
+                  <Badge className="bg-accent color-accent-foreground">
                     Most Popular
                   </Badge>
                 </div>
               )}
               
               <CardContent className="p-lg">
-                <div className="text-center mb-lg">
-                  <Icon className="h-8 w-8 color-primary mx-auto mb-sm" />
+                <div className="brand-ghostship text-center mb-lg">
+                  <Icon className="h-8 w-8 color-accent mx-auto mb-sm" />
                   <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                     {plan.name}
                   </h3>
@@ -237,7 +237,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                     {plan.description}
                   </p>
                   
-                  <div className="mb-sm">
+                  <div className="brand-ghostship mb-sm">
                     <span className="text-heading-2 text-heading-3 color-foreground">
                       {getPrice(plan)}
                     </span>
@@ -282,7 +282,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Action Buttons */}
-      <div className="flex justify-between pt-lg">
+      <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
           <ArrowLeft className="mr-sm h-4 w-4" />
           Back
@@ -295,11 +295,11 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       </div>
 
       {/* Trust Signals */}
-      <div className="text-center pt-xl border-t border-border">
+      <div className="brand-ghostship text-center pt-xl border-t border-border">
         <p className="text-body-sm color-muted mb-md">
           Trusted by 10,000+ creative professionals worldwide
         </p>
-        <div className="flex justify-center cluster-xl text-body-sm color-muted">
+        <div className="brand-ghostship flex justify-center cluster-xl text-body-sm color-muted">
           <div>✓ 99.9% Uptime</div>
           <div>✓ 24/7 Support</div>
           <div>✓ Cancel Anytime</div>

@@ -16,7 +16,7 @@ export function CTASection() {
             <h2 className="text-heading-1 lg:text-display text-heading-3 uppercase">
               READY TO TRANSFORM
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 YOUR PRODUCTION?
               </span>
             </h2>
@@ -50,7 +50,7 @@ export function CTASection() {
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-xl">
-                <Zap className="h-4 w-4 color-primary" />
+                <Zap className="h-4 w-4 color-accent" />
                 <span>Setup in minutes</span>
               </div>
             </div>
@@ -61,15 +61,15 @@ export function CTASection() {
         <div className="grid md:grid-cols-3 gap-xl mb-xl">
           <Card className="text-center hover:shadow-floating transition-shadow">
             <CardContent className="p-xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-md">
-                <CheckCircle className="h-8 w-8 color-primary" />
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
+                <CheckCircle className="h-8 w-8 color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Quick Setup</h3>
               <p className="color-muted mb-md">
                 Get started in minutes with our guided onboarding process and pre-built templates.
               </p>
               <div className="text-body-sm color-muted">
-                Average setup time: <span className="text-heading-4 color-primary">5 minutes</span>
+                Average setup time: <span className="text-heading-4 color-accent">5 minutes</span>
               </div>
             </CardContent>
           </Card>

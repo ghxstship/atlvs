@@ -208,7 +208,7 @@ export default function CorporatePage() {
                       <div>12</div>
                       <div className="flex -cluster-xs mt-xs">
                         {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-accent rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -225,7 +225,7 @@ export default function CorporatePage() {
                     <div className="text-body-sm form-label color-muted">Event Schedule</div>
                     {[
                       { event: 'VIP Reception', time: '6:00 PM', status: 'Ready', color: 'bg-success' },
-                      { event: 'Dinner Service', time: '7:30 PM', status: 'Prep', color: 'bg-primary' },
+                      { event: 'Dinner Service', time: '7:30 PM', status: 'Prep', color: 'bg-accent' },
                       { event: 'Awards Ceremony', time: '9:00 PM', status: 'Setup', color: 'bg-info' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">

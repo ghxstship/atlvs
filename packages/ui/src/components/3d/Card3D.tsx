@@ -231,7 +231,7 @@ interface ProjectCard3DProps {
 export function ProjectCard3D({ title, description, status, progress, dueDate, onClick }: ProjectCard3DProps) {
   const statusColors = {
     active: 'bg-success/10 text-success',
-    completed: 'bg-primary/10 text-primary',
+    completed: 'bg-accent/10 text-accent',
     pending: 'bg-warning/10 text-warning',
     cancelled: 'bg-destructive/10 text-destructive',
   };
@@ -273,7 +273,7 @@ export function ProjectCard3D({ title, description, status, progress, dueDate, o
             </div>
             <div className="w-full bg-muted rounded-full h-2">
               <div 
-                className="bg-primary h-2 rounded-full transition-all duration-300 ease-out"
+                className="bg-accent h-2 rounded-full transition-all duration-300 ease-out"
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -321,7 +321,7 @@ export function MetricCard3D({ title, value, change, trend, icon, onClick }: Met
       <div className="space-y-sm">
         {/* Header with icon */}
         <div className="flex items-center justify-between">
-          <div className="text-muted-foreground group-hover:text-primary transition-colors">
+          <div className="text-muted-foreground group-hover:text-accent transition-colors">
             {icon}
           </div>
           {change !== undefined && trend && (

@@ -28,7 +28,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 };
 
 const categoryColors: Record<string, string> = {
-  profile: 'bg-primary/10 color-primary',
+  profile: 'bg-accent/10 color-accent',
   document: 'bg-secondary/10 color-secondary',
   settings: 'bg-secondary color-muted',
   achievement: 'bg-warning/10 color-warning',
@@ -178,7 +178,7 @@ export default function ActivityLogClient() {
             onClick={() => setFilter(category)}
             className={`px-md py-sm rounded-lg text-body-sm form-label transition-colors ${
               filter === category
-                ? 'bg-primary color-primary-foreground'
+                ? 'bg-accent color-accent-foreground'
                 : 'bg-secondary hover:bg-secondary/80'
             }`}
           >

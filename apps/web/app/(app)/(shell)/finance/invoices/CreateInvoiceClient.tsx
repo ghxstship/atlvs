@@ -187,12 +187,12 @@ export default function CreateInvoiceClient({
     >
       <form onSubmit={handleSubmit} className="stack-lg">
         {/* Invoice Overview */}
-        <Card className="p-md bg-primary/10 border-primary/20">
+        <Card className="p-md bg-accent/10 border-primary/20">
           <div className="flex items-center cluster-sm">
-            <FileText className="h-8 w-8 color-primary" />
+            <FileText className="h-8 w-8 color-accent" />
             <div>
-              <h3 className="text-heading-4 color-primary-foreground">Invoice Creation</h3>
-              <p className="text-body-sm color-primary/80">
+              <h3 className="text-heading-4 color-accent-foreground">Invoice Creation</h3>
+              <p className="text-body-sm color-accent/80">
                 Create professional invoices with line items and payment terms
               </p>
             </div>
@@ -397,7 +397,7 @@ export default function CreateInvoiceClient({
             
             <div className="flex justify-between text-body text-heading-4 pt-sm border-t border-border">
               <span>Total Amount:</span>
-              <span className="color-primary">{formatCurrency(totalAmount)}</span>
+              <span className="color-accent">{formatCurrency(totalAmount)}</span>
             </div>
           </div>
         </Card>

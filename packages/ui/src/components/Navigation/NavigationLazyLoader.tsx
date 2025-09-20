@@ -51,7 +51,7 @@ export const NavigationSkeleton: React.FC = () => (
 );
 
 export const SidebarSkeleton: React.FC = () => (
-  <div className="w-[var(--nav-width-expanded)] bg-[hsl(var(--nav-bg-primary))] border-r border-[hsl(var(--nav-border-default))] animate-pulse">
+  <div className="w-[var(--nav-width-expanded)] bg-[hsl(var(--nav-bg-accent))] border-r border-[hsl(var(--nav-border-default))] animate-pulse">
     {/* Header skeleton */}
     <div className="p-[var(--nav-spacing-md)] border-b border-[hsl(var(--nav-border-default))]">
       <div className="h-6 bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-md)]" />

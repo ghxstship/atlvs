@@ -161,12 +161,12 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
   const hasData = rows.length > 0;
 
   return (
-    <div className="stack-sm">
-      <div className="flex items-center justify-between">
-        <div className="text-body-sm opacity-70">
+    <div className="brand-opendeck stack-sm">
+      <div className="brand-opendeck flex items-center justify-between">
+        <div className="brand-opendeck text-body-sm opacity-70">
           {loading ? t('loading') : error ? <span className="color-destructive">{error}</span> : ''}
         </div>
-        <div className="flex items-center gap-sm">
+        <div className="brand-opendeck flex items-center gap-sm">
           <Button onClick={createNew} disabled={busy} aria-label={t('create')} title={t('create')}>
             <Plus className="mr-xs h-4 w-4" /> {t('create')}
           </Button>
@@ -174,7 +174,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
+      <div className="brand-opendeck overflow-x-auto">
         <table className="w-full border-collapse text-body-sm">
           <thead>
             <tr className="sticky top-0">
@@ -211,7 +211,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         </div>
 
         {tab === 'details' && current && (
-          <div className="stack-sm text-body-sm">
+          <div className="brand-opendeck stack-sm text-body-sm">
             <div><span className="form-label">{t('grid.title')}:</span> {current.title}</div>
             <div><span className="form-label">{t('grid.price')}:</span> {current.display?.priceFormatted || `${current.price} ${current.currency}`}</div>
             <div><span className="form-label">{t('grid.status')}:</span> {current.status}</div>
@@ -222,7 +222,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
                 const vendor = vendors.find(v => v.id === vendorId);
                 return vendor ? (
                   <button 
-                    className="ml-xs color-primary hover:underline" 
+                    className="ml-xs color-accent hover:underline" 
                     onClick={() => openVendorDrawer(vendor.id)}
                     aria-label={`View vendor ${vendor.name}`}
                   >
@@ -231,25 +231,25 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
                 ) : t('noVendor');
               })()}
             </div>
-            {current.description ? <div className="mt-sm whitespace-pre-wrap">{current.description}</div> : null}
+            {current.description ? <div className="brand-opendeck mt-sm whitespace-pre-wrap">{current.description}</div> : null}
           </div>
         )}
 
         {tab === 'edit' && current && (
           <form className="stack-sm" onSubmit={(e: any) => { e.preventDefault(); saveEdit(); }} aria-live="polite">
-            <div className="grid gap-xs">
+            <div className="brand-opendeck grid gap-xs">
               <label htmlFor="title" className="text-body-sm">{t('grid.title')}</label>
               <input id="title" className="rounded border  px-md py-xs" value={form.title} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, title: e.target.value })} />
             </div>
-            <div className="grid gap-xs">
+            <div className="brand-opendeck grid gap-xs">
               <label htmlFor="price" className="text-body-sm">{t('grid.price')}</label>
               <input id="price" type="number" step="0.01" className="rounded border  px-md py-xs" value={form.price} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, price: Number(e.target.value) })} />
             </div>
-            <div className="grid gap-xs">
+            <div className="brand-opendeck grid gap-xs">
               <label htmlFor="status" className="text-body-sm">{t('grid.status')}</label>
               <input id="status" className="rounded border  px-md py-xs" value={form.status} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, status: e.target.value })} />
             </div>
-            <div className="grid gap-xs">
+            <div className="brand-opendeck grid gap-xs">
               <label htmlFor="vendor" className="text-body-sm">{t('grid.vendor')}</label>
               <select id="vendor" className="rounded border  px-md py-xs" value={form.vendorId || ''} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, vendorId: e.target.value || undefined })}>
                 <option value="">{t('noVendor')}</option>
@@ -258,24 +258,24 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
                 ))}
               </select>
             </div>
-            <div className="grid gap-xs">
+            <div className="brand-opendeck grid gap-xs">
               <label htmlFor="description" className="text-body-sm">{t('grid.description')}</label>
               <textarea id="description" className="min-h-24 rounded border p-sm" value={form.description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, description: e.target.value })} />
             </div>
-            <div className="flex items-center justify-end gap-sm pt-sm border-t">
+            <div className="brand-opendeck flex items-center justify-end gap-sm pt-sm border-t">
               <Button type="submit" variant="default" disabled={saving}>{t('save')}</Button>
             </div>
           </form>
         )}
 
         {tab === 'comments' && (
-          <div className="stack-sm text-body-sm">
+          <div className="brand-opendeck stack-sm text-body-sm">
             {loadingComments ? t('drawer.loading') : comments.length === 0 ? t('emptyComments') : (
               <ul className="stack-sm">
                 {comments.map(c => (
                   <li key={c.id} className="rounded border p-sm">
-                    <div className="whitespace-pre-wrap">{c.body}</div>
-                    <div className="text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
+                    <div className="brand-opendeck whitespace-pre-wrap">{c.body}</div>
+                    <div className="brand-opendeck text-body-sm opacity-60">{new Date(c.created_at).toLocaleString()}</div>
                   </li>
                 ))}
               </ul>
@@ -284,13 +284,13 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         )}
 
         {tab === 'activity' && (
-          <div className="stack-sm text-body-sm">
+          <div className="brand-opendeck stack-sm text-body-sm">
             {loadingActivity ? t('drawer.loading') : (
               <ul className="stack-xs">
                 {activity.map((a, i) => (
                   <li key={i} className="flex items-center justify-between gap-md">
-                    <div className="font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
-                    <div className="flex-1">{a.action}</div>
+                    <div className="brand-opendeck font-mono text-body-sm opacity-70">{new Date(a.occurred_at).toLocaleString()}</div>
+                    <div className="brand-opendeck flex-1">{a.action}</div>
                   </li>
                 ))}
               </ul>

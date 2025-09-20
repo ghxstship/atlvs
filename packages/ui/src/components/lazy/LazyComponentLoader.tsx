@@ -22,7 +22,7 @@ export interface LazyComponentProps {
 // Default loading fallback component
 const DefaultLoadingFallback: React.FC = () => (
   <Card className="p-xl flex items-center justify-center">
-    <RefreshCw className="h-6 w-6 animate-spin text-primary mr-sm" />
+    <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
     <span className="text-muted-foreground/70">Loading component...</span>
   </Card>
 );

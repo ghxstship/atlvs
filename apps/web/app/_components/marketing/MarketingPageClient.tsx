@@ -40,7 +40,7 @@ export function MarketingPageClient() {
               title="PROJECT MANAGEMENT FOR REAL HUMANS"
               description="Track everything from crew schedules to budget burns without wanting to throw your laptop out the window. Built by someone who's managed $15M+ in productions."
               icon={Zap}
-              badge="ATLVS"
+              label="ATLVS"
               gradient="from-primary to-secondary"
               variant="hover"
               className="p-xl"
@@ -51,26 +51,31 @@ export function MarketingPageClient() {
               title="TALENT & ASSETS THAT DON'T GHOST YOU"
               description="Find verified crew, book reliable vendors, and source assets from people who actually show up. No more last-minute 'sorry, can't make it' texts."
               icon={Globe}
-              badge="OPENDECK"
+              label="OPENDECK"
               gradient="from-success to-accent"
               variant="hover"
               className="p-xl"
             />
           </div>
           
-          <div className="flex flex-col sm:flex-row gap-xl justify-center mt-lg">
-            <Link href="/products/atlvs">
-              <Button className="group transition-all duration-200 hover:scale-105">
-                Explore ATLVS
-                <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
-            <Link href="/products/opendeck">
-              <Button variant="outline" className="group transition-all duration-200 hover:scale-105">
-                Explore OPENDECK
-                <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
-              </Button>
-            </Link>
+          {/* Align buttons under each card for visual balance */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-md max-w-6xl mx-auto mt-md">
+            <div className="flex justify-center md:justify-start">
+              <Link href="/products/atlvs">
+                <Button className="group transition-all duration-200 hover:scale-105">
+                  Explore ATLVS
+                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+            </div>
+            <div className="flex justify-center md:justify-end">
+              <Link href="/products/opendeck">
+                <Button variant="outline" className="group transition-all duration-200 hover:scale-105">
+                  Explore OPENDECK
+                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>

@@ -104,7 +104,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
       case 'lead':
         return 'bg-warning/10 color-warning';
       case 'qualified':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'proposal':
         return 'bg-secondary/10 color-secondary';
       case 'negotiation':
@@ -123,13 +123,13 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
       case 'construction':
         return 'bg-warning/10 color-warning';
       case 'technical':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'creative':
         return 'bg-secondary/10 color-secondary';
       case 'logistics':
         return 'bg-success/10 color-success';
       case 'consulting':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'other':
         return 'bg-secondary/50 color-muted';
       default:

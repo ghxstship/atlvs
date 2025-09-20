@@ -96,7 +96,7 @@ export function DesignTokenValidator({
     colors: {
       'bg-background': 'hsl(var(--background))',
       'bg-foreground': 'hsl(var(--foreground))',
-      'bg-primary': 'hsl(var(--primary))',
+      'bg-accent': 'hsl(var(--primary))',
       'bg-secondary': 'hsl(var(--secondary))',
       'bg-muted': 'hsl(var(--muted))',
       'bg-accent': 'hsl(var(--accent))',
@@ -105,7 +105,7 @@ export function DesignTokenValidator({
       'bg-warning': 'hsl(var(--warning))',
       'text-foreground': 'hsl(var(--foreground))',
       'text-muted-foreground': 'hsl(var(--muted-foreground))',
-      'text-primary': 'hsl(var(--primary))',
+      'text-accent': 'hsl(var(--primary))',
       'text-destructive': 'hsl(var(--destructive))',
       'border-border': 'hsl(var(--border))',
       'border-input': 'hsl(var(--input))',
@@ -360,7 +360,7 @@ export function DesignTokenValidator({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Palette className="h-5 w-5 text-primary" />
+          <Palette className="h-5 w-5 text-accent" />
           <div>
             <h3 className="font-semibold">Design Token Validator</h3>
             <p className="text-sm text-muted-foreground">
@@ -428,7 +428,7 @@ export function DesignTokenValidator({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Palette className="h-4 w-4 text-primary" />
+              <Palette className="h-4 w-4 text-accent" />
               <span className="text-sm font-medium">Token Usage</span>
             </div>
             <div className="text-2xl font-bold">
@@ -530,7 +530,7 @@ export function DesignTokenValidator({
                       </div>
                       <div>
                         <span className="font-medium">Expected:</span> 
-                        <code className="ml-xs px-xs py-0.5 bg-primary/10 rounded text-xs">
+                        <code className="ml-xs px-xs py-0.5 bg-accent/10 rounded text-xs">
                           {violation.expectedToken}
                         </code>
                       </div>
@@ -565,7 +565,7 @@ export function DesignTokenValidator({
         {/* Token Usage Summary */}
         <div>
           <h4 className="font-medium mb-sm flex items-center gap-sm">
-            <Palette className="h-4 w-4 text-primary" />
+            <Palette className="h-4 w-4 text-accent" />
             Token Usage Summary
           </h4>
           
@@ -584,7 +584,7 @@ export function DesignTokenValidator({
                   <div>{usage.files.length} files</div>
                   {usage.replacement && (
                     <div>
-                      Use <code className="text-primary">{usage.replacement}</code> instead
+                      Use <code className="text-accent">{usage.replacement}</code> instead
                     </div>
                   )}
                 </div>

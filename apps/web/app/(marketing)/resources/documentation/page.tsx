@@ -111,7 +111,7 @@ export default function DocumentationPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TECHNICAL
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 DOCUMENTATION
               </span>
             </h1>
@@ -157,7 +157,7 @@ export default function DocumentationPage() {
           <div className="flex flex-wrap justify-center gap-md">
             {quickLinks.map((link: any) => (
               <Link key={link.title} href="#">
-                <Badge variant="outline" className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm">
+                <Badge variant="outline" className="cursor-pointer hover:bg-accent hover:color-accent-foreground transition-colors px-md py-sm">
                   {link.title}
                   {link.external && <ExternalLink className="ml-xs h-3 w-3" />}
                 </Badge>
@@ -186,7 +186,7 @@ export default function DocumentationPage() {
                 <Card key={section.id} className="hover:shadow-floating transition-all duration-300 group">
                   <CardContent className="p-xl">
                     <div className="flex items-start justify-between mb-lg">
-                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
                         <Icon className="h-8 w-8 text-background" />
                       </div>
                       <div className="flex items-center gap-sm">
@@ -323,7 +323,7 @@ export default function DocumentationPage() {
             ].map((resource, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow text-center">
                 <CardContent className="p-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-accent rounded-xl flex items-center justify-center mx-auto mb-md">
+                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
                     <resource.icon className="h-8 w-8 text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>

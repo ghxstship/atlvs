@@ -225,7 +225,7 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'certification':
-        return <Award className="h-5 w-5 color-primary" />;
+        return <Award className="h-5 w-5 color-accent" />;
       case 'license':
         return <FileText className="h-5 w-5 color-success" />;
       case 'insurance':

@@ -171,7 +171,7 @@ export default function UniformSizingClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Shirt className="w-5 h-5 mr-sm color-primary" />
+            <Shirt className="w-5 h-5 mr-sm color-accent" />
             Standard Sizes
           </h3>
         </CardHeader>

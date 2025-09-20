@@ -14,7 +14,7 @@ const TempCard = ({ children, className, ...props }) => (
 const TempButton = ({ children, variant = 'default', size = 'default', className, onClick, disabled, ...props }) => {
   const baseClasses = 'inline-flex items-center justify-center rounded-md form-label transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background';
   const variantClasses: Record<string, string> = {
-    default: 'bg-primary color-primary-foreground hover:bg-primary/90',
+    default: 'bg-accent color-accent-foreground hover:bg-accent/90',
     outline: 'border border-border hover:bg-secondary/50',
     ghost: 'hover:bg-secondary',
     destructive: 'bg-destructive color-destructive-foreground hover:bg-destructive/90'
@@ -39,7 +39,7 @@ const TempButton = ({ children, variant = 'default', size = 'default', className
 
 const TempBadge = ({ children, variant = 'default', className, ...props }) => {
   const variantClasses: Record<string, string> = {
-    default: 'bg-primary/10 color-primary',
+    default: 'bg-accent/10 color-accent',
     secondary: 'bg-secondary color-muted',
     success: 'bg-success/10 color-success',
     destructive: 'bg-destructive/10 color-destructive',
@@ -490,8 +490,8 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             <div className="stack-sm">
               {widget.config.activities?.map((activity, index: number) => (
                 <div key={index} className="flex items-center gap-sm">
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Activity className="h-4 w-4 color-primary" />
+                  <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
+                    <Activity className="h-4 w-4 color-accent" />
                   </div>
                   <div className="flex-1">
                     <p className="text-body-sm">
@@ -722,7 +722,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           {/* Accessibility: Skip to content link */}
           <a 
             href="#main-content" 
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-primary color-primary-foreground px-md py-sm rounded-md z-50"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent color-accent-foreground px-md py-sm rounded-md z-50"
           >
             Skip to main content
           </a>

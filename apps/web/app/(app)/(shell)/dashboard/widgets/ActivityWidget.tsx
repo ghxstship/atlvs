@@ -149,7 +149,7 @@ export default function ActivityWidget({
   const getModuleColor = (module: string) => {
     switch (module) {
       case 'projects':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'people':
         return 'bg-success/10 color-success';
       case 'budgets':

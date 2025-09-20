@@ -410,7 +410,7 @@ export function PivotTableView({
               ))}
               
               {showGrandTotals && (
-                <th className="px-md py-xsxs text-center text-xs font-medium text-muted-foreground uppercase tracking-wider border-b border-border bg-primary/10">
+                <th className="px-md py-xsxs text-center text-xs font-medium text-muted-foreground uppercase tracking-wider border-b border-border bg-accent/10">
                   Total
                 </th>
               )}
@@ -455,7 +455,7 @@ export function PivotTableView({
                     return (
                       <td
                         key={columnKey}
-                        className="px-md py-xsxs text-sm text-center cursor-pointer hover:bg-primary/10"
+                        className="px-md py-xsxs text-sm text-center cursor-pointer hover:bg-accent/10"
                         onClick={() => cell && handleDrillDown(cell)}
                       >
                         {cell ? (
@@ -478,7 +478,7 @@ export function PivotTableView({
                   
                   {/* Row total */}
                   {showGrandTotals && (
-                    <td className="px-md py-xsxs text-sm text-center font-semibold bg-primary/5 border-l border-border">
+                    <td className="px-md py-xsxs text-sm text-center font-semibold bg-accent/5 border-l border-border">
                       {formatValue(rowTotal)}
                     </td>
                   )}
@@ -489,7 +489,7 @@ export function PivotTableView({
           
           {/* Grand totals footer */}
           {showGrandTotals && (
-            <tfoot className="bg-primary/10">
+            <tfoot className="bg-accent/10">
               <tr>
                 <td colSpan={pivotConfig.rowFields.length} className="px-md py-xsxs text-sm font-semibold">
                   Grand Total
@@ -507,7 +507,7 @@ export function PivotTableView({
                     </td>
                   );
                 })}
-                <td className="px-md py-xsxs text-sm text-center font-bold bg-primary/20">
+                <td className="px-md py-xsxs text-sm text-center font-bold bg-accent/20">
                   {formatValue(calculateTotals(
                     Object.values(pivotData.pivot).flatMap(row => Object.values(row))
                   ))}

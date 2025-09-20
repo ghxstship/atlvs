@@ -94,7 +94,7 @@ export default function AboutPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               BUILT BY PEOPLE
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 WHO ACTUALLY DO THIS
               </span>
             </h1>
@@ -199,7 +199,7 @@ export default function AboutPage() {
                 <Card key={value.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-accent">
+                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary">
                         <Icon className="h-6 w-6 text-background" />
                       </div>
                       <div className="flex-1">
@@ -248,7 +248,7 @@ export default function AboutPage() {
                   </div>
                   
                   <div className="relative z-10">
-                    <div className="w-4 h-4 bg-primary rounded-full border-4 border-background"></div>
+                    <div className="w-4 h-4 bg-accent rounded-full border-4 border-background"></div>
                   </div>
                   
                   <div className="flex-1"></div>
@@ -337,7 +337,7 @@ export default function AboutPage() {
             ].map((award: any) => (
               <Card key={award.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Award className="h-6 w-6 text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>

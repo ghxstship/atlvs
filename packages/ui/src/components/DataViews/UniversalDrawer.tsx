@@ -452,7 +452,7 @@ export function UniversalDrawer({
           <div className="space-y-sm">
             {activity.map(item => (
               <div key={item.id} className="flex gap-sm">
-                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-primary mt-sm" />
+                <div className="flex-shrink-0 w-2 h-2 rounded-full bg-accent mt-sm" />
                 <div className="flex-1">
                   <div className="text-sm">
                     <span className="font-medium">{item.author}</span>

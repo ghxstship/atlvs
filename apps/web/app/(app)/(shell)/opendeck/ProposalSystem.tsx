@@ -166,15 +166,15 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
   const ProposalCard = ({ proposal }: { proposal }) => (
     <Card className="p-lg">
-      <div className="flex justify-between items-start mb-md">
-        <div className="flex items-start cluster">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-background text-heading-3">
+      <div className="brand-opendeck flex justify-between items-start mb-md">
+        <div className="brand-opendeck flex items-start cluster">
+          <div className="brand-opendeck w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background text-heading-3">
             {proposal.vendor?.display_name?.charAt(0) || 'V'}
           </div>
           <div>
             <h4 className="text-body text-heading-4">{proposal.vendor?.display_name || 'Vendor'}</h4>
-            <div className="flex items-center cluster-sm text-body-sm color-muted">
-              <div className="flex items-center">
+            <div className="brand-opendeck flex items-center cluster-sm text-body-sm color-muted">
+              <div className="brand-opendeck flex items-center">
                 <Star className="h-4 w-4 color-warning fill-warning mr-xs" />
                 <span>{proposal.vendor?.rating || 0}</span>
               </div>
@@ -199,7 +199,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
         </Badge>
       </div>
 
-      <div className="stack-sm">
+      <div className="brand-opendeck stack-sm">
         <div>
           <p className="text-body-sm form-label mb-xs">Proposed Budget</p>
           <p className="text-heading-3">
@@ -221,7 +221,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
         {proposal.milestones && proposal.milestones.length > 0 && (
           <div>
             <p className="text-body-sm form-label mb-xs">Milestones</p>
-            <div className="stack-md">
+            <div className="brand-opendeck stack-md">
               {proposal.milestones.slice(0, 2).map((milestone, i: number) => (
                 <div key={i} className="flex justify-between text-body-sm">
                   <span>{milestone.title}</span>
@@ -238,7 +238,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
         )}
       </div>
 
-      <div className="flex cluster-sm mt-md">
+      <div className="brand-opendeck flex cluster-sm mt-md">
         {mode === 'client' ? (
           <>
             <Button 
@@ -285,21 +285,21 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="brand-opendeck flex items-center justify-center h-64">
+        <div className="brand-opendeck animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Project Summary */}
       {project && (
         <Card className="p-lg bg-accent/10">
           <h3 className="text-body text-heading-4 mb-sm">{project.title}</h3>
           <p className="text-body-sm color-muted mb-md">{project.description}</p>
-          <div className="flex items-center cluster-lg text-body-sm">
-            <div className="flex items-center">
+          <div className="brand-opendeck flex items-center cluster-lg text-body-sm">
+            <div className="brand-opendeck flex items-center">
               <DollarSign className="h-4 w-4 mr-xs color-muted" />
               <span>
                 {project.budget_type === 'fixed' ? 
@@ -310,11 +310,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
                 }
               </span>
             </div>
-            <div className="flex items-center">
+            <div className="brand-opendeck flex items-center">
               <Calendar className="h-4 w-4 mr-xs color-muted" />
               <span>{project.duration || 'Timeline flexible'}</span>
             </div>
-            <div className="flex items-center">
+            <div className="brand-opendeck flex items-center">
               <FileText className="h-4 w-4 mr-xs color-muted" />
               <span>{proposals.length} proposals</span>
             </div>
@@ -324,7 +324,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
       {/* Actions */}
       {mode === 'vendor' && (
-        <div className="flex justify-between items-center">
+        <div className="brand-opendeck flex justify-between items-center">
           <h3 className="text-body text-heading-4">Your Proposals</h3>
           {proposals.length === 0 && (
             <Button onClick={() => setDrawerOpen(true)}>
@@ -336,9 +336,9 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
       )}
 
       {mode === 'client' && (
-        <div className="flex justify-between items-center">
+        <div className="brand-opendeck flex justify-between items-center">
           <h3 className="text-body text-heading-4">Received Proposals</h3>
-          <div className="flex items-center cluster-sm">
+          <div className="brand-opendeck flex items-center cluster-sm">
             <Badge variant="secondary">
               {proposals.filter(p => p.status === 'shortlisted').length} shortlisted
             </Badge>
@@ -370,7 +370,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
           )}
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+        <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 gap-md">
           {proposals.map(proposal => (
             <ProposalCard key={proposal.id} proposal={proposal} />
           ))}
@@ -412,7 +412,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             )}
           </div>
 
-          <div className="grid grid-cols-2 gap-md">
+          <div className="brand-opendeck grid grid-cols-2 gap-md">
             <div>
               <label className="text-body-sm form-label">Fee Type</label>
               <select 
@@ -478,7 +478,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
             />
           </div>
 
-          <div className="flex justify-end cluster-sm pt-md border-t">
+          <div className="brand-opendeck flex justify-end cluster-sm pt-md border-t">
             <Button type="button" variant="outline" onClick={() => setDrawerOpen(false)}>
               Cancel
             </Button>

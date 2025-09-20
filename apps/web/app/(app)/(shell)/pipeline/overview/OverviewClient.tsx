@@ -255,8 +255,8 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-body-sm form-label color-muted">Total Crew</p>
                 <p className="text-heading-3">{stats.totalCrew}</p>
               </div>
-              <div className="p-sm bg-primary/10 rounded-full">
-                <Users className="w-6 h-6 color-primary" />
+              <div className="p-sm bg-accent/10 rounded-full">
+                <Users className="w-6 h-6 color-accent" />
               </div>
             </div>
             <div className="mt-md flex items-center text-body-sm">
@@ -353,7 +353,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <Clock className="w-4 h-4 color-primary" />
+                  <Clock className="w-4 h-4 color-accent" />
                   <span className="text-body-sm">In Progress</span>
                 </div>
                 <Badge variant="default">
@@ -499,7 +499,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 const typeColors = {
                   training: 'bg-secondary/10 color-secondary',
                   advancing: 'bg-warning/10 color-warning',
-                  onboarding: 'bg-primary/10 color-primary',
+                  onboarding: 'bg-accent/10 color-accent',
                   contract: 'bg-success/10 color-success',
                   manning: 'bg-accent/10 color-accent'
                 };

@@ -208,7 +208,7 @@ export default function ImmersiveExperiencesPage() {
                       <div>8</div>
                       <div className="flex -cluster-xs mt-xs">
                         {[1, 2, 3, 4].map((i: any) => (
-                          <div key={i} className="w-3 h-3 bg-primary rounded-full border border-background"></div>
+                          <div key={i} className="w-3 h-3 bg-accent rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -216,7 +216,7 @@ export default function ImmersiveExperiencesPage() {
                       <div className="text-body-sm color-muted mb-xs">Engagement</div>
                       <div>94%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-primary h-1 rounded-full w-11/12"></div>
+                        <div className="bg-accent h-1 rounded-full w-11/12"></div>
                       </div>
                     </div>
                   </div>
@@ -225,7 +225,7 @@ export default function ImmersiveExperiencesPage() {
                     <div className="text-body-sm form-label color-muted">Platform Performance</div>
                     {[
                       { platform: 'Oculus Quest', performance: '98%', color: 'bg-success' },
-                      { platform: 'Steam VR', performance: '95%', color: 'bg-primary' },
+                      { platform: 'Steam VR', performance: '95%', color: 'bg-accent' },
                       { platform: 'PlayStation VR', performance: '92%', color: 'bg-secondary' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">
@@ -240,7 +240,7 @@ export default function ImmersiveExperiencesPage() {
                     <Gamepad2 className="w-4 h-4 text-foreground" />
                     <span className="text-body-sm form-label">Next Update: Enhanced Physics Engine</span>
                     <div className="ml-auto">
-                      <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                      <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
                     </div>
                   </div>
                 </CardContent>
@@ -397,7 +397,7 @@ export default function ImmersiveExperiencesPage() {
             {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>

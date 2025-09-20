@@ -261,7 +261,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             <Card key={metric.id} className="p-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <IconComponent className="h-5 w-5 color-primary" />
+                  <IconComponent className="h-5 w-5 color-accent" />
                   <span className="text-body-sm form-label color-muted">
                     {metric.title}
                   </span>
@@ -296,7 +296,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             {recentActivity.map((activity: any) => (
               <div key={activity.id} className="flex items-start cluster-sm">
                 <div className="flex-shrink-0">
-                  <Activity className="h-4 w-4 color-primary mt-xs" />
+                  <Activity className="h-4 w-4 color-accent mt-xs" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-body-sm color-foreground">

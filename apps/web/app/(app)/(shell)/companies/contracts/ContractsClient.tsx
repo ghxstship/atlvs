@@ -244,7 +244,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'msa':
-        return <FileText className="h-5 w-5 color-primary" />;
+        return <FileText className="h-5 w-5 color-accent" />;
       case 'sow':
         return <FileText className="h-5 w-5 color-success" />;
       case 'nda':

@@ -15,8 +15,8 @@ export default function EnterprisePage() {
       description: 'Real-time system health, performance metrics, and capacity planning',
       href: '/admin/enterprise/monitoring',
       icon: Activity,
-      color: 'color-primary',
-      bgColor: 'bg-primary/10',
+      color: 'color-accent',
+      bgColor: 'bg-accent/10',
     },
     {
       title: 'Security Dashboard',

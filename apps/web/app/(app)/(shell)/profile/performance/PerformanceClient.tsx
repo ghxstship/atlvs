@@ -354,13 +354,13 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <BarChart3 className="h-5 w-5 color-primary" />
+              <BarChart3 className="h-5 w-5 color-accent" />
               <h3 className="text-body text-heading-4">Performance Summary</h3>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
               <div className="text-center">
-                <div className="text-heading-3 text-heading-3 color-primary">{calculateAverageRating()}</div>
+                <div className="text-heading-3 text-heading-3 color-accent">{calculateAverageRating()}</div>
                 <div className="text-body-sm color-muted">Average Rating</div>
                 <div className="flex justify-center mt-xs">
                   {renderStars(Math.round(parseFloat(calculateAverageRating())))}
@@ -407,8 +407,8 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center gap-sm">
-                    <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Award className="h-5 w-5 color-primary" />
+                    <div className="h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center">
+                      <Award className="h-5 w-5 color-accent" />
                     </div>
                     <div>
                       <h3 className="text-body text-heading-4">{review.review_period}</h3>

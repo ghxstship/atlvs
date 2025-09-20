@@ -224,7 +224,7 @@ export default function AdvertisingPage() {
                     <div className="text-body-sm form-label color-muted">Channel Performance</div>
                     {[
                       { channel: 'Google Ads', performance: '92%', color: 'bg-success' },
-                      { channel: 'Facebook', performance: '87%', color: 'bg-primary' },
+                      { channel: 'Facebook', performance: '87%', color: 'bg-accent' },
                       { channel: 'Instagram', performance: '78%', color: 'bg-secondary' },
                     ].map((item, i) => (
                       <div key={i} className="flex items-center gap-sm text-body-sm">
@@ -388,7 +388,7 @@ export default function AdvertisingPage() {
             {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>

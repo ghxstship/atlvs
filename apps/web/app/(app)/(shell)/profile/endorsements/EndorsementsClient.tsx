@@ -284,8 +284,8 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center gap-sm">
-                    <div className="h-10 w-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <User className="h-5 w-5 color-primary" />
+                    <div className="h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center">
+                      <User className="h-5 w-5 color-accent" />
                     </div>
                     <div>
                       <h3 className="text-body text-heading-4">{endorsement.endorser_name}</h3>

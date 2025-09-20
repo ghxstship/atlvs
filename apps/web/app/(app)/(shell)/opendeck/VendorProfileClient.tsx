@@ -167,17 +167,17 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
   }
 
   const ProfileTab = () => (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       {/* Profile Header */}
       <Card className="p-lg">
-        <div className="flex items-start justify-between">
-          <div className="flex items-start cluster">
-            <div className="relative">
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-primary-foreground text-heading-3">
+        <div className="brand-opendeck flex items-start justify-between">
+          <div className="brand-opendeck flex items-start cluster">
+            <div className="brand-opendeck relative">
+              <div className="brand-opendeck w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-accent-foreground text-heading-3">
                 {profile?.display_name?.charAt(0) || 'V'}
               </div>
               {profile?.verified && (
-                <div className="absolute -bottom-1 -right-1 bg-success rounded-full p-xs">
+                <div className="brand-opendeck absolute -bottom-1 -right-1 bg-success rounded-full p-xs">
                   <CheckCircle className="h-5 w-5 text-background" />
                 </div>
               )}
@@ -185,11 +185,11 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             <div>
               <h2 className="text-heading-3">{profile?.display_name || 'Vendor Profile'}</h2>
               <p className="color-muted">{profile?.tagline || 'No tagline set'}</p>
-              <div className="flex items-center cluster mt-sm">
+              <div className="brand-opendeck flex items-center cluster mt-sm">
                 <Badge variant={profile?.availability_status === 'available' ? 'success' : 'secondary'}>
                   {profile?.availability_status || 'Available'}
                 </Badge>
-                <div className="flex items-center">
+                <div className="brand-opendeck flex items-center">
                   <Star className="h-4 w-4 color-warning fill-warning" />
                   <span className="ml-xs text-body-sm">{profile?.rating || 0} ({profile?.total_reviews || 0} reviews)</span>
                 </div>
@@ -207,7 +207,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
       {editMode ? (
         <Card className="p-lg">
           <form onSubmit={handleSubmit(onSubmit)} className="stack-md">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+            <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="text-body-sm form-label">Business Name</label>
                 <UnifiedInput {...register('business_name')} placeholder="Your business name" />
@@ -340,7 +340,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               />
             </div>
 
-            <div className="flex justify-end cluster-sm">
+            <div className="brand-opendeck flex justify-end cluster-sm">
               <Button type="button" variant="outline" onClick={() => setEditMode(false)}>
                 Cancel
               </Button>
@@ -351,35 +351,35 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
           </form>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
+        <div className="brand-opendeck grid grid-cols-1 md:grid-cols-3 gap-lg">
           <Card className="md:col-span-2 p-lg">
             <h3 className="text-body text-heading-4 mb-md">About</h3>
             <p className="color-muted mb-lg">
               {profile?.bio || 'No bio provided yet.'}
             </p>
 
-            <div className="stack-md">
-              <div className="flex items-center">
+            <div className="brand-opendeck stack-md">
+              <div className="brand-opendeck flex items-center">
                 <Briefcase className="h-5 w-5 mr-sm color-muted" />
                 <span>{profile?.years_experience || 0} years experience</span>
               </div>
-              <div className="flex items-center">
+              <div className="brand-opendeck flex items-center">
                 <User className="h-5 w-5 mr-sm color-muted" />
                 <span>Team of {profile?.team_size || 1}</span>
               </div>
-              <div className="flex items-center">
+              <div className="brand-opendeck flex items-center">
                 <DollarSign className="h-5 w-5 mr-sm color-muted" />
                 <span>${profile?.hourly_rate || 0}/hour</span>
               </div>
-              <div className="flex items-center">
+              <div className="brand-opendeck flex items-center">
                 <Clock className="h-5 w-5 mr-sm color-muted" />
                 <span>Responds {profile?.response_time || 'within 24 hours'}</span>
               </div>
             </div>
 
-            <div className="mt-lg">
+            <div className="brand-opendeck mt-lg">
               <h4 className="form-label mb-sm">Skills</h4>
-              <div className="flex flex-wrap gap-sm">
+              <div className="brand-opendeck flex flex-wrap gap-sm">
                 {(profile?.skills || []).map((skill: string) => (
                   <Badge key={skill} variant="secondary">{skill}</Badge>
                 ))}
@@ -389,28 +389,28 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
           <Card className="p-lg">
             <h3 className="text-body text-heading-4 mb-md">Contact</h3>
-            <div className="stack-sm">
-              <div className="flex items-center">
+            <div className="brand-opendeck stack-sm">
+              <div className="brand-opendeck flex items-center">
                 <Mail className="h-4 w-4 mr-sm color-muted" />
                 <span className="text-body-sm">{profile?.email}</span>
               </div>
               {profile?.phone && (
-                <div className="flex items-center">
+                <div className="brand-opendeck flex items-center">
                   <Phone className="h-4 w-4 mr-sm color-muted" />
                   <span className="text-body-sm">{profile?.phone}</span>
                 </div>
               )}
               {profile?.website && (
-                <div className="flex items-center">
+                <div className="brand-opendeck flex items-center">
                   <Globe className="h-4 w-4 mr-sm color-muted" />
                   <a href="#" target="_blank" rel="noopener noreferrer" 
-                     className="text-body-sm color-primary hover:underline">
+                     className="text-body-sm color-accent hover:underline">
                     Website
                   </a>
                 </div>
               )}
               {profile?.address && (
-                <div className="flex items-start">
+                <div className="brand-opendeck flex items-start">
                   <MapPin className="h-4 w-4 mr-sm mt-0.5 color-muted" />
                   <span className="text-body-sm">
                     {profile.address.city}, {profile.address.state}
@@ -419,10 +419,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
               )}
             </div>
 
-            <div className="mt-lg">
+            <div className="brand-opendeck mt-lg">
               <h4 className="form-label mb-sm">Verification</h4>
-              <div className="stack-sm">
-                <div className="flex items-center">
+              <div className="brand-opendeck stack-sm">
+                <div className="brand-opendeck flex items-center">
                   {profile?.verified ? (
                     <CheckCircle className="h-4 w-4 mr-sm color-success" />
                   ) : (
@@ -441,8 +441,8 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
   );
 
   const PortfolioTab = () => (
-    <div className="stack-lg">
-      <div className="flex justify-between items-center">
+    <div className="brand-opendeck stack-lg">
+      <div className="brand-opendeck flex justify-between items-center">
         <h3 className="text-body text-heading-4">Portfolio Items</h3>
         <Button onClick={() => {
           setDrawerMode('portfolio');
@@ -454,26 +454,26 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+      <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         {portfolio.map((item: any) => (
           <Card key={item.id} className="overflow-hidden">
-            <div className="aspect-video bg-gradient-to-br from-primary to-accent relative">
+            <div className="brand-opendeck aspect-video bg-gradient-to-br from-primary to-secondary relative">
               {item.featured && (
                 <Badge className="absolute top-2 right-2" variant="secondary">
                   Featured
                 </Badge>
               )}
             </div>
-            <div className="p-md">
+            <div className="brand-opendeck p-md">
               <h4 className="text-body text-heading-4">{item.title}</h4>
               <p className="text-body-sm color-muted mt-xs">{item.category}</p>
               <p className="text-body-sm mt-sm line-clamp-2">{item.description}</p>
-              <div className="flex items-center justify-between mt-md">
-                <div className="flex items-center cluster-sm text-body-sm color-muted">
+              <div className="brand-opendeck flex items-center justify-between mt-md">
+                <div className="brand-opendeck flex items-center cluster-sm text-body-sm color-muted">
                   <Eye className="h-4 w-4" />
                   <span>{item.views || 0}</span>
                 </div>
-                <div className="flex cluster-sm">
+                <div className="brand-opendeck flex cluster-sm">
                   <Button variant="ghost" onClick={() => {
                     setSelectedItem(item);
                     setDrawerMode('portfolio');
@@ -494,8 +494,8 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
   );
 
   const ServicesTab = () => (
-    <div className="stack-lg">
-      <div className="flex justify-between items-center">
+    <div className="brand-opendeck stack-lg">
+      <div className="brand-opendeck flex justify-between items-center">
         <h3 className="text-body text-heading-4">Services</h3>
         <Button onClick={() => {
           setDrawerMode('service');
@@ -507,10 +507,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+      <div className="brand-opendeck grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         {services.map((service: any) => (
           <Card key={service.id} className="p-md">
-            <div className="flex justify-between items-start mb-sm">
+            <div className="brand-opendeck flex justify-between items-start mb-sm">
               <h4 className="text-body text-heading-4">{service.title}</h4>
               <Badge variant={service.status === 'active' ? 'success' : 'secondary'}>
                 {service.status}
@@ -518,21 +518,21 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
             </div>
             <p className="text-body-sm color-muted mb-sm">{service.category}</p>
             <p className="text-body-sm line-clamp-2 mb-md">{service.description}</p>
-            <div className="stack-sm">
-              <div className="flex justify-between text-body-sm">
+            <div className="brand-opendeck stack-sm">
+              <div className="brand-opendeck flex justify-between text-body-sm">
                 <span>Starting at</span>
                 <span className="text-body-sm">${service.base_price}</span>
               </div>
-              <div className="flex justify-between text-body-sm">
+              <div className="brand-opendeck flex justify-between text-body-sm">
                 <span>Delivery</span>
                 <span>{service.delivery_time}</span>
               </div>
-              <div className="flex justify-between text-body-sm">
+              <div className="brand-opendeck flex justify-between text-body-sm">
                 <span>Orders</span>
                 <span>{service.orders_completed || 0}</span>
               </div>
             </div>
-            <div className="flex cluster-sm mt-md">
+            <div className="brand-opendeck flex cluster-sm mt-md">
               <Button variant="outline" className="flex-1" onClick={() => {
                 setSelectedItem(service);
                 setDrawerMode('service');
@@ -552,14 +552,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="brand-opendeck flex items-center justify-center h-64">
+        <div className="brand-opendeck animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
       </div>
     );
   }
 
   return (
-    <div className="stack-lg">
+    <div className="brand-opendeck stack-lg">
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList>
           <TabsTrigger value="profile">Profile</TabsTrigger>
@@ -599,7 +599,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
         }
        
       >
-        <div className="p-md">
+        <div className="brand-opendeck p-md">
           <p className="color-muted">
             Form for {drawerMode} will be implemented here...
           </p>

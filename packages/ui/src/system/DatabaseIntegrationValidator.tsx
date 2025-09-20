@@ -767,7 +767,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
             </div>
             <div className="bg-foreground/5 rounded p-sm">
               <div className="text-muted-foreground">Coverage</div>
-              <div className="text-xl font-mono text-primary">
+              <div className="text-xl font-mono text-accent">
                 {report.summary.coveragePercentage.toFixed(0)}%
               </div>
             </div>
@@ -796,7 +796,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
                   onClick={() => setSelectedModule(isSelected ? null : module)}
                   className={`px-sm py-xs text-[10px] rounded whitespace-nowrap transition-all ${
                     isSelected 
-                      ? 'bg-primary/30 text-primary' 
+                      ? 'bg-accent/30 text-accent' 
                       : 'bg-foreground/5 hover:bg-muted/50'
                   }`}
                 >

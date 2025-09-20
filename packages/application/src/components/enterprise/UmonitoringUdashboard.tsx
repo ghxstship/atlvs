@@ -167,7 +167,7 @@ export function MonitoringDashboard({
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Avg Query Time</CardTitle>
-            <Database className="h-4 w-4 text-primary" />
+            <Database className="h-4 w-4 text-accent" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">

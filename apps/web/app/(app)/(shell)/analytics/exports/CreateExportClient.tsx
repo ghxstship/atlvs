@@ -307,7 +307,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                           {...register('dataSource')}
                           type="radio"
                           value={source.value}
-                          className="mt-xs color-primary focus:ring-primary"
+                          className="mt-xs color-accent focus:ring-primary"
                         />
                         <div className="flex-1">
                           <div className="flex items-center cluster-sm">
@@ -355,7 +355,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <input
                     {...register('includeHeaders')}
                     type="checkbox"
-                    className="rounded border-border color-primary focus:ring-primary"
+                    className="rounded border-border color-accent focus:ring-primary"
                   />
                   <span className="text-body-sm">Include headers</span>
                 </label>
@@ -364,7 +364,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <input
                     {...register('compression')}
                     type="checkbox"
-                    className="rounded border-border color-primary focus:ring-primary"
+                    className="rounded border-border color-accent focus:ring-primary"
                   />
                   <span className="text-body-sm">Compress file</span>
                 </label>
@@ -382,7 +382,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                         type="checkbox"
                         checked={selectedFields.includes(field)}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => toggleField(field)}
-                        className="rounded border-border color-primary focus:ring-primary"
+                        className="rounded border-border color-accent focus:ring-primary"
                       />
                       <span className="text-body-sm capitalize">{field.replace('_', ' ')}</span>
                     </label>
@@ -476,7 +476,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                 <input
                   {...register('schedule.enabled')}
                   type="checkbox"
-                  className="rounded border-border color-primary focus:ring-primary"
+                  className="rounded border-border color-accent focus:ring-primary"
                 />
                 <label className="text-body-sm form-label">Enable scheduled exports</label>
               </div>
@@ -564,7 +564,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <input
                     {...register('notifications.onSuccess')}
                     type="checkbox"
-                    className="rounded border-border color-primary focus:ring-primary"
+                    className="rounded border-border color-accent focus:ring-primary"
                   />
                   <span className="text-body-sm">Notify on success</span>
                 </label>
@@ -573,7 +573,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                   <input
                     {...register('notifications.onFailure')}
                     type="checkbox"
-                    className="rounded border-border color-primary focus:ring-primary"
+                    className="rounded border-border color-accent focus:ring-primary"
                   />
                   <span className="text-body-sm">Notify on failure</span>
                 </label>

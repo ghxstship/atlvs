@@ -59,7 +59,7 @@ export default function PartnersPage() {
             const Icon = tier.icon;
             return (
               <div key={tier.title} className="bg-card rounded-lg p-lg border text-center">
-                <div className="bg-primary/10 p-md rounded-lg inline-flex mb-md">
+                <div className="bg-accent/10 p-md rounded-lg inline-flex mb-md">
                   <Icon className="h-8 w-8 text-foreground" />
                 </div>
                 <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
@@ -69,7 +69,7 @@ export default function PartnersPage() {
                 <ul className="stack-sm text-body-sm">
                   {tier.benefits.map((benefit: any) => (
                     <li key={benefit} className="flex items-center justify-center gap-sm">
-                      <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                      <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                       {benefit}
                     </li>
                   ))}

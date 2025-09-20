@@ -245,7 +245,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
       case 'rehearsal':
         return 'color-warning bg-warning/10';
       case 'ready':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       case 'live':
         return 'color-success bg-success/10';
       case 'completed':
@@ -308,8 +308,8 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-lg">
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
-                  <div className="p-sm bg-primary/10 rounded-lg">
-                    <Calendar className="h-5 w-5 color-primary" />
+                  <div className="p-sm bg-accent/10 rounded-lg">
+                    <Calendar className="h-5 w-5 color-accent" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -456,7 +456,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {/* Performance Metrics */}
                   <div className="grid grid-cols-3 gap-md pt-md border-t">
                     <div className="text-center">
-                      <div className="text-heading-3 text-heading-3 color-primary">{selectedRecord.lineup_count || 0}</div>
+                      <div className="text-heading-3 text-heading-3 color-accent">{selectedRecord.lineup_count || 0}</div>
                       <div className="text-body-sm color-muted flex items-center justify-center gap-xs">
                         <Users className="h-3 w-3" />
                         Performers

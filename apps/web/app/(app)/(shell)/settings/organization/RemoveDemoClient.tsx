@@ -46,7 +46,7 @@ export default function RemoveDemoClient({ orgId }: { orgId: string }) {
         {loading ? t('remove.loading') : t('remove.cta')}
       </button>
       {error ? (
-        <div role="alert" className="text-body-sm color-error">
+        <div role="alert" className="text-body-sm color-destructive">
           {error}
         </div>
       ) : null}

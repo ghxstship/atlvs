@@ -40,7 +40,7 @@ const AdaptiveThemeContext = createContext<AdaptiveThemeContextType | undefined>
 const SEMANTIC_TOKEN_MAPPINGS = {
   energetic: {
     morning: {
-      primary: 'var(--color-blue-600)',
+      primary: 'var(--color-info-600)',
       secondary: 'var(--color-amber-500)',
       accent: 'var(--color-orange-500)',
       background: 'var(--color-background)',
@@ -49,7 +49,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground)',
     },
     afternoon: {
-      primary: 'var(--color-blue-500)',
+      primary: 'var(--color-info-500)',
       secondary: 'var(--color-amber-400)',
       accent: 'var(--color-rose-500)',
       background: 'var(--color-background)',
@@ -58,7 +58,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground)',
     },
     evening: {
-      primary: 'var(--color-blue-400)',
+      primary: 'var(--color-info-400)',
       secondary: 'var(--color-amber-400)',
       accent: 'var(--color-pink-400)',
       background: 'var(--color-background-dark)',
@@ -67,7 +67,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground-dark)',
     },
     night: {
-      primary: 'var(--color-blue-300)',
+      primary: 'var(--color-info-300)',
       secondary: 'var(--color-amber-300)',
       accent: 'var(--color-pink-300)',
       background: 'var(--color-background-dark)',
@@ -78,7 +78,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
   },
   focused: {
     morning: {
-      primary: 'var(--color-blue-700)',
+      primary: 'var(--color-info-700)',
       secondary: 'var(--color-cyan-600)',
       accent: 'var(--color-teal-500)',
       background: 'var(--color-background)',
@@ -87,7 +87,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground)',
     },
     afternoon: {
-      primary: 'var(--color-blue-600)',
+      primary: 'var(--color-info-600)',
       secondary: 'var(--color-cyan-500)',
       accent: 'var(--color-teal-400)',
       background: 'var(--color-background)',
@@ -96,7 +96,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground)',
     },
     evening: {
-      primary: 'var(--color-blue-400)',
+      primary: 'var(--color-info-400)',
       secondary: 'var(--color-cyan-400)',
       accent: 'var(--color-teal-300)',
       background: 'var(--color-background-dark)',
@@ -105,7 +105,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
       muted: 'var(--color-muted-foreground-dark)',
     },
     night: {
-      primary: 'var(--color-blue-300)',
+      primary: 'var(--color-info-300)',
       secondary: 'var(--color-cyan-300)',
       accent: 'var(--color-teal-200)',
       background: 'var(--color-background-dark)',
@@ -118,7 +118,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
     morning: {
       primary: 'var(--color-teal-600)',
       secondary: 'var(--color-emerald-500)',
-      accent: 'var(--color-green-500)',
+      accent: 'var(--color-success-500)',
       background: 'var(--color-background)',
       surface: 'var(--color-card)',
       text: 'var(--color-foreground)',
@@ -127,7 +127,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
     afternoon: {
       primary: 'var(--color-teal-500)',
       secondary: 'var(--color-emerald-400)',
-      accent: 'var(--color-green-400)',
+      accent: 'var(--color-success-400)',
       background: 'var(--color-background)',
       surface: 'var(--color-card)',
       text: 'var(--color-foreground)',
@@ -136,7 +136,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
     evening: {
       primary: 'var(--color-teal-400)',
       secondary: 'var(--color-emerald-300)',
-      accent: 'var(--color-green-300)',
+      accent: 'var(--color-success-300)',
       background: 'var(--color-background-dark)',
       surface: 'var(--color-card-dark)',
       text: 'var(--color-foreground-dark)',
@@ -145,7 +145,7 @@ const SEMANTIC_TOKEN_MAPPINGS = {
     night: {
       primary: 'var(--color-teal-300)',
       secondary: 'var(--color-emerald-200)',
-      accent: 'var(--color-green-200)',
+      accent: 'var(--color-success-200)',
       background: 'var(--color-background-dark)',
       surface: 'var(--color-card-dark)',
       text: 'var(--color-foreground-dark)',

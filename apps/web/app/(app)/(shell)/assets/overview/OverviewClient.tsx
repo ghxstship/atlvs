@@ -192,8 +192,8 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-body-sm form-label color-muted">Total Assets</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalAssets}</p>
             </div>
-            <div className="p-sm bg-primary/10 rounded-lg">
-              <Package className="h-6 w-6 color-primary" />
+            <div className="p-sm bg-accent/10 rounded-lg">
+              <Package className="h-6 w-6 color-accent" />
             </div>
           </div>
         </Card>
@@ -216,8 +216,8 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-body-sm form-label color-muted">Active Assignments</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.activeAssignments}</p>
             </div>
-            <div className="p-sm bg-primary/10 rounded-lg">
-              <UserCheck className="h-6 w-6 color-primary" />
+            <div className="p-sm bg-accent/10 rounded-lg">
+              <UserCheck className="h-6 w-6 color-accent" />
             </div>
           </div>
         </Card>

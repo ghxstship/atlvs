@@ -491,7 +491,7 @@ export function FormView({
             <div className="flex items-center gap-sm mt-sm">
               <div className="flex-1 bg-muted rounded-full h-2">
                 <div
-                  className="bg-primary h-2 rounded-full transition-all duration-300"
+                  className="bg-accent h-2 rounded-full transition-all duration-300"
                   style={{ width: `${completionPercentage}%` }}
                 />
               </div>

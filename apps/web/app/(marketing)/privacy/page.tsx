@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
             
             <div className="stack-md">
               <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-primary rounded-full mt-sm"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
                 <div>
                   <h3 className="text-heading-4 mb-sm">Provide Our Services</h3>
                   <p className="color-muted">Create and manage your account, process payments, and deliver our platform features.</p>
@@ -127,7 +127,7 @@ export default function PrivacyPolicyPage() {
               </div>
               
               <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-primary rounded-full mt-sm"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
                 <div>
                   <h3 className="text-heading-4 mb-sm">Improve Our Platform</h3>
                   <p className="color-muted">Analyze usage patterns, fix bugs, and develop new features based on user needs.</p>
@@ -135,7 +135,7 @@ export default function PrivacyPolicyPage() {
               </div>
               
               <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-primary rounded-full mt-sm"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
                 <div>
                   <h3 className="text-heading-4 mb-sm">Communicate With You</h3>
                   <p className="color-muted">Send important updates, security alerts, and optional marketing communications.</p>
@@ -143,7 +143,7 @@ export default function PrivacyPolicyPage() {
               </div>
               
               <div className="flex items-start gap-sm">
-                <div className="w-2 h-2 bg-primary rounded-full mt-sm"></div>
+                <div className="w-2 h-2 bg-accent rounded-full mt-sm"></div>
                 <div>
                   <h3 className="text-heading-4 mb-sm">Ensure Security</h3>
                   <p className="color-muted">Detect and prevent fraud, abuse, and security threats to protect all users.</p>

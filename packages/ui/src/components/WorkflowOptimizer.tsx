@@ -178,7 +178,7 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
                 step.completed
                   ? 'bg-success border-success text-success-foreground'
                   : index === currentStep
-                  ? 'bg-primary border-primary text-primary-foreground'
+                  ? 'bg-accent border-primary text-accent-foreground'
                   : 'bg-muted border-muted-foreground text-muted-foreground'
               }`}
             >

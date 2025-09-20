@@ -167,7 +167,7 @@ export const ComponentSizes = {
 // Component variants
 export const ComponentVariants = {
   button: {
-    primary: 'bg-primary text-primary-foreground hover:bg-primary/90 focus:ring-primary',
+    primary: 'bg-accent text-accent-foreground hover:bg-accent/90 focus:ring-primary',
     secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 focus:ring-secondary',
     outline: 'border border-border bg-background text-foreground hover:bg-muted focus:ring-primary',
     ghost: 'text-muted-foreground hover:bg-muted focus:ring-primary',
@@ -176,7 +176,7 @@ export const ComponentVariants = {
   
   badge: {
     default: 'bg-muted text-foreground',
-    primary: 'bg-primary/10 text-primary',
+    primary: 'bg-accent/10 text-accent',
     success: 'bg-success/10 text-success',
     warning: 'bg-warning/10 text-warning',
     error: 'bg-destructive/10 text-destructive'
@@ -363,7 +363,7 @@ export const DesignSystemGuide: React.FC = () => {
         <div key={name} className="flex items-center gap-md">
           <div className="w-8 text-sm text-muted-foreground">{name}</div>
           <div
-            className="bg-primary/30 h-4"
+            className="bg-accent/30 h-4"
             style={{ width: value }}
           />
           <div className="text-xs text-muted-foreground">{value}</div>
@@ -488,7 +488,7 @@ export const DesignSystemGuide: React.FC = () => {
               onClick={() => setActiveSection(section.id)}
               className={`w-full flex items-center gap-sm px-sm py-sm text-left rounded-md transition-colors ${
                 activeSection === section.id
-                  ? 'bg-primary/10 text-primary'
+                  ? 'bg-accent/10 text-accent'
                   : 'text-muted-foreground hover:bg-muted'
               }`}
             >

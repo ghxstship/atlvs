@@ -173,7 +173,7 @@ export default function EndorsementsClient() {
                 <p className="text-body-sm color-muted">Total Endorsements</p>
                 <p className="text-heading-3">{endorsements.length}</p>
               </div>
-              <Award className="w-8 h-8 color-primary" />
+              <Award className="w-8 h-8 color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -288,7 +288,7 @@ export default function EndorsementsClient() {
               <CardContent className="p-lg">
                 <div className="flex justify-between items-start mb-md">
                   <div className="flex items-start gap-md">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
                       {endorsement.from_user_avatar ? (
                         <img
                           src={endorsement.from_user_avatar}
@@ -296,7 +296,7 @@ export default function EndorsementsClient() {
                           className="w-full h-full rounded-full object-cover"
                         />
                       ) : (
-                        <User className="w-6 h-6 color-primary" />
+                        <User className="w-6 h-6 color-accent" />
                       )}
                     </div>
                     <div>

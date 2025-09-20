@@ -113,7 +113,7 @@ export default function CaseStudiesPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               REAL RESULTS FROM
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 REAL PRODUCTIONS
               </span>
             </h1>
@@ -147,7 +147,7 @@ export default function CaseStudiesPage() {
               <Badge 
                 key={industry} 
                 variant={industry === 'All Industries' ? 'default' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm"
+                className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent px-md py-sm"
               >
                 {industry}
               </Badge>
@@ -233,7 +233,7 @@ export default function CaseStudiesPage() {
                         <ul className="stack-xs">
                           {study.results.slice(0, 2).map((result, idx) => (
                             <li key={idx} className="text-body-sm color-muted flex items-center gap-sm">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                              <div className="w-1.5 h-1.5 bg-accent rounded-full" />
                               {result}
                             </li>
                           ))}

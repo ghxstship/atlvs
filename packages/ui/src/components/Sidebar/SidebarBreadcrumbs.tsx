@@ -49,7 +49,7 @@ export const SidebarBreadcrumbs: React.FC<SidebarBreadcrumbsProps> = ({
               {item.href && !isLast ? (
                 <button
                   onClick={() => onNavigate?.(item.href!)}
-                  className="flex items-center gap-xs hover:text-primary transition-colors duration-200 rounded px-xs py-0.5 hover:bg-muted"
+                  className="flex items-center gap-xs hover:text-accent transition-colors duration-200 rounded px-xs py-0.5 hover:bg-muted"
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {Icon && React.createElement(Icon, { className: "h-3 w-3" })}

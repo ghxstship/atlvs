@@ -124,7 +124,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
       case 'draft':
         return 'bg-secondary color-muted';
       case 'published':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'open':
         return 'bg-success/10 color-success';
       case 'closed':
@@ -160,7 +160,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'services':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'products':
         return 'bg-success/10 color-success';
       case 'consulting':
@@ -168,7 +168,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
       case 'construction':
         return 'bg-warning/10 color-warning';
       case 'technology':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'other':
         return 'bg-secondary color-muted';
       default:
@@ -259,7 +259,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
               <p className="text-body-sm form-label color-foreground/70">Total RFPs</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{rfps.length}</p>
             </div>
-            <DocumentTextIcon className="h-8 w-8 color-primary" />
+            <DocumentTextIcon className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -277,11 +277,11 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-foreground/70">Published</p>
-              <p className="text-heading-3 text-heading-3 color-primary">
+              <p className="text-heading-3 text-heading-3 color-accent">
                 {rfps.filter(r => r.status === 'published').length}
               </p>
             </div>
-            <PaperAirplaneIcon className="h-8 w-8 color-primary" />
+            <PaperAirplaneIcon className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">

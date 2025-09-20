@@ -40,7 +40,7 @@ const products = [
       { label: 'Time Saved', value: '40%' },
       { label: 'Client Satisfaction', value: '98%' },
     ],
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/products/atlvs',
     ctaText: 'Explore ATLVS',
   },
@@ -69,7 +69,7 @@ const products = [
       { label: 'Success Rate', value: '94%' },
       { label: 'Countries', value: '50+' },
     ],
-    gradient: 'from-primary to-accent',
+    gradient: 'from-primary to-secondary',
     href: '/products/opendeck',
     ctaText: 'Explore OPENDECK',
   },
@@ -88,7 +88,7 @@ export default function ProductsPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TWO PLATFORMS,
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 INFINITE POSSIBILITIES
               </span>
             </h1>
@@ -211,16 +211,16 @@ export default function ProductsPage() {
               <div className="flex items-center justify-center gap-lg mb-xl">
                 <div className="font-title text-heading-3 text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-sm">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-accent"></div>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
                   <Zap className="h-6 w-6 text-foreground" />
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-accent to-primary"></div>
+                  <div className="w-12 h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
                 </div>
                 <div className="font-title text-heading-3 text-heading-3">OPENDECK</div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-lg mb-xl">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-md">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
                     <Users className="h-6 w-6 text-foreground" />
                   </div>
                   <h3 className="text-heading-4 mb-sm">Unified Teams</h3>

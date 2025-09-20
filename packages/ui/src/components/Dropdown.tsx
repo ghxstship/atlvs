@@ -375,7 +375,7 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
     'disabled:pointer-events-none disabled:opacity-50',
     {
       'border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-md py-sm': variant === 'outline',
-      'bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-md py-sm': variant === 'default',
+      'bg-accent text-accent-foreground hover:bg-accent/90 h-10 px-md py-sm': variant === 'default',
       'hover:bg-accent hover:text-accent-foreground h-10 px-md py-sm': variant === 'ghost',
     }
   );

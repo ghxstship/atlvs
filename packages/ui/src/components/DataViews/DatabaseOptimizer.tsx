@@ -305,7 +305,7 @@ export function DatabaseOptimizer({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Database className="h-5 w-5 text-primary" />
+          <Database className="h-5 w-5 text-accent" />
           <div>
             <h3 className="font-semibold">Database Optimizer</h3>
             <p className="text-sm text-muted-foreground">

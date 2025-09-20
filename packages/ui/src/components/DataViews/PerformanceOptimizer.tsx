@@ -381,7 +381,7 @@ export function PerformanceOptimizer({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Zap className="h-5 w-5 text-primary" />
+          <Zap className="h-5 w-5 text-accent" />
           <div>
             <h3 className="font-semibold">Performance Optimizer</h3>
             <p className="text-sm text-muted-foreground">

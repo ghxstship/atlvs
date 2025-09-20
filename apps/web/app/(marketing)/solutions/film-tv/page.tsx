@@ -205,7 +205,7 @@ export default function FilmTVPage() {
                       <div className="text-body-sm color-muted mb-xs">Schedule</div>
                       <div>Day 12/20</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-primary h-1 rounded-full w-3/5"></div>
+                        <div className="bg-accent h-1 rounded-full w-3/5"></div>
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
@@ -229,7 +229,7 @@ export default function FilmTVPage() {
                       <div key={i} className="flex items-center gap-sm text-body-sm">
                         <div className={`w-2 h-2 rounded-full ${
                           item.status === 'completed' ? 'bg-success' : 
-                          item.status === 'in-progress' ? 'bg-primary' : 'bg-secondary-foreground'
+                          item.status === 'in-progress' ? 'bg-accent' : 'bg-secondary-foreground'
                         }`}></div>
                         <span className="form-label">{item.time}</span>
                         <span className="color-muted">{item.task}</span>
@@ -390,7 +390,7 @@ export default function FilmTVPage() {
             {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-accent rounded-lg flex items-center justify-center mx-auto mb-md">
+                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
                     <Zap className="h-6 w-6 text-background" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>

@@ -127,12 +127,12 @@ export default function CreateAccountClient({
     >
       <form onSubmit={handleSubmit} className="stack-lg">
         {/* Account Overview */}
-        <Card className="p-md bg-primary/5 border-primary/20">
+        <Card className="p-md bg-accent/5 border-primary/20">
           <div className="flex items-center cluster-sm">
-            <Building className="h-8 w-8 color-primary" />
+            <Building className="h-8 w-8 color-accent" />
             <div>
-              <h3 className="text-heading-4 color-primary">Account Management</h3>
-              <p className="text-body-sm color-primary/80">
+              <h3 className="text-heading-4 color-accent">Account Management</h3>
+              <p className="text-body-sm color-accent/80">
                 Add financial accounts to track balances and transactions
               </p>
             </div>

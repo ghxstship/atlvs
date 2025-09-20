@@ -142,7 +142,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'active': return 'bg-success/10 color-success';
-      case 'completed': return 'bg-primary/10 color-primary';
+      case 'completed': return 'bg-accent/10 color-accent';
       case 'on_hold': return 'bg-warning/10 color-warning';
       case 'cancelled': return 'bg-destructive/10 color-destructive';
       default: return 'bg-secondary/50 color-muted';
@@ -213,7 +213,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
               <p className="text-body-sm form-label color-muted">Total Projects</p>
               <p className="text-heading-3">{stats.totalProjects}</p>
             </div>
-            <BarChart3 className="w-8 h-8 color-primary" />
+            <BarChart3 className="w-8 h-8 color-accent" />
           </div>
           <div className="mt-sm flex items-center text-body-sm">
             <span className="color-success">{stats.activeProjects} active</span>
@@ -243,7 +243,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                 {stats.totalTasks > 0 ? Math.round((stats.completedTasks / stats.totalTasks) * 100) : 0}%
               </p>
             </div>
-            <CheckCircle className="w-8 h-8 color-primary" />
+            <CheckCircle className="w-8 h-8 color-accent" />
           </div>
           <div className="mt-sm flex items-center text-body-sm">
             <span className="color-success">{stats.completedTasks} done</span>

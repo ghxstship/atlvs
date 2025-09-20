@@ -190,7 +190,7 @@ export default function CreateReportClient({
         {/* Basic Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <FileText className="h-5 w-5 color-primary" />
+            <FileText className="h-5 w-5 color-accent" />
             <h3 className="text-body text-heading-4">Basic Information</h3>
           </div>
           

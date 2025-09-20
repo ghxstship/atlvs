@@ -329,7 +329,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
       <Card key={widget.id} className={`p-md ${widget.size === 'small' ? 'col-span-1' : widget.size === 'large' ? 'col-span-2' : 'col-span-1'}`}>
         <div className="flex items-center justify-between mb-sm">
           <div className="flex items-center cluster-sm">
-            <IconComponent className="h-4 w-4 color-primary" />
+            <IconComponent className="h-4 w-4 color-accent" />
             <span className="text-body-sm form-label">{widget.title}</span>
           </div>
           <div className="flex items-center cluster-xs">
@@ -419,7 +419,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             onClick={() => setSelectedDashboard(dashboard)}
             className={`flex-shrink-0 px-md py-sm rounded-lg border transition-colors ${
               selectedDashboard?.id === dashboard.id
-                ? 'bg-primary/10 border-primary/20 color-primary'
+                ? 'bg-accent/10 border-primary/20 color-accent'
                 : 'bg-background border-border color-foreground hover:bg-secondary'
             }`}
           >

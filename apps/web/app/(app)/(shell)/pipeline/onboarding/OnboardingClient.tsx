@@ -391,7 +391,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                       <div className="text-body-sm form-label">{workflow.progress}%</div>
                       <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
                         <div 
-                          className="h-full bg-primary transition-all"
+                          className="h-full bg-accent transition-all"
                           style={{ width: `${workflow.progress}%` }}
                         />
                       </div>
@@ -418,7 +418,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                           {task.completed && <CheckCircle className="w-3 h-3" />}
                         </button>
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getCategoryColor(task.category)}`}>
-                          <IconComponent className="w-4 h-4 color-primary-foreground" />
+                          <IconComponent className="w-4 h-4 color-accent-foreground" />
                         </div>
                         <div className="flex-1">
                           <div className={`form-label ${task.completed ? 'line-through color-muted' : ''}`}>

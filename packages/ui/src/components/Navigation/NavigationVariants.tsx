@@ -13,7 +13,7 @@ import { navigationTokens } from '../../tokens/navigation';
 export const sidebarVariants = cva(
   [
     'flex flex-col border-r transition-all duration-[var(--nav-duration-normal)] ease-[var(--nav-easing-ease-in-out)]',
-    'relative bg-[hsl(var(--nav-bg-primary))] border-[hsl(var(--nav-border-default))]',
+    'relative bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-default))]',
   ],
   {
     variants: {
@@ -167,7 +167,7 @@ export const breadcrumbItemVariants = cva(
 export const dropdownVariants = cva(
   [
     'absolute z-[var(--nav-z-dropdown)] min-w-48',
-    'bg-[hsl(var(--nav-bg-primary))] border border-[hsl(var(--nav-border-default))]',
+    'bg-[hsl(var(--nav-bg-accent))] border border-[hsl(var(--nav-border-default))]',
     'rounded-[var(--nav-radius-md)] shadow-[var(--nav-shadow-lg)]',
     'py-[var(--nav-spacing-xs)]',
     'animate-in fade-in-0 zoom-in-95 duration-[var(--nav-duration-fast)]',
@@ -269,7 +269,7 @@ export const searchInputVariants = cva(
       variant: {
         default: '',
         ghost: 'bg-transparent border-0 focus:bg-[hsl(var(--nav-bg-secondary))] focus:border-[hsl(var(--nav-border-default))]',
-        filled: 'bg-[hsl(var(--nav-bg-primary))] border-[hsl(var(--nav-border-strong))]',
+        filled: 'bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-strong))]',
       },
     },
     defaultVariants: {
@@ -292,12 +292,12 @@ export const headerVariants = cva(
     variants: {
       variant: {
         default: [
-          'bg-[hsl(var(--nav-bg-primary))] border-[hsl(var(--nav-border-default))]',
+          'bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-default))]',
         ],
         glass: [
           'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-lg)]',
           'border-[hsl(var(--nav-border-subtle))]',
-          'supports-[backdrop-filter]:bg-[hsl(var(--nav-bg-primary)/0.8)]',
+          'supports-[backdrop-filter]:bg-[hsl(var(--nav-bg-accent)/0.8)]',
         ],
         floating: [
           'mx-sm mt-sm rounded-[var(--nav-radius-lg)]',
@@ -312,7 +312,7 @@ export const headerVariants = cva(
       scrolled: {
         true: [
           'shadow-[var(--nav-shadow-lg)]',
-          'bg-[hsl(var(--nav-bg-primary)/0.95)]',
+          'bg-[hsl(var(--nav-bg-accent)/0.95)]',
           'backdrop-blur-[var(--nav-backdrop-blur-lg)]',
         ],
         false: '',

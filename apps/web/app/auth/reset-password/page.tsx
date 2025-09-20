@@ -76,7 +76,7 @@ export default function ResetPasswordPage() {
         badge="SUCCESS"
         showTrustIndicators={false}
       >
-        <div className="text-center stack-lg">
+        <div className="brand-ghostship text-center stack-lg">
           <p className="color-success font-body">
             Redirecting you to sign in...
           </p>
@@ -127,7 +127,7 @@ export default function ResetPasswordPage() {
         />
       </AuthForm>
       
-      <div className="text-center mt-lg">
+      <div className="brand-ghostship text-center mt-lg">
         <AuthLink href="/auth/signin" className="cluster-xs justify-center">
           <ArrowLeft className="h-4 w-4" />
           Back to sign in

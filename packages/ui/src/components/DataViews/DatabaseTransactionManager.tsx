@@ -444,7 +444,7 @@ export function DatabaseTransactionManager({
       case 'pending':
         return <Clock className="h-4 w-4 text-warning" />;
       case 'executing':
-        return <Loader2 className="h-4 w-4 text-primary animate-spin" />;
+        return <Loader2 className="h-4 w-4 text-accent animate-spin" />;
       case 'completed':
         return <CheckCircle className="h-4 w-4 text-success" />;
       case 'failed':

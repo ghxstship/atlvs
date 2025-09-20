@@ -80,7 +80,7 @@ export default function VerifyEmailPage() {
         badge="SUCCESS"
         showTrustIndicators={false}
       >
-        <div className="text-center stack-lg">
+        <div className="brand-ghostship text-center stack-lg">
           <CheckCircle className="h-16 w-16 color-success mx-auto" />
           <AuthText className="text-center">
             Redirecting you to complete your setup...
@@ -97,15 +97,15 @@ export default function VerifyEmailPage() {
       badge="VERIFY EMAIL"
       showTrustIndicators={false}
     >
-      <div className="text-center stack-lg">
-        <Mail className="h-16 w-16 color-primary mx-auto" />
+      <div className="brand-ghostship text-center stack-lg">
+        <Mail className="h-16 w-16 color-accent mx-auto" />
         
         {email && (
-          <div className="bg-secondary border border-secondary rounded-md p-md">
+          <div className="brand-ghostship bg-secondary border border-secondary rounded-md p-md">
             <AuthText className="text-center font-medium">
               Verification email sent to:
             </AuthText>
-            <p className="color-primary font-body text-center mt-xs">{email}</p>
+            <p className="color-accent font-body text-center mt-xs">{email}</p>
           </div>
         )}
         
@@ -118,7 +118,7 @@ export default function VerifyEmailPage() {
         </AuthText>
 
         {error && (
-          <div className="bg-error border border-error rounded-md p-md">
+          <div className="brand-ghostship bg-destructive border border-destructive rounded-md p-md">
             <p className="form-error font-body text-center">{error}</p>
           </div>
         )}
@@ -142,7 +142,7 @@ export default function VerifyEmailPage() {
           )}
         </Button>
         
-        <div className="cluster justify-center">
+        <div className="brand-ghostship cluster justify-center">
           <AuthLink href="/auth/signin">Back to sign in</AuthLink>
           <span className="color-muted">•</span>
           <AuthLink href="/contact">Contact support</AuthLink>

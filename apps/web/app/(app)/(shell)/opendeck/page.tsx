@@ -39,7 +39,7 @@ export default async function OpenDeckLanding() {
 
   return (
     <FeatureGate feature="opendeck">
-      <div className="stack-md" data-brand="opendeck">
+      <div className="stack-md brand-opendeck" data-brand="opendeck">
         {orgId && user ? (
           <OpenDeckMarketplace 
             orgId={orgId} 
@@ -47,7 +47,7 @@ export default async function OpenDeckLanding() {
             userRole={userRole}
           />
         ) : (
-          <div className="text-center py-2xl">
+          <div className="brand-opendeck text-center py-2xl">
             <h2 className="text-heading-3 mb-md">{t('title')}</h2>
             <p className="color-muted">{t('unauthorized')}</p>
           </div>

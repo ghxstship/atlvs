@@ -24,13 +24,13 @@ export default function ForgotPasswordForm() {
   if (sent) {
     return (
       <Card className="p-lg">
-        <div className="text-center">
+        <div className="brand-ghostship text-center">
           <CheckCircle className="h-12 w-12 color-success mx-auto mb-md" />
           <h2 className="font-display text-heading-4 text-heading-3 mb-sm">Check Your Email</h2>
           <p className="color-muted mb-lg">
             We've sent password reset instructions to <strong>{email}</strong>
           </p>
-          <div className="stack-sm">
+          <div className="brand-ghostship stack-sm">
             <Button 
               onClick={() => setSent(false)} 
               variant="outline" 
@@ -81,12 +81,12 @@ export default function ForgotPasswordForm() {
         </Button>
       </form>
 
-      <div className="mt-lg text-center">
+      <div className="brand-ghostship mt-lg text-center">
         <p className="text-body-sm color-muted">
           Remember your password?{' '}
           <Link 
             href="/auth/signin" 
-            className="color-primary hover:color-primary/80 form-label"
+            className="color-accent hover:color-accent/80 form-label"
           >
             Sign in
           </Link>

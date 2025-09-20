@@ -247,8 +247,8 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-start gap-md">
-                    <div className="p-sm bg-primary/10 rounded-lg">
-                      <Briefcase className="h-6 w-6 color-primary" />
+                    <div className="p-sm bg-accent/10 rounded-lg">
+                      <Briefcase className="h-6 w-6 color-accent" />
                     </div>
                     
                     <div>

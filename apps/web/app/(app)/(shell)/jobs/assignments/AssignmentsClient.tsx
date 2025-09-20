@@ -143,7 +143,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
       case 'pending':
         return 'bg-warning/10 color-warning';
       case 'accepted':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'active':
         return 'bg-success/10 color-success';
       case 'completed':
@@ -181,13 +181,13 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
       case 'lead':
         return 'bg-secondary/10 color-secondary';
       case 'contributor':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       case 'reviewer':
         return 'bg-success/10 color-success';
       case 'consultant':
         return 'bg-warning/10 color-warning';
       case 'specialist':
-        return 'bg-primary/10 color-primary';
+        return 'bg-accent/10 color-accent';
       default:
         return 'bg-secondary color-muted';
     }
@@ -278,7 +278,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
               <p className="text-body-sm form-label color-foreground/70">Total Assignments</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{assignments.length}</p>
             </div>
-            <UsersIcon className="h-8 w-8 color-primary" />
+            <UsersIcon className="h-8 w-8 color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -318,7 +318,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
           <div className="flex items-center justify-between">
             <div>
               <p className="text-body-sm form-label color-foreground/70">Avg Utilization</p>
-              <p className="text-heading-3 text-heading-3 color-primary">
+              <p className="text-heading-3 text-heading-3 color-accent">
                 {assignments.length > 0 
                   ? Math.round(assignments
                       .map(a => calculateUtilization(a.estimated_hours, a.actual_hours))
@@ -328,7 +328,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   : 0}%
               </p>
             </div>
-            <ChartBarIcon className="h-8 w-8 color-primary" />
+            <ChartBarIcon className="h-8 w-8 color-accent" />
           </div>
         </Card>
       </div>

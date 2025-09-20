@@ -223,7 +223,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="w-full bg-secondary rounded-full h-2 mb-md">
               <div 
-                className="bg-primary h-2 rounded-full transition-all duration-300" 
+                className="bg-accent h-2 rounded-full transition-all duration-300" 
                 style={{ width: `${profile?.profile_completion_percentage || 0}%` }}
               ></div>
             </div>
@@ -252,7 +252,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="grid grid-cols-2 gap-md">
               <div className="text-center p-md bg-secondary/50 rounded-lg">
-                <div className="text-heading-3 text-heading-3 color-primary">
+                <div className="text-heading-3 text-heading-3 color-accent">
                   {profile?.certifications_count || 0}
                 </div>
                 <div className="text-body-sm color-muted">Certifications</div>
@@ -288,7 +288,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
               <div className="stack-sm">
                 {activities.map((activity: any) => (
                   <div key={activity.id} className="flex items-center gap-sm p-sm bg-secondary/50 rounded-lg">
-                    <div className="h-2 w-2 bg-primary rounded-full"></div>
+                    <div className="h-2 w-2 bg-accent rounded-full"></div>
                     <div className="flex-1">
                       <div className="text-body-sm form-label">{activity.activity_description}</div>
                       <div className="text-body-sm color-muted">

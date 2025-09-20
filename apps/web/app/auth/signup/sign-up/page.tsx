@@ -100,7 +100,7 @@ export default function SignUpPage() {
         />
       </AuthForm>
       
-      <div className="text-center mt-lg">
+      <div className="brand-ghostship text-center mt-lg">
         <AuthText>
           Already have an account?{' '}
           <AuthLink href="/auth/signin">Sign in</AuthLink>

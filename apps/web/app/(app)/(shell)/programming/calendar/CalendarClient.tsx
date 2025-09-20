@@ -138,7 +138,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
   const getEventTypeColor = (kind: string) => {
     switch (kind) {
       case 'performance':
-        return 'bg-primary';
+        return 'bg-accent';
       case 'activation':
         return 'bg-success';
       case 'workshop':
@@ -151,7 +151,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
   const getStatusColor = (status: string) => {
     switch (status) {
       case 'scheduled':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       case 'in_progress':
         return 'color-success bg-success/10';
       case 'completed':
@@ -219,7 +219,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
       {/* Event Type Legend */}
       <div className="flex items-center gap-md text-body-sm">
         <div className="flex items-center gap-sm">
-          <div className="w-3 h-3 rounded-full bg-primary"></div>
+          <div className="w-3 h-3 rounded-full bg-accent"></div>
           <span>Performance</span>
         </div>
         <div className="flex items-center gap-sm">
@@ -255,12 +255,12 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
                 key={index}
                 className={`min-h-[120px] p-sm border-b border-r last:border-r-0 ${
                   date ? 'bg-background hover:bg-secondary/50' : 'bg-secondary/20'
-                } ${isToday ? 'bg-primary/10' : ''}`}
+                } ${isToday ? 'bg-accent/10' : ''}`}
               >
                 {date && (
                   <>
                     <div className={`text-body-sm form-label mb-sm ${
-                      isToday ? 'color-primary text-heading-3' : 'color-foreground'
+                      isToday ? 'color-accent text-heading-3' : 'color-foreground'
                     }`}>
                       {date.getDate()}
                     </div>

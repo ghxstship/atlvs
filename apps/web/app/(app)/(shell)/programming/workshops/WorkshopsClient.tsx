@@ -240,7 +240,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
       case 'full':
         return 'color-warning bg-warning/10';
       case 'in_progress':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       case 'completed':
         return 'color-secondary bg-secondary/10';
       case 'cancelled':
@@ -259,7 +259,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
       case 'advanced':
         return 'color-destructive bg-destructive/10';
       case 'all_levels':
-        return 'color-primary bg-primary/10';
+        return 'color-accent bg-accent/10';
       default:
         return 'color-muted bg-secondary/50';
     }
@@ -330,8 +330,8 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
-                  <div className="p-sm bg-primary/10 rounded-lg">
-                    <GraduationCap className="h-5 w-5 color-primary" />
+                  <div className="p-sm bg-accent/10 rounded-lg">
+                    <GraduationCap className="h-5 w-5 color-accent" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -472,7 +472,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Participation Metrics */}
                   <div className="grid grid-cols-2 gap-md pt-md border-t">
                     <div className="text-center">
-                      <div className="text-heading-3 text-heading-3 color-primary">
+                      <div className="text-heading-3 text-heading-3 color-accent">
                         {selectedRecord.current_participants || 0}
                       </div>
                       <div className="text-body-sm color-muted flex items-center justify-center gap-xs">

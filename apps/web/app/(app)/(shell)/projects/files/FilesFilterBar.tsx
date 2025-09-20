@@ -98,7 +98,7 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
                 onClick={() => toggleTag(tag.tag)}
                 className={`inline-flex items-center gap-xs px-sm py-xs rounded-full text-body-sm border transition-colors ${
                   isSelected
-                    ? 'bg-primary/10 border-primary/30 color-primary'
+                    ? 'bg-accent/10 border-primary/30 color-accent'
                     : 'bg-background border-border color-foreground hover:bg-secondary/50'
                 }`}
                 aria-pressed={isSelected}

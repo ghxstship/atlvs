@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { anton } from '../../../_components/lib/typography';
 import Link from 'next/link';
 import { Button, Card, CardContent, Badge } from '@ghxstship/ui';
 import { ArrowRight, Clock, User, Calendar, Lock, Eye } from 'lucide-react';
@@ -103,7 +104,7 @@ export default function BlogPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               INSIGHTS FROM
               <br />
-              <span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
                 THE TRENCHES
               </span>
             </h1>
@@ -137,7 +138,7 @@ export default function BlogPage() {
               <Badge 
                 key={category} 
                 variant={category === 'All' ? 'default' : 'outline'} 
-                className="cursor-pointer hover:bg-primary hover:color-primary-foreground transition-colors px-md py-sm"
+                className="cursor-pointer transition-colors hover:bg-foreground/5 hover:text-accent px-md py-sm"
               >
                 {category}
               </Badge>
@@ -203,7 +204,7 @@ export default function BlogPage() {
                       {post.readTime}
                     </div>
                     <Button 
-                      variant={post.isPremium ? "primary" : "outline"} 
+                      variant={post.isPremium ? "default" : "outline"} 
                       size="sm" 
                       className="group-hover:translate-x-1 transition-transform"
                     >

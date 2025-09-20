@@ -15,8 +15,8 @@ export interface CheckboxProps extends Omit<React.InputHTMLAttributes<HTMLInputE
 
 const checkboxVariants = {
   variant: {
-    default: 'border-border text-primary focus:ring-primary',
-    primary: 'border-primary/30 text-primary focus:ring-primary',
+    default: 'border-border text-accent focus:ring-primary',
+    primary: 'border-primary/30 text-accent focus:ring-primary',
     success: 'border-success/30 text-success focus:ring-success',
     warning: 'border-warning/30 text-warning focus:ring-warning',
     danger: 'border-destructive/30 text-destructive focus:ring-destructive',
@@ -92,12 +92,12 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
         )}>
           {indeterminate ? (
             <Minus 
-              className="text-primary-foreground" 
+              className="text-accent-foreground" 
               size={iconSize}
             />
           ) : (
             <Check 
-              className="text-primary-foreground opacity-0 peer-checked:opacity-100 transition-opacity duration-200" 
+              className="text-accent-foreground opacity-0 peer-checked:opacity-100 transition-opacity duration-200" 
               size={iconSize}
             />
           )}

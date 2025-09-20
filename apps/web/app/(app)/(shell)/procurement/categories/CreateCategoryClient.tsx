@@ -259,9 +259,9 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
             </div>
           </div>
 
-          <div className="bg-primary/5 p-md rounded-lg">
-            <h4 className="form-label color-primary mb-sm">Category Guidelines</h4>
-            <ul className="text-body-sm color-primary/80 stack-xs">
+          <div className="bg-accent/5 p-md rounded-lg">
+            <h4 className="form-label color-accent mb-sm">Category Guidelines</h4>
+            <ul className="text-body-sm color-accent/80 stack-xs">
               <li>• Categories help organize products and services for easier management</li>
               <li>• Choose descriptive names that clearly identify the category purpose</li>
               <li>• Use colors to visually distinguish categories in lists and reports</li>

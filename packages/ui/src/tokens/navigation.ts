@@ -7,7 +7,7 @@ export const navigationTokens = {
   // Color System
   colors: {
     background: {
-      primary: 'hsl(var(--nav-bg-primary))',
+      primary: 'hsl(var(--nav-bg-accent))',
       secondary: 'hsl(var(--nav-bg-secondary))',
       tertiary: 'hsl(var(--nav-bg-tertiary))',
       overlay: 'hsl(var(--nav-bg-overlay))',
@@ -164,7 +164,7 @@ export const navigationTokens = {
 // CSS Custom Properties for Tailwind Integration
 export const navigationCSSVariables = `
   /* Navigation Color System */
-  --nav-bg-primary: 255 255 255;
+  --nav-bg-accent: 255 255 255;
   --nav-bg-secondary: 248 250 252;
   --nav-bg-tertiary: 241 245 249;
   --nav-bg-overlay: 0 0 0 / 0.5;
@@ -277,7 +277,7 @@ export const navigationCSSVariables = `
 
   /* Dark Mode Overrides */
   @media (prefers-color-scheme: dark) {
-    --nav-bg-primary: 15 23 42;
+    --nav-bg-accent: 15 23 42;
     --nav-bg-secondary: 30 41 59;
     --nav-bg-tertiary: 51 65 85;
     --nav-bg-glass: 15 23 42 / 0.95;

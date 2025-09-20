@@ -117,7 +117,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
   const getLevelColor = (level?: string) => {
     switch (level) {
       case 'entry': return 'bg-success/10 color-success';
-      case 'mid': return 'bg-primary/10 color-primary';
+      case 'mid': return 'bg-accent/10 color-accent';
       case 'senior': return 'bg-accent/10 color-accent';
       case 'lead': return 'bg-warning/10 color-warning';
       case 'executive': return 'bg-destructive/10 color-destructive';
@@ -257,7 +257,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <Shield className="h-5 w-5 color-primary" />
+                    <Shield className="h-5 w-5 color-accent" />
                     <h3 className="text-heading-4 color-foreground">{role.name}</h3>
                   </div>
                   
@@ -284,7 +284,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
                   {role.department && (
                     <div className="flex items-center justify-between">
                       <p className="text-body-sm color-muted mt-xs">{role.description}</p>
-                      <Badge className="bg-primary/10 color-primary">
+                      <Badge className="bg-accent/10 color-accent">
                         {role.department}
                       </Badge>
                     </div>

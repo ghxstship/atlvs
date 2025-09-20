@@ -26,15 +26,15 @@ type Values = z.infer<typeof schema>;
 
 const statusOptions = [
   { value: 'pending', label: 'Pending', color: 'bg-gray-500' },
-  { value: 'in_progress', label: 'In Progress', color: 'bg-blue-500' },
-  { value: 'completed', label: 'Completed', color: 'bg-green-500' },
+  { value: 'in_progress', label: 'In Progress', color: 'bg-info-500' },
+  { value: 'completed', label: 'Completed', color: 'bg-success-500' },
   { value: 'blocked', label: 'Blocked', color: 'bg-red-500' },
   { value: 'cancelled', label: 'Cancelled', color: 'bg-gray-400' },
 ];
 
 const priorityOptions = [
-  { value: 'low', label: 'Low', color: 'bg-green-500' },
-  { value: 'medium', label: 'Medium', color: 'bg-yellow-500' },
+  { value: 'low', label: 'Low', color: 'bg-success-500' },
+  { value: 'medium', label: 'Medium', color: 'bg-warning-500' },
   { value: 'high', label: 'High', color: 'bg-orange-500' },
   { value: 'urgent', label: 'Critical', color: 'bg-red-500' },
 ];
