@@ -39,13 +39,14 @@ export function HeroSection() {
       className={cn(
         // Keep background styling
         "relative overflow-hidden bg-gradient-subtle",
-        // Ensure the hero fits within the viewport minus fixed header (64px => 4rem)
-        // Use small-viewport units for mobile browser UI correctness
-        "min-h-[calc(100svh-4rem)]",
-        // Vertically center content while still allowing some breathing room at the top
-        "flex items-center",
-        // Add subtle vertical padding for top elements like the AI badge
-        "py-xl"
+        // Use min-height instead of fixed height for better flexibility
+        "min-h-screen",
+        // Account for fixed header by adding top padding
+        "pt-20",
+        // Vertically center the main hero content within available space
+        "flex items-center justify-center",
+        // Minimal bottom padding
+        "pb-md"
       )}
     >
       {/* Background Pattern */}
@@ -70,7 +71,7 @@ export function HeroSection() {
               <h1 className="text-display text-foreground uppercase">
                 THE FUTURE OF
                 <br />
-                <span className="ghxstship-gradient bg-clip-text text-transparent">
+                <span className="text-gradient-accent">
                   PRODUCTION
                 </span>
                 <br />
@@ -216,7 +217,7 @@ export function HeroSection() {
         </div>
 
         {/* Stats - full width under both columns */}
-        <div className="pt-3xl pb-4xl border-t">
+        <div className="mt-3xl pt-3xl pb-5xl border-t">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-xl">
             {stats.map((stat: any) => {
               const Icon = stat.icon;

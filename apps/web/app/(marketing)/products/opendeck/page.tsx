@@ -140,7 +140,7 @@ export default function OPENDECKPage() {
                   Creative Marketplace
                 </Badge>
                 <h1 className={`${anton.className} text-heading-1 lg:text-display mb-lg uppercase`}>
-                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                  <span className="text-gradient-accent">
                     OPENDECK
                   </span>
                   <br />

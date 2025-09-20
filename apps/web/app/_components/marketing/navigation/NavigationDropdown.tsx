@@ -150,14 +150,8 @@ export function NavigationDropdown({
       <div
         ref={dropdownRef}
         className={cn(
-          // No margin-top to avoid hover gap; add internal padding-top instead
-          "absolute top-full w-56 rounded-xl border border-border/70",
-          // Make surface fully opaque to eliminate bleed-through completely
-          "bg-background text-foreground",
-          // Stronger elevation for visual separation
-          "pt-xs px-xs pb-xs shadow-2xl shadow-black/20 transition-all duration-300 ease-out",
-          // Ensure above all content and above the fixed header
-          "z-[300]",
+          // Positioning only — background is applied to inner container to avoid overrides
+          "absolute top-full w-64 z-[var(--z-dropdown)]",
           // Position based on viewport
           dropdownPosition === 'right' ? 'right-0' : 'left-0',
           // Animation states
@@ -168,28 +162,37 @@ export function NavigationDropdown({
         role="menu"
         aria-label={`${item.label} menu`}
       >
-        {item.children?.map((child: any, index: number) => (
-          <Link
-            key={child.href}
-            href={child.href}
-            className={cn(
-              "flex items-center px-sm py-sm text-body-sm rounded-md transition-all duration-200",
-              "hover:bg-accent/10 hover:color-accent hover:translate-x-1",
-              "focus:outline-none focus:bg-accent/10 focus:color-accent",
-              "group relative overflow-hidden",
-              pathname === child.href ? "bg-accent/10 color-accent" : "text-foreground"
-            )}
-            role="menuitem"
-            tabIndex={activeDropdown === item.label ? 0 : -1}
-            style={{
-              animationDelay: `${index * 50}ms`
-            }}
-          >
-            {/* Hover effect background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-            <span className="relative z-10">{child.label}</span>
-          </Link>
-        ))}
+        {/* Inner container ensures solid theme-aware surface */}
+        <div
+          className={cn(
+            "relative rounded-xl border border-border bg-popover text-popover-foreground",
+            // Elevation and stacking context
+            "p-xs shadow-xl z-[calc(var(--z-dropdown)+1)]"
+          )}
+        >
+          {item.children?.map((child: any, index: number) => (
+            <Link
+              key={child.href}
+              href={child.href}
+              className={cn(
+                "flex items-center px-sm py-sm text-body-sm rounded-md transition-all duration-200",
+                "hover:bg-accent/10 hover:color-accent hover:translate-x-1",
+                "focus:outline-none focus:bg-accent/10 focus:color-accent",
+                "group relative overflow-hidden",
+                pathname === child.href ? "bg-accent/10 color-accent" : "text-popover-foreground"
+              )}
+              role="menuitem"
+              tabIndex={activeDropdown === item.label ? 0 : -1}
+              style={{
+                animationDelay: `${index * 50}ms`
+              }}
+            >
+              {/* Hover effect background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <span className="relative z-10">{child.label}</span>
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -202,7 +202,7 @@ export default function SolutionsPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               TAILORED FOR
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 YOUR INDUSTRY
               </span>
             </h1>
@@ -375,7 +375,7 @@ export default function SolutionsPage() {
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-lg">
               POWERFUL FEATURES
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 ACROSS ALL INDUSTRIES
               </span>
             </h2>

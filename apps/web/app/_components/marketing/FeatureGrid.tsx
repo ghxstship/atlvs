@@ -126,7 +126,7 @@ export function FeatureGrid() {
           <h1 className="text-heading-1">
             EVERYTHING YOU NEED
             <br />
-            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+            <span className="text-gradient-accent">
               IN ONE PLATFORM
             </span>
           </h1>

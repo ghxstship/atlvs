@@ -20,7 +20,7 @@ const badgeVariants = cva(
         warning: 'border-transparent bg-warning text-warning-foreground',
         info: 'border-transparent bg-info text-info-foreground',
         ghost: 'text-foreground hover:bg-accent hover:text-accent-foreground',
-        gradient: 'border-transparent bg-gradient-to-r from-primary to-secondary text-white',
+        gradient: 'border-transparent bg-gradient-to-r from-primary to-secondary text-background',
       },
       size: {
         xs: 'px-xs py-xs text-size-xs rounded-radius-sm gap-xs',

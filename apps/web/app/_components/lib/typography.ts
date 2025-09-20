@@ -32,7 +32,7 @@ export const typography = {
   bodySmall: 'text-sm text-muted-foreground',
   
   // Special text
-  gradient: 'bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent',
+  gradient: 'text-gradient-accent',
 } as const;
 
 // Typography component helpers

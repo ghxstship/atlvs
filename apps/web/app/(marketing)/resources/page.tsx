@@ -94,7 +94,7 @@ export default function ResourcesPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               RESOURCES FOR
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 PRODUCTION
               </span>
               <br />

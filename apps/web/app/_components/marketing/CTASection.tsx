@@ -16,7 +16,7 @@ export function CTASection() {
             <h2 className="text-heading-1 lg:text-display text-heading-3 uppercase">
               READY TO TRANSFORM
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 YOUR PRODUCTION?
               </span>
             </h2>
@@ -68,8 +68,11 @@ export function CTASection() {
               <p className="color-muted mb-md">
                 Get started in minutes with our guided onboarding process and pre-built templates.
               </p>
-              <div className="text-body-sm color-muted">
-                Average setup time: <span className="text-heading-4 color-accent">5 minutes</span>
+              <div className="text-body-sm color-muted mb-xs">
+                Average Setup Time
+              </div>
+              <div className="text-heading-4 color-accent">
+                5 MINUTES
               </div>
             </CardContent>
           </Card>
@@ -83,8 +86,11 @@ export function CTASection() {
               <p className="color-muted mb-md">
                 Get help from our team of production experts available 24/7 via chat, email, or phone.
               </p>
-              <div className="text-body-sm color-muted">
-                Response time: <span className="text-heading-4 color-accent">Under 2 hours</span>
+              <div className="text-body-sm color-muted mb-xs">
+                Response Time
+              </div>
+              <div className="text-heading-4 color-accent">
+                UNDER 2 HOURS
               </div>
             </CardContent>
           </Card>
@@ -98,8 +104,11 @@ export function CTASection() {
               <p className="color-muted mb-md">
                 See immediate improvements in efficiency and collaboration from day one.
               </p>
-              <div className="text-body-sm color-muted">
-                Average improvement: <span className="text-heading-4 color-success">40% faster</span>
+              <div className="text-body-sm color-muted mb-xs">
+                Average Improvement
+              </div>
+              <div className="text-heading-4 color-success">
+                40% FASTER
               </div>
             </CardContent>
           </Card>

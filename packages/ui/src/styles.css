@@ -6,53 +6,34 @@
 @tailwind utilities;
 
 :root {
-  /* Base Vaporwave Miami Vice Palette */
-  --vw-primary-black: 0 0% 4%;      /* #0A0A0A */
-  --vw-secondary-black: 0 0% 10%;   /* #1A1A1A */
-  --vw-dark-grey: 0 0% 17%;         /* #2A2A2A */
-  --vw-medium-grey: 0 0% 40%;       /* #666666 */
-  --vw-light-grey: 0 0% 80%;        /* #CCCCCC */
-  --vw-off-white: 0 0% 96%;         /* #F5F5F5 */
-  --vw-pure-white: 0 0% 100%;       /* #FFFFFF */
-  
-  /* Vaporwave Pink Palette */
-  --vw-neon-pink: 320 100% 50%;     /* #FF0080 */
-  --vw-hot-pink: 348 83% 47%;       /* #FF1493 */
-  --vw-soft-pink: 330 81% 60%;      /* #FF69B4 */
-  
-  /* Vaporwave Blue Palette */
-  --vw-electric-blue: 180 100% 50%; /* #00FFFF */
-  --vw-miami-blue: 195 100% 50%;    /* #0099FF */
-  --vw-deep-blue: 200 100% 30%;     /* #006699 */
-  
-  /* Default Theme (Marketing/GHXSTSHIP) - Uses full palette */
-  --background: var(--vw-off-white);
-  --foreground: var(--vw-primary-black);
-  --primary: var(--vw-miami-blue);
-  --primary-foreground: var(--vw-pure-white);
-  --secondary: var(--vw-secondary-black);
-  --secondary-foreground: var(--vw-light-grey);
-  --accent: var(--vw-neon-pink);
-  --accent-foreground: var(--vw-pure-white);
-  --muted: var(--vw-dark-grey);
-  --muted-foreground: var(--vw-medium-grey);
-  --card: var(--vw-pure-white);
-  --card-foreground: var(--vw-primary-black);
-  --popover: var(--vw-pure-white);
-  --popover-foreground: var(--vw-primary-black);
-  --border: var(--vw-dark-grey);
-  --input: var(--vw-dark-grey);
-  --ring: var(--vw-neon-pink);
+  /* Bridge UI variables to Unified Design System tokens */
+  --background: var(--color-background);
+  --foreground: var(--color-foreground);
+  --primary: var(--color-primary);
+  --primary-foreground: var(--color-primary-foreground);
+  --secondary: var(--color-secondary);
+  --secondary-foreground: var(--color-secondary-foreground);
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-accent-foreground);
+  --muted: var(--color-muted);
+  --muted-foreground: var(--color-muted-foreground);
+  --card: var(--color-card);
+  --card-foreground: var(--color-card-foreground);
+  --popover: var(--color-popover);
+  --popover-foreground: var(--color-popover-foreground);
+  --border: var(--color-border);
+  --input: var(--color-input);
+  --ring: var(--color-ring);
   
   /* Status Colors */
-  --success: var(--vw-soft-pink);
-  --success-foreground: var(--vw-pure-white);
-  --warning: 38 92% 50%;
-  --warning-foreground: var(--vw-primary-black);
-  --destructive: var(--vw-hot-pink);
-  --destructive-foreground: var(--vw-pure-white);
-  --info: var(--vw-electric-blue);
-  --info-foreground: var(--vw-primary-black);
+  --success: var(--color-success);
+  --success-foreground: var(--color-success-foreground);
+  --warning: var(--color-warning);
+  --warning-foreground: var(--color-warning-foreground);
+  --destructive: var(--color-destructive);
+  --destructive-foreground: var(--color-destructive-foreground);
+  --info: var(--color-info);
+  --info-foreground: var(--color-info-foreground);
   
   /* Spacing scale - Enhanced with intermediate values */
   --space-0: 0;
@@ -217,60 +198,54 @@
   }
   
   .dark {
-    --background: var(--vw-primary-black);
-    --foreground: var(--vw-light-grey);
-    --primary: var(--vw-miami-blue);
-    --primary-foreground: var(--vw-pure-white);
-    --secondary: var(--vw-secondary-black);
-    --secondary-foreground: var(--vw-light-grey);
-    --accent: var(--vw-neon-pink);
-    --accent-foreground: var(--vw-pure-white);
-    --muted: var(--vw-dark-grey);
-    --muted-foreground: var(--vw-medium-grey);
-    --card: var(--vw-secondary-black);
-    --card-foreground: var(--vw-light-grey);
-    --popover: var(--vw-secondary-black);
-    --popover-foreground: var(--vw-light-grey);
-    --border: var(--vw-dark-grey);
-    --input: var(--vw-dark-grey);
-    --ring: var(--vw-neon-pink);
+    /* Dark theme inherits from unified design system */
+    --background: var(--color-background);
+    --foreground: var(--color-foreground);
+    --primary: var(--color-primary);
+    --primary-foreground: var(--color-primary-foreground);
+    --secondary: var(--color-secondary);
+    --secondary-foreground: var(--color-secondary-foreground);
+    --accent: var(--color-accent);
+    --accent-foreground: var(--color-accent-foreground);
+    --muted: var(--color-muted);
+    --muted-foreground: var(--color-muted-foreground);
+    --card: var(--color-card);
+    --card-foreground: var(--color-card-foreground);
+    --popover: var(--color-popover);
+    --popover-foreground: var(--color-popover-foreground);
+    --border: var(--color-border);
+    --input: var(--color-input);
+    --ring: var(--color-ring);
     --shadow-color: 0 0% 0%;
   }
-  
-  /* ATLVS Brand Theme - Pink Focus */
-  [data-brand="atlvs"] {
-    --primary: var(--vw-neon-pink);
-    --accent: var(--vw-hot-pink);
-    --info: var(--vw-soft-pink);
-    --ring: var(--vw-neon-pink);
+
+  /* Force white borders in dark theme globally */
+  [data-theme="dark"] *,
+  .dark * {
+    --border: hsl(0 0% 100% / 0.2);
+    --input: hsl(0 0% 100% / 0.2);
+  }
+
+  /* Explicit dark theme border overrides */
+  [data-theme="dark"] .btn,
+  [data-theme="dark"] .card,
+  [data-theme="dark"] .input,
+  [data-theme="dark"] .textarea,
+  [data-theme="dark"] .select,
+  [data-theme="dark"] button,
+  [data-theme="dark"] [class*="border"],
+  .dark .btn,
+  .dark .card,
+  .dark .input,
+  .dark .textarea,
+  .dark .select,
+  .dark button,
+  .dark [class*="border"] {
+    border-color: hsl(0 0% 100% / 0.2) !important;
   }
   
-  [data-brand="atlvs"].dark {
-    --primary: var(--vw-neon-pink);
-    --accent: var(--vw-hot-pink);
-    --info: var(--vw-soft-pink);
-    --ring: var(--vw-neon-pink);
-  }
-  
-  /* OPENDECK Brand Theme - Blue Focus */
-  [data-brand="opendeck"] {
-    --primary: var(--vw-electric-blue);
-    --accent: var(--vw-miami-blue);
-    --info: var(--vw-deep-blue);
-    --ring: var(--vw-electric-blue);
-  }
-  
-  [data-brand="opendeck"].dark {
-    --primary: var(--vw-electric-blue);
-    --accent: var(--vw-miami-blue);
-    --info: var(--vw-deep-blue);
-    --ring: var(--vw-electric-blue);
-  }
-  
-  /* GHXSTSHIP Brand Theme - Full Vaporwave (Default) */
-  [data-brand="ghxstship"] {
-    /* Uses the default root values - full pink/blue palette */
-  }
+  /* Brand themes are handled by unified design system brand context classes */
+  /* .brand-atlvs, .brand-opendeck, .brand-ghostship in unified-design-system.css */
   
   * {
     @apply border-border;
@@ -588,19 +563,19 @@
     transform: translate(-2px, -2px);
   }
   
-  /* Vaporwave Glow Effects */
+  /* Brand-aware Glow Effects */
   .glow-pink {
-    color: hsl(var(--vw-neon-pink));
-    text-shadow: 0 0 10px hsl(var(--vw-neon-pink) / 0.5);
-    border-color: hsl(var(--vw-neon-pink));
-    box-shadow: 0 0 20px hsl(var(--vw-neon-pink) / 0.3);
+    color: hsl(var(--accent));
+    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+    border-color: hsl(var(--accent));
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
   }
   
   .glow-blue {
-    color: hsl(var(--vw-electric-blue));
-    text-shadow: 0 0 10px hsl(var(--vw-electric-blue) / 0.5);
-    border-color: hsl(var(--vw-electric-blue));
-    box-shadow: 0 0 20px hsl(var(--vw-electric-blue) / 0.3);
+    color: hsl(var(--primary));
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
   
   .glow-accent {
@@ -617,30 +592,30 @@
     box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
   }
   
-  /* Vaporwave Gradient Utilities */
+  /* Brand-aware Gradient Utilities */
   .gradient-pink-blue {
-    background: linear-gradient(45deg, hsl(var(--vw-neon-pink)), hsl(var(--vw-electric-blue)));
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
   }
   
   .gradient-dark-pink {
-    background: linear-gradient(135deg, hsl(var(--vw-primary-black)), hsl(var(--vw-secondary-black)), hsl(var(--vw-neon-pink)));
+    background: linear-gradient(135deg, hsl(var(--background)), hsl(var(--secondary)), hsl(var(--accent)));
   }
   
   .gradient-blue-spectrum {
-    background: linear-gradient(90deg, hsl(var(--vw-electric-blue)), hsl(var(--vw-miami-blue)), hsl(var(--vw-deep-blue)));
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)), hsl(var(--info)));
   }
   
   /* Brand-specific utilities */
   .atlvs-gradient {
-    background: linear-gradient(45deg, hsl(var(--vw-neon-pink)), hsl(var(--vw-hot-pink)), hsl(var(--vw-soft-pink)));
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
   }
   
   .opendeck-gradient {
-    background: linear-gradient(45deg, hsl(var(--vw-electric-blue)), hsl(var(--vw-miami-blue)), hsl(var(--vw-deep-blue)));
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
   }
   
   .ghxstship-gradient {
-    background: linear-gradient(45deg, hsl(var(--vw-neon-pink)), hsl(var(--vw-electric-blue)));
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
   }
 
   /* Missing Typography Classes */
@@ -754,6 +729,47 @@
       linear-gradient(hsl(var(--border) / 0.1) 1px, transparent 1px),
       linear-gradient(90deg, hsl(var(--border) / 0.1) 1px, transparent 1px);
     background-size: 20px 20px;
+  }
+
+  /* Text Gradient Utilities */
+  .text-gradient-primary {
+    background: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-success {
+    background: linear-gradient(45deg, hsl(var(--success)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-white {
+    background: linear-gradient(45deg, hsl(0 0% 100%), hsl(0 0% 85%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-light {
+    background: linear-gradient(45deg, hsl(0 0% 90%), hsl(0 0% 60%));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
   }
 
   /* Missing Spacing Utilities */

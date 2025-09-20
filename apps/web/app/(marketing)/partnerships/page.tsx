@@ -143,7 +143,7 @@ export default function PartnershipsPage() {
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
               GROW
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 TOGETHER
               </span>
             </h1>

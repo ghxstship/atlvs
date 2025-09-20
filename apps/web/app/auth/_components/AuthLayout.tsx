@@ -29,7 +29,7 @@ export function AuthLayout({
         <div className="content-width content-padding">
           <div className="text-center">
             <Link href="/" className="inline-block">
-              <h1 className="text-heading-3 tracking-tight text-black">GHXSTSHIP</h1>
+              <h1 className="text-heading-3 tracking-tight text-gradient-accent">GHXSTSHIP</h1>
             </Link>
           </div>
         </div>

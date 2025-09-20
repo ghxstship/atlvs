@@ -58,7 +58,7 @@ export function ProductHighlights() {
           <h2 className="font-title text-heading-2 lg:text-display text-heading-3 mb-md">
             TWO PLATFORMS,
             <br />
-            <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+            <span className="text-gradient-accent">
               INFINITE POSSIBILITIES
             </span>
           </h2>

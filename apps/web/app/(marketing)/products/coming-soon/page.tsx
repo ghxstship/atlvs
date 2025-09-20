@@ -105,7 +105,7 @@ export default function ComingSoonPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               THE NEXT GENERATION
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 IS COMING IN 2026
               </span>
             </h1>

@@ -25,7 +25,7 @@ const schema = z.object({
 type Values = z.infer<typeof schema>;
 
 const statusOptions = [
-  { value: 'pending', label: 'Pending', color: 'bg-gray-500' },
+  { value: 'pending', label: 'Pending', color: 'bg-muted0' },
   { value: 'in_progress', label: 'In Progress', color: 'bg-info-500' },
   { value: 'completed', label: 'Completed', color: 'bg-success-500' },
   { value: 'blocked', label: 'Blocked', color: 'bg-red-500' },

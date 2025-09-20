@@ -123,7 +123,7 @@ export default function TradeShowsConferencesPage() {
                 <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
                   MASTER
                   <br />
-                  <span className="bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
+                  <span className="text-gradient-accent">
                     BUSINESS
                   </span>
                   <br />

@@ -114,7 +114,7 @@ export default function WhitepapersPage() {
             <h1 className={`mb-lg ${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase`}>
               INDUSTRY
               <br />
-              <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+              <span className="text-gradient-accent">
                 RESEARCH & INSIGHTS
               </span>
             </h1>

@@ -144,7 +144,7 @@ export function MarketingHeader() {
               <div className="flex items-center">
                 <span className={cn(
                   anton.className,
-                  'text-heading-3 text-black transition-transform duration-200',
+                  'text-heading-3 text-foreground transition-transform duration-200',
                   'group-hover:scale-105'
                 )}>
                   GHXSTSHIP

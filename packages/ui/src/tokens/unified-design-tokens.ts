@@ -216,22 +216,22 @@ export const DESIGN_TOKENS = {
     '2xl': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
     inner: 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
 
-    // Pop art shadows
+    // Pop art shadows (brand-aware)
     pop: {
-      sm: '2px 2px 0 hsl(0 0% 0%), 4px 4px 0 hsl(320 100% 50%)',
-      base: '3px 3px 0 hsl(0 0% 0%), 6px 6px 0 hsl(320 100% 50%)',
-      md: '4px 4px 0 hsl(0 0% 0%), 8px 8px 0 hsl(320 100% 50%)',
-      lg: '6px 6px 0 hsl(0 0% 0%), 12px 12px 0 hsl(320 100% 50%)',
-      xl: '8px 8px 0 hsl(0 0% 0%), 16px 16px 0 hsl(320 100% 50%)',
+      sm: '2px 2px 0 hsl(0 0% 0%), 4px 4px 0 var(--color-accent)',
+      base: '3px 3px 0 hsl(0 0% 0%), 6px 6px 0 var(--color-accent)',
+      md: '4px 4px 0 hsl(0 0% 0%), 8px 8px 0 var(--color-accent)',
+      lg: '6px 6px 0 hsl(0 0% 0%), 12px 12px 0 var(--color-accent)',
+      xl: '8px 8px 0 hsl(0 0% 0%), 16px 16px 0 var(--color-accent)',
     },
 
-    // Glow effects
+    // Glow effects (brand-aware)
     glow: {
-      sm: '0 0 5px hsl(320 100% 50% / 0.5)',
-      base: '0 0 10px hsl(320 100% 50% / 0.5)',
-      md: '0 0 15px hsl(320 100% 50% / 0.5)',
-      lg: '0 0 20px hsl(320 100% 50% / 0.5)',
-      xl: '0 0 25px hsl(320 100% 50% / 0.5)',
+      sm: '0 0 5px hsl(var(--color-accent) / 0.5)',
+      base: '0 0 10px hsl(var(--color-accent) / 0.5)',
+      md: '0 0 15px hsl(var(--color-accent) / 0.5)',
+      lg: '0 0 20px hsl(var(--color-accent) / 0.5)',
+      xl: '0 0 25px hsl(var(--color-accent) / 0.5)',
     },
   },
 

@@ -377,7 +377,7 @@ export default function TeamPage() {
               Our People
             </Badge>
             <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 uppercase mb-lg`}>
-              MEET THE<br /><span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">TEAM</span>
+              MEET THE<br /><span className="text-gradient-accent">TEAM</span>
             </h1>
             <p className={`${typography.heroSubtitle} mb-xl`}>
               We're a diverse, global team of creators, builders, and innovators united by our passion for empowering creative collaboration worldwide.

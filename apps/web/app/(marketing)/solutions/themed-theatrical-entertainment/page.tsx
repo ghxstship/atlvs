@@ -123,7 +123,7 @@ export default function ThemedTheatricalPage() {
                 <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
                   CREATE
                   <br />
-                  <span className="bg-gradient-to-r from-secondary to-accent bg-clip-text text-transparent">
+                  <span className="text-gradient-accent">
                     SPECTACULAR
                   </span>
                   <br />

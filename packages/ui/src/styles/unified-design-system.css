@@ -63,6 +63,17 @@
   --spacing-32: 8rem;
   --spacing-40: 10rem;
   --spacing-48: 12rem;
+  
+  /* Semantic Spacing Scale */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  --spacing-4xl: 6rem;     /* 96px */
+  --spacing-5xl: 8rem;     /* 128px */
 
   /* Typography */
   --font-family-title: 'ANTON', system-ui, sans-serif;
@@ -74,9 +85,9 @@
   --shadow-base: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-pop-sm: 2px 2px 0 hsl(0 0% 0%), 4px 4px 0 hsl(320 100% 50%);
-  --shadow-pop-base: 3px 3px 0 hsl(0 0% 0%), 6px 6px 0 hsl(320 100% 50%);
-  --shadow-pop-md: 4px 4px 0 hsl(0 0% 0%), 8px 8px 0 hsl(320 100% 50%);
+  --shadow-pop-sm: 2px 2px 0 hsl(0 0% 0%), 4px 4px 0 hsl(var(--color-accent));
+  --shadow-pop-base: 3px 3px 0 hsl(0 0% 0%), 6px 6px 0 hsl(var(--color-accent));
+  --shadow-pop-md: 4px 4px 0 hsl(0 0% 0%), 8px 8px 0 hsl(var(--color-accent));
 
   /* Border Radius */
   --radius-sm: 0.125rem;
@@ -95,7 +106,8 @@
 }
 
 /* Dark Theme */
-[data-theme="dark"] {
+[data-theme="dark"],
+.dark {
   --color-background: hsl(229 84% 5%);
   --color-foreground: hsl(210 40% 98%);
   --color-card: hsl(229 84% 5%);
@@ -110,9 +122,137 @@
   --color-muted-foreground: hsl(215 20% 65%);
   --color-accent: hsl(158 64% 48%);
   --color-accent-foreground: hsl(222 47% 11%);
-  --color-border: hsl(217 33% 17%);
-  --color-input: hsl(217 33% 17%);
+  --color-border: hsl(0 0% 100% / 0.2);
+  --color-input: hsl(0 0% 100% / 0.2);
   --color-ring: hsl(158 64% 48%);
+}
+
+/* Dark theme border enforcement - comprehensive white borders */
+[data-theme="dark"] *,
+[data-theme="dark"] button,
+[data-theme="dark"] .card,
+[data-theme="dark"] input,
+[data-theme="dark"] textarea,
+[data-theme="dark"] select,
+[data-theme="dark"] .border,
+[data-theme="dark"] .border-border,
+[data-theme="dark"] .btn,
+[data-theme="dark"] .input,
+[data-theme="dark"] .textarea,
+[data-theme="dark"] .select,
+[data-theme="dark"] form input,
+[data-theme="dark"] form textarea,
+[data-theme="dark"] form select,
+[data-theme="dark"] form button,
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-input,
+[data-theme="dark"] .dropdown,
+[data-theme="dark"] .modal,
+[data-theme="dark"] .dialog,
+[data-theme="dark"] .popover,
+[data-theme="dark"] [class*="border"],
+.dark *,
+.dark button,
+.dark .card,
+.dark input,
+.dark textarea,
+.dark select,
+.dark .border,
+.dark .border-border,
+.dark .btn,
+.dark .input,
+.dark .textarea,
+.dark .select,
+.dark form input,
+.dark form textarea,
+.dark form select,
+.dark form button,
+.dark .form-control,
+.dark .form-input,
+.dark .dropdown,
+.dark .modal,
+.dark .dialog,
+.dark .popover,
+.dark [class*="border"] {
+  border-color: hsl(0 0% 100% / 0.2) !important;
+}
+
+/* Dark theme form elements - enhanced styling */
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] select:focus,
+[data-theme="dark"] button:focus,
+[data-theme="dark"] .btn:focus,
+[data-theme="dark"] .input:focus,
+[data-theme="dark"] .textarea:focus,
+[data-theme="dark"] .select:focus,
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus,
+.dark button:focus,
+.dark .btn:focus,
+.dark .input:focus,
+.dark .textarea:focus,
+.dark .select:focus {
+  border-color: hsl(0 0% 100% / 0.4) !important;
+  box-shadow: 0 0 0 2px hsl(0 0% 100% / 0.1) !important;
+}
+
+/* Dark theme solid backgrounds - no transparency */
+[data-theme="dark"] .bg-popover,
+[data-theme="dark"] .bg-card,
+[data-theme="dark"] .bg-background,
+.dark .bg-popover,
+.dark .bg-card,
+.dark .bg-background {
+  background-color: hsl(var(--color-background)) !important;
+}
+
+/* Dark theme gradient text - comprehensive greyscale gradients for visibility */
+[data-theme="dark"] .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+[data-theme="dark"] .text-gradient-primary,
+[data-theme="dark"] .text-gradient-accent,
+[data-theme="dark"] .text-gradient-success,
+[data-theme="dark"] .ghxstship-gradient.bg-clip-text.text-transparent,
+[data-theme="dark"] .atlvs-gradient.bg-clip-text.text-transparent,
+[data-theme="dark"] .opendeck-gradient.bg-clip-text.text-transparent,
+[data-theme="dark"] .gradient-pink-blue.bg-clip-text.text-transparent,
+[data-theme="dark"] .gradient-dark-pink.bg-clip-text.text-transparent,
+[data-theme="dark"] .gradient-blue-spectrum.bg-clip-text.text-transparent,
+.dark .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+.dark .text-gradient-primary,
+.dark .text-gradient-accent,
+.dark .text-gradient-success,
+.dark .ghxstship-gradient.bg-clip-text.text-transparent,
+.dark .atlvs-gradient.bg-clip-text.text-transparent,
+.dark .opendeck-gradient.bg-clip-text.text-transparent,
+.dark .gradient-pink-blue.bg-clip-text.text-transparent,
+.dark .gradient-dark-pink.bg-clip-text.text-transparent,
+.dark .gradient-blue-spectrum.bg-clip-text.text-transparent {
+  background: linear-gradient(45deg, hsl(0 0% 95%), hsl(0 0% 70%)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+/* Additional gradient text utilities for dark theme */
+[data-theme="dark"] .text-gradient-white,
+.dark .text-gradient-white {
+  background: linear-gradient(45deg, hsl(0 0% 100%), hsl(0 0% 85%)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+}
+
+[data-theme="dark"] .text-gradient-light,
+.dark .text-gradient-light {
+  background: linear-gradient(45deg, hsl(0 0% 90%), hsl(0 0% 60%)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 /* ==========================================
@@ -497,9 +637,31 @@ body {
 .py-lg { padding-top: var(--spacing-6); padding-bottom: var(--spacing-6); }
 .py-xl { padding-top: var(--spacing-8); padding-bottom: var(--spacing-8); }
 .py-2xl { padding-top: var(--spacing-12); padding-bottom: var(--spacing-12); }
-.py-3xl { padding-top: var(--spacing-16); padding-bottom: var(--spacing-16); }
-.py-4xl { padding-top: var(--spacing-20); padding-bottom: var(--spacing-20); }
-.py-5xl { padding-top: var(--spacing-24); padding-bottom: var(--spacing-24); }
+.py-3xl { padding-top: var(--spacing-3xl); padding-bottom: var(--spacing-3xl); }
+.py-4xl { padding-top: var(--spacing-4xl); padding-bottom: var(--spacing-4xl); }
+.py-5xl { padding-top: var(--spacing-5xl); padding-bottom: var(--spacing-5xl); }
+
+/* Padding Top Utilities */
+.pt-xs { padding-top: var(--spacing-xs); }
+.pt-sm { padding-top: var(--spacing-sm); }
+.pt-md { padding-top: var(--spacing-md); }
+.pt-lg { padding-top: var(--spacing-lg); }
+.pt-xl { padding-top: var(--spacing-xl); }
+.pt-2xl { padding-top: var(--spacing-2xl); }
+.pt-3xl { padding-top: var(--spacing-3xl); }
+.pt-4xl { padding-top: var(--spacing-4xl); }
+.pt-5xl { padding-top: var(--spacing-5xl); }
+
+/* Padding Bottom Utilities */
+.pb-xs { padding-bottom: var(--spacing-xs); }
+.pb-sm { padding-bottom: var(--spacing-sm); }
+.pb-md { padding-bottom: var(--spacing-md); }
+.pb-lg { padding-bottom: var(--spacing-lg); }
+.pb-xl { padding-bottom: var(--spacing-xl); }
+.pb-2xl { padding-bottom: var(--spacing-2xl); }
+.pb-3xl { padding-bottom: var(--spacing-3xl); }
+.pb-4xl { padding-bottom: var(--spacing-4xl); }
+.pb-5xl { padding-bottom: var(--spacing-5xl); }
 
 .m-xs { margin: var(--spacing-1); }
 .m-sm { margin: var(--spacing-2); }
@@ -537,6 +699,31 @@ body {
 .shadow-pop-sm { box-shadow: var(--shadow-pop-sm); }
 .shadow-pop-base { box-shadow: var(--shadow-pop-base); }
 .shadow-pop-md { box-shadow: var(--shadow-pop-md); }
+
+/* Background Colors */
+.bg-background { background-color: hsl(var(--color-background)); }
+.bg-foreground { background-color: hsl(var(--color-foreground)); }
+.bg-card { background-color: hsl(var(--color-card)); }
+.bg-popover { background-color: hsl(var(--color-popover)); }
+.bg-primary { background-color: hsl(var(--color-accent)); }
+.bg-secondary { background-color: hsl(var(--color-secondary)); }
+.bg-muted { background-color: hsl(var(--color-muted)); }
+.bg-accent { background-color: hsl(var(--color-accent)); }
+.bg-destructive { background-color: hsl(var(--color-destructive)); }
+.bg-success { background-color: hsl(var(--color-success)); }
+.bg-warning { background-color: hsl(var(--color-warning)); }
+.bg-info { background-color: hsl(var(--color-info)); }
+
+/* Text Colors */
+.text-background { color: hsl(var(--color-background)); }
+.text-foreground { color: hsl(var(--color-foreground)); }
+.text-card-foreground { color: hsl(var(--color-card-foreground)); }
+.text-popover-foreground { color: hsl(var(--color-popover-foreground)); }
+.text-primary-foreground { color: hsl(var(--color-accent-foreground)); }
+.text-secondary-foreground { color: hsl(var(--color-secondary-foreground)); }
+.text-muted-foreground { color: hsl(var(--color-muted-foreground)); }
+.text-accent-foreground { color: hsl(var(--color-accent-foreground)); }
+.text-destructive-foreground { color: hsl(var(--color-destructive-foreground)); }
 
 /* Gradients */
 .gradient-primary {
@@ -582,4 +769,43 @@ body {
   50% {
     opacity: .5;
   }
+}
+
+/* CRITICAL: Dark theme overrides with maximum specificity */
+html[data-theme="dark"] *,
+html.dark *,
+body[data-theme="dark"] *,
+body.dark *,
+[data-theme="dark"] *,
+.dark * {
+  border-color: hsl(0 0% 100% / 0.2) !important;
+}
+
+html[data-theme="dark"] .bg-popover,
+html.dark .bg-popover,
+body[data-theme="dark"] .bg-popover,
+body.dark .bg-popover,
+[data-theme="dark"] .bg-popover,
+.dark .bg-popover,
+html[data-theme="dark"] div.bg-popover,
+html.dark div.bg-popover,
+body[data-theme="dark"] div.bg-popover,
+body.dark div.bg-popover,
+[data-theme="dark"] div.bg-popover,
+.dark div.bg-popover {
+  background-color: hsl(var(--color-background)) !important;
+  background: hsl(var(--color-background)) !important;
+  opacity: 1 !important;
+}
+
+html[data-theme="dark"] .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+html.dark .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+body[data-theme="dark"] .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+body.dark .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+[data-theme="dark"] .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent,
+.dark .bg-gradient-to-r.from-secondary.to-primary.bg-clip-text.text-transparent {
+  background: linear-gradient(45deg, hsl(0 0% 90%), hsl(0 0% 60%)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
 }

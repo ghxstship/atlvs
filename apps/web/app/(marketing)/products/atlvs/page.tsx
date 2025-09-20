@@ -100,9 +100,9 @@ const testimonials = [
 
 export default function ATLVSPage() {
   return (
-    <div className="min-h-screen brand-atlvs">
+    <div className="min-h-screen brand-ghostship">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-4xl pb-5xl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-2xl items-center">
             <div className="stack-xl">
@@ -111,7 +111,7 @@ export default function ATLVSPage() {
                   Production Management
                 </Badge>
                 <h1 className={`${anton.className} text-heading-1 lg:text-display text-heading-3 mb-lg uppercase`}>
-                  <span className="bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent">
+                  <span className="text-gradient-accent">
                     ATLVS
                   </span>
                   <br />
