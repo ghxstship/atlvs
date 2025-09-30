@@ -5,4 +5,4 @@
 
 export * from './domain/entities';
 export * from './events';
-export type * from './repositories';
+export * from './repositories';
