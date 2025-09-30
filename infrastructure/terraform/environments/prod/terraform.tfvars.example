@@ -1,0 +1,30 @@
+# AWS Configuration
+aws_region = "us-east-1"
+
+# Application Configuration
+web_image = "ghcr.io/your-org/ghxstship-web:latest"
+
+# SSL Certificate
+certificate_arn = "arn:aws:acm:us-east-1:ACCOUNT_ID:certificate/CERTIFICATE_ID"
+
+# Domain Configuration
+domain_aliases = ["ghxstship.com", "www.ghxstship.com"]
+cors_allowed_origins = ["https://ghxstship.com", "https://www.ghxstship.com"]
+
+# Alert Configuration
+alert_emails = ["devops@ghxstship.com"]
+security_alert_emails = ["security@ghxstship.com"]
+
+# Database Configuration (use AWS Secrets Manager in production)
+db_username = "ghxstship_admin"
+db_password = "CHANGE_ME_STRONG_PASSWORD"
+redis_auth_token = "CHANGE_ME_STRONG_TOKEN"
+
+# Application Secrets (use AWS Secrets Manager in production)
+supabase_url = "https://your-project.supabase.co"
+supabase_anon_key = "your-anon-key"
+supabase_service_role_key = "your-service-role-key"
+stripe_secret_key = "sk_test_..."
+stripe_webhook_secret = "whsec_..."
+google_client_id = "your-google-client-id"
+google_client_secret = "your-google-client-secret"
