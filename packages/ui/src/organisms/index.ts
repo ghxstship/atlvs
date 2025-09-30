@@ -25,3 +25,5 @@ export * from './ThemeAwareImage';
 export * from './ListWithKeys';
 export * from './AnimationOptimizer';
 export * from './SidebarLandmarks';
+export * from './Dialog';
+export * from './Form';
