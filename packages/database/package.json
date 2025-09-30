@@ -1,0 +1,38 @@
+{
+  "name": "@ghxstship/database",
+  "version": "0.0.1",
+  "private": true,
+  "main": "./client/index.ts",
+  "types": "./client/index.ts",
+  "exports": {
+    ".": "./client/index.ts",
+    "./client": "./client/index.ts",
+    "./types": "./types/index.ts",
+    "./seeds": "./seeds/index.ts"
+  },
+  "scripts": {
+    "generate": "prisma generate",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:reset": "prisma migrate reset",
+    "migrate:status": "prisma migrate status",
+    "studio": "prisma studio",
+    "seed": "tsx seeds/dev/index.ts",
+    "seed:test": "tsx seeds/test/index.ts",
+    "seed:prod": "tsx seeds/prod/index.ts",
+    "db:push": "prisma db push",
+    "db:pull": "prisma db pull",
+    "format": "prisma format",
+    "validate": "prisma validate",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "prisma": "^5.0.0",
+    "tsx": "^4.0.0",
+    "typescript": "^5.0.0"
+  }
+}

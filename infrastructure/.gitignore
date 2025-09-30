@@ -1,0 +1,19 @@
+# Terraform
+**/.terraform/
+**/.terraform.lock.hcl
+**/terraform.tfstate
+**/terraform.tfstate.backup
+**/terraform.tfvars
+**/.terraformrc
+**/terraform.rc
+
+# Kubernetes secrets
+**/secrets/**
+!**/secrets/.gitkeep
+
+# Local development
+*.local
+*.env
+
+# Logs
+*.log

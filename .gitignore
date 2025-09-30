@@ -30,3 +30,60 @@ Thumbs.db
 
 # Supabase
 supabase/.temp
+
+# ============================================================================
+# 2030 Transformation - Legacy Prevention
+# ============================================================================
+
+# Legacy documentation (keep only current transformation docs)
+/*_REPORT.md
+/*_SUMMARY.md
+/*_COMPLETE.md
+/*_AUDIT*.md
+/*_CHECKLIST.md
+/*_ACHIEVEMENT*.md
+/*_STATUS.md
+/*_VALIDATION*.md
+/ATLVS*.md
+/REMEDIATION*.md
+/COMPLIANCE*.md
+/PERFORMANCE*.md
+/MIGRATION*.md
+/BUILD*.md
+/FINAL*.md
+!/START_HERE.md
+!/TRANSFORMATION_COMPLETE.md
+!/README.md
+
+# Legacy JSON files
+/audit*.json
+/migration*.json
+/token-*.json
+/lint-report.json
+
+# Build and log files
+/*.log
+/*.txt
+!/test-push.txt
+/build_output.log
+
+# Backup archives
+/*.tar.gz
+/*.gz
+
+# Legacy scripts (keep only in scripts/ directory)
+/fix-*.sh
+/fix_*.sh
+/fix-*.js
+/fix_*.py
+/final-*.sh
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Transformation markers
+.transformation-*
+.last-backup-location
+
+# Backups directory
+/backups/
