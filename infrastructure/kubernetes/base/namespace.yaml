@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: ghxstship
+  labels:
+    name: ghxstship
+    environment: base

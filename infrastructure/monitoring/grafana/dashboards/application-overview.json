@@ -1,0 +1,49 @@
+{
+  "dashboard": {
+    "title": "GHXSTSHIP Application Overview",
+    "tags": ["ghxstship", "application"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "title": "Request Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total{namespace=~\"ghxstship.*\"}[5m])",
+            "legendFormat": "{{namespace}} - {{method}} {{status}}"
+          }
+        ]
+      },
+      {
+        "title": "Response Time (p95)",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket{namespace=~\"ghxstship.*\"}[5m]))",
+            "legendFormat": "{{namespace}}"
+          }
+        ]
+      },
+      {
+        "title": "Error Rate",
+        "type": "graph",
+        "targets": [
+          {
+            "expr": "rate(http_requests_total{namespace=~\"ghxstship.*\",status=~\"5..\"}[5m])",
+            "legendFormat": "{{namespace}}"
+          }
+        ]
+      },
+      {
+        "title": "Active Pods",
+        "type": "stat",
+        "targets": [
+          {
+            "expr": "count(kube_pod_status_phase{namespace=~\"ghxstship.*\",phase=\"Running\"})",
+            "legendFormat": "Running Pods"
+          }
+        ]
+      }
+    ]
+  }
+}
