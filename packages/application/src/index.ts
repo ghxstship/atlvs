@@ -1,4 +1,19 @@
-// Placeholder exports for missing components
+// CQRS Types
+export * from './types';
+
+// Commands
+export * from './commands/projects';
+
+// Queries
+export * from './queries/projects';
+
+// DTOs
+export * from './dtos/projects';
+
+// Mappers
+export * from './mappers';
+
+// Legacy exports
 export const AuditLogger = {
   log: (event: string, data?: any) => console.log('AuditLogger:', event, data),
   error: (event: string, error: any) => console.error('AuditLogger:', event, error),
