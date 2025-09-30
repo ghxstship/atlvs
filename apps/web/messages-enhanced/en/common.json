@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "dashboard": "Dashboard",
+    "projects": "Projects",
+    "people": "People",
+    "companies": "Companies",
+    "finance": "Finance"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "create": "Create",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    
+    "_meta": {
+      "save": {
+        "context": "Button label for saving form data",
+        "maxLength": 20
+      },
+      "cancel": {
+        "context": "Button label for canceling an operation",
+        "maxLength": 20
+      },
+      "delete": {
+        "context": "Button label for deleting an item. Use with caution.",
+        "maxLength": 20
+      }
+    }
+  },
+  
+  "pluralization": {
+    "items": "{count, plural, =0 {no items} =1 {one item} other {# items}}",
+    "projects": "{count, plural, =0 {no projects} =1 {one project} other {# projects}}",
+    "people": "{count, plural, =0 {no people} =1 {one person} other {# people}}",
+    "files": "{count, plural, =0 {no files} =1 {one file} other {# files}}",
+    "days": "{count, plural, =0 {today} =1 {yesterday} other {# days ago}}",
+    "minutes": "{count, plural, =0 {now} =1 {a minute ago} other {# minutes ago}}",
+    
+    "_meta": {
+      "items": {
+        "context": "Generic item count. Used for lists and collections.",
+        "examples": ["no items", "one item", "5 items"]
+      },
+      "projects": {
+        "context": "Project count for dashboard and lists",
+        "examples": ["no projects", "one project", "12 projects"]
+      }
+    }
+  },
+  
+  "richText": {
+    "welcome": "Welcome <b>{name}</b>! Check out <link>our documentation</link> to get started.",
+    "upgrade": "You're on the <b>free plan</b>. <link>Upgrade to Pro</link> for more features.",
+    "alert": "<b>Important:</b> Your subscription expires in <b>{days} days</b>.",
+    
+    "_meta": {
+      "welcome": {
+        "context": "Welcome message on first login. <b> for bold, <link> for anchor",
+        "variables": ["name"],
+        "components": ["b", "link"]
+      },
+      "upgrade": {
+        "context": "Upsell message for free tier users",
+        "components": ["b", "link"]
+      }
+    }
+  },
+  
+  "dateTime": {
+    "relative": {
+      "justNow": "just now",
+      "minuteAgo": "a minute ago",
+      "minutesAgo": "{count} minutes ago",
+      "hourAgo": "an hour ago",
+      "hoursAgo": "{count} hours ago",
+      "yesterday": "yesterday",
+      "daysAgo": "{count} days ago",
+      "weekAgo": "a week ago",
+      "weeksAgo": "{count} weeks ago",
+      "monthAgo": "a month ago",
+      "monthsAgo": "{count} months ago"
+    },
+    
+    "_meta": {
+      "relative": {
+        "context": "Relative time strings for activity feeds and timestamps",
+        "note": "These follow Instagram/Twitter style relative times"
+      }
+    }
+  }
+}

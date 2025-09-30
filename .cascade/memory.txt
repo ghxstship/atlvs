@@ -1,0 +1,1 @@
+2025-09-24: Converted companies module (directory, contracts, overview, ratings) drawers from `UniversalDrawer` to shared `AppDrawer`; finance module already migrated. Remaining tasks: migrate other modules, fix `FieldConfig` typing, convert `.eslintrc.js` to ESM, run `scripts/build-fortress.sh`.

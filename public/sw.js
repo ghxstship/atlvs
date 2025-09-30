@@ -113,8 +113,9 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Skip non-GET requests
-  if (request.method !== 'GET') {
+  // Handle write operations (POST, PUT, PATCH, DELETE) with offline queuing
+  if (['POST', 'PUT', 'PATCH', 'DELETE'].includes(request.method)) {
+    event.respondWith(handleWriteRequest(request));
     return;
   }
 
@@ -127,7 +128,13 @@ self.addEventListener('fetch', (event) => {
           setTimeout(() => reject(new Error('Network timeout')), 5000)
         ),
       ]).catch(() => {
-        return caches.match(request) || new Response('Offline', { status: 503 });
+        return caches.match(request) || new Response(JSON.stringify({
+          error: 'Offline',
+          message: 'You are currently offline. Data shown may be outdated.'
+        }), {
+          status: 503,
+          headers: { 'Content-Type': 'application/json' }
+        });
       })
     );
     return;
@@ -154,7 +161,10 @@ self.addEventListener('fetch', (event) => {
   if (request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
       CACHE_STRATEGIES.staleWhileRevalidate(request).catch(() => {
-        return caches.match('/offline.html') || new Response('Offline', { status: 503 });
+        return caches.match('/offline.html') || new Response('Offline - Please check your connection', {
+          status: 503,
+          headers: { 'Content-Type': 'text/plain' }
+        });
       })
     );
     return;
@@ -163,6 +173,57 @@ self.addEventListener('fetch', (event) => {
   // Default - network first
   event.respondWith(CACHE_STRATEGIES.networkFirst(request));
 });
+
+// Handle write requests with offline queuing
+async function handleWriteRequest(request) {
+  try {
+    const response = await fetch(request.clone());
+
+    // Cache successful responses for certain endpoints
+    if (response.ok && request.method === 'PUT') {
+      const cache = await caches.open(CACHE_NAMES.api);
+      cache.put(request, response.clone());
+    }
+
+    return response;
+  } catch (error) {
+    console.log('Network request failed, queuing for later:', request.url);
+
+    // Queue the request for later
+    try {
+      const requestData = {
+        id: Date.now() + Math.random(),
+        method: request.method,
+        url: request.url,
+        headers: Object.fromEntries(request.headers.entries()),
+        body: request.method !== 'DELETE' ? await request.clone().text() : null,
+        timestamp: Date.now(),
+        retryCount: 0
+      };
+
+      await addPendingRequest(requestData);
+
+      return new Response(JSON.stringify({
+        success: true,
+        queued: true,
+        message: 'Request queued for when connection is restored',
+        id: requestData.id
+      }), {
+        status: 202,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    } catch (queueError) {
+      console.error('Failed to queue request:', queueError);
+      return new Response(JSON.stringify({
+        error: 'Offline',
+        message: 'Request cannot be processed while offline'
+      }), {
+        status: 503,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+  }
+}
 
 // Background sync for offline actions
 self.addEventListener('sync', (event) => {
@@ -200,31 +261,184 @@ self.addEventListener('notificationclick', (event) => {
 // Helper function to sync offline data
 async function syncOfflineData() {
   try {
+    console.log('Starting offline data sync...');
+
     // Get all pending requests from IndexedDB
     const pendingRequests = await getPendingRequests();
-    
+
+    console.log(`Processing ${pendingRequests.length} queued requests`);
+
     // Process each request
-    for (const request of pendingRequests) {
+    for (const requestData of pendingRequests) {
       try {
-        await fetch(request.url, request.options);
-        await removePendingRequest(request.id);
+        console.log('Processing queued request:', requestData.url);
+
+        const request = new Request(requestData.url, {
+          method: requestData.method,
+          headers: requestData.headers,
+          body: requestData.body
+        });
+
+        const response = await fetch(request);
+
+        if (response.ok) {
+          await removePendingRequest(requestData.id);
+          console.log('Successfully processed queued request:', requestData.url);
+
+          // Notify clients of successful sync
+          self.clients.matchAll().then(clients => {
+            clients.forEach(client => {
+              client.postMessage({
+                type: 'SYNC_SUCCESS',
+                requestId: requestData.id,
+                url: requestData.url
+              });
+            });
+          });
+        } else {
+          // Increment retry count
+          await updateRetryCount(requestData.id);
+
+          // If too many retries, remove from queue
+          if (requestData.retryCount >= 5) {
+            await removePendingRequest(requestData.id);
+            console.log('Removed failed request from queue after max retries:', requestData.url);
+
+            // Notify clients of failed sync
+            self.clients.matchAll().then(clients => {
+              clients.forEach(client => {
+                client.postMessage({
+                  type: 'SYNC_FAILED',
+                  requestId: requestData.id,
+                  url: requestData.url,
+                  error: 'Max retries exceeded'
+                });
+              });
+            });
+          }
+        }
       } catch (error) {
-        console.error('Failed to sync request:', error);
+        console.error('Failed to process queued request:', requestData.url, error);
+
+        // Increment retry count
+        await updateRetryCount(requestData.id);
+
+        // If too many retries, remove from queue
+        if (requestData.retryCount >= 5) {
+          await removePendingRequest(requestData.id);
+
+          // Notify clients of failed sync
+          self.clients.matchAll().then(clients => {
+            clients.forEach(client => {
+              client.postMessage({
+                type: 'SYNC_FAILED',
+                requestId: requestData.id,
+                url: requestData.url,
+                error: error.message
+              });
+            });
+          });
+        }
       }
     }
+
+    console.log('Offline data sync completed');
+
+    // Notify all clients that sync is complete
+    self.clients.matchAll().then(clients => {
+      clients.forEach(client => {
+        client.postMessage({
+          type: 'SYNC_COMPLETE',
+          timestamp: Date.now()
+        });
+      });
+    });
+
   } catch (error) {
     console.error('Sync failed:', error);
   }
 }
 
 // IndexedDB helpers for offline queue
+const DB_NAME = 'ghxstship-offline';
+const DB_VERSION = 1;
+const STORE_NAME = 'requests';
+
+async function openDB() {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+
+    request.onupgradeneeded = (event) => {
+      const db = event.target.result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+        store.createIndex('timestamp', 'timestamp', { unique: false });
+        store.createIndex('method', 'method', { unique: false });
+      }
+    };
+  });
+}
+
 async function getPendingRequests() {
-  // Implementation would go here
-  return [];
+  const db = await openDB();
+  const transaction = db.transaction([STORE_NAME], 'readonly');
+  const store = transaction.objectStore(STORE_NAME);
+  const index = store.index('timestamp');
+
+  return new Promise((resolve, reject) => {
+    const request = index.getAll();
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function addPendingRequest(requestData) {
+  const db = await openDB();
+  const transaction = db.transaction([STORE_NAME], 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+
+  return new Promise((resolve, reject) => {
+    const request = store.add(requestData);
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
 }
 
 async function removePendingRequest(id) {
-  // Implementation would go here
+  const db = await openDB();
+  const transaction = db.transaction([STORE_NAME], 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+
+  return new Promise((resolve, reject) => {
+    const request = store.delete(id);
+    request.onsuccess = () => resolve();
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function updateRetryCount(id) {
+  const db = await openDB();
+  const transaction = db.transaction([STORE_NAME], 'readwrite');
+  const store = transaction.objectStore(STORE_NAME);
+
+  return new Promise((resolve, reject) => {
+    const getRequest = store.get(id);
+    getRequest.onsuccess = () => {
+      const item = getRequest.result;
+      if (item) {
+        item.retryCount = (item.retryCount || 0) + 1;
+        const putRequest = store.put(item);
+        putRequest.onsuccess = () => resolve();
+        putRequest.onerror = () => reject(putRequest.error);
+      } else {
+        resolve();
+      }
+    };
+    getRequest.onerror = () => reject(getRequest.error);
+  });
 }
 
 // Message handler for cache management

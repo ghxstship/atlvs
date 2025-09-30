@@ -1,0 +1,489 @@
+{
+  "$schema": "./component-registry-schema.json",
+  "version": "1.0.0",
+  "lastUpdated": "2025-09-30",
+  "architecture": {
+    "philosophy": "Unified Design System with System-Level Composition",
+    "primarySource": "UnifiedDesignSystem.tsx",
+    "exportStrategy": "index-unified.ts",
+    "compositionPattern": "System-level (CompositePatterns.tsx, LayoutSystem.tsx)"
+  },
+  "atoms": {
+    "description": "Base HTML elements with styling",
+    "location": "components/atomic/",
+    "components": {
+      "Button": {
+        "file": "components/atomic/Button.tsx",
+        "exports": ["Button", "ButtonGroup", "buttonVariants"],
+        "variants": ["default", "destructive", "outline", "secondary", "ghost", "link", "pop"],
+        "sizes": ["sm", "default", "lg", "xl", "icon"],
+        "features": ["loading", "icons", "fullWidth", "compound"],
+        "status": "production",
+        "duplicates": ["unified/Button.tsx (same)", "atoms/Button.tsx (legacy)"],
+        "canonical": true
+      },
+      "Input": {
+        "file": "components/atomic/Input.tsx",
+        "exports": ["Input", "InputGroup", "SearchInput", "PasswordInput", "inputVariants"],
+        "variants": ["default", "error", "success", "ghost"],
+        "sizes": ["sm", "default", "lg"],
+        "features": ["label", "error", "icons", "addons", "loading", "validation"],
+        "status": "production",
+        "duplicates": ["unified/Input.tsx (same)", "atoms/Input.tsx (legacy)"],
+        "canonical": true
+      },
+      "RadioButton": {
+        "file": "components/atomic/RadioButton.tsx",
+        "exports": ["RadioButton", "RadioGroup", "radioVariants"],
+        "variants": ["default", "error"],
+        "features": ["label", "description", "error", "group"],
+        "status": "production",
+        "duplicates": [],
+        "canonical": true,
+        "added": "2025-09-30"
+      },
+      "RangeSlider": {
+        "file": "components/atomic/RangeSlider.tsx",
+        "exports": ["RangeSlider", "sliderVariants"],
+        "variants": ["default", "error"],
+        "features": ["label", "showValue", "valueFormatter", "accessibility"],
+        "status": "production",
+        "duplicates": [],
+        "canonical": true,
+        "added": "2025-09-30"
+      },
+      "ColorPicker": {
+        "file": "components/atomic/ColorPicker.tsx",
+        "exports": ["ColorPicker", "colorPickerVariants"],
+        "variants": ["default", "error"],
+        "features": ["label", "showValue", "presets", "hexInput"],
+        "status": "production",
+        "duplicates": [],
+        "canonical": true,
+        "added": "2025-09-30"
+      },
+      "Checkbox": {
+        "file": "components/atomic/Checkbox.tsx",
+        "exports": ["Checkbox"],
+        "features": ["indeterminate", "label", "error"],
+        "status": "production",
+        "duplicates": ["atoms/Checkbox.tsx (legacy)"],
+        "canonical": true
+      },
+      "Textarea": {
+        "file": "components/atomic/Textarea.tsx",
+        "exports": ["Textarea"],
+        "variants": ["default", "error"],
+        "features": ["label", "error", "resize", "autosize"],
+        "status": "production",
+        "duplicates": ["atoms/Textarea.tsx (legacy)"],
+        "canonical": true
+      },
+      "Skeleton": {
+        "file": "components/atomic/Skeleton.tsx",
+        "exports": ["Skeleton"],
+        "status": "production",
+        "canonical": true
+      },
+      "Avatar": {
+        "file": "components/Avatar.tsx",
+        "exports": ["Avatar"],
+        "features": ["fallback", "image", "status"],
+        "status": "production",
+        "canonical": true
+      },
+      "Badge": {
+        "file": "components/Badge.tsx",
+        "exports": ["Badge"],
+        "variants": ["default", "success", "warning", "destructive"],
+        "status": "production",
+        "canonical": true
+      },
+      "Icon": {
+        "file": "components/Icon.tsx",
+        "exports": ["Icon", "IconButton", "StatusIcon", "IconWithText"],
+        "features": ["themeAware", "sizes", "colors"],
+        "status": "production",
+        "canonical": true
+      },
+      "Image": {
+        "file": "components/Image.tsx",
+        "exports": ["Image"],
+        "features": ["responsive", "lazyLoad", "themeAware"],
+        "status": "production",
+        "canonical": true
+      },
+      "Label": {
+        "file": "components/Label.tsx",
+        "exports": ["Label"],
+        "status": "production",
+        "canonical": true
+      },
+      "Link": {
+        "file": "components/Link.tsx",
+        "exports": ["Link"],
+        "variants": ["internal", "external"],
+        "features": ["disabled", "underline"],
+        "status": "production",
+        "canonical": true
+      },
+      "Progress": {
+        "file": "components/Progress.tsx",
+        "exports": ["Progress"],
+        "variants": ["default", "success", "warning", "error"],
+        "status": "production",
+        "canonical": true
+      },
+      "Separator": {
+        "file": "components/Separator.tsx",
+        "exports": ["Separator"],
+        "status": "production",
+        "canonical": true
+      },
+      "Switch": {
+        "file": "components/Switch.tsx",
+        "exports": ["Switch"],
+        "features": ["label", "description"],
+        "status": "production",
+        "canonical": true
+      },
+      "Toggle": {
+        "file": "components/Toggle.tsx",
+        "exports": ["Toggle"],
+        "variants": ["default", "outline"],
+        "status": "production",
+        "canonical": true
+      }
+    }
+  },
+  "molecules": {
+    "description": "Simple component combinations",
+    "location": "system/CompositePatterns.tsx (system-level)",
+    "components": {
+      "SearchBox": {
+        "file": "components/SearchBox.tsx",
+        "exports": ["SearchBox", "SearchFilter"],
+        "composition": ["Input", "Icon", "Button"],
+        "features": ["clearButton", "icon", "focus", "sizes"],
+        "status": "production",
+        "canonical": true,
+        "note": "Production-ready implementation"
+      },
+      "FormField": {
+        "file": "molecules/FormField.tsx",
+        "exports": ["FormField", "InputField", "TextareaField"],
+        "composition": ["Label", "Input/Textarea", "Error", "Description"],
+        "status": "available",
+        "canonical": false,
+        "note": "Available but not integrated - Input already has built-in label/error"
+      },
+      "MenuItem": {
+        "file": "components/Navigation.tsx",
+        "exports": ["MenuItem (internal)"],
+        "composition": ["Icon", "Text", "Badge", "Shortcut"],
+        "status": "production",
+        "canonical": true,
+        "note": "Part of Navigation organism"
+      },
+      "ListItem": {
+        "file": "system/CompositePatterns.tsx",
+        "exports": ["listItemVariants"],
+        "composition": ["Avatar", "Text", "Actions"],
+        "status": "production",
+        "canonical": true,
+        "note": "System-level pattern"
+      },
+      "Breadcrumbs": {
+        "file": "components/Breadcrumbs.tsx",
+        "exports": ["Breadcrumbs"],
+        "composition": ["Link", "Separator"],
+        "status": "production",
+        "canonical": true
+      },
+      "Pagination": {
+        "file": "components/Pagination.tsx",
+        "exports": ["Pagination"],
+        "composition": ["Button", "Text"],
+        "status": "production",
+        "canonical": true
+      },
+      "Tooltip": {
+        "file": "components/Tooltip.tsx",
+        "exports": ["Tooltip"],
+        "features": ["positioning", "trigger", "accessibility"],
+        "status": "production",
+        "canonical": true
+      }
+    }
+  },
+  "organisms": {
+    "description": "Complex component groups",
+    "location": "components/",
+    "components": {
+      "Navigation": {
+        "file": "components/Navigation.tsx",
+        "exports": ["Navigation"],
+        "features": ["multiLevel", "responsive", "keyboard", "ARIA"],
+        "status": "production",
+        "canonical": true
+      },
+      "Sidebar": {
+        "file": "components/Sidebar/",
+        "exports": ["Sidebar"],
+        "features": ["collapsible", "responsive", "navigation"],
+        "status": "production",
+        "canonical": true
+      },
+      "Table": {
+        "file": "components/Table.tsx",
+        "exports": ["Table"],
+        "features": ["sorting", "filtering", "pagination", "selection"],
+        "status": "production",
+        "canonical": true
+      },
+      "DataViews": {
+        "file": "components/DataViews/",
+        "exports": [
+          "DataGrid",
+          "KanbanBoard",
+          "ListView",
+          "CalendarView",
+          "TimelineView",
+          "GalleryView",
+          "DashboardView",
+          "FormView",
+          "PivotTableView",
+          "MapView",
+          "WhiteboardView"
+        ],
+        "features": ["comprehensive", "switching", "filtering", "bulk"],
+        "status": "production",
+        "canonical": true
+      },
+      "Modal": {
+        "file": "components/Modal.tsx",
+        "exports": ["Modal"],
+        "features": ["overlay", "focus", "escape", "accessibility"],
+        "status": "production",
+        "canonical": true
+      },
+      "Drawer": {
+        "file": "components/Drawer.tsx",
+        "exports": ["Drawer", "AppDrawer", "EnhancedUniversalDrawer"],
+        "features": ["slide", "overlay", "positions"],
+        "status": "production",
+        "canonical": true
+      },
+      "Toast": {
+        "file": "components/Toast.tsx",
+        "exports": ["Toast"],
+        "features": ["notifications", "positioning", "auto-dismiss"],
+        "status": "production",
+        "canonical": true
+      },
+      "Alert": {
+        "file": "components/Alert.tsx",
+        "exports": ["Alert", "AlertTitle", "AlertDescription"],
+        "variants": ["default", "success", "warning", "error"],
+        "status": "production",
+        "canonical": true
+      },
+      "Card": {
+        "file": "components/Card.tsx",
+        "exports": ["Card", "CardHeader", "CardContent", "CardFooter", "CardTitle", "CardDescription"],
+        "variants": ["default", "outlined", "elevated", "filled"],
+        "status": "production",
+        "canonical": true
+      },
+      "Tabs": {
+        "file": "components/Tabs.tsx",
+        "exports": ["Tabs", "TabsList", "TabsTrigger", "TabsContent"],
+        "status": "production",
+        "canonical": true
+      },
+      "Select": {
+        "file": "components/Select/",
+        "exports": ["Select", "SelectTrigger", "SelectValue", "SelectContent", "SelectItem", "SelectGroup", "SelectLabel", "SelectSeparator"],
+        "features": ["search", "multi", "groups"],
+        "status": "production",
+        "canonical": true
+      },
+      "DatePicker": {
+        "file": "components/DatePicker.tsx",
+        "exports": ["DatePicker"],
+        "features": ["calendar", "range", "presets"],
+        "status": "production",
+        "canonical": true
+      },
+      "FileUpload": {
+        "file": "components/FileUpload.tsx",
+        "exports": ["FileUpload"],
+        "features": ["dragDrop", "preview", "validation"],
+        "status": "production",
+        "canonical": true
+      },
+      "TagInput": {
+        "file": "components/TagInput.tsx",
+        "exports": ["TagInput"],
+        "features": ["autocomplete", "validation", "badges"],
+        "status": "production",
+        "canonical": true
+      },
+      "DropdownMenu": {
+        "file": "components/DropdownMenu.tsx",
+        "exports": ["Dropdown", "DropdownMenu"],
+        "features": ["positioning", "keyboard", "nested"],
+        "status": "production",
+        "canonical": true
+      },
+      "EmptyState": {
+        "file": "components/EmptyState.tsx",
+        "exports": ["EmptyState"],
+        "features": ["icon", "message", "action"],
+        "status": "production",
+        "canonical": true
+      }
+    }
+  },
+  "templates": {
+    "description": "Page layout structures",
+    "location": "system/LayoutSystem.tsx (system-level)",
+    "components": {
+      "LayoutSystem": {
+        "file": "system/LayoutSystem.tsx",
+        "exports": ["Stack", "Inline", "Grid", "Container"],
+        "features": ["responsive", "spacing", "alignment"],
+        "status": "production",
+        "canonical": true,
+        "note": "System-level layout composition"
+      },
+      "CompositePatterns": {
+        "file": "system/CompositePatterns.tsx",
+        "exports": ["tableVariants", "listVariants", "cardVariants"],
+        "features": ["patterns", "variants", "composition"],
+        "status": "production",
+        "canonical": true,
+        "note": "System-level pattern library"
+      }
+    }
+  },
+  "system": {
+    "description": "Enterprise architecture and system-level patterns",
+    "location": "system/",
+    "files": {
+      "ComponentSystem.tsx": {
+        "purpose": "Component composition patterns",
+        "size": "13,345 bytes",
+        "status": "production"
+      },
+      "CompositePatterns.tsx": {
+        "purpose": "Molecular and template patterns",
+        "size": "13,908 bytes",
+        "status": "production"
+      },
+      "LayoutSystem.tsx": {
+        "purpose": "Layout composition",
+        "size": "13,562 bytes",
+        "status": "production"
+      },
+      "GridSystem.tsx": {
+        "purpose": "Grid system",
+        "size": "17,817 bytes",
+        "status": "production"
+      },
+      "ContainerSystem.tsx": {
+        "purpose": "Container patterns",
+        "size": "13,471 bytes",
+        "status": "production"
+      },
+      "WorkflowSystem.tsx": {
+        "purpose": "Workflow patterns",
+        "size": "15,387 bytes",
+        "status": "production"
+      },
+      "DesignSystem.tsx": {
+        "purpose": "Design system core",
+        "size": "8,608 bytes",
+        "status": "production"
+      },
+      "PerformanceMonitor.tsx": {
+        "purpose": "Performance tracking",
+        "size": "21,124 bytes",
+        "status": "production"
+      },
+      "CacheManager.tsx": {
+        "purpose": "Caching system",
+        "size": "12,008 bytes",
+        "status": "production"
+      },
+      "EnhancementSystem.tsx": {
+        "purpose": "Enhancement patterns",
+        "size": "18,019 bytes",
+        "status": "production"
+      },
+      "UIStateValidator.tsx": {
+        "purpose": "State validation",
+        "size": "19,086 bytes",
+        "status": "production"
+      },
+      "DatabaseIntegrationValidator.tsx": {
+        "purpose": "DB integration",
+        "size": "27,380 bytes",
+        "status": "production"
+      },
+      "GlobalUIOptimization.tsx": {
+        "purpose": "Global optimizations",
+        "size": "215 bytes",
+        "status": "production"
+      }
+    }
+  },
+  "deprecatedComponents": {
+    "description": "Legacy components to be removed",
+    "components": [
+      {
+        "path": "atoms/Button.tsx",
+        "reason": "Use components/atomic/Button.tsx",
+        "removeAfter": "2025-12-31"
+      },
+      {
+        "path": "atoms/Input.tsx",
+        "reason": "Use components/atomic/Input.tsx",
+        "removeAfter": "2025-12-31"
+      },
+      {
+        "path": "atoms/Checkbox.tsx",
+        "reason": "Use components/atomic/Checkbox.tsx",
+        "removeAfter": "2025-12-31"
+      },
+      {
+        "path": "atoms/Textarea.tsx",
+        "reason": "Use components/atomic/Textarea.tsx",
+        "removeAfter": "2025-12-31"
+      }
+    ]
+  },
+  "governance": {
+    "newComponentProcess": [
+      "1. Check COMPONENT_REGISTRY.json for existing implementations",
+      "2. Search codebase for similar patterns",
+      "3. Follow architectural philosophy (system-level composition)",
+      "4. Add to appropriate location (atomic/, components/, system/)",
+      "5. Export from index-unified.ts",
+      "6. Update COMPONENT_REGISTRY.json",
+      "7. Add to component catalog documentation"
+    ],
+    "preventDuplication": [
+      "Run scripts/check-component-duplicates.sh before creating",
+      "Review COMPONENT_REGISTRY.json",
+      "Check UnifiedDesignSystem.tsx",
+      "Search system/ directory for patterns",
+      "Consult architectural decision records"
+    ],
+    "maintenanceSchedule": {
+      "quarterly": "Component audit and cleanup",
+      "monthly": "Registry updates",
+      "weekly": "Duplicate detection runs"
+    }
+  }
+}

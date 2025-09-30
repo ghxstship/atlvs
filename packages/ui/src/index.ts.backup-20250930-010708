@@ -1,0 +1,78 @@
+/**
+ * GHXSTSHIP UI Package - Unified Design System
+ * Enterprise-Grade UI Components and Design Tokens
+ */
+
+// Export unified design system (PRIMARY EXPORTS)
+export * from './index-unified';
+
+// Export remaining legacy components that exist
+export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs';
+export { Drawer } from './components/Drawer';
+export { EmptyState } from './components/EmptyState';
+export { Alert, AlertTitle, AlertDescription } from './components/Alert';
+export { Breadcrumbs } from './components/Breadcrumbs';
+export { Sidebar } from './components/Sidebar';
+export { Avatar } from './components/Avatar';
+export { EnhancedUniversalDrawer } from './components/EnhancedUniversalDrawer';
+
+// Theme and Token System
+export { ThemeProvider, useTheme, useTokens } from './providers/ThemeProvider';
+export { UnifiedThemeProvider, useDesignTokens, useReducedMotion, useResponsive } from './providers/UnifiedThemeProvider';
+export { AdaptiveThemeProvider, useAdaptiveTheme, useActivityContext, useStressDetection } from './providers/AdaptiveThemeProvider';
+export { ThemeToggle } from './components/ThemeToggle';
+export { ThemeScope, NextThemesScope } from './theme/ThemeScope';
+
+// Theme-Aware Components
+export { 
+  ThemeAwareImage, 
+  ThemeAwareSVG, 
+  ThemeAwareIcon, 
+  ThemeAwareBackground 
+} from './components/ThemeAwareImage';
+export { 
+  CodeBlock, 
+  usePrismTheme, 
+  useHighlightJsTheme, 
+  useShikiTheme, 
+  useMonacoTheme, 
+  useCustomSyntaxTheme 
+} from './components/CodeBlock';
+
+// Theme Utilities
+export { 
+  calculateContrastRatio, 
+  meetsWCAG, 
+  validateThemeAccessibility, 
+  validateAllThemes, 
+  generateValidationReport 
+} from './utils/theme-validator';
+export { 
+  useChartTheme, 
+  getRechartsTheme, 
+  getChartJsTheme, 
+  getApexChartsTheme, 
+  getD3Theme, 
+  getPlotlyTheme, 
+  getVictoryTheme 
+} from './utils/chart-theme-adapter';
+export { 
+  useSemanticColors, 
+  useAgGridTheme, 
+  useReactTableTheme, 
+  useReactSelectTheme, 
+  useReactDatepickerTheme, 
+  useReactToastifyTheme, 
+  useReactModalTheme, 
+  useReactDndTheme, 
+  useFramerMotionTheme, 
+  useLeafletTheme, 
+  useFullCalendarTheme, 
+  useTiptapTheme, 
+  useReactHookFormTheme, 
+  createThirdPartyTheme 
+} from './utils/third-party-theme-integration';
+
+// Hooks for bulk operations and optimistic updates
+export * from './hooks';

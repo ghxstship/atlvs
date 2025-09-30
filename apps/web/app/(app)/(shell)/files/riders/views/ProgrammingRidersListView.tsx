@@ -1,0 +1,401 @@
+'use client';
+
+import { MoreHorizontal, Edit, Eye, Trash2, ChevronDown, ChevronRight, Calendar, MapPin, User, Clock, CheckCircle, XCircle, AlertCircle } from "lucide-react";
+import { useState } from 'react';
+import {
+ Badge,
+ Button,
+ Card,
+ Checkbox,
+ Table,
+ TableBody,
+ TableCell,
+ TableHead,
+ TableHeader,
+ TableRow,
+ DropdownMenu,
+ DropdownMenuContent,
+ DropdownMenuItem,
+ DropdownMenuTrigger,
+ Collapsible,
+ CollapsibleContent,
+ CollapsibleTrigger,
+} from '@ghxstship/ui';
+
+import type { ProgrammingRider, RiderSort, STATUS_BADGE, PRIORITY_BADGE, RIDER_KIND_BADGE } from '../types';
+
+interface ProgrammingRidersListViewProps {
+ riders: ProgrammingRider[];
+ loading: boolean;
+ selectedRiders: string[];
+ onSelectionChange: (selected: string[]) => void;
+ onEdit: (rider: ProgrammingRider) => void;
+ onView: (rider: ProgrammingRider) => void;
+ onDelete: (riderId: string) => void;
+ sort: RiderSort;
+ onSortChange: (sort: RiderSort) => void;
+}
+
+const STATUS_BADGE_CONFIG = {
+ draft: { label: 'Draft', variant: 'default' as const },
+ pending_review: { label: 'Pending Review', variant: 'warning' as const },
+ under_review: { label: 'Under Review', variant: 'info' as const },
+ approved: { label: 'Approved', variant: 'success' as const },
+ rejected: { label: 'Rejected', variant: 'destructive' as const },
+ fulfilled: { label: 'Fulfilled', variant: 'success' as const },
+ cancelled: { label: 'Cancelled', variant: 'secondary' as const },
+};
+
+const PRIORITY_BADGE_CONFIG = {
+ low: { label: 'Low', variant: 'secondary' as const },
+ medium: { label: 'Medium', variant: 'default' as const },
+ high: { label: 'High', variant: 'warning' as const },
+ critical: { label: 'Critical', variant: 'destructive' as const },
+ urgent: { label: 'Urgent', variant: 'destructive' as const },
+};
+
+const RIDER_KIND_CONFIG = {
+ technical: { label: 'Technical', icon: '🔧' },
+ hospitality: { label: 'Hospitality', icon: '🍽️' },
+ stage_plot: { label: 'Stage Plot', icon: '📋' },
+ security: { label: 'Security', icon: '🛡️' },
+ catering: { label: 'Catering', icon: '🍴' },
+ transportation: { label: 'Transportation', icon: '🚐' },
+ accommodation: { label: 'Accommodation', icon: '🏨' },
+ production: { label: 'Production', icon: '🎬' },
+ artist: { label: 'Artist', icon: '🎤' },
+ crew: { label: 'Crew', icon: '👥' },
+};
+
+export default function ProgrammingRidersListView({
+ riders,
+ loading,
+ selectedRiders,
+ onSelectionChange,
+ onEdit,
+ onView,
+ onDelete,
+ sort,
+ onSortChange,
+}: ProgrammingRidersListViewProps) {
+ const [expandedRows, setExpandedRows] = useState<string[]>([]);
+
+ const handleSelectAll = (checked: boolean) => {
+ if (checked) {
+ onSelectionChange(riders.map((rider) => rider.id));
+ } else {
+ onSelectionChange([]);
+ }
+ };
+
+ const handleSelectRider = (riderId: string, checked: boolean) => {
+ if (checked) {
+ onSelectionChange([...selectedRiders, riderId]);
+ } else {
+ onSelectionChange(selectedRiders.filter((id) => id !== riderId));
+ }
+ };
+
+ const toggleRowExpansion = (riderId: string) => {
+ setExpandedRows((prev: unknown) =>
+ prev.includes(riderId)
+ ? prev.filter((id) => id !== riderId)
+ : [...prev, riderId]
+ );
+ };
+
+ const handleSort = (field: keyof ProgrammingRider) => {
+ const direction = sort.field === field && sort.direction === 'asc' ? 'desc' : 'asc';
+ onSortChange({ field, direction });
+ };
+
+ const getSortIcon = (field: keyof ProgrammingRider) => {
+ if (sort.field !== field) return null;
+ return sort.direction === 'asc' ? '↑' : '↓';
+ };
+
+ if (loading) {
+ return (
+ <Card className="p-8">
+ <div className="flex items-center justify-center">
+ <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <span className="ml-2">Loading riders...</span>
+ </div>
+ </Card>
+ );
+ }
+
+ if (riders.length === 0) {
+ return (
+ <Card className="p-8">
+ <div className="text-center">
+ <h3 className="text-lg font-semibold">No riders found</h3>
+ <p className="text-muted-foreground">
+ No riders match your current filters. Try adjusting your search criteria.
+ </p>
+ </div>
+ </Card>
+ );
+ }
+
+ return (
+ <Card>
+ <Table>
+ <TableHeader>
+ <TableRow>
+ <TableHead className="w-12">
+ <Checkbox
+ checked={selectedRiders.length === riders.length}
+ onCheckedChange={handleSelectAll}
+ aria-
+ />
+ </TableHead>
+ <TableHead className="w-12"></TableHead>
+ <TableHead 
+ className="cursor-pointer hover:bg-muted/50"
+ onClick={() => handleSort('title')}
+ >
+ Title {getSortIcon('title')}
+ </TableHead>
+ <TableHead>Kind</TableHead>
+ <TableHead 
+ className="cursor-pointer hover:bg-muted/50"
+ onClick={() => handleSort('status')}
+ >
+ Status {getSortIcon('status')}
+ </TableHead>
+ <TableHead 
+ className="cursor-pointer hover:bg-muted/50"
+ onClick={() => handleSort('priority')}
+ >
+ Priority {getSortIcon('priority')}
+ </TableHead>
+ <TableHead>Event</TableHead>
+ <TableHead 
+ className="cursor-pointer hover:bg-muted/50"
+ onClick={() => handleSort('created_at')}
+ >
+ Created {getSortIcon('created_at')}
+ </TableHead>
+ <TableHead className="w-12"></TableHead>
+ </TableRow>
+ </TableHeader>
+ <TableBody>
+ {riders.map((rider) => {
+ const isExpanded = expandedRows.includes(rider.id);
+ const isSelected = selectedRiders.includes(rider.id);
+
+ return (
+ <>
+ <TableRow key={rider.id} className={isSelected ? 'bg-muted/50' : ''}>
+ <TableCell>
+ <Checkbox
+ checked={isSelected}
+ onCheckedChange={(checked) => handleSelectRider(rider.id, checked as boolean)}
+ aria-label={`Select rider ${rider.title}`}
+ />
+ </TableCell>
+ <TableCell>
+ <Button
+ variant="ghost"
+ size="sm"
+ onClick={() => toggleRowExpansion(rider.id)}
+ className="h-6 w-6 p-0"
+ >
+ {isExpanded ? (
+ <ChevronDown className="h-4 w-4" />
+ ) : (
+ <ChevronRight className="h-4 w-4" />
+ )}
+ </Button>
+ </TableCell>
+ <TableCell>
+ <div className="font-medium">{rider.title}</div>
+ {rider.description && (
+ <div className="text-sm text-muted-foreground line-clamp-1">
+ {rider.description}
+ </div>
+ )}
+ </TableCell>
+ <TableCell>
+ <div className="flex items-center gap-2">
+ <span className="text-lg">{RIDER_KIND_CONFIG[rider.kind]?.icon}</span>
+ <span className="text-sm">{RIDER_KIND_CONFIG[rider.kind]?.label}</span>
+ </div>
+ </TableCell>
+ <TableCell>
+ <Badge variant={STATUS_BADGE_CONFIG[rider.status]?.variant}>
+ {STATUS_BADGE_CONFIG[rider.status]?.label}
+ </Badge>
+ </TableCell>
+ <TableCell>
+ <Badge variant={PRIORITY_BADGE_CONFIG[rider.priority]?.variant}>
+ {PRIORITY_BADGE_CONFIG[rider.priority]?.label}
+ </Badge>
+ </TableCell>
+ <TableCell>
+ {rider.event && (
+ <div>
+ <div className="font-medium">{rider.event.title}</div>
+ <div className="text-sm text-muted-foreground flex items-center gap-1">
+ <Calendar className="h-3 w-3" />
+ {new Date(rider.event.start_at).toLocaleDateString()}
+ </div>
+ </div>
+ )}
+ </TableCell>
+ <TableCell>
+ <div className="text-sm">
+ {new Date(rider.created_at).toLocaleDateString()}
+ </div>
+ </TableCell>
+ <TableCell>
+ <DropdownMenu>
+ <DropdownMenuTrigger asChild>
+ <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
+ <MoreHorizontal className="h-4 w-4" />
+ </Button>
+ </DropdownMenuTrigger>
+ <DropdownMenuContent align="end">
+ <DropdownMenuItem onClick={() => onView(rider)}>
+ <Eye className="mr-2 h-4 w-4" />
+ View
+ </DropdownMenuItem>
+ <DropdownMenuItem onClick={() => onEdit(rider)}>
+ <Edit className="mr-2 h-4 w-4" />
+ Edit
+ </DropdownMenuItem>
+ <DropdownMenuItem
+ onClick={() => onDelete(rider.id)}
+ className="text-destructive"
+ >
+ <Trash2 className="mr-2 h-4 w-4" />
+ Delete
+ </DropdownMenuItem>
+ </DropdownMenuContent>
+ </DropdownMenu>
+ </TableCell>
+ </TableRow>
+
+ {/* Expanded Row Content */}
+ {isExpanded && (
+ <TableRow>
+ <TableCell colSpan={9} className="bg-muted/25">
+ <div className="p-4 space-y-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ {/* Requirements */}
+ <div>
+ <h4 className="font-semibold mb-2">Requirements</h4>
+ <p className="text-sm text-muted-foreground">
+ {rider.requirements}
+ </p>
+ </div>
+
+ {/* Project */}
+ {rider.project && (
+ <div>
+ <h4 className="font-semibold mb-2">Project</h4>
+ <div className="flex items-center gap-2">
+ <Badge variant="outline">{rider.project.name}</Badge>
+ <Badge variant="secondary">{rider.project.status}</Badge>
+ </div>
+ </div>
+ )}
+
+ {/* Fulfillment Status */}
+ <div>
+ <h4 className="font-semibold mb-2">Fulfillment</h4>
+ <div className="flex items-center gap-2">
+ {rider.fulfilled_at ? (
+ <>
+ <CheckCircle className="h-4 w-4 text-green-600" />
+ <span className="text-sm">
+ Fulfilled {new Date(rider.fulfilled_at).toLocaleDateString()}
+ </span>
+ </>
+ ) : rider.approved_at ? (
+ <>
+ <AlertCircle className="h-4 w-4 text-yellow-600" />
+ <span className="text-sm">Approved, pending fulfillment</span>
+ </>
+ ) : (
+ <>
+ <XCircle className="h-4 w-4 text-gray-400" />
+ <span className="text-sm">Not fulfilled</span>
+ </>
+ )}
+ </div>
+ </div>
+ </div>
+
+ {/* Notes */}
+ {rider.notes && (
+ <div>
+ <h4 className="font-semibold mb-2">Notes</h4>
+ <p className="text-sm text-muted-foreground">{rider.notes}</p>
+ </div>
+ )}
+
+ {/* Tags */}
+ {rider.tags && rider.tags.length > 0 && (
+ <div>
+ <h4 className="font-semibold mb-2">Tags</h4>
+ <div className="flex flex-wrap gap-1">
+ {rider.tags.map((tag, index) => (
+ <Badge key={index} variant="outline" className="text-xs">
+ {tag}
+ </Badge>
+ ))}
+ </div>
+ </div>
+ )}
+
+ {/* Specific Requirements */}
+ {rider.kind === 'technical' && rider.technical_requirements && (
+ <div>
+ <h4 className="font-semibold mb-2">Technical Requirements</h4>
+ <div className="grid grid-cols-2 gap-2 text-sm">
+ {rider.technical_requirements.sound_system && (
+ <div>Sound System: {rider.technical_requirements.sound_system}</div>
+ )}
+ {rider.technical_requirements.lighting && (
+ <div>Lighting: {rider.technical_requirements.lighting}</div>
+ )}
+ {rider.technical_requirements.power_requirements && (
+ <div>Power: {rider.technical_requirements.power_requirements}</div>
+ )}
+ {rider.technical_requirements.crew_requirements && (
+ <div>Crew: {rider.technical_requirements.crew_requirements}</div>
+ )}
+ </div>
+ </div>
+ )}
+
+ {rider.kind === 'hospitality' && rider.hospitality_requirements && (
+ <div>
+ <h4 className="font-semibold mb-2">Hospitality Requirements</h4>
+ <div className="grid grid-cols-2 gap-2 text-sm">
+ {rider.hospitality_requirements.catering && (
+ <div>Catering: {rider.hospitality_requirements.catering}</div>
+ )}
+ {rider.hospitality_requirements.beverages && (
+ <div>Beverages: {rider.hospitality_requirements.beverages}</div>
+ )}
+ {rider.hospitality_requirements.green_room_setup && (
+ <div>Green Room: {rider.hospitality_requirements.green_room_setup}</div>
+ )}
+ </div>
+ </div>
+ )}
+ </div>
+ </TableCell>
+ </TableRow>
+ )}
+ </>
+ );
+ })}
+ </TableBody>
+ </Table>
+ </Card>
+ );
+}

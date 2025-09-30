@@ -33,6 +33,7 @@ export { PerformanceMonitoringSystem } from './PerformanceMonitoringSystem';
 
 // State Management
 export { 
+  StateManagerProvider,
   useStateManager,
   StateRenderer,
   EmptyState,
@@ -48,6 +49,8 @@ export { VirtualizedList, LazyLoad, useInfiniteScroll } from './VirtualizedList'
 
 // Types (consolidated to avoid duplicates)
 export type {
+  DataRecord,
+  DataViewConfig,
   ViewType,
   ViewProps,
   FilterConfig,

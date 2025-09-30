@@ -1,0 +1,889 @@
+'use client';
+
+import { Award, Plus, Search, Filter, Download, RefreshCw, Settings, List, Grid3X3, Table, BarChart3, Save, X, Calendar, ExternalLink, Trash2 } from "lucide-react";
+import { useState, useEffect, useCallback, useMemo, type ChangeEvent, type FormEvent } from 'react';
+import { useTranslations } from 'next-intl';
+import { createBrowserClient } from '@ghxstship/auth';
+import { 
+  Button, 
+  Input,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+  Card, 
+  Badge,
+  Textarea,
+  UnifiedInput,
+} from '@ghxstship/ui';
+
+import type { 
+  Certification as CertificationType, 
+  CertificationFilters, 
+  CertificationStats, 
+  CertificationAnalytics, 
+  ViewType,
+  CertificationSort,
+  CertificationFormData as FormDataType,
+} from './types';
+import { 
+  VIEW_CONFIG, 
+  QUICK_FILTERS, 
+  createEmptyCertification,
+  createEmptyCertificationStats, 
+  createEmptyCertificationAnalytics,
+  validateCertificationForm,
+} from './types';
+
+import CertificationListView from './views/CertificationListView';
+import CertificationGridView from './views/CertificationGridView';
+import CertificationTableView from './views/CertificationTableView';
+import CertificationAnalyticsView from './views/CertificationAnalyticsView';
+
+interface CertificationsClientProps {
+  orgId: string;
+  userId: string;
+}
+
+const viewIcons: Record<ViewType, React.ComponentType<{ className?: string }>> = {
+  list: List,
+  grid: Grid3X3,
+  table: Table,
+  analytics: BarChart3,
+};
+
+export default function CertificationsClient({ orgId, userId }: CertificationsClientProps) {
+  const t = useTranslations('profile');
+  const supabase = useMemo(() => createBrowserClient(), []);
+  
+  const [certifications, setCertifications] = useState<CertificationType[]>([]);
+  const [stats, setStats] = useState<CertificationStats>(createEmptyCertificationStats());
+  const [analytics, setAnalytics] = useState<CertificationAnalytics>(createEmptyCertificationAnalytics());
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [analyticsLoading, setAnalyticsLoading] = useState(false);
+  const [view, setView] = useState<ViewType>('list');
+  const [filters, setFilters] = useState<CertificationFilters>({});
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const [sort, setSort] = useState<CertificationSort>({ field: 'created_at', direction: 'desc' });
+  const [total, setTotal] = useState(0);
+  const [showAddForm, setShowAddForm] = useState(false);
+  const [editingCertification, setEditingCertification] = useState<CertificationType | null>(null);
+  const [formData, setFormData] = useState<FormDataType>(() => createEmptyCertification() as FormDataType);
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+
+  const fetchCertifications = useCallback(async () => {
+    try {
+      setLoading(true);
+      const params = new URLSearchParams();
+      
+      params.append('user_id', userId);
+      if (filters.status && filters.status !== 'all') {
+        params.append('status', filters.status);
+      }
+      if (filters.issuing_organization) params.append('issuing_organization', filters.issuing_organization);
+      if (filters.expiry_status && filters.expiry_status !== 'all') {
+        params.append('expiry_status', filters.expiry_status);
+      }
+      if (filters.search || searchQuery) params.append('search', filters.search || searchQuery);
+      if (filters.date_from) params.append('date_from', filters.date_from);
+      if (filters.date_to) params.append('date_to', filters.date_to);
+
+      const response = await fetch(`/api/v1/profile/certifications?${params.toString()}`);
+      if (!response.ok) throw new Error('Failed to fetch certifications');
+
+      const data = await response.json();
+      setCertifications(data.certifications || []);
+      setStats(data.stats || createEmptyCertificationStats());
+      setTotal(data.total || 0);
+    } catch (error) {
+      console.error('Error fetching certifications:', error);
+      setCertifications([]);
+      setStats(createEmptyCertificationStats());
+    } finally {
+      setLoading(false);
+    }
+  }, [userId, filters, searchQuery]);
+
+  const fetchAnalytics = useCallback(async () => {
+    try {
+      setAnalyticsLoading(true);
+      const params = new URLSearchParams();
+      params.append('user_id', userId);
+      params.append('period', '30d');
+      params.append('granularity', 'day');
+
+      const response = await fetch(`/api/v1/profile/certifications/analytics?${params.toString()}`);
+      if (!response.ok) throw new Error('Failed to fetch analytics');
+
+      const data = await response.json();
+      setAnalytics(data);
+    } catch (error) {
+      console.error('Error fetching analytics:', error);
+      setAnalytics(createEmptyCertificationAnalytics());
+    } finally {
+      setAnalyticsLoading(false);
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    fetchCertifications();
+  }, [fetchCertifications]);
+
+  useEffect(() => {
+    if (view === 'analytics') {
+      fetchAnalytics();
+    }
+  }, [view, fetchAnalytics]);
+
+  const handleSave = async (certificationData: FormDataType) => {
+    const errors = validateCertificationForm(certificationData);
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    try {
+      setSaving(true);
+      const url = editingCertification 
+        ? `/api/v1/profile/certifications?user_id=${userId}&certification_id=${editingCertification.id}`
+        : `/api/v1/profile/certifications?user_id=${userId}`;
+      
+      const method = editingCertification ? 'PUT' : 'POST';
+      
+      const response = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(certificationData),
+      });
+
+      if (!response.ok) throw new Error('Failed to save certification');
+
+      setShowAddForm(false);
+      setEditingCertification(null);
+      setFormData(createEmptyCertification());
+      setFormErrors({});
+      await fetchCertifications();
+    } catch (error) {
+      console.error('Error saving certification:', error);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async (certification: CertificationType) => {
+    if (!confirm('Are you sure you want to delete this certification?')) return;
+
+    try {
+      const response = await fetch(`/api/v1/profile/certifications?user_id=${userId}&certification_id=${certification.id}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) throw new Error('Failed to delete certification');
+
+      await fetchCertifications();
+    } catch (error) {
+      console.error('Error deleting certification:', error);
+    }
+  };
+
+  const handleSelectItem = (id: string, selected: boolean) => {
+    setSelectedItems(prev => {
+      if (selected) {
+        return prev.includes(id) ? prev : [...prev, id];
+      }
+      return prev.filter(itemId => itemId !== id);
+    });
+  };
+
+  const handleSelectAll = (ids: string[], selected: boolean) => {
+    setSelectedItems(selected ? Array.from(new Set([...selectedItems, ...ids])) : []);
+  };
+
+  const handleExport = (certification?: CertificationType) => {
+    const certsToExport = certification ? [certification] : 
+      selectedItems.length > 0 ? certifications.filter(c => selectedItems.includes(c.id)) : certifications;
+
+    const csvRows = [
+      ['Name', 'Organization', 'Number', 'Issue Date', 'Expiry Date', 'Status', 'Verification URL'],
+      ...certsToExport.map(c => [
+        c.name,
+        c.issuing_organization,
+        c.certification_number || '',
+        c.issue_date || '',
+        c.expiry_date || '',
+        c.status,
+        c.verification_url || '',
+      ])
+    ];
+
+    const csvContent = csvRows.map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `certifications-${new Date().toISOString().split('T')[0]}.csv`;
+    link.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const handleRefresh = () => {
+    fetchCertifications();
+    if (view === 'analytics') {
+      fetchAnalytics();
+    }
+  };
+
+  const handleEdit = (certification: CertificationType) => {
+    setEditingCertification(certification);
+    setFormData({
+      name: certification.name || '',
+      issuing_organization: certification.issuing_organization || '',
+      certification_number: certification.certification_number || '',
+      issue_date: certification.issue_date || '',
+      expiry_date: certification.expiry_date || '',
+      verification_url: certification.verification_url || '',
+      attachment_url: certification.attachment_url || '',
+      notes: certification.notes || '',
+      status: certification.status,
+    });
+    setShowAddForm(true);
+  };
+
+  const filterValue = filters.status ?? 'all';
+
+  return (
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div>
+          <h1 className="text-2xl font-bold">Certifications</h1>
+          <p className="text-muted-foreground">
+            Manage your professional certifications and track expiry dates
+          </p>
+        </div>
+        <div className="flex items-center gap-2">
+          <Button variant="outline" size="sm" onClick={handleRefresh}>
+            <RefreshCw className="mr-2 h-4 w-4" />
+            Refresh
+          </Button>
+          <Button variant="outline" size="sm" onClick={() => handleExport()}>
+            <Download className="mr-2 h-4 w-4" />
+            Export
+          </Button>
+          <Button onClick={() => setShowAddForm(true)}>
+            <Plus className="mr-2 h-4 w-4" />
+            Add Certification
+          </Button>
+          <div className="flex items-center rounded-lg border p-1">
+            {(Object.keys(VIEW_CONFIG) as ViewType[]).map(option => {
+              const Icon = viewIcons[option];
+              return (
+                <Button
+                  key={option}
+                  variant={view === option ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setView(option)}
+                  className="h-8 w-8 p-0"
+                >
+                  <Icon className="h-4 w-4" />
+                </Button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Filters */}
+      <Card className="p-4">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+          <div className="flex flex-1 items-center gap-4">
+            <div className="relative flex-1 max-w-sm">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <Input
+                placeholder="Search certifications..."
+                value={searchQuery}
+                onChange={event => setSearchQuery(event.target.value)}
+                className="pl-9"
+              />
+            </div>
+
+            <Select
+              value={filterValue}
+              onValueChange={value =>
+                setFilters(prev => ({ ...prev, status: value === 'all' ? undefined : value as unknown }))
+              }
+            >
+              <SelectTrigger className="w-48">
+                <SelectValue placeholder="Filter by status" />
+              </SelectTrigger>
+              <SelectContent>
+                {QUICK_FILTERS.map(option => (
+                  <SelectItem key={option.value} value={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex items-center gap-2">
+            {selectedItems.length > 0 && (
+              <div className="flex items-center gap-2 rounded-lg border bg-muted/50 px-3 py-2 text-sm">
+                <span>{selectedItems.length} selected</span>
+                <div className="flex items-center gap-1">
+                  <Button
+                    size="sm"
+                    variant="outline"
+                    onClick={() => handleExport()}
+                  >
+                    Export
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    onClick={() => setSelectedItems([])}
+                  >
+                    Clear
+                  </Button>
+                </div>
+              </div>
+            )}
+            
+            <Badge variant="secondary">
+              {total} total certifications
+            </Badge>
+          </div>
+        </div>
+      </Card>
+
+      {/* Add/Edit Form Modal */}
+      {showAddForm && (
+        <Card className="p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h3 className="text-lg font-semibold">
+              {editingCertification ? 'Edit Certification' : 'Add New Certification'}
+            </h3>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => {
+                setShowAddForm(false);
+                setEditingCertification(null);
+                setFormData(createEmptyCertification());
+                setFormErrors({});
+              }}
+            >
+              <X className="h-4 w-4" />
+            </Button>
+          </div>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSave(formData);
+            }}
+            className="space-y-4"
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <UnifiedInput
+                label="Certification Name *"
+                value={formData.name || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, name: e.target.value }))
+                }
+                error={formErrors.name}
+                placeholder="AWS Solutions Architect"
+              />
+
+              <UnifiedInput
+                label="Issuing Organization *"
+                value={formData.issuing_organization || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, issuing_organization: e.target.value }))
+                }
+                error={formErrors.issuing_organization}
+                placeholder="Amazon Web Services"
+              />
+
+              <UnifiedInput
+                label="Certification Number"
+                value={formData.certification_number || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, certification_number: e.target.value }))
+                }
+                placeholder="AWS-SAA-123456"
+              />
+
+              <UnifiedInput
+                label="Issue Date"
+                type="date"
+                value={formData.issue_date || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, issue_date: e.target.value }))
+                }
+              />
+
+              <UnifiedInput
+                label="Expiry Date"
+                type="date"
+                value={formData.expiry_date || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, expiry_date: e.target.value }))
+                }
+                error={formErrors.expiry_date}
+              />
+
+              <UnifiedInput
+                label="Verification URL"
+                value={formData.verification_url || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, verification_url: e.target.value }))
+                }
+                error={formErrors.verification_url}
+                placeholder="https://verify.aws.com/..."
+              />
+
+              <UnifiedInput
+                label="Attachment URL"
+                value={formData.attachment_url || ''}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => 
+                  setFormData(prev => ({ ...prev, attachment_url: e.target.value }))
+                }
+                error={formErrors.attachment_url}
+                placeholder="https://example.com/cert.pdf"
+              />
+            </div>
+
+            <Textarea
+              placeholder="Additional notes about this certification..."
+              value={formData.notes || ''}
+              onChange={(e: ChangeEvent<HTMLTextAreaElement>) => 
+                setFormData(prev => ({ ...prev, notes: e.target.value }))
+              }
+              rows={3}
+            />
+
+            <div className="flex gap-2">
+              <Button type="submit" disabled={saving}>
+                <Save className="mr-2 h-4 w-4" />
+                {saving ? 'Saving...' : editingCertification ? 'Update' : 'Add'} Certification
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  setShowAddForm(false);
+                  setEditingCertification(null);
+                  setFormData(createEmptyCertification() as FormDataType);
+                  setFormErrors({});
+                }}
+              >
+                Cancel
+              </Button>
+            </div>
+          </form>
+        </Card>
+      )}
+
+      {/* Content */}
+      <div className="min-h-[400px]">
+        {view === 'list' && (
+          <CertificationListView
+            certifications={certifications}
+            loading={loading}
+            selectedItems={selectedItems}
+            onSelectItem={handleSelectItem}
+            onSelectAll={handleSelectAll}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            onExport={handleExport}
+          />
+        )}
+
+        {view === 'grid' && (
+          <CertificationGridView
+            certifications={certifications}
+            loading={loading}
+            selectedItems={selectedItems}
+            onSelectItem={handleSelectItem}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            onExport={handleExport}
+          />
+        )}
+
+        {view === 'table' && (
+          <CertificationTableView
+            certifications={certifications}
+            loading={loading}
+            selectedItems={selectedItems}
+            onSelectItem={handleSelectItem}
+            onSelectAll={handleSelectAll}
+            onSort={setSort}
+            onEdit={handleEdit}
+            onDelete={handleDelete}
+            onExport={handleExport}
+            currentSort={sort}
+          />
+        )}
+
+        {view === 'analytics' && (
+          <CertificationAnalyticsView
+            stats={stats}
+            analytics={analytics}
+            loading={loading}
+            analyticsLoading={analyticsLoading}
+          />
+        )}
+      </div>
+    </div>
+  );
+}
+
+  const handleAdd = useCallback(
+    async (event: FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      if (!validateForm()) {
+        return;
+      }
+
+      const trimmedName = formData.name.trim();
+      const trimmedIssuer = formData.issuingOrganization.trim();
+      const trimmedNumber = formData.certificationNumber.trim();
+      const trimmedVerificationUrl = formData.verificationUrl.trim();
+      const trimmedAttachmentUrl = formData.attachmentUrl.trim();
+      const trimmedNotes = formData.notes.trim();
+
+      try {
+        setIsSubmitting(true);
+
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('id')
+          .eq('auth_id', userId)
+          .single();
+
+        if (userError) {
+          throw userError;
+        }
+
+        if (!userData) {
+          throw new Error('User not found');
+        }
+
+        const { error: insertError } = await supabase.from('user_certifications').insert({
+          user_id: userData.id,
+          organization_id: orgId,
+          name: trimmedName,
+          issuing_organization: trimmedIssuer,
+          certification_number: trimmedNumber || undefined,
+          issue_date: formData.issueDate || undefined,
+          expiry_date: formData.expiryDate || undefined,
+          verification_url: trimmedVerificationUrl || undefined,
+          attachment_url: trimmedAttachmentUrl || undefined,
+          notes: trimmedNotes || undefined,
+          status: 'active',
+        });
+
+        if (insertError) {
+          throw insertError;
+        }
+
+        resetFormState();
+        setShowAddForm(false);
+        await loadCertifications();
+      } catch (submitError) {
+        const message = submitError instanceof Error ? submitError.message : 'Unknown error';
+        console.error('Error adding certification:', submitError);
+        setError(message);
+      } finally {
+        setIsSubmitting(false);
+      }
+    },
+    [formData, loadCertifications, orgId, resetFormState, supabase, userId, validateForm]
+  );
+
+  const isSubmitDisabled = useMemo(() => {
+    if (isSubmitting) {
+      return true;
+    }
+
+    if (!formData.name.trim() || !formData.issuingOrganization.trim()) {
+      return true;
+    }
+
+    const trimmedVerificationUrl = formData.verificationUrl.trim();
+    if (trimmedVerificationUrl) {
+      try {
+        new URL(trimmedVerificationUrl);
+      } catch {
+        return true;
+      }
+    }
+
+    const trimmedAttachmentUrl = formData.attachmentUrl.trim();
+    if (trimmedAttachmentUrl) {
+      try {
+        new URL(trimmedAttachmentUrl);
+      } catch {
+        return true;
+      }
+    }
+
+    if (formData.issueDate.trim() && formData.expiryDate.trim() && formData.expiryDate < formData.issueDate) {
+      return true;
+    }
+
+    return false;
+  }, [formData.attachmentUrl, formData.expiryDate, formData.issuingOrganization, formData.issueDate, formData.name, formData.verificationUrl, isSubmitting]);
+
+  const getStatusColor = (status: string, expiryDate?: string) => {
+    if (status === 'expired') return 'destructive';
+    if (expiryDate) {
+      const expiry = new Date(expiryDate);
+      const now = new Date();
+      const thirtyDaysFromNow = new Date();
+      thirtyDaysFromNow.setDate(now.getDate() + 30);
+      
+      if (expiry < now) return 'destructive';
+      if (expiry <= thirtyDaysFromNow) return 'warning';
+    }
+    return 'default';
+  };
+
+  const getStatusText = (status: string, expiryDate?: string) => {
+    if (status === 'expired') return 'Expired';
+    if (expiryDate) {
+      const expiry = new Date(expiryDate);
+      const now = new Date();
+      const thirtyDaysFromNow = new Date();
+      thirtyDaysFromNow.setDate(now.getDate() + 30);
+      
+      if (expiry < now) return 'Expired';
+      if (expiry <= thirtyDaysFromNow) return 'Expiring Soon';
+    }
+    return 'Active';
+  };
+
+  if (loading) {
+    return (
+      <div className="stack-md">
+        <div className="animate-pulse stack-md">
+          <div className="h-4 bg-secondary rounded w-3/4"></div>
+          <div className="h-4 bg-secondary rounded w-1/2"></div>
+          <div className="h-4 bg-secondary rounded w-2/3"></div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="stack-lg">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-sm">
+          <Award className="h-5 w-5" />
+          <h3 className="text-body text-heading-4">Certifications</h3>
+        </div>
+        <Button onClick={() => setShowAddForm(true)}>
+          <Plus className="h-4 w-4 mr-sm" />
+          Add Certification
+        </Button>
+      </div>
+
+      {/* Add Form */}
+      {showAddForm && (
+        <Card>
+          <div className="p-md">
+            <h4 className="form-label mb-md">Add New Certification</h4>
+            <form className="stack-md" onSubmit={handleAdd}>
+              {error ? <div className="text-body-sm color-destructive">{error}</div> : null}
+
+              <div className="grid grid-cols-1 gap-md md:grid-cols-2">
+                <UnifiedInput
+                  id="name"
+                  name="name"
+                  label="Certification Name *"
+                  placeholder="AWS Solutions Architect"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  error={fieldErrors.name}
+                  required
+                />
+
+                <UnifiedInput
+                  id="issuingOrganization"
+                  name="issuingOrganization"
+                  label="Issuing Organization *"
+                  placeholder="Amazon Web Services"
+                  value={formData.issuingOrganization}
+                  onChange={handleInputChange}
+                  error={fieldErrors.issuingOrganization}
+                  required
+                />
+
+                <UnifiedInput
+                  id="certificationNumber"
+                  name="certificationNumber"
+                  label="Certification Number"
+                  placeholder="AWS-SAA-123456"
+                  value={formData.certificationNumber}
+                  onChange={handleInputChange}
+                />
+
+                <UnifiedInput
+                  id="issueDate"
+                  name="issueDate"
+                  label="Issue Date"
+                  type="date"
+                  value={formData.issueDate}
+                  onChange={handleInputChange}
+                />
+
+                <UnifiedInput
+                  id="expiryDate"
+                  name="expiryDate"
+                  label="Expiry Date"
+                  type="date"
+                  value={formData.expiryDate}
+                  onChange={handleInputChange}
+                  error={fieldErrors.expiryDate}
+                />
+
+                <UnifiedInput
+                  id="verificationUrl"
+                  name="verificationUrl"
+                  label="Verification URL"
+                  placeholder="https://verify.aws.com/..."
+                  value={formData.verificationUrl}
+                  onChange={handleInputChange}
+                  error={fieldErrors.verificationUrl}
+                />
+
+                <UnifiedInput
+                  id="attachmentUrl"
+                  name="attachmentUrl"
+                  label="Attachment URL"
+                  placeholder="https://example.com/cert.pdf"
+                  value={formData.attachmentUrl}
+                  onChange={handleInputChange}
+                  error={fieldErrors.attachmentUrl}
+                />
+              </div>
+
+              <Textarea
+                id="notes"
+                name="notes"
+                label="Notes"
+                placeholder="Additional notes about this certification..."
+                value={formData.notes}
+                onChange={handleTextareaChange}
+                rows={3}
+              />
+
+              <div className="flex gap-sm">
+                <Button type="submit" disabled={isSubmitDisabled}>
+                  <Save className="h-4 w-4 mr-sm" />
+                  {isSubmitting ? 'Adding...' : 'Add Certification'}
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => {
+                    resetFormState();
+                    setShowAddForm(false);
+                  }}
+                  disabled={isSubmitting}
+                >
+                  Cancel
+                </Button>
+              </div>
+            </form>
+          </div>
+        </Card>
+      )}
+
+      {/* Certifications List */}
+      <div className="stack-md">
+        {certifications.length === 0 ? (
+          <Card>
+            <div className="p-xl text-center color-muted">
+              <Award className="h-12 w-12 mx-auto mb-md opacity-50" />
+              <p>No certifications added yet.</p>
+              <p className="text-body-sm">Add your professional certifications to showcase your expertise.</p>
+            </div>
+          </Card>
+        ) : (
+          certifications.map((cert: unknown) => (
+            <Card key={cert.id}>
+              <div className="p-md">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-sm mb-sm">
+                      <h4 className="form-label">{cert.name}</h4>
+                      <Badge variant={getStatusColor(cert.status, cert.expiry_date)}>
+                        {getStatusText(cert.status, cert.expiry_date)}
+                      </Badge>
+                    </div>
+                    
+                    <p className="text-body-sm color-muted mb-sm">
+                      Issued by {cert.issuing_organization}
+                    </p>
+                    
+                    {cert.certification_number && (
+                      <p className="text-body-sm">
+                        <span className="form-label">Number:</span> {cert.certification_number}
+                      </p>
+                    )}
+                    
+                    <div className="flex items-center gap-md text-body-sm color-muted mt-sm">
+                      {cert.issue_date && (
+                        <div className="flex items-center gap-xs">
+                          <Calendar className="h-3 w-3" />
+                          Issued: {new Date(cert.issue_date).toLocaleDateString()}
+                        </div>
+                      )}
+                      {cert.expiry_date && (
+                        <div className="flex items-center gap-xs">
+                          <Calendar className="h-3 w-3" />
+                          Expires: {new Date(cert.expiry_date).toLocaleDateString()}
+                        </div>
+                      )}
+                    </div>
+                    
+                    {cert.notes && (
+                      <p className="text-body-sm mt-sm color-muted">{cert.notes}</p>
+                    )}
+                  </div>
+                  
+                  <div className="flex items-center gap-sm">
+                    {cert.verification_url && (
+                      <Button
+                       
+                        variant="outline"
+                        onClick={() => window.open(cert.verification_url, '_blank')}
+                      >
+                        <ExternalLink className="h-3 w-3" />
+                      </Button>
+                    )}
+                    <Button
+                     
+                      variant="outline"
+                      onClick={() => handleDelete(cert.id)}
+                    >
+                      <Trash2 className="h-3 w-3" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))
+        )}
+      </div>
+    </div>
+  );
+}

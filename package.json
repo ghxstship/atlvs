@@ -9,18 +9,28 @@
   "scripts": {
     "dev": "turbo run dev --parallel",
     "build": "turbo run build",
-    "lint": "turbo run lint",
+    "lint": "turbo run lint -- --max-warnings 0",
+    "lint:check": "eslint . --max-warnings 0",
+    "lint:fix": "eslint . --fix",
+    "lint:tokens": "eslint --config .eslintrc.semantic-tokens.js --ext .ts,.tsx,.js,.jsx packages/ui/src packages/config/src apps/web/src --format json --output-file token-lint-results.json",
+    "lint:tokens:ci": "eslint --config .eslintrc.semantic-tokens.js --ext .ts,.tsx,.js,.jsx packages/ui/src packages/config/src apps/web/src --max-warnings 0 --format json --output-file token-lint-results.json",
     "typecheck": "turbo run typecheck",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "dev:core": "corepack pnpm -r --workspace-concurrency=1 run dev",
     "build:core": "corepack pnpm -r run build",
     "lint:core": "corepack pnpm -r run lint",
     "typecheck:core": "corepack pnpm -r run typecheck",
-    "lint:tokens:colors": "eslint --ext .ts,.tsx --rule 'no-hardcoded-colors: error' .",
-    "lint:tokens:spacing": "eslint --ext .ts,.tsx --rule 'no-hardcoded-spacing: error' .",
-    "lint:tokens:shadows": "eslint --ext .ts,.tsx --rule 'no-hardcoded-shadows: warn' .",
-    "lint:tokens:motion": "eslint --ext .ts,.tsx --rule 'no-hardcoded-motion: warn' .",
+    "lint:tokens:colors": "eslint --ext .ts,.tsx --rule 'no-hardcoded-values: error' --rule 'no-hardcoded-values/[0]/tokenPatterns: {\"colors\": \"var\\\\(--color-[\\\\w-]+\\\\)\"}' .",
+    "lint:tokens:spacing": "eslint --ext .ts,.tsx --rule 'no-hard-coded-values: error' --rule 'no-hard-coded-values/[0]/tokenPatterns: {\"spacing\": \"var\\\\(--spacing-[\\\\w-]+\\\\)\"}' .",
+    "lint:tokens:shadows": "eslint --ext .ts,.tsx --rule 'no-hard-coded-shadows: warn' .",
+    "lint:tokens:motion": "eslint --ext .ts,.tsx --rule 'no-hard-coded-motion: warn' .",
     "lint:imports": "eslint --ext .ts,.tsx --rule 'consistent-imports: error' .",
-    "lint:legacy-imports": "eslint --ext .ts,.tsx --rule 'no-legacy-imports: error' ."
+    "lint:legacy-imports": "eslint --ext .ts,.tsx --rule 'no-legacy-imports: error' .",
+    "validate:tokens": "node packages/config/validate-tokens.js",
+    "fix:colors": "tsx scripts/fix-hardcoded-colors.ts apps/web",
+    "fix:colors:all": "tsx scripts/fix-hardcoded-colors.ts .",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@types/node": "^20.19.14",
@@ -31,11 +41,20 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-react": "^7.37.5",
+    "husky": "^8.0.3",
     "prettier": "^3.6.2",
     "turbo": "^2.5.6",
+    "tsx": "^4.7.0",
     "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.5.2"
+    "@supabase/ssr": "^0.5.2",
+    "@types/dompurify": "^3.2.0",
+    "@types/validator": "^13.15.3",
+    "@upstash/redis": "^1.35.3",
+    "dompurify": "^3.2.7",
+    "is-in-subnet": "^4.0.1",
+    "jsdom": "^27.0.0",
+    "validator": "^13.15.15"
   }
 }

@@ -1,0 +1,32 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# UI Architecture Pre-Commit Checks
+echo "🔍 Running UI architecture checks..."
+
+# Check for duplicate components
+if [ -f "scripts/check-duplicates.sh" ]; then
+    bash scripts/check-duplicates.sh
+    if [ $? -ne 0 ]; then
+        echo "❌ Duplicate components detected. Please resolve before committing."
+        exit 1
+    fi
+fi
+
+# Check if COMPONENT_REGISTRY.json was updated when adding new components
+staged_files=$(git diff --cached --name-only)
+new_components=$(echo "$staged_files" | grep "packages/ui/src/components/.*\.tsx$" | grep -v "\.test\." | grep -v "__tests__")
+
+if [ -n "$new_components" ]; then
+    registry_updated=$(echo "$staged_files" | grep "COMPONENT_REGISTRY.json")
+    if [ -z "$registry_updated" ]; then
+        echo "⚠️  New component detected but COMPONENT_REGISTRY.json not updated"
+        echo "   Please update the component registry:"
+        echo "$new_components"
+        echo ""
+        echo "   Run: update component registry before committing"
+        exit 1
+    fi
+fi
+
+echo "✅ UI architecture checks passed"

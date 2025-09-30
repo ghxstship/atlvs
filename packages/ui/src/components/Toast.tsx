@@ -2,7 +2,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle, Loader2 } from 'lucide-react';
-import { IconButton } from './Button';
+import { Button } from './atomic/Button';
 
 export interface ToastProps {
   id: string;
@@ -122,14 +122,14 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
 
         {/* Close Button */}
         {!persistent && type !== 'loading' && (
-          <IconButton
+          <Button
             variant="ghost"
             size="icon-sm"
             onClick={handleClose}
             className="shrink-0 opacity-70 hover:opacity-100"
           >
             <X className="h-4 w-4" />
-          </IconButton>
+          </Button>
         )}
 
         {/* Progress Bar for timed toasts */}

@@ -1,10 +1,12 @@
-# GHXSTSHIP Monorepo (ATLVS + OPENDECK + GHXSTSHIP)
+# ATLVS Platform Monorepo (by GHXSTSHIP INDUSTRIES LLC)
 
-This monorepo contains:
+This monorepo contains the ATLVS enterprise management platform, along with OPENDECK marketplace and GHXSTSHIP marketing site:
 
-- apps/web: Next.js App Router app (ATLVS product, OPENDECK marketplace, GHXSTSHIP marketing)
+- apps/web: Next.js App Router app (ATLVS platform, OPENDECK marketplace, GHXSTSHIP marketing)
 - packages/*: shared libraries (UI, config, utils, auth, analytics, data-view)
 - supabase/: SQL migrations and seeds
+
+**Parent Company**: GHXSTSHIP INDUSTRIES LLC
 
 ## Quick Start
 

@@ -1,0 +1,108 @@
+'use client';
+
+/**
+ * Assets Detail Drawer
+ *
+ * Enterprise-grade detail drawer for viewing comprehensive asset information.
+ * Features lazy loading, context preservation, related data display,
+ * audit trail, and quick navigation.
+ *
+ * @module assets/drawers/DetailDrawer
+ */
+
+import React, { useState, useCallback } from 'react';
+import {
+  Badge,
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger
+} from '@ghxstship/ui';
+import { Separator } from '@ghxstship/ui/components/Separator';
+import { Asset, EnrichedAsset } from '../types';
+import { apiClient } from '../lib/api';
+import {
+  Edit,
+  Trash2,
+  Copy,
+  Download,
+  Share,
+  History,
+  ChevronLeft,
+  ChevronRight,
+  Package,
+  MapPin,
+  User,
+  Calendar,
+  DollarSign,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  FileText,
+  Image,
+  Settings
+} from 'lucide-react';
+
+interface DetailDrawerProps {
+  asset: Asset | null;
+  isOpen: boolean;
+  onClose: () => void;
+  onEdit?: (asset: Asset) => void;
+  onDelete?: (asset: Asset) => void;
+  onDuplicate?: (asset: Asset) => void;
+  onPrevious?: () => void;
+  onNext?: () => void;
+  hasPrevious?: boolean;
+  hasNext?: boolean;
+  className?: string;
+}
+
+export default function DetailDrawer({
+  asset,
+  isOpen,
+  onClose,
+  onEdit,
+  onDelete,
+  onDuplicate,
+  onPrevious,
+  onNext,
+  hasPrevious = false,
+  hasNext = false,
+  className = ''
+}: DetailDrawerProps) {
+  const [loading, setLoading] = useState(false);
+  const [assetDetails, setAssetDetails] = useState<EnrichedAsset | null>(null);
+
+  // Fetch detailed asset information
+  const fetchAssetDetails = useCallback(async () => {
+    if (!asset?.id) return;
+
+    setLoading(true);
+    try {
+      const details = await apiClient.getAsset(asset.id);
+      setAssetDetails(details);
+    } catch (error) {
+      console.error('Failed to fetch asset details:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, [asset?.id]);
+
+  React.useEffect(() => {
+    if (isOpen && asset) {
+      fetchAssetDetails();
+    }
+  }, [isOpen, asset, fetchAssetDetails]);
+
+  const displayAsset: Asset & Partial<EnrichedAsset> = assetDetails || asset;

@@ -1,0 +1,15 @@
+{
+  "name": "ghxstship-load-testing",
+  "version": "1.0.0",
+  "description": "Load testing suite for GHXSTSHIP platform",
+  "scripts": {
+    "test:basic": "artillery run basic-load-test.yml",
+    "test:advanced": "artillery run advanced-load-test.yml",
+    "test:stress": "artillery run --overrides '{\"config\": {\"phases\": [{\"duration\": 300, \"arrivalRate\": 500}]}}' advanced-load-test.yml",
+    "monitor": "node monitor-performance.js",
+    "report": "artillery report"
+  },
+  "devDependencies": {
+    "artillery": "^2.0.8"
+  }
+}

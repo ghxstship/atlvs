@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+echo "🎨 Validating design tokens..."
+
+# Run token validation
+cd packages/ui && pnpm validate:tokens:ci
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "❌ Design token validation failed!"
+  echo ""
+  echo "Hardcoded color values detected. Please fix before committing."
+  echo ""
+  echo "Quick fix:"
+  echo "  pnpm fix:colors"
+  echo "  pnpm validate:tokens"
+  echo ""
+  exit 1
+fi
+
+echo "✅ Design tokens validated successfully!"

@@ -1,0 +1,165 @@
+name: Code Quality Standards
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  eslint:
+    name: ESLint Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run ESLint
+        run: pnpm lint:check
+        
+  typescript:
+    name: TypeScript Strict Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Type Check
+        run: pnpm typecheck
+        
+  prettier:
+    name: Prettier Formatting Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Check Formatting
+        run: pnpm format:check
+        
+  security-audit:
+    name: Security & Dependency Audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Run security audit
+        run: pnpm audit --audit-level=high
+        continue-on-error: true
+        
+      - name: Check for hardcoded secrets
+        run: |
+          ! grep -r -E "(api_key|apikey|api-key|API_KEY|secret|SECRET|password|PASSWORD|token|TOKEN)" \
+            --include="*.ts" \
+            --include="*.tsx" \
+            --include="*.js" \
+            --include="*.jsx" \
+            --exclude-dir="node_modules" \
+            --exclude-dir=".next" \
+            --exclude-dir="dist" \
+            --exclude-dir="coverage" \
+            . || (echo "Potential hardcoded secrets found!" && exit 1)
+  
+  import-organization:
+    name: Import Organization Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Check import organization
+        run: pnpm lint:imports
+        continue-on-error: true
+        
+  build-validation:
+    name: Build Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.15.1
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+          
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        
+      - name: Build
+        run: pnpm build
+        env:
+          NODE_ENV: production
+          
+      - name: Verify test files excluded
+        run: |
+          if find .next -name "*.test.*" -o -name "*.spec.*" | grep -q .; then
+            echo "Test files found in production build!"
+            exit 1
+          fi
+          echo "No test files in production build ✓"

@@ -1,0 +1,196 @@
+
+> web@0.0.1 build /Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web
+> next build
+
+  ▲ Next.js 14.2.32
+  - Environments: .env.local
+  - Experiments (use with caution):
+    · instrumentationHook
+
+   Creating an optimized production build ...
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (128kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (114kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+<w> [webpack.cache.PackFileCacheStrategy] Serializing big strings (318kiB) impacts deserialization performance (consider using Buffer instead and decode when needed)
+Failed to compile.
+
+./app/api/auth/mfa/totp/route.ts
+Error: 
+  [31mx[0m the name `factorId` is defined multiple times
+     ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/app/api/auth/mfa/totp/route.ts[0m:95:1]
+ [2m 95[0m |       );
+ [2m 96[0m |     }
+ [2m 97[0m | 
+ [2m 98[0m |     const { factorId, code } = validation.data;
+     : [31;1m            ^^^^|^^^[0m
+     :                 [31;1m`-- [31;1mprevious definition of `factorId` here[0m[0m
+ [2m 99[0m | 
+ [2m100[0m |     const supabase = createServerClient({
+ [2m101[0m |       get: (name: string) => request.cookies.get(name)?.value,
+ [2m102[0m |       set: () => {},
+ [2m103[0m |       remove: () => {},
+ [2m104[0m |     });
+ [2m105[0m | 
+ [2m106[0m |     const { data: { user } } = await supabase.auth.getUser();
+ [2m107[0m |     if (!user) {
+ [2m108[0m |       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+ [2m109[0m |     }
+ [2m110[0m | 
+ [2m111[0m |     // Get challenge data
+ [2m112[0m |     const { data: challenge, error: challengeError } = await supabase
+ [2m113[0m |       .from('mfa_challenges')
+ [2m114[0m |       .select('challenge_data, expires_at')
+ [2m115[0m |       .eq('user_id', user.id)
+ [2m116[0m |       .eq('challenge_type', 'enrollment')
+ [2m117[0m |       .eq('is_completed', false)
+ [2m118[0m |       .gt('expires_at', new Date().toISOString())
+ [2m119[0m |       .single();
+ [2m120[0m | 
+ [2m121[0m |     if (challengeError || !challenge) {
+ [2m122[0m |       return NextResponse.json(
+ [2m123[0m |         { error: 'Invalid or expired challenge' },
+ [2m124[0m |         { status: 400 }
+ [2m125[0m |       );
+ [2m126[0m |     }
+ [2m127[0m | 
+ [2m128[0m |     const challengeData = challenge.challenge_data as any;
+ [2m129[0m |     if (!challengeData.secret) {
+ [2m130[0m |       return NextResponse.json(
+ [2m131[0m |         { error: 'Invalid challenge data' },
+ [2m132[0m |         { status: 400 }
+ [2m133[0m |       );
+ [2m134[0m |     }
+ [2m135[0m | 
+ [2m136[0m |     // Verify TOTP code
+ [2m137[0m |     const { data: isValid, error: verifyError } = await supabase.rpc(
+ [2m138[0m |       'verify_totp_code',
+ [2m139[0m |       { p_secret: challengeData.secret, p_code: code }
+ [2m140[0m |     );
+ [2m141[0m | 
+ [2m142[0m |     if (verifyError) throw verifyError;
+ [2m143[0m | 
+ [2m144[0m |     if (!isValid) {
+ [2m145[0m |       return NextResponse.json(
+ [2m146[0m |         { error: 'Invalid TOTP code' },
+ [2m147[0m |         { status: 400 }
+ [2m148[0m |       );
+ [2m149[0m |     }
+ [2m150[0m | 
+ [2m151[0m |     // Generate backup codes
+ [2m152[0m |     const { data: backupCodes, error: backupError } = await supabase.rpc(
+ [2m153[0m |       'generate_backup_codes',
+ [2m154[0m |       { p_count: 10 }
+ [2m155[0m |     );
+ [2m156[0m | 
+ [2m157[0m |     if (backupError) throw backupError;
+ [2m158[0m | 
+ [2m159[0m |     // Create MFA factor
+ [2m160[0m |     const { data: factorId, error: factorError } = await supabase.rpc(
+     : [33;1m                  ^^^^|^^^[0m
+     :                       [33;1m`-- [33;1m`factorId` redefined here[0m[0m
+ [2m161[0m |       'create_mfa_factor',
+ [2m162[0m |       {
+ [2m163[0m |         p_user_id: user.id,
+     `----
+
+Import trace for requested module:
+./app/api/auth/mfa/totp/route.ts
+
+./app/api/auth/mfa/webauthn/route.ts
+Error: 
+  [31mx[0m Expression expected
+     ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/app/api/auth/mfa/webauthn/route.ts[0m:199:1]
+ [2m199[0m | 
+ [2m200[0m |     if (factorError) throw factorError;
+ [2m201[0m | 
+ [2m202[0m | {{ ... }}
+     : [31;1m   ^^^[0m
+ [2m203[0m |     await supabase
+ [2m204[0m |       .from('mfa_challenges')
+ [2m205[0m |       .update({ is_completed: true, completed_at: new Date().toISOString() })
+     `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/api/auth/mfa/webauthn/route.ts
+
+./app/api/v1/invitations/send/route.ts
+Error: 
+  [31mx[0m Expected ';', '}' or <eof>
+    ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/app/api/v1/invitations/send/route.ts[0m:34:1]
+ [2m34[0m |     
+ [2m35[0m |         // In a real implementation, you would send an email here
+ [2m36[0m |         // For now, we'll just log the invitation details
+ [2m37[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m       email,
+ [2m38[0m | [31;1m|[0m         role,
+ [2m39[0m | [31;1m|[0m         organizationName,
+ [2m40[0m | [31;1m|[0m         inviterName,
+ [2m41[0m | [31;1m|[0m[31;1m-[0m[31;1m>[0m       invitedBy: session.user.id,
+    : [31;1m`[0m[31;1m---[0m[33;1m               ^[0m
+    : [31;1m`[0m[31;1m---[0m[31;1m-[0m [31;1mThis is the expression part of an expression statement[0m
+ [2m42[0m |         });
+ [2m43[0m |     
+ [2m44[0m |         // You could integrate with email services like:
+    `----
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./app/api/v1/invitations/send/route.ts
+
+./app/auth/signin/page.tsx
+Error: 
+  [31mx[0m You're importing a component that needs useState. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/app/auth/signin/page.tsx[0m:1:1]
+ [2m1[0m | import { useState } from 'react';
+   : [31;1m         ^^^^^^^^[0m
+ [2m2[0m | import { useRouter } from 'next/navigation';
+ [2m3[0m | import { createClient } from '@/lib/supabase/client';
+ [2m4[0m | import { AuthLayout } from '../_components/AuthLayout';
+   `----
+
+  [31mx[0m You're importing a component that needs useRouter. It only works in a Client Component but none of its parents are marked with "use client", so they're Server Components by default.
+  [31m|[0m Learn more: https://nextjs.org/docs/getting-started/react-essentials
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/apps/web/app/auth/signin/page.tsx[0m:1:1]
+ [2m1[0m | import { useState } from 'react';
+ [2m2[0m | import { useRouter } from 'next/navigation';
+   : [31;1m         ^^^^^^^^^[0m
+ [2m3[0m | import { createClient } from '@/lib/supabase/client';
+ [2m4[0m | import { AuthLayout } from '../_components/AuthLayout';
+ [2m5[0m | import { AuthForm, AuthInput, AuthLink, AuthText } from '../_components/AuthForm';
+   `----
+
+Import trace for requested module:
+./app/auth/signin/page.tsx
+
+../../packages/auth/src/session-manager.ts
+Error: 
+  [31mx[0m You're importing a component that needs next/headers. That only works in a Server Component which is not supported in the pages/ directory. Read more: https://nextjs.org/docs/getting-started/
+  [31m|[0m react-essentials#server-components
+  [31m|[0m 
+  [31m|[0m 
+   ,-[[36;1;4m/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship/packages/auth/src/session-manager.ts[0m:1:1]
+ [2m1[0m | import { createServerClient } from '@ghxstship/auth';
+ [2m2[0m | import { NextRequest } from 'next/server';
+ [2m3[0m | import { cookies } from 'next/headers';
+   : [31;1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+ [2m4[0m | import crypto from 'crypto';
+ [2m5[0m | 
+ [2m6[0m | // Session configuration
+   `----
+
+Import trace for requested module:
+../../packages/auth/src/session-manager.ts
+../../packages/auth/src/index.ts
+./app/auth/signup/SignUpForm.tsx
+
+
+> Build failed because of webpack errors
+ ELIFECYCLE  Command failed with exit code 1.

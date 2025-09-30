@@ -1,0 +1,443 @@
+'use client';
+
+/**
+ * Assets Detail Client
+ *
+ * Client component for displaying comprehensive asset details
+ * with navigation, actions, and related information.
+ *
+ * @module assets/[id]/AssetDetailClient
+ */
+
+import React, { useState, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
+import { Asset } from '../types';
+import { apiClient } from '../lib/api';
+import DetailDrawer from '../drawers/DetailDrawer';
+// import CreateDrawer from '../drawers/CreateDrawer';
+import { Button } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
+import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
+import { Separator } from '@ghxstship/ui';
+import {
+  ArrowLeft,
+  Edit,
+  Trash2,
+  Copy,
+  Download,
+  User,
+  MapPin,
+  Calendar,
+  DollarSign,
+  Package,
+  AlertTriangle,
+  CheckCircle,
+  Clock,
+  History,
+  Settings
+} from 'lucide-react';
+import type { User as SupabaseUser } from '@supabase/supabase-js';
+
+interface AssetDetailClientProps {
+  asset: Asset;
+  user: SupabaseUser;
+  orgId: string;
+  userRole: string;
+  translations?: Record<string, string>;
+}
+
+export default function AssetDetailClient({
+  asset: initialAsset,
+  user,
+  orgId,
+  userRole,
+  translations = {}
+}: AssetDetailClientProps) {
+  const router = useRouter();
+  const [asset, setAsset] = useState(initialAsset);
+  const [isDetailDrawerOpen, setIsDetailDrawerOpen] = useState(false);
+  const [isEditDrawerOpen, setIsEditDrawerOpen] = useState(false);
+
+  // Permission checks
+  const canEdit = ['owner', 'admin', 'manager'].includes(userRole);
+  const canDelete = ['owner', 'admin'].includes(userRole);
+  const canAssign = ['owner', 'admin', 'manager'].includes(userRole);
+  const canMaintain = ['owner', 'admin', 'manager'].includes(userRole);
+
+  // Handle asset update
+  const handleAssetUpdate = useCallback((updatedAsset: Asset) => {
+    setAsset(updatedAsset);
+  }, []);
+
+  // Handle asset deletion
+  const handleAssetDelete = useCallback(async () => {
+    if (!confirm('Are you sure you want to delete this asset? This action cannot be undone.')) {
+      return;
+    }
+
+    try {
+      await apiClient.deleteAsset(asset.id);
+      router.push('/assets');
+    } catch (error) {
+      console.error('Failed to delete asset:', error);
+      // Show error toast
+    }
+  }, [asset.id, router]);
+
+  // Handle asset duplication
+  const handleAssetDuplicate = useCallback(() => {
+    const duplicateData = {
+      ...asset,
+      name: `${asset.name} (Copy)`,
+      asset_tag: '', // Will be generated
+      status: 'available' as const,
+      assigned_to: undefined,
+    };
+    delete duplicateData.id;
+    delete duplicateData.created_at;
+    delete duplicateData.updated_at;
+
+    // Open create drawer with duplicate data
+    setIsEditDrawerOpen(true);
+  }, [asset]);
+
+  // Get status display
+  const getStatusDisplay = (status: string) => {
+    const statusMap = {
+      available: { color: 'bg-green-100 text-green-800 border-green-200', icon: CheckCircle },
+      in_use: { color: 'bg-blue-100 text-blue-800 border-blue-200', icon: User },
+      maintenance: { color: 'bg-yellow-100 text-yellow-800 border-yellow-200', icon: AlertTriangle },
+      retired: { color: 'bg-gray-100 text-gray-800 border-gray-200', icon: Package },
+      lost: { color: 'bg-red-100 text-red-800 border-red-200', icon: AlertTriangle },
+      damaged: { color: 'bg-orange-100 text-orange-800 border-orange-200', icon: AlertTriangle }
+    };
+    return statusMap[status as keyof typeof statusMap] || statusMap.available;
+  };
+
+  const statusDisplay = getStatusDisplay(asset.status);
+  const StatusIcon = statusDisplay.icon;
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center gap-4">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => router.push('/assets')}
+                className="flex items-center gap-2"
+              >
+                <ArrowLeft className="w-4 h-4" />
+                {translations.back || 'Back to Assets'}
+              </Button>
+              <div className="h-6 w-px bg-gray-300" />
+              <div className="flex items-center gap-3">
+                {asset.image_urls?.[0] ? (
+                  <img
+                    src={asset.image_urls[0]}
+                    alt={asset.name}
+                    className="w-10 h-10 rounded-lg object-cover"
+                  />
+                ) : (
+                  <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
+                    <Package className="w-5 h-5 text-gray-400" />
+                  </div>
+                )}
+                <div>
+                  <h1 className="text-xl font-semibold text-gray-900">
+                    {asset.name}
+                  </h1>
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="font-mono">
+                      {asset.asset_tag}
+                    </Badge>
+                    <Badge className={statusDisplay.color}>
+                      <StatusIcon className="w-3 h-3 mr-1" />
+                      {asset.status.replace('_', ' ')}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setIsDetailDrawerOpen(true)}
+              >
+                <History className="w-4 h-4 mr-2" />
+                {translations.history || 'History'}
+              </Button>
+
+              {canEdit && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setIsEditDrawerOpen(true)}
+                >
+                  <Edit className="w-4 h-4 mr-2" />
+                  {translations.edit || 'Edit'}
+                </Button>
+              )}
+
+              <Button variant="outline" size="sm">
+                <Download className="w-4 h-4 mr-2" />
+                {translations.export || 'Export'}
+              </Button>
+
+              {canDelete && (
+                <Button
+                  variant="destructive"
+                  size="sm"
+                  onClick={handleAssetDelete}
+                >
+                  <Trash2 className="w-4 h-4 mr-2" />
+                  {translations.delete || 'Delete'}
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Main Details */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Overview Card */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Asset Overview</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700">Category</label>
+                    <p className="text-sm text-gray-900 capitalize mt-1">
+                      {asset.category?.replace('_', ' ')}
+                    </p>
+                  </div>
+                  <div>
+                    <label className="text-sm font-medium text-gray-700">Condition</label>
+                    <p className="text-sm text-gray-900 capitalize mt-1">
+                      {asset.condition?.replace('_', ' ')}
+                    </p>
+                  </div>
+                </div>
+
+                {asset.description && (
+                  <div>
+                    <label className="text-sm font-medium text-gray-700">Description</label>
+                    <p className="text-sm text-gray-900 mt-1">{asset.description}</p>
+                  </div>
+                )}
+
+                <Separator />
+
+                {/* Assignment & Location */}
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">Assigned To</label>
+                    {asset.assigned_to ? (
+                      <div className="flex items-center gap-2">
+                        {asset.assigned_to.avatar && (
+                          <img
+                            src={asset.assigned_to.avatar}
+                            alt={asset.assigned_to.name}
+                            className="w-8 h-8 rounded-full"
+                          />
+                        )}
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">
+                            {asset.assigned_to.name}
+                          </p>
+                          <p className="text-xs text-gray-500">
+                            {asset.assigned_to.email}
+                          </p>
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">Not assigned</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="text-sm font-medium text-gray-700 mb-2 block">Location</label>
+                    {asset.location ? (
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-gray-400" />
+                        <div>
+                          <p className="text-sm font-medium text-gray-900">
+                            {asset.location.name}
+                          </p>
+                          {asset.location.address && (
+                            <p className="text-xs text-gray-500">
+                              {asset.location.address}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    ) : (
+                      <p className="text-sm text-gray-500">No location set</p>
+                    )}
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Images */}
+            {asset.image_urls && asset.image_urls.length > 0 && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Asset Images</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {asset.image_urls.map((url, index) => (
+                      <div key={index} className="relative group">
+                        <img
+                          src={url}
+                          alt={`${asset.name} - Image ${index + 1}`}
+                          className="w-full h-32 object-cover rounded-lg border cursor-pointer hover:shadow-md transition-shadow"
+                          onClick={() => {/* Open image viewer */}}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </div>
+
+          {/* Sidebar */}
+          <div className="space-y-6">
+            {/* Quick Actions */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Quick Actions</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                {canAssign && asset.status === 'available' && (
+                  <Button
+                    className="w-full justify-start"
+                    variant="outline"
+                    onClick={() => {/* Handle assign */}}
+                  >
+                    <User className="w-4 h-4 mr-2" />
+                    {translations.assign || 'Assign Asset'}
+                  </Button>
+                )}
+
+                {canMaintain && (
+                  <Button
+                    className="w-full justify-start"
+                    variant="outline"
+                    onClick={() => {/* Handle maintenance */}}
+                  >
+                    <Settings className="w-4 h-4 mr-2" />
+                    {translations.maintenance || 'Schedule Maintenance'}
+                  </Button>
+                )}
+
+                <Button
+                  className="w-full justify-start"
+                  variant="outline"
+                  onClick={handleAssetDuplicate}
+                >
+                  <Copy className="w-4 h-4 mr-2" />
+                  {translations.duplicate || 'Duplicate Asset'}
+                </Button>
+              </CardContent>
+            </Card>
+
+            {/* Financial Info */}
+            {(asset.purchase_price || asset.current_value) && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Financial Information</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  {asset.purchase_price && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600">Purchase Price</span>
+                      <span className="text-sm font-medium">${asset.purchase_price.toLocaleString()}</span>
+                    </div>
+                  )}
+                  {asset.current_value && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600">Current Value</span>
+                      <span className="text-sm font-medium">${asset.current_value.toLocaleString()}</span>
+                    </div>
+                  )}
+                  {asset.warranty_expiry && (
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-600">Warranty</span>
+                      <span className={`text-sm font-medium ${
+                        new Date(asset.warranty_expiry) > new Date() ? 'text-green-600' : 'text-red-600'
+                      }`}>
+                        {new Date(asset.warranty_expiry) > new Date() ? 'Active' : 'Expired'}
+                      </span>
+                    </div>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+
+            {/* Metadata */}
+            <Card>
+              <CardHeader>
+                <CardTitle>Metadata</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Created</span>
+                  <span className="text-sm">
+                    {new Date(asset.created_at).toLocaleDateString()}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-sm text-gray-600">Last Updated</span>
+                  <span className="text-sm">
+                    {new Date(asset.updated_at).toLocaleDateString()}
+                  </span>
+                </div>
+                {asset.serial_number && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-gray-600">Serial</span>
+                    <span className="text-sm font-mono">{asset.serial_number}</span>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </div>
+
+      {/* Detail Drawer */}
+      <DetailDrawer
+        asset={asset}
+        isOpen={isDetailDrawerOpen}
+        onClose={() => setIsDetailDrawerOpen(false)}
+        onEdit={() => {
+          setIsDetailDrawerOpen(false);
+          setIsEditDrawerOpen(true);
+        }}
+        onDelete={handleAssetDelete}
+        onDuplicate={handleAssetDuplicate}
+      />
+
+      {/* Edit Drawer */}
+      <CreateDrawerDisabled
+        isOpen={isEditDrawerOpen}
+        onClose={() => setIsEditDrawerOpen(false)}
+        onSuccess={handleAssetUpdate}
+        initialData={asset}
+      />
+    </div>
+  );
+}

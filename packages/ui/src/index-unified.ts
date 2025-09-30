@@ -78,14 +78,17 @@ export type {
 } from './components/atomic/Button';
 
 export {
-  Input as UnifiedInput,
+  Input,
   InputGroup,
   SearchInput,
   PasswordInput,
   inputVariants,
 } from './components/atomic/Input';
 
+export { Input as UnifiedInput } from './components/atomic/Input';
+
 export type {
+  InputProps,
   InputProps as UnifiedInputProps,
 } from './components/atomic/Input';
 
@@ -97,9 +100,14 @@ export type {
 // For backward compatibility, atomic components are exported with legacy names
 export { Input as LegacyInput } from './components/atomic/Input';
 
+export { Label } from './components/Label';
+export type { LabelProps } from './components/Label';
+
 // Export Card and Badge components (these still exist)
 export { Card, CardContent, CardHeader, CardFooter, CardTitle, CardDescription } from './components/Card';
 export { Badge } from './components/Badge';
+
+export { Separator } from './components/Separator';
 
 // Export Icon and Progress components
 export { Icon, IconButton, StatusIcon, IconWithText } from './components/Icon';
@@ -124,6 +132,7 @@ export {
   DataActions,
   DataViewProvider,
   useDataView,
+  StateManagerProvider,
   PivotTableView,
   MapView,
   WhiteboardView,
@@ -142,6 +151,14 @@ export {
 export { Skeleton } from './components/atomic/Skeleton';
 export { Textarea } from './components/atomic/Textarea';
 export { Checkbox } from './components/atomic/Checkbox';
+export { RadioButton, RadioGroup, radioVariants } from './components/atomic/RadioButton';
+export type { RadioButtonProps, RadioGroupProps } from './components/atomic/RadioButton';
+export { RangeSlider, sliderVariants } from './components/atomic/RangeSlider';
+export type { RangeSliderProps } from './components/atomic/RangeSlider';
+export { ColorPicker, colorPickerVariants } from './components/atomic/ColorPicker';
+export type { ColorPickerProps } from './components/atomic/ColorPicker';
+export { CodeBlock, useSyntaxHighlighting } from './components/CodeBlock';
+export type { CodeBlockProps } from './components/CodeBlock';
 
 // ==========================================
 // TYPES
@@ -149,6 +166,7 @@ export { Checkbox } from './components/atomic/Checkbox';
 
 export type {
   DataRecord,
+  DataViewConfig,
   FieldConfig,
   ViewType,
   ViewProps,
@@ -198,6 +216,25 @@ export type {
 // ==========================================
 
 export { cn } from './lib/utils';
+
+// ==========================================
+// THEME UTILITIES
+// ==========================================
+
+export {
+  useSyntaxTheme,
+  usePrismTheme,
+  useHighlightJsTheme,
+  useMonacoTheme,
+  useShikiTheme,
+  useCodeMirrorTheme,
+  generateSyntaxHighlightingCSS,
+  applySyntaxTheme,
+} from './utils/syntax-theme-adapter';
+
+export type {
+  SyntaxTheme,
+} from './utils/syntax-theme-adapter';
 
 // ==========================================
 // STYLES

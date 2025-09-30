@@ -1,0 +1,631 @@
+'use client';
+
+import React, { useState, useMemo, useCallback } from 'react';
+import {
+  ChevronDown,
+  ChevronUp,
+  ChevronsUpDown,
+  Search,
+  Filter,
+  MoreHorizontal,
+  Download,
+  Upload,
+  Settings,
+  Eye,
+  EyeOff,
+  GripVertical,
+  CheckSquare,
+  Square
+} from 'lucide-react';
+import { Button } from '@ghxstship/ui';
+import { Input } from '@ghxstship/ui';
+import { Checkbox } from '@ghxstship/ui';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@ghxstship/ui';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
+} from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
+import { cn } from '@ghxstship/ui/lib/utils';
+import type { DashboardWidget } from '../types';
+
+// Column Configuration
+export interface TableColumn {
+  id: string;
+  label: string;
+  key: string;
+  type: 'text' | 'number' | 'date' | 'boolean' | 'badge' | 'custom';
+  sortable?: boolean;
+  filterable?: boolean;
+  width?: number;
+  minWidth?: number;
+  maxWidth?: number;
+  align?: 'left' | 'center' | 'right';
+  format?: (value: unknown) => string;
+  render?: (value: unknown, row: Record<string, unknown>) => React.ReactNode;
+  hidden?: boolean;
+  frozen?: boolean;
+}
+
+// Sort Configuration
+export interface SortConfig {
+  column: string;
+  direction: 'asc' | 'desc';
+}
+
+// Filter Configuration
+export interface FilterConfig {
+  column: string;
+  operator: 'eq' | 'ne' | 'gt' | 'lt' | 'gte' | 'lte' | 'contains' | 'starts_with' | 'ends_with';
+  value: unknown;
+}
+
+// Table View Props
+export interface TableViewProps {
+  data: Record<string, unknown>[];
+  columns: TableColumn[];
+  loading?: boolean;
+  emptyMessage?: string;
+  className?: string;
+
+  // Sorting
+  sort?: SortConfig;
+  onSort?: (sort: SortConfig | undefined) => void;
+  multiSort?: boolean;
+
+  // Filtering
+  filters?: FilterConfig[];
+  onFilter?: (filters: FilterConfig[]) => void;
+  globalSearch?: string;
+  onGlobalSearch?: (query: string) => void;
+
+  // Selection
+  selectable?: boolean;
+  selectedRows?: string[];
+  onSelectionChange?: (selectedIds: string[]) => void;
+  selectAll?: boolean;
+
+  // Pagination
+  pagination?: {
+    page: number;
+    pageSize: number;
+    total: number;
+    onPageChange: (page: number) => void;
+    onPageSizeChange: (pageSize: number) => void;
+  };
+
+  // Actions
+  actions?: {
+    label: string;
+    icon?: React.ComponentType<{ className?: string }>;
+    onClick: (row: Record<string, unknown>) => void;
+    disabled?: (row: Record<string, unknown>) => boolean;
+    variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+  }[];
+
+  // Bulk Actions
+  bulkActions?: {
+    label: string;
+    icon?: React.ComponentType<{ className?: string }>;
+    onClick: (selectedRows: Record<string, unknown>[]) => void;
+    disabled?: boolean;
+    variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link';
+  }[];
+
+  // Customization
+  onColumnResize?: (columnId: string, width: number) => void;
+  onColumnReorder?: (columnIds: string[]) => void;
+  onColumnVisibilityChange?: (columnId: string, visible: boolean) => void;
+
+  // Export/Import
+  onExport?: (format: 'csv' | 'excel' | 'json') => void;
+  onImport?: () => void;
+
+  // Advanced Features
+  virtualized?: boolean;
+  resizable?: boolean;
+  reorderable?: boolean;
+  stickyHeader?: boolean;
+  striped?: boolean;
+  bordered?: boolean;
+  compact?: boolean;
+}
+
+// Table View Component
+export const TableView: React.FC<TableViewProps> = ({
+  data,
+  columns,
+  loading = false,
+  emptyMessage = 'No data available',
+  className,
+
+  // Sorting
+  sort,
+  onSort,
+  multiSort = false,
+
+  // Filtering
+  filters = [],
+  onFilter,
+  globalSearch = '',
+  onGlobalSearch,
+
+  // Selection
+  selectable = false,
+  selectedRows = [],
+  onSelectionChange,
+  selectAll = false,
+
+  // Pagination
+  pagination,
+
+  // Actions
+  actions = [],
+  bulkActions = [],
+
+  // Customization
+  onColumnResize,
+  onColumnReorder,
+  onColumnVisibilityChange,
+
+  // Export/Import
+  onExport,
+  onImport,
+
+  // Advanced Features
+  virtualized = false,
+  resizable = true,
+  reorderable = false,
+  stickyHeader = true,
+  striped = false,
+  bordered = false,
+  compact = false
+}) => {
+  const [columnWidths, setColumnWidths] = useState<Record<string, number>({});
+  const [draggedColumn, setDraggedColumn] = useState<string | null>(null);
+  const [dragOverColumn, setDragOverColumn] = useState<string | null>(null);
+
+  // Visible columns
+  const visibleColumns = useMemo(() =>
+    columns.filter(col => !col.hidden),
+    [columns]
+  );
+
+  // Sorted data
+  const sortedData = useMemo(() => {
+    if (!sort || !data.length) return data;
+
+    return [...data].sort((a, b) => {
+      const aValue = a[sort.column];
+      const bValue = b[sort.column];
+
+      let comparison = 0;
+      if (aValue < bValue) comparison = -1;
+      if (aValue > bValue) comparison = 1;
+
+      return sort.direction === 'desc' ? -comparison : comparison;
+    });
+  }, [data, sort]);
+
+  // Handle sorting
+  const handleSort = useCallback((columnId: string) => {
+    if (!onSort) return;
+
+    if (multiSort) {
+      // Multi-column sorting logic would go here
+      onSort({ column: columnId, direction: 'asc' });
+    } else {
+      // Single column sorting
+      const newDirection =
+        sort?.column === columnId && sort.direction === 'asc' ? 'desc' : 'asc';
+      onSort({ column: columnId, direction: newDirection });
+    }
+  }, [sort, onSort, multiSort]);
+
+  // Handle selection
+  const handleSelectAll = useCallback(() => {
+    if (!onSelectionChange) return;
+
+    if (selectAll) {
+      onSelectionChange([]);
+    } else {
+      onSelectionChange(sortedData.map(row => String(row.id || '')));
+    }
+  }, [selectAll, sortedData, onSelectionChange]);
+
+  const handleSelectRow = useCallback((rowId: string) => {
+    if (!onSelectionChange) return;
+
+    const newSelection = selectedRows.includes(rowId)
+      ? selectedRows.filter(id => id !== rowId)
+      : [...selectedRows, rowId];
+
+    onSelectionChange(newSelection);
+  }, [selectedRows, onSelectionChange]);
+
+  // Handle column resizing
+  const handleColumnResize = useCallback((columnId: string, width: number) => {
+    setColumnWidths(prev => ({ ...prev, [columnId]: width }));
+    onColumnResize?.(columnId, width);
+  }, [onColumnResize]);
+
+  // Handle column reordering
+  const handleColumnReorder = useCallback((fromIndex: number, toIndex: number) => {
+    if (!onColumnReorder) return;
+
+    const newColumns = [...visibleColumns];
+    const [moved] = newColumns.splice(fromIndex, 1);
+    newColumns.splice(toIndex, 0, moved);
+
+    onColumnReorder(newColumns.map(col => col.id));
+  }, [visibleColumns, onColumnReorder]);
+
+  // Render cell content
+  const renderCell = useCallback((column: TableColumn, value: unknown, row: Record<string, unknown>) => {
+    if (column.render) {
+      return column.render(value, row);
+    }
+
+    switch (column.type) {
+      case 'boolean':
+        return value ? '✓' : '✗';
+      case 'badge':
+        return <Badge variant="secondary">{String(value)}</Badge>;
+      case 'date':
+        return value ? new Date(String(value)).toLocaleDateString() : '';
+      case 'number':
+        return column.format ? column.format(value) : String(value);
+      default:
+        return column.format ? column.format(value) : String(value || '');
+    }
+  }, []);
+
+  // Table classes
+  const tableClasses = cn(
+    'w-full',
+    striped && 'table-striped',
+    bordered && 'table-bordered',
+    compact && 'table-compact',
+    className
+  );
+
+  return (
+    <div className="space-y-4">
+      {/* Toolbar */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          {/* Global Search */}
+          {onGlobalSearch && (
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search..."
+                value={globalSearch}
+                onChange={(e) => onGlobalSearch(e.target.value)}
+                className="pl-9 w-64"
+              />
+            </div>
+          )}
+
+          {/* Bulk Actions */}
+          {bulkActions.length > 0 && selectedRows.length > 0 && (
+            <div className="flex items-center gap-1">
+              {bulkActions.map((action, index) => {
+                const Icon = action.icon;
+                return (
+                  <Button
+                    key={index}
+                    variant={action.variant || 'outline'}
+                    size="sm"
+                    onClick={() => {
+                      const selectedData = sortedData.filter(row =>
+                        selectedRows.includes(String(row.id || ''))
+                      );
+                      action.onClick(selectedData);
+                    }}
+                    disabled={action.disabled}
+                  >
+                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {action.label}
+                  </Button>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
+          {/* Export */}
+          {onExport && (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Download className="h-4 w-4 mr-1" />
+                  Export
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => onExport('csv')}>
+                  Export as CSV
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onExport('excel')}>
+                  Export as Excel
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => onExport('json')}>
+                  Export as JSON
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          )}
+
+          {/* Import */}
+          {onImport && (
+            <Button variant="outline" size="sm" onClick={onImport}>
+              <Upload className="h-4 w-4 mr-1" />
+              Import
+            </Button>
+          )}
+
+          {/* Column Settings */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="sm">
+                <Settings className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>Column Visibility</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              {columns.map((column) => (
+                <DropdownMenuCheckboxItem
+                  key={column.id}
+                  checked={!column.hidden}
+                  onCheckedChange={(checked) =>
+                    onColumnVisibilityChange?.(column.id, checked)
+                  }
+                >
+                  {column.label}
+                </DropdownMenuCheckboxItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+
+      {/* Table */}
+      <div className={cn('border rounded-md', stickyHeader && 'overflow-auto max-h-96')}>
+        <Table className={tableClasses}>
+          <TableHeader className={stickyHeader ? 'sticky top-0 bg-background' : ''}>
+            <TableRow>
+              {/* Selection Column */}
+              {selectable && (
+                <TableHead className="w-12">
+                  <Checkbox
+                    checked={selectAll}
+                    onCheckedChange={handleSelectAll}
+                  />
+                </TableHead>
+              )}
+
+              {/* Data Columns */}
+              {visibleColumns.map((column, index) => {
+                const isSorted = sort?.column === column.id;
+                const sortIcon = isSorted
+                  ? sort.direction === 'asc'
+                    ? ChevronUp
+                    : ChevronDown
+                  : ChevronsUpDown;
+                const SortIcon = sortIcon;
+
+                return (
+                  <TableHead
+                    key={column.id}
+                    className={cn(
+                      'relative',
+                      column.align === 'center' && 'text-center',
+                      column.align === 'right' && 'text-right',
+                      column.frozen && 'sticky left-0 bg-background z-10',
+                      reorderable && 'cursor-move'
+                    )}
+                    style={{
+                      width: columnWidths[column.id] || column.width,
+                      minWidth: column.minWidth,
+                      maxWidth: column.maxWidth
+                    }}
+                  >
+                    <div className="flex items-center gap-2">
+                      {/* Drag Handle */}
+                      {reorderable && (
+                        <GripVertical className="h-4 w-4 text-muted-foreground cursor-move" />
+                      )}
+
+                      {/* Column Label */}
+                      <span className="flex-1">{column.label}</span>
+
+                      {/* Sort Button */}
+                      {column.sortable && onSort && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="h-6 w-6 p-0"
+                          onClick={() => handleSort(column.id)}
+                        >
+                          <SortIcon className="h-4 w-4" />
+                        </Button>
+                      )}
+                    </div>
+
+                    {/* Resize Handle */}
+                    {resizable && (
+                      <div
+                        className="absolute right-0 top-0 bottom-0 w-1 cursor-col-resize bg-border hover:bg-primary"
+                        onMouseDown={(e) => {
+                          // Resize logic would go here
+                          e.preventDefault();
+                        }}
+                      />
+                    )}
+                  </TableHead>
+                );
+              })}
+
+              {/* Actions Column */}
+              {actions.length > 0 && (
+                <TableHead className="w-12">Actions</TableHead>
+              )}
+            </TableRow>
+          </TableHeader>
+
+          <TableBody>
+            {loading ? (
+              // Loading state
+              Array.from({ length: 5 }).map((_, index) => (
+                <TableRow key={index}>
+                  {selectable && <TableCell><div className="h-4 bg-muted animate-pulse rounded" /></TableCell>}
+                  {visibleColumns.map((column) => (
+                    <TableCell key={column.id}>
+                      <div className="h-4 bg-muted animate-pulse rounded" />
+                    </TableCell>
+                  ))}
+                  {actions.length > 0 && <TableCell><div className="h-4 bg-muted animate-pulse rounded" /></TableCell>}
+                </TableRow>
+              ))
+            ) : sortedData.length === 0 ? (
+              // Empty state
+              <TableRow>
+                <TableCell
+                  colSpan={
+                    (selectable ? 1 : 0) +
+                    visibleColumns.length +
+                    (actions.length > 0 ? 1 : 0)
+                  }
+                  className="text-center py-8 text-muted-foreground"
+                >
+                  {emptyMessage}
+                </TableCell>
+              </TableRow>
+            ) : (
+              // Data rows
+              sortedData.map((row, rowIndex) => {
+                const rowId = String(row.id || rowIndex);
+                const isSelected = selectedRows.includes(rowId);
+
+                return (
+                  <TableRow
+                    key={rowId}
+                    className={cn(
+                      striped && rowIndex % 2 === 1 && 'bg-muted/50',
+                      isSelected && 'bg-accent'
+                    )}
+                  >
+                    {/* Selection Column */}
+                    {selectable && (
+                      <TableCell>
+                        <Checkbox
+                          checked={isSelected}
+                          onCheckedChange={() => handleSelectRow(rowId)}
+                        />
+                      </TableCell>
+                    )}
+
+                    {/* Data Columns */}
+                    {visibleColumns.map((column) => (
+                      <TableCell
+                        key={column.id}
+                        className={cn(
+                          column.align === 'center' && 'text-center',
+                          column.align === 'right' && 'text-right'
+                        )}
+                      >
+                        {renderCell(column, row[column.key], row)}
+                      </TableCell>
+                    ))}
+
+                    {/* Actions Column */}
+                    {actions.length > 0 && (
+                      <TableCell>
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="sm">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            {actions.map((action, index) => {
+                              const Icon = action.icon;
+                              const disabled = action.disabled?.(row);
+
+                              return (
+                                <DropdownMenuItem
+                                  key={index}
+                                  onClick={() => action.onClick(row)}
+                                  disabled={disabled}
+                                >
+                                  {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                  {action.label}
+                                </DropdownMenuItem>
+                              );
+                            })}
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    )}
+                  </TableRow>
+                );
+              })
+            )}
+          </TableBody>
+        </Table>
+      </div>
+
+      {/* Pagination */}
+      {pagination && (
+        <div className="flex items-center justify-between">
+          <div className="text-sm text-muted-foreground">
+            Showing {((pagination.page - 1) * pagination.pageSize) + 1} to{' '}
+            {Math.min(pagination.page * pagination.pageSize, pagination.total)} of{' '}
+            {pagination.total} results
+          </div>
+
+          <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => pagination.onPageChange(pagination.page - 1)}
+              disabled={pagination.page === 1}
+            >
+              Previous
+            </Button>
+
+            <span className="text-sm">
+              Page {pagination.page} of {Math.ceil(pagination.total / pagination.pageSize)}
+            </span>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => pagination.onPageChange(pagination.page + 1)}
+              disabled={pagination.page === Math.ceil(pagination.total / pagination.pageSize)}
+            >
+              Next
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export type { TableColumn, SortConfig, FilterConfig, TableViewProps };

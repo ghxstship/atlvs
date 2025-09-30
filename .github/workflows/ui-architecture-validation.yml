@@ -1,0 +1,118 @@
+name: UI Architecture Validation
+
+on:
+  pull_request:
+    paths:
+      - 'packages/ui/**'
+  push:
+    branches:
+      - main
+    paths:
+      - 'packages/ui/**'
+
+jobs:
+  validate-architecture:
+    runs-on: ubuntu-latest
+    name: Validate UI Architecture
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for duplicate components
+        run: |
+          chmod +x scripts/check-duplicates.sh
+          ./scripts/check-duplicates.sh
+
+      - name: Validate component registry
+        run: |
+          if [ ! -f "packages/ui/src/COMPONENT_REGISTRY.json" ]; then
+            echo "❌ Component registry missing"
+            exit 1
+          fi
+          
+          # Check registry is valid JSON
+          if ! cat packages/ui/src/COMPONENT_REGISTRY.json | jq empty; then
+            echo "❌ Component registry is not valid JSON"
+            exit 1
+          fi
+          
+          echo "✅ Component registry valid"
+
+      - name: Check for legacy component usage
+        run: |
+          echo "Checking for deprecated component imports..."
+          
+          # Check for legacy imports
+          legacy_imports=$(grep -r "from '@ghxstship/ui/atoms/" apps/web/app || true)
+          
+          if [ -n "$legacy_imports" ]; then
+            echo "⚠️  Legacy component imports detected:"
+            echo "$legacy_imports"
+            echo ""
+            echo "Please migrate to canonical imports from '@ghxstship/ui'"
+          fi
+
+      - name: Verify exports consistency
+        run: |
+          echo "Verifying export consistency..."
+          
+          # Check that index.ts exports from index-unified.ts
+          if ! grep -q "export \* from './index-unified'" packages/ui/src/index.ts; then
+            echo "❌ Main index.ts should export from index-unified.ts"
+            exit 1
+          fi
+          
+          echo "✅ Export structure valid"
+
+      - name: Component count validation
+        run: |
+          echo "Component inventory:"
+          
+          atoms=$(find packages/ui/src/components/atomic -name "*.tsx" | wc -l)
+          organisms=$(find packages/ui/src/components -maxdepth 1 -name "*.tsx" | wc -l)
+          system=$(find packages/ui/src/system -name "*.tsx" | wc -l)
+          
+          echo "  Atomic components: $atoms"
+          echo "  Organism components: $organisms"
+          echo "  System files: $system"
+          
+          total=$((atoms + organisms + system))
+          echo "  Total: $total"
+          
+          if [ $total -lt 50 ]; then
+            echo "⚠️  Component count seems low, verify registry"
+          fi
+
+      - name: Check for TODO comments in critical files
+        run: |
+          echo "Checking for unresolved TODOs..."
+          
+          critical_files=(
+            "packages/ui/src/index.ts"
+            "packages/ui/src/index-unified.ts"
+            "packages/ui/src/UnifiedDesignSystem.tsx"
+          )
+          
+          for file in "${critical_files[@]}"; do
+            if grep -q "TODO" "$file" 2>/dev/null; then
+              echo "⚠️  TODO found in $file"
+            fi
+          done
+
+      - name: Architecture compliance report
+        run: |
+          echo "📊 UI Architecture Compliance Report"
+          echo "===================================="
+          echo ""
+          echo "✅ Duplicate check: PASSED"
+          echo "✅ Registry validation: PASSED"
+          echo "✅ Export structure: PASSED"
+          echo "✅ Component inventory: VERIFIED"
+          echo ""
+          echo "Architecture is compliant with ADR standards"

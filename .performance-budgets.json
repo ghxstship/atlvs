@@ -1,0 +1,36 @@
+{
+  "budgets": [
+    {
+      "path": "/",
+      "resourceSizes": [
+        {
+          "resourceType": "total",
+          "budget": 2048000
+        },
+        {
+          "resourceType": "javascript",
+          "budget": 1048576
+        },
+        {
+          "resourceType": "css",
+          "budget": 102400
+        }
+      ],
+      "resourceCounts": [
+        {
+          "resourceType": "third-party",
+          "budget": 10
+        }
+      ]
+    },
+    {
+      "path": "/dashboard",
+      "resourceSizes": [
+        {
+          "resourceType": "total",
+          "budget": 2560000
+        }
+      ]
+    }
+  ]
+}

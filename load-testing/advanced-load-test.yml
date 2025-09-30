@@ -1,0 +1,99 @@
+config:
+  target: 'http://localhost:3000'
+  processor: './load-testing/processor.js'
+  phases:
+    - duration: 30
+      arrivalRate: 5
+      name: "Authentication phase"
+    - duration: 60
+      arrivalRate: 20
+      name: "Light load phase"
+    - duration: 120
+      arrivalRate: 100
+      name: "Heavy load phase"
+    - duration: 60
+      arrivalRate: 200
+      name: "Stress test phase"
+    - duration: 30
+      arrivalRate: 10
+      name: "Recovery phase"
+  defaults:
+    headers:
+      Content-Type: 'application/json'
+      User-Agent: 'Artillery Load Test'
+
+scenarios:
+  - name: "Authenticated user journey"
+    weight: 50
+    flow:
+      - function: "setAuthToken"
+      - get:
+          url: "/dashboard"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 2
+      - get:
+          url: "/api/v1/dashboard/analytics"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 1
+      - get:
+          url: "/projects"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 3
+
+  - name: "API intensive operations"
+    weight: 30
+    flow:
+      - function: "setAuthToken"
+      - post:
+          url: "/api/v1/projects"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          json:
+            name: "Load Test Project {{ $randomInt }}"
+            description: "Created during load testing"
+          expect:
+            - statusCode: 201
+      - think: 1
+      - get:
+          url: "/api/v1/projects?limit=50"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 2
+
+  - name: "File upload simulation"
+    weight: 10
+    flow:
+      - function: "setAuthToken"
+      - post:
+          url: "/api/v1/files/upload"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+            Content-Type: "multipart/form-data"
+          formData:
+            file: "fake-file-content"
+          expect:
+            - statusCode: 201
+      - think: 3
+
+  - name: "Real-time features test"
+    weight: 10
+    flow:
+      - function: "setAuthToken"
+      - get:
+          url: "/api/v1/realtime/connect"
+          headers:
+            Authorization: "Bearer {{ authToken }}"
+          expect:
+            - statusCode: 200
+      - think: 5

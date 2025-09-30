@@ -1,0 +1,186 @@
+"use client";
+
+import React, { useState } from 'react';
+import { Image, Video, File, Eye, Download, MoreHorizontal } from 'lucide-react';
+import { Button } from '@ghxstship/ui';
+import { Badge } from '@ghxstship/ui';
+import { Card, CardContent } from '@ghxstship/ui';
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@ghxstship/ui';
+
+export interface ImageViewProps {
+  data: unknown[];
+  onItemClick?: (item: unknown) => void;
+  onDownload?: (item: unknown) => void;
+  onView?: (item: unknown) => void;
+  loading?: boolean;
+  emptyMessage?: string;
+  className?: string;
+  layout?: 'grid' | 'masonry';
+  imageField?: string;
+  titleField?: string;
+  subtitleField?: string;
+}
+
+export default function ImageView({
+  data,
+  onItemClick,
+  onDownload,
+  onView,
+  loading = false,
+  emptyMessage = "No media available",
+  className = "",
+  layout = 'grid',
+  imageField = 'file_url',
+  titleField = 'name',
+  subtitleField = 'description',
+}: ImageViewProps) {
+  const [selectedItem, setSelectedItem] = useState<(null);
+
+  const getFileIcon = (fileType: string) => {
+    if (fileType?.startsWith('image/')) return <Image className="h-8 w-8" />;
+    if (fileType?.startsWith('video/')) return <Video className="h-8 w-8" />;
+    return <File className="h-8 w-8" />;
+  };
+
+  const getFileTypeColor = (fileType: string) => {
+    if (fileType?.startsWith('image/')) return 'text-green-500';
+    if (fileType?.startsWith('video/')) return 'text-blue-500';
+    return 'text-gray-500';
+  };
+
+  if (loading) {
+    return (
+      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' : 'columns-2 md:columns-3 lg:columns-4 gap-4'} ${className}`}>
+        {Array.from({ length: 12 }).map((_, i) => (
+          <div key={i} className="animate-pulse break-inside-avoid mb-4">
+            <div className="bg-muted rounded-lg aspect-square mb-2"></div>
+            <div className="h-3 bg-muted rounded w-3/4 mb-1"></div>
+            <div className="h-2 bg-muted rounded w-1/2"></div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  if (data.length === 0) {
+    return (
+      <div className={`flex items-center justify-center p-8 ${className}`}>
+        <div className="text-center text-muted-foreground">
+          {emptyMessage}
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <>
+      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' : 'columns-2 md:columns-3 lg:columns-4 gap-4'} ${className}`}>
+        {data.map((item) => (
+          <Card
+            key={item.id}
+            className="break-inside-avoid cursor-pointer hover:shadow-md transition-shadow group"
+            onClick={() => onItemClick?.(item)}
+          >
+            <CardContent className="p-3">
+              {/* Media Preview */}
+              <div className="aspect-square bg-muted rounded-lg mb-3 flex items-center justify-center overflow-hidden">
+                {item[imageField] ? (
+                  item.file_type?.startsWith('image/') ? (
+                    <img
+                      src={item[imageField]}
+                      alt={item[titleField]}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                  ) : (
+                    <div className={`${getFileTypeColor(item.file_type)}`}>
+                      {getFileIcon(item.file_type)}
+                    </div>
+                  )
+                ) : (
+                  <div className="text-muted-foreground">
+                    <File className="h-8 w-8" />
+                  </div>
+                )}
+              </div>
+
+              {/* Content */}
+              <div className="space-y-2">
+                <h3 className="font-medium text-sm line-clamp-1">
+                  {item[titleField] || item.name || 'Untitled'}
+                </h3>
+
+                {item[subtitleField] && (
+                  <p className="text-xs text-muted-foreground line-clamp-2">
+                    {item[subtitleField]}
+                  </p>
+                )}
+
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Badge variant="outline" className="text-xs">
+                      {item.category || 'File'}
+                    </Badge>
+                    {item.file_size && (
+                      <span className="text-xs text-muted-foreground">
+                        {(item.file_size / 1024 / 1024).toFixed(1)}MB
+                      </span>
+                    )}
+                  </div>
+
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={(e) => e.stopPropagation()}
+                        className="h-6 w-6 p-0 opacity-60 hover:opacity-100"
+                      >
+                        <MoreHorizontal className="h-3 w-3" />
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end">
+                      {onView && (
+                        <DropdownMenuItem onClick={() => onView(item)}>
+                          <Eye className="mr-2 h-3 w-3" />
+                          View
+                        </DropdownMenuItem>
+                      )}
+                      {onDownload && (
+                        <DropdownMenuItem onClick={() => onDownload(item)}>
+                          <Download className="mr-2 h-3 w-3" />
+                          Download
+                        </DropdownMenuItem>
+                      )}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+
+      {/* Lightbox for full-size viewing */}
+      {selectedItem && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="max-w-4xl max-h-[90vh] p-4">
+            {selectedItem[imageField] && selectedItem.file_type?.startsWith('image/') && (
+              <img
+                src={selectedItem[imageField]}
+                alt={selectedItem[titleField]}
+                className="max-w-full max-h-full object-contain"
+              />
+            )}
+            <Button
+              variant="secondary"
+              onClick={() => setSelectedItem(null)}
+              className="mt-4"
+            >
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

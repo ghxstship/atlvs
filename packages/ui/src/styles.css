@@ -1,4 +1,4 @@
-/* Import unified design system */
+/* Import unified design system (now the single source of truth) */
 @import './styles/unified-design-system.css';
 
 @tailwind base;
@@ -6,7 +6,7 @@
 @tailwind utilities;
 
 :root {
-  /* Bridge UI variables to Unified Design System tokens */
+  /* Bridge legacy UI variables to Unified Design System tokens (for backward compatibility) */
   --background: var(--color-background);
   --foreground: var(--color-foreground);
   --primary: var(--color-primary);
@@ -24,7 +24,7 @@
   --border: var(--color-border);
   --input: var(--color-input);
   --ring: var(--color-ring);
-  
+
   /* Status Colors */
   --success: var(--color-success);
   --success-foreground: var(--color-success-foreground);
@@ -350,19 +350,22 @@
     box-shadow: var(--shadow-outline);
   }
   .btn-primary { 
-    @apply bg-accent text-accent-foreground;
+    background-color: hsl(var(--component-button-background, var(--accent)));
+    color: hsl(var(--component-button-foreground, var(--accent-foreground)));
+    border-color: hsl(var(--component-button-border, var(--accent)));
   }
   .btn-primary:hover {
-    background-color: hsl(var(--primary) / 0.9);
+    background-color: hsl(var(--component-button-hover-background, var(--accent) / 0.9));
   }
   .btn-primary:active {
-    background-color: hsl(var(--primary) / 0.95);
+    background-color: hsl(var(--component-button-hover-background, var(--accent) / 0.95));
   }
   .btn-secondary {
-    @apply bg-secondary text-secondary-foreground;
+    background-color: hsl(var(--component-button-background, var(--secondary)));
+    color: hsl(var(--component-button-foreground, var(--secondary-foreground)));
   }
   .btn-secondary:hover {
-    background-color: hsl(var(--secondary) / 0.8);
+    background-color: hsl(var(--component-button-background, var(--secondary) / 0.8));
   }
   .btn-outline {
     @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
@@ -371,16 +374,20 @@
     @apply hover:bg-accent hover:text-accent-foreground;
   }
   .btn-destructive {
-    @apply bg-destructive text-destructive-foreground;
+    background-color: hsl(var(--component-button-background, var(--destructive)));
+    color: hsl(var(--component-button-foreground, var(--destructive-foreground)));
   }
   .btn-destructive:hover {
-    background-color: hsl(var(--destructive) / 0.9);
+    background-color: hsl(var(--component-button-hover-background, var(--destructive) / 0.9));
   }
   
   .card { 
-    @apply rounded-xl border bg-card text-card-foreground;
+    background-color: hsl(var(--component-surface-background, var(--card)));
+    color: hsl(var(--component-surface-foreground, var(--card-foreground)));
+    border-color: hsl(var(--component-surface-border, var(--border)));
+    @apply rounded-xl;
     padding: var(--space-6);
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--component-surface-shadow, var(--shadow-sm));
   }
   .card-title { 
     @apply text-lg font-bold tracking-wide uppercase;
@@ -393,32 +400,41 @@
   
   .input {
     @apply flex w-full rounded-md border border-input bg-background text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50;
+    background-color: hsl(var(--component-input-background, var(--background)));
+    color: hsl(var(--component-input-foreground, var(--foreground)));
+    border-color: hsl(var(--component-input-border, var(--input)));
     height: var(--space-10);
     padding: var(--space-2) var(--space-3);
   }
   .input:focus-visible {
     @apply outline-none;
-    box-shadow: var(--shadow-outline);
+    box-shadow: var(--component-input-focus-ring, var(--shadow-outline));
   }
   
   .textarea {
     @apply flex w-full rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50;
+    background-color: hsl(var(--component-input-background, var(--background)));
+    color: hsl(var(--component-input-foreground, var(--foreground)));
+    border-color: hsl(var(--component-input-border, var(--input)));
     min-height: calc(var(--space-20));
     padding: var(--space-2) var(--space-3);
   }
   .textarea:focus-visible {
     @apply outline-none;
-    box-shadow: var(--shadow-outline);
+    box-shadow: var(--component-input-focus-ring, var(--shadow-outline));
   }
   
   .select {
     @apply flex w-full items-center justify-between rounded-md border border-input bg-background text-sm ring-offset-background placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50;
+    background-color: hsl(var(--component-input-background, var(--background)));
+    color: hsl(var(--component-input-foreground, var(--foreground)));
+    border-color: hsl(var(--component-input-border, var(--input)));
     height: var(--space-10);
     padding: var(--space-2) var(--space-3);
   }
   .select:focus {
     @apply outline-none;
-    box-shadow: var(--shadow-outline);
+    box-shadow: var(--component-input-focus-ring, var(--shadow-outline));
   }
   
   .badge {

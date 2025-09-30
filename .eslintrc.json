@@ -1,10 +1,28 @@
 {
-  "extends": ["next/core-web-vitals"],
+  "extends": [
+    "next/core-web-vitals",
+    "./.eslintrc.semantic-tokens.js"
+  ],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "react-hooks/exhaustive-deps": "off",
     "react/no-unescaped-entities": "off",
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "no-hardcoded-values": ["error", {
+      "allowedPatterns": [
+        "^(data:image|blob:|https?://|mailto:|tel:|sms:)",
+        "^\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}(:\\d+)?$",
+        "^(true|false|null|undefined)$",
+        "^[A-Z_]+$"
+      ],
+      "tokenPatterns": {
+        "spacing": "var\\(--spacing-[\\w-]+\\)",
+        "colors": "var\\(--color-[\\w-]+\\)",
+        "typography": "var\\(--font-[\\w-]+\\)",
+        "animation": "var\\(--duration-[\\w-]+\\)"
+      }
+    }],
+    "consistent-token-naming": "error"
   }
 }

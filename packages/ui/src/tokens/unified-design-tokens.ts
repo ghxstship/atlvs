@@ -6,6 +6,8 @@
  * All components, styles, and themes derive from these tokens.
  */
 
+import { createComponentTokens as createEnhancedComponentTokens } from './enhanced-component-tokens';
+
 // ==========================================
 // CORE DESIGN TOKENS
 // ==========================================
@@ -205,6 +207,16 @@ export const DESIGN_TOKENS = {
     full: '9999px',
   },
 
+  // Border Width
+  borderWidth: {
+    none: '0',
+    hairline: '1px',
+    thin: '0.5px',
+    sm: '1px',
+    md: '2px',
+    lg: '3px',
+  },
+
   // Shadows (Pop Art + Traditional)
   shadows: {
     // Traditional shadows
@@ -232,6 +244,45 @@ export const DESIGN_TOKENS = {
       md: '0 0 15px hsl(var(--color-accent) / 0.5)',
       lg: '0 0 20px hsl(var(--color-accent) / 0.5)',
       xl: '0 0 25px hsl(var(--color-accent) / 0.5)',
+    },
+
+    // Semantic shadow mappings (component-aware)
+    semantic: {
+      // Elevation levels (0-5 scale)
+      elevation: {
+        0: 'none',
+        1: '0 1px 2px 0 rgb(0 0 0 / 0.05)', // Subtle border
+        2: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)', // Card default
+        3: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)', // Card hover
+        4: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)', // Modal/Dropdown
+        5: '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)', // Tooltip/Popover
+      },
+      // Component-specific shadows
+      component: {
+        button: {
+          default: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          hover: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
+          active: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          focus: '0 0 0 2px hsl(var(--color-ring) / 0.2)',
+        },
+        input: {
+          default: '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+          focus: '0 0 0 2px hsl(var(--color-ring) / 0.2)',
+          error: '0 0 0 2px hsl(var(--color-destructive) / 0.2)',
+        },
+        card: {
+          default: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+          hover: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+          active: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
+        },
+        modal: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+        dropdown: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        tooltip: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+        navigation: {
+          sidebar: '2px 0 4px 0 rgb(0 0 0 / 0.1)',
+          topbar: '0 2px 4px 0 rgb(0 0 0 / 0.1)',
+        },
+      },
     },
   },
 
@@ -360,9 +411,62 @@ export const SEMANTIC_TOKENS = {
 } as const;
 
 // ==========================================
-// UTILITY FUNCTIONS
+// COMPONENT TOKEN MAPPINGS
 // ==========================================
 
+type SemanticPalette = typeof SEMANTIC_TOKENS['light'];
+
+function createComponentTokens(palette: SemanticPalette) {
+  return {
+    button: {
+      background: palette.primary,
+      foreground: palette.primaryForeground,
+      border: palette.primary,
+      hoverBackground: palette.accent,
+      disabledBackground: palette.muted,
+      disabledForeground: palette.mutedForeground,
+    },
+    surface: {
+      background: palette.card,
+      foreground: palette.cardForeground,
+      border: palette.border,
+      shadow: DESIGN_TOKENS.shadows.sm,
+    },
+    input: {
+      background: palette.background,
+      foreground: palette.foreground,
+      border: palette.input,
+      focusRing: palette.ring,
+      placeholder: palette.mutedForeground,
+    },
+    tooltip: {
+      background: palette.popover,
+      foreground: palette.popoverForeground,
+      border: palette.border,
+    },
+  } as const;
+}
+
+export const COMPONENT_TOKENS = {
+  light: createEnhancedComponentTokens(SEMANTIC_TOKENS.light),
+  dark: createEnhancedComponentTokens(SEMANTIC_TOKENS.dark),
+  'light-high-contrast': createEnhancedComponentTokens({
+    ...SEMANTIC_TOKENS.light,
+    border: 'hsl(215 20% 35%)',
+    mutedForeground: 'hsl(215 16% 35%)',
+    foreground: 'hsl(222 47% 5%)',
+    background: 'hsl(0 0% 100%)',
+  }),
+  'dark-high-contrast': createEnhancedComponentTokens({
+    ...SEMANTIC_TOKENS.dark,
+    border: 'hsl(215 20% 65%)',
+    mutedForeground: 'hsl(215 16% 65%)',
+    foreground: 'hsl(210 40% 100%)',
+    background: 'hsl(229 84% 2%)',
+  }),
+} as const;
+// UTILITY FUNCTIONS
+// ==========================================
 /**
  * Get a design token value by path
  */
@@ -383,9 +487,11 @@ export function getToken(path: string): string {
 
 /**
  * Generate CSS custom properties from design tokens
+ * @deprecated Use the generate-css-tokens.ts script instead
  */
 export function generateCSSVariables(theme: 'light' | 'dark' = 'light'): string {
   const semanticTokens = SEMANTIC_TOKENS[theme];
+  const componentTokens = COMPONENT_TOKENS[theme];
   
   let css = ':root {\n';
   
@@ -394,23 +500,70 @@ export function generateCSSVariables(theme: 'light' | 'dark' = 'light'): string 
     const cssVar = key.replace(/([A-Z])/g, '-$1').toLowerCase();
     css += `  --color-${cssVar}: ${value};\n`;
   });
-  
+
   // Add spacing variables
   Object.entries(DESIGN_TOKENS.spacing).forEach(([key, value]) => {
     css += `  --spacing-${key}: ${value};\n`;
   });
-  
+
   // Add typography variables
   Object.entries(DESIGN_TOKENS.typography.fontSize).forEach(([key, value]) => {
     css += `  --font-size-${key}: ${value};\n`;
   });
+
+  // Add border radius variables
+  Object.entries(DESIGN_TOKENS.borderRadius).forEach(([key, value]) => {
+    css += `  --radius-${key}: ${value};\n`;
+  });
+
+  // Add border width variables
+  Object.entries(DESIGN_TOKENS.borderWidth).forEach(([key, value]) => {
+    css += `  --border-width-${key}: ${value};\n`;
+  });
+
+  // Add shadow variables - Fixed line endings
+  if (DESIGN_TOKENS.shadows.semantic) {
+    // Elevation shadows
+    Object.entries(DESIGN_TOKENS.shadows.semantic.elevation).forEach(([level, shadow]) => {
+      css += `  --shadow-elevation-${level}: ${shadow};\n`;
+    });
+    // Component-specific shadows
+    Object.entries(DESIGN_TOKENS.shadows.semantic.component).forEach(([component, shadows]) => {
+      if (typeof shadows === "string") {
+        css += `  --shadow-component-${component}: ${shadows};\n`;
+      } else if (typeof shadows === "object") {
+        Object.entries(shadows).forEach(([state, shadow]) => {
+          if (typeof shadow === 'string') {
+            css += `  --shadow-component-${component}-${state}: ${shadow};\n`;
+          } else if (typeof shadow === 'object') {
+            Object.entries(shadow).forEach(([subState, subShadow]) => {
+              css += `  --shadow-component-${component}-${state}-${subState}: ${subShadow};\n`;
+            });
+          }
+        });
+      }
+    });
+  }
   
-  // Add shadow variables
   Object.entries(DESIGN_TOKENS.shadows).forEach(([key, value]) => {
     if (typeof value === 'string') {
       css += `  --shadow-${key}: ${value};\n`;
     }
   });
+
+  // Add component variables
+  function processComponentTokens(obj: any, prefix: string = 'component') {
+    Object.entries(obj).forEach(([key, value]) => {
+      const cssVar = `${prefix}-${key}`.replace(/([A-Z])/g, '-$1').toLowerCase();
+      if (typeof value === 'string') {
+        css += `  --${cssVar}: ${value};\n`;
+      } else if (typeof value === 'object' && value !== null) {
+        processComponentTokens(value, cssVar);
+      }
+    });
+  }
+  
+  processComponentTokens(componentTokens);
   
   css += '}\n';
   return css;
@@ -424,3 +577,5 @@ export type SemanticTokens = typeof SEMANTIC_TOKENS;
 export type ColorTokens = DesignTokens['colors'];
 export type SpacingTokens = DesignTokens['spacing'];
 export type TypographyTokens = DesignTokens['typography'];
+export type BorderWidthTokens = DesignTokens['borderWidth'];
+export type ComponentTokens = typeof COMPONENT_TOKENS;

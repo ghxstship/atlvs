@@ -10,7 +10,14 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "chromatic": "chromatic --exit-zero-on-changes"
+    "chromatic": "chromatic --exit-zero-on-changes",
+    "generate:tokens": "tsx scripts/generate-css-tokens.ts",
+    "validate:tokens": "tsx scripts/validate-tokens.ts",
+    "validate:tokens:ci": "tsx scripts/validate-tokens.ts --ci",
+    "lint:tokens": "eslint --config .eslintrc.tokens.js 'src/**/*.{ts,tsx,js,jsx,css,scss}'",
+    "lint:tokens:ci": "eslint --config .eslintrc.tokens.js --max-warnings 0 'src/**/*.{ts,tsx,js,jsx,css,scss}'",
+    "fix:colors": "tsx ../../scripts/fix-hardcoded-colors.ts .",
+    "prepare": "cd ../.. && husky install"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",

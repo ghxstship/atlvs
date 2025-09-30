@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
-    "./server": "./server.ts"
+    "./server": "./src/server.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.43.0",
