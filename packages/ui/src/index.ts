@@ -49,19 +49,10 @@ export {
 } from './index-unified';
 
 // Legacy component exports (backward compatibility - use atomic exports instead)
+// These are now exported via atomic structure above, keeping for compatibility
 export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
-export { EnhancedUniversalDrawer } from './components/EnhancedUniversalDrawer';
-
-// Note: Most components now exported via atomic structure above
-// Use: import { Button } from '@ghxstship/ui/atoms' or '@ghxstship/ui'
-
-// Legacy exports removed - now available via atomic structure:
-// - DropdownMenu → molecules
-// - Alert → molecules
-// - Table → organisms
-// - Switch → atoms
 
 // Hooks
 export { useToast, ToastProvider } from './hooks/useToast';
 export type { Toast } from './hooks/useToast';
-export { useToastContext } from './components/Toast';
+export { useToastContext } from './organisms/Toast';
