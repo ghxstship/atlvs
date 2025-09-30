@@ -1,10 +1,14 @@
+// Shared Kernel and Value Objects
+export * from './shared';
+
+// Legacy exports (backward compatibility)
 export * from './core/Identifier';
 export * from './core/Result';
-// export * from './tenant/TenantContext';
 export * from './security/r-b-a-c';
-// export * from './events/DomainEvent';
-// export * from './events/EventBus';
 export * from './audit';
+
+// Bounded Contexts
+export * from './contexts';
 
 export * from './repositories/base-repository';
 
