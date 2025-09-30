@@ -16,8 +16,8 @@ export * from './molecules';
 // Organisms - Complex components
 export * from './organisms';
 
-// Templates - Page layouts (when ready)
-// export * from './templates';
+// Templates - Page layouts
+export * from './templates';
 
 // Patterns - Reusable patterns
 // export * from './patterns';
