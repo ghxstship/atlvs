@@ -1,0 +1,51 @@
+coverage:
+  status:
+    project:
+      default:
+        target: 80%
+        threshold: 1%
+        if_ci_failed: error
+    patch:
+      default:
+        target: 80%
+        threshold: 1%
+
+  precision: 2
+  round: down
+  range: "70...100"
+
+comment:
+  layout: "reach,diff,flags,tree,reach"
+  behavior: default
+  require_changes: false
+  require_base: false
+  require_head: true
+
+ignore:
+  - "**/*.test.ts"
+  - "**/*.test.tsx"
+  - "**/*.spec.ts"
+  - "**/*.spec.tsx"
+  - "**/*.stories.tsx"
+  - "**/*.config.ts"
+  - "**/*.config.js"
+  - "**/node_modules/**"
+  - "**/.next/**"
+  - "**/dist/**"
+  - "**/coverage/**"
+
+flags:
+  unit:
+    paths:
+      - apps/
+      - packages/
+    carryforward: true
+  integration:
+    paths:
+      - apps/
+      - packages/
+    carryforward: true
+  e2e:
+    paths:
+      - apps/web/
+    carryforward: true

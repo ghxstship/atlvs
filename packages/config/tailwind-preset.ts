@@ -84,6 +84,16 @@ const preset = {
         '32': 'var(--spacing-32)',
         '40': 'var(--spacing-40)',
         '48': 'var(--spacing-48)',
+        // Semantic spacing aliases
+        'xs': 'var(--spacing-xs)',
+        'sm': 'var(--spacing-sm)',
+        'md': 'var(--spacing-md)',
+        'lg': 'var(--spacing-lg)',
+        'xl': 'var(--spacing-xl)',
+        '2xl': 'var(--spacing-2xl)',
+        '3xl': 'var(--spacing-3xl)',
+        '4xl': 'var(--spacing-4xl)',
+        '5xl': 'var(--spacing-5xl)',
       },
       colors: {
         // Core semantic colors

@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "test": "pnpm test:unit && pnpm test:integration && pnpm test:e2e",
+    "test:unit": "jest --config tests/setup/jest.config.ts --coverage",
+    "test:unit:watch": "jest --config tests/setup/jest.config.ts --watch",
+    "test:integration": "jest --config tests/setup/jest.config.ts --testPathPattern=integration",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:debug": "playwright test --debug",
+    "test:performance": "k6 run tests/performance/k6-load-test.js",
+    "test:security": "pnpm audit && snyk test",
+    "test:security:zap": "docker run -v $(pwd):/zap/wrk/:rw -t owasp/zap2docker-stable zap-baseline.py -t http://localhost:3000 -c tests/security/owasp-zap-scan.yaml",
+    "test:coverage": "jest --config tests/setup/jest.config.ts --coverage --coverageReporters=text-lcov | coveralls",
+    "test:ci": "pnpm test:unit && pnpm test:integration",
+    "quality:check": "pnpm lint && pnpm type-check && pnpm format:check",
+    "quality:fix": "pnpm lint:fix && pnpm format",
+    "sonar": "sonar-scanner"
+  }
+}
