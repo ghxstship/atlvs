@@ -91,11 +91,13 @@ packages/ui/src/
 **Total Components:** ~140
 
 **Categorized:**
-- **Atoms** (3/15): Button, Badge, Avatar
-- **Molecules** (3/25): Breadcrumbs, SearchBox, Tabs
-- **Organisms** (3/30): Card, Modal, EmptyState  
+- **Atoms** (12/15): Button, Badge, Avatar, Icon, Label, Heading, Link, Image, Separator, Progress, Switch, Loader ✅
+- **Molecules** (13/25): Breadcrumbs, SearchBox, Tabs, Alert, DatePicker, Dropdown, DropdownMenu, FileUpload, Pagination, TagInput, Toast, Toggle, Tooltip ✅
+- **Organisms** (12/30): Card, Modal, EmptyState, Drawer, AppDrawer, Sheet, Table, Navigation, Sidebar, ErrorBoundary, CodeBlock, ThemeToggle ✅
 - **Templates** (0/10): None yet
-- **Uncategorized** (~130): Remaining in `/components`
+- **Uncategorized** (~103): Remaining in `/components`
+
+**Progress:** 37/140 components migrated (26%)
 
 ---
 

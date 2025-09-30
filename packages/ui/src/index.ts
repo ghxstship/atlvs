@@ -48,22 +48,18 @@ export {
   useLiveRegion,
 } from './index-unified';
 
-// Legacy component exports (will be phased out)
+// Legacy component exports (backward compatibility - use atomic exports instead)
 export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
-export { Tabs, TabsList, TabsTrigger, TabsContent } from './molecules/Tabs';
-export { Drawer } from './components/Drawer';
-export { AppDrawer } from './components/AppDrawer';
-export { EmptyState } from './organisms/EmptyState';
-export { Breadcrumbs } from './molecules/Breadcrumbs';
-export { Sidebar } from './components/Sidebar';
-export { Avatar } from './atoms/Avatar';
 export { EnhancedUniversalDrawer } from './components/EnhancedUniversalDrawer';
 
-// Additional exports
-export * from './dropdown-menu';
-export * from './alert';
-export * from './table';
-export * from './switch';
+// Note: Most components now exported via atomic structure above
+// Use: import { Button } from '@ghxstship/ui/atoms' or '@ghxstship/ui'
+
+// Legacy exports removed - now available via atomic structure:
+// - DropdownMenu → molecules
+// - Alert → molecules
+// - Table → organisms
+// - Switch → atoms
 
 // Hooks
 export { useToast, ToastProvider } from './hooks/useToast';
