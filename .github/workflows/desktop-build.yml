@@ -1,0 +1,114 @@
+name: Desktop Build
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'apps/desktop/**'
+      - 'packages/**'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'apps/desktop/**'
+      - 'packages/**'
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '8'
+
+jobs:
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build app
+        run: |
+          cd apps/desktop
+          pnpm build
+          pnpm package:mac
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: macos-app
+          path: apps/desktop/release/*.dmg
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build app
+        run: |
+          cd apps/desktop
+          pnpm build
+          pnpm package:win
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: windows-app
+          path: apps/desktop/release/*.exe
+
+  build-linux:
+    name: Build Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: ${{ env.PNPM_VERSION }}
+      
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      
+      - name: Build app
+        run: |
+          cd apps/desktop
+          pnpm build
+          pnpm package:linux
+      
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux-app
+          path: |
+            apps/desktop/release/*.AppImage
+            apps/desktop/release/*.deb
+            apps/desktop/release/*.rpm
