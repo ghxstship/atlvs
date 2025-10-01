@@ -346,4 +346,5 @@ export default function CreateListingDrawer({ open, loading, onClose, onSubmit }
  },
  ]}
  />
-);
+ );
+}
