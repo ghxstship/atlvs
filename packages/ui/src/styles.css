@@ -520,18 +520,18 @@
   /* Pop art hover effects */
   .pop-shadow-hover:hover { 
     box-shadow: var(--pop-shadow-md);
-    transform: translate(-2px, -2px);
+    transform: translate(calc(-1 * var(--space-0-5)), calc(-1 * var(--space-0-5)));
     transition: all var(--motion-duration-fast) var(--motion-easing-standard);
   }
   
   .pop-shadow-active:active {
     box-shadow: var(--pop-shadow-sm);
-    transform: translate(2px, 2px);
+    transform: translate(var(--space-0-5), var(--space-0-5));
   }
 
   /* Enhanced hover effects for interactive elements */
   .hover-lift:hover {
-    transform: translateY(-2px);
+    transform: translateY(calc(-1 * var(--space-0-5)));
     transition: all var(--motion-duration-fast) var(--motion-easing-standard);
   }
 
@@ -541,7 +541,7 @@
   }
 
   .hover-glow:hover {
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 var(--space-5) hsl(var(--primary) / 0.3);
     transition: all var(--motion-duration-fast) var(--motion-easing-standard);
   }
 
@@ -559,12 +559,12 @@
   
   .btn-pop:hover {
     box-shadow: var(--pop-shadow-lg);
-    transform: translate(-2px, -2px);
+    transform: translate(calc(-1 * var(--space-0-5)), calc(-1 * var(--space-0-5)));
   }
   
   .btn-pop:active {
     box-shadow: var(--pop-shadow-sm);
-    transform: translate(2px, 2px);
+    transform: translate(var(--space-0-5), var(--space-0-5));
   }
   
   /* Pop art card variant */
@@ -576,36 +576,36 @@
   
   .card-pop:hover {
     box-shadow: var(--pop-shadow-lg);
-    transform: translate(-2px, -2px);
+    transform: translate(calc(-1 * var(--space-0-5)), calc(-1 * var(--space-0-5)));
   }
   
   /* Brand-aware Glow Effects */
   .glow-pink {
     color: hsl(var(--accent));
-    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+    text-shadow: 0 0 var(--space-2-5) hsl(var(--accent) / 0.5);
     border-color: hsl(var(--accent));
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+    box-shadow: 0 0 var(--space-5) hsl(var(--accent) / 0.3);
   }
   
   .glow-blue {
     color: hsl(var(--primary));
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 var(--space-2-5) hsl(var(--primary) / 0.5);
     border-color: hsl(var(--primary));
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 var(--space-5) hsl(var(--primary) / 0.3);
   }
   
   .glow-accent {
     color: hsl(var(--accent));
-    text-shadow: 0 0 10px hsl(var(--accent) / 0.5);
+    text-shadow: 0 0 var(--space-2-5) hsl(var(--accent) / 0.5);
     border-color: hsl(var(--accent));
-    box-shadow: 0 0 20px hsl(var(--accent) / 0.3);
+    box-shadow: 0 0 var(--space-5) hsl(var(--accent) / 0.3);
   }
   
   .glow-primary {
     color: hsl(var(--primary));
-    text-shadow: 0 0 10px hsl(var(--primary) / 0.5);
+    text-shadow: 0 0 var(--space-2-5) hsl(var(--primary) / 0.5);
     border-color: hsl(var(--primary));
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 var(--space-5) hsl(var(--primary) / 0.3);
   }
   
   /* Brand-aware Gradient Utilities */
@@ -682,35 +682,35 @@
 
   .text-body {
     font-family: var(--font-body, 'Share Tech', system-ui, sans-serif);
-    font-size: 1rem;
+    font-size: var(--font-size-base);
     line-height: 1.6;
     font-weight: 400;
   }
 
   .text-body-lg {
     font-family: var(--font-body, 'Share Tech', system-ui, sans-serif);
-    font-size: 1.125rem;
+    font-size: var(--font-size-lg);
     line-height: 1.6;
     font-weight: 400;
   }
 
   .text-body-sm {
     font-family: var(--font-body, 'Share Tech', system-ui, sans-serif);
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     line-height: 1.5;
     font-weight: 400;
   }
 
   .text-body-xs {
     font-family: var(--font-body, 'Share Tech', system-ui, sans-serif);
-    font-size: 0.75rem;
+    font-size: var(--font-size-xs);
     line-height: 1.4;
     font-weight: 400;
   }
 
   .form-label {
     font-family: var(--font-body, 'Share Tech', system-ui, sans-serif);
-    font-size: 0.875rem;
+    font-size: var(--font-size-sm);
     line-height: 1.4;
     font-weight: 500;
     letter-spacing: 0.025em;
@@ -947,10 +947,10 @@
   .ease-out { transition-timing-function: cubic-bezier(0, 0, 0.2, 1); }
 
   /* Transform Utilities */
-  .translate-x-1 { transform: translateX(0.25rem); }
+  .translate-x-1 { transform: translateX(var(--space-1)); }
   .translate-y-0 { transform: translateY(0); }
-  .translate-y-2 { transform: translateY(0.5rem); }
-  .-translate-y-2 { transform: translateY(-0.5rem); }
+  .translate-y-2 { transform: translateY(var(--space-2)); }
+  .-translate-y-2 { transform: translateY(calc(-1 * var(--space-2))); }
 
   .scale-105 { transform: scale(1.05); }
 
@@ -959,7 +959,7 @@
   .flex-1 { flex: 1 1 0%; }
 
   /* Focus and Interaction States */
-  .group:hover .group-hover\:translate-x-1 { transform: translateX(0.25rem); }
+  .group:hover .group-hover\:translate-x-1 { transform: translateX(var(--space-1)); }
 
   /* Accessibility Utilities */
   .sr-only {

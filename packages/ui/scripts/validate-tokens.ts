@@ -129,9 +129,19 @@ function validateFile(filePath: string): void {
         return;
       }
 
+      // Skip comments that explain what values mean
+      // Comments like "// 320px" or "/* 448px */" are documentation
+      if (line.trim().match(/^(\/\/|\/\*|\*)/)) {
+        return;
+      }
+
+      // Skip checking inside inline comments
+      // Remove inline comments before validation
+      const codeOnlyLine = line.replace(/\/\/.*$/, '').replace(/\/\*.*?\*\//g, '');
+      
       // Check for hardcoded hex colors
       let match;
-      while ((match = HARDCODED_PATTERNS.hexColor.exec(line)) !== null) {
+      while ((match = HARDCODED_PATTERNS.hexColor.exec(codeOnlyLine)) !== null) {
         // Allow certain exceptions
         if (line.includes('data:image') || line.includes('currentColor')) {
           continue;
@@ -150,7 +160,7 @@ function validateFile(filePath: string): void {
 
       // Check for hardcoded RGB/RGBA colors
       HARDCODED_PATTERNS.rgbColor.lastIndex = 0;
-      while ((match = HARDCODED_PATTERNS.rgbColor.exec(line)) !== null) {
+      while ((match = HARDCODED_PATTERNS.rgbColor.exec(codeOnlyLine)) !== null) {
         results.push({
           file: filePath,
           line: lineNumber,
@@ -164,8 +174,8 @@ function validateFile(filePath: string): void {
 
       // Check for direct HSL values (not using CSS variables)
       HARDCODED_PATTERNS.hslDirect.lastIndex = 0;
-      while ((match = HARDCODED_PATTERNS.hslDirect.exec(line)) !== null) {
-        if (!line.includes('var(--')) {
+      while ((match = HARDCODED_PATTERNS.hslDirect.exec(codeOnlyLine)) !== null) {
+        if (!codeOnlyLine.includes('var(--')) {
           results.push({
             file: filePath,
             line: lineNumber,
@@ -180,14 +190,14 @@ function validateFile(filePath: string): void {
 
       // Check for hardcoded pixel values (with exceptions)
       HARDCODED_PATTERNS.pixelValue.lastIndex = 0;
-      while ((match = HARDCODED_PATTERNS.pixelValue.exec(line)) !== null) {
+      while ((match = HARDCODED_PATTERNS.pixelValue.exec(codeOnlyLine)) !== null) {
         const value = match[0];
         // Allow 0px, 1px, and 100%
-        if (value === '0px' || value === '1px' || line.includes('100%')) {
+        if (value === '0px' || value === '1px' || codeOnlyLine.includes('100%')) {
           continue;
         }
         // Allow in media queries
-        if (line.includes('@media') || line.includes('min-width') || line.includes('max-width')) {
+        if (codeOnlyLine.includes('@media') || codeOnlyLine.includes('min-width') || codeOnlyLine.includes('max-width')) {
           continue;
         }
         
@@ -204,9 +214,9 @@ function validateFile(filePath: string): void {
 
       // Check for hardcoded rem values
       HARDCODED_PATTERNS.remValue.lastIndex = 0;
-      while ((match = HARDCODED_PATTERNS.remValue.exec(line)) !== null) {
+      while ((match = HARDCODED_PATTERNS.remValue.exec(codeOnlyLine)) !== null) {
         // Allow in media queries
-        if (line.includes('@media') || line.includes('clamp')) {
+        if (codeOnlyLine.includes('@media') || codeOnlyLine.includes('clamp')) {
           continue;
         }
         
