@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import UniformClient from './UniformClient';
 import CreateUniformItemClient from './CreateUniformItemClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Uniform' };
 
 export default async function ProfileUniformPage() {

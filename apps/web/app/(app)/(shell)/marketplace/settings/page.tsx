@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import SettingsClient from './SettingsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Settings' };
 
 export default async function SettingsPage() {

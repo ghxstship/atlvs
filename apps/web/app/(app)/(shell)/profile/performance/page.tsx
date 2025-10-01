@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import PerformanceClient from './PerformanceClient';
 import CreatePerformanceReviewClient from './CreatePerformanceReviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Performance' };
 
 export default async function ProfilePerformancePage() {

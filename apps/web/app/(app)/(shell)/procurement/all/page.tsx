@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import AllProcurementClient from './AllProcurementClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { 
  title: 'All Procurement Items',
  description: 'Comprehensive view of all procurement items including orders, requests, vendors, and catalog items.'

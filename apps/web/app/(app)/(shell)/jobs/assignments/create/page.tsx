@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateAssignmentClient from '../CreateAssignmentClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Assignment - Jobs',
   description: 'Create a new job assignment',

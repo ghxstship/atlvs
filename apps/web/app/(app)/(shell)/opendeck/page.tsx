@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import OpenDeckMarketplace from './OpenDeckMarketplace';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'OPENDECK Marketplace' };
 
 export default async function OpenDeckLanding() {

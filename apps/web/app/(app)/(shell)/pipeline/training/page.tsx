@@ -5,6 +5,9 @@ import { redirect } from 'next/navigation';
 import TrainingClient from './TrainingClient';
 import CreateTrainingClient from './CreateTrainingClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Pipeline · Training' };
 
 export default async function PipelineTrainingPage() {

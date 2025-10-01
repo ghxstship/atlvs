@@ -2,6 +2,9 @@ import FilesClient from './FilesClient';
 import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Files',
   description: 'Digital asset management and file organization',

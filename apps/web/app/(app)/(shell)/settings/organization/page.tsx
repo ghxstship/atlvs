@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import RemoveDemoClient from './RemoveDemoClient';
 import { getTranslations } from 'next-intl/server';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings · Organization' };
 
 export default async function SettingsOrganizationPage() {

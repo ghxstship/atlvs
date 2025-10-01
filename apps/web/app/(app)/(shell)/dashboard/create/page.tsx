@@ -11,6 +11,9 @@ import { Metadata } from 'next';
 import { Loader2 } from 'lucide-react';
 import CreateDashboardDrawer from '../drawers/CreateDashboardDrawer';
 
+export const dynamic = 'force-dynamic';
+
+
 // Metadata
 export const metadata: Metadata = {
   title: 'Create Dashboard - GHXSTSHIP',

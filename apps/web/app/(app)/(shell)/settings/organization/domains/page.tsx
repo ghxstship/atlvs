@@ -3,6 +3,9 @@ import { createServerClient } from '@ghxstship/auth';
 import DomainsClient from './DomainsClient';
 import { Card } from '@ghxstship/ui';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings · Organization · Domains' };
 
 export default async function OrgDomainsPage({ searchParams }: { searchParams?: { suggest?: string } }) {

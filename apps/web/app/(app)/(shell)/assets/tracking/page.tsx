@@ -4,6 +4,9 @@ import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import TrackingClient from './TrackingClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Assets · Tracking' };
 
 export default async function AssetTrackingPage() {

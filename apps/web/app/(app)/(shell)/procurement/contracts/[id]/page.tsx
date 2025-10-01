@@ -5,6 +5,9 @@ import { DetailTemplate } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { FileText, Handshake, Building } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Procurement Contract Details - GHXSTSHIP',
   description: 'View detailed procurement contract information.',

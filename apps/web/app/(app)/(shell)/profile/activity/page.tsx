@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import ActivityClient from './ActivityClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Activity' };
 
 export default async function ProfileActivityPage() {

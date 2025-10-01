@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import EndorsementsClient from './EndorsementsClient';
 import CreateEndorsementClient from './CreateEndorsementClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Endorsements' };
 
 export default async function PeopleEndorsementsPage() {

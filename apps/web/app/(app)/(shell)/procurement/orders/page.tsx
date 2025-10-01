@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import OrdersClient from './OrdersClient';
 import CreateOrderClient from './CreateOrderClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Procurement · Orders' };
 
 export default async function ProcurementOrdersPage() {

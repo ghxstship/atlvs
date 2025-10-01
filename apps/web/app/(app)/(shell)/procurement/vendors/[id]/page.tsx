@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Building, Mail, Phone, MapPin, Star, Package, DollarSign } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Vendor Details - GHXSTSHIP',
   description: 'View detailed vendor information and performance metrics.',

@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { CheckCircle, Clock, XCircle, User, FileText } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Approval Details - GHXSTSHIP',
   description: 'View detailed approval workflow and decision information.',

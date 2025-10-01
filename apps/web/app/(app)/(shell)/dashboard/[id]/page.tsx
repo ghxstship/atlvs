@@ -11,6 +11,9 @@ import { Metadata } from 'next';
 import { Loader2 } from 'lucide-react';
 import { DashboardClient } from '../DashboardClient';
 
+export const dynamic = 'force-dynamic';
+
+
 // Metadata generation
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
   const supabase = await createClient();

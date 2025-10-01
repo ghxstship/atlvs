@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import PaymentsClient from './PaymentsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Payments' };
 
 export default async function PaymentsPage() {

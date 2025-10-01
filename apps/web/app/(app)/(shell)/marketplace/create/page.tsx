@@ -1,11 +1,14 @@
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
-import dynamic from 'next/dynamic';
+import dynamicImport from 'next/dynamic';
 import FeatureGate from '../../../../_components/FeatureGate';
 
+export const dynamic = 'force-dynamic';
+
+
 // Dynamically import the MarketplaceCreateClient for better bundle splitting
-const MarketplaceCreateClient = dynamic(() => import('./MarketplaceCreateClient'), {
+const MarketplaceCreateClient = dynamicImport(() => import('./MarketplaceCreateClient'), {
   loading: () => (
     <div className="flex items-center justify-center p-xl">
       <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-blue-600"></div>

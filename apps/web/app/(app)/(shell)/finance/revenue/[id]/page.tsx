@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import RevenueDetailClient from './RevenueDetailClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface RevenueDetailPageProps {
  params: Promise<{ id: string }>;
 }

@@ -15,6 +15,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { isFeatureEnabled } from '../../../../../lib/feature-flags';
 import AnalyticsEditClient from './AnalyticsEditClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface PageProps {
   params: { id: string };
 }

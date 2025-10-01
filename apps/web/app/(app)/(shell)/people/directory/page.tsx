@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import DirectoryClient from './DirectoryClient';
 import CreatePersonClient from './CreatePersonClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Directory' };
 
 export default async function PeopleDirectoryPage() {

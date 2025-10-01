@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import CalendarClient from './CalendarClient';
 import CreateCalendarClient from './CreateCalendarClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Calendar' };
 
 export default async function ProgrammingCalendarPage() {

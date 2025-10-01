@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import CallSheetsClient from './CallSheetsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Files · Call Sheets',
  description: 'Manage call sheets and production documents',

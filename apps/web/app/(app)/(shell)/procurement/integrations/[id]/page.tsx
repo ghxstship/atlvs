@@ -5,6 +5,9 @@ import { DetailTemplate } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Zap, Settings, Webhook } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Integration Details - GHXSTSHIP',
   description: 'View detailed procurement system integrations.',

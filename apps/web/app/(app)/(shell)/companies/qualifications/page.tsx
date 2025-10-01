@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import QualificationsClient from './QualificationsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Companies · Qualifications' };
 
 export default async function CompaniesQualificationsPage() {

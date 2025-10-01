@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import ProfessionalClient from './ProfessionalClient';
 import CreateProfessionalClient from './CreateProfessionalClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Professional' };
 
 export default async function ProfessionalPage() {

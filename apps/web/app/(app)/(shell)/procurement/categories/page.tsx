@@ -5,6 +5,9 @@ import { Card } from '@ghxstship/ui';
 import CategoriesClient from './CategoriesClient';
 import CreateCategoryClient from './CreateCategoryClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Categories - Procurement',
 };

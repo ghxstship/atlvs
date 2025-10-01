@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateBidClient from '../CreateBidClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Bid - Jobs',
   description: 'Submit a new bid for a job opportunity',

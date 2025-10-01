@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateInvoiceClient from './CreateInvoiceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Create Invoice - Finance',
  description: 'Add new invoice to the financial system.',

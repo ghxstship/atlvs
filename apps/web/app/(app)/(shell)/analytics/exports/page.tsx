@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import ExportsClient from './ExportsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Analytics · Exports' };
 
 export default async function AnalyticsExportsPage() {

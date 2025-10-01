@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import { BidsClient } from './BidsClient';
 import CreateBidClient from './CreateBidClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · Bids' };
 
 export default async function JobsBidsPage() {

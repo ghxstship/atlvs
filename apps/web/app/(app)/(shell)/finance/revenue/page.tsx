@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import RevenueClient from './RevenueClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Revenue',
 };

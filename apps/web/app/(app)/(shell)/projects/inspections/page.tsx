@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import InspectionsTableClient from './InspectionsTableClient';
 import CreateInspectionClient from './CreateInspectionClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Inspections' };
 
 export default async function ProjectsInspectionsPage() {

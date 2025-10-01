@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import IntegrationsClient from './IntegrationsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Procurement Integrations | GHXSTSHIP',
  description: 'Integration hub for connecting procurement with external systems',

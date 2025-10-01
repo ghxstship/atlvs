@@ -1,5 +1,8 @@
 import ProceduresClient from './ProceduresClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { 
  title: 'Files · Procedures',
  description: 'Standard operating procedures and workflows'

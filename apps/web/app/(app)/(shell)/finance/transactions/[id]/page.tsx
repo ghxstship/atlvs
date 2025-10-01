@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import TransactionDetailClient from './TransactionDetailClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface TransactionDetailPageProps {
  params: Promise<{ id: string }>;
 }

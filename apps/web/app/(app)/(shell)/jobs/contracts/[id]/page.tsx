@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { FileText, Calendar, DollarSign, Building, CheckCircle, Clock } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Contract Details - GHXSTSHIP',
   description: 'View detailed contract information and lifecycle management.',

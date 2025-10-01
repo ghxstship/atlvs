@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import CallSheetsClient from './CallSheetsClient';
 import CreateCallSheetClient from './CreateCallSheetClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Call Sheets' };
 
 export default async function ProgrammingCallSheetsPage() {

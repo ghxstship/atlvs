@@ -7,6 +7,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateCompanyClient from './CreateCompanyClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Company - Management',
   description: 'Create a new company profile with comprehensive information.',

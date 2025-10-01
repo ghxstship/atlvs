@@ -28,6 +28,9 @@ import { filesApiService } from '../lib/api';
 import { filesPermissionsService } from '../lib/permissions';
 import type { DigitalAsset } from '../types';
 
+
+export const dynamic = 'force-dynamic';
+
 export default function FileDetailPage() {
   const params = useParams();
   const router = useRouter();

@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import ContractsClient from './ContractsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Contracts' };
 
 export default async function ContractsPage() {

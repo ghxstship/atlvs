@@ -5,6 +5,9 @@ import { redirect } from 'next/navigation';
 import ContractingClient from './ContractingClient';
 import CreateContractClient from './CreateContractClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Pipeline · Contracting' };
 
 export default async function PipelineContractingPage() {

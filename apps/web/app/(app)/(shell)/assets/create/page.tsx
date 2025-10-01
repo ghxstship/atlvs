@@ -14,6 +14,9 @@ import { createServerClient } from '@ghxstship/auth';
 import CreateAssetClient from './CreateAssetClient';
 import React from 'react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Asset',
   description: 'Add a new asset to your inventory with comprehensive details and documentation.',

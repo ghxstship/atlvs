@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { FileText, Calendar, Users, Target, TrendingUp, MessageSquare } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'RFP Details - GHXSTSHIP',
   description: 'View detailed RFP information and response management.',

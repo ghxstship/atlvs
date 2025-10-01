@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import { OpportunitiesClient } from './OpportunitiesClient';
 import CreateOpportunityClient from './CreateOpportunityClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · Opportunities' };
 
 export default async function JobsOpportunitiesPage() {

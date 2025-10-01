@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import PipelineClient from './PipelineClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Pipeline' };
 
 export default async function PipelinePage() {

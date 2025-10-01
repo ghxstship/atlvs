@@ -1,5 +1,8 @@
 import { redirect } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
+
 /**
  * View Route
  * Redirects to main module page with view action

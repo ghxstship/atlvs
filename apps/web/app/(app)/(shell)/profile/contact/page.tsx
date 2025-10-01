@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import ContactInfoClient from './ContactInfoClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Contact Information' };
 
 export default async function ProfileContactInfoPage() {

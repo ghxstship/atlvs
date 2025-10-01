@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import RolesClient from './RolesClient';
 import CreateRoleClient from './CreateRoleClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Roles' };
 
 export default async function PeopleRolesPage() {

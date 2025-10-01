@@ -5,6 +5,9 @@ import { DetailTemplate } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { MessageSquare, Star, ThumbsUp } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Feedback Details - GHXSTSHIP',
   description: 'View detailed procurement feedback and reviews.',

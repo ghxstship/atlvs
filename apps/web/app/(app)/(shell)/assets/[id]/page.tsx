@@ -14,6 +14,9 @@ import { createServerClient } from '@ghxstship/auth';
 import AssetDetailClient from './AssetDetailClient';
 import React from 'react';
 
+export const dynamic = 'force-dynamic';
+
+
 interface PageProps {
   params: Promise<{ id: string }>;
 }

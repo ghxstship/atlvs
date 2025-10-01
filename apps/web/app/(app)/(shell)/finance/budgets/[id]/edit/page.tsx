@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import EditBudgetClient from './EditBudgetClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface EditBudgetPageProps {
  params: Promise<{ id: string }>;
 }

@@ -2,6 +2,9 @@ import { Card } from '@ghxstship/ui';
 import BillingPortalClient from './BillingPortalClient';
 import Plans from './Plans';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings · Billing' };
 
 export default function SettingsBillingPage() {

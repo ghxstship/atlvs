@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import ContractsClient from './ContractsClient';
 import CreateContractClient from './CreateContractClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · Contracts' };
 
 export default async function JobsContractsPage() {

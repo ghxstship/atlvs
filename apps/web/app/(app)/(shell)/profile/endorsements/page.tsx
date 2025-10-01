@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import EndorsementsClient from './EndorsementsClient';
 import CreateEndorsementClient from './CreateEndorsementClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Endorsements' };
 
 export default async function EndorsementsPage() {

@@ -6,6 +6,9 @@
 import { Metadata } from 'next';
 import { TokenBrowser } from './TokenBrowser';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
   title: 'Design Tokens | GHXSTSHIP',
   description: 'Browse and search all design system tokens',

@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import VendorsClient from './VendorsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Vendors' };
 
 export default async function VendorsPage() {

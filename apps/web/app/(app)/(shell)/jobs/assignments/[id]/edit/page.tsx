@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateAssignmentClient from '../../CreateAssignmentClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface EditAssignmentPageProps {
   params: {
     id: string;

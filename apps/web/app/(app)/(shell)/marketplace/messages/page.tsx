@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import MessagesClient from './MessagesClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Messages' };
 
 export default async function MessagesPage() {

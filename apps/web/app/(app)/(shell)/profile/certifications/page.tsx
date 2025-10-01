@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import CertificationsClient from './CertificationsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Certifications' };
 
 export default async function ProfileCertificationsPage() {

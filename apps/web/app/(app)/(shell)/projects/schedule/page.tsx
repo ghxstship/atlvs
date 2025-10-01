@@ -6,6 +6,9 @@ import ScheduleClient from './ScheduleClient';
 import CreateMilestoneClient from './CreateMilestoneClient';
 import ProjectsOverviewClient from '../overview/ProjectsOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Schedule' };
 
 export default async function ProjectSchedulePage() {

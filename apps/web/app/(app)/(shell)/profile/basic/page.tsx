@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import BasicInfoClient from './BasicInfoClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Basic Information' };
 
 export default async function ProfileBasicInfoPage() {

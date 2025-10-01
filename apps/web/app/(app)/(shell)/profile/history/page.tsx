@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import HistoryClient from './HistoryClient';
 import CreateHistoryEntryClient from './CreateHistoryEntryClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · History' };
 
 export default async function HistoryPage() {

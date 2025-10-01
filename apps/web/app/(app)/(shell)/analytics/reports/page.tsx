@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import ReportsClient from './ReportsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Analytics · Reports' };
 
 export default async function AnalyticsReportsPage() {

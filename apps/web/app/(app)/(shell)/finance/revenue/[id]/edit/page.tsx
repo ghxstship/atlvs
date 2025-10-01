@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import EditRevenueClient from './EditRevenueClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface EditRevenuePageProps {
  params: Promise<{ id: string }>;
 }

@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import DirectoryClient from './DirectoryClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Companies · Directory' };
 
 export default async function CompaniesDirectoryPage() {

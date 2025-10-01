@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import LineupsClient from './LineupsClient';
 import CreateLineupClient from './CreateLineupClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Lineups' };
 
 export default async function ProgrammingLineupsPage() {

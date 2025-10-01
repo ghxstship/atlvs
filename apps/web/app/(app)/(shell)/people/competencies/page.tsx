@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import CompetenciesClient from './CompetenciesClient';
 import CreateCompetencyClient from './CreateCompetencyClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Competencies' };
 
 export default async function PeopleCompetenciesPage() {

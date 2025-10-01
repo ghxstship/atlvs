@@ -4,6 +4,9 @@ import { cookies } from 'next/headers';
 import { Card } from '@ghxstship/ui';
 import ProcurementOverviewClient from './ProcurementOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Procurement Overview',
 };

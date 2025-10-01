@@ -5,6 +5,9 @@ import { redirect } from 'next/navigation';
 import RidersClient from './RidersClient';
 import type { ProgrammingRider, RiderProject, RiderEvent } from './types';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Files · Riders', description: 'Manage technical riders and requirements' };
 
 type User = {

@@ -5,6 +5,9 @@ import { notFound } from 'next/navigation';
 import FeatureGate from '../../../../../_components/FeatureGate';
 import MarketplaceEditClient from './MarketplaceEditClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface PageProps {
   params: {
     id: string;

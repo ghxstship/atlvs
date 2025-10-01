@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import ItinerariesClient from './ItinerariesClient';
 import CreateItineraryClient from './CreateItineraryClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Itineraries' };
 
 export default async function ProgrammingItinerariesPage() {

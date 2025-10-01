@@ -7,6 +7,9 @@ import { Avatar } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { User, Mail, Phone, MapPin, Calendar, Briefcase } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Profile Details - GHXSTSHIP',
   description: 'View detailed user profile information and activity.',

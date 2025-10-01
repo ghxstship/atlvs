@@ -15,6 +15,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { isFeatureEnabled } from '../../../../../lib/feature-flags';
 import AnalyticsCreateClient from './AnalyticsCreateClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Analytics',
   description: 'Create new dashboards, reports, and exports.',

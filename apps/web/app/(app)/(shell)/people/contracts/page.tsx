@@ -2,6 +2,9 @@ import { getSessionContext } from '@/app/_components/lib/sessionContext';
 import { redirect } from 'next/navigation';
 import ContractsClient from './ContractsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function ContractsPage() {
  const sessionContext = await getSessionContext();
  

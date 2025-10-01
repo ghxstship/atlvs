@@ -8,6 +8,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import PeopleCreateClient from './PeopleCreateClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Create Person - People',
   description: 'Add a new team member to your organization',

@@ -5,6 +5,9 @@ import { DetailTemplate } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Truck, MapPin, Package } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Tracking Details - GHXSTSHIP',
   description: 'View detailed shipment tracking information.',

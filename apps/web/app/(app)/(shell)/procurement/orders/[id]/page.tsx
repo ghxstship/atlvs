@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { ShoppingCart, Truck, DollarSign, Calendar, User, Package } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Order Details - GHXSTSHIP',
   description: 'View detailed procurement order information and status.',

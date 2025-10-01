@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import ProjectsClient from './ProjectsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects' };
 
 export default async function ProjectsPage() {

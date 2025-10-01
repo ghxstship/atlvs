@@ -2,6 +2,9 @@ import { Suspense } from 'react';
 import { Card, Badge, Skeleton } from '@ghxstship/ui';
 import { Bell, CheckCircle, AlertCircle, Info } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 async function getNotifications() {
   // Fetch real-time notifications
   // This runs in parallel with the main dashboard page

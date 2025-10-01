@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import BudgetDetailClient from './BudgetDetailClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface BudgetDetailPageProps {
  params: Promise<{ id: string }>;
 }

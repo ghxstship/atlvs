@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import RatingsClient from './RatingsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Companies · Ratings' };
 
 export default async function CompaniesRatingsPage() {

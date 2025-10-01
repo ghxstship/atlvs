@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import FinanceClient from './FinanceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Finance' };
 
 export default async function FinancePage() {

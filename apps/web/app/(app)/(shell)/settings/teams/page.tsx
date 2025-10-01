@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import InviteMemberClient from './InviteMemberClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings · Teams' };
 
 export default async function SettingsTeamsPage() {

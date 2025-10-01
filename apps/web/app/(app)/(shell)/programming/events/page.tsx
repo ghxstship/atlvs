@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import EventsClient from './EventsClient';
 import CreateEventClient from './CreateEventClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Events' };
 
 export default async function ProgrammingEventsPage() {

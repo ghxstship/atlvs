@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import SettingsClient from './SettingsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings' };
 
 export default async function SettingsPage() {

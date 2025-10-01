@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateRevenueClient from './CreateRevenueClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Create Revenue - Finance',
  description: 'Add new revenue entry to the financial system.',

@@ -6,6 +6,9 @@ import RisksTableClient from './RisksTableClient';
 import CreateRiskClient from './CreateRiskClient';
 import ProjectsOverviewClient from '../overview/ProjectsOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Risks' };
 
 export default async function ProjectsRisksPage() {

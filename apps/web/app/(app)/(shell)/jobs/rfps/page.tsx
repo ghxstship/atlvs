@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import { RFPsClient } from './RFPsClient';
 import CreateRfpClient from './CreateRfpClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · RFPs' };
 
 export default async function JobsRFPsPage() {

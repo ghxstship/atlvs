@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import { AssignmentsClient } from './AssignmentsClient';
 import CreateAssignmentClient from './CreateAssignmentClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · Assignments' };
 
 export default async function JobsAssignmentsPage() {

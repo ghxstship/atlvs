@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import ProfileClient from './ProfileClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile' };
 
 export default async function ProfilePage() {

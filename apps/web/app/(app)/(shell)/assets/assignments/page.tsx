@@ -4,6 +4,9 @@ import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import AssignmentsClient from './AssignmentsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Assets · Assignments' };
 
 export default async function AssetAssignmentsPage() {

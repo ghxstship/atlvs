@@ -5,6 +5,9 @@ import { Card } from '@ghxstship/ui';
 import TrackingClient from './TrackingClient';
 import CreateTrackingClient from './CreateTrackingClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Tracking - Procurement',
 };

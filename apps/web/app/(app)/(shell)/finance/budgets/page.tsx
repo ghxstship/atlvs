@@ -6,6 +6,9 @@ import { getTranslations } from 'next-intl/server';
 import BudgetsClient from './BudgetsClient';
 import CreateBudgetClient from './CreateBudgetClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Finance · Budgets' };
 
 export default async function FinanceBudgetsPage() {

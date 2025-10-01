@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import AnalyticsClient from './AnalyticsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Analytics' };
 
 export default async function AnalyticsPage() {

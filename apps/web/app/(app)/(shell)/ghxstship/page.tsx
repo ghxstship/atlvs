@@ -1,6 +1,9 @@
 import { Card } from '@ghxstship/ui';
 import FeatureGate from '../../../_components/FeatureGate';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'GHXSTSHIP' };
 
 export default function GhxstshipLanding() {

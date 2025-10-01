@@ -3,6 +3,9 @@ import { createClient } from '@/lib/supabase/server';
 import { cookies } from 'next/headers';
 import ResourcesOverviewClient from './ResourcesOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Resources Overview',
   description: 'Overview of organizational resources and knowledge base'

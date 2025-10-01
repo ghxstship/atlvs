@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import ActivationsTableClient from './ActivationsTableClient';
 import CreateActivationClient from './CreateActivationClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Activations' };
 
 export default async function ProjectsActivationsPage() {

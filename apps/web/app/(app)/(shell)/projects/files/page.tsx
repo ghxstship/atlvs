@@ -6,6 +6,9 @@ import FilesTableClient from './FilesTableClient';
 import FilesUploadClient from './FilesUploadClient';
 import FilesFilterBar from './FilesFilterBar';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Files' };
 
 export default async function ProjectsFilesPage() {

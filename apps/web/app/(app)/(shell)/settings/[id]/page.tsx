@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Settings, Users, Shield, Bell, Palette, Database } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Settings Details - GHXSTSHIP',
   description: 'View detailed settings configuration and management.',

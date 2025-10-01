@@ -6,6 +6,9 @@ import LocationsTableClient from './LocationsTableClient';
 import CreateLocationClient from './CreateLocationClient';
 import ProjectsOverviewClient from '../overview/ProjectsOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Projects · Locations' };
 
 export default async function ProjectsLocationsPage() {

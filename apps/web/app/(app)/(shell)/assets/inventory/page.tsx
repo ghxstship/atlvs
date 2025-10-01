@@ -4,6 +4,9 @@ import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import InventoryClient from './InventoryClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Assets · Inventory' };
 
 export default async function AssetInventoryPage() {

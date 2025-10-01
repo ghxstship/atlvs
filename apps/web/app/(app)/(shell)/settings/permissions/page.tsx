@@ -1,5 +1,8 @@
 import { Card } from '@ghxstship/ui';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Settings · Permissions' };
 
 export default function SettingsPermissionsPage() {

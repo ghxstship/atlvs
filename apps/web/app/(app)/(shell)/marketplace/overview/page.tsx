@@ -5,6 +5,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import OverviewClient from './OverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Marketplace Overview' };
 
 export default async function MarketplaceOverviewPage() {

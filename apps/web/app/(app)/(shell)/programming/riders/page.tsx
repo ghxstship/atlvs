@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import RidersClient from './RidersClient';
 import CreateRiderClient from './CreateRiderClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Riders' };
 
 export default async function ProgrammingRidersPage() {

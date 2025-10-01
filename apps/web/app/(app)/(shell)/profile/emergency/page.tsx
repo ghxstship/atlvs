@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import EmergencyContactClient from './EmergencyContactClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Emergency' };
 
 export default async function ProfileEmergencyPage() {

@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import EditTransactionClient from './EditTransactionClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface EditTransactionPageProps {
  params: Promise<{ id: string }>;
 }

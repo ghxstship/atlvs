@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { FileText, Calendar, CheckCircle, XCircle, Clock, AlertTriangle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Compliance Details - GHXSTSHIP',
   description: 'View detailed compliance requirement information and status.',

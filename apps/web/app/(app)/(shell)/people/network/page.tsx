@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import NetworkClient from './NetworkClient';
 import CreateNetworkConnectionClient from './CreateNetworkConnectionClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Network' };
 
 export default async function PeopleNetworkPage() {

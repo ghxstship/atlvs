@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import RequestsClient from './RequestsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Procurement Requests | GHXSTSHIP',
  description: 'Manage procurement requests and purchase requisitions',

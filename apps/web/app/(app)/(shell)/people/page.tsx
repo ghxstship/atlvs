@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import PeopleClient from './PeopleClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People' };
 
 export default async function PeoplePage() {

@@ -5,6 +5,9 @@ import { redirect } from 'next/navigation';
 import OnboardingClient from './OnboardingClient';
 import CreateOnboardingTaskClient from './CreateOnboardingTaskClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Pipeline · Onboarding' };
 
 export default async function PipelineOnboardingPage() {

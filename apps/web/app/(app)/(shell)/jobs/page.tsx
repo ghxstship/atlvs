@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import JobsClient from './JobsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs' };
 
 export default async function JobsPage() {

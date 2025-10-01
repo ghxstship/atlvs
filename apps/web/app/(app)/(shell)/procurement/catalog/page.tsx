@@ -5,6 +5,9 @@ import { Card } from '@ghxstship/ui';
 import CatalogClient from './CatalogClient';
 import CreateCatalogItemClient from './CreateCatalogItemClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Catalog - Procurement',
 };

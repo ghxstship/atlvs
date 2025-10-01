@@ -4,6 +4,9 @@ import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import AssetsClient from './AssetsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Assets' };
 
 export default async function AssetsPage() {

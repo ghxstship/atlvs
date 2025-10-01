@@ -3,6 +3,9 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import ForecastsClient from './ForecastsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Forecasts',
 };

@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { ClipboardList, Calendar, DollarSign, User, AlertTriangle, CheckCircle } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Request Details - GHXSTSHIP',
   description: 'View detailed procurement request information and approval workflow.',

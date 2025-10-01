@@ -4,6 +4,9 @@ import { createServerClient } from '@ghxstship/auth';
 import { getTranslations } from 'next-intl/server';
 import ProgrammingClient from './ProgrammingClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming' };
 
 export default async function ProgrammingPage() {

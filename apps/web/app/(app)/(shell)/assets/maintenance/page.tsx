@@ -4,6 +4,9 @@ import { getTranslations } from 'next-intl/server';
 import { redirect } from 'next/navigation';
 import MaintenanceClient from './MaintenanceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Assets · Maintenance' };
 
 export default async function AssetMaintenancePage() {

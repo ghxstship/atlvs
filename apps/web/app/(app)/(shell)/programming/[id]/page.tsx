@@ -6,6 +6,9 @@ import { Badge } from '@ghxstship/ui';
 import { Card, CardContent, CardHeader, CardTitle } from '@ghxstship/ui';
 import { Code, Calendar, Users, MapPin, Clock, DollarSign } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Event Details - GHXSTSHIP',
   description: 'View detailed programming event information and management.',

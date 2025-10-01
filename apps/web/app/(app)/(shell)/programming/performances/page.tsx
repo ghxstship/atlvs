@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import PerformancesClient from './PerformancesClient';
 import CreatePerformanceClient from './CreatePerformanceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Performances' };
 
 export default async function ProgrammingPerformancesPage() {

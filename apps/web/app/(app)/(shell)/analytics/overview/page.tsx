@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import OverviewClient from './OverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Analytics Overview',
 };

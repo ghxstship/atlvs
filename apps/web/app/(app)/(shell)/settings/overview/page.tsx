@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation';
 import OverviewTemplate from '../../dashboard/components/OverviewTemplate';
 import { getModuleConfig } from '../../dashboard/lib/module-configs';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Settings - Overview',
  description: 'Organization settings, security, integrations, and system configuration.',

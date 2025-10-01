@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import ContractsClient from './ContractsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Procurement Contracts | GHXSTSHIP',
  description: 'Contract management and lifecycle tracking for procurement',

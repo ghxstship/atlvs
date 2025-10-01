@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateForecastClient from './CreateForecastClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Create Forecast - Finance',
  description: 'Add new financial forecast to the system.',

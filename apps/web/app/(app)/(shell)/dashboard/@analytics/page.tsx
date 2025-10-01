@@ -2,6 +2,9 @@ import { Suspense } from 'react';
 import { Card, Skeleton } from '@ghxstship/ui';
 import { TrendingUp, TrendingDown, Activity } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 async function getAnalyticsData() {
   // Fetch real-time analytics data
   // This runs in parallel with the main dashboard page

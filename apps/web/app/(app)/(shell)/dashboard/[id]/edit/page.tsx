@@ -11,6 +11,9 @@ import { Metadata } from 'next';
 import { Loader2 } from 'lucide-react';
 import EditDashboardDrawer from '../../drawers/EditDashboardDrawer';
 
+export const dynamic = 'force-dynamic';
+
+
 type EditDashboardSubmission = {
   name: string;
   description?: string | null;

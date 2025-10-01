@@ -7,6 +7,9 @@ import { createClient } from '@/lib/supabase/server';
 import { notFound } from 'next/navigation';
 import EditCompanyClient from './EditCompanyClient';
 
+export const dynamic = 'force-dynamic';
+
+
 interface PageProps {
   params: {
     id: string;

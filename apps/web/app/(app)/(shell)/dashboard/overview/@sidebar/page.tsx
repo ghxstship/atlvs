@@ -2,6 +2,9 @@ import { Suspense } from 'react';
 import { Card } from '@ghxstship/ui';
 import { Activity, TrendingUp, Users, DollarSign } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 function DashboardSidebarSkeleton() {
   return (
     <div className="space-y-md">

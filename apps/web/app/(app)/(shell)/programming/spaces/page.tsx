@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import SpacesClient from './SpacesClient';
 import CreateSpaceClient from './CreateSpaceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Spaces' };
 
 export default async function ProgrammingSpacesPage() {

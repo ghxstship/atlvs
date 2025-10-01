@@ -22,6 +22,9 @@ import { filesMutationsService } from '../lib/mutations';
 import { filesApiService } from '../lib/api';
 import type { CreateAssetInput } from '../lib/validations';
 
+
+export const dynamic = 'force-dynamic';
+
 const createFileSchema = z.object({
   title: z.string().min(1, 'Title is required').max(255, 'Title must be less than 255 characters'),
   description: z.string().max(1000, 'Description must be less than 1000 characters').optional(),

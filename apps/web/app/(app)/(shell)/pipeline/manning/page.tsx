@@ -5,6 +5,9 @@ import { redirect } from 'next/navigation';
 import ManningClient from './ManningClient';
 import CreateManningSlotClient from './CreateManningSlotClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Pipeline · Manning' };
 
 export default async function PipelineManningPage() {

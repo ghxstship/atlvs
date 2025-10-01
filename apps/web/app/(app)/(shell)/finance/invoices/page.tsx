@@ -4,6 +4,9 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 import InvoicesClient from './InvoicesClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Finance · Invoices' };
 
 export default async function FinanceInvoicesPage() {

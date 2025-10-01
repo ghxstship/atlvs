@@ -5,6 +5,9 @@ import FeatureGate from '../../../_components/FeatureGate';
 import { Metadata } from 'next';
 import MarketplaceOverviewClient from './MarketplaceOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
   title: 'Marketplace Overview',
   description: 'Enterprise marketplace platform for business-to-business transactions, vendor management, and project collaboration.',

@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import AnalyticsClient from './AnalyticsClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Procurement Analytics | GHXSTSHIP',
  description: 'Advanced procurement analytics and insights dashboard',

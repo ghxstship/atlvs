@@ -6,6 +6,9 @@ import TasksTableClient from './TasksTableClient';
 import CreateTaskClient from './CreateTaskClient';
 import ProjectsOverviewClient from '../overview/ProjectsOverviewClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Project Tasks' };
 
 export default async function ProjectTasks() {

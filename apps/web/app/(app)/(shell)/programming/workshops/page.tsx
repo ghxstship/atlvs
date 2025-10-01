@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import WorkshopsClient from './WorkshopsClient';
 import CreateWorkshopClient from './CreateWorkshopClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Programming · Workshops' };
 
 export default async function ProgrammingWorkshopsPage() {

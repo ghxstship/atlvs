@@ -2,6 +2,9 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import CreateTransactionClient from './CreateTransactionClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
  title: 'Create Transaction - Finance',
  description: 'Add new transaction to the financial system.',

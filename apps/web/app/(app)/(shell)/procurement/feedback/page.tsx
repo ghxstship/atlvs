@@ -2,6 +2,9 @@ import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock,
 import { Metadata } from 'next';
 import FeedbackClient from './FeedbackClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Procurement Feedback | GHXSTSHIP',
  description: 'User feedback and reviews for procurement processes and vendors',

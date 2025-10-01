@@ -2,6 +2,9 @@ import { Metadata } from 'next';
 import { ContractsClient } from './ContractsClient';
 import { Filter, X } from 'lucide-react';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata: Metadata = {
  title: 'Contracts | GHXSTSHIP',
  description: 'Unified contract management system for all organizational agreements',

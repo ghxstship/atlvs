@@ -5,6 +5,9 @@ import { Card } from '@ghxstship/ui';
 import VendorsClient from './VendorsClient';
 import CreateVendorClient from './CreateVendorClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = {
   title: 'Vendors - Procurement',
 };

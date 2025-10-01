@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import ServicesClient from './ServicesClient';
 import CreateServiceClient from './CreateServiceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Procurement · Services' };
 
 export default async function ProcurementServicesPage() {

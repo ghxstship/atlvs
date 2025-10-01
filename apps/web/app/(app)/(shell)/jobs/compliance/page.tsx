@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import { ComplianceClient } from './ComplianceClient';
 import CreateComplianceClient from './CreateComplianceClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Jobs · Compliance' };
 
 export default async function JobsCompliancePage() {

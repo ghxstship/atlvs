@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import HealthClient from './HealthClient';
 import CreateHealthRecordClient from './CreateHealthRecordClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Health' };
 
 export default async function HealthPage() {

@@ -6,6 +6,9 @@ import { redirect } from 'next/navigation';
 import TravelClient from './TravelClient';
 import CreateTravelRecordClient from './CreateTravelRecordClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'Profile · Travel' };
 
 export default async function TravelPage() {

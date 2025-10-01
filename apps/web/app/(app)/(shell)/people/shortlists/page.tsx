@@ -5,6 +5,9 @@ import { getTranslations } from 'next-intl/server';
 import ShortlistsClient from './ShortlistsClient';
 import CreateShortlistClient from './CreateShortlistClient';
 
+export const dynamic = 'force-dynamic';
+
+
 export const metadata = { title: 'People · Shortlists' };
 
 export default async function PeopleShortlistsPage() {
