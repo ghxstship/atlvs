@@ -1,78 +1,62 @@
-/**
- * Main Middleware
- * Full-featured with proper Edge Runtime compatibility
- */
-
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Public paths that don't require authentication
-  const publicPaths = [
-    '/',
-    '/auth',
-    '/products',
-    '/solutions', 
-    '/pricing',
-    '/resources',
-    '/company',
-    '/careers',
-    '/community',
-    '/privacy',
-    '/terms',
-    '/accessibility',
-    '/home',
-    '/contact',
-    '/cookies',
-    '/security',
-    '/demo',
-    '/opendeck',
-    '/ghxstship',
-    '/partnerships'
-  ];
-
-  const isPublicPath = publicPaths.some(path => 
-    pathname === path || pathname.startsWith(`${path}/`)
-  );
-
-  // Skip auth check for public paths and API routes
-  if (isPublicPath || pathname.startsWith('/api')) {
-    const response = NextResponse.next();
-    
-    // Add security headers
-    response.headers.set('X-Frame-Options', 'DENY');
-    response.headers.set('X-Content-Type-Options', 'nosniff');
-    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    response.headers.set('X-XSS-Protection', '1; mode=block');
-    
-    return response;
-  }
-
-  // Check authentication for protected routes
-  const authToken = request.cookies.get('sb-access-token') || 
-                   request.cookies.get('supabase-auth-token');
-
-  if (!authToken) {
-    // Redirect to signin with return URL
-    const signInUrl = new URL('/auth/signin', request.url);
-    signInUrl.searchParams.set('next', pathname);
-    return NextResponse.redirect(signInUrl);
-  }
-
-  // User is authenticated, proceed with security headers
-  const response = NextResponse.next();
-  response.headers.set('X-Frame-Options', 'DENY');
-  response.headers.set('X-Content-Type-Options', 'nosniff');
-  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  response.headers.set('X-XSS-Protection', '1; mode=block');
+export function middleware(req: NextRequest) {
+  const path = req.nextUrl.pathname;
   
-  return response;
+  // Define public paths (no auth required)
+  const isPublicPath = 
+    path === '/' ||
+    path === '/home' ||
+    path === '/pricing' ||
+    path === '/demo' ||
+    path === '/opendeck' ||
+    path === '/ghxstship' ||
+    path === '/partnerships' ||
+    path === '/privacy' ||
+    path === '/terms' ||
+    path === '/cookies' ||
+    path === '/security' ||
+    path === '/accessibility' ||
+    path === '/contact' ||
+    path.startsWith('/auth/') ||
+    path.startsWith('/products/') ||
+    path.startsWith('/solutions/') ||
+    path.startsWith('/resources/') ||
+    path.startsWith('/company/') ||
+    path.startsWith('/careers/') ||
+    path.startsWith('/community/') ||
+    path.startsWith('/api/');
+
+  // Public paths - add headers and continue
+  if (isPublicPath) {
+    const res = NextResponse.next();
+    res.headers.set('X-Frame-Options', 'DENY');
+    res.headers.set('X-Content-Type-Options', 'nosniff');
+    res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    return res;
+  }
+
+  // Protected paths - check auth
+  const token = req.cookies.get('sb-access-token');
+  
+  if (!token) {
+    const url = req.nextUrl.clone();
+    url.pathname = '/auth/signin';
+    url.searchParams.set('next', path);
+    return NextResponse.redirect(url);
+  }
+
+  // Authenticated - add headers and continue
+  const res = NextResponse.next();
+  res.headers.set('X-Frame-Options', 'DENY');
+  res.headers.set('X-Content-Type-Options', 'nosniff');
+  res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+  return res;
 }
 
 export const config = {
   matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)',
   ],
 };
