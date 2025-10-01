@@ -72,6 +72,8 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  // Skip all paths that should not be internationalized
-  matcher: ['/((?!api|_next/static|_next/image|favicon.ico|.*\\..*).*)']
+  // Apply middleware to all routes except static files
+  matcher: [
+    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico|css|js)$).*)',
+  ]
 };

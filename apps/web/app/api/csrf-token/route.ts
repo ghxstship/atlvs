@@ -3,6 +3,8 @@ import { createCSRFTokenResponse } from '@/lib/csrf';
 import { requirePermission } from '@ghxstship/auth/server';
 import { Permission } from '@ghxstship/auth';
 
+export const dynamic = 'force-dynamic';
+
 /**
  * GET /api/csrf-token - Get a new CSRF token (authenticated users only)
  */
