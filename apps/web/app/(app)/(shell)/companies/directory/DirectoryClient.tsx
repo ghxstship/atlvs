@@ -205,17 +205,17 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
   const getSizeIcon = (size?: string) => {
     switch (size) {
       case 'startup':
-        return <Users className="h-4 w-4 color-success" />;
+        return <Users className="h-icon-xs w-icon-xs color-success" />;
       case 'small':
-        return <Users className="h-4 w-4 color-accent" />;
+        return <Users className="h-icon-xs w-icon-xs color-accent" />;
       case 'medium':
-        return <Users className="h-4 w-4 color-warning" />;
+        return <Users className="h-icon-xs w-icon-xs color-warning" />;
       case 'large':
-        return <Users className="h-4 w-4 color-secondary" />;
+        return <Users className="h-icon-xs w-icon-xs color-secondary" />;
       case 'enterprise':
-        return <Users className="h-4 w-4 color-destructive" />;
+        return <Users className="h-icon-xs w-icon-xs color-destructive" />;
       default:
-        return <Building className="h-4 w-4 color-muted" />;
+        return <Building className="h-icon-xs w-icon-xs color-muted" />;
     }
   };
 
@@ -326,15 +326,15 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -369,7 +369,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               </Button>
             </div>
             <Button onClick={handleCreateCompany}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Company
             </Button>
           </div>
@@ -378,9 +378,9 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
         {/* Search and Filters */}
         <Card className="p-md">
           <div className="flex flex-wrap items-center gap-md">
-            <div className="flex-1 min-w-64">
+            <div className="flex-1 min-w-container-sm">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   placeholder="Search companies..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -390,7 +390,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
             </div>
             
             <div className="flex items-center cluster-sm">
-              <Filter className="h-4 w-4 color-foreground/70" />
+              <Filter className="h-icon-xs w-icon-xs color-foreground/70" />
               <select
                 value={industryFilter}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setIndustryFilter(e.target.value)}
@@ -458,7 +458,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               <Card key={company.id} className="p-lg hover:shadow-elevated transition-shadow cursor-pointer" onClick={() => handleViewCompany(company)}>
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center cluster-sm">
-                    <Building className="h-8 w-8 color-accent" />
+                    <Building className="h-icon-lg w-icon-lg color-accent" />
                     <div>
                       <h3 className="text-heading-4 color-foreground">{company.name}</h3>
                       <p className="text-body-sm color-foreground/70 capitalize">{company.industry}</p>
@@ -468,7 +468,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                 </div>
                 
                 {company.description && (
-                  <p className="text-body-sm color-foreground/70 mb-md line-clamp-2">
+                  <p className="text-body-sm color-foreground/70 mb-md line-clamp-xs">
                     {company.description}
                   </p>
                 )}
@@ -476,28 +476,28 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
                 <div className="stack-sm mb-md">
                   {company.website && (
                     <div className="flex items-center cluster-sm text-body-sm">
-                      <Globe className="h-4 w-4 color-foreground/50" />
+                      <Globe className="h-icon-xs w-icon-xs color-foreground/50" />
                       <span className="color-accent hover:underline">{company.website}</span>
                     </div>
                   )}
                   
                   {company.email && (
                     <div className="flex items-center cluster-sm text-body-sm">
-                      <Mail className="h-4 w-4 color-foreground/50" />
+                      <Mail className="h-icon-xs w-icon-xs color-foreground/50" />
                       <span className="color-foreground/70">{company.email}</span>
                     </div>
                   )}
                   
                   {company.phone && (
                     <div className="flex items-center cluster-sm text-body-sm">
-                      <Phone className="h-4 w-4 color-foreground/50" />
+                      <Phone className="h-icon-xs w-icon-xs color-foreground/50" />
                       <span className="color-foreground/70">{company.phone}</span>
                     </div>
                   )}
                   
                   {(company.city || company.country) && (
                     <div className="flex items-center cluster-sm text-body-sm">
-                      <MapPin className="h-4 w-4 color-foreground/50" />
+                      <MapPin className="h-icon-xs w-icon-xs color-foreground/50" />
                       <span className="color-foreground/70">
                         {[company.city, company.state, company.country].filter(Boolean).join(', ')}
                       </span>
@@ -570,8 +570,8 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
 
         {/* Empty State */}
         {filteredCompanies.length === 0 && (
-          <Card className="p-2xl text-center">
-            <Building className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <Building className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">
               {searchQuery || industryFilter !== 'all' || statusFilter !== 'all' || sizeFilter !== 'all' 
                 ? 'No companies match your filters' 
@@ -585,7 +585,7 @@ export default function DirectoryClient({ user, orgId, translations }: Directory
               }
             </p>
             <Button onClick={handleCreateCompany}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Company
             </Button>
           </Card>

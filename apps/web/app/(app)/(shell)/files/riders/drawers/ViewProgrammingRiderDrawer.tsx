@@ -81,41 +81,41 @@ export default function ViewProgrammingRiderDrawer({
  {
  key: 'edit',
  label: 'Edit',
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  variant: 'outline' as const,
  onClick: () => onEdit(),
  },
  {
  key: 'delete',
  label: 'Delete',
- icon: <Trash2 className="h-4 w-4" />,
+ icon: <Trash2 className="h-icon-xs w-icon-xs" />,
  variant: 'destructive' as const,
  onClick: () => onDelete(),
  },
  ];
 
  const content = (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Event Information */}
  {rider.event && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Event Details
  </CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  <div>
  <h4 className="font-semibold">{rider.event.title}</h4>
- <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
- <div className="flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <div className="flex items-center gap-md text-sm text-muted-foreground mt-1">
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {new Date(rider.event.start_at).toLocaleDateString()} - {new Date(rider.event.end_at || rider.event.start_at).toLocaleDateString()}
  </div>
  {rider.event.location && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  {rider.event.location}
  </div>
  )}
@@ -129,13 +129,13 @@ export default function ViewProgrammingRiderDrawer({
  {rider.project && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <User className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <User className="h-icon-sm w-icon-sm" />
  Project Details
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="font-medium">{rider.project.name}</span>
  <Badge variant="outline">{rider.project.status}</Badge>
  </div>
@@ -146,8 +146,8 @@ export default function ViewProgrammingRiderDrawer({
  {/* Requirements */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <FileText className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <FileText className="h-icon-sm w-icon-sm" />
  Requirements
  </CardTitle>
  </CardHeader>
@@ -162,7 +162,7 @@ export default function ViewProgrammingRiderDrawer({
  <CardHeader>
  <CardTitle>Technical Requirements</CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {rider.technical_requirements.sound_system && (
  <div>
  <h5 className="font-medium">Sound System</h5>
@@ -206,7 +206,7 @@ export default function ViewProgrammingRiderDrawer({
  <CardHeader>
  <CardTitle>Hospitality Requirements</CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {rider.hospitality_requirements.catering && (
  <div>
  <h5 className="font-medium">Catering</h5>
@@ -228,7 +228,7 @@ export default function ViewProgrammingRiderDrawer({
  {rider.hospitality_requirements.dietary_restrictions && rider.hospitality_requirements.dietary_restrictions.length > 0 && (
  <div>
  <h5 className="font-medium">Dietary Restrictions</h5>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {rider.hospitality_requirements.dietary_restrictions.map((restriction, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {restriction}
@@ -244,16 +244,16 @@ export default function ViewProgrammingRiderDrawer({
  {/* Fulfillment Status */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <CheckCircle className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <CheckCircle className="h-icon-sm w-icon-sm" />
  Fulfillment Status
  </CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
- <div className="flex items-center gap-2">
+ <CardContent className="space-y-sm">
+ <div className="flex items-center gap-xs">
  {rider.fulfilled_at ? (
  <>
- <CheckCircle className="h-5 w-5 text-green-600" />
+ <CheckCircle className="h-icon-sm w-icon-sm text-green-600" />
  <div>
  <p className="font-medium text-green-600">Fulfilled</p>
  <p className="text-sm text-muted-foreground">
@@ -264,7 +264,7 @@ export default function ViewProgrammingRiderDrawer({
  </>
  ) : rider.approved_at ? (
  <>
- <AlertCircle className="h-5 w-5 text-yellow-600" />
+ <AlertCircle className="h-icon-sm w-icon-sm text-yellow-600" />
  <div>
  <p className="font-medium text-yellow-600">Approved - Pending Fulfillment</p>
  <p className="text-sm text-muted-foreground">
@@ -275,7 +275,7 @@ export default function ViewProgrammingRiderDrawer({
  </>
  ) : (
  <>
- <XCircle className="h-5 w-5 text-gray-400" />
+ <XCircle className="h-icon-sm w-icon-sm text-gray-400" />
  <div>
  <p className="font-medium text-gray-600">Not Fulfilled</p>
  <p className="text-sm text-muted-foreground">Awaiting approval and fulfillment</p>
@@ -297,12 +297,12 @@ export default function ViewProgrammingRiderDrawer({
  {(rider.reviewed_at || rider.review_notes) && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <MessageSquare className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <MessageSquare className="h-icon-sm w-icon-sm" />
  Review Information
  </CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {rider.reviewed_at && (
  <div>
  <p className="font-medium">
@@ -325,8 +325,8 @@ export default function ViewProgrammingRiderDrawer({
  {rider.notes && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <MessageSquare className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <MessageSquare className="h-icon-sm w-icon-sm" />
  Notes
  </CardTitle>
  </CardHeader>
@@ -340,13 +340,13 @@ export default function ViewProgrammingRiderDrawer({
  {rider.tags && rider.tags.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Tag className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Tag className="h-icon-sm w-icon-sm" />
  Tags
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {rider.tags.map((tag, index) => (
  <Badge key={index} variant="outline">
  {tag}
@@ -362,7 +362,7 @@ export default function ViewProgrammingRiderDrawer({
  <CardHeader>
  <CardTitle>Metadata</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2 text-sm">
+ <CardContent className="space-y-xs text-sm">
  <div className="flex justify-between">
  <span className="text-muted-foreground">Created:</span>
  <span>{new Date(rider.created_at).toLocaleString()}</span>

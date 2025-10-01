@@ -316,15 +316,15 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
         </div>
         <div className="flex items-center gap-sm">
           <Button variant="outline" className="flex items-center gap-sm">
-            <Upload className="w-4 h-4" />
+            <Upload className="w-icon-xs h-icon-xs" />
             Import
           </Button>
           <Button variant="outline" className="flex items-center gap-sm">
-            <Download className="w-4 h-4" />
+            <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
           <Button onClick={handleCreateAsset} className="flex items-center gap-sm">
-            <Plus className="w-4 h-4" />
+            <Plus className="w-icon-xs h-icon-xs" />
             Add Asset
           </Button>
         </div>
@@ -334,9 +334,9 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
       <Card>
         <div className="p-md">
           <div className="flex flex-wrap items-center gap-md">
-            <div className="flex-1 min-w-64">
+            <div className="flex-1 min-w-container-sm">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
                 <UnifiedInput                   placeholder="Search assets..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -422,7 +422,7 @@ export default function InventoryClient({ orgId }: InventoryClientProps) {
                 </div>
 
                 {asset.description && (
-                  <p className="text-body-sm color-muted mb-sm line-clamp-2">
+                  <p className="text-body-sm color-muted mb-sm line-clamp-xs">
                     {asset.description}
                   </p>
                 )}

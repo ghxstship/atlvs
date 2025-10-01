@@ -132,7 +132,7 @@ export default function UniformSizingClient() {
       <div className="stack-md">
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -148,7 +148,7 @@ export default function UniformSizingClient() {
         </div>
         {!isEditing ? (
           <Button onClick={() => setIsEditing(true)}>
-            <Edit2 className="w-4 h-4 mr-sm" />
+            <Edit2 className="w-icon-xs h-icon-xs mr-sm" />
             Edit Sizing
           </Button>
         ) : (
@@ -160,7 +160,7 @@ export default function UniformSizingClient() {
               Cancel
             </Button>
             <Button onClick={handleSave}>
-              <Save className="w-4 h-4 mr-sm" />
+              <Save className="w-icon-xs h-icon-xs mr-sm" />
               Save
             </Button>
           </div>
@@ -171,7 +171,7 @@ export default function UniformSizingClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Shirt className="w-5 h-5 mr-sm color-accent" />
+            <Shirt className="w-icon-sm h-icon-sm mr-sm color-accent" />
             Standard Sizes
           </h3>
         </CardHeader>

@@ -10,10 +10,10 @@ const RouteLoadingFallback: React.FC<{ routeName: string; icon?: React.ReactNode
   routeName, 
   icon 
 }) => (
-  <Card className="p-2xl flex flex-col items-center justify-center min-h-[400px]">
+  <Card className="p-2xl flex flex-col items-center justify-center min-h-content-lg">
     <div className="flex items-center space-x-sm mb-md">
       {icon}
-      <RefreshCw className="h-8 w-8 animate-spin text-accent" />
+      <RefreshCw className="h-icon-lg w-icon-lg animate-spin text-accent" />
     </div>
     <h3 className="text-xl font-semibold text-foreground mb-sm">Loading {routeName}</h3>
     <p className="text-muted-foreground/70 text-center max-w-md">
@@ -125,7 +125,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.Dashboard,
     name: 'Dashboard',
     description: 'Main dashboard with overview and key metrics',
-    icon: <Home className="h-5 w-5" />,
+    icon: <Home className="h-icon-sm w-icon-sm" />,
     preload: true,
     chunkName: 'dashboard',
     dependencies: ['monitoring', 'metrics']
@@ -136,7 +136,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.MonitoringDashboard,
     name: 'Database Monitoring',
     description: 'Real-time database performance monitoring',
-    icon: <Database className="h-5 w-5" />,
+    icon: <Database className="h-icon-sm w-icon-sm" />,
     chunkName: 'monitoring',
     dependencies: ['charts']
   },
@@ -146,7 +146,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.AlertingSystem,
     name: 'Alerting System',
     description: 'Configure and manage system alerts',
-    icon: <Bell className="h-5 w-5" />,
+    icon: <Bell className="h-icon-sm w-icon-sm" />,
     chunkName: 'alerts'
   },
   
@@ -155,7 +155,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.PerformanceMetrics,
     name: 'Performance Metrics',
     description: 'Detailed performance metrics and analytics',
-    icon: <BarChart3 className="h-5 w-5" />,
+    icon: <BarChart3 className="h-icon-sm w-icon-sm" />,
     chunkName: 'metrics',
     dependencies: ['charts']
   },
@@ -165,7 +165,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.KanbanBoard,
     name: 'Kanban Board',
     description: 'Project management with kanban boards',
-    icon: <Zap className="h-5 w-5" />,
+    icon: <Zap className="h-icon-sm w-icon-sm" />,
     chunkName: 'kanban'
   },
   
@@ -174,7 +174,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.AdvancedSearch,
     name: 'Advanced Search',
     description: 'Advanced search and filtering capabilities',
-    icon: <BarChart3 className="h-5 w-5" />,
+    icon: <BarChart3 className="h-icon-sm w-icon-sm" />,
     chunkName: 'search'
   },
   
@@ -183,7 +183,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.DatabaseManager,
     name: 'Database Manager',
     description: 'Database transaction and schema management',
-    icon: <Database className="h-5 w-5" />,
+    icon: <Database className="h-icon-sm w-icon-sm" />,
     chunkName: 'database',
     dependencies: ['monitoring']
   },
@@ -193,7 +193,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.Projects,
     name: 'Projects',
     description: 'Project management and collaboration',
-    icon: <FolderOpen className="h-5 w-5" />,
+    icon: <FolderOpen className="h-icon-sm w-icon-sm" />,
     chunkName: 'projects',
     dependencies: ['kanban']
   },
@@ -203,7 +203,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.FileManager,
     name: 'File Manager',
     description: 'File storage and management system',
-    icon: <FolderOpen className="h-5 w-5" />,
+    icon: <FolderOpen className="h-icon-sm w-icon-sm" />,
     chunkName: 'files'
   },
   
@@ -212,7 +212,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.UserManagement,
     name: 'User Management',
     description: 'User accounts and permissions management',
-    icon: <Users className="h-5 w-5" />,
+    icon: <Users className="h-icon-sm w-icon-sm" />,
     chunkName: 'users'
   },
   
@@ -221,7 +221,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.Settings,
     name: 'Settings',
     description: 'Application settings and configuration',
-    icon: <Settings className="h-5 w-5" />,
+    icon: <Settings className="h-icon-sm w-icon-sm" />,
     chunkName: 'settings'
   },
   
@@ -230,7 +230,7 @@ export const routeConfigs: Record<string, RouteConfig> = {
     component: RouteComponents.Notifications,
     name: 'Notifications',
     description: 'System notifications and alerts',
-    icon: <Bell className="h-5 w-5" />,
+    icon: <Bell className="h-icon-sm w-icon-sm" />,
     chunkName: 'notifications'
   }
 };

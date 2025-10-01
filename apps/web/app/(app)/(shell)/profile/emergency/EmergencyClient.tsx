@@ -322,19 +322,19 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  }, [filters]);
 
  return (
- <div className="space-y-6">
- <Card className="p-4 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
- <div className="space-y-2">
- <div className="flex items-center gap-2">
+ <div className="space-y-lg">
+ <Card className="p-md flex flex-col gap-md md:flex-row md:items-center md:justify-between">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline">Emergency</Badge>
  <span className="text-sm text-muted-foreground">
  {selectedContact?.verification_status === 'verified' ? (
- <span className="text-green-600 flex items-center gap-1">
- <ShieldCheck className="h-4 w-4" /> Contact verified
+ <span className="text-green-600 flex items-center gap-xs">
+ <ShieldCheck className="h-icon-xs w-icon-xs" /> Contact verified
  </span>
  ) : (
- <span className="text-yellow-600 flex items-center gap-1">
- <ShieldAlert className="h-4 w-4" /> Verification pending
+ <span className="text-yellow-600 flex items-center gap-xs">
+ <ShieldAlert className="h-icon-xs w-icon-xs" /> Verification pending
  </span>
  )}
  </span>
@@ -346,7 +346,7 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  : 'Create a new emergency contact or select one from the roster.'}
  </p>
  </div>
- <div className="flex flex-wrap items-center gap-2">
+ <div className="flex flex-wrap items-center gap-xs">
  <Button variant="outline" size="sm" onClick={handleNewContact}>
  New Contact
  </Button>
@@ -354,14 +354,14 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  fetchContacts();
  if (view === 'analytics') fetchAnalytics();
  }}>
- <RefreshCw className="mr-2 h-4 w-4" />
+ <RefreshCw className="mr-2 h-icon-xs w-icon-xs" />
  Refresh
  </Button>
  </div>
  </Card>
 
- <Card className="p-4">
- <div className="flex flex-wrap gap-2">
+ <Card className="p-md">
+ <div className="flex flex-wrap gap-xs">
  {QUICK_FILTERS.map(filter => (
  <Button
  key={filter.value}
@@ -397,8 +397,8 @@ function EmergencyClient({ orgId, userId }: EmergencyClientProps) {
  {Object.entries(VIEW_CONFIG).map(([key, { label }]) => {
  const Icon = iconMap[key as EmergencyViewType] ?? FileText;
  return (
- <TabsTrigger key={key} value={key} className="flex items-center gap-2">
- <Icon className="h-4 w-4" />
+ <TabsTrigger key={key} value={key} className="flex items-center gap-xs">
+ <Icon className="h-icon-xs w-icon-xs" />
  {label}
  </TabsTrigger>
  );

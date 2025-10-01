@@ -68,13 +68,13 @@ export default function ContractsGridView({
  <Card key={contract.id} className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm">
- <TypeIcon className="h-5 w-5 text-muted-foreground" />
+ <TypeIcon className="h-icon-sm w-icon-sm text-muted-foreground" />
  <Badge variant={getStatusColor(contract.status)} size="sm">
  {contract.status}
  </Badge>
  </div>
  {expiringSoon && (
- <AlertTriangle className="h-4 w-4 text-yellow-600" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-yellow-600" />
  )}
  </div>
  
@@ -84,7 +84,7 @@ export default function ContractsGridView({
  {contract.company?.name || 'Unknown Company'}
  </p>
  {contract.description && (
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {contract.description}
  </p>
  )}
@@ -98,7 +98,7 @@ export default function ContractsGridView({
  
  {contract.value && (
  <div className="flex items-center gap-sm text-sm">
- <DollarSign className="h-4 w-4 text-green-600" />
+ <DollarSign className="h-icon-xs w-icon-xs text-green-600" />
  <span className="text-green-600 font-medium">
  {contract.value.toLocaleString()} {contract.currency}
  </span>
@@ -107,7 +107,7 @@ export default function ContractsGridView({
  
  {contract.end_date && (
  <div className="flex items-center gap-sm text-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className={expiringSoon ? 'text-yellow-600 font-medium' : 'text-muted-foreground'}>
  Expires: {new Date(contract.end_date).toLocaleDateString()}
  </span>
@@ -116,7 +116,7 @@ export default function ContractsGridView({
  
  {contract.auto_renew && (
  <div className="flex items-center gap-sm text-sm">
- <span className="text-blue-600 text-xs bg-blue-50 px-2 py-1 rounded">
+ <span className="text-blue-600 text-xs bg-blue-50 px-xs py-xs rounded">
  Auto-renewal enabled
  </span>
  </div>
@@ -155,7 +155,7 @@ export default function ContractsGridView({
  </div>
  
  {expiringSoon && (
- <div className="mt-sm p-sm bg-yellow-50 border border-yellow-200 rounded text-xs text-yellow-800">
+ <div className="mt-sm p-sm bg-yellow-50 border border-yellow-component-lg0 rounded text-xs text-yellow-container-md0">
  This contract is expiring soon. Consider renewal or termination.
  </div>
  )}
@@ -165,7 +165,7 @@ export default function ContractsGridView({
  
  {contracts.length === 0 && (
  <div className="col-span-full text-center py-xl">
- <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <FileText className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <p className="text-muted-foreground">No contracts found</p>
  </div>
  )}

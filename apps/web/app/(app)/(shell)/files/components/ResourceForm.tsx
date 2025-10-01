@@ -279,7 +279,7 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  {resource ? 'Edit Resource' : 'Add New Resource'}
  </h2>
  <Button onClick={onClose}>
- <X className="w-4 h-4" />
+ <X className="w-icon-xs h-icon-xs" />
  </Button>
  </div>
 
@@ -469,12 +469,12 @@ export default function ResourceForm({ isOpen, onClose, onSuccess, resource }: R
  <Button type="submit" disabled={uploading}>
  {uploading ? (
  <>
- <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin mr-sm"></div>
+ <div className="w-icon-xs h-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin mr-sm"></div>
  {resource ? 'Updating...' : 'Creating...'}
  </>
  ) : (
  <>
- <Upload className="w-4 h-4 mr-sm" />
+ <Upload className="w-icon-xs h-icon-xs mr-sm" />
  {resource ? 'Update Resource' : 'Create Resource'}
  </>
  )}

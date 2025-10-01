@@ -209,7 +209,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
           <p className="text-body-sm color-muted">Manage training programs, sessions, and completion records</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
-          <Plus className="w-4 h-4" />
+          <Plus className="w-icon-xs h-icon-xs" />
           Add Training
         </Button>
       </div>
@@ -232,7 +232,7 @@ export default function TrainingClient({ orgId }: TrainingClientProps) {
                   : 'color-muted hover:color-foreground'
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-icon-xs h-icon-xs" />
               {tab.label}
             </button>
           );

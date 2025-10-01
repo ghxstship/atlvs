@@ -116,7 +116,7 @@ const categories = [
 
 export function FeatureGrid() {
   return (
-    <section className="py-4xl bg-secondary/20">
+    <section className="py-mdxl bg-secondary/20">
       <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
@@ -144,8 +144,8 @@ export function FeatureGrid() {
               <Card key={feature.title} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
                 <CardContent className="p-lg">
                   {/* Icon */}
-                  <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${feature.gradient} mb-sm`}>
-                    <Icon className="h-6 w-6 color-accent-foreground" />
+                  <div className={`inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r ${feature.gradient} mb-sm`}>
+                    <Icon className="h-icon-md w-icon-md color-accent-foreground" />
                   </div>
 
                   {/* Category Badge */}
@@ -173,8 +173,8 @@ export function FeatureGrid() {
           {/* Enterprise Ready */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-xl text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
-                <Shield className="h-8 w-8 color-accent" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-md">
+                <Shield className="h-icon-lg w-icon-lg color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Enterprise Ready</h3>
               <p className="color-muted mb-md">
@@ -200,8 +200,8 @@ export function FeatureGrid() {
           {/* AI-Powered */}
           <Card className="bg-gradient-to-br from-accent/5 to-accent/10 border-accent/20">
             <CardContent className="p-xl text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
-                <Zap className="h-8 w-8 color-accent" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-md">
+                <Zap className="h-icon-lg w-icon-lg color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">AI-Powered</h3>
               <p className="color-muted mb-md">
@@ -227,8 +227,8 @@ export function FeatureGrid() {
           {/* Global Scale */}
           <Card className="bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
             <CardContent className="p-xl text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
-                <Globe className="h-8 w-8 color-accent" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-md">
+                <Globe className="h-icon-lg w-icon-lg color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Global Scale</h3>
               <p className="color-muted mb-md">

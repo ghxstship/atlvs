@@ -112,11 +112,11 @@ const buttonVariants = cva(
         ],
       },
       size: {
-        default: ['h-10', 'px-4', 'py-2'],
+        default: ['h-icon-xl', 'px-md', 'py-sm'],
         sm: ['h-9', 'rounded-md', 'px-3'],
         lg: ['h-11', 'rounded-md', 'px-8'],
-        xl: ['h-12', 'rounded-lg', 'px-10', 'text-base'],
-        icon: ['h-10', 'w-10', 'p-0'],
+        xl: ['h-icon-2xl', 'rounded-lg', 'px-10', 'text-base'],
+        icon: ['h-icon-xl', 'w-icon-xl', 'p-0'],
       },
       fullWidth: {
         true: 'w-full',
@@ -169,7 +169,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       <>
         {loading && (
           <svg
-            className="mr-2 h-4 w-4 animate-spin"
+            className="mr-2 h-icon-xs w-icon-xs animate-spin"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -250,8 +250,8 @@ const ButtonGroup = React.forwardRef<
         orientation === 'horizontal' ? 'flex-row' : 'flex-col',
         attached && orientation === 'horizontal' && '[&>*:not(:first-child)]:ml-0 [&>*:not(:first-child)]:rounded-l-none [&>*:not(:last-child)]:rounded-r-none',
         attached && orientation === 'vertical' && '[&>*:not(:first-child)]:mt-0 [&>*:not(:first-child)]:rounded-t-none [&>*:not(:last-child)]:rounded-b-none',
-        !attached && orientation === 'horizontal' && 'gap-2',
-        !attached && orientation === 'vertical' && 'gap-2',
+        !attached && orientation === 'horizontal' && 'gap-xs',
+        !attached && orientation === 'vertical' && 'gap-xs',
         className
       )}
       role="group"

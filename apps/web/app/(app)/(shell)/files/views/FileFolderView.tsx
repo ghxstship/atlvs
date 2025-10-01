@@ -84,12 +84,12 @@ export default function FileFolderView({
  <div className="flex items-center gap-sm">
  <Button variant="ghost" size="sm" className="p-0">
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
- <Folder className={`h-5 w-5 ${getCategoryColor(category)}`} />
+ <Folder className={`h-icon-sm w-icon-sm ${getCategoryColor(category)}`} />
  <h3 className="font-semibold capitalize">{category}</h3>
  <Badge variant="secondary">{files.length} files</Badge>
  <span className="text-sm text-muted-foreground">
@@ -116,7 +116,7 @@ export default function FileFolderView({
  onClick={(e: React.MouseEvent) => e.stopPropagation()}
  />
  
- <CategoryIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <CategoryIcon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  
  <div className="flex-1 min-w-0">
  <div className="font-medium truncate" title={file.name}>

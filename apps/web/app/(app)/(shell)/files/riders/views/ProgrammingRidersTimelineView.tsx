@@ -97,15 +97,15 @@ export default function ProgrammingRidersTimelineView({
 
  if (loading) {
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {Array.from({ length: 3 }).map((_, index) => (
- <div key={index} className="space-y-4">
- <div className="h-6 bg-muted rounded w-1/3 animate-pulse"></div>
- <div className="space-y-3">
+ <div key={index} className="space-y-md">
+ <div className="h-icon-md bg-muted rounded w-1/3 animate-pulse"></div>
+ <div className="space-y-sm">
  {Array.from({ length: 2 }).map((_, riderIndex) => (
  <Card key={riderIndex} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
@@ -122,9 +122,9 @@ export default function ProgrammingRidersTimelineView({
 
  if (riders.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No riders found</h3>
  <p className="text-muted-foreground">
  No riders match your current filters. Try adjusting your search criteria.
@@ -135,26 +135,26 @@ export default function ProgrammingRidersTimelineView({
  }
 
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {sortedGroups.map(([groupKey, groupRiders]) => {
  const firstRider = groupRiders[0];
  const eventInfo = firstRider.event;
 
  return (
- <div key={groupKey} className="space-y-4">
+ <div key={groupKey} className="space-y-md">
  {/* Group Header */}
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <div className="flex-1">
  <h3 className="text-lg font-semibold">{groupKey}</h3>
  {eventInfo && (
- <div className="flex items-center gap-4 text-sm text-muted-foreground mt-1">
- <div className="flex items-center gap-1">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center gap-md text-sm text-muted-foreground mt-1">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  {new Date(eventInfo.start_at).toLocaleDateString()} - {new Date(eventInfo.end_at || eventInfo.start_at).toLocaleDateString()}
  </div>
  {eventInfo.location && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  {eventInfo.location}
  </div>
  )}
@@ -171,7 +171,7 @@ export default function ProgrammingRidersTimelineView({
  {/* Timeline Line */}
  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border"></div>
 
- <div className="space-y-6">
+ <div className="space-y-lg">
  {groupRiders
  .sort((a, b) => new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
  .map((rider, index) => {
@@ -180,10 +180,10 @@ export default function ProgrammingRidersTimelineView({
  const priorityConfig = PRIORITY_BADGE_CONFIG[rider.priority];
 
  return (
- <div key={rider.id} className="relative flex gap-4">
+ <div key={rider.id} className="relative flex gap-md">
  {/* Timeline Dot */}
  <div className="relative z-10">
- <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-background bg-card shadow">
+ <div className="flex h-icon-2xl w-icon-2xl items-center justify-center rounded-full border-2 border-background bg-card shadow">
  <span className="text-lg">{kindConfig.icon}</span>
  </div>
  </div>
@@ -193,7 +193,7 @@ export default function ProgrammingRidersTimelineView({
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-2">
+ <div className="flex items-center gap-xs mb-2">
  <Badge variant="outline" className="text-xs">
  {kindConfig.label}
  </Badge>
@@ -213,17 +213,17 @@ export default function ProgrammingRidersTimelineView({
  </div>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(rider)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(rider)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -232,44 +232,44 @@ export default function ProgrammingRidersTimelineView({
  </CardHeader>
 
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {/* Requirements */}
  <div>
  <h5 className="text-sm font-medium mb-1">Requirements</h5>
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {rider.requirements}
  </p>
  </div>
 
  {/* Additional Info */}
- <div className="flex items-center gap-4 text-sm text-muted-foreground">
+ <div className="flex items-center gap-md text-sm text-muted-foreground">
  {rider.project && (
- <div className="flex items-center gap-1">
- <User className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <User className="h-icon-xs w-icon-xs" />
  <span>Project: {rider.project.name}</span>
  </div>
  )}
  
- <div className="flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>Created {new Date(rider.created_at).toLocaleDateString()}</span>
  </div>
 
  {/* Fulfillment Status */}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {rider.fulfilled_at ? (
  <>
- <CheckCircle className="h-4 w-4 text-green-600" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-green-600" />
  <span className="text-green-600">Fulfilled</span>
  </>
  ) : rider.approved_at ? (
  <>
- <AlertCircle className="h-4 w-4 text-yellow-600" />
+ <AlertCircle className="h-icon-xs w-icon-xs text-yellow-600" />
  <span className="text-yellow-600">Approved</span>
  </>
  ) : (
  <>
- <XCircle className="h-4 w-4 text-gray-400" />
+ <XCircle className="h-icon-xs w-icon-xs text-gray-400" />
  <span className="text-gray-400">Pending</span>
  </>
  )}
@@ -278,7 +278,7 @@ export default function ProgrammingRidersTimelineView({
 
  {/* Tags */}
  {rider.tags && rider.tags.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {rider.tags.slice(0, 5).map((tag, tagIndex) => (
  <Badge key={tagIndex} variant="outline" className="text-xs">
  {tag}
@@ -296,7 +296,7 @@ export default function ProgrammingRidersTimelineView({
  {rider.notes && (
  <div>
  <h5 className="text-sm font-medium mb-1">Notes</h5>
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {rider.notes}
  </p>
  </div>

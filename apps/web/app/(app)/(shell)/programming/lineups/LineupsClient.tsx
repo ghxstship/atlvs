@@ -218,7 +218,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Lineups Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Add Performer
                 </Button>
               </div>
@@ -234,7 +234,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                 <Card key={stage} className="p-md">
                   <div className="flex items-center justify-between mb-sm">
                     <h3 className="text-heading-4 flex items-center gap-sm">
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="h-icon-xs w-icon-xs" />
                       {stage}
                     </h3>
                     <Badge variant="secondary">
@@ -311,7 +311,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                 <div className="stack-md mt-lg">
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.event_date 
                           ? new Date(selectedRecord.event_date).toLocaleDateString()
@@ -320,7 +320,7 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.set_time || 'Set time TBD'}
                       </span>
@@ -328,13 +328,13 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
                   </div>
                   
                   <div className="flex items-center gap-sm text-body-sm color-muted">
-                    <MapPin className="h-4 w-4" />
+                    <MapPin className="h-icon-xs w-icon-xs" />
                     <span>{selectedRecord.stage || 'Stage TBD'}</span>
                   </div>
                   
                   {selectedRecord.duration && (
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Music className="h-4 w-4" />
+                      <Music className="h-icon-xs w-icon-xs" />
                       <span>{selectedRecord.duration} minute set</span>
                     </div>
                   )}
@@ -351,13 +351,13 @@ export default function LineupsClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-xl text-center">
-                <Users className="h-12 w-12 mx-auto mb-md color-muted" />
+                <Users className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
                 <h3 className="text-body text-heading-4 mb-sm">No Lineups Yet</h3>
                 <p className="color-muted mb-md">
                   Start building your event lineups by adding performers and their set times.
                 </p>
                 <Button onClick={handleCreateLineup}>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Add First Performer
                 </Button>
               </Card>

@@ -136,10 +136,10 @@ export default function EditDrawer({
 
       <div className="relative ml-auto w-full max-w-2xl bg-white shadow-xl transform transition-transform">
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
-                <CategoryIcon className="w-6 h-6 text-gray-600" />
+          <div className="flex items-center justify-between p-lg border-b border-gray-200">
+            <div className="flex items-center gap-sm">
+              <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gray-100 flex items-center justify-center">
+                <CategoryIcon className="w-icon-md h-icon-md text-gray-600" />
               </div>
               <div>
                 <h2 className="text-xl font-semibold text-gray-900">Edit File</h2>
@@ -149,7 +149,7 @@ export default function EditDrawer({
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <Button
                 type="button"
                 variant="outline"
@@ -158,12 +158,12 @@ export default function EditDrawer({
               >
                 {showPreview ? (
                   <>
-                    <EyeOff className="w-4 h-4 mr-2" />
+                    <EyeOff className="w-icon-xs h-icon-xs mr-2" />
                     Hide Preview
                   </>
                 ) : (
                   <>
-                    <Eye className="w-4 h-4 mr-2" />
+                    <Eye className="w-icon-xs h-icon-xs mr-2" />
                     Show Preview
                   </>
                 )}
@@ -175,23 +175,23 @@ export default function EditDrawer({
                 onClick={() => reset()}
                 disabled={!isDirty}
               >
-                <RotateCcw className="w-4 h-4 mr-2" />
+                <RotateCcw className="w-icon-xs h-icon-xs mr-2" />
                 Reset
               </Button>
               <Button variant="ghost" size="sm" onClick={onClose}>
-                <X className="w-4 h-4" />
+                <X className="w-icon-xs h-icon-xs" />
               </Button>
             </div>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-6">
-            <div className="space-y-6">
+          <div className="flex-1 overflow-y-auto p-lg">
+            <div className="space-y-lg">
               {showPreview && (
-                <div className="border border-gray-200 rounded-lg p-4">
+                <div className="border border-gray-200 rounded-lg p-md">
                   <h3 className="text-sm font-medium text-gray-900 mb-3">Current Preview</h3>
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-lg bg-gray-100 flex items-center justify-center">
-                      <CategoryIcon className="w-8 h-8 text-gray-600" />
+                  <div className="flex items-center gap-md">
+                    <div className="w-component-md h-component-md rounded-lg bg-gray-100 flex items-center justify-center">
+                      <CategoryIcon className="w-icon-lg h-icon-lg text-gray-600" />
                     </div>
                     <div>
                       <p className="font-medium text-gray-900">{file.title}</p>
@@ -232,7 +232,7 @@ export default function EditDrawer({
                 )}
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Category *
@@ -290,8 +290,8 @@ export default function EditDrawer({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Tags
                 </label>
-                <div className="space-y-3">
-                  <div className="flex gap-2">
+                <div className="space-y-sm">
+                  <div className="flex gap-xs">
                     <LegacyInput
                       value={tagInput}
                       onChange={(event: React.ChangeEvent<HTMLInputElement>) => setTagInput(event.target.value)}
@@ -305,13 +305,13 @@ export default function EditDrawer({
                       disabled={!tagInput.trim() || watchedTags.includes(tagInput.trim())}
                       size="sm"
                     >
-                      <Tag className="w-4 h-4 mr-2" />
+                      <Tag className="w-icon-xs h-icon-xs mr-2" />
                       Add
                     </Button>
                   </div>
 
                   {watchedTags.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-xs">
                       {watchedTags.map((tag) => (
                         <Badge
                           key={tag}
@@ -331,11 +331,11 @@ export default function EditDrawer({
                 </div>
               </div>
 
-              <div className="my-6 h-[1px] w-full bg-border" role="separator" aria-hidden="true" />
+              <div className="my-6 h-micro w-full bg-border" role="separator" aria-hidden="true" />
 
               <div>
                 <h3 className="text-sm font-medium text-gray-900 mb-3">File Information</h3>
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-md text-sm">
                   <div>
                     <span className="text-gray-500">File Size:</span>
                     <span className="ml-2 text-gray-900">{formatFileSize(file.file_size || 0)}</span>
@@ -358,8 +358,8 @@ export default function EditDrawer({
                   </div>
                   <div className="col-span-2">
                     <span className="text-gray-500">Access:</span>
-                    <span className="ml-2 inline-flex items-center gap-2 text-gray-900">
-                      <AccessIcon className="h-4 w-4" />
+                    <span className="ml-2 inline-flex items-center gap-xs text-gray-900">
+                      <AccessIcon className="h-icon-xs w-icon-xs" />
                       {file.access_level}
                     </span>
                   </div>
@@ -368,8 +368,8 @@ export default function EditDrawer({
             </div>
           </div>
 
-          <div className="border-t border-gray-200 p-6">
-            <div className="flex justify-end gap-3">
+          <div className="border-t border-gray-200 p-lg">
+            <div className="flex justify-end gap-sm">
               <Button
                 type="button"
                 variant="outline"
@@ -384,12 +384,12 @@ export default function EditDrawer({
               >
                 {isLoading ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    <div className="w-icon-xs h-icon-xs border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
                     Saving...
                   </>
                 ) : (
                   <>
-                    <Save className="w-4 h-4 mr-2" />
+                    <Save className="w-icon-xs h-icon-xs mr-2" />
                     Save Changes
                   </>
                 )}

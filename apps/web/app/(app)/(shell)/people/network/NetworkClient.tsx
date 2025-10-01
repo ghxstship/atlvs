@@ -147,7 +147,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -163,7 +163,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
           <p className="color-muted">{t('subtitle')}</p>
         </div>
         <Button className="flex items-center cluster-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           <span>{t('addConnection')}</span>
         </Button>
       </div>
@@ -176,7 +176,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalConnections')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalConnections}</p>
             </div>
-            <Network className="h-8 w-8 color-accent" />
+            <Network className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -186,7 +186,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
               <p className="text-body-sm form-label color-muted">{t('strongConnections')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.strongConnections}</p>
             </div>
-            <Users className="h-8 w-8 color-success" />
+            <Users className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -196,7 +196,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
               <p className="text-body-sm form-label color-muted">{t('departments')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{Object.keys(stats.departmentConnections).length}</p>
             </div>
-            <MessageCircle className="h-8 w-8 color-secondary" />
+            <MessageCircle className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
 
@@ -206,7 +206,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
               <p className="text-body-sm form-label color-muted">{t('relationshipTypes')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{Object.keys(stats.relationshipTypes).length}</p>
             </div>
-            <Calendar className="h-8 w-8 color-warning" />
+            <Calendar className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
       </div>
@@ -217,7 +217,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
                 <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -273,7 +273,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
                           <span className="color-muted ml-xs">({connection.person.role})</span>
                         )}
                       </div>
-                      <ArrowRight className="h-4 w-4 color-muted" />
+                      <ArrowRight className="h-icon-xs w-icon-xs color-muted" />
                       <div className="text-body-sm">
                         <span className="form-label">
                           {connection.connected_person?.first_name} {connection.connected_person?.last_name}
@@ -316,7 +316,7 @@ export default function NetworkClient({ orgId }: NetworkClientProps) {
       {filteredConnections.length === 0 && (
         <Card>
           <div className="text-center py-xl">
-            <Network className="h-12 w-12 color-muted/50 mx-auto mb-md" />
+            <Network className="h-icon-2xl w-icon-2xl color-muted/50 mx-auto mb-md" />
             <p className="color-muted">{t('noConnections')}</p>
             <p className="text-body-sm color-muted/70 mt-sm">{t('startBuilding')}</p>
           </div>

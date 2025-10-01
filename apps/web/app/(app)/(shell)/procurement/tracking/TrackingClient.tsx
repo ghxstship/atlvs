@@ -119,9 +119,9 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
     return (
       <div className="stack-md">
         <div className="animate-pulse stack-md">
-          <div className="h-4 bg-secondary rounded w-3/4"></div>
-          <div className="h-4 bg-secondary rounded w-1/2"></div>
-          <div className="h-4 bg-secondary rounded w-2/3"></div>
+          <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
+          <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+          <div className="h-icon-xs bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -132,7 +132,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Truck className="h-5 w-5" />
+          <Truck className="h-icon-sm w-icon-sm" />
           <h3 className="text-body text-heading-4">Order Tracking</h3>
           <Badge variant="secondary">{filteredOrders.length} orders</Badge>
         </div>
@@ -141,7 +141,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       {/* Search and Filters */}
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+          <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
           <UnifiedInput             placeholder="Search by order number, vendor, tracking number..."
             value={searchQuery}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -165,7 +165,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
       {filteredOrders.length === 0 ? (
         <Card>
           <div className="p-xl text-center color-muted">
-            <Truck className="h-12 w-12 mx-auto mb-md opacity-50" />
+            <Truck className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
             <p>{searchQuery || statusFilter !== 'all' ? 'No orders found matching your filters.' : 'No orders to track.'}</p>
             <p className="text-body-sm">
               {searchQuery || statusFilter !== 'all' ? 'Try adjusting your search or filters.' : 'Orders will appear here once they are placed.'}
@@ -183,7 +183,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                 <div className="p-md">
                   <div className="flex items-start justify-between mb-sm">
                     <div className="flex items-center gap-sm">
-                      <StatusIcon className="h-5 w-5 color-muted" />
+                      <StatusIcon className="h-icon-sm w-icon-sm color-muted" />
                       <div>
                         <h4 className="form-label">{order.order_number}</h4>
                         <p className="text-body-sm color-muted">{order.vendor_name}</p>
@@ -204,7 +204,7 @@ export default function TrackingClient({ orgId }: { orgId: string }) {
                     </div>
                   </div>
                   
-                  <p className="text-body-sm color-muted mb-sm line-clamp-1">
+                  <p className="text-body-sm color-muted mb-sm line-clamp-xs">
                     {order.description}
                   </p>
                   

@@ -36,10 +36,10 @@ export function FeatureCard({
       <CardContent className="p-lg">
         {Icon && (
           <div className={cn(
-            'inline-flex items-center justify-center w-12 h-12 rounded-lg mb-sm',
+            'inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg mb-sm',
             `bg-gradient-to-r ${gradient}`
           )}>
-            <Icon className="h-6 w-6 text-background" />
+            <Icon className="h-icon-md w-icon-md text-background" />
           </div>
         )}
         
@@ -83,8 +83,8 @@ export function StatsCard({
     <Card className={cn('text-center', className)}>
       <CardContent className="p-lg">
         {Icon && (
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-accent/10 mb-sm">
-            <Icon className="h-6 w-6 color-accent" />
+          <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-accent/10 mb-sm">
+            <Icon className="h-icon-md w-icon-md color-accent" />
           </div>
         )}
         
@@ -138,7 +138,7 @@ export function TestimonialCard({
             <img
               src={avatar}
               alt={author}
-              className="w-12 h-12 rounded-full object-cover"
+              className="w-icon-2xl h-icon-2xl rounded-full object-cover"
             />
           )}
           

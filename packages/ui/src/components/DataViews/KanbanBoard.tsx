@@ -159,7 +159,7 @@ export function KanbanBoard({
           <div
             key={column.id}
             className={`
-              flex-shrink-0 w-80 bg-muted rounded-lg
+              flex-shrink-0 w-container-md bg-muted rounded-lg
               ${isDragOver ? 'ring-2 ring-primary bg-accent/10' : ''}
             `}
             onDragOver={(e: any) => handleDragOver(e, column.id)}
@@ -175,9 +175,9 @@ export function KanbanBoard({
                     className="p-xs hover:bg-muted/50 rounded"
                   >
                     {isCollapsed ? (
-                      <ChevronRight className="h-4 w-4" />
+                      <ChevronRight className="h-icon-xs w-icon-xs" />
                     ) : (
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronDown className="h-icon-xs w-icon-xs" />
                     )}
                   </button>
                   
@@ -208,11 +208,11 @@ export function KanbanBoard({
                       config.onCreate?.();
                     }}
                   >
-                    <Plus className="h-4 w-4" />
+                    <Plus className="h-icon-xs w-icon-xs" />
                   </Button>
                   
                   <Button variant="ghost" >
-                    <MoreHorizontal className="h-4 w-4" />
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export function KanbanBoard({
 
             {/* Column Content */}
             {!isCollapsed && (
-              <div className="p-md space-y-sm max-h-[calc(100vh-200px)] overflow-y-auto">
+              <div className="p-md space-y-sm max-h-[calc(100vh-component-lg0px)] overflow-y-auto">
                 {records.map((record: any) => {
                   const isDragging = draggedCard === record.id;
                   const priority = priorityField ? record[priorityField] : null;
@@ -326,7 +326,7 @@ export function KanbanBoard({
                       className="mt-sm"
                       onClick={() => config.onCreate?.()}
                     >
-                      <Plus className="h-4 w-4 mr-xs" />
+                      <Plus className="h-icon-xs w-icon-xs mr-xs" />
                       Add item
                     </Button>
                   </div>

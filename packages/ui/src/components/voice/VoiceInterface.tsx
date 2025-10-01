@@ -625,9 +625,9 @@ export function VoiceControls({ className }: { className?: string }) {
         title={isListening ? 'Stop listening' : 'Start voice input'}
       >
         {isListening ? (
-          <MicOff className="h-4 w-4" />
+          <MicOff className="h-icon-xs w-icon-xs" />
         ) : (
-          <Mic className="h-4 w-4" />
+          <Mic className="h-icon-xs w-icon-xs" />
         )}
         
         {/* Listening indicator */}
@@ -643,7 +643,7 @@ export function VoiceControls({ className }: { className?: string }) {
         onClick={handleTestVoice}
         title="Test voice output"
       >
-        <Volume2 className="h-4 w-4" />
+        <Volume2 className="h-icon-xs w-icon-xs" />
       </Button>
 
       {/* Settings button */}
@@ -653,7 +653,7 @@ export function VoiceControls({ className }: { className?: string }) {
         onClick={() => setShowSettings(!showSettings)}
         title="Voice settings"
       >
-        <Settings className="h-4 w-4" />
+        <Settings className="h-icon-xs w-icon-xs" />
       </Button>
 
       {/* Current command display */}

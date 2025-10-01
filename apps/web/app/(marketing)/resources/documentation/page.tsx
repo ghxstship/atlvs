@@ -102,7 +102,7 @@ export default function DocumentationPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -123,7 +123,7 @@ export default function DocumentationPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Get API Access
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#sections">
@@ -137,13 +137,13 @@ export default function DocumentationPage() {
           {/* Search Bar */}
           <div className="max-w-2xl mx-auto">
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
+              <Search className="absolute left-4 top-xs/2 transform -translate-y-1/2 h-icon-sm w-icon-sm color-muted" />
               <input
                 type="text"
                 placeholder="Search documentation..."
                 className="w-full pl-2xl pr-md py-md bg-background border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
               />
-              <Button size="sm" className="absolute right-2 top-1/2 transform -translate-y-1/2">
+              <Button size="sm" className="absolute right-2 top-xs/2 transform -translate-y-1/2">
                 Search
               </Button>
             </div>
@@ -168,7 +168,7 @@ export default function DocumentationPage() {
       </section>
 
       {/* Documentation Sections */}
-      <section id="sections" className="py-4xl">
+      <section id="sections" className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -186,8 +186,8 @@ export default function DocumentationPage() {
                 <Card key={section.id} className="hover:shadow-floating transition-all duration-300 group">
                   <CardContent className="p-xl">
                     <div className="flex items-start justify-between mb-lg">
-                      <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
-                        <Icon className="h-8 w-8 text-background" />
+                      <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform">
+                        <Icon className="h-icon-lg w-icon-lg text-background" />
                       </div>
                       <div className="flex items-center gap-sm">
                         <Badge variant="secondary">{section.articles} articles</Badge>
@@ -223,7 +223,7 @@ export default function DocumentationPage() {
                       className="w-full group-hover:translate-x-1 transition-transform"
                     >
                       {section.isPremium ? 'Unlock Section' : 'Browse Section'}
-                      <ArrowRight className="ml-sm h-4 w-4" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -234,7 +234,7 @@ export default function DocumentationPage() {
       </section>
 
       {/* Popular Documentation */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -292,7 +292,7 @@ export default function DocumentationPage() {
       </section>
 
       {/* Developer Resources */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -323,8 +323,8 @@ export default function DocumentationPage() {
             ].map((resource, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow text-center">
                 <CardContent className="p-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
-                    <resource.icon className="h-8 w-8 text-background" />
+                  <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
+                    <resource.icon className="h-icon-lg w-icon-lg text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {resource.title}
@@ -346,11 +346,11 @@ export default function DocumentationPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
-              <Code className="h-16 w-16 text-foreground mx-auto mb-lg" />
+            <CardContent className="p-xsxl">
+              <Code className="h-component-md w-component-md text-foreground mx-auto mb-lg" />
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 BUILD WITH GHXSTSHIP
               </h2>
@@ -362,7 +362,7 @@ export default function DocumentationPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Get API Keys
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

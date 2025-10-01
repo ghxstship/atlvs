@@ -71,7 +71,7 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
     <div className={cn('min-h-screen bg-background', className)}>
       {/* Header Section */}
       <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto px-4 py-6">
+        <div className="container mx-auto px-md py-6">
           {/* Breadcrumbs */}
           <Breadcrumbs
             segments={breadcrumbs.map((crumb) => ({
@@ -82,7 +82,7 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
           />
 
           {/* Header Content */}
-          <div className="flex items-start justify-between gap-4">
+          <div className="flex items-start justify-between gap-md">
             <div className="flex-1 min-w-0">
               {/* Back Button */}
               {(backHref || onBack) && (
@@ -92,7 +92,7 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
                   onClick={handleBack}
                   className="mb-4 -ml-2 text-muted-foreground hover:text-foreground"
                 >
-                  <ArrowLeft className="h-4 w-4 mr-2" />
+                  <ArrowLeft className="h-icon-xs w-icon-xs mr-2" />
                   Back
                 </Button>
               )}
@@ -112,7 +112,7 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
 
             {/* Actions */}
             {actions && (
-              <div className="flex items-center gap-2 flex-shrink-0">
+              <div className="flex items-center gap-xs flex-shrink-0">
                 {actions}
               </div>
             )}
@@ -121,11 +121,11 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
       </div>
 
       {/* Content Section */}
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-md py-8">
         {loading ? (
           <div className="space-y-6">
-            <div className="h-8 bg-muted animate-pulse rounded" />
-            <div className="h-64 bg-muted animate-pulse rounded" />
+            <div className="h-icon-lg bg-muted animate-pulse rounded" />
+            <div className="h-container-sm bg-muted animate-pulse rounded" />
           </div>
         ) : (
           <Tabs defaultValue={initialTab} className="w-full">
@@ -150,7 +150,7 @@ export const DetailTemplate: React.FC<DetailTemplateProps> = ({
                 value={tab.id}
                 className="mt-0 focus-visible:outline-none focus-visible:ring-0"
               >
-                <div className="rounded-lg border bg-card p-6 shadow-sm">
+                <div className="rounded-lg border bg-card p-lg shadow-sm">
                   {tab.content}
                 </div>
               </TabsContent>

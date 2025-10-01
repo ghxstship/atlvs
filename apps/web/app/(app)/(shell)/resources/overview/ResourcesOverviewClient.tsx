@@ -45,11 +45,11 @@ export default function ResourcesOverviewClient() {
         </div>
         <div className="flex gap-sm">
           <Button variant="outline">
-            <Upload className="w-4 h-4 mr-sm" />
+            <Upload className="w-icon-xs h-icon-xs mr-sm" />
             Upload Resource
           </Button>
           <Button>
-            <Plus className="w-4 h-4 mr-sm" />
+            <Plus className="w-icon-xs h-icon-xs mr-sm" />
             Create New
           </Button>
         </div>
@@ -66,7 +66,7 @@ export default function ResourcesOverviewClient() {
                 <p className="text-body-sm color-success mt-sm">{stat.trend}</p>
               </div>
               <div className="p-sm bg-secondary/50 rounded-lg">
-                <stat.icon className="w-6 h-6 color-muted" />
+                <stat.icon className="w-icon-md h-icon-md color-muted" />
               </div>
             </div>
           </Card>
@@ -87,7 +87,7 @@ export default function ResourcesOverviewClient() {
                 <div key={resource.id} className="flex items-center justify-between p-md border rounded-lg hover:bg-secondary/50">
                   <div className="flex items-center gap-md">
                     <div className="p-sm bg-secondary/50 rounded">
-                      <FileText className="w-5 h-5 color-muted" />
+                      <FileText className="w-icon-sm h-icon-sm color-muted" />
                     </div>
                     <div>
                       <h3 className="form-label color-foreground">{resource.title}</h3>
@@ -126,7 +126,7 @@ export default function ResourcesOverviewClient() {
               ))}
             </div>
             <Button variant="outline" className="w-full mt-md">
-              <FolderOpen className="w-4 h-4 mr-sm" />
+              <FolderOpen className="w-icon-xs h-icon-xs mr-sm" />
               Manage Categories
             </Button>
           </Card>
@@ -136,19 +136,19 @@ export default function ResourcesOverviewClient() {
             <h2 className="text-body text-heading-4 color-foreground mb-md">Quick Actions</h2>
             <div className="stack-sm">
               <Button variant="outline" className="w-full justify-start">
-                <Search className="w-4 h-4 mr-sm" />
+                <Search className="w-icon-xs h-icon-xs mr-sm" />
                 Search Resources
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <Filter className="w-4 h-4 mr-sm" />
+                <Filter className="w-icon-xs h-icon-xs mr-sm" />
                 Advanced Filters
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <BarChart className="w-4 h-4 mr-sm" />
+                <BarChart className="w-icon-xs h-icon-xs mr-sm" />
                 View Analytics
               </Button>
               <Button variant="outline" className="w-full justify-start">
-                <Clock className="w-4 h-4 mr-sm" />
+                <Clock className="w-icon-xs h-icon-xs mr-sm" />
                 Recent Activity
               </Button>
             </div>

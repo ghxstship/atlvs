@@ -69,7 +69,7 @@ export default function BudgetCalendarView({ data, isLoading, onRecordClick }: B
     return (
       <Card className="p-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded mb-lg"></div>
+          <div className="h-icon-lg bg-gray-200 rounded mb-lg"></div>
           <div className="grid grid-cols-7 gap-sm">
             {[...Array(35)].map((_, i) => (
               <div key={i} className="aspect-square bg-gray-200 rounded"></div>
@@ -89,10 +89,10 @@ export default function BudgetCalendarView({ data, isLoading, onRecordClick }: B
         </h2>
         <div className="flex items-center gap-sm">
           <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-icon-xs w-icon-xs" />
           </Button>
           <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       </div>
@@ -138,7 +138,7 @@ export default function BudgetCalendarView({ data, isLoading, onRecordClick }: B
                 <div className="flex items-center gap-md">
                   <div className="text-right">
                     <div className="text-sm font-medium">${record.spent?.toLocaleString() || '0'} / ${record.amount?.toLocaleString() || '0'}</div>
-                    <div className="w-24 bg-gray-200 rounded-full h-2 mt-xs">
+                    <div className="w-component-lg bg-gray-200 rounded-full h-2 mt-xs">
                       <div
                         className={`h-2 rounded-full ${
                           utilization > 100 ? 'bg-red-500' :
@@ -163,7 +163,7 @@ export default function BudgetCalendarView({ data, isLoading, onRecordClick }: B
 
         {data.length === 0 && (
           <div className="text-center py-xl text-gray-500">
-            <Calendar className="h-12 w-12 mx-auto mb-md opacity-50" />
+            <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
             <h3 className="text-lg font-medium mb-sm">No budgets found</h3>
             <p>Get started by creating your first budget.</p>
           </div>

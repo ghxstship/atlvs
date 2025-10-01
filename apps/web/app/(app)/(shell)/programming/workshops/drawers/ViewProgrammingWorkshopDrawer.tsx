@@ -90,46 +90,46 @@ export default function ViewProgrammingWorkshopDrawer({
  {
  key: 'edit',
  label: 'Edit',
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  variant: 'outline',
  onClick: () => onEdit(),
  },
  {
  key: 'delete',
  label: 'Delete',
- icon: <Trash2 className="h-4 w-4" />,
+ icon: <Trash2 className="h-icon-xs w-icon-xs" />,
  variant: 'destructive',
  onClick: () => onDelete(),
  },
  ];
 
  const content = (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Basic Information */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
+ <CardTitle className="flex items-center gap-xs">
  <span className="text-2xl">{categoryConfig.icon}</span>
  {workshop.title}
  </CardTitle>
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
  <Badge variant={skillLevelConfig.variant}>{skillLevelConfig.label}</Badge>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span>{formatConfig.icon}</span>
  <Badge variant={formatConfig.variant}>{formatConfig.label}</Badge>
  </div>
  <Badge variant="outline">{categoryConfig.label}</Badge>
  </div>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {workshop.description && (
  <p className="text-muted-foreground">{workshop.description}</p>
  )}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
- <div className="space-y-2">
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">
  {new Date(workshop.start_date).toLocaleDateString()}
  </span>
@@ -140,15 +140,15 @@ export default function ViewProgrammingWorkshopDrawer({
  )}
  </div>
  {workshop.duration_minutes && (
- <div className="flex items-center gap-2">
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{workshop.duration_minutes} minutes</span>
  </div>
  )}
  </div>
- <div className="space-y-2">
- <div className="flex items-center gap-2">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>
  {workshop.current_participants}
  {workshop.max_participants && `/${workshop.max_participants}`}
@@ -171,10 +171,10 @@ export default function ViewProgrammingWorkshopDrawer({
  <CardHeader>
  <CardTitle>Location & Venue</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2">
+ <CardContent className="space-y-xs">
  {workshop.venue && (
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">{workshop.venue}</span>
  </div>
  )}
@@ -202,8 +202,8 @@ export default function ViewProgrammingWorkshopDrawer({
  {workshop.primary_instructor && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <User className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <User className="h-icon-sm w-icon-sm" />
  Instructor
  </CardTitle>
  </CardHeader>
@@ -218,13 +218,13 @@ export default function ViewProgrammingWorkshopDrawer({
  {/* Registration & Pricing */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <DollarSign className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <DollarSign className="h-icon-sm w-icon-sm" />
  Registration & Pricing
  </CardTitle>
  </CardHeader>
- <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
- <div className="space-y-2">
+ <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
+ <div className="space-y-xs">
  {workshop.registration_opens_at && (
  <div>
  <span className="font-medium">Registration Opens:</span>{' '}
@@ -243,7 +243,7 @@ export default function ViewProgrammingWorkshopDrawer({
  </div>
  )}
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {workshop.price ? (
  <div>
  <span className="font-medium">Price:</span>{' '}
@@ -278,13 +278,13 @@ export default function ViewProgrammingWorkshopDrawer({
  {workshop.objectives && workshop.objectives.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Target className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Target className="h-icon-sm w-icon-sm" />
  Learning Objectives
  </CardTitle>
  </CardHeader>
  <CardContent>
- <ul className="space-y-1 text-sm list-disc list-inside">
+ <ul className="space-y-xs text-sm list-disc list-inside">
  {workshop.objectives.map((objective, index) => (
  <li key={index}>{objective}</li>
  ))}
@@ -297,13 +297,13 @@ export default function ViewProgrammingWorkshopDrawer({
  {workshop.prerequisites && workshop.prerequisites.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <CheckCircle className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <CheckCircle className="h-icon-sm w-icon-sm" />
  Prerequisites
  </CardTitle>
  </CardHeader>
  <CardContent>
- <ul className="space-y-1 text-sm list-disc list-inside">
+ <ul className="space-y-xs text-sm list-disc list-inside">
  {workshop.prerequisites.map((prerequisite, index) => (
  <li key={index}>{prerequisite}</li>
  ))}
@@ -317,16 +317,16 @@ export default function ViewProgrammingWorkshopDrawer({
  (workshop.materials_required && workshop.materials_required.length > 0)) && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <BookOpen className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <BookOpen className="h-icon-sm w-icon-sm" />
  Materials
  </CardTitle>
  </CardHeader>
- <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {workshop.materials_provided && workshop.materials_provided.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Materials Provided</h4>
- <ul className="space-y-1 text-sm list-disc list-inside">
+ <ul className="space-y-xs text-sm list-disc list-inside">
  {workshop.materials_provided.map((material, index) => (
  <li key={index}>{material}</li>
  ))}
@@ -336,7 +336,7 @@ export default function ViewProgrammingWorkshopDrawer({
  {workshop.materials_required && workshop.materials_required.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Materials Required</h4>
- <ul className="space-y-1 text-sm list-disc list-inside">
+ <ul className="space-y-xs text-sm list-disc list-inside">
  {workshop.materials_required.map((material, index) => (
  <li key={index}>{material}</li>
  ))}
@@ -363,12 +363,12 @@ export default function ViewProgrammingWorkshopDrawer({
  {(workshop.has_assessment || workshop.certification_available) && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Award className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Award className="h-icon-sm w-icon-sm" />
  Assessment & Certification
  </CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {workshop.has_assessment && (
  <div>
  <h4 className="font-semibold">Assessment</h4>
@@ -397,7 +397,7 @@ export default function ViewProgrammingWorkshopDrawer({
  <CardHeader>
  <CardTitle>Associated</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2">
+ <CardContent className="space-y-xs">
  {workshop.project && (
  <div>
  <span className="font-medium">Project: </span>
@@ -421,7 +421,7 @@ export default function ViewProgrammingWorkshopDrawer({
  <CardHeader>
  <CardTitle>Notes & Policies</CardTitle>
  </CardHeader>
- <CardContent className="space-y-3">
+ <CardContent className="space-y-sm">
  {workshop.public_notes && (
  <div>
  <h4 className="font-semibold">Public Notes</h4>
@@ -471,7 +471,7 @@ export default function ViewProgrammingWorkshopDrawer({
  <CardTitle>Tags</CardTitle>
  </CardHeader>
  <CardContent>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {workshop.tags.map((tag, index) => (
  <Badge key={index} variant="outline">
  {tag}
@@ -487,7 +487,7 @@ export default function ViewProgrammingWorkshopDrawer({
  <CardHeader>
  <CardTitle>Metadata</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2 text-sm">
+ <CardContent className="space-y-xs text-sm">
  <div className="flex justify-between">
  <span className="text-muted-foreground">Created:</span>
  <span>{new Date(workshop.created_at).toLocaleString()}</span>

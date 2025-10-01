@@ -321,7 +321,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]'
@@ -329,16 +329,16 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
   // Render upload step
   const renderUploadStep = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="text-center">
-        <Upload className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+        <Upload className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
         <h3 className="text-lg font-medium mb-2">Import Data</h3>
         <p className="text-muted-foreground">
           Select a file to import data into your dashboard
         </p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-md">
         <div>
           <Label htmlFor="format">Import Format</Label>
           <Select
@@ -379,7 +379,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
             <p className="text-sm text-muted-foreground mb-2">
               Need a template? Download a sample file:
             </p>
-            <div className="flex gap-2">
+            <div className="flex gap-xs">
               {supportedFormats.map(format => (
                 <Button
                   key={format}
@@ -387,7 +387,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
                   size="sm"
                   onClick={() => onDownloadTemplate(format)}
                 >
-                  <Download className="h-4 w-4 mr-1" />
+                  <Download className="h-icon-xs w-icon-xs mr-1" />
                   {format.toUpperCase()} Template
                 </Button>
               ))}
@@ -400,13 +400,13 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
   // Render configuration step
   const renderConfigureStep = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div>
         <h3 className="text-lg font-medium mb-2">Configure Import</h3>
         <p className="text-muted-foreground">Set up import options for your file</p>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-md">
         {importConfig.format === 'csv' && (
           <>
             <div>
@@ -427,7 +427,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
               </Select>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <Checkbox
                 id="hasHeaders"
                 checked={importConfig.hasHeaders}
@@ -467,12 +467,12 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
         </div>
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-xs">
         <Button variant="outline" onClick={() => setCurrentStep('upload')}>
           Back
         </Button>
         <Button onClick={handleValidateFile} disabled={loading} className="flex-1">
-          {loading ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : <Eye className="h-4 w-4 mr-2" />}
+          {loading ? <Loader2 className="h-icon-xs w-icon-xs mr-2 animate-spin" /> : <Eye className="h-icon-xs w-icon-xs mr-2" />}
           Validate & Preview
         </Button>
       </div>
@@ -484,18 +484,18 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
     if (!previewData) return null;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-lg">
         <div>
           <h3 className="text-lg font-medium mb-2">Map Fields</h3>
           <p className="text-muted-foreground">Map your file columns to dashboard fields</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-md">
           {previewData.headers.map((header, index) => {
             const mapping = fieldMappings.find(m => m.sourceField === header);
 
             return (
-              <div key={header} className="flex items-center gap-4 p-3 border rounded">
+              <div key={header} className="flex items-center gap-md p-sm border rounded">
                 <div className="flex-1">
                   <Label className="text-sm font-medium">Column {index + 1}:</Label>
                   <p className="text-sm text-muted-foreground">{header}</p>
@@ -525,7 +525,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
           })}
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline" onClick={() => setCurrentStep('configure')}>
             Back
           </Button>
@@ -542,7 +542,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
     if (!previewData) return null;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-lg">
         <div>
           <h3 className="text-lg font-medium mb-2">Import Preview</h3>
           <p className="text-muted-foreground">
@@ -552,11 +552,11 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
         {/* Validation Results */}
         {validationResult && (
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {validationResult.errors.length > 0 && (
-              <div className="p-3 border border-destructive/20 bg-destructive/10 rounded">
-                <div className="flex items-center gap-2 text-destructive">
-                  <AlertTriangle className="h-4 w-4" />
+              <div className="p-sm border border-destructive/20 bg-destructive/10 rounded">
+                <div className="flex items-center gap-xs text-destructive">
+                  <AlertTriangle className="h-icon-xs w-icon-xs" />
                   <span className="font-medium">Errors Found</span>
                 </div>
                 <ul className="text-sm mt-1 list-disc list-inside">
@@ -571,9 +571,9 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
             )}
 
             {validationResult.warnings.length > 0 && (
-              <div className="p-3 border border-yellow-200 bg-yellow-50 rounded">
-                <div className="flex items-center gap-2 text-yellow-800">
-                  <AlertTriangle className="h-4 w-4" />
+              <div className="p-sm border border-yellow-component-lg0 bg-yellow-50 rounded">
+                <div className="flex items-center gap-xs text-yellow-container-md0">
+                  <AlertTriangle className="h-icon-xs w-icon-xs" />
                   <span className="font-medium">Warnings</span>
                 </div>
                 <ul className="text-sm mt-1 list-disc list-inside">
@@ -615,7 +615,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
           </div>
         )}
 
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline" onClick={() => setCurrentStep(allowFieldMapping ? 'map' : 'configure')}>
             Back
           </Button>
@@ -624,7 +624,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
             disabled={!validationResult?.valid && requireValidation}
             className="flex-1"
           >
-            <Upload className="h-4 w-4 mr-2" />
+            <Upload className="h-icon-xs w-icon-xs mr-2" />
             Start Import
           </Button>
         </div>
@@ -634,11 +634,11 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
   // Render import step
   const renderImportStep = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="text-center">
         {importProgress.status === 'importing' && (
           <>
-            <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+            <Loader2 className="h-icon-2xl w-icon-2xl animate-spin text-primary mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Importing Data</h3>
             <Progress value={importProgress.progress} className="w-full mb-2" />
             <p className="text-muted-foreground">{importProgress.progress}% complete</p>
@@ -647,9 +647,9 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
         {importProgress.status === 'completed' && importProgress.result && (
           <>
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+            <CheckCircle className="h-icon-2xl w-icon-2xl text-green-500 mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Import Completed</h3>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-xs text-sm">
               <div className="flex justify-between">
                 <span>Imported:</span>
                 <span className="font-medium">{importProgress.result.imported}</span>
@@ -659,7 +659,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
                 <span className="font-medium">{importProgress.result.skipped}</span>
               </div>
               {importProgress.result.errors.length > 0 && (
-                <div className="mt-4 p-3 bg-destructive/10 border border-destructive/20 rounded">
+                <div className="mt-4 p-sm bg-destructive/10 border border-destructive/20 rounded">
                   <div className="font-medium text-destructive mb-1">Errors:</div>
                   <ul className="text-sm list-disc list-inside">
                     {importProgress.result.errors.map((error, idx) => (
@@ -674,7 +674,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
 
         {importProgress.status === 'failed' && (
           <>
-            <AlertTriangle className="h-12 w-12 text-destructive mx-auto mb-4" />
+            <AlertTriangle className="h-icon-2xl w-icon-2xl text-destructive mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Import Failed</h3>
             <div className="text-sm text-muted-foreground">
               {importProgress.result?.errors.join(', ')}
@@ -684,7 +684,7 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
       </div>
 
       {(importProgress.status === 'completed' || importProgress.status === 'failed') && (
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline" onClick={() => setCurrentStep('upload')} className="flex-1">
             Import Another File
           </Button>
@@ -707,12 +707,12 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
           widthClasses[width]
         )}>
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b">
+          <div className="flex items-center justify-between p-lg border-b">
             <div className="flex-1 min-w-0">
               <h2 className="text-xl font-semibold truncate">
                 {title || 'Import Data'}
               </h2>
-              <div className="flex items-center gap-2 mt-1">
+              <div className="flex items-center gap-xs mt-1">
                 <Badge variant="outline">
                   Step {['upload', 'configure', 'map', 'preview', 'import'].indexOf(currentStep) + 1} of 5
                 </Badge>
@@ -723,13 +723,13 @@ export const ImportDrawer: React.FC<ImportDrawerProps> = ({
             </div>
 
             <Button variant="ghost" size="sm" onClick={onClose}>
-              <X className="h-4 w-4" />
+              <X className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
           {/* Content */}
           <ScrollArea className="flex-1">
-            <div className="p-6">
+            <div className="p-lg">
               {currentStep === 'upload' && renderUploadStep()}
               {currentStep === 'configure' && renderConfigureStep()}
               {currentStep === 'map' && renderMappingStep()}

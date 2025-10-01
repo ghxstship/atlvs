@@ -202,7 +202,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
     
     return (
       <button
-        className="ml-xs inline-flex items-center justify-center w-4 h-4 hover:bg-muted rounded transition-colors"
+        className="ml-xs inline-flex items-center justify-center w-icon-xs h-icon-xs hover:bg-muted rounded transition-colors"
         onClick={() => handleSort(column.key)}
       >
         {direction === 'asc' ? (
@@ -243,14 +243,14 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
             size="sm"
             onClick={() => action.onClick(record)}
             disabled={action.disabled?.(record)}
-            className="h-8 w-8 p-0"
+            className="h-icon-lg w-icon-lg p-0"
           >
             {action.icon}
           </Button>
         ))}
         {actions.length > 2 && (
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-            <MoreHorizontal className="h-4 w-4" />
+          <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+            <MoreHorizontal className="h-icon-xs w-icon-xs" />
           </Button>
         )}
       </div>
@@ -295,7 +295,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
             onClick={() => onChange(current - 1, pageSize)}
             disabled={current <= 1}
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-icon-xs w-icon-xs" />
             Previous
           </Button>
           
@@ -318,7 +318,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                   variant={current === pageNum ? 'primary' : 'ghost'}
                   size="sm"
                   onClick={() => onChange(pageNum, pageSize)}
-                  className="w-8 h-8 p-0"
+                  className="w-icon-lg h-icon-lg p-0"
                 >
                   {pageNum}
                 </Button>
@@ -333,7 +333,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
             disabled={current >= totalPages}
           >
             Next
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       </div>
@@ -356,13 +356,13 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                 placeholder="Search..."
                 value={searchValue}
                 onChange={(e: any) => handleSearch(e.target.value)}
-                leftIcon={<Search className="h-4 w-4" />}
+                leftIcon={<Search className="h-icon-xs w-icon-xs" />}
               />
             </div>
           )}
           {filterable && (
             <Button variant="outline" size="sm">
-              <Filter className="h-4 w-4" />
+              <Filter className="h-icon-xs w-icon-xs" />
               Filters
             </Button>
           )}
@@ -375,7 +375,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
           <thead className="bg-muted/50">
             <tr>
               {hasSelection && (
-                <th className="w-12 px-md py-sm text-left">
+                <th className="w-icon-2xl px-md py-sm text-left">
                   <input
                     type="checkbox"
                     checked={allSelected}
@@ -388,7 +388,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                 </th>
               )}
               {hasExpansion && (
-                <th className="w-12 px-md py-sm"></th>
+                <th className="w-icon-2xl px-md py-sm"></th>
               )}
               {columns.map((column: any) => (
                 <th
@@ -409,7 +409,7 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                 </th>
               ))}
               {actions && actions.length > 0 && (
-                <th className="w-32 px-md py-sm text-right">Actions</th>
+                <th className="w-component-xl px-md py-sm text-right">Actions</th>
               )}
             </tr>
           </thead>
@@ -419,22 +419,22 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                 <tr key={i}>
                   {hasSelection && (
                     <td className="px-md py-sm">
-                      <Skeleton className="h-4 w-4" />
+                      <Skeleton className="h-icon-xs w-icon-xs" />
                     </td>
                   )}
                   {hasExpansion && (
                     <td className="px-md py-sm">
-                      <Skeleton className="h-4 w-4" />
+                      <Skeleton className="h-icon-xs w-icon-xs" />
                     </td>
                   )}
                   {columns.map((column: any) => (
                     <td key={column.key} className="px-md py-sm">
-                      <Skeleton className="h-4 w-full" />
+                      <Skeleton className="h-icon-xs w-full" />
                     </td>
                   ))}
                   {actions && (
                     <td className="px-md py-sm">
-                      <Skeleton className="h-8 w-20" />
+                      <Skeleton className="h-icon-lg w-component-lg" />
                     </td>
                   )}
                 </tr>
@@ -488,16 +488,16 @@ export function Table<T extends Record<string, any> = Record<string, any>>({
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="h-6 w-6 p-0"
+                              className="h-icon-md w-icon-md p-0"
                               onClick={(e: any) => {
                                 e.stopPropagation();
                                 handleRowExpand(key);
                               }}
                             >
                               {isExpanded ? (
-                                <ChevronDown className="h-4 w-4" />
+                                <ChevronDown className="h-icon-xs w-icon-xs" />
                               ) : (
-                                <ChevronRight className="h-4 w-4" />
+                                <ChevronRight className="h-icon-xs w-icon-xs" />
                               )}
                             </Button>
                           )}
@@ -577,19 +577,19 @@ export const ActionTable = <T,>(props: TableProps<T> & {
     ...(onView ? [{
       key: 'view',
       label: 'View',
-      icon: <Eye className="h-4 w-4" />,
+      icon: <Eye className="h-icon-xs w-icon-xs" />,
       onClick: onView,
     }] : []),
     ...(onEdit ? [{
       key: 'edit',
       label: 'Edit',
-      icon: <Edit className="h-4 w-4" />,
+      icon: <Edit className="h-icon-xs w-icon-xs" />,
       onClick: onEdit,
     }] : []),
     ...(onDelete ? [{
       key: 'delete',
       label: 'Delete',
-      icon: <Trash2 className="h-4 w-4" />,
+      icon: <Trash2 className="h-icon-xs w-icon-xs" />,
       onClick: onDelete,
       variant: 'destructive' as const,
     }] : []),

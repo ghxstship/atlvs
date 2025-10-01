@@ -82,7 +82,7 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested approval could not be found.</p>
             </div>
           )
@@ -115,11 +115,11 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'approved':
-        return <CheckCircle className="h-5 w-5 text-green-500" />;
+        return <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />;
       case 'rejected':
-        return <XCircle className="h-5 w-5 text-red-500" />;
+        return <XCircle className="h-icon-sm w-icon-sm text-red-500" />;
       default:
-        return <Clock className="h-5 w-5 text-yellow-500" />;
+        return <Clock className="h-icon-sm w-icon-sm text-yellow-500" />;
     }
   };
 
@@ -135,19 +135,19 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Approval Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <FileText className="h-icon-sm w-icon-sm" />
                 Approval Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Status</span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   {getStatusIcon((approval as any).status)}
                   {getStatusBadge((approval as any).status)}
                 </div>
@@ -186,12 +186,12 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
           {/* Requester & Approver */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <User className="h-icon-sm w-icon-sm" />
                 Workflow Participants
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Requester</p>
                 <p className="font-medium">
@@ -220,7 +220,7 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
               <CardTitle>Associated Procurement Request</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="p-4 border rounded">
+              <div className="p-md border rounded">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <p className="font-medium">
@@ -229,7 +229,7 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
                     <p className="text-sm text-muted-foreground mt-1">
                       {(approval as any).request?.description || 'No description'}
                     </p>
-                    <div className="flex items-center gap-4 mt-2">
+                    <div className="flex items-center gap-md mt-2">
                       <span className="text-sm">Amount: {formatCurrency((approval as any).request?.total_amount || 0)}</span>
                     </div>
                   </div>
@@ -245,13 +245,13 @@ export default async function ApprovalDetailPage({ params }: ApprovalDetailPageP
                 <CardTitle>Decision & Comments</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-sm">
+                  <div className="flex items-center gap-xs">
                     {getStatusIcon((approval as any).status)}
                     <span className="font-medium capitalize">{(approval as any).status} Decision</span>
                   </div>
                   {(approval as any).comments && (
-                    <div className="p-3 bg-muted rounded">
+                    <div className="p-sm bg-muted rounded">
                       <p className="text-sm">{(approval as any).comments}</p>
                     </div>
                   )}

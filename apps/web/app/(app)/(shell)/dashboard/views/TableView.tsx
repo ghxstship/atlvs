@@ -302,26 +302,26 @@ export const TableView: React.FC<TableViewProps> = ({
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Global Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
 
           {/* Bulk Actions */}
           {bulkActions.length > 0 && selectedRows.length > 0 && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {bulkActions.map((action, index) => {
                 const Icon = action.icon;
                 return (
@@ -337,7 +337,7 @@ export const TableView: React.FC<TableViewProps> = ({
                     }}
                     disabled={action.disabled}
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -346,13 +346,13 @@ export const TableView: React.FC<TableViewProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Export */}
           {onExport && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
-                  <Download className="h-4 w-4 mr-1" />
+                  <Download className="h-icon-xs w-icon-xs mr-1" />
                   Export
                 </Button>
               </DropdownMenuTrigger>
@@ -373,7 +373,7 @@ export const TableView: React.FC<TableViewProps> = ({
           {/* Import */}
           {onImport && (
             <Button variant="outline" size="sm" onClick={onImport}>
-              <Upload className="h-4 w-4 mr-1" />
+              <Upload className="h-icon-xs w-icon-xs mr-1" />
               Import
             </Button>
           )}
@@ -382,10 +382,10 @@ export const TableView: React.FC<TableViewProps> = ({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
-                <Settings className="h-4 w-4" />
+                <Settings className="h-icon-xs w-icon-xs" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
+            <DropdownMenuContent align="end" className="w-container-xs">
               <DropdownMenuLabel>Column Visibility</DropdownMenuLabel>
               <DropdownMenuSeparator />
               {columns.map((column) => (
@@ -405,13 +405,13 @@ export const TableView: React.FC<TableViewProps> = ({
       </div>
 
       {/* Table */}
-      <div className={cn('border rounded-md', stickyHeader && 'overflow-auto max-h-96')}>
+      <div className={cn('border rounded-md', stickyHeader && 'overflow-auto max-h-container-lg')}>
         <Table className={tableClasses}>
           <TableHeader className={stickyHeader ? 'sticky top-0 bg-background' : ''}>
             <TableRow>
               {/* Selection Column */}
               {selectable && (
-                <TableHead className="w-12">
+                <TableHead className="w-icon-2xl">
                   <Checkbox
                     checked={selectAll}
                     onCheckedChange={handleSelectAll}
@@ -445,10 +445,10 @@ export const TableView: React.FC<TableViewProps> = ({
                       maxWidth: column.maxWidth
                     }}
                   >
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-xs">
                       {/* Drag Handle */}
                       {reorderable && (
-                        <GripVertical className="h-4 w-4 text-muted-foreground cursor-move" />
+                        <GripVertical className="h-icon-xs w-icon-xs text-muted-foreground cursor-move" />
                       )}
 
                       {/* Column Label */}
@@ -459,10 +459,10 @@ export const TableView: React.FC<TableViewProps> = ({
                         <Button
                           variant="ghost"
                           size="sm"
-                          className="h-6 w-6 p-0"
+                          className="h-icon-md w-icon-md p-0"
                           onClick={() => handleSort(column.id)}
                         >
-                          <SortIcon className="h-4 w-4" />
+                          <SortIcon className="h-icon-xs w-icon-xs" />
                         </Button>
                       )}
                     </div>
@@ -483,7 +483,7 @@ export const TableView: React.FC<TableViewProps> = ({
 
               {/* Actions Column */}
               {actions.length > 0 && (
-                <TableHead className="w-12">Actions</TableHead>
+                <TableHead className="w-icon-2xl">Actions</TableHead>
               )}
             </TableRow>
           </TableHeader>
@@ -493,13 +493,13 @@ export const TableView: React.FC<TableViewProps> = ({
               // Loading state
               Array.from({ length: 5 }).map((_, index) => (
                 <TableRow key={index}>
-                  {selectable && <TableCell><div className="h-4 bg-muted animate-pulse rounded" /></TableCell>}
+                  {selectable && <TableCell><div className="h-icon-xs bg-muted animate-pulse rounded" /></TableCell>}
                   {visibleColumns.map((column) => (
                     <TableCell key={column.id}>
-                      <div className="h-4 bg-muted animate-pulse rounded" />
+                      <div className="h-icon-xs bg-muted animate-pulse rounded" />
                     </TableCell>
                   ))}
-                  {actions.length > 0 && <TableCell><div className="h-4 bg-muted animate-pulse rounded" /></TableCell>}
+                  {actions.length > 0 && <TableCell><div className="h-icon-xs bg-muted animate-pulse rounded" /></TableCell>}
                 </TableRow>
               ))
             ) : sortedData.length === 0 ? (
@@ -511,7 +511,7 @@ export const TableView: React.FC<TableViewProps> = ({
                     visibleColumns.length +
                     (actions.length > 0 ? 1 : 0)
                   }
-                  className="text-center py-8 text-muted-foreground"
+                  className="text-center py-xl text-muted-foreground"
                 >
                   {emptyMessage}
                 </TableCell>
@@ -559,7 +559,7 @@ export const TableView: React.FC<TableViewProps> = ({
                         <DropdownMenu>
                           <DropdownMenuTrigger asChild>
                             <Button variant="ghost" size="sm">
-                              <MoreHorizontal className="h-4 w-4" />
+                              <MoreHorizontal className="h-icon-xs w-icon-xs" />
                             </Button>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end">
@@ -573,7 +573,7 @@ export const TableView: React.FC<TableViewProps> = ({
                                   onClick={() => action.onClick(row)}
                                   disabled={disabled}
                                 >
-                                  {Icon && <Icon className="h-4 w-4 mr-2" />}
+                                  {Icon && <Icon className="h-icon-xs w-icon-xs mr-2" />}
                                   {action.label}
                                 </DropdownMenuItem>
                               );
@@ -599,7 +599,7 @@ export const TableView: React.FC<TableViewProps> = ({
             {pagination.total} results
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"

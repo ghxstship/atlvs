@@ -65,14 +65,14 @@ export default function CatalogListView({
  {Array.from({ length: 6 }).map((_, index) => (
  <div key={index} className="p-md">
  <div className="animate-pulse flex items-center gap-md">
- <div className="h-4 w-4 bg-muted rounded"></div>
- <div className="h-4 w-4 bg-muted rounded"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded"></div>
  <div className="flex-1 space-y-sm">
- <div className="h-4 bg-muted rounded w-1/3"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/3"></div>
  <div className="h-3 bg-muted rounded w-2/3"></div>
  </div>
- <div className="h-6 bg-muted rounded-full w-16"></div>
- <div className="h-4 bg-muted rounded w-20"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg"></div>
  </div>
  </div>
  ))}
@@ -84,7 +84,7 @@ export default function CatalogListView({
  if (items.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Package2 className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Package2 className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No catalog items found</h3>
  <p className="text-muted-foreground">
  No items match your current filters. Try adjusting your search criteria.
@@ -142,14 +142,14 @@ export default function CatalogListView({
  className="p-0 h-auto"
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
 
  {/* Type icon */}
- <TypeIcon className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+ <TypeIcon className="h-icon-sm w-icon-sm text-muted-foreground flex-shrink-0" />
 
  {/* Main content */}
  <div 
@@ -201,7 +201,7 @@ export default function CatalogListView({
  onViewItem(item);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEditItem && (
@@ -213,7 +213,7 @@ export default function CatalogListView({
  onEditItem(item);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onDeleteItem && (
@@ -225,7 +225,7 @@ export default function CatalogListView({
  onDeleteItem(item);
  }}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button
@@ -236,7 +236,7 @@ export default function CatalogListView({
  // Show more options menu
  }}
  >
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

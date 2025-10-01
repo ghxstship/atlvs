@@ -100,13 +100,13 @@ export default function ProgrammingOverviewDashboardView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {Array.from({ length: 6 }).map((_, i) => (
- <Card key={i} className="p-6">
- <Skeleton className="h-4 w-24 mb-2" />
- <Skeleton className="h-8 w-16 mb-2" />
- <Skeleton className="h-3 w-12" />
+ <Card key={i} className="p-lg">
+ <Skeleton className="h-icon-xs w-component-lg mb-2" />
+ <Skeleton className="h-icon-lg w-component-md mb-2" />
+ <Skeleton className="h-3 w-icon-2xl" />
  </Card>
  ))}
  </div>
@@ -115,13 +115,13 @@ export default function ProgrammingOverviewDashboardView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Stats Grid */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {statsCards.map((stat, index) => {
  const Icon = stat.icon;
  return (
- <Card key={index} className="p-6">
+ <Card key={index} className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm font-medium text-muted-foreground">
@@ -141,8 +141,8 @@ export default function ProgrammingOverviewDashboardView({
  </span>
  </div>
  </div>
- <div className={`p-3 rounded-lg ${stat.bgColor}`}>
- <Icon className={`h-6 w-6 ${stat.color}`} />
+ <div className={`p-sm rounded-lg ${stat.bgColor}`}>
+ <Icon className={`h-icon-md w-icon-md ${stat.color}`} />
  </div>
  </div>
  </Card>
@@ -151,25 +151,25 @@ export default function ProgrammingOverviewDashboardView({
  </div>
 
  {/* Quick Actions */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-lg font-semibold">Quick Actions</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {quickActions.map((action) => {
  const IconComponent = iconMap[action.icon as keyof typeof iconMap] || Calendar;
  return (
  <Link key={action.id} href={action.href as any as any}>
- <Card className={`p-4 cursor-pointer transition-colors ${action.color}`}>
- <div className="flex items-start gap-3">
- <IconComponent className="h-5 w-5 mt-0.5 text-current" />
+ <Card className={`p-md cursor-pointer transition-colors ${action.color}`}>
+ <div className="flex items-start gap-sm">
+ <IconComponent className="h-icon-sm w-icon-sm mt-0.5 text-current" />
  <div className="flex-1">
  <h4 className="font-medium text-sm">{action.title}</h4>
  <p className="text-xs text-muted-foreground mt-1">
  {action.description}
  </p>
  </div>
- <ArrowRight className="h-4 w-4 text-muted-foreground" />
+ <ArrowRight className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  </Card>
  </Link>
@@ -179,21 +179,21 @@ export default function ProgrammingOverviewDashboardView({
  </Card>
 
  {/* Recent Activity & Upcoming Events */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Recent Activity */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
- <h3 className="text-lg font-semibold flex items-center gap-2">
- <Activity className="h-5 w-5" />
+ <h3 className="text-lg font-semibold flex items-center gap-xs">
+ <Activity className="h-icon-sm w-icon-sm" />
  Recent Activity
  </h3>
  <Button variant="ghost" size="sm">
  View All
  </Button>
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {data.recentActivity.slice(0, 5).map((activity) => (
- <div key={activity.id} className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+ <div key={activity.id} className="flex items-start gap-sm p-sm rounded-lg bg-muted/50">
  <div className="w-2 h-2 rounded-full bg-primary mt-2" />
  <div className="flex-1 min-w-0">
  <p className="text-sm font-medium truncate">{activity.title}</p>
@@ -213,19 +213,19 @@ export default function ProgrammingOverviewDashboardView({
  </Card>
 
  {/* Upcoming Events */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
- <h3 className="text-lg font-semibold flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <h3 className="text-lg font-semibold flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Upcoming Events
  </h3>
  <Button variant="ghost" size="sm">
  View All
  </Button>
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {data.upcomingEvents.slice(0, 5).map((event) => (
- <div key={event.id} className="flex items-start gap-3 p-3 rounded-lg bg-muted/50">
+ <div key={event.id} className="flex items-start gap-sm p-sm rounded-lg bg-muted/50">
  <div className="w-2 h-2 rounded-full bg-blue-500 mt-2" />
  <div className="flex-1 min-w-0">
  <p className="text-sm font-medium truncate">{event.title}</p>
@@ -246,16 +246,16 @@ export default function ProgrammingOverviewDashboardView({
  </div>
 
  {/* Module Metrics */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
- <h3 className="text-lg font-semibold flex items-center gap-2">
- <BarChart3 className="h-5 w-5" />
+ <h3 className="text-lg font-semibold flex items-center gap-xs">
+ <BarChart3 className="h-icon-sm w-icon-sm" />
  Module Performance
  </h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-md">
  {Object.entries(data.moduleMetrics).map(([module, metrics]) => (
- <div key={module} className="text-center p-4 rounded-lg bg-muted/50">
+ <div key={module} className="text-center p-md rounded-lg bg-muted/50">
  <h4 className="font-medium text-sm capitalize mb-2">{module}</h4>
  <p className="text-2xl font-bold">{metrics.total}</p>
  <p className="text-xs text-muted-foreground">

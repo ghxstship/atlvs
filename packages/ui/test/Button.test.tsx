@@ -66,7 +66,7 @@ describe('Button Component', () => {
     it('uses default size when none specified', () => {
       render(<Button>Button</Button>);
       const button = screen.getByRole('button');
-      expect(button).toHaveClass('h-10', 'px-md', 'py-sm'); // Default size classes
+      expect(button).toHaveClass('h-icon-xl', 'px-md', 'py-sm'); // Default size classes
     });
   });
 
@@ -191,15 +191,15 @@ describe('Button Component', () => {
     });
 
     it('returns correct class names for sizes', () => {
-      expect(buttonVariants({ size: 'sm' })).toContain('h-8', 'px-sm');
-      expect(buttonVariants({ size: 'lg' })).toContain('h-12', 'px-lg');
-      expect(buttonVariants({ size: 'icon' })).toContain('h-10', 'w-10');
+      expect(buttonVariants({ size: 'sm' })).toContain('h-icon-lg', 'px-sm');
+      expect(buttonVariants({ size: 'lg' })).toContain('h-icon-2xl', 'px-lg');
+      expect(buttonVariants({ size: 'icon' })).toContain('h-icon-xl', 'w-icon-xl');
     });
 
     it('combines variant and size classes correctly', () => {
       const classes = buttonVariants({ variant: 'primary', size: 'lg' });
       expect(classes).toContain('bg-foreground'); // variant class
-      expect(classes).toContain('h-12'); // size class
+      expect(classes).toContain('h-icon-2xl'); // size class
     });
   });
 });
@@ -271,7 +271,7 @@ describe('IconButton Component', () => {
     const button = screen.getByRole('button');
     const icon = screen.getByTestId('mock-icon');
     expect(icon).toBeInTheDocument();
-    expect(button).toHaveClass('h-8', 'w-8'); // icon-sm size
+    expect(button).toHaveClass('h-icon-lg', 'w-icon-lg'); // icon-sm size
   });
 
   it('forwards other props correctly', () => {
@@ -294,6 +294,6 @@ describe('IconButton Component', () => {
     render(<IconButton icon={<MockIcon />} size="lg" leftIcon={<MockIcon />} />);
     const button = screen.getByRole('button');
     // Should use icon-sm size regardless of size prop
-    expect(button).toHaveClass('h-8', 'w-8');
+    expect(button).toHaveClass('h-icon-lg', 'w-icon-lg');
   });
 });

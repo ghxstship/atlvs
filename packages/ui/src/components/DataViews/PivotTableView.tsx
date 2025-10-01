@@ -237,11 +237,11 @@ export function PivotTableView({
                 filters: {}
               })}
             >
-              <RotateCcw className="h-4 w-4" />
+              <RotateCcw className="h-icon-xs w-icon-xs" />
               Reset
             </Button>
             <Button variant="ghost" >
-              <Download className="h-4 w-4" />
+              <Download className="h-icon-xs w-icon-xs" />
               Export
             </Button>
           </div>
@@ -398,7 +398,7 @@ export function PivotTableView({
               
               {/* Column headers */}
               {pivotData.columnHeaders.map((columnPath, index) => (
-                <th key={columnPath.join('|')} className="px-md py-xsxs text-center text-xs font-medium text-muted-foreground uppercase tracking-wider border-b border-border min-w-[100px]">
+                <th key={columnPath.join('|')} className="px-md py-xsxs text-center text-xs font-medium text-muted-foreground uppercase tracking-wider border-b border-border min-w-component-lg">
                   <div className="space-x-xs">
                     {columnPath.map((value, pathIndex) => (
                       <div key={pathIndex} className="text-xs">
@@ -521,7 +521,7 @@ export function PivotTableView({
       {/* Empty State */}
       {pivotData.rowHeaders.length === 0 && (
         <div className="text-center py-2xl text-muted-foreground">
-          <Settings className="h-12 w-12 mx-auto mb-md opacity-50" />
+          <Settings className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
           <h3 className="text-lg font-medium mb-sm">Configure Your Pivot Table</h3>
           <p className="text-sm">
             Add row fields, column fields, and value fields to create your pivot table analysis.

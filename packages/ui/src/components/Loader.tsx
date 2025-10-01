@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { cn } from '../system';
+import { cn } from '../lib/utils';
 
 export interface LoaderProps {
   variant?: 'spinner' | 'dots' | 'pulse' | 'bars' | 'ring' | 'skeleton';
@@ -15,10 +15,10 @@ export interface LoaderProps {
 const loaderVariants = {
   size: {
     xs: 'w-3 h-3',
-    sm: 'w-4 h-4',
-    md: 'w-6 h-6',
-    lg: 'w-8 h-8',
-    xl: 'w-12 h-12',
+    sm: 'w-icon-xs h-icon-xs',
+    md: 'w-icon-md h-icon-md',
+    lg: 'w-icon-lg h-icon-lg',
+    xl: 'w-icon-2xl h-icon-2xl',
   },
   color: {
     primary: 'text-accent border-primary',
@@ -42,7 +42,7 @@ const SpinnerLoader = ({ size, color, className }: { size: string; color: string
 );
 
 const DotsLoader = ({ size, color, className }: { size: string; color: string; className?: string }) => {
-  const dotSize = size.includes('w-3') ? 'w-1 h-1' : size.includes('w-4') ? 'w-1.5 h-1.5' : 'w-2 h-2';
+  const dotSize = size.includes('w-3') ? 'w-1 h-1' : size.includes('w-icon-xs') ? 'w-1.5 h-1.5' : 'w-2 h-2';
   
   return (
     <div className={cn('flex space-x-xs', className)}>
@@ -78,8 +78,8 @@ const PulseLoader = ({ size, color, className }: { size: string; color: string; 
 );
 
 const BarsLoader = ({ size, color, className }: { size: string; color: string; className?: string }) => {
-  const barWidth = size.includes('w-3') ? 'w-0.5' : size.includes('w-4') ? 'w-1' : 'w-1.5';
-  const barHeight = size.includes('h-3') ? 'h-3' : size.includes('h-4') ? 'h-4' : 'h-6';
+  const barWidth = size.includes('w-3') ? 'w-0.5' : size.includes('w-icon-xs') ? 'w-1' : 'w-1.5';
+  const barHeight = size.includes('h-3') ? 'h-3' : size.includes('h-icon-xs') ? 'h-icon-xs' : 'h-icon-md';
   
   return (
     <div className={cn('flex items-end space-x-xs', className)}>

@@ -326,7 +326,7 @@ export function ContractsClient({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-xs">
  <CardTitle className="text-body-sm font-medium">Total Contracts</CardTitle>
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-display-xs font-bold">{stats.total}</div>
@@ -354,7 +354,7 @@ export function ContractsClient({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-xs">
  <CardTitle className="text-body-sm font-medium">Expiring Soon</CardTitle>
- <AlertTriangle className="h-4 w-4 text-warning" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-warning" />
  </CardHeader>
  <CardContent>
  <div className="text-display-xs font-bold text-warning">
@@ -369,7 +369,7 @@ export function ContractsClient({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-xs">
  <CardTitle className="text-body-sm font-medium">Pending Actions</CardTitle>
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-display-xs font-bold">
@@ -423,7 +423,7 @@ export function ContractsClient({
  size="sm"
  onClick={() => setCreateDrawerOpen(true)}
  >
- <Plus className="h-4 w-4 mr-xs" />
+ <Plus className="h-icon-xs w-icon-xs mr-xs" />
  Create Contract
  </Button>
  </div>

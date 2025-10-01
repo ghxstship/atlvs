@@ -27,13 +27,13 @@ export default function EnhancedChartWidget({
  <Card className="p-lg">
  <div className="space-y-md">
  <div className="flex items-center justify-between">
- <div className="h-6 bg-muted rounded w-1/3 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded w-1/3 animate-pulse"></div>
  <div className="flex space-x-sm">
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
  </div>
  </div>
- <div className="h-64 bg-muted rounded animate-pulse"></div>
+ <div className="h-container-sm bg-muted rounded animate-pulse"></div>
  </div>
  </Card>
  );
@@ -45,9 +45,9 @@ export default function EnhancedChartWidget({
  const renderChart = () => {
  if (!chartData.length) {
  return (
- <div className="flex items-center justify-center h-64 text-muted-foreground">
+ <div className="flex items-center justify-center h-container-sm text-muted-foreground">
  <div className="text-center space-y-sm">
- <BarChart3 className="w-12 h-12 mx-auto opacity-50" />
+ <BarChart3 className="w-icon-2xl h-icon-2xl mx-auto opacity-50" />
  <p>No data available</p>
  </div>
  </div>
@@ -60,14 +60,14 @@ export default function EnhancedChartWidget({
  case 'bar':
  case 'column':
  return (
- <div className="h-64 flex items-end justify-around space-x-2 p-4">
+ <div className="h-container-sm flex items-end justify-around space-x-xs p-md">
  {chartData.slice(0, 10).map((item: unknown, index: number) => {
  const height = maxValue > 0 ? (item.value / maxValue) * 200 : 0;
  return (
- <div key={index} className="flex flex-col items-center space-y-2">
+ <div key={index} className="flex flex-col items-center space-y-xs">
  <div className="text-xs text-muted-foreground">{item.value}</div>
  <div
- className="w-8 rounded-t transition-all duration-300"
+ className="w-icon-lg rounded-t transition-all duration-300"
  style={{
  height: `${height}px`,
  backgroundColor: COLORS[index % COLORS.length],
@@ -85,9 +85,9 @@ export default function EnhancedChartWidget({
 
  case 'line':
  return (
- <div className="h-64 flex items-center justify-center">
+ <div className="h-container-sm flex items-center justify-center">
  <div className="text-center space-y-sm">
- <LineChart className="w-12 h-12 mx-auto text-blue-500" />
+ <LineChart className="w-icon-2xl h-icon-2xl mx-auto text-blue-500" />
  <p className="text-sm text-muted-foreground">Line Chart</p>
  <p className="text-xs text-muted-foreground">{chartData.length} data points</p>
  </div>
@@ -97,16 +97,16 @@ export default function EnhancedChartWidget({
  case 'pie':
  case 'donut':
  return (
- <div className="h-64 flex items-center justify-center">
+ <div className="h-container-sm flex items-center justify-center">
  <div className="text-center space-y-sm">
- <PieChart className="w-12 h-12 mx-auto text-purple-500" />
+ <PieChart className="w-icon-2xl h-icon-2xl mx-auto text-purple-500" />
  <p className="text-sm text-muted-foreground">
  {chartType === 'donut' ? 'Donut' : 'Pie'} Chart
  </p>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {chartData.slice(0, 5).map((item: unknown, index: number) => (
  <div key={index} className="flex items-center justify-between text-xs">
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <div
  className="w-3 h-3 rounded"
  style={{ backgroundColor: COLORS[index % COLORS.length] }}
@@ -123,9 +123,9 @@ export default function EnhancedChartWidget({
 
  default:
  return (
- <div className="flex items-center justify-center h-64 text-muted-foreground">
+ <div className="flex items-center justify-center h-container-sm text-muted-foreground">
  <div className="text-center space-y-sm">
- <BarChart3 className="w-12 h-12 mx-auto opacity-50" />
+ <BarChart3 className="w-icon-2xl h-icon-2xl mx-auto opacity-50" />
  <p>Chart type: {chartType}</p>
  <p className="text-xs">{chartData.length} data points</p>
  </div>
@@ -138,12 +138,12 @@ export default function EnhancedChartWidget({
  switch (chartType) {
  case 'line':
  case 'area':
- return <LineChart className="w-4 h-4" />;
+ return <LineChart className="w-icon-xs h-icon-xs" />;
  case 'pie':
  case 'donut':
- return <PieChart className="w-4 h-4" />;
+ return <PieChart className="w-icon-xs h-icon-xs" />;
  default:
- return <BarChart3 className="w-4 h-4" />;
+ return <BarChart3 className="w-icon-xs h-icon-xs" />;
  }
  };
 
@@ -169,7 +169,7 @@ export default function EnhancedChartWidget({
  onClick={onExport}
  className="p-xs"
  >
- <Download className="w-4 h-4" />
+ <Download className="w-icon-xs h-icon-xs" />
  </Button>
  )}
  {onExpand && (
@@ -179,7 +179,7 @@ export default function EnhancedChartWidget({
  onClick={onExpand}
  className="p-xs"
  >
- <Maximize2 className="w-4 h-4" />
+ <Maximize2 className="w-icon-xs h-icon-xs" />
  </Button>
  )}
  </div>

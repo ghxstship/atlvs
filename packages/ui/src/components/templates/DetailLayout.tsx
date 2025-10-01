@@ -40,7 +40,7 @@ export const DetailLayout: React.FC<DetailLayoutProps> = ({
           {children}
         </main>
         {sidebar && (
-          <aside className="w-80 border-l border-border bg-background p-md overflow-auto">
+          <aside className="w-container-md border-l border-border bg-background p-md overflow-auto">
             {sidebar}
           </aside>
         )}

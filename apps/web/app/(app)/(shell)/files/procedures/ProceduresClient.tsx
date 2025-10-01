@@ -121,14 +121,14 @@ export default function ProceduresClient() {
  <p className="color-muted">Manage organizational procedures, workflows, and checklists</p>
  </div>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Create Procedure
  </Button>
  </div>
 
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-sm top-1/2 transform -translate-y-1/2 w-4 h-4 color-muted" />
+ <Search className="absolute left-sm top-xs/2 transform -translate-y-1/2 w-icon-xs h-icon-xs color-muted" />
  <input
  type="text"
  placeholder="Search procedures..."
@@ -142,7 +142,7 @@ export default function ProceduresClient() {
  <div className="grid grid-cols-1 md:grid-cols-5 gap-md">
  <Card>
  <div className="flex items-center gap-sm">
- <FileText className="w-5 h-5 color-accent" />
+ <FileText className="w-icon-sm h-icon-sm color-accent" />
  <div>
  <div className="text-heading-3">{stats.total}</div>
  <div className="text-body-sm color-muted">Total Procedures</div>
@@ -151,7 +151,7 @@ export default function ProceduresClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <CheckSquare className="w-5 h-5 color-success" />
+ <CheckSquare className="w-icon-sm h-icon-sm color-success" />
  <div>
  <div className="text-heading-3 color-success">{stats.published}</div>
  <div className="text-body-sm color-muted">Published</div>
@@ -160,7 +160,7 @@ export default function ProceduresClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Clock className="w-5 h-5 color-warning" />
+ <Clock className="w-icon-sm h-icon-sm color-warning" />
  <div>
  <div className="text-heading-3 color-warning">{stats.draft}</div>
  <div className="text-body-sm color-muted">Draft</div>
@@ -169,7 +169,7 @@ export default function ProceduresClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Eye className="w-5 h-5 color-secondary" />
+ <Eye className="w-icon-sm h-icon-sm color-secondary" />
  <div>
  <div className="text-heading-3 color-secondary">{stats.totalViews}</div>
  <div className="text-body-sm color-muted">Total Views</div>
@@ -178,7 +178,7 @@ export default function ProceduresClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Play className="w-5 h-5 color-primary" />
+ <Play className="w-icon-sm h-icon-sm color-primary" />
  <div>
  <div className="text-heading-3 color-primary">{stats.totalUsage}</div>
  <div className="text-body-sm color-muted">Executions</div>
@@ -190,7 +190,7 @@ export default function ProceduresClient() {
  {/* Procedures List */}
  {loading && (
  <div className="text-center py-xl">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
  <p className="color-muted">Loading procedures...</p>
  </div>
  )}
@@ -198,7 +198,7 @@ export default function ProceduresClient() {
  {error && (
  <Card>
  <div className="text-center py-xl">
- <FileText className="w-12 h-12 color-destructive mx-auto mb-md" />
+ <FileText className="w-icon-2xl h-icon-2xl color-destructive mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">Error loading procedures</h3>
  <p className="color-muted mb-md">{error}</p>
  <Button onClick={fetchProcedures}>
@@ -211,7 +211,7 @@ export default function ProceduresClient() {
  {!loading && !error && procedures.length === 0 && (
  <Card>
  <div className="text-center py-xl">
- <FileText className="w-12 h-12 color-muted mx-auto mb-md" />
+ <FileText className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">No procedures found</h3>
  <p className="color-muted mb-md">
  {searchQuery 
@@ -219,7 +219,7 @@ export default function ProceduresClient() {
  : 'Start building your procedure library with SOPs, workflows, and checklists.'}
  </p>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Create First Procedure
  </Button>
  </div>
@@ -239,7 +239,7 @@ export default function ProceduresClient() {
  >
  <div className="flex items-start gap-md">
  <div className="p-sm bg-secondary/50 rounded">
- <IconComponent className="w-5 h-5 color-accent" />
+ <IconComponent className="w-icon-sm h-icon-sm color-accent" />
  </div>
  
  <div className="flex-1 min-w-0">
@@ -249,7 +249,7 @@ export default function ProceduresClient() {
  </div>
  
  {procedure.description && (
- <p className="text-body-sm color-muted mb-sm line-clamp-2">{procedure.description}</p>
+ <p className="text-body-sm color-muted mb-sm line-clamp-xs">{procedure.description}</p>
  )}
  
  <div className="flex items-center gap-md mb-sm">

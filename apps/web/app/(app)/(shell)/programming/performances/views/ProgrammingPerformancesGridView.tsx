@@ -83,12 +83,12 @@ export default function ProgrammingPerformancesGridView({
  {Array.from({ length: 8 }).map((_, i) => (
  <Card key={i} className="p-md">
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded mb-2"></div>
+ <div className="h-icon-xs bg-muted rounded mb-2"></div>
  <div className="h-3 bg-muted rounded mb-1"></div>
  <div className="h-3 bg-muted rounded mb-4"></div>
- <div className="flex gap-2">
- <div className="h-6 bg-muted rounded flex-1"></div>
- <div className="h-6 bg-muted rounded flex-1"></div>
+ <div className="flex gap-xs">
+ <div className="h-icon-md bg-muted rounded flex-1"></div>
+ <div className="h-icon-md bg-muted rounded flex-1"></div>
  </div>
  </div>
  </Card>
@@ -100,8 +100,8 @@ export default function ProgrammingPerformancesGridView({
  if (performances.length === 0) {
  return (
  <Card className="p-lg">
- <div className="text-center py-12">
- <Music className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Music className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">No performances found</h3>
  <p className="text-muted-foreground">Create your first performance to get started</p>
  </div>
@@ -156,13 +156,13 @@ export default function ProgrammingPerformancesGridView({
  </div>
  <h3 className="font-medium text-sm truncate">{performance.name}</h3>
  {performance.description && (
- <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
+ <p className="text-xs text-muted-foreground line-clamp-xs mt-1">
  {performance.description}
  </p>
  )}
  </div>
 
- <div className="flex items-center gap-1 ml-sm">
+ <div className="flex items-center gap-xs ml-sm">
  <Button
  variant="ghost"
  size="sm"
@@ -201,7 +201,7 @@ export default function ProgrammingPerformancesGridView({
  {/* Event & Date */}
  {performance.event && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground mb-1">
  <Calendar className="h-3 w-3" />
  <span className="truncate">{performance.event.title}</span>
  </div>
@@ -215,7 +215,7 @@ export default function ProgrammingPerformancesGridView({
  <div className="grid grid-cols-2 gap-sm mb-sm text-xs">
  <div>
  <div className="text-muted-foreground">Start Time</div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {formatTime(performance.starts_at)}
  </div>
@@ -229,12 +229,12 @@ export default function ProgrammingPerformancesGridView({
  {/* Venue */}
  {performance.venue && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <MapPin className="h-3 w-3 text-muted-foreground" />
  <span className="truncate">{performance.venue}</span>
  </div>
  {performance.venue_capacity && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Users className="h-3 w-3" />
  Capacity: {performance.venue_capacity.toLocaleString()}
  </div>
@@ -245,7 +245,7 @@ export default function ProgrammingPerformancesGridView({
  {/* Ticket Info */}
  {ticketPrice && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Ticket className="h-3 w-3 text-muted-foreground" />
  <span className="font-medium">
  {performance.ticket_info.price_min && performance.ticket_info.price_max ? (
@@ -268,7 +268,7 @@ export default function ProgrammingPerformancesGridView({
  {/* Audience Info */}
  {performance.audience_info.expected_attendance && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Users className="h-3 w-3 text-muted-foreground" />
  <span>Expected: {performance.audience_info.expected_attendance.toLocaleString()}</span>
  </div>
@@ -284,14 +284,14 @@ export default function ProgrammingPerformancesGridView({
  {performance.technical_requirements.equipment_needed?.length > 0 && (
  <div className="mb-sm">
  <div className="text-xs text-muted-foreground mb-1">Equipment</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.technical_requirements.equipment_needed.slice(0, 2).map((item, index) => (
- <Badge key={index} variant="outline" className="text-[10px] px-1 py-0">
+ <Badge key={index} variant="outline" className="text-small px-xs py-0">
  {item}
  </Badge>
  ))}
  {performance.technical_requirements.equipment_needed.length > 2 && (
- <Badge variant="outline" className="text-[10px] px-1 py-0">
+ <Badge variant="outline" className="text-small px-xs py-0">
  +{performance.technical_requirements.equipment_needed.length - 2}
  </Badge>
  )}
@@ -310,14 +310,14 @@ export default function ProgrammingPerformancesGridView({
  {/* Tags */}
  {performance.tags.length > 0 && (
  <div className="mb-sm">
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.tags.slice(0, 3).map((tag) => (
- <Badge key={tag} variant="secondary" className="text-[10px] px-1 py-0">
+ <Badge key={tag} variant="secondary" className="text-small px-xs py-0">
  {tag}
  </Badge>
  ))}
  {performance.tags.length > 3 && (
- <Badge variant="secondary" className="text-[10px] px-1 py-0">
+ <Badge variant="secondary" className="text-small px-xs py-0">
  +{performance.tags.length - 3}
  </Badge>
  )}

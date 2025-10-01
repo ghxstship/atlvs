@@ -306,7 +306,7 @@ export default function ProgrammingWorkshopsClient({
  };
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -316,17 +316,17 @@ export default function ProgrammingWorkshopsClient({
  </p>
  </div>
  <Button onClick={handleCreateWorkshop}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Workshop
  </Button>
  </div>
 
  {/* Filters and Search */}
- <Card className="p-4">
- <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
- <div className="flex flex-1 items-center gap-4">
+ <Card className="p-md">
+ <div className="flex flex-col gap-md md:flex-row md:items-center md:justify-between">
+ <div className="flex flex-1 items-center gap-md">
  <div className="relative flex-1 max-w-sm">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  placeholder="Search workshops..."
  value={searchQuery}
@@ -423,7 +423,7 @@ export default function ProgrammingWorkshopsClient({
  setFilters((prev: unknown) => ({ ...prev, project_id: value || undefined }))
  }
  >
- <SelectTrigger className="w-48">
+ <SelectTrigger className="w-container-xs">
  <SelectValue placeholder="All Projects" />
  </SelectTrigger>
  <SelectContent>
@@ -437,14 +437,14 @@ export default function ProgrammingWorkshopsClient({
  </Select>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm" onClick={handleExport}>
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
 
  {/* View Switcher */}
- <div className="flex items-center rounded-lg border p-1">
+ <div className="flex items-center rounded-lg border p-xs">
  {(['list', 'grid', 'timeline', 'analytics'] as ViewType[]).map((view) => {
  const Icon = viewIcons[view];
  return (
@@ -453,9 +453,9 @@ export default function ProgrammingWorkshopsClient({
  variant={currentView === view ? 'default' : 'ghost'}
  size="sm"
  onClick={() => setCurrentView(view)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  </Button>
  );
  })}
@@ -465,11 +465,11 @@ export default function ProgrammingWorkshopsClient({
 
  {/* Bulk Actions */}
  {selectedWorkshops.length > 0 && (
- <div className="mt-4 flex items-center gap-2 rounded-lg border bg-muted/50 p-3">
+ <div className="mt-4 flex items-center gap-xs rounded-lg border bg-muted/50 p-sm">
  <span className="text-sm text-muted-foreground">
  {selectedWorkshops.length} workshop(s) selected
  </span>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button
  size="sm"
  variant="outline"
@@ -497,7 +497,7 @@ export default function ProgrammingWorkshopsClient({
  </Card>
 
  {/* Content */}
- <div className="min-h-[400px]">
+ <div className="min-h-content-lg">
  {currentView === 'list' && (
  <ProgrammingWorkshopsListView
  workshops={filteredAndSortedWorkshops}

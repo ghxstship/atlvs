@@ -118,9 +118,9 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
         className="flex items-center gap-sm"
       >
         {isSubmitting ? (
-          <div className="h-4 w-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+          <div className="h-icon-xs w-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin" />
         ) : (
-          <Save className="h-4 w-4" />
+          <Save className="h-icon-xs w-icon-xs" />
         )}
         {isSubmitting ? 'Creating...' : 'Create Product'}
       </Button>
@@ -133,7 +133,7 @@ export default function CreateProductClient({ orgId, onProductCreated }: CreateP
         className="flex items-center gap-sm"
         onClick={() => setOpen(true)}
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Product
       </Button>
       

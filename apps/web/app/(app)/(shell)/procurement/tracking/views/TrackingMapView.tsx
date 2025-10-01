@@ -144,9 +144,9 @@ export default function TrackingMapView({
 
  if (loading) {
  return (
- <div className="h-96 bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
+ <div className="h-container-lg bg-gray-100 animate-pulse rounded-lg flex items-center justify-center">
  <div className="text-center">
- <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+ <MapPin className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
  <p className="text-gray-500">Loading map...</p>
  </div>
  </div>
@@ -154,10 +154,10 @@ export default function TrackingMapView({
  }
 
  return (
- <div className={`space-y-4 ${mapExpanded ? 'fixed inset-0 z-50 bg-white p-4' : ''}`}>
+ <div className={`space-y-md ${mapExpanded ? 'fixed inset-0 z-50 bg-white p-md' : ''}`}>
  {/* Controls */}
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
  onCheckedChange={handleSelectAll}
@@ -168,23 +168,23 @@ export default function TrackingMapView({
  </span>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => setShowFilters(!showFilters)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Filter className="h-4 w-4" />
+ <Filter className="h-icon-xs w-icon-xs" />
  Filters
  </Button>
  <Button
  variant="outline"
  size="sm"
  onClick={() => setMapExpanded(!mapExpanded)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- {mapExpanded ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+ {mapExpanded ? <Minimize2 className="h-icon-xs w-icon-xs" /> : <Maximize2 className="h-icon-xs w-icon-xs" />}
  {mapExpanded ? 'Exit Fullscreen' : 'Fullscreen'}
  </Button>
  </div>
@@ -192,13 +192,13 @@ export default function TrackingMapView({
 
  {/* Filters */}
  {showFilters && (
- <Card className="p-4">
- <div className="flex items-center gap-4">
+ <Card className="p-md">
+ <div className="flex items-center gap-md">
  <label className="text-sm font-medium">Status:</label>
  <select
  value={statusFilter}
  onChange={(e) => setStatusFilter(e.target.value)}
- className="px-3 py-1 border rounded-md text-sm"
+ className="px-sm py-xs border rounded-md text-sm"
  >
  <option value="all">All Statuses</option>
  <option value="ordered">Ordered</option>
@@ -212,9 +212,9 @@ export default function TrackingMapView({
  </Card>
  )}
 
- <div className="flex gap-4 h-full">
+ <div className="flex gap-md h-full">
  {/* Map Container */}
- <div className={`relative bg-gray-100 rounded-lg overflow-hidden ${mapExpanded ? 'flex-1' : 'flex-1 h-96'}`}>
+ <div className={`relative bg-gray-100 rounded-lg overflow-hidden ${mapExpanded ? 'flex-1' : 'flex-1 h-container-lg'}`}>
  {/* Mock Map Interface */}
  <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-green-50">
  {/* Map Grid */}
@@ -238,7 +238,7 @@ export default function TrackingMapView({
  onClick={() => setSelectedMarker(marker)}
  >
  <div
- className="w-6 h-6 rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold"
+ className="w-icon-md h-icon-md rounded-full border-2 border-white shadow-lg flex items-center justify-center text-white text-xs font-bold"
  style={{ backgroundColor: getMarkerColor(marker) }}
  >
  {marker.type === 'origin' ? 'O' : marker.type === 'destination' ? 'D' : 'C'}
@@ -277,32 +277,32 @@ export default function TrackingMapView({
  })}
 
  {/* Map Controls */}
- <div className="absolute top-4 right-4 flex flex-col gap-2">
- <Button variant="outline" size="sm" className="w-10 h-10 p-0">
+ <div className="absolute top-md right-4 flex flex-col gap-xs">
+ <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
  +
  </Button>
- <Button variant="outline" size="sm" className="w-10 h-10 p-0">
+ <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
  −
  </Button>
- <Button variant="outline" size="sm" className="w-10 h-10 p-0">
- <Navigation className="h-4 w-4" />
+ <Button variant="outline" size="sm" className="w-icon-xl h-icon-xl p-0">
+ <Navigation className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Legend */}
- <div className="absolute bottom-4 left-4 bg-white p-3 rounded-lg shadow-lg">
+ <div className="absolute bottom-4 left-4 bg-white p-sm rounded-lg shadow-lg">
  <h4 className="font-medium text-sm mb-2">Legend</h4>
- <div className="space-y-1 text-xs">
- <div className="flex items-center gap-2">
- <div className="w-4 h-4 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">O</div>
+ <div className="space-y-xs text-xs">
+ <div className="flex items-center gap-xs">
+ <div className="w-icon-xs h-icon-xs rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">O</div>
  <span>Origin</span>
  </div>
- <div className="flex items-center gap-2">
- <div className="w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">D</div>
+ <div className="flex items-center gap-xs">
+ <div className="w-icon-xs h-icon-xs rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">D</div>
  <span>Destination</span>
  </div>
- <div className="flex items-center gap-2">
- <div className="border-t-2 border-dashed border-gray-400 w-4"></div>
+ <div className="flex items-center gap-xs">
+ <div className="border-t-2 border-dashed border-gray-400 w-icon-xs"></div>
  <span>Route</span>
  </div>
  </div>
@@ -311,7 +311,7 @@ export default function TrackingMapView({
 
  {/* Selected Marker Popup */}
  {selectedMarker && (
- <div className="absolute top-4 left-4 bg-white p-4 rounded-lg shadow-lg max-w-sm">
+ <div className="absolute top-md left-4 bg-white p-md rounded-lg shadow-lg max-w-sm">
  <div className="flex items-start justify-between mb-3">
  <div>
  <h3 className="font-medium">{selectedMarker.title}</h3>
@@ -321,14 +321,14 @@ export default function TrackingMapView({
  variant="ghost"
  size="sm"
  onClick={() => setSelectedMarker(null)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  ×
  </Button>
  </div>
 
- <div className="space-y-2">
- <div className="flex items-center gap-2">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <Badge variant={getStatusColor(selectedMarker.item.status)}>
  {selectedMarker.item.status.replace('_', ' ').toUpperCase()}
  </Badge>
@@ -337,7 +337,7 @@ export default function TrackingMapView({
  </Badge>
  </div>
 
- <div className="text-sm space-y-1">
+ <div className="text-sm space-y-xs">
  <p><strong>Carrier:</strong> {selectedMarker.item.carrier}</p>
  <p><strong>Tracking:</strong> <code className="text-xs">{selectedMarker.item.tracking_number}</code></p>
  <p><strong>Value:</strong> {formatCurrency(selectedMarker.item.total_value)}</p>
@@ -346,13 +346,13 @@ export default function TrackingMapView({
  )}
  </div>
 
- <div className="flex gap-2 pt-2">
+ <div className="flex gap-xs pt-2">
  {onViewItem && (
  <Button
  variant="outline"
  size="sm"
  onClick={() => onViewItem(selectedMarker.item)}
- className="flex items-center gap-1"
+ className="flex items-center gap-xs"
  >
  <Eye className="h-3 w-3" />
  View
@@ -363,7 +363,7 @@ export default function TrackingMapView({
  variant="outline"
  size="sm"
  onClick={() => onEditItem(selectedMarker.item)}
- className="flex items-center gap-1"
+ className="flex items-center gap-xs"
  >
  <Edit className="h-3 w-3" />
  Edit
@@ -377,18 +377,18 @@ export default function TrackingMapView({
 
  {/* Sidebar - Item List */}
  {!mapExpanded && (
- <div className="w-80 space-y-4">
+ <div className="w-container-md space-y-md">
  <h3 className="font-medium">Tracking Items</h3>
- <div className="space-y-2 max-h-96 overflow-y-auto">
+ <div className="space-y-xs max-h-container-lg overflow-y-auto">
  {items.map((item) => (
  <Card
  key={item.id}
- className={`p-3 cursor-pointer hover:shadow-md transition-shadow ${
+ className={`p-sm cursor-pointer hover:shadow-md transition-shadow ${
  selectedItems.includes(item.id) ? 'ring-2 ring-blue-500 bg-blue-50' : ''
  }`}
  onClick={() => onItemClick?.(item)}
  >
- <div className="flex items-start gap-3">
+ <div className="flex items-start gap-sm">
  <Checkbox
  checked={selectedItems.includes(item.id)}
  onCheckedChange={(checked) => handleItemSelection(item.id, checked as boolean)}
@@ -397,20 +397,20 @@ export default function TrackingMapView({
  />
 
  <div className="flex-1 min-w-0">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <span className="font-medium text-sm">{item.order_number}</span>
  <span className="text-lg">{getStatusIcon(item.status)}</span>
  </div>
  
  <p className="text-xs text-gray-600 mb-2">{item.vendor_name}</p>
  
- <div className="space-y-1 text-xs">
- <div className="flex items-center gap-1">
+ <div className="space-y-xs text-xs">
+ <div className="flex items-center gap-xs">
  <Truck className="h-3 w-3 text-gray-400" />
  <span>{item.carrier}</span>
  </div>
  {item.destination_address && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <MapPin className="h-3 w-3 text-gray-400" />
  <span className="truncate">
  {item.destination_address.city}, {item.destination_address.state}
@@ -419,7 +419,7 @@ export default function TrackingMapView({
  )}
  </div>
 
- <div className="flex gap-1 mt-2">
+ <div className="flex gap-xs mt-2">
  <Badge variant={getStatusColor(item.status)} className="text-xs">
  {item.status.replace('_', ' ').toUpperCase()}
  </Badge>
@@ -434,8 +434,8 @@ export default function TrackingMapView({
  </div>
 
  {items.length === 0 && (
- <div className="text-center py-12">
- <MapPin className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <MapPin className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
  <h3 className="text-lg font-medium text-gray-900 mb-2">No tracking locations found</h3>
  <p className="text-gray-500">Items with address information will appear on the map.</p>
  </div>

@@ -2,38 +2,38 @@ import { Skeleton } from '@ghxstship/ui';
 
 export default function Loading() {
   return (
-    <div className="space-y-6 p-6">
+    <div className="space-y-lg p-lg">
       {/* Header skeleton */}
-      <div className="space-y-2">
-        <Skeleton className="h-8 w-64" />
-        <Skeleton className="h-4 w-96" />
+      <div className="space-y-xs">
+        <Skeleton className="h-icon-lg w-container-sm" />
+        <Skeleton className="h-icon-xs w-container-lg" />
       </div>
 
       {/* Metrics cards skeleton */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         {Array.from({ length: 4 }).map((_, i) => (
-          <div key={i} className="p-4 border rounded-lg space-y-2">
-            <Skeleton className="h-4 w-24" />
-            <Skeleton className="h-8 w-16" />
+          <div key={i} className="p-md border rounded-lg space-y-xs">
+            <Skeleton className="h-icon-xs w-component-lg" />
+            <Skeleton className="h-icon-lg w-component-md" />
           </div>
         ))}
       </div>
 
       {/* Content skeleton */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="space-y-4">
-          <Skeleton className="h-6 w-32" />
-          <div className="space-y-2">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+        <div className="space-y-md">
+          <Skeleton className="h-icon-md w-component-xl" />
+          <div className="space-y-xs">
             {Array.from({ length: 3 }).map((_, i) => (
-              <Skeleton key={i} className="h-12 w-full" />
+              <Skeleton key={i} className="h-icon-2xl w-full" />
             ))}
           </div>
         </div>
-        <div className="space-y-4">
-          <Skeleton className="h-6 w-32" />
-          <div className="space-y-2">
+        <div className="space-y-md">
+          <Skeleton className="h-icon-md w-component-xl" />
+          <div className="space-y-xs">
             {Array.from({ length: 4 }).map((_, i) => (
-              <Skeleton key={i} className="h-16 w-full" />
+              <Skeleton key={i} className="h-component-md w-full" />
             ))}
           </div>
         </div>

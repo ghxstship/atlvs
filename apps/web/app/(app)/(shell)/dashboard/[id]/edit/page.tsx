@@ -186,9 +186,9 @@ export default async function EditDashboardPage({
 // Loading component
 function EditDashboardLoading() {
   return (
-    <div className="flex items-center justify-center min-h-[400px]">
-      <div className="flex items-center gap-2">
-        <Loader2 className="h-6 w-6 animate-spin" />
+    <div className="flex items-center justify-center min-h-content-lg">
+      <div className="flex items-center gap-xs">
+        <Loader2 className="h-icon-md w-icon-md animate-spin" />
         <span>Loading dashboard editor...</span>
       </div>
     </div>

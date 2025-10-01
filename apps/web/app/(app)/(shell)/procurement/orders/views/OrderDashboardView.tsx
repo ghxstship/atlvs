@@ -76,11 +76,11 @@ export default function OrderDashboardView({
  <Card key={index} className="p-md">
  <div className="animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="h-4 bg-muted rounded w-20"></div>
- <div className="h-8 w-8 bg-muted rounded"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
  </div>
- <div className="h-8 bg-muted rounded w-16 mb-xs"></div>
- <div className="h-3 bg-muted rounded w-24"></div>
+ <div className="h-icon-lg bg-muted rounded w-component-md mb-xs"></div>
+ <div className="h-3 bg-muted rounded w-component-lg"></div>
  </div>
  </Card>
  ))}
@@ -90,14 +90,14 @@ export default function OrderDashboardView({
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
  <Card className="p-md">
  <div className="animate-pulse">
- <div className="h-6 bg-muted rounded w-32 mb-md"></div>
- <div className="h-48 bg-muted rounded"></div>
+ <div className="h-icon-md bg-muted rounded w-component-xl mb-md"></div>
+ <div className="h-container-xs bg-muted rounded"></div>
  </div>
  </Card>
  <Card className="p-md">
  <div className="animate-pulse">
- <div className="h-6 bg-muted rounded w-32 mb-md"></div>
- <div className="h-48 bg-muted rounded"></div>
+ <div className="h-icon-md bg-muted rounded w-component-xl mb-md"></div>
+ <div className="h-container-xs bg-muted rounded"></div>
  </div>
  </Card>
  </div>
@@ -144,7 +144,7 @@ export default function OrderDashboardView({
  </p>
  </div>
  <div className="p-sm bg-primary/10 rounded-lg">
- <Package className="h-6 w-6 text-primary" />
+ <Package className="h-icon-md w-icon-md text-primary" />
  </div>
  </div>
  </Card>
@@ -161,7 +161,7 @@ export default function OrderDashboardView({
  </p>
  </div>
  <div className="p-sm bg-success/10 rounded-lg">
- <DollarSign className="h-6 w-6 text-success" />
+ <DollarSign className="h-icon-md w-icon-md text-success" />
  </div>
  </div>
  </Card>
@@ -176,7 +176,7 @@ export default function OrderDashboardView({
  </p>
  </div>
  <div className="p-sm bg-warning/10 rounded-lg">
- <Clock className="h-6 w-6 text-warning" />
+ <Clock className="h-icon-md w-icon-md text-warning" />
  </div>
  </div>
  </Card>
@@ -191,7 +191,7 @@ export default function OrderDashboardView({
  </p>
  </div>
  <div className="p-sm bg-destructive/10 rounded-lg">
- <AlertCircle className="h-6 w-6 text-destructive" />
+ <AlertCircle className="h-icon-md w-icon-md text-destructive" />
  </div>
  </div>
  </Card>
@@ -201,7 +201,7 @@ export default function OrderDashboardView({
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-md">
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <Activity className="h-4 w-4" />
+ <Activity className="h-icon-xs w-icon-xs" />
  Order Status
  </h3>
  <div className="space-y-sm">
@@ -258,7 +258,7 @@ export default function OrderDashboardView({
 
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <AlertCircle className="h-4 w-4" />
+ <AlertCircle className="h-icon-xs w-icon-xs" />
  Urgent Orders
  </h3>
  <div className="space-y-sm">
@@ -286,7 +286,7 @@ export default function OrderDashboardView({
 
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <BarChart3 className="h-4 w-4" />
+ <BarChart3 className="h-icon-xs w-icon-xs" />
  Top Vendors
  </h3>
  <div className="space-y-sm">
@@ -318,7 +318,7 @@ export default function OrderDashboardView({
  {overdueOrders.length > 0 && (
  <Card className="p-md border-destructive/50 bg-destructive/5">
  <div className="flex items-center gap-sm mb-md">
- <AlertCircle className="h-5 w-5 text-destructive" />
+ <AlertCircle className="h-icon-sm w-icon-sm text-destructive" />
  <h3 className="font-medium text-destructive">Overdue Orders ({overdueOrders.length})</h3>
  </div>
  <div className="space-y-sm">
@@ -329,7 +329,7 @@ export default function OrderDashboardView({
  onClick={() => onOrderClick?.(order)}
  >
  <div className="flex items-center gap-sm">
- <Package className="h-4 w-4 text-muted-foreground" />
+ <Package className="h-icon-xs w-icon-xs text-muted-foreground" />
  <div>
  <div className="font-medium">{order.order_number}</div>
  <div className="text-sm text-muted-foreground">{order.vendor_name}</div>
@@ -358,7 +358,7 @@ export default function OrderDashboardView({
  <Card className="p-md">
  <div className="flex items-center justify-between mb-md">
  <h3 className="font-medium flex items-center gap-sm">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  Recent Orders
  </h3>
  <Button variant="outline" size="sm">
@@ -378,7 +378,7 @@ export default function OrderDashboardView({
  className="flex items-center gap-md p-sm rounded-lg hover:bg-muted/30 cursor-pointer transition-colors"
  onClick={() => onOrderClick?.(order)}
  >
- <Package className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <Package className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <div className="flex-1 min-w-0">
  <div className="flex items-center gap-sm">
  <span className="font-medium truncate">{order.order_number}</span>

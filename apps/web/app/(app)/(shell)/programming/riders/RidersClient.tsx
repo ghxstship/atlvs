@@ -258,7 +258,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Riders Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create Rider
                 </Button>
               </div>
@@ -279,7 +279,7 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                   <Card key={type} className="p-md">
                     <div className="flex items-center justify-between mb-sm">
                       <h3 className="text-heading-4 flex items-center gap-sm">
-                        <IconComponent className="h-4 w-4" />
+                        <IconComponent className="h-icon-xs w-icon-xs" />
                         {riderTypeLabels[type] || type}
                       </h3>
                       <Badge variant="secondary">
@@ -373,13 +373,13 @@ export default function RidersClient({ orgId }: { orgId: string }) {
                 <div className="stack-md mt-lg">
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <FileText className="h-4 w-4" />
+                      <FileText className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.kind?.replace('_', ' ') || 'Technical'} Rider
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="h-icon-xs w-icon-xs" />
                       <span>
                         Created {new Date(selectedRecord.created_at).toLocaleDateString()}
                       </span>
@@ -413,13 +413,13 @@ export default function RidersClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-xl text-center">
-                <FileText className="h-12 w-12 mx-auto mb-md color-muted" />
+                <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
                 <h3 className="text-body text-heading-4 mb-sm">No Riders Yet</h3>
                 <p className="color-muted mb-md">
                   Start creating technical and hospitality riders for your events to ensure all requirements are met.
                 </p>
                 <Button onClick={handleCreateRider}>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create First Rider
                 </Button>
               </Card>

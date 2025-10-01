@@ -120,9 +120,9 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading security settings...</p>
         </div>
       </div>
@@ -130,20 +130,20 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Security Overview */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Shield className="h-icon-sm w-icon-sm" />
             Security Overview
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="flex items-center gap-3 p-3 bg-green-50 dark:bg-green-950 rounded-lg">
-              <div className="p-2 bg-green-100 dark:bg-green-900 rounded-full">
-                <Lock className="h-4 w-4 text-green-600 dark:text-green-400" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+            <div className="flex items-center gap-sm p-sm bg-green-50 dark:bg-green-950 rounded-lg">
+              <div className="p-xs bg-green-100 dark:bg-green-900 rounded-full">
+                <Lock className="h-icon-xs w-icon-xs text-green-600 dark:text-green-400" />
               </div>
               <div>
                 <p className="font-medium text-green-900 dark:text-green-100">Password Policy</p>
@@ -153,9 +153,9 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 bg-blue-50 dark:bg-blue-950 rounded-lg">
-              <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-full">
-                <Clock className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+            <div className="flex items-center gap-sm p-sm bg-blue-50 dark:bg-blue-950 rounded-lg">
+              <div className="p-xs bg-blue-100 dark:bg-blue-900 rounded-full">
+                <Clock className="h-icon-xs w-icon-xs text-blue-600 dark:text-blue-400" />
               </div>
               <div>
                 <p className="font-medium text-blue-900 dark:text-blue-100">Session Timeout</p>
@@ -165,9 +165,9 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               </div>
             </div>
 
-            <div className="flex items-center gap-3 p-3 bg-orange-50 dark:bg-orange-950 rounded-lg">
-              <div className="p-2 bg-orange-100 dark:bg-orange-900 rounded-full">
-                <AlertTriangle className="h-4 w-4 text-orange-600 dark:text-orange-400" />
+            <div className="flex items-center gap-sm p-sm bg-orange-50 dark:bg-orange-950 rounded-lg">
+              <div className="p-xs bg-orange-100 dark:bg-orange-900 rounded-full">
+                <AlertTriangle className="h-icon-xs w-icon-xs text-orange-600 dark:text-orange-400" />
               </div>
               <div>
                 <p className="font-medium text-orange-900 dark:text-orange-100">Login Attempts</p>
@@ -183,15 +183,15 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* Password Policy */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Lock className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Lock className="h-icon-sm w-icon-sm" />
             Password Policy
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
+        <CardContent className="space-y-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <div className="space-y-md">
+              <div className="space-y-xs">
                 <Label htmlFor="min-length">Minimum Length</Label>
                 <Select
                   value={policies.passwordMinLength.toString()}
@@ -209,7 +209,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
                 </Select>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label htmlFor="max-age">Password Expiry (days)</Label>
                 <Select
                   value={policies.passwordMaxAge.toString()}
@@ -230,7 +230,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Require Uppercase</Label>
@@ -282,14 +282,14 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* Session Management */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Clock className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Clock className="h-icon-sm w-icon-sm" />
             Session Management
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
+        <CardContent className="space-y-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <div className="space-y-xs">
               <Label htmlFor="session-timeout">Session Timeout (minutes)</Label>
               <Select
                 value={policies.sessionTimeout.toString()}
@@ -308,7 +308,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
               </Select>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <Label htmlFor="login-attempts">Max Login Attempts</Label>
               <Select
                 value={policies.loginAttemptsMax.toString()}
@@ -326,7 +326,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <Label htmlFor="lockout-duration">Account Lockout Duration (minutes)</Label>
             <Select
               value={policies.lockoutDuration.toString()}
@@ -349,12 +349,12 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* Two-Factor Authentication */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Shield className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Shield className="h-icon-sm w-icon-sm" />
             Two-Factor Authentication
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-md">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Require 2FA for All Users</Label>
@@ -370,7 +370,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
 
           {policies.requireTwoFactor && (
             <Alert>
-              <Shield className="h-4 w-4" />
+              <Shield className="h-icon-xs w-icon-xs" />
               <AlertDescription>
                 Two-factor authentication is required for all users. Existing users will be prompted to set it up on their next login.
               </AlertDescription>
@@ -382,13 +382,13 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* IP Whitelist */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Eye className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Eye className="h-icon-sm w-icon-sm" />
             IP Access Control
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-4">
-          <div className="space-y-2">
+        <CardContent className="space-y-md">
+          <div className="space-y-xs">
             <Label>Allowed IP Addresses</Label>
             <p className="text-sm text-muted-foreground">
               Restrict access to specific IP addresses or ranges. Leave empty to allow all IPs.
@@ -404,7 +404,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
           </div>
 
           {policies.ipWhitelist.length > 0 && (
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-xs">
               {policies.ipWhitelist.map((ip, index) => (
                 <Badge key={index} variant="secondary">
                   {ip}
@@ -418,13 +418,13 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* Audit Settings */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <SettingsIcon className="h-icon-sm w-icon-sm" />
             Audit & Compliance
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-md">
             <p className="text-sm text-muted-foreground">
               Security events and user activities are automatically logged for compliance purposes.
             </p>
@@ -438,7 +438,7 @@ export default function SecuritySettings({ userId, orgId }: SecuritySettingsProp
       {/* Save Button */}
       <div className="flex justify-end">
         <Button onClick={handleSavePolicies} disabled={saving}>
-          <Shield className="h-4 w-4 mr-2" />
+          <Shield className="h-icon-xs w-icon-xs mr-2" />
           {saving ? 'Saving Policies...' : 'Save Security Settings'}
         </Button>
       </div>

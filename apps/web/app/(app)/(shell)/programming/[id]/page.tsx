@@ -81,7 +81,7 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested event could not be found.</p>
             </div>
           )
@@ -125,16 +125,16 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Event Details */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Code className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Code className="h-icon-sm w-icon-sm" />
                 Event Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(event as any).title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -166,12 +166,12 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
           {/* Date & Time */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Date & Time
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Start Date</span>
                 <span className="text-sm text-muted-foreground">
@@ -198,12 +198,12 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
           {/* Venue Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MapPin className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <MapPin className="h-icon-sm w-icon-sm" />
                 Venue
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(event as any).venue?.name || 'Venue TBD'}</p>
                 {(event as any).venue?.address && (
@@ -223,12 +223,12 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
           {/* Financial Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <DollarSign className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <DollarSign className="h-icon-sm w-icon-sm" />
                 Budget & Revenue
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Budget</span>
                 <span className="text-sm font-semibold">
@@ -256,18 +256,18 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
           {(event as any).lineup && (event as any).lineup.length > 0 && (
             <Card className="md:col-span-2">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-xs">
+                  <Users className="h-icon-sm w-icon-sm" />
                   Event Lineup
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {(event as any).lineup
                     .sort((a: unknown, b: unknown) => (a.performance_order || 0) - (b.performance_order || 0))
                     .map((item: unknown) => (
-                      <div key={item.id} className="flex items-center justify-between p-3 border rounded">
-                        <div className="flex items-center gap-3">
+                      <div key={item.id} className="flex items-center justify-between p-sm border rounded">
+                        <div className="flex items-center gap-sm">
                           <Badge variant="outline">
                             #{item.performance_order || 'TBD'}
                           </Badge>
@@ -296,7 +296,7 @@ export default async function ProgrammingDetailPage({ params }: ProgrammingDetai
             <CardTitle>Event Logistics</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Logistics management coming soon...
             </p>
           </CardContent>

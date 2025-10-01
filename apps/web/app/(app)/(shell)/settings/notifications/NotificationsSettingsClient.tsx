@@ -319,8 +319,8 @@ export default function NotificationsSettingsClient() {
  <CardTitle>Notification Preferences</CardTitle>
  </CardHeader>
  <CardContent className="space-y-md">
- <Skeleton className="h-8 w-1/2" />
- <Skeleton className="h-10 w-full" />
+ <Skeleton className="h-icon-lg w-1/2" />
+ <Skeleton className="h-icon-xl w-full" />
  <Skeleton className="h-36 w-full" />
  </CardContent>
  </Card>
@@ -329,9 +329,9 @@ export default function NotificationsSettingsClient() {
  <CardTitle>Quiet Hours & Digest</CardTitle>
  </CardHeader>
  <CardContent className="space-y-md">
- <Skeleton className="h-8 w-1/2" />
- <Skeleton className="h-10 w-full" />
- <Skeleton className="h-24 w-full" />
+ <Skeleton className="h-icon-lg w-1/2" />
+ <Skeleton className="h-icon-xl w-full" />
+ <Skeleton className="h-component-lg w-full" />
  </CardContent>
  </Card>
  </div>

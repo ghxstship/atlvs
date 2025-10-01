@@ -126,17 +126,17 @@ export function TimelineView<T extends ProgrammingEntity>({
     return (
       <div className="relative">
         {/* Timeline line */}
-        <div className="absolute left-6 top-8 bottom-0 w-px bg-gray-200" />
+        <div className="absolute left-6 top-xl bottom-0 w-px bg-gray-200" />
 
         {/* Timeline dot */}
-        <div className="absolute left-4 top-6 w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow" />
+        <div className="absolute left-4 top-lg w-icon-xs h-icon-xs bg-blue-500 rounded-full border-4 border-white shadow" />
 
         {/* Content card */}
         <Card className="ml-12 mb-6">
           <CardHeader className="pb-3">
             <div className="flex items-start justify-between">
               <div className="flex-1">
-                <CardTitle className="text-lg flex items-center gap-2">
+                <CardTitle className="text-lg flex items-center gap-xs">
                   {item.title || 'Untitled'}
                   {'status' in item && (
                     <Badge variant={item.status === 'completed' ? 'default' : 'secondary'}>
@@ -146,9 +146,9 @@ export function TimelineView<T extends ProgrammingEntity>({
                 </CardTitle>
 
                 {/* Date and time information */}
-                <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
+                <div className="flex items-center gap-md mt-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-xs">
+                    <Calendar className="h-icon-xs w-icon-xs" />
                     {itemDate && (
                       <span>
                         {itemDate.toLocaleDateString()}
@@ -160,8 +160,8 @@ export function TimelineView<T extends ProgrammingEntity>({
                   </div>
 
                   {showTime && 'start_date' in item && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
+                    <div className="flex items-center gap-xs">
+                      <Clock className="h-icon-xs w-icon-xs" />
                       <span>
                         {new Date((item as any).start_date).toLocaleTimeString([], {
                           hour: '2-digit',
@@ -178,15 +178,15 @@ export function TimelineView<T extends ProgrammingEntity>({
                   )}
 
                   {('location' in item || 'venue' in item) && (
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
+                    <div className="flex items-center gap-xs">
+                      <MapPin className="h-icon-xs w-icon-xs" />
                       <span>{(item as any).location || (item as any).venue}</span>
                     </div>
                   )}
                 </div>
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-xs">
                 <Button
                   variant="ghost"
                   size="sm"
@@ -199,19 +199,19 @@ export function TimelineView<T extends ProgrammingEntity>({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm">
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       {onView && (
                         <DropdownMenuItem onClick={() => onView(item)}>
-                          <Eye className="h-4 w-4 mr-2" />
+                          <Eye className="h-icon-xs w-icon-xs mr-2" />
                           View
                         </DropdownMenuItem>
                       )}
                       {onEdit && (
                         <DropdownMenuItem onClick={() => onEdit(item)}>
-                          <Edit className="h-4 w-4 mr-2" />
+                          <Edit className="h-icon-xs w-icon-xs mr-2" />
                           Edit
                         </DropdownMenuItem>
                       )}
@@ -220,7 +220,7 @@ export function TimelineView<T extends ProgrammingEntity>({
                           onClick={() => onDelete(item)}
                           className="text-red-600"
                         >
-                          <Trash2 className="h-4 w-4 mr-2" />
+                          <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                           Delete
                         </DropdownMenuItem>
                       )}
@@ -239,11 +239,11 @@ export function TimelineView<T extends ProgrammingEntity>({
             {/* Expanded details */}
             {isExpanded && (
               <div className="border-t pt-3">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                   {/* Entity-specific details */}
                   <div>
                     <h4 className="font-medium text-sm text-gray-900 mb-2">Details</h4>
-                    <dl className="space-y-1 text-sm">
+                    <dl className="space-y-xs text-sm">
                       {'type' in item && (
                         <div className="flex justify-between">
                           <dt className="text-gray-600">Type:</dt>
@@ -268,7 +268,7 @@ export function TimelineView<T extends ProgrammingEntity>({
                   {/* Additional information */}
                   <div>
                     <h4 className="font-medium text-sm text-gray-900 mb-2">Additional Info</h4>
-                    <dl className="space-y-1 text-sm">
+                    <dl className="space-y-xs text-sm">
                       {isWorkshop && 'instructor' in item && (
                         <div className="flex justify-between">
                           <dt className="text-gray-600">Instructor:</dt>
@@ -302,21 +302,21 @@ export function TimelineView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`space-y-6 ${className}`}>
+      <div className={`space-y-lg ${className}`}>
         {Array.from({ length: 5 }).map((_, i) => (
           <div key={i} className="relative">
-            <div className="absolute left-4 top-6 w-4 h-4 bg-gray-300 rounded-full" />
-            <div className="absolute left-6 top-8 bottom-0 w-px bg-gray-200" />
+            <div className="absolute left-4 top-lg w-icon-xs h-icon-xs bg-gray-300 rounded-full" />
+            <div className="absolute left-6 top-xl bottom-0 w-px bg-gray-200" />
             <Card className="ml-12">
               <CardHeader>
-                <div className="h-6 bg-gray-200 animate-pulse rounded w-3/4" />
-                <div className="flex gap-4 mt-2">
-                  <div className="h-4 bg-gray-200 animate-pulse rounded w-32" />
-                  <div className="h-4 bg-gray-200 animate-pulse rounded w-24" />
+                <div className="h-icon-md bg-gray-200 animate-pulse rounded w-3/4" />
+                <div className="flex gap-md mt-2">
+                  <div className="h-icon-xs bg-gray-200 animate-pulse rounded w-component-xl" />
+                  <div className="h-icon-xs bg-gray-200 animate-pulse rounded w-component-lg" />
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="h-4 bg-gray-200 animate-pulse rounded w-full" />
+                <div className="h-icon-xs bg-gray-200 animate-pulse rounded w-full" />
               </CardContent>
             </Card>
           </div>
@@ -327,23 +327,23 @@ export function TimelineView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-8 ${className}`}>
+    <div className={`space-y-xl ${className}`}>
       {Object.entries(groupedData).map(([groupKey, items]) => (
         <div key={groupKey}>
           {groupByMonth && (
-            <h3 className="text-lg font-medium text-gray-900 mb-4 sticky top-0 bg-white py-2 border-b">
+            <h3 className="text-lg font-medium text-gray-900 mb-4 sticky top-0 bg-white py-xs border-b">
               {groupKey}
             </h3>
           )}
 
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {items.map((item) => (
               <div key={item.id}>
                 {renderTimelineItem ? renderTimelineItem(item) : defaultRenderTimelineItem(item)}

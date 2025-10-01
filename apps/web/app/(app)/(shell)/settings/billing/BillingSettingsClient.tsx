@@ -110,8 +110,8 @@ export default function BillingSettingsClient() {
 
  if (loading) {
  return (
- <div className="flex h-64 items-center justify-center">
- <Loader className="h-8 w-8 animate-spin" />
+ <div className="flex h-container-sm items-center justify-center">
+ <Loader className="h-icon-lg w-icon-lg animate-spin" />
  </div>
  );
  }

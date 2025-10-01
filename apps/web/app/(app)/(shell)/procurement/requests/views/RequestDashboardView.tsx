@@ -58,15 +58,15 @@ export default function RequestDashboardView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'approved':
- return <CheckCircle className="h-4 w-4 text-success" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
  case 'rejected':
- return <XCircle className="h-4 w-4 text-destructive" />;
+ return <XCircle className="h-icon-xs w-icon-xs text-destructive" />;
  case 'under_review':
- return <Clock className="h-4 w-4 text-warning" />;
+ return <Clock className="h-icon-xs w-icon-xs text-warning" />;
  case 'submitted':
- return <AlertTriangle className="h-4 w-4 text-info" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-info" />;
  default:
- return <Clock className="h-4 w-4 text-muted-foreground" />;
+ return <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />;
  }
  };
 
@@ -106,8 +106,8 @@ export default function RequestDashboardView({
  {Array.from({ length: 4 }).map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
  <div className="space-y-sm">
- <div className="h-4 bg-muted rounded w-1/2" />
- <div className="h-8 bg-muted rounded w-3/4" />
+ <div className="h-icon-xs bg-muted rounded w-1/2" />
+ <div className="h-icon-lg bg-muted rounded w-3/4" />
  </div>
  </Card>
  ))}
@@ -116,10 +116,10 @@ export default function RequestDashboardView({
  {/* Charts */}
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
  <Card className="p-md animate-pulse">
- <div className="h-64 bg-muted rounded" />
+ <div className="h-container-sm bg-muted rounded" />
  </Card>
  <Card className="p-md animate-pulse">
- <div className="h-64 bg-muted rounded" />
+ <div className="h-container-sm bg-muted rounded" />
  </Card>
  </div>
  </div>
@@ -136,7 +136,7 @@ export default function RequestDashboardView({
  <p className="text-sm text-muted-foreground">Total Requests</p>
  <p className="text-2xl font-bold">{statistics.total}</p>
  </div>
- <FileText className="h-8 w-8 text-info" />
+ <FileText className="h-icon-lg w-icon-lg text-info" />
  </div>
  </Card>
 
@@ -146,7 +146,7 @@ export default function RequestDashboardView({
  <p className="text-sm text-muted-foreground">Pending Approval</p>
  <p className="text-2xl font-bold">{statistics.pendingRequests.length}</p>
  </div>
- <Clock className="h-8 w-8 text-warning" />
+ <Clock className="h-icon-lg w-icon-lg text-warning" />
  </div>
  </Card>
 
@@ -156,7 +156,7 @@ export default function RequestDashboardView({
  <p className="text-sm text-muted-foreground">Approved</p>
  <p className="text-2xl font-bold">{statistics.approvedRequests.length}</p>
  </div>
- <CheckCircle className="h-8 w-8 text-success" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-success" />
  </div>
  </Card>
 
@@ -172,7 +172,7 @@ export default function RequestDashboardView({
  }).format(statistics.totalValue)}
  </p>
  </div>
- <DollarSign className="h-8 w-8 text-success" />
+ <DollarSign className="h-icon-lg w-icon-lg text-success" />
  </div>
  </Card>
  </div>
@@ -182,7 +182,7 @@ export default function RequestDashboardView({
  {/* Status Breakdown */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <BarChart3 className="h-5 w-5" />
+ <BarChart3 className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Status Breakdown</h3>
  </div>
  <div className="space-y-sm">
@@ -208,7 +208,7 @@ export default function RequestDashboardView({
  {/* Priority Distribution */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <TrendingUp className="h-5 w-5" />
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Priority Distribution</h3>
  </div>
  <div className="space-y-sm">
@@ -232,12 +232,12 @@ export default function RequestDashboardView({
  {/* Recent Requests */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <Calendar className="h-5 w-5" />
+ <Calendar className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Recent Requests</h3>
  </div>
  {statistics.recentRequests.length === 0 ? (
  <div className="text-center py-lg">
- <FileText className="h-12 w-12 mx-auto mb-md text-muted-foreground" />
+ <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground" />
  <p className="text-sm text-muted-foreground">No requests found</p>
  </div>
  ) : (
@@ -270,7 +270,7 @@ export default function RequestDashboardView({
  size="sm"
  onClick={() => onViewRequest(request)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}

@@ -258,12 +258,12 @@ export function MapView({
       <div className="flex items-center justify-between p-md border-b border-border bg-muted/30">
         <div className="flex items-center gap-md">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               placeholder="Search locations..."
               value={searchQuery}
               onChange={(e: any) => setSearchQuery(e.target.value)}
-              className="pl-2xl w-64"
+              className="pl-2xl w-container-sm"
             />
           </div>
           
@@ -284,7 +284,7 @@ export function MapView({
             
             onClick={() => setShowClusters(!showClusters)}
           >
-            <Layers className="h-4 w-4" />
+            <Layers className="h-icon-xs w-icon-xs" />
             Clusters
           </Button>
           
@@ -293,7 +293,7 @@ export function MapView({
             
             onClick={() => setShowHeatmapLayer(!showHeatmapLayer)}
           >
-            <Globe className="h-4 w-4" />
+            <Globe className="h-icon-xs w-icon-xs" />
             Heatmap
           </Button>
           
@@ -302,7 +302,7 @@ export function MapView({
             
             onClick={fitBounds}
           >
-            <Maximize className="h-4 w-4" />
+            <Maximize className="h-icon-xs w-icon-xs" />
             Fit All
           </Button>
         </div>
@@ -345,7 +345,7 @@ export function MapView({
                 onClick={() => handleMarkerClick(marker)}
               >
                 <div
-                  className="w-6 h-6 rounded-full border-2 border-white shadow-floating flex items-center justify-center"
+                  className="w-icon-md h-icon-md rounded-full border-2 border-white shadow-floating flex items-center justify-center"
                   style={{ backgroundColor: marker.color }}
                 >
                   <MapPin className="h-3 w-3 text-background" />
@@ -353,7 +353,7 @@ export function MapView({
                 
                 {/* Marker Label */}
                 {selectedMarker === marker.id && (
-                  <Card className="absolute top-8 left-1/2 transform -translate-x-1/2 p-sm min-w-[200px] z-30">
+                  <Card className="absolute top-8 left-1/2 transform -translate-x-1/2 p-sm min-w-content-narrow z-30">
                     <h4 className="font-medium text-sm">{marker.title}</h4>
                     {marker.description && (
                       <p className="text-xs text-muted-foreground mt-xs">
@@ -383,14 +383,14 @@ export function MapView({
               
               onClick={() => setMapZoom(Math.min(mapZoom + 1, 20))}
             >
-              <ZoomIn className="h-4 w-4" />
+              <ZoomIn className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant="outline"
               
               onClick={() => setMapZoom(Math.max(mapZoom - 1, 1))}
             >
-              <ZoomOut className="h-4 w-4" />
+              <ZoomOut className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant="outline"
@@ -401,7 +401,7 @@ export function MapView({
                 setMapZoom(12);
               }}
             >
-              <Navigation className="h-4 w-4" />
+              <Navigation className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
@@ -409,7 +409,7 @@ export function MapView({
           <div className="absolute bottom-4 left-4 bg-background/90 backdrop-blur-sm rounded-lg p-sm border border-border">
             <div className="text-sm space-y-xs">
               <div className="flex items-center gap-sm">
-                <MapIcon className="h-4 w-4 text-muted-foreground" />
+                <MapIcon className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <span className="font-medium">
                   {filteredMarkers.length} locations
                 </span>
@@ -476,7 +476,7 @@ export function MapView({
       {filteredMarkers.length === 0 && (
         <div className="absolute inset-0 flex items-center justify-center bg-background/80">
           <div className="text-center">
-            <MapIcon className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+            <MapIcon className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
             <h3 className="text-lg font-medium mb-sm">No locations found</h3>
             <p className="text-sm text-muted-foreground">
               {searchQuery ? 

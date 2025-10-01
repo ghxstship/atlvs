@@ -206,10 +206,10 @@ export default function CalendarView({
     }
 
     return (
-      <div className="grid grid-cols-7 gap-1 h-full">
+      <div className="grid grid-cols-7 gap-xs h-full">
         {/* Header */}
         {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-          <div key={day} className="p-2 text-center font-semibold text-gray-600 border-b">
+          <div key={day} className="p-xs text-center font-semibold text-gray-600 border-b">
             {day}
           </div>
         ))}
@@ -219,7 +219,7 @@ export default function CalendarView({
           week.map((day, dayIndex) => (
             <div
               key={`${weekIndex}-${dayIndex}`}
-              className={`min-h-24 p-1 border ${
+              className={`min-h-24 p-xs border ${
                 day.isCurrentMonth ? 'bg-white' : 'bg-gray-50'
               } ${day.date.toDateString() === new Date().toDateString() ? 'bg-blue-50' : ''}`}
               onClick={() => setCurrentDate(day.date)}
@@ -227,11 +227,11 @@ export default function CalendarView({
               <div className={`text-sm ${day.isCurrentMonth ? 'text-gray-900' : 'text-gray-400'}`}>
                 {day.date.getDate()}
               </div>
-              <div className="space-y-1 mt-1">
+              <div className="space-y-xs mt-1">
                 {day.events.slice(0, 3).map(event => (
                   <div
                     key={event.id}
-                    className={`text-xs p-1 rounded truncate cursor-pointer ${event.color} text-white`}
+                    className={`text-xs p-xs rounded truncate cursor-pointer ${event.color} text-white`}
                     onClick={(e) => {
                       e.stopPropagation();
                       onAssetAction?.('view', event.asset);
@@ -260,14 +260,14 @@ export default function CalendarView({
     return (
       <div
         key={event.id}
-        className={`p-3 mb-2 rounded border cursor-pointer transition-colors ${
+        className={`p-sm mb-2 rounded border cursor-pointer transition-colors ${
           isSelected ? 'border-blue-500 bg-blue-50' : 'border-gray-200 hover:border-gray-300'
         }`}
         onClick={() => onAssetAction?.('view', event.asset)}
       >
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <div className="flex items-center gap-2 mb-1">
+            <div className="flex items-center gap-xs mb-1">
               <div className={`w-3 h-3 rounded-full ${event.color.replace('bg-', 'bg-')}`} />
               <span className="font-medium text-sm">{event.asset.name}</span>
               <Badge variant="outline" className="text-xs">
@@ -275,19 +275,19 @@ export default function CalendarView({
               </Badge>
             </div>
             <div className="text-xs text-gray-600">{event.title}</div>
-            <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
-              <div className="flex items-center gap-1">
+            <div className="flex items-center gap-md mt-2 text-xs text-gray-500">
+              <div className="flex items-center gap-xs">
                 <CalendarIcon className="w-3 h-3" />
                 {event.start.toLocaleDateString()}
               </div>
               {event.asset.assigned_to && (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-xs">
                   <User className="w-3 h-3" />
                   {event.asset.assigned_to.name}
                 </div>
               )}
               {event.asset.location && (
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-xs">
                   <MapPin className="w-3 h-3" />
                   {event.asset.location.name}
                 </div>
@@ -319,10 +319,10 @@ export default function CalendarView({
       .slice(0, 50); // Limit for performance
 
     return (
-      <div className="space-y-1">
+      <div className="space-y-xs">
         {sortedEvents.length === 0 ? (
-          <div className="text-center py-8 text-gray-500">
-            <CalendarIcon className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+          <div className="text-center py-xl text-gray-500">
+            <CalendarIcon className="w-icon-2xl h-icon-2xl mx-auto mb-4 text-gray-300" />
             <div className="text-lg font-medium">No upcoming events</div>
             <div className="text-sm">Scheduled maintenance, warranties, and assignments will appear here</div>
           </div>
@@ -341,14 +341,14 @@ export default function CalendarView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Calendar Header */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-md">
           <Button
             variant="outline"
             size="sm"
             onClick={() => navigateCalendar('prev')}
           >
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-icon-xs h-icon-xs" />
           </Button>
 
           <h2 className="text-xl font-semibold text-gray-900">
@@ -360,7 +360,7 @@ export default function CalendarView({
             size="sm"
             onClick={() => navigateCalendar('next')}
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-icon-xs h-icon-xs" />
           </Button>
 
           <Button
@@ -372,9 +372,9 @@ export default function CalendarView({
           </Button>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Select value={calendarView} onValueChange={(value: CalendarViewType) => setCalendarView(value)}>
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-component-xl">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -387,7 +387,7 @@ export default function CalendarView({
           </Select>
 
           <Button variant="outline" size="sm">
-            <Settings className="w-4 h-4 mr-2" />
+            <Settings className="w-icon-xs h-icon-xs mr-2" />
             Settings
           </Button>
 
@@ -395,7 +395,7 @@ export default function CalendarView({
             size="sm"
             onClick={() => onAssetAction?.('create', {} as Asset)}
           >
-            <Plus className="w-4 h-4 mr-2" />
+            <Plus className="w-icon-xs h-icon-xs mr-2" />
             Add Event
           </Button>
         </div>
@@ -404,17 +404,17 @@ export default function CalendarView({
       {/* Calendar Content */}
       <div className="flex-1 overflow-auto">
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          <div className="flex items-center justify-center h-container-sm">
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-gray-900"></div>
             <span className="ml-2">Loading calendar...</span>
           </div>
         ) : (
-          <div className="h-full p-4">
+          <div className="h-full p-md">
             {calendarView === 'month' && renderMonthView()}
             {calendarView === 'agenda' && renderAgendaView()}
             {/* Week and Day views would be implemented similarly */}
             {(calendarView === 'week' || calendarView === 'day') && (
-              <div className="text-center py-8 text-gray-500">
+              <div className="text-center py-xl text-gray-500">
                 {calendarView.charAt(0).toUpperCase() + calendarView.slice(1)} view coming soon
               </div>
             )}
@@ -423,10 +423,10 @@ export default function CalendarView({
       </div>
 
       {/* Event Summary */}
-      <div className="px-4 pb-4 border-t">
+      <div className="px-md pb-4 border-t">
         <div className="flex items-center justify-between text-sm text-gray-600">
           <span>{calendarEvents.length} events</span>
-          <div className="flex gap-4">
+          <div className="flex gap-md">
             <span>Warranty: {calendarEvents.filter(e => e.type === 'warranty').length}</span>
             <span>Maintenance: {calendarEvents.filter(e => e.type === 'maintenance').length}</span>
             <span>Assignments: {calendarEvents.filter(e => e.type === 'assignment').length}</span>

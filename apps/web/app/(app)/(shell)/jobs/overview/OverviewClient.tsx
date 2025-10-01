@@ -221,8 +221,8 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
         {loading ? (
           Array.from({ length: 8 }).map((_, i) => (
             <Card key={i} className="p-md">
-              <Skeleton className="h-4 w-20 mb-sm" />
-              <Skeleton className="h-8 w-12" />
+              <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+              <Skeleton className="h-icon-lg w-icon-2xl" />
             </Card>
           ))
         ) : (
@@ -233,7 +233,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Total Jobs</p>
                   <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalJobs || 0}</p>
                 </div>
-                <BriefcaseIcon className="h-8 w-8 color-accent" />
+                <BriefcaseIcon className="h-icon-lg w-icon-lg color-accent" />
               </div>
             </Card>
 
@@ -243,7 +243,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Active Jobs</p>
                   <p className="text-body-sm color-muted">{stats?.activeJobs || 0} active</p>
                 </div>
-                <ChartBarIcon className="h-8 w-8 color-success" />
+                <ChartBarIcon className="h-icon-lg w-icon-lg color-success" />
               </div>
             </Card>
 
@@ -253,7 +253,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="color-muted">Monitor job performance and manage opportunities.</p>
                   <p className="text-heading-3 text-heading-3 color-success">{stats?.totalOpportunities || 0}</p>
                 </div>
-                <ClipboardDocumentListIcon className="h-8 w-8 color-success" />
+                <ClipboardDocumentListIcon className="h-icon-lg w-icon-lg color-success" />
               </div>
             </Card>
 
@@ -263,7 +263,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Active Bids</p>
                   <p className="text-body-sm color-muted">{stats?.activeBids || 0} active bids</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 color-secondary" />
+                <DocumentTextIcon className="h-icon-lg w-icon-lg color-secondary" />
               </div>
             </Card>
 
@@ -273,7 +273,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <span className="text-body-sm color-muted">tracts</span>
                   <p className="text-heading-3 text-heading-3 color-secondary">{stats?.activeContracts || 0}</p>
                 </div>
-                <CheckCircleIcon className="h-8 w-8 color-accent" />
+                <CheckCircleIcon className="h-icon-lg w-icon-lg color-accent" />
               </div>
             </Card>
 
@@ -283,7 +283,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Assignments</p>
                   <p className="text-body-sm color-muted">{stats?.totalAssignments || 0} assignments</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 color-warning" />
+                <DocumentTextIcon className="h-icon-lg w-icon-lg color-warning" />
               </div>
             </Card>
 
@@ -293,7 +293,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm color-muted">Pending Compliance</p>
                   <h1 className="text-heading-3 text-heading-3 color-foreground">{stats?.pendingCompliance || 0}</h1>
                 </div>
-                <ExclamationTriangleIcon className="h-8 w-8 color-warning" />
+                <ExclamationTriangleIcon className="h-icon-lg w-icon-lg color-warning" />
               </div>
             </Card>
 
@@ -303,7 +303,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                   <p className="text-body-sm form-label color-foreground/70">Active RFPs</p>
                   <p className="text-body-sm color-muted">{stats?.activeRFPs || 0} active RFPs</p>
                 </div>
-                <DocumentTextIcon className="h-8 w-8 color-accent" />
+                <DocumentTextIcon className="h-icon-lg w-icon-lg color-accent" />
               </div>
             </Card>
           </>
@@ -320,7 +320,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                 <Link key={action.title} href="#">
                   <div className="flex items-center p-md rounded-lg border border-border hover:bg-accent transition-colors cursor-pointer">
                     <div className={`p-sm rounded-lg ${action.color} text-background mr-sm`}>
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-icon-sm w-icon-sm" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-body-sm form-label color-foreground truncate">
@@ -330,7 +330,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                         {action.description}
                       </p>
                     </div>
-                    <ArrowRightIcon className="h-4 w-4 color-foreground/40" />
+                    <ArrowRightIcon className="h-icon-xs w-icon-xs color-foreground/40" />
                   </div>
                 </Link>
               );
@@ -345,7 +345,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex items-center cluster-sm">
                   <div className="w-3 h-3 bg-secondary rounded"></div>
-                  <Skeleton className="h-5 w-16" />
+                  <Skeleton className="h-icon-sm w-component-md" />
                 </div>
               ))}
             </div>
@@ -356,7 +356,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
                 return (
                   <div key={activity.id} className="flex items-center justify-between p-sm rounded-lg border border-border">
                     <div className="flex items-center cluster-sm">
-                      <Icon className="h-5 w-5 color-foreground/60" />
+                      <Icon className="h-icon-sm w-icon-sm color-foreground/60" />
                       <div>
                         <p className="text-body-sm form-label color-foreground truncate">
                           {activity.title}
@@ -375,7 +375,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
             </div>
           ) : (
             <div className="text-center py-xl">
-              <BriefcaseIcon className="h-12 w-12 color-muted mx-auto mb-sm" />
+              <BriefcaseIcon className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-sm" />
               <p className="text-body-sm color-muted">No recent activity</p>
               <p className="text-body-sm color-muted mt-xs">
                 Create your first job to get started
@@ -388,7 +388,7 @@ export function OverviewClient({ user, orgId, translations }: OverviewClientProp
               <Link href="/jobs">
                 <Button className="w-full">
                   View All Jobs
-                  <ArrowRightIcon className="h-4 w-4 ml-sm" />
+                  <ArrowRightIcon className="h-icon-xs w-icon-xs ml-sm" />
                 </Button>
               </Link>
             </div>

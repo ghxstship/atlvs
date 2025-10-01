@@ -270,7 +270,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
       <div
         key={itemId}
         className={cn(
-          'relative flex gap-4 pb-8',
+          'relative flex gap-md pb-8',
           orientation === 'horizontal' && 'flex-col',
           interactive && 'cursor-pointer group'
         )}
@@ -281,7 +281,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
         {/* Timeline Connector */}
         {showConnectors && orientation === 'vertical' && !isLast && (
           <div
-            className="absolute left-4 top-8 w-0.5 h-full bg-border -z-10"
+            className="absolute left-4 top-xl w-0.5 h-full bg-border -z-10"
             style={{ backgroundColor: color + '40' }}
           />
         )}
@@ -290,7 +290,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
         <div className="flex-shrink-0 relative">
           <div
             className={cn(
-              'flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all duration-200',
+              'flex items-center justify-center w-icon-lg h-icon-lg rounded-full border-2 transition-all duration-200',
               'bg-background',
               isHovered && 'scale-110 shadow-md'
             )}
@@ -299,13 +299,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
               backgroundColor: isHovered ? color + '20' : 'white'
             }}
           >
-            {showIcons && <Icon className="w-4 h-4" style={{ color }} />}
+            {showIcons && <Icon className="w-icon-xs h-icon-xs" style={{ color }} />}
           </div>
 
           {/* Connector dot for periods */}
           {itemType === 'period' && endDate && (
             <div
-              className="absolute top-10 left-3.5 w-1 h-8 border-l-2 border-dashed"
+              className="absolute top-xl left-3.5 w-1 h-icon-lg border-l-2 border-dashed"
               style={{ borderLeftColor: color }}
             />
           )}
@@ -317,11 +317,11 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
             'transition-all duration-200',
             isHovered && 'shadow-md ring-1 ring-primary/20'
           )}>
-            <CardContent className="p-4">
-              <div className="flex items-start justify-between gap-4">
+            <CardContent className="p-md">
+              <div className="flex items-start justify-between gap-md">
                 <div className="flex-1 min-w-0">
                   {/* Title and Date */}
-                  <div className="flex items-center gap-2 mb-2">
+                  <div className="flex items-center gap-xs mb-2">
                     <h3 className="font-semibold truncate">{title}</h3>
                     <Badge variant="outline" className="text-xs">
                       {itemType}
@@ -329,16 +329,16 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                   </div>
 
                   {/* Date/Time */}
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
-                    <div className="flex items-center gap-1">
-                      <Calendar className="h-4 w-4" />
+                  <div className="flex items-center gap-md text-sm text-muted-foreground mb-2">
+                    <div className="flex items-center gap-xs">
+                      <Calendar className="h-icon-xs w-icon-xs" />
                       {format(date, 'MMM d, yyyy')}
                       {endDate && itemType === 'period' && (
                         <span> - {format(endDate, 'MMM d, yyyy')}</span>
                       )}
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
+                    <div className="flex items-center gap-xs">
+                      <Clock className="h-icon-xs w-icon-xs" />
                       {format(date, 'h:mm a')}
                       {endDate && itemType === 'period' && (
                         <span> - {format(endDate, 'h:mm a')}</span>
@@ -348,13 +348,13 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
 
                   {/* Description */}
                   {description && layout !== 'compact' && (
-                    <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+                    <p className="text-sm text-muted-foreground mb-3 line-clamp-xs">
                       {description}
                     </p>
                   )}
 
                   {/* Metadata */}
-                  <div className="flex flex-wrap items-center gap-3 text-sm">
+                  <div className="flex flex-wrap items-center gap-sm text-sm">
                     {category && (
                       <Badge variant="secondary" className="text-xs">
                         <Tag className="h-3 w-3 mr-1" />
@@ -363,16 +363,16 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                     )}
 
                     {location && (
-                      <div className="flex items-center gap-1 text-muted-foreground">
+                      <div className="flex items-center gap-xs text-muted-foreground">
                         <MapPin className="h-3 w-3" />
-                        <span className="truncate max-w-32">{location}</span>
+                        <span className="truncate max-w-component-xl">{location}</span>
                       </div>
                     )}
 
                     {row[fieldMapping.assignee] && (
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         <User className="h-3 w-3 text-muted-foreground" />
-                        <Avatar className="h-5 w-5">
+                        <Avatar className="h-icon-sm w-icon-sm">
                           <AvatarFallback className="text-xs">
                             {String(row[fieldMapping.assignee]).slice(0, 2).toUpperCase()}
                           </AvatarFallback>
@@ -381,7 +381,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                     )}
 
                     {tags.length > 0 && (
-                      <div className="flex gap-1">
+                      <div className="flex gap-xs">
                         {tags.slice(0, 3).map((tag, idx) => (
                           <Badge key={idx} variant="outline" className="text-xs">
                             {tag}
@@ -398,7 +398,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                <div className="flex items-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
                   {onItemEdit && (
                     <Button
                       size="sm"
@@ -427,7 +427,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button size="sm" variant="ghost">
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -471,12 +471,12 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
     return (
       <div key={dateKey} className="mb-8">
         {/* Date Header */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-xs mb-4">
           <div className={cn(
-            'flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium',
+            'flex items-center gap-xs px-sm py-xs rounded-full text-sm font-medium',
             isTodayGroup ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'
           )}>
-            <Calendar className="h-4 w-4" />
+            <Calendar className="h-icon-xs w-icon-xs" />
             {format(date, 'EEEE, MMMM d, yyyy')}
             {isTodayGroup && <Badge variant="secondary" className="text-xs">Today</Badge>}
           </div>
@@ -486,9 +486,9 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
               size="sm"
               variant="ghost"
               onClick={() => toggleGroupCollapse(dateKey)}
-              className="h-6 w-6 p-0"
+              className="h-icon-md w-icon-md p-0"
             >
-              {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+              {isCollapsed ? <ChevronRight className="h-icon-xs w-icon-xs" /> : <ChevronDown className="h-icon-xs w-icon-xs" />}
             </Button>
           )}
 
@@ -499,7 +499,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
 
         {/* Items */}
         {(!isCollapsed || items.length === 1) && (
-          <div className="ml-6 space-y-6">
+          <div className="ml-6 space-y-lg">
             {items.map((row, index) =>
               renderTimelineItem(row, index, index === items.length - 1)
             )}
@@ -510,19 +510,19 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
   }, [collapsedGroups, collapsible, toggleGroupCollapse, renderTimelineItem]);
 
   return (
-    <div className={cn('space-y-6', className)}>
+    <div className={cn('space-y-lg', className)}>
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search timeline..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
@@ -532,7 +532,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
-                  <Filter className="h-4 w-4 mr-1" />
+                  <Filter className="h-icon-xs w-icon-xs mr-1" />
                   Categories
                 </Button>
               </DropdownMenuTrigger>
@@ -559,11 +559,11 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Add Item */}
           {onAddItem && (
             <Button onClick={() => onAddItem()}>
-              <Plus className="h-4 w-4 mr-1" />
+              <Plus className="h-icon-xs w-icon-xs mr-1" />
               Add Item
             </Button>
           )}
@@ -597,24 +597,24 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
       )}>
         {loading ? (
           // Loading state
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {Array.from({ length: 5 }).map((_, index) => (
-              <div key={index} className="flex gap-4 pb-8">
-                <div className="w-8 h-8 bg-muted rounded-full animate-pulse" />
+              <div key={index} className="flex gap-md pb-8">
+                <div className="w-icon-lg h-icon-lg bg-muted rounded-full animate-pulse" />
                 <div className="flex-1">
-                  <div className="h-20 bg-muted rounded-lg animate-pulse" />
+                  <div className="h-component-lg bg-muted rounded-lg animate-pulse" />
                 </div>
               </div>
             ))}
           </div>
         ) : processedData.length === 0 ? (
           // Empty state
-          <div className="flex items-center justify-center py-12">
+          <div className="flex items-center justify-center py-xsxl">
             <div className="text-center">
               <div className="text-muted-foreground mb-2">{emptyMessage}</div>
               {onAddItem && (
                 <Button onClick={() => onAddItem()}>
-                  <Plus className="h-4 w-4 mr-1" />
+                  <Plus className="h-icon-xs w-icon-xs mr-1" />
                   Add First Item
                 </Button>
               )}
@@ -627,7 +627,7 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
             .map(([dateKey, items]) => renderDateGroup(dateKey, items))
         ) : (
           // All items in single timeline
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {processedData.map((row, index) =>
               renderTimelineItem(row, index, index === processedData.length - 1)
             )}

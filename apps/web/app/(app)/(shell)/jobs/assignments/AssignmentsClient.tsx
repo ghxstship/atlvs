@@ -228,7 +228,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
           <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
-          <PlusIcon className="h-4 w-4 mr-sm" />
+          <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
           Create Assignment
         </Button>
       </div>
@@ -278,7 +278,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
               <p className="text-body-sm form-label color-foreground/70">Total Assignments</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{assignments.length}</p>
             </div>
-            <UsersIcon className="h-8 w-8 color-accent" />
+            <UsersIcon className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -289,7 +289,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                 {assignments.filter(a => a.status === 'active').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 color-success" />
+            <CheckCircleIcon className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
         <Card className="p-md">
@@ -300,7 +300,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                 {assignments.filter(a => a.status === 'pending').length}
               </p>
             </div>
-            <ClockIcon className="h-8 w-8 color-warning" />
+            <ClockIcon className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
         <Card className="p-md">
@@ -311,7 +311,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                 {assignments.filter(a => a.status === 'completed').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 color-secondary" />
+            <CheckCircleIcon className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
         <Card className="p-md">
@@ -328,7 +328,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   : 0}%
               </p>
             </div>
-            <ChartBarIcon className="h-8 w-8 color-accent" />
+            <ChartBarIcon className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
       </div>
@@ -340,14 +340,14 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
             <Card key={i} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <Skeleton className="h-5 w-64 mb-sm" />
-                  <Skeleton className="h-4 w-32 mb-sm" />
-                  <Skeleton className="h-4 w-full mb-sm" />
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-icon-sm w-container-sm mb-sm" />
+                  <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+                  <Skeleton className="h-icon-xs w-full mb-sm" />
+                  <Skeleton className="h-icon-xs w-3/4" />
                 </div>
                 <div className="flex gap-sm">
-                  <Skeleton className="h-6 w-16" />
-                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-icon-md w-component-md" />
+                  <Skeleton className="h-icon-md w-component-lg" />
                 </div>
               </div>
             </Card>
@@ -366,10 +366,10 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                     <div className="flex items-start justify-between mb-sm">
                       <div>
                         <h3 className="text-body text-heading-4 color-foreground mb-xs flex items-center gap-sm">
-                          <StatusIcon className="h-5 w-5 color-foreground/60" />
+                          <StatusIcon className="h-icon-sm w-icon-sm color-foreground/60" />
                           {assignment.job_title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-icon-xs w-icon-xs ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-sm text-body-sm color-foreground/70">
@@ -378,10 +378,10 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                               <img 
                                 src={assignment.assignee_avatar} 
                                 alt={assignment.assignee_name}
-                                className="h-4 w-4 rounded-full"
+                                className="h-icon-xs w-icon-xs rounded-full"
                               />
                             ) : (
-                              <UserIcon className="h-4 w-4" />
+                              <UserIcon className="h-icon-xs w-icon-xs" />
                             )}
                             <span>{assignment.assignee_name}</span>
                           </div>
@@ -405,7 +405,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-md text-body-sm color-foreground/70 mb-sm">
                       <div className="flex items-center gap-xs">
-                        <CalendarIcon className="h-4 w-4" />
+                        <CalendarIcon className="h-icon-xs w-icon-xs" />
                         <span>
                           {new Date(assignment.start_date).toLocaleDateString()}
                           {assignment.end_date && ` - ${new Date(assignment.end_date).toLocaleDateString()}`}
@@ -413,7 +413,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                       </div>
                       {assignment.estimated_hours && (
                         <div className="flex items-center gap-xs">
-                          <ClockIcon className="h-4 w-4" />
+                          <ClockIcon className="h-icon-xs w-icon-xs" />
                           <span>
                             Est: {assignment.estimated_hours}h
                             {assignment.actual_hours && ` / Actual: ${assignment.actual_hours}h`}
@@ -439,7 +439,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                             percentage={assignment.workload_percentage || 0}
                             variant="info"
                             size="md"
-                            className="w-24"
+                            className="w-component-lg"
                           />
                         </div>
                       )}
@@ -453,7 +453,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                             percentage={utilization}
                             variant={utilization > 100 ? 'warning' : 'success'}
                             size="md"
-                            className="w-24"
+                            className="w-component-lg"
                           />
                         </div>
                       )}
@@ -496,15 +496,15 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                   </div>
                   <div className="flex gap-sm">
                     <Button>
-                      <EyeIcon className="h-4 w-4 mr-xs" />
+                      <EyeIcon className="h-icon-xs w-icon-xs mr-xs" />
                       View
                     </Button>
                     <Button>
-                      <PencilIcon className="h-4 w-4 mr-xs" />
+                      <PencilIcon className="h-icon-xs w-icon-xs mr-xs" />
                       Edit
                     </Button>
                     <Button>
-                      <ChartBarIcon className="h-4 w-4 mr-xs" />
+                      <ChartBarIcon className="h-icon-xs w-icon-xs mr-xs" />
                       Track Time
                     </Button>
                   </div>
@@ -513,8 +513,8 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
             );
           })
         ) : (
-          <Card className="p-2xl text-center">
-            <UsersIcon className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+          <Card className="p-xsxl text-center">
+            <UsersIcon className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No assignments found</h3>
             <p className="text-body-sm color-foreground/70 mb-md">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
@@ -522,7 +522,7 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
                 : 'Get started by creating your first assignment.'}
             </p>
             <Button onClick={() => setShowCreateDialog(true)}>
-              <PlusIcon className="h-4 w-4 mr-sm" />
+              <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
               Create Assignment
             </Button>
           </Card>

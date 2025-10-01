@@ -83,11 +83,11 @@ export default function ViewProgrammingItineraryDrawer({
  </div>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm" onClick={onEdit}>
- <Edit className="h-4 w-4 mr-2" />
+ <Edit className="h-icon-xs w-icon-xs mr-2" />
  Edit
  </Button>
  <Button variant="outline" size="sm" onClick={onDelete}>
- <Trash2 className="h-4 w-4 mr-2 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2 text-destructive" />
  Delete
  </Button>
  </div>
@@ -97,7 +97,7 @@ export default function ViewProgrammingItineraryDrawer({
  {/* Basic Information */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Settings className="h-4 w-4" />
+ <Settings className="h-icon-xs w-icon-xs" />
  Basic Information
  </h3>
  <div className="space-y-md">
@@ -132,7 +132,7 @@ export default function ViewProgrammingItineraryDrawer({
  {/* Date & Time Information */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  Schedule
  </h3>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
@@ -173,7 +173,7 @@ export default function ViewProgrammingItineraryDrawer({
  {(itinerary.location || itinerary.transportation_type) && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  Location & Transportation
  </h3>
  <div className="space-y-md">
@@ -204,7 +204,7 @@ export default function ViewProgrammingItineraryDrawer({
  {(itinerary.total_cost || itinerary.participants_count) && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Cost & Participants
  </h3>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
@@ -235,7 +235,7 @@ export default function ViewProgrammingItineraryDrawer({
  {itinerary.destinations.length > 0 && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  Destinations
  </h3>
  <div className="space-y-sm">
@@ -268,7 +268,7 @@ export default function ViewProgrammingItineraryDrawer({
  {itinerary.accommodations.length > 0 && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  Accommodations
  </h3>
  <div className="space-y-sm">
@@ -308,7 +308,7 @@ export default function ViewProgrammingItineraryDrawer({
  {itinerary.transportation.length > 0 && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Plane className="h-4 w-4" />
+ <Plane className="h-icon-xs w-icon-xs" />
  Transportation Details
  </h3>
  <div className="space-y-sm">
@@ -348,7 +348,7 @@ export default function ViewProgrammingItineraryDrawer({
  {itinerary.tags.length > 0 && (
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Tag className="h-4 w-4" />
+ <Tag className="h-icon-xs w-icon-xs" />
  Tags
  </h3>
  <div className="flex flex-wrap gap-sm">

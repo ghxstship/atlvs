@@ -436,8 +436,8 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
 
  if (loading) {
  return (
- <div className="brand-marketplace flex items-center justify-center h-64">
- <div className="brand-marketplace animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+ <div className="brand-marketplace flex items-center justify-center h-container-sm">
+ <div className="brand-marketplace animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary" />
  </div>
  );
  }
@@ -450,7 +450,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <p className="color-muted">Manage your project briefs and proposals</p>
  </div>
  <Button onClick={() => handleOpenDrawer()}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Post New Project
  </Button>
  </div>
@@ -459,7 +459,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <div className="brand-marketplace flex flex-col md:flex-row gap-md">
  <div className="brand-marketplace flex-1">
  <div className="brand-marketplace relative">
- <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 color-muted" />
+ <Search className="absolute left-3 top-xs/2 -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
  <UnifiedInput
  placeholder="Search projects..."
  value={searchQuery}
@@ -469,7 +469,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  </div>
  </div>
  <Select value={filterStatus} onValueChange={setFilterStatus}>
- <SelectTrigger className="w-[180px]">
+ <SelectTrigger className="w-dropdown">
  <SelectValue placeholder="Filter by status" />
  </SelectTrigger>
  <SelectContent>{statusItems}</SelectContent>
@@ -492,15 +492,15 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  </Card>
 
  {filteredProjects.length === 0 ? (
- <Card className="p-2xl text-center">
+ <Card className="p-xsxl text-center">
  <div className="brand-marketplace max-w-md mx-auto">
- <Paperclip className="h-12 w-12 mx-auto mb-md color-muted" />
+ <Paperclip className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-body text-heading-4 mb-sm">No projects found</h3>
  <p className="color-muted mb-md">
  Post your first project to start receiving proposals from vendors
  </p>
  <Button onClick={() => handleOpenDrawer()}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Post New Project
  </Button>
  </div>
@@ -771,7 +771,7 @@ export default function ProjectPostingClient({ userId, orgId }: ProjectPostingCl
  <div className="flex items-center gap-sm text-body-sm color-muted">
  {error && (
  <>
- <AlertCircle className="h-4 w-4 color-destructive" />
+ <AlertCircle className="h-icon-xs w-icon-xs color-destructive" />
  <span className="color-destructive">{error}</span>
  </>
  )}
@@ -820,11 +820,11 @@ function ProjectCard({ project, onEdit, onDelete }: ProjectCardProps) {
  </Badge>
  </div>
 
- <p className="text-body-sm line-clamp-3 mb-md">{project.description}</p>
+ <p className="text-body-sm line-clamp-sm mb-md">{project.description}</p>
 
  <div className="brand-marketplace stack-sm mb-md">
  <div className="brand-marketplace flex items-center text-body-sm">
- <DollarSign className="h-4 w-4 mr-sm color-muted" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-sm color-muted" />
  {project.budget_type === 'fixed'
  ? `$${project.budget_min?.toLocaleString()} - $${project.budget_max?.toLocaleString()}`
  : project.budget_type === 'hourly'
@@ -832,15 +832,15 @@ function ProjectCard({ project, onEdit, onDelete }: ProjectCardProps) {
  : 'Budget not specified'}
  </div>
  <div className="brand-marketplace flex items-center text-body-sm">
- <Calendar className="h-4 w-4 mr-sm color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs mr-sm color-muted" />
  {project.duration || 'Timeline flexible'}
  </div>
  <div className="brand-marketplace flex items-center text-body-sm">
- <MapPin className="h-4 w-4 mr-sm color-muted" />
+ <MapPin className="h-icon-xs w-icon-xs mr-sm color-muted" />
  {project.location_type || 'Remote'}
  </div>
  <div className="brand-marketplace flex items-center text-body-sm">
- <Users className="h-4 w-4 mr-sm color-muted" />
+ <Users className="h-icon-xs w-icon-xs mr-sm color-muted" />
  {project.proposals?.[0]?.count || 0} proposals
  </div>
  </div>
@@ -854,15 +854,15 @@ function ProjectCard({ project, onEdit, onDelete }: ProjectCardProps) {
 
  <div className="brand-marketplace flex cluster-sm">
  <Button variant="outline" className="flex-1" onClick={() => onEdit(project)}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  <Button variant="outline" className="flex-1">
- <Eye className="h-4 w-4 mr-xs" />
+ <Eye className="h-icon-xs w-icon-xs mr-xs" />
  View
  </Button>
  <Button variant="ghost" onClick={() => onDelete(project.id)}>
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </Card>
@@ -906,13 +906,13 @@ function ProjectListRow({ project, onEdit, onDelete }: ProjectListRowProps) {
  </div>
  <div className="brand-marketplace flex items-center gap-sm">
  <Button variant="ghost" onClick={() => onEdit(project)}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="ghost">
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="ghost" onClick={() => onDelete(project.id)}>
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

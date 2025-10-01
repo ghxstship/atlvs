@@ -125,7 +125,7 @@ export default function SettingsGridView({
  };
 
  return (
- <span className={`px-2 py-1 rounded-full text-xs font-medium ${colors[type]}`}>
+ <span className={`px-xs py-xs rounded-full text-xs font-medium ${colors[type]}`}>
  {type}
  </span>
  );
@@ -150,15 +150,15 @@ export default function SettingsGridView({
 
  if (loading) {
  return (
- <div className="space-y-4">
- <div className="flex gap-4">
- <Skeleton className="h-10 w-64" />
- <Skeleton className="h-10 w-32" />
- <Skeleton className="h-10 w-32" />
+ <div className="space-y-md">
+ <div className="flex gap-md">
+ <Skeleton className="h-icon-xl w-container-sm" />
+ <Skeleton className="h-icon-xl w-component-xl" />
+ <Skeleton className="h-icon-xl w-component-xl" />
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {[...Array(10)].map((_, i) => (
- <Skeleton key={i} className="h-16 w-full" />
+ <Skeleton key={i} className="h-component-md w-full" />
  ))}
  </div>
  </div>
@@ -166,11 +166,11 @@ export default function SettingsGridView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Filters and Search */}
- <div className="flex flex-col sm:flex-row gap-4">
+ <div className="flex flex-col sm:flex-row gap-md">
  <div className="relative flex-1">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 text-muted-foreground h-icon-xs w-icon-xs" />
  <Input
  placeholder="Search settings..."
  value={searchQuery}
@@ -180,8 +180,8 @@ export default function SettingsGridView({
  </div>
  
  <Select value={categoryFilter} onValueChange={(value: unknown) => setCategoryFilter(value)}>
- <SelectTrigger className="w-full sm:w-48">
- <Filter className="h-4 w-4 mr-2" />
+ <SelectTrigger className="w-full sm:w-container-xs">
+ <Filter className="h-icon-xs w-icon-xs mr-2" />
  <SelectValue placeholder="Category" />
  </SelectTrigger>
  <SelectContent>
@@ -199,7 +199,7 @@ export default function SettingsGridView({
  </Select>
 
  <Select value={typeFilter} onValueChange={(value: unknown) => setTypeFilter(value)}>
- <SelectTrigger className="w-full sm:w-32">
+ <SelectTrigger className="w-full sm:w-component-xl">
  <SelectValue placeholder="Type" />
  </SelectTrigger>
  <SelectContent>
@@ -215,7 +215,7 @@ export default function SettingsGridView({
 
  {/* Bulk Actions */}
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+ <div className="flex items-center gap-xs p-sm bg-muted rounded-lg">
  <span className="text-sm font-medium">
  {selectedIds.length} selected
  </span>
@@ -230,11 +230,11 @@ export default function SettingsGridView({
  }
  }}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  Delete Selected
  </Button>
  <Button size="sm" variant="outline">
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export Selected
  </Button>
  </div>
@@ -245,7 +245,7 @@ export default function SettingsGridView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedIds.length === filteredSettings.length && filteredSettings.length > 0}
  onCheckedChange={handleSelectAll}
@@ -281,13 +281,13 @@ export default function SettingsGridView({
  <span className="ml-1">{sortDirection === 'asc' ? '↑' : '↓'}</span>
  )}
  </TableHead>
- <TableHead className="w-24">Actions</TableHead>
+ <TableHead className="w-component-lg">Actions</TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
  {filteredSettings.length === 0 ? (
  <TableRow>
- <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+ <TableCell colSpan={8} className="text-center py-xl text-muted-foreground">
  {searchQuery || categoryFilter !== 'all' || typeFilter !== 'all' 
  ? 'No settings match your filters'
  : 'No settings found'
@@ -323,13 +323,13 @@ export default function SettingsGridView({
  </TableCell>
  <TableCell>
  <div className="max-w-xs">
- <code className="text-sm bg-muted px-2 py-1 rounded">
+ <code className="text-sm bg-muted px-xs py-xs rounded">
  {formatValue(setting.value, setting.type)}
  </code>
  </div>
  </TableCell>
  <TableCell>
- <div className="flex gap-1">
+ <div className="flex gap-xs">
  <Badge variant={setting.is_public === 'true' ? 'default' : 'secondary'}>
  {setting.is_public === 'true' ? 'Public' : 'Private'}
  </Badge>
@@ -344,14 +344,14 @@ export default function SettingsGridView({
  </div>
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  size="sm"
  variant="ghost"
  onClick={() => onEdit(setting)}
  disabled={setting.is_editable === 'false'}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  size="sm"
@@ -362,7 +362,7 @@ export default function SettingsGridView({
  }
  }}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </TableCell>

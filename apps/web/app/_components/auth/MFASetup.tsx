@@ -126,9 +126,9 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
 
   if (step === 'setup' && challenge) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-lg">
         <div className="text-center">
-          <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
+          <Shield className="h-icon-2xl w-icon-2xl text-primary mx-auto mb-4" />
           <h3 className="text-lg font-semibold">Set up Authenticator App</h3>
           <p className="text-sm text-muted-foreground">
             Scan the QR code with your authenticator app, then enter the 6-digit code.
@@ -148,13 +148,13 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
         {challenge.uri && (
           <div className="text-center">
             <p className="text-sm text-muted-foreground mb-2">Or manually enter:</p>
-            <code className="text-xs bg-muted p-2 rounded block">
+            <code className="text-xs bg-muted p-xs rounded block">
               {challenge.uri}
             </code>
           </div>
         )}
 
-        <div className="space-y-4">
+        <div className="space-y-md">
           <div>
             <label className="block text-sm font-medium mb-2">
               Verification Code
@@ -164,18 +164,18 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
               value={verificationCode}
               onChange={(e) => setVerificationCode(e.target.value)}
               placeholder="000000"
-              className="w-full p-2 border rounded-md"
+              className="w-full p-xs border rounded-md"
               maxLength={6}
             />
           </div>
 
           {error && (
-            <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">
+            <div className="text-sm text-destructive bg-destructive/10 p-sm rounded-md">
               {error}
             </div>
           )}
 
-          <div className="flex gap-3">
+          <div className="flex gap-sm">
             <Button
               onClick={verifyTOTP}
               disabled={loading || verificationCode.length !== 6}
@@ -196,9 +196,9 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="text-center">
-        <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
+        <Shield className="h-icon-2xl w-icon-2xl text-primary mx-auto mb-4" />
         <h3 className="text-lg font-semibold">Multi-Factor Authentication</h3>
         <p className="text-sm text-muted-foreground">
           Add an extra layer of security to your account.
@@ -207,15 +207,15 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
 
       {/* Current Factors */}
       {factors.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-sm">
           <h4 className="font-medium">Active MFA Methods</h4>
           {factors.map((factor) => (
-            <div key={factor.id} className="flex items-center justify-between p-3 border rounded-md">
-              <div className="flex items-center gap-3">
+            <div key={factor.id} className="flex items-center justify-between p-sm border rounded-md">
+              <div className="flex items-center gap-sm">
                 {factor.factor_type === 'totp' ? (
-                  <Smartphone className="h-5 w-5 text-primary" />
+                  <Smartphone className="h-icon-sm w-icon-sm text-primary" />
                 ) : (
-                  <Key className="h-5 w-5 text-primary" />
+                  <Key className="h-icon-sm w-icon-sm text-primary" />
                 )}
                 <div>
                   <div className="font-medium">{factor.friendly_name || 'Authenticator App'}</div>
@@ -236,28 +236,28 @@ export function MFASetup({ onComplete, onCancel }: MFASetupProps) {
       )}
 
       {/* Add New Factor */}
-      <div className="space-y-3">
+      <div className="space-y-sm">
         <h4 className="font-medium">Add MFA Method</h4>
-        <div className="grid grid-cols-1 gap-3">
+        <div className="grid grid-cols-1 gap-sm">
           <Button
             variant="outline"
             onClick={enrollTOTP}
             disabled={loading}
             className="justify-start"
           >
-            <Smartphone className="h-5 w-5 mr-3" />
+            <Smartphone className="h-icon-sm w-icon-sm mr-3" />
             Authenticator App (TOTP)
           </Button>
         </div>
       </div>
 
       {error && (
-        <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">
+        <div className="text-sm text-destructive bg-destructive/10 p-sm rounded-md">
           {error}
         </div>
       )}
 
-      <div className="flex gap-3">
+      <div className="flex gap-sm">
         <Button onClick={onComplete} variant="outline" className="flex-1">
           Skip for Now
         </Button>

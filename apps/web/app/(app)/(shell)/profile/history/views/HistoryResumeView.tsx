@@ -140,12 +140,12 @@ export default function HistoryResumeView({
  <div className="max-w-4xl mx-auto">
  <Card className="p-xl animate-pulse">
  <div className="space-y-lg">
- <div className="h-8 bg-muted rounded w-1/3" />
- <div className="h-4 bg-muted rounded w-1/2" />
+ <div className="h-icon-lg bg-muted rounded w-1/3" />
+ <div className="h-icon-xs bg-muted rounded w-1/2" />
  <div className="space-y-md">
  {Array.from({ length: 5 }).map((_, i) => (
  <div key={i} className="space-y-sm">
- <div className="h-4 bg-muted rounded w-1/4" />
+ <div className="h-icon-xs bg-muted rounded w-1/4" />
  <div className="h-3 bg-muted rounded w-full" />
  <div className="h-3 bg-muted rounded w-3/4" />
  </div>
@@ -182,15 +182,15 @@ export default function HistoryResumeView({
  {/* Action buttons */}
  <div className="flex justify-end gap-sm mb-lg print:hidden">
  <Button variant="outline" size="sm" onClick={handleShare}>
- <Share className="h-4 w-4 mr-xs" />
+ <Share className="h-icon-xs w-icon-xs mr-xs" />
  Share
  </Button>
  <Button variant="outline" size="sm" onClick={handleDownload}>
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Download PDF
  </Button>
  <Button variant="outline" size="sm" onClick={handlePrint}>
- <Printer className="h-4 w-4 mr-xs" />
+ <Printer className="h-icon-xs w-icon-xs mr-xs" />
  Print
  </Button>
  </div>
@@ -205,25 +205,25 @@ export default function HistoryResumeView({
  <div className="flex flex-wrap justify-center gap-md text-muted-foreground mb-md">
  {userProfile?.email && (
  <div className="flex items-center gap-xs">
- <Mail className="h-4 w-4" />
+ <Mail className="h-icon-xs w-icon-xs" />
  <span>{userProfile.email}</span>
  </div>
  )}
  {userProfile?.phone_primary && (
  <div className="flex items-center gap-xs">
- <Phone className="h-4 w-4" />
+ <Phone className="h-icon-xs w-icon-xs" />
  <span>{userProfile.phone_primary}</span>
  </div>
  )}
  {userProfile?.location && (
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{userProfile.location}</span>
  </div>
  )}
  {userProfile?.website_url && (
  <div className="flex items-center gap-xs">
- <Globe className="h-4 w-4" />
+ <Globe className="h-icon-xs w-icon-xs" />
  <a 
  href={userProfile.website_url as any as any} 
  target="_blank" 
@@ -249,7 +249,7 @@ export default function HistoryResumeView({
  {allSkills.length > 0 && (
  <div className="mb-xl">
  <h2 className="text-xl font-bold mb-md flex items-center gap-sm">
- <Star className="h-5 w-5" />
+ <Star className="h-icon-sm w-icon-sm" />
  Core Skills
  </h2>
  <div className="flex flex-wrap gap-sm">
@@ -269,7 +269,7 @@ export default function HistoryResumeView({
  return (
  <div key={type} className="mb-xl">
  <h2 className="text-xl font-bold mb-lg flex items-center gap-sm">
- <SectionIcon className="h-5 w-5" />
+ <SectionIcon className="h-icon-sm w-icon-sm" />
  {getSectionTitle(type as HistoryEntryType)}
  </h2>
 
@@ -289,7 +289,7 @@ export default function HistoryResumeView({
  </h3>
  {entry.organization && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span className="font-medium">{entry.organization}</span>
  {entry.location && (
  <>
@@ -303,14 +303,14 @@ export default function HistoryResumeView({
  
  <div className="text-right text-muted-foreground">
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span className="font-medium">
  {formatDateRange(entry.start_date, entry.end_date, entry.is_current)}
  </span>
  </div>
  {entry.salary_range && (
  <div className="flex items-center gap-xs mt-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span className="text-sm">{entry.salary_range}</span>
  </div>
  )}

@@ -113,11 +113,11 @@ export default function CreateAccountDrawer({
 
  const getAccountTypeIcon = (type: AccountType) => {
  const icons = {
- asset: <Building className="h-4 w-4" />,
- liability: <CreditCard className="h-4 w-4" />,
- equity: <TrendingUp className="h-4 w-4" />,
- revenue: <DollarSign className="h-4 w-4" />,
- expense: <Minus className="h-4 w-4" />
+ asset: <Building className="h-icon-xs w-icon-xs" />,
+ liability: <CreditCard className="h-icon-xs w-icon-xs" />,
+ equity: <TrendingUp className="h-icon-xs w-icon-xs" />,
+ revenue: <DollarSign className="h-icon-xs w-icon-xs" />,
+ expense: <Minus className="h-icon-xs w-icon-xs" />
  };
  return icons[type];
  };
@@ -225,7 +225,7 @@ export default function CreateAccountDrawer({
  <Drawer open={isOpen} onClose={() => onClose(false)}>
  <DrawerContent className="max-w-2xl mx-auto">
  <DrawerHeader>
- <DrawerTitle className="flex items-center gap-2">
+ <DrawerTitle className="flex items-center gap-xs">
  {getAccountTypeIcon(formData.type)}
  {editAccount ? 'Edit Account' : 'Create New Account'}
  </DrawerTitle>
@@ -237,15 +237,15 @@ export default function CreateAccountDrawer({
  </DrawerDescription>
  </DrawerHeader>
 
- <div className="px-6 py-4">
+ <div className="px-lg py-md">
  <Tabs defaultValue="basic" className="w-full">
  <TabsList className="grid w-full grid-cols-2">
  <TabsTrigger value="basic">Basic Information</TabsTrigger>
  <TabsTrigger value="details">Account Details</TabsTrigger>
  </TabsList>
 
- <TabsContent value="basic" className="space-y-4 mt-6">
- <div className="grid grid-cols-2 gap-4">
+ <TabsContent value="basic" className="space-y-md mt-6">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Account Number *
@@ -271,32 +271,32 @@ export default function CreateAccountDrawer({
  </SelectTrigger>
  <SelectContent>
  <SelectItem value="asset">
- <div className="flex items-center gap-2">
- <Building className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Building className="h-icon-xs w-icon-xs" />
  Asset
  </div>
  </SelectItem>
  <SelectItem value="liability">
- <div className="flex items-center gap-2">
- <CreditCard className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <CreditCard className="h-icon-xs w-icon-xs" />
  Liability
  </div>
  </SelectItem>
  <SelectItem value="equity">
- <div className="flex items-center gap-2">
- <TrendingUp className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-xs w-icon-xs" />
  Equity
  </div>
  </SelectItem>
  <SelectItem value="revenue">
- <div className="flex items-center gap-2">
- <DollarSign className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Revenue
  </div>
  </SelectItem>
  <SelectItem value="expense">
- <div className="flex items-center gap-2">
- <Minus className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Minus className="h-icon-xs w-icon-xs" />
  Expense
  </div>
  </SelectItem>
@@ -329,7 +329,7 @@ export default function CreateAccountDrawer({
  />
  </div>
 
- <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+ <div className="flex items-center justify-between p-md bg-gray-50 rounded-lg">
  <div>
  <div className="font-medium text-gray-900">Normal Balance</div>
  <div className="text-sm text-gray-600">
@@ -346,8 +346,8 @@ export default function CreateAccountDrawer({
  </div>
  </TabsContent>
 
- <TabsContent value="details" className="space-y-4 mt-6">
- <div className="grid grid-cols-2 gap-4">
+ <TabsContent value="details" className="space-y-md mt-6">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Subtype
@@ -391,7 +391,7 @@ export default function CreateAccountDrawer({
  </div>
  </div>
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-gray-700 mb-2 block">
  Currency
@@ -426,7 +426,7 @@ export default function CreateAccountDrawer({
  </div>
  </div>
 
- <div className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+ <div className="flex items-center justify-between p-md bg-gray-50 rounded-lg">
  <div>
  <div className="font-medium text-gray-900">Account Status</div>
  <div className="text-sm text-gray-600">
@@ -454,29 +454,29 @@ export default function CreateAccountDrawer({
  </Tabs>
 
  {errors.submit && (
- <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-md">
+ <div className="mt-4 p-sm bg-red-50 border border-red-200 rounded-md">
  <p className="text-sm text-red-600">{errors.submit}</p>
  </div>
  )}
  </div>
 
  <DrawerFooter>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button
  onClick={handleSubmit}
  disabled={loading}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Save className="h-4 w-4" />
+ <Save className="h-icon-xs w-icon-xs" />
  {loading ? 'Saving...' : editAccount ? 'Update Account' : 'Create Account'}
  </Button>
  <Button
  variant="outline"
  onClick={onClose}
  disabled={loading}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  Cancel
  </Button>
  </div>

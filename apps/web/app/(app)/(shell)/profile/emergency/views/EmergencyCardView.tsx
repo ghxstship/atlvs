@@ -27,17 +27,17 @@ export default function EmergencyCardView({
 }: EmergencyCardViewProps) {
  if (loading) {
  return (
- <Card className="p-6 space-y-4 animate-pulse">
- <div className="h-5 w-1/3 bg-muted rounded" />
- <div className="h-4 w-1/2 bg-muted rounded" />
- <div className="h-4 w-2/3 bg-muted rounded" />
+ <Card className="p-lg space-y-md animate-pulse">
+ <div className="h-icon-sm w-1/3 bg-muted rounded" />
+ <div className="h-icon-xs w-1/2 bg-muted rounded" />
+ <div className="h-icon-xs w-2/3 bg-muted rounded" />
  </Card>
  );
  }
 
  if (!contact) {
  return (
- <Card className="p-6 text-center text-muted-foreground">
+ <Card className="p-lg text-center text-muted-foreground">
  Select an emergency contact to view details.
  </Card>
  );
@@ -46,24 +46,24 @@ export default function EmergencyCardView({
  const priorityBadge = priorityVariants[contact.priority_level] ?? priorityVariants.medium;
 
  return (
- <div className="space-y-6">
- <Card className="p-6 space-y-4">
+ <div className="space-y-lg">
+ <Card className="p-lg space-y-md">
  <div className="flex items-start justify-between">
- <div className="space-y-2">
- <div className="flex items-center gap-3">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-sm">
  <h2 className="text-xl font-semibold">{contact.name}</h2>
  <Badge variant={priorityBadge.variant}>{priorityBadge.label}</Badge>
  {contact.is_primary ? <Badge variant="primary">Primary</Badge> : null}
  {contact.is_backup ? <Badge variant="secondary">Backup</Badge> : null}
  </div>
- <div className="flex items-center gap-2 text-sm text-muted-foreground">
- <UserPlus className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
+ <UserPlus className="h-icon-xs w-icon-xs" />
  <span>{contact.relationship}</span>
  </div>
  </div>
- <div className="flex items-center gap-2">
- <Badge variant={contact.verification_status === 'verified' ? 'default' : 'outline'} className="flex items-center gap-1">
- {contact.verification_status === 'verified' ? <ShieldCheck className="h-4 w-4" /> : <ShieldAlert className="h-4 w-4" />}
+ <div className="flex items-center gap-xs">
+ <Badge variant={contact.verification_status === 'verified' ? 'default' : 'outline'} className="flex items-center gap-xs">
+ {contact.verification_status === 'verified' ? <ShieldCheck className="h-icon-xs w-icon-xs" /> : <ShieldAlert className="h-icon-xs w-icon-xs" />}
  {contact.verification_status === 'verified' ? 'Verified' : 'Verification Needed'}
  </Badge>
  {onEdit ? (
@@ -79,38 +79,38 @@ export default function EmergencyCardView({
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
- <div className="space-y-3">
- <div className="flex items-center gap-2 text-muted-foreground">
- <PhoneCall className="h-4 w-4" />
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
+ <div className="space-y-sm">
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <PhoneCall className="h-icon-xs w-icon-xs" />
  <span>{formatPhone(contact.phone_primary)}</span>
  {contact.phone_secondary ? (
  <span className="text-xs">• {formatPhone(contact.phone_secondary)}</span>
  ) : null}
  </div>
  {contact.email ? (
- <div className="flex items-center gap-2 text-muted-foreground">
- <Mail className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <Mail className="h-icon-xs w-icon-xs" />
  <span>{contact.email}</span>
  </div>
  ) : null}
  {formatAddress(contact) ? (
- <div className="flex items-center gap-2 text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{formatAddress(contact)}</span>
  </div>
  ) : null}
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {contact.availability ? (
- <div className="flex items-center gap-2 text-muted-foreground">
- <Clock className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>Availability: {contact.availability.replace('_', ' ')}</span>
  </div>
  ) : null}
  {typeof contact.response_time_minutes === 'number' ? (
- <div className="flex items-center gap-2 text-muted-foreground">
- <ArrowRight className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <ArrowRight className="h-icon-xs w-icon-xs" />
  <span>Response in ~{contact.response_time_minutes} minutes</span>
  </div>
  ) : null}

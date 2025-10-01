@@ -46,13 +46,13 @@ export default function TravelGridView({
 
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {[...Array(6)].map((_, i) => (
- <Card key={i} className="p-6">
- <div className="animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <Card key={i} className="p-lg">
+ <div className="animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
- <div className="h-20 bg-muted rounded"></div>
+ <div className="h-component-lg bg-muted rounded"></div>
  </div>
  </Card>
  ))}
@@ -62,9 +62,9 @@ export default function TravelGridView({
 
  if (records.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Plane className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Plane className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Travel Records</h3>
  <p className="text-muted-foreground mt-2">
@@ -77,11 +77,11 @@ export default function TravelGridView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header with bulk selection */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -92,7 +92,7 @@ export default function TravelGridView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -105,7 +105,7 @@ export default function TravelGridView({
  </Card>
 
  {/* Grid */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {records.map((record) => {
  const isSelected = selectedIds.includes(record.id);
  const upcoming = isUpcomingTrip(record);
@@ -114,14 +114,14 @@ export default function TravelGridView({
  return (
  <Card 
  key={record.id} 
- className={`p-6 hover:shadow-md transition-shadow ${
+ className={`p-lg hover:shadow-md transition-shadow ${
  isSelected ? 'ring-2 ring-primary' : ''
  }`}
  >
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
  <div className="flex items-start justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(record.id, !!checked)}
@@ -140,41 +140,41 @@ export default function TravelGridView({
  </Badge>
  )}
  </div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(record)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(record)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(record)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  {/* Destination Info */}
  <div className="text-center">
- <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
- <Plane className="h-8 w-8 text-primary" />
+ <div className="w-component-md h-component-md bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-3">
+ <Plane className="h-icon-lg w-icon-lg text-primary" />
  </div>
  <h3 className="font-semibold text-lg mb-1">
  {record.destination}
  </h3>
- <div className="flex items-center justify-center gap-1 text-sm text-muted-foreground mb-2">
- <Globe className="h-4 w-4" />
+ <div className="flex items-center justify-center gap-xs text-sm text-muted-foreground mb-2">
+ <Globe className="h-icon-xs w-icon-xs" />
  {record.country}
  </div>
  <Badge variant="outline" className="mb-3">
@@ -196,10 +196,10 @@ export default function TravelGridView({
  </div>
 
  {/* Key Metrics */}
- <div className="grid grid-cols-2 gap-4 text-center">
+ <div className="grid grid-cols-2 gap-md text-center">
  <div>
- <div className="flex items-center justify-center gap-1 mb-1">
- <CreditCard className="h-4 w-4 text-green-500" />
+ <div className="flex items-center justify-center gap-xs mb-1">
+ <CreditCard className="h-icon-xs w-icon-xs text-green-500" />
  <span className="text-sm font-medium">Expenses</span>
  </div>
  <div className="text-lg font-semibold">
@@ -207,8 +207,8 @@ export default function TravelGridView({
  </div>
  </div>
  <div>
- <div className="flex items-center justify-center gap-1 mb-1">
- <FileText className="h-4 w-4 text-blue-500" />
+ <div className="flex items-center justify-center gap-xs mb-1">
+ <FileText className="h-icon-xs w-icon-xs text-blue-500" />
  <span className="text-sm font-medium">Visa</span>
  </div>
  <div className="text-sm font-semibold">
@@ -229,7 +229,7 @@ export default function TravelGridView({
  {/* Purpose */}
  <div>
  <h4 className="font-medium text-sm mb-2">Purpose</h4>
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {record.purpose}
  </p>
  </div>
@@ -238,7 +238,7 @@ export default function TravelGridView({
  {(record.accommodation || record.transportation) && (
  <div>
  <h4 className="font-medium text-sm mb-2">Travel Details</h4>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {record.accommodation && (
  <div className="text-sm text-muted-foreground">
  <span className="font-medium">Stay:</span> {record.accommodation}
@@ -257,7 +257,7 @@ export default function TravelGridView({
  {record.booking_reference && (
  <div>
  <h4 className="font-medium text-sm mb-1">Booking Reference</h4>
- <p className="text-sm text-muted-foreground font-mono bg-muted p-2 rounded">
+ <p className="text-sm text-muted-foreground font-mono bg-muted p-xs rounded">
  {record.booking_reference}
  </p>
  </div>
@@ -277,14 +277,14 @@ export default function TravelGridView({
  {record.notes && (
  <div>
  <h4 className="font-medium text-sm mb-2">Notes</h4>
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {record.notes}
  </p>
  </div>
  )}
 
  {/* Action Buttons */}
- <div className="flex gap-2 pt-2">
+ <div className="flex gap-xs pt-2">
  <Button
  variant="outline"
  size="sm"

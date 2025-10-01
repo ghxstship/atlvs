@@ -7,7 +7,7 @@ import React from 'react';
 import { Input, type InputProps } from '../components/atomic/Input';
 import { Textarea, type TextareaProps } from '../components/atomic/Textarea';
 import { Label } from '../components/Label';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface FormFieldProps {
   label?: string;

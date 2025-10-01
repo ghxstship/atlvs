@@ -86,7 +86,7 @@ export default function ImageView({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
         {Array.from({ length: 8 }).map((_, i) => (
           <div key={i} className="aspect-[4/3] bg-muted animate-pulse rounded-lg" />
         ))}
@@ -96,7 +96,7 @@ export default function ImageView({
 
   if (error) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-xsxl">
         <p className="text-muted-foreground mb-4">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -106,9 +106,9 @@ export default function ImageView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Image Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
         {listings.map((listing) => {
           const primaryImage = listing.images?.find(img => img.isPrimary)?.url;
 
@@ -130,7 +130,7 @@ export default function ImageView({
                   />
                 ) : (
                   <div className="w-full h-full bg-muted flex items-center justify-center">
-                    <ImageIcon className="h-12 w-12 text-muted-foreground" />
+                    <ImageIcon className="h-icon-2xl w-icon-2xl text-muted-foreground" />
                   </div>
                 )}
 
@@ -143,7 +143,7 @@ export default function ImageView({
                       onListingView?.(listing);
                     }}
                   >
-                    <Eye className="h-4 w-4 mr-2" />
+                    <Eye className="h-icon-xs w-icon-xs mr-2" />
                     View Details
                   </Button>
                 </div>
@@ -151,7 +151,7 @@ export default function ImageView({
 
               {/* Selection Checkbox */}
               {onSelectionChange && (
-                <div className="absolute top-2 left-2">
+                <div className="absolute top-xs left-2">
                   <input
                     type="checkbox"
                     checked={selectedListings.includes(listing.id)}
@@ -165,20 +165,20 @@ export default function ImageView({
               )}
 
               {/* Badges */}
-              <div className="absolute top-2 right-2 flex gap-1">
+              <div className="absolute top-xs right-2 flex gap-xs">
                 <Badge variant={getTypeVariant(listing.type)} className="text-xs">
                   {listing.type}
                 </Badge>
                 {listing.featured && (
-                  <div className="bg-yellow-500 text-yellow-900 px-1.5 py-0.5 rounded text-xs font-medium">
+                  <div className="bg-yellow-500 text-yellow-900 px-xs.5 py-0.5 rounded text-xs font-medium">
                     Featured
                   </div>
                 )}
               </div>
 
               {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                <h3 className="text-white font-semibold text-sm line-clamp-2 mb-1">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-md">
+                <h3 className="text-white font-semibold text-sm line-clamp-xs mb-1">
                   {listing.title}
                 </h3>
 
@@ -189,13 +189,13 @@ export default function ImageView({
                 )}
 
                 <div className="flex items-center justify-between text-xs text-white/70">
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-xs">
                     <MapPin className="h-3 w-3" />
                     <span>
                       {listing.location?.city || 'Remote'}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-xs">
                     <Calendar className="h-3 w-3" />
                     <span>
                       {new Date(listing.created_at).toLocaleDateString()}
@@ -205,13 +205,13 @@ export default function ImageView({
               </div>
 
               {/* Actions Menu */}
-              <div className="absolute top-2 left-2">
+              <div className="absolute top-xs left-2">
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button
                       size="sm"
                       variant="secondary"
-                      className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                      className="h-icon-md w-icon-md p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                       onClick={(e) => e.stopPropagation()}
                     >
                       <MoreHorizontal className="h-3 w-3" />
@@ -219,11 +219,11 @@ export default function ImageView({
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="start">
                     <DropdownMenuItem onClick={() => onListingView?.(listing)}>
-                      <Eye className="mr-2 h-4 w-4" />
+                      <Eye className="mr-2 h-icon-xs w-icon-xs" />
                       View
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onListingEdit?.(listing)}>
-                      <Edit className="mr-2 h-4 w-4" />
+                      <Edit className="mr-2 h-icon-xs w-icon-xs" />
                       Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem
@@ -231,12 +231,12 @@ export default function ImageView({
                     >
                       {listing.featured ? (
                         <>
-                          <StarOff className="mr-2 h-4 w-4" />
+                          <StarOff className="mr-2 h-icon-xs w-icon-xs" />
                           Unfeature
                         </>
                       ) : (
                         <>
-                          <Star className="mr-2 h-4 w-4" />
+                          <Star className="mr-2 h-icon-xs w-icon-xs" />
                           Feature
                         </>
                       )}
@@ -244,14 +244,14 @@ export default function ImageView({
                     <DropdownMenuItem
                       onClick={() => marketplaceService.archiveListing(orgId, '', listing.id)}
                     >
-                      <Archive className="mr-2 h-4 w-4" />
+                      <Archive className="mr-2 h-icon-xs w-icon-xs" />
                       Archive
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => onListingDelete?.(listing)}
                       className="text-destructive"
                     >
-                      <Trash2 className="mr-2 h-4 w-4" />
+                      <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -264,9 +264,9 @@ export default function ImageView({
 
       {/* Empty state */}
       {listings.length === 0 && (
-        <div className="text-center py-12">
-          <div className="mx-auto w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-            <ImageIcon className="h-6 w-6 text-muted-foreground" />
+        <div className="text-center py-xsxl">
+          <div className="mx-auto w-component-md h-component-md bg-muted rounded-full flex items-center justify-center mb-4">
+            <ImageIcon className="h-icon-md w-icon-md text-muted-foreground" />
           </div>
           <h3 className="text-lg font-medium mb-2">No listings found</h3>
           <p className="text-muted-foreground mb-4">

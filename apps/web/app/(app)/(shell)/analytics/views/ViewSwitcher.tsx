@@ -55,7 +55,7 @@ export default function ViewSwitcher({
   className = '',
 }: ViewSwitcherProps) {
   return (
-    <div className={`flex items-center space-x-1 ${className}`}>
+    <div className={`flex items-center space-x-xs ${className}`}>
       {availableViews.map((view) => {
         const Icon = viewIcons[view];
         const isActive = currentView === view;
@@ -64,14 +64,14 @@ export default function ViewSwitcher({
           <button
             key={view}
             onClick={() => onViewChange(view)}
-            className={`flex items-center px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+            className={`flex items-center px-sm py-xs text-sm font-medium rounded-md transition-colors ${
               isActive
                 ? 'bg-blue-100 text-blue-700 border border-blue-200'
                 : 'text-gray-500 hover:text-gray-700 hover:bg-gray-100'
             }`}
             title={viewLabels[view]}
           >
-            <Icon className="h-4 w-4 mr-2" />
+            <Icon className="h-icon-xs w-icon-xs mr-2" />
             <span className="hidden sm:inline">{viewLabels[view]}</span>
           </button>
         );

@@ -57,12 +57,12 @@ export default function EmergencyRosterView({
 
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md">
  {Array.from({ length: 6 }).map((_, index) => (
- <Card key={index} className="p-6 animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-2/3" />
- <div className="h-4 bg-muted rounded w-1/2" />
- <div className="h-16 bg-muted rounded" />
+ <Card key={index} className="p-lg animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-2/3" />
+ <div className="h-icon-xs bg-muted rounded w-1/2" />
+ <div className="h-component-md bg-muted rounded" />
  </Card>
  ))}
  </div>
@@ -70,12 +70,12 @@ export default function EmergencyRosterView({
  }
 
  return (
- <div className="space-y-6">
- <Card className="p-4 space-y-4">
- <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
- <div className="flex flex-1 items-center gap-3">
+ <div className="space-y-lg">
+ <Card className="p-md space-y-md">
+ <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-md">
+ <div className="flex flex-1 items-center gap-sm">
  <div className="relative flex-1 max-w-lg">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  className="pl-9"
  placeholder="Search emergency contacts..."
@@ -83,13 +83,13 @@ export default function EmergencyRosterView({
  onChange={(event) => onFiltersChange({ search: event.target.value })}
  />
  </div>
- <Button variant="outline" size="sm" className="flex items-center gap-2">
- <Filter className="h-4 w-4" />
+ <Button variant="outline" size="sm" className="flex items-center gap-xs">
+ <Filter className="h-icon-xs w-icon-xs" />
  Filters
  </Button>
  </div>
 
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  {selectedIds.length > 0 ? (
  <Button
  variant="outline"
@@ -107,7 +107,7 @@ export default function EmergencyRosterView({
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
  <Select
  value={filters.priority ?? 'all'}
  onValueChange={(value) => onFiltersChange({ priority: value as EmergencyContactFilters['priority'] })}
@@ -175,20 +175,20 @@ export default function EmergencyRosterView({
  </Card>
 
  {filteredContacts.length === 0 ? (
- <Card className="p-10 text-center text-muted-foreground space-y-4">
- <ShieldAlert className="h-12 w-12 mx-auto text-muted-foreground" />
+ <Card className="p-xl text-center text-muted-foreground space-y-md">
+ <ShieldAlert className="h-icon-2xl w-icon-2xl mx-auto text-muted-foreground" />
  <p>No emergency contacts match the selected filters.</p>
  </Card>
  ) : (
- <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-md">
  {filteredContacts.map(contact => {
  const verification = verificationVariant[contact.verification_status] ?? verificationVariant.pending;
  const selected = selectedIds.includes(contact.id);
  return (
- <Card key={contact.id} className="p-5 space-y-4 border-border">
- <div className="flex items-start justify-between gap-3">
- <div className="space-y-1">
- <div className="flex items-center gap-2">
+ <Card key={contact.id} className="p-md space-y-md border-border">
+ <div className="flex items-start justify-between gap-sm">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={selected}
  onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -197,40 +197,40 @@ export default function EmergencyRosterView({
  />
  <h3 className="text-lg font-semibold">{contact.name}</h3>
  </div>
- <div className="flex items-center gap-2 text-sm text-muted-foreground">
- <User className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
+ <User className="h-icon-xs w-icon-xs" />
  <span>{contact.relationship}</span>
  </div>
  </div>
- <div className="flex flex-col items-end gap-2">
+ <div className="flex flex-col items-end gap-xs">
  <Badge variant={verification.variant}>{verification.label}</Badge>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {contact.is_primary ? <Badge variant="primary">Primary</Badge> : null}
  {contact.is_backup ? <Badge variant="secondary">Backup</Badge> : null}
  </div>
  </div>
  </div>
 
- <div className="space-y-2 text-sm text-muted-foreground">
- <div className="flex items-center gap-2">
- <PhoneCall className="h-4 w-4" />
+ <div className="space-y-xs text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs">
+ <PhoneCall className="h-icon-xs w-icon-xs" />
  <span>{formatPhone(contact.phone_primary)}</span>
  </div>
  {contact.phone_secondary ? (
- <div className="flex items-center gap-2">
- <UserCheck className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <UserCheck className="h-icon-xs w-icon-xs" />
  <span>{formatPhone(contact.phone_secondary)}</span>
  </div>
  ) : null}
  {contact.email ? (
- <div className="flex items-center gap-2">
- <Mail className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Mail className="h-icon-xs w-icon-xs" />
  <span>{contact.email}</span>
  </div>
  ) : null}
  {formatAddress(contact) ? (
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{formatAddress(contact)}</span>
  </div>
  ) : null}
@@ -241,13 +241,13 @@ export default function EmergencyRosterView({
  {contact.availability ? <span>Availability: {contact.availability.replace('_', ' ')}</span> : null}
  </div>
 
- <div className="flex items-center justify-between gap-2">
- <div className="flex gap-2">
+ <div className="flex items-center justify-between gap-xs">
+ <div className="flex gap-xs">
  <Button variant="outline" size="sm" onClick={() => onEdit(contact)}>
  Edit
  </Button>
  <Button variant="outline" size="sm" onClick={() => onDelete(contact)}>
- <Trash2 className="mr-1 h-4 w-4" />
+ <Trash2 className="mr-1 h-icon-xs w-icon-xs" />
  Remove
  </Button>
  </div>

@@ -265,7 +265,7 @@ export default function ProgrammingCallSheetsClient({
  onChange={(event) => setSearchTerm(event.target.value)}
  className="pl-9"
  />
- <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Filter className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  </div>
 
  <Select value={selectedProject} onValueChange={setSelectedProject}>
@@ -318,7 +318,7 @@ export default function ProgrammingCallSheetsClient({
  />
 
  <Button variant="outline" size="sm" onClick={loadCallSheets} disabled={loading}>
- <RefreshCcw className="mr-2 h-4 w-4" />
+ <RefreshCcw className="mr-2 h-icon-xs w-icon-xs" />
  Refresh
  </Button>
  </div>
@@ -327,7 +327,7 @@ export default function ProgrammingCallSheetsClient({
  {selectedCallSheets.size > 0 ? (
  <>
  <Button variant="outline" size="sm" onClick={bulkDelete}>
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete ({selectedCallSheets.size})
  </Button>
  <Button variant="outline" size="sm" onClick={clearSelection}>
@@ -347,7 +347,7 @@ export default function ProgrammingCallSheetsClient({
  onClick={() => setViewType(option.id)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  <span className="sr-only">{option.label}</span>
  </Button>
  );
@@ -355,7 +355,7 @@ export default function ProgrammingCallSheetsClient({
  </div>
 
  <Button onClick={openCreateDrawer}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Call Sheet
  </Button>
  </div>
@@ -363,12 +363,12 @@ export default function ProgrammingCallSheetsClient({
 
  <Card className="p-lg">
  {loading ? (
- <div className="flex min-h-[320px] items-center justify-center text-muted-foreground">
+ <div className="flex min-h-modal-sm items-center justify-center text-muted-foreground">
  Loading call sheets...
  </div>
  ) : filteredCallSheets.length === 0 ? (
- <div className="flex min-h-[320px] flex-col items-center justify-center gap-md text-center">
- <FileText className="h-12 w-12 text-muted-foreground" />
+ <div className="flex min-h-modal-sm flex-col items-center justify-center gap-md text-center">
+ <FileText className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div className="space-y-xs">
  <h3 className="text-heading-5">No call sheets found</h3>
  <p className="text-body-sm text-muted-foreground">
@@ -378,7 +378,7 @@ export default function ProgrammingCallSheetsClient({
  </p>
  </div>
  <Button onClick={openCreateDrawer}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Call Sheet
  </Button>
  </div>

@@ -82,7 +82,7 @@ export default function FileGridView({
  onDownload(file);
  }}
  >
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -92,15 +92,15 @@ export default function FileGridView({
  onShare(file);
  }}
  >
- <Share2 className="h-4 w-4" />
+ <Share2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  <div className="space-y-sm">
  {/* File Icon and Category */}
- <div className="flex items-center justify-center h-24 bg-muted rounded-lg">
- <CategoryIcon className="h-12 w-12 text-muted-foreground" />
+ <div className="flex items-center justify-center h-component-lg bg-muted rounded-lg">
+ <CategoryIcon className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  </div>
 
  {/* File Name */}

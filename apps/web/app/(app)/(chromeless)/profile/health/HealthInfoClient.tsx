@@ -202,7 +202,7 @@ export default function HealthInfoClient() {
       <div className="stack-md">
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -218,7 +218,7 @@ export default function HealthInfoClient() {
         </div>
         {!isEditing && (
           <Button onClick={() => setIsEditing(true)}>
-            <Edit2 className="w-4 h-4 mr-sm" />
+            <Edit2 className="w-icon-xs h-icon-xs mr-sm" />
             Edit
           </Button>
         )}
@@ -228,7 +228,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Heart className="w-5 h-5 mr-sm color-destructive" />
+            <Heart className="w-icon-sm h-icon-sm mr-sm color-destructive" />
             Basic Information
           </h3>
         </CardHeader>
@@ -272,7 +272,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <AlertCircle className="w-5 h-5 mr-sm color-warning" />
+            <AlertCircle className="w-icon-sm h-icon-sm mr-sm color-warning" />
             Allergies
           </h3>
         </CardHeader>
@@ -301,7 +301,7 @@ export default function HealthInfoClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addAllergy()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -313,7 +313,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Pill className="w-5 h-5 mr-sm color-accent" />
+            <Pill className="w-icon-sm h-icon-sm mr-sm color-accent" />
             Current Medications
           </h3>
         </CardHeader>
@@ -337,7 +337,7 @@ export default function HealthInfoClient() {
                      
                       onClick={() => removeMedication(index)}
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-icon-xs h-icon-xs" />
                     </Button>
                   )}
                 </div>
@@ -364,7 +364,7 @@ export default function HealthInfoClient() {
                   />
                 </div>
                 <Button>
-                  <Plus className="w-4 h-4 mr-sm" />
+                  <Plus className="w-icon-xs h-icon-xs mr-sm" />
                   Add Medication
                 </Button>
               </div>
@@ -377,7 +377,7 @@ export default function HealthInfoClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Activity className="w-5 h-5 mr-sm color-secondary" />
+            <Activity className="w-icon-sm h-icon-sm mr-sm color-secondary" />
             Medical Conditions
           </h3>
         </CardHeader>
@@ -406,7 +406,7 @@ export default function HealthInfoClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addCondition()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -444,7 +444,7 @@ export default function HealthInfoClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addRestriction()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -512,7 +512,7 @@ export default function HealthInfoClient() {
             Cancel
           </Button>
           <Button onClick={handleSave}>
-            <Save className="w-4 h-4 mr-sm" />
+            <Save className="w-icon-xs h-icon-xs mr-sm" />
             Save Health Information
           </Button>
         </div>

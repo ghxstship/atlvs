@@ -94,7 +94,7 @@ const ToastContainer: React.FC<{ toasts: Toast[]; dismiss: (id: string) => void 
         <div
           key={toast.id}
           className={`
-            p-md rounded-lg shadow-lg min-w-[300px] max-w-[400px]
+            p-md rounded-lg shadow-lg min-w-content-medium max-w-sidebar-wide
             ${variantClasses[toast.variant || 'default']}
             animate-in slide-in-from-bottom-2
           `}

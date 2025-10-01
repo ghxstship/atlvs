@@ -1,9 +1,14 @@
 import '@ghxstship/ui/styles.css';
 import type { Metadata } from 'next';
 import { Anton, Share_Tech, Share_Tech_Mono } from 'next/font/google';
-import { headers } from 'next/headers';
 import { WebVitals } from './web-vitals';
 import { GHXSTSHIPProvider } from '@ghxstship/ui';
+import { BrandProvider } from '@ghxstship/shared/platform/brand/context';
+import { getActiveBrand } from '@ghxstship/shared/platform/brand/server';
+import { generateThemeCSS, generateFontImports } from '@ghxstship/shared/platform/brand/theme-generator';
+
+// Force dynamic rendering to avoid cookies() error during build
+export const dynamic = 'force-dynamic';
 
 const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
 const shareTech = Share_Tech({ weight: '400', subsets: ['latin'], variable: '--font-body' });
@@ -26,44 +31,55 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Determine subdomain from host for brand theming
-  const host = headers().get('host') || '';
-  const hostname = host.split(':')[0];
-  let subdomain = '';
-  const parts = hostname.split('.');
-  if (parts.length > 2) {
-    subdomain = parts[0];
-  } else if (parts.length === 2 && parts[0] !== 'localhost') {
-    subdomain = parts[0];
-  }
-
-  // Map subdomain to brand identifier for CSS variables
-  const brand = ['atlvs', 'opendeck', 'ghxstship'].includes(subdomain) ? subdomain : 'ghxstship';
+  // Load active brand configuration
+  const brandConfig = await getActiveBrand();
+  
+  // Generate theme CSS from brand configuration
+  const themeCSS = generateThemeCSS(brandConfig.theme);
+  const fontImports = generateFontImports(brandConfig.assets.fonts);
 
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${shareTech.className} ${shareTech.variable} ${shareTechMono.variable} ${anton.variable}`} data-brand={brand}>
-        <GHXSTSHIPProvider 
-          theme={{ 
-            defaultBrand: brand as 'ghxstship' | 'atlvs' | 'opendeck',
-            defaultTheme: 'system'
-          }}
-          accessibility={{
-            defaultConfig: {
-              announcements: true,
-              focusManagement: true,
-              keyboardNavigation: true,
-              screenReaderOptimizations: true,
-              colorContrastEnforcement: true,
-              motionReduction: false,
-              textScaling: true,
-              highContrastMode: false,
-            }
-          }}
-        >
-          <WebVitals />
-          {children}
-        </GHXSTSHIPProvider>
+      <head>
+        {/* Brand Theme CSS */}
+        <style dangerouslySetInnerHTML={{ __html: themeCSS }} />
+        {fontImports && <style dangerouslySetInnerHTML={{ __html: fontImports }} />}
+        
+        {/* Favicon */}
+        <link rel="icon" href={brandConfig.assets.favicon} />
+        
+        {/* SEO */}
+        <title>{brandConfig.seo.title}</title>
+        <meta name="description" content={brandConfig.seo.description} />
+        <meta name="theme-color" content={brandConfig.theme.colors.brand.primary} />
+      </head>
+      <body 
+        className={`${shareTech.className} ${shareTech.variable} ${shareTechMono.variable} ${anton.variable}`} 
+        data-brand={brandConfig.brand.id}
+      >
+        <BrandProvider initialBrand={brandConfig}>
+          <GHXSTSHIPProvider 
+            theme={{ 
+              defaultBrand: brandConfig.brand.id as 'ghxstship' | 'atlvs' | 'opendeck',
+              defaultTheme: 'system'
+            }}
+            accessibility={{
+              defaultConfig: {
+                announcements: true,
+                focusManagement: true,
+                keyboardNavigation: true,
+                screenReaderOptimizations: true,
+                colorContrastEnforcement: true,
+                motionReduction: false,
+                textScaling: true,
+                highContrastMode: false,
+              }
+            }}
+          >
+            <WebVitals />
+            {children}
+          </GHXSTSHIPProvider>
+        </BrandProvider>
       </body>
     </html>
   );

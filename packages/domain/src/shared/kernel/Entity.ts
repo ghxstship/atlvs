@@ -3,7 +3,7 @@
  * All domain entities extend this base class
  */
 
-import { Identifier } from './Identifier';
+import { Identifier } from '../../core/Identifier';
 
 export abstract class Entity<T> {
   protected readonly _id: Identifier;

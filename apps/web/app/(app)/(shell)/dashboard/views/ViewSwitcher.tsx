@@ -183,15 +183,15 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
 
   // Get size classes
   const sizeClasses = {
-    sm: 'h-8 w-8',
-    md: 'h-10 w-10',
-    lg: 'h-12 w-12'
+    sm: 'h-icon-lg w-icon-lg',
+    md: 'h-icon-xl w-icon-xl',
+    lg: 'h-icon-2xl w-icon-2xl'
   };
 
   const iconSizeClasses = {
-    sm: 'h-4 w-4',
-    md: 'h-5 w-5',
-    lg: 'h-6 w-6'
+    sm: 'h-icon-xs w-icon-xs',
+    md: 'h-icon-sm w-icon-sm',
+    lg: 'h-icon-md w-icon-md'
   };
 
   // View Button Component
@@ -218,7 +218,7 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
       >
         <Icon className={iconSizeClasses[size]} />
         {isFavorite && (
-          <div className="absolute -top-1 -right-1 h-2 w-2 bg-yellow-400 rounded-full" />
+          <div className="absolute -top-xs -right-1 h-2 w-2 bg-yellow-400 rounded-full" />
         )}
         {showLabels && (
           <span className="sr-only">{config.label}</span>
@@ -228,7 +228,7 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
   };
 
   return (
-    <div className={cn('flex items-center gap-1', className)}>
+    <div className={cn('flex items-center gap-xs', className)}>
       {/* Visible View Buttons */}
       {visibleViews.map((config) => (
         <ViewButton
@@ -252,7 +252,7 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
               <span className="sr-only">More views</span>
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56">
+          <DropdownMenuContent align="end" className="w-container-xs">
             {overflowViews.map((config) => {
               const Icon = config.icon;
               const isActive = currentView === config.type;
@@ -263,13 +263,13 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({
                   key={config.type}
                   onClick={() => handleViewChange(config.type)}
                   className={cn(
-                    'flex items-center gap-3',
+                    'flex items-center gap-sm',
                     isActive && 'bg-accent'
                   )}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-icon-xs w-icon-xs" />
                   <div className="flex-1">
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-xs">
                       <span className="font-medium">{config.label}</span>
                       {config.isPremium && (
                         <Badge variant="secondary" className="text-xs">
@@ -320,7 +320,7 @@ export const ViewCapabilities: React.FC<ViewCapabilitiesProps> = ({
   if (!config) return null;
 
   return (
-    <div className={cn('flex flex-wrap gap-1', className)}>
+    <div className={cn('flex flex-wrap gap-xs', className)}>
       {config.capabilities.map((capability) => (
         <Badge key={capability} variant="outline" className="text-xs">
           {capability.replace('-', ' ')}
@@ -350,13 +350,13 @@ export const ViewSettings: React.FC<ViewSettingsProps> = ({
   // This would contain view-specific settings controls
   // For now, just show a placeholder
   return (
-    <div className={cn('p-4 border rounded-lg', className)}>
-      <div className="flex items-center gap-2 mb-4">
-        <config.icon className="h-5 w-5" />
+    <div className={cn('p-md border rounded-lg', className)}>
+      <div className="flex items-center gap-xs mb-4">
+        <config.icon className="h-icon-sm w-icon-sm" />
         <h3 className="font-medium">{config.label} Settings</h3>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-md">
         {/* View-specific settings would go here */}
         <div className="text-sm text-muted-foreground">
           Settings for {config.label} view
@@ -367,7 +367,7 @@ export const ViewSettings: React.FC<ViewSettingsProps> = ({
           size="sm"
           onClick={() => onSettingsChange(settings)}
         >
-          <Settings className="h-4 w-4 mr-2" />
+          <Settings className="h-icon-xs w-icon-xs mr-2" />
           Configure
         </Button>
       </div>

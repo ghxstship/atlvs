@@ -173,15 +173,15 @@ export default function GanttView({
   return (
     <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
       {/* Gantt Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between p-md border-b border-gray-200">
+        <div className="flex items-center gap-md">
           <h3 className="text-lg font-semibold">Project Timeline</h3>
           <Badge variant="secondary">{tasks.length} files</Badge>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Zoom Controls */}
-          <div className="flex items-center gap-1 border border-gray-300 rounded-md">
+          <div className="flex items-center gap-xs border border-gray-300 rounded-md">
             <Button
               variant={zoom === 'day' ? 'default' : 'ghost'}
               size="sm"
@@ -206,15 +206,15 @@ export default function GanttView({
           </div>
 
           {/* Navigation */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-xs">
             <Button variant="outline" size="sm" onClick={() => navigateTimeline('prev')}>
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-icon-xs h-icon-xs" />
             </Button>
             <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())}>
               Today
             </Button>
             <Button variant="outline" size="sm" onClick={() => navigateTimeline('next')}>
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-icon-xs h-icon-xs" />
             </Button>
           </div>
         </div>
@@ -223,8 +223,8 @@ export default function GanttView({
       {/* Gantt Chart */}
       <div className="flex" style={{ height: '600px' }}>
         {/* Task List */}
-        <div className="w-80 border-r border-gray-200 overflow-y-auto">
-          <div className="sticky top-0 bg-gray-50 border-b border-gray-200 p-3 font-medium text-sm">
+        <div className="w-container-md border-r border-gray-200 overflow-y-auto">
+          <div className="sticky top-0 bg-gray-50 border-b border-gray-200 p-sm font-medium text-sm">
             Tasks
           </div>
           <div className="divide-y divide-gray-200">
@@ -235,24 +235,24 @@ export default function GanttView({
               return (
                 <div
                   key={task.id}
-                  className={`p-3 hover:bg-gray-50 cursor-pointer ${
+                  className={`p-sm hover:bg-gray-50 cursor-pointer ${
                     selectedTask === task.id ? 'bg-blue-50' : ''
                   }`}
                   onClick={() => setSelectedTask(task.id)}
                 >
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-sm">
                     <div className="flex-shrink-0 mt-1">
                       <div className={`w-3 h-3 rounded-full ${getStatusColor(task.status)}`} />
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center gap-2 mb-1">
-                        <CategoryIcon className="w-4 h-4 text-gray-500" />
+                      <div className="flex items-center gap-xs mb-1">
+                        <CategoryIcon className="w-icon-xs h-icon-xs text-gray-500" />
                         <span className="font-medium text-sm truncate">{task.name}</span>
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs text-gray-500">
-                        <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-sm text-xs text-gray-500">
+                        <div className="flex items-center gap-xs">
                           <Calendar className="w-3 h-3" />
                           <span>{format(task.start, 'MMM d')} - {format(task.end, 'MMM d')}</span>
                         </div>
@@ -281,25 +281,25 @@ export default function GanttView({
                     {file && (
                       <DropdownMenu>
                         <DropdownMenu.Trigger asChild>
-                          <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                          <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
                             <MoreHorizontal className="w-3 h-3" />
                           </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content align="end">
                           <DropdownMenu.Item onClick={() => onView(file)}>
-                            <Eye className="w-4 h-4 mr-2" />
+                            <Eye className="w-icon-xs h-icon-xs mr-2" />
                             View
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onEdit(file)}>
-                            <Edit className="w-4 h-4 mr-2" />
+                            <Edit className="w-icon-xs h-icon-xs mr-2" />
                             Edit
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onDownload(file)}>
-                            <Download className="w-4 h-4 mr-2" />
+                            <Download className="w-icon-xs h-icon-xs mr-2" />
                             Download
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onShare(file)}>
-                            <Share className="w-4 h-4 mr-2" />
+                            <Share className="w-icon-xs h-icon-xs mr-2" />
                             Share
                           </DropdownMenu.Item>
                           <DropdownMenu.Separator />
@@ -307,7 +307,7 @@ export default function GanttView({
                             onClick={() => onDelete(file)}
                             className="text-red-600"
                           >
-                            <Trash2 className="w-4 h-4 mr-2" />
+                            <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                             Delete
                           </DropdownMenu.Item>
                         </DropdownMenu.Content>
@@ -327,7 +327,7 @@ export default function GanttView({
             {timelineHeaders.map((header, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 border-r border-gray-200 px-2 py-3 text-center"
+                className="flex-shrink-0 border-r border-gray-200 px-xs py-sm text-center"
                 style={{
                   width: zoom === 'day' ? '40px' : zoom === 'week' ? '120px' : '160px',
                   minWidth: zoom === 'day' ? '40px' : zoom === 'week' ? '120px' : '160px'
@@ -360,11 +360,11 @@ export default function GanttView({
               return (
                 <div
                   key={task.id}
-                  className="relative h-12 border-b border-gray-100 flex items-center"
+                  className="relative h-icon-2xl border-b border-gray-100 flex items-center"
                   style={{ top: `${rowIndex * 48}px` }}
                 >
                   <div
-                    className={`absolute h-8 rounded cursor-pointer border-2 hover:shadow-md transition-shadow ${
+                    className={`absolute h-icon-lg rounded cursor-pointer border-2 hover:shadow-md transition-shadow ${
                       isSelected ? 'border-blue-500 shadow-md' : 'border-gray-300'
                     } ${getCategoryColor(task.category)}`}
                     style={{
@@ -375,7 +375,7 @@ export default function GanttView({
                     onClick={() => setSelectedTask(task.id)}
                     title={`${task.name} (${format(task.start, 'MMM d')} - ${format(task.end, 'MMM d')})`}
                   >
-                    <div className="px-2 py-1 text-xs text-white font-medium truncate">
+                    <div className="px-xs py-xs text-xs text-white font-medium truncate">
                       {task.name}
                     </div>
 
@@ -396,7 +396,7 @@ export default function GanttView({
 
       {/* Task Details Panel */}
       {selectedTask && (
-        <div className="border-t border-gray-200 p-4">
+        <div className="border-t border-gray-200 p-md">
           {(() => {
             const task = tasks.find(t => t.id === selectedTask);
             const file = files.find(f => f.id === selectedTask);
@@ -406,15 +406,15 @@ export default function GanttView({
             const CategoryIcon = getCategoryIcon(task.category);
 
             return (
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                  <CategoryIcon className="w-6 h-6 text-gray-600" />
+              <div className="flex items-start gap-md">
+                <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                  <CategoryIcon className="w-icon-md h-icon-md text-gray-600" />
                 </div>
 
                 <div className="flex-1">
                   <h4 className="font-medium text-lg mb-2">{task.name}</h4>
 
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-md mb-4">
                     <div>
                       <div className="text-sm text-gray-500">Start Date</div>
                       <div className="font-medium">{format(task.start, 'MMM d, yyyy')}</div>
@@ -440,17 +440,17 @@ export default function GanttView({
                     </div>
                   )}
 
-                  <div className="flex gap-2">
+                  <div className="flex gap-xs">
                     <Button size="sm" onClick={() => onView(file)}>
-                      <Eye className="w-4 h-4 mr-2" />
+                      <Eye className="w-icon-xs h-icon-xs mr-2" />
                       View Details
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => onEdit(file)}>
-                      <Edit className="w-4 h-4 mr-2" />
+                      <Edit className="w-icon-xs h-icon-xs mr-2" />
                       Edit
                     </Button>
                     <Button size="sm" variant="outline" onClick={() => onDownload(file)}>
-                      <Download className="w-4 h-4 mr-2" />
+                      <Download className="w-icon-xs h-icon-xs mr-2" />
                       Download
                     </Button>
                   </div>

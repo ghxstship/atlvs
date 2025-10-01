@@ -86,8 +86,8 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
     <div className="brand-ghostship stack-xl">
       <div className="brand-ghostship text-center">
         <div className="brand-ghostship mb-lg">
-          <div className="brand-ghostship w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-md">
-            <CheckCircle className="h-12 w-12 color-success" />
+          <div className="brand-ghostship w-component-lg h-component-lg bg-success/10 rounded-full flex items-center justify-center mx-auto mb-md">
+            <CheckCircle className="h-icon-2xl w-icon-2xl color-success" />
           </div>
           <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
             WELCOME TO GHXSTSHIP!
@@ -102,7 +102,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
       <Card className="shadow-modal">
         <CardContent className="p-xl">
           <div className="brand-ghostship text-center mb-lg">
-            <Sparkles className="h-8 w-8 color-accent mx-auto mb-sm" />
+            <Sparkles className="h-icon-lg w-icon-lg color-accent mx-auto mb-sm" />
             <h2 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
               SETUP COMPLETE
             </h2>
@@ -116,8 +116,8 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
               const Icon = item.icon;
               return (
                 <div key={index} className="flex items-center cluster p-md bg-secondary/50 rounded-lg">
-                  <div className="brand-ghostship w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
-                    <Icon className="h-5 w-5 color-accent" />
+                  <div className="brand-ghostship w-icon-xl h-icon-xl bg-accent/10 rounded-full flex items-center justify-center">
+                    <Icon className="h-icon-sm w-icon-sm color-accent" />
                   </div>
                   <div>
                     <h3 className="text-heading-4 color-foreground">{item.title}</h3>
@@ -205,7 +205,7 @@ export function FinalConfirmationStep({ user, data }: FinalConfirmationStepProps
           className="px-xl"
         >
           {loading ? 'Setting up your workspace...' : 'Go to Dashboard'}
-          <ArrowRight className="ml-sm h-4 w-4" />
+          <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
         </Button>
         
         <p className="text-body-sm color-muted mt-md">

@@ -190,7 +190,7 @@ export default function CreateReportClient({
         {/* Basic Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <FileText className="h-5 w-5 color-accent" />
+            <FileText className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Basic Information</h3>
           </div>
           
@@ -221,7 +221,7 @@ export default function CreateReportClient({
             <div className="grid grid-cols-2 gap-md">
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <BarChart3 className="h-4 w-4 inline mr-xs" />
+                  <BarChart3 className="h-icon-xs w-icon-xs inline mr-xs" />
                   Report Type
                 </label>
                 <Select
@@ -258,7 +258,7 @@ export default function CreateReportClient({
         {/* Scheduling */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Calendar className="h-5 w-5 color-success" />
+            <Calendar className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Scheduling</h3>
           </div>
           
@@ -322,7 +322,7 @@ export default function CreateReportClient({
         {/* Parameters & Filters */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Filter className="h-5 w-5 color-secondary" />
+            <Filter className="h-icon-sm w-icon-sm color-secondary" />
             <h3 className="text-body text-heading-4">Parameters & Filters</h3>
           </div>
           
@@ -373,14 +373,14 @@ export default function CreateReportClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.name.trim()}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Create Report'}
           </Button>
         </div>

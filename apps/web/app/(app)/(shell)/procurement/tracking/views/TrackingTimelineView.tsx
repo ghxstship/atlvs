@@ -58,32 +58,32 @@ export default function TrackingTimelineView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'delivered':
- return <CheckCircle className="h-5 w-5 text-green-500" />;
+ return <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />;
  case 'in_transit':
- return <Truck className="h-5 w-5 text-blue-500" />;
+ return <Truck className="h-icon-sm w-icon-sm text-blue-500" />;
  case 'shipped':
- return <Package className="h-5 w-5 text-orange-500" />;
+ return <Package className="h-icon-sm w-icon-sm text-orange-500" />;
  case 'delayed':
- return <AlertCircle className="h-5 w-5 text-red-500" />;
+ return <AlertCircle className="h-icon-sm w-icon-sm text-red-500" />;
  default:
- return <Clock className="h-5 w-5 text-gray-500" />;
+ return <Clock className="h-icon-sm w-icon-sm text-gray-500" />;
  }
  };
 
  const getEventIcon = (eventType: string) => {
  switch (eventType) {
  case 'shipped':
- return <Package className="h-4 w-4 text-orange-500" />;
+ return <Package className="h-icon-xs w-icon-xs text-orange-500" />;
  case 'in_transit':
- return <Truck className="h-4 w-4 text-blue-500" />;
+ return <Truck className="h-icon-xs w-icon-xs text-blue-500" />;
  case 'out_for_delivery':
- return <Truck className="h-4 w-4 text-green-500" />;
+ return <Truck className="h-icon-xs w-icon-xs text-green-500" />;
  case 'delivered':
- return <CheckCircle className="h-4 w-4 text-green-500" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
  case 'exception':
- return <AlertCircle className="h-4 w-4 text-red-500" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs text-red-500" />;
  default:
- return <Clock className="h-4 w-4 text-gray-500" />;
+ return <Clock className="h-icon-xs w-icon-xs text-gray-500" />;
  }
  };
 
@@ -96,13 +96,13 @@ export default function TrackingTimelineView({
 
  if (loading) {
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {Array.from({ length: 3 }).map((_, i) => (
- <Card key={i} className="p-6">
+ <Card key={i} className="p-lg">
  <div className="animate-pulse">
- <div className="h-6 bg-gray-200 rounded w-1/3 mb-4" />
- <div className="h-4 bg-gray-200 rounded w-1/2 mb-2" />
- <div className="h-4 bg-gray-200 rounded w-2/3" />
+ <div className="h-icon-md bg-gray-200 rounded w-1/3 mb-4" />
+ <div className="h-icon-xs bg-gray-200 rounded w-1/2 mb-2" />
+ <div className="h-icon-xs bg-gray-200 rounded w-2/3" />
  </div>
  </Card>
  ))}
@@ -111,10 +111,10 @@ export default function TrackingTimelineView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header Controls */}
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
  onCheckedChange={handleSelectAll}
@@ -131,7 +131,7 @@ export default function TrackingTimelineView({
  {/* Timeline Line */}
  <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-200" />
 
- <div className="space-y-8">
+ <div className="space-y-xl">
  {sortedItems.map((item, index) => {
  const isExpanded = expandedItems.has(item.id);
  const isSelected = selectedItems.includes(item.id);
@@ -141,13 +141,13 @@ export default function TrackingTimelineView({
  return (
  <div key={item.id} className="relative">
  {/* Timeline Node */}
- <div className="absolute left-6 w-4 h-4 bg-white border-2 border-gray-300 rounded-full z-10">
+ <div className="absolute left-6 w-icon-xs h-icon-xs bg-white border-2 border-gray-300 rounded-full z-10">
  <div className="absolute inset-0.5 rounded-full bg-blue-500" />
  </div>
 
- <Card className={`ml-16 p-6 transition-all ${isSelected ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-md'}`}>
+ <Card className={`ml-16 p-lg transition-all ${isSelected ? 'ring-2 ring-blue-500 bg-blue-50' : 'hover:shadow-md'}`}>
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-4 flex-1">
+ <div className="flex items-start gap-md flex-1">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => handleItemSelection(item.id, checked as boolean)}
@@ -157,10 +157,10 @@ export default function TrackingTimelineView({
 
  <div className="flex-1 min-w-0">
  {/* Header */}
- <div className="flex items-center gap-3 mb-3">
+ <div className="flex items-center gap-sm mb-3">
  {getStatusIcon(item.status)}
  <div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Link 
  href={`/procurement/orders/${item.order_id as any as any}`}
  className="font-semibold text-lg text-blue-600 hover:underline"
@@ -181,9 +181,9 @@ export default function TrackingTimelineView({
  </div>
 
  {/* Tracking Info */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
- <div className="flex items-center gap-2">
- <Truck className="h-4 w-4 text-gray-500" />
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md mb-4">
+ <div className="flex items-center gap-xs">
+ <Truck className="h-icon-xs w-icon-xs text-gray-500" />
  <div>
  <p className="text-sm font-medium">{item.carrier}</p>
  <p className="text-xs text-gray-500 font-mono">{item.tracking_number}</p>
@@ -191,8 +191,8 @@ export default function TrackingTimelineView({
  </div>
 
  {item.expected_delivery && (
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4 text-gray-500" />
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-gray-500" />
  <div>
  <p className="text-sm font-medium">Expected</p>
  <p className="text-xs text-gray-500">{formatDate(item.expected_delivery)}</p>
@@ -201,8 +201,8 @@ export default function TrackingTimelineView({
  )}
 
  {item.actual_delivery && (
- <div className="flex items-center gap-2">
- <CheckCircle className="h-4 w-4 text-green-500" />
+ <div className="flex items-center gap-xs">
+ <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />
  <div>
  <p className="text-sm font-medium">Delivered</p>
  <p className="text-xs text-gray-500">{formatDate(item.actual_delivery)}</p>
@@ -211,8 +211,8 @@ export default function TrackingTimelineView({
  )}
 
  {performance && (
- <div className="flex items-center gap-2">
- <Clock className="h-4 w-4 text-gray-500" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs text-gray-500" />
  <div>
  <p className="text-sm font-medium">Performance</p>
  <Badge variant={getPerformanceColor(performance.status)} className="text-xs">
@@ -227,15 +227,15 @@ export default function TrackingTimelineView({
 
  {/* Latest Event */}
  {latestEvent && (
- <div className="bg-gray-50 rounded-lg p-3 mb-4">
- <div className="flex items-center gap-2 mb-1">
+ <div className="bg-gray-50 rounded-lg p-sm mb-4">
+ <div className="flex items-center gap-xs mb-1">
  {getEventIcon(latestEvent.event_type)}
  <span className="font-medium text-sm">Latest Update</span>
  <span className="text-xs text-gray-500">{formatDateTime(latestEvent.timestamp)}</span>
  </div>
  <p className="text-sm text-gray-700">{latestEvent.description}</p>
  {latestEvent.location && (
- <div className="flex items-center gap-1 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <MapPin className="h-3 w-3 text-gray-400" />
  <span className="text-xs text-gray-500">{latestEvent.location}</span>
  </div>
@@ -251,20 +251,20 @@ export default function TrackingTimelineView({
  onClick={() => toggleExpanded(item.id)}
  className="mb-4"
  >
- <ChevronRight className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
+ <ChevronRight className={`h-icon-xs w-icon-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`} />
  {isExpanded ? 'Hide' : 'Show'} tracking history ({item.events.length - 1} more events)
  </Button>
  )}
 
  {isExpanded && item.events && (
- <div className="space-y-3 mb-4 pl-4 border-l-2 border-gray-200">
+ <div className="space-y-sm mb-4 pl-4 border-l-2 border-gray-200">
  {item.events.slice(1).map((event, eventIndex) => (
- <div key={eventIndex} className="flex items-start gap-3">
+ <div key={eventIndex} className="flex items-start gap-sm">
  <div className="mt-0.5">
  {getEventIcon(event.event_type)}
  </div>
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <span className="font-medium text-sm capitalize">
  {event.event_type.replace('_', ' ')}
  </span>
@@ -274,7 +274,7 @@ export default function TrackingTimelineView({
  </div>
  <p className="text-sm text-gray-700">{event.description}</p>
  {event.location && (
- <div className="flex items-center gap-1 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <MapPin className="h-3 w-3 text-gray-400" />
  <span className="text-xs text-gray-500">{event.location}</span>
  </div>
@@ -287,19 +287,19 @@ export default function TrackingTimelineView({
 
  {/* Route Info */}
  {(item.origin_address || item.destination_address) && (
- <div className="flex items-center gap-4 text-sm text-gray-600">
+ <div className="flex items-center gap-md text-sm text-gray-600">
  {item.origin_address && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4 text-gray-400" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-gray-400" />
  <span>From: {item.origin_address.city}, {item.origin_address.state}</span>
  </div>
  )}
  {item.origin_address && item.destination_address && (
- <ChevronRight className="h-4 w-4 text-gray-400" />
+ <ChevronRight className="h-icon-xs w-icon-xs text-gray-400" />
  )}
  {item.destination_address && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4 text-blue-500" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-blue-500" />
  <span>To: {item.destination_address.city}, {item.destination_address.state}</span>
  </div>
  )}
@@ -309,15 +309,15 @@ export default function TrackingTimelineView({
  </div>
 
  {/* Actions */}
- <div className="flex items-center gap-2 ml-4">
+ <div className="flex items-center gap-xs ml-4">
  {onViewItem && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onViewItem(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEditItem && (
@@ -325,9 +325,9 @@ export default function TrackingTimelineView({
  variant="ghost"
  size="sm"
  onClick={() => onEditItem(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onTrackPackage && (
@@ -335,9 +335,9 @@ export default function TrackingTimelineView({
  variant="ghost"
  size="sm"
  onClick={() => onTrackPackage(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <ExternalLink className="h-4 w-4" />
+ <ExternalLink className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -350,8 +350,8 @@ export default function TrackingTimelineView({
  </div>
 
  {items.length === 0 && (
- <div className="text-center py-12">
- <Clock className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Clock className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
  <h3 className="text-lg font-medium text-gray-900 mb-2">No tracking timeline available</h3>
  <p className="text-gray-500">Tracking events will appear here as they occur.</p>
  </div>

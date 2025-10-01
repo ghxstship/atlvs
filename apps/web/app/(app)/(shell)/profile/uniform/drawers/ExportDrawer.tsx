@@ -163,7 +163,7 @@ export default function ExportDrawer({
  onClick={() => setValue('format', format.id as unknown)}
  >
  <div className="flex items-center space-x-sm">
- <Icon className="h-5 w-5 text-primary" />
+ <Icon className="h-icon-sm w-icon-sm text-primary" />
  <div>
  <div className="font-medium">{format.label}</div>
  <div className="text-xs text-muted-foreground">{format.description}</div>
@@ -200,7 +200,7 @@ export default function ExportDrawer({
  <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between">
  <div className="flex items-center space-x-sm">
- <FormatIcon className="h-5 w-5 text-primary" />
+ <FormatIcon className="h-icon-sm w-icon-sm text-primary" />
  <span className="font-medium">Export Summary</span>
  </div>
  <Badge variant="secondary">
@@ -367,7 +367,7 @@ export default function ExportDrawer({
  Cancel
  </Button>
  <Button onClick={handleSubmit(onSubmit)} disabled={isSubmitting}>
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  {isSubmitting ? 'Exporting...' : 'Export Data'}
  </Button>
  </div>

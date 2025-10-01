@@ -100,17 +100,17 @@ export function PerformanceMonitoringDashboard() {
   };
 
   const getMetricIcon = (value: number, thresholds: { good: number; poor: number }) => {
-    if (value <= thresholds.good) return <TrendingUp className="h-4 w-4 text-green-600" />;
-    if (value <= thresholds.poor) return <Activity className="h-4 w-4 text-yellow-600" />;
-    return <AlertTriangle className="h-4 w-4 text-red-600" />;
+    if (value <= thresholds.good) return <TrendingUp className="h-icon-xs w-icon-xs text-green-600" />;
+    if (value <= thresholds.poor) return <Activity className="h-icon-xs w-icon-xs text-yellow-600" />;
+    return <AlertTriangle className="h-icon-xs w-icon-xs text-red-600" />;
   };
 
   if (!metrics) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Zap className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Zap className="h-icon-sm w-icon-sm" />
             Performance Monitoring
           </CardTitle>
         </CardHeader>
@@ -122,17 +122,17 @@ export function PerformanceMonitoringDashboard() {
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {alerts.length > 0 && (
         <Card className="border-red-200 bg-red-50">
           <CardHeader>
-            <CardTitle className="text-red-800 flex items-center gap-2">
-              <AlertTriangle className="h-5 w-5" />
+            <CardTitle className="text-red-800 flex items-center gap-xs">
+              <AlertTriangle className="h-icon-sm w-icon-sm" />
               Performance Alerts
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <ul className="space-y-1">
+            <ul className="space-y-xs">
               {alerts.map((alert, index) => (
                 <li key={index} className="text-red-700 text-sm">• {alert}</li>
               ))}
@@ -141,7 +141,7 @@ export function PerformanceMonitoringDashboard() {
         </Card>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         {/* Core Web Vitals */}
         <Card>
           <CardHeader className="pb-2">
@@ -218,7 +218,7 @@ export function PerformanceMonitoringDashboard() {
           <CardTitle>Additional Performance Metrics</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
             <div>
               <p className="text-sm font-medium text-gray-600">First Contentful Paint</p>
               <p className="text-lg font-semibold">

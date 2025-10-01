@@ -54,21 +54,21 @@ export default function PerformanceTableView({
 
  const getSortIcon = (field: SortField) => {
  if (sort.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sort.direction === 'asc' ? 
- <ArrowUp className="h-4 w-4" /> : 
- <ArrowDown className="h-4 w-4" />;
+ <ArrowUp className="h-icon-xs w-icon-xs" /> : 
+ <ArrowDown className="h-icon-xs w-icon-xs" />;
  };
 
  if (loading) {
  return (
  <Card className="overflow-hidden">
- <div className="p-4">
- <div className="animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-full"></div>
+ <div className="p-md">
+ <div className="animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-full"></div>
  {[...Array(5)].map((_, i) => (
- <div key={i} className="h-12 bg-muted rounded"></div>
+ <div key={i} className="h-icon-2xl bg-muted rounded"></div>
  ))}
  </div>
  </div>
@@ -78,9 +78,9 @@ export default function PerformanceTableView({
 
  if (reviews.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Star className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Star className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Performance Reviews</h3>
  <p className="text-muted-foreground mt-2">
@@ -95,9 +95,9 @@ export default function PerformanceTableView({
  return (
  <Card className="overflow-hidden">
  {/* Header with bulk selection */}
- <div className="p-4 border-b">
+ <div className="p-md border-b">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -108,7 +108,7 @@ export default function PerformanceTableView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -125,14 +125,14 @@ export default function PerformanceTableView({
  <table className="w-full">
  <thead className="bg-muted/50">
  <tr>
- <th className="w-12 p-4">
+ <th className="w-icon-2xl p-md">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
  onCheckedChange={(checked) => onSelectAll(!!checked)}
  />
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -143,8 +143,8 @@ export default function PerformanceTableView({
  {getSortIcon('review_period_start')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Type</th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">Type</th>
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -155,7 +155,7 @@ export default function PerformanceTableView({
  {getSortIcon('status')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -166,10 +166,10 @@ export default function PerformanceTableView({
  {getSortIcon('overall_rating')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Reviewer</th>
- <th className="text-left p-4 font-medium">Goals</th>
- <th className="text-left p-4 font-medium">Promotion</th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">Reviewer</th>
+ <th className="text-left p-md font-medium">Goals</th>
+ <th className="text-left p-md font-medium">Promotion</th>
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -180,7 +180,7 @@ export default function PerformanceTableView({
  {getSortIcon('created_at')}
  </Button>
  </th>
- <th className="w-24 p-4 font-medium">Actions</th>
+ <th className="w-component-lg p-md font-medium">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -195,13 +195,13 @@ export default function PerformanceTableView({
  isSelected ? 'bg-primary/5' : ''
  } ${index % 2 === 0 ? 'bg-background' : 'bg-muted/20'}`}
  >
- <td className="p-4">
+ <td className="p-md">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(review.id, !!checked)}
  />
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {formatDateShort(review.review_period_start)}
  </div>
@@ -209,19 +209,19 @@ export default function PerformanceTableView({
  to {formatDateShort(review.review_period_end)}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {REVIEW_TYPE_LABELS[review.review_type]}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <Badge variant={getStatusBadgeVariant(review.status)}>
  {REVIEW_STATUS_LABELS[review.status]}
  </Badge>
  </td>
- <td className="p-4">
- <div className="flex items-center gap-2">
- <div className="flex items-center gap-1">
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
+ <div className="flex items-center gap-xs">
  {[...Array(5)].map((_, i) => (
  <Star
  key={i}
@@ -241,12 +241,12 @@ export default function PerformanceTableView({
  {getRatingLabel(rating)}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {review.reviewer_name || 'Not assigned'}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="text-center">
  <div className="font-medium">
  {review.goals ? review.goals.length : 0}
@@ -256,25 +256,25 @@ export default function PerformanceTableView({
  </div>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <Badge variant={review.promotion_recommended ? 'default' : 'outline'}>
  {review.promotion_recommended ? 'Yes' : 'No'}
  </Badge>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="text-sm">
  {formatDateShort(review.created_at)}
  </div>
  </td>
- <td className="p-4">
- <div className="flex items-center gap-1">
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(review)}
  title="View"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -282,7 +282,7 @@ export default function PerformanceTableView({
  onClick={() => onEdit(review)}
  title="Edit"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -290,7 +290,7 @@ export default function PerformanceTableView({
  onClick={() => onDelete(review)}
  title="Delete"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>
@@ -302,12 +302,12 @@ export default function PerformanceTableView({
  </div>
 
  {/* Footer */}
- <div className="p-4 border-t bg-muted/20">
+ <div className="p-md border-t bg-muted/20">
  <div className="flex items-center justify-between text-sm text-muted-foreground">
  <div>
  Showing {reviews.length} performance reviews
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span>Rows per page: 50</span>
  <Button variant="outline" size="sm">
  Previous

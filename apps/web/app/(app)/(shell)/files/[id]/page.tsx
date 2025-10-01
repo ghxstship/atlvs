@@ -135,7 +135,7 @@ export default function FileDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+          <div className="w-icon-lg h-icon-lg border-4 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
           <p className="text-gray-600">Loading file...</p>
         </div>
       </div>
@@ -146,11 +146,11 @@ export default function FileDetailPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+          <FileText className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-900 mb-2">File Not Found</h2>
           <p className="text-gray-600 mb-4">{error || 'The requested file could not be found.'}</p>
           <Button onClick={() => router.push('/files')}>
-            <ArrowLeft className="w-4 h-4 mr-2" />
+            <ArrowLeft className="w-icon-xs h-icon-xs mr-2" />
             Back to Files
           </Button>
         </div>
@@ -165,22 +165,22 @@ export default function FileDetailPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl">
+          <div className="flex items-center justify-between h-component-md">
+            <div className="flex items-center gap-md">
               <Button
                 variant="ghost"
                 onClick={() => router.push('/files')}
               >
-                <ArrowLeft className="w-4 h-4 mr-2" />
+                <ArrowLeft className="w-icon-xs h-icon-xs mr-2" />
                 Back to Files
               </Button>
 
-              <Separator orientation="vertical" className="h-6" />
+              <Separator orientation="vertical" className="h-icon-md" />
 
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
-                  <CategoryIcon className="w-5 h-5 text-gray-600" />
+              <div className="flex items-center gap-sm">
+                <div className="w-icon-xl h-icon-xl rounded-lg bg-gray-100 flex items-center justify-center">
+                  <CategoryIcon className="w-icon-sm h-icon-sm text-gray-600" />
                 </div>
                 <div>
                   <h1 className="text-lg font-semibold text-gray-900">{file.title}</h1>
@@ -191,38 +191,38 @@ export default function FileDetailPage() {
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <Badge variant={file.status === 'active' ? 'default' : 'secondary'}>
                 {file.status}
               </Badge>
 
               <Button variant="outline" onClick={handleView}>
-                <Eye className="w-4 h-4 mr-2" />
+                <Eye className="w-icon-xs h-icon-xs mr-2" />
                 View Details
               </Button>
 
               <Button variant="outline" onClick={handleDownload}>
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="w-icon-xs h-icon-xs mr-2" />
                 Download
               </Button>
 
               <DropdownMenu>
                 <DropdownMenu.Trigger asChild>
                   <Button variant="outline">
-                    <MoreHorizontal className="w-4 h-4" />
+                    <MoreHorizontal className="w-icon-xs h-icon-xs" />
                   </Button>
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content align="end">
                   <DropdownMenu.Item onClick={handleEdit}>
-                    <Edit className="w-4 h-4 mr-2" />
+                    <Edit className="w-icon-xs h-icon-xs mr-2" />
                     Edit
                   </DropdownMenu.Item>
                   <DropdownMenu.Item onClick={handleShare}>
-                    <Share className="w-4 h-4 mr-2" />
+                    <Share className="w-icon-xs h-icon-xs mr-2" />
                     Share
                   </DropdownMenu.Item>
                   <DropdownMenu.Item onClick={() => setShowHistoryDrawer(true)}>
-                    <History className="w-4 h-4 mr-2" />
+                    <History className="w-icon-xs h-icon-xs mr-2" />
                     View History
                   </DropdownMenu.Item>
                   <DropdownMenu.Separator />
@@ -230,7 +230,7 @@ export default function FileDetailPage() {
                     onClick={handleDelete}
                     className="text-red-600"
                   >
-                    <Trash2 className="w-4 h-4 mr-2" />
+                    <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                     Delete
                   </DropdownMenu.Item>
                 </DropdownMenu.Content>
@@ -241,25 +241,25 @@ export default function FileDetailPage() {
       </div>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl py-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
           {/* File Preview */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-lg">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">File Preview</h2>
 
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-12 text-center">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-xsxl text-center">
                 {file.category === 'image' ? (
-                  <div className="space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                      <FileText className="w-12 h-12 text-gray-400" />
+                  <div className="space-y-md">
+                    <div className="w-component-lg h-component-lg mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
+                      <FileText className="w-icon-2xl h-icon-2xl text-gray-400" />
                     </div>
                     <p className="text-gray-500">Image preview not available</p>
                   </div>
                 ) : (
-                  <div className="space-y-4">
-                    <div className="w-24 h-24 mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
-                      <CategoryIcon className="w-12 h-12 text-gray-400" />
+                  <div className="space-y-md">
+                    <div className="w-component-lg h-component-lg mx-auto bg-gray-100 rounded-lg flex items-center justify-center">
+                      <CategoryIcon className="w-icon-2xl h-icon-2xl text-gray-400" />
                     </div>
                     <p className="text-gray-500">
                       Preview not available for {file.category} files
@@ -271,7 +271,7 @@ export default function FileDetailPage() {
                   onClick={handleDownload}
                   className="mt-4"
                 >
-                  <Download className="w-4 h-4 mr-2" />
+                  <Download className="w-icon-xs h-icon-xs mr-2" />
                   Download File
                 </Button>
               </div>
@@ -279,12 +279,12 @@ export default function FileDetailPage() {
           </div>
 
           {/* File Information */}
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {/* Basic Info */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">File Information</h3>
 
-              <div className="space-y-4">
+              <div className="space-y-md">
                 <div>
                   <div className="text-sm font-medium text-gray-500">Title</div>
                   <div className="text-sm text-gray-900 mt-1">{file.title}</div>
@@ -297,25 +297,25 @@ export default function FileDetailPage() {
                   </div>
                 )}
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-md">
                   <div>
                     <div className="text-sm font-medium text-gray-500">Category</div>
-                    <div className="flex items-center gap-2 mt-1">
-                      <CategoryIcon className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-xs mt-1">
+                      <CategoryIcon className="w-icon-xs h-icon-xs text-gray-400" />
                       <span className="text-sm text-gray-900 capitalize">{file.category}</span>
                     </div>
                   </div>
 
                   <div>
                     <div className="text-sm font-medium text-gray-500">Access</div>
-                    <div className="flex items-center gap-2 mt-1">
-                      <AccessIcon className="w-4 h-4 text-gray-400" />
+                    <div className="flex items-center gap-xs mt-1">
+                      <AccessIcon className="w-icon-xs h-icon-xs text-gray-400" />
                       <span className="text-sm text-gray-900 capitalize">{file.access_level}</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-md">
                   <div>
                     <div className="text-sm font-medium text-gray-500">Size</div>
                     <div className="text-sm text-gray-900 mt-1">{formatFileSize(file.file_size || 0)}</div>
@@ -333,9 +333,9 @@ export default function FileDetailPage() {
 
             {/* Tags */}
             {file.tags && file.tags.length > 0 && (
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <div className="bg-white rounded-lg shadow-sm p-lg">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4">Tags</h3>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-xs">
                   {file.tags.map((tag, index) => (
                     <Badge key={index} variant="outline">
                       <Tag className="w-3 h-3 mr-1" />
@@ -347,21 +347,21 @@ export default function FileDetailPage() {
             )}
 
             {/* Metadata */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Metadata</h3>
 
-              <div className="space-y-3">
+              <div className="space-y-sm">
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-gray-400" />
+                  <div className="flex items-center gap-xs">
+                    <User className="w-icon-xs h-icon-xs text-gray-400" />
                     <span className="text-sm text-gray-600">Created by</span>
                   </div>
                   <span className="text-sm text-gray-900">{file.created_by}</span>
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-gray-400" />
+                  <div className="flex items-center gap-xs">
+                    <Calendar className="w-icon-xs h-icon-xs text-gray-400" />
                     <span className="text-sm text-gray-600">Created</span>
                   </div>
                   <span className="text-sm text-gray-900">
@@ -370,8 +370,8 @@ export default function FileDetailPage() {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-gray-400" />
+                  <div className="flex items-center gap-xs">
+                    <Clock className="w-icon-xs h-icon-xs text-gray-400" />
                     <span className="text-sm text-gray-600">Modified</span>
                   </div>
                   <span className="text-sm text-gray-900">
@@ -382,27 +382,27 @@ export default function FileDetailPage() {
             </div>
 
             {/* Actions */}
-            <div className="bg-white rounded-lg shadow-sm p-6">
+            <div className="bg-white rounded-lg shadow-sm p-lg">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Actions</h3>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Button onClick={handleDownload} className="w-full justify-start">
-                  <Download className="w-4 h-4 mr-2" />
+                  <Download className="w-icon-xs h-icon-xs mr-2" />
                   Download File
                 </Button>
 
                 <Button variant="outline" onClick={handleShare} className="w-full justify-start">
-                  <Share className="w-4 h-4 mr-2" />
+                  <Share className="w-icon-xs h-icon-xs mr-2" />
                   Share File
                 </Button>
 
                 <Button variant="outline" onClick={handleEdit} className="w-full justify-start">
-                  <Edit className="w-4 h-4 mr-2" />
+                  <Edit className="w-icon-xs h-icon-xs mr-2" />
                   Edit Details
                 </Button>
 
                 <Button variant="outline" onClick={() => setShowHistoryDrawer(true)} className="w-full justify-start">
-                  <History className="w-4 h-4 mr-2" />
+                  <History className="w-icon-xs h-icon-xs mr-2" />
                   View History
                 </Button>
 
@@ -413,7 +413,7 @@ export default function FileDetailPage() {
                   onClick={handleDelete}
                   className="w-full justify-start"
                 >
-                  <Trash2 className="w-4 h-4 mr-2" />
+                  <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                   Delete File
                 </Button>
               </div>

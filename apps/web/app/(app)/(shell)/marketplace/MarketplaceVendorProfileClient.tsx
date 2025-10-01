@@ -202,12 +202,12 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <div className="brand-marketplace flex items-start justify-between">
  <div className="brand-marketplace flex items-start cluster">
  <div className="brand-marketplace relative">
- <div className="brand-marketplace w-24 h-24 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-accent-foreground text-heading-3">
+ <div className="brand-marketplace w-component-lg h-component-lg rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center color-accent-foreground text-heading-3">
  {profile?.display_name?.charAt(0) || 'V'}
  </div>
  {profile?.verified && (
  <div className="brand-marketplace absolute -bottom-1 -right-1 bg-success rounded-full p-xs">
- <CheckCircle className="h-5 w-5 text-background" />
+ <CheckCircle className="h-icon-sm w-icon-sm text-background" />
  </div>
  )}
  </div>
@@ -219,14 +219,14 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  {profile?.availability_status || 'Available'}
  </Badge>
  <div className="brand-marketplace flex items-center">
- <Star className="h-4 w-4 color-warning fill-warning" />
+ <Star className="h-icon-xs w-icon-xs color-warning fill-warning" />
  <span className="ml-xs text-body-sm">{profile?.rating || 0} ({profile?.total_reviews || 0} reviews)</span>
  </div>
  </div>
  </div>
  </div>
  <Button onClick={() => setEditMode(!editMode)} variant="outline">
- <Edit className="h-4 w-4 mr-sm" />
+ <Edit className="h-icon-xs w-icon-xs mr-sm" />
  {editMode ? 'Cancel' : 'Edit Profile'}
  </Button>
  </div>
@@ -389,19 +389,19 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
  <div className="brand-marketplace stack-md">
  <div className="brand-marketplace flex items-center">
- <Briefcase className="h-5 w-5 mr-sm color-muted" />
+ <Briefcase className="h-icon-sm w-icon-sm mr-sm color-muted" />
  <span>{profile?.years_experience || 0} years experience</span>
  </div>
  <div className="brand-marketplace flex items-center">
- <User className="h-5 w-5 mr-sm color-muted" />
+ <User className="h-icon-sm w-icon-sm mr-sm color-muted" />
  <span>Team of {profile?.team_size || 1}</span>
  </div>
  <div className="brand-marketplace flex items-center">
- <DollarSign className="h-5 w-5 mr-sm color-muted" />
+ <DollarSign className="h-icon-sm w-icon-sm mr-sm color-muted" />
  <span>${profile?.hourly_rate || 0}/hour</span>
  </div>
  <div className="brand-marketplace flex items-center">
- <Clock className="h-5 w-5 mr-sm color-muted" />
+ <Clock className="h-icon-sm w-icon-sm mr-sm color-muted" />
  <span>Responds {profile?.response_time || 'within 24 hours'}</span>
  </div>
  </div>
@@ -420,18 +420,18 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <h3 className="text-body text-heading-4 mb-md">Contact</h3>
  <div className="brand-marketplace stack-sm">
  <div className="brand-marketplace flex items-center">
- <Mail className="h-4 w-4 mr-sm color-muted" />
+ <Mail className="h-icon-xs w-icon-xs mr-sm color-muted" />
  <span className="text-body-sm">{profile?.email}</span>
  </div>
  {profile?.phone && (
  <div className="brand-marketplace flex items-center">
- <Phone className="h-4 w-4 mr-sm color-muted" />
+ <Phone className="h-icon-xs w-icon-xs mr-sm color-muted" />
  <span className="text-body-sm">{profile?.phone}</span>
  </div>
  )}
  {profile?.website && (
  <div className="brand-marketplace flex items-center">
- <Globe className="h-4 w-4 mr-sm color-muted" />
+ <Globe className="h-icon-xs w-icon-xs mr-sm color-muted" />
  <a href="#" target="_blank" rel="noopener noreferrer" 
  className="text-body-sm color-accent hover:underline">
  Website
@@ -440,7 +440,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  )}
  {profile?.address && (
  <div className="brand-marketplace flex items-start">
- <MapPin className="h-4 w-4 mr-sm mt-0.5 color-muted" />
+ <MapPin className="h-icon-xs w-icon-xs mr-sm mt-0.5 color-muted" />
  <span className="text-body-sm">
  {profile.address.city}, {profile.address.state}
  </span>
@@ -453,9 +453,9 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <div className="brand-marketplace stack-sm">
  <div className="brand-marketplace flex items-center">
  {profile?.verified ? (
- <CheckCircle className="h-4 w-4 mr-sm color-success" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-sm color-success" />
  ) : (
- <AlertCircle className="h-4 w-4 mr-sm color-warning" />
+ <AlertCircle className="h-icon-xs w-icon-xs mr-sm color-warning" />
  )}
  <span className="text-body-sm">
  {profile?.verified ? 'Verified Vendor' : 'Pending Verification'}
@@ -474,7 +474,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <div className="brand-marketplace flex justify-between items-center">
  <h3 className="text-body text-heading-4">Portfolio Items</h3>
  <Button onClick={() => handleOpenDrawer('portfolio')}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Add Portfolio Item
  </Button>
  </div>
@@ -484,7 +484,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <Card key={item.id} className="overflow-hidden">
  <div className="brand-marketplace aspect-video bg-gradient-to-br from-primary to-secondary relative">
  {item.featured && (
- <Badge className="absolute top-2 right-2" variant="secondary">
+ <Badge className="absolute top-xs right-2" variant="secondary">
  Featured
  </Badge>
  )}
@@ -492,10 +492,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <div className="brand-marketplace p-md">
  <h4 className="text-body text-heading-4">{item.title}</h4>
  <p className="text-body-sm color-muted mt-xs">{item.category}</p>
- <p className="text-body-sm mt-sm line-clamp-2">{item.description}</p>
+ <p className="text-body-sm mt-sm line-clamp-xs">{item.description}</p>
  <div className="brand-marketplace flex items-center justify-between mt-md">
  <div className="brand-marketplace flex items-center cluster-sm text-body-sm color-muted">
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  <span>{item.views || 0}</span>
  </div>
  <div className="brand-marketplace flex cluster-sm">
@@ -503,10 +503,10 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  variant="ghost"
  onClick={() => handleOpenDrawer('portfolio', item)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="ghost">
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -522,7 +522,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  <div className="brand-marketplace flex justify-between items-center">
  <h3 className="text-body text-heading-4">Services</h3>
  <Button onClick={() => handleOpenDrawer('service')}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Add Service
  </Button>
  </div>
@@ -537,7 +537,7 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
  </Badge>
  </div>
  <p className="text-body-sm color-muted mb-sm">{service.category}</p>
- <p className="text-body-sm line-clamp-2 mb-md">{service.description}</p>
+ <p className="text-body-sm line-clamp-xs mb-md">{service.description}</p>
  <div className="brand-marketplace stack-sm">
  <div className="brand-marketplace flex justify-between text-body-sm">
  <span>Starting at</span>
@@ -583,8 +583,8 @@ export default function VendorProfileClient({ userId, orgId }: VendorProfileClie
 
  if (loading) {
  return (
- <div className="brand-marketplace flex items-center justify-center h-64">
- <div className="brand-marketplace animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="brand-marketplace flex items-center justify-center h-container-sm">
+ <div className="brand-marketplace animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  </div>
  );
  }

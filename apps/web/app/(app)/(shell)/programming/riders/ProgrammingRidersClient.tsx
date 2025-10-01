@@ -179,18 +179,18 @@ export default function ProgrammingRidersClient({ orgId, userId, userEmail }: Pr
  <div className="stack-md">
  <div className="flex items-center justify-between mb-md">
  <div className="flex items-center gap-sm">
- <FileCheck className="h-6 w-6 text-primary" />
+ <FileCheck className="h-icon-md w-icon-md text-primary" />
  <h1 className="text-heading-3">Riders</h1>
  </div>
  <div className="flex items-center gap-sm">
  <ViewSwitcher />
  <DataActions />
  <Button onClick={() => setCreateDrawerOpen(true)}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Rider
  </Button>
  <Button variant="outline" onClick={loadData} disabled={loading}>
- <RefreshCcw className="mr-2 h-4 w-4" />
+ <RefreshCcw className="mr-2 h-icon-xs w-icon-xs" />
  Refresh
  </Button>
  </div>

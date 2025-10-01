@@ -203,8 +203,8 @@ export default function CreateDrawer({
     const Icon = config.icon;
 
     return (
-      <div className={`flex items-center gap-2 text-sm ${config.className}`}>
-        <Icon className={`w-4 h-4 ${autoSaveStatus === 'saving' ? 'animate-spin' : ''}`} />
+      <div className={`flex items-center gap-xs text-sm ${config.className}`}>
+        <Icon className={`w-icon-xs h-icon-xs ${autoSaveStatus === 'saving' ? 'animate-spin' : ''}`} />
         {config.text}
       </div>
     );
@@ -226,7 +226,7 @@ export default function CreateDrawer({
         </DrawerHeader>
 
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col h-full">
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-lg">
             <Tabs defaultValue="basic" className="w-full">
               <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="basic">Basic Info</TabsTrigger>
@@ -235,9 +235,9 @@ export default function CreateDrawer({
               </TabsList>
 
               {/* Basic Information Tab */}
-              <TabsContent value="basic" className="space-y-6 mt-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+              <TabsContent value="basic" className="space-y-lg mt-6">
+                <div className="grid grid-cols-2 gap-md">
+                  <div className="space-y-xs">
                     <Label htmlFor="name">Asset Name *</Label>
                     <Input
                       id="name"
@@ -249,7 +249,7 @@ export default function CreateDrawer({
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <Label htmlFor="asset_tag">Asset Tag *</Label>
                     <Input
                       id="asset_tag"
@@ -262,8 +262,8 @@ export default function CreateDrawer({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-md">
+                  <div className="space-y-xs">
                     <Label htmlFor="category">Category *</Label>
                     <Select onValueChange={(value) => setValue('category', value as any)}>
                       <SelectTrigger>
@@ -282,7 +282,7 @@ export default function CreateDrawer({
                     )}
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <Label htmlFor="status">Status</Label>
                     <Select onValueChange={(value) => setValue('status', value as any)}>
                       <SelectTrigger>
@@ -299,7 +299,7 @@ export default function CreateDrawer({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
@@ -314,9 +314,9 @@ export default function CreateDrawer({
               </TabsContent>
 
               {/* Details Tab */}
-              <TabsContent value="details" className="space-y-6 mt-6">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+              <TabsContent value="details" className="space-y-lg mt-6">
+                <div className="grid grid-cols-2 gap-md">
+                  <div className="space-y-xs">
                     <Label htmlFor="brand">Brand</Label>
                     <Input
                       id="brand"
@@ -325,7 +325,7 @@ export default function CreateDrawer({
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <Label htmlFor="model">Model</Label>
                     <Input
                       id="model"
@@ -335,8 +335,8 @@ export default function CreateDrawer({
                   </div>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
+                <div className="grid grid-cols-2 gap-md">
+                  <div className="space-y-xs">
                     <Label htmlFor="serial_number">Serial Number</Label>
                     <Input
                       id="serial_number"
@@ -345,7 +345,7 @@ export default function CreateDrawer({
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <Label htmlFor="condition">Condition</Label>
                     <Select onValueChange={(value) => setValue('condition', value as any)}>
                       <SelectTrigger>
@@ -364,11 +364,11 @@ export default function CreateDrawer({
 
                 <Separator />
 
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-sm font-medium">Financial Information</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-md">
+                    <div className="space-y-xs">
                       <Label htmlFor="purchase_price">Purchase Price</Label>
                       <Input
                         id="purchase_price"
@@ -379,7 +379,7 @@ export default function CreateDrawer({
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-xs">
                       <Label htmlFor="current_value">Current Value</Label>
                       <Input
                         id="current_value"
@@ -391,8 +391,8 @@ export default function CreateDrawer({
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-2">
+                  <div className="grid grid-cols-2 gap-md">
+                    <div className="space-y-xs">
                       <Label htmlFor="purchase_date">Purchase Date</Label>
                       <Input
                         id="purchase_date"
@@ -403,7 +403,7 @@ export default function CreateDrawer({
                       />
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-xs">
                       <Label htmlFor="warranty_expiry">Warranty Expiry</Label>
                       <Input
                         id="warranty_expiry"
@@ -422,7 +422,7 @@ export default function CreateDrawer({
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="notes">Notes</Label>
                   <Textarea
                     id="notes"
@@ -434,8 +434,8 @@ export default function CreateDrawer({
               </TabsContent>
 
               {/* Media Tab */}
-              <TabsContent value="media" className="space-y-6 mt-6">
-                <div className="space-y-4">
+              <TabsContent value="media" className="space-y-lg mt-6">
+                <div className="space-y-md">
                   <div>
                     <Label>Asset Images</Label>
                     <div className="mt-2">
@@ -448,8 +448,8 @@ export default function CreateDrawer({
                         id="image-upload"
                       />
                       <Label htmlFor="image-upload" className="cursor-pointer">
-                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors">
-                          <Upload className="w-8 h-8 mx-auto mb-4 text-gray-400" />
+                        <div className="border-2 border-dashed border-gray-300 rounded-lg p-xl text-center hover:border-gray-400 transition-colors">
+                          <Upload className="w-icon-lg h-icon-lg mx-auto mb-4 text-gray-400" />
                           <p className="text-sm text-gray-600">
                             Click to upload images or drag and drop
                           </p>
@@ -462,18 +462,18 @@ export default function CreateDrawer({
                   </div>
 
                   {imageUrls.length > 0 && (
-                    <div className="grid grid-cols-3 gap-4">
+                    <div className="grid grid-cols-3 gap-md">
                       {imageUrls.map((url, index) => (
                         <div key={index} className="relative group">
                           <img
                             src={url}
                             alt={`Upload ${index + 1}`}
-                            className="w-full h-24 object-cover rounded-lg border"
+                            className="w-full h-component-lg object-cover rounded-lg border"
                           />
                           <Button
                             variant="destructive"
                             size="sm"
-                            className="absolute top-1 right-1 h-6 w-6 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                            className="absolute top-xs right-1 h-icon-md w-icon-md p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                             onClick={() => removeImage(index)}
                           >
                             <X className="w-3 h-3" />
@@ -488,7 +488,7 @@ export default function CreateDrawer({
           </div>
 
           {/* Footer */}
-          <div className="flex items-center justify-end gap-3 p-6 border-t bg-gray-50">
+          <div className="flex items-center justify-end gap-sm p-lg border-t bg-gray-50">
             <Button
               type="button"
               variant="outline"
@@ -503,12 +503,12 @@ export default function CreateDrawer({
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                  <Loader2 className="w-icon-xs h-icon-xs mr-2 animate-spin" />
                   Creating...
                 </>
               ) : (
                 <>
-                  <Save className="w-4 h-4 mr-2" />
+                  <Save className="w-icon-xs h-icon-xs mr-2" />
                   Create Asset
                 </>
               )}

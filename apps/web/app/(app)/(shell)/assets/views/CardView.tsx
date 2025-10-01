@@ -199,7 +199,7 @@ export default function CardView({
         onClick={() => onAssetAction?.('view', asset)}
       >
         {/* Selection checkbox */}
-        <div className="absolute top-3 left-3 z-10">
+        <div className="absolute top-sm left-3 z-10">
           <Checkbox
             checked={isSelected}
             onChange={(checked) => {
@@ -210,34 +210,34 @@ export default function CardView({
         </div>
 
         {/* Actions menu */}
-        <div className="absolute top-3 right-3 z-10">
+        <div className="absolute top-sm right-3 z-10">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
                 variant="secondary"
                 size="sm"
-                className="h-8 w-8 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
+                className="h-icon-lg w-icon-lg p-0 opacity-0 group-hover:opacity-100 transition-opacity"
                 onClick={(e) => e.stopPropagation()}
               >
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="h-icon-xs w-icon-xs" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('view', asset); }}>
-                <Eye className="mr-2 h-4 w-4" />
+                <Eye className="mr-2 h-icon-xs w-icon-xs" />
                 View Details
               </DropdownMenuItem>
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('edit', asset); }}>
-                <Edit className="mr-2 h-4 w-4" />
+                <Edit className="mr-2 h-icon-xs w-icon-xs" />
                 Edit Asset
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('duplicate', asset); }}>
-                <Copy className="mr-2 h-4 w-4" />
+                <Copy className="mr-2 h-icon-xs w-icon-xs" />
                 Duplicate
               </DropdownMenuItem>
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('export', asset); }}>
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-icon-xs w-icon-xs" />
                 Export
               </DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -245,7 +245,7 @@ export default function CardView({
                 onClick={(e) => { e.stopPropagation(); onAssetAction?.('delete', asset); }}
                 className="text-red-600"
               >
-                <Trash2 className="mr-2 h-4 w-4" />
+                <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -255,23 +255,23 @@ export default function CardView({
         <CardHeader className="pb-3">
           {/* Asset image or icon */}
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-sm">
               {asset.image_urls?.[0] ? (
                 <img
                   src={asset.image_urls[0]}
                   alt={asset.name}
-                  className="w-12 h-12 rounded-lg object-cover bg-gray-100"
+                  className="w-icon-2xl h-icon-2xl rounded-lg object-cover bg-gray-100"
                 />
               ) : (
-                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
-                  <Package className="w-6 h-6 text-gray-400" />
+                <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gray-100 flex items-center justify-center">
+                  <Package className="w-icon-md h-icon-md text-gray-400" />
                 </div>
               )}
               <div className="flex-1 min-w-0">
                 <CardTitle className="text-lg font-semibold truncate">
                   {asset.name}
                 </CardTitle>
-                <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-xs mt-1">
                   <Badge variant="outline" className="font-mono text-xs">
                     {asset.asset_tag}
                   </Badge>
@@ -288,7 +288,7 @@ export default function CardView({
         </CardHeader>
 
         <CardContent className="pt-0">
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {/* Category and condition */}
             <div className="flex items-center justify-between">
               <Badge variant="secondary" className="text-xs capitalize">
@@ -301,8 +301,8 @@ export default function CardView({
 
             {/* Assignment info */}
             {asset.assigned_to && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <User className="w-4 h-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <User className="w-icon-xs h-icon-xs" />
                 <span className="truncate">
                   {asset.assigned_to.name || 'Assigned'}
                 </span>
@@ -311,8 +311,8 @@ export default function CardView({
 
             {/* Location info */}
             {asset.location && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <MapPin className="w-4 h-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <MapPin className="w-icon-xs h-icon-xs" />
                 <span className="truncate">{asset.location.name}</span>
               </div>
             )}
@@ -320,16 +320,16 @@ export default function CardView({
             {/* Financial info */}
             <div className="flex items-center justify-between pt-2 border-t">
               {asset.purchase_price && (
-                <div className="flex items-center gap-1 text-sm">
-                  <DollarSign className="w-4 h-4 text-gray-400" />
+                <div className="flex items-center gap-xs text-sm">
+                  <DollarSign className="w-icon-xs h-icon-xs text-gray-400" />
                   <span className="font-medium">
                     ${asset.purchase_price.toLocaleString()}
                   </span>
                 </div>
               )}
               {asset.warranty_expiry && (
-                <div className="flex items-center gap-1 text-sm text-gray-600">
-                  <Calendar className="w-4 h-4" />
+                <div className="flex items-center gap-xs text-sm text-gray-600">
+                  <Calendar className="w-icon-xs h-icon-xs" />
                   <span>
                     {new Date(asset.warranty_expiry).toLocaleDateString()}
                   </span>
@@ -338,7 +338,7 @@ export default function CardView({
             </div>
 
             {/* Quick actions */}
-            <div className="flex gap-2 pt-2">
+            <div className="flex gap-xs pt-2">
               <Button
                 variant="outline"
                 size="sm"
@@ -377,8 +377,8 @@ export default function CardView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* View Controls */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-xs">
           <span className="text-sm text-gray-600">
             {assets.length} assets
           </span>
@@ -388,7 +388,7 @@ export default function CardView({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {selectedCards.size > 0 && (
             <>
               <Button
@@ -414,15 +414,15 @@ export default function CardView({
       </div>
 
       {/* Cards Grid */}
-      <div className="flex-1 overflow-auto p-4">
+      <div className="flex-1 overflow-auto p-md">
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          <div className="flex items-center justify-center h-container-sm">
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-gray-900"></div>
             <span className="ml-2">Loading assets...</span>
           </div>
         ) : assets.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-gray-500">
-            <Package className="w-12 h-12 mb-4 text-gray-300" />
+          <div className="flex flex-col items-center justify-center h-container-sm text-gray-500">
+            <Package className="w-icon-2xl h-icon-2xl mb-4 text-gray-300" />
             <div className="text-lg font-medium">No assets found</div>
             <div className="text-sm">Add your first asset to get started</div>
           </div>
@@ -441,7 +441,7 @@ export default function CardView({
       {/* Load More */}
       {viewState.pagination.total &&
        viewState.pagination.page * viewState.pagination.pageSize < viewState.pagination.total && (
-        <div className="flex justify-center p-4 border-t">
+        <div className="flex justify-center p-md border-t">
           <Button
             variant="outline"
             onClick={() => onViewStateChange({

@@ -7,8 +7,8 @@ import FeatureGate from '../../../../_components/FeatureGate';
 // Dynamically import the MarketplaceCreateClient for better bundle splitting
 const MarketplaceCreateClient = dynamic(() => import('./MarketplaceCreateClient'), {
   loading: () => (
-    <div className="flex items-center justify-center p-8">
-      <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+    <div className="flex items-center justify-center p-xl">
+      <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-blue-600"></div>
       <span className="ml-2 text-gray-600">Loading marketplace creation...</span>
     </div>
   ),
@@ -42,7 +42,7 @@ export default async function MarketplaceCreatePage() {
   if (!orgId || !user) {
     return (
       <FeatureGate feature="ghxstship">
-        <div className="brand-marketplace text-center py-2xl">
+        <div className="brand-marketplace text-center py-xsxl">
           <h2 className="text-heading-3 mb-md">{t('unauthorized')}</h2>
           <p className="color-muted">{t('loginRequired')}</p>
         </div>

@@ -116,9 +116,9 @@ export default function ProgrammingRidersListView({
 
  if (loading) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="flex items-center justify-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  <span className="ml-2">Loading riders...</span>
  </div>
  </Card>
@@ -127,7 +127,7 @@ export default function ProgrammingRidersListView({
 
  if (riders.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
  <h3 className="text-lg font-semibold">No riders found</h3>
  <p className="text-muted-foreground">
@@ -143,14 +143,14 @@ export default function ProgrammingRidersListView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedRiders.length === riders.length}
  onCheckedChange={handleSelectAll}
  aria-
  />
  </TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  <TableHead 
  className="cursor-pointer hover:bg-muted/50"
  onClick={() => handleSort('title')}
@@ -177,7 +177,7 @@ export default function ProgrammingRidersListView({
  >
  Created {getSortIcon('created_at')}
  </TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
@@ -200,25 +200,25 @@ export default function ProgrammingRidersListView({
  variant="ghost"
  size="sm"
  onClick={() => toggleRowExpansion(rider.id)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
  </TableCell>
  <TableCell>
  <div className="font-medium">{rider.title}</div>
  {rider.description && (
- <div className="text-sm text-muted-foreground line-clamp-1">
+ <div className="text-sm text-muted-foreground line-clamp-xs">
  {rider.description}
  </div>
  )}
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-lg">{RIDER_KIND_CONFIG[rider.kind]?.icon}</span>
  <span className="text-sm">{RIDER_KIND_CONFIG[rider.kind]?.label}</span>
  </div>
@@ -237,7 +237,7 @@ export default function ProgrammingRidersListView({
  {rider.event && (
  <div>
  <div className="font-medium">{rider.event.title}</div>
- <div className="text-sm text-muted-foreground flex items-center gap-1">
+ <div className="text-sm text-muted-foreground flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {new Date(rider.event.start_at).toLocaleDateString()}
  </div>
@@ -252,24 +252,24 @@ export default function ProgrammingRidersListView({
  <TableCell>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(rider)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(rider)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem
  onClick={() => onDelete(rider.id)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -281,8 +281,8 @@ export default function ProgrammingRidersListView({
  {isExpanded && (
  <TableRow>
  <TableCell colSpan={9} className="bg-muted/25">
- <div className="p-4 space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="p-md space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {/* Requirements */}
  <div>
  <h4 className="font-semibold mb-2">Requirements</h4>
@@ -295,7 +295,7 @@ export default function ProgrammingRidersListView({
  {rider.project && (
  <div>
  <h4 className="font-semibold mb-2">Project</h4>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline">{rider.project.name}</Badge>
  <Badge variant="secondary">{rider.project.status}</Badge>
  </div>
@@ -305,22 +305,22 @@ export default function ProgrammingRidersListView({
  {/* Fulfillment Status */}
  <div>
  <h4 className="font-semibold mb-2">Fulfillment</h4>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {rider.fulfilled_at ? (
  <>
- <CheckCircle className="h-4 w-4 text-green-600" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-green-600" />
  <span className="text-sm">
  Fulfilled {new Date(rider.fulfilled_at).toLocaleDateString()}
  </span>
  </>
  ) : rider.approved_at ? (
  <>
- <AlertCircle className="h-4 w-4 text-yellow-600" />
+ <AlertCircle className="h-icon-xs w-icon-xs text-yellow-600" />
  <span className="text-sm">Approved, pending fulfillment</span>
  </>
  ) : (
  <>
- <XCircle className="h-4 w-4 text-gray-400" />
+ <XCircle className="h-icon-xs w-icon-xs text-gray-400" />
  <span className="text-sm">Not fulfilled</span>
  </>
  )}
@@ -340,7 +340,7 @@ export default function ProgrammingRidersListView({
  {rider.tags && rider.tags.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {rider.tags.map((tag, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {tag}
@@ -354,7 +354,7 @@ export default function ProgrammingRidersListView({
  {rider.kind === 'technical' && rider.technical_requirements && (
  <div>
  <h4 className="font-semibold mb-2">Technical Requirements</h4>
- <div className="grid grid-cols-2 gap-2 text-sm">
+ <div className="grid grid-cols-2 gap-xs text-sm">
  {rider.technical_requirements.sound_system && (
  <div>Sound System: {rider.technical_requirements.sound_system}</div>
  )}
@@ -374,7 +374,7 @@ export default function ProgrammingRidersListView({
  {rider.kind === 'hospitality' && rider.hospitality_requirements && (
  <div>
  <h4 className="font-semibold mb-2">Hospitality Requirements</h4>
- <div className="grid grid-cols-2 gap-2 text-sm">
+ <div className="grid grid-cols-2 gap-xs text-sm">
  {rider.hospitality_requirements.catering && (
  <div>Catering: {rider.hospitality_requirements.catering}</div>
  )}

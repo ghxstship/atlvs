@@ -212,18 +212,18 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <div>
  <label className="text-body-sm font-medium mb-xs block">Logo</label>
  <div className="flex items-center gap-sm">
- <div className="h-16 w-16 bg-muted rounded flex items-center justify-center">
+ <div className="h-component-md w-component-md bg-muted rounded flex items-center justify-center">
  {settings.logo_url ? (
  <img src={settings.logo_url} alt="Logo" className="h-full w-full object-cover rounded" />
  ) : (
- <Users className="h-8 w-8 color-muted" />
+ <Users className="h-icon-lg w-icon-lg color-muted" />
  )}
  </div>
  <div className="flex gap-sm">
  <Button variant="outline" size="sm">Upload Logo</Button>
  {settings.logo_url && (
  <Button variant="outline" size="sm">
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -280,7 +280,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  <div className="stack-md">
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-sm">
- <Mail className="h-5 w-5" />
+ <Mail className="h-icon-sm w-icon-sm" />
  Email Notifications
  </h3>
  <div className="stack-sm">
@@ -303,7 +303,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-sm">
- <Smartphone className="h-5 w-5" />
+ <Smartphone className="h-icon-sm w-icon-sm" />
  SMS Notifications
  </h3>
  <div className="stack-sm">
@@ -499,11 +499,11 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  </div>
  <div className="flex items-center gap-sm">
  <Button variant="outline" onClick={loadSettings} disabled={loading}>
- <RefreshCw className="h-4 w-4 mr-sm" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
  Reset
  </Button>
  <Button onClick={handleSave} loading={saving}>
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  Save Changes
  </Button>
  </div>
@@ -526,7 +526,7 @@ export default function SettingsClient({ orgId, userId }: SettingsClientProps) {
  : 'hover:bg-muted'
  }`}
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  <span className="text-body-sm">{tab.label}</span>
  </button>
  );

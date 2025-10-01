@@ -70,7 +70,7 @@ export const ViewSwitcher: React.FC<ViewSwitcherProps> = ({ className = '' }) =>
             onClick={() => setViewMode(viewType as any)}
             className="gap-sm"
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             <span className="hidden sm:inline">{viewLabels[viewType]}</span>
           </Button>
         );

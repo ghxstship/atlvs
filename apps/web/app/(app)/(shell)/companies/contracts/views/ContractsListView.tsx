@@ -60,13 +60,13 @@ export default function ContractsListView({
  <div className="flex items-start justify-between">
  <div className="flex-1">
  <div className="flex items-center gap-sm mb-sm">
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-semibold">{contract.title}</h3>
  <Badge variant={getStatusColor(contract.status)} size="sm">
  {contract.status}
  </Badge>
  {expiringSoon && (
- <AlertTriangle className="h-4 w-4 text-yellow-600" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-yellow-600" />
  )}
  </div>
  
@@ -108,7 +108,7 @@ export default function ContractsListView({
  )}
  
  {contract.auto_renew && (
- <span className="text-blue-600 bg-blue-50 px-2 py-1 rounded">
+ <span className="text-blue-600 bg-blue-50 px-xs py-xs rounded">
  Auto-renewal
  </span>
  )}
@@ -118,7 +118,7 @@ export default function ContractsListView({
  href={contract.document_url as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="flex items-center gap-1 text-blue-600 hover:text-blue-700"
+ className="flex items-center gap-xs text-blue-600 hover:text-blue-700"
  >
  <ExternalLink className="h-3 w-3" />
  Document
@@ -127,7 +127,7 @@ export default function ContractsListView({
  </div>
  
  {contract.description && (
- <p className="text-sm text-muted-foreground mt-sm line-clamp-2">
+ <p className="text-sm text-muted-foreground mt-sm line-clamp-xs">
  {contract.description}
  </p>
  )}
@@ -175,7 +175,7 @@ export default function ContractsListView({
  </div>
  
  {expiringSoon && (
- <div className="mt-sm p-sm bg-yellow-100 border border-yellow-200 rounded text-xs text-yellow-800">
+ <div className="mt-sm p-sm bg-yellow-100 border border-yellow-component-lg0 rounded text-xs text-yellow-container-md0">
  ⚠️ This contract expires within 30 days. Consider renewal or termination.
  </div>
  )}
@@ -185,7 +185,7 @@ export default function ContractsListView({
  
  {contracts.length === 0 && (
  <div className="text-center py-xl">
- <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <FileText className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <p className="text-muted-foreground">No contracts found</p>
  </div>
  )}

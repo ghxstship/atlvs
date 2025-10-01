@@ -79,39 +79,39 @@ export default function ActivationGridView({
  <DropdownMenu>
  <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
  <Button variant="ghost" size="sm">
- <MoreVertical className="h-4 w-4" />
+ <MoreVertical className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(activation)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(activation)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onDuplicate(activation)}>
- <Copy className="mr-2 h-4 w-4" />
+ <Copy className="mr-2 h-icon-xs w-icon-xs" />
  Duplicate
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onStatusChange(activation, "planning")}>
- <Clock className="mr-2 h-4 w-4" />
+ <Clock className="mr-2 h-icon-xs w-icon-xs" />
  Set Planning
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onStatusChange(activation, "active")}>
- <Play className="mr-2 h-4 w-4" />
+ <Play className="mr-2 h-icon-xs w-icon-xs" />
  Set Active
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onStatusChange(activation, "completed")}>
- <CheckCircle className="mr-2 h-4 w-4" />
+ <CheckCircle className="mr-2 h-icon-xs w-icon-xs" />
  Set Completed
  </DropdownMenuItem>
  <DropdownMenuItem 
  onClick={() => onDelete(activation)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>

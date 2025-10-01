@@ -33,8 +33,8 @@ export default function CallSheetsGridView({
 }: CallSheetsGridViewProps) {
  if (callSheets.length === 0) {
  return (
- <div className="flex flex-col items-center justify-center py-12 text-center">
- <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
+ <div className="flex flex-col items-center justify-center py-xsxl text-center">
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No call sheets found</h3>
  <p className="text-muted-foreground">Create your first call sheet to get started.</p>
  </div>
@@ -42,10 +42,10 @@ export default function CallSheetsGridView({
  }
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md">
  {callSheets.map((callSheet) => (
- <Card key={callSheet.id} className="p-4 hover:shadow-lg transition-all duration-200 group">
- <div className="space-y-3">
+ <Card key={callSheet.id} className="p-md hover:shadow-lg transition-all duration-200 group">
+ <div className="space-y-sm">
  {/* Header */}
  <div className="flex items-start justify-between">
  <input
@@ -61,18 +61,18 @@ export default function CallSheetsGridView({
  
  {/* Title */}
  <div>
- <h3 className="font-semibold text-base line-clamp-2 mb-1">
+ <h3 className="font-semibold text-base line-clamp-xs mb-1">
  {callSheet.title}
  </h3>
  {callSheet.description && (
- <p className="text-muted-foreground text-xs line-clamp-2">
+ <p className="text-muted-foreground text-xs line-clamp-xs">
  {callSheet.description}
  </p>
  )}
  </div>
  
  {/* Date and Time */}
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="flex items-center text-sm text-muted-foreground">
  <Calendar className="h-3 w-3 mr-2" />
  <span>{format(new Date(callSheet.call_date), 'MMM dd, yyyy')}</span>
@@ -103,7 +103,7 @@ export default function CallSheetsGridView({
  </div>
  
  {callSheet.weather && (
- <span className="text-xs bg-muted px-2 py-1 rounded">
+ <span className="text-xs bg-muted px-xs py-xs rounded">
  {callSheet.weather}
  </span>
  )}
@@ -111,14 +111,14 @@ export default function CallSheetsGridView({
  
  {/* Crew and Talent Breakdown */}
  {(callSheet.crew_calls?.length > 0 || callSheet.talent_calls?.length > 0) && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {callSheet.crew_calls?.length > 0 && (
- <Badge variant="outline" className="text-xs px-2 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  {callSheet.crew_calls.length} crew
  </Badge>
  )}
  {callSheet.talent_calls?.length > 0 && (
- <Badge variant="outline" className="text-xs px-2 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  {callSheet.talent_calls.length} talent
  </Badge>
  )}
@@ -127,15 +127,15 @@ export default function CallSheetsGridView({
  
  {/* Special Instructions */}
  {callSheet.special_instructions && (
- <div className="p-2 bg-muted rounded text-xs">
+ <div className="p-xs bg-muted rounded text-xs">
  <div className="font-medium mb-1">Special Instructions:</div>
- <div className="line-clamp-2">{callSheet.special_instructions}</div>
+ <div className="line-clamp-xs">{callSheet.special_instructions}</div>
  </div>
  )}
  
  {/* Actions */}
  <div className="flex items-center justify-between pt-2 border-t opacity-0 group-hover:opacity-100 transition-opacity">
- <div className="flex items-center space-x-1">
+ <div className="flex items-center space-x-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -155,7 +155,7 @@ export default function CallSheetsGridView({
  </Button>
  </div>
  
- <div className="flex items-center space-x-1">
+ <div className="flex items-center space-x-xs">
  {callSheet.status === 'published' && onDistribute && (
  <Button
  variant="ghost"

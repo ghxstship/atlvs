@@ -56,11 +56,11 @@ export default function BudgetGridView({
  {Array.from({ length: 6 }).map((_, i) => (
  <Card key={i} className="p-lg">
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded w-3/4 mb-sm"></div>
- <div className="h-6 bg-muted rounded w-1/2 mb-md"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-sm"></div>
+ <div className="h-icon-md bg-muted rounded w-1/2 mb-md"></div>
  <div className="space-y-sm">
  <div className="h-3 bg-muted rounded"></div>
- <div className="h-3 bg-muted rounded w-5/6"></div>
+ <div className="h-3 bg-muted rounded w-icon-sm/6"></div>
  </div>
  </div>
  </Card>
@@ -72,7 +72,7 @@ export default function BudgetGridView({
  if (budgets.length === 0) {
  return (
  <Card className="p-xl text-center">
- <DollarSign className="h-12 w-12 mx-auto mb-md color-muted/50" />
+ <DollarSign className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted/50" />
  <h3 className="text-heading-4 color-foreground mb-sm">No budgets found</h3>
  <p className="text-body-sm color-muted">Create your first budget to get started with financial planning.</p>
  </Card>
@@ -93,7 +93,7 @@ export default function BudgetGridView({
  <div className="flex-1">
  <h3 className="text-heading-4 color-foreground mb-xs">{budget.name}</h3>
  {budget.description && (
- <p className="text-body-sm color-muted line-clamp-2">{budget.description}</p>
+ <p className="text-body-sm color-muted line-clamp-xs">{budget.description}</p>
  )}
  </div>
  {getStatusBadge(budget.status)}
@@ -175,14 +175,14 @@ export default function BudgetGridView({
  size="sm"
  onClick={() => onView(budget)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(budget)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -190,7 +190,7 @@ export default function BudgetGridView({
  onClick={() => onDelete(budget.id)}
  className="color-destructive hover:bg-destructive/10"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </Card>

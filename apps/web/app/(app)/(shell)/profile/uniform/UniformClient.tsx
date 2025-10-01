@@ -340,10 +340,10 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded mb-md"></div>
           <div className="stack-md">
-            <div className="h-32 bg-secondary rounded"></div>
-            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -362,7 +362,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
           }}
           className="flex items-center gap-sm"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Uniform Item
         </Button>
       </div>
@@ -372,7 +372,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Package className="h-5 w-5 color-accent" />
+              <Package className="h-icon-sm w-icon-sm color-accent" />
               <h3 className="text-body text-heading-4">Uniform Summary</h3>
             </div>
             
@@ -423,7 +423,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
       {filteredItems.length === 0 ? (
         <Card>
           <div className="p-xl text-center">
-            <Shirt className="h-12 w-12 color-muted mx-auto mb-md" />
+            <Shirt className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body text-heading-4 mb-sm">No Uniform Items</h3>
             <p className="color-muted mb-md">
               Keep track of your uniform items, equipment, and their maintenance schedules.
@@ -451,8 +451,8 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                 <div className="p-lg">
                   <div className="flex items-start justify-between mb-md">
                     <div className="flex items-center gap-sm">
-                      <div className={`h-10 w-10 bg-${getItemTypeColor(item.item_type)}-100 rounded-full flex items-center justify-center`}>
-                        <IconComponent className={`h-5 w-5 text-${getItemTypeColor(item.item_type)}-600`} />
+                      <div className={`h-icon-xl w-icon-xl bg-${getItemTypeColor(item.item_type)}-100 rounded-full flex items-center justify-center`}>
+                        <IconComponent className={`h-icon-sm w-icon-sm text-${getItemTypeColor(item.item_type)}-600`} />
                       </div>
                       <div>
                         <h3 className="text-body text-heading-4">{item.item_name}</h3>
@@ -481,14 +481,14 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                        
                         onClick={() => handleEdit(item)}
                       >
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-icon-xs w-icon-xs" />
                       </Button>
                       <Button
                         variant="outline"
                        
                         onClick={() => handleDelete(item.id)}
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-icon-xs w-icon-xs" />
                       </Button>
                     </div>
                   </div>
@@ -497,7 +497,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                     <div>
                       <h4 className="text-body-sm form-label mb-xs">Size & Details</h4>
                       <div className="flex items-center gap-xs text-body-sm color-muted">
-                        <Ruler className="h-4 w-4" />
+                        <Ruler className="h-icon-xs w-icon-xs" />
                         Size: {item.size}
                       </div>
                       {item.color && (
@@ -513,7 +513,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                         <h4 className="text-body-sm form-label mb-xs">Purchase Info</h4>
                         {item.purchase_date && (
                           <div className="flex items-center gap-xs text-body-sm color-muted">
-                            <Calendar className="h-4 w-4" />
+                            <Calendar className="h-icon-xs w-icon-xs" />
                             {new Date(item.purchase_date).toLocaleDateString()}
                           </div>
                         )}
@@ -530,7 +530,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
                       <div>
                         <h4 className="text-body-sm form-label mb-xs">Replacement</h4>
                         <div className="flex items-center gap-xs text-body-sm color-muted">
-                          <Calendar className="h-4 w-4" />
+                          <Calendar className="h-icon-xs w-icon-xs" />
                           Due: {new Date(item.replacement_due).toLocaleDateString()}
                         </div>
                       </div>
@@ -688,7 +688,7 @@ export default function UniformClient({ orgId, userId }: { orgId: string; userId
               Cancel
             </Button>
             <Button type="submit" loading={saving}>
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {editingItem ? 'Update' : 'Save'} Item
             </Button>
           </div>

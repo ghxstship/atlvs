@@ -70,10 +70,10 @@ import { DESIGN_TOKENS, COMPONENT_SIZES } from './DesignSystem';
         ],
       },
       size: {
-        xs: 'h-6 px-sm text-xs font-medium',
-        sm: 'h-8 px-sm text-sm font-medium',
-        md: 'h-10 px-md text-sm font-medium',
-        lg: 'h-12 px-lg text-base font-medium',
+        xs: 'h-icon-md px-sm text-xs font-medium',
+        sm: 'h-icon-lg px-sm text-sm font-medium',
+        md: 'h-icon-xl px-md text-sm font-medium',
+        lg: 'h-icon-2xl px-lg text-base font-medium',
         xl: 'h-14 px-xl text-lg font-medium',
       },
       fullWidth: {
@@ -118,9 +118,9 @@ export const inputVariants = cva(
         ],
       },
       size: {
-        sm: 'h-8 px-sm text-xs',
-        md: 'h-10 px-sm text-sm',
-        lg: 'h-12 px-md text-base',
+        sm: 'h-icon-lg px-sm text-xs',
+        md: 'h-icon-xl px-sm text-sm',
+        lg: 'h-icon-2xl px-md text-base',
       },
     },
     defaultVariants: {
@@ -234,12 +234,12 @@ export const avatarVariants = cva(
   {
     variants: {
       size: {
-        xs: 'h-6 w-6 text-xs',
-        sm: 'h-8 w-8 text-sm',
-        md: 'h-10 w-10 text-base',
-        lg: 'h-12 w-12 text-lg',
-        xl: 'h-16 w-16 text-xl',
-        '2xl': 'h-20 w-20 text-2xl',
+        xs: 'h-icon-md w-icon-md text-xs',
+        sm: 'h-icon-lg w-icon-lg text-sm',
+        md: 'h-icon-xl w-icon-xl text-base',
+        lg: 'h-icon-2xl w-icon-2xl text-lg',
+        xl: 'h-component-md w-component-md text-xl',
+        '2xl': 'h-component-lg w-component-lg text-2xl',
       },
       variant: {
         default: '',
@@ -263,12 +263,12 @@ export const skeletonVariants = cva(
     variants: {
       variant: {
         default: '',
-        text: 'h-4 w-full',
-        title: 'h-6 w-3/4',
-        subtitle: 'h-4 w-1/2',
-        button: 'h-10 w-24',
-        avatar: 'h-10 w-10 rounded-full',
-        card: 'h-32 w-full',
+        text: 'h-icon-xs w-full',
+        title: 'h-icon-md w-3/4',
+        subtitle: 'h-icon-xs w-1/2',
+        button: 'h-icon-xl w-component-lg',
+        avatar: 'h-icon-xl w-icon-xl rounded-full',
+        card: 'h-component-xl w-full',
       },
     },
     defaultVariants: {

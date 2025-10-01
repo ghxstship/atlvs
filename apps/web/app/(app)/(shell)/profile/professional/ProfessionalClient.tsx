@@ -217,11 +217,11 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded mb-md"></div>
           <div className="stack-md">
-            <div className="h-32 bg-secondary rounded"></div>
-            <div className="h-24 bg-secondary rounded"></div>
-            <div className="h-24 bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
+            <div className="h-component-lg bg-secondary rounded"></div>
+            <div className="h-component-lg bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -234,7 +234,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <h2 className="text-heading-4 text-heading-4">Professional Information</h2>
         {!editing ? (
           <Button onClick={() => setEditing(true)} className="flex items-center gap-sm">
-            <Edit className="h-4 w-4" />
+            <Edit className="h-icon-xs w-icon-xs" />
             Edit Profile
           </Button>
         ) : (
@@ -253,7 +253,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
               loading={saving}
               className="flex items-center gap-sm"
             >
-              <Save className="h-4 w-4" />
+              <Save className="h-icon-xs w-icon-xs" />
               Save Changes
             </Button>
           </div>
@@ -265,7 +265,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Briefcase className="h-5 w-5 color-accent" />
+              <Briefcase className="h-icon-sm w-icon-sm color-accent" />
               <h3 className="text-body text-heading-4">Employment Details</h3>
             </div>
             
@@ -343,7 +343,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Award className="h-5 w-5 color-secondary" />
+              <Award className="h-icon-sm w-icon-sm color-secondary" />
               <h3 className="text-body text-heading-4">Skills & Expertise</h3>
             </div>
             
@@ -385,7 +385,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Users className="h-5 w-5 color-success" />
+              <Users className="h-icon-sm w-icon-sm color-success" />
               <h3 className="text-body text-heading-4">Professional Bio</h3>
             </div>
             
@@ -404,7 +404,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <TrendingUp className="h-5 w-5 color-warning" />
+              <TrendingUp className="h-icon-sm w-icon-sm color-warning" />
               <h3 className="text-body text-heading-4">Career Development</h3>
             </div>
             
@@ -460,7 +460,7 @@ export default function ProfessionalClient({ orgId, userId }: { orgId: string; u
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <Target className="h-5 w-5 color-accent" />
+              <Target className="h-icon-sm w-icon-sm color-accent" />
               <h3 className="text-body text-heading-4">Online Presence</h3>
             </div>
             

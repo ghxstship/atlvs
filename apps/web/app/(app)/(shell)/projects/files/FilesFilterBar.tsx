@@ -69,7 +69,7 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
   return (
     <div className="mb-md p-sm bg-secondary/50 rounded-lg border" role="region" aria-label={t('filters.title')}>
       <div className="flex items-center gap-sm mb-sm">
-        <Filter className="h-4 w-4" />
+        <Filter className="h-icon-xs w-icon-xs" />
         <span className="text-body-sm form-label">{t('filters.title')}</span>
         {selectedTags.length > 0 && (
           <button
@@ -85,7 +85,7 @@ export default function FilesFilterBar({ orgId, selectedTags, onTagsChange }: Fi
       {loading ? (
         <div className="flex gap-sm">
           {[1, 2, 3].map(i => (
-            <div key={i} className="h-6 w-16 bg-secondary rounded animate-pulse" />
+            <div key={i} className="h-icon-md w-component-md bg-secondary rounded animate-pulse" />
           ))}
         </div>
       ) : (

@@ -193,7 +193,7 @@ export default function CreateQualificationClient({
         {/* Qualification Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Award className="h-5 w-5 color-accent" />
+            <Award className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Qualification Details</h3>
           </div>
           
@@ -277,7 +277,7 @@ export default function CreateQualificationClient({
         {/* Certification Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <FileCheck className="h-5 w-5 color-success" />
+            <FileCheck className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Certification Details</h3>
           </div>
           
@@ -305,7 +305,7 @@ export default function CreateQualificationClient({
             <div className="grid grid-cols-2 gap-md">
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <Calendar className="h-4 w-4 inline mr-xs" />
+                  <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                   Issued Date
                 </label>
                 <UnifiedInput                   type="date"
@@ -316,7 +316,7 @@ export default function CreateQualificationClient({
 
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <Calendar className="h-4 w-4 inline mr-xs" />
+                  <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                   Expiry Date
                 </label>
                 <UnifiedInput                   type="date"
@@ -359,14 +359,14 @@ export default function CreateQualificationClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.companyId || !formData.title.trim()}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Add Qualification'}
           </Button>
         </div>

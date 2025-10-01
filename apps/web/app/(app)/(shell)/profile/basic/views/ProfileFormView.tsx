@@ -74,7 +74,7 @@ export default function ProfileFormView({
  const value = formData[fieldConfig.key];
 
  const fieldWrapper = (content: React.ReactNode) => (
- <div key={fieldConfig.key} className="space-y-2">
+ <div key={fieldConfig.key} className="space-y-xs">
  <div className="flex items-center justify-between">
  <label className="text-sm font-medium">
  {fieldConfig.label}
@@ -85,7 +85,7 @@ export default function ProfileFormView({
  variant="ghost"
  size="sm"
  onClick={() => onFieldVisibilityChange(fieldConfig.key, false)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <EyeOff className="h-3 w-3" />
  </Button>
@@ -97,7 +97,7 @@ export default function ProfileFormView({
 
  if (!isEditable) {
  return fieldWrapper(
- <div className="px-3 py-2 bg-muted/50 rounded-md text-sm">
+ <div className="px-sm py-xs bg-muted/50 rounded-md text-sm">
  {Array.isArray(value) ? value.join(', ') : value || 'Not specified'}
  </div>
  );
@@ -137,8 +137,8 @@ export default function ProfileFormView({
  case 'tags':
  const tags = (value as string[]) || [];
  return fieldWrapper(
- <div className="space-y-2">
- <div className="flex flex-wrap gap-2">
+ <div className="space-y-xs">
+ <div className="flex flex-wrap gap-xs">
  {tags.map(tag => (
  <Badge
  key={tag}
@@ -152,7 +152,7 @@ export default function ProfileFormView({
  ))}
  </div>
  {activeTagField === fieldConfig.key ? (
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={newTag}
  onChange={(e) => setNewTag(e.target.value)}
@@ -215,16 +215,16 @@ export default function ProfileFormView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <div className="flex flex-col items-center space-y-4">
- <Skeleton className="h-24 w-24 rounded-full" />
- <Skeleton className="h-4 w-32" />
+ <div className="space-y-lg">
+ <div className="flex flex-col items-center space-y-md">
+ <Skeleton className="h-component-lg w-component-lg rounded-full" />
+ <Skeleton className="h-icon-xs w-component-xl" />
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
  {Array.from({ length: 8 }).map((_, i) => (
- <div key={i} className="space-y-2">
- <Skeleton className="h-4 w-24" />
- <Skeleton className="h-10 w-full" />
+ <div key={i} className="space-y-xs">
+ <Skeleton className="h-icon-xs w-component-lg" />
+ <Skeleton className="h-icon-xl w-full" />
  </div>
  ))}
  </div>
@@ -239,11 +239,11 @@ export default function ProfileFormView({
  }, {} as Record<string, FieldConfig[]);
 
  return (
- <form onSubmit={handleSubmit} className="space-y-8">
+ <form onSubmit={handleSubmit} className="space-y-xl">
  {/* Avatar Section */}
- <div className="flex flex-col items-center space-y-4">
+ <div className="flex flex-col items-center space-y-md">
  <div className="relative">
- <Avatar className="h-24 w-24">
+ <Avatar className="h-component-lg w-component-lg">
  {formData.avatar_url ? (
  <img 
  src={formData.avatar_url} 
@@ -251,21 +251,21 @@ export default function ProfileFormView({
  className="h-full w-full object-cover" 
  />
  ) : (
- <User className="h-12 w-12" />
+ <User className="h-icon-2xl w-icon-2xl" />
  )}
  </Avatar>
  <Button
  type="button"
  variant="outline"
  size="sm"
- className="absolute -bottom-2 -right-2 rounded-full h-8 w-8 p-0"
+ className="absolute -bottom-2 -right-2 rounded-full h-icon-lg w-icon-lg p-0"
  >
- <Camera className="h-4 w-4" />
+ <Camera className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
  {profile && (
- <div className="text-center space-y-2">
+ <div className="text-center space-y-xs">
  <Badge variant={profile.status === 'active' ? 'default' : 'secondary'}>
  {profile.status}
  </Badge>
@@ -278,14 +278,14 @@ export default function ProfileFormView({
 
  {/* Form Sections */}
  {Object.entries(groupedFields).map(([section, fields]) => (
- <Card key={section} className="p-6">
+ <Card key={section} className="p-lg">
  <h3 className="text-lg font-semibold mb-4 capitalize">
  {section === 'basic' ? 'Basic Information' : 
  section === 'contact' ? 'Contact Information' : 
  section === 'professional' ? 'Professional Information' : 
  'Metadata'}
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
  {fields.map(renderField)}
  </div>
  </Card>
@@ -293,9 +293,9 @@ export default function ProfileFormView({
 
  {/* Hidden Fields */}
  {onFieldVisibilityChange && (
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Hidden Fields</h3>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {PROFILE_FIELD_CONFIG
  .filter(field => !visibleFields.has(field.key))
  .map(field => (
@@ -305,7 +305,7 @@ export default function ProfileFormView({
  variant="outline"
  size="sm"
  onClick={() => onFieldVisibilityChange(field.key, true)}
- className="h-8"
+ className="h-icon-lg"
  >
  <Eye className="mr-1 h-3 w-3" />
  {field.label}
@@ -318,7 +318,7 @@ export default function ProfileFormView({
  {/* Save Button */}
  <div className="flex justify-end">
  <Button type="submit" disabled={saving}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {saving ? 'Saving...' : 'Save Changes'}
  </Button>
  </div>

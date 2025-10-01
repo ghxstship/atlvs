@@ -138,7 +138,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -153,7 +153,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
           <div className="flex flex-col sm:flex-row gap-md justify-between">
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
                 <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -174,7 +174,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
             </div>
 
             <Button onClick={() => setShowCreateForm(true)}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               {t('addCompetency')}
             </Button>
           </div>
@@ -262,16 +262,16 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <Award className="h-5 w-5 color-accent" />
+                    <Award className="h-icon-sm w-icon-sm color-accent" />
                     <h3 className="text-heading-4 color-foreground">{competency.name}</h3>
                   </div>
                   
                   <div className="flex cluster-xs">
                     <button className="p-xs color-muted hover:color-foreground">
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </button>
                     <button className="p-xs color-muted hover:color-destructive">
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </button>
                   </div>
                 </div>
@@ -311,7 +311,7 @@ export default function CompetenciesClient({ orgId }: CompetenciesClientProps) {
 
           {filteredCompetencies.length === 0 && (
             <div className="text-center py-xl">
-              <Award className="h-12 w-12 color-muted mx-auto mb-md" />
+              <Award className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
               <span className="color-muted">Category: Manage skills and competency frameworks.</span>
             </div>
           )}

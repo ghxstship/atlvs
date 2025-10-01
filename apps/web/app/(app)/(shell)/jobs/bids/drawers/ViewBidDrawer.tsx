@@ -32,12 +32,12 @@ export default function ViewBidDrawer({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'accepted': return <CheckCircle className="h-4 w-4" />;
- case 'under_review': return <Clock className="h-4 w-4" />;
- case 'submitted': return <DollarSign className="h-4 w-4" />;
- case 'rejected': return <XCircle className="h-4 w-4" />;
- case 'withdrawn': return <AlertCircle className="h-4 w-4" />;
- default: return <Clock className="h-4 w-4" />;
+ case 'accepted': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'under_review': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'submitted': return <DollarSign className="h-icon-xs w-icon-xs" />;
+ case 'rejected': return <XCircle className="h-icon-xs w-icon-xs" />;
+ case 'withdrawn': return <AlertCircle className="h-icon-xs w-icon-xs" />;
+ default: return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -77,7 +77,7 @@ export default function ViewBidDrawer({
  )}
  {onEdit && bid.status === 'submitted' && (
  <Button variant="outline" onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  )}
@@ -91,7 +91,7 @@ export default function ViewBidDrawer({
  {bid.status ? bid.status.replace('_', ' ').toUpperCase() : 'UNKNOWN'}
  </Badge>
  <div className="flex items-center gap-xs">
- <DollarSign className="h-5 w-5 color-success" />
+ <DollarSign className="h-icon-sm w-icon-sm color-success" />
  <span className="text-heading-4 font-semibold color-success">
  {formatCurrency(bid.amount)}
  </span>
@@ -132,7 +132,7 @@ export default function ViewBidDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Response Deadline</p>
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <p className={`text-body-sm ${
  new Date(bid.response_deadline) < new Date() 
  ? 'color-destructive' 
@@ -153,8 +153,8 @@ export default function ViewBidDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm">
- <div className="h-10 w-10 bg-secondary rounded-full flex items-center justify-center">
- <Building className="h-5 w-5" />
+ <div className="h-icon-xl w-icon-xl bg-secondary rounded-full flex items-center justify-center">
+ <Building className="h-icon-sm w-icon-sm" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">
@@ -184,7 +184,7 @@ export default function ViewBidDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <div>
  <p className="text-body-sm color-foreground">Submitted</p>
  <p className="text-body-xs color-muted">
@@ -198,7 +198,7 @@ export default function ViewBidDrawer({
 
  {bid.status === 'accepted' && (
  <div className="flex items-center gap-sm p-sm border border-success/20 bg-success/5 rounded-md">
- <CheckCircle className="h-4 w-4 color-success" />
+ <CheckCircle className="h-icon-xs w-icon-xs color-success" />
  <div>
  <p className="text-body-sm color-success">Accepted</p>
  <p className="text-body-xs color-muted">
@@ -210,7 +210,7 @@ export default function ViewBidDrawer({
 
  {bid.status === 'rejected' && (
  <div className="flex items-center gap-sm p-sm border border-destructive/20 bg-destructive/5 rounded-md">
- <XCircle className="h-4 w-4 color-destructive" />
+ <XCircle className="h-icon-xs w-icon-xs color-destructive" />
  <div>
  <p className="text-body-sm color-destructive">Rejected</p>
  <p className="text-body-xs color-muted">
@@ -250,7 +250,7 @@ export default function ViewBidDrawer({
  <div className="stack-md">
  <h3 className="text-heading-5 color-foreground">Proposal Document</h3>
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <FileText className="h-4 w-4 color-muted" />
+ <FileText className="h-icon-xs w-icon-xs color-muted" />
  <div className="flex-1">
  <p className="text-body-sm color-foreground">Proposal Document</p>
  <p className="text-body-xs color-muted">Click to view or download</p>
@@ -270,7 +270,7 @@ export default function ViewBidDrawer({
  <h3 className="text-heading-5 color-foreground">Notes</h3>
  <div className="p-md bg-secondary/50 rounded-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 color-muted mt-xs" />
+ <FileText className="h-icon-xs w-icon-xs color-muted mt-xs" />
  <p className="text-body-sm color-foreground whitespace-pre-wrap">
  {bid.notes}
  </p>
@@ -291,7 +291,7 @@ export default function ViewBidDrawer({
  )}
  {onEdit && bid.status === 'submitted' && (
  <Button onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Bid
  </Button>
  )}

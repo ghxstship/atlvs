@@ -1,0 +1,33 @@
+{
+  "version": "1.0.0",
+  "defaultBrand": "default",
+  "brands": [
+    {
+      "id": "default",
+      "name": "ATLVS",
+      "slug": "atlvs",
+      "description": "ATLVS Default Brand - Enterprise SaaS Platform",
+      "domains": ["atlvs.com", "app.atlvs.com", "localhost"],
+      "enabled": true,
+      "isDefault": true
+    },
+    {
+      "id": "ghxstship",
+      "name": "GHXSTSHIP",
+      "slug": "ghxstship",
+      "description": "GHXSTSHIP — Blackwater Fleet Enterprise Management",
+      "domains": ["ghxstship.com", "app.ghxstship.com"],
+      "enabled": true,
+      "isDefault": false
+    },
+    {
+      "id": "opendeck",
+      "name": "OPENDECK",
+      "slug": "opendeck",
+      "description": "OPENDECK Marketplace - Event Services Platform",
+      "domains": ["opendeck.com", "marketplace.opendeck.com"],
+      "enabled": true,
+      "isDefault": false
+    }
+  ]
+}

@@ -123,15 +123,15 @@ export default function CalendarView({
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
+      <div className="space-y-md">
         <div className="flex items-center justify-between">
-          <div className="h-8 bg-muted animate-pulse rounded w-48" />
-          <div className="flex gap-2">
-            <div className="h-8 w-20 bg-muted animate-pulse rounded" />
-            <div className="h-8 w-20 bg-muted animate-pulse rounded" />
+          <div className="h-icon-lg bg-muted animate-pulse rounded w-container-xs" />
+          <div className="flex gap-xs">
+            <div className="h-icon-lg w-component-lg bg-muted animate-pulse rounded" />
+            <div className="h-icon-lg w-component-lg bg-muted animate-pulse rounded" />
           </div>
         </div>
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-xs">
           {Array.from({ length: 35 }).map((_, i) => (
             <div key={i} className="aspect-square bg-muted animate-pulse rounded" />
           ))}
@@ -142,7 +142,7 @@ export default function CalendarView({
 
   if (error) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-xsxl">
         <p className="text-muted-foreground mb-4">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -152,10 +152,10 @@ export default function CalendarView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Calendar Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           <h2 className="text-2xl font-bold">
             {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
           </h2>
@@ -164,12 +164,12 @@ export default function CalendarView({
           </Button>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-icon-xs w-icon-xs" />
           </Button>
           <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       </div>
@@ -179,7 +179,7 @@ export default function CalendarView({
         {/* Day Headers */}
         <div className="grid grid-cols-7 bg-muted">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
-            <div key={day} className="p-3 text-center font-medium text-sm">
+            <div key={day} className="p-sm text-center font-medium text-sm">
               {day}
             </div>
           ))}
@@ -189,7 +189,7 @@ export default function CalendarView({
         <div className="grid grid-cols-7">
           {days.map((date, index) => {
             if (!date) {
-              return <div key={`empty-${index}`} className="min-h-[120px] bg-muted/30" />;
+              return <div key={`empty-${index}`} className="min-h-header-lg bg-muted/30" />;
             }
 
             const dayListings = getListingsForDate(date);
@@ -199,7 +199,7 @@ export default function CalendarView({
             return (
               <div
                 key={date.toISOString()}
-                className={`min-h-[120px] border-r border-b p-2 cursor-pointer transition-colors hover:bg-muted/50 ${
+                className={`min-h-header-lg border-r border-b p-xs cursor-pointer transition-colors hover:bg-muted/50 ${
                   isToday ? 'bg-primary/5' : ''
                 } ${isSelected ? 'bg-primary/10 ring-2 ring-primary/20' : ''}`}
                 onClick={() => setSelectedDate(date)}
@@ -210,11 +210,11 @@ export default function CalendarView({
                 </div>
 
                 {/* Listings for this day */}
-                <div className="space-y-1">
+                <div className="space-y-xs">
                   {dayListings.slice(0, 3).map((listing) => (
                     <div
                       key={listing.id}
-                      className={`text-xs p-1 rounded cursor-pointer transition-all hover:shadow-sm ${
+                      className={`text-xs p-xs rounded cursor-pointer transition-all hover:shadow-sm ${
                         selectedListings.includes(listing.id) ? 'ring-1 ring-primary' : ''
                       } ${getTypeVariant(listing.type) === 'default' ? 'bg-blue-100 text-blue-800' :
                            getTypeVariant(listing.type) === 'secondary' ? 'bg-green-100 text-green-800' :
@@ -248,9 +248,9 @@ export default function CalendarView({
 
       {/* Selected Date Details */}
       {selectedDate && (
-        <div className="border rounded-lg p-4">
-          <div className="flex items-center gap-2 mb-4">
-            <CalendarIcon className="h-5 w-5" />
+        <div className="border rounded-lg p-md">
+          <div className="flex items-center gap-xs mb-4">
+            <CalendarIcon className="h-icon-sm w-icon-sm" />
             <h3 className="text-lg font-semibold">
               {selectedDate.toLocaleDateString('en-US', {
                 weekday: 'long',
@@ -261,11 +261,11 @@ export default function CalendarView({
             </h3>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {getListingsForDate(selectedDate).map((listing) => (
               <div
                 key={listing.id}
-                className="flex items-start gap-4 p-3 border rounded-lg cursor-pointer hover:shadow-sm transition-shadow"
+                className="flex items-start gap-md p-sm border rounded-lg cursor-pointer hover:shadow-sm transition-shadow"
                 onClick={() => onListingSelect?.(listing)}
               >
                 {/* Selection Checkbox */}
@@ -286,11 +286,11 @@ export default function CalendarView({
                 )}
 
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-start justify-between gap-4">
+                  <div className="flex items-start justify-between gap-md">
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-medium line-clamp-1 mb-1">{listing.title}</h4>
+                      <h4 className="font-medium line-clamp-xs mb-1">{listing.title}</h4>
 
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-xs mb-2">
                         <Badge variant={getTypeVariant(listing.type)}>
                           {listing.type}
                         </Badge>
@@ -300,34 +300,34 @@ export default function CalendarView({
                       </div>
 
                       {listing.description && (
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-2">
+                        <p className="text-sm text-muted-foreground line-clamp-xs mb-2">
                           {listing.description}
                         </p>
                       )}
 
-                      <div className="flex flex-wrap items-center gap-3 text-xs text-muted-foreground">
+                      <div className="flex flex-wrap items-center gap-sm text-xs text-muted-foreground">
                         {listing.pricing?.amount && (
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-xs">
                             <DollarSign className="h-3 w-3" />
                             <span>{formatCurrency(listing.pricing.amount, listing.pricing.currency)}</span>
                           </div>
                         )}
 
                         {listing.location?.city && (
-                          <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-xs">
                             <MapPin className="h-3 w-3" />
                             <span>{listing.location.city}</span>
                           </div>
                         )}
 
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-xs">
                           <Clock className="h-3 w-3" />
                           <span>{new Date(listing.created_at).toLocaleTimeString()}</span>
                         </div>
                       </div>
                     </div>
 
-                    <div className="flex gap-2">
+                    <div className="flex gap-xs">
                       <Button size="sm" variant="outline" onClick={(e) => {
                         e.stopPropagation();
                         onListingView?.(listing);
@@ -347,7 +347,7 @@ export default function CalendarView({
             ))}
 
             {getListingsForDate(selectedDate).length === 0 && (
-              <div className="text-center py-8 text-muted-foreground">
+              <div className="text-center py-xl text-muted-foreground">
                 No listings for this date
               </div>
             )}

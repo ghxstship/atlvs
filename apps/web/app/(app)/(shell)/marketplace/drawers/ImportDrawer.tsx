@@ -108,8 +108,8 @@ export default function ImportDrawer({
     <Drawer open={open} onOpenChange={handleClose}>
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center gap-2">
-            <Upload className="h-5 w-5" />
+          <DrawerTitle className="flex items-center gap-xs">
+            <Upload className="h-icon-sm w-icon-sm" />
             Import Listings
           </DrawerTitle>
           <DrawerDescription>
@@ -117,10 +117,10 @@ export default function ImportDrawer({
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto p-lg">
+          <div className="space-y-lg">
             {/* Format Selection */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div>
                 <Label htmlFor="format">Import Format</Label>
                 <Select value={format} onValueChange={(value: 'csv' | 'json' | 'excel') => setFormat(value)}>
@@ -146,8 +146,8 @@ export default function ImportDrawer({
                   className="mt-1"
                 />
                 {file && (
-                  <div className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
-                    <FileText className="h-4 w-4" />
+                  <div className="mt-2 flex items-center gap-xs text-sm text-muted-foreground">
+                    <FileText className="h-icon-xs w-icon-xs" />
                     <span>{file.name} ({(file.size / 1024).toFixed(1)} KB)</span>
                   </div>
                 )}
@@ -157,11 +157,11 @@ export default function ImportDrawer({
             <Separator />
 
             {/* Import Options */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Import Options</h3>
 
-              <div className="space-y-3">
-                <div className="flex items-center space-x-2">
+              <div className="space-y-sm">
+                <div className="flex items-center space-x-xs">
                   <Checkbox
                     id="skip-duplicates"
                     checked={options.skipDuplicates}
@@ -172,7 +172,7 @@ export default function ImportDrawer({
                   </Label>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-xs">
                   <Checkbox
                     id="update-existing"
                     checked={options.updateExisting}
@@ -183,7 +183,7 @@ export default function ImportDrawer({
                   </Label>
                 </div>
 
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-xs">
                   <Checkbox
                     id="validate-only"
                     checked={options.validateOnly}
@@ -200,12 +200,12 @@ export default function ImportDrawer({
             {preview && (
               <>
                 <Separator />
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-semibold">Data Preview</h3>
 
-                  <div className="bg-muted/50 rounded-lg p-4">
+                  <div className="bg-muted/50 rounded-lg p-md">
                     <div className="text-sm font-medium mb-2">Columns Found:</div>
-                    <div className="flex flex-wrap gap-2 mb-4">
+                    <div className="flex flex-wrap gap-xs mb-4">
                       {preview.headers.map((header: string, index: number) => (
                         <Badge key={index} variant="secondary" className="text-xs">
                           {header}
@@ -214,9 +214,9 @@ export default function ImportDrawer({
                     </div>
 
                     <div className="text-sm font-medium mb-2">Sample Data (first 3 rows):</div>
-                    <div className="space-y-2">
+                    <div className="space-y-xs">
                       {preview.preview.map((row: unknown, index: number) => (
-                        <div key={index} className="text-xs bg-background p-2 rounded border">
+                        <div key={index} className="text-xs bg-background p-xs rounded border">
                           <div className="font-medium">Row {index + 1}:</div>
                           <div className="mt-1 text-muted-foreground">
                             {Object.entries(row).slice(0, 3).map(([key, value]) => (
@@ -236,25 +236,25 @@ export default function ImportDrawer({
             {results && (
               <>
                 <Separator />
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-semibold">Import Results</h3>
 
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <CheckCircle className="h-8 w-8 text-green-500 mx-auto mb-2" />
+                  <div className="grid grid-cols-3 gap-md">
+                    <div className="text-center p-md bg-green-50 border border-green-200 rounded-lg">
+                      <CheckCircle className="h-icon-lg w-icon-lg text-green-500 mx-auto mb-2" />
                       <div className="text-2xl font-bold text-green-600">{results.imported || 0}</div>
                       <div className="text-sm text-green-700">Imported</div>
                     </div>
 
-                    <div className="text-center p-4 bg-blue-50 border border-blue-200 rounded-lg">
-                      <AlertCircle className="h-8 w-8 text-blue-500 mx-auto mb-2" />
+                    <div className="text-center p-md bg-blue-50 border border-blue-200 rounded-lg">
+                      <AlertCircle className="h-icon-lg w-icon-lg text-blue-500 mx-auto mb-2" />
                       <div className="text-2xl font-bold text-blue-600">{results.skipped || 0}</div>
                       <div className="text-sm text-blue-700">Skipped</div>
                     </div>
 
                     {results.errors?.length > 0 && (
-                      <div className="text-center p-4 bg-red-50 border border-red-200 rounded-lg">
-                        <X className="h-8 w-8 text-red-500 mx-auto mb-2" />
+                      <div className="text-center p-md bg-red-50 border border-red-200 rounded-lg">
+                        <X className="h-icon-lg w-icon-lg text-red-500 mx-auto mb-2" />
                         <div className="text-2xl font-bold text-red-600">{results.errors.length}</div>
                         <div className="text-sm text-red-700">Errors</div>
                       </div>
@@ -262,11 +262,11 @@ export default function ImportDrawer({
                   </div>
 
                   {results.errors?.length > 0 && (
-                    <div className="space-y-2">
+                    <div className="space-y-xs">
                       <h4 className="font-medium text-red-900">Errors:</h4>
-                      <div className="max-h-40 overflow-y-auto space-y-1">
+                      <div className="max-h-40 overflow-y-auto space-y-xs">
                         {results.errors.map((error: string, index: number) => (
-                          <div key={index} className="text-sm text-red-700 bg-red-50 p-2 rounded">
+                          <div key={index} className="text-sm text-red-700 bg-red-50 p-xs rounded">
                             {error}
                           </div>
                         ))}
@@ -278,11 +278,11 @@ export default function ImportDrawer({
             )}
 
             {/* Import Templates */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Import Templates</h3>
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-sm">
                 {Object.entries(marketplaceService.getImportTemplates()).map(([key, template]) => (
-                  <div key={key} className="border rounded-lg p-4">
+                  <div key={key} className="border rounded-lg p-md">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-medium">{template.name}</h4>
                       <Button size="sm" variant="outline">
@@ -301,8 +301,8 @@ export default function ImportDrawer({
         </div>
 
         {/* Footer Actions */}
-        <div className="border-t p-6">
-          <div className="flex gap-3">
+        <div className="border-t p-lg">
+          <div className="flex gap-sm">
             {file && !results && (
               <Button
                 onClick={handleImport}
@@ -311,12 +311,12 @@ export default function ImportDrawer({
               >
                 {isImporting ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="h-icon-xs w-icon-xs mr-2 animate-spin" />
                     Importing...
                   </>
                 ) : (
                   <>
-                    <Upload className="h-4 w-4 mr-2" />
+                    <Upload className="h-icon-xs w-icon-xs mr-2" />
                     {options.validateOnly ? 'Validate' : 'Import'} Listings
                   </>
                 )}

@@ -2,7 +2,7 @@
 
 export function FormView({ data, onSubmit }: any) {
   return (
-    <form onSubmit={onSubmit} className="space-y-4 p-4">
+    <form onSubmit={onSubmit} className="space-y-md p-md">
       <p>Form view</p>
     </form>
   );

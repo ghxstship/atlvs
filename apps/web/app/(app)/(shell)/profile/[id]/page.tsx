@@ -58,7 +58,7 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested profile could not be found.</p>
             </div>
           )
@@ -81,18 +81,18 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Basic Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <User className="h-icon-sm w-icon-sm" />
                 Basic Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-4">
-                <Avatar className="h-16 w-16">
+            <CardContent className="space-y-md">
+              <div className="flex items-center gap-md">
+                <Avatar className="h-component-md w-component-md">
                   {(profile as any).first_name?.[0]}{(profile as any).last_name?.[0]}
                 </Avatar>
                 <div>
@@ -113,25 +113,25 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
           {/* Contact Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Mail className="h-icon-sm w-icon-sm" />
                 Contact Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center gap-2 text-sm">
-                <Mail className="h-4 w-4 text-muted-foreground" />
+            <CardContent className="space-y-sm">
+              <div className="flex items-center gap-xs text-sm">
+                <Mail className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <span>{(profile as any).email}</span>
               </div>
               {(profile as any).phone && (
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-xs text-sm">
+                  <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
                   <span>{(profile as any).phone}</span>
                 </div>
               )}
               {(profile as any).location && (
-                <div className="flex items-center gap-2 text-sm">
-                  <MapPin className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-xs text-sm">
+                  <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
                   <span>{(profile as any).location}</span>
                 </div>
               )}
@@ -141,12 +141,12 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
           {/* Organization Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Briefcase className="h-icon-sm w-icon-sm" />
                 Organization
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{organization?.name || 'No organization'}</p>
                 <p className="text-sm text-muted-foreground">
@@ -162,17 +162,17 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
           {/* Account Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Account Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center gap-2 text-sm">
-                <Calendar className="h-4 w-4 text-muted-foreground" />
+            <CardContent className="space-y-sm">
+              <div className="flex items-center gap-xs text-sm">
+                <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <span>Joined {(profile as any).created_at ? new Date((profile as any).created_at).toLocaleDateString() : 'Unknown'}</span>
               </div>
-              <div className="flex items-center gap-2 text-sm">
+              <div className="flex items-center gap-xs text-sm">
                 <span>Last updated: {(profile as any).updated_at ? new Date((profile as any).updated_at).toLocaleDateString() : 'Unknown'}</span>
               </div>
             </CardContent>
@@ -189,7 +189,7 @@ export default async function ProfileDetailPage({ params }: ProfileDetailPagePro
             <CardTitle>Recent Activity</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Activity tracking coming soon...
             </p>
           </CardContent>

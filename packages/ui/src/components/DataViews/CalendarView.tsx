@@ -137,14 +137,14 @@ export function CalendarView({
               
               onClick={() => navigateDate('prev')}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-icon-xs h-icon-xs" />
             </Button>
             <Button
               variant="outline"
               
               onClick={() => navigateDate('next')}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-icon-xs h-icon-xs" />
             </Button>
             <Button
               variant="outline"
@@ -191,7 +191,7 @@ export function CalendarView({
                 <div
                   key={index}
                   className={`
-                    p-xs min-h-[100px] border border-border cursor-pointer
+                    p-xs min-h-header-md border border-border cursor-pointer
                     ${!isCurrentMonth ? 'bg-muted text-muted-foreground' : 'bg-background'}
                     ${isToday ? 'bg-accent/10 border-primary' : ''}
                     hover:bg-muted/50

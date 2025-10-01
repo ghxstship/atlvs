@@ -1,9 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Button } from './Button';
-import { Badge } from './Badge';
-import { useToast } from './Toast';
+import { Button } from '../../atoms/Button';
+import { Badge } from '../../atoms/Badge';
+import { useToast } from '../../components/Toast';
 import { CheckCircle, AlertTriangle, XCircle, ArrowRight, RefreshCw } from 'lucide-react';
 
 interface FlowStep {
@@ -266,7 +266,7 @@ export const FlowHealthDashboard: React.FC<FlowHealthDashboardProps> = ({
           disabled={isValidating}
           size="sm"
         >
-          <RefreshCw className="w-4 h-4 mr-sm" />
+          <RefreshCw className="w-icon-xs h-icon-xs mr-sm" />
           Validate All
         </Button>
       </div>

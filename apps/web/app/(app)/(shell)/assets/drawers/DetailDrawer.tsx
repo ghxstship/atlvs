@@ -283,7 +283,7 @@ export default function DetailDrawer({
                     aria-label="Previous asset"
                     onClick={onPrevious}
                   >
-                    <ChevronLeft className="h-5 w-5" />
+                    <ChevronLeft className="h-icon-sm w-icon-sm" />
                   </Button>
                 )}
 
@@ -294,33 +294,33 @@ export default function DetailDrawer({
                     aria-label="Next asset"
                     onClick={onNext}
                   >
-                    <ChevronRight className="h-5 w-5" />
+                    <ChevronRight className="h-icon-sm w-icon-sm" />
                   </Button>
                 )}
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="outline" size="icon" aria-label="Asset actions">
-                      <Settings className="h-4 w-4" />
+                      <Settings className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end" className="w-52">
                     <DropdownMenuItem onSelect={handleEdit}>
-                      <Edit className="mr-sm h-4 w-4" /> Edit asset
+                      <Edit className="mr-sm h-icon-xs w-icon-xs" /> Edit asset
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={handleDuplicate}>
-                      <Copy className="mr-sm h-4 w-4" /> Duplicate asset
+                      <Copy className="mr-sm h-icon-xs w-icon-xs" /> Duplicate asset
                     </DropdownMenuItem>
                     <DropdownMenuItem onSelect={() => void fetchAssetDetails()}>
-                      <Download className="mr-sm h-4 w-4" /> Refresh details
+                      <Download className="mr-sm h-icon-xs w-icon-xs" /> Refresh details
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem onSelect={handleDelete} className="text-destructive">
-                      <Trash2 className="mr-sm h-4 w-4" /> Delete asset
+                      <Trash2 className="mr-sm h-icon-xs w-icon-xs" /> Delete asset
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem>
-                      <Share className="mr-sm h-4 w-4" /> Share asset
+                      <Share className="mr-sm h-icon-xs w-icon-xs" /> Share asset
                     </DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
@@ -329,7 +329,7 @@ export default function DetailDrawer({
 
             {loading && (
               <div className="flex items-center gap-sm text-sm text-muted-foreground">
-                <Loader2 className="h-4 w-4 animate-spin" /> Fetching latest details…
+                <Loader2 className="h-icon-xs w-icon-xs animate-spin" /> Fetching latest details…
               </div>
             )}
           </div>
@@ -354,7 +354,7 @@ export default function DetailDrawer({
                   {summaryItems.map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-sm">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
-                        <Icon className="h-4 w-4 text-muted-foreground" />
+                        <Icon className="h-icon-xs w-icon-xs text-muted-foreground" />
                       </span>
                       <InfoRow label={label} value={value} />
                     </div>
@@ -368,7 +368,7 @@ export default function DetailDrawer({
                   {financialItems.map(({ icon: Icon, label, value }) => (
                     <div key={label} className="flex items-start gap-sm">
                       <span className="flex h-9 w-9 items-center justify-center rounded-full bg-muted">
-                        <Icon className="h-4 w-4 text-muted-foreground" />
+                        <Icon className="h-icon-xs w-icon-xs text-muted-foreground" />
                       </span>
                       <InfoRow label={label} value={value} />
                     </div>
@@ -392,7 +392,7 @@ export default function DetailDrawer({
                         <img
                           src={url}
                           alt="Asset"
-                          className="h-24 w-full object-cover transition group-hover:scale-105"
+                          className="h-component-lg w-full object-cover transition group-hover:scale-105"
                         />
                       </div>
                     ))}
@@ -439,7 +439,7 @@ export default function DetailDrawer({
 
               <section className="rounded-lg border border-border bg-background p-lg shadow-sm">
                 <h4 className="flex items-center gap-sm text-sm font-medium text-muted-foreground">
-                  <ImageIcon className="h-4 w-4" /> Documentation
+                  <ImageIcon className="h-icon-xs w-icon-xs" /> Documentation
                 </h4>
                 <p className="mt-sm text-sm text-muted-foreground">
                   Documentation, maintenance records, and inspections will appear here once connected to the live data source.
@@ -450,14 +450,14 @@ export default function DetailDrawer({
             <TabsContent value="activity" className="mt-lg space-y-lg">
               <section className="rounded-lg border border-border bg-background p-lg shadow-sm">
                 <div className="flex items-start gap-sm">
-                  <History className="mt-xs h-5 w-5 text-muted-foreground" />
+                  <History className="mt-xs h-icon-sm w-icon-sm text-muted-foreground" />
                   <div className="space-y-xs">
                     <h4 className="text-sm font-medium text-foreground">Activity log</h4>
                     <p className="text-sm text-muted-foreground">
                       Live activity, maintenance updates, and assignment changes will stream into this timeline once Supabase realtime is wired.
                     </p>
                     <div className="flex items-center gap-xs text-sm text-muted-foreground">
-                      <AlertTriangle className="h-4 w-4" /> Enterprise audit logging is enabled across the Assets module.
+                      <AlertTriangle className="h-icon-xs w-icon-xs" /> Enterprise audit logging is enabled across the Assets module.
                     </div>
                   </div>
                 </div>

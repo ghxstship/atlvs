@@ -102,7 +102,7 @@ export default function InspectionCalendarView({
  size="sm"
  onClick={() => setCurrentMonth(subMonths(currentMonth, 1))}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
@@ -116,7 +116,7 @@ export default function InspectionCalendarView({
  size="sm"
  onClick={() => setCurrentMonth(addMonths(currentMonth, 1))}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -134,7 +134,7 @@ export default function InspectionCalendarView({
  <div className="grid grid-cols-7 gap-px bg-muted p-px">
  {/* Empty cells for alignment */}
  {emptyDays.map((_, index) => (
- <div key={`empty-${index}`} className="bg-background p-sm min-h-[120px]" />
+ <div key={`empty-${index}`} className="bg-background p-sm min-h-header-lg" />
  ))}
  
  {/* Calendar days */}
@@ -147,7 +147,7 @@ export default function InspectionCalendarView({
  return (
  <div
  key={dateKey}
- className={`bg-background p-sm min-h-[120px] ${
+ className={`bg-background p-sm min-h-header-lg ${
  isToday ? "bg-primary/5 ring-1 ring-primary" : ""
  } ${!isCurrentMonth ? "opacity-50" : ""}`}
  >
@@ -173,7 +173,7 @@ export default function InspectionCalendarView({
  </span>
  </div>
  {inspection.score !== undefined && inspection.score !== null && (
- <div className="text-[10px] mt-xs">
+ <div className="text-small mt-xs">
  Score: {inspection.score}%
  </div>
  )}

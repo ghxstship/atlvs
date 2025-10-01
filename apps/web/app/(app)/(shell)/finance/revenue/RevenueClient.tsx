@@ -207,15 +207,15 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'projected':
-        return <Target className="h-4 w-4 color-accent" />;
+        return <Target className="h-icon-xs w-icon-xs color-accent" />;
       case 'recognized':
-        return <Clock className="h-4 w-4 color-warning" />;
+        return <Clock className="h-icon-xs w-icon-xs color-warning" />;
       case 'received':
-        return <CheckCircle className="h-4 w-4 color-success" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs color-success" />;
       case 'cancelled':
-        return <AlertTriangle className="h-4 w-4 color-destructive" />;
+        return <AlertTriangle className="h-icon-xs w-icon-xs color-destructive" />;
       default:
-        return <Target className="h-4 w-4 color-muted" />;
+        return <Target className="h-icon-xs w-icon-xs color-muted" />;
     }
   };
 
@@ -330,15 +330,15 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -358,7 +358,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
           <div className="flex items-center cluster-sm">
             <ViewSwitcher />
             <Button onClick={handleCreateRevenue}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Revenue
             </Button>
           </div>
@@ -388,7 +388,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                   {formatCurrency(totalAmounts.total)}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 color-success" />
+              <DollarSign className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -401,7 +401,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                 </p>
                 <p className="text-body-sm color-foreground/60">{statusCounts.projected} items</p>
               </div>
-              <Target className="h-8 w-8 color-accent" />
+              <Target className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -414,7 +414,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                 </p>
                 <p className="text-body-sm color-foreground/60">{statusCounts.recognized} items</p>
               </div>
-              <Clock className="h-8 w-8 color-warning" />
+              <Clock className="h-icon-lg w-icon-lg color-warning" />
             </div>
           </Card>
           
@@ -427,7 +427,7 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
                 </p>
                 <p className="text-body-sm color-foreground/60">{statusCounts.received} items</p>
               </div>
-              <CheckCircle className="h-8 w-8 color-success" />
+              <CheckCircle className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
         </div>
@@ -541,12 +541,12 @@ export default function RevenueClient({ user, orgId, translations }: RevenueClie
 
         {/* Empty State */}
         {revenues.length === 0 && (
-          <Card className="p-2xl text-center">
-            <TrendingUp className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <TrendingUp className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No revenue records found</h3>
             <p className="color-foreground/70 mb-md">Start tracking your revenue by adding your first record</p>
             <Button onClick={handleCreateRevenue}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Revenue
             </Button>
           </Card>

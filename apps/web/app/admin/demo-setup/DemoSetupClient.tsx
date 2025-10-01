@@ -227,7 +227,7 @@ export function DemoSetupClient() {
     return (
       <Card className="p-lg max-w-2xl mx-auto">
         <div className="flex items-center gap-sm mb-md">
-          <CheckCircle className="h-5 w-5 color-success" />
+          <CheckCircle className="h-icon-sm w-icon-sm color-success" />
           <h3 className="text-body text-heading-4">Setup Complete</h3>
         </div>
 
@@ -238,7 +238,7 @@ export function DemoSetupClient() {
               <div className="stack-sm">
                 {successful.map((result: any) => (
                   <div key={result.email} className="flex items-center gap-sm text-body-sm">
-                    <CheckCircle className="h-4 w-4 color-success" />
+                    <CheckCircle className="h-icon-xs w-icon-xs color-success" />
                     <span>{result.email}</span>
                   </div>
                 ))}
@@ -253,7 +253,7 @@ export function DemoSetupClient() {
                 {failed.map((result: any) => (
                   <div key={result.email} className="text-body-sm">
                     <div className="flex items-center gap-sm">
-                      <XCircle className="h-4 w-4 color-destructive" />
+                      <XCircle className="h-icon-xs w-icon-xs color-destructive" />
                       <span>{result.email}</span>
                     </div>
                     {result.error && (
@@ -268,7 +268,7 @@ export function DemoSetupClient() {
 
         <div className="mt-lg p-md bg-accent/10 rounded-lg">
           <div className="flex items-start gap-sm">
-            <AlertCircle className="h-4 w-4 color-accent mt-0.5" />
+            <AlertCircle className="h-icon-xs w-icon-xs color-accent mt-0.5" />
             <div className="text-body-sm">
               <p className="form-label color-accent">Next Steps:</p>
               <ol className="list-decimal list-inside color-accent mt-xs stack-xs">
@@ -295,7 +295,7 @@ export function DemoSetupClient() {
   return (
     <Card className="p-lg max-w-2xl mx-auto">
       <div className="flex items-center gap-sm mb-md">
-        <Users className="h-5 w-5 color-muted" />
+        <Users className="h-icon-sm w-icon-sm color-muted" />
         <h3 className="text-body text-heading-4">Create Demo Users</h3>
       </div>
       
@@ -315,7 +315,7 @@ export function DemoSetupClient() {
               className="flex items-center justify-between p-sm border rounded-lg"
             >
               <div className="flex items-center gap-sm">
-                <Icon className="h-4 w-4 color-muted" />
+                <Icon className="h-icon-xs w-icon-xs color-muted" />
                 <div>
                   <div className="form-label">{user.full_name}</div>
                   <div className="text-body-sm color-muted">{user.email}</div>
@@ -340,7 +340,7 @@ export function DemoSetupClient() {
       >
         {isLoading ? (
           <>
-            <Loader2 className="h-4 w-4 animate-spin mr-sm" />
+            <Loader2 className="h-icon-xs w-icon-xs animate-spin mr-sm" />
             Creating Demo Users...
           </>
         ) : (

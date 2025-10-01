@@ -1,16 +1,16 @@
 /**
- * '$dir' Template - Level 4
+ * 'BlankLayout' Template - Level 4
  */
 
 import React, { ReactNode } from 'react';
 import { cn } from '../../lib/utils';
 
-export interface ${dir}Props {
+export interface BlankLayoutProps {
   children: ReactNode;
   className?: string;
 }
 
-export const $dir: React.FC<${dir}Props> = ({ children, className }) => {
+export const BlankLayout: React.FC<BlankLayoutProps> = ({ children, className }) => {
   return (
     <div className={cn('w-full', className)}>
       {children}

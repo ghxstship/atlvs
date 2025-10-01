@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CookiePolicyPage() {
   return (
-    <div className="container mx-auto px-md py-3xl max-w-4xl">
+    <div className="container mx-auto px-md py-smxl max-w-4xl">
       <div className="prose prose-lg max-w-none">
         <h1 className={`${anton.className} uppercase text-heading-1 text-heading-3 mb-xl`}>
           COOKIE POLICY

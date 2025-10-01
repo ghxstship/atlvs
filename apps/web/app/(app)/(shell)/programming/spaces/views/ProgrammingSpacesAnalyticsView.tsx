@@ -200,27 +200,27 @@ export default function ProgrammingSpacesAnalyticsView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  </CardHeader>
  <CardContent>
- <div className="h-8 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-lg bg-muted rounded w-1/2"></div>
  </CardContent>
  </Card>
  ))}
  </div>
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {Array.from({ length: 3 }).map((_, itemIndex) => (
  <div key={itemIndex} className="h-3 bg-muted rounded"></div>
  ))}
@@ -235,9 +235,9 @@ export default function ProgrammingSpacesAnalyticsView({
 
  if (spaces.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <BarChart3 className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No data to analyze</h3>
  <p className="text-muted-foreground">
  Create some spaces to see analytics and insights.
@@ -248,13 +248,13 @@ export default function ProgrammingSpacesAnalyticsView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Spaces</CardTitle>
- <Building className="h-4 w-4 text-muted-foreground" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.totalSpaces}</div>
@@ -267,7 +267,7 @@ export default function ProgrammingSpacesAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Utilization Rate</CardTitle>
- <TrendingUp className="h-4 w-4 text-muted-foreground" />
+ <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.utilizationRate.toFixed(1)}%</div>
@@ -281,7 +281,7 @@ export default function ProgrammingSpacesAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Capacity</CardTitle>
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.totalCapacity}</div>
@@ -294,7 +294,7 @@ export default function ProgrammingSpacesAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Available Spaces</CardTitle>
- <Square className="h-4 w-4 text-muted-foreground" />
+ <Square className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.availableSpaces}</div>
@@ -306,22 +306,22 @@ export default function ProgrammingSpacesAnalyticsView({
  </div>
 
  {/* Charts and Breakdowns */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Status Breakdown */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <TrendingUp className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  Status Breakdown
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.spacesByStatus.map((item) => {
  const percentage = (item.count / analytics.totalSpaces) * 100;
  return (
  <div key={item.status} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: STATUS_COLORS[item.status] }}
@@ -330,7 +330,7 @@ export default function ProgrammingSpacesAnalyticsView({
  {item.status.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -346,18 +346,18 @@ export default function ProgrammingSpacesAnalyticsView({
  {/* Space Types */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Building className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Building className="h-icon-sm w-icon-sm" />
  Space Types
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.spacesByKind.map((item) => {
  const percentage = (item.count / analytics.totalSpaces) * 100;
  return (
  <div key={item.kind} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: KIND_COLORS[item.kind] }}
@@ -366,7 +366,7 @@ export default function ProgrammingSpacesAnalyticsView({
  {item.kind.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -382,18 +382,18 @@ export default function ProgrammingSpacesAnalyticsView({
  {/* Access Level Distribution */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Shield className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Shield className="h-icon-sm w-icon-sm" />
  Access Levels
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.spacesByAccessLevel.map((item) => {
  const percentage = (item.count / analytics.totalSpaces) * 100;
  return (
  <div key={item.access_level} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: ACCESS_LEVEL_COLORS[item.access_level] }}
@@ -402,7 +402,7 @@ export default function ProgrammingSpacesAnalyticsView({
  {item.access_level.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -419,16 +419,16 @@ export default function ProgrammingSpacesAnalyticsView({
  {analytics.spacesByBuilding.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <MapPin className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <MapPin className="h-icon-sm w-icon-sm" />
  Spaces by Building
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.spacesByBuilding.map((item, index) => (
  <div key={item.building} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
@@ -446,18 +446,18 @@ export default function ProgrammingSpacesAnalyticsView({
  {/* Booking Trends */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Weekly Booking Trends
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {analytics.bookingTrends.map((item) => (
- <div key={item.date} className="space-y-2">
+ <div key={item.date} className="space-y-xs">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">{item.date}</span>
- <div className="flex items-center gap-4 text-sm">
+ <div className="flex items-center gap-md text-sm">
  <span>{item.bookings} bookings</span>
  <span className="text-muted-foreground">
  {item.utilization}% utilization
@@ -472,26 +472,26 @@ export default function ProgrammingSpacesAnalyticsView({
  </Card>
 
  {/* Popular Spaces and Revenue */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Popular Spaces */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <TrendingUp className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  Most Popular Spaces
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.popularSpaces.map((item, index) => (
  <div key={item.space} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
  <span className="text-sm truncate">{item.space}</span>
  </div>
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span>{item.bookings} bookings</span>
  <span className="text-muted-foreground">
  ({item.utilization}%)
@@ -507,16 +507,16 @@ export default function ProgrammingSpacesAnalyticsView({
  {analytics.revenueBySpace.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <DollarSign className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <DollarSign className="h-icon-sm w-icon-sm" />
  Top Revenue Spaces
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.revenueBySpace.map((item, index) => (
  <div key={item.space} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>

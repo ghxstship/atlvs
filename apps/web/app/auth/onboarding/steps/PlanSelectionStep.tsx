@@ -220,7 +220,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
               onClick={() => handlePlanSelect(plan.id)}
             >
               {plan.popular && (
-                <div className="brand-ghostship absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <div className="brand-ghostship absolute -top-sm left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-accent color-accent-foreground">
                     Most Popular
                   </Badge>
@@ -229,7 +229,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
               
               <CardContent className="p-lg">
                 <div className="brand-ghostship text-center mb-lg">
-                  <Icon className="h-8 w-8 color-accent mx-auto mb-sm" />
+                  <Icon className="h-icon-lg w-icon-lg color-accent mx-auto mb-sm" />
                   <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                     {plan.name}
                   </h3>
@@ -262,7 +262,7 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
                 <ul className="stack-sm mb-lg">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="flex items-start cluster-sm">
-                      <Check className="h-4 w-4 color-success mt-0.5 flex-shrink-0" />
+                      <Check className="h-icon-xs w-icon-xs color-success mt-0.5 flex-shrink-0" />
                       <span className="text-body-sm color-foreground">{feature}</span>
                     </li>
                   ))}
@@ -284,13 +284,13 @@ export function PlanSelectionStep({ onNext, onBack, updateData, data }: PlanSele
       {/* Action Buttons */}
       <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
-          <ArrowLeft className="mr-sm h-4 w-4" />
+          <ArrowLeft className="mr-sm h-icon-xs w-icon-xs" />
           Back
         </Button>
         
         <Button onClick={handleContinue} disabled={loading}>
           {loading ? 'Processing...' : 'Continue'}
-          <ArrowRight className="ml-sm h-4 w-4" />
+          <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
         </Button>
       </div>
 

@@ -92,15 +92,15 @@ export default function ProgrammingWorkshopsTimelineView({
 
  if (loading) {
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {Array.from({ length: 3 }).map((_, index) => (
- <div key={index} className="space-y-4">
- <div className="h-6 bg-muted rounded w-1/3 animate-pulse"></div>
- <div className="space-y-3">
+ <div key={index} className="space-y-md">
+ <div className="h-icon-md bg-muted rounded w-1/3 animate-pulse"></div>
+ <div className="space-y-sm">
  {Array.from({ length: 2 }).map((_, workshopIndex) => (
  <Card key={workshopIndex} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
@@ -117,9 +117,9 @@ export default function ProgrammingWorkshopsTimelineView({
 
  if (workshops.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No workshops found</h3>
  <p className="text-muted-foreground">
  No workshops match your current filters. Try adjusting your search criteria.
@@ -130,18 +130,18 @@ export default function ProgrammingWorkshopsTimelineView({
  }
 
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {sortedGroups.map(([groupKey, groupWorkshops]) => {
  const totalParticipants = groupWorkshops.reduce((sum, w) => sum + w.current_participants, 0);
  const totalCapacity = groupWorkshops.reduce((sum, w) => sum + (w.max_participants || 0), 0);
 
  return (
- <div key={groupKey} className="space-y-4">
+ <div key={groupKey} className="space-y-md">
  {/* Group Header */}
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <div className="flex-1">
- <h3 className="text-lg font-semibold flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <h3 className="text-lg font-semibold flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  {groupKey}
  </h3>
  <p className="text-sm text-muted-foreground mt-1">
@@ -160,7 +160,7 @@ export default function ProgrammingWorkshopsTimelineView({
  {/* Timeline Line */}
  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border"></div>
 
- <div className="space-y-6">
+ <div className="space-y-lg">
  {groupWorkshops
  .sort((a, b) => new Date(a.start_date).getTime() - new Date(b.start_date).getTime())
  .map((workshop, index) => {
@@ -170,10 +170,10 @@ export default function ProgrammingWorkshopsTimelineView({
  const formatConfig = FORMAT_CONFIG[workshop.format];
 
  return (
- <div key={workshop.id} className="relative flex gap-4">
+ <div key={workshop.id} className="relative flex gap-md">
  {/* Timeline Dot */}
  <div className="relative z-10">
- <div className="flex h-12 w-12 items-center justify-center rounded-full border-2 border-background bg-card shadow">
+ <div className="flex h-icon-2xl w-icon-2xl items-center justify-center rounded-full border-2 border-background bg-card shadow">
  <span className="text-lg">{categoryConfig.icon}</span>
  </div>
  </div>
@@ -183,7 +183,7 @@ export default function ProgrammingWorkshopsTimelineView({
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-2">
+ <div className="flex items-center gap-xs mb-2">
  <Badge variant="outline" className="text-xs">
  {categoryConfig.label}
  </Badge>
@@ -193,7 +193,7 @@ export default function ProgrammingWorkshopsTimelineView({
  <Badge variant={skillLevelConfig.variant} className="text-xs">
  {skillLevelConfig.label}
  </Badge>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-xs">{formatConfig.icon}</span>
  <Badge variant={formatConfig.variant} className="text-xs">
  {formatConfig.label}
@@ -209,17 +209,17 @@ export default function ProgrammingWorkshopsTimelineView({
  </div>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(workshop)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(workshop)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -228,12 +228,12 @@ export default function ProgrammingWorkshopsTimelineView({
  </CardHeader>
 
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {/* Date and Time */}
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
- <div className="space-y-1">
- <div className="flex items-center gap-1">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md text-sm">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">
  {new Date(workshop.start_date).toLocaleDateString()}
  </span>
@@ -244,7 +244,7 @@ export default function ProgrammingWorkshopsTimelineView({
  </div>
  )}
  {workshop.duration_minutes && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  <span>{workshop.duration_minutes} minutes</span>
  </div>
@@ -252,9 +252,9 @@ export default function ProgrammingWorkshopsTimelineView({
  </div>
 
  {/* Participants and Capacity */}
- <div className="space-y-1">
- <div className="flex items-center gap-1">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>
  {workshop.current_participants}
  {workshop.max_participants && `/${workshop.max_participants}`}
@@ -274,18 +274,18 @@ export default function ProgrammingWorkshopsTimelineView({
  </div>
 
  {/* Location and Price */}
- <div className="space-y-1">
+ <div className="space-y-xs">
  {(workshop.location || workshop.venue) && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm truncate">
  {workshop.venue || workshop.location}
  </span>
  </div>
  )}
  {workshop.price ? (
- <div className="flex items-center gap-1">
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>
  {workshop.currency || '$'}{workshop.price}
  {workshop.early_bird_price && (
@@ -305,8 +305,8 @@ export default function ProgrammingWorkshopsTimelineView({
  {workshop.primary_instructor && (
  <div>
  <h5 className="text-sm font-medium mb-1">Instructor</h5>
- <div className="flex items-center gap-1 text-sm">
- <User className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs text-sm">
+ <User className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>
  {workshop.primary_instructor.full_name || workshop.primary_instructor.email}
  </span>
@@ -318,9 +318,9 @@ export default function ProgrammingWorkshopsTimelineView({
  {(workshop.project || workshop.event) && (
  <div>
  <h5 className="text-sm font-medium mb-1">Associated</h5>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {workshop.project && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-xs text-muted-foreground">Project:</span>
  <Badge variant="outline" className="text-xs">
  {workshop.project.name}
@@ -328,7 +328,7 @@ export default function ProgrammingWorkshopsTimelineView({
  </div>
  )}
  {workshop.event && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-xs text-muted-foreground">Event:</span>
  <Badge variant="outline" className="text-xs">
  {workshop.event.title}
@@ -343,7 +343,7 @@ export default function ProgrammingWorkshopsTimelineView({
  {workshop.objectives && workshop.objectives.length > 0 && (
  <div>
  <h5 className="text-sm font-medium mb-1">Learning Objectives</h5>
- <ul className="text-sm list-disc list-inside space-y-1 text-muted-foreground">
+ <ul className="text-sm list-disc list-inside space-y-xs text-muted-foreground">
  {workshop.objectives.slice(0, 3).map((objective, index) => (
  <li key={index}>{objective}</li>
  ))}
@@ -357,7 +357,7 @@ export default function ProgrammingWorkshopsTimelineView({
  )}
 
  {/* Features */}
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {workshop.certification_available && (
  <Badge variant="outline" className="text-xs">
  <Award className="h-3 w-3 mr-1" />
@@ -385,7 +385,7 @@ export default function ProgrammingWorkshopsTimelineView({
  {workshop.tags && workshop.tags.length > 0 && (
  <div>
  <h5 className="text-sm font-medium mb-1">Tags</h5>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {workshop.tags.slice(0, 5).map((tag, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {tag}

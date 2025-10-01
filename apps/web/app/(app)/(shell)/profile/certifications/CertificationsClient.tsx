@@ -159,9 +159,9 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
     return (
       <div className="stack-md">
         <div className="animate-pulse stack-md">
-          <div className="h-4 bg-secondary rounded w-3/4"></div>
-          <div className="h-4 bg-secondary rounded w-1/2"></div>
-          <div className="h-4 bg-secondary rounded w-2/3"></div>
+          <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
+          <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+          <div className="h-icon-xs bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -172,11 +172,11 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Award className="h-5 w-5" />
+          <Award className="h-icon-sm w-icon-sm" />
           <h3 className="text-body text-heading-4">Certifications</h3>
         </div>
         <Button onClick={() => setShowAddForm(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           Add Certification
         </Button>
       </div>
@@ -250,7 +250,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
             
             <div className="flex gap-sm">
               <Button onClick={handleAdd} disabled={saving || !formData.name || !formData.issuing_organization}>
-                <Save className="h-4 w-4 mr-sm" />
+                <Save className="h-icon-xs w-icon-xs mr-sm" />
                 {saving ? 'Adding...' : 'Add Certification'}
               </Button>
               <Button variant="outline" onClick={() => setShowAddForm(false)}>
@@ -266,7 +266,7 @@ export default function CertificationsClient({ orgId, userId }: { orgId: string;
         {certifications.length === 0 ? (
           <Card>
             <div className="p-xl text-center color-muted">
-              <Award className="h-12 w-12 mx-auto mb-md opacity-50" />
+              <Award className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
               <p>No certifications added yet.</p>
               <p className="text-body-sm">Add your professional certifications to showcase your expertise.</p>
             </div>

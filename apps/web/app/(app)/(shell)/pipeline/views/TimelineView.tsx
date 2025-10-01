@@ -2,9 +2,9 @@
 
 export function TimelineView({ data }: any) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {data?.map((item: any) => (
-        <div key={item.id} className="flex gap-4">
+        <div key={item.id} className="flex gap-md">
           <div className="w-2 bg-blue-500 rounded" />
           <div>
             <h4 className="font-semibold">{item.title || item.name}</h4>

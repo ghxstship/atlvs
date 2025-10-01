@@ -23,7 +23,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   return (
     <div className={cn('flex h-screen overflow-hidden', className)}>
       {sidebar && (
-        <aside className="w-64 border-r border-border bg-background">
+        <aside className="w-container-sm border-r border-border bg-background">
           {sidebar}
         </aside>
       )}

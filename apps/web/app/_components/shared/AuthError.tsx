@@ -15,14 +15,14 @@ export function AuthError({ error, variant = 'inline', onDismiss }: AuthErrorPro
   if (variant === 'banner') {
     return (
       <div className="mb-md p-md bg-destructive/10 border border-destructive/20 rounded-lg flex items-center gap-md">
-        <AlertCircle className="h-5 w-5 color-destructive flex-shrink-0" />
+        <AlertCircle className="h-icon-sm w-icon-sm color-destructive flex-shrink-0" />
         <p className="text-body-sm color-destructive flex-1">{error}</p>
         {onDismiss && (
           <button aria-label="button"
             role="button" tabIndex={0} onClick={onDismiss}
             className="color-destructive hover:color-destructive/80 transition-colors focus:outline-none focus:ring-primary focus:ring-primary focus:ring-offset-2"
           >
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </button>
         )}
       </div>

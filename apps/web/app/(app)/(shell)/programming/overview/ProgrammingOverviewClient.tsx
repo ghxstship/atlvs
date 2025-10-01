@@ -96,7 +96,7 @@ export default function ProgrammingOverviewClient({
       <div className="stack-lg">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {[...Array(4)].map((_, i) => (
-            <div key={i} className="h-24 bg-secondary animate-pulse rounded-lg" />
+            <div key={i} className="h-component-lg bg-secondary animate-pulse rounded-lg" />
           ))}
         </div>
       </div>
@@ -118,7 +118,7 @@ export default function ProgrammingOverviewClient({
                   </p>
                   <p className="text-heading-3 text-heading-3">{stat.value}</p>
                 </div>
-                <Icon className={`h-8 w-8 ${stat.color}`} />
+                <Icon className={`h-icon-lg w-icon-lg ${stat.color}`} />
               </div>
             </Card>
           );
@@ -134,7 +134,7 @@ export default function ProgrammingOverviewClient({
             return (
               <Card key={index} className="p-md hover:shadow-elevated transition-shadow">
                 <div className="flex items-start cluster">
-                  <Icon className="h-6 w-6 color-accent mt-xs" />
+                  <Icon className="h-icon-md w-icon-md color-accent mt-xs" />
                   <div className="flex-1">
                     <h3 className="form-label">{action.title}</h3>
                     <p className="text-body-sm color-muted mb-sm">

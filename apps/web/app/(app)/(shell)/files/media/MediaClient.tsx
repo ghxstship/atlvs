@@ -105,7 +105,7 @@ export default function MediaClient() {
  <p className="color-muted">Manage multimedia content and digital assets</p>
  </div>
  <Button onClick={handleUpload}>
- <Upload className="w-4 h-4 mr-sm" />
+ <Upload className="w-icon-xs h-icon-xs mr-sm" />
  Upload Media
  </Button>
  </div>
@@ -114,7 +114,7 @@ export default function MediaClient() {
  <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
  <Card>
  <div className="flex items-center gap-sm">
- <FileCode className="w-5 h-5 color-accent" />
+ <FileCode className="w-icon-sm h-icon-sm color-accent" />
  <div>
  <div className="text-heading-3">{stats.total}</div>
  <div className="text-body-sm color-muted">Total Assets</div>
@@ -123,7 +123,7 @@ export default function MediaClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Image className="w-5 h-5 color-success" />
+ <Image className="w-icon-sm h-icon-sm color-success" />
  <div>
  <div className="text-heading-3 color-success">{stats.imageCount}</div>
  <div className="text-body-sm color-muted">Images</div>
@@ -132,7 +132,7 @@ export default function MediaClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Video className="w-5 h-5 color-warning" />
+ <Video className="w-icon-sm h-icon-sm color-warning" />
  <div>
  <div className="text-heading-3 color-warning">{stats.videoCount}</div>
  <div className="text-body-sm color-muted">Videos</div>
@@ -141,7 +141,7 @@ export default function MediaClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Music className="w-5 h-5 color-secondary" />
+ <Music className="w-icon-sm h-icon-sm color-secondary" />
  <div>
  <div className="text-heading-3 color-secondary">{stats.audioCount}</div>
  <div className="text-body-sm color-muted">Audio</div>
@@ -153,7 +153,7 @@ export default function MediaClient() {
  {/* Media Grid */}
  {loading && (
  <div className="text-center py-xl">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
  <p className="color-muted">Loading media assets...</p>
  </div>
  )}
@@ -161,7 +161,7 @@ export default function MediaClient() {
  {error && (
  <Card>
  <div className="text-center py-xl">
- <FileCode className="w-12 h-12 color-destructive mx-auto mb-md" />
+ <FileCode className="w-icon-2xl h-icon-2xl color-destructive mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">Error loading media</h3>
  <p className="color-muted mb-md">{error}</p>
  <Button onClick={fetchMediaAssets}>
@@ -174,13 +174,13 @@ export default function MediaClient() {
  {!loading && !error && assets.length === 0 && (
  <Card>
  <div className="text-center py-xl">
- <Image className="w-12 h-12 color-muted mx-auto mb-md" />
+ <Image className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">No media assets</h3>
  <p className="color-muted mb-md">
  Start building your media library by uploading images, videos, and audio files.
  </p>
  <Button onClick={handleUpload}>
- <Upload className="w-4 h-4 mr-sm" />
+ <Upload className="w-icon-xs h-icon-xs mr-sm" />
  Upload First Asset
  </Button>
  </div>
@@ -209,12 +209,12 @@ export default function MediaClient() {
  className="w-full h-full object-cover rounded-md"
  />
  ) : (
- <IconComponent className="w-12 h-12 color-muted" />
+ <IconComponent className="w-icon-2xl h-icon-2xl color-muted" />
  )}
  </div>
  
  <div className="space-y-sm">
- <h3 className="text-body form-label line-clamp-2">{asset.title}</h3>
+ <h3 className="text-body form-label line-clamp-xs">{asset.title}</h3>
  
  <div className="flex items-center justify-between">
  <Badge variant="outline">{asset.category}</Badge>

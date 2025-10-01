@@ -88,15 +88,15 @@ export function ExitIntentPopup() {
       <Card className="relative w-full max-w-md mx-md shadow-2xl animate-slide-up">
         <button
           onClick={handleClose}
-          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
+          className="absolute right-4 top-md rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
         >
-          <X className="h-4 w-4" />
+          <X className="h-icon-xs w-icon-xs" />
           <span className="sr-only">Close</span>
         </button>
 
         <div className="p-xl">
-          <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-primary to-accent mb-md mx-auto">
-            <Gift className="h-6 w-6 text-background" />
+          <div className="flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-gradient-to-r from-primary to-accent mb-md mx-auto">
+            <Gift className="h-icon-md w-icon-md text-background" />
           </div>
           
           <h2 className="text-center text-heading-3 mb-sm">
@@ -132,7 +132,7 @@ export function ExitIntentPopup() {
               size="lg"
             >
               Claim Your 20% Discount
-              <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
             </Button>
 
             <button

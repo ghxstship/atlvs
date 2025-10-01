@@ -108,7 +108,7 @@ export default function ResourceListView({
  
  <div className="col-span-4">
  <div className="flex items-center gap-sm">
- <IconComponent className="w-4 h-4 color-accent flex-shrink-0" />
+ <IconComponent className="w-icon-xs h-icon-xs color-accent flex-shrink-0" />
  <div className="min-w-0">
  <div className="font-medium text-body-sm truncate">{resource.title}</div>
  {resource.description && (

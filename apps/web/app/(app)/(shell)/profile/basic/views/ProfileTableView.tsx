@@ -69,16 +69,16 @@ export default function ProfileTableView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
- <Skeleton className="h-8 w-full" />
+ <Card className="p-lg">
+ <div className="space-y-md">
+ <Skeleton className="h-icon-lg w-full" />
  {Array.from({ length: 5 }).map((_, i) => (
- <div key={i} className="flex items-center gap-4">
- <Skeleton className="h-4 w-4" />
- <Skeleton className="h-8 w-8 rounded-full" />
- <Skeleton className="h-4 flex-1" />
- <Skeleton className="h-4 w-20" />
- <Skeleton className="h-4 w-16" />
+ <div key={i} className="flex items-center gap-md">
+ <Skeleton className="h-icon-xs w-icon-xs" />
+ <Skeleton className="h-icon-lg w-icon-lg rounded-full" />
+ <Skeleton className="h-icon-xs flex-1" />
+ <Skeleton className="h-icon-xs w-component-lg" />
+ <Skeleton className="h-icon-xs w-component-md" />
  </div>
  ))}
  </div>
@@ -88,8 +88,8 @@ export default function ProfileTableView({
 
  if (profiles.length === 0) {
  return (
- <Card className="p-12 text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Profiles Found</h3>
  <p className="text-muted-foreground">
  No profiles match the current filters.
@@ -99,12 +99,12 @@ export default function ProfileTableView({
  }
 
  return (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="overflow-x-auto">
  <table className="w-full">
  <thead>
  <tr className="border-b">
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <input
  type="checkbox"
  checked={allSelected}
@@ -112,11 +112,11 @@ export default function ProfileTableView({
  if (input) input.indeterminate = someSelected && !allSelected;
  }}
  onChange={handleSelectAll}
- className="h-4 w-4 rounded border-border"
+ className="h-icon-xs w-icon-xs rounded border-border"
  />
  </th>
- <th className="text-left p-2">Profile</th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">Profile</th>
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -127,7 +127,7 @@ export default function ProfileTableView({
  {getSortIcon('job_title')}
  </Button>
  </th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -138,7 +138,7 @@ export default function ProfileTableView({
  {getSortIcon('department')}
  </Button>
  </th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -149,7 +149,7 @@ export default function ProfileTableView({
  {getSortIcon('employment_type')}
  </Button>
  </th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -160,7 +160,7 @@ export default function ProfileTableView({
  {getSortIcon('profile_completion_percentage')}
  </Button>
  </th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -171,7 +171,7 @@ export default function ProfileTableView({
  {getSortIcon('status')}
  </Button>
  </th>
- <th className="text-left p-2">
+ <th className="text-left p-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -182,7 +182,7 @@ export default function ProfileTableView({
  {getSortIcon('updated_at')}
  </Button>
  </th>
- <th className="text-left p-2">Actions</th>
+ <th className="text-left p-xs">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -196,18 +196,18 @@ export default function ProfileTableView({
  isSelected ? 'bg-muted/30' : ''
  }`}
  >
- <td className="p-2">
+ <td className="p-xs">
  <input
  type="checkbox"
  checked={isSelected}
  onChange={(e) => onSelectItem(profile.id, e.target.checked)}
- className="h-4 w-4 rounded border-border"
+ className="h-icon-xs w-icon-xs rounded border-border"
  />
  </td>
  
- <td className="p-2">
- <div className="flex items-center gap-3">
- <Avatar className="h-8 w-8">
+ <td className="p-xs">
+ <div className="flex items-center gap-sm">
+ <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
  <img 
  src={profile.avatar_url} 
@@ -215,7 +215,7 @@ export default function ProfileTableView({
  className="h-full w-full object-cover" 
  />
  ) : (
- <User className="h-4 w-4" />
+ <User className="h-icon-xs w-icon-xs" />
  )}
  </Avatar>
  <div>
@@ -229,19 +229,19 @@ export default function ProfileTableView({
  </div>
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  <div className="text-sm">
  {profile.job_title || 'No Title'}
  </div>
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  <div className="text-sm">
  {profile.department || 'Unassigned'}
  </div>
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  {profile.employment_type && (
  <Badge variant="outline" className="text-xs">
  {profile.employment_type}
@@ -249,11 +249,11 @@ export default function ProfileTableView({
  )}
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  <div className={`text-sm font-medium ${getCompletionColor(profile.profile_completion_percentage)}`}>
  {profile.profile_completion_percentage}%
  </div>
- <div className="w-16 bg-muted rounded-full h-1 mt-1">
+ <div className="w-component-md bg-muted rounded-full h-1 mt-1">
  <div
  className="bg-primary h-1 rounded-full transition-all"
  style={{ width: `${profile.profile_completion_percentage}%` }}
@@ -261,26 +261,26 @@ export default function ProfileTableView({
  </div>
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  <Badge variant={profile.status === 'active' ? 'default' : 'secondary'}>
  {profile.status}
  </Badge>
  </td>
  
- <td className="p-2">
+ <td className="p-xs">
  <div className="text-sm text-muted-foreground">
  {formatDate(profile.updated_at)}
  </div>
  </td>
  
- <td className="p-2">
- <div className="flex items-center gap-1">
+ <td className="p-xs">
+ <div className="flex items-center gap-xs">
  {onView && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(profile)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Eye className="h-3 w-3" />
  </Button>
@@ -290,7 +290,7 @@ export default function ProfileTableView({
  variant="ghost"
  size="sm"
  onClick={() => onEdit(profile)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Edit className="h-3 w-3" />
  </Button>
@@ -300,7 +300,7 @@ export default function ProfileTableView({
  variant="ghost"
  size="sm"
  onClick={() => onExport(profile)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Download className="h-3 w-3" />
  </Button>

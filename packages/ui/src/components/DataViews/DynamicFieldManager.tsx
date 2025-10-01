@@ -241,8 +241,8 @@ export function DynamicFieldManager({
             {isSchemaField ? 'Schema Field' : 'Custom Field'}: {field.label}
           </h3>
           <div className="flex items-center gap-sm">
-            {isSchemaField && <Database className="h-4 w-4 text-accent" />}
-            {validation.length > 0 && <AlertCircle className="h-4 w-4 text-destructive" />}
+            {isSchemaField && <Database className="h-icon-xs w-icon-xs text-accent" />}
+            {validation.length > 0 && <AlertCircle className="h-icon-xs w-icon-xs text-destructive" />}
           </div>
         </div>
 
@@ -286,7 +286,7 @@ export function DynamicFieldManager({
               onValueChange={(type: any) => updateField(field.key, { type: type as FieldType })}
               disabled={isSchemaField}
             >
-              <SelectTrigger className="w-48">
+              <SelectTrigger className="w-container-xs">
                 <SelectValue placeholder="Field type" />
               </SelectTrigger>
               <SelectContent>
@@ -441,7 +441,7 @@ export function DynamicFieldManager({
         onClick={() => setIsOpen(true)}
         className={className}
       >
-        <Settings className="h-4 w-4 mr-xs" />
+        <Settings className="h-icon-xs w-icon-xs mr-xs" />
         Manage Fields ({fields.length})
       </Button>
     );
@@ -455,7 +455,7 @@ export function DynamicFieldManager({
           <div className="flex items-center gap-sm">
             {schemaInfo?.tables[tableName] && (
               <Button  variant="ghost" onClick={syncWithSchema}>
-                <Database className="h-4 w-4 mr-xs" />
+                <Database className="h-icon-xs w-icon-xs mr-xs" />
                 Sync Schema
               </Button>
             )}
@@ -510,7 +510,7 @@ export function DynamicFieldManager({
                   onDragOver={handleDragOver}
                   onDrop={(e: any) => handleDrop(e, field.key)}
                 >
-                  <GripVertical className="h-4 w-4 text-muted-foreground cursor-move" />
+                  <GripVertical className="h-icon-xs w-icon-xs text-muted-foreground cursor-move" />
                   
                   <div className="flex-1 flex items-center gap-sm">
                     <span className="font-medium">{field.label}</span>

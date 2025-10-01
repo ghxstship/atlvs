@@ -180,9 +180,9 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
     return (
       <div className="stack-md">
         <div className="animate-pulse stack-md">
-          <div className="h-4 bg-secondary rounded w-3/4"></div>
-          <div className="h-4 bg-secondary rounded w-1/2"></div>
-          <div className="h-4 bg-secondary rounded w-2/3"></div>
+          <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
+          <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+          <div className="h-icon-xs bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -193,11 +193,11 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Package className="h-5 w-5" />
+          <Package className="h-icon-sm w-icon-sm" />
           <h3 className="text-body text-heading-4">Purchase Orders</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           Create Order
         </Button>
       </div>
@@ -296,7 +296,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
                 onClick={editingOrder ? handleUpdate : handleCreate} 
                 disabled={saving || !formData.vendor_name || !formData.description}
               >
-                <Save className="h-4 w-4 mr-sm" />
+                <Save className="h-icon-xs w-icon-xs mr-sm" />
                 {saving ? 'Saving...' : (editingOrder ? 'Update Order' : 'Create Order')}
               </Button>
               <Button 
@@ -319,7 +319,7 @@ export default function OrdersClient({ orgId }: { orgId: string }) {
         {orders.length === 0 ? (
           <Card>
             <div className="p-xl text-center color-muted">
-              <Package className="h-12 w-12 mx-auto mb-md opacity-50" />
+              <Package className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
               <p>No purchase orders found.</p>
               <p className="text-body-sm">Create your first purchase order to get started.</p>
             </div>

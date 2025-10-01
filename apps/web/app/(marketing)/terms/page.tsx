@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function TermsOfServicePage() {
   return (
-    <div className="min-h-screen py-4xl">
+    <div className="min-h-screen py-mdxl">
       <div className="container mx-auto px-md max-w-4xl">
         {/* Header */}
         <div className="text-center mb-3xl">
@@ -36,26 +36,26 @@ export default function TermsOfServicePage() {
         <Card className="mb-2xl bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-xl">
             <div className="flex items-center gap-sm mb-lg">
-              <Scale className="h-8 w-8 text-foreground" />
+              <Scale className="h-icon-lg w-icon-lg text-foreground" />
               <h2 className="font-title text-heading-3 text-heading-3">Terms Summary</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-lg">
               <div className="flex items-start gap-sm">
-                <FileText className="h-5 w-5 text-foreground mt-xs" />
+                <FileText className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">Your Agreement</h3>
                   <p className="text-body-sm color-muted">By using our services, you agree to these terms and our privacy policy.</p>
                 </div>
               </div>
               <div className="flex items-start gap-sm">
-                <Shield className="h-5 w-5 text-foreground mt-xs" />
+                <Shield className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">Your Responsibilities</h3>
                   <p className="text-body-sm color-muted">Use our platform lawfully and respect other users' rights.</p>
                 </div>
               </div>
               <div className="flex items-start gap-sm">
-                <AlertTriangle className="h-5 w-5 text-foreground mt-xs" />
+                <AlertTriangle className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">Important Limits</h3>
                   <p className="text-body-sm color-muted">Our liability is limited and disputes are resolved through arbitration.</p>
@@ -66,7 +66,7 @@ export default function TermsOfServicePage() {
         </Card>
 
         {/* Main Content */}
-        <div className="space-y-2xl">
+        <div className="space-y-xsxl">
           {/* Acceptance of Terms */}
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-lg">1. Acceptance of Terms</h2>
@@ -128,7 +128,7 @@ export default function TermsOfServicePage() {
             <Card className="bg-destructive/10 border-destructive/20 mb-lg">
               <CardContent className="p-lg">
                 <div className="flex items-start gap-sm">
-                  <AlertTriangle className="h-6 w-6 color-destructive mt-xs" />
+                  <AlertTriangle className="h-icon-md w-icon-md color-destructive mt-xs" />
                   <div>
                     <h3 className="text-heading-4 color-destructive mb-sm">Prohibited Activities</h3>
                     <p className="text-body-sm color-destructive/80">
@@ -428,7 +428,7 @@ export default function TermsOfServicePage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-start gap-md">
-                  <Mail className="h-6 w-6 text-foreground mt-xs" />
+                  <Mail className="h-icon-md w-icon-md text-foreground mt-xs" />
                   <div>
                     <h3 className="text-heading-4 mb-sm">Questions About These Terms?</h3>
                     <p className="color-muted mb-md">

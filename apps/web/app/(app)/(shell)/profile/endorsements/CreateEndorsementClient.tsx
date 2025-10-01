@@ -105,7 +105,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
         aria-label="Add Endorsement" 
         title="Add Endorsement"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Endorsement
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Endorsement
       </Button>
       <Drawer 
         open={open} 
@@ -198,7 +198,7 @@ export default function CreateEndorsementClient({ orgId, userId }: { orgId: stri
             <label htmlFor="endorsement_text" className="text-body-sm form-label">Endorsement Text *</label>
             <textarea 
               id="endorsement_text" 
-              className="rounded border  px-md py-xs min-h-[100px]" 
+              className="rounded border  px-md py-xs min-h-header-md" 
               value={form.getValues('endorsement_text') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('endorsement_text', e.target.value, { shouldDirty: true })} 
               placeholder="The endorsement text..."

@@ -39,8 +39,8 @@ export default function UniformSizingAnalyticsView({
  {[...Array(4)].map((_, i) => (
  <Card key={i} className="p-lg">
  <div className="animate-pulse space-y-sm">
- <div className="h-4 bg-muted rounded w-1/2"></div>
- <div className="h-8 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
+ <div className="h-icon-lg bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/3"></div>
  </div>
  </Card>
@@ -51,7 +51,7 @@ export default function UniformSizingAnalyticsView({
  {[...Array(4)].map((_, i) => (
  <Card key={i} className="p-lg">
  <div className="animate-pulse space-y-md">
- <div className="h-6 bg-muted rounded w-1/3"></div>
+ <div className="h-icon-md bg-muted rounded w-1/3"></div>
  <div className="h-40 bg-muted rounded"></div>
  </div>
  </Card>
@@ -114,7 +114,7 @@ export default function UniformSizingAnalyticsView({
  <div className="flex items-center justify-between">
  <h2 className="text-xl font-semibold">Uniform Sizing Analytics</h2>
  <Select value={selectedPeriod} onValueChange={setSelectedPeriod}>
- <SelectTrigger className="w-32">
+ <SelectTrigger className="w-component-xl">
  <SelectValue />
  </SelectTrigger>
  <SelectContent>
@@ -138,7 +138,7 @@ export default function UniformSizingAnalyticsView({
  +{analytics.records_added_this_period} this period
  </p>
  </div>
- <Users className="h-8 w-8 text-primary" />
+ <Users className="h-icon-lg w-icon-lg text-primary" />
  </div>
  </Card>
 
@@ -151,7 +151,7 @@ export default function UniformSizingAnalyticsView({
  {stats.complete_records} fully complete
  </p>
  </div>
- <BarChart3 className="h-8 w-8 text-primary" />
+ <BarChart3 className="h-icon-lg w-icon-lg text-primary" />
  </div>
  </Card>
 
@@ -164,7 +164,7 @@ export default function UniformSizingAnalyticsView({
  {sizeDistribution[stats.most_common_size_category]} people
  </p>
  </div>
- <Shirt className="h-8 w-8 text-primary" />
+ <Shirt className="h-icon-lg w-icon-lg text-primary" />
  </div>
  </Card>
 
@@ -177,7 +177,7 @@ export default function UniformSizingAnalyticsView({
  Last 30 days
  </p>
  </div>
- <Activity className="h-8 w-8 text-primary" />
+ <Activity className="h-icon-lg w-icon-lg text-primary" />
  </div>
  </Card>
  </div>
@@ -188,7 +188,7 @@ export default function UniformSizingAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-lg font-semibold">Size Category Distribution</h3>
- <PieChart className="h-5 w-5 text-muted-foreground" />
+ <PieChart className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  
  <div className="space-y-sm">
@@ -216,7 +216,7 @@ export default function UniformSizingAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-lg font-semibold">Profile Completeness</h3>
- <BarChart3 className="h-5 w-5 text-muted-foreground" />
+ <BarChart3 className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  
  <div className="space-y-sm">
@@ -248,7 +248,7 @@ export default function UniformSizingAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-lg font-semibold">Avg Measurements by Size</h3>
- <Ruler className="h-5 w-5 text-muted-foreground" />
+ <Ruler className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  
  <div className="space-y-md">
@@ -279,10 +279,10 @@ export default function UniformSizingAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-lg font-semibold">Recent Activity</h3>
- <Calendar className="h-5 w-5 text-muted-foreground" />
+ <Calendar className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  
- <div className="space-y-sm max-h-80 overflow-y-auto">
+ <div className="space-y-sm max-h-container-md overflow-y-auto">
  {recentActivity.length > 0 ? (
  recentActivity.map((activity, index) => (
  <div key={index} className="flex items-start space-x-sm p-sm border rounded">
@@ -297,7 +297,7 @@ export default function UniformSizingAnalyticsView({
  ))
  ) : (
  <div className="text-center py-lg">
- <Activity className="h-8 w-8 text-muted-foreground mx-auto mb-sm" />
+ <Activity className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-sm" />
  <p className="text-sm text-muted-foreground">No recent activity</p>
  </div>
  )}

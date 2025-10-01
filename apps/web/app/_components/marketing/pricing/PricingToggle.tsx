@@ -21,7 +21,7 @@ export function PricingToggle({ isAnnual, onToggle }: PricingToggleProps) {
         aria-label={`Switch to ${isAnnual ? 'monthly' : 'annual'} billing`}
       >
         <div className={cn(
-          "absolute w-5 h-5 rounded-full top-0.5 transition-all duration-200 shadow-floating",
+          "absolute w-icon-sm h-icon-sm rounded-full top-0.5 transition-all duration-200 shadow-floating",
           isAnnual ? "translate-x-7 bg-background" : "translate-x-0.5 bg-background"
         )} />
       </button>

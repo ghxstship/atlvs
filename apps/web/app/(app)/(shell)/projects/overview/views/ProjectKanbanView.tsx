@@ -73,7 +73,7 @@ export default function ProjectKanbanView({
  {columns.map((column) => (
  <div
  key={column.id}
- className="flex-shrink-0 w-80"
+ className="flex-shrink-0 w-container-md"
  onDragOver={handleDragOver}
  onDrop={(e) => handleDrop(e, column.id as Project['status'])}
  >
@@ -87,14 +87,14 @@ export default function ProjectKanbanView({
  {projectsByStatus[column.id]?.length || 0}
  </Badge>
  </div>
- <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+ <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
  <Plus className="h-3 w-3" />
  </Button>
  </div>
  </div>
 
  {/* Column Content */}
- <div className="space-y-sm min-h-[200px]">
+ <div className="space-y-sm min-h-content-sm">
  {projectsByStatus[column.id]?.map((project) => (
  <Card
  key={project.id}
@@ -113,7 +113,7 @@ export default function ProjectKanbanView({
  {project.name}
  </h4>
  {project.description && (
- <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+ <p className="text-xs text-muted-foreground mt-1 line-clamp-xs">
  {project.description}
  </p>
  )}
@@ -125,7 +125,7 @@ export default function ProjectKanbanView({
  e.stopPropagation();
  // Show context menu
  }}
- className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
+ className="h-icon-md w-icon-md p-0 opacity-0 group-hover:opacity-100"
  >
  <MoreVertical className="h-3 w-3" />
  </Button>
@@ -180,12 +180,12 @@ export default function ProjectKanbanView({
  {project.tags && project.tags.length > 0 && (
  <div className="flex flex-wrap gap-xs">
  {project.tags.slice(0, 2).map((tag) => (
- <Badge key={tag} variant="secondary" className="text-xs px-1 py-0">
+ <Badge key={tag} variant="secondary" className="text-xs px-xs py-0">
  {tag}
  </Badge>
  ))}
  {project.tags.length > 2 && (
- <Badge variant="secondary" className="text-xs px-1 py-0">
+ <Badge variant="secondary" className="text-xs px-xs py-0">
  +{project.tags.length - 2}
  </Badge>
  )}

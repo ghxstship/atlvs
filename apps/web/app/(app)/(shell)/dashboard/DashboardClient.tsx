@@ -352,14 +352,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                    
                     onClick={commonProps.onEdit}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
                    
                     onClick={commonProps.onDelete}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               )}
@@ -396,20 +396,20 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                    
                     onClick={commonProps.onEdit}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
                    
                     onClick={commonProps.onDelete}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               )}
             </div>
-            <div className="h-48 flex items-center justify-center bg-secondary/50 rounded">
-              <BarChart3 className="h-12 w-12 color-muted" />
+            <div className="h-container-xs flex items-center justify-center bg-secondary/50 rounded">
+              <BarChart3 className="h-icon-2xl w-icon-2xl color-muted" />
               <span className="ml-sm color-muted">Chart Widget</span>
             </div>
           </Card>
@@ -426,14 +426,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                    
                     onClick={commonProps.onEdit}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
                    
                     onClick={commonProps.onDelete}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               )}
@@ -441,8 +441,8 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             <div className="stack-sm">
               {widget.config.activities?.map((activity, index: number) => (
                 <div key={index} className="flex items-center gap-sm">
-                  <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
-                    <Activity className="h-4 w-4 color-accent" />
+                  <div className="w-icon-lg h-icon-lg bg-accent/10 rounded-full flex items-center justify-center">
+                    <Activity className="h-icon-xs w-icon-xs color-accent" />
                   </div>
                   <div className="flex-1">
                     <p className="text-body-sm">
@@ -475,14 +475,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                    
                     onClick={commonProps.onEdit}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
                    
                     onClick={commonProps.onDelete}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               )}
@@ -525,14 +525,14 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
                    
                     onClick={commonProps.onEdit}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
                    
                     onClick={commonProps.onDelete}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               )}
@@ -554,7 +554,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
           {[...Array(6)].map((_, i) => (
-            <Card key={i} className="h-32 animate-pulse bg-secondary/50" />
+            <Card key={i} className="h-component-xl animate-pulse bg-secondary/50" />
           ))}
         </div>
       </div>
@@ -596,8 +596,8 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
              
               className="relative"
             >
-              <Bell className="h-4 w-4" />
-              <span className="absolute -top-1 -right-1 bg-destructive color-destructive-foreground text-body-sm rounded-full h-5 w-5 flex items-center justify-center">
+              <Bell className="h-icon-xs w-icon-xs" />
+              <span className="absolute -top-xs -right-1 bg-destructive color-destructive-foreground text-body-sm rounded-full h-icon-sm w-icon-sm flex items-center justify-center">
                 {notifications.length}
               </span>
             </Button>
@@ -606,25 +606,25 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             variant="outline"
             onClick={() => setEditMode(!editMode)}
           >
-            <Layout className="h-4 w-4 mr-sm" />
+            <Layout className="h-icon-xs w-icon-xs mr-sm" />
             {editMode ? 'Done' : 'Edit'}
           </Button>
           <Button onClick={() => setIsWidgetDrawerOpen(true)}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Widget
           </Button>
         </div>
       </div>
 
       {widgets.length === 0 ? (
-        <Card className="p-2xl text-center">
-          <BarChart3 className="h-12 w-12 mx-auto color-muted mb-md" />
+        <Card className="p-xsxl text-center">
+          <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto color-muted mb-md" />
           <h3 className="text-body form-label mb-sm">No widgets yet</h3>
           <p className="color-muted mb-md">
             Add your first widget to start building your dashboard
           </p>
           <Button onClick={() => setIsWidgetDrawerOpen(true)}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Widget
           </Button>
         </Card>
@@ -635,7 +635,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
             <Card className="p-md mb-lg bg-info/10 border-info/20">
               <div className="flex items-center justify-between mb-sm">
                 <div className="flex items-center gap-sm">
-                  <Bell className="h-4 w-4 text-info" />
+                  <Bell className="h-icon-xs w-icon-xs text-info" />
                   <h3 className="form-label text-info">Real-time Updates</h3>
                 </div>
                 <Button
@@ -673,7 +673,7 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
           {/* Accessibility: Skip to content link */}
           <a 
             href="#main-content" 
-            className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-accent color-accent-foreground px-md py-sm rounded-md z-50"
+            className="sr-only focus:not-sr-only focus:absolute focus:top-md focus:left-4 bg-accent color-accent-foreground px-md py-sm rounded-md z-50"
           >
             Skip to main content
           </a>

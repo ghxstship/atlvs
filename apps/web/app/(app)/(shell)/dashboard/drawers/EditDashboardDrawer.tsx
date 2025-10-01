@@ -290,12 +290,12 @@ function EditDashboardDrawer({
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-sm h-4 w-4 animate-spin" />
+                  <Loader2 className="mr-sm h-icon-xs w-icon-xs animate-spin" />
                   Updating...
                 </>
               ) : (
                 <>
-                  <Save className="mr-sm h-4 w-4" />
+                  <Save className="mr-sm h-icon-xs w-icon-xs" />
                   Update Dashboard
                 </>
               )}

@@ -183,7 +183,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Shortlist
       </Button>
 
@@ -200,7 +200,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -208,7 +208,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
               form="shortlist-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Shortlist'}
             </Button>
           </div>
@@ -217,7 +217,7 @@ export default function CreateShortlistClient({ orgId, onShortlistCreated }: Cre
         <form id="shortlist-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-accent/10 rounded-lg">
-              <List className="h-5 w-5 color-accent" />
+              <List className="h-icon-sm w-icon-sm color-accent" />
             </div>
             <div>
               <h3 className="form-label">Shortlist Information</h3>

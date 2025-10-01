@@ -172,7 +172,7 @@ export default function ResourcesClient() {
           <p className="color-muted">Manage organizational resources and knowledge base</p>
         </div>
         <Button onClick={() => setShowForm(true)}>
-          <Plus className="w-4 h-4 mr-sm" />
+          <Plus className="w-icon-xs h-icon-xs mr-sm" />
           Add Resource
         </Button>
       </div>
@@ -205,7 +205,7 @@ export default function ResourcesClient() {
       <div className="flex flex-col sm:flex-row gap-md items-start sm:items-center justify-between">
         <div className="flex flex-col sm:flex-row gap-md items-start sm:items-center">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
+            <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
             <input
               type="text"
               placeholder="Search resources..."
@@ -236,13 +236,13 @@ export default function ResourcesClient() {
       {/* Content */}
       {loading ? (
         <div className="text-center py-xl">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
           <p className="color-muted">Loading resources...</p>
         </div>
       ) : error ? (
         <Card>
           <div className="text-center py-xl">
-            <FileText className="w-12 h-12 color-destructive mx-auto mb-md" />
+            <FileText className="w-icon-2xl h-icon-2xl color-destructive mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">Error loading resources</h3>
             <p className="color-muted mb-md">{error}</p>
             <Button onClick={fetchResources}>
@@ -253,7 +253,7 @@ export default function ResourcesClient() {
       ) : filteredResources.length === 0 ? (
         <Card>
           <div className="text-center py-xl">
-            <FileText className="w-12 h-12 color-muted mx-auto mb-md" />
+            <FileText className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No resources found</h3>
             <p className="color-muted mb-md">
               {searchTerm || filterType !== 'all' 
@@ -261,7 +261,7 @@ export default function ResourcesClient() {
                 : 'Get started by creating your first resource.'}
             </p>
             <Button onClick={() => setShowForm(true)}>
-              <Plus className="w-4 h-4 mr-sm" />
+              <Plus className="w-icon-xs h-icon-xs mr-sm" />
               Add Resource
             </Button>
           </div>
@@ -278,7 +278,7 @@ export default function ResourcesClient() {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <IconComponent className="w-5 h-5 color-accent" />
+                    <IconComponent className="w-icon-sm h-icon-sm color-accent" />
                     <Badge variant="outline">
                       {resource.status.replace('_', ' ')}
                     </Badge>
@@ -290,17 +290,17 @@ export default function ResourcesClient() {
                     )}
                   </div>
                   <div className="flex items-center cluster-xs text-body-sm color-muted">
-                    <Eye className="w-4 h-4" />
+                    <Eye className="w-icon-xs h-icon-xs" />
                     <span>{resource.view_count}</span>
-                    <Download className="w-4 h-4 ml-sm" />
+                    <Download className="w-icon-xs h-icon-xs ml-sm" />
                     <span>{resource.download_count}</span>
                   </div>
                 </div>
                 
-                <h3 className="text-heading-4 text-body mb-sm line-clamp-2">{resource.title}</h3>
+                <h3 className="text-heading-4 text-body mb-sm line-clamp-xs">{resource.title}</h3>
                 
                 {resource.description && (
-                  <p className="text-body-sm color-muted mb-sm line-clamp-3">{resource.description}</p>
+                  <p className="text-body-sm color-muted mb-sm line-clamp-sm">{resource.description}</p>
                 )}
                 
                 <div className="flex items-center justify-between">
@@ -318,7 +318,7 @@ export default function ResourcesClient() {
                         handleEdit(resource);
                       }}
                     >
-                      <Edit className="w-4 h-4" />
+                      <Edit className="w-icon-xs h-icon-xs" />
                     </Button>
                     {resource.file_url && (
                       <Button
@@ -329,7 +329,7 @@ export default function ResourcesClient() {
                           handleDownload(resource);
                         }}
                       >
-                        <Download className="w-4 h-4" />
+                        <Download className="w-icon-xs h-icon-xs" />
                       </Button>
                     )}
                   </div>

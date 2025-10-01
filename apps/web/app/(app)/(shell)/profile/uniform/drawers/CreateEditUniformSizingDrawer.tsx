@@ -146,7 +146,7 @@ export default function CreateEditUniformSizingDrawer({
  {/* Personal Information */}
  <div>
  <h3 className="text-lg font-semibold mb-md flex items-center">
- <User className="h-5 w-5 mr-sm" />
+ <User className="h-icon-sm w-icon-sm mr-sm" />
  Personal Information
  </h3>
  
@@ -202,7 +202,7 @@ export default function CreateEditUniformSizingDrawer({
  {/* Body Measurements */}
  <div>
  <h3 className="text-lg font-semibold mb-md flex items-center">
- <Ruler className="h-5 w-5 mr-sm" />
+ <Ruler className="h-icon-sm w-icon-sm mr-sm" />
  Body Measurements
  </h3>
  
@@ -314,7 +314,7 @@ export default function CreateEditUniformSizingDrawer({
  {/* Clothing Sizes */}
  <div>
  <h3 className="text-lg font-semibold mb-md flex items-center">
- <Shirt className="h-5 w-5 mr-sm" />
+ <Shirt className="h-icon-sm w-icon-sm mr-sm" />
  Clothing Sizes
  </h3>
  
@@ -372,7 +372,7 @@ export default function CreateEditUniformSizingDrawer({
  <div className="space-y-sm">
  {EQUIPMENT_TYPES.map((equipment) => (
  <div key={equipment} className="flex items-center space-x-sm">
- <label className="text-sm font-medium w-32 capitalize">
+ <label className="text-sm font-medium w-component-xl capitalize">
  {equipment.replace('_', ' ')}:
  </label>
  <Input
@@ -420,7 +420,7 @@ export default function CreateEditUniformSizingDrawer({
  Cancel
  </Button>
  <Button onClick={handleSubmit(onSubmit)} disabled={isSubmitting}>
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  {isSubmitting ? 'Saving...' : mode === 'create' ? 'Create' : 'Update'}
  </Button>
  </div>

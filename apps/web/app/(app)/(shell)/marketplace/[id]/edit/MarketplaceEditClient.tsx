@@ -104,11 +104,11 @@ export default function MarketplaceEditClient({
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-lg">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-md">
         <Button variant="ghost" onClick={() => router.back()}>
-          <ArrowLeft className="h-4 w-4 mr-2" />
+          <ArrowLeft className="h-icon-xs w-icon-xs mr-2" />
           Back
         </Button>
         <div>
@@ -119,11 +119,11 @@ export default function MarketplaceEditClient({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-lg">
         {/* Error Display */}
         {error && (
-          <div className="flex items-center gap-3 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-            <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0" />
+          <div className="flex items-center gap-sm p-md bg-destructive/10 border border-destructive/20 rounded-lg">
+            <AlertCircle className="h-icon-sm w-icon-sm text-destructive flex-shrink-0" />
             <p className="text-sm text-destructive">{error}</p>
           </div>
         )}
@@ -133,7 +133,7 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-md">
             <div>
               <Label htmlFor="title">Title *</Label>
               <Input
@@ -157,7 +157,7 @@ export default function MarketplaceEditClient({
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="type">Type *</Label>
                 <Select
@@ -213,8 +213,8 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Pricing</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="amount">Amount</Label>
                 <Input
@@ -246,7 +246,7 @@ export default function MarketplaceEditClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="negotiable"
@@ -274,8 +274,8 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Location</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="city">City</Label>
                 <Input
@@ -297,7 +297,7 @@ export default function MarketplaceEditClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="remote"
@@ -315,8 +315,8 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Availability</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="startDate">Available From</Label>
                 <Input
@@ -338,7 +338,7 @@ export default function MarketplaceEditClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="flexible"
@@ -356,7 +356,7 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Additional Details</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-md">
             <div>
               <Label>Requirements</Label>
               <Textarea
@@ -383,8 +383,8 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Contact Preferences</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="contactEmail">Contact Email</Label>
                 <Input
@@ -431,8 +431,8 @@ export default function MarketplaceEditClient({
           <CardHeader>
             <CardTitle>Publishing Settings</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <Label htmlFor="status">Status</Label>
                 <Select
@@ -450,7 +450,7 @@ export default function MarketplaceEditClient({
                 </Select>
               </div>
 
-              <div className="flex items-center space-x-2 pt-8">
+              <div className="flex items-center space-x-xs pt-8">
                 <input
                   type="checkbox"
                   id="featured"
@@ -465,13 +465,13 @@ export default function MarketplaceEditClient({
         </Card>
 
         {/* Form Actions */}
-        <div className="flex gap-3">
+        <div className="flex gap-sm">
           <Button
             type="submit"
             disabled={isSubmitting}
             className="flex-1"
           >
-            <Save className="h-4 w-4 mr-2" />
+            <Save className="h-icon-xs w-icon-xs mr-2" />
             {isSubmitting ? 'Updating...' : 'Update Listing'}
           </Button>
           <Button

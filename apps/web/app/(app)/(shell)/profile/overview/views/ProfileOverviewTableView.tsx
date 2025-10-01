@@ -83,29 +83,29 @@ export default function ProfileOverviewTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
- <div className="h-4 w-4 bg-secondary rounded animate-pulse"></div>
+ <TableHead className="w-icon-2xl">
+ <div className="h-icon-xs w-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  <TableHead>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
- <TableHead className="w-32">
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <TableHead className="w-component-xl">
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableHead>
  </TableRow>
  </TableHeader>
@@ -113,34 +113,34 @@ export default function ProfileOverviewTableView({
  {Array.from({ length: 8 }).map((_, i) => (
  <TableRow key={i}>
  <TableCell>
- <div className="h-4 w-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs w-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
  <div className="flex items-center gap-md">
- <div className="h-8 w-8 bg-secondary rounded-full animate-pulse"></div>
- <div className="h-4 bg-secondary rounded animate-pulse w-24"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded-full animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse w-component-lg"></div>
  </div>
  </TableCell>
  <TableCell>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
- <div className="h-4 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs bg-secondary rounded animate-pulse"></div>
  </TableCell>
  <TableCell>
  <div className="flex gap-sm">
- <div className="h-8 w-8 bg-secondary rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-secondary rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded animate-pulse"></div>
  </div>
  </TableCell>
  </TableRow>
@@ -154,7 +154,7 @@ export default function ProfileOverviewTableView({
  if (profiles.length === 0) {
  return (
  <div className="border rounded-lg p-xl text-center">
- <User className="h-12 w-12 mx-auto mb-md color-muted" />
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">No profiles found</h3>
  <p className="color-muted">Try adjusting your search or filter criteria.</p>
  </div>
@@ -186,7 +186,7 @@ export default function ProfileOverviewTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedIds.length === profiles.length && profiles.length > 0}
  indeterminate={selectedIds.length > 0 && selectedIds.length < profiles.length}
@@ -266,7 +266,7 @@ export default function ProfileOverviewTableView({
  </Button>
  </TableHead>
  
- <TableHead className="w-32">Actions</TableHead>
+ <TableHead className="w-component-xl">Actions</TableHead>
  </TableRow>
  </TableHeader>
  
@@ -328,7 +328,7 @@ export default function ProfileOverviewTableView({
  <div className="flex items-center gap-md">
  <Progress 
  value={profile.profile_completion_percentage} 
- className="h-2 w-16"
+ className="h-2 w-component-md"
  variant={getCompletionColor(profile.profile_completion_percentage) as unknown}
  />
  <span className="text-body-sm font-medium min-w-0">

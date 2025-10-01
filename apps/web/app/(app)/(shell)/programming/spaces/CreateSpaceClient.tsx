@@ -87,7 +87,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={() => setOpen(true)} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Space
       </Button>
 
@@ -269,7 +269,7 @@ export default function CreateSpaceClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <MapPin className="w-4 h-4" />
+              <MapPin className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Space'}
             </Button>
           </div>

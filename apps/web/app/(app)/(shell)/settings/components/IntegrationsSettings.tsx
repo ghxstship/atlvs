@@ -264,9 +264,9 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading integrations...</p>
         </div>
       </div>
@@ -274,12 +274,12 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Available Integrations */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Plug className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Plug className="h-icon-sm w-icon-sm" />
             Available Integrations
           </CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -287,12 +287,12 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
           </p>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
             {AVAILABLE_INTEGRATIONS.map((available) => {
               const connected = integrations.find(i => i.id === available.id);
               return (
-                <div key={available.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
+                <div key={available.id} className="flex items-center justify-between p-md border rounded-lg">
+                  <div className="flex items-center gap-sm">
                     <div className="text-2xl">{available.icon}</div>
                     <div>
                       <p className="font-medium">{available.name}</p>
@@ -300,7 +300,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     {connected ? (
                       <>
                         {getStatusBadge(connected.status)}
@@ -317,7 +317,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
                         size="sm"
                         onClick={() => handleConnectIntegration(available.id)}
                       >
-                        <ExternalLink className="h-4 w-4 mr-2" />
+                        <ExternalLink className="h-icon-xs w-icon-xs mr-2" />
                         Connect
                       </Button>
                     )}
@@ -333,19 +333,19 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
       {integrations.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <CheckCircle className="h-icon-sm w-icon-sm" />
               Connected Integrations
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-md">
               {integrations.map((integration) => (
-                <div key={integration.id} className="p-4 border rounded-lg">
+                <div key={integration.id} className="p-md border rounded-lg">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 bg-green-100 dark:bg-green-900 rounded-full">
-                        <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                    <div className="flex items-center gap-sm">
+                      <div className="p-xs bg-green-100 dark:bg-green-900 rounded-full">
+                        <CheckCircle className="h-icon-xs w-icon-xs text-green-600 dark:text-green-400" />
                       </div>
                       <div>
                         <p className="font-medium">{integration.name}</p>
@@ -359,9 +359,9 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
                     </Button>
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <p className="text-sm font-medium">Permissions:</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-xs">
                       {integration.scopes.map((scope) => (
                         <Badge key={scope} variant="outline" className="text-xs">
                           {scope}
@@ -379,18 +379,18 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
       {/* Webhooks */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Webhook className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Webhook className="h-icon-sm w-icon-sm" />
             Webhooks
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Send real-time notifications to external services when events occur.
           </p>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-md">
           {/* Add Webhook */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 p-4 border rounded-lg">
-            <div className="space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-md p-md border rounded-lg">
+            <div className="space-y-xs">
               <Label htmlFor="webhook-url">Webhook URL</Label>
               <Input
                 id="webhook-url"
@@ -400,7 +400,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
               />
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <Label htmlFor="webhook-events">Events</Label>
               <Select
                 value=""
@@ -432,9 +432,9 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
 
           {/* Selected Events */}
           {selectedEvents.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <Label>Selected Events:</Label>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-xs">
                 {selectedEvents.map((event) => (
                   <Badge key={event} variant="secondary" className="cursor-pointer"
                          onClick={() => setSelectedEvents(prev => prev.filter(e => e !== event))}>
@@ -447,20 +447,20 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
 
           {/* Webhooks List */}
           {webhooks.length > 0 && (
-            <div className="space-y-4">
+            <div className="space-y-md">
               <Separator />
-              <div className="space-y-4">
+              <div className="space-y-md">
                 {webhooks.map((webhook) => (
-                  <div key={webhook.id} className="flex items-center justify-between p-4 border rounded-lg">
-                    <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-full ${
+                  <div key={webhook.id} className="flex items-center justify-between p-md border rounded-lg">
+                    <div className="flex items-center gap-sm">
+                      <div className={`p-xs rounded-full ${
                         webhook.status === 'active'
                           ? 'bg-green-100 dark:bg-green-900'
                           : webhook.status === 'inactive'
                           ? 'bg-gray-100 dark:bg-gray-900'
                           : 'bg-red-100 dark:bg-red-900'
                       }`}>
-                        <Webhook className="h-4 w-4" />
+                        <Webhook className="h-icon-xs w-icon-xs" />
                       </div>
                       <div>
                         <p className="font-medium font-mono text-sm">{webhook.url}</p>
@@ -473,7 +473,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-xs">
                       <Badge variant={
                         webhook.status === 'active' ? 'default' :
                         webhook.status === 'inactive' ? 'secondary' : 'destructive'
@@ -500,17 +500,17 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
       {/* API Settings */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Key className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Key className="h-icon-sm w-icon-sm" />
             API Settings
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure API access and security settings.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-2">
+        <CardContent className="space-y-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <div className="space-y-xs">
               <Label htmlFor="rate-limit">API Rate Limit (requests/hour)</Label>
               <Select
                 value={apiRateLimit.toString()}
@@ -528,7 +528,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
               </Select>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-xs">
               <Label htmlFor="allowed-domains">Allowed Domains</Label>
               <Input
                 id="allowed-domains"
@@ -543,7 +543,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
           </div>
 
           <Alert>
-            <Shield className="h-4 w-4" />
+            <Shield className="h-icon-xs w-icon-xs" />
             <AlertDescription>
               API keys and settings are organization-wide. Changes here affect all API integrations.
             </AlertDescription>
@@ -554,7 +554,7 @@ export default function IntegrationsSettings({ userId, orgId }: IntegrationsSett
       {/* Save Button */}
       <div className="flex justify-end">
         <Button>
-          <SettingsIcon className="h-4 w-4 mr-2" />
+          <SettingsIcon className="h-icon-xs w-icon-xs mr-2" />
           Save Integration Settings
         </Button>
       </div>

@@ -202,15 +202,15 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-sm mb-sm">
-                    <div className="h-5 w-5 bg-secondary rounded" />
-                    <Skeleton className="h-5 w-48" />
+                    <div className="h-icon-sm w-icon-sm bg-secondary rounded" />
+                    <Skeleton className="h-icon-sm w-container-xs" />
                   </div>
-                  <Skeleton className="h-4 w-full mb-sm" />
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-icon-xs w-full mb-sm" />
+                  <Skeleton className="h-icon-xs w-3/4" />
                 </div>
                 <div className="flex gap-sm">
-                  <Skeleton className="h-6 w-16" />
-                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-icon-md w-component-md" />
+                  <Skeleton className="h-icon-md w-component-lg" />
                 </div>
               </div>
             </Card>
@@ -257,8 +257,8 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
       </div>
 
       {filteredOpportunities.length === 0 ? (
-        <Card className="p-2xl text-center">
-          <div className="h-12 w-12 bg-secondary rounded mx-auto mb-md" />
+        <Card className="p-xsxl text-center">
+          <div className="h-icon-2xl w-icon-2xl bg-secondary rounded mx-auto mb-md" />
           <h3 className="text-body form-label color-foreground mb-sm">No opportunities found</h3>
           <p className="color-muted mb-md">
             {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
@@ -276,7 +276,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
               <div className="flex items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-center gap-sm mb-sm">
-                    <div className="h-5 w-5 bg-secondary rounded" />
+                    <div className="h-icon-sm w-icon-sm bg-secondary rounded" />
                     <h3 className="text-body text-heading-4 color-foreground">{opportunity.title}</h3>
                     <Badge className={getStatusColor(opportunity.status)}>
                       {opportunity.status}
@@ -287,19 +287,19 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                   </div>
 
                   {opportunity.description && (
-                    <p className="color-muted mb-md line-clamp-2">{opportunity.description}</p>
+                    <p className="color-muted mb-md line-clamp-xs">{opportunity.description}</p>
                   )}
 
                   <div className="grid grid-cols-2 md:grid-cols-3 gap-md text-body-sm">
                     {opportunity.clientName && (
                       <div className="flex items-center gap-sm">
-                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <div className="h-icon-xs w-icon-xs bg-secondary rounded" />
                         <span className="color-muted">{opportunity.clientName}</span>
                       </div>
                     )}
                     {opportunity.estimatedValue && (
                       <div className="flex items-center gap-sm">
-                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <div className="h-icon-xs w-icon-xs bg-secondary rounded" />
                         <span className="color-muted">
                           ${opportunity.estimatedValue.toLocaleString()} {opportunity.currency || 'USD'}
                         </span>
@@ -307,7 +307,7 @@ export function OpportunitiesClient({ user, orgId, translations }: Opportunities
                     )}
                     {opportunity.expectedCloseDate && (
                       <div className="flex items-center gap-sm">
-                        <div className="h-4 w-4 bg-secondary rounded" />
+                        <div className="h-icon-xs w-icon-xs bg-secondary rounded" />
                         <span className="color-muted">
                           {new Date(opportunity.expectedCloseDate).toLocaleDateString()}
                         </span>

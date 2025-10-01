@@ -44,7 +44,7 @@ export default function ViewRevenueDrawer({
           </div>
           {onEdit && (
             <Button onClick={onEdit} variant="outline">
-              <Edit className="h-4 w-4 mr-xs" />
+              <Edit className="h-icon-xs w-icon-xs mr-xs" />
               Edit
             </Button>
           )}
@@ -55,7 +55,7 @@ export default function ViewRevenueDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <DollarSign className="h-5 w-5" />
+                <DollarSign className="h-icon-sm w-icon-sm" />
                 Financial Information
               </CardTitle>
             </CardHeader>
@@ -85,7 +85,7 @@ export default function ViewRevenueDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-5 w-5" />
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Recognition Details
               </CardTitle>
             </CardHeader>
@@ -120,7 +120,7 @@ export default function ViewRevenueDrawer({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                 {revenue.client_id && (
                   <div className="flex items-center gap-sm p-sm bg-gray-50 rounded">
-                    <User className="h-5 w-5 text-blue-600" />
+                    <User className="h-icon-sm w-icon-sm text-blue-600" />
                     <div>
                       <div className="text-sm text-gray-600">Client</div>
                       <div className="font-medium">{revenue.client_id}</div>
@@ -130,7 +130,7 @@ export default function ViewRevenueDrawer({
 
                 {revenue.project_id && (
                   <div className="flex items-center gap-sm p-sm bg-gray-50 rounded">
-                    <Building className="h-5 w-5 text-green-600" />
+                    <Building className="h-icon-sm w-icon-sm text-green-600" />
                     <div>
                       <div className="text-sm text-gray-600">Project</div>
                       <div className="font-medium">{revenue.project_id}</div>
@@ -147,7 +147,7 @@ export default function ViewRevenueDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <FileText className="h-5 w-5" />
+                <FileText className="h-icon-sm w-icon-sm" />
                 Notes
               </CardTitle>
             </CardHeader>
@@ -187,7 +187,7 @@ export default function ViewRevenueDrawer({
           </Button>
           {onEdit && (
             <Button onClick={onEdit}>
-              <Edit className="h-4 w-4 mr-xs" />
+              <Edit className="h-icon-xs w-icon-xs mr-xs" />
               Edit Revenue
             </Button>
           )}

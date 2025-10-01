@@ -335,7 +335,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <Card key={project.id} className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm">
- <Briefcase className="h-5 w-5 color-primary" />
+ <Briefcase className="h-icon-sm w-icon-sm color-primary" />
  <Badge variant={statusColors[project.status] as unknown}>
  {project.status.replace('_', ' ')}
  </Badge>
@@ -346,24 +346,24 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  </div>
  
  <h3 className="text-heading-4 mb-xs">{project.title}</h3>
- <p className="text-body-sm color-muted mb-sm line-clamp-2">{project.description}</p>
+ <p className="text-body-sm color-muted mb-sm line-clamp-xs">{project.description}</p>
  
  <div className="flex items-center gap-md mb-sm text-body-sm color-muted">
  {project.budget_min && project.budget_max && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>{project.currency} {project.budget_min} - {project.budget_max}</span>
  </div>
  )}
  {project.location_type && (
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{project.location_type}</span>
  </div>
  )}
  {project.start_date && (
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>{new Date(project.start_date).toLocaleDateString()}</span>
  </div>
  )}
@@ -376,11 +376,11 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  </div>
  <div className="flex items-center gap-xs">
  <Button size="sm" variant="outline" onClick={() => handleViewProject(project)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {project.client_id === userId && (
  <Button size="sm" variant="outline" onClick={() => handleEditProject(project)}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -398,7 +398,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <p className="color-muted">Post and manage project opportunities</p>
  </div>
  <Button onClick={handleCreateProject}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Post Project
  </Button>
  </div>
@@ -411,7 +411,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <p className="text-body-sm color-muted">Total Projects</p>
  <p className="text-heading-3 font-bold">{stats.total}</p>
  </div>
- <Briefcase className="h-8 w-8 color-primary" />
+ <Briefcase className="h-icon-lg w-icon-lg color-primary" />
  </div>
  </Card>
  <Card className="p-md">
@@ -420,7 +420,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <p className="text-body-sm color-muted">Open</p>
  <p className="text-heading-3 font-bold">{stats.open}</p>
  </div>
- <Clock className="h-8 w-8 color-success" />
+ <Clock className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
  <Card className="p-md">
@@ -429,7 +429,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <p className="text-body-sm color-muted">In Progress</p>
  <p className="text-heading-3 font-bold">{stats.inProgress}</p>
  </div>
- <Users className="h-8 w-8 color-warning" />
+ <Users className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  <Card className="p-md">
@@ -438,7 +438,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  <p className="text-body-sm color-muted">Total Proposals</p>
  <p className="text-heading-3 font-bold">{stats.proposals}</p>
  </div>
- <Star className="h-8 w-8 color-secondary" />
+ <Star className="h-icon-lg w-icon-lg color-secondary" />
  </div>
  </Card>
  </div>
@@ -480,7 +480,7 @@ export default function ProjectsClient({ orgId, userId }: ProjectsClientProps) {
  rowActions={getRowActions}
  emptyMessage="No projects found"
  loading={loading}
- className="min-h-[400px]"
+ className="min-h-content-lg"
  />
  )}
  </div>

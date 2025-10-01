@@ -194,10 +194,10 @@ export default function CreateTaskDrawer({
  onClose={() => onOpenChange(false)}
  title="Create Task"
  description="Add a new task to the project"
- icon={<ListTodo className="h-5 w-5" />}
+ icon={<ListTodo className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Project Selection */}
  <div>
  <label className="block text-sm font-medium mb-2">
@@ -216,7 +216,7 @@ export default function CreateTaskDrawer({
  ))}
  </Select>
  {errors.project_id && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.project_id}
  </p>
@@ -235,7 +235,7 @@ export default function CreateTaskDrawer({
  maxLength={255}
  />
  {errors.title && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.title}
  </p>
@@ -256,7 +256,7 @@ export default function CreateTaskDrawer({
  </div>
 
  {/* Status and Priority */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Status
@@ -308,7 +308,7 @@ export default function CreateTaskDrawer({
  </div>
 
  {/* Dates */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Start Date
@@ -319,7 +319,7 @@ export default function CreateTaskDrawer({
  value={formData.start_date}
  onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
  />
- <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Calendar className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  </div>
 
@@ -334,10 +334,10 @@ export default function CreateTaskDrawer({
  onChange={(e) => setFormData({ ...formData, due_date: e.target.value })}
  min={formData.start_date}
  />
- <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Calendar className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.due_date && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.due_date}
  </p>
@@ -359,10 +359,10 @@ export default function CreateTaskDrawer({
  onChange={(e) => setFormData({ ...formData, estimated_hours: e.target.value })}
  placeholder="e.g., 8"
  />
- <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Clock className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.estimated_hours && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.estimated_hours}
  </p>
@@ -374,7 +374,7 @@ export default function CreateTaskDrawer({
  <label className="block text-sm font-medium mb-2">
  Tags
  </label>
- <div className="flex gap-2 mb-2">
+ <div className="flex gap-xs mb-2">
  <Input
  value={tagInput}
  onChange={(e) => setTagInput(e.target.value)}
@@ -395,11 +395,11 @@ export default function CreateTaskDrawer({
  </Button>
  </div>
  {formData.tags.length > 0 && (
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {formData.tags.map((tag) => (
  <span
  key={tag}
- className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded-md text-sm"
+ className="inline-flex items-center gap-xs px-xs py-xs bg-muted rounded-md text-sm"
  >
  {tag}
  <button
@@ -416,7 +416,7 @@ export default function CreateTaskDrawer({
  </div>
 
  {/* Actions */}
- <div className="flex justify-end gap-3 pt-6 border-t">
+ <div className="flex justify-end gap-sm pt-6 border-t">
  <Button
  variant="outline"
  onClick={handleCancel}

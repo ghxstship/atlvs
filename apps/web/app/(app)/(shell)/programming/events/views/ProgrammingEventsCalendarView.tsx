@@ -80,13 +80,13 @@ export default function ProgrammingEventsCalendarView({
  </h2>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="outline" size="sm" onClick={() => setCurrentDate(new Date())}>
  Today
  </Button>
  <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -112,7 +112,7 @@ export default function ProgrammingEventsCalendarView({
  return (
  <div
  key={index}
- className={`bg-background p-xs min-h-[120px] ${
+ className={`bg-background p-xs min-h-header-lg ${
  day ? 'border-r border-b border-border' : ''
  } ${isToday ? 'bg-primary/5' : ''}`}
  >
@@ -127,11 +127,11 @@ export default function ProgrammingEventsCalendarView({
  return (
  <div
  key={event.id}
- className="cursor-pointer rounded px-xs py-1 text-xs bg-primary/10 hover:bg-primary/20 transition-colors"
+ className="cursor-pointer rounded px-xs py-xs text-xs bg-primary/10 hover:bg-primary/20 transition-colors"
  onClick={() => onView(event)}
  >
  <div className="font-medium truncate">{event.title}</div>
- <div className="flex items-center gap-1 text-muted-foreground">
+ <div className="flex items-center gap-xs text-muted-foreground">
  <Clock className="h-2 w-2" />
  {new Date(event.start_at).toLocaleTimeString([], { 
  hour: '2-digit', 
@@ -139,7 +139,7 @@ export default function ProgrammingEventsCalendarView({
  })}
  </div>
  {event.location && (
- <div className="flex items-center gap-1 text-muted-foreground">
+ <div className="flex items-center gap-xs text-muted-foreground">
  <MapPin className="h-2 w-2" />
  <span className="truncate">{event.location}</span>
  </div>

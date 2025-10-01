@@ -149,7 +149,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             onClick={() => setSetupType('create')}
           >
             <CardContent className="p-xl text-center">
-              <Building className="h-12 w-12 color-accent mx-auto mb-md" />
+              <Building className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                 CREATE ORGANIZATION
               </h3>
@@ -157,7 +157,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 Start fresh with a new organization. You'll be the owner and can invite team members.
               </p>
               <Button className="w-full">
-                <Plus className="mr-sm h-4 w-4" />
+                <Plus className="mr-sm h-icon-xs w-icon-xs" />
                 Create New Organization
               </Button>
             </CardContent>
@@ -169,7 +169,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             onClick={() => setSetupType('join')}
           >
             <CardContent className="p-xl text-center">
-              <Users className="h-12 w-12 color-accent mx-auto mb-md" />
+              <Users className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
               <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                 JOIN ORGANIZATION
               </h3>
@@ -177,7 +177,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
                 Join an existing organization using an invite code from your team.
               </p>
               <Button variant="outline" className="w-full">
-                <Users className="mr-sm h-4 w-4" />
+                <Users className="mr-sm h-icon-xs w-icon-xs" />
                 Join Existing Organization
               </Button>
             </CardContent>
@@ -189,7 +189,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             {setupType === 'create' ? (
               <div className="brand-ghostship stack-lg">
                 <div className="brand-ghostship text-center mb-lg">
-                  <Building className="h-12 w-12 color-accent mx-auto mb-md" />
+                  <Building className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
                     CREATE YOUR ORGANIZATION
                   </h2>
@@ -237,7 +237,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
             ) : (
               <div className="brand-ghostship stack-lg">
                 <div className="brand-ghostship text-center mb-lg">
-                  <Users className="h-12 w-12 color-accent mx-auto mb-md" />
+                  <Users className="h-icon-2xl w-icon-2xl color-accent mx-auto mb-md" />
                   <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-sm`}>
                     JOIN ORGANIZATION
                   </h2>
@@ -280,7 +280,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
           variant="outline" 
           onClick={setupType ? () => setSetupType(null) : onBack}
         >
-          <ArrowLeft className="mr-sm h-4 w-4" />
+          <ArrowLeft className="mr-sm h-icon-xs w-icon-xs" />
           Back
         </Button>
         
@@ -291,7 +291,7 @@ export function OrganizationSetupStep({ user, onNext, onBack, updateData, data }
            
           >
             {loading ? 'Setting up...' : 'Continue'}
-            <ArrowRight className="ml-sm h-4 w-4" />
+            <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
           </Button>
         )}
       </div>

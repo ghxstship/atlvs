@@ -78,9 +78,9 @@ export default function ProfileGridView({
  {Array.from({ length: 8 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
  <div className="flex items-start gap-md">
- <div className="w-12 h-12 bg-muted rounded-full" />
+ <div className="w-icon-2xl h-icon-2xl bg-muted rounded-full" />
  <div className="flex-1 space-y-sm">
- <div className="h-4 bg-muted rounded w-3/4" />
+ <div className="h-icon-xs bg-muted rounded w-3/4" />
  <div className="h-3 bg-muted rounded w-1/2" />
  <div className="h-3 bg-muted rounded w-2/3" />
  </div>
@@ -94,7 +94,7 @@ export default function ProfileGridView({
  if (profiles.length === 0) {
  return (
  <Card className="p-xl text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No profiles found</h3>
  <p className="text-muted-foreground mb-lg">
  Get started by creating your first profile or adjust your filters.
@@ -142,25 +142,25 @@ export default function ProfileGridView({
  <Button
  variant="ghost"
  size="sm"
- className={`h-8 w-8 p-0 transition-opacity ${
+ className={`h-icon-lg w-icon-lg p-0 transition-opacity ${
  hoveredId === profile.id ? 'opacity-100' : 'opacity-0'
  }`}
  onClick={(e) => e.stopPropagation()}
  >
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onEdit(profile)}>
- <Eye className="h-4 w-4 mr-sm" />
+ <Eye className="h-icon-xs w-icon-xs mr-sm" />
  View Details
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(profile)}>
- <Edit className="h-4 w-4 mr-sm" />
+ <Edit className="h-icon-xs w-icon-xs mr-sm" />
  Edit Profile
  </DropdownMenuItem>
  <DropdownMenuItem className="text-destructive">
- <Trash2 className="h-4 w-4 mr-sm" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-sm" />
  Delete Profile
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -169,7 +169,7 @@ export default function ProfileGridView({
 
  {/* Profile Avatar and Basic Info */}
  <div className="flex items-start gap-md mb-md">
- <Avatar className="h-12 w-12">
+ <Avatar className="h-icon-2xl w-icon-2xl">
  {profile.avatar_url ? (
  <img src={profile.avatar_url} alt={profile.full_name} />
  ) : (

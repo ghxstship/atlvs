@@ -43,8 +43,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 function DashboardViewLoading() {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="flex items-center gap-3">
-        <Loader2 className="h-8 w-8 animate-spin" />
+      <div className="flex items-center gap-sm">
+        <Loader2 className="h-icon-lg w-icon-lg animate-spin" />
         <span>Loading dashboard...</span>
       </div>
     </div>

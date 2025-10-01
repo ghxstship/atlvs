@@ -309,7 +309,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
       <div
         key={task.id}
         className={cn(
-          'absolute top-2 h-6 rounded cursor-pointer transition-all duration-200 flex items-center px-2 text-xs font-medium text-white overflow-hidden',
+          'absolute top-xs h-icon-md rounded cursor-pointer transition-all duration-200 flex items-center px-xs text-xs font-medium text-white overflow-hidden',
           isHovered && 'shadow-lg scale-105 z-10',
           isSelected && 'ring-2 ring-primary ring-offset-1',
           interactive && 'hover:shadow-md'
@@ -328,7 +328,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
         }}
       >
         {/* Task Content */}
-        <div className="flex items-center gap-1 flex-1 min-w-0">
+        <div className="flex items-center gap-xs flex-1 min-w-0">
           {task.type === 'milestone' ? (
             <div className="w-2 h-2 bg-white rounded-full flex-shrink-0" />
           ) : (
@@ -336,7 +336,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
               <PriorityIcon className="w-3 h-3 flex-shrink-0" />
               <span className="truncate flex-1">{task.name}</span>
               {task.assignee && (
-                <Avatar className="w-4 h-4 flex-shrink-0 -mr-1">
+                <Avatar className="w-icon-xs h-icon-xs flex-shrink-0 -mr-1">
                   <AvatarImage src={task.assignee.avatar} />
                   <AvatarFallback className="text-xs">
                     {task.assignee.name.slice(0, 2).toUpperCase()}
@@ -394,8 +394,8 @@ export const GanttView: React.FC<GanttViewProps> = ({
         style={{ height: '40px' }}
       >
         {/* Task Info Column */}
-        <div className="w-80 flex-shrink-0 p-2 border-r flex items-center gap-3">
-          <div className="flex items-center gap-2 flex-1 min-w-0">
+        <div className="w-container-md flex-shrink-0 p-xs border-r flex items-center gap-sm">
+          <div className="flex items-center gap-xs flex-1 min-w-0">
             {/* Task Type Indicator */}
             <div
               className={cn(
@@ -411,8 +411,8 @@ export const GanttView: React.FC<GanttViewProps> = ({
             <div className="flex-1 min-w-0">
               <div className="font-medium truncate text-sm">{task.name}</div>
               {task.assignee && (
-                <div className="flex items-center gap-1 mt-1">
-                  <Avatar className="w-4 h-4">
+                <div className="flex items-center gap-xs mt-1">
+                  <Avatar className="w-icon-xs h-icon-xs">
                     <AvatarImage src={task.assignee.avatar} />
                     <AvatarFallback className="text-xs">
                       {task.assignee.name.slice(0, 2).toUpperCase()}
@@ -429,7 +429,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
           {/* Task Actions */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+              <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
                 <MoreHorizontal className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
@@ -480,8 +480,8 @@ export const GanttView: React.FC<GanttViewProps> = ({
   return (
     <div className={cn('flex flex-col h-full', className)}>
       {/* Toolbar */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-xs">
           {/* Zoom Controls */}
           <div className="flex items-center border rounded-md">
             <Button
@@ -519,24 +519,24 @@ export const GanttView: React.FC<GanttViewProps> = ({
           </div>
 
           {/* Date Navigation */}
-          <div className="flex items-center gap-1 ml-4">
+          <div className="flex items-center gap-xs ml-4">
             <Button variant="outline" size="sm">
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             <Button variant="outline" size="sm">
               Today
             </Button>
             <Button variant="outline" size="sm">
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Settings */}
           {onSettings && (
             <Button variant="outline" size="sm" onClick={onSettings}>
-              <Settings className="h-4 w-4" />
+              <Settings className="h-icon-xs w-icon-xs" />
             </Button>
           )}
 
@@ -545,7 +545,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
-                  <Download className="h-4 w-4 mr-1" />
+                  <Download className="h-icon-xs w-icon-xs mr-1" />
                   Export
                 </Button>
               </DropdownMenuTrigger>
@@ -566,7 +566,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
           {/* Add Task */}
           {onTaskCreate && (
             <Button onClick={() => onTaskCreate()}>
-              <Plus className="h-4 w-4 mr-1" />
+              <Plus className="h-icon-xs w-icon-xs mr-1" />
               Add Task
             </Button>
           )}
@@ -578,7 +578,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
         {/* Timeline Header */}
         <div className="flex border-b bg-muted/50">
           {/* Task Column Header */}
-          <div className="w-80 flex-shrink-0 p-3 border-r">
+          <div className="w-container-md flex-shrink-0 p-sm border-r">
             <h3 className="font-medium">Tasks</h3>
           </div>
 
@@ -589,7 +589,7 @@ export const GanttView: React.FC<GanttViewProps> = ({
                 <div
                   key={index}
                   className={cn(
-                    'flex-shrink-0 p-2 text-center text-sm border-r min-w-20',
+                    'flex-shrink-0 p-xs text-center text-sm border-r min-w-20',
                     header.isWeekend && 'bg-muted'
                   )}
                 >
@@ -604,17 +604,17 @@ export const GanttView: React.FC<GanttViewProps> = ({
         <div className="flex-1 overflow-y-auto">
           {loading ? (
             // Loading state
-            <div className="flex items-center justify-center h-32">
-              <div className="flex items-center gap-2">
-                <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+            <div className="flex items-center justify-center h-component-xl">
+              <div className="flex items-center gap-xs">
+                <div className="w-icon-xs h-icon-xs border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 <span>Loading tasks...</span>
               </div>
             </div>
           ) : tasks.length === 0 ? (
             // Empty state
-            <div className="flex items-center justify-center h-32">
+            <div className="flex items-center justify-center h-component-xl">
               <div className="text-center">
-                <Calendar className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+                <Calendar className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-2" />
                 <div className="text-muted-foreground">{emptyMessage}</div>
               </div>
             </div>
@@ -627,11 +627,11 @@ export const GanttView: React.FC<GanttViewProps> = ({
       </div>
 
       {/* Status Bar */}
-      <div className="flex items-center justify-between p-2 border-t text-xs text-muted-foreground bg-muted/30">
+      <div className="flex items-center justify-between p-xs border-t text-xs text-muted-foreground bg-muted/30">
         <div>
           {tasks.length} tasks • {tasks.filter(t => t.status === 'completed').length} completed
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           {showCriticalPath && (
             <Badge variant="outline" className="text-xs">
               Critical Path

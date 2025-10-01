@@ -88,7 +88,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
       {/* Controls */}
       <div className="flex items-center justify-between gap-md">
         <div className="flex items-center gap-sm">
-          <Filter className="w-4 h-4 color-muted" />
+          <Filter className="w-icon-xs h-icon-xs color-muted" />
           <select
             value={selectedProject}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSelectedProject(e.target.value)}
@@ -109,7 +109,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
            
             onClick={() => setView('timeline')}
           >
-            <BarChart3 className="w-4 h-4 mr-xs" />
+            <BarChart3 className="w-icon-xs h-icon-xs mr-xs" />
             Timeline
           </Button>
           <Button
@@ -117,7 +117,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
            
             onClick={() => setView('calendar')}
           >
-            <Calendar className="w-4 h-4 mr-xs" />
+            <Calendar className="w-icon-xs h-icon-xs mr-xs" />
             Calendar
           </Button>
           <Button
@@ -125,7 +125,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
            
             onClick={() => setView('list')}
           >
-            <Clock className="w-4 h-4 mr-xs" />
+            <Clock className="w-icon-xs h-icon-xs mr-xs" />
             List
           </Button>
         </div>
@@ -166,7 +166,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                     .filter(m => m.project_id === project.id)
                     .map(milestone => (
                       <div key={milestone.id} className="flex items-center gap-sm p-sm bg-secondary/50 rounded">
-                        <CheckCircle className="w-4 h-4 color-accent" />
+                        <CheckCircle className="w-icon-xs h-icon-xs color-accent" />
                         <span className="flex-1">{milestone.title}</span>
                         <Badge className={getStatusColor(milestone.status)}>
                           {milestone.status}
@@ -196,7 +196,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1))}
               >
-                <ChevronLeft className="w-4 h-4" />
+                <ChevronLeft className="w-icon-xs h-icon-xs" />
               </Button>
               <Button
                 variant="outline"
@@ -210,7 +210,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                
                 onClick={() => setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1))}
               >
-                <ChevronRight className="w-4 h-4" />
+                <ChevronRight className="w-icon-xs h-icon-xs" />
               </Button>
             </div>
           </div>
@@ -280,9 +280,9 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
               <div key={index} className="flex items-center gap-md p-sm border rounded-lg hover:bg-secondary/50">
                 <div className="flex items-center gap-sm">
                   {item.type === 'milestone' ? (
-                    <CheckCircle className="w-4 h-4 color-accent" />
+                    <CheckCircle className="w-icon-xs h-icon-xs color-accent" />
                   ) : (
-                    <Clock className="w-4 h-4 color-success" />
+                    <Clock className="w-icon-xs h-icon-xs color-success" />
                   )}
                   <span className="text-body-sm form-label capitalize">{item.type}</span>
                 </div>
@@ -297,7 +297,7 @@ export default function ScheduleClient({ data, orgId }: { data: ScheduleData; or
                     {item.status}
                   </Badge>
                   <div className={`text-body-sm ${isOverdue(item.date!) ? 'color-destructive form-label' : 'color-muted'}`}>
-                    {isOverdue(item.date!) && <AlertCircle className="w-4 h-4 inline mr-xs" />}
+                    {isOverdue(item.date!) && <AlertCircle className="w-icon-xs h-icon-xs inline mr-xs" />}
                     {new Date(item.date!).toLocaleDateString()}
                   </div>
                 </div>

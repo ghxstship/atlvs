@@ -53,8 +53,8 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
   return (
     <Card className="w-full max-w-md">
       <CardHeader>
-        <div className="brand-ghostship flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
-          <Mail className="w-6 h-6 color-accent" />
+        <div className="brand-ghostship flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
+          <Mail className="w-icon-md h-icon-md color-accent" />
         </div>
         <CardTitle>Verify your email</CardTitle>
         <CardDescription>
@@ -121,7 +121,7 @@ export default function EmailVerificationStep({ onNext, onBack, data }: EmailVer
             <>Verifying...</>
           ) : (
             <>
-              <CheckCircle className="w-4 h-4 mr-sm" />
+              <CheckCircle className="w-icon-xs h-icon-xs mr-sm" />
               Verify Email
             </>
           )}

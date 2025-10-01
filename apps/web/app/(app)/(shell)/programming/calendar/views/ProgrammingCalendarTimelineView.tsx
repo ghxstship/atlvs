@@ -83,7 +83,7 @@ export default function ProgrammingCalendarTimelineView({
  <div>
  <h4 className="font-semibold text-lg">{event.title}</h4>
  {event.description && (
- <p className="text-sm text-muted-foreground mt-xs line-clamp-2">
+ <p className="text-sm text-muted-foreground mt-xs line-clamp-xs">
  {event.description}
  </p>
  )}
@@ -96,12 +96,12 @@ export default function ProgrammingCalendarTimelineView({
 
  <div className="flex flex-wrap items-center gap-md text-sm text-muted-foreground">
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>{format(eventDate, "MMM d, yyyy")}</span>
  </div>
 
  <div className="flex items-center gap-xs">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>
  {format(eventDate, "h:mm a")}
  {event.end_at && ` - ${format(parseISO(event.end_at), "h:mm a")}`}
@@ -110,21 +110,21 @@ export default function ProgrammingCalendarTimelineView({
 
  {event.location && (
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{event.location}</span>
  </div>
  )}
 
  {event.project && (
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{event.project.name}</span>
  </div>
  )}
 
  {event.capacity && (
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>Capacity: {event.capacity}</span>
  </div>
  )}
@@ -170,11 +170,11 @@ export default function ProgrammingCalendarTimelineView({
 
  <div className="flex flex-col gap-sm">
  <Button size="sm" variant="outline" onClick={() => onView(event)}>
- <Eye className="h-4 w-4 mr-xs" />
+ <Eye className="h-icon-xs w-icon-xs mr-xs" />
  View
  </Button>
  <Button size="sm" variant="outline" onClick={() => onEdit(event)}>
- <Calendar className="h-4 w-4 mr-xs" />
+ <Calendar className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  </div>
@@ -186,7 +186,7 @@ export default function ProgrammingCalendarTimelineView({
  if (timeGroups.length === 0) {
  return (
  <Card className="p-lg text-center">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No events found</h3>
  <p className="text-muted-foreground">Try adjusting your filters or create a new event.</p>
  </Card>

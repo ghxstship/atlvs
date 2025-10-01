@@ -106,10 +106,10 @@ export default function ProfessionalCalendarView({
  return (
  <div className="space-y-lg">
  <div className="animate-pulse">
- <div className="h-12 bg-muted rounded mb-lg"></div>
+ <div className="h-icon-2xl bg-muted rounded mb-lg"></div>
  <div className="grid grid-cols-7 gap-px bg-muted rounded-lg overflow-hidden">
  {[...Array(42)].map((_, i) => (
- <div key={i} className="h-24 bg-background"></div>
+ <div key={i} className="h-component-lg bg-background"></div>
  ))}
  </div>
  </div>
@@ -138,7 +138,7 @@ export default function ProfessionalCalendarView({
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  
  <Button
@@ -154,7 +154,7 @@ export default function ProfessionalCalendarView({
  size="sm"
  onClick={() => navigateMonth('next')}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -182,7 +182,7 @@ export default function ProfessionalCalendarView({
  <div
  key={index}
  className={`
- h-24 bg-background p-xs cursor-pointer transition-colors hover:bg-muted/50
+ h-component-lg bg-background p-xs cursor-pointer transition-colors hover:bg-muted/50
  ${!isCurrentMonth(date) ? 'text-muted-foreground bg-muted/20' : ''}
  ${isToday(date) ? 'bg-primary/10 border-2 border-primary' : ''}
  ${isSelected(date) ? 'bg-accent' : ''}
@@ -194,7 +194,7 @@ export default function ProfessionalCalendarView({
  {date.getDate()}
  </span>
  {hasEvents && (
- <Badge variant="secondary" className="text-xs h-4 px-1">
+ <Badge variant="secondary" className="text-xs h-icon-xs px-xs">
  {dayProfiles.length}
  </Badge>
  )}
@@ -234,7 +234,7 @@ export default function ProfessionalCalendarView({
  <div className="lg:col-span-1">
  <Card className="p-lg">
  <div className="flex items-center space-x-sm mb-md">
- <CalendarIcon className="h-5 w-5 text-primary" />
+ <CalendarIcon className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">
  {selectedDate 
  ? selectedDate.toLocaleDateString('en-US', { 
@@ -268,7 +268,7 @@ export default function ProfessionalCalendarView({
  }}
  >
  <div className="flex items-center space-x-sm mb-sm">
- <Avatar className="h-6 w-6">
+ <Avatar className="h-icon-md w-icon-md">
  <User className="h-3 w-3" />
  </Avatar>
  <div className="flex-1 min-w-0">
@@ -354,14 +354,14 @@ export default function ProfessionalCalendarView({
  </div>
  ) : selectedDate ? (
  <div className="text-center py-lg">
- <Briefcase className="h-8 w-8 text-muted-foreground mx-auto mb-sm" />
+ <Briefcase className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-sm" />
  <p className="text-sm text-muted-foreground">
  No hires on this date
  </p>
  </div>
  ) : (
  <div className="text-center py-lg">
- <CalendarIcon className="h-8 w-8 text-muted-foreground mx-auto mb-sm" />
+ <CalendarIcon className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-sm" />
  <p className="text-sm text-muted-foreground">
  Click on a date to see hire details
  </p>

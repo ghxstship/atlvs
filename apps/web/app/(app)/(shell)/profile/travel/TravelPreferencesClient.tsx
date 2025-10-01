@@ -58,9 +58,9 @@ export default function Client({ className }: ClientProps) {
       <div className={className}>
         <Card className="p-md">
           <div className="animate-pulse space-y-md">
-            <div className="h-4 bg-secondary rounded w-1/4"></div>
-            <div className="h-4 bg-secondary rounded w-1/2"></div>
-            <div className="h-4 bg-secondary rounded w-3/4"></div>
+            <div className="h-icon-xs bg-secondary rounded w-1/4"></div>
+            <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+            <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
           </div>
         </Card>
       </div>

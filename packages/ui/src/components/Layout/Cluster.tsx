@@ -7,8 +7,8 @@ const clusterVariants = cva('flex flex-row flex-wrap', {
     gap: {
       none: 'gap-0',
       xs: 'gap-1',     // 4px
-      sm: 'gap-2',     // 8px
-      md: 'gap-4',     // 16px
+      sm: 'gap-xs',     // 8px
+      md: 'gap-md',     // 16px
       lg: 'gap-6',     // 24px
       xl: 'gap-8',     // 32px
       '2xl': 'gap-12', // 48px

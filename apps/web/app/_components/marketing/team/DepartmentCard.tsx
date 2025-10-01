@@ -18,8 +18,8 @@ export function DepartmentCard({ department }: DepartmentCardProps) {
   return (
     <Card className="hover:shadow-floating transition-shadow">
       <CardContent className="p-lg">
-        <div className={`w-12 h-12 bg-gradient-to-r ${department.color} rounded-lg flex items-center justify-center mb-sm`}>
-          <Users className="h-6 w-6 text-background" />
+        <div className={`w-icon-2xl h-icon-2xl bg-gradient-to-r ${department.color} rounded-lg flex items-center justify-center mb-sm`}>
+          <Users className="h-icon-md w-icon-md text-background" />
         </div>
         
         <div className="flex items-center gap-xl mb-sm">

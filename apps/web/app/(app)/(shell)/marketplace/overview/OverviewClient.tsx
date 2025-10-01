@@ -269,8 +269,8 @@ export default function OverviewClient({ orgId, userId, userRole }: OverviewClie
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
  {[...Array(4)].map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
- <div className="h-4 bg-muted rounded mb-sm"></div>
- <div className="h-8 bg-muted rounded mb-xs"></div>
+ <div className="h-icon-xs bg-muted rounded mb-sm"></div>
+ <div className="h-icon-lg bg-muted rounded mb-xs"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </Card>
  ))}
@@ -297,7 +297,7 @@ export default function OverviewClient({ orgId, userId, userRole }: OverviewClie
  size="sm"
  onClick={() => loadDashboardData()}
  >
- <Activity className="h-4 w-4 mr-xs" />
+ <Activity className="h-icon-xs w-icon-xs mr-xs" />
  Refresh
  </Button>
  </div>
@@ -313,7 +313,7 @@ export default function OverviewClient({ orgId, userId, userRole }: OverviewClie
  return (
  <Card key={metric.id} className="p-md">
  <div className="flex items-center justify-between mb-sm">
- <Icon className={`h-5 w-5 color-${metric.color}`} />
+ <Icon className={`h-icon-sm w-icon-sm color-${metric.color}`} />
  <Badge 
  variant={metric.trend === 'up' ? 'success' : 
  metric.trend === 'down' ? 'destructive' : 'secondary'}
@@ -337,19 +337,19 @@ export default function OverviewClient({ orgId, userId, userRole }: OverviewClie
  <h3 className="text-heading-4 mb-md">Quick Actions</h3>
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm">
  <Button variant="outline" className="justify-start">
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create Listing
  </Button>
  <Button variant="outline" className="justify-start">
- <Briefcase className="h-4 w-4 mr-sm" />
+ <Briefcase className="h-icon-xs w-icon-xs mr-sm" />
  Post Project
  </Button>
  <Button variant="outline" className="justify-start">
- <Users className="h-4 w-4 mr-sm" />
+ <Users className="h-icon-xs w-icon-xs mr-sm" />
  Browse Vendors
  </Button>
  <Button variant="outline" className="justify-start">
- <Star className="h-4 w-4 mr-sm" />
+ <Star className="h-icon-xs w-icon-xs mr-sm" />
  View Reviews
  </Button>
  </div>
@@ -388,7 +388,7 @@ export default function OverviewClient({ orgId, userId, userRole }: OverviewClie
  <DataGrid
  viewType={selectedView}
  emptyMessage="No recent activity found"
- className="min-h-[300px]"
+ className="min-h-content-md"
  />
  </div>
  </DataViewProvider>

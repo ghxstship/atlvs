@@ -81,19 +81,19 @@ export default function EmergencyTableView({
 
  if (loading) {
  return (
- <Card className="p-6 space-y-4">
- <div className="h-5 w-1/3 bg-muted rounded animate-pulse" />
- <div className="h-5 w-full bg-muted rounded animate-pulse" />
- <div className="h-5 w-2/3 bg-muted rounded animate-pulse" />
+ <Card className="p-lg space-y-md">
+ <div className="h-icon-sm w-1/3 bg-muted rounded animate-pulse" />
+ <div className="h-icon-sm w-full bg-muted rounded animate-pulse" />
+ <div className="h-icon-sm w-2/3 bg-muted rounded animate-pulse" />
  </Card>
  );
  }
 
  return (
  <Card className="overflow-hidden">
- <div className="p-4 space-y-3">
- <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
- <div className="flex-1 flex items-center gap-3">
+ <div className="p-md space-y-sm">
+ <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-sm">
+ <div className="flex-1 flex items-center gap-sm">
  <Input
  placeholder="Search emergency contacts..."
  value={filters.search ?? ''}
@@ -129,14 +129,14 @@ export default function EmergencyTableView({
  </SelectContent>
  </Select>
  </div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  {selectedIds.length > 0 ? (
  <Button
  variant="outline"
  size="sm"
  onClick={() => onExport(contacts.filter(contact => selectedIds.includes(contact.id)))}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export ({selectedIds.length})
  </Button>
  ) : null}
@@ -152,7 +152,7 @@ export default function EmergencyTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected && !allSelected}
@@ -160,14 +160,14 @@ export default function EmergencyTableView({
  />
  </TableHead>
  <TableHead className="cursor-pointer" onClick={() => handleSort('name')}>
- Name <ArrowUpDown className="inline h-4 w-4 ml-1 text-muted-foreground" />
+ Name <ArrowUpDown className="inline h-icon-xs w-icon-xs ml-1 text-muted-foreground" />
  </TableHead>
  <TableHead onClick={() => handleSort('relationship')} className="cursor-pointer">
- Relationship <ArrowUpDown className="inline h-4 w-4 ml-1 text-muted-foreground" />
+ Relationship <ArrowUpDown className="inline h-icon-xs w-icon-xs ml-1 text-muted-foreground" />
  </TableHead>
  <TableHead>Contact Info</TableHead>
  <TableHead onClick={() => handleSort('priority_level')} className="cursor-pointer">
- Priority <ArrowUpDown className="inline h-4 w-4 ml-1 text-muted-foreground" />
+ Priority <ArrowUpDown className="inline h-icon-xs w-icon-xs ml-1 text-muted-foreground" />
  </TableHead>
  <TableHead>Status</TableHead>
  <TableHead>Actions</TableHead>
@@ -176,7 +176,7 @@ export default function EmergencyTableView({
  <TableBody>
  {sortedContacts.length === 0 ? (
  <TableRow>
- <TableCell colSpan={7} className="py-10 text-center text-muted-foreground">
+ <TableCell colSpan={7} className="py-xl text-center text-muted-foreground">
  No emergency contacts found.
  </TableCell>
  </TableRow>
@@ -194,7 +194,7 @@ export default function EmergencyTableView({
  </TableCell>
  <TableCell className="font-medium">{contact.name}</TableCell>
  <TableCell>{contact.relationship}</TableCell>
- <TableCell className="space-y-1 text-sm text-muted-foreground">
+ <TableCell className="space-y-xs text-sm text-muted-foreground">
  <div>{formatPhone(contact.phone_primary)}</div>
  {contact.email ? <div>{contact.email}</div> : null}
  {formatAddress(contact) ? <div>{formatAddress(contact)}</div> : null}
@@ -205,16 +205,16 @@ export default function EmergencyTableView({
  </Badge>
  </TableCell>
  <TableCell>
- <Badge variant={verificationBadge.variant} className="flex items-center gap-1">
+ <Badge variant={verificationBadge.variant} className="flex items-center gap-xs">
  {contact.verification_status === 'verified' ? (
- <ShieldCheck className="h-4 w-4" />
+ <ShieldCheck className="h-icon-xs w-icon-xs" />
  ) : (
- <ShieldAlert className="h-4 w-4" />
+ <ShieldAlert className="h-icon-xs w-icon-xs" />
  )}
  {verificationBadge.label}
  </Badge>
  </TableCell>
- <TableCell className="space-x-2">
+ <TableCell className="space-x-xs">
  <Button variant="outline" size="sm" onClick={() => onEdit(contact)}>
  Edit
  </Button>

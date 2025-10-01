@@ -125,7 +125,7 @@ export default function CreateTravelRecordDrawer({
  <div className="absolute right-0 top-0 h-full w-full max-w-2xl bg-background shadow-xl">
  <div className="flex h-full flex-col">
  {/* Header */}
- <div className="flex items-center justify-between border-b p-6">
+ <div className="flex items-center justify-between border-b p-lg">
  <div>
  <h2 className="text-xl font-semibold">
  {record ? 'Edit Travel Record' : 'Create Travel Record'}
@@ -135,20 +135,20 @@ export default function CreateTravelRecordDrawer({
  </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Content */}
- <div className="flex-1 overflow-y-auto p-6">
- <div className="grid grid-cols-1 gap-6">
+ <div className="flex-1 overflow-y-auto p-lg">
+ <div className="grid grid-cols-1 gap-lg">
  {/* Trip Overview */}
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <Plane className="h-5 w-5 text-primary" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <Plane className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Trip Overview</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="travel_type">Travel Type</Label>
  <Select
@@ -189,7 +189,7 @@ export default function CreateTravelRecordDrawer({
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="destination">Destination</Label>
  <Input
@@ -251,12 +251,12 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Travel Dates */}
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <Calendar className="h-5 w-5 text-primary" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Travel Dates</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="start_date">Start Date</Label>
  <Input
@@ -287,12 +287,12 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Travel Logistics */}
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <Globe className="h-5 w-5 text-primary" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <Globe className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Travel Logistics</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="accommodation">Accommodation</Label>
  <Input
@@ -314,7 +314,7 @@ export default function CreateTravelRecordDrawer({
  />
  </div>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="booking_reference">Booking Reference</Label>
  <Input
@@ -339,13 +339,13 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Visa & Passport */}
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <ShieldCheck className="h-5 w-5 text-primary" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <ShieldCheck className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Visa & Passport</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="flex items-center gap-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="flex items-center gap-xs">
  <Checkbox
  
  checked={formData.visa_required}
@@ -389,12 +389,12 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Expenses */}
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <CreditCard className="h-5 w-5 text-primary" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <CreditCard className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Travel Expenses</h3>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="expenses">Total Expenses</Label>
  <Input
@@ -433,7 +433,7 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Notes */}
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="notes">Notes</Label>
  <Textarea
  
@@ -448,13 +448,13 @@ export default function CreateTravelRecordDrawer({
  </div>
 
  {/* Footer */}
- <div className="border-t p-6">
- <div className="flex items-center justify-end gap-3">
+ <div className="border-t p-lg">
+ <div className="flex items-center justify-end gap-sm">
  <Button variant="outline" onClick={onClose} disabled={loading}>
  Cancel
  </Button>
  <Button onClick={handleSubmit} disabled={loading}>
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {loading ? 'Saving...' : record ? 'Update Trip' : 'Create Trip'}
  </Button>
  </div>

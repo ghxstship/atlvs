@@ -294,7 +294,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Performance Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create Performance
                 </Button>
               </div>
@@ -309,7 +309,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-accent/10 rounded-lg">
-                    <Calendar className="h-5 w-5 color-accent" />
+                    <Calendar className="h-icon-sm w-icon-sm color-accent" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -323,7 +323,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-success/10 rounded-lg">
-                    <Music className="h-5 w-5 color-success" />
+                    <Music className="h-icon-sm w-icon-sm color-success" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -337,7 +337,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-secondary/10 rounded-lg">
-                    <Users className="h-5 w-5 color-secondary" />
+                    <Users className="h-icon-sm w-icon-sm color-secondary" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -351,7 +351,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-warning/10 rounded-lg">
-                    <Star className="h-5 w-5 color-warning" />
+                    <Star className="h-icon-sm w-icon-sm color-warning" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -411,7 +411,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {/* Performance Info */}
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Calendar className="h-4 w-4 color-muted" />
+                      <Calendar className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Date:</span>
                       <span>
                         {selectedRecord.starts_at 
@@ -421,7 +421,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Clock className="h-4 w-4 color-muted" />
+                      <Clock className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Time:</span>
                       <span>
                         {selectedRecord.starts_at 
@@ -434,12 +434,12 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <MapPin className="h-4 w-4 color-muted" />
+                      <MapPin className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Venue:</span>
                       <span>{selectedRecord.venue || 'TBD'}</span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Clock className="h-4 w-4 color-muted" />
+                      <Clock className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Duration:</span>
                       <span>{selectedRecord.duration_minutes ? `${selectedRecord.duration_minutes} min` : 'TBD'}</span>
                     </div>
@@ -482,7 +482,7 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   {selectedRecord.technical_requirements && selectedRecord.technical_requirements !== 'None specified' && (
                     <div className="pt-md border-t">
                       <h4 className="form-label text-body-sm mb-sm flex items-center gap-sm">
-                        <Mic className="h-4 w-4" />
+                        <Mic className="h-icon-xs w-icon-xs" />
                         Technical Requirements
                       </h4>
                       <p className="text-body-sm color-muted bg-secondary/50 p-sm rounded-lg">
@@ -495,19 +495,19 @@ export default function PerformancesClient({ orgId }: { orgId: string }) {
                   <div className="flex gap-sm pt-md border-t">
                     <Button asChild>
                       <a href={`/programming/lineups?event_id=${selectedRecord.id}`}>
-                        <Users className="h-4 w-4 mr-sm" />
+                        <Users className="h-icon-xs w-icon-xs mr-sm" />
                         Manage Lineup
                       </a>
                     </Button>
                     <Button asChild>
                       <a href={`/programming/riders?event_id=${selectedRecord.id}`}>
-                        <FileText className="h-4 w-4 mr-sm" />
+                        <FileText className="h-icon-xs w-icon-xs mr-sm" />
                         Tech Riders
                       </a>
                     </Button>
                     <Button asChild>
                       <a href={`/programming/call-sheets?event_id=${selectedRecord.id}`}>
-                        <Calendar className="h-4 w-4 mr-sm" />
+                        <Calendar className="h-icon-xs w-icon-xs mr-sm" />
                         Call Sheets
                       </a>
                     </Button>

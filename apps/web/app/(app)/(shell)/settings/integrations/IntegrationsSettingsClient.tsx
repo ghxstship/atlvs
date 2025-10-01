@@ -127,21 +127,21 @@ export default function IntegrationsSettingsClient() {
  const getIntegrationIcon = (type: string) => {
  switch (type) {
  case 'webhook':
- return <LinkIcon className="h-4 w-4" />;
+ return <LinkIcon className="h-icon-xs w-icon-xs" />;
  case 'api':
- return <Settings className="h-4 w-4" />;
+ return <Settings className="h-icon-xs w-icon-xs" />;
  default:
- return <LinkIcon className="h-4 w-4" />;
+ return <LinkIcon className="h-icon-xs w-icon-xs" />;
  }
  };
 
  if (loading) {
  return (
  <div className="space-y-md">
- <Skeleton className="h-12 w-48" />
+ <Skeleton className="h-icon-2xl w-container-xs" />
  <div className="space-y-sm">
- <Skeleton className="h-32 w-full" />
- <Skeleton className="h-32 w-full" />
+ <Skeleton className="h-component-xl w-full" />
+ <Skeleton className="h-component-xl w-full" />
  </div>
  </div>
  );
@@ -157,7 +157,7 @@ export default function IntegrationsSettingsClient() {
  </p>
  </div>
  <Button onClick={() => setShowCreateModal(true)}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Integration
  </Button>
  </div>
@@ -220,7 +220,7 @@ export default function IntegrationsSettingsClient() {
  <CardContent className="py-lg text-center">
  <p className="text-muted-foreground mb-md">No integrations configured yet</p>
  <Button onClick={() => setShowCreateModal(true)}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Your First Integration
  </Button>
  </CardContent>

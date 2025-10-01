@@ -5,7 +5,7 @@
 
 set -e
 
-REPO_ROOT="/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ghxstship"
+REPO_ROOT="/Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ATLVS"
 cd "$REPO_ROOT"
 
 echo "🔧 GHXSTSHIP Zero Tolerance Design Token Fixes"

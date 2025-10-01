@@ -81,12 +81,12 @@ export default function MediaGridView({
  className="w-full h-full object-cover"
  />
  ) : (
- <IconComponent className="w-12 h-12 color-muted" />
+ <IconComponent className="w-icon-2xl h-icon-2xl color-muted" />
  )}
  
  {asset.category === 'video' && (
  <div className="absolute inset-0 flex items-center justify-center bg-black/20">
- <Play className="w-8 h-8 text-white" />
+ <Play className="w-icon-lg h-icon-lg text-white" />
  </div>
  )}
  
@@ -99,10 +99,10 @@ export default function MediaGridView({
  </div>
  
  <div className="space-y-sm">
- <h3 className="text-body form-label line-clamp-2">{asset.title}</h3>
+ <h3 className="text-body form-label line-clamp-xs">{asset.title}</h3>
  
  {asset.description && (
- <p className="text-body-sm color-muted line-clamp-2">{asset.description}</p>
+ <p className="text-body-sm color-muted line-clamp-xs">{asset.description}</p>
  )}
  
  <div className="flex items-center justify-between">

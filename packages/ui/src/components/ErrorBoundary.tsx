@@ -58,7 +58,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
       // Default fallback UI
       return (
-        <div className="flex flex-col items-center justify-center min-h-[200px] p-lg border border-destructive/20 rounded-lg bg-destructive/5">
+        <div className="flex flex-col items-center justify-center min-h-content-sm p-lg border border-destructive/20 rounded-lg bg-destructive/5">
           <div className="text-destructive text-lg font-semibold mb-sm">
             Something went wrong
           </div>

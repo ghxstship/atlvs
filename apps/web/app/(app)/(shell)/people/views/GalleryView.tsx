@@ -54,21 +54,21 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
         } : undefined}
       >
         {/* Avatar section */}
-        <div className="relative h-32 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
-          <div className="w-16 h-16 bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+        <div className="relative h-component-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center">
+          <div className="w-component-md h-component-md bg-white bg-opacity-20 rounded-full flex items-center justify-center text-white font-bold text-2xl">
             {person.first_name?.[0]}{person.last_name?.[0]}
           </div>
 
           {/* Status indicator */}
           <div className={cn(
-            "absolute top-3 right-3 w-4 h-4 rounded-full border-2 border-white",
+            "absolute top-sm right-3 w-icon-xs h-icon-xs rounded-full border-2 border-white",
             person.status === 'active' ? "bg-green-500" :
             person.status === 'inactive' ? "bg-red-500" : "bg-yellow-500"
           )}></div>
         </div>
 
         {/* Content section */}
-        <div className="p-4">
+        <div className="p-md">
           <h3 className="font-semibold text-gray-900 text-lg mb-1 truncate">
             {person.first_name} {person.last_name}
           </h3>
@@ -76,7 +76,7 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
           <p className="text-xs text-gray-400 mb-3 truncate">{person.department || 'No department'}</p>
 
           {/* Quick info */}
-          <div className="space-y-1 text-xs text-gray-600">
+          <div className="space-y-xs text-xs text-gray-600">
             {person.email && (
               <div className="truncate">{person.email}</div>
             )}
@@ -88,17 +88,17 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
 
         {/* Actions overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center opacity-0 group-hover:opacity-100">
-          <div className="flex space-x-2">
+          <div className="flex space-x-xs">
             {onView && (
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   onView(person);
                 }}
-                className="p-2 bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
+                className="p-xs bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
                 title="View details"
               >
-                <Eye className="h-4 w-4 text-gray-700" />
+                <Eye className="h-icon-xs w-icon-xs text-gray-700" />
               </button>
             )}
             {onEdit && (
@@ -107,10 +107,10 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
                   e.stopPropagation();
                   onEdit(person);
                 }}
-                className="p-2 bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
+                className="p-xs bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
                 title="Edit person"
               >
-                <Edit className="h-4 w-4 text-gray-700" />
+                <Edit className="h-icon-xs w-icon-xs text-gray-700" />
               </button>
             )}
             {onDelete && (
@@ -119,10 +119,10 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
                   e.stopPropagation();
                   onDelete(person);
                 }}
-                className="p-2 bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
+                className="p-xs bg-white bg-opacity-90 rounded-full hover:bg-opacity-100 transition-colors"
                 title="Delete person"
               >
-                <Trash2 className="h-4 w-4 text-gray-700" />
+                <Trash2 className="h-icon-xs w-icon-xs text-gray-700" />
               </button>
             )}
           </div>
@@ -138,10 +138,10 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
         className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse"
         style={masonry ? { height: `${200 + (index % 3) * 50}px` } : undefined}
       >
-        <div className="h-32 bg-gray-200"></div>
-        <div className="p-4">
-          <div className="h-5 bg-gray-200 rounded mb-2"></div>
-          <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+        <div className="h-component-xl bg-gray-200"></div>
+        <div className="p-md">
+          <div className="h-icon-sm bg-gray-200 rounded mb-2"></div>
+          <div className="h-icon-xs bg-gray-200 rounded w-3/4 mb-2"></div>
           <div className="h-3 bg-gray-200 rounded w-1/2"></div>
         </div>
       </div>
@@ -151,13 +151,13 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
   return (
     <div className={cn("w-full", className)}>
       {masonry ? (
-        <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+        <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-lg space-y-lg">
           {loading ? (
             renderLoadingCards()
           ) : data.length === 0 ? (
-            <div className="col-span-full flex items-center justify-center py-12">
+            <div className="col-span-full flex items-center justify-center py-xsxl">
               <div className="text-center">
-                <User className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <User className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900">No team members</h3>
                 <p className="text-gray-500 mt-1">Start building your gallery by adding team members.</p>
               </div>
@@ -167,13 +167,13 @@ const PeopleImageView: React.FC<ImageViewProps> = ({
           )}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-lg">
           {loading ? (
             renderLoadingCards()
           ) : data.length === 0 ? (
-            <div className="col-span-full flex items-center justify-center py-12">
+            <div className="col-span-full flex items-center justify-center py-xsxl">
               <div className="text-center">
-                <User className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+                <User className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
                 <h3 className="text-lg font-medium text-gray-900">No team members</h3>
                 <p className="text-gray-500 mt-1">Start building your gallery by adding team members.</p>
               </div>

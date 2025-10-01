@@ -11,7 +11,7 @@ interface ForecastCalendarViewProps {
 
 export default function ForecastCalendarView({ data, isLoading, onRecordClick }: ForecastCalendarViewProps) {
   if (isLoading) {
-    return <Card className="p-lg"><div className="animate-pulse h-64 bg-gray-200 rounded"></div></Card>;
+    return <Card className="p-lg"><div className="animate-pulse h-container-sm bg-gray-200 rounded"></div></Card>;
   }
 
   return (

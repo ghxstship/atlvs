@@ -99,7 +99,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
         {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
-            className={`h-4 w-4 ${
+            className={`h-icon-xs w-icon-xs ${
               star <= rating ? 'color-warning fill-current' : 'color-muted'
             }`}
           />
@@ -111,9 +111,9 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-2xl">
+      <div className="flex items-center justify-center py-xsxl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
           <p className="color-foreground/70">Loading vendors...</p>
         </div>
       </div>
@@ -126,7 +126,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="flex-1">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+            <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
             <UnifiedInput               placeholder="Search vendors..."
               value={searchQuery}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -151,8 +151,8 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
 
       {/* Vendors Grid */}
       {filteredVendors.length === 0 ? (
-        <div className="text-center py-2xl">
-          <Building className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+        <div className="text-center py-xsxl">
+          <Building className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
           <h3 className="text-body form-label mb-sm">No vendors found</h3>
           <p className="color-foreground/70 mb-md">
             {searchQuery || statusFilter !== 'all' 
@@ -171,7 +171,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
               <div className="flex items-start justify-between mb-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-accent/10 rounded-lg">
-                    <Building className="h-5 w-5 color-accent" />
+                    <Building className="h-icon-sm w-icon-sm color-accent" />
                   </div>
                   <div>
                     <h3 className="form-label">{vendor.name}</h3>
@@ -181,12 +181,12 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
                 <Button>
-                  <Edit className="h-4 w-4" />
+                  <Edit className="h-icon-xs w-icon-xs" />
                 </Button>
               </div>
 
               {vendor.description && (
-                <p className="text-body-sm color-foreground/70 mb-md line-clamp-2">
+                <p className="text-body-sm color-foreground/70 mb-md line-clamp-xs">
                   {vendor.description}
                 </p>
               )}
@@ -201,7 +201,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                 
                 {vendor.email && (
                   <div className="flex items-center gap-sm text-body-sm">
-                    <Mail className="h-4 w-4 color-foreground/50" />
+                    <Mail className="h-icon-xs w-icon-xs color-foreground/50" />
                     <a 
                       href={`mailto:${vendor.email}`}
                       className="color-accent hover:underline"
@@ -213,7 +213,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                 
                 {vendor.phone && (
                   <div className="flex items-center gap-sm text-body-sm">
-                    <Phone className="h-4 w-4 color-foreground/50" />
+                    <Phone className="h-icon-xs w-icon-xs color-foreground/50" />
                     <a 
                       href={`tel:${vendor.phone}`}
                       className="color-accent hover:underline"
@@ -225,7 +225,7 @@ export default function VendorsClient({ orgId }: { orgId: string }) {
                 
                 {vendor.website && (
                   <div className="flex items-center gap-sm text-body-sm">
-                    <Globe className="h-4 w-4 color-foreground/50" />
+                    <Globe className="h-icon-xs w-icon-xs color-foreground/50" />
                     <a 
                       href={vendor.website}
                       target="_blank"

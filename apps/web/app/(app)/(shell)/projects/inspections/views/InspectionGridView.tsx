@@ -79,16 +79,16 @@ export default function InspectionGridView({
  onEdit(inspection);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  <div className="space-y-sm">
  {/* Type Icon and Title */}
  <div className="flex items-start gap-sm">
- <TypeIcon className="h-5 w-5 text-muted-foreground flex-shrink-0 mt-1" />
+ <TypeIcon className="h-icon-sm w-icon-sm text-muted-foreground flex-shrink-0 mt-1" />
  <div className="flex-1">
- <h3 className="font-semibold line-clamp-2">{inspection.title}</h3>
+ <h3 className="font-semibold line-clamp-xs">{inspection.title}</h3>
  </div>
  </div>
 
@@ -195,7 +195,7 @@ export default function InspectionGridView({
  onDelete(inspection);
  }}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>

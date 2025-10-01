@@ -111,32 +111,32 @@ export default function OrderTableView({
  <table className="w-full">
  <thead>
  <tr className="border-b border-border">
- <th className="text-left p-md w-12">
- <div className="h-4 w-4 bg-muted rounded animate-pulse"></div>
+ <th className="text-left p-md w-icon-2xl">
+ <div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
- <th className="text-right p-md w-32">
- <div className="h-4 bg-muted rounded w-16 ml-auto animate-pulse"></div>
+ <th className="text-right p-md w-component-xl">
+ <div className="h-icon-xs bg-muted rounded w-component-md ml-auto animate-pulse"></div>
  </th>
  </tr>
  </thead>
@@ -144,34 +144,34 @@ export default function OrderTableView({
  {Array.from({ length: 8 }).map((_, index) => (
  <tr key={index} className="border-b border-border">
  <td className="p-md">
- <div className="h-4 w-4 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-32 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-xl animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-6 bg-muted rounded-full w-16 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-6 bg-muted rounded-full w-12 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded-full w-icon-2xl animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
  <div className="flex justify-end gap-xs">
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
  </div>
  </td>
  </tr>
@@ -186,7 +186,7 @@ export default function OrderTableView({
  if (orders.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Package className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Package className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No orders found</h3>
  <p className="text-muted-foreground">
  No orders match your current filters. Try adjusting your search criteria.
@@ -222,7 +222,7 @@ export default function OrderTableView({
  <table className="w-full">
  <thead>
  <tr className="border-b border-border">
- <th className="text-left p-md w-12">
+ <th className="text-left p-md w-icon-2xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -307,7 +307,7 @@ export default function OrderTableView({
  {getSortIcon('expected_delivery')}
  </Button>
  </th>
- <th className="text-right p-md w-32">Actions</th>
+ <th className="text-right p-md w-component-xl">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -348,7 +348,7 @@ export default function OrderTableView({
  <div className="min-w-0">
  <div className="font-medium truncate">{order.vendor_name}</div>
  {order.description && (
- <div className="text-sm text-muted-foreground truncate max-w-[200px]">
+ <div className="text-sm text-muted-foreground truncate max-w-content-narrow">
  {order.description}
  </div>
  )}
@@ -408,7 +408,7 @@ export default function OrderTableView({
  }}
  title="View order"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEditOrder && (
@@ -421,7 +421,7 @@ export default function OrderTableView({
  }}
  title="Edit order"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onDeleteOrder && (
@@ -434,7 +434,7 @@ export default function OrderTableView({
  }}
  title="Delete order"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button
@@ -446,7 +446,7 @@ export default function OrderTableView({
  }}
  title="More options"
  >
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

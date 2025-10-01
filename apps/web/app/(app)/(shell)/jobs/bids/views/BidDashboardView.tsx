@@ -79,12 +79,12 @@ export default function BidDashboardView({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'accepted': return <CheckCircle className="h-4 w-4" />;
- case 'under_review': return <Clock className="h-4 w-4" />;
- case 'submitted': return <DollarSign className="h-4 w-4" />;
- case 'rejected': return <XCircle className="h-4 w-4" />;
- case 'withdrawn': return <AlertCircle className="h-4 w-4" />;
- default: return <Clock className="h-4 w-4" />;
+ case 'accepted': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'under_review': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'submitted': return <DollarSign className="h-icon-xs w-icon-xs" />;
+ case 'rejected': return <XCircle className="h-icon-xs w-icon-xs" />;
+ case 'withdrawn': return <AlertCircle className="h-icon-xs w-icon-xs" />;
+ default: return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -103,9 +103,9 @@ export default function BidDashboardView({
  {[...Array(8)].map((_, i) => (
  <Card key={i} className="p-lg">
  <div className="stack-sm">
- <div className="h-6 w-6 bg-secondary rounded" />
- <div className="h-4 w-20 bg-secondary rounded" />
- <div className="h-8 w-16 bg-secondary rounded" />
+ <div className="h-icon-md w-icon-md bg-secondary rounded" />
+ <div className="h-icon-xs w-component-lg bg-secondary rounded" />
+ <div className="h-icon-lg w-component-md bg-secondary rounded" />
  </div>
  </Card>
  ))}
@@ -129,7 +129,7 @@ export default function BidDashboardView({
  )}
  {onCreateNew && (
  <Button onClick={onCreateNew}>
- <DollarSign className="h-4 w-4 mr-xs" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-xs" />
  New Bid
  </Button>
  )}
@@ -149,7 +149,7 @@ export default function BidDashboardView({
  {calculatedStats.recentBids} this week
  </p>
  </div>
- <DollarSign className="h-8 w-8 color-accent" />
+ <DollarSign className="h-icon-lg w-icon-lg color-accent" />
  </div>
  </Card>
 
@@ -164,7 +164,7 @@ export default function BidDashboardView({
  Avg: {formatCurrency(calculatedStats.averageBidValue)}
  </p>
  </div>
- <TrendingUp className="h-8 w-8 color-success" />
+ <TrendingUp className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
 
@@ -179,7 +179,7 @@ export default function BidDashboardView({
  {calculatedStats.acceptedBids} accepted
  </p>
  </div>
- <Target className="h-8 w-8 color-success" />
+ <Target className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
 
@@ -192,7 +192,7 @@ export default function BidDashboardView({
  </p>
  <p className="text-body-xs color-muted">Under review</p>
  </div>
- <Activity className="h-8 w-8 color-info" />
+ <Activity className="h-icon-lg w-icon-lg color-info" />
  </div>
  </Card>
  </div>
@@ -203,7 +203,7 @@ export default function BidDashboardView({
  <div className="stack-md">
  <div className="flex items-center justify-between">
  <h3 className="text-heading-4 color-foreground">Status Breakdown</h3>
- <TrendingUp className="h-5 w-5 color-muted" />
+ <TrendingUp className="h-icon-sm w-icon-sm color-muted" />
  </div>
  
  <div className="stack-sm">
@@ -237,20 +237,20 @@ export default function BidDashboardView({
  <div className="stack-md">
  <div className="flex items-center justify-between">
  <h3 className="text-heading-4 color-foreground">Recent Bids</h3>
- <Calendar className="h-5 w-5 color-muted" />
+ <Calendar className="h-icon-sm w-icon-sm color-muted" />
  </div>
  
  <div className="stack-sm">
  {recentBids.length === 0 ? (
  <div className="text-center p-lg">
- <DollarSign className="h-8 w-8 color-muted mx-auto mb-sm" />
+ <DollarSign className="h-icon-lg w-icon-lg color-muted mx-auto mb-sm" />
  <p className="color-muted">No recent bids</p>
  </div>
  ) : (
  recentBids.map((bid) => (
  <div key={bid.id} className="flex items-center justify-between p-sm border border-border rounded-md">
  <div className="flex items-center gap-sm flex-1 min-w-0">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Building className="h-3 w-3" />
  </div>
  <div className="flex-1 min-w-0">
@@ -278,7 +278,7 @@ export default function BidDashboardView({
  <Card className="p-lg">
  <div className="stack-sm">
  <div className="flex items-center gap-sm">
- <CheckCircle className="h-5 w-5 color-success" />
+ <CheckCircle className="h-icon-sm w-icon-sm color-success" />
  <h4 className="text-body-sm font-medium color-foreground">Accepted Bids</h4>
  </div>
  <p className="text-heading-3 font-semibold color-success">
@@ -297,7 +297,7 @@ export default function BidDashboardView({
  <Card className="p-lg">
  <div className="stack-sm">
  <div className="flex items-center gap-sm">
- <Clock className="h-5 w-5 color-info" />
+ <Clock className="h-icon-sm w-icon-sm color-info" />
  <h4 className="text-body-sm font-medium color-foreground">Under Review</h4>
  </div>
  <p className="text-heading-3 font-semibold color-info">
@@ -316,7 +316,7 @@ export default function BidDashboardView({
  <Card className="p-lg">
  <div className="stack-sm">
  <div className="flex items-center gap-sm">
- <XCircle className="h-5 w-5 color-destructive" />
+ <XCircle className="h-icon-sm w-icon-sm color-destructive" />
  <h4 className="text-body-sm font-medium color-foreground">Rejected Bids</h4>
  </div>
  <p className="text-heading-3 font-semibold color-destructive">

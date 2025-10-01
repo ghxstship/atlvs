@@ -134,15 +134,15 @@ export default function ActivityWidget({
   const getModuleIcon = (module: string) => {
     switch (module) {
       case 'projects':
-        return <FileText className="h-4 w-4" />;
+        return <FileText className="h-icon-xs w-icon-xs" />;
       case 'people':
-        return <Users className="h-4 w-4" />;
+        return <Users className="h-icon-xs w-icon-xs" />;
       case 'budgets':
       case 'expenses':
       case 'revenue':
-        return <DollarSign className="h-4 w-4" />;
+        return <DollarSign className="h-icon-xs w-icon-xs" />;
       default:
-        return <FileText className="h-4 w-4" />;
+        return <FileText className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -197,11 +197,11 @@ export default function ActivityWidget({
     return (
       <Card className="p-lg h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-secondary/50 rounded w-3/4 mb-md"></div>
+          <div className="h-icon-xs bg-secondary/50 rounded w-3/4 mb-md"></div>
           <div className="stack-sm">
             {[...Array(5)].map((_, i) => (
               <div key={i} className="flex items-center cluster-sm">
-                <div className="h-8 w-8 bg-secondary/50 rounded-full"></div>
+                <div className="h-icon-lg w-icon-lg bg-secondary/50 rounded-full"></div>
                 <div className="flex-1 stack-xs">
                   <div className="h-3 bg-secondary/50 rounded w-3/4"></div>
                   <div className="h-2 bg-secondary/50 rounded w-1/2"></div>
@@ -239,14 +239,14 @@ export default function ActivityWidget({
               className="p-xs color-muted hover:color-foreground rounded"
               aria-label="Edit widget"
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal className="h-icon-xs w-icon-xs" />
             </button>
           </div>
         )}
       </div>
 
       {/* Activity List */}
-      <div className="stack-md max-h-96 overflow-y-auto">
+      <div className="stack-md max-h-container-lg overflow-y-auto">
         {Object.entries(groupedActivities).map(([groupName, groupActivities]) => (
           <div key={groupName}>
             {config.groupByDate && (
@@ -257,8 +257,8 @@ export default function ActivityWidget({
                 <div key={activity.id} className="flex items-start cluster-sm">
                   {config.showAvatars && (
                     <div className="flex-shrink-0">
-                      <div className="h-8 w-8 bg-secondary/50 rounded-full flex items-center justify-center">
-                        <User className="h-4 w-4 color-muted" />
+                      <div className="h-icon-lg w-icon-lg bg-secondary/50 rounded-full flex items-center justify-center">
+                        <User className="h-icon-xs w-icon-xs color-muted" />
                       </div>
                     </div>
                   )}

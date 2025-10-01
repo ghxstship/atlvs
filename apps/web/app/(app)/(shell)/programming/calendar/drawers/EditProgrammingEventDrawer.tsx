@@ -212,10 +212,10 @@ export default function EditProgrammingEventDrawer({
  onClose={() => onOpenChange(false)}
  title="Edit Programming Event"
  description="Update event details and settings"
- icon={<Calendar className="h-5 w-5" />}
+ icon={<Calendar className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Title */}
  <div>
  <label className="block text-sm font-medium mb-2">
@@ -228,7 +228,7 @@ export default function EditProgrammingEventDrawer({
  maxLength={255}
  />
  {errors.title && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.title}
  </p>
@@ -249,7 +249,7 @@ export default function EditProgrammingEventDrawer({
  </div>
 
  {/* Project and Event Type */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Project
@@ -288,7 +288,7 @@ export default function EditProgrammingEventDrawer({
  </div>
 
  {/* Status and Location */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Status
@@ -315,13 +315,13 @@ export default function EditProgrammingEventDrawer({
  onChange={(e) => setFormData({ ...formData, location: e.target.value })}
  placeholder="e.g., Main Stage, Studio A"
  />
- <MapPin className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <MapPin className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  </div>
  </div>
 
  {/* Start and End Times */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Start Time <span className="text-destructive">*</span>
@@ -332,10 +332,10 @@ export default function EditProgrammingEventDrawer({
  value={formData.start_at}
  onChange={(e) => setFormData({ ...formData, start_at: e.target.value })}
  />
- <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Clock className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.start_at && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.start_at}
  </p>
@@ -353,10 +353,10 @@ export default function EditProgrammingEventDrawer({
  onChange={(e) => setFormData({ ...formData, end_at: e.target.value })}
  min={formData.start_at}
  />
- <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Clock className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.end_at && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.end_at}
  </p>
@@ -365,7 +365,7 @@ export default function EditProgrammingEventDrawer({
  </div>
 
  {/* Setup and Teardown Times */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Setup Start
@@ -390,7 +390,7 @@ export default function EditProgrammingEventDrawer({
  </div>
 
  {/* Capacity and Broadcast URL */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Capacity
@@ -403,10 +403,10 @@ export default function EditProgrammingEventDrawer({
  onChange={(e) => setFormData({ ...formData, capacity: e.target.value })}
  placeholder="e.g., 500"
  />
- <Users className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Users className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.capacity && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.capacity}
  </p>
@@ -424,7 +424,7 @@ export default function EditProgrammingEventDrawer({
  placeholder="https://stream.example.com/event"
  />
  {errors.broadcast_url && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.broadcast_url}
  </p>
@@ -437,7 +437,7 @@ export default function EditProgrammingEventDrawer({
  <label className="block text-sm font-medium mb-2">
  Tags
  </label>
- <div className="flex gap-2 mb-2">
+ <div className="flex gap-xs mb-2">
  <div className="relative flex-1">
  <Input
  value={tagInput}
@@ -450,22 +450,22 @@ export default function EditProgrammingEventDrawer({
  }
  }}
  />
- <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Tag className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  <Button
  type="button"
  variant="outline"
  onClick={handleAddTag}
  >
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {formData.tags.length > 0 && (
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {formData.tags.map((tag) => (
  <span
  key={tag}
- className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded-md text-sm"
+ className="inline-flex items-center gap-xs px-xs py-xs bg-muted rounded-md text-sm"
  >
  {tag}
  <button
@@ -482,7 +482,7 @@ export default function EditProgrammingEventDrawer({
  </div>
 
  {/* Metadata */}
- <div className="text-sm text-muted-foreground space-y-1">
+ <div className="text-sm text-muted-foreground space-y-xs">
  <p>Created: {format(parseISO(event.created_at || event.start_at), "MMM d, yyyy 'at' h:mm a")}</p>
  <p>Updated: {format(parseISO(event.updated_at || event.start_at), "MMM d, yyyy 'at' h:mm a")}</p>
  </div>
@@ -494,10 +494,10 @@ export default function EditProgrammingEventDrawer({
  onClick={handleDelete}
  disabled={loading}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  Delete
  </Button>
- <div className="flex gap-3">
+ <div className="flex gap-sm">
  <Button
  variant="outline"
  onClick={handleCancel}

@@ -129,7 +129,7 @@ export default function BulkActionsDrawer({
  <div className="p-lg bg-secondary/30 rounded-lg">
  <div className="flex items-center gap-md mb-md">
  <div className="p-sm bg-accent/10 rounded-lg">
- <Users className="h-5 w-5 color-accent" />
+ <Users className="h-icon-sm w-icon-sm color-accent" />
  </div>
  <div>
  <h3 className="text-heading-4">
@@ -178,7 +178,7 @@ export default function BulkActionsDrawer({
  <SelectContent>
  <SelectItem value="activate">
  <div className="flex items-center gap-md">
- <CheckCircle className="h-4 w-4 color-success" />
+ <CheckCircle className="h-icon-xs w-icon-xs color-success" />
  <div>
  <div className="font-medium">Activate Profiles</div>
  <div className="text-body-xs color-muted">Set profiles to active status</div>
@@ -187,7 +187,7 @@ export default function BulkActionsDrawer({
  </SelectItem>
  <SelectItem value="deactivate">
  <div className="flex items-center gap-md">
- <XCircle className="h-4 w-4 color-warning" />
+ <XCircle className="h-icon-xs w-icon-xs color-warning" />
  <div>
  <div className="font-medium">Deactivate Profiles</div>
  <div className="text-body-xs color-muted">Set profiles to inactive status</div>
@@ -196,7 +196,7 @@ export default function BulkActionsDrawer({
  </SelectItem>
  <SelectItem value="delete">
  <div className="flex items-center gap-md">
- <Trash2 className="h-4 w-4 color-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs color-destructive" />
  <div>
  <div className="font-medium">Delete Profiles</div>
  <div className="text-body-xs color-muted">Permanently remove profiles</div>
@@ -215,7 +215,7 @@ export default function BulkActionsDrawer({
  {currentActionDetails && (
  <div className="stack-lg">
  <Alert variant={currentActionDetails.color as unknown}>
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  <strong>{currentActionDetails.title}:</strong> {currentActionDetails.warning}
  </AlertDescription>
@@ -228,7 +228,7 @@ export default function BulkActionsDrawer({
  </h4>
  
  {affectedProfiles.length > 0 ? (
- <div className="max-h-64 overflow-y-auto border rounded-lg">
+ <div className="max-h-container-sm overflow-y-auto border rounded-lg">
  {affectedProfiles.map((profile) => (
  <div
  key={profile.id}
@@ -256,7 +256,7 @@ export default function BulkActionsDrawer({
  </div>
  ) : (
  <div className="text-center py-lg color-muted">
- <Users className="h-8 w-8 mx-auto mb-md opacity-50" />
+ <Users className="h-icon-lg w-icon-lg mx-auto mb-md opacity-50" />
  <p className="text-body-sm">
  No profiles will be affected by this action
  </p>
@@ -274,14 +274,14 @@ export default function BulkActionsDrawer({
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+ <FormItem className="flex flex-row items-start space-x-sm space-y-0">
  <FormControl>
  <Checkbox
  checked={field.value}
  onCheckedChange={field.onChange}
  />
  </FormControl>
- <div className="space-y-1 leading-none">
+ <div className="space-y-xs leading-none">
  <FormLabel className="text-body-sm">
  I understand the consequences of this action
  </FormLabel>
@@ -306,7 +306,7 @@ export default function BulkActionsDrawer({
  onClick={onClose}
  disabled={loading}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  
@@ -316,7 +316,7 @@ export default function BulkActionsDrawer({
  disabled={loading || !selectedAction || affectedProfiles.length === 0}
  loading={loading}
  >
- <Play className="h-4 w-4 mr-sm" />
+ <Play className="h-icon-xs w-icon-xs mr-sm" />
  Execute Action
  </Button>
  </div>

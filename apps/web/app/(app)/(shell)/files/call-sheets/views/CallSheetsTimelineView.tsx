@@ -33,8 +33,8 @@ export default function CallSheetsTimelineView({
 }: CallSheetsTimelineViewProps) {
  if (callSheets.length === 0) {
  return (
- <div className="flex flex-col items-center justify-center py-12 text-center">
- <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
+ <div className="flex flex-col items-center justify-center py-xsxl text-center">
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No call sheets found</h3>
  <p className="text-muted-foreground">Create your first call sheet to get started.</p>
  </div>
@@ -55,7 +55,7 @@ export default function CallSheetsTimelineView({
  const sortedDates = Object.keys(groupedCallSheets).sort();
 
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {sortedDates.map((date) => {
  const callSheetsForDate = groupedCallSheets[date];
  const dateObj = parseISO(date);
@@ -65,7 +65,7 @@ export default function CallSheetsTimelineView({
  <div key={date} className="relative">
  {/* Date Header */}
  <div className="sticky top-0 z-10 bg-background/80 backdrop-blur-sm border-b pb-2 mb-4">
- <div className="flex items-center space-x-3">
+ <div className="flex items-center space-x-sm">
  <div className={`w-3 h-3 rounded-full ${isToday ? 'bg-primary' : 'bg-muted-foreground'}`} />
  <h2 className={`text-lg font-semibold ${isToday ? 'text-primary' : 'text-foreground'}`}>
  {format(dateObj, 'EEEE, MMMM dd, yyyy')}
@@ -78,7 +78,7 @@ export default function CallSheetsTimelineView({
  </div>
  
  {/* Timeline Items */}
- <div className="space-y-4 ml-6 border-l-2 border-muted pl-6">
+ <div className="space-y-md ml-6 border-l-2 border-muted pl-6">
  {callSheetsForDate
  .sort((a, b) => {
  // Sort by call time if available, otherwise by creation time
@@ -89,16 +89,16 @@ export default function CallSheetsTimelineView({
  .map((callSheet, index) => (
  <div key={callSheet.id} className="relative">
  {/* Timeline Dot */}
- <div className={`absolute -left-8 w-4 h-4 rounded-full border-2 border-background ${
+ <div className={`absolute -left-8 w-icon-xs h-icon-xs rounded-full border-2 border-background ${
  STATUS_VARIANTS[callSheet.status] === 'success' ? 'bg-success' :
  STATUS_VARIANTS[callSheet.status] === 'warning' ? 'bg-warning' :
  STATUS_VARIANTS[callSheet.status] === 'destructive' ? 'bg-destructive' :
  STATUS_VARIANTS[callSheet.status] === 'info' ? 'bg-info' : 'bg-muted-foreground'
  }`} />
  
- <Card className="p-4 hover:shadow-md transition-shadow">
+ <Card className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between">
- <div className="flex items-start space-x-3 flex-1">
+ <div className="flex items-start space-x-sm flex-1">
  <input
  type="checkbox"
  checked={selected.has(callSheet.id)}
@@ -107,7 +107,7 @@ export default function CallSheetsTimelineView({
  />
  
  <div className="flex-1 min-w-0">
- <div className="flex items-center space-x-2 mb-2">
+ <div className="flex items-center space-x-xs mb-2">
  <h3 className="font-semibold text-base">{callSheet.title}</h3>
  <Badge variant={STATUS_VARIANTS[callSheet.status]} className="text-xs">
  {callSheet.status.replace('_', ' ')}
@@ -115,28 +115,28 @@ export default function CallSheetsTimelineView({
  </div>
  
  {callSheet.description && (
- <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+ <p className="text-muted-foreground text-sm mb-3 line-clamp-xs">
  {callSheet.description}
  </p>
  )}
  
- <div className="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm mb-3">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-sm text-sm mb-3">
  {callSheet.call_time && (
  <div className="flex items-center text-muted-foreground">
- <Clock className="h-4 w-4 mr-2" />
+ <Clock className="h-icon-xs w-icon-xs mr-2" />
  <span className="font-medium">{callSheet.call_time}</span>
  </div>
  )}
  
  {callSheet.location && (
  <div className="flex items-center text-muted-foreground">
- <MapPin className="h-4 w-4 mr-2" />
+ <MapPin className="h-icon-xs w-icon-xs mr-2" />
  <span className="truncate">{callSheet.location}</span>
  </div>
  )}
  
  <div className="flex items-center text-muted-foreground">
- <Users className="h-4 w-4 mr-2" />
+ <Users className="h-icon-xs w-icon-xs mr-2" />
  <span>
  {(callSheet.crew_calls?.length || 0) + (callSheet.talent_calls?.length || 0)} people
  </span>
@@ -145,11 +145,11 @@ export default function CallSheetsTimelineView({
  
  {/* Crew and Talent Details */}
  {(callSheet.crew_calls?.length > 0 || callSheet.talent_calls?.length > 0) && (
- <div className="space-y-2 mb-3">
+ <div className="space-y-xs mb-3">
  {callSheet.crew_calls?.length > 0 && (
  <div className="text-xs">
  <span className="font-medium text-muted-foreground">Crew ({callSheet.crew_calls.length}):</span>
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {callSheet.crew_calls.slice(0, 3).map((crew, idx) => (
  <Badge key={idx} variant="outline" className="text-xs">
  {crew.role} - {crew.call_time}
@@ -167,7 +167,7 @@ export default function CallSheetsTimelineView({
  {callSheet.talent_calls?.length > 0 && (
  <div className="text-xs">
  <span className="font-medium text-muted-foreground">Talent ({callSheet.talent_calls.length}):</span>
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {callSheet.talent_calls.slice(0, 3).map((talent, idx) => (
  <Badge key={idx} variant="outline" className="text-xs">
  {talent.talent_name} - {talent.call_time}
@@ -185,7 +185,7 @@ export default function CallSheetsTimelineView({
  )}
  
  {callSheet.special_instructions && (
- <div className="p-2 bg-muted rounded text-xs mb-3">
+ <div className="p-xs bg-muted rounded text-xs mb-3">
  <strong>Special Instructions:</strong> {callSheet.special_instructions}
  </div>
  )}
@@ -198,14 +198,14 @@ export default function CallSheetsTimelineView({
  </div>
  </div>
  
- <div className="flex items-center space-x-1 ml-4">
+ <div className="flex items-center space-x-xs ml-4">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(callSheet)}
  title="View call sheet"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  
  <Button
@@ -214,7 +214,7 @@ export default function CallSheetsTimelineView({
  onClick={() => onEdit(callSheet)}
  title="Edit call sheet"
  >
- <Pencil className="h-4 w-4" />
+ <Pencil className="h-icon-xs w-icon-xs" />
  </Button>
  
  {callSheet.status === 'published' && onDistribute && (
@@ -224,7 +224,7 @@ export default function CallSheetsTimelineView({
  onClick={() => onDistribute(callSheet)}
  title="Distribute call sheet"
  >
- <Share2 className="h-4 w-4" />
+ <Share2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  
@@ -235,7 +235,7 @@ export default function CallSheetsTimelineView({
  title="Delete call sheet"
  className="text-destructive hover:text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

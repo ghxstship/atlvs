@@ -170,21 +170,21 @@ export default function TaskListView({
  
  if (days < 0) {
  return (
- <span className="text-destructive text-xs flex items-center gap-1">
+ <span className="text-destructive text-xs flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {Math.abs(days)}d overdue
  </span>
  );
  } else if (days === 0) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  Due today
  </span>
  );
  } else if (days <= 7) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {days}d
  </span>
@@ -204,7 +204,7 @@ export default function TaskListView({
  return (
  <button
  onClick={() => toggleSort(field)}
- className="flex items-center gap-1 hover:text-primary transition-colors"
+ className="flex items-center gap-xs hover:text-primary transition-colors"
  >
  {label}
  {isActive ? (
@@ -223,36 +223,36 @@ export default function TaskListView({
  return (
  <div className="w-full">
  {/* Table Header */}
- <div className="border-b bg-muted/30 px-4 py-3">
- <div className="flex items-center gap-4 text-sm font-medium">
- <div className="w-10">
+ <div className="border-b bg-muted/30 px-md py-sm">
+ <div className="flex items-center gap-md text-sm font-medium">
+ <div className="w-icon-xl">
  <Checkbox
  checked={selectedItems.size === sortedTasks.length && sortedTasks.length > 0}
  onChange={selectAll}
  />
  </div>
- <div className="flex-1 min-w-[200px]">
+ <div className="flex-1 min-w-content-narrow">
  {renderSortButton("title", "Title")}
  </div>
  <div className="w-28 hidden lg:block">
  {renderSortButton("status", "Status")}
  </div>
- <div className="w-24 hidden md:block">
+ <div className="w-component-lg hidden md:block">
  {renderSortButton("priority", "Priority")}
  </div>
- <div className="w-32 hidden xl:block">
+ <div className="w-component-xl hidden xl:block">
  {renderSortButton("assignee", "Assignee")}
  </div>
- <div className="w-32 hidden xl:block">
+ <div className="w-component-xl hidden xl:block">
  {renderSortButton("project", "Project")}
  </div>
  <div className="w-28 hidden lg:block">
  {renderSortButton("due_date", "Due Date")}
  </div>
- <div className="w-20 hidden md:block text-center">
+ <div className="w-component-lg hidden md:block text-center">
  Progress
  </div>
- <div className="w-20 text-center">
+ <div className="w-component-lg text-center">
  Actions
  </div>
  </div>
@@ -272,33 +272,33 @@ export default function TaskListView({
 
  return (
  <div key={task.id}>
- <div className="px-4 py-3 hover:bg-muted/30 transition-colors">
- <div className="flex items-center gap-4">
- <div className="w-10">
+ <div className="px-md py-sm hover:bg-muted/30 transition-colors">
+ <div className="flex items-center gap-md">
+ <div className="w-icon-xl">
  <Checkbox
  checked={selectedItems.has(task.id)}
  onChange={() => onSelectItem(task.id)}
  />
  </div>
  
- <div className="flex-1 min-w-[200px]">
- <div className="flex items-center gap-2">
+ <div className="flex-1 min-w-content-narrow">
+ <div className="flex items-center gap-xs">
  {hasSubtasks && (
  <button
  onClick={() => toggleTaskExpansion(task.id)}
  className="p-0.5 hover:bg-muted rounded"
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronUp className="h-4 w-4" />
+ <ChevronUp className="h-icon-xs w-icon-xs" />
  )}
  </button>
  )}
  <div>
- <p className="font-medium line-clamp-1">{task.title}</p>
+ <p className="font-medium line-clamp-xs">{task.title}</p>
  {task.description && (
- <p className="text-sm text-muted-foreground line-clamp-1">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {task.description}
  </p>
  )}
@@ -310,24 +310,24 @@ export default function TaskListView({
  {getStatusBadge(task.status)}
  </div>
 
- <div className="w-24 hidden md:block">
+ <div className="w-component-lg hidden md:block">
  {getPriorityBadge(task.priority)}
  </div>
 
- <div className="w-32 hidden xl:block">
+ <div className="w-component-xl hidden xl:block">
  {task.assignee ? (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {task.assignee.avatar_url ? (
  <Image
  src={task.assignee.avatar_url}
  alt={task.assignee.full_name || task.assignee.email}
  width={24}
  height={24}
- className="h-6 w-6 rounded-full"
+ className="h-icon-md w-icon-md rounded-full"
  unoptimized
  />
  ) : (
- <div className="h-6 w-6 rounded-full bg-muted flex items-center justify-center">
+ <div className="h-icon-md w-icon-md rounded-full bg-muted flex items-center justify-center">
  <Users className="h-3 w-3" />
  </div>
  )}
@@ -340,9 +340,9 @@ export default function TaskListView({
  )}
  </div>
 
- <div className="w-32 hidden xl:block">
+ <div className="w-component-xl hidden xl:block">
  {task.project && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Briefcase className="h-3 w-3 text-muted-foreground" />
  <span className="text-sm text-muted-foreground truncate">
  {task.project.name}
@@ -355,8 +355,8 @@ export default function TaskListView({
  {getDaysUntil(task.due_date)}
  </div>
 
- <div className="w-20 hidden md:block">
- <div className="flex flex-col items-center gap-1">
+ <div className="w-component-lg hidden md:block">
+ <div className="flex flex-col items-center gap-xs">
  <div className="w-full bg-muted rounded-full h-1.5">
  <div 
  className="bg-primary h-1.5 rounded-full transition-all"
@@ -367,31 +367,31 @@ export default function TaskListView({
  </div>
  </div>
 
- <div className="w-20 flex justify-center">
+ <div className="w-component-lg flex justify-center">
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreVertical className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreVertical className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onViewTask(task)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEditTask(task)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onDuplicateTask(task)}>
- <Copy className="mr-2 h-4 w-4" />
+ <Copy className="mr-2 h-icon-xs w-icon-xs" />
  Duplicate
  </DropdownMenuItem>
  <DropdownMenuItem 
  onClick={() => onDeleteTask(task)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -401,7 +401,7 @@ export default function TaskListView({
 
  {/* Tags */}
  {task.tags && task.tags.length > 0 && (
- <div className="flex items-center gap-2 mt-2 ml-14">
+ <div className="flex items-center gap-xs mt-2 ml-14">
  <Tag className="h-3 w-3 text-muted-foreground" />
  {task.tags.map(tag => (
  <Badge key={tag} variant="outline" className="text-xs">
@@ -416,15 +416,15 @@ export default function TaskListView({
  {isExpanded && hasSubtasks && (
  <div className="pl-16 pr-4 pb-2 bg-muted/20">
  {task.subtasks!.map(subtask => (
- <div key={subtask.id} className="flex items-center gap-4 py-2 border-t">
- <ListTodo className="h-4 w-4 text-muted-foreground" />
+ <div key={subtask.id} className="flex items-center gap-md py-xs border-t">
+ <ListTodo className="h-icon-xs w-icon-xs text-muted-foreground" />
  <div className="flex-1">
  <p className="text-sm">{subtask.title}</p>
  </div>
  {getStatusBadge(subtask.status)}
  {getPriorityBadge(subtask.priority)}
  {subtask.assignee_id && (
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  )}
  {getDaysUntil(subtask.due_date)}
  </div>
@@ -438,8 +438,8 @@ export default function TaskListView({
 
  {/* Empty State */}
  {sortedTasks.length === 0 && (
- <div className="text-center py-12">
- <ListTodo className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <div className="text-center py-xsxl">
+ <ListTodo className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No tasks found</h3>
  <p className="text-muted-foreground">
  Try adjusting your filters or create a new task

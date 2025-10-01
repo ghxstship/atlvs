@@ -127,10 +127,10 @@ export default function TravelCalendarView({
  return (
  <div className="space-y-lg">
  <div className="animate-pulse">
- <div className="h-12 bg-muted rounded mb-lg"></div>
+ <div className="h-icon-2xl bg-muted rounded mb-lg"></div>
  <div className="grid grid-cols-7 gap-px bg-muted rounded-lg overflow-hidden">
  {[...Array(42)].map((_, i) => (
- <div key={i} className="h-24 bg-background"></div>
+ <div key={i} className="h-component-lg bg-background"></div>
  ))}
  </div>
  </div>
@@ -159,7 +159,7 @@ export default function TravelCalendarView({
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  
  <Button
@@ -175,7 +175,7 @@ export default function TravelCalendarView({
  size="sm"
  onClick={() => navigateMonth('next')}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -203,7 +203,7 @@ export default function TravelCalendarView({
  <div
  key={index}
  className={`
- h-24 bg-background p-xs cursor-pointer transition-colors hover:bg-muted/50
+ h-component-lg bg-background p-xs cursor-pointer transition-colors hover:bg-muted/50
  ${!isCurrentMonth(date) ? 'text-muted-foreground bg-muted/20' : ''}
  ${isToday(date) ? 'bg-primary/10 border-2 border-primary' : ''}
  ${isSelected(date) ? 'bg-accent' : ''}
@@ -215,7 +215,7 @@ export default function TravelCalendarView({
  {date.getDate()}
  </span>
  {hasEvents && (
- <Badge variant="secondary" className="text-xs h-4 px-1">
+ <Badge variant="secondary" className="text-xs h-icon-xs px-xs">
  {dayRecords.length}
  </Badge>
  )}
@@ -260,7 +260,7 @@ export default function TravelCalendarView({
  <div className="lg:col-span-1">
  <Card className="p-lg">
  <div className="flex items-center space-x-sm mb-md">
- <CalendarIcon className="h-5 w-5 text-primary" />
+ <CalendarIcon className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">
  {selectedDate 
  ? selectedDate.toLocaleDateString('en-US', { 
@@ -294,7 +294,7 @@ export default function TravelCalendarView({
  }}
  >
  <div className="flex items-center space-x-sm mb-sm">
- <div className={`h-6 w-6 rounded-full flex items-center justify-center ${
+ <div className={`h-icon-md w-icon-md rounded-full flex items-center justify-center ${
  record.status === 'confirmed' ? 'bg-green-100 text-green-600' :
  record.status === 'planned' ? 'bg-blue-100 text-blue-600' :
  record.status === 'in_progress' ? 'bg-yellow-100 text-yellow-600' :
@@ -409,14 +409,14 @@ export default function TravelCalendarView({
  </div>
  ) : selectedDate ? (
  <div className="text-center py-lg">
- <Plane className="h-8 w-8 text-muted-foreground mx-auto mb-sm" />
+ <Plane className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-sm" />
  <p className="text-sm text-muted-foreground">
  No trips on this date
  </p>
  </div>
  ) : (
  <div className="text-center py-lg">
- <CalendarIcon className="h-8 w-8 text-muted-foreground mx-auto mb-sm" />
+ <CalendarIcon className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-sm" />
  <p className="text-sm text-muted-foreground">
  Click on a date to see trip details
  </p>

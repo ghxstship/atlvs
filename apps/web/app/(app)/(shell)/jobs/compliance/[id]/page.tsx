@@ -80,7 +80,7 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested compliance record could not be found.</p>
             </div>
           )
@@ -99,13 +99,13 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'approved':
-        return <CheckCircle className="h-5 w-5 text-green-500" />;
+        return <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />;
       case 'rejected':
-        return <XCircle className="h-5 w-5 text-red-500" />;
+        return <XCircle className="h-icon-sm w-icon-sm text-red-500" />;
       case 'submitted':
-        return <Clock className="h-5 w-5 text-yellow-500" />;
+        return <Clock className="h-icon-sm w-icon-sm text-yellow-500" />;
       default:
-        return <AlertTriangle className="h-5 w-5 text-orange-500" />;
+        return <AlertTriangle className="h-icon-sm w-icon-sm text-orange-500" />;
     }
   };
 
@@ -129,19 +129,19 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Compliance Details */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <FileText className="h-icon-sm w-icon-sm" />
                 Compliance Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Status</span>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   {getStatusIcon((compliance as any).status)}
                   {getStatusBadge((compliance as any).status)}
                 </div>
@@ -166,18 +166,18 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
           {/* Associated Job */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Associated Job
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(compliance as any).job?.title || 'No associated job'}</p>
                 <p className="text-sm text-muted-foreground">
                   Project: {(compliance as any).job?.project?.name || 'No project'}
                 </p>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex items-center gap-xs mt-2">
                   <span className="text-sm">Job Status:</span>
                   {getStatusBadge((compliance as any).job?.status || 'unknown')}
                 </div>
@@ -191,7 +191,7 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
               <CardHeader>
                 <CardTitle>Submission Details</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Submitted</span>
                   <span className="text-sm text-muted-foreground">
@@ -235,7 +235,7 @@ export default async function ComplianceDetailPage({ params }: ComplianceDetailP
             <CardTitle>Compliance Documents</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Document management coming soon...
             </p>
           </CardContent>

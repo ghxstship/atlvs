@@ -13,7 +13,7 @@ export interface AuthLayoutProps {
 
 export const AuthLayout: React.FC<AuthLayoutProps> = ({ children, className }) => {
   return (
-    <div className={cn('flex min-h-screen items-center justify-center bg-background p-4', className)}>
+    <div className={cn('flex min-h-screen items-center justify-center bg-background p-md', className)}>
       <div className="w-full max-w-md">
         {children}
       </div>

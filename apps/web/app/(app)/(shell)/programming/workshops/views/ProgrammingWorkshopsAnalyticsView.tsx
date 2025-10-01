@@ -205,27 +205,27 @@ export default function ProgrammingWorkshopsAnalyticsView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  </CardHeader>
  <CardContent>
- <div className="h-8 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-lg bg-muted rounded w-1/2"></div>
  </CardContent>
  </Card>
  ))}
  </div>
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {Array.from({ length: 3 }).map((_, itemIndex) => (
  <div key={itemIndex} className="h-3 bg-muted rounded"></div>
  ))}
@@ -240,9 +240,9 @@ export default function ProgrammingWorkshopsAnalyticsView({
 
  if (workshops.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <BarChart3 className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No data to analyze</h3>
  <p className="text-muted-foreground">
  Create some workshops to see analytics and insights.
@@ -253,13 +253,13 @@ export default function ProgrammingWorkshopsAnalyticsView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Workshops</CardTitle>
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.totalWorkshops}</div>
@@ -272,7 +272,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Participants</CardTitle>
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.totalParticipants}</div>
@@ -285,7 +285,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">${analytics.totalRevenue.toLocaleString()}</div>
@@ -298,7 +298,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Average Rating</CardTitle>
- <Award className="h-4 w-4 text-muted-foreground" />
+ <Award className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.averageRating.toFixed(1)}</div>
@@ -317,22 +317,22 @@ export default function ProgrammingWorkshopsAnalyticsView({
  </div>
 
  {/* Charts and Breakdowns */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Status Breakdown */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <TrendingUp className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  Status Breakdown
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.workshopsByStatus.map((item) => {
  const percentage = (item.count / analytics.totalWorkshops) * 100;
  return (
  <div key={item.status} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: STATUS_COLORS[item.status] }}
@@ -341,7 +341,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {item.status.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -357,18 +357,18 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {/* Category Distribution */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Target className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Target className="h-icon-sm w-icon-sm" />
  Categories
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.workshopsByCategory.map((item) => {
  const percentage = (item.count / analytics.totalWorkshops) * 100;
  return (
  <div key={item.category} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: CATEGORY_COLORS[item.category] }}
@@ -377,7 +377,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {item.category}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -393,18 +393,18 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {/* Skill Level Distribution */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Award className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Award className="h-icon-sm w-icon-sm" />
  Skill Levels
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.workshopsBySkillLevel.map((item) => {
  const percentage = (item.count / analytics.totalWorkshops) * 100;
  return (
  <div key={item.skill_level} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: SKILL_LEVEL_COLORS[item.skill_level] }}
@@ -413,7 +413,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {item.skill_level.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -429,18 +429,18 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {/* Format Distribution */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Clock className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Clock className="h-icon-sm w-icon-sm" />
  Formats
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.workshopsByFormat.map((item) => {
  const percentage = (item.count / analytics.totalWorkshops) * 100;
  return (
  <div key={item.format} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: FORMAT_COLORS[item.format] }}
@@ -449,7 +449,7 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {item.format.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -466,18 +466,18 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {/* Monthly Trends */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Monthly Trends
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {analytics.monthlyTrends.map((item) => (
- <div key={item.month} className="space-y-2">
+ <div key={item.month} className="space-y-xs">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">{item.month}</span>
- <div className="flex items-center gap-4 text-sm">
+ <div className="flex items-center gap-md text-sm">
  <span>{item.workshops} workshops</span>
  <span>{item.participants} participants</span>
  <span className="text-muted-foreground">
@@ -493,27 +493,27 @@ export default function ProgrammingWorkshopsAnalyticsView({
  </Card>
 
  {/* Top Performers */}
- <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
  {/* Top Instructors */}
  {analytics.topInstructors.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Users className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Users className="h-icon-sm w-icon-sm" />
  Top Instructors
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.topInstructors.map((item, index) => (
  <div key={item.instructor} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
  <span className="text-sm truncate">{item.instructor}</span>
  </div>
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span>{item.workshops} workshops</span>
  <span className="text-muted-foreground">
  ({item.rating.toFixed(1)}★)
@@ -529,22 +529,22 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {/* Popular Categories */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <TrendingUp className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  Popular Categories
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.popularCategories.map((item, index) => (
  <div key={item.category} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
  <span className="text-sm capitalize">{item.category}</span>
  </div>
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span>{item.participants} participants</span>
  <span className="text-muted-foreground">
  ({item.rating.toFixed(1)}★)
@@ -560,22 +560,22 @@ export default function ProgrammingWorkshopsAnalyticsView({
  {analytics.revenueByWorkshop.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <DollarSign className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <DollarSign className="h-icon-sm w-icon-sm" />
  Top Revenue
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.revenueByWorkshop.map((item, index) => (
  <div key={item.workshop} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
  <span className="text-sm truncate">{item.workshop}</span>
  </div>
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span>${item.revenue.toLocaleString()}</span>
  <span className="text-muted-foreground">
  ({item.participants}p)

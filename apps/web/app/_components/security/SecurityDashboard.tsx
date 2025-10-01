@@ -88,23 +88,23 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <Shield className="h-8 w-8 text-primary" />
+        <div className="flex items-center gap-sm">
+          <Shield className="h-icon-lg w-icon-lg text-primary" />
           <div>
             <h1 className="text-2xl font-bold">Security Dashboard</h1>
             <p className="text-muted-foreground">Monitor security events and audit logs</p>
           </div>
         </div>
-        <Button onClick={exportData} variant="outline" className="gap-2">
-          <Download className="h-4 w-4" />
+        <Button onClick={exportData} variant="outline" className="gap-xs">
+          <Download className="h-icon-xs w-icon-xs" />
           Export
         </Button>
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 p-1 bg-muted rounded-lg">
+      <div className="flex gap-xs p-xs bg-muted rounded-lg">
         {[
           { id: 'events', label: 'Security Events', icon: AlertTriangle },
           { id: 'audit', label: 'Audit Logs', icon: Eye },
@@ -112,22 +112,22 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id as any)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+            className={`flex items-center gap-xs px-md py-xs rounded-md text-sm font-medium transition-colors ${
               activeTab === tab.id
                 ? 'bg-background text-foreground shadow-sm'
                 : 'text-muted-foreground hover:text-foreground'
             }`}
           >
-            <tab.icon className="h-4 w-4" />
+            <tab.icon className="h-icon-xs w-icon-xs" />
             {tab.label}
           </button>
         ))}
       </div>
 
       {/* Filters */}
-      <div className="flex gap-4 items-center">
-        <div className="flex items-center gap-2">
-          <Filter className="h-4 w-4 text-muted-foreground" />
+      <div className="flex gap-md items-center">
+        <div className="flex items-center gap-xs">
+          <Filter className="h-icon-xs w-icon-xs text-muted-foreground" />
           <span className="text-sm font-medium">Filters:</span>
         </div>
 
@@ -135,7 +135,7 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
           <select
             value={filters.severity}
             onChange={(e) => setFilters(prev => ({ ...prev, severity: e.target.value }))}
-            className="px-3 py-1 border rounded-md text-sm"
+            className="px-sm py-xs border rounded-md text-sm"
           >
             <option value="">All Severities</option>
             <option value="critical">Critical</option>
@@ -149,7 +149,7 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
           <select
             value={filters.eventType}
             onChange={(e) => setFilters(prev => ({ ...prev, eventType: e.target.value }))}
-            className="px-3 py-1 border rounded-md text-sm"
+            className="px-sm py-xs border rounded-md text-sm"
           >
             <option value="">All Actions</option>
             <option value="INSERT">Insert</option>
@@ -162,7 +162,7 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
         <select
           value={filters.dateRange}
           onChange={(e) => setFilters(prev => ({ ...prev, dateRange: e.target.value }))}
-          className="px-3 py-1 border rounded-md text-sm"
+          className="px-sm py-xs border rounded-md text-sm"
         >
           <option value="1d">Last 24 hours</option>
           <option value="7d">Last 7 days</option>
@@ -174,8 +174,8 @@ export function SecurityDashboard({ organizationId }: SecurityDashboardProps) {
       {/* Content */}
       <div className="bg-card border rounded-lg">
         {loading ? (
-          <div className="flex items-center justify-center p-8">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <div className="flex items-center justify-center p-xl">
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         ) : activeTab === 'events' ? (
           <SecurityEventsTable events={securityEvents} getSeverityColor={getSeverityColor} />
@@ -193,29 +193,29 @@ function SecurityEventsTable({ events, getSeverityColor }: { events: any[], getS
       <table className="w-full">
         <thead className="border-b">
           <tr className="text-left">
-            <th className="px-4 py-3 font-medium">Time</th>
-            <th className="px-4 py-3 font-medium">Event</th>
-            <th className="px-4 py-3 font-medium">Severity</th>
-            <th className="px-4 py-3 font-medium">User</th>
-            <th className="px-4 py-3 font-medium">IP Address</th>
-            <th className="px-4 py-3 font-medium">Details</th>
+            <th className="px-md py-sm font-medium">Time</th>
+            <th className="px-md py-sm font-medium">Event</th>
+            <th className="px-md py-sm font-medium">Severity</th>
+            <th className="px-md py-sm font-medium">User</th>
+            <th className="px-md py-sm font-medium">IP Address</th>
+            <th className="px-md py-sm font-medium">Details</th>
           </tr>
         </thead>
         <tbody>
           {events.map((event) => (
             <tr key={event.id} className="border-b hover:bg-muted/50">
-              <td className="px-4 py-3 text-sm">
+              <td className="px-md py-sm text-sm">
                 {new Date(event.created_at).toLocaleString()}
               </td>
-              <td className="px-4 py-3 font-medium">{event.event_type}</td>
-              <td className="px-4 py-3">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${getSeverityColor(event.severity)}`}>
+              <td className="px-md py-sm font-medium">{event.event_type}</td>
+              <td className="px-md py-sm">
+                <span className={`px-xs py-xs rounded-full text-xs font-medium ${getSeverityColor(event.severity)}`}>
                   {event.severity}
                 </span>
               </td>
-              <td className="px-4 py-3 text-sm">{event.user_id || 'System'}</td>
-              <td className="px-4 py-3 text-sm font-mono">{event.ip_address}</td>
-              <td className="px-4 py-3 text-sm max-w-xs truncate">
+              <td className="px-md py-sm text-sm">{event.user_id || 'System'}</td>
+              <td className="px-md py-sm text-sm font-mono">{event.ip_address}</td>
+              <td className="px-md py-sm text-sm max-w-xs truncate">
                 {event.details ? JSON.stringify(event.details) : '-'}
               </td>
             </tr>
@@ -223,7 +223,7 @@ function SecurityEventsTable({ events, getSeverityColor }: { events: any[], getS
         </tbody>
       </table>
       {events.length === 0 && (
-        <div className="text-center py-8 text-muted-foreground">
+        <div className="text-center py-xl text-muted-foreground">
           No security events found
         </div>
       )}
@@ -237,22 +237,22 @@ function AuditLogsTable({ logs }: { logs: any[] }) {
       <table className="w-full">
         <thead className="border-b">
           <tr className="text-left">
-            <th className="px-4 py-3 font-medium">Time</th>
-            <th className="px-4 py-3 font-medium">Action</th>
-            <th className="px-4 py-3 font-medium">Table</th>
-            <th className="px-4 py-3 font-medium">User</th>
-            <th className="px-4 py-3 font-medium">Record ID</th>
-            <th className="px-4 py-3 font-medium">Changes</th>
+            <th className="px-md py-sm font-medium">Time</th>
+            <th className="px-md py-sm font-medium">Action</th>
+            <th className="px-md py-sm font-medium">Table</th>
+            <th className="px-md py-sm font-medium">User</th>
+            <th className="px-md py-sm font-medium">Record ID</th>
+            <th className="px-md py-sm font-medium">Changes</th>
           </tr>
         </thead>
         <tbody>
           {logs.map((log) => (
             <tr key={log.id} className="border-b hover:bg-muted/50">
-              <td className="px-4 py-3 text-sm">
+              <td className="px-md py-sm text-sm">
                 {new Date(log.created_at).toLocaleString()}
               </td>
-              <td className="px-4 py-3">
-                <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+              <td className="px-md py-sm">
+                <span className={`px-xs py-xs rounded-full text-xs font-medium ${
                   log.action === 'DELETE' ? 'bg-red-100 text-red-700' :
                   log.action === 'INSERT' ? 'bg-green-100 text-green-700' :
                   log.action === 'UPDATE' ? 'bg-blue-100 text-blue-700' :
@@ -261,10 +261,10 @@ function AuditLogsTable({ logs }: { logs: any[] }) {
                   {log.action}
                 </span>
               </td>
-              <td className="px-4 py-3 font-medium">{log.table_name}</td>
-              <td className="px-4 py-3 text-sm">{log.user_id || 'System'}</td>
-              <td className="px-4 py-3 text-sm font-mono">{log.record_id}</td>
-              <td className="px-4 py-3 text-sm max-w-xs truncate">
+              <td className="px-md py-sm font-medium">{log.table_name}</td>
+              <td className="px-md py-sm text-sm">{log.user_id || 'System'}</td>
+              <td className="px-md py-sm text-sm font-mono">{log.record_id}</td>
+              <td className="px-md py-sm text-sm max-w-xs truncate">
                 {log.changed_fields ? log.changed_fields.join(', ') : '-'}
               </td>
             </tr>
@@ -272,7 +272,7 @@ function AuditLogsTable({ logs }: { logs: any[] }) {
         </tbody>
       </table>
       {logs.length === 0 && (
-        <div className="text-center py-8 text-muted-foreground">
+        <div className="text-center py-xl text-muted-foreground">
           No audit logs found
         </div>
       )}

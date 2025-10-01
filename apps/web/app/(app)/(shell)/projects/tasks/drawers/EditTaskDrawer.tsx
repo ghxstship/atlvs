@@ -231,10 +231,10 @@ export default function EditTaskDrawer({
  onClose={() => onOpenChange(false)}
  title="Edit Task"
  description="Update task details and progress"
- icon={<ListTodo className="h-5 w-5" />}
+ icon={<ListTodo className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Project Selection */}
  <div>
  <label className="block text-sm font-medium mb-2">
@@ -252,7 +252,7 @@ export default function EditTaskDrawer({
  ))}
  </Select>
  {errors.project_id && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.project_id}
  </p>
@@ -271,7 +271,7 @@ export default function EditTaskDrawer({
  maxLength={255}
  />
  {errors.title && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.title}
  </p>
@@ -292,7 +292,7 @@ export default function EditTaskDrawer({
  </div>
 
  {/* Status and Priority */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Status
@@ -344,7 +344,7 @@ export default function EditTaskDrawer({
  </div>
 
  {/* Dates */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Start Date
@@ -355,7 +355,7 @@ export default function EditTaskDrawer({
  value={formData.start_date}
  onChange={(e) => setFormData({ ...formData, start_date: e.target.value })}
  />
- <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Calendar className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  </div>
 
@@ -370,10 +370,10 @@ export default function EditTaskDrawer({
  onChange={(e) => setFormData({ ...formData, due_date: e.target.value })}
  min={formData.start_date}
  />
- <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Calendar className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.due_date && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.due_date}
  </p>
@@ -382,7 +382,7 @@ export default function EditTaskDrawer({
  </div>
 
  {/* Hours */}
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="block text-sm font-medium mb-2">
  Estimated Hours
@@ -396,10 +396,10 @@ export default function EditTaskDrawer({
  onChange={(e) => setFormData({ ...formData, estimated_hours: e.target.value })}
  placeholder="e.g., 8"
  />
- <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Clock className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.estimated_hours && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.estimated_hours}
  </p>
@@ -419,10 +419,10 @@ export default function EditTaskDrawer({
  onChange={(e) => setFormData({ ...formData, actual_hours: e.target.value })}
  placeholder="e.g., 10"
  />
- <Clock className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Clock className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.actual_hours && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.actual_hours}
  </p>
@@ -435,7 +435,7 @@ export default function EditTaskDrawer({
  <label className="block text-sm font-medium mb-2">
  Tags
  </label>
- <div className="flex gap-2 mb-2">
+ <div className="flex gap-xs mb-2">
  <div className="relative flex-1">
  <Input
  value={tagInput}
@@ -448,22 +448,22 @@ export default function EditTaskDrawer({
  }
  }}
  />
- <Tag className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Tag className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  <Button
  type="button"
  variant="outline"
  onClick={handleAddTag}
  >
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {formData.tags.length > 0 && (
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {formData.tags.map((tag) => (
  <span
  key={tag}
- className="inline-flex items-center gap-1 px-2 py-1 bg-muted rounded-md text-sm"
+ className="inline-flex items-center gap-xs px-xs py-xs bg-muted rounded-md text-sm"
  >
  {tag}
  <button
@@ -480,7 +480,7 @@ export default function EditTaskDrawer({
  </div>
 
  {/* Metadata */}
- <div className="text-sm text-muted-foreground space-y-1">
+ <div className="text-sm text-muted-foreground space-y-xs">
  <p>Created: {format(parseISO(task.created_at), "MMM d, yyyy 'at' h:mm a")}</p>
  <p>Updated: {format(parseISO(task.updated_at), "MMM d, yyyy 'at' h:mm a")}</p>
  </div>
@@ -492,10 +492,10 @@ export default function EditTaskDrawer({
  onClick={handleDelete}
  disabled={loading}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  Delete
  </Button>
- <div className="flex gap-3">
+ <div className="flex gap-sm">
  <Button
  variant="outline"
  onClick={handleCancel}

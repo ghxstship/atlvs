@@ -177,7 +177,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
+        className={`h-icon-xs w-icon-xs ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
       />
     ));
   };
@@ -187,7 +187,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -203,7 +203,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
           <p className="color-muted">{t('subtitle')}</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)} className="flex items-center cluster-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           <span>{t('giveEndorsement')}</span>
         </Button>
       </div>
@@ -216,7 +216,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalEndorsements')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalEndorsements}</p>
             </div>
-            <ThumbsUp className="h-8 w-8 color-accent" />
+            <ThumbsUp className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -229,7 +229,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                 <div className="flex">{renderStars(Math.round(stats.averageRating))}</div>
               </div>
             </div>
-            <Star className="h-8 w-8 color-warning" />
+            <Star className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
 
@@ -240,7 +240,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.recentEndorsements}</p>
               <p className="text-body-sm color-muted">{t('last30Days')}</p>
             </div>
-            <Calendar className="h-8 w-8 color-success" />
+            <Calendar className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -250,7 +250,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
               <p className="text-body-sm form-label color-muted">{t('topSkills')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.topSkills.length}</p>
             </div>
-            <MessageSquare className="h-8 w-8 color-secondary" />
+            <MessageSquare className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
       </div>
@@ -261,7 +261,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
                 <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -306,7 +306,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                 {Array.from({ length: 5 }, (_, i) => (
                   <Star
                     key={i}
-                    className={`h-6 w-6 cursor-pointer ${
+                    className={`h-icon-md w-icon-md cursor-pointer ${
                       i < newEndorsement.rating ? 'color-warning fill-current' : 'color-muted'
                     }`}
                     onClick={() => setNewEndorsement(prev => ({ ...prev, rating: i + 1 }))}
@@ -346,7 +346,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
             <div className="p-md">
               <div className="flex items-start justify-between mb-sm">
                 <div className="flex items-center cluster-sm">
-                  <User className="h-8 w-8 color-muted" />
+                  <User className="h-icon-lg w-icon-lg color-muted" />
                   <div>
                     <div className="form-label color-foreground">
                       {endorsement.endorsed_person?.first_name} {endorsement.endorsed_person?.last_name}
@@ -387,7 +387,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
                   </span>
                 </div>
                 <div className="flex items-center cluster-xs">
-                  <Calendar className="h-4 w-4" />
+                  <Calendar className="h-icon-xs w-icon-xs" />
                   <span>{new Date(endorsement.created_at).toLocaleDateString()}</span>
                 </div>
               </div>
@@ -399,7 +399,7 @@ export default function EndorsementsClient({ orgId }: EndorsementsClientProps) {
       {filteredEndorsements.length === 0 && (
         <Card>
           <div className="text-center py-xl">
-            <Star className="h-12 w-12 text-muted mx-auto mb-md" />
+            <Star className="h-icon-2xl w-icon-2xl text-muted mx-auto mb-md" />
             <p className="color-muted">{t('noEndorsements')}</p>
             <p className="text-body-sm color-muted mt-sm">{t('startEndorsing')}</p>
           </div>

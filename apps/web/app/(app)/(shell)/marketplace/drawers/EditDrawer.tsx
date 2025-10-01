@@ -93,8 +93,8 @@ export default function EditDrawer({
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center gap-2">
-            <Edit className="h-5 w-5" />
+          <DrawerTitle className="flex items-center gap-xs">
+            <Edit className="h-icon-sm w-icon-sm" />
             Edit Listing
           </DrawerTitle>
           <DrawerDescription>
@@ -102,18 +102,18 @@ export default function EditDrawer({
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto p-lg">
+          <div className="space-y-lg">
             {/* Error Display */}
             {error && (
-              <div className="flex items-center gap-3 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-                <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0" />
+              <div className="flex items-center gap-sm p-md bg-destructive/10 border border-destructive/20 rounded-lg">
+                <AlertCircle className="h-icon-sm w-icon-sm text-destructive flex-shrink-0" />
                 <p className="text-sm text-destructive">{error}</p>
               </div>
             )}
 
             {/* Basic Information */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Basic Information</h3>
 
               <div>
@@ -137,7 +137,7 @@ export default function EditDrawer({
                 />
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="type">Type *</Label>
                   <Select
@@ -190,10 +190,10 @@ export default function EditDrawer({
             <Separator />
 
             {/* Pricing */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Pricing</h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="amount">Amount</Label>
                   <Input
@@ -225,7 +225,7 @@ export default function EditDrawer({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-xs">
                 <input
                   type="checkbox"
                   id="negotiable"
@@ -250,10 +250,10 @@ export default function EditDrawer({
             <Separator />
 
             {/* Location */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Location</h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="city">City</Label>
                   <Input
@@ -275,7 +275,7 @@ export default function EditDrawer({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-xs">
                 <input
                   type="checkbox"
                   id="remote"
@@ -290,10 +290,10 @@ export default function EditDrawer({
             <Separator />
 
             {/* Availability */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Availability</h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="startDate">Start Date</Label>
                   <Input
@@ -315,7 +315,7 @@ export default function EditDrawer({
                 </div>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center space-x-xs">
                 <input
                   type="checkbox"
                   id="flexible"
@@ -330,7 +330,7 @@ export default function EditDrawer({
             <Separator />
 
             {/* Requirements & Tags */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Additional Information</h3>
 
               <div>
@@ -362,10 +362,10 @@ export default function EditDrawer({
             <Separator />
 
             {/* Settings */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Settings</h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="status">Status</Label>
                   <Select
@@ -383,7 +383,7 @@ export default function EditDrawer({
                   </Select>
                 </div>
 
-                <div className="flex items-center space-x-2 pt-8">
+                <div className="flex items-center space-x-xs pt-8">
                   <input
                     type="checkbox"
                     id="featured"
@@ -399,10 +399,10 @@ export default function EditDrawer({
             <Separator />
 
             {/* Contact Information */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Contact Information</h3>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-md">
                 <div>
                   <Label htmlFor="contactEmail">Email</Label>
                   <Input
@@ -446,14 +446,14 @@ export default function EditDrawer({
         </div>
 
         {/* Footer Actions */}
-        <div className="border-t p-6">
-          <div className="flex gap-3">
+        <div className="border-t p-lg">
+          <div className="flex gap-sm">
             <Button
               onClick={handleSave}
               disabled={isSaving}
               className="flex-1"
             >
-              <Save className="h-4 w-4 mr-2" />
+              <Save className="h-icon-xs w-icon-xs mr-2" />
               {isSaving ? 'Saving...' : 'Save Changes'}
             </Button>
             <Button
@@ -461,7 +461,7 @@ export default function EditDrawer({
               onClick={handleCancel}
               disabled={isSaving}
             >
-              <X className="h-4 w-4 mr-2" />
+              <X className="h-icon-xs w-icon-xs mr-2" />
               Cancel
             </Button>
           </div>

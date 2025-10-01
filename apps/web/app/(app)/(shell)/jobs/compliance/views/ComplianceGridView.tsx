@@ -45,15 +45,15 @@ export default function ComplianceGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'approved':
- return <CheckCircle className="h-4 w-4" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs" />;
  case 'submitted':
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  case 'pending':
- return <AlertTriangle className="h-4 w-4" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs" />;
  case 'rejected':
- return <XCircle className="h-4 w-4" />;
+ return <XCircle className="h-icon-xs w-icon-xs" />;
  default:
- return <Shield className="h-4 w-4" />;
+ return <Shield className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -105,8 +105,8 @@ export default function ComplianceGridView({
  sortable: true,
  render: (value: string, record: JobCompliance) => (
  <div className="flex items-center gap-sm">
- <div className="h-8 w-8 bg-accent/10 rounded-md flex items-center justify-center">
- <Shield className="h-4 w-4 color-accent" />
+ <div className="h-icon-lg w-icon-lg bg-accent/10 rounded-md flex items-center justify-center">
+ <Shield className="h-icon-xs w-icon-xs color-accent" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">
@@ -287,7 +287,7 @@ export default function ComplianceGridView({
  emptyState={{
  title: 'No Compliance Items Found',
  description: 'No compliance items match your current filters.',
- icon: <Shield className="h-12 w-12 color-muted" />
+ icon: <Shield className="h-icon-2xl w-icon-2xl color-muted" />
  }}
  />
  );

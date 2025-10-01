@@ -149,10 +149,10 @@ export default function CreateMilestoneDrawer({
  onClose={() => onOpenChange(false)}
  title="Create Milestone"
  description="Add a new milestone to track project progress"
- icon={<Target className="h-5 w-5" />}
+ icon={<Target className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Project Selection */}
  <div>
  <label className="block text-sm font-medium mb-2">
@@ -171,7 +171,7 @@ export default function CreateMilestoneDrawer({
  ))}
  </Select>
  {errors.project_id && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.project_id}
  </p>
@@ -190,7 +190,7 @@ export default function CreateMilestoneDrawer({
  maxLength={255}
  />
  {errors.title && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.title}
  </p>
@@ -222,10 +222,10 @@ export default function CreateMilestoneDrawer({
  onChange={(e) => setFormData({ ...formData, due_date: e.target.value })}
  min={format(new Date(), "yyyy-MM-dd")}
  />
- <Calendar className="absolute right-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
+ <Calendar className="absolute right-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground pointer-events-none" />
  </div>
  {errors.due_date && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.due_date}
  </p>
@@ -237,7 +237,7 @@ export default function CreateMilestoneDrawer({
  <label className="block text-sm font-medium mb-2">
  Initial Progress (%)
  </label>
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <Input
  type="range"
  min="0"
@@ -246,7 +246,7 @@ export default function CreateMilestoneDrawer({
  onChange={(e) => setFormData({ ...formData, progress: parseInt(e.target.value) })}
  className="flex-1"
  />
- <div className="w-16">
+ <div className="w-component-md">
  <Input
  type="number"
  min="0"
@@ -260,7 +260,7 @@ export default function CreateMilestoneDrawer({
  </div>
  </div>
  {errors.progress && (
- <p className="text-sm text-destructive mt-1 flex items-center gap-1">
+ <p className="text-sm text-destructive mt-1 flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {errors.progress}
  </p>
@@ -268,7 +268,7 @@ export default function CreateMilestoneDrawer({
  </div>
 
  {/* Actions */}
- <div className="flex justify-end gap-3 pt-6 border-t">
+ <div className="flex justify-end gap-sm pt-6 border-t">
  <Button
  variant="outline"
  onClick={handleCancel}

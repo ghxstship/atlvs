@@ -76,11 +76,11 @@ export default function VendorDashboardView({
  <Card key={index} className="p-md">
  <div className="animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="h-4 bg-muted rounded w-20"></div>
- <div className="h-8 w-8 bg-muted rounded"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
  </div>
- <div className="h-8 bg-muted rounded w-16 mb-xs"></div>
- <div className="h-3 bg-muted rounded w-24"></div>
+ <div className="h-icon-lg bg-muted rounded w-component-md mb-xs"></div>
+ <div className="h-3 bg-muted rounded w-component-lg"></div>
  </div>
  </Card>
  ))}
@@ -90,14 +90,14 @@ export default function VendorDashboardView({
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-md">
  <Card className="p-md">
  <div className="animate-pulse">
- <div className="h-6 bg-muted rounded w-32 mb-md"></div>
- <div className="h-48 bg-muted rounded"></div>
+ <div className="h-icon-md bg-muted rounded w-component-xl mb-md"></div>
+ <div className="h-container-xs bg-muted rounded"></div>
  </div>
  </Card>
  <Card className="p-md">
  <div className="animate-pulse">
- <div className="h-6 bg-muted rounded w-32 mb-md"></div>
- <div className="h-48 bg-muted rounded"></div>
+ <div className="h-icon-md bg-muted rounded w-component-xl mb-md"></div>
+ <div className="h-container-xs bg-muted rounded"></div>
  </div>
  </Card>
  </div>
@@ -145,7 +145,7 @@ export default function VendorDashboardView({
  </p>
  </div>
  <div className="p-sm bg-primary/10 rounded-lg">
- <Building className="h-6 w-6 text-primary" />
+ <Building className="h-icon-md w-icon-md text-primary" />
  </div>
  </div>
  </Card>
@@ -162,7 +162,7 @@ export default function VendorDashboardView({
  </p>
  </div>
  <div className="p-sm bg-warning/10 rounded-lg">
- <Star className="h-6 w-6 text-warning" />
+ <Star className="h-icon-md w-icon-md text-warning" />
  </div>
  </div>
  </Card>
@@ -179,7 +179,7 @@ export default function VendorDashboardView({
  </p>
  </div>
  <div className="p-sm bg-success/10 rounded-lg">
- <DollarSign className="h-6 w-6 text-success" />
+ <DollarSign className="h-icon-md w-icon-md text-success" />
  </div>
  </div>
  </Card>
@@ -194,7 +194,7 @@ export default function VendorDashboardView({
  </p>
  </div>
  <div className="p-sm bg-info/10 rounded-lg">
- <Calendar className="h-6 w-6 text-info" />
+ <Calendar className="h-icon-md w-icon-md text-info" />
  </div>
  </div>
  </Card>
@@ -204,7 +204,7 @@ export default function VendorDashboardView({
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-md">
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <Activity className="h-4 w-4" />
+ <Activity className="h-icon-xs w-icon-xs" />
  Status Breakdown
  </h3>
  <div className="space-y-sm">
@@ -261,7 +261,7 @@ export default function VendorDashboardView({
 
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <BarChart3 className="h-4 w-4" />
+ <BarChart3 className="h-icon-xs w-icon-xs" />
  Top Categories
  </h3>
  <div className="space-y-sm">
@@ -292,7 +292,7 @@ export default function VendorDashboardView({
 
  <Card className="p-md">
  <h3 className="font-medium mb-md flex items-center gap-sm">
- <Award className="h-4 w-4" />
+ <Award className="h-icon-xs w-icon-xs" />
  Top Performers
  </h3>
  <div className="space-y-sm">
@@ -330,7 +330,7 @@ export default function VendorDashboardView({
  <Card className="p-md">
  <div className="flex items-center justify-between mb-md">
  <h3 className="font-medium flex items-center gap-sm">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  Recent Vendors
  </h3>
  <Button variant="outline" size="sm">
@@ -350,7 +350,7 @@ export default function VendorDashboardView({
  className="flex items-center gap-md p-sm rounded-lg hover:bg-muted/30 cursor-pointer transition-colors"
  onClick={() => onVendorClick?.(vendor)}
  >
- <Building className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <div className="flex-1 min-w-0">
  <div className="flex items-center gap-sm">
  <span className="font-medium truncate">{vendor.display_name}</span>

@@ -176,21 +176,21 @@ export default function ProcurementOverviewClient() {
     if (value > 0) {
       return (
         <span className="flex items-center color-success text-body-sm">
-          <ArrowUpRight className="w-4 h-4" />
+          <ArrowUpRight className="w-icon-xs h-icon-xs" />
           {Math.abs(value)}%
         </span>
       );
     } else if (value < 0) {
       return (
         <span className="flex items-center color-destructive text-body-sm">
-          <ArrowDownRight className="w-4 h-4" />
+          <ArrowDownRight className="w-icon-xs h-icon-xs" />
           {Math.abs(value)}%
         </span>
       );
     }
     return (
       <span className="flex items-center color-muted text-body-sm">
-        <Minus className="w-4 h-4" />
+        <Minus className="w-icon-xs h-icon-xs" />
         0%
       </span>
     );
@@ -201,7 +201,7 @@ export default function ProcurementOverviewClient() {
       <div className="stack-md">
         {[1, 2, 3, 4].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -239,7 +239,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-heading-3">{stats.totalOrders}</p>
                 {getChangeIndicator(12)}
               </div>
-              <ShoppingCart className="w-8 h-8 color-accent" />
+              <ShoppingCart className="w-icon-lg h-icon-lg color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -252,7 +252,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-heading-3">{formatCurrency(stats.monthlySpend)}</p>
                 {getChangeIndicator(-8)}
               </div>
-              <DollarSign className="w-8 h-8 color-success" />
+              <DollarSign className="w-icon-lg h-icon-lg color-success" />
             </div>
           </CardContent>
         </Card>
@@ -267,7 +267,7 @@ export default function ProcurementOverviewClient() {
                   {stats.pendingApprovals} awaiting approval
                 </p>
               </div>
-              <Clock className="w-8 h-8 color-warning" />
+              <Clock className="w-icon-lg h-icon-lg color-warning" />
             </div>
           </CardContent>
         </Card>
@@ -280,7 +280,7 @@ export default function ProcurementOverviewClient() {
                 <p className="text-heading-3">{formatCurrency(stats.savingsThisMonth)}</p>
                 <p className="text-body-sm color-success">This month</p>
               </div>
-              <TrendingUp className="w-8 h-8 color-accent" />
+              <TrendingUp className="w-icon-lg h-icon-lg color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -291,7 +291,7 @@ export default function ProcurementOverviewClient() {
         <Card className="lg:col-span-2">
           <CardHeader>
             <h3 className="text-heading-4 flex items-center gap-sm">
-              <Activity className="w-5 h-5" />
+              <Activity className="w-icon-sm h-icon-sm" />
               Recent Orders
             </h3>
           </CardHeader>
@@ -329,7 +329,7 @@ export default function ProcurementOverviewClient() {
         <Card>
           <CardHeader>
             <h3 className="text-heading-4 flex items-center gap-sm">
-              <Package className="w-5 h-5" />
+              <Package className="w-icon-sm h-icon-sm" />
               Top Suppliers
             </h3>
           </CardHeader>
@@ -365,7 +365,7 @@ export default function ProcurementOverviewClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center gap-sm">
-            <PieChart className="w-5 h-5" />
+            <PieChart className="w-icon-sm h-icon-sm" />
             Spending by Category
           </h3>
         </CardHeader>
@@ -399,7 +399,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/orders" as="/procurement/orders/new">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Plus className="w-8 h-8 mx-auto mb-sm color-accent" />
+              <Plus className="w-icon-lg h-icon-lg mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Create Order</p>
               <p className="text-body-sm color-muted">Start a new purchase order</p>
             </CardContent>
@@ -409,7 +409,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/catalog">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Package className="w-8 h-8 mx-auto mb-sm color-accent" />
+              <Package className="w-icon-lg h-icon-lg mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Browse Catalog</p>
               <p className="text-body-sm color-muted">View products and services</p>
             </CardContent>
@@ -419,7 +419,7 @@ export default function ProcurementOverviewClient() {
         <Link href="/procurement/tracking">
           <Card className="hover:shadow-floating transition-shadow cursor-pointer">
             <CardContent className="p-lg text-center">
-              <Activity className="w-8 h-8 mx-auto mb-sm color-accent" />
+              <Activity className="w-icon-lg h-icon-lg mx-auto mb-sm color-accent" />
               <p className="text-body-sm">Track Orders</p>
               <p className="text-body-sm color-muted">Monitor order status</p>
             </CardContent>

@@ -181,12 +181,12 @@ const COLUMNS: ColumnConfig[] = [
     sortable: true,
     filterable: true,
     render: (value) => (
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-xs">
         {value?.avatar && (
           <img
             src={value.avatar}
             alt={value.name}
-            className="w-6 h-6 rounded-full"
+            className="w-icon-md h-icon-md rounded-full"
           />
         )}
         <span className="truncate text-sm">{value?.name || 'Unassigned'}</span>
@@ -232,31 +232,31 @@ const COLUMNS: ColumnConfig[] = [
     render: (value, asset) => (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-            <MoreHorizontal className="h-4 w-4" />
+          <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+            <MoreHorizontal className="h-icon-xs w-icon-xs" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuItem onClick={() => {}}>
-            <Eye className="mr-2 h-4 w-4" />
+            <Eye className="mr-2 h-icon-xs w-icon-xs" />
             View Details
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => {}}>
-            <Edit className="mr-2 h-4 w-4" />
+            <Edit className="mr-2 h-icon-xs w-icon-xs" />
             Edit Asset
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => {}}>
-            <Copy className="mr-2 h-4 w-4" />
+            <Copy className="mr-2 h-icon-xs w-icon-xs" />
             Duplicate
           </DropdownMenuItem>
           <DropdownMenuItem onClick={() => {}}>
-            <Download className="mr-2 h-4 w-4" />
+            <Download className="mr-2 h-icon-xs w-icon-xs" />
             Export
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem onClick={() => {}} className="text-red-600">
-            <Trash2 className="mr-2 h-4 w-4" />
+            <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
             Delete
           </DropdownMenuItem>
         </DropdownMenuContent>
@@ -372,23 +372,23 @@ export default function TableView({
   // Render sort icon
   const renderSortIcon = (columnKey: string) => {
     if (viewState.sort.field !== columnKey) {
-      return <ArrowUpDown className="ml-2 h-4 w-4" />;
+      return <ArrowUpDown className="ml-2 h-icon-xs w-icon-xs" />;
     }
     return viewState.sort.direction === 'asc'
-      ? <ArrowUp className="ml-2 h-4 w-4" />
-      : <ArrowDown className="ml-2 h-4 w-4" />;
+      ? <ArrowUp className="ml-2 h-icon-xs w-icon-xs" />
+      : <ArrowDown className="ml-2 h-icon-xs w-icon-xs" />;
   };
 
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Table Controls */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-xs">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-gray-400" />
             <Input
               placeholder="Search assets..."
-              className="pl-9 w-64"
+              className="pl-9 w-container-sm"
               value={viewState.filters.search || ''}
               onChange={(e) => onViewStateChange({
                 filters: { ...viewState.filters, search: e.target.value }
@@ -396,17 +396,17 @@ export default function TableView({
             />
           </div>
           <Button variant="outline" size="sm">
-            <Filter className="mr-2 h-4 w-4" />
+            <Filter className="mr-2 h-icon-xs w-icon-xs" />
             Filters
           </Button>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button variant="outline" size="sm">
-            <Settings className="mr-2 h-4 w-4" />
+            <Settings className="mr-2 h-icon-xs w-icon-xs" />
             Columns
           </Button>
           {selectedRows.size > 0 && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <span className="text-sm text-gray-600">
                 {selectedRows.size} selected
               </span>
@@ -453,16 +453,16 @@ export default function TableView({
           <TableBody>
             {loading ? (
               <TableRow>
-                <TableCell colSpan={visibleColumns.length} className="text-center py-8">
+                <TableCell colSpan={visibleColumns.length} className="text-center py-xl">
                   <div className="flex items-center justify-center">
-                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900"></div>
+                    <div className="animate-spin rounded-full h-icon-md w-icon-md border-b-2 border-gray-900"></div>
                     <span className="ml-2">Loading assets...</span>
                   </div>
                 </TableCell>
               </TableRow>
             ) : assets.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={visibleColumns.length} className="text-center py-8">
+                <TableCell colSpan={visibleColumns.length} className="text-center py-xl">
                   <div className="text-gray-500">No assets found</div>
                 </TableCell>
               </TableRow>
@@ -500,13 +500,13 @@ export default function TableView({
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between p-4 border-t">
+      <div className="flex items-center justify-between p-md border-t">
         <div className="text-sm text-gray-600">
           Showing {((viewState.pagination.page - 1) * viewState.pagination.pageSize) + 1} to{' '}
           {Math.min(viewState.pagination.page * viewState.pagination.pageSize, viewState.pagination.total || 0)} of{' '}
           {viewState.pagination.total || 0} assets
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button
             variant="outline"
             size="sm"

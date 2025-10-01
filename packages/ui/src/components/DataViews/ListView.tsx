@@ -215,14 +215,14 @@ export function ListView({
           </span>
 
           <Button variant="ghost" >
-            <Filter className="h-4 w-4" />
+            <Filter className="h-icon-xs w-icon-xs" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
           <Button variant="ghost" >
-            <Settings className="h-4 w-4" />
+            <Settings className="h-icon-xs w-icon-xs" />
             View Options
           </Button>
           
@@ -231,7 +231,7 @@ export function ListView({
             
             onClick={() => config.onCreate?.()}
           >
-            <Plus className="h-4 w-4 mr-xs" />
+            <Plus className="h-icon-xs w-icon-xs mr-xs" />
             Add Item
           </Button>
         </div>
@@ -256,9 +256,9 @@ export function ListView({
                           className="p-xs hover:bg-muted/50 rounded"
                         >
                           {isCollapsed ? (
-                            <ChevronRight className="h-4 w-4" />
+                            <ChevronRight className="h-icon-xs w-icon-xs" />
                           ) : (
-                            <ChevronDown className="h-4 w-4" />
+                            <ChevronDown className="h-icon-xs w-icon-xs" />
                           )}
                         </button>
                       )}
@@ -327,10 +327,10 @@ export function ListView({
                                 <img
                                   src={avatar}
                                   alt=""
-                                  className="w-10 h-10 rounded-full object-cover"
+                                  className="w-icon-xl h-icon-xl rounded-full object-cover"
                                 />
                               ) : (
-                                <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-sm font-medium text-muted-foreground">
+                                <div className="w-icon-xl h-icon-xl rounded-full bg-muted flex items-center justify-center text-sm font-medium text-muted-foreground">
                                   {String(avatar).charAt(0).toUpperCase()}
                                 </div>
                               )}
@@ -392,7 +392,7 @@ export function ListView({
                                 // Show item actions menu
                               }}
                             >
-                              <MoreHorizontal className="h-4 w-4" />
+                              <MoreHorizontal className="h-icon-xs w-icon-xs" />
                             </Button>
                           </div>
                         </div>

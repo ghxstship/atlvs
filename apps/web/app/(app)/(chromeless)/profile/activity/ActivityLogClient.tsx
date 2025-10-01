@@ -18,13 +18,13 @@ interface ActivityLog {
 }
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  profile: <User className="w-4 h-4" />,
-  document: <FileText className="w-4 h-4" />,
-  settings: <Settings className="w-4 h-4" />,
-  achievement: <Award className="w-4 h-4" />,
-  schedule: <Calendar className="w-4 h-4" />,
-  performance: <TrendingUp className="w-4 h-4" />,
-  default: <Activity className="w-4 h-4" />,
+  profile: <User className="w-icon-xs h-icon-xs" />,
+  document: <FileText className="w-icon-xs h-icon-xs" />,
+  settings: <Settings className="w-icon-xs h-icon-xs" />,
+  achievement: <Award className="w-icon-xs h-icon-xs" />,
+  schedule: <Calendar className="w-icon-xs h-icon-xs" />,
+  performance: <TrendingUp className="w-icon-xs h-icon-xs" />,
+  default: <Activity className="w-icon-xs h-icon-xs" />,
 };
 
 const categoryColors: Record<string, string> = {
@@ -153,7 +153,7 @@ export default function ActivityLogClient() {
       <div className="stack-md">
         {[1, 2, 3, 4, 5].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-20" />
+            <CardContent className="h-component-lg" />
           </Card>
         ))}
       </div>
@@ -189,8 +189,8 @@ export default function ActivityLogClient() {
 
       {activities.length === 0 ? (
         <Card>
-          <CardContent className="text-center py-2xl">
-            <Activity className="w-12 h-12 mx-auto mb-md color-muted" />
+          <CardContent className="text-center py-xsxl">
+            <Activity className="w-icon-2xl h-icon-2xl mx-auto mb-md color-muted" />
             <p className="color-muted">No activity to display</p>
           </CardContent>
         </Card>

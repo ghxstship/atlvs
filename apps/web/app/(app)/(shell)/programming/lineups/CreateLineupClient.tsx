@@ -99,7 +99,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={handleOpen} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Performer
       </Button>
 
@@ -261,7 +261,7 @@ export default function CreateLineupClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <Users className="w-4 h-4" />
+              <Users className="w-icon-xs h-icon-xs" />
               {loading ? 'Adding...' : 'Add Performer'}
             </Button>
           </div>

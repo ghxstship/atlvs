@@ -62,15 +62,15 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
         <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
       </div>
 
-      <div className="flex-1 flex items-center justify-center p-4">
+      <div className="flex-1 flex items-center justify-center p-md">
         <div className="w-full max-w-screen-xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
           {/* Brand/Left Side */}
           <div className="hidden lg:flex flex-col justify-center space-y-8">
             <div className="space-y-6">
               {brand || (
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                    <div className="w-icon-xl h-icon-xl bg-primary rounded-lg flex items-center justify-center">
                       <span className="text-primary-foreground font-bold text-xl">G</span>
                     </div>
                     <span className="text-2xl font-bold text-foreground">GHXSTSHIP</span>
@@ -87,7 +87,7 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
               )}
 
               {/* Feature highlights */}
-              <div className="grid gap-4">
+              <div className="grid gap-md">
                 <div className="flex items-center space-x-3">
                   <div className="w-2 h-2 bg-primary rounded-full" />
                   <span className="text-foreground">Advanced project management</span>
@@ -120,10 +120,10 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
 
               <CardContent className="space-y-6">
                 {loading ? (
-                  <div className="space-y-4">
-                    <div className="h-10 bg-muted animate-pulse rounded" />
-                    <div className="h-10 bg-muted animate-pulse rounded" />
-                    <div className="h-10 bg-muted animate-pulse rounded" />
+                  <div className="space-y-md">
+                    <div className="h-icon-xl bg-muted animate-pulse rounded" />
+                    <div className="h-icon-xl bg-muted animate-pulse rounded" />
+                    <div className="h-icon-xl bg-muted animate-pulse rounded" />
                   </div>
                 ) : (
                   children
@@ -141,7 +141,7 @@ export const AuthTemplate: React.FC<AuthTemplateProps> = ({
             {/* Mobile brand */}
             <div className="lg:hidden mt-8 text-center">
               <div className="flex items-center justify-center space-x-3">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                <div className="w-icon-lg h-icon-lg bg-primary rounded-lg flex items-center justify-center">
                   <span className="text-primary-foreground font-bold text-sm">G</span>
                 </div>
                 <span className="text-lg font-bold text-foreground">GHXSTSHIP</span>

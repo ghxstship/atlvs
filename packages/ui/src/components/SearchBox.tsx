@@ -40,7 +40,7 @@ export const SearchBox = ({
     <div className={cn('relative', className)}>
       {showIcon && (
         <div className="absolute left-sm top-1/2 -translate-y-1/2 text-muted-foreground">
-          <Search className="h-4 w-4" />
+          <Search className="h-icon-xs w-icon-xs" />
         </div>
       )}
       <Input

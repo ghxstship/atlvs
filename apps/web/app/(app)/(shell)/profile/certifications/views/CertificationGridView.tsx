@@ -35,30 +35,30 @@ export default function CertificationGridView({
  const status = getCertificationStatus(certification);
  
  if (status.status === 'Expired') {
- return <AlertTriangle className="h-4 w-4 text-red-500" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-red-500" />;
  }
  
  if (status.isExpiring) {
- return <Clock className="h-4 w-4 text-yellow-500" />;
+ return <Clock className="h-icon-xs w-icon-xs text-yellow-500" />;
  }
  
- return <CheckCircle className="h-4 w-4 text-green-500" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
  };
 
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {Array.from({ length: 6 }).map((_, i) => (
- <Card key={i} className="p-6">
- <div className="space-y-4">
- <div className="flex items-center gap-3">
- <Skeleton className="h-10 w-10 rounded-full" />
- <div className="flex-1 space-y-2">
- <Skeleton className="h-4 w-3/4" />
+ <Card key={i} className="p-lg">
+ <div className="space-y-md">
+ <div className="flex items-center gap-sm">
+ <Skeleton className="h-icon-xl w-icon-xl rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <Skeleton className="h-icon-xs w-3/4" />
  <Skeleton className="h-3 w-1/2" />
  </div>
  </div>
- <Skeleton className="h-20 w-full" />
+ <Skeleton className="h-component-lg w-full" />
  </div>
  </Card>
  ))}
@@ -68,8 +68,8 @@ export default function CertificationGridView({
 
  if (certifications.length === 0) {
  return (
- <Card className="p-12 text-center">
- <Award className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <Award className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Certifications Found</h3>
  <p className="text-muted-foreground">
  No certifications match the current filters.
@@ -79,31 +79,31 @@ export default function CertificationGridView({
  }
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {certifications.map((certification) => {
  const isSelected = selectedItems.includes(certification.id);
  const status = getCertificationStatus(certification);
 
  return (
- <Card key={certification.id} className={`p-6 transition-all hover:shadow-md ${
+ <Card key={certification.id} className={`p-lg transition-all hover:shadow-md ${
  isSelected ? 'ring-2 ring-primary' : ''
  }`}>
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
  <div className="flex items-start justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <input
  type="checkbox"
  checked={isSelected}
  onChange={(e) => onSelectItem(certification.id, e.target.checked)}
- className="h-4 w-4 rounded border-border"
+ className="h-icon-xs w-icon-xs rounded border-border"
  />
- <div className="p-2 rounded-full bg-primary/10">
- <Award className="h-5 w-5 text-primary" />
+ <div className="p-xs rounded-full bg-primary/10">
+ <Award className="h-icon-sm w-icon-sm text-primary" />
  </div>
  </div>
  
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {getStatusIcon(certification)}
  <Badge className={status.color}>
  {status.status}
@@ -112,9 +112,9 @@ export default function CertificationGridView({
  </div>
 
  {/* Content */}
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div>
- <h4 className="font-semibold text-lg line-clamp-2">
+ <h4 className="font-semibold text-lg line-clamp-xs">
  {certification.name}
  </h4>
  <p className="text-sm text-muted-foreground">
@@ -123,7 +123,7 @@ export default function CertificationGridView({
  </div>
 
  {/* Details */}
- <div className="space-y-2 text-sm">
+ <div className="space-y-xs text-sm">
  {certification.certification_number && (
  <div>
  <span className="font-medium text-muted-foreground">Number:</span>
@@ -133,7 +133,7 @@ export default function CertificationGridView({
  
  <div className="flex items-center justify-between">
  {certification.issue_date && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span className="text-xs text-muted-foreground">
  Issued: {new Date(certification.issue_date).toLocaleDateString()}
@@ -143,7 +143,7 @@ export default function CertificationGridView({
  </div>
  
  {certification.expiry_date && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span className="text-xs text-muted-foreground">
  Expires: {new Date(certification.expiry_date).toLocaleDateString()}
@@ -160,19 +160,19 @@ export default function CertificationGridView({
 
  {/* Notes */}
  {certification.notes && (
- <div className="p-2 bg-muted/50 rounded text-xs text-muted-foreground line-clamp-2">
+ <div className="p-xs bg-muted/50 rounded text-xs text-muted-foreground line-clamp-xs">
  {certification.notes}
  </div>
  )}
 
  {/* Links */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {certification.verification_url && (
  <a
  href={certification.verification_url as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700"
+ className="inline-flex items-center gap-xs text-xs text-blue-600 hover:text-blue-700"
  >
  <ExternalLink className="h-3 w-3" />
  Verify
@@ -184,7 +184,7 @@ export default function CertificationGridView({
  href={certification.attachment_url as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="inline-flex items-center gap-1 text-xs text-blue-600 hover:text-blue-700"
+ className="inline-flex items-center gap-xs text-xs text-blue-600 hover:text-blue-700"
  >
  <Download className="h-3 w-3" />
  Download
@@ -199,7 +199,7 @@ export default function CertificationGridView({
  Updated: {new Date(certification.updated_at).toLocaleDateString()}
  </div>
  
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {onView && (
  <Button
  variant="ghost"

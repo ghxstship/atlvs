@@ -296,7 +296,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]',
@@ -422,7 +422,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
 
                   case 'boolean':
                     return (
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-xs">
                         <Checkbox
                           checked={formField.value || false}
                           onCheckedChange={formField.onChange}
@@ -454,9 +454,9 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
 
                   case 'multi_select':
                     return (
-                      <div className="space-y-2">
+                      <div className="space-y-xs">
                         {field.options?.map((option) => (
-                          <div key={String(option.value)} className="flex items-center space-x-2">
+                          <div key={String(option.value)} className="flex items-center space-x-xs">
                             <Checkbox
                               checked={(formField.value || []).includes(option.value)}
                               onCheckedChange={(checked) => {
@@ -482,7 +482,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
                         disabled={field.disabled}
                       >
                         {field.options?.map((option) => (
-                          <div key={String(option.value)} className="flex items-center space-x-2">
+                          <div key={String(option.value)} className="flex items-center space-x-xs">
                             <RadioGroupItem value={String(option.value)} />
                             <Label>{option.label}</Label>
                           </div>
@@ -533,10 +533,10 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
     const isCollapsed = collapsedSections.has(section.id);
 
     return (
-      <div key={section.id} className="space-y-4">
+      <div key={section.id} className="space-y-md">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="text-lg font-medium flex items-center gap-2">
+            <h3 className="text-lg font-medium flex items-center gap-xs">
               {section.title}
               {section.required && <Badge variant="secondary">Required</Badge>}
             </h3>
@@ -567,7 +567,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
         </div>
 
         {!isCollapsed && (
-          <div className="grid gap-6">
+          <div className="grid gap-lg">
             {section.fields.map((field) => renderField(field, section.id))}
           </div>
         )}
@@ -586,7 +586,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
       )}>
         {/* Header */}
         {showHeader && (
-          <div className="flex items-center justify-between p-6 border-b">
+          <div className="flex items-center justify-between p-lg border-b">
             <div className="flex-1 min-w-0">
               <h2 className="text-xl font-semibold truncate">
                 {title || 'Edit Record'}
@@ -596,7 +596,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
               )}
 
               {/* Status Indicators */}
-              <div className="flex items-center gap-4 mt-3">
+              <div className="flex items-center gap-md mt-3">
                 {hasUnsavedChanges && (
                   <Badge variant="outline" className="text-orange-600">
                     <AlertTriangle className="h-3 w-3 mr-1" />
@@ -605,22 +605,22 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
                 )}
 
                 {autoSave && (
-                  <div className="flex items-center gap-2 text-sm">
+                  <div className="flex items-center gap-xs text-sm">
                     {autoSaveStatus === 'saving' && (
                       <>
-                        <Clock className="h-4 w-4 animate-spin" />
+                        <Clock className="h-icon-xs w-icon-xs animate-spin" />
                         <span>Auto-saving...</span>
                       </>
                     )}
                     {autoSaveStatus === 'saved' && (
                       <>
-                        <CheckCircle className="h-4 w-4 text-green-500" />
+                        <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />
                         <span>Saved {lastSaved && `at ${lastSaved.toLocaleTimeString()}`}</span>
                       </>
                     )}
                     {autoSaveStatus === 'error' && (
                       <>
-                        <AlertTriangle className="h-4 w-4 text-red-500" />
+                        <AlertTriangle className="h-icon-xs w-icon-xs text-red-500" />
                         <span>Save failed</span>
                       </>
                     )}
@@ -630,7 +630,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
             </div>
 
             {/* Header Actions */}
-            <div className="flex items-center gap-2 ml-4">
+            <div className="flex items-center gap-xs ml-4">
               {showPreview && (
                 <Button
                   variant="ghost"
@@ -638,15 +638,15 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
                   onClick={() => setShowPreviewMode(!showPreviewMode)}
                 >
                   {showPreviewMode ? (
-                    <EyeOff className="h-4 w-4" />
+                    <EyeOff className="h-icon-xs w-icon-xs" />
                   ) : (
-                    <Eye className="h-4 w-4" />
+                    <Eye className="h-icon-xs w-icon-xs" />
                   )}
                 </Button>
               )}
 
               <Button variant="ghost" size="sm" onClick={handleClose}>
-                <X className="h-4 w-4" />
+                <X className="h-icon-xs w-icon-xs" />
               </Button>
             </div>
           </div>
@@ -654,17 +654,17 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
 
         {/* Content */}
         <ScrollArea className="flex-1">
-          <div className="p-6">
+          <div className="p-lg">
             {loading ? (
-              <div className="flex items-center justify-center h-32">
-                <div className="flex items-center gap-2">
-                  <Loader2 className="h-5 w-5 animate-spin" />
+              <div className="flex items-center justify-center h-component-xl">
+                <div className="flex items-center gap-xs">
+                  <Loader2 className="h-icon-sm w-icon-sm animate-spin" />
                   <span>Loading...</span>
                 </div>
               </div>
             ) : (
               <Form {...form}>
-                <form className="space-y-8">
+                <form className="space-y-xl">
                   {sections.map((section) => renderSection(section))}
                 </form>
               </Form>
@@ -674,7 +674,7 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
 
         {/* Footer */}
         {showFooter && (
-          <div className="border-t p-6">
+          <div className="border-t p-lg">
             <div className="flex items-center justify-between">
               {/* Footer Status */}
               <div className="text-sm text-muted-foreground">
@@ -682,14 +682,14 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
               </div>
 
               {/* Footer Actions */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-sm">
                 {onPreview && (
                   <Button
                     type="button"
                     variant="outline"
                     onClick={() => onPreview(form.getValues())}
                   >
-                    <Eye className="h-4 w-4 mr-2" />
+                    <Eye className="h-icon-xs w-icon-xs mr-2" />
                     Preview
                   </Button>
                 )}
@@ -708,16 +708,16 @@ export const EditDrawer: React.FC<EditDrawerProps> = ({
                 <Button
                   onClick={form.handleSubmit(handleSave)}
                   disabled={saving || loading}
-                  className="min-w-24"
+                  className="min-w-component-lg"
                 >
                   {saving ? (
                     <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                      <Loader2 className="h-icon-xs w-icon-xs mr-2 animate-spin" />
                       Saving...
                     </>
                   ) : (
                     <>
-                      <Save className="h-4 w-4 mr-2" />
+                      <Save className="h-icon-xs w-icon-xs mr-2" />
                       Save Changes
                     </>
                   )}

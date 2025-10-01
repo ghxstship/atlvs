@@ -1,15 +1,16 @@
 /**
  * Logging Middleware
- * Integrates with infrastructure logging service
+ * Simple console logging for Edge runtime compatibility
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { ConsoleLogger, LogLevel } from '@ghxstship/infrastructure';
 
-const logger = new ConsoleLogger(
-  { service: 'web-middleware' },
-  LogLevel.INFO
-);
+// Simple logger for Edge runtime
+const logger = {
+  info: (message: string, meta?: Record<string, any>) => {
+    console.log(`[INFO] ${message}`, meta || {});
+  }
+};
 
 export function loggingMiddleware(req: NextRequest) {
   const startTime = Date.now();

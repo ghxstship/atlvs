@@ -311,7 +311,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             {isSelected ? <Circle className="h-2 w-2 fill-current" /> : <Circle className="h-3 w-3" />}
           </div>
         )}
-        {item.icon && <div className="mr-sm h-4 w-4">{item.icon}</div>}
+        {item.icon && <div className="mr-sm h-icon-xs w-icon-xs">{item.icon}</div>}
         <span className="flex-1">{item.label}</span>
         {item.shortcut && (
           <span className="ml-auto text-xs tracking-widest text-muted-foreground">
@@ -374,9 +374,9 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
     'disabled:pointer-events-none disabled:opacity-50',
     {
-      'border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-md py-sm': variant === 'outline',
-      'bg-accent text-accent-foreground hover:bg-accent/90 h-10 px-md py-sm': variant === 'default',
-      'hover:bg-accent hover:text-accent-foreground h-10 px-md py-sm': variant === 'ghost',
+      'border border-input bg-background hover:bg-accent hover:text-accent-foreground h-icon-xl px-md py-sm': variant === 'outline',
+      'bg-accent text-accent-foreground hover:bg-accent/90 h-icon-xl px-md py-sm': variant === 'default',
+      'hover:bg-accent hover:text-accent-foreground h-icon-xl px-md py-sm': variant === 'ghost',
     }
   );
 
@@ -386,7 +386,7 @@ export const MenuButton: React.FC<MenuButtonProps> = ({
       trigger={
         <div className={buttonClass}>
           {children}
-          {showChevron && <ChevronDown className="ml-sm h-4 w-4" />}
+          {showChevron && <ChevronDown className="ml-sm h-icon-xs w-icon-xs" />}
         </div>
       }
     />
@@ -463,7 +463,7 @@ export const ContextMenu: React.FC<ContextMenuProps> = ({
                   }
                 }}
               >
-                {item.icon && <div className="mr-sm h-4 w-4">{item.icon}</div>}
+                {item.icon && <div className="mr-sm h-icon-xs w-icon-xs">{item.icon}</div>}
                 <span>{item.label}</span>
                 {item.shortcut && (
                   <span className="ml-auto text-xs text-muted-foreground">

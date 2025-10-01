@@ -186,7 +186,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 +12% from last month
               </p>
             </div>
-            <DollarSign className="h-8 w-8 color-success" />
+            <DollarSign className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -199,7 +199,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.vendor.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 color-accent" />
+            <Briefcase className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -209,13 +209,13 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
               <p className="text-body-sm color-muted">Average Rating</p>
               <div className="brand-opendeck flex items-center">
                 <p className="text-heading-3 mr-sm">{stats.vendor.avgRating}</p>
-                <Star className="h-5 w-5 color-warning fill-warning" />
+                <Star className="h-icon-sm w-icon-sm color-warning fill-warning" />
               </div>
               <p className="text-body-sm color-muted mt-xs">
                 {stats.vendor.totalReviews} reviews
               </p>
             </div>
-            <Award className="h-8 w-8 color-warning" />
+            <Award className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
 
@@ -228,7 +228,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.vendor.proposalsSent} proposals sent
               </p>
             </div>
-            <Target className="h-8 w-8 text-info" />
+            <Target className="h-icon-lg w-icon-lg text-info" />
           </div>
         </Card>
       </div>
@@ -237,8 +237,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-3 gap-lg">
         <Card className="lg:col-span-2 p-lg">
           <h3 className="text-body text-heading-4 mb-md">Earnings Overview</h3>
-          <div className="brand-opendeck h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
-            <BarChart3 className="h-12 w-12 color-muted" />
+          <div className="brand-opendeck h-container-sm flex items-center justify-center border-2 border-dashed rounded-lg">
+            <BarChart3 className="h-icon-2xl w-icon-2xl color-muted" />
             <span className="ml-sm color-muted">Chart will be rendered here</span>
           </div>
         </Card>
@@ -247,19 +247,19 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="brand-opendeck stack-sm">
             <Button variant="outline" className="w-full justify-start">
-              <Package className="h-4 w-4 mr-sm" />
+              <Package className="h-icon-xs w-icon-xs mr-sm" />
               Create New Service
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <FileText className="h-4 w-4 mr-sm" />
+              <FileText className="h-icon-xs w-icon-xs mr-sm" />
               Browse Projects
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <MessageSquare className="h-4 w-4 mr-sm" />
+              <MessageSquare className="h-icon-xs w-icon-xs mr-sm" />
               View Messages
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <Users className="h-4 w-4 mr-sm" />
+              <Users className="h-icon-xs w-icon-xs mr-sm" />
               Update Portfolio
             </Button>
           </div>
@@ -291,7 +291,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 <div className="brand-opendeck flex items-center mb-sm">
                   <div className="brand-opendeck flex">
                     {[1, 2, 3, 4, 5].map(star => (
-                      <Star key={star} className="h-4 w-4 color-warning fill-warning" />
+                      <Star key={star} className="h-icon-xs w-icon-xs color-warning fill-warning" />
                     ))}
                   </div>
                   <span className="ml-sm text-body-sm color-muted">2 days ago</span>
@@ -319,7 +319,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 -8% from budget
               </p>
             </div>
-            <DollarSign className="h-8 w-8 color-accent" />
+            <DollarSign className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -332,7 +332,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 {stats.client.completedProjects} completed
               </p>
             </div>
-            <Briefcase className="h-8 w-8 text-info" />
+            <Briefcase className="h-icon-lg w-icon-lg text-info" />
           </div>
         </Card>
 
@@ -345,7 +345,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 Across all projects
               </p>
             </div>
-            <Users className="h-8 w-8 color-success" />
+            <Users className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -359,7 +359,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 2 days faster
               </p>
             </div>
-            <Clock className="h-8 w-8 color-warning" />
+            <Clock className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
       </div>
@@ -368,8 +368,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
       <div className="brand-opendeck grid grid-cols-1 lg:grid-cols-3 gap-lg">
         <Card className="lg:col-span-2 p-lg">
           <h3 className="text-body text-heading-4 mb-md">Project Timeline</h3>
-          <div className="brand-opendeck h-64 flex items-center justify-center border-2 border-dashed rounded-lg">
-            <Calendar className="h-12 w-12 color-muted" />
+          <div className="brand-opendeck h-container-sm flex items-center justify-center border-2 border-dashed rounded-lg">
+            <Calendar className="h-icon-2xl w-icon-2xl color-muted" />
             <span className="ml-sm color-muted">Timeline will be rendered here</span>
           </div>
         </Card>
@@ -378,19 +378,19 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="brand-opendeck stack-sm">
             <Button variant="outline" className="w-full justify-start">
-              <FileText className="h-4 w-4 mr-sm" />
+              <FileText className="h-icon-xs w-icon-xs mr-sm" />
               Post New Project
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <Users className="h-4 w-4 mr-sm" />
+              <Users className="h-icon-xs w-icon-xs mr-sm" />
               Browse Vendors
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <Package className="h-4 w-4 mr-sm" />
+              <Package className="h-icon-xs w-icon-xs mr-sm" />
               View Services
             </Button>
             <Button variant="outline" className="w-full justify-start">
-              <MessageSquare className="h-4 w-4 mr-sm" />
+              <MessageSquare className="h-icon-xs w-icon-xs mr-sm" />
               Messages
             </Button>
           </div>
@@ -425,7 +425,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
                 </div>
                 <p className="text-body-sm color-muted">$5,000 - 7 days delivery</p>
                 <div className="brand-opendeck flex items-center mt-sm">
-                  <Star className="h-4 w-4 color-warning fill-warning" />
+                  <Star className="h-icon-xs w-icon-xs color-warning fill-warning" />
                   <span className="ml-xs text-body-sm">4.8 rating</span>
                 </div>
               </div>
@@ -445,11 +445,11 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
           <Tabs value={activeView} onValueChange={(v: any) => setActiveView(v as 'vendor' | 'client')}>
             <TabsList>
               <TabsTrigger value="vendor">
-                <Building className="h-4 w-4 mr-sm" />
+                <Building className="h-icon-xs w-icon-xs mr-sm" />
                 Vendor Dashboard
               </TabsTrigger>
               <TabsTrigger value="client">
-                <Briefcase className="h-4 w-4 mr-sm" />
+                <Briefcase className="h-icon-xs w-icon-xs mr-sm" />
                 Client Dashboard
               </TabsTrigger>
             </TabsList>
@@ -462,7 +462,7 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
         <Card className="p-md bg-info/5 border-info/20">
           <div className="brand-opendeck flex items-center justify-between">
             <div className="brand-opendeck flex items-center">
-              <Shield className="h-5 w-5 text-info mr-sm" />
+              <Shield className="h-icon-sm w-icon-sm text-info mr-sm" />
               <span className="text-body-sm">
                 You have {notifications.length} new notifications
               </span>
@@ -474,8 +474,8 @@ export default function OpenDeckDashboard({ orgId, userId, userRole }: Dashboard
 
       {/* Main Dashboard Content */}
       {loading ? (
-        <div className="brand-opendeck flex items-center justify-center h-64">
-          <div className="brand-opendeck animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="brand-opendeck flex items-center justify-center h-container-sm">
+          <div className="brand-opendeck animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
         </div>
       ) : (
         activeView === 'vendor' ? <VendorDashboard /> : <ClientDashboard />

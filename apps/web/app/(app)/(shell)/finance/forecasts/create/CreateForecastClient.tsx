@@ -53,7 +53,7 @@ export default function CreateForecastClient({ user, orgId }: CreateForecastClie
  size="sm"
  onClick={() => router.back()}
  >
- <ArrowLeft className="h-4 w-4 mr-xs" />
+ <ArrowLeft className="h-icon-xs w-icon-xs mr-xs" />
  Back
  </Button>
  <div>
@@ -89,7 +89,7 @@ export default function CreateForecastClient({ user, orgId }: CreateForecastClie
  <CardContent className="pt-lg">
  <div className="flex items-start gap-md">
  <div className="p-sm bg-blue-100 rounded-lg">
- <TrendingUp className="h-6 w-6 text-blue-600" />
+ <TrendingUp className="h-icon-md w-icon-md text-blue-600" />
  </div>
  <div>
  <h3 className="font-semibold mb-sm">Forecast Creation Guidelines</h3>

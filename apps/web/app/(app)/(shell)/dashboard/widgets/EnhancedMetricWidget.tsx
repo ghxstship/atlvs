@@ -19,8 +19,8 @@ export default function EnhancedMetricWidget({
  return (
  <Card className="p-lg animate-pulse">
  <div className="space-y-md">
- <div className="h-4 bg-muted rounded w-1/2"></div>
- <div className="h-8 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
+ <div className="h-icon-lg bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/3"></div>
  </div>
  </Card>
@@ -49,11 +49,11 @@ export default function EnhancedMetricWidget({
  const getChangeIcon = (changeType?: string) => {
  switch (changeType) {
  case 'increase':
- return <TrendingUp className="w-4 h-4 text-green-500" />;
+ return <TrendingUp className="w-icon-xs h-icon-xs text-green-500" />;
  case 'decrease':
- return <TrendingDown className="w-4 h-4 text-red-500" />;
+ return <TrendingDown className="w-icon-xs h-icon-xs text-red-500" />;
  default:
- return <Minus className="w-4 h-4 text-gray-500" />;
+ return <Minus className="w-icon-xs h-icon-xs text-gray-500" />;
  }
  };
 

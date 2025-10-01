@@ -111,7 +111,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={handleOpen} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Performance
       </Button>
 
@@ -332,7 +332,7 @@ export default function CreatePerformanceClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <Music className="w-4 h-4" />
+              <Music className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Performance'}
             </Button>
           </div>

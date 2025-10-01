@@ -464,7 +464,7 @@ export function FormView({
   if (error) {
     return (
       <Alert variant="destructive" className="m-md">
-        <AlertCircle className="h-4 w-4" />
+        <AlertCircle className="h-icon-xs w-icon-xs" />
         <div>
           <div className="font-medium">Error loading form</div>
           <div className="text-sm mt-xs">{error}</div>
@@ -534,9 +534,9 @@ export function FormView({
               >
                 <div className="flex items-center gap-sm">
                   {isCollapsed ? (
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-icon-xs w-icon-xs" />
                   ) : (
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-icon-xs w-icon-xs" />
                   )}
                   <h3 className="font-medium">{section.title}</h3>
                   {section.description && (
@@ -583,7 +583,7 @@ export function FormView({
               onClick={handleReset}
               disabled={saving}
             >
-              <RotateCcw className="h-4 w-4 mr-sm" />
+              <RotateCcw className="h-icon-xs w-icon-xs mr-sm" />
               Reset
             </Button>
           )}
@@ -594,7 +594,7 @@ export function FormView({
               onClick={() => onDuplicate?.(formData)}
               disabled={saving}
             >
-              <Copy className="h-4 w-4 mr-sm" />
+              <Copy className="h-icon-xs w-icon-xs mr-sm" />
               Duplicate
             </Button>
           )}
@@ -619,7 +619,7 @@ export function FormView({
               onClick={handleSave}
               disabled={saving || (showValidation && totalErrors > 0)}
             >
-              {saving ? <Loader  /> : <Save className="h-4 w-4" />}
+              {saving ? <Loader  /> : <Save className="h-icon-xs w-icon-xs" />}
               {saving ? 'Saving...' : 'Save'}
             </Button>
           )}

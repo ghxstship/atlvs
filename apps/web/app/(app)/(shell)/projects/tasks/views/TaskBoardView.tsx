@@ -135,28 +135,28 @@ export default function TaskBoardView({
  
  if (days < 0) {
  return (
- <span className="text-destructive text-xs flex items-center gap-1">
+ <span className="text-destructive text-xs flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {Math.abs(days)}d overdue
  </span>
  );
  } else if (days === 0) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  Due today
  </span>
  );
  } else if (days <= 3) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {days}d left
  </span>
  );
  } else {
  return (
- <span className="text-muted-foreground text-xs flex items-center gap-1">
+ <span className="text-muted-foreground text-xs flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {format(parseISO(dueDate), "MMM d")}
  </span>
@@ -171,24 +171,24 @@ export default function TaskBoardView({
  return (
  <Card
  key={task.id}
- className={`p-3 cursor-pointer transition-all hover:shadow-md ${
+ className={`p-sm cursor-pointer transition-all hover:shadow-md ${
  isSelected ? "ring-2 ring-primary" : ""
  }`}
  onClick={() => onViewTask(task)}
  >
- <div className="space-y-2">
+ <div className="space-y-xs">
  {/* Header */}
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-2 flex-1">
+ <div className="flex items-start gap-xs flex-1">
  <Checkbox
  checked={isSelected}
  onChange={() => onSelectItem(task.id)}
  onClick={(e) => e.stopPropagation()}
  />
  <div className="flex-1 min-w-0">
- <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
+ <h4 className="font-medium text-sm line-clamp-xs">{task.title}</h4>
  {task.project && (
- <div className="flex items-center gap-1 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <Briefcase className="h-3 w-3 text-muted-foreground" />
  <span className="text-xs text-muted-foreground truncate">
  {task.project.name}
@@ -199,8 +199,8 @@ export default function TaskBoardView({
  </div>
  <DropdownMenu>
  <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
- <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
- <MoreVertical className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
+ <MoreVertical className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
@@ -208,21 +208,21 @@ export default function TaskBoardView({
  e.stopPropagation();
  onViewTask(task);
  }}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={(e) => {
  e.stopPropagation();
  onEditTask(task);
  }}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem onClick={(e) => {
  e.stopPropagation();
  onDuplicateTask(task);
  }}>
- <Copy className="mr-2 h-4 w-4" />
+ <Copy className="mr-2 h-icon-xs w-icon-xs" />
  Duplicate
  </DropdownMenuItem>
  <DropdownMenuItem 
@@ -232,7 +232,7 @@ export default function TaskBoardView({
  }}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -241,7 +241,7 @@ export default function TaskBoardView({
 
  {/* Description */}
  {task.description && (
- <p className="text-xs text-muted-foreground line-clamp-2">
+ <p className="text-xs text-muted-foreground line-clamp-xs">
  {task.description}
  </p>
  )}
@@ -254,10 +254,10 @@ export default function TaskBoardView({
 
  {/* Tags */}
  {task.tags && task.tags.length > 0 && (
- <div className="flex items-center gap-1 flex-wrap">
+ <div className="flex items-center gap-xs flex-wrap">
  <Tag className="h-3 w-3 text-muted-foreground" />
  {task.tags.slice(0, 2).map(tag => (
- <Badge key={tag} variant="outline" className="text-xs px-1 py-0">
+ <Badge key={tag} variant="outline" className="text-xs px-xs py-0">
  {tag}
  </Badge>
  ))}
@@ -273,22 +273,22 @@ export default function TaskBoardView({
  <div className="flex items-center justify-between pt-2 border-t">
  {/* Assignee */}
  {task.assignee ? (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {task.assignee.avatar_url ? (
  <Image
  src={task.assignee.avatar_url}
  alt={task.assignee.full_name || task.assignee.email}
  width={20}
  height={20}
- className="h-5 w-5 rounded-full"
+ className="h-icon-sm w-icon-sm rounded-full"
  unoptimized
  />
  ) : (
- <div className="h-5 w-5 rounded-full bg-muted flex items-center justify-center">
+ <div className="h-icon-sm w-icon-sm rounded-full bg-muted flex items-center justify-center">
  <Users className="h-3 w-3" />
  </div>
  )}
- <span className="text-xs text-muted-foreground truncate max-w-[100px]">
+ <span className="text-xs text-muted-foreground truncate max-w-component-lg">
  {task.assignee.full_name || task.assignee.email}
  </span>
  </div>
@@ -298,7 +298,7 @@ export default function TaskBoardView({
 
  {/* Subtasks */}
  {task.subtasks && task.subtasks.length > 0 && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <CheckCircle className="h-3 w-3" />
  {task.subtasks.filter(st => st.status === "done").length}/{task.subtasks.length}
  </div>
@@ -306,7 +306,7 @@ export default function TaskBoardView({
 
  {/* Time tracking */}
  {(task.estimated_hours || task.actual_hours) && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  {task.actual_hours || 0}/{task.estimated_hours || 0}h
  </div>
@@ -318,7 +318,7 @@ export default function TaskBoardView({
  };
 
  return (
- <div className="flex gap-4 overflow-x-auto pb-4">
+ <div className="flex gap-md overflow-x-auto pb-4">
  {BOARD_COLUMNS.map(column => {
  const columnTasks = tasksByStatus[column.id] || [];
  const isCollapsed = collapsedColumns.has(column.id);
@@ -326,14 +326,14 @@ export default function TaskBoardView({
  return (
  <div
  key={column.id}
- className={`flex-shrink-0 ${isCollapsed ? "w-16" : "w-80"} transition-all`}
+ className={`flex-shrink-0 ${isCollapsed ? "w-component-md" : "w-container-md"} transition-all`}
  >
  {/* Column Header */}
  <div
- className={`flex items-center justify-between p-3 mb-3 rounded-lg ${column.color} bg-opacity-10 cursor-pointer`}
+ className={`flex items-center justify-between p-sm mb-3 rounded-lg ${column.color} bg-opacity-10 cursor-pointer`}
  onClick={() => toggleColumn(column.id)}
  >
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className={`w-2 h-2 rounded-full ${column.color}`} />
  <h3 className={`font-medium ${isCollapsed ? "sr-only" : ""}`}>
  {column.label}
@@ -343,17 +343,17 @@ export default function TaskBoardView({
  </Badge>
  </div>
  {isCollapsed ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronUp className="h-4 w-4" />
+ <ChevronUp className="h-icon-xs w-icon-xs" />
  )}
  </div>
 
  {/* Column Tasks */}
  {!isCollapsed && (
- <div className="space-y-3 max-h-[calc(100vh-300px)] overflow-y-auto">
+ <div className="space-y-sm max-h-screen-minus-xl overflow-y-auto">
  {columnTasks.length === 0 ? (
- <div className="text-center py-8 text-muted-foreground">
+ <div className="text-center py-xl text-muted-foreground">
  <p className="text-sm">No tasks</p>
  </div>
  ) : (

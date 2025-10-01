@@ -491,16 +491,16 @@ export const Drawer = forwardRef<HTMLDivElement, DrawerProps>(
 
     const sizes = {
       sm: {
-        left: 'w-80',
-        right: 'w-80', 
-        top: 'h-80',
-        bottom: 'h-80'
+        left: 'w-container-md',
+        right: 'w-container-md', 
+        top: 'h-container-md',
+        bottom: 'h-container-md'
       },
       md: {
-        left: 'w-96',
-        right: 'w-96',
-        top: 'h-96', 
-        bottom: 'h-96'
+        left: 'w-container-lg',
+        right: 'w-container-lg',
+        top: 'h-container-lg', 
+        bottom: 'h-container-lg'
       },
       lg: {
         left: 'w-[32rem]',
@@ -948,7 +948,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
     <textarea
       ref={ref}
       className={cn(
-        'flex min-h-[80px] w-full rounded-md border border-input bg-background px-[var(--spacing-3)] py-[var(--spacing-2)] text-[var(--font-size-sm)] ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        'flex min-h-header-sm w-full rounded-md border border-input bg-background px-[var(--spacing-3)] py-[var(--spacing-2)] text-[var(--font-size-sm)] ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
         {
           'border-destructive focus-visible:ring-destructive': variant === 'error',
           'resize-none': resize === 'none',
@@ -1045,7 +1045,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
                     className="flex items-center gap-[var(--spacing-1)] hover:text-foreground transition-colors rounded px-[var(--spacing-1)] py-[var(--spacing-0-5)] hover:bg-muted/50"
                   >
                     {Icon && <Icon className="h-[var(--spacing-4)] w-[var(--spacing-4)]" />}
-                    <span className="truncate max-w-[200px]">{item.label}</span>
+                    <span className="truncate max-w-content-narrow">{item.label}</span>
                   </Link>
                 ) : (
                   <span 
@@ -1056,7 +1056,7 @@ export const Breadcrumbs = forwardRef<HTMLElement, BreadcrumbsProps>(
                     aria-current={isCurrent ? 'page' : undefined}
                   >
                     {Icon && <Icon className="h-[var(--spacing-4)] w-[var(--spacing-4)]" />}
-                    <span className="truncate max-w-[200px]">{item.label}</span>
+                    <span className="truncate max-w-content-narrow">{item.label}</span>
                   </span>
                 )}
               </li>

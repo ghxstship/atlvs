@@ -4,7 +4,7 @@ const experimentalConfig = {
   turbo: {},
   optimizeCss: true,
   instrumentationHook: true,
-  serverComponentsExternalPackages: ['@supabase/supabase-js'],
+  serverComponentsExternalPackages: ['@supabase/supabase-js', '@sentry/node', '@sentry/nextjs'],
   disableOptimizedLoading: true,
 }
 
@@ -23,6 +23,28 @@ const nextConfig = {
   },
   // Disable API routes during build to prevent runtime errors
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      // Don't bundle server-only packages in client
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        'node:child_process': false,
+        'node:fs': false,
+        'node:https': false,
+        'node:http': false,
+        'node:net': false,
+        'node:tls': false,
+        'node:crypto': false,
+        'node:stream': false,
+        'node:os': false,
+      };
+    }
+    return config;
+  },
   
   // Image optimization
   images: {

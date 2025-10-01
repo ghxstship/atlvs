@@ -282,7 +282,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
           <p className="text-body-sm color-muted">Manage crew onboarding workflows and task completion</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
-          <Plus className="w-4 h-4" />
+          <Plus className="w-icon-xs h-icon-xs" />
           New Onboarding
         </Button>
       </div>
@@ -389,7 +389,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                   <div className="flex items-center gap-md">
                     <div className="text-right">
                       <div className="text-body-sm form-label">{workflow.progress}%</div>
-                      <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
+                      <div className="w-component-lg h-2 bg-secondary rounded-full overflow-hidden">
                         <div 
                           className="h-full bg-accent transition-all"
                           style={{ width: `${workflow.progress}%` }}
@@ -409,7 +409,7 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                       <div key={task.id} className="flex items-center gap-sm p-sm border rounded-lg">
                         <button
                           onClick={() => toggleTaskCompletion(workflow.id, task.id)}
-                          className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-colors ${
+                          className={`w-icon-sm h-icon-sm rounded border-2 flex items-center justify-center transition-colors ${
                             task.completed 
                               ? 'bg-success border-success color-success-foreground' 
                               : 'border-border hover:border-success'
@@ -417,8 +417,8 @@ export default function OnboardingClient({ orgId }: OnboardingClientProps) {
                         >
                           {task.completed && <CheckCircle className="w-3 h-3" />}
                         </button>
-                        <div className={`w-8 h-8 rounded-full flex items-center justify-center ${getCategoryColor(task.category)}`}>
-                          <IconComponent className="w-4 h-4 color-accent-foreground" />
+                        <div className={`w-icon-lg h-icon-lg rounded-full flex items-center justify-center ${getCategoryColor(task.category)}`}>
+                          <IconComponent className="w-icon-xs h-icon-xs color-accent-foreground" />
                         </div>
                         <div className="flex-1">
                           <div className={`form-label ${task.completed ? 'line-through color-muted' : ''}`}>

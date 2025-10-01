@@ -34,12 +34,12 @@ export default function CompanyDetailClient({
   };
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-6 p-6">
+    <div className="container mx-auto max-w-4xl space-y-lg p-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           <Button variant="ghost" size="sm" onClick={handleBack}>
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-icon-xs w-icon-xs" />
             {translations.back}
           </Button>
           <div>
@@ -48,20 +48,20 @@ export default function CompanyDetailClient({
           </div>
         </div>
         <Button onClick={handleEdit}>
-          <Edit className="h-4 w-4 mr-2" />
+          <Edit className="h-icon-xs w-icon-xs mr-2" />
           {translations.edit}
         </Button>
       </div>
 
       {/* Company Details */}
-      <Card className="p-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="space-y-4">
+      <Card className="p-lg">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+          <div className="space-y-md">
             <div>
               <h3 className="font-semibold mb-2">Company Information</h3>
-              <div className="space-y-2">
-                <div className="flex items-center gap-2">
-                  <Building className="h-4 w-4 text-muted-foreground" />
+              <div className="space-y-xs">
+                <div className="flex items-center gap-xs">
+                  <Building className="h-icon-xs w-icon-xs text-muted-foreground" />
                   <span className="font-medium">{company.name}</span>
                 </div>
                 {company.description && (
@@ -75,10 +75,10 @@ export default function CompanyDetailClient({
 
             <div>
               <h3 className="font-semibold mb-2">Contact Information</h3>
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 {company.website && (
-                  <div className="flex items-center gap-2">
-                    <Globe className="h-4 w-4 text-muted-foreground" />
+                  <div className="flex items-center gap-xs">
+                    <Globe className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <a
                       href={company.website}
                       target="_blank"
@@ -90,8 +90,8 @@ export default function CompanyDetailClient({
                   </div>
                 )}
                 {company.email && (
-                  <div className="flex items-center gap-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
+                  <div className="flex items-center gap-xs">
+                    <Mail className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <a
                       href={`mailto:${company.email}`}
                       className="text-blue-600 hover:underline"
@@ -101,8 +101,8 @@ export default function CompanyDetailClient({
                   </div>
                 )}
                 {company.phone && (
-                  <div className="flex items-center gap-2">
-                    <Phone className="h-4 w-4 text-muted-foreground" />
+                  <div className="flex items-center gap-xs">
+                    <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <a
                       href={`tel:${company.phone}`}
                       className="text-blue-600 hover:underline"
@@ -115,12 +115,12 @@ export default function CompanyDetailClient({
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div>
               <h3 className="font-semibold mb-2">Address</h3>
               {company.address || company.city ? (
-                <div className="flex items-start gap-2">
-                  <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
+                <div className="flex items-start gap-xs">
+                  <MapPin className="h-icon-xs w-icon-xs text-muted-foreground mt-0.5" />
                   <div className="text-sm">
                     {company.address && <div>{company.address}</div>}
                     {company.city && <div>{company.city}</div>}
@@ -141,7 +141,7 @@ export default function CompanyDetailClient({
             {company.contacts && company.contacts.length > 0 && (
               <div>
                 <h3 className="font-semibold mb-2">Contacts</h3>
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   {company.contacts.map((contact: any) => (
                     <div key={contact.id} className="text-sm">
                       <div className="font-medium">{contact.name}</div>

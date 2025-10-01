@@ -218,7 +218,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
+        className={`h-icon-xs w-icon-xs ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
       />
     ));
   };
@@ -231,10 +231,10 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded mb-md"></div>
           <div className="stack-md">
-            <div className="h-32 bg-secondary rounded"></div>
-            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -253,7 +253,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
           }}
           className="flex items-center gap-sm"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Endorsement
         </Button>
       </div>
@@ -261,7 +261,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
       {endorsements.length === 0 ? (
         <Card>
           <div className="p-xl text-center">
-            <ThumbsUp className="h-12 w-12 color-muted mx-auto mb-md" />
+            <ThumbsUp className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body text-heading-4 mb-sm">No Endorsements Yet</h3>
             <p className="color-muted mb-md">
               Start building your professional reputation by adding endorsements from colleagues and clients.
@@ -284,8 +284,8 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center gap-sm">
-                    <div className="h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center">
-                      <User className="h-5 w-5 color-accent" />
+                    <div className="h-icon-xl w-icon-xl bg-accent/10 rounded-full flex items-center justify-center">
+                      <User className="h-icon-sm w-icon-sm color-accent" />
                     </div>
                     <div>
                       <h3 className="text-body text-heading-4">{endorsement.endorser_name}</h3>
@@ -311,14 +311,14 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                      
                       onClick={() => handleEdit(endorsement)}
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </Button>
                     <Button
                       variant="outline"
                      
                       onClick={() => handleDelete(endorsement.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -336,7 +336,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
                     ))}
                   </div>
                   <div className="flex items-center gap-sm text-body-sm color-muted">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-icon-xs w-icon-xs" />
                     {new Date(endorsement.date_received).toLocaleDateString()}
                   </div>
                 </div>
@@ -467,7 +467,7 @@ export default function EndorsementsClient({ orgId, userId }: { orgId: string; u
               Cancel
             </Button>
             <Button type="submit" loading={saving}>
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {editingEndorsement ? 'Update' : 'Save'} Endorsement
             </Button>
           </div>

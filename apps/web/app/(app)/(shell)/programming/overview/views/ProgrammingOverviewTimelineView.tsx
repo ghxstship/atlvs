@@ -75,17 +75,17 @@ export default function ProgrammingOverviewTimelineView({
 
  if (loading) {
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {Array.from({ length: 3 }).map((_, i) => (
- <Card key={i} className="p-6">
- <Skeleton className="h-4 w-32 mb-4" />
- <div className="space-y-3">
+ <Card key={i} className="p-lg">
+ <Skeleton className="h-icon-xs w-component-xl mb-4" />
+ <div className="space-y-sm">
  {Array.from({ length: 4 }).map((_, j) => (
- <div key={j} className="flex items-start gap-3">
- <Skeleton className="h-8 w-8 rounded-full" />
+ <div key={j} className="flex items-start gap-sm">
+ <Skeleton className="h-icon-lg w-icon-lg rounded-full" />
  <div className="flex-1">
- <Skeleton className="h-4 w-48 mb-2" />
- <Skeleton className="h-3 w-32" />
+ <Skeleton className="h-icon-xs w-container-xs mb-2" />
+ <Skeleton className="h-3 w-component-xl" />
  </div>
  </div>
  ))}
@@ -98,8 +98,8 @@ export default function ProgrammingOverviewTimelineView({
 
  if (activity.length === 0) {
  return (
- <Card className="p-12 text-center">
- <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <Clock className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Recent Activity</h3>
  <p className="text-muted-foreground">
  Activity across programming modules will appear here as it happens.
@@ -109,11 +109,11 @@ export default function ProgrammingOverviewTimelineView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {groupedActivity.map(({ date, items }) => (
- <Card key={date} className="p-6">
- <div className="flex items-center gap-2 mb-4">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Card key={date} className="p-lg">
+ <div className="flex items-center gap-xs mb-4">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-semibold text-lg">
  {new Date(date).toLocaleDateString('en-US', {
  weekday: 'long',
@@ -127,7 +127,7 @@ export default function ProgrammingOverviewTimelineView({
  </Badge>
  </div>
 
- <div className="space-y-4">
+ <div className="space-y-md">
  {items.map((item, index) => {
  const ActionIcon = actionIcons[item.action] || AlertCircle;
  const TypeIcon = typeIcons[item.type] || Calendar;
@@ -135,22 +135,22 @@ export default function ProgrammingOverviewTimelineView({
  const typeColorClass = typeColors[item.type] || 'bg-gray-100 text-gray-800';
  
  return (
- <div key={item.id} className="flex items-start gap-4 relative">
+ <div key={item.id} className="flex items-start gap-md relative">
  {/* Timeline connector */}
  {index < items.length - 1 && (
- <div className="absolute left-4 top-8 w-px h-12 bg-border" />
+ <div className="absolute left-4 top-xl w-px h-icon-2xl bg-border" />
  )}
  
  {/* Action icon */}
- <div className={`p-2 rounded-full ${actionColorClass} flex-shrink-0`}>
- <ActionIcon className="h-4 w-4" />
+ <div className={`p-xs rounded-full ${actionColorClass} flex-shrink-0`}>
+ <ActionIcon className="h-icon-xs w-icon-xs" />
  </div>
 
  {/* Content */}
  <div className="flex-1 min-w-0">
- <div className="flex items-start justify-between gap-2">
+ <div className="flex items-start justify-between gap-xs">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <h4 className="font-medium text-sm truncate">{item.title}</h4>
  <Badge variant="outline" className={`text-xs ${typeColorClass}`}>
  <TypeIcon className="h-3 w-3 mr-1" />
@@ -164,14 +164,14 @@ export default function ProgrammingOverviewTimelineView({
  </p>
  
  {item.description && (
- <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
+ <p className="text-sm text-muted-foreground mb-2 line-clamp-xs">
  {item.description}
  </p>
  )}
 
  {/* Metadata */}
  {item.metadata && Object.keys(item.metadata).length > 0 && (
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  {Object.entries(item.metadata)
  .slice(0, 3)
  .map(([key, value]) => (
@@ -203,7 +203,7 @@ export default function ProgrammingOverviewTimelineView({
 
  {/* Load more indicator */}
  {activity.length >= 50 && (
- <Card className="p-6 text-center">
+ <Card className="p-lg text-center">
  <p className="text-sm text-muted-foreground">
  Showing recent 50 activities. Use filters to see more specific results.
  </p>

@@ -36,14 +36,14 @@ export default function ChartView({ orgId }: ChartViewProps) {
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
         {Array.from({ length: 4 }).map((_, i) => (
           <Card key={i} className="animate-pulse">
             <CardHeader>
-              <div className="h-6 bg-muted rounded w-32" />
+              <div className="h-icon-md bg-muted rounded w-component-xl" />
             </CardHeader>
             <CardContent>
-              <div className="h-32 bg-muted rounded" />
+              <div className="h-component-xl bg-muted rounded" />
             </CardContent>
           </Card>
         ))}
@@ -53,8 +53,8 @@ export default function ChartView({ orgId }: ChartViewProps) {
 
   if (error || !stats) {
     return (
-      <div className="text-center py-12">
-        <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+      <div className="text-center py-xsxl">
+        <BarChart3 className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
         <h3 className="text-lg font-medium mb-2">Unable to load charts</h3>
         <p className="text-muted-foreground">
           Failed to load marketplace statistics
@@ -64,13 +64,13 @@ export default function ChartView({ orgId }: ChartViewProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Listings</CardTitle>
-            <BarChart3 className="h-4 w-4 text-muted-foreground" />
+            <BarChart3 className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.totalListings}</div>
@@ -83,7 +83,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Listings</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+            <Activity className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold text-green-600">
@@ -98,7 +98,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Responses</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.totalResponses}</div>
@@ -111,7 +111,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Active Vendors</CardTitle>
-            <PieChart className="h-4 w-4 text-muted-foreground" />
+            <PieChart className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats.totalVendors}</div>
@@ -123,26 +123,26 @@ export default function ChartView({ orgId }: ChartViewProps) {
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
         {/* Type Distribution Chart */}
         <Card>
           <CardHeader>
             <CardTitle>Listing Types Distribution</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-md">
               {chartData?.typeDistribution.map((item) => (
                 <div key={item.name} className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <div
                       className="w-3 h-3 rounded-full"
                       style={{ backgroundColor: item.color }}
                     />
                     <span className="text-sm font-medium">{item.name}</span>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <span className="text-sm text-muted-foreground">{item.value}</span>
-                    <div className="w-16 h-2 bg-muted rounded-full overflow-hidden">
+                    <div className="w-component-md h-2 bg-muted rounded-full overflow-hidden">
                       <div
                         className="h-full transition-all duration-300"
                         style={{
@@ -164,9 +164,9 @@ export default function ChartView({ orgId }: ChartViewProps) {
             <CardTitle>Listing Status Overview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <div className="w-3 h-3 rounded-full bg-green-500" />
                   <span className="text-sm font-medium">Active</span>
                 </div>
@@ -176,7 +176,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <div className="w-3 h-3 rounded-full bg-blue-500" />
                   <span className="text-sm font-medium">Featured</span>
                 </div>
@@ -184,7 +184,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
               </div>
 
               <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <div className="w-3 h-3 rounded-full bg-gray-500" />
                   <span className="text-sm font-medium">Total</span>
                 </div>
@@ -200,7 +200,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
             <CardTitle>Engagement Metrics</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div>
                 <div className="flex justify-between text-sm mb-1">
                   <span>Average Response Rate</span>
@@ -214,7 +214,7 @@ export default function ChartView({ orgId }: ChartViewProps) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 text-center">
+              <div className="grid grid-cols-2 gap-md text-center">
                 <div>
                   <div className="text-2xl font-bold text-blue-600">{stats.totalResponses}</div>
                   <div className="text-xs text-muted-foreground">Total Responses</div>
@@ -234,8 +234,8 @@ export default function ChartView({ orgId }: ChartViewProps) {
             <CardTitle>Market Insights</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3">
-              <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+            <div className="space-y-sm">
+              <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
                 <span className="text-sm font-medium">Most Popular Type</span>
                 <Badge variant="secondary">
                   {stats.activeOffers >= stats.activeRequests && stats.activeOffers >= stats.activeExchanges ? 'Offers' :
@@ -243,14 +243,14 @@ export default function ChartView({ orgId }: ChartViewProps) {
                 </Badge>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
                 <span className="text-sm font-medium">Engagement Rate</span>
                 <Badge variant={stats.averageResponseRate > 20 ? 'default' : 'secondary'}>
                   {stats.averageResponseRate > 20 ? 'High' : 'Normal'}
                 </Badge>
               </div>
 
-              <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+              <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
                 <span className="text-sm font-medium">Last Updated</span>
                 <span className="text-xs text-muted-foreground">
                   {new Date(stats.lastUpdated).toLocaleString()}

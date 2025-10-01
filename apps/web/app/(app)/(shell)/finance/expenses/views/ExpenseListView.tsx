@@ -130,9 +130,9 @@ export default function ExpenseListView({
  return (
  <Card className="p-0">
  <div className="p-lg animate-pulse">
- <div className="h-4 bg-muted rounded mb-md"></div>
+ <div className="h-icon-xs bg-muted rounded mb-md"></div>
  {Array.from({ length: 5 }).map((_, i) => (
- <div key={i} className="h-16 bg-muted rounded mb-sm"></div>
+ <div key={i} className="h-component-md bg-muted rounded mb-sm"></div>
  ))}
  </div>
  </Card>
@@ -142,7 +142,7 @@ export default function ExpenseListView({
  if (expenses.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Receipt className="h-12 w-12 color-muted mx-auto mb-md" />
+ <Receipt className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-heading-4 color-foreground mb-sm">No expenses found</h3>
  <p className="text-body-sm color-muted">Create your first expense to get started.</p>
  </Card>
@@ -192,7 +192,7 @@ export default function ExpenseListView({
  {expense.title}
  </h4>
  {expense.description && (
- <p className="text-body-sm color-muted line-clamp-1" title={expense.description}>
+ <p className="text-body-sm color-muted line-clamp-xs" title={expense.description}>
  {expense.description}
  </p>
  )}
@@ -208,7 +208,7 @@ export default function ExpenseListView({
  {/* Amount */}
  <div className="col-span-2">
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 color-success" />
+ <DollarSign className="h-icon-xs w-icon-xs color-success" />
  <span className="text-body-md color-success font-medium">
  {expensesService.formatCurrency(expense.amount, expense.currency)}
  </span>
@@ -244,23 +244,23 @@ export default function ExpenseListView({
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
  <Button variant="ghost" size="sm">
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(expense)}>
- <Eye className="h-4 w-4 mr-sm" />
+ <Eye className="h-icon-xs w-icon-xs mr-sm" />
  View Details
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(expense)}>
- <Edit className="h-4 w-4 mr-sm" />
+ <Edit className="h-icon-xs w-icon-xs mr-sm" />
  Edit
  </DropdownMenuItem>
  
  {expense.receipt_url && (
  <DropdownMenuItem asChild>
  <a href={expense.receipt_url as any as any} target="_blank" rel="noopener noreferrer">
- <ExternalLink className="h-4 w-4 mr-sm" />
+ <ExternalLink className="h-icon-xs w-icon-xs mr-sm" />
  View Receipt
  </a>
  </DropdownMenuItem>
@@ -274,7 +274,7 @@ export default function ExpenseListView({
  onClick={() => handleWorkflowAction('submit', expense)}
  disabled={actionLoading === expense.id}
  >
- <Clock className="h-4 w-4 mr-sm" />
+ <Clock className="h-icon-xs w-icon-xs mr-sm" />
  Submit for Approval
  </DropdownMenuItem>
  )}
@@ -284,7 +284,7 @@ export default function ExpenseListView({
  onClick={() => handleWorkflowAction('approve', expense)}
  disabled={actionLoading === expense.id}
  >
- <Check className="h-4 w-4 mr-sm" />
+ <Check className="h-icon-xs w-icon-xs mr-sm" />
  Approve
  </DropdownMenuItem>
  )}
@@ -294,7 +294,7 @@ export default function ExpenseListView({
  onClick={() => handleWorkflowAction('reject', expense)}
  disabled={actionLoading === expense.id}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Reject
  </DropdownMenuItem>
  )}
@@ -304,7 +304,7 @@ export default function ExpenseListView({
  onClick={() => handleWorkflowAction('markPaid', expense)}
  disabled={actionLoading === expense.id}
  >
- <DollarSign className="h-4 w-4 mr-sm" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-sm" />
  Mark as Paid
  </DropdownMenuItem>
  )}
@@ -314,7 +314,7 @@ export default function ExpenseListView({
  onClick={() => onDelete(expense)}
  className="color-destructive focus:color-destructive"
  >
- <Trash2 className="h-4 w-4 mr-sm" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-sm" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>

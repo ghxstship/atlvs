@@ -190,8 +190,8 @@ export default function EditProfileDrawer({
  {/* Profile Summary */}
  <Card className="p-md bg-muted/50">
  <div className="flex items-center gap-md">
- <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
- <User className="h-6 w-6 text-primary" />
+ <div className="w-icon-2xl h-icon-2xl bg-primary/10 rounded-full flex items-center justify-center">
+ <User className="h-icon-md w-icon-md text-primary" />
  </div>
  <div className="flex-1">
  <h3 className="font-semibold">{profile.full_name}</h3>
@@ -213,19 +213,19 @@ export default function EditProfileDrawer({
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-4">
  <TabsTrigger value="basic">
- <User className="h-4 w-4 mr-xs" />
+ <User className="h-icon-xs w-icon-xs mr-xs" />
  Basic
  </TabsTrigger>
  <TabsTrigger value="professional">
- <Building className="h-4 w-4 mr-xs" />
+ <Building className="h-icon-xs w-icon-xs mr-xs" />
  Professional
  </TabsTrigger>
  <TabsTrigger value="contact">
- <MapPin className="h-4 w-4 mr-xs" />
+ <MapPin className="h-icon-xs w-icon-xs mr-xs" />
  Contact
  </TabsTrigger>
  <TabsTrigger value="emergency">
- <Shield className="h-4 w-4 mr-xs" />
+ <Shield className="h-icon-xs w-icon-xs mr-xs" />
  Emergency
  </TabsTrigger>
  </TabsList>
@@ -572,11 +572,11 @@ export default function EditProfileDrawer({
  onClick={handleClose}
  disabled={loading}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  <Button type="submit" loading={loading}>
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  Save Changes
  </Button>
  </div>

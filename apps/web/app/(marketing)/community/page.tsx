@@ -174,7 +174,7 @@ export default function CommunityPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -196,7 +196,7 @@ export default function CommunityPage() {
               <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
                   Join Skool Community
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
               <a href="/auth/signup">
@@ -230,7 +230,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Community Channels */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -250,7 +250,7 @@ export default function CommunityPage() {
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md mb-lg">
                       <div className={`p-sm rounded-lg bg-gradient-to-r ${channel.gradient}`}>
-                        <Icon className="h-6 w-6 text-background" />
+                        <Icon className="h-icon-md w-icon-md text-background" />
                       </div>
                       <div className="flex-1">
                         <div className="flex items-center gap-sm mb-sm">
@@ -279,14 +279,14 @@ export default function CommunityPage() {
                       <a href="#" target="_blank" rel="noopener noreferrer">
                         <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
-                          <ExternalLink className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                     ) : (
                       <a href="#">
                         <Button className="w-full group transition-all duration-200 hover:scale-105">
                           Join Community
-                          <ExternalLink className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          <ExternalLink className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                     )}
@@ -299,7 +299,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Social Media */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -317,8 +317,8 @@ export default function CommunityPage() {
               return (
                 <Card key={social.name} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
-                      <Icon className="h-6 w-6 text-foreground" />
+                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
+                      <Icon className="h-icon-md w-icon-md text-foreground" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{social.name}</h3>
                     <p className="text-body-sm color-muted mb-sm">{social.handle}</p>
@@ -341,7 +341,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -364,11 +364,11 @@ export default function CommunityPage() {
                   
                   <div className="stack-sm mb-lg">
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Calendar className="h-4 w-4 text-foreground" />
+                      <Calendar className="h-icon-xs w-icon-xs text-foreground" />
                       <span>{event.date} at {event.time}</span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Users className="h-4 w-4 text-foreground" />
+                      <Users className="h-icon-xs w-icon-xs text-foreground" />
                       <span>{event.attendees} registered</span>
                     </div>
                   </div>
@@ -385,7 +385,7 @@ export default function CommunityPage() {
             <a href="/community/events">
               <Button className="group transition-all duration-200 hover:scale-105">
                 View All Events
-                <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
           </div>
@@ -393,7 +393,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Community Testimonials */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -409,7 +409,7 @@ export default function CommunityPage() {
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.avatar}
                       </span>
@@ -427,7 +427,7 @@ export default function CommunityPage() {
       </section>
 
       {/* Community Achievements */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -444,8 +444,8 @@ export default function CommunityPage() {
               return (
                 <Card key={achievement.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
-                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-lg">
-                      <Icon className="h-8 w-8 text-foreground" />
+                    <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-lg">
+                      <Icon className="h-icon-lg w-icon-lg text-foreground" />
                     </div>
                     <div className={`${anton.className} text-heading-3 text-heading-3 text-foreground mb-sm uppercase`}>{achievement.metric}</div>
                     <p className="color-muted mb-lg">{achievement.description}</p>
@@ -461,7 +461,7 @@ export default function CommunityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -475,7 +475,7 @@ export default function CommunityPage() {
               <a href="https://www.skool.com/rogue-ops-collective-3068/about?ref=4f6baad2394a4a7daf965d8e8f1a86ed" target="_blank" rel="noopener noreferrer">
                 <Button className="w-full sm:w-auto group">
                   Join Skool Community
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </a>
               <a href="/auth/signup">

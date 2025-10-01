@@ -118,7 +118,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
         aria-label="Add Travel Record" 
         title="Add Travel Record"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Travel Record
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Travel Record
       </Button>
       <Drawer 
         open={open} 
@@ -297,7 +297,7 @@ export default function CreateTravelRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border  px-md py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-header-sm" 
               value={form.getValues('notes') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes about this travel..."

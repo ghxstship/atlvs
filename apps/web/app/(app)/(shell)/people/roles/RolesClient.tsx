@@ -141,7 +141,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -156,7 +156,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
           <div className="flex flex-col sm:flex-row gap-md justify-between">
             <div className="flex flex-col sm:flex-row gap-md flex-1">
               <div className="flex-1 relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
                 <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -190,7 +190,7 @@ export default function RolesClient({ orgId }: RolesClientProps) {
             </div>
 
             <Button onClick={() => setShowCreateForm(true)}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               {t('addRole')}
             </Button>
           </div>
@@ -257,16 +257,16 @@ export default function RolesClient({ orgId }: RolesClientProps) {
               >
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center cluster-sm">
-                    <Shield className="h-5 w-5 color-accent" />
+                    <Shield className="h-icon-sm w-icon-sm color-accent" />
                     <h3 className="text-heading-4 color-foreground">{role.name}</h3>
                   </div>
                   
                   <div className="flex cluster-xs">
                     <button className="p-xs color-muted hover:color-foreground">
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </button>
                     <button className="p-xs color-muted hover:color-destructive">
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </button>
                   </div>
                 </div>
@@ -320,8 +320,8 @@ export default function RolesClient({ orgId }: RolesClientProps) {
           </div>
 
           {filteredRoles.length === 0 && (
-            <div className="text-center py-2xl">
-              <Users className="h-12 w-12 color-muted mx-auto mb-md" />
+            <div className="text-center py-xsxl">
+              <Users className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
               <p className="color-muted">{t('noRolesFound')}</p>
             </div>
           )}

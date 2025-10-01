@@ -403,7 +403,7 @@ export default function EditProgrammingItineraryDrawer({
  placeholder="Notes (optional)"
  />
  <Button type="button" onClick={addDestination} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -422,7 +422,7 @@ export default function EditProgrammingItineraryDrawer({
  size="sm"
  onClick={() => removeDestination(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -453,7 +453,7 @@ export default function EditProgrammingItineraryDrawer({
  placeholder="Confirmation # (optional)"
  />
  <Button type="button" onClick={addAccommodation} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -472,7 +472,7 @@ export default function EditProgrammingItineraryDrawer({
  size="sm"
  onClick={() => removeAccommodation(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -503,7 +503,7 @@ export default function EditProgrammingItineraryDrawer({
  placeholder="Confirmation # (optional)"
  />
  <Button type="button" onClick={addTransportation} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -522,7 +522,7 @@ export default function EditProgrammingItineraryDrawer({
  size="sm"
  onClick={() => removeTransportation(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -543,13 +543,13 @@ export default function EditProgrammingItineraryDrawer({
  onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
  />
  <Button type="button" onClick={addTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {watchedTags && watchedTags.length > 0 && (
  <div className="flex flex-wrap gap-sm">
  {watchedTags.map((tag) => (
- <Badge key={tag} variant="secondary" className="gap-1">
+ <Badge key={tag} variant="secondary" className="gap-xs">
  {tag}
  <button
  type="button"
@@ -576,7 +576,7 @@ export default function EditProgrammingItineraryDrawer({
  Cancel
  </Button>
  <Button type="submit" disabled={loading}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {loading ? "Saving..." : "Save Changes"}
  </Button>
  </div>

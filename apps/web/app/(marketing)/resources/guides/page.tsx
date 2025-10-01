@@ -102,7 +102,7 @@ export default function GuidesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -124,7 +124,7 @@ export default function GuidesPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Access All Guides
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#guides">
@@ -174,27 +174,27 @@ export default function GuidesPage() {
       </section>
 
       {/* Guides Grid */}
-      <section id="guides" className="py-4xl">
+      <section id="guides" className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
             {guides.map((guide: any) => (
               <Card key={guide.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <BookOpen className="h-12 w-12 text-foreground mx-auto mb-sm" />
+                      <BookOpen className="h-icon-2xl w-icon-2xl text-foreground mx-auto mb-sm" />
                       <p className="text-body-sm color-muted">Guide Preview</p>
                     </div>
                   </div>
                   {guide.isPremium && (
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-md right-4">
                       <Badge variant="warning">
                         <Lock className="h-3 w-3 mr-xs" />
                         Premium
                       </Badge>
                     </div>
                   )}
-                  <div className="absolute top-4 left-4">
+                  <div className="absolute top-md left-4">
                     <Badge variant="secondary">{guide.difficulty}</Badge>
                   </div>
                   <div className="absolute bottom-4 left-4">
@@ -206,29 +206,29 @@ export default function GuidesPage() {
                   <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {guide.title}
                   </h3>
-                  <p className="color-muted mb-md line-clamp-2">
+                  <p className="color-muted mb-md line-clamp-xs">
                     {guide.description}
                   </p>
                   
                   <div className="stack-sm mb-md">
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs color-muted">
-                        <Clock className="h-4 w-4" />
+                        <Clock className="h-icon-xs w-icon-xs" />
                         {guide.duration}
                       </div>
                       <div className="flex items-center gap-xs color-muted">
-                        <BookOpen className="h-4 w-4" />
+                        <BookOpen className="h-icon-xs w-icon-xs" />
                         {guide.chapters} chapters
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs">
-                        <Star className="h-4 w-4 color-warning fill-current" />
+                        <Star className="h-icon-xs w-icon-xs color-warning fill-current" />
                         <span>{guide.rating}</span>
                       </div>
                       <div className="flex items-center gap-xs color-muted">
-                        <CheckCircle className="h-4 w-4" />
+                        <CheckCircle className="h-icon-xs w-icon-xs" />
                         {guide.completions} completed
                       </div>
                     </div>
@@ -256,7 +256,7 @@ export default function GuidesPage() {
       </section>
 
       {/* Learning Path CTA */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -294,8 +294,8 @@ export default function GuidesPage() {
             ].map((path, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
-                    <BookOpen className="h-8 w-8 text-background" />
+                  <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
+                    <BookOpen className="h-icon-lg w-icon-lg text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {path.title}
@@ -328,11 +328,11 @@ export default function GuidesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
-              <BookOpen className="h-16 w-16 text-foreground mx-auto mb-lg" />
+            <CardContent className="p-xsxl">
+              <BookOpen className="h-component-md w-component-md text-foreground mx-auto mb-lg" />
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 MASTER PRODUCTION MANAGEMENT
               </h2>
@@ -344,7 +344,7 @@ export default function GuidesPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Start Learning Today
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

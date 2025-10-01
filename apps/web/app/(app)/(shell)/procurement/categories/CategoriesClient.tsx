@@ -92,10 +92,10 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
 
   const getTypeIcon = (type: Category['type']) => {
     switch (type) {
-      case 'product': return <Package className="h-4 w-4" />;
-      case 'service': return <Wrench className="h-4 w-4" />;
-      case 'both': return <Tag className="h-4 w-4" />;
-      default: return <Tag className="h-4 w-4" />;
+      case 'product': return <Package className="h-icon-xs w-icon-xs" />;
+      case 'service': return <Wrench className="h-icon-xs w-icon-xs" />;
+      case 'both': return <Tag className="h-icon-xs w-icon-xs" />;
+      default: return <Tag className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -110,9 +110,9 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-2xl">
+      <div className="flex items-center justify-center py-xsxl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
           <p className="color-foreground/70">Loading categories...</p>
         </div>
       </div>
@@ -125,7 +125,7 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
       <div className="flex flex-col sm:flex-row gap-md">
         <div className="flex-1">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+            <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
             <UnifiedInput               placeholder="Search categories..."
               value={searchQuery}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -160,8 +160,8 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
 
       {/* Categories Grid */}
       {filteredCategories.length === 0 ? (
-        <div className="text-center py-2xl">
-          <Tag className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+        <div className="text-center py-xsxl">
+          <Tag className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
           <h3 className="text-body form-label mb-sm">No categories found</h3>
           <p className="color-foreground/70 mb-md">
             {searchQuery || typeFilter !== 'all' || statusFilter !== 'all'
@@ -196,12 +196,12 @@ export default function CategoriesClient({ orgId }: { orgId: string }) {
                   </div>
                 </div>
                 <Button variant="ghost" size="sm">
-                  <Edit className="h-4 w-4" />
+                  <Edit className="h-icon-xs w-icon-xs" />
                 </Button>
               </div>
 
               {category.description && (
-                <p className="text-body-sm color-foreground/70 mb-md line-clamp-2">
+                <p className="text-body-sm color-foreground/70 mb-md line-clamp-xs">
                   {category.description}
                 </p>
               )}

@@ -121,13 +121,13 @@ export default function JobHistoryCardView({
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {Array.from({ length: 6 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
- <div className="h-4 bg-muted rounded mb-sm" />
+ <div className="h-icon-xs bg-muted rounded mb-sm" />
  <div className="h-3 bg-muted rounded mb-sm w-3/4" />
  <div className="h-3 bg-muted rounded mb-md w-1/2" />
  <div className="space-y-xs">
  <div className="h-2 bg-muted rounded w-full" />
- <div className="h-2 bg-muted rounded w-5/6" />
- <div className="h-2 bg-muted rounded w-4/6" />
+ <div className="h-2 bg-muted rounded w-icon-sm/6" />
+ <div className="h-2 bg-muted rounded w-icon-xs/6" />
  </div>
  </Card>
  ))}
@@ -138,7 +138,7 @@ export default function JobHistoryCardView({
  if (entries.length === 0) {
  return (
  <div className="flex flex-col items-center justify-center py-xl text-center">
- <Briefcase className="h-12 w-12 text-muted-foreground mb-md" />
+ <Briefcase className="h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Job History</h3>
  <p className="text-muted-foreground mb-lg max-w-md">
  Start building your professional history by adding your work experience and career journey.
@@ -163,9 +163,9 @@ export default function JobHistoryCardView({
  {/* Header */}
  <div className="flex items-start justify-between mb-md">
  <div className="flex items-center gap-sm">
- <Avatar className="h-12 w-12">
+ <Avatar className="h-icon-2xl w-icon-2xl">
  <AvatarFallback className="bg-blue-100 text-blue-600">
- <Building className="h-6 w-6" />
+ <Building className="h-icon-md w-icon-md" />
  </AvatarFallback>
  </Avatar>
  <div className="flex-1 min-w-0">
@@ -194,7 +194,7 @@ export default function JobHistoryCardView({
  onView(entry);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -204,7 +204,7 @@ export default function JobHistoryCardView({
  onEdit(entry);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -214,39 +214,39 @@ export default function JobHistoryCardView({
  onDelete(entry.id);
  }}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  {/* Job Title and Company */}
  <div className="mb-md">
- <h3 className="font-semibold text-base mb-xs line-clamp-2">
+ <h3 className="font-semibold text-base mb-xs line-clamp-xs">
  {entry.job_title}
  </h3>
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span className="text-sm font-medium">{entry.company_name}</span>
  </div>
  {entry.department && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span className="text-sm">{entry.department}</span>
  </div>
  )}
  {entry.location && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span className="text-sm">{entry.location}</span>
  </div>
  )}
  <div className="flex items-center gap-xs text-muted-foreground">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span className="text-sm">
  {formatDateRange(entry.start_date, entry.end_date, entry.is_current)}
  </span>
  <span>•</span>
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span className="text-sm">
  {calculateDuration(entry.start_date, entry.end_date, entry.is_current)}
  </span>
@@ -285,7 +285,7 @@ export default function JobHistoryCardView({
 
  {/* Description */}
  {entry.description && (
- <p className="text-sm text-muted-foreground mb-md line-clamp-3">
+ <p className="text-sm text-muted-foreground mb-md line-clamp-sm">
  {entry.description}
  </p>
  )}
@@ -336,7 +336,7 @@ export default function JobHistoryCardView({
  {entry.responsibilities.slice(0, 2).map((responsibility, index) => (
  <div key={index} className="flex items-start gap-xs">
  <CheckCircle className="h-3 w-3 text-green-500 mt-0.5 flex-shrink-0" />
- <span className="text-xs text-muted-foreground line-clamp-1">
+ <span className="text-xs text-muted-foreground line-clamp-xs">
  {responsibility}
  </span>
  </div>

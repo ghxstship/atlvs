@@ -76,17 +76,17 @@ export default function TimelineView({
     switch (status?.toLowerCase()) {
       case 'completed':
       case 'done':
-        return <CheckCircle className="h-4 w-4 text-green-500" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
       case 'in_progress':
       case 'active':
-        return <Clock className="h-4 w-4 text-blue-500" />;
+        return <Clock className="h-icon-xs w-icon-xs text-blue-500" />;
       case 'pending':
-        return <Circle className="h-4 w-4 text-gray-500" />;
+        return <Circle className="h-icon-xs w-icon-xs text-gray-500" />;
       case 'blocked':
       case 'failed':
-        return <AlertCircle className="h-4 w-4 text-red-500" />;
+        return <AlertCircle className="h-icon-xs w-icon-xs text-red-500" />;
       default:
-        return <Circle className="h-4 w-4 text-gray-400" />;
+        return <Circle className="h-icon-xs w-icon-xs text-gray-400" />;
     }
   };
 
@@ -110,16 +110,16 @@ export default function TimelineView({
 
   if (loading) {
     return (
-      <div className={`space-y-6 ${className}`}>
+      <div className={`space-y-lg ${className}`}>
         {Array.from({ length: 3 }).map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-6 bg-muted rounded w-48 mb-4"></div>
-            <div className="space-y-3">
+            <div className="h-icon-md bg-muted rounded w-container-xs mb-4"></div>
+            <div className="space-y-sm">
               {Array.from({ length: 2 }).map((_, j) => (
-                <div key={j} className="flex gap-4">
-                  <div className="w-4 h-4 bg-muted rounded-full mt-1"></div>
-                  <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-muted rounded w-3/4"></div>
+                <div key={j} className="flex gap-md">
+                  <div className="w-icon-xs h-icon-xs bg-muted rounded-full mt-1"></div>
+                  <div className="flex-1 space-y-xs">
+                    <div className="h-icon-xs bg-muted rounded w-3/4"></div>
                     <div className="h-3 bg-muted rounded w-1/2"></div>
                   </div>
                 </div>
@@ -133,7 +133,7 @@ export default function TimelineView({
 
   if (data.length === 0) {
     return (
-      <div className={`flex items-center justify-center p-8 ${className}`}>
+      <div className={`flex items-center justify-center p-xl ${className}`}>
         <div className="text-center text-muted-foreground">
           {emptyMessage}
         </div>
@@ -142,7 +142,7 @@ export default function TimelineView({
   }
 
   return (
-    <div className={`space-y-8 ${className}`}>
+    <div className={`space-y-xl ${className}`}>
       {Object.entries(groupedData).map(([groupName, items]) => (
         <div key={groupName}>
           {groupBy !== 'none' && (
@@ -151,20 +151,20 @@ export default function TimelineView({
             </h3>
           )}
 
-          <div className="space-y-4">
+          <div className="space-y-md">
             {items.map((item, index) => (
               <div
                 key={item.id}
-                className="flex gap-4 cursor-pointer hover:bg-muted/30 p-3 rounded-lg transition-colors"
+                className="flex gap-md cursor-pointer hover:bg-muted/30 p-sm rounded-lg transition-colors"
                 onClick={() => onItemClick?.(item)}
               >
                 {/* Timeline connector */}
                 <div className="flex flex-col items-center">
-                  <div className={`w-4 h-4 rounded-full border-2 ${getStatusColor(item[statusField])} bg-background flex items-center justify-center`}>
+                  <div className={`w-icon-xs h-icon-xs rounded-full border-2 ${getStatusColor(item[statusField])} bg-background flex items-center justify-center`}>
                     {getStatusIcon(item[statusField])}
                   </div>
                   {index < items.length - 1 && (
-                    <div className="w-px h-8 bg-border mt-2"></div>
+                    <div className="w-px h-icon-lg bg-border mt-2"></div>
                   )}
                 </div>
 
@@ -176,13 +176,13 @@ export default function TimelineView({
                         {item[titleField] || item.name || item.title}
                       </h4>
                       {item[descriptionField] && (
-                        <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
+                        <p className="text-sm text-muted-foreground mt-1 line-clamp-xs">
                           {item[descriptionField]}
                         </p>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-2 ml-4">
+                    <div className="flex items-center gap-xs ml-4">
                       <Badge variant="outline" className="text-xs">
                         {item[statusField]}
                       </Badge>
@@ -193,7 +193,7 @@ export default function TimelineView({
                   </div>
 
                   {/* Additional metadata */}
-                  <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
+                  <div className="flex items-center gap-md mt-2 text-xs text-muted-foreground">
                     {item.priority && (
                       <span>Priority: {item.priority}</span>
                     )}

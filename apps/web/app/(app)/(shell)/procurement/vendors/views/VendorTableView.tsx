@@ -92,32 +92,32 @@ export default function VendorTableView({
  <table className="w-full">
  <thead>
  <tr className="border-b border-border">
- <th className="text-left p-md w-12">
- <div className="h-4 w-4 bg-muted rounded animate-pulse"></div>
+ <th className="text-left p-md w-icon-2xl">
+ <div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-32 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-xl animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
  <th className="text-left p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </th>
- <th className="text-right p-md w-32">
- <div className="h-4 bg-muted rounded w-16 ml-auto animate-pulse"></div>
+ <th className="text-right p-md w-component-xl">
+ <div className="h-icon-xs bg-muted rounded w-component-md ml-auto animate-pulse"></div>
  </th>
  </tr>
  </thead>
@@ -125,34 +125,34 @@ export default function VendorTableView({
  {Array.from({ length: 8 }).map((_, index) => (
  <tr key={index} className="border-b border-border">
  <td className="p-md">
- <div className="h-4 w-4 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-32 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-xl animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-6 bg-muted rounded-full w-16 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-24 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-lg animate-pulse"></div>
  </td>
  <td className="p-md">
- <div className="h-4 bg-muted rounded w-16 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-component-md animate-pulse"></div>
  </td>
  <td className="p-md">
  <div className="flex justify-end gap-xs">
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse"></div>
  </div>
  </td>
  </tr>
@@ -167,7 +167,7 @@ export default function VendorTableView({
  if (vendors.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Building className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Building className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No vendors found</h3>
  <p className="text-muted-foreground">
  No vendors match your current filters. Try adjusting your search criteria.
@@ -203,7 +203,7 @@ export default function VendorTableView({
  <table className="w-full">
  <thead>
  <tr className="border-b border-border">
- <th className="text-left p-md w-12">
+ <th className="text-left p-md w-icon-2xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -288,7 +288,7 @@ export default function VendorTableView({
  {getSortIcon('created_at')}
  </Button>
  </th>
- <th className="text-right p-md w-32">Actions</th>
+ <th className="text-right p-md w-component-xl">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -313,7 +313,7 @@ export default function VendorTableView({
  onClick={() => onVendorClick?.(vendor)}
  >
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <div className="min-w-0">
  <div className="font-medium truncate">{vendor.display_name}</div>
  <div className="text-sm text-muted-foreground truncate">
@@ -354,7 +354,7 @@ export default function VendorTableView({
  {vendor.email && (
  <div className="flex items-center gap-xs text-sm">
  <Mail className="h-3 w-3 text-muted-foreground" />
- <span className="truncate max-w-[150px]">{vendor.email}</span>
+ <span className="truncate max-w-narrow">{vendor.email}</span>
  </div>
  )}
  {vendor.phone && (
@@ -382,7 +382,7 @@ export default function VendorTableView({
  }}
  title="View vendor"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEditVendor && (
@@ -395,7 +395,7 @@ export default function VendorTableView({
  }}
  title="Edit vendor"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onDeleteVendor && (
@@ -408,7 +408,7 @@ export default function VendorTableView({
  }}
  title="Delete vendor"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button
@@ -420,7 +420,7 @@ export default function VendorTableView({
  }}
  title="More options"
  >
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

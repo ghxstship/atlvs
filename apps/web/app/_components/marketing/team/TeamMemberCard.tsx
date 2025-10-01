@@ -19,8 +19,8 @@ export function TeamMemberCard({ member, variant = 'default' }: TeamMemberCardPr
   return (
     <Card className="text-center hover:shadow-floating transition-shadow">
       <CardContent className="p-lg">
-        <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-sm flex items-center justify-center">
-          <Users className="h-6 w-6 color-accent" />
+        <div className="w-component-lg h-component-lg bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-sm flex items-center justify-center">
+          <Users className="h-icon-md w-icon-md color-accent" />
         </div>
         <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>
           {member.name}

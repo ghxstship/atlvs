@@ -26,7 +26,7 @@ export default function ProgrammingCalendarListView({
  if (events.length === 0) {
  return (
  <Card className="p-lg text-center">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No events found</h3>
  <p className="text-muted-foreground">Try adjusting your filters or create a new event.</p>
  </Card>
@@ -58,7 +58,7 @@ export default function ProgrammingCalendarListView({
  <div className="space-y-xs">
  <h3 className="font-semibold text-lg">{event.title}</h3>
  {event.description && (
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {event.description}
  </p>
  )}
@@ -71,7 +71,7 @@ export default function ProgrammingCalendarListView({
 
  <div className="flex flex-wrap items-center gap-md text-sm text-muted-foreground">
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>
  {format(parseISO(event.start_at), "MMM d, yyyy 'at' h:mm a")}
  </span>
@@ -79,7 +79,7 @@ export default function ProgrammingCalendarListView({
 
  {event.end_at && (
  <div className="flex items-center gap-xs">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>
  Until {format(parseISO(event.end_at), "MMM d, yyyy 'at' h:mm a")}
  </span>
@@ -88,21 +88,21 @@ export default function ProgrammingCalendarListView({
 
  {event.location && (
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{event.location}</span>
  </div>
  )}
 
  {event.project && (
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{event.project.name}</span>
  </div>
  )}
 
  {event.capacity && (
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>Capacity: {event.capacity}</span>
  </div>
  )}
@@ -124,11 +124,11 @@ export default function ProgrammingCalendarListView({
  </div>
  <div className="flex items-center gap-sm">
  <Button size="sm" variant="ghost" onClick={() => onView(event)}>
- <Eye className="h-4 w-4 mr-xs" />
+ <Eye className="h-icon-xs w-icon-xs mr-xs" />
  View
  </Button>
  <Button size="sm" variant="ghost" onClick={() => onEdit(event)}>
- <Pencil className="h-4 w-4 mr-xs" />
+ <Pencil className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  <Button
@@ -137,7 +137,7 @@ export default function ProgrammingCalendarListView({
  onClick={() => onDelete(event)}
  className="text-destructive hover:text-destructive"
  >
- <Trash2 className="h-4 w-4 mr-xs" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-xs" />
  Delete
  </Button>
  </div>

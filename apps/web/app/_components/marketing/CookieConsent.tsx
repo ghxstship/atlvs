@@ -103,7 +103,7 @@ export function CookieConsent() {
             // Main consent banner
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-xl">
               <div className="flex items-start gap-xl flex-1">
-                <Cookie className="h-6 w-6 color-accent mt-xs flex-shrink-0" />
+                <Cookie className="h-icon-md w-icon-md color-accent mt-xs flex-shrink-0" />
                 <div>
                   <h3 className="text-heading-4 color-foreground mb-xs">
                     We use cookies to enhance your experience
@@ -142,7 +142,7 @@ export function CookieConsent() {
                   onClick={() => setShowPreferences(true)}
                   className="w-full sm:w-auto"
                 >
-                  <Settings className="h-4 w-4 mr-sm" />
+                  <Settings className="h-icon-xs w-icon-xs mr-sm" />
                   Preferences
                 </Button>
                 <Button
@@ -164,7 +164,7 @@ export function CookieConsent() {
                  
                   onClick={() => setShowPreferences(false)}
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-icon-xs w-icon-xs" />
                 </Button>
               </div>
               
@@ -180,8 +180,8 @@ export function CookieConsent() {
                     </p>
                   </div>
                   <div className="ml-md">
-                    <div className="w-12 h-6 bg-accent rounded-full relative">
-                      <div className="w-5 h-5 bg-background rounded-full absolute top-0.5 right-0.5"></div>
+                    <div className="w-icon-2xl h-icon-md bg-accent rounded-full relative">
+                      <div className="w-icon-sm h-icon-sm bg-background rounded-full absolute top-0.5 right-0.5"></div>
                     </div>
                   </div>
                 </div>
@@ -200,12 +200,12 @@ export function CookieConsent() {
                     <button
                       onClick={() => setPreferences(prev => ({ ...prev, analytics: !prev.analytics }))}
                       className={cn(
-                        "w-12 h-6 rounded-full relative transition-colors",
+                        "w-icon-2xl h-icon-md rounded-full relative transition-colors",
                         preferences.analytics ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
+                        "w-icon-sm h-icon-sm bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.analytics ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>
@@ -226,12 +226,12 @@ export function CookieConsent() {
                     <button
                       onClick={() => setPreferences(prev => ({ ...prev, marketing: !prev.marketing }))}
                       className={cn(
-                        "w-12 h-6 rounded-full relative transition-colors",
+                        "w-icon-2xl h-icon-md rounded-full relative transition-colors",
                         preferences.marketing ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
+                        "w-icon-sm h-icon-sm bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.marketing ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>
@@ -252,12 +252,12 @@ export function CookieConsent() {
                     <button
                       onClick={() => setPreferences(prev => ({ ...prev, functional: !prev.functional }))}
                       className={cn(
-                        "w-12 h-6 rounded-full relative transition-colors",
+                        "w-icon-2xl h-icon-md rounded-full relative transition-colors",
                         preferences.functional ? "bg-accent" : "bg-secondary"
                       )}
                     >
                       <div className={cn(
-                        "w-5 h-5 bg-background rounded-full absolute top-0.5 transition-transform",
+                        "w-icon-sm h-icon-sm bg-background rounded-full absolute top-0.5 transition-transform",
                         preferences.functional ? "translate-x-6" : "translate-x-0.5"
                       )}></div>
                     </button>

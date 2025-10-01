@@ -254,7 +254,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  <div className="flex items-center gap-md">
  <h2 className="text-body text-heading-4">Call Sheets Management</h2>
  <Button>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create Call Sheet
  </Button>
  </div>
@@ -275,7 +275,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  <Card key={status} className="p-md">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <IconComponent className="h-4 w-4" />
+ <IconComponent className="h-icon-xs w-icon-xs" />
  <span className="form-label">{label}</span>
  </div>
  <Badge variant="outline">
@@ -290,7 +290,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  {upcomingCallSheets.length > 0 && (
  <Card className="p-md mb-lg">
  <h3 className="text-heading-4 mb-sm flex items-center gap-sm">
- <CalendarIcon className="h-4 w-4" />
+ <CalendarIcon className="h-icon-xs w-icon-xs" />
  Upcoming Call Sheets
  </h3>
  <div className="stack-sm">
@@ -370,13 +370,13 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  <div className="stack-md mt-lg">
  <div className="grid grid-cols-2 gap-md">
  <div className="flex items-center gap-sm text-body-sm color-muted">
- {selectedRecord.call_date ? <CalendarIcon className="h-4 w-4" /> : null}
+ {selectedRecord.call_date ? <CalendarIcon className="h-icon-xs w-icon-xs" /> : null}
  <span>
  {selectedRecord.call_date ? new Date(selectedRecord.call_date).toLocaleDateString() : 'Call date TBD'}
  </span>
  </div>
  <div className="flex items-center gap-sm text-body-sm color-muted">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>
  {selectedRecord.call_time || 'Call time TBD'}
  </span>
@@ -385,7 +385,7 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  
  {selectedRecord.location && selectedRecord.location !== 'TBD' && (
  <div className="flex items-center gap-sm text-body-sm color-muted">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{selectedRecord.location}</span>
  </div>
  )}
@@ -416,13 +416,13 @@ export default function CallSheetsClient({ orgId }: { orgId: string }) {
  {/* Empty State */}
  {!loading && data.length === 0 && (
  <Card className="p-xl text-center">
- <FileText className="h-12 w-12 mx-auto mb-md color-muted" />
+ <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-body text-heading-4 mb-sm">No Call Sheets Yet</h3>
  <p className="color-muted mb-md">
  Create call sheets to organize production schedules and ensure everyone knows when and where to be.
  </p>
  <Button onClick={handleCreateCallSheet}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create First Call Sheet
  </Button>
  </Card>

@@ -210,13 +210,13 @@ export const UnifiedListView: React.FC<UnifiedListViewProps> = ({
         {Array.from({ length: 10 }).map((_, i) => (
           <Card key={i} className="p-sm">
             <div className="flex items-center gap-sm">
-              {selectable && <Skeleton className="h-4 w-4" />}
+              {selectable && <Skeleton className="h-icon-xs w-icon-xs" />}
               <div className="flex-1 space-y-xs">
-                <Skeleton className="h-4 w-1/3" />
+                <Skeleton className="h-icon-xs w-1/3" />
                 <Skeleton className="h-3 w-2/3" />
               </div>
-              <Skeleton className="h-6 w-16" />
-              <Skeleton className="h-8 w-8" />
+              <Skeleton className="h-icon-md w-component-md" />
+              <Skeleton className="h-icon-lg w-icon-lg" />
             </div>
           </Card>
         ))}
@@ -288,7 +288,7 @@ export const UnifiedListView: React.FC<UnifiedListViewProps> = ({
               ))}
             </div>
             
-            <div className="w-8" /> {/* Space for actions */}
+            <div className="w-icon-lg" /> {/* Space for actions */}
           </div>
         </Card>
       )}
@@ -344,20 +344,20 @@ export const UnifiedListView: React.FC<UnifiedListViewProps> = ({
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
                     <Button variant="ghost" size="sm">
-                      <MoreVertical className="h-4 w-4" />
+                      <MoreVertical className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem onClick={() => onItemAction?.('view', item)}>
-                      <Eye className="mr-xs h-4 w-4" />
+                      <Eye className="mr-xs h-icon-xs w-icon-xs" />
                       View
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onItemAction?.('edit', item)}>
-                      <Edit className="mr-xs h-4 w-4" />
+                      <Edit className="mr-xs h-icon-xs w-icon-xs" />
                       Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onItemAction?.('duplicate', item)}>
-                      <Copy className="mr-xs h-4 w-4" />
+                      <Copy className="mr-xs h-icon-xs w-icon-xs" />
                       Duplicate
                     </DropdownMenuItem>
                     
@@ -370,7 +370,7 @@ export const UnifiedListView: React.FC<UnifiedListViewProps> = ({
                           key={action.id}
                           onClick={() => action.onClick(item)}
                         >
-                          {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                          {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                           {action.label}
                         </DropdownMenuItem>
                       );
@@ -382,7 +382,7 @@ export const UnifiedListView: React.FC<UnifiedListViewProps> = ({
                       onClick={() => onItemAction?.('delete', item)}
                       className="text-destructive"
                     >
-                      <Trash className="mr-xs h-4 w-4" />
+                      <Trash className="mr-xs h-icon-xs w-icon-xs" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>

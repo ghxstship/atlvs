@@ -36,13 +36,13 @@ async function NotificationsContent() {
   const getIcon = (type: string) => {
     switch (type) {
       case 'success':
-        return <CheckCircle className="h-4 w-4 text-green-600" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs text-green-600" />;
       case 'warning':
-        return <AlertCircle className="h-4 w-4 text-yellow-600" />;
+        return <AlertCircle className="h-icon-xs w-icon-xs text-yellow-600" />;
       case 'info':
-        return <Info className="h-4 w-4 text-blue-600" />;
+        return <Info className="h-icon-xs w-icon-xs text-blue-600" />;
       default:
-        return <Bell className="h-4 w-4" />;
+        return <Bell className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -103,18 +103,18 @@ function NotificationsLoading() {
   return (
     <div className="space-y-md">
       <div className="flex items-center justify-between">
-        <Skeleton className="h-6 w-32" />
-        <Skeleton className="h-5 w-8 rounded-full" />
+        <Skeleton className="h-icon-md w-component-xl" />
+        <Skeleton className="h-icon-sm w-icon-lg rounded-full" />
       </div>
       <div className="space-y-sm">
         {[1, 2, 3].map((i) => (
           <Card key={i} className="p-md">
             <div className="flex items-start gap-sm">
-              <Skeleton className="h-4 w-4 rounded-full" />
+              <Skeleton className="h-icon-xs w-icon-xs rounded-full" />
               <div className="flex-1 space-y-xs">
-                <Skeleton className="h-4 w-32" />
+                <Skeleton className="h-icon-xs w-component-xl" />
                 <Skeleton className="h-3 w-full" />
-                <Skeleton className="h-3 w-20" />
+                <Skeleton className="h-3 w-component-lg" />
               </div>
             </div>
           </Card>

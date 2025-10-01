@@ -196,7 +196,7 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
  onClick={handleRefresh}
  disabled={refreshing}
  >
- <RefreshCw className={`h-4 w-4 mr-sm ${refreshing ? 'animate-spin' : ''}`} />
+ <RefreshCw className={`h-icon-xs w-icon-xs mr-sm ${refreshing ? 'animate-spin' : ''}`} />
  Refresh All
  </Button>
  </div>
@@ -204,16 +204,16 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
 
  {/* Tab Navigation */}
  <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
- <TabsList className="grid grid-cols-7 lg:grid-cols-14 gap-1 h-auto p-1 bg-muted">
+ <TabsList className="grid grid-cols-7 lg:grid-cols-14 gap-xs h-auto p-xs bg-muted">
  {PROFILE_MODULES.map((module) => {
  const Icon = module.icon;
  return (
  <TabsTrigger
  key={module.id}
  value={module.id}
- className="flex flex-col items-center gap-1 p-2 h-auto data-[state=active]:bg-background"
+ className="flex flex-col items-center gap-xs p-xs h-auto data-[state=active]:bg-background"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  <span className="text-xs font-medium">{module.label}</span>
  </TabsTrigger>
  );
@@ -231,7 +231,7 @@ export default function ProfileClient({ orgId, userId, userEmail }: { orgId: str
  <Card className="h-full">
  <div className="p-lg h-full">
  <div className="flex items-center gap-sm mb-md">
- <module.icon className="h-5 w-5 text-primary" />
+ <module.icon className="h-icon-sm w-icon-sm text-primary" />
  <div>
  <h2 className="text-lg font-semibold">{module.label}</h2>
  <p className="text-sm text-muted-foreground">{module.description}</p>

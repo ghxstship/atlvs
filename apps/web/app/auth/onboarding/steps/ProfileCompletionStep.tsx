@@ -154,7 +154,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
             {/* Avatar Upload */}
             <div className="brand-ghostship text-center">
               <div className="brand-ghostship relative inline-block">
-                <div className="brand-ghostship w-24 h-24 bg-secondary rounded-full flex items-center justify-center overflow-hidden">
+                <div className="brand-ghostship w-component-lg h-component-lg bg-secondary rounded-full flex items-center justify-center overflow-hidden">
                   {profile.avatar ? (
                     <img 
                       src={profile.avatar} 
@@ -162,11 +162,11 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <User className="h-12 w-12 color-muted" />
+                    <User className="h-icon-2xl w-icon-2xl color-muted" />
                   )}
                 </div>
                 <label className="absolute bottom-0 right-0 bg-accent color-accent-foreground rounded-full p-sm cursor-pointer hover:bg-accent/90 transition-colors">
-                  <Camera className="h-4 w-4" />
+                  <Camera className="h-icon-xs w-icon-xs" />
                   <input
                     type="file"
                     accept="image/*"
@@ -187,7 +187,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Job Title
                 </label>
                 <div className="brand-ghostship relative">
-                  <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
+                  <Briefcase className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-sm w-icon-sm color-muted" />
                   <input
                     type="text"
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -204,7 +204,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
                   Location
                 </label>
                 <div className="brand-ghostship relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
+                  <MapPin className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-sm w-icon-sm color-muted" />
                   <input
                     type="text"
                     className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -303,7 +303,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       <Card>
         <CardContent className="p-lg">
           <div className="brand-ghostship flex items-start cluster-sm">
-            <div className="brand-ghostship w-5 h-5 bg-info/10 rounded-full flex items-center justify-center mt-0.5">
+            <div className="brand-ghostship w-icon-sm h-icon-sm bg-info/10 rounded-full flex items-center justify-center mt-0.5">
               <div className="brand-ghostship w-2 h-2 bg-info rounded-full"></div>
             </div>
             <div>
@@ -320,7 +320,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
       {/* Action Buttons */}
       <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
-          <ArrowLeft className="mr-sm h-4 w-4" />
+          <ArrowLeft className="mr-sm h-icon-xs w-icon-xs" />
           Back
         </Button>
         
@@ -330,7 +330,7 @@ export function ProfileCompletionStep({ user, onNext, onBack, updateData, data }
          
         >
           {loading ? 'Saving profile...' : 'Complete Setup'}
-          <ArrowRight className="ml-sm h-4 w-4" />
+          <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
         </Button>
       </div>
     </div>

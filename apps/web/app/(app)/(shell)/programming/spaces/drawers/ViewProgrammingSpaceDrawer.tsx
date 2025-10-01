@@ -95,41 +95,41 @@ export default function ViewProgrammingSpaceDrawer({
  {
  key: 'edit',
  label: 'Edit',
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  variant: 'outline',
  onClick: () => onEdit(),
  },
  {
  key: 'delete',
  label: 'Delete',
- icon: <Trash2 className="h-4 w-4" />,
+ icon: <Trash2 className="h-icon-xs w-icon-xs" />,
  variant: 'destructive',
  onClick: () => onDelete(),
  },
  ];
 
  const content = (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Basic Information */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
+ <CardTitle className="flex items-center gap-xs">
  <span className="text-2xl">{kindConfig.icon}</span>
  {space.name}
  </CardTitle>
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
  <Badge variant={accessConfig.variant}>{accessConfig.label}</Badge>
  <Badge variant="outline">{kindConfig.label}</Badge>
  </div>
  </CardHeader>
- <CardContent className="space-y-3 text-sm text-muted-foreground">
+ <CardContent className="space-y-sm text-sm text-muted-foreground">
  {space.description && <p>{space.description}</p>}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
- <div className="space-y-1">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
+ <div className="space-y-xs">
  {space.location && (
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{space.location}</span>
  </div>
  )}
@@ -149,10 +149,10 @@ export default function ViewProgrammingSpaceDrawer({
  </div>
  )}
  </div>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {space.capacity && (
- <div className="flex items-center gap-2">
- <Users className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs" />
  <span>
  {space.capacity}
  {space.max_capacity && space.max_capacity !== space.capacity
@@ -163,8 +163,8 @@ export default function ViewProgrammingSpaceDrawer({
  </div>
  )}
  {space.area_sqft && (
- <div className="flex items-center gap-2">
- <Square className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Square className="h-icon-xs w-icon-xs" />
  <span>{space.area_sqft} sq ft</span>
  </div>
  )}
@@ -188,8 +188,8 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Booking & Operations</CardTitle>
  </CardHeader>
- <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-muted-foreground">
- <div className="space-y-2">
+ <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm text-muted-foreground">
+ <div className="space-y-xs">
  <div>
  <span className="font-medium">Bookable:</span> {space.is_bookable ? 'Yes' : 'No'}
  </div>
@@ -209,7 +209,7 @@ export default function ViewProgrammingSpaceDrawer({
  </div>
  )}
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {space.setup_time && (
  <div>
  <span className="font-medium">Setup Time:</span> {space.setup_time} minutes
@@ -235,7 +235,7 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Amenities</CardTitle>
  </CardHeader>
- <CardContent className="flex flex-wrap gap-2">
+ <CardContent className="flex flex-wrap gap-xs">
  {Object.entries(space.amenities)
  .filter(([_, value]) => Boolean(value))
  .map(([key]) => (
@@ -253,7 +253,7 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Contact Information</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2 text-sm text-muted-foreground">
+ <CardContent className="space-y-xs text-sm text-muted-foreground">
  {space.contact_person && (
  <div>
  <span className="font-medium">Person:</span> {space.contact_person}
@@ -279,16 +279,16 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Maintenance</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2 text-sm text-muted-foreground">
+ <CardContent className="space-y-xs text-sm text-muted-foreground">
  {space.last_maintenance && (
- <div className="flex items-center gap-2">
- <Clock className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>Last maintenance: {new Date(space.last_maintenance).toLocaleDateString()}</span>
  </div>
  )}
  {space.next_maintenance && (
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>Next maintenance: {new Date(space.next_maintenance).toLocaleDateString()}</span>
  </div>
  )}
@@ -302,7 +302,7 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Tags</CardTitle>
  </CardHeader>
- <CardContent className="flex flex-wrap gap-2">
+ <CardContent className="flex flex-wrap gap-xs">
  {space.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}
@@ -316,7 +316,7 @@ export default function ViewProgrammingSpaceDrawer({
  <CardHeader>
  <CardTitle>Metadata</CardTitle>
  </CardHeader>
- <CardContent className="space-y-2 text-sm text-muted-foreground">
+ <CardContent className="space-y-xs text-sm text-muted-foreground">
  <div className="flex justify-between">
  <span>Created</span>
  <span>{new Date(space.created_at).toLocaleString()}</span>

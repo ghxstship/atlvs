@@ -9,7 +9,7 @@ const Alert = React.forwardRef<
     ref={ref}
     role="alert"
     className={cn(
-      'relative w-full rounded-lg border p-4',
+      'relative w-full rounded-lg border p-md',
       className
     )}
     {...props}

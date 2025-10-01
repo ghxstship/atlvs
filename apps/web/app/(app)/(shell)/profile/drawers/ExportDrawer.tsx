@@ -25,25 +25,25 @@ const EXPORT_FORMATS = [
  value: 'csv',
  label: 'CSV (Comma Separated Values)',
  description: 'Compatible with Excel and Google Sheets',
- icon: <Table className="h-4 w-4" />,
+ icon: <Table className="h-icon-xs w-icon-xs" />,
  },
  {
  value: 'json',
  label: 'JSON (JavaScript Object Notation)',
  description: 'Structured data format for developers',
- icon: <Database className="h-4 w-4" />,
+ icon: <Database className="h-icon-xs w-icon-xs" />,
  },
  {
  value: 'excel',
  label: 'Excel Workbook (.xlsx)',
  description: 'Native Microsoft Excel format',
- icon: <FileSpreadsheet className="h-4 w-4" />,
+ icon: <FileSpreadsheet className="h-icon-xs w-icon-xs" />,
  },
  {
  value: 'pdf',
  label: 'PDF Report',
  description: 'Formatted report for printing or sharing',
- icon: <FileText className="h-4 w-4" />,
+ icon: <FileText className="h-icon-xs w-icon-xs" />,
  },
 ];
 
@@ -180,7 +180,7 @@ export default function ExportDrawer({
  {/* Export Scope */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <Users className="h-5 w-5 text-primary" />
+ <Users className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">Export Scope</h3>
  </div>
  
@@ -192,7 +192,7 @@ export default function ExportDrawer({
  
  checked={exportScope === 'selected'}
  onChange={() => setExportScope('selected')}
- className="w-4 h-4"
+ className="w-icon-xs h-icon-xs"
  />
  <Label htmlFor="selected" className="cursor-pointer">
  Selected profiles ({selectedProfiles.length})
@@ -206,7 +206,7 @@ export default function ExportDrawer({
  
  checked={exportScope === 'all'}
  onChange={() => setExportScope('all')}
- className="w-4 h-4"
+ className="w-icon-xs h-icon-xs"
  />
  <Label htmlFor="all" className="cursor-pointer">
  All profiles ({totalProfiles})
@@ -269,7 +269,7 @@ export default function ExportDrawer({
  </div>
  </div>
  
- <div className="grid grid-cols-1 md:grid-cols-2 gap-sm max-h-48 overflow-y-auto">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-sm max-h-container-xs overflow-y-auto">
  {DEFAULT_FIELDS.map((field) => (
  <div key={field.key} className="flex items-center gap-sm">
  <Checkbox
@@ -315,7 +315,7 @@ export default function ExportDrawer({
  {/* Export Summary */}
  <Card className="p-md bg-muted/50">
  <div className="flex items-start gap-sm">
- <CheckCircle className="h-5 w-5 text-green-600 mt-xs" />
+ <CheckCircle className="h-icon-sm w-icon-sm text-green-600 mt-xs" />
  <div>
  <h4 className="font-semibold">Export Summary</h4>
  <ul className="text-sm text-muted-foreground space-y-xs mt-xs">
@@ -342,7 +342,7 @@ export default function ExportDrawer({
  loading={loading}
  disabled={selectedFieldKeys.length === 0}
  >
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  Export {exportCount} Profile{exportCount !== 1 ? 's' : ''}
  </Button>
  </div>

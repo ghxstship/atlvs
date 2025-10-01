@@ -138,7 +138,7 @@ export default function CreateTrainingRecordClient({ orgId }: CreateTrainingReco
  value={formData.notes}
  onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
  placeholder="Additional notes about this enrollment..."
- className="w-full px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background min-h-[100px]"
+ className="w-full px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background min-h-header-md"
  />
  </div>
 

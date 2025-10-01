@@ -11,7 +11,7 @@ export default function MonitoringDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">System Health</CardTitle>
-            <Activity className="h-4 w-4 text-muted-foreground" />
+            <Activity className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold color-success">99.9%</div>
@@ -22,7 +22,7 @@ export default function MonitoringDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Performance</CardTitle>
-            <TrendingUp className="h-4 w-4 text-muted-foreground" />
+            <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">245ms</div>
@@ -33,7 +33,7 @@ export default function MonitoringDashboard() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Active Alerts</CardTitle>
-            <AlertCircle className="h-4 w-4 text-muted-foreground" />
+            <AlertCircle className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold color-warning">3</div>

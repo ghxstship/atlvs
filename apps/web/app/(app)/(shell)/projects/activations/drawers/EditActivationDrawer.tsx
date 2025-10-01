@@ -134,7 +134,7 @@ export default function EditActivationDrawer({
  <DrawerContent className="max-w-2xl mx-auto">
  <DrawerHeader>
  <DrawerTitle className="flex items-center gap-sm">
- <Edit className="h-5 w-5" />
+ <Edit className="h-icon-sm w-icon-sm" />
  Edit Activation
  </DrawerTitle>
  <DrawerDescription>

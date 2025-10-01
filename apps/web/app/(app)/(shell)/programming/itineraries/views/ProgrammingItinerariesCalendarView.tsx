@@ -124,9 +124,9 @@ export default function ProgrammingItinerariesCalendarView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading calendar...</p>
  </div>
  </div>
@@ -149,10 +149,10 @@ export default function ProgrammingItinerariesCalendarView({
  
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -170,7 +170,7 @@ export default function ProgrammingItinerariesCalendarView({
  {calendarData.map((day, index) => (
  <div
  key={index}
- className={`bg-background min-h-[120px] p-sm ${
+ className={`bg-background min-h-header-lg p-sm ${
  !day.isCurrentMonth ? 'opacity-50' : ''
  } ${isToday(day.date) ? 'bg-primary/5' : ''}`}
  >
@@ -182,7 +182,7 @@ export default function ProgrammingItinerariesCalendarView({
  </div>
 
  {/* Itineraries for this day */}
- <div className="space-y-1">
+ <div className="space-y-xs">
  {day.itineraries.slice(0, 3).map((itinerary) => {
  const statusConfig = STATUS_BADGE[itinerary.status];
  const typeConfig = TYPE_BADGE[itinerary.type];
@@ -191,7 +191,7 @@ export default function ProgrammingItinerariesCalendarView({
  return (
  <div
  key={itinerary.id}
- className={`group relative p-1 rounded text-xs cursor-pointer transition-all hover:shadow-sm ${
+ className={`group relative p-xs rounded text-xs cursor-pointer transition-all hover:shadow-sm ${
  isSelected ? 'ring-1 ring-primary bg-primary/10' : 'bg-muted/50 hover:bg-muted'
  }`}
  onClick={() => onView(itinerary)}
@@ -199,11 +199,11 @@ export default function ProgrammingItinerariesCalendarView({
  <div className="flex items-center justify-between">
  <div className="flex-1 min-w-0">
  <div className="font-medium truncate">{itinerary.name}</div>
- <div className="flex items-center gap-1 mt-0.5">
- <Badge variant={statusConfig.variant} className="text-[10px] px-1 py-0">
+ <div className="flex items-center gap-xs mt-0.5">
+ <Badge variant={statusConfig.variant} className="text-small px-xs py-0">
  {statusConfig.label}
  </Badge>
- <span className="text-[10px] text-muted-foreground">
+ <span className="text-small text-muted-foreground">
  {typeConfig.icon}
  </span>
  </div>
@@ -214,7 +214,7 @@ export default function ProgrammingItinerariesCalendarView({
  <Button
  variant="ghost"
  size="sm"
- className="h-4 w-4 p-0"
+ className="h-icon-xs w-icon-xs p-0"
  onClick={(e) => {
  e.stopPropagation();
  onEdit(itinerary);
@@ -225,7 +225,7 @@ export default function ProgrammingItinerariesCalendarView({
  <Button
  variant="ghost"
  size="sm"
- className="h-4 w-4 p-0"
+ className="h-icon-xs w-icon-xs p-0"
  onClick={(e) => {
  e.stopPropagation();
  onDelete(itinerary);
@@ -237,40 +237,40 @@ export default function ProgrammingItinerariesCalendarView({
  </div>
 
  {/* Additional info on hover */}
- <div className="absolute z-10 left-0 top-full mt-1 p-2 bg-popover border rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none min-w-[200px]">
- <div className="space-y-1 text-xs">
+ <div className="absolute z-10 left-0 top-full mt-1 p-xs bg-popover border rounded-md shadow-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none min-w-content-narrow">
+ <div className="space-y-xs text-xs">
  <div className="font-medium">{itinerary.name}</div>
  {itinerary.description && (
  <div className="text-muted-foreground">{itinerary.description}</div>
  )}
  
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="font-medium">Type:</span>
  <span>{typeConfig.label}</span>
  </div>
  
  {itinerary.location && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <MapPin className="h-2.5 w-2.5" />
  <span>{itinerary.location}</span>
  </div>
  )}
  
  {itinerary.participants_count && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-2.5 w-2.5" />
  <span>{itinerary.participants_count} participants</span>
  </div>
  )}
  
  {itinerary.total_cost && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <DollarSign className="h-2.5 w-2.5" />
  <span>{formatCurrency(itinerary.total_cost, itinerary.currency)}</span>
  </div>
  )}
  
- <div className="text-[10px] text-muted-foreground pt-1 border-t">
+ <div className="text-small text-muted-foreground pt-1 border-t">
  {new Date(itinerary.start_date).toLocaleDateString()} - {new Date(itinerary.end_date).toLocaleDateString()}
  </div>
  </div>
@@ -281,7 +281,7 @@ export default function ProgrammingItinerariesCalendarView({
 
  {/* Show more indicator */}
  {day.itineraries.length > 3 && (
- <div className="text-[10px] text-muted-foreground text-center py-0.5">
+ <div className="text-small text-muted-foreground text-center py-0.5">
  +{day.itineraries.length - 3} more
  </div>
  )}
@@ -296,8 +296,8 @@ export default function ProgrammingItinerariesCalendarView({
  <div className="flex items-center gap-sm">
  <span className="font-medium">Status:</span>
  {Object.entries(STATUS_BADGE).map(([status, config]) => (
- <div key={status} className="flex items-center gap-1">
- <Badge variant={config.variant} className="text-[10px] px-1 py-0">
+ <div key={status} className="flex items-center gap-xs">
+ <Badge variant={config.variant} className="text-small px-xs py-0">
  {config.label}
  </Badge>
  </div>

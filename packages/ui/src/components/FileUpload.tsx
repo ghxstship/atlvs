@@ -130,7 +130,7 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
         
         <div
           className={cn(
-            "border-2 border-dashed border-border rounded-lg p-6 text-center cursor-pointer transition-colors",
+            "border-2 border-dashed border-border rounded-lg p-lg text-center cursor-pointer transition-colors",
             dragActive && "border-primary bg-primary/5",
             "hover:border-primary hover:bg-primary/5"
           )}
@@ -165,7 +165,7 @@ const FileUpload = React.forwardRef<HTMLInputElement, FileUploadProps>(
             {selectedFiles.map((file, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between p-2 bg-muted rounded border"
+                className="flex items-center justify-between p-sm bg-muted rounded border"
               >
                 <div className="flex-1 min-w-0">
                   <p className="text-sm truncate">{file.name}</p>

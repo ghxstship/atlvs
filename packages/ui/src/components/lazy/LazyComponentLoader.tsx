@@ -22,7 +22,7 @@ export interface LazyComponentProps {
 // Default loading fallback component
 const DefaultLoadingFallback: React.FC = () => (
   <Card className="p-xl flex items-center justify-center">
-    <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
+    <RefreshCw className="h-icon-md w-icon-md animate-spin text-accent mr-sm" />
     <span className="text-muted-foreground/70">Loading component...</span>
   </Card>
 );
@@ -31,7 +31,7 @@ const DefaultLoadingFallback: React.FC = () => (
 const DefaultErrorBoundary: React.FC<{ error: Error; retry: () => void }> = ({ error, retry }) => (
   <Card className="p-xl border-destructive bg-destructive/10">
     <div className="flex items-start space-x-sm">
-      <AlertTriangle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
+      <AlertTriangle className="h-icon-md w-icon-md text-destructive flex-shrink-0 mt-0.5" />
       <div className="flex-1">
         <h3 className="text-lg font-semibold text-destructive mb-sm">Component Load Error</h3>
         <p className="text-destructive mb-md">

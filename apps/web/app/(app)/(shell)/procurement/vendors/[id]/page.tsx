@@ -87,7 +87,7 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested vendor could not be found.</p>
             </div>
           )
@@ -130,16 +130,16 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Vendor Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Building className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Building className="h-icon-sm w-icon-sm" />
                 Vendor Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(vendor as any).name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -161,8 +161,8 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
 
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Rating</span>
-                <div className="flex items-center gap-1">
-                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                <div className="flex items-center gap-xs">
+                  <Star className="h-icon-xs w-icon-xs fill-yellow-400 text-yellow-400" />
                   <span className="text-sm font-medium">
                     {(vendor as any).rating || 0}/5
                   </span>
@@ -174,27 +174,27 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
           {/* Contact Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Mail className="h-icon-sm w-icon-sm" />
                 Contact Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center gap-2 text-sm">
-                <Mail className="h-4 w-4 text-muted-foreground" />
+            <CardContent className="space-y-sm">
+              <div className="flex items-center gap-xs text-sm">
+                <Mail className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <span>{(vendor as any).contact_email || 'No email provided'}</span>
               </div>
 
               {(vendor as any).contact_phone && (
-                <div className="flex items-center gap-2 text-sm">
-                  <Phone className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-xs text-sm">
+                  <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
                   <span>{(vendor as any).contact_phone}</span>
                 </div>
               )}
 
               {(vendor as any).address && (
-                <div className="flex items-start gap-2 text-sm">
-                  <MapPin className="h-4 w-4 text-muted-foreground mt-0.5" />
+                <div className="flex items-start gap-xs text-sm">
+                  <MapPin className="h-icon-xs w-icon-xs text-muted-foreground mt-0.5" />
                   <span>{(vendor as any).address}</span>
                 </div>
               )}
@@ -204,12 +204,12 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
           {/* Performance Metrics */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <DollarSign className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <DollarSign className="h-icon-sm w-icon-sm" />
                 Performance Metrics
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Total Orders</span>
                 <span className="text-sm font-semibold">
@@ -244,19 +244,19 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
           {/* Recent Orders */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Package className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Package className="h-icon-sm w-icon-sm" />
                 Recent Orders
               </CardTitle>
             </CardHeader>
             <CardContent>
               {(vendor as any).orders && (vendor as any).orders.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {(vendor as any).orders
                     .sort((a: unknown, b: unknown) => new Date(b.order_date || 0).getTime() - new Date(a.order_date || 0).getTime())
                     .slice(0, 3)
                     .map((order: unknown) => (
-                      <div key={order.id} className="flex items-center justify-between p-2 border rounded">
+                      <div key={order.id} className="flex items-center justify-between p-xs border rounded">
                         <div>
                           <p className="text-sm font-medium">
                             Order {(order.order_number || order.id).slice(-8)}
@@ -273,7 +273,7 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
                     ))}
                 </div>
               ) : (
-                <p className="text-muted-foreground text-center py-4 text-sm">
+                <p className="text-muted-foreground text-center py-md text-sm">
                   No orders yet
                 </p>
               )}
@@ -292,9 +292,9 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
           </CardHeader>
           <CardContent>
             {(vendor as any).catalog_items && (vendor as any).catalog_items.length > 0 ? (
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <div className="grid gap-md md:grid-cols-2 lg:grid-cols-3">
                 {(vendor as any).catalog_items.map((item: unknown) => (
-                  <div key={item.id} className="p-4 border rounded-lg">
+                  <div key={item.id} className="p-md border rounded-lg">
                     <h4 className="font-medium">{item.name}</h4>
                     <p className="text-sm text-muted-foreground mt-1">
                       Category: {item.category}
@@ -306,7 +306,7 @@ export default async function VendorDetailPage({ params }: VendorDetailPageProps
                 ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 No catalog items available
               </p>
             )}

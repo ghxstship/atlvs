@@ -419,7 +419,7 @@ export function CRUDOperationsFramework({
       {validationErrors.length > 0 && (
         <div className="bg-destructive/10 border border-destructive/20 rounded-md p-sm">
           <div className="flex items-center gap-sm mb-sm">
-            <AlertTriangle className="h-4 w-4 text-destructive" />
+            <AlertTriangle className="h-icon-xs w-icon-xs text-destructive" />
             <span className="text-sm font-medium text-destructive">
               Validation Errors
             </span>
@@ -442,7 +442,7 @@ export function CRUDOperationsFramework({
               onClick={() => setCreatingRecord(true)}
               disabled={isLoading}
             >
-              <Plus className="h-4 w-4 mr-xs" />
+              <Plus className="h-icon-xs w-icon-xs mr-xs" />
               Create Record
             </Button>
           )}
@@ -454,9 +454,9 @@ export function CRUDOperationsFramework({
               disabled={isLoading}
             >
               {bulkOperation === 'delete' ? (
-                <Loader2 className="h-4 w-4 mr-xs animate-spin" />
+                <Loader2 className="h-icon-xs w-icon-xs mr-xs animate-spin" />
               ) : (
-                <Trash2 className="h-4 w-4 mr-xs" />
+                <Trash2 className="h-icon-xs w-icon-xs mr-xs" />
               )}
               Delete Selected ({selectedRecords.size})
             </Button>
@@ -504,7 +504,7 @@ export function CRUDOperationsFramework({
                 setValidationErrors([]);
               }}
             >
-              <X className="h-4 w-4 mr-xs" />
+              <X className="h-icon-xs w-icon-xs mr-xs" />
               Cancel
             </Button>
             <Button
@@ -512,9 +512,9 @@ export function CRUDOperationsFramework({
               disabled={isLoading}
             >
               {isLoading ? (
-                <Loader2 className="h-4 w-4 mr-xs animate-spin" />
+                <Loader2 className="h-icon-xs w-icon-xs mr-xs animate-spin" />
               ) : (
-                <Save className="h-4 w-4 mr-xs" />
+                <Save className="h-icon-xs w-icon-xs mr-xs" />
               )}
               Create
             </Button>
@@ -528,7 +528,7 @@ export function CRUDOperationsFramework({
           <table className="w-full">
             <thead className="bg-muted">
               <tr>
-                <th className="w-12 px-md py-sm">
+                <th className="w-icon-2xl px-md py-sm">
                   <input
                     type="checkbox"
                     checked={selectedRecords.size === data.length && data.length > 0}
@@ -652,7 +652,7 @@ export function CRUDOperationsFramework({
 
       {data.length === 0 && (
         <div className="text-center py-xl text-muted-foreground">
-          <Database className="h-12 w-12 mx-auto mb-md opacity-50" />
+          <Database className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
           <p>No records found</p>
           {permissions.create && (
             <Button

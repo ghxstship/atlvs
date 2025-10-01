@@ -229,7 +229,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Catalog Item
       </Button>
 
@@ -246,7 +246,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -254,7 +254,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
               form="catalog-item-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Item'}
             </Button>
           </div>
@@ -263,7 +263,7 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
         <form id="catalog-item-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-success/10 rounded-lg">
-              <BookOpen className="h-5 w-5 color-success" />
+              <BookOpen className="h-icon-sm w-icon-sm color-success" />
             </div>
             <div>
               <h3 className="form-label">Catalog Item Information</h3>
@@ -284,9 +284,9 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     type="radio"
                     {...register('type')}
                     value="product"
-                    className="w-4 h-4"
+                    className="w-icon-xs h-icon-xs"
                   />
-                  <Package className="h-4 w-4" />
+                  <Package className="h-icon-xs w-icon-xs" />
                   Product
                 </label>
                 <label className="flex items-center gap-sm">
@@ -294,9 +294,9 @@ export default function CreateCatalogItemClient({ orgId, onItemCreated }: Create
                     type="radio"
                     {...register('type')}
                     value="service"
-                    className="w-4 h-4"
+                    className="w-icon-xs h-icon-xs"
                   />
-                  <Wrench className="h-4 w-4" />
+                  <Wrench className="h-icon-xs w-icon-xs" />
                   Service
                 </label>
               </div>

@@ -268,7 +268,7 @@ export default function ProgrammingCalendarClient({
  onChange={(event) => setSearchTerm(event.target.value)}
  className="pl-9"
  />
- <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Filter className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  </div>
 
  <Select value={selectedProject} onValueChange={setSelectedProject}>
@@ -312,7 +312,7 @@ export default function ProgrammingCalendarClient({
  />
 
  <Button variant="outline" size="sm" onClick={loadEvents} disabled={loading}>
- <RefreshCcw className="mr-2 h-4 w-4" />
+ <RefreshCcw className="mr-2 h-icon-xs w-icon-xs" />
  Refresh
  </Button>
  </div>
@@ -328,7 +328,7 @@ export default function ProgrammingCalendarClient({
  </DropdownMenuTrigger>
  <DropdownMenuContent>
  <DropdownMenuItem onClick={bulkDelete}>
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete selected
  </DropdownMenuItem>
  <DropdownMenuItem onClick={clearSelection}>
@@ -350,7 +350,7 @@ export default function ProgrammingCalendarClient({
  onClick={() => setViewType(option.id)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  <span className="sr-only">{option.label}</span>
  </Button>
  );
@@ -358,7 +358,7 @@ export default function ProgrammingCalendarClient({
  </div>
 
  <Button onClick={openCreateDrawer}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Event
  </Button>
  </div>
@@ -366,12 +366,12 @@ export default function ProgrammingCalendarClient({
 
  <Card className="p-lg">
  {loading ? (
- <div className="flex min-h-[320px] items-center justify-center text-muted-foreground">
+ <div className="flex min-h-modal-sm items-center justify-center text-muted-foreground">
  Loading programming events...
  </div>
  ) : filteredEvents.length === 0 ? (
- <div className="flex min-h-[320px] flex-col items-center justify-center gap-md text-center">
- <CalendarIcon className="h-12 w-12 text-muted-foreground" />
+ <div className="flex min-h-modal-sm flex-col items-center justify-center gap-md text-center">
+ <CalendarIcon className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div className="space-y-xs">
  <h3 className="text-heading-5">No events found</h3>
  <p className="text-body-sm text-muted-foreground">
@@ -381,7 +381,7 @@ export default function ProgrammingCalendarClient({
  </p>
  </div>
  <Button onClick={openCreateDrawer}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Event
  </Button>
  </div>

@@ -230,7 +230,7 @@ export default function EditAccountDrawer({
 
  const renderProfileTab = () => (
  <Form {...profileForm}>
- <form onSubmit={profileForm.handleSubmit(handleProfileSave)} className="space-y-4">
+ <form onSubmit={profileForm.handleSubmit(handleProfileSave)} className="space-y-md">
  <FormField
  control={profileForm.control}
  
@@ -286,7 +286,7 @@ export default function EditAccountDrawer({
  )}
  />
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <FormField
  control={profileForm.control}
  
@@ -327,7 +327,7 @@ export default function EditAccountDrawer({
  {!isReadOnly && (
  <div className="flex justify-end pt-4">
  <Button type="submit" disabled={saving}>
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {saving ? 'Saving...' : 'Save Profile'}
  </Button>
  </div>
@@ -338,9 +338,9 @@ export default function EditAccountDrawer({
 
  const renderPasswordTab = () => (
  <Form {...passwordForm}>
- <form onSubmit={passwordForm.handleSubmit(handlePasswordChange)} className="space-y-4">
+ <form onSubmit={passwordForm.handleSubmit(handlePasswordChange)} className="space-y-md">
  <Alert>
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  Changing your password will log you out of all other sessions.
  </AlertDescription>
@@ -363,10 +363,10 @@ export default function EditAccountDrawer({
  type="button"
  variant="ghost"
  size="sm"
- className="absolute right-0 top-0 h-full px-3"
+ className="absolute right-0 top-0 h-full px-sm"
  onClick={() => setShowPassword(!showPassword)}
  >
- {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+ {showPassword ? <EyeOff className="h-icon-xs w-icon-xs" /> : <Eye className="h-icon-xs w-icon-xs" />}
  </Button>
  </div>
  </FormControl>
@@ -392,10 +392,10 @@ export default function EditAccountDrawer({
  type="button"
  variant="ghost"
  size="sm"
- className="absolute right-0 top-0 h-full px-3"
+ className="absolute right-0 top-0 h-full px-sm"
  onClick={() => setShowNewPassword(!showNewPassword)}
  >
- {showNewPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+ {showNewPassword ? <EyeOff className="h-icon-xs w-icon-xs" /> : <Eye className="h-icon-xs w-icon-xs" />}
  </Button>
  </div>
  </FormControl>
@@ -424,7 +424,7 @@ export default function EditAccountDrawer({
 
  <div className="flex justify-end pt-4">
  <Button type="submit" disabled={saving}>
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {saving ? 'Changing...' : 'Change Password'}
  </Button>
  </div>
@@ -438,12 +438,12 @@ export default function EditAccountDrawer({
  const session = record.metadata;
  
  return (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">IP Address</label>
- <div className="flex items-center gap-2 mt-1">
- <code className="text-sm bg-muted px-2 py-1 rounded flex-1">
+ <div className="flex items-center gap-xs mt-1">
+ <code className="text-sm bg-muted px-xs py-xs rounded flex-1">
  {session.ip_address}
  </code>
  <Button
@@ -451,7 +451,7 @@ export default function EditAccountDrawer({
  variant="ghost"
  onClick={() => handleCopyToClipboard(session.ip_address)}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -477,7 +477,7 @@ export default function EditAccountDrawer({
  </div>
  </div>
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Created</label>
  <div className="text-sm text-muted-foreground mt-1">
@@ -499,7 +499,7 @@ export default function EditAccountDrawer({
  onClick={handleRevokeSession}
  disabled={deleting}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  {deleting ? 'Revoking...' : 'Revoke Session'}
  </Button>
  </div>
@@ -514,8 +514,8 @@ export default function EditAccountDrawer({
  const apiKey = record.metadata;
  
  return (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Key Name</label>
  <div className="text-sm mt-1">{apiKey.name}</div>
@@ -532,8 +532,8 @@ export default function EditAccountDrawer({
 
  <div>
  <label className="text-sm font-medium">Key Prefix</label>
- <div className="flex items-center gap-2 mt-1">
- <code className="text-sm bg-muted px-2 py-1 rounded flex-1">
+ <div className="flex items-center gap-xs mt-1">
+ <code className="text-sm bg-muted px-xs py-xs rounded flex-1">
  {apiKey.key_prefix}***
  </code>
  <Button
@@ -541,14 +541,14 @@ export default function EditAccountDrawer({
  variant="ghost"
  onClick={() => handleCopyToClipboard(apiKey.key_prefix)}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  <div>
  <label className="text-sm font-medium">Permissions</label>
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {apiKey.permissions.map((permission: string) => (
  <Badge key={permission} variant="outline" className="text-xs">
  {permission}
@@ -557,7 +557,7 @@ export default function EditAccountDrawer({
  </div>
  </div>
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Created</label>
  <div className="text-sm text-muted-foreground mt-1">
@@ -579,7 +579,7 @@ export default function EditAccountDrawer({
  onClick={handleRevokeApiKey}
  disabled={deleting}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  {deleting ? 'Revoking...' : 'Revoke API Key'}
  </Button>
  </div>
@@ -594,8 +594,8 @@ export default function EditAccountDrawer({
  const twoFactor = record.metadata;
  
  return (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Status</label>
  <div className="mt-1">
@@ -613,23 +613,23 @@ export default function EditAccountDrawer({
  </div>
 
  {!twoFactor.is_enabled && !isReadOnly && (
- <div className="space-y-4">
+ <div className="space-y-md">
  <Alert>
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  Two-factor authentication is not enabled. Enable it to secure your account.
  </AlertDescription>
  </Alert>
 
  <Button onClick={handleSetupTwoFactor} disabled={saving}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  {saving ? 'Setting up...' : 'Setup Two-Factor Authentication'}
  </Button>
 
  {twoFactorQr && (
- <div className="p-4 border rounded-lg">
+ <div className="p-md border rounded-lg">
  <p className="text-sm mb-2">Scan this QR code with your authenticator app:</p>
- <code className="text-xs bg-muted p-2 rounded block">
+ <code className="text-xs bg-muted p-xs rounded block">
  {twoFactorQr}
  </code>
  </div>
@@ -638,7 +638,7 @@ export default function EditAccountDrawer({
  )}
 
  {twoFactor.is_enabled && (
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Created</label>
  <div className="text-sm text-muted-foreground mt-1">
@@ -664,7 +664,7 @@ export default function EditAccountDrawer({
  title={getDrawerTitle()}
  description={getDrawerDescription()}
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {record && (
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-3">
@@ -675,7 +675,7 @@ export default function EditAccountDrawer({
  <TabsTrigger value="metadata">Metadata</TabsTrigger>
  </TabsList>
 
- <TabsContent value="details" className="space-y-4">
+ <TabsContent value="details" className="space-y-md">
  {record.type === 'profile' && renderProfileTab()}
  {record.type === 'session' && renderSessionDetails()}
  {record.type === 'api_key' && renderApiKeyDetails()}
@@ -683,13 +683,13 @@ export default function EditAccountDrawer({
  </TabsContent>
 
  {record.type === 'profile' && (
- <TabsContent value="password" className="space-y-4">
+ <TabsContent value="password" className="space-y-md">
  {renderPasswordTab()}
  </TabsContent>
  )}
 
- <TabsContent value="metadata" className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <TabsContent value="metadata" className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Record ID</label>
  <div className="text-sm text-muted-foreground font-mono mt-1">
@@ -703,7 +703,7 @@ export default function EditAccountDrawer({
  </div>
  </div>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Created</label>
  <div className="text-sm text-muted-foreground mt-1">
@@ -721,14 +721,14 @@ export default function EditAccountDrawer({
  </Tabs>
  )}
 
- <div className="flex justify-end gap-3 pt-4 border-t">
+ <div className="flex justify-end gap-sm pt-4 border-t">
  <Button
  type="button"
  variant="outline"
  onClick={handleClose}
  disabled={saving || deleting}
  >
- <X className="h-4 w-4 mr-2" />
+ <X className="h-icon-xs w-icon-xs mr-2" />
  {mode === 'view' ? 'Close' : 'Cancel'}
  </Button>
  </div>

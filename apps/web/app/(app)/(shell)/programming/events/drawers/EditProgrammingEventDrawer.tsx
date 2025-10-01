@@ -364,13 +364,13 @@ export default function EditProgrammingEventDrawer({
  onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
  />
  <Button type="button" onClick={addTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {watchedTags?.length > 0 && (
  <div className="flex flex-wrap gap-sm">
  {watchedTags.map((tag) => (
- <Badge key={tag} variant="secondary" className="gap-1">
+ <Badge key={tag} variant="secondary" className="gap-xs">
  {tag}
  <button
  type="button"
@@ -401,10 +401,10 @@ export default function EditProgrammingEventDrawer({
  min="1"
  value={newResource.quantity}
  onChange={(e) => setNewResource({ ...newResource, quantity: parseInt(e.target.value) || 1 })}
- className="w-24"
+ className="w-component-lg"
  />
  <Button type="button" onClick={addResource} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {watchedResources?.length > 0 && (
@@ -418,7 +418,7 @@ export default function EditProgrammingEventDrawer({
  size="sm"
  onClick={() => removeResource(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -443,7 +443,7 @@ export default function EditProgrammingEventDrawer({
  placeholder="Notes (optional)"
  />
  <Button type="button" onClick={addStaff} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {watchedStaffing?.length > 0 && (
@@ -460,7 +460,7 @@ export default function EditProgrammingEventDrawer({
  size="sm"
  onClick={() => removeStaff(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -480,7 +480,7 @@ export default function EditProgrammingEventDrawer({
  Cancel
  </Button>
  <Button type="submit" disabled={loading}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {loading ? "Saving..." : "Save Changes"}
  </Button>
  </div>

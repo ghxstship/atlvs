@@ -265,17 +265,17 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  const getExpenseStatusIcon = (expense: Expense) => {
  switch (expense.status) {
  case 'approved':
- return <Check className="h-5 w-5 text-green-500" />;
+ return <Check className="h-icon-sm w-icon-sm text-green-500" />;
  case 'rejected':
- return <X className="h-5 w-5 text-red-500" />;
+ return <X className="h-icon-sm w-icon-sm text-red-500" />;
  case 'submitted':
- return <Clock className="h-5 w-5 text-yellow-500" />;
+ return <Clock className="h-icon-sm w-icon-sm text-yellow-500" />;
  case 'paid':
- return <CreditCard className="h-5 w-5 text-blue-500" />;
+ return <CreditCard className="h-icon-sm w-icon-sm text-blue-500" />;
  case 'draft':
- return <FileText className="h-5 w-5 text-gray-500" />;
+ return <FileText className="h-icon-sm w-icon-sm text-gray-500" />;
  default:
- return <Clock className="h-5 w-5 text-gray-500" />;
+ return <Clock className="h-icon-sm w-icon-sm text-gray-500" />;
  }
  };
 
@@ -466,17 +466,17 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="flex justify-between items-center">
  <div>
- <Skeleton className="h-8 w-48" />
- <Skeleton className="h-4 w-96 mt-2" />
+ <Skeleton className="h-icon-lg w-container-xs" />
+ <Skeleton className="h-icon-xs w-container-lg mt-2" />
  </div>
- <Skeleton className="h-10 w-32" />
+ <Skeleton className="h-icon-xl w-component-xl" />
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {[...Array(6)].map((_, i) => (
- <Skeleton key={i} className="h-32" />
+ <Skeleton key={i} className="h-component-xl" />
  ))}
  </div>
  </div>
@@ -491,24 +491,24 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  <h1 className="text-2xl font-bold text-gray-900">Expense Management</h1>
  <p className="text-gray-600">Track and manage your business expenses</p>
  </div>
- <Button onClick={handleCreateExpense} className="flex items-center gap-2">
- <Plus className="h-4 w-4" />
+ <Button onClick={handleCreateExpense} className="flex items-center gap-xs">
+ <Plus className="h-icon-xs w-icon-xs" />
  New Expense
  </Button>
  </div>
 
  {/* Summary Cards */}
- <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
- <Card className="p-4">
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-6">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm font-medium text-gray-600">Total Expenses</p>
  <p className="text-2xl font-bold text-gray-900">{expenses.length}</p>
  </div>
- <Receipt className="h-8 w-8 text-blue-500" />
+ <Receipt className="h-icon-lg w-icon-lg text-blue-500" />
  </div>
  </Card>
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm font-medium text-gray-600">Total Amount</p>
@@ -516,10 +516,10 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  {formatCurrency(expenses.reduce((sum, e) => sum + e.amount, 0))}
  </p>
  </div>
- <DollarSign className="h-8 w-8 text-green-500" />
+ <DollarSign className="h-icon-lg w-icon-lg text-green-500" />
  </div>
  </Card>
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm font-medium text-gray-600">Pending Approval</p>
@@ -527,10 +527,10 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  {expenses.filter(e => e.status === 'submitted').length}
  </p>
  </div>
- <Clock className="h-8 w-8 text-yellow-500" />
+ <Clock className="h-icon-lg w-icon-lg text-yellow-500" />
  </div>
  </Card>
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm font-medium text-gray-600">Approved</p>
@@ -538,23 +538,23 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  {expenses.filter(e => e.status === 'approved').length}
  </p>
  </div>
- <Check className="h-8 w-8 text-green-500" />
+ <Check className="h-icon-lg w-icon-lg text-green-500" />
  </div>
  </Card>
  </div>
 
  {/* Filters */}
- <div className="flex gap-4 mb-6">
+ <div className="flex gap-md mb-6">
  <div className="flex-1">
  <UnifiedInput
  placeholder="Search expenses..."
  value={searchTerm}
  onChange={(e) => setSearchTerm(e.target.value)}
- leftIcon={<Search className="h-4 w-4" />}
+ leftIcon={<Search className="h-icon-xs w-icon-xs" />}
  />
  </div>
  <Select value={filterStatus} onValueChange={setFilterStatus}>
- <SelectTrigger className="w-48">
+ <SelectTrigger className="w-container-xs">
  <SelectValue placeholder="Filter by status" />
  </SelectTrigger>
  <SelectContent>
@@ -567,7 +567,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  </SelectContent>
  </Select>
  <Select value={filterCategory} onValueChange={setFilterCategory}>
- <SelectTrigger className="w-48">
+ <SelectTrigger className="w-container-xs">
  <SelectValue placeholder="Filter by category" />
  </SelectTrigger>
  <SelectContent>
@@ -589,7 +589,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  <div className="flex-1">
  <DataViewProvider config={configWithData}>
  <StateManagerProvider>
- <div className="flex-1 space-y-4">
+ <div className="flex-1 space-y-md">
  {/* View Switcher and Actions */}
  <div className="flex justify-between items-center">
  <ViewSwitcher />
@@ -638,10 +638,10 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  key: 'details',
  label: 'Expense Details',
  content: (
- <div className="space-y-4">
+ <div className="space-y-md">
  {selectedExpense && (
  <>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  {getExpenseStatusIcon(selectedExpense)}
  <div>
  <h3 className="font-semibold">{selectedExpense.description}</h3>
@@ -651,7 +651,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  {selectedExpense.status}
  </Badge>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-gray-700">Amount</label>
  <p className="text-lg font-semibold">{formatCurrency(selectedExpense.amount)}</p>
@@ -681,13 +681,13 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  </div>
  )}
  {selectedExpense.status === 'submitted' && (
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button 
  onClick={() => handleApproveExpense(selectedExpense.id)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  size="sm"
  >
- <Check className="h-4 w-4" />
+ <Check className="h-icon-xs w-icon-xs" />
  Approve
  </Button>
  <Button 
@@ -696,10 +696,10 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
  if (reason) handleRejectExpense(selectedExpense.id, reason);
  }}
  variant="outline"
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  size="sm"
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  Reject
  </Button>
  </div>

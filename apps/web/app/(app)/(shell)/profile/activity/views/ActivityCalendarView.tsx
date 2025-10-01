@@ -90,12 +90,12 @@ export default function ActivityCalendarView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <Card className="p-6">
- <Skeleton className="h-8 w-48 mb-4" />
- <div className="grid grid-cols-7 gap-2">
+ <div className="space-y-lg">
+ <Card className="p-lg">
+ <Skeleton className="h-icon-lg w-container-xs mb-4" />
+ <div className="grid grid-cols-7 gap-xs">
  {Array.from({ length: 42 }).map((_, i) => (
- <Skeleton key={i} className="h-16 w-full" />
+ <Skeleton key={i} className="h-component-md w-full" />
  ))}
  </div>
  </Card>
@@ -110,11 +110,11 @@ export default function ActivityCalendarView({
  ];
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Calendar Header */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-6">
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <h2 className="text-2xl font-bold">
  {monthNames[calendarData.currentMonth]} {calendarData.currentYear}
  </h2>
@@ -123,7 +123,7 @@ export default function ActivityCalendarView({
  </Badge>
  </div>
  
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm" onClick={goToToday}>
  Today
  </Button>
@@ -132,31 +132,31 @@ export default function ActivityCalendarView({
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
  size="sm"
  onClick={() => navigateMonth('next')}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  {/* Calendar Grid */}
- <div className="space-y-2">
+ <div className="space-y-xs">
  {/* Week day headers */}
- <div className="grid grid-cols-7 gap-2">
+ <div className="grid grid-cols-7 gap-xs">
  {weekDays.map(day => (
- <div key={day} className="p-2 text-center text-sm font-medium text-muted-foreground">
+ <div key={day} className="p-xs text-center text-sm font-medium text-muted-foreground">
  {day}
  </div>
  ))}
  </div>
  
  {/* Calendar days */}
- <div className="grid grid-cols-7 gap-2">
+ <div className="grid grid-cols-7 gap-xs">
  {calendarData.days.map((day, index) => {
  const dateKey = day.toISOString().split('T')[0];
  const dayActivities = calendarData.activitiesByDate[dateKey] || [];
@@ -167,7 +167,7 @@ export default function ActivityCalendarView({
  <div
  key={index}
  className={`
- min-h-[80px] p-2 border rounded-lg transition-colors
+ min-h-header-sm p-xs border rounded-lg transition-colors
  ${isCurrentMonth ? 'bg-background' : 'bg-muted/50'}
  ${isToday ? 'ring-2 ring-primary' : ''}
  ${dayActivities.length > 0 ? 'border-primary/50' : 'border-border'}
@@ -180,19 +180,19 @@ export default function ActivityCalendarView({
  {day.getDate()}
  </span>
  {dayActivities.length > 0 && (
- <Badge variant="secondary" className="text-xs h-4 px-1">
+ <Badge variant="secondary" className="text-xs h-icon-xs px-xs">
  {dayActivities.length}
  </Badge>
  )}
  </div>
  
- <div className="space-y-1">
+ <div className="space-y-xs">
  {dayActivities.slice(0, 2).map(activity => {
  const config = ACTIVITY_TYPE_CONFIG[activity.activity_type] || ACTIVITY_TYPE_CONFIG.profile_updated;
  return (
  <div
  key={activity.id}
- className={`text-xs p-1 rounded truncate ${config.color}`}
+ className={`text-xs p-xs rounded truncate ${config.color}`}
  title={activity.activity_description}
  >
  {config.label}
@@ -214,13 +214,13 @@ export default function ActivityCalendarView({
 
  {/* Month Summary */}
  {monthActivities.length > 0 && (
- <Card className="p-6">
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <Card className="p-lg">
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Month Summary
  </h3>
  
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-6">
  {Object.entries(
  monthActivities.reduce((acc, activity) => {
  const config = ACTIVITY_TYPE_CONFIG[activity.activity_type] || ACTIVITY_TYPE_CONFIG.profile_updated;
@@ -230,9 +230,9 @@ export default function ActivityCalendarView({
  ).map(([type, count]) => {
  const config = ACTIVITY_TYPE_CONFIG[type as keyof typeof ACTIVITY_TYPE_CONFIG] || ACTIVITY_TYPE_CONFIG.profile_updated;
  return (
- <div key={type} className="text-center p-3 rounded-lg bg-muted/50">
- <div className={`inline-flex p-2 rounded-full mb-2 ${config.color}`}>
- <User className="h-4 w-4" />
+ <div key={type} className="text-center p-sm rounded-lg bg-muted/50">
+ <div className={`inline-flex p-xs rounded-full mb-2 ${config.color}`}>
+ <User className="h-icon-xs w-icon-xs" />
  </div>
  <div className="text-2xl font-bold">{count}</div>
  <div className="text-sm text-muted-foreground">{config.label}</div>
@@ -244,12 +244,12 @@ export default function ActivityCalendarView({
  {/* Recent activities for the month */}
  <div>
  <h4 className="font-medium mb-3">Recent Activities This Month</h4>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {monthActivities.slice(0, 5).map(activity => {
  const config = ACTIVITY_TYPE_CONFIG[activity.activity_type] || ACTIVITY_TYPE_CONFIG.profile_updated;
  return (
- <div key={activity.id} className="flex items-center gap-3 p-2 rounded-lg bg-muted/50">
- <div className={`p-1 rounded ${config.color}`}>
+ <div key={activity.id} className="flex items-center gap-sm p-xs rounded-lg bg-muted/50">
+ <div className={`p-xs rounded ${config.color}`}>
  <User className="h-3 w-3" />
  </div>
  <div className="flex-1 min-w-0">

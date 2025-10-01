@@ -277,7 +277,7 @@ export function VirtualizedGrid({
                   // Show item actions menu
                 }}
               >
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="h-icon-xs w-icon-xs" />
               </Button>
             </div>
           </div>
@@ -358,23 +358,23 @@ export function VirtualizedGrid({
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               placeholder="Search records..."
               value={state.search}
               onChange={(e: any) => actions.setSearch(e.target.value)}
-              className="pl-2xl w-64"
+              className="pl-2xl w-container-sm"
             />
           </div>
           <Button variant="ghost" >
-            <Filter className="h-4 w-4" />
+            <Filter className="h-icon-xs w-icon-xs" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
           <Button variant="ghost" >
-            <Settings className="h-4 w-4" />
+            <Settings className="h-icon-xs w-icon-xs" />
             View Options
           </Button>
           <Badge variant="secondary" >
@@ -476,7 +476,7 @@ export function VirtualizedGrid({
               console.log('Toggle virtualization');
             }}
           >
-            <Grid3X3 className="h-4 w-4" />
+            <Grid3X3 className="h-icon-xs w-icon-xs" />
             Virtual
           </Button>
         </div>
@@ -486,7 +486,7 @@ export function VirtualizedGrid({
       {processedData.length === 0 && !state.loading && (
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <Grid3X3 className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+            <Grid3X3 className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
             <h3 className="text-lg font-medium mb-sm">No items found</h3>
             <p className="text-sm text-muted-foreground">
               {state.search || state.filters.length > 0

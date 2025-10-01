@@ -154,7 +154,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Contract
       </Button>
 
@@ -171,7 +171,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -179,7 +179,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
               form="contract-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Contract'}
             </Button>
           </div>
@@ -188,7 +188,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
         <form id="contract-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-warning/10 rounded-lg">
-              <FileText className="h-5 w-5 color-warning" />
+              <FileText className="h-icon-sm w-icon-sm color-warning" />
             </div>
             <div>
               <h3 className="form-label">Contract Information</h3>
@@ -418,7 +418,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <input
                   type="checkbox"
                   {...register('remote')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   Remote work allowed
@@ -429,7 +429,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <input
                   type="checkbox"
                   {...register('confidentiality')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   Confidentiality agreement required
@@ -440,7 +440,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <input
                   type="checkbox"
                   {...register('exclusivity')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   Exclusive contractor (no competing work)
@@ -451,7 +451,7 @@ export default function CreateContractClient({ orgId, onContractCreated }: Creat
                 <input
                   type="checkbox"
                   {...register('autoRenewal')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   Auto-renewal clause

@@ -300,7 +300,7 @@ export default function CreateExpenseDrawer({
  className="flex-1"
  />
  <Button type="button" onClick={addTag} variant="outline" size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  )}
@@ -343,7 +343,7 @@ export default function CreateExpenseDrawer({
  Cancel
  </Button>
  <Button type="submit" disabled={loading}>
- <Receipt className="h-4 w-4 mr-sm" />
+ <Receipt className="h-icon-xs w-icon-xs mr-sm" />
  {loading ? 'Saving...' : mode === 'edit' ? 'Update Expense' : 'Create Expense'}
  </Button>
  </div>

@@ -77,7 +77,7 @@ export function ExperimentalHeroSection() {
                 onClick={handleCTAClick}
               >
                 Start Free Trial
-                <ArrowRight className="ml-sm h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-sm w-icon-sm transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>
             <Link href="/products">
@@ -97,12 +97,12 @@ export function ExperimentalHeroSection() {
               <span className="text-heading-4 color-foreground">500+</span>
               <span>Studios Trust Us</span>
             </div>
-            <div className="hidden sm:block h-4 w-px bg-border" />
+            <div className="hidden sm:block h-icon-xs w-px bg-border" />
             <div className="flex items-center gap-sm">
               <span className="text-heading-4 color-foreground">$15M+</span>
               <span>Productions Managed</span>
             </div>
-            <div className="hidden sm:block h-4 w-px bg-border" />
+            <div className="hidden sm:block h-icon-xs w-px bg-border" />
             <div className="flex items-center gap-sm">
               <span className="text-heading-4 color-foreground">14-Day</span>
               <span>Free Trial</span>
@@ -113,7 +113,7 @@ export function ExperimentalHeroSection() {
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-xl left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-foreground/20 rounded-full flex items-start justify-center p-2">
+        <div className="w-icon-md h-icon-xl border-2 border-foreground/20 rounded-full flex items-start justify-center p-xs">
           <div className="w-1 h-2 bg-foreground/40 rounded-full animate-scroll" />
         </div>
       </div>

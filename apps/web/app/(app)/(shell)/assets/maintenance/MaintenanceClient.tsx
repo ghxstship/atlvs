@@ -344,11 +344,11 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
         </div>
         <div className="flex items-center gap-sm">
           <Button variant="outline" className="flex items-center gap-sm">
-            <Download className="w-4 h-4" />
+            <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
           <Button onClick={handleCreateRecord} className="flex items-center gap-sm">
-            <Plus className="w-4 h-4" />
+            <Plus className="w-icon-xs h-icon-xs" />
             Schedule Maintenance
           </Button>
         </div>
@@ -358,9 +358,9 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
       <Card>
         <div className="p-md">
           <div className="flex flex-wrap items-center gap-md">
-            <div className="flex-1 min-w-64">
+            <div className="flex-1 min-w-container-sm">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
                 <UnifiedInput                   placeholder="Search maintenance records..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -426,7 +426,7 @@ export default function MaintenanceClient({ orgId }: MaintenanceClientProps) {
               <div className="p-md">
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center gap-sm">
-                    <Wrench className="w-5 h-5 color-muted" />
+                    <Wrench className="w-icon-sm h-icon-sm color-muted" />
                     <div>
                       <h3 className="text-body text-heading-4">{record.title}</h3>
                       <p className="text-body-sm color-muted">

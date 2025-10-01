@@ -103,7 +103,7 @@ export function SocialProof() {
   };
 
   return (
-    <section className="py-4xl bg-background">
+    <section className="py-mdxl bg-background">
       <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
@@ -126,12 +126,12 @@ export function SocialProof() {
         {/* Featured Testimonial Carousel */}
         <div className="max-w-4xl mx-auto mb-xl">
           <Card className="relative overflow-hidden">
-            <CardContent className="p-xl lg:p-2xl">
+            <CardContent className="p-xl lg:p-xsxl">
               <div className="flex items-start gap-lg">
                 {/* Quote Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center">
-                    <Quote className="h-6 w-6 color-accent" />
+                  <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-full flex items-center justify-center">
+                    <Quote className="h-icon-md w-icon-md color-accent" />
                   </div>
                 </div>
 
@@ -140,7 +140,7 @@ export function SocialProof() {
                   {/* Rating */}
                   <div className="flex items-center gap-xs mb-sm">
                     {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                      <Star key={i} className="h-5 w-5 fill-warning color-warning" />
+                      <Star key={i} className="h-icon-sm w-icon-sm fill-warning color-warning" />
                     ))}
                   </div>
 
@@ -151,7 +151,7 @@ export function SocialProof() {
 
                   {/* Author Info */}
                   <div className="flex items-center gap-xl">
-                    <div className="w-12 h-12 bg-secondary rounded-full flex items-center justify-center">
+                    <div className="w-icon-2xl h-icon-2xl bg-secondary rounded-full flex items-center justify-center">
                       <span className="text-body-sm text-heading-4">
                         {testimonials[currentTestimonial].name.split(' ').map(n => n[0]).join('')}
                       </span>
@@ -193,13 +193,13 @@ export function SocialProof() {
                     onClick={prevTestimonial}
                     className="p-sm rounded-full hover:bg-secondary transition-colors"
                   >
-                    <ChevronLeft className="h-4 w-4" />
+                    <ChevronLeft className="h-icon-xs w-icon-xs" />
                   </button>
                   <button
                     onClick={nextTestimonial}
                     className="p-sm rounded-full hover:bg-secondary transition-colors"
                   >
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-icon-xs w-icon-xs" />
                   </button>
                 </div>
               </div>
@@ -217,7 +217,7 @@ export function SocialProof() {
               <Card key={study.company} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
                   {/* Company Logo */}
-                  <div className="w-16 h-8 bg-secondary/30 rounded-lg flex items-center justify-center mb-sm">
+                  <div className="w-component-md h-icon-lg bg-secondary/30 rounded-lg flex items-center justify-center mb-sm">
                     <span className="text-body-sm form-label color-muted">
                       {study.company}
                     </span>

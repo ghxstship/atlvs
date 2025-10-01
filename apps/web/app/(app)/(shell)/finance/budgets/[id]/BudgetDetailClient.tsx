@@ -60,7 +60,7 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  size="sm"
  onClick={() => router.back()}
  >
- <ArrowLeft className="h-4 w-4 mr-xs" />
+ <ArrowLeft className="h-icon-xs w-icon-xs mr-xs" />
  Back to Budgets
  </Button>
  <div>
@@ -96,7 +96,7 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <DollarSign className="h-5 w-5 text-green-600" />
+ <DollarSign className="h-icon-sm w-icon-sm text-green-600" />
  <span className="text-sm text-gray-600">Total Budget</span>
  </div>
  <div className="text-2xl font-bold">${budget.amount?.toLocaleString() || '0'}</div>
@@ -106,7 +106,7 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <Receipt className="h-5 w-5 text-red-600" />
+ <Receipt className="h-icon-sm w-icon-sm text-red-600" />
  <span className="text-sm text-gray-600">Total Expenses</span>
  </div>
  <div className="text-2xl font-bold">${totalExpenses.toLocaleString()}</div>
@@ -116,7 +116,7 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <TrendingUp className="h-5 w-5 text-blue-600" />
+ <TrendingUp className="h-icon-sm w-icon-sm text-blue-600" />
  <span className="text-sm text-gray-600">Remaining</span>
  </div>
  <div className="text-2xl font-bold">${remainingBudget.toLocaleString()}</div>
@@ -153,11 +153,11 @@ export default function BudgetDetailClient({ budget, user, orgId }: BudgetDetail
  <CardContent className="pt-lg">
  <div className="flex items-center gap-md">
  <Button onClick={() => setIsEditDrawerOpen(true)}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Budget
  </Button>
  <Button variant="outline" onClick={() => router.push('/finance/budgets')}>
- <DollarSign className="h-4 w-4 mr-xs" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-xs" />
  View All Budgets
  </Button>
  </div>

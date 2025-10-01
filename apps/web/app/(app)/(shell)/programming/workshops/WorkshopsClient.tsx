@@ -302,7 +302,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Workshop Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create Workshop
                 </Button>
               </div>
@@ -317,7 +317,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-success/10 rounded-lg">
-                    <BookOpen className="h-5 w-5 color-success" />
+                    <BookOpen className="h-icon-sm w-icon-sm color-success" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -331,7 +331,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-accent/10 rounded-lg">
-                    <GraduationCap className="h-5 w-5 color-accent" />
+                    <GraduationCap className="h-icon-sm w-icon-sm color-accent" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -345,7 +345,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-secondary/10 rounded-lg">
-                    <Users className="h-5 w-5 color-secondary" />
+                    <Users className="h-icon-sm w-icon-sm color-secondary" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -359,7 +359,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
               <Card className="p-md">
                 <div className="flex items-center gap-sm">
                   <div className="p-sm bg-warning/10 rounded-lg">
-                    <Target className="h-5 w-5 color-warning" />
+                    <Target className="h-icon-sm w-icon-sm color-warning" />
                   </div>
                   <div>
                     <div className="text-heading-3 text-heading-3">
@@ -419,7 +419,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Workshop Info */}
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Calendar className="h-4 w-4 color-muted" />
+                      <Calendar className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Date:</span>
                       <span>
                         {selectedRecord.starts_at 
@@ -429,7 +429,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Clock className="h-4 w-4 color-muted" />
+                      <Clock className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Time:</span>
                       <span>
                         {selectedRecord.starts_at 
@@ -442,12 +442,12 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <User className="h-4 w-4 color-muted" />
+                      <User className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Instructor:</span>
                       <span>{selectedRecord.instructor || 'TBD'}</span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm">
-                      <Clock className="h-4 w-4 color-muted" />
+                      <Clock className="h-icon-xs w-icon-xs color-muted" />
                       <span className="form-label">Duration:</span>
                       <span>{selectedRecord.duration_minutes ? `${selectedRecord.duration_minutes} min` : 'TBD'}</span>
                     </div>
@@ -495,7 +495,7 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {selectedRecord.description && (
                     <div className="pt-md border-t">
                       <h4 className="form-label text-body-sm mb-sm flex items-center gap-sm">
-                        <BookOpen className="h-4 w-4" />
+                        <BookOpen className="h-icon-xs w-icon-xs" />
                         Workshop Description
                       </h4>
                       <p className="text-body-sm color-muted bg-secondary/50 p-sm rounded-lg">
@@ -507,15 +507,15 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
                   {/* Quick Actions */}
                   <div className="flex gap-sm pt-md border-t">
                     <Button>
-                      <Users className="h-4 w-4 mr-sm" />
+                      <Users className="h-icon-xs w-icon-xs mr-sm" />
                       Manage Participants
                     </Button>
                     <Button>
-                      <BookOpen className="h-4 w-4 mr-sm" />
+                      <BookOpen className="h-icon-xs w-icon-xs mr-sm" />
                       Course Materials
                     </Button>
                     <Button>
-                      <MapPin className="h-4 w-4 mr-sm" />
+                      <MapPin className="h-icon-xs w-icon-xs mr-sm" />
                       Room Assignment
                     </Button>
                   </div>
@@ -526,13 +526,13 @@ export default function WorkshopsClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-xl text-center">
-                <BookOpen className="h-12 w-12 mx-auto mb-md color-muted" />
+                <BookOpen className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
                 <h3 className="text-body text-heading-4 mb-sm">No Workshops Yet</h3>
                 <p className="color-muted mb-md">
                   Start creating educational workshops and training sessions for your events.
                 </p>
                 <Button onClick={handleCreateWorkshop}>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create First Workshop
                 </Button>
               </Card>

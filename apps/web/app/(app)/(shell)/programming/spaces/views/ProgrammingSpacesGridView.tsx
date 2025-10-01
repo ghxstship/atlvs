@@ -77,21 +77,21 @@ export default function ProgrammingSpacesGridView({
 }: ProgrammingSpacesGridViewProps) {
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {Array.from({ length: 8 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="h-3 bg-muted rounded"></div>
  <div className="h-3 bg-muted rounded w-2/3"></div>
  </div>
  </CardContent>
  <CardFooter>
- <div className="h-8 bg-muted rounded w-full"></div>
+ <div className="h-icon-lg bg-muted rounded w-full"></div>
  </CardFooter>
  </Card>
  ))}
@@ -101,9 +101,9 @@ export default function ProgrammingSpacesGridView({
 
  if (spaces.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <Square className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <Square className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No spaces found</h3>
  <p className="text-muted-foreground">
  No spaces match your current filters. Try adjusting your search criteria.
@@ -114,7 +114,7 @@ export default function ProgrammingSpacesGridView({
  }
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {spaces.map((space) => {
  const kindConfig = SPACE_KIND_CONFIG[space.kind];
  const statusConfig = STATUS_BADGE_CONFIG[space.status];
@@ -125,39 +125,39 @@ export default function ProgrammingSpacesGridView({
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-2">
- <div className={`px-2 py-1 rounded-full text-xs font-medium ${kindConfig.color}`}>
+ <div className="flex items-center gap-xs mb-2">
+ <div className={`px-xs py-xs rounded-full text-xs font-medium ${kindConfig.color}`}>
  <span className="mr-1">{kindConfig.icon}</span>
  {kindConfig.label}
  </div>
  </div>
- <h3 className="font-semibold text-sm line-clamp-2">{space.name}</h3>
+ <h3 className="font-semibold text-sm line-clamp-xs">{space.name}</h3>
  {space.description && (
- <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+ <p className="text-xs text-muted-foreground mt-1 line-clamp-xs">
  {space.description}
  </p>
  )}
  </div>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(space)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(space)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem
  onClick={() => onDelete(space.id)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -165,10 +165,10 @@ export default function ProgrammingSpacesGridView({
  </div>
  </CardHeader>
 
- <CardContent className="py-3">
- <div className="space-y-3">
+ <CardContent className="py-sm">
+ <div className="space-y-sm">
  {/* Status and Access Level */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant={statusConfig.variant} className="text-xs">
  {statusConfig.label}
  </Badge>
@@ -179,7 +179,7 @@ export default function ProgrammingSpacesGridView({
 
  {/* Capacity */}
  {space.capacity && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Users className="h-3 w-3 text-muted-foreground" />
  <span>{space.capacity}</span>
  {space.max_capacity && space.max_capacity !== space.capacity && (
@@ -191,14 +191,14 @@ export default function ProgrammingSpacesGridView({
 
  {/* Dimensions */}
  {space.area_sqft && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Square className="h-3 w-3 text-muted-foreground" />
  <span>{space.area_sqft} sq ft</span>
  </div>
  )}
 
  {/* Location */}
- <div className="space-y-1">
+ <div className="space-y-xs">
  {space.building && (
  <div className="text-xs font-medium">{space.building}</div>
  )}
@@ -209,7 +209,7 @@ export default function ProgrammingSpacesGridView({
  <div className="text-xs text-muted-foreground">Room {space.room_number}</div>
  )}
  {space.location && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <MapPin className="h-3 w-3" />
  {space.location}
  </div>
@@ -218,7 +218,7 @@ export default function ProgrammingSpacesGridView({
 
  {/* Project */}
  {space.project && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <span className="text-muted-foreground">Project:</span>
  <Badge variant="outline" className="text-xs">
  {space.project.name}
@@ -228,7 +228,7 @@ export default function ProgrammingSpacesGridView({
 
  {/* Pricing */}
  {(space.hourly_rate || space.daily_rate) && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <DollarSign className="h-3 w-3 text-muted-foreground" />
  {space.hourly_rate && <span>${space.hourly_rate}/hr</span>}
  {space.hourly_rate && space.daily_rate && <span>•</span>}
@@ -238,28 +238,28 @@ export default function ProgrammingSpacesGridView({
 
  {/* Amenities */}
  {space.amenities && Object.values(space.amenities).some(Boolean) && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {space.amenities.wifi && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  <Wifi className="h-3 w-3" />
  </Badge>
  )}
  {space.amenities.air_conditioning && (
- <Badge variant="outline" className="text-xs px-1 py-0">❄️</Badge>
+ <Badge variant="outline" className="text-xs px-xs py-0">❄️</Badge>
  )}
  {space.amenities.sound_system && (
- <Badge variant="outline" className="text-xs px-1 py-0">🔊</Badge>
+ <Badge variant="outline" className="text-xs px-xs py-0">🔊</Badge>
  )}
  {space.amenities.projection && (
- <Badge variant="outline" className="text-xs px-1 py-0">📽️</Badge>
+ <Badge variant="outline" className="text-xs px-xs py-0">📽️</Badge>
  )}
  {space.amenities.security_camera && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  <Shield className="h-3 w-3" />
  </Badge>
  )}
  {Object.values(space.amenities).filter(Boolean).length > 5 && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  +{Object.values(space.amenities).filter(Boolean).length - 5}
  </Badge>
  )}
@@ -268,7 +268,7 @@ export default function ProgrammingSpacesGridView({
 
  {/* Booking Status */}
  {space.is_bookable && (
- <div className="flex items-center gap-1 text-xs text-green-600">
+ <div className="flex items-center gap-xs text-xs text-green-600">
  <Calendar className="h-3 w-3" />
  <span>Bookable</span>
  </div>
@@ -279,12 +279,12 @@ export default function ProgrammingSpacesGridView({
  <CardFooter className="pt-3">
  <div className="flex items-center justify-between w-full text-xs text-muted-foreground">
  <span>Updated {new Date(space.updated_at).toLocaleDateString()}</span>
- <div className="flex gap-1">
+ <div className="flex gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => onView(space)}
- className="h-7 px-2 text-xs"
+ className="h-7 px-xs text-xs"
  >
  <Eye className="h-3 w-3 mr-1" />
  View
@@ -293,7 +293,7 @@ export default function ProgrammingSpacesGridView({
  variant="outline"
  size="sm"
  onClick={() => onEdit(space)}
- className="h-7 px-2 text-xs"
+ className="h-7 px-xs text-xs"
  >
  <Edit className="h-3 w-3 mr-1" />
  Edit

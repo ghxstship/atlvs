@@ -154,28 +154,28 @@ export default function LocationListView({
  onClick={() => onNavigate(location)}
  title="Navigate"
  >
- <Navigation className="h-4 w-4" />
+ <Navigation className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(location)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(location)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDuplicate(location)}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -183,7 +183,7 @@ export default function LocationListView({
  onClick={() => onDelete(location)}
  className="text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

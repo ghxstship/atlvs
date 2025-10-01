@@ -197,14 +197,14 @@ export default function CreateSettingsDrawer({
  description="Add a new configuration setting to your organization"
  >
  <Form {...form}>
- <form onSubmit={form.handleSubmit(handleSave)} className="space-y-6">
+ <form onSubmit={form.handleSubmit(handleSave)} className="space-y-lg">
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-2">
  <TabsTrigger value="basic">Basic Information</TabsTrigger>
  <TabsTrigger value="advanced">Advanced Options</TabsTrigger>
  </TabsList>
 
- <TabsContent value="basic" className="space-y-4">
+ <TabsContent value="basic" className="space-y-md">
  <FormField
  control={form.control}
  
@@ -240,7 +240,7 @@ export default function CreateSettingsDrawer({
  )}
  />
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <FormField
  control={form.control}
  
@@ -329,12 +329,12 @@ export default function CreateSettingsDrawer({
  />
  </TabsContent>
 
- <TabsContent value="advanced" className="space-y-4">
+ <TabsContent value="advanced" className="space-y-md">
  <FormField
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+ <FormItem className="flex flex-row items-center justify-between rounded-lg border p-md">
  <div className="space-y-0.5">
  <FormLabel className="text-base">Public Setting</FormLabel>
  <div className="text-sm text-muted-foreground">
@@ -355,7 +355,7 @@ export default function CreateSettingsDrawer({
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+ <FormItem className="flex flex-row items-center justify-between rounded-lg border p-md">
  <div className="space-y-0.5">
  <FormLabel className="text-base">Editable Setting</FormLabel>
  <div className="text-sm text-muted-foreground">
@@ -372,9 +372,9 @@ export default function CreateSettingsDrawer({
  )}
  />
 
- <div className="bg-muted p-4 rounded-lg">
+ <div className="bg-muted p-md rounded-lg">
  <h4 className="font-medium mb-2">Setting Preview</h4>
- <div className="space-y-2 text-sm">
+ <div className="space-y-xs text-sm">
  <div>
  <span className="font-medium">Name:</span> {form.watch('name') || 'Untitled Setting'}
  </div>
@@ -395,21 +395,21 @@ export default function CreateSettingsDrawer({
  </TabsContent>
  </Tabs>
 
- <div className="flex justify-end gap-3 pt-4 border-t">
+ <div className="flex justify-end gap-sm pt-4 border-t">
  <Button
  type="button"
  variant="outline"
  onClick={handleClose}
  disabled={saving}
  >
- <X className="h-4 w-4 mr-2" />
+ <X className="h-icon-xs w-icon-xs mr-2" />
  Cancel
  </Button>
  <Button
  type="submit"
  disabled={saving}
  >
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {saving ? 'Creating...' : 'Create Setting'}
  </Button>
  </div>

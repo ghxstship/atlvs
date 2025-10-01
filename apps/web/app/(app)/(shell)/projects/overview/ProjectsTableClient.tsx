@@ -136,10 +136,10 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         width="xl"
       >
         <div className="flex items-center gap-sm border-b pb-sm mb-sm" role="tablist" aria-label="Project tabs">
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> Details</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> Edit</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> Comments</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> Activity</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-icon-xs w-icon-xs" /> Details</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-icon-xs w-icon-xs" /> Edit</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-icon-xs w-icon-xs" /> Comments</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-icon-xs w-icon-xs" /> Activity</button>
         </div>
 
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
@@ -174,7 +174,7 @@ export default function ProjectsTableClient({ rows, orgId, labels }: { rows: Pro
         {tab === 'comments' && (
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm" aria-label="Add comment">
-              <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder="Write a comment…" />
+              <textarea name="body" className="min-h-component-md w-full rounded border p-sm" placeholder="Write a comment…" />
               <Button variant="default">Post</Button>
             </form>
             {loadingComments ? <div className="text-body-sm color-muted">Loading…</div> : (

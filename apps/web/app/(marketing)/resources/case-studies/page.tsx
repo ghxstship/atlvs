@@ -104,7 +104,7 @@ export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -126,7 +126,7 @@ export default function CaseStudiesPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Access Full Case Studies
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#featured">
@@ -157,7 +157,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Featured Case Studies */}
-      <section id="featured" className="py-4xl">
+      <section id="featured" className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -174,21 +174,21 @@ export default function CaseStudiesPage() {
                 <CardContent className="p-0">
                   <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                     <div className={`relative ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                      <div className="h-64 lg:h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                      <div className="h-container-sm lg:h-full bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                         <div className="text-center">
-                          <TrendingUp className="h-16 w-16 text-foreground mx-auto mb-md" />
+                          <TrendingUp className="h-component-md w-component-md text-foreground mx-auto mb-md" />
                           <p className="text-body-sm color-muted">Case Study Preview</p>
                         </div>
                       </div>
                       {study.isPremium && (
-                        <div className="absolute top-4 right-4">
+                        <div className="absolute top-md right-4">
                           <Badge className="bg-warning color-warning-foreground">
                             <Lock className="h-3 w-3 mr-xs" />
                             Premium
                           </Badge>
                         </div>
                       )}
-                      <div className="absolute top-4 left-4">
+                      <div className="absolute top-md left-4">
                         <Badge variant="secondary">
                           <Award className="h-3 w-3 mr-xs" />
                           Featured
@@ -207,22 +207,22 @@ export default function CaseStudiesPage() {
                       
                       <div className="grid grid-cols-2 gap-md mb-lg">
                         <div className="flex items-center gap-sm text-body-sm">
-                          <DollarSign className="h-4 w-4 text-foreground" />
+                          <DollarSign className="h-icon-xs w-icon-xs text-foreground" />
                           <span className="color-muted">Budget:</span>
                           <span>{study.budget}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
-                          <Users className="h-4 w-4 text-foreground" />
+                          <Users className="h-icon-xs w-icon-xs text-foreground" />
                           <span className="color-muted">Team:</span>
                           <span>{study.teamSize}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
-                          <Calendar className="h-4 w-4 text-foreground" />
+                          <Calendar className="h-icon-xs w-icon-xs text-foreground" />
                           <span className="color-muted">Duration:</span>
                           <span>{study.duration}</span>
                         </div>
                         <div className="flex items-center gap-sm text-body-sm">
-                          <TrendingUp className="h-4 w-4 text-foreground" />
+                          <TrendingUp className="h-icon-xs w-icon-xs text-foreground" />
                           <span className="color-muted">Results:</span>
                           <span>{study.results.length} Key Wins</span>
                         </div>
@@ -245,7 +245,7 @@ export default function CaseStudiesPage() {
                         className="w-fit group-hover:translate-x-1 transition-transform"
                       >
                         {study.isPremium ? 'Unlock Full Study' : 'Read Case Study'}
-                        <ArrowRight className="ml-sm h-4 w-4" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
                       </Button>
                     </div>
                   </div>
@@ -257,7 +257,7 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* Regular Case Studies */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -269,14 +269,14 @@ export default function CaseStudiesPage() {
             {regularStudies.map((study: any) => (
               <Card key={study.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <Eye className="h-12 w-12 text-foreground mx-auto mb-sm" />
+                      <Eye className="h-icon-2xl w-icon-2xl text-foreground mx-auto mb-sm" />
                       <p className="text-body-sm color-muted">Case Study</p>
                     </div>
                   </div>
                   {study.isPremium && (
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-md right-4">
                       <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-xs" />
                         Premium
@@ -292,7 +292,7 @@ export default function CaseStudiesPage() {
                   <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {study.title}
                   </h3>
-                  <p className="color-muted mb-md line-clamp-2">
+                  <p className="color-muted mb-md line-clamp-xs">
                     {study.excerpt}
                   </p>
                   
@@ -323,11 +323,11 @@ export default function CaseStudiesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
-              <TrendingUp className="h-16 w-16 text-foreground mx-auto mb-lg" />
+            <CardContent className="p-xsxl">
+              <TrendingUp className="h-component-md w-component-md text-foreground mx-auto mb-lg" />
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 LEARN FROM REAL RESULTS
               </h2>
@@ -339,7 +339,7 @@ export default function CaseStudiesPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Access All Case Studies
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

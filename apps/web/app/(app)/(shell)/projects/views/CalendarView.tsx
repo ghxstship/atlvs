@@ -64,12 +64,12 @@ export default function CalendarView({
 
   if (loading) {
     return (
-      <div className={`bg-card border rounded-lg p-6 ${className}`}>
-        <div className="animate-pulse space-y-4">
-          <div className="h-8 bg-muted rounded w-48"></div>
-          <div className="grid grid-cols-7 gap-1">
+      <div className={`bg-card border rounded-lg p-lg ${className}`}>
+        <div className="animate-pulse space-y-md">
+          <div className="h-icon-lg bg-muted rounded w-container-xs"></div>
+          <div className="grid grid-cols-7 gap-xs">
             {Array.from({ length: 35 }).map((_, i) => (
-              <div key={i} className="h-24 bg-muted rounded"></div>
+              <div key={i} className="h-component-lg bg-muted rounded"></div>
             ))}
           </div>
         </div>
@@ -80,18 +80,18 @@ export default function CalendarView({
   return (
     <div className={`bg-card border rounded-lg overflow-hidden ${className}`}>
       {/* Calendar Header */}
-      <div className="p-4 border-b bg-muted/30">
+      <div className="p-md border-b bg-muted/30">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold">
             {format(currentDate, 'MMMM yyyy')}
           </h2>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"
               onClick={() => navigateMonth('prev')}
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant="outline"
@@ -105,15 +105,15 @@ export default function CalendarView({
               size="sm"
               onClick={() => navigateMonth('next')}
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         </div>
 
         {/* Day Headers */}
-        <div className="grid grid-cols-7 gap-1 mt-4">
+        <div className="grid grid-cols-7 gap-xs mt-4">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-            <div key={day} className="text-center text-sm font-medium text-muted-foreground py-2">
+            <div key={day} className="text-center text-sm font-medium text-muted-foreground py-xs">
               {day}
             </div>
           ))}
@@ -121,8 +121,8 @@ export default function CalendarView({
       </div>
 
       {/* Calendar Grid */}
-      <div className="p-4">
-        <div className="grid grid-cols-7 gap-1">
+      <div className="p-md">
+        <div className="grid grid-cols-7 gap-xs">
           {calendarDays.map((day, index) => {
             const dayEvents = getEventsForDate(day);
             const isCurrentMonth = isSameMonth(day, currentDate);
@@ -131,7 +131,7 @@ export default function CalendarView({
             return (
               <div
                 key={index}
-                className={`min-h-[120px] border rounded-lg p-2 cursor-pointer hover:bg-muted/50 transition-colors ${
+                className={`min-h-header-lg border rounded-lg p-xs cursor-pointer hover:bg-muted/50 transition-colors ${
                   !isCurrentMonth ? 'bg-muted/20 text-muted-foreground' : ''
                 } ${isToday ? 'bg-primary/10 border-primary' : ''}`}
                 onClick={() => onDateClick?.(day)}
@@ -140,11 +140,11 @@ export default function CalendarView({
                   {format(day, 'd')}
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-xs">
                   {dayEvents.slice(0, 3).map((event) => (
                     <div
                       key={event.id}
-                      className="text-xs p-1 bg-primary/10 rounded cursor-pointer hover:bg-primary/20 transition-colors"
+                      className="text-xs p-xs bg-primary/10 rounded cursor-pointer hover:bg-primary/20 transition-colors"
                       onClick={(e) => {
                         e.stopPropagation();
                         onEventClick?.(event);

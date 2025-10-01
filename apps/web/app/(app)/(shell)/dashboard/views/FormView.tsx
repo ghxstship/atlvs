@@ -394,7 +394,7 @@ export const FormView: React.FC<FormViewProps> = ({
 
                   case 'boolean':
                     return (
-                      <div className="flex items-center space-x-2">
+                      <div className="flex items-center space-x-xs">
                         <Checkbox
                           checked={formField.value || false}
                           onCheckedChange={formField.onChange}
@@ -426,9 +426,9 @@ export const FormView: React.FC<FormViewProps> = ({
 
                   case 'multi_select':
                     return (
-                      <div className="space-y-2">
+                      <div className="space-y-xs">
                         {field.options?.map((option) => (
-                          <div key={String(option.value)} className="flex items-center space-x-2">
+                          <div key={String(option.value)} className="flex items-center space-x-xs">
                             <Checkbox
                               checked={(formField.value || []).includes(option.value)}
                               onCheckedChange={(checked) => {
@@ -454,7 +454,7 @@ export const FormView: React.FC<FormViewProps> = ({
                         disabled={disabled || readOnly}
                       >
                         {field.options?.map((option) => (
-                          <div key={String(option.value)} className="flex items-center space-x-2">
+                          <div key={String(option.value)} className="flex items-center space-x-xs">
                             <RadioGroupItem value={String(option.value)} />
                             <Label>{option.label}</Label>
                           </div>
@@ -503,7 +503,7 @@ export const FormView: React.FC<FormViewProps> = ({
 
     if (config.layout === 'tabs') {
       return (
-        <TabsContent key={section.id} value={section.id} className="space-y-6">
+        <TabsContent key={section.id} value={section.id} className="space-y-lg">
           {section.fields.map((field) => renderField(field, section.id))}
         </TabsContent>
       );
@@ -529,7 +529,7 @@ export const FormView: React.FC<FormViewProps> = ({
             <CardTitle className="flex items-center justify-between">
               <span>{section.title}</span>
               {section.required && <Badge variant="secondary">Required</Badge>}
-              {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+              {isCollapsed ? <ChevronRight className="h-icon-xs w-icon-xs" /> : <ChevronDown className="h-icon-xs w-icon-xs" />}
             </CardTitle>
             {section.description && (
               <p className="text-sm text-muted-foreground">{section.description}</p>
@@ -537,7 +537,7 @@ export const FormView: React.FC<FormViewProps> = ({
           </CardHeader>
 
           {!isCollapsed && (
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-lg">
               {section.fields.map((field) => renderField(field, section.id))}
             </CardContent>
           )}
@@ -547,11 +547,11 @@ export const FormView: React.FC<FormViewProps> = ({
 
     // Single layout
     return (
-      <div key={section.id} className="space-y-6">
+      <div key={section.id} className="space-y-lg">
         {(section.title || section.description) && (
           <div>
             {section.title && (
-              <h3 className="text-lg font-medium flex items-center gap-2">
+              <h3 className="text-lg font-medium flex items-center gap-xs">
                 {section.title}
                 {section.required && <Badge variant="secondary">Required</Badge>}
               </h3>
@@ -562,7 +562,7 @@ export const FormView: React.FC<FormViewProps> = ({
           </div>
         )}
 
-        <div className="grid gap-6">
+        <div className="grid gap-lg">
           {section.fields.map((field) => renderField(field, section.id))}
         </div>
       </div>
@@ -581,12 +581,12 @@ export const FormView: React.FC<FormViewProps> = ({
   }, [config.sections, form]);
 
   return (
-    <div className={cn('space-y-6', className)}>
+    <div className={cn('space-y-lg', className)}>
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <Form className="h-6 w-6" />
+          <h2 className="text-2xl font-bold flex items-center gap-xs">
+            <Form className="h-icon-md w-icon-md" />
             {config.title}
           </h2>
           {config.description && (
@@ -595,24 +595,24 @@ export const FormView: React.FC<FormViewProps> = ({
         </div>
 
         {/* Status Indicators */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           {config.autoSave && (
-            <div className="flex items-center gap-2 text-sm">
+            <div className="flex items-center gap-xs text-sm">
               {autoSaveStatus === 'saving' && (
                 <>
-                  <Clock className="h-4 w-4 animate-spin" />
+                  <Clock className="h-icon-xs w-icon-xs animate-spin" />
                   <span>Saving...</span>
                 </>
               )}
               {autoSaveStatus === 'saved' && (
                 <>
-                  <CheckCircle className="h-4 w-4 text-green-500" />
+                  <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />
                   <span>Saved {lastSaved && `at ${lastSaved.toLocaleTimeString()}`}</span>
                 </>
               )}
               {autoSaveStatus === 'error' && (
                 <>
-                  <AlertCircle className="h-4 w-4 text-red-500" />
+                  <AlertCircle className="h-icon-xs w-icon-xs text-red-500" />
                   <span>Save failed</span>
                 </>
               )}
@@ -629,15 +629,15 @@ export const FormView: React.FC<FormViewProps> = ({
 
       {/* Error Display */}
       {error && (
-        <div className="flex items-center gap-2 p-4 border border-destructive/20 bg-destructive/10 rounded-lg">
-          <AlertCircle className="h-5 w-5 text-destructive" />
+        <div className="flex items-center gap-xs p-md border border-destructive/20 bg-destructive/10 rounded-lg">
+          <AlertCircle className="h-icon-sm w-icon-sm text-destructive" />
           <span className="text-destructive">{error}</span>
         </div>
       )}
 
       {/* Progress Bar */}
       {showProgress && (
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <div className="flex justify-between text-sm">
             <span>Form Progress</span>
             <span>{formProgress}%</span>
@@ -653,7 +653,7 @@ export const FormView: React.FC<FormViewProps> = ({
 
       {/* Form */}
       <FormComponent {...form}>
-        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-xl">
           {/* Form Layout */}
           {config.layout === 'tabs' ? (
             <Tabs defaultValue={config.sections[0]?.id} className="w-full">
@@ -672,7 +672,7 @@ export const FormView: React.FC<FormViewProps> = ({
           )}
 
           {/* Form Actions */}
-          <div className="flex items-center justify-end gap-4 pt-6 border-t">
+          <div className="flex items-center justify-end gap-md pt-6 border-t">
             {onCancel && (
               <Button
                 type="button"
@@ -687,16 +687,16 @@ export const FormView: React.FC<FormViewProps> = ({
             <Button
               type="submit"
               disabled={isSubmitting || disabled}
-              className="min-w-24"
+              className="min-w-component-lg"
             >
               {isSubmitting ? (
                 <>
-                  <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
+                  <div className="w-icon-xs h-icon-xs border-2 border-current border-t-transparent rounded-full animate-spin mr-2" />
                   Submitting...
                 </>
               ) : (
                 <>
-                  <Save className="h-4 w-4 mr-2" />
+                  <Save className="h-icon-xs w-icon-xs mr-2" />
                   {config.submitLabel || 'Submit'}
                 </>
               )}

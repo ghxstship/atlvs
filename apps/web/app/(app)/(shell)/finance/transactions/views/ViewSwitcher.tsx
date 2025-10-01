@@ -37,7 +37,7 @@ export default function TransactionViewSwitcher({ currentView, onViewChange }: T
                 : 'hover:bg-white/50'
             }`}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             <span className="hidden sm:inline">{view.label}</span>
           </Button>
         );

@@ -247,10 +247,10 @@ export const ImageView: React.FC<ImageViewProps> = ({
 
   // Item size classes
   const sizeClasses = {
-    sm: 'w-24 h-24',
-    md: 'w-32 h-32',
-    lg: 'w-48 h-48',
-    xl: 'w-64 h-64'
+    sm: 'w-component-lg h-component-lg',
+    md: 'w-component-xl h-component-xl',
+    lg: 'w-container-xs h-container-xs',
+    xl: 'w-container-sm h-container-sm'
   };
 
   // Aspect ratio classes
@@ -285,7 +285,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
       >
         {/* Selection Checkbox */}
         {selectable && (
-          <div className="absolute top-2 left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+          <div className="absolute top-xs left-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
             <Checkbox
               checked={isSelected}
               onCheckedChange={() => handleSelectItem(itemId)}
@@ -295,7 +295,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
         )}
 
         {/* Item Type Badge */}
-        <div className="absolute top-2 right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute top-xs right-2 z-10 opacity-0 group-hover:opacity-100 transition-opacity">
           <Badge variant="secondary" className="text-xs">
             <Icon className="h-3 w-3 mr-1" />
             {itemType}
@@ -312,7 +312,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
             <>
               {!isImageLoaded && (
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  <div className="w-icon-lg h-icon-lg border-2 border-primary border-t-transparent rounded-full animate-spin" />
                 </div>
               )}
               <img
@@ -329,7 +329,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
           ) : (
             // Non-image item placeholder
             <div className="w-full h-full flex items-center justify-center bg-muted">
-              <Icon className="h-8 w-8 text-muted-foreground" />
+              <Icon className="h-icon-lg w-icon-lg text-muted-foreground" />
             </div>
           )}
 
@@ -339,7 +339,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
 
         {/* Item Info */}
         {showTitles && (
-          <div className="mt-2 px-1">
+          <div className="mt-2 px-xs">
             <h3 className="text-sm font-medium truncate" title={title}>
               {title}
             </h3>
@@ -352,12 +352,12 @@ export const ImageView: React.FC<ImageViewProps> = ({
         )}
 
         {/* Quick Actions */}
-        <div className="absolute bottom-2 left-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="absolute bottom-2 left-2 right-2 flex gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
           {onItemDownload && (
             <Button
               size="sm"
               variant="secondary"
-              className="h-6 w-6 p-0 flex-1"
+              className="h-icon-md w-icon-md p-0 flex-1"
               onClick={(e) => {
                 e.stopPropagation();
                 onItemDownload(row);
@@ -370,7 +370,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
             <Button
               size="sm"
               variant="secondary"
-              className="h-6 w-6 p-0 flex-1"
+              className="h-icon-md w-icon-md p-0 flex-1"
               onClick={(e) => {
                 e.stopPropagation();
                 onItemShare(row);
@@ -383,7 +383,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
             <Button
               size="sm"
               variant="secondary"
-              className="h-6 w-6 p-0 flex-1"
+              className="h-icon-md w-icon-md p-0 flex-1"
               onClick={(e) => {
                 e.stopPropagation();
                 onItemFavorite(row);
@@ -421,19 +421,19 @@ export const ImageView: React.FC<ImageViewProps> = ({
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search gallery..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
@@ -444,16 +444,16 @@ export const ImageView: React.FC<ImageViewProps> = ({
               variant="outline"
               size="sm"
               onClick={handleSelectAll}
-              className="flex items-center gap-2"
+              className="flex items-center gap-xs"
             >
-              {allSelected ? <CheckSquare className="h-4 w-4" /> : <Square className="h-4 w-4" />}
+              {allSelected ? <CheckSquare className="h-icon-xs w-icon-xs" /> : <Square className="h-icon-xs w-icon-xs" />}
               {allSelected ? 'Deselect All' : 'Select All'}
             </Button>
           )}
 
           {/* Bulk Actions */}
           {bulkActions.length > 0 && selectedItems.length > 0 && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {bulkActions.map((action, index) => {
                 const Icon = action.icon;
                 return (
@@ -469,7 +469,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
                     }}
                     disabled={action.disabled}
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -478,12 +478,12 @@ export const ImageView: React.FC<ImageViewProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Type Filter */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" size="sm">
-                <Filter className="h-4 w-4 mr-1" />
+                <Filter className="h-icon-xs w-icon-xs mr-1" />
                 Types
               </Button>
             </DropdownMenuTrigger>
@@ -518,8 +518,8 @@ export const ImageView: React.FC<ImageViewProps> = ({
       {/* Image Grid */}
       <div className={cn(
         layout === 'grid'
-          ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4'
-          : 'columns-2 md:columns-3 lg:columns-4 xl:columns-6 gap-4',
+          ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-md'
+          : 'columns-2 md:columns-3 lg:columns-4 xl:columns-6 gap-md',
         className
       )}>
         {loading ? (
@@ -533,7 +533,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
           ))
         ) : filteredData.length === 0 ? (
           // Empty state
-          <div className="col-span-full flex items-center justify-center py-12">
+          <div className="col-span-full flex items-center justify-center py-xsxl">
             <div className="text-center">
               <div className="text-muted-foreground mb-2">{emptyMessage}</div>
               <Button variant="outline" size="sm">
@@ -556,7 +556,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
             {pagination.total} results
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"
@@ -593,7 +593,7 @@ export const ImageView: React.FC<ImageViewProps> = ({
             </DialogHeader>
 
             {lightboxItem && (
-              <div className="flex flex-col items-center space-y-4">
+              <div className="flex flex-col items-center space-y-md">
                 <img
                   src={String(lightboxItem[fieldMapping.image] || '')}
                   alt={String(lightboxItem[fieldMapping.title] || '')}
@@ -606,16 +606,16 @@ export const ImageView: React.FC<ImageViewProps> = ({
                   </p>
                 )}
 
-                <div className="flex gap-2">
+                <div className="flex gap-xs">
                   {onItemDownload && (
                     <Button onClick={() => onItemDownload(lightboxItem)}>
-                      <Download className="h-4 w-4 mr-1" />
+                      <Download className="h-icon-xs w-icon-xs mr-1" />
                       Download
                     </Button>
                   )}
                   {onItemShare && (
                     <Button variant="outline" onClick={() => onItemShare(lightboxItem)}>
-                      <Share className="h-4 w-4 mr-1" />
+                      <Share className="h-icon-xs w-icon-xs mr-1" />
                       Share
                     </Button>
                   )}

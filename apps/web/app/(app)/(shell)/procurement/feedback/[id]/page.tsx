@@ -59,16 +59,16 @@ export default async function FeedbackDetailPage({ params }: FeedbackDetailPageP
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MessageSquare className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <MessageSquare className="h-icon-sm w-icon-sm" />
                 Vendor Feedback
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Vendor performance feedback, ratings, and reviews.
               </p>
             </CardContent>
@@ -76,13 +76,13 @@ export default async function FeedbackDetailPage({ params }: FeedbackDetailPageP
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Star className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Star className="h-icon-sm w-icon-sm" />
                 Quality Assessment
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Product quality, delivery timeliness, and service ratings.
               </p>
             </CardContent>
@@ -96,13 +96,13 @@ export default async function FeedbackDetailPage({ params }: FeedbackDetailPageP
       content: (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <ThumbsUp className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <ThumbsUp className="h-icon-sm w-icon-sm" />
               Detailed Reviews
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Comprehensive vendor and product reviews with detailed feedback.
             </p>
           </CardContent>

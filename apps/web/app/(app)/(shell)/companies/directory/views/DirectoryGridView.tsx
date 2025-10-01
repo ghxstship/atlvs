@@ -21,12 +21,12 @@ export default function DirectoryGridView({
 }: DirectoryGridViewProps) {
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {[...Array(8)].map((_, i) => (
- <Card key={i} className="p-6 animate-pulse">
- <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+ <Card key={i} className="p-lg animate-pulse">
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/2 mb-4"></div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="h-3 bg-muted rounded w-full"></div>
  <div className="h-3 bg-muted rounded w-2/3"></div>
  </div>
@@ -38,8 +38,8 @@ export default function DirectoryGridView({
 
  if (companies.length === 0) {
  return (
- <div className="text-center py-12">
- <Building className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Building className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No companies found</h3>
  <p className="text-muted-foreground">
  Try adjusting your search criteria or add a new company.
@@ -81,9 +81,9 @@ export default function DirectoryGridView({
  };
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {companies.map((company) => (
- <Card key={company.id} className="p-6 hover:shadow-md transition-shadow">
+ <Card key={company.id} className="p-lg hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-4">
  <div className="flex-1">
  <h3 className="font-semibold text-lg mb-1 truncate" title={company.name}>
@@ -100,21 +100,21 @@ export default function DirectoryGridView({
  <img
  src={company.logo_url}
  alt={`${company.name} logo`}
- className="w-12 h-12 rounded-lg object-cover"
+ className="w-icon-2xl h-icon-2xl rounded-lg object-cover"
  />
  )}
  </div>
 
  {company.description && (
- <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+ <p className="text-sm text-muted-foreground mb-4 line-clamp-xs">
  {company.description}
  </p>
  )}
 
- <div className="space-y-2 mb-4">
+ <div className="space-y-xs mb-4">
  {company.website && (
  <div className="flex items-center text-sm text-muted-foreground">
- <Globe className="h-4 w-4 mr-2 flex-shrink-0" />
+ <Globe className="h-icon-xs w-icon-xs mr-2 flex-shrink-0" />
  <a
  href={company.website as any as any}
  target="_blank"
@@ -128,7 +128,7 @@ export default function DirectoryGridView({
  
  {company.email && (
  <div className="flex items-center text-sm text-muted-foreground">
- <Mail className="h-4 w-4 mr-2 flex-shrink-0" />
+ <Mail className="h-icon-xs w-icon-xs mr-2 flex-shrink-0" />
  <a
  href={`mailto:${company.email as any as any}`}
  className="hover:text-primary truncate"
@@ -140,7 +140,7 @@ export default function DirectoryGridView({
  
  {company.phone && (
  <div className="flex items-center text-sm text-muted-foreground">
- <Phone className="h-4 w-4 mr-2 flex-shrink-0" />
+ <Phone className="h-icon-xs w-icon-xs mr-2 flex-shrink-0" />
  <a
  href={`tel:${company.phone as any as any}`}
  className="hover:text-primary"
@@ -152,7 +152,7 @@ export default function DirectoryGridView({
  
  {(company.city || company.country) && (
  <div className="flex items-center text-sm text-muted-foreground">
- <MapPin className="h-4 w-4 mr-2 flex-shrink-0" />
+ <MapPin className="h-icon-xs w-icon-xs mr-2 flex-shrink-0" />
  <span className="truncate">
  {[company.city, company.country].filter(Boolean).join(', ')}
  </span>
@@ -161,7 +161,7 @@ export default function DirectoryGridView({
  
  {company.size && (
  <div className="flex items-center text-sm text-muted-foreground">
- <Users className="h-4 w-4 mr-2 flex-shrink-0" />
+ <Users className="h-icon-xs w-icon-xs mr-2 flex-shrink-0" />
  <span>{getSizeLabel(company.size)}</span>
  </div>
  )}
@@ -171,27 +171,27 @@ export default function DirectoryGridView({
  <div className="text-xs text-muted-foreground">
  {company.founded_year && `Founded ${company.founded_year}`}
  </div>
- <div className="flex items-center space-x-1">
+ <div className="flex items-center space-x-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(company)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(company)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(company)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

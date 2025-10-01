@@ -180,7 +180,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Endorsement
       </Button>
 
@@ -197,7 +197,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -205,7 +205,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
               form="endorsement-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Endorsement'}
             </Button>
           </div>
@@ -214,7 +214,7 @@ export default function CreateEndorsementClient({ orgId, onEndorsementCreated }:
         <form id="endorsement-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-warning/10 rounded-lg">
-              <Star className="h-5 w-5 color-warning" />
+              <Star className="h-icon-sm w-icon-sm color-warning" />
             </div>
             <div>
               <h3 className="form-label">Endorsement Information</h3>

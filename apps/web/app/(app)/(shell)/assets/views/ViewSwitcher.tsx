@@ -143,7 +143,7 @@ export default function ViewSwitcher({
   const visibleSecondaryViews = secondaryViews.slice(0, 4);
 
   return (
-    <div className={`flex items-center gap-1 p-1 bg-gray-50 rounded-lg border ${className}`}>
+    <div className={`flex items-center gap-xs p-xs bg-gray-50 rounded-lg border ${className}`}>
       {/* Primary View Buttons */}
       {primaryViews.map(viewType => {
         const option = getViewOption(viewType);
@@ -157,7 +157,7 @@ export default function ViewSwitcher({
             key={viewType}
             variant={isActive ? 'default' : 'ghost'}
             size="sm"
-            className={`h-8 px-3 transition-all ${
+            className={`h-icon-lg px-sm transition-all ${
               isActive ? 'shadow-sm' : 'hover:bg-white'
             } ${isTransitioning ? 'pointer-events-none opacity-50' : ''}`}
             onClick={() => handleViewChange(viewType)}
@@ -165,7 +165,7 @@ export default function ViewSwitcher({
             title={option.description}
             disabled={isTransitioning}
           >
-            <Icon className="w-4 h-4 mr-2" />
+            <Icon className="w-icon-xs h-icon-xs mr-2" />
             <span className="hidden sm:inline">{option.label}</span>
             {option.badge && (
               <Badge variant="secondary" className="ml-2 text-xs">
@@ -178,7 +178,7 @@ export default function ViewSwitcher({
 
       {/* Separator */}
       {visibleSecondaryViews.length > 0 && (
-        <div className="w-px h-6 bg-gray-300 mx-1" />
+        <div className="w-px h-icon-md bg-gray-300 mx-1" />
       )}
 
       {/* Secondary View Buttons */}
@@ -194,7 +194,7 @@ export default function ViewSwitcher({
             key={viewType}
             variant={isActive ? 'default' : 'ghost'}
             size="sm"
-            className={`h-8 px-2 transition-all ${
+            className={`h-icon-lg px-xs transition-all ${
               isActive ? 'shadow-sm' : 'hover:bg-white'
             } ${isTransitioning ? 'pointer-events-none opacity-50' : ''}`}
             onClick={() => handleViewChange(viewType)}
@@ -202,7 +202,7 @@ export default function ViewSwitcher({
             title={option.description}
             disabled={isTransitioning}
           >
-            <Icon className="w-4 h-4" />
+            <Icon className="w-icon-xs h-icon-xs" />
             <span className="sr-only">{option.label}</span>
           </Button>
         );
@@ -215,13 +215,13 @@ export default function ViewSwitcher({
             <Button
               variant="ghost"
               size="sm"
-              className={`h-8 w-8 p-0 ${isTransitioning ? 'pointer-events-none opacity-50' : ''}`}
+              className={`h-icon-lg w-icon-lg p-0 ${isTransitioning ? 'pointer-events-none opacity-50' : ''}`}
               disabled={isTransitioning}
             >
-              <MoreHorizontal className="w-4 h-4" />
+              <MoreHorizontal className="w-icon-xs h-icon-xs" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-48">
+          <DropdownMenuContent align="end" className="w-container-xs">
             {overflowViews.map(viewType => {
               const option = getViewOption(viewType);
               if (!option) return null;
@@ -236,7 +236,7 @@ export default function ViewSwitcher({
                   onClick={() => handleViewChange(viewType)}
                   disabled={isTransitioning}
                 >
-                  <Icon className="w-4 h-4 mr-2" />
+                  <Icon className="w-icon-xs h-icon-xs mr-2" />
                   <span>{option.label}</span>
                   {option.badge && (
                     <Badge variant="secondary" className="ml-auto text-xs">
@@ -254,14 +254,14 @@ export default function ViewSwitcher({
       )}
 
       {/* Settings Button */}
-      <div className="w-px h-6 bg-gray-300 mx-1" />
+      <div className="w-px h-icon-md bg-gray-300 mx-1" />
       <Button
         variant="ghost"
         size="sm"
-        className="h-8 w-8 p-0"
+        className="h-icon-lg w-icon-lg p-0"
         title="View settings"
       >
-        <Settings className="w-4 h-4" />
+        <Settings className="w-icon-xs h-icon-xs" />
       </Button>
     </div>
   );

@@ -329,7 +329,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
       <Card key={widget.id} className={`p-md ${widget.size === 'small' ? 'col-span-1' : widget.size === 'large' ? 'col-span-2' : 'col-span-1'}`}>
         <div className="flex items-center justify-between mb-sm">
           <div className="flex items-center cluster-sm">
-            <IconComponent className="h-4 w-4 color-accent" />
+            <IconComponent className="h-icon-xs w-icon-xs color-accent" />
             <span className="text-body-sm form-label">{widget.title}</span>
           </div>
           <div className="flex items-center cluster-xs">
@@ -350,7 +350,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           </div>
         </div>
         
-        <div className="h-32 bg-secondary/50 rounded flex items-center justify-center">
+        <div className="h-component-xl bg-secondary/50 rounded flex items-center justify-center">
           {widget.type === 'metric' && widget.data?.[0] ? (
             <div className="text-center">
               <div className="text-heading-3 text-heading-3 color-foreground">
@@ -362,7 +362,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             </div>
           ) : (
             <div className="text-center color-muted">
-              <IconComponent className="h-8 w-8 mx-auto mb-sm" />
+              <IconComponent className="h-icon-lg w-icon-lg mx-auto mb-sm" />
               <div className="text-body-sm">Chart Preview</div>
             </div>
           )}
@@ -375,10 +375,10 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
             {[1, 2, 3].map((i: any) => (
-              <div key={i} className="h-32 bg-secondary rounded"></div>
+              <div key={i} className="h-component-xl bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -406,7 +406,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
           <p className="text-body-sm color-muted">Create and manage custom analytics dashboards</p>
         </div>
         <Button onClick={() => setShowCreateDashboard(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           New Dashboard
         </Button>
       </div>
@@ -424,7 +424,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             }`}
           >
             <div className="flex items-center cluster-sm">
-              <Layout className="h-4 w-4" />
+              <Layout className="h-icon-xs w-icon-xs" />
               <span className="text-body-sm form-label">{dashboard.name}</span>
               {dashboard.isPublic && (
                 <Badge variant="outline">Public</Badge>
@@ -450,15 +450,15 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             </div>
             <div className="flex items-center cluster-sm">
               <Button>
-                <Share2 className="h-4 w-4 mr-sm" />
+                <Share2 className="h-icon-xs w-icon-xs mr-sm" />
                 Share
               </Button>
               <Button>
-                <Download className="h-4 w-4 mr-sm" />
+                <Download className="h-icon-xs w-icon-xs mr-sm" />
                 Export
               </Button>
               <Button>
-                <Settings className="h-4 w-4 mr-sm" />
+                <Settings className="h-icon-xs w-icon-xs mr-sm" />
                 Settings
               </Button>
             </div>
@@ -474,7 +474,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                  
                   onClick={() => addWidget('chart', 'bar')}
                 >
-                  <BarChart3 className="h-4 w-4 mr-xs" />
+                  <BarChart3 className="h-icon-xs w-icon-xs mr-xs" />
                   Bar Chart
                 </Button>
                 <Button
@@ -482,7 +482,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                  
                   onClick={() => addWidget('chart', 'line')}
                 >
-                  <LineChart className="h-4 w-4 mr-xs" />
+                  <LineChart className="h-icon-xs w-icon-xs mr-xs" />
                   Line Chart
                 </Button>
                 <Button
@@ -490,7 +490,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                  
                   onClick={() => addWidget('chart', 'pie')}
                 >
-                  <PieChart className="h-4 w-4 mr-xs" />
+                  <PieChart className="h-icon-xs w-icon-xs mr-xs" />
                   Pie Chart
                 </Button>
                 <Button
@@ -498,7 +498,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                  
                   onClick={() => addWidget('metric')}
                 >
-                  <TrendingUp className="h-4 w-4 mr-xs" />
+                  <TrendingUp className="h-icon-xs w-icon-xs mr-xs" />
                   Metric
                 </Button>
               </div>
@@ -512,7 +512,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
             </div>
           ) : (
             <Card className="p-xl text-center">
-              <Layout className="h-12 w-12 color-muted mx-auto mb-md" />
+              <Layout className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
               <h3 className="text-body form-label color-foreground mb-sm">
                 No widgets yet
               </h3>
@@ -520,7 +520,7 @@ export default function DashboardsClient({ organizationId, translations }: Dashb
                 Add your first widget to start building your dashboard
               </p>
               <Button onClick={() => addWidget('metric')}>
-                <Plus className="h-4 w-4 mr-sm" />
+                <Plus className="h-icon-xs w-icon-xs mr-sm" />
                 Add Widget
               </Button>
             </Card>

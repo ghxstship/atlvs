@@ -63,12 +63,12 @@ export default function ProgrammingLineupsListView({
  };
  const getSortIcon = (field: keyof ProgrammingLineup) => {
  if (sortConfig.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sortConfig.direction === "asc" ? (
- <ArrowUp className="h-4 w-4" />
+ <ArrowUp className="h-icon-xs w-icon-xs" />
  ) : (
- <ArrowDown className="h-4 w-4" />
+ <ArrowDown className="h-icon-xs w-icon-xs" />
  );
  };
 
@@ -116,9 +116,9 @@ export default function ProgrammingLineupsListView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading lineups...</p>
  </div>
  </div>
@@ -132,7 +132,7 @@ export default function ProgrammingLineupsListView({
  <table className="w-full border-collapse text-sm">
  <thead className="bg-muted/50">
  <tr>
- <th className="w-12 px-md py-sm text-left">
+ <th className="w-icon-2xl px-md py-sm text-left">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -197,7 +197,7 @@ export default function ProgrammingLineupsListView({
  <th className="px-md py-sm text-left">Stage</th>
  <th className="px-md py-sm text-left">Event</th>
  <th className="px-md py-sm text-left">Fee</th>
- <th className="w-12 px-md py-sm text-left">Actions</th>
+ <th className="w-icon-2xl px-md py-sm text-left">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -240,7 +240,7 @@ export default function ProgrammingLineupsListView({
  </Badge>
  </td>
  <td className="px-md py-sm">
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Clock className="h-3 w-3" />
  {formatTime(lineup.set_time)}
  </div>
@@ -252,7 +252,7 @@ export default function ProgrammingLineupsListView({
  </td>
  <td className="px-md py-sm">
  {lineup.stage && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <MapPin className="h-3 w-3" />
  <span className="truncate max-w-xs">{lineup.stage}</span>
  </div>
@@ -270,34 +270,34 @@ export default function ProgrammingLineupsListView({
  </td>
  <td className="px-md py-sm">
  {lineup.contract_details.fee != null && lineup.contract_details.currency && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <DollarSign className="h-3 w-3" />
  {formatCurrency(lineup.contract_details.fee, lineup.contract_details.currency)}
  </div>
  )}
  </td>
  <td className="px-md py-sm" onClick={(e) => e.stopPropagation()}>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(lineup)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(lineup)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(lineup)}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </td>
@@ -314,19 +314,19 @@ export default function ProgrammingLineupsListView({
  <div>
  <h4 className="font-medium text-sm mb-1">Contact</h4>
  {lineup.contact_info.email && (
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Mail className="h-3 w-3" />
  {lineup.contact_info.email}
  </div>
  )}
  {lineup.contact_info.phone && (
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Phone className="h-3 w-3" />
  {lineup.contact_info.phone}
  </div>
  )}
  {lineup.contact_info.agent && (
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <User className="h-3 w-3" />
  Agent: {lineup.contact_info.agent}
  </div>
@@ -338,7 +338,7 @@ export default function ProgrammingLineupsListView({
  {lineup.technical_requirements?.equipment && lineup.technical_requirements.equipment.length > 0 && (
  <div>
  <h4 className="font-medium text-sm mb-1">Equipment</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {lineup.technical_requirements.equipment.slice(0, 3).map((item, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {item}
@@ -385,7 +385,7 @@ export default function ProgrammingLineupsListView({
  {lineup.tags.length > 0 && (
  <div className="md:col-span-2 lg:col-span-3">
  <h4 className="font-medium text-sm mb-1">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {lineup.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}

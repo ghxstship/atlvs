@@ -21,16 +21,16 @@ export interface EnhancedUniversalDrawerProps {
 
 const sizeClasses = {
   sm: {
-    left: 'w-80',
-    right: 'w-80',
-    top: 'h-80',
-    bottom: 'h-80',
+    left: 'w-container-md',
+    right: 'w-container-md',
+    top: 'h-container-md',
+    bottom: 'h-container-md',
   },
   md: {
-    left: 'w-96',
-    right: 'w-96',
-    top: 'h-96',
-    bottom: 'h-96',
+    left: 'w-container-lg',
+    right: 'w-container-lg',
+    top: 'h-container-lg',
+    bottom: 'h-container-lg',
   },
   lg: {
     left: 'w-[32rem]',
@@ -168,9 +168,9 @@ export const EnhancedUniversalDrawer: React.FC<EnhancedUniversalDrawerProps> = (
               variant="ghost"
               size="sm"
               onClick={onClose}
-              className="h-8 w-8 p-0"
+              className="h-icon-lg w-icon-lg p-0"
             >
-              <X className="h-4 w-4" />
+              <X className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         )}
@@ -192,9 +192,9 @@ export const EnhancedUniversalDrawer: React.FC<EnhancedUniversalDrawerProps> = (
             variant="ghost"
             size="sm"
             onClick={onClose}
-            className="absolute top-2 right-2 h-8 w-8 p-0 z-10"
+            className="absolute top-2 right-2 h-icon-lg w-icon-lg p-0 z-10"
           >
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         )}
       </div>

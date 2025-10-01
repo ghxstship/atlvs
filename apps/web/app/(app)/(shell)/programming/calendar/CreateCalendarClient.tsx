@@ -143,7 +143,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Create Event
       </Button>
 
@@ -254,7 +254,7 @@ export default function CreateCalendarClient({ orgId }: { orgId: string }) {
               loading={isLoading}
               className="flex items-center gap-sm"
             >
-              <Calendar className="h-4 w-4" />
+              <Calendar className="h-icon-xs w-icon-xs" />
               Create Event
             </Button>
           </div>

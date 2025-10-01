@@ -120,7 +120,7 @@ export default function OverviewTemplate({
  <Card className="p-lg">
  <div className="space-y-md">
  <h3 className="font-semibold text-foreground flex items-center space-x-sm">
- <Plus className="w-4 h-4" />
+ <Plus className="w-icon-xs h-icon-xs" />
  <span>Quick Actions</span>
  </h3>
  <div className="grid grid-cols-2 md:grid-cols-4 gap-sm">
@@ -215,7 +215,7 @@ export default function OverviewTemplate({
  onClick={() => setViewMode('grid')}
  className="p-xs"
  >
- <Grid3X3 className="w-4 h-4" />
+ <Grid3X3 className="w-icon-xs h-icon-xs" />
  </Button>
  <Button
  variant={viewMode === 'list' ? 'default' : 'ghost'}
@@ -223,7 +223,7 @@ export default function OverviewTemplate({
  onClick={() => setViewMode('list')}
  className="p-xs"
  >
- <List className="w-4 h-4" />
+ <List className="w-icon-xs h-icon-xs" />
  </Button>
  <Button
  variant={viewMode === 'compact' ? 'default' : 'ghost'}
@@ -231,7 +231,7 @@ export default function OverviewTemplate({
  onClick={() => setViewMode('compact')}
  className="p-xs"
  >
- <BarChart3 className="w-4 h-4" />
+ <BarChart3 className="w-icon-xs h-icon-xs" />
  </Button>
  </div>
 
@@ -242,7 +242,7 @@ export default function OverviewTemplate({
  onClick={() => setShowFilters(!showFilters)}
  className="p-xs"
  >
- <Filter className="w-4 h-4" />
+ <Filter className="w-icon-xs h-icon-xs" />
  </Button>
  
  <Button
@@ -252,7 +252,7 @@ export default function OverviewTemplate({
  disabled={isRefreshing}
  className="p-xs"
  >
- <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+ <RefreshCw className={`w-icon-xs h-icon-xs ${isRefreshing ? 'animate-spin' : ''}`} />
  </Button>
 
  <Button
@@ -260,7 +260,7 @@ export default function OverviewTemplate({
  size="sm"
  className="p-xs"
  >
- <Download className="w-4 h-4" />
+ <Download className="w-icon-xs h-icon-xs" />
  </Button>
 
  <Button
@@ -268,7 +268,7 @@ export default function OverviewTemplate({
  size="sm"
  className="p-xs"
  >
- <Settings className="w-4 h-4" />
+ <Settings className="w-icon-xs h-icon-xs" />
  </Button>
  </div>
  </div>

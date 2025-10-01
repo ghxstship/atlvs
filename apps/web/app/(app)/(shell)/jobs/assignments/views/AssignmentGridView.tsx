@@ -41,17 +41,17 @@ export default function AssignmentGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'completed':
- return <CheckCircle className="h-4 w-4" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs" />;
  case 'in_progress':
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  case 'assigned':
- return <Users className="h-4 w-4" />;
+ return <Users className="h-icon-xs w-icon-xs" />;
  case 'pending':
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  case 'cancelled':
- return <AlertCircle className="h-4 w-4" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs" />;
  default:
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -62,8 +62,8 @@ export default function AssignmentGridView({
  sortable: true,
  render: (value: string, record: JobAssignment) => (
  <div className="flex items-center gap-sm">
- <div className="h-8 w-8 bg-accent/10 rounded-md flex items-center justify-center">
- <Users className="h-4 w-4 color-accent" />
+ <div className="h-icon-lg w-icon-lg bg-accent/10 rounded-md flex items-center justify-center">
+ <Users className="h-icon-xs w-icon-xs color-accent" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">{value || 'Untitled Job'}</p>
@@ -78,7 +78,7 @@ export default function AssignmentGridView({
  sortable: true,
  render: (value: string, record: JobAssignment) => (
  <div className="flex items-center gap-sm">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Users className="h-3 w-3" />
  </div>
  <div>
@@ -138,7 +138,7 @@ export default function AssignmentGridView({
  key: 'note',
  label: 'Notes',
  render: (value: string) => (
- <p className="text-body-sm color-muted line-clamp-2 max-w-xs">
+ <p className="text-body-sm color-muted line-clamp-xs max-w-xs">
  {value || '—'}
  </p>
  )
@@ -189,7 +189,7 @@ export default function AssignmentGridView({
  emptyState={{
  title: 'No Assignments Found',
  description: 'No job assignments match your current filters.',
- icon: <Users className="h-12 w-12 color-muted" />
+ icon: <Users className="h-icon-2xl w-icon-2xl color-muted" />
  }}
  />
  );

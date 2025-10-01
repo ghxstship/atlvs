@@ -55,7 +55,7 @@ export const ViewSwitcher: React.FC = () => {
             size="sm"
             onClick={() => setViewMode(view as any)}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
           </Button>
         );
       })}
@@ -233,7 +233,7 @@ export const DataViewContainer: React.FC = () => {
       return (
         <div className="p-xl text-center">
           <div className="text-muted-foreground">
-            <div className="h-12 w-12 mx-auto mb-md bg-muted rounded-lg flex items-center justify-center">
+            <div className="h-icon-2xl w-icon-2xl mx-auto mb-md bg-muted rounded-lg flex items-center justify-center">
               🗺️
             </div>
             <p className="mb-sm">Map view</p>
@@ -286,7 +286,7 @@ export const DataActions: React.FC = () => {
       {/* Search and Filters */}
       <div className="flex items-center gap-sm">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
           <Input
             placeholder="Search..."
             value={searchQuery}
@@ -296,7 +296,7 @@ export const DataActions: React.FC = () => {
         </div>
         
         <Button variant="outline" size="sm">
-          <Filter className="h-4 w-4 mr-xs" />
+          <Filter className="h-icon-xs w-icon-xs mr-xs" />
           Filters
         </Button>
         
@@ -315,7 +315,7 @@ export const DataActions: React.FC = () => {
               size="sm"
               onClick={() => handleExport('csv')}
             >
-              <Download className="h-4 w-4 mr-xs" />
+              <Download className="h-icon-xs w-icon-xs mr-xs" />
               Export
             </Button>
           </>
@@ -336,7 +336,7 @@ export const DataActions: React.FC = () => {
               onClick={() => setPage(page - 1)}
               disabled={page === 1}
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             
             <div className="flex items-center gap-xs">
@@ -361,7 +361,7 @@ export const DataActions: React.FC = () => {
               onClick={() => setPage(page + 1)}
               disabled={page === totalPages}
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         </div>

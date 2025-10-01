@@ -90,9 +90,9 @@ export function AuthInput({
             onClick={onTogglePassword}
           >
             {showPassword ? (
-              <EyeOff className="h-4 w-4 color-muted" />
+              <EyeOff className="h-icon-xs w-icon-xs color-muted" />
             ) : (
-              <Eye className="h-4 w-4 color-muted" />
+              <Eye className="h-icon-xs w-icon-xs color-muted" />
             )}
           </button>
         )}

@@ -181,12 +181,12 @@ export default function AutomationsSettingsClient() {
 
  const renderForm = () => (
  <Card>
- <div className="p-6 space-y-4">
+ <div className="p-lg space-y-md">
  <div className="flex items-center justify-between">
  <h2 className="text-xl font-semibold">
  {isEditing ? 'Edit Automation Rule' : 'Create Automation Rule'}
  </h2>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button variant="outline" onClick={() => { resetForm(); setShowForm(false); }} disabled={saving}>
  Cancel
  </Button>
@@ -196,8 +196,8 @@ export default function AutomationsSettingsClient() {
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Name</label>
  <Input
  value={form.name}
@@ -205,7 +205,7 @@ export default function AutomationsSettingsClient() {
  placeholder="Automation name"
  />
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Trigger Type</label>
  <Input
  value={form.triggerType}
@@ -215,7 +215,7 @@ export default function AutomationsSettingsClient() {
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Description</label>
  <Textarea
  value={form.description}
@@ -225,7 +225,7 @@ export default function AutomationsSettingsClient() {
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Trigger Configuration (JSON)</label>
  <Textarea
  value={form.triggerConfig}
@@ -234,7 +234,7 @@ export default function AutomationsSettingsClient() {
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Conditions (JSON array)</label>
  <Textarea
  value={form.conditions}
@@ -244,7 +244,7 @@ export default function AutomationsSettingsClient() {
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-sm font-medium">Actions (JSON array)</label>
  <Textarea
  value={form.actions}
@@ -254,7 +254,7 @@ export default function AutomationsSettingsClient() {
  </div>
 
  <div className="flex items-center justify-between">
- <div className="space-y-1">
+ <div className="space-y-xs">
  <p className="text-sm font-medium">Status</p>
  <p className="text-xs text-muted-foreground">
  Active automations will run automatically when triggers are satisfied.
@@ -274,10 +274,10 @@ export default function AutomationsSettingsClient() {
 
  const renderRule = (rule: AutomationRuleSummary) => (
  <Card key={rule.id}>
- <div className="p-6 space-y-4">
- <div className="flex flex-wrap items-start justify-between gap-4">
+ <div className="p-lg space-y-md">
+ <div className="flex flex-wrap items-start justify-between gap-md">
  <div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <h3 className="text-lg font-semibold">{rule.name}</h3>
  <Badge variant={rule.isActive ? 'success' : 'secondary'}>
  {rule.isActive ? 'Active' : 'Paused'}
@@ -287,7 +287,7 @@ export default function AutomationsSettingsClient() {
  <p className="text-sm text-muted-foreground mt-1">{rule.description}</p>
  )}
  </div>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button variant="outline" size="sm" onClick={() => handleToggleActive(rule)}>
  {rule.isActive ? 'Pause' : 'Activate'}
  </Button>
@@ -300,12 +300,12 @@ export default function AutomationsSettingsClient() {
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
- <div className="space-y-3">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
+ <div className="space-y-sm">
  <div>
  <p className="font-medium text-muted-foreground">Trigger</p>
  <p className="mt-1">Type: <span className="font-mono">{rule.triggerType}</span></p>
- <pre className="mt-2 bg-muted/50 rounded-md p-3 text-xs overflow-x-auto">
+ <pre className="mt-2 bg-muted/50 rounded-md p-sm text-xs overflow-x-auto">
  {formatJson(rule.triggerConfig)}
  </pre>
  </div>
@@ -313,7 +313,7 @@ export default function AutomationsSettingsClient() {
  <div>
  <p className="font-medium text-muted-foreground">Conditions</p>
  {rule.conditions && rule.conditions.length > 0 ? (
- <pre className="mt-2 bg-muted/50 rounded-md p-3 text-xs overflow-x-auto">
+ <pre className="mt-2 bg-muted/50 rounded-md p-sm text-xs overflow-x-auto">
  {formatJson(rule.conditions)}
  </pre>
  ) : (
@@ -321,14 +321,14 @@ export default function AutomationsSettingsClient() {
  )}
  </div>
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div>
  <p className="font-medium text-muted-foreground">Actions</p>
- <pre className="mt-2 bg-muted/50 rounded-md p-3 text-xs overflow-x-auto">
+ <pre className="mt-2 bg-muted/50 rounded-md p-sm text-xs overflow-x-auto">
  {formatJson(rule.actions)}
  </pre>
  </div>
- <div className="flex items-center gap-4 text-xs text-muted-foreground">
+ <div className="flex items-center gap-md text-xs text-muted-foreground">
  <span>Runs: {rule.runCount ?? 0}</span>
  {rule.lastRunAt && (
  <span>Last run: {new Date(rule.lastRunAt).toLocaleString()}</span>
@@ -345,8 +345,8 @@ export default function AutomationsSettingsClient() {
  );
 
  return (
- <div className="space-y-6">
- <div className="flex flex-wrap items-center justify-between gap-3">
+ <div className="space-y-lg">
+ <div className="flex flex-wrap items-center justify-between gap-sm">
  <div>
  <h1 className="text-3xl font-bold">Automations</h1>
  <p className="text-muted-foreground mt-1">
@@ -361,13 +361,13 @@ export default function AutomationsSettingsClient() {
  {showForm && renderForm()}
 
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  {loading ? (
- <div className="flex items-center justify-center h-48">
- <Loader className="h-8 w-8 animate-spin" />
+ <div className="flex items-center justify-center h-container-xs">
+ <Loader className="h-icon-lg w-icon-lg animate-spin" />
  </div>
  ) : automationRules.length === 0 ? (
- <div className="py-16 text-center space-y-3">
+ <div className="py-16 text-center space-y-sm">
  <p className="text-lg font-medium">No automation rules yet</p>
  <p className="text-sm text-muted-foreground">
  Automations will appear here once you create them.
@@ -377,7 +377,7 @@ export default function AutomationsSettingsClient() {
  </Button>
  </div>
  ) : (
- <div className="space-y-4">
+ <div className="space-y-md">
  {automationRules.map(renderRule)}
  </div>
  )}

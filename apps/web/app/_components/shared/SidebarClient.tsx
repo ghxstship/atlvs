@@ -68,7 +68,7 @@ export default function SidebarClient() {
               className="w-full justify-start"
               onClick={() => item.children && toggleExpanded(item.name)}
             >
-              <item.icon className="mr-sm h-4 w-4" />
+              <item.icon className="mr-sm h-icon-xs w-icon-xs" />
               {item.name}
               {item.badge && (
                 <Badge variant="outline" className="ml-auto">
@@ -77,9 +77,9 @@ export default function SidebarClient() {
               )}
               {item.children && (
                 expandedItems.includes(item.name) ? (
-                  <ChevronDown className="ml-auto h-4 w-4" />
+                  <ChevronDown className="ml-auto h-icon-xs w-icon-xs" />
                 ) : (
-                  <ChevronRight className="ml-auto h-4 w-4" />
+                  <ChevronRight className="ml-auto h-icon-xs w-icon-xs" />
                 )
               )}
             </Button>

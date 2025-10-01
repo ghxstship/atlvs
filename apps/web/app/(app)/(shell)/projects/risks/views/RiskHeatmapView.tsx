@@ -139,7 +139,7 @@ export default function RiskHeatmapView({
  }}
  >
  <div className="flex items-center justify-between">
- <span className="line-clamp-1 flex-1">{risk.title}</span>
+ <span className="line-clamp-xs flex-1">{risk.title}</span>
  <Badge variant="outline" className="ml-xs">
  {risk.risk_score}
  </Badge>

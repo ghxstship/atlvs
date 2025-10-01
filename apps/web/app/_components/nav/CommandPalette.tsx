@@ -83,7 +83,7 @@ export function CommandPalette({ navSections }: { navSections: NavSection[] }) {
             aria-label="Search commands"
           />
         </div>
-        <div className="max-h-80 overflow-y-auto">
+        <div className="max-h-container-md overflow-y-auto">
           {filtered.length === 0 ? (
             <div className="p-md text-sm text-muted-foreground">No results</div>
           ) : (

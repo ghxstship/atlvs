@@ -99,8 +99,8 @@ export default function TableView({
       render: (file) => {
         const Icon = getCategoryIcon(file.category);
         return (
-          <div className="flex items-center gap-2">
-            <Icon className="w-4 h-4" />
+          <div className="flex items-center gap-xs">
+            <Icon className="w-icon-xs h-icon-xs" />
             <span className="capitalize">{file.category}</span>
           </div>
         );
@@ -123,8 +123,8 @@ export default function TableView({
       render: (file) => {
         const Icon = getAccessIcon(file.access_level);
         return (
-          <div className="flex items-center gap-2">
-            <Icon className="w-4 h-4" />
+          <div className="flex items-center gap-xs">
+            <Icon className="w-icon-xs h-icon-xs" />
             <span className="capitalize">{file.access_level}</span>
           </div>
         );
@@ -170,24 +170,24 @@ export default function TableView({
         <DropdownMenu>
           <DropdownMenu.Trigger asChild>
             <Button variant="ghost" size="sm">
-              <MoreHorizontal className="w-4 h-4" />
+              <MoreHorizontal className="w-icon-xs h-icon-xs" />
             </Button>
           </DropdownMenu.Trigger>
           <DropdownMenu.Content align="end">
             <DropdownMenu.Item onClick={() => onView(file)}>
-              <Eye className="w-4 h-4 mr-2" />
+              <Eye className="w-icon-xs h-icon-xs mr-2" />
               View
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => onEdit(file)}>
-              <Edit className="w-4 h-4 mr-2" />
+              <Edit className="w-icon-xs h-icon-xs mr-2" />
               Edit
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => onDownload(file)}>
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-icon-xs h-icon-xs mr-2" />
               Download
             </DropdownMenu.Item>
             <DropdownMenu.Item onClick={() => onShare(file)}>
-              <Share className="w-4 h-4 mr-2" />
+              <Share className="w-icon-xs h-icon-xs mr-2" />
               Share
             </DropdownMenu.Item>
             <DropdownMenu.Separator />
@@ -195,7 +195,7 @@ export default function TableView({
               onClick={() => onDelete(file)}
               className="text-red-600"
             >
-              <Trash2 className="w-4 h-4 mr-2" />
+              <Trash2 className="w-icon-xs h-icon-xs mr-2" />
               Delete
             </DropdownMenu.Item>
           </DropdownMenu.Content>
@@ -281,12 +281,12 @@ export default function TableView({
     <div className="w-full">
       {/* Bulk Actions Bar */}
       {selectedFiles.size > 0 && (
-        <div className="mb-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+        <div className="mb-4 p-md bg-blue-50 border border-blue-200 rounded-lg">
           <div className="flex items-center justify-between">
             <span className="text-sm text-blue-700">
               {selectedFiles.size} file(s) selected
             </span>
-            <div className="flex gap-2">
+            <div className="flex gap-xs">
               <Button
                 size="sm"
                 variant="outline"
@@ -327,20 +327,20 @@ export default function TableView({
                   return (
                     <th
                       key={column.key}
-                      className={`relative p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
+                      className={`relative p-sm text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
                         isFrozen ? 'sticky left-0 bg-gray-50 z-10 border-r-2 border-gray-300' : ''
                       }`}
                       style={{ width }}
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-xs">
                         {/* Column Header */}
-                        <div className="flex items-center gap-1 flex-1">
+                        <div className="flex items-center gap-xs flex-1">
                           {column.label}
                           {column.sortable && (
                             <Button
                               variant="ghost"
                               size="sm"
-                              className="h-4 w-4 p-0"
+                              className="h-icon-xs w-icon-xs p-0"
                               onClick={() => handleSort(column.key)}
                             >
                               {sortColumn === column.key ? (
@@ -357,11 +357,11 @@ export default function TableView({
                         </div>
 
                         {/* Column Actions */}
-                        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100">
+                        <div className="flex items-center gap-xs opacity-0 group-hover:opacity-100">
                           <Button
                             variant="ghost"
                             size="sm"
-                            className="h-4 w-4 p-0"
+                            className="h-icon-xs w-icon-xs p-0"
                             onClick={() => toggleColumnFreeze(column.key)}
                           >
                             {isFrozen ? (
@@ -380,7 +380,7 @@ export default function TableView({
                             placeholder={`Filter ${column.label.toLowerCase()}`}
                             value={filters[column.key] || ''}
                             onChange={(e) => handleFilterChange(column.key, e.target.value)}
-                            className="h-6 text-xs"
+                            className="h-icon-md text-xs"
                           />
                         </div>
                       )}
@@ -405,7 +405,7 @@ export default function TableView({
                 <tr>
                   <td
                     colSpan={columns.length}
-                    className="px-6 py-12 text-center text-gray-500"
+                    className="px-lg py-xsxl text-center text-gray-500"
                   >
                     No files found
                   </td>
@@ -420,7 +420,7 @@ export default function TableView({
                       return (
                         <td
                           key={column.key}
-                          className={`px-3 py-4 text-sm text-gray-900 ${
+                          className={`px-sm py-md text-sm text-gray-900 ${
                             isFrozen ? 'sticky left-0 bg-white group-hover:bg-gray-50 z-10 border-r-2 border-gray-200' : ''
                           }`}
                           style={{ width }}
@@ -445,7 +445,7 @@ export default function TableView({
         <div className="text-sm text-gray-700">
           Showing {processedFiles.length} of {files.length} files
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button
             variant="outline"
             size="sm"

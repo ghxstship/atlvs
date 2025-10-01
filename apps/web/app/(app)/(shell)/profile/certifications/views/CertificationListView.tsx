@@ -46,25 +46,25 @@ export default function CertificationListView({
  const status = getCertificationStatus(certification);
  
  if (status.status === 'Expired') {
- return <AlertTriangle className="h-4 w-4 text-red-500" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-red-500" />;
  }
  
  if (status.isExpiring) {
- return <Clock className="h-4 w-4 text-yellow-500" />;
+ return <Clock className="h-icon-xs w-icon-xs text-yellow-500" />;
  }
  
- return <CheckCircle className="h-4 w-4 text-green-500" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
  };
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {Array.from({ length: 5 }).map((_, i) => (
- <Card key={i} className="p-6">
- <div className="flex items-start gap-4">
- <Skeleton className="h-12 w-12 rounded-full" />
- <div className="flex-1 space-y-2">
- <Skeleton className="h-4 w-3/4" />
+ <Card key={i} className="p-lg">
+ <div className="flex items-start gap-md">
+ <Skeleton className="h-icon-2xl w-icon-2xl rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <Skeleton className="h-icon-xs w-3/4" />
  <Skeleton className="h-3 w-1/2" />
  <Skeleton className="h-3 w-1/4" />
  </div>
@@ -77,8 +77,8 @@ export default function CertificationListView({
 
  if (certifications.length === 0) {
  return (
- <Card className="p-12 text-center">
- <Award className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <Award className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Certifications Found</h3>
  <p className="text-muted-foreground">
  No certifications match the current filters.
@@ -88,9 +88,9 @@ export default function CertificationListView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header with bulk selection */}
- <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
+ <div className="flex items-center gap-md p-md bg-muted/50 rounded-lg">
  <input
  type="checkbox"
  checked={allSelected}
@@ -98,7 +98,7 @@ export default function CertificationListView({
  if (input) input.indeterminate = someSelected && !allSelected;
  }}
  onChange={handleSelectAll}
- className="h-4 w-4 rounded border-border"
+ className="h-icon-xs w-icon-xs rounded border-border"
  />
  <span className="text-sm text-muted-foreground">
  {selectedItems.length > 0 
@@ -109,29 +109,29 @@ export default function CertificationListView({
  </div>
 
  {/* Certification List */}
- <div className="space-y-3">
+ <div className="space-y-sm">
  {certifications.map((certification) => {
  const isSelected = selectedItems.includes(certification.id);
  const status = getCertificationStatus(certification);
 
  return (
- <Card key={certification.id} className={`p-6 transition-colors ${
+ <Card key={certification.id} className={`p-lg transition-colors ${
  isSelected ? 'ring-2 ring-primary' : ''
  }`}>
- <div className="flex items-start gap-4">
+ <div className="flex items-start gap-md">
  <input
  type="checkbox"
  checked={isSelected}
  onChange={(e) => onSelectItem(certification.id, e.target.checked)}
- className="h-4 w-4 rounded border-border mt-1"
+ className="h-icon-xs w-icon-xs rounded border-border mt-1"
  />
  
- <div className="p-3 rounded-full bg-primary/10">
- <Award className="h-6 w-6 text-primary" />
+ <div className="p-sm rounded-full bg-primary/10">
+ <Award className="h-icon-md w-icon-md text-primary" />
  </div>
 
  <div className="flex-1 min-w-0">
- <div className="flex items-start justify-between gap-2 mb-3">
+ <div className="flex items-start justify-between gap-xs mb-3">
  <div className="flex-1">
  <h4 className="font-semibold text-lg mb-1">
  {certification.name}
@@ -139,7 +139,7 @@ export default function CertificationListView({
  <p className="text-muted-foreground mb-2">
  Issued by {certification.issuing_organization}
  </p>
- <div className="flex items-center gap-2 mb-2">
+ <div className="flex items-center gap-xs mb-2">
  {getStatusIcon(certification)}
  <Badge className={status.color}>
  {status.status}
@@ -152,15 +152,15 @@ export default function CertificationListView({
  </div>
  </div>
  
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {onView && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(certification)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEdit && (
@@ -168,9 +168,9 @@ export default function CertificationListView({
  variant="ghost"
  size="sm"
  onClick={() => onEdit(certification)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onExport && (
@@ -178,9 +178,9 @@ export default function CertificationListView({
  variant="ghost"
  size="sm"
  onClick={() => onExport(certification)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onDelete && (
@@ -188,16 +188,16 @@ export default function CertificationListView({
  variant="ghost"
  size="sm"
  onClick={() => onDelete(certification)}
- className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+ className="h-icon-lg w-icon-lg p-0 text-red-600 hover:text-red-700"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
  </div>
 
  {/* Certification Details */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md text-sm">
  {certification.certification_number && (
  <div>
  <span className="font-medium text-muted-foreground">Number:</span>
@@ -206,7 +206,7 @@ export default function CertificationListView({
  )}
  
  {certification.issue_date && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span className="font-medium text-muted-foreground">Issued:</span>
  <span className="ml-1">{new Date(certification.issue_date).toLocaleDateString()}</span>
@@ -214,7 +214,7 @@ export default function CertificationListView({
  )}
  
  {certification.expiry_date && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span className="font-medium text-muted-foreground">Expires:</span>
  <span className="ml-1">{new Date(certification.expiry_date).toLocaleDateString()}</span>
@@ -227,7 +227,7 @@ export default function CertificationListView({
  href={certification.verification_url as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-700"
+ className="inline-flex items-center gap-xs text-blue-600 hover:text-blue-700"
  >
  <ExternalLink className="h-3 w-3" />
  <span>Verify</span>
@@ -237,7 +237,7 @@ export default function CertificationListView({
  </div>
 
  {certification.notes && (
- <div className="mt-3 p-3 bg-muted/50 rounded-lg">
+ <div className="mt-3 p-sm bg-muted/50 rounded-lg">
  <p className="text-sm text-muted-foreground">
  {certification.notes}
  </p>

@@ -128,7 +128,7 @@ export default function EndorsementsClient() {
         {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
-            className={`w-4 h-4 ${
+            className={`w-icon-xs h-icon-xs ${
               star <= rating
                 ? 'fill-warning color-warning'
                 : 'color-muted'
@@ -144,7 +144,7 @@ export default function EndorsementsClient() {
       <div className="stack-md">
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -159,7 +159,7 @@ export default function EndorsementsClient() {
           <p className="color-muted">Professional recommendations from colleagues</p>
         </div>
         <Button onClick={() => setShowAddForm(!showAddForm)}>
-          <Plus className="w-4 h-4 mr-sm" />
+          <Plus className="w-icon-xs h-icon-xs mr-sm" />
           Request Endorsement
         </Button>
       </div>
@@ -173,7 +173,7 @@ export default function EndorsementsClient() {
                 <p className="text-body-sm color-muted">Total Endorsements</p>
                 <p className="text-heading-3">{endorsements.length}</p>
               </div>
-              <Award className="w-8 h-8 color-accent" />
+              <Award className="w-icon-lg h-icon-lg color-accent" />
             </div>
           </CardContent>
         </Card>
@@ -188,7 +188,7 @@ export default function EndorsementsClient() {
                     : '0.0'}
                 </p>
               </div>
-              <Star className="w-8 h-8 color-warning" />
+              <Star className="w-icon-lg h-icon-lg color-warning" />
             </div>
           </CardContent>
         </Card>
@@ -201,7 +201,7 @@ export default function EndorsementsClient() {
                   {endorsements.filter(e => e.is_public).length}
                 </p>
               </div>
-              <ThumbsUp className="w-8 h-8 color-success" />
+              <ThumbsUp className="w-icon-lg h-icon-lg color-success" />
             </div>
           </CardContent>
         </Card>
@@ -273,8 +273,8 @@ export default function EndorsementsClient() {
       {/* Endorsements List */}
       {endorsements.length === 0 ? (
         <Card>
-          <CardContent className="text-center py-2xl">
-            <Award className="w-12 h-12 mx-auto mb-md color-muted" />
+          <CardContent className="text-center py-xsxl">
+            <Award className="w-icon-2xl h-icon-2xl mx-auto mb-md color-muted" />
             <p className="color-muted">No endorsements yet</p>
             <p className="text-body-sm color-muted mt-sm">
               Request endorsements from colleagues to build your professional profile
@@ -288,7 +288,7 @@ export default function EndorsementsClient() {
               <CardContent className="p-lg">
                 <div className="flex justify-between items-start mb-md">
                   <div className="flex items-start gap-md">
-                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                    <div className="w-icon-2xl h-icon-2xl rounded-full bg-accent/10 flex items-center justify-center">
                       {endorsement.from_user_avatar ? (
                         <img
                           src={endorsement.from_user_avatar}
@@ -296,7 +296,7 @@ export default function EndorsementsClient() {
                           className="w-full h-full rounded-full object-cover"
                         />
                       ) : (
-                        <User className="w-6 h-6 color-accent" />
+                        <User className="w-icon-md h-icon-md color-accent" />
                       )}
                     </div>
                     <div>
@@ -334,7 +334,7 @@ export default function EndorsementsClient() {
 
                 {endorsement.message && (
                   <div className="p-md bg-secondary rounded-lg">
-                    <MessageSquare className="w-4 h-4 color-muted mb-sm" />
+                    <MessageSquare className="w-icon-xs h-icon-xs color-muted mb-sm" />
                     <p className="text-body-sm italic">"{endorsement.message}"</p>
                   </div>
                 )}

@@ -164,7 +164,7 @@ export function CalendarView<T extends ProgrammingEntity>({
     const isWorkshop = 'instructor' in item;
 
     return (
-      <div className="text-xs p-1 bg-blue-100 text-blue-800 rounded truncate">
+      <div className="text-xs p-xs bg-blue-100 text-blue-800 rounded truncate">
         {item.title || 'Untitled'}
         {isPerformance && (item as any).venue && (
           <span className="ml-1 opacity-75">• {(item as any).venue}</span>
@@ -184,16 +184,16 @@ export function CalendarView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`space-y-4 ${className}`}>
+      <div className={`space-y-md ${className}`}>
         <div className="flex items-center justify-between">
-          <div className="h-8 bg-gray-200 animate-pulse rounded w-48" />
-          <div className="flex gap-2">
-            <div className="h-8 w-8 bg-gray-200 animate-pulse rounded" />
-            <div className="h-8 w-8 bg-gray-200 animate-pulse rounded" />
-            <div className="h-8 w-8 bg-gray-200 animate-pulse rounded" />
+          <div className="h-icon-lg bg-gray-200 animate-pulse rounded w-container-xs" />
+          <div className="flex gap-xs">
+            <div className="h-icon-lg w-icon-lg bg-gray-200 animate-pulse rounded" />
+            <div className="h-icon-lg w-icon-lg bg-gray-200 animate-pulse rounded" />
+            <div className="h-icon-lg w-icon-lg bg-gray-200 animate-pulse rounded" />
           </div>
         </div>
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-xs">
           {Array.from({ length: 35 }).map((_, i) => (
             <div key={i} className="aspect-square bg-gray-100 animate-pulse rounded" />
           ))}
@@ -203,21 +203,21 @@ export function CalendarView<T extends ProgrammingEntity>({
   }
 
   return (
-    <div className={`space-y-4 ${className}`}>
+    <div className={`space-y-md ${className}`}>
       {/* Calendar Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-gray-900">
           {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
         </h2>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button variant="outline" size="sm" onClick={goToToday}>
             Today
           </Button>
           <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-icon-xs w-icon-xs" />
           </Button>
           <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       </div>
@@ -227,7 +227,7 @@ export function CalendarView<T extends ProgrammingEntity>({
         {/* Week day headers */}
         <div className="grid grid-cols-7 bg-gray-50 border-b">
           {weekDays.map((day) => (
-            <div key={day} className="p-3 text-center text-sm font-medium text-gray-700">
+            <div key={day} className="p-sm text-center text-sm font-medium text-gray-700">
               {day}
             </div>
           ))}
@@ -242,7 +242,7 @@ export function CalendarView<T extends ProgrammingEntity>({
             return (
               <div
                 key={index}
-                className={`min-h-[120px] border-r border-b p-2 ${
+                className={`min-h-header-lg border-r border-b p-xs ${
                   day.isCurrentMonth ? 'bg-white' : 'bg-gray-50'
                 } ${isToday ? 'bg-blue-50' : ''}`}
               >
@@ -263,14 +263,14 @@ export function CalendarView<T extends ProgrammingEntity>({
                       variant="ghost"
                       size="sm"
                       onClick={() => onCreate(day.date)}
-                      className="h-5 w-5 p-0 opacity-0 group-hover:opacity-100 hover:bg-blue-100"
+                      className="h-icon-sm w-icon-sm p-0 opacity-0 group-hover:opacity-100 hover:bg-blue-100"
                     >
                       <Plus className="h-3 w-3" />
                     </Button>
                   )}
                 </div>
 
-                <div className="space-y-1">
+                <div className="space-y-xs">
                   {dayEvents.slice(0, 3).map((event) => (
                     <div key={event.id} className="cursor-pointer">
                       {renderEvent ? renderEvent(event) : defaultRenderEvent(event)}
@@ -291,7 +291,7 @@ export function CalendarView<T extends ProgrammingEntity>({
 
       {/* Event details sidebar or modal could go here */}
       {data.length === 0 && (
-        <div className="text-center py-12 text-gray-500">
+        <div className="text-center py-xsxl text-gray-500">
           {emptyMessage}
         </div>
       )}

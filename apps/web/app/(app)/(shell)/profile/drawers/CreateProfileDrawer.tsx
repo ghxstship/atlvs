@@ -149,19 +149,19 @@ export default function CreateProfileDrawer({
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-4">
  <TabsTrigger value="basic">
- <User className="h-4 w-4 mr-xs" />
+ <User className="h-icon-xs w-icon-xs mr-xs" />
  Basic
  </TabsTrigger>
  <TabsTrigger value="professional">
- <Building className="h-4 w-4 mr-xs" />
+ <Building className="h-icon-xs w-icon-xs mr-xs" />
  Professional
  </TabsTrigger>
  <TabsTrigger value="contact">
- <MapPin className="h-4 w-4 mr-xs" />
+ <MapPin className="h-icon-xs w-icon-xs mr-xs" />
  Contact
  </TabsTrigger>
  <TabsTrigger value="emergency">
- <Shield className="h-4 w-4 mr-xs" />
+ <Shield className="h-icon-xs w-icon-xs mr-xs" />
  Emergency
  </TabsTrigger>
  </TabsList>
@@ -508,11 +508,11 @@ export default function CreateProfileDrawer({
  onClick={handleClose}
  disabled={loading}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  <Button type="submit" loading={loading}>
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  Create Profile
  </Button>
  </div>

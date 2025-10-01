@@ -65,7 +65,7 @@ export default function PoliciesClient() {
  <p className="color-muted">Manage company policies and governance documents</p>
  </div>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Add Policy
  </Button>
  </div>
@@ -73,7 +73,7 @@ export default function PoliciesClient() {
  <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
  <Card>
  <div className="flex items-center gap-sm">
- <FileText className="w-5 h-5 color-accent" />
+ <FileText className="w-icon-sm h-icon-sm color-accent" />
  <div>
  <div className="text-heading-3">{stats.total}</div>
  <div className="text-body-sm color-muted">Total Policies</div>
@@ -82,7 +82,7 @@ export default function PoliciesClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Shield className="w-5 h-5 color-success" />
+ <Shield className="w-icon-sm h-icon-sm color-success" />
  <div>
  <div className="text-heading-3 color-success">{stats.published}</div>
  <div className="text-body-sm color-muted">Published</div>
@@ -91,7 +91,7 @@ export default function PoliciesClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Eye className="w-5 h-5 color-warning" />
+ <Eye className="w-icon-sm h-icon-sm color-warning" />
  <div>
  <div className="text-heading-3 color-warning">{stats.underReview}</div>
  <div className="text-body-sm color-muted">Under Review</div>
@@ -100,7 +100,7 @@ export default function PoliciesClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Users className="w-5 h-5 color-secondary" />
+ <Users className="w-icon-sm h-icon-sm color-secondary" />
  <div>
  <div className="text-heading-3 color-secondary">{stats.draft}</div>
  <div className="text-body-sm color-muted">Draft</div>
@@ -112,11 +112,11 @@ export default function PoliciesClient() {
  {!loading && !error && resources.length === 0 && (
  <Card>
  <div className="text-center py-xl">
- <FileText className="w-12 h-12 color-muted mx-auto mb-md" />
+ <FileText className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">No policies found</h3>
  <p className="color-muted mb-md">Start building your policy library.</p>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Create First Policy
  </Button>
  </div>

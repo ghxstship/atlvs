@@ -137,7 +137,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Category
       </Button>
 
@@ -154,7 +154,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -162,7 +162,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
               form="category-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Category'}
             </Button>
           </div>
@@ -171,7 +171,7 @@ export default function CreateCategoryClient({ orgId, onCategoryCreated }: Creat
         <form id="category-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-success/10 rounded-lg">
-              <Tag className="h-5 w-5 color-success" />
+              <Tag className="h-icon-sm w-icon-sm color-success" />
             </div>
             <div>
               <h3 className="form-label">Category Information</h3>

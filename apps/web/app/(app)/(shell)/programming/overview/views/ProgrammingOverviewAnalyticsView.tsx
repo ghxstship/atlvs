@@ -55,12 +55,12 @@ export default function ProgrammingOverviewAnalyticsView({
 
  if (loading || analyticsLoading) {
  return (
- <div className="space-y-6">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  {Array.from({ length: 4 }).map((_, i) => (
- <Card key={i} className="p-6">
- <Skeleton className="h-4 w-24 mb-4" />
- <Skeleton className="h-32 w-full" />
+ <Card key={i} className="p-lg">
+ <Skeleton className="h-icon-xs w-component-lg mb-4" />
+ <Skeleton className="h-component-xl w-full" />
  </Card>
  ))}
  </div>
@@ -69,40 +69,40 @@ export default function ProgrammingOverviewAnalyticsView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Analytics Summary */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
- <Card className="p-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-sm font-medium text-muted-foreground">Total Revenue</h3>
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  <p className="text-2xl font-bold">${analytics.revenueAnalytics.total_revenue.toLocaleString()}</p>
  <p className="text-sm text-green-600 mt-1">+12% from last period</p>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-sm font-medium text-muted-foreground">Total Participants</h3>
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  <p className="text-2xl font-bold">{analytics.participantAnalytics.total_participants.toLocaleString()}</p>
  <p className="text-sm text-green-600 mt-1">+8% from last period</p>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-sm font-medium text-muted-foreground">Active Modules</h3>
- <Activity className="h-4 w-4 text-muted-foreground" />
+ <Activity className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  <p className="text-2xl font-bold">{analytics.moduleUsage.length}</p>
  <p className="text-sm text-blue-600 mt-1">All modules active</p>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-sm font-medium text-muted-foreground">Avg Performance</h3>
- <Target className="h-4 w-4 text-muted-foreground" />
+ <Target className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  <p className="text-2xl font-bold">
  {Math.round(
@@ -115,7 +115,7 @@ export default function ProgrammingOverviewAnalyticsView({
  </div>
 
  {/* Trend Charts */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
  {trendData.map((trend, index) => {
  const Icon = trend.icon;
  const latestValue = trend.data[trend.data.length - 1]?.value || 0;
@@ -123,11 +123,11 @@ export default function ProgrammingOverviewAnalyticsView({
  const change = previousValue > 0 ? ((latestValue - previousValue) / previousValue) * 100 : 0;
  
  return (
- <Card key={index} className="p-6">
+ <Card key={index} className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="text-lg font-semibold">{trend.title}</h3>
- <div className={`p-2 rounded-lg ${trend.bgColor}`}>
- <Icon className={`h-4 w-4 ${trend.color}`} />
+ <div className={`p-xs rounded-lg ${trend.bgColor}`}>
+ <Icon className={`h-icon-xs w-icon-xs ${trend.color}`} />
  </div>
  </div>
  
@@ -139,7 +139,7 @@ export default function ProgrammingOverviewAnalyticsView({
  </div>
 
  {/* Simple trend visualization */}
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="flex justify-between text-xs text-muted-foreground">
  <span>Trend ({period})</span>
  <span>Latest: {latestValue}</span>
@@ -157,11 +157,11 @@ export default function ProgrammingOverviewAnalyticsView({
  </div>
 
  {/* Performance Metrics */}
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Performance Metrics</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
  {analytics.performanceMetrics.map((metric, index) => (
- <div key={index} className="p-4 rounded-lg bg-muted/50">
+ <div key={index} className="p-md rounded-lg bg-muted/50">
  <h4 className="font-medium text-sm mb-2">{metric.metric}</h4>
  <div className="flex items-center justify-between mb-2">
  <span className="text-2xl font-bold">{metric.value}%</span>
@@ -173,7 +173,7 @@ export default function ProgrammingOverviewAnalyticsView({
  </span>
  </div>
  {metric.target && (
- <div className="space-y-1">
+ <div className="space-y-xs">
  <div className="flex justify-between text-xs text-muted-foreground">
  <span>Target: {metric.target}%</span>
  <span>{metric.value >= metric.target ? '✓' : '○'}</span>
@@ -194,11 +194,11 @@ export default function ProgrammingOverviewAnalyticsView({
  </Card>
 
  {/* Module Usage */}
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Module Usage Analytics</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
  {analytics.moduleUsage.map((module, index) => (
- <div key={index} className="p-4 rounded-lg bg-muted/50">
+ <div key={index} className="p-md rounded-lg bg-muted/50">
  <h4 className="font-medium text-sm mb-2">{module.module}</h4>
  <p className="text-xl font-bold">{module.usage_count}</p>
  <p className="text-xs text-muted-foreground mb-2">
@@ -218,10 +218,10 @@ export default function ProgrammingOverviewAnalyticsView({
  </Card>
 
  {/* Revenue Analytics */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
- <Card className="p-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Revenue by Module</h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.revenueAnalytics.revenue_by_module.map((item, index) => {
  const percentage = analytics.revenueAnalytics.total_revenue > 0 
  ? (item.revenue / analytics.revenueAnalytics.total_revenue) * 100 
@@ -229,15 +229,15 @@ export default function ProgrammingOverviewAnalyticsView({
  return (
  <div key={index} className="flex items-center justify-between">
  <span className="text-sm font-medium">{item.module}</span>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm">${item.revenue.toLocaleString()}</span>
- <div className="w-16 bg-muted rounded-full h-2">
+ <div className="w-component-md bg-muted rounded-full h-2">
  <div
  className="bg-primary h-2 rounded-full"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-xs text-muted-foreground w-8">
+ <span className="text-xs text-muted-foreground w-icon-lg">
  {percentage.toFixed(0)}%
  </span>
  </div>
@@ -247,9 +247,9 @@ export default function ProgrammingOverviewAnalyticsView({
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Participant Distribution</h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.participantAnalytics.participants_by_module.map((item, index) => {
  const percentage = analytics.participantAnalytics.total_participants > 0 
  ? (item.count / analytics.participantAnalytics.total_participants) * 100 
@@ -257,15 +257,15 @@ export default function ProgrammingOverviewAnalyticsView({
  return (
  <div key={index} className="flex items-center justify-between">
  <span className="text-sm font-medium">{item.module}</span>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm">{item.count.toLocaleString()}</span>
- <div className="w-16 bg-muted rounded-full h-2">
+ <div className="w-component-md bg-muted rounded-full h-2">
  <div
  className="bg-blue-500 h-2 rounded-full"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-xs text-muted-foreground w-8">
+ <span className="text-xs text-muted-foreground w-icon-lg">
  {percentage.toFixed(0)}%
  </span>
  </div>
@@ -277,11 +277,11 @@ export default function ProgrammingOverviewAnalyticsView({
  </div>
 
  {/* Engagement Metrics */}
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Engagement Metrics</h3>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
  {analytics.participantAnalytics.engagement_metrics.map((metric, index) => (
- <div key={index} className="text-center p-4 rounded-lg bg-muted/50">
+ <div key={index} className="text-center p-md rounded-lg bg-muted/50">
  <h4 className="font-medium text-sm mb-2">{metric.metric}</h4>
  <p className="text-2xl font-bold">{metric.value}</p>
  <p className={`text-sm mt-1 ${

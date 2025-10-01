@@ -91,7 +91,7 @@ export default function ViewActivationDrawer({
  <div className="flex items-start justify-between">
  <div>
  <DrawerTitle className="flex items-center gap-sm text-xl">
- <Eye className="h-5 w-5" />
+ <Eye className="h-icon-sm w-icon-sm" />
  {activation.name}
  </DrawerTitle>
  <DrawerDescription className="mt-sm">
@@ -126,7 +126,7 @@ export default function ViewActivationDrawer({
  {activation.project && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
  <p className="font-medium">{activation.project.name}</p>
@@ -137,7 +137,7 @@ export default function ViewActivationDrawer({
  {activation.location && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>Location</span>
  </div>
  <p className="font-medium">{activation.location}</p>
@@ -148,7 +148,7 @@ export default function ViewActivationDrawer({
  {activation.budget && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>Budget</span>
  </div>
  <p className="font-medium">${activation.budget.toLocaleString()}</p>
@@ -159,7 +159,7 @@ export default function ViewActivationDrawer({
  {activation.actual_cost && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>Actual Cost</span>
  </div>
  <p className="font-medium">${activation.actual_cost.toLocaleString()}</p>
@@ -171,7 +171,7 @@ export default function ViewActivationDrawer({
  {activation.notes && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Notes</span>
  </div>
  <p className="text-sm">{activation.notes}</p>
@@ -182,7 +182,7 @@ export default function ViewActivationDrawer({
  {activation.success_metrics && Object.keys(activation.success_metrics).length > 0 && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Activity className="h-4 w-4" />
+ <Activity className="h-icon-xs w-icon-xs" />
  <span>Success Metrics</span>
  </div>
  <div className="bg-muted rounded-lg p-sm">
@@ -198,7 +198,7 @@ export default function ViewActivationDrawer({
  {activation.scheduled_date && (
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Scheduled Date</span>
  </div>
  <span className="font-medium">
@@ -211,7 +211,7 @@ export default function ViewActivationDrawer({
  {activation.actual_date && (
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Actual Date</span>
  </div>
  <span className="font-medium">
@@ -224,7 +224,7 @@ export default function ViewActivationDrawer({
  {activation.completion_date && (
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <CheckCircle className="h-4 w-4 text-muted-foreground" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Completion Date</span>
  </div>
  <span className="font-medium">
@@ -240,8 +240,8 @@ export default function ViewActivationDrawer({
  <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-border"></div>
  <div className="space-y-md">
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center">
- <Clock className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-primary flex items-center justify-center">
+ <Clock className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Created</p>
@@ -252,8 +252,8 @@ export default function ViewActivationDrawer({
  </div>
  {activation.scheduled_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-warning flex items-center justify-center">
- <Calendar className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-warning flex items-center justify-center">
+ <Calendar className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Scheduled</p>
@@ -265,8 +265,8 @@ export default function ViewActivationDrawer({
  )}
  {activation.actual_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-info flex items-center justify-center">
- <Activity className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-info flex items-center justify-center">
+ <Activity className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Activated</p>
@@ -278,8 +278,8 @@ export default function ViewActivationDrawer({
  )}
  {activation.completion_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-success flex items-center justify-center">
- <CheckCircle className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-success flex items-center justify-center">
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Completed</p>
@@ -300,7 +300,7 @@ export default function ViewActivationDrawer({
  {activation.stakeholders && activation.stakeholders.length > 0 && (
  <div className="space-y-sm">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>Stakeholders</span>
  </div>
  <div className="flex flex-wrap gap-xs">
@@ -349,7 +349,7 @@ export default function ViewActivationDrawer({
  {activation.dependencies && activation.dependencies.length > 0 && (
  <div className="space-y-sm">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Link className="h-4 w-4" />
+ <Link className="h-icon-xs w-icon-xs" />
  <span>Dependencies</span>
  </div>
  <ul className="space-y-xs">
@@ -367,7 +367,7 @@ export default function ViewActivationDrawer({
  {activation.risks && activation.risks.length > 0 && (
  <div className="space-y-sm">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <span>Identified Risks</span>
  </div>
  <div className="space-y-xs">
@@ -383,7 +383,7 @@ export default function ViewActivationDrawer({
 
  <TabsContent value="activity" className="space-y-md mt-md">
  <div className="text-center py-lg text-muted-foreground">
- <MessageSquare className="mx-auto h-12 w-12 mb-sm opacity-50" />
+ <MessageSquare className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>Activity tracking coming soon</p>
  </div>
  </TabsContent>
@@ -397,7 +397,7 @@ export default function ViewActivationDrawer({
  </Button>
  {onEdit && (
  <Button onClick={onEdit}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit Activation
  </Button>
  )}

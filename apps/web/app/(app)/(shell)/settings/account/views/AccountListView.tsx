@@ -96,11 +96,11 @@ export default function AccountListView({
 
  if (loading) {
  return (
- <div className="space-y-4">
- <Skeleton className="h-10 w-64" />
- <div className="space-y-4">
+ <div className="space-y-md">
+ <Skeleton className="h-icon-xl w-container-sm" />
+ <div className="space-y-md">
  {[...Array(6)].map((_, i) => (
- <Skeleton key={i} className="h-32 w-full" />
+ <Skeleton key={i} className="h-component-xl w-full" />
  ))}
  </div>
  </div>
@@ -108,10 +108,10 @@ export default function AccountListView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 text-muted-foreground h-icon-xs w-icon-xs" />
  <Input
  placeholder="Search account records..."
  value={searchQuery}
@@ -121,10 +121,10 @@ export default function AccountListView({
  </div>
 
  {/* Records List */}
- <div className="space-y-4">
+ <div className="space-y-md">
  {sortedRecords.length === 0 ? (
  <Card>
- <CardContent className="py-12 text-center text-muted-foreground">
+ <CardContent className="py-xsxl text-center text-muted-foreground">
  {searchQuery ? 'No records match your search' : 'No account records found'}
  </CardContent>
  </Card>
@@ -145,12 +145,12 @@ export default function AccountListView({
  >
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-3">
- <div className={`p-2 rounded-lg ${typeColor}`}>
- <TypeIcon className="h-5 w-5" />
+ <div className="flex items-start gap-sm">
+ <div className={`p-xs rounded-lg ${typeColor}`}>
+ <TypeIcon className="h-icon-sm w-icon-sm" />
  </div>
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <h3 className="font-semibold text-lg">{record.name}</h3>
  <Badge variant="outline" className="text-xs">
  {record.type.replace('_', ' ')}
@@ -166,31 +166,31 @@ export default function AccountListView({
  </p>
  </div>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  size="sm"
  variant="ghost"
  onClick={() => onView(record)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  size="sm"
  variant="ghost"
  onClick={() => onEdit(record)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
  </CardHeader>
  <CardContent className="pt-0">
- <div className="space-y-3">
+ <div className="space-y-sm">
  {/* Status and Category */}
- <div className="flex items-center gap-2 flex-wrap">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs flex-wrap">
+ <div className="flex items-center gap-xs">
  <Activity className="h-3 w-3 text-muted-foreground" />
- <span className={`px-2 py-1 rounded-full text-xs font-medium ${statusColor}`}>
+ <span className={`px-xs py-xs rounded-full text-xs font-medium ${statusColor}`}>
  {record.status}
  </span>
  </div>
@@ -200,14 +200,14 @@ export default function AccountListView({
  </div>
 
  {/* Value Display */}
- <div className="space-y-1">
+ <div className="space-y-xs">
  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
  {record.type === 'profile' ? 'Email' :
  record.type === 'session' ? 'IP Address' :
  record.type === 'api_key' ? 'Key' :
  record.type === 'security' ? 'Status' : 'Value'}
  </label>
- <div className="bg-muted p-3 rounded-md">
+ <div className="bg-muted p-sm rounded-md">
  <code className="text-sm font-mono">
  {formatValue(record.value, record.type)}
  </code>
@@ -216,11 +216,11 @@ export default function AccountListView({
 
  {/* Additional Information */}
  {record.metadata && (
- <div className="space-y-2">
+ <div className="space-y-xs">
  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
  Additional Information
  </label>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-xs text-sm">
  {record.type === 'session' && record.metadata.user_agent && (
  <div>
  <span className="font-medium">Device:</span>
@@ -251,7 +251,7 @@ export default function AccountListView({
 
  {/* Timestamps */}
  <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  <span>
  Created {new Date(record.created_at).toLocaleDateString()}

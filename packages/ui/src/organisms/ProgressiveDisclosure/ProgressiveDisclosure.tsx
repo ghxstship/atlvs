@@ -1,9 +1,9 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Button } from './Button';
-import { Badge } from './Badge';
-import { Card } from './Card';
+import { Button } from '../../atoms/Button';
+import { Badge } from '../../atoms/Badge';
+import { Card } from '../../organisms/Card';
 import { ChevronDown, ChevronRight, Info, HelpCircle, Lightbulb, Star, X } from 'lucide-react';
 
 interface DisclosureState {
@@ -188,9 +188,9 @@ export const CollapsibleSection: React.FC<CollapsibleSectionProps> = ({
           )}
         </div>
         {isExpanded ? (
-          <ChevronDown className="w-4 h-4" />
+          <ChevronDown className="w-icon-xs h-icon-xs" />
         ) : (
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-icon-xs h-icon-xs" />
         )}
       </button>
       
@@ -248,7 +248,7 @@ export const ContextualTip: React.FC<ContextualTipProps> = ({
   return (
     <Card className={`p-md ${className}`}>
       <div className="flex items-start gap-sm">
-        <Icon className="w-5 h-5 mt-0.5 flex-shrink-0" />
+        <Icon className="w-icon-sm h-icon-sm mt-0.5 flex-shrink-0" />
         <div className="flex-1">
           <h4 className="font-medium mb-xs">{title}</h4>
           <p className="text-sm text-muted-foreground">{content}</p>
@@ -260,7 +260,7 @@ export const ContextualTip: React.FC<ContextualTipProps> = ({
             onClick={() => dismissTip(id)}
             className="p-xs h-auto"
           >
-            <X className="w-4 h-4" />
+            <X className="w-icon-xs h-icon-xs" />
           </Button>
         )}
       </div>

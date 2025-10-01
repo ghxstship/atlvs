@@ -46,7 +46,7 @@ export function StepNavigation({
                 role="button" tabIndex={0} onClick={() => isAccessible && onStepClick?.(step.id)}
                 disabled={!isAccessible}
                 className={`
-                  flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-body-sm form-label transition-all duration-200
+                  flex-shrink-0 w-icon-lg h-icon-lg rounded-full flex items-center justify-center text-body-sm form-label transition-all duration-200
                   ${isCompleted 
                     ? 'bg-success color-success-foreground' 
                     : isActive 
@@ -58,7 +58,7 @@ export function StepNavigation({
                 `}
               >
                 {isCompleted ? (
-                  <Check className="h-4 w-4" />
+                  <Check className="h-icon-xs w-icon-xs" />
                 ) : (
                   <span>{index + 1}</span>
                 )}
@@ -98,7 +98,7 @@ export function StepNavigation({
 
               {/* Connector line */}
               {index < steps.length - 1 && (
-                <div className="absolute left-md mt-smxl w-px h-6 bg-border" />
+                <div className="absolute left-md mt-smxl w-px h-icon-md bg-border" />
               )}
             </div>
           );
@@ -135,7 +135,7 @@ export function StepNavigation({
                 `}
               >
                 {isCompleted ? (
-                  <Check className="h-5 w-5" />
+                  <Check className="h-icon-sm w-icon-sm" />
                 ) : (
                   <span>{index + 1}</span>
                 )}
@@ -143,7 +143,7 @@ export function StepNavigation({
 
               {/* Step label */}
               {showLabels && (
-                <div className="mt-sm text-center max-w-24">
+                <div className="mt-sm text-center max-w-component-lg">
                   <p className={`
                     text-body-sm form-label
                     ${isActive ? 'color-accent' : 
@@ -217,7 +217,7 @@ export function StepNavigationControls({
           }
         `}
       >
-        <ChevronLeft className="h-4 w-4" />
+        <ChevronLeft className="h-icon-xs w-icon-xs" />
         <span>Previous</span>
       </button>
 
@@ -257,7 +257,7 @@ export function StepNavigationControls({
         `}
       >
         <span>{isLastStep ? 'Complete' : 'Next'}</span>
-        <ChevronRight className="h-4 w-4" />
+        <ChevronRight className="h-icon-xs w-icon-xs" />
       </button>
     </div>
   );

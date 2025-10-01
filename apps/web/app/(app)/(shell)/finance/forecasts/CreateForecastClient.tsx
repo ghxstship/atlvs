@@ -144,7 +144,7 @@ export default function CreateForecastClient({
         {/* Forecast Overview */}
         <Card className="p-md bg-secondary/5 border-secondary/20">
           <div className="flex items-center cluster-sm">
-            <BarChart3 className="h-8 w-8 color-secondary" />
+            <BarChart3 className="h-icon-lg w-icon-lg color-secondary" />
             <div>
               <h3 className="text-heading-4 color-secondary">Financial Forecasting</h3>
               <p className="text-body-sm color-secondary/80">
@@ -185,7 +185,7 @@ export default function CreateForecastClient({
                 Projected Amount
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="number"
                   value={formData.projectedAmount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, projectedAmount: parseFloat(e.target.value) || 0 }))}
@@ -224,7 +224,7 @@ export default function CreateForecastClient({
                 Confidence Level
               </label>
               <div className="relative">
-                <TrendingUp className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <TrendingUp className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <Select
                   value={formData.confidenceLevel}
                   onValueChange={(value: any) => setFormData(prev => ({ ...prev, confidenceLevel: value }))}
@@ -241,7 +241,7 @@ export default function CreateForecastClient({
                 Forecast Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="date"
                   value={formData.forecastDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, forecastDate: e.target.value }))}
@@ -258,7 +258,7 @@ export default function CreateForecastClient({
                 Period Start *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="date"
                   value={formData.periodStart}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, periodStart: e.target.value }))}
@@ -273,7 +273,7 @@ export default function CreateForecastClient({
                 Period End *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="date"
                   value={formData.periodEnd}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, periodEnd: e.target.value }))}
@@ -336,16 +336,16 @@ export default function CreateForecastClient({
           <Button
             type="submit"
             disabled={loading || !formData.name.trim() || !formData.periodStart || !formData.periodEnd}
-            className="min-w-[120px]"
+            className="min-w-component-xl"
           >
             {loading ? (
               <div className="flex items-center cluster-sm">
-                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                <div className="w-icon-xs h-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (
               <div className="flex items-center cluster-sm">
-                <Plus className="h-4 w-4" />
+                <Plus className="h-icon-xs w-icon-xs" />
                 <span>Create Forecast</span>
               </div>
             )}

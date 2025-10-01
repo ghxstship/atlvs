@@ -169,12 +169,12 @@ export default function TimelineView({
   return (
     <div className="max-w-4xl mx-auto">
       {/* Controls */}
-      <div className="flex items-center justify-between mb-6 p-4 bg-white rounded-lg border border-gray-200">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between mb-6 p-md bg-white rounded-lg border border-gray-200">
+        <div className="flex items-center gap-md">
+          <div className="flex items-center gap-xs">
             <label className="text-sm font-medium">Sort:</label>
             <Select value={sortOrder} onValueChange={(value: 'newest' | 'oldest') => setSortOrder(value)}>
-              <Select.Trigger className="w-32">
+              <Select.Trigger className="w-component-xl">
                 <Select.Value />
               </Select.Trigger>
               <Select.Content>
@@ -184,10 +184,10 @@ export default function TimelineView({
             </Select>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <label className="text-sm font-medium">Group by:</label>
             <Select value={groupBy} onValueChange={(value: 'day' | 'week' | 'month') => setGroupBy(value)}>
-              <Select.Trigger className="w-24">
+              <Select.Trigger className="w-component-lg">
                 <Select.Value />
               </Select.Trigger>
               <Select.Content>
@@ -205,7 +205,7 @@ export default function TimelineView({
       </div>
 
       {/* Timeline */}
-      <div className="space-y-8">
+      <div className="space-y-xl">
         {Object.entries(groupedFiles).map(([groupKey, groupFiles]) => {
           const groupInfo = getGroupInfo(groupKey);
           const isExpanded = expandedGroups.has(groupKey) || groupFiles.length <= 3;
@@ -215,10 +215,10 @@ export default function TimelineView({
             <div key={groupKey} className="relative">
               {/* Group Header */}
               <div
-                className="flex items-center gap-3 mb-4 cursor-pointer hover:bg-gray-50 p-2 rounded-lg"
+                className="flex items-center gap-sm mb-4 cursor-pointer hover:bg-gray-50 p-xs rounded-lg"
                 onClick={() => toggleGroupExpansion(groupKey)}
               >
-                <IconComponent className={`w-5 h-5 ${groupInfo.color}`} />
+                <IconComponent className={`w-icon-sm h-icon-sm ${groupInfo.color}`} />
                 <h3 className={`font-semibold ${groupInfo.color}`}>
                   {groupInfo.label}
                 </h3>
@@ -227,9 +227,9 @@ export default function TimelineView({
                 </Badge>
                 <div className="ml-auto">
                   {isExpanded ? (
-                    <ChevronUp className="w-4 h-4 text-gray-400" />
+                    <ChevronUp className="w-icon-xs h-icon-xs text-gray-400" />
                   ) : (
-                    <ChevronDown className="w-4 h-4 text-gray-400" />
+                    <ChevronDown className="w-icon-xs h-icon-xs text-gray-400" />
                   )}
                 </div>
               </div>
@@ -240,15 +240,15 @@ export default function TimelineView({
                   {/* Timeline Line */}
                   <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gray-200" />
 
-                  <div className="space-y-6">
+                  <div className="space-y-lg">
                     {groupFiles.map((file, index) => {
                       const CategoryIcon = getCategoryIcon(file.category);
                       const timelineStyle = getTimelineStyle(index, groupFiles.length);
 
                       return (
-                        <div key={file.id} className="relative flex gap-4">
+                        <div key={file.id} className="relative flex gap-md">
                           {/* Timeline Dot */}
-                          <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white border-4 border-gray-200 flex items-center justify-center z-10">
+                          <div className="flex-shrink-0 w-icon-2xl h-icon-2xl rounded-full bg-white border-4 border-gray-200 flex items-center justify-center z-10">
                             <div className={`w-3 h-3 rounded-full ${
                               file.status === 'active' ? 'bg-green-500' :
                               file.status === 'processing' ? 'bg-yellow-500' :
@@ -258,12 +258,12 @@ export default function TimelineView({
                           </div>
 
                           {/* File Card */}
-                          <Card className="flex-1 p-4 hover:shadow-md transition-shadow">
-                            <div className="flex items-start gap-4">
+                          <Card className="flex-1 p-md hover:shadow-md transition-shadow">
+                            <div className="flex items-start gap-md">
                               {/* File Icon */}
                               <div className="flex-shrink-0">
-                                <div className="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
-                                  <CategoryIcon className="w-6 h-6 text-gray-600" />
+                                <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gray-100 flex items-center justify-center">
+                                  <CategoryIcon className="w-icon-md h-icon-md text-gray-600" />
                                 </div>
                               </div>
 
@@ -282,8 +282,8 @@ export default function TimelineView({
                                     )}
 
                                     {/* Metadata */}
-                                    <div className="flex items-center gap-4 text-xs text-gray-500 mb-2">
-                                      <div className="flex items-center gap-1">
+                                    <div className="flex items-center gap-md text-xs text-gray-500 mb-2">
+                                      <div className="flex items-center gap-xs">
                                         <CategoryIcon className="w-3 h-3" />
                                         <span className="capitalize">{file.category}</span>
                                       </div>
@@ -291,7 +291,7 @@ export default function TimelineView({
                                       <Badge variant="outline" className="text-xs">
                                         {file.access_level}
                                       </Badge>
-                                      <div className="flex items-center gap-1">
+                                      <div className="flex items-center gap-xs">
                                         <Clock className="w-3 h-3" />
                                         <span>{format(new Date(file.updated_at), 'h:mm a')}</span>
                                       </div>
@@ -299,7 +299,7 @@ export default function TimelineView({
 
                                     {/* Tags */}
                                     {file.tags && file.tags.length > 0 && (
-                                      <div className="flex flex-wrap gap-1 mb-2">
+                                      <div className="flex flex-wrap gap-xs mb-2">
                                         {file.tags.map((tag, index) => (
                                           <Badge key={index} variant="outline" className="text-xs">
                                             {tag}
@@ -321,24 +321,24 @@ export default function TimelineView({
                                   <DropdownMenu>
                                     <DropdownMenu.Trigger asChild>
                                       <Button variant="ghost" size="sm">
-                                        <MoreHorizontal className="w-4 h-4" />
+                                        <MoreHorizontal className="w-icon-xs h-icon-xs" />
                                       </Button>
                                     </DropdownMenu.Trigger>
                                     <DropdownMenu.Content align="end">
                                       <DropdownMenu.Item onClick={() => onView(file)}>
-                                        <Eye className="w-4 h-4 mr-2" />
+                                        <Eye className="w-icon-xs h-icon-xs mr-2" />
                                         View
                                       </DropdownMenu.Item>
                                       <DropdownMenu.Item onClick={() => onEdit(file)}>
-                                        <Edit className="w-4 h-4 mr-2" />
+                                        <Edit className="w-icon-xs h-icon-xs mr-2" />
                                         Edit
                                       </DropdownMenu.Item>
                                       <DropdownMenu.Item onClick={() => onDownload(file)}>
-                                        <Download className="w-4 h-4 mr-2" />
+                                        <Download className="w-icon-xs h-icon-xs mr-2" />
                                         Download
                                       </DropdownMenu.Item>
                                       <DropdownMenu.Item onClick={() => onShare(file)}>
-                                        <Share className="w-4 h-4 mr-2" />
+                                        <Share className="w-icon-xs h-icon-xs mr-2" />
                                         Share
                                       </DropdownMenu.Item>
                                       <DropdownMenu.Separator />
@@ -346,7 +346,7 @@ export default function TimelineView({
                                         onClick={() => onDelete(file)}
                                         className="text-red-600"
                                       >
-                                        <Trash2 className="w-4 h-4 mr-2" />
+                                        <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                                         Delete
                                       </DropdownMenu.Item>
                                     </DropdownMenu.Content>
@@ -368,8 +368,8 @@ export default function TimelineView({
 
       {/* Empty State */}
       {files.length === 0 && (
-        <div className="text-center py-12">
-          <GitBranch className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+        <div className="text-center py-xsxl">
+          <GitBranch className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">No files to display</h3>
           <p className="text-gray-500">Upload some files to see the timeline.</p>
         </div>

@@ -193,7 +193,7 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
     const efficiency = getEfficiency(task);
 
     return (
-      <div key={task.id} className="flex gap-4 group">
+      <div key={task.id} className="flex gap-md group">
         <div className="flex flex-col items-center">
           <div
             className={`w-3 h-3 rounded-full border-2 ${
@@ -213,12 +213,12 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
           className="flex-1 cursor-pointer transition-shadow hover:shadow-md"
           onClick={() => onViewTask(task)}
         >
-          <div className="space-y-4 p-4">
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex-1 space-y-1">
-                <h4 className="font-medium leading-snug line-clamp-1">{task.title}</h4>
+          <div className="space-y-md p-md">
+            <div className="flex items-start justify-between gap-sm">
+              <div className="flex-1 space-y-xs">
+                <h4 className="font-medium leading-snug line-clamp-xs">{task.title}</h4>
                 {task.description ? (
-                  <p className="text-sm text-muted-foreground line-clamp-2">{task.description}</p>
+                  <p className="text-sm text-muted-foreground line-clamp-xs">{task.description}</p>
                 ) : null}
               </div>
               <button
@@ -233,57 +233,57 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
               </button>
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-sm text-sm text-muted-foreground">
               {task.project ? (
-                <div className="flex items-center gap-2">
-                  <Briefcase className="h-4 w-4" />
+                <div className="flex items-center gap-xs">
+                  <Briefcase className="h-icon-xs w-icon-xs" />
                   <span>{task.project.name}</span>
                 </div>
               ) : null}
 
               {task.assignee ? (
-                <div className="flex items-center gap-2">
-                  <Users className="h-4 w-4" />
+                <div className="flex items-center gap-xs">
+                  <Users className="h-icon-xs w-icon-xs" />
                   <span>{task.assignee.full_name ?? task.assignee.email}</span>
                 </div>
               ) : null}
 
               {task.tags?.length ? (
-                <div className="flex items-center gap-2">
-                  <Tag className="h-4 w-4" />
+                <div className="flex items-center gap-xs">
+                  <Tag className="h-icon-xs w-icon-xs" />
                   <span>{task.tags.join(", ")}</span>
                 </div>
               ) : null}
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 text-sm">
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <ListTodo className="h-4 w-4" />
+            <div className="flex flex-wrap items-center gap-sm text-sm">
+              <div className="flex items-center gap-xs text-muted-foreground">
+                <ListTodo className="h-icon-xs w-icon-xs" />
                 {getStatusBadge(task.status)}
               </div>
 
-              <div className="flex items-center gap-2 text-muted-foreground">
-                <AlertCircle className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-muted-foreground">
+                <AlertCircle className="h-icon-xs w-icon-xs" />
                 {getPriorityBadge(task.priority)}
               </div>
 
               {showDate && task.due_date ? (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Calendar className="h-4 w-4" />
+                <div className="flex items-center gap-xs text-muted-foreground">
+                  <Calendar className="h-icon-xs w-icon-xs" />
                   <span>{formatDueDate(task.due_date)}</span>
                 </div>
               ) : null}
 
               {showDate ? (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <Clock className="h-4 w-4" />
+                <div className="flex items-center gap-xs text-muted-foreground">
+                  <Clock className="h-icon-xs w-icon-xs" />
                   <span>{dueLabel}</span>
                 </div>
               ) : null}
 
               {typeof efficiency === "number" ? (
-                <div className="flex items-center gap-2 text-muted-foreground">
-                  <TrendingUp className="h-4 w-4" />
+                <div className="flex items-center gap-xs text-muted-foreground">
+                  <TrendingUp className="h-icon-xs w-icon-xs" />
                   <span>{efficiency}% efficient</span>
                 </div>
               ) : null}
@@ -311,11 +311,11 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
     const Icon = icon;
 
     return (
-      <section key={title} className="space-y-4">
-        <div className="flex items-start justify-between gap-3">
-          <div className="space-y-1">
-            <div className="flex items-center gap-2">
-              <Icon className="h-4 w-4 text-muted-foreground" />
+      <section key={title} className="space-y-md">
+        <div className="flex items-start justify-between gap-sm">
+          <div className="space-y-xs">
+            <div className="flex items-center gap-xs">
+              <Icon className="h-icon-xs w-icon-xs text-muted-foreground" />
               <h3 className="text-base font-semibold leading-tight">{title}</h3>
             </div>
             <p className="text-sm text-muted-foreground">{description}</p>
@@ -325,7 +325,7 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
           </Badge>
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-lg">
           {tasksInGroup.map((task, index) =>
             renderTaskItem(task, { showDate, isLast: index === tasksInGroup.length - 1 }),
           )}
@@ -384,14 +384,14 @@ export default function TaskTimelineView({ tasks, onViewTask, onEditTask }: Task
 
   if (!hasAnyTasks) {
     return (
-      <div className="rounded-lg border border-dashed p-8 text-center text-sm text-muted-foreground">
+      <div className="rounded-lg border border-dashed p-xl text-center text-sm text-muted-foreground">
         No tasks found for the selected filters.
       </div>
     );
   }
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-xl">
       {groupsConfig.map(({ key, title, icon, description, showDate }) =>
         renderGroup(title, icon, groupedTasks[key], { description, showDate }),
       )}

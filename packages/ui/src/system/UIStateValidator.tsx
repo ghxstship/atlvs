@@ -523,7 +523,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
   return (
     <div
       className={`fixed ${positionClasses[position]} z-[9999] bg-foreground/90 text-background rounded-lg shadow-popover backdrop-blur-sm transition-all duration-300 ${
-        isMinimized ? 'w-auto' : 'w-96'
+        isMinimized ? 'w-auto' : 'w-container-lg'
       }`}
     >
       <div className="p-sm border-b border-white/20 flex justify-between items-center">
@@ -537,7 +537,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
       </div>
 
       {!isMinimized && (
-        <div className="p-sm max-h-96 overflow-y-auto">
+        <div className="p-sm max-h-container-lg overflow-y-auto">
           <div className="mb-sm text-sm">
             <div className="flex justify-between mb-xs">
               <span>Total Components:</span>
@@ -567,7 +567,7 @@ export const ValidationReporter: React.FC<ValidationReporterProps> = ({
                   }`}
                 >
                   <div className="font-semibold mb-xs">{name}</div>
-                  <div className="grid grid-cols-2 gap-xs text-[10px]">
+                  <div className="grid grid-cols-2 gap-xs text-small">
                     <div>States: {statesCount}/10</div>
                     <div>A11y: {a11yCount}/5</div>
                     <div>Render: {validation.performance.renderTime.toFixed(2)}ms</div>

@@ -96,7 +96,7 @@ export function Drawer({ open, onClose, title, description, children, footer, wi
             className="rounded p-xs hover:bg-accent"
             onClick={onClose}
           >
-            <X className="h-5 w-5" aria-hidden="true" />
+            <X className="h-icon-sm w-icon-sm" aria-hidden="true" />
           </button>
         </div>
         <div className="h-[calc(100%-4rem-3.5rem)] overflow-y-auto p-md">

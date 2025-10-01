@@ -29,7 +29,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <Card className="p-md stack-sm">
  <div className="flex items-center justify-between">
  <p className="text-body-sm color-muted">Active Listings</p>
- <LineChart className="h-5 w-5 color-accent" />
+ <LineChart className="h-icon-sm w-icon-sm color-accent" />
  </div>
  <p className="text-heading-2">
  {stats ? stats.totalListings.toLocaleString() : '—'}
@@ -42,7 +42,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <Card className="p-md stack-sm">
  <div className="flex items-center justify-between">
  <p className="text-body-sm color-muted">Featured Spotlight</p>
- <Sparkles className="h-5 w-5 color-warning" />
+ <Sparkles className="h-icon-sm w-icon-sm color-warning" />
  </div>
  <p className="text-heading-2">{stats ? stats.featuredListings : '—'}</p>
  <Badge variant="secondary" className="w-fit">
@@ -53,7 +53,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <Card className="p-md stack-sm">
  <div className="flex items-center justify-between">
  <p className="text-body-sm color-muted">Response Velocity</p>
- <MessageSquare className="h-5 w-5 color-success" />
+ <MessageSquare className="h-icon-sm w-icon-sm color-success" />
  </div>
  <p className="text-heading-2">{stats ? `${stats.averageResponseRate}%` : '—'}</p>
  <p className="text-body-xs color-success flex items-center gap-xs">
@@ -65,7 +65,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <Card className="p-md stack-sm">
  <div className="flex items-center justify-between">
  <p className="text-body-sm color-muted">Vendor Ecosystem</p>
- <Users className="h-5 w-5 color-info" />
+ <Users className="h-icon-sm w-icon-sm color-info" />
  </div>
  <p className="text-heading-2">{stats ? stats.totalVendors : '—'}</p>
  <p className="text-body-xs color-muted flex items-center gap-xs">
@@ -84,8 +84,8 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  </div>
  <Badge variant="outline">Live</Badge>
  </header>
- <div className="h-64 grid place-items-center border border-dashed border-border rounded-lg">
- <ArrowUpRight className="h-12 w-12 color-muted" />
+ <div className="h-container-sm grid place-items-center border border-dashed border-border rounded-lg">
+ <ArrowUpRight className="h-icon-2xl w-icon-2xl color-muted" />
  <p className="text-body-sm color-muted">Integrate with analytics provider to render chart</p>
  </div>
  </Card>
@@ -103,7 +103,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <div className="flex items-center justify-between">
  <div className="stack-2xs">
  <p className="text-body-sm color-muted flex items-center gap-xs">
- <Briefcase className="h-4 w-4" /> Active Requests
+ <Briefcase className="h-icon-xs w-icon-xs" /> Active Requests
  </p>
  <p className="text-heading-3">{stats ? stats.activeRequests : '—'}</p>
  </div>
@@ -116,7 +116,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <div className="flex items-center justify-between">
  <div className="stack-2xs">
  <p className="text-body-sm color-muted flex items-center gap-xs">
- <Star className="h-4 w-4" /> Featured Offers
+ <Star className="h-icon-xs w-icon-xs" /> Featured Offers
  </p>
  <p className="text-heading-3">{stats ? stats.activeOffers : '—'}</p>
  </div>
@@ -129,7 +129,7 @@ export function MarketplaceDashboard({ stats, loading, onRefresh }: MarketplaceD
  <div className="flex items-center justify-between">
  <div className="stack-2xs">
  <p className="text-body-sm color-muted flex items-center gap-xs">
- <Users className="h-4 w-4" /> Exchanges Facilitated
+ <Users className="h-icon-xs w-icon-xs" /> Exchanges Facilitated
  </p>
  <p className="text-heading-3">{stats ? stats.activeExchanges : '—'}</p>
  </div>

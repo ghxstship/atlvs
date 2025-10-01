@@ -1,10 +1,10 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { Button } from './Button';
-import { Input } from './Input';
-import { useToast } from './Toast';
-import { Modal, ConfirmModal } from './Modal';
+import { Button } from '../../atoms/Button';
+import { Input } from '../../components/atomic/Input';
+import { useToast } from '../../components/Toast';
+import { Modal, ConfirmModal } from '../../organisms/Modal';
 import { CheckCircle, AlertCircle, Info, HelpCircle, Undo2, Save, X } from 'lucide-react';
 
 interface WorkflowStep {
@@ -174,7 +174,7 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
             }`}
           >
             <div
-              className={`flex items-center justify-center w-8 h-8 rounded-full border-2 transition-colors ${
+              className={`flex items-center justify-center w-icon-lg h-icon-lg rounded-full border-2 transition-colors ${
                 step.completed
                   ? 'bg-success border-success text-success-foreground'
                   : index === currentStep
@@ -183,7 +183,7 @@ export const WorkflowProgress: React.FC<WorkflowProgressProps> = ({
               }`}
             >
               {step.completed ? (
-                <CheckCircle className="w-4 h-4" />
+                <CheckCircle className="w-icon-xs h-icon-xs" />
               ) : showStepNumbers ? (
                 <span className="text-sm font-medium">{index + 1}</span>
               ) : (
@@ -369,7 +369,7 @@ export const ContextualHelp: React.FC<ContextualHelpProps> = ({
       </div>
       
       {isVisible && (
-        <div className={`absolute z-50 w-64 p-sm bg-popover border rounded-md shadow-floating ${
+        <div className={`absolute z-50 w-container-sm p-sm bg-popover border rounded-md shadow-floating ${
           position === 'top' ? 'bottom-full mb-sm' :
           position === 'bottom' ? 'top-full mt-sm' :
           position === 'left' ? 'right-full mr-sm' :
@@ -443,7 +443,7 @@ export const SmartForm: React.FC<SmartFormProps> = ({
             onClick={undo}
             disabled={!canUndo}
           >
-            <Undo2 className="w-4 h-4 mr-xs" />
+            <Undo2 className="w-icon-xs h-icon-xs mr-xs" />
             Undo
           </Button>
           <Button
@@ -453,7 +453,7 @@ export const SmartForm: React.FC<SmartFormProps> = ({
             onClick={redo}
             disabled={!canRedo}
           >
-            <Undo2 className="w-4 h-4 mr-xs scale-x-[-1]" />
+            <Undo2 className="w-icon-xs h-icon-xs mr-xs scale-x-[-1]" />
             Redo
           </Button>
           {isSaving && (

@@ -218,10 +218,10 @@ export function DashboardView({
           <div className="flex items-center gap-sm">
             {widget.config.icon && (
               <div className="p-xs rounded bg-accent/10">
-                {widget.config.icon === 'database' && <BarChart3 className="h-4 w-4 text-accent" />}
-                {widget.config.icon === 'users' && <Users className="h-4 w-4 text-accent" />}
-                {widget.config.icon === 'dollar' && <DollarSign className="h-4 w-4 text-accent" />}
-                {widget.config.icon === 'activity' && <Activity className="h-4 w-4 text-accent" />}
+                {widget.config.icon === 'database' && <BarChart3 className="h-icon-xs w-icon-xs text-accent" />}
+                {widget.config.icon === 'users' && <Users className="h-icon-xs w-icon-xs text-accent" />}
+                {widget.config.icon === 'dollar' && <DollarSign className="h-icon-xs w-icon-xs text-accent" />}
+                {widget.config.icon === 'activity' && <Activity className="h-icon-xs w-icon-xs text-accent" />}
               </div>
             )}
             <h3 className="font-semibold text-sm">{widget.title}</h3>
@@ -314,7 +314,7 @@ export function DashboardView({
               
               {widget.config.chartType === 'line' && (
                 <div className="text-center py-xl text-muted-foreground">
-                  <TrendingUp className="h-8 w-8 mx-auto mb-sm" />
+                  <TrendingUp className="h-icon-lg w-icon-lg mx-auto mb-sm" />
                   <div className="text-sm">Line chart visualization</div>
                   <div className="text-xs">Chart library integration needed</div>
                 </div>
@@ -364,7 +364,7 @@ export function DashboardView({
               
               {filteredData.length === 0 && (
                 <div className="text-center py-xl text-muted-foreground">
-                  <Activity className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                  <Activity className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                   <div className="text-sm">No recent activity</div>
                 </div>
               )}
@@ -401,7 +401,7 @@ export function DashboardView({
         <div className="text-destructive mb-sm">Error loading dashboard</div>
         <div className="text-sm text-muted-foreground">{error}</div>
         <Button variant="ghost"  onClick={handleRefresh} className="mt-md">
-          <RefreshCw className="h-4 w-4 mr-sm" />
+          <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
           Retry
         </Button>
       </div>
@@ -431,7 +431,7 @@ export function DashboardView({
                 config: { metric: 'count', format: 'number' }
               })}
             >
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Widget
             </Button>
           )}
@@ -442,12 +442,12 @@ export function DashboardView({
             onClick={handleRefresh}
             disabled={refreshing}
           >
-            <RefreshCw className={`h-4 w-4 mr-sm ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-icon-xs w-icon-xs mr-sm ${refreshing ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
           
           <Button variant="ghost" >
-            <Download className="h-4 w-4 mr-sm" />
+            <Download className="h-icon-xs w-icon-xs mr-sm" />
             Export
           </Button>
         </div>
@@ -461,7 +461,7 @@ export function DashboardView({
       {/* Empty State */}
       {widgets.length === 0 && (
         <div className="text-center py-2xl">
-          <BarChart3 className="h-12 w-12 mx-auto mb-md text-muted-foreground" />
+          <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground" />
           <h3 className="text-lg font-medium text-foreground mb-sm">
             No widgets configured
           </h3>
@@ -479,7 +479,7 @@ export function DashboardView({
                 config: { metric: 'count', format: 'number' }
               })}
             >
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Your First Widget
             </Button>
           )}

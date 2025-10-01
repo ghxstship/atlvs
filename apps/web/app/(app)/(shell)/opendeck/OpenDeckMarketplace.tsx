@@ -36,49 +36,49 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="grid w-full grid-cols-5 lg:grid-cols-9">
           <TabsTrigger value="dashboard">
-            <LayoutDashboard className="h-4 w-4 mr-sm" />
+            <LayoutDashboard className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Dashboard</span>
           </TabsTrigger>
           
           {(userRole === 'vendor' || userRole === 'both') && (
             <TabsTrigger value="profile">
-              <User className="h-4 w-4 mr-sm" />
+              <User className="h-icon-xs w-icon-xs mr-sm" />
               <span className="hidden lg:inline">Profile</span>
             </TabsTrigger>
           )}
           
           <TabsTrigger value="projects">
-            <Briefcase className="h-4 w-4 mr-sm" />
+            <Briefcase className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Projects</span>
           </TabsTrigger>
           
           <TabsTrigger value="browse">
-            <Search className="h-4 w-4 mr-sm" />
+            <Search className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Browse</span>
           </TabsTrigger>
           
           <TabsTrigger value="messages">
-            <MessageSquare className="h-4 w-4 mr-sm" />
+            <MessageSquare className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Messages</span>
           </TabsTrigger>
           
           <TabsTrigger value="payments">
-            <DollarSign className="h-4 w-4 mr-sm" />
+            <DollarSign className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Payments</span>
           </TabsTrigger>
           
           <TabsTrigger value="reviews">
-            <Star className="h-4 w-4 mr-sm" />
+            <Star className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Reviews</span>
           </TabsTrigger>
           
           <TabsTrigger value="contracts">
-            <FileText className="h-4 w-4 mr-sm" />
+            <FileText className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Contracts</span>
           </TabsTrigger>
           
           <TabsTrigger value="settings">
-            <Settings className="h-4 w-4 mr-sm" />
+            <Settings className="h-icon-xs w-icon-xs mr-sm" />
             <span className="hidden lg:inline">Settings</span>
           </TabsTrigger>
         </TabsList>
@@ -102,40 +102,40 @@ export default function OpenDeckMarketplace({ orgId, userId, userRole }: OpenDec
         </TabsContent>
 
         <TabsContent value="messages">
-          <div className="brand-opendeck text-center py-2xl">
-            <MessageSquare className="h-12 w-12 mx-auto mb-md color-muted" />
+          <div className="brand-opendeck text-center py-xsxl">
+            <MessageSquare className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Messages</h3>
             <p className="color-muted">Communication hub coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="payments">
-          <div className="brand-opendeck text-center py-2xl">
-            <DollarSign className="h-12 w-12 mx-auto mb-md color-muted" />
+          <div className="brand-opendeck text-center py-xsxl">
+            <DollarSign className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Payments & Escrow</h3>
             <p className="color-muted">Payment processing coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="reviews">
-          <div className="brand-opendeck text-center py-2xl">
-            <Star className="h-12 w-12 mx-auto mb-md color-muted" />
+          <div className="brand-opendeck text-center py-xsxl">
+            <Star className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Reviews & Ratings</h3>
             <p className="color-muted">Reputation system coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="contracts">
-          <div className="brand-opendeck text-center py-2xl">
-            <FileText className="h-12 w-12 mx-auto mb-md color-muted" />
+          <div className="brand-opendeck text-center py-xsxl">
+            <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Contracts</h3>
             <p className="color-muted">Contract management coming soon...</p>
           </div>
         </TabsContent>
 
         <TabsContent value="settings">
-          <div className="brand-opendeck text-center py-2xl">
-            <Settings className="h-12 w-12 mx-auto mb-md color-muted" />
+          <div className="brand-opendeck text-center py-xsxl">
+            <Settings className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
             <h3 className="text-body text-heading-4 mb-sm">Marketplace Settings</h3>
             <p className="color-muted">Settings coming soon...</p>
           </div>

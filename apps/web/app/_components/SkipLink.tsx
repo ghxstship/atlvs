@@ -18,7 +18,7 @@ export function SkipLink() {
     <a
       href="#main-content"
       className={`
-        fixed top-4 left-4 z-50 px-md py-sm bg-accent text-accent-foreground rounded
+        fixed top-md left-4 z-50 px-md py-sm bg-accent text-accent-foreground rounded
         transform transition-transform duration-200 font-medium
         focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2
         ${isVisible ? 'translate-y-0' : '-translate-y-16'}

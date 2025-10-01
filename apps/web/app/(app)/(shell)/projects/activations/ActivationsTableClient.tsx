@@ -241,13 +241,13 @@ export default function ActivationsTableClient({
                 >
                   <td className="p-sm">
                     <div className="flex items-center gap-sm">
-                      <Rocket className="w-4 h-4 color-muted" />
+                      <Rocket className="w-icon-xs h-icon-xs color-muted" />
                       <span className="form-label">{row.name}</span>
                     </div>
                   </td>
                   <td className="p-sm">
                     <div className="flex items-center gap-sm">
-                      <StatusIcon className="w-4 h-4" />
+                      <StatusIcon className="w-icon-xs h-icon-xs" />
                       <Badge variant={getStatusColor(row.status)}>
                         {row.status}
                       </Badge>
@@ -256,7 +256,7 @@ export default function ActivationsTableClient({
                   <td className="p-sm">
                     {row.project ? (
                       <div className="flex items-center gap-sm">
-                        <Building className="w-4 h-4 color-muted" />
+                        <Building className="w-icon-xs h-icon-xs color-muted" />
                         <span>{row.project.name}</span>
                       </div>
                     ) : (
@@ -266,7 +266,7 @@ export default function ActivationsTableClient({
                   <td className="p-sm">
                     {row.activation_date ? (
                       <div className="flex items-center gap-sm">
-                        <Calendar className="w-4 h-4 color-muted" />
+                        <Calendar className="w-icon-xs h-icon-xs color-muted" />
                         <span>{new Date(row.activation_date).toLocaleDateString()}</span>
                       </div>
                     ) : (
@@ -275,7 +275,7 @@ export default function ActivationsTableClient({
                   </td>
                   <td className="p-sm">
                     <div className="flex items-center gap-sm">
-                      <DollarSign className="w-4 h-4 color-muted" />
+                      <DollarSign className="w-icon-xs h-icon-xs color-muted" />
                       <span>{formatCurrency(row.budget)}</span>
                     </div>
                   </td>
@@ -331,7 +331,7 @@ export default function ActivationsTableClient({
                   : 'border-transparent color-muted hover:color-foreground'
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-icon-xs h-icon-xs" />
               {label}
             </button>
           ))}
@@ -489,7 +489,7 @@ export default function ActivationsTableClient({
                 onClick={onDelete}
                 disabled={saving}
               >
-                <Trash2 className="w-4 h-4 mr-sm" />
+                <Trash2 className="w-icon-xs h-icon-xs mr-sm" />
                 Delete
               </Button>
             </div>

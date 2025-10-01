@@ -106,7 +106,7 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <Badge variant="outline" className="mb-md">
@@ -128,7 +128,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -145,8 +145,8 @@ export default function ContactPage() {
               return (
                 <Card key={method.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg text-center">
-                    <div className={`inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r ${method.color} mb-md`}>
-                      <Icon className="h-6 w-6 text-background" />
+                    <div className={`inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r ${method.color} mb-md`}>
+                      <Icon className="h-icon-md w-icon-md text-background" />
                     </div>
                     <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>{method.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{method.description}</p>
@@ -163,7 +163,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Form */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-3xl">
@@ -270,7 +270,7 @@ export default function ContactPage() {
                       type="checkbox"
                       id="newsletter"
                       name="newsletter"
-                      className="h-4 w-4 text-foreground focus:ring-primary border-input rounded"
+                      className="h-icon-xs w-icon-xs text-foreground focus:ring-primary border-input rounded"
                     />
                     <label htmlFor="newsletter" className="text-body-sm color-muted">
                       I'd like to receive updates about GHXSTSHIP products and features
@@ -279,7 +279,7 @@ export default function ContactPage() {
 
                   <Button className="w-full group">
                     Send Message
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </form>
               </CardContent>
@@ -289,7 +289,7 @@ export default function ContactPage() {
       </section>
 
       {/* Office Locations */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -305,7 +305,7 @@ export default function ContactPage() {
               <Card key={office.city} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="flex items-center gap-sm mb-lg">
-                    <MapPin className="h-6 w-6 text-foreground" />
+                    <MapPin className="h-icon-md w-icon-md text-foreground" />
                     <div>
                       <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>{office.city}</h3>
                       {office.isHeadquarters && (
@@ -340,7 +340,7 @@ export default function ContactPage() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -367,7 +367,7 @@ export default function ContactPage() {
             <Link href="/resources">
               <Button>
                 Visit Help Center
-                <ArrowRight className="ml-sm h-4 w-4" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
               </Button>
             </Link>
           </div>
@@ -375,7 +375,7 @@ export default function ContactPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -389,7 +389,7 @@ export default function ContactPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">

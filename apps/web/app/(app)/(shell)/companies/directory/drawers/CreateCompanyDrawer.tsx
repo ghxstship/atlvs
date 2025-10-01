@@ -135,13 +135,13 @@ export default function CreateCompanyDrawer({
         if (!value) handleClose();
       }}
     >
-      <DrawerContent className="max-w-3xl mx-auto p-6">
+      <DrawerContent className="max-w-3xl mx-auto p-lg">
         <DrawerHeader>
           <DrawerTitle>Add New Company</DrawerTitle>
           <DrawerDescription>Create a new company in your directory</DrawerDescription>
         </DrawerHeader>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-          <section className="space-y-4">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-lg">
+          <section className="space-y-md">
             <h3 className="text-lg font-semibold">Basic Information</h3>
 
             <div>
@@ -158,7 +158,7 @@ export default function CreateCompanyDrawer({
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="block text-sm font-medium mb-2">Industry</label>
                 <Select
@@ -212,7 +212,7 @@ export default function CreateCompanyDrawer({
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-md">
             <h3 className="text-lg font-semibold">Contact Information</h3>
 
             <div>
@@ -220,7 +220,7 @@ export default function CreateCompanyDrawer({
               <Input {...form.register('website')} placeholder="https://example.com" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="block text-sm font-medium mb-2">Email</label>
                 <Input type="email" {...form.register('email')} placeholder="contact@company.com" />
@@ -233,7 +233,7 @@ export default function CreateCompanyDrawer({
             </div>
           </section>
 
-          <section className="space-y-4">
+          <section className="space-y-md">
             <h3 className="text-lg font-semibold">Address</h3>
 
             <div>
@@ -241,7 +241,7 @@ export default function CreateCompanyDrawer({
               <Input {...form.register('address')} placeholder="123 Main Street" />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="block text-sm font-medium mb-2">City</label>
                 <Input {...form.register('city')} placeholder="New York" />
@@ -253,7 +253,7 @@ export default function CreateCompanyDrawer({
               </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <div>
                 <label className="block text-sm font-medium mb-2">Country</label>
                 <Input {...form.register('country')} placeholder="United States" />
@@ -275,7 +275,7 @@ export default function CreateCompanyDrawer({
             />
           </section>
 
-          <DrawerFooter className="flex justify-end gap-3 pt-6 border-t">
+          <DrawerFooter className="flex justify-end gap-sm pt-6 border-t">
             <Button type="button" variant="outline" onClick={handleClose} disabled={loading}>
               Cancel
             </Button>

@@ -221,9 +221,9 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading notification settings...</p>
         </div>
       </div>
@@ -231,19 +231,19 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Email Notifications */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Mail className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Mail className="h-icon-sm w-icon-sm" />
             Email Notifications
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure which activities trigger email notifications.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-lg">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Enable Email Notifications</Label>
@@ -256,7 +256,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
           </div>
 
           {preferences.email.enabled && (
-            <div className="space-y-4 ml-6">
+            <div className="space-y-md ml-6">
               {NOTIFICATION_TYPES.map((type) => (
                 <div key={type.key} className="flex items-center justify-between">
                   <div className="space-y-0.5">
@@ -290,15 +290,15 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
       {/* SMS Notifications */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Smartphone className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Smartphone className="h-icon-sm w-icon-sm" />
             SMS Notifications
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure SMS notifications for critical updates.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-lg">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Enable SMS Notifications</Label>
@@ -311,7 +311,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
           </div>
 
           {preferences.sms.enabled && (
-            <div className="space-y-4 ml-6">
+            <div className="space-y-md ml-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Urgent Tasks</Label>
@@ -341,15 +341,15 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
       {/* Push Notifications */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Monitor className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Monitor className="h-icon-sm w-icon-sm" />
             Push Notifications
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure browser push notifications.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-lg">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Enable Push Notifications</Label>
@@ -362,7 +362,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
           </div>
 
           {preferences.push.enabled && (
-            <div className="space-y-4 ml-6">
+            <div className="space-y-md ml-6">
               {NOTIFICATION_TYPES.slice(0, 3).map((type) => (
                 <div key={type.key} className="flex items-center justify-between">
                   <div className="space-y-0.5">
@@ -383,15 +383,15 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
       {/* In-App Notifications */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Bell className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Bell className="h-icon-sm w-icon-sm" />
             In-App Notifications
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure in-app notification preferences.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
+        <CardContent className="space-y-lg">
           <div className="flex items-center justify-between">
             <div className="space-y-0.5">
               <Label>Enable In-App Notifications</Label>
@@ -404,7 +404,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
           </div>
 
           {preferences.in_app.enabled && (
-            <div className="space-y-4 ml-6">
+            <div className="space-y-md ml-6">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Sound Notifications</Label>
@@ -434,16 +434,16 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
       {/* Digest Settings */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <SettingsIcon className="h-icon-sm w-icon-sm" />
             Digest Preferences
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Configure summary emails and reports.
           </p>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="space-y-2">
+        <CardContent className="space-y-lg">
+          <div className="space-y-xs">
             <Label htmlFor="digest-frequency">Digest Frequency</Label>
             <Select
               value={preferences.digest.frequency}
@@ -462,7 +462,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
           </div>
 
           {preferences.digest.frequency !== 'none' && (
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Include Metrics</Label>
@@ -492,7 +492,7 @@ export default function NotificationsSettings({ userId, orgId }: NotificationsSe
       {/* Save Button */}
       <div className="flex justify-end">
         <Button onClick={handleSavePreferences} disabled={saving}>
-          <Bell className="h-4 w-4 mr-2" />
+          <Bell className="h-icon-xs w-icon-xs mr-2" />
           {saving ? 'Saving...' : 'Save Notification Settings'}
         </Button>
       </div>

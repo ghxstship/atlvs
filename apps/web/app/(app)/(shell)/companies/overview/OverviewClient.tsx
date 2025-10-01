@@ -179,15 +179,15 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
   const getActivityIcon = (type: string) => {
     switch (type) {
       case 'company_added':
-        return <Building className="h-4 w-4 color-accent" />;
+        return <Building className="h-icon-xs w-icon-xs color-accent" />;
       case 'contract_signed':
-        return <FileText className="h-4 w-4 color-success" />;
+        return <FileText className="h-icon-xs w-icon-xs color-success" />;
       case 'qualification_verified':
-        return <Award className="h-4 w-4 color-secondary" />;
+        return <Award className="h-icon-xs w-icon-xs color-secondary" />;
       case 'rating_submitted':
-        return <Star className="h-4 w-4 color-warning" />;
+        return <Star className="h-icon-xs w-icon-xs color-warning" />;
       default:
-        return <CheckCircle className="h-4 w-4 color-muted" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs color-muted" />;
     }
   };
 
@@ -195,7 +195,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${
+        className={`h-icon-xs w-icon-xs ${
           i < Math.floor(rating) 
             ? 'color-warning fill-current' 
             : 'color-muted'
@@ -208,15 +208,15 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {Array.from({ length: 8 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -235,11 +235,11 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
           </div>
           <div className="flex items-center cluster-sm">
             <Button variant="outline" onClick={() => window.location.href = '/companies/directory'}>
-              <Eye className="h-4 w-4 mr-sm" />
+              <Eye className="h-icon-xs w-icon-xs mr-sm" />
               View Directory
             </Button>
             <Button onClick={() => window.location.href = '/companies'}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Company
             </Button>
           </div>
@@ -254,7 +254,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                 <p className="text-heading-3 text-heading-3 color-foreground">{stats?.totalCompanies || 0}</p>
                 <p className="text-body-sm color-success">{stats?.activeCompanies || 0} active</p>
               </div>
-              <Building className="h-8 w-8 color-accent" />
+              <Building className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -265,7 +265,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                 <p className="text-heading-3 text-heading-3 color-success">{stats?.activeContracts || 0}</p>
                 <p className="text-body-sm color-foreground/60">of {stats?.totalContracts || 0} total</p>
               </div>
-              <FileText className="h-8 w-8 color-success" />
+              <FileText className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -278,7 +278,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                   <p className="text-body-sm color-warning">{stats?.expiringQualifications} expiring soon</p>
                 )}
               </div>
-              <Award className="h-8 w-8 color-secondary" />
+              <Award className="h-icon-lg w-icon-lg color-secondary" />
             </div>
           </Card>
           
@@ -291,7 +291,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
                 </p>
                 <p className="text-body-sm color-foreground/60">{stats?.totalRatings || 0} reviews</p>
               </div>
-              <Star className="h-8 w-8 color-warning" />
+              <Star className="h-icon-lg w-icon-lg color-warning" />
             </div>
           </Card>
         </div>
@@ -302,7 +302,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.expiringContracts || 0) > 0 && (
               <Card className="p-md border-warning/20 bg-warning/10">
                 <div className="flex items-center cluster-sm">
-                  <AlertTriangle className="h-5 w-5 color-warning" />
+                  <AlertTriangle className="h-icon-sm w-icon-sm color-warning" />
                   <div>
                     <p className="form-label color-warning">Contracts Expiring</p>
                     <p className="text-body-sm color-warning/80">{stats?.expiringContracts} contracts expire within 30 days</p>
@@ -314,7 +314,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.expiringQualifications || 0) > 0 && (
               <Card className={`p-md ${designTokens.colors.status.error}`}>
                 <div className="flex items-center cluster-sm">
-                  <Clock className="h-5 w-5 color-destructive" />
+                  <Clock className="h-icon-sm w-icon-sm color-destructive" />
                   <div>
                     <p className="form-label color-destructive">Qualifications Expiring</p>
                     <p className="text-body-sm color-destructive/80">{stats?.expiringQualifications} qualifications expire within 30 days</p>
@@ -326,7 +326,7 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
             {(stats?.pendingCompanies || 0) > 0 && (
               <Card className={`p-md ${designTokens.colors.status.info}`}>
                 <div className="flex items-center cluster-sm">
-                  <Users className="h-5 w-5 color-accent" />
+                  <Users className="h-icon-sm w-icon-sm color-accent" />
                   <div>
                     <p className="form-label color-accent">Pending Reviews</p>
                     <p className="text-body-sm color-accent/80">{stats?.pendingCompanies} companies need review</p>
@@ -390,20 +390,20 @@ export default function OverviewClient({ user, orgId, translations }: OverviewCl
         <Card className="p-lg">
           <h3 className="text-body text-heading-4 color-foreground mb-md">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
-            <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies'}>
-              <Building className="h-6 w-6 mb-sm" />
+            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies'}>
+              <Building className="h-icon-md w-icon-md mb-sm" />
               <span className="text-body-sm">Add Company</span>
             </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/contracts'}>
-              <FileText className="h-6 w-6 mb-sm" />
+            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/contracts'}>
+              <FileText className="h-icon-md w-icon-md mb-sm" />
               <span className="text-body-sm">New Contract</span>
             </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/qualifications'}>
-              <Award className="h-6 w-6 mb-sm" />
+            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/qualifications'}>
+              <Award className="h-icon-md w-icon-md mb-sm" />
               <span className="text-body-sm">Add Qualification</span>
             </Button>
-            <Button variant="outline" className="h-20 flex-col" onClick={() => window.location.href = '/companies/ratings'}>
-              <Star className="h-6 w-6 mb-sm" />
+            <Button variant="outline" className="h-component-lg flex-col" onClick={() => window.location.href = '/companies/ratings'}>
+              <Star className="h-icon-md w-icon-md mb-sm" />
               <span className="text-body-sm">Submit Rating</span>
             </Button>
           </div>

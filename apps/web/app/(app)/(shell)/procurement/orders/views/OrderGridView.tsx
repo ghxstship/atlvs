@@ -88,17 +88,17 @@ export default function OrderGridView({
  <Card key={index} className="p-md">
  <div className="animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="h-4 bg-muted rounded w-3/4"></div>
- <div className="h-6 bg-muted rounded-full w-16"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md"></div>
  </div>
  <div className="h-3 bg-muted rounded w-1/2 mb-sm"></div>
  <div className="h-3 bg-muted rounded w-full mb-sm"></div>
  <div className="h-3 bg-muted rounded w-2/3 mb-md"></div>
  <div className="flex justify-between items-center">
- <div className="h-5 bg-muted rounded w-20"></div>
+ <div className="h-icon-sm bg-muted rounded w-component-lg"></div>
  <div className="flex gap-xs">
- <div className="h-8 w-8 bg-muted rounded"></div>
- <div className="h-8 w-8 bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
  </div>
  </div>
  </div>
@@ -111,7 +111,7 @@ export default function OrderGridView({
  if (orders.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Package className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Package className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No orders found</h3>
  <p className="text-muted-foreground">
  No orders match your current filters. Try adjusting your search criteria.
@@ -224,7 +224,7 @@ export default function OrderGridView({
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm min-w-0 flex-1">
  <div className="p-sm bg-primary/10 rounded-lg">
- <Package className="h-4 w-4 text-primary flex-shrink-0" />
+ <Package className="h-icon-xs w-icon-xs text-primary flex-shrink-0" />
  </div>
  <div className="min-w-0 flex-1">
  <h4 className="font-medium truncate">{order.order_number}</h4>
@@ -254,7 +254,7 @@ export default function OrderGridView({
 
  {/* Description */}
  {order.description && (
- <p className="text-sm text-muted-foreground line-clamp-2 mb-sm">
+ <p className="text-sm text-muted-foreground line-clamp-xs mb-sm">
  {order.description}
  </p>
  )}

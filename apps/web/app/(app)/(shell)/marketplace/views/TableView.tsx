@@ -124,11 +124,11 @@ export default function TableView({
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
-        <div className="h-8 bg-muted animate-pulse rounded" />
-        <div className="space-y-2">
+      <div className="space-y-md">
+        <div className="h-icon-lg bg-muted animate-pulse rounded" />
+        <div className="space-y-xs">
           {Array.from({ length: 5 }).map((_, i) => (
-            <div key={i} className="h-16 bg-muted animate-pulse rounded" />
+            <div key={i} className="h-component-md bg-muted animate-pulse rounded" />
           ))}
         </div>
       </div>
@@ -137,7 +137,7 @@ export default function TableView({
 
   if (error) {
     return (
-      <div className="text-center py-8">
+      <div className="text-center py-xl">
         <p className="text-muted-foreground">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -147,14 +147,14 @@ export default function TableView({
   }
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Table */}
       <div className="border rounded-lg overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow>
               {onSelectionChange && (
-                <TableHead className="w-12">
+                <TableHead className="w-icon-2xl">
                   <input
                     type="checkbox"
                     checked={selectedListings.length === listings.length && listings.length > 0}
@@ -201,7 +201,7 @@ export default function TableView({
               >
                 Created {sortField === 'created_at' && (sortDirection === 'asc' ? '↑' : '↓')}
               </TableHead>
-              <TableHead className="w-12"></TableHead>
+              <TableHead className="w-icon-2xl"></TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -225,10 +225,10 @@ export default function TableView({
                   </TableCell>
                 )}
                 <TableCell className="font-medium">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     {listing.title}
                     {listing.featured && (
-                      <Star className="h-4 w-4 text-yellow-500 fill-current" />
+                      <Star className="h-icon-xs w-icon-xs text-yellow-500 fill-current" />
                     )}
                   </div>
                 </TableCell>
@@ -268,16 +268,16 @@ export default function TableView({
                         size="sm"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       <DropdownMenuItem onClick={() => onListingView?.(listing)}>
-                        <Eye className="mr-2 h-4 w-4" />
+                        <Eye className="mr-2 h-icon-xs w-icon-xs" />
                         View Details
                       </DropdownMenuItem>
                       <DropdownMenuItem onClick={() => onListingEdit?.(listing)}>
-                        <Edit className="mr-2 h-4 w-4" />
+                        <Edit className="mr-2 h-icon-xs w-icon-xs" />
                         Edit
                       </DropdownMenuItem>
                       <DropdownMenuItem
@@ -285,12 +285,12 @@ export default function TableView({
                       >
                         {listing.featured ? (
                           <>
-                            <StarOff className="mr-2 h-4 w-4" />
+                            <StarOff className="mr-2 h-icon-xs w-icon-xs" />
                             Unfeature
                           </>
                         ) : (
                           <>
-                            <Star className="mr-2 h-4 w-4" />
+                            <Star className="mr-2 h-icon-xs w-icon-xs" />
                             Feature
                           </>
                         )}
@@ -298,14 +298,14 @@ export default function TableView({
                       <DropdownMenuItem
                         onClick={() => marketplaceService.archiveListing(orgId, '', listing.id)}
                       >
-                        <Archive className="mr-2 h-4 w-4" />
+                        <Archive className="mr-2 h-icon-xs w-icon-xs" />
                         Archive
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         onClick={() => onListingDelete?.(listing)}
                         className="text-destructive"
                       >
-                        <Trash2 className="mr-2 h-4 w-4" />
+                        <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                         Delete
                       </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -319,7 +319,7 @@ export default function TableView({
 
       {/* Empty state */}
       {listings.length === 0 && (
-        <div className="text-center py-8">
+        <div className="text-center py-xl">
           <p className="text-muted-foreground">No listings found</p>
           <p className="text-sm text-muted-foreground mt-1">
             Try adjusting your filters or create a new listing

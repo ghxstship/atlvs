@@ -144,9 +144,9 @@ export default function EditProjectDrawer({
  variant="ghost"
  size="sm"
  onClick={handleClose}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </DrawerHeader>
@@ -202,7 +202,7 @@ export default function EditProjectDrawer({
  <div className="space-y-sm">
  <Label htmlFor="location">Location</Label>
  <div className="relative">
- <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <MapPin className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  {...register("location")}
@@ -222,7 +222,7 @@ export default function EditProjectDrawer({
  <div className="space-y-sm">
  <Label htmlFor="budget">Budget</Label>
  <div className="relative">
- <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  type="number"
@@ -249,7 +249,7 @@ export default function EditProjectDrawer({
  <div className="space-y-sm">
  <Label htmlFor="starts_at">Start Date</Label>
  <div className="relative">
- <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  type="date"
@@ -262,7 +262,7 @@ export default function EditProjectDrawer({
  <div className="space-y-sm">
  <Label htmlFor="ends_at">End Date</Label>
  <div className="relative">
- <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  type="date"
@@ -282,7 +282,7 @@ export default function EditProjectDrawer({
  <Label>Project Tags</Label>
  <div className="flex gap-sm">
  <div className="relative flex-1">
- <Tag className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <Tag className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  value={tagInput}
  onChange={(e) => setTagInput(e.target.value)}

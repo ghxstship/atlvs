@@ -67,12 +67,12 @@ export default function HealthFormView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
+ <Card className="p-lg">
+ <div className="space-y-md">
  {[...Array(8)].map((_, i) => (
- <div key={i} className="space-y-2">
- <div className="h-4 w-24 bg-muted animate-pulse rounded" />
- <div className="h-10 bg-muted animate-pulse rounded" />
+ <div key={i} className="space-y-xs">
+ <div className="h-icon-xs w-component-lg bg-muted animate-pulse rounded" />
+ <div className="h-icon-xl bg-muted animate-pulse rounded" />
  </div>
  ))}
  </div>
@@ -81,16 +81,16 @@ export default function HealthFormView({
  }
 
  return (
- <div className="space-y-6">
- <Card className="p-6">
- <div className="space-y-6">
+ <div className="space-y-lg">
+ <Card className="p-lg">
+ <div className="space-y-lg">
  <div>
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <FileText className="h-5 w-5" />
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <FileText className="h-icon-sm w-icon-sm" />
  Basic Information
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="record_type">
  Record Type <span className="text-destructive">*</span>
  </Label>
@@ -104,7 +104,7 @@ export default function HealthFormView({
  <SelectContent>
  {Object.entries(RECORD_TYPE_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
- <span className="flex items-center gap-2">
+ <span className="flex items-center gap-xs">
  <span>{getRecordTypeIcon(value as unknown)}</span>
  {label}
  </span>
@@ -114,7 +114,7 @@ export default function HealthFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="title">
  Title <span className="text-destructive">*</span>
  </Label>
@@ -130,7 +130,7 @@ export default function HealthFormView({
  )}
  </div>
 
- <div className="space-y-2 md:col-span-2">
+ <div className="space-y-xs md:col-span-2">
  <Label htmlFor="description">Description</Label>
  <Textarea
  
@@ -144,12 +144,12 @@ export default function HealthFormView({
  </div>
 
  <div>
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Dates & Timeline
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="date_recorded">
  Date Recorded <span className="text-destructive">*</span>
  </Label>
@@ -165,7 +165,7 @@ export default function HealthFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="expiry_date">Expiry Date</Label>
  <Input
  
@@ -182,12 +182,12 @@ export default function HealthFormView({
  </div>
 
  <div>
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <User className="h-5 w-5" />
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <User className="h-icon-sm w-icon-sm" />
  Provider Information
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="provider">Healthcare Provider</Label>
  <Input
  
@@ -197,7 +197,7 @@ export default function HealthFormView({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="provider_contact">Provider Contact</Label>
  <Input
  
@@ -211,8 +211,8 @@ export default function HealthFormView({
 
  <div>
  <h3 className="text-lg font-semibold mb-4">Classification</h3>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="severity">Severity Level</Label>
  <Select
  value={formData.severity}
@@ -231,7 +231,7 @@ export default function HealthFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="category">Category</Label>
  <Select
  value={formData.category}
@@ -250,7 +250,7 @@ export default function HealthFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="privacy_level">
  Privacy Level <span className="text-destructive">*</span>
  </Label>
@@ -264,8 +264,8 @@ export default function HealthFormView({
  <SelectContent>
  {Object.entries(PRIVACY_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
- <span className="flex items-center gap-2">
- <Shield className="h-4 w-4" />
+ <span className="flex items-center gap-xs">
+ <Shield className="h-icon-xs w-icon-xs" />
  {label}
  </span>
  </SelectItem>
@@ -278,10 +278,10 @@ export default function HealthFormView({
 
  <div>
  <h3 className="text-lg font-semibold mb-4">Tags & Notes</h3>
- <div className="space-y-4">
- <div className="space-y-2">
+ <div className="space-y-md">
+ <div className="space-y-xs">
  <Label>Tags</Label>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={tagInput}
  onChange={(e) => setTagInput(e.target.value)}
@@ -289,14 +289,14 @@ export default function HealthFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
  />
  <Button type="button" onClick={handleAddTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
  {formData.tags.length > 0 && (
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  {formData.tags.map((tag) => (
- <Badge key={tag} variant="secondary" className="gap-1">
+ <Badge key={tag} variant="secondary" className="gap-xs">
  {tag}
  <button
  type="button"
@@ -312,7 +312,7 @@ export default function HealthFormView({
 
  <div className="mt-2">
  <p className="text-sm text-muted-foreground mb-2">Common tags:</p>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {COMMON_TAGS.slice(0, 10).map((tag) => (
  <Badge
  key={tag}
@@ -327,7 +327,7 @@ export default function HealthFormView({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="notes">Notes</Label>
  <Textarea
  
@@ -338,7 +338,7 @@ export default function HealthFormView({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="document_url">Document URL</Label>
  <Input
  
@@ -355,9 +355,9 @@ export default function HealthFormView({
  </div>
  </div>
 
- <div className="space-y-4 pt-4 border-t">
- <h3 className="text-lg font-semibold flex items-center gap-2">
- <Bell className="h-5 w-5" />
+ <div className="space-y-md pt-4 border-t">
+ <h3 className="text-lg font-semibold flex items-center gap-xs">
+ <Bell className="h-icon-sm w-icon-sm" />
  Settings
  </h3>
  
@@ -390,7 +390,7 @@ export default function HealthFormView({
  </div>
 
  {formData.reminder_enabled && (
- <div className="space-y-2 ml-4">
+ <div className="space-y-xs ml-4">
  <Label htmlFor="reminder_days_before">Remind me (days before expiry)</Label>
  <Input
  
@@ -399,7 +399,7 @@ export default function HealthFormView({
  max="365"
  value={formData.reminder_days_before}
  onChange={(e) => onFieldChange('reminder_days_before', parseInt(e.target.value) || 30)}
- className={`w-32 ${formErrors.reminder_days_before ? 'border-destructive' : ''}`}
+ className={`w-component-xl ${formErrors.reminder_days_before ? 'border-destructive' : ''}`}
  />
  {formErrors.reminder_days_before && (
  <p className="text-sm text-destructive">{formErrors.reminder_days_before}</p>
@@ -410,7 +410,7 @@ export default function HealthFormView({
 
  <div className="flex justify-end pt-4 border-t">
  <Button onClick={onSave} disabled={saving}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {saving ? 'Saving...' : record ? 'Update Record' : 'Create Record'}
  </Button>
  </div>
@@ -418,7 +418,7 @@ export default function HealthFormView({
  </Card>
 
  {record && (
- <Card className="p-4 bg-muted/50">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between text-sm">
  <span className="text-muted-foreground">
  Created: {formatDate(record.created_at)}

@@ -78,7 +78,7 @@ export default function EnterprisePage() {
                 <CardHeader className="pb-sm">
                   <div className="flex items-center gap-sm">
                     <div className={`p-sm rounded-lg ${section.bgColor}`}>
-                      <Icon className={`h-5 w-5 ${section.color}`} />
+                      <Icon className={`h-icon-sm w-icon-sm ${section.color}`} />
                     </div>
                     <CardTitle className="text-lg">{section.title}</CardTitle>
                   </div>
@@ -98,7 +98,7 @@ export default function EnterprisePage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Shield className="h-5 w-5" />
+              <Shield className="h-icon-sm w-icon-sm" />
               Enterprise Features Status
             </CardTitle>
             <CardDescription>

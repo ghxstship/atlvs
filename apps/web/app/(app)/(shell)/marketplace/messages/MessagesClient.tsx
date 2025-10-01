@@ -199,22 +199,22 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  <p className="color-muted">Communicate with marketplace participants</p>
  </div>
  <Button>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  New Message
  </Button>
  </div>
 
- <div className="grid grid-cols-1 lg:grid-cols-3 gap-md h-[600px]">
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-md h-content-xl">
  {/* Conversations List */}
  <Card className="p-md">
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-heading-4">Conversations</h3>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm">
- <Filter className="h-4 w-4" />
+ <Filter className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="outline" size="sm">
- <Archive className="h-4 w-4" />
+ <Archive className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -228,7 +228,7 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  />
  </div>
 
- <div className="stack-xs overflow-y-auto max-h-[400px]">
+ <div className="stack-xs overflow-y-auto max-h-content-lg">
  {filteredConversations.map((conversation) => {
  const TypeIcon = getTypeIcon(conversation.type);
  const typeBadge = getTypeBadge(conversation.type);
@@ -242,9 +242,9 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  }`}
  >
  <div className="flex items-start gap-sm">
- <Avatar className="h-10 w-10">
+ <Avatar className="h-icon-xl w-icon-xl">
  <div className="flex items-center justify-center h-full w-full bg-primary/10">
- <TypeIcon className="h-5 w-5 color-primary" />
+ <TypeIcon className="h-icon-sm w-icon-sm color-primary" />
  </div>
  </Avatar>
  <div className="flex-1 min-w-0">
@@ -286,9 +286,9 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  <div className="p-md border-b">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <Avatar className="h-8 w-8">
+ <Avatar className="h-icon-lg w-icon-lg">
  <div className="flex items-center justify-center h-full w-full bg-primary/10">
- <Users className="h-4 w-4 color-primary" />
+ <Users className="h-icon-xs w-icon-xs color-primary" />
  </div>
  </Avatar>
  <div>
@@ -300,10 +300,10 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  </div>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm">
- <Archive className="h-4 w-4" />
+ <Archive className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="outline" size="sm">
- <Star className="h-4 w-4" />
+ <Star className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -350,15 +350,15 @@ export default function MessagesClient({ orgId, userId }: MessagesClientProps) {
  className="flex-1"
  />
  <Button onClick={handleSendMessage} disabled={!newMessage.trim()}>
- <Send className="h-4 w-4" />
+ <Send className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
  </Card>
  ) : (
- <Card className="p-2xl text-center h-full flex items-center justify-center">
+ <Card className="p-xsxl text-center h-full flex items-center justify-center">
  <div>
- <MessageSquare className="h-12 w-12 mx-auto mb-md color-muted" />
+ <MessageSquare className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">Select a conversation</h3>
  <p className="color-muted">Choose a conversation from the list to start messaging</p>
  </div>

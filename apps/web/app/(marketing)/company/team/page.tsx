@@ -370,7 +370,7 @@ export default function TeamPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -398,7 +398,7 @@ export default function TeamPage() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -410,12 +410,12 @@ export default function TeamPage() {
           </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-xl max-w-7xl mx-auto">
           {leadership.map((leader: any) => (
-            <Card key={leader.name} className="group hover:shadow-floating transition-all duration-300 h-[320px] flex flex-col">
+            <Card key={leader.name} className="group hover:shadow-floating transition-all duration-300 h-modal-sm flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center cluster mb-md h-12">
-                  <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="w-6 h-6 text-background" />
+                <div className="flex items-center cluster mb-md h-icon-2xl">
+                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="w-icon-md h-icon-md text-background" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg truncate`}>{leader.name}</h3>
@@ -423,7 +423,7 @@ export default function TeamPage() {
                   </div>
                   {leader.social?.linkedin && (
                     <a href={leader.social.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-accent transition-colors flex-shrink-0">
-                      <Linkedin className="w-5 h-5" />
+                      <Linkedin className="w-icon-sm h-icon-sm" />
                     </a>
                   )}
                 </div>
@@ -436,8 +436,8 @@ export default function TeamPage() {
                 </div>
                 
                 {/* Footer Section - Fixed Height */}
-                <div className="flex items-center text-sm text-muted-foreground h-4">
-                  <MapPin className="w-4 h-4 mr-xs flex-shrink-0" />
+                <div className="flex items-center text-sm text-muted-foreground h-icon-xs">
+                  <MapPin className="w-icon-xs h-icon-xs mr-xs flex-shrink-0" />
                   <span className="truncate">{leader.location}</span>
                 </div>
               </CardContent>
@@ -448,7 +448,7 @@ export default function TeamPage() {
       </section>
 
       {/* Departments */}
-      <section className="py-4xl bg-muted">
+      <section className="py-mdxl bg-muted">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -460,12 +460,12 @@ export default function TeamPage() {
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
           {departments.map((dept: any) => (
-            <Card key={dept.name} className="hover:shadow-floating transition-shadow h-[200px] flex flex-col">
+            <Card key={dept.name} className="hover:shadow-floating transition-shadow h-content-sm flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center gap-md mb-md h-12">
-                  <div className={`w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0`}>
-                    <Users className="h-6 w-6 text-background" />
+                <div className="flex items-center gap-md mb-md h-icon-2xl">
+                  <div className={`w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center flex-shrink-0`}>
+                    <Users className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg flex-1 min-w-0`}>
                     {dept.name}
@@ -486,7 +486,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -498,12 +498,12 @@ export default function TeamPage() {
           </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-xl">
           {teamMembers.map((member: any) => (
-            <Card key={member.name} className="hover:shadow-floating transition-all duration-300 group h-[400px] flex flex-col">
+            <Card key={member.name} className="hover:shadow-floating transition-all duration-300 group h-content-lg flex flex-col">
               <CardContent className="p-lg flex flex-col h-full">
                 {/* Header Section - Fixed Height */}
-                <div className="flex items-center cluster mb-md h-16">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Users className="h-6 w-6 text-accent" />
+                <div className="flex items-center cluster mb-md h-component-md">
+                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Users className="h-icon-md w-icon-md text-accent" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase text-lg mb-xs truncate`}>
@@ -518,10 +518,10 @@ export default function TeamPage() {
                 
                 {/* Content Section - Flexible Height with Scroll */}
                 <div className="flex-1 mb-md overflow-hidden">
-                  <p className="text-sm font-medium text-foreground mb-sm italic line-clamp-2">
+                  <p className="text-sm font-medium text-foreground mb-sm italic line-clamp-xs">
                     "{member.tagline}"
                   </p>
-                  <div className="h-20 overflow-y-auto">
+                  <div className="h-component-lg overflow-y-auto">
                     <p className="text-sm text-muted-foreground">
                       {member.profile}
                     </p>
@@ -529,7 +529,7 @@ export default function TeamPage() {
                 </div>
                 
                 {/* Footer Section - Fixed Height */}
-                <div className="flex items-center gap-xs text-xs text-muted-foreground h-4">
+                <div className="flex items-center gap-xs text-xs text-muted-foreground h-icon-xs">
                   <MapPin className="h-3 w-3 flex-shrink-0" />
                   <span className="truncate">{member.location}</span>
                 </div>
@@ -545,7 +545,7 @@ export default function TeamPage() {
           <Link href="/careers">
             <Button className="group">
               Join Our Team
-              <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
         </div>
@@ -553,7 +553,7 @@ export default function TeamPage() {
       </section>
 
       {/* Culture & Values */}
-      <section className="py-4xl bg-muted">
+      <section className="py-mdxl bg-muted">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -600,8 +600,8 @@ export default function TeamPage() {
             return (
               <Card key={value.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Icon className="h-6 w-6 text-background" />
+                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
+                    <Icon className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-sm`}>
                     {value.title}
@@ -616,7 +616,7 @@ export default function TeamPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-accent text-accent-foreground">
+      <section className="py-mdxl bg-accent text-accent-foreground">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>
@@ -630,11 +630,11 @@ export default function TeamPage() {
           <Link href="/careers">
             <Button className="w-full sm:w-auto group">
               View Open Positions
-              <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Button className="w-full sm:w-auto">
-            <Mail className="mr-sm h-4 w-4" />
+            <Mail className="mr-sm h-icon-xs w-icon-xs" />
             Contact Us
           </Button>
         </div>
@@ -642,7 +642,7 @@ export default function TeamPage() {
       </section>
 
       {/* Related Pages */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-lg`}>

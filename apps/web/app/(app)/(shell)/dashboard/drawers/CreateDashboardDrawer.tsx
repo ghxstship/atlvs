@@ -282,12 +282,12 @@ export default function CreateDashboardDrawer({
  <Button type="submit" disabled={isSubmitting}>
  {isSubmitting ? (
  <>
- <Loader2 className="mr-sm h-4 w-4 animate-spin" />
+ <Loader2 className="mr-sm h-icon-xs w-icon-xs animate-spin" />
  Creating...
  </>
  ) : (
  <>
- <Plus className="mr-sm h-4 w-4" />
+ <Plus className="mr-sm h-icon-xs w-icon-xs" />
  Create Dashboard
  </>
  )}

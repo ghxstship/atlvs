@@ -184,11 +184,11 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
 
   const getStatusIcon = (status: AlertStatus) => {
     switch (status) {
-      case 'active': return <AlertTriangle className="h-4 w-4" />;
-      case 'acknowledged': return <Clock className="h-4 w-4" />;
-      case 'resolved': return <CheckCircle className="h-4 w-4" />;
-      case 'muted': return <Bell className="h-4 w-4" />;
-      default: return <Bell className="h-4 w-4" />;
+      case 'active': return <AlertTriangle className="h-icon-xs w-icon-xs" />;
+      case 'acknowledged': return <Clock className="h-icon-xs w-icon-xs" />;
+      case 'resolved': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+      case 'muted': return <Bell className="h-icon-xs w-icon-xs" />;
+      default: return <Bell className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -240,7 +240,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Bell className="h-6 w-6 text-warning" />
+          <Bell className="h-icon-md w-icon-md text-warning" />
           <h2 className="text-2xl font-bold text-foreground">Alerting System</h2>
           {activeAlerts.length > 0 && (
             <Badge variant="destructive" className="ml-sm">
@@ -249,7 +249,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
           )}
         </div>
         <Button onClick={handleCreateRule}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           Create Alert Rule
         </Button>
       </div>
@@ -262,7 +262,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
               <div className="text-2xl font-bold text-destructive">{activeAlerts.length}</div>
               <div className="text-sm text-muted-foreground">Active Alerts</div>
             </div>
-            <AlertTriangle className="h-8 w-8 text-destructive" />
+            <AlertTriangle className="h-icon-lg w-icon-lg text-destructive" />
           </div>
         </Card>
         <Card className="p-md">
@@ -271,7 +271,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
               <div className="text-2xl font-bold text-warning">{acknowledgedAlerts.length}</div>
               <div className="text-sm text-muted-foreground">Acknowledged</div>
             </div>
-            <Clock className="h-8 w-8 text-warning" />
+            <Clock className="h-icon-lg w-icon-lg text-warning" />
           </div>
         </Card>
         <Card className="p-md">
@@ -280,7 +280,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
               <div className="text-2xl font-bold text-accent">{rules.length}</div>
               <div className="text-sm text-muted-foreground">Alert Rules</div>
             </div>
-            <Settings className="h-8 w-8 text-accent" />
+            <Settings className="h-icon-lg w-icon-lg text-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -289,7 +289,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
               <div className="text-2xl font-bold text-success">{rules.filter(r => r.enabled).length}</div>
               <div className="text-sm text-muted-foreground">Enabled Rules</div>
             </div>
-            <CheckCircle className="h-8 w-8 text-success" />
+            <CheckCircle className="h-icon-lg w-icon-lg text-success" />
           </div>
         </Card>
       </div>
@@ -325,7 +325,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
         <div className="space-y-md">
           {alerts.length === 0 ? (
             <Card className="p-xl text-center">
-              <CheckCircle className="h-12 w-12 text-success mx-auto mb-md" />
+              <CheckCircle className="h-icon-2xl w-icon-2xl text-success mx-auto mb-md" />
               <h3 className="text-lg font-medium text-foreground mb-sm">No Active Alerts</h3>
               <p className="text-muted-foreground">All systems are operating normally.</p>
             </Card>
@@ -424,14 +424,14 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
                     variant="outline"
                     size="sm"
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     onClick={() => handleDeleteRule(rule.id)}
                     variant="outline"
                     size="sm"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
@@ -460,7 +460,7 @@ export const AlertingSystem: React.FC<AlertingSystemProps> = ({
 
       {loading && (
         <div className="flex items-center justify-center p-xl">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           <span className="ml-sm text-muted-foreground">Loading alerts...</span>
         </div>
       )}

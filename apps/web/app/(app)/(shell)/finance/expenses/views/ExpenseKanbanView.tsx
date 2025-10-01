@@ -34,12 +34,12 @@ export default function ExpenseKanbanView({
     return (
       <div className="grid grid-cols-1 md:grid-cols-5 gap-lg">
         {columns.map((column) => (
-          <div key={column.id} className={`rounded-lg border-2 p-lg min-h-96 ${column.color}`}>
+          <div key={column.id} className={`rounded-lg border-2 p-lg min-h-container-lg ${column.color}`}>
             <div className="animate-pulse">
-              <div className="h-6 bg-gray-200 rounded mb-md"></div>
+              <div className="h-icon-md bg-gray-200 rounded mb-md"></div>
               {[...Array(2)].map((_, i) => (
                 <div key={i} className="bg-white p-md rounded mb-sm animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded mb-sm"></div>
+                  <div className="h-icon-xs bg-gray-200 rounded mb-sm"></div>
                   <div className="h-3 bg-gray-200 rounded w-3/4"></div>
                 </div>
               ))}
@@ -56,7 +56,7 @@ export default function ExpenseKanbanView({
         const columnRecords = getRecordsByStatus(column.id);
 
         return (
-          <div key={column.id} className={`rounded-lg border-2 p-lg min-h-96 ${column.color}`}>
+          <div key={column.id} className={`rounded-lg border-2 p-lg min-h-container-lg ${column.color}`}>
             <div className="flex items-center justify-between mb-lg">
               <h3 className="font-semibold text-lg">{column.title}</h3>
               <div className="flex items-center gap-xs">
@@ -65,7 +65,7 @@ export default function ExpenseKanbanView({
                   onClick={() => onAddToColumn?.(column.id)}
                   className="p-xs hover:bg-white/50 rounded transition-colors"
                 >
-                  <Kanban className="h-4 w-4" />
+                  <Kanban className="h-icon-xs w-icon-xs" />
                 </button>
               </div>
             </div>
@@ -103,7 +103,7 @@ export default function ExpenseKanbanView({
 
               {columnRecords.length === 0 && (
                 <div className="text-center py-lg text-gray-500">
-                  <DollarSign className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                  <DollarSign className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                   <p className="text-sm">No {column.title.toLowerCase()} expenses</p>
                 </div>
               )}

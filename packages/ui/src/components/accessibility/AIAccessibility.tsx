@@ -355,14 +355,14 @@ export function AccessibilityPanel({ className }: { className?: string }) {
         className="relative"
         title="Accessibility options"
       >
-        <Eye className="h-4 w-4" />
+        <Eye className="h-icon-xs w-icon-xs" />
         {adaptations.length > 0 && (
           <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full" />
         )}
       </Button>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-sm w-80 bg-background dark:bg-muted/90 border border-border dark:border-border rounded-lg shadow-floating p-md z-50">
+        <div className="absolute top-full right-0 mt-sm w-container-md bg-background dark:bg-muted/90 border border-border dark:border-border rounded-lg shadow-floating p-md z-50">
           <div className="flex items-center justify-between mb-md">
             <h3 className="text-lg font-semibold">AI Accessibility</h3>
             <Button
@@ -407,7 +407,7 @@ export function AccessibilityPanel({ className }: { className?: string }) {
                   <Type className="h-3 w-3" />
                   -
                 </Button>
-                <span className="text-xs w-8 text-center">{settings.fontSize}</span>
+                <span className="text-xs w-icon-lg text-center">{settings.fontSize}</span>
                 <Button
                   variant="outline"
                   size="sm"

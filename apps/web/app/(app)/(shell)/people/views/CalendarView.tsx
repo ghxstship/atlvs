@@ -159,51 +159,51 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
     return (
       <div className="bg-white rounded-lg shadow overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-200">
+        <div className="flex items-center justify-between p-md border-b border-gray-200">
           <h2 className="text-lg font-semibold text-gray-900">
             {selectedDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
           </h2>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-xs">
             <button
               onClick={() => navigateDate('prev')}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-xs hover:bg-gray-100 rounded"
             >
-              <ChevronLeft className="h-5 w-5" />
+              <ChevronLeft className="h-icon-sm w-icon-sm" />
             </button>
             <button
               onClick={goToToday}
-              className="px-3 py-1 text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="px-sm py-xs text-sm bg-blue-600 text-white rounded hover:bg-blue-700"
             >
               Today
             </button>
             <button
               onClick={() => navigateDate('next')}
-              className="p-1 hover:bg-gray-100 rounded"
+              className="p-xs hover:bg-gray-100 rounded"
             >
-              <ChevronRight className="h-5 w-5" />
+              <ChevronRight className="h-icon-sm w-icon-sm" />
             </button>
           </div>
         </div>
 
         {/* Calendar grid */}
-        <div className="p-4">
+        <div className="p-md">
           {/* Day headers */}
-          <div className="grid grid-cols-7 gap-1 mb-2">
+          <div className="grid grid-cols-7 gap-xs mb-2">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="p-2 text-center text-sm font-medium text-gray-500">
+              <div key={day} className="p-xs text-center text-sm font-medium text-gray-500">
                 {day}
               </div>
             ))}
           </div>
 
           {/* Calendar days */}
-          <div className="grid grid-cols-7 gap-1">
+          <div className="grid grid-cols-7 gap-xs">
             {weeks.map((week, weekIndex) =>
               week.map((day, dayIndex) => (
                 <div
                   key={`${weekIndex}-${dayIndex}`}
                   className={cn(
-                    "min-h-[100px] p-2 border border-gray-200 rounded cursor-pointer hover:bg-gray-50",
+                    "min-h-header-md p-xs border border-gray-200 rounded cursor-pointer hover:bg-gray-50",
                     !day.isCurrentMonth && "bg-gray-50 text-gray-400",
                     day.isToday && "bg-blue-50 border-blue-300"
                   )}
@@ -214,7 +214,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
                   </div>
 
                   {/* Events */}
-                  <div className="space-y-1">
+                  <div className="space-y-xs">
                     {day.events.slice(0, 3).map(event => (
                       <div
                         key={event.id}
@@ -223,7 +223,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
                           onEventClick?.(event);
                         }}
                         className={cn(
-                          "text-xs p-1 rounded truncate cursor-pointer hover:opacity-80",
+                          "text-xs p-xs rounded truncate cursor-pointer hover:opacity-80",
                           event.color || "bg-blue-500",
                           "text-white"
                         )}
@@ -250,7 +250,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
   const renderWeekView = () => {
     // Simplified week view - could be expanded
     return (
-      <div className="text-center py-12 text-gray-500">
+      <div className="text-center py-xsxl text-gray-500">
         Week view coming soon
       </div>
     );
@@ -259,7 +259,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
   const renderDayView = () => {
     // Simplified day view - could be expanded
     return (
-      <div className="text-center py-12 text-gray-500">
+      <div className="text-center py-xsxl text-gray-500">
         Day view coming soon
       </div>
     );
@@ -269,11 +269,11 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
     <div className={cn("w-full", className)}>
       {/* View switcher */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-xs">
           <button
             onClick={() => setCurrentView('month')}
             className={cn(
-              "px-3 py-1 text-sm rounded",
+              "px-sm py-xs text-sm rounded",
               currentView === 'month'
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -284,7 +284,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
           <button
             onClick={() => setCurrentView('week')}
             className={cn(
-              "px-3 py-1 text-sm rounded",
+              "px-sm py-xs text-sm rounded",
               currentView === 'week'
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -295,7 +295,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
           <button
             onClick={() => setCurrentView('day')}
             className={cn(
-              "px-3 py-1 text-sm rounded",
+              "px-sm py-xs text-sm rounded",
               currentView === 'day'
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -316,9 +316,9 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
       {currentView === 'day' && renderDayView()}
 
       {/* Upcoming events sidebar */}
-      <div className="mt-6 bg-white rounded-lg shadow p-4">
+      <div className="mt-6 bg-white rounded-lg shadow p-md">
         <h3 className="text-lg font-medium text-gray-900 mb-4">Upcoming Events</h3>
-        <div className="space-y-3">
+        <div className="space-y-sm">
           {allEvents
             .filter(event => new Date(event.date) >= new Date())
             .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime())
@@ -327,7 +327,7 @@ const PeopleCalendarView: React.FC<CalendarViewProps> = ({
               <div
                 key={event.id}
                 onClick={() => onEventClick?.(event)}
-                className="flex items-start space-x-3 p-2 hover:bg-gray-50 rounded cursor-pointer"
+                className="flex items-start space-x-sm p-xs hover:bg-gray-50 rounded cursor-pointer"
               >
                 <div className={cn("w-3 h-3 rounded-full mt-2", event.color || "bg-blue-500")}></div>
                 <div className="flex-1">

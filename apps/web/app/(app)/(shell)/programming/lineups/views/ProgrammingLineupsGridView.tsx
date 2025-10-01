@@ -81,12 +81,12 @@ export default function ProgrammingLineupsGridView({
  {Array.from({ length: 8 }).map((_, i) => (
  <Card key={i} className="p-md">
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded mb-2"></div>
+ <div className="h-icon-xs bg-muted rounded mb-2"></div>
  <div className="h-3 bg-muted rounded mb-1"></div>
  <div className="h-3 bg-muted rounded mb-4"></div>
- <div className="flex gap-2">
- <div className="h-6 bg-muted rounded flex-1"></div>
- <div className="h-6 bg-muted rounded flex-1"></div>
+ <div className="flex gap-xs">
+ <div className="h-icon-md bg-muted rounded flex-1"></div>
+ <div className="h-icon-md bg-muted rounded flex-1"></div>
  </div>
  </div>
  </Card>
@@ -98,8 +98,8 @@ export default function ProgrammingLineupsGridView({
  if (lineups.length === 0) {
  return (
  <Card className="p-lg">
- <div className="text-center py-12">
- <Music className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Music className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">No lineups found</h3>
  <p className="text-muted-foreground">Create your first lineup to get started</p>
  </div>
@@ -158,7 +158,7 @@ export default function ProgrammingLineupsGridView({
  )}
  </div>
 
- <div className="flex items-center gap-1 ml-sm">
+ <div className="flex items-center gap-xs ml-sm">
  <Button
  variant="ghost"
  size="sm"
@@ -192,7 +192,7 @@ export default function ProgrammingLineupsGridView({
  {/* Event & Time */}
  {lineup.event && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs text-muted-foreground mb-1">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground mb-1">
  <Calendar className="h-3 w-3" />
  <span className="truncate">{lineup.event.title}</span>
  </div>
@@ -206,7 +206,7 @@ export default function ProgrammingLineupsGridView({
  <div className="grid grid-cols-2 gap-sm mb-sm text-xs">
  <div>
  <div className="text-muted-foreground">Set Time</div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {formatTime(lineup.set_time)}
  </div>
@@ -220,7 +220,7 @@ export default function ProgrammingLineupsGridView({
  {/* Stage */}
  {lineup.stage && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <MapPin className="h-3 w-3 text-muted-foreground" />
  <span className="truncate">{lineup.stage}</span>
  </div>
@@ -230,11 +230,11 @@ export default function ProgrammingLineupsGridView({
  {/* Fee */}
  {fee && (
  <div className="mb-sm">
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <DollarSign className="h-3 w-3 text-muted-foreground" />
  <span className="font-medium">{fee}</span>
  {lineup.contract_details.contract_signed && (
- <Badge variant="success" className="text-[10px] px-1 py-0">
+ <Badge variant="success" className="text-small px-xs py-0">
  Signed
  </Badge>
  )}
@@ -245,15 +245,15 @@ export default function ProgrammingLineupsGridView({
  {/* Contact Info */}
  {(lineup.contact_info.email || lineup.contact_info.phone) && (
  <div className="mb-sm">
- <div className="space-y-1">
+ <div className="space-y-xs">
  {lineup.contact_info.email && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Mail className="h-3 w-3" />
  <span className="truncate">{lineup.contact_info.email}</span>
  </div>
  )}
  {lineup.contact_info.phone && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Phone className="h-3 w-3" />
  <span>{lineup.contact_info.phone}</span>
  </div>
@@ -266,14 +266,14 @@ export default function ProgrammingLineupsGridView({
  {lineup.technical_requirements.equipment?.length > 0 && (
  <div className="mb-sm">
  <div className="text-xs text-muted-foreground mb-1">Equipment</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {lineup.technical_requirements.equipment.slice(0, 2).map((item, index) => (
- <Badge key={index} variant="outline" className="text-[10px] px-1 py-0">
+ <Badge key={index} variant="outline" className="text-small px-xs py-0">
  {item}
  </Badge>
  ))}
  {lineup.technical_requirements.equipment.length > 2 && (
- <Badge variant="outline" className="text-[10px] px-1 py-0">
+ <Badge variant="outline" className="text-small px-xs py-0">
  +{lineup.technical_requirements.equipment.length - 2}
  </Badge>
  )}
@@ -292,14 +292,14 @@ export default function ProgrammingLineupsGridView({
  {/* Tags */}
  {lineup.tags.length > 0 && (
  <div className="mb-sm">
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {lineup.tags.slice(0, 3).map((tag) => (
- <Badge key={tag} variant="secondary" className="text-[10px] px-1 py-0">
+ <Badge key={tag} variant="secondary" className="text-small px-xs py-0">
  {tag}
  </Badge>
  ))}
  {lineup.tags.length > 3 && (
- <Badge variant="secondary" className="text-[10px] px-1 py-0">
+ <Badge variant="secondary" className="text-small px-xs py-0">
  +{lineup.tags.length - 3}
  </Badge>
  )}
@@ -310,7 +310,7 @@ export default function ProgrammingLineupsGridView({
  {/* Notes */}
  {lineup.notes && (
  <div className="mb-sm">
- <p className="text-xs text-muted-foreground line-clamp-2">{lineup.notes}</p>
+ <p className="text-xs text-muted-foreground line-clamp-xs">{lineup.notes}</p>
  </div>
  )}
 

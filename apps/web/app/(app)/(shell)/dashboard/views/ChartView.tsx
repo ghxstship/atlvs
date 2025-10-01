@@ -230,8 +230,8 @@ export const ChartView: React.FC<ChartViewProps> = ({
     if (loading) {
       return (
         <div className="flex items-center justify-center h-full">
-          <div className="flex items-center gap-2">
-            <RefreshCw className="h-5 w-5 animate-spin" />
+          <div className="flex items-center gap-xs">
+            <RefreshCw className="h-icon-sm w-icon-sm animate-spin" />
             <span>Loading chart...</span>
           </div>
         </div>
@@ -246,7 +246,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
             <div className="text-sm text-muted-foreground">{error}</div>
             {onRefresh && (
               <Button variant="outline" size="sm" onClick={onRefresh} className="mt-2">
-                <RefreshCw className="h-4 w-4 mr-1" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-1" />
                 Retry
               </Button>
             )}
@@ -295,13 +295,13 @@ export const ChartView: React.FC<ChartViewProps> = ({
 
         {/* Legend */}
         {config.showLegend && chartData.series.length > 1 && (
-          <div className="flex flex-wrap gap-4 mt-4 justify-center">
+          <div className="flex flex-wrap gap-md mt-4 justify-center">
             {chartData.series.map((series, index) => (
               <button
                 key={series.name}
                 onClick={() => handleLegendClick(series.name)}
                 className={cn(
-                  'flex items-center gap-2 px-3 py-1 rounded-full text-sm transition-opacity',
+                  'flex items-center gap-xs px-sm py-xs rounded-full text-sm transition-opacity',
                   visibleSeries.has(series.name) ? 'opacity-50' : 'opacity-100'
                 )}
               >
@@ -344,10 +344,10 @@ export const ChartView: React.FC<ChartViewProps> = ({
     <Card className={cn('relative', isFullscreen && 'fixed inset-4 z-50', className)}>
       {/* Header */}
       {(showTitle || showControls) && (
-        <CardHeader className={cn('pb-2', compact && 'py-2')}>
+        <CardHeader className={cn('pb-2', compact && 'py-xs')}>
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <ChartIcon className="h-5 w-5 text-primary" />
+            <div className="flex items-center gap-sm">
+              <ChartIcon className="h-icon-sm w-icon-sm text-primary" />
               {showTitle && (
                 <div>
                   <CardTitle className={cn('text-lg', compact && 'text-base')}>
@@ -364,11 +364,11 @@ export const ChartView: React.FC<ChartViewProps> = ({
 
             {/* Controls */}
             {showControls && (
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-xs">
                 {/* Chart Type Selector */}
                 {onChartTypeChange && (
                   <Select value={config.type} onValueChange={onChartTypeChange}>
-                    <SelectTrigger className="w-32">
+                    <SelectTrigger className="w-component-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -386,14 +386,14 @@ export const ChartView: React.FC<ChartViewProps> = ({
                 {/* Refresh */}
                 {onRefresh && (
                   <Button variant="ghost" size="sm" onClick={onRefresh}>
-                    <RefreshCw className="h-4 w-4" />
+                    <RefreshCw className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
 
                 {/* Settings */}
                 {onSettings && (
                   <Button variant="ghost" size="sm" onClick={onSettings}>
-                    <Settings className="h-4 w-4" />
+                    <Settings className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
 
@@ -408,9 +408,9 @@ export const ChartView: React.FC<ChartViewProps> = ({
                     }}
                   >
                     {isFullscreen ? (
-                      <Minimize2 className="h-4 w-4" />
+                      <Minimize2 className="h-icon-xs w-icon-xs" />
                     ) : (
-                      <Maximize2 className="h-4 w-4" />
+                      <Maximize2 className="h-icon-xs w-icon-xs" />
                     )}
                   </Button>
                 )}
@@ -420,7 +420,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm">
-                        <Download className="h-4 w-4" />
+                        <Download className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
@@ -444,21 +444,21 @@ export const ChartView: React.FC<ChartViewProps> = ({
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
                     <Button variant="ghost" size="sm">
-                      <MoreHorizontal className="h-4 w-4" />
+                      <MoreHorizontal className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem>
-                      <Eye className="h-4 w-4 mr-2" />
+                      <Eye className="h-icon-xs w-icon-xs mr-2" />
                       View Data
                     </DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Settings className="h-4 w-4 mr-2" />
+                      <Settings className="h-icon-xs w-icon-xs mr-2" />
                       Chart Settings
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem className="text-destructive">
-                      <EyeOff className="h-4 w-4 mr-2" />
+                      <EyeOff className="h-icon-xs w-icon-xs mr-2" />
                       Hide Chart
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -470,7 +470,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
       )}
 
       {/* Chart Content */}
-      <CardContent className={cn(compact && 'p-2')}>
+      <CardContent className={cn(compact && 'p-xs')}>
         <div
           className={cn(
             'w-full',
@@ -488,7 +488,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
             <div>
               {chartData.series.length} series • {chartData.series[0]?.data.length || 0} data points
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <Badge variant="outline" className="text-xs">
                 {config.type}
               </Badge>

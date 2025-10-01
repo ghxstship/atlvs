@@ -65,12 +65,12 @@ export default function ProgrammingPerformancesListView({
 
  const getSortIcon = (field: keyof ProgrammingPerformance) => {
  if (sortConfig.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sortConfig.direction === "asc" ? (
- <ArrowUp className="h-4 w-4" />
+ <ArrowUp className="h-icon-xs w-icon-xs" />
  ) : (
- <ArrowDown className="h-4 w-4" />
+ <ArrowDown className="h-icon-xs w-icon-xs" />
  );
  };
 
@@ -120,9 +120,9 @@ export default function ProgrammingPerformancesListView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading performances...</p>
  </div>
  </div>
@@ -135,7 +135,7 @@ export default function ProgrammingPerformancesListView({
  <Table>
  <thead>
  <tr>
- <th className="w-12">
+ <th className="w-icon-2xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -200,7 +200,7 @@ export default function ProgrammingPerformancesListView({
  <th>Venue</th>
  <th>Event</th>
  <th>Tickets</th>
- <th className="w-12">Actions</th>
+ <th className="w-icon-2xl">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -246,7 +246,7 @@ export default function ProgrammingPerformancesListView({
  </Badge>
  </td>
  <td>
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Calendar className="h-3 w-3" />
  <div>
  <div>{formatDate(performance.starts_at)}</div>
@@ -255,14 +255,14 @@ export default function ProgrammingPerformancesListView({
  </div>
  </td>
  <td>
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Clock className="h-3 w-3" />
  {performance.duration_minutes ? `${performance.duration_minutes} min` : "—"}
  </div>
  </td>
  <td>
  {performance.venue && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <MapPin className="h-3 w-3" />
  <span className="truncate max-w-xs">{performance.venue}</span>
  </div>
@@ -280,7 +280,7 @@ export default function ProgrammingPerformancesListView({
  </td>
  <td>
  {(performance.ticket_info.price_min || performance.ticket_info.price_max) && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <DollarSign className="h-3 w-3" />
  <div>
  {performance.ticket_info.price_min && performance.ticket_info.price_max ? (
@@ -302,27 +302,27 @@ export default function ProgrammingPerformancesListView({
  )}
  </td>
  <td onClick={(e) => e.stopPropagation()}>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(performance)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(performance)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(performance)}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </td>
@@ -339,13 +339,13 @@ export default function ProgrammingPerformancesListView({
  <div>
  <h4 className="font-medium text-sm mb-1">Venue & Audience</h4>
  {performance.venue_capacity && (
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Users className="h-3 w-3" />
  Capacity: {performance.venue_capacity.toLocaleString()}
  </div>
  )}
  {performance.audience_info.expected_attendance && (
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Users className="h-3 w-3" />
  Expected: {performance.audience_info.expected_attendance.toLocaleString()}
  </div>
@@ -373,7 +373,7 @@ export default function ProgrammingPerformancesListView({
  </div>
  )}
  {performance.technical_requirements.equipment_needed?.length > 0 && (
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {performance.technical_requirements.equipment_needed.slice(0, 3).map((item, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {item}
@@ -423,7 +423,7 @@ export default function ProgrammingPerformancesListView({
  {performance.tags.length > 0 && (
  <div className="md:col-span-2 lg:col-span-3">
  <h4 className="font-medium text-sm mb-1">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}

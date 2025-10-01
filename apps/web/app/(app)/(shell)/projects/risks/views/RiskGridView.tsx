@@ -69,7 +69,7 @@ export default function RiskGridView({
  onEdit(risk);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
@@ -85,7 +85,7 @@ export default function RiskGridView({
  </div>
 
  {/* Title */}
- <h3 className="font-semibold line-clamp-2">{risk.title}</h3>
+ <h3 className="font-semibold line-clamp-xs">{risk.title}</h3>
 
  {/* Category and Status */}
  <div className="flex items-center gap-xs flex-wrap">
@@ -111,7 +111,7 @@ export default function RiskGridView({
  </div>
 
  {/* Description */}
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {risk.description}
  </p>
 
@@ -158,7 +158,7 @@ export default function RiskGridView({
  onView(risk);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -168,7 +168,7 @@ export default function RiskGridView({
  onDuplicate(risk);
  }}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -178,7 +178,7 @@ export default function RiskGridView({
  onDelete(risk);
  }}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>

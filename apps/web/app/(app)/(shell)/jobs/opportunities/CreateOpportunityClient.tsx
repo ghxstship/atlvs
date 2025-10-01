@@ -129,7 +129,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
   return (
     <>
       <Button onClick={() => setIsOpen(true)} className="flex items-center gap-sm">
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Create Opportunity
       </Button>
 
@@ -144,7 +144,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
             <div className="flex items-center gap-sm text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <AlertCircle className="h-icon-xs w-icon-xs color-destructive" />
                   <span className="color-destructive">{error}</span>
                 </>
               )}
@@ -164,7 +164,7 @@ export default function CreateOpportunityClient({ orgId, onSuccess }: CreateOppo
                 disabled={!isValid || isSubmitting}
                 className="flex items-center gap-sm"
               >
-                {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
+                {isSubmitting && <Loader2 className="h-icon-xs w-icon-xs animate-spin" />}
                 Create Opportunity
               </Button>
             </div>

@@ -189,7 +189,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
       <div
         key={event.id}
         className={`
-          text-xs p-1 rounded cursor-pointer hover:opacity-80 transition-opacity
+          text-xs p-xs rounded cursor-pointer hover:opacity-80 transition-opacity
           ${isCompact ? 'mb-1' : 'mb-2'}
           ${event.color ? `bg-${event.color}-100 text-${event.color}-800 border-${event.color}-200` : 'bg-primary/10 text-primary border-primary/20'}
           border
@@ -207,17 +207,17 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-              <Button variant="ghost" size="sm" className="h-4 w-4 p-0 opacity-0 group-hover:opacity-100">
+              <Button variant="ghost" size="sm" className="h-icon-xs w-icon-xs p-0 opacity-0 group-hover:opacity-100">
                 <MoreVertical className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={() => onItemAction?.('view', event.data)}>
-                <Eye className="mr-xs h-4 w-4" />
+                <Eye className="mr-xs h-icon-xs w-icon-xs" />
                 View
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => onItemAction?.('edit', event.data)}>
-                <Edit className="mr-xs h-4 w-4" />
+                <Edit className="mr-xs h-icon-xs w-icon-xs" />
                 Edit
               </DropdownMenuItem>
               
@@ -230,7 +230,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
                     key={action.id}
                     onClick={() => action.onClick(event.data)}
                   >
-                    {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                    {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                     {action.label}
                   </DropdownMenuItem>
                 );
@@ -242,7 +242,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
                 onClick={() => onItemAction?.('delete', event.data)}
                 className="text-destructive"
               >
-                <Trash className="mr-xs h-4 w-4" />
+                <Trash className="mr-xs h-icon-xs w-icon-xs" />
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -267,7 +267,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
       <div
         key={date.toISOString()}
         className={`
-          min-h-[120px] p-2 border border-border cursor-pointer hover:bg-muted/50 transition-colors group
+          min-h-header-lg p-sm border border-border cursor-pointer hover:bg-muted/50 transition-colors group
           ${!isCurrentMonth ? 'bg-muted/20 text-muted-foreground' : ''}
           ${isToday ? 'bg-primary/5 border-primary' : ''}
           ${isSelected ? 'ring-2 ring-primary' : ''}
@@ -282,7 +282,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100"
+            className="h-icon-md w-icon-md p-0 opacity-0 group-hover:opacity-100"
             onClick={(e) => {
               e.stopPropagation();
               onItemAction?.('create', { [dateField]: date });
@@ -308,21 +308,21 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
     return (
       <div className="space-y-md">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-icon-lg w-container-xs" />
           <div className="flex gap-sm">
-            <Skeleton className="h-8 w-20" />
-            <Skeleton className="h-8 w-20" />
-            <Skeleton className="h-8 w-20" />
+            <Skeleton className="h-icon-lg w-component-lg" />
+            <Skeleton className="h-icon-lg w-component-lg" />
+            <Skeleton className="h-icon-lg w-component-lg" />
           </div>
         </div>
         
         <div className="grid grid-cols-7 gap-px bg-border">
           {Array.from({ length: 42 }).map((_, i) => (
-            <div key={i} className="bg-background min-h-[120px] p-2">
-              <Skeleton className="h-4 w-6 mb-2" />
+            <div key={i} className="bg-background min-h-header-lg p-sm">
+              <Skeleton className="h-icon-xs w-icon-md mb-2" />
               <div className="space-y-1">
-                <Skeleton className="h-6 w-full" />
-                <Skeleton className="h-6 w-3/4" />
+                <Skeleton className="h-icon-md w-full" />
+                <Skeleton className="h-icon-md w-3/4" />
               </div>
             </div>
           ))}
@@ -356,13 +356,13 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           
           <div className="flex items-center gap-xs">
             <Button variant="outline" size="sm" onClick={() => navigate('prev')}>
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             <Button variant="outline" size="sm" onClick={goToToday}>
               Today
             </Button>
             <Button variant="outline" size="sm" onClick={() => navigate('next')}>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         </div>
@@ -385,7 +385,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           <Button
             onClick={() => onItemAction?.('create', { [dateField]: currentDate })}
           >
-            <Plus className="h-4 w-4 mr-xs" />
+            <Plus className="h-icon-xs w-icon-xs mr-xs" />
             Add Event
           </Button>
         </div>
@@ -397,7 +397,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           {/* Day Headers */}
           <div className="grid grid-cols-7 gap-px bg-border">
             {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
-              <div key={day} className="bg-muted p-3 text-center text-sm font-medium">
+              <div key={day} className="bg-muted p-sm text-center text-sm font-medium">
                 {day}
               </div>
             ))}
@@ -415,9 +415,9 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
       {/* Week View */}
       {viewMode === 'week' && (
         <div className="grid grid-cols-8 gap-px bg-border">
-          <div className="bg-muted p-3"></div>
+          <div className="bg-muted p-sm"></div>
           {calendarGrid.slice(0, 7).map(({ date }) => (
-            <div key={date.toISOString()} className="bg-muted p-3 text-center">
+            <div key={date.toISOString()} className="bg-muted p-sm text-center">
               <div className="text-sm font-medium">{formatDate(date).split(',')[0]}</div>
               <div className={`text-lg ${isSameDay(date, new Date()) ? 'text-primary font-bold' : ''}`}>
                 {date.getDate()}
@@ -428,7 +428,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
           {/* Time slots */}
           {Array.from({ length: 24 }).map((_, hour) => (
             <React.Fragment key={hour}>
-              <div className="bg-background p-2 text-xs text-muted-foreground border-r">
+              <div className="bg-background p-sm text-xs text-muted-foreground border-r">
                 {formatHour(hour)}
               </div>
               {calendarGrid.slice(0, 7).map(({ date }) => {
@@ -436,7 +436,7 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
                   new Date(event.start).getHours() === hour
                 );
                 return (
-                  <div key={`${date.toISOString()}-${hour}`} className="bg-background p-1 min-h-[60px]">
+                  <div key={`${date.toISOString()}-${hour}`} className="bg-background p-xs min-h-toolbar">
                     {hourEvents.map(event => renderEvent(event))}
                   </div>
                 );
@@ -460,8 +460,8 @@ export const UnifiedCalendarView: React.FC<UnifiedCalendarViewProps> = ({
               );
               
               return (
-                <div key={hour} className="bg-background p-4 min-h-[80px] flex">
-                  <div className="w-20 text-sm text-muted-foreground">
+                <div key={hour} className="bg-background p-md min-h-header-sm flex">
+                  <div className="w-component-lg text-sm text-muted-foreground">
                     {formatHour(hour)}
                   </div>
                   <div className="flex-1 space-y-2">

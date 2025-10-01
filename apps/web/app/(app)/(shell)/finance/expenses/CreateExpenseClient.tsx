@@ -133,7 +133,7 @@ export default function CreateExpenseClient({
         {/* Expense Overview */}
         <Card className="p-md bg-destructive/10 border-destructive/20">
           <div className="flex items-center cluster-sm">
-            <Receipt className="h-8 w-8 color-destructive" />
+            <Receipt className="h-icon-lg w-icon-lg color-destructive" />
             <div>
               <h3 className="text-heading-4 color-destructive-foreground">Expense Tracking</h3>
               <p className="text-body-sm color-destructive/80">
@@ -162,7 +162,7 @@ export default function CreateExpenseClient({
                 Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="number"
                   value={formData.amount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
@@ -224,7 +224,7 @@ export default function CreateExpenseClient({
                 Expense Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="date"
                   value={formData.expenseDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, expenseDate: e.target.value }))}
@@ -241,7 +241,7 @@ export default function CreateExpenseClient({
               Receipt URL
             </label>
             <div className="relative">
-              <Upload className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+              <Upload className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
               <UnifiedInput                 type="url"
                 value={formData.receiptUrl}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, receiptUrl: e.target.value }))}
@@ -289,16 +289,16 @@ export default function CreateExpenseClient({
           <Button
             type="submit"
             disabled={loading || !formData.description.trim() || formData.amount <= 0}
-            className="min-w-[120px]"
+            className="min-w-component-xl"
           >
             {loading ? (
               <div className="flex items-center cluster-sm">
-                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                <div className="w-icon-xs h-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Creating...</span>
               </div>
             ) : (
               <div className="flex items-center cluster-sm">
-                <Plus className="h-4 w-4" />
+                <Plus className="h-icon-xs w-icon-xs" />
                 <span>Create Expense</span>
               </div>
             )}

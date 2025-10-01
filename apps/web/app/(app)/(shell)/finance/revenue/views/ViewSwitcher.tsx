@@ -37,7 +37,7 @@ export default function RevenueViewSwitcher({ currentView, onViewChange }: Reven
                 : 'hover:bg-white/50'
             }`}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             <span className="hidden sm:inline">{view.label}</span>
           </Button>
         );

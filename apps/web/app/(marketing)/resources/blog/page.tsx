@@ -95,7 +95,7 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -117,7 +117,7 @@ export default function BlogPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Unlock Premium Content
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#posts">
@@ -148,20 +148,20 @@ export default function BlogPage() {
       </section>
 
       {/* Blog Posts */}
-      <section id="posts" className="py-4xl">
+      <section id="posts" className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-2 gap-xl">
             {blogPosts.map((post: any) => (
               <Card key={post.id} className="hover:shadow-floating transition-all duration-300 group overflow-hidden">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <Eye className="h-12 w-12 text-foreground mx-auto mb-sm" />
+                      <Eye className="h-icon-2xl w-icon-2xl text-foreground mx-auto mb-sm" />
                       <p className="text-body-sm color-muted">Preview Image</p>
                     </div>
                   </div>
                   {post.isPremium && (
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-md right-4">
                       <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-xs" />
                         Premium
@@ -177,30 +177,30 @@ export default function BlogPage() {
                   <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {post.title}
                   </h3>
-                  <p className="color-muted mb-md line-clamp-2">
+                  <p className="color-muted mb-md line-clamp-xs">
                     {post.excerpt}
                   </p>
                   
                   <div className="flex items-center justify-between text-body-sm color-muted mb-md">
                     <div className="flex items-center gap-md">
                       <div className="flex items-center gap-xs">
-                        <User className="h-4 w-4" />
+                        <User className="h-icon-xs w-icon-xs" />
                         {post.author}
                       </div>
                       <div className="flex items-center gap-xs">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         {new Date(post.date).toLocaleDateString()}
                       </div>
                     </div>
                     <div className="flex items-center gap-xs">
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-icon-xs w-icon-xs" />
                       {post.views}
                     </div>
                   </div>
                   
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-xs text-body-sm color-muted">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-icon-xs w-icon-xs" />
                       {post.readTime}
                     </div>
                     <Button 
@@ -227,7 +227,7 @@ export default function BlogPage() {
       </section>
 
       {/* Newsletter CTA */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <Card className="max-w-2xl mx-auto text-center">
             <CardContent className="p-xl">
@@ -242,7 +242,7 @@ export default function BlogPage() {
                 <Link href="/auth/signup">
                   <Button className="group">
                     Subscribe to Blog
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

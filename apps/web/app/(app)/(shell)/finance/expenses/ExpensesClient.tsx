@@ -317,15 +317,15 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -345,7 +345,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
           <div className="flex items-center cluster-sm">
             <ViewSwitcher />
             <Button onClick={handleCreateExpense}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Expense
             </Button>
           </div>
@@ -374,7 +374,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                 <p className="text-body-sm color-foreground/70">Total Expenses</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{expenses.length}</p>
               </div>
-              <Receipt className="h-8 w-8 color-accent" />
+              <Receipt className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -386,7 +386,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                   {formatCurrency(expenses.reduce((sum, e) => sum + e.amount, 0))}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 color-destructive" />
+              <DollarSign className="h-icon-lg w-icon-lg color-destructive" />
             </div>
           </Card>
           
@@ -396,7 +396,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                 <p className="text-body-sm color-foreground/70">Pending Approval</p>
                 <p className="text-heading-3 text-heading-3 color-warning">{statusCounts.submitted}</p>
               </div>
-              <Clock className="h-8 w-8 color-warning" />
+              <Clock className="h-icon-lg w-icon-lg color-warning" />
             </div>
           </Card>
           
@@ -406,7 +406,7 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
                 <p className="text-body-sm color-foreground/70">Approved</p>
                 <p className="text-heading-3 text-heading-3 color-success">{statusCounts.approved}</p>
               </div>
-              <Check className="h-8 w-8 color-success" />
+              <Check className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
         </div>
@@ -524,12 +524,12 @@ export default function ExpensesClient({ user, orgId, translations }: ExpensesCl
 
         {/* Empty State */}
         {expenses.length === 0 && (
-          <Card className="p-2xl text-center">
-            <Receipt className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <Receipt className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No expenses found</h3>
             <p className="color-foreground/70 mb-md">Create your first expense to start tracking</p>
             <Button onClick={handleCreateExpense}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Expense
             </Button>
           </Card>

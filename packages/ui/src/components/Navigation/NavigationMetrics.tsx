@@ -178,7 +178,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
 
       {/* Metrics panel */}
       {isVisible && (
-        <div className="fixed bottom-14 right-4 p-md bg-popover/95 text-popover-foreground border border-border rounded-lg text-xs font-mono z-50 min-w-[300px] backdrop-blur-sm">
+        <div className="fixed bottom-14 right-4 p-md bg-popover/95 text-popover-foreground border border-border rounded-lg text-xs font-mono z-50 min-w-content-medium backdrop-blur-sm">
           <div className="flex justify-between items-center mb-sm">
             <h3 className="text-sm font-bold">Navigation Metrics</h3>
             <button
@@ -193,7 +193,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
           <div className="space-y-xs">
             <div className="flex justify-between">
               <span>Current Path:</span>
-              <span className="text-accent truncate max-w-[150px]">{currentPath}</span>
+              <span className="text-accent truncate max-w-narrow">{currentPath}</span>
             </div>
             
             <div className="flex justify-between">
@@ -239,7 +239,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
 
           {/* Performance indicators */}
           <div className="mt-sm pt-sm border-t border-border">
-            <div className="text-[10px] space-y-xs">
+            <div className="text-small space-y-xs">
               <div className="flex items-center gap-sm">
                 <span className="w-2 h-2 bg-success rounded-full"></span>
                 <span>Good ({`<500ms load, <100ms render`})</span>
@@ -269,7 +269,7 @@ export const NavigationMetrics: React.FC<NavigationMetricsProps> = ({
                 errorRate: 0
               });
             }}
-            className="mt-sm w-full py-xs px-sm bg-muted hover:bg-muted/80 rounded text-[10px] transition-colors"
+            className="mt-sm w-full py-xs px-sm bg-muted hover:bg-muted/80 rounded text-small transition-colors"
           >
             Clear Metrics
           </button>

@@ -85,7 +85,7 @@ export default function CreateActivationClient({
   return (
     <>
       <Button onClick={() => setOpen(true)} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Activation
       </Button>
 
@@ -202,7 +202,7 @@ export default function CreateActivationClient({
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <Rocket className="w-4 h-4" />
+              <Rocket className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Activation'}
             </Button>
           </div>

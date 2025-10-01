@@ -29,7 +29,7 @@ export default function DashboardWidgetsTab({
   onTabDataChange
 }: DashboardWidgetsTabProps) {
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-lg space-y-lg">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Widget Management</h2>
@@ -39,16 +39,16 @@ export default function DashboardWidgetsTab({
         </div>
 
         <Button>
-          <Plus className="h-4 w-4 mr-2" />
+          <Plus className="h-icon-xs w-icon-xs mr-2" />
           Add Widget
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart3 className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <BarChart3 className="h-icon-sm w-icon-sm" />
               Metric Widget
             </CardTitle>
           </CardHeader>

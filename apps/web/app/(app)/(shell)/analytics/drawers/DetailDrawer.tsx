@@ -60,8 +60,8 @@ export default function DetailDrawer({
       <div className={`absolute right-0 top-0 h-full w-full max-w-2xl bg-white shadow-xl transform transition-transform ${className}`}>
         <div className="flex flex-col h-full">
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b border-gray-200">
-            <div className="flex items-center space-x-3">
+          <div className="flex items-center justify-between p-lg border-b border-gray-200">
+            <div className="flex items-center space-x-sm">
               <h2 className="text-lg font-semibold text-gray-900">
                 {type === 'dashboard' ? 'Dashboard' : type === 'report' ? 'Report' : 'Export'} Details
               </h2>
@@ -69,51 +69,51 @@ export default function DetailDrawer({
                 <span className="text-sm text-gray-500">• {data.name}</span>
               )}
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               {onEdit && (
                 <button
                   onClick={onEdit}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+                  className="p-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
                   title="Edit"
                 >
-                  <Edit className="h-5 w-5" />
+                  <Edit className="h-icon-sm w-icon-sm" />
                 </button>
               )}
               {onDuplicate && (
                 <button
                   onClick={onDuplicate}
-                  className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+                  className="p-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
                   title="Duplicate"
                 >
-                  <ExternalLink className="h-5 w-5" />
+                  <ExternalLink className="h-icon-sm w-icon-sm" />
                 </button>
               )}
               <button
-                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+                className="p-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
                 title="Download"
               >
-                <Download className="h-5 w-5" />
+                <Download className="h-icon-sm w-icon-sm" />
               </button>
               <button
-                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+                className="p-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
                 title="Share"
               >
-                <Share className="h-5 w-5" />
+                <Share className="h-icon-sm w-icon-sm" />
               </button>
               {onDelete && (
                 <button
                   onClick={onDelete}
-                  className="p-2 text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
+                  className="p-xs text-red-400 hover:text-red-600 hover:bg-red-50 rounded-lg"
                   title="Delete"
                 >
-                  <Trash2 className="h-5 w-5" />
+                  <Trash2 className="h-icon-sm w-icon-sm" />
                 </button>
               )}
               <button
                 onClick={onClose}
-                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
+                className="p-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-lg"
               >
-                <X className="h-5 w-5" />
+                <X className="h-icon-sm w-icon-sm" />
               </button>
             </div>
           </div>
@@ -124,30 +124,30 @@ export default function DetailDrawer({
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+                className={`flex items-center px-md py-sm text-sm font-medium border-b-2 transition-colors ${
                   activeTab === tab.id
                     ? 'border-blue-500 text-blue-600'
                     : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
                 }`}
               >
-                {tab.icon && <tab.icon className="h-4 w-4 mr-2" />}
+                {tab.icon && <tab.icon className="h-icon-xs w-icon-xs mr-2" />}
                 {tab.label}
               </button>
             ))}
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-lg">
             {loading ? (
-              <div className="animate-pulse space-y-4">
-                <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                <div className="h-4 bg-gray-200 rounded w-1/2"></div>
-                <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+              <div className="animate-pulse space-y-md">
+                <div className="h-icon-xs bg-gray-200 rounded w-3/4"></div>
+                <div className="h-icon-xs bg-gray-200 rounded w-1/2"></div>
+                <div className="h-icon-xs bg-gray-200 rounded w-2/3"></div>
               </div>
             ) : (
-              <div className="space-y-6">
+              <div className="space-y-lg">
                 {activeTab === 'overview' && (
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <div>
                       <h3 className="text-sm font-medium text-gray-900">Name</h3>
                       <p className="mt-1 text-sm text-gray-600">{data?.name || 'N/A'}</p>
@@ -158,7 +158,7 @@ export default function DetailDrawer({
                     </div>
                     <div>
                       <h3 className="text-sm font-medium text-gray-900">Status</h3>
-                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                      <span className={`inline-flex px-xs py-xs text-xs font-medium rounded-full ${
                         data?.status === 'completed' ? 'bg-green-100 text-green-800' :
                         data?.status === 'processing' ? 'bg-yellow-100 text-yellow-800' :
                         data?.status === 'failed' ? 'bg-red-100 text-red-800' :
@@ -177,21 +177,21 @@ export default function DetailDrawer({
                 )}
 
                 {activeTab === 'details' && (
-                  <div className="space-y-4">
-                    <pre className="text-xs bg-gray-50 p-4 rounded-lg overflow-auto">
+                  <div className="space-y-md">
+                    <pre className="text-xs bg-gray-50 p-md rounded-lg overflow-auto">
                       {JSON.stringify(data, null, 2)}
                     </pre>
                   </div>
                 )}
 
                 {activeTab === 'related' && (
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <p className="text-sm text-gray-600">Related items will be displayed here.</p>
                   </div>
                 )}
 
                 {activeTab === 'history' && (
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <p className="text-sm text-gray-600">Activity history will be displayed here.</p>
                   </div>
                 )}

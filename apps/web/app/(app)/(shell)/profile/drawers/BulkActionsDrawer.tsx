@@ -134,15 +134,15 @@ export default function BulkActionsDrawer({
  const getActionIcon = (action: string) => {
  switch (action) {
  case 'activate':
- return <UserCheck className="h-4 w-4 text-green-600" />;
+ return <UserCheck className="h-icon-xs w-icon-xs text-green-600" />;
  case 'deactivate':
- return <UserX className="h-4 w-4 text-yellow-600" />;
+ return <UserX className="h-icon-xs w-icon-xs text-yellow-600" />;
  case 'suspend':
- return <XCircle className="h-4 w-4 text-orange-600" />;
+ return <XCircle className="h-icon-xs w-icon-xs text-orange-600" />;
  case 'delete':
- return <Trash2 className="h-4 w-4 text-red-600" />;
+ return <Trash2 className="h-icon-xs w-icon-xs text-red-600" />;
  default:
- return <CheckCircle className="h-4 w-4 text-blue-600" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-blue-600" />;
  }
  };
 
@@ -169,7 +169,7 @@ export default function BulkActionsDrawer({
  {/* Selected Profiles Summary */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <Users className="h-5 w-5 text-primary" />
+ <Users className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">Selected Profiles ({selectedProfiles.length})</h3>
  </div>
  
@@ -231,7 +231,7 @@ export default function BulkActionsDrawer({
  {/* Action-specific warnings */}
  {selectedAction === 'delete' && (
  <Alert className="mt-sm">
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  <strong>Warning:</strong> This action cannot be undone. All profile data, 
  including certifications, endorsements, and activity history will be permanently deleted.
@@ -241,7 +241,7 @@ export default function BulkActionsDrawer({
  
  {selectedAction === 'deactivate' && (
  <Alert className="mt-sm">
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  Deactivated profiles will lose access to the system and won't appear in active user lists.
  </AlertDescription>
@@ -250,7 +250,7 @@ export default function BulkActionsDrawer({
  
  {selectedAction === 'suspend' && (
  <Alert className="mt-sm">
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  Suspended profiles will be temporarily blocked from accessing the system.
  </AlertDescription>

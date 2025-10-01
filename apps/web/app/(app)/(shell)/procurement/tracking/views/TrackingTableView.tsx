@@ -73,22 +73,22 @@ export default function TrackingTableView({
  };
 
  const getSortIcon = (field: string) => {
- if (sort?.field !== field) return <ArrowUpDown className="h-4 w-4 opacity-50" />;
- return <ArrowUpDown className={`h-4 w-4 ${sort.direction === 'asc' ? 'rotate-180' : ''}`} />;
+ if (sort?.field !== field) return <ArrowUpDown className="h-icon-xs w-icon-xs opacity-50" />;
+ return <ArrowUpDown className={`h-icon-xs w-icon-xs ${sort.direction === 'asc' ? 'rotate-180' : ''}`} />;
  };
 
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'delivered':
- return <CheckCircle className="h-4 w-4 text-green-500" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
  case 'in_transit':
- return <Truck className="h-4 w-4 text-blue-500" />;
+ return <Truck className="h-icon-xs w-icon-xs text-blue-500" />;
  case 'shipped':
- return <Package className="h-4 w-4 text-orange-500" />;
+ return <Package className="h-icon-xs w-icon-xs text-orange-500" />;
  case 'delayed':
- return <AlertCircle className="h-4 w-4 text-red-500" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs text-red-500" />;
  default:
- return <Clock className="h-4 w-4 text-gray-500" />;
+ return <Clock className="h-icon-xs w-icon-xs text-gray-500" />;
  }
  };
 
@@ -96,8 +96,8 @@ export default function TrackingTableView({
  switch (field) {
  case 'order_number':
  return (
- <div className="flex items-center gap-2">
- <Package className="h-4 w-4 text-gray-500" />
+ <div className="flex items-center gap-xs">
+ <Package className="h-icon-xs w-icon-xs text-gray-500" />
  <Link href={`/procurement/orders/${item.order_id as any as any}`} className="font-medium text-blue-600 hover:underline">
  {item.order_number}
  </Link>
@@ -106,14 +106,14 @@ export default function TrackingTableView({
 
  case 'tracking_number':
  return (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="font-mono text-sm">{item.tracking_number}</span>
  {onTrackPackage && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onTrackPackage(item)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <ExternalLink className="h-3 w-3" />
  </Button>
@@ -123,15 +123,15 @@ export default function TrackingTableView({
 
  case 'carrier':
  return (
- <div className="flex items-center gap-2">
- <Truck className="h-4 w-4 text-gray-500" />
+ <div className="flex items-center gap-xs">
+ <Truck className="h-icon-xs w-icon-xs text-gray-500" />
  <span>{item.carrier}</span>
  </div>
  );
 
  case 'status':
  return (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {getStatusIcon(item.status)}
  <Badge variant={getStatusColor(item.status)}>
  {item.status.replace('_', ' ').toUpperCase()}
@@ -141,8 +141,8 @@ export default function TrackingTableView({
 
  case 'expected_delivery':
  return item.expected_delivery ? (
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4 text-gray-500" />
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-gray-500" />
  <span>{formatDate(item.expected_delivery)}</span>
  </div>
  ) : (
@@ -151,8 +151,8 @@ export default function TrackingTableView({
 
  case 'actual_delivery':
  return item.actual_delivery ? (
- <div className="flex items-center gap-2">
- <CheckCircle className="h-4 w-4 text-green-500" />
+ <div className="flex items-center gap-xs">
+ <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />
  <span>{formatDate(item.actual_delivery)}</span>
  </div>
  ) : (
@@ -161,9 +161,9 @@ export default function TrackingTableView({
 
  case 'origin':
  return item.origin_address ? (
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4 text-gray-500" />
- <span className="truncate max-w-32" title={`${item.origin_address.city}, ${item.origin_address.state}`}>
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-gray-500" />
+ <span className="truncate max-w-component-xl" title={`${item.origin_address.city}, ${item.origin_address.state}`}>
  {item.origin_address.city}, {item.origin_address.state}
  </span>
  </div>
@@ -173,9 +173,9 @@ export default function TrackingTableView({
 
  case 'destination':
  return item.destination_address ? (
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4 text-blue-500" />
- <span className="truncate max-w-32" title={`${item.destination_address.city}, ${item.destination_address.state}`}>
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-blue-500" />
+ <span className="truncate max-w-component-xl" title={`${item.destination_address.city}, ${item.destination_address.state}`}>
  {item.destination_address.city}, {item.destination_address.state}
  </span>
  </div>
@@ -230,9 +230,9 @@ export default function TrackingTableView({
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {Array.from({ length: 5 }).map((_, i) => (
- <div key={i} className="h-16 bg-gray-100 animate-pulse rounded-lg" />
+ <div key={i} className="h-component-md bg-gray-100 animate-pulse rounded-lg" />
  ))}
  </div>
  );
@@ -243,7 +243,7 @@ export default function TrackingTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedItems.length === items.length && items.length > 0}
  onCheckedChange={handleSelectAll}
@@ -256,13 +256,13 @@ export default function TrackingTableView({
  className="cursor-pointer hover:bg-gray-50"
  onClick={() => handleSort(field)}
  >
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {fieldLabels[field] || field}
  {getSortIcon(field)}
  </div>
  </TableHead>
  ))}
- <TableHead className="w-24">Actions</TableHead>
+ <TableHead className="w-component-lg">Actions</TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
@@ -287,15 +287,15 @@ export default function TrackingTableView({
  </TableCell>
  ))}
  <TableCell onClick={(e) => e.stopPropagation()}>
- <div className={`flex items-center gap-1 transition-opacity ${hoveredRow === item.id ? 'opacity-100' : 'opacity-0'}`}>
+ <div className={`flex items-center gap-xs transition-opacity ${hoveredRow === item.id ? 'opacity-100' : 'opacity-0'}`}>
  {onViewItem && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onViewItem(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEditItem && (
@@ -303,9 +303,9 @@ export default function TrackingTableView({
  variant="ghost"
  size="sm"
  onClick={() => onEditItem(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onTrackPackage && (
@@ -313,9 +313,9 @@ export default function TrackingTableView({
  variant="ghost"
  size="sm"
  onClick={() => onTrackPackage(item)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <ExternalLink className="h-4 w-4" />
+ <ExternalLink className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -326,8 +326,8 @@ export default function TrackingTableView({
  </Table>
  
  {items.length === 0 && (
- <div className="text-center py-12">
- <Package className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Package className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
  <h3 className="text-lg font-medium text-gray-900 mb-2">No tracking items found</h3>
  <p className="text-gray-500">Try adjusting your filters or search criteria.</p>
  </div>

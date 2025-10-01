@@ -86,7 +86,7 @@ export default function ViewFileDrawer({
  <img
  src={file.file_url}
  alt={file.name}
- className="max-w-full max-h-[400px] mx-auto object-contain rounded"
+ className="max-w-full max-h-content-lg mx-auto object-contain rounded"
  />
  </div>
  )}
@@ -95,7 +95,7 @@ export default function ViewFileDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>File Type</span>
  </div>
  <p className="font-medium">{file.file_type}</p>
@@ -103,7 +103,7 @@ export default function ViewFileDrawer({
 
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <HardDrive className="h-4 w-4" />
+ <HardDrive className="h-icon-xs w-icon-xs" />
  <span>File Size</span>
  </div>
  <p className="font-medium">{formatFileSize(file.file_size)}</p>
@@ -111,7 +111,7 @@ export default function ViewFileDrawer({
 
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <AccessIcon className="h-4 w-4" />
+ <AccessIcon className="h-icon-xs w-icon-xs" />
  <span>Access Level</span>
  </div>
  <Badge variant={getAccessBadgeVariant(file.access_level)}>
@@ -121,7 +121,7 @@ export default function ViewFileDrawer({
 
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Tag className="h-4 w-4" />
+ <Tag className="h-icon-xs w-icon-xs" />
  <span>Category</span>
  </div>
  <Badge variant={getCategoryBadgeVariant(file.category)}>
@@ -134,7 +134,7 @@ export default function ViewFileDrawer({
  {file.description && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Description</span>
  </div>
  <p className="text-sm">{file.description}</p>
@@ -145,7 +145,7 @@ export default function ViewFileDrawer({
  {file.tags && file.tags.length > 0 && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Tag className="h-4 w-4" />
+ <Tag className="h-icon-xs w-icon-xs" />
  <span>Tags</span>
  </div>
  <div className="flex flex-wrap gap-xs">
@@ -162,7 +162,7 @@ export default function ViewFileDrawer({
  {file.project && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Link className="h-4 w-4" />
+ <Link className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
  <p className="font-medium">{file.project.name}</p>
@@ -199,7 +199,7 @@ export default function ViewFileDrawer({
  <div className="space-y-sm">
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <User className="h-4 w-4 text-muted-foreground" />
+ <User className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Uploaded By</span>
  </div>
  <span className="font-medium">
@@ -209,7 +209,7 @@ export default function ViewFileDrawer({
 
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Upload Date</span>
  </div>
  <span className="font-medium">
@@ -219,7 +219,7 @@ export default function ViewFileDrawer({
 
  <div className="flex items-center justify-between p-sm bg-muted rounded-lg">
  <div className="flex items-center gap-sm">
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Last Modified</span>
  </div>
  <span className="font-medium">
@@ -235,7 +235,7 @@ export default function ViewFileDrawer({
  <div className="p-sm bg-muted rounded-lg">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <Download className="h-4 w-4 text-muted-foreground" />
+ <Download className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">Total Downloads</span>
  </div>
  <span className="font-medium">{file.download_count}</span>
@@ -250,7 +250,7 @@ export default function ViewFileDrawer({
  label: "Activity",
  content: (
  <div className="text-center py-lg text-muted-foreground">
- <MessageSquare className="mx-auto h-12 w-12 mb-sm opacity-50" />
+ <MessageSquare className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>Activity tracking coming soon</p>
  </div>
  ),
@@ -268,13 +268,13 @@ export default function ViewFileDrawer({
  {
  key: "download",
  label: "Download",
- icon: <Download className="h-4 w-4" />,
+ icon: <Download className="h-icon-xs w-icon-xs" />,
  onClick: onDownload,
  },
  {
  key: "share",
  label: "Share",
- icon: <Share2 className="h-4 w-4" />,
+ icon: <Share2 className="h-icon-xs w-icon-xs" />,
  onClick: async () => {
  await navigator.clipboard.writeText(file.file_url);
  // Toast would show "Link copied to clipboard"
@@ -283,7 +283,7 @@ export default function ViewFileDrawer({
  {
  key: "edit",
  label: "Edit",
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  onClick: onEdit,
  },
  ]}

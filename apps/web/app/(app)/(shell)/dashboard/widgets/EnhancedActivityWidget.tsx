@@ -22,15 +22,15 @@ export default function EnhancedActivityWidget({
  <Card className="p-lg">
  <div className="space-y-md">
  <div className="flex items-center justify-between">
- <div className="h-6 bg-muted rounded w-1/3 animate-pulse"></div>
- <div className="h-8 w-16 bg-muted rounded animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded w-1/3 animate-pulse"></div>
+ <div className="h-icon-lg w-component-md bg-muted rounded animate-pulse"></div>
  </div>
  <div className="space-y-md">
  {[...Array(5)].map((_, i) => (
  <div key={i} className="flex items-start space-x-sm">
- <div className="w-8 h-8 bg-muted rounded-full animate-pulse"></div>
+ <div className="w-icon-lg h-icon-lg bg-muted rounded-full animate-pulse"></div>
  <div className="flex-1 space-y-xs">
- <div className="h-4 bg-muted rounded w-3/4 animate-pulse"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4 animate-pulse"></div>
  <div className="h-3 bg-muted rounded w-1/2 animate-pulse"></div>
  </div>
  </div>
@@ -46,15 +46,15 @@ export default function EnhancedActivityWidget({
  const getActivityIcon = (type: string) => {
  switch (type) {
  case 'project':
- return <FileText className="w-4 h-4 text-blue-500" />;
+ return <FileText className="w-icon-xs h-icon-xs text-blue-500" />;
  case 'task':
- return <CheckCircle className="w-4 h-4 text-green-500" />;
+ return <CheckCircle className="w-icon-xs h-icon-xs text-green-500" />;
  case 'user':
- return <User className="w-4 h-4 text-purple-500" />;
+ return <User className="w-icon-xs h-icon-xs text-purple-500" />;
  case 'system':
- return <AlertCircle className="w-4 h-4 text-orange-500" />;
+ return <AlertCircle className="w-icon-xs h-icon-xs text-orange-500" />;
  default:
- return <Activity className="w-4 h-4 text-gray-500" />;
+ return <Activity className="w-icon-xs h-icon-xs text-gray-500" />;
  }
  };
 
@@ -96,7 +96,7 @@ export default function EnhancedActivityWidget({
  {/* Header */}
  <div className="flex items-center justify-between">
  <div className="flex items-center space-x-sm">
- <Activity className="w-5 h-5 text-blue-500" />
+ <Activity className="w-icon-sm h-icon-sm text-blue-500" />
  <h3 className="font-semibold text-foreground">{widget.title}</h3>
  </div>
  {onViewAll && (
@@ -116,7 +116,7 @@ export default function EnhancedActivityWidget({
  <div className="space-y-sm">
  {activityData.length === 0 ? (
  <div className="text-center py-lg text-muted-foreground">
- <Activity className="w-8 h-8 mx-auto mb-sm opacity-50" />
+ <Activity className="w-icon-lg h-icon-lg mx-auto mb-sm opacity-50" />
  <p className="text-sm">No recent activity</p>
  </div>
  ) : (
@@ -154,7 +154,7 @@ export default function EnhancedActivityWidget({
  {/* User Info */}
  {activity.user_name && (
  <div className="flex items-center space-x-xs mt-xs">
- <Avatar className="w-4 h-4">
+ <Avatar className="w-icon-xs h-icon-xs">
  <img 
  src={activity.user_avatar || '/default-avatar.png'} 
  alt={activity.user_name}

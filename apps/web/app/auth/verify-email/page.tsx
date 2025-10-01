@@ -81,7 +81,7 @@ export default function VerifyEmailPage() {
         showTrustIndicators={false}
       >
         <div className="brand-ghostship text-center stack-lg">
-          <CheckCircle className="h-16 w-16 color-success mx-auto" />
+          <CheckCircle className="h-component-md w-component-md color-success mx-auto" />
           <AuthText className="text-center">
             Redirecting you to complete your setup...
           </AuthText>
@@ -98,7 +98,7 @@ export default function VerifyEmailPage() {
       showTrustIndicators={false}
     >
       <div className="brand-ghostship text-center stack-lg">
-        <Mail className="h-16 w-16 color-accent mx-auto" />
+        <Mail className="h-component-md w-component-md color-accent mx-auto" />
         
         {email && (
           <div className="brand-ghostship bg-secondary border border-secondary rounded-md p-md">
@@ -131,12 +131,12 @@ export default function VerifyEmailPage() {
         >
           {loading ? (
             <>
-              <RefreshCw className="mr-sm h-4 w-4 animate-spin" />
+              <RefreshCw className="mr-sm h-icon-xs w-icon-xs animate-spin" />
               Sending...
             </>
           ) : (
             <>
-              <Mail className="mr-sm h-4 w-4" />
+              <Mail className="mr-sm h-icon-xs w-icon-xs" />
               Resend Email
             </>
           )}

@@ -86,7 +86,7 @@ export function ViewSwitcher({
             aria-controls={`view-${viewType}`}
             title={viewLabels[viewType]}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             {showLabels && (
               <span className={orientation === 'vertical' ? '' : 'hidden sm:inline'}>
                 {viewLabels[viewType]}

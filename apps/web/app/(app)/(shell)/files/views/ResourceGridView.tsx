@@ -69,7 +69,7 @@ export default function ResourceGridView({
  }}
  className="rounded border-border"
  />
- <IconComponent className="w-5 h-5 color-accent" />
+ <IconComponent className="w-icon-sm h-icon-sm color-accent" />
  <Badge variant="outline" className={statusColors[resource.status]}>
  {resource.status.replace('_', ' ')}
  </Badge>
@@ -81,17 +81,17 @@ export default function ResourceGridView({
  )}
  </div>
  <div className="flex items-center gap-xs text-body-sm color-muted">
- <Eye className="w-4 h-4" />
+ <Eye className="w-icon-xs h-icon-xs" />
  <span>{resource.view_count}</span>
- <Download className="w-4 h-4 ml-sm" />
+ <Download className="w-icon-xs h-icon-xs ml-sm" />
  <span>{resource.download_count}</span>
  </div>
  </div>
  
- <h3 className="text-heading-4 mb-sm line-clamp-2">{resource.title}</h3>
+ <h3 className="text-heading-4 mb-sm line-clamp-xs">{resource.title}</h3>
  
  {resource.description && (
- <p className="text-body-sm color-muted mb-sm line-clamp-3">{resource.description}</p>
+ <p className="text-body-sm color-muted mb-sm line-clamp-sm">{resource.description}</p>
  )}
  
  <div className="flex items-center justify-between">
@@ -109,7 +109,7 @@ export default function ResourceGridView({
  onResourceEdit(resource);
  }}
  >
- <Edit className="w-4 h-4" />
+ <Edit className="w-icon-xs h-icon-xs" />
  </Button>
  {resource.file_url && (
  <Button
@@ -120,7 +120,7 @@ export default function ResourceGridView({
  onResourceDownload(resource);
  }}
  >
- <Download className="w-4 h-4" />
+ <Download className="w-icon-xs h-icon-xs" />
  </Button>
  )}
  </div>

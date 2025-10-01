@@ -20,12 +20,12 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-md justify-center">
           <Button asChild>
             <Link href="/" className="flex items-center gap-sm">
-              <Home className="h-4 w-4" />
+              <Home className="h-icon-xs w-icon-xs" />
               Go Home
             </Link>
           </Button>
           <Button variant="outline" onClick={() => window.history.back()}>
-            <ArrowLeft className="h-4 w-4 mr-sm" />
+            <ArrowLeft className="h-icon-xs w-icon-xs mr-sm" />
             Go Back
           </Button>
         </div>

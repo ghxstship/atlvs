@@ -171,7 +171,7 @@ export default function CreateTrackingClient({
         {/* Asset & Type */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Navigation className="h-5 w-5 color-accent" />
+            <Navigation className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Asset & Tracking Type</h3>
           </div>
           
@@ -226,7 +226,7 @@ export default function CreateTrackingClient({
         {/* Location & Time */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <MapPin className="h-5 w-5 color-success" />
+            <MapPin className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Location & Time</h3>
           </div>
           
@@ -254,7 +254,7 @@ export default function CreateTrackingClient({
 
             <div>
               <label className="block text-body-sm form-label mb-xs">
-                <Calendar className="h-4 w-4 inline mr-xs" />
+                <Calendar className="h-icon-xs w-icon-xs inline mr-xs" />
                 Timestamp *
               </label>
               <UnifiedInput                 type="datetime-local"
@@ -269,7 +269,7 @@ export default function CreateTrackingClient({
         {/* Assignment & Condition */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Activity className="h-5 w-5 color-secondary" />
+            <Activity className="h-icon-sm w-icon-sm color-secondary" />
             <h3 className="text-body text-heading-4">Assignment & Condition</h3>
           </div>
           
@@ -322,14 +322,14 @@ export default function CreateTrackingClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.assetId || !formData.location}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Add Tracking Record'}
           </Button>
         </div>

@@ -295,7 +295,7 @@ export default function SecuritySettingsClient() {
  if (loading) {
  return (
  <div className="space-y-md">
- <Skeleton className="h-12 w-64" />
+ <Skeleton className="h-icon-2xl w-container-sm" />
  <div className="grid gap-md md:grid-cols-2">
  <Skeleton className="h-40 w-full" />
  <Skeleton className="h-40 w-full" />

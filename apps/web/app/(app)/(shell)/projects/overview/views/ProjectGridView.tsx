@@ -56,7 +56,7 @@ export default function ProjectGridView({
  {project.name}
  </h3>
  {project.description && (
- <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+ <p className="text-xs text-muted-foreground mt-1 line-clamp-xs">
  {project.description}
  </p>
  )}
@@ -69,7 +69,7 @@ export default function ProjectGridView({
  e.stopPropagation();
  onView(project);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Eye className="h-3 w-3" />
  </Button>
@@ -80,7 +80,7 @@ export default function ProjectGridView({
  e.stopPropagation();
  onEdit(project);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Edit className="h-3 w-3" />
  </Button>
@@ -91,7 +91,7 @@ export default function ProjectGridView({
  e.stopPropagation();
  onDelete(project);
  }}
- className="h-6 w-6 p-0 text-destructive hover:text-destructive"
+ className="h-icon-md w-icon-md p-0 text-destructive hover:text-destructive"
  >
  <Trash2 className="h-3 w-3" />
  </Button>
@@ -146,12 +146,12 @@ export default function ProjectGridView({
  {project.tags && project.tags.length > 0 && (
  <div className="flex flex-wrap gap-xs">
  {project.tags.slice(0, 3).map((tag) => (
- <Badge key={tag} variant="secondary" className="text-xs px-1 py-0">
+ <Badge key={tag} variant="secondary" className="text-xs px-xs py-0">
  {tag}
  </Badge>
  ))}
  {project.tags.length > 3 && (
- <Badge variant="secondary" className="text-xs px-1 py-0">
+ <Badge variant="secondary" className="text-xs px-xs py-0">
  +{project.tags.length - 3}
  </Badge>
  )}

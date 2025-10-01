@@ -66,19 +66,19 @@ export default function CreateAssetClient({
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl">
+          <div className="flex items-center justify-between h-component-md">
+            <div className="flex items-center gap-md">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/assets')}
-                className="flex items-center gap-2"
+                className="flex items-center gap-xs"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-icon-xs h-icon-xs" />
                 Back to Assets
               </Button>
-              <div className="h-6 w-px bg-gray-300" />
+              <div className="h-icon-md w-px bg-gray-300" />
               <div>
                 <h1 className="text-xl font-semibold text-gray-900">
                   {translations.title || 'Create New Asset'}
@@ -89,7 +89,7 @@ export default function CreateAssetClient({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-sm">
               <Button
                 variant="outline"
                 onClick={() => router.push('/assets')}
@@ -97,7 +97,7 @@ export default function CreateAssetClient({
                 {translations.cancel || 'Cancel'}
               </Button>
               <Button onClick={() => setIsDrawerOpen(true)}>
-                <Plus className="w-4 h-4 mr-2" />
+                <Plus className="w-icon-xs h-icon-xs mr-2" />
                 {translations.create || 'Create Asset'}
               </Button>
             </div>
@@ -106,8 +106,8 @@ export default function CreateAssetClient({
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl py-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
           {/* Form Section */}
           <div className="lg:col-span-2">
             <Card>
@@ -115,14 +115,14 @@ export default function CreateAssetClient({
                 <CardTitle>Asset Information</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-12 text-gray-500">
-                  <Plus className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <div className="text-center py-xsxl text-gray-500">
+                  <Plus className="w-icon-2xl h-icon-2xl mx-auto mb-4 text-gray-300" />
                   <h3 className="text-lg font-medium mb-2">Create New Asset</h3>
                   <p className="text-sm mb-6">
                     Use the form drawer to add comprehensive asset details
                   </p>
                   <Button onClick={() => setIsDrawerOpen(true)}>
-                    <Plus className="w-4 h-4 mr-2" />
+                    <Plus className="w-icon-xs h-icon-xs mr-2" />
                     Open Creation Form
                   </Button>
                 </div>
@@ -131,13 +131,13 @@ export default function CreateAssetClient({
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-lg">
             <Card>
               <CardHeader>
                 <CardTitle>Quick Tips</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-3">
+              <CardContent className="space-y-md">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Asset Tag</h4>
@@ -146,7 +146,7 @@ export default function CreateAssetClient({
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Categories</h4>
@@ -155,7 +155,7 @@ export default function CreateAssetClient({
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Images</h4>
@@ -172,7 +172,7 @@ export default function CreateAssetClient({
                 <CardTitle>Recent Assets</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-sm text-gray-500 text-center py-4">
+                <div className="text-sm text-gray-500 text-center py-md">
                   No recent assets to display
                 </div>
               </CardContent>

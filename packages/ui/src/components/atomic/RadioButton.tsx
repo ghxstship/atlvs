@@ -9,8 +9,8 @@ import { cn } from '../../lib/utils';
 
 const radioVariants = cva(
   [
-    'h-4',
-    'w-4',
+    'h-icon-xs',
+    'w-icon-xs',
     'rounded-full',
     'border',
     'border-input',
@@ -83,7 +83,7 @@ const RadioButton = React.forwardRef<HTMLInputElement, RadioButtonProps>(
     }
 
     return (
-      <div className="flex items-start gap-2">
+      <div className="flex items-start gap-xs">
         {radioElement}
         <div className="flex flex-col gap-1">
           {label && (

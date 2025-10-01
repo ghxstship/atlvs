@@ -194,9 +194,9 @@ export default function ViewHistoryDrawer({
  <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-start gap-md">
- <Avatar className="w-16 h-16">
+ <Avatar className="w-component-md h-component-md">
  <AvatarFallback className={`bg-${getEntryTypeColor(entry.entry_type)}-100 text-${getEntryTypeColor(entry.entry_type)}-600`}>
- <EntryIcon className="h-8 w-8" />
+ <EntryIcon className="h-icon-lg w-icon-lg" />
  </AvatarFallback>
  </Avatar>
  
@@ -218,23 +218,23 @@ export default function ViewHistoryDrawer({
  
  {entry.organization && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span className="font-medium">{entry.organization}</span>
  </div>
  )}
  
  {entry.location && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{entry.location}</span>
  </div>
  )}
  
  <div className="flex items-center gap-xs text-muted-foreground">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>{formatDateRange(entry.start_date, entry.end_date, entry.is_current)}</span>
  <span>•</span>
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>{calculateDuration(entry.start_date, entry.end_date, entry.is_current)}</span>
  </div>
  </div>
@@ -243,15 +243,15 @@ export default function ViewHistoryDrawer({
  {/* Actions */}
  <div className="flex gap-sm">
  <Button onClick={() => onEdit(entry)} size="sm">
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  <Button variant="outline" onClick={handleShare} size="sm">
- <Share className="h-4 w-4 mr-xs" />
+ <Share className="h-icon-xs w-icon-xs mr-xs" />
  Share
  </Button>
  <Button variant="outline" onClick={handleDownload} size="sm">
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Export
  </Button>
  <Button 
@@ -260,7 +260,7 @@ export default function ViewHistoryDrawer({
  size="sm"
  className="ml-auto"
  >
- <Trash2 className="h-4 w-4 mr-xs" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-xs" />
  Delete
  </Button>
  </div>
@@ -274,14 +274,14 @@ export default function ViewHistoryDrawer({
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {entry.employment_type && (
  <div className="flex items-center gap-xs">
- <Briefcase className="h-4 w-4 text-muted-foreground" />
+ <Briefcase className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Type:</span>
  <span className="font-medium">{getEmploymentTypeLabel(entry.employment_type)}</span>
  </div>
  )}
  {entry.salary_range && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Salary:</span>
  <span className="font-medium">{entry.salary_range}</span>
  </div>
@@ -296,14 +296,14 @@ export default function ViewHistoryDrawer({
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {entry.education_level && (
  <div className="flex items-center gap-xs">
- <GraduationCap className="h-4 w-4 text-muted-foreground" />
+ <GraduationCap className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Level:</span>
  <span className="font-medium">{getEducationLevelLabel(entry.education_level)}</span>
  </div>
  )}
  {entry.grade_gpa && (
  <div className="flex items-center gap-xs">
- <Star className="h-4 w-4 text-muted-foreground" />
+ <Star className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Grade/GPA:</span>
  <span className="font-medium">{entry.grade_gpa}</span>
  </div>
@@ -318,7 +318,7 @@ export default function ViewHistoryDrawer({
  <div className="flex items-center gap-xs">
  {(() => {
  const StatusIcon = getProjectStatusIcon(entry.project_status!);
- return <StatusIcon className={`h-4 w-4 text-${getProjectStatusColor(entry.project_status!)}-500`} />;
+ return <StatusIcon className={`h-icon-xs w-icon-xs text-${getProjectStatusColor(entry.project_status!)}-500`} />;
  })()}
  <span className="text-sm text-muted-foreground">Status:</span>
  <Badge variant="outline" className="capitalize">
@@ -364,7 +364,7 @@ export default function ViewHistoryDrawer({
  <div className="space-y-sm">
  {entry.achievements.map((achievement, index) => (
  <div key={index} className="flex items-start gap-sm p-sm bg-muted rounded">
- <Award className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+ <Award className="h-icon-xs w-icon-xs text-yellow-500 mt-0.5 flex-shrink-0" />
  <span className="text-sm">{achievement}</span>
  </div>
  ))}
@@ -414,7 +414,7 @@ export default function ViewHistoryDrawer({
  rel="noopener noreferrer"
  className="flex items-center gap-xs text-primary hover:underline"
  >
- <ExternalLink className="h-4 w-4" />
+ <ExternalLink className="h-icon-xs w-icon-xs" />
  {entry.website_url}
  </a>
  </div>

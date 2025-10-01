@@ -209,7 +209,7 @@ export default function FeaturedClient() {
  <p className="color-muted">Showcase your most important organizational resources</p>
  </div>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Add Featured Resource
  </Button>
  </div>
@@ -218,7 +218,7 @@ export default function FeaturedClient() {
  <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
  <Card>
  <div className="flex items-center gap-sm">
- <Star className="w-5 h-5 color-warning" />
+ <Star className="w-icon-sm h-icon-sm color-warning" />
  <div>
  <div className="text-heading-3 color-accent">{stats.totalFeatured}</div>
  <div className="text-body-sm color-muted">Featured Resources</div>
@@ -227,7 +227,7 @@ export default function FeaturedClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Eye className="w-5 h-5 color-secondary" />
+ <Eye className="w-icon-sm h-icon-sm color-secondary" />
  <div>
  <div className="text-heading-3 color-secondary">{stats.totalViews}</div>
  <div className="text-body-sm color-muted">Total Views</div>
@@ -236,7 +236,7 @@ export default function FeaturedClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <Download className="w-5 h-5 color-accent" />
+ <Download className="w-icon-sm h-icon-sm color-accent" />
  <div>
  <div className="text-heading-3 color-accent">{stats.totalDownloads}</div>
  <div className="text-body-sm color-muted">Total Downloads</div>
@@ -245,7 +245,7 @@ export default function FeaturedClient() {
  </Card>
  <Card>
  <div className="flex items-center gap-sm">
- <TrendingUp className="w-5 h-5 color-success" />
+ <TrendingUp className="w-icon-sm h-icon-sm color-success" />
  <div>
  <div className="text-heading-3 color-success">{stats.avgViews}</div>
  <div className="text-body-sm color-muted">Avg Views</div>
@@ -281,10 +281,10 @@ export default function FeaturedClient() {
  <DataActions />
  </div>
  
- <div className="min-h-96">
+ <div className="min-h-container-lg">
  {loading && (
  <div className="text-center py-xl">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
  <p className="color-muted">Loading featured resources...</p>
  </div>
  )}
@@ -292,7 +292,7 @@ export default function FeaturedClient() {
  {error && (
  <Card>
  <div className="text-center py-xl">
- <Star className="w-12 h-12 color-destructive mx-auto mb-md" />
+ <Star className="w-icon-2xl h-icon-2xl color-destructive mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">Error loading featured resources</h3>
  <p className="color-muted mb-md">{error}</p>
  <Button onClick={fetchFeaturedResources}>
@@ -305,13 +305,13 @@ export default function FeaturedClient() {
  {!loading && !error && resources.length === 0 && (
  <Card>
  <div className="text-center py-xl">
- <Star className="w-12 h-12 color-muted mx-auto mb-md" />
+ <Star className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-body form-label color-foreground mb-sm">No featured resources</h3>
  <p className="color-muted mb-md">
  Start showcasing your most important resources by marking them as featured.
  </p>
  <Button onClick={handleCreate}>
- <Plus className="w-4 h-4 mr-sm" />
+ <Plus className="w-icon-xs h-icon-xs mr-sm" />
  Add Featured Resource
  </Button>
  </div>

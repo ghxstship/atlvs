@@ -85,9 +85,9 @@ export default function ViewProjectDrawer({
  variant="ghost"
  size="sm"
  onClick={handleClose}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </DrawerHeader>
@@ -97,7 +97,7 @@ export default function ViewProjectDrawer({
  {project.description && (
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 text-muted-foreground mt-1" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Description</h3>
  <p className="text-sm text-muted-foreground leading-relaxed">
@@ -114,7 +114,7 @@ export default function ViewProjectDrawer({
  {project.budget && (
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <DollarSign className="h-4 w-4 text-muted-foreground mt-1" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Budget</h3>
  <p className="text-lg font-semibold">
@@ -134,7 +134,7 @@ export default function ViewProjectDrawer({
  {/* Timeline Information */}
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <Calendar className="h-4 w-4 text-muted-foreground mt-1" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div className="space-y-sm">
  <h3 className="font-medium">Timeline</h3>
  
@@ -169,7 +169,7 @@ export default function ViewProjectDrawer({
  {project.location && (
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <MapPin className="h-4 w-4 text-muted-foreground mt-1" />
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Location</h3>
  <p className="text-sm">{project.location}</p>
@@ -181,7 +181,7 @@ export default function ViewProjectDrawer({
  {/* Creation Information */}
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <Clock className="h-4 w-4 text-muted-foreground mt-1" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div className="space-y-sm">
  <h3 className="font-medium">Created</h3>
  <div className="text-sm space-y-xs">
@@ -207,7 +207,7 @@ export default function ViewProjectDrawer({
  {project.tags && project.tags.length > 0 && (
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <Tag className="h-4 w-4 text-muted-foreground mt-1" />
+ <Tag className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Tags</h3>
  <div className="flex flex-wrap gap-xs">
@@ -226,7 +226,7 @@ export default function ViewProjectDrawer({
  {project.notes && (
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 text-muted-foreground mt-1" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Notes</h3>
  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-wrap">
@@ -240,7 +240,7 @@ export default function ViewProjectDrawer({
  {/* Project Statistics */}
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <TrendingUp className="h-4 w-4 text-muted-foreground mt-1" />
+ <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Project Statistics</h3>
  <div className="grid grid-cols-2 md:grid-cols-4 gap-md text-center">
@@ -268,7 +268,7 @@ export default function ViewProjectDrawer({
  {/* Status Indicators */}
  <Card className="p-md">
  <div className="flex items-start gap-sm">
- <Activity className="h-4 w-4 text-muted-foreground mt-1" />
+ <Activity className="h-icon-xs w-icon-xs text-muted-foreground mt-1" />
  <div>
  <h3 className="font-medium mb-sm">Status Overview</h3>
  <div className="space-y-sm">
@@ -303,7 +303,7 @@ export default function ViewProjectDrawer({
  onClick={handleEdit}
  className="flex-1"
  >
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit Project
  </Button>
  <Button
@@ -311,7 +311,7 @@ export default function ViewProjectDrawer({
  onClick={handleDelete}
  className="flex-1"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete Project
  </Button>
  </div>

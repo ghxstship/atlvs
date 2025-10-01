@@ -83,7 +83,7 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested procurement request could not be found.</p>
             </div>
           )
@@ -128,16 +128,16 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Request Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <ClipboardList className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <ClipboardList className="h-icon-sm w-icon-sm" />
                 Request Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Request Number</span>
                 <span className="text-sm font-mono">
@@ -172,12 +172,12 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
           {/* Requester & Approver */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <User className="h-icon-sm w-icon-sm" />
                 Request Workflow
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Requester</p>
                 <p className="font-medium">
@@ -217,16 +217,16 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
             </CardHeader>
             <CardContent>
               {(request as any).items && (request as any).items.length > 0 ? (
-                <div className="space-y-4">
+                <div className="space-y-md">
                   {(request as any).items.map((item: unknown) => (
-                    <div key={item.id} className="p-4 border rounded-lg">
+                    <div key={item.id} className="p-md border rounded-lg">
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
                           <h4 className="font-medium">{item.description}</h4>
                           <p className="text-sm text-muted-foreground mt-1">
                             {item.justification}
                           </p>
-                          <div className="flex items-center gap-4 mt-2">
+                          <div className="flex items-center gap-md mt-2">
                             <span className="text-sm">Qty: {item.quantity}</span>
                             <span className="text-sm">Unit Cost: {formatCurrency(item.estimated_cost)}</span>
                             <span className="text-sm font-semibold">
@@ -239,7 +239,7 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
                   ))}
                 </div>
               ) : (
-                <p className="text-muted-foreground text-center py-4">
+                <p className="text-muted-foreground text-center py-md">
                   No items in this request
                 </p>
               )}
@@ -256,14 +256,14 @@ export default async function RequestDetailPage({ params }: RequestDetailPagePro
           <CardHeader>
             <CardTitle>Approval Status</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="flex items-center gap-3">
+          <CardContent className="space-y-md">
+            <div className="flex items-center gap-sm">
               {((request as any).status === 'approved') ? (
-                <CheckCircle className="h-5 w-5 text-green-500" />
+                <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />
               ) : ((request as any).status === 'rejected') ? (
-                <AlertTriangle className="h-5 w-5 text-red-500" />
+                <AlertTriangle className="h-icon-sm w-icon-sm text-red-500" />
               ) : (
-                <AlertTriangle className="h-5 w-5 text-yellow-500" />
+                <AlertTriangle className="h-icon-sm w-icon-sm text-yellow-500" />
               )}
               <div>
                 <p className="font-medium capitalize">{(request as any).status} Request</p>

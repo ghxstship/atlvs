@@ -23,9 +23,9 @@ async function AnalyticsContent() {
         <div className="flex items-center justify-between mb-sm">
           <span className="text-sm text-muted-foreground">Revenue</span>
           {data.revenue.trend === 'up' ? (
-            <TrendingUp className="h-4 w-4 text-green-600" />
+            <TrendingUp className="h-icon-xs w-icon-xs text-green-600" />
           ) : (
-            <TrendingDown className="h-4 w-4 text-red-600" />
+            <TrendingDown className="h-icon-xs w-icon-xs text-red-600" />
           )}
         </div>
         <div className="text-heading-4 font-bold">
@@ -39,7 +39,7 @@ async function AnalyticsContent() {
       <Card className="p-md">
         <div className="flex items-center justify-between mb-sm">
           <span className="text-sm text-muted-foreground">Active Users</span>
-          <Activity className="h-4 w-4 text-blue-600" />
+          <Activity className="h-icon-xs w-icon-xs text-blue-600" />
         </div>
         <div className="text-heading-4 font-bold">
           {data.users.value.toLocaleString()}
@@ -53,9 +53,9 @@ async function AnalyticsContent() {
         <div className="flex items-center justify-between mb-sm">
           <span className="text-sm text-muted-foreground">Conversion Rate</span>
           {data.conversion.trend === 'up' ? (
-            <TrendingUp className="h-4 w-4 text-green-600" />
+            <TrendingUp className="h-icon-xs w-icon-xs text-green-600" />
           ) : (
-            <TrendingDown className="h-4 w-4 text-red-600" />
+            <TrendingDown className="h-icon-xs w-icon-xs text-red-600" />
           )}
         </div>
         <div className="text-heading-4 font-bold">
@@ -72,21 +72,21 @@ async function AnalyticsContent() {
 function AnalyticsLoading() {
   return (
     <div className="space-y-md">
-      <Skeleton className="h-6 w-32" />
+      <Skeleton className="h-icon-md w-component-xl" />
       <Card className="p-md">
-        <Skeleton className="h-4 w-20 mb-sm" />
-        <Skeleton className="h-8 w-24 mb-xs" />
-        <Skeleton className="h-3 w-32" />
+        <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+        <Skeleton className="h-icon-lg w-component-lg mb-xs" />
+        <Skeleton className="h-3 w-component-xl" />
       </Card>
       <Card className="p-md">
-        <Skeleton className="h-4 w-20 mb-sm" />
-        <Skeleton className="h-8 w-24 mb-xs" />
-        <Skeleton className="h-3 w-32" />
+        <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+        <Skeleton className="h-icon-lg w-component-lg mb-xs" />
+        <Skeleton className="h-3 w-component-xl" />
       </Card>
       <Card className="p-md">
-        <Skeleton className="h-4 w-20 mb-sm" />
-        <Skeleton className="h-8 w-24 mb-xs" />
-        <Skeleton className="h-3 w-32" />
+        <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+        <Skeleton className="h-icon-lg w-component-lg mb-xs" />
+        <Skeleton className="h-3 w-component-xl" />
       </Card>
     </div>
   );

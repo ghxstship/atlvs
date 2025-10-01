@@ -61,36 +61,36 @@ export default function ViewTaskDrawer({
  
  if (task.status === "done") {
  return (
- <span className="text-success flex items-center gap-1">
- <CheckCircle className="h-4 w-4" />
+ <span className="text-success flex items-center gap-xs">
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  Completed
  </span>
  );
  } else if (days < 0) {
  return (
- <span className="text-destructive flex items-center gap-1">
- <AlertCircle className="h-4 w-4" />
+ <span className="text-destructive flex items-center gap-xs">
+ <AlertCircle className="h-icon-xs w-icon-xs" />
  {Math.abs(days)} days overdue
  </span>
  );
  } else if (days === 0) {
  return (
- <span className="text-warning flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-warning flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  Due today
  </span>
  );
  } else if (days <= 7) {
  return (
- <span className="text-warning flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-warning flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {days} days left
  </span>
  );
  } else {
  return (
- <span className="text-muted-foreground flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-muted-foreground flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {days} days left
  </span>
  );
@@ -150,13 +150,13 @@ export default function ViewTaskDrawer({
  onClose={() => onOpenChange(false)}
  title={task.title}
  description={task.project?.name || "Task Details"}
- icon={<ListTodo className="h-5 w-5" />}
+ icon={<ListTodo className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header Actions */}
  <div className="flex justify-between items-start">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {getStatusBadge()}
  {getPriorityBadge()}
  {getDaysUntil()}
@@ -167,15 +167,15 @@ export default function ViewTaskDrawer({
  size="sm"
  onClick={onEdit}
  >
- <Edit className="h-4 w-4 mr-2" />
+ <Edit className="h-icon-xs w-icon-xs mr-2" />
  Edit
  </Button>
  )}
  </div>
 
  {/* Progress */}
- <Card className="p-4">
- <div className="space-y-3">
+ <Card className="p-md">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">Task Progress</span>
  <span className="text-2xl font-bold">{calculateProgress()}%</span>
@@ -187,8 +187,8 @@ export default function ViewTaskDrawer({
  {/* Description */}
  {task.description && (
  <div>
- <h3 className="font-medium mb-2 flex items-center gap-2">
- <FileText className="h-4 w-4" />
+ <h3 className="font-medium mb-2 flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs" />
  Description
  </h3>
  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
@@ -199,13 +199,13 @@ export default function ViewTaskDrawer({
 
  {/* Timeline */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Calendar className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  Timeline
  </h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {task.start_date && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Start Date</span>
  <span className="text-sm font-medium">
  {format(parseISO(task.start_date), "MMMM d, yyyy")}
@@ -214,7 +214,7 @@ export default function ViewTaskDrawer({
  )}
  
  {task.due_date && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Due Date</span>
  <span className="text-sm font-medium">
  {format(parseISO(task.due_date), "MMMM d, yyyy")}
@@ -223,7 +223,7 @@ export default function ViewTaskDrawer({
  )}
  
  {task.completed_at && (
- <div className="flex items-center justify-between p-3 bg-success/10 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-success/10 rounded-lg">
  <span className="text-sm">Completed</span>
  <span className="text-sm font-medium">
  {format(parseISO(task.completed_at), "MMMM d, yyyy 'at' h:mm a")}
@@ -236,28 +236,28 @@ export default function ViewTaskDrawer({
  {/* Time Tracking */}
  {(task.estimated_hours || task.actual_hours) && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Clock className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  Time Tracking
  </h3>
- <div className="grid grid-cols-2 gap-3">
+ <div className="grid grid-cols-2 gap-sm">
  {task.estimated_hours && (
- <Card className="p-3">
+ <Card className="p-sm">
  <div className="text-sm text-muted-foreground">Estimated</div>
  <div className="text-lg font-medium">{task.estimated_hours}h</div>
  </Card>
  )}
  {task.actual_hours && (
- <Card className="p-3">
+ <Card className="p-sm">
  <div className="text-sm text-muted-foreground">Actual</div>
  <div className="text-lg font-medium">{task.actual_hours}h</div>
  </Card>
  )}
  </div>
  {calculateEfficiency() && (
- <div className="mt-3 p-3 bg-muted/50 rounded-lg flex items-center justify-between">
- <span className="text-sm flex items-center gap-2">
- <TrendingUp className="h-4 w-4" />
+ <div className="mt-3 p-sm bg-muted/50 rounded-lg flex items-center justify-between">
+ <span className="text-sm flex items-center gap-xs">
+ <TrendingUp className="h-icon-xs w-icon-xs" />
  Efficiency
  </span>
  <span className={`text-sm font-medium ${
@@ -274,13 +274,13 @@ export default function ViewTaskDrawer({
 
  {/* People */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Users className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs" />
  People
  </h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {task.assignee && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Assignee</span>
  <span className="text-sm font-medium">
  {task.assignee.full_name || task.assignee.email}
@@ -288,7 +288,7 @@ export default function ViewTaskDrawer({
  </div>
  )}
  {task.reporter && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Reporter</span>
  <span className="text-sm font-medium">
  {task.reporter.full_name || task.reporter.email}
@@ -301,11 +301,11 @@ export default function ViewTaskDrawer({
  {/* Tags */}
  {task.tags && task.tags.length > 0 && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Tag className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Tag className="h-icon-xs w-icon-xs" />
  Tags
  </h3>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {task.tags.map((tag) => (
  <Badge key={tag} variant="secondary">
  {tag}
@@ -319,7 +319,7 @@ export default function ViewTaskDrawer({
  {task.project && (
  <div>
  <h3 className="font-medium mb-2">Project</h3>
- <Card className="p-3">
+ <Card className="p-sm">
  <div className="flex items-center justify-between">
  <span className="font-medium">{task.project.name}</span>
  <Badge variant={
@@ -337,11 +337,11 @@ export default function ViewTaskDrawer({
 
  {/* Activity */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Activity className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Activity className="h-icon-xs w-icon-xs" />
  Activity
  </h3>
- <div className="space-y-2 text-sm text-muted-foreground">
+ <div className="space-y-xs text-sm text-muted-foreground">
  <div className="flex items-center justify-between">
  <span>Created</span>
  <span>{format(parseISO(task.created_at), "MMM d, yyyy 'at' h:mm a")}</span>

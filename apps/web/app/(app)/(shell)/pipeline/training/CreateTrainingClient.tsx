@@ -145,7 +145,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Training
       </Button>
 
@@ -162,7 +162,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -170,7 +170,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
               form="training-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Training'}
             </Button>
           </div>
@@ -179,7 +179,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
         <form id="training-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-success/10 rounded-lg">
-              <GraduationCap className="h-5 w-5 color-success" />
+              <GraduationCap className="h-icon-sm w-icon-sm color-success" />
             </div>
             <div>
               <h3 className="form-label">Training Program Information</h3>
@@ -340,7 +340,7 @@ export default function CreateTrainingClient({ orgId, onTrainingCreated }: Creat
                 <input
                   type="checkbox"
                   {...register('certification')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   This training provides certification

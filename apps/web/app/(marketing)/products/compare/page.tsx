@@ -98,7 +98,7 @@ export default function ComparePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <Badge variant="outline" className="mb-md">
@@ -120,7 +120,7 @@ export default function ComparePage() {
       </section>
 
       {/* Product Overview */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -136,7 +136,7 @@ export default function ComparePage() {
               <Card key={product.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
                   <div className="text-center mb-xl">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-r ${product.color} mb-md`}>
+                    <div className={`inline-flex items-center justify-center w-component-md h-component-md rounded-2xl bg-gradient-to-r ${product.color} mb-md`}>
                       <span className="text-heading-3 text-background">{product.icon}</span>
                     </div>
                     <h3 className={`${anton.className} text-heading-3 text-heading-3 mb-sm uppercase`}>{product.name}</h3>
@@ -154,7 +154,7 @@ export default function ComparePage() {
                       <div className="stack-sm">
                         {product.strengths.map((strength: any) => (
                           <div key={strength} className="flex items-center gap-sm">
-                            <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                            <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
                             <span>{strength}</span>
                           </div>
                         ))}
@@ -169,7 +169,7 @@ export default function ComparePage() {
                     <a href={product.href}>
                       <Button className="w-full group">
                         Explore {product.name}
-                        <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                       </Button>
                     </a>
                   </div>
@@ -181,7 +181,7 @@ export default function ComparePage() {
       </section>
 
       {/* Feature Comparison */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -192,7 +192,7 @@ export default function ComparePage() {
             </p>
           </div>
 
-          <div className="space-y-2xl">
+          <div className="space-y-xsxl">
             {comparisonData.map((category: any) => (
               <Card key={category.category}>
                 <CardContent className="p-xl">
@@ -215,16 +215,16 @@ export default function ComparePage() {
                             <td className="py-md form-label">{feature.name}</td>
                             <td className="py-md text-center">
                               {feature.atlvs ? (
-                                <Check className="h-5 w-5 color-success mx-auto" />
+                                <Check className="h-icon-sm w-icon-sm color-success mx-auto" />
                               ) : (
-                                <X className="h-5 w-5 color-muted mx-auto" />
+                                <X className="h-icon-sm w-icon-sm color-muted mx-auto" />
                               )}
                             </td>
                             <td className="py-md text-center">
                               {feature.opendeck ? (
-                                <Check className="h-5 w-5 color-success mx-auto" />
+                                <Check className="h-icon-sm w-icon-sm color-success mx-auto" />
                               ) : (
-                                <X className="h-5 w-5 color-muted mx-auto" />
+                                <X className="h-icon-sm w-icon-sm color-muted mx-auto" />
                               )}
                             </td>
                           </tr>
@@ -240,7 +240,7 @@ export default function ComparePage() {
       </section>
 
       {/* Use Cases */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -255,36 +255,36 @@ export default function ComparePage() {
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                    <Zap className="h-6 w-6 text-background" />
+                  <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                    <Zap className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE ATLVS IF</h3>
                 </div>
                 
                 <div className="stack-md">
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You manage complex projects</p>
                       <p className="text-body-sm color-muted">Need advanced project management with custom workflows</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You have an existing team</p>
                       <p className="text-body-sm color-muted">Focus on internal collaboration and productivity</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You need detailed analytics</p>
                       <p className="text-body-sm color-muted">Require comprehensive reporting and insights</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You manage budgets</p>
                       <p className="text-body-sm color-muted">Need financial tracking and budget management</p>
@@ -296,7 +296,7 @@ export default function ComparePage() {
                   <Link href="/products/atlvs">
                     <Button className="w-full group">
                       Get Started with ATLVS
-                      <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
                 </div>
@@ -306,36 +306,36 @@ export default function ComparePage() {
             <Card className="hover:shadow-floating transition-shadow">
               <CardContent className="p-xl">
                 <div className="flex items-center gap-sm mb-lg">
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                    <Globe className="h-6 w-6 text-background" />
+                  <div className="w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                    <Globe className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase`}>CHOOSE OPENDECK IF</h3>
                 </div>
                 
                 <div className="stack-md">
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You need to find talent</p>
                       <p className="text-body-sm color-muted">Access to global network of creative professionals</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You're a freelancer</p>
                       <p className="text-body-sm color-muted">Connect with clients and showcase your work</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You need creative resources</p>
                       <p className="text-body-sm color-muted">Access templates, assets, and educational content</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-sm">
-                    <Check className="h-5 w-5 color-success flex-shrink-0 mt-0.5" />
+                    <Check className="h-icon-sm w-icon-sm color-success flex-shrink-0 mt-0.5" />
                     <div>
                       <p className="text-body-sm color-foreground">You work on diverse projects</p>
                       <p className="text-body-sm color-muted">Flexible marketplace for various creative needs</p>
@@ -347,7 +347,7 @@ export default function ComparePage() {
                   <Link href="/products/opendeck">
                     <Button className="w-full group">
                       Join OPENDECK
-                      <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
                 </div>
@@ -358,7 +358,7 @@ export default function ComparePage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -372,7 +372,7 @@ export default function ComparePage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">

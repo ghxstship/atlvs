@@ -146,7 +146,7 @@ export default function ScheduleCalendarView({
  "outline";
  
  return (
- <Badge variant={variant} className="text-xs px-1 py-0">
+ <Badge variant={variant} className="text-xs px-xs py-0">
  {priority}
  </Badge>
  );
@@ -163,10 +163,10 @@ export default function ScheduleCalendarView({
  <div
  key={dateStr}
  className={`
- min-h-[100px] border-r border-b p-2
+ min-h-header-md border-r border-b p-xs
  ${!isCurrentMonth ? "bg-muted/30" : ""}
  ${isTodayDate ? "bg-primary/5" : ""}
- ${calendarView === "day" ? "min-h-[500px]" : ""}
+ ${calendarView === "day" ? "min-h-modal-lg" : ""}
  `}
  >
  <div className="flex items-center justify-between mb-1">
@@ -184,19 +184,19 @@ export default function ScheduleCalendarView({
  )}
  </div>
 
- <div className="space-y-1">
+ <div className="space-y-xs">
  {dayItems.slice(0, calendarView === "day" ? undefined : 3).map((item, index) => (
  <div
  key={`${item.id}-${index}`}
  onClick={() => onItemClick?.(item)}
  className={`
- p-1 rounded text-xs cursor-pointer
+ p-xs rounded text-xs cursor-pointer
  hover:bg-accent transition-colors
  border-l-2
  `}
  style={{ borderLeftColor: item.color || "#6B7280" }}
  >
- <div className="flex items-start gap-1">
+ <div className="flex items-start gap-xs">
  <span className={getStatusColor(item.status)}>
  {getItemIcon(item)}
  </span>
@@ -211,7 +211,7 @@ export default function ScheduleCalendarView({
  {getPriorityBadge(item.priority)}
  </div>
  {item.assignee && calendarView === "day" && (
- <div className="flex items-center gap-1 mt-1 text-muted-foreground">
+ <div className="flex items-center gap-xs mt-1 text-muted-foreground">
  <Users className="h-3 w-3" />
  <span className="truncate">{item.assignee.name}</span>
  </div>
@@ -243,7 +243,7 @@ export default function ScheduleCalendarView({
  {weekDays.map(day => (
  <div
  key={day}
- className="p-2 text-sm font-medium text-center border-r"
+ className="p-xs text-sm font-medium text-center border-r"
  >
  {day}
  </div>

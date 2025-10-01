@@ -41,8 +41,8 @@ export default function ProfileKanbanView({
  {Array.from({ length: 3 }).map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
  <div className="flex items-center gap-sm mb-sm">
- <div className="w-8 h-8 bg-muted rounded-full" />
- <div className="w-24 h-4 bg-muted rounded" />
+ <div className="w-icon-lg h-icon-lg bg-muted rounded-full" />
+ <div className="w-component-lg h-icon-xs bg-muted rounded" />
  </div>
  <div className="w-full h-3 bg-muted rounded" />
  </Card>
@@ -74,7 +74,7 @@ export default function ProfileKanbanView({
  onClick={() => onEdit(profile)}
  >
  <div className="flex items-center gap-sm mb-sm">
- <Avatar className="h-8 w-8">
+ <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
  <img src={profile.avatar_url} alt={profile.full_name} />
  ) : (
@@ -106,7 +106,7 @@ export default function ProfileKanbanView({
  
  {columnProfiles.length === 0 && (
  <Card className="p-md text-center text-muted-foreground">
- <User className="h-8 w-8 mx-auto mb-sm opacity-50" />
+ <User className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
  <p className="text-sm">No {column.title.toLowerCase()} profiles</p>
  </Card>
  )}

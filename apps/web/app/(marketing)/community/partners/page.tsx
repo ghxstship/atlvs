@@ -40,7 +40,7 @@ export default function PartnersPage() {
   ];
 
   return (
-    <div className="container mx-auto px-md py-3xl">
+    <div className="container mx-auto px-md py-smxl">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-3xl">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-lg`}>
@@ -60,7 +60,7 @@ export default function PartnersPage() {
             return (
               <div key={tier.title} className="bg-card rounded-lg p-lg border text-center">
                 <div className="bg-accent/10 p-md rounded-lg inline-flex mb-md">
-                  <Icon className="h-8 w-8 text-foreground" />
+                  <Icon className="h-icon-lg w-icon-lg text-foreground" />
                 </div>
                 <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>
                   {tier.title}
@@ -86,7 +86,7 @@ export default function PartnersPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-lg">
             {featuredPartners.map((partner: any) => (
               <div key={partner.name} className="bg-card rounded-lg p-lg border text-center hover:shadow-floating transition-shadow">
-                <div className="bg-secondary/30 rounded-lg h-16 mb-md flex items-center justify-center">
+                <div className="bg-secondary/30 rounded-lg h-component-md mb-md flex items-center justify-center">
                   <span className="text-body-sm color-muted">Partner Logo</span>
                 </div>
                 <h3 className="text-heading-4 mb-xs">{partner.name}</h3>
@@ -98,7 +98,7 @@ export default function PartnersPage() {
 
         <div className="bg-secondary/30 rounded-lg p-xl">
           <div className="text-center mb-xl">
-            <Users className="h-12 w-12 text-foreground mx-auto mb-md" />
+            <Users className="h-icon-2xl w-icon-2xl text-foreground mx-auto mb-md" />
             <h2 className={`${anton.className} uppercase text-heading-3 text-heading-3 mb-md`}>
               PARTNER WITH US
             </h2>

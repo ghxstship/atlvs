@@ -35,11 +35,11 @@ export default function ViewContractDrawer({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'active': return <CheckCircle className="h-4 w-4" />;
- case 'completed': return <Clock className="h-4 w-4" />;
- case 'draft': return <FileText className="h-4 w-4" />;
- case 'terminated': return <XCircle className="h-4 w-4" />;
- default: return <FileText className="h-4 w-4" />;
+ case 'active': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'completed': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'draft': return <FileText className="h-icon-xs w-icon-xs" />;
+ case 'terminated': return <XCircle className="h-icon-xs w-icon-xs" />;
+ default: return <FileText className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -115,7 +115,7 @@ export default function ViewContractDrawer({
  )}
  {onEdit && contract.status !== 'terminated' && (
  <Button variant="outline" onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  )}
@@ -152,7 +152,7 @@ export default function ViewContractDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Company</p>
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 color-muted" />
+ <Building className="h-icon-xs w-icon-xs color-muted" />
  <p className="text-body-sm color-foreground">
  {contract.company_name || 'Unknown Company'}
  </p>
@@ -188,7 +188,7 @@ export default function ViewContractDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Contract Value</p>
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 color-success" />
+ <DollarSign className="h-icon-xs w-icon-xs color-success" />
  <p className="text-heading-4 font-semibold color-success">
  {formatCurrency(contract.contract_value)}
  </p>
@@ -214,7 +214,7 @@ export default function ViewContractDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <div>
  <p className="text-body-sm color-foreground">Created</p>
  <p className="text-body-xs color-muted">
@@ -228,7 +228,7 @@ export default function ViewContractDrawer({
 
  {contract.start_date && (
  <div className="flex items-center gap-sm p-sm border border-success/20 bg-success/5 rounded-md">
- <Calendar className="h-4 w-4 color-success" />
+ <Calendar className="h-icon-xs w-icon-xs color-success" />
  <div>
  <p className="text-body-sm color-success">Start Date</p>
  <p className="text-body-xs color-muted">
@@ -246,7 +246,7 @@ export default function ViewContractDrawer({
  ? 'border-warning/20 bg-warning/5'
  : 'border-border'
  }`}>
- <Calendar className={`h-4 w-4 ${
+ <Calendar className={`h-icon-xs w-icon-xs ${
  isExpired(contract.end_date) 
  ? 'color-destructive' 
  : isExpiringSoon(contract.end_date)
@@ -280,7 +280,7 @@ export default function ViewContractDrawer({
 
  {contract.renewal_date && (
  <div className="flex items-center gap-sm p-sm border border-info/20 bg-info/5 rounded-md">
- <Calendar className="h-4 w-4 color-info" />
+ <Calendar className="h-icon-xs w-icon-xs color-info" />
  <div>
  <p className="text-body-sm color-info">Renewal Date</p>
  <p className="text-body-xs color-muted">
@@ -298,7 +298,7 @@ export default function ViewContractDrawer({
  <h3 className="text-heading-5 color-foreground">Contract Document</h3>
  
  <div className="flex items-center gap-sm p-md border border-border rounded-md">
- <FileText className="h-8 w-8 color-accent" />
+ <FileText className="h-icon-lg w-icon-lg color-accent" />
  <div className="flex-1">
  <p className="text-body-sm font-medium color-foreground">Contract Document</p>
  <p className="text-body-xs color-muted">Click to view or download</p>
@@ -332,7 +332,7 @@ export default function ViewContractDrawer({
  <h3 className="text-heading-5 color-foreground">Notes</h3>
  <div className="p-md bg-secondary/50 rounded-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 color-muted mt-xs" />
+ <FileText className="h-icon-xs w-icon-xs color-muted mt-xs" />
  <p className="text-body-sm color-foreground whitespace-pre-wrap">
  {contract.notes}
  </p>
@@ -348,7 +348,7 @@ export default function ViewContractDrawer({
  </Button>
  {onActivate && contract.status === 'draft' && (
  <Button onClick={onActivate} className="color-success">
- <CheckCircle className="h-4 w-4 mr-xs" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-xs" />
  Activate Contract
  </Button>
  )}
@@ -359,13 +359,13 @@ export default function ViewContractDrawer({
  )}
  {onTerminate && contract.status === 'active' && (
  <Button onClick={onTerminate} variant="outline" className="color-destructive">
- <XCircle className="h-4 w-4 mr-xs" />
+ <XCircle className="h-icon-xs w-icon-xs mr-xs" />
  Terminate
  </Button>
  )}
  {onEdit && contract.status !== 'terminated' && (
  <Button onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Contract
  </Button>
  )}

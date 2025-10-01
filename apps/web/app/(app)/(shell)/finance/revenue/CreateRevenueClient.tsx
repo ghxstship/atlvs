@@ -127,7 +127,7 @@ export default function CreateRevenueClient({
         {/* Revenue Overview */}
         <Card className="p-md bg-success/10 border-success/20">
           <div className="flex items-center cluster-sm">
-            <TrendingUp className="h-8 w-8 color-success" />
+            <TrendingUp className="h-icon-lg w-icon-lg color-success" />
             <div>
               <h3 className="text-heading-4 color-success-foreground">Revenue Tracking</h3>
               <p className="text-body-sm color-success/80">
@@ -156,7 +156,7 @@ export default function CreateRevenueClient({
                 Amount *
               </label>
               <div className="relative">
-                <DollarSign className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <DollarSign className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="number"
                   value={formData.amount || ''}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, amount: parseFloat(e.target.value) || 0 }))}
@@ -197,7 +197,7 @@ export default function CreateRevenueClient({
                 Revenue Source
               </label>
               <div className="relative">
-                <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Building className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <Select
                   value={formData.source}
                   onValueChange={(value: any) => setFormData(prev => ({ ...prev, source: value }))}
@@ -220,7 +220,7 @@ export default function CreateRevenueClient({
                 Recognition Date *
               </label>
               <div className="relative">
-                <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-foreground/50" />
+                <Calendar className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-foreground/50" />
                 <UnifiedInput                   type="date"
                   value={formData.recognitionDate}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setFormData(prev => ({ ...prev, recognitionDate: e.target.value }))}
@@ -283,16 +283,16 @@ export default function CreateRevenueClient({
           <Button
             type="submit"
             disabled={loading || !formData.description.trim() || formData.amount <= 0}
-            className="min-w-[120px]"
+            className="min-w-component-xl"
           >
             {loading ? (
               <div className="flex items-center cluster-sm">
-                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                <div className="w-icon-xs h-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Adding...</span>
               </div>
             ) : (
               <div className="flex items-center cluster-sm">
-                <Plus className="h-4 w-4" />
+                <Plus className="h-icon-xs w-icon-xs" />
                 <span>Add Revenue</span>
               </div>
             )}

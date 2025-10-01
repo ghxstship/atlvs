@@ -105,7 +105,7 @@ export default function WhitepapersPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -127,7 +127,7 @@ export default function WhitepapersPage() {
               <Link href="/auth/signup">
                 <Button className="group">
                   Download All Reports
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#whitepapers">
@@ -161,7 +161,7 @@ export default function WhitepapersPage() {
       </section>
 
       {/* Featured Whitepapers */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -177,19 +177,19 @@ export default function WhitepapersPage() {
             {featuredPapers.map((paper: any) => (
               <Card key={paper.id} className="hover:shadow-modal transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <div className="h-container-sm bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <FileText className="h-16 w-16 text-foreground mx-auto mb-md" />
+                      <FileText className="h-component-md w-component-md text-foreground mx-auto mb-md" />
                       <p className="text-body-sm color-muted">Research Report</p>
                     </div>
                   </div>
-                  <div className="absolute top-4 right-4">
+                  <div className="absolute top-md right-4">
                     <Badge className="bg-accent color-accent-foreground">
                       Featured
                     </Badge>
                   </div>
                   {paper.isPremium && (
-                    <div className="absolute top-4 left-4">
+                    <div className="absolute top-md left-4">
                       <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-xs" />
                         Premium
@@ -212,22 +212,22 @@ export default function WhitepapersPage() {
                   <div className="stack-md mb-lg">
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs color-muted">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         {paper.publishDate}
                       </div>
                       <div className="flex items-center gap-xs color-muted">
-                        <FileText className="h-4 w-4" />
+                        <FileText className="h-icon-xs w-icon-xs" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs color-muted">
-                        <Download className="h-4 w-4" />
+                        <Download className="h-icon-xs w-icon-xs" />
                         {paper.downloads} downloads
                       </div>
                       <div className="flex items-center gap-xs">
-                        <TrendingUp className="h-4 w-4 color-success" />
+                        <TrendingUp className="h-icon-xs w-icon-xs color-success" />
                         <span className="text-heading-4 color-success">Popular</span>
                       </div>
                     </div>
@@ -252,7 +252,7 @@ export default function WhitepapersPage() {
                     className="w-full group-hover:translate-x-1 transition-transform"
                   >
                     {paper.isPremium ? 'Download Premium Report' : 'Download Free Report'}
-                    <Download className="ml-sm h-4 w-4" />
+                    <Download className="ml-sm h-icon-xs w-icon-xs" />
                   </Button>
                 </CardContent>
               </Card>
@@ -262,7 +262,7 @@ export default function WhitepapersPage() {
       </section>
 
       {/* All Whitepapers */}
-      <section id="whitepapers" className="py-4xl bg-secondary/20">
+      <section id="whitepapers" className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -274,14 +274,14 @@ export default function WhitepapersPage() {
             {regularPapers.map((paper: any) => (
               <Card key={paper.id} className="hover:shadow-floating transition-all duration-300 group">
                 <div className="relative">
-                  <div className="h-48 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+                  <div className="h-container-xs bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                     <div className="text-center">
-                      <FileText className="h-12 w-12 text-foreground mx-auto mb-sm" />
+                      <FileText className="h-icon-2xl w-icon-2xl text-foreground mx-auto mb-sm" />
                       <p className="text-body-sm color-muted">Research Report</p>
                     </div>
                   </div>
                   {paper.isPremium && (
-                    <div className="absolute top-4 right-4">
+                    <div className="absolute top-md right-4">
                       <Badge className="bg-warning color-warning-foreground">
                         <Lock className="h-3 w-3 mr-xs" />
                         Premium
@@ -297,29 +297,29 @@ export default function WhitepapersPage() {
                   <h3 className={`mb-sm group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {paper.title}
                   </h3>
-                  <p className="color-muted mb-md line-clamp-2">
+                  <p className="color-muted mb-md line-clamp-xs">
                     {paper.description}
                   </p>
                   
                   <div className="stack-sm mb-md">
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs color-muted">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         {paper.publishDate}
                       </div>
                       <div className="flex items-center gap-xs color-muted">
-                        <FileText className="h-4 w-4" />
+                        <FileText className="h-icon-xs w-icon-xs" />
                         {paper.pages} pages
                       </div>
                     </div>
                     
                     <div className="flex items-center justify-between text-body-sm">
                       <div className="flex items-center gap-xs color-muted">
-                        <Download className="h-4 w-4" />
+                        <Download className="h-icon-xs w-icon-xs" />
                         {paper.downloads}
                       </div>
                       <div className="flex items-center gap-xs color-muted">
-                        <Eye className="h-4 w-4" />
+                        <Eye className="h-icon-xs w-icon-xs" />
                         Preview
                       </div>
                     </div>
@@ -347,7 +347,7 @@ export default function WhitepapersPage() {
       </section>
 
       {/* Research Subscription */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -378,8 +378,8 @@ export default function WhitepapersPage() {
             ].map((benefit, index) => (
               <Card key={index} className="hover:shadow-floating transition-shadow text-center">
                 <CardContent className="p-xl">
-                  <div className="w-16 h-16 bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
-                    <FileText className="h-8 w-8 text-background" />
+                  <div className="w-component-md h-component-md bg-gradient-to-r from-primary to-secondary rounded-xl flex items-center justify-center mx-auto mb-md">
+                    <FileText className="h-icon-lg w-icon-lg text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {benefit.title}
@@ -396,11 +396,11 @@ export default function WhitepapersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
-              <FileText className="h-16 w-16 text-foreground mx-auto mb-lg" />
+            <CardContent className="p-xsxl">
+              <FileText className="h-component-md w-component-md text-foreground mx-auto mb-lg" />
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 ACCESS ALL RESEARCH
               </h2>
@@ -412,7 +412,7 @@ export default function WhitepapersPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group">
                     Download All Reports
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

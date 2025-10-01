@@ -48,9 +48,9 @@ export function MFAVerify({ factors, onVerified, onCancel }: MFAVerifyProps) {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="text-center">
-        <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
+        <Shield className="h-icon-2xl w-icon-2xl text-primary mx-auto mb-4" />
         <h3 className="text-lg font-semibold">Two-Factor Authentication</h3>
         <p className="text-sm text-muted-foreground">
           Enter the 6-digit code from your authenticator app.
@@ -65,7 +65,7 @@ export function MFAVerify({ factors, onVerified, onCancel }: MFAVerifyProps) {
           <select
             value={selectedFactor}
             onChange={(e) => setSelectedFactor(e.target.value)}
-            className="w-full p-2 border rounded-md"
+            className="w-full p-xs border rounded-md"
           >
             {factors.map((factor: any) => (
               <option key={factor.id} value={factor.id}>
@@ -85,19 +85,19 @@ export function MFAVerify({ factors, onVerified, onCancel }: MFAVerifyProps) {
           value={verificationCode}
           onChange={(e) => setVerificationCode(e.target.value)}
           placeholder="000000"
-          className="w-full p-3 border rounded-md text-center text-lg font-mono"
+          className="w-full p-sm border rounded-md text-center text-lg font-mono"
           maxLength={6}
           autoFocus
         />
       </div>
 
       {error && (
-        <div className="text-sm text-destructive bg-destructive/10 p-3 rounded-md">
+        <div className="text-sm text-destructive bg-destructive/10 p-sm rounded-md">
           {error}
         </div>
       )}
 
-      <div className="flex gap-3">
+      <div className="flex gap-sm">
         <Button
           onClick={verifyMFA}
           disabled={loading || verificationCode.length !== 6}

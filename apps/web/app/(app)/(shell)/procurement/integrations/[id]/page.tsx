@@ -59,16 +59,16 @@ export default async function IntegrationDetailPage({ params }: IntegrationDetai
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Zap className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Zap className="h-icon-sm w-icon-sm" />
                 System Integration
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 External system integrations and API connections.
               </p>
             </CardContent>
@@ -76,13 +76,13 @@ export default async function IntegrationDetailPage({ params }: IntegrationDetai
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Settings className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Settings className="h-icon-sm w-icon-sm" />
                 Configuration
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Integration settings, authentication, and connection details.
               </p>
             </CardContent>
@@ -96,13 +96,13 @@ export default async function IntegrationDetailPage({ params }: IntegrationDetai
       content: (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Webhook className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <Webhook className="h-icon-sm w-icon-sm" />
               Webhook Configuration
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Webhook endpoints, event subscriptions, and delivery logs.
             </p>
           </CardContent>

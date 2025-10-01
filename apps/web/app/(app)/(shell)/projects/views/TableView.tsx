@@ -148,7 +148,7 @@ export default function TableView({
   if (loading) {
     return (
       <div className={`bg-card border rounded-lg overflow-hidden ${className}`}>
-        <div className="p-8 text-center text-muted-foreground">
+        <div className="p-xl text-center text-muted-foreground">
           <div className="animate-pulse">Loading data...</div>
         </div>
       </div>
@@ -158,7 +158,7 @@ export default function TableView({
   if (data.length === 0) {
     return (
       <div className={`bg-card border rounded-lg overflow-hidden ${className}`}>
-        <div className="p-8 text-center text-muted-foreground">
+        <div className="p-xl text-center text-muted-foreground">
           {emptyMessage}
         </div>
       </div>
@@ -172,7 +172,7 @@ export default function TableView({
           <thead className="bg-muted/50 border-b">
             <tr>
               {selectable && (
-                <th className="px-4 py-3 text-left">
+                <th className="px-md py-sm text-left">
                   <Checkbox
                     checked={allSelected}
                     indeterminate={someSelected}
@@ -184,12 +184,12 @@ export default function TableView({
               {fields.map((field) => (
                 <th
                   key={field.key}
-                  className={`px-4 py-3 text-left font-medium text-sm ${
+                  className={`px-md py-sm text-left font-medium text-sm ${
                     field.sortable ? 'cursor-pointer hover:bg-muted/70' : ''
                   } ${field.width ? `w-${field.width}` : ''}`}
                   onClick={field.sortable ? () => handleSort(field.key) : undefined}
                 >
-                  <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-xs">
                     {field.label}
                     {field.sortable && (
                       <div className="flex flex-col">
@@ -208,7 +208,7 @@ export default function TableView({
                 </th>
               ))}
               {(onView || onEdit || onDelete) && (
-                <th className="px-4 py-3 text-right font-medium text-sm">Actions</th>
+                <th className="px-md py-sm text-right font-medium text-sm">Actions</th>
               )}
             </tr>
           </thead>
@@ -222,7 +222,7 @@ export default function TableView({
                 onClick={() => onRowClick?.(item)}
               >
                 {selectable && (
-                  <td className="px-4 py-3">
+                  <td className="px-md py-sm">
                     <Checkbox
                       checked={selectedItems.includes(item.id)}
                       onCheckedChange={(checked) => handleRowSelect(item.id, checked as boolean)}
@@ -232,34 +232,34 @@ export default function TableView({
                   </td>
                 )}
                 {fields.map((field) => (
-                  <td key={field.key} className="px-4 py-3 text-sm">
+                  <td key={field.key} className="px-md py-sm text-sm">
                     {renderCellContent(item, field)}
                   </td>
                 ))}
                 {(onView || onEdit || onDelete) && (
-                  <td className="px-4 py-3 text-right">
+                  <td className="px-md py-sm text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button
                           variant="ghost"
                           size="sm"
                           onClick={(e) => e.stopPropagation()}
-                          className="h-8 w-8 p-0"
+                          className="h-icon-lg w-icon-lg p-0"
                         >
-                          <MoreHorizontal className="h-4 w-4" />
+                          <MoreHorizontal className="h-icon-xs w-icon-xs" />
                           <span className="sr-only">Open menu</span>
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         {onView && (
                           <DropdownMenuItem onClick={() => onView(item)}>
-                            <Eye className="mr-2 h-4 w-4" />
+                            <Eye className="mr-2 h-icon-xs w-icon-xs" />
                             View
                           </DropdownMenuItem>
                         )}
                         {onEdit && (
                           <DropdownMenuItem onClick={() => onEdit(item)}>
-                            <Edit className="mr-2 h-4 w-4" />
+                            <Edit className="mr-2 h-icon-xs w-icon-xs" />
                             Edit
                           </DropdownMenuItem>
                         )}
@@ -268,7 +268,7 @@ export default function TableView({
                             onClick={() => onDelete(item)}
                             className="text-destructive focus:text-destructive"
                           >
-                            <Trash2 className="mr-2 h-4 w-4" />
+                            <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                             Delete
                           </DropdownMenuItem>
                         )}
@@ -284,7 +284,7 @@ export default function TableView({
 
       {/* Selection summary */}
       {selectable && selectedItems.length > 0 && (
-        <div className="px-4 py-2 bg-muted/30 border-t text-sm text-muted-foreground">
+        <div className="px-md py-xs bg-muted/30 border-t text-sm text-muted-foreground">
           {selectedItems.length} item{selectedItems.length !== 1 ? 's' : ''} selected
         </div>
       )}

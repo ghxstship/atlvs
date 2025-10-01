@@ -153,21 +153,21 @@ export default function MetricWidget({
   };
 
   const getTrendIcon = (change: number) => {
-    if (change > 0) return <TrendingUp className="h-4 w-4 color-success" />;
-    if (change < 0) return <TrendingDown className="h-4 w-4 color-destructive" />;
-    return <Minus className="h-4 w-4 color-muted" />;
+    if (change > 0) return <TrendingUp className="h-icon-xs w-icon-xs color-success" />;
+    if (change < 0) return <TrendingDown className="h-icon-xs w-icon-xs color-destructive" />;
+    return <Minus className="h-icon-xs w-icon-xs color-muted" />;
   };
 
   if (loading) {
     return (
       <Card className="p-lg h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-secondary/50 rounded w-3/4 mb-md"></div>
+          <div className="h-icon-xs bg-secondary/50 rounded w-3/4 mb-md"></div>
           <div className="stack-sm">
             {config.metrics.map((_, index) => (
               <div key={index} className="stack-sm">
                 <div className="h-3 bg-secondary/50 rounded w-1/2"></div>
-                <div className="h-8 bg-secondary/50 rounded w-3/4"></div>
+                <div className="h-icon-lg bg-secondary/50 rounded w-3/4"></div>
               </div>
             ))}
           </div>
@@ -199,7 +199,7 @@ export default function MetricWidget({
               className="p-xs color-muted hover:color-foreground rounded"
               aria-label="Edit widget"
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal className="h-icon-xs w-icon-xs" />
             </button>
           </div>
         )}

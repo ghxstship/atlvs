@@ -120,11 +120,11 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-24 w-24 bg-secondary rounded-full mx-auto mb-md"></div>
+          <div className="h-component-lg w-component-lg bg-secondary rounded-full mx-auto mb-md"></div>
           <div className="stack-sm">
-            <div className="h-4 bg-secondary rounded w-3/4"></div>
-            <div className="h-4 bg-secondary rounded w-1/2"></div>
-            <div className="h-4 bg-secondary rounded w-2/3"></div>
+            <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
+            <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+            <div className="h-icon-xs bg-secondary rounded w-2/3"></div>
           </div>
         </div>
       </div>
@@ -136,11 +136,11 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       {/* Avatar Section */}
       <div className="flex flex-col items-center stack-md">
         <div className="relative">
-          <Avatar className="h-24 w-24">
+          <Avatar className="h-component-lg w-component-lg">
             {formData.avatar_url ? (
               <img src={formData.avatar_url} alt="Profile" className="h-full w-full object-cover" />
             ) : (
-              <User className="h-12 w-12" />
+              <User className="h-icon-2xl w-icon-2xl" />
             )}
           </Avatar>
           <Button
@@ -249,7 +249,7 @@ export default function BasicInfoClient({ orgId, userId }: { orgId: string; user
       {/* Save Button */}
       <div className="flex justify-end">
         <Button onClick={handleSave} disabled={saving}>
-          <Save className="h-4 w-4 mr-sm" />
+          <Save className="h-icon-xs w-icon-xs mr-sm" />
           {saving ? 'Saving...' : 'Save Changes'}
         </Button>
       </div>

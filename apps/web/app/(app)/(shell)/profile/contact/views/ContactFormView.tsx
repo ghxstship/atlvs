@@ -114,7 +114,7 @@ export default function ContactFormView({
 
  case 'checkbox':
  return (
- <div key={config.key} className="flex items-center gap-2">
+ <div key={config.key} className="flex items-center gap-xs">
  <Checkbox
  checked={value as boolean}
  onCheckedChange={(checked) => 
@@ -145,12 +145,12 @@ export default function ContactFormView({
 
  if (loading) {
  return (
- <div className="space-y-4">
- <Card className="p-6">
- <div className="animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-1/4"></div>
- <div className="h-10 bg-muted rounded"></div>
- <div className="h-10 bg-muted rounded"></div>
+ <div className="space-y-md">
+ <Card className="p-lg">
+ <div className="animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-1/4"></div>
+ <div className="h-icon-xl bg-muted rounded"></div>
+ <div className="h-icon-xl bg-muted rounded"></div>
  </div>
  </Card>
  </div>
@@ -165,15 +165,15 @@ export default function ContactFormView({
  }, {} as Record<string, FieldConfig[]);
 
  return (
- <form onSubmit={(e) => { e.preventDefault(); onSave(); }} className="space-y-6">
+ <form onSubmit={(e) => { e.preventDefault(); onSave(); }} className="space-y-lg">
  {/* Verification Status */}
  {contact && (
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  {contact.verification_status === 'verified' ? (
  <>
- <CheckCircle className="h-5 w-5 text-green-500" />
+ <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />
  <div>
  <span className="font-medium">Contact Verified</span>
  {contact.last_verified && (
@@ -185,14 +185,14 @@ export default function ContactFormView({
  </>
  ) : (
  <>
- <AlertTriangle className="h-5 w-5 text-yellow-500" />
+ <AlertTriangle className="h-icon-sm w-icon-sm text-yellow-500" />
  <span className="font-medium">Contact Not Verified</span>
  </>
  )}
  </div>
  {onVerify && contact.verification_status !== 'verified' && (
  <Button variant="outline" size="sm" onClick={onVerify}>
- <Shield className="mr-2 h-4 w-4" />
+ <Shield className="mr-2 h-icon-xs w-icon-xs" />
  Verify Contact
  </Button>
  )}
@@ -203,11 +203,11 @@ export default function ContactFormView({
  {/* Phone Information */}
  <Card>
  <div 
- className="p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50"
+ className="p-md flex items-center justify-between cursor-pointer hover:bg-muted/50"
  onClick={() => toggleSection('Phone Information')}
  >
- <div className="flex items-center gap-2">
- <Phone className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <Phone className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">Phone Information</h3>
  </div>
  <Badge variant="secondary">
@@ -215,7 +215,7 @@ export default function ContactFormView({
  </Badge>
  </div>
  {expandedSections['Phone Information'] && (
- <div className="p-4 pt-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="p-md pt-0 grid grid-cols-1 md:grid-cols-2 gap-md">
  {sections['Phone Information']?.map(renderField)}
  </div>
  )}
@@ -224,11 +224,11 @@ export default function ContactFormView({
  {/* Primary Address */}
  <Card>
  <div 
- className="p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50"
+ className="p-md flex items-center justify-between cursor-pointer hover:bg-muted/50"
  onClick={() => toggleSection('Primary Address')}
  >
- <div className="flex items-center gap-2">
- <MapPin className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">Primary Address</h3>
  </div>
  <Badge variant="secondary">
@@ -236,7 +236,7 @@ export default function ContactFormView({
  </Badge>
  </div>
  {expandedSections['Primary Address'] && (
- <div className="p-4 pt-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="p-md pt-0 grid grid-cols-1 md:grid-cols-2 gap-md">
  {sections['Primary Address']?.map(field => {
  if (field.key === 'country') {
  return (
@@ -271,11 +271,11 @@ export default function ContactFormView({
  {/* Billing Address */}
  <Card>
  <div 
- className="p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50"
+ className="p-md flex items-center justify-between cursor-pointer hover:bg-muted/50"
  onClick={() => toggleSection('Billing Address')}
  >
- <div className="flex items-center gap-2">
- <MapPin className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">Billing Address</h3>
  </div>
  <Badge variant="secondary">
@@ -283,8 +283,8 @@ export default function ContactFormView({
  </Badge>
  </div>
  {expandedSections['Billing Address'] && (
- <div className="p-4 pt-0 space-y-4">
- <div className="flex items-center gap-2">
+ <div className="p-md pt-0 space-y-md">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={formData.billing_same_as_primary || false}
  onCheckedChange={handleBillingSameAsPrimary}
@@ -292,7 +292,7 @@ export default function ContactFormView({
  <label className="text-sm">Same as primary address</label>
  </div>
  {!formData.billing_same_as_primary && (
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <UnifiedInput
  
  value={formData.billing_address_line1 || ''}
@@ -357,11 +357,11 @@ export default function ContactFormView({
  {/* Emergency Contact */}
  <Card>
  <div 
- className="p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50"
+ className="p-md flex items-center justify-between cursor-pointer hover:bg-muted/50"
  onClick={() => toggleSection('Emergency Contact')}
  >
- <div className="flex items-center gap-2">
- <AlertTriangle className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <AlertTriangle className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">Emergency Contact</h3>
  </div>
  <Badge variant="secondary">
@@ -369,7 +369,7 @@ export default function ContactFormView({
  </Badge>
  </div>
  {expandedSections['Emergency Contact'] && (
- <div className="p-4 pt-0 grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="p-md pt-0 grid grid-cols-1 md:grid-cols-2 gap-md">
  {sections['Emergency Contact']?.map(renderField)}
  </div>
  )}
@@ -378,11 +378,11 @@ export default function ContactFormView({
  {/* Additional Information */}
  <Card>
  <div 
- className="p-4 flex items-center justify-between cursor-pointer hover:bg-muted/50"
+ className="p-md flex items-center justify-between cursor-pointer hover:bg-muted/50"
  onClick={() => toggleSection('Additional Information')}
  >
- <div className="flex items-center gap-2">
- <Globe className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <Globe className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">Additional Information</h3>
  </div>
  <Badge variant="secondary">
@@ -390,7 +390,7 @@ export default function ContactFormView({
  </Badge>
  </div>
  {expandedSections['Additional Information'] && (
- <div className="p-4 pt-0 space-y-4">
+ <div className="p-md pt-0 space-y-md">
  <div>
  <label className="text-sm font-medium mb-1 block">Timezone</label>
  <Select
@@ -428,7 +428,7 @@ export default function ContactFormView({
  </Select>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={formData.do_not_contact || false}
  onCheckedChange={(checked) => onFieldChange('do_not_contact', checked)}
@@ -454,7 +454,7 @@ export default function ContactFormView({
  {/* Save Button */}
  <div className="flex justify-end">
  <Button type="submit" disabled={saving}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {saving ? 'Saving...' : 'Save Contact Information'}
  </Button>
  </div>

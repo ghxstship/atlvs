@@ -301,11 +301,11 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
         </div>
         <div className="flex items-center gap-sm">
           <Button variant="outline" onClick={handleScanBarcode} className="flex items-center gap-sm">
-            <Scan className="w-4 h-4" />
+            <Scan className="w-icon-xs h-icon-xs" />
             Scan
           </Button>
           <Button variant="outline" className="flex items-center gap-sm">
-            <Download className="w-4 h-4" />
+            <Download className="w-icon-xs h-icon-xs" />
             Export
           </Button>
         </div>
@@ -315,9 +315,9 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
       <Card>
         <div className="p-md">
           <div className="flex flex-wrap items-center gap-md">
-            <div className="flex-1 min-w-64">
+            <div className="flex-1 min-w-container-sm">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted w-4 h-4" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted w-icon-xs h-icon-xs" />
                 <UnifiedInput                   placeholder="Search assets..."
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -373,7 +373,7 @@ export default function TrackingClient({ orgId }: TrackingClientProps) {
               <div className="p-md">
                 <div className="flex items-start justify-between mb-sm">
                   <div className="flex items-center gap-sm">
-                    <MapPin className="w-4 h-4 color-muted" />
+                    <MapPin className="w-icon-xs h-icon-xs color-muted" />
                     <h3 className="text-heading-4 truncate">{tracking.assetName}</h3>
                   </div>
                   <div className="flex items-center gap-xs">

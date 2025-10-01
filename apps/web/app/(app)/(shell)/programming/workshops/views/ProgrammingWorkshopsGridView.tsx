@@ -71,21 +71,21 @@ export default function ProgrammingWorkshopsGridView({
 }: ProgrammingWorkshopsGridViewProps) {
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {Array.from({ length: 8 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="h-3 bg-muted rounded"></div>
  <div className="h-3 bg-muted rounded w-2/3"></div>
  </div>
  </CardContent>
  <CardFooter>
- <div className="h-8 bg-muted rounded w-full"></div>
+ <div className="h-icon-lg bg-muted rounded w-full"></div>
  </CardFooter>
  </Card>
  ))}
@@ -95,9 +95,9 @@ export default function ProgrammingWorkshopsGridView({
 
  if (workshops.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No workshops found</h3>
  <p className="text-muted-foreground">
  No workshops match your current filters. Try adjusting your search criteria.
@@ -108,7 +108,7 @@ export default function ProgrammingWorkshopsGridView({
  }
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {workshops.map((workshop) => {
  const categoryConfig = CATEGORY_CONFIG[workshop.category];
  const statusConfig = STATUS_BADGE_CONFIG[workshop.status];
@@ -120,39 +120,39 @@ export default function ProgrammingWorkshopsGridView({
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-2">
- <div className={`px-2 py-1 rounded-full text-xs font-medium ${categoryConfig.color}`}>
+ <div className="flex items-center gap-xs mb-2">
+ <div className={`px-xs py-xs rounded-full text-xs font-medium ${categoryConfig.color}`}>
  <span className="mr-1">{categoryConfig.icon}</span>
  {categoryConfig.label}
  </div>
  </div>
- <h3 className="font-semibold text-sm line-clamp-2">{workshop.title}</h3>
+ <h3 className="font-semibold text-sm line-clamp-xs">{workshop.title}</h3>
  {workshop.description && (
- <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+ <p className="text-xs text-muted-foreground mt-1 line-clamp-xs">
  {workshop.description}
  </p>
  )}
  </div>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(workshop)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(workshop)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem
  onClick={() => onDelete(workshop.id)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -160,10 +160,10 @@ export default function ProgrammingWorkshopsGridView({
  </div>
  </CardHeader>
 
- <CardContent className="py-3">
- <div className="space-y-3">
+ <CardContent className="py-sm">
+ <div className="space-y-sm">
  {/* Status and Skill Level */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant={statusConfig.variant} className="text-xs">
  {statusConfig.label}
  </Badge>
@@ -173,7 +173,7 @@ export default function ProgrammingWorkshopsGridView({
  </div>
 
  {/* Format */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span>{formatConfig.icon}</span>
  <Badge variant={formatConfig.variant} className="text-xs">
  {formatConfig.label}
@@ -181,8 +181,8 @@ export default function ProgrammingWorkshopsGridView({
  </div>
 
  {/* Date and Duration */}
- <div className="space-y-1">
- <div className="flex items-center gap-1 text-xs">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span>{new Date(workshop.start_date).toLocaleDateString()}</span>
  {workshop.end_date && workshop.end_date !== workshop.start_date && (
@@ -192,7 +192,7 @@ export default function ProgrammingWorkshopsGridView({
  )}
  </div>
  {workshop.duration_minutes && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  <span>{workshop.duration_minutes} minutes</span>
  </div>
@@ -200,7 +200,7 @@ export default function ProgrammingWorkshopsGridView({
  </div>
 
  {/* Participants */}
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <Users className="h-3 w-3 text-muted-foreground" />
  <span>
  {workshop.current_participants}
@@ -216,7 +216,7 @@ export default function ProgrammingWorkshopsGridView({
 
  {/* Location */}
  {(workshop.location || workshop.venue) && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <MapPin className="h-3 w-3" />
  <span className="truncate">
  {workshop.venue || workshop.location}
@@ -226,7 +226,7 @@ export default function ProgrammingWorkshopsGridView({
 
  {/* Instructor */}
  {workshop.primary_instructor && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <User className="h-3 w-3 text-muted-foreground" />
  <span className="truncate">
  {workshop.primary_instructor.full_name || workshop.primary_instructor.email}
@@ -235,7 +235,7 @@ export default function ProgrammingWorkshopsGridView({
  )}
 
  {/* Price */}
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  {workshop.price ? (
  <>
  <DollarSign className="h-3 w-3 text-muted-foreground" />
@@ -255,9 +255,9 @@ export default function ProgrammingWorkshopsGridView({
 
  {/* Project & Event */}
  {(workshop.project || workshop.event) && (
- <div className="space-y-1">
+ <div className="space-y-xs">
  {workshop.project && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <span className="text-muted-foreground">Project:</span>
  <Badge variant="outline" className="text-xs">
  {workshop.project.name}
@@ -265,7 +265,7 @@ export default function ProgrammingWorkshopsGridView({
  </div>
  )}
  {workshop.event && (
- <div className="flex items-center gap-1 text-xs">
+ <div className="flex items-center gap-xs text-xs">
  <span className="text-muted-foreground">Event:</span>
  <Badge variant="outline" className="text-xs">
  {workshop.event.title}
@@ -276,25 +276,25 @@ export default function ProgrammingWorkshopsGridView({
  )}
 
  {/* Features */}
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {workshop.certification_available && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  <Award className="h-3 w-3 mr-1" />
  Cert
  </Badge>
  )}
  {workshop.has_assessment && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  📝 Assessment
  </Badge>
  )}
  {workshop.materials_provided && workshop.materials_provided.length > 0 && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  📦 Materials
  </Badge>
  )}
  {workshop.recording_url && (
- <Badge variant="outline" className="text-xs px-1 py-0">
+ <Badge variant="outline" className="text-xs px-xs py-0">
  🎥 Recorded
  </Badge>
  )}
@@ -315,12 +315,12 @@ export default function ProgrammingWorkshopsGridView({
  <>Completed {new Date(workshop.end_date || workshop.start_date).toLocaleDateString()}</>
  )}
  </span>
- <div className="flex gap-1">
+ <div className="flex gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => onView(workshop)}
- className="h-7 px-2 text-xs"
+ className="h-7 px-xs text-xs"
  >
  <Eye className="h-3 w-3 mr-1" />
  View
@@ -329,7 +329,7 @@ export default function ProgrammingWorkshopsGridView({
  variant="outline"
  size="sm"
  onClick={() => onEdit(workshop)}
- className="h-7 px-2 text-xs"
+ className="h-7 px-xs text-xs"
  >
  <Edit className="h-3 w-3 mr-1" />
  Edit

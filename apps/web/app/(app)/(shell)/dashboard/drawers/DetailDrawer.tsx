@@ -163,7 +163,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]',
@@ -182,35 +182,35 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
     switch (field.type) {
       case 'text':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            {Icon && <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />}
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            {Icon && <Icon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />}
             <span className="break-words">{field.format ? field.format(value) : String(value || '—')}</span>
           </div>
         );
 
       case 'number':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            {Icon && <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />}
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            {Icon && <Icon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />}
             <span className="font-mono">{field.format ? field.format(value) : String(value || '—')}</span>
           </div>
         );
 
       case 'date':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            <Calendar className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            <Calendar className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
             <span>{value ? format(new Date(String(value)), 'PPP') : '—'}</span>
           </div>
         );
 
       case 'boolean':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
+          <div className={cn('flex items-center gap-xs', field.className)}>
             {value ? (
-              <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+              <CheckCircle className="h-icon-xs w-icon-xs text-green-500 flex-shrink-0" />
             ) : (
-              <AlertCircle className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+              <AlertCircle className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
             )}
             <span>{value ? 'Yes' : 'No'}</span>
           </div>
@@ -229,7 +229,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
           ? String(record[avatar.field] || '')
           : String(value || '');
         return (
-          <Avatar className={cn('h-8 w-8', field.className)}>
+          <Avatar className={cn('h-icon-lg w-icon-lg', field.className)}>
             <AvatarImage src={avatarUrl} />
             <AvatarFallback>{fallback.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
@@ -240,14 +240,14 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
           <img
             src={String(value || '')}
             alt=""
-            className={cn('w-16 h-16 object-cover rounded border', field.className)}
+            className={cn('w-component-md h-component-md object-cover rounded border', field.className)}
           />
         );
 
       case 'url':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            <Link className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            <Link className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
             <a
               href={String(value || '')}
               target="_blank"
@@ -262,8 +262,8 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
       case 'email':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            <User className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            <User className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
             <a
               href={`mailto:${String(value || '')}`}
               className="text-blue-600 hover:text-blue-800 underline break-all"
@@ -275,8 +275,8 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
       case 'phone':
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            <User className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            <User className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
             <a
               href={`tel:${String(value || '')}`}
               className="text-blue-600 hover:text-blue-800 underline"
@@ -288,8 +288,8 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
       default:
         return (
-          <div className={cn('flex items-center gap-2', field.className)}>
-            {Icon && <Icon className="h-4 w-4 text-muted-foreground flex-shrink-0" />}
+          <div className={cn('flex items-center gap-xs', field.className)}>
+            {Icon && <Icon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />}
             <span className="break-words">{field.format ? field.format(value) : String(value || '—')}</span>
           </div>
         );
@@ -301,18 +301,18 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
     if (!record) return null;
 
     return (
-      <div key={section.id} className="space-y-4">
+      <div key={section.id} className="space-y-md">
         <div>
           <h3 className="text-lg font-medium">{section.title}</h3>
         </div>
 
         <div className={cn(
           section.layout === 'grid' && section.columns
-            ? `grid grid-cols-${section.columns} gap-4`
-            : 'space-y-4'
+            ? `grid grid-cols-${section.columns} gap-md`
+            : 'space-y-md'
         )}>
           {section.fields.map((field) => (
-            <div key={field.key} className="space-y-1">
+            <div key={field.key} className="space-y-xs">
               <label className="text-sm font-medium text-muted-foreground">
                 {field.label}
               </label>
@@ -342,13 +342,13 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
     const Icon = getActivityIcon(item.type);
 
     return (
-      <div key={item.id} className="flex items-start gap-3 pb-4">
+      <div key={item.id} className="flex items-start gap-sm pb-4">
         <div className="flex-shrink-0">
-          <Icon className="h-4 w-4 text-muted-foreground mt-0.5" />
+          <Icon className="h-icon-xs w-icon-xs text-muted-foreground mt-0.5" />
         </div>
         <div className="flex-1 min-w-0">
           <p className="text-sm">{item.description}</p>
-          <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+          <div className="flex items-center gap-xs mt-1 text-xs text-muted-foreground">
             {item.user && <span>{item.user}</span>}
             <span>•</span>
             <span>{format(new Date(item.timestamp), 'MMM d, h:mm a')}</span>
@@ -369,11 +369,11 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
       )}>
         {/* Header */}
         {showHeader && (
-          <div className="flex items-center justify-between p-6 border-b">
-            <div className="flex items-center gap-4 flex-1 min-w-0">
+          <div className="flex items-center justify-between p-lg border-b">
+            <div className="flex items-center gap-md flex-1 min-w-0">
               {/* Avatar */}
               {avatar && record && (
-                <Avatar className="h-12 w-12 flex-shrink-0">
+                <Avatar className="h-icon-2xl w-icon-2xl flex-shrink-0">
                   <AvatarImage src={String(record[avatar.field] || '')} />
                   <AvatarFallback>
                     {avatar.fallbackField
@@ -395,7 +395,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
                 {/* Status Badges */}
                 {status && record && (
-                  <div className="flex gap-2 mt-2">
+                  <div className="flex gap-xs mt-2">
                     {status.badges?.map((badge, idx) => {
                       const currentValue = record[status.field];
                       if (currentValue === badge.value) {
@@ -417,11 +417,11 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
             </div>
 
             {/* Actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               {/* Quick Actions */}
               {onEdit && (
                 <Button variant="ghost" size="sm" onClick={() => record && onEdit(record)}>
-                  <Edit className="h-4 w-4" />
+                  <Edit className="h-icon-xs w-icon-xs" />
                 </Button>
               )}
 
@@ -429,25 +429,25 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="sm">
-                    <MoreHorizontal className="h-4 w-4" />
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   {onDuplicate && (
                     <DropdownMenuItem onClick={() => record && onDuplicate(record)}>
-                      <Copy className="h-4 w-4 mr-2" />
+                      <Copy className="h-icon-xs w-icon-xs mr-2" />
                       Duplicate
                     </DropdownMenuItem>
                   )}
                   {onShare && (
                     <DropdownMenuItem onClick={() => record && onShare(record)}>
-                      <Share className="h-4 w-4 mr-2" />
+                      <Share className="h-icon-xs w-icon-xs mr-2" />
                       Share
                     </DropdownMenuItem>
                   )}
                   {onExport && (
                     <DropdownMenuItem onClick={() => record && onExport(record)}>
-                      <Download className="h-4 w-4 mr-2" />
+                      <Download className="h-icon-xs w-icon-xs mr-2" />
                       Export
                     </DropdownMenuItem>
                   )}
@@ -461,7 +461,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
                         disabled={action.disabled}
                         className={action.variant === 'destructive' ? 'text-destructive' : ''}
                       >
-                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                        {Icon && <Icon className="h-icon-xs w-icon-xs mr-2" />}
                         {action.label}
                       </DropdownMenuItem>
                     );
@@ -473,7 +473,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
                         onClick={() => record && onDelete(record)}
                         className="text-destructive"
                       >
-                        <Trash2 className="h-4 w-4 mr-2" />
+                        <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                         Delete
                       </DropdownMenuItem>
                     </>
@@ -483,7 +483,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
               {/* Close Button */}
               <Button variant="ghost" size="sm" onClick={onClose}>
-                <X className="h-4 w-4" />
+                <X className="h-icon-xs w-icon-xs" />
               </Button>
             </div>
           </div>
@@ -491,14 +491,14 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
         {/* Content */}
         <ScrollArea className="flex-1">
-          <div className="p-6">
+          <div className="p-lg">
             {loading ? (
-              <div className="space-y-4">
+              <div className="space-y-md">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="space-y-3">
-                    <div className="h-4 bg-muted animate-pulse rounded w-1/4" />
-                    <div className="h-6 bg-muted animate-pulse rounded w-3/4" />
-                    <div className="h-4 bg-muted animate-pulse rounded w-1/2" />
+                  <div key={i} className="space-y-sm">
+                    <div className="h-icon-xs bg-muted animate-pulse rounded w-1/4" />
+                    <div className="h-icon-md bg-muted animate-pulse rounded w-3/4" />
+                    <div className="h-icon-xs bg-muted animate-pulse rounded w-1/2" />
                   </div>
                 ))}
               </div>
@@ -520,17 +520,17 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
                   ))}
                 </Tabs>
               ) : (
-                <div className="space-y-8">
+                <div className="space-y-xl">
                   {/* Main Details */}
                   {sections.map((section) => renderSection(section))}
 
                   {/* Metadata */}
                   {metadata.length > 0 && (
-                    <div className="space-y-4">
+                    <div className="space-y-md">
                       <h3 className="text-lg font-medium">Metadata</h3>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-2 gap-md">
                         {metadata.map((field) => (
-                          <div key={field.key} className="space-y-1">
+                          <div key={field.key} className="space-y-xs">
                             <label className="text-sm font-medium text-muted-foreground">
                               {field.label}
                             </label>
@@ -545,7 +545,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
                   {/* Related Records */}
                   {relatedRecords.map((related, idx) => (
-                    <div key={idx} className="space-y-4">
+                    <div key={idx} className="space-y-md">
                       <div className="flex items-center justify-between">
                         <h3 className="text-lg font-medium">{related.title}</h3>
                         {related.onViewAll && (
@@ -555,9 +555,9 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
                         )}
                       </div>
 
-                      <div className="space-y-2">
+                      <div className="space-y-xs">
                         {related.records.slice(0, 5).map((relatedRecord, recordIdx) => (
-                          <div key={recordIdx} className="flex items-center gap-3 p-3 border rounded-lg">
+                          <div key={recordIdx} className="flex items-center gap-sm p-sm border rounded-lg">
                             <div className="flex-1">
                               <p className="font-medium">
                                 {String(relatedRecord[related.displayField] || '—')}
@@ -571,7 +571,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
                   {/* Activity Timeline */}
                   {activity.length > 0 && (
-                    <div className="space-y-4">
+                    <div className="space-y-md">
                       <h3 className="text-lg font-medium">Activity</h3>
                       <div className="space-y-0">
                         {activity.map((item) => renderActivityItem(item))}
@@ -581,7 +581,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
                 </div>
               )
             ) : (
-              <div className="flex items-center justify-center h-32">
+              <div className="flex items-center justify-center h-component-xl">
                 <div className="text-muted-foreground">No record selected</div>
               </div>
             )}
@@ -590,14 +590,14 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
         {/* Footer */}
         {showFooter && record && (
-          <div className="border-t p-6">
-            <div className="flex items-center justify-end gap-3">
+          <div className="border-t p-lg">
+            <div className="flex items-center justify-end gap-sm">
               <Button variant="outline" onClick={onClose}>
                 Close
               </Button>
               {onEdit && (
                 <Button onClick={() => onEdit(record)}>
-                  <Edit className="h-4 w-4 mr-2" />
+                  <Edit className="h-icon-xs w-icon-xs mr-2" />
                   Edit
                 </Button>
               )}

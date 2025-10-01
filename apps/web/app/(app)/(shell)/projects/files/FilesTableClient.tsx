@@ -164,11 +164,11 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
       >
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
         <div className="mb-sm flex items-center gap-sm">
-          <FileText className="h-4 w-4" />
+          <FileText className="h-icon-xs w-icon-xs" />
           <div className="text-body-sm opacity-70">{current?.path}</div>
         </div>
         <div className="mb-sm">
-          <div className="mb-xs flex items-center gap-sm text-body-sm form-label"><Tag className="h-4 w-4" /> {t('tags.title')}</div>
+          <div className="mb-xs flex items-center gap-sm text-body-sm form-label"><Tag className="h-icon-xs w-icon-xs" /> {t('tags.title')}</div>
           <div className="flex flex-wrap items-center gap-sm">
             {tags.map((tg: any) => (
               <span key={tg.id} className="inline-flex items-center gap-xs rounded-full border  px-md py-0.5 text-body-sm">
@@ -196,8 +196,8 @@ export default function FilesTableClient({ rows, orgId }: { rows: FileRow[]; org
           <input id="name" className="rounded border  px-md py-xs" value={name} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)} />
         </div>
         <div className="mt-sm flex items-center justify-between gap-sm border-t pt-sm">
-          <Button variant="outline" onClick={onSave}><FileEdit className="mr-xs h-4 w-4" /> Save</Button>
-          <Button variant="ghost" onClick={onDelete} title="Delete"><Trash2 className="mr-xs h-4 w-4" /> Delete</Button>
+          <Button variant="outline" onClick={onSave}><FileEdit className="mr-xs h-icon-xs w-icon-xs" /> Save</Button>
+          <Button variant="ghost" onClick={onDelete} title="Delete"><Trash2 className="mr-xs h-icon-xs w-icon-xs" /> Delete</Button>
         </div>
       </Drawer>
     </div>

@@ -48,13 +48,13 @@ export default function ActivityListView({
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {Array.from({ length: 5 }).map((_, i) => (
- <Card key={i} className="p-4">
- <div className="flex items-start gap-4">
- <Skeleton className="h-10 w-10 rounded-full" />
- <div className="flex-1 space-y-2">
- <Skeleton className="h-4 w-3/4" />
+ <Card key={i} className="p-md">
+ <div className="flex items-start gap-md">
+ <Skeleton className="h-icon-xl w-icon-xl rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <Skeleton className="h-icon-xs w-3/4" />
  <Skeleton className="h-3 w-1/2" />
  <Skeleton className="h-3 w-1/4" />
  </div>
@@ -67,8 +67,8 @@ export default function ActivityListView({
 
  if (activities.length === 0) {
  return (
- <Card className="p-12 text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Activity Found</h3>
  <p className="text-muted-foreground">
  No profile activity has been recorded yet.
@@ -78,9 +78,9 @@ export default function ActivityListView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header with bulk selection */}
- <div className="flex items-center gap-4 p-4 bg-muted/50 rounded-lg">
+ <div className="flex items-center gap-md p-md bg-muted/50 rounded-lg">
  <input
  type="checkbox"
  checked={allSelected}
@@ -88,7 +88,7 @@ export default function ActivityListView({
  if (input) input.indeterminate = someSelected && !allSelected;
  }}
  onChange={handleSelectAll}
- className="h-4 w-4 rounded border-border"
+ className="h-icon-xs w-icon-xs rounded border-border"
  />
  <span className="text-sm text-muted-foreground">
  {selectedItems.length > 0 
@@ -99,35 +99,35 @@ export default function ActivityListView({
  </div>
 
  {/* Activity List */}
- <div className="space-y-3">
+ <div className="space-y-sm">
  {activities.map((activity) => {
  const config = ACTIVITY_TYPE_CONFIG[activity.activity_type] || ACTIVITY_TYPE_CONFIG.profile_updated;
  const IconComponent = iconMap[config.icon as keyof typeof iconMap] || User;
  const isSelected = selectedItems.includes(activity.id);
 
  return (
- <Card key={activity.id} className={`p-4 transition-colors ${
+ <Card key={activity.id} className={`p-md transition-colors ${
  isSelected ? 'ring-2 ring-primary' : ''
  }`}>
- <div className="flex items-start gap-4">
+ <div className="flex items-start gap-md">
  <input
  type="checkbox"
  checked={isSelected}
  onChange={(e) => onSelectItem(activity.id, e.target.checked)}
- className="h-4 w-4 rounded border-border mt-1"
+ className="h-icon-xs w-icon-xs rounded border-border mt-1"
  />
  
- <div className={`p-2 rounded-full ${config.color}`}>
- <IconComponent className="h-4 w-4" />
+ <div className={`p-xs rounded-full ${config.color}`}>
+ <IconComponent className="h-icon-xs w-icon-xs" />
  </div>
 
  <div className="flex-1 min-w-0">
- <div className="flex items-start justify-between gap-2 mb-2">
+ <div className="flex items-start justify-between gap-xs mb-2">
  <div className="flex-1">
- <h4 className="font-medium text-sm line-clamp-2">
+ <h4 className="font-medium text-sm line-clamp-xs">
  {activity.activity_description}
  </h4>
- <div className="flex items-center gap-2 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <Badge variant="secondary" className="text-xs">
  {config.label}
  </Badge>
@@ -137,8 +137,8 @@ export default function ActivityListView({
  </div>
  </div>
  
- <div className="flex items-center gap-2">
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  <span>{new Date(activity.created_at).toLocaleDateString()}</span>
  </div>
@@ -147,7 +147,7 @@ export default function ActivityListView({
  <Button
  variant="ghost"
  size="sm"
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  onClick={() => onViewActivity(activity)}
  >
  <MoreHorizontal className="h-3 w-3" />
@@ -160,7 +160,7 @@ export default function ActivityListView({
  {config.description}
  </p>
 
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  <span>{new Date(activity.created_at).toLocaleTimeString()}</span>
  </div>
@@ -170,7 +170,7 @@ export default function ActivityListView({
  <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">
  View metadata
  </summary>
- <div className="mt-2 p-2 bg-muted/50 rounded text-xs">
+ <div className="mt-2 p-xs bg-muted/50 rounded text-xs">
  <pre className="whitespace-pre-wrap text-xs">
  {JSON.stringify(activity.metadata, null, 2)}
  </pre>

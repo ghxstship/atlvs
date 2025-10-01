@@ -18,7 +18,7 @@ export const accessibility = {
   focus: {
     visible: 'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2',
     ring: 'focus:ring-2 focus:ring-primary focus:ring-offset-2',
-    skip: 'sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50',
+    skip: 'sr-only focus:not-sr-only focus:absolute focus:top-md focus:left-4 z-50',
   },
   
   // Screen reader utilities

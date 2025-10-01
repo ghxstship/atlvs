@@ -15,7 +15,7 @@ export function TrustIndicators() {
           const Icon = indicator.icon;
           return (
             <div key={indicator.text} className="flex items-center gap-xl  px-md py-md rounded-lg bg-secondary/30 hover:bg-secondary/50 transition-colors">
-              <Icon className={`h-4 w-4 ${indicator.color}`} />
+              <Icon className={`h-icon-xs w-icon-xs ${indicator.color}`} />
               <span className="whitespace-nowrap">{indicator.text}</span>
             </div>
           );

@@ -21,22 +21,22 @@ export default function DirectoryListView({
 }: DirectoryListViewProps) {
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {[...Array(6)].map((_, i) => (
- <Card key={i} className="p-6 animate-pulse">
+ <Card key={i} className="p-lg animate-pulse">
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-4 flex-1">
- <div className="w-12 h-12 bg-muted rounded-lg"></div>
+ <div className="flex items-center space-x-md flex-1">
+ <div className="w-icon-2xl h-icon-2xl bg-muted rounded-lg"></div>
  <div className="flex-1">
- <div className="h-4 bg-muted rounded w-1/4 mb-2"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/6 mb-1"></div>
  <div className="h-3 bg-muted rounded w-1/3"></div>
  </div>
  </div>
- <div className="flex space-x-2">
- <div className="w-8 h-8 bg-muted rounded"></div>
- <div className="w-8 h-8 bg-muted rounded"></div>
- <div className="w-8 h-8 bg-muted rounded"></div>
+ <div className="flex space-x-xs">
+ <div className="w-icon-lg h-icon-lg bg-muted rounded"></div>
+ <div className="w-icon-lg h-icon-lg bg-muted rounded"></div>
+ <div className="w-icon-lg h-icon-lg bg-muted rounded"></div>
  </div>
  </div>
  </Card>
@@ -47,8 +47,8 @@ export default function DirectoryListView({
 
  if (companies.length === 0) {
  return (
- <Card className="p-12 text-center">
- <Building className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <Building className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No companies found</h3>
  <p className="text-muted-foreground">
  Try adjusting your search criteria or add a new company.
@@ -99,29 +99,29 @@ export default function DirectoryListView({
  };
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {companies.map((company) => (
- <Card key={company.id} className="p-6 hover:shadow-md transition-shadow">
+ <Card key={company.id} className="p-lg hover:shadow-md transition-shadow">
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-4 flex-1 min-w-0">
+ <div className="flex items-center space-x-md flex-1 min-w-0">
  {/* Logo/Icon */}
  <div className="flex-shrink-0">
  {company.logo_url ? (
  <img
  src={company.logo_url}
  alt={`${company.name} logo`}
- className="w-12 h-12 rounded-lg object-cover"
+ className="w-icon-2xl h-icon-2xl rounded-lg object-cover"
  />
  ) : (
- <div className="w-12 h-12 rounded-lg bg-muted flex items-center justify-center">
- <Building className="h-6 w-6 text-muted-foreground" />
+ <div className="w-icon-2xl h-icon-2xl rounded-lg bg-muted flex items-center justify-center">
+ <Building className="h-icon-md w-icon-md text-muted-foreground" />
  </div>
  )}
  </div>
 
  {/* Company Info */}
  <div className="flex-1 min-w-0">
- <div className="flex items-center space-x-3 mb-1">
+ <div className="flex items-center space-x-sm mb-1">
  <h3 className="font-semibold text-lg truncate" title={company.name}>
  {company.name}
  </h3>
@@ -135,15 +135,15 @@ export default function DirectoryListView({
  )}
  </div>
 
- <div className="flex items-center space-x-6 text-sm text-muted-foreground">
+ <div className="flex items-center space-x-lg text-sm text-muted-foreground">
  {company.website && (
- <div className="flex items-center space-x-1">
- <Globe className="h-4 w-4" />
+ <div className="flex items-center space-x-xs">
+ <Globe className="h-icon-xs w-icon-xs" />
  <a
  href={company.website as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="hover:text-primary truncate max-w-32"
+ className="hover:text-primary truncate max-w-component-xl"
  >
  {company.website.replace(/^https?:\/\//, '')}
  </a>
@@ -151,8 +151,8 @@ export default function DirectoryListView({
  )}
  
  {company.email && (
- <div className="flex items-center space-x-1">
- <Mail className="h-4 w-4" />
+ <div className="flex items-center space-x-xs">
+ <Mail className="h-icon-xs w-icon-xs" />
  <a
  href={`mailto:${company.email as any as any}`}
  className="hover:text-primary truncate max-w-40"
@@ -163,8 +163,8 @@ export default function DirectoryListView({
  )}
  
  {company.phone && (
- <div className="flex items-center space-x-1">
- <Phone className="h-4 w-4" />
+ <div className="flex items-center space-x-xs">
+ <Phone className="h-icon-xs w-icon-xs" />
  <a
  href={`tel:${company.phone as any as any}`}
  className="hover:text-primary"
@@ -175,31 +175,31 @@ export default function DirectoryListView({
  )}
  
  {(company.city || company.country) && (
- <div className="flex items-center space-x-1">
- <MapPin className="h-4 w-4" />
- <span className="truncate max-w-32">
+ <div className="flex items-center space-x-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
+ <span className="truncate max-w-component-xl">
  {[company.city, company.country].filter(Boolean).join(', ')}
  </span>
  </div>
  )}
  
  {company.size && (
- <div className="flex items-center space-x-1">
- <Users className="h-4 w-4" />
+ <div className="flex items-center space-x-xs">
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{getSizeLabel(company.size)} employees</span>
  </div>
  )}
 
  {company.founded_year && (
- <div className="flex items-center space-x-1">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center space-x-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>Founded {company.founded_year}</span>
  </div>
  )}
  </div>
 
  {company.description && (
- <p className="text-sm text-muted-foreground mt-2 line-clamp-1">
+ <p className="text-sm text-muted-foreground mt-2 line-clamp-xs">
  {company.description}
  </p>
  )}
@@ -207,7 +207,7 @@ export default function DirectoryListView({
  </div>
 
  {/* Actions */}
- <div className="flex items-center space-x-2 flex-shrink-0 ml-4">
+ <div className="flex items-center space-x-xs flex-shrink-0 ml-4">
  <div className="text-xs text-muted-foreground text-right">
  {company.created_at && (
  <div>Added {formatDate(company.created_at)}</div>
@@ -216,14 +216,14 @@ export default function DirectoryListView({
  <div>Updated {formatDate(company.updated_at)}</div>
  )}
  </div>
- <div className="flex items-center space-x-1">
+ <div className="flex items-center space-x-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(company)}
  title="View company details"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -231,7 +231,7 @@ export default function DirectoryListView({
  onClick={() => onEdit(company)}
  title="Edit company"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -239,7 +239,7 @@ export default function DirectoryListView({
  onClick={() => onDelete(company)}
  title="Delete company"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

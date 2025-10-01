@@ -179,8 +179,8 @@ export default function BulkDrawer({
     <Drawer open={open} onOpenChange={handleClose}>
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center gap-2">
-            <CheckSquare className="h-5 w-5" />
+          <DrawerTitle className="flex items-center gap-xs">
+            <CheckSquare className="h-icon-sm w-icon-sm" />
             Bulk Actions
           </DrawerTitle>
           <DrawerDescription>
@@ -188,10 +188,10 @@ export default function BulkDrawer({
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto p-lg">
+          <div className="space-y-lg">
             {/* Selection Summary */}
-            <div className="bg-muted/50 rounded-lg p-4">
+            <div className="bg-muted/50 rounded-lg p-md">
               <div className="flex items-center justify-between">
                 <div>
                   <h3 className="font-medium">Selected Listings</h3>
@@ -207,15 +207,15 @@ export default function BulkDrawer({
 
             {/* Action Selection */}
             {!selectedAction && (
-              <div className="space-y-4">
+              <div className="space-y-md">
                 <h3 className="text-lg font-semibold">Choose an Action</h3>
 
-                <div className="grid grid-cols-1 gap-3">
+                <div className="grid grid-cols-1 gap-sm">
                   <button
                     onClick={() => setSelectedAction('status')}
-                    className="flex items-center gap-3 p-4 border rounded-lg hover:bg-muted/50 transition-colors text-left"
+                    className="flex items-center gap-sm p-md border rounded-lg hover:bg-muted/50 transition-colors text-left"
                   >
-                    <Edit className="h-5 w-5 text-blue-500" />
+                    <Edit className="h-icon-sm w-icon-sm text-blue-500" />
                     <div>
                       <div className="font-medium">Change Status</div>
                       <div className="text-sm text-muted-foreground">Update active/archived status</div>
@@ -224,9 +224,9 @@ export default function BulkDrawer({
 
                   <button
                     onClick={() => setSelectedAction('feature')}
-                    className="flex items-center gap-3 p-4 border rounded-lg hover:bg-muted/50 transition-colors text-left"
+                    className="flex items-center gap-sm p-md border rounded-lg hover:bg-muted/50 transition-colors text-left"
                   >
-                    <Star className="h-5 w-5 text-yellow-500" />
+                    <Star className="h-icon-sm w-icon-sm text-yellow-500" />
                     <div>
                       <div className="font-medium">Feature/Unfeature</div>
                       <div className="text-sm text-muted-foreground">Toggle featured status</div>
@@ -235,9 +235,9 @@ export default function BulkDrawer({
 
                   <button
                     onClick={() => setSelectedAction('archive')}
-                    className="flex items-center gap-3 p-4 border rounded-lg hover:bg-muted/50 transition-colors text-left"
+                    className="flex items-center gap-sm p-md border rounded-lg hover:bg-muted/50 transition-colors text-left"
                   >
-                    <Archive className="h-5 w-5 text-orange-500" />
+                    <Archive className="h-icon-sm w-icon-sm text-orange-500" />
                     <div>
                       <div className="font-medium">Archive</div>
                       <div className="text-sm text-muted-foreground">Move to archived status</div>
@@ -246,9 +246,9 @@ export default function BulkDrawer({
 
                   <button
                     onClick={() => setSelectedAction('delete')}
-                    className="flex items-center gap-3 p-4 border rounded-lg hover:bg-muted/50 transition-colors text-left"
+                    className="flex items-center gap-sm p-md border rounded-lg hover:bg-muted/50 transition-colors text-left"
                   >
-                    <Trash2 className="h-5 w-5 text-red-500" />
+                    <Trash2 className="h-icon-sm w-icon-sm text-red-500" />
                     <div>
                       <div className="font-medium">Delete</div>
                       <div className="text-sm text-muted-foreground">Permanently remove listings</div>
@@ -260,8 +260,8 @@ export default function BulkDrawer({
 
             {/* Action Configuration */}
             {selectedAction && (
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
+              <div className="space-y-md">
+                <div className="flex items-center gap-sm">
                   <Button
                     variant="ghost"
                     size="sm"
@@ -271,14 +271,14 @@ export default function BulkDrawer({
                   </Button>
                 </div>
 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-md">
                   <h3 className="font-medium text-blue-900 mb-2">{getActionTitle()}</h3>
                   <p className="text-sm text-blue-700">{getActionDescription()}</p>
                 </div>
 
                 {/* Action-specific configuration */}
                 {selectedAction === 'status' && (
-                  <div className="space-y-3">
+                  <div className="space-y-sm">
                     <Label>New Status</Label>
                     <Select value={statusValue} onValueChange={(value: 'active' | 'archived') => setStatusValue(value)}>
                       <SelectTrigger>
@@ -293,7 +293,7 @@ export default function BulkDrawer({
                 )}
 
                 {selectedAction === 'feature' && (
-                  <div className="space-y-3">
+                  <div className="space-y-sm">
                     <Label>Featured Status</Label>
                     <Select value={featureValue.toString()} onValueChange={(value) => setFeatureValue(value === 'true')}>
                       <SelectTrigger>
@@ -308,10 +308,10 @@ export default function BulkDrawer({
                 )}
 
                 {selectedAction === 'delete' && (
-                  <div className="space-y-3">
-                    <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <AlertTriangle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+                  <div className="space-y-sm">
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-md">
+                      <div className="flex items-start gap-sm">
+                        <AlertTriangle className="h-icon-sm w-icon-sm text-red-500 flex-shrink-0 mt-0.5" />
                         <div>
                           <h4 className="font-medium text-red-900">Danger Zone</h4>
                           <p className="text-sm text-red-700 mt-1">
@@ -330,8 +330,8 @@ export default function BulkDrawer({
                         I understand, proceed with deletion
                       </Button>
                     ) : (
-                      <div className="space-y-3">
-                        <div className="flex items-center space-x-2">
+                      <div className="space-y-sm">
+                        <div className="flex items-center space-x-xs">
                           <Checkbox
                             id="confirm-delete"
                             checked={confirmDelete}
@@ -350,22 +350,22 @@ export default function BulkDrawer({
 
             {/* Results */}
             {results && (
-              <div className="space-y-4">
+              <div className="space-y-md">
                 <Separator />
 
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <h3 className="text-lg font-semibold">Results</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="text-center p-4 bg-green-50 border border-green-200 rounded-lg">
-                      <CheckCircle className="h-8 w-8 text-green-500 mx-auto mb-2" />
+                  <div className="grid grid-cols-2 gap-md">
+                    <div className="text-center p-md bg-green-50 border border-green-200 rounded-lg">
+                      <CheckCircle className="h-icon-lg w-icon-lg text-green-500 mx-auto mb-2" />
                       <div className="text-2xl font-bold text-green-600">{results.success}</div>
                       <div className="text-sm text-green-700">Successful</div>
                     </div>
 
                     {results.failed > 0 && (
-                      <div className="text-center p-4 bg-red-50 border border-red-200 rounded-lg">
-                        <X className="h-8 w-8 text-red-500 mx-auto mb-2" />
+                      <div className="text-center p-md bg-red-50 border border-red-200 rounded-lg">
+                        <X className="h-icon-lg w-icon-lg text-red-500 mx-auto mb-2" />
                         <div className="text-2xl font-bold text-red-600">{results.failed}</div>
                         <div className="text-sm text-red-700">Failed</div>
                       </div>
@@ -373,11 +373,11 @@ export default function BulkDrawer({
                   </div>
 
                   {results.errors.length > 0 && (
-                    <div className="space-y-2">
+                    <div className="space-y-xs">
                       <h4 className="font-medium text-red-900">Errors:</h4>
-                      <div className="space-y-1">
+                      <div className="space-y-xs">
                         {results.errors.map((error, index) => (
-                          <div key={index} className="text-sm text-red-700 bg-red-50 p-2 rounded">
+                          <div key={index} className="text-sm text-red-700 bg-red-50 p-xs rounded">
                             {error}
                           </div>
                         ))}
@@ -392,8 +392,8 @@ export default function BulkDrawer({
 
         {/* Footer Actions */}
         {selectedAction && (
-          <div className="border-t p-6">
-            <div className="flex gap-3">
+          <div className="border-t p-lg">
+            <div className="flex gap-sm">
               <Button
                 onClick={handleExecuteAction}
                 disabled={isProcessing || (selectedAction === 'delete' && !confirmDelete)}

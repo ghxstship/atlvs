@@ -112,9 +112,9 @@ export default function SportingEventsTournamentsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-success/5">
+      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-success/5">
         <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-2xl items-center">
+          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div className="stack-xl">
               <div>
                 <Badge variant="outline" className="mb-md">
@@ -159,11 +159,11 @@ export default function SportingEventsTournamentsPage() {
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Start Competing
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Button className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-4 w-4" />
+                  <Play className="mr-sm h-icon-xs w-icon-xs" />
                   Watch Demo
                 </Button>
               </div>
@@ -216,7 +216,7 @@ export default function SportingEventsTournamentsPage() {
                       <div className="text-body-sm color-muted mb-xs">Progress</div>
                       <div>85%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-accent h-1 rounded-full w-4/5"></div>
+                        <div className="bg-accent h-1 rounded-full w-icon-xs/5"></div>
                       </div>
                     </div>
                   </div>
@@ -241,7 +241,7 @@ export default function SportingEventsTournamentsPage() {
                   </div>
 
                   <div className="flex items-center gap-sm pt-sm border-t">
-                    <Trophy className="w-4 h-4 text-foreground" />
+                    <Trophy className="w-icon-xs h-icon-xs text-foreground" />
                     <span className="text-body-sm form-label">Championship Final: Tomorrow 19:00</span>
                     <div className="ml-auto">
                       <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
@@ -255,7 +255,7 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Challenges Section */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -273,14 +273,14 @@ export default function SportingEventsTournamentsPage() {
                 <Card key={challenge.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-success">
-                        <Icon className="h-6 w-6 text-background" />
+                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-success">
+                        <Icon className="h-icon-md w-icon-md text-background" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{challenge.title}</h3>
                         <p className="color-muted mb-md">{challenge.description}</p>
                         <div className="flex items-start gap-sm">
-                          <CheckCircle className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
                           <p className="text-body-sm form-label color-foreground">{challenge.solution}</p>
                         </div>
                       </div>
@@ -294,7 +294,7 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -315,7 +315,7 @@ export default function SportingEventsTournamentsPage() {
                   <div className="stack-sm">
                     {feature.benefits.map((benefit: any) => (
                       <div key={benefit} className="flex items-center gap-sm">
-                        <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                        <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
                         <span className="text-body-sm color-foreground">{benefit}</span>
                       </div>
                     ))}
@@ -328,7 +328,7 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -339,7 +339,7 @@ export default function SportingEventsTournamentsPage() {
             </p>
           </div>
 
-          <div className="space-y-2xl">
+          <div className="space-y-xsxl">
             {caseStudies.map((study: any) => (
               <Card key={study.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-xl">
@@ -366,7 +366,7 @@ export default function SportingEventsTournamentsPage() {
                       <div className="stack-sm mb-lg">
                         {study.results.map((result: any) => (
                           <div key={result} className="flex items-center gap-sm">
-                            <Star className="h-4 w-4 color-warning flex-shrink-0" />
+                            <Star className="h-icon-xs w-icon-xs color-warning flex-shrink-0" />
                             <span className="text-body-sm form-label color-foreground">{result}</span>
                           </div>
                         ))}
@@ -386,7 +386,7 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* Integrations */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -401,8 +401,8 @@ export default function SportingEventsTournamentsPage() {
             {integrations.map((integration: any) => (
               <Card key={integration.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Zap className="h-6 w-6 text-background" />
+                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
+                    <Zap className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-xs">{integration.name}</h3>
                   <p className="text-body-sm color-muted">{integration.category}</p>
@@ -414,7 +414,7 @@ export default function SportingEventsTournamentsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -429,7 +429,7 @@ export default function SportingEventsTournamentsPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Competing
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">

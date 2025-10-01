@@ -119,11 +119,11 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
 
   const getActivityIcon = (entityType: string) => {
     switch (entityType) {
-      case 'asset': return <Package className="h-4 w-4" />;
-      case 'asset_assignment': return <UserCheck className="h-4 w-4" />;
-      case 'asset_maintenance': return <Wrench className="h-4 w-4" />;
-      case 'asset_tracking': return <MapPin className="h-4 w-4" />;
-      default: return <Activity className="h-4 w-4" />;
+      case 'asset': return <Package className="h-icon-xs w-icon-xs" />;
+      case 'asset_assignment': return <UserCheck className="h-icon-xs w-icon-xs" />;
+      case 'asset_maintenance': return <Wrench className="h-icon-xs w-icon-xs" />;
+      case 'asset_tracking': return <MapPin className="h-icon-xs w-icon-xs" />;
+      default: return <Activity className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -159,8 +159,8 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="p-lg animate-pulse">
-              <div className="h-4 bg-secondary rounded w-3/4 mb-sm"></div>
-              <div className="h-8 bg-secondary rounded w-1/2"></div>
+              <div className="h-icon-xs bg-secondary rounded w-3/4 mb-sm"></div>
+              <div className="h-icon-lg bg-secondary rounded w-1/2"></div>
             </Card>
           ))}
         </div>
@@ -178,7 +178,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         </div>
         <div className="flex gap-sm">
           <Button>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Asset
           </Button>
         </div>
@@ -193,7 +193,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalAssets}</p>
             </div>
             <div className="p-sm bg-accent/10 rounded-lg">
-              <Package className="h-6 w-6 color-accent" />
+              <Package className="h-icon-md w-icon-md color-accent" />
             </div>
           </div>
         </Card>
@@ -205,7 +205,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-heading-3 text-heading-3 color-foreground">{formatCurrency(stats.totalValue)}</p>
             </div>
             <div className="p-sm bg-success/10 rounded-lg">
-              <DollarSign className="h-6 w-6 color-success" />
+              <DollarSign className="h-icon-md w-icon-md color-success" />
             </div>
           </div>
         </Card>
@@ -217,7 +217,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.activeAssignments}</p>
             </div>
             <div className="p-sm bg-accent/10 rounded-lg">
-              <UserCheck className="h-6 w-6 color-accent" />
+              <UserCheck className="h-icon-md w-icon-md color-accent" />
             </div>
           </div>
         </Card>
@@ -229,7 +229,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.pendingMaintenance}</p>
             </div>
             <div className="p-sm bg-warning/10 rounded-lg">
-              <Wrench className="h-6 w-6 color-warning" />
+              <Wrench className="h-icon-md w-icon-md color-warning" />
             </div>
           </div>
         </Card>
@@ -285,19 +285,19 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-sm">
             <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
-              <Package className="h-6 w-6" />
+              <Package className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Add Asset</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
-              <TrendingUp className="h-6 w-6" />
+              <TrendingUp className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Create Advance</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
-              <UserCheck className="h-6 w-6" />
+              <UserCheck className="h-icon-md w-icon-md" />
               <span className="text-body-sm">New Assignment</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center gap-sm">
-              <Wrench className="h-6 w-6" />
+              <Wrench className="h-icon-md w-icon-md" />
               <span className="text-body-sm">Schedule Maintenance</span>
             </Button>
           </div>
@@ -309,7 +309,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
         <div className="flex items-center justify-between mb-md">
           <h3 className="text-body text-heading-4">Recent Activity</h3>
           <Button>
-            <Activity className="h-4 w-4 mr-sm" />
+            <Activity className="h-icon-xs w-icon-xs mr-sm" />
             View All
           </Button>
         </div>
@@ -341,7 +341,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
             ))
           ) : (
             <div className="text-center py-xl color-muted">
-              <Activity className="h-12 w-12 mx-auto mb-sm opacity-50" />
+              <Activity className="h-icon-2xl w-icon-2xl mx-auto mb-sm opacity-50" />
               <p>No recent activity</p>
             </div>
           )}
@@ -352,7 +352,7 @@ export default function OverviewClient({ user, orgId }: OverviewClientProps) {
       {stats.pendingMaintenance > 0 && (
         <Card className="p-lg border-warning/20 bg-warning/5">
           <div className="flex items-center gap-sm">
-            <AlertTriangle className="h-6 w-6 color-warning" />
+            <AlertTriangle className="h-icon-md w-icon-md color-warning" />
             <div>
               <h4 className="text-heading-4 color-warning">Maintenance Required</h4>
               <p className="text-body-sm color-warning/80">

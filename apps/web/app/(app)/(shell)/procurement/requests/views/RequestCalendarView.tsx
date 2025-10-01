@@ -127,15 +127,15 @@ export default function RequestCalendarView({
  <div className="space-y-md">
  <Card className="p-md">
  <div className="flex items-center justify-between mb-md">
- <div className="h-6 bg-muted rounded w-32 animate-pulse" />
+ <div className="h-icon-md bg-muted rounded w-component-xl animate-pulse" />
  <div className="flex gap-sm">
- <div className="h-8 w-8 bg-muted rounded animate-pulse" />
- <div className="h-8 w-8 bg-muted rounded animate-pulse" />
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse" />
+ <div className="h-icon-lg w-icon-lg bg-muted rounded animate-pulse" />
  </div>
  </div>
  <div className="grid grid-cols-7 gap-sm">
  {Array.from({ length: 35 }).map((_, i) => (
- <div key={i} className="h-24 bg-muted rounded animate-pulse" />
+ <div key={i} className="h-component-lg bg-muted rounded animate-pulse" />
  ))}
  </div>
  </Card>
@@ -157,7 +157,7 @@ export default function RequestCalendarView({
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
@@ -171,7 +171,7 @@ export default function RequestCalendarView({
  size="sm"
  onClick={() => navigateMonth('next')}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -197,7 +197,7 @@ export default function RequestCalendarView({
  return (
  <div
  key={index}
- className={`min-h-[100px] p-xs border rounded-md ${
+ className={`min-h-header-md p-xs border rounded-md ${
  day ? 'bg-background hover:bg-muted/50' : 'bg-muted/20'
  } ${isToday ? 'ring-2 ring-primary' : ''}`}
  >
@@ -245,7 +245,7 @@ export default function RequestCalendarView({
  {/* Month Summary */}
  <Card className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <Calendar className="h-5 w-5" />
+ <Calendar className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">
  {monthNames[calendarData.month]} Summary
  </h3>
@@ -253,7 +253,7 @@ export default function RequestCalendarView({
  
  {monthRequests.length === 0 ? (
  <div className="text-center py-lg">
- <Calendar className="h-12 w-12 mx-auto mb-md text-muted-foreground" />
+ <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground" />
  <p className="text-sm text-muted-foreground">
  No requests scheduled for {monthNames[calendarData.month]}
  </p>
@@ -308,7 +308,7 @@ export default function RequestCalendarView({
  size="sm"
  onClick={() => onViewRequest(request)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

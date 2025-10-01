@@ -238,7 +238,7 @@ export default function InspectionsTableClient({
                 >
                   <td className="p-sm">
                     <div className="flex items-center gap-sm">
-                      <ClipboardCheck className="w-4 h-4 color-muted" />
+                      <ClipboardCheck className="w-icon-xs h-icon-xs color-muted" />
                       <span className="form-label">{row.title}</span>
                     </div>
                   </td>
@@ -249,7 +249,7 @@ export default function InspectionsTableClient({
                   </td>
                   <td className="p-sm">
                     <div className="flex items-center gap-sm">
-                      <StatusIcon className="w-4 h-4" />
+                      <StatusIcon className="w-icon-xs h-icon-xs" />
                       <Badge variant={getStatusColor(row.status)}>
                         {row.status.replace('_', ' ')}
                       </Badge>
@@ -258,7 +258,7 @@ export default function InspectionsTableClient({
                   <td className="p-sm">
                     {row.project ? (
                       <div className="flex items-center gap-sm">
-                        <Building className="w-4 h-4 color-muted" />
+                        <Building className="w-icon-xs h-icon-xs color-muted" />
                         <span>{row.project.name}</span>
                       </div>
                     ) : (
@@ -268,7 +268,7 @@ export default function InspectionsTableClient({
                   <td className="p-sm">
                     {row.scheduled_at ? (
                       <div className="flex items-center gap-sm">
-                        <Calendar className="w-4 h-4 color-muted" />
+                        <Calendar className="w-icon-xs h-icon-xs color-muted" />
                         <span>{new Date(row.scheduled_at).toLocaleDateString()}</span>
                       </div>
                     ) : (
@@ -278,7 +278,7 @@ export default function InspectionsTableClient({
                   <td className="p-sm">
                     {row.inspector_name ? (
                       <div className="flex items-center gap-sm">
-                        <User className="w-4 h-4 color-muted" />
+                        <User className="w-icon-xs h-icon-xs color-muted" />
                         <span>{row.inspector_name}</span>
                       </div>
                     ) : (
@@ -330,7 +330,7 @@ export default function InspectionsTableClient({
                   : 'border-transparent color-muted hover:color-foreground'
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-icon-xs h-icon-xs" />
               {label}
             </button>
           ))}
@@ -493,7 +493,7 @@ export default function InspectionsTableClient({
                 onClick={onDelete}
                 disabled={saving}
               >
-                <Trash2 className="w-4 h-4 mr-sm" />
+                <Trash2 className="w-icon-xs h-icon-xs mr-sm" />
                 Delete
               </Button>
             </div>

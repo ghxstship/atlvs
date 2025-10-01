@@ -48,7 +48,7 @@ export default async function MarketplaceOverviewPage() {
  userRole={userRole}
  />
  ) : (
- <div className="brand-marketplace text-center py-2xl">
+ <div className="brand-marketplace text-center py-xsxl">
  <h2 className="text-heading-3 mb-md">{t('title')}</h2>
  <p className="color-muted">{t('unauthorized')}</p>
  </div>

@@ -175,9 +175,9 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {Array.from({ length: 8 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-20 mb-sm" />
-              <Skeleton className="h-8 w-32 mb-xs" />
-              <Skeleton className="h-3 w-16" />
+              <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+              <Skeleton className="h-icon-lg w-component-xl mb-xs" />
+              <Skeleton className="h-3 w-component-md" />
             </Card>
           ))}
         </div>
@@ -194,7 +194,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
           <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
         </div>
         <Button onClick={loadFinanceOverview}>
-          <BarChart3 className="h-4 w-4 mr-sm" />
+          <BarChart3 className="h-icon-xs w-icon-xs mr-sm" />
           Refresh Data
         </Button>
       </div>
@@ -212,7 +212,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 +12.5% from last month
               </p>
             </div>
-            <Banknote className="h-8 w-8 color-success" />
+            <Banknote className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -227,7 +227,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 +8.2% from last month
               </p>
             </div>
-            <CreditCard className="h-8 w-8 color-destructive" />
+            <CreditCard className="h-icon-lg w-icon-lg color-destructive" />
           </div>
         </Card>
 
@@ -248,7 +248,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 Revenue - Expenses
               </p>
             </div>
-            <DollarSign className="h-8 w-8 color-accent" />
+            <DollarSign className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -264,7 +264,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
                 of {formatCurrency(summary?.totalBudget || 0, summary?.currency)}
               </p>
             </div>
-            <PieChart className="h-8 w-8 color-secondary" />
+            <PieChart className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
 
@@ -278,7 +278,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               </p>
               <p className="text-body-sm color-foreground/60 mt-xs">Across all accounts</p>
             </div>
-            <Banknote className="h-8 w-8 color-success" />
+            <Banknote className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -290,7 +290,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               <p className="text-heading-3 text-heading-3 color-accent">{summary?.pendingInvoices || 0}</p>
               <p className="text-body-sm color-muted mt-xs">Awaiting payment</p>
             </div>
-            <Clock className="h-5 w-5 color-warning" />
+            <Clock className="h-icon-sm w-icon-sm color-warning" />
           </div>
         </Card>
 
@@ -302,7 +302,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               <p className="text-heading-3 text-heading-3 color-destructive">{summary?.overdueInvoices || 0}</p>
               <p className="text-body-sm color-muted mt-xs">Require attention</p>
             </div>
-            <AlertTriangle className="h-5 w-5 color-destructive" />
+            <AlertTriangle className="h-icon-sm w-icon-sm color-destructive" />
           </div>
         </Card>
 
@@ -316,7 +316,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               </p>
               <p className="text-body-sm color-muted">+12% from last month</p>
             </div>
-            <TrendingUp className="h-8 w-8 color-accent" />
+            <TrendingUp className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
       </div>
@@ -332,7 +332,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
             {budgetAlerts.map((alert: any) => (
               <div key={alert.id} className="flex items-center justify-between p-sm bg-warning/10 border border-warning/20 rounded-lg">
                 <div className="flex items-center cluster-sm">
-                  <AlertTriangle className={`h-5 w-5 ${alert.status === 'critical' ? 'color-destructive' : 'color-warning'}`} />
+                  <AlertTriangle className={`h-icon-sm w-icon-sm ${alert.status === 'critical' ? 'color-destructive' : 'color-warning'}`} />
                   <div>
                     <h4 className="form-label color-warning">Budget Alert</h4>
                     <p className="text-body-sm color-foreground/70">
@@ -361,9 +361,9 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
               <div key={transaction.id} className="flex items-center justify-between p-sm border border-border rounded-lg">
                 <div className="flex items-center cluster-sm">
                   {transaction.kind === 'revenue' ? (
-                    <ArrowUpRight className="h-4 w-4 color-success" />
+                    <ArrowUpRight className="h-icon-xs w-icon-xs color-success" />
                   ) : (
-                    <ArrowDownRight className="h-4 w-4 color-destructive" />
+                    <ArrowDownRight className="h-icon-xs w-icon-xs color-destructive" />
                   )}
                   <div>
                     <p className="form-label color-foreground">{transaction.description}</p>
@@ -377,7 +377,7 @@ export default function FinanceOverviewClient({ user, orgId, translations }: Fin
             ))
           ) : (
             <div className="bg-warning/10 border border-warning/20 rounded-lg p-md">
-              <Calendar className="h-12 w-12 mx-auto mb-md color-muted/50" />
+              <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted/50" />
               <p>No recent transactions found</p>
             </div>
           )}

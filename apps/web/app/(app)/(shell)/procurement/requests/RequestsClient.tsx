@@ -102,7 +102,7 @@ export default function RequestsClient({ className, organizationId = 'default-or
  const config = statusConfig[value as keyof typeof statusConfig] || statusConfig.draft;
  const Icon = config.icon;
  return (
- <Badge variant={config.color} className="flex items-center gap-1">
+ <Badge variant={config.color} className="flex items-center gap-xs">
  <Icon className="h-3 w-3" />
  {value.charAt(0).toUpperCase() + value.slice(1).replace('_', ' ')}
  </Badge>
@@ -389,7 +389,7 @@ export default function RequestsClient({ className, organizationId = 'default-or
  return (
  <div className={className}>
  <DataViewProvider config={dataViewConfig}>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -400,9 +400,9 @@ export default function RequestsClient({ className, organizationId = 'default-or
  </div>
  <Button 
  onClick={() => setCreateDrawerOpen(true)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  New Request
  </Button>
  </div>
@@ -423,8 +423,8 @@ export default function RequestsClient({ className, organizationId = 'default-or
  key: 'details',
  label: 'Details',
  content: selectedRecord ? (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-muted-foreground">Title</label>
  <p className="text-sm">{selectedRecord.title}</p>
@@ -475,10 +475,10 @@ export default function RequestsClient({ className, organizationId = 'default-or
  key: 'items',
  label: 'Items',
  content: selectedRecord?.items ? (
- <div className="space-y-4">
+ <div className="space-y-md">
  {selectedRecord.items.map((item: unknown, index: number) => (
- <div key={index} className="border rounded-lg p-4">
- <div className="grid grid-cols-2 gap-4">
+ <div key={index} className="border rounded-lg p-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-muted-foreground">Item Name</label>
  <p className="text-sm">{item.name}</p>
@@ -518,7 +518,7 @@ export default function RequestsClient({ className, organizationId = 'default-or
  key: 'activity',
  label: 'Activity',
  content: (
- <div className="space-y-4">
+ <div className="space-y-md">
  <p className="text-sm text-muted-foreground">Activity log will be implemented here</p>
  </div>
  )

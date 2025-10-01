@@ -196,7 +196,7 @@ export default function CreateAssignmentClient({ orgId }: CreateAssignmentClient
  value={formData.notes}
  onChange={(e) => setFormData(prev => ({ ...prev, notes: e.target.value }))}
  placeholder="Additional requirements or notes..."
- className="w-full px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background min-h-[100px]"
+ className="w-full px-md py-sm border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-primary bg-background min-h-header-md"
  />
  </div>
 

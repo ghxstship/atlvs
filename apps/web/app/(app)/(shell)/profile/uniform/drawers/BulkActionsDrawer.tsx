@@ -78,7 +78,7 @@ export default function BulkActionsDrawer({
  <Card className="p-lg bg-muted/50">
  <div className="flex items-center justify-between">
  <div className="flex items-center space-x-sm">
- <Users className="h-5 w-5 text-primary" />
+ <Users className="h-icon-sm w-icon-sm text-primary" />
  <span className="font-medium">Selected Items</span>
  </div>
  <Badge variant="secondary">
@@ -113,7 +113,7 @@ export default function BulkActionsDrawer({
  {BULK_ACTIONS.map((action) => (
  <SelectItem key={action.id} value={action.id}>
  <div className="flex items-center space-x-sm">
- <action.icon className="h-4 w-4" />
+ <action.icon className="h-icon-xs w-icon-xs" />
  <span>{action.label}</span>
  </div>
  </SelectItem>
@@ -125,7 +125,7 @@ export default function BulkActionsDrawer({
  {/* Action Description */}
  {selectedActionConfig && (
  <Alert className={isDestructive ? 'border-destructive bg-destructive/10' : ''}>
- <AlertTriangle className={`h-4 w-4 ${isDestructive ? 'text-destructive' : 'text-primary'}`} />
+ <AlertTriangle className={`h-icon-xs w-icon-xs ${isDestructive ? 'text-destructive' : 'text-primary'}`} />
  <AlertDescription>
  <strong>{selectedActionConfig.label}</strong>
  <br />
@@ -177,7 +177,7 @@ export default function BulkActionsDrawer({
  <Card className="p-lg">
  <div className="flex items-center space-x-sm mb-md">
  {selectedActionConfig?.icon && (
- <selectedActionConfig.icon className={`h-5 w-5 ${isDestructive ? 'text-destructive' : 'text-primary'}`} />
+ <selectedActionConfig.icon className={`h-icon-sm w-icon-sm ${isDestructive ? 'text-destructive' : 'text-primary'}`} />
  )}
  <h3 className="font-semibold">
  {selectedActionConfig?.label || 'No Action Selected'}
@@ -231,7 +231,7 @@ export default function BulkActionsDrawer({
  {/* Warning for destructive actions */}
  {isDestructive && (
  <Alert className="border-destructive bg-destructive/10">
- <AlertTriangle className="h-4 w-4 text-destructive" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-destructive" />
  <AlertDescription>
  <strong>Warning:</strong> This action cannot be undone. 
  {selectedAction === 'clear-data' && 

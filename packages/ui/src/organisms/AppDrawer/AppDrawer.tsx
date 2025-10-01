@@ -4,11 +4,11 @@
  */
 'use client';
 
-import { UniversalDrawer } from './DataViews/UniversalDrawer';
+import { UniversalDrawer } from '../../components/DataViews/UniversalDrawer';
 import type {
   DataRecord as UniversalDrawerRecord,
   FieldConfig as UniversalDrawerFieldConfig,
-} from './DataViews/UniversalDrawer';
+} from '../../components/DataViews/UniversalDrawer';
 import type { FieldConfig as DataViewFieldConfig } from './DataViews/types';
 import type { ReactNode } from 'react';
 

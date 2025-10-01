@@ -89,7 +89,7 @@ export default function CreateDrawer({
         }
       }}
     >
-      <DrawerContent className="mx-auto max-w-3xl p-6">
+      <DrawerContent className="mx-auto max-w-3xl p-lg">
         <DrawerHeader>
           <DrawerTitle>{mode === 'create' ? 'Create Record' : 'Edit Record'}</DrawerTitle>
           <DrawerDescription>

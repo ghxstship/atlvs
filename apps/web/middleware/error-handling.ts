@@ -4,12 +4,13 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { ConsoleLogger, LogLevel } from '@ghxstship/infrastructure';
 
-const logger = new ConsoleLogger(
-  { service: 'web-middleware-errors' },
-  LogLevel.ERROR
-);
+// Simple logger for Edge runtime
+const logger = {
+  error: (message: string, error: Error, meta?: Record<string, any>) => {
+    console.error(`[ERROR] ${message}`, error, meta || {});
+  }
+};
 
 export function errorHandlingMiddleware(
   handler: (req: NextRequest) => Promise<NextResponse> | NextResponse

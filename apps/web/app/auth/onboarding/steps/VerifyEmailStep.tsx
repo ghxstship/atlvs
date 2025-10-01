@@ -73,9 +73,9 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
       <CardContent className="p-xl text-center">
         <div className="brand-ghostship mb-xl">
           {isVerified ? (
-            <CheckCircle className="h-16 w-16 color-success mx-auto mb-md" />
+            <CheckCircle className="h-component-md w-component-md color-success mx-auto mb-md" />
           ) : (
-            <Mail className="h-16 w-16 color-accent mx-auto mb-md" />
+            <Mail className="h-component-md w-component-md color-accent mx-auto mb-md" />
           )}
           
           <h1 className={`${anton.className} uppercase text-heading-2 text-heading-3 mb-md`}>
@@ -108,7 +108,7 @@ export function VerifyEmailStep({ user, onNext, updateData }: VerifyEmailStepPro
               className="w-full"
              
             >
-              <RefreshCw className="mr-sm h-4 w-4" />
+              <RefreshCw className="mr-sm h-icon-xs w-icon-xs" />
               I've Verified My Email
             </Button>
             

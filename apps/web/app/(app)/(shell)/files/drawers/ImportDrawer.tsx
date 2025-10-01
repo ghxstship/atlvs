@@ -221,7 +221,7 @@ export default function ImportDrawer({
       {/* Drawer */}
       <div className="relative ml-auto w-full max-w-2xl bg-white shadow-xl transform transition-transform overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-lg border-b border-gray-200">
           <div>
             <h2 className="text-xl font-semibold text-gray-900">Import Files</h2>
             <p className="text-sm text-gray-500">
@@ -229,33 +229,33 @@ export default function ImportDrawer({
             </p>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="w-4 h-4" />
+            <X className="w-icon-xs h-icon-xs" />
           </Button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-lg">
           {!importResults ? (
             /* Import Form */
-            <div className="space-y-6">
+            <div className="space-y-lg">
               {/* Format Selection */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Import Format
                 </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-sm">
                   {(['csv', 'xlsx', 'json', 'xml'] as ImportFormat[]).map((format) => (
                     <div
                       key={format}
-                      className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                      className={`p-sm border rounded-lg cursor-pointer transition-colors ${
                         selectedFormat === format
                           ? 'border-blue-500 bg-blue-50'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                       onClick={() => setSelectedFormat(format)}
                     >
-                      <div className="flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-gray-600" />
+                      <div className="flex items-center gap-xs">
+                        <FileText className="w-icon-sm h-icon-sm text-gray-600" />
                         <span className="font-medium uppercase">{format}</span>
                       </div>
                       <p className="text-xs text-gray-500 mt-1">
@@ -271,10 +271,10 @@ export default function ImportDrawer({
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Select File
                 </label>
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-lg text-center">
                   {selectedFile ? (
-                    <div className="space-y-3">
-                      <CheckCircle className="w-8 h-8 text-green-500 mx-auto" />
+                    <div className="space-y-sm">
+                      <CheckCircle className="w-icon-lg h-icon-lg text-green-500 mx-auto" />
                       <div>
                         <p className="font-medium text-gray-900">{selectedFile.name}</p>
                         <p className="text-sm text-gray-500">
@@ -282,13 +282,13 @@ export default function ImportDrawer({
                         </p>
                       </div>
                       <Button variant="outline" size="sm" onClick={resetImport}>
-                        <Trash2 className="w-4 h-4 mr-2" />
+                        <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                         Remove
                       </Button>
                     </div>
                   ) : (
-                    <div className="space-y-3">
-                      <Upload className="w-8 h-8 text-gray-400 mx-auto" />
+                    <div className="space-y-sm">
+                      <Upload className="w-icon-lg h-icon-lg text-gray-400 mx-auto" />
                       <div>
                         <p className="text-sm text-gray-600">
                           Drag and drop a file here, or click to browse
@@ -322,8 +322,8 @@ export default function ImportDrawer({
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Import Options
                 </label>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-sm">
+                  <div className="flex items-center gap-xs">
                     <input
                       type="checkbox"
                       id="skip-duplicates"
@@ -339,7 +339,7 @@ export default function ImportDrawer({
                     </label>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <input
                       type="checkbox"
                       id="update-existing"
@@ -355,7 +355,7 @@ export default function ImportDrawer({
                     </label>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
+                  <div className="grid grid-cols-2 gap-sm">
                     <Select
                       value={importOptions.category}
                       onValueChange={(value) => setImportOptions(prev => ({
@@ -403,17 +403,17 @@ export default function ImportDrawer({
                     onClick={handlePreview}
                     className="w-full"
                   >
-                    <Eye className="w-4 h-4 mr-2" />
+                    <Eye className="w-icon-xs h-icon-xs mr-2" />
                     Preview Data
                   </Button>
 
                   {showPreview && previewData.length > 0 && (
                     <div className="mt-3 border border-gray-200 rounded-lg overflow-hidden">
-                      <div className="bg-gray-50 px-3 py-2 border-b border-gray-200">
+                      <div className="bg-gray-50 px-sm py-xs border-b border-gray-200">
                         <span className="text-sm font-medium">Data Preview (First 5 rows)</span>
                       </div>
                       <div className="max-h-40 overflow-y-auto">
-                        <pre className="text-xs p-3 bg-gray-50">
+                        <pre className="text-xs p-sm bg-gray-50">
                           {JSON.stringify(previewData, null, 2)}
                         </pre>
                       </div>
@@ -424,21 +424,21 @@ export default function ImportDrawer({
             </div>
           ) : (
             /* Results */
-            <div className="space-y-6">
+            <div className="space-y-lg">
               <div className="text-center">
-                <div className={`w-12 h-12 mx-auto mb-4 rounded-full flex items-center justify-center ${
+                <div className={`w-icon-2xl h-icon-2xl mx-auto mb-4 rounded-full flex items-center justify-center ${
                   importResults.success > 0 ? 'bg-green-100' : 'bg-red-100'
                 }`}>
                   {importResults.success > 0 ? (
-                    <CheckCircle className="w-6 h-6 text-green-600" />
+                    <CheckCircle className="w-icon-md h-icon-md text-green-600" />
                   ) : (
-                    <AlertCircle className="w-6 h-6 text-red-600" />
+                    <AlertCircle className="w-icon-md h-icon-md text-red-600" />
                   )}
                 </div>
                 <h3 className="text-lg font-medium text-gray-900 mb-2">
                   Import Complete
                 </h3>
-                <div className="flex justify-center gap-6 text-sm">
+                <div className="flex justify-center gap-lg text-sm">
                   <div className="text-center">
                     <div className="text-2xl font-bold text-green-600">{importResults.success}</div>
                     <div className="text-gray-500">Successful</div>
@@ -454,9 +454,9 @@ export default function ImportDrawer({
               {importResults.errors.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 mb-2">Errors</h4>
-                  <div className="space-y-2 max-h-40 overflow-y-auto">
+                  <div className="space-y-xs max-h-40 overflow-y-auto">
                     {importResults.errors.map((error, index) => (
-                      <div key={index} className="p-2 bg-red-50 border border-red-200 rounded text-sm">
+                      <div key={index} className="p-xs bg-red-50 border border-red-200 rounded text-sm">
                         <span className="font-medium">Row {error.row}:</span> {error.error}
                       </div>
                     ))}
@@ -468,9 +468,9 @@ export default function ImportDrawer({
               {importResults.duplicates.length > 0 && (
                 <div>
                   <h4 className="text-sm font-medium text-gray-900 mb-2">Duplicates Skipped</h4>
-                  <div className="space-y-2 max-h-40 overflow-y-auto">
+                  <div className="space-y-xs max-h-40 overflow-y-auto">
                     {importResults.duplicates.map((duplicate, index) => (
-                      <div key={index} className="p-2 bg-yellow-50 border border-yellow-200 rounded text-sm">
+                      <div key={index} className="p-xs bg-yellow-50 border border-yellow-component-lg0 rounded text-sm">
                         <span className="font-medium">Row {duplicate.row}:</span> {duplicate.title}
                       </div>
                     ))}
@@ -483,14 +483,14 @@ export default function ImportDrawer({
 
         {/* Footer */}
         {!importResults && (
-          <div className="border-t border-gray-200 p-6">
-            <div className="flex justify-end gap-3">
+          <div className="border-t border-gray-200 p-lg">
+            <div className="flex justify-end gap-sm">
               <Button variant="outline" onClick={onClose}>
                 Cancel
               </Button>
               {selectedFile && !isImporting && (
                 <Button onClick={handleImport} disabled={!selectedFile}>
-                  <Upload className="w-4 h-4 mr-2" />
+                  <Upload className="w-icon-xs h-icon-xs mr-2" />
                   Start Import
                 </Button>
               )}
@@ -500,8 +500,8 @@ export default function ImportDrawer({
 
         {/* Import Progress */}
         {isImporting && (
-          <div className="border-t border-gray-200 p-6">
-            <div className="space-y-3">
+          <div className="border-t border-gray-200 p-lg">
+            <div className="space-y-sm">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Importing...</span>
                 <span className="text-sm text-gray-500">{importProgress}%</span>

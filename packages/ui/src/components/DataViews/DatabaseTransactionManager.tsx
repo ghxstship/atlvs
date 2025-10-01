@@ -442,17 +442,17 @@ export function DatabaseTransactionManager({
   const getStatusIcon = (status: TransactionBatch['status']) => {
     switch (status) {
       case 'pending':
-        return <Clock className="h-4 w-4 text-warning" />;
+        return <Clock className="h-icon-xs w-icon-xs text-warning" />;
       case 'executing':
-        return <Loader2 className="h-4 w-4 text-accent animate-spin" />;
+        return <Loader2 className="h-icon-xs w-icon-xs text-accent animate-spin" />;
       case 'completed':
-        return <CheckCircle className="h-4 w-4 text-success" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
       case 'failed':
-        return <XCircle className="h-4 w-4 text-destructive" />;
+        return <XCircle className="h-icon-xs w-icon-xs text-destructive" />;
       case 'rolled_back':
-        return <RotateCcw className="h-4 w-4 text-warning" />;
+        return <RotateCcw className="h-icon-xs w-icon-xs text-warning" />;
       default:
-        return <Database className="h-4 w-4 text-muted-foreground" />;
+        return <Database className="h-icon-xs w-icon-xs text-muted-foreground" />;
     }
   };
 
@@ -460,7 +460,7 @@ export function DatabaseTransactionManager({
     <div className={`bg-background border border-border rounded-lg p-md ${className}`}>
       <div className="flex items-center justify-between mb-md">
         <h3 className="text-lg font-medium flex items-center gap-sm">
-          <Database className="h-5 w-5" />
+          <Database className="h-icon-sm w-icon-sm" />
           Transaction Manager
         </h3>
         
@@ -583,7 +583,7 @@ export function DatabaseTransactionManager({
       {!currentBatch && (
         <div className="flex justify-center">
           <Button onClick={startTransaction} variant="outline">
-            <Database className="h-4 w-4 mr-xs" />
+            <Database className="h-icon-xs w-icon-xs mr-xs" />
             Start New Transaction
           </Button>
         </div>

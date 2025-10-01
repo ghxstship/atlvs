@@ -237,7 +237,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
           <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
-          <PlusIcon className="h-4 w-4 mr-sm" />
+          <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
           Add Compliance Item
         </Button>
       </div>
@@ -298,7 +298,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
               <p className="text-body-sm form-label color-foreground/70">Total Items</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{compliance.length}</p>
             </div>
-            <ShieldCheckIcon className="h-8 w-8 color-accent" />
+            <ShieldCheckIcon className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -309,7 +309,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 {compliance.filter(c => c.status === 'compliant').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 color-success" />
+            <CheckCircleIcon className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
         <Card className="p-md">
@@ -320,7 +320,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 {compliance.filter(c => c.status === 'non_compliant').length}
               </p>
             </div>
-            <XCircleIcon className="h-8 w-8 color-destructive" />
+            <XCircleIcon className="h-icon-lg w-icon-lg color-destructive" />
           </div>
         </Card>
         <Card className="p-md">
@@ -331,7 +331,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 {compliance.filter(c => isOverdue(c.due_at)).length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 color-warning" />
+            <ExclamationTriangleIcon className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
         <Card className="p-md">
@@ -342,7 +342,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 {compliance.filter(c => c.priority === 'critical').length}
               </p>
             </div>
-            <ExclamationTriangleIcon className="h-8 w-8 color-secondary" />
+            <ExclamationTriangleIcon className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
       </div>
@@ -354,14 +354,14 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             <Card key={i} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <Skeleton className="h-5 w-64 mb-sm" />
-                  <Skeleton className="h-4 w-32 mb-sm" />
-                  <Skeleton className="h-4 w-full mb-sm" />
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-icon-sm w-container-sm mb-sm" />
+                  <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+                  <Skeleton className="h-icon-xs w-full mb-sm" />
+                  <Skeleton className="h-icon-xs w-3/4" />
                 </div>
                 <div className="flex gap-sm">
-                  <Skeleton className="h-6 w-16" />
-                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-icon-md w-component-md" />
+                  <Skeleton className="h-icon-md w-component-lg" />
                 </div>
               </div>
             </Card>
@@ -379,14 +379,14 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                     <div className="flex items-start justify-between mb-sm">
                       <div>
                         <h3 className="text-body text-heading-4 color-foreground mb-xs flex items-center gap-sm">
-                          <StatusIcon className="h-5 w-5 color-foreground/60" />
+                          <StatusIcon className="h-icon-sm w-icon-sm color-foreground/60" />
                           {item.title}
                           {(isDue || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-icon-xs w-icon-xs ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-sm text-body-sm color-foreground/70">
-                          <BuildingOfficeIcon className="h-4 w-4" />
+                          <BuildingOfficeIcon className="h-icon-xs w-icon-xs" />
                           <span>{item.job_title}</span>
                           {item.responsible_party && (
                             <>
@@ -409,14 +409,14 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                       </div>
                     </div>
 
-                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-xs">
                       {item.description}
                     </p>
 
                     <div className="flex items-center gap-lg text-body-sm color-foreground/70 mb-sm">
                       {item.due_at && (
                         <div className={`flex items-center gap-xs ${isLate ? 'color-destructive' : isDue ? 'color-warning' : ''}`}>
-                          <CalendarIcon className="h-4 w-4" />
+                          <CalendarIcon className="h-icon-xs w-icon-xs" />
                           <span>
                             {isLate ? 'Overdue: ' : 'Due: '}
                             {new Date(item.due_at).toLocaleDateString()}
@@ -425,7 +425,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                       )}
                       {item.completed_at && (
                         <div className="flex items-center gap-xs color-success">
-                          <CheckCircleIcon className="h-4 w-4" />
+                          <CheckCircleIcon className="h-icon-xs w-icon-xs" />
                           <span>Completed: {new Date(item.completed_at).toLocaleDateString()}</span>
                         </div>
                       )}
@@ -474,21 +474,21 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                   </div>
                   <div className="flex gap-sm">
                     <Button>
-                      <EyeIcon className="h-4 w-4 mr-xs" />
+                      <EyeIcon className="h-icon-xs w-icon-xs mr-xs" />
                       View
                     </Button>
                     <Button>
-                      <PencilIcon className="h-4 w-4 mr-xs" />
+                      <PencilIcon className="h-icon-xs w-icon-xs mr-xs" />
                       Edit
                     </Button>
                     {item.evidence_url && (
                       <Button>
-                        <ArrowDownTrayIcon className="h-4 w-4 mr-xs" />
+                        <ArrowDownTrayIcon className="h-icon-xs w-icon-xs mr-xs" />
                         Evidence
                       </Button>
                     )}
                     <Button>
-                      <DocumentCheckIcon className="h-4 w-4 mr-xs" />
+                      <DocumentCheckIcon className="h-icon-xs w-icon-xs mr-xs" />
                       Audit
                     </Button>
                   </div>
@@ -497,8 +497,8 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
             );
           })
         ) : (
-          <Card className="p-2xl text-center">
-            <ShieldCheckIcon className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+          <Card className="p-xsxl text-center">
+            <ShieldCheckIcon className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No compliance items found</h3>
             <p className="text-body-sm color-foreground/70 mb-md">
               {searchTerm || statusFilter !== 'all' || kindFilter !== 'all' || priorityFilter !== 'all'
@@ -506,7 +506,7 @@ export function ComplianceClient({ user, orgId, translations }: ComplianceClient
                 : 'Get started by adding your first compliance requirement.'}
             </p>
             <Button onClick={() => setShowCreateDialog(true)}>
-              <PlusIcon className="h-4 w-4 mr-sm" />
+              <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
               Add Compliance Item
             </Button>
           </Card>

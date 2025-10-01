@@ -155,7 +155,7 @@ export default function CreateProfessionalDrawer({
  <div className="absolute right-0 top-0 h-full w-full max-w-2xl bg-background shadow-xl">
  <div className="flex h-full flex-col">
  {/* Header */}
- <div className="flex items-center justify-between border-b p-6">
+ <div className="flex items-center justify-between border-b p-lg">
  <div>
  <h2 className="text-xl font-semibold">
  {profile ? 'Edit Professional Profile' : 'Create Professional Profile'}
@@ -165,20 +165,20 @@ export default function CreateProfessionalDrawer({
  </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Content */}
- <div className="flex-1 overflow-y-auto p-6">
- <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+ <div className="flex-1 overflow-y-auto p-lg">
+ <form onSubmit={handleSubmit(onSubmit)} className="space-y-lg">
  {/* Basic Information */}
- <Card className="p-4">
- <div className="flex items-center gap-2 mb-4">
- <User className="h-5 w-5 text-primary" />
+ <Card className="p-md">
+ <div className="flex items-center gap-xs mb-4">
+ <User className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Basic Information</h3>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <Label htmlFor="job_title">Job Title</Label>
  <Input
@@ -269,9 +269,9 @@ export default function CreateProfessionalDrawer({
  </Card>
 
  {/* Management */}
- <Card className="p-4">
- <div className="flex items-center gap-2 mb-4">
- <Building className="h-5 w-5 text-primary" />
+ <Card className="p-md">
+ <div className="flex items-center gap-xs mb-4">
+ <Building className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Management</h3>
  </div>
  <div>
@@ -296,7 +296,7 @@ export default function CreateProfessionalDrawer({
  </Card>
 
  {/* About */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">About</h3>
  <div>
  <Label htmlFor="bio">Bio</Label>
@@ -310,11 +310,11 @@ export default function CreateProfessionalDrawer({
  </Card>
 
  {/* Skills */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">Skills</h3>
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="relative">
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={newSkill}
  onChange={(e) => {
@@ -335,7 +335,7 @@ export default function CreateProfessionalDrawer({
  variant="outline" 
  onClick={() => addSkill(newSkill)}
  >
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -346,7 +346,7 @@ export default function CreateProfessionalDrawer({
  <button
  key={skill}
  type="button"
- className="w-full text-left px-3 py-2 hover:bg-muted text-sm"
+ className="w-full text-left px-sm py-xs hover:bg-muted text-sm"
  onClick={() => addSkill(skill)}
  >
  {skill}
@@ -356,7 +356,7 @@ export default function CreateProfessionalDrawer({
  )}
  </div>
  
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {skills.map((skill) => (
  <Badge
  key={skill}
@@ -372,12 +372,12 @@ export default function CreateProfessionalDrawer({
  </Card>
 
  {/* Online Presence */}
- <Card className="p-4">
- <div className="flex items-center gap-2 mb-4">
- <ExternalLink className="h-5 w-5 text-primary" />
+ <Card className="p-md">
+ <div className="flex items-center gap-xs mb-4">
+ <ExternalLink className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-medium">Online Presence</h3>
  </div>
- <div className="grid grid-cols-1 gap-4">
+ <div className="grid grid-cols-1 gap-md">
  <div>
  <Label htmlFor="linkedin_url">LinkedIn URL</Label>
  <Input
@@ -400,13 +400,13 @@ export default function CreateProfessionalDrawer({
  </div>
 
  {/* Footer */}
- <div className="border-t p-6">
- <div className="flex items-center justify-end gap-3">
+ <div className="border-t p-lg">
+ <div className="flex items-center justify-end gap-sm">
  <Button variant="outline" onClick={onClose} disabled={loading}>
  Cancel
  </Button>
  <Button onClick={handleSubmit(onSubmit)} disabled={loading}>
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {loading ? 'Saving...' : profile ? 'Update Profile' : 'Create Profile'}
  </Button>
  </div>

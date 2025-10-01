@@ -126,7 +126,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
           <p className="text-body-sm color-muted">Manage project staffing requirements and assignments</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
-          <Plus className="w-4 h-4" />
+          <Plus className="w-icon-xs h-icon-xs" />
           Add Manning Slot
         </Button>
       </div>
@@ -227,7 +227,7 @@ export default function ManningClient({ orgId }: ManningClientProps) {
                         <div className="text-body-sm form-label">
                           {Math.round((slot.filledCount / slot.requiredCount) * 100)}%
                         </div>
-                        <div className="w-20 h-2 bg-secondary rounded-full overflow-hidden">
+                        <div className="w-component-lg h-2 bg-secondary rounded-full overflow-hidden">
                           <div 
                             className="h-full bg-accent transition-all"
                             style={{ width: `${(slot.filledCount / slot.requiredCount) * 100}%` }}

@@ -133,9 +133,9 @@ export default function ProgrammingPerformancesTimelineView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading timeline...</p>
  </div>
  </div>
@@ -146,8 +146,8 @@ export default function ProgrammingPerformancesTimelineView({
  if (timelineGroups.length === 0) {
  return (
  <Card className="p-lg">
- <div className="text-center py-12">
- <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">No performances found</h3>
  <p className="text-muted-foreground">Create your first performance to see it on the timeline</p>
  </div>
@@ -188,7 +188,7 @@ export default function ProgrammingPerformancesTimelineView({
  return (
  <div key={performance.id} className="relative">
  {/* Timeline Dot */}
- <div className={`absolute -left-6 top-3 w-3 h-3 rounded-full border-2 ${
+ <div className={`absolute -left-6 top-sm w-3 h-3 rounded-full border-2 ${
  isSelected ? 'bg-primary border-primary' : 'bg-background border-border'
  }`} />
 
@@ -220,27 +220,27 @@ export default function ProgrammingPerformancesTimelineView({
  )}
  </div>
 
- <div className="flex items-center gap-1 ml-md">
+ <div className="flex items-center gap-xs ml-md">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(performance)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(performance)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(performance)}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>
@@ -248,21 +248,21 @@ export default function ProgrammingPerformancesTimelineView({
  {/* Performance Details */}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md text-sm">
  {/* Start Time */}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Clock className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Start:</span>
  <span className="font-medium">{formatTime(performance.starts_at)}</span>
  </div>
 
  {/* Duration */}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-muted-foreground">Duration:</span>
  <span>{getDuration(performance)}</span>
  </div>
 
  {/* Venue */}
  {performance.venue && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <MapPin className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Venue:</span>
  <span className="truncate">{performance.venue}</span>
@@ -271,7 +271,7 @@ export default function ProgrammingPerformancesTimelineView({
 
  {/* Ticket Price */}
  {ticketPrice && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Ticket className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Tickets:</span>
  <span className="font-medium">
@@ -293,13 +293,13 @@ export default function ProgrammingPerformancesTimelineView({
  <div className="text-xs text-muted-foreground mb-1">Audience:</div>
  <div className="flex flex-wrap gap-md text-sm">
  {performance.venue_capacity && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-3 w-3" />
  <span>Capacity: {performance.venue_capacity.toLocaleString()}</span>
  </div>
  )}
  {performance.audience_info.expected_attendance && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-3 w-3" />
  <span>Expected: {performance.audience_info.expected_attendance.toLocaleString()}</span>
  </div>
@@ -315,7 +315,7 @@ export default function ProgrammingPerformancesTimelineView({
  {performance.technical_requirements.equipment_needed?.length > 0 && (
  <div className="mt-sm pt-sm border-t">
  <div className="text-xs text-muted-foreground mb-1">Equipment:</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.technical_requirements.equipment_needed.slice(0, 5).map((item, itemIndex) => (
  <Badge key={itemIndex} variant="outline" className="text-xs">
  {item}
@@ -362,7 +362,7 @@ export default function ProgrammingPerformancesTimelineView({
  {performance.tags.length > 0 && (
  <div className="mt-sm pt-sm border-t">
  <div className="text-xs text-muted-foreground mb-1">Tags:</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.tags.slice(0, 5).map((tag) => (
  <Badge key={tag} variant="secondary" className="text-xs">
  {tag}

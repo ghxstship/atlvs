@@ -144,7 +144,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
   return (
     <>
       <Button onClick={() => setIsOpen(true)} className="flex items-center gap-sm">
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Create RFP
       </Button>
 
@@ -159,7 +159,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
             <div className="flex items-center gap-sm text-body-sm color-muted">
               {error && (
                 <>
-                  <AlertCircle className="h-4 w-4 color-destructive" />
+                  <AlertCircle className="h-icon-xs w-icon-xs color-destructive" />
                   <span className="color-destructive">{error}</span>
                 </>
               )}
@@ -179,7 +179,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 disabled={!isValid || isSubmitting}
                 className="flex items-center gap-sm"
               >
-                {isSubmitting && <Loader2 className="h-4 w-4 animate-spin" />}
+                {isSubmitting && <Loader2 className="h-icon-xs w-icon-xs animate-spin" />}
                 Create RFP
               </Button>
             </div>
@@ -390,7 +390,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('isPublic')}
-                  className="h-4 w-4 color-accent focus:ring-primary border-border rounded"
+                  className="h-icon-xs w-icon-xs color-accent focus:ring-primary border-border rounded"
                 />
                 <label htmlFor="isPublic" className="text-body-sm form-label color-foreground">
                   Public RFP
@@ -401,7 +401,7 @@ export default function CreateRfpClient({ orgId, onSuccess }: CreateRfpClientPro
                 <input
                   type="checkbox"
                   {...register('allowQuestions')}
-                  className="h-4 w-4 color-accent focus:ring-primary border-border rounded"
+                  className="h-icon-xs w-icon-xs color-accent focus:ring-primary border-border rounded"
                 />
                 <label htmlFor="allowQuestions" className="text-body-sm form-label color-foreground">
                   Allow Questions

@@ -293,7 +293,7 @@ export function AdvancedSearchSystem({
             value={condition.value}
             onValueChange={(value: any) => updateCondition(condition.id, { value })}
           >
-            <SelectTrigger className="w-48">
+            <SelectTrigger className="w-container-xs">
               <SelectValue placeholder="Select value..." />
             </SelectTrigger>
             <SelectContent>
@@ -313,7 +313,7 @@ export function AdvancedSearchSystem({
             value={condition.value}
             onChange={(e: any) => updateCondition(condition.id, { value: e.target.value })}
             placeholder="Enter number..."
-            className="w-32"
+            className="w-component-xl"
           />
         );
 
@@ -333,7 +333,7 @@ export function AdvancedSearchSystem({
             value={String(!!condition.value)}
             onValueChange={(value: any) => updateCondition(condition.id, { value: value === 'true' })}
           >
-            <SelectTrigger className="w-32">
+            <SelectTrigger className="w-component-xl">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
@@ -349,7 +349,7 @@ export function AdvancedSearchSystem({
             value={condition.value}
             onChange={(e: any) => updateCondition(condition.id, { value: e.target.value })}
             placeholder="Enter value..."
-            className="w-48"
+            className="w-container-xs"
           />
         );
     }
@@ -361,7 +361,7 @@ export function AdvancedSearchSystem({
       <div className="p-md border-b border-border">
         <div className="flex items-center gap-sm">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               value={globalQuery}
               onChange={(e: any) => setGlobalQuery(e.target.value)}
@@ -392,9 +392,9 @@ export function AdvancedSearchSystem({
             className="px-lg"
           >
             {isSearching ? (
-              <Database className="h-4 w-4 animate-spin" />
+              <Database className="h-icon-xs w-icon-xs animate-spin" />
             ) : (
-              <Search className="h-4 w-4" />
+              <Search className="h-icon-xs w-icon-xs" />
             )}
             Search
           </Button>
@@ -403,9 +403,9 @@ export function AdvancedSearchSystem({
             variant="ghost"
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            <Filter className="h-4 w-4" />
+            <Filter className="h-icon-xs w-icon-xs" />
             Advanced
-            {isExpanded ? <ChevronDown className="h-4 w-4 ml-xs" /> : <ChevronRight className="h-4 w-4 ml-xs" />}
+            {isExpanded ? <ChevronDown className="h-icon-xs w-icon-xs ml-xs" /> : <ChevronRight className="h-icon-xs w-icon-xs ml-xs" />}
           </Button>
         </div>
 
@@ -529,7 +529,7 @@ export function AdvancedSearchSystem({
               onClick={() => setShowSaveDialog(true)}
               disabled={!globalQuery && queryBuilder.conditions.length === 0}
             >
-              <Save className="h-4 w-4 mr-xs" />
+              <Save className="h-icon-xs w-icon-xs mr-xs" />
               Save Search
             </Button>
 
@@ -556,7 +556,7 @@ export function AdvancedSearchSystem({
       {/* Save Search Dialog */}
       {showSaveDialog && (
         <div className="fixed inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center z-50">
-          <div className="bg-background p-lg rounded-lg shadow-modal w-96">
+          <div className="bg-background p-lg rounded-lg shadow-modal w-container-lg">
             <h3 className="text-lg font-medium mb-md">Save Search</h3>
             <Input
               value={saveSearchName}

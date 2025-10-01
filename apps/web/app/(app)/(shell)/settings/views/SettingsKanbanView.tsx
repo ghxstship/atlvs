@@ -134,13 +134,13 @@ export default function SettingsKanbanView({
 
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {[...Array(8)].map((_, i) => (
- <div key={i} className="space-y-4">
- <Skeleton className="h-12 w-full" />
- <div className="space-y-3">
+ <div key={i} className="space-y-md">
+ <Skeleton className="h-icon-2xl w-full" />
+ <div className="space-y-sm">
  {[...Array(3)].map((_, j) => (
- <Skeleton key={j} className="h-24 w-full" />
+ <Skeleton key={j} className="h-component-lg w-full" />
  ))}
  </div>
  </div>
@@ -150,7 +150,7 @@ export default function SettingsKanbanView({
  }
 
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-lg">
  {Object.entries(CATEGORY_CONFIG).map(([category, config]) => {
  const categorySettings = settingsByCategory[category as SettingCategory] || [];
  const Icon = config.icon;
@@ -158,15 +158,15 @@ export default function SettingsKanbanView({
  return (
  <div
  key={category}
- className={`rounded-lg border-2 border-dashed ${config.color} min-h-96`}
+ className={`rounded-lg border-2 border-dashed ${config.color} min-h-container-lg`}
  onDragOver={handleDragOver}
  onDrop={(e) => handleDrop(e, category as SettingCategory)}
  >
  {/* Column Header */}
- <div className={`p-4 rounded-t-lg ${config.headerColor} border-b`}>
+ <div className={`p-md rounded-t-lg ${config.headerColor} border-b`}>
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
- <Icon className="h-5 w-5" />
+ <div className="flex items-center gap-xs">
+ <Icon className="h-icon-sm w-icon-sm" />
  <h3 className="font-semibold">{config.title}</h3>
  </div>
  <Badge variant="secondary" className="text-xs">
@@ -176,13 +176,13 @@ export default function SettingsKanbanView({
  </div>
 
  {/* Settings Cards */}
- <div className="p-4 space-y-3">
+ <div className="p-md space-y-sm">
  {categorySettings.length === 0 ? (
- <div className="text-center py-8 text-muted-foreground">
- <Icon className="h-8 w-8 mx-auto mb-2 opacity-50" />
+ <div className="text-center py-xl text-muted-foreground">
+ <Icon className="h-icon-lg w-icon-lg mx-auto mb-2 opacity-50" />
  <p className="text-sm">No {config.title.toLowerCase()} settings</p>
  <Button size="sm" variant="ghost" className="mt-2">
- <Plus className="h-4 w-4 mr-1" />
+ <Plus className="h-icon-xs w-icon-xs mr-1" />
  Add Setting
  </Button>
  </div>
@@ -204,16 +204,16 @@ export default function SettingsKanbanView({
  {setting.name}
  </h4>
  {setting.description && (
- <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
+ <p className="text-xs text-muted-foreground mt-1 line-clamp-xs">
  {setting.description}
  </p>
  )}
  </div>
- <div className="flex items-center gap-1 ml-2">
+ <div className="flex items-center gap-xs ml-2">
  <Button
  size="sm"
  variant="ghost"
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  onClick={(e) => {
  e.stopPropagation();
  onEdit(setting);
@@ -226,14 +226,14 @@ export default function SettingsKanbanView({
  </div>
  </CardHeader>
  <CardContent className="pt-0">
- <div className="space-y-2">
+ <div className="space-y-xs">
  {/* Type Badge */}
  <Badge variant="outline" className="text-xs">
  {setting.type}
  </Badge>
 
  {/* Value Preview */}
- <div className="bg-muted p-2 rounded text-xs">
+ <div className="bg-muted p-xs rounded text-xs">
  <code className="break-all">
  {formatValue(setting.value, setting.type)}
  </code>
@@ -241,7 +241,7 @@ export default function SettingsKanbanView({
 
  {/* Status Indicators */}
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {setting.is_public === 'true' ? (
  <Globe className="h-3 w-3 text-green-600" />
  ) : (

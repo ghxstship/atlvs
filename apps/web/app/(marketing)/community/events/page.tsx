@@ -39,7 +39,7 @@ export default function EventsPage() {
   ];
 
   return (
-    <div className="container mx-auto px-md py-3xl">
+    <div className="container mx-auto px-md py-smxl">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-3xl">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-lg`}>
@@ -72,19 +72,19 @@ export default function EventsPage() {
                     </h3>
                     <div className="flex flex-wrap gap-md text-body-sm color-muted">
                       <div className="flex items-center gap-xs">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         {new Date(event.date).toLocaleDateString()}
                       </div>
                       <div className="flex items-center gap-xs">
-                        <Clock className="h-4 w-4" />
+                        <Clock className="h-icon-xs w-icon-xs" />
                         {event.time}
                       </div>
                       <div className="flex items-center gap-xs">
-                        <MapPin className="h-4 w-4" />
+                        <MapPin className="h-icon-xs w-icon-xs" />
                         {event.location}
                       </div>
                       <div className="flex items-center gap-xs">
-                        <Users className="h-4 w-4" />
+                        <Users className="h-icon-xs w-icon-xs" />
                         {event.attendees} attending
                       </div>
                     </div>

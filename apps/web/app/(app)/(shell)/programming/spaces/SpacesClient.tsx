@@ -236,7 +236,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Spaces Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Add Space
                 </Button>
               </div>
@@ -257,7 +257,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                   <Card key={type} className="p-md">
                     <div className="flex items-center justify-between mb-sm">
                       <h3 className="text-heading-4 flex items-center gap-sm">
-                        <IconComponent className="h-4 w-4" />
+                        <IconComponent className="h-icon-xs w-icon-xs" />
                         {spaceTypeLabels[type] || type}
                       </h3>
                       <Badge variant="secondary">
@@ -346,13 +346,13 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                 <div className="stack-md mt-lg">
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Square className="h-4 w-4" />
+                      <Square className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.kind?.replace('_', ' ') || 'General Room'}
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Users className="h-4 w-4" />
+                      <Users className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.capacity ? `${selectedRecord.capacity} people` : 'Capacity TBD'}
                       </span>
@@ -361,7 +361,7 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
                   
                   {selectedRecord.location && (
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <MapPin className="h-4 w-4" />
+                      <MapPin className="h-icon-xs w-icon-xs" />
                       <span>{selectedRecord.location}</span>
                     </div>
                   )}
@@ -378,13 +378,13 @@ export default function SpacesClient({ orgId }: { orgId: string }) {
             {/* Empty State */}
             {!loading && data.length === 0 && (
               <Card className="p-xl text-center">
-                <Square className="h-12 w-12 mx-auto mb-md color-muted" />
+                <Square className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
                 <h3 className="text-body text-heading-4 mb-sm">No Spaces Yet</h3>
                 <p className="color-muted mb-md">
                   Start managing your venue spaces by adding rooms, green rooms, dressing rooms, and other facilities.
                 </p>
                 <Button onClick={handleCreateSpace}>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Add First Space
                 </Button>
               </Card>

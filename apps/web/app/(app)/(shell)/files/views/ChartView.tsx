@@ -257,12 +257,12 @@ export default function ChartView({
   }, [files]);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <BarChart3 className="w-8 h-8 text-blue-500" />
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
+        <Card className="p-md">
+          <div className="flex items-center gap-sm">
+            <BarChart3 className="w-icon-lg h-icon-lg text-blue-500" />
             <div>
               <p className="text-sm text-gray-600">Total Files</p>
               <p className="text-2xl font-bold">{summaryStats.totalFiles}</p>
@@ -270,9 +270,9 @@ export default function ChartView({
           </div>
         </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <TrendingUp className="w-8 h-8 text-green-500" />
+        <Card className="p-md">
+          <div className="flex items-center gap-sm">
+            <TrendingUp className="w-icon-lg h-icon-lg text-green-500" />
             <div>
               <p className="text-sm text-gray-600">Total Size</p>
               <p className="text-2xl font-bold">{formatFileSize(summaryStats.totalSize)}</p>
@@ -280,9 +280,9 @@ export default function ChartView({
           </div>
         </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <PieChart className="w-8 h-8 text-purple-500" />
+        <Card className="p-md">
+          <div className="flex items-center gap-sm">
+            <PieChart className="w-icon-lg h-icon-lg text-purple-500" />
             <div>
               <p className="text-sm text-gray-600">Categories</p>
               <p className="text-2xl font-bold">{summaryStats.categories}</p>
@@ -290,9 +290,9 @@ export default function ChartView({
           </div>
         </Card>
 
-        <Card className="p-4">
-          <div className="flex items-center gap-3">
-            <LineChart className="w-8 h-8 text-orange-500" />
+        <Card className="p-md">
+          <div className="flex items-center gap-sm">
+            <LineChart className="w-icon-lg h-icon-lg text-orange-500" />
             <div>
               <p className="text-sm text-gray-600">Active Files</p>
               <p className="text-2xl font-bold">{summaryStats.activeFiles}</p>
@@ -302,16 +302,16 @@ export default function ChartView({
       </div>
 
       {/* Chart Controls */}
-      <Card className="p-4">
+      <Card className="p-md">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">Analytics Chart</h3>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"
               onClick={() => onExportChart(chartType, 'png')}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-icon-xs h-icon-xs mr-2" />
               Export PNG
             </Button>
             <Button
@@ -319,14 +319,14 @@ export default function ChartView({
               size="sm"
               onClick={() => onExportChart(chartType, 'svg')}
             >
-              <Download className="w-4 h-4 mr-2" />
+              <Download className="w-icon-xs h-icon-xs mr-2" />
               Export SVG
             </Button>
           </div>
         </div>
 
         {/* Controls */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-md mb-6">
           <div>
             <label className="block text-sm font-medium mb-2">Chart Type</label>
             <Select value={chartType} onValueChange={(value: unknown) => setChartType(value)}>
@@ -391,10 +391,10 @@ export default function ChartView({
         </div>
 
         {/* Chart */}
-        <div className="border border-gray-200 rounded-lg p-4">
+        <div className="border border-gray-200 rounded-lg p-md">
           {chartData.length === 0 ? (
-            <div className="text-center py-12">
-              <BarChart3 className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+            <div className="text-center py-xsxl">
+              <BarChart3 className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
               <h3 className="text-lg font-medium text-gray-900 mb-2">No data to display</h3>
               <p className="text-gray-500">Upload some files to see analytics.</p>
             </div>
@@ -405,10 +405,10 @@ export default function ChartView({
       </Card>
 
       {/* Insights */}
-      <Card className="p-4">
+      <Card className="p-md">
         <h3 className="text-lg font-semibold mb-4">Key Insights</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="space-y-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+          <div className="space-y-xs">
             <h4 className="font-medium text-gray-900">File Distribution</h4>
             <div className="text-sm text-gray-600">
               {chartData.length > 0 && (
@@ -437,7 +437,7 @@ export default function ChartView({
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <h4 className="font-medium text-gray-900">Storage Usage</h4>
             <div className="text-sm text-gray-600">
               <p>Average file size: <strong>

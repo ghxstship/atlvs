@@ -148,15 +148,15 @@ export default function AccountGridView({
 
  if (loading) {
  return (
- <div className="space-y-4">
- <div className="flex gap-4">
- <Skeleton className="h-10 w-64" />
- <Skeleton className="h-10 w-32" />
- <Skeleton className="h-10 w-32" />
+ <div className="space-y-md">
+ <div className="flex gap-md">
+ <Skeleton className="h-icon-xl w-container-sm" />
+ <Skeleton className="h-icon-xl w-component-xl" />
+ <Skeleton className="h-icon-xl w-component-xl" />
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {[...Array(10)].map((_, i) => (
- <Skeleton key={i} className="h-16 w-full" />
+ <Skeleton key={i} className="h-component-md w-full" />
  ))}
  </div>
  </div>
@@ -164,11 +164,11 @@ export default function AccountGridView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Filters and Search */}
- <div className="flex flex-col sm:flex-row gap-4">
+ <div className="flex flex-col sm:flex-row gap-md">
  <div className="relative flex-1">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 text-muted-foreground h-icon-xs w-icon-xs" />
  <Input
  placeholder="Search account records..."
  value={searchQuery}
@@ -178,8 +178,8 @@ export default function AccountGridView({
  </div>
  
  <Select value={typeFilter} onValueChange={(value: unknown) => setTypeFilter(value)}>
- <SelectTrigger className="w-full sm:w-48">
- <Filter className="h-4 w-4 mr-2" />
+ <SelectTrigger className="w-full sm:w-container-xs">
+ <Filter className="h-icon-xs w-icon-xs mr-2" />
  <SelectValue placeholder="Type" />
  </SelectTrigger>
  <SelectContent>
@@ -193,7 +193,7 @@ export default function AccountGridView({
  </Select>
 
  <Select value={statusFilter} onValueChange={(value: unknown) => setStatusFilter(value)}>
- <SelectTrigger className="w-full sm:w-32">
+ <SelectTrigger className="w-full sm:w-component-xl">
  <SelectValue placeholder="Status" />
  </SelectTrigger>
  <SelectContent>
@@ -208,7 +208,7 @@ export default function AccountGridView({
 
  {/* Bulk Actions */}
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2 p-3 bg-muted rounded-lg">
+ <div className="flex items-center gap-xs p-sm bg-muted rounded-lg">
  <span className="text-sm font-medium">
  {selectedIds.length} selected
  </span>
@@ -223,11 +223,11 @@ export default function AccountGridView({
  }
  }}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  Delete Selected
  </Button>
  <Button size="sm" variant="outline">
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export Selected
  </Button>
  </div>
@@ -238,7 +238,7 @@ export default function AccountGridView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedIds.length === filteredRecords.length && filteredRecords.length > 0}
  onCheckedChange={handleSelectAll}
@@ -282,13 +282,13 @@ export default function AccountGridView({
  <span className="ml-1">{sortDirection === 'asc' ? '↑' : '↓'}</span>
  )}
  </TableHead>
- <TableHead className="w-24">Actions</TableHead>
+ <TableHead className="w-component-lg">Actions</TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
  {filteredRecords.length === 0 ? (
  <TableRow>
- <TableCell colSpan={8} className="text-center py-8 text-muted-foreground">
+ <TableCell colSpan={8} className="text-center py-xl text-muted-foreground">
  {searchQuery || typeFilter !== 'all' || statusFilter !== 'all' 
  ? 'No records match your filters'
  : 'No account records found'
@@ -308,8 +308,8 @@ export default function AccountGridView({
  />
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-2">
- <TypeIcon className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <TypeIcon className="h-icon-xs w-icon-xs text-muted-foreground" />
  <div>
  <div className="font-medium">{record.name}</div>
  <div className="text-sm text-muted-foreground">
@@ -324,7 +324,7 @@ export default function AccountGridView({
  </Badge>
  </TableCell>
  <TableCell>
- <code className="text-sm bg-muted px-2 py-1 rounded">
+ <code className="text-sm bg-muted px-xs py-xs rounded">
  {formatValue(record.value, record.type)}
  </code>
  </TableCell>
@@ -346,13 +346,13 @@ export default function AccountGridView({
  </div>
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  size="sm"
  variant="ghost"
  onClick={() => onEdit(record)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {record.type !== 'profile' && (
  <Button
@@ -364,7 +364,7 @@ export default function AccountGridView({
  }
  }}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>

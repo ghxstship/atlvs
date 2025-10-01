@@ -94,7 +94,7 @@ export default function ViewProgrammingPerformanceDrawer({
  <div className="flex items-start justify-between">
  <div className="flex-1">
  <DrawerTitle className="text-xl">{performance.name}</DrawerTitle>
- <div className="flex items-center gap-2 mt-2">
+ <div className="flex items-center gap-xs mt-2">
  <Badge variant="secondary" className="text-sm">
  {typeConfig.icon} {typeConfig.label}
  </Badge>
@@ -108,20 +108,20 @@ export default function ViewProgrammingPerformanceDrawer({
  )}
  </div>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" onClick={onEdit}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </Button>
  <Button variant="outline" onClick={onDelete}>
- <Trash2 className="mr-2 h-4 w-4 text-destructive" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs text-destructive" />
  Delete
  </Button>
  </div>
  </div>
  </DrawerHeader>
 
- <div className="flex-1 overflow-y-auto px-6 space-y-lg">
+ <div className="flex-1 overflow-y-auto px-lg space-y-lg">
  {/* Description */}
  {performance.description && (
  <div>
@@ -132,9 +132,9 @@ export default function ViewProgrammingPerformanceDrawer({
  {/* Event & Project */}
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {performance.event && (
- <div className="space-y-2">
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-medium">Event</h3>
  </div>
  <div className="pl-6">
@@ -152,9 +152,9 @@ export default function ViewProgrammingPerformanceDrawer({
  )}
 
  {performance.project && (
- <div className="space-y-2">
- <div className="flex items-center gap-2">
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-medium">Project</h3>
  </div>
  <div className="pl-6">
@@ -171,8 +171,8 @@ export default function ViewProgrammingPerformanceDrawer({
 
  {/* Schedule */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Schedule</h3>
  </div>
 
@@ -202,8 +202,8 @@ export default function ViewProgrammingPerformanceDrawer({
  {performance.venue && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Venue</h3>
  </div>
 
@@ -229,8 +229,8 @@ export default function ViewProgrammingPerformanceDrawer({
  {(performance.ticket_info.price_min || performance.ticket_info.price_max || performance.ticket_info.sales_url) && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Ticket className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Ticket className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Ticket Information</h3>
  </div>
 
@@ -268,7 +268,7 @@ export default function ViewProgrammingPerformanceDrawer({
  href={performance.ticket_info.sales_url as any as any}
  target="_blank"
  rel="noopener noreferrer"
- className="text-primary hover:underline flex items-center gap-1"
+ className="text-primary hover:underline flex items-center gap-xs"
  >
  View Tickets
  <ExternalLink className="h-3 w-3" />
@@ -286,8 +286,8 @@ export default function ViewProgrammingPerformanceDrawer({
  {(performance.audience_info.expected_attendance || performance.audience_info.target_demographic || performance.audience_info.accessibility_notes) && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Audience Information</h3>
  </div>
 
@@ -322,8 +322,8 @@ export default function ViewProgrammingPerformanceDrawer({
  {(performance.technical_requirements.sound_system || performance.technical_requirements.lighting || performance.technical_requirements.stage_setup || performance.technical_requirements.equipment_needed?.length > 0 || performance.technical_requirements.crew_requirements) && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Settings className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Settings className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Technical Requirements</h3>
  </div>
 
@@ -353,7 +353,7 @@ export default function ViewProgrammingPerformanceDrawer({
  {performance.technical_requirements.equipment_needed?.length > 0 && (
  <div className="pl-6">
  <div className="text-sm text-muted-foreground">Equipment Needed</div>
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {performance.technical_requirements.equipment_needed.map((item, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {item}
@@ -378,8 +378,8 @@ export default function ViewProgrammingPerformanceDrawer({
  {(performance.production_notes.call_time || performance.production_notes.sound_check || performance.production_notes.rehearsal_schedule || performance.production_notes.special_instructions) && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Production Notes</h3>
  </div>
 
@@ -421,13 +421,13 @@ export default function ViewProgrammingPerformanceDrawer({
  {performance.tags.length > 0 && (
  <>
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Tag className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Tag className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="text-lg font-medium">Tags</h3>
  </div>
 
  <div className="pl-6">
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {performance.tags.map((tag) => (
  <Badge key={tag} variant="secondary" className="text-sm">
  {tag}
@@ -469,12 +469,12 @@ export default function ViewProgrammingPerformanceDrawer({
  </div>
 
  <DrawerFooter>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button variant="outline" onClick={() => onOpenChange(false)}>
  Close
  </Button>
  <Button onClick={onEdit}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit Performance
  </Button>
  </div>

@@ -83,7 +83,7 @@ export function DemoUserSwitcher() {
   return (
     <Card className="p-lg max-w-2xl mx-auto">
       <div className="flex items-center gap-sm mb-sm">
-        <Users className="h-5 w-5 text-muted-foreground" />
+        <Users className="h-icon-sm w-icon-sm text-muted-foreground" />
         <h3 className="text-lg font-semibold">Demo User Switcher</h3>
       </div>
       
@@ -102,7 +102,7 @@ export function DemoUserSwitcher() {
               className="flex items-center justify-between p-sm border rounded-lg hover:bg-muted/50 transition-colors"
             >
               <div className="flex items-center gap-sm">
-                <Icon className="h-4 w-4 text-muted-foreground" />
+                <Icon className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <div>
                   <div className="font-medium">{user.name}</div>
                   <Badge 
@@ -119,7 +119,7 @@ export function DemoUserSwitcher() {
                 size="sm"
                 onClick={() => handleUserSwitch(user.type)}
                 disabled={isLoading}
-                className="min-w-[80px]"
+                className="min-w-icon-2xl"
               >
                 {isLoading ? (
                   <Loader2 className="h-3 w-3 animate-spin" />

@@ -348,7 +348,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <Card key={vendor.id} className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm">
- <Users className="h-5 w-5 color-primary" />
+ <Users className="h-icon-sm w-icon-sm color-primary" />
  <Badge variant={statusColors[vendor.status] as unknown}>
  {vendor.status}
  </Badge>
@@ -361,22 +361,22 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  
  <h3 className="text-heading-4 mb-xs">{vendor.display_name || vendor.name}</h3>
  <p className="text-body-sm color-muted mb-xs">{vendor.business_name}</p>
- <p className="text-body-sm color-muted mb-sm line-clamp-2">{vendor.tagline || vendor.bio}</p>
+ <p className="text-body-sm color-muted mb-sm line-clamp-xs">{vendor.tagline || vendor.bio}</p>
  
  <div className="flex items-center gap-md mb-sm text-body-sm color-muted">
  <div className="flex items-center gap-xs">
- <Briefcase className="h-4 w-4" />
+ <Briefcase className="h-icon-xs w-icon-xs" />
  <span>{vendor.primary_category?.replace('_', ' ')}</span>
  </div>
  {vendor.years_experience && (
  <div className="flex items-center gap-xs">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>{vendor.years_experience}y exp</span>
  </div>
  )}
  {vendor.hourly_rate && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>{vendor.currency} {vendor.hourly_rate}/hr</span>
  </div>
  )}
@@ -385,7 +385,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-md text-body-sm color-muted">
  <div className="flex items-center gap-xs">
- <Star className="h-4 w-4 fill-current color-warning" />
+ <Star className="h-icon-xs w-icon-xs fill-current color-warning" />
  <span>{vendor.rating || 0}</span>
  </div>
  <span>{vendor.total_reviews || 0} reviews</span>
@@ -393,11 +393,11 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  </div>
  <div className="flex items-center gap-xs">
  <Button size="sm" variant="outline" onClick={() => handleViewVendor(vendor)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {vendor.user_id === userId && (
  <Button size="sm" variant="outline" onClick={() => handleEditVendor(vendor)}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -415,7 +415,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <p className="color-muted">Browse and manage vendor profiles</p>
  </div>
  <Button onClick={handleCreateVendor}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create Profile
  </Button>
  </div>
@@ -428,7 +428,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <p className="text-body-sm color-muted">Total Vendors</p>
  <p className="text-heading-3 font-bold">{stats.total}</p>
  </div>
- <Users className="h-8 w-8 color-primary" />
+ <Users className="h-icon-lg w-icon-lg color-primary" />
  </div>
  </Card>
  <Card className="p-md">
@@ -437,7 +437,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <p className="text-body-sm color-muted">Active</p>
  <p className="text-heading-3 font-bold">{stats.active}</p>
  </div>
- <TrendingUp className="h-8 w-8 color-success" />
+ <TrendingUp className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
  <Card className="p-md">
@@ -446,7 +446,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <p className="text-body-sm color-muted">Verified</p>
  <p className="text-heading-3 font-bold">{stats.verified}</p>
  </div>
- <Award className="h-8 w-8 color-warning" />
+ <Award className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  <Card className="p-md">
@@ -455,7 +455,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  <p className="text-body-sm color-muted">Avg Rating</p>
  <p className="text-heading-3 font-bold">{stats.avgRating}</p>
  </div>
- <Star className="h-8 w-8 color-secondary" />
+ <Star className="h-icon-lg w-icon-lg color-secondary" />
  </div>
  </Card>
  </div>
@@ -498,7 +498,7 @@ export default function VendorsClient({ orgId, userId }: VendorsClientProps) {
  rowActions={getRowActions}
  emptyMessage="No vendors found"
  loading={loading}
- className="min-h-[400px]"
+ className="min-h-content-lg"
  />
  )}
  </div>

@@ -1,10 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input } from '../unified/Input';
-import { Button } from '../unified/Button';
+import { Input } from '../../components/atomic/Input';
+import { Button } from '../../atoms/Button';
 import { Search, X } from 'lucide-react';
-import { cn } from '../lib/utils';
+import { cn } from '../../lib/utils';
 
 export interface SearchBoxProps {
   value: string;
@@ -40,7 +40,7 @@ export const SearchBox = ({
     <div className={cn('relative', className)}>
       {showIcon && (
         <div className="absolute left-sm top-1/2 -translate-y-1/2 text-muted-foreground">
-          <Search className="h-4 w-4" />
+          <Search className="h-icon-xs w-icon-xs" />
         </div>
       )}
       <Input

@@ -83,24 +83,24 @@ export default function VendorKanbanView({
 
  if (loading) {
  return (
- <div className="flex gap-md h-[600px]">
+ <div className="flex gap-md h-content-xl">
  {statusColumns.map((column) => (
  <div key={column.key} className="flex-1">
  <Card className={`h-full ${column.color}`}>
  <div className="p-md border-b border-border">
- <div className="h-6 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded w-component-lg animate-pulse"></div>
  </div>
  <div className="p-md space-y-md">
  {Array.from({ length: 3 }).map((_, index) => (
  <Card key={index} className="p-md">
  <div className="animate-pulse space-y-sm">
  <div className="flex items-center gap-sm">
- <div className="h-4 w-4 bg-muted rounded"></div>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  </div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  <div className="h-3 bg-muted rounded w-full"></div>
- <div className="h-5 bg-muted rounded w-16"></div>
+ <div className="h-icon-sm bg-muted rounded w-component-md"></div>
  </div>
  </Card>
  ))}
@@ -113,12 +113,12 @@ export default function VendorKanbanView({
  }
 
  return (
- <div className="flex gap-md h-[600px] overflow-x-auto">
+ <div className="flex gap-md h-content-xl overflow-x-auto">
  {statusColumns.map((column) => {
  const columnVendors = getVendorsByStatus(column.key);
  
  return (
- <div key={column.key} className="flex-1 min-w-[300px]">
+ <div key={column.key} className="flex-1 min-w-content-medium">
  <Card 
  className={`h-full ${column.color} flex flex-col`}
  onDragOver={handleDragOver}
@@ -160,7 +160,7 @@ export default function VendorKanbanView({
  {/* Header */}
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm min-w-0 flex-1">
- <Building className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <div className="min-w-0 flex-1">
  <h4 className="font-medium text-sm truncate">{vendor.display_name}</h4>
  <p className="text-xs text-muted-foreground truncate">{vendor.business_name}</p>
@@ -175,7 +175,7 @@ export default function VendorKanbanView({
  e.stopPropagation();
  onViewVendor(vendor);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Eye className="h-3 w-3" />
  </Button>
@@ -188,7 +188,7 @@ export default function VendorKanbanView({
  e.stopPropagation();
  onEditVendor(vendor);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Edit className="h-3 w-3" />
  </Button>
@@ -201,7 +201,7 @@ export default function VendorKanbanView({
  e.stopPropagation();
  onDeleteVendor(vendor);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Trash2 className="h-3 w-3" />
  </Button>
@@ -230,7 +230,7 @@ export default function VendorKanbanView({
 
  {/* Bio */}
  {vendor.bio && (
- <p className="text-xs text-muted-foreground line-clamp-2 mb-sm">
+ <p className="text-xs text-muted-foreground line-clamp-xs mb-sm">
  {vendor.bio}
  </p>
  )}

@@ -164,7 +164,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {[...Array(4)].map((_, i) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-secondary rounded"></div>
+              <div className="h-component-lg bg-secondary rounded"></div>
             </Card>
           ))}
         </div>
@@ -174,15 +174,15 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
 
   if (!stats || stats.totalProjects === 0) {
     return (
-      <div className="text-center py-2xl">
-        <div className="mx-auto w-24 h-24 bg-secondary/50 rounded-full flex items-center justify-center mb-md">
-          <BarChart3 className="w-12 h-12 color-muted" />
+      <div className="text-center py-xsxl">
+        <div className="mx-auto w-component-lg h-component-lg bg-secondary/50 rounded-full flex items-center justify-center mb-md">
+          <BarChart3 className="w-icon-2xl h-icon-2xl color-muted" />
         </div>
         <h3 className="text-body text-heading-4 mb-sm">No Projects Yet</h3>
         <p className="color-muted mb-lg">Get started by creating your first project or seeding demo data.</p>
         <div className="flex items-center justify-center gap-md">
           <Button onClick={() => router.push('/projects?create=true')}>
-            <Plus className="w-4 h-4 mr-sm" />
+            <Plus className="w-icon-xs h-icon-xs mr-sm" />
             Create Project
           </Button>
           <Button 
@@ -213,7 +213,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
               <p className="text-body-sm form-label color-muted">Total Projects</p>
               <p className="text-heading-3">{stats.totalProjects}</p>
             </div>
-            <BarChart3 className="w-8 h-8 color-accent" />
+            <BarChart3 className="w-icon-lg h-icon-lg color-accent" />
           </div>
           <div className="mt-sm flex items-center text-body-sm">
             <span className="color-success">{stats.activeProjects} active</span>
@@ -228,7 +228,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
               <p className="text-body-sm form-label color-muted">Total Budget</p>
               <p className="text-heading-3">{formatCurrency(stats.totalBudget)}</p>
             </div>
-            <DollarSign className="w-8 h-8 color-success" />
+            <DollarSign className="w-icon-lg h-icon-lg color-success" />
           </div>
           <div className="mt-sm text-body-sm color-muted">
             Across all projects
@@ -243,7 +243,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                 {stats.totalTasks > 0 ? Math.round((stats.completedTasks / stats.totalTasks) * 100) : 0}%
               </p>
             </div>
-            <CheckCircle className="w-8 h-8 color-accent" />
+            <CheckCircle className="w-icon-lg h-icon-lg color-accent" />
           </div>
           <div className="mt-sm flex items-center text-body-sm">
             <span className="color-success">{stats.completedTasks} done</span>
@@ -258,7 +258,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
               <p className="text-body-sm form-label color-muted">Risk Status</p>
               <p className="text-heading-3">{stats.totalRisks}</p>
             </div>
-            <AlertTriangle className="w-8 h-8 color-warning" />
+            <AlertTriangle className="w-icon-lg h-icon-lg color-warning" />
           </div>
           <div className="mt-sm text-body-sm">
             <span className="color-destructive">{stats.highRisks} high priority</span>
@@ -276,7 +276,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
             onClick={() => router.push('/projects')}
           >
             View All
-            <ArrowRight className="w-4 h-4 ml-sm" />
+            <ArrowRight className="w-icon-xs h-icon-xs ml-sm" />
           </Button>
         </div>
         <div className="stack-sm">
@@ -304,7 +304,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
                   </span>
                 </div>
               </div>
-              <ArrowRight className="w-4 h-4 color-muted" />
+              <ArrowRight className="w-icon-xs h-icon-xs color-muted" />
             </div>
           ))}
         </div>
@@ -319,7 +319,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
             className="h-auto p-md flex flex-col items-center gap-sm"
             onClick={() => router.push('/projects?create=true')}
           >
-            <Plus className="w-6 h-6" />
+            <Plus className="w-icon-md h-icon-md" />
             <span>Create Project</span>
           </Button>
           <Button 
@@ -327,7 +327,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
             className="h-auto p-md flex flex-col items-center gap-sm"
             onClick={() => router.push('/projects/tasks')}
           >
-            <Clock className="w-6 h-6" />
+            <Clock className="w-icon-md h-icon-md" />
             <span>View Tasks</span>
           </Button>
           <Button 
@@ -335,7 +335,7 @@ export default function ProjectsOverviewClient({ orgId }: { orgId: string }) {
             className="h-auto p-md flex flex-col items-center gap-sm"
             onClick={() => router.push('/projects/risks')}
           >
-            <AlertTriangle className="w-6 h-6" />
+            <AlertTriangle className="w-icon-md h-icon-md" />
             <span>Manage Risks</span>
           </Button>
         </div>

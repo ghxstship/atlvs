@@ -86,16 +86,16 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
         content: (
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center gap-xs">
                 {(() => {
                   const Icon = getSettingIcon(type);
-                  return <Icon className="h-5 w-5" />;
+                  return <Icon className="h-icon-sm w-icon-sm" />;
                 })()}
                 {type.charAt(0).toUpperCase() + type.slice(1)} Settings Overview
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 {type.charAt(0).toUpperCase() + type.slice(1)} settings management coming soon...
               </p>
             </CardContent>
@@ -116,7 +116,7 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
                 <CardTitle>Profile Settings</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-center py-8">
+                <p className="text-muted-foreground text-center py-xl">
                   Profile configuration options will be available here.
                 </p>
               </CardContent>
@@ -134,7 +134,7 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
                 <CardTitle>Subscription Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-center py-8">
+                <p className="text-muted-foreground text-center py-xl">
                   Billing and subscription management will be available here.
                 </p>
               </CardContent>
@@ -152,7 +152,7 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
                 <CardTitle>Team Members</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-center py-8">
+                <p className="text-muted-foreground text-center py-xl">
                   Team member management will be available here.
                 </p>
               </CardContent>
@@ -170,7 +170,7 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
                 <CardTitle>Notification Preferences</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-center py-8">
+                <p className="text-muted-foreground text-center py-xl">
                   Notification preference settings will be available here.
                 </p>
               </CardContent>
@@ -188,7 +188,7 @@ export default async function SettingsDetailPage({ params }: SettingsDetailPageP
                 <CardTitle>Security Settings</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground text-center py-8">
+                <p className="text-muted-foreground text-center py-xl">
                   Security and authentication settings will be available here.
                 </p>
               </CardContent>

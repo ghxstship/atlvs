@@ -137,10 +137,10 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         width="xl"
       >
         <div className="flex items-center gap-sm border-b pb-sm mb-sm" role="tablist" aria-label={t('title')}>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-icon-xs w-icon-xs" /> {t('drawer.details')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-icon-xs w-icon-xs" /> {t('drawer.edit')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-icon-xs w-icon-xs" /> {t('drawer.comments')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-icon-xs w-icon-xs" /> {t('drawer.activity')}</button>
         </div>
 
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}
@@ -175,7 +175,7 @@ export default function TasksTableClient({ rows, orgId }: { rows: TaskRow[]; org
         {tab === 'comments' && (
           <div className="stack-sm">
             <form action={addComment} className="flex items-start gap-sm" aria-label={t('drawer.comments')}>
-              <textarea name="body" className="min-h-16 w-full rounded border p-sm" placeholder={t('drawer.comments')} />
+              <textarea name="body" className="min-h-component-md w-full rounded border p-sm" placeholder={t('drawer.comments')} />
               <Button variant="default">{t('drawer.post')}</Button>
             </form>
             {loadingComments ? <div className="text-body-sm opacity-70">{t('drawer.loading')}</div> : (

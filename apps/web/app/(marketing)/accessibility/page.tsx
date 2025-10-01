@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function AccessibilityPage() {
   return (
-    <div className="min-h-screen py-4xl">
+    <div className="min-h-screen py-mdxl">
       <div className="container mx-auto px-md max-w-4xl">
         {/* Header */}
         <div className="text-center mb-3xl">
@@ -36,7 +36,7 @@ export default function AccessibilityPage() {
         <Card className="mb-2xl bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-xl">
             <div className="flex items-center gap-sm mb-lg">
-              <Heart className="h-8 w-8 text-foreground" />
+              <Heart className="h-icon-lg w-icon-lg text-foreground" />
               <h2 className="font-title text-heading-3 text-heading-3">Our Commitment</h2>
             </div>
             <p className="color-muted mb-lg">
@@ -63,7 +63,7 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
-                  <Eye className="h-6 w-6 text-foreground" />
+                  <Eye className="h-icon-md w-icon-md text-foreground" />
                   <h3>Visual Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
@@ -79,7 +79,7 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
-                  <Ear className="h-6 w-6 text-foreground" />
+                  <Ear className="h-icon-md w-icon-md text-foreground" />
                   <h3>Auditory Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
@@ -95,7 +95,7 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
-                  <Hand className="h-6 w-6 text-foreground" />
+                  <Hand className="h-icon-md w-icon-md text-foreground" />
                   <h3>Motor Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
@@ -111,7 +111,7 @@ export default function AccessibilityPage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-center gap-sm mb-md">
-                  <Brain className="h-6 w-6 text-foreground" />
+                  <Brain className="h-icon-md w-icon-md text-foreground" />
                   <h3>Cognitive Accessibility</h3>
                 </div>
                 <ul className="stack-sm text-body-sm color-muted">
@@ -269,7 +269,7 @@ export default function AccessibilityPage() {
           <Card>
             <CardContent className="p-lg">
               <div className="flex items-start gap-md">
-                <Mail className="h-6 w-6 text-foreground mt-xs" />
+                <Mail className="h-icon-md w-icon-md text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">We Want to Hear From You</h3>
                   <p className="color-muted mb-md">
@@ -309,19 +309,19 @@ export default function AccessibilityPage() {
                 <h3 className="text-heading-4 mb-md">Getting Started</h3>
                 <ul className="stack-sm">
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="/help/accessibility-guide" className="text-foreground hover:underline">
                       Accessibility User Guide
                     </a>
                   </li>
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="/help/keyboard-shortcuts" className="text-foreground hover:underline">
                       Keyboard Shortcuts Reference
                     </a>
                   </li>
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="/help/screen-reader-guide" className="text-foreground hover:underline">
                       Screen Reader Setup Guide
                     </a>
@@ -335,19 +335,19 @@ export default function AccessibilityPage() {
                 <h3 className="text-heading-4 mb-md">External Resources</h3>
                 <ul className="stack-sm">
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="https://www.w3.org/WAI/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
                       W3C Web Accessibility Initiative
                     </a>
                   </li>
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="https://webaim.org/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
                       WebAIM Accessibility Resources
                     </a>
                   </li>
                   <li className="flex items-center gap-sm">
-                    <ExternalLink className="h-4 w-4 text-foreground" />
+                    <ExternalLink className="h-icon-xs w-icon-xs text-foreground" />
                     <a href="https://www.ada.gov/" target="_blank" rel="noopener noreferrer" className="text-foreground hover:underline">
                       ADA.gov Information
                     </a>

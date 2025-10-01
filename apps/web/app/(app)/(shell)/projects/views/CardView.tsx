@@ -64,14 +64,14 @@ export default function CardView({
     switch (field.type) {
       case 'currency':
         return value ? (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-xs">
             <DollarSign className="h-3 w-3" />
             ${Number(value).toLocaleString()}
           </div>
         ) : '-';
       case 'date':
         return value ? (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-xs">
             <Calendar className="h-3 w-3" />
             {format(new Date(value), 'MMM d, yyyy')}
           </div>
@@ -133,11 +133,11 @@ export default function CardView({
   const getLayoutClasses = () => {
     switch (cardLayout) {
       case 'compact':
-        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3';
+        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-sm';
       case 'spacious':
-        return 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6';
+        return 'grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg';
       default: // comfortable
-        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4';
+        return 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-md';
     }
   };
 
@@ -154,10 +154,10 @@ export default function CardView({
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="animate-pulse">
               <CardHeader className="pb-2">
-                <div className="h-4 bg-muted rounded w-3/4"></div>
+                <div className="h-icon-xs bg-muted rounded w-3/4"></div>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <div className="h-3 bg-muted rounded w-full"></div>
                   <div className="h-3 bg-muted rounded w-2/3"></div>
                   <div className="h-3 bg-muted rounded w-1/2"></div>
@@ -172,7 +172,7 @@ export default function CardView({
 
   if (data.length === 0) {
     return (
-      <div className={`flex items-center justify-center p-8 ${className}`}>
+      <div className={`flex items-center justify-center p-xl ${className}`}>
         <div className="text-center text-muted-foreground">
           {emptyMessage}
         </div>
@@ -188,7 +188,7 @@ export default function CardView({
             key={item.id}
             className={`cursor-pointer transition-all hover:shadow-md ${
               selectedItems.includes(item.id) ? 'ring-2 ring-primary' : ''
-            } ${cardLayout === 'compact' ? 'p-3' : cardLayout === 'spacious' ? 'p-6' : 'p-4'}`}
+            } ${cardLayout === 'compact' ? 'p-sm' : cardLayout === 'spacious' ? 'p-lg' : 'p-md'}`}
             onClick={() => onItemClick?.(item)}
           >
             <CardHeader className="pb-2">
@@ -199,7 +199,7 @@ export default function CardView({
                   {item.name || item.title || `Item ${item.id}`}
                 </CardTitle>
 
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-xs">
                   {selectable && (
                     <Checkbox
                       checked={selectedItems.includes(item.id)}
@@ -216,7 +216,7 @@ export default function CardView({
                           variant="ghost"
                           size="sm"
                           onClick={(e) => e.stopPropagation()}
-                          className="h-6 w-6 p-0 opacity-60 hover:opacity-100"
+                          className="h-icon-md w-icon-md p-0 opacity-60 hover:opacity-100"
                         >
                           <MoreHorizontal className="h-3 w-3" />
                         </Button>
@@ -250,7 +250,7 @@ export default function CardView({
               </div>
             </CardHeader>
 
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               {/* High priority fields */}
               {highPriorityFields.map((field) => (
                 <div key={field.key} className="flex items-center justify-between">
@@ -278,7 +278,7 @@ export default function CardView({
               {/* Description or main content field */}
               {item.description && (
                 <p className={`text-muted-foreground ${
-                  cardLayout === 'compact' ? 'text-xs line-clamp-2' : 'text-sm line-clamp-3'
+                  cardLayout === 'compact' ? 'text-xs line-clamp-xs' : 'text-sm line-clamp-sm'
                 }`}>
                   {item.description}
                 </p>
@@ -287,7 +287,7 @@ export default function CardView({
               {/* Low priority fields in footer */}
               {lowPriorityFields.length > 0 && (
                 <div className="pt-2 border-t border-border/50">
-                  <div className="flex flex-wrap gap-1">
+                  <div className="flex flex-wrap gap-xs">
                     {lowPriorityFields.slice(0, 3).map((field) => (
                       <div key={field.key} className="text-xs text-muted-foreground">
                         {renderFieldValue(item, field)}
@@ -308,7 +308,7 @@ export default function CardView({
 
       {/* Selection summary */}
       {selectable && selectedItems.length > 0 && (
-        <div className="mt-4 px-4 py-2 bg-muted/30 rounded-lg text-sm text-muted-foreground">
+        <div className="mt-4 px-md py-xs bg-muted/30 rounded-lg text-sm text-muted-foreground">
           {selectedItems.length} item{selectedItems.length !== 1 ? 's' : ''} selected
         </div>
       )}

@@ -50,7 +50,7 @@ export default function ViewBudgetDrawer({
  </div>
  {onEdit && (
  <Button onClick={onEdit} variant="outline">
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  )}
@@ -61,7 +61,7 @@ export default function ViewBudgetDrawer({
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <DollarSign className="h-5 w-5 text-green-600" />
+ <DollarSign className="h-icon-sm w-icon-sm text-green-600" />
  <span className="text-sm text-gray-600">Budget Amount</span>
  </div>
  <div className="font-semibold text-lg">${budget.amount?.toLocaleString() || '0'}</div>
@@ -71,7 +71,7 @@ export default function ViewBudgetDrawer({
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <Receipt className="h-5 w-5 text-red-600" />
+ <Receipt className="h-icon-sm w-icon-sm text-red-600" />
  <span className="text-sm text-gray-600">Spent</span>
  </div>
  <div className="font-semibold text-lg">${totalExpenses.toLocaleString()}</div>
@@ -81,7 +81,7 @@ export default function ViewBudgetDrawer({
  <Card>
  <CardContent className="pt-lg">
  <div className="flex items-center gap-xs mb-sm">
- <TrendingUp className="h-5 w-5 text-blue-600" />
+ <TrendingUp className="h-icon-sm w-icon-sm text-blue-600" />
  <span className="text-sm text-gray-600">Remaining</span>
  </div>
  <div className="font-semibold text-lg">${remainingBudget.toLocaleString()}</div>
@@ -96,7 +96,7 @@ export default function ViewBudgetDrawer({
  </CardHeader>
  <CardContent>
  <div className="space-y-sm">
- <Progress value={Math.min(utilizationPercentage, 100)} className="h-4" />
+ <Progress value={Math.min(utilizationPercentage, 100)} className="h-icon-xs" />
  <div className="flex justify-between text-sm">
  <span>{utilizationPercentage.toFixed(1)}% utilized</span>
  <span>${totalExpenses.toLocaleString()} of ${budget.amount?.toLocaleString() || '0'}</span>
@@ -146,7 +146,7 @@ export default function ViewBudgetDrawer({
  <CardContent className="space-y-md">
  {budget.projects && (
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 text-blue-600" />
+ <Building className="h-icon-xs w-icon-xs text-blue-600" />
  <div>
  <div className="text-sm text-gray-600">Project</div>
  <div className="font-medium">{budget.projects.name}</div>
@@ -194,7 +194,7 @@ export default function ViewBudgetDrawer({
  <Card>
  <CardHeader>
  <CardTitle className="flex items-center gap-xs">
- <FileText className="h-5 w-5" />
+ <FileText className="h-icon-sm w-icon-sm" />
  Notes
  </CardTitle>
  </CardHeader>
@@ -234,7 +234,7 @@ export default function ViewBudgetDrawer({
  </Button>
  {onEdit && (
  <Button onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Budget
  </Button>
  )}

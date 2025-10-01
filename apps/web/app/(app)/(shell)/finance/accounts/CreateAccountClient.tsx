@@ -109,10 +109,10 @@ export default function CreateAccountClient({
 
   const getAccountIcon = (kind: string) => {
     switch (kind) {
-      case 'bank': return <Building className="h-6 w-6" />;
-      case 'card': return <CreditCard className="h-6 w-6" />;
-      case 'cash': return <Banknote className="h-6 w-6" />;
-      default: return <Wallet className="h-6 w-6" />;
+      case 'bank': return <Building className="h-icon-md w-icon-md" />;
+      case 'card': return <CreditCard className="h-icon-md w-icon-md" />;
+      case 'cash': return <Banknote className="h-icon-md w-icon-md" />;
+      default: return <Wallet className="h-icon-md w-icon-md" />;
     }
   };
 
@@ -129,7 +129,7 @@ export default function CreateAccountClient({
         {/* Account Overview */}
         <Card className="p-md bg-accent/5 border-primary/20">
           <div className="flex items-center cluster-sm">
-            <Building className="h-8 w-8 color-accent" />
+            <Building className="h-icon-lg w-icon-lg color-accent" />
             <div>
               <h3 className="text-heading-4 color-accent">Account Management</h3>
               <p className="text-body-sm color-accent/80">
@@ -170,7 +170,7 @@ export default function CreateAccountClient({
                 Account Type *
               </label>
               <div className="relative">
-                <div className="absolute left-3 top-1/2 transform -translate-y-1/2 color-foreground/50">
+                <div className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-foreground/50">
                   {getAccountIcon(formData.kind)}
                 </div>
                 <Select
@@ -206,7 +206,7 @@ export default function CreateAccountClient({
           {shouldShowBankFields && (
             <div className="stack-md p-md bg-secondary/50 rounded-lg border">
               <h4 className="form-label color-foreground flex items-center cluster-sm">
-                <Building className="h-4 w-4" />
+                <Building className="h-icon-xs w-icon-xs" />
                 <span>Bank Details</span>
               </h4>
               
@@ -283,16 +283,16 @@ export default function CreateAccountClient({
           <Button
             type="submit"
             disabled={loading || !formData.name.trim()}
-            className="min-w-[120px]"
+            className="min-w-component-xl"
           >
             {loading ? (
               <div className="flex items-center cluster-sm">
-                <div className="w-4 h-4 border-2 border-background/30 border-t-background rounded-full animate-spin" />
+                <div className="w-icon-xs h-icon-xs border-2 border-background/30 border-t-background rounded-full animate-spin" />
                 <span>Adding...</span>
               </div>
             ) : (
               <div className="flex items-center cluster-sm">
-                <Plus className="h-4 w-4" />
+                <Plus className="h-icon-xs w-icon-xs" />
                 <span>Add Account</span>
               </div>
             )}

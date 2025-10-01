@@ -108,7 +108,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -137,7 +137,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 {stats.activePeople} {t('active')}
               </p>
             </div>
-            <Users className="h-8 w-8 color-accent" />
+            <Users className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
 
@@ -147,7 +147,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalRoles')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalRoles}</p>
             </div>
-            <Shield className="h-8 w-8 color-secondary" />
+            <Shield className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
 
@@ -157,7 +157,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalCompetencies')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalCompetencies}</p>
             </div>
-            <Award className="h-8 w-8 color-success" />
+            <Award className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
 
@@ -167,7 +167,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               <p className="text-body-sm form-label color-muted">{t('totalEndorsements')}</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{stats.totalEndorsements}</p>
             </div>
-            <Star className="h-8 w-8 color-warning" />
+            <Star className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
       </div>
@@ -182,7 +182,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               className="flex items-center cluster-sm p-md border rounded-lg hover:shadow-elevated transition-shadow cursor-pointer"
             >
               <div className={`p-sm rounded-lg ${action.color}`}>
-                <action.icon className="h-5 w-5 text-background" />
+                <action.icon className="h-icon-sm w-icon-sm text-background" />
               </div>
               <span className="text-body-sm form-label color-foreground">{action.label}</span>
             </a>
@@ -200,7 +200,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <CompletionBar
                   completed={stats.activePeople}
                   total={stats.totalPeople}
-                  className="w-24"
+                  className="w-component-lg"
                 />
                 <span className="text-body-sm form-label">{stats.activePeople}</span>
               </div>
@@ -211,7 +211,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <CompletionBar
                   completed={stats.totalPeople - stats.activePeople}
                   total={stats.totalPeople}
-                  className="w-24"
+                  className="w-component-lg"
                 />
                 <span className="text-body-sm form-label">{stats.totalPeople - stats.activePeople}</span>
               </div>
@@ -253,7 +253,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
       <Card title={t('recentActivity')}>
         <div className="p-md">
           <div className="text-center py-xl">
-            <Calendar className="h-12 w-12 color-muted/50 mx-auto mb-md" />
+            <Calendar className="h-icon-2xl w-icon-2xl color-muted/50 mx-auto mb-md" />
             <p className="color-muted">{t('noRecentActivity')}</p>
             <p className="text-body-sm color-muted/70 mt-sm">{t('activityWillAppearHere')}</p>
           </div>

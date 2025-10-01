@@ -157,7 +157,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
       <div className="stack-md">
         {[...Array(2)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-24 bg-secondary rounded-lg"></div>
+            <div className="h-component-lg bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -169,7 +169,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
       <div className="flex items-center justify-between">
         <h2 className="text-heading-4 text-heading-4">Emergency Contacts</h2>
         <Button onClick={() => openDrawer()} className="flex items-center gap-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Contact
         </Button>
       </div>
@@ -182,7 +182,7 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-md">
                     <div className="p-sm bg-destructive/10 rounded-lg">
-                      <AlertTriangle className="h-6 w-6 color-destructive" />
+                      <AlertTriangle className="h-icon-md w-icon-md color-destructive" />
                     </div>
                     
                     <div>
@@ -195,12 +195,12 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                       
                       <div className="stack-xs text-body-sm color-muted">
                         <div className="flex items-center gap-sm">
-                          <User className="h-4 w-4" />
+                          <User className="h-icon-xs w-icon-xs" />
                           <span>{contact.relationship}</span>
                         </div>
                         
                         <div className="flex items-center gap-sm">
-                          <Phone className="h-4 w-4" />
+                          <Phone className="h-icon-xs w-icon-xs" />
                           <span>{contact.phone_primary}</span>
                           {contact.phone_secondary && (
                             <span>• {contact.phone_secondary}</span>
@@ -235,14 +235,14 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
                      
                       onClick={() => openDrawer(contact)}
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </Button>
                     <Button
                       variant="outline"
                      
                       onClick={() => deleteContact(contact.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -252,13 +252,13 @@ export default function EmergencyContactClient({ orgId, userId }: { orgId: strin
         ) : (
           <Card>
             <div className="p-xl text-center">
-              <AlertTriangle className="h-12 w-12 mx-auto mb-md color-muted opacity-50" />
+              <AlertTriangle className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted opacity-50" />
               <h3 className="text-body form-label mb-sm">No Emergency Contacts</h3>
               <p className="color-muted mb-md">
                 Add emergency contacts for safety and security purposes.
               </p>
               <Button onClick={() => openDrawer()}>
-                <Plus className="h-4 w-4 mr-sm" />
+                <Plus className="h-icon-xs w-icon-xs mr-sm" />
                 Add Emergency Contact
               </Button>
             </div>

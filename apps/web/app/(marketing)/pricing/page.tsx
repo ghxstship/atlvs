@@ -230,7 +230,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -257,7 +257,7 @@ export default function PricingPage() {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="grid lg:grid-cols-3 gap-xl relative z-0 pt-2xl">
           {plans.map((plan: any) => {
@@ -294,7 +294,7 @@ export default function PricingPage() {
       </section>
 
       {/* Add-ons Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -316,7 +316,7 @@ export default function PricingPage() {
       <FAQSection faqs={faqs} />
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -328,13 +328,13 @@ export default function PricingPage() {
           </div>
         <div className="flex flex-col sm:flex-row gap-md justify-center items-center">
           <Link href="/auth/signup">
-            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center justify-center gap-sm whitespace-nowrap">
+            <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105 min-h-icon-xl flex items-center justify-center gap-sm whitespace-nowrap">
               <span>Start Free Trial</span>
-              <ArrowRight className="h-4 w-4 flex-shrink-0 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="h-icon-xs w-icon-xs flex-shrink-0 transition-transform group-hover:translate-x-1" />
             </Button>
           </Link>
           <Link href="/contact">
-            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105 min-h-[44px] flex items-center justify-center whitespace-nowrap">
+            <Button variant="outline" className="w-full sm:w-auto transition-all duration-200 hover:scale-105 min-h-icon-xl flex items-center justify-center whitespace-nowrap">
               Contact Sales
             </Button>
           </Link>

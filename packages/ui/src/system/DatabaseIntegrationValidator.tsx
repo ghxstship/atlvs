@@ -729,7 +729,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
   return (
     <div
       className={`fixed ${positionClasses[position]} z-[9998] bg-popover/95 text-popover-foreground rounded-lg shadow-popover backdrop-blur-sm transition-all duration-300 ${
-        isMinimized ? 'w-auto' : 'w-[420px]'
+        isMinimized ? 'w-auto' : 'w-modal-md'
       }`}
     >
       <div className="p-sm border-b border-border/50 flex justify-between items-center bg-gradient-to-r from-primary/20 to-secondary/20">
@@ -794,14 +794,14 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
                 <button
                   key={module}
                   onClick={() => setSelectedModule(isSelected ? null : module)}
-                  className={`px-sm py-xs text-[10px] rounded whitespace-nowrap transition-all ${
+                  className={`px-sm py-xs text-small rounded whitespace-nowrap transition-all ${
                     isSelected 
                       ? 'bg-accent/30 text-accent' 
                       : 'bg-foreground/5 hover:bg-muted/50'
                   }`}
                 >
                   <div>{module}</div>
-                  <div className={`text-[8px] ${
+                  <div className={`text-tiny ${
                     coverage === 100 ? 'text-success' : 
                     coverage > 50 ? 'text-warning' : 'text-destructive'
                   }`}>
@@ -814,21 +814,21 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Selected Module Details */}
           {selectedModule && report.modules.get(selectedModule) && (
-            <div className="bg-foreground/5 rounded p-sm max-h-48 overflow-y-auto">
+            <div className="bg-foreground/5 rounded p-sm max-h-container-xs overflow-y-auto">
               <h4 className="text-xs font-semibold mb-sm">{selectedModule} Module</h4>
               {report.modules.get(selectedModule).criticalIssues.length > 0 && (
                 <div className="mb-sm">
-                  <div className="text-[10px] text-destructive font-semibold mb-xs">Critical Issues:</div>
+                  <div className="text-small text-destructive font-semibold mb-xs">Critical Issues:</div>
                   {report.modules.get(selectedModule).criticalIssues.map((issue: string, i: number) => (
-                    <div key={i} className="text-[9px] text-destructive/80 mb-xs">• {issue}</div>
+                    <div key={i} className="text-xs text-destructive/80 mb-xs">• {issue}</div>
                   ))}
                 </div>
               )}
               {report.modules.get(selectedModule).recommendations.length > 0 && (
                 <div>
-                  <div className="text-[10px] text-warning font-semibold mb-xs">Recommendations:</div>
+                  <div className="text-small text-warning font-semibold mb-xs">Recommendations:</div>
                   {report.modules.get(selectedModule).recommendations.map((rec: string, i: number) => (
-                    <div key={i} className="text-[9px] text-warning/80 mb-xs">• {rec}</div>
+                    <div key={i} className="text-xs text-warning/80 mb-xs">• {rec}</div>
                   ))}
                 </div>
               )}
@@ -837,7 +837,7 @@ export const DatabaseIntegrationMonitor: React.FC<DatabaseMonitorProps> = ({
 
           {/* Critical Issues Summary */}
           {report.summary.criticalIssues > 0 && !selectedModule && (
-            <div className="bg-destructive/10 border border-destructive/30 rounded p-sm text-[10px]">
+            <div className="bg-destructive/10 border border-destructive/30 rounded p-sm text-small">
               <div className="text-destructive font-semibold mb-xs">
                 ⚠️ {report.summary.criticalIssues} Critical Issues Found
               </div>

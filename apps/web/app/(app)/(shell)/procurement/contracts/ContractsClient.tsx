@@ -357,13 +357,13 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  return (
  <div className={className}>
  <DataViewProvider config={dataViewConfig}>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Summary Cards */}
- <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Contracts</CardTitle>
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{contractSummary.total}</div>
@@ -376,7 +376,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Active Contracts</CardTitle>
- <CheckCircle className="h-4 w-4 text-muted-foreground" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold text-green-600">{contractSummary.active}</div>
@@ -389,7 +389,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Expiring Soon</CardTitle>
- <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold text-yellow-600">{contractSummary.expiringSoon}</div>
@@ -402,7 +402,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Value</CardTitle>
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{formatCurrency(contractSummary.totalValue)}</div>
@@ -415,36 +415,36 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
 
  {/* Controls */}
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Button variant="outline" size="sm" onClick={handleCreateContract}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  New Contract
  </Button>
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export
  </Button>
  </div>
  </div>
 
  {/* Contracts Tabs */}
- <Tabs defaultValue="contracts-list" className="space-y-4">
+ <Tabs defaultValue="contracts-list" className="space-y-md">
  <TabsList>
  <TabsTrigger value="contracts-list">
- <FileText className="h-4 w-4 mr-2" />
+ <FileText className="h-icon-xs w-icon-xs mr-2" />
  Contracts List
  </TabsTrigger>
  <TabsTrigger value="expiring">
- <Clock className="h-4 w-4 mr-2" />
+ <Clock className="h-icon-xs w-icon-xs mr-2" />
  Expiring Soon
  </TabsTrigger>
  <TabsTrigger value="analytics">
- <TrendingUp className="h-4 w-4 mr-2" />
+ <TrendingUp className="h-icon-xs w-icon-xs mr-2" />
  Analytics
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="contracts-list" className="space-y-4">
+ <TabsContent value="contracts-list" className="space-y-md">
  {/* Data Actions */}
  <DataActions />
 
@@ -469,7 +469,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <ListView titleField="title" />
  </TabsContent>
 
- <TabsContent value="expiring" className="space-y-4">
+ <TabsContent value="expiring" className="space-y-md">
  <Card>
  <CardHeader>
  <CardTitle>Contracts Expiring Soon</CardTitle>
@@ -478,7 +478,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {contracts
  .filter(contract => {
  const days = getDaysUntilExpiry(contract.endDate);
@@ -488,11 +488,11 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  .map((contract) => {
  const daysUntilExpiry = getDaysUntilExpiry(contract.endDate);
  return (
- <div key={contract.id} className="flex items-center justify-between p-4 border rounded-lg">
- <div className="space-y-1">
+ <div key={contract.id} className="flex items-center justify-between p-md border rounded-lg">
+ <div className="space-y-xs">
  <h4 className="font-medium">{contract.title}</h4>
  <p className="text-sm text-muted-foreground">{contract.vendor}</p>
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Badge className={getStatusColor(contract.status)}>
  {contract.status}
  </Badge>
@@ -501,7 +501,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </span>
  </div>
  </div>
- <div className="text-right space-y-1">
+ <div className="text-right space-y-xs">
  <div className={`text-sm font-medium ${
  daysUntilExpiry <= 30 ? 'text-red-600' : 
  daysUntilExpiry <= 60 ? 'text-yellow-600' : 'text-blue-600'
@@ -511,7 +511,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <div className="text-xs text-muted-foreground">
  Expires {new Date(contract.endDate).toLocaleDateString()}
  </div>
- <div className="flex space-x-1">
+ <div className="flex space-x-xs">
  <Button
  size="sm"
  variant="outline"
@@ -536,8 +536,8 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </Card>
  </TabsContent>
 
- <TabsContent value="analytics" className="space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <TabsContent value="analytics" className="space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <Card>
  <CardHeader>
  <CardTitle>Contract Types</CardTitle>
@@ -546,15 +546,15 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {['master_agreement', 'service_agreement', 'purchase_agreement', 'sow', 'nda'].map((type) => {
  const count = contracts.filter(c => c.type === type).length;
  const percentage = contracts.length > 0 ? (count / contracts.length) * 100 : 0;
  return (
  <div key={type} className="flex items-center justify-between">
  <span className="capitalize">{type.replace('_', ' ')}</span>
- <div className="flex items-center space-x-2">
- <div className="w-20 bg-gray-200 rounded-full h-2">
+ <div className="flex items-center space-x-xs">
+ <div className="w-component-lg bg-gray-200 rounded-full h-2">
  <div 
  className="bg-blue-600 h-2 rounded-full" 
  style={{ width: `${percentage}%` }}
@@ -577,15 +577,15 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {['low', 'medium', 'high'].map((risk) => {
  const count = contracts.filter(c => c.riskLevel === risk).length;
  const percentage = contracts.length > 0 ? (count / contracts.length) * 100 : 0;
  return (
  <div key={risk} className="flex items-center justify-between">
  <span className={`capitalize ${getRiskColor(risk)}`}>{risk} Risk</span>
- <div className="flex items-center space-x-2">
- <div className="w-20 bg-gray-200 rounded-full h-2">
+ <div className="flex items-center space-x-xs">
+ <div className="w-component-lg bg-gray-200 rounded-full h-2">
  <div 
  className={`h-2 rounded-full ${
  risk === 'high' ? 'bg-red-500' :
@@ -622,10 +622,10 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  key: 'details',
  label: 'Contract Details',
  content: (
- <div className="p-md space-y-4">
+ <div className="p-md space-y-md">
  {selectedDrawerContract && (
  <>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Title</label>
  <p className="text-sm text-muted-foreground">{selectedDrawerContract.title}</p>
@@ -635,7 +635,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  <p className="text-sm text-muted-foreground">{selectedDrawerContract.vendor}</p>
  </div>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Type</label>
  <p className="text-sm text-muted-foreground capitalize">
@@ -649,7 +649,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  </Badge>
  </div>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Value</label>
  <p className="text-sm text-muted-foreground">
@@ -686,7 +686,7 @@ export default function ContractsClient({ className, orgId }: ContractsClientPro
  content: (
  <div className="p-md">
  {selectedDrawerContract && (
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">Start Date</span>
  <span className="text-sm text-muted-foreground">

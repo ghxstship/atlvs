@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { cn } from '../system';
+import { cn } from '../../system';
 
 export interface TooltipProps {
   content: React.ReactNode;

@@ -55,17 +55,17 @@ export default function CatalogGridView({
  <Card key={index} className="p-md">
  <div className="animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="h-4 bg-muted rounded w-3/4"></div>
- <div className="h-6 bg-muted rounded-full w-16"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md"></div>
  </div>
  <div className="h-3 bg-muted rounded w-1/2 mb-sm"></div>
  <div className="h-3 bg-muted rounded w-full mb-sm"></div>
  <div className="h-3 bg-muted rounded w-2/3 mb-md"></div>
  <div className="flex justify-between items-center">
- <div className="h-5 bg-muted rounded w-20"></div>
+ <div className="h-icon-sm bg-muted rounded w-component-lg"></div>
  <div className="flex gap-xs">
- <div className="h-8 w-8 bg-muted rounded"></div>
- <div className="h-8 w-8 bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
  </div>
  </div>
  </div>
@@ -78,7 +78,7 @@ export default function CatalogGridView({
  if (items.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Package2 className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Package2 className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No catalog items found</h3>
  <p className="text-muted-foreground">
  No items match your current filters. Try adjusting your search criteria.
@@ -181,7 +181,7 @@ export default function CatalogGridView({
  {/* Header */}
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm min-w-0 flex-1">
- <TypeIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <TypeIcon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <h4 className="font-medium truncate">{item.name}</h4>
  </div>
  <Badge variant={getStatusColor(item.status)} className="ml-sm">
@@ -207,7 +207,7 @@ export default function CatalogGridView({
 
  {/* Description */}
  {item.description && (
- <p className="text-sm text-muted-foreground line-clamp-2 mb-sm">
+ <p className="text-sm text-muted-foreground line-clamp-xs mb-sm">
  {item.description}
  </p>
  )}

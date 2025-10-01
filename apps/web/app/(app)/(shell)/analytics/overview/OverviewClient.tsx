@@ -212,9 +212,9 @@ export default function OverviewClient({ organizationId, translations }: Overvie
 
   const getChangeIcon = (changeType: string) => {
     switch (changeType) {
-      case 'increase': return <ArrowUpRight className="h-4 w-4 color-success" />;
-      case 'decrease': return <ArrowDownRight className="h-4 w-4 color-destructive" />;
-      default: return <Minus className="h-4 w-4 color-muted" />;
+      case 'increase': return <ArrowUpRight className="h-icon-xs w-icon-xs color-success" />;
+      case 'decrease': return <ArrowDownRight className="h-icon-xs w-icon-xs color-destructive" />;
+      default: return <Minus className="h-icon-xs w-icon-xs color-muted" />;
     }
   };
 
@@ -232,7 +232,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {[1, 2, 3, 4].map((i: any) => (
             <Card key={i} className="animate-pulse">
-              <div className="h-20 bg-secondary rounded"></div>
+              <div className="h-component-lg bg-secondary rounded"></div>
             </Card>
           ))}
         </div>
@@ -261,7 +261,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             <Card key={metric.id} className="p-lg">
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <IconComponent className="h-5 w-5 color-accent" />
+                  <IconComponent className="h-icon-sm w-icon-sm color-accent" />
                   <span className="text-body-sm form-label color-muted">
                     {metric.title}
                   </span>
@@ -296,7 +296,7 @@ export default function OverviewClient({ organizationId, translations }: Overvie
             {recentActivity.map((activity: any) => (
               <div key={activity.id} className="flex items-start cluster-sm">
                 <div className="flex-shrink-0">
-                  <Activity className="h-4 w-4 color-accent mt-xs" />
+                  <Activity className="h-icon-xs w-icon-xs color-accent mt-xs" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-body-sm color-foreground">
@@ -363,15 +363,15 @@ export default function OverviewClient({ organizationId, translations }: Overvie
       <Card title="Quick Actions" className="p-lg">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
           <Button variant="outline" className="flex items-center cluster-sm">
-            <BarChart3 className="h-4 w-4" />
+            <BarChart3 className="h-icon-xs w-icon-xs" />
             <span>Create Dashboard</span>
           </Button>
           <Button variant="outline" className="flex items-center cluster-sm">
-            <TrendingUp className="h-4 w-4" />
+            <TrendingUp className="h-icon-xs w-icon-xs" />
             <span>Generate Report</span>
           </Button>
           <Button variant="outline" className="flex items-center cluster-sm">
-            <Clock className="h-4 w-4" />
+            <Clock className="h-icon-xs w-icon-xs" />
             <span>Schedule Export</span>
           </Button>
         </div>

@@ -202,7 +202,7 @@ export default function TravelPreferencesClient() {
       <div className="stack-md">
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -227,7 +227,7 @@ export default function TravelPreferencesClient() {
               Cancel
             </Button>
             <Button onClick={handleSave}>
-              <Save className="w-4 h-4 mr-sm" />
+              <Save className="w-icon-xs h-icon-xs mr-sm" />
               Save
             </Button>
           </div>
@@ -238,7 +238,7 @@ export default function TravelPreferencesClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Globe className="w-5 h-5 mr-sm color-accent" />
+            <Globe className="w-icon-sm h-icon-sm mr-sm color-accent" />
             Passport Information
           </h3>
         </CardHeader>
@@ -296,7 +296,7 @@ export default function TravelPreferencesClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Plane className="w-5 h-5 mr-sm color-secondary" />
+            <Plane className="w-icon-sm h-icon-sm mr-sm color-secondary" />
             Flight Preferences
           </h3>
         </CardHeader>
@@ -352,7 +352,7 @@ export default function TravelPreferencesClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addAirline()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -364,7 +364,7 @@ export default function TravelPreferencesClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Hotel className="w-5 h-5 mr-sm color-success" />
+            <Hotel className="w-icon-sm h-icon-sm mr-sm color-success" />
             Hotel Preferences
           </h3>
         </CardHeader>
@@ -390,7 +390,7 @@ export default function TravelPreferencesClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addHotel()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -402,7 +402,7 @@ export default function TravelPreferencesClient() {
       <Card>
         <CardHeader>
           <h3 className="text-heading-4 flex items-center">
-            <Car className="w-5 h-5 mr-sm color-warning" />
+            <Car className="w-icon-sm h-icon-sm mr-sm color-warning" />
             Car Rental Preferences
           </h3>
         </CardHeader>
@@ -428,7 +428,7 @@ export default function TravelPreferencesClient() {
                   onKeyPress={(e: any) => e.key === 'Enter' && addCarRental()}
                 />
                 <Button>
-                  <Plus className="w-4 h-4" />
+                  <Plus className="w-icon-xs h-icon-xs" />
                 </Button>
               </div>
             )}
@@ -458,7 +458,7 @@ export default function TravelPreferencesClient() {
                    
                     onClick={() => removeLoyaltyProgram(index)}
                   >
-                    <X className="w-4 h-4" />
+                    <X className="w-icon-xs h-icon-xs" />
                   </Button>
                 )}
               </div>
@@ -502,7 +502,7 @@ export default function TravelPreferencesClient() {
                   />
                 </div>
                 <Button>
-                  <Plus className="w-4 h-4 mr-sm" />
+                  <Plus className="w-icon-xs h-icon-xs mr-sm" />
                   Add Loyalty Program
                 </Button>
               </div>

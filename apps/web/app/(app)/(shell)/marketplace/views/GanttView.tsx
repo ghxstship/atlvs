@@ -87,12 +87,12 @@ export default function GanttView({ orgId }: GanttViewProps) {
 
   if (isLoading) {
     return (
-      <div className="space-y-4">
-        <div className="h-8 bg-muted animate-pulse rounded" />
+      <div className="space-y-md">
+        <div className="h-icon-lg bg-muted animate-pulse rounded" />
         <div className="overflow-x-auto">
-          <div className="min-w-[800px] space-y-2">
+          <div className="min-w-content-xlarge space-y-xs">
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-12 bg-muted animate-pulse rounded" />
+              <div key={i} className="h-icon-2xl bg-muted animate-pulse rounded" />
             ))}
           </div>
         </div>
@@ -102,8 +102,8 @@ export default function GanttView({ orgId }: GanttViewProps) {
 
   if (error) {
     return (
-      <div className="text-center py-12">
-        <GitBranch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+      <div className="text-center py-xsxl">
+        <GitBranch className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
         <h3 className="text-lg font-medium mb-2">Unable to load Gantt chart</h3>
         <p className="text-muted-foreground">
           Failed to load project timeline data
@@ -113,12 +113,12 @@ export default function GanttView({ orgId }: GanttViewProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <GitBranch className="h-6 w-6" />
+          <h2 className="text-2xl font-bold flex items-center gap-xs">
+            <GitBranch className="h-icon-md w-icon-md" />
             Project Timeline
           </h2>
           <p className="text-muted-foreground">
@@ -132,8 +132,8 @@ export default function GanttView({ orgId }: GanttViewProps) {
 
       {projects.length === 0 ? (
         <Card>
-          <CardContent className="text-center py-12">
-            <GitBranch className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+          <CardContent className="text-center py-xsxl">
+            <GitBranch className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
             <h3 className="text-lg font-medium mb-2">No projects to display</h3>
             <p className="text-muted-foreground">
               Create projects with start and end dates to view the timeline
@@ -147,17 +147,17 @@ export default function GanttView({ orgId }: GanttViewProps) {
           </CardHeader>
           <CardContent>
             <div className="overflow-x-auto">
-              <div className="min-w-[800px]">
+              <div className="min-w-content-xlarge">
                 {/* Month Header */}
                 <div className="flex border-b mb-4">
-                  <div className="w-64 p-3 font-medium border-r bg-muted/50">
+                  <div className="w-container-sm p-sm font-medium border-r bg-muted/50">
                     Project
                   </div>
                   <div className="flex-1 flex">
                     {monthColumns.map((column, index) => (
                       <div
                         key={`${column.year}-${column.month}`}
-                        className="flex-1 p-3 text-center font-medium border-r bg-muted/30 text-sm"
+                        className="flex-1 p-sm text-center font-medium border-r bg-muted/30 text-sm"
                       >
                         {column.label}
                       </div>
@@ -166,18 +166,18 @@ export default function GanttView({ orgId }: GanttViewProps) {
                 </div>
 
                 {/* Project Rows */}
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   {projects.map((project) => {
                     const position = getProjectPosition(project);
 
                     return (
                       <div key={project.id} className="flex border rounded-lg hover:shadow-sm transition-shadow">
                         {/* Project Info */}
-                        <div className="w-64 p-4 border-r">
-                          <h3 className="font-medium line-clamp-1 mb-1">
+                        <div className="w-container-sm p-md border-r">
+                          <h3 className="font-medium line-clamp-xs mb-1">
                             {project.title}
                           </h3>
-                          <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-xs mb-2">
                             <Badge variant="outline" className="text-xs">
                               {project.status.replace('_', ' ')}
                             </Badge>
@@ -185,13 +185,13 @@ export default function GanttView({ orgId }: GanttViewProps) {
                               {project.experience_level || 'Any level'}
                             </Badge>
                           </div>
-                          <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                            <div className="flex items-center gap-1">
+                          <div className="flex items-center gap-sm text-xs text-muted-foreground">
+                            <div className="flex items-center gap-xs">
                               <User className="h-3 w-3" />
                               <span>{project.client_id}</span>
                             </div>
                             {project.budget_max && (
-                              <div className="flex items-center gap-1">
+                              <div className="flex items-center gap-xs">
                                 <span>${project.budget_max}</span>
                               </div>
                             )}
@@ -199,10 +199,10 @@ export default function GanttView({ orgId }: GanttViewProps) {
                         </div>
 
                         {/* Timeline */}
-                        <div className="flex-1 relative p-4 min-h-[60px]">
+                        <div className="flex-1 relative p-md min-h-toolbar">
                           {position ? (
                             <div
-                              className={`absolute top-1/2 transform -translate-y-1/2 h-6 rounded ${getStatusColor(project.status)} text-white text-xs flex items-center px-2 font-medium shadow-sm`}
+                              className={`absolute top-xs/2 transform -translate-y-1/2 h-icon-md rounded ${getStatusColor(project.status)} text-white text-xs flex items-center px-xs font-medium shadow-sm`}
                               style={{
                                 left: position.left,
                                 width: position.width,
@@ -214,8 +214,8 @@ export default function GanttView({ orgId }: GanttViewProps) {
                             </div>
                           ) : (
                             <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
-                              <div className="flex items-center gap-2">
-                                <Clock className="h-4 w-4" />
+                              <div className="flex items-center gap-xs">
+                                <Clock className="h-icon-xs w-icon-xs" />
                                 <span>No timeline set</span>
                               </div>
                             </div>
@@ -247,21 +247,21 @@ export default function GanttView({ orgId }: GanttViewProps) {
           <CardTitle className="text-base">Legend</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="flex flex-wrap gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-green-500 rounded" />
+          <div className="flex flex-wrap gap-md">
+            <div className="flex items-center gap-xs">
+              <div className="w-icon-xs h-icon-xs bg-green-500 rounded" />
               <span className="text-sm">Completed</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-blue-500 rounded" />
+            <div className="flex items-center gap-xs">
+              <div className="w-icon-xs h-icon-xs bg-blue-500 rounded" />
               <span className="text-sm">In Progress</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-yellow-500 rounded" />
+            <div className="flex items-center gap-xs">
+              <div className="w-icon-xs h-icon-xs bg-yellow-500 rounded" />
               <span className="text-sm">Open</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-4 h-4 bg-gray-500 rounded" />
+            <div className="flex items-center gap-xs">
+              <div className="w-icon-xs h-icon-xs bg-gray-500 rounded" />
               <span className="text-sm">Draft</span>
             </div>
           </div>

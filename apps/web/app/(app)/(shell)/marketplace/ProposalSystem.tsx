@@ -353,14 +353,14 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <Card className="p-lg">
  <div className="brand-marketplace flex justify-between items-start mb-md">
  <div className="brand-marketplace flex items-start cluster">
- <div className="brand-marketplace w-12 h-12 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background text-heading-3">
+ <div className="brand-marketplace w-icon-2xl h-icon-2xl rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-background text-heading-3">
  {proposal.vendor?.display_name?.charAt(0) || 'V'}
  </div>
  <div>
  <h4 className="text-body text-heading-4">{proposal.vendor?.display_name || 'Vendor'}</h4>
  <div className="brand-marketplace flex items-center cluster-sm text-body-sm color-muted">
  <div className="brand-marketplace flex items-center">
- <Star className="h-4 w-4 color-warning fill-warning mr-xs" />
+ <Star className="h-icon-xs w-icon-xs color-warning fill-warning mr-xs" />
  <span>{proposal.vendor?.rating || 0}</span>
  </div>
  <span>•</span>
@@ -400,7 +400,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
  <div>
  <p className="text-body-sm form-label mb-xs">Cover Letter</p>
- <p className="text-body-sm line-clamp-3">{proposal.cover_letter}</p>
+ <p className="text-body-sm line-clamp-sm">{proposal.cover_letter}</p>
  </div>
 
  {proposal.milestones && proposal.milestones.length > 0 && (
@@ -431,7 +431,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  className="flex-1"
  onClick={() => updateProposalStatus(proposal.id, 'accepted')}
  >
- <CheckCircle className="h-4 w-4 mr-xs" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-xs" />
  Accept
  </Button>
  <Button 
@@ -440,7 +440,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  className="flex-1"
  onClick={() => updateProposalStatus(proposal.id, 'shortlisted')}
  >
- <Star className="h-4 w-4 mr-xs" />
+ <Star className="h-icon-xs w-icon-xs mr-xs" />
  Shortlist
  </Button>
  <Button 
@@ -448,7 +448,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  variant="ghost"
  onClick={() => updateProposalStatus(proposal.id, 'rejected')}
  >
- <XCircle className="h-4 w-4" />
+ <XCircle className="h-icon-xs w-icon-xs" />
  </Button>
  </>
  ) : (
@@ -469,8 +469,8 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
  if (loading) {
  return (
- <div className="brand-marketplace flex items-center justify-center h-64">
- <div className="brand-marketplace animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="brand-marketplace flex items-center justify-center h-container-sm">
+ <div className="brand-marketplace animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  </div>
  );
  }
@@ -484,7 +484,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <p className="text-body-sm color-muted mb-md">{project.description}</p>
  <div className="brand-marketplace flex items-center cluster-lg text-body-sm">
  <div className="brand-marketplace flex items-center">
- <DollarSign className="h-4 w-4 mr-xs color-muted" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-xs color-muted" />
  <span>
  {project.budget_type === 'fixed' ? 
  `$${project.budget_min?.toLocaleString()} - $${project.budget_max?.toLocaleString()}` :
@@ -495,11 +495,11 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  </span>
  </div>
  <div className="brand-marketplace flex items-center">
- <Calendar className="h-4 w-4 mr-xs color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs mr-xs color-muted" />
  <span>{project.duration || 'Timeline flexible'}</span>
  </div>
  <div className="brand-marketplace flex items-center">
- <FileText className="h-4 w-4 mr-xs color-muted" />
+ <FileText className="h-icon-xs w-icon-xs mr-xs color-muted" />
  <span>{proposals.length} proposals</span>
  </div>
  </div>
@@ -512,7 +512,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <h3 className="text-body text-heading-4">Your Proposals</h3>
  {proposals.length === 0 && (
  <Button onClick={() => handleOpenDrawer()}>
- <Send className="h-4 w-4 mr-sm" />
+ <Send className="h-icon-xs w-icon-xs mr-sm" />
  Submit Proposal
  </Button>
  )}
@@ -535,8 +535,8 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
 
  {/* Proposals List */}
  {proposals.length === 0 ? (
- <Card className="p-2xl text-center">
- <Award className="h-12 w-12 mx-auto mb-md color-muted" />
+ <Card className="p-xsxl text-center">
+ <Award className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-body text-heading-4 mb-sm">
  {mode === 'vendor' ? 'No proposals submitted yet' : 'No proposals received yet'}
  </h3>
@@ -550,7 +550,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <Button onClick={() => handleOpenDrawer()}
  disabled={isSubmitting}
  >
- <Send className="h-4 w-4 mr-sm" />
+ <Send className="h-icon-xs w-icon-xs mr-sm" />
  Submit Proposal
  </Button>
  )}
@@ -699,7 +699,7 @@ export default function ProposalSystem({ projectId, vendorId, userId, mode }: Pr
  <div className="flex items-center gap-sm text-body-sm color-muted">
  {error && (
  <>
- <AlertCircle className="h-4 w-4 color-destructive" />
+ <AlertCircle className="h-icon-xs w-icon-xs color-destructive" />
  <span className="color-destructive">{error}</span>
  </>
  )}

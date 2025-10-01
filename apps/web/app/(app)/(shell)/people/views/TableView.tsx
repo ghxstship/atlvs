@@ -155,7 +155,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       <th
         key={column.key}
         className={cn(
-          "bg-white border-b border-gray-200 px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
+          "bg-white border-b border-gray-200 px-md py-sm text-left text-xs font-medium text-gray-500 uppercase tracking-wider",
           column.frozen && "sticky left-0 z-10 bg-gray-50 shadow-sm",
           column.sortable && "cursor-pointer hover:bg-gray-50 select-none",
           column.width && `w-[${column.width}px]`
@@ -163,7 +163,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
         style={{ width: column.width }}
         onClick={column.sortable ? () => handleSort(column.key) : undefined}
       >
-        <div className="flex items-center space-x-1">
+        <div className="flex items-center space-x-xs">
           <span>{column.title}</span>
           {column.sortable && (
             <div className="flex flex-col">
@@ -188,7 +188,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
           <input
             type="text"
             placeholder={`Filter ${column.title}`}
-            className="mt-1 block w-full px-2 py-1 text-xs border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500"
+            className="mt-1 block w-full px-xs py-xs text-xs border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500"
             value={filters[column.key] || ''}
             onChange={(e) => handleFilterChange(column.key, e.target.value)}
             onClick={(e) => e.stopPropagation()}
@@ -207,7 +207,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       <td
         key={column.key}
         className={cn(
-          "px-4 py-3 whitespace-nowrap text-sm text-gray-900 border-b border-gray-200",
+          "px-md py-sm whitespace-nowrap text-sm text-gray-900 border-b border-gray-200",
           column.frozen && "sticky left-0 z-10 bg-white",
           onRowClick && "cursor-pointer hover:bg-gray-50"
         )}
@@ -224,18 +224,18 @@ const PeopleTableView: React.FC<TableViewProps> = ({
     if (!hasActions) return null;
 
     return (
-      <td className="px-4 py-3 whitespace-nowrap text-right text-sm font-medium border-b border-gray-200">
-        <div className="flex items-center justify-end space-x-2">
+      <td className="px-md py-sm whitespace-nowrap text-right text-sm font-medium border-b border-gray-200">
+        <div className="flex items-center justify-end space-x-xs">
           {onView && (
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 onView(row);
               }}
-              className="text-blue-600 hover:text-blue-900 p-1 rounded hover:bg-blue-50"
+              className="text-blue-600 hover:text-blue-900 p-xs rounded hover:bg-blue-50"
               title="View"
             >
-              <Eye className="h-4 w-4" />
+              <Eye className="h-icon-xs w-icon-xs" />
             </button>
           )}
           {onEdit && (
@@ -244,10 +244,10 @@ const PeopleTableView: React.FC<TableViewProps> = ({
                 e.stopPropagation();
                 onEdit(row);
               }}
-              className="text-green-600 hover:text-green-900 p-1 rounded hover:bg-green-50"
+              className="text-green-600 hover:text-green-900 p-xs rounded hover:bg-green-50"
               title="Edit"
             >
-              <Edit className="h-4 w-4" />
+              <Edit className="h-icon-xs w-icon-xs" />
             </button>
           )}
           {onDelete && (
@@ -256,10 +256,10 @@ const PeopleTableView: React.FC<TableViewProps> = ({
                 e.stopPropagation();
                 onDelete(row);
               }}
-              className="text-red-600 hover:text-red-900 p-1 rounded hover:bg-red-50"
+              className="text-red-600 hover:text-red-900 p-xs rounded hover:bg-red-50"
               title="Delete"
             >
-              <Trash2 className="h-4 w-4" />
+              <Trash2 className="h-icon-xs w-icon-xs" />
             </button>
           )}
         </div>
@@ -281,10 +281,10 @@ const PeopleTableView: React.FC<TableViewProps> = ({
             <tr>
               {/* Selection column */}
               {selectable && (
-                <th className="bg-gray-50 border-b border-gray-200 px-4 py-3">
+                <th className="bg-gray-50 border-b border-gray-200 px-md py-sm">
                   <input
                     type="checkbox"
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                     checked={allSelected}
                     ref={(el) => {
                       if (el) el.indeterminate = someSelected;
@@ -302,7 +302,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
 
               {/* Actions column */}
               {(onView || onEdit || onDelete) && (
-                <th className="bg-gray-50 border-b border-gray-200 px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <th className="bg-gray-50 border-b border-gray-200 px-md py-sm text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
                 </th>
               )}
@@ -315,18 +315,18 @@ const PeopleTableView: React.FC<TableViewProps> = ({
               Array.from({ length: 5 }).map((_, index) => (
                 <tr key={`skeleton-${index}`}>
                   {selectable && (
-                    <td className="px-4 py-3">
-                      <div className="h-4 w-4 bg-gray-200 rounded animate-pulse"></div>
+                    <td className="px-md py-sm">
+                      <div className="h-icon-xs w-icon-xs bg-gray-200 rounded animate-pulse"></div>
                     </td>
                   )}
                   {columns.map((column) => (
-                    <td key={column.key} className="px-4 py-3">
-                      <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                    <td key={column.key} className="px-md py-sm">
+                      <div className="h-icon-xs bg-gray-200 rounded animate-pulse"></div>
                     </td>
                   ))}
                   {(onView || onEdit || onDelete) && (
-                    <td className="px-4 py-3">
-                      <div className="h-4 w-16 bg-gray-200 rounded animate-pulse"></div>
+                    <td className="px-md py-sm">
+                      <div className="h-icon-xs w-component-md bg-gray-200 rounded animate-pulse"></div>
                     </td>
                   )}
                 </tr>
@@ -336,7 +336,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
               <tr>
                 <td
                   colSpan={columns.length + (selectable ? 1 : 0) + ((onView || onEdit || onDelete) ? 1 : 0)}
-                  className="px-4 py-8 text-center text-gray-500"
+                  className="px-md py-xl text-center text-gray-500"
                 >
                   No data found
                 </td>
@@ -355,10 +355,10 @@ const PeopleTableView: React.FC<TableViewProps> = ({
                 >
                   {/* Selection checkbox */}
                   {selectable && (
-                    <td className="px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                    <td className="px-md py-sm" onClick={(e) => e.stopPropagation()}>
                       <input
                         type="checkbox"
-                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                        className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                         checked={selectedRows.includes(row.id)}
                         onChange={(e) => handleRowSelection(row.id, e.target.checked)}
                       />
@@ -381,7 +381,7 @@ const PeopleTableView: React.FC<TableViewProps> = ({
       </div>
 
       {/* Table footer with summary */}
-      <div className="bg-gray-50 px-4 py-3 border-t border-gray-200">
+      <div className="bg-gray-50 px-md py-sm border-t border-gray-200">
         <div className="flex items-center justify-between text-sm text-gray-700">
           <div>
             Showing {processedData.length} of {data.length} entries

@@ -9,7 +9,7 @@ import { cn } from '../../lib/utils';
 
 const colorPickerVariants = cva(
   [
-    'h-10',
+    'h-icon-xl',
     'w-full',
     'rounded-md',
     'border',
@@ -91,10 +91,10 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
     };
 
     const colorInput = (
-      <div className="flex gap-2">
+      <div className="flex gap-xs">
         <input
           type="color"
-          className={cn(colorPickerVariants({ variant: colorVariant }), 'flex-shrink-0 w-20', className)}
+          className={cn(colorPickerVariants({ variant: colorVariant }), 'flex-shrink-0 w-component-lg', className)}
           ref={ref}
           id={colorId}
           disabled={disabled}
@@ -117,7 +117,7 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
               }
             }}
             className={cn(
-              'flex-1 h-10 px-3 rounded-md border border-input bg-background',
+              'flex-1 h-icon-xl px-3 rounded-md border border-input bg-background',
               'text-sm font-mono uppercase',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
               'disabled:cursor-not-allowed disabled:opacity-50'
@@ -153,7 +153,7 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
         {colorInput}
 
         {presets && presets.length > 0 && (
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-xs">
             <span className="text-xs text-muted-foreground">Presets:</span>
             {presets.map((preset) => (
               <button
@@ -161,7 +161,7 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
                 type="button"
                 onClick={() => handlePresetClick(preset)}
                 className={cn(
-                  'w-8 h-8 rounded-md border-2 transition-all',
+                  'w-icon-lg h-icon-lg rounded-md border-2 transition-all',
                   currentValue.toLowerCase() === preset.toLowerCase()
                     ? 'border-ring scale-110'
                     : 'border-transparent hover:border-ring/50 hover:scale-105',

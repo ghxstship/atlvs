@@ -295,7 +295,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     <div
       key={event.id}
       className={cn(
-        'text-xs p-1 rounded cursor-pointer truncate border-l-2 mb-1',
+        'text-xs p-xs rounded cursor-pointer truncate border-l-2 mb-1',
         'hover:opacity-80 transition-opacity'
       )}
       style={{
@@ -309,17 +309,17 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     >
       <div className="font-medium truncate">{event.title}</div>
       {event.location && (
-        <div className="text-xs opacity-75 truncate flex items-center gap-1">
+        <div className="text-xs opacity-75 truncate flex items-center gap-xs">
           <MapPin className="h-3 w-3" />
           {event.location}
         </div>
       )}
       {event.attendees && event.attendees.length > 0 && (
-        <div className="flex items-center gap-1 mt-1">
+        <div className="flex items-center gap-xs mt-1">
           <Users className="h-3 w-3" />
           <div className="flex -space-x-1">
             {event.attendees.slice(0, 3).map((attendee, idx) => (
-              <Avatar key={idx} className="h-4 w-4 border border-background">
+              <Avatar key={idx} className="h-icon-xs w-icon-xs border border-background">
                 <AvatarImage src={attendee.avatar} />
                 <AvatarFallback className="text-xs">
                   {attendee.name.slice(0, 2).toUpperCase()}
@@ -327,7 +327,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
               </Avatar>
             ))}
             {event.attendees.length > 3 && (
-              <div className="h-4 w-4 rounded-full bg-muted border border-background flex items-center justify-center text-xs">
+              <div className="h-icon-xs w-icon-xs rounded-full bg-muted border border-background flex items-center justify-center text-xs">
                 +{event.attendees.length - 3}
               </div>
             )}
@@ -356,7 +356,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
         {/* Header */}
         <div className="grid grid-cols-7 border-b">
           {['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].map((day, idx) => (
-            <div key={day} className="p-3 text-center font-medium text-sm text-muted-foreground border-r last:border-r-0">
+            <div key={day} className="p-sm text-center font-medium text-sm text-muted-foreground border-r last:border-r-0">
               {day}
             </div>
           ))}
@@ -379,7 +379,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 <div
                   key={`${weekIdx}-${dayIdx}`}
                   className={cn(
-                    'min-h-[120px] p-2 border-r border-b last:border-r-0 cursor-pointer hover:bg-accent/50 transition-colors',
+                    'min-h-header-lg p-xs border-r border-b last:border-r-0 cursor-pointer hover:bg-accent/50 transition-colors',
                     !isCurrentMonth && 'bg-muted/30 text-muted-foreground',
                     isSelected && 'bg-accent ring-2 ring-primary',
                     isCurrentDay && 'bg-primary/10'
@@ -390,7 +390,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                     {format(day, 'd')}
                   </div>
 
-                  <div className="space-y-1">
+                  <div className="space-y-xs">
                     {dayEvents.slice(0, 3).map(event => renderEvent(event))}
                     {dayEvents.length > 3 && (
                       <div className="text-xs text-muted-foreground">
@@ -413,13 +413,13 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
     const weekDays = eachDayOfInterval({ start: weekStart, end: endOfWeek(currentDate, { weekStartsOn: firstDayOfWeek }) });
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-md">
         {/* Time slots would go here - simplified for brevity */}
-        <div className="grid grid-cols-8 gap-2">
+        <div className="grid grid-cols-8 gap-xs">
           {/* Time column */}
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {Array.from({ length: 24 }, (_, i) => (
-              <div key={i} className="h-12 text-xs text-muted-foreground text-right pr-2">
+              <div key={i} className="h-icon-2xl text-xs text-muted-foreground text-right pr-2">
                 {format(new Date().setHours(i, 0, 0, 0), timeFormat === '12h' ? 'ha' : 'HH:mm')}
               </div>
             ))}
@@ -427,12 +427,12 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 
           {/* Day columns */}
           {weekDays.map(day => (
-            <div key={day.toISOString()} className="border-l space-y-2">
-              <div className="h-12 text-center text-sm font-medium border-b pb-2">
+            <div key={day.toISOString()} className="border-l space-y-xs">
+              <div className="h-icon-2xl text-center text-sm font-medium border-b pb-2">
                 {format(day, 'EEE d')}
               </div>
               {/* Events would be positioned here based on time */}
-              <div className="space-y-1">
+              <div className="space-y-xs">
                 {events
                   .filter(event => isSameDay(event.start, day))
                   .map(event => renderEvent(event, { height: '40px' }))
@@ -447,43 +447,43 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 
   // Render agenda view
   const renderAgendaView = () => (
-    <div className="space-y-2">
+    <div className="space-y-xs">
       {viewEvents.map(event => (
         <Card key={event.id} className="cursor-pointer hover:shadow-md transition-shadow">
-          <CardContent className="p-4">
+          <CardContent className="p-md">
             <div className="flex items-start justify-between">
               <div className="flex-1">
                 <h3 className="font-medium">{event.title}</h3>
-                <div className="flex items-center gap-4 mt-1 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <CalendarIcon className="h-4 w-4" />
+                <div className="flex items-center gap-md mt-1 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-xs">
+                    <CalendarIcon className="h-icon-xs w-icon-xs" />
                     {format(event.start, 'PPP')}
                   </div>
                   {!event.allDay && (
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
+                    <div className="flex items-center gap-xs">
+                      <Clock className="h-icon-xs w-icon-xs" />
                       {format(event.start, timeFormat === '12h' ? 'h:mm a' : 'HH:mm')}
                       {event.end && ` - ${format(event.end, timeFormat === '12h' ? 'h:mm a' : 'HH:mm')}`}
                     </div>
                   )}
                   {event.location && (
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
+                    <div className="flex items-center gap-xs">
+                      <MapPin className="h-icon-xs w-icon-xs" />
                       {event.location}
                     </div>
                   )}
                 </div>
                 {event.description && (
-                  <p className="text-sm mt-2 text-muted-foreground line-clamp-2">
+                  <p className="text-sm mt-2 text-muted-foreground line-clamp-xs">
                     {event.description}
                   </p>
                 )}
                 {event.attendees && event.attendees.length > 0 && (
-                  <div className="flex items-center gap-2 mt-2">
-                    <Users className="h-4 w-4 text-muted-foreground" />
+                  <div className="flex items-center gap-xs mt-2">
+                    <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <div className="flex -space-x-2">
                       {event.attendees.slice(0, 5).map((attendee, idx) => (
-                        <Avatar key={idx} className="h-6 w-6 border border-background">
+                        <Avatar key={idx} className="h-icon-md w-icon-md border border-background">
                           <AvatarImage src={attendee.avatar} />
                           <AvatarFallback className="text-xs">
                             {attendee.name.slice(0, 2).toUpperCase()}
@@ -491,7 +491,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                         </Avatar>
                       ))}
                       {event.attendees.length > 5 && (
-                        <div className="h-6 w-6 rounded-full bg-muted border border-background flex items-center justify-center text-xs">
+                        <div className="h-icon-md w-icon-md rounded-full bg-muted border border-background flex items-center justify-center text-xs">
                           +{event.attendees.length - 5}
                         </div>
                       )}
@@ -500,7 +500,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 )}
               </div>
 
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-xs">
                 {event.category && (
                   <Badge variant="secondary" className="text-xs">
                     {event.category}
@@ -508,8 +508,8 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
                 )}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                      <MoreHorizontal className="h-4 w-4" />
+                    <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+                      <MoreHorizontal className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -538,20 +538,20 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
   };
 
   return (
-    <div className={cn('space-y-4', className)}>
+    <div className={cn('space-y-md', className)}>
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           {/* Navigation */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-xs">
             <Button variant="outline" size="sm" onClick={handlePrevious}>
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             <Button variant="outline" size="sm" onClick={handleToday}>
               Today
             </Button>
             <Button variant="outline" size="sm" onClick={handleNext}>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
@@ -564,16 +564,16 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
           </h2>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search events..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
@@ -596,7 +596,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
           {/* Add Event */}
           {onEventCreate && (
             <Button onClick={() => onEventCreate(new Date())}>
-              <Plus className="h-4 w-4 mr-1" />
+              <Plus className="h-icon-xs w-icon-xs mr-1" />
               Add Event
             </Button>
           )}
@@ -604,9 +604,9 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
       </div>
 
       {/* Calendar Content */}
-      <div className="min-h-[600px]">
+      <div className="min-h-content-xl">
         {loading ? (
-          <div className="flex items-center justify-center h-96">
+          <div className="flex items-center justify-center h-container-lg">
             <div className="text-muted-foreground">Loading calendar...</div>
           </div>
         ) : (

@@ -245,10 +245,10 @@ export default function EditSettingsDrawer({
  description={getDrawerDescription()}
  >
  <Form {...form}>
- <form onSubmit={form.handleSubmit(handleSave)} className="space-y-6">
+ <form onSubmit={form.handleSubmit(handleSave)} className="space-y-lg">
  {isReadOnly && (
  <Alert>
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  <AlertDescription>
  {mode === 'view' 
  ? 'This setting is in view-only mode.'
@@ -265,7 +265,7 @@ export default function EditSettingsDrawer({
  <TabsTrigger value="metadata">Metadata</TabsTrigger>
  </TabsList>
 
- <TabsContent value="basic" className="space-y-4">
+ <TabsContent value="basic" className="space-y-md">
  <FormField
  control={form.control}
  
@@ -303,7 +303,7 @@ export default function EditSettingsDrawer({
  )}
  />
 
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <FormField
  control={form.control}
  
@@ -402,12 +402,12 @@ export default function EditSettingsDrawer({
  />
  </TabsContent>
 
- <TabsContent value="advanced" className="space-y-4">
+ <TabsContent value="advanced" className="space-y-md">
  <FormField
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+ <FormItem className="flex flex-row items-center justify-between rounded-lg border p-md">
  <div className="space-y-0.5">
  <FormLabel className="text-base">Public Setting</FormLabel>
  <div className="text-sm text-muted-foreground">
@@ -429,7 +429,7 @@ export default function EditSettingsDrawer({
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-center justify-between rounded-lg border p-4">
+ <FormItem className="flex flex-row items-center justify-between rounded-lg border p-md">
  <div className="space-y-0.5">
  <FormLabel className="text-base">Editable Setting</FormLabel>
  <div className="text-sm text-muted-foreground">
@@ -448,10 +448,10 @@ export default function EditSettingsDrawer({
  />
  </TabsContent>
 
- <TabsContent value="metadata" className="space-y-4">
+ <TabsContent value="metadata" className="space-y-md">
  {setting && (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Setting ID</label>
  <div className="text-sm text-muted-foreground font-mono">
@@ -465,7 +465,7 @@ export default function EditSettingsDrawer({
  </div>
  </div>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Last Updated</label>
  <div className="text-sm text-muted-foreground">
@@ -474,15 +474,15 @@ export default function EditSettingsDrawer({
  </div>
  <div>
  <label className="text-sm font-medium">Status</label>
- <div className="flex gap-2">
- <span className={`px-2 py-1 rounded text-xs ${
+ <div className="flex gap-xs">
+ <span className={`px-xs py-xs rounded text-xs ${
  setting.is_public === 'true' 
  ? 'bg-green-100 text-green-800' 
  : 'bg-gray-100 text-gray-800'
  }`}>
  {setting.is_public === 'true' ? 'Public' : 'Private'}
  </span>
- <span className={`px-2 py-1 rounded text-xs ${
+ <span className={`px-xs py-xs rounded text-xs ${
  setting.is_editable === 'true' 
  ? 'bg-blue-100 text-blue-800' 
  : 'bg-orange-100 text-orange-800'
@@ -506,20 +506,20 @@ export default function EditSettingsDrawer({
  onClick={handleDelete}
  disabled={deleting || saving}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  {deleting ? 'Deleting...' : 'Delete Setting'}
  </Button>
  )}
  </div>
  
- <div className="flex gap-3">
+ <div className="flex gap-sm">
  <Button
  type="button"
  variant="outline"
  onClick={handleClose}
  disabled={saving || deleting}
  >
- <X className="h-4 w-4 mr-2" />
+ <X className="h-icon-xs w-icon-xs mr-2" />
  {mode === 'view' ? 'Close' : 'Cancel'}
  </Button>
  {mode === 'edit' && !isReadOnly && (
@@ -527,7 +527,7 @@ export default function EditSettingsDrawer({
  type="submit"
  disabled={saving || deleting}
  >
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {saving ? 'Saving...' : 'Save Changes'}
  </Button>
  )}

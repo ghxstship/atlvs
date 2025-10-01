@@ -48,16 +48,16 @@ export default function TrackingGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'delivered':
- return <CheckCircle className="h-4 w-4 text-success" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
  case 'shipped':
  case 'in_transit':
  case 'out_for_delivery':
- return <Truck className="h-4 w-4 text-primary" />;
+ return <Truck className="h-icon-xs w-icon-xs text-primary" />;
  case 'cancelled':
  case 'returned':
- return <AlertCircle className="h-4 w-4 text-destructive" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs text-destructive" />;
  default:
- return <Package className="h-4 w-4 text-muted-foreground" />;
+ return <Package className="h-icon-xs w-icon-xs text-muted-foreground" />;
  }
  };
 
@@ -99,17 +99,17 @@ export default function TrackingGridView({
  <Card key={index} className="p-md">
  <div className="animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="h-4 bg-muted rounded w-3/4"></div>
- <div className="h-6 bg-muted rounded-full w-16"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
+ <div className="h-icon-md bg-muted rounded-full w-component-md"></div>
  </div>
  <div className="h-3 bg-muted rounded w-1/2 mb-sm"></div>
  <div className="h-3 bg-muted rounded w-full mb-sm"></div>
  <div className="h-3 bg-muted rounded w-2/3 mb-md"></div>
  <div className="flex justify-between items-center">
- <div className="h-5 bg-muted rounded w-20"></div>
+ <div className="h-icon-sm bg-muted rounded w-component-lg"></div>
  <div className="flex gap-xs">
- <div className="h-8 w-8 bg-muted rounded"></div>
- <div className="h-8 w-8 bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
+ <div className="h-icon-lg w-icon-lg bg-muted rounded"></div>
  </div>
  </div>
  </div>
@@ -122,7 +122,7 @@ export default function TrackingGridView({
  if (items.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Package className="h-12 w-12 mx-auto mb-md text-muted-foreground opacity-50" />
+ <Package className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground opacity-50" />
  <h3 className="text-lg font-medium mb-sm">No tracking items found</h3>
  <p className="text-muted-foreground">
  No items match your current filters. Try adjusting your search criteria.
@@ -271,7 +271,7 @@ export default function TrackingGridView({
 
  {/* Description */}
  {item.description && (
- <p className="text-sm text-muted-foreground line-clamp-2 mb-sm">
+ <p className="text-sm text-muted-foreground line-clamp-xs mb-sm">
  {item.description}
  </p>
  )}

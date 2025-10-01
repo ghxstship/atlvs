@@ -46,13 +46,13 @@ export default function ViewProgrammingEventDrawer({
  onClose={() => onOpenChange(false)}
  title={event.title}
  description={event.project?.name || "Programming Event"}
- icon={<Calendar className="h-5 w-5" />}
+ icon={<Calendar className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header Actions */}
  <div className="flex justify-between items-start">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant={statusConfig.variant}>{statusConfig.label}</Badge>
  <Badge variant="outline">{EVENT_TYPE_LABEL[event.event_type]}</Badge>
  </div>
@@ -62,7 +62,7 @@ export default function ViewProgrammingEventDrawer({
  size="sm"
  onClick={onEdit}
  >
- <Edit className="h-4 w-4 mr-2" />
+ <Edit className="h-icon-xs w-icon-xs mr-2" />
  Edit
  </Button>
  )}
@@ -71,8 +71,8 @@ export default function ViewProgrammingEventDrawer({
  {/* Description */}
  {event.description && (
  <div>
- <h3 className="font-medium mb-2 flex items-center gap-2">
- <FileText className="h-4 w-4" />
+ <h3 className="font-medium mb-2 flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs" />
  Description
  </h3>
  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
@@ -83,12 +83,12 @@ export default function ViewProgrammingEventDrawer({
 
  {/* Schedule */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Clock className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  Schedule
  </h3>
- <div className="space-y-3">
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="space-y-sm">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Start Time</span>
  <span className="text-sm font-medium">
  {format(parseISO(event.start_at), "MMMM d, yyyy 'at' h:mm a")}
@@ -96,7 +96,7 @@ export default function ViewProgrammingEventDrawer({
  </div>
  
  {event.end_at && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">End Time</span>
  <span className="text-sm font-medium">
  {format(parseISO(event.end_at), "MMMM d, yyyy 'at' h:mm a")}
@@ -105,14 +105,14 @@ export default function ViewProgrammingEventDrawer({
  )}
 
  {getDuration() && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Duration</span>
  <span className="text-sm font-medium">{getDuration()}</span>
  </div>
  )}
 
  {event.setup_start && (
- <div className="flex items-center justify-between p-3 bg-info/10 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-info/10 rounded-lg">
  <span className="text-sm">Setup Start</span>
  <span className="text-sm font-medium">
  {format(parseISO(event.setup_start), "MMMM d, yyyy 'at' h:mm a")}
@@ -121,7 +121,7 @@ export default function ViewProgrammingEventDrawer({
  )}
 
  {event.teardown_end && (
- <div className="flex items-center justify-between p-3 bg-info/10 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-info/10 rounded-lg">
  <span className="text-sm">Teardown End</span>
  <span className="text-sm font-medium">
  {format(parseISO(event.teardown_end), "MMMM d, yyyy 'at' h:mm a")}
@@ -134,19 +134,19 @@ export default function ViewProgrammingEventDrawer({
  {/* Location & Capacity */}
  {(event.location || event.capacity) && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <MapPin className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  Venue Details
  </h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {event.location && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Location</span>
  <span className="text-sm font-medium">{event.location}</span>
  </div>
  )}
  {event.capacity && (
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Capacity</span>
  <span className="text-sm font-medium">{event.capacity} people</span>
  </div>
@@ -158,11 +158,11 @@ export default function ViewProgrammingEventDrawer({
  {/* Project Info */}
  {event.project && (
  <div>
- <h3 className="font-medium mb-2 flex items-center gap-2">
- <Briefcase className="h-4 w-4" />
+ <h3 className="font-medium mb-2 flex items-center gap-xs">
+ <Briefcase className="h-icon-xs w-icon-xs" />
  Project
  </h3>
- <Card className="p-3">
+ <Card className="p-sm">
  <div className="flex items-center justify-between">
  <span className="font-medium">{event.project.name}</span>
  <Badge variant={
@@ -181,11 +181,11 @@ export default function ViewProgrammingEventDrawer({
  {/* Broadcast */}
  {event.broadcast_url && (
  <div>
- <h3 className="font-medium mb-2 flex items-center gap-2">
- <Radio className="h-4 w-4" />
+ <h3 className="font-medium mb-2 flex items-center gap-xs">
+ <Radio className="h-icon-xs w-icon-xs" />
  Broadcast
  </h3>
- <Card className="p-3">
+ <Card className="p-sm">
  <a
  href={event.broadcast_url as any as any}
  target="_blank"
@@ -201,11 +201,11 @@ export default function ViewProgrammingEventDrawer({
  {/* Tags */}
  {event.tags && event.tags.length > 0 && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Tag className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Tag className="h-icon-xs w-icon-xs" />
  Tags
  </h3>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {event.tags.map((tag) => (
  <Badge key={tag} variant="secondary">
  {tag}
@@ -218,13 +218,13 @@ export default function ViewProgrammingEventDrawer({
  {/* Resources */}
  {event.resources && event.resources.length > 0 && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Settings className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Settings className="h-icon-xs w-icon-xs" />
  Resources
  </h3>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {event.resources.map((resource, index) => (
- <Card key={index} className="p-3">
+ <Card key={index} className="p-sm">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">{resource.name}</span>
  <Badge variant="outline">Qty: {resource.quantity}</Badge>
@@ -238,16 +238,16 @@ export default function ViewProgrammingEventDrawer({
  {/* Staffing */}
  {event.staffing && event.staffing.length > 0 && (
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Users className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs" />
  Staffing
  </h3>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {event.staffing.map((staff, index) => {
  const user = getUserById(staff.user_id);
  
  return (
- <Card key={index} className="p-3">
+ <Card key={index} className="p-sm">
  <div className="flex items-center justify-between">
  <div>
  <div className="text-sm font-medium">{staff.role}</div>
@@ -266,7 +266,7 @@ export default function ViewProgrammingEventDrawer({
  <img
  src={user.avatar_url}
  alt={user.full_name || user.email}
- className="h-8 w-8 rounded-full"
+ className="h-icon-lg w-icon-lg rounded-full"
  />
  )}
  </div>
@@ -279,11 +279,11 @@ export default function ViewProgrammingEventDrawer({
 
  {/* Activity */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Activity className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Activity className="h-icon-xs w-icon-xs" />
  Activity
  </h3>
- <div className="space-y-2 text-sm text-muted-foreground">
+ <div className="space-y-xs text-sm text-muted-foreground">
  <div className="flex items-center justify-between">
  <span>Created</span>
  <span>{format(parseISO(event.created_at || event.start_at), "MMM d, yyyy 'at' h:mm a")}</span>

@@ -68,7 +68,7 @@ export default function ViewInspectionDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <StatusIcon className="h-4 w-4" />
+ <StatusIcon className="h-icon-xs w-icon-xs" />
  <span>Status</span>
  </div>
  <Badge variant={getStatusBadgeVariant(inspection.status)}>
@@ -79,7 +79,7 @@ export default function ViewInspectionDrawer({
  {inspection.score !== undefined && inspection.score !== null && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Award className="h-4 w-4" />
+ <Award className="h-icon-xs w-icon-xs" />
  <span>Score</span>
  </div>
  <div className={`text-2xl font-bold ${getScoreColor(inspection.score)}`}>
@@ -109,7 +109,7 @@ export default function ViewInspectionDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <TypeIcon className="h-4 w-4" />
+ <TypeIcon className="h-icon-xs w-icon-xs" />
  <span>Type</span>
  </div>
  <Badge variant={getTypeBadgeVariant(inspection.type)}>
@@ -120,7 +120,7 @@ export default function ViewInspectionDrawer({
  {inspection.project && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
  <p className="font-medium">{inspection.project.name}</p>
@@ -133,7 +133,7 @@ export default function ViewInspectionDrawer({
  {inspection.inspector && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <User className="h-4 w-4" />
+ <User className="h-icon-xs w-icon-xs" />
  <span>Inspector</span>
  </div>
  <p className="font-medium">
@@ -145,7 +145,7 @@ export default function ViewInspectionDrawer({
  {inspection.location && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>Location</span>
  </div>
  <p className="font-medium">{inspection.location}</p>
@@ -157,7 +157,7 @@ export default function ViewInspectionDrawer({
  {inspection.description && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Description</span>
  </div>
  <p className="text-sm">{inspection.description}</p>
@@ -168,7 +168,7 @@ export default function ViewInspectionDrawer({
  {inspection.follow_up_required && (
  <div className="p-sm bg-warning/10 border border-warning rounded-lg">
  <div className="flex items-center gap-sm">
- <AlertTriangle className="h-4 w-4 text-warning" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-warning" />
  <div>
  <p className="font-medium text-sm">Follow-up Required</p>
  {inspection.follow_up_date && (
@@ -196,8 +196,8 @@ export default function ViewInspectionDrawer({
  <div className="space-y-md">
  {/* Created */}
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-muted flex items-center justify-center">
- <Clock className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-muted flex items-center justify-center">
+ <Clock className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Created</p>
@@ -209,8 +209,8 @@ export default function ViewInspectionDrawer({
 
  {/* Scheduled */}
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center">
- <Calendar className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-primary flex items-center justify-center">
+ <Calendar className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Scheduled</p>
@@ -223,8 +223,8 @@ export default function ViewInspectionDrawer({
  {/* Completed */}
  {inspection.completed_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-success flex items-center justify-center">
- <CheckCircle className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-success flex items-center justify-center">
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Completed</p>
@@ -238,8 +238,8 @@ export default function ViewInspectionDrawer({
  {/* Follow-up */}
  {inspection.follow_up_required && inspection.follow_up_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-warning flex items-center justify-center">
- <AlertTriangle className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-warning flex items-center justify-center">
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Follow-up Due</p>
@@ -282,7 +282,7 @@ export default function ViewInspectionDrawer({
  </div>
  ) : (
  <div className="text-center py-lg text-muted-foreground">
- <FileText className="mx-auto h-12 w-12 mb-sm opacity-50" />
+ <FileText className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>No findings documented yet</p>
  </div>
  )}
@@ -324,16 +324,16 @@ export default function ViewInspectionDrawer({
  >
  <div className="mt-0.5">
  {item.status === "pass" && (
- <CheckCircle className="h-4 w-4 text-success" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-success" />
  )}
  {item.status === "fail" && (
- <XCircle className="h-4 w-4 text-destructive" />
+ <XCircle className="h-icon-xs w-icon-xs text-destructive" />
  )}
  {item.status === "na" && (
- <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
  )}
  {item.status === "pending" && (
- <Clock className="h-4 w-4 text-warning" />
+ <Clock className="h-icon-xs w-icon-xs text-warning" />
  )}
  </div>
  <div className="flex-1">
@@ -365,7 +365,7 @@ export default function ViewInspectionDrawer({
  </div>
  ) : (
  <div className="text-center py-lg text-muted-foreground">
- <ClipboardCheck className="mx-auto h-12 w-12 mb-sm opacity-50" />
+ <ClipboardCheck className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>No checklist items for this inspection</p>
  </div>
  )}
@@ -377,7 +377,7 @@ export default function ViewInspectionDrawer({
  label: "Activity",
  content: (
  <div className="text-center py-lg text-muted-foreground">
- <MessageSquare className="mx-auto h-12 w-12 mb-sm opacity-50" />
+ <MessageSquare className="mx-auto h-icon-2xl w-icon-2xl mb-sm opacity-50" />
  <p>Activity tracking coming soon</p>
  </div>
  ),
@@ -395,13 +395,13 @@ export default function ViewInspectionDrawer({
  {
  key: "edit",
  label: "Edit",
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  onClick: onEdit,
  },
  {
  key: "download",
  label: "Download Report",
- icon: <Download className="h-4 w-4" />,
+ icon: <Download className="h-icon-xs w-icon-xs" />,
  onClick: () => {
  // Generate and download inspection report
  },

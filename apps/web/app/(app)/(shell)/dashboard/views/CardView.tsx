@@ -218,7 +218,7 @@ export const CardView: React.FC<CardViewProps> = ({
         const avatarUrl = row[field.key] as string;
         const fallback = field.fallbackField ? String(row[field.fallbackField] || '') : '';
         return (
-          <Avatar className={cn('h-8 w-8', field.className)}>
+          <Avatar className={cn('h-icon-lg w-icon-lg', field.className)}>
             <AvatarImage src={avatarUrl} />
             <AvatarFallback>{fallback.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
@@ -228,7 +228,7 @@ export const CardView: React.FC<CardViewProps> = ({
           <img
             src={String(value || '')}
             alt=""
-            className={cn('w-full h-32 object-cover rounded', field.className)}
+            className={cn('w-full h-component-xl object-cover rounded', field.className)}
           />
         );
       default:
@@ -238,9 +238,9 @@ export const CardView: React.FC<CardViewProps> = ({
 
   // Layout classes
   const layoutClasses = {
-    grid: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4',
-    masonry: 'columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-4',
-    list: 'flex flex-col gap-2'
+    grid: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-md',
+    masonry: 'columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-md',
+    list: 'flex flex-col gap-xs'
   };
 
   // Size classes
@@ -275,7 +275,7 @@ export const CardView: React.FC<CardViewProps> = ({
       >
         {/* Selection Checkbox */}
         {selectable && (
-          <div className="absolute top-2 left-2 z-10">
+          <div className="absolute top-xs left-2 z-10">
             <Checkbox
               checked={isSelected}
               onCheckedChange={() => handleSelectRow(rowId)}
@@ -324,8 +324,8 @@ export const CardView: React.FC<CardViewProps> = ({
             {config.actions && config.actions.length > 0 && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                    <MoreHorizontal className="h-4 w-4" />
+                  <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -339,7 +339,7 @@ export const CardView: React.FC<CardViewProps> = ({
                         onClick={() => action.onClick(row)}
                         disabled={disabled}
                       >
-                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                        {Icon && <Icon className="h-icon-xs w-icon-xs mr-2" />}
                         {action.label}
                       </DropdownMenuItem>
                     );
@@ -351,7 +351,7 @@ export const CardView: React.FC<CardViewProps> = ({
 
           {/* Badges */}
           {config.badges && config.badges.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-2">
+            <div className="flex flex-wrap gap-xs mt-2">
               {config.badges.map((badge, idx) => (
                 <div key={idx}>
                   {renderField(badge, row[badge.key], row)}
@@ -364,7 +364,7 @@ export const CardView: React.FC<CardViewProps> = ({
         <CardContent className="pt-0">
           {/* Description */}
           {config.description && (
-            <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+            <p className="text-sm text-muted-foreground mb-3 line-clamp-xs">
               {config.description.format
                 ? config.description.format(row[config.description.field])
                 : String(row[config.description.field] || '').slice(0, config.description.maxLength || 150)
@@ -374,7 +374,7 @@ export const CardView: React.FC<CardViewProps> = ({
 
           {/* Metadata */}
           {config.metadata && config.metadata.length > 0 && (
-            <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
+            <div className="grid grid-cols-2 gap-xs text-xs text-muted-foreground">
               {config.metadata.map((meta, idx) => (
                 <div key={idx} className="flex justify-between">
                   <span className="font-medium">{meta.label}:</span>
@@ -386,7 +386,7 @@ export const CardView: React.FC<CardViewProps> = ({
 
           {/* Footer Actions */}
           {showFooter && config.actions && config.actions.length > 0 && (
-            <div className="flex gap-2 mt-4 pt-4 border-t">
+            <div className="flex gap-xs mt-4 pt-4 border-t">
               {config.actions.slice(0, 2).map((action, idx) => {
                 const Icon = action.icon;
                 const disabled = action.disabled?.(row);
@@ -400,7 +400,7 @@ export const CardView: React.FC<CardViewProps> = ({
                     disabled={disabled}
                     className="flex-1"
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -413,26 +413,26 @@ export const CardView: React.FC<CardViewProps> = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search cards..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
 
           {/* Bulk Actions */}
           {bulkActions.length > 0 && selectedRows.length > 0 && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {bulkActions.map((action, index) => {
                 const Icon = action.icon;
                 return (
@@ -448,7 +448,7 @@ export const CardView: React.FC<CardViewProps> = ({
                     }}
                     disabled={action.disabled}
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -457,7 +457,7 @@ export const CardView: React.FC<CardViewProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Layout Controls */}
           <div className="flex items-center border rounded-md">
             <Button
@@ -466,7 +466,7 @@ export const CardView: React.FC<CardViewProps> = ({
               onClick={() => onLayoutChange?.('grid')}
               className="rounded-r-none"
             >
-              <Grid3X3 className="h-4 w-4" />
+              <Grid3X3 className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant={layout === 'list' ? 'default' : 'ghost'}
@@ -474,7 +474,7 @@ export const CardView: React.FC<CardViewProps> = ({
               onClick={() => onLayoutChange?.('list')}
               className="rounded-none border-x"
             >
-              <List className="h-4 w-4" />
+              <List className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
@@ -510,7 +510,7 @@ export const CardView: React.FC<CardViewProps> = ({
           Array.from({ length: 6 }).map((_, index) => (
             <Card key={index} className={cn(sizeClasses[size])}>
               <CardHeader>
-                <div className="h-4 bg-muted animate-pulse rounded w-3/4" />
+                <div className="h-icon-xs bg-muted animate-pulse rounded w-3/4" />
                 <div className="h-3 bg-muted animate-pulse rounded w-1/2 mt-2" />
               </CardHeader>
               <CardContent>
@@ -521,7 +521,7 @@ export const CardView: React.FC<CardViewProps> = ({
           ))
         ) : filteredData.length === 0 ? (
           // Empty state
-          <div className="col-span-full flex items-center justify-center py-12">
+          <div className="col-span-full flex items-center justify-center py-xsxl">
             <div className="text-center">
               <div className="text-muted-foreground mb-2">{emptyMessage}</div>
               <Button variant="outline" size="sm">
@@ -544,7 +544,7 @@ export const CardView: React.FC<CardViewProps> = ({
             {pagination.total} results
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"

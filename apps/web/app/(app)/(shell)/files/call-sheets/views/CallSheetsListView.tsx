@@ -33,8 +33,8 @@ export default function CallSheetsListView({
 }: CallSheetsListViewProps) {
  if (callSheets.length === 0) {
  return (
- <div className="flex flex-col items-center justify-center py-12 text-center">
- <Calendar className="h-12 w-12 text-muted-foreground mb-4" />
+ <div className="flex flex-col items-center justify-center py-xsxl text-center">
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No call sheets found</h3>
  <p className="text-muted-foreground">Create your first call sheet to get started.</p>
  </div>
@@ -42,11 +42,11 @@ export default function CallSheetsListView({
  }
 
  return (
- <div className="space-y-3">
+ <div className="space-y-sm">
  {callSheets.map((callSheet) => (
- <Card key={callSheet.id} className="p-4 hover:shadow-md transition-shadow">
+ <Card key={callSheet.id} className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between">
- <div className="flex items-start space-x-3 flex-1">
+ <div className="flex items-start space-x-sm flex-1">
  <input
  type="checkbox"
  checked={selected.has(callSheet.id)}
@@ -55,7 +55,7 @@ export default function CallSheetsListView({
  />
  
  <div className="flex-1 min-w-0">
- <div className="flex items-center space-x-2 mb-2">
+ <div className="flex items-center space-x-xs mb-2">
  <h3 className="font-semibold text-lg truncate">{callSheet.title}</h3>
  <Badge variant={STATUS_VARIANTS[callSheet.status]}>
  {callSheet.status.replace('_', ' ')}
@@ -63,33 +63,33 @@ export default function CallSheetsListView({
  </div>
  
  {callSheet.description && (
- <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+ <p className="text-muted-foreground text-sm mb-3 line-clamp-xs">
  {callSheet.description}
  </p>
  )}
  
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-sm text-sm">
  <div className="flex items-center text-muted-foreground">
- <Calendar className="h-4 w-4 mr-2" />
+ <Calendar className="h-icon-xs w-icon-xs mr-2" />
  <span>{format(new Date(callSheet.call_date), 'MMM dd, yyyy')}</span>
  </div>
  
  {callSheet.call_time && (
  <div className="flex items-center text-muted-foreground">
- <Clock className="h-4 w-4 mr-2" />
+ <Clock className="h-icon-xs w-icon-xs mr-2" />
  <span>{callSheet.call_time}</span>
  </div>
  )}
  
  {callSheet.location && (
  <div className="flex items-center text-muted-foreground">
- <MapPin className="h-4 w-4 mr-2" />
+ <MapPin className="h-icon-xs w-icon-xs mr-2" />
  <span className="truncate">{callSheet.location}</span>
  </div>
  )}
  
  <div className="flex items-center text-muted-foreground">
- <Users className="h-4 w-4 mr-2" />
+ <Users className="h-icon-xs w-icon-xs mr-2" />
  <span>
  {(callSheet.crew_calls?.length || 0) + (callSheet.talent_calls?.length || 0)} people
  </span>
@@ -97,7 +97,7 @@ export default function CallSheetsListView({
  </div>
  
  {(callSheet.crew_calls?.length > 0 || callSheet.talent_calls?.length > 0) && (
- <div className="mt-3 flex flex-wrap gap-2">
+ <div className="mt-3 flex flex-wrap gap-xs">
  {callSheet.crew_calls?.length > 0 && (
  <Badge variant="outline" className="text-xs">
  {callSheet.crew_calls.length} crew
@@ -112,21 +112,21 @@ export default function CallSheetsListView({
  )}
  
  {callSheet.special_instructions && (
- <div className="mt-2 p-2 bg-muted rounded text-xs">
+ <div className="mt-2 p-xs bg-muted rounded text-xs">
  <strong>Special Instructions:</strong> {callSheet.special_instructions}
  </div>
  )}
  </div>
  </div>
  
- <div className="flex items-center space-x-1 ml-4">
+ <div className="flex items-center space-x-xs ml-4">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(callSheet)}
  title="View call sheet"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  
  <Button
@@ -135,7 +135,7 @@ export default function CallSheetsListView({
  onClick={() => onEdit(callSheet)}
  title="Edit call sheet"
  >
- <Pencil className="h-4 w-4" />
+ <Pencil className="h-icon-xs w-icon-xs" />
  </Button>
  
  {callSheet.status === 'published' && onDistribute && (
@@ -145,7 +145,7 @@ export default function CallSheetsListView({
  onClick={() => onDistribute(callSheet)}
  title="Distribute call sheet"
  >
- <Share2 className="h-4 w-4" />
+ <Share2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  
@@ -156,7 +156,7 @@ export default function CallSheetsListView({
  title="Delete call sheet"
  className="text-destructive hover:text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

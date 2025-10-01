@@ -212,7 +212,7 @@ export default function EditProgrammingLineupDrawer({
  {/* Basic Information */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Music className="h-4 w-4" />
+ <Music className="h-icon-xs w-icon-xs" />
  Performer Information
  </h3>
  <div className="space-y-md">
@@ -291,7 +291,7 @@ export default function EditProgrammingLineupDrawer({
  {/* Schedule & Venue */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  Schedule & Venue
  </h3>
  <div className="space-y-md">
@@ -315,7 +315,7 @@ export default function EditProgrammingLineupDrawer({
  {...register("duration_minutes", { valueAsNumber: true })}
  placeholder="Duration in minutes"
  />
- <div className="flex flex-wrap gap-1 mt-1">
+ <div className="flex flex-wrap gap-xs mt-1">
  {DURATION_PRESETS.map((preset) => (
  <Button
  key={preset.value}
@@ -349,7 +349,7 @@ export default function EditProgrammingLineupDrawer({
  {/* Contact Information */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <Phone className="h-4 w-4" />
+ <Phone className="h-icon-xs w-icon-xs" />
  Contact Information
  </h3>
  <div className="space-y-md">
@@ -413,7 +413,7 @@ export default function EditProgrammingLineupDrawer({
  <Label>Equipment Needed</Label>
  <div className="grid grid-cols-2 md:grid-cols-3 gap-sm mt-2">
  {EQUIPMENT_OPTIONS.map((equipment) => (
- <div key={equipment} className="flex items-center space-x-2">
+ <div key={equipment} className="flex items-center space-x-xs">
  <Checkbox
  id={equipment}
  checked={selectedEquipment.includes(equipment)}
@@ -448,7 +448,7 @@ export default function EditProgrammingLineupDrawer({
  {/* Contract Details */}
  <Card className="p-md">
  <h3 className="text-heading-5 mb-md flex items-center gap-sm">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Contract Details
  </h3>
  <div className="space-y-md">
@@ -488,7 +488,7 @@ export default function EditProgrammingLineupDrawer({
  />
  </div>
 
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Checkbox
  
  {...register("contract_details.contract_signed")}
@@ -522,13 +522,13 @@ export default function EditProgrammingLineupDrawer({
  onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
  />
  <Button type="button" onClick={addTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {watchedTags && watchedTags.length > 0 && (
  <div className="flex flex-wrap gap-sm">
  {watchedTags.map((tag) => (
- <Badge key={tag} variant="secondary" className="gap-1">
+ <Badge key={tag} variant="secondary" className="gap-xs">
  {tag}
  <button
  type="button"
@@ -556,7 +556,7 @@ export default function EditProgrammingLineupDrawer({
  Cancel
  </Button>
  <Button type="submit" disabled={loading}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {loading ? "Saving..." : "Save Changes"}
  </Button>
  </div>

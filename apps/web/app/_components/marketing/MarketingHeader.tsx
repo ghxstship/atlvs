@@ -134,7 +134,7 @@ export function MarketingHeader() {
         )}
       >
         <div className="container mx-auto px-lg">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-component-md items-center justify-between">
             {/* Logo with enhanced hover effects */}
             <Link 
               href="/" 
@@ -212,7 +212,7 @@ export function MarketingHeader() {
             {/* Mobile Menu Button with enhanced animations */}
             <button
               className={cn(
-                "md:hidden relative p-2 rounded-md transition-all duration-200",
+                "md:hidden relative p-xs rounded-md transition-all duration-200",
                 "hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-primary/20",
                 "active:scale-95"
               )}
@@ -221,16 +221,16 @@ export function MarketingHeader() {
               aria-expanded={isOpen}
               aria-controls="mobile-menu"
             >
-              <div className="relative w-6 h-6">
+              <div className="relative w-icon-md h-icon-md">
                 <Menu 
                   className={cn(
-                    "absolute inset-0 h-6 w-6 transition-all duration-300",
+                    "absolute inset-0 h-icon-md w-icon-md transition-all duration-300",
                     isOpen ? "opacity-0 rotate-180 scale-75" : "opacity-100 rotate-0 scale-100"
                   )} 
                 />
                 <X 
                   className={cn(
-                    "absolute inset-0 h-6 w-6 transition-all duration-300",
+                    "absolute inset-0 h-icon-md w-icon-md transition-all duration-300",
                     isOpen ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-180 scale-75"
                   )} 
                 />
@@ -260,7 +260,7 @@ export function MarketingHeader() {
         </div>
       </header>
       {/* Spacer to offset fixed header height */}
-      <div aria-hidden className="h-16" />
+      <div aria-hidden className="h-component-md" />
     </>
   );
 }

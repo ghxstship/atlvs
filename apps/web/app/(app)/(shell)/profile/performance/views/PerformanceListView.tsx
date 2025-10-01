@@ -55,11 +55,11 @@ export default function PerformanceListView({
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {[...Array(3)].map((_, i) => (
- <Card key={i} className="p-4">
+ <Card key={i} className="p-md">
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </div>
  </Card>
@@ -70,9 +70,9 @@ export default function PerformanceListView({
 
  if (reviews.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Star className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Star className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Performance Reviews</h3>
  <p className="text-muted-foreground mt-2">
@@ -85,11 +85,11 @@ export default function PerformanceListView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header with bulk selection */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -100,7 +100,7 @@ export default function PerformanceListView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -119,17 +119,17 @@ export default function PerformanceListView({
  const rating = review.overall_rating ?? 0;
 
  return (
- <Card key={review.id} className={`p-4 ${isSelected ? 'ring-2 ring-primary' : ''}`}>
- <div className="space-y-4">
+ <Card key={review.id} className={`p-md ${isSelected ? 'ring-2 ring-primary' : ''}`}>
+ <div className="space-y-md">
  {/* Header Row */}
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-3 flex-1">
+ <div className="flex items-start gap-sm flex-1">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(review.id, !!checked)}
  />
  <div className="flex-1 min-w-0">
- <div className="flex items-center gap-2 mb-2">
+ <div className="flex items-center gap-xs mb-2">
  <h3 className="font-semibold text-lg">
  {REVIEW_TYPE_LABELS[review.review_type]} Review
  </h3>
@@ -141,26 +141,26 @@ export default function PerformanceListView({
  )}
  </div>
  
- <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
- <div className="flex items-center gap-1">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center gap-md text-sm text-muted-foreground mb-2">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  {formatDate(review.review_period_start)} - {formatDate(review.review_period_end)}
  </div>
  {review.reviewer_name && (
- <div className="flex items-center gap-1">
- <User className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <User className="h-icon-xs w-icon-xs" />
  {review.reviewer_name}
  </div>
  )}
  </div>
 
  {/* Rating */}
- <div className="flex items-center gap-2">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
+ <div className="flex items-center gap-xs">
  {[...Array(5)].map((_, i) => (
  <Star
  key={i}
- className={`h-4 w-4 ${
+ className={`h-icon-xs w-icon-xs ${
  i < rating
  ? 'text-yellow-500 fill-yellow-500'
  : 'text-gray-300'
@@ -176,7 +176,7 @@ export default function PerformanceListView({
  </div>
 
  {/* Actions */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -190,21 +190,21 @@ export default function PerformanceListView({
  size="sm"
  onClick={() => onView(review)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(review)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(review)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -212,9 +212,9 @@ export default function PerformanceListView({
 
  {/* Expanded Content */}
  {isExpanded && (
- <div className="border-t pt-4 space-y-4">
+ <div className="border-t pt-4 space-y-md">
  {/* Detailed Ratings */}
- <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+ <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
  {review.technical_skills_rating && (
  <div className="text-center">
  <div className="text-2xl font-bold text-primary">
@@ -250,11 +250,11 @@ export default function PerformanceListView({
  </div>
 
  {/* Comments */}
- <div className="grid md:grid-cols-2 gap-4">
+ <div className="grid md:grid-cols-2 gap-md">
  {review.strengths && (
  <div>
  <h4 className="font-medium text-sm mb-2">Strengths</h4>
- <p className="text-sm text-muted-foreground bg-muted p-3 rounded">
+ <p className="text-sm text-muted-foreground bg-muted p-sm rounded">
  {review.strengths}
  </p>
  </div>
@@ -262,7 +262,7 @@ export default function PerformanceListView({
  {review.areas_for_improvement && (
  <div>
  <h4 className="font-medium text-sm mb-2">Areas for Improvement</h4>
- <p className="text-sm text-muted-foreground bg-muted p-3 rounded">
+ <p className="text-sm text-muted-foreground bg-muted p-sm rounded">
  {review.areas_for_improvement}
  </p>
  </div>
@@ -273,9 +273,9 @@ export default function PerformanceListView({
  {review.goals && review.goals.length > 0 && (
  <div>
  <h4 className="font-medium text-sm mb-2">Goals ({review.goals.length})</h4>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {review.goals.slice(0, 3).map((goal) => (
- <div key={goal.id} className="flex items-center justify-between bg-muted p-2 rounded">
+ <div key={goal.id} className="flex items-center justify-between bg-muted p-xs rounded">
  <span className="text-sm">{goal.title}</span>
  <Badge variant="outline">{goal.status}</Badge>
  </div>
@@ -293,7 +293,7 @@ export default function PerformanceListView({
  {review.tags && review.tags.length > 0 && (
  <div>
  <h4 className="font-medium text-sm mb-2">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {review.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}

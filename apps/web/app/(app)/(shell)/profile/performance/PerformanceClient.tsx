@@ -300,7 +300,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
+        className={`h-icon-xs w-icon-xs ${i < rating ? 'color-warning fill-current' : 'color-muted'}`}
       />
     ));
   };
@@ -322,10 +322,10 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded mb-md"></div>
           <div className="stack-md">
-            <div className="h-32 bg-secondary rounded"></div>
-            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -344,7 +344,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
           }}
           className="flex items-center gap-sm"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Performance Review
         </Button>
       </div>
@@ -354,7 +354,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
         <Card>
           <div className="p-lg">
             <div className="flex items-center gap-sm mb-md">
-              <BarChart3 className="h-5 w-5 color-accent" />
+              <BarChart3 className="h-icon-sm w-icon-sm color-accent" />
               <h3 className="text-body text-heading-4">Performance Summary</h3>
             </div>
             
@@ -384,7 +384,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
       {reviews.length === 0 ? (
         <Card>
           <div className="p-xl text-center">
-            <TrendingUp className="h-12 w-12 color-muted mx-auto mb-md" />
+            <TrendingUp className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body text-heading-4 mb-sm">No Performance Reviews</h3>
             <p className="color-muted mb-md">
               Track your professional growth and achievements with performance reviews.
@@ -407,8 +407,8 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               <div className="p-lg">
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-center gap-sm">
-                    <div className="h-10 w-10 bg-accent/10 rounded-full flex items-center justify-center">
-                      <Award className="h-5 w-5 color-accent" />
+                    <div className="h-icon-xl w-icon-xl bg-accent/10 rounded-full flex items-center justify-center">
+                      <Award className="h-icon-sm w-icon-sm color-accent" />
                     </div>
                     <div>
                       <h3 className="text-body text-heading-4">{review.review_period}</h3>
@@ -433,14 +433,14 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                      
                       onClick={() => handleEdit(review)}
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </Button>
                     <Button
                       variant="outline"
                      
                       onClick={() => handleDelete(review.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -531,12 +531,12 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
 
                 <div className="flex items-center justify-between text-body-sm color-muted">
                   <div className="flex items-center gap-xs">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-icon-xs w-icon-xs" />
                     Review Date: {new Date(review.review_date).toLocaleDateString()}
                   </div>
                   {review.next_review_date && (
                     <div className="flex items-center gap-xs">
-                      <Target className="h-4 w-4" />
+                      <Target className="h-icon-xs w-icon-xs" />
                       Next Review: {new Date(review.next_review_date).toLocaleDateString()}
                     </div>
                   )}
@@ -680,7 +680,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                     onClick={() => removeGoalAchieved(goal)}
                     className="color-destructive hover:color-destructive/80"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </button>
                 </div>
               ))}
@@ -707,7 +707,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
                     onClick={() => removeNextGoal(goal)}
                     className="color-destructive hover:color-destructive/80"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </button>
                 </div>
               ))}
@@ -731,7 +731,7 @@ export default function PerformanceClient({ orgId, userId }: { orgId: string; us
               Cancel
             </Button>
             <Button type="submit" loading={saving}>
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {editingReview ? 'Update' : 'Save'} Review
             </Button>
           </div>

@@ -126,9 +126,9 @@ export default function ProgrammingItinerariesMapView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading map data...</p>
  </div>
  </div>
@@ -142,7 +142,7 @@ export default function ProgrammingItinerariesMapView({
  <Card className="p-md">
  <div className="flex items-center gap-md">
  <div className="relative flex-1 max-w-md">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  placeholder="Search locations..."
  value={searchLocation}
@@ -152,7 +152,7 @@ export default function ProgrammingItinerariesMapView({
  </div>
  
  <div className="flex items-center gap-sm text-sm text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{locationGroups.length} locations</span>
  </div>
  </div>
@@ -164,7 +164,7 @@ export default function ProgrammingItinerariesMapView({
  <Card className="p-lg">
  <div className="aspect-[16/10] bg-muted/30 rounded-lg flex items-center justify-center">
  <div className="text-center">
- <MapPin className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <MapPin className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">Interactive Map</h3>
  <p className="text-muted-foreground mb-4">
  Map integration would display itinerary locations and routes
@@ -190,13 +190,13 @@ export default function ProgrammingItinerariesMapView({
  
  {locationGroups.length === 0 ? (
  <Card className="p-md">
- <div className="text-center py-8">
- <MapPin className="h-8 w-8 text-muted-foreground mx-auto mb-2" />
+ <div className="text-center py-xl">
+ <MapPin className="h-icon-lg w-icon-lg text-muted-foreground mx-auto mb-2" />
  <p className="text-muted-foreground">No locations found</p>
  </div>
  </Card>
  ) : (
- <div className="space-y-sm max-h-[600px] overflow-y-auto">
+ <div className="space-y-sm max-h-content-xl overflow-y-auto">
  {locationGroups.map((locationGroup) => {
  const stats = getLocationStats(locationGroup);
  const isSelected = selectedLocation === locationGroup.location;
@@ -216,7 +216,7 @@ export default function ProgrammingItinerariesMapView({
  <div className="flex items-start justify-between">
  <div className="flex-1">
  <div className="flex items-center gap-sm">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h4 className="font-medium">{locationGroup.location}</h4>
  </div>
  <div className="text-sm text-muted-foreground mt-1">
@@ -225,21 +225,21 @@ export default function ProgrammingItinerariesMapView({
  </div>
  
  <Button variant="ghost" size="sm">
- <Navigation className="h-4 w-4" />
+ <Navigation className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Location Stats */}
  <div className="grid grid-cols-2 gap-md text-xs">
  {stats.totalParticipants > 0 && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-3 w-3" />
  <span>{stats.totalParticipants} participants</span>
  </div>
  )}
  
  {stats.totalCost > 0 && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <DollarSign className="h-3 w-3" />
  <span>${stats.totalCost.toLocaleString()}</span>
  </div>
@@ -247,7 +247,7 @@ export default function ProgrammingItinerariesMapView({
  </div>
 
  {/* Status Distribution */}
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {Object.entries(stats.statusCounts).map(([status, count]) => {
  const statusConfig = STATUS_BADGE[status as keyof typeof STATUS_BADGE];
  return (
@@ -278,7 +278,7 @@ export default function ProgrammingItinerariesMapView({
  <div className="font-medium text-sm truncate">
  {itinerary.name}
  </div>
- <div className="flex items-center gap-1 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <Badge variant="secondary" className="text-xs">
  {typeConfig.icon} {typeConfig.label}
  </Badge>
@@ -287,8 +287,8 @@ export default function ProgrammingItinerariesMapView({
  </Badge>
  </div>
  
- <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs mt-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {formatDate(itinerary.start_date)} - {formatDate(itinerary.end_date)}
  </div>
@@ -305,7 +305,7 @@ export default function ProgrammingItinerariesMapView({
  {itinerary.destinations.length > 0 && (
  <div className="mt-1">
  <div className="text-xs text-muted-foreground">Destinations:</div>
- <div className="flex flex-wrap gap-1 mt-0.5">
+ <div className="flex flex-wrap gap-xs mt-0.5">
  {itinerary.destinations.slice(0, 3).map((dest, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {dest.name}
@@ -321,7 +321,7 @@ export default function ProgrammingItinerariesMapView({
  )}
  </div>
 
- <div className="flex items-center gap-1 ml-sm">
+ <div className="flex items-center gap-xs ml-sm">
  <Button
  variant="ghost"
  size="sm"

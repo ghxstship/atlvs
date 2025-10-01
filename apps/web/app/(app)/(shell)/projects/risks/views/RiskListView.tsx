@@ -159,21 +159,21 @@ export default function RiskListView({
  size="sm"
  onClick={() => onView(risk)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(risk)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDuplicate(risk)}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -181,7 +181,7 @@ export default function RiskListView({
  onClick={() => onDelete(risk)}
  className="text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

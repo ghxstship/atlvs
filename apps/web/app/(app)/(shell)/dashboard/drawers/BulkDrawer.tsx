@@ -219,7 +219,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]'
@@ -230,15 +230,15 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
     if (!selectedOperation?.fields) return null;
 
     return (
-      <div className="space-y-4">
-        <div className="p-4 border rounded-lg bg-muted/30">
+      <div className="space-y-md">
+        <div className="p-md border rounded-lg bg-muted/30">
           <h4 className="font-medium mb-2">Configure Operation</h4>
           <p className="text-sm text-muted-foreground">{selectedOperation.description}</p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-md">
           {selectedOperation.fields.map((field) => (
-            <div key={field.name} className="space-y-2">
+            <div key={field.name} className="space-y-xs">
               <Label>
                 {field.label}
                 {field.required && <span className="text-destructive ml-1">*</span>}
@@ -280,7 +280,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
               )}
 
               {field.type === 'boolean' && (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-xs">
                   <Checkbox
                     checked={operationData[field.name] as boolean || false}
                     onCheckedChange={(checked) => handleFieldChange(field.name, checked)}
@@ -316,25 +316,25 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
     if (!executionResult) return null;
 
     return (
-      <div className="space-y-4">
+      <div className="space-y-md">
         <div className={cn(
-          'p-4 border rounded-lg',
+          'p-md border rounded-lg',
           executionResult.success
             ? 'border-green-200 bg-green-50 text-green-800'
             : 'border-red-200 bg-red-50 text-red-800'
         )}>
-          <div className="flex items-center gap-2 mb-2">
+          <div className="flex items-center gap-xs mb-2">
             {executionResult.success ? (
-              <CheckCircle className="h-5 w-5" />
+              <CheckCircle className="h-icon-sm w-icon-sm" />
             ) : (
-              <AlertTriangle className="h-5 w-5" />
+              <AlertTriangle className="h-icon-sm w-icon-sm" />
             )}
             <h4 className="font-medium">
               {executionResult.success ? 'Operation Completed' : 'Operation Failed'}
             </h4>
           </div>
 
-          <div className="text-sm space-y-1">
+          <div className="text-sm space-y-xs">
             <div>Processed: {executionResult.processed}</div>
             <div>Failed: {executionResult.failed}</div>
             {executionResult.errors && executionResult.errors.length > 0 && (
@@ -350,7 +350,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button onClick={onClose} className="flex-1">
             Close
           </Button>
@@ -382,7 +382,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
           widthClasses[width]
         )}>
           {/* Header */}
-          <div className="flex items-center justify-between p-6 border-b">
+          <div className="flex items-center justify-between p-lg border-b">
             <div className="flex-1 min-w-0">
               <h2 className="text-xl font-semibold truncate">
                 {title || 'Bulk Operations'}
@@ -393,16 +393,16 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
             </div>
 
             <Button variant="ghost" size="sm" onClick={onClose}>
-              <X className="h-4 w-4" />
+              <X className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
           {/* Content */}
           <ScrollArea className="flex-1">
-            <div className="p-6 space-y-6">
+            <div className="p-lg space-y-lg">
               {/* Progress Bar */}
               {showProgress && executionState === 'executing' && (
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <div className="flex justify-between text-sm">
                     <span>Processing...</span>
                     <span>{progress}%</span>
@@ -418,19 +418,19 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
                 <>
                   {/* Selected Items Preview */}
                   {showPreview && (
-                    <div className="space-y-3">
+                    <div className="space-y-sm">
                       <h3 className="font-medium">Selected Items</h3>
-                      <div className="max-h-32 overflow-y-auto space-y-1">
+                      <div className="max-h-component-xl overflow-y-auto space-y-xs">
                         {selectedItems.slice(0, 10).map((item, idx) => (
-                          <div key={idx} className="flex items-center gap-2 text-sm p-2 bg-muted/50 rounded">
-                            <CheckSquare className="h-4 w-4 text-green-600 flex-shrink-0" />
+                          <div key={idx} className="flex items-center gap-xs text-sm p-xs bg-muted/50 rounded">
+                            <CheckSquare className="h-icon-xs w-icon-xs text-green-600 flex-shrink-0" />
                             <span className="truncate">
                               {String(item.name || item.title || `Item ${idx + 1}`)}
                             </span>
                           </div>
                         ))}
                         {selectedItems.length > 10 && (
-                          <div className="text-sm text-muted-foreground text-center py-1">
+                          <div className="text-sm text-muted-foreground text-center py-xs">
                             ... and {selectedItems.length - 10} more items
                           </div>
                         )}
@@ -440,9 +440,9 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
 
                   {/* Operation Selection */}
                   {!selectedOperation ? (
-                    <div className="space-y-4">
+                    <div className="space-y-md">
                       <h3 className="font-medium">Choose Operation</h3>
-                      <div className="grid gap-3">
+                      <div className="grid gap-sm">
                         {availableOperations.map((operation) => {
                           const Icon = operation.icon;
                           const isDisabled = operation.maxItems && selectedItems.length > operation.maxItems;
@@ -453,12 +453,12 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
                               onClick={() => handleOperationSelect(operation)}
                               disabled={isDisabled}
                               className={cn(
-                                'flex items-center gap-3 p-4 border rounded-lg text-left transition-colors',
+                                'flex items-center gap-sm p-md border rounded-lg text-left transition-colors',
                                 'hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed',
                                 getOperationColorClass(operation.color)
                               )}
                             >
-                              {Icon && <Icon className="h-5 w-5 flex-shrink-0" />}
+                              {Icon && <Icon className="h-icon-sm w-icon-sm flex-shrink-0" />}
                               <div className="flex-1 min-w-0">
                                 <div className="font-medium">{operation.label}</div>
                                 <div className="text-sm opacity-75">{operation.description}</div>
@@ -475,11 +475,11 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
                     </div>
                   ) : (
                     /* Operation Configuration */
-                    <div className="space-y-6">
+                    <div className="space-y-lg">
                       <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
+                        <div className="flex items-center gap-sm">
                           {selectedOperation.icon && (
-                            <selectedOperation.icon className="h-5 w-5" />
+                            <selectedOperation.icon className="h-icon-sm w-icon-sm" />
                           )}
                           <div>
                             <h3 className="font-medium">{selectedOperation.label}</h3>
@@ -510,7 +510,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
                       >
                         {executionState === 'executing' ? (
                           <>
-                            <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                            <Loader2 className="h-icon-xs w-icon-xs mr-2 animate-spin" />
                             Executing...
                           </>
                         ) : (
@@ -525,7 +525,7 @@ export const BulkDrawer: React.FC<BulkDrawerProps> = ({
           </ScrollArea>
 
           {/* Footer */}
-          <div className="border-t p-6">
+          <div className="border-t p-lg">
             <div className="flex items-center justify-between">
               <Button
                 variant="outline"

@@ -187,9 +187,9 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
     return (
       <div className="stack-md">
         <div className="animate-pulse stack-md">
-          <div className="h-4 bg-secondary rounded w-3/4"></div>
-          <div className="h-4 bg-secondary rounded w-1/2"></div>
-          <div className="h-4 bg-secondary rounded w-2/3"></div>
+          <div className="h-icon-xs bg-secondary rounded w-3/4"></div>
+          <div className="h-icon-xs bg-secondary rounded w-1/2"></div>
+          <div className="h-icon-xs bg-secondary rounded w-2/3"></div>
         </div>
       </div>
     );
@@ -200,18 +200,18 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Wrench className="h-5 w-5" />
+          <Wrench className="h-icon-sm w-icon-sm" />
           <h3 className="text-body text-heading-4">Services Catalog</h3>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           Add Service
         </Button>
       </div>
 
       {/* Search */}
       <div className="relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+        <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
         <UnifiedInput           placeholder="Search services by name, category, unit, or supplier..."
           value={searchQuery}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -321,7 +321,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                 onClick={editingService ? handleUpdate : handleCreate} 
                 disabled={saving || !formData.name}
               >
-                <Save className="h-4 w-4 mr-sm" />
+                <Save className="h-icon-xs w-icon-xs mr-sm" />
                 {saving ? 'Saving...' : (editingService ? 'Update Service' : 'Add Service')}
               </Button>
               <Button 
@@ -345,7 +345,7 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
           <div className="col-span-full">
             <Card>
               <div className="p-xl text-center color-muted">
-                <Wrench className="h-12 w-12 mx-auto mb-md opacity-50" />
+                <Wrench className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
                 <p>{searchQuery ? 'No services found matching your search.' : 'No services in catalog.'}</p>
                 <p className="text-body-sm">
                   {searchQuery ? 'Try adjusting your search terms.' : 'Add your first service to get started.'}
@@ -370,13 +370,13 @@ export default function ServicesClient({ orgId }: { orgId: string }) {
                   </p>
                 )}
                 
-                <p className="text-body-sm color-muted mb-sm line-clamp-2">
+                <p className="text-body-sm color-muted mb-sm line-clamp-xs">
                   {service.description}
                 </p>
                 
                 <div className="flex items-center justify-between mb-sm">
                   <div className="flex items-center gap-xs text-body text-heading-4">
-                    <DollarSign className="h-4 w-4" />
+                    <DollarSign className="h-icon-xs w-icon-xs" />
                     {service.rate.toLocaleString()} {service.currency}
                   </div>
                   <div className="flex items-center gap-xs text-body-sm color-muted">

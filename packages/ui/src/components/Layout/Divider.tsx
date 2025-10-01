@@ -62,7 +62,7 @@ const dividerVariants = cva('', {
     {
       orientation: 'horizontal',
       thickness: 'heavy',
-      className: 'h-[3px]',
+      className: 'h-mini',
     },
     {
       orientation: 'vertical',
@@ -87,7 +87,7 @@ const dividerVariants = cva('', {
     {
       orientation: 'vertical',
       thickness: 'heavy',
-      className: 'w-[3px]',
+      className: 'w-mini',
     },
     {
       orientation: 'vertical',

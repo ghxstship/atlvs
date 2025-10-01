@@ -222,7 +222,7 @@ export default function ProgrammingLineupsScheduleView({
  <span className="font-medium text-foreground">{fee}</span>
  )}
  {viewMode === 'time' && lineup.stage && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <MapPin className="h-3 w-3" />
  {lineup.stage}
  </div>
@@ -230,7 +230,7 @@ export default function ProgrammingLineupsScheduleView({
  </div>
  </div>
 
- <div className="flex items-center gap-1 ml-sm">
+ <div className="flex items-center gap-xs ml-sm">
  <Button
  variant="ghost"
  size="sm"
@@ -260,9 +260,9 @@ export default function ProgrammingLineupsScheduleView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading schedule...</p>
  </div>
  </div>
@@ -283,10 +283,10 @@ export default function ProgrammingLineupsScheduleView({
  onClick={() => navigateDate('prev')}
  disabled={availableDates.indexOf(selectedDate) === 0}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  
- <div className="min-w-[200px] text-center">
+ <div className="min-w-content-narrow text-center">
  <h3 className="font-medium">{formatDate(selectedDate)}</h3>
  <p className="text-sm text-muted-foreground">
  {dayLineups.length} lineup{dayLineups.length !== 1 ? 's' : ''}
@@ -299,7 +299,7 @@ export default function ProgrammingLineupsScheduleView({
  onClick={() => navigateDate('next')}
  disabled={availableDates.indexOf(selectedDate) === availableDates.length - 1}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
@@ -334,8 +334,8 @@ export default function ProgrammingLineupsScheduleView({
  {/* Schedule Content */}
  {dayLineups.length === 0 ? (
  <Card className="p-lg">
- <div className="text-center py-12">
- <Music className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Music className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">No lineups scheduled</h3>
  <p className="text-muted-foreground">No performers are scheduled for this date</p>
  </div>
@@ -345,7 +345,7 @@ export default function ProgrammingLineupsScheduleView({
  {stageSchedule.map((stage) => (
  <Card key={stage.stage} className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-medium">{stage.stage}</h3>
  <Badge variant="outline" className="text-xs">
  {stage.slots.reduce((total, slot) => total + slot.lineups.length, 0)} lineups
@@ -374,7 +374,7 @@ export default function ProgrammingLineupsScheduleView({
  {timeSchedule.map((timeSlot) => (
  <Card key={timeSlot.time} className="p-md">
  <div className="flex items-center gap-sm mb-md">
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-medium text-lg">{timeSlot.time}</h3>
  <Badge variant="outline" className="text-xs">
  {timeSlot.lineups.length} lineup{timeSlot.lineups.length !== 1 ? 's' : ''}

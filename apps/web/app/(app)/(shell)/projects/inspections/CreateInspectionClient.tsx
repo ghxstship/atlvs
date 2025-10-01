@@ -86,7 +86,7 @@ export default function CreateInspectionClient({
   return (
     <>
       <Button onClick={() => setOpen(true)} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Inspection
       </Button>
 
@@ -219,7 +219,7 @@ export default function CreateInspectionClient({
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <ClipboardCheck className="w-4 h-4" />
+              <ClipboardCheck className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Inspection'}
             </Button>
           </div>

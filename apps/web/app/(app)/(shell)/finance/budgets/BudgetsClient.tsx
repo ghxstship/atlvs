@@ -265,16 +265,16 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
               <Skeleton className="h-2 w-full mb-sm" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -299,7 +299,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 onClick={() => setCurrentView('grid')}
                 className="gap-sm"
               >
-                <LayoutGrid className="h-4 w-4" />
+                <LayoutGrid className="h-icon-xs w-icon-xs" />
                 <span className="hidden sm:inline">Grid</span>
               </Button>
               <Button
@@ -308,12 +308,12 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 onClick={() => setCurrentView('list')}
                 className="gap-sm"
               >
-                <List className="h-4 w-4" />
+                <List className="h-icon-xs w-icon-xs" />
                 <span className="hidden sm:inline">List</span>
               </Button>
             </div>
             <Button onClick={handleCreateBudget}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Budget
             </Button>
           </div>
@@ -327,7 +327,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                 <p className="text-body-sm color-foreground/70">Total Budgets</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{budgets.length}</p>
               </div>
-              <DollarSign className="h-8 w-8 color-accent" />
+              <DollarSign className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -339,7 +339,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.amount, 0))}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 color-success" />
+              <TrendingUp className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -351,7 +351,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   {formatCurrency(budgets.reduce((sum, b) => sum + b.spent, 0))}
                 </p>
               </div>
-              <TrendingDown className="h-8 w-8 color-destructive" />
+              <TrendingDown className="h-icon-lg w-icon-lg color-destructive" />
             </div>
           </Card>
           
@@ -366,7 +366,7 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
                   }%
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 color-secondary" />
+              <CheckCircle className="h-icon-lg w-icon-lg color-secondary" />
             </div>
           </Card>
         </div>
@@ -503,12 +503,12 @@ function BudgetsClient({ user, orgId, translations }: BudgetsClientProps) {
 
         {/* Empty State */}
         {budgets.length === 0 && (
-          <Card className="p-2xl text-center">
-            <DollarSign className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <DollarSign className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No budgets found</h3>
             <p className="color-foreground/70 mb-md">Create your first budget to start tracking expenses</p>
             <Button onClick={handleCreateBudget}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Budget
             </Button>
           </Card>

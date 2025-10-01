@@ -171,7 +171,7 @@ export default function CreateCompanyClient({
         {/* Company Overview */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Building className="h-5 w-5 color-accent" />
+            <Building className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Company Information</h3>
           </div>
           
@@ -238,7 +238,7 @@ export default function CreateCompanyClient({
         {/* Contact Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Mail className="h-5 w-5 color-success" />
+            <Mail className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Contact Information</h3>
           </div>
           
@@ -246,7 +246,7 @@ export default function CreateCompanyClient({
             <div className="grid grid-cols-2 gap-md">
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <Globe className="h-4 w-4 inline mr-xs" />
+                  <Globe className="h-icon-xs w-icon-xs inline mr-xs" />
                   Website
                 </label>
                 <UnifiedInput                   type="url"
@@ -258,7 +258,7 @@ export default function CreateCompanyClient({
 
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <Mail className="h-4 w-4 inline mr-xs" />
+                  <Mail className="h-icon-xs w-icon-xs inline mr-xs" />
                   Email
                 </label>
                 <UnifiedInput                   type="email"
@@ -271,7 +271,7 @@ export default function CreateCompanyClient({
 
             <div>
               <label className="block text-body-sm form-label mb-xs">
-                <Phone className="h-4 w-4 inline mr-xs" />
+                <Phone className="h-icon-xs w-icon-xs inline mr-xs" />
                 Phone
               </label>
               <UnifiedInput                 type="tel"
@@ -286,7 +286,7 @@ export default function CreateCompanyClient({
         {/* Address Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <MapPin className="h-5 w-5 color-warning" />
+            <MapPin className="h-icon-sm w-icon-sm color-warning" />
             <h3 className="text-body text-heading-4">Address Information</h3>
           </div>
           
@@ -343,14 +343,14 @@ export default function CreateCompanyClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.name.trim()}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Create Company'}
           </Button>
         </div>

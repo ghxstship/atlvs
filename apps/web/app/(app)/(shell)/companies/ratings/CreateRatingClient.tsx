@@ -189,7 +189,7 @@ export default function CreateRatingClient({
                 : 'color-muted hover:color-muted/80'
             }`}
           >
-            <Star className="h-6 w-6 fill-current" />
+            <Star className="h-icon-md w-icon-md fill-current" />
           </button>
         ))}
         <span className="ml-sm text-body-sm form-label">
@@ -210,7 +210,7 @@ export default function CreateRatingClient({
         {/* Rating Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Star className="h-5 w-5 color-warning" />
+            <Star className="h-icon-sm w-icon-sm color-warning" />
             <h3 className="text-body text-heading-4">Rating Details</h3>
           </div>
           
@@ -288,7 +288,7 @@ export default function CreateRatingClient({
         {/* Review Content */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <MessageSquare className="h-5 w-5 color-accent" />
+            <MessageSquare className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Review Content</h3>
           </div>
           
@@ -328,14 +328,14 @@ export default function CreateRatingClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.companyId || !formData.title.trim()}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Submitting...' : 'Submit Rating'}
           </Button>
         </div>

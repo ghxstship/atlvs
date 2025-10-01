@@ -358,10 +358,10 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
             {[1, 2, 3].map((i: any) => (
-              <div key={i} className="h-48 bg-secondary rounded"></div>
+              <div key={i} className="h-container-xs bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -389,7 +389,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
           <p className="text-body-sm color-muted">Schedule and manage data exports</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           New Export Job
         </Button>
       </div>
@@ -424,7 +424,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
         <>
           {/* Search */}
           <div className="relative">
-            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 color-muted" />
+            <Search className="h-icon-xs w-icon-xs absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted" />
             <input
               type="text"
               placeholder="Search export jobs..."
@@ -446,12 +446,12 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                     <div className="flex items-start justify-between mb-md">
                       <div className="flex items-center cluster-sm">
                         <div className="p-sm bg-accent/10 rounded-lg">
-                          <FormatIcon className="h-5 w-5 color-accent" />
+                          <FormatIcon className="h-icon-sm w-icon-sm color-accent" />
                         </div>
                         <div>
                           <h3 className="text-heading-4 color-foreground">{job.name}</h3>
                           <div className="flex items-center cluster-sm mt-xs">
-                            <StatusIcon className={`h-4 w-4 ${getStatusColor(job.status)}`} />
+                            <StatusIcon className={`h-icon-xs w-icon-xs ${getStatusColor(job.status)}`} />
                             <Badge className={`text-body-sm ${
                               job.status === 'active' ? 'bg-success/10 color-success' :
                               job.status === 'paused' ? 'bg-warning/10 color-warning' :
@@ -556,7 +556,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             </div>
           ) : (
             <Card className="p-xl text-center">
-              <Archive className="h-12 w-12 color-muted mx-auto mb-md" />
+              <Archive className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
               <h3 className="text-body form-label color-foreground mb-sm">
                 No export jobs found
               </h3>
@@ -567,7 +567,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                 }
               </p>
               <Button onClick={() => setShowCreateForm(true)}>
-                <Plus className="h-4 w-4 mr-sm" />
+                <Plus className="h-icon-xs w-icon-xs mr-sm" />
                 Create Export Job
               </Button>
             </Card>
@@ -586,7 +586,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
                 <Card key={entry.id} className="p-md">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center cluster">
-                      <StatusIcon className={`h-5 w-5 ${getStatusColor(entry.status)}`} />
+                      <StatusIcon className={`h-icon-sm w-icon-sm ${getStatusColor(entry.status)}`} />
                       <div>
                         <h4 className="form-label color-foreground">
                           {job?.name || 'Unknown Job'}
@@ -627,7 +627,7 @@ export default function ExportsClient({ organizationId, translations }: ExportsC
             })
           ) : (
             <Card className="p-xl text-center">
-              <Clock className="h-12 w-12 color-muted mx-auto mb-md" />
+              <Clock className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
               <h3 className="text-body form-label color-foreground mb-sm">
                 No export history
               </h3>

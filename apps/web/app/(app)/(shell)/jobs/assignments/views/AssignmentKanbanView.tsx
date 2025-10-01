@@ -26,31 +26,31 @@ export default function AssignmentKanbanView({
  id: 'pending',
  title: 'Pending',
  color: 'secondary',
- icon: <Clock className="h-4 w-4" />
+ icon: <Clock className="h-icon-xs w-icon-xs" />
  },
  {
  id: 'assigned',
  title: 'Assigned',
  color: 'warning',
- icon: <Users className="h-4 w-4" />
+ icon: <Users className="h-icon-xs w-icon-xs" />
  },
  {
  id: 'in_progress',
  title: 'In Progress',
  color: 'info',
- icon: <Clock className="h-4 w-4" />
+ icon: <Clock className="h-icon-xs w-icon-xs" />
  },
  {
  id: 'completed',
  title: 'Completed',
  color: 'success',
- icon: <CheckCircle className="h-4 w-4" />
+ icon: <CheckCircle className="h-icon-xs w-icon-xs" />
  },
  {
  id: 'cancelled',
  title: 'Cancelled',
  color: 'destructive',
- icon: <AlertCircle className="h-4 w-4" />
+ icon: <AlertCircle className="h-icon-xs w-icon-xs" />
  }
  ], []);
 
@@ -60,7 +60,7 @@ export default function AssignmentKanbanView({
  {/* Header */}
  <div className="flex items-start justify-between">
  <div className="flex-1">
- <h4 className="text-body-sm font-medium color-foreground line-clamp-2">
+ <h4 className="text-body-sm font-medium color-foreground line-clamp-xs">
  {assignment.job_title || 'Untitled Job'}
  </h4>
  <p className="text-body-xs color-muted">
@@ -71,7 +71,7 @@ export default function AssignmentKanbanView({
 
  {/* Assignee Info */}
  <div className="flex items-center gap-sm">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Users className="h-3 w-3" />
  </div>
  <div className="flex-1 min-w-0">
@@ -107,7 +107,7 @@ export default function AssignmentKanbanView({
 
  {/* Notes */}
  {assignment.note && (
- <p className="text-body-xs color-muted line-clamp-2 bg-secondary/50 p-xs rounded">
+ <p className="text-body-xs color-muted line-clamp-xs bg-secondary/50 p-xs rounded">
  {assignment.note}
  </p>
  )}
@@ -159,7 +159,7 @@ export default function AssignmentKanbanView({
  emptyState={{
  title: 'No Assignments',
  description: 'No job assignments found for the current filters.',
- icon: <Users className="h-12 w-12 color-muted" />
+ icon: <Users className="h-icon-2xl w-icon-2xl color-muted" />
  }}
  />
  );

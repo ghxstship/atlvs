@@ -123,9 +123,9 @@ export default function ProgrammingWorkshopsListView({
 
  if (loading) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="flex items-center justify-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  <span className="ml-2">Loading workshops...</span>
  </div>
  </Card>
@@ -134,7 +134,7 @@ export default function ProgrammingWorkshopsListView({
 
  if (workshops.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
  <h3 className="text-lg font-semibold">No workshops found</h3>
  <p className="text-muted-foreground">
@@ -150,14 +150,14 @@ export default function ProgrammingWorkshopsListView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedWorkshops.length === workshops.length}
  onCheckedChange={handleSelectAll}
  aria-
  />
  </TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  <TableHead 
  className="cursor-pointer hover:bg-muted/50"
  onClick={() => handleSort('title')}
@@ -181,7 +181,7 @@ export default function ProgrammingWorkshopsListView({
  </TableHead>
  <TableHead>Participants</TableHead>
  <TableHead>Price</TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
@@ -204,25 +204,25 @@ export default function ProgrammingWorkshopsListView({
  variant="ghost"
  size="sm"
  onClick={() => toggleRowExpansion(workshop.id)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
  </TableCell>
  <TableCell>
  <div className="font-medium">{workshop.title}</div>
  {workshop.description && (
- <div className="text-sm text-muted-foreground line-clamp-1">
+ <div className="text-sm text-muted-foreground line-clamp-xs">
  {workshop.description}
  </div>
  )}
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-lg">{CATEGORY_CONFIG[workshop.category]?.icon}</span>
  <span className="text-sm">{CATEGORY_CONFIG[workshop.category]?.label}</span>
  </div>
@@ -238,7 +238,7 @@ export default function ProgrammingWorkshopsListView({
  </Badge>
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span>{FORMAT_CONFIG[workshop.format]?.icon}</span>
  <Badge variant={FORMAT_CONFIG[workshop.format]?.variant}>
  {FORMAT_CONFIG[workshop.format]?.label}
@@ -246,22 +246,22 @@ export default function ProgrammingWorkshopsListView({
  </div>
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-1">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">
  {new Date(workshop.start_date).toLocaleDateString()}
  </span>
  </div>
  {workshop.duration_minutes && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Clock className="h-3 w-3" />
  <span>{workshop.duration_minutes}min</span>
  </div>
  )}
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-1">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">
  {workshop.current_participants}
  {workshop.max_participants && `/${workshop.max_participants}`}
@@ -275,8 +275,8 @@ export default function ProgrammingWorkshopsListView({
  </TableCell>
  <TableCell>
  {workshop.price ? (
- <div className="flex items-center gap-1">
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">
  {workshop.currency || '$'}{workshop.price}
  </span>
@@ -293,24 +293,24 @@ export default function ProgrammingWorkshopsListView({
  <TableCell>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(workshop)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(workshop)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem
  onClick={() => onDelete(workshop.id)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -322,16 +322,16 @@ export default function ProgrammingWorkshopsListView({
  {isExpanded && (
  <TableRow>
  <TableCell colSpan={11} className="bg-muted/25">
- <div className="p-4 space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="p-md space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {/* Location & Venue */}
  {(workshop.location || workshop.venue || workshop.virtual_link) && (
  <div>
  <h4 className="font-semibold mb-2">Location</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  {workshop.venue && (
- <div className="flex items-center gap-1">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{workshop.venue}</span>
  </div>
  )}
@@ -358,7 +358,7 @@ export default function ProgrammingWorkshopsListView({
  {(workshop.project || workshop.event) && (
  <div>
  <h4 className="font-semibold mb-2">Associated</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  {workshop.project && (
  <div>
  <span className="text-muted-foreground">Project: </span>
@@ -389,7 +389,7 @@ export default function ProgrammingWorkshopsListView({
  {(workshop.registration_opens_at || workshop.registration_deadline) && (
  <div>
  <h4 className="font-semibold mb-2">Registration</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  {workshop.registration_opens_at && (
  <div>
  Opens: {new Date(workshop.registration_opens_at).toLocaleDateString()}
@@ -408,8 +408,8 @@ export default function ProgrammingWorkshopsListView({
  {workshop.certification_available && (
  <div>
  <h4 className="font-semibold mb-2">Certification</h4>
- <div className="flex items-center gap-1">
- <Award className="h-4 w-4 text-yellow-600" />
+ <div className="flex items-center gap-xs">
+ <Award className="h-icon-xs w-icon-xs text-yellow-600" />
  <span className="text-sm">Certificate Available</span>
  </div>
  {workshop.certification_criteria && (
@@ -435,7 +435,7 @@ export default function ProgrammingWorkshopsListView({
  {workshop.objectives && workshop.objectives.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Learning Objectives</h4>
- <ul className="text-sm list-disc list-inside space-y-1">
+ <ul className="text-sm list-disc list-inside space-y-xs">
  {workshop.objectives.map((objective, index) => (
  <li key={index}>{objective}</li>
  ))}
@@ -447,7 +447,7 @@ export default function ProgrammingWorkshopsListView({
  {workshop.prerequisites && workshop.prerequisites.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Prerequisites</h4>
- <ul className="text-sm list-disc list-inside space-y-1">
+ <ul className="text-sm list-disc list-inside space-y-xs">
  {workshop.prerequisites.map((prerequisite, index) => (
  <li key={index}>{prerequisite}</li>
  ))}
@@ -458,11 +458,11 @@ export default function ProgrammingWorkshopsListView({
  {/* Materials */}
  {((workshop.materials_provided && workshop.materials_provided.length > 0) ||
  (workshop.materials_required && workshop.materials_required.length > 0)) && (
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {workshop.materials_provided && workshop.materials_provided.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Materials Provided</h4>
- <ul className="text-sm list-disc list-inside space-y-1">
+ <ul className="text-sm list-disc list-inside space-y-xs">
  {workshop.materials_provided.map((material, index) => (
  <li key={index}>{material}</li>
  ))}
@@ -472,7 +472,7 @@ export default function ProgrammingWorkshopsListView({
  {workshop.materials_required && workshop.materials_required.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Materials Required</h4>
- <ul className="text-sm list-disc list-inside space-y-1">
+ <ul className="text-sm list-disc list-inside space-y-xs">
  {workshop.materials_required.map((material, index) => (
  <li key={index}>{material}</li>
  ))}
@@ -486,7 +486,7 @@ export default function ProgrammingWorkshopsListView({
  {workshop.tags && workshop.tags.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {workshop.tags.map((tag, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {tag}

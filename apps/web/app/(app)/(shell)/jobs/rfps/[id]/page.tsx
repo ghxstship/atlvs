@@ -81,7 +81,7 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested RFP could not be found.</p>
             </div>
           )
@@ -125,16 +125,16 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* RFP Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <FileText className="h-icon-sm w-icon-sm" />
                 RFP Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(rfp as any).title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -166,12 +166,12 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
           {/* Timeline */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Timeline
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Published Date</span>
                 <span className="text-sm text-muted-foreground">
@@ -198,15 +198,15 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
           {/* Associated Project */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Target className="h-icon-sm w-icon-sm" />
                 Associated Project
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(rfp as any).project?.name || 'No associated project'}</p>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex items-center gap-xs mt-2">
                   <span className="text-sm">Project Status:</span>
                   {getStatusBadge((rfp as any).project?.status || 'unknown')}
                 </div>
@@ -217,12 +217,12 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
           {/* Response Statistics */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <TrendingUp className="h-icon-sm w-icon-sm" />
                 Response Statistics
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Total Responses</span>
                 <span className="text-sm font-semibold">
@@ -265,11 +265,11 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
           </CardHeader>
           <CardContent>
             {(rfp as any).responses && (rfp as any).responses.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-sm">
                 {(rfp as any).responses
                   .sort((a: unknown, b: unknown) => new Date(b.submitted_at || 0).getTime() - new Date(a.submitted_at || 0).getTime())
                   .map((response: unknown) => (
-                    <div key={response.id} className="flex items-center justify-between p-4 border rounded">
+                    <div key={response.id} className="flex items-center justify-between p-md border rounded">
                       <div className="flex-1">
                         <p className="font-medium">{response.company?.name || 'Unknown Company'}</p>
                         <p className="text-sm text-muted-foreground">
@@ -286,7 +286,7 @@ export default async function RfpDetailPage({ params }: RfpDetailPageProps) {
                   ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 No responses submitted yet
               </p>
             )}

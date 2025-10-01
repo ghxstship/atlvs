@@ -181,10 +181,10 @@ export default function CreateFilePage() {
 
   if (uploadedFiles.length > 0) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-6 text-center">
-          <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-            <FileText className="w-6 h-6 text-green-600" />
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-md">
+        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-lg text-center">
+          <div className="w-icon-2xl h-icon-2xl bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <FileText className="w-icon-md h-icon-md text-green-600" />
           </div>
           <h2 className="text-xl font-semibold text-gray-900 mb-2">Upload Successful!</h2>
           <p className="text-gray-600 mb-4">
@@ -200,15 +200,15 @@ export default function CreateFilePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="max-w-4xl mx-auto py-8 px-4">
+      <div className="max-w-4xl mx-auto py-xl px-md">
         <div className="bg-white rounded-lg shadow-sm">
           {/* Header */}
-          <div className="px-6 py-4 border-b border-gray-200">
+          <div className="px-lg py-md border-b border-gray-200">
             <h1 className="text-2xl font-bold text-gray-900">Upload Files</h1>
             <p className="text-gray-600 mt-1">Add new files to your digital asset library</p>
           </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
+          <form onSubmit={handleSubmit(onSubmit)} className="p-lg space-y-lg">
             {/* File Upload Area */}
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
@@ -216,9 +216,9 @@ export default function CreateFilePage() {
               </label>
 
               {selectedFiles.length === 0 ? (
-                <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center">
-                  <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-                  <div className="space-y-2">
+                <div className="border-2 border-dashed border-gray-300 rounded-lg p-xl text-center">
+                  <Upload className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
+                  <div className="space-y-xs">
                     <p className="text-gray-600">
                       Drag and drop files here, or click to browse
                     </p>
@@ -243,14 +243,14 @@ export default function CreateFilePage() {
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {selectedFiles.map((file, index) => {
                     const CategoryIcon = getCategoryIcon(detectFileCategory(file));
                     const progress = uploadProgress[file.name] || 0;
 
                     return (
-                      <div key={index} className="flex items-center gap-3 p-3 border border-gray-200 rounded-lg">
-                        <CategoryIcon className="w-8 h-8 text-gray-400 flex-shrink-0" />
+                      <div key={index} className="flex items-center gap-sm p-sm border border-gray-200 rounded-lg">
+                        <CategoryIcon className="w-icon-lg h-icon-lg text-gray-400 flex-shrink-0" />
 
                         <div className="flex-1 min-w-0">
                           <p className="font-medium text-gray-900 truncate">{file.name}</p>
@@ -271,7 +271,7 @@ export default function CreateFilePage() {
                           onClick={() => removeFile(index)}
                           disabled={isUploading}
                         >
-                          <X className="w-4 h-4" />
+                          <X className="w-icon-xs h-icon-xs" />
                         </Button>
                       </div>
                     );
@@ -283,7 +283,7 @@ export default function CreateFilePage() {
                     onClick={() => document.getElementById('file-upload')?.click()}
                     disabled={isUploading}
                   >
-                    <Plus className="w-4 h-4 mr-2" />
+                    <Plus className="w-icon-xs h-icon-xs mr-2" />
                     Add More Files
                   </Button>
                   <input
@@ -299,7 +299,7 @@ export default function CreateFilePage() {
 
             {/* File Details (only show for single file uploads) */}
             {selectedFiles.length === 1 && (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 {/* Title */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -390,8 +390,8 @@ export default function CreateFilePage() {
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Tags
                   </label>
-                  <div className="space-y-2">
-                    <div className="flex gap-2">
+                  <div className="space-y-xs">
+                    <div className="flex gap-xs">
                       <Input
                         value={tagInput}
                         onChange={(e) => setTagInput(e.target.value)}
@@ -399,12 +399,12 @@ export default function CreateFilePage() {
                         onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
                       />
                       <Button type="button" onClick={handleAddTag} size="sm">
-                        <Tag className="w-4 h-4" />
+                        <Tag className="w-icon-xs h-icon-xs" />
                       </Button>
                     </div>
 
                     {watchedTags.length > 0 && (
-                      <div className="flex flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-xs">
                         {watchedTags.map((tag, index) => (
                           <Badge
                             key={index}
@@ -423,7 +423,7 @@ export default function CreateFilePage() {
             )}
 
             {/* Actions */}
-            <div className="flex justify-end gap-3 pt-6 border-t border-gray-200">
+            <div className="flex justify-end gap-sm pt-6 border-t border-gray-200">
               <Button
                 type="button"
                 variant="outline"
@@ -438,12 +438,12 @@ export default function CreateFilePage() {
               >
                 {isUploading ? (
                   <>
-                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
+                    <div className="w-icon-xs h-icon-xs border-2 border-white border-t-transparent rounded-full animate-spin mr-2" />
                     Uploading...
                   </>
                 ) : (
                   <>
-                    <Upload className="w-4 h-4 mr-2" />
+                    <Upload className="w-icon-xs h-icon-xs mr-2" />
                     Upload {selectedFiles.length} File{selectedFiles.length !== 1 ? 's' : ''}
                   </>
                 )}

@@ -129,9 +129,9 @@ export default function ProgrammingSpacesListView({
 
  if (loading) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="flex items-center justify-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  <span className="ml-2">Loading spaces...</span>
  </div>
  </Card>
@@ -140,7 +140,7 @@ export default function ProgrammingSpacesListView({
 
  if (spaces.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
  <h3 className="text-lg font-semibold">No spaces found</h3>
  <p className="text-muted-foreground">
@@ -156,14 +156,14 @@ export default function ProgrammingSpacesListView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedSpaces.length === spaces.length}
  onCheckedChange={handleSelectAll}
  aria-
  />
  </TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  <TableHead 
  className="cursor-pointer hover:bg-muted/50"
  onClick={() => handleSort('name')}
@@ -185,7 +185,7 @@ export default function ProgrammingSpacesListView({
  Capacity {getSortIcon('capacity')}
  </TableHead>
  <TableHead>Location</TableHead>
- <TableHead className="w-12"></TableHead>
+ <TableHead className="w-icon-2xl"></TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
@@ -208,25 +208,25 @@ export default function ProgrammingSpacesListView({
  variant="ghost"
  size="sm"
  onClick={() => toggleRowExpansion(space.id)}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
  </TableCell>
  <TableCell>
  <div className="font-medium">{space.name}</div>
  {space.description && (
- <div className="text-sm text-muted-foreground line-clamp-1">
+ <div className="text-sm text-muted-foreground line-clamp-xs">
  {space.description}
  </div>
  )}
  </TableCell>
  <TableCell>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-lg">{SPACE_KIND_CONFIG[space.kind]?.icon}</span>
  <span className="text-sm">{SPACE_KIND_CONFIG[space.kind]?.label}</span>
  </div>
@@ -243,8 +243,8 @@ export default function ProgrammingSpacesListView({
  </TableCell>
  <TableCell>
  {space.capacity ? (
- <div className="flex items-center gap-1">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{space.capacity}</span>
  {space.max_capacity && space.max_capacity !== space.capacity && (
  <span className="text-muted-foreground">/ {space.max_capacity}</span>
@@ -255,7 +255,7 @@ export default function ProgrammingSpacesListView({
  )}
  </TableCell>
  <TableCell>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {space.building && (
  <div className="text-sm font-medium">{space.building}</div>
  )}
@@ -266,7 +266,7 @@ export default function ProgrammingSpacesListView({
  <div className="text-xs text-muted-foreground">Room {space.room_number}</div>
  )}
  {space.location && (
- <div className="text-xs text-muted-foreground flex items-center gap-1">
+ <div className="text-xs text-muted-foreground flex items-center gap-xs">
  <MapPin className="h-3 w-3" />
  {space.location}
  </div>
@@ -276,24 +276,24 @@ export default function ProgrammingSpacesListView({
  <TableCell>
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
- <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
- <MoreHorizontal className="h-4 w-4" />
+ <Button variant="ghost" size="sm" className="h-icon-lg w-icon-lg p-0">
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(space)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(space)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem
  onClick={() => onDelete(space.id)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>
@@ -305,13 +305,13 @@ export default function ProgrammingSpacesListView({
  {isExpanded && (
  <TableRow>
  <TableCell colSpan={9} className="bg-muted/25">
- <div className="p-4 space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="p-md space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {/* Dimensions */}
  {(space.area_sqft || space.length || space.width || space.height) && (
  <div>
  <h4 className="font-semibold mb-2">Dimensions</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  {space.area_sqft && (
  <div>Area: {space.area_sqft} sq ft</div>
  )}
@@ -329,7 +329,7 @@ export default function ProgrammingSpacesListView({
  {space.project && (
  <div>
  <h4 className="font-semibold mb-2">Project</h4>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline">{space.project.name}</Badge>
  <Badge variant="secondary">{space.project.status}</Badge>
  </div>
@@ -340,7 +340,7 @@ export default function ProgrammingSpacesListView({
  {space.is_bookable && (
  <div>
  <h4 className="font-semibold mb-2">Booking</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  <div>Bookable: Yes</div>
  {space.hourly_rate && (
  <div>Hourly: ${space.hourly_rate}</div>
@@ -356,7 +356,7 @@ export default function ProgrammingSpacesListView({
  {(space.contact_person || space.contact_phone || space.contact_email) && (
  <div>
  <h4 className="font-semibold mb-2">Contact</h4>
- <div className="space-y-1 text-sm">
+ <div className="space-y-xs text-sm">
  {space.contact_person && (
  <div>Person: {space.contact_person}</div>
  )}
@@ -375,7 +375,7 @@ export default function ProgrammingSpacesListView({
  {space.amenities && Object.values(space.amenities).some(Boolean) && (
  <div>
  <h4 className="font-semibold mb-2">Amenities</h4>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {space.amenities.wifi && (
  <Badge variant="outline" className="text-xs">
  <Wifi className="mr-1 h-3 w-3" />
@@ -411,7 +411,7 @@ export default function ProgrammingSpacesListView({
  {space.technical_specs && Object.values(space.technical_specs).some(Boolean) && (
  <div>
  <h4 className="font-semibold mb-2">Technical Specifications</h4>
- <div className="grid grid-cols-2 gap-2 text-sm">
+ <div className="grid grid-cols-2 gap-xs text-sm">
  {space.technical_specs.audio_inputs && (
  <div>Audio Inputs: {space.technical_specs.audio_inputs}</div>
  )}
@@ -432,7 +432,7 @@ export default function ProgrammingSpacesListView({
  {space.tags && space.tags.length > 0 && (
  <div>
  <h4 className="font-semibold mb-2">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {space.tags.map((tag, index) => (
  <Badge key={index} variant="outline" className="text-xs">
  {tag}

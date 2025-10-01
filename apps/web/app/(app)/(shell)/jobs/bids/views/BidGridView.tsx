@@ -43,17 +43,17 @@ export default function BidGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'accepted':
- return <CheckCircle className="h-4 w-4" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs" />;
  case 'under_review':
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  case 'submitted':
- return <DollarSign className="h-4 w-4" />;
+ return <DollarSign className="h-icon-xs w-icon-xs" />;
  case 'rejected':
- return <XCircle className="h-4 w-4" />;
+ return <XCircle className="h-icon-xs w-icon-xs" />;
  case 'withdrawn':
- return <AlertCircle className="h-4 w-4" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs" />;
  default:
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -73,8 +73,8 @@ export default function BidGridView({
  sortable: true,
  render: (value: string, record: JobBid) => (
  <div className="flex items-center gap-sm">
- <div className="h-8 w-8 bg-accent/10 rounded-md flex items-center justify-center">
- <DollarSign className="h-4 w-4 color-accent" />
+ <div className="h-icon-lg w-icon-lg bg-accent/10 rounded-md flex items-center justify-center">
+ <DollarSign className="h-icon-xs w-icon-xs color-accent" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">{value || 'Untitled Opportunity'}</p>
@@ -89,7 +89,7 @@ export default function BidGridView({
  sortable: true,
  render: (value: string, record: JobBid) => (
  <div className="flex items-center gap-sm">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Building className="h-3 w-3" />
  </div>
  <div>
@@ -161,7 +161,7 @@ export default function BidGridView({
  key: 'project_title',
  label: 'Project',
  render: (value: string) => (
- <p className="text-body-sm color-muted line-clamp-1 max-w-xs">
+ <p className="text-body-sm color-muted line-clamp-xs max-w-xs">
  {value || '—'}
  </p>
  )
@@ -222,7 +222,7 @@ export default function BidGridView({
  emptyState={{
  title: 'No Bids Found',
  description: 'No bids match your current filters.',
- icon: <DollarSign className="h-12 w-12 color-muted" />
+ icon: <DollarSign className="h-icon-2xl w-icon-2xl color-muted" />
  }}
  />
  );

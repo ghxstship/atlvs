@@ -104,7 +104,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={handleOpen} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Event
       </Button>
 
@@ -281,7 +281,7 @@ export default function CreateEventClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <Calendar className="w-4 h-4" />
+              <Calendar className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Event'}
             </Button>
           </div>

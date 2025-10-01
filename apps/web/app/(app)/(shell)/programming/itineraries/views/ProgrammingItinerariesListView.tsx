@@ -61,12 +61,12 @@ export default function ProgrammingItinerariesListView({
 
  const getSortIcon = (field: keyof ProgrammingItinerary) => {
  if (sortConfig.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sortConfig.direction === "asc" ? (
- <ArrowUp className="h-4 w-4" />
+ <ArrowUp className="h-icon-xs w-icon-xs" />
  ) : (
- <ArrowDown className="h-4 w-4" />
+ <ArrowDown className="h-icon-xs w-icon-xs" />
  );
  };
 
@@ -105,9 +105,9 @@ export default function ProgrammingItinerariesListView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading itineraries...</p>
  </div>
  </div>
@@ -120,7 +120,7 @@ export default function ProgrammingItinerariesListView({
  <Table>
  <thead>
  <tr>
- <th className="w-12">
+ <th className="w-icon-2xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -185,7 +185,7 @@ export default function ProgrammingItinerariesListView({
  <th>Location</th>
  <th>Project</th>
  <th>Cost</th>
- <th className="w-12">Actions</th>
+ <th className="w-icon-2xl">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -231,20 +231,20 @@ export default function ProgrammingItinerariesListView({
  </Badge>
  </td>
  <td>
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Calendar className="h-3 w-3" />
  {formatDate(itinerary.start_date)}
  </div>
  </td>
  <td>
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Calendar className="h-3 w-3" />
  {formatDate(itinerary.end_date)}
  </div>
  </td>
  <td>
  {itinerary.location && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <MapPin className="h-3 w-3" />
  <span className="truncate max-w-xs">{itinerary.location}</span>
  </div>
@@ -262,34 +262,34 @@ export default function ProgrammingItinerariesListView({
  </td>
  <td>
  {itinerary.total_cost && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <DollarSign className="h-3 w-3" />
  {formatCurrency(itinerary.total_cost, itinerary.currency)}
  </div>
  )}
  </td>
  <td onClick={(e) => e.stopPropagation()}>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(itinerary)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(itinerary)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(itinerary)}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </td>
@@ -315,7 +315,7 @@ export default function ProgrammingItinerariesListView({
  {itinerary.participants_count && (
  <div>
  <h4 className="font-medium text-sm mb-1">Participants</h4>
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Users className="h-3 w-3" />
  {itinerary.participants_count}
  </div>
@@ -336,7 +336,7 @@ export default function ProgrammingItinerariesListView({
  {itinerary.tags.length > 0 && (
  <div className="md:col-span-2 lg:col-span-3">
  <h4 className="font-medium text-sm mb-1">Tags</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {itinerary.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}
@@ -350,7 +350,7 @@ export default function ProgrammingItinerariesListView({
  {itinerary.destinations.length > 0 && (
  <div className="md:col-span-2 lg:col-span-3">
  <h4 className="font-medium text-sm mb-1">Destinations</h4>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {itinerary.destinations.slice(0, 3).map((destination, index) => (
  <div key={index} className="text-sm text-muted-foreground">
  <MapPin className="h-3 w-3 inline mr-1" />

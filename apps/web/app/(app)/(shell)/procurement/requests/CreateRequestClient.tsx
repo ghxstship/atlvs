@@ -166,7 +166,7 @@ export function CreateRequestClient({
  <div className="absolute right-0 top-0 h-full w-full max-w-4xl bg-background shadow-xl">
  <div className="flex h-full flex-col">
  {/* Header */}
- <div className="flex items-center justify-between border-b p-6">
+ <div className="flex items-center justify-between border-b p-lg">
  <div>
  <h2 className="text-lg font-semibold">Create Procurement Request</h2>
  <p className="text-sm text-muted-foreground">
@@ -174,13 +174,13 @@ export function CreateRequestClient({
  </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Progress Steps */}
- <div className="border-b p-6">
- <div className="flex items-center space-x-4">
+ <div className="border-b p-lg">
+ <div className="flex items-center space-x-md">
  {[
  { step: 1, title: 'Basic Info' },
  { step: 2, title: 'Items' },
@@ -188,7 +188,7 @@ export function CreateRequestClient({
  ].map(({ step, title }) => (
  <div key={step} className="flex items-center">
  <div
- className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
+ className={`flex h-icon-lg w-icon-lg items-center justify-center rounded-full text-sm font-medium ${
  currentStep >= step
  ? 'bg-primary text-primary-foreground'
  : 'bg-muted text-muted-foreground'
@@ -197,19 +197,19 @@ export function CreateRequestClient({
  {step}
  </div>
  <span className="ml-2 text-sm font-medium">{title}</span>
- {step < 3 && <div className="ml-4 h-px w-8 bg-border" />}
+ {step < 3 && <div className="ml-4 h-px w-icon-lg bg-border" />}
  </div>
  ))}
  </div>
  </div>
 
  {/* Content */}
- <div className="flex-1 overflow-y-auto p-6">
- <form className="space-y-6">
+ <div className="flex-1 overflow-y-auto p-lg">
+ <form className="space-y-lg">
  {/* Step 1: Basic Information */}
  {currentStep === 1 && (
- <div className="space-y-6">
- <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 gap-lg md:grid-cols-2">
  <div className="md:col-span-2">
  <label className="text-sm font-medium">Request Title *</label>
  <Input
@@ -290,17 +290,17 @@ export function CreateRequestClient({
 
  {/* Step 2: Items */}
  {currentStep === 2 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-medium">Request Items</h3>
  <Button type="button" variant="outline" onClick={addItem}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Item
  </Button>
  </div>
 
  {fields.map((field, index) => (
- <div key={field.id} className="border rounded-lg p-4 space-y-4">
+ <div key={field.id} className="border rounded-lg p-md space-y-md">
  <div className="flex items-center justify-between">
  <h4 className="font-medium">Item {index + 1}</h4>
  {fields.length > 1 && (
@@ -310,12 +310,12 @@ export function CreateRequestClient({
  size="sm"
  onClick={() => removeItem(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
 
- <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+ <div className="grid grid-cols-1 gap-md md:grid-cols-2">
  <div>
  <label className="text-sm font-medium">Item Name *</label>
  <Input
@@ -436,13 +436,13 @@ export function CreateRequestClient({
 
  {/* Step 3: Review */}
  {currentStep === 3 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <h3 className="text-lg font-medium">Review Request</h3>
  
  {/* Basic Info Summary */}
- <div className="border rounded-lg p-4">
+ <div className="border rounded-lg p-md">
  <h4 className="font-medium mb-4">Basic Information</h4>
- <div className="grid grid-cols-2 gap-4 text-sm">
+ <div className="grid grid-cols-2 gap-md text-sm">
  <div>
  <span className="text-muted-foreground">Title:</span>
  <p className="font-medium">{form.watch('title')}</p>
@@ -480,11 +480,11 @@ export function CreateRequestClient({
  </div>
 
  {/* Items Summary */}
- <div className="border rounded-lg p-4">
+ <div className="border rounded-lg p-md">
  <h4 className="font-medium mb-4">Items ({fields.length})</h4>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {form.watch('items')?.map((item, index) => (
- <div key={index} className="flex justify-between items-center p-3 bg-muted rounded">
+ <div key={index} className="flex justify-between items-center p-sm bg-muted rounded">
  <div>
  <p className="font-medium">{item.name}</p>
  <p className="text-sm text-muted-foreground">
@@ -510,9 +510,9 @@ export function CreateRequestClient({
  </div>
 
  {/* Footer */}
- <div className="border-t p-6">
+ <div className="border-t p-lg">
  <div className="flex items-center justify-between">
- <div className="flex space-x-2">
+ <div className="flex space-x-xs">
  {currentStep > 1 && (
  <Button
  type="button"
@@ -524,7 +524,7 @@ export function CreateRequestClient({
  )}
  </div>
  
- <div className="flex space-x-2">
+ <div className="flex space-x-xs">
  {currentStep < 3 ? (
  <Button
  type="button"
@@ -539,18 +539,18 @@ export function CreateRequestClient({
  variant="outline"
  onClick={handleSaveDraft}
  disabled={loading}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Save className="h-4 w-4" />
+ <Save className="h-icon-xs w-icon-xs" />
  Save Draft
  </Button>
  <Button
  type="button"
  onClick={handleSubmit}
  disabled={loading}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Send className="h-4 w-4" />
+ <Send className="h-icon-xs w-icon-xs" />
  Submit for Approval
  </Button>
  </>

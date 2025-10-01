@@ -240,12 +240,12 @@ export const ModuleTemplate: React.FC<ModuleTemplateProps> = ({
                   size="sm"
                   onClick={handleRefresh}
                 >
-                  <RefreshCw className="h-4 w-4" />
+                  <RefreshCw className="h-icon-xs w-icon-xs" />
                 </Button>
                 
                 {entity.permissions?.create !== false && (
                   <Button onClick={() => handleCreate(tab.entity!)}>
-                    <Plus className="mr-xs h-4 w-4" />
+                    <Plus className="mr-xs h-icon-xs w-icon-xs" />
                     {translations[`create_${tab.entity}`] || `Create ${entity.singular}`}
                   </Button>
                 )}
@@ -257,7 +257,7 @@ export const ModuleTemplate: React.FC<ModuleTemplateProps> = ({
                     size={action.size}
                     onClick={action.onClick}
                   >
-                    {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                    {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                     {action.label}
                   </Button>
                 ))}
@@ -295,7 +295,7 @@ export const ModuleTemplate: React.FC<ModuleTemplateProps> = ({
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold flex items-center gap-sm">
-            {config.icon && <config.icon className="h-8 w-8" />}
+            {config.icon && <config.icon className="h-icon-lg w-icon-lg" />}
             {config.name}
           </h1>
           {config.description && (
@@ -314,7 +314,7 @@ export const ModuleTemplate: React.FC<ModuleTemplateProps> = ({
                 size={action.size}
                 onClick={action.onClick}
               >
-                {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                 {action.label}
               </Button>
             ))}
@@ -335,7 +335,7 @@ export const ModuleTemplate: React.FC<ModuleTemplateProps> = ({
               value={tab.id}
               disabled={tab.disabled}
             >
-              {tab.icon && <tab.icon className="mr-xs h-4 w-4" />}
+              {tab.icon && <tab.icon className="mr-xs h-icon-xs w-icon-xs" />}
               {tab.label}
               {tab.badge && (
                 <span className="ml-xs px-xs py-0 text-xs bg-primary/10 text-primary rounded">

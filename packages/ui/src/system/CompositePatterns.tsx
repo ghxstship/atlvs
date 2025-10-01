@@ -220,12 +220,12 @@ const drawerContentVariants = cva(
       {
         side: ['left', 'right'],
         size: 'sm',
-        class: 'w-80',
+        class: 'w-container-md',
       },
       {
         side: ['left', 'right'],
         size: 'md',
-        class: 'w-96',
+        class: 'w-container-lg',
       },
       {
         side: ['left', 'right'],
@@ -240,12 +240,12 @@ const drawerContentVariants = cva(
       {
         side: ['top', 'bottom'],
         size: 'sm',
-        class: 'h-80',
+        class: 'h-container-md',
       },
       {
         side: ['top', 'bottom'],
         size: 'md',
-        class: 'h-96',
+        class: 'h-container-lg',
       },
       {
         side: ['top', 'bottom'],

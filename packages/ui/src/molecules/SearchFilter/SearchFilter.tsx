@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Input } from '../UnifiedDesignSystem'
+import { Input } from '../../components/atomic/Input'
 
 export interface SearchFilterProps {
   value: string

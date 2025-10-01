@@ -225,17 +225,17 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'certification':
-        return <Award className="h-5 w-5 color-accent" />;
+        return <Award className="h-icon-sm w-icon-sm color-accent" />;
       case 'license':
-        return <FileText className="h-5 w-5 color-success" />;
+        return <FileText className="h-icon-sm w-icon-sm color-success" />;
       case 'insurance':
-        return <Shield className="h-5 w-5 color-secondary" />;
+        return <Shield className="h-icon-sm w-icon-sm color-secondary" />;
       case 'bond':
-        return <Shield className="h-5 w-5 color-warning" />;
+        return <Shield className="h-icon-sm w-icon-sm color-warning" />;
       case 'safety':
-        return <Shield className="h-5 w-5 color-destructive" />;
+        return <Shield className="h-icon-sm w-icon-sm color-destructive" />;
       default:
-        return <Award className="h-5 w-5 color-muted" />;
+        return <Award className="h-icon-sm w-icon-sm color-muted" />;
     }
   };
 
@@ -351,15 +351,15 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -383,18 +383,18 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                
                 onClick={() => setCurrentView('grid')}
               >
-                <Grid className="h-4 w-4" />
+                <Grid className="h-icon-xs w-icon-xs" />
               </Button>
               <Button
                 variant={currentView === 'list' ? 'primary' : 'ghost'}
                
                 onClick={() => setCurrentView('list')}
               >
-                <List className="h-4 w-4" />
+                <List className="h-icon-xs w-icon-xs" />
               </Button>
             </div>
             <Button onClick={handleCreateQualification}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Qualification
             </Button>
           </div>
@@ -447,10 +447,10 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                     <div className="flex items-center cluster-sm">
                       {getStatusBadge(qualification.status)}
                       <Button onClick={() => handleEditQualification(qualification)}>
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-icon-xs w-icon-xs" />
                       </Button>
                       <Button onClick={() => handleDeleteQualification(qualification.id)}>
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-icon-xs w-icon-xs" />
                       </Button>
                     </div>
                   </div>
@@ -469,10 +469,10 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
                     <div className="flex items-center cluster-sm">
                       {getStatusBadge(qualification.status)}
                       <Button onClick={() => handleEditQualification(qualification)}>
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-icon-xs w-icon-xs" />
                       </Button>
                       <Button onClick={() => handleDeleteQualification(qualification.id)}>
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-icon-xs w-icon-xs" />
                       </Button>
                     </div>
                   </div>
@@ -484,12 +484,12 @@ export default function QualificationsClient({ user, orgId, translations }: Qual
 
         {/* Empty State */}
         {qualifications.length === 0 && (
-          <Card className="p-2xl text-center">
-            <Award className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <Award className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No qualifications found</h3>
             <p className="color-foreground/70 mb-md">Add company qualifications, certifications, and licenses</p>
             <Button onClick={handleCreateQualification}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Qualification
             </Button>
           </Card>

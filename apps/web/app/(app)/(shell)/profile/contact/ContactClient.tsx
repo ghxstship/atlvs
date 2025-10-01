@@ -284,19 +284,19 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  : contact;
 
  return (
- <div className="space-y-6">
- <Card className="p-4 flex items-center justify-between">
- <div className="space-y-1">
- <div className="flex items-center gap-2">
+ <div className="space-y-lg">
+ <Card className="p-md flex items-center justify-between">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline">Contact</Badge>
  <span className="text-sm text-muted-foreground">
  {contact?.verification_status === 'verified' ? (
- <span className="text-green-600 flex items-center gap-1">
- <ShieldCheck className="h-4 w-4" /> Contact verified
+ <span className="text-green-600 flex items-center gap-xs">
+ <ShieldCheck className="h-icon-xs w-icon-xs" /> Contact verified
  </span>
  ) : (
- <span className="text-yellow-600 flex items-center gap-1">
- <AlertTriangle className="h-4 w-4" /> Verification pending
+ <span className="text-yellow-600 flex items-center gap-xs">
+ <AlertTriangle className="h-icon-xs w-icon-xs" /> Verification pending
  </span>
  )}
  </span>
@@ -310,7 +310,7 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  fetchContactsList();
  if (view === 'analytics') fetchAnalytics();
  }}>
- <RefreshCw className="mr-2 h-4 w-4" />
+ <RefreshCw className="mr-2 h-icon-xs w-icon-xs" />
  Refresh
  </Button>
  </Card>
@@ -320,8 +320,8 @@ export default function ContactClient({ orgId, userId }: ContactClientProps) {
  {Object.entries(VIEW_CONFIG).map(([key, { label, icon }]) => {
  const Icon = iconMap[key as ViewType] ?? FileText;
  return (
- <TabsTrigger key={key} value={key} className="flex items-center gap-2">
- <Icon className="h-4 w-4" />
+ <TabsTrigger key={key} value={key} className="flex items-center gap-xs">
+ <Icon className="h-icon-xs w-icon-xs" />
  {label}
  </TabsTrigger>
  );

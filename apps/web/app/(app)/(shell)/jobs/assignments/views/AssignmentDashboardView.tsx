@@ -77,12 +77,12 @@ export default function AssignmentDashboardView({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'completed': return <CheckCircle className="h-4 w-4" />;
- case 'in_progress': return <Clock className="h-4 w-4" />;
- case 'assigned': return <Users className="h-4 w-4" />;
- case 'pending': return <Clock className="h-4 w-4" />;
- case 'cancelled': return <AlertCircle className="h-4 w-4" />;
- default: return <Clock className="h-4 w-4" />;
+ case 'completed': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'in_progress': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'assigned': return <Users className="h-icon-xs w-icon-xs" />;
+ case 'pending': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'cancelled': return <AlertCircle className="h-icon-xs w-icon-xs" />;
+ default: return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -92,9 +92,9 @@ export default function AssignmentDashboardView({
  {[...Array(8)].map((_, i) => (
  <Card key={i} className="p-lg">
  <div className="stack-sm">
- <div className="h-6 w-6 bg-secondary rounded" />
- <div className="h-4 w-20 bg-secondary rounded" />
- <div className="h-8 w-16 bg-secondary rounded" />
+ <div className="h-icon-md w-icon-md bg-secondary rounded" />
+ <div className="h-icon-xs w-component-lg bg-secondary rounded" />
+ <div className="h-icon-lg w-component-md bg-secondary rounded" />
  </div>
  </Card>
  ))}
@@ -118,7 +118,7 @@ export default function AssignmentDashboardView({
  )}
  {onCreateNew && (
  <Button onClick={onCreateNew}>
- <Users className="h-4 w-4 mr-xs" />
+ <Users className="h-icon-xs w-icon-xs mr-xs" />
  New Assignment
  </Button>
  )}
@@ -138,7 +138,7 @@ export default function AssignmentDashboardView({
  {calculatedStats.recentAssignments} this week
  </p>
  </div>
- <Users className="h-8 w-8 color-accent" />
+ <Users className="h-icon-lg w-icon-lg color-accent" />
  </div>
  </Card>
 
@@ -153,7 +153,7 @@ export default function AssignmentDashboardView({
  {calculatedStats.byStatus.completed || 0} completed
  </p>
  </div>
- <Target className="h-8 w-8 color-success" />
+ <Target className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
 
@@ -166,7 +166,7 @@ export default function AssignmentDashboardView({
  </p>
  <p className="text-body-xs color-muted">Active assignments</p>
  </div>
- <Activity className="h-8 w-8 color-info" />
+ <Activity className="h-icon-lg w-icon-lg color-info" />
  </div>
  </Card>
 
@@ -179,7 +179,7 @@ export default function AssignmentDashboardView({
  </p>
  <p className="text-body-xs color-muted">Need attention</p>
  </div>
- <AlertCircle className="h-8 w-8 color-warning" />
+ <AlertCircle className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  </div>
@@ -190,7 +190,7 @@ export default function AssignmentDashboardView({
  <div className="stack-md">
  <div className="flex items-center justify-between">
  <h3 className="text-heading-4 color-foreground">Status Breakdown</h3>
- <TrendingUp className="h-5 w-5 color-muted" />
+ <TrendingUp className="h-icon-sm w-icon-sm color-muted" />
  </div>
  
  <div className="stack-sm">
@@ -224,20 +224,20 @@ export default function AssignmentDashboardView({
  <div className="stack-md">
  <div className="flex items-center justify-between">
  <h3 className="text-heading-4 color-foreground">Recent Assignments</h3>
- <Calendar className="h-5 w-5 color-muted" />
+ <Calendar className="h-icon-sm w-icon-sm color-muted" />
  </div>
  
  <div className="stack-sm">
  {recentAssignments.length === 0 ? (
  <div className="text-center p-lg">
- <Users className="h-8 w-8 color-muted mx-auto mb-sm" />
+ <Users className="h-icon-lg w-icon-lg color-muted mx-auto mb-sm" />
  <p className="color-muted">No recent assignments</p>
  </div>
  ) : (
  recentAssignments.map((assignment) => (
  <div key={assignment.id} className="flex items-center justify-between p-sm border border-border rounded-md">
  <div className="flex items-center gap-sm flex-1 min-w-0">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Users className="h-3 w-3" />
  </div>
  <div className="flex-1 min-w-0">

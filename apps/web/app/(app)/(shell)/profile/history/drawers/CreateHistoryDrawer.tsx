@@ -319,7 +319,7 @@ export default function CreateHistoryDrawer({
  </div>
  </div>
 
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Checkbox
  checked={isCurrent}
  onCheckedChange={(checked) => setValue('is_current', !!checked)}
@@ -470,7 +470,7 @@ export default function CreateHistoryDrawer({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
  />
  <Button type="button" onClick={handleAddSkill} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -510,7 +510,7 @@ export default function CreateHistoryDrawer({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAchievement())}
  />
  <Button type="button" onClick={handleAddAchievement} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -518,7 +518,7 @@ export default function CreateHistoryDrawer({
  <div className="space-y-xs">
  {achievements.map((achievement, index) => (
  <div key={index} className="flex items-start gap-sm p-sm bg-muted rounded">
- <Award className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+ <Award className="h-icon-xs w-icon-xs text-yellow-500 mt-0.5 flex-shrink-0" />
  <span className="flex-1 text-sm">{achievement}</span>
  <Button
  type="button"
@@ -563,7 +563,7 @@ export default function CreateHistoryDrawer({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
  />
  <Button type="button" onClick={handleAddTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  

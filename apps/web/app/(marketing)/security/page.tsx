@@ -43,7 +43,7 @@ export default function SecurityPage() {
   ];
 
   return (
-    <div className="container mx-auto px-md py-3xl">
+    <div className="container mx-auto px-md py-smxl">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-3xl">
           <h1 className={`${anton.className} uppercase text-heading-1 md:text-display text-heading-3 mb-lg`}>
@@ -62,7 +62,7 @@ export default function SecurityPage() {
               <div key={feature.title} className="bg-card rounded-lg p-lg border">
                 <div className="flex items-center mb-md">
                   <div className="bg-accent/10 p-sm rounded-lg mr-md">
-                    <Icon className="h-6 w-6 text-foreground" />
+                    <Icon className="h-icon-md w-icon-md text-foreground" />
                   </div>
                   <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                     {feature.title}

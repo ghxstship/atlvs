@@ -231,7 +231,7 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
 
  // View switcher component
  const ViewSwitcher = () => (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant={currentView === 'grid' ? 'default' : 'outline'}
  size="sm"
@@ -253,11 +253,11 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  const renderTeamGrid = () => {
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {[...Array(6)].map((_, i) => (
  <Card key={i} className="animate-pulse">
- <CardContent className="p-6">
- <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+ <CardContent className="p-lg">
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardContent>
  </Card>
@@ -270,14 +270,14 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  const inviteRecords = records.filter(r => r.type === 'invite');
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Members Section */}
  <div>
  <h3 className="text-lg font-semibold mb-4">Team Members ({memberRecords.length})</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {memberRecords.map((record) => (
  <Card key={record.id} className="hover:shadow-md transition-shadow">
- <CardContent className="p-6">
+ <CardContent className="p-lg">
  <div className="flex items-start justify-between mb-3">
  <div>
  <h4 className="font-medium">{record.name}</h4>
@@ -285,7 +285,7 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  </div>
  <Badge variant="outline">{record.role}</Badge>
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="flex items-center justify-between text-sm">
  <span>Status:</span>
  <Badge variant={record.status === 'active' ? 'default' : 'secondary'}>
@@ -304,10 +304,10 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  {inviteRecords.length > 0 && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Pending Invitations ({inviteRecords.length})</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {inviteRecords.map((record) => (
  <Card key={record.id} className="hover:shadow-md transition-shadow border-dashed">
- <CardContent className="p-6">
+ <CardContent className="p-lg">
  <div className="flex items-start justify-between mb-3">
  <div>
  <h4 className="font-medium">{record.email}</h4>
@@ -328,11 +328,11 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
 
  if (error) {
  return (
- <div className="flex items-center justify-center h-96">
+ <div className="flex items-center justify-center h-container-lg">
  <div className="text-center">
  <p className="text-destructive mb-4">{error}</p>
  <Button onClick={() => loadRecords()}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Retry
  </Button>
  </div>
@@ -343,7 +343,7 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  return (
  <DataViewProvider config={dataViewConfig}>
  <StateManagerProvider>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -352,17 +352,17 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  Manage team members, invitations, and roles
  </p>
  </div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Button variant="outline" onClick={handleRefresh} disabled={loading}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Refresh
  </Button>
  <Button variant="outline" onClick={() => handleExport('csv')}>
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export
  </Button>
  <Button>
- <UserPlus className="h-4 w-4 mr-2" />
+ <UserPlus className="h-icon-xs w-icon-xs mr-2" />
  Invite Member
  </Button>
  </div>
@@ -370,10 +370,10 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
 
  {/* Statistics */}
  {statistics && (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <Users className="h-5 w-5 text-blue-600" />
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <Users className="h-icon-sm w-icon-sm text-blue-600" />
  <div className="text-sm font-medium">Total Members</div>
  </div>
  <div className="text-2xl font-bold">{statistics.totalMembers}</div>
@@ -381,9 +381,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  {statistics.activeMembers} active
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <Mail className="h-5 w-5 text-green-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <Mail className="h-icon-sm w-icon-sm text-green-600" />
  <div className="text-sm font-medium">Pending Invites</div>
  </div>
  <div className="text-2xl font-bold">{statistics.pendingInvites}</div>
@@ -391,9 +391,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  awaiting response
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <UserPlus className="h-5 w-5 text-purple-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <UserPlus className="h-icon-sm w-icon-sm text-purple-600" />
  <div className="text-sm font-medium">Recent Joins</div>
  </div>
  <div className="text-2xl font-bold">{statistics.recentJoins}</div>
@@ -401,9 +401,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  last 30 days
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <Shield className="h-5 w-5 text-orange-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <Shield className="h-icon-sm w-icon-sm text-orange-600" />
  <div className="text-sm font-medium">Avg Response</div>
  </div>
  <div className="text-2xl font-bold">{statistics.averageResponseTime}h</div>
@@ -418,28 +418,28 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-4">
  <TabsTrigger value="overview">
- <Users className="h-4 w-4 mr-2" />
+ <Users className="h-icon-xs w-icon-xs mr-2" />
  Overview
  </TabsTrigger>
  <TabsTrigger value="members">
- <Users className="h-4 w-4 mr-2" />
+ <Users className="h-icon-xs w-icon-xs mr-2" />
  Members
  </TabsTrigger>
  <TabsTrigger value="invitations">
- <Mail className="h-4 w-4 mr-2" />
+ <Mail className="h-icon-xs w-icon-xs mr-2" />
  Invitations
  </TabsTrigger>
  <TabsTrigger value="settings">
- <Settings className="h-4 w-4 mr-2" />
+ <Settings className="h-icon-xs w-icon-xs mr-2" />
  Settings
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="overview" className="space-y-4">
+ <TabsContent value="overview" className="space-y-md">
  {/* View Controls */}
  <div className="flex items-center justify-between">
  <ViewSwitcher />
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {selectedRecords.length > 0 && (
  <Button variant="destructive" size="sm">
  Delete ({selectedRecords.length})
@@ -452,9 +452,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  {renderTeamGrid()}
  </TabsContent>
 
- <TabsContent value="members" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <Users className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="members" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <Users className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Team Members</h3>
  <p className="text-muted-foreground mb-4">
  Member management is available through the overview interface above.
@@ -465,9 +465,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  </div>
  </TabsContent>
 
- <TabsContent value="invitations" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <Mail className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="invitations" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <Mail className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Team Invitations</h3>
  <p className="text-muted-foreground mb-4">
  Invitation management is available through the overview interface above.
@@ -478,9 +478,9 @@ export default function TeamsClient({ userId, orgId }: TeamsClientProps) {
  </div>
  </TabsContent>
 
- <TabsContent value="settings" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <Settings className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="settings" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <Settings className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Team Settings</h3>
  <p className="text-muted-foreground mb-4">
  Team settings configuration will be available in a future update.

@@ -65,7 +65,7 @@ export function RTLContainer({
   children,
   className,
   maxWidth = 'max-w-7xl',
-  padding = 'px-4 sm:px-6 lg:px-8',
+  padding = 'px-md sm:px-lg lg:px-xl',
   locale,
 }: RTLContainerProps) {
   const isRTL = isRTLLocale(locale);
@@ -105,7 +105,7 @@ export function RTLFlex({
   direction = 'row',
   justify = 'start',
   align = 'center',
-  gap = 'gap-4',
+  gap = 'gap-md',
   locale,
 }: RTLFlexProps) {
   const isRTL = isRTLLocale(locale);
@@ -172,7 +172,7 @@ export function RTLGrid({
   children,
   className,
   cols = 1,
-  gap = 'gap-4',
+  gap = 'gap-md',
   locale,
 }: RTLGridProps) {
   return (

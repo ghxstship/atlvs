@@ -54,12 +54,12 @@ export const SidebarSkeleton: React.FC = () => (
   <div className="w-[var(--nav-width-expanded)] bg-[hsl(var(--nav-bg-accent))] border-r border-[hsl(var(--nav-border-default))] animate-pulse">
     {/* Header skeleton */}
     <div className="p-[var(--nav-spacing-md)] border-b border-[hsl(var(--nav-border-default))]">
-      <div className="h-6 bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-md)]" />
+      <div className="h-icon-md bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-md)]" />
     </div>
     
     {/* Search skeleton */}
     <div className="p-[var(--nav-spacing-md)]">
-      <div className="h-10 bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-md)]" />
+      <div className="h-icon-xl bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-md)]" />
     </div>
     
     {/* Navigation skeleton */}
@@ -73,7 +73,7 @@ export const BreadcrumbSkeleton: React.FC = () => (
   <div className="flex items-center gap-[var(--nav-spacing-xs)] animate-pulse">
     {Array.from({ length: 3 }).map((_, i) => (
       <React.Fragment key={i}>
-        <div className="h-4 w-16 bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-sm)]" />
+        <div className="h-icon-xs w-component-md bg-[hsl(var(--nav-bg-secondary))] rounded-[var(--nav-radius-sm)]" />
         {i < 2 && <div className="w-1 h-1 bg-[hsl(var(--nav-fg-muted))] rounded-full" />}
       </React.Fragment>
     ))}

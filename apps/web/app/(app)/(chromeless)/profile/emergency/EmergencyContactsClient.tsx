@@ -165,7 +165,7 @@ export default function EmergencyContactsClient() {
       <div className="stack-md">
         {[1, 2].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -180,14 +180,14 @@ export default function EmergencyContactsClient() {
           <p className="color-muted">Manage your emergency contact information</p>
         </div>
         <Button onClick={handleAdd} disabled={isAdding}>
-          <Plus className="w-4 h-4 mr-sm" />
+          <Plus className="w-icon-xs h-icon-xs mr-sm" />
           Add Contact
         </Button>
       </div>
 
       {contacts.length === 0 && !isAdding && (
         <Alert>
-          <AlertTriangle className="h-4 w-4" />
+          <AlertTriangle className="h-icon-xs w-icon-xs" />
           <div>
             <h3 className="text-body text-heading-4">No emergency contacts</h3>
             <p className="text-body-sm">Add at least one emergency contact for safety purposes.</p>
@@ -253,11 +253,11 @@ export default function EmergencyContactsClient() {
             />
             <div className="flex justify-end cluster-sm">
               <Button variant="outline" onClick={handleCancel}>
-                <X className="w-4 h-4 mr-sm" />
+                <X className="w-icon-xs h-icon-xs mr-sm" />
                 Cancel
               </Button>
               <Button onClick={handleSave}>
-                <Save className="w-4 h-4 mr-sm" />
+                <Save className="w-icon-xs h-icon-xs mr-sm" />
                 Save Contact
               </Button>
             </div>
@@ -317,11 +317,11 @@ export default function EmergencyContactsClient() {
                   />
                   <div className="flex justify-end cluster-sm">
                     <Button variant="outline" onClick={handleCancel}>
-                      <X className="w-4 h-4 mr-sm" />
+                      <X className="w-icon-xs h-icon-xs mr-sm" />
                       Cancel
                     </Button>
                     <Button onClick={handleSave}>
-                      <Save className="w-4 h-4 mr-sm" />
+                      <Save className="w-icon-xs h-icon-xs mr-sm" />
                       Save Changes
                     </Button>
                   </div>
@@ -330,7 +330,7 @@ export default function EmergencyContactsClient() {
                 <div className="flex justify-between items-start">
                   <div className="stack-sm">
                     <div className="flex items-center cluster-sm">
-                      <User className="w-5 h-5 color-muted" />
+                      <User className="w-icon-sm h-icon-sm color-muted" />
                       <span className="text-heading-4 text-body">{contact.name}</span>
                       {contact.is_primary && (
                         <span className=" px-md py-xs bg-accent/10 color-accent text-body-sm rounded-full">
@@ -341,18 +341,18 @@ export default function EmergencyContactsClient() {
                     <p className="text-body-sm color-muted">{contact.relationship}</p>
                     <div className="stack-md">
                       <div className="flex items-center cluster-sm">
-                        <Phone className="w-4 h-4 color-muted" />
+                        <Phone className="w-icon-xs h-icon-xs color-muted" />
                         <span className="text-body-sm">{contact.phone_primary}</span>
                       </div>
                       {contact.phone_secondary && (
                         <div className="flex items-center cluster-sm">
-                          <Phone className="w-4 h-4 color-muted" />
+                          <Phone className="w-icon-xs h-icon-xs color-muted" />
                           <span className="text-body-sm">{contact.phone_secondary}</span>
                         </div>
                       )}
                       {contact.email && (
                         <div className="flex items-center cluster-sm">
-                          <Mail className="w-4 h-4 color-muted" />
+                          <Mail className="w-icon-xs h-icon-xs color-muted" />
                           <span className="text-body-sm">{contact.email}</span>
                         </div>
                       )}
@@ -367,14 +367,14 @@ export default function EmergencyContactsClient() {
                      
                       onClick={() => handleEdit(contact)}
                     >
-                      <Edit2 className="w-4 h-4" />
+                      <Edit2 className="w-icon-xs h-icon-xs" />
                     </Button>
                     <Button
                       variant="ghost"
                      
                       onClick={() => handleDelete(contact.id)}
                     >
-                      <Trash2 className="w-4 h-4" />
+                      <Trash2 className="w-icon-xs h-icon-xs" />
                     </Button>
                   </div>
                 </div>

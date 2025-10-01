@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Button } from './atomic/Button';
+import { Button } from '../../components/atomic/Button';
 import { Plus, Sparkles } from 'lucide-react';
 
 interface EmptyStateProps {
@@ -95,7 +95,7 @@ export function EmptyState({
             className="inline-flex items-center gap-x-xs"
             variant="default"
           >
-            {primaryAction.icon || <Plus className="h-4 w-4" />}
+            {primaryAction.icon || <Plus className="h-icon-xs w-icon-xs" />}
             {primaryAction.label}
           </Button>
         )}
@@ -107,7 +107,7 @@ export function EmptyState({
             className="inline-flex items-center gap-x-xs"
             variant="outline"
           >
-            <Sparkles className="h-4 w-4" />
+            <Sparkles className="h-icon-xs w-icon-xs" />
             {loadingDemo ? 'Loading Demo...' : demoAction.label}
           </Button>
         )}

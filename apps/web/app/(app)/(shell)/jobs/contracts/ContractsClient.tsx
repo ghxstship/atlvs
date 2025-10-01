@@ -224,7 +224,7 @@ function ContractsClient({ user }: ContractsClientProps) {
           <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
-          <Plus className="h-4 w-4 mr-sm" />
+          <Plus className="h-icon-xs w-icon-xs mr-sm" />
           Create Contract
         </Button>
       </div>
@@ -274,7 +274,7 @@ function ContractsClient({ user }: ContractsClientProps) {
               <p className="text-body-sm form-label color-foreground/70">Total Contracts</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{contracts.length}</p>
             </div>
-            <FileText className="h-8 w-8 color-accent" />
+            <FileText className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -285,7 +285,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => c.status === 'active').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 color-success" />
+            <CheckCircle className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
         <Card className="p-md">
@@ -296,7 +296,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => c.status === 'completed').length}
               </p>
             </div>
-            <CheckCircle className="h-8 w-8 color-accent" />
+            <CheckCircle className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -307,7 +307,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {contracts.filter(c => isExpiringSoon(c.end_date)).length}
               </p>
             </div>
-            <AlertTriangle className="h-5 w-5 color-warning" />
+            <AlertTriangle className="h-icon-sm w-icon-sm color-warning" />
           </div>
         </Card>
         <Card className="p-md">
@@ -318,7 +318,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 {formatAmount(contracts.reduce((sum, c) => sum + c.value, 0))}
               </p>
             </div>
-            <DollarSign className="h-5 w-5 color-success" />
+            <DollarSign className="h-icon-sm w-icon-sm color-success" />
           </div>
         </Card>
       </div>
@@ -330,14 +330,14 @@ function ContractsClient({ user }: ContractsClientProps) {
             <Card key={i} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <Skeleton className="h-5 w-64 mb-sm" />
-                  <Skeleton className="h-4 w-32 mb-sm" />
-                  <Skeleton className="h-4 w-full mb-sm" />
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-icon-sm w-container-sm mb-sm" />
+                  <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+                  <Skeleton className="h-icon-xs w-full mb-sm" />
+                  <Skeleton className="h-icon-xs w-3/4" />
                 </div>
                 <div className="flex gap-sm">
-                  <Skeleton className="h-6 w-16" />
-                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-icon-md w-component-md" />
+                  <Skeleton className="h-icon-md w-component-lg" />
                 </div>
               </div>
             </Card>
@@ -356,14 +356,14 @@ function ContractsClient({ user }: ContractsClientProps) {
                     <div className="flex items-start justify-between mb-sm">
                       <div>
                         <h3 className="text-body text-heading-4 color-foreground mb-xs flex items-center gap-sm">
-                          <StatusIcon className="h-5 w-5 color-foreground/60" />
+                          <StatusIcon className="h-icon-sm w-icon-sm color-foreground/60" />
                           {contract.title}
                           {(isExpiring || hasExpired) && (
-                            <AlertTriangle className={`h-4 w-4 ${hasExpired ? 'color-destructive' : 'color-warning'}`} />
+                            <AlertTriangle className={`h-icon-xs w-icon-xs ${hasExpired ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-sm text-body-sm color-foreground/70">
-                          <Building className="h-4 w-4" />
+                          <Building className="h-icon-xs w-icon-xs" />
                           <span>{contract.job_title || 'N/A'}</span>
                           <span>•</span>
                           <span>{contract.company_name || 'N/A'}</span>
@@ -379,17 +379,17 @@ function ContractsClient({ user }: ContractsClientProps) {
                       </div>
                     </div>
 
-                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-xs">
                       {contract.description}
                     </p>
 
                     <div className="flex items-center gap-lg text-body-sm color-foreground/70 mb-sm">
                       <div className="flex items-center gap-xs">
-                        <DollarSign className="h-4 w-4" />
+                        <DollarSign className="h-icon-xs w-icon-xs" />
                         <span className="form-label">{formatAmount(contract.value, contract.currency)}</span>
                       </div>
                       <div className="flex items-center gap-xs">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         <span>
                           {formatDate(contract.start_date || contract.startDate)}
                           {(contract.end_date || contract.endDate) && ` - ${formatDate(contract.end_date || contract.endDate)}`}
@@ -397,7 +397,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                       </div>
                       {contract.paymentTerms && (
                         <div className="flex items-center gap-xs">
-                          <Clock className="h-4 w-4" />
+                          <Clock className="h-icon-xs w-icon-xs" />
                           <span>{contract.paymentTerms}</span>
                         </div>
                       )}
@@ -445,22 +445,22 @@ function ContractsClient({ user }: ContractsClientProps) {
                   </div>
                   <div className="flex gap-sm">
                     <Button>
-                      <Eye className="h-4 w-4" /> 
+                      <Eye className="h-icon-xs w-icon-xs" /> 
                       View
                     </Button>
                     <Button>
-                      <Edit className="h-4 w-4" /> 
+                      <Edit className="h-icon-xs w-icon-xs" /> 
                       Edit
                     </Button>
                     {(contract.document_url || contract.documentUrl) && (
                       <Button>
-                        <Download className="h-4 w-4" /> 
+                        <Download className="h-icon-xs w-icon-xs" /> 
                         Download
                       </Button>
                     )}
                     {contract.milestones && contract.milestones.length > 0 && (
                       <Button>
-                        <BarChart3 className="h-4 w-4" /> 
+                        <BarChart3 className="h-icon-xs w-icon-xs" /> 
                         Milestones
                       </Button>
                     )}
@@ -470,8 +470,8 @@ function ContractsClient({ user }: ContractsClientProps) {
             );
           })
         ) : (
-          <Card className="p-2xl text-center">
-            <FileText className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+          <Card className="p-xsxl text-center">
+            <FileText className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No contracts found</h3>
             <p className="text-body-sm color-foreground/70 mb-md">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
@@ -479,7 +479,7 @@ function ContractsClient({ user }: ContractsClientProps) {
                 : 'Get started by creating your first contract.'}
             </p>
             <Button onClick={() => setShowCreateDialog(true)}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Contract
             </Button>
           </Card>

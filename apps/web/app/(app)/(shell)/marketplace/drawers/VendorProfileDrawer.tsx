@@ -166,7 +166,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  key: 'details',
  label: (
  <span className="flex items-center gap-xs">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  {t('vendor.drawer.details')}
  </span>
  ),
@@ -199,7 +199,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  key: 'edit',
  label: (
  <span className="flex items-center gap-xs">
- <Edit3 className="h-4 w-4" />
+ <Edit3 className="h-icon-xs w-icon-xs" />
  {t('vendor.drawer.edit')}
  </span>
  ),
@@ -271,7 +271,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  key: 'comments',
  label: (
  <span className="flex items-center gap-xs">
- <MessageSquare className="h-4 w-4" />
+ <MessageSquare className="h-icon-xs w-icon-xs" />
  {t('vendor.drawer.comments')}
  </span>
  ),
@@ -300,7 +300,7 @@ export function VendorProfileDrawer({ orgId, vendorId, open, onClose }: VendorPr
  key: 'activity',
  label: (
  <span className="flex items-center gap-xs">
- <ActivityIcon className="h-4 w-4" />
+ <ActivityIcon className="h-icon-xs w-icon-xs" />
  {t('vendor.drawer.activity')}
  </span>
  ),

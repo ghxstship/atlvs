@@ -54,7 +54,7 @@ function renderField(
  switch (config.type) {
  case 'checkbox':
  return (
- <div key={config.key} className="flex items-center gap-2">
+ <div key={config.key} className="flex items-center gap-xs">
  <Checkbox
  checked={Boolean(value)}
  onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -158,11 +158,11 @@ export default function EmergencyFormView({
 
  if (loading) {
  return (
- <Card className="p-6 space-y-4">
- <div className="h-5 w-1/3 bg-muted animate-pulse rounded" />
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <Card className="p-lg space-y-md">
+ <div className="h-icon-sm w-1/3 bg-muted animate-pulse rounded" />
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {Array.from({ length: 6 }).map((_, index) => (
- <div key={index} className="h-12 bg-muted animate-pulse rounded" />
+ <div key={index} className="h-icon-2xl bg-muted animate-pulse rounded" />
  ))}
  </div>
  </Card>
@@ -171,18 +171,18 @@ export default function EmergencyFormView({
 
  return (
  <form
- className="space-y-6"
+ className="space-y-lg"
  onSubmit={(event) => {
  event.preventDefault();
  onSave();
  }}
  >
  {contact ? (
- <Card className="p-4 flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <Card className="p-md flex items-center justify-between">
+ <div className="flex items-center gap-sm">
  {contact.verification_status === 'verified' ? (
  <>
- <CheckCircle2 className="h-5 w-5 text-success" />
+ <CheckCircle2 className="h-icon-sm w-icon-sm text-success" />
  <div>
  <p className="text-sm font-medium">Emergency contact verified</p>
  {contact.last_verified ? (
@@ -194,7 +194,7 @@ export default function EmergencyFormView({
  </>
  ) : (
  <>
- <ShieldAlert className="h-5 w-5 text-warning" />
+ <ShieldAlert className="h-icon-sm w-icon-sm text-warning" />
  <div>
  <p className="text-sm font-medium">Verification pending</p>
  <p className="text-xs text-muted-foreground">
@@ -216,7 +216,7 @@ export default function EmergencyFormView({
  const fields = sections[section];
  if (!fields?.length) return null;
  return (
- <Card key={section} className="p-6 space-y-4">
+ <Card key={section} className="p-lg space-y-md">
  <div className="flex items-center justify-between">
  <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
  {section}
@@ -227,7 +227,7 @@ export default function EmergencyFormView({
  </Badge>
  ) : null}
  </div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {fields.map(field =>
  renderField(field, formData, formErrors, onFieldChange)
  )}
@@ -236,7 +236,7 @@ export default function EmergencyFormView({
  );
  })}
 
- <div className="flex justify-end gap-2">
+ <div className="flex justify-end gap-xs">
  <Button type="submit" disabled={saving}>
  {saving ? 'Saving...' : 'Save Emergency Contact'}
  </Button>

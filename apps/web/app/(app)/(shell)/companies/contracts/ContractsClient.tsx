@@ -244,17 +244,17 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'msa':
-        return <FileText className="h-5 w-5 color-accent" />;
+        return <FileText className="h-icon-sm w-icon-sm color-accent" />;
       case 'sow':
-        return <FileText className="h-5 w-5 color-success" />;
+        return <FileText className="h-icon-sm w-icon-sm color-success" />;
       case 'nda':
-        return <FileText className="h-5 w-5 color-secondary" />;
+        return <FileText className="h-icon-sm w-icon-sm color-secondary" />;
       case 'service':
-        return <FileText className="h-5 w-5 color-warning" />;
+        return <FileText className="h-icon-sm w-icon-sm color-warning" />;
       case 'supply':
-        return <FileText className="h-5 w-5 text-info" />;
+        return <FileText className="h-icon-sm w-icon-sm text-info" />;
       default:
-        return <FileText className="h-5 w-5 color-muted" />;
+        return <FileText className="h-icon-sm w-icon-sm color-muted" />;
     }
   };
 
@@ -387,15 +387,15 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -485,7 +485,7 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
                 </div>
                 
                 {contract.description && (
-                  <p className="text-body-sm color-foreground/70 mb-md line-clamp-2">
+                  <p className="text-body-sm color-foreground/70 mb-md line-clamp-xs">
                     {contract.description}
                   </p>
                 )}
@@ -609,12 +609,12 @@ export default function ContractsClient({ user, orgId, translations }: Contracts
 
         {/* Empty State */}
         {contracts.length === 0 && (
-          <Card className="p-2xl text-center">
-            <FileText className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No contracts found</h3>
             <p className="color-foreground/70 mb-md">Create your first company contract to get started</p>
             <Button onClick={handleCreateContract}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               New Contract
             </Button>
           </Card>

@@ -229,11 +229,11 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  </div>
  <div className="flex items-center gap-sm">
  <Button variant="outline">
- <Upload className="h-4 w-4 mr-sm" />
+ <Upload className="h-icon-xs w-icon-xs mr-sm" />
  Upload Contract
  </Button>
  <Button>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create Contract
  </Button>
  </div>
@@ -247,7 +247,7 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  <p className="text-body-sm color-muted">Total Contracts</p>
  <p className="text-heading-3 font-bold">{stats.totalContracts}</p>
  </div>
- <FileText className="h-8 w-8 color-primary" />
+ <FileText className="h-icon-lg w-icon-lg color-primary" />
  </div>
  </Card>
  <Card className="p-md">
@@ -256,7 +256,7 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  <p className="text-body-sm color-muted">Active</p>
  <p className="text-heading-3 font-bold">{stats.activeContracts}</p>
  </div>
- <CheckCircle className="h-8 w-8 color-success" />
+ <CheckCircle className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
  <Card className="p-md">
@@ -265,7 +265,7 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  <p className="text-body-sm color-muted">Pending Signatures</p>
  <p className="text-heading-3 font-bold">{stats.pendingSignatures}</p>
  </div>
- <PenTool className="h-8 w-8 color-warning" />
+ <PenTool className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  <Card className="p-md">
@@ -276,7 +276,7 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  {formatAmount(stats.totalValue, 'USD')}
  </p>
  </div>
- <DollarSign className="h-8 w-8 color-secondary" />
+ <DollarSign className="h-icon-lg w-icon-lg color-secondary" />
  </div>
  </Card>
  </div>
@@ -287,11 +287,11 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  <h3 className="text-heading-4">All Contracts</h3>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Export
  </Button>
  <Button variant="outline" size="sm">
- <Filter className="h-4 w-4" />
+ <Filter className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -326,8 +326,8 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  <Card key={contract.id} className="p-md border hover:shadow-sm transition-shadow">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-start gap-sm">
- <div className="flex items-center justify-center h-10 w-10 bg-primary/10 rounded">
- <StatusIcon className="h-5 w-5 color-primary" />
+ <div className="flex items-center justify-center h-icon-xl w-icon-xl bg-primary/10 rounded">
+ <StatusIcon className="h-icon-sm w-icon-sm color-primary" />
  </div>
  <div className="flex-1">
  <div className="flex items-center gap-sm mb-xs">
@@ -350,7 +350,7 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  )}
  <div className="flex items-center gap-md text-body-sm color-muted">
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>
  {contract.role === 'client' 
  ? `Vendor: ${contract.vendor_name}` 
@@ -359,13 +359,13 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  </span>
  </div>
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>
  {new Date(contract.start_date).toLocaleDateString()} - {new Date(contract.end_date).toLocaleDateString()}
  </span>
  </div>
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>{formatAmount(contract.total_amount, contract.currency)}</span>
  </div>
  </div>
@@ -373,15 +373,15 @@ export default function ContractsClient({ orgId, userId }: ContractsClientProps)
  </div>
  <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {contract.document_url && (
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button variant="outline" size="sm">
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

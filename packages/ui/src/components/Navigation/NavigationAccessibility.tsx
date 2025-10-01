@@ -117,7 +117,7 @@ export const AccessibleNavigationItem: React.FC<NavigationItemProps> = ({
             aria-label={`${isExpanded ? 'Collapse' : 'Expand'} ${label} menu`}
           >
             <svg
-              className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+              className={`w-icon-xs h-icon-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

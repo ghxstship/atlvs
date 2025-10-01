@@ -82,7 +82,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested order could not be found.</p>
             </div>
           )
@@ -128,16 +128,16 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Order Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <ShoppingCart className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <ShoppingCart className="h-icon-sm w-icon-sm" />
                 Order Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Order Number</span>
                 <span className="text-sm font-mono">
@@ -169,12 +169,12 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           {/* Vendor Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Truck className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Truck className="h-icon-sm w-icon-sm" />
                 Vendor Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(order as any).vendor?.name || 'No vendor assigned'}</p>
                 {(order as any).vendor?.contact_email && (
@@ -189,22 +189,22 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
           {/* Order Items */}
           <Card className="md:col-span-2">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Package className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Package className="h-icon-sm w-icon-sm" />
                 Order Items
               </CardTitle>
             </CardHeader>
             <CardContent>
               {(order as any).items && (order as any).items.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {(order as any).items.map((item: unknown) => (
-                    <div key={item.id} className="flex items-center justify-between p-3 border rounded">
+                    <div key={item.id} className="flex items-center justify-between p-sm border rounded">
                       <div className="flex-1">
                         <p className="font-medium">{item.catalog_item?.name || 'Unknown Item'}</p>
                         <p className="text-sm text-muted-foreground">
                           {item.catalog_item?.description || 'No description'}
                         </p>
-                        <div className="flex items-center gap-4 mt-1">
+                        <div className="flex items-center gap-md mt-1">
                           <span className="text-xs">Qty: {item.quantity}</span>
                           <span className="text-xs">Unit: {formatCurrency(item.unit_price)}</span>
                         </div>
@@ -216,7 +216,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
                   ))}
                 </div>
               ) : (
-                <p className="text-muted-foreground text-center py-4">
+                <p className="text-muted-foreground text-center py-md">
                   No items in this order
                 </p>
               )}
@@ -234,7 +234,7 @@ export default async function OrderDetailPage({ params }: OrderDetailPageProps) 
             <CardTitle>Shipping & Tracking</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Tracking information coming soon...
             </p>
           </CardContent>

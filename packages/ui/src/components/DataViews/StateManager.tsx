@@ -207,7 +207,7 @@ export function EmptyState({ config, className = '' }: EmptyStateProps) {
   return (
     <div className={`text-center py-2xl ${className}`}>
       <div className="flex justify-center mb-md">
-        {config.icon || <Database className="h-12 w-12 text-muted-foreground/50" />}
+        {config.icon || <Database className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />}
       </div>
       
       <h3 className="text-lg font-medium text-foreground dark:text-muted-foreground/20 mb-sm">
@@ -254,7 +254,7 @@ export function ErrorState({ config, className = '', onDismiss }: ErrorStateProp
       <Alert
         variant="destructive"
       >
-        <AlertCircle className="h-4 w-4" />
+        <AlertCircle className="h-icon-xs w-icon-xs" />
         <div>
           {config.title && (
             <div className="font-medium mb-xs">{config.title}</div>
@@ -348,7 +348,7 @@ export function StateRenderer({
 // Predefined empty state configurations
 export const EMPTY_STATES = {
   noData: {
-    icon: <Database className="h-12 w-12 text-muted-foreground/50" />,
+    icon: <Database className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />,
     title: 'No data found',
     description: 'There are no records to display at this time.',
     action: {
@@ -359,7 +359,7 @@ export const EMPTY_STATES = {
   },
   
   noResults: {
-    icon: <Search className="h-12 w-12 text-muted-foreground/50" />,
+    icon: <Search className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />,
     title: 'No results found',
     description: 'Try adjusting your search criteria or filters to find what you\'re looking for.',
     action: {
@@ -370,7 +370,7 @@ export const EMPTY_STATES = {
   },
   
   noRecords: {
-    icon: <Plus className="h-12 w-12 text-muted-foreground/50" />,
+    icon: <Plus className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />,
     title: 'No records yet',
     description: 'Get started by creating your first record.',
     action: {
@@ -381,7 +381,7 @@ export const EMPTY_STATES = {
   },
   
   noProjects: {
-    icon: <Plus className="h-12 w-12 text-muted-foreground/50" />,
+    icon: <Plus className="h-icon-2xl w-icon-2xl text-muted-foreground/50" />,
     title: 'No projects yet',
     description: 'Create your first project to get started with your workspace.',
     action: {
@@ -397,7 +397,7 @@ export const EMPTY_STATES = {
   },
   
   accessDenied: {
-    icon: <AlertCircle className="h-12 w-12 text-destructive" />,
+    icon: <AlertCircle className="h-icon-2xl w-icon-2xl text-destructive" />,
     title: 'Access denied',
     description: 'You don\'t have permission to view this content.',
     action: {

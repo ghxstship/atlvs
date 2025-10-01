@@ -60,11 +60,11 @@ export default function ProfileTableView({
 
  const getSortIcon = (field: string) => {
  if (currentSort.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return currentSort.direction === 'asc' ? 
- <ArrowUp className="h-4 w-4" /> : 
- <ArrowDown className="h-4 w-4" />;
+ <ArrowUp className="h-icon-xs w-icon-xs" /> : 
+ <ArrowDown className="h-icon-xs w-icon-xs" />;
  };
 
  const getStatusColor = (status: string) => {
@@ -88,8 +88,8 @@ export default function ProfileTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
- <div className="w-4 h-4 bg-muted rounded animate-pulse" />
+ <TableHead className="w-icon-2xl">
+ <div className="w-icon-xs h-icon-xs bg-muted rounded animate-pulse" />
  </TableHead>
  <TableHead>Name</TableHead>
  <TableHead>Email</TableHead>
@@ -104,33 +104,33 @@ export default function ProfileTableView({
  {Array.from({ length: 10 }).map((_, i) => (
  <TableRow key={i}>
  <TableCell>
- <div className="w-4 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-icon-xs h-icon-xs bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
  <div className="flex items-center gap-sm">
- <div className="w-8 h-8 bg-muted rounded-full animate-pulse" />
- <div className="w-32 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-icon-lg h-icon-lg bg-muted rounded-full animate-pulse" />
+ <div className="w-component-xl h-icon-xs bg-muted rounded animate-pulse" />
  </div>
  </TableCell>
  <TableCell>
- <div className="w-40 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-40 h-icon-xs bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
- <div className="w-24 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-component-lg h-icon-xs bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
- <div className="w-28 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-28 h-icon-xs bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
- <div className="w-16 h-6 bg-muted rounded animate-pulse" />
+ <div className="w-component-md h-icon-md bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
- <div className="w-20 h-4 bg-muted rounded animate-pulse" />
+ <div className="w-component-lg h-icon-xs bg-muted rounded animate-pulse" />
  </TableCell>
  <TableCell>
  <div className="flex gap-xs">
- <div className="w-8 h-8 bg-muted rounded animate-pulse" />
- <div className="w-8 h-8 bg-muted rounded animate-pulse" />
+ <div className="w-icon-lg h-icon-lg bg-muted rounded animate-pulse" />
+ <div className="w-icon-lg h-icon-lg bg-muted rounded animate-pulse" />
  </div>
  </TableCell>
  </TableRow>
@@ -144,7 +144,7 @@ export default function ProfileTableView({
  if (profiles.length === 0) {
  return (
  <div className="border rounded-md p-xl text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No profiles found</h3>
  <p className="text-muted-foreground mb-lg">
  Get started by creating your first profile or adjust your filters.
@@ -159,7 +159,7 @@ export default function ProfileTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedIds.length === profiles.length}
  onCheckedChange={handleSelectAll}
@@ -243,7 +243,7 @@ export default function ProfileTableView({
  {getSortIcon('last_login')}
  </Button>
  </TableHead>
- <TableHead className="w-24">Actions</TableHead>
+ <TableHead className="w-component-lg">Actions</TableHead>
  </TableRow>
  </TableHeader>
  <TableBody>
@@ -263,7 +263,7 @@ export default function ProfileTableView({
  </TableCell>
  <TableCell>
  <div className="flex items-center gap-sm">
- <Avatar className="h-8 w-8">
+ <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
  <img src={profile.avatar_url} alt={profile.full_name} />
  ) : (
@@ -305,13 +305,13 @@ export default function ProfileTableView({
  </TableCell>
  <TableCell>
  <div className="flex items-center gap-sm">
- <div className="w-16 bg-muted rounded-full h-2">
+ <div className="w-component-md bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full transition-all duration-300" 
  style={{ width: `${profile.completion_percentage}%` }}
  />
  </div>
- <span className="text-sm font-medium w-10">
+ <span className="text-sm font-medium w-icon-xl">
  {profile.completion_percentage}%
  </span>
  </div>
@@ -335,7 +335,7 @@ export default function ProfileTableView({
  onEdit(profile);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -345,7 +345,7 @@ export default function ProfileTableView({
  onEdit(profile);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </TableCell>

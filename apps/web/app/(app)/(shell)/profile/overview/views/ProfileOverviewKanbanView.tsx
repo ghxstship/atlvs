@@ -117,7 +117,7 @@ export default function ProfileOverviewKanbanView({
  type="checkbox"
  checked={isSelected}
  onChange={(e) => handleCardSelect(profile.id, e as unknown)}
- className="h-4 w-4 rounded border-border text-accent focus:ring-accent"
+ className="h-icon-xs w-icon-xs rounded border-border text-accent focus:ring-accent"
  onClick={(e) => e.stopPropagation()}
  />
  <Badge variant={getStatusColor(profile.status) as unknown} size="sm">
@@ -238,14 +238,14 @@ export default function ProfileOverviewKanbanView({
  {KANBAN_COLUMNS.map((column) => (
  <div key={column.id} className={`rounded-lg border p-lg ${column.color}`}>
  <div className="flex items-center justify-between mb-lg">
- <div className="h-4 w-24 bg-secondary rounded animate-pulse"></div>
- <div className="h-6 w-8 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-xs w-component-lg bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-md w-icon-lg bg-secondary rounded animate-pulse"></div>
  </div>
  <div className="stack-md">
  {Array.from({ length: 3 }).map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
  <div className="flex items-center gap-md mb-md">
- <div className="h-8 w-8 bg-secondary rounded-full"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded-full"></div>
  <div className="flex-1">
  <div className="h-3 bg-secondary rounded mb-xs"></div>
  <div className="h-3 bg-secondary rounded w-2/3"></div>
@@ -253,8 +253,8 @@ export default function ProfileOverviewKanbanView({
  </div>
  <div className="h-2 bg-secondary rounded mb-md"></div>
  <div className="grid grid-cols-2 gap-sm">
- <div className="h-8 bg-secondary rounded"></div>
- <div className="h-8 bg-secondary rounded"></div>
+ <div className="h-icon-lg bg-secondary rounded"></div>
+ <div className="h-icon-lg bg-secondary rounded"></div>
  </div>
  </Card>
  ))}
@@ -293,7 +293,7 @@ export default function ProfileOverviewKanbanView({
  return (
  <div
  key={column.id}
- className={`rounded-lg border p-lg min-h-96 ${column.color}`}
+ className={`rounded-lg border p-lg min-h-container-lg ${column.color}`}
  onDragOver={handleDragOver}
  onDrop={(e) => handleDrop(e, column.status)}
  >
@@ -313,7 +313,7 @@ export default function ProfileOverviewKanbanView({
  columnProfiles.map(renderProfileCard)
  ) : (
  <div className="text-center py-xl color-muted">
- <User className="h-8 w-8 mx-auto mb-md opacity-50" />
+ <User className="h-icon-lg w-icon-lg mx-auto mb-md opacity-50" />
  <p className="text-body-sm">No {column.title.toLowerCase()} profiles</p>
  <p className="text-body-xs">Drag profiles here to change status</p>
  </div>
@@ -323,7 +323,7 @@ export default function ProfileOverviewKanbanView({
  {/* Drop Zone Indicator */}
  {draggedProfile && draggedProfile.status !== column.status && (
  <div className="mt-md p-md border-2 border-dashed border-accent/50 rounded-lg text-center">
- <Plus className="h-4 w-4 mx-auto mb-xs color-accent" />
+ <Plus className="h-icon-xs w-icon-xs mx-auto mb-xs color-accent" />
  <p className="text-body-xs color-accent">
  Drop to move to {column.title}
  </p>
@@ -337,7 +337,7 @@ export default function ProfileOverviewKanbanView({
  {/* Empty State */}
  {profiles.length === 0 && !loading && (
  <div className="text-center py-xl">
- <User className="h-12 w-12 mx-auto mb-md color-muted" />
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">No profiles found</h3>
  <p className="color-muted">Try adjusting your search or filter criteria.</p>
  </div>

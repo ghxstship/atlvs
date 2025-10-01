@@ -196,7 +196,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
           <select
             value={inviteRole}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setInviteRole(e.target.value)}
-            className="h-10 rounded-md border bg-background  px-md text-body-sm"
+            className="h-icon-xl rounded-md border bg-background  px-md text-body-sm"
           >
             {ROLES.map((r: any) => (
               <option key={r} value={r}>{r}</option>
@@ -223,7 +223,7 @@ export default function InviteMemberClient({ orgId, role }: Props) {
                 <Link
                   href="#"
                   title="Add your organization email domain(s). When seat policy is domain-unlimited, invites matching active domains do not consume seats."
-                  className="inline-flex items-center rounded-md border  px-md py-xs text-[11px] hover:bg-secondary/50"
+                  className="inline-flex items-center rounded-md border  px-md py-xs text-compact hover:bg-secondary/50"
                 >
                   Manage domains
                 </Link>

@@ -90,7 +90,7 @@ export default function CreateTransactionDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <ArrowUpDown className="h-5 w-5" />
+                <ArrowUpDown className="h-icon-sm w-icon-sm" />
                 Transaction Details
               </CardTitle>
             </CardHeader>
@@ -161,7 +161,7 @@ export default function CreateTransactionDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-5 w-5" />
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Transaction Information
               </CardTitle>
             </CardHeader>
@@ -182,7 +182,7 @@ export default function CreateTransactionDrawer({
               <FormField>
                 <FormItem>
                   <FormLabel className="flex items-center gap-xs">
-                    <CreditCard className="h-4 w-4" />
+                    <CreditCard className="h-icon-xs w-icon-xs" />
                     Account *
                   </FormLabel>
                   <FormControl>
@@ -200,7 +200,7 @@ export default function CreateTransactionDrawer({
               <FormField>
                 <FormItem>
                   <FormLabel className="flex items-center gap-xs">
-                    <Building className="h-4 w-4" />
+                    <Building className="h-icon-xs w-icon-xs" />
                     Project
                   </FormLabel>
                   <FormControl>

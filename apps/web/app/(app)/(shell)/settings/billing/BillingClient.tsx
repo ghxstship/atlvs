@@ -229,7 +229,7 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
 
  // View switcher component
  const ViewSwitcher = () => (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant={currentView === 'grid' ? 'default' : 'outline'}
  size="sm"
@@ -251,11 +251,11 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  const renderBillingGrid = () => {
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {[...Array(6)].map((_, i) => (
  <Card key={i} className="animate-pulse">
- <CardContent className="p-6">
- <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+ <CardContent className="p-lg">
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </CardContent>
  </Card>
@@ -270,15 +270,15 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  const planRecords = records.filter(r => r.type === 'plan');
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Current Subscription */}
  {subscriptionRecords.length > 0 && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Current Subscription</h3>
- <div className="grid grid-cols-1 gap-4">
+ <div className="grid grid-cols-1 gap-md">
  {subscriptionRecords.map((record) => (
  <Card key={record.id} className="border-2 border-primary">
- <CardContent className="p-6">
+ <CardContent className="p-lg">
  <div className="flex items-start justify-between mb-3">
  <div>
  <h4 className="font-medium text-lg">{record.name}</h4>
@@ -300,10 +300,10 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  {invoiceRecords.length > 0 && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Recent Invoices ({invoiceRecords.length})</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {invoiceRecords.slice(0, 4).map((record) => (
  <Card key={record.id} className="hover:shadow-md transition-shadow">
- <CardContent className="p-6">
+ <CardContent className="p-lg">
  <div className="flex items-start justify-between mb-3">
  <div>
  <h4 className="font-medium">{record.name}</h4>
@@ -327,12 +327,12 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  {paymentRecords.length > 0 && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Payment Methods ({paymentRecords.length})</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {paymentRecords.map((record) => (
  <Card key={record.id} className="hover:shadow-md transition-shadow">
- <CardContent className="p-6">
- <div className="flex items-center gap-3 mb-3">
- <CreditCard className="h-8 w-8 text-muted-foreground" />
+ <CardContent className="p-lg">
+ <div className="flex items-center gap-sm mb-3">
+ <CreditCard className="h-icon-lg w-icon-lg text-muted-foreground" />
  <div>
  <h4 className="font-medium">{record.name}</h4>
  <p className="text-sm text-muted-foreground">{record.description}</p>
@@ -352,12 +352,12 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  {planRecords.length > 0 && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Available Plans ({planRecords.length})</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {planRecords.map((record) => (
  <Card key={record.id} className={`hover:shadow-md transition-shadow ${
  record.status === 'current' ? 'border-2 border-primary' : ''
  }`}>
- <CardContent className="p-6">
+ <CardContent className="p-lg">
  <div className="text-center mb-4">
  <h4 className="font-medium text-lg">{record.name}</h4>
  <div className="text-2xl font-bold mt-2">{record.amount}</div>
@@ -383,11 +383,11 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
 
  if (error) {
  return (
- <div className="flex items-center justify-center h-96">
+ <div className="flex items-center justify-center h-container-lg">
  <div className="text-center">
  <p className="text-destructive mb-4">{error}</p>
  <Button onClick={() => loadRecords()}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Retry
  </Button>
  </div>
@@ -398,7 +398,7 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  return (
  <DataViewProvider config={dataViewConfig}>
  <StateManagerProvider>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -407,13 +407,13 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  Manage your subscription, billing, and payment methods
  </p>
  </div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Button variant="outline" onClick={handleRefresh} disabled={loading}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Refresh
  </Button>
  <Button variant="outline" onClick={() => handleExport('csv')}>
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export
  </Button>
  </div>
@@ -421,10 +421,10 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
 
  {/* Statistics */}
  {statistics && (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <Package className="h-5 w-5 text-blue-600" />
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <Package className="h-icon-sm w-icon-sm text-blue-600" />
  <div className="text-sm font-medium">Current Plan</div>
  </div>
  <div className="text-2xl font-bold">{statistics.currentPlan}</div>
@@ -432,9 +432,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  Next billing: {new Date(statistics.nextBillingDate).toLocaleDateString()}
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <DollarSign className="h-5 w-5 text-green-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <DollarSign className="h-icon-sm w-icon-sm text-green-600" />
  <div className="text-sm font-medium">Monthly Spend</div>
  </div>
  <div className="text-2xl font-bold">${statistics.monthlySpend}</div>
@@ -442,9 +442,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  current billing cycle
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <FileText className="h-5 w-5 text-purple-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <FileText className="h-icon-sm w-icon-sm text-purple-600" />
  <div className="text-sm font-medium">Invoices</div>
  </div>
  <div className="text-2xl font-bold">{statistics.paidInvoices}</div>
@@ -452,9 +452,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  of {statistics.totalInvoices} total
  </div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
- <div className="flex items-center gap-2 mb-2">
- <TrendingUp className="h-5 w-5 text-orange-600" />
+ <div className="bg-card p-md rounded-lg border">
+ <div className="flex items-center gap-xs mb-2">
+ <TrendingUp className="h-icon-sm w-icon-sm text-orange-600" />
  <div className="text-sm font-medium">Usage</div>
  </div>
  <div className="text-2xl font-bold">
@@ -471,28 +471,28 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  <Tabs value={activeTab} onValueChange={setActiveTab}>
  <TabsList className="grid w-full grid-cols-4">
  <TabsTrigger value="overview">
- <Package className="h-4 w-4 mr-2" />
+ <Package className="h-icon-xs w-icon-xs mr-2" />
  Overview
  </TabsTrigger>
  <TabsTrigger value="subscription">
- <Package className="h-4 w-4 mr-2" />
+ <Package className="h-icon-xs w-icon-xs mr-2" />
  Subscription
  </TabsTrigger>
  <TabsTrigger value="invoices">
- <FileText className="h-4 w-4 mr-2" />
+ <FileText className="h-icon-xs w-icon-xs mr-2" />
  Invoices
  </TabsTrigger>
  <TabsTrigger value="settings">
- <Settings className="h-4 w-4 mr-2" />
+ <Settings className="h-icon-xs w-icon-xs mr-2" />
  Settings
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="overview" className="space-y-4">
+ <TabsContent value="overview" className="space-y-md">
  {/* View Controls */}
  <div className="flex items-center justify-between">
  <ViewSwitcher />
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {selectedRecords.length > 0 && (
  <Button variant="outline" size="sm">
  Actions ({selectedRecords.length})
@@ -505,9 +505,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  {renderBillingGrid()}
  </TabsContent>
 
- <TabsContent value="subscription" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <Package className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="subscription" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <Package className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Subscription Management</h3>
  <p className="text-muted-foreground mb-4">
  Subscription management is available through the overview interface above.
@@ -518,9 +518,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  </div>
  </TabsContent>
 
- <TabsContent value="invoices" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="invoices" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Invoice History</h3>
  <p className="text-muted-foreground mb-4">
  Invoice history is available through the overview interface above.
@@ -531,9 +531,9 @@ export default function BillingClient({ userId, orgId }: BillingClientProps) {
  </div>
  </TabsContent>
 
- <TabsContent value="settings" className="space-y-4">
- <div className="bg-card p-8 rounded-lg border text-center">
- <Settings className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+ <TabsContent value="settings" className="space-y-md">
+ <div className="bg-card p-xl rounded-lg border text-center">
+ <Settings className="h-icon-2xl w-icon-2xl mx-auto mb-4 text-muted-foreground" />
  <h3 className="text-lg font-semibold mb-2">Billing Settings</h3>
  <p className="text-muted-foreground mb-4">
  Billing settings configuration will be available in a future update.

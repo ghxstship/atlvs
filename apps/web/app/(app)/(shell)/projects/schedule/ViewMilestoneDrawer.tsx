@@ -43,36 +43,36 @@ export default function ViewMilestoneDrawer({
  
  if (milestone.status === "completed") {
  return (
- <span className="text-success flex items-center gap-1">
- <CheckCircle className="h-4 w-4" />
+ <span className="text-success flex items-center gap-xs">
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  Completed
  </span>
  );
  } else if (days < 0) {
  return (
- <span className="text-destructive flex items-center gap-1">
- <AlertCircle className="h-4 w-4" />
+ <span className="text-destructive flex items-center gap-xs">
+ <AlertCircle className="h-icon-xs w-icon-xs" />
  {Math.abs(days)} days overdue
  </span>
  );
  } else if (days === 0) {
  return (
- <span className="text-warning flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-warning flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  Due today
  </span>
  );
  } else if (days <= 7) {
  return (
- <span className="text-warning flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-warning flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {days} days left
  </span>
  );
  } else {
  return (
- <span className="text-muted-foreground flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <span className="text-muted-foreground flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {days} days left
  </span>
  );
@@ -108,13 +108,13 @@ export default function ViewMilestoneDrawer({
  onClose={() => onOpenChange(false)}
  title={milestone.title}
  description={milestone.project?.name || "Milestone Details"}
- icon={<Target className="h-5 w-5" />}
+ icon={<Target className="h-icon-sm w-icon-sm" />}
  
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header Actions */}
  <div className="flex justify-between items-start">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {getStatusBadge()}
  {getDaysUntil()}
  </div>
@@ -124,15 +124,15 @@ export default function ViewMilestoneDrawer({
  size="sm"
  onClick={onEdit}
  >
- <Edit className="h-4 w-4 mr-2" />
+ <Edit className="h-icon-xs w-icon-xs mr-2" />
  Edit
  </Button>
  )}
  </div>
 
  {/* Progress */}
- <Card className="p-4">
- <div className="space-y-3">
+ <Card className="p-md">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">Progress</span>
  <span className={`text-2xl font-bold ${getProgressColor()}`}>
@@ -153,8 +153,8 @@ export default function ViewMilestoneDrawer({
  {/* Description */}
  {milestone.description && (
  <div>
- <h3 className="font-medium mb-2 flex items-center gap-2">
- <FileText className="h-4 w-4" />
+ <h3 className="font-medium mb-2 flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs" />
  Description
  </h3>
  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
@@ -165,12 +165,12 @@ export default function ViewMilestoneDrawer({
 
  {/* Timeline */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Calendar className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  Timeline
  </h3>
- <div className="space-y-3">
- <div className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
+ <div className="space-y-sm">
+ <div className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
  <span className="text-sm">Due Date</span>
  <span className="text-sm font-medium">
  {format(parseISO(milestone.due_date), "MMMM d, yyyy")}
@@ -178,7 +178,7 @@ export default function ViewMilestoneDrawer({
  </div>
  
  {milestone.completed_at && (
- <div className="flex items-center justify-between p-3 bg-success/10 rounded-lg">
+ <div className="flex items-center justify-between p-sm bg-success/10 rounded-lg">
  <span className="text-sm">Completed</span>
  <span className="text-sm font-medium">
  {format(parseISO(milestone.completed_at), "MMMM d, yyyy 'at' h:mm a")}
@@ -192,7 +192,7 @@ export default function ViewMilestoneDrawer({
  {milestone.project && (
  <div>
  <h3 className="font-medium mb-2">Project</h3>
- <Card className="p-3">
+ <Card className="p-sm">
  <div className="flex items-center justify-between">
  <span className="font-medium">{milestone.project.name}</span>
  <Badge variant={
@@ -210,11 +210,11 @@ export default function ViewMilestoneDrawer({
 
  {/* Activity */}
  <div>
- <h3 className="font-medium mb-3 flex items-center gap-2">
- <Activity className="h-4 w-4" />
+ <h3 className="font-medium mb-3 flex items-center gap-xs">
+ <Activity className="h-icon-xs w-icon-xs" />
  Activity
  </h3>
- <div className="space-y-2 text-sm text-muted-foreground">
+ <div className="space-y-xs text-sm text-muted-foreground">
  <div className="flex items-center justify-between">
  <span>Created</span>
  <span>{format(parseISO(milestone.created_at), "MMM d, yyyy 'at' h:mm a")}</span>
@@ -230,9 +230,9 @@ export default function ViewMilestoneDrawer({
  {milestone.dependencies && milestone.dependencies.length > 0 && (
  <div>
  <h3 className="font-medium mb-2">Dependencies</h3>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {milestone.dependencies.map((dep, index) => (
- <Card key={index} className="p-2">
+ <Card key={index} className="p-xs">
  <span className="text-sm">{dep}</span>
  </Card>
  ))}

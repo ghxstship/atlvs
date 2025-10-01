@@ -132,7 +132,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
         aria-label="Add Performance Review" 
         title="Add Performance Review"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Performance Review
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Performance Review
       </Button>
       <Drawer 
         open={open} 
@@ -310,7 +310,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="strengths" className="text-body-sm form-label">Key Strengths *</label>
             <textarea 
               id="strengths" 
-              className="rounded border  px-md py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-header-sm" 
               value={form.getValues('strengths') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('strengths', e.target.value, { shouldDirty: true })} 
               placeholder="List key strengths and positive contributions..."
@@ -324,7 +324,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="improvement_areas" className="text-body-sm form-label">Areas for Improvement *</label>
             <textarea 
               id="improvement_areas" 
-              className="rounded border  px-md py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-header-sm" 
               value={form.getValues('improvement_areas') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('improvement_areas', e.target.value, { shouldDirty: true })} 
               placeholder="Areas where growth and development are needed..."
@@ -338,7 +338,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="goals_achieved" className="text-body-sm form-label">Goals Achieved</label>
             <textarea 
               id="goals_achieved" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('goals_achieved') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('goals_achieved', e.target.value, { shouldDirty: true })} 
               placeholder="Goals that were successfully completed..."
@@ -349,7 +349,7 @@ export default function CreatePerformanceReviewClient({ orgId, userId }: { orgId
             <label htmlFor="future_goals" className="text-body-sm form-label">Future Goals</label>
             <textarea 
               id="future_goals" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('future_goals') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('future_goals', e.target.value, { shouldDirty: true })} 
               placeholder="Goals for the next review period..."

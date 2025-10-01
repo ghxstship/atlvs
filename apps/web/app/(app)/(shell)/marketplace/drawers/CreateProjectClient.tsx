@@ -163,7 +163,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  {/* Basic Information */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <Briefcase className="h-4 w-4" />
+ <Briefcase className="h-icon-xs w-icon-xs" />
  Project Details
  </h3>
  <div className="stack-sm">
@@ -227,7 +227,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  {/* Budget & Timeline */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Budget & Timeline
  </h3>
  <div className="stack-sm">
@@ -313,7 +313,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  {/* Location & Requirements */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  Location & Requirements
  </h3>
  <div className="stack-sm">
@@ -394,7 +394,7 @@ export default function CreateProjectClient({ mode, project, onSuccess, onCancel
  {/* Deliverables */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  Deliverables
  </h3>
  <div className="stack-sm">

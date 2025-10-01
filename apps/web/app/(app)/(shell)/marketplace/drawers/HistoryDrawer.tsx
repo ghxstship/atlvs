@@ -164,18 +164,18 @@ export default function HistoryDrawer({
       <Drawer open={open} onOpenChange={onOpenChange}>
         <DrawerContent className="max-h-[90vh]">
           <DrawerHeader>
-            <DrawerTitle className="flex items-center gap-2">
-              <History className="h-5 w-5" />
+            <DrawerTitle className="flex items-center gap-xs">
+              <History className="h-icon-sm w-icon-sm" />
               Audit History
             </DrawerTitle>
           </DrawerHeader>
-          <div className="flex-1 p-6">
-            <div className="space-y-4">
+          <div className="flex-1 p-lg">
+            <div className="space-y-md">
               {Array.from({ length: 3 }).map((_, i) => (
-                <div key={i} className="flex gap-4">
-                  <div className="w-8 h-8 bg-muted animate-pulse rounded-full flex-shrink-0" />
-                  <div className="flex-1 space-y-2">
-                    <div className="h-4 bg-muted animate-pulse rounded w-3/4" />
+                <div key={i} className="flex gap-md">
+                  <div className="w-icon-lg h-icon-lg bg-muted animate-pulse rounded-full flex-shrink-0" />
+                  <div className="flex-1 space-y-xs">
+                    <div className="h-icon-xs bg-muted animate-pulse rounded w-3/4" />
                     <div className="h-3 bg-muted animate-pulse rounded w-1/2" />
                   </div>
                 </div>
@@ -192,14 +192,14 @@ export default function HistoryDrawer({
       <Drawer open={open} onOpenChange={onOpenChange}>
         <DrawerContent className="max-h-[90vh]">
           <DrawerHeader>
-            <DrawerTitle className="flex items-center gap-2">
-              <History className="h-5 w-5" />
+            <DrawerTitle className="flex items-center gap-xs">
+              <History className="h-icon-sm w-icon-sm" />
               Audit History
             </DrawerTitle>
           </DrawerHeader>
-          <div className="flex-1 p-6">
-            <div className="text-center py-8">
-              <AlertCircle className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+          <div className="flex-1 p-lg">
+            <div className="text-center py-xl">
+              <AlertCircle className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
               <h3 className="text-lg font-medium mb-2">Failed to load history</h3>
               <p className="text-muted-foreground">
                 There was an error loading the audit history
@@ -215,8 +215,8 @@ export default function HistoryDrawer({
     <Drawer open={open} onOpenChange={onOpenChange}>
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center gap-2">
-            <History className="h-5 w-5" />
+          <DrawerTitle className="flex items-center gap-xs">
+            <History className="h-icon-sm w-icon-sm" />
             Audit History
           </DrawerTitle>
           <DrawerDescription>
@@ -227,22 +227,22 @@ export default function HistoryDrawer({
 
         <div className="flex-1 overflow-hidden">
           <ScrollArea className="h-full">
-            <div className="p-6">
+            <div className="p-lg">
               {history && history.length > 0 ? (
-                <div className="space-y-6">
+                <div className="space-y-lg">
                   {/* Summary Stats */}
-                  <div className="grid grid-cols-3 gap-4">
-                    <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <div className="grid grid-cols-3 gap-md">
+                    <div className="text-center p-md bg-muted/50 rounded-lg">
                       <div className="text-2xl font-bold">{history.length}</div>
                       <div className="text-sm text-muted-foreground">Total Actions</div>
                     </div>
-                    <div className="text-center p-4 bg-muted/50 rounded-lg">
+                    <div className="text-center p-md bg-muted/50 rounded-lg">
                       <div className="text-2xl font-bold">
                         {history.filter(h => h.action === 'update').length}
                       </div>
                       <div className="text-sm text-muted-foreground">Updates</div>
                     </div>
-                    <div className="text-center p-4 bg-muted/50 rounded-lg">
+                    <div className="text-center p-md bg-muted/50 rounded-lg">
                       <div className="text-2xl font-bold">
                         {new Set(history.map(h => h.user_id)).size}
                       </div>
@@ -253,7 +253,7 @@ export default function HistoryDrawer({
                   <Separator />
 
                   {/* Timeline */}
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <h3 className="text-lg font-semibold">Activity Timeline</h3>
 
                     <div className="relative">
@@ -263,20 +263,20 @@ export default function HistoryDrawer({
                         const isLast = index === history.length - 1;
 
                         return (
-                          <div key={entry.id} className="flex gap-4 pb-6">
+                          <div key={entry.id} className="flex gap-md pb-6">
                             {/* Timeline line */}
                             <div className="flex flex-col items-center">
-                              <div className={`w-8 h-8 rounded-full bg-background border-2 flex items-center justify-center ${iconColor}`}>
-                                <ActionIcon className="h-4 w-4" />
+                              <div className={`w-icon-lg h-icon-lg rounded-full bg-background border-2 flex items-center justify-center ${iconColor}`}>
+                                <ActionIcon className="h-icon-xs w-icon-xs" />
                               </div>
                               {!isLast && <div className="w-px h-full bg-border mt-2" />}
                             </div>
 
                             {/* Content */}
                             <div className="flex-1 pb-4">
-                              <div className="flex items-start justify-between gap-4">
+                              <div className="flex items-start justify-between gap-md">
                                 <div className="flex-1">
-                                  <div className="flex items-center gap-2 mb-1">
+                                  <div className="flex items-center gap-xs mb-1">
                                     <span className="font-medium">
                                       {entry.user_name || 'Unknown User'}
                                     </span>
@@ -289,13 +289,13 @@ export default function HistoryDrawer({
                                     {getActionDetails(entry)}
                                   </p>
 
-                                  <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                                    <div className="flex items-center gap-1">
+                                  <div className="flex items-center gap-md text-xs text-muted-foreground">
+                                    <div className="flex items-center gap-xs">
                                       <Clock className="h-3 w-3" />
                                       <span>{formatTimestamp(entry.timestamp)}</span>
                                     </div>
                                     {entry.ip_address && (
-                                      <div className="flex items-center gap-1">
+                                      <div className="flex items-center gap-xs">
                                         <User className="h-3 w-3" />
                                         <span>{entry.ip_address}</span>
                                       </div>
@@ -306,24 +306,24 @@ export default function HistoryDrawer({
                                 {/* Status indicator */}
                                 <div className="flex-shrink-0">
                                   {entry.action === 'create' && (
-                                    <CheckCircle className="h-5 w-5 text-green-500" />
+                                    <CheckCircle className="h-icon-sm w-icon-sm text-green-500" />
                                   )}
                                   {entry.action === 'update' && (
-                                    <Edit className="h-5 w-5 text-blue-500" />
+                                    <Edit className="h-icon-sm w-icon-sm text-blue-500" />
                                   )}
                                   {entry.action === 'delete' && (
-                                    <Trash2 className="h-5 w-5 text-red-500" />
+                                    <Trash2 className="h-icon-sm w-icon-sm text-red-500" />
                                   )}
                                 </div>
                               </div>
 
                               {/* Additional details */}
                               {entry.details && Object.keys(entry.details).length > 0 && (
-                                <div className="mt-3 p-3 bg-muted/50 rounded-lg">
+                                <div className="mt-3 p-sm bg-muted/50 rounded-lg">
                                   <div className="text-xs font-medium text-muted-foreground mb-1">
                                     Details:
                                   </div>
-                                  <div className="text-xs space-y-1">
+                                  <div className="text-xs space-y-xs">
                                     {Object.entries(entry.details).map(([key, value]) => (
                                       <div key={key} className="flex justify-between">
                                         <span className="capitalize">{key.replace(/([A-Z])/g, ' $1')}:</span>
@@ -341,8 +341,8 @@ export default function HistoryDrawer({
                   </div>
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <History className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+                <div className="text-center py-xsxl">
+                  <History className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
                   <h3 className="text-lg font-medium mb-2">No history available</h3>
                   <p className="text-muted-foreground">
                     {listingId

@@ -93,12 +93,12 @@ export default function HistoryFormView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
+ <Card className="p-lg">
+ <div className="space-y-md">
  {[...Array(10)].map((_, i) => (
- <div key={i} className="space-y-2">
- <div className="h-4 w-24 bg-muted animate-pulse rounded" />
- <div className="h-10 bg-muted animate-pulse rounded" />
+ <div key={i} className="space-y-xs">
+ <div className="h-icon-xs w-component-lg bg-muted animate-pulse rounded" />
+ <div className="h-icon-xl bg-muted animate-pulse rounded" />
  </div>
  ))}
  </div>
@@ -107,16 +107,16 @@ export default function HistoryFormView({
  }
 
  return (
- <div className="space-y-6">
- <Card className="p-6">
- <div className="space-y-6">
+ <div className="space-y-lg">
+ <Card className="p-lg">
+ <div className="space-y-lg">
  <div>
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <Building className="h-5 w-5" />
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <Building className="h-icon-sm w-icon-sm" />
  Basic Information
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="entry_type">
  Entry Type <span className="text-destructive">*</span>
  </Label>
@@ -130,7 +130,7 @@ export default function HistoryFormView({
  <SelectContent>
  {Object.entries(ENTRY_TYPE_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
- <span className="flex items-center gap-2">
+ <span className="flex items-center gap-xs">
  <span>{getEntryTypeIcon(value as unknown)}</span>
  {label}
  </span>
@@ -140,7 +140,7 @@ export default function HistoryFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="title">
  Title/Position <span className="text-destructive">*</span>
  </Label>
@@ -156,7 +156,7 @@ export default function HistoryFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="organization">Organization/Company</Label>
  <Input
  
@@ -166,7 +166,7 @@ export default function HistoryFormView({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="location">Location</Label>
  <Input
  
@@ -176,7 +176,7 @@ export default function HistoryFormView({
  />
  </div>
 
- <div className="space-y-2 md:col-span-2">
+ <div className="space-y-xs md:col-span-2">
  <Label htmlFor="description">Description</Label>
  <Textarea
  
@@ -190,12 +190,12 @@ export default function HistoryFormView({
  </div>
 
  <div>
- <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Timeline
  </h3>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="start_date">
  Start Date <span className="text-destructive">*</span>
  </Label>
@@ -211,7 +211,7 @@ export default function HistoryFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="end_date">End Date</Label>
  <Input
  
@@ -227,9 +227,9 @@ export default function HistoryFormView({
  </div>
 
  <div className="flex items-center justify-center">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="is_current">Current Position</Label>
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Switch
  
  checked={formData.is_current}
@@ -249,7 +249,7 @@ export default function HistoryFormView({
  </div>
 
  {formData.start_date && (
- <div className="mt-4 p-3 bg-muted/50 rounded-lg">
+ <div className="mt-4 p-sm bg-muted/50 rounded-lg">
  <p className="text-sm text-muted-foreground">
  Duration: {calculateDuration(formData.start_date, formData.end_date, formData.is_current)}
  {' • '}
@@ -263,8 +263,8 @@ export default function HistoryFormView({
  {formData.entry_type === 'employment' && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Employment Details</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="employment_type">Employment Type</Label>
  <Select
  value={formData.employment_type}
@@ -283,7 +283,7 @@ export default function HistoryFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="salary_range">Salary Range (Optional)</Label>
  <Input
  
@@ -299,8 +299,8 @@ export default function HistoryFormView({
  {formData.entry_type === 'education' && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Education Details</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="education_level">Education Level</Label>
  <Select
  value={formData.education_level}
@@ -319,7 +319,7 @@ export default function HistoryFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="grade_gpa">Grade/GPA (Optional)</Label>
  <Input
  
@@ -335,8 +335,8 @@ export default function HistoryFormView({
  {formData.entry_type === 'project' && (
  <div>
  <h3 className="text-lg font-semibold mb-4">Project Details</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="project_status">Project Status</Label>
  <Select
  value={formData.project_status}
@@ -355,7 +355,7 @@ export default function HistoryFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="website_url">Project URL (Optional)</Label>
  <Input
  
@@ -375,10 +375,10 @@ export default function HistoryFormView({
 
  <div>
  <h3 className="text-lg font-semibold mb-4">Skills & Achievements</h3>
- <div className="space-y-4">
- <div className="space-y-2">
+ <div className="space-y-md">
+ <div className="space-y-xs">
  <Label>Skills Gained</Label>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={skillInput}
  onChange={(e) => setSkillInput(e.target.value)}
@@ -386,14 +386,14 @@ export default function HistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
  />
  <Button type="button" onClick={handleAddSkill} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
  {formData.skills_gained.length > 0 && (
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  {formData.skills_gained.map((skill) => (
- <Badge key={skill} variant="secondary" className="gap-1">
+ <Badge key={skill} variant="secondary" className="gap-xs">
  {skill}
  <button
  type="button"
@@ -409,7 +409,7 @@ export default function HistoryFormView({
 
  <div className="mt-2">
  <p className="text-sm text-muted-foreground mb-2">Common skills:</p>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {COMMON_SKILLS.slice(0, 10).map((skill) => (
  <Badge
  key={skill}
@@ -424,9 +424,9 @@ export default function HistoryFormView({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label>Achievements & Accomplishments</Label>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={achievementInput}
  onChange={(e) => setAchievementInput(e.target.value)}
@@ -434,21 +434,21 @@ export default function HistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAchievement())}
  />
  <Button type="button" onClick={handleAddAchievement} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
  {formData.achievements.length > 0 && (
- <div className="space-y-2 mt-2">
+ <div className="space-y-xs mt-2">
  {formData.achievements.map((achievement, index) => (
- <div key={index} className="flex items-start gap-2 p-2 border rounded">
+ <div key={index} className="flex items-start gap-xs p-xs border rounded">
  <span className="text-sm flex-1">{achievement}</span>
  <button
  type="button"
  onClick={() => handleRemoveAchievement(achievement)}
  className="text-muted-foreground hover:text-destructive"
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </button>
  </div>
  ))}
@@ -460,8 +460,8 @@ export default function HistoryFormView({
 
  <div>
  <h3 className="text-lg font-semibold mb-4">Additional Information</h3>
- <div className="space-y-4">
- <div className="space-y-2">
+ <div className="space-y-md">
+ <div className="space-y-xs">
  <Label htmlFor="references">References (Optional)</Label>
  <Textarea
  
@@ -472,9 +472,9 @@ export default function HistoryFormView({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label>Tags</Label>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={tagInput}
  onChange={(e) => setTagInput(e.target.value)}
@@ -482,14 +482,14 @@ export default function HistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
  />
  <Button type="button" onClick={handleAddTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
  {formData.tags.length > 0 && (
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  {formData.tags.map((tag) => (
- <Badge key={tag} variant="outline" className="gap-1">
+ <Badge key={tag} variant="outline" className="gap-xs">
  {tag}
  <button
  type="button"
@@ -504,7 +504,7 @@ export default function HistoryFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="visibility">
  Visibility <span className="text-destructive">*</span>
  </Label>
@@ -518,8 +518,8 @@ export default function HistoryFormView({
  <SelectContent>
  {Object.entries(VISIBILITY_LABELS).map(([value, label]) => (
  <SelectItem key={value} value={value}>
- <span className="flex items-center gap-2">
- <Eye className="h-4 w-4" />
+ <span className="flex items-center gap-xs">
+ <Eye className="h-icon-xs w-icon-xs" />
  {label}
  </span>
  </SelectItem>
@@ -532,7 +532,7 @@ export default function HistoryFormView({
 
  <div className="flex justify-end pt-4 border-t">
  <Button onClick={onSave} disabled={saving}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {saving ? 'Saving...' : entry ? 'Update Entry' : 'Create Entry'}
  </Button>
  </div>
@@ -540,7 +540,7 @@ export default function HistoryFormView({
  </Card>
 
  {entry && (
- <Card className="p-4 bg-muted/50">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between text-sm">
  <span className="text-muted-foreground">
  Created: {formatDate(entry.created_at)}

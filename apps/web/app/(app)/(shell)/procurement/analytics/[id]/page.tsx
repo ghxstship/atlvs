@@ -59,16 +59,16 @@ export default async function AnalyticsDetailPage({ params }: AnalyticsDetailPag
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BarChart3 className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <BarChart3 className="h-icon-sm w-icon-sm" />
                 Procurement Analytics
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Advanced procurement analytics and reporting will be available here.
               </p>
             </CardContent>
@@ -76,13 +76,13 @@ export default async function AnalyticsDetailPage({ params }: AnalyticsDetailPag
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <TrendingUp className="h-icon-sm w-icon-sm" />
                 Trends & Insights
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Spending trends, vendor performance, and procurement insights.
               </p>
             </CardContent>
@@ -96,13 +96,13 @@ export default async function AnalyticsDetailPage({ params }: AnalyticsDetailPag
       content: (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Calendar className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <Calendar className="h-icon-sm w-icon-sm" />
               Generated Reports
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Procurement reports and scheduled analytics will be displayed here.
             </p>
           </CardContent>

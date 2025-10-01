@@ -93,7 +93,7 @@ export default function CreateTaskClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={() => setOpen(true)} aria-label={t('create.newTitle')} title={t('create.newTitle')}>
-        <Plus className="mr-xs h-4 w-4" /> {t('create.newTitle')}
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> {t('create.newTitle')}
       </Button>
       <Drawer open={open} onClose={() => setOpen(false)} title={t('create.newTitle')} description={submitting ? t('drawer.saving') : undefined}>
         {error ? <div role="alert" className="mb-sm text-body-sm color-destructive">{error}</div> : null}

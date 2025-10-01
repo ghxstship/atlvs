@@ -395,7 +395,7 @@ export const PageLayout: React.FC<PageLayoutProps> = ({
       
       <div className="flex flex-1">
         {sidebar && (
-          <aside className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0 lg:pt-3xl">
+          <aside className="hidden lg:flex lg:w-container-sm lg:flex-col lg:fixed lg:inset-y-0 lg:pt-3xl">
             <div className="flex-1 flex flex-col min-h-0 bg-background border-r border-border">
               {sidebar}
             </div>

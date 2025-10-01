@@ -220,7 +220,7 @@ export default function CreateAssetClient({
  {editingAsset ? 'Edit Asset' : 'Create Asset'}
  </h2>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="w-4 h-4" />
+ <X className="w-icon-xs h-icon-xs" />
  </Button>
  </div>
 
@@ -243,7 +243,7 @@ export default function CreateAssetClient({
  accept="*/*"
  />
  <label htmlFor="file-upload" className="cursor-pointer">
- <Upload className="w-8 h-8 mx-auto mb-sm text-muted-foreground" />
+ <Upload className="w-icon-lg h-icon-lg mx-auto mb-sm text-muted-foreground" />
  <p className="text-sm text-muted-foreground">
  {uploadedFile ? uploadedFile.name : 'Click to upload a file or drag and drop'}
  </p>

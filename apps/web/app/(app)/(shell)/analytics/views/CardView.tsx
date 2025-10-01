@@ -61,10 +61,10 @@ export default function CardView({
 
   if (loading) {
     return (
-      <div className={`grid gap-4 ${getGridClass(columns)} ${className}`}>
+      <div className={`grid gap-md ${getGridClass(columns)} ${className}`}>
         {Array.from({ length: 6 }).map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="bg-gray-200 h-48 rounded-lg"></div>
+            <div className="bg-gray-200 h-container-xs rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -85,7 +85,7 @@ export default function CardView({
               if (el) el.indeterminate = someSelected;
             }}
             onChange={(e) => handleSelectAll(e.target.checked)}
-            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-2"
+            className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-2"
           />
           <span className="text-sm text-gray-700">
             {selectedCards.size} of {data.length} selected
@@ -93,7 +93,7 @@ export default function CardView({
         </div>
       )}
 
-      <div className={`grid gap-4 ${getGridClass(columns)}`}>
+      <div className={`grid gap-md ${getGridClass(columns)}`}>
         {data.map((item) => (
           <div
             key={item.id}
@@ -103,7 +103,7 @@ export default function CardView({
             onClick={() => onCardClick?.(item)}
           >
             {selectable && (
-              <div className="absolute top-2 left-2 z-10">
+              <div className="absolute top-xs left-2 z-10">
                 <input
                   type="checkbox"
                   checked={selectedCards.has(item.id)}
@@ -111,14 +111,14 @@ export default function CardView({
                     e.stopPropagation();
                     handleCardSelect(item.id, e.target.checked);
                   }}
-                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                  className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
               </div>
             )}
 
-            <div className="absolute top-2 right-2 z-10">
-              <button className="text-gray-400 hover:text-gray-600 p-1 rounded-full hover:bg-gray-100">
-                <MoreHorizontal className="h-4 w-4" />
+            <div className="absolute top-xs right-2 z-10">
+              <button className="text-gray-400 hover:text-gray-600 p-xs rounded-full hover:bg-gray-100">
+                <MoreHorizontal className="h-icon-xs w-icon-xs" />
               </button>
             </div>
 
@@ -128,7 +128,7 @@ export default function CardView({
       </div>
 
       {data.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-xsxl">
           <p className="text-gray-500">No data available</p>
         </div>
       )}

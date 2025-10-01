@@ -51,16 +51,16 @@ export default function ActivityTimelineView({
 
  if (loading) {
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {Array.from({ length: 3 }).map((_, i) => (
- <Card key={i} className="p-6">
- <Skeleton className="h-4 w-32 mb-4" />
- <div className="space-y-4">
+ <Card key={i} className="p-lg">
+ <Skeleton className="h-icon-xs w-component-xl mb-4" />
+ <div className="space-y-md">
  {Array.from({ length: 3 }).map((_, j) => (
- <div key={j} className="flex items-start gap-4">
- <Skeleton className="h-8 w-8 rounded-full" />
- <div className="flex-1 space-y-2">
- <Skeleton className="h-4 w-3/4" />
+ <div key={j} className="flex items-start gap-md">
+ <Skeleton className="h-icon-lg w-icon-lg rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <Skeleton className="h-icon-xs w-3/4" />
  <Skeleton className="h-3 w-1/2" />
  </div>
  </div>
@@ -74,8 +74,8 @@ export default function ActivityTimelineView({
 
  if (activities.length === 0) {
  return (
- <Card className="p-12 text-center">
- <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-xsxl text-center">
+ <Clock className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Activity Timeline</h3>
  <p className="text-muted-foreground">
  Activity will appear here as it happens.
@@ -85,11 +85,11 @@ export default function ActivityTimelineView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {groupedActivities.map(({ date, items }) => (
- <Card key={date} className="p-6">
- <div className="flex items-center gap-2 mb-6">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Card key={date} className="p-lg">
+ <div className="flex items-center gap-xs mb-6">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <h3 className="font-semibold text-lg">
  {new Date(date).toLocaleDateString('en-US', {
  weekday: 'long',
@@ -107,26 +107,26 @@ export default function ActivityTimelineView({
  {/* Timeline line */}
  <div className="absolute left-4 top-0 bottom-0 w-px bg-border" />
  
- <div className="space-y-6">
+ <div className="space-y-lg">
  {items.map((activity, index) => {
  const config = ACTIVITY_TYPE_CONFIG[activity.activity_type] || ACTIVITY_TYPE_CONFIG.profile_updated;
  const IconComponent = iconMap[config.icon as keyof typeof iconMap] || User;
  
  return (
- <div key={activity.id} className="relative flex items-start gap-4">
+ <div key={activity.id} className="relative flex items-start gap-md">
  {/* Timeline dot */}
- <div className={`relative z-10 p-2 rounded-full bg-background border-2 border-current ${config.color}`}>
- <IconComponent className="h-4 w-4" />
+ <div className={`relative z-10 p-xs rounded-full bg-background border-2 border-current ${config.color}`}>
+ <IconComponent className="h-icon-xs w-icon-xs" />
  </div>
 
  {/* Content */}
  <div className="flex-1 min-w-0 pb-6">
- <div className="flex items-start justify-between gap-2 mb-2">
+ <div className="flex items-start justify-between gap-xs mb-2">
  <div className="flex-1">
  <h4 className="font-medium text-sm mb-1">
  {activity.activity_description}
  </h4>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className={`text-xs ${config.color}`}>
  {config.label}
  </Badge>
@@ -153,10 +153,10 @@ export default function ActivityTimelineView({
  <summary className="text-xs text-muted-foreground cursor-pointer hover:text-foreground">
  View details
  </summary>
- <div className="mt-2 p-3 bg-muted/50 rounded-lg">
- <div className="space-y-2">
+ <div className="mt-2 p-sm bg-muted/50 rounded-lg">
+ <div className="space-y-xs">
  {Object.entries(activity.metadata).map(([key, value]) => (
- <div key={key} className="flex items-start gap-2 text-xs">
+ <div key={key} className="flex items-start gap-xs text-xs">
  <span className="font-medium text-muted-foreground min-w-0 flex-shrink-0">
  {key}:
  </span>
@@ -183,7 +183,7 @@ export default function ActivityTimelineView({
 
  {/* Load more indicator */}
  {activities.length >= 50 && (
- <Card className="p-6 text-center">
+ <Card className="p-lg text-center">
  <p className="text-sm text-muted-foreground">
  Showing recent 50 activities. Use filters to see more specific results.
  </p>

@@ -97,7 +97,7 @@ export function OnboardingFlow() {
     return (
       <div className="min-h-screen brand-ghostship bg-gradient-subtle flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
           <p className={typography.bodyLarge}>Loading...</p>
         </div>
       </div>
@@ -106,7 +106,7 @@ export function OnboardingFlow() {
 
   return (
     <div className="min-h-screen brand-ghostship bg-gradient-subtle">
-      <div className="container mx-auto px-md py-4xl">
+      <div className="container mx-auto px-md py-mdxl">
         {/* Header */}
         <div className="text-center mb-3xl">
           <Link href={"/home" as Route} className="inline-flex items-center gap-sm mb-2xl">

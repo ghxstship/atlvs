@@ -66,13 +66,13 @@ export default function UniformSizingListView({
  <Card key={i} className="p-lg">
  <div className="animate-pulse">
  <div className="flex items-center space-x-md">
- <div className="w-4 h-4 bg-muted rounded"></div>
- <div className="w-10 h-10 bg-muted rounded-full"></div>
+ <div className="w-icon-xs h-icon-xs bg-muted rounded"></div>
+ <div className="w-icon-xl h-icon-xl bg-muted rounded-full"></div>
  <div className="flex-1 space-y-xs">
- <div className="h-4 bg-muted rounded w-1/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/4"></div>
  <div className="h-3 bg-muted rounded w-1/6"></div>
  </div>
- <div className="w-20 h-8 bg-muted rounded"></div>
+ <div className="w-component-lg h-icon-lg bg-muted rounded"></div>
  </div>
  </div>
  </Card>
@@ -84,7 +84,7 @@ export default function UniformSizingListView({
  if (sizings.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Shirt className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <Shirt className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Uniform Sizing Records</h3>
  <p className="text-muted-foreground">
  Start by adding uniform sizing information for your team members.
@@ -139,8 +139,8 @@ export default function UniformSizingListView({
  }
  />
  
- <Avatar className="h-10 w-10">
- <User className="h-5 w-5" />
+ <Avatar className="h-icon-xl w-icon-xl">
+ <User className="h-icon-sm w-icon-sm" />
  </Avatar>
 
  <div className="flex-1 min-w-0">
@@ -190,9 +190,9 @@ export default function UniformSizingListView({
  onClick={() => toggleExpanded(sizing.user_id)}
  >
  {isExpanded ? (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  )}
  </Button>
  
@@ -201,7 +201,7 @@ export default function UniformSizingListView({
  size="sm"
  onClick={() => onView(sizing)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  
  <Button
@@ -209,7 +209,7 @@ export default function UniformSizingListView({
  size="sm"
  onClick={() => onEdit(sizing)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

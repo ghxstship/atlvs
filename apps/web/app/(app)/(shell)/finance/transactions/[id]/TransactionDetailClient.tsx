@@ -55,7 +55,7 @@ export default function TransactionDetailClient({ transaction, user, orgId }: Tr
  size="sm"
  onClick={() => router.back()}
  >
- <ArrowLeft className="h-4 w-4 mr-xs" />
+ <ArrowLeft className="h-icon-xs w-icon-xs mr-xs" />
  Back to Transactions
  </Button>
  <div>
@@ -91,11 +91,11 @@ export default function TransactionDetailClient({ transaction, user, orgId }: Tr
  <CardContent className="pt-lg">
  <div className="flex items-center gap-md">
  <Button onClick={() => setIsEditDrawerOpen(true)}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Transaction
  </Button>
  <Button variant="outline" onClick={() => router.push('/finance/transactions')}>
- <ArrowUpDown className="h-4 w-4 mr-xs" />
+ <ArrowUpDown className="h-icon-xs w-icon-xs mr-xs" />
  View All Transactions
  </Button>
  </div>

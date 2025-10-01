@@ -266,7 +266,7 @@ export const FlowHealthDashboard: React.FC<FlowHealthDashboardProps> = ({
           disabled={isValidating}
           size="sm"
         >
-          <RefreshCw className="w-4 h-4 mr-sm" />
+          <RefreshCw className="w-icon-xs h-icon-xs mr-sm" />
           Validate All
         </Button>
       </div>

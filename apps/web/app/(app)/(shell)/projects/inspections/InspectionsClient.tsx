@@ -519,7 +519,7 @@ export default function InspectionsClient({
  </p>
  </div>
  <Button onClick={() => setCreateDrawerOpen(true)}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Schedule Inspection
  </Button>
  </div>
@@ -527,8 +527,8 @@ export default function InspectionsClient({
  {/* Filters and View Switcher */}
  <div className="flex flex-col lg:flex-row gap-md">
  <div className="flex-1 flex flex-wrap gap-sm">
- <div className="relative flex-1 min-w-[200px]">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <div className="relative flex-1 min-w-content-narrow">
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search inspections..."
  value={searchQuery}
@@ -585,7 +585,7 @@ export default function InspectionsClient({
  size="sm"
  onClick={handleBulkExport}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
 
@@ -600,7 +600,7 @@ export default function InspectionsClient({
  onClick={() => setViewType(view.id as ViewType)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  </Button>
  );
  })}
@@ -653,11 +653,11 @@ export default function InspectionsClient({
  <Card className="p-lg">
  {loading ? (
  <div className="flex items-center justify-center py-xl">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  </div>
  ) : sortedInspections.length === 0 ? (
  <div className="text-center py-xl">
- <ClipboardCheck className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <ClipboardCheck className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No inspections found</h3>
  <p className="text-muted-foreground mb-md">
  {searchQuery || selectedType !== "all" || selectedStatus !== "all"
@@ -666,7 +666,7 @@ export default function InspectionsClient({
  </p>
  {!searchQuery && selectedType === "all" && selectedStatus === "all" && (
  <Button onClick={() => setCreateDrawerOpen(true)}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Schedule Inspection
  </Button>
  )}

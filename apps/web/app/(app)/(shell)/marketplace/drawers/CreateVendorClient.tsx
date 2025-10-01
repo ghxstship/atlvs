@@ -155,7 +155,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  {/* Business Information */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <Briefcase className="h-4 w-4" />
+ <Briefcase className="h-icon-xs w-icon-xs" />
  Business Information
  </h3>
  <div className="stack-sm">
@@ -244,7 +244,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  {/* Professional Details */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <Award className="h-4 w-4" />
+ <Award className="h-icon-xs w-icon-xs" />
  Professional Details
  </h3>
  <div className="stack-sm">
@@ -362,7 +362,7 @@ export default function CreateVendorClient({ mode, vendor, onSuccess, onCancel }
  {/* Pricing & Availability */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Pricing & Availability
  </h3>
  <div className="stack-sm">

@@ -48,7 +48,7 @@ export default function ForgotPasswordPage() {
           
           <div className="brand-ghostship cluster justify-center">
             <AuthLink href="/auth/signin" className="cluster-xs">
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-icon-xs w-icon-xs" />
               Back to sign in
             </AuthLink>
           </div>
@@ -85,7 +85,7 @@ export default function ForgotPasswordPage() {
       
       <div className="brand-ghostship text-center stack-md mt-lg">
         <AuthLink href="/auth/signin" className="cluster-xs justify-center">
-          <ArrowLeft className="h-4 w-4" />
+          <ArrowLeft className="h-icon-xs w-icon-xs" />
           Back to sign in
         </AuthLink>
         

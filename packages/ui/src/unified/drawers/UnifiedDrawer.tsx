@@ -480,7 +480,7 @@ export const UnifiedDrawer: React.FC<UnifiedDrawerProps> = ({
                     onClick={handleDelete}
                     disabled={deleting}
                   >
-                    {deleting && <Loader2 className="mr-xs h-4 w-4 animate-spin" />}
+                    {deleting && <Loader2 className="mr-xs h-icon-xs w-icon-xs animate-spin" />}
                     Delete
                   </Button>
                 )}
@@ -493,7 +493,7 @@ export const UnifiedDrawer: React.FC<UnifiedDrawerProps> = ({
                       variant={action.variant}
                       onClick={() => action.onClick(data)}
                     >
-                      {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                      {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                       {action.label}
                     </Button>
                   );
@@ -502,13 +502,13 @@ export const UnifiedDrawer: React.FC<UnifiedDrawerProps> = ({
               
               <div className="flex gap-sm">
                 <Button type="button" variant="outline" onClick={onClose}>
-                  <X className="mr-xs h-4 w-4" />
+                  <X className="mr-xs h-icon-xs w-icon-xs" />
                   {config.cancelLabel || 'Cancel'}
                 </Button>
                 {config.mode !== 'view' && (
                   <Button type="submit" disabled={loading}>
-                    {loading && <Loader2 className="mr-xs h-4 w-4 animate-spin" />}
-                    <Save className="mr-xs h-4 w-4" />
+                    {loading && <Loader2 className="mr-xs h-icon-xs w-icon-xs animate-spin" />}
+                    <Save className="mr-xs h-icon-xs w-icon-xs" />
                     {config.submitLabel || (config.mode === 'create' ? 'Create' : 'Save')}
                   </Button>
                 )}

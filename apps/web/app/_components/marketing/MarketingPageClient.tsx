@@ -19,7 +19,7 @@ export function MarketingPageClient() {
       <HeroSection />
 
       {/* Product Showcase */}
-      <section className="py-2xl bg-secondary/20">
+      <section className="py-xsxl bg-secondary/20">
         <div className="container mx-auto px-lg px-md">
           <div className="text-center mb-xl">
             <Badge variant="outline" className="mb-sm">
@@ -64,7 +64,7 @@ export function MarketingPageClient() {
               <Link href="/products/atlvs">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Explore ATLVS
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
             </div>
@@ -72,7 +72,7 @@ export function MarketingPageClient() {
               <Link href="/products/opendeck">
                 <Button variant="outline" className="group transition-all duration-200 hover:scale-105">
                   Explore OPENDECK
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
             </div>

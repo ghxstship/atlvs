@@ -7,13 +7,13 @@ const spacerVariants = cva('', {
     size: {
       xs: 'h-1 w-1',     // 4px
       sm: 'h-2 w-2',     // 8px
-      md: 'h-4 w-4',     // 16px
-      lg: 'h-6 w-6',     // 24px
-      xl: 'h-8 w-8',     // 32px
-      '2xl': 'h-12 w-12', // 48px
-      '3xl': 'h-16 w-16', // 64px
-      '4xl': 'h-24 w-24', // 96px
-      '5xl': 'h-32 w-32', // 128px
+      md: 'h-icon-xs w-icon-xs',     // 16px
+      lg: 'h-icon-md w-icon-md',     // 24px
+      xl: 'h-icon-lg w-icon-lg',     // 32px
+      '2xl': 'h-icon-2xl w-icon-2xl', // 48px
+      '3xl': 'h-component-md w-component-md', // 64px
+      '4xl': 'h-component-lg w-component-lg', // 96px
+      '5xl': 'h-component-xl w-component-xl', // 128px
     },
     axis: {
       horizontal: 'h-0',

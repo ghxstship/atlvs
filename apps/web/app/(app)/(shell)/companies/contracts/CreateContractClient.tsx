@@ -224,7 +224,7 @@ export default function CreateContractClient({
         {/* Contract Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <FileText className="h-5 w-5 color-accent" />
+            <FileText className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Contract Details</h3>
           </div>
           
@@ -291,7 +291,7 @@ export default function CreateContractClient({
         {/* Company & Project */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Building className="h-5 w-5 color-success" />
+            <Building className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Company & Project</h3>
           </div>
           
@@ -335,7 +335,7 @@ export default function CreateContractClient({
         {/* Contract Terms */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Calendar className="h-5 w-5 color-warning" />
+            <Calendar className="h-icon-sm w-icon-sm color-warning" />
             <h3 className="text-body text-heading-4">Contract Terms</h3>
           </div>
           
@@ -365,7 +365,7 @@ export default function CreateContractClient({
             <div className="grid grid-cols-3 gap-md">
               <div className="col-span-2">
                 <label className="block text-body-sm form-label mb-xs">
-                  <DollarSign className="h-4 w-4 inline mr-xs" />
+                  <DollarSign className="h-icon-xs w-icon-xs inline mr-xs" />
                   Contract Value
                 </label>
                 <UnifiedInput                   type="number"
@@ -438,14 +438,14 @@ export default function CreateContractClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.companyId || !formData.title.trim()}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Create Contract'}
           </Button>
         </div>

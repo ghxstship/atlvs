@@ -99,7 +99,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       >
         {/* Icon */}
         <div className="shrink-0 mt-0.5">
-          <Icon className={clsx('h-5 w-5', config.iconClassName)} />
+          <Icon className={clsx('h-icon-sm w-icon-sm', config.iconClassName)} />
         </div>
 
         {/* Content */}
@@ -128,7 +128,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             onClick={handleClose}
             className="shrink-0 opacity-70 hover:opacity-100"
           >
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         )}
 

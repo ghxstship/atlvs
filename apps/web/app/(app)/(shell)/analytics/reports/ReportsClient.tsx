@@ -364,10 +364,10 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
             {[1, 2, 3].map((i: any) => (
-              <div key={i} className="h-48 bg-secondary rounded"></div>
+              <div key={i} className="h-container-xs bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -378,7 +378,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
   if (error) {
     return (
       <Card title="Error">
-          <div className="text-center py-2xl color-destructive">{error}</div>
+          <div className="text-center py-xsxl color-destructive">{error}</div>
         <Button onClick={loadReports} className="mt-md">
           Retry
         </Button>
@@ -395,7 +395,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
         <p className="text-body-sm color-muted">Build and schedule custom reports</p>
       </div>
       <Button onClick={() => setShowCreateForm(true)}>
-        <Plus className="h-4 w-4 mr-sm" />
+        <Plus className="h-icon-xs w-icon-xs mr-sm" />
         New Report
       </Button>
     </div>
@@ -403,7 +403,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
     {/* Filters */}
     <div className="flex items-center cluster">
       <div className="flex-1 relative">
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
+        <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
         <input
           type="text"
           placeholder="Search reports..."
@@ -434,7 +434,7 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
               <div className="flex items-start justify-between mb-md">
                 <div className="flex items-center cluster-sm">
                   <div className="p-sm bg-accent/10 rounded-lg">
-                    <IconComponent className="h-5 w-5 color-accent" />
+                    <IconComponent className="h-icon-sm w-icon-sm color-accent" />
                   </div>
                   <div>
                     <h3 className="text-heading-4 color-foreground">{report.name}</h3>
@@ -513,11 +513,11 @@ export default function ReportsClient({ organizationId, translations }: ReportsC
         </div>
       ) : (
         <Card className="p-xl text-center">
-            <FileText className="h-12 w-12 color-muted mx-auto mb-md" />
+            <FileText className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No reports found</h3>
           <p className="color-muted mb-md">Create your first report to get started with analytics.</p>
           <Button onClick={() => setShowCreateForm(true)}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Create Report
           </Button>
         </Card>

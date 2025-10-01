@@ -59,16 +59,16 @@ export default async function ProcurementContractDetailPage({ params }: Contract
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <FileText className="h-icon-sm w-icon-sm" />
                 Contract Details
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Procurement contract details and terms will be displayed here.
               </p>
             </CardContent>
@@ -76,13 +76,13 @@ export default async function ProcurementContractDetailPage({ params }: Contract
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Handshake className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Handshake className="h-icon-sm w-icon-sm" />
                 Vendor Agreement
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 Vendor contract terms, SLAs, and performance metrics.
               </p>
             </CardContent>
@@ -96,13 +96,13 @@ export default async function ProcurementContractDetailPage({ params }: Contract
       content: (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Building className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <Building className="h-icon-sm w-icon-sm" />
               Contract Documents
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Contract documents, amendments, and legal agreements.
             </p>
           </CardContent>

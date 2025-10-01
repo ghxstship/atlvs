@@ -39,7 +39,7 @@ export default function RiskMatrixView({
 
  return (
  <div className="overflow-x-auto">
- <div className="min-w-[800px]">
+ <div className="min-w-content-xlarge">
  {/* Matrix Header */}
  <div className="mb-md">
  <h3 className="font-semibold mb-sm">Risk Assessment Matrix</h3>
@@ -95,7 +95,7 @@ export default function RiskMatrixView({
  return (
  <div
  key={`${probability}-${impact}`}
- className={`border-2 rounded-lg p-sm min-h-[100px] ${cellColor}`}
+ className={`border-2 rounded-lg p-sm min-h-header-md ${cellColor}`}
  >
  <div className="text-xs font-medium text-center mb-xs">
  Score: {score}
@@ -108,7 +108,7 @@ export default function RiskMatrixView({
  className="bg-background/80 rounded p-xs cursor-pointer hover:bg-background transition-colors"
  onClick={() => onView(risk)}
  >
- <p className="text-xs font-medium line-clamp-1">
+ <p className="text-xs font-medium line-clamp-xs">
  {risk.title}
  </p>
  <Badge variant="outline" className="text-xs mt-xs">
@@ -139,19 +139,19 @@ export default function RiskMatrixView({
  <h4 className="font-medium mb-sm">Risk Levels</h4>
  <div className="flex items-center gap-md flex-wrap">
  <div className="flex items-center gap-xs">
- <div className="w-4 h-4 bg-destructive/20 border-2 border-destructive rounded"></div>
+ <div className="w-icon-xs h-icon-xs bg-destructive/20 border-2 border-destructive rounded"></div>
  <span className="text-sm">Critical (20-25)</span>
  </div>
  <div className="flex items-center gap-xs">
- <div className="w-4 h-4 bg-warning/20 border-2 border-warning rounded"></div>
+ <div className="w-icon-xs h-icon-xs bg-warning/20 border-2 border-warning rounded"></div>
  <span className="text-sm">High (12-19)</span>
  </div>
  <div className="flex items-center gap-xs">
- <div className="w-4 h-4 bg-yellow-500/20 border-2 border-yellow-500 rounded"></div>
+ <div className="w-icon-xs h-icon-xs bg-yellow-500/20 border-2 border-yellow-500 rounded"></div>
  <span className="text-sm">Medium (6-11)</span>
  </div>
  <div className="flex items-center gap-xs">
- <div className="w-4 h-4 bg-success/20 border-2 border-success rounded"></div>
+ <div className="w-icon-xs h-icon-xs bg-success/20 border-2 border-success rounded"></div>
  <span className="text-sm">Low (1-5)</span>
  </div>
  </div>

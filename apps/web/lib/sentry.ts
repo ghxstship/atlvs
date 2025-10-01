@@ -186,9 +186,9 @@ function DefaultErrorFallback({ error, resetError }: { error: Error; resetError:
   }, [
     React.createElement('div', {
       key: 'icon',
-      className: 'flex items-center justify-center w-12 h-12 mx-auto bg-destructive/10 rounded-full'
+      className: 'flex items-center justify-center w-icon-2xl h-icon-2xl mx-auto bg-destructive/10 rounded-full'
     }, React.createElement('svg', {
-      className: 'w-6 h-6 text-destructive',
+      className: 'w-icon-md h-icon-md text-destructive',
       fill: 'none',
       stroke: 'currentColor',
       viewBox: '0 0 24 24'

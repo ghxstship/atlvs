@@ -188,15 +188,15 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
               {widget.title}
             </CardTitle>
             {widget.icon && (
-              <widget.icon className={`h-4 w-4 text-${widget.color || 'muted-foreground'}`} />
+              <widget.icon className={`h-icon-xs w-icon-xs text-${widget.color || 'muted-foreground'}`} />
             )}
           </div>
         </CardHeader>
         <CardContent>
           {isLoading ? (
             <div className="space-y-xs">
-              <Skeleton className="h-8 w-24" />
-              <Skeleton className="h-4 w-16" />
+              <Skeleton className="h-icon-lg w-component-lg" />
+              <Skeleton className="h-icon-xs w-component-md" />
             </div>
           ) : (
             <>
@@ -211,11 +211,11 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
               {widget.change !== undefined && (
                 <div className="flex items-center gap-xs text-sm mt-xs">
                   {widget.change > 0 ? (
-                    <TrendingUp className="h-4 w-4 text-success" />
+                    <TrendingUp className="h-icon-xs w-icon-xs text-success" />
                   ) : widget.change < 0 ? (
-                    <TrendingDown className="h-4 w-4 text-destructive" />
+                    <TrendingDown className="h-icon-xs w-icon-xs text-destructive" />
                   ) : (
-                    <Minus className="h-4 w-4 text-muted-foreground" />
+                    <Minus className="h-icon-xs w-icon-xs text-muted-foreground" />
                   )}
                   <span className={
                     widget.change > 0 ? 'text-success' : 
@@ -252,12 +252,12 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
         </CardHeader>
         <CardContent>
           {isLoading ? (
-            <Skeleton className="h-64 w-full" />
+            <Skeleton className="h-container-sm w-full" />
           ) : (
-            <div className="h-64 flex items-center justify-center text-muted-foreground">
+            <div className="h-container-sm flex items-center justify-center text-muted-foreground">
               {/* Chart would be rendered here using a charting library */}
               <div className="text-center">
-                <Activity className="h-8 w-8 mx-auto mb-sm" />
+                <Activity className="h-icon-lg w-icon-lg mx-auto mb-sm" />
                 <p>Chart: {widget.chart}</p>
                 <p className="text-xs mt-xs">{data.length} data points</p>
               </div>
@@ -283,7 +283,7 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
                 variant="ghost"
                 onClick={() => onCreate(widget.entity!)}
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-icon-xs w-icon-xs" />
               </Button>
             )}
           </div>
@@ -293,8 +293,8 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
             <div className="space-y-sm">
               {Array.from({ length: widget.limit || 5 }).map((_, i) => (
                 <div key={i} className="flex items-center justify-between">
-                  <Skeleton className="h-4 w-32" />
-                  <Skeleton className="h-4 w-20" />
+                  <Skeleton className="h-icon-xs w-component-xl" />
+                  <Skeleton className="h-icon-xs w-component-lg" />
                 </div>
               ))}
             </div>
@@ -348,10 +348,10 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
             <div className="space-y-sm">
               {Array.from({ length: 5 }).map((_, i) => (
                 <div key={i} className="flex gap-sm">
-                  <Skeleton className="h-8 w-8 rounded-full" />
+                  <Skeleton className="h-icon-lg w-icon-lg rounded-full" />
                   <div className="flex-1">
-                    <Skeleton className="h-4 w-full" />
-                    <Skeleton className="h-3 w-24 mt-xs" />
+                    <Skeleton className="h-icon-xs w-full" />
+                    <Skeleton className="h-3 w-component-lg mt-xs" />
                   </div>
                 </div>
               ))}
@@ -366,17 +366,17 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
                 <div key={activity.id} className="flex gap-sm">
                   {activity.icon ? (
                     <div className={`p-xs rounded-full bg-${activity.color || 'primary'}/10`}>
-                      <activity.icon className={`h-4 w-4 text-${activity.color || 'primary'}`} />
+                      <activity.icon className={`h-icon-xs w-icon-xs text-${activity.color || 'primary'}`} />
                     </div>
                   ) : activity.user?.avatar ? (
                     <img 
                       src={activity.user.avatar} 
                       alt={activity.user.name}
-                      className="h-8 w-8 rounded-full"
+                      className="h-icon-lg w-icon-lg rounded-full"
                     />
                   ) : (
-                    <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                      <Activity className="h-4 w-4" />
+                    <div className="h-icon-lg w-icon-lg rounded-full bg-muted flex items-center justify-center">
+                      <Activity className="h-icon-xs w-icon-xs" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
@@ -471,15 +471,15 @@ export const OverviewTemplate: React.FC<OverviewTemplateProps> = ({
             onClick={handleRefresh}
             disabled={refreshing}
           >
-            <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-icon-xs w-icon-xs ${refreshing ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
           <Button variant="outline" size="sm">
-            <Download className="h-4 w-4 mr-xs" />
+            <Download className="h-icon-xs w-icon-xs mr-xs" />
             Export
           </Button>
           <Button variant="ghost" size="sm">
-            <Settings className="h-4 w-4" />
+            <Settings className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       )}

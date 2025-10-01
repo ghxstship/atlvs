@@ -52,7 +52,7 @@ export default function EditRevenueClient({ revenue, user, orgId }: EditRevenueC
  size="sm"
  onClick={() => router.back()}
  >
- <ArrowLeft className="h-4 w-4 mr-xs" />
+ <ArrowLeft className="h-icon-xs w-icon-xs mr-xs" />
  Back
  </Button>
  <div>
@@ -88,7 +88,7 @@ export default function EditRevenueClient({ revenue, user, orgId }: EditRevenueC
  <CardContent className="pt-lg">
  <div className="flex items-start gap-md">
  <div className="p-sm bg-blue-100 rounded-lg">
- <DollarSign className="h-6 w-6 text-blue-600" />
+ <DollarSign className="h-icon-md w-icon-md text-blue-600" />
  </div>
  <div>
  <h3 className="font-semibold mb-sm">Revenue Update Guidelines</h3>
@@ -108,7 +108,7 @@ export default function EditRevenueClient({ revenue, user, orgId }: EditRevenueC
  <CardTitle>Update Revenue Entry</CardTitle>
  </CardHeader>
  <CardContent>
- <div className="p-4 text-center text-gray-500">
+ <div className="p-md text-center text-gray-500">
  Revenue editing temporarily disabled
  </div>
  </CardContent>

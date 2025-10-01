@@ -151,11 +151,11 @@ export function GalleryView({
           <img
             src={src || '/placeholder-video.jpg'}
             alt={item.title}
-            className="w-full h-48 object-cover"
+            className="w-full h-container-xs object-cover"
             loading="lazy"
           />
           <div className="absolute inset-0 bg-foreground/30 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-            <Play className="h-12 w-12 text-background" />
+            <Play className="h-icon-2xl w-icon-2xl text-background" />
           </div>
         </div>
       );
@@ -164,14 +164,14 @@ export function GalleryView({
         <img
           src={src || '/placeholder-image.jpg'}
           alt={item.title}
-          className="w-full h-48 object-cover"
+          className="w-full h-container-xs object-cover"
           loading="lazy"
         />
       );
     } else {
       return (
-        <div className="w-full h-48 bg-muted flex items-center justify-center">
-          <FileText className="h-12 w-12 text-muted-foreground" />
+        <div className="w-full h-container-xs bg-muted flex items-center justify-center">
+          <FileText className="h-icon-2xl w-icon-2xl text-muted-foreground" />
         </div>
       );
     }
@@ -209,11 +209,11 @@ export function GalleryView({
           {selectedItems.size > 0 && (
             <div className="flex items-center gap-sm ml-md">
               <Button variant="ghost" >
-                <Download className="h-4 w-4" />
+                <Download className="h-icon-xs w-icon-xs" />
                 Download
               </Button>
               <Button variant="ghost" >
-                <Share className="h-4 w-4" />
+                <Share className="h-icon-xs w-icon-xs" />
                 Share
               </Button>
             </div>
@@ -228,14 +228,14 @@ export function GalleryView({
               
               onClick={() => setViewLayout('grid')}
             >
-              <Grid3x3 className="h-4 w-4" />
+              <Grid3x3 className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant={viewLayout === 'list' ? 'primary' : 'ghost'}
               
               onClick={() => setViewLayout('list')}
             >
-              <List className="h-4 w-4" />
+              <List className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
 
@@ -268,7 +268,7 @@ export function GalleryView({
       <div className="p-md">
         {paginatedItems.length === 0 ? (
           <div className="text-center py-2xl text-muted-foreground">
-            <ImageIcon className="h-12 w-12 mx-auto mb-md opacity-50" />
+            <ImageIcon className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
             <div className="text-lg font-medium mb-sm">No items found</div>
             <p className="text-sm">Try adjusting your search or filters</p>
           </div>
@@ -289,7 +289,7 @@ export function GalleryView({
                   >
                     <div className="flex gap-md p-md">
                       {/* Thumbnail */}
-                      <div className="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden">
+                      <div className="flex-shrink-0 w-component-lg h-component-lg rounded-lg overflow-hidden">
                         {renderMediaPreview(item)}
                       </div>
 
@@ -313,7 +313,7 @@ export function GalleryView({
                               
                               onClick={() => onItemPreview?.(item.record)}
                             >
-                              <Eye className="h-4 w-4" />
+                              <Eye className="h-icon-xs w-icon-xs" />
                             </Button>
                             <Button
                               variant="ghost"
@@ -377,7 +377,7 @@ export function GalleryView({
                             onItemPreview?.(item.record);
                           }}
                         >
-                          <Eye className="h-4 w-4" />
+                          <Eye className="h-icon-xs w-icon-xs" />
                         </Button>
                         <Button
                           variant="ghost"
@@ -388,7 +388,7 @@ export function GalleryView({
                             onItemDownload?.(item.record);
                           }}
                         >
-                          <Download className="h-4 w-4" />
+                          <Download className="h-icon-xs w-icon-xs" />
                         </Button>
                       </div>
 
@@ -406,7 +406,7 @@ export function GalleryView({
 
                       {mediaType === 'video' && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <Play className="h-12 w-12 text-background" />
+                          <Play className="h-icon-2xl w-icon-2xl text-background" />
                         </div>
                       )}
                     </div>

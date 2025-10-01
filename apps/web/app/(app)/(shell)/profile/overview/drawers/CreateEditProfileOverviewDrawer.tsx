@@ -176,7 +176,7 @@ export default function CreateEditProfileOverviewDrawer({
  size="sm"
  onClick={() => setShowPreview(!showPreview)}
  >
- {showPreview ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+ {showPreview ? <EyeOff className="h-icon-xs w-icon-xs" /> : <Eye className="h-icon-xs w-icon-xs" />}
  {showPreview ? 'Hide' : 'Show'} Preview
  </Button>
  </div>
@@ -234,7 +234,7 @@ export default function CreateEditProfileOverviewDrawer({
  <FormLabel>Primary Phone</FormLabel>
  <FormControl>
  <div className="relative">
- <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+ <Phone className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
  <Input
  {...field}
  placeholder="+1 (555) 123-4567"
@@ -256,7 +256,7 @@ export default function CreateEditProfileOverviewDrawer({
  <FormLabel>Location</FormLabel>
  <FormControl>
  <div className="relative">
- <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+ <MapPin className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
  <Input
  {...field}
  placeholder="New York, NY"
@@ -335,7 +335,7 @@ export default function CreateEditProfileOverviewDrawer({
  <FormLabel>Job Title</FormLabel>
  <FormControl>
  <div className="relative">
- <Briefcase className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+ <Briefcase className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
  <Input
  {...field}
  placeholder="Software Engineer"
@@ -407,7 +407,7 @@ export default function CreateEditProfileOverviewDrawer({
  `}
  >
  <div className={`
- h-4 w-4 rounded-full flex items-center justify-center
+ h-icon-xs w-icon-xs rounded-full flex items-center justify-center
  ${task.completed ? 'bg-success' : 'bg-secondary'}
  `}>
  {task.completed && (
@@ -449,7 +449,7 @@ export default function CreateEditProfileOverviewDrawer({
  </div>
  ) : (
  <div className="text-center py-lg color-muted">
- <User className="h-8 w-8 mx-auto mb-md opacity-50" />
+ <User className="h-icon-lg w-icon-lg mx-auto mb-md opacity-50" />
  <p>Completion tracking will be available after creating the profile</p>
  </div>
  )}
@@ -465,7 +465,7 @@ export default function CreateEditProfileOverviewDrawer({
  onClick={onClose}
  disabled={loading}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  <Button
@@ -473,7 +473,7 @@ export default function CreateEditProfileOverviewDrawer({
  disabled={loading}
  loading={loading}
  >
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  {mode === 'create' ? 'Create Profile' : 'Save Changes'}
  </Button>
  </div>

@@ -77,7 +77,7 @@ export default function ScheduleTimelineView({
 
  // Get item icon
  const getItemIcon = (item: ScheduleItem) => {
- const iconClass = "h-4 w-4";
+ const iconClass = "h-icon-xs w-icon-xs";
  switch (item.type) {
  case "milestone":
  return <Target className={iconClass} />;
@@ -148,7 +148,7 @@ export default function ScheduleTimelineView({
  const hasDateRange = item.start_date && item.end_date;
 
  return (
- <div key={item.id} className="flex gap-4">
+ <div key={item.id} className="flex gap-md">
  {/* Timeline line and dot */}
  <div className="flex flex-col items-center">
  <div
@@ -170,11 +170,11 @@ export default function ScheduleTimelineView({
  className="flex-1 pb-8 cursor-pointer group"
  onClick={() => onItemClick?.(item)}
  >
- <Card className="p-4 hover:shadow-md transition-shadow">
+ <Card className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-2">
- <div className="flex items-start gap-2">
+ <div className="flex items-start gap-xs">
  <div
- className="p-1 rounded"
+ className="p-xs rounded"
  style={{ backgroundColor: `${item.color}20` || "#6B728020" }}
  >
  {getItemIcon(item)}
@@ -190,15 +190,15 @@ export default function ScheduleTimelineView({
  )}
  </div>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {getStatusBadge(item.status)}
  {getPriorityBadge(item.priority)}
  </div>
  </div>
 
- <div className="flex items-center gap-4 text-sm">
+ <div className="flex items-center gap-md text-sm">
  {date && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Clock className="h-3 w-3 text-muted-foreground" />
  <span>
  {hasDateRange 
@@ -210,7 +210,7 @@ export default function ScheduleTimelineView({
  )}
  
  {item.assignee && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-3 w-3 text-muted-foreground" />
  <span>{item.assignee.name}</span>
  </div>
@@ -236,8 +236,8 @@ export default function ScheduleTimelineView({
 
  if (items.length === 0) {
  return (
- <div className="text-center py-12">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <div className="text-center py-xsxl">
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No timeline items</h3>
  <p className="text-muted-foreground">
  Schedule items with dates will appear here
@@ -247,10 +247,10 @@ export default function ScheduleTimelineView({
  }
 
  return (
- <div className="space-y-8">
+ <div className="space-y-xl">
  {Array.from(itemsByMonth.entries()).map(([month, monthItems]) => (
  <div key={month}>
- <div className="flex items-center gap-2 mb-4">
+ <div className="flex items-center gap-xs mb-4">
  <h3 className="text-lg font-semibold">
  {format(parseISO(`${month}-01`), "MMMM yyyy")}
  </h3>

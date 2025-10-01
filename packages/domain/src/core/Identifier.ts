@@ -16,3 +16,6 @@ export class UniqueEntityID {
     return this._value === other._value;
   }
 }
+
+// Alias for backward compatibility
+export { UniqueEntityID as Identifier };

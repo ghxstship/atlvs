@@ -284,11 +284,11 @@ export default function PermissionsSettingsClient() {
  if (loading) {
  return (
  <div className="space-y-md">
- <Skeleton className="h-12 w-48" />
+ <Skeleton className="h-icon-2xl w-container-xs" />
  <div className="space-y-sm">
- <Skeleton className="h-24 w-full" />
- <Skeleton className="h-24 w-full" />
- <Skeleton className="h-24 w-full" />
+ <Skeleton className="h-component-lg w-full" />
+ <Skeleton className="h-component-lg w-full" />
+ <Skeleton className="h-component-lg w-full" />
  </div>
  </div>
  );

@@ -20,11 +20,11 @@ export default function ContactMapView({
 }: ContactMapViewProps) {
  if (loading) {
  return (
- <Card className="p-6 space-y-4">
- <div className="h-4 bg-muted rounded w-1/3 animate-pulse"></div>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <Card className="p-lg space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-1/3 animate-pulse"></div>
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {Array.from({ length: 4 }).map((_, i) => (
- <div key={i} className="h-24 bg-muted rounded animate-pulse"></div>
+ <div key={i} className="h-component-lg bg-muted rounded animate-pulse"></div>
  ))}
  </div>
  </Card>
@@ -33,20 +33,20 @@ export default function ContactMapView({
 
  if (contacts.length === 0) {
  return (
- <Card className="p-6 text-center text-muted-foreground">
+ <Card className="p-lg text-center text-muted-foreground">
  No contacts available to display on the map.
  </Card>
  );
  }
 
  return (
- <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-6">
- <Card className="p-6 space-y-4">
- <div className="flex items-center gap-2">
- <MapPin className="h-5 w-5 text-primary" />
+ <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-lg">
+ <Card className="p-lg space-y-md">
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">Contact Locations</h3>
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {contacts.map(contact => {
  const isSelected = selectedContactId === contact.id;
  const isVerified = contact.verification_status === 'verified';
@@ -55,16 +55,16 @@ export default function ContactMapView({
  key={contact.id}
  type="button"
  onClick={() => onSelectContact?.(contact)}
- className={`w-full text-left p-3 rounded-lg border transition-colors ${
+ className={`w-full text-left p-sm rounded-lg border transition-colors ${
  isSelected
  ? 'border-primary bg-primary/10'
  : 'border-border hover:bg-muted/50'
  }`}
  >
  <div className="flex items-center justify-between">
- <div className="space-y-1">
- <div className="flex items-center gap-2 text-sm font-medium">
- <MapPin className="h-4 w-4 text-primary" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs text-sm font-medium">
+ <MapPin className="h-icon-xs w-icon-xs text-primary" />
  <span>{contact.address_line1 || 'Unknown address'}</span>
  </div>
  <div className="text-xs text-muted-foreground">
@@ -81,9 +81,9 @@ export default function ContactMapView({
  </div>
  </Card>
 
- <Card className="p-6">
- <div className="flex items-center gap-2 mb-4">
- <MapPin className="h-5 w-5 text-primary" />
+ <Card className="p-lg">
+ <div className="flex items-center gap-xs mb-4">
+ <MapPin className="h-icon-sm w-icon-sm text-primary" />
  <h3 className="font-semibold">Selected Contact Details</h3>
  </div>
  {selectedContactId ? (
@@ -92,15 +92,15 @@ export default function ContactMapView({
  if (!contact) return null;
  const isVerified = contact.verification_status === 'verified';
  return (
- <div className="space-y-4">
- <div className="flex items-center gap-2">
- <Badge variant={isVerified ? 'default' : 'secondary'} className="flex items-center gap-1">
- <ShieldCheck className="h-4 w-4" />
+ <div className="space-y-md">
+ <div className="flex items-center gap-xs">
+ <Badge variant={isVerified ? 'default' : 'secondary'} className="flex items-center gap-xs">
+ <ShieldCheck className="h-icon-xs w-icon-xs" />
  {isVerified ? 'Verified Contact' : 'Pending Verification'}
  </Badge>
  </div>
 
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div>
  <div className="text-sm font-medium">Primary Address</div>
  <div className="text-sm text-muted-foreground">
@@ -110,8 +110,8 @@ export default function ContactMapView({
 
  <div>
  <div className="text-sm font-medium">Primary Phone</div>
- <div className="flex items-center gap-2 text-sm text-muted-foreground">
- <Phone className="h-4 w-4" />
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
+ <Phone className="h-icon-xs w-icon-xs" />
  {contact.phone_primary ? formatPhoneNumber(contact.phone_primary) : 'No phone number provided'}
  </div>
  </div>

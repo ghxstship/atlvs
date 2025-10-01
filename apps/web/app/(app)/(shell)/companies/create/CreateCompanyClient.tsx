@@ -153,12 +153,12 @@ export default function CreateCompanyClient({
   ];
 
   return (
-    <div className="container mx-auto max-w-4xl space-y-6 p-6">
+    <div className="container mx-auto max-w-4xl space-y-lg p-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           <Button variant="ghost" size="sm" onClick={handleCancel}>
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-icon-xs w-icon-xs" />
             {translations.cancel}
           </Button>
           <div>
@@ -170,10 +170,10 @@ export default function CreateCompanyClient({
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <Card className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <Card className="p-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
             {/* Basic Information */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Basic Information</h3>
 
               <div>
@@ -230,7 +230,7 @@ export default function CreateCompanyClient({
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Contact Information</h3>
 
               <div>
@@ -284,19 +284,19 @@ export default function CreateCompanyClient({
           </div>
 
           {error && (
-            <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-md">
+            <div className="mt-4 p-md bg-red-50 border border-red-200 rounded-md">
               <p className="text-red-600 text-sm">{error}</p>
             </div>
           )}
 
           {/* Actions */}
-          <div className="flex justify-end gap-3 mt-6 pt-6 border-t">
+          <div className="flex justify-end gap-sm mt-6 pt-6 border-t">
             <Button type="button" variant="outline" onClick={handleCancel}>
-              <X className="h-4 w-4 mr-2" />
+              <X className="h-icon-xs w-icon-xs mr-2" />
               {translations.cancel}
             </Button>
             <Button type="submit" disabled={isLoading}>
-              <Save className="h-4 w-4 mr-2" />
+              <Save className="h-icon-xs w-icon-xs mr-2" />
               {isLoading ? 'Creating...' : translations.create}
             </Button>
           </div>

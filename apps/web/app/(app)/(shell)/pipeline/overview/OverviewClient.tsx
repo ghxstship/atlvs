@@ -194,10 +194,10 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded w-1/4 mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded w-1/4 mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-lg">
             {[...Array(4)].map((_, i) => (
-              <div key={i} className="h-32 bg-secondary rounded"></div>
+              <div key={i} className="h-component-xl bg-secondary rounded"></div>
             ))}
           </div>
         </div>
@@ -241,7 +241,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           </p>
         </div>
         <Button onClick={loadOverviewData}>
-          <Activity className="w-4 h-4 mr-sm" />
+          <Activity className="w-icon-xs h-icon-xs mr-sm" />
           Refresh
         </Button>
       </div>
@@ -256,11 +256,11 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-heading-3">{stats.totalCrew}</p>
               </div>
               <div className="p-sm bg-accent/10 rounded-full">
-                <Users className="w-6 h-6 color-accent" />
+                <Users className="w-icon-md h-icon-md color-accent" />
               </div>
             </div>
             <div className="mt-md flex items-center text-body-sm">
-              <TrendingUp className="w-4 h-4 color-success mr-xs" />
+              <TrendingUp className="w-icon-xs h-icon-xs color-success mr-xs" />
               <span className="color-success">+12% from last month</span>
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-heading-3">{stats.activeProjects}</p>
               </div>
               <div className="p-sm bg-success/10 rounded-full">
-                <Activity className="w-6 h-6 color-success" />
+                <Activity className="w-icon-md h-icon-md color-success" />
               </div>
             </div>
             <div className="mt-md flex items-center text-body-sm">
@@ -291,7 +291,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-heading-3">{trainingCompletion}%</p>
               </div>
               <div className="p-sm bg-secondary/10 rounded-full">
-                <CheckCircle className="w-6 h-6 color-secondary" />
+                <CheckCircle className="w-icon-md h-icon-md color-secondary" />
               </div>
             </div>
             <div className="mt-md">
@@ -313,7 +313,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
                 <p className="text-heading-3">{advancingProgress}%</p>
               </div>
               <div className="p-sm bg-warning/10 rounded-full">
-                <BarChart3 className="w-6 h-6 color-warning" />
+                <BarChart3 className="w-icon-md h-icon-md color-warning" />
               </div>
             </div>
             <div className="mt-md">
@@ -336,14 +336,14 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between mb-md">
               <h3 className="text-body text-heading-4">Production Advancing</h3>
               <Button>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-icon-xs h-icon-xs" />
               </Button>
             </div>
             
             <div className="stack-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <CheckCircle className="w-4 h-4 color-success" />
+                  <CheckCircle className="w-icon-xs h-icon-xs color-success" />
                   <span className="text-body-sm">Completed</span>
                 </div>
                 <Badge variant="success">
@@ -353,7 +353,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <Clock className="w-4 h-4 color-accent" />
+                  <Clock className="w-icon-xs h-icon-xs color-accent" />
                   <span className="text-body-sm">In Progress</span>
                 </div>
                 <Badge variant="default">
@@ -363,7 +363,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <Clock className="w-4 h-4 color-muted" />
+                  <Clock className="w-icon-xs h-icon-xs color-muted" />
                   <span className="text-body-sm">Pending</span>
                 </div>
                 <Badge variant="secondary">
@@ -374,7 +374,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.advancingItems.blocked > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center cluster-sm">
-                    <AlertTriangle className="w-4 h-4 color-destructive" />
+                    <AlertTriangle className="w-icon-xs h-icon-xs color-destructive" />
                     <span className="text-body-sm">Blocked</span>
                   </div>
                   <Badge variant="destructive">
@@ -392,14 +392,14 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
             <div className="flex items-center justify-between mb-md">
               <h3 className="text-body text-heading-4">Contracts Status</h3>
               <Button>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-icon-xs h-icon-xs" />
               </Button>
             </div>
             
             <div className="stack-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <CheckCircle className="w-4 h-4 color-success" />
+                  <CheckCircle className="w-icon-xs h-icon-xs color-success" />
                   <span className="text-body-sm">Signed</span>
                 </div>
                 <Badge variant="success">
@@ -409,7 +409,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               
               <div className="flex items-center justify-between">
                 <div className="flex items-center cluster-sm">
-                  <Clock className="w-4 h-4 color-warning" />
+                  <Clock className="w-icon-xs h-icon-xs color-warning" />
                   <span className="text-body-sm">Pending</span>
                 </div>
                 <Badge variant="warning">
@@ -420,7 +420,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
               {stats.contractsStatus.expired > 0 && (
                 <div className="flex items-center justify-between">
                   <div className="flex items-center cluster-sm">
-                    <AlertTriangle className="w-4 h-4 color-destructive" />
+                    <AlertTriangle className="w-icon-xs h-icon-xs color-destructive" />
                     <span className="text-body-sm">Expired</span>
                   </div>
                   <Badge variant="destructive">
@@ -447,7 +447,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-lg">
             <div className="flex items-center justify-between mb-md">
               <h3 className="text-body text-heading-4">Upcoming Deadlines</h3>
-              <Calendar className="w-5 h-5 color-muted" />
+              <Calendar className="w-icon-sm h-icon-sm color-muted" />
             </div>
             
             <div className="stack-sm">
@@ -491,7 +491,7 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <div className="p-lg">
             <div className="flex items-center justify-between mb-md">
               <h3 className="text-body text-heading-4">Recent Activity</h3>
-              <Activity className="w-5 h-5 color-muted" />
+              <Activity className="w-icon-sm h-icon-sm color-muted" />
             </div>
             
             <div className="stack-sm">
@@ -532,19 +532,19 @@ export default function OverviewClient({ orgId }: OverviewClientProps) {
           <h3 className="text-body text-heading-4 mb-md">Quick Actions</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
             <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
-              <Users className="w-6 h-6" />
+              <Users className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Manage Crew</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
-              <CheckCircle className="w-6 h-6" />
+              <CheckCircle className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Schedule Training</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
-              <Building className="w-6 h-6" />
+              <Building className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Update Advancing</span>
             </Button>
             <Button variant="outline" className="h-auto p-md flex flex-col items-center stack-sm">
-              <DollarSign className="w-6 h-6" />
+              <DollarSign className="w-icon-md h-icon-md" />
               <span className="text-body-sm">Review Contracts</span>
             </Button>
           </div>

@@ -147,14 +147,14 @@ export default function KanbanView({
 
   if (isLoading) {
     return (
-      <div className="flex gap-6 overflow-x-auto pb-4">
+      <div className="flex gap-lg overflow-x-auto pb-4">
         {columns.map((column) => (
-          <div key={column.id} className="flex-shrink-0 w-80">
-            <div className="bg-muted rounded-lg p-4">
-              <div className="h-6 bg-muted-foreground/20 rounded mb-4 animate-pulse" />
-              <div className="space-y-3">
+          <div key={column.id} className="flex-shrink-0 w-container-md">
+            <div className="bg-muted rounded-lg p-md">
+              <div className="h-icon-md bg-muted-foreground/20 rounded mb-4 animate-pulse" />
+              <div className="space-y-sm">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="h-24 bg-background rounded animate-pulse" />
+                  <div key={i} className="h-component-lg bg-background rounded animate-pulse" />
                 ))}
               </div>
             </div>
@@ -166,7 +166,7 @@ export default function KanbanView({
 
   if (error) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-xsxl">
         <p className="text-muted-foreground mb-4">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -176,54 +176,54 @@ export default function KanbanView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Kanban Board */}
-      <div className="flex gap-6 overflow-x-auto pb-4">
+      <div className="flex gap-lg overflow-x-auto pb-4">
         {columns.map((column) => {
           const columnListings = listingsByStatus[column.status] || [];
 
           return (
-            <div key={column.id} className="flex-shrink-0 w-80">
-              <div className="bg-muted rounded-lg p-4 h-full">
+            <div key={column.id} className="flex-shrink-0 w-container-md">
+              <div className="bg-muted rounded-lg p-md h-full">
                 {/* Column Header */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <h3 className="font-semibold text-sm">{column.title}</h3>
                     <Badge variant="secondary" className="text-xs">
                       {column.count}
                     </Badge>
                   </div>
-                  <Button size="sm" variant="ghost" className="h-6 w-6 p-0">
+                  <Button size="sm" variant="ghost" className="h-icon-md w-icon-md p-0">
                     <Plus className="h-3 w-3" />
                   </Button>
                 </div>
 
                 {/* Drop Zone */}
                 <div
-                  className={`min-h-[400px] rounded border-2 border-dashed transition-colors ${
+                  className={`min-h-content-lg rounded border-2 border-dashed transition-colors ${
                     draggedListing ? 'border-primary bg-primary/5' : 'border-muted-foreground/20'
                   }`}
                   onDragOver={handleDragOver}
                   onDrop={(e) => handleDrop(e, column.status)}
                 >
                   {/* Listing Cards */}
-                  <div className="space-y-3 p-2">
+                  <div className="space-y-sm p-xs">
                     {columnListings.map((listing) => (
                       <div
                         key={listing.id}
                         draggable
                         onDragStart={(e) => handleDragStart(e, listing)}
-                        className={`bg-background rounded-lg p-3 cursor-move transition-all hover:shadow-sm border ${
+                        className={`bg-background rounded-lg p-sm cursor-move transition-all hover:shadow-sm border ${
                           selectedListings.includes(listing.id) ? 'ring-2 ring-primary' : ''
                         } ${draggedListing?.id === listing.id ? 'opacity-50' : ''}`}
                         onClick={() => onListingSelect?.(listing)}
                       >
                         {/* Card Header */}
                         <div className="flex items-start justify-between mb-2">
-                          <div className="flex items-center gap-2 flex-1 min-w-0">
-                            <GripVertical className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                          <div className="flex items-center gap-xs flex-1 min-w-0">
+                            <GripVertical className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
                             <div className="flex-1 min-w-0">
-                              <h4 className="font-medium text-sm line-clamp-2 leading-tight">
+                              <h4 className="font-medium text-sm line-clamp-xs leading-tight">
                                 {listing.title}
                               </h4>
                             </div>
@@ -244,7 +244,7 @@ export default function KanbanView({
                         </div>
 
                         {/* Badges */}
-                        <div className="flex items-center gap-1 mb-2">
+                        <div className="flex items-center gap-xs mb-2">
                           <Badge variant={getTypeVariant(listing.type)} className="text-xs">
                             {listing.type}
                           </Badge>
@@ -262,14 +262,14 @@ export default function KanbanView({
 
                         {/* Description */}
                         {listing.description && (
-                          <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                          <p className="text-xs text-muted-foreground line-clamp-xs mb-2">
                             {listing.description}
                           </p>
                         )}
 
                         {/* Actions */}
                         <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                          <div className="flex items-center gap-xs text-xs text-muted-foreground">
                             <span>{listing.response_count || 0} responses</span>
                           </div>
 
@@ -278,7 +278,7 @@ export default function KanbanView({
                               <Button
                                 size="sm"
                                 variant="ghost"
-                                className="h-6 w-6 p-0"
+                                className="h-icon-md w-icon-md p-0"
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 <MoreHorizontal className="h-3 w-3" />
@@ -286,11 +286,11 @@ export default function KanbanView({
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                               <DropdownMenuItem onClick={() => onListingView?.(listing)}>
-                                <Eye className="mr-2 h-4 w-4" />
+                                <Eye className="mr-2 h-icon-xs w-icon-xs" />
                                 View
                               </DropdownMenuItem>
                               <DropdownMenuItem onClick={() => onListingEdit?.(listing)}>
-                                <Edit className="mr-2 h-4 w-4" />
+                                <Edit className="mr-2 h-icon-xs w-icon-xs" />
                                 Edit
                               </DropdownMenuItem>
                               <DropdownMenuItem
@@ -298,12 +298,12 @@ export default function KanbanView({
                               >
                                 {listing.featured ? (
                                   <>
-                                    <StarOff className="mr-2 h-4 w-4" />
+                                    <StarOff className="mr-2 h-icon-xs w-icon-xs" />
                                     Unfeature
                                   </>
                                 ) : (
                                   <>
-                                    <Star className="mr-2 h-4 w-4" />
+                                    <Star className="mr-2 h-icon-xs w-icon-xs" />
                                     Feature
                                   </>
                                 )}
@@ -311,14 +311,14 @@ export default function KanbanView({
                               <DropdownMenuItem
                                 onClick={() => marketplaceService.archiveListing(orgId, '', listing.id)}
                               >
-                                <Archive className="mr-2 h-4 w-4" />
+                                <Archive className="mr-2 h-icon-xs w-icon-xs" />
                                 Archive
                               </DropdownMenuItem>
                               <DropdownMenuItem
                                 onClick={() => onListingDelete?.(listing)}
                                 className="text-destructive"
                               >
-                                <Trash2 className="mr-2 h-4 w-4" />
+                                <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                                 Delete
                               </DropdownMenuItem>
                             </DropdownMenuContent>
@@ -330,9 +330,9 @@ export default function KanbanView({
 
                   {/* Empty state for column */}
                   {columnListings.length === 0 && (
-                    <div className="flex flex-col items-center justify-center py-8 text-center">
-                      <div className="w-12 h-12 bg-muted-foreground/10 rounded-full flex items-center justify-center mb-2">
-                        <Plus className="h-5 w-5 text-muted-foreground" />
+                    <div className="flex flex-col items-center justify-center py-xl text-center">
+                      <div className="w-icon-2xl h-icon-2xl bg-muted-foreground/10 rounded-full flex items-center justify-center mb-2">
+                        <Plus className="h-icon-sm w-icon-sm text-muted-foreground" />
                       </div>
                       <p className="text-sm text-muted-foreground">
                         No {column.status} listings

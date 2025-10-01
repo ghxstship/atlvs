@@ -89,18 +89,18 @@ export default function InspectionKanbanView({
  {Object.entries(groupedInspections).map(([status, items]) => {
  const StatusIcon = getStatusIcon(status);
  return (
- <div key={status} className="flex-shrink-0 w-80">
+ <div key={status} className="flex-shrink-0 w-container-md">
  <div className={`${getStatusColor(status)} rounded-lg p-sm mb-sm`}>
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <StatusIcon className="h-4 w-4" />
+ <StatusIcon className="h-icon-xs w-icon-xs" />
  <h3 className="font-semibold capitalize">{status.replace("_", " ")}</h3>
  </div>
  <Badge variant="secondary">{items.length}</Badge>
  </div>
  </div>
 
- <div className="space-y-sm max-h-[calc(100vh-300px)] overflow-y-auto">
+ <div className="space-y-sm max-h-screen-minus-xl overflow-y-auto">
  {items.map((inspection) => {
  const TypeIcon = getTypeIcon(inspection.type);
  return (
@@ -142,8 +142,8 @@ export default function InspectionKanbanView({
  </div>
 
  <div className="flex items-start gap-xs mb-xs">
- <TypeIcon className="h-4 w-4 text-muted-foreground flex-shrink-0 mt-0.5" />
- <h4 className="font-medium text-sm line-clamp-2">{inspection.title}</h4>
+ <TypeIcon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0 mt-0.5" />
+ <h4 className="font-medium text-sm line-clamp-xs">{inspection.title}</h4>
  </div>
  
  <Badge 

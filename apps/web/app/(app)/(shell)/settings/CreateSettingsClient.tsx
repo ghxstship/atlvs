@@ -349,11 +349,11 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
 
  if (error) {
  return (
- <div className="flex items-center justify-center h-96">
+ <div className="flex items-center justify-center h-container-lg">
  <div className="text-center">
  <p className="text-destructive mb-4">{error}</p>
  <Button onClick={() => loadSettings()}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Retry
  </Button>
  </div>
@@ -362,7 +362,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -371,17 +371,17 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  Manage your organization&apos;s configuration settings and preferences
  </p>
  </div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Button variant="outline" onClick={handleRefresh} disabled={loading}>
- <RefreshCw className="h-4 w-4 mr-2" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
  Refresh
  </Button>
  <Button variant="outline" onClick={() => handleExport('csv')}>
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export
  </Button>
  <Button onClick={handleCreateSetting}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Create Setting
  </Button>
  </div>
@@ -389,20 +389,20 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
 
  {/* Statistics */}
  {statistics && (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
- <div className="bg-card p-4 rounded-lg border">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+ <div className="bg-card p-md rounded-lg border">
  <div className="text-2xl font-bold">{statistics.totalSettings}</div>
  <div className="text-sm text-muted-foreground">Total Settings</div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
+ <div className="bg-card p-md rounded-lg border">
  <div className="text-2xl font-bold">{statistics.publicSettings}</div>
  <div className="text-sm text-muted-foreground">Public Settings</div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
+ <div className="bg-card p-md rounded-lg border">
  <div className="text-2xl font-bold">{statistics.editableSettings}</div>
  <div className="text-sm text-muted-foreground">Editable Settings</div>
  </div>
- <div className="bg-card p-4 rounded-lg border">
+ <div className="bg-card p-md rounded-lg border">
  <div className="text-2xl font-bold">{statistics.recentlyUpdated}</div>
  <div className="text-sm text-muted-foreground">Updated This Week</div>
  </div>
@@ -410,22 +410,22 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  )}
 
  {/* View Controls */}
- <div className="flex items-center justify-between gap-4 flex-wrap">
- <div className="flex flex-1 items-center gap-2">
- <div className="relative flex-1 min-w-[200px]">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <div className="flex items-center justify-between gap-md flex-wrap">
+ <div className="flex flex-1 items-center gap-xs">
+ <div className="relative flex-1 min-w-content-narrow">
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <input
  type="text"
  placeholder="Search settings..."
  value={searchParams.query ?? ''}
  onChange={(event) => handleSearchChange(event.target.value)}
- className="w-full rounded-md border border-border bg-background py-2 pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary"
+ className="w-full rounded-md border border-border bg-background py-xs pl-9 pr-3 text-sm outline-none focus:ring-2 focus:ring-primary"
  />
  </div>
  <select
  value={searchParams.category ?? 'all'}
  onChange={(event) => handleCategoryFilter(event.target.value as SettingCategory | 'all')}
- className="rounded-md border border-border bg-background px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-primary"
+ className="rounded-md border border-border bg-background px-sm py-xs text-sm outline-none focus:ring-2 focus:ring-primary"
  >
  <option value="all">All Categories</option>
  {fieldConfig
@@ -437,13 +437,13 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  ))}
  </select>
  </div>
- <div className="flex items-center gap-2 rounded-lg border p-1 bg-muted">
+ <div className="flex items-center gap-xs rounded-lg border p-xs bg-muted">
  {viewOptions.map((option) => (
  <button
  key={option.id}
  type="button"
  onClick={() => setCurrentView(option.id)}
- className={`px-3 py-1 text-sm rounded-md transition-colors ${
+ className={`px-sm py-xs text-sm rounded-md transition-colors ${
  currentView === option.id
  ? 'bg-background text-foreground shadow-sm'
  : 'text-muted-foreground hover:text-foreground'
@@ -453,7 +453,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  </button>
  ))}
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  disabled={!selectedSettings.length}
@@ -472,7 +472,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  });
  }}
  >
- <Trash2 className="h-4 w-4 mr-2" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-2" />
  Delete Selected
  </Button>
  <Button
@@ -480,7 +480,7 @@ export default function CreateSettingsClient({ orgId, userId }: CreateSettingsCl
  disabled={!selectedSettings.length}
  onClick={() => handleExport('csv')}
  >
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export Selected
  </Button>
  </div>

@@ -80,14 +80,14 @@ export default function EndorsementGridView({
 
  if (loading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {[...Array(6)].map((_, i) => (
- <Card key={i} className="p-6 animate-pulse">
- <div className="space-y-3">
- <div className="h-6 w-3/4 bg-muted rounded" />
- <div className="h-4 w-full bg-muted rounded" />
- <div className="h-4 w-full bg-muted rounded" />
- <div className="h-4 w-2/3 bg-muted rounded" />
+ <Card key={i} className="p-lg animate-pulse">
+ <div className="space-y-sm">
+ <div className="h-icon-md w-3/4 bg-muted rounded" />
+ <div className="h-icon-xs w-full bg-muted rounded" />
+ <div className="h-icon-xs w-full bg-muted rounded" />
+ <div className="h-icon-xs w-2/3 bg-muted rounded" />
  </div>
  </Card>
  ))}
@@ -96,12 +96,12 @@ export default function EndorsementGridView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
- <Card className="p-4">
- <div className="flex flex-col gap-4">
+ <Card className="p-md">
+ <div className="flex flex-col gap-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected && !allSelected}
@@ -111,13 +111,13 @@ export default function EndorsementGridView({
  {selectedIds.length > 0 && `${selectedIds.length} selected`}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => setShowFilters(!showFilters)}
  >
- <Filter className="mr-2 h-4 w-4" />
+ <Filter className="mr-2 h-icon-xs w-icon-xs" />
  Filters
  </Button>
  <Button
@@ -126,7 +126,7 @@ export default function EndorsementGridView({
  onClick={() => onExport(sortedEndorsements.filter(e => selectedIds.includes(e.id)))}
  disabled={selectedIds.length === 0}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </div>
@@ -134,7 +134,7 @@ export default function EndorsementGridView({
 
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Search className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search endorsements..."
  value={filters.search}
@@ -145,7 +145,7 @@ export default function EndorsementGridView({
 
  {/* Filters */}
  {showFilters && (
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md pt-4 border-t">
  <Select
  value={filters.relationship || 'all'}
  onValueChange={(value) => onFiltersChange({ relationship: value as unknown })}
@@ -202,7 +202,7 @@ export default function EndorsementGridView({
  )}
 
  {/* Sort */}
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span className="text-muted-foreground">Sort by:</span>
  <Button
  variant={sort.field === 'date_received' ? 'default' : 'ghost'}
@@ -231,9 +231,9 @@ export default function EndorsementGridView({
 
  {/* Grid */}
  {sortedEndorsements.length === 0 ? (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Award className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Award className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Endorsements Found</h3>
  <p className="text-muted-foreground mt-2">
@@ -245,30 +245,30 @@ export default function EndorsementGridView({
  </div>
  </Card>
  ) : (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {sortedEndorsements.map((endorsement) => {
  const isSelected = selectedIds.includes(endorsement.id);
  
  return (
  <Card
  key={endorsement.id}
- className={`p-4 transition-all hover:shadow-lg ${
+ className={`p-md transition-all hover:shadow-lg ${
  isSelected ? 'ring-2 ring-primary' : ''
  }`}
  >
- <div className="space-y-3">
+ <div className="space-y-sm">
  {/* Header */}
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-2">
+ <div className="flex items-start gap-xs">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onToggleSelect(endorsement.id, !!checked)}
  />
  <div className="flex-1">
- <h3 className="font-semibold line-clamp-1">
+ <h3 className="font-semibold line-clamp-xs">
  {endorsement.endorser_name}
  </h3>
- <div className="flex items-center gap-2 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <span className="text-yellow-500 text-sm">
  {formatRating(endorsement.rating)}
  </span>
@@ -288,14 +288,14 @@ export default function EndorsementGridView({
  size="sm"
  onClick={() => setActiveMenu(activeMenu === endorsement.id ? null : endorsement.id)}
  >
- <MoreVertical className="h-4 w-4" />
+ <MoreVertical className="h-icon-xs w-icon-xs" />
  </Button>
  
  {activeMenu === endorsement.id && (
- <div className="absolute right-0 top-8 z-10 w-48 bg-background border rounded-md shadow-lg">
- <div className="py-1">
+ <div className="absolute right-0 top-xl z-10 w-container-xs bg-background border rounded-md shadow-lg">
+ <div className="py-xs">
  <button
- className="w-full px-3 py-2 text-sm text-left hover:bg-muted"
+ className="w-full px-sm py-xs text-sm text-left hover:bg-muted"
  onClick={() => {
  onEdit(endorsement);
  setActiveMenu(null);
@@ -305,7 +305,7 @@ export default function EndorsementGridView({
  </button>
  {endorsement.verification_status === 'pending' && (
  <button
- className="w-full px-3 py-2 text-sm text-left hover:bg-muted"
+ className="w-full px-sm py-xs text-sm text-left hover:bg-muted"
  onClick={() => {
  onVerify(endorsement);
  setActiveMenu(null);
@@ -315,7 +315,7 @@ export default function EndorsementGridView({
  </button>
  )}
  <button
- className="w-full px-3 py-2 text-sm text-left hover:bg-muted"
+ className="w-full px-sm py-xs text-sm text-left hover:bg-muted"
  onClick={() => {
  onToggleFeatured(endorsement);
  setActiveMenu(null);
@@ -324,7 +324,7 @@ export default function EndorsementGridView({
  {endorsement.is_featured ? 'Unfeature' : 'Feature'}
  </button>
  <button
- className="w-full px-3 py-2 text-sm text-left hover:bg-muted"
+ className="w-full px-sm py-xs text-sm text-left hover:bg-muted"
  onClick={() => {
  onTogglePublic(endorsement);
  setActiveMenu(null);
@@ -333,7 +333,7 @@ export default function EndorsementGridView({
  Make {endorsement.is_public ? 'Private' : 'Public'}
  </button>
  <button
- className="w-full px-3 py-2 text-sm text-left hover:bg-muted text-destructive"
+ className="w-full px-sm py-xs text-sm text-left hover:bg-muted text-destructive"
  onClick={() => {
  onDelete(endorsement);
  setActiveMenu(null);
@@ -348,33 +348,33 @@ export default function EndorsementGridView({
  </div>
 
  {/* Info */}
- <div className="space-y-1 text-sm text-muted-foreground">
+ <div className="space-y-xs text-sm text-muted-foreground">
  {endorsement.endorser_title && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <User className="h-3 w-3" />
- <span className="line-clamp-1">{endorsement.endorser_title}</span>
+ <span className="line-clamp-xs">{endorsement.endorser_title}</span>
  </div>
  )}
  {endorsement.endorser_company && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Building className="h-3 w-3" />
- <span className="line-clamp-1">{endorsement.endorser_company}</span>
+ <span className="line-clamp-xs">{endorsement.endorser_company}</span>
  </div>
  )}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  <span>{formatDate(endorsement.date_received)}</span>
  </div>
  </div>
 
  {/* Endorsement Text */}
- <p className="text-sm text-muted-foreground line-clamp-3">
+ <p className="text-sm text-muted-foreground line-clamp-sm">
  {endorsement.endorsement_text}
  </p>
 
  {/* Skills */}
  {endorsement.skills_endorsed.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {endorsement.skills_endorsed.slice(0, 3).map((skill) => (
  <Badge key={skill} variant="secondary" className="text-xs">
  {skill}
@@ -393,7 +393,7 @@ export default function EndorsementGridView({
  <Badge variant="outline" className="text-xs">
  {RELATIONSHIP_LABELS[endorsement.relationship]}
  </Badge>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {endorsement.is_featured && (
  <Star className="h-3 w-3 fill-current text-yellow-500" />
  )}

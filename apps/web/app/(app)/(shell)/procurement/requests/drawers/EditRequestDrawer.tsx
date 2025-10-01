@@ -264,7 +264,7 @@ export default function EditRequestDrawer({
  disabled={saving || loading}
  loading={saving}
  >
- <Save className="h-4 w-4 mr-sm" />
+ <Save className="h-icon-xs w-icon-xs mr-sm" />
  Save Changes
  </Button>
  <Button
@@ -273,7 +273,7 @@ export default function EditRequestDrawer({
  onClick={onClose}
  disabled={saving}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  </div>

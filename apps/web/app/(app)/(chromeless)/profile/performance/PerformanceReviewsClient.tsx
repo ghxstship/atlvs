@@ -108,7 +108,7 @@ export default function PerformanceReviewsClient() {
         {[1, 2, 3, 4, 5].map((star: any) => (
           <Star
             key={star}
-            className={`w-5 h-5 ${
+            className={`w-icon-sm h-icon-sm ${
               star <= rating
                 ? 'fill-warning color-warning'
                 : 'color-muted'
@@ -142,7 +142,7 @@ export default function PerformanceReviewsClient() {
       <div className="stack-md">
         {[1, 2, 3].map(i => (
           <Card key={i} className="animate-pulse">
-            <CardContent className="h-32" />
+            <CardContent className="h-component-xl" />
           </Card>
         ))}
       </div>
@@ -194,7 +194,7 @@ export default function PerformanceReviewsClient() {
         <Card>
           <CardHeader>
             <h3 className="text-heading-4 flex items-center">
-              <TrendingUp className="w-5 h-5 mr-sm color-success" />
+              <TrendingUp className="w-icon-sm h-icon-sm mr-sm color-success" />
               Strengths
             </h3>
           </CardHeader>
@@ -270,7 +270,7 @@ export default function PerformanceReviewsClient() {
         <Card>
           <CardHeader>
             <h3 className="text-heading-4 flex items-center">
-              <Award className="w-5 h-5 mr-sm color-warning" />
+              <Award className="w-icon-sm h-icon-sm mr-sm color-warning" />
               Key Achievements
             </h3>
           </CardHeader>
@@ -316,8 +316,8 @@ export default function PerformanceReviewsClient() {
 
       {reviews.length === 0 ? (
         <Card>
-          <CardContent className="text-center py-2xl">
-            <BarChart3 className="w-12 h-12 mx-auto mb-md color-muted" />
+          <CardContent className="text-center py-xsxl">
+            <BarChart3 className="w-icon-2xl h-icon-2xl mx-auto mb-md color-muted" />
             <p className="color-muted">No performance reviews available</p>
           </CardContent>
         </Card>
@@ -347,16 +347,16 @@ export default function PerformanceReviewsClient() {
                     </p>
                     <div className="flex gap-md mt-sm">
                       <div className="flex items-center gap-xs">
-                        <Calendar className="w-4 h-4 color-muted" />
+                        <Calendar className="w-icon-xs h-icon-xs color-muted" />
                         <span className="text-body-sm">{review.goals.length} Goals</span>
                       </div>
                       <div className="flex items-center gap-xs">
-                        <Award className="w-4 h-4 color-muted" />
+                        <Award className="w-icon-xs h-icon-xs color-muted" />
                         <span className="text-body-sm">{review.achievements.length} Achievements</span>
                       </div>
                     </div>
                   </div>
-                  <ChevronRight className="w-5 h-5 color-muted" />
+                  <ChevronRight className="w-icon-sm h-icon-sm color-muted" />
                 </div>
               </CardContent>
             </Card>

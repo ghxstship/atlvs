@@ -113,9 +113,9 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-2xl">
+      <div className="flex items-center justify-center py-xsxl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-md"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
           <p className="color-foreground/70">Loading overview...</p>
         </div>
       </div>
@@ -129,7 +129,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center gap-md">
             <div className="p-sm bg-accent/10 rounded-lg">
-              <ShoppingCart className="h-6 w-6 color-accent" />
+              <ShoppingCart className="h-icon-md w-icon-md color-accent" />
             </div>
             <div>
               <p className="text-body-sm color-foreground/70">Total Orders</p>
@@ -141,7 +141,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center gap-md">
             <div className="p-sm bg-warning/10 rounded-lg">
-              <Clock className="h-6 w-6 color-warning" />
+              <Clock className="h-icon-md w-icon-md color-warning" />
             </div>
             <div>
               <p className="text-body-sm color-foreground/70">Pending Orders</p>
@@ -153,7 +153,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center gap-md">
             <div className="p-sm bg-success/10 rounded-lg">
-              <CheckCircle className="h-6 w-6 color-success" />
+              <CheckCircle className="h-icon-md w-icon-md color-success" />
             </div>
             <div>
               <p className="text-body-sm color-foreground/70">Completed Orders</p>
@@ -165,7 +165,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center gap-md">
             <div className="p-sm bg-secondary/10 rounded-lg">
-              <DollarSign className="h-6 w-6 color-secondary" />
+              <DollarSign className="h-icon-md w-icon-md color-secondary" />
             </div>
             <div>
               <p className="text-body-sm color-foreground/70">Total Spent</p>
@@ -182,12 +182,12 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center justify-between mb-md">
             <div className="flex items-center gap-sm">
-              <Package className="h-5 w-5 color-accent" />
+              <Package className="h-icon-sm w-icon-sm color-accent" />
               <span className="form-label">Products</span>
             </div>
             <Link href="/procurement/products">
               <Button>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-icon-xs w-icon-xs" />
               </Button>
             </Link>
           </div>
@@ -198,12 +198,12 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center justify-between mb-md">
             <div className="flex items-center gap-sm">
-              <Wrench className="h-5 w-5 color-success" />
+              <Wrench className="h-icon-sm w-icon-sm color-success" />
               <span className="form-label">Services</span>
             </div>
             <Link href="/procurement/services">
               <Button>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-icon-xs w-icon-xs" />
               </Button>
             </Link>
           </div>
@@ -214,12 +214,12 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center justify-between mb-md">
             <div className="flex items-center gap-sm">
-              <Building className="h-5 w-5 color-warning" />
+              <Building className="h-icon-sm w-icon-sm color-warning" />
               <span className="form-label">Vendors</span>
             </div>
             <Link href="/procurement/vendors">
               <Button>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-icon-xs w-icon-xs" />
               </Button>
             </Link>
           </div>
@@ -230,12 +230,12 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <Card className="p-lg">
           <div className="flex items-center justify-between mb-md">
             <div className="flex items-center gap-sm">
-              <Tag className="h-5 w-5 color-secondary" />
+              <Tag className="h-icon-sm w-icon-sm color-secondary" />
               <span className="form-label">Categories</span>
             </div>
             <Link href="/procurement/categories">
               <Button>
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-icon-xs w-icon-xs" />
               </Button>
             </Link>
           </div>
@@ -252,7 +252,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
             <Link href="/procurement/orders">
               <Button>
                 View All
-                <ArrowRight className="h-4 w-4 ml-sm" />
+                <ArrowRight className="h-icon-xs w-icon-xs ml-sm" />
               </Button>
             </Link>
           </div>
@@ -261,7 +261,7 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
         <div className="p-lg">
           {recentOrders.length === 0 ? (
             <div className="text-center py-xl">
-              <ShoppingCart className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+              <ShoppingCart className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
               <p className="color-foreground/70">No recent orders</p>
               <Link href="/procurement/orders">
                 <Button className="mt-md">
@@ -308,28 +308,28 @@ export default function ProcurementOverviewClient({ orgId }: { orgId: string }) 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
             <Link href="/procurement/orders">
               <Button variant="outline" className="w-full justify-start">
-                <ShoppingCart className="h-4 w-4 mr-sm" />
+                <ShoppingCart className="h-icon-xs w-icon-xs mr-sm" />
                 Create Order
               </Button>
             </Link>
             
             <Link href="/procurement/products">
               <Button variant="outline" className="w-full justify-start">
-                <Package className="h-4 w-4 mr-sm" />
+                <Package className="h-icon-xs w-icon-xs mr-sm" />
                 Add Product
               </Button>
             </Link>
             
             <Link href="/procurement/services">
               <Button variant="outline" className="w-full justify-start">
-                <Wrench className="h-4 w-4 mr-sm" />
+                <Wrench className="h-icon-xs w-icon-xs mr-sm" />
                 Add Service
               </Button>
             </Link>
             
             <Link href="/procurement/vendors">
               <Button variant="outline" className="w-full justify-start">
-                <Building className="h-4 w-4 mr-sm" />
+                <Building className="h-icon-xs w-icon-xs mr-sm" />
                 Add Vendor
               </Button>
             </Link>

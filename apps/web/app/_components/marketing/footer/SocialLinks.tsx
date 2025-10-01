@@ -33,7 +33,7 @@ export function SocialLinks() {
             className="color-muted hover:color-foreground transition-colors"
             aria-label={social.label}
           >
-            <Icon className="h-5 w-5" />
+            <Icon className="h-icon-sm w-icon-sm" />
           </a>
         );
       })}

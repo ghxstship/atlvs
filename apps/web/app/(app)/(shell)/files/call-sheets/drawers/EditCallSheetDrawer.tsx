@@ -208,15 +208,15 @@ export default function EditCallSheetDrawer({
  </DrawerHeader>
 
  <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col h-full">
- <div className="flex-1 px-6">
+ <div className="flex-1 px-lg">
  {/* Tab Navigation */}
- <div className="flex space-x-1 mb-6 border-b">
+ <div className="flex space-x-xs mb-6 border-b">
  {tabs.map((tab) => (
  <button
  key={tab.id}
  type="button"
  onClick={() => setActiveTab(tab.id as unknown)}
- className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+ className={`px-md py-xs text-sm font-medium border-b-2 transition-colors ${
  activeTab === tab.id
  ? 'border-primary text-primary'
  : 'border-transparent text-muted-foreground hover:text-foreground'
@@ -229,8 +229,8 @@ export default function EditCallSheetDrawer({
 
  {/* Tab Content */}
  {activeTab === 'details' && (
- <div className="space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <Label htmlFor="title">Title *</Label>
  <Input
@@ -367,17 +367,17 @@ export default function EditCallSheetDrawer({
  )}
 
  {activeTab === 'crew' && (
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-semibold">Crew Calls</h3>
  <Button type="button" onClick={addCrewCall} size="sm">
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Crew
  </Button>
  </div>
 
  {crewCalls.map((crew, index) => (
- <Card key={crew.id} className="p-4">
+ <Card key={crew.id} className="p-md">
  <div className="flex items-start justify-between mb-3">
  <Badge variant="outline">Crew #{index + 1}</Badge>
  <Button
@@ -386,11 +386,11 @@ export default function EditCallSheetDrawer({
  size="sm"
  onClick={() => removeCrewCall(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-sm">
  <div>
  <Label>Department</Label>
  <Input
@@ -449,8 +449,8 @@ export default function EditCallSheetDrawer({
  ))}
 
  {crewCalls.length === 0 && (
- <div className="text-center py-8 text-muted-foreground">
- <User className="h-12 w-12 mx-auto mb-4" />
+ <div className="text-center py-xl text-muted-foreground">
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-4" />
  <p>No crew calls added yet</p>
  </div>
  )}
@@ -458,17 +458,17 @@ export default function EditCallSheetDrawer({
  )}
 
  {activeTab === 'talent' && (
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-semibold">Talent Calls</h3>
  <Button type="button" onClick={addTalentCall} size="sm">
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Talent
  </Button>
  </div>
 
  {talentCalls.map((talent, index) => (
- <Card key={talent.id} className="p-4">
+ <Card key={talent.id} className="p-md">
  <div className="flex items-start justify-between mb-3">
  <Badge variant="outline">Talent #{index + 1}</Badge>
  <Button
@@ -477,11 +477,11 @@ export default function EditCallSheetDrawer({
  size="sm"
  onClick={() => removeTalentCall(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-sm">
  <div>
  <Label>Talent Name</Label>
  <Input
@@ -550,8 +550,8 @@ export default function EditCallSheetDrawer({
  ))}
 
  {talentCalls.length === 0 && (
- <div className="text-center py-8 text-muted-foreground">
- <User className="h-12 w-12 mx-auto mb-4" />
+ <div className="text-center py-xl text-muted-foreground">
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-4" />
  <p>No talent calls added yet</p>
  </div>
  )}
@@ -559,17 +559,17 @@ export default function EditCallSheetDrawer({
  )}
 
  {activeTab === 'contacts' && (
- <div className="space-y-4">
+ <div className="space-y-md">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-semibold">Emergency Contacts</h3>
  <Button type="button" onClick={addEmergencyContact} size="sm">
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Contact
  </Button>
  </div>
 
  {emergencyContacts.map((contact, index) => (
- <Card key={contact.id} className="p-4">
+ <Card key={contact.id} className="p-md">
  <div className="flex items-start justify-between mb-3">
  <Badge variant="outline">Contact #{index + 1}</Badge>
  <Button
@@ -578,11 +578,11 @@ export default function EditCallSheetDrawer({
  size="sm"
  onClick={() => removeEmergencyContact(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
  <div>
  <Label>Name</Label>
  <Input
@@ -624,8 +624,8 @@ export default function EditCallSheetDrawer({
  ))}
 
  {emergencyContacts.length === 0 && (
- <div className="text-center py-8 text-muted-foreground">
- <User className="h-12 w-12 mx-auto mb-4" />
+ <div className="text-center py-xl text-muted-foreground">
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-4" />
  <p>No emergency contacts added yet</p>
  </div>
  )}
@@ -634,7 +634,7 @@ export default function EditCallSheetDrawer({
  </div>
 
  <DrawerFooter>
- <div className="flex justify-end space-x-2">
+ <div className="flex justify-end space-x-xs">
  <Button
  type="button"
  variant="outline"

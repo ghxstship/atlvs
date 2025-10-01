@@ -351,7 +351,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-sm">
-          <BarChart3 className="h-6 w-6 text-accent" />
+          <BarChart3 className="h-icon-md w-icon-md text-accent" />
           <h2 className="text-2xl font-bold text-foreground">Performance Metrics</h2>
         </div>
         <div className="flex items-center space-x-sm">
@@ -363,7 +363,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
             variant="outline"
             size="sm"
           >
-            {chartType === 'line' ? <LineChart className="h-4 w-4" /> : <BarChart3 className="h-4 w-4" />}
+            {chartType === 'line' ? <LineChart className="h-icon-xs w-icon-xs" /> : <BarChart3 className="h-icon-xs w-icon-xs" />}
           </Button>
         </div>
       </div>
@@ -384,9 +384,9 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               </span>
               <div className="flex items-center text-sm">
                 {stat.change > 0 ? (
-                  <TrendingUp className="h-4 w-4 text-destructive" />
+                  <TrendingUp className="h-icon-xs w-icon-xs text-destructive" />
                 ) : (
-                  <TrendingDown className="h-4 w-4 text-success" />
+                  <TrendingDown className="h-icon-xs w-icon-xs text-success" />
                 )}
                 <span className={stat.change > 0 ? 'text-destructive' : 'text-success'}>
                   {Math.abs(stat.change).toFixed(1)}%
@@ -420,8 +420,8 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
             </div>
             
             {loading ? (
-              <div className="flex items-center justify-center h-48">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+              <div className="flex items-center justify-center h-container-xs">
+                <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
               </div>
             ) : (
               <SimpleChart metric={metric} width={400} height={200} />

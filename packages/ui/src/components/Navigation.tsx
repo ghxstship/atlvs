@@ -75,7 +75,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
             onClick={() => setIsOpen(true)}
             className="flex items-center gap-sm w-full max-w-md px-sm py-sm text-sm text-muted-foreground bg-muted/50 hover:bg-muted transition-colors rounded-lg border border-border/50 hover:border-border"
           >
-            <Search className="h-4 w-4" />
+            <Search className="h-icon-xs w-icon-xs" />
             <span className="flex-1 text-left">{placeholder}</span>
             <div className="flex items-center gap-xs text-xs">
               <kbd className="px-xs.5 py-0.5 bg-background border border-border rounded text-xs font-mono">
@@ -92,7 +92,7 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
               <div className="bg-background border border-border rounded-xl shadow-popover overflow-hidden">
                 {/* Search Input */}
                 <div className="flex items-center px-md py-sm border-b border-border">
-                  <Search className="h-5 w-5 text-muted-foreground mr-sm" />
+                  <Search className="h-icon-sm w-icon-sm text-muted-foreground mr-sm" />
                   <input
                     ref={searchRef}
                     type="text"
@@ -106,12 +106,12 @@ export const GlobalSearch = React.forwardRef<HTMLDivElement, GlobalSearchProps>(
                     onClick={() => setIsOpen(false)}
                     className="p-xs hover:bg-muted rounded-sm transition-colors"
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-icon-xs w-icon-xs" />
                   </button>
                 </div>
 
                 {/* Search Results */}
-                <div className="max-h-96 overflow-y-auto">
+                <div className="max-h-container-lg overflow-y-auto">
                   {query ? (
                     <div className="p-md">
                       <p className="text-sm text-muted-foreground mb-md">
@@ -228,7 +228,7 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
           onClick={() => setIsOpen(!isOpen)}
           className="relative"
         >
-          {currentTheme && <currentTheme.icon className="h-4 w-4" />}
+          {currentTheme && <currentTheme.icon className="h-icon-xs w-icon-xs" />}
         </IconButton>
 
         {isOpen && (
@@ -237,7 +237,7 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
               className="fixed inset-0 z-40" 
               onClick={() => setIsOpen(false)} 
             />
-            <div className="absolute right-0 top-full mt-sm w-48 bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
+            <div className="absolute right-0 top-full mt-sm w-container-xs bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
               {themes.map((themeOption: any) => (
                 <button
                   key={themeOption.value}
@@ -250,7 +250,7 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
                     theme === themeOption.value && 'bg-muted text-accent'
                   )}
                 >
-                  <themeOption.icon className="h-4 w-4" />
+                  <themeOption.icon className="h-icon-xs w-icon-xs" />
                   {themeOption.label}
                 </button>
               ))}
@@ -296,11 +296,11 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
           onClick={() => setIsOpen(!isOpen)}
           className="relative"
         >
-          <Bell className="h-4 w-4" />
+          <Bell className="h-icon-xs w-icon-xs" />
           {count > 0 && (
             <Badge 
               variant="destructive" 
-              className="absolute -top-1 -right-1 h-5 w-5 p-0 text-xs flex items-center justify-center"
+              className="absolute -top-1 -right-1 h-icon-sm w-icon-sm p-0 text-xs flex items-center justify-center"
             >
               {count > 99 ? '99+' : count}
             </Badge>
@@ -313,7 +313,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
               className="fixed inset-0 z-40" 
               onClick={() => setIsOpen(false)} 
             />
-            <div className="absolute right-0 top-full mt-sm w-80 bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
+            <div className="absolute right-0 top-full mt-sm w-container-md bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
               <div className="flex items-center justify-between p-md border-b border-border">
                 <h3 className="font-display text-sm font-semibold">Notifications</h3>
                 {count > 0 && (
@@ -327,10 +327,10 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
                 )}
               </div>
               
-              <div className="max-h-96 overflow-y-auto">
+              <div className="max-h-container-lg overflow-y-auto">
                 {notifications.length === 0 ? (
                   <div className="p-xl text-center text-muted-foreground">
-                    <Bell className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                    <Bell className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                     <p className="text-sm">No notifications</p>
                   </div>
                 ) : (
@@ -400,15 +400,15 @@ export const UserMenu = React.forwardRef<HTMLDivElement, UserMenuProps>(
           onClick={() => setIsOpen(!isOpen)}
           className="flex items-center gap-sm p-xs hover:bg-muted rounded-lg transition-colors"
         >
-          <div className="w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
+          <div className="w-icon-lg h-icon-lg bg-accent/10 rounded-full flex items-center justify-center">
             {user.avatar ? (
               <img 
                 src={user.avatar} 
                 alt={user.name}
-                className="w-8 h-8 rounded-full object-cover"
+                className="w-icon-lg h-icon-lg rounded-full object-cover"
               />
             ) : (
-              <User className="h-4 w-4 text-accent" />
+              <User className="h-icon-xs w-icon-xs text-accent" />
             )}
           </div>
           <ChevronDown className="h-3 w-3 text-muted-foreground" />
@@ -420,7 +420,7 @@ export const UserMenu = React.forwardRef<HTMLDivElement, UserMenuProps>(
               className="fixed inset-0 z-40" 
               onClick={() => setIsOpen(false)} 
             />
-            <div className="absolute right-0 top-full mt-sm w-64 bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
+            <div className="absolute right-0 top-full mt-sm w-container-sm bg-background border border-border rounded-lg shadow-floating z-50 overflow-hidden">
               {/* User Info */}
               <div className="p-md border-b border-border">
                 <p className="font-medium text-sm">{user.name}</p>
@@ -503,7 +503,7 @@ export const TopNav = React.forwardRef<HTMLElement, TopNavProps>(
         ref={ref}
         className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       >
-        <div className="flex h-16 items-center justify-between px-lg">
+        <div className="flex h-component-md items-center justify-between px-lg">
           {/* Left Section */}
           <div className="flex items-center gap-md">
             {leftContent}

@@ -242,7 +242,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Pending Approvals</p>
  <p className="text-2xl font-bold">{pendingCount}</p>
  </div>
- <Clock className="h-8 w-8 text-warning" />
+ <Clock className="h-icon-lg w-icon-lg text-warning" />
  </div>
  </Card>
  
@@ -252,7 +252,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Approved Today</p>
  <p className="text-2xl font-bold">{approvedToday}</p>
  </div>
- <CheckCircle className="h-8 w-8 text-success" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-success" />
  </div>
  </Card>
  
@@ -262,7 +262,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Overdue</p>
  <p className="text-2xl font-bold">0</p>
  </div>
- <AlertTriangle className="h-8 w-8 text-destructive" />
+ <AlertTriangle className="h-icon-lg w-icon-lg text-destructive" />
  </div>
  </Card>
  
@@ -277,7 +277,7 @@ export default function ApprovalsClient({
  }).format(totalValue)}
  </p>
  </div>
- <TrendingUp className="h-8 w-8 text-info" />
+ <TrendingUp className="h-icon-lg w-icon-lg text-info" />
  </div>
  </Card>
  </div>
@@ -325,7 +325,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleRecordAction('view', approval)}
  >
- <Eye className="h-4 w-4 mr-sm" />
+ <Eye className="h-icon-xs w-icon-xs mr-sm" />
  View
  </Button>
  {approval.status === 'pending' && (
@@ -335,7 +335,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleRecordAction('approve', approval)}
  >
- <CheckCircle className="h-4 w-4 mr-sm" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-sm" />
  Approve
  </Button>
  <Button
@@ -343,7 +343,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleRecordAction('reject', approval)}
  >
- <XCircle className="h-4 w-4 mr-sm" />
+ <XCircle className="h-icon-xs w-icon-xs mr-sm" />
  Reject
  </Button>
  </>
@@ -354,7 +354,7 @@ export default function ApprovalsClient({
  ))}
  {filteredApprovals.length === 0 && (
  <Card className="p-xl text-center">
- <Users className="h-12 w-12 mx-auto mb-md text-muted-foreground" />
+ <Users className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground" />
  <h3 className="text-lg font-medium mb-sm">No approvals found</h3>
  <p className="text-sm text-muted-foreground">
  {filters.search || filters.status !== 'all' 
@@ -411,7 +411,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleRecordAction('view', approval)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {approval.status === 'pending' && (
  <>
@@ -420,14 +420,14 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleRecordAction('approve', approval)}
  >
- <CheckCircle className="h-4 w-4" />
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
  size="sm"
  onClick={() => handleRecordAction('reject', approval)}
  >
- <XCircle className="h-4 w-4" />
+ <XCircle className="h-icon-xs w-icon-xs" />
  </Button>
  </>
  )}
@@ -447,7 +447,7 @@ export default function ApprovalsClient({
  {/* Header */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <Users className="h-5 w-5" />
+ <Users className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Procurement Approvals</h3>
  <Badge variant="secondary">
  {approvals.length} approval{approvals.length !== 1 ? 's' : ''}
@@ -459,19 +459,19 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => setShowCreatePolicy(true)}
  >
- <Settings className="h-4 w-4 mr-sm" />
+ <Settings className="h-icon-xs w-icon-xs mr-sm" />
  Policies
  </Button>
  <Button variant="outline" size="sm">
- <Upload className="h-4 w-4 mr-sm" />
+ <Upload className="h-icon-xs w-icon-xs mr-sm" />
  Import
  </Button>
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  Export
  </Button>
  <Button size="sm" onClick={loadApprovals}>
- <RefreshCw className="h-4 w-4 mr-sm" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
  Refresh
  </Button>
  </div>
@@ -482,7 +482,7 @@ export default function ApprovalsClient({
  <div className="flex flex-col lg:flex-row gap-md">
  {/* Search */}
  <div className="relative flex-1">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search approvals..."
  value={filters.search}
@@ -496,7 +496,7 @@ export default function ApprovalsClient({
  value={filters.status}
  onValueChange={(value) => handleFilterChange({ status: value })}
  >
- <SelectTrigger className="w-[140px]">
+ <SelectTrigger className="max-w-compact">
  <SelectValue placeholder="All Status" />
  </SelectTrigger>
  <SelectContent>
@@ -513,7 +513,7 @@ export default function ApprovalsClient({
  value={filters.priority}
  onValueChange={(value) => handleFilterChange({ priority: value })}
  >
- <SelectTrigger className="w-[140px]">
+ <SelectTrigger className="max-w-compact">
  <SelectValue placeholder="All Priorities" />
  </SelectTrigger>
  <SelectContent>
@@ -532,23 +532,23 @@ export default function ApprovalsClient({
  <div className="flex items-center justify-between">
  <TabsList>
  <TabsTrigger value="dashboard">
- <LayoutDashboard className="h-4 w-4 mr-sm" />
+ <LayoutDashboard className="h-icon-xs w-icon-xs mr-sm" />
  Dashboard
  </TabsTrigger>
  <TabsTrigger value="grid">
- <Grid3X3 className="h-4 w-4 mr-sm" />
+ <Grid3X3 className="h-icon-xs w-icon-xs mr-sm" />
  Grid
  </TabsTrigger>
  <TabsTrigger value="list">
- <List className="h-4 w-4 mr-sm" />
+ <List className="h-icon-xs w-icon-xs mr-sm" />
  List
  </TabsTrigger>
  <TabsTrigger value="kanban">
- <BarChart3 className="h-4 w-4 mr-sm" />
+ <BarChart3 className="h-icon-xs w-icon-xs mr-sm" />
  Kanban
  </TabsTrigger>
  <TabsTrigger value="calendar">
- <Calendar className="h-4 w-4 mr-sm" />
+ <Calendar className="h-icon-xs w-icon-xs mr-sm" />
  Calendar
  </TabsTrigger>
  </TabsList>
@@ -564,7 +564,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleBulkAction('approve')}
  >
- <CheckCircle className="h-4 w-4 mr-sm" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-sm" />
  Approve All
  </Button>
  <Button
@@ -572,7 +572,7 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => handleBulkAction('reject')}
  >
- <XCircle className="h-4 w-4 mr-sm" />
+ <XCircle className="h-icon-xs w-icon-xs mr-sm" />
  Reject All
  </Button>
  </div>
@@ -582,7 +582,7 @@ export default function ApprovalsClient({
  <TabsContent value={viewMode} className="mt-md">
  {loading ? (
  <Card className="p-xl text-center">
- <RefreshCw className="h-8 w-8 mx-auto mb-md animate-spin" />
+ <RefreshCw className="h-icon-lg w-icon-lg mx-auto mb-md animate-spin" />
  <p className="text-muted-foreground">Loading approvals...</p>
  </Card>
  ) : (
@@ -635,7 +635,7 @@ export default function ApprovalsClient({
  setShowApprovalDrawer(false);
  }}
  >
- <CheckCircle className="h-4 w-4 mr-sm" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-sm" />
  Approve
  </Button>
  <Button
@@ -645,7 +645,7 @@ export default function ApprovalsClient({
  setShowApprovalDrawer(false);
  }}
  >
- <XCircle className="h-4 w-4 mr-sm" />
+ <XCircle className="h-icon-xs w-icon-xs mr-sm" />
  Reject
  </Button>
  </div>

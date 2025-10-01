@@ -111,11 +111,11 @@ const VirtualProfileList = ({ items, height = 600 }: { items: unknown[], height?
 
 // Memoized profile item row
 const ProfileItemRow = React.memo(({ item }: { item: unknown }) => (
- <Card className="p-4 mb-2 hover:shadow-md transition-shadow">
+ <Card className="p-md mb-2 hover:shadow-md transition-shadow">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
- <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
- {item.icon && <item.icon className="w-5 h-5 text-primary" />}
+ <div className="flex items-center gap-sm">
+ <div className="w-icon-xl h-icon-xl rounded-full bg-primary/10 flex items-center justify-center">
+ {item.icon && <item.icon className="w-icon-sm h-icon-sm text-primary" />}
  </div>
  <div>
  <p className="font-medium">{item.label}</p>
@@ -251,9 +251,9 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
 
  if (loading && !profileData) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {[...Array(5)].map((_, i) => (
- <Skeleton key={i} className="h-20 w-full" />
+ <Skeleton key={i} className="h-component-lg w-full" />
  ))}
  </div>
  );
@@ -268,7 +268,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  features: moduleConfig.features,
  }}
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header with optimized actions */}
  <div className="flex items-center justify-between">
  <div>
@@ -277,7 +277,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  Manage your profile information and settings
  </p>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
@@ -302,7 +302,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  <TabsList className="grid grid-cols-5 w-full">
  {PROFILE_SECTIONS.map((section) => (
  <TabsTrigger key={section.id} value={section.id}>
- <section.icon className="w-4 h-4 mr-2" />
+ <section.icon className="w-icon-xs h-icon-xs mr-2" />
  {section.label}
  </TabsTrigger>
  ))}
@@ -310,8 +310,8 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
 
  {PROFILE_SECTIONS.map((section) => (
  <TabsContent key={section.id} value={section.id} className="mt-6">
- <Card className="p-6">
- <div className="space-y-4">
+ <Card className="p-lg">
+ <div className="space-y-md">
  {/* Search and filters */}
  <DataActions
  onSearch={setSearchQuery}
@@ -339,7 +339,7 @@ export default function ProfileOptimizedClient({ orgId, userId }: ProfileOptimiz
  title={drawerMode === 'edit' ? 'Edit Profile' : 'View Profile'}
  size="lg"
  >
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Drawer content with lazy loading */}
  {drawerMode === 'edit' ? (
  <ProfileEditForm 

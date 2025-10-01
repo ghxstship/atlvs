@@ -53,7 +53,7 @@ export const SidebarBreadcrumbs: React.FC<SidebarBreadcrumbsProps> = ({
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {Icon && React.createElement(Icon, { className: "h-3 w-3" })}
-                  <span className="truncate max-w-32">{item.label}</span>
+                  <span className="truncate max-w-component-xl">{item.label}</span>
                 </button>
               ) : (
                 <span 
@@ -64,7 +64,7 @@ export const SidebarBreadcrumbs: React.FC<SidebarBreadcrumbsProps> = ({
                   aria-current={isLast ? 'page' : undefined}
                 >
                   {Icon && React.createElement(Icon, { className: "h-3 w-3" })}
-                  <span className="truncate max-w-32">{item.label}</span>
+                  <span className="truncate max-w-component-xl">{item.label}</span>
                 </span>
               )}
             </li>

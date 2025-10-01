@@ -172,7 +172,7 @@ export default function InspectionListView({
  onClick={() => onStatusChange(inspection, "in_progress")}
  title="Start Inspection"
  >
- <Play className="h-4 w-4" />
+ <Play className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {inspection.status === "in_progress" && (
@@ -182,7 +182,7 @@ export default function InspectionListView({
  onClick={() => onStatusChange(inspection, "completed")}
  title="Complete Inspection"
  >
- <CheckCircle className="h-4 w-4" />
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button
@@ -190,21 +190,21 @@ export default function InspectionListView({
  size="sm"
  onClick={() => onView(inspection)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(inspection)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDuplicate(inspection)}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -212,7 +212,7 @@ export default function InspectionListView({
  onClick={() => onDelete(inspection)}
  className="text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

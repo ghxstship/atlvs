@@ -120,7 +120,7 @@ const res = resResult.data;
  key: 'details',
  label: (
  <span className="flex items-center gap-xs">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  {t('drawer.details')}
  </span>
  ),
@@ -138,7 +138,7 @@ const res = resResult.data;
  key: 'edit',
  label: (
  <span className="flex items-center gap-xs">
- <Edit3 className="h-4 w-4" />
+ <Edit3 className="h-icon-xs w-icon-xs" />
  {t('drawer.edit')}
  </span>
  ),
@@ -170,7 +170,7 @@ const res = resResult.data;
  key: 'comments',
  label: (
  <span className="flex items-center gap-xs">
- <MessageSquare className="h-4 w-4" />
+ <MessageSquare className="h-icon-xs w-icon-xs" />
  {t('drawer.comments')}
  </span>
  ),
@@ -193,7 +193,7 @@ const res = resResult.data;
  key: 'activity',
  label: (
  <span className="flex items-center gap-xs">
- <ActivityIcon className="h-4 w-4" />
+ <ActivityIcon className="h-icon-xs w-icon-xs" />
  {t('drawer.activity')}
  </span>
  ),

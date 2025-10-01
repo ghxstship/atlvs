@@ -43,7 +43,7 @@ export default function MarketplaceCreateClient({
   });
 
   const labelClass = 'block text-sm font-medium text-foreground';
-  const checkboxLabelClass = 'inline-flex items-center gap-2 text-sm text-foreground';
+  const checkboxLabelClass = 'inline-flex items-center gap-xs text-sm text-foreground';
   const subtleTextClass = 'text-xs text-muted-foreground mt-1';
 
   const updateFormData = <K extends keyof UpsertListingDto>(field: K, value: UpsertListingDto[K]) => {
@@ -81,11 +81,11 @@ export default function MarketplaceCreateClient({
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-lg">
       {/* Header */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-md">
         <Button variant="ghost" onClick={() => router.back()}>
-          <ArrowLeft className="h-4 w-4 mr-2" />
+          <ArrowLeft className="h-icon-xs w-icon-xs mr-2" />
           Back
         </Button>
         <div>
@@ -96,11 +96,11 @@ export default function MarketplaceCreateClient({
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-lg">
         {/* Error Display */}
         {error && (
-          <div className="flex items-center gap-3 p-4 bg-destructive/10 border border-destructive/20 rounded-lg">
-            <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0" />
+          <div className="flex items-center gap-sm p-md bg-destructive/10 border border-destructive/20 rounded-lg">
+            <AlertCircle className="h-icon-sm w-icon-sm text-destructive flex-shrink-0" />
             <p className="text-sm text-destructive">{error}</p>
           </div>
         )}
@@ -110,7 +110,7 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Basic Information</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-md">
             <div>
               <label htmlFor="title" className={labelClass}>
                 Title *
@@ -148,7 +148,7 @@ export default function MarketplaceCreateClient({
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <label htmlFor="type" className={labelClass}>
                   Type *
@@ -228,8 +228,8 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Pricing</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <label htmlFor="amount" className={labelClass}>
                   Amount
@@ -272,7 +272,7 @@ export default function MarketplaceCreateClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="negotiable"
@@ -309,8 +309,8 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Location</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <label htmlFor="city" className={labelClass}>
                   City
@@ -340,7 +340,7 @@ export default function MarketplaceCreateClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="remote"
@@ -364,8 +364,8 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Availability</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <label htmlFor="startDate" className={labelClass}>
                   Available From
@@ -401,7 +401,7 @@ export default function MarketplaceCreateClient({
               </div>
             </div>
 
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-xs">
               <input
                 type="checkbox"
                 id="flexible"
@@ -421,7 +421,7 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Additional Details</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-md">
             <div>
               <span className={labelClass}>Requirements</span>
               <Textarea
@@ -516,8 +516,8 @@ export default function MarketplaceCreateClient({
           <CardHeader>
             <CardTitle>Publishing Settings</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-2 gap-md">
               <div>
                 <label htmlFor="status" className={labelClass}>
                 Initial Status
@@ -536,7 +536,7 @@ export default function MarketplaceCreateClient({
                 </Select>
               </div>
 
-              <div className="flex items-center space-x-2 pt-8">
+              <div className="flex items-center space-x-xs pt-8">
                 <input
                   type="checkbox"
                   id="featured"
@@ -551,13 +551,13 @@ export default function MarketplaceCreateClient({
         </Card>
 
         {/* Form Actions */}
-        <div className="flex gap-3">
+        <div className="flex gap-sm">
           <Button
             type="submit"
             disabled={isSubmitting}
             className="flex-1"
           >
-            <Save className="h-4 w-4 mr-2" />
+            <Save className="h-icon-xs w-icon-xs mr-2" />
             {isSubmitting ? 'Creating...' : 'Create Listing'}
           </Button>
           <Button

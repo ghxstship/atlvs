@@ -30,12 +30,12 @@ export default function ViewAssignmentDrawer({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'completed': return <CheckCircle className="h-4 w-4" />;
- case 'in_progress': return <Clock className="h-4 w-4" />;
- case 'assigned': return <Users className="h-4 w-4" />;
- case 'pending': return <Clock className="h-4 w-4" />;
- case 'cancelled': return <AlertCircle className="h-4 w-4" />;
- default: return <Clock className="h-4 w-4" />;
+ case 'completed': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'in_progress': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'assigned': return <Users className="h-icon-xs w-icon-xs" />;
+ case 'pending': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'cancelled': return <AlertCircle className="h-icon-xs w-icon-xs" />;
+ default: return <Clock className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -60,7 +60,7 @@ export default function ViewAssignmentDrawer({
  </div>
  {onEdit && (
  <Button variant="outline" onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  )}
@@ -106,7 +106,7 @@ export default function ViewAssignmentDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Due Date</p>
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <p className={`text-body-sm ${
  new Date(assignment.job_due_at) < new Date() 
  ? 'color-destructive' 
@@ -136,8 +136,8 @@ export default function ViewAssignmentDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm">
- <div className="h-10 w-10 bg-secondary rounded-full flex items-center justify-center">
- <Users className="h-5 w-5" />
+ <div className="h-icon-xl w-icon-xl bg-secondary rounded-full flex items-center justify-center">
+ <Users className="h-icon-sm w-icon-sm" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">
@@ -165,7 +165,7 @@ export default function ViewAssignmentDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <div>
  <p className="text-body-sm color-foreground">Assigned</p>
  <p className="text-body-xs color-muted">
@@ -185,7 +185,7 @@ export default function ViewAssignmentDrawer({
  <h3 className="text-heading-5 color-foreground">Notes</h3>
  <div className="p-md bg-secondary/50 rounded-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 color-muted mt-xs" />
+ <FileText className="h-icon-xs w-icon-xs color-muted mt-xs" />
  <p className="text-body-sm color-foreground whitespace-pre-wrap">
  {assignment.note}
  </p>
@@ -201,7 +201,7 @@ export default function ViewAssignmentDrawer({
  </Button>
  {onEdit && (
  <Button onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Assignment
  </Button>
  )}

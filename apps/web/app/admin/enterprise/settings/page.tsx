@@ -21,7 +21,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Shield className="h-5 w-5" />
+              <Shield className="h-icon-sm w-icon-sm" />
               Security Configuration
             </CardTitle>
             <CardDescription>Authentication, authorization, and security policies</CardDescription>
@@ -57,7 +57,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Database className="h-5 w-5" />
+              <Database className="h-icon-sm w-icon-sm" />
               Database Configuration
             </CardTitle>
             <CardDescription>Performance tuning and backup settings</CardDescription>
@@ -93,7 +93,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Users className="h-5 w-5" />
+              <Users className="h-icon-sm w-icon-sm" />
               User Management
             </CardTitle>
             <CardDescription>User provisioning and access control</CardDescription>
@@ -129,7 +129,7 @@ export default function SettingsPage() {
         <Card>
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Bell className="h-5 w-5" />
+              <Bell className="h-icon-sm w-icon-sm" />
               Notification Settings
             </CardTitle>
             <CardDescription>Alert channels and notification preferences</CardDescription>
@@ -166,7 +166,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-sm">
-            <Zap className="h-5 w-5" />
+            <Zap className="h-icon-sm w-icon-sm" />
             Feature Toggles
           </CardTitle>
           <CardDescription>Enable or disable enterprise features</CardDescription>
@@ -222,7 +222,7 @@ export default function SettingsPage() {
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-sm">
-            <Globe className="h-5 w-5" />
+            <Globe className="h-icon-sm w-icon-sm" />
             Integration Status
           </CardTitle>
           <CardDescription>External service integrations and API connections</CardDescription>
@@ -231,7 +231,7 @@ export default function SettingsPage() {
           <div className="stack-md">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-sm">
-                <Key className="h-4 w-4 text-muted-foreground" />
+                <Key className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <div>
                   <p className="font-medium">Supabase Enterprise</p>
                   <p className="text-sm text-muted-foreground">Database and authentication</p>
@@ -241,7 +241,7 @@ export default function SettingsPage() {
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-sm">
-                <Key className="h-4 w-4 text-muted-foreground" />
+                <Key className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <div>
                   <p className="font-medium">Monitoring Service</p>
                   <p className="text-sm text-muted-foreground">System health and metrics</p>
@@ -251,7 +251,7 @@ export default function SettingsPage() {
             </div>
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-sm">
-                <Key className="h-4 w-4 text-muted-foreground" />
+                <Key className="h-icon-xs w-icon-xs text-muted-foreground" />
                 <div>
                   <p className="font-medium">Security Scanner</p>
                   <p className="text-sm text-muted-foreground">Vulnerability assessment</p>

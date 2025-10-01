@@ -30,7 +30,7 @@ export default async function ProjectsPage() {
  {orgId && user ? (
  <ProjectsClient orgId={orgId} userId={user.id} />
  ) : (
- <div className="brand-marketplace text-center py-2xl">
+ <div className="brand-marketplace text-center py-xsxl">
  <h2 className="text-heading-3 mb-md">Marketplace Projects</h2>
  <p className="color-muted">Please sign in to access marketplace projects</p>
  </div>

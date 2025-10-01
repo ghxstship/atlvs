@@ -239,7 +239,7 @@ export default function ProjectListView({
  variant="ghost"
  size="sm"
  onClick={() => onView(project)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  title="View project"
  >
  <Eye className="h-3 w-3" />
@@ -248,7 +248,7 @@ export default function ProjectListView({
  variant="ghost"
  size="sm"
  onClick={() => onEdit(project)}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  title="Edit project"
  >
  <Edit className="h-3 w-3" />
@@ -257,7 +257,7 @@ export default function ProjectListView({
  variant="ghost"
  size="sm"
  onClick={() => onDelete(project)}
- className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+ className="h-icon-lg w-icon-lg p-0 text-destructive hover:text-destructive"
  title="Delete project"
  >
  <Trash2 className="h-3 w-3" />

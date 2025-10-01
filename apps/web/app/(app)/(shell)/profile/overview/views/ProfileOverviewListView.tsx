@@ -62,14 +62,14 @@ export default function ProfileOverviewListView({
  {Array.from({ length: 6 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
  <div className="flex items-center gap-lg">
- <div className="h-4 w-4 bg-secondary rounded"></div>
- <div className="h-12 w-12 bg-secondary rounded-full"></div>
+ <div className="h-icon-xs w-icon-xs bg-secondary rounded"></div>
+ <div className="h-icon-2xl w-icon-2xl bg-secondary rounded-full"></div>
  <div className="flex-1">
- <div className="h-4 bg-secondary rounded mb-sm"></div>
+ <div className="h-icon-xs bg-secondary rounded mb-sm"></div>
  <div className="h-3 bg-secondary rounded w-2/3"></div>
  </div>
- <div className="h-6 w-16 bg-secondary rounded"></div>
- <div className="h-8 w-20 bg-secondary rounded"></div>
+ <div className="h-icon-md w-component-md bg-secondary rounded"></div>
+ <div className="h-icon-lg w-component-lg bg-secondary rounded"></div>
  </div>
  </Card>
  ))}
@@ -80,7 +80,7 @@ export default function ProfileOverviewListView({
  if (profiles.length === 0) {
  return (
  <div className="text-center py-xl">
- <User className="h-12 w-12 mx-auto mb-md color-muted" />
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">No profiles found</h3>
  <p className="color-muted">Try adjusting your search or filter criteria.</p>
  </div>
@@ -139,7 +139,7 @@ export default function ProfileOverviewListView({
  type="checkbox"
  checked={isSelected}
  onChange={(e) => handleProfileSelect(profile.id, e as unknown)}
- className="h-4 w-4 rounded border-border text-accent focus:ring-accent"
+ className="h-icon-xs w-icon-xs rounded border-border text-accent focus:ring-accent"
  onClick={(e) => e.stopPropagation()}
  />
 
@@ -192,7 +192,7 @@ export default function ProfileOverviewListView({
  </div>
  <Progress 
  value={profile.profile_completion_percentage} 
- className="h-2 w-20"
+ className="h-2 w-component-lg"
  variant={getCompletionColor(profile.profile_completion_percentage) as unknown}
  />
  </div>
@@ -264,7 +264,7 @@ export default function ProfileOverviewListView({
  onClick={(e) => toggleExpanded(profile.id, e)}
  >
  <ChevronRight 
- className={`h-4 w-4 transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
+ className={`h-icon-xs w-icon-xs transition-transform ${isExpanded ? 'rotate-90' : ''}`} 
  />
  </Button>
  </div>

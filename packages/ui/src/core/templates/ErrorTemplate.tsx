@@ -50,8 +50,8 @@ interface ErrorTemplateProps {
 }
 
 const variantClasses = {
-  centered: 'min-h-screen flex items-center justify-center p-4',
-  full: 'min-h-screen p-4',
+  centered: 'min-h-screen flex items-center justify-center p-md',
+  full: 'min-h-screen p-md',
   compact: 'p-8',
 };
 
@@ -98,8 +98,8 @@ export const ErrorTemplate: React.FC<ErrorTemplateProps> = ({
   };
 
   const defaultIcon = (
-    <div className="w-16 h-16 bg-destructive/10 rounded-full flex items-center justify-center mb-4">
-      <AlertTriangle className="w-8 h-8 text-destructive" />
+    <div className="w-component-md h-component-md bg-destructive/10 rounded-full flex items-center justify-center mb-4">
+      <AlertTriangle className="w-icon-lg h-icon-lg text-destructive" />
     </div>
   );
 
@@ -108,19 +108,19 @@ export const ErrorTemplate: React.FC<ErrorTemplateProps> = ({
       label: 'Go Back',
       onClick: handleBack,
       variant: 'outline' as const,
-      icon: <ArrowLeft className="w-4 h-4" />,
+      icon: <ArrowLeft className="w-icon-xs h-icon-xs" />,
     }] : []),
     {
       label: 'Go Home',
       onClick: handleHome,
       variant: 'default' as const,
-      icon: <Home className="w-4 h-4" />,
+      icon: <Home className="w-icon-xs h-icon-xs" />,
     },
     ...(showRetry ? [{
       label: 'Try Again',
       onClick: handleRetry,
       variant: 'secondary' as const,
-      icon: <RefreshCw className="w-4 h-4" />,
+      icon: <RefreshCw className="w-icon-xs h-icon-xs" />,
     }] : []),
   ];
 
@@ -147,18 +147,18 @@ export const ErrorTemplate: React.FC<ErrorTemplateProps> = ({
             </CardDescription>
           </CardHeader>
 
-          <CardContent className="space-y-4">
+          <CardContent className="space-y-md">
             {/* Custom content */}
             {children}
 
             {/* Actions */}
-            <div className="flex flex-col sm:flex-row gap-2 justify-center">
+            <div className="flex flex-col sm:flex-row gap-xs justify-center">
               {allActions.map((action, index) => (
                 <Button
                   key={index}
                   variant={action.variant || 'default'}
                   onClick={action.onClick}
-                  className="flex items-center gap-2"
+                  className="flex items-center gap-xs"
                 >
                   {action.icon}
                   {action.label}

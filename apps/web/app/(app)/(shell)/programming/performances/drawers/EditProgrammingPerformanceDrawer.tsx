@@ -269,16 +269,16 @@ export default function EditProgrammingPerformanceDrawer({
  </DrawerHeader>
 
  <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col h-full">
- <div className="flex-1 overflow-y-auto px-6 space-y-lg">
+ <div className="flex-1 overflow-y-auto px-lg space-y-lg">
  {/* Basic Information */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Music className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Music className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Basic Information</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="event_id">Event *</Label>
  <Select {...register("event_id")}>
  <option value="">Select an event</option>
@@ -293,7 +293,7 @@ export default function EditProgrammingPerformanceDrawer({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="project_id">Project</Label>
  <Select {...register("project_id")}>
  <option value="">Select a project (optional)</option>
@@ -305,7 +305,7 @@ export default function EditProgrammingPerformanceDrawer({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="name">Performance Name *</Label>
  <Input
  
@@ -317,7 +317,7 @@ export default function EditProgrammingPerformanceDrawer({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="performance_type">Type</Label>
  <Select {...register("performance_type")}>
  {Object.entries(PERFORMANCE_TYPE_BADGE).map(([value, config]) => (
@@ -328,7 +328,7 @@ export default function EditProgrammingPerformanceDrawer({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="status">Status</Label>
  <Select {...register("status")}>
  {Object.entries(STATUS_BADGE).map(([value, config]) => (
@@ -340,7 +340,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="description">Description</Label>
  <Textarea
  
@@ -355,13 +355,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Schedule */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Schedule</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="starts_at">Start Time *</Label>
  <Input
  
@@ -373,7 +373,7 @@ export default function EditProgrammingPerformanceDrawer({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="ends_at">End Time</Label>
  <Input
  
@@ -382,7 +382,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="duration_minutes">Duration (minutes)</Label>
  <Input
  
@@ -390,7 +390,7 @@ export default function EditProgrammingPerformanceDrawer({
  {...register("duration_minutes")}
  placeholder="Duration in minutes"
  />
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {DURATION_PRESETS.map(({ value, label }) => (
  <Button
  key={value}
@@ -412,13 +412,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Venue */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <MapPin className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <MapPin className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Venue</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="venue">Venue Name</Label>
  <Input
  
@@ -427,7 +427,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="venue_capacity">Venue Capacity</Label>
  <Input
  
@@ -443,13 +443,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Ticket Information */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <DollarSign className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Ticket Information</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="ticket_price_min">Min Price</Label>
  <Input
  
@@ -460,7 +460,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="ticket_price_max">Max Price</Label>
  <Input
  
@@ -471,7 +471,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="ticket_currency">Currency</Label>
  <Select {...register("ticket_currency")}>
  {CURRENCY_OPTIONS.map(({ value, label }) => (
@@ -482,7 +482,7 @@ export default function EditProgrammingPerformanceDrawer({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label>
  <input
  type="checkbox"
@@ -494,7 +494,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="ticket_sales_url">Sales URL</Label>
  <Input
  
@@ -509,13 +509,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Audience Information */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Users className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Users className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Audience Information</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="audience_expected_attendance">Expected Attendance</Label>
  <Input
  
@@ -525,7 +525,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="audience_target_demographic">Target Demographic</Label>
  <Select {...register("audience_target_demographic")}>
  <option value="">Select target demographic</option>
@@ -538,7 +538,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="audience_accessibility_notes">Accessibility Notes</Label>
  <Textarea
  
@@ -553,13 +553,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Technical Requirements */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Settings className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Settings className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Technical Requirements</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="tech_sound_system">Sound System</Label>
  <Input
  
@@ -568,7 +568,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="tech_lighting">Lighting</Label>
  <Input
  
@@ -578,7 +578,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="tech_stage_setup">Stage Setup</Label>
  <Textarea
  
@@ -588,11 +588,11 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label>Equipment Needed</Label>
- <div className="grid grid-cols-2 md:grid-cols-3 gap-2 max-h-40 overflow-y-auto">
+ <div className="grid grid-cols-2 md:grid-cols-3 gap-xs max-h-40 overflow-y-auto">
  {EQUIPMENT_OPTIONS.map((equipment) => (
- <label key={equipment} className="flex items-center space-x-2 text-sm">
+ <label key={equipment} className="flex items-center space-x-xs text-sm">
  <input
  type="checkbox"
  checked={selectedEquipment.includes(equipment)}
@@ -604,7 +604,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="tech_crew_requirements">Crew Requirements</Label>
  <Textarea
  
@@ -619,13 +619,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Production Notes */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <FileText className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <FileText className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Production Notes</h3>
  </div>
 
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="prod_call_time">Call Time</Label>
  <Input
  
@@ -634,7 +634,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="prod_sound_check">Sound Check</Label>
  <Input
  
@@ -644,7 +644,7 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="prod_rehearsal_schedule">Rehearsal Schedule</Label>
  <Textarea
  
@@ -654,7 +654,7 @@ export default function EditProgrammingPerformanceDrawer({
  />
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="prod_special_instructions">Special Instructions</Label>
  <Textarea
  
@@ -669,13 +669,13 @@ export default function EditProgrammingPerformanceDrawer({
 
  {/* Tags */}
  <div className="space-y-md">
- <div className="flex items-center gap-2">
- <Tag className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Tag className="h-icon-xs w-icon-xs" />
  <h3 className="text-lg font-medium">Tags</h3>
  </div>
 
- <div className="space-y-2">
- <div className="flex gap-2">
+ <div className="space-y-xs">
+ <div className="flex gap-xs">
  <Input
  value={newTag}
  onChange={(e) => setNewTag(e.target.value)}
@@ -683,12 +683,12 @@ export default function EditProgrammingPerformanceDrawer({
  onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), addTag())}
  />
  <Button type="button" onClick={addTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {watchedTags.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {watchedTags.map((tag) => (
  <Badge key={tag} variant="secondary" className="text-xs">
  {tag}
@@ -710,15 +710,15 @@ export default function EditProgrammingPerformanceDrawer({
  </div>
 
  {error && (
- <div className="px-6 py-2">
- <div className="rounded-md bg-destructive/15 p-3">
+ <div className="px-lg py-xs">
+ <div className="rounded-md bg-destructive/15 p-sm">
  <p className="text-sm text-destructive">{error}</p>
  </div>
  </div>
  )}
 
  <DrawerFooter>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button type="button" variant="outline" onClick={handleClose}>
  Cancel
  </Button>

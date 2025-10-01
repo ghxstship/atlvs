@@ -53,16 +53,16 @@ export function HeroSection() {
       <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
       
       {/* Gradient Orbs */}
-      <div className="absolute top-0 pointer-events-none left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 pointer-events-none right-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 pointer-events-none left-1/4 w-container-lg h-container-lg bg-accent/10 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 pointer-events-none right-1/4 w-container-lg h-container-lg bg-accent/10 rounded-full blur-3xl"></div>
 
       <div className="container mx-auto px-lg py-0 relative">
-        <div className="grid lg:grid-cols-2 gap-3xl items-center">
+        <div className="grid lg:grid-cols-2 gap-smxl items-center">
           {/* Left Column - Content */}
           <div className="stack-2xl">
             {/* Badge */}
             <div className="inline-flex items-center gap-sm px-md py-sm rounded-full bg-accent/10 color-accent text-body-sm form-label">
-              <Zap className="h-4 w-4" />
+              <Zap className="h-icon-xs w-icon-xs" />
               Now with AI-powered insights
             </div>
 
@@ -79,7 +79,7 @@ export function HeroSection() {
               </h1>
               
               {/* Dynamic Feature Highlight */}
-              <div className="h-8 flex items-center">
+              <div className="h-icon-lg flex items-center">
                 <p className="text-heading-4 color-muted">
                   {features.map((feature, index) => (
                     <span
@@ -110,7 +110,7 @@ export function HeroSection() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-xl">
               {features.map((feature, index) => (
                 <div key={feature} className="flex items-center gap-xl">
-                  <CheckCircle className="h-5 w-5 color-accent flex-shrink-0" />
+                  <CheckCircle className="h-icon-sm w-icon-sm color-accent flex-shrink-0" />
                   <span className="text-body-sm color-muted">{feature}</span>
                 </div>
               ))}
@@ -121,11 +121,11 @@ export function HeroSection() {
               <Link href="/auth/signup">
                 <Button variant="pop" size="lg" className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Button variant="outline" size="lg" className="w-full sm:w-auto group">
-                <Play className="mr-sm h-4 w-4" />
+                <Play className="mr-sm h-icon-xs w-icon-xs" />
                 Watch Demo
               </Button>
             </div>
@@ -173,7 +173,7 @@ export function HeroSection() {
                     <div className="text-body-sm color-muted mb-xs">Timeline</div>
                     <span className="text-body-sm">85%</span>
                     <div className="w-full bg-secondary rounded-full h-1 mt-xs">
-                      <div className="bg-accent h-1 rounded-full w-4/5"></div>
+                      <div className="bg-accent h-1 rounded-full w-icon-xs/5"></div>
                     </div>
                   </div>
                   <div className="bg-secondary/30 rounded-lg p-sm pop-shadow-sm border border-black">
@@ -181,7 +181,7 @@ export function HeroSection() {
                     <span className="text-body-sm">12</span>
                     <div className="flex -cluster-xs mt-xs">
                       {[1, 2, 3].map((i: any) => (
-                        <div key={i} className="w-4 h-4 bg-accent rounded-full border border-background"></div>
+                        <div key={i} className="w-icon-xs h-icon-xs bg-accent rounded-full border border-background"></div>
                       ))}
                     </div>
                   </div>
@@ -207,11 +207,11 @@ export function HeroSection() {
             </div>
 
             {/* Floating Elements */}
-            <div className="absolute -top-4 -right-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
-              <Zap className="h-6 w-6" />
+            <div className="absolute -top-md -right-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-primary">
+              <Zap className="h-icon-md w-icon-md" />
             </div>
             <div className="absolute -bottom-4 -left-4 bg-accent color-accent-foreground rounded-full p-sm pop-shadow-md border-2 border-black glow-accent">
-              <Star className="h-6 w-6" />
+              <Star className="h-icon-md w-icon-md" />
             </div>
           </div>
         </div>
@@ -224,7 +224,7 @@ export function HeroSection() {
               return (
                 <div key={stat.label} className="text-center lg:text-left">
                   <div className="flex items-center justify-center lg:justify-start gap-xl mb-xs">
-                    <Icon className="h-5 w-5 color-accent" />
+                    <Icon className="h-icon-sm w-icon-sm color-accent" />
                     <span className="text-heading-3 color-accent">
                       {stat.value}
                     </span>

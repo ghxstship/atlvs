@@ -329,9 +329,9 @@ export function VoiceSearch({
           title={isListening ? 'Stop listening' : 'Start voice input'}
         >
           {isListening ? (
-            <MicOff className="h-4 w-4" />
+            <MicOff className="h-icon-xs w-icon-xs" />
           ) : (
-            <Mic className="h-4 w-4" />
+            <Mic className="h-icon-xs w-icon-xs" />
           )}
           
           {/* Listening indicator */}
@@ -349,7 +349,7 @@ export function VoiceSearch({
             className="animate-pulse"
             title="Stop speaking"
           >
-            <VolumeX className="h-4 w-4" />
+            <VolumeX className="h-icon-xs w-icon-xs" />
           </Button>
         )}
       </div>

@@ -543,7 +543,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  actions: (
  <div className="flex gap-sm">
  <Button onClick={() => router.push("/projects?action=create")}>
- <Plus className="h-4 w-4 mr-xs" />
+ <Plus className="h-icon-xs w-icon-xs mr-xs" />
  Create Project
  </Button>
  <Button variant="outline" onClick={() => {

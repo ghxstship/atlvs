@@ -111,7 +111,7 @@ export function CreatePolicyClient({
  <div className="absolute right-0 top-0 h-full w-full max-w-4xl bg-background shadow-xl">
  <div className="flex h-full flex-col">
  {/* Header */}
- <div className="flex items-center justify-between border-b p-6">
+ <div className="flex items-center justify-between border-b p-lg">
  <div>
  <h2 className="text-lg font-semibold">Create Approval Policy</h2>
  <p className="text-sm text-muted-foreground">
@@ -119,13 +119,13 @@ export function CreatePolicyClient({
  </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Progress Steps */}
- <div className="border-b p-6">
- <div className="flex items-center space-x-4">
+ <div className="border-b p-lg">
+ <div className="flex items-center space-x-md">
  {[
  { step: 1, title: 'Basic Info' },
  { step: 2, title: 'Conditions' },
@@ -134,7 +134,7 @@ export function CreatePolicyClient({
  ].map(({ step, title }) => (
  <div key={step} className="flex items-center">
  <div
- className={`flex h-8 w-8 items-center justify-center rounded-full text-sm font-medium ${
+ className={`flex h-icon-lg w-icon-lg items-center justify-center rounded-full text-sm font-medium ${
  currentStep >= step
  ? 'bg-primary text-primary-foreground'
  : 'bg-muted text-muted-foreground'
@@ -143,18 +143,18 @@ export function CreatePolicyClient({
  {step}
  </div>
  <span className="ml-2 text-sm font-medium">{title}</span>
- {step < 4 && <div className="ml-4 h-px w-8 bg-border" />}
+ {step < 4 && <div className="ml-4 h-px w-icon-lg bg-border" />}
  </div>
  ))}
  </div>
  </div>
 
  {/* Content */}
- <div className="flex-1 overflow-y-auto p-6">
- <form className="space-y-6">
+ <div className="flex-1 overflow-y-auto p-lg">
+ <form className="space-y-lg">
  {/* Step 1: Basic Information */}
  {currentStep === 1 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <div>
  <label className="text-sm font-medium">Policy Name *</label>
  <Input
@@ -172,7 +172,7 @@ export function CreatePolicyClient({
  />
  </div>
 
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <input
  type="checkbox"
  {...form.register('is_active')}
@@ -185,7 +185,7 @@ export function CreatePolicyClient({
 
  {/* Step 2: Conditions */}
  {currentStep === 2 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <div>
  <h3 className="text-lg font-medium mb-4">Policy Conditions</h3>
  <p className="text-sm text-muted-foreground mb-6">
@@ -193,9 +193,9 @@ export function CreatePolicyClient({
  </p>
  </div>
 
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Amount Threshold</h4>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium">Minimum Amount</label>
  <Input
@@ -227,11 +227,11 @@ export function CreatePolicyClient({
  </div>
  </Card>
 
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Categories</h4>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {['equipment', 'supplies', 'services', 'materials', 'software', 'maintenance'].map(category => (
- <div key={category} className="flex items-center space-x-2">
+ <div key={category} className="flex items-center space-x-xs">
  <input
  type="checkbox"
  className="rounded border-border"
@@ -254,7 +254,7 @@ export function CreatePolicyClient({
  </div>
  </Card>
 
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Departments</h4>
  <Input
  placeholder="Enter departments (comma-separated)"
@@ -270,17 +270,17 @@ export function CreatePolicyClient({
 
  {/* Step 3: Approval Steps */}
  {currentStep === 3 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <div className="flex items-center justify-between">
  <h3 className="text-lg font-medium">Approval Steps</h3>
  <Button type="button" variant="outline" onClick={addApprovalStep}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Step
  </Button>
  </div>
 
  {fields.map((field, index) => (
- <Card key={field.id} className="p-4">
+ <Card key={field.id} className="p-md">
  <div className="flex items-center justify-between mb-4">
  <h4 className="font-medium">Step {index + 1}</h4>
  {fields.length > 1 && (
@@ -290,12 +290,12 @@ export function CreatePolicyClient({
  size="sm"
  onClick={() => removeApprovalStep(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
 
- <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+ <div className="grid grid-cols-1 gap-md md:grid-cols-2">
  <div>
  <label className="text-sm font-medium">Approver Role *</label>
  <Select {...form.register(`approval_steps.${index}.role`)}>
@@ -328,9 +328,9 @@ export function CreatePolicyClient({
  </div>
 
  {/* Step-specific conditions */}
- <div className="mt-4 p-3 bg-muted rounded">
+ <div className="mt-4 p-sm bg-muted rounded">
  <h5 className="text-sm font-medium mb-2">Step Conditions (Optional)</h5>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-xs text-muted-foreground">Min Amount for this step</label>
  <Input
@@ -376,13 +376,13 @@ export function CreatePolicyClient({
 
  {/* Step 4: Review */}
  {currentStep === 4 && (
- <div className="space-y-6">
+ <div className="space-y-lg">
  <h3 className="text-lg font-medium">Review Policy</h3>
  
  {/* Basic Info Summary */}
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Basic Information</h4>
- <div className="grid grid-cols-2 gap-4 text-sm">
+ <div className="grid grid-cols-2 gap-md text-sm">
  <div>
  <span className="text-muted-foreground">Name:</span>
  <p className="font-medium">{form.watch('name')}</p>
@@ -403,9 +403,9 @@ export function CreatePolicyClient({
  </Card>
 
  {/* Conditions Summary */}
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Conditions</h4>
- <div className="space-y-2 text-sm">
+ <div className="space-y-xs text-sm">
  {form.watch('conditions.min_amount') && (
  <p>• Minimum amount: ${form.watch('conditions.min_amount')}</p>
  )}
@@ -422,11 +422,11 @@ export function CreatePolicyClient({
  </Card>
 
  {/* Approval Steps Summary */}
- <Card className="p-4">
+ <Card className="p-md">
  <h4 className="font-medium mb-4">Approval Workflow ({fields.length} steps)</h4>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {form.watch('approval_steps')?.map((step, index) => (
- <div key={index} className="flex items-center justify-between p-3 bg-muted rounded">
+ <div key={index} className="flex items-center justify-between p-sm bg-muted rounded">
  <div>
  <p className="font-medium">Step {step.step}: {step.description}</p>
  <p className="text-sm text-muted-foreground">
@@ -448,9 +448,9 @@ export function CreatePolicyClient({
  </div>
 
  {/* Footer */}
- <div className="border-t p-6">
+ <div className="border-t p-lg">
  <div className="flex items-center justify-between">
- <div className="flex space-x-2">
+ <div className="flex space-x-xs">
  {currentStep > 1 && (
  <Button
  type="button"
@@ -462,7 +462,7 @@ export function CreatePolicyClient({
  )}
  </div>
  
- <div className="flex space-x-2">
+ <div className="flex space-x-xs">
  {currentStep < 4 ? (
  <Button
  type="button"
@@ -475,9 +475,9 @@ export function CreatePolicyClient({
  type="button"
  onClick={form.handleSubmit(onSubmit)}
  disabled={loading}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Save className="h-4 w-4" />
+ <Save className="h-icon-xs w-icon-xs" />
  Create Policy
  </Button>
  )}

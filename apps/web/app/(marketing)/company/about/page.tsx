@@ -85,7 +85,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -121,9 +121,9 @@ export default function AboutPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-2xl items-center">
+          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div>
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 OUR MISSION
@@ -136,21 +136,21 @@ export default function AboutPage() {
               
               <div className="stack-md">
                 <div className="flex items-start gap-sm">
-                  <Target className="h-5 w-5 text-foreground flex-shrink-0 mt-xs" />
+                  <Target className="h-icon-sm w-icon-sm text-foreground flex-shrink-0 mt-xs" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-xs">Solve Real Problems</h3>
                     <p className="text-body-sm color-muted">Build tools that actually work when you're managing 1,000+ people at 3am</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-sm">
-                  <Users className="h-5 w-5 text-foreground flex-shrink-0 mt-xs" />
+                  <Users className="h-icon-sm w-icon-sm text-foreground flex-shrink-0 mt-xs" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-xs">Battle-Tested Reliability</h3>
                     <p className="text-body-sm color-muted">Software that doesn't break when the stakes are highest and everyone's watching</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-sm">
-                  <TrendingUp className="h-5 w-5 text-foreground flex-shrink-0 mt-xs" />
+                  <TrendingUp className="h-icon-sm w-icon-sm text-foreground flex-shrink-0 mt-xs" />
                   <div>
                     <h3 className="text-heading-4 color-foreground mb-xs">Industry Experience</h3>
                     <p className="text-body-sm color-muted">Built by someone who's actually done this stuff, not just read about it</p>
@@ -181,7 +181,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -199,8 +199,8 @@ export default function AboutPage() {
                 <Card key={value.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary">
-                        <Icon className="h-6 w-6 text-background" />
+                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary">
+                        <Icon className="h-icon-md w-icon-md text-background" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>{value.title}</h3>
@@ -216,7 +216,7 @@ export default function AboutPage() {
       </section>
 
       {/* Timeline */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -230,7 +230,7 @@ export default function AboutPage() {
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border"></div>
             
-            <div className="space-y-2xl">
+            <div className="space-y-xsxl">
               {milestones.map((milestone, index) => (
                 <div key={milestone.year} className={`flex items-center gap-xl ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
                   <div className={`flex-1 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
@@ -248,7 +248,7 @@ export default function AboutPage() {
                   </div>
                   
                   <div className="relative z-10">
-                    <div className="w-4 h-4 bg-accent rounded-full border-4 border-background"></div>
+                    <div className="w-icon-xs h-icon-xs bg-accent rounded-full border-4 border-background"></div>
                   </div>
                   
                   <div className="flex-1"></div>
@@ -260,7 +260,7 @@ export default function AboutPage() {
       </section>
 
       {/* Leadership */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -275,8 +275,8 @@ export default function AboutPage() {
             {leadership.map((leader: any) => (
               <Card key={leader.name} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
-                  <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
-                    <Users className="h-8 w-8 text-foreground" />
+                  <div className="w-component-lg h-component-lg bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
+                    <Users className="h-icon-lg w-icon-lg text-foreground" />
                   </div>
                   <h3 className={`mb-xs ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {leader.name}
@@ -291,7 +291,7 @@ export default function AboutPage() {
       </section>
 
       {/* Awards & Recognition */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -337,8 +337,8 @@ export default function AboutPage() {
             ].map((award: any) => (
               <Card key={award.title} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
-                    <Award className="h-6 w-6 text-background" />
+                  <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-lg flex items-center justify-center mx-auto mb-md">
+                    <Award className="h-icon-md w-icon-md text-background" />
                   </div>
                   <h3 className={`mb-sm ${anton.className} text-heading-4 text-heading-3 uppercase`}>
                     {award.title}
@@ -353,7 +353,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -368,7 +368,7 @@ export default function AboutPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Creating
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/careers">
@@ -382,7 +382,7 @@ export default function AboutPage() {
       </section>
 
       {/* Related Pages */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>

@@ -29,12 +29,12 @@ export default function ProfileCardView({
 }: ProfileCardViewProps) {
  if (loading) {
  return (
- <Card className="p-6">
- <div className="flex items-start gap-4">
- <Skeleton className="h-16 w-16 rounded-full" />
- <div className="flex-1 space-y-2">
- <Skeleton className="h-4 w-48" />
- <Skeleton className="h-3 w-32" />
+ <Card className="p-lg">
+ <div className="flex items-start gap-md">
+ <Skeleton className="h-component-md w-component-md rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <Skeleton className="h-icon-xs w-container-xs" />
+ <Skeleton className="h-3 w-component-xl" />
  <Skeleton className="h-3 w-40" />
  </div>
  </div>
@@ -44,8 +44,8 @@ export default function ProfileCardView({
 
  if (!profile) {
  return (
- <Card className="p-6 text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <Card className="p-lg text-center">
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-semibold mb-2">No Profile Found</h3>
  <p className="text-muted-foreground">
  Profile information is not available.
@@ -66,10 +66,10 @@ export default function ProfileCardView({
  };
 
  return (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-start justify-between mb-6">
- <div className="flex items-start gap-4">
- <Avatar className="h-16 w-16">
+ <div className="flex items-start gap-md">
+ <Avatar className="h-component-md w-component-md">
  {profile.avatar_url ? (
  <img 
  src={profile.avatar_url} 
@@ -77,12 +77,12 @@ export default function ProfileCardView({
  className="h-full w-full object-cover" 
  />
  ) : (
- <User className="h-8 w-8" />
+ <User className="h-icon-lg w-icon-lg" />
  )}
  </Avatar>
  
- <div className="space-y-2">
- <div className="flex items-center gap-2">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <h3 className="text-lg font-semibold">
  {profile.job_title || 'No Title'}
  </h3>
@@ -91,10 +91,10 @@ export default function ProfileCardView({
  </Badge>
  </div>
  
- <div className="flex items-center gap-4 text-sm text-muted-foreground">
+ <div className="flex items-center gap-md text-sm text-muted-foreground">
  {profile.department && (
- <div className="flex items-center gap-1">
- <Briefcase className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Briefcase className="h-icon-xs w-icon-xs" />
  <span>{profile.department}</span>
  </div>
  )}
@@ -112,39 +112,39 @@ export default function ProfileCardView({
  </div>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {onView && (
  <Button variant="ghost" size="sm" onClick={onView}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onEdit && (
  <Button variant="ghost" size="sm" onClick={onEdit}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  {onExport && (
  <Button variant="ghost" size="sm" onClick={onExport}>
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
  </div>
 
  {!compact && (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Contact Information */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {profile.phone_primary && (
- <div className="flex items-center gap-2 text-sm">
- <Phone className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs text-sm">
+ <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{profile.phone_primary}</span>
  </div>
  )}
  
  {(profile.city || profile.country) && (
- <div className="flex items-center gap-2 text-sm">
- <MapPin className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs text-sm">
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>
  {[profile.city, profile.country].filter(Boolean).join(', ')}
  </span>
@@ -152,15 +152,15 @@ export default function ProfileCardView({
  )}
  
  {profile.hire_date && (
- <div className="flex items-center gap-2 text-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs text-sm">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>Hired {formatDate(profile.hire_date)}</span>
  </div>
  )}
  
  {profile.nationality && (
- <div className="flex items-center gap-2 text-sm">
- <Globe className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center gap-xs text-sm">
+ <Globe className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{profile.nationality}</span>
  </div>
  )}
@@ -176,11 +176,11 @@ export default function ProfileCardView({
  )}
 
  {/* Skills and Languages */}
- <div className="pt-4 border-t space-y-3">
+ <div className="pt-4 border-t space-y-sm">
  {profile.skills && profile.skills.length > 0 && (
  <div>
  <h4 className="text-sm font-medium mb-2">Skills</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {profile.skills.slice(0, 6).map(skill => (
  <Badge key={skill} variant="secondary" className="text-xs">
  {skill}
@@ -198,7 +198,7 @@ export default function ProfileCardView({
  {profile.languages && profile.languages.length > 0 && (
  <div>
  <h4 className="text-sm font-medium mb-2">Languages</h4>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {profile.languages.map(language => (
  <Badge key={language} variant="outline" className="text-xs">
  {language}
@@ -212,7 +212,7 @@ export default function ProfileCardView({
  {/* Links */}
  {(profile.linkedin_url || profile.website_url) && (
  <div className="pt-4 border-t">
- <div className="flex gap-4">
+ <div className="flex gap-md">
  {profile.linkedin_url && (
  <a
  href={profile.linkedin_url as any as any}

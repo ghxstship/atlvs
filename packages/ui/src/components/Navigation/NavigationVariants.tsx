@@ -89,7 +89,7 @@ export const navigationItemVariants = cva(
       size: {
         compact: 'h-[var(--nav-height-compact)] text-[var(--nav-text-xs)]',
         comfortable: 'h-[var(--nav-height-item)] text-[var(--nav-text-sm)]',
-        spacious: 'h-12 text-[var(--nav-text-base)]',
+        spacious: 'h-icon-2xl text-[var(--nav-text-base)]',
       },
       variant: {
         default: '',
@@ -166,7 +166,7 @@ export const breadcrumbItemVariants = cva(
 
 export const dropdownVariants = cva(
   [
-    'absolute z-[var(--nav-z-dropdown)] min-w-48',
+    'absolute z-[var(--nav-z-dropdown)] min-w-container-xs',
     'bg-[hsl(var(--nav-bg-accent))] border border-[hsl(var(--nav-border-default))]',
     'rounded-[var(--nav-radius-md)] shadow-[var(--nav-shadow-lg)]',
     'py-[var(--nav-spacing-xs)]',
@@ -233,9 +233,9 @@ export const searchVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-8',
-        md: 'h-10',
-        lg: 'h-12',
+        sm: 'h-icon-lg',
+        md: 'h-icon-xl',
+        lg: 'h-icon-2xl',
       },
       variant: {
         default: '',
@@ -318,9 +318,9 @@ export const headerVariants = cva(
         false: '',
       },
       size: {
-        compact: 'h-12',
-        comfortable: 'h-16',
-        spacious: 'h-20',
+        compact: 'h-icon-2xl',
+        comfortable: 'h-component-md',
+        spacious: 'h-component-lg',
       },
     },
     defaultVariants: {

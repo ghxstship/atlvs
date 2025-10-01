@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="min-h-screen py-4xl">
+    <div className="min-h-screen py-mdxl">
       <div className="container mx-auto px-md max-w-4xl">
         {/* Header */}
         <div className="text-center mb-3xl">
@@ -36,26 +36,26 @@ export default function PrivacyPolicyPage() {
         <Card className="mb-2xl bg-gradient-to-r from-primary/5 to-accent/5">
           <CardContent className="p-xl">
             <div className="flex items-center gap-sm mb-lg">
-              <Shield className="h-8 w-8 text-foreground" />
+              <Shield className="h-icon-lg w-icon-lg text-foreground" />
               <h2 className="font-title text-heading-3 text-heading-3">Privacy at a Glance</h2>
             </div>
             <div className="grid md:grid-cols-3 gap-lg">
               <div className="flex items-start gap-sm">
-                <Eye className="h-5 w-5 text-foreground mt-xs" />
+                <Eye className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">What We Collect</h3>
                   <p className="text-body-sm color-muted">Account info, usage data, and technical information to provide our services.</p>
                 </div>
               </div>
               <div className="flex items-start gap-sm">
-                <Lock className="h-5 w-5 text-foreground mt-xs" />
+                <Lock className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">How We Protect</h3>
                   <p className="text-body-sm color-muted">Enterprise-grade security, encryption, and access controls protect your data.</p>
                 </div>
               </div>
               <div className="flex items-start gap-sm">
-                <Users className="h-5 w-5 text-foreground mt-xs" />
+                <Users className="h-icon-sm w-icon-sm text-foreground mt-xs" />
                 <div>
                   <h3 className="text-heading-4 mb-sm">Your Rights</h3>
                   <p className="text-body-sm color-muted">Access, correct, delete, or export your data at any time.</p>
@@ -66,7 +66,7 @@ export default function PrivacyPolicyPage() {
         </Card>
 
         {/* Main Content */}
-        <div className="space-y-2xl">
+        <div className="space-y-xsxl">
           {/* Information We Collect */}
           <section>
             <h2 className="font-title text-heading-3 text-heading-3 mb-lg">1. Information We Collect</h2>
@@ -190,7 +190,7 @@ export default function PrivacyPolicyPage() {
               <Card>
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
-                    <Lock className="h-6 w-6 text-foreground" />
+                    <Lock className="h-icon-md w-icon-md text-foreground" />
                     <h3>Encryption</h3>
                   </div>
                   <p className="text-body-sm color-muted">All data is encrypted in transit and at rest using industry-standard AES-256 encryption.</p>
@@ -200,7 +200,7 @@ export default function PrivacyPolicyPage() {
               <Card>
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
-                    <Shield className="h-6 w-6 text-foreground" />
+                    <Shield className="h-icon-md w-icon-md text-foreground" />
                     <h3>Access Controls</h3>
                   </div>
                   <p className="text-body-sm color-muted">Strict access controls and regular security audits protect your information.</p>
@@ -210,7 +210,7 @@ export default function PrivacyPolicyPage() {
               <Card>
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
-                    <Globe className="h-6 w-6 text-foreground" />
+                    <Globe className="h-icon-md w-icon-md text-foreground" />
                     <h3>Compliance</h3>
                   </div>
                   <p className="text-body-sm color-muted">SOC 2 Type II certified and GDPR/CCPA compliant data handling practices.</p>
@@ -220,7 +220,7 @@ export default function PrivacyPolicyPage() {
               <Card>
                 <CardContent className="p-lg">
                   <div className="flex items-center gap-sm mb-md">
-                    <Users className="h-6 w-6 text-foreground" />
+                    <Users className="h-icon-md w-icon-md text-foreground" />
                     <h3>Team Training</h3>
                   </div>
                   <p className="text-body-sm color-muted">Regular security training for all employees with access to user data.</p>
@@ -347,7 +347,7 @@ export default function PrivacyPolicyPage() {
             <Card>
               <CardContent className="p-lg">
                 <div className="flex items-start gap-md">
-                  <Mail className="h-6 w-6 text-foreground mt-xs" />
+                  <Mail className="h-icon-md w-icon-md text-foreground mt-xs" />
                   <div>
                     <h3 className="text-heading-4 mb-sm">Questions About This Policy?</h3>
                     <p className="color-muted mb-md">

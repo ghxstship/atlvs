@@ -74,7 +74,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">{t('overview.totalListings')}</CardTitle>
-            <FileText className="h-4 w-4 text-muted-foreground" />
+            <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.totalListings || 0}</div>
@@ -87,7 +87,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">{t('overview.activeVendors')}</CardTitle>
-            <Users className="h-4 w-4 text-muted-foreground" />
+            <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.totalVendors || 0}</div>
@@ -100,7 +100,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">{t('overview.activeProjects')}</CardTitle>
-            <Briefcase className="h-4 w-4 text-muted-foreground" />
+            <Briefcase className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.totalProjects || 0}</div>
@@ -113,7 +113,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">{t('overview.totalResponses')}</CardTitle>
-            <MessageSquare className="h-4 w-4 text-muted-foreground" />
+            <MessageSquare className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">{stats?.totalResponses || 0}</div>
@@ -129,7 +129,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <TrendingUp className="h-5 w-5" />
+              <TrendingUp className="h-icon-sm w-icon-sm" />
               {t('overview.vendorPerformance')}
             </CardTitle>
           </CardHeader>
@@ -162,7 +162,7 @@ export default function MarketplaceOverviewClient({
         <Card className="brand-marketplace">
           <CardHeader>
             <CardTitle className="flex items-center gap-sm">
-              <Briefcase className="h-5 w-5" />
+              <Briefcase className="h-icon-sm w-icon-sm" />
               {t('overview.clientActivity')}
             </CardTitle>
           </CardHeader>
@@ -203,7 +203,7 @@ export default function MarketplaceOverviewClient({
               variant="outline"
               onClick={() => setActiveTab('listings')}
             >
-              <Plus className="mr-sm h-4 w-4" />
+              <Plus className="mr-sm h-icon-xs w-icon-xs" />
               <div className="text-left">
                 <div className="font-medium">{t('overview.createListing')}</div>
                 <div className="text-xs text-muted-foreground">{t('overview.createListingDesc')}</div>
@@ -215,7 +215,7 @@ export default function MarketplaceOverviewClient({
               variant="outline"
               onClick={() => setActiveTab('projects')}
             >
-              <Briefcase className="mr-sm h-4 w-4" />
+              <Briefcase className="mr-sm h-icon-xs w-icon-xs" />
               <div className="text-left">
                 <div className="font-medium">{t('overview.postProject')}</div>
                 <div className="text-xs text-muted-foreground">{t('overview.postProjectDesc')}</div>
@@ -227,7 +227,7 @@ export default function MarketplaceOverviewClient({
               variant="outline"
               onClick={() => setActiveTab('vendors')}
             >
-              <Users className="mr-sm h-4 w-4" />
+              <Users className="mr-sm h-icon-xs w-icon-xs" />
               <div className="text-left">
                 <div className="font-medium">{t('overview.findVendors')}</div>
                 <div className="text-xs text-muted-foreground">{t('overview.findVendorsDesc')}</div>
@@ -245,7 +245,7 @@ export default function MarketplaceOverviewClient({
         return renderOverviewContent();
       default:
         return (
-          <div className="text-center py-2xl">
+          <div className="text-center py-xsxl">
             <p className="text-muted-foreground">
               {t('comingSoon', { tab: activeTab })}
             </p>
@@ -269,7 +269,7 @@ export default function MarketplaceOverviewClient({
 
       {/* Tab Navigation */}
       <div className="border-b border-border">
-        <nav className="flex space-x-1" aria-label="Marketplace navigation">
+        <nav className="flex space-x-xs" aria-label="Marketplace navigation">
           {tabs.map((tab) => {
             const Icon = tab.icon;
             return (
@@ -283,7 +283,7 @@ export default function MarketplaceOverviewClient({
                 }`}
                 aria-current={activeTab === tab.id ? 'page' : undefined}
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-icon-xs w-icon-xs" />
                 {tab.label}
               </button>
             );
@@ -292,7 +292,7 @@ export default function MarketplaceOverviewClient({
       </div>
 
       {/* Tab Content */}
-      <div className="min-h-[600px]">
+      <div className="min-h-content-xl">
         {renderTabContent()}
       </div>
     </div>

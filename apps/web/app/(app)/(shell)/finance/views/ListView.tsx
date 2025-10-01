@@ -2,9 +2,9 @@
 
 export function ListView({ data }: any) {
   return (
-    <div className="space-y-2">
+    <div className="space-y-xs">
       {data?.map((item: any) => (
-        <div key={item.id} className="p-3 border-b">
+        <div key={item.id} className="p-sm border-b">
           {item.title || item.name}
         </div>
       ))}

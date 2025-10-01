@@ -25,7 +25,7 @@ export default function ForgotPasswordForm() {
     return (
       <Card className="p-lg">
         <div className="brand-ghostship text-center">
-          <CheckCircle className="h-12 w-12 color-success mx-auto mb-md" />
+          <CheckCircle className="h-icon-2xl w-icon-2xl color-success mx-auto mb-md" />
           <h2 className="font-display text-heading-4 text-heading-3 mb-sm">Check Your Email</h2>
           <p className="color-muted mb-lg">
             We've sent password reset instructions to <strong>{email}</strong>
@@ -54,7 +54,7 @@ export default function ForgotPasswordForm() {
       <form onSubmit={handleSubmit} className="stack-lg">
         <div>
           <Label htmlFor="email" className="flex items-center gap-sm">
-            <Mail className="h-4 w-4" />
+            <Mail className="h-icon-xs w-icon-xs" />
             Email Address
           </Label>
           <UnifiedInput             id="email"
@@ -77,7 +77,7 @@ export default function ForgotPasswordForm() {
           size="lg"
         >
           {loading ? 'Sending Instructions...' : 'Send Reset Instructions'}
-          <ArrowRight className="ml-sm h-4 w-4" />
+          <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
         </Button>
       </form>
 

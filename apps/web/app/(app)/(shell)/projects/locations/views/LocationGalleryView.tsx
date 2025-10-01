@@ -35,7 +35,7 @@ export default function LocationGalleryView({
  if (locationsWithImages.length === 0) {
  return (
  <div className="text-center py-xl">
- <ImageOff className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <ImageOff className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Location Images</h3>
  <p className="text-muted-foreground mb-md">
  Upload images to your locations to see them in gallery view
@@ -65,7 +65,7 @@ export default function LocationGalleryView({
  onClick={() => onView(location)}
  >
  {/* Image Gallery */}
- <div className="relative h-48 bg-muted">
+ <div className="relative h-container-xs bg-muted">
  {location.images && location.images[0] && (
  <img
  src={location.images[0]}
@@ -105,9 +105,9 @@ export default function LocationGalleryView({
  <div className="p-md space-y-sm">
  {/* Title and Type */}
  <div>
- <h3 className="font-semibold text-lg line-clamp-1">{location.name}</h3>
+ <h3 className="font-semibold text-lg line-clamp-xs">{location.name}</h3>
  <div className="flex items-center gap-xs mt-xs">
- <TypeIcon className="h-4 w-4 text-muted-foreground" />
+ <TypeIcon className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">{location.type || "other"}</span>
  <Badge 
  variant={getAvailabilityBadgeVariant(location.availability_status || "available")}
@@ -122,7 +122,7 @@ export default function LocationGalleryView({
  {(location.address || location.city) && (
  <div className="flex items-start gap-xs text-sm text-muted-foreground">
  <MapPin className="h-3 w-3 mt-0.5 flex-shrink-0" />
- <span className="line-clamp-2">
+ <span className="line-clamp-xs">
  {[location.address, location.city, location.state, location.country]
  .filter(Boolean)
  .join(", ")}
@@ -193,7 +193,7 @@ export default function LocationGalleryView({
  onView(location);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -203,7 +203,7 @@ export default function LocationGalleryView({
  onEdit(location);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -213,7 +213,7 @@ export default function LocationGalleryView({
  onDelete(location);
  }}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>
@@ -246,7 +246,7 @@ export default function LocationGalleryView({
  onChange={() => onSelectLocation(location.id)}
  onClick={(e: React.MouseEvent) => e.stopPropagation()}
  />
- <TypeIcon className="h-4 w-4 text-muted-foreground" />
+ <TypeIcon className="h-icon-xs w-icon-xs text-muted-foreground" />
  <div className="flex-1 min-w-0">
  <p className="font-medium text-sm truncate">{location.name}</p>
  <p className="text-xs text-muted-foreground truncate">

@@ -100,7 +100,7 @@ export default function CreateBudgetDrawer({
  {/* Basic Information */}
  <Card className="p-lg">
  <div className="flex items-center cluster-sm mb-md">
- <FileText className="h-5 w-5 color-accent" />
+ <FileText className="h-icon-sm w-icon-sm color-accent" />
  <h3 className="text-heading-4 color-foreground">Basic Information</h3>
  </div>
  
@@ -163,7 +163,7 @@ export default function CreateBudgetDrawer({
  {/* Financial Details */}
  <Card className="p-lg">
  <div className="flex items-center cluster-sm mb-md">
- <DollarSign className="h-5 w-5 color-success" />
+ <DollarSign className="h-icon-sm w-icon-sm color-success" />
  <h3 className="text-heading-4 color-foreground">Financial Details</h3>
  </div>
  
@@ -200,7 +200,7 @@ export default function CreateBudgetDrawer({
  {/* Period */}
  <Card className="p-lg">
  <div className="flex items-center cluster-sm mb-md">
- <Calendar className="h-5 w-5 color-accent" />
+ <Calendar className="h-icon-sm w-icon-sm color-accent" />
  <h3 className="text-heading-4 color-foreground">Budget Period</h3>
  </div>
  

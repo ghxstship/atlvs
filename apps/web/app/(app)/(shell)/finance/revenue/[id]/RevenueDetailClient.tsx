@@ -55,7 +55,7 @@ export default function RevenueDetailClient({ revenue, user, orgId }: RevenueDet
  size="sm"
  onClick={() => router.back()}
  >
- <ArrowLeft className="h-4 w-4 mr-xs" />
+ <ArrowLeft className="h-icon-xs w-icon-xs mr-xs" />
  Back to Revenue
  </Button>
  <div>
@@ -91,11 +91,11 @@ export default function RevenueDetailClient({ revenue, user, orgId }: RevenueDet
  <CardContent className="pt-lg">
  <div className="flex items-center gap-md">
  <Button onClick={() => setIsEditDrawerOpen(true)}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Revenue
  </Button>
  <Button variant="outline" onClick={() => router.push('/finance/revenue')}>
- <DollarSign className="h-4 w-4 mr-xs" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-xs" />
  View All Revenue
  </Button>
  </div>

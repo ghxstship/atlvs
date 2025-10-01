@@ -24,8 +24,8 @@ export const ListView: React.FC<ListViewProps> = ({
       {showHeaders && (
         <div className="flex font-medium text-sm border-b pb-sm">
           <div className="flex-1">Title</div>
-          <div className="w-32">Status</div>
-          <div className="w-32">Actions</div>
+          <div className="w-component-xl">Status</div>
+          <div className="w-component-xl">Actions</div>
         </div>
       )}
 
@@ -34,12 +34,12 @@ export const ListView: React.FC<ListViewProps> = ({
           <div className="flex-1">
             {item.title || item.name || item.po_number || `Item ${item.id}`}
           </div>
-          <div className="w-32">
+          <div className="w-component-xl">
             <span className="px-sm py-0.5 bg-muted rounded text-xs">
               {item.status || 'N/A'}
             </span>
           </div>
-          <div className="w-32 flex gap-xs">
+          <div className="w-component-xl flex gap-xs">
             <button
               onClick={() => config.actions?.view?.(item)}
               className="text-xs px-sm py-0.5 bg-primary/10 text-primary rounded hover:bg-primary/20"

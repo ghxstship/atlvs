@@ -316,7 +316,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
       >
         <CardHeader className="pb-2">
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-2 flex-1 min-w-0">
+            <div className="flex items-center gap-xs flex-1 min-w-0">
               {/* Selection Checkbox */}
               {selectable && (
                 <Checkbox
@@ -328,7 +328,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
               {/* Avatar */}
               {cardConfig.avatar && (
-                <Avatar className="h-6 w-6 flex-shrink-0">
+                <Avatar className="h-icon-md w-icon-md flex-shrink-0">
                   <AvatarImage src={String(row[cardConfig.avatar.field] || '')} />
                   <AvatarFallback>
                     {cardConfig.avatar.fallbackField
@@ -349,7 +349,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
             {cardConfig.actions && cardConfig.actions.length > 0 && (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0 flex-shrink-0">
+                  <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0 flex-shrink-0">
                     <MoreHorizontal className="h-3 w-3" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -364,7 +364,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                         onClick={() => action.onClick(row)}
                         disabled={disabled}
                       >
-                        {Icon && <Icon className="h-4 w-4 mr-2" />}
+                        {Icon && <Icon className="h-icon-xs w-icon-xs mr-2" />}
                         {action.label}
                       </DropdownMenuItem>
                     );
@@ -386,7 +386,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
           {/* Badges */}
           {cardConfig.badges && cardConfig.badges.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-2">
+            <div className="flex flex-wrap gap-xs mt-2">
               {cardConfig.badges.map((badge, idx) => (
                 <Badge
                   key={idx}
@@ -407,7 +407,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
         {/* Metadata */}
         {cardConfig.metadata && cardConfig.metadata.length > 0 && (
           <CardContent className="pt-0">
-            <div className="space-y-1">
+            <div className="space-y-xs">
               {cardConfig.metadata.map((meta, idx) => (
                 <div key={idx} className="flex justify-between text-xs">
                   <span className="text-muted-foreground">{meta.label}:</span>
@@ -425,7 +425,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
         {/* Drag Handle */}
         <div className="absolute bottom-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-          <GripVertical className="h-4 w-4 text-muted-foreground" />
+          <GripVertical className="h-icon-xs w-icon-xs text-muted-foreground" />
         </div>
       </Card>
     );
@@ -452,9 +452,9 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
       <div
         key={column.id}
         className={cn(
-          'flex-shrink-0 w-80 bg-muted/30 rounded-lg p-4',
+          'flex-shrink-0 w-container-md bg-muted/30 rounded-lg p-md',
           isOver && 'ring-2 ring-primary ring-opacity-50',
-          isCollapsed && 'w-12'
+          isCollapsed && 'w-icon-2xl'
         )}
         onDragOver={(e) => handleDragOver(e, column.id)}
         onDragLeave={handleDragLeave}
@@ -467,14 +467,14 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
               variant="ghost"
               size="sm"
               onClick={() => toggleColumnCollapse(column.id)}
-              className="p-1 h-8 w-8"
+              className="p-xs h-icon-lg w-icon-lg"
             >
-              <column.icon className="h-4 w-4" />
+              <column.icon className="h-icon-xs w-icon-xs" />
             </Button>
           ) : (
             <>
-              <div className="flex items-center gap-2">
-                {column.icon && <column.icon className="h-4 w-4" style={{ color: column.color }} />}
+              <div className="flex items-center gap-xs">
+                {column.icon && <column.icon className="h-icon-xs w-icon-xs" style={{ color: column.color }} />}
                 <h3 className="font-medium text-sm">{column.title}</h3>
                 <Badge variant="secondary" className="text-xs">
                   {totalCards}
@@ -487,13 +487,13 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                 )}
               </div>
 
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-xs">
                 {onAddCard && (
                   <Button
                     variant="ghost"
                     size="sm"
                     onClick={() => onAddCard(column.id)}
-                    className="h-6 w-6 p-0"
+                    className="h-icon-md w-icon-md p-0"
                   >
                     <Plus className="h-3 w-3" />
                   </Button>
@@ -504,7 +504,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                     variant="ghost"
                     size="sm"
                     onClick={() => toggleColumnCollapse(column.id)}
-                    className="h-6 w-6 p-0"
+                    className="h-icon-md w-icon-md p-0"
                   >
                     <Settings className="h-3 w-3" />
                   </Button>
@@ -512,7 +512,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                    <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
                       <MoreHorizontal className="h-3 w-3" />
                     </Button>
                   </DropdownMenuTrigger>
@@ -539,7 +539,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
         {/* Column Content */}
         {!isCollapsed && (
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {swimlanes.length > 0 ? (
               // Render with swimlanes
               swimlanes.map((swimlane) => {
@@ -548,7 +548,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                 const isSwimlaneCollapsed = collapsedSwimlanes.has(swimlaneKey);
 
                 return (
-                  <div key={swimlaneKey} className="border rounded-md p-3 bg-background">
+                  <div key={swimlaneKey} className="border rounded-md p-sm bg-background">
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="text-xs font-medium text-muted-foreground">
                         {swimlane.title}
@@ -557,7 +557,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                         variant="ghost"
                         size="sm"
                         onClick={() => toggleSwimlaneCollapse(swimlaneKey)}
-                        className="h-5 w-5 p-0"
+                        className="h-icon-sm w-icon-sm p-0"
                       >
                         <ChevronRight className={cn(
                           'h-3 w-3 transition-transform',
@@ -567,7 +567,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                     </div>
 
                     {!isSwimlaneCollapsed && (
-                      <div className="space-y-2">
+                      <div className="space-y-xs">
                         {swimlaneData.map((row) => renderCard(row, column.id))}
                       </div>
                     )}
@@ -576,7 +576,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
               })
             ) : (
               // Render without swimlanes
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 {(columnData['default'] || []).map((row) => renderCard(row, column.id))}
               </div>
             )}
@@ -585,10 +585,10 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
             {onAddCard && !isCollapsed && (
               <Button
                 variant="dashed"
-                className="w-full justify-start h-8 text-muted-foreground"
+                className="w-full justify-start h-icon-lg text-muted-foreground"
                 onClick={() => onAddCard(column.id)}
               >
-                <Plus className="h-4 w-4 mr-2" />
+                <Plus className="h-icon-xs w-icon-xs mr-2" />
                 Add card
               </Button>
             )}
@@ -616,26 +616,26 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
   ]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search cards..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
 
           {/* Bulk Actions */}
           {bulkActions.length > 0 && selectedCards.length > 0 && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {bulkActions.map((action, index) => {
                 const Icon = action.icon;
                 return (
@@ -651,7 +651,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                     }}
                     disabled={action.disabled}
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -660,11 +660,11 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
           )}
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Add Column */}
           {onAddColumn && (
             <Button variant="outline" size="sm" onClick={onAddColumn}>
-              <Plus className="h-4 w-4 mr-1" />
+              <Plus className="h-icon-xs w-icon-xs mr-1" />
               Add Column
             </Button>
           )}
@@ -677,18 +677,18 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
 
       {/* Kanban Board */}
       <div className={cn(
-        'flex gap-6 overflow-x-auto pb-4',
-        virtualized && 'h-96 overflow-y-auto',
+        'flex gap-lg overflow-x-auto pb-4',
+        virtualized && 'h-container-lg overflow-y-auto',
         className
       )}>
         {loading ? (
           // Loading state
           Array.from({ length: 4 }).map((_, index) => (
-            <div key={index} className="flex-shrink-0 w-80 bg-muted/30 rounded-lg p-4 animate-pulse">
-              <div className="h-4 bg-muted rounded w-24 mb-4" />
-              <div className="space-y-3">
+            <div key={index} className="flex-shrink-0 w-container-md bg-muted/30 rounded-lg p-md animate-pulse">
+              <div className="h-icon-xs bg-muted rounded w-component-lg mb-4" />
+              <div className="space-y-sm">
                 {Array.from({ length: 3 }).map((_, cardIndex) => (
-                  <div key={cardIndex} className="h-24 bg-muted rounded" />
+                  <div key={cardIndex} className="h-component-lg bg-muted rounded" />
                 ))}
               </div>
             </div>

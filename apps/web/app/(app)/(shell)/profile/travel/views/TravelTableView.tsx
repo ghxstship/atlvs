@@ -57,21 +57,21 @@ export default function TravelTableView({
 
  const getSortIcon = (field: SortField) => {
  if (sort.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sort.direction === 'asc' ? 
- <ArrowUp className="h-4 w-4" /> : 
- <ArrowDown className="h-4 w-4" />;
+ <ArrowUp className="h-icon-xs w-icon-xs" /> : 
+ <ArrowDown className="h-icon-xs w-icon-xs" />;
  };
 
  if (loading) {
  return (
  <Card className="overflow-hidden">
- <div className="p-4">
- <div className="animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-full"></div>
+ <div className="p-md">
+ <div className="animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-full"></div>
  {[...Array(5)].map((_, i) => (
- <div key={i} className="h-12 bg-muted rounded"></div>
+ <div key={i} className="h-icon-2xl bg-muted rounded"></div>
  ))}
  </div>
  </div>
@@ -81,9 +81,9 @@ export default function TravelTableView({
 
  if (records.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Plane className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Plane className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Travel Records</h3>
  <p className="text-muted-foreground mt-2">
@@ -98,9 +98,9 @@ export default function TravelTableView({
  return (
  <Card className="overflow-hidden">
  {/* Header with bulk selection */}
- <div className="p-4 border-b">
+ <div className="p-md border-b">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -111,7 +111,7 @@ export default function TravelTableView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -128,14 +128,14 @@ export default function TravelTableView({
  <table className="w-full">
  <thead className="bg-muted/50">
  <tr>
- <th className="w-12 p-4">
+ <th className="w-icon-2xl p-md">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
  onCheckedChange={(checked) => onSelectAll(!!checked)}
  />
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -146,7 +146,7 @@ export default function TravelTableView({
  {getSortIcon('destination')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -157,7 +157,7 @@ export default function TravelTableView({
  {getSortIcon('country')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -168,8 +168,8 @@ export default function TravelTableView({
  {getSortIcon('travel_type')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Status</th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">Status</th>
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -180,7 +180,7 @@ export default function TravelTableView({
  {getSortIcon('start_date')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -191,7 +191,7 @@ export default function TravelTableView({
  {getSortIcon('duration_days')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -202,9 +202,9 @@ export default function TravelTableView({
  {getSortIcon('expenses')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Visa</th>
- <th className="text-left p-4 font-medium">Purpose</th>
- <th className="w-24 p-4 font-medium">Actions</th>
+ <th className="text-left p-md font-medium">Visa</th>
+ <th className="text-left p-md font-medium">Purpose</th>
+ <th className="w-component-lg p-md font-medium">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -220,19 +220,19 @@ export default function TravelTableView({
  isSelected ? 'bg-primary/5' : ''
  } ${index % 2 === 0 ? 'bg-background' : 'bg-muted/20'}`}
  >
- <td className="p-4">
+ <td className="p-md">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(record.id, !!checked)}
  />
  </td>
- <td className="p-4">
- <div className="font-medium flex items-center gap-2">
- <Plane className="h-4 w-4 text-primary" />
+ <td className="p-md">
+ <div className="font-medium flex items-center gap-xs">
+ <Plane className="h-icon-xs w-icon-xs text-primary" />
  {record.destination}
  </div>
  {(upcoming || current) && (
- <div className="flex gap-1 mt-1">
+ <div className="flex gap-xs mt-1">
  {upcoming && (
  <Badge variant="secondary" className="text-xs bg-blue-100 text-blue-800">
  Upcoming
@@ -246,29 +246,29 @@ export default function TravelTableView({
  </div>
  )}
  </td>
- <td className="p-4">
- <div className="flex items-center gap-1">
- <Globe className="h-4 w-4 text-muted-foreground" />
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
+ <Globe className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">{record.country}</span>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <Badge variant="outline">
  {TRAVEL_TYPE_LABELS[record.travel_type]}
  </Badge>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <Badge variant={getStatusBadgeVariant(record.status)}>
  {TRAVEL_STATUS_LABELS[record.status]}
  </Badge>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="text-sm">
  <div>{formatDateShort(record.start_date)}</div>
  <div className="text-muted-foreground">to {formatDateShort(record.end_date)}</div>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="text-center">
  <div className="font-medium">
  {record.duration_days}
@@ -278,7 +278,7 @@ export default function TravelTableView({
  </div>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  {record.expenses ? (
  <div className="text-right">
  <div className="font-medium">
@@ -292,7 +292,7 @@ export default function TravelTableView({
  <span className="text-muted-foreground">Not reported</span>
  )}
  </td>
- <td className="p-4">
+ <td className="p-md">
  {record.visa_required ? (
  <Badge 
  variant="outline" 
@@ -304,22 +304,22 @@ export default function TravelTableView({
  <span className="text-muted-foreground text-sm">Not Required</span>
  )}
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="max-w-xs">
  <p className="text-sm truncate" title={record.purpose}>
  {record.purpose}
  </p>
  </div>
  </td>
- <td className="p-4">
- <div className="flex items-center gap-1">
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(record)}
  title="View"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -327,7 +327,7 @@ export default function TravelTableView({
  onClick={() => onEdit(record)}
  title="Edit"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -335,7 +335,7 @@ export default function TravelTableView({
  onClick={() => onDelete(record)}
  title="Delete"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>
@@ -347,12 +347,12 @@ export default function TravelTableView({
  </div>
 
  {/* Footer */}
- <div className="p-4 border-t bg-muted/20">
+ <div className="p-md border-t bg-muted/20">
  <div className="flex items-center justify-between text-sm text-muted-foreground">
  <div>
  Showing {records.length} travel records
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span>Rows per page: 50</span>
  <Button variant="outline" size="sm">
  Previous

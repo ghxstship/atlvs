@@ -171,9 +171,9 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading billing settings...</p>
         </div>
       </div>
@@ -181,13 +181,13 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Billing Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-lg">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Current Plan</CardTitle>
-            <Crown className="h-4 w-4 text-muted-foreground" />
+            <Crown className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -207,7 +207,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Spent</CardTitle>
-            <DollarSign className="h-4 w-4 text-muted-foreground" />
+            <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">${billingStats.totalSpent}</div>
@@ -220,7 +220,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Next Billing</CardTitle>
-            <Calendar className="h-4 w-4 text-muted-foreground" />
+            <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -237,14 +237,14 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
       {subscription && (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <CreditCard className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <CreditCard className="h-icon-sm w-icon-sm" />
               Subscription Details
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-4">
+          <CardContent className="space-y-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+              <div className="space-y-md">
                 <div>
                   <Label className="text-sm font-medium">Plan</Label>
                   <p className="text-sm text-muted-foreground">{subscription.plan}</p>
@@ -261,7 +261,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
                 </div>
               </div>
 
-              <div className="space-y-4">
+              <div className="space-y-md">
                 <div>
                   <Label className="text-sm font-medium">Current Period</Label>
                   <p className="text-sm text-muted-foreground">
@@ -270,7 +270,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
                 </div>
                 <div>
                   <Label className="text-sm font-medium">Seats Used</Label>
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <p className="text-sm text-muted-foreground">
                       {subscription.usedSeats} of {subscription.seats} seats
                     </p>
@@ -282,9 +282,9 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
 
             <Separator />
 
-            <div className="flex gap-3">
+            <div className="flex gap-sm">
               <Button onClick={handleManageBilling}>
-                <CreditCard className="h-4 w-4 mr-2" />
+                <CreditCard className="h-icon-xs w-icon-xs mr-2" />
                 Manage Billing
               </Button>
               <Button variant="outline">
@@ -299,8 +299,8 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <CreditCard className="h-5 w-5" />
+            <div className="flex items-center gap-xs">
+              <CreditCard className="h-icon-sm w-icon-sm" />
               Payment Methods
             </div>
             <Button size="sm">
@@ -310,20 +310,20 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
         </CardHeader>
         <CardContent>
           {paymentMethods.length === 0 ? (
-            <div className="text-center py-8">
-              <CreditCard className="mx-auto h-12 w-12 text-muted-foreground" />
+            <div className="text-center py-xl">
+              <CreditCard className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground" />
               <p className="mt-2 text-sm text-muted-foreground">No payment methods added</p>
               <Button className="mt-4" size="sm">
                 Add Payment Method
               </Button>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-md">
               {paymentMethods.map((method) => (
-                <div key={method.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-muted rounded">
-                      <CreditCard className="h-4 w-4" />
+                <div key={method.id} className="flex items-center justify-between p-md border rounded-lg">
+                  <div className="flex items-center gap-sm">
+                    <div className="p-xs bg-muted rounded">
+                      <CreditCard className="h-icon-xs w-icon-xs" />
                     </div>
                     <div>
                       <p className="font-medium">
@@ -334,7 +334,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
                       </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     {method.isDefault && (
                       <Badge variant="secondary">Default</Badge>
                     )}
@@ -352,29 +352,29 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
       {/* Billing History */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Receipt className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Receipt className="h-icon-sm w-icon-sm" />
             Billing History
           </CardTitle>
         </CardHeader>
         <CardContent>
           {invoices.length === 0 ? (
-            <div className="text-center py-8">
-              <Receipt className="mx-auto h-12 w-12 text-muted-foreground" />
+            <div className="text-center py-xl">
+              <Receipt className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground" />
               <p className="mt-2 text-sm text-muted-foreground">No billing history available</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-md">
               {invoices.map((invoice) => (
-                <div key={invoice.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full ${
+                <div key={invoice.id} className="flex items-center justify-between p-md border rounded-lg">
+                  <div className="flex items-center gap-sm">
+                    <div className={`p-xs rounded-full ${
                       invoice.status === 'paid' ? 'bg-green-100 dark:bg-green-900' : 'bg-blue-100 dark:bg-blue-900'
                     }`}>
                       {invoice.status === 'paid' ? (
-                        <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                        <CheckCircle className="h-icon-xs w-icon-xs text-green-600 dark:text-green-400" />
                       ) : (
-                        <Receipt className="h-4 w-4 text-blue-600 dark:text-blue-400" />
+                        <Receipt className="h-icon-xs w-icon-xs text-blue-600 dark:text-blue-400" />
                       )}
                     </div>
                     <div>
@@ -401,7 +401,7 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
       {/* Billing Alerts */}
       {billingStats.paymentStatus === 'past_due' && (
         <Alert>
-          <AlertCircle className="h-4 w-4" />
+          <AlertCircle className="h-icon-xs w-icon-xs" />
           <AlertDescription>
             Your payment is past due. Please update your payment method to avoid service interruption.
           </AlertDescription>
@@ -414,17 +414,17 @@ export default function BillingSettings({ userId, orgId }: BillingSettingsProps)
           <CardTitle>Quick Actions</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
             <Button variant="outline" className="justify-start">
-              <Receipt className="h-4 w-4 mr-2" />
+              <Receipt className="h-icon-xs w-icon-xs mr-2" />
               Download Invoices
             </Button>
             <Button variant="outline" className="justify-start">
-              <CreditCard className="h-4 w-4 mr-2" />
+              <CreditCard className="h-icon-xs w-icon-xs mr-2" />
               Update Payment Method
             </Button>
             <Button variant="outline" className="justify-start">
-              <Calendar className="h-4 w-4 mr-2" />
+              <Calendar className="h-icon-xs w-icon-xs mr-2" />
               View Billing Schedule
             </Button>
           </div>

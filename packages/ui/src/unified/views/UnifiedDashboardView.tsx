@@ -155,11 +155,11 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
     const getTrendIcon = () => {
       switch (trend) {
         case 'up':
-          return <TrendingUp className="h-4 w-4 text-success" />;
+          return <TrendingUp className="h-icon-xs w-icon-xs text-success" />;
         case 'down':
-          return <TrendingDown className="h-4 w-4 text-destructive" />;
+          return <TrendingDown className="h-icon-xs w-icon-xs text-destructive" />;
         default:
-          return <Minus className="h-4 w-4 text-muted-foreground" />;
+          return <Minus className="h-icon-xs w-icon-xs text-muted-foreground" />;
       }
     };
     
@@ -185,7 +185,7 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
               {widget.title}
             </CardTitle>
             {widget.icon && (
-              <widget.icon className={`h-4 w-4 ${getColorClass(widget.color)}`} />
+              <widget.icon className={`h-icon-xs w-icon-xs ${getColorClass(widget.color)}`} />
             )}
           </div>
         </CardHeader>
@@ -231,9 +231,9 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
           )}
         </CardHeader>
         <CardContent>
-          <div className="h-64 flex items-center justify-center text-muted-foreground">
+          <div className="h-container-sm flex items-center justify-center text-muted-foreground">
             <div className="text-center">
-              <BarChart3 className="h-12 w-12 mx-auto mb-sm" />
+              <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-sm" />
               <p className="text-sm">Chart: {widget.chartType}</p>
               <p className="text-xs mt-xs">
                 {widget.chartData?.length || 0} data points
@@ -367,11 +367,11 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
                     <img 
                       src={activity.user.avatar} 
                       alt={activity.user.name}
-                      className="h-8 w-8 rounded-full"
+                      className="h-icon-lg w-icon-lg rounded-full"
                     />
                   ) : (
-                    <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
-                      <Activity className="h-4 w-4" />
+                    <div className="h-icon-lg w-icon-lg rounded-full bg-muted flex items-center justify-center">
+                      <Activity className="h-icon-xs w-icon-xs" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
@@ -399,12 +399,12 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
       return (
         <Card key={widget.id} className={`${getSpanClass(widget.span)} ${getHeightClass(widget.height)}`}>
           <CardHeader>
-            <Skeleton className="h-5 w-3/4" />
-            <Skeleton className="h-4 w-1/2" />
+            <Skeleton className="h-icon-sm w-3/4" />
+            <Skeleton className="h-icon-xs w-1/2" />
           </CardHeader>
           <CardContent>
-            <Skeleton className="h-8 w-1/3 mb-sm" />
-            <Skeleton className="h-4 w-full" />
+            <Skeleton className="h-icon-lg w-1/3 mb-sm" />
+            <Skeleton className="h-icon-xs w-full" />
           </CardContent>
         </Card>
       );
@@ -458,10 +458,10 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
 
   const getHeightClass = (height?: string) => {
     const heightMap = {
-      sm: 'h-32',
-      md: 'h-48',
-      lg: 'h-64',
-      xl: 'h-80',
+      sm: 'h-component-xl',
+      md: 'h-container-xs',
+      lg: 'h-container-sm',
+      xl: 'h-container-md',
     };
     return heightMap[height as keyof typeof heightMap] || '';
   };
@@ -532,7 +532,7 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
                   size="sm"
                   onClick={action.onClick}
                 >
-                  {action.icon && <action.icon className="h-4 w-4 mr-xs" />}
+                  {action.icon && <action.icon className="h-icon-xs w-icon-xs mr-xs" />}
                   {action.label}
                 </Button>
               ))}
@@ -543,7 +543,7 @@ export const UnifiedDashboardView: React.FC<UnifiedDashboardViewProps> = ({
                 onClick={handleRefresh}
                 disabled={refreshing}
               >
-                <RefreshCw className={`h-4 w-4 ${refreshing ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`h-icon-xs w-icon-xs ${refreshing ? 'animate-spin' : ''}`} />
               </Button>
             </div>
           )}

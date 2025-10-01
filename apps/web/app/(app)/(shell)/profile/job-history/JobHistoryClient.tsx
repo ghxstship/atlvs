@@ -221,7 +221,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       <div className="stack-md">
         {[...Array(3)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-32 bg-secondary rounded-lg"></div>
+            <div className="h-component-xl bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -234,7 +234,7 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
       <div className="flex items-center justify-between">
         <h2 className="text-heading-4 text-heading-4">Job History</h2>
         <Button onClick={() => openDrawer()} className="flex items-center gap-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Job
         </Button>
       </div>
@@ -248,20 +248,20 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                 <div className="flex items-start justify-between mb-md">
                   <div className="flex items-start gap-md">
                     <div className="p-sm bg-accent/10 rounded-lg">
-                      <Briefcase className="h-6 w-6 color-accent" />
+                      <Briefcase className="h-icon-md w-icon-md color-accent" />
                     </div>
                     
                     <div>
                       <h3 className="text-body text-heading-4">{job.job_title}</h3>
                       <div className="flex items-center gap-sm color-muted mb-sm">
-                        <Building className="h-4 w-4" />
+                        <Building className="h-icon-xs w-icon-xs" />
                         <span>{job.company_name}</span>
                         {job.department && <span>• {job.department}</span>}
                       </div>
                       
                       <div className="flex items-center gap-md text-body-sm color-muted mb-sm">
                         <div className="flex items-center gap-xs">
-                          <Calendar className="h-4 w-4" />
+                          <Calendar className="h-icon-xs w-icon-xs" />
                           <span>
                             {new Date(job.start_date).toLocaleDateString()} - {' '}
                             {job.is_current ? 'Present' : 
@@ -271,14 +271,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                         </div>
                         
                         <div className="flex items-center gap-xs">
-                          <Clock className="h-4 w-4" />
+                          <Clock className="h-icon-xs w-icon-xs" />
                           <span>{calculateDuration(job.start_date, job.end_date)}</span>
                         </div>
                       </div>
                       
                       {job.location && (
                         <div className="flex items-center gap-xs text-body-sm color-muted mb-sm">
-                          <MapPin className="h-4 w-4" />
+                          <MapPin className="h-icon-xs w-icon-xs" />
                           <span>{job.location}</span>
                         </div>
                       )}
@@ -300,14 +300,14 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
                      
                       onClick={() => openDrawer(job)}
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </Button>
                     <Button
                       variant="outline"
                      
                       onClick={() => deleteJob(job.id)}
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -348,13 +348,13 @@ export default function JobHistoryClient({ orgId, userId }: { orgId: string; use
         ) : (
           <Card>
             <div className="p-xl text-center">
-              <Briefcase className="h-12 w-12 mx-auto mb-md color-muted opacity-50" />
+              <Briefcase className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted opacity-50" />
               <h3 className="text-body form-label mb-sm">No Job History</h3>
               <p className="color-muted mb-md">
                 Add your work experience to showcase your professional background.
               </p>
               <Button onClick={() => openDrawer()}>
-                <Plus className="h-4 w-4 mr-sm" />
+                <Plus className="h-icon-xs w-icon-xs mr-sm" />
                 Add Your First Job
               </Button>
             </div>

@@ -149,7 +149,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
             <p className="text-body-sm color-muted">Build a custom analytics dashboard</p>
           </div>
           <Button onClick={onCancel || (() => {})}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
@@ -212,14 +212,14 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                  
                   onClick={() => setShowWidgetForm(true)}
                 >
-                  <Plus className="h-4 w-4 mr-xs" />
+                  <Plus className="h-icon-xs w-icon-xs mr-xs" />
                   Add Widget
                 </Button>
               </div>
 
               {widgets.length === 0 ? (
                 <div className="text-center py-xl color-muted">
-                  <BarChart3 className="h-12 w-12 mx-auto mb-sm opacity-50" />
+                  <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-sm opacity-50" />
                   <p>No widgets added yet</p>
                   <p className="text-body-sm">Add widgets to build your dashboard</p>
                 </div>
@@ -244,7 +244,7 @@ export default function CreateDashboardClient({ organizationId, onSuccess, onCan
                          
                           onClick={() => removeWidget(index)}
                         >
-                          <X className="h-4 w-4" />
+                          <X className="h-icon-xs w-icon-xs" />
                         </Button>
                       </div>
                     </Card>

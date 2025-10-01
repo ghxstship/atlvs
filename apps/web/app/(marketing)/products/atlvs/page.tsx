@@ -102,9 +102,9 @@ export default function ATLVSPage() {
   return (
     <div className="min-h-screen brand-ghostship">
       {/* Hero Section */}
-      <section className="py-4xl pb-5xl bg-gradient-subtle">
+      <section className="py-mdxl pb-5xl bg-gradient-subtle">
         <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-2xl items-center">
+          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div className="stack-xl">
               <div>
                 <Badge variant="outline" className="mb-md">
@@ -148,11 +148,11 @@ export default function ATLVSPage() {
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Start Free Trial
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Button className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-4 w-4" />
+                  <Play className="mr-sm h-icon-xs w-icon-xs" />
                   Watch Demo
                 </Button>
               </div>
@@ -198,7 +198,7 @@ export default function ATLVSPage() {
                       <div className="text-body-sm color-muted mb-xs">Timeline</div>
                       <div>85%</div>
                       <div className="w-full bg-secondary rounded-full h-1 mt-sm">
-                        <div className="bg-secondary h-1 rounded-full w-4/5"></div>
+                        <div className="bg-secondary h-1 rounded-full w-icon-xs/5"></div>
                       </div>
                     </div>
                     <div className="bg-secondary/30 rounded-lg p-sm">
@@ -206,7 +206,7 @@ export default function ATLVSPage() {
                       <div>12</div>
                       <div className="flex -cluster-xs mt-sm">
                         {[1, 2, 3].map((i: any) => (
-                          <div key={i} className="w-4 h-4 bg-accent rounded-full border border-background"></div>
+                          <div key={i} className="w-icon-xs h-icon-xs bg-accent rounded-full border border-background"></div>
                         ))}
                       </div>
                     </div>
@@ -235,7 +235,7 @@ export default function ATLVSPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -253,8 +253,8 @@ export default function ATLVSPage() {
               return (
                 <Card key={feature.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary mb-md">
-                      <Icon className="h-6 w-6 text-background" />
+                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary mb-md">
+                      <Icon className="h-icon-md w-icon-md text-background" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{feature.description}</p>
@@ -275,7 +275,7 @@ export default function ATLVSPage() {
       </section>
 
       {/* Use Cases Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -316,7 +316,7 @@ export default function ATLVSPage() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -332,7 +332,7 @@ export default function ATLVSPage() {
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
+                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </span>
@@ -351,7 +351,7 @@ export default function ATLVSPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -366,7 +366,7 @@ export default function ATLVSPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">
@@ -378,15 +378,15 @@ export default function ATLVSPage() {
 
             <div className="flex flex-wrap justify-center items-center gap-lg text-body-sm color-muted">
               <div className="flex items-center gap-sm">
-                <CheckCircle className="h-4 w-4 color-success" />
+                <CheckCircle className="h-icon-xs w-icon-xs color-success" />
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-sm">
-                <Zap className="h-4 w-4 text-foreground" />
+                <Zap className="h-icon-xs w-icon-xs text-foreground" />
                 <span>Setup in minutes</span>
               </div>
               <div className="flex items-center gap-sm">
-                <Shield className="h-4 w-4 text-foreground" />
+                <Shield className="h-icon-xs w-icon-xs text-foreground" />
                 <span>Enterprise security</span>
               </div>
             </div>

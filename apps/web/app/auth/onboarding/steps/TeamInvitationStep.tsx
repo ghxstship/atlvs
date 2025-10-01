@@ -149,7 +149,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
             {/* Add Team Member Form */}
             <div className="brand-ghostship stack-md">
               <div className="brand-ghostship flex items-center cluster-sm mb-md">
-                <UserPlus className="h-5 w-5 color-accent" />
+                <UserPlus className="h-icon-sm w-icon-sm color-accent" />
                 <h3 className={`${anton.className} uppercase text-body text-heading-3`}>
                   ADD TEAM MEMBERS
                 </h3>
@@ -161,7 +161,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                     Email Address
                   </label>
                   <div className="brand-ghostship relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 color-muted" />
+                    <Mail className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-sm w-icon-sm color-muted" />
                     <input
                       type="email"
                       className="w-full pl-2xl pr-md py-sm border border-border rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent bg-background"
@@ -192,7 +192,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
               </div>
 
               <Button onClick={addInvite} disabled={!currentEmail.trim()}>
-                <UserPlus className="mr-sm h-4 w-4" />
+                <UserPlus className="mr-sm h-icon-xs w-icon-xs" />
                 Add Team Member
               </Button>
 
@@ -214,8 +214,8 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   {invites.map((invite, index) => (
                     <div key={index} className="flex items-center justify-between p-md bg-secondary/50 rounded-lg">
                       <div className="brand-ghostship flex items-center cluster-sm">
-                        <div className="brand-ghostship w-8 h-8 bg-accent/10 rounded-full flex items-center justify-center">
-                          <Mail className="h-4 w-4 color-accent" />
+                        <div className="brand-ghostship w-icon-lg h-icon-lg bg-accent/10 rounded-full flex items-center justify-center">
+                          <Mail className="h-icon-xs w-icon-xs color-accent" />
                         </div>
                         <div>
                           <p className="form-label color-foreground">{invite.email}</p>
@@ -243,7 +243,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                          
                           onClick={() => removeInvite(index)}
                         >
-                          <X className="h-4 w-4" />
+                          <X className="h-icon-xs w-icon-xs" />
                         </Button>
                       </div>
                     </div>
@@ -260,7 +260,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
                   id="skip-invites"
                   checked={skipInvites}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSkipInvites(e.target.checked)}
-                  className="h-4 w-4 color-accent border-border rounded focus:ring-primary"
+                  className="h-icon-xs w-icon-xs color-accent border-border rounded focus:ring-primary"
                 />
                 <label htmlFor="skip-invites" className="text-body-sm color-muted">
                   Skip for now - I'll invite team members later
@@ -291,7 +291,7 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
       {/* Action Buttons */}
       <div className="brand-ghostship flex justify-between pt-lg">
         <Button variant="outline" onClick={onBack}>
-          <ArrowLeft className="mr-sm h-4 w-4" />
+          <ArrowLeft className="mr-sm h-icon-xs w-icon-xs" />
           Back
         </Button>
         
@@ -302,9 +302,9 @@ export function TeamInvitationStep({ user, onNext, onBack, updateData, data }: T
         >
           {loading ? 'Sending invites...' : invites.length > 0 && !skipInvites ? 'Send Invitations' : 'Continue'}
           {invites.length > 0 && !skipInvites ? (
-            <Send className="ml-sm h-4 w-4" />
+            <Send className="ml-sm h-icon-xs w-icon-xs" />
           ) : (
-            <ArrowRight className="ml-sm h-4 w-4" />
+            <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
           )}
         </Button>
       </div>

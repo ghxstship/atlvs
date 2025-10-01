@@ -40,16 +40,16 @@ const PeopleListView: React.FC<ListViewProps> = ({
       <div
         key={person.id}
         className={cn(
-          "bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md hover:border-blue-300 transition-all duration-200",
+          "bg-white border border-gray-200 rounded-lg p-md hover:shadow-md hover:border-blue-300 transition-all duration-200",
           onItemClick && "cursor-pointer"
         )}
         onClick={() => onItemClick?.(person)}
       >
-        <div className="flex items-start space-x-4">
+        <div className="flex items-start space-x-md">
           {/* Avatar */}
           {showAvatar && (
             <div className="flex-shrink-0">
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+              <div className="w-icon-2xl h-icon-2xl bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
                 {person.first_name?.[0]}{person.last_name?.[0]}
               </div>
             </div>
@@ -66,24 +66,24 @@ const PeopleListView: React.FC<ListViewProps> = ({
 
                 {/* Contact information */}
                 {showContact && (
-                  <div className="space-y-1 mb-3">
+                  <div className="space-y-xs mb-3">
                     {person.email && (
                       <div className="flex items-center text-sm text-gray-600">
-                        <Mail className="h-4 w-4 mr-2 text-gray-400 flex-shrink-0" />
+                        <Mail className="h-icon-xs w-icon-xs mr-2 text-gray-400 flex-shrink-0" />
                         <span className="truncate">{person.email}</span>
                       </div>
                     )}
 
                     {person.phone && (
                       <div className="flex items-center text-sm text-gray-600">
-                        <Phone className="h-4 w-4 mr-2 text-gray-400 flex-shrink-0" />
+                        <Phone className="h-icon-xs w-icon-xs mr-2 text-gray-400 flex-shrink-0" />
                         <span>{person.phone}</span>
                       </div>
                     )}
 
                     {person.location && (
                       <div className="flex items-center text-sm text-gray-600">
-                        <MapPin className="h-4 w-4 mr-2 text-gray-400 flex-shrink-0" />
+                        <MapPin className="h-icon-xs w-icon-xs mr-2 text-gray-400 flex-shrink-0" />
                         <span className="truncate">{person.location}</span>
                       </div>
                     )}
@@ -92,14 +92,14 @@ const PeopleListView: React.FC<ListViewProps> = ({
 
                 {/* Bio */}
                 {person.bio && (
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                  <p className="text-sm text-gray-600 mb-3 line-clamp-xs">
                     {person.bio}
                   </p>
                 )}
 
                 {/* Metadata */}
                 {showMetadata && (
-                  <div className="flex items-center space-x-4 text-xs text-gray-500">
+                  <div className="flex items-center space-x-md text-xs text-gray-500">
                     <span>Department: {person.department || 'Not assigned'}</span>
                     {person.start_date && (
                       <span>
@@ -107,7 +107,7 @@ const PeopleListView: React.FC<ListViewProps> = ({
                       </span>
                     )}
                     <span className={cn(
-                      "inline-flex items-center px-2 py-1 rounded-full font-medium",
+                      "inline-flex items-center px-xs py-xs rounded-full font-medium",
                       person.status === 'active'
                         ? "bg-green-100 text-green-800"
                         : person.status === 'inactive'
@@ -122,17 +122,17 @@ const PeopleListView: React.FC<ListViewProps> = ({
 
               {/* Actions */}
               {(onView || onEdit || onDelete) && (
-                <div className="flex items-center space-x-1 ml-4">
+                <div className="flex items-center space-x-xs ml-4">
                   {onView && (
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         onView(person);
                       }}
-                      className="p-2 text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors"
+                      className="p-xs text-blue-600 hover:text-blue-800 hover:bg-blue-50 rounded-lg transition-colors"
                       title="View details"
                     >
-                      <Eye className="h-4 w-4" />
+                      <Eye className="h-icon-xs w-icon-xs" />
                     </button>
                   )}
                   {onEdit && (
@@ -141,10 +141,10 @@ const PeopleListView: React.FC<ListViewProps> = ({
                         e.stopPropagation();
                         onEdit(person);
                       }}
-                      className="p-2 text-green-600 hover:text-green-800 hover:bg-green-50 rounded-lg transition-colors"
+                      className="p-xs text-green-600 hover:text-green-800 hover:bg-green-50 rounded-lg transition-colors"
                       title="Edit person"
                     >
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </button>
                   )}
                   {onDelete && (
@@ -153,10 +153,10 @@ const PeopleListView: React.FC<ListViewProps> = ({
                         e.stopPropagation();
                         onDelete(person);
                       }}
-                      className="p-2 text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
+                      className="p-xs text-red-600 hover:text-red-800 hover:bg-red-50 rounded-lg transition-colors"
                       title="Delete person"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </button>
                   )}
                 </div>
@@ -170,25 +170,25 @@ const PeopleListView: React.FC<ListViewProps> = ({
 
   const renderLoadingItems = () => {
     return Array.from({ length: 5 }).map((_, index) => (
-      <div key={`loading-${index}`} className="bg-white border border-gray-200 rounded-lg p-4">
-        <div className="animate-pulse flex items-start space-x-4">
+      <div key={`loading-${index}`} className="bg-white border border-gray-200 rounded-lg p-md">
+        <div className="animate-pulse flex items-start space-x-md">
           {showAvatar && (
-            <div className="w-12 h-12 bg-gray-200 rounded-full flex-shrink-0"></div>
+            <div className="w-icon-2xl h-icon-2xl bg-gray-200 rounded-full flex-shrink-0"></div>
           )}
           <div className="flex-1">
-            <div className="h-5 bg-gray-200 rounded w-1/3 mb-2"></div>
-            <div className="h-4 bg-gray-200 rounded w-1/4 mb-3"></div>
+            <div className="h-icon-sm bg-gray-200 rounded w-1/3 mb-2"></div>
+            <div className="h-icon-xs bg-gray-200 rounded w-1/4 mb-3"></div>
             {showContact && (
-              <div className="space-y-2 mb-3">
+              <div className="space-y-xs mb-3">
                 <div className="h-3 bg-gray-200 rounded"></div>
-                <div className="h-3 bg-gray-200 rounded w-5/6"></div>
+                <div className="h-3 bg-gray-200 rounded w-icon-sm/6"></div>
               </div>
             )}
             {showMetadata && (
-              <div className="flex space-x-4">
-                <div className="h-4 bg-gray-200 rounded w-20"></div>
-                <div className="h-4 bg-gray-200 rounded w-16"></div>
-                <div className="h-4 bg-gray-200 rounded w-12"></div>
+              <div className="flex space-x-md">
+                <div className="h-icon-xs bg-gray-200 rounded w-component-lg"></div>
+                <div className="h-icon-xs bg-gray-200 rounded w-component-md"></div>
+                <div className="h-icon-xs bg-gray-200 rounded w-icon-2xl"></div>
               </div>
             )}
           </div>
@@ -198,13 +198,13 @@ const PeopleListView: React.FC<ListViewProps> = ({
   };
 
   return (
-    <div className={cn("space-y-3", className)}>
+    <div className={cn("space-y-sm", className)}>
       {loading ? (
         renderLoadingItems()
       ) : data.length === 0 ? (
-        <div className="text-center py-12">
+        <div className="text-center py-xsxl">
           <div className="text-gray-400 mb-4">
-            <svg className="mx-auto h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="mx-auto h-icon-2xl w-icon-2xl" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
             </svg>
           </div>

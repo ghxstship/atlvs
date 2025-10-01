@@ -198,7 +198,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  {/* Pricing */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  Pricing
  </h3>
  <div className="stack-sm">
@@ -249,7 +249,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  {/* Location */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  Location
  </h3>
  <div className="stack-sm">
@@ -296,7 +296,7 @@ export default function CreateListingClient({ mode, listing, onSuccess, onCancel
  {/* Tags */}
  <Card className="p-md">
  <h3 className="text-heading-4 mb-md flex items-center gap-xs">
- <Tag className="h-4 w-4" />
+ <Tag className="h-icon-xs w-icon-xs" />
  Tags
  </h3>
  <div className="stack-sm">

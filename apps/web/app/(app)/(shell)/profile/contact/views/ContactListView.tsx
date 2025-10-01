@@ -65,14 +65,14 @@ export default function ContactListView({
 
  if (loading) {
  return (
- <Card className="p-6 space-y-4">
- <div className="animate-pulse space-y-2">
- <div className="h-4 bg-muted rounded w-1/3"></div>
- <div className="h-4 bg-muted rounded w-1/2"></div>
+ <Card className="p-lg space-y-md">
+ <div className="animate-pulse space-y-xs">
+ <div className="h-icon-xs bg-muted rounded w-1/3"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
  </div>
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
  {Array.from({ length: 6 }).map((_, i) => (
- <div key={i} className="h-16 bg-muted rounded animate-pulse"></div>
+ <div key={i} className="h-component-md bg-muted rounded animate-pulse"></div>
  ))}
  </div>
  </Card>
@@ -80,12 +80,12 @@ export default function ContactListView({
  }
 
  return (
- <div className="space-y-4">
- <Card className="p-4 space-y-4">
- <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
- <div className="flex flex-1 items-center gap-4">
+ <div className="space-y-md">
+ <Card className="p-md space-y-md">
+ <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-md">
+ <div className="flex flex-1 items-center gap-md">
  <div className="relative flex-1 max-w-lg">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  placeholder="Search contacts by phone, address, or emergency contact..."
  value={filters.search || ''}
@@ -93,16 +93,16 @@ export default function ContactListView({
  className="pl-9"
  />
  </div>
- <Button variant="outline" size="sm" className="flex items-center gap-2">
- <Filter className="h-4 w-4" />
+ <Button variant="outline" size="sm" className="flex items-center gap-xs">
+ <Filter className="h-icon-xs w-icon-xs" />
  Filters
  </Button>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {selectedItems.length > 0 && (
  <Button variant="outline" size="sm" onClick={() => onExport()}>
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export Selected
  </Button>
  )}
@@ -114,7 +114,7 @@ export default function ContactListView({
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
  <Select
  value={filters.verification_status || 'all'}
  onValueChange={(value) => onChangeFilters({ verification_status: value as ContactFilters['verification_status'] })}
@@ -165,33 +165,33 @@ export default function ContactListView({
  <table className="w-full text-sm">
  <thead className="bg-muted/50">
  <tr className="text-left text-xs uppercase tracking-wide text-muted-foreground">
- <th className="p-3 w-10">
+ <th className="p-sm w-icon-xl">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected && !allSelected}
  onChange={handleSelectAll}
  />
  </th>
- <th className="p-3 cursor-pointer" onClick={() => handleSort('phone_primary')}>
+ <th className="p-sm cursor-pointer" onClick={() => handleSort('phone_primary')}>
  Primary Phone
  </th>
- <th className="p-3 cursor-pointer" onClick={() => handleSort('address_line1')}>
+ <th className="p-sm cursor-pointer" onClick={() => handleSort('address_line1')}>
  Address
  </th>
- <th className="p-3 cursor-pointer" onClick={() => handleSort('verification_status')}>
+ <th className="p-sm cursor-pointer" onClick={() => handleSort('verification_status')}>
  Verification
  </th>
- <th className="p-3">Emergency Contact</th>
- <th className="p-3 cursor-pointer" onClick={() => handleSort('preferred_contact_method')}>
+ <th className="p-sm">Emergency Contact</th>
+ <th className="p-sm cursor-pointer" onClick={() => handleSort('preferred_contact_method')}>
  Preferred Method
  </th>
- <th className="p-3">Actions</th>
+ <th className="p-sm">Actions</th>
  </tr>
  </thead>
  <tbody>
  {sortedContacts.length === 0 ? (
  <tr>
- <td colSpan={7} className="p-8 text-center text-muted-foreground">
+ <td colSpan={7} className="p-xl text-center text-muted-foreground">
  No contacts match the current filters.
  </td>
  </tr>
@@ -201,7 +201,7 @@ export default function ContactListView({
  const verificationBadge = verificationBadges[contact.verification_status || 'unverified'];
  return (
  <tr key={contact.id} className="border-t border-border/60 hover:bg-muted/40">
- <td className="p-3">
+ <td className="p-sm">
  <Checkbox
  checked={isSelected}
  onChange={(event) =>
@@ -209,15 +209,15 @@ export default function ContactListView({
  }
  />
  </td>
- <td className="p-3">
- <div className="flex items-center gap-2">
- <Phone className="h-4 w-4 text-muted-foreground" />
+ <td className="p-sm">
+ <div className="flex items-center gap-xs">
+ <Phone className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span>{contact.phone_primary ? formatPhoneNumber(contact.phone_primary) : '—'}</span>
  </div>
  </td>
- <td className="p-3">
- <div className="flex items-center gap-2 text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <td className="p-sm">
+ <div className="flex items-center gap-xs text-muted-foreground">
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>
  {contact.address_line1
  ? `${contact.address_line1}, ${contact.city || ''} ${contact.state_province || ''}`
@@ -225,22 +225,22 @@ export default function ContactListView({
  </span>
  </div>
  </td>
- <td className="p-3">
+ <td className="p-sm">
  <Badge variant={verificationBadge.variant}>
- <div className="flex items-center gap-1">
- <ShieldCheck className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <ShieldCheck className="h-icon-xs w-icon-xs" />
  {verificationBadge.label}
  </div>
  </Badge>
  </td>
- <td className="p-3 text-muted-foreground">
+ <td className="p-sm text-muted-foreground">
  {contact.emergency_contact_name || '—'}
  </td>
- <td className="p-3 capitalize text-muted-foreground">
+ <td className="p-sm capitalize text-muted-foreground">
  {contact.preferred_contact_method || 'email'}
  </td>
- <td className="p-3">
- <div className="flex items-center gap-2">
+ <td className="p-sm">
+ <div className="flex items-center gap-xs">
  {onViewContact && (
  <Button variant="ghost" size="sm" onClick={() => onViewContact(contact)}>
  View

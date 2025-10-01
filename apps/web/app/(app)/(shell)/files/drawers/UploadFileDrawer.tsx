@@ -186,7 +186,7 @@ export default function UploadFileDrawer({
  onChange={handleFileSelect}
  className="hidden"
  />
- <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <Upload className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <p className="text-sm text-muted-foreground mb-sm">
  Drag and drop files here, or click to browse
  </p>
@@ -201,7 +201,7 @@ export default function UploadFileDrawer({
  {selectedFiles.length > 0 && (
  <div className="space-y-sm">
  <h4 className="font-medium">Selected Files ({selectedFiles.length})</h4>
- <div className="space-y-xs max-h-[200px] overflow-y-auto">
+ <div className="space-y-xs max-h-content-sm overflow-y-auto">
  {selectedFiles.map((file, index) => {
  const FileIcon = getFileIcon(file);
  return (
@@ -209,7 +209,7 @@ export default function UploadFileDrawer({
  key={index}
  className="flex items-center gap-sm p-sm bg-muted/50 rounded-lg"
  >
- <FileIcon className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <FileIcon className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <div className="flex-1 min-w-0">
  <p className="text-sm font-medium truncate">{file.name}</p>
  <p className="text-xs text-muted-foreground">
@@ -221,7 +221,7 @@ export default function UploadFileDrawer({
  size="sm"
  onClick={() => removeFile(index)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  );

@@ -96,15 +96,15 @@ export default function CardView({
 
   if (isLoading) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
         {Array.from({ length: 6 }).map((_, i) => (
           <Card key={i} className="animate-pulse">
             <CardHeader>
-              <div className="h-4 bg-muted rounded w-3/4" />
+              <div className="h-icon-xs bg-muted rounded w-3/4" />
               <div className="h-3 bg-muted rounded w-1/2" />
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <div className="h-3 bg-muted rounded" />
                 <div className="h-3 bg-muted rounded w-2/3" />
               </div>
@@ -117,7 +117,7 @@ export default function CardView({
 
   if (error) {
     return (
-      <div className="text-center py-12">
+      <div className="text-center py-xsxl">
         <p className="text-muted-foreground mb-4">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -127,9 +127,9 @@ export default function CardView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Grid Layout */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
         {listings.map((listing) => (
           <Card
             key={listing.id}
@@ -141,10 +141,10 @@ export default function CardView({
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex-1 min-w-0">
-                  <CardTitle className="text-lg leading-tight line-clamp-2">
+                  <CardTitle className="text-lg leading-tight line-clamp-xs">
                     {listing.title}
                   </CardTitle>
-                  <div className="flex items-center gap-2 mt-2">
+                  <div className="flex items-center gap-xs mt-2">
                     <Badge variant={getTypeVariant(listing.type)} className="text-xs">
                       {listing.type}
                     </Badge>
@@ -170,25 +170,25 @@ export default function CardView({
 
               {/* Featured indicator */}
               {listing.featured && (
-                <div className="flex items-center gap-1 text-yellow-600 mt-2">
-                  <Star className="h-4 w-4 fill-current" />
+                <div className="flex items-center gap-xs text-yellow-600 mt-2">
+                  <Star className="h-icon-xs w-icon-xs fill-current" />
                   <span className="text-sm font-medium">Featured</span>
                 </div>
               )}
             </CardHeader>
 
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               {/* Description */}
               {listing.description && (
-                <p className="text-sm text-muted-foreground line-clamp-3">
+                <p className="text-sm text-muted-foreground line-clamp-sm">
                   {listing.description}
                 </p>
               )}
 
               {/* Pricing */}
               {listing.pricing?.amount && (
-                <div className="flex items-center gap-2">
-                  <DollarSign className="h-4 w-4 text-green-600" />
+                <div className="flex items-center gap-xs">
+                  <DollarSign className="h-icon-xs w-icon-xs text-green-600" />
                   <span className="font-semibold text-green-600">
                     {formatCurrency(listing.pricing.amount, listing.pricing.currency)}
                   </span>
@@ -202,8 +202,8 @@ export default function CardView({
 
               {/* Location */}
               {(listing.location?.city || listing.location?.isRemote) && (
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <MapPin className="h-4 w-4" />
+                <div className="flex items-center gap-xs text-sm text-muted-foreground">
+                  <MapPin className="h-icon-xs w-icon-xs" />
                   <span>
                     {listing.location.isRemote
                       ? 'Remote'
@@ -217,13 +217,13 @@ export default function CardView({
 
               {/* Stats */}
               <div className="flex items-center justify-between text-sm">
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-1">
-                    <MessageSquare className="h-4 w-4 text-muted-foreground" />
+                <div className="flex items-center gap-md">
+                  <div className="flex items-center gap-xs">
+                    <MessageSquare className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <span>{listing.response_count || 0}</span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <Eye className="h-4 w-4 text-muted-foreground" />
+                  <div className="flex items-center gap-xs">
+                    <Eye className="h-icon-xs w-icon-xs text-muted-foreground" />
                     <span>{listing.view_count || 0}</span>
                   </div>
                 </div>
@@ -234,7 +234,7 @@ export default function CardView({
               </div>
 
               {/* Created date */}
-              <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="flex items-center gap-xs text-xs text-muted-foreground">
                 <Calendar className="h-3 w-3" />
                 <span>
                   {new Date(listing.created_at).toLocaleDateString()}
@@ -243,7 +243,7 @@ export default function CardView({
 
               {/* Creator info */}
               {listing.creator && (
-                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-xs text-xs text-muted-foreground">
                   <User className="h-3 w-3" />
                   <span>{listing.creator.name || 'Anonymous'}</span>
                 </div>
@@ -251,9 +251,9 @@ export default function CardView({
             </CardContent>
 
             {/* Actions */}
-            <div className="px-6 pb-4">
+            <div className="px-lg pb-4">
               <div className="flex items-center justify-between">
-                <div className="flex gap-2">
+                <div className="flex gap-xs">
                   <Button
                     size="sm"
                     variant="outline"
@@ -285,7 +285,7 @@ export default function CardView({
                       variant="ghost"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <MoreHorizontal className="h-4 w-4" />
+                      <MoreHorizontal className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
@@ -294,12 +294,12 @@ export default function CardView({
                     >
                       {listing.featured ? (
                         <>
-                          <StarOff className="mr-2 h-4 w-4" />
+                          <StarOff className="mr-2 h-icon-xs w-icon-xs" />
                           Unfeature
                         </>
                       ) : (
                         <>
-                          <Star className="mr-2 h-4 w-4" />
+                          <Star className="mr-2 h-icon-xs w-icon-xs" />
                           Feature
                         </>
                       )}
@@ -307,14 +307,14 @@ export default function CardView({
                     <DropdownMenuItem
                       onClick={() => marketplaceService.archiveListing(orgId, '', listing.id)}
                     >
-                      <Archive className="mr-2 h-4 w-4" />
+                      <Archive className="mr-2 h-icon-xs w-icon-xs" />
                       Archive
                     </DropdownMenuItem>
                     <DropdownMenuItem
                       onClick={() => onListingDelete?.(listing)}
                       className="text-destructive"
                     >
-                      <Trash2 className="mr-2 h-4 w-4" />
+                      <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -327,9 +327,9 @@ export default function CardView({
 
       {/* Empty state */}
       {listings.length === 0 && (
-        <div className="text-center py-12">
-          <div className="mx-auto w-24 h-24 bg-muted rounded-full flex items-center justify-center mb-4">
-            <FileText className="h-8 w-8 text-muted-foreground" />
+        <div className="text-center py-xsxl">
+          <div className="mx-auto w-component-lg h-component-lg bg-muted rounded-full flex items-center justify-center mb-4">
+            <FileText className="h-icon-lg w-icon-lg text-muted-foreground" />
           </div>
           <h3 className="text-lg font-medium mb-2">No listings found</h3>
           <p className="text-muted-foreground mb-4">

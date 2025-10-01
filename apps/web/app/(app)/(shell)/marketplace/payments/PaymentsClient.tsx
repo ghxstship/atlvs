@@ -222,11 +222,11 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  </div>
  <div className="flex items-center gap-sm">
  <Button variant="outline">
- <CreditCard className="h-4 w-4 mr-sm" />
+ <CreditCard className="h-icon-xs w-icon-xs mr-sm" />
  Payment Methods
  </Button>
  <Button>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Request Payment
  </Button>
  </div>
@@ -242,7 +242,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  {formatAmount(stats.totalEarnings, 'USD')}
  </p>
  </div>
- <ArrowDownLeft className="h-8 w-8 color-success" />
+ <ArrowDownLeft className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
  <Card className="p-md">
@@ -253,7 +253,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  {formatAmount(stats.totalSpent, 'USD')}
  </p>
  </div>
- <ArrowUpRight className="h-8 w-8 color-destructive" />
+ <ArrowUpRight className="h-icon-lg w-icon-lg color-destructive" />
  </div>
  </Card>
  <Card className="p-md">
@@ -264,7 +264,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  {formatAmount(stats.escrowBalance, 'USD')}
  </p>
  </div>
- <Shield className="h-8 w-8 color-warning" />
+ <Shield className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  <Card className="p-md">
@@ -273,7 +273,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  <p className="text-body-sm color-muted">Pending</p>
  <p className="text-heading-3 font-bold">{stats.pendingPayments}</p>
  </div>
- <Clock className="h-8 w-8 color-secondary" />
+ <Clock className="h-icon-lg w-icon-lg color-secondary" />
  </div>
  </Card>
  </div>
@@ -286,11 +286,11 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  <h3 className="text-heading-4">Payment History</h3>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Export
  </Button>
  <Button variant="outline" size="sm">
- <Filter className="h-4 w-4" />
+ <Filter className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -319,8 +319,8 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  return (
  <div key={payment.id} className="flex items-center justify-between p-sm border rounded hover:bg-muted transition-colors">
  <div className="flex items-center gap-sm">
- <div className="flex items-center justify-center h-10 w-10 bg-primary/10 rounded">
- <TypeIcon className="h-5 w-5 color-primary" />
+ <div className="flex items-center justify-center h-icon-xl w-icon-xl bg-primary/10 rounded">
+ <TypeIcon className="h-icon-sm w-icon-sm color-primary" />
  </div>
  <div>
  <div className="flex items-center gap-sm mb-xs">
@@ -367,7 +367,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  <div className="flex items-center justify-between mb-md">
  <h3 className="text-heading-4">Payment Methods</h3>
  <Button variant="outline" size="sm">
- <Plus className="h-4 w-4 mr-xs" />
+ <Plus className="h-icon-xs w-icon-xs mr-xs" />
  Add
  </Button>
  </div>
@@ -376,11 +376,11 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  {paymentMethods.map((method) => (
  <div key={method.id} className="flex items-center justify-between p-sm border rounded">
  <div className="flex items-center gap-sm">
- <div className="flex items-center justify-center h-8 w-8 bg-primary/10 rounded">
+ <div className="flex items-center justify-center h-icon-lg w-icon-lg bg-primary/10 rounded">
  {method.type === 'card' ? (
- <CreditCard className="h-4 w-4 color-primary" />
+ <CreditCard className="h-icon-xs w-icon-xs color-primary" />
  ) : (
- <Wallet className="h-4 w-4 color-primary" />
+ <Wallet className="h-icon-xs w-icon-xs color-primary" />
  )}
  </div>
  <div>
@@ -413,19 +413,19 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  <h3 className="text-heading-4 mb-md">Quick Actions</h3>
  <div className="stack-xs">
  <Button variant="outline" className="w-full justify-start">
- <DollarSign className="h-4 w-4 mr-sm" />
+ <DollarSign className="h-icon-xs w-icon-xs mr-sm" />
  Request Payment
  </Button>
  <Button variant="outline" className="w-full justify-start">
- <Shield className="h-4 w-4 mr-sm" />
+ <Shield className="h-icon-xs w-icon-xs mr-sm" />
  Create Escrow
  </Button>
  <Button variant="outline" className="w-full justify-start">
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  Download Statement
  </Button>
  <Button variant="outline" className="w-full justify-start">
- <CreditCard className="h-4 w-4 mr-sm" />
+ <CreditCard className="h-icon-xs w-icon-xs mr-sm" />
  Manage Methods
  </Button>
  </div>
@@ -434,7 +434,7 @@ export default function PaymentsClient({ orgId, userId }: PaymentsClientProps) {
  {/* Security Notice */}
  <Card className="p-md bg-muted/50">
  <div className="flex items-start gap-sm">
- <Shield className="h-5 w-5 color-success mt-xs" />
+ <Shield className="h-icon-sm w-icon-sm color-success mt-xs" />
  <div>
  <h4 className="text-body font-medium mb-xs">Secure Payments</h4>
  <p className="text-body-sm color-muted">

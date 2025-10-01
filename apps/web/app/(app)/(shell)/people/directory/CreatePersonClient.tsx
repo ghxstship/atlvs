@@ -138,7 +138,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Person
       </Button>
 
@@ -155,7 +155,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -163,7 +163,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
               form="person-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Person'}
             </Button>
           </div>
@@ -172,7 +172,7 @@ export default function CreatePersonClient({ orgId, onPersonCreated }: CreatePer
         <form id="person-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-accent/10 rounded-lg">
-              <User className="h-5 w-5 color-accent" />
+              <User className="h-icon-sm w-icon-sm color-accent" />
             </div>
             <div>
               <h3 className="form-label">Person Information</h3>

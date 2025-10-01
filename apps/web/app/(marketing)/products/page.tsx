@@ -79,7 +79,7 @@ export default function ProductsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -101,11 +101,11 @@ export default function ProductsPage() {
       </section>
 
       {/* Product Details */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
-          <div className="space-y-4xl">
+          <div className="space-y-mdxl">
             {products.map((product, index) => (
-              <div key={product.id} className={`grid lg:grid-cols-2 gap-2xl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+              <div key={product.id} className={`grid lg:grid-cols-2 gap-xsxl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className="stack-lg">
@@ -125,7 +125,7 @@ export default function ProductsPage() {
                         return (
                           <div key={feature.label} className="flex items-start gap-sm">
                             <div className={`p-sm rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10 flex-shrink-0`}>
-                              <Icon className="h-5 w-5 text-foreground" />
+                              <Icon className="h-icon-sm w-icon-sm text-foreground" />
                             </div>
                             <div>
                               <div className="text-heading-4 color-foreground">{feature.label}</div>
@@ -142,7 +142,7 @@ export default function ProductsPage() {
                       <div className="stack-sm">
                         {product.benefits.map((benefit: any) => (
                           <div key={benefit} className="flex items-center gap-sm">
-                            <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                            <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
                             <span className="text-body-sm color-muted">{benefit}</span>
                           </div>
                         ))}
@@ -154,7 +154,7 @@ export default function ProductsPage() {
                       <a href={product.href}>
                         <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                           {product.ctaText}
-                          <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                         </Button>
                       </a>
                       <Link href="/auth/signup">
@@ -194,7 +194,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Integration Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-2xl">
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-lg">
@@ -207,21 +207,21 @@ export default function ProductsPage() {
           </div>
 
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-xl lg:p-2xl">
+            <CardContent className="p-xl lg:p-xsxl">
               <div className="flex items-center justify-center gap-lg mb-xl">
                 <div className="font-title text-heading-3 text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-sm">
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
-                  <Zap className="h-6 w-6 text-foreground" />
-                  <div className="w-12 h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
+                  <div className="w-icon-2xl h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+                  <Zap className="h-icon-md w-icon-md text-foreground" />
+                  <div className="w-icon-2xl h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
                 </div>
                 <div className="font-title text-heading-3 text-heading-3">OPENDECK</div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-lg mb-xl">
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
-                    <Users className="h-6 w-6 text-foreground" />
+                  <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
+                    <Users className="h-icon-md w-icon-md text-foreground" />
                   </div>
                   <h3 className="text-heading-4 mb-sm">Unified Teams</h3>
                   <p className="text-body-sm color-muted">
@@ -229,8 +229,8 @@ export default function ProductsPage() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
-                    <BarChart3 className="h-6 w-6 color-accent" />
+                  <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
+                    <BarChart3 className="h-icon-md w-icon-md color-accent" />
                   </div>
                   <h3 className="text-heading-4 mb-sm">Shared Analytics</h3>
                   <p className="text-body-sm color-muted">
@@ -238,8 +238,8 @@ export default function ProductsPage() {
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-success/10 mb-md">
-                    <Zap className="h-6 w-6 color-success" />
+                  <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-success/10 mb-md">
+                    <Zap className="h-icon-md w-icon-md color-success" />
                   </div>
                   <h3 className="text-heading-4 mb-sm">Instant Scaling</h3>
                   <p className="text-body-sm color-muted">
@@ -257,7 +257,7 @@ export default function ProductsPage() {
                 <Link href="/auth/signup">
                   <Button className="group transition-all duration-200 hover:scale-105">
                     Start Complete Suite
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>

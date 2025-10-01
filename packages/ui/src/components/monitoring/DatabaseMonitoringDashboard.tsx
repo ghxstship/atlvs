@@ -233,11 +233,11 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'OK': return <CheckCircle className="h-4 w-4" />;
-      case 'WARNING': return <AlertTriangle className="h-4 w-4" />;
-      case 'CRITICAL': return <XCircle className="h-4 w-4" />;
-      case 'INFO': return <Activity className="h-4 w-4" />;
-      default: return <Activity className="h-4 w-4" />;
+      case 'OK': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+      case 'WARNING': return <AlertTriangle className="h-icon-xs w-icon-xs" />;
+      case 'CRITICAL': return <XCircle className="h-icon-xs w-icon-xs" />;
+      case 'INFO': return <Activity className="h-icon-xs w-icon-xs" />;
+      default: return <Activity className="h-icon-xs w-icon-xs" />;
     }
   };
 
@@ -245,14 +245,14 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
     return (
       <div className={`gap-md ${className}`}>
         <Alert variant="destructive">
-          <AlertTriangle className="h-4 w-4" />
+          <AlertTriangle className="h-icon-xs w-icon-xs" />
           <div>
             <h4 className="font-semibold">Monitoring Error</h4>
             <p>{error}</p>
           </div>
         </Alert>
         <Button onClick={loadData} variant="outline">
-          <RefreshCw className="h-4 w-4 mr-sm" />
+          <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
           Retry
         </Button>
       </div>
@@ -264,7 +264,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {/* Header */}
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-sm">
-          <Database className="h-6 w-6 text-accent" />
+          <Database className="h-icon-md w-icon-md text-accent" />
           <h2 className="text-2xl font-bold text-foreground">Database Monitoring</h2>
         </div>
         <div className="flex items-center gap-sm">
@@ -276,11 +276,11 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
             variant={autoRefresh ? "primary" : "outline"}
             size="sm"
           >
-            <Activity className="h-4 w-4 mr-sm" />
+            <Activity className="h-icon-xs w-icon-xs mr-sm" />
             Auto-refresh {autoRefresh ? 'ON' : 'OFF'}
           </Button>
           <Button onClick={loadData} variant="outline" size="sm" disabled={loading}>
-            <RefreshCw className={`h-4 w-4 mr-sm ${loading ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-icon-xs w-icon-xs mr-sm ${loading ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
         </div>
@@ -290,7 +290,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.healthReport && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <Activity className="h-5 w-5 mr-sm text-success" />
+            <Activity className="h-icon-sm w-icon-sm mr-sm text-success" />
             System Health Overview
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
@@ -315,7 +315,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.recommendations && data.recommendations.length > 0 && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <TrendingUp className="h-5 w-5 mr-sm text-warning" />
+            <TrendingUp className="h-icon-sm w-icon-sm mr-sm text-warning" />
             Performance Recommendations
           </h3>
           <div className="space-y-sm">
@@ -342,7 +342,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.tableStats && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <Database className="h-5 w-5 mr-sm text-accent" />
+            <Database className="h-icon-sm w-icon-sm mr-sm text-accent" />
             Table Performance Statistics
           </h3>
           <div className="overflow-x-auto">
@@ -365,7 +365,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
                     <td className="p-xs">{table.rowCount.toLocaleString()}</td>
                     <td className="p-xs">
                       <div className="flex items-center gap-sm">
-                        <div className="w-16 bg-muted rounded-full h-2">
+                        <div className="w-component-md bg-muted rounded-full h-2">
                           <div 
                             className={`h-2 rounded-full ${
                               table.indexUsagePercent >= 90 ? 'bg-success' :
@@ -391,13 +391,13 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.vacuumCandidates && data.vacuumCandidates.length > 0 && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <TrendingDown className="h-5 w-5 mr-sm text-destructive" />
+            <TrendingDown className="h-icon-sm w-icon-sm mr-sm text-destructive" />
             Maintenance Required
           </h3>
           <div className="space-y-sm">
             {data.vacuumCandidates.map((candidate, index) => (
               <Alert key={index} variant="warning">
-                <AlertTriangle className="h-4 w-4" />
+                <AlertTriangle className="h-icon-xs w-icon-xs" />
                 <div>
                   <h4 className="font-semibold">{candidate.tableName}</h4>
                   <p className="text-sm">
@@ -415,7 +415,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
       {data?.unusedIndexes && data.unusedIndexes.length > 0 && (
         <Card className="p-lg">
           <h3 className="text-lg font-semibold mb-md flex items-center">
-            <Database className="h-5 w-5 mr-sm text-muted-foreground" />
+            <Database className="h-icon-sm w-icon-sm mr-sm text-muted-foreground" />
             Unused Indexes
           </h3>
           <div className="text-sm text-muted-foreground mb-sm">
@@ -440,7 +440,7 @@ export const DatabaseMonitoringDashboard: React.FC<DatabaseMonitoringDashboardPr
 
       {loading && (
         <div className="flex items-center justify-center p-xl">
-          <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
+          <RefreshCw className="h-icon-md w-icon-md animate-spin text-accent mr-sm" />
           <span className="text-muted-foreground">Loading monitoring data...</span>
         </div>
       )}

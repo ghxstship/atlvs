@@ -180,9 +180,9 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading team settings...</p>
         </div>
       </div>
@@ -190,14 +190,14 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Team Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
         <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-100 rounded-full">
-                <Users className="h-4 w-4 text-blue-600" />
+          <CardContent className="p-md">
+            <div className="flex items-center gap-sm">
+              <div className="p-xs bg-blue-100 rounded-full">
+                <Users className="h-icon-xs w-icon-xs text-blue-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{members.length}</p>
@@ -208,10 +208,10 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
         </Card>
 
         <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-yellow-100 rounded-full">
-                <Mail className="h-4 w-4 text-yellow-600" />
+          <CardContent className="p-md">
+            <div className="flex items-center gap-sm">
+              <div className="p-xs bg-yellow-100 rounded-full">
+                <Mail className="h-icon-xs w-icon-xs text-yellow-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{pendingInvites.length}</p>
@@ -222,10 +222,10 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
         </Card>
 
         <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-green-100 rounded-full">
-                <Shield className="h-4 w-4 text-green-600" />
+          <CardContent className="p-md">
+            <div className="flex items-center gap-sm">
+              <div className="p-xs bg-green-100 rounded-full">
+                <Shield className="h-icon-xs w-icon-xs text-green-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{members.filter(m => m.role === 'admin').length}</p>
@@ -236,10 +236,10 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
         </Card>
 
         <Card>
-          <CardContent className="p-4">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-purple-100 rounded-full">
-                <UserPlus className="h-4 w-4 text-purple-600" />
+          <CardContent className="p-md">
+            <div className="flex items-center gap-sm">
+              <div className="p-xs bg-purple-100 rounded-full">
+                <UserPlus className="h-icon-xs w-icon-xs text-purple-600" />
               </div>
               <div>
                 <p className="text-2xl font-bold">{members.filter(m => m.status === 'active').length}</p>
@@ -254,23 +254,23 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2">
-              <Users className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <Users className="h-icon-sm w-icon-sm" />
               Team Members
             </CardTitle>
             <Button onClick={() => setShowInviteForm(!showInviteForm)}>
-              <UserPlus className="h-4 w-4 mr-2" />
+              <UserPlus className="h-icon-xs w-icon-xs mr-2" />
               Invite Member
             </Button>
           </div>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-md">
           {/* Invite Form */}
           {showInviteForm && (
             <Card className="border-dashed">
-              <CardContent className="p-4">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="space-y-2">
+              <CardContent className="p-md">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+                  <div className="space-y-xs">
                     <Label htmlFor="invite-email">Email Address</Label>
                     <Input
                       id="invite-email"
@@ -280,7 +280,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                       onChange={(e) => setInviteEmail(e.target.value)}
                     />
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-xs">
                     <Label htmlFor="invite-role">Role</Label>
                     <Select value={inviteRole} onValueChange={(value: unknown) => setInviteRole(value)}>
                       <SelectTrigger>
@@ -289,7 +289,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                       <SelectContent>
                         {Object.entries(ROLE_CONFIGS).map(([key, config]) => (
                           <SelectItem key={key} value={key}>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-xs">
                               <span>{config.label}</span>
                               <span className="text-xs text-muted-foreground">• {config.description}</span>
                             </div>
@@ -298,9 +298,9 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="flex items-end gap-2">
+                  <div className="flex items-end gap-xs">
                     <Button onClick={handleSendInvite} className="flex-1">
-                      <Mail className="h-4 w-4 mr-2" />
+                      <Mail className="h-icon-xs w-icon-xs mr-2" />
                       Send Invite
                     </Button>
                     <Button variant="outline" onClick={() => setShowInviteForm(false)}>
@@ -313,10 +313,10 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
           )}
 
           {/* Members List */}
-          <div className="space-y-4">
+          <div className="space-y-md">
             {members.map((member) => (
-              <div key={member.id} className="flex items-center justify-between p-4 border rounded-lg">
-                <div className="flex items-center gap-3">
+              <div key={member.id} className="flex items-center justify-between p-md border rounded-lg">
+                <div className="flex items-center gap-sm">
                   <Avatar>
                     <AvatarImage src={member.avatar_url} />
                     <AvatarFallback>
@@ -329,12 +329,12 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-sm">
                   <Select
                     value={member.role}
                     onValueChange={(value: unknown) => handleUpdateRole(member.id, value)}
                   >
-                    <SelectTrigger className="w-32">
+                    <SelectTrigger className="w-component-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -357,7 +357,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                       onClick={() => handleRemoveMember(member.id)}
                       className="text-red-600 hover:text-red-700 hover:bg-red-50"
                     >
-                      <UserMinus className="h-4 w-4" />
+                      <UserMinus className="h-icon-xs w-icon-xs" />
                     </Button>
                   )}
                 </div>
@@ -371,18 +371,18 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
       {pendingInvites.length > 0 && (
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Mail className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <Mail className="h-icon-sm w-icon-sm" />
               Pending Invites
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4">
+            <div className="space-y-md">
               {pendingInvites.map((invite) => (
-                <div key={invite.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-blue-100 rounded-full">
-                      <Mail className="h-4 w-4 text-blue-600" />
+                <div key={invite.id} className="flex items-center justify-between p-md border rounded-lg">
+                  <div className="flex items-center gap-sm">
+                    <div className="p-xs bg-blue-100 rounded-full">
+                      <Mail className="h-icon-xs w-icon-xs text-blue-600" />
                     </div>
                     <div>
                       <p className="font-medium">{invite.email}</p>
@@ -392,7 +392,7 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-sm">
                     <Badge className={ROLE_CONFIGS[invite.role].color}>
                       {ROLE_CONFIGS[invite.role].label}
                     </Badge>
@@ -415,23 +415,23 @@ export default function TeamsSettings({ userId, orgId }: TeamsSettingsProps) {
       {/* Team Settings */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <SettingsIcon className="h-icon-sm w-icon-sm" />
             Team Settings
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-md">
             <p className="text-sm text-muted-foreground">
               Additional team management settings and policies will be available here.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
               <Button variant="outline" className="justify-start">
-                <Shield className="h-4 w-4 mr-2" />
+                <Shield className="h-icon-xs w-icon-xs mr-2" />
                 Manage Roles & Permissions
               </Button>
               <Button variant="outline" className="justify-start">
-                <RefreshCw className="h-4 w-4 mr-2" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-2" />
                 Bulk Import Members
               </Button>
             </div>

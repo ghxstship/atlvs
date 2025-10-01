@@ -17,11 +17,11 @@ export default function TransactionGridView({ data, isLoading, onRecordClick }: 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         {[...Array(6)].map((_, i) => (
           <Card key={i} className="p-lg animate-pulse">
-            <div className="h-4 bg-gray-200 rounded mb-sm"></div>
-            <div className="h-6 bg-gray-200 rounded mb-md"></div>
+            <div className="h-icon-xs bg-gray-200 rounded mb-sm"></div>
+            <div className="h-icon-md bg-gray-200 rounded mb-md"></div>
             <div className="flex justify-between items-center">
-              <div className="h-4 bg-gray-200 rounded w-16"></div>
-              <div className="h-6 bg-gray-200 rounded w-12"></div>
+              <div className="h-icon-xs bg-gray-200 rounded w-component-md"></div>
+              <div className="h-icon-md bg-gray-200 rounded w-icon-2xl"></div>
             </div>
           </Card>
         ))}
@@ -66,14 +66,14 @@ export default function TransactionGridView({ data, isLoading, onRecordClick }: 
 
             {record.account_id && (
               <div className="flex items-center gap-xs">
-                <CreditCard className="h-4 w-4 text-gray-400" />
+                <CreditCard className="h-icon-xs w-icon-xs text-gray-400" />
                 <span className="text-sm text-gray-600">Account: {record.account_id}</span>
               </div>
             )}
 
             {record.project_id && (
               <div className="flex items-center gap-xs">
-                <Building className="h-4 w-4 text-gray-400" />
+                <Building className="h-icon-xs w-icon-xs text-gray-400" />
                 <span className="text-sm text-gray-600">Project: {record.project_id}</span>
               </div>
             )}
@@ -83,7 +83,7 @@ export default function TransactionGridView({ data, isLoading, onRecordClick }: 
 
       {data.length === 0 && (
         <div className="col-span-full text-center py-xl">
-          <ArrowUpDown className="h-12 w-12 text-gray-400 mx-auto mb-md" />
+          <ArrowUpDown className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-md" />
           <h3 className="text-lg font-medium text-gray-900 mb-sm">No transactions</h3>
           <p className="text-gray-600">Get started by adding your first transaction.</p>
         </div>

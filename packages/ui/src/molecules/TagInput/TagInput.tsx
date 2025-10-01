@@ -16,9 +16,9 @@ const tagInputVariants = cva(
         success: 'border-success focus-within:ring-success',
       },
       size: {
-        sm: 'text-sm min-h-[32px]',
-        default: 'text-sm min-h-[40px]',
-        lg: 'text-base min-h-[48px]',
+        sm: 'text-sm min-h-icon-lg',
+        default: 'text-sm min-h-icon-xl',
+        lg: 'text-base min-h-icon-2xl',
       },
       disabled: {
         true: 'opacity-50 cursor-not-allowed bg-muted',
@@ -181,7 +181,7 @@ export const TagInput = React.forwardRef<HTMLDivElement, TagInputProps>(
               placeholder={value.length === 0 ? placeholder : ''}
               disabled={disabled}
               className={clsx(
-                'flex-1 min-w-[120px] bg-transparent outline-none placeholder:text-muted-foreground',
+                'flex-1 min-w-component-xl bg-transparent outline-none placeholder:text-muted-foreground',
                 disabled && 'cursor-not-allowed'
               )}
             />
@@ -189,7 +189,7 @@ export const TagInput = React.forwardRef<HTMLDivElement, TagInputProps>(
         </div>
 
         {showSuggestions && filteredSuggestions.length > 0 && (
-          <div className="absolute z-50 top-full mt-xs w-full max-h-[200px] overflow-auto rounded-md border bg-popover p-xs shadow-elevated">
+          <div className="absolute z-50 top-full mt-xs w-full max-h-content-sm overflow-auto rounded-md border bg-popover p-xs shadow-elevated">
             {filteredSuggestions.map((suggestion) => (
               <button
                 key={suggestion}

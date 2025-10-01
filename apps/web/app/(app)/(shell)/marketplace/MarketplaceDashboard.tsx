@@ -482,11 +482,11 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
           <Tabs value={activeView} onValueChange={(value: string) => setActiveView(value as 'vendor' | 'client')}>
             <TabsList>
               <TabsTrigger value="vendor">
-                <Building className="h-4 w-4 mr-sm" />
+                <Building className="h-icon-xs w-icon-xs mr-sm" />
                 {t('vendor.title')}
               </TabsTrigger>
               <TabsTrigger value="client">
-                <Briefcase className="h-4 w-4 mr-sm" />
+                <Briefcase className="h-icon-xs w-icon-xs mr-sm" />
                 {t('client.title')}
               </TabsTrigger>
             </TabsList>
@@ -498,7 +498,7 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
         <Card className="p-md bg-info/5 border-info/20">
           <div className="brand-marketplace flex items-center justify-between">
             <div className="brand-marketplace flex items-center">
-              <Shield className="h-5 w-5 text-info mr-sm" />
+              <Shield className="h-icon-sm w-icon-sm text-info mr-sm" />
               <span className="text-body-sm">
                 {t('common.notifications.unread', { count: notifications })}
               </span>
@@ -509,8 +509,8 @@ export default function MarketplaceDashboard({ orgId, userId, userRole }: Market
       )}
 
       {loading ? (
-        <div className="brand-marketplace flex items-center justify-center h-64">
-          <div className="brand-marketplace animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        <div className="brand-marketplace flex items-center justify-center h-container-sm">
+          <div className="brand-marketplace animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary" />
         </div>
       ) : activeView === 'vendor' ? (
         vendorDashboard

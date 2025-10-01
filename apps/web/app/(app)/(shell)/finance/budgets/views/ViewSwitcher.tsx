@@ -35,7 +35,7 @@ export default function BudgetViewSwitcher({ currentView, onViewChange }: Budget
                 : 'text-gray-600 hover:bg-white/50 hover:text-gray-900'
             }`}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             <span className="hidden sm:inline">{view.label}</span>
           </button>
         );

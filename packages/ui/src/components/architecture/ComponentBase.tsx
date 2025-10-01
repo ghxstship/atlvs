@@ -150,7 +150,7 @@ export abstract class BaseComponent<P extends BaseComponentProps = BaseComponent
     return (
       <Card className="p-lg border-destructive/20 bg-destructive/10">
         <div className="flex items-start space-x-sm">
-          <AlertTriangle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
+          <AlertTriangle className="h-icon-md w-icon-md text-destructive flex-shrink-0 mt-0.5" />
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-destructive mb-sm">
               Component Error: {metadata.name}
@@ -191,7 +191,7 @@ export abstract class BaseComponent<P extends BaseComponentProps = BaseComponent
     
     return (
       <Card className="p-xl flex items-center justify-center">
-        <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
+        <RefreshCw className="h-icon-md w-icon-md animate-spin text-accent mr-sm" />
         <span className="text-muted-foreground">Loading {metadata.name}...</span>
       </Card>
     );
@@ -335,7 +335,7 @@ export const withBaseComponent = <P extends BaseComponentProps>(
       return (
         <Card className="p-lg border-destructive/20 bg-destructive/10">
           <div className="flex items-start space-x-sm">
-            <AlertTriangle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
+            <AlertTriangle className="h-icon-md w-icon-md text-destructive flex-shrink-0 mt-0.5" />
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-destructive mb-sm">
                 Component Error: {metadata.name}

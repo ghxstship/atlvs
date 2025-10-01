@@ -476,7 +476,7 @@ export function WhiteboardView({
                 title={label}
                 disabled={readOnly && tool !== 'select' && tool !== 'pan'}
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-icon-xs w-icon-xs" />
               </Button>
             ))}
           </div>
@@ -486,7 +486,7 @@ export function WhiteboardView({
             {COLORS.map(color => (
               <button
                 key={color}
-                className={`w-6 h-6 rounded border-2 ${
+                className={`w-icon-md h-icon-md rounded border-2 ${
                   whiteboardState.selectedColor === color ? 'border-primary' : 'border-border'
                 }`}
                 style={{ backgroundColor: color }}
@@ -518,7 +518,7 @@ export function WhiteboardView({
             onClick={undo}
             disabled={historyIndex <= 0 || readOnly}
           >
-            <Undo className="h-4 w-4" />
+            <Undo className="h-icon-xs w-icon-xs" />
           </Button>
           <Button
             variant="ghost"
@@ -526,7 +526,7 @@ export function WhiteboardView({
             onClick={redo}
             disabled={historyIndex >= history.length - 1 || readOnly}
           >
-            <Redo className="h-4 w-4" />
+            <Redo className="h-icon-xs w-icon-xs" />
           </Button>
 
           {/* Zoom Controls */}
@@ -535,14 +535,14 @@ export function WhiteboardView({
             
             onClick={() => setWhiteboardState(prev => ({ ...prev, zoom: Math.min(prev.zoom * 1.2, 3) }))}
           >
-            <ZoomIn className="h-4 w-4" />
+            <ZoomIn className="h-icon-xs w-icon-xs" />
           </Button>
           <Button
             variant="ghost"
             
             onClick={() => setWhiteboardState(prev => ({ ...prev, zoom: Math.max(prev.zoom / 1.2, 0.1) }))}
           >
-            <ZoomOut className="h-4 w-4" />
+            <ZoomOut className="h-icon-xs w-icon-xs" />
           </Button>
 
           {/* Actions */}
@@ -551,7 +551,7 @@ export function WhiteboardView({
             
             onClick={exportWhiteboard}
           >
-            <Download className="h-4 w-4" />
+            <Download className="h-icon-xs w-icon-xs" />
             Export
           </Button>
           
@@ -561,7 +561,7 @@ export function WhiteboardView({
               
               onClick={clearWhiteboard}
             >
-              <Trash2 className="h-4 w-4" />
+              <Trash2 className="h-icon-xs w-icon-xs" />
               Clear
             </Button>
           )}

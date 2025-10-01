@@ -156,7 +156,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Manning Slot
       </Button>
 
@@ -173,7 +173,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -181,7 +181,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
               form="manning-slot-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Slot'}
             </Button>
           </div>
@@ -190,7 +190,7 @@ export default function CreateManningSlotClient({ orgId, onSlotCreated }: Create
         <form id="manning-slot-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-accent/10 rounded-lg">
-              <Users className="h-5 w-5 color-accent" />
+              <Users className="h-icon-sm w-icon-sm color-accent" />
             </div>
             <div>
               <h3 className="form-label">Manning Slot Information</h3>

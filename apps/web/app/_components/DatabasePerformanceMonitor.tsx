@@ -70,8 +70,8 @@ export function DatabasePerformanceMonitor() {
     return (
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Database className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Database className="h-icon-sm w-icon-sm" />
             Database Performance Monitor
           </CardTitle>
         </CardHeader>
@@ -83,13 +83,13 @@ export function DatabasePerformanceMonitor() {
   }
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="space-y-md">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         {/* Query Performance */}
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <Zap className="h-4 w-4" />
+            <CardTitle className="text-sm font-medium flex items-center gap-xs">
+              <Zap className="h-icon-xs w-icon-xs" />
               Query Count
             </CardTitle>
           </CardHeader>
@@ -103,8 +103,8 @@ export function DatabasePerformanceMonitor() {
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <Clock className="h-4 w-4" />
+            <CardTitle className="text-sm font-medium flex items-center gap-xs">
+              <Clock className="h-icon-xs w-icon-xs" />
               Avg Response Time
             </CardTitle>
           </CardHeader>
@@ -118,8 +118,8 @@ export function DatabasePerformanceMonitor() {
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <Database className="h-4 w-4" />
+            <CardTitle className="text-sm font-medium flex items-center gap-xs">
+              <Database className="h-icon-xs w-icon-xs" />
               Cache Hit Rate
             </CardTitle>
           </CardHeader>
@@ -133,8 +133,8 @@ export function DatabasePerformanceMonitor() {
 
         <Card>
           <CardHeader className="pb-2">
-            <CardTitle className="text-sm font-medium flex items-center gap-2">
-              <AlertTriangle className="h-4 w-4" />
+            <CardTitle className="text-sm font-medium flex items-center gap-xs">
+              <AlertTriangle className="h-icon-xs w-icon-xs" />
               Slow Queries
             </CardTitle>
           </CardHeader>
@@ -153,7 +153,7 @@ export function DatabasePerformanceMonitor() {
           <CardTitle>Connection Pool Status</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div className="flex justify-between items-center">
               <span className="text-sm font-medium">Active Connections</span>
               <span className={`font-semibold ${getMetricColor(metrics.activeConnections, { good: 15, poor: 25 })}`}>
@@ -188,12 +188,12 @@ export function DatabasePerformanceMonitor() {
           <CardTitle>Recent Query Log</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2 max-h-40 overflow-y-auto">
+          <div className="space-y-xs max-h-40 overflow-y-auto">
             {queryLog.length === 0 ? (
               <p className="text-gray-500 text-sm">No recent queries</p>
             ) : (
               queryLog.map((query, index) => (
-                <div key={index} className="text-xs font-mono bg-gray-50 p-2 rounded">
+                <div key={index} className="text-xs font-mono bg-gray-50 p-xs rounded">
                   {query}
                 </div>
               ))
@@ -208,28 +208,28 @@ export function DatabasePerformanceMonitor() {
           <CardTitle>Performance Recommendations</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {metrics.avgResponseTime > 150 && (
-              <div className="flex items-center gap-2 text-yellow-700">
-                <AlertTriangle className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-yellow-700">
+                <AlertTriangle className="h-icon-xs w-icon-xs" />
                 <span className="text-sm">Consider adding database indexes for frequently queried columns</span>
               </div>
             )}
             {metrics.cacheHitRate < 80 && (
-              <div className="flex items-center gap-2 text-yellow-700">
-                <AlertTriangle className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-yellow-700">
+                <AlertTriangle className="h-icon-xs w-icon-xs" />
                 <span className="text-sm">Cache hit rate is below optimal. Consider increasing cache size</span>
               </div>
             )}
             {metrics.slowQueries > 2 && (
-              <div className="flex items-center gap-2 text-red-700">
-                <AlertTriangle className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-red-700">
+                <AlertTriangle className="h-icon-xs w-icon-xs" />
                 <span className="text-sm">Multiple slow queries detected. Review query optimization</span>
               </div>
             )}
             {metrics.activeConnections > 25 && (
-              <div className="flex items-center gap-2 text-red-700">
-                <AlertTriangle className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-red-700">
+                <AlertTriangle className="h-icon-xs w-icon-xs" />
                 <span className="text-sm">High connection count. Consider connection pooling optimization</span>
               </div>
             )}

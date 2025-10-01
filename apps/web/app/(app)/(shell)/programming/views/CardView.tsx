@@ -77,11 +77,11 @@ export function CardView<T extends ProgrammingEntity>({
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
             <div className="flex-1">
-              <CardTitle className="text-lg line-clamp-2">
+              <CardTitle className="text-lg line-clamp-xs">
                 {item.title || 'Untitled'}
               </CardTitle>
               {item.description && (
-                <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                <p className="text-sm text-gray-600 mt-1 line-clamp-xs">
                   {item.description}
                 </p>
               )}
@@ -96,9 +96,9 @@ export function CardView<T extends ProgrammingEntity>({
           </div>
         </CardHeader>
         <CardContent className="pt-0">
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {/* Status and Type */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               {'status' in item && (
                 <Badge variant={item.status === 'completed' ? 'default' : 'secondary'}>
                   {item.status}
@@ -113,8 +113,8 @@ export function CardView<T extends ProgrammingEntity>({
 
             {/* Date/Time Information */}
             {isEvent && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Calendar className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <Calendar className="h-icon-xs w-icon-xs" />
                 <span>
                   {new Date((item as any).start_date).toLocaleDateString()} - {' '}
                   {new Date((item as any).end_date).toLocaleDateString()}
@@ -123,8 +123,8 @@ export function CardView<T extends ProgrammingEntity>({
             )}
 
             {isPerformance && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Calendar className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <Calendar className="h-icon-xs w-icon-xs" />
                 <span>
                   {new Date((item as any).date).toLocaleDateString()}
                   {(item as any).duration && ` (${(item as any).duration} min)`}
@@ -133,8 +133,8 @@ export function CardView<T extends ProgrammingEntity>({
             )}
 
             {isWorkshop && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Calendar className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <Calendar className="h-icon-xs w-icon-xs" />
                 <span>
                   {new Date((item as any).start_date).toLocaleDateString()} - {' '}
                   {new Date((item as any).end_date).toLocaleDateString()}
@@ -144,16 +144,16 @@ export function CardView<T extends ProgrammingEntity>({
 
             {/* Location/Venue */}
             {('location' in item || 'venue' in item) && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <MapPin className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <MapPin className="h-icon-xs w-icon-xs" />
                 <span>{(item as any).location || (item as any).venue || 'No location'}</span>
               </div>
             )}
 
             {/* Capacity/Instructor */}
             {('capacity' in item || 'instructor' in item) && (
-              <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Users className="h-4 w-4" />
+              <div className="flex items-center gap-xs text-sm text-gray-600">
+                <Users className="h-icon-xs w-icon-xs" />
                 <span>
                   {('capacity' in item) && `Capacity: ${(item as any).capacity || 'Unlimited'}`}
                   {('instructor' in item) && `Instructor: ${(item as any).instructor}`}
@@ -163,15 +163,15 @@ export function CardView<T extends ProgrammingEntity>({
 
             {/* Actions */}
             {(onEdit || onDelete || onView) && (
-              <div className="flex items-center justify-end gap-2 pt-2 border-t">
+              <div className="flex items-center justify-end gap-xs pt-2 border-t">
                 {onView && (
                   <Button variant="outline" size="sm" onClick={() => onView(item)}>
-                    <Eye className="h-4 w-4" />
+                    <Eye className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
                 {onEdit && (
                   <Button variant="outline" size="sm" onClick={() => onEdit(item)}>
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
                 {onDelete && (
@@ -181,26 +181,26 @@ export function CardView<T extends ProgrammingEntity>({
                     onClick={() => onDelete(item)}
                     className="text-red-600 hover:text-red-700"
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
                 {(onEdit || onDelete || onView) && (
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="outline" size="sm">
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       {onView && (
                         <DropdownMenuItem onClick={() => onView(item)}>
-                          <Eye className="h-4 w-4 mr-2" />
+                          <Eye className="h-icon-xs w-icon-xs mr-2" />
                           View
                         </DropdownMenuItem>
                       )}
                       {onEdit && (
                         <DropdownMenuItem onClick={() => onEdit(item)}>
-                          <Edit className="h-4 w-4 mr-2" />
+                          <Edit className="h-icon-xs w-icon-xs mr-2" />
                           Edit
                         </DropdownMenuItem>
                       )}
@@ -209,7 +209,7 @@ export function CardView<T extends ProgrammingEntity>({
                           onClick={() => onDelete(item)}
                           className="text-red-600"
                         >
-                          <Trash2 className="h-4 w-4 mr-2" />
+                          <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                           Delete
                         </DropdownMenuItem>
                       )}
@@ -226,18 +226,18 @@ export function CardView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`grid ${getGridClass()} gap-4 ${className}`}>
+      <div className={`grid ${getGridClass()} gap-md ${className}`}>
         {Array.from({ length: 6 }).map((_, i) => (
-          <Card key={i} className="h-64">
+          <Card key={i} className="h-container-sm">
             <CardHeader>
-              <div className="h-6 bg-gray-200 animate-pulse rounded" />
-              <div className="h-4 bg-gray-200 animate-pulse rounded mt-2" />
+              <div className="h-icon-md bg-gray-200 animate-pulse rounded" />
+              <div className="h-icon-xs bg-gray-200 animate-pulse rounded mt-2" />
             </CardHeader>
             <CardContent>
-              <div className="space-y-2">
-                <div className="h-4 bg-gray-200 animate-pulse rounded" />
-                <div className="h-4 bg-gray-200 animate-pulse rounded" />
-                <div className="h-4 bg-gray-200 animate-pulse rounded w-2/3" />
+              <div className="space-y-xs">
+                <div className="h-icon-xs bg-gray-200 animate-pulse rounded" />
+                <div className="h-icon-xs bg-gray-200 animate-pulse rounded" />
+                <div className="h-icon-xs bg-gray-200 animate-pulse rounded w-2/3" />
               </div>
             </CardContent>
           </Card>
@@ -248,14 +248,14 @@ export function CardView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className={`grid ${getGridClass()} gap-4 ${className}`}>
+    <div className={`grid ${getGridClass()} gap-md ${className}`}>
       {data.map((item) => (
         <div key={item.id}>
           {renderCard ? renderCard(item) : defaultRenderCard(item)}

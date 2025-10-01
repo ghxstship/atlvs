@@ -101,21 +101,21 @@ export default function FormView({
 
   if (isLoading) {
     return (
-      <div className="space-y-6">
-        <div className="h-8 bg-muted animate-pulse rounded" />
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="space-y-4">
+      <div className="space-y-lg">
+        <div className="h-icon-lg bg-muted animate-pulse rounded" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+          <div className="space-y-md">
             {Array.from({ length: 6 }).map((_, i) => (
-              <div key={i} className="space-y-2">
-                <div className="h-4 bg-muted animate-pulse rounded w-24" />
-                <div className="h-10 bg-muted animate-pulse rounded" />
+              <div key={i} className="space-y-xs">
+                <div className="h-icon-xs bg-muted animate-pulse rounded w-component-lg" />
+                <div className="h-icon-xl bg-muted animate-pulse rounded" />
               </div>
             ))}
           </div>
-          <div className="space-y-4">
-            <div className="h-8 bg-muted animate-pulse rounded w-48" />
+          <div className="space-y-md">
+            <div className="h-icon-lg bg-muted animate-pulse rounded w-container-xs" />
             {Array.from({ length: 4 }).map((_, i) => (
-              <div key={i} className="h-16 bg-muted animate-pulse rounded" />
+              <div key={i} className="h-component-md bg-muted animate-pulse rounded" />
             ))}
           </div>
         </div>
@@ -124,12 +124,12 @@ export default function FormView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold flex items-center gap-2">
-            <FileText className="h-6 w-6" />
+          <h2 className="text-2xl font-bold flex items-center gap-xs">
+            <FileText className="h-icon-md w-icon-md" />
             Listing Form
           </h2>
           <p className="text-muted-foreground">
@@ -139,13 +139,13 @@ export default function FormView({
 
         {!isEditing && (
           <Button onClick={handleCreateNew}>
-            <Plus className="h-4 w-4 mr-2" />
+            <Plus className="h-icon-xs w-icon-xs mr-2" />
             New Listing
           </Button>
         )}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
         {/* Form Panel */}
         <Card>
           <CardHeader>
@@ -158,9 +158,9 @@ export default function FormView({
           </CardHeader>
           <CardContent>
             {isEditing ? (
-              <div className="space-y-6">
+              <div className="space-y-lg">
                 {/* Basic Information */}
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <div>
                     <Label htmlFor="title">Title *</Label>
                     <Input
@@ -182,7 +182,7 @@ export default function FormView({
                     />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-md">
                     <div>
                       <Label htmlFor="type">Type *</Label>
                       <Select
@@ -233,10 +233,10 @@ export default function FormView({
                 </div>
 
                 {/* Pricing */}
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-medium">Pricing</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-md">
                     <div>
                       <Label htmlFor="amount">Amount</Label>
                       <Input
@@ -267,7 +267,7 @@ export default function FormView({
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-xs">
                     <input
                       type="checkbox"
                       id="negotiable"
@@ -280,10 +280,10 @@ export default function FormView({
                 </div>
 
                 {/* Location */}
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-medium">Location</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-md">
                     <div>
                       <Label htmlFor="city">City</Label>
                       <Input
@@ -305,7 +305,7 @@ export default function FormView({
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-xs">
                     <input
                       type="checkbox"
                       id="remote"
@@ -318,10 +318,10 @@ export default function FormView({
                 </div>
 
                 {/* Settings */}
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-medium">Settings</h3>
 
-                  <div className="grid grid-cols-2 gap-4">
+                  <div className="grid grid-cols-2 gap-md">
                     <div>
                       <Label htmlFor="status">Status</Label>
                       <Select
@@ -339,7 +339,7 @@ export default function FormView({
                       </Select>
                     </div>
 
-                    <div className="flex items-center space-x-2">
+                    <div className="flex items-center space-x-xs">
                       <input
                         type="checkbox"
                         id="featured"
@@ -353,26 +353,26 @@ export default function FormView({
                 </div>
 
                 {/* Form Actions */}
-                <div className="flex gap-3 pt-4">
+                <div className="flex gap-sm pt-4">
                   <Button onClick={handleSave} className="flex-1">
-                    <Save className="h-4 w-4 mr-2" />
+                    <Save className="h-icon-xs w-icon-xs mr-2" />
                     {selectedListing ? 'Update' : 'Create'} Listing
                   </Button>
                   <Button variant="outline" onClick={handleCancel}>
-                    <X className="h-4 w-4 mr-2" />
+                    <X className="h-icon-xs w-icon-xs mr-2" />
                     Cancel
                   </Button>
                 </div>
               </div>
             ) : (
-              <div className="text-center py-8">
-                <FileText className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+              <div className="text-center py-xl">
+                <FileText className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
                 <h3 className="text-lg font-medium mb-2">No listing selected</h3>
                 <p className="text-muted-foreground mb-4">
                   Select a listing from the list to edit, or create a new one
                 </p>
                 <Button onClick={handleCreateNew}>
-                  <Plus className="h-4 w-4 mr-2" />
+                  <Plus className="h-icon-xs w-icon-xs mr-2" />
                   Create New Listing
                 </Button>
               </div>
@@ -386,21 +386,21 @@ export default function FormView({
             <CardTitle>Available Listings</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-3 max-h-[600px] overflow-y-auto">
+            <div className="space-y-sm max-h-content-xl overflow-y-auto">
               {listings.map((listing) => (
                 <div
                   key={listing.id}
-                  className={`p-3 border rounded-lg cursor-pointer transition-colors hover:bg-muted/50 ${
+                  className={`p-sm border rounded-lg cursor-pointer transition-colors hover:bg-muted/50 ${
                     selectedListing?.id === listing.id ? 'ring-2 ring-primary bg-primary/5' : ''
                   }`}
                   onClick={() => handleSelectListing(listing)}
                 >
-                  <div className="flex items-start justify-between gap-3">
+                  <div className="flex items-start justify-between gap-sm">
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-medium line-clamp-1 mb-1">
+                      <h4 className="font-medium line-clamp-xs mb-1">
                         {listing.title}
                       </h4>
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-xs mb-2">
                         <Badge variant="outline" className="text-xs">
                           {listing.type}
                         </Badge>
@@ -413,7 +413,7 @@ export default function FormView({
                           </Badge>
                         )}
                       </div>
-                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-sm text-xs text-muted-foreground">
                         <span>{listing.response_count || 0} responses</span>
                         <span>{new Date(listing.created_at).toLocaleDateString()}</span>
                       </div>
@@ -430,7 +430,7 @@ export default function FormView({
               ))}
 
               {listings.length === 0 && (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-xl text-muted-foreground">
                   No listings available
                 </div>
               )}

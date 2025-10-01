@@ -35,11 +35,11 @@ export default function ViewOpportunityDrawer({
 
  const getStatusIcon = (status: string) => {
  switch (status) {
- case 'open': return <TrendingUp className="h-4 w-4" />;
- case 'awarded': return <CheckCircle className="h-4 w-4" />;
- case 'closed': return <Clock className="h-4 w-4" />;
- case 'cancelled': return <XCircle className="h-4 w-4" />;
- default: return <TrendingUp className="h-4 w-4" />;
+ case 'open': return <TrendingUp className="h-icon-xs w-icon-xs" />;
+ case 'awarded': return <CheckCircle className="h-icon-xs w-icon-xs" />;
+ case 'closed': return <Clock className="h-icon-xs w-icon-xs" />;
+ case 'cancelled': return <XCircle className="h-icon-xs w-icon-xs" />;
+ default: return <TrendingUp className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -111,7 +111,7 @@ export default function ViewOpportunityDrawer({
  )}
  {onEdit && opportunity.status === 'open' && (
  <Button variant="outline" onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  )}
@@ -131,7 +131,7 @@ export default function ViewOpportunityDrawer({
  )}
  {opportunity.probability && (
  <div className="flex items-center gap-xs">
- <TrendingUp className="h-4 w-4 color-info" />
+ <TrendingUp className="h-icon-xs w-icon-xs color-info" />
  <span className="text-body-sm color-info font-medium">
  {opportunity.probability}% probability
  </span>
@@ -149,7 +149,7 @@ export default function ViewOpportunityDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Organization</p>
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 color-muted" />
+ <Building className="h-icon-xs w-icon-xs color-muted" />
  <p className="text-body-sm color-foreground">
  {opportunity.organization_name || 'Unknown Organization'}
  </p>
@@ -187,7 +187,7 @@ export default function ViewOpportunityDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Location</p>
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4 color-muted" />
+ <MapPin className="h-icon-xs w-icon-xs color-muted" />
  <p className="text-body-sm color-foreground">
  {opportunity.location}
  </p>
@@ -206,7 +206,7 @@ export default function ViewOpportunityDrawer({
  <div className="stack-2xs">
  <p className="text-body-xs form-label color-muted">Estimated Value</p>
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 color-success" />
+ <DollarSign className="h-icon-xs w-icon-xs color-success" />
  <p className="text-heading-4 font-semibold color-success">
  {formatCurrency(opportunity.estimated_value)}
  </p>
@@ -250,7 +250,7 @@ export default function ViewOpportunityDrawer({
  
  <div className="stack-sm">
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <Calendar className="h-4 w-4 color-muted" />
+ <Calendar className="h-icon-xs w-icon-xs color-muted" />
  <div>
  <p className="text-body-sm color-foreground">Created</p>
  <p className="text-body-xs color-muted">
@@ -264,7 +264,7 @@ export default function ViewOpportunityDrawer({
 
  {opportunity.opens_at && (
  <div className="flex items-center gap-sm p-sm border border-border rounded-md">
- <Calendar className="h-4 w-4 color-info" />
+ <Calendar className="h-icon-xs w-icon-xs color-info" />
  <div>
  <p className="text-body-sm color-info">Opens</p>
  <p className="text-body-xs color-muted">
@@ -280,7 +280,7 @@ export default function ViewOpportunityDrawer({
  ? 'border-warning/20 bg-warning/5' 
  : 'border-border'
  }`}>
- <Calendar className={`h-4 w-4 ${
+ <Calendar className={`h-icon-xs w-icon-xs ${
  isClosingSoon(opportunity.closes_at) ? 'color-warning' : 'color-muted'
  }`} />
  <div>
@@ -320,7 +320,7 @@ export default function ViewOpportunityDrawer({
  <div className="stack-sm">
  {opportunity.requirements.map((requirement, index) => (
  <div key={index} className="flex items-start gap-sm p-sm border border-border rounded-md">
- <div className="h-5 w-5 bg-accent/10 rounded-full flex items-center justify-center mt-xs">
+ <div className="h-icon-sm w-icon-sm bg-accent/10 rounded-full flex items-center justify-center mt-xs">
  <span className="text-body-xs color-accent font-medium">{index + 1}</span>
  </div>
  <p className="text-body-sm color-foreground">{requirement}</p>
@@ -350,7 +350,7 @@ export default function ViewOpportunityDrawer({
  <h3 className="text-heading-5 color-foreground">Notes</h3>
  <div className="p-md bg-secondary/50 rounded-md">
  <div className="flex items-start gap-sm">
- <FileText className="h-4 w-4 color-muted mt-xs" />
+ <FileText className="h-icon-xs w-icon-xs color-muted mt-xs" />
  <p className="text-body-sm color-foreground whitespace-pre-wrap">
  {opportunity.notes}
  </p>
@@ -366,7 +366,7 @@ export default function ViewOpportunityDrawer({
  </Button>
  {onAward && opportunity.status === 'open' && (
  <Button onClick={onAward} className="color-success">
- <CheckCircle className="h-4 w-4 mr-xs" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-xs" />
  Award Opportunity
  </Button>
  )}
@@ -382,7 +382,7 @@ export default function ViewOpportunityDrawer({
  )}
  {onEdit && opportunity.status === 'open' && (
  <Button onClick={onEdit}>
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit Opportunity
  </Button>
  )}

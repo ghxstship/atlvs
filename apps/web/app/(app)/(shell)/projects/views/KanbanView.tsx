@@ -45,14 +45,14 @@ export default function KanbanView({
 
   if (loading) {
     return (
-      <div className={`flex gap-4 overflow-x-auto pb-4 ${className}`}>
+      <div className={`flex gap-md overflow-x-auto pb-4 ${className}`}>
         {columns.map((column) => (
-          <div key={column.id} className="flex-shrink-0 w-80">
-            <div className="bg-muted rounded-lg p-4 animate-pulse">
-              <div className="h-6 bg-muted-foreground/20 rounded mb-4"></div>
-              <div className="space-y-3">
+          <div key={column.id} className="flex-shrink-0 w-container-md">
+            <div className="bg-muted rounded-lg p-md animate-pulse">
+              <div className="h-icon-md bg-muted-foreground/20 rounded mb-4"></div>
+              <div className="space-y-sm">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="h-20 bg-muted-foreground/10 rounded"></div>
+                  <div key={i} className="h-component-lg bg-muted-foreground/10 rounded"></div>
                 ))}
               </div>
             </div>
@@ -63,13 +63,13 @@ export default function KanbanView({
   }
 
   return (
-    <div className={`flex gap-4 overflow-x-auto pb-4 ${className}`}>
+    <div className={`flex gap-md overflow-x-auto pb-4 ${className}`}>
       {columns.map((column) => (
-        <div key={column.id} className="flex-shrink-0 w-80">
-          <div className="bg-muted/30 rounded-lg p-4 min-h-[600px]">
+        <div key={column.id} className="flex-shrink-0 w-container-md">
+          <div className="bg-muted/30 rounded-lg p-md min-h-content-xl">
             {/* Column Header */}
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-xs">
                 <div
                   className="w-3 h-3 rounded-full"
                   style={{ backgroundColor: column.color || '#6B7280' }}
@@ -86,7 +86,7 @@ export default function KanbanView({
                   variant="ghost"
                   size="sm"
                   onClick={() => onAddCard(column.id)}
-                  className="h-6 w-6 p-0"
+                  className="h-icon-md w-icon-md p-0"
                 >
                   <Plus className="h-3 w-3" />
                 </Button>
@@ -94,25 +94,25 @@ export default function KanbanView({
             </div>
 
             {/* Cards */}
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {groupedData[column.id]?.map((item, index) => (
                 <Card
                   key={item.id}
                   className="cursor-pointer hover:shadow-md transition-shadow"
                   onClick={() => onCardClick?.(item)}
                 >
-                  <CardContent className="p-3">
+                  <CardContent className="p-sm">
                     <div className="flex items-start justify-between mb-2">
-                      <h4 className="font-medium text-sm line-clamp-2">
+                      <h4 className="font-medium text-sm line-clamp-xs">
                         {item.name || item.title}
                       </h4>
-                      <Button variant="ghost" size="sm" className="h-6 w-6 p-0 opacity-60">
+                      <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0 opacity-60">
                         <MoreHorizontal className="h-3 w-3" />
                       </Button>
                     </div>
 
                     {item.description && (
-                      <p className="text-xs text-muted-foreground line-clamp-2 mb-2">
+                      <p className="text-xs text-muted-foreground line-clamp-xs mb-2">
                         {item.description}
                       </p>
                     )}
@@ -130,7 +130,7 @@ export default function KanbanView({
                   </CardContent>
                 </Card>
               )) || (
-                <div className="text-center py-8 text-muted-foreground text-sm">
+                <div className="text-center py-xl text-muted-foreground text-sm">
                   {emptyMessage}
                 </div>
               )}

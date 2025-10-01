@@ -168,7 +168,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
         </div>
         <div className="brand-opendeck flex items-center gap-sm">
           <Button onClick={createNew} disabled={busy} aria-label={t('create')} title={t('create')}>
-            <Plus className="mr-xs h-4 w-4" /> {t('create')}
+            <Plus className="mr-xs h-icon-xs w-icon-xs" /> {t('create')}
           </Button>
           <Button onClick={load}>{t('refresh')}</Button>
         </div>
@@ -204,10 +204,10 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
       >
         {msg ? <div role="alert" className="mb-sm text-body-sm">{msg}</div> : null}
         <div className="flex items-center gap-sm border-b pb-sm mb-sm" role="tablist" aria-label={t('title')}>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-4 w-4" /> {t('drawer.details')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-4 w-4" /> {t('drawer.edit')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-4 w-4" /> {t('drawer.comments')}</button>
-          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-4 w-4" /> {t('drawer.activity')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='details'?'bg-accent':''}`} onClick={() => setTab('details')} role="tab" aria-selected={tab==='details'}><FileText className="h-icon-xs w-icon-xs" /> {t('drawer.details')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='edit'?'bg-accent':''}`} onClick={() => setTab('edit')} role="tab" aria-selected={tab==='edit'}><Edit3 className="h-icon-xs w-icon-xs" /> {t('drawer.edit')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='comments'?'bg-accent':''}`} onClick={() => setTab('comments')} role="tab" aria-selected={tab==='comments'}><MessageSquare className="h-icon-xs w-icon-xs" /> {t('drawer.comments')}</button>
+          <button className={`inline-flex items-center gap-sm rounded px-sm py-xs text-body-sm ${tab==='activity'?'bg-accent':''}`} onClick={() => setTab('activity')} role="tab" aria-selected={tab==='activity'}><ActivityIcon className="h-icon-xs w-icon-xs" /> {t('drawer.activity')}</button>
         </div>
 
         {tab === 'details' && current && (
@@ -260,7 +260,7 @@ export default function OpenDeckClient({ orgId }: { orgId: string }) {
             </div>
             <div className="brand-opendeck grid gap-xs">
               <label htmlFor="description" className="text-body-sm">{t('grid.description')}</label>
-              <textarea id="description" className="min-h-24 rounded border p-sm" value={form.description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, description: e.target.value })} />
+              <textarea id="description" className="min-h-component-lg rounded border p-sm" value={form.description} onChange={(e: React.ChangeEvent<HTMLInputElement>) => setForm({ ...form, description: e.target.value })} />
             </div>
             <div className="brand-opendeck flex items-center justify-end gap-sm pt-sm border-t">
               <Button type="submit" variant="default" disabled={saving}>{t('save')}</Button>

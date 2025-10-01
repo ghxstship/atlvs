@@ -359,7 +359,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <Card key={listing.id} className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm">
- <TypeIcon className="h-5 w-5 color-primary" />
+ <TypeIcon className="h-icon-sm w-icon-sm color-primary" />
  <Badge variant={listing.type === 'offer' ? 'success' : listing.type === 'request' ? 'warning' : 'secondary'}>
  {listing.type}
  </Badge>
@@ -371,22 +371,22 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  </div>
  
  <h3 className="text-heading-4 mb-xs">{listing.title}</h3>
- <p className="text-body-sm color-muted mb-sm line-clamp-2">{listing.description}</p>
+ <p className="text-body-sm color-muted mb-sm line-clamp-xs">{listing.description}</p>
  
  <div className="flex items-center gap-md mb-sm text-body-sm color-muted">
  <div className="flex items-center gap-xs">
- <Briefcase className="h-4 w-4" />
+ <Briefcase className="h-icon-xs w-icon-xs" />
  <span>{listing.category}</span>
  </div>
  {listing.location?.city && (
  <div className="flex items-center gap-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{listing.location.city}</span>
  </div>
  )}
  {listing.pricing?.amount && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>{listing.pricing.currency} {listing.pricing.amount}</span>
  </div>
  )}
@@ -399,11 +399,11 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  </div>
  <div className="flex items-center gap-xs">
  <Button size="sm" variant="outline" onClick={() => handleViewListing(listing)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  {listing.created_by === userId && (
  <Button size="sm" variant="outline" onClick={() => handleEditListing(listing)}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -421,7 +421,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <p className="color-muted">Browse and manage marketplace listings</p>
  </div>
  <Button onClick={handleCreateListing}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Create Listing
  </Button>
  </div>
@@ -434,7 +434,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <p className="text-body-sm color-muted">Total Listings</p>
  <p className="text-heading-3 font-bold">{stats.total}</p>
  </div>
- <Briefcase className="h-8 w-8 color-primary" />
+ <Briefcase className="h-icon-lg w-icon-lg color-primary" />
  </div>
  </Card>
  <Card className="p-md">
@@ -443,7 +443,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <p className="text-body-sm color-muted">Active</p>
  <p className="text-heading-3 font-bold">{stats.active}</p>
  </div>
- <Package className="h-8 w-8 color-success" />
+ <Package className="h-icon-lg w-icon-lg color-success" />
  </div>
  </Card>
  <Card className="p-md">
@@ -452,7 +452,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <p className="text-body-sm color-muted">Featured</p>
  <p className="text-heading-3 font-bold">{stats.featured}</p>
  </div>
- <Star className="h-8 w-8 color-warning" />
+ <Star className="h-icon-lg w-icon-lg color-warning" />
  </div>
  </Card>
  <Card className="p-md">
@@ -461,7 +461,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  <p className="text-body-sm color-muted">Total Responses</p>
  <p className="text-heading-3 font-bold">{stats.responses}</p>
  </div>
- <Users className="h-8 w-8 color-secondary" />
+ <Users className="h-icon-lg w-icon-lg color-secondary" />
  </div>
  </Card>
  </div>
@@ -522,7 +522,7 @@ export default function ListingsClient({ orgId, userId }: ListingsClientProps) {
  rowActions={getRowActions}
  emptyMessage="No listings found"
  loading={loading}
- className="min-h-[400px]"
+ className="min-h-content-lg"
  />
  )}
  </div>

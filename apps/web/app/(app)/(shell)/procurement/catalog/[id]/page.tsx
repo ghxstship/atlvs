@@ -86,7 +86,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested catalog item could not be found.</p>
             </div>
           )
@@ -128,16 +128,16 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Item Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Package className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Package className="h-icon-sm w-icon-sm" />
                 Item Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(item as any).name}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -176,12 +176,12 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
           {/* Vendor Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Tag className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Tag className="h-icon-sm w-icon-sm" />
                 Vendor & Supplier
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(item as any).vendor?.name || 'No vendor assigned'}</p>
                 {(item as any).vendor?.contact_email && (
@@ -214,12 +214,12 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
           {/* Procurement Statistics */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <TrendingUp className="h-icon-sm w-icon-sm" />
                 Procurement Statistics
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Total Orders</span>
                 <span className="text-sm font-semibold">
@@ -259,12 +259,12 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
           {/* Stock Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <AlertTriangle className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <AlertTriangle className="h-icon-sm w-icon-sm" />
                 Stock & Inventory
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               {(item as any).current_stock !== undefined && (
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium">Current Stock</span>
@@ -306,13 +306,13 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
           </CardHeader>
           <CardContent>
             {(item as any).orders && (item as any).orders.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-sm">
                 {(item as any).orders
                   .sort((a: unknown, b: unknown) => new Date(b.order?.order_date || 0).getTime() - new Date(a.order?.order_date || 0).getTime())
                   .map((orderItem: unknown) => (
-                    <div key={orderItem.id} className="flex items-center justify-between p-4 border rounded">
-                      <div className="flex items-center gap-3">
-                        <ShoppingCart className="h-4 w-4 text-muted-foreground" />
+                    <div key={orderItem.id} className="flex items-center justify-between p-md border rounded">
+                      <div className="flex items-center gap-sm">
+                        <ShoppingCart className="h-icon-xs w-icon-xs text-muted-foreground" />
                         <div>
                           <p className="font-medium">
                             Order {(orderItem.order?.order_number || orderItem.order?.id)}
@@ -333,7 +333,7 @@ export default async function CatalogDetailPage({ params }: CatalogDetailPagePro
                   ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 No orders found for this item
               </p>
             )}

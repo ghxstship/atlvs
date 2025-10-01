@@ -22,11 +22,11 @@ export const KanbanView: React.FC = () => {
   return (
     <div className="flex gap-md p-md overflow-x-auto">
       {Object.entries(grouped).map(([status, items]: [string, any[]]) => (
-        <div key={status} className="flex-shrink-0 w-80">
+        <div key={status} className="flex-shrink-0 w-container-md">
           <div className="bg-muted p-sm rounded-t-lg font-medium text-sm">
             {status} ({items.length})
           </div>
-          <div className="bg-muted/50 min-h-96 p-sm rounded-b-lg space-y-sm">
+          <div className="bg-muted/50 min-h-container-lg p-sm rounded-b-lg space-y-sm">
             {items.map((item: unknown) => (
               <div
                 key={item.id}

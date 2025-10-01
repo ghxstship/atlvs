@@ -50,23 +50,23 @@ export default function ListView({
 
   if (loading) {
     return (
-      <div className="animate-pulse space-y-3">
+      <div className="animate-pulse space-y-sm">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className={`bg-gray-200 rounded ${dense ? 'h-12' : 'h-16'}`}></div>
+          <div key={i} className={`bg-gray-200 rounded ${dense ? 'h-icon-2xl' : 'h-component-md'}`}></div>
         ))}
       </div>
     );
   }
 
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={`space-y-xs ${className}`}>
       {data.map((item) => (
         <div
           key={item.id}
           className={`flex items-center bg-white border border-gray-200 rounded-lg hover:shadow-sm transition-shadow ${
             onItemClick ? 'cursor-pointer' : ''
           } ${selectedItems.has(item.id) ? 'ring-2 ring-blue-500' : ''} ${
-            dense ? 'p-3' : 'p-4'
+            dense ? 'p-sm' : 'p-md'
           }`}
           onClick={() => onItemClick?.(item)}
         >
@@ -78,20 +78,20 @@ export default function ListView({
                 e.stopPropagation();
                 handleItemSelect(item.id, e.target.checked);
               }}
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3"
+              className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded mr-3"
             />
           )}
 
           <div className="flex-1">{renderItem(item)}</div>
 
           <button className="text-gray-400 hover:text-gray-600 ml-3">
-            <MoreHorizontal className="h-5 w-5" />
+            <MoreHorizontal className="h-icon-sm w-icon-sm" />
           </button>
         </div>
       ))}
 
       {data.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-xsxl">
           <p className="text-gray-500">No data available</p>
         </div>
       )}

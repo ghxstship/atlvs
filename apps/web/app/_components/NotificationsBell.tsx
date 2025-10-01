@@ -42,9 +42,9 @@ export default function NotificationsBell() {
         onClick={() => setOpen(true)}
         className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-accent"
       >
-        <Bell className="h-5 w-5" />
+        <Bell className="h-icon-sm w-icon-sm" />
         {unread > 0 && (
-          <span className="absolute -top-1 -right-1 inline-flex h-4 min-w-4 items-center justify-center badge badge-error px-xs text-[10px] rounded-full">
+          <span className="absolute -top-xs -right-1 inline-flex h-icon-xs min-w-4 items-center justify-center badge badge-error px-xs text-small rounded-full">
             {unread}
           </span>
         )}
@@ -68,7 +68,7 @@ export default function NotificationsBell() {
                         <a href={n.href} className="text-body-sm color-accent underline underline-offset-2">View</a>
                       ) : null}
                     </div>
-                    {!n.read ? <Check className="h-4 w-4 opacity-50" aria-hidden /> : null}
+                    {!n.read ? <Check className="h-icon-xs w-icon-xs opacity-50" aria-hidden /> : null}
                   </div>
                 </li>
               ))}

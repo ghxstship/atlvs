@@ -112,7 +112,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
         aria-label="Add Professional Info" 
         title="Add Professional Info"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Professional Info
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Professional Info
       </Button>
       <Drawer 
         open={open} 
@@ -178,7 +178,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="skills" className="text-body-sm form-label">Skills (comma-separated)</label>
             <textarea 
               id="skills" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('skills') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('skills', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. JavaScript, React, Node.js"
@@ -189,7 +189,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="bio" className="text-body-sm form-label">Professional Bio</label>
             <textarea 
               id="bio" 
-              className="rounded border  px-md py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-header-sm" 
               value={form.getValues('bio') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('bio', e.target.value, { shouldDirty: true })} 
               placeholder="Brief professional summary..."
@@ -224,7 +224,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="career_goals" className="text-body-sm form-label">Career Goals</label>
             <textarea 
               id="career_goals" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('career_goals') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('career_goals', e.target.value, { shouldDirty: true })} 
               placeholder="Your professional aspirations..."
@@ -235,7 +235,7 @@ export default function CreateProfessionalClient({ orgId, userId }: { orgId: str
             <label htmlFor="mentorship_interests" className="text-body-sm form-label">Mentorship Interests</label>
             <textarea 
               id="mentorship_interests" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('mentorship_interests') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('mentorship_interests', e.target.value, { shouldDirty: true })} 
               placeholder="Areas where you'd like mentorship or can provide mentorship..."

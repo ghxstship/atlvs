@@ -85,7 +85,7 @@ export default function ResourcesPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -109,7 +109,7 @@ export default function ResourcesPage() {
               <Link href="/auth/signup">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Get Full Access
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="#featured">
@@ -123,7 +123,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Resource Categories */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -141,8 +141,8 @@ export default function ResourcesPage() {
                 <Link key={category.title} href="#">
                   <Card className="hover:shadow-floating transition-all duration-300 group h-full">
                     <CardContent className="p-xl">
-                      <div className={`w-16 h-16 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-lg group-hover:scale-110 transition-transform`}>
-                        <Icon className="h-8 w-8 text-background" />
+                      <div className={`w-component-md h-component-md bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center mb-lg group-hover:scale-110 transition-transform`}>
+                        <Icon className="h-icon-lg w-icon-lg text-background" />
                       </div>
                       <div className="flex items-center justify-between mb-sm">
                         <h3 className={`group-hover:text-foreground transition-colors ${anton.className} text-heading-4 text-heading-3 uppercase`}>
@@ -157,7 +157,7 @@ export default function ResourcesPage() {
                       </p>
                       <div className="flex items-center text-foreground text-body-sm form-label group-hover:translate-x-1 transition-transform">
                         Explore {category.title}
-                        <ArrowRight className="ml-xs h-4 w-4" />
+                        <ArrowRight className="ml-xs h-icon-xs w-icon-xs" />
                       </div>
                     </CardContent>
                   </Card>
@@ -169,7 +169,7 @@ export default function ResourcesPage() {
       </section>
 
       {/* Featured Resources */}
-      <section id="featured" className="py-4xl bg-secondary/20">
+      <section id="featured" className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
@@ -213,11 +213,11 @@ export default function ResourcesPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
-              <Zap className="h-16 w-16 text-foreground mx-auto mb-lg" />
+            <CardContent className="p-xsxl">
+              <Zap className="h-component-md w-component-md text-foreground mx-auto mb-lg" />
               <h2 className={`mb-lg ${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase`}>
                 UNLOCK ALL RESOURCES
               </h2>
@@ -229,7 +229,7 @@ export default function ResourcesPage() {
                 <Link href="/auth/signup">
                   <Button size="lg" className="group transition-all duration-200 hover:scale-105">
                     Start Free Trial
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Link href="/auth/signin">

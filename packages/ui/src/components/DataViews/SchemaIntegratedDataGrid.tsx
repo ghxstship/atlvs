@@ -273,7 +273,7 @@ export function SchemaIntegratedDataGrid({
   if (schemaLoading) {
     return (
       <div className="flex items-center justify-center p-xl">
-        <Database className="h-6 w-6 animate-spin mr-sm" />
+        <Database className="h-icon-md w-icon-md animate-spin mr-sm" />
         <span>Loading schema information...</span>
       </div>
     );
@@ -282,7 +282,7 @@ export function SchemaIntegratedDataGrid({
   if (schemaError) {
     return (
       <div className="flex items-center justify-center p-xl text-destructive">
-        <AlertTriangle className="h-6 w-6 mr-sm" />
+        <AlertTriangle className="h-icon-md w-icon-md mr-sm" />
         <span>Schema Error: {schemaError}</span>
       </div>
     );
@@ -294,16 +294,16 @@ export function SchemaIntegratedDataGrid({
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               placeholder="Search with full-text search..."
               value={state.search}
               onChange={(e: any) => handleSchemaOptimizedSearch(e.target.value)}
-              className="pl-2xl w-64"
+              className="pl-2xl w-container-sm"
             />
           </div>
           <Button variant="ghost" >
-            <Filter className="h-4 w-4" />
+            <Filter className="h-icon-xs w-icon-xs" />
             Filters ({state.filters.length})
           </Button>
           {schemaInfo?.tables[tableName] && (
@@ -315,22 +315,22 @@ export function SchemaIntegratedDataGrid({
 
         <div className="flex items-center gap-sm">
           <Button variant="ghost" >
-            <Settings className="h-4 w-4" />
+            <Settings className="h-icon-xs w-icon-xs" />
             Columns
           </Button>
           <Button variant="ghost" >
-            <Database className="h-4 w-4" />
+            <Database className="h-icon-xs w-icon-xs" />
             Schema
           </Button>
           {config.exportConfig && (
             <Button variant="ghost" >
-              <Download className="h-4 w-4" />
+              <Download className="h-icon-xs w-icon-xs" />
               Export
             </Button>
           )}
           {config.importConfig && (
             <Button variant="ghost" >
-              <Upload className="h-4 w-4" />
+              <Upload className="h-icon-xs w-icon-xs" />
               Import
             </Button>
           )}
@@ -341,7 +341,7 @@ export function SchemaIntegratedDataGrid({
       {Object.keys(validationErrors).length > 0 && (
         <div className="bg-destructive/10 border-b border-destructive/20 p-sm">
           <div className="flex items-center text-destructive">
-            <AlertTriangle className="h-4 w-4 mr-sm" />
+            <AlertTriangle className="h-icon-xs w-icon-xs mr-sm" />
             <span className="font-medium">Validation Errors:</span>
           </div>
           {Object.entries(validationErrors).map(([field, errors]) => (

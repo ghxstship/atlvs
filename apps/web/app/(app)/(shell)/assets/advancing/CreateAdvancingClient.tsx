@@ -167,7 +167,7 @@ export default function CreateAdvancingClient({
         {/* Asset & Personnel */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <TrendingUp className="h-5 w-5 color-accent" />
+            <TrendingUp className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Asset & Personnel</h3>
           </div>
           
@@ -186,7 +186,7 @@ export default function CreateAdvancingClient({
             <div className="grid grid-cols-2 gap-md">
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <UserIcon className="h-4 w-4 inline mr-xs" />
+                  <UserIcon className="h-icon-xs w-icon-xs inline mr-xs" />
                   Advanced To *
                 </label>
                 <UnifiedInput                   value={formData.advancedTo}
@@ -212,7 +212,7 @@ export default function CreateAdvancingClient({
         {/* Dates & Timeline */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Calendar className="h-5 w-5 color-success" />
+            <Calendar className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Dates & Timeline</h3>
           </div>
           
@@ -245,7 +245,7 @@ export default function CreateAdvancingClient({
         {/* Purpose & Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <UserIcon className="h-5 w-5 color-secondary" />
+            <UserIcon className="h-icon-sm w-icon-sm color-secondary" />
             <h3 className="text-body text-heading-4">Purpose & Details</h3>
           </div>
           
@@ -284,7 +284,7 @@ export default function CreateAdvancingClient({
         {/* Financial Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <DollarSign className="h-5 w-5 color-warning" />
+            <DollarSign className="h-icon-sm w-icon-sm color-warning" />
             <h3 className="text-body text-heading-4">Financial Information</h3>
           </div>
           
@@ -341,14 +341,14 @@ export default function CreateAdvancingClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.assetId || !formData.advancedTo || !formData.purpose}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Create Advance'}
           </Button>
         </div>

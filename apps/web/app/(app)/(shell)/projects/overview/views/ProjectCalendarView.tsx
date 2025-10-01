@@ -77,15 +77,15 @@ export default function ProjectCalendarView({
  variant="outline"
  size="sm"
  onClick={() => navigateMonth('prev')}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
  size="sm"
  onClick={() => setCurrentDate(new Date())}
- className="h-8 px-sm"
+ className="h-icon-lg px-sm"
  >
  Today
  </Button>
@@ -93,9 +93,9 @@ export default function ProjectCalendarView({
  variant="outline"
  size="sm"
  onClick={() => navigateMonth('next')}
- className="h-8 w-8 p-0"
+ className="h-icon-lg w-icon-lg p-0"
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -135,7 +135,7 @@ export default function ProjectCalendarView({
  return (
  <div
  key={dateKey}
- className={`min-h-[120px] p-xs border rounded-sm ${
+ className={`min-h-header-lg p-xs border rounded-sm ${
  isCurrentMonth ? 'bg-background' : 'bg-muted/30'
  } ${isDayToday ? 'ring-2 ring-primary' : ''}`}
  >
@@ -147,7 +147,7 @@ export default function ProjectCalendarView({
  {format(day, 'd')}
  </span>
  {dayProjects.length > 0 && (
- <Badge variant="secondary" className="text-xs h-4 px-1">
+ <Badge variant="secondary" className="text-xs h-icon-xs px-xs">
  {dayProjects.length}
  </Badge>
  )}
@@ -158,7 +158,7 @@ export default function ProjectCalendarView({
  {dayProjects.slice(0, 3).map((project, index) => (
  <div
  key={`${project.id}-${project.eventType}-${index}`}
- className={`text-xs p-1 rounded cursor-pointer transition-colors hover:opacity-80 ${
+ className={`text-xs p-xs rounded cursor-pointer transition-colors hover:opacity-80 ${
  project.eventType === 'start' 
  ? 'bg-green-100 text-green-800 border-l-2 border-green-500' 
  : 'bg-red-100 text-red-800 border-l-2 border-red-500'
@@ -178,7 +178,7 @@ export default function ProjectCalendarView({
  <div className="flex items-center gap-xs mt-xs opacity-75">
  <Badge 
  variant="outline" 
- className={`text-xs h-4 px-1 bg-${statusColors[project.status]}-50 text-${statusColors[project.status]}-700 border-${statusColors[project.status]}-200`}
+ className={`text-xs h-icon-xs px-xs bg-${statusColors[project.status]}-50 text-${statusColors[project.status]}-700 border-${statusColors[project.status]}-200`}
  >
  {project.status}
  </Badge>
@@ -241,7 +241,7 @@ export default function ProjectCalendarView({
  variant="ghost"
  size="sm"
  onClick={() => onView(project)}
- className="h-6 px-sm text-xs"
+ className="h-icon-md px-sm text-xs"
  >
  View
  </Button>
@@ -254,7 +254,7 @@ export default function ProjectCalendarView({
 
  {Object.keys(projectsByDate).length === 0 && (
  <div className="text-center py-lg text-muted-foreground">
- <Calendar className="h-12 w-12 mx-auto mb-md opacity-50" />
+ <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
  <p className="text-sm">No projects scheduled for this month</p>
  </div>
  )}

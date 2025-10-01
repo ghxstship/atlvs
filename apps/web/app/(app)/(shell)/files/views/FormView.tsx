@@ -99,24 +99,24 @@ export default function FormView({
   };
 
   return (
-    <div className="max-w-4xl mx-auto space-y-6">
+    <div className="max-w-4xl mx-auto space-y-lg">
       {/* Controls */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           {/* Search */}
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+            <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 text-gray-400 w-icon-xs h-icon-xs" />
             <Input
               placeholder="Search files..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-10 w-64"
+              className="pl-10 w-container-sm"
             />
           </div>
 
           {/* Category Filter */}
-          <div className="flex items-center gap-2">
-            <Filter className="w-4 h-4 text-gray-400" />
+          <div className="flex items-center gap-xs">
+            <Filter className="w-icon-xs h-icon-xs text-gray-400" />
             <Select value={selectedCategory} onValueChange={setSelectedCategory}>
               <Select.Trigger className="w-40">
                 <Select.Value />
@@ -139,17 +139,17 @@ export default function FormView({
       </div>
 
       {/* Forms List */}
-      <div className="space-y-4">
+      <div className="space-y-md">
         {filteredFiles.map((file) => {
           const CategoryIcon = getCategoryIcon(file.category);
           const isEditing = editingFile === file.id;
 
           return (
-            <Card key={file.id} className="p-6">
+            <Card key={file.id} className="p-lg">
               <div className="flex items-start justify-between mb-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <CategoryIcon className="w-5 h-5 text-gray-600" />
+                <div className="flex items-center gap-sm">
+                  <div className="w-icon-xl h-icon-xl rounded-lg bg-gray-100 flex items-center justify-center">
+                    <CategoryIcon className="w-icon-sm h-icon-sm text-gray-600" />
                   </div>
                   <div>
                     <h3 className="font-medium text-lg">{file.title}</h3>
@@ -159,7 +159,7 @@ export default function FormView({
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <Badge variant={file.status === 'active' ? 'default' : 'secondary'}>
                     {file.status}
                   </Badge>
@@ -167,24 +167,24 @@ export default function FormView({
                   <DropdownMenu>
                     <DropdownMenu.Trigger asChild>
                       <Button variant="ghost" size="sm">
-                        <MoreHorizontal className="w-4 h-4" />
+                        <MoreHorizontal className="w-icon-xs h-icon-xs" />
                       </Button>
                     </DropdownMenu.Trigger>
                     <DropdownMenu.Content align="end">
                       <DropdownMenu.Item onClick={() => onView(file)}>
-                        <Eye className="w-4 h-4 mr-2" />
+                        <Eye className="w-icon-xs h-icon-xs mr-2" />
                         View
                       </DropdownMenu.Item>
                       <DropdownMenu.Item onClick={() => startEditing(file)}>
-                        <Edit className="w-4 h-4 mr-2" />
+                        <Edit className="w-icon-xs h-icon-xs mr-2" />
                         Edit
                       </DropdownMenu.Item>
                       <DropdownMenu.Item onClick={() => onDownload(file)}>
-                        <Download className="w-4 h-4 mr-2" />
+                        <Download className="w-icon-xs h-icon-xs mr-2" />
                         Download
                       </DropdownMenu.Item>
                       <DropdownMenu.Item onClick={() => onShare(file)}>
-                        <Share className="w-4 h-4 mr-2" />
+                        <Share className="w-icon-xs h-icon-xs mr-2" />
                         Share
                       </DropdownMenu.Item>
                       <DropdownMenu.Separator />
@@ -192,7 +192,7 @@ export default function FormView({
                         onClick={() => onDelete(file)}
                         className="text-red-600"
                       >
-                        <Trash2 className="w-4 h-4 mr-2" />
+                        <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                         Delete
                       </DropdownMenu.Item>
                     </DropdownMenu.Content>
@@ -201,7 +201,7 @@ export default function FormView({
               </div>
 
               {/* Form Fields */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 {/* Title */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -214,7 +214,7 @@ export default function FormView({
                       placeholder="Enter file title"
                     />
                   ) : (
-                    <div className="p-3 bg-gray-50 rounded-md text-sm">
+                    <div className="p-sm bg-gray-50 rounded-md text-sm">
                       {file.title}
                     </div>
                   )}
@@ -247,7 +247,7 @@ export default function FormView({
                       </Select.Content>
                     </Select>
                   ) : (
-                    <div className="p-3 bg-gray-50 rounded-md text-sm capitalize">
+                    <div className="p-sm bg-gray-50 rounded-md text-sm capitalize">
                       {file.category}
                     </div>
                   )}
@@ -266,7 +266,7 @@ export default function FormView({
                       rows={3}
                     />
                   ) : (
-                    <div className="p-3 bg-gray-50 rounded-md text-sm min-h-[60px]">
+                    <div className="p-sm bg-gray-50 rounded-md text-sm min-h-toolbar">
                       {file.description || 'No description provided'}
                     </div>
                   )}
@@ -293,7 +293,7 @@ export default function FormView({
                       </Select.Content>
                     </Select>
                   ) : (
-                    <div className="p-3 bg-gray-50 rounded-md text-sm capitalize">
+                    <div className="p-sm bg-gray-50 rounded-md text-sm capitalize">
                       {file.access_level}
                     </div>
                   )}
@@ -304,7 +304,7 @@ export default function FormView({
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     File Size
                   </label>
-                  <div className="p-3 bg-gray-50 rounded-md text-sm">
+                  <div className="p-sm bg-gray-50 rounded-md text-sm">
                     {formatFileSize(file.file_size || 0)}
                   </div>
                 </div>
@@ -321,7 +321,7 @@ export default function FormView({
                       placeholder="Enter tags separated by commas"
                     />
                   ) : (
-                    <div className="p-3 bg-gray-50 rounded-md text-sm">
+                    <div className="p-sm bg-gray-50 rounded-md text-sm">
                       {file.tags && file.tags.length > 0
                         ? file.tags.map(tag => (
                             <Badge key={tag} variant="outline" className="mr-1 mb-1">
@@ -339,8 +339,8 @@ export default function FormView({
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Metadata
                   </label>
-                  <div className="p-3 bg-gray-50 rounded-md text-sm">
-                    <div className="grid grid-cols-2 gap-4">
+                  <div className="p-sm bg-gray-50 rounded-md text-sm">
+                    <div className="grid grid-cols-2 gap-md">
                       <div>
                         <span className="font-medium">Created:</span> {new Date(file.created_at).toLocaleDateString()}
                       </div>
@@ -360,7 +360,7 @@ export default function FormView({
 
               {/* Edit Actions */}
               {isEditing && (
-                <div className="flex justify-end gap-2 mt-6 pt-4 border-t">
+                <div className="flex justify-end gap-xs mt-6 pt-4 border-t">
                   <Button variant="outline" onClick={handleCancel}>
                     Cancel
                   </Button>
@@ -376,8 +376,8 @@ export default function FormView({
 
       {/* Empty State */}
       {filteredFiles.length === 0 && (
-        <div className="text-center py-12">
-          <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+        <div className="text-center py-xsxl">
+          <FileText className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">No files found</h3>
           <p className="text-gray-500">
             {searchQuery || selectedCategory !== 'all'

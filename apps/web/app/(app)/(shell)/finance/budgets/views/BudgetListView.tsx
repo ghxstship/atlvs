@@ -51,11 +51,11 @@ export default function BudgetListView({
  {Array.from({ length: 5 }).map((_, i) => (
  <div key={i} className="flex items-center justify-between p-md border border-border rounded-lg">
  <div className="flex-1 animate-pulse">
- <div className="h-4 bg-muted rounded w-1/3 mb-sm"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/3 mb-sm"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </div>
  <div className="animate-pulse">
- <div className="h-8 bg-muted rounded w-20"></div>
+ <div className="h-icon-lg bg-muted rounded w-component-lg"></div>
  </div>
  </div>
  ))}
@@ -67,7 +67,7 @@ export default function BudgetListView({
  if (budgets.length === 0) {
  return (
  <Card className="p-xl text-center">
- <DollarSign className="h-12 w-12 mx-auto mb-md color-muted/50" />
+ <DollarSign className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted/50" />
  <h3 className="text-heading-4 color-foreground mb-sm">No budgets found</h3>
  <p className="text-body-sm color-muted">Create your first budget to get started with financial planning.</p>
  </Card>
@@ -159,7 +159,7 @@ export default function BudgetListView({
 
  {/* Description */}
  {budget.description && (
- <p className="text-body-sm color-muted mt-xs line-clamp-1">
+ <p className="text-body-sm color-muted mt-xs line-clamp-xs">
  {budget.description}
  </p>
  )}
@@ -173,7 +173,7 @@ export default function BudgetListView({
  onClick={() => onView(budget)}
  title="View Details"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -181,7 +181,7 @@ export default function BudgetListView({
  onClick={() => onEdit(budget)}
  title="Edit Budget"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -190,7 +190,7 @@ export default function BudgetListView({
  className="color-destructive hover:bg-destructive/10"
  title="Delete Budget"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

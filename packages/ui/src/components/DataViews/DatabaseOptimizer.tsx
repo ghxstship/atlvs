@@ -305,7 +305,7 @@ export function DatabaseOptimizer({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Database className="h-5 w-5 text-accent" />
+          <Database className="h-icon-sm w-icon-sm text-accent" />
           <div>
             <h3 className="font-semibold">Database Optimizer</h3>
             <p className="text-sm text-muted-foreground">
@@ -329,12 +329,12 @@ export function DatabaseOptimizer({
           >
             {isAnalyzing ? (
               <>
-                <RefreshCw className="h-4 w-4 mr-xs animate-spin" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-xs animate-spin" />
                 Analyzing...
               </>
             ) : (
               <>
-                <BarChart3 className="h-4 w-4 mr-xs" />
+                <BarChart3 className="h-icon-xs w-icon-xs mr-xs" />
                 Analyze
               </>
             )}
@@ -347,7 +347,7 @@ export function DatabaseOptimizer({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Avg Query Time</span>
             </div>
             <div className="text-2xl font-bold">
@@ -360,7 +360,7 @@ export function DatabaseOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Cache Hit Ratio</span>
             </div>
             <div className="text-2xl font-bold">
@@ -373,7 +373,7 @@ export function DatabaseOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+              <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Slow Queries</span>
             </div>
             <div className="text-2xl font-bold">
@@ -386,7 +386,7 @@ export function DatabaseOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Target className="h-4 w-4 text-muted-foreground" />
+              <Target className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Index Efficiency</span>
             </div>
             <div className="text-2xl font-bold">
@@ -402,7 +402,7 @@ export function DatabaseOptimizer({
         {indexRecommendations.length > 0 && (
           <div>
             <h4 className="font-medium mb-sm flex items-center gap-sm">
-              <Zap className="h-4 w-4 text-warning" />
+              <Zap className="h-icon-xs w-icon-xs text-warning" />
               Index Recommendations
             </h4>
             <div className="space-y-sm">
@@ -450,7 +450,7 @@ export function DatabaseOptimizer({
         <div>
           <div className="flex items-center justify-between mb-sm">
             <h4 className="font-medium flex items-center gap-sm">
-              <Eye className="h-4 w-4" />
+              <Eye className="h-icon-xs w-icon-xs" />
               Query Performance
             </h4>
             <div className="flex items-center gap-sm">
@@ -474,7 +474,7 @@ export function DatabaseOptimizer({
             </div>
           </div>
           
-          <div className="gap-sm max-h-96 overflow-y-auto">
+          <div className="gap-sm max-h-container-lg overflow-y-auto">
             {filteredQueries.map(query => (
               <Card key={query.id} className="p-sm">
                 <div className="flex items-start justify-between mb-sm">

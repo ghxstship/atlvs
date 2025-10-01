@@ -66,12 +66,12 @@ export default function EndorsementFormView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
+ <Card className="p-lg">
+ <div className="space-y-md">
  {[...Array(6)].map((_, i) => (
- <div key={i} className="space-y-2">
- <div className="h-4 w-24 bg-muted animate-pulse rounded" />
- <div className="h-10 bg-muted animate-pulse rounded" />
+ <div key={i} className="space-y-xs">
+ <div className="h-icon-xs w-component-lg bg-muted animate-pulse rounded" />
+ <div className="h-icon-xl bg-muted animate-pulse rounded" />
  </div>
  ))}
  </div>
@@ -80,13 +80,13 @@ export default function EndorsementFormView({
  }
 
  return (
- <div className="space-y-6">
- <Card className="p-6">
- <div className="space-y-6">
+ <div className="space-y-lg">
+ <Card className="p-lg">
+ <div className="space-y-lg">
  <div>
  <h3 className="text-lg font-semibold mb-4">Endorser Information</h3>
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="endorser_name">
  Name <span className="text-destructive">*</span>
  </Label>
@@ -102,7 +102,7 @@ export default function EndorsementFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="relationship">
  Relationship <span className="text-destructive">*</span>
  </Label>
@@ -123,10 +123,10 @@ export default function EndorsementFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="endorser_title">Title</Label>
  <div className="relative">
- <User className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <User className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  value={formData.endorser_title}
@@ -137,10 +137,10 @@ export default function EndorsementFormView({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="endorser_company">Company</Label>
  <div className="relative">
- <Building className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Building className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  value={formData.endorser_company}
@@ -151,10 +151,10 @@ export default function EndorsementFormView({
  </div>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="endorser_email">Email</Label>
  <div className="relative">
- <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Mail className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  type="email"
@@ -169,10 +169,10 @@ export default function EndorsementFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="endorser_linkedin">LinkedIn Profile</Label>
  <div className="relative">
- <Linkedin className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Linkedin className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  
  value={formData.endorser_linkedin}
@@ -190,8 +190,8 @@ export default function EndorsementFormView({
 
  <div>
  <h3 className="text-lg font-semibold mb-4">Endorsement Details</h3>
- <div className="space-y-4">
- <div className="space-y-2">
+ <div className="space-y-md">
+ <div className="space-y-xs">
  <Label htmlFor="endorsement_text">
  Endorsement Text <span className="text-destructive">*</span>
  </Label>
@@ -208,11 +208,11 @@ export default function EndorsementFormView({
  )}
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label>
  Skills Endorsed <span className="text-destructive">*</span>
  </Label>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Input
  value={skillInput}
  onChange={(e) => setSkillInput(e.target.value)}
@@ -220,7 +220,7 @@ export default function EndorsementFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
  />
  <Button type="button" onClick={handleAddSkill} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  {formErrors.skills_endorsed && (
@@ -228,9 +228,9 @@ export default function EndorsementFormView({
  )}
  
  {formData.skills_endorsed.length > 0 && (
- <div className="flex flex-wrap gap-2 mt-2">
+ <div className="flex flex-wrap gap-xs mt-2">
  {formData.skills_endorsed.map((skill) => (
- <Badge key={skill} variant="secondary" className="gap-1">
+ <Badge key={skill} variant="secondary" className="gap-xs">
  {skill}
  <button
  type="button"
@@ -246,7 +246,7 @@ export default function EndorsementFormView({
 
  <div className="mt-2">
  <p className="text-sm text-muted-foreground mb-2">Common skills:</p>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {COMMON_SKILLS.slice(0, 8).map((skill) => (
  <Badge
  key={skill}
@@ -261,8 +261,8 @@ export default function EndorsementFormView({
  </div>
  </div>
 
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
- <div className="space-y-2">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+ <div className="space-y-xs">
  <Label htmlFor="rating">
  Rating <span className="text-destructive">*</span>
  </Label>
@@ -276,7 +276,7 @@ export default function EndorsementFormView({
  <SelectContent>
  {[5, 4, 3, 2, 1].map((rating) => (
  <SelectItem key={rating} value={String(rating)}>
- <span className="flex items-center gap-2">
+ <span className="flex items-center gap-xs">
  <span className="text-yellow-500">{formatRating(rating)}</span>
  <span>{rating} Star{rating !== 1 ? 's' : ''}</span>
  </span>
@@ -286,7 +286,7 @@ export default function EndorsementFormView({
  </Select>
  </div>
 
- <div className="space-y-2">
+ <div className="space-y-xs">
  <Label htmlFor="date_received">
  Date Received <span className="text-destructive">*</span>
  </Label>
@@ -303,7 +303,7 @@ export default function EndorsementFormView({
  </div>
  </div>
 
- <div className="space-y-4 pt-4 border-t">
+ <div className="space-y-md pt-4 border-t">
  <div className="flex items-center justify-between">
  <div className="space-y-0.5">
  <Label htmlFor="is_public">Public Endorsement</Label>
@@ -344,7 +344,7 @@ export default function EndorsementFormView({
  )}
  </div>
  <Button onClick={onSave} disabled={saving}>
- <Save className="mr-2 h-4 w-4" />
+ <Save className="mr-2 h-icon-xs w-icon-xs" />
  {saving ? 'Saving...' : endorsement ? 'Update Endorsement' : 'Add Endorsement'}
  </Button>
  </div>
@@ -352,7 +352,7 @@ export default function EndorsementFormView({
  </Card>
 
  {endorsement && (
- <Card className="p-4 bg-muted/50">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between text-sm">
  <span className="text-muted-foreground">
  Created: {formatDate(endorsement.created_at)}

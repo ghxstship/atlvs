@@ -97,7 +97,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={handleOpen} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Call Sheet
       </Button>
 
@@ -250,7 +250,7 @@ export default function CreateCallSheetClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <FileText className="w-4 h-4" />
+              <FileText className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Call Sheet'}
             </Button>
           </div>

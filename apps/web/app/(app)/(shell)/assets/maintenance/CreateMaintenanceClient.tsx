@@ -189,7 +189,7 @@ export default function CreateMaintenanceClient({
         {/* Asset & Type */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Wrench className="h-5 w-5 color-accent" />
+            <Wrench className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Asset & Maintenance Type</h3>
           </div>
           
@@ -224,7 +224,7 @@ export default function CreateMaintenanceClient({
 
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <AlertTriangle className="h-4 w-4 inline mr-xs" />
+                  <AlertTriangle className="h-icon-xs w-icon-xs inline mr-xs" />
                   Priority
                 </label>
                 <Select
@@ -261,7 +261,7 @@ export default function CreateMaintenanceClient({
         {/* Scheduling */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Calendar className="h-5 w-5 color-success" />
+            <Calendar className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Scheduling</h3>
           </div>
           
@@ -303,7 +303,7 @@ export default function CreateMaintenanceClient({
         {/* Description & Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Wrench className="h-5 w-5 color-secondary" />
+            <Wrench className="h-icon-sm w-icon-sm color-secondary" />
             <h3 className="text-body text-heading-4">Description & Details</h3>
           </div>
           
@@ -336,7 +336,7 @@ export default function CreateMaintenanceClient({
         {/* Cost Information */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <DollarSign className="h-5 w-5 color-warning" />
+            <DollarSign className="h-icon-sm w-icon-sm color-warning" />
             <h3 className="text-body text-heading-4">Cost Information</h3>
           </div>
           
@@ -393,14 +393,14 @@ export default function CreateMaintenanceClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.assetId || !formData.description}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Schedule Maintenance'}
           </Button>
         </div>

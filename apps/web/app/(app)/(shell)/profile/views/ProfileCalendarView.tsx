@@ -25,9 +25,9 @@ export default function ProfileCalendarView({
  return (
  <Card className="p-xl text-center">
  <div className="animate-pulse space-y-md">
- <div className="w-12 h-12 bg-muted rounded-full mx-auto" />
- <div className="w-48 h-4 bg-muted rounded mx-auto" />
- <div className="w-32 h-3 bg-muted rounded mx-auto" />
+ <div className="w-icon-2xl h-icon-2xl bg-muted rounded-full mx-auto" />
+ <div className="w-container-xs h-icon-xs bg-muted rounded mx-auto" />
+ <div className="w-component-xl h-3 bg-muted rounded mx-auto" />
  </div>
  </Card>
  );
@@ -52,13 +52,13 @@ export default function ProfileCalendarView({
  return (
  <div className="space-y-lg">
  <div className="flex items-center gap-sm mb-lg">
- <Calendar className="h-5 w-5" />
+ <Calendar className="h-icon-sm w-icon-sm" />
  <h2 className="text-lg font-semibold">Profiles by Hire Date</h2>
  </div>
 
  {sortedDates.length === 0 ? (
  <Card className="p-xl text-center">
- <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No hire dates available</h3>
  <p className="text-muted-foreground">
  Profiles with hire dates will appear here in a timeline view.
@@ -74,8 +74,8 @@ export default function ProfileCalendarView({
  <Card key={dateString} className="p-md">
  <div className="flex items-center gap-md mb-md">
  <div className="flex-shrink-0">
- <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
- <Calendar className="h-6 w-6 text-primary" />
+ <div className="w-icon-2xl h-icon-2xl bg-primary/10 rounded-full flex items-center justify-center">
+ <Calendar className="h-icon-md w-icon-md text-primary" />
  </div>
  </div>
  <div>
@@ -100,7 +100,7 @@ export default function ProfileCalendarView({
  className="flex items-center gap-sm p-sm rounded-lg border cursor-pointer hover:bg-muted/50 transition-colors"
  onClick={() => onEdit(profile)}
  >
- <Avatar className="h-8 w-8">
+ <Avatar className="h-icon-lg w-icon-lg">
  {profile.avatar_url ? (
  <img src={profile.avatar_url} alt={profile.full_name} />
  ) : (

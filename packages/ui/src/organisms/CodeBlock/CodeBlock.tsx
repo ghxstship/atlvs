@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { useTheme } from '../providers/ThemeProvider';
+import { useTheme } from '../../providers/ThemeProvider';
 
 export interface CodeBlockProps {
   /** Code content to display */
@@ -66,12 +66,12 @@ export function CodeBlock({
   return (
     <div className={`code-block ${className}`} data-theme={isDark ? 'dark' : 'light'}>
       {title && (
-        <div className="code-block-title bg-muted px-4 py-2 text-sm font-medium border-b border-border">
+        <div className="code-block-title bg-muted px-md py-sm text-sm font-medium border-b border-border">
           {title}
         </div>
       )}
       <div className="code-block-content relative">
-        <pre className="bg-card text-card-foreground p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-card text-card-foreground p-md rounded-lg overflow-x-auto">
           <code
             ref={codeRef}
             className={`language-${language}`}
@@ -133,7 +133,7 @@ export function useSyntaxHighlighting(library: 'prism' | 'highlight' = 'prism') 
     if (typeof document === 'undefined') return;
 
     // Dynamically import and apply syntax theme
-    import('../utils/syntax-theme-adapter').then(({ applySyntaxTheme }) => {
+    import('../../utils/syntax-theme-adapter').then(({ applySyntaxTheme }) => {
       applySyntaxTheme(library);
     });
   }, [effectiveTheme, library]);

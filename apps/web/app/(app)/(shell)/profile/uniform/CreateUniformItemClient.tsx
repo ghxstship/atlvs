@@ -118,7 +118,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
         aria-label="Add Uniform Item" 
         title="Add Uniform Item"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Uniform Item
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Uniform Item
       </Button>
       <Drawer 
         open={open} 
@@ -247,7 +247,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="care_instructions" className="text-body-sm form-label">Care Instructions</label>
             <textarea 
               id="care_instructions" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('care_instructions') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('care_instructions', e.target.value, { shouldDirty: true })} 
               placeholder="Washing, maintenance, or storage instructions..."
@@ -279,7 +279,7 @@ export default function CreateUniformItemClient({ orgId, userId }: { orgId: stri
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('notes') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes about this item..."

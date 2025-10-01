@@ -102,21 +102,21 @@ export default function HistoryDrawer({
   const getActionIcon = (action: string) => {
     switch (action) {
       case 'view':
-        return <Eye className="w-4 h-4 text-blue-500" />;
+        return <Eye className="w-icon-xs h-icon-xs text-blue-500" />;
       case 'edit':
-        return <Edit className="w-4 h-4 text-orange-500" />;
+        return <Edit className="w-icon-xs h-icon-xs text-orange-500" />;
       case 'download':
-        return <Download className="w-4 h-4 text-green-500" />;
+        return <Download className="w-icon-xs h-icon-xs text-green-500" />;
       case 'share':
-        return <Share className="w-4 h-4 text-purple-500" />;
+        return <Share className="w-icon-xs h-icon-xs text-purple-500" />;
       case 'delete':
-        return <Trash2 className="w-4 h-4 text-red-500" />;
+        return <Trash2 className="w-icon-xs h-icon-xs text-red-500" />;
       case 'create':
-        return <FileText className="w-4 h-4 text-green-500" />;
+        return <FileText className="w-icon-xs h-icon-xs text-green-500" />;
       case 'restore':
-        return <CheckCircle className="w-4 h-4 text-blue-500" />;
+        return <CheckCircle className="w-icon-xs h-icon-xs text-blue-500" />;
       default:
-        return <Info className="w-4 h-4 text-gray-500" />;
+        return <Info className="w-icon-xs h-icon-xs text-gray-500" />;
     }
   };
 
@@ -161,22 +161,22 @@ export default function HistoryDrawer({
     if (!changes || Object.keys(changes).length === 0) return null;
 
     return (
-      <div className="mt-3 p-3 bg-gray-50 rounded-lg">
+      <div className="mt-3 p-sm bg-gray-50 rounded-lg">
         <h5 className="text-sm font-medium text-gray-900 mb-2">Changes Made</h5>
-        <div className="space-y-2">
+        <div className="space-y-xs">
           {Object.entries(changes).map(([field, change]) => (
             <div key={field} className="text-sm">
               <span className="font-medium capitalize">{field}:</span>
-              <div className="mt-1 grid grid-cols-2 gap-2">
+              <div className="mt-1 grid grid-cols-2 gap-xs">
                 <div>
                   <span className="text-xs text-gray-500">Before:</span>
-                  <div className="text-xs bg-red-50 text-red-700 p-1 rounded mt-1">
+                  <div className="text-xs bg-red-50 text-red-700 p-xs rounded mt-1">
                     {Array.isArray(change.old) ? change.old.join(', ') : String(change.old || 'Empty')}
                   </div>
                 </div>
                 <div>
                   <span className="text-xs text-gray-500">After:</span>
-                  <div className="text-xs bg-green-50 text-green-700 p-1 rounded mt-1">
+                  <div className="text-xs bg-green-50 text-green-700 p-xs rounded mt-1">
                     {Array.isArray(change.new) ? change.new.join(', ') : String(change.new || 'Empty')}
                   </div>
                 </div>
@@ -201,7 +201,7 @@ export default function HistoryDrawer({
       {/* Drawer */}
       <div className="relative ml-auto w-full max-w-2xl bg-white shadow-xl transform transition-transform overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-lg border-b border-gray-200">
           <div>
             <h2 className="text-xl font-semibold text-gray-900">File History</h2>
             <p className="text-sm text-gray-500">
@@ -209,7 +209,7 @@ export default function HistoryDrawer({
             </p>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="w-4 h-4" />
+            <X className="w-icon-xs h-icon-xs" />
           </Button>
         </div>
 
@@ -218,41 +218,41 @@ export default function HistoryDrawer({
           <div className="grid grid-cols-1 lg:grid-cols-3 h-full">
             {/* Audit Log List */}
             <div className="border-r border-gray-200">
-              <div className="p-4 border-b border-gray-200">
+              <div className="p-md border-b border-gray-200">
                 <h3 className="font-medium text-gray-900">Activity Timeline</h3>
                 <p className="text-sm text-gray-500">{auditLogs.length} events</p>
               </div>
 
-              <ScrollArea className="h-[calc(100vh-200px)]">
-                <div className="p-4 space-y-3">
+              <ScrollArea className="h-[calc(100vh-component-lg0px)]">
+                <div className="p-md space-y-sm">
                   {isLoading ? (
-                    <div className="text-center py-8">
-                      <div className="w-6 h-6 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
+                    <div className="text-center py-xl">
+                      <div className="w-icon-md h-icon-md border-2 border-blue-600 border-t-transparent rounded-full animate-spin mx-auto mb-2" />
                       <p className="text-sm text-gray-500">Loading history...</p>
                     </div>
                   ) : auditLogs.length === 0 ? (
-                    <div className="text-center py-8">
-                      <Clock className="w-8 h-8 text-gray-400 mx-auto mb-2" />
+                    <div className="text-center py-xl">
+                      <Clock className="w-icon-lg h-icon-lg text-gray-400 mx-auto mb-2" />
                       <p className="text-sm text-gray-500">No activity recorded</p>
                     </div>
                   ) : (
                     auditLogs.map((entry, index) => (
                       <div
                         key={entry.id}
-                        className={`p-3 rounded-lg border cursor-pointer transition-colors ${
+                        className={`p-sm rounded-lg border cursor-pointer transition-colors ${
                           selectedEntry?.id === entry.id
                             ? 'border-blue-500 bg-blue-50'
                             : 'border-gray-200 hover:border-gray-300'
                         }`}
                         onClick={() => setSelectedEntry(entry)}
                       >
-                        <div className="flex items-start gap-3">
-                          <div className={`p-1 rounded ${getActionColor(entry.action)}`}>
+                        <div className="flex items-start gap-sm">
+                          <div className={`p-xs rounded ${getActionColor(entry.action)}`}>
                             {getActionIcon(entry.action)}
                           </div>
 
                           <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2 mb-1">
+                            <div className="flex items-center gap-xs mb-1">
                               <span className="text-sm font-medium text-gray-900 capitalize">
                                 {entry.action}
                               </span>
@@ -280,12 +280,12 @@ export default function HistoryDrawer({
             </div>
 
             {/* Entry Details */}
-            <div className="col-span-2 p-6">
+            <div className="col-span-2 p-lg">
               {selectedEntry ? (
-                <div className="space-y-6">
+                <div className="space-y-lg">
                   {/* Entry Header */}
-                  <div className="flex items-start gap-4">
-                    <div className={`p-3 rounded-lg ${getActionColor(selectedEntry.action)}`}>
+                  <div className="flex items-start gap-md">
+                    <div className={`p-sm rounded-lg ${getActionColor(selectedEntry.action)}`}>
                       {getActionIcon(selectedEntry.action)}
                     </div>
 
@@ -300,12 +300,12 @@ export default function HistoryDrawer({
                   </div>
 
                   {/* Entry Details */}
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-2 gap-lg">
                     <div>
                       <h4 className="text-sm font-medium text-gray-900 mb-2">User Information</h4>
-                      <div className="space-y-2 text-sm">
-                        <div className="flex items-center gap-2">
-                          <User className="w-4 h-4 text-gray-400" />
+                      <div className="space-y-xs text-sm">
+                        <div className="flex items-center gap-xs">
+                          <User className="w-icon-xs h-icon-xs text-gray-400" />
                           <span>{selectedEntry.user_name}</span>
                         </div>
                         <div>
@@ -317,7 +317,7 @@ export default function HistoryDrawer({
 
                     <div>
                       <h4 className="text-sm font-medium text-gray-900 mb-2">Technical Details</h4>
-                      <div className="space-y-2 text-sm">
+                      <div className="space-y-xs text-sm">
                         <div>
                           <span className="text-gray-500">IP Address:</span>
                           <span className="ml-2 font-mono text-xs">{selectedEntry.ip_address || 'N/A'}</span>
@@ -334,7 +334,7 @@ export default function HistoryDrawer({
                   {selectedEntry.details && (
                     <div>
                       <h4 className="text-sm font-medium text-gray-900 mb-2">Details</h4>
-                      <p className="text-sm text-gray-700 bg-gray-50 p-3 rounded-lg">
+                      <p className="text-sm text-gray-700 bg-gray-50 p-sm rounded-lg">
                         {selectedEntry.details}
                       </p>
                     </div>
@@ -347,15 +347,15 @@ export default function HistoryDrawer({
                   {selectedEntry.user_agent && (
                     <div>
                       <h4 className="text-sm font-medium text-gray-900 mb-2">Browser Information</h4>
-                      <p className="text-xs text-gray-600 bg-gray-50 p-2 rounded font-mono">
+                      <p className="text-xs text-gray-600 bg-gray-50 p-xs rounded font-mono">
                         {selectedEntry.user_agent}
                       </p>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="text-center py-12">
-                  <Clock className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+                <div className="text-center py-xsxl">
+                  <Clock className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
                   <h3 className="text-lg font-medium text-gray-900 mb-2">Select an Event</h3>
                   <p className="text-gray-500">
                     Choose an event from the timeline to view detailed information

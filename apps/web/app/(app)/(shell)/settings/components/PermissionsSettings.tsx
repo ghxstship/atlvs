@@ -281,9 +281,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading permissions...</p>
         </div>
       </div>
@@ -291,14 +291,14 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Roles Overview */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
         {roles.map((role) => (
           <Card key={role.id} className={`cursor-pointer transition-colors ${
             selectedRole?.id === role.id ? 'ring-2 ring-primary' : 'hover:bg-muted/50'
           }`} onClick={() => setSelectedRole(role)}>
-            <CardContent className="p-4">
+            <CardContent className="p-md">
               <div className="flex items-center justify-between mb-2">
                 <h3 className="font-medium">{role.name}</h3>
                 {role.is_system && <Badge variant="outline">System</Badge>}
@@ -311,9 +311,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
         ))}
 
         <Card className="cursor-pointer hover:bg-muted/50 border-dashed" onClick={() => setShowCreateRole(true)}>
-          <CardContent className="p-4 flex items-center justify-center h-full">
+          <CardContent className="p-md flex items-center justify-center h-full">
             <div className="text-center">
-              <Shield className="mx-auto h-8 w-8 text-muted-foreground mb-2" />
+              <Shield className="mx-auto h-icon-lg w-icon-lg text-muted-foreground mb-2" />
               <p className="font-medium">Create Role</p>
               <p className="text-sm text-muted-foreground">Custom permissions</p>
             </div>
@@ -327,9 +327,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
           <CardHeader>
             <CardTitle>Create New Role</CardTitle>
           </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
+          <CardContent className="space-y-md">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+              <div className="space-y-xs">
                 <Label htmlFor="role-name">Role Name</Label>
                 <Input
                   id="role-name"
@@ -338,7 +338,7 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
                   onChange={(e) => setNewRoleName(e.target.value)}
                 />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label htmlFor="role-description">Description</Label>
                 <Input
                   id="role-description"
@@ -348,7 +348,7 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
                 />
               </div>
             </div>
-            <div className="flex justify-end gap-3">
+            <div className="flex justify-end gap-sm">
               <Button variant="outline" onClick={() => setShowCreateRole(false)}>
                 Cancel
               </Button>
@@ -366,15 +366,15 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="flex items-center gap-2">
-                  <Shield className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-xs">
+                  <Shield className="h-icon-sm w-icon-sm" />
                   {selectedRole.name} Permissions
                 </CardTitle>
                 <p className="text-sm text-muted-foreground mt-1">
                   {selectedRole.description}
                 </p>
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-xs">
                 {!selectedRole.is_system && (
                   <>
                     <Button
@@ -400,7 +400,7 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
             </div>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <div className="space-y-lg">
               {Object.entries(PERMISSION_CATEGORIES).map(([categoryKey, categoryName]) => {
                 const categoryPermissions = PERMISSIONS.filter(p => p.category === categoryKey);
                 if (categoryPermissions.length === 0) return null;
@@ -408,9 +408,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
                 return (
                   <div key={categoryKey}>
                     <h4 className="font-medium mb-4">{categoryName}</h4>
-                    <div className="space-y-3">
+                    <div className="space-y-sm">
                       {categoryPermissions.map((permission) => (
-                        <div key={permission.key} className="flex items-center justify-between py-2">
+                        <div key={permission.key} className="flex items-center justify-between py-xs">
                           <div className="flex-1">
                             <p className="font-medium">{permission.name}</p>
                             <p className="text-sm text-muted-foreground">{permission.description}</p>
@@ -435,8 +435,8 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
       {/* Permission Matrix */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <SettingsIcon className="h-icon-sm w-icon-sm" />
             Permission Matrix
           </CardTitle>
           <p className="text-sm text-muted-foreground">
@@ -448,9 +448,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead className="w-48">Permission</TableHead>
+                  <TableHead className="w-container-xs">Permission</TableHead>
                   {roles.map((role) => (
-                    <TableHead key={role.id} className="text-center min-w-24">
+                    <TableHead key={role.id} className="text-center min-w-component-lg">
                       {role.name}
                     </TableHead>
                   ))}
@@ -468,9 +468,9 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
                     {roles.map((role) => (
                       <TableCell key={role.id} className="text-center">
                         {role.permissions[permission.key] ? (
-                          <Check className="h-4 w-4 text-green-600 mx-auto" />
+                          <Check className="h-icon-xs w-icon-xs text-green-600 mx-auto" />
                         ) : (
-                          <X className="h-4 w-4 text-red-400 mx-auto" />
+                          <X className="h-icon-xs w-icon-xs text-red-400 mx-auto" />
                         )}
                       </TableCell>
                     ))}
@@ -484,7 +484,7 @@ export default function PermissionsSettings({ userId, orgId }: PermissionsSettin
 
       {/* Security Notes */}
       <Alert>
-        <Shield className="h-4 w-4" />
+        <Shield className="h-icon-xs w-icon-xs" />
         <AlertDescription>
           Changes to permissions take effect immediately. System roles (Viewer, Contributor, Manager, Admin) cannot be modified or deleted.
           Custom roles can only be deleted if they have no assigned members.

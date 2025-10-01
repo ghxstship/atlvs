@@ -278,7 +278,7 @@ export default function ProgrammingItinerariesClient({
  </p>
  </div>
  <Button onClick={handleCreateItinerary}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Itinerary
  </Button>
  </div>
@@ -287,7 +287,7 @@ export default function ProgrammingItinerariesClient({
  <div className="flex flex-col gap-md lg:flex-row lg:items-center lg:justify-between">
  <div className="flex flex-1 items-center gap-sm">
  <div className="relative flex-1 max-w-md">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  placeholder="Search itineraries..."
  value={searchTerm}
@@ -346,14 +346,14 @@ export default function ProgrammingItinerariesClient({
  {selectedItineraries.size} selected
  </span>
  <Button variant="outline" size="sm" onClick={handleBulkDelete}>
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </Button>
  </div>
  )}
 
  <Button variant="outline" size="sm">
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </div>
@@ -363,19 +363,19 @@ export default function ProgrammingItinerariesClient({
  <Tabs value={currentView} onValueChange={(value) => setCurrentView(value as ViewType)}>
  <TabsList>
  <TabsTrigger value="list">
- <List className="mr-2 h-4 w-4" />
+ <List className="mr-2 h-icon-xs w-icon-xs" />
  List
  </TabsTrigger>
  <TabsTrigger value="timeline">
- <Timeline className="mr-2 h-4 w-4" />
+ <Timeline className="mr-2 h-icon-xs w-icon-xs" />
  Timeline
  </TabsTrigger>
  <TabsTrigger value="calendar">
- <Calendar className="mr-2 h-4 w-4" />
+ <Calendar className="mr-2 h-icon-xs w-icon-xs" />
  Calendar
  </TabsTrigger>
  <TabsTrigger value="map">
- <Map className="mr-2 h-4 w-4" />
+ <Map className="mr-2 h-icon-xs w-icon-xs" />
  Map
  </TabsTrigger>
  </TabsList>
@@ -411,7 +411,7 @@ export default function ProgrammingItinerariesClient({
  description="Get started by creating your first itinerary"
  action={
  <Button onClick={handleCreateItinerary}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Itinerary
  </Button>
  }

@@ -63,22 +63,22 @@ type Grouping = 'none' | 'category' | 'status' | 'location';
 
 const DENSITY_CONFIG = {
   compact: {
-    itemHeight: 'h-12',
+    itemHeight: 'h-icon-2xl',
     fontSize: 'text-sm',
-    padding: 'py-2 px-3',
-    iconSize: 'w-4 h-4'
+    padding: 'py-xs px-sm',
+    iconSize: 'w-icon-xs h-icon-xs'
   },
   comfortable: {
-    itemHeight: 'h-16',
+    itemHeight: 'h-component-md',
     fontSize: 'text-base',
-    padding: 'py-3 px-4',
-    iconSize: 'w-5 h-5'
+    padding: 'py-sm px-md',
+    iconSize: 'w-icon-sm h-icon-sm'
   },
   spacious: {
-    itemHeight: 'h-20',
+    itemHeight: 'h-component-lg',
     fontSize: 'text-lg',
-    padding: 'py-4 px-6',
-    iconSize: 'w-6 h-6'
+    padding: 'py-md px-lg',
+    iconSize: 'w-icon-md h-icon-md'
   }
 };
 
@@ -295,19 +295,19 @@ export default function ListView({
 
         {/* Asset info */}
         <div className="flex-1 min-w-0">
-          <div className={`flex items-center gap-3 ${config.padding}`}>
+          <div className={`flex items-center gap-sm ${config.padding}`}>
             <div className="flex-1 min-w-0">
               <div className={`font-medium truncate ${config.fontSize}`}>
                 {asset.name}
               </div>
-              <div className="flex items-center gap-2 mt-1">
+              <div className="flex items-center gap-xs mt-1">
                 <Badge variant="outline" className="font-mono text-xs">
                   {asset.asset_tag}
                 </Badge>
                 <Badge variant="secondary" className="text-xs capitalize">
                   {asset.category?.replace('_', ' ')}
                 </Badge>
-                <div className={`flex items-center gap-1 ${statusDisplay.color}`}>
+                <div className={`flex items-center gap-xs ${statusDisplay.color}`}>
                   <StatusIcon className="w-3 h-3" />
                   <span className="text-xs capitalize">
                     {asset.status.replace('_', ' ')}
@@ -317,32 +317,32 @@ export default function ListView({
             </div>
 
             {/* Quick info */}
-            <div className="flex items-center gap-4 text-sm text-gray-600">
+            <div className="flex items-center gap-md text-sm text-gray-600">
               {asset.assigned_to && (
-                <div className="flex items-center gap-1">
-                  <User className="w-4 h-4" />
-                  <span className="truncate max-w-24">
+                <div className="flex items-center gap-xs">
+                  <User className="w-icon-xs h-icon-xs" />
+                  <span className="truncate max-w-component-lg">
                     {asset.assigned_to.name}
                   </span>
                 </div>
               )}
               {asset.location && (
-                <div className="flex items-center gap-1">
-                  <MapPin className="w-4 h-4" />
-                  <span className="truncate max-w-24">
+                <div className="flex items-center gap-xs">
+                  <MapPin className="w-icon-xs h-icon-xs" />
+                  <span className="truncate max-w-component-lg">
                     {asset.location.name}
                   </span>
                 </div>
               )}
               {asset.purchase_price && (
-                <div className="flex items-center gap-1">
-                  <DollarSign className="w-4 h-4" />
+                <div className="flex items-center gap-xs">
+                  <DollarSign className="w-icon-xs h-icon-xs" />
                   <span>${asset.purchase_price.toLocaleString()}</span>
                 </div>
               )}
               {asset.warranty_expiry && (
-                <div className="flex items-center gap-1">
-                  <Clock className="w-4 h-4" />
+                <div className="flex items-center gap-xs">
+                  <Clock className="w-icon-xs h-icon-xs" />
                   <span>
                     {new Date(asset.warranty_expiry) > new Date() ? 'Active' : 'Expired'}
                   </span>
@@ -359,28 +359,28 @@ export default function ListView({
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0"
+                className="h-icon-lg w-icon-lg p-0"
                 onClick={(e) => e.stopPropagation()}
               >
-                <MoreHorizontal className="h-4 w-4" />
+                <MoreHorizontal className="h-icon-xs w-icon-xs" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('view', asset); }}>
-                <Eye className="mr-2 h-4 w-4" />
+                <Eye className="mr-2 h-icon-xs w-icon-xs" />
                 View Details
               </DropdownMenuItem>
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('edit', asset); }}>
-                <Edit className="mr-2 h-4 w-4" />
+                <Edit className="mr-2 h-icon-xs w-icon-xs" />
                 Edit Asset
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('duplicate', asset); }}>
-                <Copy className="mr-2 h-4 w-4" />
+                <Copy className="mr-2 h-icon-xs w-icon-xs" />
                 Duplicate
               </DropdownMenuItem>
               <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('export', asset); }}>
-                <Download className="mr-2 h-4 w-4" />
+                <Download className="mr-2 h-icon-xs w-icon-xs" />
                 Export
               </DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -388,7 +388,7 @@ export default function ListView({
                 onClick={(e) => { e.stopPropagation(); onAssetAction?.('delete', asset); }}
                 className="text-red-600"
               >
-                <Trash2 className="mr-2 h-4 w-4" />
+                <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                 Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -409,11 +409,11 @@ export default function ListView({
         onClick={() => handleGroupToggle(group.key)}
       >
         <div className={`flex items-center ${config.padding}`}>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             {group.expanded ? (
-              <ChevronDown className="w-4 h-4 text-gray-500" />
+              <ChevronDown className="w-icon-xs h-icon-xs text-gray-500" />
             ) : (
-              <ChevronRight className="w-4 h-4 text-gray-500" />
+              <ChevronRight className="w-icon-xs h-icon-xs text-gray-500" />
             )}
             <span className={`font-medium text-gray-900 ${config.fontSize}`}>
               {group.label}
@@ -430,14 +430,14 @@ export default function ListView({
   return (
     <div className={`flex flex-col h-full bg-white ${className}`}>
       {/* List Controls */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-md">
+          <div className="flex items-center gap-xs">
             <span className="text-sm font-medium">Density:</span>
             <select
               value={density}
               onChange={(e) => setDensity(e.target.value as Density)}
-              className="text-sm border rounded px-2 py-1"
+              className="text-sm border rounded px-xs py-xs"
             >
               <option value="compact">Compact</option>
               <option value="comfortable">Comfortable</option>
@@ -445,12 +445,12 @@ export default function ListView({
             </select>
           </div>
           {grouping !== 'none' && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <span className="text-sm font-medium">Grouping:</span>
               <select
                 value={grouping}
                 onChange={(e) => setGrouping(e.target.value as Grouping)}
-                className="text-sm border rounded px-2 py-1"
+                className="text-sm border rounded px-xs py-xs"
               >
                 <option value="none">None</option>
                 <option value="category">Category</option>
@@ -468,7 +468,7 @@ export default function ListView({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {selectedItems.size > 0 && (
             <>
               <Button
@@ -496,13 +496,13 @@ export default function ListView({
       {/* List Content */}
       <div className="flex-1 overflow-auto">
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          <div className="flex items-center justify-center h-container-sm">
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-gray-900"></div>
             <span className="ml-2">Loading assets...</span>
           </div>
         ) : assets.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-gray-500">
-            <Package className="w-12 h-12 mb-4 text-gray-300" />
+          <div className="flex flex-col items-center justify-center h-container-sm text-gray-500">
+            <Package className="w-icon-2xl h-icon-2xl mb-4 text-gray-300" />
             <div className="text-lg font-medium">No assets found</div>
             <div className="text-sm">Try adjusting your filters</div>
           </div>
@@ -521,7 +521,7 @@ export default function ListView({
       {/* Load More */}
       {viewState.pagination.total &&
        viewState.pagination.page * viewState.pagination.pageSize < viewState.pagination.total && (
-        <div className="flex justify-center p-4 border-t">
+        <div className="flex justify-center p-md border-t">
           <Button
             variant="outline"
             onClick={() => onViewStateChange({

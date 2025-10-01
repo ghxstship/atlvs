@@ -131,9 +131,9 @@ export default function OPENDECKPage() {
   return (
     <div className="min-h-screen brand-opendeck">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-to-br from-secondary/5 via-background to-primary/5">
+      <section className="py-mdxl bg-gradient-to-br from-secondary/5 via-background to-primary/5">
         <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-2xl items-center">
+          <div className="grid lg:grid-cols-2 gap-xsxl items-center">
             <div className="stack-xl">
               <div>
                 <Badge variant="outline" className="mb-md">
@@ -177,11 +177,11 @@ export default function OPENDECKPage() {
                 <Link href="/auth/signup">
                   <Button className="w-full sm:w-auto group">
                     Join OPENDECK
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
                 <Button className="w-full sm:w-auto group">
-                  <Play className="mr-sm h-4 w-4" />
+                  <Play className="mr-sm h-icon-xs w-icon-xs" />
                   Explore Marketplace
                 </Button>
               </div>
@@ -219,7 +219,7 @@ export default function OPENDECKPage() {
                       { name: 'Alex Rivera', role: 'Motion Designer', rating: 5.0, projects: 156, location: 'London, UK' },
                     ].map((talent, i) => (
                       <div key={i} className="flex items-center gap-sm p-sm bg-secondary/30 rounded-lg">
-                        <div className="w-10 h-10 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
+                        <div className="w-icon-xl h-icon-xl bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
                           <span className="text-background text-heading-4 text-body-sm">
                             {talent.name.split(' ').map(n => n[0]).join('')}
                           </span>
@@ -254,7 +254,7 @@ export default function OPENDECKPage() {
       </section>
 
       {/* Categories Section */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -292,7 +292,7 @@ export default function OPENDECKPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -310,8 +310,8 @@ export default function OPENDECKPage() {
               return (
                 <Card key={feature.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-secondary to-primary mb-md">
-                      <Icon className="h-6 w-6 text-background" />
+                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-secondary to-primary mb-md">
+                      <Icon className="h-icon-md w-icon-md text-background" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{feature.description}</p>
@@ -332,7 +332,7 @@ export default function OPENDECKPage() {
       </section>
 
       {/* Success Stories Section */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -378,14 +378,14 @@ export default function OPENDECKPage() {
                 <CardContent className="p-xl">
                   <div className="flex items-center gap-xs mb-md">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="h-4 w-4 fill-warning color-warning" />
+                      <Star key={i} className="h-icon-xs w-icon-xs fill-warning color-warning" />
                     ))}
                   </div>
                   <blockquote className="text-body color-foreground mb-lg leading-relaxed">
                     "{testimonial.quote}"
                   </blockquote>
                   <div className="flex items-center gap-md">
-                    <div className="w-12 h-12 bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
+                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-secondary to-primary rounded-full flex items-center justify-center">
                       <span className="text-background text-heading-4 text-body-sm">
                         {testimonial.author.split(' ').map(n => n[0]).join('')}
                       </span>
@@ -404,7 +404,7 @@ export default function OPENDECKPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-secondary/5 to-primary/5">
+      <section className="py-mdxl bg-gradient-to-r from-secondary/5 to-primary/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -419,7 +419,7 @@ export default function OPENDECKPage() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group">
                   Join OPENDECK
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/pricing">
@@ -431,15 +431,15 @@ export default function OPENDECKPage() {
 
             <div className="flex flex-wrap justify-center items-center gap-lg text-body-sm color-muted">
               <div className="flex items-center gap-sm">
-                <CheckCircle className="h-4 w-4 color-success" />
+                <CheckCircle className="h-icon-xs w-icon-xs color-success" />
                 <span>Free to join</span>
               </div>
               <div className="flex items-center gap-sm">
-                <Users className="h-4 w-4 color-secondary" />
+                <Users className="h-icon-xs w-icon-xs color-secondary" />
                 <span>25K+ professionals</span>
               </div>
               <div className="flex items-center gap-sm">
-                <Globe className="h-4 w-4 text-foreground" />
+                <Globe className="h-icon-xs w-icon-xs text-foreground" />
                 <span>Global network</span>
               </div>
             </div>

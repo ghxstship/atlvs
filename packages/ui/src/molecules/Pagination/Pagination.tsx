@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react'
-import { Button } from '../UnifiedDesignSystem'
+import { Button } from '../../atoms/Button'
 
 export interface PaginationProps {
   currentPage: number

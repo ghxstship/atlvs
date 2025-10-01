@@ -381,7 +381,7 @@ export function PerformanceOptimizer({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Zap className="h-5 w-5 text-accent" />
+          <Zap className="h-icon-sm w-icon-sm text-accent" />
           <div>
             <h3 className="font-semibold">Performance Optimizer</h3>
             <p className="text-sm text-muted-foreground">
@@ -404,12 +404,12 @@ export function PerformanceOptimizer({
           >
             {isMonitoring ? (
               <>
-                <Activity className="h-4 w-4 mr-xs" />
+                <Activity className="h-icon-xs w-icon-xs mr-xs" />
                 Stop
               </>
             ) : (
               <>
-                <RefreshCw className="h-4 w-4 mr-xs" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-xs" />
                 Start
               </>
             )}
@@ -422,7 +422,7 @@ export function PerformanceOptimizer({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Clock className="h-4 w-4 text-muted-foreground" />
+              <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Render Time</span>
             </div>
             <div className="text-2xl font-bold">
@@ -435,7 +435,7 @@ export function PerformanceOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <MemoryStick className="h-4 w-4 text-muted-foreground" />
+              <MemoryStick className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Memory</span>
             </div>
             <div className="text-2xl font-bold">
@@ -448,7 +448,7 @@ export function PerformanceOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Cpu className="h-4 w-4 text-muted-foreground" />
+              <Cpu className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">CPU Usage</span>
             </div>
             <div className="text-2xl font-bold">
@@ -461,7 +461,7 @@ export function PerformanceOptimizer({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <TrendingUp className="h-4 w-4 text-muted-foreground" />
+              <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">FPS</span>
             </div>
             <div className="text-2xl font-bold">
@@ -477,7 +477,7 @@ export function PerformanceOptimizer({
         {recommendations.length > 0 && (
           <div>
             <h4 className="font-medium mb-sm flex items-center gap-sm">
-              <AlertTriangle className="h-4 w-4 text-warning" />
+              <AlertTriangle className="h-icon-xs w-icon-xs text-warning" />
               Performance Recommendations
             </h4>
             <div className="space-y-xs">
@@ -516,7 +516,7 @@ export function PerformanceOptimizer({
         {appliedOptimizations.size > 0 && (
           <div>
             <h4 className="font-medium mb-sm flex items-center gap-sm">
-              <CheckCircle className="h-4 w-4 text-success" />
+              <CheckCircle className="h-icon-xs w-icon-xs text-success" />
               Applied Optimizations
             </h4>
             <div className="flex flex-wrap gap-sm">

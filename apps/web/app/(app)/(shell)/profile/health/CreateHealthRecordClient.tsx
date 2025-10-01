@@ -108,7 +108,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
         aria-label="Add Health Record" 
         title="Add Health Record"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add Health Record
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add Health Record
       </Button>
       <Drawer 
         open={open} 
@@ -157,7 +157,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('description') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('description', e.target.value, { shouldDirty: true })} 
               placeholder="Additional details about this health record..."
@@ -242,7 +242,7 @@ export default function CreateHealthRecordClient({ orgId, userId }: { orgId: str
             <label htmlFor="notes" className="text-body-sm form-label">Notes</label>
             <textarea 
               id="notes" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('notes') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('notes', e.target.value, { shouldDirty: true })} 
               placeholder="Additional notes or instructions..."

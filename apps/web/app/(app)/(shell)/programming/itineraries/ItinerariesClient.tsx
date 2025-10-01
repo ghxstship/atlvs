@@ -92,8 +92,8 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-64">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+      <div className="flex items-center justify-center h-container-sm">
+        <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
       </div>
     );
   }
@@ -109,7 +109,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
           </p>
         </div>
         <Button onClick={handleCreate} className="flex items-center gap-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           New Itinerary
         </Button>
       </div>
@@ -117,7 +117,7 @@ export default function ItinerariesClient({ user, orgId }: ItinerariesClientProp
       {/* Search */}
       <div className="flex-1">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
+          <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
           <UnifiedInput             placeholder="Search itineraries..."
             value={searchTerm}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchTerm(e.target.value)}

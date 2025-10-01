@@ -93,7 +93,7 @@ export default function DashboardSettingsTab({
   ];
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-lg space-y-lg">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Dashboard Settings</h2>
@@ -103,27 +103,27 @@ export default function DashboardSettingsTab({
         </div>
 
         <Button>
-          <Settings className="h-4 w-4 mr-2" />
+          <Settings className="h-icon-xs w-icon-xs mr-2" />
           Save Changes
         </Button>
       </div>
 
-      <div className="grid gap-6">
+      <div className="grid gap-lg">
         {settingsSections.map((section, index) => {
           const Icon = section.icon;
           return (
             <Card key={index}>
               <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Icon className="h-5 w-5" />
+                <CardTitle className="flex items-center gap-xs">
+                  <Icon className="h-icon-sm w-icon-sm" />
                   {section.title}
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {section.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="flex items-center justify-between py-2">
-                      <div className="flex items-center gap-3">
+                    <div key={itemIndex} className="flex items-center justify-between py-xs">
+                      <div className="flex items-center gap-sm">
                         <span className="font-medium text-sm">{item.label}:</span>
                         <span className="text-sm text-muted-foreground">{item.value}</span>
                         {item.badge && (
@@ -152,7 +152,7 @@ export default function DashboardSettingsTab({
           <CardTitle className="text-destructive">Danger Zone</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="space-y-4">
+          <div className="space-y-md">
             <div className="flex items-center justify-between">
               <div>
                 <h4 className="font-medium">Delete Dashboard</h4>

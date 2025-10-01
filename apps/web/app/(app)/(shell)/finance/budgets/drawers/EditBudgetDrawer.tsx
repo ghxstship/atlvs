@@ -100,7 +100,7 @@ export default function EditBudgetDrawer({
  <Card>
  <CardHeader>
  <CardTitle className="flex items-center gap-xs">
- <DollarSign className="h-5 w-5" />
+ <DollarSign className="h-icon-sm w-icon-sm" />
  Budget Details
  </CardTitle>
  </CardHeader>
@@ -169,7 +169,7 @@ export default function EditBudgetDrawer({
  <Card>
  <CardHeader>
  <CardTitle className="flex items-center gap-xs">
- <Calendar className="h-5 w-5" />
+ <Calendar className="h-icon-sm w-icon-sm" />
  Budget Period & Project
  </CardTitle>
  </CardHeader>
@@ -206,7 +206,7 @@ export default function EditBudgetDrawer({
  <FormField>
  <FormItem>
  <FormLabel className="flex items-center gap-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  Project
  </FormLabel>
  <FormControl>

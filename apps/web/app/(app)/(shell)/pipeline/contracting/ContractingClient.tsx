@@ -221,7 +221,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
           <p className="text-body-sm color-muted">Manage crew contracts and agreements</p>
         </div>
         <Button onClick={() => setShowForm(true)} className="flex items-center gap-sm">
-          <Plus className="w-4 h-4" />
+          <Plus className="w-icon-xs h-icon-xs" />
           New Contract
         </Button>
       </div>
@@ -369,7 +369,7 @@ export default function ContractingClient({ orgId }: ContractingClientProps) {
                   <div className="text-right">
                     {contract.value && (
                       <div className="text-body text-heading-4 color-success flex items-center gap-xs">
-                        <DollarSign className="w-4 h-4" />
+                        <DollarSign className="w-icon-xs h-icon-xs" />
                         {formatCurrency(contract.value, contract.currency)}
                       </div>
                     )}

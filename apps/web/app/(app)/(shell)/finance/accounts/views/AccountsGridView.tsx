@@ -25,11 +25,11 @@ export default function AccountsGridView({
  
  const getAccountTypeIcon = (type: AccountType) => {
  const icons = {
- asset: <Building className="h-4 w-4 text-blue-600" />,
- liability: <CreditCard className="h-4 w-4 text-red-600" />,
- equity: <TrendingUp className="h-4 w-4 text-green-600" />,
- revenue: <DollarSign className="h-4 w-4 text-emerald-600" />,
- expense: <Minus className="h-4 w-4 text-orange-600" />
+ asset: <Building className="h-icon-xs w-icon-xs text-blue-600" />,
+ liability: <CreditCard className="h-icon-xs w-icon-xs text-red-600" />,
+ equity: <TrendingUp className="h-icon-xs w-icon-xs text-green-600" />,
+ revenue: <DollarSign className="h-icon-xs w-icon-xs text-emerald-600" />,
+ expense: <Minus className="h-icon-xs w-icon-xs text-orange-600" />
  };
  return icons[type];
  };
@@ -85,7 +85,7 @@ export default function AccountsGridView({
  sortable: true,
  width: '140px',
  render: (account: GLAccount) => (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  {getAccountTypeIcon(account.type)}
  <Badge className={getAccountTypeColor(account.type)}>
  {account.type}
@@ -101,7 +101,7 @@ export default function AccountsGridView({
  render: (account: GLAccount) => (
  <div className="text-sm">
  {account.subtype ? (
- <span className="px-2 py-1 bg-gray-100 rounded text-gray-700">
+ <span className="px-xs py-xs bg-gray-100 rounded text-gray-700">
  {account.subtype.replace(/_/g, ' ')}
  </span>
  ) : (

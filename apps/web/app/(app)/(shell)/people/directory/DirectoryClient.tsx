@@ -94,7 +94,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -108,7 +108,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
           {/* Search and Filters */}
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1 relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 color-muted h-4 w-4" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 color-muted h-icon-xs w-icon-xs" />
               <UnifiedInput                 placeholder={t('searchPlaceholder')}
                 value={searchQuery}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -139,7 +139,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
             </select>
 
             <Button>
-              <UserPlus className="h-4 w-4 mr-sm" />
+              <UserPlus className="h-icon-xs w-icon-xs mr-sm" />
               {t('addPerson')}
             </Button>
           </div>
@@ -161,7 +161,7 @@ export default function DirectoryClient({ orgId }: DirectoryClientProps) {
                     src={person.avatar_url}
                     alt={`${person.first_name} ${person.last_name}`}
                     fallback={`${person.first_name[0]}${person.last_name[0]}`}
-                    className="h-12 w-12"
+                    className="h-icon-2xl w-icon-2xl"
                   />
                   
                   <div className="flex-1 min-w-0">

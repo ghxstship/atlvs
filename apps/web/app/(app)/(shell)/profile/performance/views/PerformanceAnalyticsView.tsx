@@ -21,12 +21,12 @@ export default function PerformanceAnalyticsView({
 }: PerformanceAnalyticsViewProps) {
   if (loading) {
     return (
-      <div className="space-y-6">
+      <div className="space-y-lg">
         {[...Array(4)].map((_, i) => (
-          <Card key={i} className="p-6">
-            <div className="animate-pulse space-y-4">
-              <div className="h-4 bg-muted rounded w-1/4"></div>
-              <div className="h-32 bg-muted rounded"></div>
+          <Card key={i} className="p-lg">
+            <div className="animate-pulse space-y-md">
+              <div className="h-icon-xs bg-muted rounded w-1/4"></div>
+              <div className="h-component-xl bg-muted rounded"></div>
             </div>
           </Card>
         ))}
@@ -35,17 +35,17 @@ export default function PerformanceAnalyticsView({
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="p-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+        <Card className="p-lg">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Total Reviews</p>
               <p className="text-3xl font-bold">{stats.totalReviews}</p>
             </div>
-            <div className="h-12 w-12 bg-blue-100 rounded-lg flex items-center justify-center">
-              <BarChart3 className="h-6 w-6 text-blue-600" />
+            <div className="h-icon-2xl w-icon-2xl bg-blue-100 rounded-lg flex items-center justify-center">
+              <BarChart3 className="h-icon-md w-icon-md text-blue-600" />
             </div>
           </div>
           <div className="mt-4 flex items-center text-sm">
@@ -55,21 +55,21 @@ export default function PerformanceAnalyticsView({
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-lg">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Average Rating</p>
               <p className="text-3xl font-bold">{stats.averageRating.toFixed(1)}</p>
             </div>
-            <div className="h-12 w-12 bg-yellow-100 rounded-lg flex items-center justify-center">
-              <Star className="h-6 w-6 text-yellow-600" />
+            <div className="h-icon-2xl w-icon-2xl bg-yellow-100 rounded-lg flex items-center justify-center">
+              <Star className="h-icon-md w-icon-md text-yellow-600" />
             </div>
           </div>
-          <div className="mt-4 flex items-center gap-1">
+          <div className="mt-4 flex items-center gap-xs">
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className={`h-4 w-4 ${
+                className={`h-icon-xs w-icon-xs ${
                   i < Math.round(stats.averageRating)
                     ? 'text-yellow-500 fill-yellow-500'
                     : 'text-gray-300'
@@ -79,14 +79,14 @@ export default function PerformanceAnalyticsView({
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-lg">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Promotion Rate</p>
               <p className="text-3xl font-bold">{(stats.promotionRate * 100).toFixed(0)}%</p>
             </div>
-            <div className="h-12 w-12 bg-green-100 rounded-lg flex items-center justify-center">
-              <TrendingUp className="h-6 w-6 text-green-600" />
+            <div className="h-icon-2xl w-icon-2xl bg-green-100 rounded-lg flex items-center justify-center">
+              <TrendingUp className="h-icon-md w-icon-md text-green-600" />
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -94,7 +94,7 @@ export default function PerformanceAnalyticsView({
           </div>
         </Card>
 
-        <Card className="p-6">
+        <Card className="p-lg">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm font-medium text-muted-foreground">Goal Completion</p>
@@ -104,8 +104,8 @@ export default function PerformanceAnalyticsView({
                   : 0}%
               </p>
             </div>
-            <div className="h-12 w-12 bg-purple-100 rounded-lg flex items-center justify-center">
-              <Target className="h-6 w-6 text-purple-600" />
+            <div className="h-icon-2xl w-icon-2xl bg-purple-100 rounded-lg flex items-center justify-center">
+              <Target className="h-icon-md w-icon-md text-purple-600" />
             </div>
           </div>
           <div className="mt-4 text-sm text-muted-foreground">
@@ -116,14 +116,14 @@ export default function PerformanceAnalyticsView({
 
       {/* Performance Trends */}
       {analytics.performanceTrends.length > 0 && (
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <Calendar className="h-5 w-5 text-primary" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <Calendar className="h-icon-sm w-icon-sm text-primary" />
             <h3 className="text-lg font-semibold">Performance Trends</h3>
           </div>
-          <div className="space-y-4">
+          <div className="space-y-md">
             {analytics.performanceTrends.map((trend) => (
-              <div key={trend.period} className="flex items-center justify-between p-4 bg-muted/50 rounded-lg">
+              <div key={trend.period} className="flex items-center justify-between p-md bg-muted/50 rounded-lg">
                 <div>
                   <div className="font-medium">{trend.period}</div>
                   <div className="text-sm text-muted-foreground">
@@ -143,17 +143,17 @@ export default function PerformanceAnalyticsView({
       )}
 
       {/* Review Distribution */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-lg">
         {/* By Type */}
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <PieChart className="h-5 w-5 text-primary" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <PieChart className="h-icon-sm w-icon-sm text-primary" />
             <h3 className="text-lg font-semibold">Reviews by Type</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {stats.byType.map((item) => (
               <div key={item.type} className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <div className="w-3 h-3 bg-primary rounded-full"></div>
                   <span className="font-medium">{REVIEW_TYPE_LABELS[item.type]}</span>
                 </div>
@@ -169,15 +169,15 @@ export default function PerformanceAnalyticsView({
         </Card>
 
         {/* By Status */}
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <BarChart3 className="h-5 w-5 text-primary" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <BarChart3 className="h-icon-sm w-icon-sm text-primary" />
             <h3 className="text-lg font-semibold">Reviews by Status</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {stats.byStatus.map((item) => (
               <div key={item.status} className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <Badge variant="outline">{REVIEW_STATUS_LABELS[item.status]}</Badge>
                 </div>
                 <div className="font-semibold">{item.count}</div>
@@ -189,21 +189,21 @@ export default function PerformanceAnalyticsView({
 
       {/* Competency Breakdown */}
       {analytics.competencyBreakdown.length > 0 && (
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <Award className="h-5 w-5 text-primary" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <Award className="h-icon-sm w-icon-sm text-primary" />
             <h3 className="text-lg font-semibold">Competency Breakdown</h3>
           </div>
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-2 gap-md">
             {analytics.competencyBreakdown.map((competency) => (
-              <div key={competency.competency} className="p-4 bg-muted/50 rounded-lg">
+              <div key={competency.competency} className="p-md bg-muted/50 rounded-lg">
                 <div className="flex items-center justify-between mb-2">
                   <h4 className="font-medium">{competency.competency}</h4>
                   <div className="text-2xl font-bold text-primary">
                     {competency.averageRating.toFixed(1)}
                   </div>
                 </div>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-xs">
                   {[...Array(5)].map((_, i) => (
                     <Star
                       key={i}
@@ -222,18 +222,18 @@ export default function PerformanceAnalyticsView({
       )}
 
       {/* Top Strengths & Development Areas */}
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-lg">
         {/* Top Strengths */}
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <TrendingUp className="h-5 w-5 text-green-600" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <TrendingUp className="h-icon-sm w-icon-sm text-green-600" />
             <h3 className="text-lg font-semibold">Top Strengths</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {stats.topStrengths.slice(0, 5).map((strength, index) => (
               <div key={strength.strength} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center text-xs font-bold text-green-600">
+                <div className="flex items-center gap-sm">
+                  <div className="w-icon-md h-icon-md bg-green-100 rounded-full flex items-center justify-center text-xs font-bold text-green-600">
                     {index + 1}
                   </div>
                   <span className="font-medium">{strength.strength}</span>
@@ -245,16 +245,16 @@ export default function PerformanceAnalyticsView({
         </Card>
 
         {/* Development Areas */}
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <Target className="h-5 w-5 text-orange-600" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <Target className="h-icon-sm w-icon-sm text-orange-600" />
             <h3 className="text-lg font-semibold">Development Areas</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {stats.developmentAreas.slice(0, 5).map((area, index) => (
               <div key={area.area} className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-6 h-6 bg-orange-100 rounded-full flex items-center justify-center text-xs font-bold text-orange-600">
+                <div className="flex items-center gap-sm">
+                  <div className="w-icon-md h-icon-md bg-orange-100 rounded-full flex items-center justify-center text-xs font-bold text-orange-600">
                     {index + 1}
                   </div>
                   <span className="font-medium">{area.area}</span>
@@ -268,12 +268,12 @@ export default function PerformanceAnalyticsView({
 
       {/* Benchmark Comparison */}
       {analytics.benchmarkComparison && (
-        <Card className="p-6">
-          <div className="flex items-center gap-2 mb-6">
-            <Users className="h-5 w-5 text-primary" />
+        <Card className="p-lg">
+          <div className="flex items-center gap-xs mb-6">
+            <Users className="h-icon-sm w-icon-sm text-primary" />
             <h3 className="text-lg font-semibold">Benchmark Comparison</h3>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-lg">
             <div className="text-center">
               <div className="text-3xl font-bold text-primary mb-2">
                 {analytics.benchmarkComparison.userRating.toFixed(1)}

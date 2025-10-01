@@ -48,7 +48,7 @@ const products = [
 
 export function ProductHighlights() {
   return (
-    <section className="py-4xl bg-secondary/20">
+    <section className="py-mdxl bg-secondary/20">
       <div className="container mx-auto px-lg">
         {/* Section Header */}
         <div className="text-center mb-xl">
@@ -69,12 +69,12 @@ export function ProductHighlights() {
         </div>
 
         {/* Product Cards */}
-        <div className="grid lg:grid-cols-2 gap-2xl mb-xl">
+        <div className="grid lg:grid-cols-2 gap-xsxl mb-xl">
           {products.map((product: any) => (
             <Card key={product.id} className="group hover-lift hover-glow transition-all duration-300 overflow-hidden border-2 hover-border">
               <div className={`h-2 bg-gradient-to-r ${product.gradient}`}></div>
               
-              <CardContent className="p-2xl">
+              <CardContent className="p-xsxl">
                 {/* Product Header */}
                 <div className="mb-xl">
                   <div className="flex items-center gap-md mb-md">
@@ -94,7 +94,7 @@ export function ProductHighlights() {
                     return (
                       <div key={feature.label} className="flex items-start gap-md">
                         <div className={`p-md rounded-lg bg-gradient-to-r ${product.gradient} bg-opacity-10`}>
-                          <Icon className="h-5 w-5 color-accent" />
+                          <Icon className="h-icon-sm w-icon-sm color-accent" />
                         </div>
                         <div>
                           <div className="form-label text-body-sm mb-xs">{feature.label}</div>
@@ -120,7 +120,7 @@ export function ProductHighlights() {
                   <a href="#" className="flex-1">
                     <Button className="w-full group" size="lg">
                       Learn More
-                      <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                     </Button>
                   </a>
                   <Link href="/auth/signup">
@@ -137,13 +137,13 @@ export function ProductHighlights() {
         {/* Integration Highlight */}
         <div className="text-center">
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-2xl">
+            <CardContent className="p-xsxl">
               <div className="flex items-center justify-center gap-md mb-xl">
                 <div className="font-title text-heading-3">ATLVS</div>
                 <div className="flex items-center gap-md">
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
-                  <Zap className="h-6 w-6 color-accent" />
-                  <div className="w-8 h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
+                  <div className="w-icon-lg h-0.5 bg-gradient-to-r from-primary to-secondary"></div>
+                  <Zap className="h-icon-md w-icon-md color-accent" />
+                  <div className="w-icon-lg h-0.5 bg-gradient-to-r from-secondary to-primary"></div>
                 </div>
                 <div className="font-title text-heading-3">OPENDECK</div>
               </div>
@@ -165,7 +165,7 @@ export function ProductHighlights() {
                 <Link href="/auth/signup">
                   <Button size="lg">
                     Start Complete Suite
-                    <ArrowRight className="ml-sm h-4 w-4" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
                   </Button>
                 </Link>
               </div>

@@ -78,11 +78,11 @@ export default function SettingsListView({
 
  if (loading) {
  return (
- <div className="space-y-4">
- <Skeleton className="h-10 w-64" />
- <div className="space-y-4">
+ <div className="space-y-md">
+ <Skeleton className="h-icon-xl w-container-sm" />
+ <div className="space-y-md">
  {[...Array(6)].map((_, i) => (
- <Skeleton key={i} className="h-32 w-full" />
+ <Skeleton key={i} className="h-component-xl w-full" />
  ))}
  </div>
  </div>
@@ -90,10 +90,10 @@ export default function SettingsListView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 text-muted-foreground h-icon-xs w-icon-xs" />
  <Input
  placeholder="Search settings..."
  value={searchQuery}
@@ -103,10 +103,10 @@ export default function SettingsListView({
  </div>
 
  {/* Settings List */}
- <div className="space-y-4">
+ <div className="space-y-md">
  {filteredSettings.length === 0 ? (
  <Card>
- <CardContent className="py-12 text-center text-muted-foreground">
+ <CardContent className="py-xsxl text-center text-muted-foreground">
  {searchQuery ? 'No settings match your search' : 'No settings found'}
  </CardContent>
  </Card>
@@ -119,12 +119,12 @@ export default function SettingsListView({
  <Card key={setting.id} className="hover:shadow-md transition-shadow">
  <CardHeader className="pb-3">
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-3">
- <div className={`p-2 rounded-lg ${categoryColor}`}>
- <CategoryIcon className="h-5 w-5" />
+ <div className="flex items-start gap-sm">
+ <div className={`p-xs rounded-lg ${categoryColor}`}>
+ <CategoryIcon className="h-icon-sm w-icon-sm" />
  </div>
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <h3 className="font-semibold text-lg">{setting.name}</h3>
  <Badge variant="outline" className="text-xs">
  {setting.type}
@@ -137,13 +137,13 @@ export default function SettingsListView({
  )}
  </div>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  size="sm"
  variant="ghost"
  onClick={() => onView(setting)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  size="sm"
@@ -151,19 +151,19 @@ export default function SettingsListView({
  onClick={() => onEdit(setting)}
  disabled={setting.is_editable === 'false'}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
  </CardHeader>
  <CardContent className="pt-0">
- <div className="space-y-3">
+ <div className="space-y-sm">
  {/* Category and Status */}
- <div className="flex items-center gap-2 flex-wrap">
+ <div className="flex items-center gap-xs flex-wrap">
  <Badge variant="secondary">
  {setting.category}
  </Badge>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {setting.is_public === 'true' ? (
  <Globe className="h-3 w-3 text-green-600" />
  ) : (
@@ -182,11 +182,11 @@ export default function SettingsListView({
  </div>
 
  {/* Value */}
- <div className="space-y-1">
+ <div className="space-y-xs">
  <label className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
  Current Value
  </label>
- <div className="bg-muted p-3 rounded-md">
+ <div className="bg-muted p-sm rounded-md">
  {setting.type === 'json' || setting.type === 'array' ? (
  <pre className="text-sm font-mono whitespace-pre-wrap break-all">
  {formatValue(setting.value, setting.type)}

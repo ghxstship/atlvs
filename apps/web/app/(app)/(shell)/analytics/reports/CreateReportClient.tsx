@@ -202,7 +202,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
             <p className="text-body-sm color-muted">Build a custom analytics report</p>
           </div>
           <Button onClick={onCancel}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
@@ -305,7 +305,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                  
                   onClick={addFilter}
                 >
-                  <Plus className="h-4 w-4 mr-xs" />
+                  <Plus className="h-icon-xs w-icon-xs mr-xs" />
                   Add Filter
                 </Button>
               </div>
@@ -348,7 +348,7 @@ export default function CreateReportClient({ organizationId, onSuccess, onCancel
                    
                     onClick={() => removeFilter(index)}
                   >
-                    <X className="h-4 w-4" />
+                    <X className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               ))}

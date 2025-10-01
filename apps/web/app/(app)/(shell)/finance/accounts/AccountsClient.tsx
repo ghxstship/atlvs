@@ -190,15 +190,15 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     switch (kind) {
       case 'checking':
       case 'savings':
-        return <Building className="h-6 w-6 color-accent" />;
+        return <Building className="h-icon-md w-icon-md color-accent" />;
       case 'credit':
-        return <CreditCard className="h-6 w-6 color-secondary" />;
+        return <CreditCard className="h-icon-md w-icon-md color-secondary" />;
       case 'investment':
-        return <TrendingUp className="h-6 w-6 color-success" />;
+        return <TrendingUp className="h-icon-md w-icon-md color-success" />;
       case 'cash':
-        return <Banknote className="h-6 w-6 color-warning" />;
+        return <Banknote className="h-icon-md w-icon-md color-warning" />;
       default:
-        return <DollarSign className="h-6 w-6 color-muted" />;
+        return <DollarSign className="h-icon-md w-icon-md color-muted" />;
     }
   };
 
@@ -309,15 +309,15 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -337,7 +337,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
           <div className="flex items-center cluster-sm">
             <ViewSwitcher />
             <Button onClick={handleCreateAccount}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Account
             </Button>
           </div>
@@ -352,7 +352,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                 <p className="text-heading-3 text-heading-3 color-foreground">{accounts.length}</p>
                 <p className="text-body-sm color-foreground/60">{activeAccounts.length} active</p>
               </div>
-              <Building className="h-8 w-8 color-accent" />
+              <Building className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -364,7 +364,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                   {formatCurrency(totalBalance)}
                 </p>
               </div>
-              <DollarSign className="h-8 w-8 color-success" />
+              <DollarSign className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -375,7 +375,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                 <p className="text-heading-3 text-heading-3 color-warning">{needsReconciliation.length}</p>
                 <p className="text-body-sm color-foreground/60">accounts overdue</p>
               </div>
-              <AlertTriangle className="h-8 w-8 color-warning" />
+              <AlertTriangle className="h-icon-lg w-icon-lg color-warning" />
             </div>
           </Card>
           
@@ -387,7 +387,7 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
                   {formatCurrency(accounts.length > 0 ? totalBalance / accounts.length : 0)}
                 </p>
               </div>
-              <TrendingUp className="h-8 w-8 color-secondary" />
+              <TrendingUp className="h-icon-lg w-icon-lg color-secondary" />
             </div>
           </Card>
         </div>
@@ -494,12 +494,12 @@ export default function AccountsClient({ user, orgId, translations }: AccountsCl
 
         {/* Empty State */}
         {accounts.length === 0 && (
-          <Card className="p-2xl text-center">
-            <Building className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <Building className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No accounts found</h3>
             <p className="color-foreground/70 mb-md">Add your first financial account to start tracking</p>
             <Button onClick={handleCreateAccount}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Account
             </Button>
           </Card>

@@ -53,7 +53,7 @@ export default function FileImageView({
  onView(file);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="secondary"
@@ -63,7 +63,7 @@ export default function FileImageView({
  onDownload(file);
  }}
  >
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="secondary"
@@ -74,7 +74,7 @@ export default function FileImageView({
  }}
  className="text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  )}
@@ -118,10 +118,10 @@ export default function FileImageView({
  <Button
  variant="secondary"
  size="sm"
- className="absolute top-4 right-4"
+ className="absolute top-md right-4"
  onClick={() => setSelectedImage(null)}
  >
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
 
  {/* Image Info */}
@@ -140,7 +140,7 @@ export default function FileImageView({
  setSelectedImage(null);
  }}
  >
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View Details
  </Button>
  <Button
@@ -151,7 +151,7 @@ export default function FileImageView({
  onDownload(selectedImage);
  }}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Download
  </Button>
  </div>

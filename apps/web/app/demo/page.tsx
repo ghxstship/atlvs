@@ -10,7 +10,7 @@ export default async function DemoPage() {
   
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-lg py-2xl px-md">
+      <div className="container mx-auto px-lg py-xsxl px-md">
         <div className="text-center mb-md">
           <h1 className="text-heading-2 text-heading-3 mb-xs">GHXSTSHIP Demo Environment</h1>
           <p className="color-muted">

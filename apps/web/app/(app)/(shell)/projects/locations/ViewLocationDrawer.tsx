@@ -48,7 +48,7 @@ export default function ViewLocationDrawer({
  {location.images && location.images.length > 0 && (
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Image className="h-4 w-4" />
+ <Image className="h-icon-xs w-icon-xs" />
  Photos
  </h4>
  <div className="grid grid-cols-2 gap-sm">
@@ -74,7 +74,7 @@ export default function ViewLocationDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <TypeIcon className="h-4 w-4" />
+ <TypeIcon className="h-icon-xs w-icon-xs" />
  <span>Type</span>
  </div>
  <Badge variant={getTypeBadgeVariant(location.type || "other")}>
@@ -84,7 +84,7 @@ export default function ViewLocationDrawer({
 
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>Availability</span>
  </div>
  <Badge variant={getAvailabilityBadgeVariant(location.availability_status || "available")}>
@@ -97,7 +97,7 @@ export default function ViewLocationDrawer({
  {(location.address || location.city) && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>Address</span>
  </div>
  <p className="font-medium">
@@ -112,7 +112,7 @@ export default function ViewLocationDrawer({
  onClick={onNavigate}
  className="mt-xs"
  >
- <Navigation className="mr-2 h-4 w-4" />
+ <Navigation className="mr-2 h-icon-xs w-icon-xs" />
  Get Directions
  </Button>
  )}
@@ -124,7 +124,7 @@ export default function ViewLocationDrawer({
  {location.capacity && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>Capacity</span>
  </div>
  <p className="font-medium">{location.capacity.toLocaleString()} people</p>
@@ -134,7 +134,7 @@ export default function ViewLocationDrawer({
  {location.size && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span>Size</span>
  </div>
  <p className="font-medium">{location.size.toLocaleString()} sq ft</p>
@@ -146,7 +146,7 @@ export default function ViewLocationDrawer({
  {location.rental_rate && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>Rental Rate</span>
  </div>
  <p className="font-medium text-lg">
@@ -159,7 +159,7 @@ export default function ViewLocationDrawer({
  {location.operating_hours && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>Operating Hours</span>
  </div>
  <p className="font-medium">{location.operating_hours}</p>
@@ -170,7 +170,7 @@ export default function ViewLocationDrawer({
  {location.project && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
  <p className="font-medium">{location.project.name}</p>
@@ -181,7 +181,7 @@ export default function ViewLocationDrawer({
  {location.notes && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Notes</span>
  </div>
  <p className="text-sm">{location.notes}</p>
@@ -192,7 +192,7 @@ export default function ViewLocationDrawer({
  {location.tags && location.tags.length > 0 && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Tag className="h-4 w-4" />
+ <Tag className="h-icon-xs w-icon-xs" />
  <span>Tags</span>
  </div>
  <div className="flex flex-wrap gap-xs">
@@ -223,7 +223,7 @@ export default function ViewLocationDrawer({
  {location.amenities && location.amenities.length > 0 ? (
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Wifi className="h-4 w-4" />
+ <Wifi className="h-icon-xs w-icon-xs" />
  Amenities
  </h4>
  <div className="grid grid-cols-2 gap-sm">
@@ -237,7 +237,7 @@ export default function ViewLocationDrawer({
  </div>
  ) : (
  <div className="text-center py-md text-muted-foreground">
- <Coffee className="mx-auto h-8 w-8 mb-sm opacity-50" />
+ <Coffee className="mx-auto h-icon-lg w-icon-lg mb-sm opacity-50" />
  <p className="text-sm">No amenities listed</p>
  </div>
  )}
@@ -246,7 +246,7 @@ export default function ViewLocationDrawer({
  {location.accessibility_features && location.accessibility_features.length > 0 && (
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Accessibility className="h-4 w-4" />
+ <Accessibility className="h-icon-xs w-icon-xs" />
  Accessibility Features
  </h4>
  <div className="grid grid-cols-1 gap-sm">
@@ -263,7 +263,7 @@ export default function ViewLocationDrawer({
  {/* Parking */}
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Car className="h-4 w-4" />
+ <Car className="h-icon-xs w-icon-xs" />
  Parking
  </h4>
  {location.parking_available ? (
@@ -284,7 +284,7 @@ export default function ViewLocationDrawer({
  {location.public_transport && (
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Train className="h-4 w-4" />
+ <Train className="h-icon-xs w-icon-xs" />
  Public Transport
  </h4>
  <p className="text-sm">{location.public_transport}</p>
@@ -304,7 +304,7 @@ export default function ViewLocationDrawer({
  {location.contact_name && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>Contact Person</span>
  </div>
  <p className="font-medium">{location.contact_name}</p>
@@ -315,7 +315,7 @@ export default function ViewLocationDrawer({
  {location.contact_phone && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Phone className="h-4 w-4" />
+ <Phone className="h-icon-xs w-icon-xs" />
  <span>Phone</span>
  </div>
  <a
@@ -331,7 +331,7 @@ export default function ViewLocationDrawer({
  {location.contact_email && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Mail className="h-4 w-4" />
+ <Mail className="h-icon-xs w-icon-xs" />
  <span>Email</span>
  </div>
  <a
@@ -345,7 +345,7 @@ export default function ViewLocationDrawer({
  </>
  ) : (
  <div className="text-center py-lg text-muted-foreground">
- <Phone className="mx-auto h-8 w-8 mb-sm opacity-50" />
+ <Phone className="mx-auto h-icon-lg w-icon-lg mb-sm opacity-50" />
  <p>No contact information available</p>
  </div>
  )}
@@ -360,7 +360,7 @@ export default function ViewLocationDrawer({
  className="w-full justify-start"
  onClick={() => window.open(`tel:${location.contact_phone}`, "_blank")}
  >
- <Phone className="mr-2 h-4 w-4" />
+ <Phone className="mr-2 h-icon-xs w-icon-xs" />
  Call {location.contact_name || "Contact"}
  </Button>
  )}
@@ -370,7 +370,7 @@ export default function ViewLocationDrawer({
  className="w-full justify-start"
  onClick={() => window.open(`mailto:${location.contact_email}`, "_blank")}
  >
- <Mail className="mr-2 h-4 w-4" />
+ <Mail className="mr-2 h-icon-xs w-icon-xs" />
  Email {location.contact_name || "Contact"}
  </Button>
  )}
@@ -380,7 +380,7 @@ export default function ViewLocationDrawer({
  className="w-full justify-start"
  onClick={onNavigate}
  >
- <Navigation className="mr-2 h-4 w-4" />
+ <Navigation className="mr-2 h-icon-xs w-icon-xs" />
  Get Directions
  </Button>
  )}
@@ -411,7 +411,7 @@ export default function ViewLocationDrawer({
  </div>
  ) : (
  <div className="text-center py-lg text-muted-foreground">
- <FileText className="mx-auto h-8 w-8 mb-sm opacity-50" />
+ <FileText className="mx-auto h-icon-lg w-icon-lg mb-sm opacity-50" />
  <p>No floor plans available</p>
  </div>
  )}
@@ -431,13 +431,13 @@ export default function ViewLocationDrawer({
  {
  key: "navigate",
  label: "Navigate",
- icon: <Navigation className="h-4 w-4" />,
+ icon: <Navigation className="h-icon-xs w-icon-xs" />,
  onClick: onNavigate,
  },
  {
  key: "share",
  label: "Share",
- icon: <Share2 className="h-4 w-4" />,
+ icon: <Share2 className="h-icon-xs w-icon-xs" />,
  onClick: async () => {
  const text = `${location.name}\n${location.address || ""}, ${location.city || ""}, ${location.state || ""}`;
  await navigator.clipboard.writeText(text);
@@ -447,7 +447,7 @@ export default function ViewLocationDrawer({
  {
  key: "edit",
  label: "Edit",
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  onClick: onEdit,
  },
  ]}

@@ -112,9 +112,9 @@ export default function ProgrammingItinerariesTimelineView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading timeline...</p>
  </div>
  </div>
@@ -125,8 +125,8 @@ export default function ProgrammingItinerariesTimelineView({
  if (timelineGroups.length === 0) {
  return (
  <Card className="p-lg">
- <div className="text-center py-12">
- <Calendar className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+ <div className="text-center py-xsxl">
+ <Calendar className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
  <h3 className="text-lg font-medium mb-2">No itineraries found</h3>
  <p className="text-muted-foreground">Create your first itinerary to see it on the timeline</p>
  </div>
@@ -165,7 +165,7 @@ export default function ProgrammingItinerariesTimelineView({
  return (
  <div key={itinerary.id} className="relative">
  {/* Timeline Dot */}
- <div className={`absolute -left-6 top-3 w-3 h-3 rounded-full border-2 ${
+ <div className={`absolute -left-6 top-sm w-3 h-3 rounded-full border-2 ${
  isSelected ? 'bg-primary border-primary' : 'bg-background border-border'
  }`} />
 
@@ -192,27 +192,27 @@ export default function ProgrammingItinerariesTimelineView({
  )}
  </div>
 
- <div className="flex items-center gap-1 ml-md">
+ <div className="flex items-center gap-xs ml-md">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(itinerary)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(itinerary)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(itinerary)}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>
@@ -220,14 +220,14 @@ export default function ProgrammingItinerariesTimelineView({
  {/* Timeline Details */}
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md text-sm">
  {/* Duration */}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Clock className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Duration:</span>
  <span>{duration} {duration === 1 ? 'day' : 'days'}</span>
  </div>
 
  {/* Time Range */}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Time:</span>
  <span>
@@ -237,7 +237,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Location */}
  {itinerary.location && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <MapPin className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Location:</span>
  <span className="truncate">{itinerary.location}</span>
@@ -246,7 +246,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Cost */}
  {cost && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <DollarSign className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Cost:</span>
  <span>{cost}</span>
@@ -255,7 +255,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Participants */}
  {itinerary.participants_count && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Users className="h-3 w-3 text-muted-foreground" />
  <span className="text-muted-foreground">Participants:</span>
  <span>{itinerary.participants_count}</span>
@@ -264,7 +264,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Transportation */}
  {itinerary.transportation_type && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-muted-foreground">Transport:</span>
  <span>{TRANSPORTATION_TYPE_LABEL[itinerary.transportation_type]}</span>
  </div>
@@ -272,7 +272,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Project */}
  {itinerary.project && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-muted-foreground">Project:</span>
  <span className="truncate">{itinerary.project.name}</span>
  </div>
@@ -280,7 +280,7 @@ export default function ProgrammingItinerariesTimelineView({
 
  {/* Event */}
  {itinerary.event && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <span className="text-muted-foreground">Event:</span>
  <span className="truncate">{itinerary.event.title}</span>
  </div>
@@ -291,7 +291,7 @@ export default function ProgrammingItinerariesTimelineView({
  {itinerary.destinations.length > 0 && (
  <div className="mt-sm pt-sm border-t">
  <div className="text-xs text-muted-foreground mb-1">Destinations:</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {itinerary.destinations.slice(0, 5).map((destination, destIndex) => (
  <Badge key={destIndex} variant="outline" className="text-xs">
  <MapPin className="h-2 w-2 mr-1" />
@@ -311,7 +311,7 @@ export default function ProgrammingItinerariesTimelineView({
  {itinerary.tags.length > 0 && (
  <div className="mt-sm pt-sm border-t">
  <div className="text-xs text-muted-foreground mb-1">Tags:</div>
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {itinerary.tags.slice(0, 5).map((tag) => (
  <Badge key={tag} variant="secondary" className="text-xs">
  {tag}

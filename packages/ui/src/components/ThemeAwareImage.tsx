@@ -132,7 +132,7 @@ export interface ThemeAwareIconProps {
  * <ThemeAwareIcon
  *   LightIcon={Sun}
  *   DarkIcon={Moon}
- *   className="w-6 h-6"
+ *   className="w-icon-md h-icon-md"
  * />
  * ```
  */

@@ -37,7 +37,7 @@ export default function CallSheetsBoardView({
  const statusConfig = STATUS_BADGE[status];
 
  return (
- <section key={status} className="flex w-80 flex-shrink-0 flex-col gap-sm">
+ <section key={status} className="flex w-container-md flex-shrink-0 flex-col gap-sm">
  <header className="flex items-center justify-between">
  <h3 className="text-sm font-semibold text-muted-foreground">{statusConfig.label}</h3>
  <Badge variant={statusConfig.variant} className="text-xs">
@@ -58,17 +58,17 @@ export default function CallSheetsBoardView({
  <div className="space-y-xs">
  <div className="text-sm font-medium leading-tight">{callSheet.name}</div>
  <div className="text-xs text-muted-foreground">{CALL_TYPE_LABEL[callSheet.call_type]}</div>
- <div className="flex flex-col gap-1 text-xs text-muted-foreground">
- <span className="flex items-center gap-1">
+ <div className="flex flex-col gap-xs text-xs text-muted-foreground">
+ <span className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {callSheet.event_date}
  </span>
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {callSheet.call_time}
  </span>
  {callSheet.location ? (
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <MapPin className="h-3 w-3" />
  {callSheet.location}
  </span>
@@ -81,15 +81,15 @@ export default function CallSheetsBoardView({
  <div className="text-xs text-muted-foreground">Event: {callSheet.event.title}</div>
  ) : null}
  </div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button size="icon" variant="ghost" onClick={() => onView(callSheet)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button size="icon" variant="ghost" onClick={() => onEdit(callSheet)}>
- <Pencil className="h-4 w-4" />
+ <Pencil className="h-icon-xs w-icon-xs" />
  </Button>
  <Button size="icon" variant="ghost" onClick={() => onDelete(callSheet)}>
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>

@@ -295,7 +295,7 @@ export default function CareersPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -314,7 +314,7 @@ export default function CareersPage() {
               <Button asChild className="group transition-all duration-200 hover:scale-105">
                 <a href="#open-positions">
                   View Open Positions
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </a>
               </Button>
               <Button asChild variant="outline" className="transition-all duration-200 hover:scale-105">
@@ -345,7 +345,7 @@ export default function CareersPage() {
       </section>
 
       {/* Open Positions */}
-      <section id="open-positions" className="py-4xl">
+      <section id="open-positions" className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -391,19 +391,19 @@ export default function CareersPage() {
                       
                       <div className="flex flex-wrap items-center gap-md text-body-sm color-muted mb-md">
                         <div className="flex items-center gap-xs">
-                          <MapPin className="h-4 w-4" />
+                          <MapPin className="h-icon-xs w-icon-xs" />
                           {position.location}
                         </div>
                         <div className="flex items-center gap-xs">
-                          <Clock className="h-4 w-4" />
+                          <Clock className="h-icon-xs w-icon-xs" />
                           {position.type}
                         </div>
                         <div className="flex items-center gap-xs">
-                          <DollarSign className="h-4 w-4" />
+                          <DollarSign className="h-icon-xs w-icon-xs" />
                           {position.salary}
                         </div>
                         <div className="flex items-center gap-xs">
-                          <Calendar className="h-4 w-4" />
+                          <Calendar className="h-icon-xs w-icon-xs" />
                           Posted {position.posted}
                         </div>
                       </div>
@@ -423,7 +423,7 @@ export default function CareersPage() {
                       </Button>
                       <Button className="group transition-all duration-200 hover:scale-105">
                         Apply Now
-                        <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                       </Button>
                     </div>
                   </div>
@@ -444,7 +444,7 @@ export default function CareersPage() {
       </section>
 
       {/* Culture & Values */}
-      <section id="culture" className="py-4xl bg-secondary/20">
+      <section id="culture" className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -461,8 +461,8 @@ export default function CareersPage() {
               return (
                 <Card key={value.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="w-16 h-16 bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
-                      <Icon className="h-8 w-8 text-foreground" />
+                    <div className="w-component-md h-component-md bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
+                      <Icon className="h-icon-lg w-icon-lg text-foreground" />
                     </div>
                     <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{value.title}</h3>
                     <p className="text-body-sm color-muted">{value.description}</p>
@@ -475,9 +475,9 @@ export default function CareersPage() {
           {/* Team Photo Placeholder */}
           <div className="max-w-4xl mx-auto">
             <Card className="overflow-hidden">
-              <div className="h-64 bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
+              <div className="h-container-sm bg-gradient-to-br from-primary/10 to-accent/10 flex items-center justify-center">
                 <div className="text-center">
-                  <Users className="h-16 w-16 text-foreground mx-auto mb-md" />
+                  <Users className="h-component-md w-component-md text-foreground mx-auto mb-md" />
                   <p className="text-body text-heading-4 color-foreground">Our Amazing Team</p>
                   <p className="color-muted">Building the future together</p>
                 </div>
@@ -488,7 +488,7 @@ export default function CareersPage() {
       </section>
 
       {/* Benefits & Perks */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -506,8 +506,8 @@ export default function CareersPage() {
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
                     <div className="flex items-start gap-md">
-                      <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                        <Icon className="h-6 w-6 text-foreground" />
+                      <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                        <Icon className="h-icon-md w-icon-md text-foreground" />
                       </div>
                       <div>
                         <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{benefit.title}</h3>
@@ -523,7 +523,7 @@ export default function CareersPage() {
       </section>
 
       {/* Departments Overview */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -538,8 +538,8 @@ export default function CareersPage() {
             {departments.map((dept: any) => (
               <Card key={dept.name} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
-                    <Briefcase className="h-8 w-8 text-foreground" />
+                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-md flex items-center justify-center">
+                    <Briefcase className="h-icon-lg w-icon-lg text-foreground" />
                   </div>
                   <h3 className={`${anton.className} uppercase text-heading-4 text-heading-3 mb-sm`}>{dept.name}</h3>
                   <p className="text-body-sm color-muted mb-md">{dept.description}</p>
@@ -554,7 +554,7 @@ export default function CareersPage() {
       </section>
 
       {/* Application Process */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -574,7 +574,7 @@ export default function CareersPage() {
                 { step: '04', title: 'Offer', description: 'Reference checks and offer discussion.' },
               ].map((step: any) => (
                 <div key={step.step} className="text-center">
-                  <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 text-body mx-auto mb-md">
+                  <div className="w-component-md h-component-md bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 text-body mx-auto mb-md">
                     {step.step}
                   </div>
                   <h3 className={`${anton.className} uppercase text-body text-heading-3 mb-sm`}>{step.title}</h3>
@@ -587,10 +587,10 @@ export default function CareersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center">
-            <CardContent className="p-2xl">
+            <CardContent className="p-xsxl">
               <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
                 READY TO JOIN OUR TEAM?
               </h2>
@@ -601,7 +601,7 @@ export default function CareersPage() {
                 <Button asChild className="group transition-all duration-200 hover:scale-105">
                   <a href="#open-positions">
                     Browse Open Positions
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </a>
                 </Button>
                 <Button variant="outline" className="transition-all duration-200 hover:scale-105">

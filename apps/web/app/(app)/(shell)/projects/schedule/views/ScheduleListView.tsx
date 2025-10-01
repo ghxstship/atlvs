@@ -270,28 +270,28 @@ export default function ScheduleListView({
  
  if (days < 0) {
  return (
- <span className="text-destructive text-xs flex items-center gap-1">
+ <span className="text-destructive text-xs flex items-center gap-xs">
  <AlertCircle className="h-3 w-3" />
  {Math.abs(days)}d overdue
  </span>
  );
  } else if (days === 0) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  Due today
  </span>
  );
  } else if (days <= 7) {
  return (
- <span className="text-warning text-xs flex items-center gap-1">
+ <span className="text-warning text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {days}d left
  </span>
  );
  } else {
  return (
- <span className="text-muted-foreground text-xs flex items-center gap-1">
+ <span className="text-muted-foreground text-xs flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {days}d
  </span>
@@ -305,7 +305,7 @@ export default function ScheduleListView({
  return (
  <button
  onClick={() => toggleSort(field)}
- className="flex items-center gap-1 hover:text-primary transition-colors"
+ className="flex items-center gap-xs hover:text-primary transition-colors"
  >
  {label}
  {isActive ? (
@@ -322,23 +322,23 @@ export default function ScheduleListView({
  };
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Milestones Section */}
  <Card>
  <div
- className="p-4 border-b cursor-pointer hover:bg-muted/50 transition-colors"
+ className="p-md border-b cursor-pointer hover:bg-muted/50 transition-colors"
  onClick={() => toggleSection("milestones")}
  >
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
- <Target className="h-5 w-5 text-success" />
+ <div className="flex items-center gap-xs">
+ <Target className="h-icon-sm w-icon-sm text-success" />
  <h3 className="font-semibold">Milestones</h3>
  <Badge variant="secondary">{milestones.length}</Badge>
  </div>
  {expandedSections.has("milestones") ? (
- <ChevronUp className="h-4 w-4" />
+ <ChevronUp className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  )}
  </div>
  </div>
@@ -346,20 +346,20 @@ export default function ScheduleListView({
  {expandedSections.has("milestones") && (
  <>
  {/* Table header */}
- <div className="p-4 border-b bg-muted/30">
- <div className="flex items-center gap-4 text-sm font-medium">
- <div className="w-10">
+ <div className="p-md border-b bg-muted/30">
+ <div className="flex items-center gap-md text-sm font-medium">
+ <div className="w-icon-xl">
  <Checkbox
  checked={milestones.length > 0 && milestones.every(m => selectedItems.has(m.id))}
  onChange={() => toggleAllMilestones()}
  />
  </div>
  <div className="flex-1">{renderSortButton("title", "Title")}</div>
- <div className="w-32">{renderSortButton("project", "Project")}</div>
+ <div className="w-component-xl">{renderSortButton("project", "Project")}</div>
  <div className="w-28">{renderSortButton("due_date", "Due Date")}</div>
- <div className="w-24">{renderSortButton("status", "Status")}</div>
- <div className="w-20 text-center">Progress</div>
- <div className="w-24 text-center">Actions</div>
+ <div className="w-component-lg">{renderSortButton("status", "Status")}</div>
+ <div className="w-component-lg text-center">Progress</div>
+ <div className="w-component-lg text-center">Actions</div>
  </div>
  </div>
 
@@ -368,10 +368,10 @@ export default function ScheduleListView({
  {sortedMilestones.map(milestone => (
  <div
  key={milestone.id}
- className="p-4 hover:bg-muted/30 transition-colors"
+ className="p-md hover:bg-muted/30 transition-colors"
  >
- <div className="flex items-center gap-4">
- <div className="w-10">
+ <div className="flex items-center gap-md">
+ <div className="w-icon-xl">
  <Checkbox
  checked={selectedItems.has(milestone.id)}
  onChange={() => toggleSelection(milestone.id)}
@@ -380,12 +380,12 @@ export default function ScheduleListView({
  <div className="flex-1">
  <p className="font-medium">{milestone.title}</p>
  {milestone.description && (
- <p className="text-sm text-muted-foreground line-clamp-1">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {milestone.description}
  </p>
  )}
  </div>
- <div className="w-32">
+ <div className="w-component-xl">
  {milestone.project && (
  <span className="text-sm text-muted-foreground">
  {milestone.project.name}
@@ -398,26 +398,26 @@ export default function ScheduleListView({
  </div>
  {getDaysUntil(milestone.due_date)}
  </div>
- <div className="w-24">
+ <div className="w-component-lg">
  {getStatusBadge(milestone.status)}
  </div>
- <div className="w-20 text-center">
+ <div className="w-component-lg text-center">
  <span className="text-sm font-medium">{milestone.progress}%</span>
  </div>
- <div className="w-24 flex items-center justify-center gap-1">
+ <div className="w-component-lg flex items-center justify-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onViewMilestone?.(milestone)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEditMilestone?.(milestone)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -431,19 +431,19 @@ export default function ScheduleListView({
  {/* Tasks Section */}
  <Card>
  <div
- className="p-4 border-b cursor-pointer hover:bg-muted/50 transition-colors"
+ className="p-md border-b cursor-pointer hover:bg-muted/50 transition-colors"
  onClick={() => toggleSection("tasks")}
  >
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
- <ListTodo className="h-5 w-5 text-info" />
+ <div className="flex items-center gap-xs">
+ <ListTodo className="h-icon-sm w-icon-sm text-info" />
  <h3 className="font-semibold">Tasks</h3>
  <Badge variant="secondary">{tasks.length}</Badge>
  </div>
  {expandedSections.has("tasks") ? (
- <ChevronUp className="h-4 w-4" />
+ <ChevronUp className="h-icon-xs w-icon-xs" />
  ) : (
- <ChevronDown className="h-4 w-4" />
+ <ChevronDown className="h-icon-xs w-icon-xs" />
  )}
  </div>
  </div>
@@ -451,21 +451,21 @@ export default function ScheduleListView({
  {expandedSections.has("tasks") && (
  <>
  {/* Table header */}
- <div className="p-4 border-b bg-muted/30">
- <div className="flex items-center gap-4 text-sm font-medium">
- <div className="w-10">
+ <div className="p-md border-b bg-muted/30">
+ <div className="flex items-center gap-md text-sm font-medium">
+ <div className="w-icon-xl">
  <Checkbox
  checked={tasks.length > 0 && tasks.every(t => selectedItems.has(t.id))}
  onChange={() => toggleAllTasks()}
  />
  </div>
  <div className="flex-1">{renderSortButton("title", "Title")}</div>
- <div className="w-32">{renderSortButton("project", "Project")}</div>
+ <div className="w-component-xl">{renderSortButton("project", "Project")}</div>
  <div className="w-28">{renderSortButton("due_date", "Due Date")}</div>
- <div className="w-24">{renderSortButton("status", "Status")}</div>
- <div className="w-20">{renderSortButton("priority", "Priority")}</div>
- <div className="w-32">Assignee</div>
- <div className="w-24 text-center">Actions</div>
+ <div className="w-component-lg">{renderSortButton("status", "Status")}</div>
+ <div className="w-component-lg">{renderSortButton("priority", "Priority")}</div>
+ <div className="w-component-xl">Assignee</div>
+ <div className="w-component-lg text-center">Actions</div>
  </div>
  </div>
 
@@ -474,10 +474,10 @@ export default function ScheduleListView({
  {sortedTasks.map(task => (
  <div
  key={task.id}
- className="p-4 hover:bg-muted/30 transition-colors"
+ className="p-md hover:bg-muted/30 transition-colors"
  >
- <div className="flex items-center gap-4">
- <div className="w-10">
+ <div className="flex items-center gap-md">
+ <div className="w-icon-xl">
  <Checkbox
  checked={selectedItems.has(task.id)}
  onChange={() => toggleSelection(task.id)}
@@ -486,12 +486,12 @@ export default function ScheduleListView({
  <div className="flex-1">
  <p className="font-medium">{task.title}</p>
  {task.description && (
- <p className="text-sm text-muted-foreground line-clamp-1">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {task.description}
  </p>
  )}
  </div>
- <div className="w-32">
+ <div className="w-component-xl">
  {task.project && (
  <span className="text-sm text-muted-foreground">
  {task.project.name}
@@ -508,34 +508,34 @@ export default function ScheduleListView({
  </>
  )}
  </div>
- <div className="w-24">
+ <div className="w-component-lg">
  {getStatusBadge(task.status)}
  </div>
- <div className="w-20">
+ <div className="w-component-lg">
  {getPriorityBadge(task.priority)}
  </div>
- <div className="w-32">
+ <div className="w-component-xl">
  {task.assignee && (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Users className="h-3 w-3" />
  {task.assignee.full_name || task.assignee.email}
  </div>
  )}
  </div>
- <div className="w-24 flex items-center justify-center gap-1">
+ <div className="w-component-lg flex items-center justify-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onViewTask?.(task)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEditTask?.(task)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

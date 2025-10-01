@@ -255,9 +255,9 @@ export default function TeamsSettingsClient() {
  if (loading) {
  return (
  <div className="space-y-md">
- <Skeleton className="h-12 w-48" />
+ <Skeleton className="h-icon-2xl w-container-xs" />
  <div className="space-y-sm">
- <Skeleton className="h-32 w-full" />
+ <Skeleton className="h-component-xl w-full" />
  <Skeleton className="h-40 w-full" />
  </div>
  </div>

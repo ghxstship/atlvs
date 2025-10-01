@@ -219,15 +219,15 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
   const getTypeIcon = (type: string) => {
     switch (type) {
       case 'revenue':
-        return <TrendingUp className="h-5 w-5 color-success" />;
+        return <TrendingUp className="h-icon-sm w-icon-sm color-success" />;
       case 'expense':
-        return <TrendingUp className="h-5 w-5 color-destructive rotate-180" />;
+        return <TrendingUp className="h-icon-sm w-icon-sm color-destructive rotate-180" />;
       case 'budget':
-        return <Target className="h-5 w-5 color-accent" />;
+        return <Target className="h-icon-sm w-icon-sm color-accent" />;
       case 'cash_flow':
-        return <Activity className="h-5 w-5 color-secondary" />;
+        return <Activity className="h-icon-sm w-icon-sm color-secondary" />;
       default:
-        return <BarChart3 className="h-5 w-5 color-muted" />;
+        return <BarChart3 className="h-icon-sm w-icon-sm color-muted" />;
     }
   };
 
@@ -359,15 +359,15 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -387,7 +387,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
           <div className="flex items-center cluster-sm">
             <ViewSwitcher />
             <Button onClick={handleCreateForecast}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Forecast
             </Button>
           </div>
@@ -435,7 +435,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 <p className="text-heading-3 text-heading-3 color-foreground">{forecasts.length}</p>
                 <p className="text-body-sm color-foreground/60">{analytics.completedForecasts} completed</p>
               </div>
-              <BarChart3 className="h-8 w-8 color-accent" />
+              <BarChart3 className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -447,7 +447,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                   {formatCurrency(analytics.totalProjected)}
                 </p>
               </div>
-              <Target className="h-8 w-8 color-accent" />
+              <Target className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -459,7 +459,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                   {formatCurrency(analytics.totalActual)}
                 </p>
               </div>
-              <CheckCircle className="h-8 w-8 color-success" />
+              <CheckCircle className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -472,7 +472,7 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
                 </p>
                 <p className="text-body-sm color-foreground/60">forecast accuracy</p>
               </div>
-              <PieChart className="h-8 w-8 color-secondary" />
+              <PieChart className="h-icon-lg w-icon-lg color-secondary" />
             </div>
           </Card>
         </div>
@@ -583,12 +583,12 @@ export default function ForecastsClient({ user, orgId, translations }: Forecasts
 
         {/* Empty State */}
         {forecasts.length === 0 && (
-          <Card className="p-2xl text-center">
-            <BarChart3 className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No forecasts found</h3>
             <p className="color-foreground/70 mb-md">Create your first financial forecast to start planning</p>
             <Button onClick={handleCreateForecast}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Create Forecast
             </Button>
           </Card>

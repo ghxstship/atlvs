@@ -65,12 +65,12 @@ export default function ProfileListView({
  {Array.from({ length: 10 }).map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
  <div className="flex items-center gap-md">
- <div className="w-10 h-10 bg-muted rounded-full" />
+ <div className="w-icon-xl h-icon-xl bg-muted rounded-full" />
  <div className="flex-1 space-y-sm">
- <div className="h-4 bg-muted rounded w-1/4" />
+ <div className="h-icon-xs bg-muted rounded w-1/4" />
  <div className="h-3 bg-muted rounded w-1/3" />
  </div>
- <div className="w-20 h-6 bg-muted rounded" />
+ <div className="w-component-lg h-icon-md bg-muted rounded" />
  </div>
  </Card>
  ))}
@@ -81,7 +81,7 @@ export default function ProfileListView({
  if (profiles.length === 0) {
  return (
  <Card className="p-xl text-center">
- <User className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No profiles found</h3>
  <p className="text-muted-foreground mb-lg">
  Get started by creating your first profile or adjust your filters.
@@ -123,7 +123,7 @@ export default function ProfileListView({
  />
 
  {/* Avatar */}
- <Avatar className="h-10 w-10">
+ <Avatar className="h-icon-xl w-icon-xl">
  {profile.avatar_url ? (
  <img src={profile.avatar_url} alt={profile.full_name} />
  ) : (
@@ -177,7 +177,7 @@ export default function ProfileListView({
  <p className="text-sm font-medium">{profile.completion_percentage}%</p>
  <p className="text-xs text-muted-foreground">Complete</p>
  </div>
- <div className="w-16 bg-muted rounded-full h-2">
+ <div className="w-component-md bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full transition-all duration-300" 
  style={{ width: `${profile.completion_percentage}%` }}
@@ -214,14 +214,14 @@ export default function ProfileListView({
  size="sm"
  onClick={() => onEdit(profile)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(profile)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

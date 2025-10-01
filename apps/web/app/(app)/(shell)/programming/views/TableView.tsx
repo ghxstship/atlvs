@@ -108,11 +108,11 @@ export function TableView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`space-y-4 ${className}`}>
+      <div className={`space-y-md ${className}`}>
         {/* Loading skeleton */}
-        <div className="h-12 bg-gray-100 animate-pulse rounded" />
+        <div className="h-icon-2xl bg-gray-100 animate-pulse rounded" />
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="h-16 bg-gray-50 animate-pulse rounded" />
+          <div key={i} className="h-component-md bg-gray-50 animate-pulse rounded" />
         ))}
       </div>
     );
@@ -120,7 +120,7 @@ export function TableView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
@@ -132,7 +132,7 @@ export function TableView<T extends ProgrammingEntity>({
         <TableHeader>
           <TableRow>
             {selectable && (
-              <TableHead className="w-12">
+              <TableHead className="w-icon-2xl">
                 <Checkbox
                   checked={allSelected}
                   indeterminate={someSelected}
@@ -146,17 +146,17 @@ export function TableView<T extends ProgrammingEntity>({
                 className={column.sortable ? 'cursor-pointer hover:bg-gray-50' : ''}
                 onClick={() => column.sortable && handleSort(column.key)}
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   {column.label}
                   {column.sortable && sort?.field === column.key && (
                     sort.direction === 'asc' ? (
-                      <ChevronUp className="h-4 w-4" />
+                      <ChevronUp className="h-icon-xs w-icon-xs" />
                     ) : (
-                      <ChevronDown className="h-4 w-4" />
+                      <ChevronDown className="h-icon-xs w-icon-xs" />
                     )
                   )}
                   {column.sortable && sort?.field !== column.key && (
-                    <div className="h-4 w-4 opacity-30">
+                    <div className="h-icon-xs w-icon-xs opacity-30">
                       <ChevronUp className="h-3 w-3" />
                       <ChevronDown className="h-3 w-3 -mt-1" />
                     </div>
@@ -165,7 +165,7 @@ export function TableView<T extends ProgrammingEntity>({
               </TableHead>
             ))}
             {(onEdit || onDelete || onView) && (
-              <TableHead className="w-12">Actions</TableHead>
+              <TableHead className="w-icon-2xl">Actions</TableHead>
             )}
           </TableRow>
         </TableHeader>
@@ -196,19 +196,19 @@ export function TableView<T extends ProgrammingEntity>({
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
                       <Button variant="ghost" size="sm">
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
                       {onView && (
                         <DropdownMenuItem onClick={() => onView(item)}>
-                          <Eye className="h-4 w-4 mr-2" />
+                          <Eye className="h-icon-xs w-icon-xs mr-2" />
                           View
                         </DropdownMenuItem>
                       )}
                       {onEdit && (
                         <DropdownMenuItem onClick={() => onEdit(item)}>
-                          <Edit className="h-4 w-4 mr-2" />
+                          <Edit className="h-icon-xs w-icon-xs mr-2" />
                           Edit
                         </DropdownMenuItem>
                       )}
@@ -217,7 +217,7 @@ export function TableView<T extends ProgrammingEntity>({
                           onClick={() => onDelete(item)}
                           className="text-red-600"
                         >
-                          <Trash2 className="h-4 w-4 mr-2" />
+                          <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                           Delete
                         </DropdownMenuItem>
                       )}

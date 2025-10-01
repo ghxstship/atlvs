@@ -156,7 +156,7 @@ export const UnifiedGridView: React.FC<UnifiedGridViewProps> = ({
         return (
           <div className="flex items-center gap-xs">
             <div 
-              className="w-4 h-4 rounded border"
+              className="w-icon-xs h-icon-xs rounded border"
               style={{ backgroundColor: value }}
             />
             <span className="text-xs font-mono">{value}</span>
@@ -225,20 +225,20 @@ export const UnifiedGridView: React.FC<UnifiedGridViewProps> = ({
               <DropdownMenu>
                 <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
                   <Button variant="ghost" size="sm">
-                    <MoreVertical className="h-4 w-4" />
+                    <MoreVertical className="h-icon-xs w-icon-xs" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={() => onItemAction?.('view', item)}>
-                    <Eye className="mr-xs h-4 w-4" />
+                    <Eye className="mr-xs h-icon-xs w-icon-xs" />
                     View
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => onItemAction?.('edit', item)}>
-                    <Edit className="mr-xs h-4 w-4" />
+                    <Edit className="mr-xs h-icon-xs w-icon-xs" />
                     Edit
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => onItemAction?.('duplicate', item)}>
-                    <Copy className="mr-xs h-4 w-4" />
+                    <Copy className="mr-xs h-icon-xs w-icon-xs" />
                     Duplicate
                   </DropdownMenuItem>
                   
@@ -251,7 +251,7 @@ export const UnifiedGridView: React.FC<UnifiedGridViewProps> = ({
                         key={action.id}
                         onClick={() => action.onClick(item)}
                       >
-                        {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                        {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                         {action.label}
                       </DropdownMenuItem>
                     );
@@ -263,7 +263,7 @@ export const UnifiedGridView: React.FC<UnifiedGridViewProps> = ({
                     onClick={() => onItemAction?.('delete', item)}
                     className="text-destructive"
                   >
-                    <Trash className="mr-xs h-4 w-4" />
+                    <Trash className="mr-xs h-icon-xs w-icon-xs" />
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -331,14 +331,14 @@ export const UnifiedGridView: React.FC<UnifiedGridViewProps> = ({
         {Array.from({ length: columns * 2 }).map((_, i) => (
           <Card key={i}>
             <CardHeader>
-              <Skeleton className="h-5 w-3/4" />
-              <Skeleton className="h-4 w-full mt-xs" />
+              <Skeleton className="h-icon-sm w-3/4" />
+              <Skeleton className="h-icon-xs w-full mt-xs" />
             </CardHeader>
             <CardContent>
               <div className="space-y-xs">
-                <Skeleton className="h-4 w-full" />
-                <Skeleton className="h-4 w-2/3" />
-                <Skeleton className="h-4 w-3/4" />
+                <Skeleton className="h-icon-xs w-full" />
+                <Skeleton className="h-icon-xs w-2/3" />
+                <Skeleton className="h-icon-xs w-3/4" />
               </div>
             </CardContent>
           </Card>

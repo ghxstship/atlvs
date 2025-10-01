@@ -159,8 +159,8 @@ export default function EnterpriseOverview({
  if (!loading && emptyState && metrics.length === 0 && statusBreakdown.length === 0) {
  const EmptyIcon = emptyState.icon || AlertTriangle;
  return (
- <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
- <EmptyIcon className="h-12 w-12 text-muted-foreground mb-md" />
+ <div className="flex flex-col items-center justify-center min-h-content-lg text-center">
+ <EmptyIcon className="h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">{emptyState.title}</h3>
  <p className="text-muted-foreground mb-md max-w-md">{emptyState.description}</p>
  {emptyState.actions}
@@ -179,19 +179,19 @@ export default function EnterpriseOverview({
  <div className="flex items-center gap-sm">
  {onExport && (
  <Button variant="outline" size="sm" onClick={onExport}>
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Export
  </Button>
  )}
  {onRefresh && (
  <Button variant="outline" size="sm" onClick={onRefresh}>
- <RefreshCw className="h-4 w-4 mr-xs" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-xs" />
  Refresh
  </Button>
  )}
  {onSettings && (
  <Button variant="outline" size="sm" onClick={onSettings}>
- <Settings className="h-4 w-4" />
+ <Settings className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>
@@ -210,14 +210,14 @@ export default function EnterpriseOverview({
  >
  {metric.loading ? (
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded w-1/2 mb-sm"></div>
- <div className="h-8 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2 mb-sm"></div>
+ <div className="h-icon-lg bg-muted rounded w-3/4"></div>
  </div>
  ) : (
  <>
  <div className="flex items-center justify-between mb-sm">
  <p className="text-sm text-muted-foreground">{metric.title}</p>
- <metric.icon className={`h-5 w-5 ${metric.iconColor || "text-muted-foreground"}`} />
+ <metric.icon className={`h-icon-sm w-icon-sm ${metric.iconColor || "text-muted-foreground"}`} />
  </div>
  <div className="flex items-baseline gap-sm">
  <p className="text-2xl font-bold">{formatMetricValue(metric.value)}</p>
@@ -264,7 +264,7 @@ export default function EnterpriseOverview({
  >
  <div className="flex items-center justify-between mb-xs">
  <div className="flex items-center gap-xs">
- {StatusIcon && <StatusIcon className="h-4 w-4" style={{ color: item.color }} />}
+ {StatusIcon && <StatusIcon className="h-icon-xs w-icon-xs" style={{ color: item.color }} />}
  <span className="text-sm font-medium">{item.label}</span>
  </div>
  <div className="flex items-center gap-xs">
@@ -300,7 +300,7 @@ export default function EnterpriseOverview({
  <ArrowRight className="h-3 w-3 ml-xs" />
  </Button>
  </div>
- <div className="space-y-sm max-h-[400px] overflow-y-auto">
+ <div className="space-y-sm max-h-content-lg overflow-y-auto">
  {recentActivity.map((activity) => {
  const ActivityIcon = getActivityIcon(activity.type);
  return (
@@ -312,7 +312,7 @@ export default function EnterpriseOverview({
  onClick={activity.onClick}
  >
  <div className="mt-xs">
- <ActivityIcon className="h-4 w-4 text-muted-foreground" />
+ <ActivityIcon className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
  <div className="flex-1 min-w-0">
  <p className="text-sm font-medium">{activity.title}</p>
@@ -349,7 +349,7 @@ export default function EnterpriseOverview({
  disabled={action.disabled}
  className="h-auto py-md flex flex-col items-center gap-xs"
  >
- <action.icon className="h-5 w-5" />
+ <action.icon className="h-icon-sm w-icon-sm" />
  <span className="text-xs">{action.label}</span>
  </Button>
  ))}

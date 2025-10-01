@@ -549,7 +549,7 @@ export function LearningProgress() {
           <div className="text-sm font-medium text-foreground dark:text-background mb-xs">
             Learning your preferences...
           </div>
-          <div className="w-32 bg-muted/30 dark:bg-muted/80 rounded-full h-2">
+          <div className="w-component-xl bg-muted/30 dark:bg-muted/80 rounded-full h-2">
             <div 
               className="bg-accent h-2 rounded-full transition-all duration-300"
               style={{ width: `${learningProgress * 100}%` }}

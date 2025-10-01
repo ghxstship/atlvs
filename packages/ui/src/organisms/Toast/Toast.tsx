@@ -2,7 +2,7 @@ import React from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle, Loader2 } from 'lucide-react';
-import { Button } from './atomic/Button';
+import { Button } from '../../components/atomic/Button';
 
 export interface ToastProps {
   id: string;
@@ -99,7 +99,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
       >
         {/* Icon */}
         <div className="shrink-0 mt-0.5">
-          <Icon className={clsx('h-5 w-5', config.iconClassName)} />
+          <Icon className={clsx('h-icon-sm w-icon-sm', config.iconClassName)} />
         </div>
 
         {/* Content */}
@@ -128,7 +128,7 @@ export const Toast = React.forwardRef<HTMLDivElement, ToastProps>(
             onClick={handleClose}
             className="shrink-0 opacity-70 hover:opacity-100"
           >
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         )}
 

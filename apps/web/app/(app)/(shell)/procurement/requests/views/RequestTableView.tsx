@@ -47,15 +47,15 @@ export default function RequestTableView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'approved':
- return <CheckCircle className="h-4 w-4 text-success" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
  case 'rejected':
- return <XCircle className="h-4 w-4 text-destructive" />;
+ return <XCircle className="h-icon-xs w-icon-xs text-destructive" />;
  case 'under_review':
- return <Clock className="h-4 w-4 text-warning" />;
+ return <Clock className="h-icon-xs w-icon-xs text-warning" />;
  case 'submitted':
- return <AlertTriangle className="h-4 w-4 text-info" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-info" />;
  default:
- return <Clock className="h-4 w-4 text-muted-foreground" />;
+ return <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />;
  }
  };
 
@@ -89,11 +89,11 @@ export default function RequestTableView({
 
  const getSortIcon = (field: string) => {
  if (sortField !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sortDirection === 'asc' ? 
- <ArrowUp className="h-4 w-4" /> : 
- <ArrowDown className="h-4 w-4" />;
+ <ArrowUp className="h-icon-xs w-icon-xs" /> : 
+ <ArrowDown className="h-icon-xs w-icon-xs" />;
  };
 
  const SortableHeader = ({ field, children }: { field: string; children: React.ReactNode }) => (
@@ -117,7 +117,7 @@ export default function RequestTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-[50px]">
+ <TableHead className="w-icon-2xl">
  <Checkbox disabled />
  </TableHead>
  <TableHead>Title</TableHead>
@@ -132,14 +132,14 @@ export default function RequestTableView({
  <TableBody>
  {Array.from({ length: 5 }).map((_, i) => (
  <TableRow key={i}>
- <TableCell><div className="h-4 w-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
- <TableCell><div className="h-4 bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
+ <TableCell><div className="h-icon-xs bg-muted rounded animate-pulse" /></TableCell>
  </TableRow>
  ))}
  </TableBody>
@@ -153,7 +153,7 @@ export default function RequestTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-[50px]">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={selectedRequests.length === requests.length && requests.length > 0}
  onCheckedChange={onSelectAll}
@@ -174,7 +174,7 @@ export default function RequestTableView({
  <TableRow>
  <TableCell colSpan={9} className="text-center py-xl">
  <div className="flex flex-col items-center gap-sm">
- <AlertTriangle className="h-8 w-8 text-muted-foreground" />
+ <AlertTriangle className="h-icon-lg w-icon-lg text-muted-foreground" />
  <p className="text-sm text-muted-foreground">No requests found</p>
  </div>
  </TableCell>
@@ -192,7 +192,7 @@ export default function RequestTableView({
  <div>
  <div className="font-medium text-sm">{request.title}</div>
  {request.description && (
- <div className="text-xs text-muted-foreground line-clamp-1">
+ <div className="text-xs text-muted-foreground line-clamp-xs">
  {request.description}
  </div>
  )}

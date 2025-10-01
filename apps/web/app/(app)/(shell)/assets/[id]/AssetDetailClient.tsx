@@ -121,36 +121,36 @@ export default function AssetDetailClient({
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl">
+          <div className="flex items-center justify-between h-component-md">
+            <div className="flex items-center gap-md">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push('/assets')}
-                className="flex items-center gap-2"
+                className="flex items-center gap-xs"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-icon-xs h-icon-xs" />
                 {translations.back || 'Back to Assets'}
               </Button>
-              <div className="h-6 w-px bg-gray-300" />
-              <div className="flex items-center gap-3">
+              <div className="h-icon-md w-px bg-gray-300" />
+              <div className="flex items-center gap-sm">
                 {asset.image_urls?.[0] ? (
                   <img
                     src={asset.image_urls[0]}
                     alt={asset.name}
-                    className="w-10 h-10 rounded-lg object-cover"
+                    className="w-icon-xl h-icon-xl rounded-lg object-cover"
                   />
                 ) : (
-                  <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <Package className="w-5 h-5 text-gray-400" />
+                  <div className="w-icon-xl h-icon-xl rounded-lg bg-gray-100 flex items-center justify-center">
+                    <Package className="w-icon-sm h-icon-sm text-gray-400" />
                   </div>
                 )}
                 <div>
                   <h1 className="text-xl font-semibold text-gray-900">
                     {asset.name}
                   </h1>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <Badge variant="outline" className="font-mono">
                       {asset.asset_tag}
                     </Badge>
@@ -163,13 +163,13 @@ export default function AssetDetailClient({
               </div>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setIsDetailDrawerOpen(true)}
               >
-                <History className="w-4 h-4 mr-2" />
+                <History className="w-icon-xs h-icon-xs mr-2" />
                 {translations.history || 'History'}
               </Button>
 
@@ -179,13 +179,13 @@ export default function AssetDetailClient({
                   size="sm"
                   onClick={() => setIsEditDrawerOpen(true)}
                 >
-                  <Edit className="w-4 h-4 mr-2" />
+                  <Edit className="w-icon-xs h-icon-xs mr-2" />
                   {translations.edit || 'Edit'}
                 </Button>
               )}
 
               <Button variant="outline" size="sm">
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="w-icon-xs h-icon-xs mr-2" />
                 {translations.export || 'Export'}
               </Button>
 
@@ -195,7 +195,7 @@ export default function AssetDetailClient({
                   size="sm"
                   onClick={handleAssetDelete}
                 >
-                  <Trash2 className="w-4 h-4 mr-2" />
+                  <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                   {translations.delete || 'Delete'}
                 </Button>
               )}
@@ -205,17 +205,17 @@ export default function AssetDetailClient({
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl py-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
           {/* Main Details */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-lg">
             {/* Overview Card */}
             <Card>
               <CardHeader>
                 <CardTitle>Asset Overview</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
+              <CardContent className="space-y-md">
+                <div className="grid grid-cols-2 gap-md">
                   <div>
                     <label className="text-sm font-medium text-gray-700">Category</label>
                     <p className="text-sm text-gray-900 capitalize mt-1">
@@ -240,16 +240,16 @@ export default function AssetDetailClient({
                 <Separator />
 
                 {/* Assignment & Location */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-md">
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-2 block">Assigned To</label>
                     {asset.assigned_to ? (
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-xs">
                         {asset.assigned_to.avatar && (
                           <img
                             src={asset.assigned_to.avatar}
                             alt={asset.assigned_to.name}
-                            className="w-8 h-8 rounded-full"
+                            className="w-icon-lg h-icon-lg rounded-full"
                           />
                         )}
                         <div>
@@ -269,8 +269,8 @@ export default function AssetDetailClient({
                   <div>
                     <label className="text-sm font-medium text-gray-700 mb-2 block">Location</label>
                     {asset.location ? (
-                      <div className="flex items-center gap-2">
-                        <MapPin className="w-4 h-4 text-gray-400" />
+                      <div className="flex items-center gap-xs">
+                        <MapPin className="w-icon-xs h-icon-xs text-gray-400" />
                         <div>
                           <p className="text-sm font-medium text-gray-900">
                             {asset.location.name}
@@ -297,13 +297,13 @@ export default function AssetDetailClient({
                   <CardTitle>Asset Images</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-md">
                     {asset.image_urls.map((url, index) => (
                       <div key={index} className="relative group">
                         <img
                           src={url}
                           alt={`${asset.name} - Image ${index + 1}`}
-                          className="w-full h-32 object-cover rounded-lg border cursor-pointer hover:shadow-md transition-shadow"
+                          className="w-full h-component-xl object-cover rounded-lg border cursor-pointer hover:shadow-md transition-shadow"
                           onClick={() => {/* Open image viewer */}}
                         />
                       </div>
@@ -315,20 +315,20 @@ export default function AssetDetailClient({
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-lg">
             {/* Quick Actions */}
             <Card>
               <CardHeader>
                 <CardTitle>Quick Actions</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-sm">
                 {canAssign && asset.status === 'available' && (
                   <Button
                     className="w-full justify-start"
                     variant="outline"
                     onClick={() => {/* Handle assign */}}
                   >
-                    <User className="w-4 h-4 mr-2" />
+                    <User className="w-icon-xs h-icon-xs mr-2" />
                     {translations.assign || 'Assign Asset'}
                   </Button>
                 )}
@@ -339,7 +339,7 @@ export default function AssetDetailClient({
                     variant="outline"
                     onClick={() => {/* Handle maintenance */}}
                   >
-                    <Settings className="w-4 h-4 mr-2" />
+                    <Settings className="w-icon-xs h-icon-xs mr-2" />
                     {translations.maintenance || 'Schedule Maintenance'}
                   </Button>
                 )}
@@ -349,7 +349,7 @@ export default function AssetDetailClient({
                   variant="outline"
                   onClick={handleAssetDuplicate}
                 >
-                  <Copy className="w-4 h-4 mr-2" />
+                  <Copy className="w-icon-xs h-icon-xs mr-2" />
                   {translations.duplicate || 'Duplicate Asset'}
                 </Button>
               </CardContent>
@@ -361,7 +361,7 @@ export default function AssetDetailClient({
                 <CardHeader>
                   <CardTitle>Financial Information</CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-sm">
                   {asset.purchase_price && (
                     <div className="flex items-center justify-between">
                       <span className="text-sm text-gray-600">Purchase Price</span>
@@ -393,7 +393,7 @@ export default function AssetDetailClient({
               <CardHeader>
                 <CardTitle>Metadata</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-sm">
                 <div className="flex items-center justify-between">
                   <span className="text-sm text-gray-600">Created</span>
                   <span className="text-sm">

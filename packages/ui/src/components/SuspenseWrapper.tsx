@@ -21,10 +21,10 @@ export const SuspenseWrapper: React.FC<SuspenseWrapperProps> = ({
 
 const DefaultFallback = () => (
   <div className="space-y-md p-md">
-    <Skeleton className="h-8 w-3/4" />
-    <Skeleton className="h-4 w-full" />
-    <Skeleton className="h-4 w-5/6" />
-    <Skeleton className="h-4 w-4/6" />
+    <Skeleton className="h-icon-lg w-3/4" />
+    <Skeleton className="h-icon-xs w-full" />
+    <Skeleton className="h-icon-xs w-icon-sm/6" />
+    <Skeleton className="h-icon-xs w-icon-xs/6" />
   </div>
 )
 

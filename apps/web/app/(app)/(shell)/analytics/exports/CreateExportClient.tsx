@@ -259,7 +259,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
             <p className="text-body-sm color-muted">Set up automated data exports</p>
           </div>
           <Button onClick={onCancel || (() => {})}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
@@ -311,7 +311,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                         />
                         <div className="flex-1">
                           <div className="flex items-center cluster-sm">
-                            <IconComponent className="h-4 w-4" />
+                            <IconComponent className="h-icon-xs w-icon-xs" />
                             <span className="form-label">{source.label}</span>
                           </div>
                           <p className="text-body-sm color-muted mt-xs">{source.description}</p>
@@ -419,7 +419,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                    
                     onClick={addFilter}
                   >
-                    <Plus className="h-4 w-4 mr-xs" />
+                    <Plus className="h-icon-xs w-icon-xs mr-xs" />
                     Add Filter
                   </Button>
                 </div>
@@ -463,7 +463,7 @@ export default function CreateExportClient({ organizationId, onSuccess, onCancel
                      
                       onClick={() => removeFilter(index)}
                     >
-                      <X className="h-4 w-4" />
+                      <X className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 ))}

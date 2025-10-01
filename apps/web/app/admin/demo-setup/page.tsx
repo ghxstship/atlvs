@@ -25,7 +25,7 @@ export default async function DemoSetupPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto py-2xl px-md">
+      <div className="container mx-auto py-xsxl px-md">
         <div className="text-center mb-xl">
           <h1 className="text-heading-2 text-heading-3 mb-sm">Demo Users Setup</h1>
           <p className="color-muted">

@@ -22,31 +22,31 @@ export default function ProfileAnalyticsView({
  {Array.from({ length: 4 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
  <div className="flex items-center justify-between mb-sm">
- <div className="w-24 h-4 bg-muted rounded" />
- <div className="w-8 h-8 bg-muted rounded" />
+ <div className="w-component-lg h-icon-xs bg-muted rounded" />
+ <div className="w-icon-lg h-icon-lg bg-muted rounded" />
  </div>
- <div className="w-16 h-8 bg-muted rounded mb-xs" />
- <div className="w-20 h-3 bg-muted rounded" />
+ <div className="w-component-md h-icon-lg bg-muted rounded mb-xs" />
+ <div className="w-component-lg h-3 bg-muted rounded" />
  </Card>
  ))}
  </div>
  
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  <Card className="p-lg animate-pulse">
- <div className="w-32 h-6 bg-muted rounded mb-md" />
+ <div className="w-component-xl h-icon-md bg-muted rounded mb-md" />
  <div className="space-y-sm">
  {Array.from({ length: 5 }).map((_, i) => (
  <div key={i} className="flex justify-between">
- <div className="w-24 h-4 bg-muted rounded" />
- <div className="w-12 h-4 bg-muted rounded" />
+ <div className="w-component-lg h-icon-xs bg-muted rounded" />
+ <div className="w-icon-2xl h-icon-xs bg-muted rounded" />
  </div>
  ))}
  </div>
  </Card>
  
  <Card className="p-lg animate-pulse">
- <div className="w-32 h-6 bg-muted rounded mb-md" />
- <div className="w-full h-48 bg-muted rounded" />
+ <div className="w-component-xl h-icon-md bg-muted rounded mb-md" />
+ <div className="w-full h-container-xs bg-muted rounded" />
  </Card>
  </div>
  </div>
@@ -67,7 +67,7 @@ export default function ProfileAnalyticsView({
  </p>
  </div>
  <Button variant="outline" onClick={onRefresh}>
- <RefreshCw className="h-4 w-4 mr-sm" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
  Refresh
  </Button>
  </div>
@@ -77,7 +77,7 @@ export default function ProfileAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-sm">
  <p className="text-sm font-medium text-muted-foreground">Total Profiles</p>
- <Users className="h-5 w-5 text-muted-foreground" />
+ <Users className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  <p className="text-3xl font-bold">{stats.total}</p>
  <p className="text-sm text-muted-foreground">
@@ -88,7 +88,7 @@ export default function ProfileAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-sm">
  <p className="text-sm font-medium text-muted-foreground">Active Profiles</p>
- <UserCheck className="h-5 w-5 text-green-600" />
+ <UserCheck className="h-icon-sm w-icon-sm text-green-600" />
  </div>
  <p className="text-3xl font-bold text-green-600">{stats.active}</p>
  <p className="text-sm text-muted-foreground">
@@ -100,11 +100,11 @@ export default function ProfileAnalyticsView({
  <div className="flex items-center justify-between mb-sm">
  <p className="text-sm font-medium text-muted-foreground">Avg Completion</p>
  {completionTrend === 'up' ? (
- <TrendingUp className="h-5 w-5 text-green-600" />
+ <TrendingUp className="h-icon-sm w-icon-sm text-green-600" />
  ) : completionTrend === 'down' ? (
- <TrendingDown className="h-5 w-5 text-red-600" />
+ <TrendingDown className="h-icon-sm w-icon-sm text-red-600" />
  ) : (
- <BarChart3 className="h-5 w-5 text-yellow-600" />
+ <BarChart3 className="h-icon-sm w-icon-sm text-yellow-600" />
  )}
  </div>
  <p className={`text-3xl font-bold ${
@@ -122,7 +122,7 @@ export default function ProfileAnalyticsView({
  <Card className="p-lg">
  <div className="flex items-center justify-between mb-sm">
  <p className="text-sm font-medium text-muted-foreground">Recent Updates</p>
- <Clock className="h-5 w-5 text-muted-foreground" />
+ <Clock className="h-icon-sm w-icon-sm text-muted-foreground" />
  </div>
  <p className="text-3xl font-bold">{stats.recent_updates}</p>
  <p className="text-sm text-muted-foreground">
@@ -205,7 +205,7 @@ export default function ProfileAnalyticsView({
  <div key={department} className="flex items-center justify-between">
  <span className="text-sm capitalize">{department.replace('_', ' ')}</span>
  <div className="flex items-center gap-sm">
- <div className="w-20 bg-muted rounded-full h-2">
+ <div className="w-component-lg bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full" 
  style={{ 
@@ -213,14 +213,14 @@ export default function ProfileAnalyticsView({
  }}
  />
  </div>
- <span className="font-semibold w-8 text-right">{count}</span>
+ <span className="font-semibold w-icon-lg text-right">{count}</span>
  </div>
  </div>
  ))}
  </div>
  ) : (
  <div className="text-center py-lg text-muted-foreground">
- <BarChart3 className="h-12 w-12 mx-auto mb-sm opacity-50" />
+ <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-sm opacity-50" />
  <p>Department data not available</p>
  </div>
  )}

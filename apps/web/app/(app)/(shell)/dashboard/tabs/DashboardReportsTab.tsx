@@ -29,7 +29,7 @@ export default function DashboardReportsTab({
   onTabDataChange
 }: DashboardReportsTabProps) {
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-lg space-y-lg">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-2xl font-bold">Reports</h2>
@@ -38,23 +38,23 @@ export default function DashboardReportsTab({
           </p>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline">
-            <Settings className="h-4 w-4 mr-2" />
+            <Settings className="h-icon-xs w-icon-xs mr-2" />
             Settings
           </Button>
           <Button>
-            <FileText className="h-4 w-4 mr-2" />
+            <FileText className="h-icon-xs w-icon-xs mr-2" />
             New Report
           </Button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
         <Card>
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <PieChart className="h-5 w-5" />
+            <CardTitle className="flex items-center gap-xs">
+              <PieChart className="h-icon-sm w-icon-sm" />
               Usage Report
             </CardTitle>
           </CardHeader>
@@ -63,7 +63,7 @@ export default function DashboardReportsTab({
               Comprehensive dashboard usage analytics
             </p>
             <Button variant="outline" className="w-full">
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="h-icon-xs w-icon-xs mr-2" />
               Generate
             </Button>
           </CardContent>
@@ -78,7 +78,7 @@ export default function DashboardReportsTab({
               Load times and performance metrics
             </p>
             <Button variant="outline" className="w-full">
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="h-icon-xs w-icon-xs mr-2" />
               Generate
             </Button>
           </CardContent>
@@ -93,7 +93,7 @@ export default function DashboardReportsTab({
               User activity and engagement metrics
             </p>
             <Button variant="outline" className="w-full">
-              <Download className="h-4 w-4 mr-2" />
+              <Download className="h-icon-xs w-icon-xs mr-2" />
               Generate
             </Button>
           </CardContent>

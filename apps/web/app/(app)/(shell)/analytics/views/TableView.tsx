@@ -89,9 +89,9 @@ export default function TableView({
   if (loading) {
     return (
       <div className="animate-pulse">
-        <div className="h-4 bg-gray-200 rounded w-full mb-2"></div>
-        <div className="h-4 bg-gray-200 rounded w-5/6 mb-2"></div>
-        <div className="h-4 bg-gray-200 rounded w-4/6"></div>
+        <div className="h-icon-xs bg-gray-200 rounded w-full mb-2"></div>
+        <div className="h-icon-xs bg-gray-200 rounded w-icon-sm/6 mb-2"></div>
+        <div className="h-icon-xs bg-gray-200 rounded w-icon-xs/6"></div>
       </div>
     );
   }
@@ -102,7 +102,7 @@ export default function TableView({
         <thead className="bg-gray-50">
           <tr>
             {selectable && (
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th className="px-lg py-sm text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <div className="flex items-center">
                   <input
                     type="checkbox"
@@ -111,7 +111,7 @@ export default function TableView({
                       if (el) el.indeterminate = someSelected;
                     }}
                     onChange={(e) => handleSelectAll(e.target.checked)}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
                 </div>
               </th>
@@ -119,7 +119,7 @@ export default function TableView({
             {columns.map((column) => (
               <th
                 key={column.key}
-                className={`px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
+                className={`px-lg py-sm text-left text-xs font-medium text-gray-500 uppercase tracking-wider ${
                   column.sortable ? 'cursor-pointer hover:bg-gray-100' : ''
                 }`}
                 style={{ width: column.width }}
@@ -148,7 +148,7 @@ export default function TableView({
                 </div>
               </th>
             ))}
-            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+            <th className="px-lg py-sm text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
               Actions
             </th>
           </tr>
@@ -161,23 +161,23 @@ export default function TableView({
               onClick={() => onRowClick?.(row)}
             >
               {selectable && (
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-lg py-md whitespace-nowrap">
                   <input
                     type="checkbox"
                     checked={selectedRows.has(row.id)}
                     onChange={(e) => handleRowSelect(row.id, e.target.checked)}
-                    className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                    className="h-icon-xs w-icon-xs text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                   />
                 </td>
               )}
               {columns.map((column) => (
-                <td key={column.key} className="px-6 py-4 whitespace-nowrap">
+                <td key={column.key} className="px-lg py-md whitespace-nowrap">
                   {column.render ? column.render(row[column.key], row) : row[column.key]}
                 </td>
               ))}
-              <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <td className="px-lg py-md whitespace-nowrap text-right text-sm font-medium">
                 <button className="text-gray-400 hover:text-gray-600">
-                  <MoreHorizontal className="h-5 w-5" />
+                  <MoreHorizontal className="h-icon-sm w-icon-sm" />
                 </button>
               </td>
             </tr>
@@ -186,7 +186,7 @@ export default function TableView({
       </table>
 
       {data.length === 0 && (
-        <div className="text-center py-12">
+        <div className="text-center py-xsxl">
           <p className="text-gray-500">No data available</p>
         </div>
       )}

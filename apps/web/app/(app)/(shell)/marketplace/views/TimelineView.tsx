@@ -50,16 +50,16 @@ export default function TimelineView({
 
   if (isLoading) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-xl">
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="flex gap-4">
+          <div key={i} className="flex gap-md">
             <div className="flex flex-col items-center">
               <div className="w-3 h-3 bg-muted rounded-full animate-pulse" />
-              <div className="w-px h-16 bg-muted animate-pulse" />
+              <div className="w-px h-component-md bg-muted animate-pulse" />
             </div>
-            <div className="flex-1 space-y-2">
-              <div className="h-4 bg-muted animate-pulse rounded w-48" />
-              <div className="h-16 bg-muted animate-pulse rounded" />
+            <div className="flex-1 space-y-xs">
+              <div className="h-icon-xs bg-muted animate-pulse rounded w-container-xs" />
+              <div className="h-component-md bg-muted animate-pulse rounded" />
             </div>
           </div>
         ))}
@@ -69,21 +69,21 @@ export default function TimelineView({
 
   if (error) {
     return (
-      <div className="text-center py-8">
+      <div className="text-center py-xl">
         <p className="text-muted-foreground">Failed to load timeline</p>
       </div>
     );
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-xl">
       {/* Timeline */}
       <div className="relative">
         {sortedListings.map((listing, index) => {
           const isLast = index === sortedListings.length - 1;
 
           return (
-            <div key={listing.id} className="flex gap-4 pb-8">
+            <div key={listing.id} className="flex gap-md pb-8">
               {/* Timeline line */}
               <div className="flex flex-col items-center">
                 <div className={`w-3 h-3 rounded-full ${
@@ -96,12 +96,12 @@ export default function TimelineView({
 
               {/* Content */}
               <div
-                className="flex-1 pb-4 cursor-pointer hover:bg-muted/50 rounded-lg p-4 transition-colors"
+                className="flex-1 pb-4 cursor-pointer hover:bg-muted/50 rounded-lg p-md transition-colors"
                 onClick={() => onListingSelect?.(listing)}
               >
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex items-start justify-between gap-md">
                   <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-xs mb-2">
                       <h3 className="font-semibold text-lg">{listing.title}</h3>
                       <Badge variant={getTypeVariant(listing.type)}>
                         {listing.type}
@@ -111,33 +111,33 @@ export default function TimelineView({
                       )}
                     </div>
 
-                    <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                      <div className="flex items-center gap-1">
-                        <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-md text-sm text-muted-foreground mb-3">
+                      <div className="flex items-center gap-xs">
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         <span>{new Date(listing.created_at).toLocaleDateString()}</span>
                       </div>
-                      <div className="flex items-center gap-1">
-                        <Clock className="h-4 w-4" />
+                      <div className="flex items-center gap-xs">
+                        <Clock className="h-icon-xs w-icon-xs" />
                         <span>{new Date(listing.created_at).toLocaleTimeString()}</span>
                       </div>
                       {listing.creator && (
-                        <div className="flex items-center gap-1">
-                          <User className="h-4 w-4" />
+                        <div className="flex items-center gap-xs">
+                          <User className="h-icon-xs w-icon-xs" />
                           <span>{listing.creator.name || 'Anonymous'}</span>
                         </div>
                       )}
                     </div>
 
                     {listing.description && (
-                      <p className="text-muted-foreground mb-3 line-clamp-2">
+                      <p className="text-muted-foreground mb-3 line-clamp-xs">
                         {listing.description}
                       </p>
                     )}
 
-                    <div className="flex flex-wrap items-center gap-3">
+                    <div className="flex flex-wrap items-center gap-sm">
                       {listing.pricing?.amount && (
-                        <div className="flex items-center gap-1 text-green-600">
-                          <DollarSign className="h-4 w-4" />
+                        <div className="flex items-center gap-xs text-green-600">
+                          <DollarSign className="h-icon-xs w-icon-xs" />
                           <span className="font-medium">
                             {formatCurrency(listing.pricing.amount, listing.pricing.currency)}
                           </span>
@@ -145,8 +145,8 @@ export default function TimelineView({
                       )}
 
                       {listing.location?.city && (
-                        <div className="flex items-center gap-1 text-muted-foreground">
-                          <MapPin className="h-4 w-4" />
+                        <div className="flex items-center gap-xs text-muted-foreground">
+                          <MapPin className="h-icon-xs w-icon-xs" />
                           <span>{listing.location.city}</span>
                         </div>
                       )}
@@ -172,8 +172,8 @@ export default function TimelineView({
       </div>
 
       {listings.length === 0 && (
-        <div className="text-center py-12">
-          <Clock className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+        <div className="text-center py-xsxl">
+          <Clock className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
           <h3 className="text-lg font-medium mb-2">No listings in timeline</h3>
           <p className="text-muted-foreground">
             Listings will appear here as they are created

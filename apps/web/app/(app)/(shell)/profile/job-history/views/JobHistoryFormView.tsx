@@ -245,12 +245,12 @@ export default function JobHistoryFormView({
  <Button onClick={form.handleSubmit(onSubmit)} disabled={loading}>
  {loading ? (
  <>
- <RefreshCw className="h-4 w-4 mr-xs animate-spin" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-xs animate-spin" />
  {entry ? 'Updating...' : 'Saving...'}
  </>
  ) : (
  <>
- <Save className="h-4 w-4 mr-xs" />
+ <Save className="h-icon-xs w-icon-xs mr-xs" />
  {entry ? 'Update' : 'Save'}
  </>
  )}
@@ -262,7 +262,7 @@ export default function JobHistoryFormView({
  {/* Basic Information */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Briefcase className="h-5 w-5" />
+ <Briefcase className="h-icon-sm w-icon-sm" />
  Basic Information
  </h3>
  
@@ -362,7 +362,7 @@ export default function JobHistoryFormView({
  {/* Timeline */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Calendar className="h-5 w-5" />
+ <Calendar className="h-icon-sm w-icon-sm" />
  Timeline
  </h3>
  
@@ -388,7 +388,7 @@ export default function JobHistoryFormView({
  </div>
  </div>
 
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Checkbox
  checked={isCurrent}
  onCheckedChange={(checked) => setValue('is_current', !!checked)}
@@ -413,7 +413,7 @@ export default function JobHistoryFormView({
  {/* Company Details */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Building className="h-5 w-5" />
+ <Building className="h-icon-sm w-icon-sm" />
  Company Details
  </h3>
  
@@ -507,7 +507,7 @@ export default function JobHistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddResponsibility())}
  />
  <Button type="button" onClick={handleAddResponsibility} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -537,7 +537,7 @@ export default function JobHistoryFormView({
  {/* Skills */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Star className="h-5 w-5" />
+ <Star className="h-icon-sm w-icon-sm" />
  Skills Used
  </h3>
  
@@ -550,7 +550,7 @@ export default function JobHistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
  />
  <Button type="button" onClick={handleAddSkill} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -580,7 +580,7 @@ export default function JobHistoryFormView({
  {/* Achievements */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Award className="h-5 w-5" />
+ <Award className="h-icon-sm w-icon-sm" />
  Achievements
  </h3>
  
@@ -593,7 +593,7 @@ export default function JobHistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddAchievement())}
  />
  <Button type="button" onClick={handleAddAchievement} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  
@@ -601,7 +601,7 @@ export default function JobHistoryFormView({
  <div className="space-y-xs">
  {achievements.map((achievement, index) => (
  <div key={index} className="flex items-start gap-sm p-sm bg-muted rounded">
- <Award className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+ <Award className="h-icon-xs w-icon-xs text-yellow-500 mt-0.5 flex-shrink-0" />
  <span className="flex-1 text-sm">{achievement}</span>
  <Button
  type="button"
@@ -624,7 +624,7 @@ export default function JobHistoryFormView({
  {/* Tags */}
  <div className="space-y-md">
  <h3 className="text-lg font-semibold flex items-center gap-sm">
- <Tag className="h-5 w-5" />
+ <Tag className="h-icon-sm w-icon-sm" />
  Tags
  </h3>
  
@@ -637,7 +637,7 @@ export default function JobHistoryFormView({
  onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
  />
  <Button type="button" onClick={handleAddTag} size="sm">
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  

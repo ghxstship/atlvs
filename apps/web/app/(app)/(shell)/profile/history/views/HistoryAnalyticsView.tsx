@@ -185,8 +185,8 @@ export default function HistoryAnalyticsView({
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
  {Array.from({ length: 9 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
- <div className="h-4 bg-muted rounded mb-sm" />
- <div className="h-8 bg-muted rounded mb-sm" />
+ <div className="h-icon-xs bg-muted rounded mb-sm" />
+ <div className="h-icon-lg bg-muted rounded mb-sm" />
  <div className="h-3 bg-muted rounded w-3/4" />
  </Card>
  ))}
@@ -197,7 +197,7 @@ export default function HistoryAnalyticsView({
  if (entries.length === 0) {
  return (
  <div className="flex flex-col items-center justify-center py-xl text-center">
- <BarChart3 className="h-12 w-12 text-muted-foreground mb-md" />
+ <BarChart3 className="h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Analytics Available</h3>
  <p className="text-muted-foreground mb-lg max-w-md">
  Add some history entries to see detailed analytics about your professional journey, skills, and growth patterns.
@@ -229,7 +229,7 @@ export default function HistoryAnalyticsView({
  <p className="text-sm text-muted-foreground">Total Entries</p>
  <p className="text-2xl font-bold">{analytics.totalEntries}</p>
  </div>
- <Activity className="h-8 w-8 text-blue-500" />
+ <Activity className="h-icon-lg w-icon-lg text-blue-500" />
  </div>
  </Card>
 
@@ -239,7 +239,7 @@ export default function HistoryAnalyticsView({
  <p className="text-sm text-muted-foreground">Current Roles</p>
  <p className="text-2xl font-bold">{analytics.currentEntries}</p>
  </div>
- <Clock className="h-8 w-8 text-green-500" />
+ <Clock className="h-icon-lg w-icon-lg text-green-500" />
  </div>
  </Card>
 
@@ -249,7 +249,7 @@ export default function HistoryAnalyticsView({
  <p className="text-sm text-muted-foreground">Total Experience</p>
  <p className="text-2xl font-bold">{formatDuration(analytics.totalExperience)}</p>
  </div>
- <Calendar className="h-8 w-8 text-purple-500" />
+ <Calendar className="h-icon-lg w-icon-lg text-purple-500" />
  </div>
  </Card>
 
@@ -259,7 +259,7 @@ export default function HistoryAnalyticsView({
  <p className="text-sm text-muted-foreground">Profile Completion</p>
  <p className="text-2xl font-bold">{Math.round(analytics.completionRate)}%</p>
  </div>
- <Target className="h-8 w-8 text-orange-500" />
+ <Target className="h-icon-lg w-icon-lg text-orange-500" />
  </div>
  </Card>
  </div>
@@ -268,7 +268,7 @@ export default function HistoryAnalyticsView({
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-lg">
- <PieChart className="h-5 w-5" />
+ <PieChart className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Entry Type Distribution</h3>
  </div>
  
@@ -283,7 +283,7 @@ export default function HistoryAnalyticsView({
  <div key={type} className="space-y-sm">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <Icon className={`h-4 w-4 text-${getEntryTypeColor(type as HistoryEntryType)}-500`} />
+ <Icon className={`h-icon-xs w-icon-xs text-${getEntryTypeColor(type as HistoryEntryType)}-500`} />
  <span className="capitalize font-medium">
  {type.replace('_', ' ')}
  </span>
@@ -302,7 +302,7 @@ export default function HistoryAnalyticsView({
  {/* Top Skills */}
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-lg">
- <Star className="h-5 w-5" />
+ <Star className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Top Skills</h3>
  </div>
  
@@ -331,7 +331,7 @@ export default function HistoryAnalyticsView({
  <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-lg">
- <BarChart3 className="h-5 w-5" />
+ <BarChart3 className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Activity by Year</h3>
  <div className="ml-auto">
  <Badge 
@@ -368,7 +368,7 @@ export default function HistoryAnalyticsView({
 
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-lg">
- <Building className="h-5 w-5" />
+ <Building className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Top Organizations</h3>
  </div>
  
@@ -400,7 +400,7 @@ export default function HistoryAnalyticsView({
  <div className="grid grid-cols-1 lg:grid-cols-3 gap-lg">
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-md">
- <Clock className="h-5 w-5" />
+ <Clock className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Duration Insights</h3>
  </div>
  
@@ -430,7 +430,7 @@ export default function HistoryAnalyticsView({
 
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-md">
- <MapPin className="h-5 w-5" />
+ <MapPin className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Location Insights</h3>
  </div>
  
@@ -449,7 +449,7 @@ export default function HistoryAnalyticsView({
 
  <Card className="p-lg">
  <div className="flex items-center gap-sm mb-md">
- <Award className="h-5 w-5" />
+ <Award className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Achievement Insights</h3>
  </div>
  

@@ -77,7 +77,7 @@ export default function ProgrammingEventsListView({
  <div className="col-span-3 space-y-xs">
  <div className="font-medium">{event.title}</div>
  {event.description && (
- <div className="text-sm text-muted-foreground line-clamp-2">
+ <div className="text-sm text-muted-foreground line-clamp-xs">
  {event.description}
  </div>
  )}
@@ -87,7 +87,7 @@ export default function ProgrammingEventsListView({
  </div>
  )}
  {event.tags.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {event.tags.slice(0, 3).map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}
@@ -111,11 +111,11 @@ export default function ProgrammingEventsListView({
 
  {/* Date & Time */}
  <div className="col-span-2 space-y-xs">
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <Calendar className="h-3 w-3" />
  {new Date(event.start_at).toLocaleDateString()}
  </div>
- <div className="flex items-center gap-1 text-sm text-muted-foreground">
+ <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Clock className="h-3 w-3" />
  {new Date(event.start_at).toLocaleTimeString()}
  </div>
@@ -129,7 +129,7 @@ export default function ProgrammingEventsListView({
  {/* Location */}
  <div className="col-span-2 space-y-xs">
  {event.location ? (
- <div className="flex items-center gap-1 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <MapPin className="h-3 w-3" />
  {event.location}
  </div>
@@ -137,7 +137,7 @@ export default function ProgrammingEventsListView({
  <div className="text-sm text-muted-foreground">No location</div>
  )}
  {event.capacity && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Users className="h-3 w-3" />
  {event.capacity} capacity
  </div>
@@ -152,7 +152,7 @@ export default function ProgrammingEventsListView({
  </div>
 
  {/* Actions */}
- <div className="col-span-1 flex items-center gap-1">
+ <div className="col-span-1 flex items-center gap-xs">
  <Button size="icon" variant="ghost" onClick={() => onView(event)}>
  <Eye className="h-3 w-3" />
  </Button>

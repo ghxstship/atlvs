@@ -55,21 +55,21 @@ export default function ProfessionalTableView({
 
  const getSortIcon = (field: SortField) => {
  if (sort.field !== field) {
- return <ArrowUpDown className="h-4 w-4" />;
+ return <ArrowUpDown className="h-icon-xs w-icon-xs" />;
  }
  return sort.direction === 'asc' ? 
- <ArrowUp className="h-4 w-4" /> : 
- <ArrowDown className="h-4 w-4" />;
+ <ArrowUp className="h-icon-xs w-icon-xs" /> : 
+ <ArrowDown className="h-icon-xs w-icon-xs" />;
  };
 
  if (loading) {
  return (
  <Card className="overflow-hidden">
- <div className="p-4">
- <div className="animate-pulse space-y-4">
- <div className="h-4 bg-muted rounded w-full"></div>
+ <div className="p-md">
+ <div className="animate-pulse space-y-md">
+ <div className="h-icon-xs bg-muted rounded w-full"></div>
  {[...Array(5)].map((_, i) => (
- <div key={i} className="h-12 bg-muted rounded"></div>
+ <div key={i} className="h-icon-2xl bg-muted rounded"></div>
  ))}
  </div>
  </div>
@@ -79,9 +79,9 @@ export default function ProfessionalTableView({
 
  if (profiles.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <User className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <User className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Professional Profiles</h3>
  <p className="text-muted-foreground mt-2">
@@ -96,9 +96,9 @@ export default function ProfessionalTableView({
  return (
  <Card className="overflow-hidden">
  {/* Header with bulk selection */}
- <div className="p-4 border-b">
+ <div className="p-md border-b">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -109,7 +109,7 @@ export default function ProfessionalTableView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -126,14 +126,14 @@ export default function ProfessionalTableView({
  <table className="w-full">
  <thead className="bg-muted/50">
  <tr>
- <th className="w-12 p-4">
+ <th className="w-icon-2xl p-md">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
  onCheckedChange={(checked) => onSelectAll(!!checked)}
  />
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -144,7 +144,7 @@ export default function ProfessionalTableView({
  {getSortIcon('job_title')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -155,7 +155,7 @@ export default function ProfessionalTableView({
  {getSortIcon('department')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -166,8 +166,8 @@ export default function ProfessionalTableView({
  {getSortIcon('employment_type')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Status</th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">Status</th>
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -178,9 +178,9 @@ export default function ProfessionalTableView({
  {getSortIcon('profile_completion_percentage')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Manager</th>
- <th className="text-left p-4 font-medium">Skills</th>
- <th className="text-left p-4 font-medium">
+ <th className="text-left p-md font-medium">Manager</th>
+ <th className="text-left p-md font-medium">Skills</th>
+ <th className="text-left p-md font-medium">
  <Button
  variant="ghost"
  size="sm"
@@ -191,8 +191,8 @@ export default function ProfessionalTableView({
  {getSortIcon('hire_date')}
  </Button>
  </th>
- <th className="text-left p-4 font-medium">Links</th>
- <th className="w-24 p-4 font-medium">Actions</th>
+ <th className="text-left p-md font-medium">Links</th>
+ <th className="w-component-lg p-md font-medium">Actions</th>
  </tr>
  </thead>
  <tbody>
@@ -207,13 +207,13 @@ export default function ProfessionalTableView({
  isSelected ? 'bg-primary/5' : ''
  } ${index % 2 === 0 ? 'bg-background' : 'bg-muted/20'}`}
  >
- <td className="p-4">
+ <td className="p-md">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(profile.id, !!checked)}
  />
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {profile.job_title || 'No Job Title'}
  </div>
@@ -223,12 +223,12 @@ export default function ProfessionalTableView({
  </div>
  )}
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {profile.department || 'No Department'}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  {profile.employment_type ? (
  <Badge variant="outline">
  {EMPLOYMENT_TYPE_LABELS[profile.employment_type]}
@@ -237,30 +237,30 @@ export default function ProfessionalTableView({
  <span className="text-muted-foreground">Not set</span>
  )}
  </td>
- <td className="p-4">
+ <td className="p-md">
  <Badge variant={getStatusBadgeVariant(profile.status)}>
  {PROFILE_STATUS_LABELS[profile.status]}
  </Badge>
  </td>
- <td className="p-4">
- <div className="flex items-center gap-2">
- <div className="flex-1 bg-muted rounded-full h-2 w-16">
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
+ <div className="flex-1 bg-muted rounded-full h-2 w-component-md">
  <div 
  className={`h-2 rounded-full bg-${getCompletionColor(completion)}-500`}
  style={{ width: `${completion}%` }}
  ></div>
  </div>
- <span className="text-sm font-medium w-10">
+ <span className="text-sm font-medium w-icon-xl">
  {completion}%
  </span>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="font-medium">
  {profile.manager_name || 'No Manager'}
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  <div className="text-center">
  <div className="font-medium">
  {profile.skills ? profile.skills.length : 0}
@@ -270,7 +270,7 @@ export default function ProfessionalTableView({
  </div>
  </div>
  </td>
- <td className="p-4">
+ <td className="p-md">
  {profile.hire_date ? (
  <div>
  <div className="text-sm">
@@ -284,8 +284,8 @@ export default function ProfessionalTableView({
  <span className="text-muted-foreground">Not set</span>
  )}
  </td>
- <td className="p-4">
- <div className="flex gap-1">
+ <td className="p-md">
+ <div className="flex gap-xs">
  {profile.linkedin_url && (
  <Button
  variant="ghost"
@@ -308,15 +308,15 @@ export default function ProfessionalTableView({
  )}
  </div>
  </td>
- <td className="p-4">
- <div className="flex items-center gap-1">
+ <td className="p-md">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onView(profile)}
  title="View"
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -324,7 +324,7 @@ export default function ProfessionalTableView({
  onClick={() => onEdit(profile)}
  title="Edit"
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -332,7 +332,7 @@ export default function ProfessionalTableView({
  onClick={() => onDelete(profile)}
  title="Delete"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>
@@ -344,12 +344,12 @@ export default function ProfessionalTableView({
  </div>
 
  {/* Footer */}
- <div className="p-4 border-t bg-muted/20">
+ <div className="p-md border-t bg-muted/20">
  <div className="flex items-center justify-between text-sm text-muted-foreground">
  <div>
  Showing {profiles.length} professional profiles
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span>Rows per page: 50</span>
  <Button variant="outline" size="sm">
  Previous

@@ -60,7 +60,7 @@ export default function LocationGridView({
  onEdit(location);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
 
  </div>
@@ -68,7 +68,7 @@ export default function LocationGridView({
  <div className="space-y-sm">
  {/* Location Image or Icon */}
  {location.images && location.images.length > 0 ? (
- <div className="h-32 bg-muted rounded-md overflow-hidden">
+ <div className="h-component-xl bg-muted rounded-md overflow-hidden">
  <Image
  src={location.images[0]}
  alt={location.name}
@@ -79,12 +79,12 @@ export default function LocationGridView({
  />
  </div>
  ) : (
- <div className="h-32 bg-muted rounded-md flex items-center justify-center">
- <TypeIcon className="h-12 w-12 text-muted-foreground" />
+ <div className="h-component-xl bg-muted rounded-md flex items-center justify-center">
+ <TypeIcon className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  </div>
  )}
  <div>
- <h3 className="font-semibold line-clamp-1">{location.name}</h3>
+ <h3 className="font-semibold line-clamp-xs">{location.name}</h3>
  <div className="flex items-center gap-xs mt-xs">
  <Badge variant={getTypeBadgeVariant(location.type || "other")}>
  {location.type || "other"}
@@ -99,7 +99,7 @@ export default function LocationGridView({
  {(location.address || location.city) && (
  <div className="flex items-start gap-xs text-sm text-muted-foreground">
  <MapPin className="h-3 w-3 mt-0.5 flex-shrink-0" />
- <span className="line-clamp-2">
+ <span className="line-clamp-xs">
  {[location.address, location.city, location.state]
  .filter(Boolean)
  .join(", ")}
@@ -171,7 +171,7 @@ export default function LocationGridView({
  onDuplicate(location);
  }}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -181,7 +181,7 @@ export default function LocationGridView({
  onDelete(location);
  }}
  >
- <Trash2 className="h-4 w-4 text-destructive" />
+ <Trash2 className="h-icon-xs w-icon-xs text-destructive" />
  </Button>
  </div>
  </div>

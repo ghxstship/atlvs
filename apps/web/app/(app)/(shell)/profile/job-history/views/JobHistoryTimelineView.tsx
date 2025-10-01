@@ -122,15 +122,15 @@ export default function JobHistoryTimelineView({
  
  {Array.from({ length: 4 }).map((_, i) => (
  <div key={i} className="relative flex items-start mb-lg">
- <div className="flex-shrink-0 w-16 h-16 bg-muted rounded-full animate-pulse" />
+ <div className="flex-shrink-0 w-component-md h-component-md bg-muted rounded-full animate-pulse" />
  <div className="ml-lg flex-1">
  <Card className="p-lg animate-pulse">
- <div className="h-4 bg-muted rounded mb-sm" />
+ <div className="h-icon-xs bg-muted rounded mb-sm" />
  <div className="h-3 bg-muted rounded mb-sm w-3/4" />
  <div className="h-3 bg-muted rounded mb-md w-1/2" />
  <div className="space-y-xs">
  <div className="h-2 bg-muted rounded w-full" />
- <div className="h-2 bg-muted rounded w-5/6" />
+ <div className="h-2 bg-muted rounded w-icon-sm/6" />
  </div>
  </Card>
  </div>
@@ -144,7 +144,7 @@ export default function JobHistoryTimelineView({
  if (entries.length === 0) {
  return (
  <div className="flex flex-col items-center justify-center py-xl text-center">
- <Clock className="h-12 w-12 text-muted-foreground mb-md" />
+ <Clock className="h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Job History</h3>
  <p className="text-muted-foreground mb-lg max-w-md">
  Start building your career timeline by adding your work experience and professional journey.
@@ -165,7 +165,7 @@ export default function JobHistoryTimelineView({
  <div key={year} className="mb-xl">
  {/* Year header */}
  <div className="relative flex items-center mb-lg">
- <div className="flex-shrink-0 w-16 h-16 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-sm z-10">
+ <div className="flex-shrink-0 w-component-md h-component-md bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-sm z-10">
  {year}
  </div>
  <div className="ml-lg">
@@ -186,18 +186,18 @@ export default function JobHistoryTimelineView({
  {/* Timeline node */}
  <div className="flex-shrink-0 relative">
  <Avatar 
- className={`w-16 h-16 border-4 border-background shadow-md cursor-pointer transition-all hover:scale-105 ${
+ className={`w-component-md h-component-md border-4 border-background shadow-md cursor-pointer transition-all hover:scale-105 ${
  isSelected ? 'ring-2 ring-primary ring-offset-2' : ''
  }`}
  onClick={() => onSelect(entry.id)}
  >
  <AvatarFallback className={`bg-${getEmploymentTypeColor(entry.employment_type)}-100 text-${getEmploymentTypeColor(entry.employment_type)}-600`}>
- <Briefcase className="h-6 w-6" />
+ <Briefcase className="h-icon-md w-icon-md" />
  </AvatarFallback>
  </Avatar>
  
  {entry.is_current && (
- <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-background animate-pulse" />
+ <div className="absolute -top-xs -right-1 w-icon-xs h-icon-xs bg-green-500 rounded-full border-2 border-background animate-pulse" />
  )}
  </div>
 
@@ -227,18 +227,18 @@ export default function JobHistoryTimelineView({
  {entry.job_title}
  </h3>
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span className="font-medium">{entry.company_name}</span>
  </div>
  {entry.department && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{entry.department}</span>
  </div>
  )}
  {entry.location && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{entry.location}</span>
  </div>
  )}
@@ -253,7 +253,7 @@ export default function JobHistoryTimelineView({
  onView(entry);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -263,7 +263,7 @@ export default function JobHistoryTimelineView({
  onEdit(entry);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -273,7 +273,7 @@ export default function JobHistoryTimelineView({
  onDelete(entry.id);
  }}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -281,16 +281,16 @@ export default function JobHistoryTimelineView({
  {/* Date and Duration */}
  <div className="flex items-center gap-md mb-md text-sm text-muted-foreground">
  <div className="flex items-center gap-xs">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>{formatDateRange(entry.start_date, entry.end_date, entry.is_current)}</span>
  </div>
  <div className="flex items-center gap-xs">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>{calculateDuration(entry.start_date, entry.end_date, entry.is_current)}</span>
  </div>
  {entry.salary_range && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4" />
+ <DollarSign className="h-icon-xs w-icon-xs" />
  <span>{entry.salary_range}</span>
  </div>
  )}
@@ -391,7 +391,7 @@ export default function JobHistoryTimelineView({
 
  {/* Connection line to next entry */}
  {!isLast && (
- <div className="absolute left-8 top-16 w-0.5 h-8 bg-border" />
+ <div className="absolute left-8 top-smxl w-0.5 h-icon-lg bg-border" />
  )}
  </div>
  );

@@ -13,7 +13,7 @@ export * from './EnhancedUniversalDrawer';
 export * from './Table';
 export * from './Navigation';
 export * from './Sidebar';
-export * from './Toast';
+export * from '../components/Toast';
 export * from './CodeBlock';
 export * from './ErrorBoundary';
 export * from './Dropdown';

@@ -200,9 +200,9 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading organization settings...</p>
         </div>
       </div>
@@ -210,19 +210,19 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       {/* Organization Profile */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Building className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Building className="h-icon-sm w-icon-sm" />
             Organization Profile
           </CardTitle>
         </CardHeader>
-        <CardContent className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="space-y-4">
-              <div className="space-y-2">
+        <CardContent className="space-y-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <div className="space-y-md">
+              <div className="space-y-xs">
                 <Label htmlFor="org-name">Organization Name</Label>
                 <Input
                   id="org-name"
@@ -232,7 +232,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label htmlFor="org-description">Description</Label>
                 <Textarea
                   id="org-description"
@@ -243,7 +243,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label htmlFor="org-website">Website</Label>
                 <Input
                   id="org-website"
@@ -255,8 +255,8 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
               </div>
             </div>
 
-            <div className="space-y-4">
-              <div className="space-y-2">
+            <div className="space-y-md">
+              <div className="space-y-xs">
                 <Label htmlFor="org-industry">Industry</Label>
                 <Select
                   value={organization?.industry || ''}
@@ -278,7 +278,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 </Select>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label htmlFor="org-size">Organization Size</Label>
                 <Select
                   value={organization?.size || ''}
@@ -297,18 +297,18 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                 </Select>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-xs">
                 <Label>Organization Logo</Label>
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-muted rounded-lg flex items-center justify-center">
+                <div className="flex items-center gap-md">
+                  <div className="w-component-md h-component-md bg-muted rounded-lg flex items-center justify-center">
                     {organization?.logo_url ? (
                       <img src={organization.logo_url} alt="Logo" className="w-full h-full object-cover rounded-lg" />
                     ) : (
-                      <Building className="h-8 w-8 text-muted-foreground" />
+                      <Building className="h-icon-lg w-icon-lg text-muted-foreground" />
                     )}
                   </div>
                   <Button variant="outline" size="sm">
-                    <Upload className="h-4 w-4 mr-2" />
+                    <Upload className="h-icon-xs w-icon-xs mr-2" />
                     Upload Logo
                   </Button>
                 </div>
@@ -320,7 +320,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
 
           <div className="flex justify-end">
             <Button onClick={handleSaveOrganization} disabled={saving}>
-              <Building className="h-4 w-4 mr-2" />
+              <Building className="h-icon-xs w-icon-xs mr-2" />
               {saving ? 'Saving...' : 'Save Organization'}
             </Button>
           </div>
@@ -330,17 +330,17 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
       {/* Domain Management */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Globe className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Globe className="h-icon-sm w-icon-sm" />
             Domain Management
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Manage verified domains for your organization. Verified domains allow you to invite users with matching email addresses.
           </p>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-md">
           {/* Add Domain */}
-          <div className="flex gap-4">
+          <div className="flex gap-md">
             <div className="flex-1">
               <Input
                 placeholder="example.com"
@@ -355,18 +355,18 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
           </div>
 
           {/* Domains List */}
-          <div className="space-y-4">
+          <div className="space-y-md">
             {domains.length === 0 ? (
-              <div className="text-center py-8 text-muted-foreground">
-                <Globe className="mx-auto h-12 w-12 mb-4" />
+              <div className="text-center py-xl text-muted-foreground">
+                <Globe className="mx-auto h-icon-2xl w-icon-2xl mb-4" />
                 <p>No domains configured</p>
                 <p className="text-sm">Add a domain above to get started</p>
               </div>
             ) : (
               domains.map((domain) => (
-                <div key={domain.id} className="flex items-center justify-between p-4 border rounded-lg">
-                  <div className="flex items-center gap-3">
-                    <div className={`p-2 rounded-full ${
+                <div key={domain.id} className="flex items-center justify-between p-md border rounded-lg">
+                  <div className="flex items-center gap-sm">
+                    <div className={`p-xs rounded-full ${
                       domain.status === 'verified'
                         ? 'bg-green-100 dark:bg-green-900'
                         : domain.status === 'pending'
@@ -374,11 +374,11 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                         : 'bg-red-100 dark:bg-red-900'
                     }`}>
                       {domain.status === 'verified' ? (
-                        <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
+                        <CheckCircle className="h-icon-xs w-icon-xs text-green-600 dark:text-green-400" />
                       ) : domain.status === 'pending' ? (
-                        <AlertTriangle className="h-4 w-4 text-yellow-600 dark:text-yellow-400" />
+                        <AlertTriangle className="h-icon-xs w-icon-xs text-yellow-600 dark:text-yellow-400" />
                       ) : (
-                        <AlertTriangle className="h-4 w-4 text-red-600 dark:text-red-400" />
+                        <AlertTriangle className="h-icon-xs w-icon-xs text-red-600 dark:text-red-400" />
                       )}
                     </div>
                     <div>
@@ -390,7 +390,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <Badge variant={
                       domain.status === 'verified' ? 'default' :
                       domain.status === 'pending' ? 'secondary' : 'destructive'
@@ -414,7 +414,7 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
                       onClick={() => handleRemoveDomain(domain.id)}
                       className="text-red-600 hover:text-red-700 hover:bg-red-50"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -427,17 +427,17 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
       {/* Demo Data Management */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <Trash2 className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <Trash2 className="h-icon-sm w-icon-sm" />
             Demo Data Management
           </CardTitle>
           <p className="text-sm text-muted-foreground">
             Remove demo data that was pre-populated in your organization.
           </p>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-md">
           <Alert>
-            <AlertTriangle className="h-4 w-4" />
+            <AlertTriangle className="h-icon-xs w-icon-xs" />
             <AlertDescription>
               This action will permanently remove all demo data from your organization. This cannot be undone.
             </AlertDescription>
@@ -449,20 +449,20 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
               onClick={() => setShowDemoData(true)}
               className="text-red-600 border-red-200 hover:bg-red-50"
             >
-              <Trash2 className="h-4 w-4 mr-2" />
+              <Trash2 className="h-icon-xs w-icon-xs mr-2" />
               Remove Demo Data
             </Button>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-md">
               <p className="text-sm text-muted-foreground">
                 Are you sure you want to remove all demo data? This will delete sample projects, users, and data.
               </p>
-              <div className="flex gap-3">
+              <div className="flex gap-sm">
                 <Button
                   variant="destructive"
                   onClick={handleRemoveDemoData}
                 >
-                  <Trash2 className="h-4 w-4 mr-2" />
+                  <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                   Yes, Remove Demo Data
                 </Button>
                 <Button
@@ -480,19 +480,19 @@ export default function OrganizationSettings({ userId, orgId }: OrganizationSett
       {/* Additional Settings */}
       <Card>
         <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <SettingsIcon className="h-5 w-5" />
+          <CardTitle className="flex items-center gap-xs">
+            <SettingsIcon className="h-icon-sm w-icon-sm" />
             Additional Settings
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
             <Button variant="outline" className="justify-start">
-              <Building className="h-4 w-4 mr-2" />
+              <Building className="h-icon-xs w-icon-xs mr-2" />
               Export Organization Data
             </Button>
             <Button variant="outline" className="justify-start">
-              <SettingsIcon className="h-4 w-4 mr-2" />
+              <SettingsIcon className="h-icon-xs w-icon-xs mr-2" />
               Advanced Settings
             </Button>
           </div>

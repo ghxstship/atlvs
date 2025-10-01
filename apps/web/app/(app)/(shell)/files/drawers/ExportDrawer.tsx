@@ -149,7 +149,7 @@ export default function ExportDrawer({
       {/* Drawer */}
       <div className="relative ml-auto w-full max-w-2xl bg-white shadow-xl transform transition-transform overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between p-lg border-b border-gray-200">
           <div>
             <h2 className="text-xl font-semibold text-gray-900">Export Files</h2>
             <p className="text-sm text-gray-500">
@@ -157,18 +157,18 @@ export default function ExportDrawer({
             </p>
           </div>
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="w-4 h-4" />
+            <X className="w-icon-xs h-icon-xs" />
           </Button>
         </div>
 
         {/* Content */}
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-lg">
           {exportResults ? (
             /* Results */
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               {exportResults.success ? (
-                <div className="space-y-4">
-                  <CheckCircle className="w-12 h-12 text-green-500 mx-auto" />
+                <div className="space-y-md">
+                  <CheckCircle className="w-icon-2xl h-icon-2xl text-green-500 mx-auto" />
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Export Started</h3>
                     <p className="text-sm text-gray-500 mt-1">
@@ -176,9 +176,9 @@ export default function ExportDrawer({
                     </p>
                   </div>
                   {exportJobId && (
-                    <div className="bg-gray-50 p-3 rounded-lg">
+                    <div className="bg-gray-50 p-sm rounded-lg">
                       <p className="text-sm text-gray-600">
-                        Job ID: <code className="bg-gray-200 px-1 rounded text-xs">{exportJobId}</code>
+                        Job ID: <code className="bg-gray-200 px-xs rounded text-xs">{exportJobId}</code>
                       </p>
                     </div>
                   )}
@@ -187,8 +187,8 @@ export default function ExportDrawer({
                   </Button>
                 </div>
               ) : (
-                <div className="space-y-4">
-                  <AlertCircle className="w-12 h-12 text-red-500 mx-auto" />
+                <div className="space-y-md">
+                  <AlertCircle className="w-icon-2xl h-icon-2xl text-red-500 mx-auto" />
                   <div>
                     <h3 className="text-lg font-medium text-gray-900">Export Failed</h3>
                     <p className="text-sm text-red-600 mt-1">{exportResults.error}</p>
@@ -201,25 +201,25 @@ export default function ExportDrawer({
             </div>
           ) : (
             /* Export Form */
-            <div className="space-y-6">
+            <div className="space-y-lg">
               {/* Format Selection */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Export Format
                 </label>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-sm">
                   {(['csv', 'xlsx', 'json', 'pdf'] as ExportFormat[]).map((format) => (
                     <div
                       key={format}
-                      className={`p-3 border rounded-lg cursor-pointer transition-colors ${
+                      className={`p-sm border rounded-lg cursor-pointer transition-colors ${
                         selectedFormat === format
                           ? 'border-blue-500 bg-blue-50'
                           : 'border-gray-200 hover:border-gray-300'
                       }`}
                       onClick={() => setSelectedFormat(format)}
                     >
-                      <div className="flex items-center gap-2">
-                        <FileText className="w-5 h-5 text-gray-600" />
+                      <div className="flex items-center gap-xs">
+                        <FileText className="w-icon-sm h-icon-sm text-gray-600" />
                         <span className="font-medium uppercase">{format}</span>
                       </div>
                       <p className="text-xs text-gray-500 mt-1">
@@ -236,9 +236,9 @@ export default function ExportDrawer({
                   Files to Export ({filteredCount} selected)
                 </label>
 
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   {/* Select All */}
-                  <div className="flex items-center gap-2 p-2 border border-gray-200 rounded">
+                  <div className="flex items-center gap-xs p-xs border border-gray-200 rounded">
                     <Checkbox
                       checked={selectedCount === availableFiles.length}
                       onCheckedChange={(checked) => {
@@ -255,7 +255,7 @@ export default function ExportDrawer({
                   </div>
 
                   {/* Filters */}
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-3 gap-sm">
                     <Select
                       value={exportOptions.filters.category}
                       onValueChange={(value) => setExportOptions(prev => ({
@@ -321,8 +321,8 @@ export default function ExportDrawer({
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   Export Options
                 </label>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-2">
+                <div className="space-y-sm">
+                  <div className="flex items-center gap-xs">
                     <Checkbox
                       id="include-metadata"
                       checked={exportOptions.include_metadata}
@@ -336,7 +336,7 @@ export default function ExportDrawer({
                     </label>
                   </div>
 
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <Checkbox
                       id="include-versions"
                       checked={exportOptions.include_versions}
@@ -353,9 +353,9 @@ export default function ExportDrawer({
               </div>
 
               {/* Export Summary */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-md">
                 <h4 className="text-sm font-medium text-blue-900 mb-2">Export Summary</h4>
-                <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="grid grid-cols-2 gap-md text-sm">
                   <div>
                     <span className="text-blue-700">Files to export:</span>
                     <span className="ml-2 font-medium">{filteredCount}</span>
@@ -380,8 +380,8 @@ export default function ExportDrawer({
 
         {/* Footer */}
         {!exportResults && (
-          <div className="border-t border-gray-200 p-6">
-            <div className="flex justify-end gap-3">
+          <div className="border-t border-gray-200 p-lg">
+            <div className="flex justify-end gap-sm">
               <Button variant="outline" onClick={onClose}>
                 Cancel
               </Button>
@@ -389,7 +389,7 @@ export default function ExportDrawer({
                 onClick={handleExport}
                 disabled={isExporting || filteredCount === 0}
               >
-                <Download className="w-4 h-4 mr-2" />
+                <Download className="w-icon-xs h-icon-xs mr-2" />
                 {isExporting ? 'Starting Export...' : `Export ${filteredCount} Files`}
               </Button>
             </div>
@@ -398,8 +398,8 @@ export default function ExportDrawer({
 
         {/* Export Progress */}
         {isExporting && (
-          <div className="border-t border-gray-200 p-6">
-            <div className="space-y-3">
+          <div className="border-t border-gray-200 p-lg">
+            <div className="space-y-sm">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Preparing export...</span>
                 <span className="text-sm text-gray-500">{exportProgress}%</span>

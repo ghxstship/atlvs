@@ -78,7 +78,7 @@ export default async function TrackingDetailPage({ params }: TrackingDetailPageP
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested tracking record could not be found.</p>
             </div>
           )
@@ -99,16 +99,16 @@ export default async function TrackingDetailPage({ params }: TrackingDetailPageP
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Tracking Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Truck className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Truck className="h-icon-sm w-icon-sm" />
                 Tracking Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Tracking Number</span>
                 <span className="text-sm font-mono">
@@ -142,12 +142,12 @@ export default async function TrackingDetailPage({ params }: TrackingDetailPageP
           {/* Associated Order */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Package className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Package className="h-icon-sm w-icon-sm" />
                 Associated Order
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">
                   Order {(tracking as any).order?.order_number || (tracking as any).order?.id}
@@ -162,13 +162,13 @@ export default async function TrackingDetailPage({ params }: TrackingDetailPageP
           {/* Shipping Address */}
           <Card className="md:col-span-2">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <MapPin className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <MapPin className="h-icon-sm w-icon-sm" />
                 Shipping Information
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="grid gap-md md:grid-cols-2">
                 <div>
                   <h4 className="font-medium mb-2">From</h4>
                   <p className="text-sm text-muted-foreground">
@@ -196,7 +196,7 @@ export default async function TrackingDetailPage({ params }: TrackingDetailPageP
             <CardTitle>Shipping Updates</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Tracking updates will be displayed here when available.
             </p>
           </CardContent>

@@ -181,9 +181,9 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
              
               onClick={() => navigateMonth('prev')}
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
-            <h2 className="text-heading-4 text-heading-4 min-w-[200px] text-center">
+            <h2 className="text-heading-4 text-heading-4 min-w-content-narrow text-center">
               {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}
             </h2>
             <Button
@@ -191,7 +191,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
              
               onClick={() => navigateMonth('next')}
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
           
@@ -206,11 +206,11 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
 
         <div className="flex items-center gap-sm">
           <Button>
-            <Filter className="h-4 w-4 mr-sm" />
+            <Filter className="h-icon-xs w-icon-xs mr-sm" />
             Filter
           </Button>
           <Button>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Create Event
           </Button>
         </div>
@@ -253,7 +253,7 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
             return (
               <div
                 key={index}
-                className={`min-h-[120px] p-sm border-b border-r last:border-r-0 ${
+                className={`min-h-header-lg p-sm border-b border-r last:border-r-0 ${
                   date ? 'bg-background hover:bg-secondary/50' : 'bg-secondary/20'
                 } ${isToday ? 'bg-accent/10' : ''}`}
               >
@@ -313,10 +313,10 @@ export default function CalendarClient({ orgId }: { orgId: string }) {
             </div>
           ) : events.length === 0 ? (
             <div className="text-center py-xl color-muted">
-              <Calendar className="h-12 w-12 mx-auto mb-md opacity-50" />
+              <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
               <p>No events scheduled for this month</p>
               <Button>
-                <Plus className="h-4 w-4 mr-sm" />
+                <Plus className="h-icon-xs w-icon-xs mr-sm" />
                 Create Your First Event
               </Button>
             </div>

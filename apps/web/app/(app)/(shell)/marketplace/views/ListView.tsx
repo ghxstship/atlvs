@@ -104,9 +104,9 @@ export default function ListView({
 
   if (isLoading) {
     return (
-      <div className="space-y-3">
+      <div className="space-y-sm">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="h-16 bg-muted animate-pulse rounded-lg" />
+          <div key={i} className="h-component-md bg-muted animate-pulse rounded-lg" />
         ))}
       </div>
     );
@@ -114,7 +114,7 @@ export default function ListView({
 
   if (error) {
     return (
-      <div className="text-center py-8">
+      <div className="text-center py-xl">
         <p className="text-muted-foreground mb-4">Failed to load listings</p>
         <Button variant="outline" onClick={() => window.location.reload()}>
           Retry
@@ -124,10 +124,10 @@ export default function ListView({
   }
 
   return (
-    <div className="space-y-3">
+    <div className="space-y-sm">
       {/* Header with select all */}
       {onSelectionChange && listings.length > 0 && (
-        <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
+        <div className="flex items-center gap-sm p-sm bg-muted/50 rounded-lg">
           <input
             type="checkbox"
             checked={selectedListings.length === listings.length && listings.length > 0}
@@ -147,12 +147,12 @@ export default function ListView({
       {listings.map((listing) => (
         <div
           key={listing.id}
-          className={`border rounded-lg p-4 cursor-pointer transition-all hover:shadow-sm hover:border-primary/20 ${
+          className={`border rounded-lg p-md cursor-pointer transition-all hover:shadow-sm hover:border-primary/20 ${
             selectedListings.includes(listing.id) ? 'ring-2 ring-primary bg-primary/5' : ''
           }`}
           onClick={() => onListingSelect?.(listing)}
         >
-          <div className="flex items-start gap-4">
+          <div className="flex items-start gap-md">
             {/* Selection Checkbox */}
             {onSelectionChange && (
               <input
@@ -168,18 +168,18 @@ export default function ListView({
 
             {/* Featured indicator */}
             {listing.featured && (
-              <Star className="h-5 w-5 text-yellow-500 fill-current flex-shrink-0 mt-1" />
+              <Star className="h-icon-sm w-icon-sm text-yellow-500 fill-current flex-shrink-0 mt-1" />
             )}
 
             {/* Content */}
             <div className="flex-1 min-w-0">
-              <div className="flex items-start justify-between gap-4">
+              <div className="flex items-start justify-between gap-md">
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-semibold text-lg leading-tight line-clamp-1 mb-2">
+                  <h3 className="font-semibold text-lg leading-tight line-clamp-xs mb-2">
                     {listing.title}
                   </h3>
 
-                  <div className="flex items-center gap-2 mb-3">
+                  <div className="flex items-center gap-xs mb-3">
                     <Badge variant={getTypeVariant(listing.type)}>
                       {listing.type}
                     </Badge>
@@ -192,16 +192,16 @@ export default function ListView({
                   </div>
 
                   {listing.description && (
-                    <p className="text-muted-foreground text-sm line-clamp-2 mb-3">
+                    <p className="text-muted-foreground text-sm line-clamp-xs mb-3">
                       {listing.description}
                     </p>
                   )}
 
-                  <div className="flex flex-wrap items-center gap-4 text-sm">
+                  <div className="flex flex-wrap items-center gap-md text-sm">
                     {/* Pricing */}
                     {listing.pricing?.amount && (
-                      <div className="flex items-center gap-1">
-                        <DollarSign className="h-4 w-4 text-green-600" />
+                      <div className="flex items-center gap-xs">
+                        <DollarSign className="h-icon-xs w-icon-xs text-green-600" />
                         <span className="font-medium text-green-600">
                           {formatCurrency(listing.pricing.amount, listing.pricing.currency)}
                         </span>
@@ -213,8 +213,8 @@ export default function ListView({
 
                     {/* Location */}
                     {(listing.location?.city || listing.location?.isRemote) && (
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <MapPin className="h-4 w-4" />
+                      <div className="flex items-center gap-xs text-muted-foreground">
+                        <MapPin className="h-icon-xs w-icon-xs" />
                         <span>
                           {listing.location.isRemote
                             ? 'Remote'
@@ -227,14 +227,14 @@ export default function ListView({
                     )}
 
                     {/* Responses */}
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <MessageSquare className="h-4 w-4" />
+                    <div className="flex items-center gap-xs text-muted-foreground">
+                      <MessageSquare className="h-icon-xs w-icon-xs" />
                       <span>{listing.response_count || 0} responses</span>
                     </div>
 
                     {/* Created date */}
-                    <div className="flex items-center gap-1 text-muted-foreground">
-                      <Calendar className="h-4 w-4" />
+                    <div className="flex items-center gap-xs text-muted-foreground">
+                      <Calendar className="h-icon-xs w-icon-xs" />
                       <span>
                         {new Date(listing.created_at).toLocaleDateString()}
                       </span>
@@ -242,8 +242,8 @@ export default function ListView({
 
                     {/* Creator */}
                     {listing.creator && (
-                      <div className="flex items-center gap-1 text-muted-foreground">
-                        <User className="h-4 w-4" />
+                      <div className="flex items-center gap-xs text-muted-foreground">
+                        <User className="h-icon-xs w-icon-xs" />
                         <span>{listing.creator.name || 'Anonymous'}</span>
                       </div>
                     )}
@@ -251,7 +251,7 @@ export default function ListView({
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 flex-shrink-0">
+                <div className="flex items-center gap-xs flex-shrink-0">
                   <Button
                     size="sm"
                     variant="outline"
@@ -282,7 +282,7 @@ export default function ListView({
                         variant="ghost"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <MoreHorizontal className="h-4 w-4" />
+                        <MoreHorizontal className="h-icon-xs w-icon-xs" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
@@ -291,12 +291,12 @@ export default function ListView({
                       >
                         {listing.featured ? (
                           <>
-                            <StarOff className="mr-2 h-4 w-4" />
+                            <StarOff className="mr-2 h-icon-xs w-icon-xs" />
                             Unfeature
                           </>
                         ) : (
                           <>
-                            <Star className="mr-2 h-4 w-4" />
+                            <Star className="mr-2 h-icon-xs w-icon-xs" />
                             Feature
                           </>
                         )}
@@ -304,14 +304,14 @@ export default function ListView({
                       <DropdownMenuItem
                         onClick={() => marketplaceService.archiveListing(orgId, '', listing.id)}
                       >
-                        <Archive className="mr-2 h-4 w-4" />
+                        <Archive className="mr-2 h-icon-xs w-icon-xs" />
                         Archive
                       </DropdownMenuItem>
                       <DropdownMenuItem
                         onClick={() => onListingDelete?.(listing)}
                         className="text-destructive"
                       >
-                        <Trash2 className="mr-2 h-4 w-4" />
+                        <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                         Delete
                       </DropdownMenuItem>
                     </DropdownMenuContent>
@@ -325,9 +325,9 @@ export default function ListView({
 
       {/* Empty state */}
       {listings.length === 0 && (
-        <div className="text-center py-12">
-          <div className="mx-auto w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
-            <FileText className="h-6 w-6 text-muted-foreground" />
+        <div className="text-center py-xsxl">
+          <div className="mx-auto w-component-md h-component-md bg-muted rounded-full flex items-center justify-center mb-4">
+            <FileText className="h-icon-md w-icon-md text-muted-foreground" />
           </div>
           <h3 className="text-lg font-medium mb-2">No listings found</h3>
           <p className="text-muted-foreground mb-4">

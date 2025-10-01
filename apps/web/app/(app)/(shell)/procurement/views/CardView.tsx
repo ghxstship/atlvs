@@ -45,7 +45,7 @@ export const CardView: React.FC<CardViewProps> = ({
       <div className={`grid grid-cols-${columns} gap-${gap} p-md`}>
         {Array.from({ length: 6 }).map((_, i) => (
           <Card key={i} className="animate-pulse">
-            <div className="h-32 bg-muted rounded"></div>
+            <div className="h-component-xl bg-muted rounded"></div>
           </Card>
         ))}
       </div>
@@ -99,21 +99,21 @@ export const CardView: React.FC<CardViewProps> = ({
                   variant="outline"
                   onClick={() => handleView(item)}
                 >
-                  <Eye className="h-4 w-4" />
+                  <Eye className="h-icon-xs w-icon-xs" />
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => handleEdit(item)}
                 >
-                  <Edit className="h-4 w-4" />
+                  <Edit className="h-icon-xs w-icon-xs" />
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
                   onClick={() => handleDelete(item.id)}
                 >
-                  <Trash2 className="h-4 w-4" />
+                  <Trash2 className="h-icon-xs w-icon-xs" />
                 </Button>
               </div>
             )}
@@ -124,7 +124,7 @@ export const CardView: React.FC<CardViewProps> = ({
       {data.length === 0 && config.emptyState && (
         <div className="col-span-full text-center py-xl">
           <div className="text-muted-foreground">
-            <div className="h-12 w-12 mx-auto mb-md bg-muted rounded-lg flex items-center justify-center">
+            <div className="h-icon-2xl w-icon-2xl mx-auto mb-md bg-muted rounded-lg flex items-center justify-center">
               📋
             </div>
             <p className="mb-sm">{config.emptyState.title}</p>

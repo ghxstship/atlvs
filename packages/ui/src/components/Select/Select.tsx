@@ -71,7 +71,7 @@ export const Select: React.FC<SelectProps> = ({
 
 // Select Trigger Component
 const selectTriggerVariants = cva(
-  'flex h-10 w-full items-center justify-between rounded-md border border-input bg-background px-sm py-sm text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200',
+  'flex h-icon-xl w-full items-center justify-between rounded-md border border-input bg-background px-sm py-sm text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200',
   {
     variants: {
       variant: {
@@ -79,7 +79,7 @@ const selectTriggerVariants = cva(
         outline: 'border-border hover:border-border/80',
       },
       size: {
-        default: 'h-10 px-sm py-sm',
+        default: 'h-icon-xl px-sm py-sm',
         sm: 'h-9 px-sm py-xs text-sm',
         lg: 'h-11 px-md py-sm',
       },
@@ -113,7 +113,7 @@ export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerPr
       >
         {children}
         <ChevronDown className={clsx(
-          'h-4 w-4 opacity-50 transition-transform duration-200',
+          'h-icon-xs w-icon-xs opacity-50 transition-transform duration-200',
           open && 'rotate-180'
         )} />
       </button>
@@ -199,7 +199,7 @@ export const SelectItem: React.FC<SelectItemProps> = ({
       onClick={disabled ? undefined : () => onValueChange(value)}
     >
       <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
-        {isSelected && <Check className="h-4 w-4" />}
+        {isSelected && <Check className="h-icon-xs w-icon-xs" />}
       </span>
       {children}
     </div>

@@ -71,10 +71,10 @@ export default function DetailDrawer({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case 'active': return <CheckCircle className="h-4 w-4 text-green-500" />;
-      case 'draft': return <AlertCircle className="h-4 w-4 text-yellow-500" />;
-      case 'archived': return <Archive className="h-4 w-4 text-gray-500" />;
-      default: return <AlertCircle className="h-4 w-4 text-gray-500" />;
+      case 'active': return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
+      case 'draft': return <AlertCircle className="h-icon-xs w-icon-xs text-yellow-500" />;
+      case 'archived': return <Archive className="h-icon-xs w-icon-xs text-gray-500" />;
+      default: return <AlertCircle className="h-icon-xs w-icon-xs text-gray-500" />;
     }
   };
 
@@ -97,19 +97,19 @@ export default function DetailDrawer({
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex-1 overflow-y-auto p-6">
+        <div className="flex-1 overflow-y-auto p-lg">
           {isLoading ? (
-            <div className="space-y-4">
-              <div className="h-8 bg-muted animate-pulse rounded" />
-              <div className="h-32 bg-muted animate-pulse rounded" />
-              <div className="grid grid-cols-2 gap-4">
-                <div className="h-20 bg-muted animate-pulse rounded" />
-                <div className="h-20 bg-muted animate-pulse rounded" />
+            <div className="space-y-md">
+              <div className="h-icon-lg bg-muted animate-pulse rounded" />
+              <div className="h-component-xl bg-muted animate-pulse rounded" />
+              <div className="grid grid-cols-2 gap-md">
+                <div className="h-component-lg bg-muted animate-pulse rounded" />
+                <div className="h-component-lg bg-muted animate-pulse rounded" />
               </div>
             </div>
           ) : error ? (
-            <div className="text-center py-8">
-              <AlertCircle className="mx-auto h-12 w-12 text-destructive mb-4" />
+            <div className="text-center py-xl">
+              <AlertCircle className="mx-auto h-icon-2xl w-icon-2xl text-destructive mb-4" />
               <h3 className="text-lg font-medium mb-2">Failed to load listing</h3>
               <p className="text-muted-foreground mb-4">
                 There was an error loading the listing details
@@ -119,22 +119,22 @@ export default function DetailDrawer({
               </Button>
             </div>
           ) : listing ? (
-            <div className="space-y-6">
+            <div className="space-y-lg">
               {/* Header Section */}
-              <div className="space-y-4">
+              <div className="space-y-md">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
                     <h2 className="text-2xl font-bold leading-tight mb-2">
                       {listing.title}
                     </h2>
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-xs mb-3">
                       <Badge variant={getTypeVariant(listing.type)} className="text-sm">
                         {listing.type}
                       </Badge>
                       <Badge variant="outline" className="text-sm">
                         {listing.category}
                       </Badge>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-xs">
                         {getStatusIcon(listing.status)}
                         <Badge
                           variant={listing.status === 'active' ? 'default' : 'secondary'}
@@ -153,13 +153,13 @@ export default function DetailDrawer({
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex gap-2 ml-4">
+                  <div className="flex gap-xs ml-4">
                     <Button
                       size="sm"
                       variant="outline"
                       onClick={() => onEdit?.(listing)}
                     >
-                      <Edit className="h-4 w-4 mr-2" />
+                      <Edit className="h-icon-xs w-icon-xs mr-2" />
                       Edit
                     </Button>
                     <Button
@@ -168,9 +168,9 @@ export default function DetailDrawer({
                       onClick={() => onFeature?.(listing)}
                     >
                       {listing.featured ? (
-                        <StarOff className="h-4 w-4 mr-2" />
+                        <StarOff className="h-icon-xs w-icon-xs mr-2" />
                       ) : (
-                        <Star className="h-4 w-4 mr-2" />
+                        <Star className="h-icon-xs w-icon-xs mr-2" />
                       )}
                       {listing.featured ? 'Unfeature' : 'Feature'}
                     </Button>
@@ -179,7 +179,7 @@ export default function DetailDrawer({
                       variant="outline"
                       onClick={() => onArchive?.(listing)}
                     >
-                      <Archive className="h-4 w-4 mr-2" />
+                      <Archive className="h-icon-xs w-icon-xs mr-2" />
                       Archive
                     </Button>
                     <Button
@@ -187,7 +187,7 @@ export default function DetailDrawer({
                       variant="destructive"
                       onClick={() => onDelete?.(listing)}
                     >
-                      <Trash2 className="h-4 w-4 mr-2" />
+                      <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                       Delete
                     </Button>
                   </div>
@@ -195,7 +195,7 @@ export default function DetailDrawer({
 
                 {/* Description */}
                 {listing.description && (
-                  <div className="bg-muted/50 rounded-lg p-4">
+                  <div className="bg-muted/50 rounded-lg p-md">
                     <h3 className="font-medium mb-2">Description</h3>
                     <p className="text-muted-foreground whitespace-pre-wrap">
                       {listing.description}
@@ -207,15 +207,15 @@ export default function DetailDrawer({
               <Separator />
 
               {/* Pricing & Details */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
                 {/* Pricing Card */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <DollarSign className="h-5 w-5" />
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold flex items-center gap-xs">
+                    <DollarSign className="h-icon-sm w-icon-sm" />
                     Pricing
                   </h3>
 
-                  <div className="space-y-3">
+                  <div className="space-y-sm">
                     <div className="flex justify-between items-center">
                       <span className="text-muted-foreground">Amount</span>
                       <span className="font-medium">
@@ -240,13 +240,13 @@ export default function DetailDrawer({
                 </div>
 
                 {/* Location Card */}
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold flex items-center gap-2">
-                    <MapPin className="h-5 w-5" />
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold flex items-center gap-xs">
+                    <MapPin className="h-icon-sm w-icon-sm" />
                     Location
                   </h3>
 
-                  <div className="space-y-3">
+                  <div className="space-y-sm">
                     {listing.location?.isRemote ? (
                       <div className="flex justify-between items-center">
                         <span className="text-muted-foreground">Type</span>
@@ -277,13 +277,13 @@ export default function DetailDrawer({
               {/* Availability */}
               {listing.availability && (
                 <>
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold flex items-center gap-2">
-                      <Calendar className="h-5 w-5" />
+                  <div className="space-y-md">
+                    <h3 className="text-lg font-semibold flex items-center gap-xs">
+                      <Calendar className="h-icon-sm w-icon-sm" />
                       Availability
                     </h3>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
                       {listing.availability.startDate && (
                         <div>
                           <span className="text-muted-foreground text-sm">Start Date</span>
@@ -317,13 +317,13 @@ export default function DetailDrawer({
               {/* Contact Information */}
               {(listing.contactInfo || listing.creator) && (
                 <>
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-semibold flex items-center gap-2">
-                      <User className="h-5 w-5" />
+                  <div className="space-y-md">
+                    <h3 className="text-lg font-semibold flex items-center gap-xs">
+                      <User className="h-icon-sm w-icon-sm" />
                       Contact Information
                     </h3>
 
-                    <div className="space-y-3">
+                    <div className="space-y-sm">
                       {listing.creator && (
                         <div className="flex justify-between items-center">
                           <span className="text-muted-foreground">Created by</span>
@@ -334,8 +334,8 @@ export default function DetailDrawer({
                       {listing.contactInfo?.email && (
                         <div className="flex justify-between items-center">
                           <span className="text-muted-foreground">Email</span>
-                          <div className="flex items-center gap-2">
-                            <Mail className="h-4 w-4" />
+                          <div className="flex items-center gap-xs">
+                            <Mail className="h-icon-xs w-icon-xs" />
                             <span>{listing.contactInfo.email}</span>
                           </div>
                         </div>
@@ -344,8 +344,8 @@ export default function DetailDrawer({
                       {listing.contactInfo?.phone && (
                         <div className="flex justify-between items-center">
                           <span className="text-muted-foreground">Phone</span>
-                          <div className="flex items-center gap-2">
-                            <Phone className="h-4 w-4" />
+                          <div className="flex items-center gap-xs">
+                            <Phone className="h-icon-xs w-icon-xs" />
                             <span>{listing.contactInfo.phone}</span>
                           </div>
                         </div>
@@ -364,28 +364,28 @@ export default function DetailDrawer({
               )}
 
               {/* Statistics */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <MessageSquare className="h-5 w-5" />
+              <div className="space-y-md">
+                <h3 className="text-lg font-semibold flex items-center gap-xs">
+                  <MessageSquare className="h-icon-sm w-icon-sm" />
                   Statistics
                 </h3>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="text-center p-4 bg-muted/50 rounded-lg">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+                  <div className="text-center p-md bg-muted/50 rounded-lg">
                     <div className="text-2xl font-bold text-blue-600">
                       {listing.view_count || 0}
                     </div>
                     <div className="text-sm text-muted-foreground">Views</div>
                   </div>
 
-                  <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <div className="text-center p-md bg-muted/50 rounded-lg">
                     <div className="text-2xl font-bold text-green-600">
                       {listing.response_count || 0}
                     </div>
                     <div className="text-sm text-muted-foreground">Responses</div>
                   </div>
 
-                  <div className="text-center p-4 bg-muted/50 rounded-lg">
+                  <div className="text-center p-md bg-muted/50 rounded-lg">
                     <div className="text-2xl font-bold text-purple-600">
                       {listing.organization?.name || 'N/A'}
                     </div>
@@ -398,12 +398,12 @@ export default function DetailDrawer({
               {listing.requirements && listing.requirements.length > 0 && (
                 <>
                   <Separator />
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <h3 className="text-lg font-semibold">Requirements</h3>
-                    <ul className="space-y-2">
+                    <ul className="space-y-xs">
                       {listing.requirements.map((requirement, index) => (
-                        <li key={index} className="flex items-start gap-2">
-                          <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+                        <li key={index} className="flex items-start gap-xs">
+                          <CheckCircle className="h-icon-xs w-icon-xs text-green-500 mt-0.5 flex-shrink-0" />
                           <span className="text-sm">{requirement}</span>
                         </li>
                       ))}
@@ -416,9 +416,9 @@ export default function DetailDrawer({
               {listing.tags && listing.tags.length > 0 && (
                 <>
                   <Separator />
-                  <div className="space-y-4">
+                  <div className="space-y-md">
                     <h3 className="text-lg font-semibold">Tags</h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-xs">
                       {listing.tags.map((tag, index) => (
                         <Badge key={index} variant="secondary">
                           {tag}
@@ -431,13 +431,13 @@ export default function DetailDrawer({
 
               {/* Timestamps */}
               <Separator />
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold flex items-center gap-2">
-                  <Clock className="h-5 w-5" />
+              <div className="space-y-md">
+                <h3 className="text-lg font-semibold flex items-center gap-xs">
+                  <Clock className="h-icon-sm w-icon-sm" />
                   Timeline
                 </h3>
 
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <div className="flex justify-between items-center">
                     <span className="text-muted-foreground">Created</span>
                     <span>{new Date(listing.created_at).toLocaleString()}</span>
@@ -456,8 +456,8 @@ export default function DetailDrawer({
               </div>
             </div>
           ) : (
-            <div className="text-center py-8">
-              <Eye className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+            <div className="text-center py-xl">
+              <Eye className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
               <h3 className="text-lg font-medium mb-2">No listing selected</h3>
               <p className="text-muted-foreground">
                 Select a listing to view its details

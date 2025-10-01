@@ -289,7 +289,7 @@ export default function ProgrammingPerformancesClient({
  </p>
  </div>
  <Button onClick={handleCreatePerformance}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Performance
  </Button>
  </div>
@@ -298,7 +298,7 @@ export default function ProgrammingPerformancesClient({
  <div className="flex flex-col gap-md lg:flex-row lg:items-center lg:justify-between">
  <div className="flex flex-1 items-center gap-sm">
  <div className="relative flex-1 max-w-md">
- <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+ <Search className="absolute left-3 top-xs/2 h-icon-xs w-icon-xs -translate-y-1/2 text-muted-foreground" />
  <Input
  placeholder="Search performances, venues, descriptions..."
  value={searchTerm}
@@ -373,14 +373,14 @@ export default function ProgrammingPerformancesClient({
  {selectedPerformances.size} selected
  </span>
  <Button variant="outline" size="sm" onClick={handleBulkDelete}>
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </Button>
  </div>
  )}
 
  <Button variant="outline" size="sm">
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </div>
@@ -390,19 +390,19 @@ export default function ProgrammingPerformancesClient({
  <Tabs value={currentView} onValueChange={(value) => setCurrentView(value as ViewType)}>
  <TabsList>
  <TabsTrigger value="list">
- <List className="mr-2 h-4 w-4" />
+ <List className="mr-2 h-icon-xs w-icon-xs" />
  List
  </TabsTrigger>
  <TabsTrigger value="grid">
- <Grid3X3 className="mr-2 h-4 w-4" />
+ <Grid3X3 className="mr-2 h-icon-xs w-icon-xs" />
  Grid
  </TabsTrigger>
  <TabsTrigger value="timeline">
- <Calendar className="mr-2 h-4 w-4" />
+ <Calendar className="mr-2 h-icon-xs w-icon-xs" />
  Timeline
  </TabsTrigger>
  <TabsTrigger value="analytics">
- <BarChart3 className="mr-2 h-4 w-4" />
+ <BarChart3 className="mr-2 h-icon-xs w-icon-xs" />
  Analytics
  </TabsTrigger>
  </TabsList>
@@ -438,7 +438,7 @@ export default function ProgrammingPerformancesClient({
  description="Get started by creating your first performance"
  action={
  <Button onClick={handleCreatePerformance}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Performance
  </Button>
  }

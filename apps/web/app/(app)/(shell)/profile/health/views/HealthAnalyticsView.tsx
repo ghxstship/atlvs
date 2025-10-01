@@ -28,12 +28,12 @@ export default function HealthAnalyticsView({
 }: HealthAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
  {[...Array(8)].map((_, i) => (
- <Card key={i} className="p-6">
- <div className="space-y-3">
- <div className="h-4 w-24 bg-muted animate-pulse rounded" />
- <div className="h-8 w-16 bg-muted animate-pulse rounded" />
+ <Card key={i} className="p-lg">
+ <div className="space-y-sm">
+ <div className="h-icon-xs w-component-lg bg-muted animate-pulse rounded" />
+ <div className="h-icon-lg w-component-md bg-muted animate-pulse rounded" />
  <div className="h-2 w-full bg-muted animate-pulse rounded" />
  </div>
  </Card>
@@ -43,20 +43,20 @@ export default function HealthAnalyticsView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
- <Card className="p-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Total Records</p>
  <p className="text-3xl font-bold mt-1">{stats.totalRecords}</p>
  </div>
- <Activity className="h-8 w-8 text-primary opacity-20" />
+ <Activity className="h-icon-lg w-icon-lg text-primary opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Active Records</p>
@@ -67,41 +67,41 @@ export default function HealthAnalyticsView({
  : '0%'}
  </p>
  </div>
- <CheckCircle className="h-8 w-8 text-green-500 opacity-20" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-green-500 opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Expiring Soon</p>
  <p className="text-3xl font-bold mt-1">{stats.expiringRecords}</p>
  <p className="text-xs text-muted-foreground mt-1">Next 30 days</p>
  </div>
- <Clock className="h-8 w-8 text-orange-500 opacity-20" />
+ <Clock className="h-icon-lg w-icon-lg text-orange-500 opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Critical</p>
  <p className="text-3xl font-bold mt-1">{stats.criticalRecords}</p>
  <p className="text-xs text-muted-foreground mt-1">High priority</p>
  </div>
- <AlertTriangle className="h-8 w-8 text-red-500 opacity-20" />
+ <AlertTriangle className="h-icon-lg w-icon-lg text-red-500 opacity-20" />
  </div>
  </Card>
  </div>
 
  {/* Health Scores */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
- <Card className="p-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Health Score</h3>
- <Heart className="h-4 w-4 text-muted-foreground" />
+ <Heart className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-2xl font-bold">{analytics.healthScore}%</span>
  <Badge variant={analytics.healthScore >= 80 ? 'default' : analytics.healthScore >= 60 ? 'secondary' : 'destructive'}>
@@ -115,12 +115,12 @@ export default function HealthAnalyticsView({
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Completeness Score</h3>
- <Shield className="h-4 w-4 text-muted-foreground" />
+ <Shield className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-2xl font-bold">{analytics.completenessScore}%</span>
  <Badge variant={analytics.completenessScore >= 80 ? 'default' : 'secondary'}>
@@ -136,23 +136,23 @@ export default function HealthAnalyticsView({
  </div>
 
  {/* Charts Row */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Record Type Distribution */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Record Types</h3>
- <PieChart className="h-4 w-4 text-muted-foreground" />
+ <PieChart className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {stats.byType.map(({ type, count }) => {
  const percentage = stats.totalRecords > 0 
  ? (count / stats.totalRecords) * 100 
  : 0;
  
  return (
- <div key={type} className="space-y-1">
+ <div key={type} className="space-y-xs">
  <div className="flex items-center justify-between text-sm">
- <span className="flex items-center gap-2">
+ <span className="flex items-center gap-xs">
  <span>{getRecordTypeIcon(type)}</span>
  {RECORD_TYPE_LABELS[type]}
  </span>
@@ -166,19 +166,19 @@ export default function HealthAnalyticsView({
  </Card>
 
  {/* Severity Distribution */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Severity Levels</h3>
- <BarChart3 className="h-4 w-4 text-muted-foreground" />
+ <BarChart3 className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {stats.bySeverity.map(({ severity, count }) => {
  const percentage = stats.totalRecords > 0 
  ? (count / stats.totalRecords) * 100 
  : 0;
  
  return (
- <div key={severity} className="space-y-1">
+ <div key={severity} className="space-y-xs">
  <div className="flex items-center justify-between text-sm">
  <span>{SEVERITY_LABELS[severity]}</span>
  <span className="font-medium">{count}</span>
@@ -193,15 +193,15 @@ export default function HealthAnalyticsView({
 
  {/* Expiry Alerts */}
  {analytics.expiryAlerts.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Expiry Alerts</h3>
- <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.expiryAlerts.slice(0, 10).map(({ record, daysUntilExpiry, urgency }) => (
- <div key={record.id} className="flex items-center justify-between p-3 border rounded-lg">
- <div className="flex items-center gap-3">
+ <div key={record.id} className="flex items-center justify-between p-sm border rounded-lg">
+ <div className="flex items-center gap-sm">
  <span className="text-lg">{getRecordTypeIcon(record.record_type)}</span>
  <div>
  <p className="font-medium">{record.title}</p>
@@ -234,16 +234,16 @@ export default function HealthAnalyticsView({
 
  {/* Trends */}
  {analytics.recordTrends.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Record Trends</h3>
- <TrendingUp className="h-4 w-4 text-muted-foreground" />
+ <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {analytics.recordTrends.map(({ month, count, byType }) => (
- <div key={month} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
- <div className="flex items-center gap-4">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div key={month} className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
+ <div className="flex items-center gap-md">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">
  {new Date(month + '-01').toLocaleDateString('en-US', { 
  year: 'numeric', 
@@ -251,9 +251,9 @@ export default function HealthAnalyticsView({
  })}
  </span>
  </div>
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <Badge variant="secondary">{count} records</Badge>
- <div className="flex gap-1">
+ <div className="flex gap-xs">
  {Object.entries(byType).slice(0, 3).map(([type, typeCount]) => (
  <span key={type} className="text-xs" title={`${typeCount} ${RECORD_TYPE_LABELS[type as keyof typeof RECORD_TYPE_LABELS] || type}`}>
  {getRecordTypeIcon(type as keyof typeof RECORD_TYPE_LABELS)}
@@ -269,14 +269,14 @@ export default function HealthAnalyticsView({
 
  {/* Provider Distribution */}
  {analytics.providerDistribution.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Top Healthcare Providers</h3>
- <User className="h-4 w-4 text-muted-foreground" />
+ <User className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.providerDistribution.map(({ provider, count }) => (
- <div key={provider} className="flex items-center justify-between p-3 border rounded-lg">
+ <div key={provider} className="flex items-center justify-between p-sm border rounded-lg">
  <span className="font-medium">{provider}</span>
  <Badge variant="outline">{count} records</Badge>
  </div>
@@ -287,9 +287,9 @@ export default function HealthAnalyticsView({
 
  {/* Tag Cloud */}
  {analytics.tagCloud.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="font-semibold mb-4">Common Tags</h3>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {analytics.tagCloud.map(({ tag, frequency, weight }) => {
  const size = weight > 75 ? 'text-lg' : weight > 50 ? 'text-base' : weight > 25 ? 'text-sm' : 'text-xs';
  const opacity = weight > 75 ? 'opacity-100' : weight > 50 ? 'opacity-80' : weight > 25 ? 'opacity-60' : 'opacity-40';
@@ -310,15 +310,15 @@ export default function HealthAnalyticsView({
 
  {/* Recent Activity */}
  {analytics.recentActivity.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Recent Activity</h3>
- <Activity className="h-4 w-4 text-muted-foreground" />
+ <Activity className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.recentActivity.slice(0, 5).map((record) => (
- <div key={record.id} className="flex items-center justify-between p-3 border rounded-lg">
- <div className="flex items-center gap-3">
+ <div key={record.id} className="flex items-center justify-between p-sm border rounded-lg">
+ <div className="flex items-center gap-sm">
  <span className="text-lg">{getRecordTypeIcon(record.record_type)}</span>
  <div>
  <p className="font-medium">{record.title}</p>
@@ -342,11 +342,11 @@ export default function HealthAnalyticsView({
 
  {/* Category Breakdown */}
  {analytics.categoryBreakdown.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="font-semibold mb-4">Category Breakdown</h3>
- <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+ <div className="grid grid-cols-2 md:grid-cols-3 gap-md">
  {analytics.categoryBreakdown.map(({ category, percentage }) => (
- <div key={category} className="text-center p-4 bg-muted/50 rounded-lg">
+ <div key={category} className="text-center p-md bg-muted/50 rounded-lg">
  <p className="text-2xl font-bold">{percentage}%</p>
  <p className="text-sm text-muted-foreground">{CATEGORY_LABELS[category]}</p>
  </div>
@@ -357,15 +357,15 @@ export default function HealthAnalyticsView({
 
  {/* Upcoming Reminders */}
  {stats.upcomingReminders.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Upcoming Reminders</h3>
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {stats.upcomingReminders.map(({ record, daysUntilExpiry }) => (
- <div key={record.id} className="flex items-center justify-between p-3 border rounded-lg">
- <div className="flex items-center gap-3">
+ <div key={record.id} className="flex items-center justify-between p-sm border rounded-lg">
+ <div className="flex items-center gap-sm">
  <span className="text-lg">{getRecordTypeIcon(record.record_type)}</span>
  <div>
  <p className="font-medium">{record.title}</p>

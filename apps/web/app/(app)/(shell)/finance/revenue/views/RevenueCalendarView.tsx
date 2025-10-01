@@ -51,7 +51,7 @@ export default function RevenueCalendarView({ data, isLoading, onRecordClick }: 
     return (
       <Card className="p-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-gray-200 rounded mb-lg"></div>
+          <div className="h-icon-lg bg-gray-200 rounded mb-lg"></div>
           <div className="grid grid-cols-7 gap-sm">
             {[...Array(35)].map((_, i) => (
               <div key={i} className="aspect-square bg-gray-200 rounded"></div>
@@ -71,10 +71,10 @@ export default function RevenueCalendarView({ data, isLoading, onRecordClick }: 
         </h2>
         <div className="flex items-center gap-sm">
           <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="h-icon-xs w-icon-xs" />
           </Button>
           <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
       </div>

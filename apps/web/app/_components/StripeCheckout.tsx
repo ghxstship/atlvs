@@ -69,11 +69,11 @@ export const StripeCheckout: React.FC<StripeCheckoutProps> = ({
         size={size}
       >
         {loading ? (
-          <Loader2 className="mr-sm h-4 w-4 animate-spin" />
+          <Loader2 className="mr-sm h-icon-xs w-icon-xs animate-spin" />
         ) : (
           <>
             {getButtonText()}
-            <ArrowRight className="ml-sm h-4 w-4" />
+            <ArrowRight className="ml-sm h-icon-xs w-icon-xs" />
           </>
         )}
       </Button>

@@ -164,27 +164,27 @@ export default function ProgrammingRidersAnalyticsView({
 
  if (loading) {
  return (
- <div className="space-y-6">
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="space-y-lg">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  </CardHeader>
  <CardContent>
- <div className="h-8 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-lg bg-muted rounded w-1/2"></div>
  </CardContent>
  </Card>
  ))}
  </div>
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {Array.from({ length: 4 }).map((_, index) => (
  <Card key={index} className="animate-pulse">
  <CardHeader>
- <div className="h-4 bg-muted rounded w-1/2"></div>
+ <div className="h-icon-xs bg-muted rounded w-1/2"></div>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {Array.from({ length: 3 }).map((_, itemIndex) => (
  <div key={itemIndex} className="h-3 bg-muted rounded"></div>
  ))}
@@ -199,9 +199,9 @@ export default function ProgrammingRidersAnalyticsView({
 
  if (riders.length === 0) {
  return (
- <Card className="p-8">
+ <Card className="p-xl">
  <div className="text-center">
- <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <BarChart3 className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold">No data to analyze</h3>
  <p className="text-muted-foreground">
  Create some riders to see analytics and insights.
@@ -220,13 +220,13 @@ export default function ProgrammingRidersAnalyticsView({
  : 0;
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Riders</CardTitle>
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.totalRiders}</div>
@@ -239,7 +239,7 @@ export default function ProgrammingRidersAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Fulfillment Rate</CardTitle>
- <CheckCircle className="h-4 w-4 text-muted-foreground" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{fulfillmentRate.toFixed(1)}%</div>
@@ -253,7 +253,7 @@ export default function ProgrammingRidersAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Avg. Approval Time</CardTitle>
- <Clock className="h-4 w-4 text-muted-foreground" />
+ <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">
@@ -268,7 +268,7 @@ export default function ProgrammingRidersAnalyticsView({
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Pending Review</CardTitle>
- <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{analytics.pendingRiders}</div>
@@ -280,22 +280,22 @@ export default function ProgrammingRidersAnalyticsView({
  </div>
 
  {/* Charts and Breakdowns */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Status Breakdown */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <TrendingUp className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <TrendingUp className="h-icon-sm w-icon-sm" />
  Status Breakdown
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.ridersByStatus.map((item) => {
  const percentage = (item.count / analytics.totalRiders) * 100;
  return (
  <div key={item.status} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: STATUS_COLORS[item.status] }}
@@ -304,7 +304,7 @@ export default function ProgrammingRidersAnalyticsView({
  {item.status.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -320,18 +320,18 @@ export default function ProgrammingRidersAnalyticsView({
  {/* Kind Breakdown */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Users className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Users className="h-icon-sm w-icon-sm" />
  Rider Types
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.ridersByKind.map((item) => {
  const percentage = (item.count / analytics.totalRiders) * 100;
  return (
  <div key={item.kind} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: KIND_COLORS[item.kind] }}
@@ -340,7 +340,7 @@ export default function ProgrammingRidersAnalyticsView({
  {item.kind.replace('_', ' ')}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -356,25 +356,25 @@ export default function ProgrammingRidersAnalyticsView({
  {/* Priority Distribution */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <AlertTriangle className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <AlertTriangle className="h-icon-sm w-icon-sm" />
  Priority Distribution
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.ridersByPriority.map((item) => {
  const percentage = (item.count / analytics.totalRiders) * 100;
  return (
  <div key={item.priority} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ backgroundColor: PRIORITY_COLORS[item.priority] }}
  />
  <span className="text-sm capitalize">{item.priority}</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-sm font-medium">{item.count}</span>
  <span className="text-xs text-muted-foreground">
  ({percentage.toFixed(1)}%)
@@ -390,17 +390,17 @@ export default function ProgrammingRidersAnalyticsView({
  {/* Top Events */}
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  Top Events by Riders
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.topEvents.length > 0 ? (
  analytics.topEvents.map((item, index) => (
  <div key={item.event} className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline" className="text-xs">
  #{index + 1}
  </Badge>
@@ -421,20 +421,20 @@ export default function ProgrammingRidersAnalyticsView({
  {analytics.monthlyTrends.length > 0 && (
  <Card>
  <CardHeader>
- <CardTitle className="flex items-center gap-2">
- <BarChart3 className="h-5 w-5" />
+ <CardTitle className="flex items-center gap-xs">
+ <BarChart3 className="h-icon-sm w-icon-sm" />
  Monthly Trends
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {analytics.monthlyTrends.map((item) => {
  const fulfillmentRate = item.count > 0 ? (item.fulfilled / item.count) * 100 : 0;
  return (
- <div key={item.month} className="space-y-2">
+ <div key={item.month} className="space-y-xs">
  <div className="flex items-center justify-between">
  <span className="text-sm font-medium">{item.month}</span>
- <div className="flex items-center gap-4 text-sm">
+ <div className="flex items-center gap-md text-sm">
  <span>{item.count} created</span>
  <span className="text-green-600">{item.fulfilled} fulfilled</span>
  <span className="text-muted-foreground">

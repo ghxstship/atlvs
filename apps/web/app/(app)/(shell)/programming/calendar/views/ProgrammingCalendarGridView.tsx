@@ -63,13 +63,13 @@ export default function ProgrammingCalendarGridView({
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm" onClick={() => navigateMonth("prev")}>
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
- <h2 className="text-xl font-semibold min-w-[200px] text-center">
+ <h2 className="text-xl font-semibold min-w-content-narrow text-center">
  {format(currentDate, "MMMM yyyy")}
  </h2>
  <Button variant="outline" size="sm" onClick={() => navigateMonth("next")}>
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  <Button variant="outline" size="sm" onClick={goToToday}>
@@ -98,7 +98,7 @@ export default function ProgrammingCalendarGridView({
  return (
  <div
  key={day.toISOString()}
- className={`min-h-[120px] p-sm border-b border-r last:border-r-0 ${
+ className={`min-h-header-lg p-sm border-b border-r last:border-r-0 ${
  isCurrentDay ? "bg-accent/10" : "hover:bg-muted/50"
  }`}
  >
@@ -108,21 +108,21 @@ export default function ProgrammingCalendarGridView({
  {format(day, "d")}
  </div>
 
- <div className="space-y-1">
+ <div className="space-y-xs">
  {dayEvents.slice(0, 3).map((event) => {
  const statusConfig = STATUS_BADGE[event.status];
  
  return (
  <div
  key={event.id}
- className="text-xs p-1 rounded cursor-pointer hover:opacity-80 transition-opacity"
+ className="text-xs p-xs rounded cursor-pointer hover:opacity-80 transition-opacity"
  style={{ 
  backgroundColor: `var(--${statusConfig.variant === 'destructive' ? 'destructive' : statusConfig.variant === 'warning' ? 'warning' : statusConfig.variant === 'success' ? 'success' : 'muted'})`,
  opacity: 0.1
  }}
  onClick={() => onView(event)}
  >
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <div 
  className={`w-2 h-2 rounded-full ${
  statusConfig.variant === 'destructive' ? 'bg-destructive' :
@@ -135,7 +135,7 @@ export default function ProgrammingCalendarGridView({
  {event.title}
  </span>
  </div>
- <div className="text-muted-foreground mt-0.5 flex items-center gap-1">
+ <div className="text-muted-foreground mt-0.5 flex items-center gap-xs">
  <Clock className="h-2 w-2" />
  <span>
  {format(parseISO(event.start_at), "h:mm a")}
@@ -146,7 +146,7 @@ export default function ProgrammingCalendarGridView({
  })}
 
  {dayEvents.length > 3 && (
- <div className="text-xs text-muted-foreground p-1">
+ <div className="text-xs text-muted-foreground p-xs">
  +{dayEvents.length - 3} more
  </div>
  )}
@@ -185,16 +185,16 @@ export default function ProgrammingCalendarGridView({
  <div className="min-w-0">
  <div className="font-medium text-sm truncate">{event.title}</div>
  <div className="text-xs text-muted-foreground flex items-center gap-md">
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {format(parseISO(event.start_at), "MMM d")}
  </span>
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {format(parseISO(event.start_at), "h:mm a")}
  </span>
  {event.location && (
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <MapPin className="h-3 w-3" />
  {event.location}
  </span>

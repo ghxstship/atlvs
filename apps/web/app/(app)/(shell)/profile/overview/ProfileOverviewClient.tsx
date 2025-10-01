@@ -129,10 +129,10 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-32 bg-secondary rounded-lg mb-md"></div>
+          <div className="h-component-xl bg-secondary rounded-lg mb-md"></div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
-            <div className="h-48 bg-secondary rounded-lg"></div>
-            <div className="h-48 bg-secondary rounded-lg"></div>
+            <div className="h-container-xs bg-secondary rounded-lg"></div>
+            <div className="h-container-xs bg-secondary rounded-lg"></div>
           </div>
         </div>
       </div>
@@ -145,23 +145,23 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
       <Card>
         <div className="flex items-start gap-lg p-lg">
           <div className="relative">
-            <div className="h-20 w-20 rounded-full bg-secondary flex items-center justify-center">
+            <div className="h-component-lg w-component-lg rounded-full bg-secondary flex items-center justify-center">
               {profile?.avatar_url ? (
                 <img 
                   src={profile.avatar_url} 
                   alt={profile.full_name || 'User'}
-                  className="h-20 w-20 rounded-full object-cover"
+                  className="h-component-lg w-component-lg rounded-full object-cover"
                 />
               ) : (
-                <User className="h-8 w-8 color-muted" />
+                <User className="h-icon-lg w-icon-lg color-muted" />
               )}
             </div>
             <Button
              
               variant="outline"
-              className="absolute -bottom-2 -right-2 h-8 w-8 rounded-full p-0"
+              className="absolute -bottom-2 -right-2 h-icon-lg w-icon-lg rounded-full p-0"
             >
-              <Camera className="h-4 w-4" />
+              <Camera className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
           
@@ -176,27 +176,27 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             <div className="stack-sm text-body-sm color-muted">
               {profile?.job_title && (
                 <div className="flex items-center gap-sm">
-                  <Briefcase className="h-4 w-4" />
+                  <Briefcase className="h-icon-xs w-icon-xs" />
                   <span>{profile.job_title}</span>
                   {profile.department && <span>• {profile.department}</span>}
                 </div>
               )}
               
               <div className="flex items-center gap-sm">
-                <Mail className="h-4 w-4" />
+                <Mail className="h-icon-xs w-icon-xs" />
                 <span>{profile?.email}</span>
               </div>
               
               {profile?.phone_primary && (
                 <div className="flex items-center gap-sm">
-                  <Phone className="h-4 w-4" />
+                  <Phone className="h-icon-xs w-icon-xs" />
                   <span>{profile.phone_primary}</span>
                 </div>
               )}
               
               {profile?.location && (
                 <div className="flex items-center gap-sm">
-                  <MapPin className="h-4 w-4" />
+                  <MapPin className="h-icon-xs w-icon-xs" />
                   <span>{profile.location}</span>
                 </div>
               )}
@@ -204,7 +204,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
           </div>
           
           <Button variant="outline" className="flex items-center gap-sm">
-            <Edit className="h-4 w-4" />
+            <Edit className="h-icon-xs w-icon-xs" />
             Edit Profile
           </Button>
         </div>
@@ -230,15 +230,15 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="stack-sm text-body-sm">
               <div className="flex items-center gap-sm color-muted">
-                <CheckCircle className="h-4 w-4 color-success" />
+                <CheckCircle className="h-icon-xs w-icon-xs color-success" />
                 <span>Basic information completed</span>
               </div>
               <div className="flex items-center gap-sm color-muted">
-                <AlertCircle className="h-4 w-4 color-warning" />
+                <AlertCircle className="h-icon-xs w-icon-xs color-warning" />
                 <span>Add professional certifications</span>
               </div>
               <div className="flex items-center gap-sm color-muted">
-                <AlertCircle className="h-4 w-4 color-warning" />
+                <AlertCircle className="h-icon-xs w-icon-xs color-warning" />
                 <span>Complete job history</span>
               </div>
             </div>
@@ -268,7 +268,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
             
             <div className="mt-md pt-md border-t">
               <div className="flex items-center gap-sm text-body-sm color-muted">
-                <Calendar className="h-4 w-4" />
+                <Calendar className="h-icon-xs w-icon-xs" />
                 <span>
                   Member since {profile?.created_at ? 
                     new Date(profile.created_at).toLocaleDateString() : 'Unknown'
@@ -300,7 +300,7 @@ export default function ProfileOverviewClient({ orgId, userId }: { orgId: string
               </div>
             ) : (
               <div className="text-center py-xl color-muted">
-                <User className="h-12 w-12 mx-auto mb-sm opacity-50" />
+                <User className="h-icon-2xl w-icon-2xl mx-auto mb-sm opacity-50" />
                 <p>No recent activity</p>
               </div>
             )}

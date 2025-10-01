@@ -49,7 +49,7 @@ export function NavigationDropdown({
           <span>{item.label}</span>
           <ChevronDown
             className={cn(
-              "h-4 w-4 transition-all duration-300",
+              "h-icon-xs w-icon-xs transition-all duration-300",
               activeDropdown === item.label ? "rotate-180 color-accent" : "rotate-0"
             )}
           />
@@ -60,7 +60,7 @@ export function NavigationDropdown({
           className={cn(
             "overflow-hidden transition-all duration-300 ease-out",
             activeDropdown === item.label 
-              ? "max-h-96 opacity-100" 
+              ? "max-h-container-lg opacity-100" 
               : "max-h-0 opacity-0"
           )}
         >
@@ -140,7 +140,7 @@ export function NavigationDropdown({
         <span>{item.label}</span>
         <ChevronDown 
           className={cn(
-            "h-4 w-4 transition-all duration-200",
+            "h-icon-xs w-icon-xs transition-all duration-200",
             activeDropdown === item.label ? "rotate-180" : "rotate-0"
           )} 
         />
@@ -151,7 +151,7 @@ export function NavigationDropdown({
         ref={dropdownRef}
         className={cn(
           // Positioning only — background is applied to inner container to avoid overrides
-          "absolute top-full w-64 z-[var(--z-dropdown)]",
+          "absolute top-full w-container-sm z-[var(--z-dropdown)]",
           // Position based on viewport
           dropdownPosition === 'right' ? 'right-0' : 'left-0',
           // Animation states

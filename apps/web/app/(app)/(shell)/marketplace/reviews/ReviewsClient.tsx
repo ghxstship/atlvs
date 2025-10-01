@@ -185,7 +185,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  {[1, 2, 3, 4, 5].map((star) => (
  <Star
  key={star}
- className={`${size === 'sm' ? 'h-4 w-4' : 'h-5 w-5'} ${
+ className={`${size === 'sm' ? 'h-icon-xs w-icon-xs' : 'h-icon-sm w-icon-sm'} ${
  star <= rating ? 'fill-current color-warning' : 'color-muted'
  }`}
  />
@@ -213,7 +213,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  <p className="color-muted">Manage feedback and build your reputation</p>
  </div>
  <Button onClick={() => setShowWriteReview(true)}>
- <Plus className="h-4 w-4 mr-sm" />
+ <Plus className="h-icon-xs w-icon-xs mr-sm" />
  Write Review
  </Button>
  </div>
@@ -239,15 +239,15 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  
  return (
  <div key={rating} className="flex items-center gap-sm">
- <span className="text-body-sm w-8">{rating}</span>
- <Star className="h-4 w-4 fill-current color-warning" />
+ <span className="text-body-sm w-icon-lg">{rating}</span>
+ <Star className="h-icon-xs w-icon-xs fill-current color-warning" />
  <div className="flex-1 bg-muted rounded-full h-2">
  <div 
  className="bg-warning rounded-full h-2 transition-all"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-body-sm w-8 text-right">{count}</span>
+ <span className="text-body-sm w-icon-lg text-right">{count}</span>
  </div>
  );
  })}
@@ -278,7 +278,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  <h3 className="text-heading-4">All Reviews</h3>
  <div className="flex items-center gap-sm">
  <Button variant="outline" size="sm">
- <Filter className="h-4 w-4 mr-xs" />
+ <Filter className="h-icon-xs w-icon-xs mr-xs" />
  Filter
  </Button>
  </div>
@@ -321,9 +321,9 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  <Card key={review.id} className="p-md border">
  <div className="flex items-start justify-between mb-sm">
  <div className="flex items-center gap-sm">
- <Avatar className="h-10 w-10">
+ <Avatar className="h-icon-xl w-icon-xl">
  <div className="flex items-center justify-center h-full w-full bg-primary/10">
- <User className="h-5 w-5 color-primary" />
+ <User className="h-icon-sm w-icon-sm color-primary" />
  </div>
  </Avatar>
  <div>
@@ -353,7 +353,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  </div>
  </div>
  <Button variant="ghost" size="sm">
- <Flag className="h-4 w-4" />
+ <Flag className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
@@ -372,7 +372,7 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  {review.response && (
  <div className="p-sm bg-primary/5 rounded mb-sm">
  <div className="flex items-center gap-sm mb-xs">
- <MessageSquare className="h-4 w-4 color-primary" />
+ <MessageSquare className="h-icon-xs w-icon-xs color-primary" />
  <span className="text-body-sm font-medium">Response from {review.reviewee_name}</span>
  <span className="text-body-sm color-muted">
  {new Date(review.response.created_at).toLocaleDateString()}
@@ -386,12 +386,12 @@ export default function ReviewsClient({ orgId, userId }: ReviewsClientProps) {
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
  <Button variant="ghost" size="sm">
- <ThumbsUp className="h-4 w-4 mr-xs" />
+ <ThumbsUp className="h-icon-xs w-icon-xs mr-xs" />
  Helpful ({review.helpful_count})
  </Button>
  {review.type === 'received' && !review.response && (
  <Button variant="outline" size="sm">
- <MessageSquare className="h-4 w-4 mr-xs" />
+ <MessageSquare className="h-icon-xs w-icon-xs mr-xs" />
  Respond
  </Button>
  )}

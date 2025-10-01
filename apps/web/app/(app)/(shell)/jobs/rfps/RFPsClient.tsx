@@ -209,7 +209,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
           <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
         </div>
         <Button onClick={() => setShowCreateDialog(true)}>
-          <PlusIcon className="h-4 w-4 mr-sm" />
+          <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
           Create RFP
         </Button>
       </div>
@@ -259,7 +259,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
               <p className="text-body-sm form-label color-foreground/70">Total RFPs</p>
               <p className="text-heading-3 text-heading-3 color-foreground">{rfps.length}</p>
             </div>
-            <DocumentTextIcon className="h-8 w-8 color-accent" />
+            <DocumentTextIcon className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -270,7 +270,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 {rfps.filter(r => r.status === 'open').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 color-success" />
+            <CheckCircleIcon className="h-icon-lg w-icon-lg color-success" />
           </div>
         </Card>
         <Card className="p-md">
@@ -281,7 +281,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 {rfps.filter(r => r.status === 'published').length}
               </p>
             </div>
-            <PaperAirplaneIcon className="h-8 w-8 color-accent" />
+            <PaperAirplaneIcon className="h-icon-lg w-icon-lg color-accent" />
           </div>
         </Card>
         <Card className="p-md">
@@ -292,7 +292,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 {rfps.filter(r => r.status === 'awarded').length}
               </p>
             </div>
-            <CheckCircleIcon className="h-8 w-8 color-secondary" />
+            <CheckCircleIcon className="h-icon-lg w-icon-lg color-secondary" />
           </div>
         </Card>
         <Card className="p-md">
@@ -303,7 +303,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 {rfps.reduce((sum, r) => sum + (r.responses_count || 0), 0)}
               </p>
             </div>
-            <UsersIcon className="h-8 w-8 color-warning" />
+            <UsersIcon className="h-icon-lg w-icon-lg color-warning" />
           </div>
         </Card>
       </div>
@@ -315,14 +315,14 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
             <Card key={i} className="p-lg">
               <div className="flex items-start justify-between">
                 <div className="flex-1">
-                  <Skeleton className="h-5 w-64 mb-sm" />
-                  <Skeleton className="h-4 w-32 mb-sm" />
-                  <Skeleton className="h-4 w-full mb-sm" />
-                  <Skeleton className="h-4 w-3/4" />
+                  <Skeleton className="h-icon-sm w-container-sm mb-sm" />
+                  <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+                  <Skeleton className="h-icon-xs w-full mb-sm" />
+                  <Skeleton className="h-icon-xs w-3/4" />
                 </div>
                 <div className="flex gap-sm">
-                  <Skeleton className="h-6 w-16" />
-                  <Skeleton className="h-6 w-20" />
+                  <Skeleton className="h-icon-md w-component-md" />
+                  <Skeleton className="h-icon-md w-component-lg" />
                 </div>
               </div>
             </Card>
@@ -340,14 +340,14 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                     <div className="flex items-start justify-between mb-sm">
                       <div>
                         <h3 className="text-body text-heading-4 color-foreground mb-xs flex items-center gap-sm">
-                          <StatusIcon className="h-5 w-5 color-foreground/60" />
+                          <StatusIcon className="h-icon-sm w-icon-sm color-foreground/60" />
                           {rfp.title}
                           {(isUrgent || isLate) && (
-                            <ExclamationTriangleIcon className={`h-4 w-4 ${isLate ? 'color-destructive' : 'color-warning'}`} />
+                            <ExclamationTriangleIcon className={`h-icon-xs w-icon-xs ${isLate ? 'color-destructive' : 'color-warning'}`} />
                           )}
                         </h3>
                         <div className="flex items-center gap-sm text-body-sm color-foreground/70">
-                          <BuildingOfficeIcon className="h-4 w-4" />
+                          <BuildingOfficeIcon className="h-icon-xs w-icon-xs" />
                           <span>{rfp.issuer_organization}</span>
                           {rfp.responses_count !== undefined && (
                             <>
@@ -367,17 +367,17 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                       </div>
                     </div>
 
-                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-2">
+                    <p className="text-body-sm color-foreground/80 mb-sm line-clamp-xs">
                       {rfp.description}
                     </p>
 
                     <div className="flex items-center gap-lg text-body-sm color-foreground/70 mb-sm">
                       <div className="flex items-center gap-xs">
-                        <CurrencyDollarIcon className="h-4 w-4" />
+                        <CurrencyDollarIcon className="h-icon-xs w-icon-xs" />
                         <span>{formatBudget(rfp.budget_min, rfp.budget_max, rfp.currency)}</span>
                       </div>
                       <div className={`flex items-center gap-xs ${isLate ? 'color-destructive' : isUrgent ? 'color-warning' : ''}`}>
-                        <CalendarIcon className="h-4 w-4" />
+                        <CalendarIcon className="h-icon-xs w-icon-xs" />
                         <span>
                           {isLate ? 'Overdue: ' : 'Deadline: '}
                           {new Date(rfp.submission_deadline).toLocaleDateString()}
@@ -390,7 +390,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                       )}
                       {rfp.project_duration && (
                         <div className="flex items-center gap-xs">
-                          <ClockIcon className="h-4 w-4" />
+                          <ClockIcon className="h-icon-xs w-icon-xs" />
                           <span>{rfp.project_duration}</span>
                         </div>
                       )}
@@ -447,22 +447,22 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                   </div>
                   <div className="flex gap-sm">
                     <Button>
-                      <EyeIcon className="h-4 w-4 mr-xs" />
+                      <EyeIcon className="h-icon-xs w-icon-xs mr-xs" />
                       View
                     </Button>
                     <Button>
-                      <PencilIcon className="h-4 w-4 mr-xs" />
+                      <PencilIcon className="h-icon-xs w-icon-xs mr-xs" />
                       Edit
                     </Button>
                     {rfp.document_url && (
                       <Button>
-                        <ArrowDownTrayIcon className="h-4 w-4 mr-xs" />
+                        <ArrowDownTrayIcon className="h-icon-xs w-icon-xs mr-xs" />
                         Download
                       </Button>
                     )}
                     {rfp.status === 'open' && (
                       <Button>
-                        <PaperAirplaneIcon className="h-4 w-4 mr-xs" />
+                        <PaperAirplaneIcon className="h-icon-xs w-icon-xs mr-xs" />
                         Respond
                       </Button>
                     )}
@@ -472,8 +472,8 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
             );
           })
         ) : (
-          <Card className="p-2xl text-center">
-            <DocumentTextIcon className="h-12 w-12 color-foreground/30 mx-auto mb-md" />
+          <Card className="p-xsxl text-center">
+            <DocumentTextIcon className="h-icon-2xl w-icon-2xl color-foreground/30 mx-auto mb-md" />
             <h3 className="text-body form-label color-foreground mb-sm">No RFPs found</h3>
             <p className="text-body-sm color-foreground/70 mb-md">
               {searchTerm || statusFilter !== 'all' || typeFilter !== 'all'
@@ -481,7 +481,7 @@ export function RFPsClient({ user, orgId, translations }: RFPsClientProps) {
                 : 'Get started by creating your first RFP.'}
             </p>
             <Button onClick={() => setShowCreateDialog(true)}>
-              <PlusIcon className="h-4 w-4 mr-sm" />
+              <PlusIcon className="h-icon-xs w-icon-xs mr-sm" />
               Create RFP
             </Button>
           </Card>

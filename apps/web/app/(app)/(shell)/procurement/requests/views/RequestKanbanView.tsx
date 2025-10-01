@@ -32,31 +32,31 @@ export default function RequestKanbanView({
  {
  id: 'draft',
  title: 'Draft',
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  color: 'bg-muted'
  },
  {
  id: 'submitted',
  title: 'Submitted',
- icon: <AlertTriangle className="h-4 w-4 text-info" />,
+ icon: <AlertTriangle className="h-icon-xs w-icon-xs text-info" />,
  color: 'bg-info/10'
  },
  {
  id: 'under_review',
  title: 'Under Review',
- icon: <Clock className="h-4 w-4 text-warning" />,
+ icon: <Clock className="h-icon-xs w-icon-xs text-warning" />,
  color: 'bg-warning/10'
  },
  {
  id: 'approved',
  title: 'Approved',
- icon: <CheckCircle className="h-4 w-4 text-success" />,
+ icon: <CheckCircle className="h-icon-xs w-icon-xs text-success" />,
  color: 'bg-success/10'
  },
  {
  id: 'rejected',
  title: 'Rejected',
- icon: <XCircle className="h-4 w-4 text-destructive" />,
+ icon: <XCircle className="h-icon-xs w-icon-xs text-destructive" />,
  color: 'bg-destructive/10'
  }
  ];
@@ -83,7 +83,7 @@ export default function RequestKanbanView({
  <div className="space-y-xs">
  {/* Header */}
  <div className="flex items-start justify-between">
- <h4 className="font-medium text-sm line-clamp-2 flex-1">
+ <h4 className="font-medium text-sm line-clamp-xs flex-1">
  {request.title}
  </h4>
  <Badge variant={getPriorityVariant(request.priority) as unknown} size="sm">
@@ -93,7 +93,7 @@ export default function RequestKanbanView({
 
  {/* Description */}
  {request.description && (
- <p className="text-xs text-muted-foreground line-clamp-2">
+ <p className="text-xs text-muted-foreground line-clamp-xs">
  {request.description}
  </p>
  )}
@@ -173,14 +173,14 @@ export default function RequestKanbanView({
  <div key={column.id} className="space-y-sm">
  <Card className="p-sm">
  <div className="flex items-center gap-sm">
- <div className="h-4 w-4 bg-muted rounded animate-pulse" />
- <div className="h-4 bg-muted rounded flex-1 animate-pulse" />
+ <div className="h-icon-xs w-icon-xs bg-muted rounded animate-pulse" />
+ <div className="h-icon-xs bg-muted rounded flex-1 animate-pulse" />
  </div>
  </Card>
  {Array.from({ length: 2 }).map((_, i) => (
  <Card key={i} className="p-sm animate-pulse">
  <div className="space-y-xs">
- <div className="h-4 bg-muted rounded" />
+ <div className="h-icon-xs bg-muted rounded" />
  <div className="h-3 bg-muted rounded w-3/4" />
  <div className="h-3 bg-muted rounded w-1/2" />
  </div>
@@ -213,7 +213,7 @@ export default function RequestKanbanView({
  </Card>
 
  {/* Column Content */}
- <div className="min-h-[200px]">
+ <div className="min-h-content-sm">
  {columnRequests.length === 0 ? (
  <Card className="p-md text-center border-dashed">
  <div className="text-muted-foreground">

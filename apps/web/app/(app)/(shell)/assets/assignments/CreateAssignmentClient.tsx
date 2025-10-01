@@ -169,7 +169,7 @@ export default function CreateAssignmentClient({
         {/* Asset & Personnel */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <UserCheck className="h-5 w-5 color-accent" />
+            <UserCheck className="h-icon-sm w-icon-sm color-accent" />
             <h3 className="text-body text-heading-4">Asset & Personnel</h3>
           </div>
           
@@ -223,7 +223,7 @@ export default function CreateAssignmentClient({
         {/* Timeline & Location */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <Calendar className="h-5 w-5 color-success" />
+            <Calendar className="h-icon-sm w-icon-sm color-success" />
             <h3 className="text-body text-heading-4">Timeline & Location</h3>
           </div>
           
@@ -231,7 +231,7 @@ export default function CreateAssignmentClient({
             <div className="grid grid-cols-2 gap-md">
               <div>
                 <label className="block text-body-sm form-label mb-xs">
-                  <Clock className="h-4 w-4 inline mr-xs" />
+                  <Clock className="h-icon-xs w-icon-xs inline mr-xs" />
                   Assignment Date *
                 </label>
                 <UnifiedInput                   type="date"
@@ -254,7 +254,7 @@ export default function CreateAssignmentClient({
 
             <div>
               <label className="block text-body-sm form-label mb-xs">
-                <MapPin className="h-4 w-4 inline mr-xs" />
+                <MapPin className="h-icon-xs w-icon-xs inline mr-xs" />
                 Location
               </label>
               <UnifiedInput                 value={formData.location}
@@ -268,7 +268,7 @@ export default function CreateAssignmentClient({
         {/* Assignment Details */}
         <Card className="p-md">
           <div className="flex items-center gap-sm mb-md">
-            <UserCheck className="h-5 w-5 color-secondary" />
+            <UserCheck className="h-icon-sm w-icon-sm color-secondary" />
             <h3 className="text-body text-heading-4">Assignment Details</h3>
           </div>
           
@@ -342,14 +342,14 @@ export default function CreateAssignmentClient({
             onClick={onClose}
             disabled={loading}
           >
-            <X className="h-4 w-4 mr-sm" />
+            <X className="h-icon-xs w-icon-xs mr-sm" />
             Cancel
           </Button>
           <Button
             type="submit"
             disabled={loading || !formData.assetId || !formData.assignedTo || !formData.purpose}
           >
-            <Save className="h-4 w-4 mr-sm" />
+            <Save className="h-icon-xs w-icon-xs mr-sm" />
             {loading ? 'Creating...' : 'Create Assignment'}
           </Button>
         </div>

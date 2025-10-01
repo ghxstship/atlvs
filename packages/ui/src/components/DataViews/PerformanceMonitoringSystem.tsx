@@ -382,7 +382,7 @@ export function PerformanceMonitoringSystem({
       {/* Header */}
       <div className="flex items-center justify-between mb-lg">
         <h2 className="text-xl font-semibold flex items-center gap-sm">
-          <Activity className="h-5 w-5" />
+          <Activity className="h-icon-sm w-icon-sm" />
           Performance Monitoring
         </h2>
         
@@ -392,7 +392,7 @@ export function PerformanceMonitoringSystem({
             
             onClick={() => setMonitoringInterval(prev => prev === 5000 ? 1000 : 5000)}
           >
-            <Settings className="h-4 w-4 mr-xs" />
+            <Settings className="h-icon-xs w-icon-xs mr-xs" />
             {monitoringInterval === 1000 ? 'Real-time' : 'Standard'}
           </Button>
           
@@ -402,12 +402,12 @@ export function PerformanceMonitoringSystem({
           >
             {isMonitoring ? (
               <>
-                <Eye className="h-4 w-4 mr-xs" />
+                <Eye className="h-icon-xs w-icon-xs mr-xs" />
                 Stop Monitoring
               </>
             ) : (
               <>
-                <RefreshCw className="h-4 w-4 mr-xs" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-xs" />
                 Start Monitoring
               </>
             )}
@@ -429,7 +429,7 @@ export function PerformanceMonitoringSystem({
                 )}
               </p>
             </div>
-            <Gauge className={`h-8 w-8 ${isMonitoring ? 'text-success' : 'text-muted-foreground'}`} />
+            <Gauge className={`h-icon-lg w-icon-lg ${isMonitoring ? 'text-success' : 'text-muted-foreground'}`} />
           </div>
         </div>
 
@@ -441,7 +441,7 @@ export function PerformanceMonitoringSystem({
                 {alerts.filter(a => !a.resolved).length}
               </p>
             </div>
-            <AlertTriangle className={`h-8 w-8 ${alerts.some(a => !a.resolved) ? 'text-destructive' : 'text-muted-foreground'}`} />
+            <AlertTriangle className={`h-icon-lg w-icon-lg ${alerts.some(a => !a.resolved) ? 'text-destructive' : 'text-muted-foreground'}`} />
           </div>
         </div>
 
@@ -453,7 +453,7 @@ export function PerformanceMonitoringSystem({
                 {metrics ? formatMetricValue('queryTime', metrics.queryTime) : '--'}
               </p>
             </div>
-            <Database className="h-8 w-8 text-accent" />
+            <Database className="h-icon-lg w-icon-lg text-accent" />
           </div>
         </div>
 
@@ -465,7 +465,7 @@ export function PerformanceMonitoringSystem({
                 {metrics ? formatMetricValue('cacheHitRate', metrics.cacheHitRate) : '--'}
               </p>
             </div>
-            <Zap className="h-8 w-8 text-warning" />
+            <Zap className="h-icon-lg w-icon-lg text-warning" />
           </div>
         </div>
       </div>
@@ -486,8 +486,8 @@ export function PerformanceMonitoringSystem({
                     <span className="text-sm font-medium capitalize">
                       {key.replace(/([A-Z])/g, ' $1').trim()}
                     </span>
-                    {trend === 'up' && <TrendingUp className="h-4 w-4 text-destructive" />}
-                    {trend === 'down' && <TrendingDown className="h-4 w-4 text-success" />}
+                    {trend === 'up' && <TrendingUp className="h-icon-xs w-icon-xs text-destructive" />}
+                    {trend === 'down' && <TrendingDown className="h-icon-xs w-icon-xs text-success" />}
                   </div>
                   <div className={`text-lg font-semibold ${statusColor}`}>
                     {formatMetricValue(metricKey, value as number)}
@@ -553,11 +553,11 @@ export function PerformanceMonitoringSystem({
               >
                 <div className="flex items-center gap-sm">
                   {alert.resolved ? (
-                    <CheckCircle className="h-4 w-4 text-success" />
+                    <CheckCircle className="h-icon-xs w-icon-xs text-success" />
                   ) : alert.type === 'critical' ? (
-                    <AlertTriangle className="h-4 w-4 text-destructive" />
+                    <AlertTriangle className="h-icon-xs w-icon-xs text-destructive" />
                   ) : (
-                    <AlertTriangle className="h-4 w-4 text-warning" />
+                    <AlertTriangle className="h-icon-xs w-icon-xs text-warning" />
                   )}
                   
                   <div>
@@ -591,7 +591,7 @@ export function PerformanceMonitoringSystem({
 
       {!isMonitoring && (
         <div className="text-center py-xl text-muted-foreground">
-          <BarChart3 className="h-12 w-12 mx-auto mb-md opacity-50" />
+          <BarChart3 className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
           <p>Performance monitoring is not active</p>
           <Button className="mt-sm" onClick={startMonitoring}>
             Start Monitoring

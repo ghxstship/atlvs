@@ -193,7 +193,7 @@ export default function SolutionsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -219,8 +219,8 @@ export default function SolutionsPage() {
               return (
                 <Card key={solution.id} className="group hover:shadow-floating transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-lg text-center">
-                    <div className={`inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r ${solution.gradient} mb-md`}>
-                      <Icon className="h-8 w-8 text-background" />
+                    <div className={`inline-flex items-center justify-center w-component-md h-component-md rounded-lg bg-gradient-to-r ${solution.gradient} mb-md`}>
+                      <Icon className="h-icon-lg w-icon-lg text-background" />
                     </div>
                     <h3 className="font-title text-heading-4 text-heading-3 mb-sm">{solution.title}</h3>
                     <p className="text-body-sm color-muted mb-md">{solution.tagline}</p>
@@ -239,20 +239,20 @@ export default function SolutionsPage() {
       </section>
 
       {/* Detailed Solutions */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
-          <div className="space-y-4xl">
+          <div className="space-y-mdxl">
             {solutions.map((solution, index) => {
               const Icon = solution.icon;
               return (
-                <div key={solution.id} className={`grid lg:grid-cols-2 gap-2xl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
+                <div key={solution.id} className={`grid lg:grid-cols-2 gap-xsxl items-center ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                     <div className="stack-lg">
                       <div>
                         <div className="flex items-center gap-sm mb-sm">
                           <div className={`p-sm rounded-lg bg-gradient-to-r ${solution.gradient}`}>
-                            <Icon className="h-6 w-6 text-background" />
+                            <Icon className="h-icon-md w-icon-md text-background" />
                           </div>
                           <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3">{solution.title}</h2>
                         </div>
@@ -266,7 +266,7 @@ export default function SolutionsPage() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-sm">
                           {solution.features.map((feature: any) => (
                             <div key={feature} className="flex items-center gap-sm">
-                              <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                              <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
                               <span className="text-body-sm color-muted">{feature}</span>
                             </div>
                           ))}
@@ -291,7 +291,7 @@ export default function SolutionsPage() {
                         <a href={solution.href}>
                           <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                             Explore {solution.title}
-                            <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                           </Button>
                         </a>
                         <Link href="/auth/signup">
@@ -369,7 +369,7 @@ export default function SolutionsPage() {
       </section>
 
       {/* Common Features Section */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="font-title text-heading-2 lg:text-heading-1 text-heading-3 mb-lg">
@@ -391,8 +391,8 @@ export default function SolutionsPage() {
               return (
                 <Card key={feature.title} className="text-center hover:shadow-floating transition-shadow">
                   <CardContent className="p-lg">
-                    <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 mb-md">
-                      <Icon className="h-6 w-6 text-foreground" />
+                    <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-full bg-accent/10 mb-md">
+                      <Icon className="h-icon-md w-icon-md text-foreground" />
                     </div>
                     <h3 className="text-heading-4 color-foreground mb-sm">{feature.title}</h3>
                     <p className="text-body-sm color-muted">{feature.description}</p>
@@ -404,7 +404,7 @@ export default function SolutionsPage() {
 
           {/* Integration Highlight */}
           <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
-            <CardContent className="p-xl lg:p-2xl text-center">
+            <CardContent className="p-xl lg:p-xsxl text-center">
               <h3 className="font-title text-heading-3 text-heading-3 mb-lg">
                 SEAMLESS INTEGRATIONS
               </h3>
@@ -430,7 +430,7 @@ export default function SolutionsPage() {
                 <Link href="/auth/signup">
                   <Button className="group transition-all duration-200 hover:scale-105">
                     Start Free Trial
-                    <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                    <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                   </Button>
                 </Link>
               </div>

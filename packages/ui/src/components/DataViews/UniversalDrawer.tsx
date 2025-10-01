@@ -351,7 +351,7 @@ export function UniversalDrawer({
     {
       key: 'details',
       label: 'Details',
-      icon: <FileText className="h-4 w-4" />,
+      icon: <FileText className="h-icon-xs w-icon-xs" />,
       content: (
         <div className="space-y-md">
           {mode === 'view' ? (
@@ -382,7 +382,7 @@ export function UniversalDrawer({
       {
         key: 'comments',
         label: 'Comments',
-        icon: <MessageSquare className="h-4 w-4" />,
+        icon: <MessageSquare className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-md">
             {onAddComment && (
@@ -399,7 +399,7 @@ export function UniversalDrawer({
                   disabled={!newComment.trim() || addingComment}
                   
                 >
-                  {addingComment ? <Loader  /> : <Send className="h-4 w-4" />}
+                  {addingComment ? <Loader  /> : <Send className="h-icon-xs w-icon-xs" />}
                 </Button>
               </div>
             )}
@@ -412,10 +412,10 @@ export function UniversalDrawer({
                       <img
                         src={comment.avatar}
                         alt={comment.author}
-                        className="w-8 h-8 rounded-full"
+                        className="w-icon-lg h-icon-lg rounded-full"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                      <div className="w-icon-lg h-icon-lg rounded-full bg-muted flex items-center justify-center text-xs font-medium">
                         {comment.author.charAt(0).toUpperCase()}
                       </div>
                     )}
@@ -436,7 +436,7 @@ export function UniversalDrawer({
               
               {comments.length === 0 && (
                 <div className="text-center py-xl text-muted-foreground">
-                  <MessageSquare className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                  <MessageSquare className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                   <div className="text-sm">No comments yet</div>
                 </div>
               )}
@@ -447,7 +447,7 @@ export function UniversalDrawer({
       {
         key: 'activity',
         label: 'Activity',
-        icon: <Activity className="h-4 w-4" />,
+        icon: <Activity className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-sm">
             {activity.map(item => (
@@ -470,7 +470,7 @@ export function UniversalDrawer({
             
             {activity.length === 0 && (
               <div className="text-center py-xl text-muted-foreground">
-                <Activity className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                <Activity className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                 <div className="text-sm">No activity yet</div>
               </div>
             )}
@@ -483,7 +483,7 @@ export function UniversalDrawer({
       defaultTabs.push({
         key: 'analytics',
         label: 'Analytics',
-        icon: <BarChart3 className="h-4 w-4" />,
+        icon: <BarChart3 className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-md">
             <div className="grid grid-cols-2 gap-md">
@@ -517,13 +517,13 @@ export function UniversalDrawer({
       defaultTabs.push({
         key: 'workflows',
         label: 'Workflows',
-        icon: <Workflow className="h-4 w-4" />,
+        icon: <Workflow className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-md">
             <div className="flex items-center justify-between">
               <h4 className="font-medium">Automated Workflows</h4>
               <Button variant="ghost" >
-                <Settings className="h-4 w-4" />
+                <Settings className="h-icon-xs w-icon-xs" />
                 Configure
               </Button>
             </div>
@@ -569,12 +569,12 @@ export function UniversalDrawer({
       defaultTabs.push({
         key: 'attachments',
         label: 'Attachments',
-        icon: <Paperclip className="h-4 w-4" />,
+        icon: <Paperclip className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-md">
             {onUploadAttachment && (
               <div className="border-2 border-dashed border-border rounded-lg p-lg text-center">
-                <Upload className="h-8 w-8 mx-auto mb-sm text-muted-foreground" />
+                <Upload className="h-icon-lg w-icon-lg mx-auto mb-sm text-muted-foreground" />
                 <p className="text-sm text-muted-foreground mb-sm">
                   Drag files here or click to upload
                 </p>
@@ -608,11 +608,11 @@ export function UniversalDrawer({
                     <img
                       src={attachment.thumbnail}
                       alt={attachment.name}
-                      className="w-10 h-10 rounded object-cover"
+                      className="w-icon-xl h-icon-xl rounded object-cover"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-muted rounded flex items-center justify-center">
-                      <FileText className="h-5 w-5 text-muted-foreground" />
+                    <div className="w-icon-xl h-icon-xl bg-muted rounded flex items-center justify-center">
+                      <FileText className="h-icon-sm w-icon-sm text-muted-foreground" />
                     </div>
                   )}
                   
@@ -650,7 +650,7 @@ export function UniversalDrawer({
               
               {attachments.length === 0 && (
                 <div className="text-center py-xl text-muted-foreground">
-                  <Paperclip className="h-8 w-8 mx-auto mb-sm opacity-50" />
+                  <Paperclip className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
                   <div className="text-sm">No attachments yet</div>
                 </div>
               )}
@@ -665,13 +665,13 @@ export function UniversalDrawer({
       defaultTabs.push({
         key: 'collaboration',
         label: 'Team',
-        icon: <Users className="h-4 w-4" />,
+        icon: <Users className="h-icon-xs w-icon-xs" />,
         content: (
           <div className="space-y-md">
             <div className="flex items-center justify-between">
               <h4 className="font-medium">Collaborators</h4>
               <Button variant="ghost" >
-                <User className="h-4 w-4" />
+                <User className="h-icon-xs w-icon-xs" />
                 Invite
               </Button>
             </div>
@@ -684,10 +684,10 @@ export function UniversalDrawer({
                       <img
                         src={collaborator.avatar}
                         alt={collaborator.name}
-                        className="w-8 h-8 rounded-full"
+                        className="w-icon-lg h-icon-lg rounded-full"
                       />
                     ) : (
-                      <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center text-xs font-medium">
+                      <div className="w-icon-lg h-icon-lg rounded-full bg-muted flex items-center justify-center text-xs font-medium">
                         {collaborator.name.charAt(0).toUpperCase()}
                       </div>
                     )}
@@ -812,7 +812,7 @@ export function UniversalDrawer({
                     
                     onClick={() => onDuplicate(record)}
                   >
-                    <Copy className="h-4 w-4" />
+                    <Copy className="h-icon-xs w-icon-xs" />
                     Duplicate
                   </Button>
                 )}
@@ -825,7 +825,7 @@ export function UniversalDrawer({
                     
                     onClick={() => onDelete(record.id)}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                     Delete
                   </Button>
                 )}
@@ -845,7 +845,7 @@ export function UniversalDrawer({
                     onClick={handleSave}
                     disabled={saving}
                   >
-                    {saving ? <Loader  /> : <Save className="h-4 w-4" />}
+                    {saving ? <Loader  /> : <Save className="h-icon-xs w-icon-xs" />}
                     {saving ? 'Saving...' : 'Save'}
                   </Button>
                 )}

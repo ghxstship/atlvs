@@ -115,7 +115,7 @@ export const SidebarPersonalization: React.FC<SidebarPersonalizationProps> = ({
     return (
       <div className="mx-sm mt-sm mb-sm p-sm rounded-lg bg-gradient-to-r from-primary/10 to-secondary/10 border border-primary/20">
         <div className="flex items-center gap-sm mb-sm">
-          <Brain className="h-4 w-4 text-accent" />
+          <Brain className="h-icon-xs w-icon-xs text-accent" />
           <span className="text-xs font-semibold text-accent uppercase tracking-wide">
             AI Insights
           </span>

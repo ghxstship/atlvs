@@ -169,7 +169,7 @@ export default function CompanyPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-subtle">
+      <section className="py-mdxl bg-gradient-subtle">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -186,7 +186,7 @@ export default function CompanyPage() {
               <Link href="/careers">
                 <Button className="group transition-all duration-200 hover:scale-105">
                   Join Our Team
-                  <ArrowRight className="h-4 w-4 ml-sm transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="h-icon-xs w-icon-xs ml-sm transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/contact">
@@ -217,13 +217,13 @@ export default function CompanyPage() {
       </section>
 
       {/* Mission & Vision */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
-          <div className="grid lg:grid-cols-2 gap-3xl items-center">
+          <div className="grid lg:grid-cols-2 gap-smxl items-center">
             <div>
               <div className="flex items-center gap-sm mb-lg">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Target className="h-6 w-6 color-accent" />
+                <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-lg flex items-center justify-center">
+                  <Target className="h-icon-md w-icon-md color-accent" />
                 </div>
                 <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR MISSION</h2>
               </div>
@@ -240,8 +240,8 @@ export default function CompanyPage() {
             </div>
             <div>
               <div className="flex items-center gap-sm mb-lg">
-                <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
-                  <Globe className="h-6 w-6 text-foreground" />
+                <div className="w-icon-2xl h-icon-2xl bg-accent/10 rounded-lg flex items-center justify-center">
+                  <Globe className="h-icon-md w-icon-md text-foreground" />
                 </div>
                 <h2 className={`${anton.className} text-heading-2 uppercase`}>OUR VISION</h2>
               </div>
@@ -261,7 +261,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="text-heading-2">
@@ -276,8 +276,8 @@ export default function CompanyPage() {
             {leadership.map((member: any) => (
               <Card key={member.name} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-xl">
-                  <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-lg flex items-center justify-center">
-                    <Users className="h-12 w-12 text-foreground" />
+                  <div className="w-component-lg h-component-lg bg-gradient-to-br from-primary/20 to-accent/20 rounded-full mx-auto mb-lg flex items-center justify-center">
+                    <Users className="h-icon-2xl w-icon-2xl text-foreground" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{member.name}</h3>
                   <div className="text-foreground text-heading-4 mb-md">{member.role}</div>
@@ -306,7 +306,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Company Timeline */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="text-heading-2">
@@ -322,15 +322,15 @@ export default function CompanyPage() {
               {/* Timeline Line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border"></div>
               
-              <div className="space-y-2xl">
+              <div className="space-y-xsxl">
                 {milestones.map((milestone, index) => (
                   <div key={milestone.year} className="relative flex items-start gap-xl">
-                    <div className="flex-shrink-0 w-16 h-16 bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 relative z-10">
+                    <div className="flex-shrink-0 w-component-md h-component-md bg-accent rounded-full flex items-center justify-center color-accent-foreground text-heading-3 relative z-10">
                       {milestone.year.slice(-2)}
                     </div>
                     <div className="flex-1 pb-xl">
                       <div className="flex items-center gap-sm mb-sm">
-                        <Calendar className="h-5 w-5 text-foreground" />
+                        <Calendar className="h-icon-sm w-icon-sm text-foreground" />
                         <span className="text-body-sm text-heading-4 text-foreground">{milestone.year}</span>
                       </div>
                       <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{milestone.title}</h3>
@@ -345,7 +345,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Awards & Recognition */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="text-heading-2">
@@ -360,8 +360,8 @@ export default function CompanyPage() {
             {awards.map((award: any) => (
               <Card key={award.title} className="text-center hover:shadow-lg transition-shadow">
                 <CardContent className="p-lg">
-                  <div className="w-16 h-16 bg-gradient-to-br from-warning/20 to-warning/30 rounded-full mx-auto mb-md flex items-center justify-center">
-                    <Award className="h-8 w-8 color-warning" />
+                  <div className="w-component-md h-component-md bg-gradient-to-br from-warning/20 to-warning/30 rounded-full mx-auto mb-md flex items-center justify-center">
+                    <Award className="h-icon-lg w-icon-lg color-warning" />
                   </div>
                   <h3 className="text-heading-4 color-foreground mb-sm">{award.title}</h3>
                   <p className="text-body-sm color-muted mb-sm">{award.organization}</p>
@@ -376,7 +376,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Press & Media */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="text-heading-2">
@@ -418,7 +418,7 @@ export default function CompanyPage() {
             <a href="/press">
               <Button className="group transition-all duration-200 hover:scale-105">
                 View All Press Releases
-                <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
             </a>
           </div>
@@ -426,7 +426,7 @@ export default function CompanyPage() {
       </section>
 
       {/* Global Offices */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className="text-heading-2">
@@ -441,8 +441,8 @@ export default function CompanyPage() {
             {offices.map((office: any) => (
               <Card key={office.city} className="text-center hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg">
-                  <div className="w-16 h-16 bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
-                    <MapPin className="h-8 w-8 text-foreground" />
+                  <div className="w-component-md h-component-md bg-accent/10 rounded-full mx-auto mb-md flex items-center justify-center">
+                    <MapPin className="h-icon-lg w-icon-lg text-foreground" />
                   </div>
                   <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>
                     {office.city}
@@ -462,10 +462,10 @@ export default function CompanyPage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <Card className="max-w-4xl mx-auto text-center bg-gradient-to-r from-primary/5 to-accent/5">
-            <CardContent className="p-2xl">
+            <CardContent className="p-xsxl">
               <h3 className={`${anton.className} text-heading-2 mb-lg uppercase`}>
                 LET'S WORK TOGETHER
               </h3>
@@ -476,13 +476,13 @@ export default function CompanyPage() {
               <div className="flex flex-col sm:flex-row gap-md justify-center">
                 <Link href="/careers">
                   <Button className="transition-all duration-200 hover:scale-105">
-                    <Users className="mr-sm h-4 w-4" />
+                    <Users className="mr-sm h-icon-xs w-icon-xs" />
                     View Open Positions
                   </Button>
                 </Link>
                 <Link href="/contact">
                   <Button variant="outline" className="transition-all duration-200 hover:scale-105">
-                    <Mail className="mr-sm h-4 w-4" />
+                    <Mail className="mr-sm h-icon-xs w-icon-xs" />
                     Get in Touch
                   </Button>
                 </Link>

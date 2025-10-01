@@ -326,7 +326,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]'
@@ -344,34 +344,34 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
       <div key={activity.id} className="relative">
         {/* Timeline line */}
         {!isLast && (
-          <div className="absolute left-4 top-8 bottom-0 w-0.5 bg-border" />
+          <div className="absolute left-4 top-xl bottom-0 w-0.5 bg-border" />
         )}
 
-        <div className="flex gap-4 pb-6">
+        <div className="flex gap-md pb-6">
           {/* Timeline dot */}
           <div className="flex-shrink-0 relative">
             <div className={cn(
-              'flex items-center justify-center w-8 h-8 rounded-full border-2 bg-background',
+              'flex items-center justify-center w-icon-lg h-icon-lg rounded-full border-2 bg-background',
               iconColor.replace('text-', 'border-')
             )}>
-              <Icon className={cn('h-4 w-4', iconColor)} />
+              <Icon className={cn('h-icon-xs w-icon-xs', iconColor)} />
             </div>
           </div>
 
           {/* Content */}
           <div className="flex-1 min-w-0">
             <Card className="hover:shadow-md transition-shadow">
-              <CardContent className="p-4">
-                <div className="flex items-start justify-between gap-4">
+              <CardContent className="p-md">
+                <div className="flex items-start justify-between gap-md">
                   <div className="flex-1 min-w-0">
                     {/* Description */}
                     <p className="text-sm font-medium mb-2">{activity.description}</p>
 
                     {/* User and timestamp */}
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground mb-2">
+                    <div className="flex items-center gap-sm text-xs text-muted-foreground mb-2">
                       {showUserInfo && activity.user && (
-                        <div className="flex items-center gap-2">
-                          <Avatar className="h-5 w-5">
+                        <div className="flex items-center gap-xs">
+                          <Avatar className="h-icon-sm w-icon-sm">
                             <AvatarImage src={activity.user.avatar} />
                             <AvatarFallback>
                               {activity.user.name.slice(0, 2).toUpperCase()}
@@ -382,7 +382,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                       )}
 
                       {showTimestamps && (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-xs">
                           <Clock className="h-3 w-3" />
                           <span>{formatDistanceToNow(activity.timestamp, { addSuffix: true })}</span>
                           <span className="text-muted-foreground/50">•</span>
@@ -393,12 +393,12 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
 
                     {/* Entity info */}
                     {(activity.entityId || activity.entityType) && (
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-xs mb-2">
                         <Badge variant="outline" className="text-xs">
                           {activity.entityType}
                         </Badge>
                         {activity.entityId && (
-                          <code className="text-xs bg-muted px-1 py-0.5 rounded">
+                          <code className="text-xs bg-muted px-xs py-0.5 rounded">
                             {activity.entityId.slice(0, 8)}...
                           </code>
                         )}
@@ -428,9 +428,9 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                         </Button>
 
                         {isExpanded && (
-                          <div className="mt-2 space-y-1">
+                          <div className="mt-2 space-y-xs">
                             {activity.changes!.map((change, idx) => (
-                              <div key={idx} className="text-xs bg-muted p-2 rounded">
+                              <div key={idx} className="text-xs bg-muted p-xs rounded">
                                 <span className="font-medium">{change.fieldLabel || change.field}:</span>
                                 <span className="text-red-600 line-through ml-2">{String(change.oldValue || '—')}</span>
                                 <span className="text-green-600 ml-2">{String(change.newValue || '—')}</span>
@@ -443,17 +443,17 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                   </div>
 
                   {/* Actions */}
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
                         <Button variant="ghost" size="sm">
-                          <MoreHorizontal className="h-4 w-4" />
+                          <MoreHorizontal className="h-icon-xs w-icon-xs" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         {onViewActivityDetails && (
                           <DropdownMenuItem onClick={() => onViewActivityDetails(activity)}>
-                            <Eye className="h-4 w-4 mr-2" />
+                            <Eye className="h-icon-xs w-icon-xs mr-2" />
                             View Details
                           </DropdownMenuItem>
                         )}
@@ -462,7 +462,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                             onClick={() => onRevertActivity?.(activity.id)}
                             className="text-orange-600"
                           >
-                            <AlertTriangle className="h-4 w-4 mr-2" />
+                            <AlertTriangle className="h-icon-xs w-icon-xs mr-2" />
                             Revert Change
                           </DropdownMenuItem>
                         )}
@@ -485,7 +485,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
     return (
       <div key={groupName} className="mb-6">
         {/* Group header */}
-        <div className="flex items-center gap-2 mb-4">
+        <div className="flex items-center gap-xs mb-4">
           <h3 className="text-lg font-medium">{groupName}</h3>
           <Badge variant="secondary">{groupActivities.length}</Badge>
           {showGrouping && groupBy !== 'none' && (
@@ -493,9 +493,9 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
               variant="ghost"
               size="sm"
               onClick={() => toggleGroupCollapse(groupName)}
-              className="h-6 w-6 p-0"
+              className="h-icon-md w-icon-md p-0"
             >
-              {isCollapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />}
+              {isCollapsed ? <ChevronRight className="h-icon-xs w-icon-xs" /> : <ChevronDown className="h-icon-xs w-icon-xs" />}
             </Button>
           )}
         </div>
@@ -522,7 +522,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
         widthClasses[width]
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center justify-between p-lg border-b">
           <div className="flex-1 min-w-0">
             <h2 className="text-xl font-semibold truncate">
               {title || 'Activity History'}
@@ -530,7 +530,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
             {subtitle && (
               <p className="text-sm text-muted-foreground truncate mt-1">{subtitle}</p>
             )}
-            <div className="flex items-center gap-2 mt-2">
+            <div className="flex items-center gap-xs mt-2">
               <Badge variant="outline">
                 {filteredActivities.length} activities
               </Badge>
@@ -543,15 +543,15 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
           </div>
 
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
         {/* Filters */}
         {showFilters && (
-          <div className="p-4 border-b space-y-3">
-            <div className="flex items-center gap-2">
-              <Search className="h-4 w-4 text-muted-foreground" />
+          <div className="p-md border-b space-y-sm">
+            <div className="flex items-center gap-xs">
+              <Search className="h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search activities..."
                 value={searchQuery}
@@ -560,7 +560,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-xs">
               <Select
                 value={filter.type?.[0] || ''}
                 onValueChange={(value) => handleFilterChange('type', value ? [value as ActivityType] : undefined)}
@@ -604,7 +604,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
                 onClick={() => onExportActivities(filter)}
                 className="w-full"
               >
-                <Download className="h-4 w-4 mr-2" />
+                <Download className="h-icon-xs w-icon-xs mr-2" />
                 Export History
               </Button>
             )}
@@ -613,22 +613,22 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
 
         {/* Content */}
         <ScrollArea className="flex-1">
-          <div className="p-6">
+          <div className="p-lg">
             {loading ? (
-              <div className="space-y-4">
+              <div className="space-y-md">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <div key={index} className="flex gap-4 pb-6">
-                    <div className="w-8 h-8 bg-muted rounded-full animate-pulse" />
+                  <div key={index} className="flex gap-md pb-6">
+                    <div className="w-icon-lg h-icon-lg bg-muted rounded-full animate-pulse" />
                     <div className="flex-1">
-                      <div className="h-16 bg-muted rounded animate-pulse" />
+                      <div className="h-component-md bg-muted rounded animate-pulse" />
                     </div>
                   </div>
                 ))}
               </div>
             ) : filteredActivities.length === 0 ? (
-              <div className="flex items-center justify-center py-12">
+              <div className="flex items-center justify-center py-xsxl">
                 <div className="text-center">
-                  <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <Clock className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
                   <div className="text-muted-foreground mb-2">No activities found</div>
                   <div className="text-sm text-muted-foreground">
                     {activities.length === 0 ? 'No activity history available' : 'Try adjusting your filters'}

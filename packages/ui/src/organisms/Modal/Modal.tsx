@@ -6,7 +6,7 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { X, AlertTriangle, CheckCircle, Info, AlertCircle } from 'lucide-react';
-import { Button } from './atomic/Button';
+import { Button } from '../../components/atomic/Button';
 
 const modalVariants = cva(
   'relative bg-background border border-border shadow-floating rounded-lg',
@@ -254,11 +254,11 @@ export const Modal: React.FC<ModalProps> = ({
               <Button
                 variant="ghost"
                 size="sm"
-                className="h-8 w-8 p-0 ml-md"
+                className="h-icon-lg w-icon-lg p-0 ml-md"
                 onClick={onClose}
                 aria-label="Close modal"
               >
-                <X className="h-4 w-4" />
+                <X className="h-icon-xs w-icon-xs" />
               </Button>
             )}
           </div>
@@ -311,9 +311,9 @@ export const ConfirmModal: React.FC<ConfirmModalProps> = ({
   const getIcon = () => {
     switch (variant) {
       case 'destructive':
-        return <AlertTriangle className="h-6 w-6 text-destructive" />;
+        return <AlertTriangle className="h-icon-md w-icon-md text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-accent" />;
+        return <Info className="h-icon-md w-icon-md text-accent" />;
     }
   };
 
@@ -370,13 +370,13 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   const getIcon = () => {
     switch (type) {
       case 'success':
-        return <CheckCircle className="h-6 w-6 text-success" />;
+        return <CheckCircle className="h-icon-md w-icon-md text-success" />;
       case 'warning':
-        return <AlertTriangle className="h-6 w-6 text-warning" />;
+        return <AlertTriangle className="h-icon-md w-icon-md text-warning" />;
       case 'error':
-        return <AlertCircle className="h-6 w-6 text-destructive" />;
+        return <AlertCircle className="h-icon-md w-icon-md text-destructive" />;
       default:
-        return <Info className="h-6 w-6 text-accent" />;
+        return <Info className="h-icon-md w-icon-md text-accent" />;
     }
   };
 

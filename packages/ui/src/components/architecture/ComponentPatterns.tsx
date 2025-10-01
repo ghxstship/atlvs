@@ -160,12 +160,12 @@ export class DataFetchingComponent<T, P extends DataFetchingProps<T> = DataFetch
       return (
         <Card className="p-lg border-destructive bg-destructive/10">
           <div className="flex items-start space-x-sm">
-            <AlertCircle className="h-6 w-6 text-destructive flex-shrink-0 mt-0.5" />
+            <AlertCircle className="h-icon-md w-icon-md text-destructive flex-shrink-0 mt-0.5" />
             <div className="flex-1">
               <h3 className="text-lg font-semibold text-destructive mb-sm">Data Loading Error</h3>
               <p className="text-destructive mb-md">{error.message}</p>
               <Button onClick={this.handleRefresh} variant="outline" size="sm">
-                <RefreshCw className="h-4 w-4 mr-sm" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
                 Retry
               </Button>
             </div>
@@ -180,16 +180,16 @@ export class DataFetchingComponent<T, P extends DataFetchingProps<T> = DataFetch
         <div className="flex items-center justify-between text-sm text-muted-foreground/70">
           <div className="flex items-center space-x-sm">
             {isLoading ? (
-              <RefreshCw className="h-4 w-4 animate-spin" />
+              <RefreshCw className="h-icon-xs w-icon-xs animate-spin" />
             ) : (
-              <CheckCircle className="h-4 w-4 text-success" />
+              <CheckCircle className="h-icon-xs w-icon-xs text-success" />
             )}
             <span>
               {isLoading ? 'Loading...' : `Last updated: ${lastFetch?.toLocaleTimeString()}`}
             </span>
           </div>
           <Button onClick={this.handleRefresh} variant="ghost" size="sm" disabled={isLoading}>
-            <RefreshCw className="h-4 w-4" />
+            <RefreshCw className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
@@ -336,7 +336,7 @@ export const ListComponent = <T,>({
   if (loading) {
     return (
       <Card className={`p-xl flex items-center justify-center ${className}`}>
-        <RefreshCw className="h-6 w-6 animate-spin text-accent mr-sm" />
+        <RefreshCw className="h-icon-md w-icon-md animate-spin text-accent mr-sm" />
         <span className="text-muted-foreground/70">Loading items...</span>
       </Card>
     );
@@ -346,7 +346,7 @@ export const ListComponent = <T,>({
     return (
       <Card className={`p-xl text-center ${className}`}>
         <div className="text-muted-foreground/60">
-          <Info className="h-8 w-8 mx-auto mb-sm opacity-50" />
+          <Info className="h-icon-lg w-icon-lg mx-auto mb-sm opacity-50" />
           <p>{emptyMessage}</p>
         </div>
       </Card>
@@ -429,7 +429,7 @@ export const ModalComponent: React.FC<ModalProps> = ({
                   onClick={onClose}
                   className="ml-auto"
                 >
-                  <X className="h-4 w-4" />
+                  <X className="h-icon-xs w-icon-xs" />
                 </Button>
               )}
             </div>

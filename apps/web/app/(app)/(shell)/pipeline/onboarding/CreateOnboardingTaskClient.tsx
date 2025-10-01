@@ -144,7 +144,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
         className="flex items-center gap-sm"
        
       >
-        <Plus className="h-4 w-4" />
+        <Plus className="h-icon-xs w-icon-xs" />
         Add Onboarding Task
       </Button>
 
@@ -161,7 +161,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               onClick={handleClose}
               disabled={isSubmitting}
             >
-              <X className="h-4 w-4 mr-sm" />
+              <X className="h-icon-xs w-icon-xs mr-sm" />
               Cancel
             </Button>
             <Button
@@ -169,7 +169,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
               form="onboarding-task-form"
               disabled={!isValid || isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Task'}
             </Button>
           </div>
@@ -178,7 +178,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
         <form id="onboarding-task-form" onSubmit={handleSubmit(onSubmit)} className="stack-lg">
           <div className="flex items-center gap-sm mb-lg">
             <div className="p-sm bg-secondary/10 rounded-lg">
-              <UserPlus className="h-5 w-5 color-secondary" />
+              <UserPlus className="h-icon-sm w-icon-sm color-secondary" />
             </div>
             <div>
               <h3 className="form-label">Onboarding Task Information</h3>
@@ -343,7 +343,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <input
                   type="checkbox"
                   {...register('mandatory')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   This task is mandatory for all new hires
@@ -354,7 +354,7 @@ export default function CreateOnboardingTaskClient({ orgId, onTaskCreated }: Cre
                 <input
                   type="checkbox"
                   {...register('automated')}
-                  className="w-4 h-4"
+                  className="w-icon-xs h-icon-xs"
                 />
                 <label className="text-body-sm form-label">
                   This task can be completed automatically

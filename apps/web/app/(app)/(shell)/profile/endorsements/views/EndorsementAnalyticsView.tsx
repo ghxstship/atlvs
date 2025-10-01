@@ -24,12 +24,12 @@ export default function EndorsementAnalyticsView({
 }: EndorsementAnalyticsViewProps) {
  if (loading || analyticsLoading) {
  return (
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
  {[...Array(8)].map((_, i) => (
- <Card key={i} className="p-6">
- <div className="space-y-3">
- <div className="h-4 w-24 bg-muted animate-pulse rounded" />
- <div className="h-8 w-16 bg-muted animate-pulse rounded" />
+ <Card key={i} className="p-lg">
+ <div className="space-y-sm">
+ <div className="h-icon-xs w-component-lg bg-muted animate-pulse rounded" />
+ <div className="h-icon-lg w-component-md bg-muted animate-pulse rounded" />
  <div className="h-2 w-full bg-muted animate-pulse rounded" />
  </div>
  </Card>
@@ -39,33 +39,33 @@ export default function EndorsementAnalyticsView({
  }
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
- <Card className="p-6">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Total Endorsements</p>
  <p className="text-3xl font-bold mt-1">{stats.totalEndorsements}</p>
  </div>
- <Award className="h-8 w-8 text-primary opacity-20" />
+ <Award className="h-icon-lg w-icon-lg text-primary opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Average Rating</p>
- <div className="flex items-center gap-2 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  <p className="text-3xl font-bold">{stats.averageRating}</p>
  <span className="text-yellow-500">{formatRating(Math.round(stats.averageRating))}</span>
  </div>
  </div>
- <Star className="h-8 w-8 text-yellow-500 opacity-20" />
+ <Star className="h-icon-lg w-icon-lg text-yellow-500 opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Verified</p>
@@ -76,11 +76,11 @@ export default function EndorsementAnalyticsView({
  : '0%'}
  </p>
  </div>
- <Shield className="h-8 w-8 text-green-500 opacity-20" />
+ <Shield className="h-icon-lg w-icon-lg text-green-500 opacity-20" />
  </div>
  </Card>
 
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Public</p>
@@ -91,20 +91,20 @@ export default function EndorsementAnalyticsView({
  : '0%'}
  </p>
  </div>
- <Eye className="h-8 w-8 text-blue-500 opacity-20" />
+ <Eye className="h-icon-lg w-icon-lg text-blue-500 opacity-20" />
  </div>
  </Card>
  </div>
 
  {/* Charts Row */}
- <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+ <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
  {/* Rating Distribution */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Rating Distribution</h3>
- <BarChart3 className="h-4 w-4 text-muted-foreground" />
+ <BarChart3 className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {[5, 4, 3, 2, 1].map((rating) => {
  const ratingData = stats.byRating.find(r => r.rating === rating);
  const count = ratingData?.count || 0;
@@ -113,9 +113,9 @@ export default function EndorsementAnalyticsView({
  : 0;
  
  return (
- <div key={rating} className="space-y-1">
+ <div key={rating} className="space-y-xs">
  <div className="flex items-center justify-between text-sm">
- <span className="flex items-center gap-2">
+ <span className="flex items-center gap-xs">
  <span className="text-yellow-500">{formatRating(rating)}</span>
  <span className="text-muted-foreground">({rating} star)</span>
  </span>
@@ -129,19 +129,19 @@ export default function EndorsementAnalyticsView({
  </Card>
 
  {/* Relationship Distribution */}
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Relationship Types</h3>
- <PieChart className="h-4 w-4 text-muted-foreground" />
+ <PieChart className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {stats.byRelationship.map(({ relationship, count }) => {
  const percentage = stats.totalEndorsements > 0 
  ? (count / stats.totalEndorsements) * 100 
  : 0;
  
  return (
- <div key={relationship} className="space-y-1">
+ <div key={relationship} className="space-y-xs">
  <div className="flex items-center justify-between text-sm">
  <span>{RELATIONSHIP_LABELS[relationship]}</span>
  <span className="font-medium">{count}</span>
@@ -156,15 +156,15 @@ export default function EndorsementAnalyticsView({
 
  {/* Top Skills */}
  {stats.topSkills.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Top Endorsed Skills</h3>
- <TrendingUp className="h-4 w-4 text-muted-foreground" />
+ <TrendingUp className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
+ <div className="grid grid-cols-2 md:grid-cols-5 gap-sm">
  {stats.topSkills.map(({ skill, count }, index) => (
- <div key={skill} className="flex items-center justify-between p-3 bg-muted rounded-lg">
- <div className="flex items-center gap-2">
+ <div key={skill} className="flex items-center justify-between p-sm bg-muted rounded-lg">
+ <div className="flex items-center gap-xs">
  <span className="text-lg font-bold text-muted-foreground">#{index + 1}</span>
  <div>
  <p className="font-medium text-sm">{skill}</p>
@@ -179,16 +179,16 @@ export default function EndorsementAnalyticsView({
 
  {/* Trends */}
  {analytics.endorsementTrends.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Endorsement Trends</h3>
- <Activity className="h-4 w-4 text-muted-foreground" />
+ <Activity className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {analytics.endorsementTrends.map(({ month, count, averageRating }) => (
- <div key={month} className="flex items-center justify-between p-3 bg-muted/50 rounded-lg">
- <div className="flex items-center gap-4">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <div key={month} className="flex items-center justify-between p-sm bg-muted/50 rounded-lg">
+ <div className="flex items-center gap-md">
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="font-medium">
  {new Date(month + '-01').toLocaleDateString('en-US', { 
  year: 'numeric', 
@@ -196,7 +196,7 @@ export default function EndorsementAnalyticsView({
  })}
  </span>
  </div>
- <div className="flex items-center gap-4">
+ <div className="flex items-center gap-md">
  <Badge variant="secondary">{count} endorsements</Badge>
  <span className="text-sm text-yellow-500">
  {formatRating(Math.round(averageRating))} ({averageRating})
@@ -210,26 +210,26 @@ export default function EndorsementAnalyticsView({
 
  {/* Recent Endorsements */}
  {analytics.recentEndorsements.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-semibold">Recent Endorsements</h3>
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {analytics.recentEndorsements.map((endorsement) => (
- <div key={endorsement.id} className="flex items-center justify-between p-3 border rounded-lg">
+ <div key={endorsement.id} className="flex items-center justify-between p-sm border rounded-lg">
  <div className="flex-1">
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <p className="font-medium">{endorsement.endorser_name}</p>
  <Badge variant="outline" className="text-xs">
  {RELATIONSHIP_LABELS[endorsement.relationship]}
  </Badge>
  </div>
- <p className="text-sm text-muted-foreground line-clamp-1">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {endorsement.endorsement_text}
  </p>
  </div>
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <span className="text-yellow-500">{formatRating(endorsement.rating)}</span>
  <span className="text-xs text-muted-foreground">
  {formatDate(endorsement.date_received)}
@@ -243,9 +243,9 @@ export default function EndorsementAnalyticsView({
 
  {/* Skill Cloud */}
  {analytics.skillCloud.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="font-semibold mb-4">Skill Cloud</h3>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {analytics.skillCloud.map(({ skill, frequency, weight }) => {
  const size = weight > 75 ? 'text-lg' : weight > 50 ? 'text-base' : weight > 25 ? 'text-sm' : 'text-xs';
  const opacity = weight > 75 ? 'opacity-100' : weight > 50 ? 'opacity-80' : weight > 25 ? 'opacity-60' : 'opacity-40';
@@ -265,20 +265,20 @@ export default function EndorsementAnalyticsView({
  )}
 
  {/* Summary Stats */}
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
- <Card className="p-4 bg-muted/50">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between">
  <span className="text-sm text-muted-foreground">Verification Rate</span>
  <span className="font-semibold">{analytics.verificationRate}%</span>
  </div>
  </Card>
- <Card className="p-4 bg-muted/50">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between">
  <span className="text-sm text-muted-foreground">Public Rate</span>
  <span className="font-semibold">{analytics.publicRate}%</span>
  </div>
  </Card>
- <Card className="p-4 bg-muted/50">
+ <Card className="p-md bg-muted/50">
  <div className="flex items-center justify-between">
  <span className="text-sm text-muted-foreground">Featured Count</span>
  <span className="font-semibold">{stats.featuredCount}</span>

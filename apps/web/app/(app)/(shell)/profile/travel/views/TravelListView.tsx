@@ -60,11 +60,11 @@ export default function TravelListView({
 
  if (loading) {
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {[...Array(3)].map((_, i) => (
- <Card key={i} className="p-4">
+ <Card key={i} className="p-md">
  <div className="animate-pulse">
- <div className="h-4 bg-muted rounded w-3/4 mb-2"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4 mb-2"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  </div>
  </Card>
@@ -75,9 +75,9 @@ export default function TravelListView({
 
  if (records.length === 0) {
  return (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Plane className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Plane className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Travel Records</h3>
  <p className="text-muted-foreground mt-2">
@@ -90,11 +90,11 @@ export default function TravelListView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header with bulk selection */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected}
@@ -105,7 +105,7 @@ export default function TravelListView({
  </span>
  </div>
  {selectedIds.length > 0 && (
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm">
  Export Selected
  </Button>
@@ -125,19 +125,19 @@ export default function TravelListView({
  const current = isCurrentTrip(record);
 
  return (
- <Card key={record.id} className={`p-4 ${isSelected ? 'ring-2 ring-primary' : ''}`}>
- <div className="space-y-4">
+ <Card key={record.id} className={`p-md ${isSelected ? 'ring-2 ring-primary' : ''}`}>
+ <div className="space-y-md">
  {/* Header Row */}
  <div className="flex items-start justify-between">
- <div className="flex items-start gap-3 flex-1">
+ <div className="flex items-start gap-sm flex-1">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onSelectItem(record.id, !!checked)}
  />
  <div className="flex-1 min-w-0">
- <div className="flex items-center gap-2 mb-2">
- <h3 className="font-semibold text-lg flex items-center gap-2">
- <Plane className="h-4 w-4" />
+ <div className="flex items-center gap-xs mb-2">
+ <h3 className="font-semibold text-lg flex items-center gap-xs">
+ <Plane className="h-icon-xs w-icon-xs" />
  {record.destination}, {record.country}
  </h3>
  <Badge variant={getStatusBadgeVariant(record.status)}>
@@ -158,18 +158,18 @@ export default function TravelListView({
  )}
  </div>
  
- <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
- <div className="flex items-center gap-1">
- <Calendar className="h-4 w-4" />
+ <div className="flex items-center gap-md text-sm text-muted-foreground mb-2">
+ <div className="flex items-center gap-xs">
+ <Calendar className="h-icon-xs w-icon-xs" />
  {formatDateShort(record.start_date)} - {formatDateShort(record.end_date)}
  </div>
- <div className="flex items-center gap-1">
- <Clock className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  {record.duration_days} day{record.duration_days !== 1 ? 's' : ''}
  </div>
  {record.expenses && (
- <div className="flex items-center gap-1">
- <CreditCard className="h-4 w-4" />
+ <div className="flex items-center gap-xs">
+ <CreditCard className="h-icon-xs w-icon-xs" />
  {formatCurrency(record.expenses, record.currency)}
  </div>
  )}
@@ -180,7 +180,7 @@ export default function TravelListView({
  </div>
 
  {/* Actions */}
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
@@ -194,21 +194,21 @@ export default function TravelListView({
  size="sm"
  onClick={() => onView(record)}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(record)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(record)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -216,9 +216,9 @@ export default function TravelListView({
 
  {/* Expanded Content */}
  {isExpanded && (
- <div className="border-t pt-4 space-y-4">
+ <div className="border-t pt-4 space-y-md">
  {/* Travel Details */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {record.accommodation && (
  <div>
  <h4 className="font-medium text-sm mb-1">Accommodation</h4>
@@ -246,7 +246,7 @@ export default function TravelListView({
  </div>
 
  {/* Visa Information */}
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div>
  <h4 className="font-medium text-sm mb-1">Visa Required</h4>
  <Badge variant={record.visa_required ? 'secondary' : 'outline'}>
@@ -270,7 +270,7 @@ export default function TravelListView({
  {record.passport_used && (
  <div>
  <h4 className="font-medium text-sm mb-2">Passport Used</h4>
- <p className="text-sm text-muted-foreground bg-muted p-3 rounded font-mono">
+ <p className="text-sm text-muted-foreground bg-muted p-sm rounded font-mono">
  {record.passport_used}
  </p>
  </div>
@@ -280,7 +280,7 @@ export default function TravelListView({
  {record.notes && (
  <div>
  <h4 className="font-medium text-sm mb-2">Notes</h4>
- <p className="text-sm text-muted-foreground bg-muted p-3 rounded">
+ <p className="text-sm text-muted-foreground bg-muted p-sm rounded">
  {record.notes}
  </p>
  </div>
@@ -288,12 +288,12 @@ export default function TravelListView({
 
  {/* Expense Details */}
  {record.expenses && (
- <div className="bg-blue-50 p-4 rounded-lg">
- <div className="flex items-center gap-2 mb-2">
- <CreditCard className="h-4 w-4 text-blue-600" />
+ <div className="bg-blue-50 p-md rounded-lg">
+ <div className="flex items-center gap-xs mb-2">
+ <CreditCard className="h-icon-xs w-icon-xs text-blue-600" />
  <h4 className="font-medium text-sm">Expense Information</h4>
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <span className="text-sm text-muted-foreground">Total Amount:</span>
  <p className="font-semibold text-lg text-blue-700">
@@ -309,7 +309,7 @@ export default function TravelListView({
  )}
 
  {/* Metadata */}
- <div className="grid grid-cols-2 gap-4 text-xs text-muted-foreground">
+ <div className="grid grid-cols-2 gap-md text-xs text-muted-foreground">
  <div>
  <span className="font-medium">Created:</span> {formatDate(record.created_at)}
  </div>

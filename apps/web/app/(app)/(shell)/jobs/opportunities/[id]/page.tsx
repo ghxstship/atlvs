@@ -82,7 +82,7 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested opportunity could not be found.</p>
             </div>
           )
@@ -126,16 +126,16 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Opportunity Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Briefcase className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Briefcase className="h-icon-sm w-icon-sm" />
                 Opportunity Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(opportunity as any).title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -167,12 +167,12 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
           {/* Timeline */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Timeline
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Posted Date</span>
                 <span className="text-sm text-muted-foreground">
@@ -199,15 +199,15 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
           {/* Associated Project */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Target className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Target className="h-icon-sm w-icon-sm" />
                 Associated Project
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="font-medium">{(opportunity as any).project?.name || 'No associated project'}</p>
-                <div className="flex items-center gap-2 mt-2">
+                <div className="flex items-center gap-xs mt-2">
                   <span className="text-sm">Project Status:</span>
                   {getStatusBadge((opportunity as any).project?.status || 'unknown')}
                 </div>
@@ -218,12 +218,12 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
           {/* Bidding Statistics */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <TrendingUp className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <TrendingUp className="h-icon-sm w-icon-sm" />
                 Bidding Statistics
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Total Bids</span>
                 <span className="text-sm font-semibold">
@@ -267,11 +267,11 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
           </CardHeader>
           <CardContent>
             {(opportunity as any).bids && (opportunity as any).bids.length > 0 ? (
-              <div className="space-y-3">
+              <div className="space-y-sm">
                 {(opportunity as any).bids
                   .sort((a: unknown, b: unknown) => new Date(b.submitted_at || 0).getTime() - new Date(a.submitted_at || 0).getTime())
                   .map((bid: unknown) => (
-                    <div key={bid.id} className="flex items-center justify-between p-4 border rounded">
+                    <div key={bid.id} className="flex items-center justify-between p-md border rounded">
                       <div className="flex-1">
                         <p className="font-medium">{bid.company?.name || 'Unknown Company'}</p>
                         <p className="text-sm text-muted-foreground">
@@ -286,7 +286,7 @@ export default async function OpportunityDetailPage({ params }: OpportunityDetai
                   ))}
               </div>
             ) : (
-              <p className="text-muted-foreground text-center py-8">
+              <p className="text-muted-foreground text-center py-xl">
                 No bids submitted yet
               </p>
             )}

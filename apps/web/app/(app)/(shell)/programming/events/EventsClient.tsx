@@ -217,7 +217,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
               <div className="flex items-center gap-md">
                 <h2 className="text-body text-heading-4">Events Management</h2>
                 <Button>
-                  <Plus className="h-4 w-4 mr-sm" />
+                  <Plus className="h-icon-xs w-icon-xs mr-sm" />
                   Create Event
                 </Button>
               </div>
@@ -274,7 +274,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
                 <div className="stack-md mt-lg">
                   <div className="grid grid-cols-2 gap-md">
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Calendar className="h-4 w-4" />
+                      <Calendar className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleDateString()
@@ -283,7 +283,7 @@ export default function EventsClient({ orgId }: { orgId: string }) {
                       </span>
                     </div>
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <Clock className="h-4 w-4" />
+                      <Clock className="h-icon-xs w-icon-xs" />
                       <span>
                         {selectedRecord.starts_at 
                           ? new Date(selectedRecord.starts_at).toLocaleTimeString()

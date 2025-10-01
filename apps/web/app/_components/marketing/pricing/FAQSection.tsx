@@ -44,7 +44,7 @@ export function FAQSection({ faqs }: FAQSectionProps) {
                   >
                     <span className="text-heading-4 color-foreground">{faq.question}</span>
                     <HelpCircle className={cn(
-                      "h-5 w-5 color-muted transition-transform",
+                      "h-icon-sm w-icon-sm color-muted transition-transform",
                       openFaq === index ? "rotate-180" : ""
                     )} />
                   </button>

@@ -169,7 +169,7 @@ export default function KanbanView({
   const columnOrder = getColumnOrder();
 
   return (
-    <div className="flex gap-6 overflow-x-auto pb-6">
+    <div className="flex gap-lg overflow-x-auto pb-6">
       {columnOrder.map((groupKey) => {
         const config = getColumnConfig(groupKey);
         const columnFiles = groupedFiles[groupKey] || [];
@@ -178,13 +178,13 @@ export default function KanbanView({
         return (
           <div
             key={groupKey}
-            className={`flex-shrink-0 w-80 ${config.color} rounded-lg p-4 min-h-[600px]`}
+            className={`flex-shrink-0 w-container-md ${config.color} rounded-lg p-md min-h-content-xl`}
             onDragOver={handleDragOver}
             onDrop={(e) => handleDrop(e, groupKey)}
           >
             {/* Column Header */}
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-xs">
                 <h3 className="font-semibold text-gray-900">{config.title}</h3>
                 <Badge variant="secondary" className="text-xs">
                   {columnFiles.length}
@@ -200,7 +200,7 @@ export default function KanbanView({
               <DropdownMenu>
                 <DropdownMenu.Trigger asChild>
                   <Button variant="ghost" size="sm">
-                    <MoreHorizontal className="w-4 h-4" />
+                    <MoreHorizontal className="w-icon-xs h-icon-xs" />
                   </Button>
                 </DropdownMenu.Trigger>
                 <DropdownMenu.Content align="end">
@@ -233,14 +233,14 @@ export default function KanbanView({
             </div>
 
             {/* Cards */}
-            <div className="space-y-3">
+            <div className="space-y-sm">
               {columnFiles.map((file) => {
                 const CategoryIcon = getCategoryIcon(file.category);
 
                 return (
                   <Card
                     key={file.id}
-                    className={`p-3 cursor-pointer hover:shadow-md transition-shadow ${
+                    className={`p-sm cursor-pointer hover:shadow-md transition-shadow ${
                       draggedFile === file.id ? 'opacity-50' : ''
                     }`}
                     draggable
@@ -248,16 +248,16 @@ export default function KanbanView({
                     onDragEnd={handleDragEnd}
                     onClick={() => onView(file)}
                   >
-                    <div className="flex items-start gap-3">
+                    <div className="flex items-start gap-sm">
                       {/* Drag Handle */}
                       <div className="mt-1">
-                        <GripVertical className="w-4 h-4 text-gray-400" />
+                        <GripVertical className="w-icon-xs h-icon-xs text-gray-400" />
                       </div>
 
                       {/* File Icon */}
                       <div className="flex-shrink-0">
-                        <div className="w-8 h-8 rounded bg-white flex items-center justify-center">
-                          <CategoryIcon className="w-4 h-4 text-gray-600" />
+                        <div className="w-icon-lg h-icon-lg rounded bg-white flex items-center justify-center">
+                          <CategoryIcon className="w-icon-xs h-icon-xs text-gray-600" />
                         </div>
                       </div>
 
@@ -273,7 +273,7 @@ export default function KanbanView({
                           </p>
                         )}
 
-                        <div className="flex items-center gap-2 mt-2 text-xs text-gray-500">
+                        <div className="flex items-center gap-xs mt-2 text-xs text-gray-500">
                           <span>{formatFileSize(file.file_size || 0)}</span>
                           <span>•</span>
                           <span>{new Date(file.updated_at).toLocaleDateString()}</span>
@@ -281,7 +281,7 @@ export default function KanbanView({
 
                         {/* Tags */}
                         {file.tags && file.tags.length > 0 && (
-                          <div className="flex flex-wrap gap-1 mt-2">
+                          <div className="flex flex-wrap gap-xs mt-2">
                             {file.tags.slice(0, 2).map((tag, index) => (
                               <Badge key={index} variant="outline" className="text-xs">
                                 {tag}
@@ -303,26 +303,26 @@ export default function KanbanView({
                             variant="ghost"
                             size="sm"
                             onClick={(e) => e.stopPropagation()}
-                            className="h-6 w-6 p-0"
+                            className="h-icon-md w-icon-md p-0"
                           >
                             <MoreHorizontal className="w-3 h-3" />
                           </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content align="end">
                           <DropdownMenu.Item onClick={() => onView(file)}>
-                            <Eye className="w-4 h-4 mr-2" />
+                            <Eye className="w-icon-xs h-icon-xs mr-2" />
                             View
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onEdit(file)}>
-                            <Edit className="w-4 h-4 mr-2" />
+                            <Edit className="w-icon-xs h-icon-xs mr-2" />
                             Edit
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onDownload(file)}>
-                            <Download className="w-4 h-4 mr-2" />
+                            <Download className="w-icon-xs h-icon-xs mr-2" />
                             Download
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onShare(file)}>
-                            <Share className="w-4 h-4 mr-2" />
+                            <Share className="w-icon-xs h-icon-xs mr-2" />
                             Share
                           </DropdownMenu.Item>
                           <DropdownMenu.Separator />
@@ -330,7 +330,7 @@ export default function KanbanView({
                             onClick={() => onDelete(file)}
                             className="text-red-600"
                           >
-                            <Trash2 className="w-4 h-4 mr-2" />
+                            <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                             Delete
                           </DropdownMenu.Item>
                         </DropdownMenu.Content>
@@ -341,9 +341,9 @@ export default function KanbanView({
               })}
 
               {/* Add Card Placeholder */}
-              <div className="border-2 border-dashed border-gray-300 rounded-lg p-4 text-center hover:border-gray-400 transition-colors">
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-md text-center hover:border-gray-400 transition-colors">
                 <Button variant="ghost" size="sm" className="w-full">
-                  <Plus className="w-4 h-4 mr-2" />
+                  <Plus className="w-icon-xs h-icon-xs mr-2" />
                   Add file
                 </Button>
               </div>

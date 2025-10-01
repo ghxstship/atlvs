@@ -120,34 +120,34 @@ export function ImageView<T extends ProgrammingEntity>({
 
           {/* Overlay with actions */}
           <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-200">
-            <div className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="flex gap-1">
+            <div className="absolute top-xs right-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="flex gap-xs">
                 {imageUrl && (
                   <Button
                     variant="secondary"
                     size="sm"
                     onClick={() => openLightbox(item)}
-                    className="h-8 w-8 p-0"
+                    className="h-icon-lg w-icon-lg p-0"
                   >
-                    <ZoomIn className="h-4 w-4" />
+                    <ZoomIn className="h-icon-xs w-icon-xs" />
                   </Button>
                 )}
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <Button variant="secondary" size="sm" className="h-8 w-8 p-0">
-                      <MoreHorizontal className="h-4 w-4" />
+                    <Button variant="secondary" size="sm" className="h-icon-lg w-icon-lg p-0">
+                      <MoreHorizontal className="h-icon-xs w-icon-xs" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     {onView && (
                       <DropdownMenuItem onClick={() => onView(item)}>
-                        <Eye className="h-4 w-4 mr-2" />
+                        <Eye className="h-icon-xs w-icon-xs mr-2" />
                         View
                       </DropdownMenuItem>
                     )}
                     {onEdit && (
                       <DropdownMenuItem onClick={() => onEdit(item)}>
-                        <Edit className="h-4 w-4 mr-2" />
+                        <Edit className="h-icon-xs w-icon-xs mr-2" />
                         Edit
                       </DropdownMenuItem>
                     )}
@@ -156,7 +156,7 @@ export function ImageView<T extends ProgrammingEntity>({
                         onClick={() => onDelete(item)}
                         className="text-red-600"
                       >
-                        <Trash2 className="h-4 w-4 mr-2" />
+                        <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                         Delete
                       </DropdownMenuItem>
                     )}
@@ -168,7 +168,7 @@ export function ImageView<T extends ProgrammingEntity>({
 
           {/* Selection checkbox */}
           {selectable && (
-            <div className="absolute top-2 left-2">
+            <div className="absolute top-xs left-2">
               <Checkbox
                 checked={selectedIdsToUse.includes(item.id)}
                 onCheckedChange={(checked) => handleSelectItem(item.id, checked as boolean)}
@@ -179,14 +179,14 @@ export function ImageView<T extends ProgrammingEntity>({
         </div>
 
         {/* Content */}
-        <CardContent className="p-3">
-          <div className="space-y-2">
-            <h3 className="font-medium text-sm line-clamp-2">
+        <CardContent className="p-sm">
+          <div className="space-y-xs">
+            <h3 className="font-medium text-sm line-clamp-xs">
               {item.title || 'Untitled'}
             </h3>
 
             {/* Status and type badges */}
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {'status' in item && (
                 <Badge variant="secondary" className="text-xs">
                   {item.status}
@@ -239,13 +239,13 @@ export function ImageView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`grid ${getGridClass()} gap-4 ${className}`}>
+      <div className={`grid ${getGridClass()} gap-md ${className}`}>
         {Array.from({ length: 12 }).map((_, i) => (
           <Card key={i} className="overflow-hidden">
             <div className="aspect-square bg-gray-200 animate-pulse" />
-            <CardContent className="p-3">
-              <div className="space-y-2">
-                <div className="h-4 bg-gray-200 animate-pulse rounded" />
+            <CardContent className="p-sm">
+              <div className="space-y-xs">
+                <div className="h-icon-xs bg-gray-200 animate-pulse rounded" />
                 <div className="h-3 bg-gray-200 animate-pulse rounded w-2/3" />
                 <div className="h-3 bg-gray-200 animate-pulse rounded w-1/2" />
               </div>
@@ -258,7 +258,7 @@ export function ImageView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
@@ -266,7 +266,7 @@ export function ImageView<T extends ProgrammingEntity>({
 
   return (
     <>
-      <div className={`grid ${getGridClass()} gap-4 ${className}`}>
+      <div className={`grid ${getGridClass()} gap-md ${className}`}>
         {data.map((item) => (
           <div key={item.id}>
             {renderImageItem ? renderImageItem(item) : defaultRenderImageItem(item)}
@@ -277,28 +277,28 @@ export function ImageView<T extends ProgrammingEntity>({
       {/* Lightbox Dialog */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
         <DialogContent className="max-w-4xl max-h-[90vh] p-0">
-          <DialogHeader className="p-4 pb-0">
+          <DialogHeader className="p-md pb-0">
             <DialogTitle>{lightboxItem?.title || 'Item Details'}</DialogTitle>
           </DialogHeader>
-          <div className="p-4 pt-0">
+          <div className="p-md pt-0">
             {lightboxItem && (
-              <div className="space-y-4">
+              <div className="space-y-md">
                 {/* Large image */}
                 {(getImageUrl?.(lightboxItem) || getThumbnailUrl?.(lightboxItem)) && (
                   <div className="relative">
                     <img
                       src={getImageUrl?.(lightboxItem) || getThumbnailUrl?.(lightboxItem) || ''}
                       alt={lightboxItem.title || 'Item'}
-                      className="w-full max-h-96 object-contain rounded-lg"
+                      className="w-full max-h-container-lg object-contain rounded-lg"
                     />
                   </div>
                 )}
 
                 {/* Item details */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
                   <div>
                     <h3 className="font-medium mb-2">Details</h3>
-                    <dl className="space-y-1 text-sm">
+                    <dl className="space-y-xs text-sm">
                       <div className="flex justify-between">
                         <dt className="text-gray-600">Title:</dt>
                         <dd className="font-medium">{lightboxItem.title || 'Untitled'}</dd>
@@ -326,22 +326,22 @@ export function ImageView<T extends ProgrammingEntity>({
 
                   <div>
                     <h3 className="font-medium mb-2">Actions</h3>
-                    <div className="flex gap-2">
+                    <div className="flex gap-xs">
                       {onView && (
                         <Button variant="outline" onClick={() => { onView(lightboxItem); closeLightbox(); }}>
-                          <Eye className="h-4 w-4 mr-2" />
+                          <Eye className="h-icon-xs w-icon-xs mr-2" />
                           View Details
                         </Button>
                       )}
                       {onEdit && (
                         <Button variant="outline" onClick={() => { onEdit(lightboxItem); closeLightbox(); }}>
-                          <Edit className="h-4 w-4 mr-2" />
+                          <Edit className="h-icon-xs w-icon-xs mr-2" />
                           Edit
                         </Button>
                       )}
                       {onDelete && (
                         <Button variant="outline" onClick={() => { onDelete(lightboxItem); closeLightbox(); }} className="text-red-600">
-                          <Trash2 className="h-4 w-4 mr-2" />
+                          <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                           Delete
                         </Button>
                       )}

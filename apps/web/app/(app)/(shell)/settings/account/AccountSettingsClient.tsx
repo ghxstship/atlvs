@@ -367,14 +367,14 @@ export default function AccountSettingsClient() {
 
  if (loading) {
  return (
- <div className="flex items-center justify-center h-96">
- <Loader className="h-8 w-8 animate-spin" />
+ <div className="flex items-center justify-center h-container-lg">
+ <Loader className="h-icon-lg w-icon-lg animate-spin" />
  </div>
  );
  }
 
  return (
- <div className="container max-w-6xl mx-auto p-6 space-y-6">
+ <div className="container max-w-6xl mx-auto p-lg space-y-lg">
  <div>
  <h1 className="text-3xl font-bold">Account Settings</h1>
  <p className="text-muted-foreground mt-2">
@@ -382,35 +382,35 @@ export default function AccountSettingsClient() {
  </p>
  </div>
 
- <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+ <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-lg">
  <TabsList className="grid w-full grid-cols-5">
  <TabsTrigger value="profile">
- <User className="h-4 w-4 mr-2" />
+ <User className="h-icon-xs w-icon-xs mr-2" />
  Profile
  </TabsTrigger>
  <TabsTrigger value="password">
- <Lock className="h-4 w-4 mr-2" />
+ <Lock className="h-icon-xs w-icon-xs mr-2" />
  Password
  </TabsTrigger>
  <TabsTrigger value="2fa">
- <Shield className="h-4 w-4 mr-2" />
+ <Shield className="h-icon-xs w-icon-xs mr-2" />
  2FA
  </TabsTrigger>
  <TabsTrigger value="sessions">
- <Smartphone className="h-4 w-4 mr-2" />
+ <Smartphone className="h-icon-xs w-icon-xs mr-2" />
  Sessions
  </TabsTrigger>
  <TabsTrigger value="api-keys">
- <Key className="h-4 w-4 mr-2" />
+ <Key className="h-icon-xs w-icon-xs mr-2" />
  API Keys
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="profile" className="space-y-6">
+ <TabsContent value="profile" className="space-y-lg">
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <h2 className="text-xl font-semibold mb-4">Profile Information</h2>
- <div className="space-y-4">
+ <div className="space-y-md">
  <div>
  <Label htmlFor="email">Email</Label>
  <Input
@@ -444,7 +444,7 @@ export default function AccountSettingsClient() {
  placeholder="+1 (555) 000-0000"
  />
  </div>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <Label htmlFor="timezone">Timezone</Label>
  <select
@@ -453,7 +453,7 @@ export default function AccountSettingsClient() {
  onChange={(event: ChangeEvent<HTMLSelectElement>) =>
  setProfileForm({ ...profileForm, timezone: event.target.value })
  }
- className="w-full px-3 py-2 border rounded-md"
+ className="w-full px-sm py-xs border rounded-md"
  >
  <option value="UTC">UTC</option>
  <option value="America/New_York">Eastern Time</option>
@@ -470,7 +470,7 @@ export default function AccountSettingsClient() {
  onChange={(event: ChangeEvent<HTMLSelectElement>) =>
  setProfileForm({ ...profileForm, language: event.target.value })
  }
- className="w-full px-3 py-2 border rounded-md"
+ className="w-full px-sm py-xs border rounded-md"
  >
  <option value="en">English</option>
  <option value="es">Spanish</option>
@@ -488,11 +488,11 @@ export default function AccountSettingsClient() {
  </Card>
  </TabsContent>
 
- <TabsContent value="password" className="space-y-6">
+ <TabsContent value="password" className="space-y-lg">
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <h2 className="text-xl font-semibold mb-4">Change Password</h2>
- <div className="space-y-4">
+ <div className="space-y-md">
  <div>
  <Label htmlFor="current-password">Current Password</Label>
  <Input
@@ -530,7 +530,7 @@ export default function AccountSettingsClient() {
  />
  </div>
  <Alert>
- <AlertCircle className="h-4 w-4" />
+ <AlertCircle className="h-icon-xs w-icon-xs" />
  <div>
  <p className="font-semibold">Password Requirements</p>
  <ul className="list-disc list-inside text-sm mt-1">
@@ -548,14 +548,14 @@ export default function AccountSettingsClient() {
  </Card>
  </TabsContent>
 
- <TabsContent value="2fa" className="space-y-6">
+ <TabsContent value="2fa" className="space-y-lg">
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <h2 className="text-xl font-semibold mb-4">Two-Factor Authentication</h2>
  {twoFactorEnabled ? (
- <div className="space-y-4">
+ <div className="space-y-md">
  <Alert>
- <Shield className="h-4 w-4" />
+ <Shield className="h-icon-xs w-icon-xs" />
  <div>
  <p className="font-semibold">2FA is enabled</p>
  <p className="text-sm mt-1">
@@ -568,17 +568,17 @@ export default function AccountSettingsClient() {
  </Button>
  </div>
  ) : (
- <div className="space-y-4">
+ <div className="space-y-md">
  <p className="text-muted-foreground">
  Add an extra layer of security to your account by enabling two-factor authentication
  </p>
  {twoFactorQR ? (
- <div className="space-y-4">
- <div className="p-4 bg-muted rounded-lg">
+ <div className="space-y-md">
+ <div className="p-md bg-muted rounded-lg">
  <p className="text-sm mb-2">Scan this QR code with your authenticator app:</p>
- <div className="bg-white p-4 rounded inline-block">
+ <div className="bg-white p-md rounded inline-block">
  {/* QR Code would be displayed here */}
- <div className="h-32 w-32 bg-gray-200 flex items-center justify-center">
+ <div className="h-component-xl w-component-xl bg-gray-200 flex items-center justify-center">
  QR Code
  </div>
  </div>
@@ -595,7 +595,7 @@ export default function AccountSettingsClient() {
  maxLength={6}
  />
  </div>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button onClick={verify2FA} disabled={saving}>
  {saving ? 'Verifying...' : 'Verify & Enable'}
  </Button>
@@ -615,9 +615,9 @@ export default function AccountSettingsClient() {
  </Card>
  </TabsContent>
 
- <TabsContent value="sessions" className="space-y-6">
+ <TabsContent value="sessions" className="space-y-lg">
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <div className="flex justify-between items-center mb-4">
  <h2 className="text-xl font-semibold">Active Sessions</h2>
  <Button variant="destructive" size="sm" onClick={revokeAllSessions}>
@@ -625,17 +625,17 @@ export default function AccountSettingsClient() {
  </Button>
  </div>
  {loadingSessions ? (
- <div className="flex justify-center py-8">
- <Loader className="h-6 w-6 animate-spin" />
+ <div className="flex justify-center py-xl">
+ <Loader className="h-icon-md w-icon-md animate-spin" />
  </div>
  ) : (
- <div className="space-y-4">
+ <div className="space-y-md">
  {sessions.map((session) => (
- <div key={session.id} className="border rounded-lg p-4">
+ <div key={session.id} className="border rounded-lg p-md">
  <div className="flex justify-between items-start">
- <div className="space-y-1">
- <div className="flex items-center gap-2">
- <Smartphone className="h-4 w-4" />
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
+ <Smartphone className="h-icon-xs w-icon-xs" />
  <span className="font-medium">
  {session.deviceInfo?.device || 'Unknown Device'}
  </span>
@@ -646,8 +646,8 @@ export default function AccountSettingsClient() {
  <p className="text-sm text-muted-foreground">
  {session.userAgent}
  </p>
- <div className="flex items-center gap-4 text-xs text-muted-foreground">
- <span className="flex items-center gap-1">
+ <div className="flex items-center gap-md text-xs text-muted-foreground">
+ <span className="flex items-center gap-xs">
  <Globe className="h-3 w-3" />
  {session.ipAddress}
  </span>
@@ -656,7 +656,7 @@ export default function AccountSettingsClient() {
  {session.location.city}, {session.location.country}
  </span>
  )}
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  Last active: {new Date(session.lastActivityAt).toLocaleString()}
  </span>
@@ -680,9 +680,9 @@ export default function AccountSettingsClient() {
  </Card>
  </TabsContent>
 
- <TabsContent value="api-keys" className="space-y-6">
+ <TabsContent value="api-keys" className="space-y-lg">
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <div className="flex justify-between items-center mb-4">
  <h2 className="text-xl font-semibold">API Keys</h2>
  <Button onClick={() => setShowCreateApiKey(true)}>
@@ -690,21 +690,21 @@ export default function AccountSettingsClient() {
  </Button>
  </div>
  {loadingApiKeys ? (
- <div className="flex justify-center py-8">
- <Loader className="h-6 w-6 animate-spin" />
+ <div className="flex justify-center py-xl">
+ <Loader className="h-icon-md w-icon-md animate-spin" />
  </div>
  ) : (
- <div className="space-y-4">
+ <div className="space-y-md">
  {apiKeys.length === 0 ? (
- <p className="text-muted-foreground text-center py-8">
+ <p className="text-muted-foreground text-center py-xl">
  No API keys created yet
  </p>
  ) : (
  apiKeys.map((apiKey) => (
- <div key={apiKey.id} className="border rounded-lg p-4">
+ <div key={apiKey.id} className="border rounded-lg p-md">
  <div className="flex justify-between items-start">
- <div className="space-y-1">
- <div className="flex items-center gap-2">
+ <div className="space-y-xs">
+ <div className="flex items-center gap-xs">
  <span className="font-medium">{apiKey.name}</span>
  <Badge variant={apiKey.isActive ? 'success' : 'secondary'}>
  {apiKey.isActive ? 'Active' : 'Inactive'}
@@ -715,7 +715,7 @@ export default function AccountSettingsClient() {
  {apiKey.description}
  </p>
  )}
- <div className="flex items-center gap-4 text-xs text-muted-foreground">
+ <div className="flex items-center gap-md text-xs text-muted-foreground">
  <span>Key: {apiKey.keyPrefix}...</span>
  {apiKey.lastUsedAt && (
  <span>Last used: {new Date(apiKey.lastUsedAt).toLocaleString()}</span>
@@ -725,7 +725,7 @@ export default function AccountSettingsClient() {
  )}
  </div>
  {apiKey.scopes.length > 0 && (
- <div className="flex gap-1 mt-2">
+ <div className="flex gap-xs mt-2">
  {apiKey.scopes.map((scope: string) => (
  <Badge key={scope} variant="outline" className="text-xs">
  {scope}
@@ -752,9 +752,9 @@ export default function AccountSettingsClient() {
 
  {showCreateApiKey && (
  <Card>
- <div className="p-6">
+ <div className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Create New API Key</h3>
- <div className="space-y-4">
+ <div className="space-y-md">
  <div>
  <Label htmlFor="api-key-name">Name</Label>
  <Input
@@ -785,7 +785,7 @@ export default function AccountSettingsClient() {
  onChange={(event: ChangeEvent<HTMLSelectElement>) =>
  setNewApiKeyForm({ ...newApiKeyForm, expiresIn: event.target.value })
  }
- className="w-full px-3 py-2 border rounded-md"
+ className="w-full px-sm py-xs border rounded-md"
  >
  <option value="30">30 days</option>
  <option value="60">60 days</option>
@@ -795,7 +795,7 @@ export default function AccountSettingsClient() {
  <option value="0">Never</option>
  </select>
  </div>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button onClick={createApiKey} disabled={saving || !newApiKeyForm.name}>
  {saving ? 'Creating...' : 'Create Key'}
  </Button>

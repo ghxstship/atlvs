@@ -88,7 +88,7 @@ export default function CreateRevenueDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <DollarSign className="h-5 w-5" />
+                <DollarSign className="h-icon-sm w-icon-sm" />
                 Revenue Details
               </CardTitle>
             </CardHeader>
@@ -157,7 +157,7 @@ export default function CreateRevenueDrawer({
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-xs">
-                <Calendar className="h-5 w-5" />
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Recognition & Associations
               </CardTitle>
             </CardHeader>
@@ -191,7 +191,7 @@ export default function CreateRevenueDrawer({
               <FormField>
                 <FormItem>
                   <FormLabel className="flex items-center gap-xs">
-                    <User className="h-4 w-4" />
+                    <User className="h-icon-xs w-icon-xs" />
                     Client ID
                   </FormLabel>
                   <FormControl>
@@ -207,7 +207,7 @@ export default function CreateRevenueDrawer({
               <FormField>
                 <FormItem>
                   <FormLabel className="flex items-center gap-xs">
-                    <Building className="h-4 w-4" />
+                    <Building className="h-icon-xs w-icon-xs" />
                     Project ID
                   </FormLabel>
                   <FormControl>

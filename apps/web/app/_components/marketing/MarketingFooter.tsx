@@ -87,7 +87,7 @@ export function MarketingFooter() {
   return (
     <>
       {/* Newsletter Section - Separate from footer */}
-      <section className="py-3xl bg-muted/30 border-t">
+      <section className="py-smxl bg-muted/30 border-t">
         <div className={`${layouts.container} ${layouts.sectionPadding}`}>
           <div className="text-center">
             <h3 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 uppercase mb-sm`}>
@@ -103,7 +103,7 @@ export function MarketingFooter() {
 
       {/* Footer */}
       <footer className="bg-secondary/50 border-t">
-        <div className={`${layouts.container} ${layouts.sectionPadding} py-2xl`}>
+        <div className={`${layouts.container} ${layouts.sectionPadding} py-xsxl`}>
           {/* Footer Links */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-lg mb-xl">
             {footerSections.map((section: any) => (

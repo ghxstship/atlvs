@@ -36,15 +36,15 @@ export default function RequestGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'approved':
- return <CheckCircle className="h-4 w-4 text-success" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
  case 'rejected':
- return <XCircle className="h-4 w-4 text-destructive" />;
+ return <XCircle className="h-icon-xs w-icon-xs text-destructive" />;
  case 'under_review':
- return <Clock className="h-4 w-4 text-warning" />;
+ return <Clock className="h-icon-xs w-icon-xs text-warning" />;
  case 'submitted':
- return <AlertTriangle className="h-4 w-4 text-info" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-info" />;
  default:
- return <Clock className="h-4 w-4 text-muted-foreground" />;
+ return <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />;
  }
  };
 
@@ -82,7 +82,7 @@ export default function RequestGridView({
  {Array.from({ length: 6 }).map((_, i) => (
  <Card key={i} className="p-md animate-pulse">
  <div className="space-y-sm">
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  <div className="h-3 bg-muted rounded w-2/3"></div>
  </div>
@@ -95,7 +95,7 @@ export default function RequestGridView({
  if (requests.length === 0) {
  return (
  <Card className="p-xl text-center">
- <AlertTriangle className="h-12 w-12 mx-auto mb-md text-muted-foreground" />
+ <AlertTriangle className="h-icon-2xl w-icon-2xl mx-auto mb-md text-muted-foreground" />
  <h3 className="text-lg font-medium mb-sm">No requests found</h3>
  <p className="text-sm text-muted-foreground">
  Create your first procurement request to get started.
@@ -146,11 +146,11 @@ export default function RequestGridView({
 
  {/* Title and Description */}
  <div>
- <h3 className="font-medium text-sm mb-xs line-clamp-2">
+ <h3 className="font-medium text-sm mb-xs line-clamp-xs">
  {request.title}
  </h3>
  {request.description && (
- <p className="text-xs text-muted-foreground line-clamp-2">
+ <p className="text-xs text-muted-foreground line-clamp-xs">
  {request.description}
  </p>
  )}

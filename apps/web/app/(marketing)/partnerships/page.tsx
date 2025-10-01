@@ -134,7 +134,7 @@ export default function PartnershipsPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <Badge variant="outline" className="mb-md">
@@ -156,7 +156,7 @@ export default function PartnershipsPage() {
             <div className="flex flex-col sm:flex-row gap-md justify-center mb-2xl">
               <Button className="group">
                 Become a Partner
-                <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
               </Button>
               <Button>
                 Partner Portal
@@ -186,7 +186,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Partnership Types */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -203,8 +203,8 @@ export default function PartnershipsPage() {
               return (
                 <Card key={type.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
-                    <div className={`w-12 h-12 bg-gradient-to-r ${type.color} rounded-lg flex items-center justify-center mb-lg`}>
-                      <Icon className="h-6 w-6 text-background" />
+                    <div className={`w-icon-2xl h-icon-2xl bg-gradient-to-r ${type.color} rounded-lg flex items-center justify-center mb-lg`}>
+                      <Icon className="h-icon-md w-icon-md text-background" />
                     </div>
                     
                     <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-md uppercase`}>
@@ -216,7 +216,7 @@ export default function PartnershipsPage() {
                       <h4 className="text-heading-4 text-body-sm color-muted uppercase">Benefits</h4>
                       {type.benefits.map((benefit: any) => (
                         <div key={benefit} className="flex items-center gap-sm">
-                          <CheckCircle className="h-4 w-4 color-success flex-shrink-0" />
+                          <CheckCircle className="h-icon-xs w-icon-xs color-success flex-shrink-0" />
                           <span className="text-body-sm color-foreground">{benefit}</span>
                         </div>
                       ))}
@@ -224,7 +224,7 @@ export default function PartnershipsPage() {
 
                     <Button variant="outline" className="w-full group">
                       Learn More
-                      <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                     </Button>
                   </CardContent>
                 </Card>
@@ -235,7 +235,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Current Partners */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -250,8 +250,8 @@ export default function PartnershipsPage() {
             {currentPartners.map((partner: any) => (
               <Card key={partner.name} className="hover:shadow-floating transition-shadow">
                 <CardContent className="p-lg text-center">
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mx-auto mb-md flex items-center justify-center">
-                    <Users className="h-8 w-8 text-foreground" />
+                  <div className="w-component-md h-component-md bg-gradient-to-br from-primary/20 to-accent/20 rounded-lg mx-auto mb-md flex items-center justify-center">
+                    <Users className="h-icon-lg w-icon-lg text-foreground" />
                   </div>
                   <h3 className={`${anton.className} text-body text-heading-3 mb-sm uppercase`}>
                     {partner.name}
@@ -268,7 +268,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Partner Benefits */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -286,8 +286,8 @@ export default function PartnershipsPage() {
                 <Card key={benefit.title} className="hover:shadow-floating transition-shadow">
                   <CardContent className="p-xl">
                     <div className="flex items-start gap-md">
-                      <div className="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-gradient-to-r from-primary to-secondary">
-                        <Icon className="h-6 w-6 text-background" />
+                      <div className="inline-flex items-center justify-center w-icon-2xl h-icon-2xl rounded-lg bg-gradient-to-r from-primary to-secondary">
+                        <Icon className="h-icon-md w-icon-md text-background" />
                       </div>
                       <div className="flex-1">
                         <h3 className={`${anton.className} text-heading-4 text-heading-3 mb-sm uppercase`}>{benefit.title}</h3>
@@ -303,7 +303,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Partnership Process */}
-      <section className="py-4xl bg-secondary/20">
+      <section className="py-mdxl bg-secondary/20">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -317,7 +317,7 @@ export default function PartnershipsPage() {
           <div className="relative">
             <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-border hidden lg:block"></div>
             
-            <div className="space-y-2xl">
+            <div className="space-y-xsxl">
               {partnershipProcess.map((step, index) => (
                 <div key={step.step} className={`flex items-center gap-xl ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
                   <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
@@ -332,7 +332,7 @@ export default function PartnershipsPage() {
                   </div>
                   
                   <div className="relative z-10 hidden lg:block">
-                    <div className="w-12 h-12 bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-background text-heading-3">
+                    <div className="w-icon-2xl h-icon-2xl bg-gradient-to-r from-primary to-secondary rounded-full flex items-center justify-center text-background text-heading-3">
                       {step.step}
                     </div>
                   </div>
@@ -346,7 +346,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Partner Success Stories */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -386,7 +386,7 @@ export default function PartnershipsPage() {
                   </div>
                   
                   <div className="flex items-center gap-sm mb-md">
-                    <Star className="h-4 w-4 color-warning" />
+                    <Star className="h-icon-xs w-icon-xs color-warning" />
                     <span className="text-heading-4 text-foreground">{story.result}</span>
                   </div>
                   
@@ -403,7 +403,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-4xl bg-gradient-to-r from-primary/5 to-accent/5">
+      <section className="py-mdxl bg-gradient-to-r from-primary/5 to-accent/5">
         <div className="container mx-auto px-md">
           <div className="text-center">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>
@@ -418,7 +418,7 @@ export default function PartnershipsPage() {
               <Link href="/contact">
                 <Button className="w-full sm:w-auto group">
                   Start Partnership Discussion
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Button className="w-full sm:w-auto">
@@ -430,7 +430,7 @@ export default function PartnershipsPage() {
       </section>
 
       {/* Related Resources */}
-      <section className="py-4xl">
+      <section className="py-mdxl">
         <div className="container mx-auto px-md">
           <div className="text-center mb-3xl">
             <h2 className={`${anton.className} text-heading-2 lg:text-heading-1 text-heading-3 mb-lg uppercase`}>

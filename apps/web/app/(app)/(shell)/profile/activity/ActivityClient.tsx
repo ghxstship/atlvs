@@ -85,7 +85,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
     };
     
     const IconComponent = icons[type as keyof typeof icons] || icons.default;
-    return <IconComponent className="h-4 w-4" />;
+    return <IconComponent className="h-icon-xs w-icon-xs" />;
   };
 
   const getActivityColor = (type: string) => {
@@ -132,7 +132,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
       <div className="stack-md">
         {[...Array(5)].map((_, i) => (
           <div key={i} className="animate-pulse">
-            <div className="h-16 bg-secondary rounded-lg"></div>
+            <div className="h-component-md bg-secondary rounded-lg"></div>
           </div>
         ))}
       </div>
@@ -164,7 +164,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
           onClick={exportActivities}
           className="flex items-center gap-sm"
         >
-          <Download className="h-4 w-4" />
+          <Download className="h-icon-xs w-icon-xs" />
           Export
         </Button>
       </div>
@@ -190,13 +190,13 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
                       </div>
                       
                       <div className="flex items-center gap-sm text-body-sm color-muted">
-                        <Clock className="h-4 w-4" />
+                        <Clock className="h-icon-xs w-icon-xs" />
                         <span>{new Date(activity.created_at).toLocaleString()}</span>
                       </div>
                     </div>
                     
                     <div className="flex items-center gap-sm text-body-sm color-muted">
-                      <User className="h-4 w-4" />
+                      <User className="h-icon-xs w-icon-xs" />
                       <span>by {activity.performed_by_name}</span>
                     </div>
                     
@@ -215,7 +215,7 @@ export default function ActivityClient({ orgId, userId }: { orgId: string; userI
         ) : (
           <Card>
             <div className="p-xl text-center">
-              <Activity className="h-12 w-12 mx-auto mb-md color-muted opacity-50" />
+              <Activity className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted opacity-50" />
               <h3 className="text-body form-label mb-sm">No Activity Found</h3>
               <p className="color-muted">
                 {filter === 'all' 

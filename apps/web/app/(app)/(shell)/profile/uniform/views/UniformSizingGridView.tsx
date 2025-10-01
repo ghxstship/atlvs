@@ -56,9 +56,9 @@ export default function UniformSizingGridView({
  {Array.from({ length: 8 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
  <div className="flex items-center gap-md mb-md">
- <div className="h-12 w-12 bg-secondary rounded-full"></div>
+ <div className="h-icon-2xl w-icon-2xl bg-secondary rounded-full"></div>
  <div className="flex-1">
- <div className="h-4 bg-secondary rounded mb-sm"></div>
+ <div className="h-icon-xs bg-secondary rounded mb-sm"></div>
  <div className="h-3 bg-secondary rounded w-2/3"></div>
  </div>
  </div>
@@ -76,7 +76,7 @@ export default function UniformSizingGridView({
  if (sizings.length === 0) {
  return (
  <div className="text-center py-xl">
- <Shirt className="h-12 w-12 mx-auto mb-md color-muted" />
+ <Shirt className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">No uniform sizing records found</h3>
  <p className="color-muted">Try adjusting your search or filter criteria.</p>
  </div>
@@ -135,7 +135,7 @@ export default function UniformSizingGridView({
  type="checkbox"
  checked={selectedIds.includes(sizing.id)}
  onChange={(e) => handleCardSelect(sizing.id, e as unknown)}
- className="h-4 w-4 rounded border-border text-accent focus:ring-accent"
+ className="h-icon-xs w-icon-xs rounded border-border text-accent focus:ring-accent"
  onClick={(e) => e.stopPropagation()}
  />
  </div>

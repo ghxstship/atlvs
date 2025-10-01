@@ -163,8 +163,8 @@ export default function ExportDrawer({
     <Drawer open={open} onOpenChange={handleClose}>
       <DrawerContent className="max-h-[90vh]">
         <DrawerHeader>
-          <DrawerTitle className="flex items-center gap-2">
-            <Download className="h-5 w-5" />
+          <DrawerTitle className="flex items-center gap-xs">
+            <Download className="h-icon-sm w-icon-sm" />
             Export Listings
           </DrawerTitle>
           <DrawerDescription>
@@ -172,16 +172,16 @@ export default function ExportDrawer({
           </DrawerDescription>
         </DrawerHeader>
 
-        <div className="flex-1 overflow-y-auto p-6">
-          <div className="space-y-6">
+        <div className="flex-1 overflow-y-auto p-lg">
+          <div className="space-y-lg">
             {/* Export Summary */}
             {metadata && (
-              <div className="bg-muted/50 rounded-lg p-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Info className="h-4 w-4" />
+              <div className="bg-muted/50 rounded-lg p-md">
+                <div className="flex items-center gap-xs mb-2">
+                  <Info className="h-icon-xs w-icon-xs" />
                   <span className="font-medium">Export Summary</span>
                 </div>
-                <div className="grid grid-cols-3 gap-4 text-sm">
+                <div className="grid grid-cols-3 gap-md text-sm">
                   <div>
                     <div className="text-2xl font-bold">{metadata.totalRecords}</div>
                     <div className="text-muted-foreground">Total Records</div>
@@ -199,7 +199,7 @@ export default function ExportDrawer({
             )}
 
             {/* Format Selection */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div>
                 <Label htmlFor="format">Export Format</Label>
                 <Select value={format} onValueChange={(value: 'csv' | 'json' | 'excel' | 'pdf') => setFormat(value)}>
@@ -219,7 +219,7 @@ export default function ExportDrawer({
             <Separator />
 
             {/* Export Templates */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Quick Templates</h3>
                 <Button variant="outline" size="sm" onClick={handleSelectAllFields}>
@@ -227,12 +227,12 @@ export default function ExportDrawer({
                 </Button>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-sm">
                 {Object.entries(marketplaceService.getExportTemplates()).map(([key, template]) => (
                   <button
                     key={key}
                     onClick={() => handleSelectTemplate(key)}
-                    className="text-left border rounded-lg p-4 hover:bg-muted/50 transition-colors"
+                    className="text-left border rounded-lg p-md hover:bg-muted/50 transition-colors"
                   >
                     <div className="flex items-center justify-between mb-2">
                       <h4 className="font-medium">{template.name}</h4>
@@ -249,12 +249,12 @@ export default function ExportDrawer({
             <Separator />
 
             {/* Field Selection */}
-            <div className="space-y-4">
+            <div className="space-y-md">
               <h3 className="text-lg font-semibold">Select Fields</h3>
 
-              <div className="grid grid-cols-1 gap-2 max-h-60 overflow-y-auto">
+              <div className="grid grid-cols-1 gap-xs max-h-60 overflow-y-auto">
                 {availableFields.map((field) => (
-                  <div key={field.key} className="flex items-center space-x-2">
+                  <div key={field.key} className="flex items-center space-x-xs">
                     <Checkbox
                       id={field.key}
                       checked={selectedFields.includes(field.key)}
@@ -269,7 +269,7 @@ export default function ExportDrawer({
                 ))}
               </div>
 
-              <div className="flex items-center space-x-2 pt-2">
+              <div className="flex items-center space-x-xs pt-2">
                 <Checkbox
                   id="include-metadata"
                   checked={includeMetadata}
@@ -285,13 +285,13 @@ export default function ExportDrawer({
             {results && (
               <>
                 <Separator />
-                <div className="space-y-4">
+                <div className="space-y-md">
                   <h3 className="text-lg font-semibold">Export Results</h3>
 
                   {results.success ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 p-4 bg-green-50 border border-green-200 rounded-lg">
-                        <CheckCircle className="h-5 w-5 text-green-500 flex-shrink-0" />
+                    <div className="space-y-md">
+                      <div className="flex items-center gap-sm p-md bg-green-50 border border-green-200 rounded-lg">
+                        <CheckCircle className="h-icon-sm w-icon-sm text-green-500 flex-shrink-0" />
                         <div>
                           <div className="font-medium text-green-900">Export Successful</div>
                           <div className="text-sm text-green-700">
@@ -300,9 +300,9 @@ export default function ExportDrawer({
                         </div>
                       </div>
 
-                      <div className="flex gap-3">
+                      <div className="flex gap-sm">
                         <Button onClick={handleDownload} className="flex-1">
-                          <Download className="h-4 w-4 mr-2" />
+                          <Download className="h-icon-xs w-icon-xs mr-2" />
                           Download File
                         </Button>
                         <Button variant="outline" onClick={() => setResults(null)}>
@@ -311,8 +311,8 @@ export default function ExportDrawer({
                       </div>
                     </div>
                   ) : (
-                    <div className="flex items-center gap-3 p-4 bg-red-50 border border-red-200 rounded-lg">
-                      <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0" />
+                    <div className="flex items-center gap-sm p-md bg-red-50 border border-red-200 rounded-lg">
+                      <AlertCircle className="h-icon-sm w-icon-sm text-red-500 flex-shrink-0" />
                       <div>
                         <div className="font-medium text-red-900">Export Failed</div>
                         <div className="text-sm text-red-700">{results.error}</div>
@@ -326,8 +326,8 @@ export default function ExportDrawer({
         </div>
 
         {/* Footer Actions */}
-        <div className="border-t p-6">
-          <div className="flex gap-3">
+        <div className="border-t p-lg">
+          <div className="flex gap-sm">
             {!results?.success && (
               <Button
                 onClick={handleExport}
@@ -336,12 +336,12 @@ export default function ExportDrawer({
               >
                 {isExporting ? (
                   <>
-                    <Loader2 className="h-4 w-4 mr-2 animate-spin" />
+                    <Loader2 className="h-icon-xs w-icon-xs mr-2 animate-spin" />
                     Exporting...
                   </>
                 ) : (
                   <>
-                    <Download className="h-4 w-4 mr-2" />
+                    <Download className="h-icon-xs w-icon-xs mr-2" />
                     Export {metadata?.totalRecords || 0} Listings
                   </>
                 )}

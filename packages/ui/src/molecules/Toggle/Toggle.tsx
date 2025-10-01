@@ -1,7 +1,7 @@
 'use client';
 
 import React, { forwardRef } from 'react';
-import { cn } from '../system';
+import { cn } from '../../system';
 
 export interface ToggleProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type' | 'size'> {
   variant?: 'default' | 'success' | 'warning' | 'danger';
@@ -33,16 +33,16 @@ const toggleVariants = {
   },
   size: {
     sm: {
-      track: 'w-9 h-5',
-      thumb: 'w-4 h-4 peer-checked:translate-x-4',
+      track: 'w-9 h-icon-sm',
+      thumb: 'w-icon-xs h-icon-xs peer-checked:translate-x-4',
     },
     md: {
-      track: 'w-11 h-6',
-      thumb: 'w-5 h-5 peer-checked:translate-x-5',
+      track: 'w-11 h-icon-md',
+      thumb: 'w-icon-sm h-icon-sm peer-checked:translate-x-5',
     },
     lg: {
       track: 'w-14 h-7',
-      thumb: 'w-6 h-6 peer-checked:translate-x-7',
+      thumb: 'w-icon-md h-icon-md peer-checked:translate-x-7',
     },
   },
 };

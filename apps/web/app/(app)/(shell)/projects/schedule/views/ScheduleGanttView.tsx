@@ -174,15 +174,15 @@ export default function ScheduleGanttView({
  onClick={() => onItemClick?.(item)}
  >
  {/* Item info */}
- <div className="w-80 p-3 border-r flex items-center gap-2">
+ <div className="w-container-md p-sm border-r flex items-center gap-xs">
  <div className="flex-shrink-0">
  {getItemIcon(item)}
  </div>
  <div className="flex-1 min-w-0">
  <p className="font-medium text-sm truncate">{item.title}</p>
- <div className="flex items-center gap-2 mt-1">
+ <div className="flex items-center gap-xs mt-1">
  {item.assignee && (
- <span className="text-xs text-muted-foreground flex items-center gap-1">
+ <span className="text-xs text-muted-foreground flex items-center gap-xs">
  <Users className="h-3 w-3" />
  {item.assignee.name}
  </span>
@@ -194,7 +194,7 @@ export default function ScheduleGanttView({
  item.priority === "high" ? "warning" :
  "secondary"
  }
- className="text-xs px-1 py-0"
+ className="text-xs px-xs py-0"
  >
  {item.priority}
  </Badge>
@@ -207,10 +207,10 @@ export default function ScheduleGanttView({
  </div>
 
  {/* Gantt bar area */}
- <div className="flex-1 relative p-2">
+ <div className="flex-1 relative p-xs">
  {barStyle && (
  <div
- className="absolute h-8 rounded flex items-center px-2 hover:opacity-80 transition-opacity"
+ className="absolute h-icon-lg rounded flex items-center px-xs hover:opacity-80 transition-opacity"
  style={barStyle}
  >
  {item.progress !== undefined && (
@@ -242,14 +242,14 @@ export default function ScheduleGanttView({
 
  return (
  <div className="flex border-b bg-muted/50">
- <div className="w-80 p-2 border-r font-medium text-sm">
+ <div className="w-container-md p-xs border-r font-medium text-sm">
  Items
  </div>
  <div className="flex-1 flex">
  {Array.from(months.entries()).map(([month, count]) => (
  <div
  key={month}
- className="border-r text-center py-2 text-sm font-medium"
+ className="border-r text-center py-xs text-sm font-medium"
  style={{ width: `${(count / days.length) * 100}%` }}
  >
  {month}
@@ -283,8 +283,8 @@ export default function ScheduleGanttView({
 
  if (items.length === 0) {
  return (
- <div className="text-center py-12">
- <Calendar className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+ <div className="text-center py-xsxl">
+ <Calendar className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-4" />
  <h3 className="text-lg font-semibold mb-2">No schedule items</h3>
  <p className="text-muted-foreground">
  Add milestones and tasks to see them in the Gantt chart
@@ -313,7 +313,7 @@ export default function ScheduleGanttView({
  <div key={projectId}>
  {projectId !== "no-project" && (
  <div className="flex border-b bg-muted/30">
- <div className="w-80 p-2 border-r font-medium text-sm">
+ <div className="w-container-md p-xs border-r font-medium text-sm">
  {projectName}
  </div>
  <div className="flex-1" />

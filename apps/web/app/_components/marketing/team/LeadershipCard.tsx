@@ -24,8 +24,8 @@ export function LeadershipCard({ leader }: LeadershipCardProps) {
     <Card className="hover:shadow-floating transition-shadow">
       <CardContent className="p-xl">
         <div className="flex gap-xl">
-          <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-            <Users className="h-8 w-8 color-accent" />
+          <div className="w-component-lg h-component-lg bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+            <Users className="h-icon-lg w-icon-lg color-accent" />
           </div>
           <div className="flex-1">
             <h3 className={`${anton.className} text-heading-4 text-heading-3 uppercase mb-xs`}>

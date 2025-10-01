@@ -48,25 +48,25 @@ export function TokenBrowser() {
         {/* Search */}
         <div className="mb-lg">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground w-5 h-5" />
+            <Search className="absolute left-3 top-xs/2 -translate-y-1/2 text-muted-foreground w-icon-sm h-icon-sm" />
             <input
               type="text"
               placeholder="Search tokens..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
+              className="w-full pl-10 pr-4 py-sm rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
             />
           </div>
         </div>
 
         {/* Category Tabs */}
-        <div className="flex gap-2 mb-lg overflow-x-auto pb-2">
+        <div className="flex gap-xs mb-lg overflow-x-auto pb-2">
           {categories.map((cat) => (
             <button
               key={cat.key}
               onClick={() => setActiveCategory(cat.key)}
               className={`
-                px-4 py-2 rounded-lg font-medium whitespace-nowrap transition-colors
+                px-md py-xs rounded-lg font-medium whitespace-nowrap transition-colors
                 ${activeCategory === cat.key
                   ? 'bg-primary text-primary-foreground'
                   : 'bg-muted hover:bg-muted/80'
@@ -122,17 +122,17 @@ function ColorTokens({ searchQuery, copyToken, copiedToken }: any) {
             <span className="font-mono text-sm text-muted-foreground">{key}</span>
             <button
               onClick={() => copyToken(`DESIGN_TOKENS.colors.${key}`)}
-              className="p-1 rounded hover:bg-muted transition-colors"
+              className="p-xs rounded hover:bg-muted transition-colors"
             >
               {copiedToken === `DESIGN_TOKENS.colors.${key}` ? (
-                <Check className="w-4 h-4 text-success" />
+                <Check className="w-icon-xs h-icon-xs text-success" />
               ) : (
-                <Copy className="w-4 h-4" />
+                <Copy className="w-icon-xs h-icon-xs" />
               )}
             </button>
           </div>
           <div
-            className="w-full h-16 rounded-md border border-border mb-sm"
+            className="w-full h-component-md rounded-md border border-border mb-sm"
             style={{ backgroundColor: value }}
           />
           <code className="text-xs text-muted-foreground">{value}</code>
@@ -160,12 +160,12 @@ function TypographyTokens({ searchQuery, copyToken, copiedToken }: any) {
                   <span className="font-mono text-sm font-medium">{key}</span>
                   <button
                     onClick={() => copyToken(`DESIGN_TOKENS.typography.fontSize.${key}`)}
-                    className="p-1 rounded hover:bg-muted transition-colors"
+                    className="p-xs rounded hover:bg-muted transition-colors"
                   >
                     {copiedToken === `DESIGN_TOKENS.typography.fontSize.${key}` ? (
-                      <Check className="w-4 h-4 text-success" />
+                      <Check className="w-icon-xs h-icon-xs text-success" />
                     ) : (
-                      <Copy className="w-4 h-4" />
+                      <Copy className="w-icon-xs h-icon-xs" />
                     )}
                   </button>
                 </div>
@@ -196,12 +196,12 @@ function SpacingTokens({ searchQuery, copyToken, copiedToken }: any) {
             <span className="font-mono text-sm font-medium">{key}</span>
             <button
               onClick={() => copyToken(`DESIGN_TOKENS.spacing.${key}`)}
-              className="p-1 rounded hover:bg-muted transition-colors"
+              className="p-xs rounded hover:bg-muted transition-colors"
             >
               {copiedToken === `DESIGN_TOKENS.spacing.${key}` ? (
-                <Check className="w-4 h-4 text-success" />
+                <Check className="w-icon-xs h-icon-xs text-success" />
               ) : (
-                <Copy className="w-4 h-4" />
+                <Copy className="w-icon-xs h-icon-xs" />
               )}
             </button>
           </div>
@@ -232,17 +232,17 @@ function ShadowTokens({ searchQuery, copyToken, copiedToken }: any) {
             <span className="font-mono text-sm font-medium">{key}</span>
             <button
               onClick={() => copyToken(`DESIGN_TOKENS.shadows.${key}`)}
-              className="p-1 rounded hover:bg-muted transition-colors"
+              className="p-xs rounded hover:bg-muted transition-colors"
             >
               {copiedToken === `DESIGN_TOKENS.shadows.${key}` ? (
-                <Check className="w-4 h-4 text-success" />
+                <Check className="w-icon-xs h-icon-xs text-success" />
               ) : (
-                <Copy className="w-4 h-4" />
+                <Copy className="w-icon-xs h-icon-xs" />
               )}
             </button>
           </div>
           <div
-            className="w-full h-24 bg-card rounded-lg"
+            className="w-full h-component-lg bg-card rounded-lg"
             style={{ boxShadow: value }}
           />
           <code className="text-xs text-muted-foreground mt-sm block break-all">{value}</code>
@@ -265,10 +265,10 @@ function BorderTokens({ searchQuery, copyToken, copiedToken }: any) {
           <div className="flex items-center justify-between mb-sm">
             <span className="font-mono text-sm">{key}</span>
             <button onClick={() => copyToken(`DESIGN_TOKENS.borderRadius.${key}`)}>
-              {copiedToken === `DESIGN_TOKENS.borderRadius.${key}` ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+              {copiedToken === `DESIGN_TOKENS.borderRadius.${key}` ? <Check className="w-icon-xs h-icon-xs" /> : <Copy className="w-icon-xs h-icon-xs" />}
             </button>
           </div>
-          <div className="w-16 h-16 bg-primary/20 border-2 border-primary" style={{ borderRadius: value }} />
+          <div className="w-component-md h-component-md bg-primary/20 border-2 border-primary" style={{ borderRadius: value }} />
           <code className="text-xs mt-sm block">{value}</code>
         </Card>
       ))}

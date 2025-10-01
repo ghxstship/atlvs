@@ -61,7 +61,7 @@ export default function ProgrammingEventsTimelineView({
  <div className="flex items-center gap-md">
  <div className="h-px flex-1 bg-border" />
  <div className="flex items-center gap-sm px-md py-sm bg-muted rounded-full">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span className="font-medium">{formatDate(dateString)}</span>
  <Badge variant="outline" className="text-xs">
  {dayEvents.length} event{dayEvents.length !== 1 ? 's' : ''}
@@ -83,7 +83,7 @@ export default function ProgrammingEventsTimelineView({
  return (
  <div key={event.id} className="relative flex gap-md">
  {/* Timeline dot */}
- <div className="relative z-10 flex h-12 w-12 items-center justify-center">
+ <div className="relative z-10 flex h-icon-2xl w-icon-2xl items-center justify-center">
  <div className={`h-3 w-3 rounded-full border-2 border-background ${
  statusConfig.variant === 'success' ? 'bg-success' :
  statusConfig.variant === 'warning' ? 'bg-warning' :
@@ -102,7 +102,7 @@ export default function ProgrammingEventsTimelineView({
  <div>
  <h3 className="font-semibold">{event.title}</h3>
  <div className="flex items-center gap-md text-sm text-muted-foreground">
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  {new Date(event.start_at).toLocaleTimeString()}
  {event.end_at && ` - ${new Date(event.end_at).toLocaleTimeString()}`}
@@ -115,32 +115,32 @@ export default function ProgrammingEventsTimelineView({
  </Badge>
  </div>
  </div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button size="icon" variant="ghost" onClick={() => onView(event)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button size="icon" variant="ghost" onClick={() => onEdit(event)}>
- <Pencil className="h-4 w-4" />
+ <Pencil className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
 
  {/* Event Details */}
  {event.description && (
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {event.description}
  </p>
  )}
 
  <div className="flex flex-wrap gap-md text-sm text-muted-foreground">
  {event.location && (
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <MapPin className="h-3 w-3" />
  {event.location}
  </span>
  )}
  {event.capacity && (
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Users className="h-3 w-3" />
  {event.capacity} capacity
  </span>
@@ -152,7 +152,7 @@ export default function ProgrammingEventsTimelineView({
 
  {/* Tags */}
  {event.tags.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {event.tags.map((tag) => (
  <Badge key={tag} variant="outline" className="text-xs">
  {tag}
@@ -167,7 +167,7 @@ export default function ProgrammingEventsTimelineView({
  {event.resources.length > 0 && (
  <div>
  <div className="font-medium text-muted-foreground mb-1">Resources</div>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {event.resources.slice(0, 3).map((resource, idx) => (
  <div key={idx} className="text-muted-foreground">
  {resource.name} ({resource.quantity})
@@ -184,7 +184,7 @@ export default function ProgrammingEventsTimelineView({
  {event.staffing.length > 0 && (
  <div>
  <div className="font-medium text-muted-foreground mb-1">Staffing</div>
- <div className="space-y-1">
+ <div className="space-y-xs">
  {event.staffing.slice(0, 3).map((staff, idx) => (
  <div key={idx} className="text-muted-foreground">
  {staff.role}

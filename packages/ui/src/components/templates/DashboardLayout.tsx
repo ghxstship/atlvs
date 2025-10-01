@@ -29,7 +29,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
       )}
       <div className="flex flex-1 overflow-hidden">
         {sidebar && (
-          <aside className="w-64 border-r border-border bg-background p-md overflow-auto">
+          <aside className="w-container-sm border-r border-border bg-background p-md overflow-auto">
             {sidebar}
           </aside>
         )}
@@ -37,7 +37,7 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
           {children}
         </main>
         {widgets && (
-          <aside className="w-80 border-l border-border bg-background p-md overflow-auto">
+          <aside className="w-container-md border-l border-border bg-background p-md overflow-auto">
             {widgets}
           </aside>
         )}

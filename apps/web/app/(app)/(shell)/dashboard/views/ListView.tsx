@@ -223,14 +223,14 @@ export const ListView: React.FC<ListViewProps> = ({
         const avatarUrl = row[field.key] as string;
         const fallback = field.fallbackField ? String(row[field.fallbackField] || '') : '';
         return (
-          <Avatar className={cn('h-6 w-6', field.className)}>
+          <Avatar className={cn('h-icon-md w-icon-md', field.className)}>
             <AvatarImage src={avatarUrl} />
             <AvatarFallback className="text-xs">{fallback.slice(0, 2).toUpperCase()}</AvatarFallback>
           </Avatar>
         );
       case 'icon':
         const IconComponent = value as React.ComponentType<{ className?: string }> | undefined;
-        return IconComponent ? <IconComponent className={cn('h-4 w-4', field.className)} /> : null;
+        return IconComponent ? <IconComponent className={cn('h-icon-xs w-icon-xs', field.className)} /> : null;
       default:
         return <span className={field.className}>{String(value || '')}</span>;
     }
@@ -238,9 +238,9 @@ export const ListView: React.FC<ListViewProps> = ({
 
   // Density classes
   const densityClasses = {
-    compact: 'py-2',
-    comfortable: 'py-3',
-    spacious: 'py-4'
+    compact: 'py-xs',
+    comfortable: 'py-sm',
+    spacious: 'py-md'
   };
 
   // Render list item
@@ -254,7 +254,7 @@ export const ListView: React.FC<ListViewProps> = ({
       <div
         key={rowId}
         className={cn(
-          'flex items-center gap-3 px-4 transition-colors',
+          'flex items-center gap-sm px-md transition-colors',
           densityClasses[density],
           showBorders && 'border-b border-border',
           showStripes && index % 2 === 1 && 'bg-muted/30',
@@ -289,12 +289,12 @@ export const ListView: React.FC<ListViewProps> = ({
 
         {/* Primary Icon */}
         {PrimaryIcon && (
-          <PrimaryIcon className="h-5 w-5 text-muted-foreground flex-shrink-0" />
+          <PrimaryIcon className="h-icon-sm w-icon-sm text-muted-foreground flex-shrink-0" />
         )}
 
         {/* Content */}
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             {/* Primary Text */}
             <h4 className="font-medium truncate">
               {config.primary.format
@@ -305,7 +305,7 @@ export const ListView: React.FC<ListViewProps> = ({
 
             {/* Badges */}
             {config.badges && config.badges.length > 0 && (
-              <div className="flex gap-1 flex-shrink-0">
+              <div className="flex gap-xs flex-shrink-0">
                 {config.badges.slice(0, 2).map((badge, idx) => (
                   <div key={idx}>
                     {renderField(badge, row[badge.key], row)}
@@ -332,9 +332,9 @@ export const ListView: React.FC<ListViewProps> = ({
 
           {/* Metadata */}
           {config.metadata && config.metadata.length > 0 && (
-            <div className="flex gap-4 mt-2 text-xs text-muted-foreground">
+            <div className="flex gap-md mt-2 text-xs text-muted-foreground">
               {config.metadata.map((meta, idx) => (
-                <div key={idx} className="flex items-center gap-1">
+                <div key={idx} className="flex items-center gap-xs">
                   {meta.label && <span className="font-medium">{meta.label}:</span>}
                   {renderField(meta, row[meta.key], row)}
                 </div>
@@ -344,17 +344,17 @@ export const ListView: React.FC<ListViewProps> = ({
         </div>
 
         {/* Actions */}
-        <div className="flex items-center gap-2 flex-shrink-0">
+        <div className="flex items-center gap-xs flex-shrink-0">
           {config.actions && config.actions.length > 0 && (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-8 w-8 p-0"
+                  className="h-icon-lg w-icon-lg p-0"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <MoreHorizontal className="h-4 w-4" />
+                  <MoreHorizontal className="h-icon-xs w-icon-xs" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
@@ -371,7 +371,7 @@ export const ListView: React.FC<ListViewProps> = ({
                       }}
                       disabled={disabled}
                     >
-                      {Icon && <Icon className="h-4 w-4 mr-2" />}
+                      {Icon && <Icon className="h-icon-xs w-icon-xs mr-2" />}
                       {action.label}
                     </DropdownMenuItem>
                   );
@@ -382,7 +382,7 @@ export const ListView: React.FC<ListViewProps> = ({
 
           {/* Expand Icon */}
           {showExpandIcon && (
-            <ChevronRight className="h-4 w-4 text-muted-foreground" />
+            <ChevronRight className="h-icon-xs w-icon-xs text-muted-foreground" />
           )}
         </div>
       </div>
@@ -394,19 +394,19 @@ export const ListView: React.FC<ListViewProps> = ({
   );
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Toolbar */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {/* Search */}
           {onGlobalSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <Input
                 placeholder="Search items..."
                 value={globalSearch}
                 onChange={(e) => onGlobalSearch(e.target.value)}
-                className="pl-9 w-64"
+                className="pl-9 w-container-sm"
               />
             </div>
           )}
@@ -417,16 +417,16 @@ export const ListView: React.FC<ListViewProps> = ({
               variant="outline"
               size="sm"
               onClick={handleSelectAll}
-              className="flex items-center gap-2"
+              className="flex items-center gap-xs"
             >
-              {allSelected ? <CheckSquare className="h-4 w-4" /> : <Square className="h-4 w-4" />}
+              {allSelected ? <CheckSquare className="h-icon-xs w-icon-xs" /> : <Square className="h-icon-xs w-icon-xs" />}
               {allSelected ? 'Deselect All' : 'Select All'}
             </Button>
           )}
 
           {/* Bulk Actions */}
           {bulkActions.length > 0 && selectedRows.length > 0 && (
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-xs">
               {bulkActions.map((action, index) => {
                 const Icon = action.icon;
                 return (
@@ -442,7 +442,7 @@ export const ListView: React.FC<ListViewProps> = ({
                     }}
                     disabled={action.disabled}
                   >
-                    {Icon && <Icon className="h-4 w-4 mr-1" />}
+                    {Icon && <Icon className="h-icon-xs w-icon-xs mr-1" />}
                     {action.label}
                   </Button>
                 );
@@ -465,15 +465,15 @@ export const ListView: React.FC<ListViewProps> = ({
         {loading ? (
           // Loading state
           Array.from({ length: 5 }).map((_, index) => (
-            <div key={index} className={cn('flex items-center gap-3 px-4', densityClasses[density])}>
-              {selectable && <div className="h-4 w-4 bg-muted animate-pulse rounded flex-shrink-0" />}
-              <div className="h-4 bg-muted animate-pulse rounded flex-1" />
-              <div className="h-3 bg-muted animate-pulse rounded w-24" />
+            <div key={index} className={cn('flex items-center gap-sm px-md', densityClasses[density])}>
+              {selectable && <div className="h-icon-xs w-icon-xs bg-muted animate-pulse rounded flex-shrink-0" />}
+              <div className="h-icon-xs bg-muted animate-pulse rounded flex-1" />
+              <div className="h-3 bg-muted animate-pulse rounded w-component-lg" />
             </div>
           ))
         ) : filteredData.length === 0 ? (
           // Empty state
-          <div className="flex items-center justify-center py-12">
+          <div className="flex items-center justify-center py-xsxl">
             <div className="text-center">
               <div className="text-muted-foreground mb-2">{emptyMessage}</div>
               <Button variant="outline" size="sm">
@@ -496,7 +496,7 @@ export const ListView: React.FC<ListViewProps> = ({
             {pagination.total} results
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"

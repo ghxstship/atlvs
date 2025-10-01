@@ -66,12 +66,12 @@ export default function ViewSwitcher({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" size="sm">
-            <CurrentIcon className="h-4 w-4 mr-2" />
+            <CurrentIcon className="h-icon-xs w-icon-xs mr-2" />
             {currentConfig.label}
-            <ChevronDown className="h-4 w-4 ml-2" />
+            <ChevronDown className="h-icon-xs w-icon-xs ml-2" />
           </Button>
         </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="w-48">
+        <DropdownMenuContent align="end" className="w-container-xs">
           {availableViews.map((view) => {
             const config = viewConfig[view];
             const Icon = config.icon;
@@ -81,14 +81,14 @@ export default function ViewSwitcher({
               <DropdownMenuItem
                 key={view}
                 onClick={() => onViewChange(view)}
-                className="flex items-center gap-3"
+                className="flex items-center gap-sm"
               >
-                <Icon className="h-4 w-4" />
+                <Icon className="h-icon-xs w-icon-xs" />
                 <div className="flex-1">
                   <div className="font-medium">{config.label}</div>
                   <div className="text-xs text-muted-foreground">{config.description}</div>
                 </div>
-                {isActive && <Check className="h-4 w-4 text-primary" />}
+                {isActive && <Check className="h-icon-xs w-icon-xs text-primary" />}
               </DropdownMenuItem>
             );
           })}
@@ -98,7 +98,7 @@ export default function ViewSwitcher({
   }
 
   return (
-    <div className="flex items-center gap-1 p-1 bg-muted rounded-lg">
+    <div className="flex items-center gap-xs p-xs bg-muted rounded-lg">
       {availableViews.map((view) => {
         const config = viewConfig[view];
         const Icon = config.icon;
@@ -110,12 +110,12 @@ export default function ViewSwitcher({
             variant={isActive ? 'default' : 'ghost'}
             size="sm"
             onClick={() => onViewChange(view)}
-            className={`flex items-center gap-2 ${
+            className={`flex items-center gap-xs ${
               isActive ? 'shadow-sm' : 'hover:bg-background'
             }`}
             title={config.description}
           >
-            <Icon className="h-4 w-4" />
+            <Icon className="h-icon-xs w-icon-xs" />
             <span className="hidden sm:inline">{config.label}</span>
           </Button>
         );

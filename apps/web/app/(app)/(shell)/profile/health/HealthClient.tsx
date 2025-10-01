@@ -260,10 +260,10 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
     return (
       <div className="stack-lg">
         <div className="animate-pulse">
-          <div className="h-8 bg-secondary rounded mb-md"></div>
+          <div className="h-icon-lg bg-secondary rounded mb-md"></div>
           <div className="stack-md">
-            <div className="h-32 bg-secondary rounded"></div>
-            <div className="h-32 bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
+            <div className="h-component-xl bg-secondary rounded"></div>
           </div>
         </div>
       </div>
@@ -282,7 +282,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
           }}
           className="flex items-center gap-sm"
         >
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           Add Health Record
         </Button>
       </div>
@@ -304,7 +304,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
       {filteredRecords.length === 0 ? (
         <Card>
           <div className="p-xl text-center">
-            <Heart className="h-12 w-12 color-muted mx-auto mb-md" />
+            <Heart className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <h3 className="text-body text-heading-4 mb-sm">No Health Records</h3>
             <p className="color-muted mb-md">
               Keep track of your medical history, vaccinations, allergies, and health conditions.
@@ -332,8 +332,8 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                 <div className="p-lg">
                   <div className="flex items-start justify-between mb-md">
                     <div className="flex items-center gap-sm">
-                      <div className={`h-10 w-10 bg-${getRecordTypeColor(record.record_type)}-100 rounded-full flex items-center justify-center`}>
-                        <IconComponent className={`h-5 w-5 text-${getRecordTypeColor(record.record_type)}-600`} />
+                      <div className={`h-icon-xl w-icon-xl bg-${getRecordTypeColor(record.record_type)}-100 rounded-full flex items-center justify-center`}>
+                        <IconComponent className={`h-icon-sm w-icon-sm text-${getRecordTypeColor(record.record_type)}-600`} />
                       </div>
                       <div>
                         <h3 className="text-body text-heading-4">{record.title}</h3>
@@ -364,14 +364,14 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                        
                         onClick={() => handleEdit(record)}
                       >
-                        <Edit className="h-4 w-4" />
+                        <Edit className="h-icon-xs w-icon-xs" />
                       </Button>
                       <Button
                         variant="outline"
                        
                         onClick={() => handleDelete(record.id)}
                       >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-icon-xs w-icon-xs" />
                       </Button>
                     </div>
                   </div>
@@ -388,7 +388,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
                         <span>Provider: {record.provider}</span>
                       )}
                       <div className="flex items-center gap-xs">
-                        <Calendar className="h-4 w-4" />
+                        <Calendar className="h-icon-xs w-icon-xs" />
                         {new Date(record.date_recorded).toLocaleDateString()}
                       </div>
                     </div>
@@ -503,7 +503,7 @@ export default function HealthClient({ orgId, userId }: { orgId: string; userId:
               Cancel
             </Button>
             <Button type="submit" loading={saving}>
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {editingRecord ? 'Update' : 'Save'} Record
             </Button>
           </div>

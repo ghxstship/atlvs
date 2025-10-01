@@ -146,26 +146,26 @@ export default function DashboardAnalyticsTab({
     ];
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-6">
         {metrics.map((metric, index) => {
           const Icon = metric.icon;
           return (
             <Card key={index}>
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground">
                       {metric.title}
                     </p>
                     <p className="text-2xl font-bold">{metric.value}</p>
-                    <p className={`text-xs flex items-center gap-1 ${
+                    <p className={`text-xs flex items-center gap-xs ${
                       metric.trend === 'up' ? 'text-green-600' : 'text-red-600'
                     }`}>
                       <TrendingUp className="h-3 w-3" />
                       {metric.change} from last month
                     </p>
                   </div>
-                  <Icon className="h-8 w-8 text-muted-foreground" />
+                  <Icon className="h-icon-lg w-icon-lg text-muted-foreground" />
                 </div>
               </CardContent>
             </Card>
@@ -179,15 +179,15 @@ export default function DashboardAnalyticsTab({
   const renderCharts = () => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
           {Array.from({ length: 3 }).map((_, index) => (
             <Card key={index}>
               <CardHeader>
-                <div className="h-4 bg-muted animate-pulse rounded w-32" />
-                <div className="h-3 bg-muted animate-pulse rounded w-48 mt-2" />
+                <div className="h-icon-xs bg-muted animate-pulse rounded w-component-xl" />
+                <div className="h-3 bg-muted animate-pulse rounded w-container-xs mt-2" />
               </CardHeader>
               <CardContent>
-                <div className="h-64 bg-muted animate-pulse rounded" />
+                <div className="h-container-sm bg-muted animate-pulse rounded" />
               </CardContent>
             </Card>
           ))}
@@ -196,7 +196,7 @@ export default function DashboardAnalyticsTab({
     }
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
         {chartConfigs.map((config, index) => (
           <ChartView
             key={index}
@@ -237,7 +237,7 @@ export default function DashboardAnalyticsTab({
     ];
 
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
         {tables.map((table, index) => (
           <Card key={index}>
             <CardHeader>
@@ -249,7 +249,7 @@ export default function DashboardAnalyticsTab({
                   <thead>
                     <tr className="border-b">
                       {table.headers.map((header, i) => (
-                        <th key={i} className="text-left p-2 font-medium">
+                        <th key={i} className="text-left p-xs font-medium">
                           {header}
                         </th>
                       ))}
@@ -259,7 +259,7 @@ export default function DashboardAnalyticsTab({
                     {table.data.map((row, i) => (
                       <tr key={i} className="border-b">
                         {row.map((cell, j) => (
-                          <td key={j} className="p-2">
+                          <td key={j} className="p-xs">
                             {cell}
                           </td>
                         ))}
@@ -276,7 +276,7 @@ export default function DashboardAnalyticsTab({
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-lg space-y-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -286,18 +286,18 @@ export default function DashboardAnalyticsTab({
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           <Button
             onClick={handleRefresh}
             disabled={isRefreshing}
             variant="outline"
           >
-            <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+            <RefreshCw className={`h-icon-xs w-icon-xs mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
             Refresh
           </Button>
 
           <Button variant="outline">
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-icon-xs w-icon-xs mr-2" />
             Export Report
           </Button>
         </div>
@@ -305,10 +305,10 @@ export default function DashboardAnalyticsTab({
 
       {/* Filters */}
       <Card>
-        <CardContent className="p-4">
-          <div className="flex flex-wrap items-center gap-4">
-            <div className="flex items-center gap-2">
-              <Filter className="h-4 w-4" />
+        <CardContent className="p-md">
+          <div className="flex flex-wrap items-center gap-md">
+            <div className="flex items-center gap-xs">
+              <Filter className="h-icon-xs w-icon-xs" />
               <span className="text-sm font-medium">Filters:</span>
             </div>
 
@@ -325,7 +325,7 @@ export default function DashboardAnalyticsTab({
               </SelectContent>
             </Select>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <DatePicker
                 date={dateRange.start}
                 onDateChange={(date) => date && setDateRange(prev => ({ ...prev, start: date }))}
@@ -351,26 +351,26 @@ export default function DashboardAnalyticsTab({
           <TabsTrigger value="reports">Reports</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="overview" className="space-y-6">
+        <TabsContent value="overview" className="space-y-lg">
           {renderMetricsCards()}
         </TabsContent>
 
-        <TabsContent value="charts" className="space-y-6">
+        <TabsContent value="charts" className="space-y-lg">
           {renderCharts()}
         </TabsContent>
 
-        <TabsContent value="tables" className="space-y-6">
+        <TabsContent value="tables" className="space-y-lg">
           {renderDataTables()}
         </TabsContent>
 
-        <TabsContent value="reports" className="space-y-6">
+        <TabsContent value="reports" className="space-y-lg">
           <Card>
             <CardHeader>
               <CardTitle>Custom Reports</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-12">
-                <BarChart3 className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <div className="text-center py-xsxl">
+                <BarChart3 className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-4" />
                 <h3 className="text-lg font-medium mb-2">Advanced Reporting</h3>
                 <p className="text-muted-foreground mb-4">
                   Create custom reports with advanced filtering and scheduling

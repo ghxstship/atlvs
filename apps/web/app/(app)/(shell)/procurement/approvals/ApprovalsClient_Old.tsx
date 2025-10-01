@@ -121,7 +121,7 @@ export default function ApprovalsClient({
  const config = statusConfig[value as keyof typeof statusConfig] || statusConfig.pending;
  const Icon = config.icon;
  return (
- <Badge variant={config.color} className="flex items-center gap-1">
+ <Badge variant={config.color} className="flex items-center gap-xs">
  <Icon className="h-3 w-3" />
  {value.charAt(0).toUpperCase() + value.slice(1)}
  </Badge>
@@ -143,8 +143,8 @@ export default function ApprovalsClient({
  type: 'text',
  sortable: true,
  render: (value: unknown) => (
- <div className="flex items-center gap-2">
- <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
+ <div className="flex items-center gap-xs">
+ <div className="h-icon-lg w-icon-lg rounded-full bg-primary/10 flex items-center justify-center">
  <span className="text-xs font-medium">
  {value?.name?.charAt(0)?.toUpperCase() || '?'}
  </span>
@@ -374,57 +374,57 @@ export default function ApprovalsClient({
  if (!dashboardData) return null;
 
  return (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Statistics Cards */}
- <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
- <Card className="p-4">
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Pending Approvals</p>
  <p className="text-2xl font-semibold">{dashboardData.statistics.total_pending}</p>
  </div>
- <Clock className="h-8 w-8 text-yellow-500" />
+ <Clock className="h-icon-lg w-icon-lg text-yellow-500" />
  </div>
  </Card>
  
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Approved</p>
  <p className="text-2xl font-semibold">{dashboardData.statistics.total_approved}</p>
  </div>
- <CheckCircle className="h-8 w-8 text-green-500" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-green-500" />
  </div>
  </Card>
  
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Approval Rate</p>
  <p className="text-2xl font-semibold">{dashboardData.statistics.approval_rate.toFixed(1)}%</p>
  </div>
- <TrendingUp className="h-8 w-8 text-blue-500" />
+ <TrendingUp className="h-icon-lg w-icon-lg text-blue-500" />
  </div>
  </Card>
  
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
  <div>
  <p className="text-sm text-muted-foreground">Avg. Time</p>
  <p className="text-2xl font-semibold">{dashboardData.statistics.average_approval_time.toFixed(1)}h</p>
  </div>
- <Users className="h-8 w-8 text-purple-500" />
+ <Users className="h-icon-lg w-icon-lg text-purple-500" />
  </div>
  </Card>
  </div>
 
  {/* Pending Approvals */}
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4">Pending Your Approval</h3>
  {dashboardData.pending_approvals.length > 0 ? (
- <div className="space-y-3">
+ <div className="space-y-sm">
  {dashboardData.pending_approvals.map((approval) => (
- <div key={approval.id} className="flex items-center justify-between p-3 border rounded-lg">
+ <div key={approval.id} className="flex items-center justify-between p-sm border rounded-lg">
  <div className="flex-1">
  <p className="font-medium">{approval.request?.title}</p>
  <p className="text-sm text-muted-foreground">
@@ -435,13 +435,13 @@ export default function ApprovalsClient({
  }).format(approval.request?.estimated_total || 0)}
  </p>
  </div>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button 
  size="sm" 
  variant="outline"
  onClick={() => handleRecordAction('approve', approval as unknown)}
  >
- <CheckCircle className="h-4 w-4 mr-1" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-1" />
  Approve
  </Button>
  <Button 
@@ -449,7 +449,7 @@ export default function ApprovalsClient({
  variant="outline"
  onClick={() => handleRecordAction('reject', approval as unknown)}
  >
- <XCircle className="h-4 w-4 mr-1" />
+ <XCircle className="h-icon-xs w-icon-xs mr-1" />
  Reject
  </Button>
  </div>
@@ -463,18 +463,18 @@ export default function ApprovalsClient({
 
  {/* Overdue Approvals */}
  {dashboardData.overdue_approvals.length > 0 && (
- <Card className="p-6">
+ <Card className="p-lg">
  <h3 className="text-lg font-semibold mb-4 text-red-600">Overdue Approvals</h3>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {dashboardData.overdue_approvals.map((approval) => (
- <div key={approval.id} className="flex items-center justify-between p-3 border border-red-200 rounded-lg bg-red-50">
+ <div key={approval.id} className="flex items-center justify-between p-sm border border-red-200 rounded-lg bg-red-50">
  <div className="flex-1">
  <p className="font-medium">{approval.request?.title}</p>
  <p className="text-sm text-muted-foreground">
  Pending for {Math.floor((Date.now() - new Date(approval.created_at!).getTime()) / (1000 * 60 * 60))} hours
  </p>
  </div>
- <AlertTriangle className="h-5 w-5 text-red-500" />
+ <AlertTriangle className="h-icon-sm w-icon-sm text-red-500" />
  </div>
  ))}
  </div>
@@ -486,7 +486,7 @@ export default function ApprovalsClient({
 
  return (
  <div className={className}>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-center justify-between">
  <div>
@@ -495,20 +495,20 @@ export default function ApprovalsClient({
  Manage approval workflows and make approval decisions
  </p>
  </div>
- <div className="flex gap-2">
+ <div className="flex gap-xs">
  <Button 
  variant="outline"
  onClick={() => setCreatePolicyOpen(true)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Settings className="h-4 w-4" />
+ <Settings className="h-icon-xs w-icon-xs" />
  Policies
  </Button>
  <Button 
  onClick={() => setCreatePolicyOpen(true)}
- className="flex items-center gap-2"
+ className="flex items-center gap-xs"
  >
- <Plus className="h-4 w-4" />
+ <Plus className="h-icon-xs w-icon-xs" />
  New Policy
  </Button>
  </div>
@@ -516,7 +516,7 @@ export default function ApprovalsClient({
 
  {/* Tab Navigation */}
  <div className="border-b">
- <nav className="flex space-x-8">
+ <nav className="flex space-x-xl">
  {[
  { key: 'dashboard', label: 'Dashboard', icon: TrendingUp },
  { key: 'pending', label: 'Pending', icon: Clock },
@@ -526,13 +526,13 @@ export default function ApprovalsClient({
  <button
  key={key}
  onClick={() => setActiveTab(key as unknown)}
- className={`flex items-center gap-2 py-2 px-1 border-b-2 font-medium text-sm ${
+ className={`flex items-center gap-xs py-xs px-xs border-b-2 font-medium text-sm ${
  activeTab === key
  ? 'border-primary text-primary'
  : 'border-transparent text-muted-foreground hover:text-foreground'
  }`}
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  {label}
  </button>
  ))}
@@ -549,8 +549,8 @@ export default function ApprovalsClient({
  )}
 
  {activeTab === 'policies' && (
- <div className="text-center py-12">
- <Settings className="h-12 w-12 mx-auto text-muted-foreground mb-4" />
+ <div className="text-center py-xsxl">
+ <Settings className="h-icon-2xl w-icon-2xl mx-auto text-muted-foreground mb-4" />
  <h3 className="text-lg font-medium mb-2">Approval Policies</h3>
  <p className="text-muted-foreground mb-4">
  Configure approval workflows and policies for your organization
@@ -574,8 +574,8 @@ export default function ApprovalsClient({
  key: 'details',
  label: 'Details',
  content: selectedRecord ? (
- <div className="space-y-4">
- <div className="grid grid-cols-2 gap-4">
+ <div className="space-y-md">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <label className="text-sm font-medium text-muted-foreground">Request</label>
  <p className="text-sm">{selectedRecord.request?.title}</p>

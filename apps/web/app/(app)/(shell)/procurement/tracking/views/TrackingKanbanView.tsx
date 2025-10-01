@@ -99,24 +99,24 @@ export default function TrackingKanbanView({
 
  if (loading) {
  return (
- <div className="flex gap-md h-[600px]">
+ <div className="flex gap-md h-content-xl">
  {statusColumns.map((column) => (
  <div key={column.key} className="flex-1">
  <Card className={`h-full ${column.color}`}>
  <div className="p-md border-b border-border">
- <div className="h-6 bg-muted rounded w-20 animate-pulse"></div>
+ <div className="h-icon-md bg-muted rounded w-component-lg animate-pulse"></div>
  </div>
  <div className="p-md space-y-md">
  {Array.from({ length: 3 }).map((_, index) => (
  <Card key={index} className="p-md">
  <div className="animate-pulse space-y-sm">
  <div className="flex items-center gap-sm">
- <div className="h-4 w-4 bg-muted rounded"></div>
- <div className="h-4 bg-muted rounded w-3/4"></div>
+ <div className="h-icon-xs w-icon-xs bg-muted rounded"></div>
+ <div className="h-icon-xs bg-muted rounded w-3/4"></div>
  </div>
  <div className="h-3 bg-muted rounded w-1/2"></div>
  <div className="h-3 bg-muted rounded w-full"></div>
- <div className="h-5 bg-muted rounded w-16"></div>
+ <div className="h-icon-sm bg-muted rounded w-component-md"></div>
  </div>
  </Card>
  ))}
@@ -129,12 +129,12 @@ export default function TrackingKanbanView({
  }
 
  return (
- <div className="flex gap-md h-[600px] overflow-x-auto">
+ <div className="flex gap-md h-content-xl overflow-x-auto">
  {statusColumns.map((column) => {
  const columnItems = getItemsByStatus(column.key);
  
  return (
- <div key={column.key} className="flex-1 min-w-[320px]">
+ <div key={column.key} className="flex-1 min-w-container-md">
  <Card 
  className={`h-full ${column.color} flex flex-col`}
  onDragOver={handleDragOver}
@@ -199,7 +199,7 @@ export default function TrackingKanbanView({
  e.stopPropagation();
  onViewItem(item);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Eye className="h-3 w-3" />
  </Button>
@@ -212,7 +212,7 @@ export default function TrackingKanbanView({
  e.stopPropagation();
  onEditItem(item);
  }}
- className="h-6 w-6 p-0"
+ className="h-icon-md w-icon-md p-0"
  >
  <Edit className="h-3 w-3" />
  </Button>
@@ -232,7 +232,7 @@ export default function TrackingKanbanView({
 
  {/* Description */}
  {item.description && (
- <p className="text-xs text-muted-foreground line-clamp-2 mb-sm">
+ <p className="text-xs text-muted-foreground line-clamp-xs mb-sm">
  {item.description}
  </p>
  )}

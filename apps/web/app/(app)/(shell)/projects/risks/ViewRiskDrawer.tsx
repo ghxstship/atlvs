@@ -106,7 +106,7 @@ export default function ViewRiskDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <StatusIcon className="h-4 w-4" />
+ <StatusIcon className="h-icon-xs w-icon-xs" />
  <span>Status</span>
  </div>
  <Badge variant={getStatusBadgeVariant(risk.status)}>
@@ -116,7 +116,7 @@ export default function ViewRiskDrawer({
 
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <CategoryIcon className="h-4 w-4" />
+ <CategoryIcon className="h-icon-xs w-icon-xs" />
  <span>Category</span>
  </div>
  <Badge variant={getCategoryBadgeVariant(risk.category)}>
@@ -128,7 +128,7 @@ export default function ViewRiskDrawer({
  {/* Description */}
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <FileText className="h-4 w-4" />
+ <FileText className="h-icon-xs w-icon-xs" />
  <span>Description</span>
  </div>
  <p className="text-sm">{risk.description}</p>
@@ -138,7 +138,7 @@ export default function ViewRiskDrawer({
  {risk.owner && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <User className="h-4 w-4" />
+ <User className="h-icon-xs w-icon-xs" />
  <span>Risk Owner</span>
  </div>
  <p className="font-medium">
@@ -151,7 +151,7 @@ export default function ViewRiskDrawer({
  {risk.project && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Target className="h-4 w-4" />
+ <Target className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
  <p className="font-medium">{risk.project.name}</p>
@@ -162,7 +162,7 @@ export default function ViewRiskDrawer({
  <div className="grid grid-cols-2 gap-md">
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>Identified</span>
  </div>
  <p className="font-medium">
@@ -173,7 +173,7 @@ export default function ViewRiskDrawer({
  {risk.review_date && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>Review Date</span>
  </div>
  <p className="font-medium">
@@ -187,7 +187,7 @@ export default function ViewRiskDrawer({
  {risk.closed_date && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
- <CheckCircle className="h-4 w-4" />
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  <span>Closed Date</span>
  </div>
  <p className="font-medium">
@@ -206,7 +206,7 @@ export default function ViewRiskDrawer({
  {/* Mitigation Plan */}
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Shield className="h-4 w-4" />
+ <Shield className="h-icon-xs w-icon-xs" />
  Mitigation Plan
  </h4>
  {risk.mitigation_plan ? (
@@ -215,7 +215,7 @@ export default function ViewRiskDrawer({
  </div>
  ) : (
  <div className="p-md bg-muted/50 rounded-lg text-center">
- <AlertTriangle className="mx-auto h-8 w-8 text-warning mb-sm" />
+ <AlertTriangle className="mx-auto h-icon-lg w-icon-lg text-warning mb-sm" />
  <p className="text-sm text-muted-foreground">
  No mitigation plan documented yet
  </p>
@@ -226,7 +226,7 @@ export default function ViewRiskDrawer({
  {/* Contingency Plan */}
  <div className="space-y-sm">
  <h4 className="font-semibold flex items-center gap-xs">
- <Zap className="h-4 w-4" />
+ <Zap className="h-icon-xs w-icon-xs" />
  Contingency Plan
  </h4>
  {risk.contingency_plan ? (
@@ -235,7 +235,7 @@ export default function ViewRiskDrawer({
  </div>
  ) : (
  <div className="p-md bg-muted/50 rounded-lg text-center">
- <AlertCircle className="mx-auto h-8 w-8 text-muted-foreground mb-sm" />
+ <AlertCircle className="mx-auto h-icon-lg w-icon-lg text-muted-foreground mb-sm" />
  <p className="text-sm text-muted-foreground">
  No contingency plan documented yet
  </p>
@@ -249,7 +249,7 @@ export default function ViewRiskDrawer({
  <div className="grid grid-cols-2 gap-sm">
  <Card className="p-sm">
  <div className="flex items-center gap-xs mb-xs">
- <Shield className="h-4 w-4 text-success" />
+ <Shield className="h-icon-xs w-icon-xs text-success" />
  <span className="text-sm font-medium">Mitigate</span>
  </div>
  <p className="text-xs text-muted-foreground">
@@ -258,7 +258,7 @@ export default function ViewRiskDrawer({
  </Card>
  <Card className="p-sm">
  <div className="flex items-center gap-xs mb-xs">
- <XCircle className="h-4 w-4 text-destructive" />
+ <XCircle className="h-icon-xs w-icon-xs text-destructive" />
  <span className="text-sm font-medium">Avoid</span>
  </div>
  <p className="text-xs text-muted-foreground">
@@ -267,7 +267,7 @@ export default function ViewRiskDrawer({
  </Card>
  <Card className="p-sm">
  <div className="flex items-center gap-xs mb-xs">
- <TrendingUp className="h-4 w-4 text-warning" />
+ <TrendingUp className="h-icon-xs w-icon-xs text-warning" />
  <span className="text-sm font-medium">Transfer</span>
  </div>
  <p className="text-xs text-muted-foreground">
@@ -276,7 +276,7 @@ export default function ViewRiskDrawer({
  </Card>
  <Card className="p-sm">
  <div className="flex items-center gap-xs mb-xs">
- <CheckCircle className="h-4 w-4 text-info" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-info" />
  <span className="text-sm font-medium">Accept</span>
  </div>
  <p className="text-xs text-muted-foreground">
@@ -299,8 +299,8 @@ export default function ViewRiskDrawer({
  <div className="space-y-md">
  {/* Created */}
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-muted flex items-center justify-center">
- <Clock className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-muted flex items-center justify-center">
+ <Clock className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Risk Created</p>
@@ -312,8 +312,8 @@ export default function ViewRiskDrawer({
 
  {/* Identified */}
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-warning flex items-center justify-center">
- <AlertTriangle className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-warning flex items-center justify-center">
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Risk Identified</p>
@@ -326,8 +326,8 @@ export default function ViewRiskDrawer({
  {/* Status Changes */}
  {risk.status === "assessed" && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-info flex items-center justify-center">
- <Activity className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-info flex items-center justify-center">
+ <Activity className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Risk Assessed</p>
@@ -340,8 +340,8 @@ export default function ViewRiskDrawer({
 
  {risk.status === "mitigated" && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-success flex items-center justify-center">
- <Shield className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-success flex items-center justify-center">
+ <Shield className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Risk Mitigated</p>
@@ -355,8 +355,8 @@ export default function ViewRiskDrawer({
  {/* Review Date */}
  {risk.review_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-primary flex items-center justify-center">
- <Calendar className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-primary flex items-center justify-center">
+ <Calendar className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Scheduled Review</p>
@@ -370,8 +370,8 @@ export default function ViewRiskDrawer({
  {/* Closed */}
  {risk.closed_date && (
  <div className="flex items-center gap-md">
- <div className="w-8 h-8 rounded-full bg-background border-2 border-success flex items-center justify-center">
- <CheckCircle className="h-4 w-4" />
+ <div className="w-icon-lg h-icon-lg rounded-full bg-background border-2 border-success flex items-center justify-center">
+ <CheckCircle className="h-icon-xs w-icon-xs" />
  </div>
  <div>
  <p className="font-medium">Risk Closed</p>
@@ -406,7 +406,7 @@ export default function ViewRiskDrawer({
  {
  key: "edit",
  label: "Edit",
- icon: <Edit className="h-4 w-4" />,
+ icon: <Edit className="h-icon-xs w-icon-xs" />,
  onClick: onEdit,
  },
  ]}

@@ -354,7 +354,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Pending Approvals</p>
  <p className="text-2xl font-bold">{dashboardData.pending_count}</p>
  </div>
- <Clock className="h-8 w-8 text-warning" />
+ <Clock className="h-icon-lg w-icon-lg text-warning" />
  </div>
  </Card>
  
@@ -364,7 +364,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Approved Today</p>
  <p className="text-2xl font-bold">{dashboardData.approved_today}</p>
  </div>
- <CheckCircle className="h-8 w-8 text-success" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-success" />
  </div>
  </Card>
  
@@ -374,7 +374,7 @@ export default function ApprovalsClient({
  <p className="text-sm text-muted-foreground">Overdue</p>
  <p className="text-2xl font-bold">{dashboardData.overdue_count}</p>
  </div>
- <AlertTriangle className="h-8 w-8 text-destructive" />
+ <AlertTriangle className="h-icon-lg w-icon-lg text-destructive" />
  </div>
  </Card>
  
@@ -389,7 +389,7 @@ export default function ApprovalsClient({
  }).format(dashboardData.total_value || 0)}
  </p>
  </div>
- <TrendingUp className="h-8 w-8 text-info" />
+ <TrendingUp className="h-icon-lg w-icon-lg text-info" />
  </div>
  </Card>
  </div>
@@ -401,7 +401,7 @@ export default function ApprovalsClient({
  {/* Header */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <Users className="h-5 w-5" />
+ <Users className="h-icon-sm w-icon-sm" />
  <h3 className="text-lg font-semibold">Procurement Approvals</h3>
  <Badge variant="secondary">
  {data.length} approval{data.length !== 1 ? 's' : ''}
@@ -413,19 +413,19 @@ export default function ApprovalsClient({
  size="sm"
  onClick={() => setShowCreatePolicy(true)}
  >
- <Settings className="h-4 w-4 mr-sm" />
+ <Settings className="h-icon-xs w-icon-xs mr-sm" />
  Policies
  </Button>
  <Button variant="outline" size="sm">
- <Upload className="h-4 w-4 mr-sm" />
+ <Upload className="h-icon-xs w-icon-xs mr-sm" />
  Import
  </Button>
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  Export
  </Button>
  <Button size="sm" onClick={loadApprovals}>
- <RefreshCw className="h-4 w-4 mr-sm" />
+ <RefreshCw className="h-icon-xs w-icon-xs mr-sm" />
  Refresh
  </Button>
  </div>
@@ -492,7 +492,7 @@ export default function ApprovalsClient({
  onClick={() => handleApprovalAction(selectedApproval.id, 'approve')}
  disabled={selectedApproval.status !== 'pending'}
  >
- <CheckCircle className="h-4 w-4 mr-sm" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-sm" />
  Approve
  </Button>
  <Button
@@ -500,7 +500,7 @@ export default function ApprovalsClient({
  onClick={() => handleApprovalAction(selectedApproval.id, 'reject')}
  disabled={selectedApproval.status !== 'pending'}
  >
- <XCircle className="h-4 w-4 mr-sm" />
+ <XCircle className="h-icon-xs w-icon-xs mr-sm" />
  Reject
  </Button>
  </div>

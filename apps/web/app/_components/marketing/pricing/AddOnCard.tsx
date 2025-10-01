@@ -36,7 +36,7 @@ export function AddOnCard({ addon, onAddToPlan }: AddOnCardProps) {
         <div className="stack-xl mb-md flex-1">
           {addon.features.map((feature: any) => (
             <div key={feature} className="flex items-start gap-xl">
-              <Check className="h-4 w-4 color-success flex-shrink-0 mt-0.5" />
+              <Check className="h-icon-xs w-icon-xs color-success flex-shrink-0 mt-0.5" />
               <span className="text-body-sm color-foreground leading-relaxed">{feature}</span>
             </div>
           ))}

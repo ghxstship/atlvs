@@ -229,7 +229,7 @@ const progressVariants = cva(
       variant: {
         linear: 'w-full bg-muted rounded-full h-2',
         stepped: 'gap-md',
-        circular: 'relative w-16 h-16',
+        circular: 'relative w-component-md h-component-md',
         minimal: 'text-sm text-muted-foreground',
       },
       size: {
@@ -383,7 +383,7 @@ const responsiveWorkflowVariants = {
   mobileNav: 'lg:hidden fixed inset-x-0 bottom-0 z-50 bg-background border-t border-border',
   
   // Desktop sidebar
-  desktopSidebar: 'hidden lg:flex lg:flex-col lg:w-64 lg:fixed lg:inset-y-0 lg:z-50',
+  desktopSidebar: 'hidden lg:flex lg:flex-col lg:w-container-sm lg:fixed lg:inset-y-0 lg:z-50',
   
   // Responsive content
   responsiveContent: 'lg:pl-64',
@@ -417,7 +417,7 @@ export const workflowOptimization = {
   // Loading states
   loading: {
     skeleton: 'animate-pulse bg-muted rounded',
-    spinner: 'animate-spin h-4 w-4 border-2 border-primary border-t-transparent rounded-full',
+    spinner: 'animate-spin h-icon-xs w-icon-xs border-2 border-primary border-t-transparent rounded-full',
     dots: 'flex gap-xs [&>div]:w-2 [&>div]:h-2 [&>div]:bg-accent [&>div]:rounded-full [&>div]:animate-bounce',
   },
   

@@ -42,7 +42,7 @@ export default async function MarketplaceDetailPage({ params }: PageProps) {
   if (!orgId) {
     return (
       <FeatureGate feature="marketplace">
-        <div className="brand-marketplace text-center py-2xl">
+        <div className="brand-marketplace text-center py-xsxl">
           <h2 className="text-heading-3 mb-md">{t('unauthorized')}</h2>
           <p className="color-muted">{t('loginRequired')}</p>
         </div>

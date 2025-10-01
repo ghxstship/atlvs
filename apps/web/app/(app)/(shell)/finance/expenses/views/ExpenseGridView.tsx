@@ -103,9 +103,9 @@ export default function ExpenseGridView({
  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {Array.from({ length: 6 }).map((_, i) => (
  <Card key={i} className="p-lg animate-pulse">
- <div className="h-4 bg-muted rounded mb-sm"></div>
- <div className="h-6 bg-muted rounded mb-sm"></div>
- <div className="h-4 bg-muted rounded w-2/3"></div>
+ <div className="h-icon-xs bg-muted rounded mb-sm"></div>
+ <div className="h-icon-md bg-muted rounded mb-sm"></div>
+ <div className="h-icon-xs bg-muted rounded w-2/3"></div>
  </Card>
  ))}
  </div>
@@ -115,7 +115,7 @@ export default function ExpenseGridView({
  if (expenses.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Receipt className="h-12 w-12 color-muted mx-auto mb-md" />
+ <Receipt className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
  <h3 className="text-heading-4 color-foreground mb-sm">No expenses found</h3>
  <p className="text-body-sm color-muted">Create your first expense to get started.</p>
  </Card>
@@ -134,7 +134,7 @@ export default function ExpenseGridView({
  {expense.title}
  </h3>
  {expense.description && (
- <p className="text-body-sm color-muted line-clamp-2 mt-xs">
+ <p className="text-body-sm color-muted line-clamp-xs mt-xs">
  {expense.description}
  </p>
  )}
@@ -142,13 +142,13 @@ export default function ExpenseGridView({
  
  <div className="flex items-center gap-xs">
  <Button variant="ghost" size="sm" onClick={() => onView(expense)}>
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="ghost" size="sm" onClick={() => onEdit(expense)}>
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="ghost" size="sm" onClick={() => onDelete(expense)}>
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -156,7 +156,7 @@ export default function ExpenseGridView({
  {/* Amount and Status */}
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 color-success" />
+ <DollarSign className="h-icon-xs w-icon-xs color-success" />
  <span className="text-heading-5 color-success">
  {expensesService.formatCurrency(expense.amount, expense.currency)}
  </span>

@@ -78,19 +78,19 @@ export default function EditAssetClient({
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-white border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center gap-4">
+        <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl">
+          <div className="flex items-center justify-between h-component-md">
+            <div className="flex items-center gap-md">
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={() => router.push(`/assets/${initialAsset.id}`)}
-                className="flex items-center gap-2"
+                className="flex items-center gap-xs"
               >
-                <ArrowLeft className="w-4 h-4" />
+                <ArrowLeft className="w-icon-xs h-icon-xs" />
                 Back to Asset
               </Button>
-              <div className="h-6 w-px bg-gray-300" />
+              <div className="h-icon-md w-px bg-gray-300" />
               <div>
                 <h1 className="text-xl font-semibold text-gray-900">
                   {translations.title || 'Edit Asset'}
@@ -101,7 +101,7 @@ export default function EditAssetClient({
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-sm">
               <Button
                 variant="outline"
                 onClick={handleDrawerClose}
@@ -109,7 +109,7 @@ export default function EditAssetClient({
                 {translations.cancel || 'Cancel'}
               </Button>
               <Button onClick={() => setIsDrawerOpen(true)}>
-                <Save className="w-4 h-4 mr-2" />
+                <Save className="w-icon-xs h-icon-xs mr-2" />
                 {translations.save || 'Save Changes'}
               </Button>
             </div>
@@ -118,8 +118,8 @@ export default function EditAssetClient({
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-md sm:px-lg lg:px-xl py-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-xl">
           {/* Form Section */}
           <div className="lg:col-span-2">
             <Card>
@@ -127,14 +127,14 @@ export default function EditAssetClient({
                 <CardTitle>Asset Information</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="text-center py-12 text-gray-500">
-                  <Save className="w-12 h-12 mx-auto mb-4 text-gray-300" />
+                <div className="text-center py-xsxl text-gray-500">
+                  <Save className="w-icon-2xl h-icon-2xl mx-auto mb-4 text-gray-300" />
                   <h3 className="text-lg font-medium mb-2">Edit Asset</h3>
                   <p className="text-sm mb-6">
                     Use the form drawer to modify asset details
                   </p>
                   <Button onClick={() => setIsDrawerOpen(true)}>
-                    <Save className="w-4 h-4 mr-2" />
+                    <Save className="w-icon-xs h-icon-xs mr-2" />
                     Open Edit Form
                   </Button>
                 </div>
@@ -143,13 +143,13 @@ export default function EditAssetClient({
           </div>
 
           {/* Sidebar */}
-          <div className="space-y-6">
+          <div className="space-y-lg">
             <Card>
               <CardHeader>
                 <CardTitle>Edit Guidelines</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-start gap-3">
+              <CardContent className="space-y-md">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Asset Tag</h4>
@@ -158,7 +158,7 @@ export default function EditAssetClient({
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-green-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Required Fields</h4>
@@ -167,7 +167,7 @@ export default function EditAssetClient({
                     </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-3">
+                <div className="flex items-start gap-sm">
                   <div className="w-2 h-2 bg-orange-500 rounded-full mt-2 flex-shrink-0" />
                   <div>
                     <h4 className="font-medium text-sm">Audit Trail</h4>
@@ -184,10 +184,10 @@ export default function EditAssetClient({
                 <CardTitle>Current Status</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <div className="flex items-center justify-between">
                     <span className="text-sm text-gray-600">Status</span>
-                    <span className={`text-sm font-medium px-2 py-1 rounded ${
+                    <span className={`text-sm font-medium px-xs py-xs rounded ${
                       initialAsset.status === 'available' ? 'bg-green-100 text-green-800' :
                       initialAsset.status === 'in_use' ? 'bg-blue-100 text-blue-800' :
                       initialAsset.status === 'maintenance' ? 'bg-yellow-100 text-yellow-800' :
@@ -225,8 +225,8 @@ export default function EditAssetClient({
             {hasUnsavedChanges && (
               <Card className="border-orange-200 bg-orange-50">
                 <CardContent className="pt-6">
-                  <div className="flex items-center gap-3">
-                    <AlertTriangle className="w-5 h-5 text-orange-600" />
+                  <div className="flex items-center gap-sm">
+                    <AlertTriangle className="w-icon-sm h-icon-sm text-orange-600" />
                     <div>
                       <h4 className="font-medium text-orange-800">Unsaved Changes</h4>
                       <p className="text-sm text-orange-700">

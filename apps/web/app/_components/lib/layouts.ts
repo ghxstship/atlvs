@@ -8,8 +8,8 @@ export const layouts = {
   containerNarrow: 'container mx-auto px-md max-w-4xl',
   
   // Section spacing
-  sectionPadding: 'py-4xl',
-  sectionPaddingLarge: 'py-5xl',
+  sectionPadding: 'py-mdxl',
+  sectionPaddingLarge: 'py-mdxl',
   sectionMargin: 'mb-3xl',
   
   // Grid patterns

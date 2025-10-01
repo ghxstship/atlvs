@@ -91,7 +91,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
   return (
     <>
       <Button onClick={handleOpen} className="inline-flex items-center gap-sm">
-        <Plus className="w-4 h-4" />
+        <Plus className="w-icon-xs h-icon-xs" />
         Add Milestone
       </Button>
 
@@ -201,7 +201,7 @@ export default function CreateMilestoneClient({ orgId }: { orgId: string }) {
               disabled={loading}
               className="inline-flex items-center gap-sm"
             >
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-icon-xs h-icon-xs" />
               {loading ? 'Creating...' : 'Create Milestone'}
             </Button>
           </div>

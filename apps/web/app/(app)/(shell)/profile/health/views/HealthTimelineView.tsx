@@ -90,18 +90,18 @@ export default function HealthTimelineView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-6">
+ <Card className="p-lg">
+ <div className="space-y-lg">
  {[...Array(3)].map((_, i) => (
- <div key={i} className="space-y-4">
- <div className="h-6 w-32 bg-muted animate-pulse rounded" />
- <div className="space-y-3">
+ <div key={i} className="space-y-md">
+ <div className="h-icon-md w-component-xl bg-muted animate-pulse rounded" />
+ <div className="space-y-sm">
  {[...Array(2)].map((_, j) => (
- <div key={j} className="flex gap-4 p-4 border rounded-lg">
- <div className="h-12 w-12 bg-muted animate-pulse rounded-full" />
- <div className="flex-1 space-y-2">
- <div className="h-5 w-48 bg-muted animate-pulse rounded" />
- <div className="h-4 w-full bg-muted animate-pulse rounded" />
+ <div key={j} className="flex gap-md p-md border rounded-lg">
+ <div className="h-icon-2xl w-icon-2xl bg-muted animate-pulse rounded-full" />
+ <div className="flex-1 space-y-xs">
+ <div className="h-icon-sm w-container-xs bg-muted animate-pulse rounded" />
+ <div className="h-icon-xs w-full bg-muted animate-pulse rounded" />
  </div>
  </div>
  ))}
@@ -114,12 +114,12 @@ export default function HealthTimelineView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
- <Card className="p-4">
- <div className="flex flex-col gap-4">
+ <Card className="p-md">
+ <div className="flex flex-col gap-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected && !allSelected}
@@ -129,13 +129,13 @@ export default function HealthTimelineView({
  {selectedIds.length > 0 && `${selectedIds.length} selected`}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => setShowFilters(!showFilters)}
  >
- <Filter className="mr-2 h-4 w-4" />
+ <Filter className="mr-2 h-icon-xs w-icon-xs" />
  Filters
  </Button>
  <Button
@@ -144,7 +144,7 @@ export default function HealthTimelineView({
  onClick={() => onExport(sortedRecords.filter(r => selectedIds.includes(r.id)))}
  disabled={selectedIds.length === 0}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </div>
@@ -152,7 +152,7 @@ export default function HealthTimelineView({
 
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Search className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search health records..."
  value={filters.search}
@@ -163,7 +163,7 @@ export default function HealthTimelineView({
 
  {/* Filters */}
  {showFilters && (
- <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t">
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-md pt-4 border-t">
  <Select
  value={filters.record_type || 'all'}
  onValueChange={(value) => onFiltersChange({ record_type: value as unknown })}
@@ -232,7 +232,7 @@ export default function HealthTimelineView({
  )}
 
  {/* Sort */}
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span className="text-muted-foreground">Sort by:</span>
  <Button
  variant={sort.field === 'date_recorded' ? 'default' : 'ghost'}
@@ -261,9 +261,9 @@ export default function HealthTimelineView({
 
  {/* Timeline */}
  {sortedRecords.length === 0 ? (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Activity className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Activity className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Health Records Found</h3>
  <p className="text-muted-foreground mt-2">
@@ -275,15 +275,15 @@ export default function HealthTimelineView({
  </div>
  </Card>
  ) : (
- <div className="space-y-6">
+ <div className="space-y-lg">
  {sortedMonths.map((monthKey) => {
  const monthRecords = groupedRecords[monthKey];
  const monthDate = new Date(monthKey + '-01');
  
  return (
- <div key={monthKey} className="space-y-4">
- <div className="flex items-center gap-3">
- <Calendar className="h-5 w-5 text-muted-foreground" />
+ <div key={monthKey} className="space-y-md">
+ <div className="flex items-center gap-sm">
+ <Calendar className="h-icon-sm w-icon-sm text-muted-foreground" />
  <h3 className="text-lg font-semibold">
  {monthDate.toLocaleDateString('en-US', { 
  year: 'numeric', 
@@ -293,7 +293,7 @@ export default function HealthTimelineView({
  <Badge variant="outline">{monthRecords.length} records</Badge>
  </div>
  
- <div className="space-y-3 ml-8 border-l-2 border-muted pl-6">
+ <div className="space-y-sm ml-8 border-l-2 border-muted pl-6">
  {monthRecords.map((record, index) => {
  const isSelected = selectedIds.includes(record.id);
  const daysUntilExpiry = record.expiry_date ? getDaysUntilExpiry(record.expiry_date) : null;
@@ -302,25 +302,25 @@ export default function HealthTimelineView({
  return (
  <Card
  key={record.id}
- className={`p-4 transition-colors relative ${
+ className={`p-md transition-colors relative ${
  isSelected ? 'bg-muted/50 border-primary' : 'hover:bg-muted/30'
  }`}
  >
  {/* Timeline dot */}
- <div className="absolute -left-9 top-6 w-4 h-4 rounded-full bg-background border-2 border-primary flex items-center justify-center">
+ <div className="absolute -left-9 top-lg w-icon-xs h-icon-xs rounded-full bg-background border-2 border-primary flex items-center justify-center">
  <span className="text-xs">{getRecordTypeIcon(record.record_type)}</span>
  </div>
  
- <div className="flex items-start gap-4">
+ <div className="flex items-start gap-md">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onToggleSelect(record.id, !!checked)}
  />
  
- <div className="flex-1 space-y-3">
+ <div className="flex-1 space-y-sm">
  <div className="flex items-start justify-between">
  <div>
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <h4 className="font-semibold">{record.title}</h4>
  <Badge variant="outline">
  {RECORD_TYPE_LABELS[record.record_type]}
@@ -340,13 +340,13 @@ export default function HealthTimelineView({
  )}
  </div>
  
- <div className="flex items-center gap-4 text-sm text-muted-foreground">
+ <div className="flex items-center gap-md text-sm text-muted-foreground">
  <span>{formatDateShort(record.date_recorded)}</span>
  {record.provider && (
  <span>• {record.provider}</span>
  )}
  {record.expiry_date && (
- <span className="flex items-center gap-1">
+ <span className="flex items-center gap-xs">
  <Clock className="h-3 w-3" />
  Expires {formatDateShort(record.expiry_date)}
  </span>
@@ -354,41 +354,41 @@ export default function HealthTimelineView({
  </div>
  </div>
  
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(record)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(record)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
  
  {record.description && (
- <p className="text-sm text-muted-foreground line-clamp-2">
+ <p className="text-sm text-muted-foreground line-clamp-xs">
  {record.description}
  </p>
  )}
  
  {/* Expiry Alert */}
  {record.expiry_date && daysUntilExpiry !== null && daysUntilExpiry <= 30 && (
- <div className={`flex items-center gap-2 p-2 rounded text-sm ${
+ <div className={`flex items-center gap-xs p-xs rounded text-sm ${
  expiryUrgency === 'critical' ? 'bg-destructive/10 text-destructive' :
  expiryUrgency === 'high' ? 'bg-orange-50 text-orange-700' :
  'bg-yellow-50 text-yellow-700'
  }`}>
  {daysUntilExpiry < 0 ? (
- <AlertTriangle className="h-4 w-4" />
+ <AlertTriangle className="h-icon-xs w-icon-xs" />
  ) : (
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  )}
  <span>
  {daysUntilExpiry < 0 
@@ -405,7 +405,7 @@ export default function HealthTimelineView({
  )}
  
  {record.tags.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {record.tags.slice(0, 3).map((tag) => (
  <Badge key={tag} variant="secondary" className="text-xs">
  {tag}

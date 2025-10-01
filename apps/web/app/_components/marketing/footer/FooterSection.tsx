@@ -39,7 +39,7 @@ export function FooterSection({ title, links }: FooterSectionProps) {
         {/* Scrollable overflow items */}
         {hasOverflow && (
           <div className="mt-xs">
-            <div className="max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
+            <div className="max-h-component-xl overflow-y-auto scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
               <ul className="stack-xs pr-sm">
                 {overflowLinks.map((link: any) => (
                   <li key={link.href}>

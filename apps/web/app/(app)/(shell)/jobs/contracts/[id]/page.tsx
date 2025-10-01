@@ -85,7 +85,7 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
           id: 'error',
           label: 'Error',
           content: (
-            <div className="text-center py-8">
+            <div className="text-center py-xl">
               <p className="text-muted-foreground">The requested contract could not be found.</p>
             </div>
           )
@@ -131,16 +131,16 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
       id: 'overview',
       label: 'Overview',
       content: (
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className="grid gap-lg md:grid-cols-2">
           {/* Contract Information */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileText className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <FileText className="h-icon-sm w-icon-sm" />
                 Contract Details
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div>
                 <h3 className="text-lg font-semibold">{(contract as any).title || 'Contract'}</h3>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -172,12 +172,12 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
           {/* Dates */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Calendar className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Calendar className="h-icon-sm w-icon-sm" />
                 Contract Timeline
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Start Date</span>
                 <span className="text-sm text-muted-foreground">
@@ -211,12 +211,12 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
           {/* Associated Entities */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Building className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Building className="h-icon-sm w-icon-sm" />
                 Associated Entities
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div>
                 <p className="text-sm font-medium text-muted-foreground">Job</p>
                 <p className="font-medium">{(contract as any).job?.title || 'No associated job'}</p>
@@ -242,7 +242,7 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
             <CardHeader>
               <CardTitle>Terms & Conditions</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent className="space-y-sm">
               <div className="flex items-center justify-between">
                 <span className="text-sm font-medium">Payment Terms</span>
                 <span className="text-sm text-muted-foreground">
@@ -277,7 +277,7 @@ export default async function ContractDetailPage({ params }: ContractDetailPageP
             <CardTitle>Contract Documents</CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-muted-foreground text-center py-8">
+            <p className="text-muted-foreground text-center py-xl">
               Contract documents and attachments will be available here.
             </p>
           </CardContent>

@@ -114,7 +114,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
   return (
     <>
       <Button onClick={() => setOpen(true)}>
-        <Plus className="h-4 w-4 mr-sm" />
+        <Plus className="h-icon-xs w-icon-xs mr-sm" />
         Create Order
       </Button>
 
@@ -136,7 +136,7 @@ export default function CreateOrderClient({ orgId, onOrderCreated }: CreateOrder
               onClick={form.handleSubmit(onSubmit)} 
               disabled={isSubmitting}
             >
-              <Save className="h-4 w-4 mr-sm" />
+              <Save className="h-icon-xs w-icon-xs mr-sm" />
               {isSubmitting ? 'Creating...' : 'Create Order'}
             </Button>
           </div>

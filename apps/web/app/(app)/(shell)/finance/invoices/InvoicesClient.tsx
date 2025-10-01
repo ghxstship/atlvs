@@ -65,13 +65,13 @@ const InvoicesClient: React.FC<InvoicesClientProps> = ({ user, orgId, translatio
             <p className="text-body-sm color-foreground/70 mt-xs">{translations.subtitle}</p>
           </div>
           <Button onClick={() => setIsCreateDrawerOpen(true)}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Create Invoice
           </Button>
         </div>
 
-        <Card className="p-2xl text-center">
-          <FileText className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+        <Card className="p-xsxl text-center">
+          <FileText className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
           <h3 className="text-body text-heading-4 color-foreground mb-sm">Invoice management coming soon</h3>
           <p className="color-foreground/70 mb-md">This feature is under development</p>
         </Card>

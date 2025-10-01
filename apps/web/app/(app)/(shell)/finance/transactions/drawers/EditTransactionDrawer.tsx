@@ -160,7 +160,7 @@ export default function EditTransactionDrawer({
     >
       <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-lg">
         <div className="flex items-start gap-sm rounded-md border border-border bg-muted/40 p-md">
-          <ArrowUpDown className="mt-1 h-5 w-5 text-primary" />
+          <ArrowUpDown className="mt-1 h-icon-sm w-icon-sm text-primary" />
           <div>
             <h2 className="text-base font-semibold">Edit Transaction</h2>
             <p className="text-sm text-muted-foreground">
@@ -173,7 +173,7 @@ export default function EditTransactionDrawer({
           <Card className="border border-border bg-background shadow-none">
             <CardHeader>
               <CardTitle className="flex items-center gap-sm text-base">
-                <ArrowUpDown className="h-5 w-5 text-primary" />
+                <ArrowUpDown className="h-icon-sm w-icon-sm text-primary" />
                 <span>Transaction Details</span>
               </CardTitle>
             </CardHeader>
@@ -301,7 +301,7 @@ export default function EditTransactionDrawer({
           <Card className="border border-border bg-background shadow-none">
             <CardHeader>
               <CardTitle className="flex items-center gap-sm text-base">
-                <Calendar className="h-5 w-5 text-primary" />
+                <Calendar className="h-icon-sm w-icon-sm text-primary" />
                 <span>Additional Information</span>
               </CardTitle>
             </CardHeader>

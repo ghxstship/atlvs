@@ -47,7 +47,7 @@ export default async function OpenDeckLanding() {
             userRole={userRole}
           />
         ) : (
-          <div className="brand-opendeck text-center py-2xl">
+          <div className="brand-opendeck text-center py-xsxl">
             <h2 className="text-heading-3 mb-md">{t('title')}</h2>
             <p className="color-muted">{t('unauthorized')}</p>
           </div>

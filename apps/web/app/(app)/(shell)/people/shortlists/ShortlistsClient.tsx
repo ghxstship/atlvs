@@ -129,7 +129,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       <div className="stack-md">
         <Card title={t('title')}>
           <div className="flex items-center justify-center py-xl">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
           </div>
         </Card>
       </div>
@@ -145,7 +145,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
           <p className="color-muted">{t('subtitle')}</p>
         </div>
         <Button onClick={() => setShowCreateForm(true)} className="flex items-center cluster-sm">
-          <Plus className="h-4 w-4" />
+          <Plus className="h-icon-xs w-icon-xs" />
           <span>{t('createShortlist')}</span>
         </Button>
       </div>
@@ -156,7 +156,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
           <div className="flex flex-col sm:flex-row gap-md">
             <div className="flex-1">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 color-muted" />
+                <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs color-muted" />
                 <UnifiedInput                   placeholder={t('searchPlaceholder')}
                   value={searchQuery}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
@@ -250,10 +250,10 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
                   </div>
                   <div className="flex cluster-xs">
                     <Button>
-                      <Edit className="h-4 w-4" />
+                      <Edit className="h-icon-xs w-icon-xs" />
                     </Button>
                     <Button>
-                      <Trash2 className="h-4 w-4" />
+                      <Trash2 className="h-icon-xs w-icon-xs" />
                     </Button>
                   </div>
                 </div>
@@ -265,7 +265,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
                     </Badge>
                   )}
                   <div className="flex items-center text-body-sm color-muted">
-                    <Users className="h-4 w-4 mr-xs" />
+                    <Users className="h-icon-xs w-icon-xs mr-xs" />
                     {shortlist.member_count || 0} {t('members')}
                   </div>
                 </div>
@@ -288,7 +288,7 @@ export default function ShortlistsClient({ orgId }: ShortlistsClientProps) {
       {filteredShortlists.length === 0 && (
         <Card>
           <div className="text-center py-xl">
-            <List className="h-12 w-12 color-muted mx-auto mb-md" />
+            <List className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
             <p className="color-muted">{t('noShortlists')}</p>
             <p className="text-body-sm color-muted mt-sm">{t('createFirstShortlist')}</p>
           </div>

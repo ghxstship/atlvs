@@ -11,10 +11,10 @@ const avatarVariants = cva(
   {
     variants: {
       size: {
-        sm: 'h-8 w-8',
-        md: 'h-10 w-10',
-        lg: 'h-12 w-12',
-        xl: 'h-16 w-16',
+        sm: 'h-icon-lg w-icon-lg',
+        md: 'h-icon-xl w-icon-xl',
+        lg: 'h-icon-2xl w-icon-2xl',
+        xl: 'h-component-md w-component-md',
       },
     },
     defaultVariants: {

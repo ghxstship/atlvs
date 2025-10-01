@@ -146,8 +146,8 @@ const sidebarVariants = cva(
   {
     variants: {
       state: {
-        expanded: 'w-64',
-        collapsed: 'w-16',
+        expanded: 'w-container-sm',
+        collapsed: 'w-component-md',
         hidden: 'w-0 border-r-0',
       },
       variant: {
@@ -398,9 +398,9 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
         >
           {/* Icons only for top-level items and when provided */}
           {level === 0 && Icon ? (
-            <Icon className="h-5 w-5 flex-shrink-0" />
+            <Icon className="h-icon-sm w-icon-sm flex-shrink-0" />
           ) : (
-            level === 0 && <span className="h-5 w-5" aria-hidden="true" />
+            level === 0 && <span className="h-icon-sm w-icon-sm" aria-hidden="true" />
           )}
           
           {!isCollapsed && (
@@ -420,9 +420,9 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
               {hasChildren && (
                 <div className="motion-safe:transition-transform motion-safe:duration-200">
                   {isExpanded ? (
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-icon-xs w-icon-xs" />
                   ) : (
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-icon-xs w-icon-xs" />
                   )}
                 </div>
               )}
@@ -494,7 +494,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           onClick={() => setIsMobileOpen(true)}
           aria-label="Open navigation"
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-icon-sm w-icon-sm" />
         </button>
 
         {/* Mobile overlay */}
@@ -528,14 +528,14 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
                   className="p-xs rounded hover:bg-muted"
                   aria-label="Close navigation"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-icon-sm w-icon-sm" />
                 </button>
               </div>
               
               {/* Search */}
               <div className="p-md">
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
                   <input
                     ref={searchInputRef}
                     type="text"
@@ -577,7 +577,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           onClick={() => setIsCollapsed(!isCollapsed)}
           aria-label={isCollapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-icon-sm w-icon-sm" />
         </button>
       </div>
 
@@ -585,7 +585,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
       {!isCollapsed && (
         <div className="p-md">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <input
               ref={searchInputRef}
               type="text"
@@ -633,7 +633,7 @@ export const SidebarNavigation: React.FC<SidebarNavigationProps> = ({
           })}
           onClick={() => handleNavigate('/profile', 'profile')}
         >
-          <User className="h-5 w-5 flex-shrink-0" />
+          <User className="h-icon-sm w-icon-sm flex-shrink-0" />
           {!isCollapsed && <span className="flex-1 text-left">Profile</span>}
           
           {isCollapsed && (

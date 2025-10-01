@@ -138,19 +138,19 @@ export default function CalendarView({
   return (
     <div className="bg-white rounded-lg border border-gray-200">
       {/* Calendar Header */}
-      <div className="flex items-center justify-between p-4 border-b border-gray-200">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between p-md border-b border-gray-200">
+        <div className="flex items-center gap-md">
           <h2 className="text-lg font-semibold text-gray-900">
             {format(currentMonth, 'MMMM yyyy')}
           </h2>
 
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-xs">
             <Button
               variant="outline"
               size="sm"
               onClick={() => navigateMonth('prev')}
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-icon-xs h-icon-xs" />
             </Button>
             <Button
               variant="outline"
@@ -164,13 +164,13 @@ export default function CalendarView({
               size="sm"
               onClick={() => navigateMonth('next')}
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-icon-xs h-icon-xs" />
             </Button>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1 border border-gray-300 rounded-md">
+        <div className="flex items-center gap-xs">
+          <div className="flex items-center gap-xs border border-gray-300 rounded-md">
             {(['month', 'week', 'day'] as const).map((mode) => (
               <Button
                 key={mode}
@@ -187,13 +187,13 @@ export default function CalendarView({
       </div>
 
       {/* Calendar Grid */}
-      <div className="p-4">
+      <div className="p-md">
         {/* Day Headers */}
-        <div className="grid grid-cols-7 gap-1 mb-2">
+        <div className="grid grid-cols-7 gap-xs mb-2">
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
             <div
               key={day}
-              className="p-2 text-center text-sm font-medium text-gray-500"
+              className="p-xs text-center text-sm font-medium text-gray-500"
             >
               {day}
             </div>
@@ -201,11 +201,11 @@ export default function CalendarView({
         </div>
 
         {/* Calendar Days */}
-        <div className="grid grid-cols-7 gap-1">
+        <div className="grid grid-cols-7 gap-xs">
           {calendarDays.map((day, index) => (
             <div
               key={index}
-              className={`min-h-[120px] p-2 border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors ${
+              className={`min-h-header-lg p-xs border border-gray-200 rounded-lg cursor-pointer hover:bg-gray-50 transition-colors ${
                 !day.isCurrentMonth ? 'bg-gray-50 text-gray-400' : ''
               } ${day.isToday ? 'bg-blue-50 border-blue-300' : ''} ${
                 day.isSelected ? 'ring-2 ring-blue-500' : ''
@@ -220,14 +220,14 @@ export default function CalendarView({
               </div>
 
               {/* Files for this day */}
-              <div className="space-y-1">
+              <div className="space-y-xs">
                 {day.files.slice(0, 3).map((file) => {
                   const CategoryIcon = getCategoryIcon(file.category);
 
                   return (
                     <div
                       key={file.id}
-                      className={`text-xs p-1 rounded flex items-center gap-1 ${getCategoryColor(file.category)} text-white cursor-pointer hover:opacity-80 transition-opacity`}
+                      className={`text-xs p-xs rounded flex items-center gap-xs ${getCategoryColor(file.category)} text-white cursor-pointer hover:opacity-80 transition-opacity`}
                       onClick={(e) => {
                         e.stopPropagation();
                         onView(file);
@@ -253,7 +253,7 @@ export default function CalendarView({
 
       {/* Selected Date Details */}
       {selectedDate && (
-        <div className="border-t border-gray-200 p-4">
+        <div className="border-t border-gray-200 p-md">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-lg font-medium text-gray-900">
               {format(selectedDate, 'EEEE, MMMM d, yyyy')}
@@ -262,15 +262,15 @@ export default function CalendarView({
               size="sm"
               onClick={() => onDateSelect(selectedDate)}
             >
-              <Plus className="w-4 h-4 mr-2" />
+              <Plus className="w-icon-xs h-icon-xs mr-2" />
               Add File
             </Button>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-sm">
             {getFilesForDate(selectedDate).length === 0 ? (
-              <div className="text-center py-8 text-gray-500">
-                <CalendarIcon className="w-12 h-12 mx-auto mb-4 opacity-50" />
+              <div className="text-center py-xl text-gray-500">
+                <CalendarIcon className="w-icon-2xl h-icon-2xl mx-auto mb-4 opacity-50" />
                 <p>No files for this date</p>
               </div>
             ) : (
@@ -278,11 +278,11 @@ export default function CalendarView({
                 const CategoryIcon = getCategoryIcon(file.category);
 
                 return (
-                  <Card key={file.id} className="p-4 hover:shadow-md transition-shadow">
+                  <Card key={file.id} className="p-md hover:shadow-md transition-shadow">
                     <div className="flex items-start justify-between">
-                      <div className="flex items-start gap-3 flex-1">
-                        <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
-                          <CategoryIcon className="w-5 h-5 text-gray-600" />
+                      <div className="flex items-start gap-sm flex-1">
+                        <div className="w-icon-xl h-icon-xl rounded-lg bg-gray-100 flex items-center justify-center flex-shrink-0">
+                          <CategoryIcon className="w-icon-sm h-icon-sm text-gray-600" />
                         </div>
 
                         <div className="flex-1 min-w-0">
@@ -295,17 +295,17 @@ export default function CalendarView({
                             </p>
                           )}
 
-                          <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
+                          <div className="flex items-center gap-md mt-2 text-xs text-gray-500">
                             <span>{formatFileSize(file.file_size || 0)}</span>
                             <span>•</span>
-                            <div className="flex items-center gap-1">
+                            <div className="flex items-center gap-xs">
                               <Clock className="w-3 h-3" />
                               <span>{format(new Date(file.updated_at), 'h:mm a')}</span>
                             </div>
                           </div>
 
                           {file.tags && file.tags.length > 0 && (
-                            <div className="flex flex-wrap gap-1 mt-2">
+                            <div className="flex flex-wrap gap-xs mt-2">
                               {file.tags.map((tag, index) => (
                                 <Badge key={index} variant="outline" className="text-xs">
                                   {tag}
@@ -319,24 +319,24 @@ export default function CalendarView({
                       <DropdownMenu>
                         <DropdownMenu.Trigger asChild>
                           <Button variant="ghost" size="sm">
-                            <ChevronRight className="w-4 h-4" />
+                            <ChevronRight className="w-icon-xs h-icon-xs" />
                           </Button>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content align="end">
                           <DropdownMenu.Item onClick={() => onView(file)}>
-                            <Eye className="w-4 h-4 mr-2" />
+                            <Eye className="w-icon-xs h-icon-xs mr-2" />
                             View
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onEdit(file)}>
-                            <Edit className="w-4 h-4 mr-2" />
+                            <Edit className="w-icon-xs h-icon-xs mr-2" />
                             Edit
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onDownload(file)}>
-                            <Download className="w-4 h-4 mr-2" />
+                            <Download className="w-icon-xs h-icon-xs mr-2" />
                             Download
                           </DropdownMenu.Item>
                           <DropdownMenu.Item onClick={() => onShare(file)}>
-                            <Share className="w-4 h-4 mr-2" />
+                            <Share className="w-icon-xs h-icon-xs mr-2" />
                             Share
                           </DropdownMenu.Item>
                           <DropdownMenu.Separator />
@@ -344,7 +344,7 @@ export default function CalendarView({
                             onClick={() => onDelete(file)}
                             className="text-red-600"
                           >
-                            <Trash2 className="w-4 h-4 mr-2" />
+                            <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                             Delete
                           </DropdownMenu.Item>
                         </DropdownMenu.Content>

@@ -129,25 +129,25 @@ export function KanbanView<T extends ProgrammingEntity>({
       >
         <CardHeader className="pb-3">
           <div className="flex items-start justify-between">
-            <CardTitle className="text-sm line-clamp-2 flex-1">
+            <CardTitle className="text-sm line-clamp-xs flex-1">
               {item.title || 'Untitled'}
             </CardTitle>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
                   <MoreHorizontal className="h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 {onView && (
                   <DropdownMenuItem onClick={() => onView(item)}>
-                    <Eye className="h-4 w-4 mr-2" />
+                    <Eye className="h-icon-xs w-icon-xs mr-2" />
                     View
                   </DropdownMenuItem>
                 )}
                 {onEdit && (
                   <DropdownMenuItem onClick={() => onEdit(item)}>
-                    <Edit className="h-4 w-4 mr-2" />
+                    <Edit className="h-icon-xs w-icon-xs mr-2" />
                     Edit
                   </DropdownMenuItem>
                 )}
@@ -156,7 +156,7 @@ export function KanbanView<T extends ProgrammingEntity>({
                     onClick={() => onDelete(item)}
                     className="text-red-600"
                   >
-                    <Trash2 className="h-4 w-4 mr-2" />
+                    <Trash2 className="h-icon-xs w-icon-xs mr-2" />
                     Delete
                   </DropdownMenuItem>
                 )}
@@ -165,9 +165,9 @@ export function KanbanView<T extends ProgrammingEntity>({
           </div>
         </CardHeader>
         <CardContent className="pt-0">
-          <div className="space-y-2">
+          <div className="space-y-xs">
             {item.description && (
-              <p className="text-xs text-gray-600 line-clamp-2">
+              <p className="text-xs text-gray-600 line-clamp-xs">
                 {item.description}
               </p>
             )}
@@ -210,14 +210,14 @@ export function KanbanView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`flex gap-6 overflow-x-auto pb-4 ${className}`}>
+      <div className={`flex gap-lg overflow-x-auto pb-4 ${className}`}>
         {columns.map((column) => (
-          <div key={column.id} className="flex-shrink-0 w-80">
-            <div className="bg-gray-50 rounded-lg p-4">
-              <div className="h-6 bg-gray-200 animate-pulse rounded mb-4" />
-              <div className="space-y-3">
+          <div key={column.id} className="flex-shrink-0 w-container-md">
+            <div className="bg-gray-50 rounded-lg p-md">
+              <div className="h-icon-md bg-gray-200 animate-pulse rounded mb-4" />
+              <div className="space-y-sm">
                 {Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="h-24 bg-gray-200 animate-pulse rounded" />
+                  <div key={i} className="h-component-lg bg-gray-200 animate-pulse rounded" />
                 ))}
               </div>
             </div>
@@ -229,14 +229,14 @@ export function KanbanView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className={`flex gap-6 overflow-x-auto pb-4 ${className}`}>
+    <div className={`flex gap-lg overflow-x-auto pb-4 ${className}`}>
       {columns.map((column) => {
         const columnItems = groupedData[column.id] || [];
         const isDraggedOver = draggedOverColumn === column.id;
@@ -244,19 +244,19 @@ export function KanbanView<T extends ProgrammingEntity>({
         return (
           <div
             key={column.id}
-            className={`flex-shrink-0 w-80 ${
+            className={`flex-shrink-0 w-container-md ${
               isDraggedOver ? 'bg-blue-50 border-blue-300' : 'bg-gray-50'
             } rounded-lg transition-colors`}
             onDragOver={(e) => handleDragOver(e, column.id)}
             onDragLeave={handleDragLeave}
             onDrop={(e) => handleDrop(e, column.id)}
           >
-            <div className="p-4 border-b border-gray-200">
+            <div className="p-md border-b border-gray-200">
               <div className="flex items-center justify-between">
                 <h3 className="font-medium text-gray-900">
                   {column.title}
                 </h3>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-xs">
                   <Badge variant="secondary" className="text-xs">
                     {columnItems.length}
                   </Badge>
@@ -265,7 +265,7 @@ export function KanbanView<T extends ProgrammingEntity>({
                       variant="ghost"
                       size="sm"
                       onClick={() => onAddItem(column.id)}
-                      className="h-6 w-6 p-0"
+                      className="h-icon-md w-icon-md p-0"
                     >
                       <Plus className="h-3 w-3" />
                     </Button>
@@ -274,7 +274,7 @@ export function KanbanView<T extends ProgrammingEntity>({
               </div>
             </div>
 
-            <div className="p-4 space-y-3 min-h-[400px]">
+            <div className="p-md space-y-sm min-h-content-lg">
               {columnItems.map((item) => (
                 <div key={item.id}>
                   {renderCard ? renderCard(item, column.id) : defaultRenderCard(item, column.id)}
@@ -282,7 +282,7 @@ export function KanbanView<T extends ProgrammingEntity>({
               ))}
 
               {columnItems.length === 0 && (
-                <div className="text-center py-8 text-gray-500 text-sm">
+                <div className="text-center py-xl text-gray-500 text-sm">
                   No items in {column.title.toLowerCase()}
                 </div>
               )}

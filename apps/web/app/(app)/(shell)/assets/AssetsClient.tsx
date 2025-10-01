@@ -203,7 +203,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
           <p className="text-body-sm color-muted">Comprehensive asset inventory, tracking, and management system</p>
         </div>
         <Button className="flex items-center gap-sm">
-          <Plus className="w-4 h-4" />
+          <Plus className="w-icon-xs h-icon-xs" />
           Add Asset
         </Button>
       </div>
@@ -230,7 +230,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                   : 'color-muted hover:color-foreground'
               }`}
             >
-              <Icon className="w-4 h-4" />
+              <Icon className="w-icon-xs h-icon-xs" />
               {tab.label}
             </button>
           );
@@ -255,7 +255,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-body-sm form-label color-muted">Total Assets</p>
                         <p className="text-heading-3 text-heading-3">{stats.totalAssets}</p>
                       </div>
-                      <Package className="w-8 h-8 color-accent" />
+                      <Package className="w-icon-lg h-icon-lg color-accent" />
                     </div>
                   </div>
                 </Card>
@@ -266,7 +266,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-body-sm form-label color-muted">Active Assignments</p>
                         <p className="text-heading-3 text-heading-3">{stats.activeAssignments}</p>
                       </div>
-                      <TrendingUp className="w-8 h-8 color-success" />
+                      <TrendingUp className="w-icon-lg h-icon-lg color-success" />
                     </div>
                   </div>
                 </Card>
@@ -277,7 +277,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-body-sm form-label color-muted">Maintenance Required</p>
                         <p className="text-heading-3 text-heading-3">{stats.maintenanceRequired}</p>
                       </div>
-                      <AlertTriangle className="w-8 h-8 color-warning" />
+                      <AlertTriangle className="w-icon-lg h-icon-lg color-warning" />
                     </div>
                   </div>
                 </Card>
@@ -288,7 +288,7 @@ export default function AssetsClient({ orgId }: AssetsClientProps) {
                         <p className="text-body-sm form-label color-muted">Total Value</p>
                         <p className="text-heading-3 text-heading-3">{formatCurrency(stats.totalValue)}</p>
                       </div>
-                      <BarChart3 className="w-8 h-8 color-secondary" />
+                      <BarChart3 className="w-icon-lg h-icon-lg color-secondary" />
                     </div>
                   </div>
                 </Card>

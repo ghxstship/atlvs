@@ -136,19 +136,19 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
   const getEventIcon = (type: string) => {
     switch (type) {
       case 'hire':
-        return <User className="h-5 w-5 text-green-600" />;
+        return <User className="h-icon-sm w-icon-sm text-green-600" />;
       case 'promotion':
-        return <TrendingUp className="h-5 w-5 text-blue-600" />;
+        return <TrendingUp className="h-icon-sm w-icon-sm text-blue-600" />;
       case 'review':
-        return <Calendar className="h-5 w-5 text-purple-600" />;
+        return <Calendar className="h-icon-sm w-icon-sm text-purple-600" />;
       case 'training':
-        return <BookOpen className="h-5 w-5 text-orange-600" />;
+        return <BookOpen className="h-icon-sm w-icon-sm text-orange-600" />;
       case 'achievement':
-        return <Award className="h-5 w-5 text-yellow-600" />;
+        return <Award className="h-icon-sm w-icon-sm text-yellow-600" />;
       case 'termination':
-        return <User className="h-5 w-5 text-red-600" />;
+        return <User className="h-icon-sm w-icon-sm text-red-600" />;
       default:
-        return <Calendar className="h-5 w-5 text-gray-600" />;
+        return <Calendar className="h-icon-sm w-icon-sm text-gray-600" />;
     }
   };
 
@@ -175,14 +175,14 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
     return (
       <div
         key={event.id}
-        className="relative flex items-start space-x-4 pb-8"
+        className="relative flex items-start space-x-md pb-8"
       >
         {/* Timeline line */}
-        <div className="absolute left-6 top-12 bottom-0 w-0.5 bg-gray-200"></div>
+        <div className="absolute left-6 top-xsxl bottom-0 w-0.5 bg-gray-200"></div>
 
         {/* Event icon */}
         <div className={cn(
-          "relative z-10 flex h-12 w-12 items-center justify-center rounded-full border-2",
+          "relative z-10 flex h-icon-2xl w-icon-2xl items-center justify-center rounded-full border-2",
           getEventColor(event.type)
         )}>
           {getEventIcon(event.type)}
@@ -192,7 +192,7 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
         <div className="flex-1 min-w-0">
           <div
             onClick={() => onEventClick?.(event)}
-            className="cursor-pointer hover:bg-gray-50 p-4 rounded-lg border border-gray-200 transition-colors"
+            className="cursor-pointer hover:bg-gray-50 p-md rounded-lg border border-gray-200 transition-colors"
           >
             <div className="flex items-start justify-between">
               <div className="flex-1">
@@ -209,7 +209,7 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
                     onPersonClick?.(event.person);
                   }}
                 >
-                  <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-semibold mr-2">
+                  <div className="w-icon-md h-icon-md bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xs font-semibold mr-2">
                     {event.person.first_name?.[0]}{event.person.last_name?.[0]}
                   </div>
                   <span className="text-sm text-gray-700">
@@ -224,11 +224,11 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
 
                 {/* Metadata */}
                 {event.metadata && (
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <div className="flex flex-wrap gap-xs mt-2">
                     {Object.entries(event.metadata).map(([key, value]) => (
                       <span
                         key={key}
-                        className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-gray-100 text-gray-700"
+                        className="inline-flex items-center px-xs py-xs rounded-full text-xs bg-gray-100 text-gray-700"
                       >
                         {key}: {String(value)}
                       </span>
@@ -262,7 +262,7 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
   const renderGroup = (groupKey: string, events: TimelineEvent[]) => {
     return (
       <div key={groupKey} className="mb-8">
-        <h3 className="text-lg font-semibold text-gray-900 mb-6 sticky top-0 bg-white py-2 border-b border-gray-200">
+        <h3 className="text-lg font-semibold text-gray-900 mb-6 sticky top-0 bg-white py-xs border-b border-gray-200">
           {groupKey}
           <span className="ml-2 text-sm font-normal text-gray-500">
             ({events.length} event{events.length !== 1 ? 's' : ''})
@@ -280,18 +280,18 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
     <div className={cn("w-full", className)}>
       {/* Controls */}
       <div className="flex items-center justify-between mb-6">
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-md">
           <h2 className="text-2xl font-bold text-gray-900">Team Timeline</h2>
           <span className="text-sm text-gray-500">
             {allEvents.length} events across {Object.keys(groupedEvents).length} {groupByPerson ? 'people' : 'periods'}
           </span>
         </div>
 
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-xs">
           <button
             onClick={() => {/* toggle groupByPerson */}}
             className={cn(
-              "px-3 py-1 text-sm rounded",
+              "px-sm py-xs text-sm rounded",
               groupByPerson
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -303,10 +303,10 @@ const PeopleTimelineView: React.FC<TimelineViewProps> = ({
       </div>
 
       {/* Timeline */}
-      <div className="space-y-8">
+      <div className="space-y-xl">
         {Object.keys(groupedEvents).length === 0 ? (
-          <div className="text-center py-12">
-            <Calendar className="h-12 w-12 text-gray-400 mx-auto mb-4" />
+          <div className="text-center py-xsxl">
+            <Calendar className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-medium text-gray-900 mb-2">No timeline events</h3>
             <p className="text-gray-500">Events will appear here as team members join and milestones are achieved.</p>
           </div>

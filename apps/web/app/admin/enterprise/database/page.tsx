@@ -21,11 +21,11 @@ export default function DatabasePage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Database Health</CardTitle>
-            <Database className="h-4 w-4 text-muted-foreground" />
+            <Database className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="flex items-center cluster-sm">
-              <CheckCircle className="h-4 w-4 color-success" />
+              <CheckCircle className="h-icon-xs w-icon-xs color-success" />
               <span className="text-2xl font-bold">Healthy</span>
             </div>
             <p className="text-xs text-muted-foreground">All systems operational</p>
@@ -35,7 +35,7 @@ export default function DatabasePage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Storage Usage</CardTitle>
-            <HardDrive className="h-4 w-4 text-muted-foreground" />
+            <HardDrive className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">68%</div>
@@ -47,7 +47,7 @@ export default function DatabasePage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Last Backup</CardTitle>
-            <Clock className="h-4 w-4 text-muted-foreground" />
+            <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">2h ago</div>
@@ -58,11 +58,11 @@ export default function DatabasePage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-sm">
             <CardTitle className="text-sm font-medium">Recovery Status</CardTitle>
-            <Shield className="h-4 w-4 text-muted-foreground" />
+            <Shield className="h-icon-xs w-icon-xs text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="flex items-center cluster-sm">
-              <CheckCircle className="h-4 w-4 color-success" />
+              <CheckCircle className="h-icon-xs w-icon-xs color-success" />
               <span className="text-2xl font-bold">Ready</span>
             </div>
             <p className="text-xs text-muted-foreground">RTO: 15min, RPO: 1h</p>
@@ -140,21 +140,21 @@ export default function DatabasePage() {
         <CardContent>
           <div className="stack-md">
             <div className="flex items-start cluster-sm">
-              <CheckCircle className="h-5 w-5 color-success mt-0.5" />
+              <CheckCircle className="h-icon-sm w-icon-sm color-success mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">Backup completed successfully</p>
                 <p className="text-xs text-muted-foreground">2 hours ago • Full database backup</p>
               </div>
             </div>
             <div className="flex items-start cluster-sm">
-              <AlertCircle className="h-5 w-5 color-warning mt-0.5" />
+              <AlertCircle className="h-icon-sm w-icon-sm color-warning mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">High query volume detected</p>
                 <p className="text-xs text-muted-foreground">4 hours ago • Performance monitoring</p>
               </div>
             </div>
             <div className="flex items-start cluster-sm">
-              <CheckCircle className="h-5 w-5 color-success mt-0.5" />
+              <CheckCircle className="h-icon-sm w-icon-sm color-success mt-0.5" />
               <div className="flex-1">
                 <p className="text-sm font-medium">Recovery test completed</p>
                 <p className="text-xs text-muted-foreground">1 day ago • Disaster recovery validation</p>

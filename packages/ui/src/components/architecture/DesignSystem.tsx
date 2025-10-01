@@ -328,7 +328,7 @@ export const DesignSystemGuide: React.FC = () => {
         {Object.entries(colors).map(([shade, value]) => (
           <div key={shade} className="text-center">
             <div
-              className="w-full h-16 rounded-md border shadow-surface mb-sm"
+              className="w-full h-component-md rounded-md border shadow-surface mb-sm"
               style={{ backgroundColor: value }}
             />
             <div className="text-xs">
@@ -345,7 +345,7 @@ export const DesignSystemGuide: React.FC = () => {
     <div className="space-y-md">
       {Object.entries(DesignTokens.typography.fontSize).map(([size, [fontSize, config]]) => (
         <div key={size} className="flex items-center gap-md">
-          <div className="w-16 text-sm text-muted-foreground">{size}</div>
+          <div className="w-component-md text-sm text-muted-foreground">{size}</div>
           <div style={{ fontSize: fontSize as string }} className="flex-1">
             The quick brown fox jumps over the lazy dog
           </div>
@@ -361,9 +361,9 @@ export const DesignSystemGuide: React.FC = () => {
     <div className="space-y-sm">
       {Object.entries(DesignTokens.spacing).map(([name, value]) => (
         <div key={name} className="flex items-center gap-md">
-          <div className="w-8 text-sm text-muted-foreground">{name}</div>
+          <div className="w-icon-lg text-sm text-muted-foreground">{name}</div>
           <div
-            className="bg-accent/30 h-4"
+            className="bg-accent/30 h-icon-xs"
             style={{ width: value }}
           />
           <div className="text-xs text-muted-foreground">{value}</div>
@@ -475,7 +475,7 @@ export const DesignSystemGuide: React.FC = () => {
   return (
     <div className="flex h-screen bg-background">
       {/* Sidebar */}
-      <div className="w-64 bg-card border-r border-border">
+      <div className="w-container-sm bg-card border-r border-border">
         <div className="p-lg border-b border-border">
           <h2 className="text-xl font-bold">Design System</h2>
           <p className="text-sm text-muted-foreground">GHXSTSHIP Component Library</p>

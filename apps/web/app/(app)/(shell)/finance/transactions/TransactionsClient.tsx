@@ -209,14 +209,14 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
   const getStatusIcon = (status: string) => {
     switch (status) {
       case 'pending':
-        return <Clock className="h-4 w-4 color-warning" />;
+        return <Clock className="h-icon-xs w-icon-xs color-warning" />;
       case 'completed':
-        return <CheckCircle className="h-4 w-4 color-success" />;
+        return <CheckCircle className="h-icon-xs w-icon-xs color-success" />;
       case 'failed':
       case 'cancelled':
-        return <AlertTriangle className="h-4 w-4 color-destructive" />;
+        return <AlertTriangle className="h-icon-xs w-icon-xs color-destructive" />;
       default:
-        return <Clock className="h-4 w-4 color-muted" />;
+        return <Clock className="h-icon-xs w-icon-xs color-muted" />;
     }
   };
 
@@ -348,15 +348,15 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
     return (
       <div className="stack-lg">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-lg w-container-xs" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-4 w-32 mb-sm" />
-              <Skeleton className="h-6 w-24 mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-xs w-component-xl mb-sm" />
+              <Skeleton className="h-icon-md w-component-lg mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -376,7 +376,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
           <div className="flex items-center cluster-sm">
             <ViewSwitcher />
             <Button onClick={handleCreateTransaction}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Transaction
             </Button>
           </div>
@@ -386,7 +386,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
         <div className="flex flex-wrap items-center gap-md">
           {/* Search */}
           <div className="relative">
-            <Search className="h-4 w-4 absolute left-3 top-1/2 transform -translate-y-1/2 color-foreground/50" />
+            <Search className="h-icon-xs w-icon-xs absolute left-3 top-xs/2 transform -translate-y-1/2 color-foreground/50" />
             <input
               type="text"
               placeholder="Search transactions..."
@@ -435,7 +435,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 <p className="text-body-sm color-foreground/70">Total Transactions</p>
                 <p className="text-heading-3 text-heading-3 color-foreground">{transactions.length}</p>
               </div>
-              <ArrowUpDown className="h-8 w-8 color-accent" />
+              <ArrowUpDown className="h-icon-lg w-icon-lg color-accent" />
             </div>
           </Card>
           
@@ -448,7 +448,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 </p>
                 <p className="text-body-sm color-foreground/60">{kindCounts.debit} transactions</p>
               </div>
-              <ArrowDown className="h-8 w-8 color-destructive" />
+              <ArrowDown className="h-icon-lg w-icon-lg color-destructive" />
             </div>
           </Card>
           
@@ -461,7 +461,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 </p>
                 <p className="text-body-sm color-foreground/60">{kindCounts.credit} transactions</p>
               </div>
-              <ArrowUp className="h-8 w-8 color-success" />
+              <ArrowUp className="h-icon-lg w-icon-lg color-success" />
             </div>
           </Card>
           
@@ -474,7 +474,7 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                 </p>
                 <p className="text-body-sm color-foreground/60">Credits - Debits</p>
               </div>
-              <DollarSign className="h-8 w-8 color-secondary" />
+              <DollarSign className="h-icon-lg w-icon-lg color-secondary" />
             </div>
           </Card>
         </div>
@@ -490,9 +490,9 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
                     <div className="flex items-center cluster">
                       <div className="flex items-center cluster-sm">
                         {txData.kind === 'credit' ? (
-                          <ArrowUp className="h-5 w-5 color-success" />
+                          <ArrowUp className="h-icon-sm w-icon-sm color-success" />
                         ) : (
-                          <ArrowDown className="h-5 w-5 color-destructive" />
+                          <ArrowDown className="h-icon-sm w-icon-sm color-destructive" />
                         )}
                         {getStatusIcon(txData.status)}
                       </div>
@@ -549,12 +549,12 @@ export default function TransactionsClient({ user, orgId, translations }: Transa
 
         {/* Empty State */}
         {transactions.length === 0 && (
-          <Card className="p-2xl text-center">
-            <ArrowUpDown className="h-12 w-12 mx-auto mb-md color-foreground/30" />
+          <Card className="p-xsxl text-center">
+            <ArrowUpDown className="h-icon-2xl w-icon-2xl mx-auto mb-md color-foreground/30" />
             <h3 className="text-body text-heading-4 color-foreground mb-sm">No transactions found</h3>
             <p className="color-foreground/70 mb-md">Start tracking your financial transactions</p>
             <Button onClick={handleCreateTransaction}>
-              <Plus className="h-4 w-4 mr-sm" />
+              <Plus className="h-icon-xs w-icon-xs mr-sm" />
               Add Transaction
             </Button>
           </Card>

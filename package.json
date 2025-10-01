@@ -30,6 +30,10 @@
     "validate:tokens": "node packages/config/validate-tokens.js",
     "fix:colors": "tsx scripts/fix-hardcoded-colors.ts apps/web",
     "fix:colors:all": "tsx scripts/fix-hardcoded-colors.ts .",
+    "brand:create": "bash branding/scripts/create-brand.sh",
+    "brand:build": "bash branding/scripts/build-brand.sh",
+    "brand:switch": "bash branding/scripts/switch-brand.sh",
+    "brand:list": "ls -1 branding/config/*.brand.json | xargs -n 1 basename | sed 's/.brand.json//'",
     "prepare": "husky install"
   },
   "devDependencies": {

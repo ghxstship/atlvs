@@ -111,7 +111,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
         aria-label="Add History Entry" 
         title="Add History Entry"
       >
-        <Plus className="mr-xs h-4 w-4" /> Add History Entry
+        <Plus className="mr-xs h-icon-xs w-icon-xs" /> Add History Entry
       </Button>
       <Drawer 
         open={open} 
@@ -172,7 +172,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="description" className="text-body-sm form-label">Description</label>
             <textarea 
               id="description" 
-              className="rounded border  px-md py-xs min-h-[80px]" 
+              className="rounded border  px-md py-xs min-h-header-sm" 
               value={form.getValues('description') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('description', e.target.value, { shouldDirty: true })} 
               placeholder="Describe your role, responsibilities, or what this entry involved..."
@@ -237,7 +237,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="skills_gained" className="text-body-sm form-label">Skills Gained (comma-separated)</label>
             <textarea 
               id="skills_gained" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('skills_gained') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('skills_gained', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Project Management, Leadership, Python, React"
@@ -248,7 +248,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="achievements" className="text-body-sm form-label">Key Achievements (comma-separated)</label>
             <textarea 
               id="achievements" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('achievements') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('achievements', e.target.value, { shouldDirty: true })} 
               placeholder="e.g. Increased sales by 25%, Led team of 10, Launched new product"
@@ -259,7 +259,7 @@ export default function CreateHistoryEntryClient({ orgId, userId }: { orgId: str
             <label htmlFor="references" className="text-body-sm form-label">References</label>
             <textarea 
               id="references" 
-              className="rounded border  px-md py-xs min-h-[60px]" 
+              className="rounded border  px-md py-xs min-h-toolbar" 
               value={form.getValues('references') || ''} 
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => form.setValue('references', e.target.value, { shouldDirty: true })} 
               placeholder="Contact information for references..."

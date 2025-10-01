@@ -198,21 +198,21 @@ export default function FileListView({
  size="sm"
  onClick={() => onDownload(file)}
  >
- <Download className="h-4 w-4" />
+ <Download className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onShare(file)}
  >
- <Share2 className="h-4 w-4" />
+ <Share2 className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(file)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
@@ -220,7 +220,7 @@ export default function FileListView({
  onClick={() => onDelete(file)}
  className="text-destructive"
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </td>

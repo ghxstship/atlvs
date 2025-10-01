@@ -342,12 +342,12 @@ ${inviterName}`;
   ];
 
   return (
-    <div className="container mx-auto max-w-6xl space-y-6 p-6">
+    <div className="container mx-auto max-w-6xl space-y-lg p-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-md">
           <Button variant="ghost" size="sm" onClick={handleCancel}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
             Cancel
           </Button>
           <div>
@@ -363,9 +363,9 @@ ${inviterName}`;
 
       {/* Success/Error Messages */}
       {success && (
-        <Card className="p-4 bg-green-50 border-green-200">
-          <div className="flex items-center gap-3">
-            <CheckCircle className="h-5 w-5 text-green-600" />
+        <Card className="p-md bg-green-50 border-green-200">
+          <div className="flex items-center gap-sm">
+            <CheckCircle className="h-icon-sm w-icon-sm text-green-600" />
             <p className="text-green-800">{success}</p>
           </div>
         </Card>
@@ -373,28 +373,28 @@ ${inviterName}`;
 
       {/* Form */}
       <form onSubmit={handleSubmit}>
-        <Card className="p-6">
+        <Card className="p-lg">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-3">
-              <TabsTrigger value="basic" className="flex items-center gap-2">
-                <UserPlus className="h-4 w-4" />
+              <TabsTrigger value="basic" className="flex items-center gap-xs">
+                <UserPlus className="h-icon-xs w-icon-xs" />
                 Basic Info
               </TabsTrigger>
-              <TabsTrigger value="collaboration" className="flex items-center gap-2">
-                <Users className="h-4 w-4" />
+              <TabsTrigger value="collaboration" className="flex items-center gap-xs">
+                <Users className="h-icon-xs w-icon-xs" />
                 Collaboration
               </TabsTrigger>
-              <TabsTrigger value="invitation" className="flex items-center gap-2">
-                <Mail className="h-4 w-4" />
+              <TabsTrigger value="invitation" className="flex items-center gap-xs">
+                <Mail className="h-icon-xs w-icon-xs" />
                 Invitation
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="basic" className="space-y-6 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <UserPlus className="h-5 w-5" />
+            <TabsContent value="basic" className="space-y-lg mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <UserPlus className="h-icon-sm w-icon-sm" />
                     Personal Information
                   </h3>
 
@@ -440,9 +440,9 @@ ${inviterName}`;
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Building className="h-5 w-5" />
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <Building className="h-icon-sm w-icon-sm" />
                     Professional Information
                   </h3>
 
@@ -495,11 +495,11 @@ ${inviterName}`;
               </div>
             </TabsContent>
 
-            <TabsContent value="collaboration" className="space-y-6 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Users className="h-5 w-5" />
+            <TabsContent value="collaboration" className="space-y-lg mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <Users className="h-icon-sm w-icon-sm" />
                     Collaboration Setup
                   </h3>
 
@@ -560,13 +560,13 @@ ${inviterName}`;
                   )}
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <FileText className="h-5 w-5" />
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <FileText className="h-icon-sm w-icon-sm" />
                     Access & Permissions
                   </h3>
 
-                  <div className="p-4 bg-blue-50 border border-blue-200 rounded-md">
+                  <div className="p-md bg-blue-50 border border-blue-200 rounded-md">
                     <h4 className="font-medium text-blue-900 mb-2">Role Permissions</h4>
                     <div className="text-sm text-blue-800">
                       {formData.role === 'client' && 'Can view project progress, submit feedback, and communicate with the team.'}
@@ -582,7 +582,7 @@ ${inviterName}`;
                     </div>
                   </div>
 
-                  <div className="p-4 bg-green-50 border border-green-200 rounded-md">
+                  <div className="p-md bg-green-50 border border-green-200 rounded-md">
                     <h4 className="font-medium text-green-900 mb-2">Billing Impact</h4>
                     <div className="text-sm text-green-800">
                       External collaborators do not count against your organization's billing seats.
@@ -593,11 +593,11 @@ ${inviterName}`;
               </div>
             </TabsContent>
 
-            <TabsContent value="invitation" className="space-y-6 mt-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Mail className="h-5 w-5" />
+            <TabsContent value="invitation" className="space-y-lg mt-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <Mail className="h-icon-sm w-icon-sm" />
                     Invitation Details
                   </h3>
 
@@ -631,13 +631,13 @@ ${inviterName}`;
                   </div>
                 </div>
 
-                <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
-                    <Send className="h-5 w-5" />
+                <div className="space-y-md">
+                  <h3 className="text-lg font-semibold mb-4 flex items-center gap-xs">
+                    <Send className="h-icon-sm w-icon-sm" />
                     Preview
                   </h3>
 
-                  <div className="p-4 bg-gray-50 border border-gray-200 rounded-md">
+                  <div className="p-md bg-gray-50 border border-gray-200 rounded-md">
                     <h4 className="font-medium mb-2">Email Preview</h4>
                     <div className="text-sm text-gray-700 whitespace-pre-line max-h-40 overflow-y-auto">
                       {generateInvitationMessage()}
@@ -649,19 +649,19 @@ ${inviterName}`;
           </Tabs>
 
           {error && (
-            <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-md">
+            <div className="mt-6 p-md bg-red-50 border border-red-200 rounded-md">
               <p className="text-red-600 text-sm">{error}</p>
             </div>
           )}
 
           {/* Actions */}
-          <div className="flex justify-end gap-3 mt-6 pt-6 border-t">
+          <div className="flex justify-end gap-sm mt-6 pt-6 border-t">
             <Button type="button" variant="outline" onClick={handleCancel}>
-              <X className="h-4 w-4 mr-2" />
+              <X className="h-icon-xs w-icon-xs mr-2" />
               Cancel
             </Button>
             <Button type="submit" disabled={isLoading}>
-              <Send className="h-4 w-4 mr-2" />
+              <Send className="h-icon-xs w-icon-xs mr-2" />
               {isLoading ? 'Sending Invitation...' : 'Send Invitation'}
             </Button>
           </div>

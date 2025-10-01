@@ -47,15 +47,15 @@ export default function RfpGridView({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'open':
- return <FileText className="h-4 w-4" />;
+ return <FileText className="h-icon-xs w-icon-xs" />;
  case 'awarded':
- return <CheckCircle className="h-4 w-4" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs" />;
  case 'closed':
- return <Clock className="h-4 w-4" />;
+ return <Clock className="h-icon-xs w-icon-xs" />;
  case 'cancelled':
- return <XCircle className="h-4 w-4" />;
+ return <XCircle className="h-icon-xs w-icon-xs" />;
  default:
- return <FileText className="h-4 w-4" />;
+ return <FileText className="h-icon-xs w-icon-xs" />;
  }
  };
 
@@ -104,8 +104,8 @@ export default function RfpGridView({
  sortable: true,
  render: (value: string, record: JobRfp) => (
  <div className="flex items-center gap-sm">
- <div className="h-8 w-8 bg-accent/10 rounded-md flex items-center justify-center">
- <FileText className="h-4 w-4 color-accent" />
+ <div className="h-icon-lg w-icon-lg bg-accent/10 rounded-md flex items-center justify-center">
+ <FileText className="h-icon-xs w-icon-xs color-accent" />
  </div>
  <div>
  <p className="text-body-sm font-medium color-foreground">{value || 'Untitled RFP'}</p>
@@ -120,7 +120,7 @@ export default function RfpGridView({
  sortable: true,
  render: (value: string, record: JobRfp) => (
  <div className="flex items-center gap-sm">
- <div className="h-6 w-6 bg-secondary rounded-full flex items-center justify-center">
+ <div className="h-icon-md w-icon-md bg-secondary rounded-full flex items-center justify-center">
  <Building className="h-3 w-3" />
  </div>
  <div>
@@ -149,7 +149,7 @@ export default function RfpGridView({
  sortable: true,
  render: (value: number, record: JobRfp) => (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 color-success" />
+ <DollarSign className="h-icon-xs w-icon-xs color-success" />
  <div>
  <p className="text-body-sm font-semibold color-success">
  {record.budget_min && record.budget_max 
@@ -208,7 +208,7 @@ export default function RfpGridView({
  key: 'project_title',
  label: 'Project',
  render: (value: string) => (
- <p className="text-body-sm color-muted line-clamp-1 max-w-xs">
+ <p className="text-body-sm color-muted line-clamp-xs max-w-xs">
  {value || '—'}
  </p>
  )
@@ -308,7 +308,7 @@ export default function RfpGridView({
  emptyState={{
  title: 'No RFPs Found',
  description: 'No RFPs match your current filters.',
- icon: <FileText className="h-12 w-12 color-muted" />
+ icon: <FileText className="h-icon-2xl w-icon-2xl color-muted" />
  }}
  />
  );

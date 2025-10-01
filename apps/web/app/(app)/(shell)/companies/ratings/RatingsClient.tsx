@@ -70,7 +70,7 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
     return Array.from({ length: 5 }, (_, i) => (
       <Star
         key={i}
-        className={`h-4 w-4 ${
+        className={`h-icon-xs w-icon-xs ${
           i < rating ? 'fill-warning color-warning' : 'color-muted'
         }`}
       />
@@ -82,18 +82,18 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
       <div className="stack-lg">
         <div className="flex items-center justify-between">
           <div>
-            <Skeleton className="h-8 w-48" />
-            <Skeleton className="h-4 w-64 mt-sm" />
+            <Skeleton className="h-icon-lg w-container-xs" />
+            <Skeleton className="h-icon-xs w-container-sm mt-sm" />
           </div>
-          <Skeleton className="h-10 w-32" />
+          <Skeleton className="h-icon-xl w-component-xl" />
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i} className="p-lg">
-              <Skeleton className="h-6 w-32 mb-md" />
-              <Skeleton className="h-4 w-24 mb-sm" />
-              <Skeleton className="h-16 w-full mb-md" />
-              <Skeleton className="h-4 w-20" />
+              <Skeleton className="h-icon-md w-component-xl mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg mb-sm" />
+              <Skeleton className="h-component-md w-full mb-md" />
+              <Skeleton className="h-icon-xs w-component-lg" />
             </Card>
           ))}
         </div>
@@ -116,18 +116,18 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
              
               onClick={() => setCurrentView('grid')}
             >
-              <Grid className="h-4 w-4" />
+              <Grid className="h-icon-xs w-icon-xs" />
             </Button>
             <Button
               variant={currentView === 'list' ? 'primary' : 'ghost'}
              
               onClick={() => setCurrentView('list')}
             >
-              <List className="h-4 w-4" />
+              <List className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
           <Button onClick={handleCreateRating}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Rating
           </Button>
         </div>
@@ -150,14 +150,14 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
                 </div>
                 <div className="flex cluster-xs">
                   <Button variant="ghost">
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button variant="ghost">
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
-              <p className="text-body-sm color-muted mb-md line-clamp-3">
+              <p className="text-body-sm color-muted mb-md line-clamp-sm">
                 {rating.review}
               </p>
               <div className="flex items-center justify-between text-body-sm color-muted">
@@ -192,10 +192,10 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
                 </div>
                 <div className="flex cluster-xs">
                   <Button variant="ghost">
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button variant="ghost">
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
@@ -206,14 +206,14 @@ export default function RatingsClient({ user, orgId, translations }: RatingsClie
 
       {/* Empty State */}
       {ratings.length === 0 && (
-        <div className="text-center py-2xl">
-          <Building className="h-12 w-12 color-muted mx-auto mb-md" />
+        <div className="text-center py-xsxl">
+          <Building className="h-icon-2xl w-icon-2xl color-muted mx-auto mb-md" />
           <h3 className="text-body text-heading-4 mb-sm">No ratings yet</h3>
           <p className="color-muted mb-md">
             Start by adding your first company rating.
           </p>
           <Button onClick={handleCreateRating}>
-            <Plus className="h-4 w-4 mr-sm" />
+            <Plus className="h-icon-xs w-icon-xs mr-sm" />
             Add Rating
           </Button>
         </div>

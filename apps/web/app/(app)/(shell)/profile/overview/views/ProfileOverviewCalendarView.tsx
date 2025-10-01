@@ -174,16 +174,16 @@ export default function ProfileOverviewCalendarView({
  return (
  <div className="stack-lg">
  <div className="flex items-center justify-between mb-lg">
- <div className="h-8 w-48 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-container-xs bg-secondary rounded animate-pulse"></div>
  <div className="flex gap-sm">
- <div className="h-8 w-8 bg-secondary rounded animate-pulse"></div>
- <div className="h-8 w-8 bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded animate-pulse"></div>
+ <div className="h-icon-lg w-icon-lg bg-secondary rounded animate-pulse"></div>
  </div>
  </div>
  <div className="grid grid-cols-7 gap-px bg-border rounded-lg overflow-hidden">
  {Array.from({ length: 42 }).map((_, i) => (
- <div key={i} className="bg-background p-md h-24 animate-pulse">
- <div className="h-4 w-4 bg-secondary rounded mb-sm"></div>
+ <div key={i} className="bg-background p-md h-component-lg animate-pulse">
+ <div className="h-icon-xs w-icon-xs bg-secondary rounded mb-sm"></div>
  <div className="h-2 bg-secondary rounded"></div>
  </div>
  ))}
@@ -250,7 +250,7 @@ export default function ProfileOverviewCalendarView({
  size="sm"
  onClick={() => navigateMonth('prev')}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
@@ -264,7 +264,7 @@ export default function ProfileOverviewCalendarView({
  size="sm"
  onClick={() => navigateMonth('next')}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -292,7 +292,7 @@ export default function ProfileOverviewCalendarView({
  <div
  key={index}
  className={`
- bg-background p-sm h-24 cursor-pointer hover:bg-muted/50 transition-colors
+ bg-background p-sm h-component-lg cursor-pointer hover:bg-muted/50 transition-colors
  ${!calendarDay.isCurrentMonth ? 'opacity-50' : ''}
  ${calendarDay.isToday ? 'bg-accent/10' : ''}
  ${isSelected ? 'bg-accent/20 ring-2 ring-accent' : ''}
@@ -401,14 +401,14 @@ export default function ProfileOverviewCalendarView({
  ))
  ) : (
  <div className="text-center py-lg color-muted">
- <Calendar className="h-8 w-8 mx-auto mb-md opacity-50" />
+ <Calendar className="h-icon-lg w-icon-lg mx-auto mb-md opacity-50" />
  <p className="text-body-sm">No events on this date</p>
  </div>
  )}
  </div>
  ) : (
  <div className="text-center py-lg color-muted">
- <Calendar className="h-8 w-8 mx-auto mb-md opacity-50" />
+ <Calendar className="h-icon-lg w-icon-lg mx-auto mb-md opacity-50" />
  <p className="text-body-sm">Click on a date to view events</p>
  </div>
  )}
@@ -440,7 +440,7 @@ export default function ProfileOverviewCalendarView({
  {/* Empty State */}
  {profiles.length === 0 && !loading && (
  <div className="text-center py-xl">
- <User className="h-12 w-12 mx-auto mb-md color-muted" />
+ <User className="h-icon-2xl w-icon-2xl mx-auto mb-md color-muted" />
  <h3 className="text-heading-4 mb-sm">No profiles found</h3>
  <p className="color-muted">Try adjusting your search or filter criteria.</p>
  </div>

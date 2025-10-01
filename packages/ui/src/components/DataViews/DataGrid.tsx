@@ -171,7 +171,7 @@ export function DataGrid({
   const getSortIcon = useCallback((field: string) => {
     const sort = state.sorts.find(s => s.field === field);
     if (!sort) return null;
-    return sort.direction === 'asc' ? <ChevronUp className="h-4 w-4" /> : <ChevronDown className="h-4 w-4" />;
+    return sort.direction === 'asc' ? <ChevronUp className="h-icon-xs w-icon-xs" /> : <ChevronDown className="h-icon-xs w-icon-xs" />;
   }, [state.sorts]);
 
   const gridClasses = `
@@ -190,34 +190,34 @@ export function DataGrid({
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
           <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               placeholder="Search records..."
               value={state.search}
               onChange={(e: any) => actions.setSearch(e.target.value)}
-              className="pl-2xl w-64"
+              className="pl-2xl w-container-sm"
             />
           </div>
           <Button variant="ghost" >
-            <Filter className="h-4 w-4" />
+            <Filter className="h-icon-xs w-icon-xs" />
             Filters ({state.filters.length})
           </Button>
         </div>
 
         <div className="flex items-center gap-sm">
           <Button variant="ghost" >
-            <Settings className="h-4 w-4" />
+            <Settings className="h-icon-xs w-icon-xs" />
             Columns
           </Button>
           {config.exportConfig && (
             <Button variant="ghost" >
-              <Download className="h-4 w-4" />
+              <Download className="h-icon-xs w-icon-xs" />
               Export
             </Button>
           )}
           {config.importConfig && (
             <Button variant="ghost" >
-              <Upload className="h-4 w-4" />
+              <Upload className="h-icon-xs w-icon-xs" />
               Import
             </Button>
           )}
@@ -229,7 +229,7 @@ export function DataGrid({
         <table className={tableClasses}>
           <thead className={`bg-muted ${stickyHeader ? 'sticky top-0 z-10' : ''}`}>
             <tr>
-              <th className="w-12 px-md py-sm text-left">
+              <th className="w-icon-2xl px-md py-sm text-left">
                 <Checkbox
                   checked={state.selection.length === paginatedData.length && paginatedData.length > 0}
                   indeterminate={state.selection.length > 0 && state.selection.length < paginatedData.length}
@@ -250,7 +250,7 @@ export function DataGrid({
                   </div>
                 </th>
               ))}
-              <th className="w-12 px-md py-sm"></th>
+              <th className="w-icon-2xl px-md py-sm"></th>
             </tr>
           </thead>
           <tbody className="bg-background divide-y divide-border">
@@ -295,7 +295,7 @@ export function DataGrid({
                       // Show row actions menu
                     }}
                   >
-                    <MoreHorizontal className="h-4 w-4" />
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </td>
               </tr>

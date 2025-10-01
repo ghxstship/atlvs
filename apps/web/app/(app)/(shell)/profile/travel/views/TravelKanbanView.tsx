@@ -108,9 +108,9 @@ export default function TravelKanbanView({
  {KANBAN_COLUMNS.map((column) => (
  <div key={column.id} className="space-y-md">
  <div className="animate-pulse">
- <div className="h-16 bg-muted rounded-lg mb-md"></div>
+ <div className="h-component-md bg-muted rounded-lg mb-md"></div>
  {[...Array(3)].map((_, i) => (
- <div key={i} className="h-32 bg-muted rounded-lg mb-sm"></div>
+ <div key={i} className="h-component-xl bg-muted rounded-lg mb-sm"></div>
  ))}
  </div>
  </div>
@@ -122,7 +122,7 @@ export default function TravelKanbanView({
  if (records.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Plane className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <Plane className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Travel Records</h3>
  <p className="text-muted-foreground">
  Start by adding your travel history and upcoming trips.
@@ -139,7 +139,7 @@ export default function TravelKanbanView({
  return (
  <div
  key={column.id}
- className={`rounded-lg border-2 ${column.color} min-h-96`}
+ className={`rounded-lg border-2 ${column.color} min-h-container-lg`}
  onDragOver={handleDragOver}
  onDrop={(e) => handleDrop(e, column.id)}
  >
@@ -180,12 +180,12 @@ export default function TravelKanbanView({
  >
  {/* Card Header */}
  <div className="flex items-center space-x-sm mb-sm">
- <div className={`h-8 w-8 rounded-full flex items-center justify-center ${
+ <div className={`h-icon-lg w-icon-lg rounded-full flex items-center justify-center ${
  isActive ? 'bg-green-100 text-green-600' :
  isUpcoming ? 'bg-blue-100 text-blue-600' :
  'bg-gray-100 text-gray-600'
  }`}>
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  </div>
  <div className="flex-1 min-w-0">
  <h4 className="font-medium text-sm truncate">
@@ -331,7 +331,7 @@ export default function TravelKanbanView({
  // In a real implementation, this would open the create dialog
  }}
  >
- <Plus className="h-6 w-6" />
+ <Plus className="h-icon-md w-icon-md" />
  <span className="text-xs">Add New Trip</span>
  </Button>
  </Card>

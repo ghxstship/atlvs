@@ -152,9 +152,9 @@ export default function ViewJobHistoryDrawer({
  <div className="space-y-lg">
  {/* Header */}
  <div className="flex items-start gap-md">
- <Avatar className="w-16 h-16">
+ <Avatar className="w-component-md h-component-md">
  <AvatarFallback className={`bg-${getEmploymentTypeColor(entry.employment_type)}-100 text-${getEmploymentTypeColor(entry.employment_type)}-600`}>
- <Briefcase className="h-8 w-8" />
+ <Briefcase className="h-icon-lg w-icon-lg" />
  </AvatarFallback>
  </Avatar>
  
@@ -178,29 +178,29 @@ export default function ViewJobHistoryDrawer({
  <h1 className="text-xl font-bold mb-xs">{entry.job_title}</h1>
  
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Building className="h-4 w-4" />
+ <Building className="h-icon-xs w-icon-xs" />
  <span className="font-medium">{entry.company_name}</span>
  </div>
  
  {entry.department && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <Users className="h-4 w-4" />
+ <Users className="h-icon-xs w-icon-xs" />
  <span>{entry.department}</span>
  </div>
  )}
  
  {entry.location && (
  <div className="flex items-center gap-xs text-muted-foreground mb-xs">
- <MapPin className="h-4 w-4" />
+ <MapPin className="h-icon-xs w-icon-xs" />
  <span>{entry.location}</span>
  </div>
  )}
  
  <div className="flex items-center gap-xs text-muted-foreground">
- <Calendar className="h-4 w-4" />
+ <Calendar className="h-icon-xs w-icon-xs" />
  <span>{formatDateRange(entry.start_date, entry.end_date, entry.is_current)}</span>
  <span>•</span>
- <Clock className="h-4 w-4" />
+ <Clock className="h-icon-xs w-icon-xs" />
  <span>{calculateDuration(entry.start_date, entry.end_date, entry.is_current)}</span>
  </div>
  </div>
@@ -209,15 +209,15 @@ export default function ViewJobHistoryDrawer({
  {/* Actions */}
  <div className="flex gap-sm">
  <Button onClick={() => onEdit(entry)} size="sm">
- <Edit className="h-4 w-4 mr-xs" />
+ <Edit className="h-icon-xs w-icon-xs mr-xs" />
  Edit
  </Button>
  <Button variant="outline" onClick={handleShare} size="sm">
- <Share className="h-4 w-4 mr-xs" />
+ <Share className="h-icon-xs w-icon-xs mr-xs" />
  Share
  </Button>
  <Button variant="outline" onClick={handleDownload} size="sm">
- <Download className="h-4 w-4 mr-xs" />
+ <Download className="h-icon-xs w-icon-xs mr-xs" />
  Export
  </Button>
  <Button 
@@ -226,7 +226,7 @@ export default function ViewJobHistoryDrawer({
  size="sm"
  className="ml-auto"
  >
- <Trash2 className="h-4 w-4 mr-xs" />
+ <Trash2 className="h-icon-xs w-icon-xs mr-xs" />
  Delete
  </Button>
  </div>
@@ -239,28 +239,28 @@ export default function ViewJobHistoryDrawer({
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  {entry.company_size && (
  <div className="flex items-center gap-xs">
- <Building className="h-4 w-4 text-muted-foreground" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Size:</span>
  <span className="font-medium">{getCompanySizeLabel(entry.company_size)}</span>
  </div>
  )}
  {entry.industry && (
  <div className="flex items-center gap-xs">
- <Star className="h-4 w-4 text-muted-foreground" />
+ <Star className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Industry:</span>
  <span className="font-medium">{entry.industry}</span>
  </div>
  )}
  {entry.salary_range && (
  <div className="flex items-center gap-xs">
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Salary:</span>
  <span className="font-medium">{entry.salary_range}</span>
  </div>
  )}
  {entry.supervisor_name && (
  <div className="flex items-center gap-xs">
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm text-muted-foreground">Manager:</span>
  <span className="font-medium">{entry.supervisor_name}</span>
  </div>
@@ -288,7 +288,7 @@ export default function ViewJobHistoryDrawer({
  <div className="space-y-sm">
  {entry.responsibilities.map((responsibility, index) => (
  <div key={index} className="flex items-start gap-sm p-sm bg-muted rounded">
- <CheckCircle className="h-4 w-4 text-green-500 mt-0.5 flex-shrink-0" />
+ <CheckCircle className="h-icon-xs w-icon-xs text-green-500 mt-0.5 flex-shrink-0" />
  <span className="text-sm">{responsibility}</span>
  </div>
  ))}
@@ -321,7 +321,7 @@ export default function ViewJobHistoryDrawer({
  <div className="space-y-sm">
  {entry.achievements.map((achievement, index) => (
  <div key={index} className="flex items-start gap-sm p-sm bg-muted rounded">
- <Award className="h-4 w-4 text-yellow-500 mt-0.5 flex-shrink-0" />
+ <Award className="h-icon-xs w-icon-xs text-yellow-500 mt-0.5 flex-shrink-0" />
  <span className="text-sm">{achievement}</span>
  </div>
  ))}

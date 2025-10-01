@@ -244,7 +244,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
         {/* Timeline Node */}
         <div className={`
           absolute left-1/2 top-4 -translate-x-1/2 z-10
-          ${isMilestone ? 'w-4 h-4 rounded-full' : 'w-6 h-3 rounded-sm'}
+          ${isMilestone ? 'w-icon-xs h-icon-xs rounded-full' : 'w-icon-md h-3 rounded-sm'}
           ${item.color ? `bg-${item.color}-500 border-${item.color}-600` : 'bg-primary border-primary-600'}
           border-2 bg-background
         `} />
@@ -285,21 +285,21 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
                 
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-                    <Button variant="ghost" size="sm" className="h-6 w-6 p-0 opacity-0 group-hover:opacity-100">
+                    <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0 opacity-0 group-hover:opacity-100">
                       <MoreVertical className="h-3 w-3" />
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
                     <DropdownMenuItem onClick={() => onItemAction?.('view', item.data)}>
-                      <Eye className="mr-xs h-4 w-4" />
+                      <Eye className="mr-xs h-icon-xs w-icon-xs" />
                       View
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onItemAction?.('edit', item.data)}>
-                      <Edit className="mr-xs h-4 w-4" />
+                      <Edit className="mr-xs h-icon-xs w-icon-xs" />
                       Edit
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => onItemAction?.('duplicate', item.data)}>
-                      <Copy className="mr-xs h-4 w-4" />
+                      <Copy className="mr-xs h-icon-xs w-icon-xs" />
                       Duplicate
                     </DropdownMenuItem>
                     
@@ -312,7 +312,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
                           key={action.id}
                           onClick={() => action.onClick(item.data)}
                         >
-                          {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                          {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                           {action.label}
                         </DropdownMenuItem>
                       );
@@ -324,7 +324,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
                       onClick={() => onItemAction?.('delete', item.data)}
                       className="text-destructive"
                     >
-                      <Trash className="mr-xs h-4 w-4" />
+                      <Trash className="mr-xs h-icon-xs w-icon-xs" />
                       Delete
                     </DropdownMenuItem>
                   </DropdownMenuContent>
@@ -365,7 +365,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
         
         {/* Date Label */}
         <div className={`
-          w-24 text-center
+          w-component-lg text-center
           ${isEven ? 'order-first' : 'order-last'}
         `}>
           <div className={`${compact ? 'text-xs' : 'text-sm'} font-medium`}>
@@ -383,28 +383,28 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
     return (
       <div className="space-y-md">
         <div className="flex items-center justify-between">
-          <Skeleton className="h-8 w-48" />
+          <Skeleton className="h-icon-lg w-container-xs" />
           <div className="flex gap-sm">
-            <Skeleton className="h-8 w-20" />
-            <Skeleton className="h-8 w-20" />
+            <Skeleton className="h-icon-lg w-component-lg" />
+            <Skeleton className="h-icon-lg w-component-lg" />
           </div>
         </div>
         
         <div className="space-y-lg">
           {Array.from({ length: 5 }).map((_, i) => (
             <div key={i} className="relative flex items-center gap-md">
-              <div className="w-24">
-                <Skeleton className="h-4 w-16 mb-xs" />
-                <Skeleton className="h-3 w-12" />
+              <div className="w-component-lg">
+                <Skeleton className="h-icon-xs w-component-md mb-xs" />
+                <Skeleton className="h-3 w-icon-2xl" />
               </div>
               <Card className="flex-1 max-w-md">
                 <CardHeader>
-                  <Skeleton className="h-5 w-3/4 mb-xs" />
-                  <Skeleton className="h-4 w-1/2" />
+                  <Skeleton className="h-icon-sm w-3/4 mb-xs" />
+                  <Skeleton className="h-icon-xs w-1/2" />
                 </CardHeader>
                 <CardContent>
-                  <Skeleton className="h-4 w-full mb-xs" />
-                  <Skeleton className="h-4 w-2/3" />
+                  <Skeleton className="h-icon-xs w-full mb-xs" />
+                  <Skeleton className="h-icon-xs w-2/3" />
                 </CardContent>
               </Card>
             </div>
@@ -433,7 +433,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
       emptyState || (
         <Card className="p-xl">
           <div className="text-center">
-            <Clock className="h-12 w-12 mx-auto text-muted-foreground mb-md" />
+            <Clock className="h-icon-2xl w-icon-2xl mx-auto text-muted-foreground mb-md" />
             <p className="text-muted-foreground mb-sm">No timeline items found</p>
             <p className="text-sm text-muted-foreground">
               Create your first item to see it on the timeline
@@ -455,13 +455,13 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
           
           <div className="flex items-center gap-xs">
             <Button variant="outline" size="sm" onClick={() => navigate('prev')}>
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             <Button variant="outline" size="sm" onClick={goToToday}>
               Today
             </Button>
             <Button variant="outline" size="sm" onClick={() => navigate('next')}>
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
         </div>
@@ -487,7 +487,7 @@ export const UnifiedTimelineView: React.FC<UnifiedTimelineViewProps> = ({
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="outline" size="sm">
-                  <Filter className="h-4 w-4 mr-xs" />
+                  <Filter className="h-icon-xs w-icon-xs mr-xs" />
                   Categories
                   {selectedCategories.length > 0 && (
                     <Badge variant="secondary" className="ml-xs">

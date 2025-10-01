@@ -37,9 +37,9 @@ export default function ImageView({
   const [selectedItem, setSelectedItem] = useState<(null);
 
   const getFileIcon = (fileType: string) => {
-    if (fileType?.startsWith('image/')) return <Image className="h-8 w-8" />;
-    if (fileType?.startsWith('video/')) return <Video className="h-8 w-8" />;
-    return <File className="h-8 w-8" />;
+    if (fileType?.startsWith('image/')) return <Image className="h-icon-lg w-icon-lg" />;
+    if (fileType?.startsWith('video/')) return <Video className="h-icon-lg w-icon-lg" />;
+    return <File className="h-icon-lg w-icon-lg" />;
   };
 
   const getFileTypeColor = (fileType: string) => {
@@ -50,7 +50,7 @@ export default function ImageView({
 
   if (loading) {
     return (
-      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' : 'columns-2 md:columns-3 lg:columns-4 gap-4'} ${className}`}>
+      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md' : 'columns-2 md:columns-3 lg:columns-4 gap-md'} ${className}`}>
         {Array.from({ length: 12 }).map((_, i) => (
           <div key={i} className="animate-pulse break-inside-avoid mb-4">
             <div className="bg-muted rounded-lg aspect-square mb-2"></div>
@@ -64,7 +64,7 @@ export default function ImageView({
 
   if (data.length === 0) {
     return (
-      <div className={`flex items-center justify-center p-8 ${className}`}>
+      <div className={`flex items-center justify-center p-xl ${className}`}>
         <div className="text-center text-muted-foreground">
           {emptyMessage}
         </div>
@@ -74,14 +74,14 @@ export default function ImageView({
 
   return (
     <>
-      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4' : 'columns-2 md:columns-3 lg:columns-4 gap-4'} ${className}`}>
+      <div className={`${layout === 'grid' ? 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md' : 'columns-2 md:columns-3 lg:columns-4 gap-md'} ${className}`}>
         {data.map((item) => (
           <Card
             key={item.id}
             className="break-inside-avoid cursor-pointer hover:shadow-md transition-shadow group"
             onClick={() => onItemClick?.(item)}
           >
-            <CardContent className="p-3">
+            <CardContent className="p-sm">
               {/* Media Preview */}
               <div className="aspect-square bg-muted rounded-lg mb-3 flex items-center justify-center overflow-hidden">
                 {item[imageField] ? (
@@ -98,25 +98,25 @@ export default function ImageView({
                   )
                 ) : (
                   <div className="text-muted-foreground">
-                    <File className="h-8 w-8" />
+                    <File className="h-icon-lg w-icon-lg" />
                   </div>
                 )}
               </div>
 
               {/* Content */}
-              <div className="space-y-2">
-                <h3 className="font-medium text-sm line-clamp-1">
+              <div className="space-y-xs">
+                <h3 className="font-medium text-sm line-clamp-xs">
                   {item[titleField] || item.name || 'Untitled'}
                 </h3>
 
                 {item[subtitleField] && (
-                  <p className="text-xs text-muted-foreground line-clamp-2">
+                  <p className="text-xs text-muted-foreground line-clamp-xs">
                     {item[subtitleField]}
                   </p>
                 )}
 
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-xs">
                     <Badge variant="outline" className="text-xs">
                       {item.category || 'File'}
                     </Badge>
@@ -133,7 +133,7 @@ export default function ImageView({
                         variant="ghost"
                         size="sm"
                         onClick={(e) => e.stopPropagation()}
-                        className="h-6 w-6 p-0 opacity-60 hover:opacity-100"
+                        className="h-icon-md w-icon-md p-0 opacity-60 hover:opacity-100"
                       >
                         <MoreHorizontal className="h-3 w-3" />
                       </Button>
@@ -163,7 +163,7 @@ export default function ImageView({
       {/* Lightbox for full-size viewing */}
       {selectedItem && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="max-w-4xl max-h-[90vh] p-4">
+          <div className="max-w-4xl max-h-[90vh] p-md">
             {selectedItem[imageField] && selectedItem.file_type?.startsWith('image/') && (
               <img
                 src={selectedItem[imageField]}

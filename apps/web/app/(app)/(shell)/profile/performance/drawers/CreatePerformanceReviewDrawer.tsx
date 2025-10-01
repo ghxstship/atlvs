@@ -188,7 +188,7 @@ export default function CreatePerformanceReviewDrawer({
  <div className="absolute right-0 top-0 h-full w-full max-w-2xl bg-background shadow-xl">
  <div className="flex h-full flex-col">
  {/* Header */}
- <div className="flex items-center justify-between border-b p-6">
+ <div className="flex items-center justify-between border-b p-lg">
  <div>
  <h2 className="text-xl font-semibold">
  {review ? 'Edit Performance Review' : 'Create Performance Review'}
@@ -198,17 +198,17 @@ export default function CreatePerformanceReviewDrawer({
  </p>
  </div>
  <Button variant="ghost" size="sm" onClick={onClose}>
- <X className="h-4 w-4" />
+ <X className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
 
  {/* Content */}
- <div className="flex-1 overflow-y-auto p-6">
- <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+ <div className="flex-1 overflow-y-auto p-lg">
+ <form onSubmit={handleSubmit(onSubmit)} className="space-y-lg">
  {/* Basic Information */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">Basic Information</h3>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  <div>
  <Label htmlFor="reviewer_name">Reviewer Name</Label>
  <Input
@@ -290,9 +290,9 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Ratings */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">Ratings (1-5 Scale)</h3>
- <div className="grid grid-cols-2 gap-4">
+ <div className="grid grid-cols-2 gap-md">
  {[
  { key: 'overall_rating', label: 'Overall Rating' },
  { key: 'technical_skills_rating', label: 'Technical Skills' },
@@ -302,20 +302,20 @@ export default function CreatePerformanceReviewDrawer({
  ].map(({ key, label }) => (
  <div key={key}>
  <Label htmlFor={key}>{label}</Label>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Input
  id={key}
  type="number"
  min="1"
  max="5"
  {...register(key as unknown, { valueAsNumber: true })}
- className="w-20"
+ className="w-component-lg"
  />
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {[...Array(5)].map((_, i) => (
  <Star
  key={i}
- className={`h-4 w-4 cursor-pointer ${
+ className={`h-icon-xs w-icon-xs cursor-pointer ${
  i < (watch(key as unknown) || 0)
  ? 'text-yellow-500 fill-yellow-500'
  : 'text-gray-300'
@@ -331,9 +331,9 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Feedback */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">Feedback</h3>
- <div className="space-y-4">
+ <div className="space-y-md">
  <div>
  <Label htmlFor="strengths">Strengths</Label>
  <Textarea
@@ -374,17 +374,17 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Goals */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-medium">Goals</h3>
  <Button type="button" variant="outline" size="sm" onClick={addGoal}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Goal
  </Button>
  </div>
- <div className="space-y-4">
+ <div className="space-y-md">
  {goals.map((goal, index) => (
- <div key={goal.id} className="border rounded-lg p-4">
+ <div key={goal.id} className="border rounded-lg p-md">
  <div className="flex items-center justify-between mb-3">
  <h4 className="font-medium">Goal {index + 1}</h4>
  <Button
@@ -393,10 +393,10 @@ export default function CreatePerformanceReviewDrawer({
  size="sm"
  onClick={() => removeGoal(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
- <div className="grid grid-cols-2 gap-3">
+ <div className="grid grid-cols-2 gap-sm">
  <div className="col-span-2">
  <Label>Title</Label>
  <Input
@@ -439,17 +439,17 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Achievements */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between mb-4">
  <h3 className="font-medium">Achievements</h3>
  <Button type="button" variant="outline" size="sm" onClick={addAchievement}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Achievement
  </Button>
  </div>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {achievements.map((achievement, index) => (
- <div key={index} className="flex items-center gap-3">
+ <div key={index} className="flex items-center gap-sm">
  <Input
  value={achievement}
  onChange={(e) => updateAchievement(index, e.target.value)}
@@ -461,7 +461,7 @@ export default function CreatePerformanceReviewDrawer({
  size="sm"
  onClick={() => removeAchievement(index)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  ))}
@@ -469,10 +469,10 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Tags */}
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-medium mb-4">Tags</h3>
- <div className="space-y-3">
- <div className="flex items-center gap-2">
+ <div className="space-y-sm">
+ <div className="flex items-center gap-xs">
  <Input
  value={newTag}
  onChange={(e) => setNewTag(e.target.value)}
@@ -483,7 +483,7 @@ export default function CreatePerformanceReviewDrawer({
  Add
  </Button>
  </div>
- <div className="flex flex-wrap gap-2">
+ <div className="flex flex-wrap gap-xs">
  {tags.map((tag) => (
  <Badge key={tag} variant="secondary" className="cursor-pointer" onClick={() => removeTag(tag)}>
  {tag} <X className="h-3 w-3 ml-1" />
@@ -494,8 +494,8 @@ export default function CreatePerformanceReviewDrawer({
  </Card>
 
  {/* Promotion Recommendation */}
- <Card className="p-4">
- <div className="flex items-center space-x-2">
+ <Card className="p-md">
+ <div className="flex items-center space-x-xs">
  <Checkbox
  
  checked={watch('promotion_recommended')}
@@ -510,13 +510,13 @@ export default function CreatePerformanceReviewDrawer({
  </div>
 
  {/* Footer */}
- <div className="border-t p-6">
- <div className="flex items-center justify-end gap-3">
+ <div className="border-t p-lg">
+ <div className="flex items-center justify-end gap-sm">
  <Button variant="outline" onClick={onClose} disabled={loading}>
  Cancel
  </Button>
  <Button onClick={handleSubmit(onSubmit)} disabled={loading}>
- <Save className="h-4 w-4 mr-2" />
+ <Save className="h-icon-xs w-icon-xs mr-2" />
  {loading ? 'Saving...' : review ? 'Update Review' : 'Create Review'}
  </Button>
  </div>

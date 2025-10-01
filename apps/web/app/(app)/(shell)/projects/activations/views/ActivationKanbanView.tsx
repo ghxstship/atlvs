@@ -100,18 +100,18 @@ export default function ActivationKanbanView({
  {Object.entries(groupedActivations).map(([status, items]) => {
  const StatusIcon = getStatusIcon(status);
  return (
- <div key={status} className="flex-shrink-0 w-80">
+ <div key={status} className="flex-shrink-0 w-container-md">
  <div className="bg-muted rounded-lg p-sm mb-sm">
  <div className="flex items-center justify-between">
  <div className="flex items-center gap-sm">
- <StatusIcon className="h-4 w-4" />
+ <StatusIcon className="h-icon-xs w-icon-xs" />
  <h3 className="font-semibold capitalize">{status.replace("_", " ")}</h3>
  </div>
  <Badge variant={getStatusBadgeVariant(status)}>{items.length}</Badge>
  </div>
  </div>
 
- <div className="space-y-sm max-h-[calc(100vh-300px)] overflow-y-auto">
+ <div className="space-y-sm max-h-screen-minus-xl overflow-y-auto">
  {items.map((activation) => (
  <Card
  key={activation.id}
@@ -134,34 +134,34 @@ export default function ActivationKanbanView({
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(activation)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(activation)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  {status !== "planning" && (
  <DropdownMenuItem onClick={() => onStatusChange(activation, "planning")}>
- <Clock className="mr-2 h-4 w-4" />
+ <Clock className="mr-2 h-icon-xs w-icon-xs" />
  Move to Planning
  </DropdownMenuItem>
  )}
  {status !== "ready" && (
  <DropdownMenuItem onClick={() => onStatusChange(activation, "ready")}>
- <AlertCircle className="mr-2 h-4 w-4" />
+ <AlertCircle className="mr-2 h-icon-xs w-icon-xs" />
  Move to Ready
  </DropdownMenuItem>
  )}
  {status !== "active" && (
  <DropdownMenuItem onClick={() => onStatusChange(activation, "active")}>
- <Play className="mr-2 h-4 w-4" />
+ <Play className="mr-2 h-icon-xs w-icon-xs" />
  Move to Active
  </DropdownMenuItem>
  )}
  {status !== "completed" && (
  <DropdownMenuItem onClick={() => onStatusChange(activation, "completed")}>
- <CheckCircle className="mr-2 h-4 w-4" />
+ <CheckCircle className="mr-2 h-icon-xs w-icon-xs" />
  Move to Completed
  </DropdownMenuItem>
  )}
@@ -169,7 +169,7 @@ export default function ActivationKanbanView({
  onClick={() => onDelete(activation)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>

@@ -204,13 +204,13 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'new':
- return <AlertCircle className="h-4 w-4 text-blue-500" />;
+ return <AlertCircle className="h-icon-xs w-icon-xs text-blue-500" />;
  case 'in_progress':
- return <Clock className="h-4 w-4 text-yellow-500" />;
+ return <Clock className="h-icon-xs w-icon-xs text-yellow-500" />;
  case 'resolved':
- return <CheckCircle className="h-4 w-4 text-green-500" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-green-500" />;
  default:
- return <MessageSquare className="h-4 w-4 text-gray-500" />;
+ return <MessageSquare className="h-icon-xs w-icon-xs text-gray-500" />;
  }
  };
 
@@ -229,7 +229,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  return Array.from({ length: 5 }, (_, i) => (
  <Star
  key={i}
- className={`h-4 w-4 ${
+ className={`h-icon-xs w-icon-xs ${
  i < rating ? 'text-yellow-400 fill-current' : 'text-gray-300'
  }`}
  />
@@ -238,14 +238,14 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
 
  return (
  <div className={className}>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Summary Cards */}
  {summary && (
- <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Total Feedback</CardTitle>
- <MessageSquare className="h-4 w-4 text-muted-foreground" />
+ <MessageSquare className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{summary.totalFeedback}</div>
@@ -258,7 +258,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Average Rating</CardTitle>
- <Star className="h-4 w-4 text-muted-foreground" />
+ <Star className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">{summary.averageRating}/5</div>
@@ -271,7 +271,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Positive Sentiment</CardTitle>
- <ThumbsUp className="h-4 w-4 text-muted-foreground" />
+ <ThumbsUp className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold text-green-500">
@@ -286,7 +286,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  <Card>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
  <CardTitle className="text-sm font-medium">Response Rate</CardTitle>
- <Users className="h-4 w-4 text-muted-foreground" />
+ <Users className="h-icon-xs w-icon-xs text-muted-foreground" />
  </CardHeader>
  <CardContent>
  <div className="text-2xl font-bold">73%</div>
@@ -300,20 +300,20 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
 
  {/* Controls */}
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <div className="relative">
- <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+ <Search className="absolute left-2 top-xs.5 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search feedback..."
  value={searchQuery}
  onChange={(e) => setSearchQuery(e.target.value)}
- className="pl-8 w-64"
+ className="pl-8 w-container-sm"
  />
  </div>
  <select
  value={selectedType}
  onChange={(e) => setSelectedType(e.target.value)}
- className="px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+ className="px-sm py-xs border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
  >
  <option value="all">All Types</option>
  <option value="vendor">Vendor</option>
@@ -323,36 +323,36 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </select>
  </div>
  <Button onClick={() => setShowNewFeedbackForm(true)}>
- <Plus className="h-4 w-4 mr-2" />
+ <Plus className="h-icon-xs w-icon-xs mr-2" />
  Add Feedback
  </Button>
  </div>
 
  {/* Feedback Tabs */}
- <Tabs defaultValue="feedback-list" className="space-y-4">
+ <Tabs defaultValue="feedback-list" className="space-y-md">
  <TabsList>
  <TabsTrigger value="feedback-list">
- <MessageSquare className="h-4 w-4 mr-2" />
+ <MessageSquare className="h-icon-xs w-icon-xs mr-2" />
  Feedback List
  </TabsTrigger>
  <TabsTrigger value="analytics">
- <BarChart3 className="h-4 w-4 mr-2" />
+ <BarChart3 className="h-icon-xs w-icon-xs mr-2" />
  Analytics
  </TabsTrigger>
  <TabsTrigger value="trends">
- <TrendingUp className="h-4 w-4 mr-2" />
+ <TrendingUp className="h-icon-xs w-icon-xs mr-2" />
  Trends
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="feedback-list" className="space-y-4">
+ <TabsContent value="feedback-list" className="space-y-md">
  {filteredFeedback.map((item) => (
  <Card key={item.id}>
  <CardHeader>
  <div className="flex items-start justify-between">
- <div className="space-y-1">
+ <div className="space-y-xs">
  <CardTitle className="text-lg">{item.title}</CardTitle>
- <div className="flex items-center space-x-4 text-sm text-muted-foreground">
+ <div className="flex items-center space-x-md text-sm text-muted-foreground">
  <span>By {item.submittedBy}</span>
  <span>{new Date(item.submittedAt).toLocaleDateString()}</span>
  <Badge variant="outline" className="capitalize">
@@ -360,7 +360,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </Badge>
  </div>
  </div>
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  {getStatusIcon(item.status)}
  <div className="flex items-center">
  {renderStars(item.rating)}
@@ -372,16 +372,16 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  <p className="text-muted-foreground mb-4">{item.description}</p>
  
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-4">
- <div className="flex items-center space-x-1">
- <ThumbsUp className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center space-x-md">
+ <div className="flex items-center space-x-xs">
+ <ThumbsUp className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">{item.upvotes}</span>
  </div>
- <div className="flex items-center space-x-1">
- <MessageSquare className="h-4 w-4 text-muted-foreground" />
+ <div className="flex items-center space-x-xs">
+ <MessageSquare className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm">{item.responses}</span>
  </div>
- <div className="flex items-center space-x-1">
+ <div className="flex items-center space-x-xs">
  {item.tags.map((tag, index) => (
  <Badge key={index} variant="secondary" className="text-xs">
  {tag}
@@ -402,9 +402,9 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  ))}
  </TabsContent>
 
- <TabsContent value="analytics" className="space-y-4">
+ <TabsContent value="analytics" className="space-y-md">
  {summary && (
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <Card>
  <CardHeader>
  <CardTitle>Top Categories</CardTitle>
@@ -413,7 +413,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  {summary.topCategories.map((category, index) => (
  <div key={index} className="flex items-center justify-between">
  <div>
@@ -444,10 +444,10 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
- <ThumbsUp className="h-4 w-4 text-green-500" />
+ <div className="flex items-center space-x-xs">
+ <ThumbsUp className="h-icon-xs w-icon-xs text-green-500" />
  <span>Positive</span>
  </div>
  <span className="font-medium text-green-500">
@@ -455,8 +455,8 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </span>
  </div>
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
- <ThumbsDown className="h-4 w-4 text-red-500" />
+ <div className="flex items-center space-x-xs">
+ <ThumbsDown className="h-icon-xs w-icon-xs text-red-500" />
  <span>Negative</span>
  </div>
  <span className="font-medium text-red-500">
@@ -464,8 +464,8 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </span>
  </div>
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
- <div className="h-4 w-4 rounded-full bg-gray-400" />
+ <div className="flex items-center space-x-xs">
+ <div className="h-icon-xs w-icon-xs rounded-full bg-gray-400" />
  <span>Neutral</span>
  </div>
  <span className="font-medium text-gray-500">
@@ -479,7 +479,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  )}
  </TabsContent>
 
- <TabsContent value="trends" className="space-y-4">
+ <TabsContent value="trends" className="space-y-md">
  <Card>
  <CardHeader>
  <CardTitle>Feedback Trends</CardTitle>
@@ -488,9 +488,9 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="h-64 flex items-center justify-center text-muted-foreground">
+ <div className="h-container-sm flex items-center justify-center text-muted-foreground">
  <div className="text-center">
- <TrendingUp className="h-12 w-12 mx-auto mb-4 opacity-50" />
+ <TrendingUp className="h-icon-2xl w-icon-2xl mx-auto mb-4 opacity-50" />
  <p>Trend analysis and historical data</p>
  <p className="text-sm">Would integrate with analytics service</p>
  </div>
@@ -510,7 +510,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  Help us improve the procurement process
  </CardDescription>
  </CardHeader>
- <CardContent className="space-y-4">
+ <CardContent className="space-y-md">
  <div>
  <label className="text-sm font-medium">Type</label>
  <select
@@ -519,7 +519,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  ...newFeedback,
  type: e.target.value as unknown
  })}
- className="w-full mt-1 px-3 py-2 border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
+ className="w-full mt-1 px-sm py-xs border border-border rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary"
  >
  <option value="general">General</option>
  <option value="vendor">Vendor</option>
@@ -557,7 +557,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
 
  <div>
  <label className="text-sm font-medium">Rating</label>
- <div className="flex items-center space-x-1 mt-1">
+ <div className="flex items-center space-x-xs mt-1">
  {Array.from({ length: 5 }, (_, i) => (
  <button
  key={i}
@@ -568,7 +568,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  className="focus:outline-none"
  >
  <Star
- className={`h-6 w-6 ${
+ className={`h-icon-md w-icon-md ${
  i < newFeedback.rating 
  ? 'text-yellow-400 fill-current' 
  : 'text-gray-300'
@@ -579,7 +579,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  </div>
  </div>
 
- <div className="flex justify-end space-x-2 pt-4">
+ <div className="flex justify-end space-x-xs pt-4">
  <Button
  variant="outline"
  onClick={() => setShowNewFeedbackForm(false)}
@@ -587,7 +587,7 @@ export default function FeedbackClient({ className, orgId }: FeedbackClientProps
  Cancel
  </Button>
  <Button onClick={handleSubmitFeedback}>
- <Send className="h-4 w-4 mr-2" />
+ <Send className="h-icon-xs w-icon-xs mr-2" />
  Submit
  </Button>
  </div>

@@ -22,7 +22,7 @@ export const DetailDrawer: React.FC<DetailDrawerProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-black/50 flex justify-end">
-      <div className="bg-background w-96 h-full shadow-lg">
+      <div className="bg-background w-container-lg h-full shadow-lg">
         <div className="p-md border-b">
           <div className="flex justify-between items-center">
             <h2 className="text-lg font-semibold">Details</h2>

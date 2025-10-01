@@ -113,7 +113,7 @@ export function SignUpForm() {
             type="checkbox"
             id="terms"
             required
-            className="h-4 w-4 text-accent focus:ring-primary border-border rounded"
+            className="h-icon-xs w-icon-xs text-accent focus:ring-primary border-border rounded"
           />
           <label htmlFor="terms" className="form-helper leading-relaxed">
             I agree to the{' '}

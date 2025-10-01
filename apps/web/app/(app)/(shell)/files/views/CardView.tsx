@@ -106,15 +106,15 @@ export default function CardView({
 
   if (viewMode === 'list') {
     return (
-      <div className="space-y-2">
+      <div className="space-y-xs">
         {/* Bulk Actions Bar */}
         {selectedFiles.size > 0 && (
-          <Card className="p-4 bg-blue-50 border-blue-200">
+          <Card className="p-md bg-blue-50 border-blue-200">
             <div className="flex items-center justify-between">
               <span className="text-sm text-blue-700">
                 {selectedFiles.size} file(s) selected
               </span>
-              <div className="flex gap-2">
+              <div className="flex gap-xs">
                 <Button
                   size="sm"
                   variant="outline"
@@ -142,8 +142,8 @@ export default function CardView({
         )}
 
         {/* Select All */}
-        <div className="flex items-center justify-between p-2 border-b">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between p-xs border-b">
+          <div className="flex items-center gap-xs">
             <Checkbox
               checked={files.length > 0 && files.every(file => selectedFiles.has(file.id))}
               onCheckedChange={onSelectAll}
@@ -163,10 +163,10 @@ export default function CardView({
           return (
             <Card
               key={file.id}
-              className={`p-4 hover:shadow-md transition-shadow cursor-pointer ${getCategoryStyles(file.category)}`}
+              className={`p-md hover:shadow-md transition-shadow cursor-pointer ${getCategoryStyles(file.category)}`}
               onClick={() => onView(file)}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-start gap-md">
                 {/* Checkbox */}
                 <Checkbox
                   checked={selectedFiles.has(file.id)}
@@ -177,8 +177,8 @@ export default function CardView({
 
                 {/* File Icon */}
                 <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                    <CategoryIcon className="w-6 h-6 text-gray-600" />
+                  <div className="w-icon-2xl h-icon-2xl rounded-lg bg-white flex items-center justify-center shadow-sm">
+                    <CategoryIcon className="w-icon-md h-icon-md text-gray-600" />
                   </div>
                 </div>
 
@@ -205,24 +205,24 @@ export default function CardView({
                           onClick={(e) => e.stopPropagation()}
                           className="ml-2"
                         >
-                          <MoreHorizontal className="w-4 h-4" />
+                          <MoreHorizontal className="w-icon-xs h-icon-xs" />
                         </Button>
                       </DropdownMenu.Trigger>
                       <DropdownMenu.Content align="end">
                         <DropdownMenu.Item onClick={() => onView(file)}>
-                          <Eye className="w-4 h-4 mr-2" />
+                          <Eye className="w-icon-xs h-icon-xs mr-2" />
                           View
                         </DropdownMenu.Item>
                         <DropdownMenu.Item onClick={() => onEdit(file)}>
-                          <Edit className="w-4 h-4 mr-2" />
+                          <Edit className="w-icon-xs h-icon-xs mr-2" />
                           Edit
                         </DropdownMenu.Item>
                         <DropdownMenu.Item onClick={() => onDownload(file)}>
-                          <Download className="w-4 h-4 mr-2" />
+                          <Download className="w-icon-xs h-icon-xs mr-2" />
                           Download
                         </DropdownMenu.Item>
                         <DropdownMenu.Item onClick={() => onShare(file)}>
-                          <Share className="w-4 h-4 mr-2" />
+                          <Share className="w-icon-xs h-icon-xs mr-2" />
                           Share
                         </DropdownMenu.Item>
                         <DropdownMenu.Separator />
@@ -230,7 +230,7 @@ export default function CardView({
                           onClick={() => onDelete(file)}
                           className="text-red-600"
                         >
-                          <Trash2 className="w-4 h-4 mr-2" />
+                          <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                           Delete
                         </DropdownMenu.Item>
                       </DropdownMenu.Content>
@@ -238,17 +238,17 @@ export default function CardView({
                   </div>
 
                   {/* Metadata */}
-                  <div className="flex items-center gap-4 mt-2 text-xs text-gray-500">
-                    <div className="flex items-center gap-1">
+                  <div className="flex items-center gap-md mt-2 text-xs text-gray-500">
+                    <div className="flex items-center gap-xs">
                       <CategoryIcon className="w-3 h-3" />
                       <span className="capitalize">{file.category}</span>
                     </div>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-xs">
                       <AccessIcon className="w-3 h-3" />
                       <span className="capitalize">{file.access_level}</span>
                     </div>
                     <span>{formatFileSize(file.file_size || 0)}</span>
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-xs">
                       <Clock className="w-3 h-3" />
                       <span>{formatRelativeTime(file.updated_at)}</span>
                     </div>
@@ -256,7 +256,7 @@ export default function CardView({
 
                   {/* Tags */}
                   {file.tags && file.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-2">
+                    <div className="flex flex-wrap gap-xs mt-2">
                       {file.tags.slice(0, 3).map((tag, index) => (
                         <Badge key={index} variant="outline" className="text-xs">
                           {tag}
@@ -287,11 +287,11 @@ export default function CardView({
 
   // Grid View
   return (
-    <div className="space-y-4">
+    <div className="space-y-md">
       {/* Controls */}
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center gap-md">
+          <div className="flex items-center gap-xs">
             <label className="text-sm font-medium">View:</label>
             <Button
               variant={viewMode === 'grid' ? 'default' : 'outline'}
@@ -309,7 +309,7 @@ export default function CardView({
             </Button>
           </div>
           {viewMode === 'grid' && (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <label className="text-sm font-medium">Columns:</label>
               {[2, 3, 4, 6].map((cols) => (
                 <Button
@@ -327,7 +327,7 @@ export default function CardView({
 
         {/* Bulk Actions */}
         {selectedFiles.size > 0 && (
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <span className="text-sm text-gray-600">
               {selectedFiles.size} selected
             </span>
@@ -358,7 +358,7 @@ export default function CardView({
 
       {/* Grid */}
       <div
-        className={`grid gap-4 ${
+        className={`grid gap-md ${
           itemsPerRow === 2 ? 'grid-cols-1 md:grid-cols-2' :
           itemsPerRow === 3 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' :
           itemsPerRow === 4 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' :
@@ -372,11 +372,11 @@ export default function CardView({
           return (
             <Card
               key={file.id}
-              className={`relative p-4 hover:shadow-lg transition-all cursor-pointer ${getCategoryStyles(file.category)}`}
+              className={`relative p-md hover:shadow-lg transition-all cursor-pointer ${getCategoryStyles(file.category)}`}
               onClick={() => onView(file)}
             >
               {/* Selection Checkbox */}
-              <div className="absolute top-2 left-2 z-10">
+              <div className="absolute top-xs left-2 z-10">
                 <Checkbox
                   checked={selectedFiles.has(file.id)}
                   onCheckedChange={() => onSelectFile(file.id)}
@@ -385,33 +385,33 @@ export default function CardView({
               </div>
 
               {/* Actions Menu */}
-              <div className="absolute top-2 right-2 z-10">
+              <div className="absolute top-xs right-2 z-10">
                 <DropdownMenu>
                   <DropdownMenu.Trigger asChild>
                     <Button
                       variant="secondary"
                       size="sm"
                       onClick={(e) => e.stopPropagation()}
-                      className="h-8 w-8 p-0"
+                      className="h-icon-lg w-icon-lg p-0"
                     >
-                      <MoreHorizontal className="w-4 h-4" />
+                      <MoreHorizontal className="w-icon-xs h-icon-xs" />
                     </Button>
                   </DropdownMenu.Trigger>
                   <DropdownMenu.Content align="end">
                     <DropdownMenu.Item onClick={() => onView(file)}>
-                      <Eye className="w-4 h-4 mr-2" />
+                      <Eye className="w-icon-xs h-icon-xs mr-2" />
                       View
                     </DropdownMenu.Item>
                     <DropdownMenu.Item onClick={() => onEdit(file)}>
-                      <Edit className="w-4 h-4 mr-2" />
+                      <Edit className="w-icon-xs h-icon-xs mr-2" />
                       Edit
                     </DropdownMenu.Item>
                     <DropdownMenu.Item onClick={() => onDownload(file)}>
-                      <Download className="w-4 h-4 mr-2" />
+                      <Download className="w-icon-xs h-icon-xs mr-2" />
                       Download
                     </DropdownMenu.Item>
                     <DropdownMenu.Item onClick={() => onShare(file)}>
-                      <Share className="w-4 h-4 mr-2" />
+                      <Share className="w-icon-xs h-icon-xs mr-2" />
                       Share
                     </DropdownMenu.Item>
                     <DropdownMenu.Separator />
@@ -419,7 +419,7 @@ export default function CardView({
                       onClick={() => onDelete(file)}
                       className="text-red-600"
                     >
-                      <Trash2 className="w-4 h-4 mr-2" />
+                      <Trash2 className="w-icon-xs h-icon-xs mr-2" />
                       Delete
                     </DropdownMenu.Item>
                   </DropdownMenu.Content>
@@ -428,8 +428,8 @@ export default function CardView({
 
               {/* File Icon */}
               <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 rounded-lg bg-white flex items-center justify-center shadow-sm">
-                  <CategoryIcon className="w-8 h-8 text-gray-600" />
+                <div className="w-component-md h-component-md rounded-lg bg-white flex items-center justify-center shadow-sm">
+                  <CategoryIcon className="w-icon-lg h-icon-lg text-gray-600" />
                 </div>
               </div>
 
@@ -446,13 +446,13 @@ export default function CardView({
                 )}
 
                 {/* Metadata */}
-                <div className="space-y-2">
-                  <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                <div className="space-y-xs">
+                  <div className="flex items-center justify-center gap-xs text-xs text-gray-500">
                     <CategoryIcon className="w-3 h-3" />
                     <span className="capitalize">{file.category}</span>
                   </div>
 
-                  <div className="flex items-center justify-center gap-2 text-xs text-gray-500">
+                  <div className="flex items-center justify-center gap-xs text-xs text-gray-500">
                     <AccessIcon className="w-3 h-3" />
                     <span className="capitalize">{file.access_level}</span>
                   </div>
@@ -461,7 +461,7 @@ export default function CardView({
                     {formatFileSize(file.file_size || 0)}
                   </div>
 
-                  <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
+                  <div className="flex items-center justify-center gap-xs text-xs text-gray-500">
                     <Clock className="w-3 h-3" />
                     <span>{formatRelativeTime(file.updated_at)}</span>
                   </div>
@@ -476,7 +476,7 @@ export default function CardView({
 
                 {/* Tags */}
                 {file.tags && file.tags.length > 0 && (
-                  <div className="flex flex-wrap justify-center gap-1 mt-3">
+                  <div className="flex flex-wrap justify-center gap-xs mt-3">
                     {file.tags.slice(0, 2).map((tag, index) => (
                       <Badge key={index} variant="outline" className="text-xs">
                         {tag}
@@ -497,8 +497,8 @@ export default function CardView({
 
       {/* Empty State */}
       {files.length === 0 && (
-        <div className="text-center py-12">
-          <File className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+        <div className="text-center py-xsxl">
+          <File className="w-icon-2xl h-icon-2xl text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">No files found</h3>
           <p className="text-gray-500">Upload some files to get started.</p>
         </div>

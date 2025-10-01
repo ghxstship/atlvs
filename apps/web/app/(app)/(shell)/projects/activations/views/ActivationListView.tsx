@@ -181,27 +181,27 @@ export default function ActivationListView({
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
  <Button variant="ghost" size="sm">
- <MoreVertical className="h-4 w-4" />
+ <MoreVertical className="h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent align="end">
  <DropdownMenuItem onClick={() => onView(activation)}>
- <Eye className="mr-2 h-4 w-4" />
+ <Eye className="mr-2 h-icon-xs w-icon-xs" />
  View
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onEdit(activation)}>
- <Edit className="mr-2 h-4 w-4" />
+ <Edit className="mr-2 h-icon-xs w-icon-xs" />
  Edit
  </DropdownMenuItem>
  <DropdownMenuItem onClick={() => onDuplicate(activation)}>
- <Copy className="mr-2 h-4 w-4" />
+ <Copy className="mr-2 h-icon-xs w-icon-xs" />
  Duplicate
  </DropdownMenuItem>
  <DropdownMenuItem 
  onClick={() => onDelete(activation)}
  className="text-destructive"
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete
  </DropdownMenuItem>
  </DropdownMenuContent>

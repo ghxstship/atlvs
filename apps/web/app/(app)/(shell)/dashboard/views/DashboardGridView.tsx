@@ -76,8 +76,8 @@ export default function DashboardGridView({
 
  if (dashboards.length === 0) {
  return (
- <div className="text-center py-2xl">
- <BarChart3 className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <div className="text-center py-xsxl">
+ <BarChart3 className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-heading-4 font-semibold mb-sm">No dashboards found</h3>
  <p className="text-body-sm text-muted-foreground">
  Create your first dashboard to start visualizing your data.
@@ -104,7 +104,7 @@ export default function DashboardGridView({
  {dashboard.name}
  </h3>
  {dashboard.description && (
- <p className="text-body-sm text-muted-foreground mt-xs line-clamp-2">
+ <p className="text-body-sm text-muted-foreground mt-xs line-clamp-xs">
  {dashboard.description}
  </p>
  )}
@@ -127,7 +127,7 @@ export default function DashboardGridView({
  // Show context menu or actions
  }}
  >
- <MoreHorizontal className="h-4 w-4" />
+ <MoreHorizontal className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -143,7 +143,7 @@ export default function DashboardGridView({
  </Badge>
 
  {dashboard.is_default && (
- <Badge className="bg-yellow-100 text-yellow-800">
+ <Badge className="bg-yellow-100 text-yellow-container-md0">
  Default
  </Badge>
  )}
@@ -215,7 +215,7 @@ export default function DashboardGridView({
  onView(dashboard);
  }}
  >
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  </Button>
  )}
 
@@ -228,7 +228,7 @@ export default function DashboardGridView({
  onEdit(dashboard);
  }}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  )}
 
@@ -241,7 +241,7 @@ export default function DashboardGridView({
  onShare(dashboard);
  }}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  )}
 
@@ -254,7 +254,7 @@ export default function DashboardGridView({
  onDuplicate(dashboard);
  }}
  >
- <Copy className="h-4 w-4" />
+ <Copy className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  </div>

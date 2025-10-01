@@ -123,7 +123,7 @@ export function DataActions({
         <div className="flex items-center gap-sm flex-1">
           {showSearch && (
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
               <input
                 type="text"
                 placeholder="Search..."
@@ -141,7 +141,7 @@ export function DataActions({
                 
                 onClick={() => setShowFilterModal(true)}
               >
-                <Filter className="h-4 w-4" />
+                <Filter className="h-icon-xs w-icon-xs" />
                 Filters
                 {state.filters.length > 0 && (
                   <span className="ml-xs px-xs.5 py-0.5 text-xs bg-accent/10 text-accent rounded">
@@ -158,7 +158,7 @@ export function DataActions({
               
               onClick={() => setShowSortModal(true)}
             >
-              <SortAsc className="h-4 w-4" />
+              <SortAsc className="h-icon-xs w-icon-xs" />
               Sort
               {state.sorts.length > 0 && (
                 <span className="ml-xs px-xs.5 py-0.5 text-xs bg-accent/10 text-accent rounded">
@@ -199,7 +199,7 @@ export function DataActions({
               
               onClick={() => setShowExportModal(true)}
             >
-              <Download className="h-4 w-4" />
+              <Download className="h-icon-xs w-icon-xs" />
               Export
             </Button>
           )}
@@ -211,7 +211,7 @@ export function DataActions({
               
               onClick={() => setShowImportModal(true)}
             >
-              <Upload className="h-4 w-4" />
+              <Upload className="h-icon-xs w-icon-xs" />
               Import
             </Button>
           )}
@@ -223,7 +223,7 @@ export function DataActions({
               
               onClick={() => {/* Toggle view options */}}
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal className="h-icon-xs w-icon-xs" />
             </Button>
           )}
         </div>
@@ -471,7 +471,7 @@ function SortForm({ fields, currentSorts, onAddSort, onRemoveSort, onClose }: an
           <select
             value={newSort.direction}
             onChange={(e: any) => setNewSort({...newSort, direction: e.target.value as 'asc' | 'desc'})}
-            className="w-24 p-sm border border-border rounded-md bg-background text-foreground"
+            className="w-component-lg p-sm border border-border rounded-md bg-background text-foreground"
           >
             <option value="asc">Ascending</option>
             <option value="desc">Descending</option>

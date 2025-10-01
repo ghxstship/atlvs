@@ -79,13 +79,13 @@ export default function EndorsementListView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
+ <Card className="p-lg">
+ <div className="space-y-md">
  {[...Array(3)].map((_, i) => (
- <div key={i} className="p-4 border rounded-lg animate-pulse">
- <div className="h-6 w-48 bg-muted rounded mb-2" />
- <div className="h-4 w-full bg-muted rounded mb-2" />
- <div className="h-4 w-3/4 bg-muted rounded" />
+ <div key={i} className="p-md border rounded-lg animate-pulse">
+ <div className="h-icon-md w-container-xs bg-muted rounded mb-2" />
+ <div className="h-icon-xs w-full bg-muted rounded mb-2" />
+ <div className="h-icon-xs w-3/4 bg-muted rounded" />
  </div>
  ))}
  </div>
@@ -94,12 +94,12 @@ export default function EndorsementListView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
- <Card className="p-4">
- <div className="flex flex-col gap-4">
+ <Card className="p-md">
+ <div className="flex flex-col gap-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Checkbox
  checked={allSelected}
  indeterminate={someSelected && !allSelected}
@@ -109,13 +109,13 @@ export default function EndorsementListView({
  {selectedIds.length > 0 && `${selectedIds.length} selected`}
  </span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={() => setShowFilters(!showFilters)}
  >
- <Filter className="mr-2 h-4 w-4" />
+ <Filter className="mr-2 h-icon-xs w-icon-xs" />
  Filters
  </Button>
  <Button
@@ -124,7 +124,7 @@ export default function EndorsementListView({
  onClick={() => onExport(sortedEndorsements.filter(e => selectedIds.includes(e.id)))}
  disabled={selectedIds.length === 0}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </div>
@@ -132,7 +132,7 @@ export default function EndorsementListView({
 
  {/* Search */}
  <div className="relative">
- <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+ <Search className="absolute left-3 top-sm h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search endorsements..."
  value={filters.search}
@@ -143,7 +143,7 @@ export default function EndorsementListView({
 
  {/* Filters */}
  {showFilters && (
- <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
+ <div className="grid grid-cols-1 md:grid-cols-3 gap-md pt-4 border-t">
  <Select
  value={filters.relationship || 'all'}
  onValueChange={(value) => onFiltersChange({ relationship: value as unknown })}
@@ -200,7 +200,7 @@ export default function EndorsementListView({
  )}
 
  {/* Sort */}
- <div className="flex items-center gap-2 text-sm">
+ <div className="flex items-center gap-xs text-sm">
  <span className="text-muted-foreground">Sort by:</span>
  <Button
  variant={sort.field === 'date_received' ? 'default' : 'ghost'}
@@ -229,9 +229,9 @@ export default function EndorsementListView({
 
  {/* List */}
  {sortedEndorsements.length === 0 ? (
- <Card className="p-12 text-center">
- <div className="flex flex-col items-center gap-4">
- <Award className="h-12 w-12 text-muted-foreground" />
+ <Card className="p-xsxl text-center">
+ <div className="flex flex-col items-center gap-md">
+ <Award className="h-icon-2xl w-icon-2xl text-muted-foreground" />
  <div>
  <h3 className="text-lg font-semibold">No Endorsements Found</h3>
  <p className="text-muted-foreground mt-2">
@@ -243,27 +243,27 @@ export default function EndorsementListView({
  </div>
  </Card>
  ) : (
- <div className="space-y-2">
+ <div className="space-y-xs">
  {sortedEndorsements.map((endorsement) => {
  const isSelected = selectedIds.includes(endorsement.id);
  
  return (
  <Card
  key={endorsement.id}
- className={`p-4 transition-colors ${
+ className={`p-md transition-colors ${
  isSelected ? 'bg-muted/50 border-primary' : 'hover:bg-muted/30'
  }`}
  >
- <div className="flex items-start gap-4">
+ <div className="flex items-start gap-md">
  <Checkbox
  checked={isSelected}
  onCheckedChange={(checked) => onToggleSelect(endorsement.id, !!checked)}
  />
  
- <div className="flex-1 space-y-3">
+ <div className="flex-1 space-y-sm">
  <div className="flex items-start justify-between">
  <div>
- <div className="flex items-center gap-2 mb-1">
+ <div className="flex items-center gap-xs mb-1">
  <h3 className="font-semibold">{endorsement.endorser_name}</h3>
  <Badge variant={getVerificationBadgeVariant(endorsement.verification_status)}>
  <Shield className="mr-1 h-3 w-3" />
@@ -277,34 +277,34 @@ export default function EndorsementListView({
  )}
  </div>
  
- <div className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground">
+ <div className="flex flex-wrap items-center gap-sm text-sm text-muted-foreground">
  {endorsement.endorser_title && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <User className="h-3 w-3" />
  {endorsement.endorser_title}
  </div>
  )}
  {endorsement.endorser_company && (
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Building className="h-3 w-3" />
  {endorsement.endorser_company}
  </div>
  )}
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Calendar className="h-3 w-3" />
  {formatDate(endorsement.date_received)}
  </div>
  </div>
  </div>
  
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <span className="text-yellow-500">{formatRating(endorsement.rating)}</span>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onEdit(endorsement)}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -314,7 +314,7 @@ export default function EndorsementListView({
  </p>
  
  {endorsement.skills_endorsed.length > 0 && (
- <div className="flex flex-wrap gap-1">
+ <div className="flex flex-wrap gap-xs">
  {endorsement.skills_endorsed.slice(0, 5).map((skill) => (
  <Badge key={skill} variant="secondary" className="text-xs">
  {skill}
@@ -329,7 +329,7 @@ export default function EndorsementListView({
  )}
  
  <div className="flex items-center justify-between pt-2 border-t">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge variant="outline">
  {RELATIONSHIP_LABELS[endorsement.relationship]}
  </Badge>
@@ -339,9 +339,9 @@ export default function EndorsementListView({
  onClick={() => onTogglePublic(endorsement)}
  >
  {endorsement.is_public ? (
- <Eye className="h-4 w-4" />
+ <Eye className="h-icon-xs w-icon-xs" />
  ) : (
- <EyeOff className="h-4 w-4" />
+ <EyeOff className="h-icon-xs w-icon-xs" />
  )}
  </Button>
  <Button
@@ -349,18 +349,18 @@ export default function EndorsementListView({
  size="sm"
  onClick={() => onToggleFeatured(endorsement)}
  >
- <Star className={`h-4 w-4 ${endorsement.is_featured ? 'fill-current' : ''}`} />
+ <Star className={`h-icon-xs w-icon-xs ${endorsement.is_featured ? 'fill-current' : ''}`} />
  </Button>
  </div>
  
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {endorsement.verification_status === 'pending' && (
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onVerify(endorsement)}
  >
- <Shield className="h-4 w-4" />
+ <Shield className="h-icon-xs w-icon-xs" />
  </Button>
  )}
  <Button
@@ -368,14 +368,14 @@ export default function EndorsementListView({
  size="sm"
  onClick={() => onEdit(endorsement)}
  >
- <Edit className="h-4 w-4" />
+ <Edit className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="ghost"
  size="sm"
  onClick={() => onDelete(endorsement)}
  >
- <Trash2 className="h-4 w-4" />
+ <Trash2 className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>

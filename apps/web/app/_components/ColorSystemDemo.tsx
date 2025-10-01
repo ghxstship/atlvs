@@ -39,7 +39,7 @@ export default function ColorSystemDemo() {
               { name: 'Destructive', className: 'bg-destructive' },
             ].map((color: any) => (
               <div key={color.name} className="text-center">
-                <div className={`w-full h-16 rounded-md border mb-xs ${color.className}`} />
+                <div className={`w-full h-component-md rounded-md border mb-xs ${color.className}`} />
                 <div className="text-xs font-mono">{color.name}</div>
               </div>
             ))}
@@ -63,7 +63,7 @@ export default function ColorSystemDemo() {
                 { name: 'Yellow Line', className: 'bg-warning text-warning-foreground', desc: 'N/Q/R/W Line' },
               ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
-                  <div className={`w-full h-12 rounded-md mb-xs ${metro.className}`} />
+                  <div className={`w-full h-icon-2xl rounded-md mb-xs ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
                   <div className="text-xs text-muted-foreground">{metro.desc}</div>
                 </div>
@@ -85,7 +85,7 @@ export default function ColorSystemDemo() {
                 { name: 'Victoria', className: 'bg-accent text-accent-foreground' },
               ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
-                  <div className={`w-full h-12 rounded-md mb-xs border ${metro.className}`} />
+                  <div className={`w-full h-icon-2xl rounded-md mb-xs border ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
                 </div>
               ))}
@@ -105,7 +105,7 @@ export default function ColorSystemDemo() {
                 { name: 'Yurakucho', className: 'bg-warning text-warning-foreground' },
               ].map((metro: any) => (
                 <div key={metro.name} className="text-center">
-                  <div className={`w-full h-12 rounded-md mb-xs ${metro.className}`} />
+                  <div className={`w-full h-icon-2xl rounded-md mb-xs ${metro.className}`} />
                   <div className="text-xs font-semibold">{metro.name}</div>
                 </div>
               ))}

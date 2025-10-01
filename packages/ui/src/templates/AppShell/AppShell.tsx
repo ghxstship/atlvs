@@ -22,7 +22,7 @@ export const AppShell: React.FC<AppShellProps> = ({
   return (
     <div className={cn('flex h-screen w-full overflow-hidden', className)}>
       {sidebar && (
-        <aside className="flex-shrink-0 w-64 border-r bg-background">
+        <aside className="flex-shrink-0 w-container-sm border-r bg-background">
           {sidebar}
         </aside>
       )}
@@ -32,7 +32,7 @@ export const AppShell: React.FC<AppShellProps> = ({
             {header}
           </header>
         )}
-        <main className="flex-1 overflow-auto p-6">
+        <main className="flex-1 overflow-auto p-lg">
           {children}
         </main>
       </div>

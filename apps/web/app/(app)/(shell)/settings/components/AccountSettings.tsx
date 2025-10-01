@@ -172,9 +172,9 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex items-center justify-center p-xl">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto"></div>
+          <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto"></div>
           <p className="mt-2 text-sm text-muted-foreground">Loading account settings...</p>
         </div>
       </div>
@@ -182,8 +182,8 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
   }
 
   return (
-    <div className="space-y-6">
-      <Tabs defaultValue="profile" className="space-y-6">
+    <div className="space-y-lg">
+      <Tabs defaultValue="profile" className="space-y-lg">
         <TabsList className="grid w-full grid-cols-5">
           <TabsTrigger value="profile">Profile</TabsTrigger>
           <TabsTrigger value="password">Password</TabsTrigger>
@@ -192,17 +192,17 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
           <TabsTrigger value="api-keys">API Keys</TabsTrigger>
         </TabsList>
 
-        <TabsContent value="profile" className="space-y-6">
+        <TabsContent value="profile" className="space-y-lg">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <User className="h-icon-sm w-icon-sm" />
                 Profile Information
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
+            <CardContent className="space-y-md">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
+                <div className="space-y-xs">
                   <Label htmlFor="email">Email Address</Label>
                   <Input
                     id="email"
@@ -216,7 +216,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   </p>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="name">Full Name</Label>
                   <Input
                     id="name"
@@ -226,7 +226,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
                     id="phone"
@@ -236,7 +236,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="timezone">Timezone</Label>
                   <Select
                     value={profileForm.timezone}
@@ -255,7 +255,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   </Select>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="language">Language</Label>
                   <Select
                     value={profileForm.language}
@@ -278,7 +278,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
 
               <div className="flex justify-end">
                 <Button onClick={handleProfileUpdate} disabled={saving}>
-                  <Save className="h-4 w-4 mr-2" />
+                  <Save className="h-icon-xs w-icon-xs mr-2" />
                   {saving ? 'Saving...' : 'Save Changes'}
                 </Button>
               </div>
@@ -286,24 +286,24 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
           </Card>
         </TabsContent>
 
-        <TabsContent value="password" className="space-y-6">
+        <TabsContent value="password" className="space-y-lg">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Lock className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Lock className="h-icon-sm w-icon-sm" />
                 Change Password
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <Alert>
-                <AlertCircle className="h-4 w-4" />
+                <AlertCircle className="h-icon-xs w-icon-xs" />
                 <AlertDescription>
                   Password must be at least 8 characters long and contain a mix of letters, numbers, and symbols.
                 </AlertDescription>
               </Alert>
 
-              <div className="space-y-4">
-                <div className="space-y-2">
+              <div className="space-y-md">
+                <div className="space-y-xs">
                   <Label htmlFor="current-password">Current Password</Label>
                   <div className="relative">
                     <Input
@@ -317,15 +317,15 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                       type="button"
                       variant="ghost"
                       size="sm"
-                      className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                      className="absolute right-0 top-0 h-full px-sm py-xs hover:bg-transparent"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                      {showPassword ? <EyeOff className="h-icon-xs w-icon-xs" /> : <Eye className="h-icon-xs w-icon-xs" />}
                     </Button>
                   </div>
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="new-password">New Password</Label>
                   <Input
                     id="new-password"
@@ -336,7 +336,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
                   />
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-xs">
                   <Label htmlFor="confirm-password">Confirm New Password</Label>
                   <Input
                     id="confirm-password"
@@ -352,7 +352,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
 
               <div className="flex justify-end">
                 <Button onClick={handlePasswordChange} disabled={saving}>
-                  <Lock className="h-4 w-4 mr-2" />
+                  <Lock className="h-icon-xs w-icon-xs mr-2" />
                   {saving ? 'Updating...' : 'Update Password'}
                 </Button>
               </div>
@@ -360,15 +360,15 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
           </Card>
         </TabsContent>
 
-        <TabsContent value="security" className="space-y-6">
+        <TabsContent value="security" className="space-y-lg">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Shield className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Shield className="h-icon-sm w-icon-sm" />
                 Two-Factor Authentication
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-md">
               <div className="flex items-center justify-between">
                 <div className="space-y-0.5">
                   <Label>Enable 2FA</Label>
@@ -384,14 +384,14 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
 
               {twoFactorEnabled ? (
                 <Alert>
-                  <Smartphone className="h-4 w-4" />
+                  <Smartphone className="h-icon-xs w-icon-xs" />
                   <AlertDescription>
                     Two-factor authentication is enabled. Use an authenticator app to generate codes.
                   </AlertDescription>
                 </Alert>
               ) : (
                 <Alert>
-                  <AlertCircle className="h-4 w-4" />
+                  <AlertCircle className="h-icon-xs w-icon-xs" />
                   <AlertDescription>
                     Two-factor authentication is disabled. Enable it to secure your account.
                   </AlertDescription>
@@ -402,8 +402,8 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
 
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Clock className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Clock className="h-icon-sm w-icon-sm" />
                 Session Management
               </CardTitle>
             </CardHeader>
@@ -418,7 +418,7 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
           </Card>
         </TabsContent>
 
-        <TabsContent value="sessions" className="space-y-6">
+        <TabsContent value="sessions" className="space-y-lg">
           <Card>
             <CardHeader>
               <CardTitle>Active Sessions</CardTitle>
@@ -427,8 +427,8 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
               </p>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <Globe className="mx-auto h-12 w-12 text-muted-foreground" />
+              <div className="text-center py-xl">
+                <Globe className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground" />
                 <p className="mt-2 text-sm text-muted-foreground">
                   Session management interface will be implemented here
                 </p>
@@ -437,11 +437,11 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
           </Card>
         </TabsContent>
 
-        <TabsContent value="api-keys" className="space-y-6">
+        <TabsContent value="api-keys" className="space-y-lg">
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Key className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-xs">
+                <Key className="h-icon-sm w-icon-sm" />
                 API Keys
               </CardTitle>
               <p className="text-sm text-muted-foreground">
@@ -449,8 +449,8 @@ export default function AccountSettings({ userId, orgId }: AccountSettingsProps)
               </p>
             </CardHeader>
             <CardContent>
-              <div className="text-center py-8">
-                <Key className="mx-auto h-12 w-12 text-muted-foreground" />
+              <div className="text-center py-xl">
+                <Key className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground" />
                 <p className="mt-2 text-sm text-muted-foreground">
                   API key management interface will be implemented here
                 </p>

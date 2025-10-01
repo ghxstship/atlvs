@@ -28,12 +28,12 @@ export default function RevenueListView({
             <div key={i} className="p-lg animate-pulse">
               <div className="flex items-center justify-between">
                 <div className="flex-1">
-                  <div className="h-4 bg-gray-200 rounded w-48 mb-sm"></div>
-                  <div className="h-3 bg-gray-200 rounded w-32"></div>
+                  <div className="h-icon-xs bg-gray-200 rounded w-container-xs mb-sm"></div>
+                  <div className="h-3 bg-gray-200 rounded w-component-xl"></div>
                 </div>
                 <div className="flex items-center gap-md">
-                  <div className="h-6 bg-gray-200 rounded w-16"></div>
-                  <div className="h-8 bg-gray-200 rounded w-20"></div>
+                  <div className="h-icon-md bg-gray-200 rounded w-component-md"></div>
+                  <div className="h-icon-lg bg-gray-200 rounded w-component-lg"></div>
                 </div>
               </div>
             </div>
@@ -68,14 +68,14 @@ export default function RevenueListView({
                   <span>{record.category}</span>
                   <span>•</span>
                   <div className="flex items-center gap-xs">
-                    <Calendar className="h-4 w-4" />
+                    <Calendar className="h-icon-xs w-icon-xs" />
                     {record.recognition_date ? new Date(record.recognition_date).toLocaleDateString() : 'N/A'}
                   </div>
                   {record.client_id && (
                     <>
                       <span>•</span>
                       <div className="flex items-center gap-xs">
-                        <User className="h-4 w-4" />
+                        <User className="h-icon-xs w-icon-xs" />
                         Client: {record.client_id}
                       </div>
                     </>
@@ -84,7 +84,7 @@ export default function RevenueListView({
                     <>
                       <span>•</span>
                       <div className="flex items-center gap-xs">
-                        <Building className="h-4 w-4" />
+                        <Building className="h-icon-xs w-icon-xs" />
                         Project: {record.project_id}
                       </div>
                     </>
@@ -109,7 +109,7 @@ export default function RevenueListView({
                       onEdit?.(record);
                     }}
                   >
-                    <Edit className="h-4 w-4" />
+                    <Edit className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -119,7 +119,7 @@ export default function RevenueListView({
                       onRecordClick?.(record);
                     }}
                   >
-                    <Eye className="h-4 w-4" />
+                    <Eye className="h-icon-xs w-icon-xs" />
                   </Button>
                   <Button
                     variant="ghost"
@@ -129,7 +129,7 @@ export default function RevenueListView({
                       onDelete?.(record);
                     }}
                   >
-                    <Trash2 className="h-4 w-4" />
+                    <Trash2 className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
@@ -139,7 +139,7 @@ export default function RevenueListView({
 
         {data.length === 0 && (
           <div className="text-center py-xl">
-            <DollarSign className="h-12 w-12 text-gray-400 mx-auto mb-md" />
+            <DollarSign className="h-icon-2xl w-icon-2xl text-gray-400 mx-auto mb-md" />
             <h3 className="text-lg font-medium text-gray-900 mb-sm">No revenue records</h3>
             <p className="text-gray-600">Get started by adding your first revenue entry.</p>
           </div>

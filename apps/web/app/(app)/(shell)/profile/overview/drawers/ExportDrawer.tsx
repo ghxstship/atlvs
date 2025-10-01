@@ -117,7 +117,7 @@ export default function ExportDrawer({
  pdf: File,
  };
  const IconComponent = icons[format as keyof typeof icons] || File;
- return <IconComponent className="h-4 w-4" />;
+ return <IconComponent className="h-icon-xs w-icon-xs" />;
  };
 
  const getExportCount = () => {
@@ -153,7 +153,7 @@ export default function ExportDrawer({
  <div className="p-lg bg-secondary/30 rounded-lg">
  <div className="flex items-center gap-md mb-md">
  <div className="p-sm bg-accent/10 rounded-lg">
- <Download className="h-5 w-5 color-accent" />
+ <Download className="h-icon-sm w-icon-sm color-accent" />
  </div>
  <div>
  <h3 className="text-heading-4">Export Configuration</h3>
@@ -195,7 +195,7 @@ export default function ExportDrawer({
  className="grid grid-cols-2 gap-md"
  >
  {EXPORT_FORMATS.map((format) => (
- <div key={format.value} className="flex items-center space-x-2">
+ <div key={format.value} className="flex items-center space-x-xs">
  <RadioGroupItem value={format.value} id={format.value} />
  <Label 
  htmlFor={format.value}
@@ -232,7 +232,7 @@ export default function ExportDrawer({
  {selectedProfiles.length > 0 && (
  <SelectItem value="selected">
  <div className="flex items-center gap-md">
- <CheckCircle className="h-4 w-4 color-accent" />
+ <CheckCircle className="h-icon-xs w-icon-xs color-accent" />
  <div>
  <div className="font-medium">Selected Profiles</div>
  <div className="text-body-xs color-muted">
@@ -244,7 +244,7 @@ export default function ExportDrawer({
  )}
  <SelectItem value="filtered">
  <div className="flex items-center gap-md">
- <Filter className="h-4 w-4 color-info" />
+ <Filter className="h-icon-xs w-icon-xs color-info" />
  <div>
  <div className="font-medium">Filtered Results</div>
  <div className="text-body-xs color-muted">
@@ -255,7 +255,7 @@ export default function ExportDrawer({
  </SelectItem>
  <SelectItem value="all">
  <div className="flex items-center gap-md">
- <Users className="h-4 w-4 color-secondary" />
+ <Users className="h-icon-xs w-icon-xs color-secondary" />
  <div>
  <div className="font-medium">All Profiles</div>
  <div className="text-body-xs color-muted">
@@ -296,7 +296,7 @@ export default function ExportDrawer({
  </div>
  </div>
 
- <div className="border rounded-lg p-md max-h-64 overflow-y-auto">
+ <div className="border rounded-lg p-md max-h-container-sm overflow-y-auto">
  {Object.entries(fieldsBySection).map(([section, fields]) => (
  <div key={section} className="mb-lg last:mb-0">
  <h4 className="text-body-sm font-medium mb-md capitalize">
@@ -304,7 +304,7 @@ export default function ExportDrawer({
  </h4>
  <div className="grid grid-cols-1 md:grid-cols-2 gap-sm">
  {fields.map((field) => (
- <div key={field.key} className="flex items-center space-x-2">
+ <div key={field.key} className="flex items-center space-x-xs">
  <Checkbox
  id={field.key}
  checked={selectedFields.includes(field.key)}
@@ -337,14 +337,14 @@ export default function ExportDrawer({
  control={form.control}
  
  render={({ field }) => (
- <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+ <FormItem className="flex flex-row items-start space-x-sm space-y-0">
  <FormControl>
  <Checkbox
  checked={field.value}
  onCheckedChange={field.onChange}
  />
  </FormControl>
- <div className="space-y-1 leading-none">
+ <div className="space-y-xs leading-none">
  <FormLabel className="text-body-sm">
  Include metadata
  </FormLabel>
@@ -377,7 +377,7 @@ export default function ExportDrawer({
  onClick={onClose}
  disabled={loading}
  >
- <X className="h-4 w-4 mr-sm" />
+ <X className="h-icon-xs w-icon-xs mr-sm" />
  Cancel
  </Button>
  
@@ -386,7 +386,7 @@ export default function ExportDrawer({
  disabled={loading || selectedFields.length === 0}
  loading={loading}
  >
- <Download className="h-4 w-4 mr-sm" />
+ <Download className="h-icon-xs w-icon-xs mr-sm" />
  Export {getExportCount()} Profile{getExportCount() !== 1 ? 's' : ''}
  </Button>
  </div>

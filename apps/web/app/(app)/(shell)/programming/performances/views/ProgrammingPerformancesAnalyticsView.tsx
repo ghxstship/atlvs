@@ -167,9 +167,9 @@ export default function ProgrammingPerformancesAnalyticsView({
  if (loading) {
  return (
  <Card className="p-lg">
- <div className="flex items-center justify-center py-12">
+ <div className="flex items-center justify-center py-xsxl">
  <div className="text-center">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
  <p className="text-muted-foreground">Loading analytics...</p>
  </div>
  </div>
@@ -187,7 +187,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-sm text-muted-foreground">Total Performances</p>
  <p className="text-2xl font-bold">{analytics.totalPerformances}</p>
  </div>
- <Music className="h-8 w-8 text-primary" />
+ <Music className="h-icon-lg w-icon-lg text-primary" />
  </div>
  </Card>
 
@@ -197,7 +197,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-sm text-muted-foreground">Upcoming</p>
  <p className="text-2xl font-bold">{analytics.upcomingPerformances}</p>
  </div>
- <Calendar className="h-8 w-8 text-blue-500" />
+ <Calendar className="h-icon-lg w-icon-lg text-blue-500" />
  </div>
  </Card>
 
@@ -207,7 +207,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-sm text-muted-foreground">Total Revenue</p>
  <p className="text-2xl font-bold">{formatCurrency(analytics.totalRevenue)}</p>
  </div>
- <DollarSign className="h-8 w-8 text-green-500" />
+ <DollarSign className="h-icon-lg w-icon-lg text-green-500" />
  </div>
  </Card>
 
@@ -217,7 +217,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-sm text-muted-foreground">Avg Attendance</p>
  <p className="text-2xl font-bold">{analytics.averageAttendance.toLocaleString()}</p>
  </div>
- <Users className="h-8 w-8 text-purple-500" />
+ <Users className="h-icon-lg w-icon-lg text-purple-500" />
  </div>
  </Card>
  </div>
@@ -231,7 +231,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-xl font-semibold">{analytics.completedPerformances}</p>
  </div>
  <div className="flex items-center text-green-600">
- <TrendingUp className="h-4 w-4 mr-1" />
+ <TrendingUp className="h-icon-xs w-icon-xs mr-1" />
  <span className="text-sm">
  {analytics.totalPerformances > 0 
  ? Math.round((analytics.completedPerformances / analytics.totalPerformances) * 100)
@@ -248,7 +248,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-xl font-semibold">{analytics.cancelledPerformances}</p>
  </div>
  <div className="flex items-center text-red-600">
- <TrendingDown className="h-4 w-4 mr-1" />
+ <TrendingDown className="h-icon-xs w-icon-xs mr-1" />
  <span className="text-sm">
  {analytics.totalPerformances > 0 
  ? Math.round((analytics.cancelledPerformances / analytics.totalPerformances) * 100)
@@ -264,7 +264,7 @@ export default function ProgrammingPerformancesAnalyticsView({
  <p className="text-sm text-muted-foreground">Avg Duration</p>
  <p className="text-xl font-semibold">{analytics.averageDuration} min</p>
  </div>
- <Clock className="h-6 w-6 text-orange-500" />
+ <Clock className="h-icon-md w-icon-md text-orange-500" />
  </div>
  </Card>
  </div>
@@ -288,14 +288,14 @@ export default function ProgrammingPerformancesAnalyticsView({
  <span className="text-sm">{typeConfig.label}</span>
  </div>
  <div className="flex items-center gap-sm">
- <div className="w-20 bg-muted rounded-full h-2">
+ <div className="w-component-lg bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-sm font-medium w-8 text-right">{count}</span>
- <span className="text-xs text-muted-foreground w-8 text-right">{percentage}%</span>
+ <span className="text-sm font-medium w-icon-lg text-right">{count}</span>
+ <span className="text-xs text-muted-foreground w-icon-lg text-right">{percentage}%</span>
  </div>
  </div>
  );
@@ -321,14 +321,14 @@ export default function ProgrammingPerformancesAnalyticsView({
  </Badge>
  </div>
  <div className="flex items-center gap-sm">
- <div className="w-20 bg-muted rounded-full h-2">
+ <div className="w-component-lg bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-sm font-medium w-8 text-right">{count}</span>
- <span className="text-xs text-muted-foreground w-8 text-right">{percentage}%</span>
+ <span className="text-sm font-medium w-icon-lg text-right">{count}</span>
+ <span className="text-xs text-muted-foreground w-icon-lg text-right">{percentage}%</span>
  </div>
  </div>
  );
@@ -349,18 +349,18 @@ export default function ProgrammingPerformancesAnalyticsView({
  return (
  <div key={venue} className="flex items-center justify-between">
  <div className="flex items-center gap-sm min-w-0 flex-1">
- <MapPin className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+ <MapPin className="h-icon-xs w-icon-xs text-muted-foreground flex-shrink-0" />
  <span className="text-sm truncate">{venue}</span>
  </div>
  <div className="flex items-center gap-sm">
- <div className="w-20 bg-muted rounded-full h-2">
+ <div className="w-component-lg bg-muted rounded-full h-2">
  <div 
  className="bg-primary h-2 rounded-full"
  style={{ width: `${percentage}%` }}
  />
  </div>
- <span className="text-sm font-medium w-8 text-right">{count}</span>
- <span className="text-xs text-muted-foreground w-8 text-right">{percentage}%</span>
+ <span className="text-sm font-medium w-icon-lg text-right">{count}</span>
+ <span className="text-xs text-muted-foreground w-icon-lg text-right">{percentage}%</span>
  </div>
  </div>
  );
@@ -380,11 +380,11 @@ export default function ProgrammingPerformancesAnalyticsView({
  <div key={month} className="flex items-center justify-between">
  <span className="text-sm">{formatMonth(month)}</span>
  <div className="flex items-center gap-md">
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <Activity className="h-3 w-3 text-muted-foreground" />
  <span className="text-sm">{count}</span>
  </div>
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  <DollarSign className="h-3 w-3 text-muted-foreground" />
  <span className="text-sm">{formatCurrency(revenue)}</span>
  </div>

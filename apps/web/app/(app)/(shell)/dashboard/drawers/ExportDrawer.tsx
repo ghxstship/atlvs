@@ -311,7 +311,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
   // Drawer width classes
   const widthClasses = {
-    sm: 'w-96',
+    sm: 'w-container-lg',
     md: 'w-[32rem]',
     lg: 'w-[40rem]',
     xl: 'w-[48rem]'
@@ -319,7 +319,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
   // Render configuration step
   const renderConfigureStep = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div>
         <h3 className="text-lg font-medium mb-2">Export Configuration</h3>
         <p className="text-muted-foreground">
@@ -329,15 +329,15 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
       {/* Presets */}
       {presets.length > 0 && (
-        <div className="space-y-3">
+        <div className="space-y-sm">
           <Label>Export Presets</Label>
-          <div className="grid gap-2">
+          <div className="grid gap-xs">
             {presets.map(preset => (
               <button
                 key={preset.id}
                 onClick={() => handlePresetSelect(preset.id)}
                 className={cn(
-                  'flex items-center gap-3 p-3 border rounded-lg text-left transition-colors',
+                  'flex items-center gap-sm p-sm border rounded-lg text-left transition-colors',
                   selectedPreset === preset.id
                     ? 'border-primary bg-primary/5'
                     : 'hover:bg-accent'
@@ -348,7 +348,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                   <div className="text-sm text-muted-foreground">{preset.description}</div>
                 </div>
                 {selectedPreset === preset.id && (
-                  <CheckCircle className="h-4 w-4 text-primary" />
+                  <CheckCircle className="h-icon-xs w-icon-xs text-primary" />
                 )}
               </button>
             ))}
@@ -359,8 +359,8 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
       <Separator />
 
       {/* Basic Settings */}
-      <div className="space-y-4">
-        <div className="grid grid-cols-2 gap-4">
+      <div className="space-y-md">
+        <div className="grid grid-cols-2 gap-md">
           <div>
             <Label>Export Format</Label>
             <Select
@@ -375,8 +375,8 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                   const Icon = getFormatIcon(format);
                   return (
                     <SelectItem key={format} value={format}>
-                      <div className="flex items-center gap-2">
-                        <Icon className="h-4 w-4" />
+                      <div className="flex items-center gap-xs">
+                        <Icon className="h-icon-xs w-icon-xs" />
                         {format.toUpperCase()}
                       </div>
                     </SelectItem>
@@ -397,9 +397,9 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
         </div>
 
         {/* Date Range */}
-        <div className="space-y-2">
+        <div className="space-y-xs">
           <Label>Date Range (Optional)</Label>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-xs">
             <DatePicker
               date={exportConfig.dateRange?.start}
               onDateChange={(date) => handleConfigChange('dateRange', {
@@ -445,8 +445,8 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="fields">
           <AccordionTrigger>
-            <div className="flex items-center gap-2">
-              <Settings className="h-4 w-4" />
+            <div className="flex items-center gap-xs">
+              <Settings className="h-icon-xs w-icon-xs" />
               Field Selection
               <Badge variant="secondary" className="ml-2">
                 {exportConfig.fields?.length || 0} selected
@@ -454,8 +454,8 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
             </div>
           </AccordionTrigger>
           <AccordionContent>
-            <div className="space-y-3">
-              <div className="flex gap-2">
+            <div className="space-y-sm">
+              <div className="flex gap-xs">
                 <Button variant="outline" size="sm" onClick={handleSelectAllFields}>
                   Select All
                 </Button>
@@ -464,9 +464,9 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                 </Button>
               </div>
 
-              <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+              <div className="grid grid-cols-2 gap-xs max-h-container-xs overflow-y-auto">
                 {availableFields.map(field => (
-                  <div key={field.key} className="flex items-center space-x-2">
+                  <div key={field.key} className="flex items-center space-x-xs">
                     <Checkbox
                       id={field.key}
                       checked={exportConfig.fields?.includes(field.key) || false}
@@ -499,7 +499,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
             <AccordionContent>
               {/* CSV Options */}
               {exportConfig.format === 'csv' && (
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <div>
                     <Label>Delimiter</Label>
                     <Select
@@ -526,7 +526,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
               {/* Excel Options */}
               {exportConfig.format === 'excel' && (
-                <div className="space-y-3">
+                <div className="space-y-sm">
                   <div>
                     <Label>Sheet Name</Label>
                     <Input
@@ -542,8 +542,8 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
               {/* PDF Options */}
               {exportConfig.format === 'pdf' && (
-                <div className="space-y-3">
-                  <div className="grid grid-cols-2 gap-2">
+                <div className="space-y-sm">
+                  <div className="grid grid-cols-2 gap-xs">
                     <div>
                       <Label>Orientation</Label>
                       <Select
@@ -595,7 +595,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
       )}
 
       {/* Actions */}
-      <div className="flex gap-2">
+      <div className="flex gap-xs">
         <Button variant="outline" onClick={onClose}>
           Cancel
         </Button>
@@ -605,7 +605,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
           </Button>
         )}
         <Button onClick={handleStartExport} disabled={loading} className="flex-1">
-          <Download className="h-4 w-4 mr-2" />
+          <Download className="h-icon-xs w-icon-xs mr-2" />
           Export Data
         </Button>
       </div>
@@ -617,7 +617,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
     if (!previewData) return null;
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-lg">
         <div>
           <h3 className="text-lg font-medium mb-2">Export Preview</h3>
           <p className="text-muted-foreground">
@@ -626,30 +626,30 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
         </div>
 
         {/* Preview Stats */}
-        <div className="grid grid-cols-3 gap-4">
-          <div className="p-3 border rounded text-center">
+        <div className="grid grid-cols-3 gap-md">
+          <div className="p-sm border rounded text-center">
             <div className="text-2xl font-bold">{previewData.estimatedRecords.toLocaleString()}</div>
             <div className="text-sm text-muted-foreground">Total Records</div>
           </div>
-          <div className="p-3 border rounded text-center">
+          <div className="p-sm border rounded text-center">
             <div className="text-2xl font-bold">{(previewData.estimatedSize / 1024).toFixed(1)}KB</div>
             <div className="text-sm text-muted-foreground">Estimated Size</div>
           </div>
-          <div className="p-3 border rounded text-center">
+          <div className="p-sm border rounded text-center">
             <div className="text-2xl font-bold">{exportConfig.fields?.length || 0}</div>
             <div className="text-sm text-muted-foreground">Fields</div>
           </div>
         </div>
 
         {/* Data Preview */}
-        <div className="border rounded max-h-96 overflow-auto">
+        <div className="border rounded max-h-container-lg overflow-auto">
           <table className="w-full">
             <thead className="bg-muted">
               <tr>
                 {exportConfig.fields?.map(fieldKey => {
                   const field = availableFields.find(f => f.key === fieldKey);
                   return (
-                    <th key={fieldKey} className="p-2 text-left text-sm font-medium">
+                    <th key={fieldKey} className="p-xs text-left text-sm font-medium">
                       {field?.label || fieldKey}
                     </th>
                   );
@@ -660,7 +660,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
               {previewData.preview.map((row, idx) => (
                 <tr key={idx} className="border-t">
                   {exportConfig.fields?.map(fieldKey => (
-                    <td key={fieldKey} className="p-2 text-sm">
+                    <td key={fieldKey} className="p-xs text-sm">
                       {String((row as Record<string, unknown>)[fieldKey] || '')}
                     </td>
                   ))}
@@ -670,12 +670,12 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
           </table>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline" onClick={() => setCurrentStep('configure')}>
             Back to Configure
           </Button>
           <Button onClick={handleStartExport} className="flex-1">
-            <Download className="h-4 w-4 mr-2" />
+            <Download className="h-icon-xs w-icon-xs mr-2" />
             Start Export
           </Button>
         </div>
@@ -685,11 +685,11 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
   // Render export step
   const renderExportStep = () => (
-    <div className="space-y-6">
+    <div className="space-y-lg">
       <div className="text-center">
         {exportProgress.status === 'exporting' && (
           <>
-            <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+            <Loader2 className="h-icon-2xl w-icon-2xl animate-spin text-primary mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Exporting Data</h3>
             <div className="w-full bg-muted rounded-full h-2 mb-2">
               <div
@@ -703,9 +703,9 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
         {exportProgress.status === 'completed' && exportProgress.result?.success && (
           <>
-            <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-4" />
+            <CheckCircle className="h-icon-2xl w-icon-2xl text-green-500 mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Export Completed</h3>
-            <div className="space-y-2 text-sm">
+            <div className="space-y-xs text-sm">
               <div className="flex justify-between">
                 <span>Records exported:</span>
                 <span className="font-medium">{exportProgress.result.recordCount?.toLocaleString()}</span>
@@ -725,7 +725,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
                 onClick={() => window.open(exportProgress.result!.downloadUrl!, '_blank')}
                 className="mt-4"
               >
-                <Download className="h-4 w-4 mr-2" />
+                <Download className="h-icon-xs w-icon-xs mr-2" />
                 Download File
               </Button>
             )}
@@ -734,7 +734,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
 
         {exportProgress.status === 'failed' && (
           <>
-            <AlertTriangle className="h-12 w-12 text-destructive mx-auto mb-4" />
+            <AlertTriangle className="h-icon-2xl w-icon-2xl text-destructive mx-auto mb-4" />
             <h3 className="text-lg font-medium mb-2">Export Failed</h3>
             <div className="text-sm text-muted-foreground">
               {exportProgress.result?.error}
@@ -744,7 +744,7 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
       </div>
 
       {(exportProgress.status === 'completed' || exportProgress.status === 'failed') && (
-        <div className="flex gap-2">
+        <div className="flex gap-xs">
           <Button variant="outline" onClick={() => setCurrentStep('configure')} className="flex-1">
             Export Another
           </Button>
@@ -766,12 +766,12 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
         widthClasses[width]
       )}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b">
+        <div className="flex items-center justify-between p-lg border-b">
           <div className="flex-1 min-w-0">
             <h2 className="text-xl font-semibold truncate">
               {title || 'Export Data'}
             </h2>
-            <div className="flex items-center gap-2 mt-1">
+            <div className="flex items-center gap-xs mt-1">
               <Badge variant="outline">
                 {exportConfig.format.toUpperCase()}
               </Badge>
@@ -782,13 +782,13 @@ export const ExportDrawer: React.FC<ExportDrawerProps> = ({
           </div>
 
           <Button variant="ghost" size="sm" onClick={onClose}>
-            <X className="h-4 w-4" />
+            <X className="h-icon-xs w-icon-xs" />
           </Button>
         </div>
 
         {/* Content */}
         <div className="flex-1 overflow-y-auto">
-          <div className="p-6">
+          <div className="p-lg">
             {currentStep === 'configure' && renderConfigureStep()}
             {currentStep === 'preview' && renderPreviewStep()}
             {currentStep === 'export' && renderExportStep()}

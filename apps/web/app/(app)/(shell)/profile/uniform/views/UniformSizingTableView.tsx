@@ -76,9 +76,9 @@ export default function UniformSizingTableView({
  <Card>
  <div className="p-lg">
  <div className="animate-pulse space-y-md">
- <div className="h-10 bg-muted rounded"></div>
+ <div className="h-icon-xl bg-muted rounded"></div>
  {[...Array(5)].map((_, i) => (
- <div key={i} className="h-12 bg-muted rounded"></div>
+ <div key={i} className="h-icon-2xl bg-muted rounded"></div>
  ))}
  </div>
  </div>
@@ -89,7 +89,7 @@ export default function UniformSizingTableView({
  if (sizings.length === 0) {
  return (
  <Card className="p-xl text-center">
- <Shirt className="h-12 w-12 text-muted-foreground mx-auto mb-md" />
+ <Shirt className="h-icon-2xl w-icon-2xl text-muted-foreground mx-auto mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Uniform Sizing Records</h3>
  <p className="text-muted-foreground">
  Start by adding uniform sizing information for your team members.
@@ -103,7 +103,7 @@ export default function UniformSizingTableView({
  <Table>
  <TableHeader>
  <TableRow>
- <TableHead className="w-12">
+ <TableHead className="w-icon-2xl">
  <Checkbox
  checked={isAllSelected}
  indeterminate={isIndeterminate}
@@ -179,7 +179,7 @@ export default function UniformSizingTableView({
  </Button>
  </TableHead>
  
- <TableHead className="w-24">Actions</TableHead>
+ <TableHead className="w-component-lg">Actions</TableHead>
  </TableRow>
  </TableHeader>
  
@@ -207,8 +207,8 @@ export default function UniformSizingTableView({
  
  <TableCell>
  <div className="flex items-center space-x-sm">
- <Avatar className="h-8 w-8">
- <User className="h-4 w-4" />
+ <Avatar className="h-icon-lg w-icon-lg">
+ <User className="h-icon-xs w-icon-xs" />
  </Avatar>
  <div>
  <div className="font-medium">

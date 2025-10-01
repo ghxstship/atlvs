@@ -160,12 +160,12 @@ export default function DashboardOverviewTab({
   const renderMetrics = () => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-8">
           {Array.from({ length: 4 }).map((_, i) => (
             <Card key={i}>
-              <CardContent className="p-6">
-                <Skeleton className="h-4 w-24 mb-2" />
-                <Skeleton className="h-8 w-16" />
+              <CardContent className="p-lg">
+                <Skeleton className="h-icon-xs w-component-lg mb-2" />
+                <Skeleton className="h-icon-lg w-component-md" />
               </CardContent>
             </Card>
           ))}
@@ -174,12 +174,12 @@ export default function DashboardOverviewTab({
     }
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md mb-8">
         {metrics.map((metric) => {
           const Icon = metric.icon;
           return (
             <Card key={metric.id} className="hover:shadow-md transition-shadow">
-              <CardContent className="p-6">
+              <CardContent className="p-lg">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-muted-foreground mb-1">
@@ -190,8 +190,8 @@ export default function DashboardOverviewTab({
                     </p>
                   </div>
                   {Icon && (
-                    <div className={`p-2 rounded-lg bg-${metric.color}-100 text-${metric.color}-600`}>
-                      <Icon className="h-6 w-6" />
+                    <div className={`p-xs rounded-lg bg-${metric.color}-100 text-${metric.color}-600`}>
+                      <Icon className="h-icon-md w-icon-md" />
                     </div>
                   )}
                 </div>
@@ -207,12 +207,12 @@ export default function DashboardOverviewTab({
   const renderInsights = () => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-md mb-8">
           {Array.from({ length: 3 }).map((_, i) => (
             <Card key={i}>
-              <CardContent className="p-4">
-                <Skeleton className="h-4 w-32 mb-2" />
-                <Skeleton className="h-3 w-48" />
+              <CardContent className="p-md">
+                <Skeleton className="h-icon-xs w-component-xl mb-2" />
+                <Skeleton className="h-3 w-container-xs" />
               </CardContent>
             </Card>
           ))}
@@ -221,10 +221,10 @@ export default function DashboardOverviewTab({
     }
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-md mb-8">
         {insights.map((insight) => (
           <Card key={insight.id} className="hover:shadow-md transition-shadow">
-            <CardContent className="p-4">
+            <CardContent className="p-md">
               <div className="flex items-start justify-between mb-2">
                 <h4 className="font-medium">{insight.title}</h4>
                 {insight.trend && (
@@ -245,12 +245,12 @@ export default function DashboardOverviewTab({
   const renderRecentWidgets = () => {
     if (isLoading) {
       return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
           {Array.from({ length: 6 }).map((_, i) => (
             <Card key={i}>
-              <CardContent className="p-4">
-                <Skeleton className="h-4 w-24 mb-2" />
-                <Skeleton className="h-32 w-full" />
+              <CardContent className="p-md">
+                <Skeleton className="h-icon-xs w-component-lg mb-2" />
+                <Skeleton className="h-component-xl w-full" />
               </CardContent>
             </Card>
           ))}
@@ -259,17 +259,17 @@ export default function DashboardOverviewTab({
     }
 
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
         {widgets.slice(0, 6).map((widget) => (
           <Card key={widget.id} className="hover:shadow-md transition-shadow">
             <CardHeader className="pb-2">
-              <CardTitle className="text-sm flex items-center gap-2">
-                <BarChart3 className="h-4 w-4" />
+              <CardTitle className="text-sm flex items-center gap-xs">
+                <BarChart3 className="h-icon-xs w-icon-xs" />
                 {widget.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="h-24 bg-muted/50 rounded flex items-center justify-center">
+              <div className="h-component-lg bg-muted/50 rounded flex items-center justify-center">
                 <span className="text-sm text-muted-foreground capitalize">
                   {widget.type.replace('_', ' ')}
                 </span>
@@ -288,7 +288,7 @@ export default function DashboardOverviewTab({
   };
 
   return (
-    <div className="p-6 space-y-6">
+    <div className="p-lg space-y-lg">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -303,7 +303,7 @@ export default function DashboardOverviewTab({
           disabled={isRefreshing}
           variant="outline"
         >
-          <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`h-icon-xs w-icon-xs mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
           Refresh
         </Button>
       </div>

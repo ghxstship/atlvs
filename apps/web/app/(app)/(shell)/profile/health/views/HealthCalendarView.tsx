@@ -103,12 +103,12 @@ export default function HealthCalendarView({
 
  if (loading) {
  return (
- <Card className="p-6">
- <div className="space-y-4">
- <div className="h-8 w-48 bg-muted animate-pulse rounded" />
- <div className="grid grid-cols-7 gap-2">
+ <Card className="p-lg">
+ <div className="space-y-md">
+ <div className="h-icon-lg w-container-xs bg-muted animate-pulse rounded" />
+ <div className="grid grid-cols-7 gap-xs">
  {[...Array(35)].map((_, i) => (
- <div key={i} className="h-24 bg-muted animate-pulse rounded" />
+ <div key={i} className="h-component-lg bg-muted animate-pulse rounded" />
  ))}
  </div>
  </div>
@@ -117,46 +117,46 @@ export default function HealthCalendarView({
  }
 
  return (
- <div className="space-y-4">
+ <div className="space-y-md">
  {/* Header */}
- <Card className="p-4">
+ <Card className="p-md">
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-4">
- <h2 className="text-xl font-semibold flex items-center gap-2">
- <Calendar className="h-5 w-5" />
+ <div className="flex items-center gap-md">
+ <h2 className="text-xl font-semibold flex items-center gap-xs">
+ <Calendar className="h-icon-sm w-icon-sm" />
  {monthName}
  </h2>
  <Button variant="outline" size="sm" onClick={goToToday}>
  Today
  </Button>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button variant="outline" size="sm" onClick={() => navigateMonth('prev')}>
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button variant="outline" size="sm" onClick={() => navigateMonth('next')}>
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
  </Card>
 
  {/* Legend */}
- <Card className="p-4">
- <div className="flex items-center gap-6 text-sm">
- <div className="flex items-center gap-2">
+ <Card className="p-md">
+ <div className="flex items-center gap-lg text-sm">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 bg-blue-500 rounded-full" />
  <span>Recorded</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 bg-orange-500 rounded-full" />
  <span>Expires</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 bg-red-500 rounded-full" />
  <span>Expired</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Bell className="h-3 w-3" />
  <span>Reminder</span>
  </div>
@@ -164,22 +164,22 @@ export default function HealthCalendarView({
  </Card>
 
  {/* Calendar */}
- <Card className="p-4">
- <div className="space-y-4">
+ <Card className="p-md">
+ <div className="space-y-md">
  {/* Day headers */}
- <div className="grid grid-cols-7 gap-2">
+ <div className="grid grid-cols-7 gap-xs">
  {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(day => (
- <div key={day} className="p-2 text-center font-medium text-muted-foreground">
+ <div key={day} className="p-xs text-center font-medium text-muted-foreground">
  {day}
  </div>
  ))}
  </div>
 
  {/* Calendar grid */}
- <div className="grid grid-cols-7 gap-2">
+ <div className="grid grid-cols-7 gap-xs">
  {calendarDays.map((day, index) => {
  if (day === null) {
- return <div key={index} className="h-24" />;
+ return <div key={index} className="h-component-lg" />;
  }
 
  const recordedRecords = recordsByDate[`recorded-${day}`] || [];
@@ -191,7 +191,7 @@ export default function HealthCalendarView({
  return (
  <div
  key={day}
- className={`h-24 p-1 border rounded-lg ${
+ className={`h-component-lg p-xs border rounded-lg ${
  isToday ? 'bg-primary/10 border-primary' : 'border-border'
  } ${allDayRecords.length > 0 ? 'hover:bg-muted/50' : ''}`}
  >
@@ -207,7 +207,7 @@ export default function HealthCalendarView({
  )}
  </div>
  
- <div className="flex-1 space-y-1 overflow-hidden">
+ <div className="flex-1 space-y-xs overflow-hidden">
  {/* Recorded events */}
  {recordedRecords.slice(0, 2).map((record, i) => (
  <button
@@ -215,7 +215,7 @@ export default function HealthCalendarView({
  onClick={() => onEdit(record)}
  className="w-full text-left"
  >
- <div className="flex items-center gap-1 p-1 bg-blue-100 text-blue-800 rounded text-xs hover:bg-blue-200 transition-colors">
+ <div className="flex items-center gap-xs p-xs bg-blue-100 text-blue-800 rounded text-xs hover:bg-blue-200 transition-colors">
  <span>{getRecordTypeIcon(record.record_type)}</span>
  <span className="truncate">{record.title}</span>
  </div>
@@ -234,7 +234,7 @@ export default function HealthCalendarView({
  onClick={() => onEdit(record)}
  className="w-full text-left"
  >
- <div className={`flex items-center gap-1 p-1 rounded text-xs hover:opacity-80 transition-colors ${
+ <div className={`flex items-center gap-xs p-xs rounded text-xs hover:opacity-80 transition-colors ${
  isExpired 
  ? 'bg-red-100 text-red-800' 
  : isExpiringSoon 
@@ -269,12 +269,12 @@ export default function HealthCalendarView({
 
  {/* Upcoming Events */}
  {records.length > 0 && (
- <Card className="p-4">
- <h3 className="font-semibold mb-4 flex items-center gap-2">
- <Clock className="h-4 w-4" />
+ <Card className="p-md">
+ <h3 className="font-semibold mb-4 flex items-center gap-xs">
+ <Clock className="h-icon-xs w-icon-xs" />
  Upcoming Events
  </h3>
- <div className="space-y-2">
+ <div className="space-y-xs">
  {records
  .filter(record => {
  if (!record.expiry_date) return false;
@@ -291,10 +291,10 @@ export default function HealthCalendarView({
  <button
  key={record.id}
  onClick={() => onEdit(record)}
- className="w-full text-left p-3 border rounded-lg hover:bg-muted/50 transition-colors"
+ className="w-full text-left p-sm border rounded-lg hover:bg-muted/50 transition-colors"
  >
  <div className="flex items-center justify-between">
- <div className="flex items-center gap-3">
+ <div className="flex items-center gap-sm">
  <span className="text-lg">{getRecordTypeIcon(record.record_type)}</span>
  <div>
  <p className="font-medium">{record.title}</p>
@@ -321,8 +321,8 @@ export default function HealthCalendarView({
  })}
  
  {records.filter(r => r.expiry_date && getDaysUntilExpiry(r.expiry_date) >= 0 && getDaysUntilExpiry(r.expiry_date) <= 30).length === 0 && (
- <div className="text-center py-8 text-muted-foreground">
- <Activity className="h-8 w-8 mx-auto mb-2 opacity-50" />
+ <div className="text-center py-xl text-muted-foreground">
+ <Activity className="h-icon-lg w-icon-lg mx-auto mb-2 opacity-50" />
  <p>No upcoming events in the next 30 days</p>
  </div>
  )}

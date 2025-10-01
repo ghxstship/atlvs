@@ -212,10 +212,10 @@ export function TimelineView({
               
               onClick={() => navigateTimeline('prev')}
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-icon-xs w-icon-xs" />
             </Button>
             
-            <h2 className="text-lg font-semibold text-foreground min-w-[150px] text-center">
+            <h2 className="text-lg font-semibold text-foreground min-w-narrow text-center">
               {formatHeaderLabel()}
             </h2>
             
@@ -224,7 +224,7 @@ export function TimelineView({
               
               onClick={() => navigateTimeline('next')}
             >
-              <ChevronRight className="h-4 w-4" />
+              <ChevronRight className="h-icon-xs w-icon-xs" />
             </Button>
           </div>
           
@@ -257,7 +257,7 @@ export function TimelineView({
             
             onClick={() => config.onCreate?.()}
           >
-            <Plus className="h-4 w-4 mr-xs" />
+            <Plus className="h-icon-xs w-icon-xs mr-xs" />
             New Task
           </Button>
         </div>
@@ -267,14 +267,14 @@ export function TimelineView({
       <div className="overflow-auto">
         {/* Timeline Header */}
         <div className="flex border-b border-border bg-muted">
-          <div className="w-64 p-sm border-r border-border font-medium text-sm text-foreground">
+          <div className="w-container-sm p-sm border-r border-border font-medium text-sm text-foreground">
             Task
           </div>
           <div className="flex-1 flex">
             {timelineGrid.periods.map((period, index) => (
               <div
                 key={index}
-                className="flex-1 p-sm border-r border-border text-center text-sm font-medium text-muted-foreground min-w-[80px]"
+                className="flex-1 p-sm border-r border-border text-center text-sm font-medium text-muted-foreground min-w-icon-2xl"
                 onDragOver={(e: any) => e.preventDefault()}
                 onDrop={(e: any) => handleItemDrop(e, period)}
               >
@@ -296,13 +296,13 @@ export function TimelineView({
                 className={`flex hover:bg-muted/50 ${isDragging ? 'opacity-50' : ''}`}
               >
                 {/* Task Info */}
-                <div className="w-64 p-sm border-r border-border">
+                <div className="w-container-sm p-sm border-r border-border">
                   <div className="flex items-center gap-sm">
                     {item.milestone && (
-                      <Flag className="h-4 w-4 text-warning" />
+                      <Flag className="h-icon-xs w-icon-xs text-warning" />
                     )}
                     {item.critical && (
-                      <AlertTriangle className="h-4 w-4 text-destructive" />
+                      <AlertTriangle className="h-icon-xs w-icon-xs text-destructive" />
                     )}
                     <div
                       className="font-medium text-sm text-foreground cursor-pointer hover:text-accent truncate"
@@ -330,7 +330,7 @@ export function TimelineView({
 
                 {/* Timeline Bar */}
                 <div className="flex-1 relative p-sm">
-                  <div className="relative h-6">
+                  <div className="relative h-icon-md">
                     {item.milestone ? (
                       <div
                         className="absolute top-1/2 transform -translate-y-1/2 w-3 h-3 bg-warning rotate-45 cursor-pointer"
@@ -343,7 +343,7 @@ export function TimelineView({
                     ) : (
                       <div
                         className={`
-                          absolute top-1/2 transform -translate-y-1/2 h-4 rounded cursor-pointer
+                          absolute top-1/2 transform -translate-y-1/2 h-icon-xs rounded cursor-pointer
                           ${item.critical ? 'bg-destructive' : 'bg-accent'}
                           hover:opacity-80 transition-opacity
                         `}
@@ -366,7 +366,7 @@ export function TimelineView({
                 </div>
 
                 {/* Actions */}
-                <div className="w-12 p-sm flex items-center justify-center">
+                <div className="w-icon-2xl p-sm flex items-center justify-center">
                   <Button
                     variant="ghost"
                     
@@ -374,7 +374,7 @@ export function TimelineView({
                       // Show item actions menu
                     }}
                   >
-                    <MoreHorizontal className="h-4 w-4" />
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </div>
               </div>
@@ -385,13 +385,13 @@ export function TimelineView({
         {/* Empty State */}
         {timelineItems.length === 0 && (
           <div className="text-center py-2xl text-muted-foreground">
-            <Calendar className="h-12 w-12 mx-auto mb-md opacity-50" />
+            <Calendar className="h-icon-2xl w-icon-2xl mx-auto mb-md opacity-50" />
             <div className="text-lg font-medium mb-sm">No tasks in timeline</div>
             <Button
               variant="default"
               onClick={() => config.onCreate?.()}
             >
-              <Plus className="h-4 w-4 mr-xs" />
+              <Plus className="h-icon-xs w-icon-xs mr-xs" />
               Create Task
             </Button>
           </div>

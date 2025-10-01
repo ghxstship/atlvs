@@ -8,7 +8,7 @@ import { Button } from '@ghxstship/ui';
 
 export function CTASection() {
   return (
-    <section className="py-4xl bg-gradient-to-br from-primary/5 via-background to-accent/5">
+    <section className="py-mdxl bg-gradient-to-br from-primary/5 via-background to-accent/5">
       <div className="container mx-auto px-lg">
         {/* Main CTA */}
         <div className="text-center mb-xl">
@@ -29,7 +29,7 @@ export function CTASection() {
               <Link href="/auth/signup">
                 <Button className="w-full sm:w-auto group transition-all duration-200 hover:scale-105">
                   Start Free Trial
-                  <ArrowRight className="ml-sm h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  <ArrowRight className="ml-sm h-icon-xs w-icon-xs transition-transform group-hover:translate-x-1" />
                 </Button>
               </Link>
               <Link href="/products">
@@ -42,15 +42,15 @@ export function CTASection() {
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center items-center gap-xl text-body-sm color-muted">
               <div className="flex items-center gap-xl">
-                <CheckCircle className="h-4 w-4 color-success" />
+                <CheckCircle className="h-icon-xs w-icon-xs color-success" />
                 <span>No credit card required</span>
               </div>
               <div className="flex items-center gap-xl">
-                <Star className="h-4 w-4 color-warning" />
+                <Star className="h-icon-xs w-icon-xs color-warning" />
                 <span>14-day free trial</span>
               </div>
               <div className="flex items-center gap-xl">
-                <Zap className="h-4 w-4 color-accent" />
+                <Zap className="h-icon-xs w-icon-xs color-accent" />
                 <span>Setup in minutes</span>
               </div>
             </div>
@@ -61,8 +61,8 @@ export function CTASection() {
         <div className="grid md:grid-cols-3 gap-xl mb-xl">
           <Card className="text-center hover:shadow-floating transition-shadow">
             <CardContent className="p-xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
-                <CheckCircle className="h-8 w-8 color-accent" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-md">
+                <CheckCircle className="h-icon-lg w-icon-lg color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Quick Setup</h3>
               <p className="color-muted mb-md">
@@ -79,8 +79,8 @@ export function CTASection() {
 
           <Card className="text-center hover:shadow-floating transition-shadow">
             <CardContent className="p-xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-md">
-                <Star className="h-8 w-8 color-accent" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-accent/10 mb-md">
+                <Star className="h-icon-lg w-icon-lg color-accent" />
               </div>
               <h3 className="text-heading-3 mb-sm">Expert Support</h3>
               <p className="color-muted mb-md">
@@ -97,8 +97,8 @@ export function CTASection() {
 
           <Card className="text-center hover:shadow-floating transition-shadow">
             <CardContent className="p-xl">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-success/10 mb-md">
-                <Zap className="h-8 w-8 color-success" />
+              <div className="inline-flex items-center justify-center w-component-md h-component-md rounded-full bg-success/10 mb-md">
+                <Zap className="h-icon-lg w-icon-lg color-success" />
               </div>
               <h3 className="text-heading-3 mb-sm">Instant Results</h3>
               <p className="color-muted mb-md">

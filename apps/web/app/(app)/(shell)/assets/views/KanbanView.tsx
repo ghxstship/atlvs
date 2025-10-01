@@ -260,7 +260,7 @@ export default function KanbanView({
       >
         <CardHeader className="pb-2">
           <div className="flex items-start justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-xs">
               <Checkbox
                 checked={isSelected}
                 onChange={(checked) => handleCardSelect(asset.id, checked)}
@@ -270,11 +270,11 @@ export default function KanbanView({
                 <img
                   src={asset.image_urls[0]}
                   alt={asset.name}
-                  className="w-8 h-8 rounded object-cover bg-gray-100"
+                  className="w-icon-lg h-icon-lg rounded object-cover bg-gray-100"
                 />
               ) : (
-                <div className="w-8 h-8 rounded bg-gray-100 flex items-center justify-center">
-                  <Package className="w-4 h-4 text-gray-400" />
+                <div className="w-icon-lg h-icon-lg rounded bg-gray-100 flex items-center justify-center">
+                  <Package className="w-icon-xs h-icon-xs text-gray-400" />
                 </div>
               )}
             </div>
@@ -283,7 +283,7 @@ export default function KanbanView({
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="h-6 w-6 p-0"
+                  className="h-icon-md w-icon-md p-0"
                   onClick={(e) => e.stopPropagation()}
                 >
                   <MoreHorizontal className="h-3 w-3" />
@@ -291,20 +291,20 @@ export default function KanbanView({
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end">
                 <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('view', asset); }}>
-                  <Eye className="mr-2 h-4 w-4" />
+                  <Eye className="mr-2 h-icon-xs w-icon-xs" />
                   View Details
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('edit', asset); }}>
-                  <Edit className="mr-2 h-4 w-4" />
+                  <Edit className="mr-2 h-icon-xs w-icon-xs" />
                   Edit Asset
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('duplicate', asset); }}>
-                  <Copy className="mr-2 h-4 w-4" />
+                  <Copy className="mr-2 h-icon-xs w-icon-xs" />
                   Duplicate
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={(e) => { e.stopPropagation(); onAssetAction?.('export', asset); }}>
-                  <Download className="mr-2 h-4 w-4" />
+                  <Download className="mr-2 h-icon-xs w-icon-xs" />
                   Export
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
@@ -312,7 +312,7 @@ export default function KanbanView({
                   onClick={(e) => { e.stopPropagation(); onAssetAction?.('delete', asset); }}
                   className="text-red-600"
                 >
-                  <Trash2 className="mr-2 h-4 w-4" />
+                  <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
                   Delete
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -321,12 +321,12 @@ export default function KanbanView({
         </CardHeader>
 
         <CardContent className="pt-0">
-          <div className="space-y-2">
+          <div className="space-y-xs">
             <div>
-              <CardTitle className="text-sm font-medium line-clamp-2">
+              <CardTitle className="text-sm font-medium line-clamp-xs">
                 {asset.name}
               </CardTitle>
-              <div className="flex items-center gap-2 mt-1">
+              <div className="flex items-center gap-xs mt-1">
                 <Badge variant="outline" className="font-mono text-xs">
                   {asset.asset_tag}
                 </Badge>
@@ -349,7 +349,7 @@ export default function KanbanView({
             </div>
 
             {asset.assigned_to && (
-              <div className="flex items-center gap-2 text-xs text-gray-600">
+              <div className="flex items-center gap-xs text-xs text-gray-600">
                 <User className="w-3 h-3" />
                 <span className="truncate">
                   {asset.assigned_to.name}
@@ -358,7 +358,7 @@ export default function KanbanView({
             )}
 
             {asset.location && (
-              <div className="flex items-center gap-2 text-xs text-gray-600">
+              <div className="flex items-center gap-xs text-xs text-gray-600">
                 <MapPin className="w-3 h-3" />
                 <span className="truncate">
                   {asset.location.name}
@@ -367,7 +367,7 @@ export default function KanbanView({
             )}
 
             {asset.warranty_expiry && (
-              <div className="flex items-center gap-2 text-xs text-gray-600">
+              <div className="flex items-center gap-xs text-xs text-gray-600">
                 <Clock className="w-3 h-3" />
                 <span>
                   {new Date(asset.warranty_expiry) > new Date() ? 'Warranty' : 'Expired'}
@@ -388,7 +388,7 @@ export default function KanbanView({
     return (
       <div
         key={column.id}
-        className={`flex flex-col bg-gray-50 rounded-lg p-4 min-h-96 ${
+        className={`flex flex-col bg-gray-50 rounded-lg p-md min-h-container-lg ${
           isDragOver ? 'ring-2 ring-blue-300 bg-blue-50' : ''
         } ${column.color}`}
         onDragOver={(e) => {
@@ -401,32 +401,32 @@ export default function KanbanView({
         }}
       >
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-xs">
             <h3 className="font-semibold text-gray-900">{column.title}</h3>
             <Badge variant="secondary" className="text-xs">
               {column.assets.length}
               {column.wipLimit && ` / ${column.wipLimit}`}
             </Badge>
             {wipLimitExceeded && (
-              <AlertTriangle className="w-4 h-4 text-red-500" />
+              <AlertTriangle className="w-icon-xs h-icon-xs text-red-500" />
             )}
           </div>
           <Button
             variant="ghost"
             size="sm"
-            className="h-6 w-6 p-0"
+            className="h-icon-md w-icon-md p-0"
             onClick={() => onAssetAction?.('create', { status: column.status } as any)}
           >
             <Plus className="h-3 w-3" />
           </Button>
         </div>
 
-        <div className="flex-1 space-y-3 overflow-y-auto">
+        <div className="flex-1 space-y-sm overflow-y-auto">
           {column.assets.map(renderKanbanCard)}
 
           {column.assets.length === 0 && (
-            <div className="flex flex-col items-center justify-center py-8 text-gray-400">
-              <Package className="w-8 h-8 mb-2" />
+            <div className="flex flex-col items-center justify-center py-xl text-gray-400">
+              <Package className="w-icon-lg h-icon-lg mb-2" />
               <span className="text-sm">No assets</span>
             </div>
           )}
@@ -444,8 +444,8 @@ export default function KanbanView({
   return (
     <div className={`flex flex-col h-full ${className}`}>
       {/* Kanban Controls */}
-      <div className="flex items-center justify-between p-4 border-b">
-        <div className="flex items-center gap-4">
+      <div className="flex items-center justify-between p-md border-b">
+        <div className="flex items-center gap-md">
           <span className="text-sm text-gray-600">
             {assets.length} total assets
           </span>
@@ -455,7 +455,7 @@ export default function KanbanView({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-xs">
           {selectedCards.size > 0 && (
             <>
               <Button
@@ -474,22 +474,22 @@ export default function KanbanView({
       </div>
 
       {/* Kanban Board */}
-      <div className="flex-1 overflow-x-auto p-4">
+      <div className="flex-1 overflow-x-auto p-md">
         {loading ? (
-          <div className="flex items-center justify-center h-64">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+          <div className="flex items-center justify-center h-container-sm">
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-gray-900"></div>
             <span className="ml-2">Loading kanban board...</span>
           </div>
         ) : (
-          <div className="flex gap-6 min-w-max">
+          <div className="flex gap-lg min-w-max">
             {kanbanData.map(renderKanbanColumn)}
           </div>
         )}
       </div>
 
       {/* WIP Limits Indicator */}
-      <div className="px-4 pb-4">
-        <div className="flex gap-2 text-xs text-gray-600">
+      <div className="px-md pb-4">
+        <div className="flex gap-xs text-xs text-gray-600">
           <span>WIP Limits:</span>
           {KANBAN_COLUMNS.filter(col => col.wipLimit).map(col => (
             <Badge

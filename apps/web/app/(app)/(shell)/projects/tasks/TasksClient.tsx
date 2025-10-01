@@ -466,7 +466,7 @@ export default function TasksClient({
  </p>
  </div>
  <Button onClick={handleCreateTask}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Task
  </Button>
  </div>
@@ -479,7 +479,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">Total</p>
  <p className="text-2xl font-bold">{statistics.total}</p>
  </div>
- <ListTodo className="h-8 w-8 text-muted-foreground" />
+ <ListTodo className="h-icon-lg w-icon-lg text-muted-foreground" />
  </div>
  </Card>
  <Card className="p-sm">
@@ -488,7 +488,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">In Progress</p>
  <p className="text-2xl font-bold text-info">{statistics.inProgress}</p>
  </div>
- <Clock className="h-8 w-8 text-info" />
+ <Clock className="h-icon-lg w-icon-lg text-info" />
  </div>
  </Card>
  <Card className="p-sm">
@@ -497,7 +497,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">Review</p>
  <p className="text-2xl font-bold text-warning">{statistics.review}</p>
  </div>
- <Eye className="h-8 w-8 text-warning" />
+ <Eye className="h-icon-lg w-icon-lg text-warning" />
  </div>
  </Card>
  <Card className="p-sm">
@@ -506,7 +506,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">Completed</p>
  <p className="text-2xl font-bold text-success">{statistics.done}</p>
  </div>
- <CheckCircle className="h-8 w-8 text-success" />
+ <CheckCircle className="h-icon-lg w-icon-lg text-success" />
  </div>
  </Card>
  <Card className="p-sm">
@@ -515,7 +515,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">Overdue</p>
  <p className="text-2xl font-bold text-destructive">{statistics.overdue}</p>
  </div>
- <AlertTriangle className="h-8 w-8 text-destructive" />
+ <AlertTriangle className="h-icon-lg w-icon-lg text-destructive" />
  </div>
  </Card>
  <Card className="p-sm">
@@ -524,7 +524,7 @@ export default function TasksClient({
  <p className="text-sm text-muted-foreground">Critical</p>
  <p className="text-2xl font-bold text-destructive">{statistics.critical}</p>
  </div>
- <AlertCircle className="h-8 w-8 text-destructive" />
+ <AlertCircle className="h-icon-lg w-icon-lg text-destructive" />
  </div>
  </Card>
  </div>
@@ -532,8 +532,8 @@ export default function TasksClient({
  {/* Filters and View Switcher */}
  <div className="flex flex-col lg:flex-row gap-md">
  <div className="flex-1 flex flex-wrap gap-sm">
- <div className="relative flex-1 min-w-[200px]">
- <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+ <div className="relative flex-1 min-w-content-narrow">
+ <Search className="absolute left-3 top-xs/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
  <Input
  placeholder="Search tasks..."
  value={searchQuery}
@@ -586,9 +586,9 @@ export default function TasksClient({
  <DropdownMenu>
  <DropdownMenuTrigger asChild>
  <Button variant="outline" size="sm">
- <Tag className="mr-2 h-4 w-4" />
+ <Tag className="mr-2 h-icon-xs w-icon-xs" />
  Tags ({selectedTags.length})
- <ChevronDown className="ml-2 h-4 w-4" />
+ <ChevronDown className="ml-2 h-icon-xs w-icon-xs" />
  </Button>
  </DropdownMenuTrigger>
  <DropdownMenuContent>
@@ -633,7 +633,7 @@ export default function TasksClient({
  size="sm"
  onClick={handleBulkDelete}
  >
- <Trash2 className="mr-2 h-4 w-4" />
+ <Trash2 className="mr-2 h-icon-xs w-icon-xs" />
  Delete ({selectedItems.size})
  </Button>
  <Button
@@ -641,7 +641,7 @@ export default function TasksClient({
  size="sm"
  onClick={handleBulkExport}
  >
- <Download className="mr-2 h-4 w-4" />
+ <Download className="mr-2 h-icon-xs w-icon-xs" />
  Export
  </Button>
  </>
@@ -666,7 +666,7 @@ export default function TasksClient({
  onClick={() => setViewType(view.id as ViewType)}
  className="rounded-none first:rounded-l-md last:rounded-r-md"
  >
- <Icon className="h-4 w-4" />
+ <Icon className="h-icon-xs w-icon-xs" />
  </Button>
  );
  })}
@@ -679,11 +679,11 @@ export default function TasksClient({
  <Card className="p-lg">
  {loading ? (
  <div className="flex items-center justify-center py-xl">
- <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+ <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary"></div>
  </div>
  ) : filteredTasks.length === 0 ? (
  <div className="text-center py-xl">
- <ListTodo className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <ListTodo className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No tasks found</h3>
  <p className="text-muted-foreground mb-md">
  {searchQuery || selectedStatus !== "all" || selectedPriority !== "all"
@@ -691,7 +691,7 @@ export default function TasksClient({
  : "Get started by creating your first task"}
  </p>
  <Button onClick={handleCreateTask}>
- <Plus className="mr-2 h-4 w-4" />
+ <Plus className="mr-2 h-icon-xs w-icon-xs" />
  Create Task
  </Button>
  </div>

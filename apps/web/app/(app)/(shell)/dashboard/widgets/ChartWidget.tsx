@@ -268,8 +268,8 @@ export default function ChartWidget({
     return (
       <Card className="p-lg h-full">
         <div className="animate-pulse">
-          <div className="h-4 bg-secondary/50 rounded w-3/4 mb-md"></div>
-          <div className="h-64 bg-secondary/50 rounded"></div>
+          <div className="h-icon-xs bg-secondary/50 rounded w-3/4 mb-md"></div>
+          <div className="h-container-sm bg-secondary/50 rounded"></div>
         </div>
       </Card>
     );
@@ -297,7 +297,7 @@ export default function ChartWidget({
             className="p-xs color-muted hover:color-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
             aria-label="Refresh chart"
           >
-            <RefreshCw className="h-4 w-4" />
+            <RefreshCw className="h-icon-xs w-icon-xs" />
           </button>
           {(onEdit || onDelete) && (
             <button
@@ -305,14 +305,14 @@ export default function ChartWidget({
               className="p-xs color-muted hover:color-foreground rounded opacity-0 group-hover:opacity-100 transition-opacity"
               aria-label="Edit widget"
             >
-              <MoreHorizontal className="h-4 w-4" />
+              <MoreHorizontal className="h-icon-xs w-icon-xs" />
             </button>
           )}
         </div>
       </div>
 
       {/* Chart */}
-      <div className="h-64 mb-md">
+      <div className="h-container-sm mb-md">
         {chartData ? renderChart() : (
           <div className="flex items-center justify-center h-full color-muted">
             No data available

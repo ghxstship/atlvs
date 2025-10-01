@@ -73,12 +73,12 @@ export default function ListView({
 
   if (loading) {
     return (
-      <div className={`space-y-2 ${className}`}>
+      <div className={`space-y-xs ${className}`}>
         {Array.from({ length: 5 }).map((_, i) => (
-          <div key={i} className="animate-pulse bg-card border rounded-lg p-4">
-            <div className="flex items-center gap-4">
-              <div className="h-4 bg-muted rounded w-48"></div>
-              <div className="h-3 bg-muted rounded w-32"></div>
+          <div key={i} className="animate-pulse bg-card border rounded-lg p-md">
+            <div className="flex items-center gap-md">
+              <div className="h-icon-xs bg-muted rounded w-container-xs"></div>
+              <div className="h-3 bg-muted rounded w-component-xl"></div>
             </div>
           </div>
         ))}
@@ -88,7 +88,7 @@ export default function ListView({
 
   if (data.length === 0) {
     return (
-      <div className={`flex items-center justify-center p-8 ${className}`}>
+      <div className={`flex items-center justify-center p-xl ${className}`}>
         <div className="text-center text-muted-foreground">
           {emptyMessage}
         </div>
@@ -97,17 +97,17 @@ export default function ListView({
   }
 
   return (
-    <div className={`space-y-2 ${className}`}>
+    <div className={`space-y-xs ${className}`}>
       {data.map((item) => (
         <div
           key={item.id}
-          className={`bg-card border rounded-lg p-4 cursor-pointer hover:shadow-sm transition-shadow ${
+          className={`bg-card border rounded-lg p-md cursor-pointer hover:shadow-sm transition-shadow ${
             selectedItems.includes(item.id) ? 'ring-2 ring-primary' : ''
           }`}
           onClick={() => onItemClick?.(item)}
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4 flex-1">
+            <div className="flex items-center gap-md flex-1">
               {selectable && (
                 <Checkbox
                   checked={selectedItems.includes(item.id)}
@@ -117,7 +117,7 @@ export default function ListView({
               )}
 
               <div className="flex-1">
-                <div className="flex items-center gap-2 mb-1">
+                <div className="flex items-center gap-xs mb-1">
                   <h3 className="font-medium text-sm">
                     {item[primaryField] || item.name || item.title}
                   </h3>
@@ -129,14 +129,14 @@ export default function ListView({
                 </div>
 
                 {item[secondaryField] && (
-                  <p className="text-sm text-muted-foreground line-clamp-1">
+                  <p className="text-sm text-muted-foreground line-clamp-xs">
                     {item[secondaryField]}
                   </p>
                 )}
 
-                <div className="flex items-center gap-4 mt-2">
+                <div className="flex items-center gap-md mt-2">
                   {fields.slice(0, 3).map((field) => (
-                    <div key={field.key} className="flex items-center gap-1 text-xs text-muted-foreground">
+                    <div key={field.key} className="flex items-center gap-xs text-xs text-muted-foreground">
                       <span className="font-medium">{field.label}:</span>
                       <span>{renderFieldValue(item, field)}</span>
                     </div>
@@ -152,9 +152,9 @@ export default function ListView({
                     variant="ghost"
                     size="sm"
                     onClick={(e) => e.stopPropagation()}
-                    className="h-8 w-8 p-0"
+                    className="h-icon-lg w-icon-lg p-0"
                   >
-                    <MoreHorizontal className="h-4 w-4" />
+                    <MoreHorizontal className="h-icon-xs w-icon-xs" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
@@ -187,7 +187,7 @@ export default function ListView({
       ))}
 
       {selectable && selectedItems.length > 0 && (
-        <div className="px-4 py-2 bg-muted/30 rounded-lg text-sm text-muted-foreground">
+        <div className="px-md py-xs bg-muted/30 rounded-lg text-sm text-muted-foreground">
           {selectedItems.length} item{selectedItems.length !== 1 ? 's' : ''} selected
         </div>
       )}

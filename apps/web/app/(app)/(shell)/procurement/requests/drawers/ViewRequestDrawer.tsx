@@ -31,15 +31,15 @@ export default function ViewRequestDrawer({
  const getStatusIcon = (status: string) => {
  switch (status) {
  case 'approved':
- return <CheckCircle className="h-4 w-4 text-success" />;
+ return <CheckCircle className="h-icon-xs w-icon-xs text-success" />;
  case 'rejected':
- return <XCircle className="h-4 w-4 text-destructive" />;
+ return <XCircle className="h-icon-xs w-icon-xs text-destructive" />;
  case 'under_review':
- return <Clock className="h-4 w-4 text-warning" />;
+ return <Clock className="h-icon-xs w-icon-xs text-warning" />;
  case 'submitted':
- return <AlertTriangle className="h-4 w-4 text-info" />;
+ return <AlertTriangle className="h-icon-xs w-icon-xs text-info" />;
  default:
- return <Clock className="h-4 w-4 text-muted-foreground" />;
+ return <Clock className="h-icon-xs w-icon-xs text-muted-foreground" />;
  }
  };
 
@@ -100,7 +100,7 @@ export default function ViewRequestDrawer({
  <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <DollarSign className="h-4 w-4 text-muted-foreground" />
+ <DollarSign className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Estimated Total</span>
  </div>
  <p className="text-lg font-semibold">
@@ -113,7 +113,7 @@ export default function ViewRequestDrawer({
 
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <AlertTriangle className="h-4 w-4 text-muted-foreground" />
+ <AlertTriangle className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Priority</span>
  </div>
  <Badge variant={getPriorityVariant(request.priority) as unknown}>
@@ -123,7 +123,7 @@ export default function ViewRequestDrawer({
 
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <Package className="h-4 w-4 text-muted-foreground" />
+ <Package className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Category</span>
  </div>
  <p className="capitalize">{request.category}</p>
@@ -132,7 +132,7 @@ export default function ViewRequestDrawer({
  {request.requested_delivery_date && (
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <Calendar className="h-4 w-4 text-muted-foreground" />
+ <Calendar className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Requested Delivery</span>
  </div>
  <p>{new Date(request.requested_delivery_date).toLocaleDateString()}</p>
@@ -145,7 +145,7 @@ export default function ViewRequestDrawer({
  {/* Business Justification */}
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <FileText className="h-4 w-4 text-muted-foreground" />
+ <FileText className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Business Justification</span>
  </div>
  <p className="text-sm text-muted-foreground whitespace-pre-wrap">
@@ -161,7 +161,7 @@ export default function ViewRequestDrawer({
  {request.budget_code && (
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 text-muted-foreground" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Budget Code</span>
  </div>
  <p>{request.budget_code}</p>
@@ -171,7 +171,7 @@ export default function ViewRequestDrawer({
  {request.department && (
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <Building className="h-4 w-4 text-muted-foreground" />
+ <Building className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Department</span>
  </div>
  <p>{request.department}</p>
@@ -187,7 +187,7 @@ export default function ViewRequestDrawer({
  <Separator />
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <User className="h-4 w-4 text-muted-foreground" />
+ <User className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">
  {request.status === 'rejected' ? 'Rejection Reason' : 'Approval Notes'}
  </span>
@@ -205,7 +205,7 @@ export default function ViewRequestDrawer({
  <Separator />
  <div className="space-y-sm">
  <div className="flex items-center gap-sm">
- <Package className="h-4 w-4 text-muted-foreground" />
+ <Package className="h-icon-xs w-icon-xs text-muted-foreground" />
  <span className="text-sm font-medium">Request Items</span>
  </div>
  <div className="space-y-sm">

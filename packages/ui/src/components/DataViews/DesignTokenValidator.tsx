@@ -360,7 +360,7 @@ export function DesignTokenValidator({
       {/* Header */}
       <div className="flex items-center justify-between p-md border-b border-border">
         <div className="flex items-center gap-sm">
-          <Palette className="h-5 w-5 text-accent" />
+          <Palette className="h-icon-sm w-icon-sm text-accent" />
           <div>
             <h3 className="font-semibold">Design Token Validator</h3>
             <p className="text-sm text-muted-foreground">
@@ -384,12 +384,12 @@ export function DesignTokenValidator({
           >
             {isValidating ? (
               <>
-                <RefreshCw className="h-4 w-4 mr-xs animate-spin" />
+                <RefreshCw className="h-icon-xs w-icon-xs mr-xs animate-spin" />
                 Validating...
               </>
             ) : (
               <>
-                <Zap className="h-4 w-4 mr-xs" />
+                <Zap className="h-icon-xs w-icon-xs mr-xs" />
                 Validate
               </>
             )}
@@ -402,7 +402,7 @@ export function DesignTokenValidator({
         <div className="grid grid-cols-2 md:grid-cols-4 gap-md">
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <CheckCircle className="h-4 w-4 text-success" />
+              <CheckCircle className="h-icon-xs w-icon-xs text-success" />
               <span className="text-sm font-medium">Files Validated</span>
             </div>
             <div className="text-2xl font-bold">
@@ -415,7 +415,7 @@ export function DesignTokenValidator({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <AlertTriangle className="h-4 w-4 text-warning" />
+              <AlertTriangle className="h-icon-xs w-icon-xs text-warning" />
               <span className="text-sm font-medium">Violations</span>
             </div>
             <div className="text-2xl font-bold">
@@ -428,7 +428,7 @@ export function DesignTokenValidator({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Palette className="h-4 w-4 text-accent" />
+              <Palette className="h-icon-xs w-icon-xs text-accent" />
               <span className="text-sm font-medium">Token Usage</span>
             </div>
             <div className="text-2xl font-bold">
@@ -441,7 +441,7 @@ export function DesignTokenValidator({
 
           <Card className="p-sm">
             <div className="flex items-center gap-sm mb-sm">
-              <Eye className="h-4 w-4 text-muted-foreground" />
+              <Eye className="h-icon-xs w-icon-xs text-muted-foreground" />
               <span className="text-sm font-medium">Last Validated</span>
             </div>
             <div className="text-sm font-bold">
@@ -456,7 +456,7 @@ export function DesignTokenValidator({
         {/* Filters */}
         <div className="flex items-center gap-md">
           <div className="relative flex-1">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-icon-xs w-icon-xs text-muted-foreground" />
             <Input
               placeholder="Search violations..."
               value={searchQuery}
@@ -493,11 +493,11 @@ export function DesignTokenValidator({
         {/* Violations List */}
         <div>
           <h4 className="font-medium mb-sm flex items-center gap-sm">
-            <XCircle className="h-4 w-4 text-destructive" />
+            <XCircle className="h-icon-xs w-icon-xs text-destructive" />
             Design Token Violations ({filteredViolations.length})
           </h4>
           
-          <div className="gap-sm max-h-96 overflow-y-auto">
+          <div className="gap-sm max-h-container-lg overflow-y-auto">
             {filteredViolations.map(violation => (
               <Card key={violation.id} className="p-sm">
                 <div className="flex items-start justify-between">
@@ -553,7 +553,7 @@ export function DesignTokenValidator({
             
             {filteredViolations.length === 0 && (
               <div className="text-center py-xl text-muted-foreground">
-                <CheckCircle className="h-8 w-8 mx-auto mb-sm text-success" />
+                <CheckCircle className="h-icon-lg w-icon-lg mx-auto mb-sm text-success" />
                 <div className="text-sm">
                   {violations.length === 0 ? 'No violations found!' : 'No violations match your filters.'}
                 </div>
@@ -565,7 +565,7 @@ export function DesignTokenValidator({
         {/* Token Usage Summary */}
         <div>
           <h4 className="font-medium mb-sm flex items-center gap-sm">
-            <Palette className="h-4 w-4 text-accent" />
+            <Palette className="h-icon-xs w-icon-xs text-accent" />
             Token Usage Summary
           </h4>
           
@@ -601,11 +601,11 @@ export function DesignTokenValidator({
           
           <div className="flex items-center gap-sm">
             <Button variant="ghost" >
-              <Download className="h-4 w-4 mr-xs" />
+              <Download className="h-icon-xs w-icon-xs mr-xs" />
               Export Report
             </Button>
             <Button variant="ghost" >
-              <Settings className="h-4 w-4 mr-xs" />
+              <Settings className="h-icon-xs w-icon-xs mr-xs" />
               Configure Rules
             </Button>
           </div>

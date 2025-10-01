@@ -230,13 +230,13 @@ export function ChartView<T extends ProgrammingEntity>({
 
   if (loading) {
     return (
-      <div className={`space-y-6 ${className}`}>
+      <div className={`space-y-lg ${className}`}>
         <Card>
           <CardHeader>
-            <div className="h-6 bg-gray-200 animate-pulse rounded w-1/3" />
+            <div className="h-icon-md bg-gray-200 animate-pulse rounded w-1/3" />
           </CardHeader>
           <CardContent>
-            <div className="h-80 bg-gray-100 animate-pulse rounded" />
+            <div className="h-container-md bg-gray-100 animate-pulse rounded" />
           </CardContent>
         </Card>
       </div>
@@ -245,24 +245,24 @@ export function ChartView<T extends ProgrammingEntity>({
 
   if (data.length === 0) {
     return (
-      <div className={`text-center py-12 ${className}`}>
+      <div className={`text-center py-xsxl ${className}`}>
         <p className="text-gray-500">{emptyMessage}</p>
       </div>
     );
   }
 
   return (
-    <div className={`space-y-6 ${className}`}>
+    <div className={`space-y-lg ${className}`}>
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-lg">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Total Items</p>
                 <p className="text-2xl font-bold text-gray-900">{summaryStats.totalItems}</p>
               </div>
-              <div className="h-8 w-8 bg-blue-100 rounded-full flex items-center justify-center">
+              <div className="h-icon-lg w-icon-lg bg-blue-100 rounded-full flex items-center justify-center">
                 <span className="text-blue-600 font-bold">{summaryStats.totalItems}</span>
               </div>
             </div>
@@ -271,13 +271,13 @@ export function ChartView<T extends ProgrammingEntity>({
 
         {summaryStats.totalCapacity > 0 && (
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Total Capacity</p>
                   <p className="text-2xl font-bold text-gray-900">{summaryStats.totalCapacity}</p>
                 </div>
-                <div className="h-8 w-8 bg-green-100 rounded-full flex items-center justify-center">
+                <div className="h-icon-lg w-icon-lg bg-green-100 rounded-full flex items-center justify-center">
                   <span className="text-green-600 font-bold">👥</span>
                 </div>
               </div>
@@ -287,13 +287,13 @@ export function ChartView<T extends ProgrammingEntity>({
 
         {summaryStats.totalDuration > 0 && (
           <Card>
-            <CardContent className="p-6">
+            <CardContent className="p-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm font-medium text-gray-600">Total Duration</p>
                   <p className="text-2xl font-bold text-gray-900">{summaryStats.totalDuration}m</p>
                 </div>
-                <div className="h-8 w-8 bg-yellow-100 rounded-full flex items-center justify-center">
+                <div className="h-icon-lg w-icon-lg bg-yellow-100 rounded-full flex items-center justify-center">
                   <span className="text-yellow-600 font-bold">⏱️</span>
                 </div>
               </div>
@@ -302,13 +302,13 @@ export function ChartView<T extends ProgrammingEntity>({
         )}
 
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="p-lg">
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm font-medium text-gray-600">Categories</p>
                 <p className="text-2xl font-bold text-gray-900">{chartData.length}</p>
               </div>
-              <div className="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
+              <div className="h-icon-lg w-icon-lg bg-purple-100 rounded-full flex items-center justify-center">
                 <span className="text-purple-600 font-bold">📊</span>
               </div>
             </div>
@@ -320,20 +320,20 @@ export function ChartView<T extends ProgrammingEntity>({
       <Card>
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="flex items-center gap-2">
+            <CardTitle className="flex items-center gap-xs">
               {title}
               <Badge variant="outline">{chartType.toUpperCase()}</Badge>
               <Badge variant="secondary">{groupBy}</Badge>
             </CardTitle>
 
             {onExport && (
-              <div className="flex gap-2">
+              <div className="flex gap-xs">
                 <Button variant="outline" size="sm" onClick={() => onExport('png')}>
-                  <Download className="h-4 w-4 mr-2" />
+                  <Download className="h-icon-xs w-icon-xs mr-2" />
                   PNG
                 </Button>
                 <Button variant="outline" size="sm" onClick={() => onExport('csv')}>
-                  <Download className="h-4 w-4 mr-2" />
+                  <Download className="h-icon-xs w-icon-xs mr-2" />
                   CSV
                 </Button>
               </div>
@@ -355,21 +355,21 @@ export function ChartView<T extends ProgrammingEntity>({
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left p-2">Category</th>
-                  <th className="text-left p-2">Count</th>
-                  {metric === 'capacity' && <th className="text-left p-2">Total Capacity</th>}
-                  {metric === 'duration' && <th className="text-left p-2">Total Duration</th>}
-                  <th className="text-left p-2">Average</th>
+                  <th className="text-left p-xs">Category</th>
+                  <th className="text-left p-xs">Count</th>
+                  {metric === 'capacity' && <th className="text-left p-xs">Total Capacity</th>}
+                  {metric === 'duration' && <th className="text-left p-xs">Total Duration</th>}
+                  <th className="text-left p-xs">Average</th>
                 </tr>
               </thead>
               <tbody>
                 {chartData.map((item, index) => (
                   <tr key={index} className="border-b">
-                    <td className="p-2 font-medium">{item.name}</td>
-                    <td className="p-2">{item.count}</td>
-                    {metric === 'capacity' && <td className="p-2">{item.capacity}</td>}
-                    {metric === 'duration' && <td className="p-2">{item.duration}m</td>}
-                    <td className="p-2">
+                    <td className="p-xs font-medium">{item.name}</td>
+                    <td className="p-xs">{item.count}</td>
+                    {metric === 'capacity' && <td className="p-xs">{item.capacity}</td>}
+                    {metric === 'duration' && <td className="p-xs">{item.duration}m</td>}
+                    <td className="p-xs">
                       {metric === 'capacity' ? item.avgCapacity :
                        metric === 'duration' ? `${item.avgDuration}m` :
                        item.count}

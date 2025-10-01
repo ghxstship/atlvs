@@ -134,7 +134,7 @@ export default function TaskCalendarView({
  key={dateStr}
  onClick={() => setSelectedDate(day)}
  className={`
- min-h-[100px] border p-2 cursor-pointer transition-all
+ min-h-header-md border p-xs cursor-pointer transition-all
  ${!isCurrentMonth ? "bg-muted/30 text-muted-foreground" : "hover:bg-muted/50"}
  ${isTodayDate ? "bg-primary/10 border-primary" : ""}
  ${isSelected ? "ring-2 ring-primary" : ""}
@@ -145,7 +145,7 @@ export default function TaskCalendarView({
  {format(day, "d")}
  </span>
  {dayTasks.length > 0 && (
- <Badge variant="secondary" className="text-xs px-1">
+ <Badge variant="secondary" className="text-xs px-xs">
  {dayTasks.length}
  </Badge>
  )}
@@ -153,9 +153,9 @@ export default function TaskCalendarView({
 
  {/* Task indicators */}
  {dayTasks.length > 0 && (
- <div className="space-y-1">
+ <div className="space-y-xs">
  {/* Status summary */}
- <div className="flex gap-1 flex-wrap">
+ <div className="flex gap-xs flex-wrap">
  {Object.entries(tasksByStatus).map(([status, count]) => (
  <div
  key={status}
@@ -173,9 +173,9 @@ export default function TaskCalendarView({
  e.stopPropagation();
  onViewTask(task);
  }}
- className="text-xs p-1 rounded bg-background hover:bg-accent transition-colors truncate"
+ className="text-xs p-xs rounded bg-background hover:bg-accent transition-colors truncate"
  >
- <div className="flex items-center gap-1">
+ <div className="flex items-center gap-xs">
  {getPriorityIndicator(task.priority) && (
  <span className={`font-bold ${
  task.priority === "critical" ? "text-destructive" :
@@ -208,7 +208,7 @@ export default function TaskCalendarView({
  }, [selectedDate, tasksByDate]);
 
  return (
- <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 lg:grid-cols-3 gap-md">
  {/* Calendar */}
  <div className="lg:col-span-2">
  {/* Calendar Header */}
@@ -216,13 +216,13 @@ export default function TaskCalendarView({
  <h2 className="text-lg font-semibold">
  {format(currentDate, "MMMM yyyy")}
  </h2>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Button
  variant="outline"
  size="sm"
  onClick={goToPreviousMonth}
  >
- <ChevronLeft className="h-4 w-4" />
+ <ChevronLeft className="h-icon-xs w-icon-xs" />
  </Button>
  <Button
  variant="outline"
@@ -236,7 +236,7 @@ export default function TaskCalendarView({
  size="sm"
  onClick={goToNextMonth}
  >
- <ChevronRight className="h-4 w-4" />
+ <ChevronRight className="h-icon-xs w-icon-xs" />
  </Button>
  </div>
  </div>
@@ -244,7 +244,7 @@ export default function TaskCalendarView({
  {/* Weekday headers */}
  <div className="grid grid-cols-7 gap-0 mb-2">
  {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map(day => (
- <div key={day} className="text-center text-sm font-medium p-2">
+ <div key={day} className="text-center text-sm font-medium p-xs">
  {day}
  </div>
  ))}
@@ -256,24 +256,24 @@ export default function TaskCalendarView({
  </div>
 
  {/* Legend */}
- <div className="flex items-center gap-4 mt-4 text-sm">
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-md mt-4 text-sm">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 rounded-full bg-muted" />
  <span>To Do</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 rounded-full bg-info" />
  <span>In Progress</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 rounded-full bg-warning" />
  <span>Review</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 rounded-full bg-success" />
  <span>Done</span>
  </div>
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <div className="w-3 h-3 rounded-full bg-destructive" />
  <span>Blocked</span>
  </div>
@@ -282,29 +282,29 @@ export default function TaskCalendarView({
 
  {/* Selected Date Tasks */}
  <div className="lg:col-span-1">
- <Card className="p-4">
+ <Card className="p-md">
  <h3 className="font-semibold mb-4">
  {selectedDate ? format(selectedDate, "EEEE, MMMM d, yyyy") : "Select a date"}
  </h3>
 
  {selectedDateTasks.length === 0 ? (
- <div className="text-center py-8 text-muted-foreground">
- <Calendar className="mx-auto h-8 w-8 mb-2" />
+ <div className="text-center py-xl text-muted-foreground">
+ <Calendar className="mx-auto h-icon-lg w-icon-lg mb-2" />
  <p className="text-sm">
  {selectedDate ? "No tasks for this date" : "Select a date to view tasks"}
  </p>
  </div>
  ) : (
- <div className="space-y-3 max-h-[600px] overflow-y-auto">
+ <div className="space-y-sm max-h-content-xl overflow-y-auto">
  {selectedDateTasks.map(task => (
  <Card
  key={task.id}
- className="p-3 cursor-pointer hover:shadow-md transition-shadow"
+ className="p-sm cursor-pointer hover:shadow-md transition-shadow"
  onClick={() => onViewTask(task)}
  >
- <div className="space-y-2">
+ <div className="space-y-xs">
  <div className="flex items-start justify-between">
- <h4 className="font-medium text-sm line-clamp-2">{task.title}</h4>
+ <h4 className="font-medium text-sm line-clamp-xs">{task.title}</h4>
  <Button
  variant="ghost"
  size="sm"
@@ -317,7 +317,7 @@ export default function TaskCalendarView({
  </Button>
  </div>
 
- <div className="flex items-center gap-2">
+ <div className="flex items-center gap-xs">
  <Badge
  variant={
  task.status === "done" ? "success" :
@@ -345,14 +345,14 @@ export default function TaskCalendarView({
  </div>
 
  {task.assignee && (
- <div className="flex items-center gap-1 text-xs text-muted-foreground">
+ <div className="flex items-center gap-xs text-xs text-muted-foreground">
  <Users className="h-3 w-3" />
  <span>{task.assignee.full_name || task.assignee.email}</span>
  </div>
  )}
 
  {task.tags && task.tags.length > 0 && (
- <div className="flex items-center gap-1 flex-wrap">
+ <div className="flex items-center gap-xs flex-wrap">
  <Tag className="h-3 w-3 text-muted-foreground" />
  {task.tags.map(tag => (
  <Badge key={tag} variant="outline" className="text-xs">

@@ -71,7 +71,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: '$2.4M',
  change: 12.5,
  trend: 'up',
- icon: <DollarSign className="h-4 w-4" />,
+ icon: <DollarSign className="h-icon-xs w-icon-xs" />,
  description: 'Total procurement spend this period'
  },
  {
@@ -80,7 +80,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: 156,
  change: -8.2,
  trend: 'down',
- icon: <ShoppingCart className="h-4 w-4" />,
+ icon: <ShoppingCart className="h-icon-xs w-icon-xs" />,
  description: 'Currently active purchase orders'
  },
  {
@@ -89,7 +89,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: '2.3 days',
  change: -15.7,
  trend: 'down',
- icon: <Clock className="h-4 w-4" />,
+ icon: <Clock className="h-icon-xs w-icon-xs" />,
  description: 'Average time for request approval'
  },
  {
@@ -98,7 +98,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: 89,
  change: 5.3,
  trend: 'up',
- icon: <Users className="h-4 w-4" />,
+ icon: <Users className="h-icon-xs w-icon-xs" />,
  description: 'Number of active vendor relationships'
  },
  {
@@ -107,7 +107,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: '$180K',
  change: 22.1,
  trend: 'up',
- icon: <Target className="h-4 w-4" />,
+ icon: <Target className="h-icon-xs w-icon-xs" />,
  description: 'Total cost savings achieved'
  },
  {
@@ -116,7 +116,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  value: '94.2%',
  change: 3.1,
  trend: 'up',
- icon: <CheckCircle className="h-4 w-4" />,
+ icon: <CheckCircle className="h-icon-xs w-icon-xs" />,
  description: 'Procurement policy compliance rate'
  }
  ];
@@ -196,29 +196,29 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
 
  return (
  <div className={className}>
- <div className="space-y-6">
+ <div className="space-y-lg">
  {/* Controls */}
  <div className="flex items-center justify-between">
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-xs">
  <Button variant="outline" size="sm">
- <Filter className="h-4 w-4 mr-2" />
+ <Filter className="h-icon-xs w-icon-xs mr-2" />
  Filters
  </Button>
  <Button variant="outline" size="sm">
- <Calendar className="h-4 w-4 mr-2" />
+ <Calendar className="h-icon-xs w-icon-xs mr-2" />
  {timeRange === '7d' ? 'Last 7 days' : 
  timeRange === '30d' ? 'Last 30 days' : 
  timeRange === '90d' ? 'Last 90 days' : 'Last year'}
  </Button>
  </div>
  <Button variant="outline" size="sm">
- <Download className="h-4 w-4 mr-2" />
+ <Download className="h-icon-xs w-icon-xs mr-2" />
  Export Report
  </Button>
  </div>
 
  {/* Key Metrics */}
- <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+ <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
  {metrics.map((metric) => (
  <Card key={metric.id}>
  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -249,27 +249,27 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </div>
 
  {/* Analytics Tabs */}
- <Tabs defaultValue="spend-analysis" className="space-y-4">
+ <Tabs defaultValue="spend-analysis" className="space-y-md">
  <TabsList>
  <TabsTrigger value="spend-analysis">
- <PieChart className="h-4 w-4 mr-2" />
+ <PieChart className="h-icon-xs w-icon-xs mr-2" />
  Spend Analysis
  </TabsTrigger>
  <TabsTrigger value="vendor-performance">
- <BarChart3 className="h-4 w-4 mr-2" />
+ <BarChart3 className="h-icon-xs w-icon-xs mr-2" />
  Vendor Performance
  </TabsTrigger>
  <TabsTrigger value="trends">
- <LineChart className="h-4 w-4 mr-2" />
+ <LineChart className="h-icon-xs w-icon-xs mr-2" />
  Trends & Forecasting
  </TabsTrigger>
  <TabsTrigger value="compliance">
- <CheckCircle className="h-4 w-4 mr-2" />
+ <CheckCircle className="h-icon-xs w-icon-xs mr-2" />
  Compliance & Risk
  </TabsTrigger>
  </TabsList>
 
- <TabsContent value="spend-analysis" className="space-y-4">
+ <TabsContent value="spend-analysis" className="space-y-md">
  <Card>
  <CardHeader>
  <CardTitle>Spend by Category</CardTitle>
@@ -278,11 +278,11 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {spendAnalysis.map((item, index) => (
  <div key={index} className="flex items-center justify-between">
- <div className="flex items-center space-x-3">
- <div className="flex items-center space-x-2">
+ <div className="flex items-center space-x-sm">
+ <div className="flex items-center space-x-xs">
  <div 
  className="w-3 h-3 rounded-full"
  style={{ 
@@ -306,7 +306,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </Card>
  </TabsContent>
 
- <TabsContent value="vendor-performance" className="space-y-4">
+ <TabsContent value="vendor-performance" className="space-y-md">
  <Card>
  <CardHeader>
  <CardTitle>Top Vendor Performance</CardTitle>
@@ -315,16 +315,16 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="space-y-4">
+ <div className="space-y-md">
  {vendorPerformance.map((vendor, index) => (
- <div key={index} className="border rounded-lg p-4">
+ <div key={index} className="border rounded-lg p-md">
  <div className="flex items-center justify-between mb-3">
  <h4 className="font-medium">{vendor.vendor}</h4>
  <Badge variant="secondary">
  {vendor.rating}/5.0 ⭐
  </Badge>
  </div>
- <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+ <div className="grid grid-cols-2 md:grid-cols-4 gap-md text-sm">
  <div>
  <div className="text-muted-foreground">Orders</div>
  <div className="font-medium">{vendor.orders}</div>
@@ -349,7 +349,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </Card>
  </TabsContent>
 
- <TabsContent value="trends" className="space-y-4">
+ <TabsContent value="trends" className="space-y-md">
  <Card>
  <CardHeader>
  <CardTitle>Procurement Trends</CardTitle>
@@ -358,9 +358,9 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </CardDescription>
  </CardHeader>
  <CardContent>
- <div className="h-64 flex items-center justify-center text-muted-foreground">
+ <div className="h-container-sm flex items-center justify-center text-muted-foreground">
  <div className="text-center">
- <LineChart className="h-12 w-12 mx-auto mb-4 opacity-50" />
+ <LineChart className="h-icon-2xl w-icon-2xl mx-auto mb-4 opacity-50" />
  <p>Interactive charts and trend analysis</p>
  <p className="text-sm">Would integrate with charting library like Chart.js or D3</p>
  </div>
@@ -369,12 +369,12 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  </Card>
  </TabsContent>
 
- <TabsContent value="compliance" className="space-y-4">
- <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+ <TabsContent value="compliance" className="space-y-md">
+ <div className="grid grid-cols-1 md:grid-cols-2 gap-md">
  <Card>
  <CardHeader>
  <CardTitle className="flex items-center">
- <CheckCircle className="h-5 w-5 mr-2 text-green-500" />
+ <CheckCircle className="h-icon-sm w-icon-sm mr-2 text-green-500" />
  Compliance Score
  </CardTitle>
  </CardHeader>
@@ -383,7 +383,7 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  <p className="text-sm text-muted-foreground">
  Overall procurement policy compliance rate
  </p>
- <div className="mt-4 space-y-2">
+ <div className="mt-4 space-y-xs">
  <div className="flex justify-between text-sm">
  <span>Approval Process</span>
  <span className="text-green-500">98%</span>
@@ -403,12 +403,12 @@ export default function AnalyticsClient({ className, orgId }: AnalyticsClientPro
  <Card>
  <CardHeader>
  <CardTitle className="flex items-center">
- <AlertTriangle className="h-5 w-5 mr-2 text-yellow-500" />
+ <AlertTriangle className="h-icon-sm w-icon-sm mr-2 text-yellow-500" />
  Risk Indicators
  </CardTitle>
  </CardHeader>
  <CardContent>
- <div className="space-y-3">
+ <div className="space-y-sm">
  <div className="flex items-center justify-between">
  <span className="text-sm">Single Source Dependencies</span>
  <Badge variant="destructive">High</Badge>

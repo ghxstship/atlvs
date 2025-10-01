@@ -208,21 +208,21 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
               
               <DropdownMenu>
                 <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-                  <Button variant="ghost" size="sm" className="h-6 w-6 p-0">
+                  <Button variant="ghost" size="sm" className="h-icon-md w-icon-md p-0">
                     <MoreVertical className="h-3 w-3" />
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <DropdownMenuItem onClick={() => onItemAction?.('view', item)}>
-                    <Eye className="mr-xs h-4 w-4" />
+                    <Eye className="mr-xs h-icon-xs w-icon-xs" />
                     View
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => onItemAction?.('edit', item)}>
-                    <Edit className="mr-xs h-4 w-4" />
+                    <Edit className="mr-xs h-icon-xs w-icon-xs" />
                     Edit
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => onItemAction?.('duplicate', item)}>
-                    <Copy className="mr-xs h-4 w-4" />
+                    <Copy className="mr-xs h-icon-xs w-icon-xs" />
                     Duplicate
                   </DropdownMenuItem>
                   
@@ -235,7 +235,7 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
                         key={action.id}
                         onClick={() => action.onClick(item)}
                       >
-                        {action.icon && <action.icon className="mr-xs h-4 w-4" />}
+                        {action.icon && <action.icon className="mr-xs h-icon-xs w-icon-xs" />}
                         {action.label}
                       </DropdownMenuItem>
                     );
@@ -247,7 +247,7 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
                     onClick={() => onItemAction?.('delete', item)}
                     className="text-destructive"
                   >
-                    <Trash className="mr-xs h-4 w-4" />
+                    <Trash className="mr-xs h-icon-xs w-icon-xs" />
                     Delete
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -321,10 +321,10 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-md">
         {columns.map(column => (
           <div key={column.id} className="space-y-sm">
-            <Skeleton className="h-8 w-full" />
+            <Skeleton className="h-icon-lg w-full" />
             {Array.from({ length: 3 }).map((_, i) => (
               <Card key={i} className="p-sm">
-                <Skeleton className="h-4 w-3/4 mb-xs" />
+                <Skeleton className="h-icon-xs w-3/4 mb-xs" />
                 <Skeleton className="h-3 w-full mb-xs" />
                 <Skeleton className="h-3 w-1/2" />
               </Card>
@@ -374,7 +374,7 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
           <div 
             key={column.id}
             className={`
-              min-h-[500px] rounded-lg border-2 border-dashed p-sm
+              min-h-modal-lg rounded-lg border-2 border-dashed p-sm
               ${dragOverColumn === column.value ? 'border-primary bg-primary/5' : getColumnColor(column.color)}
               transition-colors
             `}
@@ -410,7 +410,7 @@ export const UnifiedKanbanView: React.FC<UnifiedKanbanViewProps> = ({
               className="w-full mt-sm border-dashed border"
               onClick={() => onItemAction?.('create', { [statusField]: column.value })}
             >
-              <Plus className="h-4 w-4 mr-xs" />
+              <Plus className="h-icon-xs w-icon-xs mr-xs" />
               Add Item
             </Button>
           </div>

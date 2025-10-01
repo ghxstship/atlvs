@@ -27,7 +27,7 @@ export default function LocationMapView({
  if (!hasCoordinates) {
  return (
  <div className="text-center py-xl">
- <MapPin className="mx-auto h-12 w-12 text-muted-foreground mb-md" />
+ <MapPin className="mx-auto h-icon-2xl w-icon-2xl text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">No Location Coordinates</h3>
  <p className="text-muted-foreground">
  Location coordinates are needed to display the map view.
@@ -40,11 +40,11 @@ export default function LocationMapView({
  return (
  <div className="space-y-md">
  {/* Map Container */}
- <div className="relative h-[600px] bg-muted rounded-lg overflow-hidden">
+ <div className="relative h-content-xl bg-muted rounded-lg overflow-hidden">
  {/* Placeholder Map */}
  <div className="absolute inset-0 flex items-center justify-center">
  <div className="text-center">
- <MapPin className="mx-auto h-16 w-16 text-muted-foreground mb-md" />
+ <MapPin className="mx-auto h-component-md w-component-md text-muted-foreground mb-md" />
  <h3 className="text-lg font-semibold mb-sm">Interactive Map</h3>
  <p className="text-muted-foreground mb-md">
  To enable the interactive map, integrate with Google Maps or Mapbox API
@@ -66,7 +66,7 @@ export default function LocationMapView({
  }
  }}
  >
- <Navigation className="mr-2 h-4 w-4" />
+ <Navigation className="mr-2 h-icon-xs w-icon-xs" />
  Open in Google Maps
  </Button>
  </div>
@@ -92,11 +92,11 @@ export default function LocationMapView({
  >
  <div className="relative">
  <div className="bg-primary text-primary-foreground rounded-full p-sm shadow-lg hover:scale-110 transition-transform">
- <TypeIcon className="h-4 w-4" />
+ <TypeIcon className="h-icon-xs w-icon-xs" />
  </div>
  {selectedLocation?.id === location.id && (
  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-sm">
- <Card className="p-sm shadow-xl min-w-[200px]">
+ <Card className="p-sm shadow-xl min-w-content-narrow">
  <h4 className="font-semibold text-sm">{location.name}</h4>
  <p className="text-xs text-muted-foreground mt-xs">
  {location.address}
@@ -147,7 +147,7 @@ export default function LocationMapView({
  >
  <div className="flex items-start gap-sm">
  <div className="bg-muted rounded-md p-xs">
- <TypeIcon className="h-4 w-4" />
+ <TypeIcon className="h-icon-xs w-icon-xs" />
  </div>
  <div className="flex-1 min-w-0">
  <h4 className="font-medium text-sm truncate">{location.name}</h4>
