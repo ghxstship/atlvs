@@ -1,4 +1,5 @@
-import createNextIntlPlugin from 'next-intl/plugin';
+// Temporarily disabled next-intl plugin to isolate middleware issue
+// import createNextIntlPlugin from 'next-intl/plugin';
 import { withSentryConfig } from '@sentry/nextjs';
 
 /** @type {import('next').NextConfig} */
@@ -64,12 +65,12 @@ const nextConfig = {
   }
 };
 
-const withNextIntl = createNextIntlPlugin();
-
-const wrapped = withNextIntl(nextConfig);
+// Temporarily disabled next-intl plugin - it was injecting middleware causing Edge Runtime failures
+// const withNextIntl = createNextIntlPlugin();
+// const wrapped = withNextIntl(nextConfig);
 
 export default withSentryConfig(
-  wrapped,
+  nextConfig, // Using raw config instead of wrapped
   {
     silent: true,
     // Remove this once Sentry SDK defaults to deleting sourcemaps
