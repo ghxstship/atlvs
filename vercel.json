@@ -1,6 +1,7 @@
 {
-  "buildCommand": "cd ../.. && pnpm build",
+  "buildCommand": "cd ../.. && turbo run build --filter=web",
   "devCommand": "cd ../.. && pnpm dev",
   "installCommand": "cd ../.. && pnpm install --no-frozen-lockfile",
-  "framework": "nextjs"
+  "framework": null,
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./apps/web ./packages"
 }
