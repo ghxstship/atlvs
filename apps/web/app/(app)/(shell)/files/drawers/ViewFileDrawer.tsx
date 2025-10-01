@@ -11,7 +11,22 @@ import {
  AppDrawer,
 } from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
-import type { ProjectFile } from "./FilesClient";
+import type { DigitalAsset } from "../types";
+
+// Type alias for backward compatibility
+type ProjectFile = DigitalAsset & {
+  name: string;
+  uploaded_by_user?: {
+    id: string;
+    email: string;
+    full_name?: string;
+  };
+  project?: {
+    id: string;
+    name: string;
+  };
+  is_latest?: boolean;
+};
 
 interface ViewFileDrawerProps {
  open: boolean;
@@ -141,27 +156,24 @@ export default function ViewFileDrawer({
  </div>
  )}
 
- {/* Tags */}
- {file.tags && file.tags.length > 0 && (
  <div className="space-y-xs">
  <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Tag className="h-icon-xs w-icon-xs" />
  <span>Tags</span>
  </div>
  <div className="flex flex-wrap gap-xs">
- {file.tags.map((tag, index) => (
+ {file.tags.map((tag: string, index: number) => (
  <Badge key={index} variant="outline">
  {tag}
  </Badge>
  ))}
  </div>
  </div>
- )}
+)}
 
- {/* Project */}
- {file.project && (
+{/* Project */}
+{file.project && (
  <div className="space-y-xs">
- <div className="flex items-center gap-xs text-sm text-muted-foreground">
  <Link className="h-icon-xs w-icon-xs" />
  <span>Project</span>
  </div>
