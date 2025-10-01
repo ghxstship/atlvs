@@ -132,18 +132,18 @@ export default function FeaturedClient() {
         </div>
         <div className="flex items-center gap-1">
           <Button variant="ghost" size="sm" onClick={() => handleView(resource)}>
-            <Eye className="w-4 h-4" />
+            <Eye className="w-icon-xs h-icon-xs" />
           </Button>
           {resource.file_url && (
             <Button variant="ghost" size="sm" onClick={() => handleDownload(resource)}>
-              <Download className="w-4 h-4" />
+              <Download className="w-icon-xs h-icon-xs" />
             </Button>
           )}
           <Button variant="ghost" size="sm" onClick={() => handleEdit(resource)}>
-            <Edit className="w-4 h-4" />
+            <Edit className="w-icon-xs h-icon-xs" />
           </Button>
           <Button variant="ghost" size="sm" onClick={() => handleToggleFeatured(resource)}>
-            <Star className={`w-4 h-4 ${resource.is_featured ? 'fill-yellow-500 text-yellow-500' : ''}`} />
+            <Star className={`w-icon-xs h-icon-xs ${resource.is_featured ? 'fill-current text-warning' : ''}`} />
           </Button>
         </div>
       </div>
@@ -159,7 +159,7 @@ export default function FeaturedClient() {
           <p className="text-muted-foreground mt-1">Showcase your most important organizational resources</p>
         </div>
         <Button onClick={handleCreate}>
-          <Plus className="w-4 h-4 mr-2" />
+          <Plus className="w-icon-xs h-icon-xs mr-2" />
           Add Featured Resource
         </Button>
       </div>
@@ -168,7 +168,7 @@ export default function FeaturedClient() {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <div className="p-4 border rounded-lg">
           <div className="flex items-center gap-3">
-            <Star className="w-5 h-5 text-yellow-500" />
+            <Star className="w-icon-sm h-icon-sm text-warning" />
             <div>
               <div className="text-2xl font-bold">{stats.totalFeatured}</div>
               <div className="text-sm text-muted-foreground">Featured Resources</div>
@@ -177,7 +177,7 @@ export default function FeaturedClient() {
         </div>
         <div className="p-4 border rounded-lg">
           <div className="flex items-center gap-3">
-            <Eye className="w-5 h-5 text-blue-500" />
+            <Eye className="w-icon-sm h-icon-sm text-info" />
             <div>
               <div className="text-2xl font-bold">{stats.totalViews}</div>
               <div className="text-sm text-muted-foreground">Total Views</div>
@@ -186,7 +186,7 @@ export default function FeaturedClient() {
         </div>
         <div className="p-4 border rounded-lg">
           <div className="flex items-center gap-3">
-            <Download className="w-5 h-5 text-green-500" />
+            <Download className="w-icon-sm h-icon-sm text-success" />
             <div>
               <div className="text-2xl font-bold">{stats.totalDownloads}</div>
               <div className="text-sm text-muted-foreground">Total Downloads</div>
@@ -195,7 +195,7 @@ export default function FeaturedClient() {
         </div>
         <div className="p-4 border rounded-lg">
           <div className="flex items-center gap-3">
-            <TrendingUp className="w-5 h-5 text-emerald-500" />
+            <TrendingUp className="w-icon-sm h-icon-sm text-success" />
             <div>
               <div className="text-2xl font-bold">{stats.avgViews}</div>
               <div className="text-sm text-muted-foreground">Avg Views</div>
@@ -225,10 +225,10 @@ export default function FeaturedClient() {
       )}
 
       {/* Resources Grid */}
-      <div className="min-h-[400px]">
+      <div className="min-h-container-lg">
         {loading && (
           <div className="text-center py-12">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-4"></div>
             <p className="text-muted-foreground">Loading featured resources...</p>
           </div>
         )}
@@ -236,7 +236,7 @@ export default function FeaturedClient() {
         {error && (
           <div className="p-4 border rounded-lg">
             <div className="text-center py-12">
-              <Star className="w-16 h-16 text-red-500 mx-auto mb-4" />
+              <Star className="w-icon-2xl h-icon-2xl text-destructive mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">Error loading featured resources</h3>
               <p className="text-muted-foreground mb-4">{error}</p>
               <Button onClick={fetchFeaturedResources}>
@@ -249,13 +249,13 @@ export default function FeaturedClient() {
         {!loading && !error && resources.length === 0 && (
           <div className="p-4 border rounded-lg">
             <div className="text-center py-12">
-              <Star className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+              <Star className="w-icon-2xl h-icon-2xl text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-semibold mb-2">No featured resources</h3>
               <p className="text-muted-foreground mb-4">
                 Start showcasing your most important resources by marking them as featured.
               </p>
               <Button onClick={handleCreate}>
-                <Plus className="w-4 h-4 mr-2" />
+                <Plus className="w-icon-xs h-icon-xs mr-2" />
                 Add Featured Resource
               </Button>
             </div>
