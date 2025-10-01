@@ -4,11 +4,11 @@
  */
 
 import { NextResponse, type NextRequest } from 'next/server';
-import { loggingMiddleware } from './middleware/logging.js';
-import { rateLimitingMiddleware } from './middleware/rate-limiting.js';
-import { errorHandlingMiddleware } from './middleware/error-handling.js';
-import { securityMiddleware } from './middleware/security.js';
-import { brandDetectionMiddleware } from './middleware/brand-detection.js';
+import { loggingMiddleware } from './middleware/logging';
+import { rateLimitingMiddleware } from './middleware/rate-limiting';
+import { errorHandlingMiddleware } from './middleware/error-handling';
+import { securityMiddleware } from './middleware/security';
+import { brandDetectionMiddleware } from './middleware/brand-detection';
 
 export async function middleware(req: NextRequest) {
   // Wrap in error handling
