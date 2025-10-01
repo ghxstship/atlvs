@@ -2,11 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import {
-
-export const dynamic = 'force-dynamic';
   analyticsFilterSchema,
   fetchCertificationAnalytics,
 } from '@/app/(app)/(shell)/profile/certifications/lib/certificationService';
+
+export const dynamic = 'force-dynamic';
 
 async function getSupabase() {
   const cookieStore = cookies();

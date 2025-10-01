@@ -4,10 +4,10 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import {
-
-export const dynamic = 'force-dynamic';
   fetchContactAnalytics,
 } from '@/app/(app)/(shell)/profile/contact/lib/contactService';
+
+export const dynamic = 'force-dynamic';
 
 async function getSupabase() {
   const cookieStore = cookies();
