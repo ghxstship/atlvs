@@ -16,7 +16,7 @@ import {
 } from '@/app/(app)/(shell)/profile/overview/lib/profileOverviewService';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

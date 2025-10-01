@@ -489,7 +489,7 @@ export function ScatterPlot3D({ data, width = 800, height = 600 }: ScatterPlot3D
       size: point.value ? 2 + (point.value / 100) * 8 : 5,
       color: point.category 
         ? `hsl(${(point.category.charCodeAt(0) * 137.5) % 360}, 70%, 50%)`
-        : '#3b82f6',
+        : 'hsl(var(--color-primary))',
     },
     connections: [],
     data: point,

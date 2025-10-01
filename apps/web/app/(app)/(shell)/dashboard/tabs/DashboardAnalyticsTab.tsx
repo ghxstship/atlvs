@@ -84,7 +84,7 @@ export default function DashboardAnalyticsTab({
       subtitle: 'Activity across different modules',
       xAxis: { field: 'module', label: 'Module' },
       yAxis: { field: 'usage', label: 'Usage Count' },
-      colors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444']
+      colors: ['hsl(var(--color-primary))', 'hsl(var(--color-success))', 'hsl(var(--color-warning))', 'hsl(var(--color-destructive))']
     },
     {
       type: 'line' as const,
@@ -92,7 +92,7 @@ export default function DashboardAnalyticsTab({
       subtitle: 'Load times and response metrics over time',
       xAxis: { field: 'date', label: 'Date' },
       yAxis: { field: 'response_time', label: 'Response Time (ms)' },
-      colors: ['#3b82f6']
+      colors: ['hsl(var(--color-primary))']
     },
     {
       type: 'pie' as const,
@@ -100,7 +100,7 @@ export default function DashboardAnalyticsTab({
       subtitle: 'Breakdown of data types',
       xAxis: { field: 'type', label: 'Type' },
       yAxis: { field: 'count', label: 'Count' },
-      colors: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6']
+      colors: ['hsl(var(--color-primary))', 'hsl(var(--color-success))', 'hsl(var(--color-warning))', 'hsl(var(--color-destructive))', 'hsl(var(--color-purple))']
     }
   ], []);
 

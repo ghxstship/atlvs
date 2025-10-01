@@ -11,6 +11,7 @@ import {
  Progress,
 } from '@ghxstship/ui';
 
+import { STATUS_COLORS, PRIORITY_COLORS, CHART_COLORS } from '@ghxstship/config/tokens/chart-colors';
 import type { ProgrammingRider, RiderAnalytics } from '../types';
 
 interface ProgrammingRidersAnalyticsViewProps {
@@ -18,35 +19,18 @@ interface ProgrammingRidersAnalyticsViewProps {
  loading: boolean;
 }
 
-const STATUS_COLORS = {
- draft: '#6b7280',
- pending_review: '#f59e0b',
- under_review: '#3b82f6',
- approved: '#10b981',
- rejected: '#ef4444',
- fulfilled: '#059669',
- cancelled: '#6b7280',
-};
-
-const PRIORITY_COLORS = {
- low: '#6b7280',
- medium: '#3b82f6',
- high: '#f59e0b',
- critical: '#ef4444',
- urgent: '#dc2626',
-};
-
+// Rider-specific kind colors using design tokens
 const KIND_COLORS = {
- technical: '#3b82f6',
- hospitality: '#10b981',
- stage_plot: '#8b5cf6',
- security: '#ef4444',
- catering: '#f59e0b',
- transportation: '#eab308',
- accommodation: '#ec4899',
- production: '#6366f1',
- artist: '#14b8a6',
- crew: '#6b7280',
+ technical: CHART_COLORS.info,
+ hospitality: CHART_COLORS.success,
+ stage_plot: CHART_COLORS.purple,
+ security: CHART_COLORS.error,
+ catering: CHART_COLORS.warning,
+ transportation: CHART_COLORS.warning,
+ accommodation: CHART_COLORS.pink,
+ production: CHART_COLORS.indigo,
+ artist: CHART_COLORS.teal,
+ crew: CHART_COLORS.muted,
 };
 
 export default function ProgrammingRidersAnalyticsView({

@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(req: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

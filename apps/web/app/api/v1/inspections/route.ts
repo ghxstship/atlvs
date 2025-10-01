@@ -36,7 +36,7 @@ const updateInspectionSchema = createInspectionSchema.partial().extend({
 // GET /api/v1/inspections - List inspections
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -114,7 +114,7 @@ export async function GET(request: NextRequest) {
 // POST /api/v1/inspections - Create inspection
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication

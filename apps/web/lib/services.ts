@@ -2,8 +2,8 @@ import { cookies } from 'next/headers';
 import { createServerClient, type CookieAdapter } from '@ghxstship/auth';
 // import { composeSupabaseServices } from '@ghxstship/infrastructure';
 
-export function getSupabaseAndServices() {
-  const cookieStore = cookies();
+export async function getSupabaseAndServices() {
+  const cookieStore = await cookies();
   const adapter: CookieAdapter = {
     get: (name: string) => cookieStore.get(name),
     set: (name: string, value: string, options?: any) => cookieStore.set(name, value, options),

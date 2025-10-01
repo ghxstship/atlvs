@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Profile · Travel' };
 
 export default async function TravelPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const sb = createServerClient(cookieStore);
 
   const { data: { session } } = await sb.auth.getSession();

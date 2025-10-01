@@ -11,6 +11,7 @@ import {
  Progress,
 } from '@ghxstship/ui';
 
+import { STATUS_COLORS, CHART_COLORS } from '@ghxstship/config/tokens/chart-colors';
 import type { ProgrammingWorkshop, WorkshopAnalytics } from '../types';
 
 interface ProgrammingWorkshopsAnalyticsViewProps {
@@ -18,42 +19,32 @@ interface ProgrammingWorkshopsAnalyticsViewProps {
  loading: boolean;
 }
 
-const STATUS_COLORS = {
- planning: '#6b7280',
- open_registration: '#10b981',
- registration_closed: '#f59e0b',
- full: '#ef4444',
- in_progress: '#3b82f6',
- completed: '#10b981',
- cancelled: '#ef4444',
- postponed: '#f59e0b',
-};
-
+// Workshop-specific color mappings using design tokens
 const CATEGORY_COLORS = {
- technical: '#3b82f6',
- creative: '#ec4899',
- business: '#6b7280',
- leadership: '#f59e0b',
- production: '#ef4444',
- design: '#8b5cf6',
- marketing: '#10b981',
- finance: '#059669',
- legal: '#64748b',
- other: '#6b7280',
+ technical: CHART_COLORS.info,
+ creative: CHART_COLORS.pink,
+ business: CHART_COLORS.muted,
+ leadership: CHART_COLORS.warning,
+ production: CHART_COLORS.error,
+ design: CHART_COLORS.purple,
+ marketing: CHART_COLORS.success,
+ finance: CHART_COLORS.success,
+ legal: CHART_COLORS.muted,
+ other: CHART_COLORS.muted,
 };
 
 const SKILL_LEVEL_COLORS = {
- beginner: '#10b981',
- intermediate: '#f59e0b',
- advanced: '#ef4444',
- expert: '#dc2626',
- all_levels: '#6b7280',
+ beginner: CHART_COLORS.success,
+ intermediate: CHART_COLORS.warning,
+ advanced: CHART_COLORS.error,
+ expert: CHART_COLORS.error,
+ all_levels: CHART_COLORS.muted,
 };
 
 const FORMAT_COLORS = {
- in_person: '#10b981',
- virtual: '#3b82f6',
- hybrid: '#f59e0b',
+ in_person: CHART_COLORS.success,
+ virtual: CHART_COLORS.info,
+ hybrid: CHART_COLORS.warning,
 };
 
 export default function ProgrammingWorkshopsAnalyticsView({

@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Analytics · Exports' };
 
 export default async function AnalyticsExportsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   const { data } = await supabase.auth.getUser();
   

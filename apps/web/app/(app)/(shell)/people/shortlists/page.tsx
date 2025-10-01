@@ -12,7 +12,7 @@ export const metadata = { title: 'People · Shortlists' };
 
 export default async function PeopleShortlistsPage() {
   const t = await getTranslations('people.shortlists');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

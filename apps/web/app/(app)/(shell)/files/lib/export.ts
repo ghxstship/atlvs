@@ -254,14 +254,14 @@ export class FilesExportService {
         <title>Files Export Report</title>
         <style>
           body { font-family: Arial, sans-serif; margin: 20px; }
-          h1 { color: #333; border-bottom: 2px solid #333; padding-bottom: 10px; }
-          .summary { background: #f5f5f5; padding: 15px; margin: 20px 0; border-radius: 5px; }
+          h1 { color: hsl(0 0% 20%); border-bottom: 2px solid hsl(0 0% 20%); padding-bottom: 10px; }
+          .summary { background: hsl(0 0% 96%); padding: 15px; margin: 20px 0; border-radius: 5px; }
           .stats { display: flex; gap: 20px; margin: 20px 0; }
-          .stat { background: white; padding: 10px; border-radius: 3px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+          .stat { background: white; padding: 10px; border-radius: 3px; box-shadow: 0 1px 3px hsl(0 0% 0% / 0.1); }
           table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-          th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-          th { background-color: #f2f2f2; font-weight: bold; }
-          tr:nth-child(even) { background-color: #f9f9f9; }
+          th, td { border: 1px solid hsl(0 0% 87%); padding: 8px; text-align: left; }
+          th { background-color: hsl(0 0% 95%); font-weight: bold; }
+          tr:nth-child(even) { background-color: hsl(0 0% 98%); }
           .category-break { page-break-before: always; }
         </style>
       </head>

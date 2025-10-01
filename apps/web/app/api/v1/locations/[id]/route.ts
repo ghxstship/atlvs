@@ -41,7 +41,7 @@ export async function GET(
   { params }: { params: { id: string } }
 ) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -95,7 +95,7 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -197,7 +197,7 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication

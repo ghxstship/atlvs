@@ -40,7 +40,7 @@ const ReportSchema = z.object({
 const UpdateReportSchema = ReportSchema.partial();
 
 async function getAuthenticatedUser() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

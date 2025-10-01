@@ -160,23 +160,23 @@ export function MapView({
     return null;
   }, []);
 
-  // Get marker color based on field value
+  // Get marker color based on field value using design tokens
   const getMarkerColor = useCallback((value: any): string => {
-    if (!value) return '#3B82F6'; // Default blue
+    if (!value) return 'hsl(var(--color-primary))'; // Default blue
     
     const colorMap: Record<string, string> = {
-      'active': '#10B981',    // Green
-      'inactive': '#6B7280',  // Gray
-      'pending': '#F59E0B',   // Yellow
-      'error': '#EF4444',     // Red
-      'success': '#10B981',   // Green
-      'warning': '#F59E0B',   // Yellow
-      'high': '#EF4444',      // Red
-      'medium': '#F59E0B',    // Yellow
-      'low': '#10B981'        // Green
+      'active': 'hsl(var(--color-success))',
+      'inactive': 'hsl(var(--color-muted))',
+      'pending': 'hsl(var(--color-warning))',
+      'error': 'hsl(var(--color-destructive))',
+      'success': 'hsl(var(--color-success))',
+      'warning': 'hsl(var(--color-warning))',
+      'high': 'hsl(var(--color-destructive))',
+      'medium': 'hsl(var(--color-warning))',
+      'low': 'hsl(var(--color-success))'
     };
     
-    return colorMap[String(value).toLowerCase()] || '#3B82F6';
+    return colorMap[String(value).toLowerCase()] || 'hsl(var(--color-primary))';
   }, []);
 
   // Calculate map bounds to fit all markers

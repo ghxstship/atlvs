@@ -3,8 +3,8 @@ import { createServerClient } from '@ghxstship/auth';
 import { cache } from 'react';
 
 export interface SessionContext {
-  session;
-  user;
+  session: any;
+  user: any;
   orgId: string | null;
   role: string | undefined;
   entitlements: {
@@ -20,7 +20,7 @@ export interface SessionContext {
  * Used across layouts and pages to avoid duplicating auth/entitlement logic
  */
 export const getSessionContext = cache(async (): Promise<SessionContext | null> => {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

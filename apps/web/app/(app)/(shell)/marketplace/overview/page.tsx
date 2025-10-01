@@ -12,7 +12,7 @@ export const metadata = { title: 'Marketplace Overview' };
 
 export default async function MarketplaceOverviewPage() {
  const t = await getTranslations('marketplace');
- const cookieStore = cookies();
+ const cookieStore = await cookies();
  const supabase = createServerClient(cookieStore);
 
  const { data: { user } } = await supabase.auth.getUser();

@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: PageProps) {
 }
 
 export default async function AnalyticsEditPage({ params }: PageProps) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const cookie = cookieStore.get(name);

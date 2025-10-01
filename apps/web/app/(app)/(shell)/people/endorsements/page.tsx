@@ -12,7 +12,7 @@ export const metadata = { title: 'People · Endorsements' };
 
 export default async function PeopleEndorsementsPage() {
   const t = await getTranslations('people.endorsements');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

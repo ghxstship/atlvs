@@ -8,7 +8,7 @@ export const revalidate = 0;
 export async function GET(req: NextRequest, { params }: { params: { orgId: string; vendorId: string } }) {
   const { orgId, vendorId } = params;
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userSb = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

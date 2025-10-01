@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Profile · Performance' };
 
 export default async function ProfilePerformancePage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const sb = createServerClient(cookieStore);
 
   const { data: { session } } = await sb.auth.getSession();

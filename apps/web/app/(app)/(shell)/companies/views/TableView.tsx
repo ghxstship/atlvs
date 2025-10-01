@@ -48,8 +48,8 @@ export default function TableView({
             {params.value?.charAt(0)?.toUpperCase()}
           </Avatar>
           <Box>
-            <div style={{ fontWeight: 500 }}>{params.value}</div>
-            <div style={{ fontSize: '0.75rem', color: 'text.secondary' }}>
+            <div className="font-medium">{params.value}</div>
+            <div className="text-xs text-muted-foreground">
               {params.row.industry}
             </div>
           </Box>
@@ -105,7 +105,7 @@ export default function TableView({
             href={params.value}
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'primary.main', textDecoration: 'none' }}
+            className="text-primary no-underline"
           >
             {params.value.replace(/^https?:\/\//, '')}
           </a>

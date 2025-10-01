@@ -165,7 +165,7 @@ export class UIStateValidator {
     const color = styles.color;
 
     // This is a simplified check - in production, use a proper contrast ratio calculator
-    if (backgroundColor === 'transparent' || backgroundColor === 'rgba(0, 0, 0, 0)') {
+    if (backgroundColor === 'transparent' || backgroundColor === 'hsl(0 0% 0% / 0)') {
       return true; // Assume parent has proper contrast
     }
 

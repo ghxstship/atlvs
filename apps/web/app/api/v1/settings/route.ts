@@ -72,7 +72,7 @@ const UpdateSettingsSchema = z.object({
 });
 
 async function getAuthenticatedUser() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);
@@ -134,7 +134,7 @@ export async function GET(request: NextRequest) {
       },
       branding: {
         logo: null,
-        primaryColor: '#1f2937',
+        primaryColor: 'hsl(var(--color-primary))',
         secondaryColor: 'hsl(var(--primary))',
         customCss: null
       },

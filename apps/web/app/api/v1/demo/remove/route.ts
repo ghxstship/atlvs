@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 export async function DELETE(request: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userSb = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function FinanceAccountsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   
   const {

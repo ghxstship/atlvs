@@ -44,8 +44,8 @@ export interface AccessRequirements {
 
 const DEFAULT_ALLOWED_ROLES = ['owner', 'admin', 'manager'];
 
-function createSupabaseClient(): TypedSupabaseClient {
-  const cookieStore = cookies();
+async function createSupabaseClient(): Promise<TypedSupabaseClient> {
+  const cookieStore = await cookies();
 
   return createServerClient({
     get: (name: string) => {
@@ -178,7 +178,7 @@ export async function createApiContext(
   request: NextRequest,
   requirements: AccessRequirements = {}
 ): Promise<ApiHandlerContext> {
-  const supabase = createSupabaseClient();
+  const supabase = await createSupabaseClient();
   const requestId = logger.logRequest(request);
   const timer = new RequestTimer(requestId);
 

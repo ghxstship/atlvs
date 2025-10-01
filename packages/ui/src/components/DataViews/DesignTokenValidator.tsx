@@ -199,7 +199,7 @@ export function DesignTokenValidator({
         line: 23,
         column: 8,
         property: 'background-color',
-        value: '#ffffff',
+        value: 'hsl(0 0% 100%)',
         expectedToken: 'bg-background',
         severity: 'error',
         category: 'color',

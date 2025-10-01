@@ -200,7 +200,7 @@ export const ChartView: React.FC<ChartViewProps> = ({
         series.push({
           name: config.title || 'Data',
           data: seriesData,
-          color: config.colors?.[0] || '#3b82f6'
+          color: config.colors?.[0] || 'hsl(var(--color-primary))'
         });
       }
 

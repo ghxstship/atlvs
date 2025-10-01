@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Marketplace Projects' };
 
 export default async function ProjectsPage() {
- const cookieStore = cookies();
+ const cookieStore = await cookies();
  const supabase = createServerClient(cookieStore);
 
  const { data: { user } } = await supabase.auth.getUser();

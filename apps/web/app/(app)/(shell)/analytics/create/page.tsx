@@ -24,7 +24,7 @@ export const metadata = {
 };
 
 export default async function AnalyticsCreatePage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const cookie = cookieStore.get(name);

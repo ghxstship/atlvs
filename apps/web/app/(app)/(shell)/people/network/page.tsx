@@ -12,7 +12,7 @@ export const metadata = { title: 'People · Network' };
 
 export default async function PeopleNetworkPage() {
   const t = await getTranslations('people.network');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

@@ -7,7 +7,7 @@ export const runtime = 'nodejs';
 export const revalidate = 0;
 
 export async function POST(request: NextRequest) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userSb = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

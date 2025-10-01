@@ -53,7 +53,7 @@ export function CalendarView({
       start: new Date(record[startDateField]),
       end: endDateField ? new Date(record[endDateField]) : undefined,
       allDay: allDayField ? Boolean(record[allDayField]) : false,
-      color: colorField ? record[colorField] : '#3B82F6',
+      color: colorField ? record[colorField] : 'hsl(var(--color-primary))',
       category: categoryField ? record[categoryField] : undefined,
       record
     }));
@@ -207,8 +207,7 @@ export function CalendarView({
                     {dayEvents.slice(0, 3).map(event => (
                       <div
                         key={event.id}
-                        className="text-xs p-xs rounded truncate cursor-pointer"
-                        style={{ backgroundColor: event.color + '20', color: event.color }}
+                        className="text-xs p-xs rounded truncate cursor-pointer bg-primary/10 text-primary"
                         onClick={(e: any) => {
                           e.stopPropagation();
                           onEventClick?.(event);

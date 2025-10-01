@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function ProcurementOverview() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const sb = createServerClient(cookieStore);
 
   // Check authentication

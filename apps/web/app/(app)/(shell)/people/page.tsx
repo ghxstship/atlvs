@@ -11,7 +11,7 @@ export const metadata = { title: 'People' };
 
 export default async function PeoplePage() {
   const t = await getTranslations('people');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

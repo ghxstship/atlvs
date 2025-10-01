@@ -13,7 +13,7 @@ import CreateProductClient from './CreateProductClient';
 
 export default async function ProcurementProductsPage() {
   const t = await getTranslations('procurement');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

@@ -22,14 +22,14 @@ export default function ChartView({ orgId }: ChartViewProps) {
 
     return {
       typeDistribution: [
-        { name: 'Offers', value: stats.activeOffers, color: '#3b82f6' },
-        { name: 'Requests', value: stats.activeRequests, color: '#10b981' },
-        { name: 'Exchanges', value: stats.activeExchanges, color: '#8b5cf6' },
+        { name: 'Offers', value: stats.activeOffers, color: 'hsl(var(--color-primary))' },
+        { name: 'Requests', value: stats.activeRequests, color: 'hsl(var(--color-success))' },
+        { name: 'Exchanges', value: stats.activeExchanges, color: 'hsl(var(--color-purple))' },
       ],
       statusData: [
-        { name: 'Active', value: stats.activeOffers + stats.activeRequests + stats.activeExchanges, color: '#10b981' },
-        { name: 'Draft', value: 0, color: '#6b7280' }, // Would need to calculate from listings
-        { name: 'Archived', value: 0, color: '#ef4444' },
+        { name: 'Active', value: stats.activeOffers + stats.activeRequests + stats.activeExchanges, color: 'hsl(var(--color-success))' },
+        { name: 'Draft', value: 0, color: 'hsl(var(--color-muted))' }, // Would need to calculate from listings
+        { name: 'Archived', value: 0, color: 'hsl(var(--color-destructive))' },
       ],
     };
   }, [stats]);

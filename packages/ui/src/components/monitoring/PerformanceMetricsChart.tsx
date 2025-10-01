@@ -30,17 +30,15 @@ export interface PerformanceMetricsChartProps {
   className?: string;
   timeRange?: '1h' | '6h' | '24h' | '7d' | '30d';
   refreshInterval?: number;
-  metrics?: string[];
-  onMetricAlert?: (metric: string, value: number, threshold: number) => void;
 }
 
 const AVAILABLE_METRICS = [
   {
-    id: 'response_time',
+    id: 'response-time',
     name: 'Response Time',
     description: 'Average API response time',
     unit: 'ms',
-    color: '#3B82F6',
+    color: 'hsl(var(--color-primary))',
     threshold: { warning: 500, critical: 1000 }
   },
   {
@@ -48,39 +46,39 @@ const AVAILABLE_METRICS = [
     name: 'Throughput',
     description: 'Requests per second',
     unit: 'req/s',
-    color: '#10B981',
+    color: 'hsl(var(--color-success))',
     threshold: { warning: 100, critical: 50 }
   },
   {
-    id: 'error_rate',
+    id: 'error-rate',
     name: 'Error Rate',
     description: 'Percentage of failed requests',
     unit: '%',
-    color: '#EF4444',
+    color: 'hsl(var(--color-destructive))',
     threshold: { warning: 1, critical: 5 }
   },
   {
-    id: 'database_connections',
+    id: 'db-connections',
     name: 'DB Connections',
     description: 'Active database connections',
     unit: 'count',
-    color: '#8B5CF6',
+    color: 'hsl(var(--color-purple))',
     threshold: { warning: 80, critical: 95 }
   },
   {
-    id: 'cpu_usage',
+    id: 'cpu-usage',
     name: 'CPU Usage',
     description: 'Server CPU utilization',
     unit: '%',
-    color: '#F59E0B',
+    color: 'hsl(var(--color-warning))',
     threshold: { warning: 70, critical: 90 }
   },
   {
-    id: 'memory_usage',
+    id: 'memory-usage',
     name: 'Memory Usage',
     description: 'Server memory utilization',
     unit: '%',
-    color: '#06B6D4',
+    color: 'hsl(var(--color-info))',
     threshold: { warning: 80, critical: 95 }
   }
 ];
@@ -276,7 +274,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
         {/* Grid lines */}
         <defs>
           <pattern id={`grid-${metric.id}`} width="20" height="20" patternUnits="userSpaceOnUse">
-            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+            <path d="M 20 0 L 0 0 0 20" fill="none" stroke="hsl(var(--color-border))" strokeWidth="1"/>
           </pattern>
         </defs>
         <rect width={chartWidth} height={chartHeight} x={padding} y={padding} fill={`url(#grid-${metric.id})`} />
@@ -290,7 +288,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               y1={padding + chartHeight - ((metric.threshold.warning - minValue) / valueRange) * chartHeight}
               x2={padding + chartWidth}
               y2={padding + chartHeight - ((metric.threshold.warning - minValue) / valueRange) * chartHeight}
-              stroke="#F59E0B"
+              stroke="hsl(var(--color-warning))"
               strokeWidth="1"
               strokeDasharray="5,5"
               opacity="0.7"
@@ -301,7 +299,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               y1={padding + chartHeight - ((metric.threshold.critical - minValue) / valueRange) * chartHeight}
               x2={padding + chartWidth}
               y2={padding + chartHeight - ((metric.threshold.critical - minValue) / valueRange) * chartHeight}
-              stroke="#EF4444"
+              stroke="hsl(var(--color-destructive))"
               strokeWidth="1"
               strokeDasharray="5,5"
               opacity="0.7"
@@ -379,7 +377,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               </Badge>
             </div>
             <div className="flex items-center space-x-sm mb-sm">
-              <span className="text-2xl font-bold" style={{ color: stat.color }}>
+              <span className="text-2xl font-bold text-primary">
                 {formatValue(stat.latest, stat.unit)}
               </span>
               <div className="flex items-center text-sm">
@@ -412,8 +410,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               </div>
               <div className="flex items-center space-x-sm">
                 <div 
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: metric.color }}
+                  className="w-3 h-3 rounded-full bg-primary"
                 />
                 <span className="text-sm text-muted-foreground/60">{metric.unit}</span>
               </div>
@@ -463,8 +460,7 @@ export const PerformanceMetricsChart: React.FC<PerformanceMetricsChartProps> = (
               />
               <div className="flex items-center space-x-sm">
                 <div 
-                  className="w-3 h-3 rounded-full"
-                  style={{ backgroundColor: metric.color }}
+                  className="w-3 h-3 rounded-full bg-primary"
                 />
                 <span className="text-sm font-medium">{metric.name}</span>
               </div>

@@ -122,9 +122,9 @@ export default function TrackingMapView({
  };
 
  const getMarkerColor = (marker: MapMarker) => {
- if (marker.type === 'origin') return '#10b981'; // green
- if (marker.type === 'destination') return '#3b82f6'; // blue
- return '#f59e0b'; // amber for current location
+ if (marker.type === 'origin') return 'hsl(var(--color-success))';
+ if (marker.type === 'destination') return 'hsl(var(--color-primary))';
+ return 'hsl(var(--color-warning))'; // current location
  };
 
  const getStatusIcon = (status: string) => {

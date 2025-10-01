@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Settings · Organization · Domains' };
 
 export default async function OrgDomainsPage({ searchParams }: { searchParams?: { suggest?: string } }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

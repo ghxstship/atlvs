@@ -912,12 +912,33 @@ export const SUPPORTED_REPORT_FORMATS = [
 ] as const;
 
 /**
- * Chart color palettes
+ * Chart color palettes using design tokens
  */
 export const CHART_COLOR_PALETTES = {
-  default: ['#3B82F6', '#EF4444', '#10B981', '#F59E0B', '#8B5CF6', '#EC4899'],
-  blue: ['#DBEAFE', '#BFDBFE', '#93C5FD', '#60A5FA', '#3B82F6', '#2563EB'],
-  green: ['#DCFCE7', '#BBF7D0', '#86EFAC', '#4ADE80', '#22C55E', '#16A34A'],
+  default: [
+    'hsl(var(--color-primary))',
+    'hsl(var(--color-destructive))',
+    'hsl(var(--color-success))',
+    'hsl(var(--color-warning))',
+    'hsl(var(--color-purple))',
+    'hsl(var(--color-pink))'
+  ],
+  blue: [
+    'hsl(var(--color-primary) / 0.2)',
+    'hsl(var(--color-primary) / 0.4)',
+    'hsl(var(--color-primary) / 0.6)',
+    'hsl(var(--color-primary) / 0.8)',
+    'hsl(var(--color-primary))',
+    'hsl(var(--color-primary) / 1.2)'
+  ],
+  green: [
+    'hsl(var(--color-success) / 0.2)',
+    'hsl(var(--color-success) / 0.4)',
+    'hsl(var(--color-success) / 0.6)',
+    'hsl(var(--color-success) / 0.8)',
+    'hsl(var(--color-success))',
+    'hsl(var(--color-success) / 1.2)'
+  ],
 } as const;
 
 /**

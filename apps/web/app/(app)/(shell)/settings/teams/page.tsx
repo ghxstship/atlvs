@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Settings · Teams' };
 
 export default async function SettingsTeamsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

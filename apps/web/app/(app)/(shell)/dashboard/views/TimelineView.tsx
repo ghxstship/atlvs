@@ -212,14 +212,14 @@ export const TimelineView: React.FC<TimelineViewProps> = ({
     const color = row[fieldMapping.color] as string;
     if (color) return color;
 
-    // Default colors based on type
+    // Default colors based on type using design tokens
     const type = getItemType(row);
     switch (type) {
-      case 'milestone': return '#10b981'; // green
-      case 'deadline': return '#ef4444'; // red
-      case 'task': return '#3b82f6'; // blue
-      case 'period': return '#8b5cf6'; // purple
-      default: return '#6b7280'; // gray
+      case 'milestone': return 'hsl(var(--color-success))';
+      case 'deadline': return 'hsl(var(--color-destructive))';
+      case 'task': return 'hsl(var(--color-primary))';
+      case 'period': return 'hsl(var(--color-purple))';
+      default: return 'hsl(var(--color-muted))';
     }
   }, [fieldMapping.color, getItemType]);
 

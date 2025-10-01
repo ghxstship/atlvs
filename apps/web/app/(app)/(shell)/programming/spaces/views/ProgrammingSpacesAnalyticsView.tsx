@@ -11,56 +11,13 @@ import {
  Progress,
 } from '@ghxstship/ui';
 
+import { STATUS_COLORS, ACCESS_LEVEL_COLORS, KIND_COLORS } from '@ghxstship/config/tokens/chart-colors';
 import type { ProgrammingSpace, SpaceAnalytics } from '../types';
 
 interface ProgrammingSpacesAnalyticsViewProps {
  spaces: ProgrammingSpace[];
  loading: boolean;
 }
-
-const STATUS_COLORS = {
- available: '#10b981',
- occupied: '#ef4444',
- reserved: '#f59e0b',
- maintenance: '#6b7280',
- cleaning: '#3b82f6',
- setup: '#f59e0b',
- breakdown: '#f59e0b',
- out_of_service: '#ef4444',
-};
-
-const ACCESS_LEVEL_COLORS = {
- public: '#10b981',
- restricted: '#f59e0b',
- staff_only: '#6b7280',
- talent_only: '#3b82f6',
- vip: '#ef4444',
- crew_only: '#8b5cf6',
- private: '#ef4444',
-};
-
-const KIND_COLORS = {
- room: '#3b82f6',
- green_room: '#10b981',
- dressing_room: '#ec4899',
- meeting_room: '#8b5cf6',
- classroom: '#6366f1',
- studio: '#ef4444',
- rehearsal_room: '#f59e0b',
- storage: '#6b7280',
- office: '#3b82f6',
- lounge: '#f97316',
- kitchen: '#ef4444',
- bathroom: '#06b6d4',
- corridor: '#6b7280',
- lobby: '#78716c',
- stage: '#8b5cf6',
- backstage: '#6366f1',
- loading_dock: '#64748b',
- parking: '#3b82f6',
- outdoor: '#10b981',
- other: '#6b7280',
-};
 
 export default function ProgrammingSpacesAnalyticsView({
  spaces,

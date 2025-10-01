@@ -13,7 +13,7 @@ export const metadata = {
 };
 
 export default async function CategoriesPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const sb = createServerClient(cookieStore);
 
   // Check authentication

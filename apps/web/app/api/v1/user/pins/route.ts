@@ -3,7 +3,7 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 
 export async function GET() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   const body = await req.json().catch(() => ({}));
   const pins: string[] = Array.isArray(body?.pins) ? body.pins : [];
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

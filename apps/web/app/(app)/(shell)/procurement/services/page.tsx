@@ -12,7 +12,7 @@ export const metadata = { title: 'Procurement · Services' };
 
 export default async function ProcurementServicesPage() {
   const t = await getTranslations('procurement');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

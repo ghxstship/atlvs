@@ -42,7 +42,7 @@ const updateLineupSchema = z.object({
 });
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

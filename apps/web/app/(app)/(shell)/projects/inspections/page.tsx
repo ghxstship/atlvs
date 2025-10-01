@@ -12,7 +12,7 @@ export const metadata = { title: 'Projects · Inspections' };
 
 export default async function ProjectsInspectionsPage() {
   const t = await getTranslations('inspections');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

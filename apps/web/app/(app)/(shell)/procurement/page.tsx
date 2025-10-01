@@ -11,7 +11,7 @@ export const metadata = { title: 'Procurement' };
 
 export default async function ProcurementPage() {
   const t = await getTranslations('procurement');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

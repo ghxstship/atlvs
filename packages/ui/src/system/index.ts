@@ -142,11 +142,11 @@ export const GHXSTSHIP_DESIGN_SYSTEM = {
       mono: 'Share Tech Mono',
     },
     
-    // Brand colors
+    // Brand colors using design tokens
     brand: {
-      primary: '#0066CC',
-      secondary: '#6B7280',
-      accent: '#F59E0B',
+      primary: 'hsl(var(--color-primary))',
+      secondary: 'hsl(var(--color-muted))',
+      accent: 'hsl(var(--color-accent))',
     },
     
     // Animation preferences

@@ -79,7 +79,7 @@ async function getAuthenticatedContext(req: NextRequest) {
     return { error: NextResponse.json({ error: 'Too many requests' }, { status: 429 }) };
   }
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

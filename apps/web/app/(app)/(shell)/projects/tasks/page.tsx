@@ -13,7 +13,7 @@ export const metadata = { title: 'Project Tasks' };
 
 export default async function ProjectTasks() {
   const t = await getTranslations('tasks');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

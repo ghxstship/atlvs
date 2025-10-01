@@ -12,7 +12,7 @@ export const metadata = { title: 'People · Directory' };
 
 export default async function PeopleDirectoryPage() {
   const t = await getTranslations('people.directory');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

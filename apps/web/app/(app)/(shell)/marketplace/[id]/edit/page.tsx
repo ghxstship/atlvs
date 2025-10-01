@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: PageProps) {
 
 export default async function MarketplaceEditPage({ params }: PageProps) {
   const t = await getTranslations('marketplace');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

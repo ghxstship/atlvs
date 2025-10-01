@@ -1,4 +1,5 @@
 import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2, FolderOpen, PlayCircle, PauseCircle, CheckCircle2, XCircle, DollarSign, Users, AlertTriangle, Target, Briefcase, BarChart3, Shield, Zap, Package, Building, MapPin, Camera, Megaphone, ClipboardCheck, Upload, Download, Archive, Layers, Database, CreditCard, Receipt, PieChart, ShoppingCart, UserCheck, UserPlus, Mail, Phone, Globe, Truck, Box, Tag, Star, Heart, MessageSquare, Bell, Filter, Grid3x3, List, LayoutGrid } from "lucide-react";
+import { CHART_COLORS } from '@ghxstship/config/tokens/chart-colors';
 import type { OverviewConfig } from "./useEnterpriseOverview";
 
 // Projects Module Configuration
@@ -65,11 +66,11 @@ export const projectsOverviewConfig: OverviewConfig = {
  statusFields: {
  field: "status",
  values: [
- { value: "planning", label: "Planning", color: "#6B7280", icon: Clock },
- { value: "active", label: "Active", color: "#10B981", icon: PlayCircle },
- { value: "on_hold", label: "On Hold", color: "#F59E0B", icon: PauseCircle },
- { value: "completed", label: "Completed", color: "#3B82F6", icon: CheckCircle2 },
- { value: "cancelled", label: "Cancelled", color: "#EF4444", icon: XCircle },
+ { value: "planning", label: "Planning", color: CHART_COLORS.muted, icon: Clock },
+ { value: "active", label: "Active", color: CHART_COLORS.success, icon: PlayCircle },
+ { value: "on_hold", label: "On Hold", color: CHART_COLORS.warning, icon: PauseCircle },
+ { value: "completed", label: "Completed", color: CHART_COLORS.info, icon: CheckCircle2 },
+ { value: "cancelled", label: "Cancelled", color: CHART_COLORS.error, icon: XCircle },
  ],
  },
  quickActions: [
@@ -129,11 +130,11 @@ export const activationsOverviewConfig: OverviewConfig = {
  statusFields: {
  field: "status",
  values: [
- { value: "draft", label: "Draft", color: "#6B7280", icon: FileText },
- { value: "scheduled", label: "Scheduled", color: "#F59E0B", icon: Calendar },
- { value: "active", label: "Active", color: "#10B981", icon: Zap },
- { value: "completed", label: "Completed", color: "#3B82F6", icon: CheckCircle2 },
- { value: "cancelled", label: "Cancelled", color: "#EF4444", icon: XCircle },
+ { value: "draft", label: "Draft", color: CHART_COLORS.muted, icon: FileText },
+ { value: "scheduled", label: "Scheduled", color: CHART_COLORS.warning, icon: Calendar },
+ { value: "active", label: "Active", color: CHART_COLORS.success, icon: Zap },
+ { value: "completed", label: "Completed", color: CHART_COLORS.info, icon: CheckCircle2 },
+ { value: "cancelled", label: "Cancelled", color: CHART_COLORS.error, icon: XCircle },
  ],
  },
  quickActions: [
@@ -193,10 +194,10 @@ export const locationsOverviewConfig: OverviewConfig = {
  statusFields: {
  field: "availability_status",
  values: [
- { value: "available", label: "Available", color: "#10B981", icon: CheckCircle2 },
- { value: "booked", label: "Booked", color: "#F59E0B", icon: Calendar },
- { value: "maintenance", label: "Maintenance", color: "#6B7280", icon: Settings },
- { value: "unavailable", label: "Unavailable", color: "#EF4444", icon: XCircle },
+ { value: "available", label: "Available", color: CHART_COLORS.success, icon: CheckCircle2 },
+ { value: "booked", label: "Booked", color: CHART_COLORS.warning, icon: Calendar },
+ { value: "maintenance", label: "Maintenance", color: CHART_COLORS.muted, icon: Settings },
+ { value: "unavailable", label: "Unavailable", color: CHART_COLORS.error, icon: XCircle },
  ],
  },
  quickActions: [
@@ -260,11 +261,11 @@ export const inspectionsOverviewConfig: OverviewConfig = {
  statusFields: {
  field: "status",
  values: [
- { value: "scheduled", label: "Scheduled", color: "#6B7280", icon: Calendar },
- { value: "in_progress", label: "In Progress", color: "#F59E0B", icon: Activity },
- { value: "completed", label: "Completed", color: "#10B981", icon: CheckCircle2 },
- { value: "failed", label: "Failed", color: "#EF4444", icon: XCircle },
- { value: "cancelled", label: "Cancelled", color: "#6B7280", icon: XCircle },
+ { value: "scheduled", label: "Scheduled", color: CHART_COLORS.muted, icon: Calendar },
+ { value: "in_progress", label: "In Progress", color: CHART_COLORS.warning, icon: Activity },
+ { value: "completed", label: "Completed", color: CHART_COLORS.success, icon: CheckCircle2 },
+ { value: "failed", label: "Failed", color: CHART_COLORS.error, icon: XCircle },
+ { value: "cancelled", label: "Cancelled", color: CHART_COLORS.muted, icon: XCircle },
  ],
  },
  quickActions: [
@@ -325,11 +326,11 @@ export const filesOverviewConfig: OverviewConfig = {
  statusFields: {
  field: "category",
  values: [
- { value: "document", label: "Documents", color: "#3B82F6", icon: FileText },
- { value: "image", label: "Images", color: "#10B981", icon: Camera },
- { value: "video", label: "Videos", color: "#F59E0B", icon: Camera },
- { value: "archive", label: "Archives", color: "#6B7280", icon: Archive },
- { value: "other", label: "Other", color: "#9CA3AF", icon: FileText },
+ { value: "document", label: "Documents", color: CHART_COLORS.info, icon: FileText },
+ { value: "image", label: "Images", color: CHART_COLORS.success, icon: Camera },
+ { value: "video", label: "Videos", color: CHART_COLORS.warning, icon: Camera },
+ { value: "archive", label: "Archives", color: CHART_COLORS.muted, icon: Archive },
+ { value: "other", label: "Other", color: CHART_COLORS.muted, icon: FileText },
  ],
  },
  quickActions: [

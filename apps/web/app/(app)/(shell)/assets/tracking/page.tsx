@@ -11,7 +11,7 @@ export const metadata = { title: 'Assets · Tracking' };
 
 export default async function AssetTrackingPage() {
   const t = await getTranslations('assets.tracking');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

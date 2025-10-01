@@ -11,7 +11,7 @@ function extractDomain(email: string): string | null {
 }
 
 export async function POST(req: NextRequest, { params }: { params: { orgId: string } }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

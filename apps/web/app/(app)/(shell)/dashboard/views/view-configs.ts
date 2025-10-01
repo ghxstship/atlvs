@@ -101,9 +101,9 @@ export const dashboardViews = ({ dashboards, metrics, insights }: DashboardViewC
         descriptionField: 'description',
         colorField: 'type',
         colors: {
-          system: '#3b82f6',
-          custom: '#10b981',
-          template: '#8b5cf6'
+          system: 'hsl(var(--color-primary))',
+          custom: 'hsl(var(--color-success))',
+          template: 'hsl(var(--color-purple))'
         }
       }
     },

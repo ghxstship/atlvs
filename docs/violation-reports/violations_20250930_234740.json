@@ -1,0 +1,84 @@
+
+> audit:design-tokens
+> tsx scripts/validate-design-tokens.ts
+
+[36m
+🔍 Scanning codebase for design token violations...[0m
+[34m
+📂 Found 2263 files to analyze
+[0m
+[36m
+═══════════════════════════════════════════════════════════[0m
+[36m  DESIGN TOKEN VALIDATION REPORT[0m
+[36m═══════════════════════════════════════════════════════════
+[0m
+[33m📊 SUMMARY[0m
+[37m   Total Files with Violations: 52[0m
+[37m   Total Violations: 414[0m
+[31m   🔴 Errors: 395[0m
+[33m   🟡 Warnings: 19[0m
+[34m   🔵 Info: 0[0m
+[0m[0m
+[33m🔥 TOP 10 FILES WITH MOST VIOLATIONS[0m
+[31m   1. packages/ui/src/components/architecture/DesignSystem.tsx[0m
+[37m      Total: 50 | Errors: 50 | Warnings: 0[0m
+[31m   2. packages/ui/src/system/DesignSystem.tsx[0m
+[37m      Total: 35 | Errors: 35 | Warnings: 0[0m
+[31m   3. apps/web/app/(app)/(shell)/programming/spaces/views/ProgrammingSpacesAnalyticsView.tsx[0m
+[37m      Total: 35 | Errors: 35 | Warnings: 0[0m
+[31m   4. apps/web/app/(app)/(shell)/programming/workshops/views/ProgrammingWorkshopsAnalyticsView.tsx[0m
+[37m      Total: 26 | Errors: 26 | Warnings: 0[0m
+[31m   5. apps/web/app/_components/shared/overviewConfigs.tsx[0m
+[37m      Total: 24 | Errors: 24 | Warnings: 0[0m
+[31m   6. apps/web/app/(app)/(shell)/files/riders/views/ProgrammingRidersAnalyticsView.tsx[0m
+[37m      Total: 22 | Errors: 22 | Warnings: 0[0m
+[31m   7. packages/ui/src/UnifiedDesignSystem.tsx[0m
+[37m      Total: 20 | Errors: 20 | Warnings: 0[0m
+[31m   8. packages/ui/src/components/Navigation/NavigationLazyLoader.tsx[0m
+[37m      Total: 20 | Errors: 10 | Warnings: 10[0m
+[31m   9. apps/web/app/(app)/(shell)/analytics/types.ts[0m
+[37m      Total: 18 | Errors: 18 | Warnings: 0[0m
+[31m   10. packages/ui/src/components/DataViews/WhiteboardView.tsx[0m
+[37m      Total: 17 | Errors: 17 | Warnings: 0[0m
+[0m[0m
+[33m📋 VIOLATIONS BY TYPE[0m
+[37m   hex-color             360 (87.0%)[0m
+[37m   rgb-color              23 (5.6%)[0m
+[37m   arbitrary-class        20 (4.8%)[0m
+[37m   inline-style            9 (2.2%)[0m
+[37m   hardcoded-font          2 (0.5%)[0m
+[0m[0m
+[33m🔍 SAMPLE VIOLATIONS (First 5)[0m
+[31m   1. packages/ui/src/components/architecture/DesignSystem.tsx:14[0m
+[37m      hex-color (error)[0m
+[37m      Code: 50: '#eff6ff',...[0m
+[32m      💡 Use hsl(var(--color-*)) or semantic Tailwind class[0m
+[0m[0m
+[31m   2. packages/ui/src/components/architecture/DesignSystem.tsx:15[0m
+[37m      hex-color (error)[0m
+[37m      Code: 100: '#dbeafe',...[0m
+[32m      💡 Use hsl(var(--color-*)) or semantic Tailwind class[0m
+[0m[0m
+[31m   3. packages/ui/src/system/DesignSystem.tsx:87[0m
+[37m      hex-color (error)[0m
+[37m      Code: 50: '#f0f9ff',...[0m
+[32m      💡 Use hsl(var(--color-*)) or semantic Tailwind class[0m
+[0m[0m
+[31m   4. packages/ui/src/system/DesignSystem.tsx:88[0m
+[37m      hex-color (error)[0m
+[37m      Code: 100: '#e0f2fe',...[0m
+[32m      💡 Use hsl(var(--color-*)) or semantic Tailwind class[0m
+[0m[0m
+[31m   5. apps/web/app/(app)/(shell)/programming/spaces/views/ProgrammingSpacesAnalyticsView.tsx:22[0m
+[37m      hex-color (error)[0m
+[37m      Code: available: '#10b981',...[0m
+[32m      💡 Use hsl(var(--color-*)) or semantic Tailwind class[0m
+[0m[0m
+[36m═══════════════════════════════════════════════════════════
+[0m
+[32m💾 Full report saved to: /Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ATLVS/docs/design-token-violations.json[0m
+[32m📄 Markdown report saved to: /Users/julianclarkson/Library/Mobile Documents/com~apple~CloudDocs/Dragonfly26/ATLVS/docs/design-token-violations.md[0m
+[31m
+❌ Validation failed: errors detected[0m
+[33mRun migration script: ./scripts/migrate-to-design-tokens.sh
+[0m

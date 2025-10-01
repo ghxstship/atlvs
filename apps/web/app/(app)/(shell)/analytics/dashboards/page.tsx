@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Analytics · Dashboards' };
 
 export default async function AnalyticsDashboardsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   const { data } = await supabase.auth.getUser();
   

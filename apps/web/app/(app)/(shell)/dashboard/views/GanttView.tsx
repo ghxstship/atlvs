@@ -275,14 +275,14 @@ export const GanttView: React.FC<GanttViewProps> = ({
     return { left: Math.max(0, left), width: Math.min(100 - left, width) };
   }, [dateRange]);
 
-  // Get status color
+  // Get status color using design tokens
   const getStatusColor = useCallback((status: GanttTask['status']) => {
     switch (status) {
-      case 'completed': return '#10b981';
-      case 'in_progress': return '#3b82f6';
-      case 'delayed': return '#f59e0b';
-      case 'blocked': return '#ef4444';
-      default: return '#6b7280';
+      case 'completed': return 'hsl(var(--color-success))';
+      case 'in_progress': return 'hsl(var(--color-primary))';
+      case 'delayed': return 'hsl(var(--color-warning))';
+      case 'blocked': return 'hsl(var(--color-destructive))';
+      default: return 'hsl(var(--color-muted))';
     }
   }, []);
 

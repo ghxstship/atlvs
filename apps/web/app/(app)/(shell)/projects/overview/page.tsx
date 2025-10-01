@@ -18,7 +18,7 @@ import AutoSeedOnFirstRun from './AutoSeedOnFirstRun';
 export default async function ProjectsOverview() {
   const t = await getTranslations('projects');
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

@@ -67,7 +67,7 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
     ref
   ) => {
     const [internalValue, setInternalValue] = React.useState<string>(
-      (value as string) || (defaultValue as string) || '#000000'
+      (value as string) || (defaultValue as string) || 'hsl(0 0% 0%)'
     );
     const colorId = id || React.useId();
     const descriptionId = description ? `${colorId}-description` : undefined;
@@ -123,7 +123,7 @@ const ColorPicker = React.forwardRef<HTMLInputElement, ColorPickerProps>(
               'disabled:cursor-not-allowed disabled:opacity-50'
             )}
             disabled={disabled}
-            placeholder="#000000"
+            placeholder="hsl(0 0% 0%)"
             maxLength={7}
           />
         )}

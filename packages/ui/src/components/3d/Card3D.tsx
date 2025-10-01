@@ -71,7 +71,7 @@ export function Card3D({
   size,
   depth,
   interaction,
-  glowColor = 'rgba(59, 130, 246, 0.5)',
+  glowColor = 'hsl(var(--color-primary) / 0.5)',
   parallaxIntensity = 10,
   enableTilt = true,
   enableGlow = false,
@@ -184,7 +184,7 @@ export function Card3D({
           style={{
             opacity: isHovered ? 0.1 : 0,
             background: `radial-gradient(circle at ${mousePosition.x + 50}% ${mousePosition.y + 50}%, 
-              rgba(255, 255, 255, 0.8) 0%, 
+              hsl(var(--color-background) / 0.8) 0%, 
               transparent 50%)`,
           }}
         />
@@ -244,7 +244,7 @@ export function ProjectCard3D({ title, description, status, progress, dueDate, o
       interaction="tilt"
       enableTilt={true}
       enableGlow={true}
-      glowColor={status === 'active' ? 'rgba(34, 197, 94, 0.3)' : 'rgba(59, 130, 246, 0.3)'}
+      glowColor={status === 'active' ? 'hsl(var(--color-success) / 0.3)' : 'hsl(var(--color-primary) / 0.3)'}
       onClick={onClick}
       className="group"
     >

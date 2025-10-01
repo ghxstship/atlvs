@@ -92,10 +92,10 @@ export class FinanceExport {
        <style>
          body { font-family: Arial, sans-serif; margin: 20px; }
          table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-         th { background-color: #f5f5f5; font-weight: bold; }
-         tr:nth-child(even) { background-color: #f9f9f9; }
-         h1 { color: #333; }
+         th, td { border: 1px solid hsl(0 0% 87%); padding: 8px; text-align: left; }
+         th { background-color: hsl(0 0% 96%); font-weight: bold; }
+         tr:nth-child(even) { background-color: hsl(0 0% 98%); }
+         h1 { color: hsl(0 0% 20%); }
        </style>
      </head>
      <body>

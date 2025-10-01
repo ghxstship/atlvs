@@ -20,7 +20,7 @@ export async function GET(
   { params }: { params: { orgId: string; profileId: string } }
 ) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient({
       get: (name: string) => {
         const c = cookieStore.get(name);
@@ -82,7 +82,7 @@ export async function POST(
   { params }: { params: { orgId: string; profileId: string } }
 ) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient({
       get: (name: string) => {
         const c = cookieStore.get(name);

@@ -24,7 +24,7 @@ interface PageProps {
 export async function generateMetadata({ params }: PageProps): Promise<{ title: string; description: string }> {
   const { id } = await params;
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const cookie = cookieStore.get(name);
@@ -83,7 +83,7 @@ export async function generateMetadata({ params }: PageProps): Promise<{ title: 
 export default async function AssetDetailPage({ params }: PageProps): Promise<React.JSX.Element> {
   const { id } = await params;
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const cookie = cookieStore.get(name);

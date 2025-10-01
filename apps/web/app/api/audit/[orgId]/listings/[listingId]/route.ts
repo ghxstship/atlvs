@@ -9,7 +9,7 @@ export async function GET(req: NextRequest, { params }: { params: { orgId: strin
   const { orgId, listingId } = params;
 
   // Authorize: user must be an active member of the org
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userSb = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

@@ -247,8 +247,8 @@ export interface DesignTokens {
 export const designTokens: DesignTokens = {
   primitives: {
     colors: {
-      white: '#FFFFFF',
-      black: '#000000',
+      white: 'hsl(0 0% 100%)',
+      black: 'hsl(0 0% 0%)',
       neutrals: {
         '50': 'hsl(210 40% 98%)',
         '100': 'hsl(210 40% 96%)',

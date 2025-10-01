@@ -17,7 +17,7 @@ const createMilestoneSchema = z.object({
 // GET /api/v1/milestones - List all milestones for the organization
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -116,7 +116,7 @@ export async function GET(request: NextRequest) {
 // POST /api/v1/milestones - Create a new milestone
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication

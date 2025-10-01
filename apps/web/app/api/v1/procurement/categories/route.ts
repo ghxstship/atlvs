@@ -15,7 +15,7 @@ const categorySchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const sb = createServerClient(cookieStore);
 
     // Get organization ID from headers
@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const sb = createServerClient(cookieStore);
 
     // Get organization ID from headers

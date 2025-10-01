@@ -28,7 +28,7 @@ const CreateComplianceSchema = z.object({
 const UpdateComplianceSchema = CreateComplianceSchema.partial();
 
 async function getAuthenticatedUser() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

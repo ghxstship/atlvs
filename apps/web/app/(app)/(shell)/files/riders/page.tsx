@@ -18,7 +18,7 @@ type User = {
 };
 
 export default async function RidersPage() {
- const cookieStore = cookies();
+ const cookieStore = await cookies();
  const supabase = createServerClient(cookieStore);
 
  // Get authenticated user

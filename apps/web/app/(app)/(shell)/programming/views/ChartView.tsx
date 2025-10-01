@@ -20,7 +20,15 @@ interface ChartViewProps<T extends ProgrammingEntity> {
   className?: string;
 }
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884D8', '#82CA9D'];
+// Use design tokens for chart colors
+const COLORS = [
+  'hsl(var(--color-primary))',
+  'hsl(var(--color-success))',
+  'hsl(var(--color-warning))',
+  'hsl(var(--color-accent))',
+  'hsl(var(--color-purple))',
+  'hsl(var(--color-teal))'
+];
 
 export function ChartView<T extends ProgrammingEntity>({
   data,
@@ -154,7 +162,7 @@ export function ChartView<T extends ProgrammingEntity>({
                   getMetricLabel()
                 ]}
               />
-              <Bar dataKey={metric} fill="#8884d8" />
+              <Bar dataKey={metric} fill="hsl(var(--color-primary))" />
             </BarChart>
           </ResponsiveContainer>
         );
@@ -172,7 +180,7 @@ export function ChartView<T extends ProgrammingEntity>({
                   getMetricLabel()
                 ]}
               />
-              <Line type="monotone" dataKey={metric} stroke="#8884d8" strokeWidth={2} />
+              <Line type="monotone" dataKey={metric} stroke="hsl(var(--color-primary))" strokeWidth={2} />
             </LineChart>
           </ResponsiveContainer>
         );
@@ -190,7 +198,7 @@ export function ChartView<T extends ProgrammingEntity>({
                   getMetricLabel()
                 ]}
               />
-              <Area type="monotone" dataKey={metric} stroke="#8884d8" fill="#8884d8" fillOpacity={0.3} />
+              <Area type="monotone" dataKey={metric} stroke="hsl(var(--color-primary))" fill="hsl(var(--color-primary))" fillOpacity={0.3} />
             </AreaChart>
           </ResponsiveContainer>
         );
@@ -206,7 +214,7 @@ export function ChartView<T extends ProgrammingEntity>({
                 labelLine={false}
                 label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 outerRadius={120}
-                fill="#8884d8"
+                fill="hsl(var(--color-primary))"
                 dataKey={metric}
               >
                 {chartData.map((entry, index) => (

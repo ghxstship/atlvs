@@ -16,7 +16,7 @@ import {
 import type { JobHistoryFilters } from '@/app/(app)/(shell)/profile/job-history/types';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

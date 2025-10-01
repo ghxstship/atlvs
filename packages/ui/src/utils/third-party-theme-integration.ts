@@ -161,7 +161,7 @@ export function useReactModalTheme() {
 
   return {
     overlay: {
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: 'hsl(0 0% 0% / 0.5)',
       backdropFilter: 'blur(4px)',
     },
     content: {

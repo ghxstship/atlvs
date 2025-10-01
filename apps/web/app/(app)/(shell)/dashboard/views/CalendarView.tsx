@@ -199,7 +199,7 @@ export const CalendarView: React.FC<CalendarViewProps> = ({
 
       const color = eventColors[String(row[fieldMapping.color] || '')] ||
                    eventColors[String(row[fieldMapping.category] || '')] ||
-                   '#3b82f6';
+                   'hsl(var(--color-primary))';
 
       let attendees: CalendarEvent['attendees'] = [];
       if (fieldMapping.attendees && row[fieldMapping.attendees]) {

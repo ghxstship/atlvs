@@ -69,9 +69,18 @@ interface WhiteboardState {
 
 type Tool = 'select' | 'pen' | 'rectangle' | 'circle' | 'arrow' | 'text' | 'sticky' | 'eraser' | 'pan';
 
+// Use design tokens for whiteboard colors
 const COLORS = [
-  '#000000', '#FF0000', '#00FF00', '#0000FF', '#FFFF00', 
-  '#FF00FF', '#00FFFF', '#FFA500', '#800080', '#FFC0CB'
+  'hsl(var(--color-foreground))',      // Black
+  'hsl(var(--color-destructive))',     // Red
+  'hsl(var(--color-success))',         // Green
+  'hsl(var(--color-primary))',         // Blue
+  'hsl(var(--color-warning))',         // Yellow
+  'hsl(var(--color-pink))',            // Pink
+  'hsl(var(--color-info))',            // Cyan
+  'hsl(var(--color-accent))',          // Orange
+  'hsl(var(--color-purple))',          // Purple
+  'hsl(var(--color-muted))',           // Gray
 ];
 
 const STROKE_WIDTHS = [1, 2, 4, 8, 12];
@@ -80,7 +89,7 @@ export function WhiteboardView({
   className = '',
   width = 1200,
   height = 800,
-  backgroundColor = '#FFFFFF',
+  backgroundColor = 'hsl(var(--color-background))',
   gridEnabled = true,
   snapToGrid = false,
   allowCollaboration = true,
@@ -91,7 +100,7 @@ export function WhiteboardView({
   const [whiteboardState, setWhiteboardState] = useState<WhiteboardState>({
     elements: [],
     selectedTool: 'pen',
-    selectedColor: '#000000',
+    selectedColor: 'hsl(var(--color-foreground))',
     strokeWidth: 2,
     fontSize: 16,
     zoom: 1,
@@ -164,7 +173,7 @@ export function WhiteboardView({
   // Draw grid
   const drawGrid = useCallback((ctx: CanvasRenderingContext2D) => {
     const gridSize = 20;
-    ctx.strokeStyle = '#E5E7EB';
+    ctx.strokeStyle = 'hsl(var(--color-border))';
     ctx.lineWidth = 1;
     ctx.setLineDash([]);
 
@@ -235,13 +244,13 @@ export function WhiteboardView({
 
       case 'sticky':
         // Draw sticky note background
-        ctx.fillStyle = element.fill || '#FFEB3B';
+        ctx.fillStyle = element.fill || 'hsl(var(--color-warning))';
         ctx.fillRect(element.x, element.y, element.width || 100, element.height || 100);
         ctx.strokeRect(element.x, element.y, element.width || 100, element.height || 100);
         
         // Draw text
         if (element.text) {
-          ctx.fillStyle = '#000000';
+          ctx.fillStyle = 'hsl(var(--color-foreground))';
           ctx.font = `${element.fontSize || 14}px Arial`;
           const lines = element.text.split('\n');
           lines.forEach((line, index) => {
@@ -284,7 +293,7 @@ export function WhiteboardView({
       const element = whiteboardState.elements.find(el => el.id === elementId);
       if (!element) return;
 
-      ctx.strokeStyle = '#2563EB';
+      ctx.strokeStyle = 'hsl(var(--color-primary))';
       ctx.lineWidth = 2;
       ctx.setLineDash([5, 5]);
 
@@ -351,7 +360,7 @@ export function WhiteboardView({
     } else if (whiteboardState.selectedTool === 'sticky') {
       newElement.width = 100;
       newElement.height = 100;
-      newElement.fill = '#FFEB3B';
+      newElement.fill = 'hsl(var(--color-warning))';
       newElement.text = 'New note';
     }
 

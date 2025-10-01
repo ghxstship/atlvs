@@ -28,7 +28,7 @@ const updateActivationSchema = createActivationSchema.partial();
 // GET /api/v1/activations - List activations
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -103,7 +103,7 @@ export async function GET(request: NextRequest) {
 // POST /api/v1/activations - Create activation
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -195,7 +195,7 @@ export async function POST(request: NextRequest) {
 // PATCH /api/v1/activations/[id] - Update activation
 export async function PATCH(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Extract ID from URL
@@ -306,7 +306,7 @@ export async function PATCH(request: NextRequest) {
 // DELETE /api/v1/activations/[id] - Delete activation
 export async function DELETE(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Extract ID from URL

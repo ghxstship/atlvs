@@ -16,7 +16,7 @@ import {
 import type { HistoryFilters } from '@/app/(app)/(shell)/profile/history/types';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

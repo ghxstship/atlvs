@@ -391,8 +391,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
                 <Badge
                   key={idx}
                   variant="secondary"
-                  className="text-xs"
-                  style={{ backgroundColor: badge.color }}
+                  className="text-xs bg-primary"
                 >
                   {badge.format
                     ? badge.format(row[badge.field])
@@ -474,7 +473,7 @@ export const KanbanView: React.FC<KanbanViewProps> = ({
           ) : (
             <>
               <div className="flex items-center gap-xs">
-                {column.icon && <column.icon className="h-icon-xs w-icon-xs" style={{ color: column.color }} />}
+                {column.icon && <column.icon className="h-icon-xs w-icon-xs text-primary" />}
                 <h3 className="font-medium text-sm">{column.title}</h3>
                 <Badge variant="secondary" className="text-xs">
                   {totalCards}

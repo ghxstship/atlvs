@@ -333,7 +333,7 @@ interface RippleEffectProps {
   duration?: number;
 }
 
-export function RippleEffect({ children, color = 'rgba(255, 255, 255, 0.6)', duration = 600 }: RippleEffectProps) {
+export function RippleEffect({ children, color = 'hsl(var(--color-background) / 0.6)', duration = 600 }: RippleEffectProps) {
   const [ripples, setRipples] = useState<Array<{ x: number; y: number; id: number }>>([]);
 
   const addRipple = useCallback((event: React.MouseEvent<HTMLDivElement>) => {

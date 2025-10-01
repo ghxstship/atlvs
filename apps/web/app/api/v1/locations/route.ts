@@ -38,7 +38,7 @@ const updateLocationSchema = createLocationSchema.partial();
 // GET /api/v1/locations - List locations
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -115,7 +115,7 @@ export async function GET(request: NextRequest) {
 // POST /api/v1/locations - Create location
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication

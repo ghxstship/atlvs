@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
   if (!organizationId && !userId) return NextResponse.json({ error: 'Must provide organizationId or userId' }, { status: 400 });
 
   // SSR auth
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

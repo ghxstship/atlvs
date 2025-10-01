@@ -7,12 +7,12 @@ import { Home, ArrowLeft } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center p-md" style={{ backgroundColor: 'hsl(var(--background))' }}>
+    <div className="min-h-screen flex items-center justify-center p-md bg-background">
       <div className="max-w-md mx-auto text-center">
         <div className="mb-md">
-          <h1 className="text-display text-heading-3 mb-sm" style={{ color: 'hsl(var(--foreground))' }}>404</h1>
-          <h2 className="text-heading-3 text-heading-4 mb-xs" style={{ color: 'hsl(var(--foreground))' }}>Page Not Found</h2>
-          <p style={{ color: 'hsl(var(--muted-foreground))' }}>
+          <h1 className="text-display text-heading-3 mb-sm text-foreground">404</h1>
+          <h2 className="text-heading-3 text-heading-4 mb-xs text-foreground">Page Not Found</h2>
+          <p className="text-muted-foreground">
             The page you're looking for doesn't exist or has been moved.
           </p>
         </div>

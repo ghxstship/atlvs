@@ -13,7 +13,7 @@ export const metadata = { title: 'Projects · Risks' };
 
 export default async function ProjectsRisksPage() {
   const t = await getTranslations('risks');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

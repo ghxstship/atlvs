@@ -15,7 +15,7 @@ import {
 } from '@/app/(app)/(shell)/profile/emergency/lib/emergencyService';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

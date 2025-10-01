@@ -179,7 +179,7 @@ export const AccessibilityEnhancements = () => {
         const color = styles.color;
         
         // Add warning for potential contrast issues
-        if (backgroundColor !== 'rgba(0, 0, 0, 0)' && color !== 'rgba(0, 0, 0, 0)') {
+        if (backgroundColor !== 'transparent' && color !== 'transparent') {
           // This is a simplified check - in production, use a proper contrast ratio calculator
           const bgLuminance = getLuminance(backgroundColor);
           const textLuminance = getLuminance(color);

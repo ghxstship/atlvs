@@ -22,7 +22,7 @@ const createTaskSchema = z.object({
 // GET /api/v1/tasks - List all tasks for the organization
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication
@@ -121,7 +121,7 @@ export async function GET(request: NextRequest) {
 // POST /api/v1/tasks - Create a new task
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient(cookieStore);
 
     // Check authentication

@@ -258,13 +258,8 @@ export default function EnterpriseOverview({
  const StatusIcon = item.icon;
  return (
  <div
- key={item.id}
- className={`${item.onClick ? "cursor-pointer hover:bg-muted/50 -mx-sm px-sm py-xs rounded" : ""}`}
- onClick={item.onClick}
- >
- <div className="flex items-center justify-between mb-xs">
  <div className="flex items-center gap-xs">
- {StatusIcon && <StatusIcon className="h-icon-xs w-icon-xs" style={{ color: item.color }} />}
+ {StatusIcon && <StatusIcon className="h-icon-xs w-icon-xs text-primary" />}
  <span className="text-sm font-medium">{item.label}</span>
  </div>
  <div className="flex items-center gap-xs">
@@ -272,15 +267,12 @@ export default function EnterpriseOverview({
  {item.percentage !== undefined && (
  <span className="text-xs text-muted-foreground">({item.percentage.toFixed(0)}%)</span>
  )}
- </div>
- </div>
- <Progress value={percentage} className="h-2" style={{ "--progress-color": item.color } as unknown} />
+ <Progress value={percentage} className="h-2" />
  </div>
  );
- })}
- </div>
- {statusTotal > 0 && (
- <div className="mt-md pt-md border-t">
+})}
+</div>
+{statusTotal > 0 && (
  <div className="flex items-center justify-between">
  <span className="text-sm text-muted-foreground">Total</span>
  <span className="font-semibold">{statusTotal}</span>

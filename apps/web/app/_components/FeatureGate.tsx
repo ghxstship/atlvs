@@ -7,7 +7,7 @@ import { Card } from '@ghxstship/ui';
 export type FeatureKey = 'atlvs' | 'opendeck' | 'ghxstship';
 
 export default async function FeatureGate({ feature, children }: { feature: FeatureKey; children: ReactNode }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

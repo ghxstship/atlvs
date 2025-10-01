@@ -147,41 +147,34 @@ export default function ScheduleTimelineView({
  const date = item.due_date || item.end_date || item.start_date;
  const hasDateRange = item.start_date && item.end_date;
 
- return (
  <div key={item.id} className="flex gap-md">
  {/* Timeline line and dot */}
  <div className="flex flex-col items-center">
  <div
  className="w-3 h-3 rounded-full border-2"
- style={{
- borderColor: item.color || "#6B7280",
- backgroundColor: item.status === "completed" || item.status === "done" 
- ? item.color || "#6B7280" 
- : "white",
- }}
+                  style={{
+                    borderColor: item.color || "hsl(var(--color-muted))",
+                    backgroundColor: item.status === "completed" || item.status === "done" 
+                      ? item.color || "hsl(var(--color-muted))" 
+                      : "hsl(var(--color-background))",
+                  }}
  />
  {!isLast && (
  <div className="w-0.5 flex-1 bg-border" />
  )}
  </div>
-
- {/* Content */}
- <div
- className="flex-1 pb-8 cursor-pointer group"
- onClick={() => onItemClick?.(item)}
- >
+ 
  <Card className="p-md hover:shadow-md transition-shadow">
  <div className="flex items-start justify-between mb-2">
  <div className="flex items-start gap-xs">
  <div
- className="p-xs rounded"
- style={{ backgroundColor: `${item.color}20` || "#6B728020" }}
+ className="p-xs"
+                  style={{ backgroundColor: item.color ? `${item.color}20` : "hsl(var(--color-muted) / 0.1)" }}
  >
  {getItemIcon(item)}
  </div>
  <div>
  <h4 className="font-medium group-hover:text-primary transition-colors">
- {item.title}
  </h4>
  {item.project && (
  <p className="text-sm text-muted-foreground">

@@ -11,7 +11,7 @@ export const metadata = { title: 'Pipeline · Overview' };
 
 export default async function PipelineOverviewPage() {
   const t = await getTranslations('pipeline.overview');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

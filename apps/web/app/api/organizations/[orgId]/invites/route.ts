@@ -6,7 +6,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(_req: NextRequest, { params }: { params: { orgId: string } }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);
@@ -30,7 +30,7 @@ export async function GET(_req: NextRequest, { params }: { params: { orgId: stri
 }
 
 export async function DELETE(req: NextRequest, { params }: { params: { orgId: string } }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);
@@ -70,7 +70,7 @@ export async function DELETE(req: NextRequest, { params }: { params: { orgId: st
 }
 
 export async function POST(req: NextRequest, { params }: { params: { orgId: string } }) {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

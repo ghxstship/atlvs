@@ -6,7 +6,7 @@ export const dynamic = 'force-dynamic';
 
 
 export default async function AssetsOverviewPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { session } } = await supabase.auth.getSession();

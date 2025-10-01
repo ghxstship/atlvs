@@ -13,7 +13,7 @@ import { navigationTokens } from '../../tokens/navigation';
 export const sidebarVariants = cva(
   [
     'flex flex-col border-r transition-all duration-[var(--nav-duration-normal)] ease-[var(--nav-easing-ease-in-out)]',
-    'relative bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-default))]',
+    'relative bg-popover border-border',
   ],
   {
     variants: {
@@ -28,15 +28,15 @@ export const sidebarVariants = cva(
         floating: [
           'mx-sm my-sm rounded-[var(--nav-radius-lg)]',
           'border shadow-[var(--nav-shadow-md)]',
-          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-md)]',
+          'bg-popover/80 backdrop-blur-md',
         ],
         overlay: [
           'fixed inset-y-0 left-0 z-[var(--nav-z-overlay)]',
           'shadow-[var(--nav-shadow-xl)]',
         ],
         glass: [
-          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-lg)]',
-          'border-[hsl(var(--nav-border-subtle))]',
+          'bg-popover/80 backdrop-blur-lg',
+          'border-border/50',
         ],
       },
       theme: {
@@ -63,18 +63,18 @@ export const navigationItemVariants = cva(
     'mx-[var(--nav-spacing-xs)] rounded-[var(--nav-radius-md)]',
     'text-[var(--nav-text-sm)] font-[var(--nav-weight-medium)]',
     'transition-all duration-[var(--nav-duration-fast)] ease-[var(--nav-easing-ease-out)]',
-    'hover:bg-[hsl(var(--nav-accent-secondary)/0.1)] hover:text-[hsl(var(--nav-accent-primary))]',
-    'focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nav-accent-focus))] focus:ring-offset-2',
+    'hover:bg-accent/10 hover:text-primary',
+    'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2',
     'group relative cursor-pointer',
   ],
   {
     variants: {
       active: {
         true: [
-          'bg-[hsl(var(--nav-accent-primary)/0.1)] text-[hsl(var(--nav-accent-primary))]',
-          'border-l-2 border-[hsl(var(--nav-accent-primary))] ml-0 pl-[calc(var(--nav-spacing-sm)-2px)]',
+          'bg-primary/10 text-primary',
+          'border-l-2 border-primary ml-0 pl-[calc(var(--nav-spacing-sm)-2px)]',
         ],
-        false: 'text-[hsl(var(--nav-fg-secondary))]',
+        false: 'text-muted-foreground',
       },
       level: {
         0: 'ml-0',
@@ -93,8 +93,8 @@ export const navigationItemVariants = cva(
       },
       variant: {
         default: '',
-        subtle: 'hover:bg-[hsl(var(--nav-bg-secondary))]',
-        ghost: 'hover:bg-transparent hover:text-[hsl(var(--nav-accent-primary))]',
+        subtle: 'hover:bg-muted',
+        ghost: 'hover:bg-transparent hover:text-primary',
         pill: 'rounded-full',
       },
     },
@@ -115,7 +115,7 @@ export const navigationItemVariants = cva(
 export const breadcrumbVariants = cva(
   [
     'flex items-center gap-[var(--nav-spacing-xs)]',
-    'text-[var(--nav-text-sm)] text-[hsl(var(--nav-fg-muted))]',
+    'text-[var(--nav-text-sm)] text-muted-foreground/70',
   ],
   {
     variants: {
@@ -126,8 +126,8 @@ export const breadcrumbVariants = cva(
       },
       variant: {
         default: '',
-        pills: '[&>*]:bg-[hsl(var(--nav-bg-secondary))] [&>*]:px-[var(--nav-spacing-sm)] [&>*]:py-xs [&>*]:rounded-full',
-        underlined: '[&>a]:border-b [&>a]:border-transparent hover:[&>a]:border-[hsl(var(--nav-border-default))]',
+        pills: '[&>*]:bg-muted [&>*]:px-[var(--nav-spacing-sm)] [&>*]:py-xs [&>*]:rounded-full',
+        underlined: '[&>a]:border-b [&>a]:border-transparent hover:[&>a]:border-border',
       },
     },
     defaultVariants: {
@@ -140,16 +140,16 @@ export const breadcrumbVariants = cva(
 export const breadcrumbItemVariants = cva(
   [
     'transition-colors duration-[var(--nav-duration-fast)]',
-    'hover:text-[hsl(var(--nav-fg-primary))]',
+    'hover:text-foreground',
   ],
   {
     variants: {
       active: {
-        true: 'text-[hsl(var(--nav-fg-primary))] font-[var(--nav-weight-medium)]',
-        false: 'text-[hsl(var(--nav-fg-muted))]',
+        true: 'text-foreground font-[var(--nav-weight-medium)]',
+        false: 'text-muted-foreground/70',
       },
       interactive: {
-        true: 'cursor-pointer hover:text-[hsl(var(--nav-accent-primary))]',
+        true: 'cursor-pointer hover:text-primary',
         false: 'cursor-default',
       },
     },
@@ -167,7 +167,7 @@ export const breadcrumbItemVariants = cva(
 export const dropdownVariants = cva(
   [
     'absolute z-[var(--nav-z-dropdown)] min-w-container-xs',
-    'bg-[hsl(var(--nav-bg-accent))] border border-[hsl(var(--nav-border-default))]',
+    'bg-popover border border-border',
     'rounded-[var(--nav-radius-md)] shadow-[var(--nav-shadow-lg)]',
     'py-[var(--nav-spacing-xs)]',
     'animate-in fade-in-0 zoom-in-95 duration-[var(--nav-duration-fast)]',
@@ -184,7 +184,7 @@ export const dropdownVariants = cva(
       },
       variant: {
         default: '',
-        glass: 'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-md)]',
+        glass: 'bg-popover/80 backdrop-blur-md',
         minimal: 'border-0 shadow-[var(--nav-shadow-sm)]',
       },
     },
@@ -198,20 +198,20 @@ export const dropdownVariants = cva(
 export const dropdownItemVariants = cva(
   [
     'flex items-center gap-[var(--nav-spacing-sm)] px-[var(--nav-spacing-sm)] py-[var(--nav-spacing-xs)]',
-    'text-[var(--nav-text-sm)] text-[hsl(var(--nav-fg-secondary))]',
+    'text-[var(--nav-text-sm)] text-muted-foreground',
     'cursor-pointer transition-colors duration-[var(--nav-duration-fast)]',
-    'hover:bg-[hsl(var(--nav-accent-secondary)/0.1)] hover:text-[hsl(var(--nav-accent-primary))]',
-    'focus:outline-none focus:bg-[hsl(var(--nav-accent-secondary)/0.1)] focus:text-[hsl(var(--nav-accent-primary))]',
+    'hover:bg-accent/10 hover:text-primary',
+    'focus:outline-none focus:bg-accent/10 focus:text-primary',
   ],
   {
     variants: {
       variant: {
         default: '',
-        destructive: 'text-[hsl(var(--nav-state-error))] hover:bg-[hsl(var(--nav-state-error)/0.1)]',
-        success: 'text-[hsl(var(--nav-state-success))] hover:bg-[hsl(var(--nav-state-success)/0.1)]',
+        destructive: 'text-destructive hover:bg-destructive/10',
+        success: 'text-success hover:bg-success/10',
       },
       disabled: {
-        true: 'opacity-50 cursor-not-allowed hover:bg-transparent hover:text-[hsl(var(--nav-fg-muted))]',
+        true: 'opacity-50 cursor-not-allowed hover:bg-transparent hover:text-muted-foreground/70',
         false: '',
       },
     },
@@ -240,7 +240,7 @@ export const searchVariants = cva(
       variant: {
         default: '',
         ghost: 'bg-transparent border-0',
-        filled: 'bg-[hsl(var(--nav-bg-secondary))]',
+        filled: 'bg-muted',
       },
     },
     defaultVariants: {
@@ -252,11 +252,11 @@ export const searchVariants = cva(
 
 export const searchInputVariants = cva(
   [
-    'w-full bg-[hsl(var(--nav-bg-secondary))] border border-[hsl(var(--nav-border-default))]',
+    'w-full bg-muted border border-border',
     'rounded-[var(--nav-radius-md)] px-[var(--nav-spacing-sm)] py-[var(--nav-spacing-xs)]',
-    'text-[var(--nav-text-sm)] text-[hsl(var(--nav-fg-primary))]',
-    'placeholder:text-[hsl(var(--nav-fg-muted))]',
-    'focus:outline-none focus:ring-2 focus:ring-[hsl(var(--nav-accent-focus))] focus:border-transparent',
+    'text-[var(--nav-text-sm)] text-foreground',
+    'placeholder:text-muted-foreground/70',
+    'focus:outline-none focus:ring-2 focus:ring-ring focus:border-transparent',
     'transition-all duration-[var(--nav-duration-fast)]',
   ],
   {
@@ -268,8 +268,8 @@ export const searchInputVariants = cva(
       },
       variant: {
         default: '',
-        ghost: 'bg-transparent border-0 focus:bg-[hsl(var(--nav-bg-secondary))] focus:border-[hsl(var(--nav-border-default))]',
-        filled: 'bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-strong))]',
+        ghost: 'bg-transparent border-0 focus:bg-muted focus:border-border',
+        filled: 'bg-popover border-border',
       },
     },
     defaultVariants: {
@@ -292,16 +292,16 @@ export const headerVariants = cva(
     variants: {
       variant: {
         default: [
-          'bg-[hsl(var(--nav-bg-accent))] border-[hsl(var(--nav-border-default))]',
+          'bg-popover border-border',
         ],
         glass: [
-          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-lg)]',
-          'border-[hsl(var(--nav-border-subtle))]',
-          'supports-[backdrop-filter]:bg-[hsl(var(--nav-bg-accent)/0.8)]',
+          'bg-popover/80 backdrop-blur-lg',
+          'border-border/50',
+          'supports-[backdrop-filter]:bg-popover/80',
         ],
         floating: [
           'mx-sm mt-sm rounded-[var(--nav-radius-lg)]',
-          'bg-[hsl(var(--nav-bg-glass))] backdrop-blur-[var(--nav-backdrop-blur-md)]',
+          'bg-popover/80 backdrop-blur-md',
           'border shadow-[var(--nav-shadow-md)]',
         ],
         minimal: [
@@ -312,8 +312,8 @@ export const headerVariants = cva(
       scrolled: {
         true: [
           'shadow-[var(--nav-shadow-lg)]',
-          'bg-[hsl(var(--nav-bg-accent)/0.95)]',
-          'backdrop-blur-[var(--nav-backdrop-blur-lg)]',
+          'bg-popover/95',
+          'backdrop-blur-lg',
         ],
         false: '',
       },

@@ -11,7 +11,7 @@ export const metadata = { title: 'OPENDECK Marketplace' };
 
 export default async function OpenDeckLanding() {
   const t = await getTranslations('opendeck');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

@@ -10,7 +10,7 @@ import {
 } from '@/app/(app)/(shell)/profile/activity/lib/activityService';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

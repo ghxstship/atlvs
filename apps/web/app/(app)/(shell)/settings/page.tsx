@@ -11,7 +11,7 @@ export const metadata = { title: 'Settings' };
 
 export default async function SettingsPage() {
   const t = await getTranslations('settings');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

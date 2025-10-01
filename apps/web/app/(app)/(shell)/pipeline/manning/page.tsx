@@ -12,7 +12,7 @@ export const metadata = { title: 'Pipeline · Manning' };
 
 export default async function PipelineManningPage() {
   const t = await getTranslations('pipeline.manning');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

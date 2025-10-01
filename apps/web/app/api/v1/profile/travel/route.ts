@@ -14,7 +14,7 @@ import {
 } from '@/app/(app)/(shell)/profile/travel/lib/travelService';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

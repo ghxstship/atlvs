@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Finance · Budgets' };
 
 export default async function FinanceBudgetsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const {

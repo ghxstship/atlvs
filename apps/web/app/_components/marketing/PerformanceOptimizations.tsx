@@ -193,18 +193,18 @@ export const inlineCriticalCSS = () => {
       top: 0;
       width: 100%;
       z-index: 50;
-      background: rgba(255, 255, 255, 0.95);
+      background: hsl(var(--color-background) / 0.95);
       backdrop-filter: blur(10px);
     }
     
     /* Font display optimization */
     @font-face {
-      font-family: 'Anton';
+      font-family: var(--font-family-title);
       font-display: swap;
     }
     
     @font-face {
-      font-family: 'Share Tech';
+      font-family: var(--font-family-body);
       font-display: swap;
     }
     

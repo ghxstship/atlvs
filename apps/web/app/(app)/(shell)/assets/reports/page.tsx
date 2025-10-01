@@ -11,7 +11,7 @@ export const metadata = { title: 'Assets · Reports' };
 
 export default async function AssetReportsPage() {
   const t = await getTranslations('assets.reports');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

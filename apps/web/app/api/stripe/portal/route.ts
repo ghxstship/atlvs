@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
   }
 
   // SSR auth: ensure caller is permitted
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const c = cookieStore.get(name);

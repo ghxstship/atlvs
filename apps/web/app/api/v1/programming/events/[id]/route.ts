@@ -45,7 +45,7 @@ const updateEventSchema = z.object({
 }, { message: 'end_at must be after start_at', path: ['end_at'] });
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

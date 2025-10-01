@@ -23,7 +23,7 @@ export const metadata = {
 };
 
 export default async function CreateAssetPage(): Promise<React.JSX.Element> {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient({
     get: (name: string) => {
       const cookie = cookieStore.get(name);

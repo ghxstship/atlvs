@@ -28,7 +28,7 @@ export class StyleConsistencyValidator {
     'hsl(var(--color-foreground) / 0)', // Transparent black
     'hsl(var(--color-background))', // Pure white
     'hsl(var(--color-foreground))', // Pure black
-    '#000', '#fff', '#ffffff', '#000000', // Basic black/white
+    'hsl(0 0% 0%)', 'hsl(0 0% 100%)', // Basic black/white in HSL
   ]);
 
   public validateFile(filePath: string, content: string): ValidationResult {

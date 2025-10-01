@@ -11,7 +11,7 @@ export const metadata = { title: 'Finance' };
 
 export default async function FinancePage() {
   const t = await getTranslations('finance');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

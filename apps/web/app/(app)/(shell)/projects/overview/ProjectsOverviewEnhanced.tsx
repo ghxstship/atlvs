@@ -294,7 +294,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  id: "planning",
  label: "Planning",
  count: stats.planning,
- color: "#6B7280",
+ color: "hsl(var(--color-muted))",
  icon: Clock,
  onClick: () => router.push("/projects?status=planning"),
  },
@@ -302,7 +302,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  id: "active",
  label: "Active",
  count: stats.active,
- color: "#10B981",
+ color: "hsl(var(--color-success))",
  icon: PlayCircle,
  onClick: () => router.push("/projects?status=active"),
  },
@@ -310,7 +310,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  id: "on-hold",
  label: "On Hold",
  count: stats.onHold,
- color: "#F59E0B",
+ color: "hsl(var(--color-warning))",
  icon: PauseCircle,
  onClick: () => router.push("/projects?status=on_hold"),
  },
@@ -318,7 +318,7 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  id: "completed",
  label: "Completed",
  count: stats.completed,
- color: "#3B82F6",
+ color: "hsl(var(--color-primary))",
  icon: CheckCircle2,
  onClick: () => router.push("/projects?status=completed"),
  },
@@ -326,12 +326,12 @@ export default function ProjectsOverviewEnhanced({ orgId }: ProjectsOverviewEnha
  id: "cancelled",
  label: "Cancelled",
  count: stats.cancelled,
- color: "#EF4444",
+ color: "hsl(var(--color-destructive))",
  icon: XCircle,
  onClick: () => router.push("/projects?status=cancelled"),
  },
- ];
- }, [stats, router]);
+];
+}, [stats, router]);
 
  // Prepare quick actions
  const quickActions: QuickAction[] = [

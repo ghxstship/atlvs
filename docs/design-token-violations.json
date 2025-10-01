@@ -1,0 +1,958 @@
+{
+  "timestamp": "2025-10-01T14:50:42.755Z",
+  "summary": {
+    "totalFiles": 10,
+    "totalViolations": 112,
+    "errorCount": 111,
+    "warningCount": 1,
+    "infoCount": 0
+  },
+  "fileReports": [
+    {
+      "file": "packages/ui/src/components/architecture/DesignSystem.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 14,
+          "column": 11,
+          "code": "50: '#eff6ff',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 15,
+          "column": 12,
+          "code": "100: '#dbeafe',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 16,
+          "column": 12,
+          "code": "200: '#bfdbfe',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 17,
+          "column": 12,
+          "code": "300: '#93c5fd',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 18,
+          "column": 12,
+          "code": "400: '#60a5fa',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 19,
+          "column": 12,
+          "code": "500: '#3b82f6',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 20,
+          "column": 12,
+          "code": "600: '#2563eb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 21,
+          "column": 12,
+          "code": "700: '#1d4ed8',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 22,
+          "column": 12,
+          "code": "800: '#1e40af',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 23,
+          "column": 12,
+          "code": "900: '#1e3a8a'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 28,
+          "column": 11,
+          "code": "50: '#f0fdf4',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 29,
+          "column": 12,
+          "code": "100: '#dcfce7',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 30,
+          "column": 12,
+          "code": "200: '#bbf7d0',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 31,
+          "column": 12,
+          "code": "300: '#86efac',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 32,
+          "column": 12,
+          "code": "400: '#4ade80',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 33,
+          "column": 12,
+          "code": "500: '#22c55e',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 34,
+          "column": 12,
+          "code": "600: '#16a34a',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 35,
+          "column": 12,
+          "code": "700: '#15803d',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 36,
+          "column": 12,
+          "code": "800: '#166534',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 37,
+          "column": 12,
+          "code": "900: '#14532d'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 41,
+          "column": 11,
+          "code": "50: '#fffbeb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 42,
+          "column": 12,
+          "code": "100: '#fef3c7',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 43,
+          "column": 12,
+          "code": "200: '#fde68a',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 44,
+          "column": 12,
+          "code": "300: '#fcd34d',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 45,
+          "column": 12,
+          "code": "400: '#fbbf24',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 46,
+          "column": 12,
+          "code": "500: '#f59e0b',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 47,
+          "column": 12,
+          "code": "600: '#d97706',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 48,
+          "column": 12,
+          "code": "700: '#b45309',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 49,
+          "column": 12,
+          "code": "800: '#92400e',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 50,
+          "column": 12,
+          "code": "900: '#78350f'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 54,
+          "column": 11,
+          "code": "50: '#fef2f2',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 55,
+          "column": 12,
+          "code": "100: '#fee2e2',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 56,
+          "column": 12,
+          "code": "200: '#fecaca',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 57,
+          "column": 12,
+          "code": "300: '#fca5a5',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 58,
+          "column": 12,
+          "code": "400: '#f87171',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 59,
+          "column": 12,
+          "code": "500: '#ef4444',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 60,
+          "column": 12,
+          "code": "600: '#dc2626',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 61,
+          "column": 12,
+          "code": "700: '#b91c1c',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 62,
+          "column": 12,
+          "code": "800: '#991b1b',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 63,
+          "column": 12,
+          "code": "900: '#7f1d1d'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 68,
+          "column": 11,
+          "code": "50: '#f9fafb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 69,
+          "column": 12,
+          "code": "100: '#f3f4f6',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 70,
+          "column": 12,
+          "code": "200: '#e5e7eb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 71,
+          "column": 12,
+          "code": "300: '#d1d5db',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 72,
+          "column": 12,
+          "code": "400: '#9ca3af',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 73,
+          "column": 12,
+          "code": "500: '#6b7280',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 74,
+          "column": 12,
+          "code": "600: '#4b5563',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 75,
+          "column": 12,
+          "code": "700: '#374151',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 76,
+          "column": 12,
+          "code": "800: '#1f2937',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 77,
+          "column": 12,
+          "code": "900: '#111827'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "packages/ui/src/system/DesignSystem.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 87,
+          "column": 11,
+          "code": "50: '#f0f9ff',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 88,
+          "column": 12,
+          "code": "100: '#e0f2fe',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 89,
+          "column": 12,
+          "code": "200: '#bae6fd',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 90,
+          "column": 12,
+          "code": "300: '#7dd3fc',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 91,
+          "column": 12,
+          "code": "400: '#38bdf8',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 92,
+          "column": 12,
+          "code": "500: '#0ea5e9',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 93,
+          "column": 12,
+          "code": "600: '#0284c7',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 94,
+          "column": 12,
+          "code": "700: '#0369a1',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 95,
+          "column": 12,
+          "code": "800: '#075985',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 96,
+          "column": 12,
+          "code": "900: '#0c4a6e',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 97,
+          "column": 12,
+          "code": "950: '#082f49',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 101,
+          "column": 11,
+          "code": "50: '#f0fdf4',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 102,
+          "column": 12,
+          "code": "500: '#22c55e',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 103,
+          "column": 12,
+          "code": "600: '#16a34a',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 104,
+          "column": 12,
+          "code": "700: '#15803d',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 107,
+          "column": 11,
+          "code": "50: '#fffbeb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 108,
+          "column": 12,
+          "code": "500: '#f59e0b',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 109,
+          "column": 12,
+          "code": "600: '#d97706',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 110,
+          "column": 12,
+          "code": "700: '#b45309',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 113,
+          "column": 11,
+          "code": "50: '#fef2f2',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 114,
+          "column": 12,
+          "code": "500: '#ef4444',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 115,
+          "column": 12,
+          "code": "600: '#dc2626',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 116,
+          "column": 12,
+          "code": "700: '#b91c1c',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 120,
+          "column": 10,
+          "code": "0: '#ffffff',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 121,
+          "column": 11,
+          "code": "50: '#fafafa',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 122,
+          "column": 12,
+          "code": "100: '#f5f5f5',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 123,
+          "column": 12,
+          "code": "200: '#e5e5e5',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 124,
+          "column": 12,
+          "code": "300: '#d4d4d4',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 125,
+          "column": 12,
+          "code": "400: '#a3a3a3',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 126,
+          "column": 12,
+          "code": "500: '#737373',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 127,
+          "column": 12,
+          "code": "600: '#525252',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 128,
+          "column": 12,
+          "code": "700: '#404040',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 129,
+          "column": 12,
+          "code": "800: '#262626',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 130,
+          "column": 12,
+          "code": "900: '#171717',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 131,
+          "column": 12,
+          "code": "950: '#0a0a0a',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "packages/ui/src/UnifiedDesignSystem.tsx",
+      "violations": [
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1528,
+          "column": 23,
+          "code": "sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1529,
+          "column": 26,
+          "code": "md: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1530,
+          "column": 28,
+          "code": "lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1531,
+          "column": 28,
+          "code": "xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1538,
+          "column": 16,
+          "code": "primary: '#8b5cf6', // Purple",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1539,
+          "column": 18,
+          "code": "secondary: '#06b6d4', // Cyan",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1540,
+          "column": 15,
+          "code": "accent: '#a855f7',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1541,
+          "column": 19,
+          "code": "background: '#fafafa',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1542,
+          "column": 19,
+          "code": "foreground: '#0a0a0a',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1562,
+          "column": 23,
+          "code": "sm: '0 1px 3px 0 rgba(139, 92, 246, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1563,
+          "column": 26,
+          "code": "md: '0 4px 6px -1px rgba(139, 92, 246, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1564,
+          "column": 28,
+          "code": "lg: '0 10px 15px -3px rgba(139, 92, 246, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1565,
+          "column": 28,
+          "code": "xl: '0 20px 25px -5px rgba(139, 92, 246, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1574,
+          "column": 15,
+          "code": "accent: '#fbbf24',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1575,
+          "column": 19,
+          "code": "background: '#fffbeb',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 1576,
+          "column": 19,
+          "code": "foreground: '#0c0a09',",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1596,
+          "column": 23,
+          "code": "sm: '0 1px 2px 0 rgba(245, 158, 11, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1597,
+          "column": 26,
+          "code": "md: '0 4px 6px -1px rgba(245, 158, 11, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1598,
+          "column": 28,
+          "code": "lg: '0 10px 15px -3px rgba(245, 158, 11, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        },
+        {
+          "type": "rgb-color",
+          "severity": "error",
+          "line": 1599,
+          "column": 28,
+          "code": "xl: '0 20px 25px -5px rgba(245, 158, 11, 0.1)',",
+          "suggestion": "Use HSL with opacity: hsl(var(--color-*) / 0.5)"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/dashboard/views/ChartView.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 203,
+          "column": 40,
+          "code": "color: config.colors?.[0] || '#3b82f6'",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/dashboard/views/KanbanView.tsx",
+      "violations": [
+        {
+          "type": "inline-style",
+          "severity": "warning",
+          "line": 477,
+          "column": 77,
+          "code": "{column.icon && <column.icon className=\"h-icon-xs w-icon-xs\" style={{ color: column.color }} />}",
+          "suggestion": "Use Tailwind classes or CSS custom properties"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/finance/transactions/CreateTransactionClient.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 266,
+          "column": 53,
+          "code": "placeholder=\"e.g., Check #1234, Wire #ABC123\"",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/people/lib/validations.ts",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 96,
+          "column": 72,
+          "code": ".regex(/^#[0-9A-Fa-f]{6}$/, 'Color must be a valid hex color (e.g., #FF0000)')",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/projects/views/KanbanView.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 75,
+          "column": 61,
+          "code": "style={{ backgroundColor: column.color || '#6B7280' }}",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/projects/schedule/views/ScheduleCalendarView.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 197,
+          "column": 42,
+          "code": "style={{ borderLeftColor: item.color || \"#6B7280\" }}",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    },
+    {
+      "file": "apps/web/app/(app)/(shell)/projects/schedule/views/ScheduleGanttView.tsx",
+      "violations": [
+        {
+          "type": "hex-color",
+          "severity": "error",
+          "line": 143,
+          "column": 33,
+          "code": "backgroundColor: item.color || \"#6B7280\",",
+          "suggestion": "Use hsl(var(--color-*)) or semantic Tailwind class"
+        }
+      ]
+    }
+  ]
+}

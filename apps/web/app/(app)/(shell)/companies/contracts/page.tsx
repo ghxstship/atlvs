@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Companies · Contracts' };
 
 export default async function CompaniesContractsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   
   const {

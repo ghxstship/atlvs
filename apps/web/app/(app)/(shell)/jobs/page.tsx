@@ -11,7 +11,7 @@ export const metadata = { title: 'Jobs' };
 
 export default async function JobsPage() {
   const t = await getTranslations('jobs');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();

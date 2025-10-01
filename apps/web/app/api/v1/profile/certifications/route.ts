@@ -14,7 +14,7 @@ import {
 } from '@/app/(app)/(shell)/profile/certifications/lib/certificationService';
 
 async function getSupabase() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   return createServerClient(cookieStore);
 }
 

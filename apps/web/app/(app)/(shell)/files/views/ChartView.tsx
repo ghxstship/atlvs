@@ -111,16 +111,16 @@ export default function ChartView({
     return Object.values(data);
   }, [files, groupBy, dateRange]);
 
-  // Chart colors
+  // Chart colors using design tokens
   const colors = [
-    '#3B82F6', // blue
-    '#EF4444', // red
-    '#10B981', // green
-    '#F59E0B', // yellow
-    '#8B5CF6', // purple
-    '#06B6D4', // cyan
-    '#F97316', // orange
-    '#84CC16', // lime
+    'hsl(var(--color-primary))',
+    'hsl(var(--color-destructive))',
+    'hsl(var(--color-success))',
+    'hsl(var(--color-warning))',
+    'hsl(var(--color-purple))',
+    'hsl(var(--color-info))',
+    'hsl(var(--color-accent))',
+    'hsl(var(--color-success))',
   ];
 
   // Render appropriate chart
@@ -167,7 +167,7 @@ export default function ChartView({
                 labelLine={false}
                 label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 outerRadius={120}
-                fill="#8884d8"
+                fill="hsl(var(--color-primary))"
                 dataKey={metric === 'size' ? 'totalSize' : 'count'}
               >
                 {chartData.map((entry, index) => (

@@ -12,7 +12,7 @@ export const metadata = {
 };
 
 export default async function AnalyticsOverviewPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   const { data } = await supabase.auth.getUser();
   

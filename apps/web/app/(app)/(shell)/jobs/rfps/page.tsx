@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 export const metadata = { title: 'Jobs · RFPs' };
 
 export default async function JobsRFPsPage() {
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
   
   const {

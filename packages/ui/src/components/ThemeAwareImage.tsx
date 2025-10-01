@@ -77,8 +77,8 @@ export interface ThemeAwareSVGProps extends React.SVGProps<SVGSVGElement> {
  * @example
  * ```tsx
  * <ThemeAwareSVG
- *   lightContent={<path fill="#000" d="..." />}
- *   darkContent={<path fill="#fff" d="..." />}
+ *   lightContent={<path fill="hsl(var(--color-foreground))" d="..." />}
+ *   darkContent={<path fill="hsl(var(--color-background))" d="..." />}
  *   viewBox="0 0 24 24"
  * />
  * ```

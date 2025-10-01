@@ -33,7 +33,7 @@ const updateTrackingSchema = z.object({
 
 export async function GET(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient({
       get: (name: string) => {
         const c = cookieStore.get(name);
@@ -106,7 +106,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    const cookieStore = cookies();
+    const cookieStore = await cookies();
     const supabase = createServerClient({
       get: (name: string) => {
         const c = cookieStore.get(name);

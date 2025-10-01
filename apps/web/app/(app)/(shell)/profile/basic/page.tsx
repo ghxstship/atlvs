@@ -11,7 +11,7 @@ export const metadata = { title: 'Profile · Basic Information' };
 
 export default async function ProfileBasicInfoPage() {
   const t = await getTranslations('profile');
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const supabase = createServerClient(cookieStore);
 
   const { data: { user } } = await supabase.auth.getUser();
