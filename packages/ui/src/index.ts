@@ -51,6 +51,9 @@ export {
 // Legacy component exports (backward compatibility - use atomic exports instead)
 // These are now exported via atomic structure above, keeping for compatibility
 export { Select, SelectTrigger, SelectValue, SelectContent, SelectItem, SelectGroup, SelectLabel, SelectSeparator } from './components/Select';
+export { Input } from './components/atomic/Input';
+export { Textarea } from './components/atomic/Textarea';
+export { Checkbox } from './components/atomic/Checkbox';
 
 // Hooks
 export { useToast, ToastProvider } from './hooks/useToast';
