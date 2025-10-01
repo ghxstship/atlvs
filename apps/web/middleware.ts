@@ -1,58 +1,54 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(req: NextRequest) {
-  const path = req.nextUrl.pathname;
-  
-  // Define public paths (no auth required)
-  const isPublicPath = 
-    path === '/' ||
-    path === '/home' ||
-    path === '/pricing' ||
-    path === '/demo' ||
-    path === '/opendeck' ||
-    path === '/ghxstship' ||
-    path === '/partnerships' ||
-    path === '/privacy' ||
-    path === '/terms' ||
-    path === '/cookies' ||
-    path === '/security' ||
-    path === '/accessibility' ||
-    path === '/contact' ||
-    path.startsWith('/auth/') ||
-    path.startsWith('/products/') ||
-    path.startsWith('/solutions/') ||
-    path.startsWith('/resources/') ||
-    path.startsWith('/company/') ||
-    path.startsWith('/careers/') ||
-    path.startsWith('/community/') ||
-    path.startsWith('/api/');
-
-  // Public paths - add headers and continue
-  if (isPublicPath) {
-    const res = NextResponse.next();
-    res.headers.set('X-Frame-Options', 'DENY');
-    res.headers.set('X-Content-Type-Options', 'nosniff');
-    res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-    return res;
+export function middleware(request: NextRequest) {
+  try {
+    const pathname = request.nextUrl.pathname;
+    
+    // Skip API routes entirely
+    if (pathname.startsWith('/api/')) {
+      return NextResponse.next();
+    }
+    
+    // Public routes
+    if (
+      pathname === '/' ||
+      pathname === '/home' ||
+      pathname === '/pricing' ||
+      pathname === '/demo' ||
+      pathname === '/opendeck' ||
+      pathname === '/ghxstship' ||
+      pathname === '/partnerships' ||
+      pathname === '/privacy' ||
+      pathname === '/terms' ||
+      pathname === '/cookies' ||
+      pathname === '/security' ||
+      pathname === '/accessibility' ||
+      pathname === '/contact' ||
+      pathname.startsWith('/auth/') ||
+      pathname.startsWith('/products/') ||
+      pathname.startsWith('/solutions/') ||
+      pathname.startsWith('/resources/') ||
+      pathname.startsWith('/company/') ||
+      pathname.startsWith('/careers/') ||
+      pathname.startsWith('/community/')
+    ) {
+      return NextResponse.next();
+    }
+    
+    // Check for auth token
+    const authCookie = request.cookies.get('sb-access-token');
+    
+    if (!authCookie?.value) {
+      return NextResponse.redirect(new URL(`/auth/signin?next=${pathname}`, request.url));
+    }
+    
+    return NextResponse.next();
+  } catch (error) {
+    // If anything fails, allow request through to avoid blocking entire site
+    console.error('Middleware error:', error);
+    return NextResponse.next();
   }
-
-  // Protected paths - check auth
-  const token = req.cookies.get('sb-access-token');
-  
-  if (!token) {
-    const url = req.nextUrl.clone();
-    url.pathname = '/auth/signin';
-    url.searchParams.set('next', path);
-    return NextResponse.redirect(url);
-  }
-
-  // Authenticated - add headers and continue
-  const res = NextResponse.next();
-  res.headers.set('X-Frame-Options', 'DENY');
-  res.headers.set('X-Content-Type-Options', 'nosniff');
-  res.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-  return res;
 }
 
 export const config = {
