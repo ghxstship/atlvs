@@ -742,3 +742,4 @@ const DashboardClient: React.FC<DashboardClientProps> = ({ orgId }) => {
 };
 
 export default DashboardClient;
+export { DashboardClient };

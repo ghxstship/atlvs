@@ -531,3 +531,5 @@ export function AssignmentsClient({ user, orgId, translations }: AssignmentsClie
     </div>
   );
 }
+
+export default AssignmentsClient;
