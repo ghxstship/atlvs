@@ -123,6 +123,12 @@ function validateFile(filePath: string): void {
     lines.forEach((line, lineIndex) => {
       const lineNumber = lineIndex + 1;
 
+      // Skip CSS custom property definitions (e.g., --variable-name: value;)
+      // These ARE the token definitions, not violations
+      if (line.trim().match(/^--[\w-]+\s*:/)) {
+        return;
+      }
+
       // Check for hardcoded hex colors
       let match;
       while ((match = HARDCODED_PATTERNS.hexColor.exec(line)) !== null) {
