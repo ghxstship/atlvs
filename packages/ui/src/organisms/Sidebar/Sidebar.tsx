@@ -3,8 +3,7 @@
 import * as React from 'react';
 import { 
   SidebarNavigation, 
-  SidebarProvider, 
-  SidebarPersonalization,
+  SidebarProvider,
   AnimationOptimizer,
   SidebarLandmarks
 } from '../../components/Sidebar';

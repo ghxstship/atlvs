@@ -8,8 +8,6 @@ export * from './Modal';
 export * from './Tabs';
 export * from './Toggle';
 export * from './Sidebar';
-export * from './AnimationOptimizer';
-export * from './SidebarLandmarks';
 
 // Template Components
 export * from './templates';

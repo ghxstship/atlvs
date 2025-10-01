@@ -9,7 +9,7 @@ export async function createClient(providedCookies?: CookieStore) {
 
   if (!cookieStore) {
     try {
-      cookieStore = cookies();
+      cookieStore = await cookies();
     } catch {
       cookieStore = undefined;
     }
