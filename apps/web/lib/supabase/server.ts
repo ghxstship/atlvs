@@ -49,3 +49,6 @@ export async function createServiceClient() {
     }
   );
 }
+
+// Export db as an alias for createClient for backward compatibility
+export const db = createClient;

@@ -263,6 +263,32 @@ const ButtonGroup = React.forwardRef<
 ButtonGroup.displayName = 'ButtonGroup';
 
 // ==========================================
+// ICON BUTTON (Convenience wrapper)
+// ==========================================
+
+export interface IconButtonProps extends Omit<ButtonProps, 'children'> {
+  icon: React.ReactNode;
+  'aria-label': string;
+}
+
+export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(
+  ({ icon, className, size = 'default', ...props }, ref) => {
+    return (
+      <Button
+        ref={ref}
+        size={size}
+        className={cn('aspect-square p-0', className)}
+        {...props}
+      >
+        {icon}
+      </Button>
+    );
+  }
+);
+
+IconButton.displayName = 'IconButton';
+
+// ==========================================
 // EXPORTS
 // ==========================================
 

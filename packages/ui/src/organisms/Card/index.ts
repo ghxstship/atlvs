@@ -1,1 +1,1 @@
-export * from '../../organisms/Card';
+export * from './Card';
