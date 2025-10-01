@@ -1,39 +1,26 @@
 /**
  * Main Middleware
- * Orchestrates all middleware functions in the correct order
+ * Simplified for Edge Runtime compatibility
  */
 
 import { NextResponse, type NextRequest } from 'next/server';
-import { loggingMiddleware } from './middleware/logging';
-import { rateLimitingMiddleware } from './middleware/rate-limiting';
-import { errorHandlingMiddleware } from './middleware/error-handling';
-import { securityMiddleware } from './middleware/security';
-import { brandDetectionMiddleware } from './middleware/brand-detection';
 
 export async function middleware(req: NextRequest) {
-  // Wrap in error handling
-  return errorHandlingMiddleware(async (request: NextRequest) => {
-    const { pathname } = request.nextUrl;
+  try {
+    const { pathname } = req.nextUrl;
 
-    // 1. Rate limiting (check first to prevent abuse)
-    const rateLimitResponse = rateLimitingMiddleware(request);
-    if (rateLimitResponse) {
-      return rateLimitResponse;
+    // Skip middleware for static files and API routes
+    if (
+      pathname.startsWith('/_next') ||
+      pathname.startsWith('/api') ||
+      pathname.includes('.') // Files with extensions
+    ) {
+      return NextResponse.next();
     }
 
-    // 2. Brand detection (set brand cookie based on domain)
-    const brandResponse = await brandDetectionMiddleware(request);
-    if (brandResponse) {
-      return brandResponse;
-    }
-
-    // 3. Logging
-    loggingMiddleware(request);
-
-    // Public paths - marketing pages should be accessible without auth
+    // Public paths - marketing pages accessible without auth
     const isPublic =
       pathname === '/' ||
-      pathname.startsWith('/login') ||
       pathname.startsWith('/auth') ||
       pathname.startsWith('/products') ||
       pathname.startsWith('/solutions') ||
@@ -46,29 +33,35 @@ export async function middleware(req: NextRequest) {
       pathname.startsWith('/terms') ||
       pathname.startsWith('/accessibility') ||
       pathname.startsWith('/home') ||
-      pathname.startsWith('/marketing') ||
       pathname.startsWith('/contact') ||
       pathname.startsWith('/cookies') ||
       pathname.startsWith('/security') ||
-      pathname.startsWith('/_next') ||
-      /\.(?:.*)$/.test(pathname);
+      pathname.startsWith('/demo');
 
-    // 4. Authentication check for protected routes
-    if (!pathname.startsWith('/api') && !isPublic) {
-      const authToken = request.cookies.get('sb-access-token') || request.cookies.get('supabase-auth-token');
+    // Authentication check for protected routes
+    if (!isPublic) {
+      const authToken = req.cookies.get('sb-access-token') || req.cookies.get('supabase-auth-token');
       
       if (!authToken) {
-        const url = request.nextUrl.clone();
+        const url = req.nextUrl.clone();
         url.pathname = '/auth/signin';
-        url.searchParams.set('next', request.nextUrl.pathname);
+        url.searchParams.set('next', req.nextUrl.pathname);
         return NextResponse.redirect(url);
       }
     }
 
-    // 5. Create response and add security headers
+    // Add basic security headers
     const response = NextResponse.next();
-    return securityMiddleware(request, response);
-  })(req);
+    response.headers.set('X-Frame-Options', 'DENY');
+    response.headers.set('X-Content-Type-Options', 'nosniff');
+    response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
+    
+    return response;
+  } catch (error) {
+    // Log error and allow request to proceed
+    console.error('Middleware error:', error);
+    return NextResponse.next();
+  }
 }
 
 export const config = {
