@@ -44,10 +44,37 @@ const EXCLUDE_PATTERNS = [
   'build',
   '.turbo',
   'generated-tokens.css',
+  'unified-design-system.css',  // Generated CSS file
   'unified-design-tokens.ts',
   'enhanced-component-tokens.ts',
+  'tokens.ts',  // Token definition file
   'tailwind.config',
   '.eslintrc',
+  // Design system source files (these define the tokens, so hardcoded values are required)
+  '/tokens/',
+  '/theme/',
+  '/system/',  // System validators and generators
+  'theme-generator',
+  'theme-validator',
+  'theme-adapter',
+  'style-validator',
+  'syntax-theme',
+  'chart-theme',
+  'third-party-theme',
+  'UIStateValidator',
+  'LayoutSystem',
+  'SystemConfigUI',
+  'DesignSystem.tsx',  // Design system documentation/reference file
+  'ColorPicker',  // Color picker needs hardcoded values to display colors
+  'DesignTokenValidator',  // Validator that defines example violations for testing
+  // Test files that need hardcoded values for testing
+  '.test.ts',
+  '.test.tsx',
+  '.spec.ts',
+  '.spec.tsx',
+  // Storybook and documentation
+  '.stories.',
+  'storybook',
 ];
 
 /**

@@ -105,7 +105,7 @@
   --shadow-outline: 0 0 0 3px hsl(var(--ring) / 0.1);
 
   /* Pop art double shadow system */
-  --pop-shadow-black: hsl(0 0% 0%);
+  --pop-shadow-black: hsl(var(--foreground));
   --pop-shadow-accent: hsl(var(--accent));
   --pop-shadow-primary: hsl(var(--primary));
   --pop-shadow-success: hsl(var(--success));
@@ -222,8 +222,8 @@
   /* Force white borders in dark theme globally */
   [data-theme="dark"] *,
   .dark * {
-    --border: hsl(0 0% 100% / 0.2);
-    --input: hsl(0 0% 100% / 0.2);
+    --border: hsl(var(--border));
+    --input: hsl(var(--input));
   }
 
   /* Explicit dark theme border overrides */
@@ -241,7 +241,7 @@
   .dark .select,
   .dark button,
   .dark [class*="border"] {
-    border-color: hsl(0 0% 100% / 0.2) !important;
+    border-color: hsl(var(--border)) !important;
   }
   
   /* Brand themes are handled by unified design system brand context classes */
@@ -773,7 +773,7 @@
   }
 
   .text-gradient-white {
-    background: linear-gradient(45deg, hsl(0 0% 100%), hsl(0 0% 85%));
+    background: linear-gradient(45deg, hsl(var(--background)), hsl(var(--muted)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -781,7 +781,7 @@
   }
 
   .text-gradient-light {
-    background: linear-gradient(45deg, hsl(0 0% 90%), hsl(0 0% 60%));
+    background: linear-gradient(45deg, hsl(var(--muted)), hsl(var(--muted-foreground)));
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;

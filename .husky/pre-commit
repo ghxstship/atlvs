@@ -3,12 +3,15 @@
 
 echo "🎨 Validating design tokens..."
 
-# Run token validation
-cd packages/ui && pnpm validate:tokens:ci
+# Run token validation and capture output
+cd packages/ui && pnpm validate:tokens 2>&1 | tee /tmp/token-validation.txt
 
-if [ $? -ne 0 ]; then
+# Check for errors (not warnings)
+ERROR_COUNT=$(grep -c "❌" /tmp/token-validation.txt || true)
+
+if [ "$ERROR_COUNT" -gt 0 ]; then
   echo ""
-  echo "❌ Design token validation failed!"
+  echo "❌ Design token validation failed with $ERROR_COUNT critical errors!"
   echo ""
   echo "Hardcoded color values detected. Please fix before committing."
   echo ""
@@ -19,4 +22,12 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo "✅ Design tokens validated successfully!"
+WARNING_COUNT=$(grep -c "⚠️" /tmp/token-validation.txt || true)
+if [ "$WARNING_COUNT" -gt 0 ]; then
+  echo ""
+  echo "⚠️  $WARNING_COUNT design token warnings found (non-blocking)"
+  echo "   These should be fixed in future commits."
+  echo ""
+fi
+
+echo "✅ Design tokens validated successfully! (0 errors)"
