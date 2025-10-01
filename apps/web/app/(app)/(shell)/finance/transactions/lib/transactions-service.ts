@@ -392,3 +392,6 @@ export class TransactionsService implements TransactionWorkflowActions {
     return Array.from(monthlyData.values());
   }
 }
+
+// Export alias for backward compatibility
+export { TransactionsService as TransactionService };

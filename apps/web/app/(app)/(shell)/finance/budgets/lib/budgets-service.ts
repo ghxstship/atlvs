@@ -190,3 +190,6 @@ export class BudgetsService {
     return new Date(dateString).toLocaleDateString();
   }
 }
+
+// Export alias for backward compatibility
+export { BudgetsService as BudgetService };

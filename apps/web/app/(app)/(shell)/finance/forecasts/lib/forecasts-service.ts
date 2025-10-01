@@ -462,3 +462,6 @@ export class ForecastsService implements ForecastWorkflowActions {
     return Array.from(monthlyData.values());
   }
 }
+
+// Export alias for backward compatibility
+export { ForecastsService as ForecastService };

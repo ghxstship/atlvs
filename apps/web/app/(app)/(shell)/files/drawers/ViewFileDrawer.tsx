@@ -8,8 +8,8 @@ import {
  TabsList,
  TabsTrigger,
  TabsContent,
+ AppDrawer,
 } from "@ghxstship/ui";
-import AppDrawer from "@ghxstship/ui";
 import { format, parseISO, formatDistanceToNow } from "date-fns";
 import type { ProjectFile } from "./FilesClient";
 

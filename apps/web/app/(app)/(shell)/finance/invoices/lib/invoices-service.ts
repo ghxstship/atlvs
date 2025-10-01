@@ -447,3 +447,6 @@ export class InvoicesService implements InvoiceWorkflowActions {
     return Array.from(monthlyData.values());
   }
 }
+
+// Export alias for backward compatibility
+export { InvoicesService as InvoiceService };

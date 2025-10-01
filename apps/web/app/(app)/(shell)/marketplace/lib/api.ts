@@ -254,3 +254,6 @@ export class MarketplaceAPIService {
 }
 
 export const marketplaceAPIService = new MarketplaceAPIService();
+
+// Export alias for backward compatibility
+export { marketplaceAPIService as marketplaceService };

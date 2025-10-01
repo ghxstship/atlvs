@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-// import { z } from 'zod';
+import { z } from 'zod';
 import {
  AppDrawer,
  Button,
@@ -81,7 +81,7 @@ interface CreateListingDrawerProps {
  onSubmit: (dto: UpsertListingDto) => Promise<void> | void;
 }
 
-export function CreateListingDrawer({ open, loading, onClose, onSubmit }: CreateListingDrawerProps) {
+function CreateListingDrawer({ open, loading, onClose, onSubmit }: CreateListingDrawerProps) {
  const {
  register,
  control,
@@ -345,5 +345,6 @@ export function CreateListingDrawer({ open, loading, onClose, onSubmit }: Create
  },
  ]}
  />
- );
-}
+);
+
+export default CreateListingDrawer;

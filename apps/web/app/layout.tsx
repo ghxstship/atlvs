@@ -10,9 +10,27 @@ import { generateThemeCSS, generateFontImports } from '@ghxstship/shared/platfor
 // Force dynamic rendering to avoid cookies() error during build
 export const dynamic = 'force-dynamic';
 
-const anton = Anton({ weight: '400', subsets: ['latin'], variable: '--font-title' });
-const shareTech = Share_Tech({ weight: '400', subsets: ['latin'], variable: '--font-body' });
-const shareTechMono = Share_Tech_Mono({ weight: '400', subsets: ['latin'], variable: '--font-mono' });
+const anton = Anton({ 
+  weight: '400', 
+  subsets: ['latin'], 
+  variable: '--font-title',
+  display: 'swap',
+  fallback: ['Impact', 'Arial Black', 'sans-serif']
+});
+const shareTech = Share_Tech({ 
+  weight: '400', 
+  subsets: ['latin'], 
+  variable: '--font-body',
+  display: 'swap',
+  fallback: ['Arial', 'Helvetica', 'sans-serif']
+});
+const shareTechMono = Share_Tech_Mono({ 
+  weight: '400', 
+  subsets: ['latin'], 
+  variable: '--font-mono',
+  display: 'swap',
+  fallback: ['Courier New', 'monospace']
+});
 
 export const metadata: Metadata = {
   title: 'GHXSTSHIP Platform',

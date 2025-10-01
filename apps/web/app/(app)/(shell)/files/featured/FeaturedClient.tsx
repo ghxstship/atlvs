@@ -1,339 +1,284 @@
 'use client';
-import { User, FileText, Settings, Award, Calendar, TrendingUp, Activity, Clock, Plus, Search, Play, Trash2 } from "lucide-react";
+import { Star, Download, Edit, Eye, Plus, TrendingUp } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { DataViewProvider, StateManagerProvider, Drawer, ViewSwitcher, DataActions } from '@ghxstship/ui';
-import { Card, Badge, Button } from '@ghxstship/ui';
+import { Drawer, Badge, Button } from '@ghxstship/ui';
 import { ResourcesService } from '../lib/resources-service';
-import { getFieldConfigsForType } from '../lib/field-config';
 import CreateResourceClient from '../drawers/CreateResourceClient';
-import type { Resource, ResourceFilters, ResourceStats } from '../types';
+import type { Resource } from '../types';
 
 export default function FeaturedClient() {
- const [resources, setResources] = useState<Resource[]>([]);
- const [loading, setLoading] = useState(true);
- const [error, setError] = useState<string | null>(null);
- const [selectedResources, setSelectedResources] = useState<string[]>([]);
- const [showCreateDrawer, setShowCreateDrawer] = useState(false);
- const [editingResource, setEditingResource] = useState<Resource | null>(null);
- const [currentView, setCurrentView] = useState<'grid' | 'kanban' | 'calendar' | 'list'>('grid');
+  const [resources, setResources] = useState<Resource[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [showCreateDrawer, setShowCreateDrawer] = useState(false);
+  const [editingResource, setEditingResource] = useState<Resource | null>(null);
 
- const resourcesService = useMemo(() => new ResourcesService(), []);
+  const resourcesService = useMemo(() => new ResourcesService(), []);
 
- // Fetch featured resources
- const fetchFeaturedResources = useCallback(async () => {
- try {
- setLoading(true);
- setError(null);
- 
- const { resources: fetchedResources } = await resourcesService.getResources({
- filters: { is_featured: true },
- sort_by: 'view_count',
- sort_order: 'desc'
- });
+  // Fetch featured resources
+  const fetchFeaturedResources = useCallback(async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      
+      const data = await resourcesService.getResources('org-id', {
+        is_featured: true,
+        sort_by: 'view_count',
+        sort_order: 'desc'
+      });
 
- setResources(fetchedResources);
- } catch (err) {
- console.error('Error fetching featured resources:', err);
- setError(err instanceof Error ? err.message : 'Failed to load featured resources');
- } finally {
- setLoading(false);
- }
- }, [resourcesService]);
+      setResources(Array.isArray(data) ? data : []);
+    } catch (err) {
+      console.error('Error fetching featured resources:', err);
+      setError(err instanceof Error ? err.message : 'Failed to load featured resources');
+    } finally {
+      setLoading(false);
+    }
+  }, [resourcesService]);
 
- useEffect(() => {
- fetchFeaturedResources();
- }, [fetchFeaturedResources]);
+  useEffect(() => {
+    fetchFeaturedResources();
+  }, [fetchFeaturedResources]);
 
- // Handle resource creation
- const handleCreate = useCallback(() => {
- setEditingResource(null);
- setShowCreateDrawer(true);
- }, []);
+  // Handle resource creation
+  const handleCreate = useCallback(() => {
+    setEditingResource(null);
+    setShowCreateDrawer(true);
+  }, []);
 
- // Handle resource editing
- const handleEdit = useCallback((resource: Resource) => {
- setEditingResource(resource);
- setShowCreateDrawer(true);
- }, []);
+  // Handle resource editing
+  const handleEdit = useCallback((resource: Resource) => {
+    setEditingResource(resource);
+    setShowCreateDrawer(true);
+  }, []);
 
- // Handle resource deletion
- const handleDelete = useCallback(async (resourceIds: string[]) => {
- try {
- if (resourceIds.length === 1) {
- await resourcesService.deleteResource(resourceIds[0]);
- } else {
- await resourcesService.deleteResources(resourceIds);
- }
- await fetchFeaturedResources();
- setSelectedResources([]);
- } catch (err) {
- console.error('Error deleting resources:', err);
- }
- }, [resourcesService, fetchFeaturedResources]);
+  // Handle resource download
+  const handleDownload = useCallback(async (resource: Resource) => {
+    if (!resource.file_url) return;
+    
+    try {
+      await resourcesService.incrementDownloadCount('org-id', resource.id);
+      window.open(resource.file_url, '_blank');
+      await fetchFeaturedResources();
+    } catch (err) {
+      console.error('Error downloading resource:', err);
+    }
+  }, [resourcesService, fetchFeaturedResources]);
 
- // Handle resource download
- const handleDownload = useCallback(async (resource: Resource) => {
- if (!resource.file_url) return;
- 
- try {
- await resourcesService.incrementDownloadCount(resource.id);
- window.open(resource.file_url, '_blank');
- await fetchFeaturedResources();
- } catch (err) {
- console.error('Error downloading resource:', err);
- }
- }, [resourcesService, fetchFeaturedResources]);
+  // Handle resource view
+  const handleView = useCallback(async (resource: Resource) => {
+    try {
+      await resourcesService.incrementViewCount('org-id', resource.id);
+      await fetchFeaturedResources();
+    } catch (err) {
+      console.error('Error updating view count:', err);
+    }
+  }, [resourcesService, fetchFeaturedResources]);
 
- // Handle resource view
- const handleView = useCallback(async (resource: Resource) => {
- try {
- await resourcesService.incrementViewCount(resource.id);
- await fetchFeaturedResources();
- } catch (err) {
- console.error('Error updating view count:', err);
- }
- }, [resourcesService, fetchFeaturedResources]);
+  // Handle toggle featured status
+  const handleToggleFeatured = useCallback(async (resource: Resource) => {
+    try {
+      await resourcesService.updateResource('org-id', resource.id, {
+        is_featured: !resource.is_featured
+      });
+      await fetchFeaturedResources();
+    } catch (err) {
+      console.error('Error toggling featured status:', err);
+    }
+  }, [resourcesService, fetchFeaturedResources]);
 
- // Handle toggle featured status
- const handleToggleFeatured = useCallback(async (resource: Resource) => {
- try {
- await resourcesService.updateResource({
- id: resource.id,
- is_featured: !resource.is_featured
- });
- await fetchFeaturedResources();
- } catch (err) {
- console.error('Error toggling featured status:', err);
- }
- }, [resourcesService, fetchFeaturedResources]);
+  // Handle drawer close
+  const handleDrawerClose = useCallback(() => {
+    setShowCreateDrawer(false);
+    setEditingResource(null);
+  }, []);
 
- // Handle drawer close
- const handleDrawerClose = useCallback(() => {
- setShowCreateDrawer(false);
- setEditingResource(null);
- }, []);
+  // Handle successful resource save
+  const handleResourceSave = useCallback(async () => {
+    await fetchFeaturedResources();
+    handleDrawerClose();
+  }, [fetchFeaturedResources, handleDrawerClose]);
 
- // Handle successful resource save
- const handleResourceSave = useCallback(async () => {
- await fetchFeaturedResources();
- handleDrawerClose();
- }, [fetchFeaturedResources, handleDrawerClose]);
+  // Calculate stats
+  const stats = useMemo(() => {
+    const totalViews = resources.reduce((sum, r) => sum + (r.view_count || 0), 0);
+    const totalDownloads = resources.reduce((sum, r) => sum + (r.download_count || 0), 0);
+    const avgViews = resources.length > 0 ? Math.round(totalViews / resources.length) : 0;
+    const mostPopular = resources.length > 0 
+      ? resources.reduce((max, r) => (r.view_count || 0) > (max.view_count || 0) ? r : max, resources[0])
+      : null;
 
- // Data view configuration
- const dataViewConfig = useMemo(() => ({
- fields: getFieldConfigsForType('featured'),
- data: resources,
- loading,
- error,
- selectedItems: selectedResources,
- onSelectionChange: setSelectedResources,
- onItemClick: handleView,
- onItemEdit: handleEdit,
- onItemDelete: (ids: string[]) => handleDelete(ids),
- currentView,
- onViewChange: setCurrentView,
- actions: [
- {
- id: 'toggle-featured',
- label: 'Remove from Featured',
- icon: Star,
- onClick: handleToggleFeatured
- },
- {
- id: 'download',
- label: 'Download',
- icon: Download,
- onClick: (resource: Resource) => handleDownload(resource),
- show: (resource: Resource) => !!resource.file_url
- },
- {
- id: 'edit',
- label: 'Edit',
- icon: Edit,
- onClick: handleEdit
- }
- ],
- bulkActions: [
- {
- id: 'remove-featured',
- label: 'Remove from Featured',
- onClick: async (resourceIds: string[]) => {
- for (const id of resourceIds) {
- const resource = resources.find(r => r.id === id);
- if (resource) {
- await resourcesService.updateResource({
- id: resource.id,
- is_featured: false
- });
- }
- }
- await fetchFeaturedResources();
- setSelectedResources([]);
- }
- },
- {
- id: 'delete',
- label: 'Delete Selected',
- onClick: handleDelete,
- variant: 'destructive' as const
- }
- ]
- }), [
- resources, loading, error, selectedResources, currentView,
- handleView, handleEdit, handleDelete, handleDownload, handleToggleFeatured, resourcesService, fetchFeaturedResources
- ]);
+    return {
+      totalFeatured: resources.length,
+      totalViews,
+      totalDownloads,
+      avgViews,
+      mostPopular
+    };
+  }, [resources]);
 
- // Calculate stats
- const stats = useMemo(() => {
- const totalViews = resources.reduce((sum, r) => sum + r.view_count, 0);
- const totalDownloads = resources.reduce((sum, r) => sum + r.download_count, 0);
- const avgViews = resources.length > 0 ? Math.round(totalViews / resources.length) : 0;
- const mostPopular = resources.reduce((max, r) => r.view_count > max.view_count ? r : max, resources[0]);
+  // Render resource card
+  const renderResourceCard = (resource: Resource) => (
+    <div key={resource.id} className="p-4 border rounded-lg hover:shadow-md transition-shadow">
+      <div className="flex items-start justify-between mb-2">
+        <div className="flex-1">
+          <h3 className="font-semibold mb-1">{resource.title}</h3>
+          <p className="text-sm text-muted-foreground mb-2">{resource.description}</p>
+          <div className="flex items-center gap-2">
+            <Badge variant="outline">{resource.type}</Badge>
+            <span className="text-xs text-muted-foreground">{resource.view_count || 0} views</span>
+            <span className="text-xs text-muted-foreground">{resource.download_count || 0} downloads</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-1">
+          <Button variant="ghost" size="sm" onClick={() => handleView(resource)}>
+            <Eye className="w-4 h-4" />
+          </Button>
+          {resource.file_url && (
+            <Button variant="ghost" size="sm" onClick={() => handleDownload(resource)}>
+              <Download className="w-4 h-4" />
+            </Button>
+          )}
+          <Button variant="ghost" size="sm" onClick={() => handleEdit(resource)}>
+            <Edit className="w-4 h-4" />
+          </Button>
+          <Button variant="ghost" size="sm" onClick={() => handleToggleFeatured(resource)}>
+            <Star className={`w-4 h-4 ${resource.is_featured ? 'fill-yellow-500 text-yellow-500' : ''}`} />
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
 
- return {
- totalFeatured: resources.length,
- totalViews,
- totalDownloads,
- avgViews,
- mostPopular
- };
- }, [resources]);
+  return (
+    <div className="space-y-6 p-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-bold">Featured Resources</h1>
+          <p className="text-muted-foreground mt-1">Showcase your most important organizational resources</p>
+        </div>
+        <Button onClick={handleCreate}>
+          <Plus className="w-4 h-4 mr-2" />
+          Add Featured Resource
+        </Button>
+      </div>
 
- return (
- <StateManagerProvider>
- <div className="stack-lg">
- {/* Header */}
- <div className="flex items-center justify-between">
- <div>
- <h1 className="text-heading-3">Featured Resources</h1>
- <p className="color-muted">Showcase your most important organizational resources</p>
- </div>
- <Button onClick={handleCreate}>
- <Plus className="w-icon-xs h-icon-xs mr-sm" />
- Add Featured Resource
- </Button>
- </div>
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="p-4 border rounded-lg">
+          <div className="flex items-center gap-3">
+            <Star className="w-5 h-5 text-yellow-500" />
+            <div>
+              <div className="text-2xl font-bold">{stats.totalFeatured}</div>
+              <div className="text-sm text-muted-foreground">Featured Resources</div>
+            </div>
+          </div>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <div className="flex items-center gap-3">
+            <Eye className="w-5 h-5 text-blue-500" />
+            <div>
+              <div className="text-2xl font-bold">{stats.totalViews}</div>
+              <div className="text-sm text-muted-foreground">Total Views</div>
+            </div>
+          </div>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <div className="flex items-center gap-3">
+            <Download className="w-5 h-5 text-green-500" />
+            <div>
+              <div className="text-2xl font-bold">{stats.totalDownloads}</div>
+              <div className="text-sm text-muted-foreground">Total Downloads</div>
+            </div>
+          </div>
+        </div>
+        <div className="p-4 border rounded-lg">
+          <div className="flex items-center gap-3">
+            <TrendingUp className="w-5 h-5 text-emerald-500" />
+            <div>
+              <div className="text-2xl font-bold">{stats.avgViews}</div>
+              <div className="text-sm text-muted-foreground">Avg Views</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
- {/* Stats Cards */}
- <div className="grid grid-cols-1 md:grid-cols-4 gap-md">
- <Card>
- <div className="flex items-center gap-sm">
- <Star className="w-icon-sm h-icon-sm color-warning" />
- <div>
- <div className="text-heading-3 color-accent">{stats.totalFeatured}</div>
- <div className="text-body-sm color-muted">Featured Resources</div>
- </div>
- </div>
- </Card>
- <Card>
- <div className="flex items-center gap-sm">
- <Eye className="w-icon-sm h-icon-sm color-secondary" />
- <div>
- <div className="text-heading-3 color-secondary">{stats.totalViews}</div>
- <div className="text-body-sm color-muted">Total Views</div>
- </div>
- </div>
- </Card>
- <Card>
- <div className="flex items-center gap-sm">
- <Download className="w-icon-sm h-icon-sm color-accent" />
- <div>
- <div className="text-heading-3 color-accent">{stats.totalDownloads}</div>
- <div className="text-body-sm color-muted">Total Downloads</div>
- </div>
- </div>
- </Card>
- <Card>
- <div className="flex items-center gap-sm">
- <TrendingUp className="w-icon-sm h-icon-sm color-success" />
- <div>
- <div className="text-heading-3 color-success">{stats.avgViews}</div>
- <div className="text-body-sm color-muted">Avg Views</div>
- </div>
- </div>
- </Card>
- </div>
+      {/* Most Popular Resource */}
+      {stats.mostPopular && (
+        <div className="p-4 border rounded-lg">
+          <div className="flex items-center justify-between">
+            <div>
+              <h3 className="text-lg font-semibold mb-1">Most Popular Featured Resource</h3>
+              <p className="font-medium">{stats.mostPopular.title}</p>
+              <div className="flex items-center gap-4 mt-2">
+                <Badge variant="outline">{stats.mostPopular.type}</Badge>
+                <span className="text-sm text-muted-foreground">{stats.mostPopular.view_count || 0} views</span>
+                <span className="text-sm text-muted-foreground">{stats.mostPopular.download_count || 0} downloads</span>
+              </div>
+            </div>
+            <Button onClick={() => handleView(stats.mostPopular!)}>
+              View Resource
+            </Button>
+          </div>
+        </div>
+      )}
 
- {/* Most Popular Resource */}
- {stats.mostPopular && (
- <Card>
- <div className="flex items-center justify-between">
- <div>
- <h3 className="text-heading-4 mb-xs">Most Popular Featured Resource</h3>
- <p className="text-body color-foreground">{stats.mostPopular.title}</p>
- <div className="flex items-center gap-md mt-sm">
- <Badge variant="outline">{stats.mostPopular.type}</Badge>
- <span className="text-body-sm color-muted">{stats.mostPopular.view_count} views</span>
- <span className="text-body-sm color-muted">{stats.mostPopular.download_count} downloads</span>
- </div>
- </div>
- <Button onClick={() => handleView(stats.mostPopular)}>
- View Resource
- </Button>
- </div>
- </Card>
- )}
+      {/* Resources Grid */}
+      <div className="min-h-[400px]">
+        {loading && (
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+            <p className="text-muted-foreground">Loading featured resources...</p>
+          </div>
+        )}
+        
+        {error && (
+          <div className="p-4 border rounded-lg">
+            <div className="text-center py-12">
+              <Star className="w-16 h-16 text-red-500 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">Error loading featured resources</h3>
+              <p className="text-muted-foreground mb-4">{error}</p>
+              <Button onClick={fetchFeaturedResources}>
+                Try Again
+              </Button>
+            </div>
+          </div>
+        )}
+        
+        {!loading && !error && resources.length === 0 && (
+          <div className="p-4 border rounded-lg">
+            <div className="text-center py-12">
+              <Star className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
+              <h3 className="text-lg font-semibold mb-2">No featured resources</h3>
+              <p className="text-muted-foreground mb-4">
+                Start showcasing your most important resources by marking them as featured.
+              </p>
+              <Button onClick={handleCreate}>
+                <Plus className="w-4 h-4 mr-2" />
+                Add Featured Resource
+              </Button>
+            </div>
+          </div>
+        )}
 
- {/* ATLVS DataViews */}
- <DataViewProvider config={dataViewConfig}>
- <div className="flex items-center justify-between mb-md">
- <ViewSwitcher />
- <DataActions />
- </div>
- 
- <div className="min-h-container-lg">
- {loading && (
- <div className="text-center py-xl">
- <div className="animate-spin rounded-full h-icon-lg w-icon-lg border-b-2 border-primary mx-auto mb-md"></div>
- <p className="color-muted">Loading featured resources...</p>
- </div>
- )}
- 
- {error && (
- <Card>
- <div className="text-center py-xl">
- <Star className="w-icon-2xl h-icon-2xl color-destructive mx-auto mb-md" />
- <h3 className="text-body form-label color-foreground mb-sm">Error loading featured resources</h3>
- <p className="color-muted mb-md">{error}</p>
- <Button onClick={fetchFeaturedResources}>
- Try Again
- </Button>
- </div>
- </Card>
- )}
- 
- {!loading && !error && resources.length === 0 && (
- <Card>
- <div className="text-center py-xl">
- <Star className="w-icon-2xl h-icon-2xl color-muted mx-auto mb-md" />
- <h3 className="text-body form-label color-foreground mb-sm">No featured resources</h3>
- <p className="color-muted mb-md">
- Start showcasing your most important resources by marking them as featured.
- </p>
- <Button onClick={handleCreate}>
- <Plus className="w-icon-xs h-icon-xs mr-sm" />
- Add Featured Resource
- </Button>
- </div>
- </Card>
- )}
- </div>
- </DataViewProvider>
+        {!loading && !error && resources.length > 0 && (
+          <div className="grid grid-cols-1 gap-4">
+            {resources.map(renderResourceCard)}
+          </div>
+        )}
+      </div>
 
- {/* Create/Edit Drawer */}
- <Drawer
- isOpen={showCreateDrawer}
- onClose={handleDrawerClose}
- title={editingResource ? 'Edit Featured Resource' : 'Create Featured Resource'}
- size="lg"
- >
- <CreateResourceClient
- resource={editingResource}
- onSuccess={handleResourceSave}
- onCancel={handleDrawerClose}
- />
- </Drawer>
- </div>
- </StateManagerProvider>
- );
+      {/* Create/Edit Drawer */}
+      <Drawer
+        open={showCreateDrawer}
+        onOpenChange={setShowCreateDrawer}
+      >
+        <CreateResourceClient
+          resource={editingResource}
+          onSuccess={handleResourceSave}
+        />
+      </Drawer>
+    </div>
+  );
 }
