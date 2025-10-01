@@ -1,4 +1,5 @@
-"use client";
+
+'use client';
 
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
@@ -81,7 +82,7 @@ interface CreateListingDrawerProps {
  onSubmit: (dto: UpsertListingDto) => Promise<void> | void;
 }
 
-function CreateListingDrawer({ open, loading, onClose, onSubmit }: CreateListingDrawerProps) {
+export default function CreateListingDrawer({ open, loading, onClose, onSubmit }: CreateListingDrawerProps) {
  const {
  register,
  control,
@@ -346,5 +347,3 @@ function CreateListingDrawer({ open, loading, onClose, onSubmit }: CreateListing
  ]}
  />
 );
-
-export default CreateListingDrawer;
