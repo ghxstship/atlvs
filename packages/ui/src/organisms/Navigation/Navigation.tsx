@@ -17,7 +17,7 @@ import {
   Monitor
 } from 'lucide-react';
 import { SearchInput } from '../../components/atomic/Input';
-import { Button, IconButton } from '../../atoms/Button';
+import { Button } from '../../atoms/Button';
 import { Badge } from '../../atoms/Badge';
 
 // Global Search Component
@@ -223,13 +223,13 @@ export const ThemeSwitcher = React.forwardRef<HTMLDivElement, ThemeSwitcherProps
 
     return (
       <div ref={ref} className="relative">
-        <IconButton
-          variant="ghost"
+        <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative"
+          className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-muted transition-colors"
+          aria-label="Toggle theme"
         >
           {currentTheme && <currentTheme.icon className="h-icon-xs w-icon-xs" />}
-        </IconButton>
+        </button>
 
         {isOpen && (
           <>
@@ -291,10 +291,10 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
 
     return (
       <div ref={ref} className="relative">
-        <IconButton
-          variant="ghost"
+        <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative"
+          className="relative inline-flex items-center justify-center rounded-md p-sm hover:bg-muted transition-colors"
+          aria-label="Notifications"
         >
           <Bell className="h-icon-xs w-icon-xs" />
           {count > 0 && (
@@ -305,7 +305,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
               {count > 99 ? '99+' : count}
             </Badge>
           )}
-        </IconButton>
+        </button>
 
         {isOpen && (
           <>
@@ -319,7 +319,7 @@ export const NotificationBell = React.forwardRef<HTMLDivElement, NotificationBel
                 {count > 0 && (
                   <Button
                     variant="ghost"
-                    size="xs"
+                    size="sm"
                     onClick={onMarkAllRead}
                   >
                     Mark all read
