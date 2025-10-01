@@ -4,6 +4,8 @@ import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import { CatalogService } from '@/app/(app)/(shell)/procurement/catalog/lib/catalogService';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const cookieStore = cookies();

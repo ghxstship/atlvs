@@ -1,6 +1,8 @@
 import { z } from 'zod';
 import { NextRequest, NextResponse } from 'next/server';
 
+export const dynamic = 'force-dynamic';
+
 // Analytics query schema
 const analyticsQuerySchema = z.object({
   timeRange: z.enum(['7d', '30d', '90d', '1y']).optional().default('30d'),

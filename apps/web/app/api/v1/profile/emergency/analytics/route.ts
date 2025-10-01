@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@ghxstship/auth';
 import { fetchEmergencyAnalytics } from '@/app/(app)/(shell)/profile/emergency/lib/emergencyService';
 
+export const dynamic = 'force-dynamic';
+
 async function getSupabase() {
   const cookieStore = cookies();
   return createServerClient(cookieStore);

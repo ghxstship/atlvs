@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 
+export const dynamic = 'force-dynamic';
+
 class ResponseError extends Error {
   constructor(message: string, public status: number) {
     super(message);

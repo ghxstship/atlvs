@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@ghxstship/auth';
 import { fetchTravelAnalytics } from '@/app/(app)/(shell)/profile/travel/lib/travelService';
 
+export const dynamic = 'force-dynamic';
+
 async function getSupabase() {
   const cookieStore = cookies();
   return createServerClient(cookieStore);

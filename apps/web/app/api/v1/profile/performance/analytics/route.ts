@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@ghxstship/auth';
 import { fetchPerformanceAnalytics } from '@/app/(app)/(shell)/profile/performance/lib/performanceService';
 
+export const dynamic = 'force-dynamic';
+
 async function getSupabase() {
   const cookieStore = cookies();
   return createServerClient(cookieStore);

@@ -4,6 +4,8 @@ import { NextResponse } from 'next/server';
 import { createServerClient } from '@ghxstship/auth';
 import { fetchEndorsementAnalytics } from '@/app/(app)/(shell)/profile/endorsements/lib/endorsementService';
 
+export const dynamic = 'force-dynamic';
+
 async function getSupabase() {
   const cookieStore = cookies();
   return createServerClient(cookieStore);

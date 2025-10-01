@@ -4,6 +4,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 import {
+
+export const dynamic = 'force-dynamic';
   analyticsFilterSchema,
   fetchActivityAnalytics,
 } from '@/app/(app)/(shell)/profile/activity/lib/activityService';

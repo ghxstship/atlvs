@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { createServerClient } from '@ghxstship/auth';
 
+export const dynamic = 'force-dynamic';
+
 const analyticsFilterSchema = z.object({
   period: z.enum(['7d', '30d', '90d', '1y']).default('30d'),
   module: z.enum(['events', 'workshops', 'spaces', 'performances', 'riders', 'lineups', 'call_sheets', 'itineraries']).optional(),

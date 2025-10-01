@@ -34,6 +34,9 @@
     "brand:build": "bash branding/scripts/build-brand.sh",
     "brand:switch": "bash branding/scripts/switch-brand.sh",
     "brand:list": "ls -1 branding/config/*.brand.json | xargs -n 1 basename | sed 's/.brand.json//'",
+    "audit:design-tokens": "tsx scripts/validate-design-tokens.ts",
+    "migrate:design-tokens": "bash scripts/migrate-to-design-tokens.sh",
+    "migrate:design-tokens:dry": "bash scripts/migrate-to-design-tokens.sh --dry-run",
     "prepare": "husky install"
   },
   "devDependencies": {
