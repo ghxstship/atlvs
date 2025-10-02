@@ -47,6 +47,7 @@ export {
   useAnnouncements,
   useKeyboardNavigation,
   useLiveRegion,
+  cn,
 } from './index-unified';
 
 // Legacy component exports (backward compatibility - use atomic exports instead)
