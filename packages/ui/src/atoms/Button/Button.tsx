@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * GHXSTSHIP Unified Button Component
  * Enterprise-Grade Button with Full Accessibility & Performance

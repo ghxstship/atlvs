@@ -1,3 +1,5 @@
+'use client';
+
 /**
  * Card Component - Built on Unified Design System
  */
