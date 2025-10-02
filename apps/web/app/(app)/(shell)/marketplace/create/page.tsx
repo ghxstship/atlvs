@@ -15,7 +15,6 @@ const MarketplaceCreateClient = dynamicImport(() => import('./MarketplaceCreateC
       <span className="ml-2 text-gray-600">Loading marketplace creation...</span>
     </div>
   ),
-  ssr: false // Disable SSR for this client component
 });
 
 export const metadata = {

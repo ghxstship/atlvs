@@ -10,8 +10,7 @@ import dynamic from 'next/dynamic';
  * Use for analytics dashboards and data visualization
  */
 export const DynamicChart = dynamic(
-  () => import('@ghxstship/ui').then((mod) => mod.Card),
-  { ssr: false }
+  () => import('@ghxstship/ui').then((mod) => mod.Card)
 );
 
 /**
