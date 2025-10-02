@@ -17,7 +17,7 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   experimental: experimentalConfig,
-  output: 'standalone',
+  // output: 'standalone', // Disabled for Vercel deployment - use default output
   generateBuildId: async () => {
     return 'build-' + Date.now()
   },
