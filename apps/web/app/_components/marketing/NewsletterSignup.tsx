@@ -2,9 +2,7 @@
 
 
 import { useState } from 'react';
-import { Button  } from '@ghxstship/ui';
-import { UnifiedInput as Input  } from '@ghxstship/ui';
-import { cn } from '@ghxstship/ui';
+import { Button, Input, cn } from '@ghxstship/ui';
 
 interface NewsletterSignupProps {
   className?: string;
