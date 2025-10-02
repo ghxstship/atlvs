@@ -37,7 +37,7 @@
     "audit:design-tokens": "tsx scripts/validate-design-tokens.ts",
     "migrate:design-tokens": "bash scripts/migrate-to-design-tokens.sh",
     "migrate:design-tokens:dry": "bash scripts/migrate-to-design-tokens.sh --dry-run",
-    "prepare": "husky install"
+    "prepare": "node -e \"try { if (process.env.CI !== 'true' && process.env.VERCEL !== '1') { require('child_process').execSync('husky install', { stdio: 'inherit' }); } } catch (e) {}\""
   },
   "devDependencies": {
     "@commitlint/cli": "^20.1.0",
