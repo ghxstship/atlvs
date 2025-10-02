@@ -2,6 +2,7 @@ import type { UUID } from '../../core/Identifier';
 import { AggregateRoot } from '../../shared/kernel/AggregateRoot';
 import { UniqueEntityID } from '../../core/Identifier';
 import { Result } from '../../core/Result';
+import { randomUUID } from 'crypto';
 
 export type CurrencyCode = string; // ISO 4217
 
@@ -83,9 +84,9 @@ export class Project extends AggregateRoot<ProjectProps> {
   }
 
   /**
-   * Factory method to create a new Project
+   * Factory method to create or rehydrate a Project aggregate
    */
-  public static create(props: Omit<ProjectProps, 'createdAt' | 'updatedAt'>, id?: UUID): Result<Project, string> {
+  public static create(props: ProjectProps, id?: UUID): Result<Project, string> {
     // Validation
     if (!props.name || props.name.trim().length === 0) {
       return Result.err('Project name is required');
@@ -99,15 +100,20 @@ export class Project extends AggregateRoot<ProjectProps> {
       return Result.err('Progress must be between 0 and 100');
     }
 
-    // Create entity with default values
-    const projectId = id ? new UniqueEntityID(id) : new UniqueEntityID(crypto.randomUUID());
+    const projectId = id ? new UniqueEntityID(id) : new UniqueEntityID(randomUUID());
     const now = new Date();
 
     const projectProps: ProjectProps = {
       ...props,
       name: props.name.trim(),
-      createdAt: now,
-      updatedAt: now,
+      progress: props.progress ?? 0,
+      status: props.status ?? 'planning',
+      priority: props.priority ?? 'medium',
+      type: props.type ?? 'internal',
+      visibility: props.visibility ?? 'team',
+      isArchived: props.isArchived ?? false,
+      createdAt: props.createdAt ?? now,
+      updatedAt: props.updatedAt ?? now,
     };
 
     const project = new Project(projectId, projectProps);
@@ -121,6 +127,10 @@ export class Project extends AggregateRoot<ProjectProps> {
 
   get name(): string {
     return this.props.name;
+  }
+
+  get description(): string | undefined {
+    return this.props.description;
   }
 
   get status(): ProjectStatus {
@@ -145,6 +155,54 @@ export class Project extends AggregateRoot<ProjectProps> {
 
   get visibility(): ProjectVisibility {
     return this.props.visibility;
+  }
+
+  get budget(): number | undefined {
+    return this.props.budget;
+  }
+
+  get budgetCurrency(): CurrencyCode | undefined {
+    return this.props.budgetCurrency;
+  }
+
+  get startDate(): string | undefined {
+    return this.props.startDate;
+  }
+
+  get endDate(): string | undefined {
+    return this.props.endDate;
+  }
+
+  get actualStartDate(): string | undefined {
+    return this.props.actualStartDate;
+  }
+
+  get actualEndDate(): string | undefined {
+    return this.props.actualEndDate;
+  }
+
+  get createdBy(): UUID | undefined {
+    return this.props.createdBy;
+  }
+
+  get updatedBy(): UUID | undefined {
+    return this.props.updatedBy;
+  }
+
+  get createdAt(): Date {
+    return this.props.createdAt ?? new Date();
+  }
+
+  get updatedAt(): Date {
+    return this.props.updatedAt ?? new Date();
+  }
+
+  get tags(): string[] | undefined {
+    return this.props.tags;
+  }
+
+  get meta(): Record<string, any> | undefined {
+    return this.props.meta;
   }
 
   // Business methods
