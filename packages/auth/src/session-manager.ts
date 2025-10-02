@@ -31,23 +31,36 @@ export interface SessionData {
 
 export class SessionManager {
   private supabase: any;
+  private request?: NextRequest;
 
   constructor(request?: NextRequest) {
+    this.request = request;
+    // Note: Supabase client is now created lazily to avoid cookies() 
+    // being called during build time / outside request scope
+  }
+
+  private async getSupabaseClient() {
+    if (this.supabase) {
+      return this.supabase;
+    }
+
+    const cookieStore = await cookies();
     this.supabase = createServerClient({
       get: (name: string) => {
-        if (request) {
-          const c = request.cookies.get(name);
+        if (this.request) {
+          const c = this.request.cookies.get(name);
           return c ? { name: c.name, value: c.value } : undefined;
         }
-        return cookies().get(name);
+        return cookieStore.get(name);
       },
       set: (name: string, value: string, options) => {
-        cookies().set(name, value, options);
+        cookieStore.set(name, value, options);
       },
       remove: (name: string) => {
-        cookies().delete(name);
+        cookieStore.delete(name);
       }
     });
+    return this.supabase;
   }
 
   /**
@@ -91,7 +104,8 @@ export class SessionManager {
       expiresAt,
     };
 
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { data, error } = await supabase
       .from('user_sessions')
       .insert({
         id: sessionData.id,
@@ -112,7 +126,7 @@ export class SessionManager {
     if (error) throw error;
 
     // Log security event
-    await this.supabase.rpc('log_security_event', {
+    await supabase.rpc('log_security_event', {
       p_organization_id: organizationId,
       p_user_id: userId,
       p_event_type: 'login_success',
@@ -130,7 +144,8 @@ export class SessionManager {
    * Validate and refresh session if needed
    */
   async validateSession(sessionToken: string): Promise<SessionData | null> {
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { data, error } = await supabase
       .from('user_sessions')
       .select('*')
       .eq('session_token', sessionToken)
@@ -176,7 +191,7 @@ export class SessionManager {
     }
 
     // Update last activity
-    await this.supabase
+    await supabase
       .from('user_sessions')
       .update({ last_activity: now })
       .eq('id', session.id);
@@ -188,7 +203,8 @@ export class SessionManager {
    * Refresh an expired session using refresh token
    */
   async refreshSession(refreshToken: string): Promise<SessionData | null> {
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { data, error } = await supabase
       .from('user_sessions')
       .select('*')
       .eq('refresh_token', refreshToken)
@@ -211,7 +227,7 @@ export class SessionManager {
     const newSessionToken = this.generateSecureToken();
     const newExpiresAt = new Date(now.getTime() + SESSION_CONFIG.accessTokenExpiry);
 
-    const { data: updatedSession, error: updateError } = await this.supabase
+    const { data: updatedSession, error: updateError } = await supabase
       .from('user_sessions')
       .update({
         session_token: newSessionToken,
@@ -249,7 +265,8 @@ export class SessionManager {
     const now = new Date();
     const newExpiresAt = new Date(now.getTime() + SESSION_CONFIG.accessTokenExpiry);
 
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { data, error } = await supabase
       .from('user_sessions')
       .update({
         session_token: newSessionToken,
@@ -274,7 +291,8 @@ export class SessionManager {
    * Terminate a session
    */
   async terminateSession(sessionId: string): Promise<void> {
-    const { error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { error } = await supabase
       .from('user_sessions')
       .update({
         is_active: false,
@@ -289,7 +307,8 @@ export class SessionManager {
    * Terminate all sessions for a user (logout from all devices)
    */
   async terminateAllUserSessions(userId: string): Promise<void> {
-    const { error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { error } = await supabase
       .from('user_sessions')
       .update({
         is_active: false,
@@ -305,7 +324,8 @@ export class SessionManager {
    * Get active sessions for a user
    */
   async getActiveSessions(userId: string): Promise<SessionData[]> {
-    const { data, error } = await this.supabase
+    const supabase = await this.getSupabaseClient();
+    const { data, error } = await supabase
       .from('user_sessions')
       .select('*')
       .eq('user_id', userId)
@@ -335,8 +355,9 @@ export class SessionManager {
    * Clean up expired sessions
    */
   async cleanupExpiredSessions(userId?: string): Promise<void> {
+    const supabase = await this.getSupabaseClient();
     const now = new Date();
-    let query = this.supabase
+    let query = supabase
       .from('user_sessions')
       .update({
         is_active: false,

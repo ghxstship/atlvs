@@ -6,7 +6,7 @@ import {
   SidebarProvider,
   AnimationOptimizer,
   SidebarLandmarks
-} from '../../components/Sidebar';
+} from '../../components/Sidebar/index';
 import { 
   Home, Users, Briefcase, Code, Layers, ShoppingCart, 
   Building, DollarSign, BarChart3, BookOpen, Settings, User 

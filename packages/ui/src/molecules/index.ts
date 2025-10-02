@@ -17,4 +17,5 @@ export * from './ThemeToggle';
 export * from './SuspenseWrapper';
 export * from './ExportButton';
 export * from './EnhancedForm';
-export * from './SearchFilter';
+// Note: SearchFilter is exported from components/SearchFilter.tsx, not molecules
+// To avoid naming conflict, import directly from components if needed

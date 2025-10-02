@@ -1501,16 +1501,16 @@ export const brandThemes = {
   ghxstship: {
     name: 'GHXSTSHIP',
     colors: {
-      primary: colorTokens.brand[600],
-      secondary: colorTokens.gray[600],
-      accent: colorTokens.brand[500],
-      background: themeTokens.light.background,
-      foreground: themeTokens.light.foreground,
+      primary: 'hsl(var(--primary))',
+      secondary: 'hsl(var(--secondary))',
+      accent: 'hsl(var(--accent))',
+      background: 'hsl(var(--background))',
+      foreground: 'hsl(var(--foreground))',
     },
     typography: {
-      title: typography.fonts.title, // ANTON
-      body: typography.fonts.body,   // Share Tech
-      mono: typography.fonts.mono,   // Share Tech Mono
+      title: 'var(--font-title)', // ANTON
+      body: 'var(--font-body)',   // Share Tech
+      mono: 'var(--font-mono)',   // Share Tech Mono
     },
     spacing: {
       unit: '0.25rem', // 4px base unit
@@ -1542,9 +1542,9 @@ export const brandThemes = {
       foreground: '#0a0a0a',
     },
     typography: {
-      title: typography.fonts.title,
-      body: typography.fonts.body,
-      mono: typography.fonts.mono,
+      title: 'var(--font-title)',
+      body: 'var(--font-body)',
+      mono: 'var(--font-mono)',
     },
     spacing: {
       unit: '0.25rem',
@@ -1576,9 +1576,9 @@ export const brandThemes = {
       foreground: '#0c0a09',
     },
     typography: {
-      title: typography.fonts.title,
-      body: typography.fonts.body,
-      mono: typography.fonts.mono,
+      title: 'var(--font-title)',
+      body: 'var(--font-body)',
+      mono: 'var(--font-mono)',
     },
     spacing: {
       unit: '0.25rem',
@@ -1658,7 +1658,6 @@ export const useTheme = (brandName: keyof typeof brandThemes = 'ghxstship') => {
   }, [])
   
   const currentTheme = brandThemes[currentBrand]
-  const colorScheme = isDarkMode ? themeTokens.dark : themeTokens.light
   
   const switchBrand = React.useCallback((newBrand: keyof typeof brandThemes) => {
     setCurrentBrand(newBrand)
@@ -1671,15 +1670,10 @@ export const useTheme = (brandName: keyof typeof brandThemes = 'ghxstship') => {
   return {
     currentBrand,
     currentTheme,
-    colorScheme,
     isDarkMode,
     switchBrand,
     toggleDarkMode,
     brandThemes,
-    themeTokens,
-    colorTokens,
-    typography,
-    motionTokens,
   }
 }
 
@@ -1697,7 +1691,6 @@ export default {
   Input,
   Label,
   Textarea,
-  Select,
   SelectTrigger,
   SelectContent,
   SelectItem,
@@ -1706,11 +1699,11 @@ export default {
   Skeleton,
   Dialog,
   Modal,
-  Checkbox,
-  Switch,
-  Tooltip,
-  Loader,
   Toggle,
+  Drawer,
+  Sheet,
+  Table,
+  Breadcrumbs,
 }
 
 // Export all types
