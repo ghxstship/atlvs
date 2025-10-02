@@ -1,15 +1,24 @@
 import type { UUID } from '../../core/Identifier';
+import { AggregateRoot } from '../../shared/kernel/AggregateRoot';
+import { UniqueEntityID } from '../../core/Identifier';
+import { Result } from '../../core/Result';
 
 export type CurrencyCode = string; // ISO 4217
 
-export interface Project {
+export type ProjectStatus = 'planning' | 'active' | 'on_hold' | 'completed' | 'cancelled';
+export type ProjectPriority = 'low' | 'medium' | 'high' | 'critical';
+export type ProjectType = 'internal' | 'client' | 'maintenance' | 'research' | 'development';
+export type ProjectVisibility = 'public' | 'private' | 'team' | 'client';
+
+// Data structure interface (for persistence/DTOs)
+export interface IProject {
   id: UUID;
   organizationId: UUID;
   name: string;
   description?: string;
-  status: 'planning' | 'active' | 'on_hold' | 'completed' | 'cancelled';
-  priority: 'low' | 'medium' | 'high' | 'critical';
-  type: 'internal' | 'client' | 'maintenance' | 'research' | 'development';
+  status: ProjectStatus;
+  priority: ProjectPriority;
+  type: ProjectType;
   startDate?: string; // ISO date
   endDate?: string; // ISO date
   actualStartDate?: string;
@@ -25,12 +34,197 @@ export interface Project {
   location?: string;
   coordinates?: { lat: number; lng: number };
   isArchived: boolean;
-  visibility: 'public' | 'private' | 'team' | 'client';
+  visibility: ProjectVisibility;
   meta?: Record<string, any>;
   createdAt: string;
   updatedAt: string;
   createdBy?: UUID;
   updatedBy?: UUID;
+}
+
+// Props for creating/updating a Project entity
+export interface ProjectProps {
+  organizationId: UUID;
+  name: string;
+  description?: string;
+  status: ProjectStatus;
+  priority: ProjectPriority;
+  type: ProjectType;
+  startDate?: string;
+  endDate?: string;
+  actualStartDate?: string;
+  actualEndDate?: string;
+  budget?: number;
+  budgetCurrency?: CurrencyCode;
+  actualCost?: number;
+  progress: number;
+  clientId?: UUID;
+  managerId?: UUID;
+  teamMembers?: UUID[];
+  tags?: string[];
+  location?: string;
+  coordinates?: { lat: number; lng: number };
+  isArchived: boolean;
+  visibility: ProjectVisibility;
+  meta?: Record<string, any>;
+  createdAt?: Date;
+  updatedAt?: Date;
+  createdBy?: UUID;
+  updatedBy?: UUID;
+}
+
+/**
+ * Project Domain Entity
+ * Aggregate Root for the Projects bounded context
+ */
+export class Project extends AggregateRoot<ProjectProps> {
+  private constructor(id: UniqueEntityID, props: ProjectProps) {
+    super(id, props);
+  }
+
+  /**
+   * Factory method to create a new Project
+   */
+  public static create(props: Omit<ProjectProps, 'createdAt' | 'updatedAt'>, id?: UUID): Result<Project, string> {
+    // Validation
+    if (!props.name || props.name.trim().length === 0) {
+      return Result.err('Project name is required');
+    }
+
+    if (!props.organizationId) {
+      return Result.err('Organization ID is required');
+    }
+
+    if (props.progress < 0 || props.progress > 100) {
+      return Result.err('Progress must be between 0 and 100');
+    }
+
+    // Create entity with default values
+    const projectId = id ? new UniqueEntityID(id) : new UniqueEntityID(crypto.randomUUID());
+    const now = new Date();
+
+    const projectProps: ProjectProps = {
+      ...props,
+      name: props.name.trim(),
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    const project = new Project(projectId, projectProps);
+    return Result.ok(project);
+  }
+
+  // Getters
+  get organizationId(): UUID {
+    return this.props.organizationId;
+  }
+
+  get name(): string {
+    return this.props.name;
+  }
+
+  get status(): ProjectStatus {
+    return this.props.status;
+  }
+
+  get priority(): ProjectPriority {
+    return this.props.priority;
+  }
+
+  get type(): ProjectType {
+    return this.props.type;
+  }
+
+  get progress(): number {
+    return this.props.progress;
+  }
+
+  get isArchived(): boolean {
+    return this.props.isArchived;
+  }
+
+  get visibility(): ProjectVisibility {
+    return this.props.visibility;
+  }
+
+  // Business methods
+  public updateProgress(progress: number): Result<void, string> {
+    if (progress < 0 || progress > 100) {
+      return Result.err('Progress must be between 0 and 100');
+    }
+
+    this.props.progress = progress;
+    this.props.updatedAt = new Date();
+
+    // Auto-complete if progress reaches 100
+    if (progress === 100 && this.props.status !== 'completed') {
+      this.props.status = 'completed';
+      this.props.actualEndDate = new Date().toISOString();
+    }
+
+    return Result.ok(undefined);
+  }
+
+  public updateStatus(status: ProjectStatus): Result<void, string> {
+    const validTransitions: Record<ProjectStatus, ProjectStatus[]> = {
+      planning: ['active', 'cancelled'],
+      active: ['on_hold', 'completed', 'cancelled'],
+      on_hold: ['active', 'cancelled'],
+      completed: [], // Cannot transition from completed
+      cancelled: [], // Cannot transition from cancelled
+    };
+
+    if (!validTransitions[this.props.status].includes(status)) {
+      return Result.err(`Cannot transition from ${this.props.status} to ${status}`);
+    }
+
+    this.props.status = status;
+    this.props.updatedAt = new Date();
+
+    if (status === 'active' && !this.props.actualStartDate) {
+      this.props.actualStartDate = new Date().toISOString();
+    }
+
+    if (status === 'completed' && !this.props.actualEndDate) {
+      this.props.actualEndDate = new Date().toISOString();
+    }
+
+    return Result.ok(undefined);
+  }
+
+  public archive(): void {
+    this.props.isArchived = true;
+    this.props.updatedAt = new Date();
+  }
+
+  public unarchive(): void {
+    this.props.isArchived = false;
+    this.props.updatedAt = new Date();
+  }
+
+  public updateDetails(updates: Partial<Pick<ProjectProps, 'name' | 'description' | 'priority' | 'type'>>): Result<void, string> {
+    if (updates.name !== undefined) {
+      if (!updates.name || updates.name.trim().length === 0) {
+        return Result.err('Project name cannot be empty');
+      }
+      this.props.name = updates.name.trim();
+    }
+
+    if (updates.description !== undefined) {
+      this.props.description = updates.description;
+    }
+
+    if (updates.priority !== undefined) {
+      this.props.priority = updates.priority;
+    }
+
+    if (updates.type !== undefined) {
+      this.props.type = updates.type;
+    }
+
+    this.props.updatedAt = new Date();
+    return Result.ok(undefined);
+  }
 }
 
 export interface ProjectTask {
