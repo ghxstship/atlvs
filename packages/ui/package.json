@@ -32,19 +32,19 @@
   "peerDependencies": {
     "lucide-react": "^0.454.0",
     "next-themes": "^0.2.1",
-    "react": "^18.2.0"
+    "react": "^19.2.0"
   },
   "devDependencies": {
-    "@storybook/addon-a11y": "^7.6.0",
-    "@storybook/addon-docs": "^7.6.0",
-    "@storybook/addon-essentials": "^7.6.0",
-    "@storybook/addon-interactions": "^7.6.0",
-    "@storybook/nextjs": "^7.6.0",
-    "@storybook/react": "^7.6.0",
+    "@storybook/addon-a11y": "^8.1.6",
+    "@storybook/addon-docs": "^8.1.6",
+    "@storybook/addon-essentials": "^8.1.6",
+    "@storybook/addon-interactions": "^8.1.6",
+    "@storybook/nextjs": "^8.1.6",
+    "@storybook/react": "^8.1.6",
     "@storybook/test-runner": "^0.16.0",
     "chromatic": "^10.0.0",
     "lucide-react": "^0.454.0",
     "next-themes": "^0.2.1",
-    "storybook": "^7.6.0"
+    "storybook": "^8.1.6"
   }
 }

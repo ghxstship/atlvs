@@ -13,7 +13,7 @@ const nextConfig = {
     // Temporarily ignore TypeScript errors during builds for demo
     ignoreBuildErrors: true
   },
-  swcMinify: true,
+  typedRoutes: false,
   transpilePackages: [
     '@ghxstship/ui',
     '@ghxstship/data-view',
@@ -26,10 +26,6 @@ const nextConfig = {
     '@ghxstship/application',
     '@ghxstship/infrastructure'
   ],
-  experimental: {
-    typedRoutes: false,
-    instrumentationHook: true
-  },
   async headers() {
     const csp = `
       default-src 'self';

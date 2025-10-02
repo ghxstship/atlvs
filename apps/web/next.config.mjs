@@ -3,7 +3,6 @@ import withPWA from 'next-pwa';
 const experimentalConfig = {
   turbo: {},
   optimizeCss: true,
-  instrumentationHook: true,
   serverComponentsExternalPackages: ['@supabase/supabase-js', '@sentry/node', '@sentry/nextjs'],
   disableOptimizedLoading: true,
 }

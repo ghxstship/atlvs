@@ -4,7 +4,7 @@
   "type": "module",
   "main": "src/index.ts",
   "dependencies": {
-    "posthog-js": "^1.138.0",
-    "react": "^18.2.0"
+    "posthog-js": "^1.261.7",
+    "react": "^19.2.0"
   }
 }
