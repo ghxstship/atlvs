@@ -33,6 +33,7 @@ export {
   getToken,
   generateCSSVariables,
   UnifiedThemeProvider,
+  GHXSTSHIPProvider,
   useTheme,
   useDesignTokens,
   useReducedMotion,
