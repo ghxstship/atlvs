@@ -18,7 +18,6 @@ const nextConfig = {
   },
   experimental: experimentalConfig,
   output: 'standalone',
-  outputFileTracingRoot: require('path').join(__dirname, '../../'),
   generateBuildId: async () => {
     return 'build-' + Date.now()
   },
