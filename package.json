@@ -40,6 +40,8 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.1.0",
+    "@commitlint/config-conventional": "^20.0.0",
     "@types/node": "^20.19.14",
     "@types/react": "^18.3.24",
     "@types/react-dom": "^18.3.7",
