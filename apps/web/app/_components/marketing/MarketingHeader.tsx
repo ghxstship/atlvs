@@ -4,11 +4,10 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Button } from '@ghxstship/ui';
-import { headerVariants } from '@ghxstship/ui';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { anton } from '../lib/typography';
-import { navigation } from '../lib/navigation';
+import { navigation, NavigationItem } from '../lib/navigation';
 import { NavigationDropdown } from './navigation/NavigationDropdown';
 import { MobileMenu } from './navigation/MobileMenu';
 
@@ -20,13 +19,12 @@ export function MarketingHeader() {
   const [lastScrollY, setLastScrollY] = useState(0);
   const pathname = usePathname();
   const headerRef = useRef<HTMLElement>(null);
-  const timeoutRef = useRef<NodeJS.Timeout>();
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   // Enhanced scroll detection with direction and momentum
   const handleScroll = useCallback(() => {
     const currentScrollY = window.scrollY;
     const scrollThreshold = 10;
-    const hideThreshold = 100;
     
     // Determine scroll direction
     if (currentScrollY > lastScrollY) {
@@ -158,7 +156,7 @@ export function MarketingHeader() {
               role="navigation"
               aria-label="Main navigation"
             >
-              {navigation.map((item: any) => (
+              {navigation.map((item: NavigationItem) => (
                 <div key={item.label} className="relative">
                   {item.children ? (
                     <NavigationDropdown
